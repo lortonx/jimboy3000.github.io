@@ -1,0 +1,53 @@
+https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
+document.getElementById("canvas").getContext("2d").imageSmoothingQuality="high";
+
+var MSGCOMMANDS2;
+$("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
+MSGCOMMANDS2=$(".toast.toast-warning").html();
+if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio"){
+	$(".toast.toast-warning").html("hi");
+}});
+
+
+
+$("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+	var MSGCOMMANDS=$(".toast.toast-success").text();
+    if(MSGCOMMANDS.includes("CMD#SDR Force AG5TDHAM283MNXO!xhr.responseJSON.Youtube")){
+		$( "#HideAllBthn" ).click();
+		$( ".toast.toast-success" ).text("");
+	}
+	MSGCOMMANDS="";
+});
+
+
+
+$("#shortcuts-hud").before('<div id="Qhud" class="hud" style="width: 50%; height: 100px; padding: -60px;  pointer-events: auto; position: absolute; right: 0px; top: -200px; display: block;">'+
+	'<button id="QtBtn" class="btn-link" onlick="DoWing" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="QBtn2" class="fa fa-binoculars fa-3x" style="padding-left: 0px;"></i></button></div>');
+      
+      
+      
+$('input').
+$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+
+
+e = $.Event('keyup');
+e.keyCode= 13; // enter
+$('input').trigger(e);
+
+
+
+$( document ).ready(function() {
+      console.log( "Legend Mod ready!" );
+   MC.setQuality($('#quality').val("Retina"));
+   $( "#searchicon" ).mouseover(function() {
+   $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");	
+   });
+   $( "#searchicon" ).mouseout(function() {
+   $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");	
+   });
+   
+   $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
+$("#leaderboard-positions > span:first-child").css({"color":"green"});
+$("#leaderboard-positions > span:nth-child(2)").css({"color":"green"});
+$("#minimap-sectors").hide();
+$("#minimap-sectors").css("background-image", "url('http://i.imgur.com/AlX80bX.png')");
