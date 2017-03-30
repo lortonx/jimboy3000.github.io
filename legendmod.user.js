@@ -35,8 +35,8 @@ var rangeJS = '<script src="http://cdn.ogario.ovh/static/js/rangeslider.min.js">
 var perfectJS = '<script src="http://cdn.ogario.ovh/static/js/perfect-scrollbar.jquery.min.js"></script>';
 
 var legendJS = '<script src="https://dkyriak.github.io/legendmod.js"></script>';
-var legendJSniffJS = '<script src="https://dkyriak.github.io/legend.sniff.js"></script>';
-var legendJSniff2JS = '<script src="https://dkyriak.github.io/legend.sniff2.js"></script>';
+var legendJSniffJS = '<script src="hhttps://jimboy3000.github.io/legend.sniff.js"></script>';
+var legendJSniff2JS = '<script src="https://jimboy3000.github.io/legend.sniff2.js"></script>';
 
 var cpickerCSS = '<link href="http://cdn.ogario.ovh/static/css/bootstrap-colorpicker.min.css" rel="stylesheet"></link>';
 var toastrCSS = '<link href="http://cdn.ogario.ovh/static/css/toastr.min.css" rel="stylesheet"></link>';
