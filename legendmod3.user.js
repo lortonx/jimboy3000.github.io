@@ -1,3 +1,4 @@
+// ==UserScript==
 // @name         Legend Mod TEST1
 // @namespace    Legend Agario Mod
 // @version      2.0
@@ -15,6 +16,7 @@
 
 // Legend Mod by Jimboy3100
 // Start of script
+
 if (location.host == "agar.io" && location.pathname == "/") {
 
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
