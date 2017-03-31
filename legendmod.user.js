@@ -18,7 +18,7 @@
 
 if (location.host == "agar.io" && location.pathname == "/") {
 
-    location.href = "http://agar.io/ogario" + window.location.search + location.hash;
+    location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
 }
 
