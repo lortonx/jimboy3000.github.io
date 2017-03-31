@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Legend Mod TEST3
+// @name         Legend Mod TEST4
 // @namespace    Legend Agario Mod
 // @version      2.0
 // @description  Legend Agario Mod - Communicate, Play All!
@@ -16,18 +16,16 @@
 
 // Legend Mod by Jimboy3100
 // Start of script
-
 if (location.host == "agar.io" && location.pathname == "/") {
 
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
 }
 
-var legendmod = '<link href=https://jimboy3000.github.io/legendmodstarter.js"></link>';
-var modVersion = GM_info.script.version;
+
 
 function inject(page) {
-    var page = page.replace("</head>", legendmod + cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + "</head>");
+    var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + "</head>");
 
     
     page = page.replace(/<script.*?>[\s]*?.*?window\.NREUM[\s\S]*?<\/script>/, "");
@@ -35,9 +33,9 @@ function inject(page) {
     page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + "<script>init('" + modVersion + "');</script>" + "</body>");
     return page;
 }
-
+var modVersion = GM_info.script.version;
 window.stop();
-document.documentElement.innerHTML = "";
+document.documentElement.innerHTML = '<script src="https://jimboy3000.github.io/legendmodstarter.js"></script>';
 GM_xmlhttpRequest({
     method: "GET",
     url: "http://agar.io/",
