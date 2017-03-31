@@ -21,7 +21,7 @@ if (location.host == "agar.io" && location.pathname == "/") {
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
 }
-
+var modVersion = GM_info.script.version;
 var legendmod = '<script src="https://jimboy3000.github.io/legendmodstarter.js"></script>';
 
 
@@ -34,7 +34,7 @@ function inject(page) {
     page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + "<script>init('" + modVersion + "');</script>" + "</body>");
     return page;
 }
-var modVersion = GM_info.script.version;
+
 window.stop();
 document.documentElement.innerHTML = "";
 GM_xmlhttpRequest({
