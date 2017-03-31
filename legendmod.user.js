@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         Legend mod TEST1
-// @namespace    ogario.v2
-// @version      1.9
+// @name         Legend Mod TEST1
+// @namespace    Legend MOd
+// @version      2
 // @description  OGARio - Legend mod v0.8
 // @homepage     http://www.legendmod.ml
 // @author       Jimboy3100
 // @icon         https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/smallbannerlegendclan.png
 // @match        http://agar.io/*
-// @downloadURL  https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js
-// @updateURL    https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js
+// @downloadURL  https://jimboy3000.github.io/legendmod.user.js
+// @updateURL    https://ijmboy3000.github.io/legendmod.user.js
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
 // @connect      agar.io
