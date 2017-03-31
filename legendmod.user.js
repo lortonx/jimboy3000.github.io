@@ -8,7 +8,7 @@
 // @icon         https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/smallbannerlegendclan.png
 // @match        http://agar.io/*
 // @downloadURL  https://jimboy3000.github.io/legendmod.user.js
-// @updateURL    https://ijmboy3000.github.io/legendmod.user.js
+// @updateURL    https://jijmboy3000.github.io/legendmod.user.js
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
 // @connect      agar.io
