@@ -21,6 +21,8 @@ if (location.host == "agar.io" && location.pathname == "/") {
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
 }
+window.stop();
+document.documentElement.innerHTML = ('');
 
 var importTag = document.createElement('link');
 importTag.setAttribute('rel', 'import');
@@ -37,8 +39,7 @@ function inject(page) {
     return page;
 }
 var modVersion = GM_info.script.version;
-window.stop();
-document.documentElement.innerHTML = ('');
+
 
 
 
