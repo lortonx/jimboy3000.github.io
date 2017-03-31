@@ -2,7 +2,7 @@
 // @name         Legend Mod TEST1
 // @namespace    Legend MOd
 // @version      2
-// @description  OGARio - Legend mod v0.8
+// @description  Testing Mod
 // @homepage     http://www.legendmod.ml
 // @author       Jimboy3100
 // @icon         https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/smallbannerlegendclan.png
