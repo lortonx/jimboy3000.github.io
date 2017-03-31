@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Legend Mod TEST1
+// @name         Legend Mod TEST3
 // @namespace    Legend Agario Mod
 // @version      2.0
 // @description  Legend Agario Mod - Communicate, Play All!
