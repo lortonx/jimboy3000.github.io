@@ -23,7 +23,7 @@ if (location.host == "agar.io" && location.pathname == "/") {
     //return;
 }
 
-var legendmod = '<script src="https://jimboy3000.github.io/legendmodstarter.js"></script>';
+var legendmod = '<link href=https://jimboy3000.github.io/legendmodstarter.js"></link>';
 var modVersion = GM_info.script.version;
 
 function inject(page) {
