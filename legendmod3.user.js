@@ -22,7 +22,7 @@ if (location.host == "agar.io" && location.pathname == "/") {
 }
 
 var legendmod = '<script src="https://jimboy3000.github.io/legendmodstarter.js"></script>';
-
+var modVersion = GM_info.script.version;
 
 function inject(page) {
     var page = page.replace("</head>", legendmod + cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + "</head>");
@@ -33,7 +33,7 @@ function inject(page) {
     page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + "<script>init('" + modVersion + "');</script>" + "</body>");
     return page;
 }
-var modVersion = GM_info.script.version;
+
 window.stop();
 document.documentElement.innerHTML = "";
 GM_xmlhttpRequest({
