@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Legend Mod TEST4
+// @name         Legend Mod TEST3
 // @namespace    Legend Agario Mod
 // @version      2.0
 // @description  Legend Agario Mod - Communicate, Play All!
@@ -35,7 +35,13 @@ function inject(page) {
 }
 var modVersion = GM_info.script.version;
 window.stop();
-document.documentElement.innerHTML = '<script src="https://jimboy3000.github.io/legendmodstarter.js"></script>';
+document.documentElement.innerHTML = ('');
+
+var importTag = document.createElement('link');
+importTag.setAttribute('rel', 'import');
+importTag.setAttribute('href', 'https://jimboy3000.github.io/legendmodstarter.js');
+document.body.appendChild(importTag);
+
 GM_xmlhttpRequest({
     method: "GET",
     url: "http://agar.io/",
