@@ -23,7 +23,7 @@ var perfectCSS = '<link href="http://cdn.ogario.ovh/static/css/perfect-scrollbar
 var ytJS = '<script src="https://www.youtube.com/iframe_api"></script>';
 var faCSS = '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>';
 
-var modVersion = GM_info.script.version;
+//var modVersion = GM_info.script.version;
 
 function inject(page) {
     var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + "</head>");
