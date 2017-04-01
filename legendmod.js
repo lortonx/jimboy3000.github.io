@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.013 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.014 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -125,14 +125,7 @@ setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeou
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 18000);
 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
-setTimeout(function () {
-			// fix party stuff for no SIP
-		if (searchSip==null){
-		$('#gamemode').on('change', function () {
-			if (this.value == ":party") { $("#create-party-btn-2").click(); }
-			console.log( "Party stuff fixed" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-			}
-	MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
