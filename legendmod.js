@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.016 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.017 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1124,7 +1124,7 @@ function findIP(searchIP) {
                             //hideSearchHud();
                             toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
                      //       testmessage();
-							$("#gamemode").val("nothing");
+					//		$("#gamemode").val("nothing");
 							MC.setQuality($('#quality').val());
 							//showMenu();
                         } else {
