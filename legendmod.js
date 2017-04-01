@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.0 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.01 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -581,6 +581,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             localStorage.setItem("autoRespawn", true);
             // auto respawn//var proxyOnDeath = MC.onPlayerDeath;
             MC.onPlayerDeath = function () {
+				afterdeathtonormalmode();
                 var isVisibleMenu = $("#main-menu").is(':visible');
                 var isVisibleSearchHud = $("#searchHud").is(':visible');
                 var autoRespawn = localStorage.getItem("autoRespawn");
@@ -954,6 +955,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$("#region").hide();$("#gamemode").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
 	$(".agario-party").empty();$(".form-group.clearfix").hide();
 	$(".form-group").hide();}	
+	
+	if (searchSip==null){
+	afterdeathtonormalmode();}
 	
 }, 3500);
 
@@ -1595,7 +1599,8 @@ function testmessage(){
 	}		
 }
 
-function newsubmit(){testmessage();MC.setNick(document.getElementById('nick').value); return false;}
+function newsubmit(){realmode = getGameMode();
+testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
 
 function Bino(){KeyEvent.simulate(81, 81)	}
 
@@ -1605,6 +1610,7 @@ function settroll1false(){ return troll1="NO"; }
 function whenplayerdies() {
 	if (troll1=="YES"){
 		MC.onPlayerDeath=function(){ 
+		afterdeathtonormalmode();
 			$("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({ opacity: 0.8 });
 			$("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({ opacity: 0.8 });
 		    $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });							 							 
@@ -1622,7 +1628,7 @@ function whenplayerdies() {
 		}	
 	}	
 	else {
-	MC.onPlayerDeath=function(){};
+	MC.onPlayerDeath=function(){afterdeathtonormalmode();};
 	}
 }
 
@@ -1811,6 +1817,16 @@ function dosendmsgcommand(){
 KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+ogario.playerNick+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);},50);
 }
 
+function afterdeathtonormalmode(){
+MC.onPlayerDeath=function(){ 
+
+	setTimeout(function () {
+	if(realmode==":party"){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
+	if(realmode==""){$('#gamemode option[value=""]').prop('selected', 'selected').change();}
+	if(realmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
+	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
+	}, 100);
+}}
 
 function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
 function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
