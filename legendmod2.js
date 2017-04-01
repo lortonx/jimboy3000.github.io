@@ -1,8 +1,10 @@
 /*************
-* LEGEND modv2.0 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.013 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
-//setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
+   	$('#gamemode').on('change', function () {
+      if (this.value == ":party") { $("#create-party-btn-2").click(); }
+		console.log( "Party stuff fixed" );})
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -67,7 +69,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=0; // the version 1.1-> 1.11
+var semimodVersion=2; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -79,7 +81,7 @@ var otherMsg="";
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]</b> Ingame Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
 }});
 
 
@@ -100,7 +102,9 @@ setTimeout(function () {
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
-	if (searchSip==null){history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
+	if (searchSip==null){
+		if (realmode!=":party"){
+	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
@@ -119,7 +123,11 @@ setTimeout(function () { var c = document.getElementById("minimap-sectors");var 
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 10000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 11000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 12000);	
-setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 18000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 18000);
+
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
@@ -138,6 +146,9 @@ setTimeout(function () {
 	document.title = "Legend mod v" + modVersion;
 //document.getElementById("import-settings").value="jim";
     // change buttons styles
+	
+
+	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
     $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
@@ -581,6 +592,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             localStorage.setItem("autoRespawn", true);
             // auto respawn//var proxyOnDeath = MC.onPlayerDeath;
             MC.onPlayerDeath = function () {
+				//afterdeathtonormalmode();
                 var isVisibleMenu = $("#main-menu").is(':visible');
                 var isVisibleSearchHud = $("#searchHud").is(':visible');
                 var autoRespawn = localStorage.getItem("autoRespawn");
@@ -668,6 +680,16 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
     $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" style=" right: 220px; font-size: 15px; padding: 6px;"></div>');
+	
+	
+	if (searchSip==null){
+	$("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
+	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
+	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 24%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+	}
+	else if (searchSip!=null){
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
 	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
 	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
@@ -692,7 +714,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="msgcommand4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand4f();" data-toggle="tooltip" data-original-title="Troll on Death"><i id="msgcommand41" class="fa fa-bath" style="padding-center: 0px;"></i></button>'+
 	'<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>'+
 	'<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
-	
+	}
 	
 
 
@@ -767,7 +789,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back ' + tag1 + '!');
-	toastr["info"]('1. Disable other Mods or previous versions. 2.Unlimited FPS-Unlocked, Mod renderingis quicker than Vanilla');}
+	toastr["info"]('1. Rejoin with token for communication to activate on FFA/EXP. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies');}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -955,6 +977,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$(".agario-party").empty();$(".form-group.clearfix").hide();
 	$(".form-group").hide();}	
 	
+	//if (searchSip==null){
+	//afterdeathtonormalmode();}
+	console.log( "Legend Mod is Ready" );
 }, 3500);
 
 }
@@ -1075,7 +1100,7 @@ function findIP(searchIP) {
                 hideCancelSearch();
                 //hideSearchHud();
                 toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
-                testmessage();
+            //    testmessage();
 				MC.setQuality($('#quality').val());
 				//showMenu();
             } else {
@@ -1098,8 +1123,8 @@ function findIP(searchIP) {
                             hideCancelSearch();
                             //hideSearchHud();
                             toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
-                            testmessage();
-							$("#gamemode").val("nothing");
+                     //       testmessage();
+					//		$("#gamemode").val("nothing");
 							MC.setQuality($('#quality').val());
 							//showMenu();
                         } else {
@@ -1157,7 +1182,7 @@ function searchPlayer(searchString) {
                 hideCancelSearch();
                 //hideSearchHud();
                 toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
-				testmessage();
+		//		testmessage();
 				$("#gamemode").val("nothing");
 				MC.setQuality($('#quality').val());
 				//showMenu();
@@ -1195,7 +1220,7 @@ function searchPlayer(searchString) {
                             hideCancelSearch();
                             //hideSearchHud();
                             toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
-							testmessage();
+				//			testmessage();
 							MC.setQuality($('#quality').val());
 							//showMenu();
                         } else {
@@ -1588,14 +1613,21 @@ function msToTime(duration) {
 }
 
 function testmessage(){	
+	
 	var modetemp = $('#gamemode').val();
 	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 	if (modetemp!=":party"){
-		$("#hidendivtoken").css("display", "none");		
+		$("#hidendivtoken").css("display", "none");	
+		
 	}		
 }
 
-function newsubmit(){testmessage();MC.setNick(document.getElementById('nick').value); return false;}
+function newsubmit(){
+if (searchSip==null){ MC.setNick(document.getElementById('nick').value);}
+else if (searchSip!=null){	
+realmode = getGameMode();
+testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
+}
 
 function Bino(){KeyEvent.simulate(81, 81)	}
 
@@ -1605,6 +1637,7 @@ function settroll1false(){ return troll1="NO"; }
 function whenplayerdies() {
 	if (troll1=="YES"){
 		MC.onPlayerDeath=function(){ 
+		//afterdeathtonormalmode();
 			$("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({ opacity: 0.8 });
 			$("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({ opacity: 0.8 });
 		    $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });							 							 
@@ -1622,7 +1655,9 @@ function whenplayerdies() {
 		}	
 	}	
 	else {
-	MC.onPlayerDeath=function(){};
+	MC.onPlayerDeath=function(){
+		//afterdeathtonormalmode();
+		};
 	}
 }
 
@@ -1795,8 +1830,11 @@ function clearTimer() {
 }
 function ShowSIPurl(){
 	$(".form-group.clearfix").show();$(".form-group").show();
-	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
-$("#create-party-btn-2").hide(); 
+	
+	setTimeout(function () {
+			if (mode!=":party"){
+			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
+			$("#create-party-btn-2").hide(); 
 }, 2500)}	
 
 
@@ -1811,6 +1849,16 @@ function dosendmsgcommand(){
 KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+ogario.playerNick+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);},50);
 }
 
+function afterdeathtonormalmode(){
+MC.onPlayerDeath=function(){ 
+
+	setTimeout(function () {
+	if(realmode==":party"){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
+	if(realmode==""){$('#gamemode option[value=""]').prop('selected', 'selected').change();}
+	if(realmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
+	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
+	}, 100);
+}}
 
 function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
 function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
