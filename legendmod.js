@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.011 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.012 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -121,7 +121,17 @@ setTimeout(function () { var c = document.getElementById("minimap-sectors");var 
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 10000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 11000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 12000);	
-setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 18000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
+setTimeout(function () { 
+			// fix party stuff for no SIP
+		if (searchSip==null){
+		$('#gamemode').on('change', function () {
+			if (this.value == ":party") { $("#create-party-btn-2").click(); }
+			console.log( "Party stuff fixed" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+			}
+MC.setQuality($('#quality').val()); }, 18000);
+
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
@@ -141,12 +151,7 @@ setTimeout(function () {
 //document.getElementById("import-settings").value="jim";
     // change buttons styles
 	
-			// fix party stuff for no SIP
-		if (searchSip==null){
-		$('#gamemode').on('change', function () {
-			if (this.value == ":party") { $("#create-party-btn-2").click(); }
-			console.log( "Party stuff fixed" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-			}
+
 	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
