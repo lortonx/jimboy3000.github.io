@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.019 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.020 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -464,6 +464,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     MC.onDisconnect = function () {
         toastr["error"]("Disconnected from server :(").css("width", "210px");
         appendSysLog("DISCONNECTED :(");
+		MC.reconnect();
     };
 
     // listen for player ban
@@ -561,7 +562,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 				
 				
 				
-                MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
+               // MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
             
 			
 			
