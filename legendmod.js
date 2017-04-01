@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.014 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.015 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -100,7 +100,9 @@ setTimeout(function () {
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
-	if (searchSip==null){history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
+	if (searchSip==null){
+		if (realmode!=":party"){
+	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
@@ -144,7 +146,6 @@ setTimeout(function () {
 		$('#gamemode').on('change', function () {
 			if (this.value == ":party") { $("#create-party-btn-2").click(); }
 			console.log( "Party stuff fixed" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-			history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 			}
 	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
@@ -1828,8 +1829,11 @@ function clearTimer() {
 }
 function ShowSIPurl(){
 	$(".form-group.clearfix").show();$(".form-group").show();
-	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
-$("#create-party-btn-2").hide(); 
+	
+	setTimeout(function () {
+			if (mode!=":party"){
+			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
+			$("#create-party-btn-2").hide(); 
 }, 2500)}	
 
 
