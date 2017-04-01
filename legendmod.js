@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.015 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.011 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -67,7 +67,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=1; // the version 1.1-> 1.11
+var semimodVersion=2; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -79,7 +79,7 @@ var otherMsg="";
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]</b> Ingame Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
 }});
 
 
