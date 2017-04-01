@@ -1,8 +1,10 @@
 /*************
-* LEGEND modv2.014 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.015 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
-//setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
+   	$('#gamemode').on('change', function () {
+      if (this.value == ":party") { $("#create-party-btn-2").click(); }
+		console.log( "Party stuff fixed" );})
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
