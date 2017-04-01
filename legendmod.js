@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.013 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.014 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -138,6 +138,15 @@ setTimeout(function () {
 	document.title = "Legend mod v" + modVersion;
 //document.getElementById("import-settings").value="jim";
     // change buttons styles
+	
+			// fix party stuff for no SIP
+		if (searchSip==null){
+		$('#gamemode').on('change', function () {
+			if (this.value == ":party") { $("#create-party-btn-2").click(); }
+			console.log( "Party stuff fixed" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+			history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
+			}
+	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
     $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
@@ -968,7 +977,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 	//if (searchSip==null){
 	//afterdeathtonormalmode();}
-	
+	console.log( "Legend Mod is Ready" );
 }, 3500);
 
 }
