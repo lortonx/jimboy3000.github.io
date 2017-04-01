@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.017 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.018 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -554,7 +554,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			if (region != null) {MC.setRegion(region);MC.setGameMode(mode);}
 			else {
                 // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);
-                MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
+				
+				
+				//this makes game rejoin
+				
+				
+         //       MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
             }
         }
         if (searchStr != null && searchStr) {
