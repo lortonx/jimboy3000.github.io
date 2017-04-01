@@ -554,7 +554,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			if (region != null) {MC.setRegion(region);MC.setGameMode(mode);}
 			else {
                 // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);
-                MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
+				
+				
+				//this makes game rejoin
+				
+				
+         //       MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
             }
         }
         if (searchStr != null && searchStr) {
