@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.01 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.011 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //setTimeout(function () {$("#create-party-btn-2").click();}, 3500);
@@ -67,7 +67,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=0; // the version 1.1-> 1.11
+var semimodVersion=1; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -581,7 +581,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             localStorage.setItem("autoRespawn", true);
             // auto respawn//var proxyOnDeath = MC.onPlayerDeath;
             MC.onPlayerDeath = function () {
-				afterdeathtonormalmode();
+				//afterdeathtonormalmode();
                 var isVisibleMenu = $("#main-menu").is(':visible');
                 var isVisibleSearchHud = $("#searchHud").is(':visible');
                 var autoRespawn = localStorage.getItem("autoRespawn");
@@ -768,7 +768,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back ' + tag1 + '!');
-	toastr["info"]('1. Disable other Mods or previous versions. 2.Unlimited FPS-Unlocked, Mod renderingis quicker than Vanilla');}
+	toastr["info"]('Rejoin with token for communication to activate on FFA/EXP');}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -956,8 +956,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$(".agario-party").empty();$(".form-group.clearfix").hide();
 	$(".form-group").hide();}	
 	
-	if (searchSip==null){
-	afterdeathtonormalmode();}
+	//if (searchSip==null){
+	//afterdeathtonormalmode();}
 	
 }, 3500);
 
@@ -1592,15 +1592,21 @@ function msToTime(duration) {
 }
 
 function testmessage(){	
+	
 	var modetemp = $('#gamemode').val();
 	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 	if (modetemp!=":party"){
-		$("#hidendivtoken").css("display", "none");		
+		$("#hidendivtoken").css("display", "none");	
+		
 	}		
 }
 
-function newsubmit(){realmode = getGameMode();
+function newsubmit(){
+if (searchSip==null){ MC.setNick(document.getElementById('nick').value);}
+else if (searchSip!=null){	
+realmode = getGameMode();
 testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
+}
 
 function Bino(){KeyEvent.simulate(81, 81)	}
 
@@ -1610,7 +1616,7 @@ function settroll1false(){ return troll1="NO"; }
 function whenplayerdies() {
 	if (troll1=="YES"){
 		MC.onPlayerDeath=function(){ 
-		afterdeathtonormalmode();
+		//afterdeathtonormalmode();
 			$("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({ opacity: 0.8 });
 			$("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({ opacity: 0.8 });
 		    $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });							 							 
@@ -1628,7 +1634,9 @@ function whenplayerdies() {
 		}	
 	}	
 	else {
-	MC.onPlayerDeath=function(){afterdeathtonormalmode();};
+	MC.onPlayerDeath=function(){
+		//afterdeathtonormalmode();
+		};
 	}
 }
 
