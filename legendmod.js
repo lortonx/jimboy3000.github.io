@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.026 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.027 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -69,7 +69,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=2; // the version 1.1-> 1.11
+var semimodVersion=3; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -252,7 +252,7 @@ setTimeout(function () {
 
 											
 	$("#HideAllBthn").tooltip({title: "Temporarily Hide/Show Everything. Function for Youtubers", placement: "bottom"});
-	
+	$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
 
