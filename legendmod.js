@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.025 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.026 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -198,7 +198,7 @@ setTimeout(function () {
 											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i> Auto free coins</button>' +
 											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
-											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" onlick="openhelper();return false;" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
+											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual background images</span>' +
 											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="">' +
@@ -341,6 +341,7 @@ setTimeout(function () {
     $("#searchBtn").tooltip('disable');
     $("#copyLBBtn").click(function () {copy(getLeaderboard());});
 	$("#lastIPBtn").click(function () {lastIP=localStorage.getItem("lastIP"); dosearch(); document.getElementById("searchInput").value=lastIP; $("#searchBtn").click();});
+	$("#OpenInfo").click(function () {openhelper();});
 
     $("#copyIPBtn").click(function () {
 		if (searchSip!=null){copy("http://agar.io/?r=" + region + "&m=" + mode + "&search=ws://" + searchSip);}
