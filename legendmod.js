@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //   	$('#gamemode').on('change', function () {		
@@ -1887,10 +1887,10 @@ function afterdeathtonormalmode(){
 MC.onPlayerDeath=function(){ 
 
 	setTimeout(function () {
-	if(realmode==":party"){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
-	if(realmode==""){$('#gamemode option[value=""]').prop('selected', 'selected').change();}
-	if(realmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
-	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
+	if(realmode==":party"){ogario.gameMode=":party";$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
+	if(realmode==""){ogario.gameMode="";$('#gamemode option[value=""]').prop('selected', 'selected').change();}
+	if(realmode==":teams"){ogario.gameMode=":teams";$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
+	if(realmode==":experimental"){ogario.gameMode=":experimental";$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
 	}, 100);
 }}
 
