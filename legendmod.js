@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.022 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.023 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -994,6 +994,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 	//if (searchSip==null){
 	//afterdeathtonormalmode();}
+	if (timesopened==null){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendhelper.js";$("body").append(s);}
+	
 	console.log( "Legend Mod is Ready" );
 }, 3500);
 
