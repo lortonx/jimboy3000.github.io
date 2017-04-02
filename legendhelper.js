@@ -4,7 +4,6 @@ $("#quick-menu").hide();
 $("#exp-bar").hide();
 
 
-//var a="https://jimboy3100.github.io/legend.github.io/banners/galaxybanner.jpg"
 
 $("#menu-footer").after('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 450px; width: 600px;">'+
 	'<div id="tutorial1" style="display:block;">'+
@@ -151,7 +150,7 @@ $("#menu-footer").after('<div id="tutorial" style="background-image: url(https:/
 	'<i style="color:blue; font-size:22px"; align="left">Agario Default(White)</i><br>'+	
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/iconnosoup.png" alt="NoSoupsSettings" id = "legendclanbanner" class="img-rounded"  width=30% height="50" onclick="nosoups(); return false" > '+
 	'<i style="color:blue; font-size:22px"; align="right">No Soups Settings (Black)</i><br>'+
-	'<img src="https://jimboy3100.github.io/legend.github.io/banners/vanillapic.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillabetter();  class="img-rounded"  return false" width=30% height="50" >' +
+	'<img src="https://jimboy3100.github.io/legend.github.io/banners/vanillapic.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillabetter(); return false" class="img-rounded" width=30% height="50" >' +
 	'<i style="color:blue; font-size:22px"; align="right">Vanilla better (Grey)</i><br>'+	
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/galaxybanner.jpg" alt="Vanilla Like Settings" id = "galaxyset" onclick="galaxysettings(); return false" class="img-rounded"  return false" width=30%" height="50"  >' +
 	'<i style="color:blue; font-size:22px"; align="left">Galaxy (Black)</i><br>'+	
