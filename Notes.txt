@@ -1,4 +1,10 @@
 https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
+
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.src = "https://jimboy3000.github.io/legendhelper.js";
+$("body").append(s);
+
 document.getElementById("canvas").getContext("2d").imageSmoothingQuality="high";
 
 var MSGCOMMANDS2;
