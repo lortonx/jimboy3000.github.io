@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.027 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.028 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
