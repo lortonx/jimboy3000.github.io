@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.030 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.031 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -69,7 +69,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=3; // the version 1.1-> 1.11
+var semimodVersion=4; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -1642,10 +1642,11 @@ function testmessage(){
 }
 
 function newsubmit(){
-if (searchSip==null){ MC.setNick(document.getElementById('nick').value);}
-else if (searchSip!=null){	
-realmode = getGameMode();
-testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
+//if (searchSip==null){ 
+MC.setNick(document.getElementById('nick').value);return false;
+//else if (searchSip!=null){	
+//realmode = getGameMode();
+//testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
 }
 
 function Bino(){KeyEvent.simulate(81, 81)	}
