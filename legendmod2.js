@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.013 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.028 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -69,7 +69,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=2; // the version 1.1-> 1.11
+var semimodVersion=3; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -198,6 +198,7 @@ setTimeout(function () {
 											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i> Auto free coins</button>' +
 											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
+											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual background images</span>' +
 											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="">' +
@@ -251,7 +252,7 @@ setTimeout(function () {
 
 											
 	$("#HideAllBthn").tooltip({title: "Temporarily Hide/Show Everything. Function for Youtubers", placement: "bottom"});
-	
+	$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
 
@@ -340,6 +341,7 @@ setTimeout(function () {
     $("#searchBtn").tooltip('disable');
     $("#copyLBBtn").click(function () {copy(getLeaderboard());});
 	$("#lastIPBtn").click(function () {lastIP=localStorage.getItem("lastIP"); dosearch(); document.getElementById("searchInput").value=lastIP; $("#searchBtn").click();});
+	$("#OpenInfo").click(function () {openhelper();});
 
     $("#copyIPBtn").click(function () {
 		if (searchSip!=null){copy("http://agar.io/?r=" + region + "&m=" + mode + "&search=ws://" + searchSip);}
@@ -395,7 +397,10 @@ setTimeout(function () {
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
         '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2.2.3, Module:3.9.3</a>');
     // donate button
+	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+	//jimboy's
+	$("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support Legend Mod by 🌀♔Jimboy3100" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 	//$("#minimap-sectors").attr("style", "opacity: 0.25;");
 	// keybinds
 
@@ -464,6 +469,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     MC.onDisconnect = function () {
         toastr["error"]("Disconnected from server :(").css("width", "210px");
         appendSysLog("DISCONNECTED :(");
+		MC.reconnect();
     };
 
     // listen for player ban
@@ -559,8 +565,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 				//this makes game rejoin
 				
 				
-         //       MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
-            }
+				
+				
+               // MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
+            
+			
+			
+			
+			}
         }
         if (searchStr != null && searchStr) {
             if (searchIPHandler(searchStr)) {hideMenu();showSearchHud();showCancelSearch();$("#searchInput").val(searchStr);}
@@ -984,6 +996,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 	//if (searchSip==null){
 	//afterdeathtonormalmode();}
+	if (timesopened==null){openhelper();}
+	
 	console.log( "Legend Mod is Ready" );
 }, 3500);
 
@@ -1852,6 +1866,10 @@ function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
 function dosendmsgcommand(){
 KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+ogario.playerNick+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);},50);
+}
+
+function openhelper(){
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendhelper.js";$("body").append(s);
 }
 
 function afterdeathtonormalmode(){
