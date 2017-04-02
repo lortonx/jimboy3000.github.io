@@ -1,10 +1,20 @@
 /*************
-* LEGEND modv2.031 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.032 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
-//   	$('#gamemode').on('change', function () {
+//   	$('#gamemode').on('change', function () {		
 //      if (this.value == ":party") { $("#create-party-btn-2").click(); }
 //		console.log( "Party stuff fixed" );})
+
+$('#gamemode').on('change', function () {	
+if (this.value != ":party") { 
+setTimeout(function (){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();},1500); }
+//else if (this.value == ":party") { $("#create-party-btn-2").click();}
+//	$("#create-party-btn-2").click();
+	});
+	
+//console.log( "Party stuff fixed" );}
+
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -609,7 +619,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             localStorage.setItem("autoRespawn", true);
             // auto respawn//var proxyOnDeath = MC.onPlayerDeath;
             MC.onPlayerDeath = function () {
-				//afterdeathtonormalmode();
+				afterdeathtonormalmode();
                 var isVisibleMenu = $("#main-menu").is(':visible');
                 var isVisibleSearchHud = $("#searchHud").is(':visible');
                 var autoRespawn = localStorage.getItem("autoRespawn");
@@ -995,7 +1005,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$(".form-group").hide();}	
 	
 	//if (searchSip==null){
-	//afterdeathtonormalmode();}
+	afterdeathtonormalmode();}
 	if (timesopened==null){openhelper();}
 	
 	console.log( "Legend Mod is Ready" );
@@ -1657,7 +1667,7 @@ function settroll1false(){ return troll1="NO"; }
 function whenplayerdies() {
 	if (troll1=="YES"){
 		MC.onPlayerDeath=function(){ 
-		//afterdeathtonormalmode();
+		afterdeathtonormalmode();
 			$("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({ opacity: 0.8 });
 			$("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({ opacity: 0.8 });
 		    $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });							 							 
@@ -1676,7 +1686,7 @@ function whenplayerdies() {
 	}	
 	else {
 	MC.onPlayerDeath=function(){
-		//afterdeathtonormalmode();
+		afterdeathtonormalmode();
 		};
 	}
 }
