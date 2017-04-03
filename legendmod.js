@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 //   	$('#gamemode').on('change', function () {
@@ -7,11 +7,12 @@
 //		console.log( "Party stuff fixed" );})
 
 MC.onPlayerSpawn = function () {
-	
+if (searchSip==null){	
 	setTimeout(function (){
 		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
 		},1000);
+}
 };
 
 var currentIP = "0.0.0.0:0";
@@ -1641,13 +1642,13 @@ function msToTime(duration) {
 
 function testmessage(){	
 	
-	var modetemp = $('#gamemode').val();
-		if (modetemp!=":party"){
-		$("#hidendivtoken").css("display", "none");	
-	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+//	var modetemp = $('#gamemode').val();
+//		if (modetemp!=":party"){
+//		$("#hidendivtoken").css("display", "none");	
+//	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 
 		
-	}		
+//	}		
 }
 
 
@@ -1899,7 +1900,8 @@ MC.onPlayerDeath=function(){
 	if(realmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
 	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
 	}, 100);
-}}
+}
+}
 
 function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
 function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
