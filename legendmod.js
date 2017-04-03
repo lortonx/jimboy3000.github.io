@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.032 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 
@@ -128,14 +128,6 @@ setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeou
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
-MC.onConnect = function () {
-if (searchSip==null){	
-	setTimeout(function (){	
-		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-		$('#gamemode').val(realmode);
-		},800);
-}
-};
 
 
 function init(modVersion) {
@@ -1641,17 +1633,25 @@ function msToTime(duration) {
 
 function testmessage(){	
 	
-	var modetemp = $('#gamemode').val();
-	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-	if (modetemp!=":party"){
-		$("#hidendivtoken").css("display", "none");	
-		
-	}		
+if (searchSip==null){	
+	setTimeout(function (){	
+		var tempmode=$('#gamemode').val();
+		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+		$('#gamemode').val(tempmode);
+		$(".btn.btn-play.btn-primary.btn-needs-server").click();
+		},800);
+
+		}	
 }
 
 function newsubmit(){
 //if (searchSip==null){ 
-MC.setNick(document.getElementById('nick').value);return false;
+
+MC.setNick(document.getElementById('nick').value);
+if $(".btn.btn-play.btn-primary.btn-needs-server").is(:hover){
+testmessage();
+}
+return false;
 //else if (searchSip!=null){	
 //realmode = getGameMode();
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
