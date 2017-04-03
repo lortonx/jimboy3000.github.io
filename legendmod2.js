@@ -118,13 +118,20 @@ setTimeout(function () {
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 	
 	
-setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 8000);
-setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 9000);
-setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 10000);
-setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 11000);
-setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 12000);	
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
-setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);MC.setQuality($('#quality').val()); }, 18000);
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
