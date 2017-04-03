@@ -1,19 +1,8 @@
 /*************
-* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
-//   	$('#gamemode').on('change', function () {
-//      if (this.value == ":party") { $("#create-party-btn-2").click(); }
-//		console.log( "Party stuff fixed" );})
 
-MC.onPlayerSpawn = function () {
-if (searchSip==null){	
-	setTimeout(function (){
-		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-		$(".btn.btn-play.btn-primary.btn-needs-server").click();
-		},1000);
-}
-};
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -138,6 +127,16 @@ setTimeout(function () { var c = document.getElementById("minimap-sectors");var 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
+
+MC.onPlayerSpawn = function () {
+if (searchSip==null){	
+	setTimeout(function (){
+		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+		$(".btn.btn-play.btn-primary.btn-needs-server").click();
+		},1000);
+}
+};
+
 
 function init(modVersion) {
 var connectedbanner=0;
@@ -1642,26 +1641,17 @@ function msToTime(duration) {
 
 function testmessage(){	
 	
-//	var modetemp = $('#gamemode').val();
-//		if (modetemp!=":party"){
-//		$("#hidendivtoken").css("display", "none");	
-//	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-
+	var modetemp = $('#gamemode').val();
+	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+	if (modetemp!=":party"){
+		$("#hidendivtoken").css("display", "none");	
 		
-//	}		
+	}		
 }
-
-
-
 
 function newsubmit(){
-if (searchSip==null){ 
+//if (searchSip==null){ 
 MC.setNick(document.getElementById('nick').value);return false;
-//function (){testmessage();},1000);
-}
-else if (searchSip!=null){ 
-MC.setNick(document.getElementById('nick').value);return false;
-}
 //else if (searchSip!=null){	
 //realmode = getGameMode();
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
@@ -1900,8 +1890,7 @@ MC.onPlayerDeath=function(){
 	if(realmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
 	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
 	}, 100);
-}
-}
+}}
 
 function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
 function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
