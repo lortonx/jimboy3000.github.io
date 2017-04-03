@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.038 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.039 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 
@@ -129,12 +129,13 @@ setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeou
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 MC.onConnect = function () {
+MC.onPlayerSpawn = function () {
 if (searchSip==null){	
 	setTimeout(function (){
 		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
-		},1000);
-}
+		},2000);
+}}
 };
 
 
