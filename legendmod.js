@@ -1,20 +1,18 @@
 /*************
-* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
-//   	$('#gamemode').on('change', function () {		
+//   	$('#gamemode').on('change', function () {
 //      if (this.value == ":party") { $("#create-party-btn-2").click(); }
 //		console.log( "Party stuff fixed" );})
 
-$('#gamemode').on('change', function () {	
-if (this.value != ":party") { 
-setTimeout(function (){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();},1500); }
-//else if (this.value == ":party") { $("#create-party-btn-2").click();}
-//	$("#create-party-btn-2").click();
-	});
+MC.onPlayerSpawn = function () {
 	
-//console.log( "Party stuff fixed" );}
-
+	setTimeout(function (){
+		$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+		$(".btn.btn-play.btn-primary.btn-needs-server").click();
+		},1000);
+};
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -619,7 +617,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             localStorage.setItem("autoRespawn", true);
             // auto respawn//var proxyOnDeath = MC.onPlayerDeath;
             MC.onPlayerDeath = function () {
-				afterdeathtonormalmode();
+				//afterdeathtonormalmode();
                 var isVisibleMenu = $("#main-menu").is(':visible');
                 var isVisibleSearchHud = $("#searchHud").is(':visible');
                 var autoRespawn = localStorage.getItem("autoRespawn");
@@ -1005,7 +1003,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$(".form-group").hide();}	
 	
 	//if (searchSip==null){
-	afterdeathtonormalmode();
+	//afterdeathtonormalmode();}
 	if (timesopened==null){openhelper();}
 	
 	console.log( "Legend Mod is Ready" );
@@ -1644,16 +1642,25 @@ function msToTime(duration) {
 function testmessage(){	
 	
 	var modetemp = $('#gamemode').val();
-	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
-	if (modetemp!=":party"){
+		if (modetemp!=":party"){
 		$("#hidendivtoken").css("display", "none");	
+	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+
 		
 	}		
 }
 
+
+
+
 function newsubmit(){
-//if (searchSip==null){ 
+if (searchSip==null){ 
 MC.setNick(document.getElementById('nick').value);return false;
+//function (){testmessage();},1000);
+}
+else if (searchSip!=null){ 
+MC.setNick(document.getElementById('nick').value);return false;
+}
 //else if (searchSip!=null){	
 //realmode = getGameMode();
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
@@ -1667,7 +1674,7 @@ function settroll1false(){ return troll1="NO"; }
 function whenplayerdies() {
 	if (troll1=="YES"){
 		MC.onPlayerDeath=function(){ 
-		afterdeathtonormalmode();
+		//afterdeathtonormalmode();
 			$("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({ opacity: 0.8 });
 			$("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({ opacity: 0.8 });
 		    $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });							 							 
@@ -1686,7 +1693,7 @@ function whenplayerdies() {
 	}	
 	else {
 	MC.onPlayerDeath=function(){
-		afterdeathtonormalmode();
+		//afterdeathtonormalmode();
 		};
 	}
 }
@@ -1887,10 +1894,10 @@ function afterdeathtonormalmode(){
 MC.onPlayerDeath=function(){ 
 
 	setTimeout(function () {
-	if(realmode==":party"){ogario.gameMode=":party";$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
-	if(realmode==""){ogario.gameMode="";$('#gamemode option[value=""]').prop('selected', 'selected').change();}
-	if(realmode==":teams"){ogario.gameMode=":teams";$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
-	if(realmode==":experimental"){ogario.gameMode=":experimental";$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
+	if(realmode==":party"){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
+	if(realmode==""){$('#gamemode option[value=""]').prop('selected', 'selected').change();}
+	if(realmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
+	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
 	}, 100);
 }}
 
