@@ -1,12 +1,18 @@
 https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
 
 
+
 var canvas = document.getElementById("minimap-sectors")
 var ctx = canvas.getContext('2d');
 
 ctx.font="14px Georgia";
 ctx.fillText("Legend Mod/SIP",canvas.width/2,14);
 
+
+var openfl=$("#openfl-content");
+$("#openfl-overlay").detach();
+$("#openfl-content").empty();
+$("#promo-badge-frame").click(function(){$("#openfl-content")=openfl;});
 
 
 var s = document.createElement("script");
