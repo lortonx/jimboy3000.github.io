@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.031 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.032 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
  //  	$('#gamemode').on('change', function () {
@@ -251,7 +251,7 @@ setTimeout(function () {
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
 											'<button id="bottomleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'</div></div>' +
-											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
+											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit3()" style="display: none;">Play</button>'+
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
 											'</div></div>');
@@ -431,7 +431,7 @@ setTimeout(function () {
     });
 	
 $(".btn.btn-play-guest.btn-success.btn-needs-server").attr("onclick","newsubmit()");
-$(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
+$(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit2()");
 		
     $(document).keydown(function (event) {
         if (event.which == 81 && ogario.spectate && !($("input").is(":focus"))) { // spectate 'Q' fix
@@ -1655,6 +1655,14 @@ MC.setNick(document.getElementById('nick').value);return false;
 //realmode = getGameMode();
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
 }
+function newsubmit2(){
+	if (searchSip==null){ 
+testmessage();MC.setNick(document.getElementById('nick').value);
+	setTimeout(function (){$(".btn.btn-play-guest.btn-success.btn-needs-server");},1500);return false;
+	}
+}
+
+
 
 function Bino(){KeyEvent.simulate(81, 81)	}
 
