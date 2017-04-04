@@ -2,9 +2,9 @@
 * LEGEND modv2.031 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
-   	$('#gamemode').on('change', function () {
-      if (this.value == ":party") { $("#create-party-btn-2").click(); }
-		console.log( "Party stuff fixed" );})
+ //  	$('#gamemode').on('change', function () {
+ //     if (this.value == ":party") { $("#create-party-btn-2").click(); }
+//		console.log( "Party stuff fixed" );})
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
