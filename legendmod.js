@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.038 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.039 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -207,8 +207,8 @@ setTimeout(function () {
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
 											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual background images</span>' +
-											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="">' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual background images  </span>' +
+											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
 											'<option value="1" data-itr="">Minimap</option>' +
 											'<option value="2" data-itr="">Leaderboard</option>' +
 											'<option value="3" data-itr="">Teamboard</option>' +
@@ -221,23 +221,29 @@ setTimeout(function () {
 											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 4px; display: none;" onblur="setcanvasbgname();">' +
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual Message Icons</span>' +
-											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 34%" >' +
-											'<option value="1" data-itr="">Manual Message Icon 1</option>' +
-											'<option value="2" data-itr="">Manual Message Icon 2</option>' +
-											'<option value="3" data-itr="">Manual Message Icon 3</option>' +
-											'<option value="4" data-itr="">Manual Message Icon 4</option>' +
-											'<option value="5" data-itr="">Manual Message Icon 5</option>' +
-											'<option value="6" data-itr="">Manual Message Icon 6</option>' +											
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual Message Icons  </span>' +
+											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
+											'<option value="1" data-itr="">Icon 1</option>' +
+											'<option value="2" data-itr="">Icon 2</option>' +
+											'<option value="3" data-itr="">Icon 3</option>' +
+											'<option value="4" data-itr="">Icon 4</option>' +
+											'<option value="5" data-itr="">Icon 5</option>' +
+											'<option value="6" data-itr="">Icon 6</option>' +											
 											'</select>' +
-											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="width: 65%; margin-top: 0px; display: block;" onblur="setpic1data();">' +
-											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic2data();">' +
-											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic3data();">' +
-											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic4data();">' +
-											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic5data();">' +
-											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic6data();">' +
+											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style=" margin-top: 0px; display: block;" onblur="setpic1data();">' +
+											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style=" margin-top: 0px; display: none;" onblur="setpic2data();">' +
+											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style=" margin-top: 0px; display: none;" onblur="setpic3data();">' +
+											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style=" margin-top: 0px; display: none;" onblur="setpic4data();">' +
+											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style=" margin-top: 0px; display: none;" onblur="setpic5data();">' +
+											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style=" margin-top: 0px; display: none;" onblur="setpic6data();">' +
 											'</div>' +
-
+											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 4px; display: block;" onblur="setpic1url();">' +
+											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic2url();">' +
+											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic3url();">' +
+											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic4url();">' +
+											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic5url();">' +
+											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic6url();">' +
+											'</div>' +
 
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position</span><div class="btn-group">' +
