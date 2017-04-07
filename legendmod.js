@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -38,6 +38,8 @@ var pic6dataimg="Legend Mod!";
 var lastIP="";
 var leadbtext= localStorage.getItem("leadbtext");
 var teambtext= localStorage.getItem("teambtext");
+var imgUrl= localStorage.getItem("imgUrl");
+var imgHref= localStorage.getItem("imgHref");
 var autoRespawn = localStorage.getItem("autoRespawn");
 var showToken = localStorage.getItem("showTK");
 var showPlayer = localStorage.getItem("showPlayer");
@@ -574,19 +576,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {
 			if (region != null) {MC.setRegion(region);MC.setGameMode(mode);}
 			else {
-                // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);
-				
-				
+                // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);		
 				//this makes game rejoin
-				
-				
-				
-				
-               // MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
-            
-			
-			
-			
+               // MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);         		
 			}
         }
         if (searchStr != null && searchStr) {
@@ -982,6 +974,10 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#leadbtext').val()!=""){setleadbtext();}
 	document.getElementById("teambtext").value =localStorage.getItem("teambtext");
 	if($('#teambtext').val()!=""){setteambtext();}
+	document.getElementById("imgUrl").value =localStorage.getItem("imgUrl");
+	if($('#imgUrl').val()!=""){setimgUrl();}	
+	document.getElementById("imgHref").value =localStorage.getItem("imgHref");
+	if($('#imgHref').val()!=""){setimgHref();}	
 	
 	document.getElementById("pic1url").value =localStorage.getItem("pic1urlimg");
 	if($('#pic1url').val()!=""){setpic1url();}	
@@ -1581,13 +1577,13 @@ localStorage.setItem("teambtext", teambtext);
 $("#top5-hud > h5").text(teambtext); 
 }
 
-function setteambtext(){ teambtext=$("#teambtext").val();
-localStorage.setItem("teambtext", teambtext);
+function setimgUrl(){ teambtext=$("#imgUrl").val();
+localStorage.setItem("imgUrl", imgUrl);
 $("#top5-hud > h5").text(teambtext); 
 }
 
-function setteambtext(){ teambtext=$("#teambtext").val();
-localStorage.setItem("teambtext", teambtext);
+function setimgHref(){ setimgHref=$("#setimgHref").val();
+localStorage.setItem("setimgHref", setimgHref);
 $("#top5-hud > h5").text(teambtext); 
 }
 
