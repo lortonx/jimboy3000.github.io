@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.006 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.007 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -36,6 +36,8 @@ var pic4dataimg="Death!";
 var pic5dataimg="Relax!";
 var pic6dataimg="Legend Mod!";
 var lastIP="";
+var leadbtext= localStorage.getItem("leadbtext");
+var teambtext= localStorage.getItem("teambtext");
 var autoRespawn = localStorage.getItem("autoRespawn");
 var showToken = localStorage.getItem("showTK");
 var showPlayer = localStorage.getItem("showPlayer");
@@ -207,7 +209,7 @@ setTimeout(function () {
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
 											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span class="title" style="">Manual background images:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span class="title" style="">Manual background:  </span>' +
 											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
 											'<option value="1" data-itr="">Minimap</option>' +
 											'<option value="2" data-itr="">Leaderboard</option>' +
@@ -219,6 +221,8 @@ setTimeout(function () {
 											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();">' +
 											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
 											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +
+											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
+											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
@@ -971,6 +975,10 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#teambPicture').val()!=""){setteambgname();}
 	document.getElementById("canvasPicture").value =localStorage.getItem("canvasbimg");
 	if($('#canvasPicture').val()!=""){setcanvasbgname();}
+	document.getElementById("leadbtext").value =localStorage.getItem("leadbtext");
+	if($('#leadbtext').val()!=""){setleadbtext();}
+	document.getElementById("teambtext").value =localStorage.getItem("teambtext");
+	if($('#teambtext').val()!=""){setteambtext();}
 	
 	document.getElementById("pic1url").value =localStorage.getItem("pic1urlimg");
 	if($('#pic1url').val()!=""){setpic1url();}	
@@ -1560,6 +1568,16 @@ localStorage.setItem("canvasbimg", canvasbimg);
 $("#canvas").css('background-image', 'url("' + canvasbimg + '")').css({ opacity: 1 });
 }
 
+function setleadbtext()(){ leadbtext=$("#leadbtext").val();
+localStorage.setItem("leadbtext", leadbtext);
+$("#leaderboard-hud > h4").text(leadbtext);
+}
+
+function setteambtext(){ teambtext=$("#teambtext").val();
+localStorage.setItem("teambtext", teambtext);
+$("#top5-hud > h5").text(teambtext); 
+}
+
 function setpic1url(){ pic1urlimg=$("#pic1url").val();
 localStorage.setItem("pic1urlimg", pic1urlimg);
 return pic1urlimg;
@@ -1736,14 +1754,18 @@ function changePicFun(){
 	$("#leadbPicture").hide();
 	$("#teambPicture").hide();
 	$("#canvasPicture").hide();
+	$("#leadbtext").hide();
+	$("#teambtext").hide();
 		if ($("#backgroundPic").val()==1){
 			$("#minimapPicture").show();	
 		}
 		if ($("#backgroundPic").val()==2){
-			$("#leadbPicture").show();	
+			$("#leadbPicture").show();
+			$("#leadbtext").show();
 		}
 		if ($("#backgroundPic").val()==3){
-			$("#teambPicture").show();	
+			$("#teambPicture").show();
+			$("#teambtext").show();
 		}
 		if ($("#backgroundPic").val()==4){
 			$("#canvasPicture").show();	
