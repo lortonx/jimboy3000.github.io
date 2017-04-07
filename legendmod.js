@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -226,8 +226,8 @@ setTimeout(function () {
 											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +
 											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
 											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
-											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon" value="" style="margin-top: 2px; display: none; " onblur="imgUrl();">' +
-											'<input id="imgHref" class="form-control" placeholder="Main Banner Link" value="" style="margin-top: 2px; display: none; " onblur="imgHref();">' +											
+											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();">' +
+											'<input id="imgHref" class="form-control" placeholder="Main Banner Link" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();">' +											
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
