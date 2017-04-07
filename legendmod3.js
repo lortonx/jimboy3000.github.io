@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.031 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -36,6 +36,11 @@ var pic4dataimg="Death!";
 var pic5dataimg="Relax!";
 var pic6dataimg="Legend Mod!";
 var lastIP="";
+var minbtext = localStorage.getItem("minbtext");
+var leadbtext= localStorage.getItem("leadbtext");
+var teambtext= localStorage.getItem("teambtext");
+var imgUrl= localStorage.getItem("imgUrl");
+var imgHref= localStorage.getItem("imgHref");
 var autoRespawn = localStorage.getItem("autoRespawn");
 var showToken = localStorage.getItem("showTK");
 var showPlayer = localStorage.getItem("showPlayer");
@@ -69,7 +74,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=4; // the version 1.1-> 1.11
+var semimodVersion=5; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -116,22 +121,26 @@ setTimeout(function () {
 //      if (this.value == ":party") { $("#create-party-btn-2").click(); }
 //		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
+var minbtext2=minbtext;	
+if(minbtext==null||minbtext==""){
+	minbtext = "Legend Mod/Locked";
+	minbtext2 = "Legend Mod";
+	}
 	
-	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
@@ -207,45 +216,52 @@ setTimeout(function () {
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
 											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual background images</span>' +
-											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="">' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span class="title" style="">Manual background:  </span>' +
+											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
 											'<option value="1" data-itr="">Minimap</option>' +
 											'<option value="2" data-itr="">Leaderboard</option>' +
 											'<option value="3" data-itr="">Teamboard</option>' +
 											'<option value="4" data-itr="">Main Canvas</option>' +
+											'<option value="5" data-itr="">Main Banner</option>' +
 											'</select>' +
 
-											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 4px; display: block;" onblur="setminbgname();">' +
-											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 4px; display: none;" onblur="setleadbgname();">' +
-											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 4px; display: none;" onblur="setteambgname();">' +
-											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 4px; display: none;" onblur="setcanvasbgname();">' +
+											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
+											'<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
+											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();">' +
+											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
+											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
+											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
+											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +						
+											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();">' +
+											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();">' +											
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual Message Icons</span>' +
-											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="">' +
-											'<option value="1" data-itr="">Manual Message Icon 1</option>' +
-											'<option value="2" data-itr="">Manual Message Icon 2</option>' +
-											'<option value="3" data-itr="">Manual Message Icon 3</option>' +
-											'<option value="4" data-itr="">Manual Message Icon 4</option>' +
-											'<option value="5" data-itr="">Manual Message Icon 5</option>' +
-											'<option value="6" data-itr="">Manual Message Icon 6</option>' +											
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
+											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
+											'<option value="1" data-itr="">Icon 1</option>' +
+											'<option value="2" data-itr="">Icon 2</option>' +
+											'<option value="3" data-itr="">Icon 3</option>' +
+											'<option value="4" data-itr="">Icon 4</option>' +
+											'<option value="5" data-itr="">Icon 5</option>' +
+											'<option value="6" data-itr="">Icon 6</option>' +											
 											'</select>' +
-											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 4px; display: block;" onblur="setpic1url();">' +
-											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic2url();">' +
-											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic3url();">' +
-											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic4url();">' +
-											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic5url();">' +
-											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic6url();">' +
-											'</div>' +
-											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 0px; display: block;" onblur="setpic1data();">' +
-											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic2data();">' +
-											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic3data();">' +
-											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic4data();">' +
-											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic5data();">' +
-											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic6data();">' +
-											'</div>' +
+											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
+											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
+											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
+											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
+											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
+											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position</span><div class="btn-group">' +
+											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();">' +
+											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();">' +
+											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();">' +
+											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();">' +
+											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();">' +
+											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();">' +
+											'</div></div>' +
+
+
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position:  </span><div class="btn-group">' +
 											'<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +											
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
@@ -566,19 +582,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {
 			if (region != null) {MC.setRegion(region);MC.setGameMode(mode);}
 			else {
-                // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);
-				
-				
+                // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);		
 				//this makes game rejoin
-				
-				
-				
-				
-               // MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);
-            
-			
-			
-			
+               // MC.setRegion(localStorage.getItem("location2"));MC.setGameMode(previousMode);         		
 			}
         }
         if (searchStr != null && searchStr) {
@@ -767,6 +773,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         }
     });		
 	
+	    $('*[data-itr="page_play"]').click(function () {
+        ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);
+        ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
+        ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
+    });
+    // load tooltips
+    
+	
 	    $("#topright").click(function () {localStorage.setItem("ComPosition", 0);toastr.remove();toastr.options = {"positionClass": "toast-top-right"}}); 
         $("#topleft").click(function () {localStorage.setItem("ComPosition", 1);toastr.remove();toastr.options = {"positionClass": "toast-top-left"}}); 
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
@@ -774,7 +788,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		$("#ChatBtn").click(function () {chatfunction();});
 		$("#Cutnames").click(function () {$("#copyGameNames").click();});
 	
-	//$('*[data-itr="page_play"]').click(function () {//       ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);//      ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);//      ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);//   });//if (showToken == "true" || showPlayer == null) { $("#cur-tk-hud").show(); $("#showCurTKBtn").click(); }// if (showPlayer == "true" || showPlayer == null) { $("#showPlayerBtn").click(); }
 
     // fix main menu placement after stats
     $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
@@ -861,8 +874,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		playerMsg=getParameterByName("player", MSGCOMMANDS);
 		commandMsg=getParameterByName("com", MSGCOMMANDS);
 		otherMsg=getParameterByName("do", MSGCOMMANDS);
-		$( ".toast.toast-success" ).text("");
-		$(".toast.toast-success").hide();
+//		$( ".toast.toast-success" ).text("");
+//		$(".toast.toast-success").hide();
+		$(".toast.toast-success").remove();
 		//without confirmation
 			if(commandMsg=="Team5"){
 				$("#top5-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });	
@@ -962,7 +976,16 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#teambPicture').val()!=""){setteambgname();}
 	document.getElementById("canvasPicture").value =localStorage.getItem("canvasbimg");
 	if($('#canvasPicture').val()!=""){setcanvasbgname();}
-	
+	document.getElementById("leadbtext").value =localStorage.getItem("leadbtext");
+	if($('#leadbtext').val()!=""){setleadbtext();}
+	document.getElementById("teambtext").value =localStorage.getItem("teambtext");
+	if($('#teambtext').val()!=""){setteambtext();}
+	document.getElementById("imgUrl").value =localStorage.getItem("imgUrl");
+	if($('#imgUrl').val()!=""){setimgUrl();}	
+	document.getElementById("imgHref").value =localStorage.getItem("imgHref");
+	if($('#imgHref').val()!=""){setimgHref();}	
+	document.getElementById("minbtext").value =localStorage.getItem("minbtext");
+	if($('minbtext').val()!=""){setminbtext();}		
 	document.getElementById("pic1url").value =localStorage.getItem("pic1urlimg");
 	if($('#pic1url').val()!=""){setpic1url();}	
 	document.getElementById("pic2url").value =localStorage.getItem("pic2urlimg");
@@ -1537,6 +1560,12 @@ localStorage.setItem("minimapbckimg", minimapbckimg);
 $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({ opacity: 0.8 });
 }
 
+function setminbtext(){ var minbtext=$("#minbtext").val();
+localStorage.setItem("minbtext", minbtext);
+var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);
+}
+
 function setleadbgname(){ leadbimg=$("#leadbPicture").val();
 localStorage.setItem("leadbimg", leadbimg);
 $("#leaderboard-hud").css('background-image', 'url("' + leadbimg + '")').css({ opacity: 0.8 });
@@ -1550,6 +1579,25 @@ function setcanvasbgname(){ canvasbimg=$("#canvasPicture").val();
 localStorage.setItem("canvasbimg", canvasbimg);
 $("#canvas").css('background-image', 'url("' + canvasbimg + '")').css({ opacity: 1 });
 }
+
+function setleadbtext(){ leadbtext=$("#leadbtext").val();
+localStorage.setItem("leadbtext", leadbtext);
+$("#leaderboard-hud > h4").text(leadbtext);
+}
+
+function setteambtext(){ teambtext=$("#teambtext").val();
+localStorage.setItem("teambtext", teambtext);
+$("#top5-hud > h5").text(teambtext); 
+}
+
+function setimgUrl(){ imgUrl=$("#imgUrl").val();
+localStorage.setItem("imgUrl", imgUrl);
+}
+
+function setimgHref(){ imgHref=$("#imgHref").val();
+localStorage.setItem("imgHref", imgHref);
+}
+
 
 function setpic1url(){ pic1urlimg=$("#pic1url").val();
 localStorage.setItem("pic1urlimg", pic1urlimg);
@@ -1571,7 +1619,7 @@ function setpic5url(){ pic5urlimg=$("#pic5url").val();
 localStorage.setItem("pic5urlimg", pic5urlimg);
 return pic5urlimg;
 }
-function setpic6url(){ pic5urlimg=$("#pic5url").val();
+function setpic6url(){ pic6urlimg=$("#pic6url").val();
 localStorage.setItem("pic6urlimg", pic6urlimg);
 return pic6urlimg;
 }
@@ -1650,7 +1698,9 @@ function testmessage(){
 
 function newsubmit(){
 //if (searchSip==null){ 
-MC.setNick(document.getElementById('nick').value);return false;
+MC.setNick(document.getElementById('nick').value);
+//setTimeout(function (){$('#quality').val()},1500);
+return false;
 //else if (searchSip!=null){	
 //realmode = getGameMode();
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
@@ -1727,18 +1777,30 @@ function changePicFun(){
 	$("#leadbPicture").hide();
 	$("#teambPicture").hide();
 	$("#canvasPicture").hide();
+	$("#leadbtext").hide();
+	$("#teambtext").hide();
+	$("#imgUrl").hide();
+	$("#imgHref").hide();
+	$("#minbtext").hide();
 		if ($("#backgroundPic").val()==1){
-			$("#minimapPicture").show();	
+			$("#minimapPicture").show();
+			$("#minbtext").show();			
 		}
 		if ($("#backgroundPic").val()==2){
-			$("#leadbPicture").show();	
+			$("#leadbPicture").show();
+			$("#leadbtext").show();
 		}
 		if ($("#backgroundPic").val()==3){
-			$("#teambPicture").show();	
+			$("#teambPicture").show();
+			$("#teambtext").show();
 		}
 		if ($("#backgroundPic").val()==4){
 			$("#canvasPicture").show();	
 		}
+		if ($("#backgroundPic").val()==5){
+			$("#imgUrl").show();
+			$("#imgHref").show();
+		}		
 }
 
 function changePhotoFun(){
@@ -1805,7 +1867,7 @@ function displayTimer() {
 
 	// minutes
 	if(T.difference > 60000) {
-		minutes = Math.floor(T.difference/60000);
+		minutes = Math.floor11(T.difference/60000);1
 		if (minutes > 60) {
 			minutes = minutes % 60;
 		}
@@ -1857,11 +1919,12 @@ function clearTimer() {
 }
 function ShowSIPurl(){
 	$(".form-group.clearfix").show();$(".form-group").show();
-	
+	$("#create-party-btn-2").hide();
+	setTimeout(function (){$('#quality').val()},4000);
 	setTimeout(function () {
 			if (mode!=":party"){
 			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
-			$("#create-party-btn-2").hide(); 
+			 
 }, 2500)}	
 
 
@@ -1873,8 +1936,8 @@ function msgcommand5f(){commandMsg="Youtube"; otherMsg="";dosendmsgcommand();}
 function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
 function dosendmsgcommand(){
-KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+ogario.playerNick+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);},50);
-}
+KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+$("#nick").val()+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+
 
 function openhelper(){
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendhelper.js";$("body").append(s);
@@ -1891,12 +1954,12 @@ MC.onPlayerDeath=function(){
 	}, 100);
 }}
 
-function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
-function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
-function sendicon3(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic3urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
-function sendicon4(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic4urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
-function sendicon5(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic5urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
-function sendicon6(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic6urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);},50);}
+function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon3(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic3urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon4(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic4urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon5(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic5urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon6(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic6urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
 
 function setpic1data(){ localStorage.setItem("pic1dataimg", $("#pic1data").val())
 	$("#sendicon1").attr("data-original-title", $("#pic1data").val());}
