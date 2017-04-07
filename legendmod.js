@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.004 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.005 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -36,6 +36,7 @@ var pic4dataimg="Death!";
 var pic5dataimg="Relax!";
 var pic6dataimg="Legend Mod!";
 var lastIP="";
+var minbtext = localStorage.getItem("minbtext");
 var leadbtext= localStorage.getItem("leadbtext");
 var teambtext= localStorage.getItem("teambtext");
 var imgUrl= localStorage.getItem("imgUrl");
@@ -62,6 +63,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
+
 var realmode="";
 var token="";
 var messageone=1;
@@ -120,22 +122,26 @@ setTimeout(function () {
 //      if (this.value == ":party") { $("#create-party-btn-2").click(); }
 //		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
+var minbtext2=minbtext;	
+if(minbtext==null||minbtext==""){
+	minbtext = "Legend Mod/Locked";
+	minbtext2 = "Legend Mod";
+	}
 	
-	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText("Legend Mod/Locked",c.width/2,22)}else ctx.fillText("Legend Mod",c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
@@ -221,13 +227,14 @@ setTimeout(function () {
 											'</select>' +
 
 											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
+											'<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
 											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();">' +
-											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
-											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +
 											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
+											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
 											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
-											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();">' +
-											'<input id="imgHref" class="form-control" placeholder="Main Banner Link" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();">' +											
+											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +						
+											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();">' +
+											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();">' +											
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
@@ -1551,6 +1558,12 @@ function exitFullscreen() {if(document.exitFullscreen) {document.exitFullscreen(
 function setminbgname(){ minimapbckimg=$("#minimapPicture").val();
 localStorage.setItem("minimapbckimg", minimapbckimg);
 $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({ opacity: 0.8 });
+}
+
+function setminbtext(){ var minbtext=$("#minbtext").val();
+localStorage.setItem("minbtext", minbtext);
+var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="14px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);
 }
 
 function setleadbgname(){ leadbimg=$("#leadbPicture").val();
