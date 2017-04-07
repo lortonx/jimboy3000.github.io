@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.006 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.007 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -63,7 +63,6 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
-
 var realmode="";
 var token="";
 var messageone=1;
@@ -1780,8 +1779,10 @@ function changePicFun(){
 	$("#teambtext").hide();
 	$("#imgUrl").hide();
 	$("#imgHref").hide();
+	$("#minbtext").hide();
 		if ($("#backgroundPic").val()==1){
-			$("#minimapPicture").show();	
+			$("#minimapPicture").show();
+			$("#minbtext").show();			
 		}
 		if ($("#backgroundPic").val()==2){
 			$("#leadbPicture").show();
