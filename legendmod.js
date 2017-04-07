@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -69,7 +69,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=4; // the version 1.1-> 1.11
+var semimodVersion=5; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -221,7 +221,7 @@ setTimeout(function () {
 											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 4px; display: none;" onblur="setcanvasbgname();">' +
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual Message Icons</span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0; width: 34%;"><span class="title" style="">Manual Message Icons</span>' +
 											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="">' +
 											'<option value="1" data-itr="">Manual Message Icon 1</option>' +
 											'<option value="2" data-itr="">Manual Message Icon 2</option>' +
@@ -230,20 +230,15 @@ setTimeout(function () {
 											'<option value="5" data-itr="">Manual Message Icon 5</option>' +
 											'<option value="6" data-itr="">Manual Message Icon 6</option>' +											
 											'</select>' +
-											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 4px; display: block;" onblur="setpic1url();">' +
-											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic2url();">' +
-											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic3url();">' +
-											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic4url();">' +
-											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic5url();">' +
-											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic6url();">' +
+											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="width: 65%; margin-top: 0px; display: block;" onblur="setpic1data();">' +
+											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic2data();">' +
+											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic3data();">' +
+											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic4data();">' +
+											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic5data();">' +
+											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic6data();">' +
 											'</div>' +
-											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 0px; display: block;" onblur="setpic1data();">' +
-											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic2data();">' +
-											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic3data();">' +
-											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic4data();">' +
-											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic5data();">' +
-											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 0px; display: none;" onblur="setpic6data();">' +
-											'</div>' +
+
+
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position</span><div class="btn-group">' +
 											'<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
@@ -767,6 +762,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         }
     });		
 	
+	    $('*[data-itr="page_play"]').click(function () {
+        ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);
+        ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
+        ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
+    });
+    // load tooltips
+    
+	
 	    $("#topright").click(function () {localStorage.setItem("ComPosition", 0);toastr.remove();toastr.options = {"positionClass": "toast-top-right"}}); 
         $("#topleft").click(function () {localStorage.setItem("ComPosition", 1);toastr.remove();toastr.options = {"positionClass": "toast-top-left"}}); 
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
@@ -774,7 +777,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		$("#ChatBtn").click(function () {chatfunction();});
 		$("#Cutnames").click(function () {$("#copyGameNames").click();});
 	
-	//$('*[data-itr="page_play"]').click(function () {//       ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);//      ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);//      ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);//   });//if (showToken == "true" || showPlayer == null) { $("#cur-tk-hud").show(); $("#showCurTKBtn").click(); }// if (showPlayer == "true" || showPlayer == null) { $("#showPlayerBtn").click(); }
 
     // fix main menu placement after stats
     $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
@@ -861,8 +863,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		playerMsg=getParameterByName("player", MSGCOMMANDS);
 		commandMsg=getParameterByName("com", MSGCOMMANDS);
 		otherMsg=getParameterByName("do", MSGCOMMANDS);
-		$( ".toast.toast-success" ).text("");
-		$(".toast.toast-success").hide();
+//		$( ".toast.toast-success" ).text("");
+//		$(".toast.toast-success").hide();
+		$(".toast.toast-success").remove();
 		//without confirmation
 			if(commandMsg=="Team5"){
 				$("#top5-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });	
@@ -1874,7 +1877,7 @@ function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
 function dosendmsgcommand(){
 KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+$("#nick").val()+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-}
+
 
 function openhelper(){
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendhelper.js";$("body").append(s);
