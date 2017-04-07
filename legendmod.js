@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -261,7 +261,7 @@ setTimeout(function () {
 											'</div></div>' +
 
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position</span><div class="btn-group">' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position:  </span><div class="btn-group">' +
 											'<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +											
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
@@ -1698,7 +1698,9 @@ function testmessage(){
 
 function newsubmit(){
 //if (searchSip==null){ 
-MC.setNick(document.getElementById('nick').value);return false;
+MC.setNick(document.getElementById('nick').value);
+//setTimeout(function (){$('#quality').val()},1500);
+return false;
 //else if (searchSip!=null){	
 //realmode = getGameMode();
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
@@ -1918,6 +1920,7 @@ function clearTimer() {
 function ShowSIPurl(){
 	$(".form-group.clearfix").show();$(".form-group").show();
 	$("#create-party-btn-2").hide();
+	setTimeout(function (){$('#quality').val()},2000);
 	setTimeout(function () {
 			if (mode!=":party"){
 			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
