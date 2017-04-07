@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.004 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.005 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -215,10 +215,10 @@ setTimeout(function () {
 											'<option value="4" data-itr="">Main Canvas</option>' +
 											'</select>' +
 
-											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 0px; display: block;" onblur="setminbgname();">' +
-											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 0px; display: none;" onblur="setleadbgname();">' +
-											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 0px; display: none;" onblur="setteambgname();">' +
-											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 0px; display: none;" onblur="setcanvasbgname();">' +
+											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
+											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();">' +
+											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
+											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 6px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
