@@ -1,5 +1,5 @@
-7/*************
-* LEGEND modv2.008 by Jimboy3100   email:jimboy3100@hotmail.com
+/*************
+* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -215,6 +215,7 @@ setTimeout(function () {
 											'<option value="2" data-itr="">Leaderboard</option>' +
 											'<option value="3" data-itr="">Teamboard</option>' +
 											'<option value="4" data-itr="">Main Canvas</option>' +
+											'<option value="4" data-itr="">Main Banner</option>' +
 											'</select>' +
 
 											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
@@ -223,6 +224,8 @@ setTimeout(function () {
 											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +
 											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
 											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
+											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon" value="" style="margin-top: 2px; display: none; " onblur="imgUrl();">' +
+											'<input id="imgHref" class="form-control" placeholder="Main Banner Link" value="" style="margin-top: 2px; display: none; " onblur="imgHref();">' +											
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
@@ -1578,6 +1581,17 @@ localStorage.setItem("teambtext", teambtext);
 $("#top5-hud > h5").text(teambtext); 
 }
 
+function setteambtext(){ teambtext=$("#teambtext").val();
+localStorage.setItem("teambtext", teambtext);
+$("#top5-hud > h5").text(teambtext); 
+}
+
+function setteambtext(){ teambtext=$("#teambtext").val();
+localStorage.setItem("teambtext", teambtext);
+$("#top5-hud > h5").text(teambtext); 
+}
+
+
 function setpic1url(){ pic1urlimg=$("#pic1url").val();
 localStorage.setItem("pic1urlimg", pic1urlimg);
 return pic1urlimg;
@@ -1756,6 +1770,8 @@ function changePicFun(){
 	$("#canvasPicture").hide();
 	$("#leadbtext").hide();
 	$("#teambtext").hide();
+	$("#imgUrl").hide();
+	$("#imgHref").hide();
 		if ($("#backgroundPic").val()==1){
 			$("#minimapPicture").show();	
 		}
@@ -1770,6 +1786,10 @@ function changePicFun(){
 		if ($("#backgroundPic").val()==4){
 			$("#canvasPicture").show();	
 		}
+		if ($("#backgroundPic").val()==5){
+			$("#imgUrl").show();
+			$("#imgHref").show();
+		}		
 }
 
 function changePhotoFun(){
@@ -1836,7 +1856,7 @@ function displayTimer() {
 
 	// minutes
 	if(T.difference > 60000) {
-		minutes = Math.floor(T.difference/60000);
+		minutes = Math.floor11(T.difference/60000);1
 		if (minutes > 60) {
 			minutes = minutes % 60;
 		}
@@ -1891,7 +1911,7 @@ function ShowSIPurl(){
 	
 	setTimeout(function () {
 			if (mode!=":party"){
-			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
+			history.pushState(stateObj, "page 2", "?18118sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
 			$("#create-party-btn-2").hide(); 
 }, 2500)}	
 
