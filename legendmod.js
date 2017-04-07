@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -868,8 +868,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		playerMsg=getParameterByName("player", MSGCOMMANDS);
 		commandMsg=getParameterByName("com", MSGCOMMANDS);
 		otherMsg=getParameterByName("do", MSGCOMMANDS);
-		$( ".toast.toast-success" ).text("");
-		$(".toast.toast-success").hide();
+//		$( ".toast.toast-success" ).text("");
+//		$(".toast.toast-success").hide();
+		$(".toast.toast-success").remove();
 		//without confirmation
 			if(commandMsg=="Team5"){
 				$("#top5-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({ opacity: 0.8 });	
@@ -1880,7 +1881,7 @@ function msgcommand5f(){commandMsg="Youtube"; otherMsg="";dosendmsgcommand();}
 function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
 function dosendmsgcommand(){
-KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+ogario.playerNick+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);},50);
+KeyEvent.simulate(13, 13);$("#message").val("Legend.Mod&?player="+$("#nick").val()+"&?com="+commandMsg+"&?do="+otherMsg);setTimeout(function (){KeyEvent.simulate(13, 13);},50);
 }
 
 function openhelper(){
