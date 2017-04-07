@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -767,6 +767,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         }
     });		
 	
+	    $('*[data-itr="page_play"]').click(function () {
+        ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);
+        ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
+        ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
+    });
+    // load tooltips
+    
+	
 	    $("#topright").click(function () {localStorage.setItem("ComPosition", 0);toastr.remove();toastr.options = {"positionClass": "toast-top-right"}}); 
         $("#topleft").click(function () {localStorage.setItem("ComPosition", 1);toastr.remove();toastr.options = {"positionClass": "toast-top-left"}}); 
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
@@ -774,7 +782,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		$("#ChatBtn").click(function () {chatfunction();});
 		$("#Cutnames").click(function () {$("#copyGameNames").click();});
 	
-	//$('*[data-itr="page_play"]').click(function () {//       ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);//      ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);//      ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);//   });//if (showToken == "true" || showPlayer == null) { $("#cur-tk-hud").show(); $("#showCurTKBtn").click(); }// if (showPlayer == "true" || showPlayer == null) { $("#showPlayerBtn").click(); }
 
     // fix main menu placement after stats
     $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
