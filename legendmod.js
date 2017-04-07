@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.003 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.004 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1902,11 +1902,11 @@ function clearTimer() {
 }
 function ShowSIPurl(){
 	$(".form-group.clearfix").show();$(".form-group").show();
-	
+	$("#create-party-btn-2").hide();
 	setTimeout(function () {
 			if (mode!=":party"){
 			history.pushState(stateObj, "page 2", "?18118sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
-			$("#create-party-btn-2").hide(); 
+			 
 }, 2500)}	
 
 
