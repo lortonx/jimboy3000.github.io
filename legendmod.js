@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -230,13 +230,6 @@ setTimeout(function () {
 											'<option value="5" data-itr="">Manual Message Icon 5</option>' +
 											'<option value="6" data-itr="">Manual Message Icon 6</option>' +											
 											'</select>' +
-											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="width: 65%; margin-top: 0px; display: block;" onblur="setpic1data();">' +
-											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic2data();">' +
-											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic3data();">' +
-											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic4data();">' +
-											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic5data();">' +
-											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic6data();">' +
-											'</div>' +
 											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 4px; display: block;" onblur="setpic1url();">' +
 											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic2url();">' +
 											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic3url();">' +
@@ -244,6 +237,14 @@ setTimeout(function () {
 											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic5url();">' +
 											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 4px; display: none;" onblur="setpic6url();">' +
 											'</div>' +
+											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="width: 65%; margin-top: 0px; display: block;" onblur="setpic1data();">' +
+											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic2data();">' +
+											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic3data();">' +
+											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic4data();">' +
+											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic5data();">' +
+											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="width: 65%; margin-top: 0px; display: none;" onblur="setpic6data();">' +
+											'</div>' +
+
 
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position</span><div class="btn-group">' +
