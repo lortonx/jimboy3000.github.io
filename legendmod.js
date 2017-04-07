@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.003 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1577,14 +1577,12 @@ localStorage.setItem("teambtext", teambtext);
 $("#top5-hud > h5").text(teambtext); 
 }
 
-function setimgUrl(){ teambtext=$("#imgUrl").val();
+function setimgUrl(){ imgUrl=$("#imgUrl").val();
 localStorage.setItem("imgUrl", imgUrl);
-
 }
 
-function setimgHref(){ setimgHref=$("#setimgHref").val();
+function setimgHref(){ imgHref=$("#imgHref").val();
 localStorage.setItem("imgHref", imgHref);
-
 }
 
 
