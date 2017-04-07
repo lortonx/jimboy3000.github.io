@@ -128,19 +128,19 @@ if(minbtext==null||minbtext==""){
 	}
 	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 9000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 10000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 11000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 12000);	
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext2,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
@@ -1563,7 +1563,7 @@ $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({ 
 function setminbtext(){ var minbtext=$("#minbtext").val();
 localStorage.setItem("minbtext", minbtext);
 var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext,c.width/2,22);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);
 }
 
 function setleadbgname(){ leadbimg=$("#leadbPicture").val();
