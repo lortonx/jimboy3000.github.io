@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -217,7 +217,7 @@ setTimeout(function () {
 											'<option value="2" data-itr="">Leaderboard</option>' +
 											'<option value="3" data-itr="">Teamboard</option>' +
 											'<option value="4" data-itr="">Main Canvas</option>' +
-											'<option value="4" data-itr="">Main Banner</option>' +
+											'<option value="5" data-itr="">Main Banner</option>' +
 											'</select>' +
 
 											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
