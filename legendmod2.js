@@ -1619,7 +1619,7 @@ function setpic5url(){ pic5urlimg=$("#pic5url").val();
 localStorage.setItem("pic5urlimg", pic5urlimg);
 return pic5urlimg;
 }
-function setpic6url(){ pic5urlimg=$("#pic5url").val();
+function setpic6url(){ pic6urlimg=$("#pic6url").val();
 localStorage.setItem("pic6urlimg", pic6urlimg);
 return pic6urlimg;
 }
