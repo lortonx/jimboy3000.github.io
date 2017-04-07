@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.038 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -221,8 +221,8 @@ setTimeout(function () {
 											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 4px; display: none;" onblur="setcanvasbgname();">' +
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0; width: 34%;"><span class="title" style="">Manual Message Icons</span>' +
-											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="">' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 6px 0 6px 0;"><span class="title" style="">Manual Message Icons</span>' +
+											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 34%" >' +
 											'<option value="1" data-itr="">Manual Message Icon 1</option>' +
 											'<option value="2" data-itr="">Manual Message Icon 2</option>' +
 											'<option value="3" data-itr="">Manual Message Icon 3</option>' +
