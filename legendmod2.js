@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.034 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -81,7 +81,8 @@ var MSGCOMMANDS2;
 var playerMsg="";	
 var commandMsg="";
 var otherMsg="";
-
+var rotateminimap=0;
+var rotateminimapfirst=0;
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
@@ -646,8 +647,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP).show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
 		else {localStorage.setItem("IPBtn", false);$("#cur-tk-hud").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show(); $(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
-		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
+		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show(); $(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
+		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide(); $("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>Hide XP BAR');}
 		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>Show XP BAR');}} );  
@@ -678,6 +679,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {		
 			$("#cur-tk-hud").hide();
 			$("#shortcuts-hud").hide();
+			$("#rotate-hud").hide();
 			$("#exp-bar").hide();
 			$("#time-hud").hide();
 			$(".input-group.skin.colorpicker-element").hide();
@@ -692,6 +694,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {
 			$("#cur-tk-hud").show();
 			$("#shortcuts-hud").show();
+			$("#rotate-hud").show();
 			$("#exp-bar").show();
 			$("#time-hud").show();
 			$(".input-group.skin.colorpicker-element").show();
@@ -728,6 +731,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
 	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
 	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+		
+	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 18%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
+	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip" data-placement="left" data-original-title="Rotate Minimap Sectors Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
+	'<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 49%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-placement="left" data-original-title="Rotate Minimap Sectors Right"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
 	
     $("#minimap-hud").prepend('<div id="images-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+
 	'<button id="sendicon1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendicon11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>'+
@@ -852,6 +859,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
     $("#cur-tk-hud").hide();
 	$("#shortcuts-hud").hide();
+	$("#rotate-hud").hide();	
 	$("#exp-bar").hide();
 	$("#time-hud").hide();
 	$("#LEGENDAds").hide();
@@ -1953,6 +1961,19 @@ MC.onPlayerDeath=function(){
 	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
 	}, 100);
 }}
+
+function rotateminimapsectors(){
+		rotateminimap=rotateminimap+1;
+		if (rotateminimap==4){rotateminimap=0};
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendrotateminimap.js";$("body").append(s);
+		return rotateminimap;
+}
+function rotateminimapsectors2(){
+	if (rotateminimap==0){rotateminimap=4};
+		rotateminimap=rotateminimap-1;		
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendrotateminimap.js";$("body").append(s);
+		return rotateminimap;
+}
 
 function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
 function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
