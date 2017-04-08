@@ -11,6 +11,7 @@
 // @updateURL    https://jimboy3000.github.io/legendmod.user.js
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
+// @grant        GM_registerMenuCommand
 // @connect      agar.io
 // ==/UserScript==
 
