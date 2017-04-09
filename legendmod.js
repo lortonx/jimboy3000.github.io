@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1652,11 +1652,11 @@ localStorage.setItem("discwebhook2", discwebhook2);
 setTimeout(function () { 
 var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";$("body").append(s);
  }, 1000);
-return discwebhook1;
+//return discwebhook1;
 }
 function discwebhook2(){ discwebhook2=$("#discwebhook2").val();
 localStorage.setItem("discwebhook2", discwebhook2);
-return discwebhook2;
+//return discwebhook2;
 }
 
 
