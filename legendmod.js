@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1031,9 +1031,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
 	if($('#pic6data').val()!=""){setpic6data();}	
 	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
-	if($('#discwebhook1').val()!=""||$('#discwebhook1').val()!=null){setdiscwebhook1();}
+	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
-	if($('#discwebhook2').val()!=""||$('#discwebhook2').val()!=null){setdiscwebhook2();}
+	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
 	}, 1500);		
 		if (searchSip!=null){	
 	//$("#create-party-btn-2").click();
@@ -1649,13 +1649,13 @@ return pic6urlimg;
 
 function setdiscwebhook1(){ discwebhook1=$("#discwebhook1").val();
 localStorage.setItem("discwebhook1", discwebhook1);
-if($('#discwebhook1').val()!=""||$('#discwebhook1').val()!=null){
+
 setTimeout(function () { 
 var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";$("body").append(s);
  }, 1000);
 //return discwebhook1;
 }
-}
+
 
 function setdiscwebhook2(){ discwebhook2=$("#discwebhook2").val();
 localStorage.setItem("discwebhook2", discwebhook2);
