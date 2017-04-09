@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -51,6 +51,7 @@ var TIMEBtn = localStorage.getItem("TIMEBtn");
 var MAINBBtn = localStorage.getItem("MAINBBtn");
 var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 var MANUIBtn = localStorage.getItem("MANUIBtn");
+// var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 var troll1Btn = localStorage.getItem("troll1Btn");
@@ -74,14 +75,15 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=5; // the version 1.1-> 1.11
+var semimodVersion=6; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
 var playerMsg="";	
 var commandMsg="";
 var otherMsg="";
-
+var rotateminimap=0;
+var rotateminimapfirst=0;
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
@@ -208,6 +210,7 @@ setTimeout(function () {
 											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
                                             '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
 											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
+//											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
 											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>Hide Everything</button>' +
 											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>Show Timer Calc.</button>' +
 											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>Edit Names</button>' +
@@ -267,6 +270,10 @@ setTimeout(function () {
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
 											'<button id="bottomleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'</div></div>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Discord Webhook 2 Url (for sending SIP)  </span>'+
+											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="discwebhook1();">' +
+											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="discwebhook2();">' +
+											'</div>' +
 											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
@@ -646,8 +653,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP).show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
 		else {localStorage.setItem("IPBtn", false);$("#cur-tk-hud").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show(); $(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
-		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
+		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show;$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
+		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>Hide XP BAR');}
 		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>Show XP BAR');}} );  
@@ -663,7 +670,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
       $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MANUIBtn", true);$(".input-group.skin.colorpicker-element").show();
 		$(this).html('<i class="fa fa-minus"></i>Hide Manual Skins');}else {localStorage.setItem("MANUIBtn", false);$(".input-group.skin.colorpicker-element").hide();$(this).html('<i class="fa fa-minus"></i>Show Manual Skins');}} ); 
-      $("#YoutubeAutoBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+//      $("#RotationBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+//		if (checked) {localStorage.setItem("RotationBtn", true);$("#rotate-hud").show();
+//		$(this).html('<i class="fa fa-repeat"></i>Hide Rotation Btns');}else {localStorage.setItem("RotationBtn", false);$("#rotate-hud").hide();$(this).html('<i class="fa fa-repeat"></i>Show Rotation Btns');}} );  
+	  
+	  $("#YoutubeAutoBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {
 		localStorage.setItem("YoutubeAutoBtn", true);
 		setTimeout(function () {$("#playerBtn").click();}, 3000);
@@ -678,6 +689,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {		
 			$("#cur-tk-hud").hide();
 			$("#shortcuts-hud").hide();
+			$("#rotate-hud").hide();
 			$("#exp-bar").hide();
 			$("#time-hud").hide();
 			$(".input-group.skin.colorpicker-element").hide();
@@ -692,6 +704,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {
 			$("#cur-tk-hud").show();
 			$("#shortcuts-hud").show();
+			$("#rotate-hud").show();
 			$("#exp-bar").show();
 			$("#time-hud").show();
 			$(".input-group.skin.colorpicker-element").show();
@@ -728,6 +741,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
 	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
 	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+		
+	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
+//	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
+	'<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
 	
     $("#minimap-hud").prepend('<div id="images-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+
 	'<button id="sendicon1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendicon11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>'+
@@ -852,6 +869,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
     $("#cur-tk-hud").hide();
 	$("#shortcuts-hud").hide();
+	$("#rotate-hud").hide();	
 	$("#exp-bar").hide();
 	$("#time-hud").hide();
 	$("#LEGENDAds").hide();
@@ -941,6 +959,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		$("#MAINBTBtn").click();
 		$("#XPBtn").click();
 		$("#MANUIBtn").click();
+//		$("#RotationBtn").click();
 		}, 1500);
 	}
 	
@@ -955,6 +974,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
 	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
 	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
+//	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
 	if (YoutubeAutoBtn  == "true") { $("#YoutubeAutoBtn").click(); }
 	if (XPBtn  == "true") { $("#XPBtn").click(); }
 	if (TIMEcalBtn == "true") { $("#TIMEcalBtn").click(); }
@@ -1953,6 +1973,18 @@ MC.onPlayerDeath=function(){
 	if(realmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
 	}, 100);
 }}
+
+function rotateminimapsectors(){
+	var c=document.getElementById("minimap");var ctx = c.getContext("2d");
+ctx.rotate(90 * Math.PI / 180);
+var a=$("#minimap").height()-$("#minimap").width();
+ctx.translate(a, -$("#minimap").height());
+//		rotateminimap=rotateminimap+1;
+//		if (rotateminimap==4){rotateminimap=0};
+//	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendrotateminimap.js";$("body").append(s);
+//		return rotateminimap;
+}
+
 
 function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
 function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
