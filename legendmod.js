@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -271,8 +271,8 @@ setTimeout(function () {
 											'<button id="bottomleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'</div></div>' +
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Discord Webhook 2 Url (for sending SIP)  </span>'+
-											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="discwebhook1();">' +
-											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="discwebhook2();">' +
+											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for fuction to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="discwebhook1();">' +
+											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="discwebhook2();">' +
 											'</div>' +
 											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
 
@@ -653,7 +653,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP).show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
 		else {localStorage.setItem("IPBtn", false);$("#cur-tk-hud").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show;$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
+		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
 		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>Hide XP BAR');}
@@ -1030,8 +1030,11 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5data').val()!=""){setpic5data();}	
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
 	if($('#pic6data').val()!=""){setpic6data();}	
-	
-	}, 1000);		
+	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
+	if($('#discwebhook1').val()!=""||$('#discwebhook1').val()!=null){discwebhook1();}
+	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
+	if($('#discwebhook2').val()!=""||$('#discwebhook1').val()!=null){discwebhook2();}
+	}, 1500);		
 		if (searchSip!=null){	
 	//$("#create-party-btn-2").click();
 	$("#hidendivtoken").show();
@@ -1643,7 +1646,18 @@ function setpic6url(){ pic6urlimg=$("#pic6url").val();
 localStorage.setItem("pic6urlimg", pic6urlimg);
 return pic6urlimg;
 }
-
+function discwebhook1(){ discwebhook1=$("#discwebhook1").val();
+localStorage.setItem("discwebhook1", discwebhook1);
+localStorage.setItem("discwebhook2", discwebhook2);
+setTimeout(function () { 
+var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";$("body").append(s);
+ }, 1000);
+return discwebhook1;
+}
+function discwebhook2(){ discwebhook2=$("#discwebhook2").val();
+localStorage.setItem("discwebhook2", discwebhook2);
+return discwebhook2;
+}
 
 
 function getEmbedUrl(url) {
