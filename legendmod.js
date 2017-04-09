@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.037 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.038 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1669,7 +1669,7 @@ if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")){
 localStorage.setItem("discwebhook2", discwebhook2);
 }
 else{
-	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
+	if (containsrealwebhook==""){localStorage.setItem("discwebhook2", discwebhook2);}
 	else{
 	toastr["error"]("This is valid Discord Webhook address").css("width", "210px");}
 //return discwebhook2;
