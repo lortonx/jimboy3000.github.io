@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.038 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.039 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -270,6 +270,10 @@ setTimeout(function () {
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
 											'<button id="bottomleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'</div></div>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Discord Webhook 2 Url (for sending SIP)  </span>'+
+											'<input id="discwebhook1" class="form-control" placeholder="Webhook 1" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: block;" onblur="discwebhook1();">' +
+											'<input id="discwebhook2" class="form-control" placeholder="Webhook 2" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: block;" onblur="discwebhook2();">' +
+											'</div>' +
 											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
