@@ -1,6 +1,7 @@
 https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
 
 
+The cool down time is calculated as 30 seconds plus 2.33% of the cells mass (e.g. if mass is 50, the cool down time is 31 seconds).
 
 var canvas = document.getElementById("minimap-sectors")
 var ctx = canvas.getContext('2d');
