@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.038 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.039 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1659,7 +1659,7 @@ var s = document.createElement("script");s.type = "text/javascript";s.src = "htt
 else{
 	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
 	else{
-	toastr["error"]("This is valid Discord Webhook address").css("width", "210px");}
+	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
 //return discwebhook1;
 }}
 
@@ -1671,7 +1671,7 @@ localStorage.setItem("discwebhook2", discwebhook2);
 else{
 	if (containsrealwebhook==""){localStorage.setItem("discwebhook2", discwebhook2);}
 	else{
-	toastr["error"]("This is valid Discord Webhook address").css("width", "210px");}
+	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
 //return discwebhook2;
 }}
 
