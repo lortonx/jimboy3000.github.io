@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.041 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -270,9 +270,9 @@ setTimeout(function () {
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
 											'<button id="bottomleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'</div></div>' +
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Discord Webhook 2 Url (for sending SIP)  </span>'+
-											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="discwebhook1();">' +
-											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="discwebhook2();">' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>'+
+											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for fuction to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
+											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
 											'</div>' +
 											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
 
@@ -347,7 +347,7 @@ setTimeout(function () {
 						  
      $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
                                  '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
-                                 '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token">Copy</a>' +
+                                 '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
                                  '<a id="reconnectBtn" class="btn btn-info btn-sm icon-loop2" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
                                  'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; margin-top: 0px; border: none;"></a>' +
 
@@ -425,7 +425,7 @@ setTimeout(function () {
 		'Times Used: '+timesopened+'</div>');
  
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2.2.3, Module:3.9.3</a>');
+        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2.2.3, Module:3.10.0</a>');
     // donate button
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -653,7 +653,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP).show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
 		else {localStorage.setItem("IPBtn", false);$("#cur-tk-hud").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show;$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
+		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
 		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>Hide XP BAR');}
@@ -818,7 +818,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
     //50 maxlength
     $("#nick").attr('maxlength', 50).attr('placeholder','Name').tooltip({title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users", placement: "bottom"});
-	$("#clantag").attr('placeholder','Password').tooltip({title: "Insert the password of the Team / Clan, for ingame communication", placement: "left"}); 
+	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public , or insert password of Clan, or use it as Tag", placement: "left"}); 
 	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
 	$("#gamemode").tooltip({title: "Gameplay, for party change region first", placement: "top"}); 
@@ -1030,8 +1030,11 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5data').val()!=""){setpic5data();}	
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
 	if($('#pic6data').val()!=""){setpic6data();}	
-	
-	}, 1000);		
+	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
+	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
+	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
+	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
+	}, 1500);		
 		if (searchSip!=null){	
 	//$("#create-party-btn-2").click();
 	$("#hidendivtoken").show();
@@ -1644,7 +1647,33 @@ localStorage.setItem("pic6urlimg", pic6urlimg);
 return pic6urlimg;
 }
 
+function setdiscwebhook1(){ discwebhook1=$("#discwebhook1").val();
+var containsrealwebhook=$('#discwebhook1').val();
 
+if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")){
+	localStorage.setItem("discwebhook1", discwebhook1);
+setTimeout(function () { 
+var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";$("body").append(s);
+ }, 1000);
+}
+else{
+	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
+	else{
+	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
+//return discwebhook1;
+}}
+
+function setdiscwebhook2(){ discwebhook2=$("#discwebhook2").val();
+var containsrealwebhook=$('#discwebhook2').val();
+if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")){
+localStorage.setItem("discwebhook2", discwebhook2);
+}
+else{
+	if (containsrealwebhook==""){localStorage.setItem("discwebhook2", discwebhook2);}
+	else{
+	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
+//return discwebhook2;
+}}
 
 function getEmbedUrl(url) {
     url = url.trim();
