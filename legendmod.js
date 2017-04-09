@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -1648,17 +1648,31 @@ return pic6urlimg;
 }
 
 function setdiscwebhook1(){ discwebhook1=$("#discwebhook1").val();
-localStorage.setItem("discwebhook1", discwebhook1);
+var containsrealwebhook=$('#discwebhook1').val();
 
+if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")){
+	localStorage.setItem("discwebhook1", discwebhook1);
 setTimeout(function () { 
 var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";$("body").append(s);
  }, 1000);
+}
+else{
+	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
+	else{
+	toastr["error"]("This is valid Discord Webhook address").css("width", "210px");}
 //return discwebhook1;
 }
 
 
 function setdiscwebhook2(){ discwebhook2=$("#discwebhook2").val();
+var containsrealwebhook=$('#discwebhook2').val();
+if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")){
 localStorage.setItem("discwebhook2", discwebhook2);
+}
+else{
+	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
+	else{
+	toastr["error"]("This is valid Discord Webhook address").css("width", "210px");}
 //return discwebhook2;
 }
 
