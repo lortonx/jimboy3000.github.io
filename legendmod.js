@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.035 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.036 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
    	$('#gamemode').on('change', function () {
@@ -734,7 +734,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		
 	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 18%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
 	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
-	'<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 49%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate Minimap Right"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
+	'<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 49%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate Right"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
 	
     $("#minimap-hud").prepend('<div id="images-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+
 	'<button id="sendicon1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendicon11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>'+
