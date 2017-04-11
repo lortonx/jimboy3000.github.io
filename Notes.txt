@@ -1,6 +1,15 @@
 https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
 
-$("#stats-hud").text().indexOf("/");
+ar massofplayer
+var masssmall=$("#stats-hud").text().indexOf("/");
+if ($("#stats-hud").text().charAt(masssmall-2)==" "){
+}
+ogario.playerMass
+ogario.playerCellsMass
+ogario.playerCells
+ogario.playerCellsMass.toString();
+ogario.playerCellsMass[0]
+.length;
 The cool down time is calculated as 30 seconds plus 2.33% of the cells mass (e.g. if mass is 50, the cool down time is 31 seconds).
 
 var canvas = document.getElementById("minimap-sectors")
