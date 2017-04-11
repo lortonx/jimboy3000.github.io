@@ -1,5 +1,61 @@
 https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
 
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+	timing=setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+
+        if (--timer < 0) {
+            clearInterval(timing);
+        }
+    }, 1000);
+}
+
+
+
+ function starttimercountdown(){
+	 
+     var fiveMinutes = 30+ogario.playerCellsMass[0]*0.0233 ,
+        display = $('#timer');
+    startTimer(fiveMinutes, display);
+ }
+ 
+ 
+ 
+
+
+timing2=setInterval("pollForVariableChange()", 200);
+var hasseen=0;
+var tmp;
+function pollForVariableChange() {
+	if ( hasseen==0){
+	 tmp = ogario.playerCellsMass.length.toString();
+    if (tmp =="2") {
+        starttimercountdown();
+		clearInterval(timing2);
+		//return hasseen=1;
+    }
+    tmp = "1";
+}
+}
+ 
+---------------
+
+
+
+
+
+
+
+
+
 ar massofplayer
 var masssmall=$("#stats-hud").text().indexOf("/");
 if ($("#stats-hud").text().charAt(masssmall-2)==" "){
