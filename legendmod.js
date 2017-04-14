@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.054 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.055 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -102,6 +102,7 @@ else{ modebetter2=mode }
 
 loadericon();
 
+
 setTimeout(function () {
 if (searchSip==null){
 (function(a, c) {
@@ -112,7 +113,7 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit" id="connect2" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
                 a.core.connect($("#server").val())
 				setTimeout(function (){realmode=getGameMode();
@@ -132,6 +133,20 @@ if (searchSip==null){
 adres();
 })(window, window.jQuery);
 }
+}, 4000);
+
+setTimeout(function () {
+$("#connect2").click(function() {
+	$("#create-party-btn-2").click();
+	setTimeout(function () {
+	
+	$("#connect").click();
+	}, 5000);
+}
+}, 4500);
+
+
+setTimeout(function () {
 	
 //	$("body").show();	
 	MC.setQuality($('#quality').val());	
