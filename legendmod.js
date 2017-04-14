@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.042 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.043 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -103,7 +103,7 @@ else{ modebetter2=mode }
 loadericon();
 
 setTimeout(function () {
-
+if (searchSip==null){
 (function(a, c) {
     function r(a, d) {
         if (d) {
@@ -115,7 +115,7 @@ setTimeout(function () {
     }
 		// _x_start
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 59%;  display: inline-block; margin-right: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 25%; display: inline-block; margin-right: 5px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-right: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 25%; display: inline-block; margin-right: 5px">Connect</button>');
 
 			$("#connect").click(function() {
                 a.core.connect($("#server").val())
@@ -123,7 +123,7 @@ setTimeout(function () {
         })
 adres();
 })(window, window.jQuery);
-
+}
 	
 //	$("body").show();	
 	MC.setQuality($('#quality').val());	
