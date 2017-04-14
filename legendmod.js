@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.048 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.049 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=6; // the version 1.1-> 1.11
+var semimodVersion="7 BETA"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -112,7 +112,7 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 70%;  display: inline-block; margin-right: 2%"><button type="submit" id="connect" class="btn btn-primary" style="width: 25%; display: inline-block; margin-right: 5px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 70%;  display: inline-block; margin-right: 2%"><button type="submit" id="connect" class="btn btn-primary" style="width: 27%; display: inline-block; margin-right: 5px">Connect</button>');
 			$("#connect").click(function() {
                 a.core.connect($("#server").val())
 				setTimeout(function (){realmode=getGameMode();
@@ -121,7 +121,7 @@ if (searchSip==null){
         tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
 				$("#cur-tk-hud").text(" IP:" + tmz);}
 		if (realmode!=":party"){history.pushState(stateObj, "page 2", "?sip=" + tmz);}
-			MC.setQuality($('#quality').val());}, 2500);	
+			MC.setQuality($('#quality').val());}, 4000);	
             });
         })
 adres();
