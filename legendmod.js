@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.046 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.047 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -120,8 +120,8 @@ if (searchSip==null){
 				        var tmz=$("#server").val();
         tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
 				$("#cur-tk-hud").text(" IP:" + tmz);}
-		if (realmode!=":party"){
-			history.pushState(stateObj, "page 2", "?sip=" + tmz);}MC.setQuality($('#quality').val());return realmode;}, 1000);	
+		if (realmode!=":party"){history.pushState(stateObj, "page 2", "?sip=" + tmz);}
+			MC.setQuality($('#quality').val());}, 1500);	
             });
         })
 adres();
