@@ -1,8 +1,12 @@
 /*************
-* LEGEND modv2.041 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.042 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
+$("#region").on('change', function() { 
+  adres();
+});
    	$('#gamemode').on('change', function () {
+		adres();
       if (this.value == ":party") { $("#create-party-btn-2").click(); }
 		console.log( "Party stuff fixed" );})
 
@@ -99,6 +103,26 @@ else{ modebetter2=mode }
 loadericon();
 
 setTimeout(function () {
+
+(function(a, c) {
+    function r(a, d) {
+        if (d) {
+            var f = new Date;
+            f.setTime(f.getTime() + 864E5 * d);
+            f = "; expires=" + f.toGMTString()
+        } else f = "";
+        document.cookie = "agario_redirect=" + a + f + "; path=/"
+    }
+		// _x_start
+		$(function() {
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 59%;  display: inline-block; margin-right: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 25%; display: inline-block; margin-right: 5px">Connect</button>');
+
+			$("#connect").click(function() {
+                a.core.connect($("#server").val())
+            });
+        })
+adres();
+})(window, window.jQuery);
 
 	
 //	$("body").show();	
@@ -500,6 +524,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         toastr["error"]("Disconnected from server :(").css("width", "210px");
         appendSysLog("DISCONNECTED :(");
 		MC.reconnect();
+		adres();
     };
 
     // listen for player ban
@@ -1072,7 +1097,7 @@ function delay(time, func) {setTimeout(function () { func(); }, time);}
 
 function spectate() {hideMenu();$(".btn-spectate").click();}
 
-function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();appendLog(getLeaderboard());}
+function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();adres();appendLog(getLeaderboard());}
 
 function isValidIpAndPort(input) {
     var parts = input.split(":");
@@ -2034,3 +2059,18 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
+	
+	
+	
+function adres() {
+    var adrs = WebSocket.prototype.send;
+    window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
+          $("#server").val(this.url);
+
+        try {
+            adrs.apply(this, [b]), WebSocket.prototype.send = adrs
+        } catch (e) {
+            window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
+        }
+    }
+}
