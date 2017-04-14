@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.053 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.054 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -112,7 +112,7 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 75%;  display: inline-block; margin-right: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 5px; margin-top: 5px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
                 a.core.connect($("#server").val())
 				setTimeout(function (){realmode=getGameMode();
