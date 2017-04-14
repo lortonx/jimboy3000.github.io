@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.041 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.050 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -112,7 +112,7 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 70%;  display: inline-block; margin-right: 2%"><button type="submit" id="connect" class="btn btn-primary" style="width: 25%; display: inline-block; margin-right: 5px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 70%;  display: inline-block; margin-right: 2%"><button type="submit" id="connect" class="btn btn-primary" style="width: 27%; display: inline-block; margin-right: 5px">Connect</button>');
 			$("#connect").click(function() {
                 a.core.connect($("#server").val())
 				setTimeout(function (){realmode=getGameMode();
@@ -122,7 +122,10 @@ if (searchSip==null){
 				$("#cur-tk-hud").text(" IP:" + tmz);}
 		if (realmode!=":party"){
 			setTimeout(function () {
-			history.pushState(stateObj, "page 2", "?sip=" + tmz);}, 400);
+			history.pushState(stateObj, "page 2", "?sip=" + tmz);
+			},1200);
+		
+		}
 			MC.setQuality($('#quality').val());}, 1000);	
             });
         })
@@ -141,7 +144,7 @@ adres();
 	if (searchSip==null){
 		if (realmode!=":party"){
 	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}}
-	MC.setQuality($('#quality').val());return realmode;}, 200);
+	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
 	}, 5000);});},
