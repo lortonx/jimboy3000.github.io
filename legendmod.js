@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.057 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.058 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -96,7 +96,7 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
 	if (openthecommunication=="YES"){
 		$("#connect").click();
-		retun openthecommunication="NO";
+		return openthecommunication="NO";
 	}
 	
 }});
