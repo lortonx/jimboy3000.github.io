@@ -1,8 +1,12 @@
 /*************
-* LEGEND modv2.041 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.046 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
+$("#region").on('change', function() { 
+  adres();
+});
    	$('#gamemode').on('change', function () {
+		adres();
       if (this.value == ":party") { $("#create-party-btn-2").click(); }
 		console.log( "Party stuff fixed" );})
 
@@ -99,7 +103,30 @@ else{ modebetter2=mode }
 loadericon();
 
 setTimeout(function () {
-
+if (searchSip==null){
+(function(a, c) {
+    function r(a, d) {
+        if (d) {
+            var f = new Date;
+            f.setTime(f.getTime() + 864E5 * d);
+            f = "; expires=" + f.toGMTString()
+        } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
+		$(function() {
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 70%;  display: inline-block; margin-right: 2%"><button type="submit" id="connect" class="btn btn-primary" style="width: 25%; display: inline-block; margin-right: 5px">Connect</button>');
+			$("#connect").click(function() {
+                a.core.connect($("#server").val())
+				setTimeout(function (){realmode=getGameMode();
+				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+				        var tmz=$("#server").val();
+        tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
+				$("#cur-tk-hud").text(" IP:" + tmz);}
+		if (realmode!=":party"){
+			history.pushState(stateObj, "page 2", "?sip=" + tmz);}MC.setQuality($('#quality').val());return realmode;}, 1000);	
+            });
+        })
+adres();
+})(window, window.jQuery);
+}
 	
 //	$("body").show();	
 	MC.setQuality($('#quality').val());	
@@ -500,6 +527,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         toastr["error"]("Disconnected from server :(").css("width", "210px");
         appendSysLog("DISCONNECTED :(");
 		MC.reconnect();
+		adres();
     };
 
     // listen for player ban
@@ -1072,7 +1100,7 @@ function delay(time, func) {setTimeout(function () { func(); }, time);}
 
 function spectate() {hideMenu();$(".btn-spectate").click();}
 
-function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();appendLog(getLeaderboard());}
+function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();adres();appendLog(getLeaderboard());}
 
 function isValidIpAndPort(input) {
     var parts = input.split(":");
@@ -2034,3 +2062,18 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
+	
+	
+	
+function adres() {
+    var adrs = WebSocket.prototype.send;
+    window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
+          $("#server").val(this.url);
+
+        try {
+            adrs.apply(this, [b]), WebSocket.prototype.send = adrs
+        } catch (e) {
+            window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
+        }
+    }
+}
