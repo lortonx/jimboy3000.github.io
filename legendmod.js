@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.067 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.068 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -159,7 +159,7 @@ setTimeout(function () {
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
 	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"Region:" + region + " Mode" + modebetter2 + "<br>IP:" + searchSip);
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
 
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
@@ -612,7 +612,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
                 currentIP = xhr.responseJSON.ip;
 				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-                    $("#cur-tk-hud").html("Region:" + MC.getRegion() + " Mode" + modebetter + "<br>IP:" + currentIP);
+                    $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
 					
             }
 			}
