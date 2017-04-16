@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -158,7 +158,7 @@ setTimeout(function () {
 	MC.setQuality($('#quality').val());	
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"Region:" + region + " Mode" + modebetter2 + " IP:" + searchSip);
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"Region:" + region + " Mode" + modebetter2 + "<br>IP:" + searchSip);
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
@@ -610,7 +610,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
                 currentIP = xhr.responseJSON.ip;
 				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-                    $("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP);
+                    $("#cur-tk-hud").html("Region:" + MC.getRegion() + " Mode" + modebetter + "<br>IP:" + currentIP);
+					
             }
 			}
 			}
@@ -776,7 +777,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> No troll on Death ');}
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
-    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" style=" right: 220px; font-size: 15px; padding: 6px;"></div>');
+    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 15px; padding: 6px;"></div>');
 	
 	
 
