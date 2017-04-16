@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.067 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -158,7 +158,9 @@ setTimeout(function () {
 	MC.setQuality($('#quality').val());	
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
+	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"Region:" + region + " Mode" + modebetter2 + "<br>IP:" + searchSip);
+
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
