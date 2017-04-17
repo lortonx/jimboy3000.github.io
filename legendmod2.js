@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.049 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="7 BETA"; // the version 1.1-> 1.11
+var semimodVersion="8 BETA"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -88,11 +88,19 @@ var commandMsg="";
 var otherMsg="";
 var rotateminimap=0;
 var rotateminimapfirst=0;
+var openthecommunication="NO";
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
+	if (openthecommunication=="YES"){
+		setTimeout(function () {
+		$("#connect").click();
+		return openthecommunication="NO";
+		},2500);
+	}
+	
 }});
 
 
@@ -101,6 +109,7 @@ if (mode==""){ modebetter2=":ffa"}
 else{ modebetter2=mode }
 
 loadericon();
+
 
 setTimeout(function () {
 if (searchSip==null){
@@ -112,32 +121,68 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
-                a.core.connect($("#server").val())
+				if ($("#server").val().includes("party")==false){
+				var texture2, texture3;
+				texture3=$("#server").val();
+				texture2=texture3.substring(0, texture3.indexOf(':'));
+				texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");
+				texture3=texture3.split(':').pop();
+				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
+                a.core.connect(texture3); 
+				
 				setTimeout(function (){realmode=getGameMode();
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
-        tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
+       // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
 				$("#cur-tk-hud").text(" IP:" + tmz);}
-		if (realmode!=":party"){
-			setTimeout(function () {
-			history.pushState(stateObj, "page 2", "?sip=" + tmz);
-			},1200);
 		
-		}
-			MC.setQuality($('#quality').val());}, 1000);	
+			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
+			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
+			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},7000);
+		
+		
+			MC.setQuality($('#quality').val());}, 1000);}	
+			else{a.core.connect($("#server").val());
+
+			$("#cur-tk-hud").text($("#server").val());}
+			
             });
         })
 adres();
 })(window, window.jQuery);
 }
+}, 4000);
+
+setTimeout(function () {
+$("#connect2").click(function() {
+	
+	$("#create-party-btn-2").click();
+	
+	
+		
+		setTimeout(function () {
+			if (openthecommunication=="YES"){
+		$("#connect").click();
+		return openthecommunication="NO";
+		}
+		},6000);
+	
+	return openthecommunication="YES";
+});
+}, 4500);
+
+
+setTimeout(function () {
 	
 //	$("body").show();	
 	MC.setQuality($('#quality').val());	
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"Region:" + region + " Mode" + modebetter2 + " IP:" + searchSip);
+	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
+
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
@@ -589,7 +634,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
                 currentIP = xhr.responseJSON.ip;
 				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-                    $("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP);
+                    $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
+					
             }
 			}
 			}
@@ -683,8 +729,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	localStorage.setItem("showTK", false);
   
      $("#IPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("IPBtn", true);$("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP).show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
-		else {localStorage.setItem("IPBtn", false);$("#cur-tk-hud").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
+		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
+		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
 		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
@@ -755,25 +801,18 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> No troll on Death ');}
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
-    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" style=" right: 220px; font-size: 15px; padding: 6px;"></div>');
+    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
 	
 	
-	if (searchSip==null){
-	$("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
-	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
-	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 24%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
-	}
-	else if (searchSip!=null){
+
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
-	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
-	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
-	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
-	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
-	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
+	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
+	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
+	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 14%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 		
 	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
 //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
@@ -794,7 +833,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="msgcommand4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand4f();" data-toggle="tooltip" data-original-title="Troll on Death"><i id="msgcommand41" class="fa fa-bath" style="padding-center: 0px;"></i></button>'+
 	'<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>'+
 	'<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
-	}
+	
 	
 
 
@@ -875,8 +914,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	// ANNOUNCEMENTS
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back ' + tag1 + '!');
-	toastr["info"]('1. Rejoin with token for communication to activate on FFA/EXP. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies');}
+	else{toastr["info"]('Welcome back <b><font color="green">' + tag1 + '</font></b>!');
+	toastr["info"]('<b>1. Still more to be <font color="green">fixed</font>. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies</b>');}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -900,7 +939,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{	if(tag1.includes("♔Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("❶")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("₣")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("℄")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("♋")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("۞ẒṨ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("ᴺ૯ᵂ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("۞ᵶᵴ™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("๔ɀ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("ﾏｮʞʇ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("₴₵₳Ɽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββŁΣßΛĻŽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("⋩ᕮχ⋨")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("ƖƦ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("ȴøng")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("ƸU")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
 	  });	
 	
-    $("#cur-tk-hud").hide();
 	$("#shortcuts-hud").hide();
 	$("#rotate-hud").hide();	
 	$("#exp-bar").hide();
@@ -937,6 +975,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			}		
 		
 			if(commandMsg=="Hello"){
+				if (MC.isInGame()){
+					if (!ogario.spectate){
 				var nickname=$( "#nick" ).val();
 				$( "#nick" ).val("Hello Team");
 				$( "#helloContainer" ).show();
@@ -946,6 +986,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 					$( "#helloContainer" ).show();
 					newsubmit();
 					}, 5000);
+					}
+				}
 			}		
 		
 		//with confirmation
@@ -1365,6 +1407,8 @@ function foundNames(leaderboard, names, minNamesFound) {
 //function chatbutfunction(){//	if (messageone==1){//	$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");//	}//	else if (messageone==0){//	$("#ChatBtn").attr("data-original-title", "Chat is OFF, if you click, you will be redirected to other server");//	}//}	
 
 function chatfunction(){
+	if (MC.isInGame()){
+	if (!ogario.spectate){
 	if (messageone==1){
 		if (hiddenfromclan==1){
 		saveclanpassword=$("#clantag").val();
@@ -1403,7 +1447,9 @@ function chatfunction(){
 		MC.setQuality($('#quality').val());
 		}, 8000);
 	}
-}
+	}
+	}
+	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
 function showSearchHud() {getInfo();$("#backgroundFade").fadeIn();$("#notes").fadeIn();$("#statsInfo").fadeIn();$("#searchHud").fadeIn();$("#searchLog").fadeIn();}
@@ -1788,7 +1834,13 @@ return false;
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
 }
 
-function Bino(){KeyEvent.simulate(81, 81)	}
+function Bino(){
+		if (MC.isInGame()){
+			if (ogario.spectate){
+	KeyEvent.simulate(81, 81)	}
+	else{ toastr["info"]('You must be on spectate mode');}
+		}	
+}
 
 function settroll1true(){ return troll1="YES"; }
 function settroll1false(){ return troll1="NO"; }
@@ -2073,8 +2125,18 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
-          $("#server").val(this.url);
-
+		if ($("#gamemode").val()!=":party"){
+		var texture1, texture2, texture3;
+		texture1=this.url;
+		texture2=texture1.split(':').pop();
+		texture2=texture2.replace("/","");
+		texture3=texture1.split('ip-').pop();
+		texture3=texture3.substring(0, texture3.indexOf('.'));
+		texture3=texture3.replace(/-/g,".");
+		texture3=texture3+":"+texture2;
+          $("#server").val(texture3);
+		}
+		else{ $("#server").val(this.url);}
         try {
             adrs.apply(this, [b]), WebSocket.prototype.send = adrs
         } catch (e) {
