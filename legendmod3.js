@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.081 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1834,7 +1834,8 @@ function Bino(){
 		if (MC.isInGame()){
 			if (ogario.spectate){
 	KeyEvent.simulate(81, 81)	}
-		}
+	else{ toastr["info"]('You must be on spectate mode');}
+		}	
 }
 
 function settroll1true(){ return troll1="YES"; }
