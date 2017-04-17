@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -98,7 +98,7 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 		setTimeout(function () {
 		$("#connect").click();
 		return openthecommunication="NO";
-		},1000);
+		},2500);
 	}
 	
 }});
@@ -121,7 +121,7 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit" id="connect2" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
 				if ($("#server").val().includes("party")==false){
 				var texture2, texture3;
