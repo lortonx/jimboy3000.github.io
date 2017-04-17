@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -806,13 +806,13 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
-	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
-	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
-	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
-	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
-	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
+	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
+	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
+	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 14%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 		
 	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
 //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
@@ -975,6 +975,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			}		
 		
 			if(commandMsg=="Hello"){
+				if (MC.isInGame()){
+					if (!ogario.spectate){
 				var nickname=$( "#nick" ).val();
 				$( "#nick" ).val("Hello Team");
 				$( "#helloContainer" ).show();
@@ -984,6 +986,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 					$( "#helloContainer" ).show();
 					newsubmit();
 					}, 5000);
+					}
+				}
 			}		
 		
 		//with confirmation
