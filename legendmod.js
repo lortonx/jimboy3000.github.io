@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.074 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -123,13 +123,15 @@ if (searchSip==null){
 		$(function() {
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit" id="connect2" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
+				if ($("#server").val().includes("party")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
 				texture2=texture3.substring(0, texture3.indexOf(':'));
 				texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");
 				texture3=texture3.split(':').pop();
 				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
-                a.core.connect(texture3);
+                a.core.connect(texture3); //}
+				else{a.core.connect($("#server").val());}
 				setTimeout(function (){realmode=getGameMode();
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
@@ -2095,16 +2097,19 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
+		if ($("#gamemode").val()!=":party"){
 		var texture1, texture2, texture3;
 		texture1=this.url;
 		texture2=texture1.split(':').pop();
+		texture2=texture2.split('/').pop();
 		texture2=texture2.replace("/","");
 		texture3=texture1.split('ip-').pop();
 		texture3=texture3.substring(0, texture3.indexOf('.'));
 		texture3=texture3.replace(/-/g,".");
 		texture3=texture3+":"+texture2;
           $("#server").val(texture3);
-
+		}
+		else{ $("#server").val(this.url);}
         try {
             adrs.apply(this, [b]), WebSocket.prototype.send = adrs
         } catch (e) {
