@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.076 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.079 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -130,8 +130,8 @@ if (searchSip==null){
 				texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");
 				texture3=texture3.split(':').pop();
 				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
-                a.core.connect(texture3); }
-				else{a.core.connect($("#server").val());}
+                a.core.connect(texture3); 
+				
 				setTimeout(function (){realmode=getGameMode();
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
@@ -143,7 +143,10 @@ if (searchSip==null){
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},7000);
 		
 		
-			MC.setQuality($('#quality').val());}, 1000);	
+			MC.setQuality($('#quality').val());}, 1000);}	
+			else{a.core.connect($("#server").val());
+			$("#cur-tk-hud").text($("#server").val());}
+			
             });
         })
 adres();
