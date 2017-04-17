@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.081 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.082 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="7 BETA"; // the version 1.1-> 1.11
+var semimodVersion="8 BETA"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -914,8 +914,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	// ANNOUNCEMENTS
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back ' + tag1 + '!');
-	toastr["info"]('1. Rejoin with token for communication to activate on FFA/EXP. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies');}
+	else{toastr["info"]('Welcome back <b><font color="green">' + tag1 + '</font></b>!');
+	toastr["info"]('<b>1. Still more to be <font color="green">fixed</font>. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies</b>');}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
