@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1403,6 +1403,8 @@ function foundNames(leaderboard, names, minNamesFound) {
 //function chatbutfunction(){//	if (messageone==1){//	$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");//	}//	else if (messageone==0){//	$("#ChatBtn").attr("data-original-title", "Chat is OFF, if you click, you will be redirected to other server");//	}//}	
 
 function chatfunction(){
+	if (MC.isInGame()){
+	if (!ogario.spectate){
 	if (messageone==1){
 		if (hiddenfromclan==1){
 		saveclanpassword=$("#clantag").val();
@@ -1441,7 +1443,9 @@ function chatfunction(){
 		MC.setQuality($('#quality').val());
 		}, 8000);
 	}
-}
+	}
+	}
+	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
 function showSearchHud() {getInfo();$("#backgroundFade").fadeIn();$("#notes").fadeIn();$("#statsInfo").fadeIn();$("#searchHud").fadeIn();$("#searchLog").fadeIn();}
@@ -1826,7 +1830,12 @@ return false;
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
 }
 
-function Bino(){KeyEvent.simulate(81, 81)	}
+function Bino(){
+		if (MC.isInGame()){
+			if (ogario.spectate){
+	KeyEvent.simulate(81, 81)	}
+		}
+}
 
 function settroll1true(){ return troll1="YES"; }
 function settroll1false(){ return troll1="NO"; }
