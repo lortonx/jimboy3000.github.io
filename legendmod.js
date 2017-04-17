@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.072 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -126,7 +126,7 @@ if (searchSip==null){
 				var texture2, texture3;
 				texture3=$("#server").val();
 				texture2=texture3.substring(0, texture3.indexOf(':'));
-				texture2==texture2.replace(".","-");
+				texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");
 				texture3=texture3.split(':').pop();
 				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
                 a.core.connect(texture3);
