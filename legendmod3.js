@@ -1,8 +1,12 @@
 /*************
-* LEGEND modv2.041 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
+$("#region").on('change', function() { 
+  adres();
+});
    	$('#gamemode').on('change', function () {
+		adres();
       if (this.value == ":party") { $("#create-party-btn-2").click(); }
 		console.log( "Party stuff fixed" );})
 
@@ -75,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion=6; // the version 1.1-> 1.11
+var semimodVersion="7 BETA"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -84,11 +88,19 @@ var commandMsg="";
 var otherMsg="";
 var rotateminimap=0;
 var rotateminimapfirst=0;
+var openthecommunication="NO";
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
+	if (openthecommunication=="YES"){
+		setTimeout(function () {
+		$("#connect").click();
+		return openthecommunication="NO";
+		},1000);
+	}
+	
 }});
 
 
@@ -98,14 +110,79 @@ else{ modebetter2=mode }
 
 loadericon();
 
-setTimeout(function () {
 
+setTimeout(function () {
+if (searchSip==null){
+(function(a, c) {
+    function r(a, d) {
+        if (d) {
+            var f = new Date;
+            f.setTime(f.getTime() + 864E5 * d);
+            f = "; expires=" + f.toGMTString()
+        } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
+		$(function() {
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit" id="connect2" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#connect").click(function() {
+				if ($("#server").val().includes("party")==false){
+				var texture2, texture3;
+				texture3=$("#server").val();
+				texture2=texture3.substring(0, texture3.indexOf(':'));
+				texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");texture2=texture2.replace(".","-");
+				texture3=texture3.split(':').pop();
+				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
+                a.core.connect(texture3); 
+				
+				setTimeout(function (){realmode=getGameMode();
+				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+				        var tmz=$("#server").val();
+       // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
+				$("#cur-tk-hud").text(" IP:" + tmz);}
+		
+			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
+			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
+			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},7000);
+		
+		
+			MC.setQuality($('#quality').val());}, 1000);}	
+			else{a.core.connect($("#server").val());
+
+			$("#cur-tk-hud").text($("#server").val());}
+			
+            });
+        })
+adres();
+})(window, window.jQuery);
+}
+}, 4000);
+
+setTimeout(function () {
+$("#connect2").click(function() {
+	
+	$("#create-party-btn-2").click();
+	
+	
+		
+		setTimeout(function () {
+			if (openthecommunication=="YES"){
+		$("#connect").click();
+		return openthecommunication="NO";
+		}
+		},6000);
+	
+	return openthecommunication="YES";
+});
+}, 4500);
+
+
+setTimeout(function () {
 	
 //	$("body").show();	
 	MC.setQuality($('#quality').val());	
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"Region:" + region + " Mode" + modebetter2 + " IP:" + searchSip);
+	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
+
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
@@ -500,6 +577,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         toastr["error"]("Disconnected from server :(").css("width", "210px");
         appendSysLog("DISCONNECTED :(");
 		MC.reconnect();
+		adres();
     };
 
     // listen for player ban
@@ -556,7 +634,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
                 currentIP = xhr.responseJSON.ip;
 				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-                    $("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP);
+                    $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
+					
             }
 			}
 			}
@@ -650,8 +729,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	localStorage.setItem("showTK", false);
   
      $("#IPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("IPBtn", true);$("#cur-tk-hud").text("Region:" + MC.getRegion() + " Mode" + modebetter + " IP:" + currentIP).show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
-		else {localStorage.setItem("IPBtn", false);$("#cur-tk-hud").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
+		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
+		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
 		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
@@ -722,17 +801,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> No troll on Death ');}
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
-    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" style=" right: 220px; font-size: 15px; padding: 6px;"></div>');
+    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
 	
 	
-	if (searchSip==null){
-	$("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
-	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
-	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 24%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
-	}
-	else if (searchSip!=null){
+
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
 	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
 	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
@@ -761,7 +833,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="msgcommand4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand4f();" data-toggle="tooltip" data-original-title="Troll on Death"><i id="msgcommand41" class="fa fa-bath" style="padding-center: 0px;"></i></button>'+
 	'<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>'+
 	'<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
-	}
+	
 	
 
 
@@ -867,7 +939,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{	if(tag1.includes("♔Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("❶")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("₣")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("℄")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("♋")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("۞ẒṨ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("ᴺ૯ᵂ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("۞ᵶᵴ™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("๔ɀ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("ﾏｮʞʇ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("₴₵₳Ɽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββŁΣßΛĻŽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("⋩ᕮχ⋨")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("ƖƦ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("ȴøng")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("ƸU")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
 	  });	
 	
-    $("#cur-tk-hud").hide();
 	$("#shortcuts-hud").hide();
 	$("#rotate-hud").hide();	
 	$("#exp-bar").hide();
@@ -1072,7 +1143,7 @@ function delay(time, func) {setTimeout(function () { func(); }, time);}
 
 function spectate() {hideMenu();$(".btn-spectate").click();}
 
-function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();appendLog(getLeaderboard());}
+function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();adres();appendLog(getLeaderboard());}
 
 function isValidIpAndPort(input) {
     var parts = input.split(":");
@@ -2034,3 +2105,28 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
+	
+	
+	
+function adres() {
+    var adrs = WebSocket.prototype.send;
+    window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
+		if ($("#gamemode").val()!=":party"){
+		var texture1, texture2, texture3;
+		texture1=this.url;
+		texture2=texture1.split(':').pop();
+		texture2=texture2.replace("/","");
+		texture3=texture1.split('ip-').pop();
+		texture3=texture3.substring(0, texture3.indexOf('.'));
+		texture3=texture3.replace(/-/g,".");
+		texture3=texture3+":"+texture2;
+          $("#server").val(texture3);
+		}
+		else{ $("#server").val(this.url);}
+        try {
+            adrs.apply(this, [b]), WebSocket.prototype.send = adrs
+        } catch (e) {
+            window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
+        }
+    }
+}
