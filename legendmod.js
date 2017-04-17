@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.080 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="7 BETA"; // the version 1.1-> 1.11
+var semimodVersion="8 BETA"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -914,8 +914,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	// ANNOUNCEMENTS
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back ' + tag1 + '!');
-	toastr["info"]('1. Rejoin with token for communication to activate on FFA/EXP. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies');}
+	else{toastr["info"]('Welcome back <b><font color="green">' + tag1 + '</font></b>!');
+	toastr["info"]('<b>1. Still more to be <font color="green">fixed</font>. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies</b>');}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -1403,6 +1403,8 @@ function foundNames(leaderboard, names, minNamesFound) {
 //function chatbutfunction(){//	if (messageone==1){//	$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");//	}//	else if (messageone==0){//	$("#ChatBtn").attr("data-original-title", "Chat is OFF, if you click, you will be redirected to other server");//	}//}	
 
 function chatfunction(){
+	if (MC.isInGame()){
+	if (!ogario.spectate){
 	if (messageone==1){
 		if (hiddenfromclan==1){
 		saveclanpassword=$("#clantag").val();
@@ -1441,7 +1443,9 @@ function chatfunction(){
 		MC.setQuality($('#quality').val());
 		}, 8000);
 	}
-}
+	}
+	}
+	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
 function showSearchHud() {getInfo();$("#backgroundFade").fadeIn();$("#notes").fadeIn();$("#statsInfo").fadeIn();$("#searchHud").fadeIn();$("#searchLog").fadeIn();}
@@ -1826,7 +1830,13 @@ return false;
 //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
 }
 
-function Bino(){KeyEvent.simulate(81, 81)	}
+function Bino(){
+		if (MC.isInGame()){
+			if (ogario.spectate){
+	KeyEvent.simulate(81, 81)	}
+	else{ toastr["info"]('You must be on spectate mode');}
+		}	
+}
 
 function settroll1true(){ return troll1="YES"; }
 function settroll1false(){ return troll1="NO"; }
