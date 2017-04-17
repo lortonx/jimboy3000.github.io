@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.079 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.080 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -98,7 +98,7 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 		setTimeout(function () {
 		$("#connect").click();
 		return openthecommunication="NO";
-		},2500);
+		},1000);
 	}
 	
 }});
@@ -145,6 +145,7 @@ if (searchSip==null){
 		
 			MC.setQuality($('#quality').val());}, 1000);}	
 			else{a.core.connect($("#server").val());
+
 			$("#cur-tk-hud").text($("#server").val());}
 			
             });
@@ -158,6 +159,16 @@ setTimeout(function () {
 $("#connect2").click(function() {
 	
 	$("#create-party-btn-2").click();
+	
+	
+		
+		setTimeout(function () {
+			if (openthecommunication=="YES"){
+		$("#connect").click();
+		return openthecommunication="NO";
+		}
+		},6000);
+	
 	return openthecommunication="YES";
 });
 }, 4500);
