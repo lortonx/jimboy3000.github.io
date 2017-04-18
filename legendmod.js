@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.067 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="8 BETA"; // the version 1.1-> 1.11
+var semimodVersion="82"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -502,7 +502,7 @@ setTimeout(function () {
 		'Times Used: '+timesopened+'</div>');
  
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2.2.3, Module:3.10.0</a>');
+        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2</a>');
     // donate button
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -578,7 +578,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (timesopened==null||timesopened==""||timesopened<=5){
 		toastr["error"]("Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
 		else if(timesopened>5){
-		toastr["error"]("Notes:Agario can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
+		toastr["error"]("Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
 		toastr["error"]("If logout occurs on onload events, delete Chrome cookies from <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}	
 	});
 	
@@ -900,7 +900,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
     //50 maxlength
     $("#nick").attr('maxlength', 50).attr('placeholder','Name').tooltip({title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users", placement: "bottom"});
-	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public , or insert password of Clan, or use it as Tag", placement: "left"}); 
+	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
 	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
 	$("#gamemode").tooltip({title: "Gameplay, for party change region first", placement: "top"}); 
@@ -925,7 +925,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back <b><font color="green">' + tag1 + '</font></b>!');
-	toastr["info"]('<b>1. Still more to be <font color="green">fixed</font>. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies</b>');}
+	toastr["info"]('1. Mod works <b><font color="red">properly</font></b>. <br>2. Many Server reconnects may cause <b><font color="red">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
