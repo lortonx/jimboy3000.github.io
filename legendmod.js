@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.066 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ else{ modebetter2=mode }
 
 loadericon();
 
-
+/*
 setTimeout(function () {
 if (searchSip==null){
 (function(a, c) {
@@ -154,7 +154,7 @@ adres();
 })(window, window.jQuery);
 }
 }, 4000);
-
+*/
 setTimeout(function () {
 $("#connect2").click(function() {
 	
@@ -632,11 +632,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         if (xhr.responseJSON != null) {
             if (xhr.responseJSON.ip != null && xhr.responseJSON.hasOwnProperty('ip')) {
                 currentIP = xhr.responseJSON.ip;
-				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
+			//	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                     $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
 					
-            }
+          //  }
 			}
 			}
             if (xhr.responseJSON.token != null && xhr.responseJSON.hasOwnProperty('token')) {
