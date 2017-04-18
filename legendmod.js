@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.068 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ else{ modebetter2=mode }
 
 loadericon();
 
-/*
+
 setTimeout(function () {
 if (searchSip==null){
 (function(a, c) {
@@ -154,7 +154,7 @@ adres();
 })(window, window.jQuery);
 }
 }, 4000);
-*/
+
 setTimeout(function () {
 $("#connect2").click(function() {
 	
@@ -1147,7 +1147,7 @@ function delay(time, func) {setTimeout(function () { func(); }, time);}
 
 function spectate() {hideMenu();$(".btn-spectate").click();}
 
-function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();appendLog(getLeaderboard());} //function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();adres();appendLog(getLeaderboard());}
+function changeServer() {MC.setGameMode(ogario.gameMode);MC.reconnect();adres();appendLog(getLeaderboard());}
 
 function isValidIpAndPort(input) {
     var parts = input.split(":");
