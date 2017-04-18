@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.068 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.069 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -502,7 +502,7 @@ setTimeout(function () {
 		'Times Used: '+timesopened+'</div>');
  
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2</a>');
+        '<a href="http://www.miniclip.com/games/en/" target="_blank"></a>');
     // donate button
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -925,7 +925,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
-	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. Many Server reconnects may cause <b><font color="red">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
+	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. Many Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
