@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2149,16 +2149,11 @@ function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
 		if ($("#gamemode").val()!=":party"){
-		var texture1, texture2, texture3;
-		texture1=this.url;
-		texture2=texture1.split(':').pop();
-		texture2=texture2.replace("/","");
-		texture3=texture1.split('ip-').pop();
-		texture3=texture3.substring(0, texture3.indexOf('.'));
-		texture3=texture3.replace(/-/g,".");
-		texture3=texture3+":"+texture2;
-          $("#server").val(texture3);
-		  //$('#gamemode').val(realmode);
+		//var texture1, texture2, texture3;
+		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
+          $("#server").val("#server");
+		//  $('#gamemode').val(realmode);
+		  $('#gamemode').val(currentIP);
 		}
 		else{ $("#server").val(this.url);}
         try {
