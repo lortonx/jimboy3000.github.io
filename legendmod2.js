@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.065 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="8 BETA"; // the version 1.1-> 1.11
+var semimodVersion="82"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -89,11 +89,12 @@ var otherMsg="";
 var rotateminimap=0;
 var rotateminimapfirst=0;
 var openthecommunication="NO";
+var clickedname="NO";
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
 	if (openthecommunication=="YES"){
 		setTimeout(function () {
 		$("#connect").click();
@@ -101,7 +102,9 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 		},2500);
 	}
 	
-}});
+}
+
+});
 
 
 
@@ -181,9 +184,15 @@ setTimeout(function () {
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
 	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+	if (region==null){
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip);
+	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip);}, 6000);
+	}
+	else {
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
-
-	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
+	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000);
+	}
+	}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
 	if (searchSip==null){
@@ -481,7 +490,8 @@ setTimeout(function () {
     $("#closeBtn").click(function () {hideSearchHud();});
     $("#searchShortcut").click(function () {hideMenu();showSearchHud();$("#searchInput").focus().select();});
 		
-	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');}).mouseleave(function() {$('#nick').css('background-color', '');}); 		
+	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
+	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
@@ -502,7 +512,7 @@ setTimeout(function () {
 		'Times Used: '+timesopened+'</div>');
  
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2.2.3, Module:3.10.0</a>');
+        '<a href="http://www.miniclip.com/games/en/" target="_blank"></a>');
     // donate button
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -572,6 +582,16 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     //load notes
     $("#note1").val(localStorage.getItem('note1'));$("#note2").val(localStorage.getItem('note2'));$("#note3").val(localStorage.getItem('note3'));$("#note4").val(localStorage.getItem('note4'));$("#note5").val(localStorage.getItem('note5'));$("#note6").val(localStorage.getItem('note6'));$("#note7").val(localStorage.getItem('note7'));
 
+		//load messages for Google Plus
+	$("#gplusLogin").click(
+	function() {
+		if (timesopened==null||timesopened==""||timesopened<=5){
+		toastr["error"]("Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
+		else if(timesopened>5){
+		toastr["error"]("Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
+		toastr["error"]("If logout occurs on onload events, delete Chrome cookies from <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}	
+	});
+	
     // listen for server disconnect
     MC.onDisconnect = function () {
         toastr["error"]("Disconnected from server :(").css("width", "210px");
@@ -632,11 +652,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         if (xhr.responseJSON != null) {
             if (xhr.responseJSON.ip != null && xhr.responseJSON.hasOwnProperty('ip')) {
                 currentIP = xhr.responseJSON.ip;
-				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
+			//	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                     $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
 					
-            }
+          //  }
 			}
 			}
             if (xhr.responseJSON.token != null && xhr.responseJSON.hasOwnProperty('token')) {
@@ -890,7 +910,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
     //50 maxlength
     $("#nick").attr('maxlength', 50).attr('placeholder','Name').tooltip({title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users", placement: "bottom"});
-	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public , or insert password of Clan, or use it as Tag", placement: "left"}); 
+	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
 	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
 	$("#gamemode").tooltip({title: "Gameplay, for party change region first", placement: "top"}); 
@@ -914,8 +934,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	// ANNOUNCEMENTS
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back <b><font color="green">' + tag1 + '</font></b>!');
-	toastr["info"]('<b>1. Still more to be <font color="green">fixed</font>. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies</b>');}
+	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
+	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -958,6 +978,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-success", function(){
 MSGCOMMANDS=$(".toast.toast-success").text();
 
 
+	
 	if(MSGCOMMANDS.includes("Legend.Mod")){
 		
 		playerMsg=getParameterByName("player", MSGCOMMANDS);
