@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.075 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -168,11 +168,11 @@ $("#connect2").click(function() {
 		setTimeout(function () {
 			if (openthecommunication=="YES"){
 		$("#connect").click();
-		return openthecommunication="NO";
+		return openthecommunication="NO", realmode;
 		}
 		},6000);
 	
-	return openthecommunication="YES", realmode;
+	return openthecommunication="YES";
 });
 }, 4500);
 
