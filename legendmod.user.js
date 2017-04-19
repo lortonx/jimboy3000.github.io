@@ -22,10 +22,10 @@ if (location.host == "agar.io" && location.pathname == "/") {
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
 }
-
-var legendarioCSS = '<link href="http://cdn.ogario.ovh/v3/ogario.v3.css?v=308" rel="stylesheet"></link>';
-var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=300"></script>';
-var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=308" charset="utf-8"></script>';
+// Dependencies
+var legendarioCSS = '<link href="http://cdn.ogario.ovh/v3/ogario.v3.css?v=320" rel="stylesheet"></link>';
+var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=320"></script>';
+var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=320" charset="utf-8"></script>';
 
 var keyJS = '<script src="https://jimboy3100.github.io/key-event.js"></script>';
 
@@ -51,6 +51,7 @@ var gaJS = "<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i
 
 var modVersion = GM_info.script.version;
 
+// Inject Legend
 function inject(page) {
     var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + gaJS + "</head>");
 
