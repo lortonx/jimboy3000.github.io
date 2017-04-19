@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -160,7 +160,7 @@ adres();
 
 setTimeout(function () {
 $("#connect2").click(function() {
-	
+	realmode=$('#gamemode').val();
 	$("#create-party-btn-2").click();
 	
 	
@@ -172,7 +172,7 @@ $("#connect2").click(function() {
 		}
 		},6000);
 	
-	return openthecommunication="YES";
+	return openthecommunication="YES", realmode;
 });
 }, 4500);
 
@@ -332,7 +332,7 @@ setTimeout(function () {
 											'<option value="3" data-itr="">Icon 3</option>' +
 											'<option value="4" data-itr="">Icon 4</option>' +
 											'<option value="5" data-itr="">Icon 5</option>' +
-											'<option value="6" data-itr="">Icon 6</option>' +											
+											'<option value="6" data-itr="">Icon 6</option>' +
 											'</select>' +
 											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
 											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
@@ -2156,6 +2156,7 @@ function adres() {
 		texture3=texture3.replace(/-/g,".");
 		texture3=texture3+":"+texture2;
           $("#server").val(texture3);
+		  $('#gamemode').val(realmode);
 		}
 		else{ $("#server").val(this.url);}
         try {
