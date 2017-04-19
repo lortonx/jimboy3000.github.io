@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -490,11 +490,10 @@ setTimeout(function () {
     $("#closeBtn").click(function () {hideSearchHud();});
     $("#searchShortcut").click(function () {hideMenu();showSearchHud();$("#searchInput").focus().select();});
 		
-	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');}).mouseleave(function() {$('#nick').css('background-color', '');}); 	
-	$('#nick').blur(function(){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}});	
-	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');return clickedname="YES";}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
-	$('#clantag').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});	
-	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 	
+	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
+	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
+	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
+	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
 		
 		//define if it is clicked
