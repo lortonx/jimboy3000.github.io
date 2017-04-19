@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.081 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -161,6 +161,11 @@ adres();
 
 setTimeout(function () {
 $("#connect2").click(function() {
+	if($("#top5-hud").is(":visible")){
+		$("#connect").click();
+		return false;
+	}
+	else{
 	realmode2=$('#gamemode').val();
 	$("#create-party-btn-2").click();
 	
@@ -175,6 +180,7 @@ $("#connect2").click(function() {
 		},6000);
 	
 	return openthecommunication="YES", realmode2;
+	}
 });
 }, 4500);
 
