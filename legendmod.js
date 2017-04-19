@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.077 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.078 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -68,7 +68,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
-var realmode="";
+var realmode=""; var realmode2="";
 var token="";
 var messageone=1;
 var hiddenfromclan=0;
@@ -135,7 +135,7 @@ if (searchSip==null){
 				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
                 a.core.connect(texture3); 
 				
-				setTimeout(function (){realmode=getGameMode();
+				setTimeout(function (){realmode2=getGameMode();realmode=realmode2;
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
@@ -160,7 +160,7 @@ adres();
 
 setTimeout(function () {
 $("#connect2").click(function() {
-	realmode=$('#gamemode').val();
+	realmode2=$('#gamemode').val();
 	$("#create-party-btn-2").click();
 	
 	
@@ -168,12 +168,12 @@ $("#connect2").click(function() {
 		setTimeout(function () {
 			if (openthecommunication=="YES"){
 		$("#connect").click();
-		$('#gamemode').val(realmode);
-		return openthecommunication="NO", realmode;
+		$('#gamemode').val(realmode2);
+		return openthecommunication="NO";
 		}
 		},6000);
 	
-	return openthecommunication="YES";
+	return openthecommunication="YES", realmode2;
 });
 }, 4500);
 
