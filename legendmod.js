@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.070 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND modv2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -93,7 +93,7 @@ var openthecommunication="NO";
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
 	if (openthecommunication=="YES"){
 		setTimeout(function () {
 		$("#connect").click();
@@ -101,7 +101,9 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 		},2500);
 	}
 	
-}});
+}
+
+});
 
 
 
@@ -487,7 +489,8 @@ setTimeout(function () {
     $("#closeBtn").click(function () {hideSearchHud();});
     $("#searchShortcut").click(function () {hideMenu();showSearchHud();$("#searchInput").focus().select();});
 		
-	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');}).mouseleave(function() {$('#nick').css('background-color', '');}); 		
+	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');}).mouseleave(function() {$('#nick').css('background-color', '');}); 	
+	$('#nick').blur(function(){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}});	
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
@@ -931,7 +934,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
-	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. Many Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
+	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -974,6 +977,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-success", function(){
 MSGCOMMANDS=$(".toast.toast-success").text();
 
 
+	
 	if(MSGCOMMANDS.includes("Legend.Mod")){
 		
 		playerMsg=getParameterByName("player", MSGCOMMANDS);
