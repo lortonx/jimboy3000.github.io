@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.070 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -135,7 +135,7 @@ if (searchSip==null){
 				texture3="ws://ip-"+texture2+".tech.agar.io:"+texture3+"/";
                 a.core.connect(texture3); 
 				
-				setTimeout(function (){realmode2=getGameMode();realmode=realmode2;
+				setTimeout(function (){realmode=getGameMode();
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
