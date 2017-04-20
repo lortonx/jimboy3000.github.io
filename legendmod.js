@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -977,7 +977,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
-	toastr["info"]('1. <b><font color="green">Major Upate applied</font></b>, for old version refer to <font color="red"><u><a href=www.legendmod.ml>www.legendmod.ml</a></u></font> <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
+	toastr["info"]('1. <b><font color="green">Major Upate applied</font></b>, for old version refer to <font color="red"><u>www.legendmod.ml</u></font> <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
