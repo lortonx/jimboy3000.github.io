@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -38,6 +38,7 @@ setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":vis
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},7500);
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},8500);	
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},10500);								
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},11000);	
 		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -481,8 +482,8 @@ setTimeout(function () {
                                  '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
                                  '</div>' +
 
-                                 '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 60px; left: 67px; padding: 0px; border-radius: 0px;">' +
-								 '<a id="copyIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy IP Address">IP</a>' +
+                                 '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 40px; left: 67px; padding: 0px; border-radius: 0px;">' +
+							//   '<a id="copyIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy IP Address">IP</a>' +
                                  '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
                                  '</div>' +
 
@@ -1172,16 +1173,19 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
 	}, 1500);		
 		if (searchSip!=null){	
+		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();
+		
 	//$("#create-party-btn-2").click();
-	$("#hidendivtoken").show();
-	$("#create-party-btn-2").text("OPEN MULTIPLAYER TOKEN");
-	$("#joinPartyToken").hide();
-	$("#join-party-btn").hide();
-	$("#create-party-btn-2").attr('data-original-title','Click this button to open multiplayer game');	
-	$("#create-party-btn-2").attr("onclick","ShowSIPurl();");	
-	$("#region").hide();$("#gamemode2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
-	$(".agario-party").empty();$(".form-group.clearfix").hide();
-	$(".form-group").hide();}	
+	//$("#hidendivtoken").show();
+	//$("#create-party-btn-2").text("OPEN MULTIPLAYER TOKEN");
+	//$("#joinPartyToken").hide();
+	//$("#join-party-btn").hide();
+	//$("#create-party-btn-2").attr('data-original-title','Click this button to open multiplayer game');	
+	//$("#create-party-btn-2").attr("onclick","ShowSIPurl();");	
+	//$("#region").hide();$("#gamemode2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
+	//$(".agario-party").empty();$(".form-group.clearfix").hide();
+	//$(".form-group").hide();
+	}	
 	
 	//if (searchSip==null){
 	//afterdeathtonormalmode();}
