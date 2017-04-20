@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.077 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.078 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -21,21 +21,21 @@ $('#gamemode').hide();
 $('#gamemode2').change(function(){
 if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";adres();appendLog(getLeaderboard());
 $('#gamemode2').change(function(){
-	oldteammode=$('#gamemode2').val(); $("#create-party-btn-2").click();setTimeout(function (){MC.setGameMode(oldteammode);adres();appendLog(getLeaderboard());},1500);
+	oldteammode=$('#gamemode2').val(); $("#create-party-btn-2").click();setTimeout(function (){MC.setGameMode(oldteammode);adres();appendLog(getLeaderboard());},2000);
 });
 },1000);}
 MC.setGameMode($('#gamemode2').val());
 });		
 		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},1500);		  
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},2500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},3500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},4500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},5500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},7500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},8500);	
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},10500);								
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},2500);
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},3500);
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},4500);
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},5500);
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},7500);
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},8500);	
+setTimeout(function (){ $('#gamemode').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},10500);								
 		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
