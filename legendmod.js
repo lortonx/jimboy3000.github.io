@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -28,11 +28,14 @@ MC.setGameMode($('#gamemode2').val());
 });		
 		
 setTimeout(function (){ $("#create-party-btn-2").click();},800);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},2500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},3500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},4500);
-setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},5500);						
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},1500);		  
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},2500);
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},3500);
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},4500);
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},5500);
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},7500);
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},8500);	
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();$('#gamemode').val(":party");}},10500);								
 		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
