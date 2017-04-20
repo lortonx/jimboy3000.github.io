@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -19,7 +19,7 @@ $('#gamemode').before('<select id="gamemode2" class="form-control" required="" d
 '</select>');
 $('#gamemode').hide();
 $('#gamemode2').change(function(){
-if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";changeServer();},1000);}
+if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";MC.reconnect();adres();appendLog(getLeaderboard());},1000);}
 MC.setGameMode($('#gamemode2').val());
 });		
 		
