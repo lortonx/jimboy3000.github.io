@@ -148,10 +148,7 @@ if (searchSip==null){
 		
 		
 			MC.setQuality($('#quality').val());}, 1000);}	
-			else{MC.joinParty($("#server").val());
-			
-
-			$("#cur-tk-hud").text("Party Token="+$("#server").val());}
+			else{joinpartyfromconnect();}
 			
             });
         })
@@ -2174,4 +2171,9 @@ function adres() {
             window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
         }
     }
+}
+
+function joinpartyfromconnect(){
+MC.joinParty($("#server").val());
+$("#cur-tk-hud").text("Party Token: "+$("#server").val());
 }
