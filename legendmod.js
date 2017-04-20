@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -593,11 +593,11 @@ setTimeout(function () {
 $(".btn.btn-play-guest.btn-success.btn-needs-server").attr("onclick","newsubmit()");
 $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
-$('.btn.btn-warning.btn-spectate.btn-needs-server').click(function () {
-	if ($("#gamemode2").val()!=":party"){
-	toastr["info"]("Communication is disabled, after Spectate, save your ip and click <b>CONNECT</b> to fix", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "350px");	
-	}
-});
+//$('.btn.btn-warning.btn-spectate.btn-needs-server').click(function () {
+//	if ($("#gamemode2").val()!=":party"){
+//	toastr["info"]("Communication is disabled, after Spectate, save your ip and click <b>CONNECT</b> to fix", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "350px");	
+//	}
+//});
 		
     $(document).keydown(function (event) {
         if (event.which == 81 && ogario.spectate && !($("input").is(":focus"))) { // spectate 'Q' fix
