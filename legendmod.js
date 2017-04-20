@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -11,24 +11,7 @@ $("#region").on('change', function() {
 		console.log( "Party stuff fixed" );})
 
 
-$('#gamemode').before('<select id="gamemode2" class="form-control" required="" data-original-title="" title="" style="width: 32%;  display: inline-block; margin-left: 10px; margin-top: 6px">'+
-'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
-'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
-'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
-'<option value=":party" data-itr="page_party">Party Mode</option>'+
-'</select>');
-$('#gamemode').hide();
-$('#gamemode2').change(function(){
-if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";adres();appendLog(getLeaderboard());
-$('#gamemode2').one("change", function(){
-	toastr["info"]('Wait 6 seconds');
-	oldteammode=$('#gamemode2').val(); $("#create-party-btn-2").click();setTimeout(function (){MC.setGameMode(oldteammode);adres();appendLog(getLeaderboard());},6000);
-	return false;
-});
-},3000);}
-MC.setGameMode($('#gamemode2').val());
-adres();
-});		
+
 		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
@@ -293,7 +276,24 @@ setTimeout(function () {
 //document.getElementById("import-settings").value="jim";
     // change buttons styles
 	
-
+	$('#gamemode').before('<select id="gamemode2" class="form-control" required="" data-original-title="" title="" style="width: 32%;  display: inline-block; margin-left: 10px; margin-top: 6px">'+
+	'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+	'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+	'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+	'<option value=":party" data-itr="page_party">Party Mode</option>'+
+	'</select>');
+	$('#gamemode').hide();
+	$('#gamemode2').change(function(){
+	if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";adres();appendLog(getLeaderboard());
+		$('#gamemode2').one("change", function(){
+		toastr["info"]('Wait 6 seconds');
+		oldteammode=$('#gamemode2').val(); $("#create-party-btn-2").click();setTimeout(function (){MC.setGameMode(oldteammode);adres();appendLog(getLeaderboard());},6000);
+		return false;
+		});
+		},3000);}
+	MC.setGameMode($('#gamemode2').val());
+	adres();
+	});		
 	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
