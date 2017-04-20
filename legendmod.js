@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -21,8 +21,10 @@ setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":vis
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},5500);
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},7500);
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},8500);	
-setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},10500);								
-setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},11000);	
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},10500);								
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},11000);	
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},12000);
+setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},13500);
 		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -286,7 +288,7 @@ setTimeout(function () {
 	$('#gamemode2').change(function(){
 	if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";adres();appendLog(getLeaderboard());
 		$('#gamemode2').one("change", function(){
-		toastr["info"]('Wait 6 seconds');
+		toastr["info"]("Wait 6 seconds", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "200px");
 		oldteammode=$('#gamemode2').val(); $("#create-party-btn-2").click();setTimeout(function (){MC.setGameMode(oldteammode);adres();appendLog(getLeaderboard());},6000);
 		return false;
 		});
