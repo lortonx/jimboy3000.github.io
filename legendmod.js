@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2165,7 +2165,7 @@ function adres() {
 		  
 		//  $('#gamemode').val(realmode);
 		}
-		else{ $("#server").val(MC.getPartyToken());}
+		else{ $("#server").val("#"+MC.getPartyToken());}
         try {
             adrs.apply(this, [b]), WebSocket.prototype.send = adrs
         } catch (e) {
