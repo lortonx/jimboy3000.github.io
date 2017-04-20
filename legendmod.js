@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.083 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.084 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -124,13 +124,13 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
-	if (openthecommunication=="YES"){
+	/*if (openthecommunication=="YES"){
 		setTimeout(function () {
 		$('#gamemode').val(realmode2);
-		$("#connect").click();
+		$("#connect2").click();
 		return openthecommunication="NO";
 		},2500);
-	}
+	}*/
 	
 }
 
@@ -154,8 +154,8 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: block; margin-left: 6px; margin-top: -3px">Connect</button>');
-			$("#connect").click(function() {
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#connect2").click(function() {
 				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
