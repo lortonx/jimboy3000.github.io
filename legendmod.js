@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -148,8 +148,7 @@ if (searchSip==null){
 		
 		
 			MC.setQuality($('#quality').val());}, 1000);}	
-			else{a.core.connect($("#server").val());
-
+			else{MC.joinParty($("#server").val());
 			$("#cur-tk-hud").text($("#server").val());}
 			
             });
@@ -205,7 +204,10 @@ setTimeout(function () {
 	setTimeout(function (){realmode=getGameMode();
 	if (searchSip==null){
 		if (realmode!=":party"){
-	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}}
+	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
+		if (realmode==":party"){
+	history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());}
+	}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
@@ -2163,7 +2165,7 @@ function adres() {
 		  
 		//  $('#gamemode').val(realmode);
 		}
-		else{ $("#server").val(this.url);}
+		else{ $("#server").val(MC.getPartyToken());}
         try {
             adrs.apply(this, [b]), WebSocket.prototype.send = adrs
         } catch (e) {
