@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.082 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -68,7 +68,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
-var realmode="";
+var realmode=""; var realmode2="";
 var token="";
 var messageone=1;
 var hiddenfromclan=0;
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="8 BETA"; // the version 1.1-> 1.11
+var semimodVersion="85"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -89,19 +89,23 @@ var otherMsg="";
 var rotateminimap=0;
 var rotateminimapfirst=0;
 var openthecommunication="NO";
+var clickedname="NO";
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]</b> Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
 	if (openthecommunication=="YES"){
 		setTimeout(function () {
+		$('#gamemode').val(realmode2);
 		$("#connect").click();
 		return openthecommunication="NO";
-		},1000);
+		},2500);
 	}
 	
-}});
+}
+
+});
 
 
 
@@ -121,9 +125,9 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit" id="connect2" class="btn btn-primary" style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
-				if ($("#server").val().includes("party")==false){
+				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
 				texture2=texture3.substring(0, texture3.indexOf(':'));
@@ -136,7 +140,7 @@ if (searchSip==null){
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-				$("#cur-tk-hud").text(" IP:" + tmz);}
+				$("#cur-tk-hud").text(" IP:" + tmz);currentIP=tmz}
 		
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
@@ -144,9 +148,7 @@ if (searchSip==null){
 		
 		
 			MC.setQuality($('#quality').val());}, 1000);}	
-			else{a.core.connect($("#server").val());
-
-			$("#cur-tk-hud").text($("#server").val());}
+			else{joinpartyfromconnect();}
 			
             });
         })
@@ -157,19 +159,26 @@ adres();
 
 setTimeout(function () {
 $("#connect2").click(function() {
-	
+	if($("#top5-hud").is(":visible")){
+		$("#connect").click();
+		return false;
+	}
+	else{
+	realmode2=$('#gamemode').val();
 	$("#create-party-btn-2").click();
 	
 	
 		
 		setTimeout(function () {
 			if (openthecommunication=="YES"){
+		$('#gamemode').val(realmode2);
 		$("#connect").click();
 		return openthecommunication="NO";
 		}
 		},6000);
 	
-	return openthecommunication="YES";
+	return openthecommunication="YES", realmode2;
+	}
 });
 }, 4500);
 
@@ -181,14 +190,23 @@ setTimeout(function () {
 //	history.pushState(stateObj, "page 2", "#" + currentToken );
 	if (searchSip!=null){	
 	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+	if (region==null){
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip);
+	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip);}, 6000);
+	}
+	else {
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
-
-	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000)}	
+	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000);
+	}
+	}	
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
 	if (searchSip==null){
 		if (realmode!=":party"){
-	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}}
+	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
+		if (realmode==":party"){
+	history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());}
+	}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
@@ -305,15 +323,15 @@ setTimeout(function () {
 											'<option value="5" data-itr="">Main Banner</option>' +
 											'</select>' +
 
-											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
+											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
 											'<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
-											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();">' +
+											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
 											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
-											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
+											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with http://... or https://..." >' +
 											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
-											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +						
-											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();">' +
-											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();">' +											
+											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +						
+											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +											
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
@@ -323,7 +341,7 @@ setTimeout(function () {
 											'<option value="3" data-itr="">Icon 3</option>' +
 											'<option value="4" data-itr="">Icon 4</option>' +
 											'<option value="5" data-itr="">Icon 5</option>' +
-											'<option value="6" data-itr="">Icon 6</option>' +											
+											'<option value="6" data-itr="">Icon 6</option>' +
 											'</select>' +
 											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
 											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
@@ -332,12 +350,12 @@ setTimeout(function () {
 											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
 											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
 
-											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();">' +
-											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();">' +
-											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();">' +
-											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();">' +
-											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();">' +
-											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();">' +
+											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'</div></div>' +
 
 
@@ -365,7 +383,7 @@ setTimeout(function () {
 
     $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
                             '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
-                            '<input id="musicUrl" onclick="$(this).select();" type="text" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
+                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
 							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div></div>');
 							
 					
@@ -423,7 +441,7 @@ setTimeout(function () {
 	//clone region and gamemode//$("#region").clone().prependTo("#searchLog").attr("onclick","MC.setRegion($(this).val());");//$("#gamemode").clone().prependTo("#searchLog").attr('id', 'gamemode2').after("#gamemode");					 						  
 						  
      $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
-                                 '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
+                                 '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
                                  '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
                                  '<a id="reconnectBtn" class="btn btn-info btn-sm icon-loop2" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
                                  'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; margin-top: 0px; border: none;"></a>' +
@@ -481,7 +499,8 @@ setTimeout(function () {
     $("#closeBtn").click(function () {hideSearchHud();});
     $("#searchShortcut").click(function () {hideMenu();showSearchHud();$("#searchInput").focus().select();});
 		
-	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');}).mouseleave(function() {$('#nick').css('background-color', '');}); 		
+	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
+	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
@@ -502,7 +521,7 @@ setTimeout(function () {
 		'Times Used: '+timesopened+'</div>');
  
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-        '<a href="http://www.miniclip.com/games/en/" target="_blank">Agario v.2.2.3, Module:3.10.0</a>');
+        '<a href="http://www.miniclip.com/games/en/" target="_blank"></a>');
     // donate button
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -572,6 +591,16 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     //load notes
     $("#note1").val(localStorage.getItem('note1'));$("#note2").val(localStorage.getItem('note2'));$("#note3").val(localStorage.getItem('note3'));$("#note4").val(localStorage.getItem('note4'));$("#note5").val(localStorage.getItem('note5'));$("#note6").val(localStorage.getItem('note6'));$("#note7").val(localStorage.getItem('note7'));
 
+		//load messages for Google Plus
+	$("#gplusLogin").click(
+	function() {
+		if (timesopened==null||timesopened==""||timesopened<=5){
+		toastr["error"]("Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
+		else if(timesopened>5){
+		toastr["error"]("Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
+		toastr["error"]("If logout occurs on onload events, delete Chrome cookies from <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}	
+	});
+	
     // listen for server disconnect
     MC.onDisconnect = function () {
         toastr["error"]("Disconnected from server :(").css("width", "210px");
@@ -632,11 +661,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         if (xhr.responseJSON != null) {
             if (xhr.responseJSON.ip != null && xhr.responseJSON.hasOwnProperty('ip')) {
                 currentIP = xhr.responseJSON.ip;
-				    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
+			//	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                     $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
 					
-            }
+          //  }
 			}
 			}
             if (xhr.responseJSON.token != null && xhr.responseJSON.hasOwnProperty('token')) {
@@ -806,13 +835,13 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 24%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
-	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
-	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
-	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
-	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
-	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
+	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
+	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
+	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 14%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 14%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 		
 	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
 //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
@@ -890,7 +919,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
     //50 maxlength
     $("#nick").attr('maxlength', 50).attr('placeholder','Name').tooltip({title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users", placement: "bottom"});
-	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public , or insert password of Clan, or use it as Tag", placement: "left"}); 
+	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
 	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
 	$("#gamemode").tooltip({title: "Gameplay, for party change region first", placement: "top"}); 
@@ -914,8 +943,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	// ANNOUNCEMENTS
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back <b><font color="green">' + tag1 + '</font></b>!');
-	toastr["info"]('<b>1. Still more to be <font color="green">fixed</font>. 2. If bug occurs, chrome://settings/clearBrowserData delete cookies</b>');}
+	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
+	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -958,6 +987,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-success", function(){
 MSGCOMMANDS=$(".toast.toast-success").text();
 
 
+	
 	if(MSGCOMMANDS.includes("Legend.Mod")){
 		
 		playerMsg=getParameterByName("player", MSGCOMMANDS);
@@ -975,6 +1005,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			}		
 		
 			if(commandMsg=="Hello"){
+				if (MC.isInGame()){
+					if (!ogario.spectate){
 				var nickname=$( "#nick" ).val();
 				$( "#nick" ).val("Hello Team");
 				$( "#helloContainer" ).show();
@@ -984,6 +1016,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 					$( "#helloContainer" ).show();
 					newsubmit();
 					}, 5000);
+					}
+				}
 			}		
 		
 		//with confirmation
@@ -2122,21 +2156,24 @@ function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
 		if ($("#gamemode").val()!=":party"){
-		var texture1, texture2, texture3;
-		texture1=this.url;
-		texture2=texture1.split(':').pop();
-		texture2=texture2.replace("/","");
-		texture3=texture1.split('ip-').pop();
-		texture3=texture3.substring(0, texture3.indexOf('.'));
-		texture3=texture3.replace(/-/g,".");
-		texture3=texture3+":"+texture2;
-          $("#server").val(texture3);
+		//var texture1, texture2, texture3;
+		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
+          setTimeout(function (){ 
+		  $("#server").val(currentIP);
+		  },800);
+		  
+		//  $('#gamemode').val(realmode);
 		}
-		else{ $("#server").val(this.url);}
+		else{ $("#server").val("#"+MC.getPartyToken());}
         try {
             adrs.apply(this, [b]), WebSocket.prototype.send = adrs
         } catch (e) {
             window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
         }
     }
+}
+
+function joinpartyfromconnect(){
+MC.joinParty($("#server").val());
+$("#cur-tk-hud").text("Party Token: "+$("#server").val());
 }
