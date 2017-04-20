@@ -26,6 +26,7 @@ $('#gamemode2').one("change", function(){
 });
 },3000);}
 MC.setGameMode($('#gamemode2').val());
+adres();
 });		
 		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
