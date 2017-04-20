@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -127,7 +127,7 @@ if (searchSip==null){
 		$(function() {
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
-				if ($("#server").val().includes("party")==false){
+				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
 				texture2=texture3.substring(0, texture3.indexOf(':'));
