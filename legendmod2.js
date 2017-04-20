@@ -1,5 +1,5 @@
 /*************
-* LEGEND modv2.071 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -68,7 +68,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
-var realmode="";
+var realmode=""; var realmode2="";
 var token="";
 var messageone=1;
 var hiddenfromclan=0;
@@ -79,7 +79,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="82"; // the version 1.1-> 1.11
+var semimodVersion="85"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -97,6 +97,7 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
 	if (openthecommunication=="YES"){
 		setTimeout(function () {
+		$('#gamemode').val(realmode2);
 		$("#connect").click();
 		return openthecommunication="NO";
 		},2500);
@@ -126,7 +127,7 @@ if (searchSip==null){
 		$(function() {
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
-				if ($("#server").val().includes("party")==false){
+				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
 				texture2=texture3.substring(0, texture3.indexOf(':'));
@@ -139,7 +140,7 @@ if (searchSip==null){
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-				$("#cur-tk-hud").text(" IP:" + tmz);}
+				$("#cur-tk-hud").text(" IP:" + tmz);currentIP=tmz}
 		
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
@@ -147,9 +148,7 @@ if (searchSip==null){
 		
 		
 			MC.setQuality($('#quality').val());}, 1000);}	
-			else{a.core.connect($("#server").val());
-
-			$("#cur-tk-hud").text($("#server").val());}
+			else{joinpartyfromconnect();}
 			
             });
         })
@@ -160,19 +159,26 @@ adres();
 
 setTimeout(function () {
 $("#connect2").click(function() {
-	
+	if($("#top5-hud").is(":visible")){
+		$("#connect").click();
+		return false;
+	}
+	else{
+	realmode2=$('#gamemode').val();
 	$("#create-party-btn-2").click();
 	
 	
 		
 		setTimeout(function () {
 			if (openthecommunication=="YES"){
+		$('#gamemode').val(realmode2);
 		$("#connect").click();
 		return openthecommunication="NO";
 		}
 		},6000);
 	
-	return openthecommunication="YES";
+	return openthecommunication="YES", realmode2;
+	}
 });
 }, 4500);
 
@@ -197,7 +203,10 @@ setTimeout(function () {
 	setTimeout(function (){realmode=getGameMode();
 	if (searchSip==null){
 		if (realmode!=":party"){
-	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}}
+	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
+		if (realmode==":party"){
+	history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());}
+	}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
@@ -314,15 +323,15 @@ setTimeout(function () {
 											'<option value="5" data-itr="">Main Banner</option>' +
 											'</select>' +
 
-											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();">' +
+											'<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
 											'<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
-											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();">' +
+											'<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
 											'<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
-											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();">' +
+											'<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with http://... or https://..." >' +
 											'<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
-											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();">' +						
-											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();">' +
-											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();">' +											
+											'<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +						
+											'<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +											
 											'</div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
@@ -332,7 +341,7 @@ setTimeout(function () {
 											'<option value="3" data-itr="">Icon 3</option>' +
 											'<option value="4" data-itr="">Icon 4</option>' +
 											'<option value="5" data-itr="">Icon 5</option>' +
-											'<option value="6" data-itr="">Icon 6</option>' +											
+											'<option value="6" data-itr="">Icon 6</option>' +
 											'</select>' +
 											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
 											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
@@ -341,12 +350,12 @@ setTimeout(function () {
 											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
 											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
 
-											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();">' +
-											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();">' +
-											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();">' +
-											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();">' +
-											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();">' +
-											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();">' +
+											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'</div></div>' +
 
 
@@ -374,7 +383,7 @@ setTimeout(function () {
 
     $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
                             '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
-                            '<input id="musicUrl" onclick="$(this).select();" type="text" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
+                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
 							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div></div>');
 							
 					
@@ -432,7 +441,7 @@ setTimeout(function () {
 	//clone region and gamemode//$("#region").clone().prependTo("#searchLog").attr("onclick","MC.setRegion($(this).val());");//$("#gamemode").clone().prependTo("#searchLog").attr('id', 'gamemode2').after("#gamemode");					 						  
 						  
      $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
-                                 '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
+                                 '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
                                  '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
                                  '<a id="reconnectBtn" class="btn btn-info btn-sm icon-loop2" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
                                  'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; margin-top: 0px; border: none;"></a>' +
@@ -2147,21 +2156,24 @@ function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
 		if ($("#gamemode").val()!=":party"){
-		var texture1, texture2, texture3;
-		texture1=this.url;
-		texture2=texture1.split(':').pop();
-		texture2=texture2.replace("/","");
-		texture3=texture1.split('ip-').pop();
-		texture3=texture3.substring(0, texture3.indexOf('.'));
-		texture3=texture3.replace(/-/g,".");
-		texture3=texture3+":"+texture2;
-          $("#server").val(texture3);
+		//var texture1, texture2, texture3;
+		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
+          setTimeout(function (){ 
+		  $("#server").val(currentIP);
+		  },800);
+		  
+		//  $('#gamemode').val(realmode);
 		}
-		else{ $("#server").val(this.url);}
+		else{ $("#server").val("#"+MC.getPartyToken());}
         try {
             adrs.apply(this, [b]), WebSocket.prototype.send = adrs
         } catch (e) {
             window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
         }
     }
+}
+
+function joinpartyfromconnect(){
+MC.joinParty($("#server").val());
+$("#cur-tk-hud").text("Party Token: "+$("#server").val());
 }
