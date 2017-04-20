@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -235,6 +235,7 @@ setTimeout(function () {
 		if (realmode!=":party"){
 	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
 		if (realmode==":party"){
+	window.history.pushState(null, null, window.location.pathname);
 	history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());}
 	}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
