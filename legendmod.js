@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -18,7 +18,9 @@ $('#gamemode').before('<select id="gamemode2" class="form-control" required="" d
 '<option value=":party" data-itr="page_party">Party Mode</option>'+
 '</select>');
 $('#gamemode').hide();
-$('#gamemode2').change(function(){MC.setGameMode($('#gamemode2').val());});		
+$('#gamemode2').change(function(){
+if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ MC.reconnect();},100);}MC.setGameMode($('#gamemode2').val());
+});		
 		
 setTimeout(function (){ $("#create-party-btn-2").click();},800);
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
