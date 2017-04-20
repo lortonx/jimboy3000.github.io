@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.077 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -143,7 +143,13 @@ if (searchSip==null){
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#connect2").tooltip({title: "Connect to server, or restablish communication", placement: "left"});
 			$("#connect2").click(function() {
+				if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();
+				toastr["info"]("Communication is Enabled again! Try again your server connect", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "200px");
+				return false;
+				}
+				else{
 				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
@@ -164,8 +170,8 @@ if (searchSip==null){
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},7000);
 		
 		
-			MC.setQuality($('#quality').val());}, 1000);}	
-			else{joinpartyfromconnect();}
+				MC.setQuality($('#quality').val());}, 1000);}	
+				else{joinpartyfromconnect();}}
 			
             });
         })
