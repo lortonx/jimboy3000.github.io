@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.084 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.085 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -951,7 +951,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
 	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
-	$("#gamemode").tooltip({title: "Gameplay, for party change region first", placement: "top"}); 
+	$("#gamemode2").tooltip({title: "The mode to play", placement: "top"}); 
 		
 	//	document.getElementsByClassName('yt-username')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";//	document.getElementsByClassName('yt-username')[0].innerHTML = "Legend Mod Promo";//	document.getElementsByClassName('btn btn-play btn-primary btn-needs-server')[0].id="playerofgame";//	document.getElementsByClassName('btn btn-play-guest btn-success btn-needs-server')[0].id="playerguest";//	document.getElementsByClassName('btn btn-warning btn-login-play btn-needs-server')[0].id="playerlogin";//	$("#playerofgame").attr("onclick","MC.setQuality($('#quality').val());MC.setNick(document.getElementById('nick').value); return false;");
     
@@ -1177,7 +1177,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$("#join-party-btn").hide();
 	$("#create-party-btn-2").attr('data-original-title','Click this button to open multiplayer game');	
 	$("#create-party-btn-2").attr("onclick","ShowSIPurl();");	
-	$("#region").hide();$("#gamemode").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
+	$("#region").hide();$("#gamemode2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
 	$(".agario-party").empty();$(".form-group.clearfix").hide();
 	$(".form-group").hide();}	
 	
@@ -1227,7 +1227,7 @@ function joinToken(token) {
     $("#joinPartyToken").val(token);
     $("#join-party-btn").click();
     $("#joinPartyToken").val("");
-    $("#gamemode").val("");
+    $("#gamemode2").val("");
     //setTimeout(function(){ $("#gamemode").val(lastMode); }, 1000);
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
@@ -1389,7 +1389,7 @@ function searchPlayer(searchString) {
                 //hideSearchHud();
                 toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 		//		testmessage();
-				$("#gamemode").val("nothing");
+				$("#gamemode2").val("nothing");
 				MC.setQuality($('#quality').val());
 				//showMenu();
             } else {
@@ -1518,7 +1518,7 @@ function hideCancelSearch() {$("#searchSpan").removeClass("glyphicon-ban-circle"
 function showMenu() {$("#overlays").css("left", "0");$("#overlays").show();$('a[href="#main-panel"]').click();}
 function hideMenu() {$("#overlays").css("left", "-999em");}
 function getLeaderboard() {return $(ogario.leaderboardHTML).text();}
-function getGameMode() {return $("#gamemode").val();}
+function getGameMode() {return $("#gamemode2").val();}
 function bumpLog() {$("#log").animate({ scrollTop: 0 }, "slow");}
 
 function StartEditGameNames(){
@@ -2185,7 +2185,7 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
-		if ($("#gamemode").val()!=":party"){
+		if ($("#gamemode2").val()!=":party"){
 		//var texture1, texture2, texture3;
 		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
           setTimeout(function (){ 
