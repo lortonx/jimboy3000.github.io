@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.077 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.078 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -146,7 +146,7 @@ if (searchSip==null){
 			$("#connect2").tooltip({title: "Connect to server, or restablish communication", placement: "left"});
 			$("#connect2").click(function() {
 				if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();
-				toastr["info"]("Communication is Enabled again! Try again your server connect", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "200px");
+				toastr["info"]("Communication is Enabled again! Try again your server connect", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "300px");
 				return false;
 				}
 				else{
@@ -592,6 +592,12 @@ setTimeout(function () {
 	
 $(".btn.btn-play-guest.btn-success.btn-needs-server").attr("onclick","newsubmit()");
 $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
+
+$('.btn.btn-warning.btn-spectate.btn-needs-server').click(function () {
+	if ($("#gamemode2").val()!=":party"){
+	toastr["info"]("Communication is disabled, after Spectate, save your ip and click <b>CONNECT</b> to fix", "", { timeOut: 4000, extendedTimeOut: 6000 }).css("width", "350px");	
+	}
+});
 		
     $(document).keydown(function (event) {
         if (event.which == 81 && ogario.spectate && !($("input").is(":focus"))) { // spectate 'Q' fix
