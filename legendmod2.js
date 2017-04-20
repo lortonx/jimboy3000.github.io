@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -10,6 +10,37 @@ $("#region").on('change', function() {
       if (this.value == ":party") { $("#create-party-btn-2").click(); }
 		console.log( "Party stuff fixed" );})
 
+
+$('#gamemode').before('<select id="gamemode2" class="form-control" required="" data-original-title="" title="" style="width: 32%;  display: inline-block; margin-left: 10px; margin-top: 6px">'+
+'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+'<option value=":party" data-itr="page_party">Party Mode</option>'+
+'</select>');
+$('#gamemode').hide();
+$('#gamemode2').change(function(){
+if ($('#gamemode2').val()==":teams"){ setTimeout(function (){ ogario.gameMode=":teams";adres();appendLog(getLeaderboard());
+$('#gamemode2').one("change", function(){
+	toastr["info"]('Wait 6 seconds');
+	oldteammode=$('#gamemode2').val(); $("#create-party-btn-2").click();setTimeout(function (){MC.setGameMode(oldteammode);adres();appendLog(getLeaderboard());},6000);
+	return false;
+});
+},3000);}
+MC.setGameMode($('#gamemode2').val());
+adres();
+});		
+		
+setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},2500);
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},3500);
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},4500);
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},5500);
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},7500);
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},8500);	
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},10500);								
+setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},11000);	
+		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
@@ -79,7 +110,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="85"; // the version 1.1-> 1.11
+var semimodVersion="86"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -90,18 +121,19 @@ var rotateminimap=0;
 var rotateminimapfirst=0;
 var openthecommunication="NO";
 var clickedname="NO";
+var oldteammode;
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
-	if (openthecommunication=="YES"){
+	/*if (openthecommunication=="YES"){
 		setTimeout(function () {
 		$('#gamemode').val(realmode2);
-		$("#connect").click();
+		$("#connect2").click();
 		return openthecommunication="NO";
 		},2500);
-	}
+	}*/
 	
 }
 
@@ -126,7 +158,7 @@ if (searchSip==null){
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
-			$("#connect").click(function() {
+			$("#connect2").click(function() {
 				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
@@ -156,7 +188,7 @@ adres();
 })(window, window.jQuery);
 }
 }, 4000);
-
+/*
 setTimeout(function () {
 $("#connect2").click(function() {
 	if($("#top5-hud").is(":visible")){
@@ -181,7 +213,7 @@ $("#connect2").click(function() {
 	}
 });
 }, 4500);
-
+*/
 
 setTimeout(function () {
 	
@@ -205,6 +237,7 @@ setTimeout(function () {
 		if (realmode!=":party"){
 	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}
 		if (realmode==":party"){
+	window.history.pushState(null, null, window.location.pathname);
 	history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());}
 	}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
@@ -450,16 +483,16 @@ setTimeout(function () {
                                  '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
                                  '</div>' +
 
-                                 '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 60px; left: 67px; padding: 0px; border-radius: 0px;">' +
-								 '<a id="copyIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy IP Address">IP</a>' +
+                                 '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: 0px; border-radius: 0px;">' +
+							//   '<a id="copyIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy IP Address">IP</a>' +
                                  '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
                                  '</div>' +
 
                                  '<input id="tempCopy" style="display: none;" value="">' +
                                  '</div>');	
 								 							 
-	$("#searchShortcut").mouseenter(function () {
-    $("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
+  //$("#searchShortcut").mouseenter(function () {
+  //$("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
 	$("#copySIPBtn").mouseenter(function () {$("#dropDown3").hide();$("#copySIPBtn").text("Token");$("#dropDown").show(100);});
 	$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text("Copy");});
     $("#logTitle").after('<a href="#" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><span class="glyphicon glyphicon-ban-circle"></span></a>');
@@ -503,7 +536,7 @@ setTimeout(function () {
 	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
-	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
+	$('#gamemode2').mouseenter(function() {$('#gamemode2').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode2').css('background-color', '');}); 
 		
 		//define if it is clicked
 	$("#create-party-btn-2").click(function () {
@@ -914,7 +947,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     originalDeath = MC.onPlayerDeath;
 
     // remove leaderboard setting//  
-	$("#normalLb").parent().remove();
+	 $("#normalLb").parent().remove();
     $("#leaderboard-hud > h4").text("Leaderboard");
 
     //50 maxlength
@@ -922,7 +955,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
 	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
-	$("#gamemode").tooltip({title: "Gameplay, for party change region first", placement: "top"}); 
+	$("#gamemode2").tooltip({title: "The mode to play", placement: "top"}); 
 		
 	//	document.getElementsByClassName('yt-username')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";//	document.getElementsByClassName('yt-username')[0].innerHTML = "Legend Mod Promo";//	document.getElementsByClassName('btn btn-play btn-primary btn-needs-server')[0].id="playerofgame";//	document.getElementsByClassName('btn btn-play-guest btn-success btn-needs-server')[0].id="playerguest";//	document.getElementsByClassName('btn btn-warning btn-login-play btn-needs-server')[0].id="playerlogin";//	$("#playerofgame").attr("onclick","MC.setQuality($('#quality').val());MC.setNick(document.getElementById('nick').value); return false;");
     
@@ -944,7 +977,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
-	toastr["info"]('1. Mod works <b><font color="green">properly</font></b>. <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
+	toastr["info"]('1. <b><font color="green">Major Upate applied</font></b>, for old version refer to <u><a href=www.legendmod.ml>www.legendmod.ml</a></u>> <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -1141,16 +1174,19 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
 	}, 1500);		
 		if (searchSip!=null){	
+		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();
+		
 	//$("#create-party-btn-2").click();
-	$("#hidendivtoken").show();
-	$("#create-party-btn-2").text("OPEN MULTIPLAYER TOKEN");
-	$("#joinPartyToken").hide();
-	$("#join-party-btn").hide();
-	$("#create-party-btn-2").attr('data-original-title','Click this button to open multiplayer game');	
-	$("#create-party-btn-2").attr("onclick","ShowSIPurl();");	
-	$("#region").hide();$("#gamemode").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
-	$(".agario-party").empty();$(".form-group.clearfix").hide();
-	$(".form-group").hide();}	
+	//$("#hidendivtoken").show();
+	//$("#create-party-btn-2").text("OPEN MULTIPLAYER TOKEN");
+	//$("#joinPartyToken").hide();
+	//$("#join-party-btn").hide();
+	//$("#create-party-btn-2").attr('data-original-title','Click this button to open multiplayer game');	
+	//$("#create-party-btn-2").attr("onclick","ShowSIPurl();");	
+	//$("#region").hide();$("#gamemode2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();
+	//$(".agario-party").empty();$(".form-group.clearfix").hide();
+	//$(".form-group").hide();
+	}	
 	
 	//if (searchSip==null){
 	//afterdeathtonormalmode();}
@@ -1198,7 +1234,7 @@ function joinToken(token) {
     $("#joinPartyToken").val(token);
     $("#join-party-btn").click();
     $("#joinPartyToken").val("");
-    $("#gamemode").val("");
+    $("#gamemode2").val("");
     //setTimeout(function(){ $("#gamemode").val(lastMode); }, 1000);
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
@@ -1360,7 +1396,7 @@ function searchPlayer(searchString) {
                 //hideSearchHud();
                 toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 		//		testmessage();
-				$("#gamemode").val("nothing");
+				$("#gamemode2").val("nothing");
 				MC.setQuality($('#quality').val());
 				//showMenu();
             } else {
@@ -1489,7 +1525,7 @@ function hideCancelSearch() {$("#searchSpan").removeClass("glyphicon-ban-circle"
 function showMenu() {$("#overlays").css("left", "0");$("#overlays").show();$('a[href="#main-panel"]').click();}
 function hideMenu() {$("#overlays").css("left", "-999em");}
 function getLeaderboard() {return $(ogario.leaderboardHTML).text();}
-function getGameMode() {return $("#gamemode").val();}
+function getGameMode() {return $("#gamemode2").val();}
 function bumpLog() {$("#log").animate({ scrollTop: 0 }, "slow");}
 
 function StartEditGameNames(){
@@ -1845,13 +1881,14 @@ function msToTime(duration) {
 }
 
 function testmessage(){	
-	
+	/*
 	var modetemp = $('#gamemode').val();
 	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 	if (modetemp!=":party"){
 		$("#hidendivtoken").css("display", "none");	
 		
-	}		
+	}	
+*/	
 }
 
 function newsubmit(){
@@ -2155,7 +2192,7 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
-		if ($("#gamemode").val()!=":party"){
+		if ($("#gamemode2").val()!=":party"){
 		//var texture1, texture2, texture3;
 		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
           setTimeout(function (){ 
