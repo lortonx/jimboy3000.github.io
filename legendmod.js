@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -149,7 +149,9 @@ if (searchSip==null){
 		
 			MC.setQuality($('#quality').val());}, 1000);}	
 			else{MC.joinParty($("#server").val());
-			$("#cur-tk-hud").text($("#server").val());}
+			
+
+			$("#cur-tk-hud").text("Party Token="+$("#server").val());}
 			
             });
         })
