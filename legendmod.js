@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.082 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.083 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -154,7 +154,7 @@ if (searchSip==null){
             f = "; expires=" + f.toGMTString()
         } else f = "";document.cookie = "agario_redirect=" + a + f + "; path=/"}
 		$(function() {
-			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect").click(function() {
 				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
@@ -185,7 +185,7 @@ adres();
 })(window, window.jQuery);
 }
 }, 4000);
-
+/*
 setTimeout(function () {
 $("#connect2").click(function() {
 	if($("#top5-hud").is(":visible")){
@@ -210,7 +210,7 @@ $("#connect2").click(function() {
 	}
 });
 }, 4500);
-
+*/
 
 setTimeout(function () {
 	
@@ -532,7 +532,7 @@ setTimeout(function () {
 	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
-	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
+	$('#gamemode2').mouseenter(function() {$('#gamemode2').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode2').css('background-color', '');}); 
 		
 		//define if it is clicked
 	$("#create-party-btn-2").click(function () {
@@ -1874,13 +1874,14 @@ function msToTime(duration) {
 }
 
 function testmessage(){	
-	
+	/*
 	var modetemp = $('#gamemode').val();
 	$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 	if (modetemp!=":party"){
 		$("#hidendivtoken").css("display", "none");	
 		
-	}		
+	}	
+*/	
 }
 
 function newsubmit(){
