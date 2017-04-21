@@ -846,7 +846,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("TIMEcalBtn", false);$("#timertools-hud").hide();$(this).html('<i class="fa fa-calculator"></i>Show Timer Calc.');}} );  		
       $("#HideAllBthn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {		
-			$("#cur-tk-hud").hide();
+	//		$("#cur-tk-hud").hide();
 			$("#shortcuts-hud").hide();
 			$("#rotate-hud").hide();
 			$("#exp-bar").hide();
@@ -861,7 +861,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#target-panel-hud").hide();			
 			$(this).html('<i class="fa fa-exclamation-triangle"></i>Show Everything');}			
 		else {
-			$("#cur-tk-hud").show();
+	//		$("#cur-tk-hud").show();
 			$("#shortcuts-hud").show();
 			$("#rotate-hud").show();
 			$("#exp-bar").show();
@@ -881,8 +881,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> No troll on Death ');}
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
-    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
-	$("#cur-tk-hud").attr("style", "opacity: 0;");
+    $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px; opacity: 0;"></div>');
+	//$("#cur-tk-hud").attr("style", "opacity: 0;");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
@@ -1267,7 +1267,8 @@ function joinToken(token) {
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
         $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-        $("#cur-tk-hud").text("TK: #" + currentToken);
+        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");;
+		
     }
 
 }
@@ -2241,5 +2242,5 @@ function adres() {
 
 function joinpartyfromconnect(){
 MC.joinParty($("#server").val());
-$("#cur-tk-hud").text("Party Token: "+$("#server").val());
+$("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity: 0;");;
 }
