@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -129,6 +129,8 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 
 if (mode==""){ modebetter2=":ffa"}
 else{ modebetter2=mode }
+
+
 
 loadericon();
 
@@ -1537,7 +1539,7 @@ function hideCancelSearch() {$("#searchSpan").removeClass("glyphicon-ban-circle"
 function showMenu() {$("#overlays").css("left", "0");$("#overlays").show();$('a[href="#main-panel"]').click();}
 function hideMenu() {$("#overlays").css("left", "-999em");}
 function getLeaderboard() {return $(ogario.leaderboardHTML).text();}
-function getGameMode() {return $("#gamemode2").val();}
+function getGameMode() {return $("#gamemode").val();}
 function bumpLog() {$("#log").animate({ scrollTop: 0 }, "slow");}
 
 function StartEditGameNames(){
