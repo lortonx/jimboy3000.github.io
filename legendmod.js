@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.079 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -214,11 +214,14 @@ setTimeout(function () {
 	if (searchSip!=null){	
 	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 	if (region==null){
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip);
+	//$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip);
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip).attr("style", "opacity: 0;");
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip);}, 6000);
 	}
 	else {
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
+	
+//	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000);
 	}
 	}	
@@ -711,8 +714,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
                 currentIP = xhr.responseJSON.ip;
 			//	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-                    $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
-					
+            //        $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
+					$("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ).attr("style", "opacity: 0;");
           //  }
 			}
 			}
@@ -879,7 +882,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
     $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
-	
+	$("#cur-tk-hud").attr("style", "opacity: 0;");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
