@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -12,7 +12,7 @@ $("#region").on('change', function() {
 
 
 
-		
+/*		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},2500);
@@ -25,6 +25,7 @@ setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-part
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},11000);	
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},12000);
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},13500);
+*/
 		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -145,11 +146,8 @@ if (searchSip==null){
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect2").tooltip({title: "Connect to server, or restablish communication", placement: "left"});
 			$("#connect2").click(function() {
-				if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();
-				toastr["info"]("Communication is Enabled again! Try again your server connect", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "300px");
-				return false;
-				}
-				else{
+
+				
 				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
@@ -171,7 +169,7 @@ if (searchSip==null){
 		
 		
 				MC.setQuality($('#quality').val());}, 1000);}	
-				else{joinpartyfromconnect();}}
+				else{joinpartyfromconnect();}
 			
             });
         })
@@ -283,7 +281,7 @@ setTimeout(function () {
 	document.title = "Legend mod v" + modVersion;
 //document.getElementById("import-settings").value="jim";
     // change buttons styles
-	
+/*	
 	$('#gamemode').before('<select id="gamemode2" class="form-control" required="" data-original-title="" title="" style="width: 32%;  display: inline-block; margin-left: 10px; margin-top: 6px">'+
 	'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
 	'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
@@ -301,7 +299,7 @@ setTimeout(function () {
 		},3000);}
 	MC.setGameMode($('#gamemode2').val());
 	adres();
-	});		
+	});		*/
 	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
@@ -544,7 +542,7 @@ setTimeout(function () {
 	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
-	$('#gamemode2').mouseenter(function() {$('#gamemode2').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode2').css('background-color', '');}); 
+//	$('#gamemode2').mouseenter(function() {$('#gamemode2').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode2').css('background-color', '');}); 
 		
 		//define if it is clicked
 	$("#create-party-btn-2").click(function () {
