@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.078 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.079 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1097,7 +1097,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 					});
 			}
 			
-			if(commandMsg=="DeathTroll"){
+			if(commandMsg=="dTroll2"){
 			toastr["warning"]('Your teammate '+playerMsg+' wants you to hide Enable Troll on death</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function () { settroll1true();whenplayerdies(); });
 			}			
@@ -2182,7 +2182,7 @@ function ShowSIPurl(){
 function msgcommand1f(){commandMsg="Hello"; otherMsg="";dosendmsgcommand();}
 function msgcommand2f(){commandMsg="Team5"; otherMsg="";dosendmsgcommand();}
 function msgcommand3f(){commandMsg="NamePerm"; otherMsg="";dosendmsgcommand();}
-function msgcommand4f(){commandMsg="DeathTroll"; otherMsg="";dosendmsgcommand();}
+function msgcommand4f(){commandMsg="dTroll2"; otherMsg="";dosendmsgcommand();}
 function msgcommand5f(){commandMsg="Youtube"; otherMsg="";dosendmsgcommand();}
 function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
@@ -2217,12 +2217,12 @@ ctx.translate(a, -$("#minimap").height());
 }
 
 
-function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon3(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic3urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon4(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic4urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon5(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic5urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon6(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic6urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon1(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon2(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon3(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic3urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon4(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic4urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon5(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic5urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon6(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic6urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
 
 function setpic1data(){ localStorage.setItem("pic1dataimg", $("#pic1data").val())
 	$("#sendicon1").attr("data-original-title", $("#pic1data").val());}
