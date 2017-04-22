@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -97,7 +97,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="88"; // the version 1.1-> 1.11
+var semimodVersion="89"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -164,7 +164,7 @@ if (searchSip==null){
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-				$("#cur-tk-hud").text(" IP:" + tmz);currentIP=tmz}
+				$("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");currentIP=tmz;}
 		
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
@@ -1203,7 +1203,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
 	}, 1500);		
 		if (searchSip!=null){	
-		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#leaderboard-menu").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
+		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
 		
 	//$("#create-party-btn-2").click();
 	//$("#hidendivtoken").show();
@@ -1246,7 +1246,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	$("#enableshortcuts1").click(function(){ enableshortcuts();});
 	}}}
 
-	if (timesopened==10){
+	if (timesopened==10||timesopened==100||timesopened==1000){
 	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 	toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
 	$("#enableshortcuts").click(function(){ enableshortcuts();});
