@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1227,7 +1227,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 	function loadericon(){
 	containermain=$("#helloContainer").html();
-	$("#helloContainer").before('<img id="imagebig" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/loading7_gray.gif" /><img id="imagebig2" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" />');
+	$("#helloContainer").before('<img id="imagebig" style=" padding: 300px;" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/loading7_gray.gif" /><img id="imagebig2" style=" padding: 300px;" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" />');
 	$("#helloContainer").hide();
 	setTimeout(function () {
 	$("#helloContainer").fadeIn( 2000 );
