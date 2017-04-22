@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1221,20 +1221,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	//afterdeathtonormalmode();}
 	if (timesopened==null){openhelper();}
 	
-	if (timesopened>=3){
-	if (checkonlyonce==null){
-	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){	
-	toastr["warning"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");		
-	$("#enableshortcuts1").click(function(){ enableshortcuts();});
-	}}}
 
-	if (timesopened==10){
-	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-	toastr["warning"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
-	$("#enableshortcuts").click(function(){ enableshortcuts();});
-	}}
-
-checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
 	console.log( "Legend Mod is Ready" );
 }, 3500);
@@ -1250,6 +1237,23 @@ checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	$("#imagebig").fadeOut( 2000 );
 	$("#imagebig2").fadeOut( 2000 );
 	MC.setQuality($('#quality').val());
+	
+	
+	if (timesopened>=3){
+	if (checkonlyonce==null){
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){	
+	toastr["warning"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");		
+	$("#enableshortcuts1").click(function(){ enableshortcuts();});
+	}}}
+
+	if (timesopened==10){
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+	toastr["warning"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
+	$("#enableshortcuts").click(function(){ enableshortcuts();});
+	}}
+
+checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
+	
 	}, 4500);
 	}
 
