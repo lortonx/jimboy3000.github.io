@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.078 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -30,6 +30,7 @@ setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-part
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
+var checkonlyonce = localStorage.getItem("checkonlyonce");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=f5cXwgjs0aE";
 var coinTimer;
 var musicPlayer;
@@ -96,7 +97,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="87"; // the version 1.1-> 1.11
+var semimodVersion="88"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -1220,6 +1221,21 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	//afterdeathtonormalmode();}
 	if (timesopened==null){openhelper();}
 	
+	if (timesopened>=3){
+	if (checkonlyonce==null){
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){	
+	toastr["warning"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button id=enableshortcuts class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");		
+	$("#enableshortcuts").click(function(){ enableshortcuts();});
+	}}}
+
+	if (timesopened==10){
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+	toastr["warning"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
+	$("#enableshortcuts").click(function(){ enableshortcuts();});
+	}}
+
+checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
+	
 	console.log( "Legend Mod is Ready" );
 }, 3500);
 
@@ -2217,7 +2233,22 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
 	
-	
+function enableshortcuts(){
+	if($("#IPBtn").attr('aria-pressed') == "false"){
+	$("#IPBtn").click(); }
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+	$("#SHOSHOBtn").click(); }
+	if($("#TIMEBtn").attr('aria-pressed') == "false"){
+	$("#TIMEBtn").click(); }
+	if($("#MAINBBtn").attr('aria-pressed') == "false"){
+	$("#MAINBBtn").click(); }
+	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+	$("#MAINBTBtn").click(); }
+	if($("#XPBtn").attr('aria-pressed') == "false"){
+	$("#XPBtn").click(); }
+	if($("#MANUIBtn").attr('aria-pressed') == "false"){
+	$("#MANUIBtn").click(); }
+}	
 	
 function adres() {
     var adrs = WebSocket.prototype.send;
