@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.078 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1023,15 +1023,15 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 $('#server-connect').click(function(){
           setTimeout(function (){ 
 		  $("#server").val(currentIP);
-		  },500);});
+		  },1500);});
 $('#server-reconnect').click(function(){
           setTimeout(function (){ 
 		  $("#server").val(currentIP);
-		  },500);});
+		  },1500);});
 $('#server-join').click(function(){
           setTimeout(function (){ 
 		  $("#server").val(currentIP);
-		  },500);});
+		  },1500);});
 		  
 	$("#shortcuts-hud").hide();
 	$("#rotate-hud").hide();	
@@ -2244,10 +2244,10 @@ function enableshortcuts(){
 	$("#SHOSHOBtn").click(); }
 	if($("#TIMEBtn").attr('aria-pressed') == "false"){
 	$("#TIMEBtn").click(); }
-	if($("#MAINBBtn").attr('aria-pressed') == "false"){
-	$("#MAINBBtn").click(); }
-	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
-	$("#MAINBTBtn").click(); }
+//	if($("#MAINBBtn").attr('aria-pressed') == "false"){
+//	$("#MAINBBtn").click(); }
+//	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+//	$("#MAINBTBtn").click(); }
 	if($("#XPBtn").attr('aria-pressed') == "false"){
 	$("#XPBtn").click(); }
 	if($("#MANUIBtn").attr('aria-pressed') == "false"){
