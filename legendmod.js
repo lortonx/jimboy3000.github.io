@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -97,7 +97,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="89"; // the version 1.1-> 1.11
+var semimodVersion="90"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -1282,7 +1282,7 @@ function joinToken(token) {
     $("#joinPartyToken").val(token);
     $("#join-party-btn").click();
     $("#joinPartyToken").val("");
-    $("#gamemode2").val("");
+    $("#gamemode").val("");
     //setTimeout(function(){ $("#gamemode").val(lastMode); }, 1000);
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
@@ -1445,7 +1445,7 @@ function searchPlayer(searchString) {
                 //hideSearchHud();
                 toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 		//		testmessage();
-				$("#gamemode2").val("nothing");
+				$("#gamemode").val("nothing");
 				MC.setQuality($('#quality').val());
 				//showMenu();
             } else {
@@ -2257,7 +2257,7 @@ function enableshortcuts(){
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
-		if ($("#gamemode2").val()!=":party"){
+		if ($("#gamemode").val()!=":party"){
 		//var texture1, texture2, texture3;
 		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
           setTimeout(function (){ 
