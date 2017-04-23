@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -12,7 +12,7 @@ $("#region").on('change', function() {
 
 
 
-		
+/*		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},1500);		  
 setTimeout(function (){ $('#gamemode2').val(":party");if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},2500);
@@ -25,10 +25,12 @@ setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-part
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},11000);	
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},12000);
 setTimeout(function (){ if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();}},13500);
+*/
 		
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
+var checkonlyonce = localStorage.getItem("checkonlyonce");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=f5cXwgjs0aE";
 var coinTimer;
 var musicPlayer;
@@ -61,7 +63,7 @@ var leadbtext= localStorage.getItem("leadbtext");
 var teambtext= localStorage.getItem("teambtext");
 var imgUrl= localStorage.getItem("imgUrl");
 var imgHref= localStorage.getItem("imgHref");
-var autoRespawn = localStorage.getItem("autoRespawn");
+//var autoRespawn = localStorage.getItem("autoRespawn");
 var showToken = localStorage.getItem("showTK");
 var showPlayer = localStorage.getItem("showPlayer");
 var IPBtn = localStorage.getItem("IPBtn");
@@ -95,7 +97,7 @@ var setmessagecom="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="86"; // the version 1.1-> 1.11
+var semimodVersion="90"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -129,6 +131,8 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 if (mode==""){ modebetter2=":ffa"}
 else{ modebetter2=mode }
 
+
+
 loadericon();
 
 
@@ -145,11 +149,8 @@ if (searchSip==null){
 			$("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
 			$("#connect2").tooltip({title: "Connect to server, or restablish communication", placement: "left"});
 			$("#connect2").click(function() {
-				if($("#top5-hud").is(":visible")==false){$("#create-party-btn-2").click();
-				toastr["info"]("Communication is Enabled again! Try again your server connect", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "300px");
-				return false;
-				}
-				else{
+
+				
 				if ($("#server").val().includes("#")==false){
 				var texture2, texture3;
 				texture3=$("#server").val();
@@ -163,7 +164,7 @@ if (searchSip==null){
 				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-				$("#cur-tk-hud").text(" IP:" + tmz);currentIP=tmz}
+				$("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");currentIP=tmz;}
 		
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
@@ -171,7 +172,7 @@ if (searchSip==null){
 		
 		
 				MC.setQuality($('#quality').val());}, 1000);}	
-				else{joinpartyfromconnect();}}
+				else{joinpartyfromconnect();}
 			
             });
         })
@@ -215,10 +216,13 @@ setTimeout(function () {
 	$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 	if (region==null){
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip);
+	//$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip).attr("style", "opacity: 0;");
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip);}, 6000);
 	}
 	else {
-	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 );
+	
+	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
+//	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000);
 	}
 	}	
@@ -283,7 +287,7 @@ setTimeout(function () {
 	document.title = "Legend mod v" + modVersion;
 //document.getElementById("import-settings").value="jim";
     // change buttons styles
-	
+/*	
 	$('#gamemode').before('<select id="gamemode2" class="form-control" required="" data-original-title="" title="" style="width: 32%;  display: inline-block; margin-left: 10px; margin-top: 6px">'+
 	'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
 	'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
@@ -301,7 +305,7 @@ setTimeout(function () {
 		},3000);}
 	MC.setGameMode($('#gamemode2').val());
 	adres();
-	});		
+	});		*/
 	
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
@@ -351,9 +355,9 @@ setTimeout(function () {
 											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>Show Timer Calc.</button>' +
 											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>Edit Names</button>' +
 											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i> Auto free coins</button>' +
-											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
-											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
-											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
+//											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
+											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
+											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span class="title" style="">Manual background:  </span>' +
 											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
@@ -421,12 +425,12 @@ setTimeout(function () {
 	$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
-
+	var savemusic=$(".agario-panel.sounds-panel").html();
     $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
                             '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
                             '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
 							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div></div>');
-							
+	$('#music').append(savemusic);						
 					
 							
     if (typeof YT !== 'undefined') {
@@ -544,7 +548,7 @@ setTimeout(function () {
 	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
-	$('#gamemode2').mouseenter(function() {$('#gamemode2').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode2').css('background-color', '');}); 
+//	$('#gamemode2').mouseenter(function() {$('#gamemode2').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode2').css('background-color', '');}); 
 		
 		//define if it is clicked
 	$("#create-party-btn-2").click(function () {
@@ -553,6 +557,7 @@ setTimeout(function () {
 		return messageone=1;
 	});	
 
+	
     // LEGEND footer
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
     $("#menu-footer").text("");
@@ -710,8 +715,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
                 currentIP = xhr.responseJSON.ip;
 			//	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
                     $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-                    $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
-					
+            //        $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
+					$("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ).attr("style", "opacity: 0;");
           //  }
 			}
 			}
@@ -778,7 +783,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			localStorage.setItem("copyGameNames", false);
 			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>Edit Names');return checkedGameNames=1;}
 		});
-    $("#autoRespawnBtn").click(function () {
+ /*   $("#autoRespawnBtn").click(function () {
         var checked = !($(this).attr('aria-pressed') == "true");
         if (checked) {
             localStorage.setItem("autoRespawn", true);
@@ -800,7 +805,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             MC.onPlayerDeath = originalDeath;
             $(this).html('<i class="fa fa-flash"></i> Auto respawn');
         }
-    });
+    }); */
 
 	localStorage.setItem("showTK", false);
   
@@ -842,7 +847,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("TIMEcalBtn", false);$("#timertools-hud").hide();$(this).html('<i class="fa fa-calculator"></i>Show Timer Calc.');}} );  		
       $("#HideAllBthn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {		
-			$("#cur-tk-hud").hide();
+	//		$("#cur-tk-hud").hide();
 			$("#shortcuts-hud").hide();
 			$("#rotate-hud").hide();
 			$("#exp-bar").hide();
@@ -857,7 +862,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#target-panel-hud").hide();			
 			$(this).html('<i class="fa fa-exclamation-triangle"></i>Show Everything');}			
 		else {
-			$("#cur-tk-hud").show();
+	//		$("#cur-tk-hud").show();
 			$("#shortcuts-hud").show();
 			$("#rotate-hud").show();
 			$("#exp-bar").show();
@@ -878,7 +883,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
 
     $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
-	
+	//$("#cur-tk-hud").attr("style", "opacity: 0;");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 80%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
@@ -990,8 +995,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	// ANNOUNCEMENTS
 	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');
-	toastr["info"]('1. <b><font color="green">Major Upate applied</font></b>, for old version refer to <font color="red"><u>www.legendmod.ml</u></font> <br>2. QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
+	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');}
+	//toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
@@ -1014,7 +1019,20 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		  	if(modVersion!="2.0"){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate"); }
 	else{	if(tag1.includes("Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("❶")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("₣")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("℄")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("♋")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("۞ẒṨ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("ᴺ૯ᵂ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("۞ᵶᵴ™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("๔ɀ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("ﾏｮʞʇ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("₴₵₳Ɽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββŁΣßΛĻŽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("⋩ᕮχ⋨")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("ƖƦ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("ȴøng")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("ƸU")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
 	  });	
-	
+
+$('#server-connect').click(function(){
+          setTimeout(function (){ 
+		  $("#server").val(currentIP);
+		  },1500);});
+$('#server-reconnect').click(function(){
+          setTimeout(function (){ 
+		  $("#server").val(currentIP);
+		  },1500);});
+$('#server-join').click(function(){
+          setTimeout(function (){ 
+		  $("#server").val(currentIP);
+		  },1500);});
+		  
 	$("#shortcuts-hud").hide();
 	$("#rotate-hud").hide();	
 	$("#exp-bar").hide();
@@ -1023,9 +1041,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	$("#legendbanners").hide();
 	$(".input-group.skin.colorpicker-element").hide();
 	$("#timertools-hud").hide();
-	
-
-
 	
 //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
 //Legend.Mod&?player=a&?com=Team5&?do=donothing
@@ -1082,7 +1097,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 					});
 			}
 			
-			if(commandMsg=="DeathTroll"){
+			if(commandMsg=="dTroll2"){
 			toastr["warning"]('Your teammate '+playerMsg+' wants you to hide Enable Troll on death</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function () { settroll1true();whenplayerdies(); });
 			}			
@@ -1119,7 +1134,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 	setTimeout(function () {
 	
-	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
+//	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
 	if (IPBtn  == "true") { $("#IPBtn").click(); }
 	if (SHOSHOBtn == "true") { $("#SHOSHOBtn").click(); }
 	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
@@ -1188,7 +1203,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
 	}, 1500);		
 		if (searchSip!=null){	
-		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();
+		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
 		
 	//$("#create-party-btn-2").click();
 	//$("#hidendivtoken").show();
@@ -1206,6 +1221,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	//afterdeathtonormalmode();}
 	if (timesopened==null){openhelper();}
 	
+
+	
 	console.log( "Legend Mod is Ready" );
 }, 3500);
 
@@ -1213,13 +1230,30 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 	function loadericon(){
 	containermain=$("#helloContainer").html();
-	$("#helloContainer").before('<img id="imagebig" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/loading7_gray.gif" /><img id="imagebig2" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" />');
+	$("#helloContainer").before('<img id="imagebig" style=" padding-left: 30px; padding-top:200px" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/loading7_gray.gif" /><img id="imagebig2" style=" padding-left: 0px; padding-top:250px" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" />');	
 	$("#helloContainer").hide();
 	setTimeout(function () {
 	$("#helloContainer").fadeIn( 2000 );
 	$("#imagebig").fadeOut( 2000 );
 	$("#imagebig2").fadeOut( 2000 );
 	MC.setQuality($('#quality').val());
+	
+	
+	if (timesopened>=3){
+	if (checkonlyonce!="true"){
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){	
+	toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");		
+	$("#enableshortcuts1").click(function(){ enableshortcuts();});
+	}}}
+
+	if (timesopened==10||timesopened==100||timesopened==1000){
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+	toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
+	$("#enableshortcuts").click(function(){ enableshortcuts();});
+	}}
+
+checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
+	
 	}, 4500);
 	}
 
@@ -1248,12 +1282,13 @@ function joinToken(token) {
     $("#joinPartyToken").val(token);
     $("#join-party-btn").click();
     $("#joinPartyToken").val("");
-    $("#gamemode2").val("");
+    $("#gamemode").val("");
     //setTimeout(function(){ $("#gamemode").val(lastMode); }, 1000);
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
         $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-        $("#cur-tk-hud").text("TK: #" + currentToken);
+        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");;
+		
     }
 
 }
@@ -1410,7 +1445,7 @@ function searchPlayer(searchString) {
                 //hideSearchHud();
                 toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 		//		testmessage();
-				$("#gamemode2").val("nothing");
+				$("#gamemode").val("nothing");
 				MC.setQuality($('#quality').val());
 				//showMenu();
             } else {
@@ -1539,7 +1574,7 @@ function hideCancelSearch() {$("#searchSpan").removeClass("glyphicon-ban-circle"
 function showMenu() {$("#overlays").css("left", "0");$("#overlays").show();$('a[href="#main-panel"]').click();}
 function hideMenu() {$("#overlays").css("left", "-999em");}
 function getLeaderboard() {return $(ogario.leaderboardHTML).text();}
-function getGameMode() {return $("#gamemode2").val();}
+function getGameMode() {return $("#gamemode").val();}
 function bumpLog() {$("#log").animate({ scrollTop: 0 }, "slow");}
 
 function StartEditGameNames(){
@@ -2147,7 +2182,7 @@ function ShowSIPurl(){
 function msgcommand1f(){commandMsg="Hello"; otherMsg="";dosendmsgcommand();}
 function msgcommand2f(){commandMsg="Team5"; otherMsg="";dosendmsgcommand();}
 function msgcommand3f(){commandMsg="NamePerm"; otherMsg="";dosendmsgcommand();}
-function msgcommand4f(){commandMsg="DeathTroll"; otherMsg="";dosendmsgcommand();}
+function msgcommand4f(){commandMsg="dTroll2"; otherMsg="";dosendmsgcommand();}
 function msgcommand5f(){commandMsg="Youtube"; otherMsg="";dosendmsgcommand();}
 function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
@@ -2182,12 +2217,12 @@ ctx.translate(a, -$("#minimap").height());
 }
 
 
-function sendicon1(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon2(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon3(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic3urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon4(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic4urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon5(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic5urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
-function sendicon6(){KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic6urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon1(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic1urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon2(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic2urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon3(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic3urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon4(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic4urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon5(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic5urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
+function sendicon6(){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[img]"+pic6urlimg+"[/img]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}
 
 function setpic1data(){ localStorage.setItem("pic1dataimg", $("#pic1data").val())
 	$("#sendicon1").attr("data-original-title", $("#pic1data").val());}
@@ -2202,12 +2237,27 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
 	
-	
+function enableshortcuts(){
+	if($("#IPBtn").attr('aria-pressed') == "false"){
+	$("#IPBtn").click(); }
+	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+	$("#SHOSHOBtn").click(); }
+	if($("#TIMEBtn").attr('aria-pressed') == "false"){
+	$("#TIMEBtn").click(); }
+//	if($("#MAINBBtn").attr('aria-pressed') == "false"){
+//	$("#MAINBBtn").click(); }
+//	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+//	$("#MAINBTBtn").click(); }
+	if($("#XPBtn").attr('aria-pressed') == "false"){
+	$("#XPBtn").click(); }
+	if($("#MANUIBtn").attr('aria-pressed') == "false"){
+	$("#MANUIBtn").click(); }
+}	
 	
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
-		if ($("#gamemode2").val()!=":party"){
+		if ($("#gamemode").val()!=":party"){
 		//var texture1, texture2, texture3;
 		//texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
           setTimeout(function (){ 
@@ -2227,5 +2277,5 @@ function adres() {
 
 function joinpartyfromconnect(){
 MC.joinParty($("#server").val());
-$("#cur-tk-hud").text("Party Token: "+$("#server").val());
+$("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity: 0;");;
 }
