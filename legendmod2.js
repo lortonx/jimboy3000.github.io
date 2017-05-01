@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.081 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -513,7 +513,7 @@ setTimeout(function () {
     $("#searchBtn").tooltip('disable');
     $("#copyLBBtn").click(function () {copy(getLeaderboard());});
 	$("#lastIPBtn").click(function () {lastIP=localStorage.getItem("lastIP"); dosearch(); document.getElementById("searchInput").value=lastIP; $("#searchBtn").click();});
-	$("#OpenInfo").click(function () {openhelper();});
+//	$("#OpenInfo").click(function () {openhelper();});
 
     $("#copyIPBtn").click(function () {
 		if (searchSip!=null){copy("http://agar.io/?r=" + region + "&m=" + mode + "&search=ws://" + searchSip);}
@@ -568,12 +568,18 @@ setTimeout(function () {
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
     $("#menu-footer").text("");
 	
+	$(".clearfix").css( { marginBottom : "4px" } );
+	$("#freeCoins").css( { marginBottom : "-10px" } );
+	$("#dailyQuests").css( { marginBottom : "-5px" } );
+	
 		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i>Legend Mod by jimboy3100</i></h6></div>');
 		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;>Times Used: '+timesopened+'</div>');
+		$(".agario-panel.ogario-yt-panel").css( { marginBottom : "-10px" } );
 	//	'Scripts used: ' + '<a href="http://ogario.ovh" target="_blank">ogario</a>'+ ", " + '<a href="https://kittymod.github.io/" target="_blank">kitty</a>' + " & " + '<a href="https://greasyfork.org/en/scripts/by-site/agar.io" target="_blank">others</a><br>'+
 	
 		$(".agario-panel.agario-shop-panel").after('<button id="OpenInfo" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 25%;"><i class="fa fa-info-circle"></i>Information</button>');
-	$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
+		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
+		$("#OpenInfo").click(function () {openhelper();});
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
         '<a href="http://www.miniclip.com/games/en/" target="_blank"></a>');
     // donate button
