@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -266,6 +266,8 @@ ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 14000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
 ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 22000);
 
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
@@ -557,6 +559,10 @@ setTimeout(function () {
 		return messageone=1;
 	});	
 
+	
+	$("#boostButton").css("display", "inline-block");
+	$("#massButton").css("display", "inline-block");
+	$("#massButton").after($("#promo-badge-container"));
 	
     // LEGEND footer
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
