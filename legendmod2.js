@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.079 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -568,9 +568,10 @@ setTimeout(function () {
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
     $("#menu-footer").text("");
 	
-		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i>Legend Mod by jimboy3100</i></h6>'+
+		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i>Legend Mod by jimboy3100</i></h6></div>');
+		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;>Times Used: '+timesopened+'</div>');
 	//	'Scripts used: ' + '<a href="http://ogario.ovh" target="_blank">ogario</a>'+ ", " + '<a href="https://kittymod.github.io/" target="_blank">kitty</a>' + " & " + '<a href="https://greasyfork.org/en/scripts/by-site/agar.io" target="_blank">others</a><br>'+
-		'Times Used: '+timesopened+'</div>');
+	
 		$(".agario-panel.agario-shop-panel").after('<button id="OpenInfo" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 25%;"><i class="fa fa-info-circle"></i>Information</button>');
 	$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
@@ -1731,6 +1732,7 @@ function getQueryVariable(variable, url) {
 function startCoinMining() {
     getCoin();
     setTimeout(function () { $("#autoCoinBtn").tooltip('show'); }, 2000);
+	setTimeout(function () { $("#autoCoinBtn").focusout(); }, 6000);
     coinTimer = setInterval(function () {
         getCoin();
 
@@ -1773,6 +1775,7 @@ function getCoin() {
     $("#autoCoinBtn").tooltip({ title: "Next " + timeStr, container: "body", placement: "right" });
     if (ogario.play == true) {
         setTimeout(function () { $("#autoCoinBtn").tooltip("hide"); }, 3000);
+		setTimeout(function () { $("#autoCoinBtn").focusout(); }, 7000);
         play();
     }
 }
