@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -57,18 +57,18 @@ var pic3dataimg="Yow!!";
 var pic4dataimg="Death!";
 var pic5dataimg="Relax!";
 var pic6dataimg="Legend Mod!";
-var pic1urlyt="dQw4w9WgXcQ";
-var pic2urlyt="btPJPFnesV4";
-var pic3urlyt="UD-MkihnOXg";
-var pic4urlyt="vpoqWs6BuIY";
-var pic5urlyt="VUvfn5-BLM8";
-var pic6urlyt="CnIfNSpCf70";
-var pic1datayt="Rick Astley - Never Gonna Give You Up";
-var pic2datayt="Survivor - Eye Of The Tiger";
-var pic3datayt="Lion king - The Lion Sleeps Tonight";
-var pic4datayt="Agario - Jumbo Solo vs Teams";
-var pic5datayt="Agario - Kill3r vs Teams";
-var pic6datayt="Legend Mod Promo";
+var yt1url="dQw4w9WgXcQ";
+var yt2url="btPJPFnesV4";
+var yt3url="UD-MkihnOXg";
+var yt4url="vpoqWs6BuIY";
+var yt5url="VUvfn5-BLM8";
+var yt6url="CnIfNSpCf70";
+var yt1data="Rick Astley - Never Gonna Give You Up";
+var yt2data="Survivor - Eye Of The Tiger";
+var yt3data="Lion king - The Lion Sleeps Tonight";
+var yt4data="Agario - Jumbo Solo vs Teams";
+var yt5data="Agario - Kill3r vs Teams";
+var yt6data="Legend Mod Promo";
 var lastIP="";
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext= localStorage.getItem("leadbtext");
@@ -100,7 +100,7 @@ var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
 var realmode=""; var realmode2="";
 var token="";
-var messageone=1;
+var messageone=1; //If legendmod is being used
 var hiddenfromclan=0;
 var saveclanpassword;
 var troll1;
@@ -395,7 +395,7 @@ setTimeout(function () {
 											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +											
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons&Youtube:  </span>' +
 											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
 											'<option value="1" data-itr="">Icon 1</option>' +
 											'<option value="2" data-itr="">Icon 2</option>' +
@@ -403,13 +403,26 @@ setTimeout(function () {
 											'<option value="4" data-itr="">Icon 4</option>' +
 											'<option value="5" data-itr="">Icon 5</option>' +
 											'<option value="6" data-itr="">Icon 6</option>' +
+											'<option value="7" data-itr="">Youtube 1</option>' +
+											'<option value="8" data-itr="">Youtube 2</option>' +
+											'<option value="9" data-itr="">Youtube 3</option>' +
+											'<option value="10" data-itr="">Youtube 4</option>' +
+											'<option value="11" data-itr="">Youtube 5</option>' +
+											'<option value="12" data-itr="">Youtube 6</option>' +
 											'</select>' +
+											
 											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
 											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
 											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
 											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
 											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
 											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
+											'<input id="yt1data" class="form-control" placeholder="Youtube Message 1 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
+											'<input id="yt2data" class="form-control" placeholder="Youtube Message 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
+											'<input id="yt3data" class="form-control" placeholder="Youtube Message 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
+											'<input id="yt4data" class="form-control" placeholder="Youtube Message 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
+											'<input id="yt5data" class="form-control" placeholder="Youtube Message 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
+											'<input id="yt6data" class="form-control" placeholder="Youtube Message 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
 
 											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
@@ -417,6 +430,12 @@ setTimeout(function () {
 											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="yt1url" class="form-control" placeholder="Youtube Message 1 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt2url" class="form-control" placeholder="Youtube Message 2 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt3url" class="form-control" placeholder="Youtube Message 3 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt4url" class="form-control" placeholder="Youtube Message 4 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt5url" class="form-control" placeholder="Youtube Message 5 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt6url" class="form-control" placeholder="Youtube Message 6 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
 											'</div></div>' +
 
 
@@ -570,7 +589,7 @@ setTimeout(function () {
 	$("#create-party-btn-2").click(function () {
 		if (hiddenfromclan==0){$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");$("#ChatBtn1").attr('class', 'fa fa-eye-slash');}
 		else if (hiddenfromclan==1){$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");}
-		return messageone=1;
+		//return messageone=1;
 	});	
 
 	
@@ -917,10 +936,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
-	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
-	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
-	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Communication"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
+	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
+	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
 	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
 	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
 	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
@@ -1012,7 +1031,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     // fix main menu placement after stats
-    $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
+   // $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
 
     // save original death function
     originalDeath = MC.onPlayerDeath;
@@ -1225,6 +1244,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#imgHref').val()!=""){setimgHref();}	
 	document.getElementById("minbtext").value =localStorage.getItem("minbtext");
 	if($('minbtext').val()!=""){setminbtext();}		
+	
 	document.getElementById("pic1url").value =localStorage.getItem("pic1urlimg");
 	if($('#pic1url').val()!=""){setpic1url();}	
 	document.getElementById("pic2url").value =localStorage.getItem("pic2urlimg");
@@ -1237,6 +1257,18 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5url').val()!=""){setpic5url();}
 	document.getElementById("pic6url").value =localStorage.getItem("pic6urlimg");
 	if($('#pic6url').val()!=""){setpic6url();}
+	document.getElementById("yt1url").value =localStorage.getItem("yt1urlimg");
+	if($('#yt1url').val()!=""){setyt1url();}	
+	document.getElementById("yt2url").value =localStorage.getItem("yt2urlimg");
+	if($('#yt2url').val()!=""){setyt2url();}
+	document.getElementById("yt3url").value =localStorage.getItem("yt3urlimg");
+	if($('#yt3url').val()!=""){setyt3url();}
+	document.getElementById("yt4url").value =localStorage.getItem("yt4urlimg");
+	if($('#yt4url').val()!=""){setyt4url();}
+	document.getElementById("yt5url").value =localStorage.getItem("yt5urlimg");
+	if($('#yt5url').val()!=""){setyt5url();}
+	document.getElementById("yt6url").value =localStorage.getItem("yt6urlimg");
+	if($('#yt6url').val()!=""){setyt6url();}
 	document.getElementById("pic1data").value =localStorage.getItem("pic1dataimg");	
 	if($('#pic1data').val()!=""){setpic1data();}
 	document.getElementById("pic2data").value =localStorage.getItem("pic2dataimg");
@@ -1248,7 +1280,20 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	document.getElementById("pic5data").value =localStorage.getItem("pic5dataimg");
 	if($('#pic5data').val()!=""){setpic5data();}	
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
-	if($('#pic6data').val()!=""){setpic6data();}	
+	if($('#pic6data').val()!=""){setpic6data();}
+	document.getElementById("yt1data").value =localStorage.getItem("yt1dataimg");	
+	if($('#yt1data').val()!=""){setyt1data();}
+	document.getElementById("yt2data").value =localStorage.getItem("yt2dataimg");
+	if($('#yt2data').val()!=""){setyt2data();}
+	document.getElementById("yt3data").value =localStorage.getItem("yt3dataimg");
+	if($('#yt3data').val()!=""){setyt3data();}
+	document.getElementById("yt4data").value =localStorage.getItem("yt4dataimg");
+	if($('#yt4data').val()!=""){setyt4data();}
+	document.getElementById("yt5data").value =localStorage.getItem("yt5dataimg");
+	if($('#yt5data').val()!=""){setyt5data();}	
+	document.getElementById("yt6data").value =localStorage.getItem("yt6dataimg");
+	if($('#yt6data').val()!=""){setyt6data();}
+	
 	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
 	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
@@ -1364,7 +1409,7 @@ function searchTKHandler(searchStr) {
 }
 
 function searchIPHandler(searchStr) {  //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
-	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
+//	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
 	$("#Backtomenu").hide();
     hideMenu();
     showSearchHud();	
@@ -1578,29 +1623,29 @@ function foundNames(leaderboard, names, minNamesFound) {
 function chatfunction(){
 	if (MC.isInGame()){
 	if (!ogario.spectate){
-	if (messageone==1){
-		if (hiddenfromclan==1){
+//	if (messageone==1){
+		if (hiddenfromclan==0){
 		saveclanpassword=$("#clantag").val();
 		toastr["info"]('You are invisible to Team/Clan');
 		$("#ChatBtn1").attr('class', 'fa fa-comments-o');
-		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+		$("#ChatBtn").attr("data-original-title", "Hidden");
 		$("#clantag").val("HIDDEN");
 	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
-		hiddenfromclan=0;
+		hiddenfromclan=1;
 		return saveclanpassword, hiddenfromclan;		
 		}
-		else if (hiddenfromclan==0){
+		else if (hiddenfromclan==1){
 		toastr["info"]('You are visible to Team/Clan');
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
-		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+		$("#ChatBtn").attr("data-original-title", "Visible");
 		$("#clantag").val(saveclanpassword);
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
 		hiddenfromclan=1;
 		return hiddenfromclan;
 		}
 	}
-    else if (messageone==0){
+   /* else if (messageone==0){
 		var tempmode = getGameMode();
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
 		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
@@ -1616,8 +1661,10 @@ function chatfunction(){
 		MC.setQuality($('#quality').val());
 		}, 8000);
 	}
+	
+	}*/
 	}
-	}
+	else{toastr["info"]("Hide/Show can be used only while playing!").css("width", "210px"); }
 	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
@@ -2123,12 +2170,25 @@ function changePhotoFun(){
 	$("#pic4url").hide();
 	$("#pic5url").hide();
 	$("#pic6url").hide();
+	$("#yt1url").hide();
+	$("#yt2url").hide();
+	$("#yt3url").hide();
+	$("#yt4url").hide();
+	$("#yt5url").hide();
+	$("#yt6url").hide();
+	
 	$("#pic1data").hide();
 	$("#pic2data").hide();
 	$("#pic3data").hide();
 	$("#pic4data").hide();
 	$("#pic5data").hide();
 	$("#pic6data").hide();
+	$("#yt1data").hide();
+	$("#yt2data").hide();
+	$("#yt3data").hide();
+	$("#yt4data").hide();
+	$("#yt5data").hide();
+	$("#yt6data").hide();
 
 		if ($("#changephotos").val()==1){
 			$("#pic1url").show();
@@ -2154,6 +2214,31 @@ function changePhotoFun(){
 			$("#pic6url").show();
 			$("#pic6data").show();
 		}
+		if ($("#changephotos").val()==7){
+			$("#yt1url").show();
+			$("#yt1data").show();
+		}
+		if ($("#changephotos").val()==8){
+			$("#yt2url").show();
+			$("#yt2data").show();
+		}
+		if ($("#changephotos").val()==9){
+			$("#yt3url").show();
+			$("#yt3data").show();
+		}
+		if ($("#changephotos").val()==10){
+			$("#yt4url").show();
+			$("#yt4data").show();
+		}
+		if ($("#changephotos").val()==11){
+			$("#yt5url").show();
+			$("#yt5data").show();
+		}
+		if ($("#changephotos").val()==12){
+			$("#yt6url").show();
+			$("#yt6data").show();
+		}
+		
 }
 
 
@@ -2298,34 +2383,34 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
-
 	
-function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic1urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic2urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic3urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic4urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic5urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic6urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 	
-function setpic1datayt(){ localStorage.setItem("pic1datayt", $("#pic1datayt").val())
-	$("#sendicon1").attr("data-original-title", $("#pic1datayt").val());}
-function setpic2datayt(){ localStorage.setItem("pic2datayt", $("#pic2datayt").val())
-	$("#sendicon2").attr("data-original-title", $("#pic2datayt").val());}
-function setpic3datayt(){ localStorage.setItem("pic3datayt", $("#pic3datayt").val())
-	$("#sendicon3").attr("data-original-title", $("pic3datayt").val());}
-function setpic4datayt(){ localStorage.setItem("pic4datayt", $("#pic4datayt").val())
-	$("#sendicon4").attr("data-original-title", $("#pic4datayt").val());}
-function setpic5datayt(){ localStorage.setItem("pic5datayt", $("#pic5datayt").val())
-	$("#sendicon5").attr("data-original-title", $("#pic5datayt").val());}
-function setpic6datayt(){ localStorage.setItem("pic6datayt", $("#pic6datayt").val())
-	$("#sendicon6").attr("data-original-title", $("#pic6datayt").val());}		
+function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+	
+function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
+	$("#sendyt1").attr("data-original-title", $("#yt1data").val());}
+function setyt2data(){ localStorage.setItem("yt2dataimg", $("#yt2data").val())
+	$("#sendyt2").attr("data-original-title", $("#yt2data").val());}
+function setyt3data(){ localStorage.setItem("yt3dataimg", $("#yt3data").val())
+	$("#sendyt3").attr("data-original-title", $("#yt3data").val());}
+function setyt4data(){ localStorage.setItem("yt4dataimg", $("#yt4data").val())
+	$("#sendyt4").attr("data-original-title", $("#yt4data").val());}
+function setyt5data(){ localStorage.setItem("yt5dataimg", $("#yt5data").val())
+	$("#sendyt5").attr("data-original-title", $("#yt5data").val());}
+function setyt6data(){ localStorage.setItem("yt6dataimg", $("#yt6data").val())
+	$("#sendyt6").attr("data-original-title", $("#yt6data").val());}		
 
-function setpic1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlyt", pic1urlyt);return pic1urlyt;}
-function setpic2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlyt", pic2urlyt);return pic2urlyt;}
-function setpic3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlyt", pic3urlyt);return pic3urlyt;}
-function setpic4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlyt", pic4urlyt);return pic4urlyt;}
-function setpic5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlyt", pic5urlyt);return pic5urlyt;}
-function setpic6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlyt", pic6urlyt);return pic6urlyt;}	
+function setyt1url(){ yt1url=$("#yt1url").val();if(getParameterByName("v", yt1url)!=null){yt1url = getParameterByName("v", yt1url);}localStorage.setItem("yt1urlimg", yt1url);return yt1url;}
+function setyt2url(){ yt2url=$("#yt2url").val();if(getParameterByName("v", yt2url)!=null){yt2url = getParameterByName("v", yt2url);}localStorage.setItem("yt2urlimg", yt2url);return yt2url;}
+function setyt3url(){ yt3url=$("#yt3url").val();if(getParameterByName("v", yt3url)!=null){yt3url = getParameterByName("v", yt3url);}localStorage.setItem("yt3urlimg", yt3url);return yt3url;}
+function setyt4url(){ yt4url=$("#yt4url").val();if(getParameterByName("v", yt4url)!=null){yt4url = getParameterByName("v", yt4url);}localStorage.setItem("yt4urlimg", yt4url);return yt4url;}
+function setyt5url(){ yt5url=$("#yt5url").val();if(getParameterByName("v", yt5url)!=null){yt5url = getParameterByName("v", yt5url);}localStorage.setItem("yt5urlimg", yt5url);return yt5url;}
+function setyt6url(){ yt6url=$("#yt6url").val();if(getParameterByName("v", yt6url)!=null){yt6url = getParameterByName("v", yt6url);}localStorage.setItem("yt6urlimg", yt6url);return yt6url;}
 	
 function enableshortcuts(){
 	if($("#IPBtn").attr('aria-pressed') == "false"){
@@ -2369,4 +2454,3 @@ function joinpartyfromconnect(){
 MC.joinParty($("#server").val());
 $("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity: 0;");;
 }
-
