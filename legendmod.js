@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.014 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.015 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -601,7 +601,7 @@ setTimeout(function () {
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
     $("#menu-footer").text("");
 	
-	//$("#TimesUsedPanel").css( { marginBottom : "5px" } );
+	$("#TimesUsedPanel").css( { marginBottom : "5px" } );
 	$("#freeCoins").css( { marginBottom : "-5px" } );
 	$("#openShopBtn").css( { marginTop : "-10px" } );
 	$("#openShopBtn").css( { marginTop : "-15px" } );
@@ -907,7 +907,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#rotate-hud").hide();
 			$("#exp-bar").hide();
 			$("#time-hud").hide();
-			$(".input-group.skin.colorpicker-element").hide();
+	//		$(".input-group.skin.colorpicker-element").hide();
 	//		$("#legendbanners").hide();
 			$("#leaderboard-hud").hide();
 			$("#minimap-hud").hide();
@@ -922,7 +922,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#rotate-hud").show();
 			$("#exp-bar").show();
 			$("#time-hud").show();
-			$(".input-group.skin.colorpicker-element").show();
+	//		$(".input-group.skin.colorpicker-element").show();
 	//		$("#legendbanners").show();
 			$("#leaderboard-hud").show();
 			$("#minimap-hud").show();
@@ -1116,7 +1116,7 @@ $('#server-join').click(function(){
 	$("#time-hud").hide();
 //	$("#LEGENDAds").hide();
 //	$("#legendbanners").hide();
-	$(".input-group.skin.colorpicker-element").hide();
+//	$(".input-group.skin.colorpicker-element").hide();
 	$("#timertools-hud").hide();
 
 	
