@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.081 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -981,6 +981,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 				ContinueEditGameNames();			}
         } 
 		else{
+			$("#copyGameNames").attr("aria-pressed", true );
 			StopEditGameNames();return checkedGameNames=1;}
 		});
 	
