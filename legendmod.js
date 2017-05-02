@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.002 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.003 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1031,7 +1031,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     // fix main menu placement after stats
-    $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
+   // $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
 
     // save original death function
     originalDeath = MC.onPlayerDeath;
