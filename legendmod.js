@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.099 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2403,12 +2403,12 @@ function setyt5data(){ localStorage.setItem("yt5dataimg", $("#yt5data").val())
 function setyt6data(){ localStorage.setItem("yt6dataimg", $("#yt6data").val())
 	$("#sendyt6").attr("data-original-title", $("#yt6data").val());}		
 
-function setyt1url(){ yt1url=$("#yt1url").val();localStorage.setItem("yt1urlimg", yt1url);return yt1url;}
-function setyt2url(){ yt2url=$("#yt2url").val();localStorage.setItem("yt2urlimg", yt2url);return yt2url;}
-function setyt3url(){ yt3url=$("#yt3url").val();localStorage.setItem("yt3urlimg", yt3url);return yt3url;}
-function setyt4url(){ yt4url=$("#yt4url").val();localStorage.setItem("yt4urlimg", yt4url);return yt4url;}
-function setyt5url(){ yt5url=$("#yt5url").val();localStorage.setItem("yt5urlimg", yt5url);return yt5url;}
-function setyt6url(){ yt6url=$("#yt6url").val();localStorage.setItem("yt6urlimg", yt6url);return yt6url;}	
+function setyt1url(){ yt1url=$("#yt1url").val();if(getParameterByName("v", yt1url)!=null){yt1url = getParameterByName("v", yt1url);}localStorage.setItem("yt1urlimg", yt1url);return yt1url;}
+function setyt2url(){ yt2url=$("#yt2url").val();if(getParameterByName("v", yt2url)!=null){yt2url = getParameterByName("v", yt2url);}localStorage.setItem("yt2urlimg", yt2url);return yt2url;}
+function setyt3url(){ yt3url=$("#yt3url").val();if(getParameterByName("v", yt3url)!=null){yt3url = getParameterByName("v", yt3url);}localStorage.setItem("yt3urlimg", yt3url);return yt3url;}
+function setyt4url(){ yt4url=$("#yt4url").val();if(getParameterByName("v", yt4url)!=null){yt4url = getParameterByName("v", yt4url);}localStorage.setItem("yt4urlimg", yt4url);return yt4url;}
+function setyt5url(){ yt5url=$("#yt5url").val();if(getParameterByName("v", yt5url)!=null){yt5url = getParameterByName("v", yt5url);}localStorage.setItem("yt5urlimg", yt5url);return yt5url;}
+function setyt6url(){ yt6url=$("#yt6url").val();if(getParameterByName("v", yt6url)!=null){yt6url = getParameterByName("v", yt6url);}localStorage.setItem("yt6urlimg", yt6url);return yt6url;}
 	
 function enableshortcuts(){
 	if($("#IPBtn").attr('aria-pressed') == "false"){
