@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.001 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -100,7 +100,7 @@ var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
 var realmode=""; var realmode2="";
 var token="";
-var messageone=1;
+var messageone=1; //If legendmod is being used
 var hiddenfromclan=0;
 var saveclanpassword;
 var troll1;
@@ -589,7 +589,7 @@ setTimeout(function () {
 	$("#create-party-btn-2").click(function () {
 		if (hiddenfromclan==0){$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");$("#ChatBtn1").attr('class', 'fa fa-eye-slash');}
 		else if (hiddenfromclan==1){$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");}
-		return messageone=1;
+		//return messageone=1;
 	});	
 
 	
@@ -936,10 +936,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Chat"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
-	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
-	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
-	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Communication"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
+	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
+	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
 	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
 	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
 	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
@@ -1409,7 +1409,7 @@ function searchTKHandler(searchStr) {
 }
 
 function searchIPHandler(searchStr) {  //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
-	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
+//	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
 	$("#Backtomenu").hide();
     hideMenu();
     showSearchHud();	
@@ -1623,12 +1623,12 @@ function foundNames(leaderboard, names, minNamesFound) {
 function chatfunction(){
 	if (MC.isInGame()){
 	if (!ogario.spectate){
-	if (messageone==1){
+//	if (messageone==1){
 		if (hiddenfromclan==1){
 		saveclanpassword=$("#clantag").val();
 		toastr["info"]('You are invisible to Team/Clan');
 		$("#ChatBtn1").attr('class', 'fa fa-comments-o');
-		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+		$("#ChatBtn").attr("data-original-title", "Hidden");
 		$("#clantag").val("HIDDEN");
 	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
@@ -1638,14 +1638,14 @@ function chatfunction(){
 		else if (hiddenfromclan==0){
 		toastr["info"]('You are visible to Team/Clan');
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
-		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+		$("#ChatBtn").attr("data-original-title", "Visible");
 		$("#clantag").val(saveclanpassword);
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
 		hiddenfromclan=1;
 		return hiddenfromclan;
 		}
 	}
-    else if (messageone==0){
+   /* else if (messageone==0){
 		var tempmode = getGameMode();
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
 		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
@@ -1661,7 +1661,8 @@ function chatfunction(){
 		MC.setQuality($('#quality').val());
 		}, 8000);
 	}
-	}
+	
+	}*/
 	}
 	}
 
