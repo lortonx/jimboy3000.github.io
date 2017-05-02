@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -395,7 +395,7 @@ setTimeout(function () {
 											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +											
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons&Youtube:  </span>' +
 											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
 											'<option value="1" data-itr="">Icon 1</option>' +
 											'<option value="2" data-itr="">Icon 2</option>' +
@@ -410,6 +410,12 @@ setTimeout(function () {
 											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
 											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
 											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
+											'<input id="yt1data" class="form-control" placeholder="Youtube Message 1 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
+											'<input id="yt2data" class="form-control" placeholder="Youtube Message 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
+											'<input id="yt3data" class="form-control" placeholder="Youtube Message 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
+											'<input id="yt4data" class="form-control" placeholder="Youtube Message 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
+											'<input id="yt5data" class="form-control" placeholder="Youtube Message 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
+											'<input id="yt6data" class="form-control" placeholder="Youtube Message 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
 
 											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
@@ -417,6 +423,12 @@ setTimeout(function () {
 											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
 											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="yt1url" class="form-control" placeholder="Youtube Message 1 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt2url" class="form-control" placeholder="Youtube Message 2 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt3url" class="form-control" placeholder="Youtube Message 3 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt4url" class="form-control" placeholder="Youtube Message 4 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt5url" class="form-control" placeholder="Youtube Message 5 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt6url" class="form-control" placeholder="Youtube Message 6 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
 											'</div></div>' +
 
 
@@ -2369,4 +2381,3 @@ function joinpartyfromconnect(){
 MC.joinParty($("#server").val());
 $("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity: 0;");;
 }
-
