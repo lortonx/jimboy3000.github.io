@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.079 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -109,6 +109,7 @@ var rotateminimapfirst=0;
 var openthecommunication="NO";
 var clickedname="NO";
 var oldteammode;
+var checkedGameNames=0;
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
@@ -784,7 +785,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			localStorage.setItem("autoCoinBtn", false);
 			stopCoinMining();$(this).html('<i class="fa fa-clock-o"></i> Auto free coins');}
 	});
-		var checkedGameNames=0;
+	
+		
 	    $("#copyGameNames").click(function () {var checked = !($(this).attr('aria-pressed') == "true");		
         if (checked) {
 			localStorage.setItem("copyGameNames", true);
@@ -797,6 +799,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			localStorage.setItem("copyGameNames", false);
 			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>Edit Names');return checkedGameNames=1;}
 		});
+		
  /*   $("#autoRespawnBtn").click(function () {
         var checked = !($(this).attr('aria-pressed') == "true");
         if (checked) {
@@ -970,7 +973,16 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
         $("#bottomleft").click(function () {localStorage.setItem("ComPosition", 3);toastr.remove();toastr.options = {"positionClass": "toast-bottom-left"}}); 
 		$("#ChatBtn").click(function () {chatfunction();});
-		$("#Cutnames").click(function () {$("#copyGameNames").click();});
+		$("#Cutnames").click(function () {
+			var checked =!($("#copyGameNames").attr('aria-pressed') == "true");
+		if (checked) {
+			if (checkedGameNames==0){StartEditGameNames();}
+			else{
+				ContinueEditGameNames();			}
+        } 
+		else{
+			StopEditGameNames();return checkedGameNames=1;}
+		});
 	
 
     // fix main menu placement after stats
