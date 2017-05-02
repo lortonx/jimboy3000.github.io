@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.094 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1257,17 +1257,17 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5url').val()!=""){setpic5url();}
 	document.getElementById("pic6url").value =localStorage.getItem("pic6urlimg");
 	if($('#pic6url').val()!=""){setpic6url();}
-	document.getElementById("yt1url").value =localStorage.getItem("pic1urlyt");
+	document.getElementById("yt1url").value =localStorage.getItem("pic1urlytimg");
 	if($('#yt1url').val()!=""){setyt1url();}	
-	document.getElementById("yt2url").value =localStorage.getItem("pic2urlyt");
+	document.getElementById("yt2url").value =localStorage.getItem("pic2urlytimg");
 	if($('#yt2url').val()!=""){setyt2url();}
-	document.getElementById("yt3url").value =localStorage.getItem("pic3urlyt");
+	document.getElementById("yt3url").value =localStorage.getItem("pic3urlytimg");
 	if($('#yt3url').val()!=""){setyt3url();}
-	document.getElementById("yt4url").value =localStorage.getItem("pic4urlyt");
+	document.getElementById("yt4url").value =localStorage.getItem("pic4urlytimg");
 	if($('#yt4url').val()!=""){setyt4url();}
-	document.getElementById("yt5url").value =localStorage.getItem("pic5urlyt");
+	document.getElementById("yt5url").value =localStorage.getItem("pic5urlytimg");
 	if($('#yt5url').val()!=""){setyt5url();}
-	document.getElementById("yt6url").value =localStorage.getItem("pic6urlyt");
+	document.getElementById("yt6url").value =localStorage.getItem("pic6urlytimg");
 	if($('#yt6url').val()!=""){setyt6url();}
 	document.getElementById("pic1data").value =localStorage.getItem("pic1dataimg");	
 	if($('#pic1data').val()!=""){setpic1data();}
@@ -1281,17 +1281,17 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5data').val()!=""){setpic5data();}	
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
 	if($('#pic6data').val()!=""){setpic6data();}
-	document.getElementById("yt1data").value =localStorage.getItem("pic1datayt");	
+	document.getElementById("yt1data").value =localStorage.getItem("pic1dataytimg");	
 	if($('#yt1data').val()!=""){setytdata();}
-	document.getElementById("yt2data").value =localStorage.getItem("pic2datayt");
+	document.getElementById("yt2data").value =localStorage.getItem("pic2dataytimg");
 	if($('#yt2data').val()!=""){setyt2data();}
-	document.getElementById("yt3data").value =localStorage.getItem("pic3datayt");
+	document.getElementById("yt3data").value =localStorage.getItem("pic3dataytimg");
 	if($('#yt3data').val()!=""){setyt3data();}
-	document.getElementById("yt4data").value =localStorage.getItem("pic4datayt");
+	document.getElementById("yt4data").value =localStorage.getItem("pic4dataytimg");
 	if($('#yt4data').val()!=""){setyt4data();}
-	document.getElementById("yt5data").value =localStorage.getItem("pic5datayt");
+	document.getElementById("yt5data").value =localStorage.getItem("pic5dataytimg");
 	if($('#yt5data').val()!=""){setyt5data();}	
-	document.getElementById("yt6data").value =localStorage.getItem("pic6datayt");
+	document.getElementById("yt6data").value =localStorage.getItem("pic6dataytimg");
 	if($('#yt6data').val()!=""){setyt6data();}
 	
 	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
@@ -2401,25 +2401,25 @@ function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-bo
 function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic5urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic6urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 	
-function setpic1datayt(){ localStorage.setItem("pic1datayt", $("#pic1datayt").val())
+function setpic1datayt(){ localStorage.setItem("pic1dataytimg", $("#pic1datayt").val())
 	$("#sendicon1").attr("data-original-title", $("#pic1datayt").val());}
-function setpic2datayt(){ localStorage.setItem("pic2datayt", $("#pic2datayt").val())
+function setpic2datayt(){ localStorage.setItem("pic2dataytimg", $("#pic2datayt").val())
 	$("#sendicon2").attr("data-original-title", $("#pic2datayt").val());}
-function setpic3datayt(){ localStorage.setItem("pic3datayt", $("#pic3datayt").val())
+function setpic3datayt(){ localStorage.setItem("pic3dataytimg", $("#pic3datayt").val())
 	$("#sendicon3").attr("data-original-title", $("pic3datayt").val());}
-function setpic4datayt(){ localStorage.setItem("pic4datayt", $("#pic4datayt").val())
+function setpic4datayt(){ localStorage.setItem("pic4dataytimg", $("#pic4datayt").val())
 	$("#sendicon4").attr("data-original-title", $("#pic4datayt").val());}
-function setpic5datayt(){ localStorage.setItem("pic5datayt", $("#pic5datayt").val())
+function setpic5datayt(){ localStorage.setItem("pic5dataytimg", $("#pic5datayt").val())
 	$("#sendicon5").attr("data-original-title", $("#pic5datayt").val());}
-function setpic6datayt(){ localStorage.setItem("pic6datayt", $("#pic6datayt").val())
+function setpic6datayt(){ localStorage.setItem("pic6dataytimg", $("#pic6datayt").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6datayt").val());}		
 
-function setyt1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlyt", pic1urlyt);return pic1urlyt;}
-function setyt2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlyt", pic2urlyt);return pic2urlyt;}
-function setyt3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlyt", pic3urlyt);return pic3urlyt;}
-function setyt4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlyt", pic4urlyt);return pic4urlyt;}
-function setyt5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlyt", pic5urlyt);return pic5urlyt;}
-function setyt6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlyt", pic6urlyt);return pic6urlyt;}	
+function setyt1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlytimg", pic1urlyt);return pic1urlyt;}
+function setyt2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlytimg", pic2urlyt);return pic2urlyt;}
+function setyt3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlytimg", pic3urlyt);return pic3urlyt;}
+function setyt4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlytimg", pic4urlyt);return pic4urlyt;}
+function setyt5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlytimg", pic5urlyt);return pic5urlyt;}
+function setyt6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlytimg", pic6urlyt);return pic6urlyt;}	
 	
 function enableshortcuts(){
 	if($("#IPBtn").attr('aria-pressed') == "false"){
