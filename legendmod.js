@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.096 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -57,18 +57,18 @@ var pic3dataimg="Yow!!";
 var pic4dataimg="Death!";
 var pic5dataimg="Relax!";
 var pic6dataimg="Legend Mod!";
-var pic1urlyt="dQw4w9WgXcQ";
-var pic2urlyt="btPJPFnesV4";
-var pic3urlyt="UD-MkihnOXg";
-var pic4urlyt="vpoqWs6BuIY";
-var pic5urlyt="VUvfn5-BLM8";
-var pic6urlyt="CnIfNSpCf70";
-var pic1datayt="Rick Astley - Never Gonna Give You Up";
-var pic2datayt="Survivor - Eye Of The Tiger";
-var pic3datayt="Lion king - The Lion Sleeps Tonight";
-var pic4datayt="Agario - Jumbo Solo vs Teams";
-var pic5datayt="Agario - Kill3r vs Teams";
-var pic6datayt="Legend Mod Promo";
+var yt1url="dQw4w9WgXcQ";
+var yt2url="btPJPFnesV4";
+var yt3url="UD-MkihnOXg";
+var yt4url="vpoqWs6BuIY";
+var yt5url="VUvfn5-BLM8";
+var yt6url="CnIfNSpCf70";
+var yt1data="Rick Astley - Never Gonna Give You Up";
+var yt2data="Survivor - Eye Of The Tiger";
+var yt3data="Lion king - The Lion Sleeps Tonight";
+var yt4data="Agario - Jumbo Solo vs Teams";
+var yt5data="Agario - Kill3r vs Teams";
+var yt6data="Legend Mod Promo";
 var lastIP="";
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext= localStorage.getItem("leadbtext");
@@ -1257,17 +1257,17 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5url').val()!=""){setpic5url();}
 	document.getElementById("pic6url").value =localStorage.getItem("pic6urlimg");
 	if($('#pic6url').val()!=""){setpic6url();}
-	document.getElementById("yt1url").value =localStorage.getItem("pic1urlytimg");
+	document.getElementById("yt1url").value =localStorage.getItem("yt1urlimg");
 	if($('#yt1url').val()!=""){setyt1url();}	
-	document.getElementById("yt2url").value =localStorage.getItem("pic2urlytimg");
+	document.getElementById("yt2url").value =localStorage.getItem("yt2urlimg");
 	if($('#yt2url').val()!=""){setyt2url();}
-	document.getElementById("yt3url").value =localStorage.getItem("pic3urlytimg");
+	document.getElementById("yt3url").value =localStorage.getItem("yt3urlimg");
 	if($('#yt3url').val()!=""){setyt3url();}
-	document.getElementById("yt4url").value =localStorage.getItem("pic4urlytimg");
+	document.getElementById("yt4url").value =localStorage.getItem("yt4urlimg");
 	if($('#yt4url').val()!=""){setyt4url();}
-	document.getElementById("yt5url").value =localStorage.getItem("pic5urlytimg");
+	document.getElementById("yt5url").value =localStorage.getItem("yt5urlimg");
 	if($('#yt5url').val()!=""){setyt5url();}
-	document.getElementById("yt6url").value =localStorage.getItem("pic6urlytimg");
+	document.getElementById("yt6url").value =localStorage.getItem("yt6urlimg");
 	if($('#yt6url').val()!=""){setyt6url();}
 	document.getElementById("pic1data").value =localStorage.getItem("pic1dataimg");	
 	if($('#pic1data').val()!=""){setpic1data();}
@@ -1281,17 +1281,17 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5data').val()!=""){setpic5data();}	
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
 	if($('#pic6data').val()!=""){setpic6data();}
-	document.getElementById("yt1data").value =localStorage.getItem("pic1dataytimg");	
+	document.getElementById("yt1data").value =localStorage.getItem("yt1dataimg");	
 	if($('#yt1data').val()!=""){setytdata();}
-	document.getElementById("yt2data").value =localStorage.getItem("pic2dataytimg");
+	document.getElementById("yt2data").value =localStorage.getItem("yt2dataimg");
 	if($('#yt2data').val()!=""){setyt2data();}
-	document.getElementById("yt3data").value =localStorage.getItem("pic3dataytimg");
+	document.getElementById("yt3data").value =localStorage.getItem("yt3dataimg");
 	if($('#yt3data').val()!=""){setyt3data();}
-	document.getElementById("yt4data").value =localStorage.getItem("pic4dataytimg");
+	document.getElementById("yt4data").value =localStorage.getItem("yt4dataimg");
 	if($('#yt4data').val()!=""){setyt4data();}
-	document.getElementById("yt5data").value =localStorage.getItem("pic5dataytimg");
+	document.getElementById("yt5data").value =localStorage.getItem("yt5dataimg");
 	if($('#yt5data').val()!=""){setyt5data();}	
-	document.getElementById("yt6data").value =localStorage.getItem("pic6dataytimg");
+	document.getElementById("yt6data").value =localStorage.getItem("yt6dataimg");
 	if($('#yt6data').val()!=""){setyt6data();}
 	
 	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
@@ -2394,32 +2394,32 @@ function setyt5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val())
 function setyt6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendyt6").attr("data-original-title", $("#pic6data").val());}
 	
-function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic1urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic2urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic3urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic4urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic5urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic6urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 	
-function setpic1datayt(){ localStorage.setItem("pic1dataytimg", $("#pic1datayt").val())
-	$("#sendicon1").attr("data-original-title", $("#pic1datayt").val());}
-function setpic2datayt(){ localStorage.setItem("pic2dataytimg", $("#pic2datayt").val())
-	$("#sendicon2").attr("data-original-title", $("#pic2datayt").val());}
-function setpic3datayt(){ localStorage.setItem("pic3dataytimg", $("#pic3datayt").val())
-	$("#sendicon3").attr("data-original-title", $("pic3datayt").val());}
-function setpic4datayt(){ localStorage.setItem("pic4dataytimg", $("#pic4datayt").val())
-	$("#sendicon4").attr("data-original-title", $("#pic4datayt").val());}
-function setpic5datayt(){ localStorage.setItem("pic5dataytimg", $("#pic5datayt").val())
-	$("#sendicon5").attr("data-original-title", $("#pic5datayt").val());}
-function setpic6datayt(){ localStorage.setItem("pic6dataytimg", $("#pic6datayt").val())
-	$("#sendicon6").attr("data-original-title", $("#pic6datayt").val());}		
+function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
+	$("#sendicon1").attr("data-original-title", $("#yt1data").val());}
+function setyt2data(){ localStorage.setItem("yt2dataimg", $("#yt2data").val())
+	$("#sendicon2").attr("data-original-title", $("#yt2data").val());}
+function setyt3data(){ localStorage.setItem("yt3dataimg", $("#yt3data").val())
+	$("#sendicon3").attr("data-original-title", $("yt3data").val());}
+function setyt4data(){ localStorage.setItem("yt4dataimg", $("#yt4data").val())
+	$("#sendicon4").attr("data-original-title", $("#yt4data").val());}
+function setyt5data(){ localStorage.setItem("yt5dataimg", $("#yt5data").val())
+	$("#sendicon5").attr("data-original-title", $("#yt5data").val());}
+function setyt6data(){ localStorage.setItem("yt6dataimg", $("#yt6data").val())
+	$("#sendicon6").attr("data-original-title", $("#yt6data").val());}		
 
-function setyt1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlytimg", pic1urlyt);return pic1urlyt;}
-function setyt2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlytimg", pic2urlyt);return pic2urlyt;}
-function setyt3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlytimg", pic3urlyt);return pic3urlyt;}
-function setyt4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlytimg", pic4urlyt);return pic4urlyt;}
-function setyt5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlytimg", pic5urlyt);return pic5urlyt;}
-function setyt6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlytimg", pic6urlyt);return pic6urlyt;}	
+function setyt1url(){ yt1url=$("#yt1url").val();localStorage.setItem("yt1urlimg", yt1url);return yt1url;}
+function setyt2url(){ yt2url=$("#yt2url").val();localStorage.setItem("yt2urlimg", yt2url);return yt2url;}
+function setyt3url(){ yt3url=$("#yt3url").val();localStorage.setItem("yt3urlimg", yt3url);return yt3url;}
+function setyt4url(){ yt4url=$("#yt4url").val();localStorage.setItem("yt4urlimg", yt4url);return yt4url;}
+function setyt5url(){ yt5url=$("#yt5url").val();localStorage.setItem("yt5urlimg", yt5url);return yt5url;}
+function setyt6url(){ yt6url=$("#yt6url").val();localStorage.setItem("yt6urlimg", yt6url);return yt6url;}	
 	
 function enableshortcuts(){
 	if($("#IPBtn").attr('aria-pressed') == "false"){
