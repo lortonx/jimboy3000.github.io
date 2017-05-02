@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.098 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.099 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2395,7 +2395,7 @@ function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
 function setyt2data(){ localStorage.setItem("yt2dataimg", $("#yt2data").val())
 	$("#sendyt2").attr("data-original-title", $("#yt2data").val());}
 function setyt3data(){ localStorage.setItem("yt3dataimg", $("#yt3data").val())
-	$("#sendyt3").attr("data-original-title", $("yt3data").val());}
+	$("#sendyt3").attr("data-original-title", $("#yt3data").val());}
 function setyt4data(){ localStorage.setItem("yt4dataimg", $("#yt4data").val())
 	$("#sendyt4").attr("data-original-title", $("#yt4data").val());}
 function setyt5data(){ localStorage.setItem("yt5dataimg", $("#yt5data").val())
