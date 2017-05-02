@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.005 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -78,13 +78,13 @@ var imgHref= localStorage.getItem("imgHref");
 //var autoRespawn = localStorage.getItem("autoRespawn");
 var showToken = localStorage.getItem("showTK");
 var showPlayer = localStorage.getItem("showPlayer");
-var IPBtn = localStorage.getItem("IPBtn");
+//var IPBtn = localStorage.getItem("IPBtn");
 var SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
 var XPBtn = localStorage.getItem("XPBtn");
 var TIMEBtn = localStorage.getItem("TIMEBtn");
 //var MAINBBtn = localStorage.getItem("MAINBBtn");
 //var MAINBTBtn = localStorage.getItem("MAINBTBtn");
-var MANUIBtn = localStorage.getItem("MANUIBtn");
+//var MANUIBtn = localStorage.getItem("MANUIBtn");
 // var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
@@ -175,10 +175,10 @@ if (searchSip==null){
                 a.core.connect(texture3); 
 				
 				setTimeout(function (){realmode=getGameMode();
-				if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+				$("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
 				        var tmz=$("#server").val();
        // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-				$("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");currentIP=tmz;}
+				$("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");currentIP=tmz;
 		
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},3000);
 			setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + tmz);},5000);
@@ -359,13 +359,13 @@ setTimeout(function () {
     $(".menu-tabs").children().attr("style", "width: 14.27%;");
     $(".menu-tabs").children().last().after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu").children().last().after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
-											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-                                            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-puzzle-piece"></i>Show Shortcuts</button>' +
-											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-gamepad"></i>Show XP Bar</button>' +
-                                            '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-clock-o"></i>Show Time</button>' +
+//											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
+                                            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>Show Shortcuts</button>' +
+											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>Show XP Bar</button>' +
+                                            '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>Show Time</button>' +
 //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
 //                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
-											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
+//											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
 //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
 											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>Hide Everything</button>' +
 											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>Show Timer Calc.</button>' +
@@ -858,9 +858,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
 	localStorage.setItem("showTK", false);
   
-     $("#IPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+/*     $("#IPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide Connector');} 
-		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show Connector');}} );  
+		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show Connector');}} );  */
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
 		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
@@ -875,13 +875,13 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("MAINBBtn", false);$("#LEGENDAds").hide();$(this).html('<i class="fa fa-bars"></i>Show Main Banner');}} );
      $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MAINBTBtn", true);$("#legendbanners").show();$(this).html('<i class="fa fa-minus"></i>Hide Main Tools');}
-		else {localStorage.setItem("MAINBTBtn", false);$("#legendbanners").hide();$(this).html('<i class="fa fa-minus"></i>Show Main Tools');}} );   */
+		else {localStorage.setItem("MAINBTBtn", false);$("#legendbanners").hide();$(this).html('<i class="fa fa-minus"></i>Show Main Tools');}} );   
       $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MANUIBtn", true);$(".input-group.skin.colorpicker-element").show();
 		$(this).html('<i class="fa fa-minus"></i>Hide Manual Skins');}else {localStorage.setItem("MANUIBtn", false);$(".input-group.skin.colorpicker-element").hide();$(this).html('<i class="fa fa-minus"></i>Show Manual Skins');}} ); 
-//      $("#RotationBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-//		if (checked) {localStorage.setItem("RotationBtn", true);$("#rotate-hud").show();
-//		$(this).html('<i class="fa fa-repeat"></i>Hide Rotation Btns');}else {localStorage.setItem("RotationBtn", false);$("#rotate-hud").hide();$(this).html('<i class="fa fa-repeat"></i>Show Rotation Btns');}} );  
+     $("#RotationBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+		if (checked) {localStorage.setItem("RotationBtn", true);$("#rotate-hud").show();
+		$(this).html('<i class="fa fa-repeat"></i>Hide Rotation Btns');}else {localStorage.setItem("RotationBtn", false);$("#rotate-hud").hide();$(this).html('<i class="fa fa-repeat"></i>Show Rotation Btns');}} );  */
 	  
 	  $("#YoutubeAutoBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {
@@ -1112,8 +1112,7 @@ $('#server-join').click(function(){
 //	$("#legendbanners").hide();
 	$(".input-group.skin.colorpicker-element").hide();
 	$("#timertools-hud").hide();
-	$("#server").hide();
-	$("#connect2").hide();
+
 	
 //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
 //Legend.Mod&?player=a&?com=Team5&?do=donothing
@@ -1198,7 +1197,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 //		$("#MAINBBtn").click();
 //		$("#MAINBTBtn").click();
 		$("#XPBtn").click();
-		$("#MANUIBtn").click();
+//		$("#MANUIBtn").click();
 //		$("#RotationBtn").click();
 		}, 1500);
 	}
@@ -1213,7 +1212,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
 //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
 //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
-	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
+//	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
 //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
 	if (YoutubeAutoBtn  == "true") { $("#YoutubeAutoBtn").click(); }
 	if (XPBtn  == "true") { $("#XPBtn").click(); }
@@ -2427,8 +2426,8 @@ function enableshortcuts(){
 //	$("#MAINBTBtn").click(); }
 	if($("#XPBtn").attr('aria-pressed') == "false"){
 	$("#XPBtn").click(); }
-	if($("#MANUIBtn").attr('aria-pressed') == "false"){
-	$("#MANUIBtn").click(); }
+//	if($("#MANUIBtn").attr('aria-pressed') == "false"){
+//	$("#MANUIBtn").click(); }
 }	
 	
 function adres() {
