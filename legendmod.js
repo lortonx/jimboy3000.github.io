@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.082 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.083 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -57,6 +57,12 @@ var pic3dataimg="Yow!!";
 var pic4dataimg="Death!";
 var pic5dataimg="Relax!";
 var pic6dataimg="Legend Mod!";
+var pic1urlyt="dQw4w9WgXcQ";
+var pic2urlyt="btPJPFnesV4";
+var pic3urlyt="UD-MkihnOXg";
+var pic4urlyt="vpoqWs6BuIY";
+var pic5urlyt="VUvfn5-BLM8";
+var pic6urlyt="CnIfNSpCf70";
 var lastIP="";
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext= localStorage.getItem("leadbtext");
@@ -923,6 +929,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>'+
 	'<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>'+
 	'<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+
+    $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+	
+	'<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendyt11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>'+
+	'<button id="sendyt2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt2();" data-toggle="tooltip" data-original-title="Why?"><i id="sendyt21" class="fa fa-question-circle" style="padding-left: 0px;"></i></button>'+
+	'<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendyt31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>'+
+	'<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendyt41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>'+
+	'<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendyt51" class="fa fa-bed" style="padding-left: 0px;"></i></button>'+
+	'<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 	
     $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+
 	'<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>'+
@@ -2269,6 +2283,34 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
+
+	
+function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic1urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic2urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic3urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic4urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic5urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic6urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+	
+function setpic1datayt(){ localStorage.setItem("pic1datayt", $("#pic1datayt").val())
+	$("#sendicon1").attr("data-original-title", $("#pic1datayt").val());}
+function setpic2datayt(){ localStorage.setItem("pic2datayt", $("#pic2datayt").val())
+	$("#sendicon2").attr("data-original-title", $("#pic2datayt").val());}
+function setpic3datayt(){ localStorage.setItem("pic3datayt", $("#pic3datayt").val())
+	$("#sendicon3").attr("data-original-title", $("pic3datayt").val());}
+function setpic4datayt(){ localStorage.setItem("pic4datayt", $("#pic4datayt").val())
+	$("#sendicon4").attr("data-original-title", $("#pic4datayt").val());}
+function setpic5datayt(){ localStorage.setItem("pic5datayt", $("#pic5datayt").val())
+	$("#sendicon5").attr("data-original-title", $("#pic5datayt").val());}
+function setpic6datayt(){ localStorage.setItem("pic6datayt", $("#pic6datayt").val())
+	$("#sendicon6").attr("data-original-title", $("#pic6datayt").val());}		
+
+function setpic1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlyt", pic1urlyt);return pic1urlyt;}
+function setpic2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlyt", pic2urlyt);return pic2urlyt;}
+function setpic3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlyt", pic3urlyt);return pic3urlyt;}
+function setpic4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlyt", pic4urlyt);return pic4urlyt;}
+function setpic5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlyt", pic5urlyt);return pic5urlyt;}
+function setpic6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlyt", pic6urlyt);return pic6urlyt;}	
 	
 function enableshortcuts(){
 	if($("#IPBtn").attr('aria-pressed') == "false"){
