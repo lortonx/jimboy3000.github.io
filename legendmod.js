@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.091 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -403,7 +403,14 @@ setTimeout(function () {
 											'<option value="4" data-itr="">Icon 4</option>' +
 											'<option value="5" data-itr="">Icon 5</option>' +
 											'<option value="6" data-itr="">Icon 6</option>' +
+											'<option value="7" data-itr="">Youtube 1</option>' +
+											'<option value="8" data-itr="">Youtube 2</option>' +
+											'<option value="9" data-itr="">Youtube 3</option>' +
+											'<option value="10" data-itr="">Youtube 4</option>' +
+											'<option value="11" data-itr="">Youtube 5</option>' +
+											'<option value="12" data-itr="">Youtube 6</option>' +
 											'</select>' +
+											
 											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
 											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
 											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
@@ -1237,6 +1244,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#imgHref').val()!=""){setimgHref();}	
 	document.getElementById("minbtext").value =localStorage.getItem("minbtext");
 	if($('minbtext').val()!=""){setminbtext();}		
+	
 	document.getElementById("pic1url").value =localStorage.getItem("pic1urlimg");
 	if($('#pic1url').val()!=""){setpic1url();}	
 	document.getElementById("pic2url").value =localStorage.getItem("pic2urlimg");
@@ -1249,6 +1257,18 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#pic5url').val()!=""){setpic5url();}
 	document.getElementById("pic6url").value =localStorage.getItem("pic6urlimg");
 	if($('#pic6url').val()!=""){setpic6url();}
+	document.getElementById("yt1url").value =localStorage.getItem("pic1urlyt");
+	if($('#yt1url').val()!=""){setyt1url();}	
+	document.getElementById("yt2url").value =localStorage.getItem("pic2urlyt");
+	if($('#yt2url').val()!=""){setyt2url();}
+	document.getElementById("yt3url").value =localStorage.getItem("pic3urlyt");
+	if($('#yt3url').val()!=""){setyt3url();}
+	document.getElementById("yt4url").value =localStorage.getItem("pic4urlyt");
+	if($('#yt4url').val()!=""){setyt4url();}
+	document.getElementById("yt5url").value =localStorage.getItem("pic5urlyt");
+	if($('#yt5url').val()!=""){setyt5url();}
+	document.getElementById("yt6url").value =localStorage.getItem("pic6urlyt");
+	if($('#yt6url').val()!=""){setyt6url();}
 	document.getElementById("pic1data").value =localStorage.getItem("pic1dataimg");	
 	if($('#pic1data').val()!=""){setpic1data();}
 	document.getElementById("pic2data").value =localStorage.getItem("pic2dataimg");
@@ -1260,7 +1280,20 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	document.getElementById("pic5data").value =localStorage.getItem("pic5dataimg");
 	if($('#pic5data').val()!=""){setpic5data();}	
 	document.getElementById("pic6data").value =localStorage.getItem("pic6dataimg");
-	if($('#pic6data').val()!=""){setpic6data();}	
+	if($('#pic6data').val()!=""){setpic6data();}
+	document.getElementById("yt1data").value =localStorage.getItem("pic1datayt");	
+	if($('#yt1data').val()!=""){setytdata();}
+	document.getElementById("yt2data").value =localStorage.getItem("pic2datayt");
+	if($('#yt2data').val()!=""){setyt2data();}
+	document.getElementById("yt3data").value =localStorage.getItem("pic3datayt");
+	if($('#yt3data').val()!=""){setyt3data();}
+	document.getElementById("yt4data").value =localStorage.getItem("pic4datayt");
+	if($('#yt4data').val()!=""){setyt4data();}
+	document.getElementById("yt5data").value =localStorage.getItem("pic5datayt");
+	if($('#yt5data').val()!=""){setyt5data();}	
+	document.getElementById("yt6data").value =localStorage.getItem("pic6datayt");
+	if($('#yt6data').val()!=""){setyt6data();}
+	
 	document.getElementById("discwebhook1").value =localStorage.getItem("discwebhook1");
 	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
@@ -2135,12 +2168,25 @@ function changePhotoFun(){
 	$("#pic4url").hide();
 	$("#pic5url").hide();
 	$("#pic6url").hide();
+	$("#yt1url").hide();
+	$("#yt2url").hide();
+	$("#yt3url").hide();
+	$("#yt4url").hide();
+	$("#yt5url").hide();
+	$("#yt6url").hide();
+	
 	$("#pic1data").hide();
 	$("#pic2data").hide();
 	$("#pic3data").hide();
 	$("#pic4data").hide();
 	$("#pic5data").hide();
 	$("#pic6data").hide();
+	$("#yt1data").hide();
+	$("#yt2data").hide();
+	$("#yt3data").hide();
+	$("#yt4data").hide();
+	$("#yt5data").hide();
+	$("#yt6data").hide();
 
 		if ($("#changephotos").val()==1){
 			$("#pic1url").show();
@@ -2166,6 +2212,31 @@ function changePhotoFun(){
 			$("#pic6url").show();
 			$("#pic6data").show();
 		}
+		if ($("#changephotos").val()==7){
+			$("#yt1url").show();
+			$("#yt1data").show();
+		}
+		if ($("#changephotos").val()==8){
+			$("#yt2url").show();
+			$("#yt2data").show();
+		}
+		if ($("#changephotos").val()==9){
+			$("#yt3url").show();
+			$("#yt3data").show();
+		}
+		if ($("#changephotos").val()==10){
+			$("#yt4url").show();
+			$("#yt4data").show();
+		}
+		if ($("#changephotos").val()==11){
+			$("#yt5url").show();
+			$("#yt5data").show();
+		}
+		if ($("#changephotos").val()==12){
+			$("#yt6url").show();
+			$("#yt6data").show();
+		}
+		
 }
 
 
