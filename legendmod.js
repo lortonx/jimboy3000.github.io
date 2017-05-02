@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.013 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.014 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -601,7 +601,7 @@ setTimeout(function () {
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
     $("#menu-footer").text("");
 	
-	$("#TimesUsedPanel").css( { marginBottom : "5px" } );
+	//$("#TimesUsedPanel").css( { marginBottom : "5px" } );
 	$("#freeCoins").css( { marginBottom : "-5px" } );
 	$("#openShopBtn").css( { marginTop : "-10px" } );
 	$("#openShopBtn").css( { marginTop : "-15px" } );
