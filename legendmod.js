@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.092 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.093 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2381,7 +2381,18 @@ function setpic5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val()
 	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
 function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
-
+function setyt1data(){ localStorage.setItem("pic1dataimg", $("#pic1data").val())
+	$("#sendicon1").attr("data-original-title", $("#pic1data").val());}
+function setyt2data(){ localStorage.setItem("pic2dataimg", $("#pic2data").val())
+	$("#sendicon2").attr("data-original-title", $("#pic2data").val());}
+function setyt3data(){ localStorage.setItem("pic3dataimg", $("#pic3data").val())
+	$("#sendicon3").attr("data-original-title", $("#pic3data").val());}
+function setyt4data(){ localStorage.setItem("pic4dataimg", $("#pic4data").val())
+	$("#sendicon4").attr("data-original-title", $("#pic4data").val());}
+function setyt5data(){ localStorage.setItem("pic5dataimg", $("#pic5data").val())
+	$("#sendicon5").attr("data-original-title", $("#pic5data").val());}
+function setyt6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val())
+	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
 	
 function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic1urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+pic2urlyt+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
@@ -2403,12 +2414,12 @@ function setpic5datayt(){ localStorage.setItem("pic5datayt", $("#pic5datayt").va
 function setpic6datayt(){ localStorage.setItem("pic6datayt", $("#pic6datayt").val())
 	$("#sendicon6").attr("data-original-title", $("#pic6datayt").val());}		
 
-function setpic1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlyt", pic1urlyt);return pic1urlyt;}
-function setpic2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlyt", pic2urlyt);return pic2urlyt;}
-function setpic3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlyt", pic3urlyt);return pic3urlyt;}
-function setpic4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlyt", pic4urlyt);return pic4urlyt;}
-function setpic5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlyt", pic5urlyt);return pic5urlyt;}
-function setpic6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlyt", pic6urlyt);return pic6urlyt;}	
+function setyt1url(){ pic1urlyt=$("#pic1urlyt").val();localStorage.setItem("pic1urlyt", pic1urlyt);return pic1urlyt;}
+function setyt2url(){ pic2urlyt=$("#pic2urlyt").val();localStorage.setItem("pic2urlyt", pic2urlyt);return pic2urlyt;}
+function setyt3url(){ pic3urlyt=$("#pic3urlyt").val();localStorage.setItem("pic3urlyt", pic3urlyt);return pic3urlyt;}
+function setyt4url(){ pic4urlyt=$("#pic4urlyt").val();localStorage.setItem("pic4urlyt", pic4urlyt);return pic4urlyt;}
+function setyt5url(){ pic5urlyt=$("#pic5urlyt").val();localStorage.setItem("pic5urlyt", pic5urlyt);return pic5urlyt;}
+function setyt6url(){ pic6urlyt=$("#pic6urlyt").val();localStorage.setItem("pic6urlyt", pic6urlyt);return pic6urlyt;}	
 	
 function enableshortcuts(){
 	if($("#IPBtn").attr('aria-pressed') == "false"){
