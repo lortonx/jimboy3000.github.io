@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.097 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.098 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2391,17 +2391,17 @@ function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-bo
 function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 	
 function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
-	$("#sendicon1").attr("data-original-title", $("#yt1data").val());}
+	$("#sendyt1").attr("data-original-title", $("#yt1data").val());}
 function setyt2data(){ localStorage.setItem("yt2dataimg", $("#yt2data").val())
-	$("#sendicon2").attr("data-original-title", $("#yt2data").val());}
+	$("#sendyt2").attr("data-original-title", $("#yt2data").val());}
 function setyt3data(){ localStorage.setItem("yt3dataimg", $("#yt3data").val())
-	$("#sendicon3").attr("data-original-title", $("yt3data").val());}
+	$("#sendyt3").attr("data-original-title", $("yt3data").val());}
 function setyt4data(){ localStorage.setItem("yt4dataimg", $("#yt4data").val())
-	$("#sendicon4").attr("data-original-title", $("#yt4data").val());}
+	$("#sendyt4").attr("data-original-title", $("#yt4data").val());}
 function setyt5data(){ localStorage.setItem("yt5dataimg", $("#yt5data").val())
-	$("#sendicon5").attr("data-original-title", $("#yt5data").val());}
+	$("#sendyt5").attr("data-original-title", $("#yt5data").val());}
 function setyt6data(){ localStorage.setItem("yt6dataimg", $("#yt6data").val())
-	$("#sendicon6").attr("data-original-title", $("#yt6data").val());}		
+	$("#sendyt6").attr("data-original-title", $("#yt6data").val());}		
 
 function setyt1url(){ yt1url=$("#yt1url").val();localStorage.setItem("yt1urlimg", yt1url);return yt1url;}
 function setyt2url(){ yt2url=$("#yt2url").val();localStorage.setItem("yt2urlimg", yt2url);return yt2url;}
