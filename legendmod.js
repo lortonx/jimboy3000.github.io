@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.001 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.002 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1624,7 +1624,7 @@ function chatfunction(){
 	if (MC.isInGame()){
 	if (!ogario.spectate){
 //	if (messageone==1){
-		if (hiddenfromclan==1){
+		if (hiddenfromclan==0){
 		saveclanpassword=$("#clantag").val();
 		toastr["info"]('You are invisible to Team/Clan');
 		$("#ChatBtn1").attr('class', 'fa fa-comments-o');
@@ -1632,10 +1632,10 @@ function chatfunction(){
 		$("#clantag").val("HIDDEN");
 	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
-		hiddenfromclan=0;
+		hiddenfromclan=1;
 		return saveclanpassword, hiddenfromclan;		
 		}
-		else if (hiddenfromclan==0){
+		else if (hiddenfromclan==1){
 		toastr["info"]('You are visible to Team/Clan');
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
 		$("#ChatBtn").attr("data-original-title", "Visible");
@@ -1664,6 +1664,7 @@ function chatfunction(){
 	
 	}*/
 	}
+	else{toastr["info"]("Hide/Show can be used only while playing!").css("width", "210px"); }
 	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
