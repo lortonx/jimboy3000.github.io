@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.083 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.084 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -63,6 +63,12 @@ var pic3urlyt="UD-MkihnOXg";
 var pic4urlyt="vpoqWs6BuIY";
 var pic5urlyt="VUvfn5-BLM8";
 var pic6urlyt="CnIfNSpCf70";
+var pic1datayt="Rick Astley - Never Gonna Give You Up";
+var pic2datayt="Survivor - Eye Of The Tiger";
+var pic3datayt="Lion king - The Lion Sleeps Tonight";
+var pic4datayt="Agario - Jumbo Solo vs Teams";
+var pic5datayt="Agario - Kill3r vs Teams";
+var pic6datayt="Legend Mod Promo";
 var lastIP="";
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext= localStorage.getItem("leadbtext");
@@ -100,6 +106,7 @@ var saveclanpassword;
 var troll1;
 var seticon="YES";
 var setmessagecom="YES";
+var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
@@ -931,12 +938,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 
     $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+	
-	'<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendyt11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>'+
-	'<button id="sendyt2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt2();" data-toggle="tooltip" data-original-title="Why?"><i id="sendyt21" class="fa fa-question-circle" style="padding-left: 0px;"></i></button>'+
-	'<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendyt31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>'+
-	'<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendyt41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>'+
-	'<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendyt51" class="fa fa-bed" style="padding-left: 0px;"></i></button>'+
-	'<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+	'<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendyt11" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>'+
+	'<button id="sendyt2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt2();" data-toggle="tooltip" data-original-title="Why?"><i id="sendyt21" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>'+
+	'<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendyt31" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>'+
+	'<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendyt41" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>'+
+	'<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendyt51" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>'+
+	'<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendyt61" class="fa fa-video-camera" style="padding-left: 0px;"></i></button></div>');
 	
     $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">'+
 	'<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>'+
@@ -2052,22 +2059,28 @@ function gotolegendml(){$('#legendAdImg').click();}
 
 function seticonfunction(){
 	if (setmessagecom=="NO"){YessetMsgComReturn();}
+	if (setyt=="NO"){YessetytReturn();}
 	if (seticon=="YES"){NoseticonReturn();}
-	else if (seticon=="NO"){YesseticonReturn();}
-}
+	else if (seticon=="NO"){YesseticonReturn();}}
 
 function setmessagecomfunction(){
 	if (seticon=="NO"){YesseticonReturn();}
+	if (setyt=="NO"){YessetytReturn();}
 	if (setmessagecom=="YES"){NosetMsgComReturn();}
-	else if (setmessagecom=="NO"){YessetMsgComReturn();}
-}
+	else if (setmessagecom=="NO"){YessetMsgComReturn();}}
 
+function setytfunction(){
+	if (setmessagecom=="NO"){YessetMsgComReturn();}
+	if (seticon=="NO"){YesseticonReturn();}
+	if (setyt=="YES"){NosetytReturn();}
+	else if (setyt=="NO"){YessetytReturn();}}	
+	
 function NoseticonReturn(){$("#images-hud").show();return seticon="NO";}
 function YesseticonReturn(){$("#images-hud").hide();return seticon="YES";}
 function NosetMsgComReturn(){$("#msgcommands-hud").show();return setmessagecom="NO";}
 function YessetMsgComReturn(){$("#msgcommands-hud").hide();return setmessagecom="YES";}
-
-
+function NosetytReturn(){$("#yt-hud").show();return setmessagecom="NO";}
+function YessetytReturn(){$("#yt-hud").hide();return setmessagecom="YES";}
 
 
 function changePicFun(){
