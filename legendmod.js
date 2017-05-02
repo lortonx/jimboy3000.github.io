@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.091 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.092 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
