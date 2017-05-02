@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.005 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -82,8 +82,8 @@ var IPBtn = localStorage.getItem("IPBtn");
 var SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
 var XPBtn = localStorage.getItem("XPBtn");
 var TIMEBtn = localStorage.getItem("TIMEBtn");
-var MAINBBtn = localStorage.getItem("MAINBBtn");
-var MAINBTBtn = localStorage.getItem("MAINBTBtn");
+//var MAINBBtn = localStorage.getItem("MAINBBtn");
+//var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 var MANUIBtn = localStorage.getItem("MANUIBtn");
 // var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
@@ -359,12 +359,12 @@ setTimeout(function () {
     $(".menu-tabs").children().attr("style", "width: 14.27%;");
     $(".menu-tabs").children().last().after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu").children().last().after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
-											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show IP</button>' +
+											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
                                             '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-puzzle-piece"></i>Show Shortcuts</button>' +
 											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-gamepad"></i>Show XP Bar</button>' +
                                             '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-clock-o"></i>Show Time</button>' +
-											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-                                            '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
+//											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
+//                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
 											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
 //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
 											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>Hide Everything</button>' +
@@ -859,8 +859,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	localStorage.setItem("showTK", false);
   
      $("#IPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide IP');} 
-		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show IP');}} );  
+		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide Connector');} 
+		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show Connector');}} );  
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
 		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
@@ -870,12 +870,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
      $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>Hide TIME');}
 		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>Show TIME');}} );  
-     $("#MAINBBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+/*     $("#MAINBBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MAINBBtn", true);$("#LEGENDAds").show();$(this).html('<i class="fa fa-bars"></i>Hide Main Banner');}
 		else {localStorage.setItem("MAINBBtn", false);$("#LEGENDAds").hide();$(this).html('<i class="fa fa-bars"></i>Show Main Banner');}} );
      $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MAINBTBtn", true);$("#legendbanners").show();$(this).html('<i class="fa fa-minus"></i>Hide Main Tools');}
-		else {localStorage.setItem("MAINBTBtn", false);$("#legendbanners").hide();$(this).html('<i class="fa fa-minus"></i>Show Main Tools');}} );   
+		else {localStorage.setItem("MAINBTBtn", false);$("#legendbanners").hide();$(this).html('<i class="fa fa-minus"></i>Show Main Tools');}} );   */
       $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MANUIBtn", true);$(".input-group.skin.colorpicker-element").show();
 		$(this).html('<i class="fa fa-minus"></i>Hide Manual Skins');}else {localStorage.setItem("MANUIBtn", false);$(".input-group.skin.colorpicker-element").hide();$(this).html('<i class="fa fa-minus"></i>Show Manual Skins');}} ); 
@@ -902,7 +902,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#exp-bar").hide();
 			$("#time-hud").hide();
 			$(".input-group.skin.colorpicker-element").hide();
-			$("#legendbanners").hide();
+	//		$("#legendbanners").hide();
 			$("#leaderboard-hud").hide();
 			$("#minimap-hud").hide();
 			$("#stats-hud").hide();
@@ -917,7 +917,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#exp-bar").show();
 			$("#time-hud").show();
 			$(".input-group.skin.colorpicker-element").show();
-			$("#legendbanners").show();
+	//		$("#legendbanners").show();
 			$("#leaderboard-hud").show();
 			$("#minimap-hud").show();
 			$("#stats-hud").show();
@@ -1108,10 +1108,12 @@ $('#server-join').click(function(){
 	$("#rotate-hud").hide();	
 	$("#exp-bar").hide();
 	$("#time-hud").hide();
-	$("#LEGENDAds").hide();
-	$("#legendbanners").hide();
+//	$("#LEGENDAds").hide();
+//	$("#legendbanners").hide();
 	$(".input-group.skin.colorpicker-element").hide();
 	$("#timertools-hud").hide();
+	$("#server").hide();
+	$("#connect2").hide();
 	
 //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
 //Legend.Mod&?player=a&?com=Team5&?do=donothing
@@ -1193,8 +1195,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		$("#IPBtn").click();
 		$("#SHOSHOBtn").click(); 
 		$("#TIMEBtn").click();
-		$("#MAINBBtn").click();
-		$("#MAINBTBtn").click();
+//		$("#MAINBBtn").click();
+//		$("#MAINBTBtn").click();
 		$("#XPBtn").click();
 		$("#MANUIBtn").click();
 //		$("#RotationBtn").click();
@@ -1209,8 +1211,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if (IPBtn  == "true") { $("#IPBtn").click(); }
 	if (SHOSHOBtn == "true") { $("#SHOSHOBtn").click(); }
 	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
-	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
-	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
+//	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
+//	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
 	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
 //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
 	if (YoutubeAutoBtn  == "true") { $("#YoutubeAutoBtn").click(); }
