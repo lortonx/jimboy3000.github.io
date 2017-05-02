@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.008 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.009 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -693,11 +693,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		//load messages for Google Plus
 	$("#gplusLogin").click(
 	function() {
+		if (messageone==1){
 		if (timesopened==null||timesopened==""||timesopened<=5){
 		toastr["error"]("Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
 		else if(timesopened>5){
+		
 		toastr["info"]("Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
-		toastr["info"]("If logout occurs on onload events, delete Chrome cookies from <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}	
+		toastr["info"]("If logout occurs on onload events, delete Chrome cookies from <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}
+		return messageone=0;	}
 	});
 	
     // listen for server disconnect
