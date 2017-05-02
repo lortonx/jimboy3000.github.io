@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2081,8 +2081,8 @@ function NoseticonReturn(){$("#images-hud").show();return seticon="NO";}
 function YesseticonReturn(){$("#images-hud").hide();return seticon="YES";}
 function NosetMsgComReturn(){$("#msgcommands-hud").show();return setmessagecom="NO";}
 function YessetMsgComReturn(){$("#msgcommands-hud").hide();return setmessagecom="YES";}
-function NosetytReturn(){$("#yt-hud").show();return setmessagecom="NO";}
-function YessetytReturn(){$("#yt-hud").hide();return setmessagecom="YES";}
+function NosetytReturn(){$("#yt-hud").show();return setyt="NO";}
+function YessetytReturn(){$("#yt-hud").hide();return setyt="YES";}
 
 
 function changePicFun(){
