@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.015 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.016 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -357,7 +357,7 @@ setTimeout(function () {
                            '</div>');
 
     $(".menu-tabs").children().attr("style", "width: 14.27%;");
-    $(".menu-tabs").children().last().after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
+    $(".menu-tabs").children().last().after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu").children().last().after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
 //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
                                             '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>Show Shortcuts</button>' +
@@ -485,7 +485,8 @@ setTimeout(function () {
     }
 	//roller and other icons
 	$('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
-	$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube radio');
+	//$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
+	$('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].setAttribute('id', 'legendid');
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
