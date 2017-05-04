@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.019 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.020 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1064,7 +1064,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/iconlegenddefaultsmall.png" alt="Vanilla Like Settings" id = "defaultset" onclick="legenddefaultsettings(); return false" class="img-rounded"  return false" width="87" height="40"  >' +
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/smallbannerlegendclan2.png" alt="Vanilla Like Settings" id = "legendclanbanner" class="img-rounded" return false" width="87" height="40" onclick="gotolegendml(); return false" > '+
 	'</div><div id="LEGENDAds"></div>');
-
+	$( "#legendbanners" ).css( { marginTop : "-25px" } );
+	$( "#version-tag" ).css( { marginBottom : "-15px" } );
+	$( "#LEGENDAds" ).css( { marginBottom : "-5px" } );
 	//Other things
 	// ADS
 	var tag1 = document.getElementById("nick").value;	
