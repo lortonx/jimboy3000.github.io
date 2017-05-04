@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.016 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.017 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -609,8 +609,9 @@ setTimeout(function () {
 	$("#gifting").css( { marginTop : "25px" } );
 	$("#dailyQuests").css( { marginBottom : "5px" } );
 	
-		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i>Legend Mod by jimboy3100</i></h6></div>');
-		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;>Times Used: '+timesopened+'</div>');
+		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
+		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: '+timesopened+
+		'<br>Legend Mod by jimboy3100</i></h6></div>');
 		$(".agario-panel.ogario-yt-panel").css( { marginBottom : "-10px" } );
 	//	'Scripts used: ' + '<a href="http://ogario.ovh" target="_blank">ogario</a>'+ ", " + '<a href="https://kittymod.github.io/" target="_blank">kitty</a>' + " & " + '<a href="https://greasyfork.org/en/scripts/by-site/agar.io" target="_blank">others</a><br>'+
 	
