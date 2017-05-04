@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.017 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.018 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1059,7 +1059,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     
 	//Buttons for search Area
 	$("#log").after('<button id="Backtomenu" onclick="doback(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
-	$("#tags-container").before('<div id="legendbanners" style="margin-top: 10px;"><img src="https://jimboy3100.github.io/legend.github.io/banners/1481753383_search_magnifying_glass_find.png" alt="Search Servers" id= "searchicon" onclick="dosearch(); return false" class="img-rounded" alt="Cinque Terre" width="87" height="40">' +
+	$("#tags-container").before('<div id="legendbanners" style="margin-top: 10px;"><img src="https://jimboy3100.github.io/legend.github.io/banners/iconinfo.png" data-original-title="Mod Information and choose Template" alt="Search Servers" id= "searchicon" onclick="openhelper();return false;" class="img-rounded" alt="Cinque Terre" width="87" height="40">' +
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/vanillapic2.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillasettings(); return false" class="img-rounded"  return false" width="87" height="40" >' +
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/iconlegenddefaultsmall.png" alt="Vanilla Like Settings" id = "defaultset" onclick="legenddefaultsettings(); return false" class="img-rounded"  return false" width="87" height="40"  >' +
 	'<img src="https://jimboy3100.github.io/legend.github.io/banners/smallbannerlegendclan2.png" alt="Vanilla Like Settings" id = "legendclanbanner" class="img-rounded" return false" width="87" height="40" onclick="gotolegendml(); return false" > '+
@@ -1077,7 +1077,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');}
 	//toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
-	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersearchliking");	});
+	  $( "#searchicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerinformation");	});
 	  $( "#vanillaset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");	});
       $( "#defaultset" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannergalaxyliking");	});
       $( "#legendclanbanner" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc");	});
