@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.024 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.026 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -190,6 +190,7 @@ if (searchSip==null){
 			
             });
         })
+		setTimeout(function () {adres();},4000);
 adres();
 })(window, window.jQuery);
 }
@@ -238,8 +239,9 @@ setTimeout(function () {
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
 //	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
 	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000);
-	}
-	}	
+	}}
+	else if (searchSip==null){
+	history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);}			
 	$("#cur-tk-hud").bind("DOMSubtreeModified",function(){
 	setTimeout(function (){realmode=getGameMode();
 	if (searchSip==null){
