@@ -191,11 +191,10 @@ if (searchSip==null){
             });
         })
 adres();
-setTimeout(function () {adres();}, 2000);
-setTimeout(function () {adres();}, 4000);
+
 })(window, window.jQuery);
 }
-}, 4000);
+}, 7000);
 /*
 setTimeout(function () {
 $("#connect2").click(function() {
