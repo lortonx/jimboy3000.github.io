@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1224,7 +1224,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 	
 	console.log( "Legend Mod is Ready" );
-}, 3500);
+}, 1500);
 
 }
 
