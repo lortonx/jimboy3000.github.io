@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.032 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.027 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -761,6 +761,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     $("#region").change(function () {localStorage.setItem("location2", MC.getRegion());});
 
 	if (searchSip==null){
+		setTimeout(function () {
     $(document).ajaxComplete(function (event, xhr, settings) {
         //console.log(xhr);
         //console.log(settings);
@@ -813,7 +814,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         if (searchStr != null && searchStr) {
             if (searchIPHandler(searchStr)) {hideMenu();showSearchHud();showCancelSearch();$("#searchInput").val(searchStr);}
         }
-    }, 10000); //10
+    }, 5000); //10
+	}, 5000);
 	}
 	
     $("#autoCoinBtn").click(function () {
