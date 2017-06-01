@@ -39,7 +39,7 @@ var legendJS = '<script src="https://jimboy3000.github.io/legendmod.js"></script
 var legendJSniffJS = '<script src="https://jimboy3000.github.io/legend.sniff.js"></script>';
 var legendJSniff2JS = '<script src="https://jimboy3000.github.io/legend.sniff2.js"></script>';
 
-var CodepenCSS = '<link href="https://jimboy3000.github.io/Codepen.css" rel="stylesheet"></link>';
+var CodepenCSS = '<link href="http://jimboy3000.github.io/Codepen.css" rel="stylesheet"></link>';
 var cpickerCSS = '<link href="http://cdn.ogario.ovh/static/css/bootstrap-colorpicker.min.css" rel="stylesheet"></link>';
 var toastrCSS = '<link href="http://cdn.ogario.ovh/static/css/toastr.min.css" rel="stylesheet"></link>';
 var switchCSS = '<link href="http://cdn.ogario.ovh/static/css/switchery.min.css" rel="stylesheet"></link>';
