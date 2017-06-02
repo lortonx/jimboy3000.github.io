@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.039 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.040 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -630,7 +630,13 @@ setTimeout(function () {
 	$('#themePreset>option:nth-child(5)').text("Crazy Style 2");
 	$('#menuPreset>option:nth-child(1)').text("Legend v2");
 	$('#menuPreset>option:nth-child(2)').text("Legend v1");
-
+   	$('#themePreset').on('change', function () {
+	setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+	ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 200)	;})
+   	$('#miniMapWidth-value').text().on('change', function () {
+	setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+	ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 200)	;})	
+		
 		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: '+timesopened+
 		'<br>Legend Mod by jimboy3100</i></h6></div>');
