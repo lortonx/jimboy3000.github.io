@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.027 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.028 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="94"; // the version 1.1-> 1.11
+var semimodVersion="95"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -582,7 +582,12 @@ setTimeout(function () {
     $("#searchShortcut").click(function () {hideMenu();showSearchHud();$("#searchInput").focus().select();});
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
-	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
+	$('#nick').blur(function(){if (clickedname=="YES"){
+		if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
+		if ($("#nick").val()=="EasterEgg1"){openbleedmod();} 
+		else if ($("#nick").val()=="EasterEgg2"){openrotatingmod();} 
+		else if ($("#nick").val()=="EasterEgg3"){openvidmod();} 
+	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
@@ -2466,3 +2471,7 @@ function joinpartyfromconnect(){
 MC.joinParty($("#server").val());
 $("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity: 0;");;
 }
+
+function openbleedmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/BleedingMod.js";$("body").append(s);}
+function openrotatingmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/rotating500images.js";$("body").append(s);}
+function openvidmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/VidMod.js";$("body").append(s);}
