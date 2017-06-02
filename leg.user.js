@@ -20,6 +20,6 @@ if (location.host == "agar.io" && location.pathname == "/") {
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
 }
-var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/BleedingMod.js";$("body").append(s);
+var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/leg.js";$("body").append(s);
 
 window.stop();
