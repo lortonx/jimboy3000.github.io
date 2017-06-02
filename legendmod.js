@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.028 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.029 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -583,10 +583,11 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-		if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
-		if ($("#nick").val()=="EasterEgg1"){openbleedmod();} 
-		else if ($("#nick").val()=="EasterEgg2"){openrotatingmod();} 
-		else if ($("#nick").val()=="EasterEgg3"){openvidmod();} 
+	if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
+		var savedname=$("#nick").val();
+		if ($("#nick").val()=="EasterEgg1"){$("#nick").val(savedname);openbleedmod();} 
+		else if ($("#nick").val()=="EasterEgg2"){$("#nick").val(savedname);openrotatingmod();} 
+		else if ($("#nick").val()=="EasterEgg3"){$("#nick").val(savedname);openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
