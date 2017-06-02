@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.032 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.035 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -462,7 +462,7 @@ setTimeout(function () {
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
 //	var savemusic=$(".agario-panel.sounds-panel").html();
-	$('.agario-panel.radio-panel').append('<h5 class="main-color">Youtube player</h5>' +
+	$('.agario-panel.radio-panel').after('<h5 class="main-color">Youtube player</h5>' +
 										'<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
 										'<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
 										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button>');
