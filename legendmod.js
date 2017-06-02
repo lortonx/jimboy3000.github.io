@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.036 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.037 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -462,12 +462,14 @@ setTimeout(function () {
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
 //	var savemusic=$(".agario-panel.sounds-panel").html();
-	$('.agario-panel.radio-panel').after('<div id="youtubeplayer"><h5 class="main-color">Youtube player</h5>' +
+	$('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 15px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
 										'<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
 										'<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
 										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
 		$('.agario-panel.radio-panel').hide();
 		$('.agario-panel.ogario-yt-panel').hide();
+		if ($('#messageSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_01.mp3"){$('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");}
+		if ($('#commandSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_02.mp3"){$('#commandSound').val("https://jimboy3100.github.io/notification_02.mp3");}	
 	//    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
 //                            '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
 //                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
