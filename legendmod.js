@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.033 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.034 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -7,7 +7,7 @@ $("#region").on('change', function() {
 });
    	$('#gamemode').on('change', function () {
 		adres();
-      if (this.value == ":party") { $("#create-party-btn-2").click(); }
+      if (this.value == ":party") { $("#create-party-btn").click(); }
 		console.log( "Party stuff fixed" );})
 
 
@@ -259,7 +259,7 @@ setTimeout(function () {
 		// fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
-//      if (this.value == ":party") { $("#create-party-btn-2").click(); }
+//	if (this.value == ":party") { $("#create-party-btn").click(); }}
 //		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 var minbtext2=minbtext;	
@@ -465,8 +465,8 @@ setTimeout(function () {
     $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
                             '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
                             '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
-							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div></div>');
-	$('#music').append(savemusic);						
+							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
+	$('#music').append(savemusic+'</div>');						
 					
 							
     if (typeof YT !== 'undefined') {
@@ -615,6 +615,14 @@ setTimeout(function () {
 	$("#gifting").css( { marginTop : "25px" } );
 	$("#dailyQuests").css( { marginBottom : "5px" } );
 	
+	$('#themePreset>option:nth-child(1)').text("Legend v2");
+	$('#themePreset>option:nth-child(2)').text("Legend v1");
+	$('#themePreset>option:nth-child(3)').text("Legend Original");
+	$('#themePreset>option:nth-child(4)').text("Crazy Style 1");
+	$('#themePreset>option:nth-child(5)').text("Crazy Style 2");
+	$('#menuPreset>option:nth-child(1)').text("Legend v2");
+	$('#menuPreset>option:nth-child(2)').text("Legend v1");
+
 		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: '+timesopened+
 		'<br>Legend Mod by jimboy3100</i></h6></div>');
