@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.032 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.033 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -584,8 +584,8 @@ setTimeout(function () {
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
 	if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
-		if ($("#nick").val()=="EasterEgg1"){toastr["info"]("Easter Egg 1 Activated").css("width", "210px");$("#nick").val("Easter Egg");openbleedmod();} 
-		else if ($("#nick").val()=="EasterEgg2"){toastr["info"]("Easter Egg 2 Activated").css("width", "210px");$("#nick").val("Easter Egg");openrotatingmod();} 
+		if ($("#nick").val()=="EasterEgg1"){toastr["info"]("Easter Egg 1 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
+		else if ($("#nick").val()=="EasterEgg2"){toastr["info"]("Easter Egg 2 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"]('Easter Egg 3 Activated,<br>Video works better on vanilla, visit: <a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
