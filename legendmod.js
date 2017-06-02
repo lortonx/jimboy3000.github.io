@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.026 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.027 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1895,7 +1895,7 @@ $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({ 
 function setminbtext(){ var minbtext=$("#minbtext").val();
 localStorage.setItem("minbtext", minbtext);
 var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);
+ctx.font="16px Georgia";ctx.fillText(minbtext,c.width/2,22);
 }
 
 function setleadbgname(){ leadbimg=$("#leadbPicture").val();
