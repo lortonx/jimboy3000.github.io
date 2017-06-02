@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.026 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.042 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -7,7 +7,7 @@ $("#region").on('change', function() {
 });
    	$('#gamemode').on('change', function () {
 		adres();
-      if (this.value == ":party") { $("#create-party-btn-2").click(); }
+      if (this.value == ":party") { $("#create-party-btn").click(); }
 		console.log( "Party stuff fixed" );})
 
 
@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=f5cXwgjs0aE";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=lMzF3xAAzGE";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="94"; // the version 1.1-> 1.11
+var semimodVersion="96"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -259,7 +259,7 @@ setTimeout(function () {
 		// fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
-//      if (this.value == ":party") { $("#create-party-btn-2").click(); }
+//	if (this.value == ":party") { $("#create-party-btn").click(); }}
 //		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 var minbtext2=minbtext;	
@@ -461,12 +461,20 @@ setTimeout(function () {
 	
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
-	var savemusic=$(".agario-panel.sounds-panel").html();
-    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
-                            '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
-                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
-							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div></div>');
-	$('#music').append(savemusic);						
+//	var savemusic=$(".agario-panel.sounds-panel").html();
+	$('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 15px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
+										'<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
+										'<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
+										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
+		$('.agario-panel.radio-panel').hide();
+		$('.agario-panel.ogario-yt-panel').hide();
+		if ($('#messageSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_01.mp3"){$('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");}
+		if ($('#commandSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_02.mp3"){$('#commandSound').val("https://jimboy3100.github.io/notification_02.mp3");}	
+	//    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
+//                            '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
+//                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
+//							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
+//	$('#music').append(savemusic+'</div>');						
 					
 							
     if (typeof YT !== 'undefined') {
@@ -582,7 +590,12 @@ setTimeout(function () {
     $("#searchShortcut").click(function () {hideMenu();showSearchHud();$("#searchInput").focus().select();});
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
-	$('#nick').blur(function(){if (clickedname=="YES"){if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}});
+	$('#nick').blur(function(){if (clickedname=="YES"){
+	if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
+		if ($("#nick").val()=="EasterEgg1"){toastr["info"]("Easter Egg 1 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
+		else if ($("#nick").val()=="EasterEgg2"){toastr["info"]("Easter Egg 2 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
+		else if ($("#nick").val()=="EasterEgg3"){toastr["info"]('Easter Egg 3 Activated,<br>Video works better on vanilla, visit: <a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
+	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
@@ -610,6 +623,20 @@ setTimeout(function () {
 	$("#gifting").css( { marginTop : "25px" } );
 	$("#dailyQuests").css( { marginBottom : "5px" } );
 	
+	$('#themePreset>option:nth-child(1)').text("Legend v2");
+	$('#themePreset>option:nth-child(2)').text("Legend v1");
+	$('#themePreset>option:nth-child(3)').text("Legend Original");
+	$('#themePreset>option:nth-child(4)').text("Crazy Style 1");
+	$('#themePreset>option:nth-child(5)').text("Crazy Style 2");
+	$('#menuPreset>option:nth-child(1)').text("Legend v2");
+	$('#menuPreset>option:nth-child(2)').text("Legend v1");
+   	$('#themePreset').on('change', function () {
+	setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+	ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 200)	;})
+	$('#miniMapWidth-value').bind("DOMSubtreeModified",function() {
+	setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+	ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 100)	;})
+		
 		$(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 		$(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: '+timesopened+
 		'<br>Legend Mod by jimboy3100</i></h6></div>');
@@ -1895,7 +1922,7 @@ $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({ 
 function setminbtext(){ var minbtext=$("#minbtext").val();
 localStorage.setItem("minbtext", minbtext);
 var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);
+ctx.font="16px Georgia";ctx.fillText(minbtext,c.width/2,22);
 }
 
 function setleadbgname(){ leadbimg=$("#leadbPicture").val();
@@ -2466,3 +2493,7 @@ function joinpartyfromconnect(){
 MC.joinParty($("#server").val());
 $("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity: 0;");;
 }
+
+function openbleedmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/BleedingMod.js";$("body").append(s);}
+function openrotatingmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/rotating500images.js";$("body").append(s);}
+function openvidmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/VidMod.js";$("body").append(s);}
