@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.055 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.056 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -157,15 +157,15 @@ var Premadeletter29="Leaderboard found";
 var Premadeletter30="Search";
 var Premadeletter31="The leaderboard was not found. Keep trying...";
 var Premadeletter32="Search was canceled";
-var Premadeletter33=
-var Premadeletter34=
-var Premadeletter35=
-var Premadeletter36=
-var Premadeletter37=
-var Premadeletter38=
-var Premadeletter39=
-var Premadeletter40=
-var Premadeletter40=
+var Premadeletter33="";
+var Premadeletter34="";
+var Premadeletter35="";
+var Premadeletter36="";
+var Premadeletter37="";
+var Premadeletter38="";
+var Premadeletter39="";
+var Premadeletter40="";
+var Premadeletter40="";
 
          
 
