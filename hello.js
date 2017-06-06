@@ -1,15 +1,4 @@
- $1$2;
- ogario.playerCellsMass.push($2) $3 ogario.playerMass = $5;
- ogario.calculateMass();
- ','
- $1 ogario.viewScale = $2;
- ogario.playerX = $4;
- ogario.playerY = $5;
- ogario.customDraw(gameCtx);
- ','
- $1$13 ','
- $2 = 1;
- $3
+
  if (!ogario.vanillaSkins && ogario.customSkins) {
      $6 = 0;
  } else {
