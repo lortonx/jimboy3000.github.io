@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.062 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.063 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -175,16 +175,16 @@ var Premadeletter47="Hide TIME";
 var Premadeletter48="Show Everything";
 var Premadeletter49="Hide Everything";
 var Premadeletter50="Show Timer Calc.";
-var Premadeletter51
-var Premadeletter52
-var Premadeletter53
-var Premadeletter54
-var Premadeletter55
-var Premadeletter56
-var Premadeletter57
-var Premadeletter58
-var Premadeletter59
-var Premadeletter60
+var Premadeletter51="Hide Timer Calc."
+var Premadeletter52="Edit Names";
+var Premadeletter53="Auto free coins";
+var Premadeletter54="Stop free coins";
+var Premadeletter55="Troll on Death";
+var Premadeletter56="No troll on Death";
+var Premadeletter57;
+var Premadeletter58;
+var Premadeletter59;
+var Premadeletter60;
 
 
 
@@ -437,10 +437,10 @@ setTimeout(function () {
 //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
 											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
 											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
-											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>Edit Names</button>' +
-											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i> Auto free coins</button>' +
+											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
+											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + </button>' +
 //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
-											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
+											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
 //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
@@ -914,10 +914,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         var checked = !($(this).attr('aria-pressed') == "true");
         if (checked) {
 			localStorage.setItem("autoCoinBtn", true);
-			startCoinMining();$(this).html('<i class="fa fa-clock-o"></i> Stop free coins');}
+			startCoinMining();$(this).html('<i class="fa fa-clock-o"></i>'+Premadeletter54);}
 		else {
 			localStorage.setItem("autoCoinBtn", false);
-			stopCoinMining();$(this).html('<i class="fa fa-clock-o"></i> Auto free coins');}
+			stopCoinMining();$(this).html('<i class="fa fa-clock-o"></i>'+Premadeletter53);}
 	});
 	
 		
@@ -931,7 +931,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         } 
 		else{
 			localStorage.setItem("copyGameNames", false);
-			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>Edit Names');return checkedGameNames=1;}
+			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52);return checkedGameNames=1;}
 		});
 		
  /*   $("#autoRespawnBtn").click(function () {
@@ -994,8 +994,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else {localStorage.setItem("YoutubeAutoBtn", false);$(this).html('<i class="fa fa-youtube-play"></i>'+ Premadeletter40);}} ); 		
 		
      $("#TIMEcalBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("TIMEcalBtn", true);$("#timertools-hud").show();$(this).html('<i class="fa fa-calculator"></i>Hide Timer Calc.');T.timerDiv = document.getElementById('timer');return T.timerDiv;}
-		else {localStorage.setItem("TIMEcalBtn", false);$("#timertools-hud").hide();$(this).html('<i class="fa fa-calculator"></i>Show Timer Calc.');}} );  		
+		if (checked) {localStorage.setItem("TIMEcalBtn", true);$("#timertools-hud").show();$(this).html('<i class="fa fa-calculator"></i>'+Premadeletter51);T.timerDiv = document.getElementById('timer');return T.timerDiv;}
+		else {localStorage.setItem("TIMEcalBtn", false);$("#timertools-hud").hide();$(this).html('<i class="fa fa-calculator"></i>'+Premadeletter50);}} );  		
       $("#HideAllBthn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {		
 	//		$("#cur-tk-hud").hide();
@@ -1030,8 +1030,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		
 		
 	  $("#troll1Btn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> No troll on Death ');}
-		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
+		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i>' + Premadeletter56);}
+		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i>' + Premadeletter55);}} );  			
 
     $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
 	//$("#cur-tk-hud").attr("style", "opacity: 0;");
