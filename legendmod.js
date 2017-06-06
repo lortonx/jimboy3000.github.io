@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.053 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.054 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -124,7 +124,7 @@ var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
 
-
+var Premadeletter0= "Communication Activated";
 var Premadeletter1="Cannot open this youtube URL";
 var Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
 var Premadeletter3="Easter Egg 1 Activated";
@@ -145,14 +145,14 @@ var Premadeletter17="Welcome back";
 var Premadeletter18="Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
 var Premadeletter19="Enable Them";
 var Premadeletter20="Keep Them Disabled";
-var Premadeletter21="Searching IP"
-var Premadeletter22="";
-var Premadeletter23="";
-var Premadeletter24="";
-var Premadeletter25="";
-var Premadeletter26="";
-var Premadeletter27="";
-var Premadeletter28="";
+var Premadeletter21="Searching IP";
+var Premadeletter22="Your teammate";
+var Premadeletter23="wants you to hide all (leaderboard and minimap)";
+var Premadeletter24="Accept";
+var Premadeletter25="NO WAY!";
+var Premadeletter26="wants you to change your name to";
+var Premadeletter27="wants you to hide Enable Troll on death";
+var Premadeletter28="wants you to open Youtube Player";
 var Premadeletter29="";
 var Premadeletter30="";
 
@@ -163,7 +163,7 @@ var Premadeletter30="";
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 	/*if (openthecommunication=="YES"){
 		setTimeout(function () {
 		$('#gamemode').val(realmode2);
@@ -627,7 +627,7 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2 + $('#nick').val())}}
+	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2 + $('#nick').val());}}
 		if ($("#nick").val()=="EasterEgg1"){toastr["info"](Premadeletter3).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
 		else if ($("#nick").val()=="EasterEgg2"){toastr["info"](Premadeletter4).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
@@ -1230,12 +1230,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		
 		//with confirmation
 			if(commandMsg=="HideAll"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to hide all(leaderboard and minimap)</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' '+ playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function () { $( "#HideAllBthn" ).click(); });
 			}
 
 			if(commandMsg=="NamePerm"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to change your name to: '+playerMsg+ ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' '+ playerMsg + ' ' + Premadeletter26 + ': '+playerMsg+ ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function () { 
 					$( "#nick" ).val(playerMsg);
 					$( "#helloContainer" ).show();
@@ -1244,12 +1244,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			}
 			
 			if(commandMsg=="dTroll2"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to hide Enable Troll on death</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' '+playerMsg+' ' + Premadeletter27 +'</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function () { settroll1true();whenplayerdies(); });
 			}			
 
 			if(commandMsg=="Youtube"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to open Youtube Player</br> <button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' '+playerMsg+' ' + Premadeletter28 +'<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function () { $("#playerBtn").click();setTimeout(function () {$("#playerBtn").focusout();}, 500); });
 			//	$("#playerBtn").click();			
 			}
