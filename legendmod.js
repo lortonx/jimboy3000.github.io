@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.057 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.058 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1616,7 +1616,7 @@ function searchPlayer(searchString) {
 
             var found = false;
             numTries++;
-            toastr["success"]("Search: " + numTries + "\/" + maxTries).css("width", "210px");
+            toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
             if (numNames == 1) {
                 found = foundName(leaderboard, searchString);
             } else if (numNames > 1) {
@@ -1627,7 +1627,7 @@ function searchPlayer(searchString) {
                 searching = false;
                 hideCancelSearch();
                 //hideSearchHud();
-                toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+                toastr["info"](Premadeletter29 + '!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 		//		testmessage();
 				$("#gamemode").val("nothing");
 				MC.setQuality($('#quality').val());
@@ -1653,19 +1653,19 @@ function searchPlayer(searchString) {
                             found = foundNames(leaderboard, names, minNamesFound);
                         }
                         numTries++;
-                        toastr["success"]("Search: " + numTries + "\/" + maxTries).css("width", "210px");
+                        toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
                         if (numTries >= maxTries) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
-                            toastr["error"]("The leaderboard was not found. Keep trying...").css("width", "210px");
+                            toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (found) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
                             //hideSearchHud();
-                            toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+							toastr["info"](Premadeletter29 + '!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 				//			testmessage();
 							MC.setQuality($('#quality').val());
 							//showMenu();
@@ -1685,7 +1685,7 @@ function searchPlayer(searchString) {
         clearInterval(timerId);
         searching = false;
         hideCancelSearch();
-        toastr["error"]("Search was canceled!").css("width", "210px");
+        toastr["error"](Premadeletter32).css("width", "210px");
     }
 }
 
