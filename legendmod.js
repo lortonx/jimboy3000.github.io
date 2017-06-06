@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.048 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.049 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -135,10 +135,28 @@ Premadeletter7="Notes:<b>Facebook</b> compatibility is better than <b>Google Plu
 Premadeletter8="Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.";
 Premadeletter9="If logout occurs on onload events, delete Chrome cookies from ";
 Premadeletter10="Disconnected from server :(";
+Premadeletter11="You were banned, restart your rooter!";
+Premadeletter12="Connected!";
+Premadeletter13="PLAY";
+Premadeletter14="SPECTATE";
+Premadeletter15=
+Premadeletter16=
+Premadeletter17=
+Premadeletter18=
+Premadeletter19=
+Premadeletter20=
+Premadeletter21=
+Premadeletter22=
+Premadeletter23=
+Premadeletter24=
+Premadeletter25=
+Premadeletter26=
+Premadeletter27=
+Premadeletter28=
+Premadeletter29=
+Premadeletter30=
 
-
-
-
+            
 
 
 
@@ -764,7 +782,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
     // listen for player ban
     MC.onPlayerBanned = function () {
-        toastr["error"]("You were banned, restart your rooter!").css("width", "210px");
+        toastr["error"](Premadeletter11).css("width", "210px");
         appendSysLog("BAN :(");
     };
     $("#region").ready(function () { delay(2000, getInfo); });
@@ -830,7 +848,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             delay(200, spectate);
 			connectedbanner++;
 			if (connectedbanner==2){
-            toastr["info"]('Connected!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["info"](Premadeletter12 + '</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$("#hidendivtoken").css("display", "block");
 			}
 			return connectedbanner, modebetter;
