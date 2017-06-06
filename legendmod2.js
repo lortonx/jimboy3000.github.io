@@ -124,10 +124,76 @@ var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
 
+var Premadeletter0= "Communication Activated";
+var Premadeletter1="Cannot open this youtube URL";
+var Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
+var Premadeletter3="Easter Egg 1 Activated";
+var Premadeletter4="Easter Egg 2 Activated";
+var Premadeletter5="Easter Egg 3 Activated";
+var Premadeletter6="Video works better on vanilla, visit:";
+var Premadeletter7="Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.";
+var Premadeletter8="Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.";
+var Premadeletter9="If logout occurs on onload events, delete Chrome cookies from ";
+var Premadeletter10="Disconnected from server :(";
+var Premadeletter11="You were banned, restart your rooter!";
+var Premadeletter12="Connected!";
+var Premadeletter13="PLAY";
+var Premadeletter14="SPECTATE";
+var Premadeletter15="Invalid token or server has closed :(";
+var Premadeletter16="can be Updated to";
+var Premadeletter17="Welcome back";
+var Premadeletter18="Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
+var Premadeletter19="Enable Them";
+var Premadeletter20="Keep Them Disabled";
+var Premadeletter21="Searching IP";
+var Premadeletter22="Your teammate";
+var Premadeletter23="wants you to hide all (leaderboard and minimap)";
+var Premadeletter24="Accept";
+var Premadeletter25="NO WAY!";
+var Premadeletter26="wants you to change your name to";
+var Premadeletter27="wants you to hide Enable Troll on death";
+var Premadeletter28="wants you to open Youtube Player";
+var Premadeletter29="Leaderboard found";
+var Premadeletter30="Search";
+var Premadeletter31="The leaderboard was not found. Keep trying...";
+var Premadeletter32="Search was canceled";
+var Premadeletter33="You are invisible to Team / Clan";
+var Premadeletter34="You are visible to Team / Clan";
+var Premadeletter35="Hide/Show can be used only while playing";
+var Premadeletter36="This is not valid Discord Webhook address";
+var Premadeletter37="Server is locked";
+var Premadeletter38="You must be on spectate mode";
+var Premadeletter39="Due to spamming issues, you must be in game and use password";
+var Premadeletter40="Auto Youtube On";
+var Premadeletter41="Auto Youtube Off";
+var Premadeletter42="Show Shortcuts";
+var Premadeletter43="Hide Shortcuts";
+var Premadeletter44="Show XP BAR";
+var Premadeletter45="Hide XP BAR";
+var Premadeletter46="Show TIME";
+var Premadeletter47="Hide TIME";
+var Premadeletter48="Show Everything";
+var Premadeletter49="Hide Everything";
+var Premadeletter50="Show Timer Calc.";
+var Premadeletter51="Hide Timer Calc."
+var Premadeletter52="Edit Names";
+var Premadeletter53="Auto free coins";
+var Premadeletter54="Stop free coins";
+var Premadeletter55="Troll on Death";
+var Premadeletter56="No troll on Death";
+var Premadeletter57="Communication";
+var Premadeletter58="Hidden";
+var Premadeletter59="Visible";
+var Premadeletter60="Pause";
+
+
+
+
+
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
 if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
-	$(".toast.toast-warning").html("<b>[SERVER]:</b> Communication Activated");
+	$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 	/*if (openthecommunication=="YES"){
 		setTimeout(function () {
 		$('#gamemode').val(realmode2);
@@ -339,7 +405,7 @@ setTimeout(function () {
 
     $("#overlays").css("z-index", 100);
 
-    $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;">Region: <span id="currentRegion"></span></p><p style="float: right;margin-right: 225px;">Servers: <span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;">Players: <span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
+    $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
                                '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
                                '<div id="" style="margin-top: 10px;">' +
                                '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
@@ -348,7 +414,7 @@ setTimeout(function () {
                                '</div></div>'
                               );
 
-    $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
+    $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
                            '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
                            '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
                            '<input id="note3" class="form-control main-color note" style="background: transparent; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
@@ -362,22 +428,22 @@ setTimeout(function () {
     $(".menu-tabs").children().last().after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu").children().last().after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
 //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-                                            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>Show Shortcuts</button>' +
-											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>Show XP Bar</button>' +
-                                            '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>Show Time</button>' +
+                                            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
+											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
+                                            '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
 //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
 //                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
 //											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
 //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
-											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>Hide Everything</button>' +
-											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>Show Timer Calc.</button>' +
-											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>Edit Names</button>' +
-											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i> Auto free coins</button>' +
+											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
+											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
+											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
+											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
 //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
-											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i> Troll on Death </button>' +
+											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
 //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span class="title" style="">Manual background:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
 											'<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
 											'<option value="1" data-itr="">Minimap</option>' +
 											'<option value="2" data-itr="">Leaderboard</option>' +
@@ -397,7 +463,7 @@ setTimeout(function () {
 											'<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +											
 											'</div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span class="title" style="">Manual Message Icons&Youtube:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span id="legendmanualmess" class="title" style="">Manual Message Icons&Youtube:  </span>' +
 											'<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
 											'<option value="1" data-itr="">Icon 1</option>' +
 											'<option value="2" data-itr="">Icon 2</option>' +
@@ -440,13 +506,13 @@ setTimeout(function () {
 											'<input id="yt6url" class="form-control" placeholder="Youtube Message 6 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
 											'</div></div>' +
 
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Chat Position:  </span><div class="btn-group">' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
 											'<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
 											'<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
 											'<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
 											'<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +											
 											'</div></div>' +
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>'+
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>'+
 											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for fuction to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
 											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
 											'</div>' +
@@ -465,7 +531,7 @@ setTimeout(function () {
 	$('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 15px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
 										'<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
 										'<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
-										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
+										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>');
 		$('.agario-panel.radio-panel').hide();
 		$('.agario-panel.ogario-yt-panel').hide();
 		if ($('#messageSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_01.mp3"){$('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");}
@@ -483,10 +549,10 @@ setTimeout(function () {
                 'onStateChange': function (state) {
                     if (state.data == 1) {
                         $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                        $("#playerBtn").attr('data-original-title', "Pause").tooltip('fixTitle');
+                        $("#playerBtn").attr('data-original-title', Premadeletter60).tooltip('fixTitle');
                     } else {
                         $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                        $("#playerBtn").attr('data-original-title', "Play").tooltip('fixTitle');
+                        $("#playerBtn").attr('data-original-title', Premadeletter13).tooltip('fixTitle');
                     }
                 }
             }
@@ -508,7 +574,7 @@ setTimeout(function () {
         var pastedData = e.originalEvent.clipboardData.getData('text');
         var finalUrl = getEmbedUrl(pastedData.trim());
         if (finalUrl == false) {
-            toastr["error"]("Cannot open this youtube URL").css("width", "210px");
+            toastr["error"](Premadeletter1).css("width", "210px");
             setTimeout(function () {
                 if (localStorage.getItem("musicUrl") == null) {
                     $("#musicUrl").val(defaultMusicUrl);
@@ -552,7 +618,7 @@ setTimeout(function () {
   //$("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
 	$("#copySIPBtn").mouseenter(function () {$("#dropDown3").hide();$("#copySIPBtn").text("Token");$("#dropDown").show(100);});
 	$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text("Copy");});
-    $("#logTitle").after('<a href="#" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><span class="glyphicon glyphicon-ban-circle"></span></a>');
+    $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><span class="glyphicon glyphicon-ban-circle"></span></a>');
     $("#searchBtn").tooltip('disable');
     $("#copyLBBtn").click(function () {copy(getLeaderboard());});
 	$("#lastIPBtn").click(function () {lastIP=localStorage.getItem("lastIP"); dosearch(); document.getElementById("searchInput").value=lastIP; $("#searchBtn").click();});
@@ -591,10 +657,10 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-	if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
-		if ($("#nick").val()=="EasterEgg1"){toastr["info"]("Easter Egg 1 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
-		else if ($("#nick").val()=="EasterEgg2"){toastr["info"]("Easter Egg 2 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
-		else if ($("#nick").val()=="EasterEgg3"){toastr["info"]('Easter Egg 3 Activated,<br>Video works better on vanilla, visit: <a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
+	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2 + $('#nick').val());}}
+		if ($("#nick").val()=="EasterEgg1"){toastr["info"](Premadeletter3).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
+		else if ($("#nick").val()=="EasterEgg2"){toastr["info"](Premadeletter4).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
+		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
@@ -728,17 +794,17 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	function() {
 		if (messageone==1){
 		if (timesopened==null||timesopened==""||timesopened<=5){
-		toastr["error"]("Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
+		toastr["error"](Premadeletter7, "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
 		else if(timesopened>5){
 		
-		toastr["info"]("Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
-		toastr["info"]("If logout occurs on onload events, delete Chrome cookies from <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}
+		toastr["info"](Premadeletter8, "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
+		toastr["info"](Premadeletter9 + " <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}
 		return messageone=0;	}
 	});
 	
     // listen for server disconnect
     MC.onDisconnect = function () {
-        toastr["error"]("Disconnected from server :(").css("width", "210px");
+        toastr["error"](Premadeletter10).css("width", "210px");
         appendSysLog("DISCONNECTED :(");
 		MC.reconnect();
 		adres();
@@ -746,7 +812,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 
     // listen for player ban
     MC.onPlayerBanned = function () {
-        toastr["error"]("You were banned, restart your rooter!").css("width", "210px");
+        toastr["error"](Premadeletter11).css("width", "210px");
         appendSysLog("BAN :(");
     };
     $("#region").ready(function () { delay(2000, getInfo); });
@@ -812,7 +878,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             delay(200, spectate);
 			connectedbanner++;
 			if (connectedbanner==2){
-            toastr["info"]('Connected!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["info"](Premadeletter12 + '</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$("#hidendivtoken").css("display", "block");
 			}
 			return connectedbanner, modebetter;
@@ -822,7 +888,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     $(document).ajaxError(function (event, xhr, settings) {
         //console.log(xhr);//console.log(event);//console.log(settings);
         if (xhr.status == 404 && settings.url == "http://m.agar.io/getToken") {
-            toastr["error"]("Invalid token or server has closed :(").css("width", "210px");
+            toastr["error"](Premadeletter15).css("width", "210px");
             $('#helloContainer').attr('data-party-state', '0');
         }
     });
@@ -848,10 +914,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         var checked = !($(this).attr('aria-pressed') == "true");
         if (checked) {
 			localStorage.setItem("autoCoinBtn", true);
-			startCoinMining();$(this).html('<i class="fa fa-clock-o"></i> Stop free coins');}
+			startCoinMining();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter54);}
 		else {
 			localStorage.setItem("autoCoinBtn", false);
-			stopCoinMining();$(this).html('<i class="fa fa-clock-o"></i> Auto free coins');}
+			stopCoinMining();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter53);}
 	});
 	
 		
@@ -865,7 +931,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         } 
 		else{
 			localStorage.setItem("copyGameNames", false);
-			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>Edit Names');return checkedGameNames=1;}
+			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>' + Premadeletter52);return checkedGameNames=1;}
 		});
 		
  /*   $("#autoRespawnBtn").click(function () {
@@ -898,14 +964,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide Connector');} 
 		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show Connector');}} );  */
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
-		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
+		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter43);} 
+		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>'+Premadeletter44);return seticon="YES";}} );  
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>Hide XP BAR');}
-		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>Show XP BAR');}} );  
+		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter45);}
+		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);}} );  
      $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>Hide TIME');}
-		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>Show TIME');}} );  
+		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
+		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
 /*     $("#MAINBBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MAINBBtn", true);$("#LEGENDAds").show();$(this).html('<i class="fa fa-bars"></i>Hide Main Banner');}
 		else {localStorage.setItem("MAINBBtn", false);$("#LEGENDAds").hide();$(this).html('<i class="fa fa-bars"></i>Show Main Banner');}} );
@@ -924,12 +990,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		localStorage.setItem("YoutubeAutoBtn", true);
 		setTimeout(function () {$("#playerBtn").click();}, 3000);
 		setTimeout(function () {$("#playerBtn").focusout();}, 3500);
-		$(this).html('<i class="fa fa-youtube-play"></i>Auto Youtube Off');}
-		else {localStorage.setItem("YoutubeAutoBtn", false);$(this).html('<i class="fa fa-youtube-play"></i>Auto Youtube On');}} ); 		
+		$(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter41);}
+		else {localStorage.setItem("YoutubeAutoBtn", false);$(this).html('<i class="fa fa-youtube-play"></i>'+ Premadeletter40);}} ); 		
 		
      $("#TIMEcalBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("TIMEcalBtn", true);$("#timertools-hud").show();$(this).html('<i class="fa fa-calculator"></i>Hide Timer Calc.');T.timerDiv = document.getElementById('timer');return T.timerDiv;}
-		else {localStorage.setItem("TIMEcalBtn", false);$("#timertools-hud").hide();$(this).html('<i class="fa fa-calculator"></i>Show Timer Calc.');}} );  		
+		if (checked) {localStorage.setItem("TIMEcalBtn", true);$("#timertools-hud").show();$(this).html('<i class="fa fa-calculator"></i>' + Premadeletter51);T.timerDiv = document.getElementById('timer');return T.timerDiv;}
+		else {localStorage.setItem("TIMEcalBtn", false);$("#timertools-hud").hide();$(this).html('<i class="fa fa-calculator"></i>' + Premadeletter50);}} );  		
       $("#HideAllBthn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {		
 	//		$("#cur-tk-hud").hide();
@@ -945,7 +1011,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#top5-hud").hide();
 			$("#target-hud").hide();
 			$("#target-panel-hud").hide();			
-			$(this).html('<i class="fa fa-exclamation-triangle"></i>Show Everything');}			
+			$(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter48);}			
 		else {
 	//		$("#cur-tk-hud").show();
 			$("#shortcuts-hud").show();
@@ -960,25 +1026,25 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			$("#top5-hud").show();
 			$("#target-panel-hud").show();
 			$("#target-hud").show();		
-			$(this).html('<i class="fa fa-exclamation-triangle"></i>Hide Everything');}} );  
+			$(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter49);}} );  
 		
 		
 	  $("#troll1Btn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> No troll on Death ');}
-		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i> Troll on Death ');}} );  			
+		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i>' + Premadeletter56);}
+		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i>' + Premadeletter55);}} );  			
 
     $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
 	//$("#cur-tk-hud").attr("style", "opacity: 0;");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Communication"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title='+ Premadeletter57 +'><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
 	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
 	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
 	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
 	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
 	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title='+ Premadeletter13 +'><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
 	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 
 	
@@ -1029,11 +1095,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             if (playerState != 1) {
                 musicPlayer.playVideo();
                 $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                $(this).attr('data-original-title', "Pause").tooltip('fixTitle').tooltip('show');
+                $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
             } else {
                 musicPlayer.pauseVideo();
                 $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                $(this).attr('data-original-title', "Play").tooltip('fixTitle').tooltip('show');
+                $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
             }
         }
     });		
@@ -1102,9 +1168,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{	if(tag1.includes("Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("???™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("??")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββLΣ?ΛLZ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("??χ?")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("??")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("?ong")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("?U")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
    
 	// ANNOUNCEMENTS
-	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
+	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' ' + Premadeletter16 + ' 2.0: <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');}
+	else{toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!');}
 	//toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#infoicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerinformation");	});
@@ -1194,12 +1260,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		
 		//with confirmation
 			if(commandMsg=="HideAll"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to hide all(leaderboard and minimap)</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function () { $( "#HideAllBthn" ).click(); });
 			}
 
 			if(commandMsg=="NamePerm"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to change your name to: '+playerMsg+ ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg+ ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function () { 
 					$( "#nick" ).val(playerMsg);
 					$( "#helloContainer" ).show();
@@ -1208,12 +1274,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			}
 			
 			if(commandMsg=="dTroll2"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to hide Enable Troll on death</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg+' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function () { settroll1true();whenplayerdies(); });
 			}			
 
 			if(commandMsg=="Youtube"){
-			toastr["warning"]('Your teammate '+playerMsg+' wants you to open Youtube Player</br> <button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">ACCEPT</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">NO WAY!</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg+' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function () { $("#playerBtn").click();setTimeout(function () {$("#playerBtn").focusout();}, 500); });
 			//	$("#playerBtn").click();			
 			}
@@ -1379,14 +1445,14 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if (checkonlyonce!="true"){
 	//if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 			if(SHOSHOBtn != "true"){
-		toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");		
+ 		toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");
 		$("#enableshortcuts1").click(function(){ enableshortcuts();});
 	}}}
 
 	if (timesopened==10||timesopened==100||timesopened==1000){
 	//if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 		if(SHOSHOBtn != "true"){
-		toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
+ 		toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");
 		$("#enableshortcuts").click(function(){ enableshortcuts();});
 	}}
 
@@ -1493,13 +1559,13 @@ function findIP(searchIP) {
             var numTries = 0;
             var numAttempts = 0;
             var maxAttempts = 2;
-            toastr["success"]("Searching IP \'ws://" + searchIP + "\'...").css("width", "210px");
+            toastr["success"](Premadeletter21 + " \'ws://" + searchIP + "\'...").css("width", "210px");
             numTries++;
             if (currentIP == searchIP) {
                 searching = false;
                 hideCancelSearch();
                 //hideSearchHud();
-                toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+                toastr["info"](Premadeletter29 + '! </br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
             //    testmessage();
 				MC.setQuality($('#quality').val());
 				//showMenu();
@@ -1510,19 +1576,19 @@ function findIP(searchIP) {
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         numTries++;
-                        toastr["success"]("Search: " + numTries + "\/" + maxTries).css("width", "210px");
+                        toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
                         if (numTries >= maxTries) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
-                            toastr["error"]("The leaderboard was not found. Keep trying...").css("width", "210px");
+                            toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (currentIP == searchIP) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
                             //hideSearchHud();
-                            toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+                            toastr["info"](Premadeletter29 + '! </br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
                      //       testmessage();
 					//		$("#gamemode").val("nothing");
 							MC.setQuality($('#quality').val());
@@ -1543,7 +1609,7 @@ function findIP(searchIP) {
         clearInterval(timerId);
         searching = false;
         hideCancelSearch();
-        toastr["error"]("Search was canceled!").css("width", "210px");
+        toastr["error"](Premadeletter32 + "!").css("width", "210px");
     }
 }
 
@@ -1560,7 +1626,7 @@ function searchPlayer(searchString) {
             var minNamesFound = 3;
             var numAttempts = 0;
             var maxAttempts = 2;
-            toastr["success"]("Searching \'" + searchString + "\'...").css("width", "210px");
+            toastr["success"](Premadeletter30 + " \'" + searchString + "\'...").css("width", "210px");
             var leaderboard = getLeaderboard();
             var names = searchString.split(/[1-9]\.\s|10\.\s/g).filter(function (el) { return el.length != 0; });
             //console.log(leaderboard);
@@ -1570,7 +1636,7 @@ function searchPlayer(searchString) {
 
             var found = false;
             numTries++;
-            toastr["success"]("Search: " + numTries + "\/" + maxTries).css("width", "210px");
+            toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
             if (numNames == 1) {
                 found = foundName(leaderboard, searchString);
             } else if (numNames > 1) {
@@ -1581,7 +1647,7 @@ function searchPlayer(searchString) {
                 searching = false;
                 hideCancelSearch();
                 //hideSearchHud();
-                toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+                toastr["info"](Premadeletter29 + '!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 		//		testmessage();
 				$("#gamemode").val("nothing");
 				MC.setQuality($('#quality').val());
@@ -1607,19 +1673,19 @@ function searchPlayer(searchString) {
                             found = foundNames(leaderboard, names, minNamesFound);
                         }
                         numTries++;
-                        toastr["success"]("Search: " + numTries + "\/" + maxTries).css("width", "210px");
+                        toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
                         if (numTries >= maxTries) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
-                            toastr["error"]("The leaderboard was not found. Keep trying...").css("width", "210px");
+                            toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (found) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
                             //hideSearchHud();
-                            toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+							toastr["info"](Premadeletter29 + '!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
 				//			testmessage();
 							MC.setQuality($('#quality').val());
 							//showMenu();
@@ -1639,7 +1705,7 @@ function searchPlayer(searchString) {
         clearInterval(timerId);
         searching = false;
         hideCancelSearch();
-        toastr["error"]("Search was canceled!").css("width", "210px");
+        toastr["error"](Premadeletter32).css("width", "210px");
     }
 }
 
@@ -1665,9 +1731,9 @@ function chatfunction(){
 //	if (messageone==1){
 		if (hiddenfromclan==0){
 		saveclanpassword=$("#clantag").val();
-		toastr["info"]('You are invisible to Team/Clan');
+		toastr["info"](Premadeletter33);
 		$("#ChatBtn1").attr('class', 'fa fa-comments-o');
-		$("#ChatBtn").attr("data-original-title", "Hidden");
+		$("#ChatBtn").attr("data-original-title", Premadeletter58);
 		$("#clantag").val("HIDDEN");
 	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
@@ -1675,9 +1741,9 @@ function chatfunction(){
 		return saveclanpassword, hiddenfromclan;		
 		}
 		else if (hiddenfromclan==1){
-		toastr["info"]('You are visible to Team/Clan');
+		toastr["info"](Premadeletter34);
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
-		$("#ChatBtn").attr("data-original-title", "Visible");
+		$("#ChatBtn").attr("data-original-title", Premadeletter59);
 		$("#clantag").val(saveclanpassword);
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
 		hiddenfromclan=1;
@@ -1703,7 +1769,7 @@ function chatfunction(){
 	
 	}*/
 	}
-	else{toastr["info"]("Hide/Show can be used only while playing!").css("width", "210px"); }
+	else{toastr["info"](Premadeletter35 + "!").css("width", "210px"); }
 	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
@@ -1995,7 +2061,7 @@ var s = document.createElement("script");s.type = "text/javascript";s.src = "htt
 else{
 	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
 	else{
-	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
+	toastr["error"](Premadeletter36).css("width", "210px");}
 //return discwebhook1;
 }}
 
@@ -2007,7 +2073,7 @@ localStorage.setItem("discwebhook2", discwebhook2);
 else{
 	if (containsrealwebhook==""){localStorage.setItem("discwebhook2", discwebhook2);}
 	else{
-	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
+	toastr["error"](Premadeletter36).css("width", "210px");}
 //return discwebhook2;
 }}
 
@@ -2043,7 +2109,7 @@ function dosearch(){
 	return closebutton1="1";
 	}
 	else{
-		toastr["info"]('Server is locked!');
+		toastr["info"](Premadeletter37 + '!');
 		}
 }
 
@@ -2096,7 +2162,7 @@ function Bino(){
 		if (MC.isInGame()){
 			if (ogario.spectate){
 	KeyEvent.simulate(81, 81)	}
-	else{ toastr["info"]('You must be on spectate mode');}
+	else{ toastr["info"](Premadeletter38);}
 		}	
 }
 
@@ -2424,12 +2490,12 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
 	
 	
-function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
 	
 function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
 	$("#sendyt1").attr("data-original-title", $("#yt1data").val());}
