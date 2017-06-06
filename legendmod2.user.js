@@ -24,7 +24,7 @@ if (location.host == "agar.io" && location.pathname == "/") {
 
 var legendarioCSS = '<link href="http://cdn.ogario.ovh/v3/ogario.v3.css?v=308" rel="stylesheet"></link>';
 var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=300"></script>';
-var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=308" charset="utf-8"></script>';
+var legendarioJS = '<script src="https://jimboy3000.github.io/hello.js" charset="utf-8"></script>';
 
 var keyJS = '<script src="https://jimboy3100.github.io/key-event.js"></script>';
 
