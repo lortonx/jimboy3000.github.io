@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.058 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.059 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -157,12 +157,12 @@ var Premadeletter29="Leaderboard found";
 var Premadeletter30="Search";
 var Premadeletter31="The leaderboard was not found. Keep trying...";
 var Premadeletter32="Search was canceled";
-var Premadeletter33="";
-var Premadeletter34="";
-var Premadeletter35="";
-var Premadeletter36="";
-var Premadeletter37="";
-var Premadeletter38="";
+var Premadeletter33="You are invisible to Team / Clan";
+var Premadeletter34="You are visible to Team / Clan";
+var Premadeletter35="Hide/Show can be used only while playing";
+var Premadeletter36="This is not valid Discord Webhook address";
+var Premadeletter37="Server is locked";
+var Premadeletter38="You must be on spectate mode";
 var Premadeletter39="";
 var Premadeletter40="";
 var Premadeletter40="";
@@ -1711,7 +1711,7 @@ function chatfunction(){
 //	if (messageone==1){
 		if (hiddenfromclan==0){
 		saveclanpassword=$("#clantag").val();
-		toastr["info"]('You are invisible to Team/Clan');
+		toastr["info"](Premadeletter33);
 		$("#ChatBtn1").attr('class', 'fa fa-comments-o');
 		$("#ChatBtn").attr("data-original-title", "Hidden");
 		$("#clantag").val("HIDDEN");
@@ -1721,7 +1721,7 @@ function chatfunction(){
 		return saveclanpassword, hiddenfromclan;		
 		}
 		else if (hiddenfromclan==1){
-		toastr["info"]('You are visible to Team/Clan');
+		toastr["info"](Premadeletter34);
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
 		$("#ChatBtn").attr("data-original-title", "Visible");
 		$("#clantag").val(saveclanpassword);
@@ -1749,7 +1749,7 @@ function chatfunction(){
 	
 	}*/
 	}
-	else{toastr["info"]("Hide/Show can be used only while playing!").css("width", "210px"); }
+	else{toastr["info"](Premadeletter35 + "!").css("width", "210px"); }
 	}
 
 function copy(text) {$("#tempCopy").val(text);$("#tempCopy").show();$("#tempCopy").select();document.execCommand('copy');$("#tempCopy").hide();$("#tempCopy").val("");}
@@ -2041,7 +2041,7 @@ var s = document.createElement("script");s.type = "text/javascript";s.src = "htt
 else{
 	if (containsrealwebhook==""){localStorage.setItem("discwebhook1", discwebhook1);}
 	else{
-	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
+	toastr["error"](Premadeletter36).css("width", "210px");}
 //return discwebhook1;
 }}
 
@@ -2053,7 +2053,7 @@ localStorage.setItem("discwebhook2", discwebhook2);
 else{
 	if (containsrealwebhook==""){localStorage.setItem("discwebhook2", discwebhook2);}
 	else{
-	toastr["error"]("This is not valid Discord Webhook address").css("width", "210px");}
+	toastr["error"](Premadeletter36).css("width", "210px");}
 //return discwebhook2;
 }}
 
@@ -2089,7 +2089,7 @@ function dosearch(){
 	return closebutton1="1";
 	}
 	else{
-		toastr["info"]('Server is locked!');
+		toastr["info"](Premadeletter37 + '!');
 		}
 }
 
@@ -2142,7 +2142,7 @@ function Bino(){
 		if (MC.isInGame()){
 			if (ogario.spectate){
 	KeyEvent.simulate(81, 81)	}
-	else{ toastr["info"]('You must be on spectate mode');}
+	else{ toastr["info"](Premadeletter38);}
 		}	
 }
 
