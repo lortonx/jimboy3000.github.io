@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.046 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.047 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -123,6 +123,24 @@ var openthecommunication="NO";
 var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
+
+
+Premadeletter1="Cannot open this youtube URL";
+Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
+Premadeletter3="Easter Egg 1 Activated";
+Premadeletter4="Easter Egg 2 Activated";
+Premadeletter5="Easter Egg 3 Activated";
+Premadeletter6="Video works better on vanilla, visit:";
+Premadeletter7="";
+Premadeletter8="";
+Premadeletter9="";
+Premadeletter10="";
+
+
+
+
+
+
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
@@ -508,7 +526,7 @@ setTimeout(function () {
         var pastedData = e.originalEvent.clipboardData.getData('text');
         var finalUrl = getEmbedUrl(pastedData.trim());
         if (finalUrl == false) {
-            toastr["error"]("Cannot open this youtube URL").css("width", "210px");
+            toastr["error"](Premadeletter1).css("width", "210px");
             setTimeout(function () {
                 if (localStorage.getItem("musicUrl") == null) {
                     $("#musicUrl").val(defaultMusicUrl);
@@ -591,10 +609,10 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-	if($("#nick").val().length>=16){toastr["warning"]("[SERVER]: You cannot chat if player name > 15 chars:<br>"+ $('#nick').val())}}
-		if ($("#nick").val()=="EasterEgg1"){toastr["info"]("Easter Egg 1 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
-		else if ($("#nick").val()=="EasterEgg2"){toastr["info"]("Easter Egg 2 Activated").css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
-		else if ($("#nick").val()=="EasterEgg3"){toastr["info"]('Easter Egg 3 Activated,<br>Video works better on vanilla, visit: <a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
+	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2+ $('#nick').val())}}
+		if ($("#nick").val()=="EasterEgg1"){toastr["info"](Premadeletter3).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
+		else if ($("#nick").val()=="EasterEgg2"){toastr["info"](Premadeletter4).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
+		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
@@ -2429,7 +2447,7 @@ function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-bo
 function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
-function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}		else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
+function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"]('Due to spamming issues, you must be in game and use password');}}
 	
 function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
 	$("#sendyt1").attr("data-original-title", $("#yt1data").val());}
