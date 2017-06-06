@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.060 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.061 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -164,8 +164,28 @@ var Premadeletter36="This is not valid Discord Webhook address";
 var Premadeletter37="Server is locked";
 var Premadeletter38="You must be on spectate mode";
 var Premadeletter39="Due to spamming issues, you must be in game and use password";
-var Premadeletter40="";
-var Premadeletter40="";
+var Premadeletter40="Auto Youtube On";
+var Premadeletter41="Auto Youtube Off";
+var Premadeletter42="Show Shortcuts";
+var Premadeletter43="Hide Shortcuts";
+var Premadeletter44
+var Premadeletter45
+var Premadeletter46
+var Premadeletter47
+var Premadeletter48
+var Premadeletter49
+var Premadeletter50
+var Premadeletter51
+var Premadeletter52
+var Premadeletter53
+var Premadeletter54
+var Premadeletter55
+var Premadeletter56
+var Premadeletter57
+var Premadeletter58
+var Premadeletter59
+var Premadeletter60
+
 
 
 
@@ -408,7 +428,7 @@ setTimeout(function () {
     $(".menu-tabs").children().last().after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu").children().last().after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
 //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-                                            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>Show Shortcuts</button>' +
+                                            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
 											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>Show XP Bar</button>' +
                                             '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>Show Time</button>' +
 //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
@@ -511,7 +531,7 @@ setTimeout(function () {
 	$('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 15px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
 										'<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
 										'<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
-										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
+										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>');
 		$('.agario-panel.radio-panel').hide();
 		$('.agario-panel.ogario-yt-panel').hide();
 		if ($('#messageSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_01.mp3"){$('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");}
@@ -944,8 +964,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("IPBtn", true);$("#server").show();$("#connect2").show();$(this).html('<i class="fa fa-trademark"></i>Hide Connector');} 
 		else {localStorage.setItem("IPBtn", false);$("#server").hide();$("#connect2").hide();$(this).html('<i class="fa fa-trademark"></i>Show Connector');}} );  */
      $("#SHOSHOBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>Hide Shortcuts');} 
-		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>Show Shortcuts');return seticon="YES";}} );  
+		if (checked) {localStorage.setItem("SHOSHOBtn", true);$("#shortcuts-hud").show();$("#rotate-hud").show();$(this).html('<i class="fa fa-puzzle-piece"></i>'+Premadeletter43);} 
+		else {localStorage.setItem("SHOSHOBtn", false);$("#shortcuts-hud").hide();$("#rotate-hud").hide();$("#images-hud").hide();$(this).html('<i class="fa fa-puzzle-piece"></i>'+Premadeletter44);return seticon="YES";}} );  
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>Hide XP BAR');}
 		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>Show XP BAR');}} );  
@@ -970,8 +990,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		localStorage.setItem("YoutubeAutoBtn", true);
 		setTimeout(function () {$("#playerBtn").click();}, 3000);
 		setTimeout(function () {$("#playerBtn").focusout();}, 3500);
-		$(this).html('<i class="fa fa-youtube-play"></i>Auto Youtube Off');}
-		else {localStorage.setItem("YoutubeAutoBtn", false);$(this).html('<i class="fa fa-youtube-play"></i>Auto Youtube On');}} ); 		
+		$(this).html('<i class="fa fa-youtube-play"></i>'+Premadeletter41);}
+		else {localStorage.setItem("YoutubeAutoBtn", false);$(this).html('<i class="fa fa-youtube-play"></i>'+ Premadeletter40);}} ); 		
 		
      $("#TIMEcalBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("TIMEcalBtn", true);$("#timertools-hud").show();$(this).html('<i class="fa fa-calculator"></i>Hide Timer Calc.');T.timerDiv = document.getElementById('timer');return T.timerDiv;}
