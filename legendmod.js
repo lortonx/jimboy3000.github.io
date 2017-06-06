@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.064 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.065 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -181,10 +181,10 @@ var Premadeletter53="Auto free coins";
 var Premadeletter54="Stop free coins";
 var Premadeletter55="Troll on Death";
 var Premadeletter56="No troll on Death";
-var Premadeletter57;
-var Premadeletter58;
-var Premadeletter59;
-var Premadeletter60;
+var Premadeletter57="Communication";
+var Premadeletter58="Hidden";
+var Premadeletter59="Visible";
+var Premadeletter60="Pause";
 
 
 
@@ -549,10 +549,10 @@ setTimeout(function () {
                 'onStateChange': function (state) {
                     if (state.data == 1) {
                         $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                        $("#playerBtn").attr('data-original-title', "Pause").tooltip('fixTitle');
+                        $("#playerBtn").attr('data-original-title', Premadeletter60).tooltip('fixTitle');
                     } else {
                         $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                        $("#playerBtn").attr('data-original-title', "Play").tooltip('fixTitle');
+                        $("#playerBtn").attr('data-original-title', Premadeletter13).tooltip('fixTitle');
                     }
                 }
             }
@@ -970,7 +970,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter45);}
 		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);}} );  
      $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+Premadeletter47);}
+		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
 		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
 /*     $("#MAINBBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MAINBBtn", true);$("#LEGENDAds").show();$(this).html('<i class="fa fa-bars"></i>Hide Main Banner');}
@@ -1038,13 +1038,13 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Communication"><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title=Premadeletter57><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
 	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
 	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
 	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
 	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
 	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Play"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title=Premadeletter13><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
 	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 
 	
@@ -1095,11 +1095,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             if (playerState != 1) {
                 musicPlayer.playVideo();
                 $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                $(this).attr('data-original-title', "Pause").tooltip('fixTitle').tooltip('show');
+                $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
             } else {
                 musicPlayer.pauseVideo();
                 $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                $(this).attr('data-original-title', "Play").tooltip('fixTitle').tooltip('show');
+                $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
             }
         }
     });		
@@ -1733,7 +1733,7 @@ function chatfunction(){
 		saveclanpassword=$("#clantag").val();
 		toastr["info"](Premadeletter33);
 		$("#ChatBtn1").attr('class', 'fa fa-comments-o');
-		$("#ChatBtn").attr("data-original-title", "Hidden");
+		$("#ChatBtn").attr("data-original-title", Premadeletter58);
 		$("#clantag").val("HIDDEN");
 	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
@@ -1743,7 +1743,7 @@ function chatfunction(){
 		else if (hiddenfromclan==1){
 		toastr["info"](Premadeletter34);
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
-		$("#ChatBtn").attr("data-original-title", "Visible");
+		$("#ChatBtn").attr("data-original-title", Premadeletter59);
 		$("#clantag").val(saveclanpassword);
 		$(".btn.btn-play.btn-primary.btn-needs-server").click();
 		hiddenfromclan=1;
