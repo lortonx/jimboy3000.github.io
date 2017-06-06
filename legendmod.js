@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.049 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.050 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -125,38 +125,38 @@ var oldteammode;
 var checkedGameNames=0;
 
 
-Premadeletter1="Cannot open this youtube URL";
-Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
-Premadeletter3="Easter Egg 1 Activated";
-Premadeletter4="Easter Egg 2 Activated";
-Premadeletter5="Easter Egg 3 Activated";
-Premadeletter6="Video works better on vanilla, visit:";
-Premadeletter7="Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.";
-Premadeletter8="Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.";
-Premadeletter9="If logout occurs on onload events, delete Chrome cookies from ";
-Premadeletter10="Disconnected from server :(";
-Premadeletter11="You were banned, restart your rooter!";
-Premadeletter12="Connected!";
-Premadeletter13="PLAY";
-Premadeletter14="SPECTATE";
-Premadeletter15=
-Premadeletter16=
-Premadeletter17=
-Premadeletter18=
-Premadeletter19=
-Premadeletter20=
-Premadeletter21=
-Premadeletter22=
-Premadeletter23=
-Premadeletter24=
-Premadeletter25=
-Premadeletter26=
-Premadeletter27=
-Premadeletter28=
-Premadeletter29=
-Premadeletter30=
+var Premadeletter1="Cannot open this youtube URL";
+var Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
+var Premadeletter3="Easter Egg 1 Activated";
+var Premadeletter4="Easter Egg 2 Activated";
+var Premadeletter5="Easter Egg 3 Activated";
+var Premadeletter6="Video works better on vanilla, visit:";
+var Premadeletter7="Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.";
+var Premadeletter8="Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.";
+var Premadeletter9="If logout occurs on onload events, delete Chrome cookies from ";
+var Premadeletter10="Disconnected from server :(";
+var Premadeletter11="You were banned, restart your rooter!";
+var Premadeletter12="Connected!";
+var Premadeletter13="PLAY";
+var Premadeletter14="SPECTATE";
+var Premadeletter15="Invalid token or server has closed :(";
+var Premadeletter16="can be Updated to";
+var Premadeletter17="Welcome back";
+var Premadeletter18="Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
+var Premadeletter19="Enable Them";
+var Premadeletter20="Keep Them Disabled";
+var Premadeletter21="Searching IP"
+var Premadeletter22=
+var Premadeletter23=
+var Premadeletter24=
+var Premadeletter25=
+var Premadeletter26=
+var Premadeletter27=
+var Premadeletter28=
+var Premadeletter29=
+var Premadeletter30=
 
-            
+         
 
 
 
@@ -858,7 +858,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     $(document).ajaxError(function (event, xhr, settings) {
         //console.log(xhr);//console.log(event);//console.log(settings);
         if (xhr.status == 404 && settings.url == "http://m.agar.io/getToken") {
-            toastr["error"]("Invalid token or server has closed :(").css("width", "210px");
+            toastr["error"](Premadeletter15).css("width", "210px");
             $('#helloContainer').attr('data-party-state', '0');
         }
     });
@@ -1138,9 +1138,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{	if(tag1.includes("Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("???™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("??")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββLΣ?ΛLZ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("??χ?")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("??")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("?ong")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("?U")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
    
 	// ANNOUNCEMENTS
-	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' can be Updated to v2.0, visit <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
+	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' '+Premadeletter16 +'  2.0: <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-	else{toastr["info"]('Welcome back <b><font color="red">' + tag1 + '</font></b>!');}
+	else{toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!');}
 	//toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 	
 	  $( "#infoicon" ).mouseover(function() { $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerinformation");	});
@@ -1415,14 +1415,14 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if (checkonlyonce!="true"){
 	//if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 			if(SHOSHOBtn != "true"){
-		toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");		
+ 		toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");
 		$("#enableshortcuts1").click(function(){ enableshortcuts();});
 	}}}
 
 	if (timesopened==10||timesopened==100||timesopened==1000){
 	//if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 		if(SHOSHOBtn != "true"){
-		toastr["error"]('Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.</br> <button class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">ENABLE THEM</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">KEEP THEM DISABLED</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");	
+ 		toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "300px");
 		$("#enableshortcuts").click(function(){ enableshortcuts();});
 	}}
 
@@ -1529,7 +1529,7 @@ function findIP(searchIP) {
             var numTries = 0;
             var numAttempts = 0;
             var maxAttempts = 2;
-            toastr["success"]("Searching IP \'ws://" + searchIP + "\'...").css("width", "210px");
+            toastr["success"](Premadeletter21 + " \'ws://" + searchIP + "\'...").css("width", "210px");
             numTries++;
             if (currentIP == searchIP) {
                 searching = false;
