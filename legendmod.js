@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.052 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.053 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -153,7 +153,7 @@ var Premadeletter25="";
 var Premadeletter26="";
 var Premadeletter27="";
 var Premadeletter28="";
-var Premadeletter29="":
+var Premadeletter29="";
 var Premadeletter30="";
 
          
