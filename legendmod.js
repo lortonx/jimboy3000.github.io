@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.051 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.052 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -150,7 +150,7 @@ var Premadeletter22="";
 var Premadeletter23="";
 var Premadeletter24="";
 var Premadeletter25="";
-var Premadeletter26="":
+var Premadeletter26="";
 var Premadeletter27="";
 var Premadeletter28="";
 var Premadeletter29="":
@@ -627,7 +627,7 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2+ $('#nick').val())}}
+	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2 + $('#nick').val())}}
 		if ($("#nick").val()=="EasterEgg1"){toastr["info"](Premadeletter3).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
 		else if ($("#nick").val()=="EasterEgg2"){toastr["info"](Premadeletter4).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
@@ -1138,7 +1138,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{	if(tag1.includes("Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("?")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("???™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("??")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("????")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββLΣ?ΛLZ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("??χ?")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("??")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("?ong")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("?U")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
    
 	// ANNOUNCEMENTS
-	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' '+ Premadeletter16 + ' 2.0: <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
+	if(modVersion!="2.0"){ toastr["error"]('Mod v' + modVersion + ' ' + Premadeletter16 + ' 2.0: <a target="_blank" href="https://github.com/jimboy3100/legend.github.io/raw/master/legendmod.user.js">www.legendmod.ml</a>');}
 	//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 	else{toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!');}
 	//toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
