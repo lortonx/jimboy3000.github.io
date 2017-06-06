@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.056 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.057 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -167,7 +167,6 @@ var Premadeletter39="";
 var Premadeletter40="";
 var Premadeletter40="";
 
-         
 
 
 
@@ -1241,12 +1240,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		
 		//with confirmation
 			if(commandMsg=="HideAll"){
-			toastr["warning"](Premadeletter22 + ' '+ playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function () { $( "#HideAllBthn" ).click(); });
 			}
 
 			if(commandMsg=="NamePerm"){
-			toastr["warning"](Premadeletter22 + ' '+ playerMsg + ' ' + Premadeletter26 + ': '+playerMsg+ ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg+ ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function () { 
 					$( "#nick" ).val(playerMsg);
 					$( "#helloContainer" ).show();
@@ -1255,12 +1254,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			}
 			
 			if(commandMsg=="dTroll2"){
-			toastr["warning"](Premadeletter22 + ' '+playerMsg+' ' + Premadeletter27 +'</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg+' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function () { settroll1true();whenplayerdies(); });
 			}			
 
 			if(commandMsg=="Youtube"){
-			toastr["warning"](Premadeletter22 + ' '+playerMsg+' ' + Premadeletter28 +'<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg+' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function () { $("#playerBtn").click();setTimeout(function () {$("#playerBtn").focusout();}, 500); });
 			//	$("#playerBtn").click();			
 			}
