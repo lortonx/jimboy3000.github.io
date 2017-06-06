@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.054 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.055 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -153,8 +153,19 @@ var Premadeletter25="NO WAY!";
 var Premadeletter26="wants you to change your name to";
 var Premadeletter27="wants you to hide Enable Troll on death";
 var Premadeletter28="wants you to open Youtube Player";
-var Premadeletter29="";
-var Premadeletter30="";
+var Premadeletter29="Leaderboard found";
+var Premadeletter30="Search";
+var Premadeletter31="The leaderboard was not found. Keep trying...";
+var Premadeletter32="Search was canceled";
+var Premadeletter33=
+var Premadeletter34=
+var Premadeletter35=
+var Premadeletter36=
+var Premadeletter37=
+var Premadeletter38=
+var Premadeletter39=
+var Premadeletter40=
+var Premadeletter40=
 
          
 
@@ -1535,7 +1546,7 @@ function findIP(searchIP) {
                 searching = false;
                 hideCancelSearch();
                 //hideSearchHud();
-                toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+                toastr["info"](Premadeletter29 + '! </br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
             //    testmessage();
 				MC.setQuality($('#quality').val());
 				//showMenu();
@@ -1546,19 +1557,19 @@ function findIP(searchIP) {
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         numTries++;
-                        toastr["success"]("Search: " + numTries + "\/" + maxTries).css("width", "210px");
+                        toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
                         if (numTries >= maxTries) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
-                            toastr["error"]("The leaderboard was not found. Keep trying...").css("width", "210px");
+                            toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (currentIP == searchIP) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
                             //hideSearchHud();
-                            toastr["info"]('Leaderboard found!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">PLAY</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">SPECTATE</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
+                            toastr["info"](Premadeletter29 + '! </br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");
                      //       testmessage();
 					//		$("#gamemode").val("nothing");
 							MC.setQuality($('#quality').val());
@@ -1579,7 +1590,7 @@ function findIP(searchIP) {
         clearInterval(timerId);
         searching = false;
         hideCancelSearch();
-        toastr["error"]("Search was canceled!").css("width", "210px");
+        toastr["error"](Premadeletter32 + "!").css("width", "210px");
     }
 }
 
@@ -1596,7 +1607,7 @@ function searchPlayer(searchString) {
             var minNamesFound = 3;
             var numAttempts = 0;
             var maxAttempts = 2;
-            toastr["success"]("Searching \'" + searchString + "\'...").css("width", "210px");
+            toastr["success"](Premadeletter30 + " \'" + searchString + "\'...").css("width", "210px");
             var leaderboard = getLeaderboard();
             var names = searchString.split(/[1-9]\.\s|10\.\s/g).filter(function (el) { return el.length != 0; });
             //console.log(leaderboard);
