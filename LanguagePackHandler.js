@@ -49,6 +49,7 @@ $("#tcm>#tcm-header>p").text(Languageletter35);
 
 $(".options-box.animationGroup>h5").text(Languageletter36);
 $(".options-box.animationGroup>DIV>DIV>SPAN:nth-child(1)").text(Languageletter37 + ": ");
+$(".options-box.zoomGroup>h5").text(Languageletter37b);
 $(".options-box.zoomGroup>LABEL").each(function() { var text = $(this).html();
    $(this).html(text.replace('Auto zoom', Languageletter37a)); 
 });
@@ -323,8 +324,7 @@ $("#theme-main>div>span").eq(13).text(Languageletter151);
 $("#theme-main>div>span").eq(14).text(Languageletter152);
 $("#theme-main>div>span").eq(15).text(Languageletter153);
 $("#theme-main>div>span").eq(16).text(Languageletter154);
-$("#theme-main>div>span").eq(17).text(Languageletter155);
-$("#theme-main>div>span").eq(17).text(Languageletter156 + ": ");
+$("#theme-main>div>span").eq(17).text(Languageletter155 + ": ");
 
 $("#theme-main>div>div>span:nth-child(1)").eq(0).text(Languageletter157 + ": ");
 $("#theme-main>div>div>span:nth-child(1)").eq(1).text(Languageletter158 + ": ");
@@ -373,7 +373,7 @@ $("#theme-hud>div>span").eq(5).text(Languageletter196);
 $("#theme-hud>div>span").eq(6).text(Languageletter197);
 $("#theme-hud>div>span").eq(7).text(Languageletter198);
 $("#theme-hud>div>span").eq(8).text(Languageletter199);
-$("#theme-hud>div>div>span:nth-child(1)").eq(0).text(Languageletter200);
+$("#theme-hud>div>div>span:nth-child(1)").eq(0).text(Languageletter200 + ": ");
 
 $("#theme-chat>div>span").eq(0).text(Languageletter201);
 $("#theme-chat>div>span").eq(1).text(Languageletter202);
