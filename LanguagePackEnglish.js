@@ -296,9 +296,13 @@ var Languageletter286="Sounds";		//Sounds
 var Languageletter287="Message notification sound";		//Message notification sound
 var Languageletter288="Command notification sound";		//Command notification sound
 var Languageletter289="Copy Token/SIP";		//Copy Token/SIP
+//keep this small
 var Languageletter290="Token";		//Token
+var Languageletter290a="Board"; //Board
 var Languageletter291="Copy";		//Copy
-var Languageletter291="Copy Leaderboard (L)";		//Copy Leaderboard (L)
+
+
+var Languageletter291a="Copy Leaderboard (L)";		//Copy Leaderboard (L)
 var Languageletter292="Join server (Backspace)";		//Join server (Backspace)
 var Languageletter293="Change server (+)";		//Change server (+)
 var Languageletter294="Leaderboard history";		//Leaderboard history
@@ -352,6 +356,10 @@ var Languageletter339="e.g";		//e.g
 var Languageletter340="Url of youtube to be shown";		//Url of youtube to be shown
 var Languageletter341="Url of link to redirect";		//Url of link to redirect
 var Languageletter342="Discord Webhook Url";		//Discord Webhook Url
+var Languageletter342a="Message Icon Text";		//Message Icon Text
+var Languageletter342b="Youtube Message Text";		//Youtube Message Text
+var Languageletter342c="Message Icon Imgur Url";		//Message Icon Imgur Url
+var Languageletter342d="Youtube Message Url";		//Youtube Message Url
 var Languageletter343="Must be filled for function to work";		//Must be filled for function to work.
 var Languageletter344="Secondary Webhook(optional)";		//Secondary Webhook(optional)
 var Languageletter345="Temporarily Hide/Show Everything. Function for Youtubers";		//Temporarily Hide/Show Everything. Function for Youtubers
