@@ -474,10 +474,10 @@ $(".agario-panel.sounds-panel>h5").text(Languageletter286);
 $(".agario-panel.sounds-panel>div>span").eq(0).text(Languageletter287);
 $(".agario-panel.sounds-panel>div>span").eq(1).text(Languageletter288);
 
-$("#copySIPBtn").text("Copy").attr('data-original-title',Languageletter289);
+$("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
 $("#copySIPBtn").mouseenter(function () {$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter290);$("#dropDown").show(100);});
 $("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter291);});
-$("#copyLBBtn").text("Board").attr('data-original-title', Languageletter291);
+$("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
 $("#searchShortcut").attr('data-original-title', Languageletter292);
 $("#reconnectBtn").attr('data-original-title', Languageletter293);
 $("#logTitle").attr("data-original-title", Languageletter294);
@@ -499,14 +499,14 @@ if($('#leadbtext').val()==""){
 	$("#leaderboard-hud > h4").text(Languageletter299);
 };
 $("#ChatBtn").attr("data-original-title", Languageletter300);
-$("#SendCommands1").attr("data-original-title", Languageletter301);
-$("#Images1").attr("data-original-title", Languageletter302);
-$("#yout1").attr("data-original-title", Languageletter303);
-$("#Cutnames1").attr("data-original-title", Languageletter304);
+$("#SendCommands").attr("data-original-title", Languageletter301);
+$("#Images").attr("data-original-title", Languageletter302);
+$("#yout").attr("data-original-title", Languageletter303);
+$("#Cutnames").attr("data-original-title", Languageletter304);
 $("#Bino").attr("data-original-title", Languageletter305);
-$("#player").attr("data-original-title", Languageletter306);
+$("#playerBtn").attr("data-original-title", Languageletter306);
 $("#fullscreenBtn").attr("data-original-title", Languageletter307);
-$("RotateRight").attr("data-original-title", Languageletter308);
+$("#RotateRight").attr("data-original-title", Languageletter308);
 $("#bottomleft").text( Languageletter309);
 $("#Backtomenu").text( Languageletter310);
 $("#notesaveforlater").text(Languageletter311);
@@ -551,21 +551,37 @@ $('#changephotos>option:nth-child(4)').text(Languageletter338 + " 4");
 $('#changephotos>option:nth-child(5)').text(Languageletter338 + " 5");
 $('#changephotos>option:nth-child(6)').text(Languageletter338 + " 6");
 
-$('#pic1url').text(Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic2url').text(Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic3url').text(Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic4url').text(Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic5url').text(Languageletter339 + ". http://i.imgur.com/RVBi3T1.gif");
-$('#pic6url').text(Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
 
-$('#yt1url').text(Languageletter340);
-$('#yt2url').text(Languageletter340);
-$('#yt3url').text(Languageletter340);
-$('#yt4url').text(Languageletter340);
-$('#yt5url').text(Languageletter340);
-$('#yt6url').text(Languageletter340);
+$('#pic1url').attr('placeholder',Languageletter342c + " 1").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic2url').attr('placeholder',Languageletter342c + " 2").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic3url').attr('placeholder',Languageletter342c + " 3").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic4url').attr('placeholder',Languageletter342c + " 4").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic5url').attr('placeholder',Languageletter342c + " 5").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic6url').attr('placeholder',Languageletter342c + " 6").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+
+$('#yt1url').attr('placeholder',Languageletter342d + " 1").attr("data-original-title", Languageletter340);
+$('#yt2url').attr('placeholder',Languageletter342d + " 2").attr("data-original-title", Languageletter340);
+$('#yt3url').attr('placeholder',Languageletter342d + " 3").attr("data-original-title", Languageletter340);
+$('#yt4url').attr('placeholder',Languageletter342d + " 4").attr("data-original-title", Languageletter340);
+$('#yt5url').attr('placeholder',Languageletter342d + " 5").attr("data-original-title", Languageletter340);
+$('#yt6url').attr('placeholder',Languageletter342d + " 6").attr("data-original-title", Languageletter340);
+
+$('#pic1data').attr('placeholder',Languageletter342a + " 1");
+$('#pic2data').attr('placeholder',Languageletter342a + " 2");
+$('#pic3data').attr('placeholder',Languageletter342a + " 3");
+$('#pic4data').attr('placeholder',Languageletter342a + " 4");
+$('#pic5data').attr('placeholder',Languageletter342a + " 5");
+$('#pic6data').attr('placeholder',Languageletter342a + " 6");
+
+$('#yt1data').attr('placeholder',Languageletter342b + " 1");
+$('#yt2data').attr('placeholder',Languageletter342b + " 2");
+$('#yt3data').attr('placeholder',Languageletter342b + " 3");
+$('#yt4data').attr('placeholder',Languageletter342b + " 4");
+$('#yt5data').attr('placeholder',Languageletter342b + " 5");
+$('#yt6data').attr('placeholder',Languageletter342b + " 6");
+
 
 $('#discwebhook1').attr('placeholder',Languageletter342 + ' 1').attr('data-original-title', Languageletter343 + '. https://discordapp.com/api/webhooks/.../...');
-$('#discwebhook2').attr('placeholder',Languageletter342 + ' 3').attr('data-original-title', Languageletter344 + '. https://discordapp.com/api/webhooks/.../...');
+$('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-original-title', Languageletter344 + '. https://discordapp.com/api/webhooks/.../...');
 
 $("#HideAllBthn").attr('data-original-title',Languageletter345);
