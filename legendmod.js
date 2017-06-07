@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -192,9 +192,10 @@ var Premadeletter60="Pause";
 
 var languagemod = localStorage.getItem("languagemod");
 if (languagemod==2){
-	$('#legendlanguages').val("2");
+	
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
 	setTimeout(function () {
+	$('#legendlanguages').val("2");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
 	}, 6000);
 }
@@ -952,7 +953,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	    $("#copyGameNames").click(function () {var checked = !($(this).attr('aria-pressed') == "true");		
         if (checked) {
 			localStorage.setItem("copyGameNames", true);
-			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>Close Names');StartEditGameNames();}
+			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a);StartEditGameNames();}
 			else{
 				localStorage.setItem("copyGameNames", true);
 				$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a); ContinueEditGameNames();			}
