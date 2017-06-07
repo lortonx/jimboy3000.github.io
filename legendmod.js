@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.068 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.069 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="96"; // the version 1.1-> 1.11
+var semimodVersion="97"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -124,7 +124,7 @@ var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
 
-var languagemod =localStorage.getItem("languagemod");
+
 
 
 var Premadeletter0= "Communication Activated";
@@ -189,7 +189,11 @@ var Premadeletter58="Hidden";
 var Premadeletter59="Visible";
 var Premadeletter60="Pause";
 
-
+var languagemod = localStorage.getItem("languagemod");
+if (languagemod==2){
+	$('#legendlanguages').val("2");
+	changeModLanguage();
+}
 
 
 
@@ -2586,15 +2590,19 @@ function openvidmod(){var s = document.createElement("script");s.type = "text/ja
 
 function changeModLanguage() {
 	if ($("#legendlanguages").val()==1){	
-		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackEnglish.js";$("body").append(s);
-		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackHandler.js";$("body").append(s);
 		localStorage.setItem("languagemod", 1);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackEnglish.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3000.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);
 	}
 	if ($("#legendlanguages").val()==2){
-		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackGreek.js";$("body").append(s);
-		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackHandler.js";$("body").append(s);
 		localStorage.setItem("languagemod", 2);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackGreek.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3000.github.io/LanguagePackHandler.js";$("body").append(s1);
 		
+		},800);		
 	}
-
 }
