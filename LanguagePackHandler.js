@@ -585,3 +585,5 @@ $('#discwebhook1').attr('placeholder',Languageletter342 + ' 1').attr('data-origi
 $('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-original-title', Languageletter344 + '. https://discordapp.com/api/webhooks/.../...');
 
 $("#HideAllBthn").attr('data-original-title',Languageletter345);
+
+$("#legendlanguagetext").text(Languageletter346+ "  :");
