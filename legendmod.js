@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.071 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.072 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="96"; // the version 1.1-> 1.11
+var semimodVersion="97"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -180,6 +180,7 @@ var Premadeletter49="Hide Everything";
 var Premadeletter50="Show Timer Calc.";
 var Premadeletter51="Hide Timer Calc."
 var Premadeletter52="Edit Names";
+var Premadeletter52a="Close Names";
 var Premadeletter53="Auto free coins";
 var Premadeletter54="Stop free coins";
 var Premadeletter55="Troll on Death";
@@ -191,10 +192,11 @@ var Premadeletter60="Pause";
 
 var languagemod = localStorage.getItem("languagemod");
 if (languagemod==2){
-	setTimeout(function () {
 	$('#legendlanguages').val("2");
-	changeModLanguage();
-	}, 7000);
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
+	setTimeout(function () {
+	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+	}, 6000);
 }
 
 
@@ -953,7 +955,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>Close Names');StartEditGameNames();}
 			else{
 				localStorage.setItem("copyGameNames", true);
-				$(this).html('<i class="fa fa-user-o"></i>Close Names'); ContinueEditGameNames();			}
+				$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a); ContinueEditGameNames();			}
         } 
 		else{
 			localStorage.setItem("copyGameNames", false);
@@ -2593,17 +2595,17 @@ function openvidmod(){var s = document.createElement("script");s.type = "text/ja
 function changeModLanguage() {
 	if ($("#legendlanguages").val()==1){	
 		localStorage.setItem("languagemod", 1);
-		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackEnglish.js";$("body").append(s);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";$("body").append(s);
 		setTimeout(function (){ 
-		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3000.github.io/LanguagePackHandler.js";$("body").append(s1);
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
 		
 		},800);
 	}
 	if ($("#legendlanguages").val()==2){
 		localStorage.setItem("languagemod", 2);
-		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3000.github.io/LanguagePackGreek.js";$("body").append(s);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
 		setTimeout(function (){ 
-		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3000.github.io/LanguagePackHandler.js";$("body").append(s1);
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
 		
 		},800);		
 	}
