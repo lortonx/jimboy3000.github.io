@@ -1,6 +1,6 @@
 //Language Pack Handler
 //Legend Mod By Jimboy3100
-
+//v.01
 
 $(".icon-home").attr('data-original-title',Languageletter0);
 $(".icon-user").attr('data-original-title',Languageletter1);
