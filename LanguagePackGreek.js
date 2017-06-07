@@ -1,3 +1,5 @@
+// THE LEGEND MOD - GREEK PACK
+
 /*         var Languageletter =         "hello you" <---  You tranlate this, keep the " "; as they are.       // <-Means notes, no need to change           */
 
 /* Example            var Languageletter0="Home";  //Home      ->    var Languageletter0="Maison";            //Home                                        */
@@ -16,8 +18,8 @@ var Languageletter1="Χρήστης";		//User
 var Languageletter2="'Ρυθμίσεις";		//Settings
 var Languageletter3="Θέματα";		//Theme
 var Languageletter4="Άμεσα Πλήκτρα";		//Hotkeys
-var Languageletter5="Youtube & Ήχοι'";		//Youtube & Sounds
-var Languageletter6="Εργαλεία";		//Tools
+var Languageletter5="Youtube & Ήχοι";		//Youtube & Sounds
+var Languageletter6="Εργαλεια";		//Tools
 var Languageletter7="Για δημόσιο αφησέ το κενό, ή βαλε κωδικό η το σύμβολο της ομάδας σου";		//Password/Tag
 var Languageletter7a="Κωδικός / Σύμβολο"	;	//Password/Tag
 var Languageletter8="Το όνομα σου, μέχρι 50 χαρακτήρες ωρατοί, μέχρι 15 για να ανοίξει η ενδοεπικοινωνία'";		//Insert your in-game name, 50 chars are visible on Mod users, 15 to other users
@@ -427,5 +429,6 @@ var Premadeletter56="Οχι troll σε θανατο";		//No troll on Death
 var Premadeletter57="Επικοινωνία";		//Communication
 var Premadeletter58="Κρυμμένος";		//Hidden
 var Premadeletter59="Εμφανής";		//Visible
+
 
 
