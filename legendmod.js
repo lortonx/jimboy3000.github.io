@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.069 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.070 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="97"; // the version 1.1-> 1.11
+var semimodVersion="96"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -191,8 +191,10 @@ var Premadeletter60="Pause";
 
 var languagemod = localStorage.getItem("languagemod");
 if (languagemod==2){
+	setTimeout(function () {
 	$('#legendlanguages').val("2");
 	changeModLanguage();
+	}, 2500);
 }
 
 
