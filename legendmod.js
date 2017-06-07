@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.066 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.067 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -126,7 +126,7 @@ var checkedGameNames=0;
 
 var Premadeletter0= "Communication Activated";
 var Premadeletter1="Cannot open this youtube URL";
-var Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
+var Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars";
 var Premadeletter3="Easter Egg 1 Activated";
 var Premadeletter4="Easter Egg 2 Activated";
 var Premadeletter5="Easter Egg 3 Activated";
@@ -657,7 +657,7 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2 + $('#nick').val());}}
+	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2+ ':<br>' + $('#nick').val());}}
 		if ($("#nick").val()=="EasterEgg1"){toastr["info"](Premadeletter3).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
 		else if ($("#nick").val()=="EasterEgg2"){toastr["info"](Premadeletter4).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
@@ -718,7 +718,7 @@ setTimeout(function () {
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 	//jimboy's
-	$("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of ?Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+	$("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 	//$("#minimap-sectors").attr("style", "opacity: 0.25;");
 	// keybinds
 
