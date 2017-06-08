@@ -467,6 +467,7 @@ $("#hotkeys-inst").replaceWith('<div id="hotkeys-inst"><ul><li>' + Languagelette
 $("#reset-hotkeys").text(Languageletter281);
 $("#save-hotkeys").text(Languageletter282);
 $("#close-hotkeys").text(Languageletter283);
+$("#close-exp-imp").text(Languageletter283);
 
 $("#youtubeplayer>h5").text(Languageletter284);
 $("#musicUrl").attr('placeholder', Languageletter284a).attr('data-original-title',Languageletter285);
