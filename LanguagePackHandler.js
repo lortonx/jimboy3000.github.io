@@ -273,7 +273,7 @@ $(".btn.btn-block.btn-success.btn-export").text(Languageletter116);
 $(".restore-settings>a").eq(0).text(Languageletter117);
 
 $("#exp-imp-settings>h1").eq(0).text(Languageletter118);
-$("#exp-imp-settings>h1").eq(0).text(Languageletter119);
+$("#exp-imp-settings>h1").eq(1).text(Languageletter119);
 $("#exp-imp-settings>h2").eq(0).text(Languageletter120);
 $("#exp-imp-settings>h2").eq(1).text(Languageletter121);
 
