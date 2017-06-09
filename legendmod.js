@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.075 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -114,6 +114,7 @@ var semimodVersion="97"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
+var MSGCOMMANDS;
 var playerMsg="";	
 var commandMsg="";
 var otherMsg="";
@@ -215,12 +216,17 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 		$("#connect2").click();
 		return openthecommunication="NO";
 		},2500);
-	}*/
-	
+	}*/	
 }
-
 });
 
+
+$("body").on('DOMNodeInserted', ".command-text", function(){
+MSGCOMMANDS3=$(".command-text").text();
+if(MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")){
+	$(".command-text").replace("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!", Premadeletter0);	
+	}
+});
 
 
 if (mode==""){ modebetter2=":ffa"}
