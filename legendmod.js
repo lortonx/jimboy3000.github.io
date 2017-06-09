@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.076 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.077 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -224,7 +224,7 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 $("body").on('DOMNodeInserted', ".command-text", function(){
 MSGCOMMANDS3=$(".command-text").text();
 if(MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")){
-	$(".command-text").replace("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!", Premadeletter0);	
+	$(".command-text").text(Premadeletter0);
 	}
 });
 
