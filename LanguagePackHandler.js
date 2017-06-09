@@ -455,4 +455,4 @@ $("#legendlanguagetext").text(Languageletter346+ "  :");
 setTimeout(function () {
 $("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
 $("#block-warn").replace('Temporary unblock', Languageletter348);
-}, 5000);
+}, 1500);
