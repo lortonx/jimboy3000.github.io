@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.079 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.080 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -236,6 +236,7 @@ else{ modebetter2=mode }
 
 loadericon();
 
+
 (function(t, c, m) {
    console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
    c[t] = new function() {
@@ -312,31 +313,7 @@ loadericon();
             }, false));
          });
       },
-      this.firstrun = function() {
-         if ( c.localStorage.getItem('agaross-firstrun') == null || !c.localStorage.getItem('agaross-firstrun') ) {
-            var html = '<div id="agaross-firstrun">';
-            html    += '   <div>';
-            html    += '      <div>';
-            html    += '         <p>Thank you for installing Legend Mod, please visit our website.</p>';
-            html    += '         <div>';
-            html    += '            <button id="agaross-btn1">ok</button>';
-            html    += '            <button id="agaross-btn2">no thanks</button>';
-            html    += '         </div>';
-            html    += '      </div>';
-            html    += '   </div>';
-            html    += '</div>';
-            document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', html);
-            document.getElementById('agaross-btn1').addEventListener('click', function() {
-               document.getElementById('agaross-firstrun').style.display = 'none';
-               c.localStorage.setItem('agaross-firstrun', '1');
-               c.open('http://www.legendmod.ml', '_blank');
-            }, false);
-            document.getElementById('agaross-btn2').addEventListener('click', function() {
-               document.getElementById('agaross-firstrun').style.display = 'none';
-               c.localStorage.setItem('agaross-firstrun', '1');
-            }, false);
-         }
-      },
+
       this.ready = function(callback) {
          if ( document.getElementsByTagName('body')['0'] !== undefined ) {
             callback();
@@ -350,7 +327,7 @@ loadericon();
    };
    c[t].ready(function() {
       c[t].override();
-      c[t].firstrun();
+      
    });
 })('tcm_old_store_skins', window, document);
 
