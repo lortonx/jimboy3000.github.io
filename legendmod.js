@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.073 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.074 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -191,15 +191,18 @@ var Premadeletter59="Visible";
 var Premadeletter60="Pause";
 
 var languagemod = localStorage.getItem("languagemod");
-if (languagemod==2){
-	
+if (languagemod==2){	
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
 	setTimeout(function () {
 	$('#legendlanguages').val("2");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
-	}, 6000);
-}
-
+	}, 6000);}
+if (languagemod==3){	
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";$("body").append(s);
+	setTimeout(function () {
+	$('#legendlanguages').val("3");
+	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+	}, 6000);}
 
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
@@ -520,9 +523,9 @@ setTimeout(function () {
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span id="legendlanguagetext" class="title" style="">Choose Language:  </span>' +
 											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
-											'<option value="1" data-itr="">English</option>' +
+											'<option value="1" data-itr="">English</option>' +											
+											'<option value="3" data-itr="">Spanish</option>' +
 											'<option value="2" data-itr="">Greek</option>' +
-									//		'<option value="3" data-itr="">Icon 3</option>' +
 									//		'<option value="4" data-itr="">Icon 4</option>' +
 									//		'<option value="5" data-itr="">Icon 5</option>' +
 									//		'<option value="6" data-itr="">Icon 6</option>' +
@@ -2605,6 +2608,14 @@ function changeModLanguage() {
 	if ($("#legendlanguages").val()==2){
 		localStorage.setItem("languagemod", 2);
 		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);		
+	}
+		if ($("#legendlanguages").val()==3){
+		localStorage.setItem("languagemod", 3);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";$("body").append(s);
 		setTimeout(function (){ 
 		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
 		
