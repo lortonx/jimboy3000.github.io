@@ -1369,4 +1369,4 @@
 setTimeout(function () {
 $("#movingskins").css( { marginTop : "-15px" } );
 $("#movingskins").css( { marginBottom : "-30px" } );
-}, 7000);
+}, 12000);
