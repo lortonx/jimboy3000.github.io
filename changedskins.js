@@ -1,4 +1,4 @@
-
+//Changed Skins
 
 (function agarXTRA(w) {
    if ( typeof w.core != 'undefined' && typeof w.core.registerSkin === 'function' && document.getElementById('gamemode') ) {
@@ -1367,5 +1367,6 @@
 })(window);
 
 setTimeout(function () {
-
-}, 500);
+$("#movingskins").css( { marginTop : "-15px" } );
+$("#movingskins").css( { marginBottom : "-30px" } );
+}, 200);
