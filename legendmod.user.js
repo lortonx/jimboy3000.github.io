@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Legend Mod TEST1
 // @namespace    Legend Agario Mod
-// @version      2.0
+// @version      2.1
 // @description  Legend Agario Mod - Communicate, Play All!
 // @homepage     http://www.legendmod.ml
 // @author       Jimboy3100
