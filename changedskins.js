@@ -1345,7 +1345,7 @@
             },
             inject_html: function() {
                var html = '<br/><br/>';
-               html    += '<select id="movingskins" class="form-control" onchange="document.getElementById(\'nick\').value = this.options[this.selectedIndex].value;">';
+               html    += '<select class="form-control" id="movingskins" onchange="document.getElementById(\'nick\').value = this.options[this.selectedIndex].value;">';
                html    += '<option value="">-- Select Animated Skin --</option>';
                for ( key in tcm.l.skins ) {
                   html += '<option value="' + key.toUpperCase() + '">' + key + ' (' + tcm.l.skins[key].frames.length + ' frames)</option>';
@@ -1365,3 +1365,7 @@
       }, 100);
    }
 })(window);
+
+setTimeout(function () {
+
+}, 500);
