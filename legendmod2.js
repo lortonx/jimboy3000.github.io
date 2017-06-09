@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.042 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.077 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,10 +110,11 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="96"; // the version 1.1-> 1.11
+var semimodVersion="98"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
+var MSGCOMMANDS;
 var playerMsg="";	
 var commandMsg="";
 var otherMsg="";
@@ -124,9 +125,12 @@ var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
 
+
+
+
 var Premadeletter0= "Communication Activated";
 var Premadeletter1="Cannot open this youtube URL";
-var Premadeletter2="[SERVER]: You cannot chat if player name > 15 chars:<br>";
+var Premadeletter2="You cannot chat if player name > 15 chars";
 var Premadeletter3="Easter Egg 1 Activated";
 var Premadeletter4="Easter Egg 2 Activated";
 var Premadeletter5="Easter Egg 3 Activated";
@@ -151,7 +155,7 @@ var Premadeletter23="wants you to hide all (leaderboard and minimap)";
 var Premadeletter24="Accept";
 var Premadeletter25="NO WAY!";
 var Premadeletter26="wants you to change your name to";
-var Premadeletter27="wants you to hide Enable Troll on death";
+var Premadeletter27="wants you to Enable Troll on death";
 var Premadeletter28="wants you to open Youtube Player";
 var Premadeletter29="Leaderboard found";
 var Premadeletter30="Search";
@@ -177,6 +181,7 @@ var Premadeletter49="Hide Everything";
 var Premadeletter50="Show Timer Calc.";
 var Premadeletter51="Hide Timer Calc."
 var Premadeletter52="Edit Names";
+var Premadeletter52a="Close Names";
 var Premadeletter53="Auto free coins";
 var Premadeletter54="Stop free coins";
 var Premadeletter55="Troll on Death";
@@ -186,8 +191,19 @@ var Premadeletter58="Hidden";
 var Premadeletter59="Visible";
 var Premadeletter60="Pause";
 
-
-
+var languagemod = localStorage.getItem("languagemod");
+if (languagemod==2){	
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
+	setTimeout(function () {
+	$('#legendlanguages').val("2");
+	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+	}, 6000);}
+if (languagemod==3){	
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";$("body").append(s);
+	setTimeout(function () {
+	$('#legendlanguages').val("3");
+	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+	}, 6000);}
 
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
@@ -200,12 +216,17 @@ if(MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")){
 		$("#connect2").click();
 		return openthecommunication="NO";
 		},2500);
-	}*/
-	
+	}*/	
 }
-
 });
 
+
+$("body").on('DOMSubtreeModified', "#chat-box", function(){
+MSGCOMMANDS3=$(".command-text").text();
+if(MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")){
+	$(".command-text").text(Premadeletter0);
+	}
+});
 
 
 if (mode==""){ modebetter2=":ffa"}
@@ -479,32 +500,49 @@ setTimeout(function () {
 											'<option value="12" data-itr="">Youtube 6</option>' +
 											'</select>' +
 											
-											'<input id="pic1data" class="form-control" placeholder="Message Icon 1 Text" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
-											'<input id="pic2data" class="form-control" placeholder="Message Icon 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
-											'<input id="pic3data" class="form-control" placeholder="Message Icon 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
-											'<input id="pic4data" class="form-control" placeholder="Message Icon 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
-											'<input id="pic5data" class="form-control" placeholder="Message Icon 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
-											'<input id="pic6data" class="form-control" placeholder="Message Icon 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
-											'<input id="yt1data" class="form-control" placeholder="Youtube Message 1 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
-											'<input id="yt2data" class="form-control" placeholder="Youtube Message 2 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
-											'<input id="yt3data" class="form-control" placeholder="Youtube Message 3 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
-											'<input id="yt4data" class="form-control" placeholder="Youtube Message 4 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
-											'<input id="yt5data" class="form-control" placeholder="Youtube Message 5 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
-											'<input id="yt6data" class="form-control" placeholder="Youtube Message 6 Text" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
+											'<input id="pic1data" class="form-control" placeholder="Message Icon Text 1" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
+											'<input id="pic2data" class="form-control" placeholder="Message Icon Text 2" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
+											'<input id="pic3data" class="form-control" placeholder="Message Icon Text 3" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
+											'<input id="pic4data" class="form-control" placeholder="Message Icon Text 4" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
+											'<input id="pic5data" class="form-control" placeholder="Message Icon Text 5" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
+											'<input id="pic6data" class="form-control" placeholder="Message Icon Text 6" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
+											'<input id="yt1data" class="form-control" placeholder="Youtube Message Text 1" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
+											'<input id="yt2data" class="form-control" placeholder="Youtube Message Text 2" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
+											'<input id="yt3data" class="form-control" placeholder="Youtube Message Text 3" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
+											'<input id="yt4data" class="form-control" placeholder="Youtube Message Text 4" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
+											'<input id="yt5data" class="form-control" placeholder="Youtube Message Text 5" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
+											'<input id="yt6data" class="form-control" placeholder="Youtube Message Text 6" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
 
-											'<input id="pic1url" class="form-control" placeholder="Message Icon 1 Imgur Url" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-											'<input id="pic2url" class="form-control" placeholder="Message Icon 2 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-											'<input id="pic3url" class="form-control" placeholder="Message Icon 3 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-											'<input id="pic4url" class="form-control" placeholder="Message Icon 4 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-											'<input id="pic5url" class="form-control" placeholder="Message Icon 5 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-											'<input id="pic6url" class="form-control" placeholder="Message Icon 6 Imgur Url" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-											'<input id="yt1url" class="form-control" placeholder="Youtube Message 1 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-											'<input id="yt2url" class="form-control" placeholder="Youtube Message 2 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-											'<input id="yt3url" class="form-control" placeholder="Youtube Message 3 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-											'<input id="yt4url" class="form-control" placeholder="Youtube Message 4 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-											'<input id="yt5url" class="form-control" placeholder="Youtube Message 5 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-											'<input id="yt6url" class="form-control" placeholder="Youtube Message 6 Url" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="pic1url" class="form-control" placeholder="Message Icon Imgur Url 1" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic2url" class="form-control" placeholder="Message Icon Imgur Url 2" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic3url" class="form-control" placeholder="Message Icon Imgur Url 3" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic4url" class="form-control" placeholder="Message Icon Imgur Url 4" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic5url" class="form-control" placeholder="Message Icon Imgur Url 5" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="pic6url" class="form-control" placeholder="Message Icon Imgur Url 6" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+											'<input id="yt1url" class="form-control" placeholder="Youtube Message Url 1" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt2url" class="form-control" placeholder="Youtube Message Url 2" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt3url" class="form-control" placeholder="Youtube Message Url 3" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt4url" class="form-control" placeholder="Youtube Message Url 4" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt5url" class="form-control" placeholder="Youtube Message Url 5" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+											'<input id="yt6url" class="form-control" placeholder="Youtube Message Url 6" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
 											'</div></div>' +
+											
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
+											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
+											'<option value="1" data-itr="">English</option>' +											
+											'<option value="3" data-itr="">Spanish</option>' +
+											'<option value="2" data-itr="">Greek</option>' +
+									//		'<option value="4" data-itr="">Icon 4</option>' +
+									//		'<option value="5" data-itr="">Icon 5</option>' +
+									//		'<option value="6" data-itr="">Icon 6</option>' +
+									//		'<option value="7" data-itr="">Youtube 1</option>' +
+									//		'<option value="8" data-itr="">Youtube 2</option>' +
+									//		'<option value="9" data-itr="">Youtube 3</option>' +
+									//		'<option value="10" data-itr="">Youtube 4</option>' +
+									//		'<option value="11" data-itr="">Youtube 5</option>' +
+									//		'<option value="12" data-itr="">Youtube 6</option>' +
+											'</select></div>' +											
+											
 
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
 											'<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
@@ -513,7 +551,7 @@ setTimeout(function () {
 											'<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +											
 											'</div></div>' +
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>'+
-											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for fuction to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
+											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
 											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
 											'</div>' +
 											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
@@ -657,7 +695,7 @@ setTimeout(function () {
 		
 	$('#nick').mouseenter(function() {$('#nick').css('background-color', '#000066');return clickedname="YES"}).mouseleave(function() {$('#nick').css('background-color', '');});
 	$('#nick').blur(function(){if (clickedname=="YES"){
-	if($("#nick").val().length>=16){toastr["warning"](Premadeletter2 + $('#nick').val());}}
+	if($("#nick").val().length>=16){toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());}}
 		if ($("#nick").val()=="EasterEgg1"){toastr["info"](Premadeletter3).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openbleedmod();} 
 		else if ($("#nick").val()=="EasterEgg2"){toastr["info"](Premadeletter4).css("width", "210px");$("#nick").val("Easter Egg");$(".btn.btn-play-guest.btn-success.btn-needs-server").click();openrotatingmod();} 
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
@@ -718,7 +756,7 @@ setTimeout(function () {
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 	//jimboy's
-	$("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of ?Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+	$("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 	//$("#minimap-sectors").attr("style", "opacity: 0.25;");
 	// keybinds
 
@@ -798,7 +836,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		else if(timesopened>5){
 		
 		toastr["info"](Premadeletter8, "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");
-		toastr["info"](Premadeletter9 + " <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}
+		toastr["info"](Premadeletter9 + ": <i>chrome://settings/clearBrowserData</i> ", "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");				}
 		return messageone=0;	}
 	});
 	
@@ -924,10 +962,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	    $("#copyGameNames").click(function () {var checked = !($(this).attr('aria-pressed') == "true");		
         if (checked) {
 			localStorage.setItem("copyGameNames", true);
-			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>Close Names');StartEditGameNames();}
+			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a);StartEditGameNames();}
 			else{
 				localStorage.setItem("copyGameNames", true);
-				$(this).html('<i class="fa fa-user-o"></i>Close Names'); ContinueEditGameNames();			}
+				$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a); ContinueEditGameNames();			}
         } 
 		else{
 			localStorage.setItem("copyGameNames", false);
@@ -2563,3 +2601,30 @@ $("#cur-tk-hud").text("Party Token: "+$("#server").val()).attr("style", "opacity
 function openbleedmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/BleedingMod.js";$("body").append(s);}
 function openrotatingmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/rotating500images.js";$("body").append(s);}
 function openvidmod(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/VidMod.js";$("body").append(s);}
+
+function changeModLanguage() {
+	if ($("#legendlanguages").val()==1){	
+		localStorage.setItem("languagemod", 1);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);
+	}
+	if ($("#legendlanguages").val()==2){
+		localStorage.setItem("languagemod", 2);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);		
+	}
+		if ($("#legendlanguages").val()==3){
+		localStorage.setItem("languagemod", 3);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);		
+	}
+}
