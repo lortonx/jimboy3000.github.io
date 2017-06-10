@@ -1,11 +1,11 @@
-var bobi="jim";
+
 
 (function agarXTRA(w) {
    if ( typeof w.core != 'undefined' && typeof w.core.registerSkin === 'function' && document.getElementById('gamemode') ) {
       var tcm = {
          l: {
             skins:      {
-               'bobi': {
+               'bomb': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1346,7 +1346,7 @@ var bobi="jim";
             inject_html: function() {
                var html = '<br/><br/>';
                html    += '<select class="form-control" id="movingskins" onchange="document.getElementById(\'nick\').value = this.options[this.selectedIndex].value;">';
-               html    += '<option value="">-------- Select Animated Skin --------</option>';
+               html    += '<option value="">---------------- Select Animated Skin ----------------</option>';
                for ( key in tcm.l.skins ) {
                   html += '<option value="' + key.toUpperCase() + '">' + key + ' (' + tcm.l.skins[key].frames.length + ' frames)</option>';
                }
