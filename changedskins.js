@@ -1,11 +1,11 @@
-
+var bobi="jim";
 
 (function agarXTRA(w) {
    if ( typeof w.core != 'undefined' && typeof w.core.registerSkin === 'function' && document.getElementById('gamemode') ) {
       var tcm = {
          l: {
             skins:      {
-               'bomb': {
+               'bobi': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -703,7 +703,7 @@
                      {id: 'bfgrQtI', delay: '0.1'}
                   ]
                },
-               'jumbo yt': {
+               'jumbo': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -719,7 +719,7 @@
                      {id: 'FbijFRY', delay: '0.09'}
                   ]
                },
-               'tyt yt': {
+               'tyt': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -745,7 +745,7 @@
                      {id: 'XYqrXYY', delay: '0.09'}
                   ]
                },
-               'hero yt': {
+               'hero': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -768,7 +768,7 @@
                      {id: 'P5Vq8tU', delay: '0.08'}
                   ]
                },
-               'tigar yt': {
+               'tigar': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -788,7 +788,7 @@
                      {id: '61cj4ur', delay: '0.08'}
                   ]
                },
-               'mau yt': {
+               'mau': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -808,7 +808,7 @@
                      {id: 'rQQDAH7', delay: '0.08'}
                   ]
                },
-               'n0psa yt': {
+               'n0psa': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -828,7 +828,7 @@
                      {id: 'fwL1V1X', delay: '0.08'}
                   ]
                },
-               'planet yt': {
+               'planet': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -856,7 +856,7 @@
                      {id: 'AkqsdQo', delay: '0.08'}
                   ]
                },
-               'agarpros yt': {
+               'agarpros': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -875,7 +875,7 @@
                      {id: 'WQA1R3N', delay: '0.06'}
                   ]
                },
-               'wunwun yt': {
+               'wunwun': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -896,7 +896,7 @@
                      {id: 'cKVriYg', delay: '2'}
                   ]
                },
-               'sirius yt': {
+               'sirius': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -926,7 +926,7 @@
                      {id: 'KKcOvM5', delay: '0.08'}
                   ]
                },
-               'miracle yt': {
+               'miracle': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -946,7 +946,7 @@
                      {id: 'N4fmB4V', delay: '0.08'}
                   ]
                },
-               'slash yt': {
+               'slash': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -976,7 +976,7 @@
                      {id: 'Cvevuc8', delay: '0.08'}
                   ]
                },
-               'crystal yt': {
+               'crystal': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1011,7 +1011,7 @@
                      {id: 'DzQLo7q', delay: '0.08'}
                   ]
                },
-               'gfm yt': {
+               'gfm': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1037,7 +1037,7 @@
                      {id: 'bj4v8be', delay: '0.08'}
                   ]
                },
-               'nbk yt': {
+               'nbk': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1055,7 +1055,7 @@
                      {id: '8HJzHa4', delay: '0.1'}
                   ]
                },
-               'kohai yt': {
+               'kohai': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1076,7 +1076,7 @@
                      {id: 'J2UfkzD', delay: '0.12'}
                   ]
                },
-               'カメクランチャンネル yt': {
+               'legend': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1346,7 +1346,7 @@
             inject_html: function() {
                var html = '<br/><br/>';
                html    += '<select class="form-control" id="movingskins" onchange="document.getElementById(\'nick\').value = this.options[this.selectedIndex].value;">';
-               html    += '<option value="">-- Select Animated Skin --</option>';
+               html    += '<option value="">-------- Select Animated Skin --------</option>';
                for ( key in tcm.l.skins ) {
                   html += '<option value="' + key.toUpperCase() + '">' + key + ' (' + tcm.l.skins[key].frames.length + ' frames)</option>';
                }
