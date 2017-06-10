@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.083 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.084 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -238,7 +238,7 @@ loadericon();
 
 
 (function(t, c, m) {
-   console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
+   
    c[t] = new function() {
       this.prototypes = {
          http: (c.XMLHttpRequest.prototype),
@@ -1559,7 +1559,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 
 	
-	console.log( "Legend Mod is Ready" );
+	console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
 }, 1500);
 
 }
