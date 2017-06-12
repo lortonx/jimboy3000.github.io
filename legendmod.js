@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -124,7 +124,7 @@ var openthecommunication="NO";
 var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
-
+var timesdisconnected=0;
 
 
 
@@ -190,6 +190,7 @@ var Premadeletter57="Communication";
 var Premadeletter58="Hidden";
 var Premadeletter59="Visible";
 var Premadeletter60="Pause";
+
 
 var languagemod = localStorage.getItem("languagemod");
 if (languagemod==2){	
@@ -846,8 +847,13 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     MC.onDisconnect = function () {
         toastr["error"](Premadeletter10).css("width", "210px");
         appendSysLog("DISCONNECTED :(");
+		if(timesdisconnected<2){
 		MC.reconnect();
 		adres();
+				timesdisconnected++;
+				return timesdisconnected;}
+		else{
+			return timesdisconnected=0;}
     };
 
     // listen for player ban
