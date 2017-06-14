@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="03"; // the version 1.1-> 1.11
+var semimodVersion="04"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -125,7 +125,7 @@ var clickedname="NO";
 var oldteammode;
 var checkedGameNames=0;
 var timesdisconnected=0;
-
+var PanelImageSrc;
 
 
 var Premadeletter0= "Communication Activated";
@@ -699,6 +699,7 @@ setTimeout(function () {
 		}		
     });
 
+	
     /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
     $("#reconnectBtn").mouseenter(function () {$("#dropDown").hide();$("#copySIPBtn").text("Copy");});
 
@@ -729,6 +730,17 @@ setTimeout(function () {
 	$("#boostButton").css("display", "inline-block");
 	$("#massButton").css("display", "inline-block");
 	$("#massButton").after($("#promo-badge-container"));
+	
+	
+	PanelImageSrc=$("#menuBg").val();
+		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){
+		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+	}
+	$("#copyLBBtn").blur(function () {
+		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){	
+		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+		}
+	});
 	
     // LEGEND footer
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
