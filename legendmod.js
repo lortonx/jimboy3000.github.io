@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1090,7 +1090,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		
 	 $("#OpenuserScripts").click(function () { 
 	 if(modVersion!="2.1"){
-	 toastr["info"]("Mod Version Must be 2.1 or higher").css("width", "250px");
+	 toastr["info"]("Mod Version must be 2.1 or higher").css("width", "250px");
 	 return false;
 	 }
 	 else{$("#main-menu").hide();$("#skins-panel").hide();$("#quick-menu").hide();$("#exp-bar").hide();$("#userscripts").show();	}} );
