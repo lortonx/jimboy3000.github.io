@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="04"; // the version 1.1-> 1.11
+var semimodVersion="05"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -455,7 +455,7 @@ setTimeout(function () {
                            '</div>');
 
     $(".menu-tabs").children().attr("style", "width: 14.27%;");
-    $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
+    $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 //  $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 150px;\')" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 	//	$(".menu-tabs").children().last().before('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
@@ -586,6 +586,8 @@ setTimeout(function () {
 										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>');
 		$('.agario-panel.radio-panel').hide();
 		$('.agario-panel.ogario-yt-panel').hide();
+		
+		if ($('#menuBg').val()=="http://cdn.ogario.ovh/static/img/pattern.png"){$('#menuBg').val("https://jimboy3100.github.io/pattern.png");}
 		if ($('#messageSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_01.mp3"){$('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");}
 		if ($('#commandSound').val()=="http://cdn.ogario.ovh/static/sounds/notification_02.mp3"){$('#commandSound').val("https://jimboy3100.github.io/notification_02.mp3");}	
 	//    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
@@ -1383,11 +1385,11 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	setTimeout(function () {
 	
 		PanelImageSrc=$("#menuBg").val();
-		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){
+		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc!="https://jimboy3100.github.io/pattern.png"){
 		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
 	}
 	$("#copyLBBtn").blur(function () {
-		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){	
+		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc!="https://jimboy3100.github.io/pattern.png"){	
 		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
 		}
 	});
