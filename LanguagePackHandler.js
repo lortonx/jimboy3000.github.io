@@ -131,7 +131,7 @@ $(".options-box.statsGroup>LABEL").replace('Show current time', Languageletter10
 $(".options-box.extrasGroup>h5").text(Languageletter106);
 $(".options-box.extrasGroup>LABEL").replace('Skip stats after death', Languageletter107);
 $(".options-box.extrasGroup>LABEL").replace('Show quest', Languageletter108);
-$(".options-box.extrasGroup>LABEL").replace('Block popups (ads/shop/quest)', Languageletter109);
+$(".options-box.extrasGroup>LABEL").replace('Block popups', Languageletter109);
 
 
 
@@ -348,12 +348,12 @@ $("#logTitle").attr("data-original-title", Languageletter294);
 $("#searchInput").attr('placeholder',Languageletter295);
 $("#closeBtn").attr("data-original-title", Languageletter283);
 
-$("#top5-total").each(function() { var text = $(this).html();
-   $(this).html(text.replace(' Active players: ', ' ' + Languageletter296 + ': ')); 
-});
-$("#top5-total").each(function() { var text = $(this).html();
-   $(this).html(text.replace(' Total mass: ', ' ' + Languageletter297 + ': ')); 
-});
+//$("#top5-total").each(function() { var text = $(this).html();
+//   $(this).html(text.replace(' Active players: ', ' ' + Languageletter296 + ': ')); 
+//});
+//$("#top5-total").each(function() { var text = $(this).html();
+//  $(this).html(text.replace(' Total mass: ', ' ' + Languageletter297 + ': ')); 
+//});
 
 if($('#teambtext').val()==""){
 	$("#top5-hud > h5").each(function() { var text = $(this).html();
