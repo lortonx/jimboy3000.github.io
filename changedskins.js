@@ -1509,19 +1509,19 @@ $("#userscriptBtn5").click(function() {
 
 	$('#UserscriptA').val(localStorage.getItem("Userscript1"));
 	if($('#UserscriptA').val()!=""){$('#UserscriptA').blur();}
-	else if($('#UserscriptA').val()==""){document.getElementById("Userscripttexture1").value =localStorage.getItem("Userscripttexture1");}
+	else if($('#UserscriptA').val()==""){document.getElementById("Userscripttexture1").value =localStorage.getItem("Userscripttexture1");setTimeout(function () {$("#userscriptBtn1").click(); }, 100);}
 	$('#UserscriptB').val(localStorage.getItem("Userscript2"));
 	if($('#UserscriptB').val()!=""){$('#UserscriptB').blur();}
-	else if($('#UserscriptB').val()==""){document.getElementById("Userscripttexture2").value =localStorage.getItem("Userscripttexture2");}
+	else if($('#UserscriptB').val()==""){document.getElementById("Userscripttexture2").value =localStorage.getItem("Userscripttexture2");setTimeout(function () {$("#userscriptBtn2").click(); }, 100);}
 	$('#UserscriptC').val(localStorage.getItem("Userscript3"));
 	if($('#UserscriptC').val()!=""){$('#UserscriptC').blur();}
-	else if($('#UserscriptC').val()==""){document.getElementById("Userscripttexture3").value =localStorage.getItem("Userscripttexture3");}
+	else if($('#UserscriptC').val()==""){document.getElementById("Userscripttexture3").value =localStorage.getItem("Userscripttexture3");setTimeout(function () {$("#userscriptBtn3").click(); }, 100);}
 	$('#UserscriptD').val(localStorage.getItem("Userscript4"));
 	if($('#UserscriptD').val()!=""){$('#UserscriptD').blur();}
-	else if($('#UserscriptD').val()==""){document.getElementById("Userscripttexture4").value =localStorage.getItem("Userscripttexture4");}
+	else if($('#UserscriptD').val()==""){document.getElementById("Userscripttexture4").value =localStorage.getItem("Userscripttexture4");setTimeout(function () {$("#userscriptBtn4").click(); }, 100);}
 	$('#UserscriptE').val(localStorage.getItem("Userscript5"));
 	if($('#UserscriptE').val()!=""){$('#UserscriptE').blur();}
-	else if($('#UserscriptE').val()==""){document.getElementById("Userscripttexture5").value =localStorage.getItem("Userscripttexture5");}
+	else if($('#UserscriptE').val()==""){document.getElementById("Userscripttexture5").value =localStorage.getItem("Userscripttexture5");setTimeout(function () {$("#userscriptBtn5").click(); }, 100);}
 
 }, 5000);
 
