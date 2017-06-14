@@ -1451,58 +1451,7 @@ $("#userscripts").hide();
 
 
 
-function userscriptpages(){
-	$("#UserscriptA").hide();
-	$("#UserscriptB").hide();
-	$("#UserscriptC").hide();
-	$("#UserscriptD").hide();
-	$("#UserscriptE").hide();
-	$("#UserscripttextA").hide();
-	$("#UserscripttextB").hide();
-	$("#UserscripttextC").hide();
-	$("#UserscripttextD").hide();
-	$("#UserscripttextE").hide();
-	$("#Userscripttexture1").hide();
-	$("#Userscripttexture2").hide();
-	$("#Userscripttexture3").hide();
-	$("#Userscripttexture4").hide();
-	$("#Userscripttexture5").hide();
-	$("#userscriptBtn1").hide();
-	$("#userscriptBtn2").hide();
-	$("#userscriptBtn3").hide();
-	$("#userscriptBtn4").hide();
-	$("#userscriptBtn5").hide();
-		if ($("#Userscriptpages3").val()==1){
-			$("#UserscriptA").show();
-			$("#UserscripttextA").show();
-			$("#Userscripttexture1").show();
-			$("#userscriptBtn1").show();
-		}
-		if ($("#Userscriptpages3").val()==2){
-			$("#UserscriptB").show();
-			$("#UserscripttextB").show();
-			$("#Userscripttexture2").show();
-			$("#userscriptBtn2").show();			
-		}
-		if ($("#Userscriptpages3").val()==3){
-			$("#UserscriptC").show();
-			$("#UserscripttextC").show();
-			$("#Userscripttexture3").show();
-			$("#userscriptBtn3").show();
-		}
-		if ($("#Userscriptpages3").val()==4){
-			$("#UserscriptD").show();
-			$("#UserscripttextD").show();
-			$("#Userscripttexture4").show();
-			$("#userscriptBtn4").show();
-		}
-		if ($("#Userscriptpages3").val()==5){
-			$("#UserscriptE").show();
-			$("#UserscripttextE").show();
-			$("#Userscripttexture5").show();
-			$("#userscriptBtn5").show();
-		}		
-}
+
 
 $('#UserscriptA').blur(function(){
 if ($("#UserscriptA").val()!=""){
@@ -1605,4 +1554,57 @@ $("#skins-panel").show();
 $("#quick-menu").show();
 $("#exp-bar").show();
 $("#userscripts").hide();
+}
+
+function userscriptpages(){
+	$("#UserscriptA").hide();
+	$("#UserscriptB").hide();
+	$("#UserscriptC").hide();
+	$("#UserscriptD").hide();
+	$("#UserscriptE").hide();
+	$("#UserscripttextA").hide();
+	$("#UserscripttextB").hide();
+	$("#UserscripttextC").hide();
+	$("#UserscripttextD").hide();
+	$("#UserscripttextE").hide();
+	$("#Userscripttexture1").hide();
+	$("#Userscripttexture2").hide();
+	$("#Userscripttexture3").hide();
+	$("#Userscripttexture4").hide();
+	$("#Userscripttexture5").hide();
+	$("#userscriptBtn1").hide();
+	$("#userscriptBtn2").hide();
+	$("#userscriptBtn3").hide();
+	$("#userscriptBtn4").hide();
+	$("#userscriptBtn5").hide();
+		if ($("#Userscriptpages3").val()==1){
+			$("#UserscriptA").show();
+			$("#UserscripttextA").show();
+			$("#Userscripttexture1").show();
+			$("#userscriptBtn1").show();
+		}
+		if ($("#Userscriptpages3").val()==2){
+			$("#UserscriptB").show();
+			$("#UserscripttextB").show();
+			$("#Userscripttexture2").show();
+			$("#userscriptBtn2").show();			
+		}
+		if ($("#Userscriptpages3").val()==3){
+			$("#UserscriptC").show();
+			$("#UserscripttextC").show();
+			$("#Userscripttexture3").show();
+			$("#userscriptBtn3").show();
+		}
+		if ($("#Userscriptpages3").val()==4){
+			$("#UserscriptD").show();
+			$("#UserscripttextD").show();
+			$("#Userscripttexture4").show();
+			$("#userscriptBtn4").show();
+		}
+		if ($("#Userscriptpages3").val()==5){
+			$("#UserscriptE").show();
+			$("#UserscripttextE").show();
+			$("#Userscripttexture5").show();
+			$("#userscriptBtn5").show();
+		}		
 }
