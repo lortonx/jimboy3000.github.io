@@ -1586,7 +1586,7 @@ $("#userscriptBtn5").click(function() {
 	if($('#UserscriptE').val()!=""){$('#UserscriptE').blur();}
 	else if($('#UserscriptE').val()==""){document.getElementById("Userscripttexture5").value =localStorage.getItem("Userscripttexture5");}
 
-}, 9000);
+}, 5000);
 
 function Userscripttext11(){ Userscripttext11=$("#UserscripttextA").val();localStorage.setItem("Userscripttext11", Userscripttext11);
 if (Userscripttext11!=""){$('#Userscriptpages3>option:nth-child(1)').text(Userscripttext11);}}
