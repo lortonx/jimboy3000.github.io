@@ -1486,19 +1486,7 @@ $("#Userscripttexture5").blur(function(){
 if ($("#Userscripttexture5").val()!=""){Userscripttexture5=$("#Userscripttexture5").val();localStorage.setItem("Userscripttexture5", Userscripttexture5);}});	
 	
 
-function erasescripter(){
-	if ($("#Userscriptpages3").val()==1){
-		$("#Userscripttexture1").val(""); localStorage.setItem("Userscripttexture1", ""); $('#Userscriptpages3>option:nth-child(1)').text("User Script 1"); $("#UserscripttextA").val(""); localStorage.setItem("Userscripttext11", ""); $("#UserscriptA").val(""); localStorage.setItem("Userscript1", "");}
-	if ($("#Userscriptpages3").val()==2){
-		$("#Userscripttexture2").val(""); localStorage.setItem("Userscripttexture2", ""); $('#Userscriptpages3>option:nth-child(2)').text("User Script 2"); $("#UserscripttextB").val(""); localStorage.setItem("Userscripttext12", ""); $("#UserscriptB").val(""); localStorage.setItem("Userscript2", "");}
-	if ($("#Userscriptpages3").val()==3){
-		$("#Userscripttexture3").val(""); localStorage.setItem("Userscripttexture3", ""); $('#Userscriptpages3>option:nth-child(3)').text("User Script 3"); $("#UserscripttextC").val(""); localStorage.setItem("Userscripttext13", ""); $("#UserscriptC").val(""); localStorage.setItem("Userscript3", "");}
-	if ($("#Userscriptpages3").val()==4){
-		$("#Userscripttexture4").val(""); localStorage.setItem("Userscripttexture4", ""); $('#Userscriptpages3>option:nth-child(4)').text("User Script 4"); $("#UserscripttextD").val(""); localStorage.setItem("Userscripttext14", ""); $("#UserscriptD").val(""); localStorage.setItem("Userscript4", "");}
-	if ($("#Userscriptpages3").val()==5){
-		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
 
-		}
 
 
 $("#userscriptBtn1").click(function() {
@@ -1607,4 +1595,17 @@ function userscriptpages(){
 			$("#Userscripttexture5").show();
 			$("#userscriptBtn5").show();
 		}		
+}
+
+function erasescripter(){
+	if ($("#Userscriptpages3").val()==1){
+		$("#Userscripttexture1").val(""); localStorage.setItem("Userscripttexture1", ""); $('#Userscriptpages3>option:nth-child(1)').text("User Script 1"); $("#UserscripttextA").val(""); localStorage.setItem("Userscripttext11", ""); $("#UserscriptA").val(""); localStorage.setItem("Userscript1", "");}
+	if ($("#Userscriptpages3").val()==2){
+		$("#Userscripttexture2").val(""); localStorage.setItem("Userscripttexture2", ""); $('#Userscriptpages3>option:nth-child(2)').text("User Script 2"); $("#UserscripttextB").val(""); localStorage.setItem("Userscripttext12", ""); $("#UserscriptB").val(""); localStorage.setItem("Userscript2", "");}
+	if ($("#Userscriptpages3").val()==3){
+		$("#Userscripttexture3").val(""); localStorage.setItem("Userscripttexture3", ""); $('#Userscriptpages3>option:nth-child(3)').text("User Script 3"); $("#UserscripttextC").val(""); localStorage.setItem("Userscripttext13", ""); $("#UserscriptC").val(""); localStorage.setItem("Userscript3", "");}
+	if ($("#Userscriptpages3").val()==4){
+		$("#Userscripttexture4").val(""); localStorage.setItem("Userscripttexture4", ""); $('#Userscriptpages3>option:nth-child(4)').text("User Script 4"); $("#UserscripttextD").val(""); localStorage.setItem("Userscripttext14", ""); $("#UserscriptD").val(""); localStorage.setItem("Userscript4", "");}
+	if ($("#Userscriptpages3").val()==5){
+		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
 }
