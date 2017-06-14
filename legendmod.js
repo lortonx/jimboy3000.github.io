@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -565,7 +565,7 @@ setTimeout(function () {
 											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
 											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
 											'</div>' +
-											'<button id="bb1" type="submit" class="btn btn-play btn-primary btn-needs-server" data-itr="page_play" onclick="newsubmit()" style="display: none;">Play</button>'+
+											'<button id="OpenuserScripts" type="submit" class="btn btn-play btn-primary" data-itr="page_play" onclick="OpenuserScripts()" style="display: block;">User Scripts</button>'+
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
 											'</div></div>');
@@ -1163,7 +1163,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
         ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
     });
-    // load tooltips
+    
     
 	
 	    $("#topright").click(function () {localStorage.setItem("ComPosition", 0);toastr.remove();toastr.options = {"positionClass": "toast-top-right"}}); 
