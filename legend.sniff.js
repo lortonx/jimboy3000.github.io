@@ -58,7 +58,7 @@ localStorage.setItem("url", url);
          return config;
       },
       this.modify_config = function(json) {
-         var tabname = 'Old';
+         var tabname = 'Old - Legend Mod';
          var tabid   = c[t].string_to_tabid(tabname);
          var config  = c[t].add_tab(c[t].parse_json(json), tabname, tabid, 1020);
          var priced  = c[t].priced_products(config);
