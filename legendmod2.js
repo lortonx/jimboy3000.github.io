@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -732,15 +732,7 @@ setTimeout(function () {
 	$("#massButton").after($("#promo-badge-container"));
 	
 	
-	PanelImageSrc=$("#menuBg").val();
-		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){
-		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-	}
-	$("#copyLBBtn").blur(function () {
-		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){	
-		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-		}
-	});
+
 	
     // LEGEND footer
 	var ogarioVersion = $("#menu-footer").text().split("| ")[1];
@@ -1389,6 +1381,16 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 	
 	setTimeout(function () {
+	
+		PanelImageSrc=$("#menuBg").val();
+		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){
+		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+	}
+	$("#copyLBBtn").blur(function () {
+		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png"){	
+		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+		}
+	});
 	
 //	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
 //	if (IPBtn  == "true") { $("#IPBtn").click(); }
