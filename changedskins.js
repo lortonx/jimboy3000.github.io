@@ -1426,7 +1426,7 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url(http
 											'<option value="4" data-itr="">User Script 4</option>' +
 											'<option value="5" data-itr="">User Script 5</option>' +
 											'</select>' +
-											'<button id="EraseScripter" align="left" onclick="erasescripter(); return false" class="btn btn-primary btn" data-itr="page_login_and_play" data-original-title="" title="" style="display:inline; margin-left: 60px; width: 30%; ">Erase Script</button>' +
+											'<button id="EraseScripter" align="left" onclick="erasescripter(); return false" class="btn btn-primary btn" data-itr="page_login_and_play" data-original-title="" title="" style="display:inline; margin-top: -4px; margin-left: 60px; width: 30%; ">Erase Script</button>' +
 											'<input id="UserscripttextA" class="form-control" placeholder="User Script 1 Name" value="" style="margin-top: 2px; display: block;" onblur="Userscripttext11();" >' +
 											
 											'<input id="UserscripttextB" class="form-control" placeholder="User Script 2 Name" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext12();"  >' +
