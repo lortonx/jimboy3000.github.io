@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1088,7 +1088,15 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		if (checked) {localStorage.setItem("troll1Btn", true);settroll1true();whenplayerdies();$(this).html('<i class="fa fa-bath"></i>' + Premadeletter56);}
 		else {localStorage.setItem("troll1Btn", false);settroll1false();whenplayerdies();$(this).html('<i class="fa fa-bath"></i>' + Premadeletter55);}} );  			
 		
-	 $("#OpenuserScripts").click(function () { $("#main-menu").hide();$("#skins-panel").hide();$("#quick-menu").hide();$("#exp-bar").hide();$("#userscripts").show();	} );
+	 $("#OpenuserScripts").click(function () { 
+	 if(modVersion!="2.1"){
+	 toastr["info"]("Mod Version Must be 2.1 or higher").css("width", "250px");
+	 return false;
+	 }
+	 else{$("#main-menu").hide();$("#skins-panel").hide();$("#quick-menu").hide();$("#exp-bar").hide();$("#userscripts").show();	}} );
+	 
+	 
+	 
     $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
 	//$("#cur-tk-hud").attr("style", "opacity: 0;");
 	
