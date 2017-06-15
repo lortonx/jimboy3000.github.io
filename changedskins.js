@@ -1,4 +1,4 @@
-//v0.1
+//v0.2
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1655,7 +1655,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 		else { toastr["info"]('You must register your Clan Symbol first'); }
 	});
 		
-}, 5500);
+}, 8500);
 
 function disconnect2min(){
 	if (AdminRights==1){
