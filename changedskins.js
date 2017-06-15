@@ -1,4 +1,4 @@
-//v0.6
+//v0.7
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1372,7 +1372,7 @@ $("#movingskins").css( { marginTop : "-15px" } );
 $("#movingskins").css( { marginBottom : "-30px" } );
 }, 12000);
 
-//3. Administration Tools
+//2. Administration Tools
 
 setTimeout(function () {
 $("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 165px; width: 500px; ";>'+
@@ -1416,7 +1416,16 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 		}
 		else { toastr["info"]('You must register your Clan Symbol first'); }
 	});
-		
+	
+	$("#nick").blur(function(){
+		if($("#nick").val()=="LEGENDARY"){
+		$("#main-menu").hide();
+		$("#skins-panel").hide();
+		$("#quick-menu").hide();
+		$("#exp-bar").hide();
+		$("#administrationtools").show();		
+	}	
+});			
 }, 100);
 
 function disconnect2min(){
@@ -1450,7 +1459,7 @@ $("#administrationtools").hide();
 
 
 
-//2. User Scripts
+//3. User Scripts
 
 setTimeout(function () {
 	
