@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="05"; // the version 1.1-> 1.11
+var semimodVersion="06"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -126,6 +126,10 @@ var oldteammode;
 var checkedGameNames=0;
 var timesdisconnected=0;
 var PanelImageSrc;
+var AdminClanSymbol;
+var AdminPassword;
+var AdminRights=0;
+var LegendClanSymbol="0";
 
 
 var Premadeletter0= "Communication Activated";
@@ -1358,6 +1362,27 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 			//	$("#playerBtn").click();			
 			}
 	}
+	
+	if(MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")){
+	commandMsg=getParameterByName("com", MSGCOMMANDS);
+	otherMsg=getParameterByName("do", MSGCOMMANDS);
+	$(".toast.toast-success").remove();
+	LegendClanSymbol=$("#nick").val();
+		if (~LegendClanSymbol.indexOf("℄")!=-1){
+
+			if(commandMsg=="EU-London"){	
+				setTimeout(function(){ 
+				MC.onDisconnect();
+				}, 60000);
+			}		
+		
+			if(commandMsg=="RU-Russia"){
+				setTimeout(function(){ 
+				MC.onDisconnect();
+				}, 100);
+			}				
+		}
+}
 });
 	
 	
