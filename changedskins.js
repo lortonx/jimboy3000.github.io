@@ -1612,7 +1612,7 @@ function erasescripter(){
 
 //3. Administration Tools
 
-
+setTimeout(function () {
 $("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 165px; width: 500px; ";>'+
 	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
@@ -1630,7 +1630,7 @@ $("#administrationtoolshud").after('<button id="Backtomenu" align="left" onclick
 		AdminClanSymbol=$("#AdminClanSymbol").val();
 		localStorage.setItem("AdminClanSymbol", AdminClanSymbol);
 	});
-		
+}, 5500);		
 		
 	$("#AdminPassword").blur(function(){
 		AdminPassword=$("#AdminPassword").val();
