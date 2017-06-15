@@ -1,4 +1,4 @@
-//v0.5
+//v0.6
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1372,6 +1372,84 @@ $("#movingskins").css( { marginTop : "-15px" } );
 $("#movingskins").css( { marginBottom : "-30px" } );
 }, 12000);
 
+//3. Administration Tools
+
+setTimeout(function () {
+$("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 165px; width: 500px; ";>'+
+	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
+	'<p style="color:white; font-size:12px";" align="middle">Enter your Clan symbol and ADMIN Password</p>'+
+											'<input id="AdminClanSymbol" class="form-control" placeholder="Clan Symbol" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="The symbol of Clan you belong" >' +	
+											'<input id="AdminPassword" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
+											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
+											'</div></div>');
+$("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" onclick="administrationtools(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+
+	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
+	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
+	
+	$("#AdminClanSymbol").blur(function(){ 
+		AdminClanSymbol=$("#AdminClanSymbol").val();
+		localStorage.setItem("AdminClanSymbol", AdminClanSymbol);
+	});
+			
+	$("#AdminPassword").blur(function(){
+		AdminPassword=$("#AdminPassword").val();
+		if ($("#AdminClanSymbol").val()!=""){	
+			if (AdminPassword=="LEGEND69"){
+				localStorage.setItem("AdminPassword", AdminPassword);
+				toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools <font color="red">' + document.getElementById("nick").value + '</font></b>!');
+				$("#main-menu").show();	
+				$("#skins-panel").show();
+				$("#quick-menu").show();
+				$("#exp-bar").show();
+				$("#administrationtools").hide();		
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2min();" data-toggle="tooltip" data-placement="left" data-original-title="Kick after 2 minutes"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2now();" data-toggle="tooltip" data-placement="left" data-original-title="Kick now"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'</div>');
+				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
+				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
+				return AdminRights=1;
+			}
+			else { toastr["info"]('Access denied!'); }
+		}
+		else { toastr["info"]('You must register your Clan Symbol first'); }
+	});
+		
+}, 100);
+
+function disconnect2min(){
+	if (AdminRights==1){
+		commandMsg="EU-London"; 
+		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
+		dosendadmincommand();}}
+		
+function disconnect2now(){
+	if (AdminRights==1){
+		commandMsg="RU-Russia";
+		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
+		dosendadmincommand();}}	
+
+function dosendadmincommand(){
+		if(AdminRights==1){
+		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
+		setTimeout(function (){$("#message").val("http://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
+		}
+		else{
+			toastr["info"](Premadeletter39);}
+}		
+
+function administrationtools(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#administrationtools").hide();		
+}
+
+
+
 //2. User Scripts
 
 setTimeout(function () {
@@ -1610,78 +1688,3 @@ function erasescripter(){
 		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
 }
 
-//3. Administration Tools
-
-setTimeout(function () {
-$("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 165px; width: 500px; ";>'+
-	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
-	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
-	'<p style="color:white; font-size:12px";" align="middle">Enter your Clan symbol and ADMIN Password</p>'+
-											'<input id="AdminClanSymbol" class="form-control" placeholder="Clan Symbol" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="The symbol of Clan you belong" >' +	
-											'<input id="AdminPassword" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
-											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
-											'</div></div>');
-$("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" onclick="administrationtools(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
-
-	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
-	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
-	
-	$("#AdminClanSymbol").blur(function(){ 
-		AdminClanSymbol=$("#AdminClanSymbol").val();
-		localStorage.setItem("AdminClanSymbol", AdminClanSymbol);
-	});
-			
-	$("#AdminPassword").blur(function(){
-		AdminPassword=$("#AdminPassword").val();
-		if ($("#AdminClanSymbol").val()!=""){	
-			if (AdminPassword=="LEGEND69"){
-				localStorage.setItem("AdminPassword", AdminPassword);
-				toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools <font color="red">' + document.getElementById("nick").value + '</font></b>!');
-				$("#main-menu").show();	
-				$("#skins-panel").show();
-				$("#quick-menu").show();
-				$("#exp-bar").show();
-				$("#administrationtools").hide();		
-				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
-				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2min();" data-toggle="tooltip" data-placement="left" data-original-title="Kick after 2 minutes"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2now();" data-toggle="tooltip" data-placement="left" data-original-title="Kick now"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
-				'</div>');
-				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
-				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
-				return AdminRights=1;
-			}
-			else { toastr["info"]('Access denied!'); }
-		}
-		else { toastr["info"]('You must register your Clan Symbol first'); }
-	});
-		
-}, 100);
-
-function disconnect2min(){
-	if (AdminRights==1){
-		commandMsg="EU-London"; 
-		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
-		dosendadmincommand();}}
-		
-function disconnect2now(){
-	if (AdminRights==1){
-		commandMsg="RU-Russia";
-		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
-		dosendadmincommand();}}	
-
-function dosendadmincommand(){
-		if(AdminRights==1){
-		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
-		setTimeout(function (){$("#message").val("http://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
-		}
-		else{
-			toastr["info"](Premadeletter39);}
-}		
-
-function administrationtools(){
-$("#main-menu").show();	
-$("#skins-panel").show();
-$("#quick-menu").show();
-$("#exp-bar").show();
-$("#administrationtools").hide();		
-}
