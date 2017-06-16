@@ -1,4 +1,4 @@
-//v0.8
+//v0.9
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1430,17 +1430,19 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 
 function disconnect2min(){
 	if (AdminRights==1){
-		toastr["info"]('Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect in 120 seconds');
 		commandMsg="EU-London"; 
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
-		dosendadmincommand();}}
+		dosendadmincommand();
+		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
+		}}
 		
 function disconnectnow(){
 	if (AdminRights==1){
-		toastr["info"]('Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now');
 		commandMsg="RU-Russia";
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
-		dosendadmincommand();}}	
+		dosendadmincommand();
+		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now");
+		}}	
 
 function dosendadmincommand(){
 		if(AdminRights==1){
