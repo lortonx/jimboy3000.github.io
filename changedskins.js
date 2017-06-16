@@ -1416,7 +1416,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 		}
 		else { toastr["info"]('You must register your Clan Symbol first'); }
 	});
-	if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}
+	
 	$("#nick").blur(function(){
 		if ($('#administrationtoolshud').is(':hidden')) {
 			if($("#nick").val()=="℄🌀Jimboy3100"){
@@ -1425,8 +1425,9 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 			$("#quick-menu").hide();
 			$("#exp-bar").hide();
 			$("#administrationtools").show();		
-		}	}
-});			
+		}	}	
+});	
+if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
 }, 100);
 
 function disconnect2min(){
