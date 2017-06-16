@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.086 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -215,7 +215,12 @@ if (languagemod==4){
 	$('#legendlanguages').val("4");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
 	}, 6000);}	
-
+if (languagemod==5){	
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";$("body").append(s);
+	setTimeout(function () {
+	$('#legendlanguages').val("5");
+	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+	}, 6000);}	
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
@@ -547,6 +552,7 @@ setTimeout(function () {
 											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
 											'<option value="1" data-itr="">English</option>' +											
 											'<option value="4" data-itr="">Bulgarian</option>' +
+											'<option value="5" data-itr="">French</option>' +
 											'<option value="2" data-itr="">Greek</option>' +
 											'<option value="3" data-itr="">Spanish</option>' +
 											
@@ -2710,4 +2716,12 @@ function changeModLanguage() {
 		
 		},800);		
 	}
+		if ($("#legendlanguages").val()==5){
+		localStorage.setItem("languagemod", 5);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);		
+	}	
 }
