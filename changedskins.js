@@ -1418,7 +1418,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 	});
 	if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}
 	$("#nick").blur(function(){
-		if ($('#administrationtool-hud').is(':hidden')) {
+		if ($('#administrationtoolshud').is(':hidden')) {
 			if($("#nick").val()=="℄🌀Jimboy3100"){
 			$("#main-menu").hide();
 			$("#skins-panel").hide();
