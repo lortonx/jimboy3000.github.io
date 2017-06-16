@@ -1398,7 +1398,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 		if ($("#AdminClanSymbol").val()!=""){	
 			if (AdminPassword=="LEGEND69"){
 				localStorage.setItem("AdminPassword", AdminPassword);
-				toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools <font color="red">' + document.getElementById("nick").value + '</font></b>!');
+			//	toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools <font color="red">' + document.getElementById("nick").value + '</font></b>!');
 				$("#main-menu").show();	
 				$("#skins-panel").show();
 				$("#quick-menu").show();
@@ -1416,7 +1416,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 		}
 		else { toastr["info"]('You must register your Clan Symbol first'); }
 	});
-	
+setTimeout(function () {	
 	$("#nick").blur(function(){
 		if ($('#administrationtoolshud').is(':hidden')) {
 			if($("#nick").val()=="℄🌀Jimboy3100"){
@@ -1426,7 +1426,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 			$("#exp-bar").hide();
 			$("#administrationtools").show();		
 		}	}	
-});	
+});	}, 100);
 if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
 }, 100);
 
