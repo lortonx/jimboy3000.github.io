@@ -1,4 +1,4 @@
-//v0.7
+//v0.8
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1406,7 +1406,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 				$("#administrationtools").hide();		
 				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
 				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2min();" data-toggle="tooltip" data-placement="left" data-original-title="Kick after 2 minutes"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2now();" data-toggle="tooltip" data-placement="left" data-original-title="Kick now"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnectnow();" data-toggle="tooltip" data-placement="left" data-original-title="Kick now"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
 				'</div>');
 				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
 				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
@@ -1430,12 +1430,14 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 
 function disconnect2min(){
 	if (AdminRights==1){
+		toastr["info"]('Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect in 120 seconds');
 		commandMsg="EU-London"; 
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
 		dosendadmincommand();}}
 		
-function disconnect2now(){
+function disconnectnow(){
 	if (AdminRights==1){
+		toastr["info"]('Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now');
 		commandMsg="RU-Russia";
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
 		dosendadmincommand();}}	
