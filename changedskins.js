@@ -1,4 +1,4 @@
-//v0.9
+//v1.0
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1426,7 +1426,7 @@ setTimeout(function () {
 			$("#exp-bar").hide();
 			$("#administrationtools").show();		
 		}	}	
-});	}, 100);
+});	}, 1000);
 if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
 }, 100);
 
