@@ -1,4 +1,4 @@
-//v1.0
+//v0.9
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1418,13 +1418,14 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 	});
 	if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}
 	$("#nick").blur(function(){
-		if($("#nick").val()=="℄🌀Jimboy3100"){
-		$("#main-menu").hide();
-		$("#skins-panel").hide();
-		$("#quick-menu").hide();
-		$("#exp-bar").hide();
-		$("#administrationtools").show();		
-	}	
+		if ($('#administrationtool-hud').is(':hidden')) {
+			if($("#nick").val()=="℄🌀Jimboy3100"){
+			$("#main-menu").hide();
+			$("#skins-panel").hide();
+			$("#quick-menu").hide();
+			$("#exp-bar").hide();
+			$("#administrationtools").show();		
+		}	}
 });			
 }, 100);
 
