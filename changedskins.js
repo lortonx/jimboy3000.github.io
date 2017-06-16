@@ -1408,8 +1408,8 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2min();" data-toggle="tooltip" data-placement="left" data-original-title="Kick after 2 minutes"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
 				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnectnow();" data-toggle="tooltip" data-placement="left" data-original-title="Kick now"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
 				'</div>');
-				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
-				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
+//				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
+//				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
 				return AdminRights=1;
 			}
 			else { toastr["info"]('Access denied!'); }
