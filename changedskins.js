@@ -1,4 +1,4 @@
-//v0.9
+//v1.0
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1387,7 +1387,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 	$("#AdminClanSymbol").val("℄");
 	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
 	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
-	if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}
+	
 	$("#AdminClanSymbol").blur(function(){ 
 		AdminClanSymbol=$("#AdminClanSymbol").val();
 		localStorage.setItem("AdminClanSymbol", AdminClanSymbol);
@@ -1416,7 +1416,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" on
 		}
 		else { toastr["info"]('You must register your Clan Symbol first'); }
 	});
-	
+	if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}
 	$("#nick").blur(function(){
 		if($("#nick").val()=="℄🌀Jimboy3100"){
 		$("#main-menu").hide();
