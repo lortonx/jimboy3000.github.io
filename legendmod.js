@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.091 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -397,7 +397,7 @@ setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeou
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
-var connectedbanner=0;
+//var connectedbanner=0;
 
 
 	if (timesopened!=null){
@@ -950,8 +950,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         }}
         if (xhr.status == 200 && settings.url == "http://m.agar.io/getToken") {
             //toastr["info"]("Connected :)").css("width","210px");
-            delay(200, spectate);
-			connectedbanner++;
+//           delay(200, spectate);
+//			connectedbanner++;
 			realmode=":party";
 //			if (connectedbanner==2){
 //			toastr["info"](Premadeletter12 + '</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
