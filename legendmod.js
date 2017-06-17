@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.091 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.092 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2537,6 +2537,7 @@ function clearTimer() {
 	T.timerDiv.innerHTML = "00:00";
 	T.difference = 0;
 }
+/*
 function ShowSIPurl(){
 	$(".form-group.clearfix").show();$(".form-group").show();
 	$("#create-party-btn-2").hide();
@@ -2546,7 +2547,7 @@ function ShowSIPurl(){
 			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
 			 
 }, 2500)}	
-
+*/
 
 function msgcommand1f(){commandMsg="Hello"; otherMsg="";dosendmsgcommand();}
 function msgcommand2f(){commandMsg="Team5"; otherMsg="";dosendmsgcommand();}
