@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -941,11 +941,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 					$("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ).attr("style", "opacity: 0;");
           //  }
 			}
-			}
-            if (xhr.responseJSON.token != null && xhr.responseJSON.hasOwnProperty('token')) {
+			
+            if (xhr.responseJSON.hasOwnProperty('token')) {
                 currentToken = xhr.responseJSON.token;           
                 //joinToken(currentToken.replace("http://agar.io/#", ""));        
-        }
+        }}
         if (xhr.status == 200 && settings.url == "http://m.agar.io/getToken") {
             //toastr["info"]("Connected :)").css("width","210px");
             delay(200, spectate);
