@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="06"; // the version 1.1-> 1.11
+var semimodVersion="07"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -942,7 +942,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
           //  }
 			}
 			
-            if (xhr.responseJSON.hasOwnProperty('token')) {
+            if (xhr.responseJSON.token != null && xhr.responseJSON.hasOwnProperty('token')) {
                 currentToken = xhr.responseJSON.token;           
                 //joinToken(currentToken.replace("http://agar.io/#", ""));        
         }}
@@ -950,11 +950,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
             //toastr["info"]("Connected :)").css("width","210px");
             delay(200, spectate);
 			connectedbanner++;
-			if (connectedbanner==2){
-			toastr["info"](Premadeletter12 + '</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
-			$("#hidendivtoken").css("display", "block");
-			}
-			return connectedbanner, modebetter;
+			realmode=":party";
+//			if (connectedbanner==2){
+//			toastr["info"](Premadeletter12 + '</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
+//			$("#hidendivtoken").css("display", "block");			}
+			return realmode, modebetter;
 		}
     });
 
