@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="07"; // the version 1.1-> 1.11
+var semimodVersion="08"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -730,10 +730,10 @@ setTimeout(function () {
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
-	$('#region').unbind('mouseenter');
-	$('#gamemode').unbind('mouseenter');
-	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
-	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
+//	$('#region').unbind('mouseenter');
+//	$('#gamemode').unbind('mouseenter');
+	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');}).mouseleave(function() {$('#region').css('background-color', '');}); 		
+	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
 		
 		//define if it is clicked
 	$("#create-party-btn-2").click(function () {
