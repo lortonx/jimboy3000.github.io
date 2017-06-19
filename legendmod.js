@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.092 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -730,6 +730,8 @@ setTimeout(function () {
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
+	$('#region').unbind('mouseenter');
+	$('#gamemode').unbind('mouseenter');
 	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
 	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
 		
