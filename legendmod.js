@@ -91,7 +91,7 @@ var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 var troll1Btn = localStorage.getItem("troll1Btn");
 var ComPosition = localStorage.getItem("ComPosition");
 var autoCoinBtn = localStorage.getItem("autoCoinBtn");
-var copyGameNames = localStorage.getItem("copyGameNames");
+//var copyGameNames = localStorage.getItem("copyGameNames");
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 var region = getParameterByName("r", url);
@@ -481,7 +481,7 @@ setTimeout(function () {
 //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
 											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
 											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
-											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
+											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: none;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
 											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
 //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
@@ -1001,14 +1001,14 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		
 	    $("#copyGameNames").click(function () {var checked = !($(this).attr('aria-pressed') == "true");		
         if (checked) {
-			localStorage.setItem("copyGameNames", true);
+//			localStorage.setItem("copyGameNames", true);
 			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a);StartEditGameNames();}
 			else{
 				localStorage.setItem("copyGameNames", true);
 				$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a); ContinueEditGameNames();			}
         } 
 		else{
-			localStorage.setItem("copyGameNames", false);
+//			localStorage.setItem("copyGameNames", false);
 			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>' + Premadeletter52);return checkedGameNames=1;}
 		});
 		
