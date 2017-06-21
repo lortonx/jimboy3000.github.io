@@ -1,4 +1,4 @@
-//v1.2
+//v1.3
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1383,7 +1383,7 @@ $("#menu-footer").after('<div id="administrationtools" style="display: none; bac
 											'<input id="AdminPassword" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
 											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
 											'</div></div>');
-$("#administrationtoolshud").after('<button id="AdminBacktomenu" align="left" onclick="administrationtools(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#administrationtoolshud").after('<button id="AdminBacktomenu" style="margin-left: 10px;" onclick="administrationtools(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
 	$("#AdminClanSymbol").val("℄");
 	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
 	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
