@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.091 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1204,18 +1204,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
         $("#bottomleft").click(function () {localStorage.setItem("ComPosition", 3);toastr.remove();toastr.options = {"positionClass": "toast-bottom-left"}}); 
 		$("#ChatBtn").click(function () {chatfunction();});
-		$("#Cutnames").click(function () {
-			var checked =!($("#copyGameNames").attr('aria-pressed') == "true");
-		if (checked) {
-			if (checkedGameNames==0){StartEditGameNames();}
-			else{
-				ContinueEditGameNames();			}
-			$("#copyGameNames").attr("aria-pressed", true );
-        } 
-		else{
-			StopEditGameNames();
-			$("#copyGameNames").attr("aria-pressed", false );
-			return checkedGameNames=1;}
+		$("#Cutnames").click(function () {		
+			if (checkedGameNames==0){StartEditGameNames(); return checkedGameNames=2;}
+			else if(checkedGameNames==1){ContinueEditGameNames(); return checkedGameNames=2;}       
+			else if(checkedGameNames==2){StopEditGameNames(); return checkedGameNames=1;}
 		});
 	
 
