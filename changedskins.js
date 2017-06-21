@@ -1,4 +1,4 @@
-//v1.2
+//v1.4
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1383,7 +1383,7 @@ $("#menu-footer").after('<div id="administrationtools" style="display: none; bac
 											'<input id="AdminPassword" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
 											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
 											'</div></div>');
-$("#administrationtoolshud").after('<button id="AdminBacktomenu" style="margin-left: 10px;" onclick="administrationtools(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="administrationtools(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
 	$("#AdminClanSymbol").val("℄");
 	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
 	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
@@ -1535,7 +1535,7 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url(http
 											'<p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES: <u>chrome://settings/clearBrowserData</u></p>'+											
 											'</div>'+
 											'</div>');
-$("#Userscriptshud").after('<button id="Backtomenu" style="margin-left: 10px;" onclick="closeuserscripts(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
 
 $('[data-toggle="tooltip"]').tooltip();
 $("#userscripts").hide();
