@@ -1,4 +1,4 @@
-//v1.4
+//v1.2
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1375,7 +1375,7 @@ $("#movingskins").css( { marginBottom : "-30px" } );
 //2. Administration Tools
 
 setTimeout(function () {
-$("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 165px; width: 500px; ";>'+
+$("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 165px; width: 500px; ";>'+
 	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
 	'<p style="color:white; font-size:12px";" align="middle">Enter your Clan symbol and ADMIN Password</p>'+
@@ -1492,7 +1492,7 @@ $("#exp-bar").hide();
 $("#userscripts").show();
 */
 
-$("#menu-footer").after('<div id="userscripts" style="background-image: url(https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg); border: 1px solid black; height: 600px; width: 600px; ";>'+
+$("#menu-footer").after('<div id="userscripts" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 600px; width: 600px; ";>'+
 	'<div id="Userscriptshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="Userscriptshud2" align="middle"><h5 class="main-color">USER SCRIPTS</h5>'+
 	
