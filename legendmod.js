@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1440,8 +1440,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 //	if (ComPosition  == 3) { $("#bottomleft").click(); }
 	if (autoCoinBtn == "true") {
 		setTimeout(function () {$("#autoCoinBtn").click();}, 5000); }
-	if (copyGameNames == "true") {
-		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
+//	if (copyGameNames == "true") {
+//		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
 	
 	document.getElementById("minimapPicture").value =localStorage.getItem("minimapbckimg");
 	if($('#minimapPicture').val()!=""){setminbgname();}
@@ -1515,7 +1515,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
-	}, 1500);		
+	}, 3500);		
 		if (searchSip!=null){	
 		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
 		
