@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2107,7 +2107,7 @@ function setleadbgname(){ leadbimg=$("#leadbPicture").val();
 localStorage.setItem("leadbimg", leadbimg);
 $("#leaderboard-hud").css('background-image', 'url("' + leadbimg + '")').css({ opacity: 0.8 });
 }
-function setteambgname(){ teambimg=$("#minimapPicture").val();
+function setteambgname(){ teambimg=$("#teambPicture").val();
 localStorage.setItem("teambimg", teambimg);
 $("#top5-hud").css('background-image', 'url("' + teambimg + '")').css({ opacity: 0.8 });
 }
