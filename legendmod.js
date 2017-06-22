@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -132,6 +132,9 @@ var AdminRights=0;
 var LegendClanSymbol="0";
 var legbgcolor=$("#menuPanelColor").val();
 var legbgpic=$("#menuBg").val();
+var dyinglight1load = localStorage.getItem("dyinglight1load");
+
+
 
 var Premadeletter0= "Communication Activated";
 var Premadeletter1="Cannot open this youtube URL";
@@ -581,7 +584,7 @@ setTimeout(function () {
 											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
 											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
 											'</div>' +
-											
+											<div id="LEGENDAds2"></div>
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
 											'</div></div>');
@@ -1406,6 +1409,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 //		$("#MANUIBtn").click();
 //		$("#RotationBtn").click();
 		}, 1500);
+	if(dyinglight1load==null){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
+	else if(dyinglight1load=="yes"){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
+		
 	}
 	
 	
@@ -2723,3 +2729,5 @@ function changeModLanguage() {
 		},800);		
 	}	
 }
+
+function opendyinglight(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/dyinglight.js";$("body").append(s);}
