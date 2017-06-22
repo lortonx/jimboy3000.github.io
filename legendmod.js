@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.091 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1521,8 +1521,9 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
 	
-	if(dyinglight1load==null){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
-	else if(dyinglight1load=="yes"){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
+	if(dyinglight1load==null||dyinglight1load=="null"){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight"); }
+	else if(dyinglight1load=="yes"){ opendyinglight();
+	$("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerStopDyingLight"); }
 	
 	}, 2000);		
 		if (searchSip!=null){	
