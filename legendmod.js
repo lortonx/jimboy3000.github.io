@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.094 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -470,7 +470,7 @@ setTimeout(function () {
                            '</div>');
 
     $(".menu-tabs").children().attr("style", "width: 14.27%;");
-    $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');MC.setQuality($(\'#quality\').val();" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
+    $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 //  $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 150px;\')" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 	//	$(".menu-tabs").children().last().before('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
     $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
@@ -593,7 +593,8 @@ setTimeout(function () {
 
 											
 	$("#HideAllBthn").tooltip({title: "Temporarily Hide/Show Everything. Function for Youtubers", placement: "bottom"});
-	
+	//Fix Class Legend Tab
+	$(".legend-tab").click(function () {MC.setQuality($('#quality').val())});
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
 //	var savemusic=$(".agario-panel.sounds-panel").html();
