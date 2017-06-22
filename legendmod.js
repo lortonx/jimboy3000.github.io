@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.090 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1409,8 +1409,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 //		$("#MANUIBtn").click();
 //		$("#RotationBtn").click();
 		}, 1500);
-	if(dyinglight1load==null){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
-	else if(dyinglight1load=="yes"){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
+
 		
 	}
 	
@@ -1521,6 +1520,10 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
+	
+	if(dyinglight1load==null){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
+	else if(dyinglight1load=="yes"){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight "); }
+	
 	}, 2000);		
 		if (searchSip!=null){	
 		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
