@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -583,8 +583,8 @@ setTimeout(function () {
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>'+
 											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
 											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
-											'</div>' +
-											<div id="LEGENDAds2"></div>
+											'</div><div id="LEGENDAds2"></div>' +
+											
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
 											'</div></div>');
