@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.088 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.089 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1515,7 +1515,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
-	}, 3500);		
+	}, 2000);		
 		if (searchSip!=null){	
 		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
 		
