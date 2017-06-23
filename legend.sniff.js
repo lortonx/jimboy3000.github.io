@@ -110,8 +110,8 @@ localStorage.setItem("url", url);
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-92655864-2', 'auto');
-  ga('send', 'pageview');
+  window.ga('create', 'UA-92655864-2', 'auto');
+  window.ga('send', 'pageview');
 
 //document.title = "Legend mod v" + modVersion;
 //$("#leaderboard-hud > h4").text("LEGENDMOD.ML");
