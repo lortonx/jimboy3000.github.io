@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.096 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1303,6 +1303,8 @@ $('#server-join').click(function(){
 //	$(".input-group.skin.colorpicker-element").hide();
 	$("#timertools-hud").hide();
 
+//fix youtube volume to 50%	
+musicPlayer.setVolume("50");
 	
 //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
 //Legend.Mod&?player=a&?com=Team5&?do=donothing
