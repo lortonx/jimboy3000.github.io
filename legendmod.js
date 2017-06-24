@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.096 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="10"; // the version 1.1-> 1.11
+var semimodVersion="11"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -628,7 +628,7 @@ setTimeout(function () {
                     }
                 }
             }
-        });
+        });		
     }
 	//roller and other icons
 	$('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
@@ -1418,7 +1418,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	
 	
 	setTimeout(function () {
-	
+
 		PanelImageSrc=$("#menuBg").val();
 		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc!="https://jimboy3100.github.io/pattern.png"){
 		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
