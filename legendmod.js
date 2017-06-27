@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=lMzF3xAAzGE";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=IufW-nEU2JM";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
