@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.096 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=IufW-nEU2JM";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=5JVEP21DmZg";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -554,7 +554,7 @@ setTimeout(function () {
 											'<input id="yt6url" class="form-control" placeholder="Youtube Message Url 6" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
 											'</div></div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 6px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
 											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
 											'<option value="1" data-itr="">English</option>' +											
 											'<option value="4" data-itr="">Bulgarian</option>' +
@@ -1229,7 +1229,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     //50 maxlength
     $("#nick").attr('maxlength', 50).attr('placeholder','Name').tooltip({title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users", placement: "bottom"});
 	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
-	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
+	$("#skin").attr('maxlength', 150).attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
 	$("#gamemode").tooltip({title: "The mode to play", placement: "top"}); 
 		
