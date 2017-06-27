@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.087 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.095 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=lMzF3xAAzGE";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=IufW-nEU2JM";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -81,7 +81,7 @@ var showPlayer = localStorage.getItem("showPlayer");
 //var IPBtn = localStorage.getItem("IPBtn");
 var SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
 var XPBtn = localStorage.getItem("XPBtn");
-var TIMEBtn = localStorage.getItem("TIMEBtn");
+//var TIMEBtn = localStorage.getItem("TIMEBtn");
 //var MAINBBtn = localStorage.getItem("MAINBBtn");
 //var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 //var MANUIBtn = localStorage.getItem("MANUIBtn");
@@ -91,7 +91,7 @@ var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 var troll1Btn = localStorage.getItem("troll1Btn");
 var ComPosition = localStorage.getItem("ComPosition");
 var autoCoinBtn = localStorage.getItem("autoCoinBtn");
-var copyGameNames = localStorage.getItem("copyGameNames");
+//var copyGameNames = localStorage.getItem("copyGameNames");
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 var region = getParameterByName("r", url);
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="07"; // the version 1.1-> 1.11
+var semimodVersion="11"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -130,6 +130,10 @@ var AdminClanSymbol;
 var AdminPassword;
 var AdminRights=0;
 var LegendClanSymbol="0";
+var legbgcolor=$("#menuPanelColor").val();
+var legbgpic=$("#menuBg").val();
+var dyinglight1load = localStorage.getItem("dyinglight1load");
+
 
 
 var Premadeletter0= "Communication Activated";
@@ -178,14 +182,14 @@ var Premadeletter42="Show Shortcuts";
 var Premadeletter43="Hide Shortcuts";
 var Premadeletter44="Show XP BAR";
 var Premadeletter45="Hide XP BAR";
-var Premadeletter46="Show TIME";
-var Premadeletter47="Hide TIME";
+//var Premadeletter46="Show TIME";
+//var Premadeletter47="Hide TIME";
 var Premadeletter48="Show Everything";
 var Premadeletter49="Hide Everything";
 var Premadeletter50="Show Timer Calc.";
 var Premadeletter51="Hide Timer Calc."
-var Premadeletter52="Edit Names";
-var Premadeletter52a="Close Names";
+//var Premadeletter52="Edit Names";
+//var Premadeletter52a="Close Names";
 var Premadeletter53="Auto free coins";
 var Premadeletter54="Stop free coins";
 var Premadeletter55="Troll on Death";
@@ -473,14 +477,14 @@ setTimeout(function () {
 //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
                                             '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
 											'<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
-                                            '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
+//                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
 //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
 //                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
 //											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
 //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
-											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
-											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
-											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
+											'<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
+											'<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
+//											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: none;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
 											'<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
 //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
 											'<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
@@ -550,7 +554,7 @@ setTimeout(function () {
 											'<input id="yt6url" class="form-control" placeholder="Youtube Message Url 6" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
 											'</div></div>' +
 											
-											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 6px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 6px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
 											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
 											'<option value="1" data-itr="">English</option>' +											
 											'<option value="4" data-itr="">Bulgarian</option>' +
@@ -579,7 +583,8 @@ setTimeout(function () {
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>'+
 											'<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
 											'<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
-											'</div>' +
+											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Legend Mod Extension </span>'+
+											'</div><div id="LEGENDAds2"></div>' +
 											
 
                                             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
@@ -588,12 +593,13 @@ setTimeout(function () {
 
 											
 	$("#HideAllBthn").tooltip({title: "Temporarily Hide/Show Everything. Function for Youtubers", placement: "bottom"});
-	
+	//Fix Class Legend Tab
+	$(".legend-tab").click(function () {MC.setQuality($('#quality').val())});
 	
     var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
 //	var savemusic=$(".agario-panel.sounds-panel").html();
-	$('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 15px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
-										'<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
+	$('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
+										'<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
 										'<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
 										'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>');
 		$('.agario-panel.radio-panel').hide();
@@ -622,7 +628,7 @@ setTimeout(function () {
                     }
                 }
             }
-        });
+        });		
     }
 	//roller and other icons
 	$('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
@@ -666,7 +672,7 @@ setTimeout(function () {
                                  '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
                                  '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
                                  '<a id="reconnectBtn" class="btn btn-info btn-sm icon-loop2" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
-                                 'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; margin-top: 0px; border: none;"></a>' +
+                                 'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"></a>' +
 
 								 '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30x; left: 0px; padding: 0px; border-radius: 0px;">' +
                                  '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
@@ -730,8 +736,10 @@ setTimeout(function () {
 		else if ($("#nick").val()=="EasterEgg3"){toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>' );$("#nick").val("Video");openvidmod();} 
 	});
 	$('#clantag').mouseenter(function() {$('#clantag').css('background-color', '#000066');}).mouseleave(function() {$('#clantag').css('background-color', '');}); 		
-	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#region').css('background-color', '');}); 		
-	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');MC.setQuality($('#quality').val());}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
+//	$('#region').unbind('mouseenter');
+//	$('#gamemode').unbind('mouseenter');
+	$('#region').mouseenter(function() {$('#region').css('background-color', '#003300');}).mouseleave(function() {$('#region').css('background-color', '');}); 		
+	$('#gamemode').mouseenter(function() {$('#gamemode').css('background-color', '#003300');}).mouseleave(function() {$('#gamemode').css('background-color', '');}); 
 		
 		//define if it is clicked
 	$("#create-party-btn-2").click(function () {
@@ -996,7 +1004,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	});
 	
 		
-	    $("#copyGameNames").click(function () {var checked = !($(this).attr('aria-pressed') == "true");		
+/*	    $("#copyGameNames").click(function () {var checked = !($(this).attr('aria-pressed') == "true");		
         if (checked) {
 			localStorage.setItem("copyGameNames", true);
 			if (checkedGameNames==0){$(this).html('<i class="fa fa-user-o"></i>'+Premadeletter52a);StartEditGameNames();}
@@ -1009,7 +1017,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 			StopEditGameNames();$(this).html('<i class="fa fa-user-o"></i>' + Premadeletter52);return checkedGameNames=1;}
 		});
 		
- /*   $("#autoRespawnBtn").click(function () {
+        $("#autoRespawnBtn").click(function () {
         var checked = !($(this).attr('aria-pressed') == "true");
         if (checked) {
             localStorage.setItem("autoRespawn", true);
@@ -1044,9 +1052,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
      $("#XPBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("XPBtn", true);$("#exp-bar").show();$(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter45);}
 		else {localStorage.setItem("XPBtn", false);$("#exp-bar").hide();$(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);}} );  
-     $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
-		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
+//     $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+//		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
+//		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
 /*     $("#MAINBBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {localStorage.setItem("MAINBBtn", true);$("#LEGENDAds").show();$(this).html('<i class="fa fa-bars"></i>Hide Main Banner');}
 		else {localStorage.setItem("MAINBBtn", false);$("#LEGENDAds").hide();$(this).html('<i class="fa fa-bars"></i>Show Main Banner');}} );
@@ -1201,18 +1209,10 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
         $("#bottomleft").click(function () {localStorage.setItem("ComPosition", 3);toastr.remove();toastr.options = {"positionClass": "toast-bottom-left"}}); 
 		$("#ChatBtn").click(function () {chatfunction();});
-		$("#Cutnames").click(function () {
-			var checked =!($("#copyGameNames").attr('aria-pressed') == "true");
-		if (checked) {
-			if (checkedGameNames==0){StartEditGameNames();}
-			else{
-				ContinueEditGameNames();			}
-			$("#copyGameNames").attr("aria-pressed", true );
-        } 
-		else{
-			StopEditGameNames();
-			$("#copyGameNames").attr("aria-pressed", false );
-			return checkedGameNames=1;}
+		$("#Cutnames").click(function () {		
+			if (checkedGameNames==0){StartEditGameNames(); return checkedGameNames=2;}
+			else if(checkedGameNames==1){ContinueEditGameNames(); return checkedGameNames=2;}       
+			else if(checkedGameNames==2){StopEditGameNames(); return checkedGameNames=1;}
 		});
 	
 
@@ -1229,7 +1229,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
     //50 maxlength
     $("#nick").attr('maxlength', 50).attr('placeholder','Name').tooltip({title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users", placement: "bottom"});
 	$("#clantag").attr('placeholder','Password/Tag').tooltip({title: "Leave it empty for Public, or insert password of Clan, or use it as Tag", placement: "left"}); 
-	$("#skin").attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
+	$("#skin").attr('maxlength', 150).attr('placeholder','Manual direct skin URL').tooltip({title: "Insert your manual skin weblink", placement: "left"}); 
 	$("#region").tooltip({title: "The region to play", placement: "left"}); 
 	$("#gamemode").tooltip({title: "The mode to play", placement: "top"}); 
 		
@@ -1302,7 +1302,6 @@ $('#server-join').click(function(){
 //	$("#legendbanners").hide();
 //	$(".input-group.skin.colorpicker-element").hide();
 	$("#timertools-hud").hide();
-
 	
 //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
 //Legend.Mod&?player=a&?com=Team5&?do=donothing
@@ -1404,19 +1403,21 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		setTimeout(function () {
 		$("#IPBtn").click();
 		$("#SHOSHOBtn").click(); 
-		$("#TIMEBtn").click();
+//		$("#TIMEBtn").click();
 //		$("#MAINBBtn").click();
 //		$("#MAINBTBtn").click();
 		$("#XPBtn").click();
 //		$("#MANUIBtn").click();
 //		$("#RotationBtn").click();
 		}, 1500);
+
+		
 	}
 	
 	
 	
 	setTimeout(function () {
-	
+
 		PanelImageSrc=$("#menuBg").val();
 		if (PanelImageSrc!="" || PanelImageSrc!="http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc!="https://jimboy3100.github.io/pattern.png"){
 		$('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
@@ -1430,7 +1431,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 //	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
 //	if (IPBtn  == "true") { $("#IPBtn").click(); }
 	if (SHOSHOBtn == "true") { $("#SHOSHOBtn").click(); }
-	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
+//	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
 //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
 //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
 //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
@@ -1445,8 +1446,8 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 //	if (ComPosition  == 3) { $("#bottomleft").click(); }
 	if (autoCoinBtn == "true") {
 		setTimeout(function () {$("#autoCoinBtn").click();}, 5000); }
-	if (copyGameNames == "true") {
-		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
+//	if (copyGameNames == "true") {
+//		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
 	
 	document.getElementById("minimapPicture").value =localStorage.getItem("minimapbckimg");
 	if($('#minimapPicture').val()!=""){setminbgname();}
@@ -1520,7 +1521,12 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if($('#discwebhook1').val()!=""&&$('#discwebhook1').val()!=null){setdiscwebhook1();}
 	document.getElementById("discwebhook2").value =localStorage.getItem("discwebhook2");
 	if($('#discwebhook2').val()!=""&&$('#discwebhook2').val()!=null){setdiscwebhook2();}
-	}, 1500);		
+	
+	if(dyinglight1load==null||dyinglight1load=="null"){ $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight"); }
+	else if(dyinglight1load=="yes"){ opendyinglight();
+	$("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerStopDyingLight"); }
+	
+	}, 2000);		
 		if (searchSip!=null){	
 		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
 		
@@ -2112,7 +2118,7 @@ function setleadbgname(){ leadbimg=$("#leadbPicture").val();
 localStorage.setItem("leadbimg", leadbimg);
 $("#leaderboard-hud").css('background-image', 'url("' + leadbimg + '")').css({ opacity: 0.8 });
 }
-function setteambgname(){ teambimg=$("#minimapPicture").val();
+function setteambgname(){ teambimg=$("#teambPicture").val();
 localStorage.setItem("teambimg", teambimg);
 $("#top5-hud").css('background-image', 'url("' + teambimg + '")').css({ opacity: 0.8 });
 }
@@ -2644,8 +2650,8 @@ function enableshortcuts(){
 	$("#IPBtn").click(); }
 	if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 	$("#SHOSHOBtn").click(); }
-	if($("#TIMEBtn").attr('aria-pressed') == "false"){
-	$("#TIMEBtn").click(); }
+//	if($("#TIMEBtn").attr('aria-pressed') == "false"){
+//	$("#TIMEBtn").click(); }
 //	if($("#MAINBBtn").attr('aria-pressed') == "false"){
 //	$("#MAINBBtn").click(); }
 //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
@@ -2728,3 +2734,5 @@ function changeModLanguage() {
 		},800);		
 	}	
 }
+
+function opendyinglight(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/dyinglight.js";$("body").append(s);}
