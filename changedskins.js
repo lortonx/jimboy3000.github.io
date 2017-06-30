@@ -482,26 +482,6 @@
                      {id: 'aE1etcH', delay: '0.1'}
                   ]
                },
-               '℄🌀jimboy3100': {
-                  cached:    false,
-                  ready:     false,
-                  current:   0,
-                  timestamp: 0,
-                  id:        'birthday_troll',
-                  color:     '7a0c0f',
-                  frames:    [
-                     {id: 'KxcI3j7', delay: '4'},
-                     {id: 'aE1etcH', delay: '0.1'},
-                     {id: 'ZA1rlQ0', delay: '0.1'},
-                     {id: '8NUCHKe', delay: '0.1'},
-                     {id: 'ZbeXIpc', delay: '0.1'},
-                     {id: 'iQWIiAu', delay: '0.1'},
-                     {id: 'ZbeXIpc', delay: '0.1'},
-                     {id: '8NUCHKe', delay: '0.1'},
-                     {id: 'ZA1rlQ0', delay: '0.1'},
-                     {id: 'aE1etcH', delay: '0.1'}
-                  ]
-               },
                'starfish': {
                   cached:    false,
                   ready:     false,
@@ -1290,7 +1270,27 @@
                      {id: 'FwiDalL', delay: '0.05'},
                      {id: 'j6Z5YfK', delay: '0.05'}
                   ]
-               }
+               },
+               '℄🌀jimboy3100': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_troll',
+                  color:     '7a0c0f',
+                  frames:    [
+                     {id: 'KxcI3j7', delay: '4'},
+                     {id: 'aE1etcH', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: 'iQWIiAu', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: 'aE1etcH', delay: '0.1'}
+                  ]
+               }			   
             },
             cache:      {},
             prototypes: {
