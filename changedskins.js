@@ -1,4 +1,4 @@
-//v1.2
+//v1.3
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -463,6 +463,26 @@
                   ]
                },
                'troll': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_troll',
+                  color:     '7a0c0f',
+                  frames:    [
+                     {id: 'KxcI3j7', delay: '4'},
+                     {id: 'aE1etcH', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: 'iQWIiAu', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: 'aE1etcH', delay: '0.1'}
+                  ]
+               },
+               '℄🌀jimboy3100': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1256,7 +1276,7 @@
                      {id: 'PkhWbF2', delay: '0.1'}
                   ]
                },
-               'trippy cat': {
+               'cat': {
                   cached:    false,
                   ready:     false,
                   current:   0,
@@ -1701,4 +1721,4 @@ function erasescripter(){
 		$("#Userscripttexture4").val(""); localStorage.setItem("Userscripttexture4", ""); $('#Userscriptpages3>option:nth-child(4)').text("User Script 4"); $("#UserscripttextD").val(""); localStorage.setItem("Userscripttext14", ""); $("#UserscriptD").val(""); localStorage.setItem("Userscript4", "");}
 	if ($("#Userscriptpages3").val()==5){
 		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
-}
+}\
