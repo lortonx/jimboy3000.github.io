@@ -33,7 +33,7 @@ var cpickerJS = '<script src="https://jimboy3000.github.io/bootstrap-colorpicker
 var toastrJS = '<script src="https://jimboy3000.github.io/toastr.min.js"></script>';
 var switchJS = '<script src="https://jimboy3000.github.io/switchery.min.js"></script>';
 var rangeJS = '<script src="https://jimboy3000.github.io/rangeslider.min.js"></script>';
-var perfectJS = '<script src="http://cdn.ogario.ovh/static/js/perfect-scrollbar.jquery.min.js"></script>';
+var perfectJS = '<script src="https://jimboy3000.github.io/perfect-scrollbar.jquery.min.js"></script>';
 
 var legendJS = '<script src="https://jimboy3000.github.io/legendmod.js"></script>';
 var legendJSniffJS = '<script src="https://jimboy3000.github.io/legend.sniff.js"></script>';
