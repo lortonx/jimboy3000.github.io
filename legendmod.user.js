@@ -29,7 +29,7 @@ var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=320" ch
 
 var keyJS = '<script src="https://jimboy3100.github.io/key-event.js"></script>';
 
-var cpickerJS = '<script src="ttps://jimboy3000.github.io/bootstrap-colorpicker.min.js"></script>';
+var cpickerJS = '<script src="https://jimboy3000.github.io/bootstrap-colorpicker.min.js"></script>';
 var toastrJS = '<script src="http://cdn.ogario.ovh/static/js/toastr.min.js"></script>';
 var switchJS = '<script src="http://cdn.ogario.ovh/static/js/switchery.min.js"></script>';
 var rangeJS = '<script src="http://cdn.ogario.ovh/static/js/rangeslider.min.js"></script>';
