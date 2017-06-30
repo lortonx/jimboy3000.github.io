@@ -41,10 +41,10 @@ var legendJSniff2JS = '<script src="https://jimboy3000.github.io/legend.sniff2.j
 var legendJSniff3JS = '<script src="https://jimboy3000.github.io/changedskins.js"></script>';
 
 //var CodepenCSS = '<link href="http://jimboy3000.github.io/Codepen.css" rel="stylesheet"></link>';
-var cpickerCSS = '<link href="http://cdn.ogario.ovh/static/css/bootstrap-colorpicker.min.css" rel="stylesheet"></link>';
-var toastrCSS = '<link href="http://cdn.ogario.ovh/static/css/toastr.min.css" rel="stylesheet"></link>';
-var switchCSS = '<link href="http://cdn.ogario.ovh/static/css/switchery.min.css" rel="stylesheet"></link>';
-var rangeCSS = '<link href="http://cdn.ogario.ovh/static/css/rangeslider.css" rel="stylesheet"></link>';
+var cpickerCSS = '<link href="https://jimboy3000.github.io/bootstrap-colorpicker.min.css" rel="stylesheet"></link>';
+var toastrCSS = '<link href="https://jimboy3000.github.io/toastr.min.css" rel="stylesheet"></link>';
+var switchCSS = '<link href="https://jimboy3000.github.io/switchery.min.css" rel="stylesheet"></link>';
+var rangeCSS = '<link href="https://jimboy3000.github.io/rangeslider.css" rel="stylesheet"></link>';
 var perfectCSS = '<link href="https://jimboy3000.github.io/perfect-scrollbar.min.css" rel="stylesheet"></link>';
 
 var ytJS = '<script src="https://www.youtube.com/iframe_api"></script>';
