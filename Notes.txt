@@ -1,6 +1,6 @@
 https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
 
-$("#quick-menu").append('<a href="https://www.youtube.com/watch?v=CnIfNSpCf70" class="fa fa-info" target="_blank" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend Promo Video" id="legendid"></a>');
+$("#quick-menu").append('<a class="fa fa-info" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
