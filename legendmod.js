@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.102 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.103 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="16"; // the version 1.1-> 1.11
+var semimodVersion="17"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -1587,7 +1587,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
-	}, 4500);
+	}, 2500);
 	}
 
 function delay(time, func) {setTimeout(function () { func(); }, time);}
