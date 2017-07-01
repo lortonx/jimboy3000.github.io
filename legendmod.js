@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.107 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.108 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="18"; // the version 1.1-> 1.11
+var semimodVersion="19"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
