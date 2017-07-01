@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.105 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.106 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -2623,10 +2623,12 @@ function msgcommand5f(){commandMsg="Youtube"; otherMsg="";dosendmsgcommand();}
 function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
 function dosendmsgcommand(){
-	if (MC.isInGame()&&$("#clantag").val()!=""){
+	
+	if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){
 if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
 setTimeout(function (){$("#message").val("Legend.Mod&?player="+$("#nick").val()+"&?com="+commandMsg+"&?do="+otherMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);
 }else { toastr["info"](Premadeletter39);}
+	
 }
 
 
@@ -2678,12 +2680,12 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
 	
 
-function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt1(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt2(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt3(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt4(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt5(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt6(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
 	
 function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
 	$("#sendyt1").attr("data-original-title", $("#yt1data").val());}
