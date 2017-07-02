@@ -1604,7 +1604,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
-	}, 4500);
+	}, 5500);
 	}
 
 function delay(time, func) {setTimeout(function () { func(); }, time);}
