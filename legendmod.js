@@ -2348,7 +2348,7 @@ function legenddefaultsettings(){
 		$('#import-settings-btn').click();
 	}
 	else if(dyinglight1load=="yes"){
-		localStorage.setItem("musicUrl", "https://www.youtube.com/watch?v=lMzF3xAAzGE");	
+		localStorage.setItem("musicUrl", defaultMusicUrl);	
 		$("#minimapPicture").val("").blur();
 		$("#minbtext").val("").blur();
 		$("#leadbtext").val("").blur();
@@ -2385,7 +2385,7 @@ function vanillasettings(){
 		$('#import-settings-btn').click();
 	}
 	else if(dyinglight1load=="yes"){
-		localStorage.setItem("musicUrl", "https://www.youtube.com/watch?v=lMzF3xAAzGE");	
+		localStorage.setItem("musicUrl", defaultMusicUrl);	
 		$("#minimapPicture").val("").blur();
 		$("#minbtext").val("").blur();
 		$("#leadbtext").val("").blur();
