@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.110 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.111 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=Na7VqJEMWmc";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=pBYieHHnqCI";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
