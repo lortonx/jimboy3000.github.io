@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.109 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.110 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -881,12 +881,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		//load messages for Google Plus
 	$("#gplusLogin").click(
 	function() {
-		setTimeout(function () {MC.setQuality($('#quality').val();},1000);
-		setTimeout(function () {MC.setQuality($('#quality').val();},2000);
-		setTimeout(function () {MC.setQuality($('#quality').val();},3000);
-		setTimeout(function () {MC.setQuality($('#quality').val();},4000);
-		setTimeout(function () {MC.setQuality($('#quality').val();},5000);
-		setTimeout(function () {MC.setQuality($('#quality').val();},6000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},1000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},2000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},3000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},4000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},5000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},6000);
 		if (messageone==1){
 		if (timesopened==null||timesopened==""||timesopened<=5){
 		toastr["error"](Premadeletter7, "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
