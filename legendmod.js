@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.112 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.113 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -368,7 +368,7 @@ setTimeout(function () {
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
 	}, 5000);});},
-	7000);      
+	12000);      //9000
 		// fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
@@ -396,9 +396,11 @@ setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeou
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
 ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 22000);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val());if(dyinglight1load!="yes"){whenplayerdies();} }, 22000);
 
-setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 24000);setTimeout(function () { MC.setQuality($('#quality').val());
+if(dyinglight1load!="yes"){whenplayerdies();}
+ }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
