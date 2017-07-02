@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.113 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.115 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="20"; // the version 1.1-> 1.11
+var semimodVersion="21"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -367,8 +367,8 @@ setTimeout(function () {
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
-	}, 5000);});},
-	12000);      //9000
+	}, 10000);});}, //5000
+	9000);      //9000
 		// fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
