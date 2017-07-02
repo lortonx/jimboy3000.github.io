@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.111 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.112 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="19"; // the version 1.1-> 1.11
+var semimodVersion="20"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -2349,18 +2349,24 @@ function legenddefaultsettings(){
 	}
 	else if(dyinglight1load=="yes"){
 		localStorage.setItem("musicUrl", "https://www.youtube.com/watch?v=lMzF3xAAzGE");	
-		$("#minimapPicture").val("");
-		$("#minimapPicture").blur();
-		$("#minbtext").val("");
-		$("#minbtext").blur();
-		$("#leadbtext").val("");
-		$("#leadbtext").blur();
-		$("#teambtext").val("");
-		$("#teambtext").blur();
-		$("#imgUrl").val("");
-		$("#imgUrl").blur();
-		$("#imgHref").val("");
-		$("#imgHref").blur();	
+		$("#minimapPicture").val("").blur();
+		$("#minbtext").val("").blur();
+		$("#leadbtext").val("").blur();
+		$("#teambtext").val("").blur();
+		$("#imgUrl").val("").blur();
+		$("#imgHref").val("").blur();	
+		//unload dying light icons
+		$("#pic1url").val("").blur();$("#pic1data").val("").blur();
+		$("#pic2url").val("").blur();$("#pic2data").val("").blur();
+		$("#pic3url").val("").blur();$("#pic3data").val("").blur();
+		$("#pic4url").val("").blur();$("#pic4data").val("").blur();
+		$("#pic5url").val("").blur();$("#pic5data").val("").blur();
+		//unload dying light youtube
+		$("#yt1url").val("").blur();$("#yt1data").val("").blur();
+		$("#yt2url").val("").blur();$("#yt2data").val("").blur();
+		$("#yt3url").val("").blur();$("#yt3data").val("").blur();
+		$("#yt4url").val("").blur();$("#yt4data").val("").blur();
+		$("#yt5url").val("").blur();$("#yt5data").val("").blur();	
 		dyinglight1load=null;
 		localStorage.setItem("dyinglight1load", dyinglight1load);
 		setTimeout(function () {
@@ -2380,18 +2386,24 @@ function vanillasettings(){
 	}
 	else if(dyinglight1load=="yes"){
 		localStorage.setItem("musicUrl", "https://www.youtube.com/watch?v=lMzF3xAAzGE");	
-		$("#minimapPicture").val("");
-		$("#minimapPicture").blur();
-		$("#minbtext").val("");
-		$("#minbtext").blur();
-		$("#leadbtext").val("");
-		$("#leadbtext").blur();
-		$("#teambtext").val("");
-		$("#teambtext").blur();
-		$("#imgUrl").val("");
-		$("#imgUrl").blur();
-		$("#imgHref").val("");
-		$("#imgHref").blur();	
+		$("#minimapPicture").val("").blur();
+		$("#minbtext").val("").blur();
+		$("#leadbtext").val("").blur();
+		$("#teambtext").val("").blur();
+		$("#imgUrl").val("").blur();
+		$("#imgHref").val("").blur();	
+		//unload dying light icons
+		$("#pic1url").val("").blur();$("#pic1data").val("").blur();
+		$("#pic2url").val("").blur();$("#pic2data").val("").blur();
+		$("#pic3url").val("").blur();$("#pic3data").val("").blur();
+		$("#pic4url").val("").blur();$("#pic4data").val("").blur();
+		$("#pic5url").val("").blur();$("#pic5data").val("").blur();
+		//unload dying light youtube
+		$("#yt1url").val("").blur();$("#yt1data").val("").blur();
+		$("#yt2url").val("").blur();$("#yt2data").val("").blur();
+		$("#yt3url").val("").blur();$("#yt3data").val("").blur();
+		$("#yt4url").val("").blur();$("#yt4data").val("").blur();
+		$("#yt5url").val("").blur();$("#yt5data").val("").blur();	
 		dyinglight1load=null;
 		localStorage.setItem("dyinglight1load", dyinglight1load);
 			setTimeout(function () {
