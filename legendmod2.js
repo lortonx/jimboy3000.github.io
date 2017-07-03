@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.101 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.117 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=Na7VqJEMWmc";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=pBYieHHnqCI";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="15"; // the version 1.1-> 1.11
+var semimodVersion="22"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -299,13 +299,13 @@ if (searchSip==null){
 			
             });
         })
-		setTimeout(function () {adres();},4000);
-		setTimeout(function () {adres();},6000);
+		setTimeout(function () {adres();},5000);
+		setTimeout(function () {adres();},7000);
 adres();
 
 })(window, window.jQuery);
 }
-}, 4000);
+}, 2500);
 /*
 setTimeout(function () {
 $("#connect2").click(function() {
@@ -367,8 +367,8 @@ setTimeout(function () {
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
-	}, 5000);});},
-	7000);      
+	}, 10000);});}, //5000
+	9000);      //9000
 		// fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
@@ -380,7 +380,14 @@ if(minbtext==null||minbtext==""){
 	minbtext = "Legend Mod/Locked";
 	minbtext2 = "Legend Mod";
 	}
-	
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 6000);
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 6500);		
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 7000);
+setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 7500);		
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
 ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 8000);	
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
@@ -396,9 +403,13 @@ setTimeout(function () { MC.setQuality($('#quality').val()); }, 13000);setTimeou
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
 ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 18000);
 setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
-ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 22000);
+ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val());
+//if(dyinglight1load!="yes"){whenplayerdies();}
+ }, 22000);
 
-setTimeout(function () { MC.setQuality($('#quality').val()); }, 22000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 25000);
+setTimeout(function () { MC.setQuality($('#quality').val()); }, 24000);setTimeout(function () { MC.setQuality($('#quality').val());
+//if(dyinglight1load!="yes"){whenplayerdies();}
+ }, 25000);
 setTimeout(function () { MC.setQuality($('#quality').val()); }, 30000);setTimeout(function () { MC.setQuality($('#quality').val()); }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
@@ -640,6 +651,10 @@ setTimeout(function () {
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
 	$('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
+	$("#more-skins").attr('href', 'https://cdn.rawgit.com/jimboy3100/jimboy3100.github.io/master/skins/skins3.html');
+	$(".quick-more-skins.icon-grin").attr('href', 'https://cdn.rawgit.com/jimboy3100/jimboy3100.github.io/master/skins/skins3.html');
+	$("#quick-menu").append('<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
+	
 
     // prevent edit
     $("#musicUrl").on("input", function () { $(this).attr("maxlength", "0"); });
@@ -776,6 +791,11 @@ setTimeout(function () {
 	$('#themePreset>option:nth-child(5)').text("Crazy Style 2");
 	$('#menuPreset>option:nth-child(1)').text("Legend v2");
 	$('#menuPreset>option:nth-child(2)').text("Legend v1");
+	
+	//Legend Mod Cursors
+	if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")}else if($("#customCursor").val()=="http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur"){$("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")}
+	$(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");$(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");$(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");$(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");$(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");$(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");$(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");$(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");$(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");$(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");$(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");$(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");$(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");$(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");$(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");$(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");$(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");$(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");$(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");$(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");$(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");$(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");$(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");$(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");$(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");$(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");$(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");$(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");$(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");$(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");$(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");$(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");$(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");$(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");$(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
+
    	$('#themePreset').on('change', function () {
 	setTimeout(function () { var c = document.getElementById("minimap-sectors");var ctx = c.getContext("2d");ctx.clearRect(0, 0, c.width, c.height/9);
 	ctx.font="16px Georgia";if (searchSip!=null){ctx.fillText(minbtext,c.width/2,22)}else ctx.fillText(minbtext2,c.width/2,22);MC.setQuality($('#quality').val()); }, 200)	;})
@@ -872,6 +892,12 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		//load messages for Google Plus
 	$("#gplusLogin").click(
 	function() {
+		setTimeout(function () {MC.setQuality($('#quality').val());},1000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},2000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},3000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},4000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},5000);
+		setTimeout(function () {MC.setQuality($('#quality').val());},6000);
 		if (messageone==1){
 		if (timesopened==null||timesopened==""||timesopened<=5){
 		toastr["error"](Premadeletter7, "", { timeOut: 15000, extendedTimeOut: 15000 }).css("width", "350px");}
@@ -1282,7 +1308,11 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	else{	if(tag1.includes("♔Jimboy3100")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend"); } else if(tag1.includes("GUARD")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard"); } else if(tag1.includes("℄🌀")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("₣")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("℄")==true){	$("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("♋")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc"); } else if(tag1.includes("۞ẒṨ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); }	 else if(tag1.includes("ᴺ૯ᵂ۞")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("۞ᵶᵴ™")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs"); } else if(tag1.includes("๔ɀ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz"); } else if(tag1.includes("ﾏｮʞʇ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect"); } else if(tag1.includes("₴₵₳Ɽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar"); } else if(tag1.includes("ββŁΣßΛĻŽ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ"); } else if(tag1.includes("⋩ᕮχ⋨")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex"); } else if(tag1.includes("ƖƦ")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir"); } else if(tag1.includes("ȴøng")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong"); } else if(tag1.includes("ƸU")==true){ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu"); } else{ $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll"); }	}
   
 		  });	
-
+		  //Load Lc Announcement
+	if(tag1.includes("℄")==true){
+		$("#LEGENDAds").after('<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 0px 0 0px 0;"><a href="https://jimboy3100.github.io/LcClanPriviledges.txt" target="_blank" id= "LegendPrivileges" class="title" style=""><u>Priviledges of Legend ℄ Clan Players</u></a></class>' );
+		}	
+		  
 $('#server-connect').click(function(){
           setTimeout(function (){ 
 		  $("#server").val(currentIP);
@@ -1583,7 +1613,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
-	}, 4500);
+	}, 5500);
 	}
 
 function delay(time, func) {setTimeout(function () { func(); }, time);}
@@ -2329,19 +2359,25 @@ function legenddefaultsettings(){
 		$('#import-settings-btn').click();
 	}
 	else if(dyinglight1load=="yes"){
-		localStorage.setItem("musicUrl", "https://www.youtube.com/watch?v=lMzF3xAAzGE");	
-		$("#minimapPicture").val("");
-		$("#minimapPicture").blur();
-		$("#minbtext").val("");
-		$("#minbtext").blur();
-		$("#leadbtext").val("");
-		$("#leadbtext").blur();
-		$("#teambtext").val("");
-		$("#teambtext").blur();
-		$("#imgUrl").val("");
-		$("#imgUrl").blur();
-		$("#imgHref").val("");
-		$("#imgHref").blur();	
+		localStorage.setItem("musicUrl", defaultMusicUrl);	
+		$("#minimapPicture").val("").blur();
+		$("#minbtext").val("").blur();
+		$("#leadbtext").val("").blur();
+		$("#teambtext").val("").blur();
+		$("#imgUrl").val("").blur();
+		$("#imgHref").val("").blur();	
+		//unload dying light icons
+		$("#pic1url").val("").blur();$("#pic1data").val("").blur();
+		$("#pic2url").val("").blur();$("#pic2data").val("").blur();
+		$("#pic3url").val("").blur();$("#pic3data").val("").blur();
+		$("#pic4url").val("").blur();$("#pic4data").val("").blur();
+		$("#pic5url").val("").blur();$("#pic5data").val("").blur();
+		//unload dying light youtube
+		$("#yt1url").val("").blur();$("#yt1data").val("").blur();
+		$("#yt2url").val("").blur();$("#yt2data").val("").blur();
+		$("#yt3url").val("").blur();$("#yt3data").val("").blur();
+		$("#yt4url").val("").blur();$("#yt4data").val("").blur();
+		$("#yt5url").val("").blur();$("#yt5data").val("").blur();	
 		dyinglight1load=null;
 		localStorage.setItem("dyinglight1load", dyinglight1load);
 		setTimeout(function () {
@@ -2360,19 +2396,25 @@ function vanillasettings(){
 		$('#import-settings-btn').click();
 	}
 	else if(dyinglight1load=="yes"){
-		localStorage.setItem("musicUrl", "https://www.youtube.com/watch?v=lMzF3xAAzGE");	
-		$("#minimapPicture").val("");
-		$("#minimapPicture").blur();
-		$("#minbtext").val("");
-		$("#minbtext").blur();
-		$("#leadbtext").val("");
-		$("#leadbtext").blur();
-		$("#teambtext").val("");
-		$("#teambtext").blur();
-		$("#imgUrl").val("");
-		$("#imgUrl").blur();
-		$("#imgHref").val("");
-		$("#imgHref").blur();	
+		localStorage.setItem("musicUrl", defaultMusicUrl);	
+		$("#minimapPicture").val("").blur();
+		$("#minbtext").val("").blur();
+		$("#leadbtext").val("").blur();
+		$("#teambtext").val("").blur();
+		$("#imgUrl").val("").blur();
+		$("#imgHref").val("").blur();	
+		//unload dying light icons
+		$("#pic1url").val("").blur();$("#pic1data").val("").blur();
+		$("#pic2url").val("").blur();$("#pic2data").val("").blur();
+		$("#pic3url").val("").blur();$("#pic3data").val("").blur();
+		$("#pic4url").val("").blur();$("#pic4data").val("").blur();
+		$("#pic5url").val("").blur();$("#pic5data").val("").blur();
+		//unload dying light youtube
+		$("#yt1url").val("").blur();$("#yt1data").val("").blur();
+		$("#yt2url").val("").blur();$("#yt2data").val("").blur();
+		$("#yt3url").val("").blur();$("#yt3data").val("").blur();
+		$("#yt4url").val("").blur();$("#yt4data").val("").blur();
+		$("#yt5url").val("").blur();$("#yt5data").val("").blur();	
 		dyinglight1load=null;
 		localStorage.setItem("dyinglight1load", dyinglight1load);
 			setTimeout(function () {
@@ -2615,10 +2657,12 @@ function msgcommand5f(){commandMsg="Youtube"; otherMsg="";dosendmsgcommand();}
 function msgcommand6f(){commandMsg="HideAll"; otherMsg="";dosendmsgcommand();}
 	
 function dosendmsgcommand(){
-	if (MC.isInGame()&&$("#clantag").val()!=""){
+	
+	if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){
 if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
 setTimeout(function (){$("#message").val("Legend.Mod&?player="+$("#nick").val()+"&?com="+commandMsg+"&?do="+otherMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);
 }else { toastr["info"](Premadeletter39);}
+	
 }
 
 
@@ -2670,12 +2714,12 @@ function setpic6data(){ localStorage.setItem("pic6dataimg", $("#pic6data").val()
 	$("#sendicon6").attr("data-original-title", $("#pic6data").val());}
 	
 
-function sendyt1(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt2(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt3(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt4(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt5(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
-function sendyt6(){if (MC.isInGame()&&$("#clantag").val()!=""){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt1(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt1url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt2(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt2url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt3(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt3url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt4(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt4url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt5(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt5url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
+function sendyt6(){if ((MC.isInGame()&&$("#clantag").val()!="")||document.getElementById("nick").value.includes("℄")){if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}KeyEvent.simulate(13, 13);$("#message").val("[yt]"+yt6url+"[/yt]");setTimeout(function (){KeyEvent.simulate(13, 13);if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},50);}else { toastr["info"](Premadeletter39);}}
 	
 function setyt1data(){ localStorage.setItem("yt1dataimg", $("#yt1data").val())
 	$("#sendyt1").attr("data-original-title", $("#yt1data").val());}
