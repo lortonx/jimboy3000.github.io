@@ -24,6 +24,7 @@ if (location.host == "agar.io" && location.pathname == "/") {
 }
 // Dependencies
 var legendarioCSS = '<link href="http://cdn.ogario.ovh/v3/ogario.v3.css?v=320" rel="stylesheet"></link>';
+//var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=320"></script>';
 var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario.v3.sniff.js?v=320"></script>';
 var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=320" charset="utf-8"></script>';
 
