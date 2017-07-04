@@ -1,4 +1,4 @@
-//0.3
+//0.4
 /** @type {Array} */
 var _0x217b = ["color2Hex", "smallerCellsCache", "push", "STECellsCache", "biggerCellsCache", "biggerSTECellsCache", "prototype", "ogarioCtx", "_fillRect", "fillRect", "_fillText", "fillText", "displayLeaderboard", "leaderboardHTML", ":teams", "gameMode", "leaderboardIndex", "indexOf", "replace", "&lt;", "&gt;", "#ffaaaa", "fillStyle", '<span class="me">', "</span>", "clanTag", '<span class="teammate">', "<span>", "play", "&amp;", "apply", "ogario", "#999999", "mapOffsetX", "mapOffset", "mapOffsetY", 
 "mapOffsetFixed", "cursorX", "clientX", "innerW", "canvasScale", "viewScale", "playerX", "cursorY", "clientY", "innerH", "playerY", "min", "targetY", "targetDistance", "round", "pow", "playerCellsMass", "length", "playerBestMass", "playerMass", "virColors", "splitRange", "oppColors", "oppRings", "showStatsSTE", "playerMinMass", "playerMaxMass", "selectBiggestCell", "STE", "floor"];
@@ -440,7 +440,7 @@ var _0xb217 = function(timeoutKey, dataAndEvents) {
         return data = data[_0xb217("0x35")](/&/g, "&amp;")[_0xb217("0x35")](/</g, _0xb217("0x36"))[_0xb217("0x35")](/>/g, _0xb217("0x37")), window[_0xb217("0x0")][_0xb217("0x30")] += _0xb217("0x38") === this[_0xb217("0x39")] ? _0xb217("0x3a") + data + _0xb217("0x3b") : 3 == data[_0xb217("0x34")](window[_0xb217("0x0")]["clanTag"]) || 4 == data[_0xb217("0x34")](window["ogario"][_0xb217("0x3c")]) && 10 == window[_0xb217("0x0")][_0xb217("0x33")] ? _0xb217("0x3d") + data + _0xb217("0x3b") : _0xb217("0x3e") + 
         data + _0xb217("0x3b"), void window[_0xb217("0x0")][_0xb217("0x33")]++;
       }
-      if (/*11 == window["ogario"][_0xb217("0x33")] && (window[_0xb217("0x0")][_0xb217("0x3f")] && _0xb217("0x38") === this[_0xb217("0x39")]*/true==true)) {
+      if (11 == window["ogario"][_0xb217("0x33")] && (window[_0xb217("0x0")][_0xb217("0x3f")] && _0xb217("0x38") === this[_0xb217("0x39")])) {
         return data = data["replace"](/&/g, _0xb217("0x40"))[_0xb217("0x35")](/</g, _0xb217("0x36"))[_0xb217("0x35")](/>/g, _0xb217("0x37")), window[_0xb217("0x0")][_0xb217("0x30")] += _0xb217("0x3a") + data + "</span>", void window[_0xb217("0x0")][_0xb217("0x33")]++;
       }
     }
