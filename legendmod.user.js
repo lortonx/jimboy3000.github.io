@@ -23,18 +23,18 @@ if (location.host == "agar.io" && location.pathname == "/") {
     //return;
 }
 // Dependencies
-var legendarioCSS = '<link href="https://jimboy3100.github.io/legend.css?v=320" rel="stylesheet"></link>';
+var legendarioCSS = '<link href="https://jimboy3100.github.io/legend.css?v=320" rel="stylesheet"></link>'; //WORKS
 
 //var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario2.v3.sniff.js?v=320"></script>';
 //var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=320"></script>'; original
-var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario.v3.sniff.js?v=320"></script>'; //decoded from legend
-//var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario2.v3.sniff.js?v=320"></script>'; //encoded from legend
+//var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario.v3.sniff.js?v=320"></script>'; //decoded from legend
+var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario2.v3.sniff.js?v=320"></script>'; //encoded from legend WORKS
 
 
 var legendarioJS = '<script src="https://jimboy3000.github.io/ogario2.v3.js?v=320" charset="utf-8"></script>';
 //var legendarioJS = '<script src="https://jimboy3000.github.io/ogario.v3.js?v=320" charset="utf-8"></script>'; //ogario original
 //var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=320" charset="utf-8"></script>'; //decoded from legend
-//var legendarioJS = '<script src="https://jimboy3000.github.io/ogario2.v3.js?v=320" charset="utf-8"></script>'; //encoded from legend 
+var legendarioJS = '<script src="https://jimboy3000.github.io/ogario2.v3.js?v=320" charset="utf-8"></script>'; //encoded from legend WORKS
 
 
 
