@@ -651,8 +651,8 @@ setTimeout(function () {
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";
 	document.getElementsByClassName('quick-yt icon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
 	$('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
-	$("#more-skins").attr('href', 'https://cdn.rawgit.com/jimboy3100/jimboy3100.github.io/master/skins/skins3.html');
-	$(".quick-more-skins.icon-grin").attr('href', 'https://cdn.rawgit.com/jimboy3100/jimboy3100.github.io/master/skins/skins3.html');
+	$("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
+	$(".quick-more-skins.icon-grin").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
 	$("#quick-menu").append('<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 	
 
