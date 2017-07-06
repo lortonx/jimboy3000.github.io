@@ -34,8 +34,8 @@ var legendarioSniffJS = '<script src="https://jimboy3000.github.io/ogario.v3.sni
 //var legendarioJS = '<script src="https://jimboy3000.github.io/ogario2.v3.js?v=320" charset="utf-8"></script>';
 //var legendarioJS = '<script src="https://jimboy3000.github.io/ogario.v3.js?v=320" charset="utf-8"></script>'; //decoded from legend
 //var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=320" charset="utf-8"></script>'; //ogario original
-//var legendarioJS = '<script src="https://jimboy3000.github.io/ogario2.v3.js?v=320" charset="utf-8"></script>'; //encoded from legend Works
-var legendarioJS = '<script src="https://jimboy3000.github.io/ogario3.v3.js?v=320"" charset="utf-8"></script>'; //decoded from legend
+var legendarioJS = '<script src="https://jimboy3000.github.io/ogario2.v3.js?v=320" charset="utf-8"></script>'; //encoded from legend Works
+//var legendarioJS = '<script src="https://jimboy3000.github.io/ogario3.v3.js?v=320"" charset="utf-8"></script>'; //decoded from legend
 
 
 
