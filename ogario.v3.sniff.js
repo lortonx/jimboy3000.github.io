@@ -39,7 +39,7 @@ var _0x217b = 'color2Hex,smallerCellsCache,push,STECellsCache,biggerCellsCache,b
 var _0xb217 = function(a, c) {
   return _0x217b[a - 0];
 };
-! function() {
+function() {
   (function() {
     var a = !0;
     return function(c, b) {
