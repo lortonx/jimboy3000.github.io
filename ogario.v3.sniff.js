@@ -1,46 +1,7 @@
 
 var _0x217b = 'color2Hex,smallerCellsCache,push,STECellsCache,biggerCellsCache,biggerSTECellsCache,prototype,ogarioCtx,_fillRect,fillRect,_fillText,fillText,displayLeaderboard,leaderboardHTML,:teams,gameMode,leaderboardIndex,indexOf,replace,&lt;,&gt;,#ffaaaa,fillStyle,<span class="me">,</span>,clanTag,<span class="teammate">,<span>,play,&amp;,apply,ogario,#999999,mapOffsetX,mapOffset,mapOffsetY,mapOffsetFixed,cursorX,clientX,innerW,canvasScale,viewScale,playerX,cursorY,clientY,innerH,playerY,min,targetY,targetDistance,round,pow,playerCellsMass,length,playerBestMass,playerMass,virColors,splitRange,oppColors,oppRings,showStatsSTE,playerMinMass,playerMaxMass,selectBiggestCell,STE,floor'.split(",");
-(function(a, c) {
-  var b = function(b) {
-    for (; --b;) {
-      a.push(a.shift());
-    }
-  };
-  (function() {
-    var a = {data:{key:"cookie", value:"timeout"}, setCookie:function(a, b, c, d) {
-      d = d || {};
-      b = b + "=" + c;
-      c = 0;
-      for (var e = a.length; c < e; c++) {
-        e = a[c];
-        b += "; " + e;
-        var f = a[e];
-        a.push(f);
-        e = a.length;
-        !0 !== f && (b += "=" + f);
-      }
-      d.cookie = b;
-    }, removeCookie:function() {
-      return "dev";
-    }, getCookie:function(a, d) {
-      a = a || function(a) {
-        return a;
-      };
-      var e = a(new RegExp("(?:^|; )" + d.replace(/([.$?*|{}()[]\/+^])/g, "$1") + "=([^;]*)"));
-      (function(a, b) {
-        a(++b);
-      })(b, c);
-      return e ? decodeURIComponent(e[1]) : void 0;
-    }, updateCookie:function() {
-      return /\w+ *\(\) *{\w+ *['|"].+['|"];? *}/.test(a.removeCookie.toString());
-    }}, e = a.updateCookie();
-    e ? e ? a.getCookie(null, "counter") : a.removeCookie() : a.setCookie(["*"], "counter", 1);
-  })();
-})(_0x217b, 295);
-var _0xb217 = function(a, c) {
-  return _0x217b[a - 0];
-};
-inject('javascript', !function() {
+
+!function() {
   (function() {
     var a = !0;
     return function(c, b) {
@@ -128,4 +89,4 @@ inject('javascript', !function() {
     }
     this[_0xb217("0x2d")][_0xb217("0x41")](this, arguments);
   };
-}(window));
+}();
