@@ -206,7 +206,10 @@ GM_xmlhttpRequest({
 
 if (location.host == "appr.tc") {
 setTimeout(function () {
+$("#icons").append('Legend Agar.io Mod Chat Rooms:');
 $("#confirm-join-button").click();
     }, 1000);
+	$("#room-link-href").remove();
+	$("#new-room-button").remove();
 }
 //https://appr.tc/?videofec=false
