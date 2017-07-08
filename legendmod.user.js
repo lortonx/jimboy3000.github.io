@@ -209,3 +209,4 @@ setTimeout(function () {
 $("#confirm-join-button").click();
     }, 1000);
 }
+//https://appr.tc/?videofec=false
