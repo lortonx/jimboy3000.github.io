@@ -1613,7 +1613,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
-	}, 3000);
+	}, 2500);
 	}
 
 function delay(time, func) {setTimeout(function () { func(); }, time);}
