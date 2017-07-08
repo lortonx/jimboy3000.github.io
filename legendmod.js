@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.118 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.119 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -31,7 +31,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=pBYieHHnqCI";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=f2Fo4aM_YtE";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="22"; // the version 1.1-> 1.11
+var semimodVersion="23"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -1581,7 +1581,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 	
 	console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
-}, 1500);
+}, 2500);
 
 }
 
@@ -1613,7 +1613,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
-	}, 5500);
+	}, 3500);
 	}
 
 function delay(time, func) {setTimeout(function () { func(); }, time);}
