@@ -203,3 +203,9 @@ GM_xmlhttpRequest({
      }
 })();
 }
+
+if (location.host == "agar.io" && location.pathname == "/") {
+setTimeout(function () {
+$("#confirm-join-button").click();
+    }, 1000);
+}
