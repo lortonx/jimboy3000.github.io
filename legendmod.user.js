@@ -102,7 +102,7 @@ GM_xmlhttpRequest({
     'use strict';
     function pre_loop(){
         if(! document.getElementById("message-box")){
-            setTimeout(pre_loop, 1000);
+            setTimeout(pre_loop, 4000);
             console.log("VoiceDeOChat:wait for Legend load");
             return;
         }
