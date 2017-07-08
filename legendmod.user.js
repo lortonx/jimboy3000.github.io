@@ -7,6 +7,7 @@
 // @author       Jimboy3100
 // @icon         https://jimboy3100.github.io/banners/CropedImage128.gif
 // @match        http://agar.io/*
+// @match        https://appr.tc/r/*
 // @downloadURL  jimboy3100.github.io/legendmod.user.js
 // @updateURL    jimboy3100.github.io/legendmod.user.js
 // @run-at       document-start
@@ -46,7 +47,7 @@ SOFTWARE.
 if (location.host == "agar.io" && location.pathname == "/") {
     location.href = "http://agar.io/legendmod" + window.location.search + location.hash;
     //return;
-}
+
 
 // Dependencies
 
@@ -201,4 +202,4 @@ GM_xmlhttpRequest({
         }
      }
 })();
-
+}
