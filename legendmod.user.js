@@ -204,7 +204,7 @@ GM_xmlhttpRequest({
 })();
 }
 
-if (location.host == "agar.io" && location.pathname == "/") {
+if (location.host == "appr.tc" && location.pathname == "/") {
 setTimeout(function () {
 $("#confirm-join-button").click();
     }, 1000);
