@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="23"; // the version 1.1-> 1.11
+var semimodVersion="24"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -206,25 +206,25 @@ if (languagemod==2){
 	setTimeout(function () {
 	$('#legendlanguages').val("2");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
-	}, 6000);}
+	}, 4000);}
 if (languagemod==3){	
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";$("body").append(s);
 	setTimeout(function () {
 	$('#legendlanguages').val("3");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
-	}, 6000);}
+	}, 4000);}
 if (languagemod==4){	
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";$("body").append(s);
 	setTimeout(function () {
 	$('#legendlanguages').val("4");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
-	}, 6000);}	
+	}, 4000);}	
 if (languagemod==5){	
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";$("body").append(s);
 	setTimeout(function () {
 	$('#legendlanguages').val("5");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
-	}, 6000);}	
+	}, 4000);}	
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function(){
 MSGCOMMANDS2=$(".toast.toast-warning").html();
@@ -343,13 +343,13 @@ setTimeout(function () {
 	if (region==null){
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip);
 	//$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip).attr("style", "opacity: 0;");
-	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip);}, 6000);
+	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip);}, 5000);
 	}
 	else {
 	
 	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
 //	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
-	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 6000);
+	setTimeout(function () {history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}, 5000);
 	}}
 	else if (searchSip==null){
 	if (realmode!=":party"){
@@ -1017,7 +1017,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         if (searchStr != null && searchStr) {
             if (searchIPHandler(searchStr)) {hideMenu();showSearchHud();showCancelSearch();$("#searchInput").val(searchStr);}
         }
-    }, 10000); //10
+    }, 6000); //10
 	}
 	
     $("#autoCoinBtn").click(function () {
@@ -1099,8 +1099,8 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	  $("#YoutubeAutoBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
 		if (checked) {
 		localStorage.setItem("YoutubeAutoBtn", true);
-		setTimeout(function () {$("#playerBtn").click();}, 3000);
-		setTimeout(function () {$("#playerBtn").focusout();}, 3500);
+		setTimeout(function () {$("#playerBtn").click();}, 2000);
+		setTimeout(function () {$("#playerBtn").focusout();}, 2100);
 		$(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter41);}
 		else {localStorage.setItem("YoutubeAutoBtn", false);$(this).html('<i class="fa fa-youtube-play"></i>'+ Premadeletter40);}} ); 		
 		
@@ -1397,7 +1397,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 			if(commandMsg=="Youtube"){
 			toastr["warning"](Premadeletter22 + ' ' + playerMsg+' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "210px");	
-			$(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function () { $("#playerBtn").click();setTimeout(function () {$("#playerBtn").focusout();}, 500); });
+			$(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function () { $("#playerBtn").click();setTimeout(function () {$("#playerBtn").focusout();}, 100); });
 			//	$("#playerBtn").click();			
 			}
 	}
@@ -1441,7 +1441,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 		$("#XPBtn").click();
 //		$("#MANUIBtn").click();
 //		$("#RotationBtn").click();
-		}, 1500);
+		}, 100);
 
 		
 	}
@@ -1477,7 +1477,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	if (ComPosition  == 2) { $("#bottomright").click(); }
 //	if (ComPosition  == 3) { $("#bottomleft").click(); }
 	if (autoCoinBtn == "true") {
-		setTimeout(function () {$("#autoCoinBtn").click();}, 5000); }
+		setTimeout(function () {$("#autoCoinBtn").click();}, 1000); }
 //	if (copyGameNames == "true") {
 //		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
 	
@@ -1558,7 +1558,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 	else if(dyinglight1load=="yes"){ opendyinglight();
 	$("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerStopDyingLight"); }
 	
-	}, 2000);		
+	}, 500);		
 		if (searchSip!=null){	
 		$("#region").hide(); $("#gamemode2").hide();$("#server").hide();$("#connect2").hide();$("#searchShortcut").hide();$("#reconnectBtn").hide();$(".btn.btn-warning.btn-server-info.icon-cogs").hide();$("#gamemode").hide();
 		
@@ -1581,7 +1581,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 	
 	console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
-}, 2500);
+}, 1500);
 
 }
 
@@ -1613,7 +1613,7 @@ MSGCOMMANDS=$(".toast.toast-success").text();
 
 checkonlyonce="true";localStorage.setItem("checkonlyonce", checkonlyonce);
 	
-	}, 3500);
+	}, 3000);
 	}
 
 function delay(time, func) {setTimeout(function () { func(); }, time);}
@@ -2125,8 +2125,8 @@ function getCoin() {
     timeStr = timeStr.substring(0, 5);
     $("#autoCoinBtn").tooltip({ title: "Next " + timeStr, container: "body", placement: "right" });
     if (ogario.play == true) {
-        setTimeout(function () { $("#autoCoinBtn").tooltip("hide"); }, 3000);
-		setTimeout(function () { $("#autoCoinBtn").focusout(); }, 7000);
+        setTimeout(function () { $("#autoCoinBtn").tooltip("hide"); }, 2000);
+		setTimeout(function () { $("#autoCoinBtn").focusout(); }, 4000);
         play();
     }
 }
