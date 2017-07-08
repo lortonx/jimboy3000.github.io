@@ -1,4 +1,4 @@
-//v1.3
+//v1.4
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1383,14 +1383,13 @@
    else {
       w.setTimeout(function() {
          agarXTRA(w);
+		 $("#movingskins").css( { marginTop : "-15px" } );
+		$("#movingskins").css( { marginBottom : "-30px" } );
       }, 100);
    }
 })(window);
 
-setTimeout(function () {
-$("#movingskins").css( { marginTop : "-15px" } );
-$("#movingskins").css( { marginBottom : "-30px" } );
-}, 12000);
+
 
 //2. Administration Tools
 
