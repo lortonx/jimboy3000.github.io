@@ -225,6 +225,17 @@ if (location.host == "agar.io" && location.pathname == "/") {
 
 // Inject Chat Talky.io Userscript
 if (location.host == "talky.io") {
+	
+	(function() {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = 'https://jimboy3100.github.io/banners/icon32croped.ico.gif';
+    document.getElementsByTagName('head')[0].appendChild(link);
+	})();
+
+	document.title="Legend Mod - Talky";
+	
     var url2 = window.location.href;
     var gamename = getParameterByName("name", url2);
     var IPAgario = getParameterByName("ip", url2);
