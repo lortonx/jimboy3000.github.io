@@ -227,3 +227,4 @@ document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();
 }, 4000);
 }
 //https://appr.tc/?videofec=false
+//https://talky.io/dddd?name=&?m=
