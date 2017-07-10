@@ -214,12 +214,13 @@ setTimeout(function () {
 	
 document.getElementsByClassName('message message-info message-full-width')[0].before('Legend Agar.io Mod Chat Rooms:');
 document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';  
-setTimeout(function () {	
-document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
-}, 5000);
+
 document.getElementsByClassName('Box _3-HLfCQ5QT5fuKgw4tvBkP')[0].remove();	
 document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();	
 	
 }, 4000);
+setTimeout(function () {	
+document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
+}, 4500);
 }
 //https://appr.tc/?videofec=false
