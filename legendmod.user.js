@@ -7,7 +7,7 @@
 // @author       Jimboy3100
 // @icon         https://jimboy3100.github.io/banners/CropedImage128.gif
 // @match        http://agar.io/*
-// @match        https://appr.tc/r/*
+// @match        https://talky.io/*
 // @downloadURL  jimboy3100.github.io/legendmod.user.js
 // @updateURL    jimboy3100.github.io/legendmod.user.js
 // @run-at       document-start
@@ -204,10 +204,11 @@ GM_xmlhttpRequest({
 })();
 }
 
-if (location.host == "appr.tc") {
+if (location.host == "talky.io") {
 setTimeout(function () {
-$("#icons").append('Legend Agar.io Mod Chat Rooms:');
-$("#confirm-join-button").click();
+$("._24sME5o68uoPxUH86_xQYs").before('Legend Agar.io Mod Chat Rooms:')
+document.getElementsByClassName('_24sME5o68uoPxUH86_xQYs message message-info message-full-width')[0].style.visibility = 'hidden';	
+document.getElementsByClassName('text__VDMeAzwr TalkyButton__text _2jD5Cu9gg2835_sk5NwpQj')[0].click();
     }, 1000);
 	$("#room-link-href").remove();
 	$("#new-room-button").remove();
