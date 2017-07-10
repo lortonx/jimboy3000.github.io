@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.121 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.119 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1263,7 +1263,6 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 				}
 				}
 			if (searchSip!=null){
-				searchSip
 				var currentIP2=searchSip.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
 					}
 			
