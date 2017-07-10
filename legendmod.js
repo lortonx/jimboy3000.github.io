@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.122 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.123 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="26"; // the version 1.1-> 1.11
+var semimodVersion="27"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -1254,7 +1254,7 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 		});
 		$("#VoiceBtn").click(function () {
 			if (searchSip==null){
-				if (mode==":party"){
+				if (ogario.gameMode==":party"){
 				semiurl2=MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + MC.getPartyToken();
 					}
 					else{
@@ -1262,8 +1262,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 				semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP2;	
 				}
 				}
-			if (searchSip!=null){
+			else if (searchSip!=null){
 				var currentIP2=searchSip.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
+				semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP2;	
 					}
 			
 			url2="https://talky.io/"+semiurl2;
