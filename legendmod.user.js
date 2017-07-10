@@ -205,16 +205,15 @@ GM_xmlhttpRequest({
 }
 
 if (location.host == "talky.io") {
-	
+var gamename=localStorage.getItem('lastName');	
 setTimeout(function () {
 document.getElementById('skip').click();
 document.getElementsByClassName('TalkyButton__text')[0].click();
 }, 3500);	
 setTimeout(function () {
-	
+document.getElementsByClassName('_1U4l9qYTHl6ExTsW9IvwnO')[1].value=gamename;	
 document.getElementsByClassName('message message-info message-full-width')[0].before('Legend Agar.io Mod Chat Rooms:');
 document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';  
-
 document.getElementsByClassName('Box _3-HLfCQ5QT5fuKgw4tvBkP')[0].remove();	
 document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();	
 	
