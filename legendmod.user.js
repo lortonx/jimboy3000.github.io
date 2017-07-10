@@ -211,12 +211,12 @@ document.getElementsByClassName('TalkyButton__text')[0].click();
 }, 1000);	
 setTimeout(function () {
 	
-$(".message.message-info.message-full-width").before('Legend Agar.io Mod Chat Rooms:');
-document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';	
-document.getElementsByClassName('TalkyButton__text')[0].click();
-	$("._26dP_7FWLFRnvW8hs-AIzR").remove();
-	$(".Box._3-HLfCQ5QT5fuKgw4tvBkP").remove();
-	$(".-ZMXacQm9s80kTx3I-A47").remove();
+document.getElementsByClassName('message message-info message-full-width')[0].before('Legend Agar.io Mod Chat Rooms:');
+document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';  
+document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
+document.getElementsByClassName('Box _3-HLfCQ5QT5fuKgw4tvBkP')[0].remove();	
+document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();	
+
 }, 3000);
 }
 //https://appr.tc/?videofec=false
