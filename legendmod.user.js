@@ -206,6 +206,10 @@ GM_xmlhttpRequest({
 
 if (location.host == "talky.io") {
 var gamename=localStorage.getItem('lastName');	
+setTimeout(function () {	
+document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
+}, 5000);
+}
 setTimeout(function () {
 document.getElementById('skip').click();
 document.getElementsByClassName('TalkyButton__text')[0].click();
@@ -218,8 +222,5 @@ document.getElementsByClassName('Box _3-HLfCQ5QT5fuKgw4tvBkP')[0].remove();
 document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();	
 	
 }, 4000);
-setTimeout(function () {	
-document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
-}, 5000);
-}
+
 //https://appr.tc/?videofec=false
