@@ -209,8 +209,9 @@ setTimeout(function () {
 $("._24sME5o68uoPxUH86_xQYs").before('Legend Agar.io Mod Chat Rooms:')
 document.getElementsByClassName('_24sME5o68uoPxUH86_xQYs message message-info message-full-width')[0].style.visibility = 'hidden';	
 document.getElementsByClassName('text__VDMeAzwr TalkyButton__text _2jD5Cu9gg2835_sk5NwpQj')[0].click();
-    }, 1000);
-	$("#room-link-href").remove();
-	$("#new-room-button").remove();
+    }, 3000);
+	$("._26dP_7FWLFRnvW8hs-AIzR").remove();
+	$(".Box._3-HLfCQ5QT5fuKgw4tvBkP").remove();
+	$(".-ZMXacQm9s80kTx3I-A47").remove();
 }
 //https://appr.tc/?videofec=false
