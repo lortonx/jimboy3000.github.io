@@ -205,7 +205,10 @@ GM_xmlhttpRequest({
 }
 
 if (location.host == "talky.io") {
-var gamename=localStorage.getItem('lastName');	
+var url2 = window.location.href;
+var gamename=getParameterByName("name", url2);
+var IPAgario=getParameterByName("ip", url2);
+
 setTimeout(function () {	
 document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
 document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
@@ -219,7 +222,9 @@ document.getElementsByClassName('TalkyButton__text')[0].click();
 }, 3500);	
 setTimeout(function () {
 document.getElementsByClassName('_1U4l9qYTHl6ExTsW9IvwnO')[1].value=gamename;	
-document.getElementsByClassName('message message-info message-full-width')[0].before('Legend Agar.io Mod Chat Rooms:');
+//<a href="http://legendmod.ml" target="_blank" id="LegendModWebsite" class="title" style=""><u>Legend Mod</u></a> <a href=IPAgario target="_blank" id="IPAgario" class="title" style=""><u>Copy Agar.io Token</u></a> 
+document.getElementsByClassName('message message-info message-full-width')[0].before("[Talky.io]: Legend Mod. Server: " + IPAgario );
+document.getElementsByClassName('_1U4l9qYTHl6ExTsW9IvwnO')[1].value=gamename;
 document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';  
 document.getElementsByClassName('Box _3-HLfCQ5QT5fuKgw4tvBkP')[0].remove();	
 document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();	
@@ -227,4 +232,14 @@ document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();
 }, 4000);
 }
 //https://appr.tc/?videofec=false
-//https://talky.io/dddd?name=&?m=
+//https://talky.io/dddd?name=&?ip=
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
