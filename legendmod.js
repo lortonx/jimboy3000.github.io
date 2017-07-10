@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.119 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.120 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="24"; // the version 1.1-> 1.11
+var semimodVersion="25"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -223,6 +223,12 @@ if (languagemod==5){
 	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";$("body").append(s);
 	setTimeout(function () {
 	$('#legendlanguages').val("5");
+	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+	}, 4000);}	
+if (languagemod==6){	
+	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";$("body").append(s);
+	setTimeout(function () {
+	$('#legendlanguages').val("6");
 	var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
 	}, 4000);}	
 
@@ -568,12 +574,13 @@ setTimeout(function () {
 											'</div></div>' +
 											
 											'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
-											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
+											'<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
 											'<option value="1" data-itr="">English</option>' +											
-											'<option value="4" data-itr="">Bulgarian</option>' +
-											'<option value="5" data-itr="">French</option>' +
-											'<option value="2" data-itr="">Greek</option>' +
-											'<option value="3" data-itr="">Spanish</option>' +
+											'<option value="6" data-itr="">Arabic - عربى</option>' +
+											'<option value="4" data-itr="">Bulgarian - български</option>' +
+											'<option value="5" data-itr="">French - Français</option>' +
+											'<option value="2" data-itr="">Greek - Ελληνικά</option>' +
+											'<option value="3" data-itr="">Spanish - Español</option>' +
 											
 									//		
 									//		'<option value="5" data-itr="">Icon 5</option>' +
@@ -2829,6 +2836,14 @@ function changeModLanguage() {
 		
 		},800);		
 	}	
+		if ($("#legendlanguages").val()==6){
+		localStorage.setItem("languagemod", 6);
+		var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";$("body").append(s);
+		setTimeout(function (){ 
+		var s1 = document.createElement("script");s1.type = "text/javascript";s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";$("body").append(s1);
+		
+		},800);		
+	}		
 }
 
 function opendyinglight(){var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/dyinglight.js";$("body").append(s);}
