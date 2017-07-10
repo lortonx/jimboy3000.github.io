@@ -216,7 +216,9 @@ document.getElementsByClassName('message message-info message-full-width')[0].st
 
 document.getElementsByClassName('Box _3-HLfCQ5QT5fuKgw4tvBkP')[0].remove();	
 document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();	
+setTimeout(function () {	
 document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
+}, 500);	
 }, 4000);
 }
 //https://appr.tc/?videofec=false
