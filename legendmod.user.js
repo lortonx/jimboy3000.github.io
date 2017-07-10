@@ -208,6 +208,8 @@ if (location.host == "talky.io") {
 var gamename=localStorage.getItem('lastName');	
 setTimeout(function () {	
 document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
+document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
+document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
 }, 4100);
 
 setTimeout(function () {
