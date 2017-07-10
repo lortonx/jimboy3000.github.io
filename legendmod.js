@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.120 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.121 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="25"; // the version 1.1-> 1.11
+var semimodVersion="26"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -133,7 +133,8 @@ var LegendClanSymbol="0";
 var legbgcolor=$("#menuPanelColor").val();
 var legbgpic=$("#menuBg").val();
 var dyinglight1load = localStorage.getItem("dyinglight1load");
-
+var url2;
+var semiurl2;
 
 
 var Premadeletter0= "Communication Activated";
@@ -1165,14 +1166,15 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 	
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">'+
-	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title='+ Premadeletter57 +'><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
-	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
-	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
-	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
-	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
-	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
-	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100%;" data-toggle="tooltip" data-original-title='+ Premadeletter13 +'><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
-	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 12%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+	'<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>'+
+	'<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title='+ Premadeletter57 +'><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>'+
+	'<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>'+
+	'<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>'+
+	'<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>'+
+	'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>'+
+	'<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>'+
+	'<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title='+ Premadeletter13 +'><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>'+
+	'<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 11%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 
 	
 	$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">'+
@@ -1244,12 +1246,30 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
         $("#bottomright").click(function () {localStorage.setItem("ComPosition", 2);toastr.remove();toastr.options = {"positionClass": "toast-bottom-right"}}); 
         $("#bottomleft").click(function () {localStorage.setItem("ComPosition", 3);toastr.remove();toastr.options = {"positionClass": "toast-bottom-left"}}); 
 		$("#ChatBtn").click(function () {chatfunction();});
+		
 		$("#Cutnames").click(function () {		
 			if (checkedGameNames==0){StartEditGameNames(); return checkedGameNames=2;}
 			else if(checkedGameNames==1){ContinueEditGameNames(); return checkedGameNames=2;}       
 			else if(checkedGameNames==2){StopEditGameNames(); return checkedGameNames=1;}
 		});
-	
+		$("#VoiceBtn").click(function () {
+			if (searchSip==null){
+				if (mode==":party"){
+				semiurl2=MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + MC.getPartyToken();
+					}
+					else{
+					var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
+				semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP2;	
+				}
+				}
+			if (searchSip!=null){
+				searchSip
+				var currentIP2=searchSip.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
+					}
+			
+			url2="https://talky.io/"+semiurl2;
+			var win = window.open(url2, '_blank');
+		});
 
     // fix main menu placement after stats
    // $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
