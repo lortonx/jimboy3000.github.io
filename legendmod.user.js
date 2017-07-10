@@ -220,6 +220,6 @@ document.getElementsByClassName('-ZMXacQm9s80kTx3I-A47')[0].remove();
 }, 4000);
 setTimeout(function () {	
 document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
-}, 4500);
+}, 5000);
 }
 //https://appr.tc/?videofec=false
