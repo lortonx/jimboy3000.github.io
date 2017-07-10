@@ -210,8 +210,9 @@ setTimeout(function () {
 document.getElementsByClassName('TalkyButton__text')[0].click();
 }, 1000);	
 setTimeout(function () {
-$(".message-info.message-full-widths").before('Legend Agar.io Mod Chat Rooms:');
-document.getElementsByClassName('message-info message-full-width')[0].style.visibility = 'hidden';	
+	
+$(".message.message-info.message-full-width").before('Legend Agar.io Mod Chat Rooms:');
+document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';	
 document.getElementsByClassName('TalkyButton__text')[0].click();
 	$("._26dP_7FWLFRnvW8hs-AIzR").remove();
 	$(".Box._3-HLfCQ5QT5fuKgw4tvBkP").remove();
