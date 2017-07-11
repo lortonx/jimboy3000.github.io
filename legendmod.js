@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.219 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.220 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -1268,7 +1268,9 @@ $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick","newsubmit()");
 					}
 			
 			url2="https://talky.io/"+semiurl2;
-			var win = window.open(url2, '_blank');
+			var win = window.open(url2, '_blank');									
+			setTimeout(function() { window.focus() },100);
+			setTimeout(function () {$("#VoiceBtn").focusout();}, 150);
 		});
 
     // fix main menu placement after stats
