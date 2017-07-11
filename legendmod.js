@@ -110,7 +110,7 @@ var setyt="YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion="27"; // the version 1.1-> 1.11
+var semimodVersion="28"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS="";
 var MSGCOMMANDS2;
@@ -373,6 +373,12 @@ setTimeout(function () {
 	}
 	MC.setQuality($('#quality').val());return realmode;}, 1000);
 	setTimeout(function () {MC.setQuality($('#quality').val());}, 2000);
+	setTimeout(function () {MC.setQuality($('#quality').val());}, 3000);
+	setTimeout(function () {MC.setQuality($('#quality').val());}, 4000);
+	setTimeout(function () {MC.setQuality($('#quality').val());}, 5000);
+	setTimeout(function () {MC.setQuality($('#quality').val());}, 6000);
+	setTimeout(function () {MC.setQuality($('#quality').val());}, 7000);
+	setTimeout(function () {MC.setQuality($('#quality').val());}, 8000);
 	setTimeout(function () {MC.setQuality($('#quality').val());lastIP=currentIP;localStorage.setItem("lastIP", lastIP);
 	}, 10000);});}, //5000
 	9000);      //9000
