@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.231 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.232 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -827,7 +827,7 @@ setTimeout(function () {
 //		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
 //		$("#OpenInfo").click(function () {openhelper();});
 		$("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + '2.3' + semimodVersion + '</a></span>' +
-        '<a href="https://legendmod.joomla.com/en/more-fps.html" style ="font-size: 13px"; target="_blank">More FPS</a>');
+        '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
     // donate button
 	//kitty's
     // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
