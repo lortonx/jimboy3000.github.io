@@ -69,12 +69,13 @@ if (location.host == "agar.io" && location.pathname == "/") {
     var legendJSniff3JS = '<script src="https://jimboy3000.github.io/changedskins.js"></script>';
     var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=333"></script>';
     var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=333" charset="utf-8"></script>';
+    var socketJS = '<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>';
     var modVersion = GM_info.script.version;
 
     // Inject Legend
     function inject(page) {
         //    var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS  + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendarioSniffJS + legendJSniff2JS + ytJS + keyJS + "</head>");
-        var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + "</head>");
+        var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + socketJS + "</head>");
         page = page.replace(/<script.*?>[\s]*?.*?window\.NREUM[\s\S]*?<\/script>/, "");
         page = page.replace(/<script.*?src=".*?agario\.core\.js.*?><\/script>/, "");
         page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + legendJSniff3JS + "<script>init('" + modVersion + "');</script>" + "</body>");
