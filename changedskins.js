@@ -1271,6 +1271,24 @@
                      {id: 'j6Z5YfK', delay: '0.05'}
                   ]
                },
+               '✧༄ᗫxxxxx　⇀㚂㜂': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_lol',
+                  color:     'cd5d22',
+                  frames:    [
+                     {id: 'SJlS8Rg', delay: '0.08'},
+                     {id: 'AiICKZb', delay: '0.08'},
+                     {id: '1iVfy8b', delay: '0.08'},
+                     {id: 'hwPSr3s', delay: '0.08'},
+                     {id: 'wpJophT', delay: '0.08'},
+                     {id: 'W9oLhpz', delay: '0.08'},
+                     {id: 'DexE8Kb', delay: '0.08'},
+                     {id: '7ybaqXq', delay: '0.08'}
+                  ]
+               },			  			   
                '℄🌀jimboy3100': {
                   cached:    false,
                   ready:     false,
