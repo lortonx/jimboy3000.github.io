@@ -1,4 +1,4 @@
-//v1.6
+//v1.4
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1440,6 +1440,13 @@
 		$("#movingskins").css( { marginBottom : "-30px" } );
       }, 100);
    }
+   setTimeout(function() { 
+    //hide extra names
+    $('#movingskins>option:nth-child(68)').hide();
+	$('#movingskins>option:nth-child(69)').hide();
+	$('#movingskins>option:nth-child(70)').hide();
+	$('#movingskins>option:nth-child(71)').hide();
+   }, 300);
 })(window);
 
 
