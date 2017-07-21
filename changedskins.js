@@ -1,4 +1,4 @@
-//v1.5
+//v1.6
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1306,6 +1306,22 @@
                      {id: 'G3lUEyj', delay: '0.06'},
                      {id: 'G4jxjM9', delay: '0.06'},
                      {id: 'WQA1R3N', delay: '0.06'}
+                  ]
+               },
+               '℄🌀ℱ₳𝓗∀🌛': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'zombie',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: 'uVqUXBN', delay: '3'},
+                     {id: 'QclZjeR', delay: '0.1'},
+                     {id: 'iXdYrD8', delay: '0.1'},
+                     {id: 'vF0ZIcs', delay: '0.1'},
+                     {id: 'iXdYrD8', delay: '0.1'},
+                     {id: 'QclZjeR', delay: '0.1'}
                   ]
                },			   
                '℄🌀jimboy3100': {
