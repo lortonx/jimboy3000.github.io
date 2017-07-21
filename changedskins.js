@@ -1,4 +1,4 @@
-//v1.4
+//v1.5
 //1. Animated Skins
 
 (function agarXTRA(w) {
@@ -1288,7 +1288,26 @@
                      {id: 'DexE8Kb', delay: '0.08'},
                      {id: '7ybaqXq', delay: '0.08'}
                   ]
-               },			  			   
+               },
+				'℄🌀SCͥHRͣAͫMM': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'agarpros_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'TBIlCYb', delay: '4'},
+                     {id: 'NFXeciX', delay: '0.06'},
+                     {id: 'tVJ1fru', delay: '0.06'},
+                     {id: 'xOFUJtD', delay: '0.06'},
+                     {id: 'POhhdVh', delay: '0.06'},
+                     {id: 'mV17fbS', delay: '0.06'},
+                     {id: 'G3lUEyj', delay: '0.06'},
+                     {id: 'G4jxjM9', delay: '0.06'},
+                     {id: 'WQA1R3N', delay: '0.06'}
+                  ]
+               },			   
                '℄🌀jimboy3100': {
                   cached:    false,
                   ready:     false,
