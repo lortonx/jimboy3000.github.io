@@ -1,5 +1,5 @@
 /*************
-* LEGEND mod v2.233 by Jimboy3100   email:jimboy3100@hotmail.com
+* LEGEND mod v2.234 by Jimboy3100   email:jimboy3100@hotmail.com
 *************/
 
 $("#region").on('change', function() { 
@@ -135,7 +135,7 @@ var legbgpic=$("#menuBg").val();
 var dyinglight1load = localStorage.getItem("dyinglight1load");
 var url2;
 var semiurl2;
-
+var PostedThings;
 
 var Premadeletter0= "Communication Activated";
 var Premadeletter1="Cannot open this youtube URL";
@@ -260,6 +260,27 @@ if (mode==""){ modebetter2=":ffa"}
 else{ modebetter2=mode }
 
 
+///////////////////////////////////////////////////////////////////////////
+// Here "addEventListener" is for standards-compliant web browsers and "attachEvent" is for IE Browsers.
+var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+var eventer = window[eventMethod];
+// Now...
+// if 
+//    "attachEvent", then we need to select "onmessage" as the event. 
+// if 
+//    "addEventListener", then we need to select "message" as the event
+var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+// Listen to message from child IFrame window
+eventer(messageEvent, function (e) {
+       //alert(e.data);
+       // Do whatever you want to do with the data got from IFrame in Parent form.
+	   if (~e.data.indexOf("CustomSkins")){ 
+	   var PostedThings=getParameterByName("skin", e.data);
+	   alert(PostedThings)
+	   //alert(e.data);
+	   }
+}, false);   
+///////////////////////////////////////////////////////////////////////////
 
 loadericon();
 
