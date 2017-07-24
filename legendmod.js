@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.233 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.234 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -115,7 +115,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "30"; // the version 1.1-> 1.11
+var semimodVersion = "31"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1973,8 +1973,8 @@ function init(modVersion) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
             } else if (tag1.includes("₴₵₳Ɽ") == true) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
-            } else if (tag1.includes("ββŁΣßΛĻŽ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ");
+            } else if (tag1.includes("ΕΛ") == true) {
+                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
             } else if (tag1.includes("⋩ᕮχ⋨") == true) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
             } else if (tag1.includes("ƖƦ") == true) {
@@ -2038,8 +2038,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
-                } else if (tag1.includes("ββŁΣßΛĻŽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ");
+                } else if (tag1.includes("ΕΛ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
@@ -2081,8 +2081,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
-                } else if (tag1.includes("ββŁΣßΛĻŽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ");
+                } else if (tag1.includes("ΕΛ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
@@ -2124,8 +2124,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
-                } else if (tag1.includes("ββŁΣßΛĻŽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ");
+                } else if (tag1.includes("ΕΛ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
@@ -2168,8 +2168,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
-                } else if (tag1.includes("ββŁΣßΛĻŽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerbubbleBALZ");
+                } else if (tag1.includes("ΕΛ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
