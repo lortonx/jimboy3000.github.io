@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.234 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.235 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -830,7 +830,7 @@ function init(modVersion) {
             '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
             '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
-            '</div><div id="LEGENDAds2"></div>' +
+            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +
 
 
             '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
@@ -2554,7 +2554,7 @@ function init(modVersion) {
                 opendyinglight();
                 $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerStopDyingLight");
             }
-
+		$("#LEGENDAds2").load("https://jimboy3100.github.io/GoogleAnalytics.html");
         }, 500);
         if (searchSip != null) {
             $("#region").hide();
