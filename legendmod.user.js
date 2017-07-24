@@ -8,6 +8,7 @@
 // @icon         https://jimboy3100.github.io/banners/CropedImage128.gif
 // @match        http://agar.io/*
 // @match        https://talky.io/*
+// @match        https://play.google.com/*
 // @downloadURL  jimboy3100.github.io/legendmod.user.js
 // @updateURL    jimboy3100.github.io/legendmod.user.js
 // @run-at       document-start
@@ -223,6 +224,10 @@ if (location.host == "agar.io" && location.pathname == "/") {
         }
     })();
 }
+if (location.host == "play.google.com") {
+	window.close();
+}
+
 
 // Inject Chat Talky.io Userscript
 if (location.host == "talky.io") {
