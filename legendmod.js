@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.236 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.238 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -2354,7 +2354,7 @@ function init(modVersion) {
 
 
         setTimeout(function() {
-			$("#LEGENDAds3").load("https://jimboy3100.github.io/GoogleAnalytics.html");
+			
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                 $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
@@ -2587,6 +2587,7 @@ function init(modVersion) {
 
 
         console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
+		$("#LEGENDAds3").load("https://jimboy3100.github.io/GoogleAnalytics.html");
     }, 1500);
 
 }
