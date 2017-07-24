@@ -224,6 +224,7 @@ if (location.host == "agar.io" && location.pathname == "/") {
         }
     })();
 }
+//runs only if play.google.com is a popup, doesnt if directly joined
 if (location.host == "play.google.com") {
 	window.close();
 }
