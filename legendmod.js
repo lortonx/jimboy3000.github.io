@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.234 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.235 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -115,7 +115,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "31"; // the version 1.1-> 1.11
+var semimodVersion = "32"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2593,13 +2593,39 @@ function init(modVersion) {
 }
 
 function loadericon() {
-    containermain = $("#helloContainer").html();
-    $("#helloContainer").before('<img id="imagebig" style=" padding-left: 30px; padding-top:200px" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/loading7_gray.gif" /><img id="imagebig2" style=" padding-left: 0px; padding-top:250px" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" />');
-    $("#helloContainer").hide();
+	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" /></div>');
+	$("div#imagebig" ).css({
+   'transition': 'all 2s ease-in-out!important',
+		'width': '100%',
+		'height': '100%',
+		'position': 'absolute',
+		'top': '0',
+		'bottom': '0',
+		'left': '0',
+		'right': '0',
+		'z-index': '9999999999999999999999999999999999999999999999999999999999999999',
+		'background': '#615fff'
+	});
+	$("img#imagebig3" ).css({
+    'left': '50%',
+    'position': 'absolute',
+    'transform': 'translate(-50%)',
+    'bottom': '100px',
+    'width': '100px',
+    'height': '100px'
+	});
+	$("img#imagebig2" ).css({
+    'left': '35%',
+	'top': '100px',
+     'position': 'relative'
+	});
+
+   
+	//$("#helloContainer").hide();
     setTimeout(function() {
-        $("#helloContainer").fadeIn(2000);
+        
         $("#imagebig").fadeOut(2000);
-        $("#imagebig2").fadeOut(2000);
+        
         MC.setQuality($('#quality').val());
 
 
