@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.237 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.238 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -2596,7 +2596,7 @@ function init(modVersion) {
 }
 
 function loadericon() {
-	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" /></div>');
+	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
 	$("div#imagebig" ).css({
    'transition': 'all 2s ease-in-out!important',
 		'width': '100%',
@@ -2617,11 +2617,12 @@ function loadericon() {
     'width': '100px',
     'height': '100px'
 	});
-	$("img#imagebig2" ).css({
-    'left': '35%',
-	'top': '100px',
-     'position': 'relative'
-	});
+$("img#imagebig2" ).css({
+    'left': '50%',
+	'transform': 'translate(-50%)',
+	'top': '40%',
+     'position': 'absolute'
+});
 
    
 	//$("#helloContainer").hide();
