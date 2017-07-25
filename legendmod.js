@@ -2627,7 +2627,7 @@ function loadericon() {
         $("#imagebig").fadeOut(2000);
         
         MC.setQuality($('#quality').val());
-
+		setTimeout(function() {$("#imagebig").remove();}, 2500); //remove it
 
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
