@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.235 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.236 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -141,6 +141,8 @@ var dyinglight1load = localStorage.getItem("dyinglight1load");
 var url2;
 var semiurl2;
 var PostedThings;
+var Ultimouseenabled=0;
+var setscriptingcom = "YES";
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -1780,8 +1782,9 @@ function init(modVersion) {
             '<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>' +
             '<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
 
-
-
+		$("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 30%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
+            '<button id="Ultimouse" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
             '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
@@ -3579,6 +3582,16 @@ function Bino() {
     }
 }
 
+function Ultimouse() {
+	if (Ultimouseenabled==0){
+		var s = document.createElement("script");
+		s.type = "text/javascript";
+		s.src = "https://jimboy3100.github.io/auc/auc.user.js";
+		$("body").append(s);
+		return Ultimouseenabled=1;
+	}
+}
+
 function settroll1true() {
     return troll1 = "YES";
 }
@@ -3733,6 +3746,9 @@ function seticonfunction() {
     if (setyt == "NO") {
         YessetytReturn();
     }
+	if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }	
     if (seticon == "YES") {
         NoseticonReturn();
     } else if (seticon == "NO") {
@@ -3747,6 +3763,9 @@ function setmessagecomfunction() {
     if (setyt == "NO") {
         YessetytReturn();
     }
+	if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }	
     if (setmessagecom == "YES") {
         NosetMsgComReturn();
     } else if (setmessagecom == "NO") {
@@ -3761,10 +3780,29 @@ function setytfunction() {
     if (seticon == "NO") {
         YesseticonReturn();
     }
+	if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }	
     if (setyt == "YES") {
-        NosetytReturn();
+        NosetytReturn();		
     } else if (setyt == "NO") {
         YessetytReturn();
+    }
+}
+function setscriptingfunction() {
+    if (seticon == "NO") {
+        YesseticonReturn();
+    }	
+    if (setyt == "NO") {
+        YessetytReturn();
+    }
+    if (setmessagecom == "NO") {
+        YessetMsgComReturn();
+    }	
+    if (setscriptingcom == "YES") {
+        NosetScriptingComReturn();
+    } else if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
     }
 }
 
@@ -3796,6 +3834,15 @@ function NosetytReturn() {
 function YessetytReturn() {
     $("#yt-hud").hide();
     return setyt = "YES";
+}
+function NosetScriptingComReturn() {
+    $("#scripting-hud").show();
+    return setscriptingcom = "NO";
+}
+
+function YessetScriptingComReturn() {
+    $("#scripting-hud").hide();
+    return setscriptingcom = "YES";
 }
 
 
