@@ -332,6 +332,8 @@ eventer(messageEvent, function (e) {
 $("#advertisement").remove();
 $("#mcbanners-container").remove();
 $("#adsBottom").remove();
+//remove adds
+$("#adsGameOver").remove();
 
 //Loader Icons 
 loadericon();
@@ -1290,7 +1292,7 @@ function init(modVersion) {
         //		$(".agario-panel.agario-shop-panel").after('<button id="OpenInfo" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 25%;"><i class="fa fa-info-circle"></i>Information</button>');
         //		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
         //		$("#OpenInfo").click(function () {openhelper();});
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + '2.3' + semimodVersion + '</a></span>' +
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
             '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
         // donate button
         //kitty's
