@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.237 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.236 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -332,6 +332,8 @@ eventer(messageEvent, function (e) {
 $("#advertisement").remove();
 $("#mcbanners-container").remove();
 $("#adsBottom").remove();
+//remove adds
+$("#adsGameOver").remove();
 
 //Loader Icons 
 loadericon();
