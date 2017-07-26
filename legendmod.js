@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.238 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.236 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -115,7 +115,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "32"; // the version 1.1-> 1.11
+var semimodVersion = "33"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -328,9 +328,13 @@ eventer(messageEvent, function (e) {
 ///////////////////////////////////////////////////////////////////////////
 */
 
+//Delete agario divs and images from memory
+$("#advertisement").remove();
+$("#mcbanners-container").remove();
+$("#adsBottom").remove();
 
+//Loader Icons 
 loadericon();
-
 
 setTimeout(function() {
     if (searchSip == null) {
@@ -2596,7 +2600,7 @@ function init(modVersion) {
 }
 
 function loadericon() {
-	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
+	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/iconlegendbannernice.png" /></div>');
 	$("div#imagebig" ).css({
    'transition': 'all 2s ease-in-out!important',
 		'width': '100%',
