@@ -81,8 +81,8 @@ if (location.host == "agar.io" && location.pathname == "/") {
  	   page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?MCSDK[\s\S]*?<\/script>/, "");
   	   page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?Outstream[\s\S]*?<\/script>/, "");
  	   page = page.replace(/<script.*?src=".*?outstream\.js.*?><\/script>/, "");
-  	  page = page.replace(/<script.*?src=".*?agario\.core\.js.*?><\/script>/, "");
-        page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + legendJSniff3JS + "<script>init('" + modVersion + "');</script>" + "</body>");
+  	   page = page.replace(/<script.*?src=".*?agario\.core\.js.*?><\/script>/, "");
+           page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + legendJSniff3JS + "<script>init('" + modVersion + "');</script>" + "</body>");
         return page;
     }
 
