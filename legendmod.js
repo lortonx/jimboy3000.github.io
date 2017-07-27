@@ -1,11 +1,16 @@
 /*************
- * LEGEND mod v2.239 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.240 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-$("#region").on('change', function() {
+
+/*
+ $("#region").on('change', function() {
     adres();
-});
+}); 
+$("#server-ws").on('change', function() {
+    adres();
+}); */
 $('#gamemode').on('change', function() {
-    adres();
+ //   adres();
     if (this.value == ":party") {
         $("#create-party-btn").click();
     }
@@ -371,10 +376,10 @@ setTimeout(function() {
 
                         setTimeout(function() {
                             realmode = getGameMode();
-                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                             var tmz = $("#server").val();
                             // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-                            $("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");
+//                            $("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");
                             currentIP = tmz;
                             if (realmode != ":party") {
                                 setTimeout(function() {
@@ -440,16 +445,16 @@ setTimeout(function() {
         MC.setQuality($('#quality').val());
         //	history.pushState(stateObj, "page 2", "#" + currentToken );
         if (searchSip != null) {
-            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
             if (region == null) {
-                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip);
+//                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip);
                 //$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip).attr("style", "opacity: 0;");
                 setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
                 }, 5000);
             } else {
 
-                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2).attr("style", "opacity: 0;");
+//                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2).attr("style", "opacity: 0;");
                 //	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
                 setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
@@ -459,8 +464,10 @@ setTimeout(function() {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
-        }
-        $("#cur-tk-hud").bind("DOMSubtreeModified", function() {
+        }		
+		
+        $("#server-ws").on('change', function() {
+			adres();
             setTimeout(function() {
                 realmode = getGameMode();
                 if (searchSip == null) {
@@ -1477,7 +1484,7 @@ function init(modVersion) {
         $("#region").change(function() {
             localStorage.setItem("location2", MC.getRegion());
         });
-
+/*
         if (searchSip == null) {
             $(document).ajaxComplete(function(event, xhr, settings) {
                 //console.log(xhr);
@@ -1491,9 +1498,9 @@ function init(modVersion) {
                     if (xhr.responseJSON.ip != null && xhr.responseJSON.hasOwnProperty('ip')) {
                         currentIP = xhr.responseJSON.ip;
                         //	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
-                        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//                        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                         //        $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
-                        $("#cur-tk-hud").html("IP:" + currentIP + "<br>Region:" + MC.getRegion() + " Mode" + modebetter).attr("style", "opacity: 0;");
+//                        $("#cur-tk-hud").html("IP:" + currentIP + "<br>Region:" + MC.getRegion() + " Mode" + modebetter).attr("style", "opacity: 0;");
                         //  }
                     }
 
@@ -1545,7 +1552,7 @@ function init(modVersion) {
                 }
             }, 6000); //10
         }
-
+*/
         $("#autoCoinBtn").click(function() {
 
             var checked = !($(this).attr('aria-pressed') == "true");
@@ -1744,7 +1751,7 @@ function init(modVersion) {
 
 
 
-        $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
+//        $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
         //$("#cur-tk-hud").attr("style", "opacity: 0;");
 
 
@@ -2717,8 +2724,8 @@ function joinToken(token) {
     //setTimeout(function(){ $("#gamemode").val(lastMode); }, 1000);
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
-        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");;
+//        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");;
 
     }
 
@@ -4518,7 +4525,7 @@ function adres() {
 
 function joinpartyfromconnect() {
     MC.joinParty($("#server").val());
-    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
+//    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
 }
 
 function openbleedmod() {
