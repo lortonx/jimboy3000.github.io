@@ -1,16 +1,17 @@
 /*************
- * LEGEND mod v2.240 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.237 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
-/*
+
  $("#region").on('change', function() {
     adres();
 }); 
+/*
 $("#server-ws").on('change', function() {
     adres();
 }); */
 $('#gamemode').on('change', function() {
- //   adres();
+   adres();
     if (this.value == ":party") {
         $("#create-party-btn").click();
     }
@@ -1263,7 +1264,7 @@ function init(modVersion) {
         $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
         $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
 
-        $('#themePreset').on('change', function() {
+        $('#themePres	et').on('change', function() {
             setTimeout(function() {
                 var c = document.getElementById("minimap-sectors");
                 var ctx = c.getContext("2d");
@@ -2725,7 +2726,7 @@ function joinToken(token) {
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
 //        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-//        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");;
+//        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");
 
     }
 
@@ -4513,7 +4514,20 @@ function adres() {
 		setTimeout(function(){
 	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
             d = c.exec($("#server-ws").val());
-			$("#server").val(d[1].replace(/-/g, '.') + d[2]);	
+			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
+			currentIP=d[1].replace(/-/g, '.') + d[2];
+			setTimeout(function() {
+			    realmode = getGameMode();
+                if (searchSip == null) {
+                    if (realmode != ":party") {
+                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
+                    }
+                    if (realmode == ":party") {
+                        window.history.pushState(null, null, window.location.pathname);
+                        history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());
+                    }
+                }
+			}, 1000);
 			}, 800);
 	}
 	else {
