@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.237 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.238 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 $("#region").on('change', function() {
     adres();
@@ -4484,6 +4484,7 @@ function adres() {
             //texture1=this.url;texture2=texture1.split(':').pop();texture2=texture2.replace("/","");texture3=texture1.split('ip-').pop();texture3=texture3.substring(0, texture3.indexOf('.'));texture3=texture3.replace(/-/g,".");texture3=texture3+":"+texture2;
             setTimeout(function() {
                 $("#server").val(currentIP);
+				
             }, 800);
 
             //  $('#gamemode').val(realmode);
@@ -4493,7 +4494,14 @@ function adres() {
             }, 2000);
         }
         try {
-            adrs.apply(this, [b]), WebSocket.prototype.send = adrs
+            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
+                d = c.exec(this.url);
+			currentIP =	d[1].replace(/-/g, '.') + d[2];	
+            SIP="http://agar.io/?sip=" + d[1].replace(/-/g, '.') + d[2];
+			$("#server").val(currentIP);
+        } catch (e) {}
+        try {
+            a.apply(this, [b]), WebSocket.prototype.send = a
         } catch (e) {
             window.__WS_send.apply(this, [b]), WebSocket.prototype.send = window.__WS_send
         }
