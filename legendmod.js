@@ -2581,7 +2581,7 @@ function init(modVersion) {
             $("#connect2").hide();
             $("#searchShortcut").hide();
             $("#reconnectBtn").hide();
-            $(".btn.btn-warning.btn-server-info.icon-cogs").hide();
+            $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
             $("#gamemode").hide();
 
             //$("#create-party-btn-2").click();
