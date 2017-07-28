@@ -404,6 +404,12 @@ setTimeout(function() {
             })
             setTimeout(function() {
                 adres();
+            }, 2000);	
+            setTimeout(function() {
+                adres();
+            }, 3000);			
+            setTimeout(function() {
+                adres();
             }, 5000);
             setTimeout(function() {
                 adres();
