@@ -19,19 +19,15 @@
 // ==/UserScript==
 // Legend Mod by Jimboy3100
 /*MIT License
-
 Copyright (c) [2017] [The Legend Mod]
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -54,8 +50,8 @@ if (location.host == "agar.io" && location.pathname == "/") {
     var rangeCSS = '<link href="https://jimboy3100.github.io/rangeslider.css" rel="stylesheet"></link>';
     var perfectCSS = '<link href="https://jimboy3100.github.io/perfect-scrollbar.min.css" rel="stylesheet"></link>';
     var faCSS = '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>';
-    var legendarioCSS = '<link href="https://jimboy3100.github.io/legend.css?v=333" rel="stylesheet"></link>';
-    //var legendarioCSS = '<link href="https://jimboy3100.github.io/legend.css?v=333" rel="stylesheet"></link>';
+    var legendarioCSS = '<link href="http://cdn.ogario.ovh/v3/ogario.v3.css?v=338" rel="stylesheet"></link>';
+
 
     var ytJS = '<script src="https://jimboy3100.github.io/Youtubeiframe_api.js"></script>';
     var keyJS = '<script src="https://jimboy3100.github.io/key-event.js"></script>';
@@ -68,14 +64,14 @@ if (location.host == "agar.io" && location.pathname == "/") {
     var legendJSniffJS = '<script src="https://jimboy3000.github.io/legend.sniff.js"></script>';
     var legendJSniff2JS = '<script src="https://jimboy3000.github.io/legend.sniff2.js"></script>';
     var legendJSniff3JS = '<script src="https://jimboy3000.github.io/changedskins.js"></script>';
-    var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=333"></script>';
-    var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=333" charset="utf-8"></script>';
+    var legendarioSniffJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.sniff.js?v=338"></script>';
+    var legendarioJS = '<script src="http://cdn.ogario.ovh/v3/ogario.v3.js?v=338" charset="utf-8"></script>';
     var socketJS = '<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>';
     var modVersion = GM_info.script.version;
 
     // Inject Legend
     function inject(page) {
-        //    var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS  + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendarioSniffJS + legendJSniff2JS + ytJS + keyJS + "</head>");
+        //    var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + socketJS + "</head>");
         var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + socketJS + "</head>");
    	 page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?NREUM[\s\S]*?<\/script>/, "");
          page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?Outstream[\s\S]*?<\/script>/, "");
