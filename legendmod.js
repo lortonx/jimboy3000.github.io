@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.437 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.438 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -1403,7 +1403,7 @@ function init(modVersion) {
                     MC.setQuality($('#quality').val());
                 }, 5000);
                 setTimeout(function() {
-                    MC.setQuality($('#quality').val());
+                    MC.setQuality($('#quality').val());					
                 }, 6000);
                 if (messageone == 1) {
                     if (timesopened == null || timesopened == "" || timesopened <= 5) {
@@ -1425,7 +1425,13 @@ function init(modVersion) {
                     return messageone = 0;
                 }
             });
-
+		$(".btn.btn-danger.btn-logout").click(
+            function() {
+                setTimeout(function() {
+					adres();
+                    MC.setQuality($('#quality').val());
+                }, 1000);});
+				
         // listen for server disconnect
         MC.onDisconnect = function() {
             toastr["error"](Premadeletter10).css("width", "210px");
