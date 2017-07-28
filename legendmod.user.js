@@ -77,12 +77,11 @@ if (location.host == "agar.io" && location.pathname == "/") {
     function inject(page) {
         //    var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS  + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendarioSniffJS + legendJSniff2JS + ytJS + keyJS + "</head>");
         var page = page.replace("</head>", cpickerCSS + toastrCSS + switchCSS + rangeCSS + perfectCSS + legendarioCSS + faCSS + cpickerJS + toastrJS + switchJS + rangeJS + perfectJS + legendJSniff2JS + legendarioSniffJS + ytJS + keyJS + socketJS + "</head>");
- 	   page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?NREUM[\s\S]*?<\/script>/, "");
- 	   page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?MCSDK[\s\S]*?<\/script>/, "");
-  	   page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?Outstream[\s\S]*?<\/script>/, "");
- 	   page = page.replace(/<script.*?src=".*?outstream\.js.*?><\/script>/, "");
-  	   page = page.replace(/<script.*?src=".*?agario\.core\.js.*?><\/script>/, "");
-           page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + legendJSniff3JS + "<script>init('" + modVersion + "');</script>" + "</body>");
+   	 page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?NREUM[\s\S]*?<\/script>/, "");
+         page = page.replace(/<script[^>]*>((?!<script)[\s\S])*?Outstream[\s\S]*?<\/script>/, "");
+   	 page = page.replace(/<script.*?src=".*?outstream\.js.*?><\/script>/, "");
+   	 page = page.replace(/<script.*?src=".*?agario\.core\.js.*?><\/script>/, "");
+         page = page.replace("</body>", legendJSniffJS + legendarioJS + legendJS + legendJSniff3JS + "<script>init('" + modVersion + "');</script>" + "</body>");
         return page;
     }
 
