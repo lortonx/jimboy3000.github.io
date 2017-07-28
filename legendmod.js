@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.340 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.337 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -711,7 +711,7 @@ function init(modVersion) {
 
         $("#overlays").css("z-index", 100);
 
-        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
+        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><i class="fa fa-search retro"></i><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
             '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
             '<div id="" style="margin-top: 10px;">' +
             '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
@@ -951,7 +951,7 @@ function init(modVersion) {
         //clone region and gamemode//$("#region").clone().prependTo("#searchLog").attr("onclick","MC.setRegion($(this).val());");//$("#gamemode").clone().prependTo("#searchLog").attr('id', 'gamemode2').after("#gamemode");					 						  
 
         $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
-            '<a id="searchShortcut" class="glyphicon glyphicon-search" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
+            '<a id="searchShortcut" class="btn btn-info btn-sm icon-loop2" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
             '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
             '<a id="reconnectBtn" class="btn btn-info btn-sm icon-loop2" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
             'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
@@ -2622,7 +2622,7 @@ function loadericon() {
 		'left': '0',
 		'right': '0',
 		'z-index': '9999999999999999999999999999999999999999999999999999999999999999',
-		'background': '#615fff'
+		'background': '#B048B5'
 	});
 	$("img#imagebig3" ).css({
     'left': '50%',
@@ -3619,6 +3619,7 @@ function settroll1false() {
 function whenplayerdies() {
     if (troll1 == "YES") {
         MC.onPlayerDeath = function() {
+			
             //afterdeathtonormalmode();
             $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({
                 opacity: 0.8
@@ -3651,6 +3652,7 @@ function whenplayerdies() {
         }
     } else {
         MC.onPlayerDeath = function() {
+			
             //afterdeathtonormalmode();
         };
     }
@@ -4127,7 +4129,7 @@ function openhelper() {
 
 function afterdeathtonormalmode() {
     MC.onPlayerDeath = function() {
-
+	adres();
         setTimeout(function() {
             if (realmode == ":party") {
                 $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
