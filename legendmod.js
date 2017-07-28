@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.438 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.439 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -401,7 +401,11 @@ setTimeout(function() {
                     }
 
                 });
-            })
+            });
+			adres();
+            setTimeout(function() {
+                adres();
+            }, 500);	
             setTimeout(function() {
                 adres();
             }, 2000);	
@@ -411,9 +415,7 @@ setTimeout(function() {
             setTimeout(function() {
                 adres();
             }, 5000);
-            setTimeout(function() {
-                adres();
-            }, 7000);
+
             adres();
 
         })(window, window.jQuery);
