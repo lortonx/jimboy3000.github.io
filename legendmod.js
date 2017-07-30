@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.442 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.441 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -1990,7 +1990,9 @@ function init(modVersion) {
 		.mouseleave(function() {$('#sendyt5').css('background-color', "transparent");});	
         $('#sendyt6').mouseenter(function() {$('#sendyt6').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#sendyt6').css('background-color', "transparent");});
-
+		
+        $('#RotateRight').mouseenter(function() {$('#RotateRight').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#RotateRight').css('background-color', "transparent");});
 		
 
         // fix main menu placement after stats
