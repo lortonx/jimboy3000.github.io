@@ -1439,7 +1439,9 @@ function init(modVersion) {
             appendSysLog("DISCONNECTED :(");
             if (timesdisconnected < 2) {
                 MC.reconnect();
+				setTimeout(function() {
                 adres();
+				}, 3000);
                 timesdisconnected++;
                 return timesdisconnected;
             } else {
