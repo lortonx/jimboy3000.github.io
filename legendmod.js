@@ -2504,7 +2504,7 @@ function init(modVersion) {
             if (autoCoinBtn == "true") {
                 setTimeout(function() {
                     $("#autoCoinBtn").click();
-                }, 1000);
+                }, 5000);
             }
             //	if (copyGameNames == "true") {
             //		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
