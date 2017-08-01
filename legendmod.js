@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.445 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -108,6 +108,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
+var privateSrv= getParameterByName("ip", url);
 var realmode = "";
 var realmode2 = "";
 var token = "";
@@ -445,7 +446,7 @@ setTimeout(function() {
         //	$("body").show();	
         MC.setQuality($('#quality').val());
         //	history.pushState(stateObj, "page 2", "#" + currentToken );
-        if (searchSip != null) {
+        if (searchSip != null && privateSrv==null) {
 //            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
             if (region == null) {
 //                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip);
@@ -461,11 +462,16 @@ setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
                 }, 5000);
             }
-        } else if (searchSip == null) {
+        } else if (searchSip == null && privateSrv==null) {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
-        }		
+        }	
+		else if (privateSrv!=null) {
+				
+                history.pushState(stateObj, "page 2", "?ip=" + searchSip + "&?SERVER=PRIVATE");
+				logout();return false; 
+        }	
 		
         $("#server-ws").on('change', function() {
 			adres();
