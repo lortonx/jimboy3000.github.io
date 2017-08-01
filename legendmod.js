@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -467,9 +467,8 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-		else if (privateSrv!=null) {
-				
-                history.pushState(stateObj, "page 2", "?ip=" + searchSip + "&?SERVER=PRIVATE");
+		else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
 				logout();return false; 
         }	
 		
@@ -2687,6 +2686,19 @@ function init(modVersion) {
             //$(".agario-party").empty();$(".form-group.clearfix").hide();
             //$(".form-group").hide();
         }
+		else if (privateSrv!=null) {				
+            $("#region").hide();
+            $("#gamemode2").hide();
+            $("#server").hide();
+            $("#connect2").hide();
+            $("#searchShortcut").hide();
+            $("#reconnectBtn").hide();
+            $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
+            $("#gamemode").hide();
+			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
+			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
+			
+		}
 
         //if (searchSip==null){
         //afterdeathtonormalmode();}
@@ -4619,15 +4631,21 @@ function adres() {
 			currentIP=d[1].replace(/-/g, '.') + d[2];
 			setTimeout(function() {
 			    realmode = getGameMode();
-                if (searchSip == null) {
+                if (searchSip == null && privateSrv==null) {
                     if (realmode != ":party") {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
                     }
-                    if (realmode == ":party") {
+                    else if (realmode == ":party") {
                         window.history.pushState(null, null, window.location.pathname);
                         history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());
                     }
-                }
+				}
+				else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
+				
+			}	                
+			
+				
 			}, 1000);
 			}, 800);
 	}
