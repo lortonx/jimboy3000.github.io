@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.443 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.444 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -4210,6 +4210,12 @@ function openhelper() {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/legendhelper.js";
+    $("body").append(s);
+}
+function legendformIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/legendformIframe.js";
     $("body").append(s);
 }
 
