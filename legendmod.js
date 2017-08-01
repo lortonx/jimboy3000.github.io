@@ -2708,7 +2708,7 @@ function init(modVersion) {
 			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
 			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
 			setTimeout(function() {
-			toastr["warning"]('<b>[SERVER]:</b> Legend Mod Private Server: ' + currentIP + '<br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+			toastr["warning"]('<b>[SERVER]:</b> Legend Mod Private Server: ' + privateSrv + '<br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
             $("#server").hide();
             $("#connect2").hide();			
 			}, 3000); 
