@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.442 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.443 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -121,7 +121,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "35"; // the version 1.1-> 1.11
+var semimodVersion = "36"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -914,8 +914,7 @@ function init(modVersion) {
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
-		$("#quick-menu").append('<a id= "LegendClanLink" class="fa fa-heart-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend Clan" href="https://docs.google.com/forms/d/1ZVIMhZT-AKXDWiwLJ7jalEvbpYhLcmG0dQuAazWm_dY/"></a>'+
-		'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas&Statistics Form" href="https://docs.google.com/forms/d/1ZVIMhZT-AKXDWiwLJ7jalEvbpYhLcmG0dQuAazWm_dY/"></a>'+
+		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" href="https://docs.google.com/forms/d/1ZVIMhZT-AKXDWiwLJ7jalEvbpYhLcmG0dQuAazWm_dY/" target="_blank"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 		
         // prevent edit
