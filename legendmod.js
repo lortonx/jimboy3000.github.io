@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.448 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.449 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
