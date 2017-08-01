@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.448 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
 
@@ -2695,6 +2695,8 @@ function init(modVersion) {
             $("#reconnectBtn").hide();
             $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
             $("#gamemode").hide();
+			$("#server").hide();
+			$("#connect2").hide();
 			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
 			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
 			
