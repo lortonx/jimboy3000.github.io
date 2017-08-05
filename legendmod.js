@@ -10,8 +10,8 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
-		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
-		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>');
+		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>'+
+		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>');
     }
 	else if (this.value != ":PrS") {
     console.log("Leaving PrS");
@@ -142,7 +142,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "38"; // the version 1.1-> 1.11
+var semimodVersion = "39"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1310,7 +1310,7 @@ function init(modVersion) {
         $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
         $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
 
-        $('#themePres	et').on('change', function() {
+        $('#themePreset').on('change', function() {
             setTimeout(function() {
                 var c = document.getElementById("minimap-sectors");
                 var ctx = c.getContext("2d");
