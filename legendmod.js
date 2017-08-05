@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.450 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.451 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -306,6 +306,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
         $(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 		}
