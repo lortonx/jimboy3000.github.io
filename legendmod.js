@@ -4686,7 +4686,7 @@ function adres() {
 			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
 			currentIP=d[1].replace(/-/g, '.') + d[2];
 			setTimeout(function() {
-				 MC.setQuality($('#quality').val());
+				 
 			    realmode = getGameMode();
                 if (searchSip == null && privateSrv==null) {
                     if (realmode != ":party") {
@@ -4712,6 +4712,13 @@ function adres() {
                 $("#server").val("#" + MC.getPartyToken());
             }, 2000);
         }
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 3000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 4000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 5000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 6000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 7000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 8000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 11000);
 }		
 
 function joinpartyfromconnect() {
