@@ -1,28 +1,27 @@
 /*************
- * LEGEND mod v2.445 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 
-
+var oldgamemode=$("#gamemode");
  $("#region").on('change', function() {
-    adres();
-}); 
-/*
-$("#server-ws").on('change', function() {
-    adres();
-}); */
-$('#gamemode').on('change', function() {
-   adres();
-    if (this.value == ":party") {
-        $("#create-party-btn").click();
-    console.log("Party stuff fixed");
-	}
-    if (this.value == ":PrS1") {
-    console.log("Going to PRS1");
-	PrivateServer1();
+	if (this.value == ":PrS") {
+    console.log("Going to PrS");
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
+		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
+		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>');
     }
-    
+	else if (this.value != ":PrS") {
+    console.log("Leaving PrS");
+	
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+		'<option value=":party" data-itr="page_party">Party Mode</option>');	
+    }	
+	adres();
 });
-
 
 
 /*		
@@ -1132,7 +1131,7 @@ function init(modVersion) {
             //return messageone=1;
         });
 		//Private Server 1
-		$('#gamemode').append('<option value=":PrS1" data-itr="PrS1">PS:Instant Merge</option>');
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');		
 		
 		
 		
@@ -4615,6 +4614,9 @@ function enableshortcuts() {
 
 function PrivateServer1(){
 	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+}
+function PrivateServer2(){
+	window.open("http://agar.io/?ip=195.181.243.147:443","_self");
 }
 
 /*
