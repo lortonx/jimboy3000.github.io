@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.449 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -620,6 +620,8 @@ setTimeout(function() {
 }, 10000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
+			//Load Private Servers
+	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');		
 }, 13000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
@@ -2497,8 +2499,7 @@ function init(modVersion) {
 
 
         setTimeout(function() {
-			//Load Private Servers
-			$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+
 			
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
