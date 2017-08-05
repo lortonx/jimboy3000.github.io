@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.451 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.445 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -4686,6 +4686,7 @@ function adres() {
 			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
 			currentIP=d[1].replace(/-/g, '.') + d[2];
 			setTimeout(function() {
+				 MC.setQuality($('#quality').val());
 			    realmode = getGameMode();
                 if (searchSip == null && privateSrv==null) {
                     if (realmode != ":party") {
@@ -4707,6 +4708,7 @@ function adres() {
 	}
 	else {
             setTimeout(function() {
+				 MC.setQuality($('#quality').val());
                 $("#server").val("#" + MC.getPartyToken());
             }, 2000);
         }
