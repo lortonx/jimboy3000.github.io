@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -310,6 +310,17 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 		}
+		if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
+				
+				logout();
+				setTimeout(function() {
+					MC.setQuality($('#quality').val());
+//					$(".toast.toast-warning").remove(); //dont remove otherwise it will loop the logout
+					spectate();
+            }, 500);
+				
+        }	
         /*if (openthecommunication=="YES"){
         	setTimeout(function () {
         	$('#gamemode').val(realmode2);
@@ -491,18 +502,7 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-		else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
-				logout();
-				setTimeout(function() {
-					MC.setQuality($('#quality').val());
-					spectate();
-            }, 500);
-				$("#gamemode").click(function() {                       
-						$(".toast.toast-warning").remove();
-                    });
-				return false;
-        }	
+
 		
         $("#server-ws").on('change', function() {
 			adres();
