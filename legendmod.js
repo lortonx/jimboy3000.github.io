@@ -1,10 +1,44 @@
 /*************
- * LEGEND mod v2.49 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
-
-		
-
+var oldgamemode=$("#gamemode");
+		//Private Servers
+//$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+ $("#region").on('change', function() {
+	if (this.value == ":PrS") {
+    console.log("Going to PrS");
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
+		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
+		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>');
+    }
+	else if (this.value != ":PrS") {
+    console.log("Leaving PrS");
+	
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+		'<option value=":party" data-itr="page_party">Party Mode</option>');	
+    }	
+	adres();
+});
+$('#gamemode').on('change', function() {
+   adres();
+    if (this.value == ":party") {
+        $("#create-party-btn").click();
+    console.log("Party stuff fixed");
+	}
+    else if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }   
+});
 
 /*		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
@@ -108,7 +142,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "37"; // the version 1.1-> 1.11
+var semimodVersion = "38"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -136,7 +170,6 @@ var semiurl2;
 var PostedThings;
 var Ultimouseenabled=0;
 var setscriptingcom = "YES";
-var oldgamemode=$("#gamemode"); //Private Servers
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -689,43 +722,6 @@ function init(modVersion) {
         	adres();
         	});		*/
 
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		$("#region").on('change', function() {
-		if (this.value == ":PrS") {
-		console.log("Going to PrS");
-        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
-		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
-		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>');
-		}
-		else if (this.value != ":PrS") {
-		console.log("Leaving PrS");
-	
-        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
-		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
-		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
-		'<option value=":party" data-itr="page_party">Party Mode</option>');	
-			}	
-			adres();
-			});
-			$('#gamemode').on('change', function() {
-			adres();
-			if (this.value == ":party") {
-			$("#create-party-btn").click();
-			console.log("Party stuff fixed");
-			}
-		else if (this.value == ":PrS1") {
-			console.log("Going to PRS1");
-			PrivateServer1();
-			}
-		else if (this.value == ":PrS2") {
-			console.log("Going to PRS2");
-			PrivateServer2();
-			}   
-		});	
-			
-			
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
         $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
@@ -1065,8 +1061,15 @@ function init(modVersion) {
                 setTimeout(function() {
                     MC.setQuality($('#quality').val());
                 }, 3000);
+                setTimeout(function() {
+                    MC.setQuality($('#quality').val());
+                }, 5000);
+                setTimeout(function() {
+                    MC.setQuality($('#quality').val());
+                }, 7000);				
             }
         });
+	
 
 
         /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
@@ -2327,17 +2330,20 @@ function init(modVersion) {
         }
 
         $('#server-connect').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
         $('#server-reconnect').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
         $('#server-join').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
@@ -2491,6 +2497,8 @@ function init(modVersion) {
 
 
         setTimeout(function() {
+			//Load Private Servers
+			$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 			
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
