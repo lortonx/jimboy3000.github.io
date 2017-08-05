@@ -1,9 +1,11 @@
 /*************
- * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-
+	
 var oldgamemode=$("#gamemode");
- $("#region").on('change', function() {
+		//Private Servers
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+$("#region").on('change', function() {
 	if (this.value == ":PrS") {
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
@@ -22,7 +24,21 @@ var oldgamemode=$("#gamemode");
     }	
 	adres();
 });
-
+$('#gamemode').on('change', function() {
+   adres();
+    if (this.value == ":party") {
+        $("#create-party-btn").click();
+    console.log("Party stuff fixed");
+	}
+    else if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }   
+});
 
 /*		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
@@ -1130,8 +1146,7 @@ function init(modVersion) {
             }
             //return messageone=1;
         });
-		//Private Server 1
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');		
+
 		
 		
 		
