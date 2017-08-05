@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.445 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -493,7 +493,15 @@ setTimeout(function() {
         }	
 		else if (privateSrv!=null) {				
                 history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
-				logout();return false; 
+				logout();
+				setTimeout(function() {
+					MC.setQuality($('#quality').val());
+					spectate();
+            }, 500);
+				$("#gamemode").click(function() {                       
+						$(".toast.toast-warning").remove();
+                    });
+				return false;
         }	
 		
         $("#server-ws").on('change', function() {
