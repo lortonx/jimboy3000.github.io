@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.448 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -11,7 +11,10 @@ var oldgamemode=$("#gamemode");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
 		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>'+
-		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>');
+		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
+		'<option value=":PrS3" data-itr="PrS3">1vs1 Arena(1)</option>'+
+		'<option value=":PrS4" data-itr="PrS4">1vs1 Arena(2)</option>'+
+		'<option value=":PrS5" data-itr="PrS5">1vs1 Arena(3)</option>');
     }
 	else if (this.value != ":PrS") {
     console.log("Leaving PrS");
@@ -37,7 +40,19 @@ $('#gamemode').on('change', function() {
     else if (this.value == ":PrS2") {
     console.log("Going to PRS2");
 	PrivateServer2();
-    }   
+    }  
+    else if (this.value == ":PrS3") {
+    console.log("Going to PRS3");
+	PrivateServer3();
+    }
+    else if (this.value == ":PrS4") {
+    console.log("Going to PRS4");
+	PrivateServer4();
+    }
+    else if (this.value == ":PrS5") {
+    console.log("Going to PRS5");
+	PrivateServer5();
+    }	
 });
 
 /*		
@@ -142,7 +157,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "39"; // the version 1.1-> 1.11
+var semimodVersion = "40"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -310,17 +325,6 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 		}
-		if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
-				
-				logout();
-				setTimeout(function() {
-					MC.setQuality($('#quality').val());
-//					$(".toast.toast-warning").remove(); //dont remove otherwise it will loop the logout
-					spectate();
-            }, 500);
-				
-        }	
         /*if (openthecommunication=="YES"){
         	setTimeout(function () {
         	$('#gamemode').val(realmode2);
@@ -374,6 +378,7 @@ eventer(messageEvent, function (e) {
 $("#advertisement").remove();
 $("#mcbanners-container").remove();
 $("#adsBottom").remove();
+
 //remove adds
 $("#adsGameOver").remove();
 
@@ -502,7 +507,18 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-
+		else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
+				logout();
+				setTimeout(function() {
+					MC.setQuality($('#quality').val());
+					spectate();
+            }, 500);
+				$("#gamemode").click(function() {                       
+						$(".toast.toast-warning").remove();
+                    });
+				return false;
+        }	
 		
         $("#server-ws").on('change', function() {
 			adres();
@@ -4659,6 +4675,15 @@ function PrivateServer1(){
 }
 function PrivateServer2(){
 	window.open("http://agar.io/?ip=195.181.243.147:443","_self");
+}
+function PrivateServer3(){
+	window.open("http://agar.io/a?ip=195.181.243.147:4000","_self");
+}
+function PrivateServer4(){
+	window.open("http://agar.io/a?ip=195.181.243.147:4001","_self");
+}
+function PrivateServer5(){
+	window.open("http://agar.io/a?ip=195.181.243.147:4002","_self");
 }
 
 /*
