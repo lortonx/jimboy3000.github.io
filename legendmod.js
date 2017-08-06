@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.448 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -4677,13 +4677,13 @@ function PrivateServer2(){
 	window.open("http://agar.io/?ip=195.181.243.147:443","_self");
 }
 function PrivateServer3(){
-	window.open("http://agar.io/a?ip=195.181.243.147:4000","_self");
+	window.open("http://agar.io/?ip=195.181.243.147:4000","_self");
 }
 function PrivateServer4(){
-	window.open("http://agar.io/a?ip=195.181.243.147:4001","_self");
+	window.open("http://agar.io/?ip=195.181.243.147:4001","_self");
 }
 function PrivateServer5(){
-	window.open("http://agar.io/a?ip=195.181.243.147:4002","_self");
+	window.open("http://agar.io/?ip=195.181.243.147:4002","_self");
 }
 
 /*
