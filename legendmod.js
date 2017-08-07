@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -130,6 +130,8 @@ var XPBtn = localStorage.getItem("XPBtn");
 //var MAINBBtn = localStorage.getItem("MAINBBtn");
 //var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 //var MANUIBtn = localStorage.getItem("MANUIBtn");
+var MAINBTBtn = localStorage.getItem("MAINBTBtn");
+var MANUIBtn = localStorage.getItem("MANUIBtn");
 // var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
@@ -797,8 +799,8 @@ function init(modVersion) {
             '<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-            //                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
-            //											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Rounded Hud</button>' +
+            											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Centr. Leaderboard</button>' +
             //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
             '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
             '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
@@ -1717,6 +1719,37 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);
             }
         });
+		
+		        $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MAINBTBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
+				'#time-hud { border-radius: 10px; } </style>');				
+				$(this).html('<i class="fa fa-minus"></i>Square Hud');}
+        		else {localStorage.setItem("MAINBTBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
+				'#menu-footer, #leaderboard-hud, #dropDown, #minimap-hud,'+
+				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
+				'#time-hud { border-radius: 0 0 0 0 } </style>');
+				$(this).html('<i class="fa fa-minus"></i>Rounded Hud');}} );   
+                $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MANUIBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ !important;text-align: center; } </style>');				
+        		$(this).html('<i class="fa fa-minus"></i>Left Leaderboard');}
+				else {localStorage.setItem("MANUIBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: left; } </style>');
+				$(this).html('<i class="fa fa-minus"></i>Centr. Leaderboard');}} ); 
         //     $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         //		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
         //		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
@@ -2517,6 +2550,8 @@ function init(modVersion) {
                 $("#SHOSHOBtn").click();
                 //		$("#TIMEBtn").click();
                 //		$("#MAINBBtn").click();
+				$("#MAINBTBtn").click();
+				$("#MANUIBtn").click();
                 //		$("#MAINBTBtn").click();
                 $("#XPBtn").click();
                 //		$("#MANUIBtn").click();
@@ -2550,6 +2585,8 @@ function init(modVersion) {
             //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
             //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
             //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
+			if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
+            if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
             //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
             if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
@@ -4662,6 +4699,10 @@ function enableshortcuts() {
     //	$("#MAINBBtn").click(); }
     //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
     //	$("#MAINBTBtn").click(); }
+	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+				$("#MAINBTBtn").click(); }
+			if($("#MANUIBtn").attr('aria-pressed') == "false"){
+				$("#MANUIBtn").click(); }
     if ($("#XPBtn").attr('aria-pressed') == "false") {
         $("#XPBtn").click();
     }
