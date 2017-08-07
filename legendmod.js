@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.446 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.447 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -800,7 +800,7 @@ function init(modVersion) {
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
                                                         '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Rounded Hud</button>' +
-            											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-align-center"></i>Cent. Leaderboard</button>' +
+            											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
             '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
             '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
@@ -1740,8 +1740,11 @@ function init(modVersion) {
 				'#menu-footer, #leaderboard-hud, #dropDown, #minimap-hud,'+
 				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
 				'#time-hud { border-radius: 0 0 0 0 } </style>');
-				$(this).html('<i class="fa fa-minus"></i>Rounded Hud');}} );   
-                $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+				$(this).html('<i class="fa fa-minus"></i>Rounded Hud');}} ); 
+            $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MANUIBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
+        		else {localStorage.setItem("MANUIBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  				
+       /*         $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("MANUIBtn", true);
 				var headID = document.getElementsByTagName("head")[0];
 				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: center; } </style>');				
@@ -1749,7 +1752,7 @@ function init(modVersion) {
 				else {localStorage.setItem("MANUIBtn", false);
 				var headID = document.getElementsByTagName("head")[0];
 				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: left; } </style>');
-				$(this).html('<i class="fa fa-align-center"></i>Cent. Leaderboard');}} ); 
+				$(this).html('<i class="fa fa-align-center"></i>Cent. Leaderboard');}} ); */
         //     $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         //		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
         //		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
@@ -2775,7 +2778,7 @@ function init(modVersion) {
             $("#server").hide();
             $("#connect2").hide();
             $("#searchShortcut").hide();
-			$("#copySIPBtn").css('margin-left', '67px');
+			//$("#copySIPBtn").css('margin-left', '67px');
             $("#reconnectBtn").hide();
             $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
             $("#gamemode").hide();
@@ -2797,7 +2800,7 @@ function init(modVersion) {
             $("#server").hide();
             $("#connect2").hide();
             $("#searchShortcut").hide();
-			$("#copySIPBtn").css('margin-left', '67px');
+			//$("#copySIPBtn").css('margin-left', '67px');
             $("#reconnectBtn").hide();
             $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
             $("#gamemode").hide();
