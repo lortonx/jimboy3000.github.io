@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.448 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.449 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -234,8 +234,8 @@ var Premadeletter42 = "Show Shortcuts";
 var Premadeletter43 = "Hide Shortcuts";
 var Premadeletter44 = "Show XP BAR";
 var Premadeletter45 = "Hide XP BAR";
-//var Premadeletter46="Show TIME";
-//var Premadeletter47="Hide TIME";
+var Premadeletter46 = "Show TIME";
+var Premadeletter47 = "Hide TIME";
 var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
