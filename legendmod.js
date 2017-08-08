@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.449 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.450 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -234,6 +234,8 @@ var Premadeletter42 = "Show Shortcuts";
 var Premadeletter43 = "Hide Shortcuts";
 var Premadeletter44 = "Show XP BAR";
 var Premadeletter45 = "Hide XP BAR";
+var Premadeletter45a = "Rounded Hud";
+var Premadeletter45b = "Square Hud";
 var Premadeletter46 = "Show TIME";
 var Premadeletter47 = "Hide TIME";
 var Premadeletter48 = "Show Everything";
@@ -799,7 +801,7 @@ function init(modVersion) {
             '<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Rounded Hud</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
             											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
             '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
@@ -1730,7 +1732,7 @@ function init(modVersion) {
 				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
 				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
 				'#time-hud { border-radius: 10px; } </style>');				
-				$(this).html('<i class="fa fa-minus"></i>Square Hud');}
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
         		else {localStorage.setItem("MAINBTBtn", false);
 				var headID = document.getElementsByTagName("head")[0];
 				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
@@ -1740,7 +1742,7 @@ function init(modVersion) {
 				'#menu-footer, #leaderboard-hud, #dropDown, #minimap-hud,'+
 				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
 				'#time-hud { border-radius: 0 0 0 0 } </style>');
-				$(this).html('<i class="fa fa-minus"></i>Rounded Hud');}} ); 
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
             $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("MANUIBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
         		else {localStorage.setItem("MANUIBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  				
