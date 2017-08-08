@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.451 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.452 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -159,7 +159,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "41"; // the version 1.1-> 1.11
+var semimodVersion = "42"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -512,7 +512,7 @@ setTimeout(function() {
             }
         }	
 		else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
+                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
 				logout();
 				setTimeout(function() {
 					MC.setQuality($('#quality').val());
@@ -1077,7 +1077,7 @@ function init(modVersion) {
                 }
             }
 			else if (privateSrv!=null) {
-                    copy("http://agar.io/?ip=" + currentIP + "&?SERVER=PRIVATE");
+                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");
                 
             }
         });
@@ -4722,16 +4722,16 @@ function PrivateServer1(){
 	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
 }
 function PrivateServer2(){
-	window.open("http://agar.io/?ip=195.181.243.147:443","_self");
+	window.open("http://agar.io/?ip=game.fzogar.xyz:443","_self");
 }
 function PrivateServer3(){
-	window.open("http://agar.io/?ip=195.181.243.147:4000","_self");
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4000","_self");
 }
 function PrivateServer4(){
-	window.open("http://agar.io/?ip=195.181.243.147:4001","_self");
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
 }
 function PrivateServer5(){
-	window.open("http://agar.io/?ip=195.181.243.147:4002","_self");
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4002","_self");
 }
 
 /*
@@ -4779,7 +4779,7 @@ function adres() {
                     }
 				}
 				else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + currentIP + "&?SERVER=PRIVATE");
+                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
 				
 			}	                
 			
