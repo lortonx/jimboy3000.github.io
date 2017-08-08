@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.461 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.462 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -3846,17 +3846,18 @@ function whenplayerdies() {
         MC.onPlayerDeath = function() {
 			
             //afterdeathtonormalmode();
-            $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({
+			playSound("https://jimboy3100.github.io/banners/troll1.mp3");	
+			$("#canvas").css('background-image', 'url(" https://media.giphy.com/media/eVy46EWyclTIA/giphy.gif ")').css({
                 opacity: 0.8
             });
             $("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({
-                opacity: 0.8
+                opacity: 1
             });
-            $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({
+            $("#leaderboard-hud").css('background-image', 'url(" https://media.giphy.com/media/VSuWfl1qCiRsk/giphy.gif ")').css({
                 opacity: 0.8
             });
             setTimeout(function() {
-                $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icorelax.gif ")').css({
+                $("#canvas").css('background-image', 'url(" https://media.giphy.com/media/aw9WgvgNd1bQk/giphy.gif ")').css({
                     opacity: 0.8
                 });
             }, 4000);
@@ -3872,7 +3873,7 @@ function whenplayerdies() {
                 $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({
                     opacity: 0.8
                 });
-            }, 16000);
+				}, 27000);
 
         }
     } else {
