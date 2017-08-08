@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.460 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.461 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -591,7 +591,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 6000);
@@ -601,7 +601,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 6500);
@@ -611,7 +611,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 7000);
@@ -621,7 +621,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 7500);
@@ -631,7 +631,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 8000);
@@ -641,7 +641,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 9000);
@@ -651,7 +651,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 10000);
@@ -671,7 +671,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 11000);
@@ -681,7 +681,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 12000);
@@ -697,7 +697,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 18000);
@@ -707,7 +707,7 @@ setTimeout(function() {
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
     if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
     //if(dyinglight1load!="yes"){whenplayerdies();}
@@ -1350,7 +1350,7 @@ function init(modVersion) {
 					ctx.clearRect(0, 0, c.width, c.height / 9);
 					ctx.font = "16px Georgia";
 					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-					else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 					else {ctx.fillText(minbtext2, c.width / 2, 22); }
 					MC.setQuality($('#quality').val());
             }, 200);
@@ -1362,7 +1362,7 @@ function init(modVersion) {
 				ctx.clearRect(0, 0, c.width, c.height / 9);
 				ctx.font = "16px Georgia";
 				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-				else if (privateSrv==null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 				else {ctx.fillText(minbtext2, c.width / 2, 22); }
 				MC.setQuality($('#quality').val());
             }, 100);
