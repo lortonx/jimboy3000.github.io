@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.453 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.454 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -324,7 +324,8 @@ if (languagemod == 6) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
-        $(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+		$(".toast.toast-warning").remove();
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
@@ -343,8 +344,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-		$(".toast.toast-warning").remove();
-	//        $(".command-text").text(Premadeletter0);
+	//	$(".toast.toast-warning").remove();
+	        $(".command-text").text(Premadeletter0);
     }
 });
 
