@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.462 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.463 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -326,10 +326,19 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
+		
+		spectate();
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();		
+	
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 		}
+		
+		
         /*if (openthecommunication=="YES"){
         	setTimeout(function () {
         	$('#gamemode').val(realmode2);
@@ -346,6 +355,18 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
+
+		spectate();
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();		
+		
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		
     }
 });
 
