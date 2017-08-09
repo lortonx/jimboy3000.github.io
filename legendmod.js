@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.463 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.464 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -2925,7 +2925,7 @@ $("img#imagebig2" ).css({
         checkonlyonce = "true";
         localStorage.setItem("checkonlyonce", checkonlyonce);
 
-    }, 2500);
+    }, 3500);
 }
 
 function delay(time, func) {
