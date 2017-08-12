@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.464 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.462 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -1187,6 +1187,9 @@ function init(modVersion) {
                 openvidmod();
             }
         });
+		
+		$('#stream-mode').before('<button id="stream-mode" class="btn btn-info" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
         }).mouseleave(function() {
@@ -4373,6 +4376,13 @@ function openhelper() {
     s.src = "https://jimboy3100.github.io/legendhelper.js";
     $("body").append(s);
 }
+function opennamechars() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/nicks/nicknamechars.js";
+    $("body").append(s);
+}
+
 function legendformIframe() {
     var s = document.createElement("script");
     s.type = "text/javascript";
