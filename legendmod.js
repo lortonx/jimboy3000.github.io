@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.462 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.463 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -159,7 +159,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "43"; // the version 1.1-> 1.11
+var semimodVersion = "44"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1188,7 +1188,7 @@ function init(modVersion) {
             }
         });
 		
-		$('#stream-mode').before('<button id="stream-mode" class="btn btn-info" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
 		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
