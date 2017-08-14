@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.463 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.464 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -159,7 +159,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "44"; // the version 1.1-> 1.11
+var semimodVersion = "45"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -591,7 +591,7 @@ setTimeout(function() {
             }, 10000);
         });
     }, //5000
-    9000); //9000
+    8000); //9000
 // fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
@@ -2147,7 +2147,7 @@ function init(modVersion) {
             title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users",
             placement: "bottom"
         });
-        $("#clantag").attr('placeholder', 'Password/Tag').tooltip({
+        $("#clantag").attr('placeholder', 'Password').tooltip({
             title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
             placement: "left"
         });
