@@ -1,174 +1,80 @@
-$bg: #17262b;
-$glow1: #00d8ff;
-$glow2: #ff3f00;
-$glow3: #3bff00;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
 
-$size: 3em;
+// ============================================ VAR
+
+@D:280px; // size control // diametro
+
+@R:(@D/2); // radio
+
+@B:(@R/8);
+
+@O: 0.6; // opacity
+
+@A: 2s; // accelerate
 
 
-.loading {
-  
-  cursor: pointer;
-  font-size: 0.5em;
-  color: white; 
-  font-weight: 100;
-  width: $size*1.8;
-  height: $size*1.8; 
-  line-height: $size*1.8; 
-  text-align: center;
-  position: fixed;
-  left: 50%; top: 50%;
-  margin-left: -($size/2);  
-  margin-top: -($size/2);
-  border-radius: 100%;
-  
-  border: 2px solid $glow1;
-  
-  box-shadow:
-    
-    0 0 0 0 $bg,
-    0 0 2px 3px $glow1,
-    0 0 4px 25px $bg,
-    
-    0 0 1px 32px $bg,
-    0 0 32px 25px $glow1,
-    0 0 32px 25px $bg;
-  
-  animation: pulse 1.4s linear infinite;
-  transition: all 0.3s ease;  
-  
-  
-  &:before {
-    
-    $multi: 1.55;
-    
-    box-sizing: border-box;
-    
-    content: "";
-    border-radius: 100%;
-    
-    animation: rotate 0.45s linear infinite;
-    
-    transition: 
-      opacity 1s ease 0.6s, 
-      border 0.4s ease 0s,
-      width 0.4s ease 0.2s,
-      height 0.4s ease 0.2s,
-      margin 0.4s ease 0.2s;
-    
-    position: absolute;
-    left: 50%; top: 50%;
-    
-    width: $size*$multi;
-    height: $size*$multi;
-    margin-left: -(($size*$multi)/2);
-    margin-top: -(($size*$multi)/2); 
-    
-    border-top: 1px solid $glow3;
-    border-bottom: 1px solid $glow2;
-    
-  }
-  
-  
-  &.danger {
-    
-    border-color: $glow2;
-    box-shadow: 0 0 10px 2px $glow2;
-    animation: none; 
-    
-    &:before {
-      border-color: $glow2;
-      opacity: 0;
-      
-      $multi: 7;
-      width: $size*$multi;
-      height: $size*$multi;
-      margin-left: -(($size*$multi)/2);
-      margin-top: -(($size*$multi)/2);
-    }
-    
-  }
-  
-  &.ok {
-    
-    border-color: $glow3;
-    box-shadow: 0 0 10px 0px $glow3;
-    animation: none;
-    
-    &:before {
-      
-      border-color: $glow3;
-      opacity: 0;
-      
-      $multi: 1.6;
-      width: $size*$multi;
-      height: $size*$multi;
-      margin-left: -(($size*$multi)/2);
-      margin-top: -(($size*$multi)/2); 
-      
-    }
-    
-  }
-  
-  
-  
+.hoja{
+  color: rgb(220,220,226);
+  position:absolute;
+  top:50%; left:50%;
+  margin-left:-@R;
+  margin-top:-@R;
+  width:@D;
+  height:@D;
+  text-align:center;
+  font-family: 'Open Sans', sans-serif;
+  font-size:@R/4;
+  line-height:@D;
+  -webkit-font-smoothing: antialiased;
 }
 
-@keyframes rotate {
-  
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-  
+.hoja:after,
+.hoja:before{
+  content:"";
+  border-radius:100%;
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  transform-origin:center center;
 }
 
-@keyframes pulse {
-  
-  0% { 
-    box-shadow:
-      
-      0 0 0 0 $bg,
-      0 0 2px 3px $glow1, 
-      
-      0 0 1px 32px $bg,
-      0 0 32px 25px $glow1;
-    
-  }
-  
-  49.9% {
-    
-    box-shadow:
-      0 0 1px 32px $bg,
-      0 0 32px 25px $glow1,
-      
-      0 0 1px 64px $bg,
-      0 0 60px 25px $glow1
-  }
-  
-  50% {
-    box-shadow:
-      0 0 0 0 $bg,
-      0 0 2px 3px $glow1,
-      
-      
-      0 0 1px 32px $bg,
-      0 0 32px 25px $glow1;
-  }
-  
-  100% {
-    box-shadow: 
-      0 0 1px 32px $bg,
-      0 0 32px 25px $glow1,
-      
-      0 0 1px 64px $bg,
-      0 0 60px 25px $glow1;
-  }
-  
-  
-  
+.hoja:after{
+  box-shadow: inset 0 @B 0 rgba(250, 250, 0, @O),
+              inset @B 0 0 rgba(250, 200, 0, @O),
+              inset 0 -@B 0 rgba(250, 150, 0, @O),
+              inset -@B 0 0 rgba(250, 100, 0, @O);
+  animation: rotar @A -0.5s linear infinite;
 }
 
+.hoja:before{
+  box-shadow: inset 0 @B 0 rgba(0, 250, 250, @O),
+              inset @B 0 0 rgba(0, 200, 200, @O),
+              inset 0 -@B 0 rgba(0, 150, 200, @O),
+              inset -@B 0 0 rgba(0, 200, 250, @O);
+  animation: rotarIz @A -0.5s linear infinite;
+}
 
+@keyframes rotar{
+  0%{
+    transform:rotateZ(0deg) scaleX(1) scaleY(1);
+  }
+  50%{
+    transform:rotateZ(180deg) scaleX(0.82) scaleY(0.95);
+  }
+  100%{
+    transform:rotateZ(360deg) scaleX(1) scaleY(1);
+  }
+}
 
-
-
-
+@keyframes rotarIz{
+  0%{
+    transform:rotateZ(0deg) scaleX(1) scaleY(1);
+  }
+  50%{
+    transform:rotateZ(-180deg) scaleX(0.95) scaleY(0.85);
+  }
+  100%{
+    transform:rotateZ(-360deg) scaleX(1) scaleY(1);
+  }
+}
