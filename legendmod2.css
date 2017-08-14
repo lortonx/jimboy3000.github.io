@@ -172,34 +172,3 @@ $size: 3em;
 
 
 
-
-
-
-
-
-
-
-
-
-
-body,html { 
-  
-  background: $bg; 
-  color: white;
-  font-family: "Lato";
-  font-weight: 900;
-  text-align: center;
-  padding: 1em;
-}
-
-p { 
-  
-  font-size: 1.2em;
-  position: relative; 
-  z-index: 88; 
-  opacity: 0.6;
-  
-  small {
-    font-weight: 100; 
-  }
-}
