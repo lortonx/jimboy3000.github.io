@@ -536,6 +536,7 @@ setTimeout(function() {
         }	
 		else if (privateSrv!=null) {				
                 history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
+				
 				logout();
 				setTimeout(function() {
 					MC.setQuality($('#quality').val());
@@ -591,7 +592,7 @@ setTimeout(function() {
             }, 10000);
         });
     }, //5000
-    8000); //9000
+    9000); //9000
 // fix party stuff
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
