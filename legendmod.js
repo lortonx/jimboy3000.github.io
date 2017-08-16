@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.464 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.465 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -159,7 +159,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "45"; // the version 1.1-> 1.11
+var semimodVersion = "46"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1250,7 +1250,8 @@ function init(modVersion) {
         $("#dailyQuests").css({
             marginBottom: "5px"
         });
-
+		$("#quests-blocker").hide();
+		
         $('#themePreset>option:nth-child(1)').text("Legend v2");
         $('#themePreset>option:nth-child(2)').text("Legend v1");
         $('#themePreset>option:nth-child(3)').text("Legend Original");
