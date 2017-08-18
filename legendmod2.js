@@ -1,24 +1,59 @@
 /*************
- * LEGEND mod v2.443 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.465 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-
-
+	
+var oldgamemode=$("#gamemode");
+		//Private Servers
+//$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
  $("#region").on('change', function() {
-    adres();
-}); 
-/*
-$("#server-ws").on('change', function() {
-    adres();
-}); */
+	if (this.value == ":PrS") {
+    console.log("Going to PrS");
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
+		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>'+
+		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
+		'<option value=":PrS3" data-itr="PrS3">1vs1 Arena(1)</option>'+
+		'<option value=":PrS4" data-itr="PrS4">1vs1 Arena(2)</option>'+
+		'<option value=":PrS5" data-itr="PrS5">1vs1 Arena(3)</option>');
+    }
+	else if (this.value != ":PrS") {
+    console.log("Leaving PrS");
+	
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+		'<option value=":party" data-itr="page_party">Party Mode</option>');	
+    }	
+	adres();
+});
 $('#gamemode').on('change', function() {
    adres();
     if (this.value == ":party") {
         $("#create-party-btn").click();
-    }
     console.log("Party stuff fixed");
-})
-
-
+	}
+    else if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }  
+    else if (this.value == ":PrS3") {
+    console.log("Going to PRS3");
+	PrivateServer3();
+    }
+    else if (this.value == ":PrS4") {
+    console.log("Going to PRS4");
+	PrivateServer4();
+    }
+    else if (this.value == ":PrS5") {
+    console.log("Going to PRS5");
+	PrivateServer5();
+    }	
+});
 
 /*		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
@@ -95,6 +130,8 @@ var XPBtn = localStorage.getItem("XPBtn");
 //var MAINBBtn = localStorage.getItem("MAINBBtn");
 //var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 //var MANUIBtn = localStorage.getItem("MANUIBtn");
+var MAINBTBtn = localStorage.getItem("MAINBTBtn");
+var MANUIBtn = localStorage.getItem("MANUIBtn");
 // var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
@@ -108,6 +145,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
+var privateSrv= getParameterByName("ip", url);
 var realmode = "";
 var realmode2 = "";
 var token = "";
@@ -121,7 +159,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "36"; // the version 1.1-> 1.11
+var semimodVersion = "46"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -196,8 +234,10 @@ var Premadeletter42 = "Show Shortcuts";
 var Premadeletter43 = "Hide Shortcuts";
 var Premadeletter44 = "Show XP BAR";
 var Premadeletter45 = "Hide XP BAR";
-//var Premadeletter46="Show TIME";
-//var Premadeletter47="Hide TIME";
+var Premadeletter45a = "Rounded Hud";
+var Premadeletter45b = "Square Hud";
+var Premadeletter46 = "Show TIME";
+var Premadeletter47 = "Hide TIME";
 var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
@@ -284,7 +324,21 @@ if (languagemod == 6) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
-        $(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+		$(".toast.toast-warning").remove();
+		
+		spectate();
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();		
+	
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		
+		
         /*if (openthecommunication=="YES"){
         	setTimeout(function () {
         	$('#gamemode').val(realmode2);
@@ -299,7 +353,20 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-        $(".command-text").text(Premadeletter0);
+	//	$(".toast.toast-warning").remove();
+	        $(".command-text").text(Premadeletter0);
+
+		spectate();
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();		
+		
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		
     }
 });
 
@@ -338,6 +405,7 @@ eventer(messageEvent, function (e) {
 $("#advertisement").remove();
 $("#mcbanners-container").remove();
 $("#adsBottom").remove();
+
 //remove adds
 $("#adsGameOver").remove();
 
@@ -445,7 +513,7 @@ setTimeout(function() {
         //	$("body").show();	
         MC.setQuality($('#quality').val());
         //	history.pushState(stateObj, "page 2", "#" + currentToken );
-        if (searchSip != null) {
+        if (searchSip != null && privateSrv==null) {
 //            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
             if (region == null) {
 //                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip);
@@ -461,11 +529,24 @@ setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
                 }, 5000);
             }
-        } else if (searchSip == null) {
+        } else if (searchSip == null && privateSrv==null) {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
-        }		
+        }	
+		else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
+				
+				logout();
+				setTimeout(function() {
+					MC.setQuality($('#quality').val());
+					spectate();
+            }, 500);
+				$("#gamemode").click(function() {                       
+						$(".toast.toast-warning").remove();
+                    });
+				return false;
+        }	
 		
         $("#server-ws").on('change', function() {
 			adres();
@@ -519,104 +600,111 @@ setTimeout(function() {
 //		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 var minbtext2 = minbtext;
+var minbtext3 = minbtext;
+
 if (minbtext == null || minbtext == "") {
     minbtext = "Legend Mod/Locked";
     minbtext2 = "Legend Mod";
+	minbtext3 = "Legend Mod/Private";
 }
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 6000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 6500);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 7000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 7500);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 8000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 9000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 10000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
+			//Load Private Servers
+	if($('#region>option:nth-child(1)').val()!=":PrS")	{
+	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+	}	
 }, 13000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
 }, 14000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 11000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 12000);
 setTimeout(function() {
@@ -626,23 +714,23 @@ setTimeout(function() {
     MC.setQuality($('#quality').val());
 }, 14000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 18000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
     //if(dyinglight1load!="yes"){whenplayerdies();}
 }, 22000);
@@ -740,8 +828,8 @@ function init(modVersion) {
             '<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-            //                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
-            //											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
+            											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
             '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
             '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
@@ -914,7 +1002,7 @@ function init(modVersion) {
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
-		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" href="https://docs.google.com/forms/d/1dpmqk_TMCmtT5fG26zqwqLVwbFh_XN2xgpXkZb5ZgXQ/" target="_blank"></a>'+
+		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 		
         // prevent edit
@@ -1008,12 +1096,16 @@ function init(modVersion) {
                 } else if (mode != ":party") {
                     copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + mode);
                 }
-            } else {
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
                     copy("http://agar.io/#" + currentToken);
                 } else if (realmode != ":party") {
                     copy("http://agar.io/?sip=" + currentIP + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
+            }
+			else if (privateSrv!=null) {
+                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");
+                
             }
         });
 
@@ -1032,8 +1124,15 @@ function init(modVersion) {
                 setTimeout(function() {
                     MC.setQuality($('#quality').val());
                 }, 3000);
+                setTimeout(function() {
+                    MC.setQuality($('#quality').val());
+                }, 5000);
+                setTimeout(function() {
+                    MC.setQuality($('#quality').val());
+                }, 7000);				
             }
         });
+	
 
 
         /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
@@ -1089,6 +1188,9 @@ function init(modVersion) {
                 openvidmod();
             }
         });
+		
+		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
         }).mouseleave(function() {
@@ -1118,12 +1220,12 @@ function init(modVersion) {
             //return messageone=1;
         });
 
-
+		
+		
+		
         $("#boostButton").css("display", "inline-block");
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
-
-
 
 
         // LEGEND footer
@@ -1148,7 +1250,8 @@ function init(modVersion) {
         $("#dailyQuests").css({
             marginBottom: "5px"
         });
-
+		$("#quests-blocker").hide();
+		
         $('#themePreset>option:nth-child(1)').text("Legend v2");
         $('#themePreset>option:nth-child(2)').text("Legend v1");
         $('#themePreset>option:nth-child(3)').text("Legend Original");
@@ -1266,28 +1369,28 @@ function init(modVersion) {
         $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
         $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
 
-        $('#themePres	et').on('change', function() {
+        $('#themePreset').on('change', function() {
             setTimeout(function() {
-                var c = document.getElementById("minimap-sectors");
-                var ctx = c.getContext("2d");
-                ctx.clearRect(0, 0, c.width, c.height / 9);
-                ctx.font = "16px Georgia";
-                if (searchSip != null) {
-                    ctx.fillText(minbtext, c.width / 2, 22)
-                } else ctx.fillText(minbtext2, c.width / 2, 22);
-                MC.setQuality($('#quality').val());
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+					ctx.clearRect(0, 0, c.width, c.height / 9);
+					ctx.font = "16px Georgia";
+					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+					else {ctx.fillText(minbtext2, c.width / 2, 22); }
+					MC.setQuality($('#quality').val());
             }, 200);
         })
         $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
             setTimeout(function() {
-                var c = document.getElementById("minimap-sectors");
-                var ctx = c.getContext("2d");
-                ctx.clearRect(0, 0, c.width, c.height / 9);
-                ctx.font = "16px Georgia";
-                if (searchSip != null) {
-                    ctx.fillText(minbtext, c.width / 2, 22)
-                } else ctx.fillText(minbtext2, c.width / 2, 22);
-                MC.setQuality($('#quality').val());
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+				ctx.clearRect(0, 0, c.width, c.height / 9);
+				ctx.font = "16px Georgia";
+				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+				else {ctx.fillText(minbtext2, c.width / 2, 22); }
+				MC.setQuality($('#quality').val());
             }, 100);
         })
 
@@ -1649,6 +1752,40 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);
             }
         });
+		
+		        $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MAINBTBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
+				'#time-hud { border-radius: 10px; } </style>');				
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
+        		else {localStorage.setItem("MAINBTBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
+				'#menu-footer, #leaderboard-hud, #dropDown, #minimap-hud,'+
+				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
+				'#time-hud { border-radius: 0 0 0 0 } </style>');
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
+            $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MANUIBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
+        		else {localStorage.setItem("MANUIBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  				
+       /*         $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MANUIBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: center; } </style>');				
+        		$(this).html('<i class="fa fa-align-left""></i>Left Leaderboard');}
+				else {localStorage.setItem("MANUIBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: left; } </style>');
+				$(this).html('<i class="fa fa-align-center"></i>Cent. Leaderboard');}} ); */
         //     $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         //		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
         //		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
@@ -2012,7 +2149,7 @@ function init(modVersion) {
             title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users",
             placement: "bottom"
         });
-        $("#clantag").attr('placeholder', 'Password/Tag').tooltip({
+        $("#clantag").attr('placeholder', 'Password').tooltip({
             title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
             placement: "left"
         });
@@ -2097,7 +2234,7 @@ function init(modVersion) {
             toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
         } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
         else {
-            toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!');
+            toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
         }
         //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 
@@ -2294,17 +2431,20 @@ function init(modVersion) {
         }
 
         $('#server-connect').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
         $('#server-reconnect').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
         $('#server-join').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
@@ -2446,6 +2586,8 @@ function init(modVersion) {
                 $("#SHOSHOBtn").click();
                 //		$("#TIMEBtn").click();
                 //		$("#MAINBBtn").click();
+				$("#MAINBTBtn").click();
+				$("#MANUIBtn").click();
                 //		$("#MAINBTBtn").click();
                 $("#XPBtn").click();
                 //		$("#MANUIBtn").click();
@@ -2458,6 +2600,7 @@ function init(modVersion) {
 
 
         setTimeout(function() {
+
 			
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
@@ -2478,6 +2621,8 @@ function init(modVersion) {
             //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
             //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
             //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
+			if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
+            if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
             //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
             if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
@@ -2666,6 +2811,7 @@ function init(modVersion) {
             $("#server").hide();
             $("#connect2").hide();
             $("#searchShortcut").hide();
+			//$("#copySIPBtn").css('margin-left', '67px');
             $("#reconnectBtn").hide();
             $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
             $("#gamemode").hide();
@@ -2681,6 +2827,25 @@ function init(modVersion) {
             //$(".agario-party").empty();$(".form-group.clearfix").hide();
             //$(".form-group").hide();
         }
+		else if (privateSrv!=null) {				
+            $("#region").hide();
+            $("#gamemode2").hide();
+            $("#server").hide();
+            $("#connect2").hide();
+            $("#searchShortcut").hide();
+			//$("#copySIPBtn").css('margin-left', '67px');
+            $("#reconnectBtn").hide();
+            $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
+            $("#gamemode").hide();
+			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
+			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
+			setTimeout(function() {
+			toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+            $("#server").hide();
+            $("#connect2").hide();			
+			}, 3000); 
+			
+		}
 
         //if (searchSip==null){
         //afterdeathtonormalmode();}
@@ -2765,7 +2930,7 @@ $("img#imagebig2" ).css({
         checkonlyonce = "true";
         localStorage.setItem("checkonlyonce", checkonlyonce);
 
-    }, 2500);
+    }, 3500);
 }
 
 function delay(time, func) {
@@ -3707,17 +3872,18 @@ function whenplayerdies() {
         MC.onPlayerDeath = function() {
 			
             //afterdeathtonormalmode();
-            $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({
+			playSound("https://jimboy3100.github.io/banners/troll1.mp3");	
+			$("#canvas").css('background-image', 'url(" https://media.giphy.com/media/eVy46EWyclTIA/giphy.gif ")').css({
                 opacity: 0.8
             });
             $("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({
-                opacity: 0.8
+                opacity: 1
             });
-            $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({
+            $("#leaderboard-hud").css('background-image', 'url(" https://media.giphy.com/media/VSuWfl1qCiRsk/giphy.gif ")').css({
                 opacity: 0.8
             });
             setTimeout(function() {
-                $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icorelax.gif ")').css({
+                $("#canvas").css('background-image', 'url(" https://media.giphy.com/media/aw9WgvgNd1bQk/giphy.gif ")').css({
                     opacity: 0.8
                 });
             }, 4000);
@@ -3733,7 +3899,7 @@ function whenplayerdies() {
                 $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({
                     opacity: 0.8
                 });
-            }, 16000);
+				}, 27000);
 
         }
     } else {
@@ -4212,6 +4378,19 @@ function openhelper() {
     s.src = "https://jimboy3100.github.io/legendhelper.js";
     $("body").append(s);
 }
+function opennamechars() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/nicks/nicknamechars.js";
+    $("body").append(s);
+}
+
+function legendformIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/legendformIframe.js";
+    $("body").append(s);
+}
 
 function afterdeathtonormalmode() {
     MC.onPlayerDeath = function() {
@@ -4566,11 +4745,32 @@ function enableshortcuts() {
     //	$("#MAINBBtn").click(); }
     //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
     //	$("#MAINBTBtn").click(); }
+	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+				$("#MAINBTBtn").click(); }
+			if($("#MANUIBtn").attr('aria-pressed') == "false"){
+				$("#MANUIBtn").click(); }
     if ($("#XPBtn").attr('aria-pressed') == "false") {
         $("#XPBtn").click();
     }
     //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
     //	$("#MANUIBtn").click(); }
+}
+
+
+function PrivateServer1(){
+	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+}
+function PrivateServer2(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:443","_self");
+}
+function PrivateServer3(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4000","_self");
+}
+function PrivateServer4(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
+}
+function PrivateServer5(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4002","_self");
 }
 
 /*
@@ -4606,24 +4806,39 @@ function adres() {
 			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
 			currentIP=d[1].replace(/-/g, '.') + d[2];
 			setTimeout(function() {
+				 
 			    realmode = getGameMode();
-                if (searchSip == null) {
+                if (searchSip == null && privateSrv==null) {
                     if (realmode != ":party") {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
                     }
-                    if (realmode == ":party") {
+                    else if (realmode == ":party") {
                         window.history.pushState(null, null, window.location.pathname);
                         history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());
                     }
-                }
+				}
+				else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
+				
+			}	                
+			
+				
 			}, 1000);
 			}, 800);
 	}
 	else {
             setTimeout(function() {
+				 MC.setQuality($('#quality').val());
                 $("#server").val("#" + MC.getPartyToken());
             }, 2000);
         }
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 3000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 4000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 5000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 6000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 7000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 8000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 11000);
 }		
 
 function joinpartyfromconnect() {
