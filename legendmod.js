@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.468 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.469 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 	
@@ -2242,7 +2242,8 @@ function init(modVersion) {
             toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
         } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
         else {
-            toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
+            toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>Huge performance <font color="yellow"><b>Boost!</b></font><i> (especially when 16)</i>. For even more <font color="red"><b>FPS</b></font>, animated skins are disabled by default.  <br>Press <font color="yellow"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins.').css("width", "420px");			
+          //  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
         }
         //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 
