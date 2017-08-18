@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.465 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.466 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -187,6 +187,8 @@ var semiurl2;
 var PostedThings;
 var Ultimouseenabled=0;
 var setscriptingcom = "YES";
+var usedonceSkin=0;
+var toastrSkinNotice=0;
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -1775,7 +1777,9 @@ function init(modVersion) {
 				'#time-hud { border-radius: 0 0 0 0 } </style>');
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
             $("#AnimatedSkinBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);animatedskins();toastr["info"]("Animated skins loaded, FPS drop when 16").css("width", "300px");$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
+        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
+				if (toastrSkinNotice==1){toastr["info"]("Animated skins loaded, FPS drop when 16").css("width", "300px");}
+				$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47); return usedonceSkin=1;}
         		else {localStorage.setItem("AnimatedSkinBtn", false);
 				toastr["info"]("Animated skins will be disabled after rejoin. Better FPS Performance when 16").css("width", "300px");
 				$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  				
@@ -2624,7 +2628,7 @@ function init(modVersion) {
             //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
             //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
 			if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
-            if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click(); }
+            if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click(); return toastrSkinNotice=1; }
             //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
             if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
@@ -4749,8 +4753,8 @@ function enableshortcuts() {
     //	$("#MAINBTBtn").click(); }
 	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
 				$("#MAINBTBtn").click(); }
-			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
-				$("#AnimatedSkinBtn").click(); }
+//			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
+//				$("#AnimatedSkinBtn").click(); }
     if ($("#XPBtn").attr('aria-pressed') == "false") {
         $("#XPBtn").click();
     }
