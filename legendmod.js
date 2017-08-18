@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.466 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.467 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 	
 var oldgamemode=$("#gamemode");
@@ -238,8 +238,8 @@ var Premadeletter44 = "Show XP BAR";
 var Premadeletter45 = "Hide XP BAR";
 var Premadeletter45a = "Rounded Hud";
 var Premadeletter45b = "Square Hud";
-var Premadeletter46 = "Show TIME";
-var Premadeletter47 = "Hide TIME";
+var Premadeletter46 = "Show Anim. Skins";
+var Premadeletter47 = "Hide Anim. Skins";
 var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
@@ -1778,10 +1778,10 @@ function init(modVersion) {
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
             $("#AnimatedSkinBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
-				if (toastrSkinNotice==1){toastr["info"]("Animated skins loaded, FPS drop when 16").css("width", "300px");}
+				if (toastrSkinNotice==1){toastr["info"]("Animated skins <font color='red'><b>enabled</font></b>, <font color='red'><b>FPS drop</font></b> when 16").css("width", "300px");}
 				$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47); return usedonceSkin=1;}
         		else {localStorage.setItem("AnimatedSkinBtn", false);
-				toastr["info"]("Animated skins will be disabled after rejoin. Better FPS Performance when 16").css("width", "300px");
+				toastr["info"]("Animated skins will be <font color='red'><b>disabled</font></b> after rejoin. <font color='red'><b>Better FPS</font></b> Performance when 16").css("width", "300px");
 				$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  				
        /*         $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("MANUIBtn", true);
@@ -2628,7 +2628,7 @@ function init(modVersion) {
             //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
             //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
 			if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
-            if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click(); return toastrSkinNotice=1; }
+            if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click(); toastrSkinNotice=1; }
             //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
             if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
