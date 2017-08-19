@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.469 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.470 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 	
@@ -1004,8 +1004,8 @@ function init(modVersion) {
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
-        $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
-        $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
+        $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
+        $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 		
