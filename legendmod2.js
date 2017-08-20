@@ -330,8 +330,9 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
-		
+		setTimeout(function () {
 		spectate();
+		},200);
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -359,8 +360,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
-
+		setTimeout(function () {
 		spectate();
+		},200);
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -2908,10 +2910,10 @@ $("img#imagebig2" ).css({
 	//$("#helloContainer").hide();
     setTimeout(function() {
         
-        $("#imagebig").fadeOut(3500);
+        $("#imagebig").fadeOut(4000);
         
         MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 4000); //remove it
+		setTimeout(function() {$("#imagebig").remove();}, 4500); //remove it
 
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
