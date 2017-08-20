@@ -2872,7 +2872,11 @@ function init(modVersion) {
 }
 
 function loadericon() {
-	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
+	//continue loadericon
+	
+//$( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https://jimboy3100.github.io/extras/banneranimated2.html" name="CodePen" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');
+	
+/*	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
 	$("div#imagebig" ).css({
    'transition': 'all 2s ease-in-out!important',
 		'width': '100%',
@@ -2899,15 +2903,15 @@ $("img#imagebig2" ).css({
 	'top': '40%',
      'position': 'absolute'
 });
-
+*/
    
 	//$("#helloContainer").hide();
     setTimeout(function() {
         
-        $("#imagebig").fadeOut(2000);
+        $("#imagebig").fadeOut(3500);
         
         MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 2500); //remove it
+		setTimeout(function() {$("#imagebig").remove();}, 4000); //remove it
 
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
