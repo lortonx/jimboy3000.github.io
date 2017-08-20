@@ -2908,10 +2908,10 @@ $("img#imagebig2" ).css({
 	//$("#helloContainer").hide();
     setTimeout(function() {
         
-        $("#imagebig").fadeOut(3000);
+        $("#imagebig").fadeOut(3500);
         
         MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 3500); //remove it
+		setTimeout(function() {$("#imagebig").remove();}, 4000); //remove it
 
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
