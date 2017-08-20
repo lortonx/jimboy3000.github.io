@@ -332,11 +332,12 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		spectate();
-		},200);
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
 		$(".side-container.left-container").show();		
+		},200);
+
 	
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
@@ -362,11 +363,12 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		spectate();
-		},200);
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
 		$(".side-container.left-container").show();		
+		},200);
+
 		
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
