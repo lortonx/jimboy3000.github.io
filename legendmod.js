@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.472 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.470 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 	
@@ -330,8 +330,9 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
-		
+		setTimeout(function () {
 		spectate();
+		},200);
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -361,7 +362,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		spectate();
-		},100);
+		},200);
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
