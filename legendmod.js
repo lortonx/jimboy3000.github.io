@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.473 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.471 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 	
@@ -2908,10 +2908,10 @@ $("img#imagebig2" ).css({
 	//$("#helloContainer").hide();
     setTimeout(function() {
         
-        $("#imagebig").fadeOut(2500);
+        $("#imagebig").fadeOut(3000);
         
         MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 3000); //remove it
+		setTimeout(function() {$("#imagebig").remove();}, 3500); //remove it
 
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
