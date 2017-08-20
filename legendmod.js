@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.472 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.473 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 	
@@ -2914,12 +2914,12 @@ $("img#imagebig2" ).css({
    
 	//$("#helloContainer").hide();
     setTimeout(function() {
-        
-        $("#imagebig").fadeOut(4000);
+        setTimeout(function() {
+        $("#imagebig").fadeOut(2500);
         
         MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 4500); //remove it
-
+		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
+		}, 3000);
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
