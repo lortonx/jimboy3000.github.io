@@ -116,7 +116,7 @@ var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
 var yt6data = "Legend Mod Promo";
 var lastIP = "";
-//var previousnickname = localStorage.getItem("previousnickname");
+var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext = localStorage.getItem("leadbtext");
 var teambtext = localStorage.getItem("teambtext");
@@ -161,7 +161,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "48"; // the version 1.1-> 1.11
+var semimodVersion = "49"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1176,8 +1176,8 @@ function init(modVersion) {
             $('#nick').css('background-color', '');
         });
         $('#nick').blur(function() {
-//			previousnickname=$("#nick").val();
-//			localStorage.setItem("previousnickname", previousnickname);
+			previousnickname=$("#nick").val();
+			localStorage.setItem("previousnickname", previousnickname);
             if (clickedname == "YES") {
                 if ($("#nick").val().length >= 16) {
                     toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
@@ -2240,8 +2240,8 @@ function init(modVersion) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
             } else if (tag1.includes("ƖƦ") == true) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-            } else if (tag1.includes("ȴøng") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+            } else if (tag1.includes("⚔ℱ") == true) {
+                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
             } else if (tag1.includes("ƸU") == true) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
             } else {
@@ -2306,8 +2306,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
                 } else {
@@ -2349,8 +2349,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
                 } else {
@@ -2392,8 +2392,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
                 } else {
@@ -2436,8 +2436,8 @@ function init(modVersion) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
                     $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
                 } else {
