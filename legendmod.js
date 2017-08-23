@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.475 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.476 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 	
@@ -116,7 +116,7 @@ var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
 var yt6data = "Legend Mod Promo";
 var lastIP = "";
-var previousnickname = localStorage.getItem("previousnickname");
+//var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext = localStorage.getItem("leadbtext");
 var teambtext = localStorage.getItem("teambtext");
@@ -1176,8 +1176,8 @@ function init(modVersion) {
             $('#nick').css('background-color', '');
         });
         $('#nick').blur(function() {
-			previousnickname=$("#nick").val();
-			localStorage.setItem("previousnickname", previousnickname);
+//			previousnickname=$("#nick").val();
+//			localStorage.setItem("previousnickname", previousnickname);
             if (clickedname == "YES") {
                 if ($("#nick").val().length >= 16) {
                     toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
