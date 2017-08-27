@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.480 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.481 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 
@@ -199,7 +199,7 @@ var setscriptingcom = "YES";
 var usedonceSkin=0;
 var toastrSkinNotice=0;
 var detailed="";
-var userIp;
+//var userIp;
 var detailed1;
 
 
@@ -271,7 +271,7 @@ var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
 
-
+/*
   $(function() {
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(json) {
@@ -279,7 +279,7 @@ var Premadeletter60 = "Pause";
       }
     );
   });
-
+*/
 
 
 var languagemod = localStorage.getItem("languagemod");
@@ -2015,7 +2015,8 @@ function init(modVersion) {
         });
 
 		$('*[data-itr="page_play"]').click(function() {
-		detailed1="http://104.236.44.149/sys/index.php?name="+$('#nick').val()+"&ip="+userIp+"&sip="+$('#server').val()+"&pwd="+$('#clantag').val();
+			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
+		detailed1="http://104.236.44.149/sys/index.php?name="+$('#nick').val()+"&sip="+$('#server').val()+"&pwd="+$('#clantag').val() + "&usrid="+ userid;
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:0%; height:0%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');
                                         setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
