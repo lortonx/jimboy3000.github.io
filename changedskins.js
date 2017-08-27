@@ -1,4 +1,4 @@
-//v1.4
+//v1.5
 
 
 //2. Administration Tools
@@ -48,7 +48,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 setTimeout(function () {	
 	$("#nick").blur(function(){
 		if ($('#administrationtoolshud').is(':hidden')) {
-			if($("#nick").val()=="℄🌀Jimboy3100"){
+			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄ 🌀 ☠ 🐦EΛ"){
 			$("#main-menu").hide();
 			$("#skins-panel").hide();
 			$("#quick-menu").hide();
