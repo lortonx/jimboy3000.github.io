@@ -11,11 +11,12 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
-		'<option value=":PrS2" data-itr="PrS2">FFA Bots</option>'+
-		'<option value=":PrS1" data-itr="PrS1">Instant Merge</option>'+
-		'<option value=":PrS3" data-itr="PrS3">1vs1 Arena(1)</option>'+
-		'<option value=":PrS4" data-itr="PrS4">1vs1 Arena(2)</option>'+
-		'<option value=":PrS5" data-itr="PrS5">1vs1 Arena(3)</option>');
+		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
+		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
+		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
+		'<option value=":PrS5" data-itr="PrS5">Party Server(3)</option>'+		
+		'<option value=":PrS6" data-itr="PrS6">Instant Merge</option>');
     }
 	else if (this.value != ":PrS") {
     console.log("Leaving PrS");
@@ -53,6 +54,10 @@ $('#gamemode').on('change', function() {
     else if (this.value == ":PrS5") {
     console.log("Going to PRS5");
 	PrivateServer5();
+    }
+    else if (this.value == ":PrS6") {
+    console.log("Going to PRS6");
+	PrivateServer6();
     }	
 });
 
@@ -161,7 +166,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "49"; // the version 1.1-> 1.11
+var semimodVersion = "50"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -4830,21 +4835,23 @@ function enableshortcuts() {
 
 
 function PrivateServer1(){
-	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
-}
-function PrivateServer2(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:443","_self");
-}
-function PrivateServer3(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:4000","_self");
 }
-function PrivateServer4(){
+function PrivateServer2(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
 }
-function PrivateServer5(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:4002","_self");
+function PrivateServer3(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:5000","_self");
 }
-
+function PrivateServer4(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:5001","_self");
+}
+function PrivateServer5(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:5002","_self");
+}
+function PrivateServer6(){
+	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+}
 /*
 function adres() {
     var adrs = WebSocket.prototype.send;
