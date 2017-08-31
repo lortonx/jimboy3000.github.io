@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.482 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.483 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 
@@ -168,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "52"; // the version 1.1-> 1.11
+var semimodVersion = "53"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2016,7 +2016,16 @@ function init(modVersion) {
 
 		$('*[data-itr="page_play"]').click(function() {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
-		detailed1="http://104.236.44.149/sys/index.php?name="+$('#nick').val()+"&sip="+$('#server').val()+"&pwd="+$('#clantag').val() + "&usrid="+ userid;
+			
+		if (searchSip == null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + $('#server').val() + "&pwd=" +$('#clantag').val() + "&usrid=" + userid + "&type=NoLocked"  ;
+		}
+		else if (searchSip != null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + currentIP + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=Locked"  ;
+		}
+		else if (privateSrv!=null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=PrivateServer"  ;
+		}
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
                                         setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
