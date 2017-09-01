@@ -168,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "53"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1265,7 +1265,7 @@ function init(modVersion) {
         '<br>Legend Mod by jimboy3100</i></h6></div>');
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
-		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="right"></i>');
+		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
 
         // LEGEND footer
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
