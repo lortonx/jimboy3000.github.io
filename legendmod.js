@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.484 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.485 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 
@@ -1271,8 +1271,8 @@ function init(modVersion) {
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
         $("#menu-footer").text("");
 
-        $("#TimesUsedPanel").css({
-            marginBottom: "5px"
+        $(".TimesUsedPanel").css({
+            marginTop: "-10px"
         });
         $("#freeCoins").css({
             marginBottom: "-5px"
