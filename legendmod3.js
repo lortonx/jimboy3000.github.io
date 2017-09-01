@@ -1,8 +1,10 @@
 /*************
- * LEGEND mod v2.477 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.485 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
-	
+
+
+		
 var oldgamemode=$("#gamemode");
 		//Private Servers
 //$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
@@ -166,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "50"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -196,6 +198,12 @@ var Ultimouseenabled=0;
 var setscriptingcom = "YES";
 var usedonceSkin=0;
 var toastrSkinNotice=0;
+var detailed="";
+//var userIp;
+var detailed1;
+
+
+
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -262,6 +270,16 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
+
+/*
+  $(function() {
+    $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+      function(json) {
+        return userIp=json.ip;
+      }
+    );
+  });
+*/
 
 
 var languagemod = localStorage.getItem("languagemod");
@@ -1243,13 +1261,18 @@ function init(modVersion) {
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
 
+	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
+        '<br>Legend Mod by jimboy3100</i></h6></div>');
+		$(".agario-profile-name").css('display', 'inline-block');
+		$(".agario-profile-name").css('vertical-align', ' baseline');
+		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
 
         // LEGEND footer
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
         $("#menu-footer").text("");
 
-        $("#TimesUsedPanel").css({
-            marginBottom: "5px"
+        $(".TimesUsedPanel").css({
+            marginTop: "-10px"
         });
         $("#freeCoins").css({
             marginBottom: "-5px"
@@ -1411,8 +1434,7 @@ function init(modVersion) {
         })
 
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
-        $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-            '<br>Legend Mod by jimboy3100</i></h6></div>');
+
         $(".agario-panel.ogario-yt-panel").css({
             marginBottom: "-10px"
         });
@@ -1996,11 +2018,23 @@ function init(modVersion) {
             }
         });
 
-        $('*[data-itr="page_play"]').click(function() {
-            ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);
-            ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
-            ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
-        });
+		$('*[data-itr="page_play"]').click(function() {
+			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
+			
+		if (searchSip == null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + $('#server').val() + "&pwd=" +$('#clantag').val() + "&usrid=" + userid + "&type=NoLocked"  ;
+		}
+		else if (searchSip != null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + currentIP + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=Locked"  ;
+		}
+		else if (privateSrv!=null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=PrivateServer"  ;
+		}
+		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
+                                        setTimeout(function() {
+                                    $('#loaderIframeInfo1').remove();
+                                }, 6000);
+		});
 
 
 
@@ -3652,6 +3686,18 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     }
 }
+
+
+function useProfilePhotoCustom(){
+	if ($('.agario-profile-picture').attr('src')!= "https://agar.io/mc/img/profilepic_guest.png" && $('.agario-profile-picture').attr('src')!="mc/img/profilepic_guest.png"){	
+		copy($(".agario-profile-picture").attr('src'));
+		toastr["info"]('Your account\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area').css("width", "350px");
+	}
+	else{
+		toastr["info"]('You must Login to use picture of your profile').css("width", "350px");
+	}
+}
+
 
 function setminbgname() {
     minimapbckimg = $("#minimapPicture").val();
