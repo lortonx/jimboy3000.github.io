@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.483 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.484 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadericon();
 
@@ -1261,6 +1261,11 @@ function init(modVersion) {
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
 
+	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
+        '<br>Legend Mod by jimboy3100</i></h6></div>');
+		$(".agario-profile-name").css('display', 'inline-block');
+		$(".agario-profile-name").css('vertical-align', ' baseline');
+		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="right"></i>');
 
         // LEGEND footer
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
@@ -1429,8 +1434,7 @@ function init(modVersion) {
         })
 
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
-        $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-            '<br>Legend Mod by jimboy3100</i></h6></div>');
+
         $(".agario-panel.ogario-yt-panel").css({
             marginBottom: "-10px"
         });
@@ -3682,6 +3686,18 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     }
 }
+
+
+function useProfilePhotoCustom(){
+	if ($('.agario-profile-picture').attr('src')!= "https://agar.io/mc/img/profilepic_guest.png" && $('.agario-profile-picture').attr('src')!="mc/img/profilepic_guest.png"){	
+		copy($(".agario-profile-picture").attr('src'));
+		toastr["info"]('Your account\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area').css("width", "350px");
+	}
+	else{
+		toastr["info"]('You must Login to use your picture of your profile').css("width", "350px");
+	}
+}
+
 
 function setminbgname() {
     minimapbckimg = $("#minimapPicture").val();
