@@ -2030,13 +2030,13 @@ function init(modVersion) {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			
 		if (searchSip == null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + $('#server').val() + "&pwd=" +$('#clantag').val() + "&usrid=" + userid + "&type=NoLocked"  ;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + $('#server').val() + "&pwd=" +$('#clantag').val() + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + currentIP + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=Locked"  ;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + currentIP + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=Locked" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (privateSrv!=null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=PrivateServer"  ;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=PrivateServer" + userlastname + "&firstname=" + userfirstname;
 		}
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
                                         setTimeout(function() {
@@ -2306,7 +2306,7 @@ function init(modVersion) {
 				if (usergender=="male"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
 				}
-				if (usergender=="female"){
+				else if (usergender=="female"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Ms. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");
 				}
 			}
