@@ -6498,10 +6498,11 @@ function animatedskins(){
    else {
       w.setTimeout(function() {
          agarXTRA(w);
-		 $("#movingskins").css( { marginTop : "-15px" } );
-		$("#movingskins").css( { marginBottom : "-30px" } );
+
       }, 100);
    }
+	$("#movingskins").css( { marginTop : "-15px" } );
+	$("#movingskins").css( { marginBottom : "-30px" } );   
    setTimeout(function() { 
     //hide extra names
     $('#movingskins>option:nth-child(68)').hide();
