@@ -11,10 +11,25 @@ document.title = "Legend mod";
 setTimeout(function () {
 $("#leaderboard-hud > h4").text("Leaderboard");
 document.title = "Legend mod 1";   
-}, 500);
+}, 800);
 setTimeout(function () {
 document.title = "Legend mod 2";   
-}, 1000);
+}, 900);
 setTimeout(function () {
 document.title = "Legend mod 3";   
-}, 1500);
+}, 1000);
+setTimeout(function () {
+document.title = "Legend mod 4";   
+}, 1100);
+setTimeout(function () {
+document.title = "Legend mod 5";   
+}, 1200);
+setTimeout(function () {
+document.title = "Legend mod 6";   
+}, 1300);
+setTimeout(function () {
+document.title = "Legend mod 6";   
+}, 14500);
+setTimeout(function () {
+document.title = "Legend mod 7";   
+}, 1500)
