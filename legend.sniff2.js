@@ -7,7 +7,7 @@
     document.getElementsByTagName('head')[0].appendChild(link);
 })();
 
-
+document.title = "Legend mod";   
 setTimeout(function () {
 $("#leaderboard-hud > h4").text("Leaderboard");
 document.title = "Legend mod";   
