@@ -17,8 +17,8 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
 		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
 		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
-		'<option value=":PrS5" data-itr="PrS5">Party Server(3)</option>'+		
-		'<option value=":PrS6" data-itr="PrS6">Instant Merge</option>');
+		'<option value=":PrS5" data-itr="PrS5">Instant Merge</option>');	
+		
     }
 	else if (this.value != ":PrS") {
     console.log("Leaving PrS");
@@ -57,10 +57,7 @@ $('#gamemode').on('change', function() {
     console.log("Going to PRS5");
 	PrivateServer5();
     }
-    else if (this.value == ":PrS6") {
-    console.log("Going to PRS6");
-	PrivateServer6();
-    }	
+
 });
 
 /*		
@@ -4879,17 +4876,15 @@ function PrivateServer2(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:5000","_self");
-}
-function PrivateServer4(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:5001","_self");
 }
-function PrivateServer5(){
+function PrivateServer4(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:5002","_self");
 }
-function PrivateServer6(){
+function PrivateServer5(){
 	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
 }
+
 /*
 function adres() {
     var adrs = WebSocket.prototype.send;
