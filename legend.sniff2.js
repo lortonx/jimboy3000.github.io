@@ -6,8 +6,9 @@
     link.href = 'https://jimboy3100.github.io/banners/icon32croped.ico.gif';
     document.getElementsByTagName('head')[0].appendChild(link);
 })();
-document.title = "Legend mod";
+
 
 setTimeout(function () {
 $("#leaderboard-hud > h4").text("Leaderboard");
+ document.title = "Legend mod";   
 }, 500);
