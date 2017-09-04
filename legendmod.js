@@ -1,8 +1,8 @@
 /*************
- * LEGEND mod v2.485 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.486 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
+loadersetings();
 loadericon();
-
 
 		
 var oldgamemode=$("#gamemode");
@@ -2922,48 +2922,10 @@ function init(modVersion) {
 
 }
 
-function loadericon() {
-	//continue loadericon
-	
-//$( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https://jimboy3100.github.io/extras/banneranimated2.html" name="CodePen" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');
-	
-/*	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
-	$("div#imagebig" ).css({
-   'transition': 'all 2s ease-in-out!important',
-		'width': '100%',
-		'height': '100%',
-		'position': 'absolute',
-		'top': '0',
-		'bottom': '0',
-		'left': '0',
-		'right': '0',
-		'z-index': '9999999999999999999999999999999999999999999999999999999999999999',
-		'background': '#B048B5'
-	});
-	$("img#imagebig3" ).css({
-    'left': '50%',
-    'position': 'absolute',
-    'transform': 'translate(-50%)',
-    'bottom': '100px',
-    'width': '100px',
-    'height': '100px'
-	});
-$("img#imagebig2" ).css({
-    'left': '50%',
-	'transform': 'translate(-50%)',
-	'top': '40%',
-     'position': 'absolute'
-});
-*/
-   
-	//$("#helloContainer").hide();
+function loadersetings() {
+
+
     setTimeout(function() {
-        setTimeout(function() {
-        $("#imagebig").fadeOut(2500);
-        
-        MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
-		}, 3000);
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -2997,6 +2959,18 @@ $("img#imagebig2" ).css({
 
     }, 3500);
 }
+
+function loadericon() {
+	//continue loadericon
+    setTimeout(function() {
+        setTimeout(function() {
+        $("#imagebig").fadeOut(2500);
+        
+        MC.setQuality($('#quality').val());
+		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
+		}, 3000);   
+		}, 1500);
+}		
 
 function delay(time, func) {
     setTimeout(function() {
@@ -3694,7 +3668,7 @@ function useProfilePhotoCustom(){
 		toastr["info"]('Your account\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area').css("width", "350px");
 	}
 	else{
-		toastr["info"]('You must Login to use your picture of your profile').css("width", "350px");
+		toastr["info"]('You must Login to use picture of your profile').css("width", "350px");
 	}
 }
 
