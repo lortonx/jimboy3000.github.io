@@ -29,7 +29,7 @@ document.title = "Legend mod 6";
 }, 1300);
 setTimeout(function () {
 document.title = "Legend mod 6";   
-}, 14500);
+}, 1400);
 setTimeout(function () {
 document.title = "Legend mod 7";   
 }, 1500)
