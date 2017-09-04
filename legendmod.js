@@ -1,9 +1,9 @@
 /*************
- * LEGEND mod v2.587 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.588 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
-
+document.title = "Legend mod";
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
@@ -168,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -201,8 +201,10 @@ var toastrSkinNotice=0;
 var detailed="";
 //var userIp;
 var detailed1;
-
-
+var userfirstname = localStorage.getItem("userfirstname");
+var userlastname = localStorage.getItem("userlastname");
+var usergender = localStorage.getItem("usergender");
+var fbresponse={};
 
 
 var Premadeletter0 = "Communication Activated";
@@ -367,15 +369,13 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 		}
-		
-		
-        /*if (openthecommunication=="YES"){
-        	setTimeout(function () {
-        	$('#gamemode').val(realmode2);
-        	$("#connect2").click();
-        	return openthecommunication="NO";
-        	},2500);
-        }*/
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
     }
 });
 
@@ -397,6 +397,13 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
 		}
 		
     }
@@ -2294,9 +2301,19 @@ function init(modVersion) {
             toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
         } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
         else {
-            toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "300px");		
-          //  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
-        }
+			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
+			if (userlastname!=null && userfirstname!=null){ 
+				if (usergender=="male"){
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
+				}
+				if (usergender=="female"){
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Ms. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");
+				}
+			}
+			else{
+		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
+				}
+			}
         //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 
         $("#infoicon").mouseover(function() {
