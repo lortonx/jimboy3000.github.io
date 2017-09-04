@@ -1,8 +1,8 @@
 /*************
- * LEGEND mod v2.485 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.587 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
+loadersetings();
 loadericon();
-
 
 		
 var oldgamemode=$("#gamemode");
@@ -168,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "54"; // the version 1.1-> 1.11
+var semimodVersion = "55"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1142,7 +1142,8 @@ function init(modVersion) {
         });
 
         $("#reconnectBtn").click(function() {
-            ogario.gameMode = realmode;
+            realmode=getGameMode();
+			ogario.gameMode = realmode;
             hideMenu();
             changeServer();
             if (!$("#searchHud").is(':visible')) {
@@ -1932,8 +1933,8 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.4") {
-                toastr["info"]("Mod Version must be 2.4 or higher").css("width", "250px");
+            if (modVersion != "2.5") {
+                toastr["info"]("Mod Version must be 2.5 or higher").css("width", "250px");
                 return false;
             } else {
                 $("#main-menu").hide();
@@ -2246,7 +2247,7 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.4") {
+        if (modVersion != "2.5") {
             $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
         } else {
             if (tag1.includes("♔Jimboy3100") == true) {
@@ -2289,8 +2290,8 @@ function init(modVersion) {
         }
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.4") {
-            toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+        if (modVersion != "2.5") {
+            toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
         } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
         else {
             toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "300px");		
@@ -2312,7 +2313,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2355,7 +2356,7 @@ function init(modVersion) {
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2398,7 +2399,7 @@ function init(modVersion) {
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2442,7 +2443,7 @@ function init(modVersion) {
 
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2922,48 +2923,10 @@ function init(modVersion) {
 
 }
 
-function loadericon() {
-	//continue loadericon
-	
-//$( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https://jimboy3100.github.io/extras/banneranimated2.html" name="CodePen" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');
-	
-/*	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
-	$("div#imagebig" ).css({
-   'transition': 'all 2s ease-in-out!important',
-		'width': '100%',
-		'height': '100%',
-		'position': 'absolute',
-		'top': '0',
-		'bottom': '0',
-		'left': '0',
-		'right': '0',
-		'z-index': '9999999999999999999999999999999999999999999999999999999999999999',
-		'background': '#B048B5'
-	});
-	$("img#imagebig3" ).css({
-    'left': '50%',
-    'position': 'absolute',
-    'transform': 'translate(-50%)',
-    'bottom': '100px',
-    'width': '100px',
-    'height': '100px'
-	});
-$("img#imagebig2" ).css({
-    'left': '50%',
-	'transform': 'translate(-50%)',
-	'top': '40%',
-     'position': 'absolute'
-});
-*/
-   
-	//$("#helloContainer").hide();
+function loadersetings() {
+
+
     setTimeout(function() {
-        setTimeout(function() {
-        $("#imagebig").fadeOut(2500);
-        
-        MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
-		}, 3000);
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -2997,6 +2960,18 @@ $("img#imagebig2" ).css({
 
     }, 3500);
 }
+
+function loadericon() {
+	//continue loadericon
+    setTimeout(function() {
+        setTimeout(function() {
+        $("#imagebig").fadeOut(2500);
+        
+        MC.setQuality($('#quality').val());
+		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
+		}, 3000);   
+		}, 1000);
+}		
 
 function delay(time, func) {
     setTimeout(function() {
