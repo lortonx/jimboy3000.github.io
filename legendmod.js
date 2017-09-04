@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.485 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.586 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -1932,8 +1932,8 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.4") {
-                toastr["info"]("Mod Version must be 2.4 or higher").css("width", "250px");
+            if (modVersion != "2.5") {
+                toastr["info"]("Mod Version must be 2.5 or higher").css("width", "250px");
                 return false;
             } else {
                 $("#main-menu").hide();
@@ -2246,7 +2246,7 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.4") {
+        if (modVersion != "2.5") {
             $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
         } else {
             if (tag1.includes("♔Jimboy3100") == true) {
@@ -2289,8 +2289,8 @@ function init(modVersion) {
         }
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.4") {
-            toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+        if (modVersion != "2.5") {
+            toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
         } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
         else {
             toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "300px");		
@@ -2312,7 +2312,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2355,7 +2355,7 @@ function init(modVersion) {
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2398,7 +2398,7 @@ function init(modVersion) {
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2442,7 +2442,7 @@ function init(modVersion) {
 
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.4") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
