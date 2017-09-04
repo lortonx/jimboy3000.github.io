@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.586 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.587 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -168,7 +168,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "54"; // the version 1.1-> 1.11
+var semimodVersion = "55"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -1142,7 +1142,8 @@ function init(modVersion) {
         });
 
         $("#reconnectBtn").click(function() {
-            ogario.gameMode = realmode;
+            realmode=getGameMode();
+			ogario.gameMode = realmode;
             hideMenu();
             changeServer();
             if (!$("#searchHud").is(':visible')) {
