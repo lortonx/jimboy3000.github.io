@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.588 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.589 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -202,7 +202,7 @@ var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
 var fbresponse={};
-
+var modVersion = localStorage.getItem("modVersion");if (modVersion!=null){ modVersion="2.4"}
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
