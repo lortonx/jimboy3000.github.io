@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.589 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.590 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2253,7 +2253,8 @@ function init(modVersion) {
         var tag1 = document.getElementById("nick").value;
         if (modVersion != "2.4"|| modVersion != "2.5") {
             $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
-        } else {
+        } 
+		else {
             if (tag1.includes("♔Jimboy3100") == true) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
             } else if (tag1.includes("GUARD") == true) {
@@ -2332,7 +2333,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.4"|| modVersion != "2.5") {{
+            if (modVersion != "2.4"|| modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
