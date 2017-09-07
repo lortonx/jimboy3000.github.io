@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.590 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.591 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -1937,7 +1937,7 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.4"|| modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 toastr["info"]("Mod Version must be 2.4 or higher").css("width", "250px");
                 return false;
             } else {
@@ -2251,7 +2251,7 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.4"|| modVersion != "2.5") {
+        if (modVersion != "2.4" && modVersion != "2.5") {
             $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
         } 
 		else {
@@ -2300,7 +2300,7 @@ function init(modVersion) {
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 			  if (modVersion == "2.5"){
-			toastr["info"]('Current <font color="yellow"><b>v2.4</b></font> is <font color="yellow"><b>BETA</b></font>. <font color="yellow"><b>v2.4</b></font> is more stable, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr["info"]('Current <font color="yellow"><b>v2.5</b></font> is <font color="yellow"><b>BETA</b></font>. <font color="yellow"><b>v2.4</b></font> is more stable. <br>Visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
 			}
 			else{
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
@@ -2333,7 +2333,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.4"|| modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2376,7 +2376,7 @@ function init(modVersion) {
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.4"|| modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2419,7 +2419,7 @@ function init(modVersion) {
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.4"|| modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2463,7 +2463,7 @@ function init(modVersion) {
 
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.4"|| modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
