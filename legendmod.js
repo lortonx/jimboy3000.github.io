@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.591 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.592 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -165,7 +165,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "57"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2300,7 +2300,7 @@ function init(modVersion) {
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 			  if (modVersion == "2.5"){
-			toastr["info"]('Current <font color="yellow"><b>v2.5</b></font> is <font color="yellow"><b>BETA</b></font>. <font color="yellow"><b>v2.4</b></font> is more stable. <br>Visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr["info"]('Current <font color="yellow"><b>v2.5</b></font> is <font color="yellow"><b>BETA</b></font>. <font color="yellow"><b>v2.4</b></font> is stable. <br>Visit: <a target="_blank" href="https://jimboy3100.github.io/goodoldlegendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>').css("width", "320px");	
 			}
 			else{
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
