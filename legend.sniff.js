@@ -6,7 +6,7 @@ localStorage.setItem("url", url);
 //check dying light expansion
 var dyinglight1load = localStorage.getItem("dyinglight1load");
 //Check Fayiz Private Servers
-var privateSrv= localStorage.getParameterByName("ip", url);
+var privateSrv= getParameterByName("ip", url);
 
 //load first icon
 if (dyinglight1load=="yes") {
