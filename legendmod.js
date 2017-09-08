@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.594 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -19,8 +19,7 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(1)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
-		);	
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');	
 		
     }
 	else if (this.value != ":PrS") {
