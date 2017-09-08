@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.595 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.596 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2931,8 +2931,13 @@ function init(modVersion) {
 			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
 			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
 			setTimeout(function() {
-			toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
-            $("#server").hide();
+				if(privateSrv.includes("fzogar.xyz")){
+					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Server provided by FAYiz.</font><br><b>Website:</b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>Soon!</u></b></font><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>FAYiz Github Library:</b></font><br><font color="yellow"><b><u>https://github.com/fayizan</u></b></font> <br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
+				}
+				else{
+					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+				}
+			$("#server").hide();
             $("#connect2").hide();			
 			}, 3000); 
 			
