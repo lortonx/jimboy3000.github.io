@@ -6,7 +6,7 @@ localStorage.setItem("url", url);
 //check dying light expansion
 var dyinglight1load = localStorage.getItem("dyinglight1load");
 //Check Fayiz Private Servers
-var privateSrv= getParameterByName("ip", url);
+var privateSrv= getParameterByName2("ip", url);
 
 //load first icon
 if (dyinglight1load=="yes") {
@@ -113,3 +113,19 @@ $( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https
       
    });
 })('tcm_old_store_skins', window, document);
+
+
+
+//Not yet loaded function
+function getParameterByName2(name) {
+    if (name !== "" && name !== null && name != undefined) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    } else {
+        var arr = location.href.split("/");
+        return arr[arr.length - 1];
+    }
+
+}
