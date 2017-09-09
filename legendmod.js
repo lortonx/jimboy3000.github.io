@@ -2036,8 +2036,9 @@ function init(modVersion) {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE";
 			var servertosend="NotFound";
-			if ($('#server').val() != ""||$('#server').val() != null) {servertosend=$('#server').val(); }
-			if ($('#clantag').val() != "") {Pwdtosend=$('#clantag').val(); }
+			
+			if ($('#server').val() != ""||$('#server').val() != null||$('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != ""||$('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
 			if (servertosend.indexOf("#")==false) {
 			servertosend= $('#server').val().replace('#', 'Party-');}
 		if (searchSip == null) {		
