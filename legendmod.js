@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.594 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2042,14 +2042,14 @@ function init(modVersion) {
 			if ($('#server').val()!= undefined ) {
 				if (servertosend.indexOf("#")==false) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
-		if (searchSip == null) {		
+		if (privateSrv!=null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else if (searchSip == null) {		
 			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
 			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}
-		else if (privateSrv!=null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
 			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
