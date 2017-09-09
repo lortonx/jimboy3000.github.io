@@ -2036,10 +2036,12 @@ function init(modVersion) {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE";
 			var servertosend="NotFound";
-			if ($('#server').val() != ""||$('#server').val() != null) {servertosend=$('#server').val(); }
-			if ($('#clantag').val() != "") {Pwdtosend=$('#clantag').val(); }
-			if (servertosend.indexOf("#")==false) {
-			servertosend= $('#server').val().replace('#', 'Party-');}
+			
+			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
+			if ($('#server').val()!= undefined ) {
+				if (servertosend.indexOf("#")==false) {
+					servertosend= $('#server').val().replace('#', 'Party-');}}
 		if (searchSip == null) {		
 			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
