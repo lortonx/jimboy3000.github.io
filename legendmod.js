@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.594 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2037,8 +2037,8 @@ function init(modVersion) {
 			var Pwdtosend="NONE";
 			var servertosend="NotFound";
 			
-			if ($('#server').val() != ""||$('#server').val() != null||$('#server').val() != undefined) {servertosend=$('#server').val(); }
-			if ($('#clantag').val() != ""||$('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
+			if ($('#server').val() != ""|| $('#server').val() != null|| $('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != ""|| $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
 			if (servertosend.indexOf("#")==false) {
 			servertosend= $('#server').val().replace('#', 'Party-');}
 		if (searchSip == null) {		
