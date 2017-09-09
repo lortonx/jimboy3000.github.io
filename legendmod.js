@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.597 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -174,7 +174,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2035,10 +2035,12 @@ function init(modVersion) {
 		$('*[data-itr="page_play"]').click(function() {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE";
+			var partyservertosend=$('#server').val();
 			if ($('#clantag').val() != "") {Pwdtosend=$('#clantag').val(); }
-		
-		if (searchSip == null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + $('#server').val() + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			if (partyservertosend.indexOf("#")==false) {
+			partyservertosend= $('#server').val().replace('#', 'Party-');}
+		if (searchSip == null) {		
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + partyservertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
 			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
