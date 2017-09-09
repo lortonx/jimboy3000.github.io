@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.595 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
