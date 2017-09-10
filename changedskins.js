@@ -1,4 +1,4 @@
-//v1.5
+//v1.6
 
 
 //2. Administration Tools
@@ -33,9 +33,10 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 				$("#quick-menu").show();
 				$("#exp-bar").show();
 				$("#administrationtools").hide();		
-				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
-				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 35%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+				
 				'</div>');
 //				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
 //				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
@@ -74,7 +75,10 @@ function disconnectnow(){
 		dosendadmincommand();
 		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now");
 		}}	
-
+function showstatsphp(){
+	window.open('http://104.236.44.149/sys/report.php', '_blank');
+}
+		
 function dosendadmincommand(){
 		if(AdminRights==1){
 		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
