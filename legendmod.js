@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.594 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -174,7 +174,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "58"; // the version 1.1-> 1.11
+var semimodVersion = "59"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2949,7 +2949,10 @@ function init(modVersion) {
 			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
 			setTimeout(function() {
 				if(privateSrv.includes("fzogar.xyz")){
-					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Server provided by FAYiz.</font><br><b>Website:</b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>Soon!</u></b></font><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>FAYiz Github Library:</b></font><br><font color="yellow"><b><u>https://github.com/fayizan</u></b></font> <br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
+					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>:'+ 
+					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by FAYiz.</font><br><b>Website:</b><a target="_blank" href="https://jimboy3100.github.io/extras/banneranimatedFayiz3.html"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
+					'<br><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>MultiOgar Github Library:</font></b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
+					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
 				else{
 					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
