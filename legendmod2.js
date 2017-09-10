@@ -2044,7 +2044,10 @@ function init(modVersion) {
 			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
 			Pwdtosend=Pwdtosend.replace(" ", "_");
 			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
-			nicknametosend=nicknametosend.replace(" ", "_");
+			var i = 0, nicknametosendlength = nicknametosend.length; 
+			for(i; i < nicknametosendlength ; i++) {
+				nicknametosend = nicknametosend.replace(" ", "_");
+				}
 			if ($('#server').val()!= undefined ) {
 				if (servertosend.indexOf("#")==false) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
