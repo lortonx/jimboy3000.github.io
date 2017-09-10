@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.594 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.595 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2953,7 +2953,7 @@ function init(modVersion) {
 			setTimeout(function() {
 				if(privateSrv.includes("fzogar.xyz")){
 					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>:'+ 
-					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by FAYiz.</font><br><b>Website:</b><a target="_blank" href="https://jimboy3100.github.io/extras/banneranimatedFayiz3.html"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
+					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by <font color="yellow"><b>FAYiz</b></font>.</font><br><b>Website:</b><a target="_blank" href="http://game.fzogar.xyz/"><font color="yellow"><b><u>http://game.fzogar.xyz/</u></b></font>'+
 					'<br><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>MultiOgar Github Library:</font></b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
 					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
