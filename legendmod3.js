@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.593 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.595 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -174,7 +174,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "58"; // the version 1.1-> 1.11
+var semimodVersion = "59"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2034,23 +2034,35 @@ function init(modVersion) {
 
 		$('*[data-itr="page_play"]').click(function() {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
-			var Pwdtosend="NONE";
+			var Pwdtosend="NONE"; 
 			var servertosend="NotFound";
-			if ($('#server').val() != ""||$('#server').val() != null) {servertosend=$('#server').val(); }
-			if ($('#clantag').val() != "") {Pwdtosend=$('#clantag').val(); }
-			if (servertosend.indexOf("#")==false) {
-			servertosend= $('#server').val().replace('#', 'Party-');}
-		if (searchSip == null) {		
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			var nicknametosend="NotFound";
+			var userfirstname = localStorage.getItem("userfirstname");
+			var userlastname = localStorage.getItem("userlastname");
+
+			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
+			Pwdtosend=Pwdtosend.replace(" ", "_");
+			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
+			var i = 0, nicknametosendlength = nicknametosend.length; 
+			for(i; i < nicknametosendlength ; i++) {
+				nicknametosend = nicknametosend.replace(" ", "_");
+				}
+			if ($('#server').val()!= undefined ) {
+				if (servertosend.indexOf("#")==false) {
+					servertosend= $('#server').val().replace('#', 'Party-');}}
+					
+		if (privateSrv!=null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else if (searchSip == null) {		
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}
-		else if (privateSrv!=null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + $('#nick').val() + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
                                         setTimeout(function() {
@@ -2940,7 +2952,10 @@ function init(modVersion) {
 			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
 			setTimeout(function() {
 				if(privateSrv.includes("fzogar.xyz")){
-					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Server provided by FAYiz.</font><br><b>Website:</b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>Soon!</u></b></font><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>FAYiz Github Library:</b></font><br><font color="yellow"><b><u>https://github.com/fayizan</u></b></font> <br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
+					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>:'+ 
+					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by <font color="yellow"><b>FAYiz</b></font>.</font><br><b>Website:</b><a target="_blank" href="http://game.fzogar.xyz/"><font color="yellow"><b><u>http://game.fzogar.xyz/</u></b></font>'+
+					'<br><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>MultiOgar Github Library:</font></b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
+					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
 				else{
 					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
