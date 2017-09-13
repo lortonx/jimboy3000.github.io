@@ -795,6 +795,7 @@ setTimeout(function() {
 }, 40000);
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
+var modVersion="2.6";
 function init(modVersion) {
     //var connectedbanner=0;
 
