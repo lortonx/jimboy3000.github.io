@@ -8,7 +8,17 @@
 <meta name="keywords" content="agario, agar, io, cell, cells, virus, bacteria, blob, game, games, web game, html5, fun, flash">
 <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Legend Mod Tester</title>
+<script>
+	$(function(){
 
+	var MC = new MiniclipAPI("openfl-content","openfl-overlay");
+	MC.loadEnvironment(EnvConfig);
+	lime.embed ("agario", "openfl-content", 880, 1024, { width: 880, height: 1024, rootPath: "mc/", background: "transparent", allowHighDPI: true });
+
+	window["MC"]=MC;
+	window.MC = window.MC || {};
+});	
+</script>	
 <script id="preloadUrlLoaderIcon">
 //preload url 
 var url = window.location.href;localStorage.setItem("url", url);
