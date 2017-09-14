@@ -9,6 +9,10 @@ var oldgamemode=$("#gamemode");
 		//Private Servers
 //$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
  $("#region").on('change', function() {
+	setTimeout(function() {
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);                 
+	}, 200);
 	if (this.value == ":PrS") {
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
@@ -174,7 +178,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "60"; // the version 1.1-> 1.11
+var semimodVersion = "61"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
