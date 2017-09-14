@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.599 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.597 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -229,7 +229,7 @@ var Premadeletter12 = "Connected!";
 var Premadeletter13 = "PLAY";
 var Premadeletter14 = "SPECTATE";
 var Premadeletter15 = "Invalid token or server has closed :(";
-var Premadeletter16 = "can be Updated to";
+var Premadeletter16 = "MUST be Updated to";
 var Premadeletter17 = "Welcome back";
 var Premadeletter18 = "Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
 var Premadeletter19 = "Enable Them";
@@ -2325,7 +2325,7 @@ function init(modVersion) {
 
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr["error"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> <font color="blue"><b> ' + Premadeletter16 + ' </font></b><font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 			  if (modVersion == "2.5"){
