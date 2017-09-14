@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.598 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.599 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -1946,16 +1946,13 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
-                toastr["info"]("Mod Version must be 2.4 or higher").css("width", "250px");
-                return false;
-            } else {
+
                 $("#main-menu").hide();
                 $("#skins-panel").hide();
                 $("#quick-menu").hide();
                 $("#exp-bar").hide();
                 $("#userscripts").show();
-            }
+
         });
 
 
@@ -2283,7 +2280,7 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.4" && modVersion != "2.5") {
+        if (modVersion != "2.5") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
@@ -2327,20 +2324,18 @@ function init(modVersion) {
         }
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.4" && modVersion != "2.5") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+        if (modVersion != "2.5") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 			  if (modVersion == "2.5"){
 				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
-				'Current <font color="yellow"><b>v2.5</b></font> is <b>BETA</b>. <font color="yellow"><b>v2.4</b></font> is stable. '+
-				'<br>Visit: <a target="_blank" href="https://jimboy3100.github.io/goodoldlegendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>'+
+				'Welcome to <font color="yellow"><b>v2.5</b></font> '+
 				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
 				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
-				'No more conflicts due to official updates'+
-				'<br>With legend mod, <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="red"><b><u>libraries</u></b></font></a> users can play on Private or Official Agario servers.'+
-				'<br>We don\'t corrupt the game, but we make it even better.'+
-				'<br><i>Please Support Agar.io official game, by bying skins.</i></font></div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
+				'No more conflicts due to official updates.'+
+				'<br><a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="red"><b><u>Libraries</u></b></font></a> users can play on Private or Official Agario servers.'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
 			  }
 			else{
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
@@ -2373,7 +2368,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2416,7 +2411,7 @@ function init(modVersion) {
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2459,7 +2454,7 @@ function init(modVersion) {
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
@@ -2503,7 +2498,7 @@ function init(modVersion) {
 
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
+            if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
