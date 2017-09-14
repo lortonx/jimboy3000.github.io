@@ -2334,7 +2334,7 @@ function init(modVersion) {
 				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
 				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
 				'No more conflicts due to official updates.'+
-				'<br><a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="red"><b><u>Libraries</u></b></font></a> users can play on Private or Official Agario servers.'+
+				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="red"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
 			  }
 			else{
