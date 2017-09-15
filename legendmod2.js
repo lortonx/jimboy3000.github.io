@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.597 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.599 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -178,7 +178,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "61"; // the version 1.1-> 1.11
+var semimodVersion = "62"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2925,7 +2925,7 @@ function init(modVersion) {
                 $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
             }
 		
-        }, 500);
+        }, 3000);
         if (searchSip != null) {
             $("#region").hide();
             $("#gamemode2").hide();
@@ -2972,7 +2972,7 @@ function init(modVersion) {
 				}
 			$("#server").hide();
             $("#connect2").hide();			
-			}, 3000); 
+			}, 3100); 
 			
 		}
 
