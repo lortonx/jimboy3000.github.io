@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.502 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.503 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -17,10 +17,10 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
-		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
-		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
-		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
+//		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
+//		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
+//		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+//		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');	
