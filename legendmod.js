@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.504 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.505 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -183,7 +183,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "63"; // the version 1.1-> 1.11
+var semimodVersion = "64"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -372,7 +372,19 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
-		spectate();
+		//spectate();
+				if (privateSrv!=null) {
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+				}
+				$(".btn-spectate").click();		
+		
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -401,7 +413,19 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
-		spectate();
+		//spectate();
+				if (privateSrv!=null) {
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+				}
+				$(".btn-spectate").click();
+				
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -3063,16 +3087,7 @@ function delay(time, func) {
 }
 
 function spectate() {
-				if (privateSrv!=null) {
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else{$("#clantag").val("PS");}
-				}
+
     hideMenu();
     $(".btn-spectate").click();
 }
