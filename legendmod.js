@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.501 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.502 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2948,7 +2948,10 @@ function init(modVersion) {
             //$(".agario-party").empty();$(".form-group.clearfix").hide();
             //$(".form-group").hide();
         }
-		else if (privateSrv!=null) {				
+		else if (privateSrv!=null) {
+			if(privateSrv.includes("fzogar.xyz:4000")){$("#clantag").val("PS1");}
+			else if(privateSrv.includes("fzogar.xyz:4001")){$("#clantag").val("PS2");}
+			else{$("#clantag").val("PS2");}
             $("#region").hide();
             $("#gamemode2").hide();
             $("#server").hide();
@@ -3047,6 +3050,11 @@ function delay(time, func) {
 }
 
 function spectate() {
+				if (privateSrv!=null) {
+					if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else{$("#clantag").val("PS2");}
+				}
     hideMenu();
     $(".btn-spectate").click();
 }
