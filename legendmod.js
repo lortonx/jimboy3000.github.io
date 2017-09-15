@@ -4969,7 +4969,7 @@ function PrivateServer6(){
 function PrivateServer7(){
 	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
 }
-function PrivateServer7(){
+function PrivateServer8(){
 	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
 }
 /*
