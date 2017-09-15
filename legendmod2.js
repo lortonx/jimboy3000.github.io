@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.503 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.504 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -16,14 +16,15 @@ var oldgamemode=$("#gamemode");
 	if (this.value == ":PrS") {
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
-//		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
-//		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-//		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
-//		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
+		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
+		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
+		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');	
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
+		'<option value=":PrS8" data-itr="PrS8">Virus mode</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -64,13 +65,17 @@ $('#gamemode').on('change', function() {
 	PrivateServer5();
     }
     else if (this.value == ":PrS6") {
-    console.log("Going to PRS5");
+    console.log("Going to PRS6");
 	PrivateServer6();
     }
     else if (this.value == ":PrS7") {
-    console.log("Going to PRS5");
+    console.log("Going to PRS7");
 	PrivateServer7();
-    }	
+    }
+    else if (this.value == ":PrS8") {
+    console.log("Going to PRS8");
+	PrivateServer8();
+    }		
 });
 
 /*		
@@ -178,7 +183,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "62"; // the version 1.1-> 1.11
+var semimodVersion = "63"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2338,7 +2343,7 @@ function init(modVersion) {
 				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
 				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
 				'No more conflicts due to official updates.'+
-				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="red"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
+				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="blue"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
 			  }
 			else{
@@ -2356,8 +2361,16 @@ function init(modVersion) {
 				}
 		}
 	}
-        //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
-
+				//important announcement
+    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+				'<font color="yellow"><b>Important Notice</font> '+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center">Communication works only on LM </font><font color="yellow">v2.5</font><font color="black">'+
+				'<br>Versions 2.4 and prior, and scripts kitty, ogario and others, <font color="red">CANNOT</font> communicate anymore.<br>'+
+				'Inform your friends to use <font color="red">ONLY</font> Legend Mod <font color="yellow">v2.5</font>.'+
+				' Disable all other mods on Tampermonkey or Agarscripts'+
+				'<br>VISIT: <a target="_blank" href="https://legendmod.joomla.com/en/"><font color="blue"><u>www.legendmod.ml</u></font></a></b>'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
+				
         $("#infoicon").mouseover(function() {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
@@ -3051,9 +3064,14 @@ function delay(time, func) {
 
 function spectate() {
 				if (privateSrv!=null) {
-					if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else{$("#clantag").val("PS2");}
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
 				}
     hideMenu();
     $(".btn-spectate").click();
@@ -3590,9 +3608,9 @@ function play() {
     $('*[data-itr="page_play"]').click();
 }
 
-function spectate() {
-    $('*[data-itr="page_spectate"]').click();
-}
+//function spectate() {
+//    $('*[data-itr="page_spectate"]').click();
+//}
 
 function appendLog(message) {
     var region = MC.getRegion();
@@ -4950,6 +4968,9 @@ function PrivateServer6(){
 }
 function PrivateServer7(){
 	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
+}
+function PrivateServer7(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
 }
 /*
 function adres() {
