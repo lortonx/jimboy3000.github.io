@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.505 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.506 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -24,7 +24,8 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
-		'<option value=":PrS8" data-itr="PrS8">Virus mode</option>');	
+		'<option value=":PrS8" data-itr="PrS8">Virus mode</option>'+
+		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -75,6 +76,10 @@ $('#gamemode').on('change', function() {
     else if (this.value == ":PrS8") {
     console.log("Going to PRS8");
 	PrivateServer8();
+    }
+    else if (this.value == ":PrS9") {
+    console.log("Going to PRS9");
+	PrivateServer9();
     }		
 });
 
@@ -183,7 +188,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "64"; // the version 1.1-> 1.11
+var semimodVersion = "65"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -381,6 +386,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
 				$(".btn-spectate").click();		
@@ -422,6 +428,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
 				$(".btn-spectate").click();
@@ -4986,6 +4993,9 @@ function PrivateServer7(){
 }
 function PrivateServer8(){
 	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
+}
+function PrivateServer9(){
+	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
 }
 /*
 function adres() {
