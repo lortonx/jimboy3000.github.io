@@ -1,9 +1,11 @@
 /*************
- * LEGEND mod v2.506 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.507 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
 document.title = "Legend mod";
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
@@ -188,7 +190,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "65"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -374,6 +376,8 @@ if (languagemod == 6) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
@@ -416,6 +420,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
@@ -837,7 +843,8 @@ setTimeout(function() {
 
 function init(modVersion) {
     //var connectedbanner=0;
-
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 
     if (timesopened != null) {
         timesopened++;
