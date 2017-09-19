@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.510 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.511 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -525,7 +525,15 @@ setTimeout(function() {
 
                     if ($("#server").val().includes("#") == false) {
                         var texture2, texture3;
+					    var texture2, texture3;
                         texture3 = $("#server").val();
+                        texture2 = texture3.replace("live-arena-", "");
+						texture2 = texture2.replace(".agar.io:80", "");
+						$("#server-token").val(texture2);
+						$("#server-join").click();
+
+						
+/*                        texture3 = $("#server").val();
                         texture2 = texture3.substring(0, texture3.indexOf(':'));
                         texture2 = texture2.replace(".", "-");
                         texture2 = texture2.replace(".", "-");
@@ -533,7 +541,7 @@ setTimeout(function() {
                         texture3 = texture3.split(':').pop();
                         texture3 = "ws://ip-" + texture2 + ".tech.agar.io:" + texture3 + "/";
                         a.core.connect(texture3);
-
+*/
                         setTimeout(function() {
                             realmode = getGameMode();
 //                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
