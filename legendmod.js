@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.508 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.507 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2404,7 +2404,7 @@ function init(modVersion) {
 				'<font color="yellow"><b>Important Notice</font> '+
 				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
 				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
-				'Need some days to establish <font color="red">communications</font> Sockets.'+
+				'Need some days to establish <font color="red">communication</font> sockets.'+
 				'<br><font color="#018cf6">Stay informed</font>.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
 				
