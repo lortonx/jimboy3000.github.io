@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.507 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.508 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -2402,11 +2402,10 @@ function init(modVersion) {
 				//important announcement
     			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center">Communication works only on LM </font><font color="yellow">v2.5</font><font color="black">'+
-				'<br>Versions 2.4 and prior, and scripts kitty, ogario and others, <font color="red">CANNOT</font> communicate anymore.<br>'+
-				'Inform your friends to use <font color="red">ONLY</font> Legend Mod <font color="yellow">v2.5</font>.'+
-				' Disable all other mods on Tampermonkey or Agarscripts'+
-				'<br>VISIT: <a target="_blank" href="https://legendmod.joomla.com/en/"><font color="blue"><u>www.legendmod.ml</u></font></a></b>'+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
+				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
+				'Need some days to establish <font color="red">communications</font> Sockets.'+
+				'<br><font color="#018cf6">Stay informed</font>.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
 				
         $("#infoicon").mouseover(function() {
