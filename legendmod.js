@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.509 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.510 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -190,7 +190,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -5032,7 +5032,7 @@ function adres() {
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
-			
+			$("#server").val(currentIP);
 //	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
 //            d = c.exec($("#server-ws").val());
 //			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
