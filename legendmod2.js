@@ -3013,9 +3013,7 @@ function init(modVersion) {
             //$(".form-group").hide();
         }
 		else if (privateSrv!=null) {
-			if(privateSrv.includes("fzogar.xyz:4000")){$("#clantag").val("PS1");}
-			else if(privateSrv.includes("fzogar.xyz:4001")){$("#clantag").val("PS2");}
-			else{$("#clantag").val("PS2");}
+
             $("#region").hide();
             $("#gamemode2").hide();
             $("#server").hide();
