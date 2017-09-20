@@ -2384,7 +2384,7 @@ function init(modVersion) {
 
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> <font color="blue"><b> ' + Premadeletter16 + ' </font></b><font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 /*			  if (modVersion == "2.5"){
