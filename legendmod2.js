@@ -1,9 +1,11 @@
 /*************
- * LEGEND mod v2.506 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.511 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
 document.title = "Legend mod";
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
@@ -24,8 +26,8 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
-		'<option value=":PrS8" data-itr="PrS8">Virus mode</option>'+
-		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
+		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
+//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -188,7 +190,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "65"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -243,7 +245,7 @@ var Premadeletter12 = "Connected!";
 var Premadeletter13 = "PLAY";
 var Premadeletter14 = "SPECTATE";
 var Premadeletter15 = "Invalid token or server has closed :(";
-var Premadeletter16 = "MUST be Updated to";
+var Premadeletter16 = "can be Updated to";
 var Premadeletter17 = "Welcome back";
 var Premadeletter18 = "Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
 var Premadeletter19 = "Enable Them";
@@ -374,12 +376,14 @@ if (languagemod == 6) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		//spectate();
 				if (privateSrv!=null) {
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+/*					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
 					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
@@ -389,7 +393,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
-				$(".btn-spectate").click();		
+*/				
+//				$(".btn-spectate").click();		
 		
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
@@ -416,11 +421,13 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		//spectate();
-				if (privateSrv!=null) {
+/*				if (privateSrv!=null) {
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -431,7 +438,8 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
-				$(".btn-spectate").click();
+*/
+//				$(".btn-spectate").click();
 				
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
@@ -519,7 +527,15 @@ setTimeout(function() {
 
                     if ($("#server").val().includes("#") == false) {
                         var texture2, texture3;
+					    var texture2, texture3;
                         texture3 = $("#server").val();
+                        texture2 = texture3.replace("live-arena-", "");
+						texture2 = texture2.replace(".agar.io:80", "");
+						$("#server-token").val(texture2);
+						$("#server-join").click();
+
+						
+/*                        texture3 = $("#server").val();
                         texture2 = texture3.substring(0, texture3.indexOf(':'));
                         texture2 = texture2.replace(".", "-");
                         texture2 = texture2.replace(".", "-");
@@ -527,7 +543,7 @@ setTimeout(function() {
                         texture3 = texture3.split(':').pop();
                         texture3 = "ws://ip-" + texture2 + ".tech.agar.io:" + texture3 + "/";
                         a.core.connect(texture3);
-
+*/
                         setTimeout(function() {
                             realmode = getGameMode();
 //                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
@@ -837,7 +853,8 @@ setTimeout(function() {
 
 function init(modVersion) {
     //var connectedbanner=0;
-
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 
     if (timesopened != null) {
         timesopened++;
@@ -1179,18 +1196,22 @@ function init(modVersion) {
                 if (mode == ":party") {
                     copy("http://agar.io/#" + MC.getPartyToken());
                 } else if (mode != ":party") {
+					if (region!=null&&mode!=null){
                     copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + mode);
+					}
+					else{
+					copy("http://agar.io/?sip=" + searchSip);	
+					}
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
                     copy("http://agar.io/#" + currentToken);
-                } else if (realmode != ":party") {
+                } else if (realmode != ":party") {					
                     copy("http://agar.io/?sip=" + currentIP + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
             }
 			else if (privateSrv!=null) {
-                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");
-                
+                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");                
             }
         });
 
@@ -2365,10 +2386,10 @@ function init(modVersion) {
 
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
-			toastr["error"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> <font color="blue"><b> ' + Premadeletter16 + ' </font></b><font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a>');
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
-			  if (modVersion == "2.5"){
+/*			  if (modVersion == "2.5"){
 				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'Welcome to <font color="yellow"><b>v2.5</b></font> '+
 				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
@@ -2376,8 +2397,8 @@ function init(modVersion) {
 				'No more conflicts due to official updates.'+
 				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="blue"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
-			  }
-			else{
+			  } */
+//			else{
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
 			if (userlastname!=null && userfirstname!=null){ 
 				if (usergender=="male"){
@@ -2390,18 +2411,17 @@ function init(modVersion) {
 			else{
 		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
 				}
-		}
+//		}
 	}
 				//important announcement
-    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+/*    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center">Communication works only on LM </font><font color="yellow">v2.5</font><font color="black">'+
-				'<br>Versions 2.4 and prior, and scripts kitty, ogario and others, <font color="red">CANNOT</font> communicate anymore.<br>'+
-				'Inform your friends to use <font color="red">ONLY</font> Legend Mod <font color="yellow">v2.5</font>.'+
-				' Disable all other mods on Tampermonkey or Agarscripts'+
-				'<br>VISIT: <a target="_blank" href="https://legendmod.joomla.com/en/"><font color="blue"><u>www.legendmod.ml</u></font></a></b>'+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
+				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
+				'Need some days to establish <font color="red">communication</font> sockets.'+
+				'<br><font color="#018cf6">Stay informed</font>.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
-				
+*/				
         $("#infoicon").mouseover(function() {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
@@ -2969,7 +2989,7 @@ function init(modVersion) {
                 $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
             }
 		
-        }, 3000);
+        }, 2000);
         if (searchSip != null) {
             $("#region").hide();
             $("#gamemode2").hide();
@@ -5024,11 +5044,13 @@ function adres() {
 */
 function adres() {
 	if ($("#gamemode").val() != ":party") {
-		setTimeout(function(){
-	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
-            d = c.exec($("#server-ws").val());
-			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
-			currentIP=d[1].replace(/-/g, '.') + d[2];
+		setTimeout(function(){		
+			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
+			$("#server").val(currentIP);
+//	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
+//            d = c.exec($("#server-ws").val());
+//			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
+//			currentIP=d[1].replace(/-/g, '.') + d[2];
 			setTimeout(function() {
 				 
 			    realmode = getGameMode();
