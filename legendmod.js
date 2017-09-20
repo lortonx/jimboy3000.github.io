@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.510 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.511 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -383,7 +383,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		setTimeout(function () {
 		//spectate();
 				if (privateSrv!=null) {
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+/*					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
 					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
@@ -393,6 +393,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
+*/				
 //				$(".btn-spectate").click();		
 		
 		$("#overlays").show();
@@ -426,7 +427,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		//spectate();
-				if (privateSrv!=null) {
+/*				if (privateSrv!=null) {
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -437,6 +438,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
+*/
 //				$(".btn-spectate").click();
 				
 		$("#overlays").show();
