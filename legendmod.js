@@ -382,8 +382,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		//spectate();
-				if (privateSrv!=null) {
-/*					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+/*					if (privateSrv!=null) {
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
 					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
