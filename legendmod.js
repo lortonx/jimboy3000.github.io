@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.511 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.512 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -190,7 +190,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "67"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -415,6 +415,9 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
 			},250);
     }
+	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+	}
 });
 
 
@@ -461,6 +464,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		}
 		
     }
+	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
+	}
 });
 
 
