@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.512 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.513 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 loadersetings();
 loadericon();
@@ -190,7 +190,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "69"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -2406,7 +2406,7 @@ function init(modVersion) {
 			  } */
 //			else{
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
-			if (userlastname!=null && userfirstname!=null){ 
+			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
 				if (usergender=="male"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
 				}
