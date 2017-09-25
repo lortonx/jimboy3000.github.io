@@ -6,8 +6,8 @@ loadericon();
 document.title = "Legend mod";
 
 //Authenticate Mod Script
-setTimeout(function() {
 var accesstomod;
+setTimeout(function() {
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
