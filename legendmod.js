@@ -5237,9 +5237,9 @@ function getaccesstoken2() {
 			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate').css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
-					}, 15000);
+					}, 20000);
 				}
-   }, 5000);
+   }, 10000);
 }
 
 
