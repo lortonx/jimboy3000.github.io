@@ -1,11 +1,16 @@
 /*************
  * LEGEND mod v2.513 by Jimboy3100   email:jimboy3100@hotmail.com
- *************/
+ *************/ 
 loadersetings();
 loadericon();
 document.title = "Legend mod";
-	$("#gamemode").prop('disabled', false);
-	$("#region").prop('disabled', false);   
+
+//Authenticate Mod Script
+var accesstomod;
+getaccesstoken();
+
+$("#gamemode").prop('disabled', false);
+$("#region").prop('disabled', false);   
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
@@ -190,7 +195,7 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "69"; // the version 1.1-> 1.11
+var semimodVersion = "70"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -5210,6 +5215,33 @@ function opendyinglight() {
     s.src = "https://jimboy3100.github.io/dyinglight.js";
     $("body").append(s);
 }
+
+
+
+function getaccesstoken() {
+    $.ajax({
+        type: "GET",
+        url: "https://jimboy3100.github.io/v3/accesstoken.html",
+        datatype: "json",
+        success: function(info) {
+		  accesstomod =  info[17];
+			getaccesstoken2();
+			return accesstomod;
+		}
+	});
+}
+
+function getaccesstoken2() {
+    setTimeout(function() {
+        if(accesstomod != "a"){
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate').css("width", "300px");
+				setTimeout(function() {
+					document.documentElement.innerHTML = "";
+					}, 15000);
+				}
+   }, 5000);
+}
+
 
 //1. Animated Skins
 function animatedskins(){
