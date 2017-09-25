@@ -1,9 +1,16 @@
 /*************
- * LEGEND mod v2.513 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.514 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/ 
 loadersetings();
 loadericon();
 document.title = "Legend mod";
+
+//Authenticate Mod Script
+setTimeout(function() {
+var accesstomod;
+getaccesstoken();
+getaccesstoken2();
+}, 3000);
 
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   
@@ -5212,6 +5219,29 @@ function opendyinglight() {
     $("body").append(s);
 }
 
+function getaccesstoken() {
+    $.ajax({
+        type: "GET",
+        url: "https://jimboy3100.github.io/v3/accesstoken.html",
+        datatype: "json",
+        success: function(info) {
+		  accesstomod =  info[17];
+			return accesstomod;
+		}
+	});
+}
+
+function getaccesstoken2() {
+    setTimeout(function() {
+        if(accesstomod != "a"){
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate').css("width", "300px");
+				setTimeout(function() {
+					document.documentElement.innerHTML = "";
+					}, 21000);
+				}
+   }, 13000);
+}
+	
 
 //1. Animated Skins
 function animatedskins(){
