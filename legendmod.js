@@ -35,7 +35,7 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
 //		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
 //		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
