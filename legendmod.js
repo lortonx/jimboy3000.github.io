@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.514 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.515 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "71"; // the version 1.1-> 1.11
  
@@ -392,6 +392,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		setTimeout(function () {
 		//spectate();
 					if (privateSrv!=null) {
+						
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -648,19 +649,9 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-	/*	else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
-				
-				logout();
-				setTimeout(function() {
-					MC.setQuality($('#quality').val());
-					spectate();
-            }, 500);
-				$("#gamemode").click(function() {                       
-						$(".toast.toast-warning").remove();
-                    });
-				return false;
-        }	*/
+		else if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+        }	
 		
         $("#server-ws").on('change', function() {
 			adres();
