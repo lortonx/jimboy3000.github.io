@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.517 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.518 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "71"; // the version 1.1-> 1.11
  
@@ -192,12 +192,11 @@ var realmode2 = "";
 var token = "";
 var messageone = 1; //If legendmod is being used
 var hiddenfromclan = 0;
-var saveclanpassword;
+var saveclanpassword= localStorage.getItem("saveclanpassword");
 var troll1;
 var seticon = "YES";
 var setmessagecom = "YES";
 var setyt = "YES";
-var clanpassword;
 var searching;
 var timerId;
 T = {};
@@ -236,6 +235,7 @@ var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
 var fbresponse={};
+var prevPrivateServer = localStorage.getItem("prevPrivateServer");
 
 
 var Premadeletter0 = "Communication Activated";
@@ -391,8 +391,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		//spectate();
-					if (privateSrv!=null) {
-						
+				if (privateSrv!=null) {
+					if ($('#clantag').val() != ""){
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -401,6 +401,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
+					}
 				}
 				
 //				$(".btn-spectate").click();		
@@ -440,6 +441,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		setTimeout(function () {
 		//spectate();
 				if (privateSrv!=null) {
+					if ($('#clantag').val() != ""){
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -448,6 +450,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
+					}
 				}
 
 //				$(".btn-spectate").click();
@@ -600,7 +603,19 @@ setTimeout(function() {
 setTimeout(function () {
 		if (privateSrv!=null) {				
 			$(".btn-spectate").click();
+			prevPrivateServer=1;
+			localStorage.setItem("prevPrivateServer", 1);
+			return prevPrivateServer=1;			
+			
         }
+		else{
+			if (prevPrivateServer=="1"){
+				$("#clantag").val(saveclanpassword);
+				prevPrivateServer=0;
+				localStorage.setItem("prevPrivateServer", 0);
+			return prevPrivateServer=0;
+			}
+		}
 }, 6000);
 
 
@@ -1287,6 +1302,10 @@ function init(modVersion) {
             $('#clantag').css('background-color', '#000066');
         }).mouseleave(function() {
             $('#clantag').css('background-color', '');
+			if (privateSrv==null){
+			saveclanpassword=$("#clantag").val();
+			localStorage.setItem("saveclanpassword", saveclanpassword);
+			}
         });
         //	$('#region').unbind('mouseenter');
         //	$('#gamemode').unbind('mouseenter');
