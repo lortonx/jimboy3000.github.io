@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.516 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.517 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "71"; // the version 1.1-> 1.11
  
@@ -598,7 +598,7 @@ setTimeout(function() {
 }, 2500);
 
 setTimeout(function () {
-		else if (privateSrv!=null) {				
+		if (privateSrv!=null) {				
 			$(".btn-spectate").click();
         }
 }, 6000);
