@@ -1,6 +1,8 @@
 /*************
- * LEGEND mod v2.513 by Jimboy3100   email:jimboy3100@hotmail.com
- *************/ 
+ * LEGEND mod v2.514 by Jimboy3100   email:jimboy3100@hotmail.com
+ *************/
+var semimodVersion = "71"; // the version 1.1-> 1.11
+ 
 loadersetings();
 loadericon();
 document.title = "Legend mod";
@@ -34,7 +36,7 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
-		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
+//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
 //		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
     }
@@ -198,7 +200,6 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "70"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -390,7 +391,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		//spectate();
-/*					if (privateSrv!=null) {
+					if (privateSrv!=null) {
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -398,10 +399,9 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
-*/				
+				
 //				$(".btn-spectate").click();		
 		
 		$("#overlays").show();
@@ -438,7 +438,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		//spectate();
-/*				if (privateSrv!=null) {
+				if (privateSrv!=null) {
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -446,10 +446,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
-*/
+
 //				$(".btn-spectate").click();
 				
 		$("#overlays").show();
