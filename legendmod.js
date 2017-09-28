@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.515 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.516 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "71"; // the version 1.1-> 1.11
  
@@ -596,32 +596,13 @@ setTimeout(function() {
         })(window, window.jQuery);
     }
 }, 2500);
-/*
+
 setTimeout(function () {
-$("#connect2").click(function() {
-	if($("#top5-hud").is(":visible")){
-		$("#connect").click();
-		return false;
-	}
-	else{
-	realmode2=$('#gamemode').val();
-	$("#create-party-btn-2").click();
-	
-	
-		
-		setTimeout(function () {
-			if (openthecommunication=="YES"){
-		$('#gamemode').val(realmode2);
-		$("#connect").click();
-		return openthecommunication="NO";
-		}
-		},6000);
-	
-	return openthecommunication="YES", realmode2;
-	}
-});
-}, 4500);
-*/
+		else if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+        }
+}, 6000);
+
 
 setTimeout(function() {
 
@@ -649,9 +630,7 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-		else if (privateSrv!=null) {				
-			$(".btn-spectate").click();
-        }	
+	
 		
         $("#server-ws").on('change', function() {
 			adres();
