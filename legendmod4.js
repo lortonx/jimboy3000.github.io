@@ -1,18 +1,99 @@
 /*************
- * LEGEND mod v2.237 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.517 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-$("#region").on('change', function() {
-    adres();
+var semimodVersion = "71"; // the version 1.1-> 1.11
+ 
+loadersetings();
+loadericon();
+document.title = "Legend mod";
+
+//Authenticate Mod Script
+var accesstomod;
+setTimeout(function() {
+getaccesstoken();
+getaccesstoken2();
+}, 3000);
+
+$("#gamemode").prop('disabled', false);
+$("#region").prop('disabled', false);   
+		
+var oldgamemode=$("#gamemode");
+		//Private Servers
+//$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+ $("#region").on('change', function() {
+	setTimeout(function() {
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);                 
+	}, 200);
+	if (this.value == ":PrS") {
+    console.log("Going to PrS");
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
+		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
+		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
+		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
+		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
+		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
+//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
+//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
+		
+    }
+	else if (this.value != ":PrS") {
+    console.log("Leaving PrS");
+	
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+		'<option value=":party" data-itr="page_party">Party Mode</option>');	
+    }	
+	adres();
 });
 $('#gamemode').on('change', function() {
-    adres();
+   adres();
     if (this.value == ":party") {
         $("#create-party-btn").click();
-    }
     console.log("Party stuff fixed");
-})
-
-
+	}
+    else if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }  
+    else if (this.value == ":PrS3") {
+    console.log("Going to PRS3");
+	PrivateServer3();
+    }
+    else if (this.value == ":PrS4") {
+    console.log("Going to PRS4");
+	PrivateServer4();
+    }
+    else if (this.value == ":PrS5") {
+    console.log("Going to PRS5");
+	PrivateServer5();
+    }
+    else if (this.value == ":PrS6") {
+    console.log("Going to PRS6");
+	PrivateServer6();
+    }
+    else if (this.value == ":PrS7") {
+    console.log("Going to PRS7");
+	PrivateServer7();
+    }
+    else if (this.value == ":PrS8") {
+    console.log("Going to PRS8");
+	PrivateServer8();
+    }
+    else if (this.value == ":PrS9") {
+    console.log("Going to PRS9");
+	PrivateServer9();
+    }		
+});
 
 /*		
 setTimeout(function (){ $("#create-party-btn-2").click();$('#gamemode').val(":party");},800);
@@ -74,6 +155,7 @@ var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
 var yt6data = "Legend Mod Promo";
 var lastIP = "";
+var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext = localStorage.getItem("leadbtext");
 var teambtext = localStorage.getItem("teambtext");
@@ -89,6 +171,8 @@ var XPBtn = localStorage.getItem("XPBtn");
 //var MAINBBtn = localStorage.getItem("MAINBBtn");
 //var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 //var MANUIBtn = localStorage.getItem("MANUIBtn");
+var MAINBTBtn = localStorage.getItem("MAINBTBtn");
+var AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
 // var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
@@ -102,6 +186,7 @@ var region = getParameterByName("r", url);
 var mode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
+var privateSrv= getParameterByName("ip", url);
 var realmode = "";
 var realmode2 = "";
 var token = "";
@@ -115,7 +200,6 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "33"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -143,6 +227,16 @@ var semiurl2;
 var PostedThings;
 var Ultimouseenabled=0;
 var setscriptingcom = "YES";
+var usedonceSkin=0;
+var toastrSkinNotice=0;
+var detailed="";
+//var userIp;
+var detailed1;
+var userfirstname = localStorage.getItem("userfirstname");
+var userlastname = localStorage.getItem("userlastname");
+var usergender = localStorage.getItem("usergender");
+var fbresponse={};
+
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -190,8 +284,10 @@ var Premadeletter42 = "Show Shortcuts";
 var Premadeletter43 = "Hide Shortcuts";
 var Premadeletter44 = "Show XP BAR";
 var Premadeletter45 = "Hide XP BAR";
-//var Premadeletter46="Show TIME";
-//var Premadeletter47="Hide TIME";
+var Premadeletter45a = "Rounded Hud";
+var Premadeletter45b = "Square Hud";
+var Premadeletter46 = "Show Anim. Skins";
+var Premadeletter47 = "Hide Anim. Skins";
 var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
@@ -206,6 +302,17 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
+
+
+/*
+  $(function() {
+    $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+      function(json) {
+        return userIp=json.ip;
+      }
+    );
+  });
+*/
 
 
 var languagemod = localStorage.getItem("languagemod");
@@ -278,23 +385,96 @@ if (languagemod == 6) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
-        $(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
-        /*if (openthecommunication=="YES"){
-        	setTimeout(function () {
-        	$('#gamemode').val(realmode2);
-        	$("#connect2").click();
-        	return openthecommunication="NO";
-        	},2500);
-        }*/
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
+        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+		$(".toast.toast-warning").remove();
+		setTimeout(function () {
+		//spectate();
+					if (privateSrv!=null) {
+						
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+				}
+				
+//				$(".btn-spectate").click();		
+		
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();	
+		},200);
+	
+	
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
     }
+	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+	}
 });
 
 
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-        $(".command-text").text(Premadeletter0);
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
+	//	$(".toast.toast-warning").remove();
+	        $(".command-text").text(Premadeletter0);
+		setTimeout(function () {
+		//spectate();
+				if (privateSrv!=null) {
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+				}
+
+//				$(".btn-spectate").click();
+				
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();			
+		},200);
+
+		
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
+		}
+		
     }
+	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
+	}
 });
 
 
@@ -332,11 +512,12 @@ eventer(messageEvent, function (e) {
 $("#advertisement").remove();
 $("#mcbanners-container").remove();
 $("#adsBottom").remove();
+
 //remove adds
 $("#adsGameOver").remove();
 
 //Loader Icons 
-loadericon();
+
 
 setTimeout(function() {
     if (searchSip == null) {
@@ -360,7 +541,15 @@ setTimeout(function() {
 
                     if ($("#server").val().includes("#") == false) {
                         var texture2, texture3;
+					    var texture2, texture3;
                         texture3 = $("#server").val();
+                        texture2 = texture3.replace("live-arena-", "");
+						texture2 = texture2.replace(".agar.io:80", "");
+						$("#server-token").val(texture2);
+						$("#server-join").click();
+
+						
+/*                        texture3 = $("#server").val();
                         texture2 = texture3.substring(0, texture3.indexOf(':'));
                         texture2 = texture2.replace(".", "-");
                         texture2 = texture2.replace(".", "-");
@@ -368,13 +557,13 @@ setTimeout(function() {
                         texture3 = texture3.split(':').pop();
                         texture3 = "ws://ip-" + texture2 + ".tech.agar.io:" + texture3 + "/";
                         a.core.connect(texture3);
-
+*/
                         setTimeout(function() {
                             realmode = getGameMode();
-                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                             var tmz = $("#server").val();
                             // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-                            $("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");
+//                            $("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");
                             currentIP = tmz;
                             if (realmode != ":party") {
                                 setTimeout(function() {
@@ -407,60 +596,44 @@ setTimeout(function() {
         })(window, window.jQuery);
     }
 }, 2500);
-/*
+
 setTimeout(function () {
-$("#connect2").click(function() {
-	if($("#top5-hud").is(":visible")){
-		$("#connect").click();
-		return false;
-	}
-	else{
-	realmode2=$('#gamemode').val();
-	$("#create-party-btn-2").click();
-	
-	
-		
-		setTimeout(function () {
-			if (openthecommunication=="YES"){
-		$('#gamemode').val(realmode2);
-		$("#connect").click();
-		return openthecommunication="NO";
-		}
-		},6000);
-	
-	return openthecommunication="YES", realmode2;
-	}
-});
-}, 4500);
-*/
+		if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+        }
+}, 6000);
+
 
 setTimeout(function() {
 
         //	$("body").show();	
         MC.setQuality($('#quality').val());
         //	history.pushState(stateObj, "page 2", "#" + currentToken );
-        if (searchSip != null) {
-            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+        if (searchSip != null && privateSrv==null) {
+//            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
             if (region == null) {
-                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip);
+//                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip);
                 //$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip).attr("style", "opacity: 0;");
                 setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
                 }, 5000);
             } else {
 
-                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2).attr("style", "opacity: 0;");
+//                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2).attr("style", "opacity: 0;");
                 //	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
                 setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
                 }, 5000);
             }
-        } else if (searchSip == null) {
+        } else if (searchSip == null && privateSrv==null) {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
-        }
-        $("#cur-tk-hud").bind("DOMSubtreeModified", function() {
+        }	
+	
+		
+        $("#server-ws").on('change', function() {
+			adres();
             setTimeout(function() {
                 realmode = getGameMode();
                 if (searchSip == null) {
@@ -511,104 +684,111 @@ setTimeout(function() {
 //		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 var minbtext2 = minbtext;
+var minbtext3 = minbtext;
+
 if (minbtext == null || minbtext == "") {
     minbtext = "Legend Mod/Locked";
     minbtext2 = "Legend Mod";
+	minbtext3 = "Legend Mod/Private";
 }
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 6000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 6500);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 7000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 7500);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 8000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 9000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 10000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
+			//Load Private Servers
+	if($('#region>option:nth-child(1)').val()!=":PrS")	{
+	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+	}	
 }, 13000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
 }, 14000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 11000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 12000);
 setTimeout(function() {
@@ -618,23 +798,23 @@ setTimeout(function() {
     MC.setQuality($('#quality').val());
 }, 14000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
 }, 18000);
 setTimeout(function() {
-    var c = document.getElementById("minimap-sectors");
+	var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height / 9);
     ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else ctx.fillText(minbtext2, c.width / 2, 22);
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
     MC.setQuality($('#quality').val());
     //if(dyinglight1load!="yes"){whenplayerdies();}
 }, 22000);
@@ -656,7 +836,8 @@ setTimeout(function() {
 
 function init(modVersion) {
     //var connectedbanner=0;
-
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 
     if (timesopened != null) {
         timesopened++;
@@ -703,7 +884,7 @@ function init(modVersion) {
 
         $("#overlays").css("z-index", 100);
 
-        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
+        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><i class="fa fa-search retro"></i><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
             '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
             '<div id="" style="margin-top: 10px;">' +
             '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
@@ -732,8 +913,8 @@ function init(modVersion) {
             '<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-            //                                          '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-minus"></i>Show Main Tools</button>' +
-            //											'<button id="MANUIBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>Show Manual Skins</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
+            											'<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
             '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
             '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
@@ -899,15 +1080,16 @@ function init(modVersion) {
         $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
         //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
         $('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
-        document.getElementsByClassName('quick-yt icon-youtube2')[0].setAttribute('id', 'legendid');
-        document.getElementsByClassName('quick-yt icon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
-        document.getElementsByClassName('quick-yt icon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
-        $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
-        $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
-        $(".quick-more-skins.icon-grin").attr('href', 'https://jimboy3100.github.io/skins/skins.html');
-        $("#quick-menu").append('<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-
-
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
+		
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
+ //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
+        $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
+        $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
+		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
+		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
+		
         // prevent edit
         $("#musicUrl").on("input", function() {
             $(this).attr("maxlength", "0");
@@ -942,10 +1124,10 @@ function init(modVersion) {
         //clone region and gamemode//$("#region").clone().prependTo("#searchLog").attr("onclick","MC.setRegion($(this).val());");//$("#gamemode").clone().prependTo("#searchLog").attr('id', 'gamemode2').after("#gamemode");					 						  
 
         $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
-            '<a id="searchShortcut" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><span id="searchSpan" class="glyphicon glyphicon-search"></span></a>' +
+            '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
             '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
-            '<a id="reconnectBtn" class="btn btn-info btn-sm icon-loop2" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
-            'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"></a>' +
+            '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
+            'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
 
             '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30x; left: 0px; padding: 0px; border-radius: 0px;">' +
             '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
@@ -997,19 +1179,28 @@ function init(modVersion) {
                 if (mode == ":party") {
                     copy("http://agar.io/#" + MC.getPartyToken());
                 } else if (mode != ":party") {
+					if (region!=null&&mode!=null){
                     copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + mode);
+					}
+					else{
+					copy("http://agar.io/?sip=" + searchSip);	
+					}
                 }
-            } else {
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
                     copy("http://agar.io/#" + currentToken);
-                } else if (realmode != ":party") {
+                } else if (realmode != ":party") {					
                     copy("http://agar.io/?sip=" + currentIP + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
+            }
+			else if (privateSrv!=null) {
+                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");                
             }
         });
 
         $("#reconnectBtn").click(function() {
-            ogario.gameMode = realmode;
+            realmode=getGameMode();
+			ogario.gameMode = realmode;
             hideMenu();
             changeServer();
             if (!$("#searchHud").is(':visible')) {
@@ -1023,8 +1214,15 @@ function init(modVersion) {
                 setTimeout(function() {
                     MC.setQuality($('#quality').val());
                 }, 3000);
+                setTimeout(function() {
+                    MC.setQuality($('#quality').val());
+                }, 5000);
+                setTimeout(function() {
+                    MC.setQuality($('#quality').val());
+                }, 7000);				
             }
         });
+	
 
 
         /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
@@ -1036,12 +1234,13 @@ function init(modVersion) {
         $("#searchBtn").click(function() {
             var searchString = $("#searchInput").val();
             searchHandler(searchString);
-        });
+        });		
         $("#searchInput").keyup(function(event) {
             if (event.keyCode == 13) {
                 $("#searchBtn").click();
             }
         });
+	
         $("#closeBtn").click(function() {
             hideSearchHud();
         });
@@ -1058,6 +1257,8 @@ function init(modVersion) {
             $('#nick').css('background-color', '');
         });
         $('#nick').blur(function() {
+			previousnickname=$("#nick").val();
+			localStorage.setItem("previousnickname", previousnickname);
             if (clickedname == "YES") {
                 if ($("#nick").val().length >= 16) {
                     toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
@@ -1079,6 +1280,9 @@ function init(modVersion) {
                 openvidmod();
             }
         });
+		
+		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
         }).mouseleave(function() {
@@ -1108,20 +1312,25 @@ function init(modVersion) {
             //return messageone=1;
         });
 
-
+		
+		
+		
         $("#boostButton").css("display", "inline-block");
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
 
-
-
+	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
+        '<br>Legend Mod by jimboy3100</i></h6></div>');
+		$(".agario-profile-name").css('display', 'inline-block');
+		$(".agario-profile-name").css('vertical-align', ' baseline');
+		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
 
         // LEGEND footer
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
         $("#menu-footer").text("");
 
-        $("#TimesUsedPanel").css({
-            marginBottom: "5px"
+        $(".TimesUsedPanel").css({
+            marginTop: "-10px"
         });
         $("#freeCoins").css({
             marginBottom: "-5px"
@@ -1138,7 +1347,8 @@ function init(modVersion) {
         $("#dailyQuests").css({
             marginBottom: "5px"
         });
-
+		$("#quests-blocker").hide();
+		
         $('#themePreset>option:nth-child(1)').text("Legend v2");
         $('#themePreset>option:nth-child(2)').text("Legend v1");
         $('#themePreset>option:nth-child(3)').text("Legend Original");
@@ -1258,32 +1468,31 @@ function init(modVersion) {
 
         $('#themePreset').on('change', function() {
             setTimeout(function() {
-                var c = document.getElementById("minimap-sectors");
-                var ctx = c.getContext("2d");
-                ctx.clearRect(0, 0, c.width, c.height / 9);
-                ctx.font = "16px Georgia";
-                if (searchSip != null) {
-                    ctx.fillText(minbtext, c.width / 2, 22)
-                } else ctx.fillText(minbtext2, c.width / 2, 22);
-                MC.setQuality($('#quality').val());
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+					ctx.clearRect(0, 0, c.width, c.height / 9);
+					ctx.font = "16px Georgia";
+					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+					else {ctx.fillText(minbtext2, c.width / 2, 22); }
+					MC.setQuality($('#quality').val());
             }, 200);
         })
         $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
             setTimeout(function() {
-                var c = document.getElementById("minimap-sectors");
-                var ctx = c.getContext("2d");
-                ctx.clearRect(0, 0, c.width, c.height / 9);
-                ctx.font = "16px Georgia";
-                if (searchSip != null) {
-                    ctx.fillText(minbtext, c.width / 2, 22)
-                } else ctx.fillText(minbtext2, c.width / 2, 22);
-                MC.setQuality($('#quality').val());
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+				ctx.clearRect(0, 0, c.width, c.height / 9);
+				ctx.font = "16px Georgia";
+				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+				else {ctx.fillText(minbtext2, c.width / 2, 22); }
+				MC.setQuality($('#quality').val());
             }, 100);
         })
 
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
-        $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-            '<br>Legend Mod by jimboy3100</i></h6></div>');
+
         $(".agario-panel.ogario-yt-panel").css({
             marginBottom: "-10px"
         });
@@ -1394,7 +1603,7 @@ function init(modVersion) {
                     MC.setQuality($('#quality').val());
                 }, 5000);
                 setTimeout(function() {
-                    MC.setQuality($('#quality').val());
+                    MC.setQuality($('#quality').val());					
                 }, 6000);
                 if (messageone == 1) {
                     if (timesopened == null || timesopened == "" || timesopened <= 5) {
@@ -1416,14 +1625,22 @@ function init(modVersion) {
                     return messageone = 0;
                 }
             });
-
+		$(".btn.btn-danger.btn-logout").click(
+            function() {
+                setTimeout(function() {
+					adres();
+                    MC.setQuality($('#quality').val());
+                }, 1000);});
+				
         // listen for server disconnect
         MC.onDisconnect = function() {
             toastr["error"](Premadeletter10).css("width", "210px");
             appendSysLog("DISCONNECTED :(");
             if (timesdisconnected < 2) {
                 MC.reconnect();
+				setTimeout(function() {
                 adres();
+				}, 3000);
                 timesdisconnected++;
                 return timesdisconnected;
             } else {
@@ -1477,7 +1694,7 @@ function init(modVersion) {
         $("#region").change(function() {
             localStorage.setItem("location2", MC.getRegion());
         });
-
+/*
         if (searchSip == null) {
             $(document).ajaxComplete(function(event, xhr, settings) {
                 //console.log(xhr);
@@ -1491,9 +1708,9 @@ function init(modVersion) {
                     if (xhr.responseJSON.ip != null && xhr.responseJSON.hasOwnProperty('ip')) {
                         currentIP = xhr.responseJSON.ip;
                         //	    if (localStorage.getItem("IPBtn") == "true" || localStorage.getItem("IPBtn") == null) {
-                        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//                        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                         //        $("#cur-tk-hud").html("IP:" + currentIP +"<br>Region:" + MC.getRegion() + " Mode" + modebetter ) ;
-                        $("#cur-tk-hud").html("IP:" + currentIP + "<br>Region:" + MC.getRegion() + " Mode" + modebetter).attr("style", "opacity: 0;");
+//                        $("#cur-tk-hud").html("IP:" + currentIP + "<br>Region:" + MC.getRegion() + " Mode" + modebetter).attr("style", "opacity: 0;");
                         //  }
                     }
 
@@ -1545,7 +1762,7 @@ function init(modVersion) {
                 }
             }, 6000); //10
         }
-
+*/
         $("#autoCoinBtn").click(function() {
 
             var checked = !($(this).attr('aria-pressed') == "true");
@@ -1631,6 +1848,44 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);
             }
         });
+		
+		        $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MAINBTBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
+				'#time-hud { border-radius: 10px; } </style>');				
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
+        		else {localStorage.setItem("MAINBTBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
+				'#menu-footer, #leaderboard-hud, #dropDown, #minimap-hud,'+
+				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
+				'#time-hud { border-radius: 0 0 0 0 } </style>');
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
+            $("#AnimatedSkinBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
+				if (toastrSkinNotice==1){toastr["info"]("Animated skins <font color='red'><b>enabled</font></b>, <font color='red'><b>FPS drop</font></b> when 16").css("width", "300px");}
+				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
+        		else {localStorage.setItem("AnimatedSkinBtn", false);
+				toastr["info"]("Animated skins will be <font color='red'><b>disabled</font></b> after rejoin. <font color='red'><b>Better FPS</font></b> performance when 16").css("width", "300px");
+				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);}} );  				
+       /*         $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MANUIBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: center; } </style>');				
+        		$(this).html('<i class="fa fa-align-left""></i>Left Leaderboard');}
+				else {localStorage.setItem("MANUIBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN2">#leaderboard-positions{ text-align: left; } </style>');
+				$(this).html('<i class="fa fa-align-center"></i>Cent. Leaderboard');}} ); */
         //     $("#TIMEBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         //		if (checked) {localStorage.setItem("TIMEBtn", true);$("#time-hud").show();$(this).html('<i class="fa fa-clock-o"></i>'+ Premadeletter47);}
         //		else {localStorage.setItem("TIMEBtn", false);$("#time-hud").hide();$(this).html('<i class="fa fa-clock-o"></i>' + Premadeletter46);}} );  
@@ -1715,9 +1970,14 @@ function init(modVersion) {
 
 
         $("#troll1Btn").click(function() {
+			
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
                 localStorage.setItem("troll1Btn", true);
+				if (dyinglight1load=="yes") { 
+					toastr["info"]("When Dying Light Expansion is enabled, Troll on death cannot occur").css("width", "300px");
+					return false;
+				}
                 settroll1true();
                 whenplayerdies();
                 $(this).html('<i class="fa fa-bath"></i>' + Premadeletter56);
@@ -1730,27 +1990,24 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.2") {
-                toastr["info"]("Mod Version must be 2.2 or higher").css("width", "250px");
-                return false;
-            } else {
+
                 $("#main-menu").hide();
                 $("#skins-panel").hide();
                 $("#quick-menu").hide();
                 $("#exp-bar").hide();
                 $("#userscripts").show();
-            }
+
         });
 
 
 
-        $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
+//        $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
         //$("#cur-tk-hud").attr("style", "opacity: 0;");
 
 
         $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
             '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
-            '<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter57 + '><i id="ChatBtn1" class="icon-bubbles" style="padding-left: 0px;"></i></button>' +
+            '<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter57 + '><i id="ChatBtn1" class="fa fa-comment-o" style="padding-left: 0px;"></i></button>' +
             '<button id="MiniScripts" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setscriptingfunction();" data-toggle="tooltip" data-original-title="Mini Scripts"><i id="MiniScripts1" class="fa fa-linode" style="padding-left: 0px;"></i></button>' +
             '<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>' +
             '<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>' +
@@ -1816,11 +2073,46 @@ function init(modVersion) {
             }
         });
 
-        $('*[data-itr="page_play"]').click(function() {
-            ga('send', 'event', 'Token', ogario.playerNick + ' | agar.io/#' + currentToken);
-            ga('send', 'event', 'Tag', ogario.playerNick + ' | ' + ogario.clanTag);
-            ga('send', 'event', 'PlayerId', ogario.playerNick + ' | ' + $("#user-id-tag").text().split(": ")[1]);
-        });
+		$('*[data-itr="page_play"]').click(function() {
+			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
+			var Pwdtosend="NONE"; 
+			var servertosend="NotFound";
+			var nicknametosend="NotFound";
+			var userfirstname = localStorage.getItem("userfirstname");
+			var userlastname = localStorage.getItem("userlastname");
+
+			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
+			var i = 0, Pwdtosendlength = Pwdtosend.length; 
+			for(i; i < Pwdtosend ; i++) {
+				Pwdtosend = Pwdtosend.replace(" ", "_");
+				}
+			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
+			var i = 0, nicknametosendlength = nicknametosend.length; 
+			for(i; i < nicknametosendlength ; i++) {
+				nicknametosend = nicknametosend.replace(" ", "_");
+				}
+			if ($('#server').val()!= undefined ) {
+				if (servertosend.indexOf("#")==false) {
+					servertosend= $('#server').val().replace('#', 'Party-');}}
+					
+		if (privateSrv!=null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else if (searchSip == null) {		
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else if (searchSip != null) {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else {
+			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}		
+		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
+                                        setTimeout(function() {
+                                    $('#loaderIframeInfo1').remove();
+                                }, 6000);
+		});
 
 
 
@@ -1901,6 +2193,83 @@ function init(modVersion) {
             var win = window.open(url2, '_blank');
 
         });
+		
+		//blue onmouseover-onmouseout buttons
+        $('#searchShortcut').mouseenter(function() {$('#searchShortcut').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#searchShortcut').css('background-color', "transparent");});
+        $('#copySIPBtn').mouseenter(function() {$('#copySIPBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copySIPBtn').css('background-color', "transparent");});		
+        $('#copyLBBtn').mouseenter(function() {$('#copyLBBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copyLBBtn').css('background-color', "transparent");});
+        $('#reconnectBtn').mouseenter(function() {$('#reconnectBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#reconnectBtn').css('background-color', "transparent");});
+		
+        $('#VoiceBtn').mouseenter(function() {$('#VoiceBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#VoiceBtn').css('background-color', "transparent");});
+        $('#ChatBtn').mouseenter(function() {$('#ChatBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#ChatBtn').css('background-color', "transparent");});
+        $('#MiniScripts').mouseenter(function() {$('#MiniScripts').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#MiniScripts').css('background-color', "transparent");});
+		$('#SendCommands').mouseenter(function() {$('#SendCommands').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#SendCommands').css('background-color', "transparent");});
+        $('#shortcuts-hud>#Images').mouseenter(function() {$('#shortcuts-hud>#Images').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#shortcuts-hud>#Images').css('background-color', "transparent");});
+        $('#yout').mouseenter(function() {$('#yout').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#yout').css('background-color', "transparent");});
+        $('#Bino').mouseenter(function() {$('#Bino').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#Bino').css('background-color', "transparent");});
+        $('#playerBtn').mouseenter(function() {$('#playerBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#playerBtn').css('background-color', "transparent");});
+        $('#fullscreenBtn').mouseenter(function() {$('#fullscreenBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#fullscreenBtn').css('background-color', "transparent");});
+
+        $('#Cutnames').mouseenter(function() {$('#Cutnames').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#Cutnames').css('background-color', "transparent");});				
+        $('#Ultimouse').mouseenter(function() {$('#Ultimouse').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#Ultimouse').css('background-color', "transparent");});						
+		
+        $('#msgcommand1').mouseenter(function() {$('#msgcommand1').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand1').css('background-color', "transparent");});	
+        $('#msgcommand2').mouseenter(function() {$('#msgcommand2').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand2').css('background-color', "transparent");});	
+        $('#msgcommand3').mouseenter(function() {$('#msgcommand3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand3').css('background-color', "transparent");});	
+        $('#msgcommand4').mouseenter(function() {$('#msgcommand4').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand4').css('background-color', "transparent");});	
+        $('#msgcommand5').mouseenter(function() {$('#msgcommand5').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand5').css('background-color', "transparent");});	
+        $('#msgcommand6').mouseenter(function() {$('#msgcommand6').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand6').css('background-color', "transparent");});	
+		
+        $('#sendicon1').mouseenter(function() {$('#sendicon1').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon1').css('background-color', "transparent");});	
+        $('#sendicon2').mouseenter(function() {$('#sendicon2').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon2').css('background-color', "transparent");});	
+        $('#sendicon3').mouseenter(function() {$('#sendicon3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon3').css('background-color', "transparent");});	
+        $('#sendicon4').mouseenter(function() {$('#sendicon4').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon4').css('background-color', "transparent");});	
+        $('#sendicon5').mouseenter(function() {$('#sendicon5').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon5').css('background-color', "transparent");});	
+        $('#sendicon6').mouseenter(function() {$('#sendicon6').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon6').css('background-color', "transparent");});
+		
+        $('#sendyt1').mouseenter(function() {$('#sendyt1').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt1').css('background-color', "transparent");});	
+        $('#sendyt2').mouseenter(function() {$('#sendyt2').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt2').css('background-color', "transparent");});	
+        $('#sendyt3').mouseenter(function() {$('#sendyt3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt3').css('background-color', "transparent");});	
+        $('#sendyt4').mouseenter(function() {$('#sendyt4').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt4').css('background-color', "transparent");});	
+        $('#sendyt5').mouseenter(function() {$('#sendyt5').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt5').css('background-color', "transparent");});	
+        $('#sendyt6').mouseenter(function() {$('#sendyt6').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt6').css('background-color', "transparent");});
+		
+        $('#RotateRight').mouseenter(function() {$('#RotateRight').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#RotateRight').css('background-color', "transparent");});
+		
 
         // fix main menu placement after stats
         // $("#statsContinue2").click(function () { $("#main-menu > ul > li.start-tab > a").click() });
@@ -1917,7 +2286,7 @@ function init(modVersion) {
             title: "Insert your in-game name, 50 chars are visible on Mod users, 15 to other users",
             placement: "bottom"
         });
-        $("#clantag").attr('placeholder', 'Password/Tag').tooltip({
+        $("#clantag").attr('placeholder', 'Password').tooltip({
             title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
             placement: "left"
         });
@@ -1938,10 +2307,10 @@ function init(modVersion) {
 
         //Buttons for search Area
         $("#log").after('<button id="Backtomenu" onclick="doback(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
-        $("#tags-container").before('<div id="legendbanners" style="margin-top: 10px;"><img src="https://jimboy3100.github.io/legend.github.io/banners/iconinfo.png" data-original-title="Mod Information and choose Template" data-toggle="tooltip" id= "infoicon" onclick="openhelper();return false;" class="img-rounded" alt="Cinque Terre" width="87" height="40">' +
-            '<img src="https://jimboy3100.github.io/legend.github.io/banners/vanillapic2.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillasettings(); return false" class="img-rounded"  return false" width="87" height="40" >' +
-            '<img src="https://jimboy3100.github.io/legend.github.io/banners/iconlegenddefaultsmall.png" alt="Vanilla Like Settings" id = "defaultset" onclick="legenddefaultsettings(); return false" class="img-rounded"  return false" width="87" height="40"  >' +
-            '<img src="https://jimboy3100.github.io/legend.github.io/banners/smallbannerlegendclan2.png" alt="Vanilla Like Settings" id = "legendclanbanner" class="img-rounded" return false" width="87" height="40" onclick="gotolegendml(); return false" > ' +
+        $("#tags-container").before('<div id="legendbanners" style="margin-top: 10px;"><img src="https://jimboy3100.github.io/banners/iconinfo.png" data-original-title="Mod Information and choose Template" data-toggle="tooltip" id= "infoicon" onclick="openhelper();return false;" class="img-rounded" alt="Cinque Terre" width="87" height="40">' +
+            '<img src="https://jimboy3100.github.io/banners/vanillapic2.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillasettings(); return false" class="img-rounded"  return false" width="87" height="40" >' +
+            '<img src="https://jimboy3100.github.io/banners/iconlegenddefaultsmall.png" alt="Vanilla Like Settings" id = "defaultset" onclick="legenddefaultsettings(); return false" class="img-rounded"  return false" width="87" height="40"  >' +
+            '<img src="https://jimboy3100.github.io/banners/agariosmall.png" alt="Vanilla Like Settings" id = "agarioset" class="img-rounded" return false" width="87" height="40" onclick="agariowhitesettings(); return false" > ' +
             '</div><div id="LEGENDAds"></div>');
         $("#legendbanners").css({
             marginTop: "-25px"
@@ -1955,240 +2324,270 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.2") {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
-        } else {
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
             if (tag1.includes("♔Jimboy3100") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
             } else if (tag1.includes("GUARD") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
             } else if (tag1.includes("℄🌀") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("₣") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("℄") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("♋") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("۞ẒṨ۞") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
             } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
             } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
             } else if (tag1.includes("๔ɀ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
             } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
             } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
             } else if (tag1.includes("ΕΛ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
             } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
             } else if (tag1.includes("ƖƦ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-            } else if (tag1.includes("ȴøng") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+            } else if (tag1.includes("⚔ℱ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
             } else if (tag1.includes("ƸU") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
             } else {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
             }
         }
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.2") {
-            toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.2</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
-        } //else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
-        else {
-            toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!');
-        }
-        //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
-
+        if (modVersion != "2.5") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
+		else {
+/*			  if (modVersion == "2.5"){
+				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+				'Welcome to <font color="yellow"><b>v2.5</b></font> '+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
+				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
+				'No more conflicts due to official updates.'+
+				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="blue"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
+			  } */
+//			else{
+			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
+			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
+				if (usergender=="male"){
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
+				}
+				else if (usergender=="female"){
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Ms. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");
+				}
+			}
+			else{
+		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
+				}
+//		}
+	}
+				//important announcement
+/*    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+				'<font color="yellow"><b>Important Notice</font> '+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
+				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
+				'Need some days to establish <font color="red">communication</font> sockets.'+
+				'<br><font color="#018cf6">Stay informed</font>.'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
+*/				
         $("#infoicon").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerinformation");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
         $("#vanillaset").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannervanillaliking");
         });
         $("#defaultset").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannergalaxyliking");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannergalaxyliking");
         });
-        $("#legendclanbanner").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlc");
+        $("#agarioset").mouseover(function() {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/banneragario");
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.2") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.2") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.2") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
 
         });
-        $("#legendclanbanner").mouseout(function() {
-            if (modVersion != "2.2") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+        $("#agarioset").mouseout(function() {
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
-                } else if (tag1.includes("ȴøng") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerlong");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+                } else if (tag1.includes("⚔ℱ") == true) {
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
 
@@ -2199,17 +2598,20 @@ function init(modVersion) {
         }
 
         $('#server-connect').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
         $('#server-reconnect').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
         $('#server-join').click(function() {
-            setTimeout(function() {
+            adres();
+			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 1500);
         });
@@ -2241,7 +2643,7 @@ function init(modVersion) {
                 $(".toast.toast-success").remove();
                 //without confirmation
                 if (commandMsg == "Team5") {
-                    $("#top5-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({
+                    $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
                         opacity: 0.8
                     });
                     setTimeout(function() {
@@ -2351,6 +2753,8 @@ function init(modVersion) {
                 $("#SHOSHOBtn").click();
                 //		$("#TIMEBtn").click();
                 //		$("#MAINBBtn").click();
+				$("#MAINBTBtn").click();
+//				$("#MANUIBtn").click();
                 //		$("#MAINBTBtn").click();
                 $("#XPBtn").click();
                 //		$("#MANUIBtn").click();
@@ -2363,6 +2767,7 @@ function init(modVersion) {
 
 
         setTimeout(function() {
+
 			
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
@@ -2383,6 +2788,9 @@ function init(modVersion) {
             //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
             //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
             //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
+			if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
+            if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click();  }
+			toastrSkinNotice=1;
             //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
             if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
@@ -2409,7 +2817,7 @@ function init(modVersion) {
             if (autoCoinBtn == "true") {
                 setTimeout(function() {
                     $("#autoCoinBtn").click();
-                }, 1000);
+                }, 5000);
             }
             //	if (copyGameNames == "true") {
             //		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
@@ -2558,21 +2966,22 @@ function init(modVersion) {
             }
 
             if (dyinglight1load == null || dyinglight1load == "null") {
-                $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight");
+                $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerDyingLight");
             } else if (dyinglight1load == "yes") {
                 opendyinglight();
-                $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerStopDyingLight");
+                $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
             }
 		
-        }, 500);
+        }, 2000);
         if (searchSip != null) {
             $("#region").hide();
             $("#gamemode2").hide();
             $("#server").hide();
             $("#connect2").hide();
             $("#searchShortcut").hide();
+			//$("#copySIPBtn").css('margin-left', '67px');
             $("#reconnectBtn").hide();
-            $(".btn.btn-warning.btn-server-info.icon-cogs").hide();
+            $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
             $("#gamemode").hide();
 
             //$("#create-party-btn-2").click();
@@ -2586,6 +2995,34 @@ function init(modVersion) {
             //$(".agario-party").empty();$(".form-group.clearfix").hide();
             //$(".form-group").hide();
         }
+		else if (privateSrv!=null) {
+
+            $("#region").hide();
+            $("#gamemode2").hide();
+            $("#server").hide();
+            $("#connect2").hide();
+            $("#searchShortcut").hide();
+			//$("#copySIPBtn").css('margin-left', '67px');
+            $("#reconnectBtn").hide();
+            $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
+            $("#gamemode").hide();
+			$(".btn.btn-warning.btn-login-play.btn-needs-server").hide();
+			$(".btn.btn-play-guest.btn-success.btn-needs-server").css({'width': '100%'});
+			setTimeout(function() {
+				if(privateSrv.includes("fzogar.xyz")){
+					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>:'+ 
+					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by <font color="yellow"><b>FAYiz</b></font>.</font><br><b>Website:</b><a target="_blank" href="http://fzogar.ml"><font color="yellow"><b><u>http://fzogar.ml</u></b></font>'+
+					'<br><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>MultiOgar Github Library:</font></b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
+					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
+				}
+				else{
+					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+				}
+			$("#server").hide();
+            $("#connect2").hide();			
+			}, 3100); 
+			
+		}
 
         //if (searchSip==null){
         //afterdeathtonormalmode();}
@@ -2601,44 +3038,10 @@ function init(modVersion) {
 
 }
 
-function loadericon() {
-	$( "body" ).append('<div id="imagebig"><img src="https://jimboy3100.github.io/banners/preloader.gif" id="imagebig3"><img id="imagebig2" src="https://jimboy3100.github.io/banners/CropedImage128.gif" /></div>');
-	$("div#imagebig" ).css({
-   'transition': 'all 2s ease-in-out!important',
-		'width': '100%',
-		'height': '100%',
-		'position': 'absolute',
-		'top': '0',
-		'bottom': '0',
-		'left': '0',
-		'right': '0',
-		'z-index': '9999999999999999999999999999999999999999999999999999999999999999',
-		'background': '#615fff'
-	});
-	$("img#imagebig3" ).css({
-    'left': '50%',
-    'position': 'absolute',
-    'transform': 'translate(-50%)',
-    'bottom': '100px',
-    'width': '100px',
-    'height': '100px'
-	});
-$("img#imagebig2" ).css({
-    'left': '50%',
-	'transform': 'translate(-50%)',
-	'top': '40%',
-     'position': 'absolute'
-});
+function loadersetings() {
 
-   
-	//$("#helloContainer").hide();
+
     setTimeout(function() {
-        
-        $("#imagebig").fadeOut(2000);
-        
-        MC.setQuality($('#quality').val());
-		setTimeout(function() {$("#imagebig").remove();}, 2500); //remove it
-
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -2670,8 +3073,20 @@ $("img#imagebig2" ).css({
         checkonlyonce = "true";
         localStorage.setItem("checkonlyonce", checkonlyonce);
 
-    }, 2500);
+    }, 3500);
 }
+
+function loadericon() {
+	//continue loadericon
+    setTimeout(function() {
+        setTimeout(function() {
+        $("#imagebig").fadeOut(2500);
+        
+        MC.setQuality($('#quality').val());
+		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
+		}, 3000);   
+		}, 1000);
+}		
 
 function delay(time, func) {
     setTimeout(function() {
@@ -2680,6 +3095,7 @@ function delay(time, func) {
 }
 
 function spectate() {
+
     hideMenu();
     $(".btn-spectate").click();
 }
@@ -2717,8 +3133,8 @@ function joinToken(token) {
     //setTimeout(function(){ $("#gamemode").val(lastMode); }, 1000);
     currentToken = token;
     if (localStorage.getItem("showTK") == "true") {
-        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
-        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");;
+//        $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+//        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");
 
     }
 
@@ -3006,7 +3422,7 @@ function chatfunction() {
                 $("#ChatBtn").attr("data-original-title", Premadeletter59);
                 $("#clantag").val(saveclanpassword);
                 $(".btn.btn-play.btn-primary.btn-needs-server").click();
-                hiddenfromclan = 1;
+                hiddenfromclan = 0;
                 return hiddenfromclan;
             }
         }
@@ -3057,7 +3473,7 @@ function hideSearchHud() {
     $("#notes").fadeOut();
     $("#statsInfo").fadeOut();
     $("#searchLog").fadeOut();
-}
+}//searchSpan changed to fa fa, needs update
 
 function showCancelSearch() {
     $("#searchSpan").removeClass("glyphicon-search").addClass("glyphicon-ban-circle");
@@ -3215,9 +3631,9 @@ function play() {
     $('*[data-itr="page_play"]').click();
 }
 
-function spectate() {
-    $('*[data-itr="page_spectate"]').click();
-}
+//function spectate() {
+//    $('*[data-itr="page_spectate"]').click();
+//}
 
 function appendLog(message) {
     var region = MC.getRegion();
@@ -3361,6 +3777,18 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     }
 }
+
+
+function useProfilePhotoCustom(){
+	if ($('.agario-profile-picture').attr('src')!= "https://agar.io/mc/img/profilepic_guest.png" && $('.agario-profile-picture').attr('src')!="mc/img/profilepic_guest.png"){	
+		copy($(".agario-profile-picture").attr('src'));
+		toastr["info"]('Your account\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area').css("width", "350px");
+	}
+	else{
+		toastr["info"]('You must Login to use picture of your profile').css("width", "350px");
+	}
+}
+
 
 function setminbgname() {
     minimapbckimg = $("#minimapPicture").val();
@@ -3610,18 +4038,20 @@ function settroll1false() {
 function whenplayerdies() {
     if (troll1 == "YES") {
         MC.onPlayerDeath = function() {
+			
             //afterdeathtonormalmode();
-            $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icowoman.gif ")').css({
+			playSound("https://jimboy3100.github.io/banners/troll1.mp3");	
+			$("#canvas").css('background-image', 'url(" https://media.giphy.com/media/eVy46EWyclTIA/giphy.gif ")').css({
                 opacity: 0.8
             });
-            $("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({
-                opacity: 0.8
+            $("#minimap-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icoeucid.gif ")').css({
+                opacity: 1
             });
-            $("#leaderboard-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({
+            $("#leaderboard-hud").css('background-image', 'url(" https://media.giphy.com/media/VSuWfl1qCiRsk/giphy.gif ")').css({
                 opacity: 0.8
             });
             setTimeout(function() {
-                $("#canvas").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icorelax.gif ")').css({
+                $("#canvas").css('background-image', 'url(" https://media.giphy.com/media/aw9WgvgNd1bQk/giphy.gif ")').css({
                     opacity: 0.8
                 });
             }, 4000);
@@ -3637,16 +4067,63 @@ function whenplayerdies() {
                 $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({
                     opacity: 0.8
                 });
-            }, 16000);
+				}, 27000);
 
         }
     } else {
         MC.onPlayerDeath = function() {
+			
             //afterdeathtonormalmode();
         };
     }
 }
 
+function agariowhitesettings() {
+    if (dyinglight1load == null || dyinglight1load == "null") {
+        $("#import-settings-btn").attr('class', 'btn btn-success');
+        document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Hello Team!","comm9":"Tricksplit!","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/cvZgi38.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"https://i.imgur.com/qcgMD45.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/g6Cqym2.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":true,"autoZoom":false,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":false,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":false,"massStroke":false,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"agario-light","darkTheme":false,"mainColor":"#ffffff","bgColor":"#f2fbff","gridColor":"#ced6d9","bordersColor":"#858a8c","foodColor":"#2de52d","virusColor":"#33ff33","virusStrokeColor":"#2de52d","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"ubuntu-bold","namesFontFamily":"Ubuntu","namesFontWeight":700,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":40,"sectorsWidth":40,"sectorsFontSize":1200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#01d9cc","menuBtnTextColor":"#ffffff","menuPanelColor":"#00243e","menuPanelColor2":"#002f52","menuTextColor":"#ffffff","menuTextColor2":"#8096a7","btn1Color":"#018cf6","btn1Color2":"#0176ce","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#bf00aa","btn4Color2":"#a80096","menuBg":"http://cdn.ogario.ovh/static/img/pattern.png","menuOpacity":0.96,"hudMainColor":"#ffffff","hudColor":"rgba(0,0,0,0.4)","hudTextColor":"#ffffff","statsHudColor":"#ffffff","timeHudColor":"#ffffff","top5MassColor":"#ffffff","lbMeColor":"#bf00aa","lbTeammateColor":"#018cf6","hudFont":"ubuntu-bold","hudFontFamily":"Ubuntu","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#ffffff","commandsColor":"rgba(255,255,255,0.9)","commandsTextColor":"#000000","commandsTimeColor":"#ffffff","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#ffffff","miniMapNickColor":"#ffffff","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#ffffff","miniMapTeammatesColor":"#ffffff","miniMapDeathLocationColor":"#ffffff","miniMapFont":"ubuntu-bold","miniMapFontFamily":"Ubuntu","miniMapFontWeight":700,"miniMapNickFont":"ubuntu-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":240,"miniMapTop":24,"miniMapSectorsOpacity":0.25,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur"}}'
+		window.history.pushState(null, null, window.location.pathname);
+        $('#import-settings-btn').click();
+    } else if (dyinglight1load == "yes") {
+        localStorage.setItem("musicUrl", defaultMusicUrl);
+        $("#minimapPicture").val("").blur();
+        $("#minbtext").val("").blur();
+        $("#leadbtext").val("").blur();
+        $("#teambtext").val("").blur();
+        $("#imgUrl").val("").blur();
+        $("#imgHref").val("").blur();
+        //unload dying light icons
+        $("#pic1url").val("").blur();
+        $("#pic1data").val("").blur();
+        $("#pic2url").val("").blur();
+        $("#pic2data").val("").blur();
+        $("#pic3url").val("").blur();
+        $("#pic3data").val("").blur();
+        $("#pic4url").val("").blur();
+        $("#pic4data").val("").blur();
+        $("#pic5url").val("").blur();
+        $("#pic5data").val("").blur();
+        //unload dying light youtube
+        $("#yt1url").val("").blur();
+        $("#yt1data").val("").blur();
+        $("#yt2url").val("").blur();
+        $("#yt2data").val("").blur();
+        $("#yt3url").val("").blur();
+        $("#yt3data").val("").blur();
+        $("#yt4url").val("").blur();
+        $("#yt4data").val("").blur();
+        $("#yt5url").val("").blur();
+        $("#yt5data").val("").blur();
+        dyinglight1load = null;
+        localStorage.setItem("dyinglight1load", dyinglight1load);
+        setTimeout(function() {
+            $("#import-settings-btn").attr('class', 'btn btn-success');
+			document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Hello Team!","comm9":"Tricksplit!","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/cvZgi38.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"https://i.imgur.com/qcgMD45.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/g6Cqym2.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":true,"autoZoom":false,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":false,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":false,"massStroke":false,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"agario-light","darkTheme":false,"mainColor":"#ffffff","bgColor":"#f2fbff","gridColor":"#ced6d9","bordersColor":"#858a8c","foodColor":"#2de52d","virusColor":"#33ff33","virusStrokeColor":"#2de52d","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"ubuntu-bold","namesFontFamily":"Ubuntu","namesFontWeight":700,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":40,"sectorsWidth":40,"sectorsFontSize":1200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#01d9cc","menuBtnTextColor":"#ffffff","menuPanelColor":"#00243e","menuPanelColor2":"#002f52","menuTextColor":"#ffffff","menuTextColor2":"#8096a7","btn1Color":"#018cf6","btn1Color2":"#0176ce","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#bf00aa","btn4Color2":"#a80096","menuBg":"http://cdn.ogario.ovh/static/img/pattern.png","menuOpacity":0.96,"hudMainColor":"#ffffff","hudColor":"rgba(0,0,0,0.4)","hudTextColor":"#ffffff","statsHudColor":"#ffffff","timeHudColor":"#ffffff","top5MassColor":"#ffffff","lbMeColor":"#bf00aa","lbTeammateColor":"#018cf6","hudFont":"ubuntu-bold","hudFontFamily":"Ubuntu","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#ffffff","commandsColor":"rgba(255,255,255,0.9)","commandsTextColor":"#000000","commandsTimeColor":"#ffffff","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#ffffff","miniMapNickColor":"#ffffff","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#ffffff","miniMapTeammatesColor":"#ffffff","miniMapDeathLocationColor":"#ffffff","miniMapFont":"ubuntu-bold","miniMapFontFamily":"Ubuntu","miniMapFontWeight":700,"miniMapNickFont":"ubuntu-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":240,"miniMapTop":24,"miniMapSectorsOpacity":0.25,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur"}}'
+			window.history.pushState(null, null, window.location.pathname);
+            $('#import-settings-btn').click();
+        }, 100);
+    }
+}
 
 function legenddefaultsettings() {
     if (dyinglight1load == null || dyinglight1load == "null") {
@@ -3698,7 +4175,7 @@ function legenddefaultsettings() {
 function vanillasettings() {
     if (dyinglight1load == null || dyinglight1load == "null") {
         $("#import-settings-btn").attr('class', 'btn btn-success');
-        document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
+        document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
         window.history.pushState(null, null, window.location.pathname);
         $('#import-settings-btn').click();
     } else if (dyinglight1load == "yes") {
@@ -3735,7 +4212,7 @@ function vanillasettings() {
         localStorage.setItem("dyinglight1load", dyinglight1load);
         setTimeout(function() {
             $("#import-settings-btn").attr('class', 'btn btn-success');
-            document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
+            document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
             window.history.pushState(null, null, window.location.pathname);
             $('#import-settings-btn').click();
         }, 100);
@@ -4115,10 +4592,23 @@ function openhelper() {
     s.src = "https://jimboy3100.github.io/legendhelper.js";
     $("body").append(s);
 }
+function opennamechars() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/nicks/nicknamechars.js";
+    $("body").append(s);
+}
+
+function legendformIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/legendformIframe.js";
+    $("body").append(s);
+}
 
 function afterdeathtonormalmode() {
     MC.onPlayerDeath = function() {
-
+	adres();
         setTimeout(function() {
             if (realmode == ":party") {
                 $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
@@ -4469,6 +4959,10 @@ function enableshortcuts() {
     //	$("#MAINBBtn").click(); }
     //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
     //	$("#MAINBTBtn").click(); }
+	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+				$("#MAINBTBtn").click(); }
+//			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
+//				$("#AnimatedSkinBtn").click(); }
     if ($("#XPBtn").attr('aria-pressed') == "false") {
         $("#XPBtn").click();
     }
@@ -4476,6 +4970,35 @@ function enableshortcuts() {
     //	$("#MANUIBtn").click(); }
 }
 
+
+function PrivateServer1(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4000","_self");
+}
+function PrivateServer2(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
+}
+function PrivateServer3(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:5001","_self");
+}
+function PrivateServer4(){
+	window.open("http://agar.io/?ip=game.fzogar.xyz:5002","_self");
+}
+function PrivateServer5(){
+	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+}
+function PrivateServer6(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4000","_self");
+}
+function PrivateServer7(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
+}
+function PrivateServer8(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
+}
+function PrivateServer9(){
+	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
+}
+/*
 function adres() {
     var adrs = WebSocket.prototype.send;
     window.__WS_send = WebSocket.prototype.send, WebSocket.prototype.send = function(b) {
@@ -4499,10 +5022,55 @@ function adres() {
         }
     }
 }
+*/
+function adres() {
+	if ($("#gamemode").val() != ":party") {
+		setTimeout(function(){		
+			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
+			$("#server").val(currentIP);
+//	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
+//            d = c.exec($("#server-ws").val());
+//			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
+//			currentIP=d[1].replace(/-/g, '.') + d[2];
+			setTimeout(function() {
+				 
+			    realmode = getGameMode();
+                if (searchSip == null && privateSrv==null) {
+                    if (realmode != ":party") {
+                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
+                    }
+                    else if (realmode == ":party") {
+                        window.history.pushState(null, null, window.location.pathname);
+                        history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());
+                    }
+				}
+				else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
+				
+			}	                
+			
+				
+			}, 1000);
+			}, 800);
+	}
+	else {
+            setTimeout(function() {
+				 MC.setQuality($('#quality').val());
+                $("#server").val("#" + MC.getPartyToken());
+            }, 2000);
+        }
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 3000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 4000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 5000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 6000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 7000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 8000);
+		setTimeout(function(){MC.setQuality($('#quality').val());}, 11000);
+}		
 
 function joinpartyfromconnect() {
     MC.joinParty($("#server").val());
-    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
+//    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
 }
 
 function openbleedmod() {
@@ -4618,4 +5186,1481 @@ function opendyinglight() {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/dyinglight.js";
     $("body").append(s);
+}
+
+function getaccesstoken() {
+    $.ajax({
+        type: "GET",
+        url: "https://jimboy3100.github.io/v3/accesstoken.html",
+        datatype: "json",
+        success: function(info) {
+		  accesstomod =  info[17];
+			return accesstomod;
+		}
+	});
+}
+
+function getaccesstoken2() {
+    setTimeout(function() {
+        if(accesstomod != "a" && accesstomod != null){
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
+				setTimeout(function() {
+					document.documentElement.innerHTML = "";
+					}, 21000);
+				}
+   }, 13000);
+}
+	
+
+//1. Animated Skins
+function animatedskins(){
+(function agarXTRA(w) {
+   if ( typeof w.core != 'undefined' && typeof w.core.registerSkin === 'function' && document.getElementById('gamemode') ) {
+      var tcm = {
+         l: {
+            skins:      {
+               'bomb': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'bomb',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'lwneHCo', delay: '0.14'},
+                     {id: 'JcOZgwb', delay: '0.14'},
+                     {id: 'uwfoN9c', delay: '0.14'},
+                     {id: 'IqRkRVc', delay: '0.14'},
+                     {id: 'bObBbnl', delay: '0.14'},
+                     {id: 'Wj1RsWf', delay: '0.14'},
+                     {id: 'gjLfMcx', delay: '0.14'},
+                     {id: 'I7DMQeY', delay: '0.14'},
+                     {id: 'oGr1KKG', delay: '0.14'},
+                     {id: 'twzFS5g', delay: '0.14'},
+                     {id: 'T6er9yw', delay: '1'}
+                  ]
+               },
+               'eye': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'eye',
+                  color:     '838383',
+                  frames:    [
+                     {id: 'WBptNfR', delay: '1'},
+                     {id: 'Ll7Y3Ek', delay: '0.15'},
+                     {id: 'OIXeTfo', delay: '0.15'},
+                     {id: 'htdrJ70', delay: '0.15'},
+                     {id: 'FL7zYNe', delay: '0.15'},
+                     {id: 'Wn1xhE8', delay: '0.15'},
+                     {id: 'Pc7s79W', delay: '0.15'},
+                     {id: 'sDJCsKD', delay: '0.15'}
+                  ]
+               },
+               'blackhole': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'blackhole',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'gNeYD4y', delay: '0.12'},
+                     {id: 'RWhq2m6', delay: '0.12'},
+                     {id: 'Gzeutvv', delay: '0.12'},
+                     {id: 'ZM5d6S7', delay: '0.12'},
+                     {id: 'iP1LjJq', delay: '0.12'},
+                     {id: '62GWoaP', delay: '0.12'},
+                     {id: '71GSwyR', delay: '0.12'},
+                     {id: 'w5b0kBu', delay: '0.12'}
+                  ]
+               },
+               'shark': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'shark',
+                  color:     '002C6C',
+                  frames:    [
+                     {id: 'WOnTrZc', delay: '0.15'},
+                     {id: '7nVbAjo', delay: '0.15'},
+                     {id: 'lhY26fT', delay: '0.15'},
+                     {id: 'cVp2rVv', delay: '0.15'},
+                     {id: 'lhY26fT', delay: '0.15'},
+                     {id: '7nVbAjo', delay: '0.15'}
+                  ]
+               },
+               'goldfish': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'goldfish',
+                  color:     '002C6C',
+                  frames:    [
+                     {id: 'KgqoD2X', delay: '0.125'},
+                     {id: 'Xz9rzlp', delay: '0.125'},
+                     {id: 'zOb2Oqa', delay: '0.125'},
+                     {id: '5i15TVe', delay: '0.125'},
+                     {id: 'G3evzNO', delay: '0.125'},
+                     {id: 'Bqhqqib', delay: '0.125'},
+                     {id: 'i78XDTj', delay: '0.125'}
+                  ]
+               },
+               'monster': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'monster',
+                  color:     '7c0001',
+                  frames:    [
+                     {id: 't9Hjp1l', delay: '2'},
+                     {id: 'LR7dsAT', delay: '0.12'},
+                     {id: 'J8g1Kxh', delay: '0.12'},
+                     {id: 'liKY8Ja', delay: '0.12'},
+                     {id: 'KNR6AE6', delay: '0.12'},
+                     {id: 'VOJGLCH', delay: '0.12'},
+                     {id: 'KNR6AE6', delay: '0.12'},
+                     {id: 'liKY8Ja', delay: '0.12'},
+                     {id: 'J8g1Kxh', delay: '0.12'},
+                     {id: 'LR7dsAT', delay: '0.12'}
+                  ]
+               },
+               'crocodile': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'crocodile',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: 'Aa4bqa1', delay: '1'},
+                     {id: 'nmaz62r', delay: '0.1'},
+                     {id: 'RxBfX11', delay: '0.1'},
+                     {id: 'KPKVF6u', delay: '0.1'},
+                     {id: 'O4VjIno', delay: '0.1'},
+                     {id: 'iYykA1K', delay: '0.1'},
+                     {id: 'O4VjIno', delay: '0.1'},
+                     {id: 'KPKVF6u', delay: '0.1'},
+                     {id: 'RxBfX11', delay: '0.1'},
+                     {id: 'nmaz62r', delay: '0.1'}
+                  ]
+               },
+               'bowling': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'bowling',
+                  color:     '000000',
+                  frames:    [
+                     {id: '1D8FYOu', delay: '0.12'},
+                     {id: 'ctMzkSb', delay: '0.12'},
+                     {id: 'uo8KqtT', delay: '0.12'},
+                     {id: 'lAxKG9C', delay: '0.12'},
+                     {id: 'bizPEiq', delay: '0.12'},
+                     {id: 'UzNGxgk', delay: '0.12'},
+                     {id: 'NJHBqXt', delay: '0.12'},
+                     {id: 'aC8vvpe', delay: '0.12'}
+                  ]
+               },
+               'mouse': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'mouse',
+                  color:     '654217',
+                  frames:    [
+                     {id: 'IkAzcau', delay: '2'},
+                     {id: 'ylmgRh2', delay: '0.1'},
+                     {id: '0FgdFdL', delay: '0.1'},
+                     {id: 'HccU8TO', delay: '0.1'},
+                     {id: '0FgdFdL', delay: '0.1'},
+                     {id: 'ylmgRh2', delay: '0.1'}
+                  ]
+               },
+               'heart': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'heart',
+                  color:     'AC0875',
+                  frames:    [
+                     {id: '2w48B0M', delay: '1'},
+                     {id: 'cM2hLSt', delay: '0.12'},
+                     {id: '0pfV9lu', delay: '0.12'},
+                     {id: 'KxbFznI', delay: '0.12'},
+                     {id: 'FhptVrD', delay: '0.12'},
+                     {id: '9lJDoCK', delay: '0.12'},
+                     {id: 'FhptVrD', delay: '0.12'},
+                     {id: 'KxbFznI', delay: '0.12'},
+                     {id: '0pfV9lu', delay: '0.12'},
+                     {id: 'cM2hLSt', delay: '0.12'}
+                  ]
+               },
+               'nuclear': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'nuclear',
+                  color:     '654217',
+                  frames:    [
+                     {id: 'eDof29h', delay: '1.5'},
+                     {id: 'zqqaUbO', delay: '1.5'}
+                  ]
+               },
+               't-rex': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        't_rex',
+                  color:     '7c0001',
+                  frames:    [
+                     {id: 'jeyvjUh', delay: '2'},
+                     {id: 'eM38lQG', delay: '0.12'},
+                     {id: 'jn7xfpf', delay: '0.12'},
+                     {id: 'eM38lQG', delay: '0.12'}
+                  ]
+               },
+               'zombie': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'zombie',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: 'uVqUXBN', delay: '3'},
+                     {id: 'QclZjeR', delay: '0.1'},
+                     {id: 'iXdYrD8', delay: '0.1'},
+                     {id: 'vF0ZIcs', delay: '0.1'},
+                     {id: 'iXdYrD8', delay: '0.1'},
+                     {id: 'QclZjeR', delay: '0.1'}
+                  ]
+               },
+               'lizard': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'lizard',
+                  color:     'AC0875',
+                  frames:    [
+                     {id: 'ESMxT94', delay: '0.5'},
+                     {id: 'cU5UMlY', delay: '0.1'},
+                     {id: 'awtHLkg', delay: '0.1'},
+                     {id: '9rdGdkz', delay: '0.1'}
+                  ]
+               },
+               'raptor': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'raptor',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: 'dZbuOvZ', delay: '2'},
+                     {id: 'HbK7yXt', delay: '0.1'},
+                     {id: 'kRDldQ2', delay: '0.1'},
+                     {id: 'wFPrb4A', delay: '0.1'},
+                     {id: 'kRDldQ2', delay: '0.1'},
+                     {id: 'HbK7yXt', delay: '0.1'}
+                  ]
+               },
+               'seal': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'seal',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: 'y6O9oq6', delay: '2'},
+                     {id: 'HgqK6mA', delay: '0.1'},
+                     {id: 'Etk3dGT', delay: '0.1'},
+                     {id: '2s2EykQ', delay: '0.1'},
+                     {id: 'xs9PUYG', delay: '0.1'},
+                     {id: 'j32x0NT', delay: '0.1'},
+                     {id: 'xs9PUYG', delay: '0.1'},
+                     {id: '2s2EykQ', delay: '0.1'},
+                     {id: 'Etk3dGT', delay: '0.1'},
+                     {id: 'HgqK6mA', delay: '0.1'}
+                  ]
+               },
+               'pizza': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'pizza',
+                  color:     '7c0001',
+                  frames:    [
+                     {id: 'SmfgnOa', delay: '2'},
+                     {id: 'BD8B6wo', delay: '0.15'},
+                     {id: 'Nv23NK1', delay: '0.15'},
+                     {id: '2e1eNwR', delay: '0.15'},
+                     {id: 'sKtjEXM', delay: '0.15'},
+                     {id: 'UBEMJZs', delay: '0.15'},
+                     {id: 'DLk0Xr7', delay: '0.15'},
+                     {id: '7areUV1', delay: '0.15'},
+                     {id: 'DLk0Xr7', delay: '0.15'},
+                     {id: 'UBEMJZs', delay: '0.15'},
+                     {id: 'sKtjEXM', delay: '0.15'},
+                     {id: '2e1eNwR', delay: '0.15'},
+                     {id: 'Nv23NK1', delay: '0.15'},
+                     {id: 'BD8B6wo', delay: '0.15'}
+                  ]
+               },
+               'brofist': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'brofist',
+                  color:     '7c0001',
+                  frames:    [
+                     {id: 'ShcWYvU', delay: '0.1'},
+                     {id: 'sTfxqoG', delay: '0.1'},
+                     {id: '8vEo8Bu', delay: '0.1'},
+                     {id: 'oZRIIqE', delay: '0.1'},
+                     {id: 'AxqYXKo', delay: '0.1'},
+                     {id: '7z65jUI', delay: '3'}
+                  ]
+               },
+               'crazy': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'crazy',
+                  color:     '7c0001',
+                  frames:    [
+                     {id: '6oMDz9m', delay: '0.1'},
+                     {id: 'Z3DQpP4', delay: '0.1'},
+                     {id: 'WPEnnWK', delay: '0.1'},
+                     {id: 'gml6ud3', delay: '0.1'},
+                     {id: '6hTV8AA', delay: '0.1'},
+                     {id: 'IYcDRNc', delay: '0.1'},
+                     {id: 'zYpx35t', delay: '3'},
+                     {id: 'IYcDRNc', delay: '0.1'},
+                     {id: '6hTV8AA', delay: '0.1'},
+                     {id: 'gml6ud3', delay: '0.1'},
+                     {id: 'WPEnnWK', delay: '0.1'},
+                     {id: 'Z3DQpP4', delay: '0.1'}
+                  ]
+               },
+               'baseball': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'baseball',
+                  color:     '838383',
+                  frames:    [
+                     {id: 'TlffigR', delay: '0.09'},
+                     {id: '5dxGVTq', delay: '0.09'}
+                  ]
+               },
+               'cloud': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'cloud',
+                  color:     '838383',
+                  frames:    [
+                     {id: 'rqYIfAQ', delay: '0.08'},
+                     {id: 'haaANq1', delay: '0.08'},
+                     {id: '5wcw4R3', delay: '0.08'},
+                     {id: 'iCLv7Bb', delay: '0.08'},
+                     {id: 'PSBWj5q', delay: '0.08'},
+                     {id: 'Lcrh5Uj', delay: '0.08'},
+                     {id: 'mWjua9q', delay: '0.08'},
+                     {id: 'AD1dk6l', delay: '0.08'},
+                     {id: 'fr9BnOD', delay: '2'}
+                  ]
+               },
+               'snowman': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'snowman',
+                  color:     '002C6C',
+                  frames:    [
+                     {id: 'fyIBJJo', delay: '0.08'},
+                     {id: 'kQJz6SF', delay: '0.08'},
+                     {id: 'iegAX3K', delay: '0.08'},
+                     {id: 'lngWxxk', delay: '0.08'},
+                     {id: 'GxhTGji', delay: '0.08'},
+                     {id: 'lngWxxk', delay: '0.08'},
+                     {id: 'iegAX3K', delay: '0.08'},
+                     {id: 'kQJz6SF', delay: '0.08'}
+                  ]
+               },
+               'bug': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'bug',
+                  color:     '7c0001',
+                  frames:    [
+                     {id: 'uxKmViA', delay: '2'},
+                     {id: 'n1ncMvV', delay: '0.08'},
+                     {id: '0mDiZyL', delay: '0.08'},
+                     {id: 'ADKOOAB', delay: '0.08'},
+                     {id: '72Z5GjJ', delay: '0.08'},
+                     {id: 'ADKOOAB', delay: '0.08'},
+                     {id: '0mDiZyL', delay: '0.08'},
+                     {id: 'n1ncMvV', delay: '0.08'}
+                  ]
+               },
+               'mushroom': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'mushroom',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: '92FrA5N', delay: '0.1'},
+                     {id: 'vbebU1q', delay: '0.1'},
+                     {id: 'SrwCeQF', delay: '0.1'},
+                     {id: 'jJAoWma', delay: '0.1'},
+                     {id: 'gzkpCLW', delay: '0.1'}
+                  ]
+               },
+               'ghost': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'ghost',
+                  color:     '4E114E',
+                  frames:    [
+                     {id: 'kpT3MiF', delay: '0.08'},
+                     {id: 'JiASOag', delay: '0.08'},
+                     {id: 'IPrwKvq', delay: '0.08'},
+                     {id: 'PHGZ1sP', delay: '0.08'},
+                     {id: 'DbGkrD9', delay: '0.08'},
+                     {id: 'PHGZ1sP', delay: '0.08'},
+                     {id: 'IPrwKvq', delay: '0.08'},
+                     {id: 'JiASOag', delay: '0.08'}
+                  ]
+               },
+               'lol': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_lol',
+                  color:     'cd5d22',
+                  frames:    [
+                     {id: 'SJlS8Rg', delay: '0.08'},
+                     {id: 'AiICKZb', delay: '0.08'},
+                     {id: '1iVfy8b', delay: '0.08'},
+                     {id: 'hwPSr3s', delay: '0.08'},
+                     {id: 'wpJophT', delay: '0.08'},
+                     {id: 'W9oLhpz', delay: '0.08'},
+                     {id: 'DexE8Kb', delay: '0.08'},
+                     {id: '7ybaqXq', delay: '0.08'}
+                  ]
+               },
+               'troll': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_troll',
+                  color:     '7a0c0f',
+                  frames:    [
+                     {id: 'KxcI3j7', delay: '4'},
+                     {id: 'aE1etcH', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: 'iQWIiAu', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: 'aE1etcH', delay: '0.1'}
+                  ]
+               },
+               'starfish': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'starfish',
+                  color:     'cf9b24',
+                  frames:    [
+                     {id: 'MGSsF4o', delay: '0.12'},
+                     {id: 'gzt9cfR', delay: '0.12'},
+                     {id: 'let5iCn', delay: '0.12'},
+                     {id: 'jy0O4el', delay: '0.12'},
+                     {id: 'ujIoMJj', delay: '0.12'},
+                     {id: 'cjiaScB', delay: '0.12'},
+                     {id: 'QLoOcDQ', delay: '0.12'},
+                     {id: 'natZ9ad', delay: '0.12'}
+                  ]
+               },
+               'mighty': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'mighty',
+                  color:     '095090',
+                  frames:    [
+                     {id: 'V5md28Q', delay: '0.08'},
+                     {id: 'bCh5H2P', delay: '0.08'},
+                     {id: 'B5EQdTb', delay: '0.08'},
+                     {id: 'svrkPNc', delay: '0.08'},
+                     {id: 'BtCgDPE', delay: '0.08'},
+                     {id: '1xE6pAf', delay: '0.08'},
+                     {id: 'BtCgDPE', delay: '0.08'},
+                     {id: 'svrkPNc', delay: '0.08'},
+                     {id: 'B5EQdTb', delay: '0.08'},
+                     {id: 'bCh5H2P', delay: '0.08'}
+                  ]
+               },
+               'bread': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'bread',
+                  color:     '593b3c',
+                  frames:    [
+                     {id: 'u49qoXZ', delay: '0.08'},
+                     {id: 'mcRd3ld', delay: '0.08'},
+                     {id: 'Pxovhai', delay: '0.08'},
+                     {id: 'gHLB9y4', delay: '0.08'},
+                     {id: '3Sepdpp', delay: '0.08'},
+                     {id: 'zjgxKHM', delay: '0.08'},
+                     {id: 'n6rglZu', delay: '0.08'},
+                     {id: 'DLqYwpu', delay: '0.08'},
+                     {id: 'nAqaRja', delay: '0.08'},
+                     {id: 'DLqYwpu', delay: '0.08'},
+                     {id: 'n6rglZu', delay: '0.08'},
+                     {id: 'zjgxKHM', delay: '0.08'},
+                     {id: '3Sepdpp', delay: '0.08'},
+                     {id: 'gHLB9y4', delay: '0.08'},
+                     {id: 'Pxovhai', delay: '0.08'},
+                     {id: 'mcRd3ld', delay: '0.08'}
+                  ]
+               },
+               'cia 2': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_cia',
+                  color:     '3a185c',
+                  frames:    [
+                     {id: 'x7pNXov', delay: '0.12'},
+                     {id: 'O2cAr4y', delay: '0.12'}
+                  ]
+               },
+               'cactus': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'cactus',
+                  color:     'a20947',
+                  frames:    [
+                     {id: 'GPI5CyD', delay: '0.08'},
+                     {id: 'WTv6YOT', delay: '0.08'},
+                     {id: 'Eiuz71P', delay: '0.08'},
+                     {id: 'QPN1cYs', delay: '0.08'},
+                     {id: 'Eiuz71P', delay: '0.08'},
+                     {id: 'WTv6YOT', delay: '0.08'}
+                  ]
+               },
+               'tennis': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'tennist',
+                  color:     'cb1778',
+                  frames:    [
+                     {id: 'juVHtpb', delay: '0.12'},
+                     {id: 'vrxQoUF', delay: '0.12'},
+                     {id: 'azYvvQm', delay: '0.12'},
+                     {id: 'vrxQoUF', delay: '0.12'}
+                  ]
+               },
+               'duck target': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'duck_target',
+                  color:     '000000',
+                  frames:    [
+                     {id: '6gfYVC7', delay: '0.1'},
+                     {id: 'lFP4blK', delay: '0.1'},
+                     {id: 'LZhQQkH', delay: '0.1'},
+                     {id: '1JnabLw', delay: '0.1'},
+                     {id: '5fLXTUd', delay: '0.1'},
+                     {id: '1JnabLw', delay: '0.1'},
+                     {id: 'LZhQQkH', delay: '0.1'},
+                     {id: 'lFP4blK', delay: '0.1'}
+                  ]
+               },
+               'wicked cat': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'wicked_cat',
+                  color:     '420000',
+                  frames:    [
+                     {id: 'QGFmJTG', delay: '3'},
+                     {id: 'tU1RYvT', delay: '0.1'},
+                     {id: '9Ol2gEw', delay: '0.1'},
+                     {id: 'KQGngCg', delay: '1'},
+                     {id: '9Ol2gEw', delay: '0.1'},
+                     {id: 'tU1RYvT', delay: '0.1'}
+                  ]
+               },
+               'reindeer': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'reindeer',
+                  color:     '1a4534',
+                  frames:    [
+                     {id: 'GmH7K9m', delay: '0.08'},
+                     {id: 'LRpx88I', delay: '0.08'},
+                     {id: 'ZZXg3kj', delay: '0.08'},
+                     {id: '9klVKAq', delay: '0.08'},
+                     {id: 'CBb1Qpg', delay: '0.08'},
+                     {id: 'YL6sv38', delay: '0.08'},
+                     {id: 'DUp7Ph2', delay: '0.08'},
+                     {id: 'YL6sv38', delay: '0.08'},
+                     {id: 'CBb1Qpg', delay: '0.08'},
+                     {id: '9klVKAq', delay: '0.08'},
+                     {id: 'ZZXg3kj', delay: '0.08'},
+                     {id: 'LRpx88I', delay: '0.08'}
+                  ]
+               },
+               'charmander': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'charmander',
+                  color:     'd26900',
+                  frames:    [
+                     {id: '1z01PqG', delay: '4'},
+                     {id: '36yUxT1', delay: '0.1'},
+                     {id: 'f8YUHIM', delay: '0.1'},
+                     {id: 'ULtQFXw', delay: '0.1'},
+                     {id: 'CLnrlQD', delay: '0.1'},
+                     {id: 'YZZfnvR', delay: '0.1'},
+                     {id: 'CLnrlQD', delay: '0.1'},
+                     {id: 'ULtQFXw', delay: '0.1'},
+                     {id: 'f8YUHIM', delay: '0.1'},
+                     {id: '36yUxT1', delay: '0.1'}
+                  ]
+               },
+               'bulbasaur': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'bulbasaur',
+                  color:     '37973c',
+                  frames:    [
+                     {id: 'A3TMFs5', delay: '4'},
+                     {id: 'agRaNfC', delay: '0.1'},
+                     {id: 'co5VkgO', delay: '0.1'},
+                     {id: 'PiOFxRV', delay: '0.1'},
+                     {id: 'xGmgf1p', delay: '0.1'},
+                     {id: 'qjS12LB', delay: '0.1'},
+                     {id: 'xGmgf1p', delay: '0.1'},
+                     {id: 'PiOFxRV', delay: '0.1'},
+                     {id: 'co5VkgO', delay: '0.1'},
+                     {id: 'agRaNfC', delay: '0.1'}
+                  ]
+               },
+               'squirtle': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'squirtle',
+                  color:     '438be8',
+                  frames:    [
+                     {id: 'ntVuoKU', delay: '0.1'},
+                     {id: 'bfgrQtI', delay: '0.1'},
+                     {id: 'gGFq1VU', delay: '0.1'},
+                     {id: '8BSCCvP', delay: '0.1'},
+                     {id: '04TFtfI', delay: '0.1'},
+                     {id: 'swbm5bR', delay: '0.1'},
+                     {id: '04TFtfI', delay: '0.1'},
+                     {id: '8BSCCvP', delay: '0.1'},
+                     {id: 'gGFq1VU', delay: '0.1'},
+                     {id: 'bfgrQtI', delay: '0.1'}
+                  ]
+               },
+               'jumbo': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'jumbo_yt',
+                  color:     '00560f',
+                  frames:    [
+                     {id: 'mlgXaGZ', delay: '0.09'},
+                     {id: 'WC1eIre', delay: '0.09'},
+                     {id: 'byJnguv', delay: '0.09'},
+                     {id: 'EHYn8GJ', delay: '0.09'},
+                     {id: 'rW33rqf', delay: '0.09'},
+                     {id: 'FbijFRY', delay: '0.09'}
+                  ]
+               },
+               'tyt': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'tyt_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'rUbIMQY', delay: '0.09'},
+                     {id: 'ODW4Omn', delay: '0.09'},
+                     {id: 'EtFMPm8', delay: '0.09'},
+                     {id: 'IKcPprq', delay: '0.09'},
+                     {id: 'Xjs9LX2', delay: '0.09'},
+                     {id: 'pmfcfuz', delay: '0.09'},
+                     {id: 'nXdt3ce', delay: '0.09'},
+                     {id: 'd6VzSKD', delay: '0.09'},
+                     {id: 'yobj44p', delay: '0.09'},
+                     {id: 'BF2p3tm', delay: '0.09'},
+                     {id: 'v5aHQzC', delay: '0.09'},
+                     {id: 'K61nFgp', delay: '0.09'},
+                     {id: 'jhMkOkA', delay: '0.09'},
+                     {id: 'ebRUvat', delay: '0.09'},
+                     {id: 'bWezvmS', delay: '0.09'},
+                     {id: 'XYqrXYY', delay: '0.09'}
+                  ]
+               },
+               'hero': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'hero_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'x0NKSI4', delay: '0.08'},
+                     {id: 'OBRZfoQ', delay: '0.08'},
+                     {id: 'mFBvHSN', delay: '0.08'},
+                     {id: 'A4JskwY', delay: '0.08'},
+                     {id: 'FNCLnk5', delay: '0.08'},
+                     {id: 'W9QHmJU', delay: '0.08'},
+                     {id: 'psnaqN4', delay: '0.08'},
+                     {id: 'Yz9XVXN', delay: '0.08'},
+                     {id: 'Thu6tTT', delay: '0.08'},
+                     {id: 'K0yv7TU', delay: '0.08'},
+                     {id: 'ineJWic', delay: '0.08'},
+                     {id: 'q8emY2S', delay: '0.08'},
+                     {id: 'P5Vq8tU', delay: '0.08'}
+                  ]
+               },
+               'tigar': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'tigar_yt',
+                  color:     'e67414',
+                  frames:    [
+                     {id: 'GCOReOG', delay: '2'},
+                     {id: 'dhoZlbU', delay: '0.08'},
+                     {id: 'ImMf8to', delay: '0.08'},
+                     {id: 'vjVwwl0', delay: '0.08'},
+                     {id: 'JIwHHfL', delay: '0.08'},
+                     {id: 'HyGPKp6', delay: '0.08'},
+                     {id: 'vMyMaiK', delay: '0.08'},
+                     {id: 'r3awDWP', delay: '0.08'},
+                     {id: 'ibW0OQu', delay: '0.08'},
+                     {id: '61cj4ur', delay: '0.08'}
+                  ]
+               },
+               'mau': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'mau_yt',
+                  color:     '49bef3',
+                  frames:    [
+                     {id: 'dKay0Ky', delay: '3'},
+                     {id: 'RcPm75A', delay: '0.08'},
+                     {id: '68Y0H7A', delay: '0.08'},
+                     {id: 'xuoVdBS', delay: '0.08'},
+                     {id: 'rI9wFYS', delay: '0.08'},
+                     {id: 'B8gsy1j', delay: '0.08'},
+                     {id: '4ZBOW12', delay: '0.08'},
+                     {id: 'QuMiddk', delay: '0.08'},
+                     {id: 'XQnaeAO', delay: '0.08'},
+                     {id: 'rQQDAH7', delay: '0.08'}
+                  ]
+               },
+               'n0psa': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'n0psa_yt',
+                  color:     'f6c803',
+                  frames:    [
+                     {id: 'hdvTwFa', delay: '1'},
+                     {id: 'fwL1V1X', delay: '0.08'},
+                     {id: 'WByRLZS', delay: '0.08'},
+                     {id: 'YUL6OBd', delay: '0.08'},
+                     {id: 'hzWo2HH', delay: '0.08'},
+                     {id: '5VO5KiR', delay: '5'},
+                     {id: 'hzWo2HH', delay: '0.08'},
+                     {id: 'YUL6OBd', delay: '0.08'},
+                     {id: 'WByRLZS', delay: '0.08'},
+                     {id: 'fwL1V1X', delay: '0.08'}
+                  ]
+               },
+               'planet': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'planet_yt',
+                  color:     '565656',
+                  frames:    [
+                     {id: 'cedz7ps', delay: '0.08'},
+                     {id: 'AkqsdQo', delay: '0.08'},
+                     {id: 'FFHr4Y2', delay: '0.08'},
+                     {id: '9AjZP6A', delay: '0.08'},
+                     {id: '6CdbOo3', delay: '0.08'},
+                     {id: 'uqc3xM9', delay: '0.08'},
+                     {id: 'B2zmk0N', delay: '0.08'},
+                     {id: 'mVCN9FP', delay: '0.08'},
+                     {id: 'ymNStZ4', delay: '0.08'},
+                     {id: 'OIT8rgw', delay: '0.08'},
+                     {id: 'ymNStZ4', delay: '0.08'},
+                     {id: 'mVCN9FP', delay: '0.08'},
+                     {id: 'B2zmk0N', delay: '0.08'},
+                     {id: 'uqc3xM9', delay: '0.08'},
+                     {id: '6CdbOo3', delay: '0.08'},
+                     {id: '9AjZP6A', delay: '0.08'},
+                     {id: 'FFHr4Y2', delay: '0.08'},
+                     {id: 'AkqsdQo', delay: '0.08'}
+                  ]
+               },
+               'agarpros': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'agarpros_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'TBIlCYb', delay: '4'},
+                     {id: 'NFXeciX', delay: '0.06'},
+                     {id: 'tVJ1fru', delay: '0.06'},
+                     {id: 'xOFUJtD', delay: '0.06'},
+                     {id: 'POhhdVh', delay: '0.06'},
+                     {id: 'mV17fbS', delay: '0.06'},
+                     {id: 'G3lUEyj', delay: '0.06'},
+                     {id: 'G4jxjM9', delay: '0.06'},
+                     {id: 'WQA1R3N', delay: '0.06'}
+                  ]
+               },
+               'wunwun': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'wunwun_yt',
+                  color:     'cfb53b',
+                  frames:    [
+                     {id: 'HAgGIlS', delay: '0.08'},
+                     {id: '2jEiLOq', delay: '0.08'},
+                     {id: 'YyavcPR', delay: '0.08'},
+                     {id: 'QRddsHF', delay: '0.08'},
+                     {id: 's97xn1X', delay: '0.08'},
+                     {id: 'G2bawix', delay: '0.08'},
+                     {id: 'J5XBcRr', delay: '0.08'},
+                     {id: 'jmCoKrN', delay: '0.08'},
+                     {id: 'OOuT7gX', delay: '0.08'},
+                     {id: '7m8p67N', delay: '0.08'},
+                     {id: 'cKVriYg', delay: '2'}
+                  ]
+               },
+               'sirius': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'sirius_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'y54E3Fq', delay: '2'},
+                     {id: 'KKcOvM5', delay: '0.08'},
+                     {id: 'cdPueeg', delay: '0.08'},
+                     {id: 'yMHapKA', delay: '0.08'},
+                     {id: 'piuBzG4', delay: '0.08'},
+                     {id: 'Zhad6LJ', delay: '0.08'},
+                     {id: 'pIpNT61', delay: '0.08'},
+                     {id: 'LtPbRk7', delay: '0.08'},
+                     {id: 'twPrMak', delay: '0.08'},
+                     {id: 'C9FDBFr', delay: '0.08'},
+                     {id: 'j00ha1X', delay: '0.08'},
+                     {id: 'C9FDBFr', delay: '0.08'},
+                     {id: 'twPrMak', delay: '0.08'},
+                     {id: 'LtPbRk7', delay: '0.08'},
+                     {id: 'pIpNT61', delay: '0.08'},
+                     {id: 'Zhad6LJ', delay: '0.08'},
+                     {id: 'piuBzG4', delay: '0.08'},
+                     {id: 'yMHapKA', delay: '0.08'},
+                     {id: 'cdPueeg', delay: '0.08'},
+                     {id: 'KKcOvM5', delay: '0.08'}
+                  ]
+               },
+               'miracle': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'miracle_yt',
+                  color:     'e36e04',
+                  frames:    [
+                     {id: 'mEcp7UJ', delay: '4'},
+                     {id: 'cMQYnQb', delay: '0.08'},
+                     {id: 'N4fmB4V', delay: '0.08'},
+                     {id: 'N3eQhQu', delay: '0.08'},
+                     {id: 'cMQYnQb', delay: '0.08'},
+                     {id: 'N4fmB4V', delay: '0.08'},
+                     {id: 'cMQYnQb', delay: '0.08'},
+                     {id: 'N3eQhQu', delay: '0.08'},
+                     {id: 'cMQYnQb', delay: '0.08'},
+                     {id: 'N4fmB4V', delay: '0.08'}
+                  ]
+               },
+               'slash': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'slash_yt',
+                  color:     'ffffff',
+                  frames:    [
+                     {id: 'AWEpAom', delay: '4'},
+                     {id: 'Cvevuc8', delay: '0.08'},
+                     {id: 'PtVaXeZ', delay: '0.08'},
+                     {id: 'cvWzzip', delay: '0.08'},
+                     {id: 's5FM9ZM', delay: '0.08'},
+                     {id: 'nFzj8ow', delay: '0.08'},
+                     {id: 'k6r614I', delay: '0.08'},
+                     {id: '8UEJJEt', delay: '0.08'},
+                     {id: 'OS0NBMS', delay: '0.08'},
+                     {id: '8jQk2Uz', delay: '0.08'},
+                     {id: 'uiLHrCr', delay: '0.08'},
+                     {id: '8jQk2Uz', delay: '0.08'},
+                     {id: 'OS0NBMS', delay: '0.08'},
+                     {id: '8UEJJEt', delay: '0.08'},
+                     {id: 'k6r614I', delay: '0.08'},
+                     {id: 'nFzj8ow', delay: '0.08'},
+                     {id: 's5FM9ZM', delay: '0.08'},
+                     {id: 'cvWzzip', delay: '0.08'},
+                     {id: 'PtVaXeZ', delay: '0.08'},
+                     {id: 'Cvevuc8', delay: '0.08'}
+                  ]
+               },
+               'crystal': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'crystal_yt',
+                  color:     '1273e9',
+                  frames:    [
+                     {id: 'jZHPuF8', delay: '0.08'},
+                     {id: 'D8MBnZ5', delay: '0.08'},
+                     {id: 'ttiznOb', delay: '0.08'},
+                     {id: 'Gm0X19w', delay: '0.08'},
+                     {id: 'NPoLUf6', delay: '0.08'},
+                     {id: 'XjSRDHW', delay: '0.08'},
+                     {id: 'edcTt6j', delay: '0.08'},
+                     {id: 'XTQBWRm', delay: '0.08'},
+                     {id: 'rU3KchB', delay: '0.08'},
+                     {id: 'xJe9vJh', delay: '0.08'},
+                     {id: 'Gg1A4NY', delay: '0.08'},
+                     {id: 'D9d2hSh', delay: '0.08'},
+                     {id: 'lpX4GM6', delay: '0.08'},
+                     {id: 'CKzjpKT', delay: '0.08'},
+                     {id: 'pwkQvxD', delay: '0.08'},
+                     {id: '2C3QpHg', delay: '0.08'},
+                     {id: 'MRG3Djj', delay: '0.08'},
+                     {id: '2GgbhaF', delay: '0.08'},
+                     {id: 'Mqe76yX', delay: '0.08'},
+                     {id: 'Oc0MPeX', delay: '0.08'},
+                     {id: 'fq2oEqJ', delay: '0.08'},
+                     {id: 'I8Hz7mE', delay: '0.08'},
+                     {id: 'vy3sLVd', delay: '0.08'},
+                     {id: 'xA7su83', delay: '0.08'},
+                     {id: 'DzQLo7q', delay: '0.08'}
+                  ]
+               },
+               'gfm': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'gfm_yt',
+                  color:     '13dd9b',
+                  frames:    [
+                     {id: 'ImMQ1v7', delay: '0.08'},
+                     {id: 'UnZ13uA', delay: '0.08'},
+                     {id: 'U0Jres5', delay: '0.08'},
+                     {id: 'CWKL82x', delay: '0.08'},
+                     {id: '4Eehc4A', delay: '0.08'},
+                     {id: 'QDIRu6q', delay: '0.08'},
+                     {id: 'OlfDoKC', delay: '0.08'},
+                     {id: 'EWidPaO', delay: '0.08'},
+                     {id: 'wVso12O', delay: '0.08'},
+                     {id: 'aRRPDXg', delay: '0.08'},
+                     {id: 'Px2fPIX', delay: '0.08'},
+                     {id: 'z71N8zK', delay: '0.08'},
+                     {id: 'yV1oWtB', delay: '0.08'},
+                     {id: 'OGp9CKr', delay: '0.08'},
+                     {id: 'nOxBDx4', delay: '0.08'},
+                     {id: 'bj4v8be', delay: '0.08'}
+                  ]
+               },
+               'nbk': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'nbk_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'doovLBy', delay: '0.1'},
+                     {id: '7a4bcUA', delay: '0.1'},
+                     {id: 'uQiWXKK', delay: '0.1'},
+                     {id: 'YvdpBSe', delay: '0.1'},
+                     {id: 'sBg714h', delay: '0.1'},
+                     {id: 'zturjAt', delay: '0.1'},
+                     {id: 'ysfO8B6', delay: '0.1'},
+                     {id: '8HJzHa4', delay: '0.1'}
+                  ]
+               },
+               'kohai': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'kohai_yt',
+                  color:     '658bd3',
+                  frames:    [
+                     {id: '64zpTtk', delay: '0.3'},
+                     {id: '9G865mk', delay: '0.12'},
+                     {id: 'xdhGWI5', delay: '0.12'},
+                     {id: '5iJfJY3', delay: '0.12'},
+                     {id: 'vI07nFv', delay: '0.12'},
+                     {id: 'wKxUAry', delay: '0.12'},
+                     {id: 'RUv4UVg', delay: '0.12'},
+                     {id: 'frB66Ep', delay: '0.12'},
+                     {id: 'Vnl66Df', delay: '0.12'},
+                     {id: 'Nektn3N', delay: '0.12'},
+                     {id: 'J2UfkzD', delay: '0.12'}
+                  ]
+               },
+               'legend': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'turtleclan_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'cd2Jj41', delay: '0.02'},
+                     {id: 'BFVi5ZK', delay: '0.02'},
+                     {id: 'gWwc9X9', delay: '0.02'},
+                     {id: 'IENbkme', delay: '0.02'},
+                     {id: 'Zf0GySz', delay: '0.02'},
+                     {id: 'C7g8eCl', delay: '0.02'},
+                     {id: 'YRWVguy', delay: '0.02'},
+                     {id: 'p60vq6D', delay: '0.02'},
+                     {id: 'qNfGMGm', delay: '0.02'},
+                     {id: 'UqnBoke', delay: '0.02'},
+                     {id: 'sm4SOvA', delay: '0.02'},
+                     {id: 'Mn7QR42', delay: '0.02'},
+                     {id: 'iAfnoVF', delay: '0.02'},
+                     {id: 'IjwC9tp', delay: '0.02'},
+                     {id: 'J1CZ8hh', delay: '0.02'},
+                     {id: '6gNbU66', delay: '0.02'},
+                     {id: 'weyGhf9', delay: '0.02'},
+                     {id: '6EjJ1M1', delay: '0.02'},
+                     {id: 'MrOrIEd', delay: '0.02'}
+                  ]
+               },
+               'trippy': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'trippy',
+                  color:     'ffffff',
+                  frames:    [
+                     {id: 'aqEBJji', delay: '0.03'},
+                     {id: 'BfSFI8I', delay: '0.03'},
+                     {id: 'rHzEc0l', delay: '0.03'},
+                     {id: '4Dc6iSW', delay: '0.03'},
+                     {id: 'C5pbZPx', delay: '0.03'},
+                     {id: 'mr588aN', delay: '0.03'},
+                     {id: 'nIGIScj', delay: '0.03'},
+                     {id: '4jCE9xX', delay: '0.03'},
+                     {id: 'I3Dixlc', delay: '0.03'},
+                     {id: 'ZXxLp0Q', delay: '0.03'}
+                  ]
+               },
+               'trippy 2': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'trippy_2',
+                  color:     'ffffff',
+                  frames:    [
+                     {id: '2MG25OA', delay: '0.03'},
+                     {id: 'ypypCpM', delay: '0.03'},
+                     {id: 'xjJyohm', delay: '0.03'},
+                     {id: '46tVXfT', delay: '0.03'},
+                     {id: 'gDwtKiL', delay: '0.03'},
+                     {id: 'Jey9A4m', delay: '0.03'},
+                     {id: 'eSwYkS3', delay: '0.03'},
+                     {id: 'uId5x5t', delay: '0.03'}
+                  ]
+               },
+               'aoyama': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'aoyama',
+                  color:     '6a7aad',
+                  frames:    [
+                     {id: 'EZV44m5', delay: '0.08'},
+                     {id: 'Be8YCIi', delay: '0.08'},
+                     {id: 'aAUZMOY', delay: '0.08'},
+                     {id: 'jRidrLf', delay: '0.08'},
+                     {id: 'DSnCwbt', delay: '0.08'}
+                  ]
+               },
+               'hestia': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'hestia',
+                  color:     'ffffff',
+                  frames:    [
+                     {id: 'mHPki7d', delay: '0.13'},
+                     {id: 'r68W6j3', delay: '0.13'},
+                     {id: 'cnozXNA', delay: '0.13'},
+                     {id: 'jzT28GE', delay: '0.13'},
+                     {id: 'j4rMxd7', delay: '0.13'},
+                     {id: '1yaH8Yj', delay: '0.13'},
+                     {id: 'CBcsEd7', delay: '0.13'},
+                     {id: 'yr6nREs', delay: '0.13'}
+                  ]
+               },
+               'umaru': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'umaru',
+                  color:     'e86b34',
+                  frames:    [
+                     {id: 'lzpVxie', delay: '0.1'},
+                     {id: 'rUIggqs', delay: '0.1'},
+                     {id: 'O5woXju', delay: '0.1'},
+                     {id: 'opOYMbD', delay: '0.1'},
+                     {id: 'g8nukXN', delay: '0.1'},
+                     {id: 'j3jUhzB', delay: '0.1'}
+                  ]
+               },
+               'megumin': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'megumin',
+                  color:     '632d34',
+                  frames:    [
+                     {id: '08LhFca', delay: '0.1'},
+                     {id: 'kE12JCT', delay: '0.1'},
+                     {id: 'JG6acVn', delay: '0.1'},
+                     {id: 'z3EAFKm', delay: '0.1'},
+                     {id: '9hoQPlu', delay: '0.1'},
+                     {id: 'EmdwHen', delay: '0.1'},
+                     {id: 'cgaAF8j', delay: '0.1'},
+                     {id: 'SgCq8Hy', delay: '0.1'},
+                     {id: 'CCOOVBO', delay: '0.1'},
+                     {id: 'elWHx2Y', delay: '0.1'}
+                  ]
+               },
+               'neko': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'neko',
+                  color:     '444250',
+                  frames:    [
+                     {id: 'l2kUHUa', delay: '0.2'},
+                     {id: 'UHKbxIv', delay: '0.2'},
+                     {id: 'zB4VlRl', delay: '0.2'},
+                     {id: 'aVcKIMi', delay: '0.2'},
+                     {id: '2V6yYIX', delay: '0.2'}
+                  ]
+               },
+               'leekspin': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'leekspin',
+                  color:     '8f5d99',
+                  frames:    [
+                     {id: 'acb7H09', delay: '0.1'},
+                     {id: 'RvVtMsF', delay: '0.1'},
+                     {id: '4dQ2gLM', delay: '0.1'},
+                     {id: 'FXBj2HN', delay: '0.1'}
+                  ]
+               },
+               'pizza 2': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'pizza_2',
+                  color:     'ffffff',
+                  frames:    [
+                     {id: 'HKvlfSJ', delay: '0.1'},
+                     {id: 'afS86PD', delay: '0.1'},
+                     {id: 'wVmSKUf', delay: '0.1'},
+                     {id: 'PkhWbF2', delay: '0.1'}
+                  ]
+               },
+               'cat': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'trippy_cat',
+                  color:     '000000',
+                  frames:    [
+                     {id: '841wvz3', delay: '0.05'},
+                     {id: '2p7AaDh', delay: '0.05'},
+                     {id: 'YcNy91Y', delay: '0.05'},
+                     {id: 'FwiDalL', delay: '0.05'},
+                     {id: 'j6Z5YfK', delay: '0.05'}
+                  ]
+               },
+               '✧༄ᗫxxxxx　⇀㚂㜂': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_lol',
+                  color:     'cd5d22',
+                  frames:    [
+                     {id: 'SJlS8Rg', delay: '0.08'},
+                     {id: 'AiICKZb', delay: '0.08'},
+                     {id: '1iVfy8b', delay: '0.08'},
+                     {id: 'hwPSr3s', delay: '0.08'},
+                     {id: 'wpJophT', delay: '0.08'},
+                     {id: 'W9oLhpz', delay: '0.08'},
+                     {id: 'DexE8Kb', delay: '0.08'},
+                     {id: '7ybaqXq', delay: '0.08'}
+                  ]
+               },
+				'℄🌀SCͥHRͣAͫMM': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'agarpros_yt',
+                  color:     '000000',
+                  frames:    [
+                     {id: 'TBIlCYb', delay: '4'},
+                     {id: 'NFXeciX', delay: '0.06'},
+                     {id: 'tVJ1fru', delay: '0.06'},
+                     {id: 'xOFUJtD', delay: '0.06'},
+                     {id: 'POhhdVh', delay: '0.06'},
+                     {id: 'mV17fbS', delay: '0.06'},
+                     {id: 'G3lUEyj', delay: '0.06'},
+                     {id: 'G4jxjM9', delay: '0.06'},
+                     {id: 'WQA1R3N', delay: '0.06'}
+                  ]
+               },
+               '℄🌀ℱ₳𝓗∀🌛': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'zombie',
+                  color:     '004F0F',
+                  frames:    [
+                     {id: 'uVqUXBN', delay: '3'},
+                     {id: 'QclZjeR', delay: '0.1'},
+                     {id: 'iXdYrD8', delay: '0.1'},
+                     {id: 'vF0ZIcs', delay: '0.1'},
+                     {id: 'iXdYrD8', delay: '0.1'},
+                     {id: 'QclZjeR', delay: '0.1'}
+                  ]
+               },			   
+               '℄🌀jimboy3100': {
+                  cached:    false,
+                  ready:     false,
+                  current:   0,
+                  timestamp: 0,
+                  id:        'birthday_troll',
+                  color:     '7a0c0f',
+                  frames:    [
+                     {id: 'KxcI3j7', delay: '4'},
+                     {id: 'aE1etcH', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: 'iQWIiAu', delay: '0.1'},
+                     {id: 'ZbeXIpc', delay: '0.1'},
+                     {id: '8NUCHKe', delay: '0.1'},
+                     {id: 'ZA1rlQ0', delay: '0.1'},
+                     {id: 'aE1etcH', delay: '0.1'}
+                  ]
+               }			   
+            },
+            cache:      {},
+            prototypes: {
+               canvas: (CanvasRenderingContext2D.prototype),
+               old:    {}
+            }
+         },
+         f: {
+            prototype_override: function(type, name, runat, callback) {
+               if ( !(type in tcm.l.prototypes.old) )       tcm.l.prototypes.old[type]       = {};
+               if ( !(name in tcm.l.prototypes.old[type]) ) tcm.l.prototypes.old[type][name] = tcm.l.prototypes[type][name];
+               tcm.l.prototypes[type][name] = function() {
+                  (runat == 'before' && callback(this, arguments));
+                  tcm.l.prototypes.old[type][name].apply(this, arguments);
+                  (runat == 'after'  && callback(this, arguments));
+               };
+            },
+            hex_to_lightness: function(hex) {
+               var rgb = parseInt(hex, 16);
+               var r   = (rgb >> 16) & 0xff;
+               var g   = (rgb >>  8) & 0xff;
+               var b   = (rgb >>  0) & 0xff;
+               return (0.2126 * r + 0.7152 * g + 0.0722 * b);
+            },
+            new_img: function(id) {
+               var img         = new Image();
+               img.crossOrigin = 'anonymous';
+               img.src         = 'http://i.imgur.com/' + id + '.png';
+               return img;
+            },
+            cache_skin: function(skin) {
+               for ( var i = 0; i < tcm.l.skins[skin].frames.length; i++ ) {
+                  var id = tcm.l.skins[skin].frames[i].id;
+                  if ( !(id in tcm.l.cache) ) {
+                     tcm.l.cache[id] = tcm.f.new_img(id);
+                  }
+               }
+               return true;
+            },
+            skin_ready: function(skin) {
+               var ready = 0;
+               for ( var i = 0; i < tcm.l.skins[skin].frames.length; i++ ) {
+                  var id = tcm.l.skins[skin].frames[i].id;
+                  if ( tcm.l.cache[id].complete && tcm.l.cache[id].width > 1 ) {
+                     ++ready;
+                  }
+               }
+               return (ready == tcm.l.skins[skin].frames.length ? true : false);
+            },
+            override: function() {
+               tcm.f.prototype_override('canvas', 'drawImage', 'before', function(a, b) {
+                  if ( 'src' in b['0'] && (c = decodeURIComponent(b['0'].src).match(/^https?\:\/\/i\.imgur\.com\/.+\.png\?(.+)$/i)) && c['1'] in tcm.l.skins ) {
+                     if ( !tcm.l.skins[c['1']].cached ) {
+                        tcm.l.skins[c['1']].cached = tcm.f.cache_skin(c['1']);
+                     }
+                     if ( !tcm.l.skins[c['1']].ready ) {
+                        tcm.l.skins[c['1']].ready = tcm.f.skin_ready(c['1']);
+                     }
+                     if ( tcm.l.skins[c['1']].ready ) {
+                        b['0'] = tcm.l.cache[tcm.l.skins[c['1']].frames[tcm.l.skins[c['1']].current % tcm.l.skins[c['1']].frames.length].id];
+                     }
+                     if ( ((Date.now() - tcm.l.skins[c['1']].timestamp) / 1000) % 60 >= tcm.l.skins[c['1']].frames[tcm.l.skins[c['1']].current % tcm.l.skins[c['1']].frames.length].delay ) {
+                        ++tcm.l.skins[c['1']].current;
+                        tcm.l.skins[c['1']].timestamp = Date.now();
+                     }
+                  }
+               });
+            },
+            register_skins: function() {
+               for ( key in tcm.l.skins ) {
+                  w.core.registerSkin(key, '%tcm_' + tcm.l.skins[key].id, 'http://i.imgur.com/' + (tcm.f.hex_to_lightness(tcm.l.skins[key].color) < 50 ? 'bZuiJHx' : 'NwivnjV') + '.png?' + key, 3, '0x' + tcm.l.skins[key].color);
+               }
+            },
+            inject_html: function() {
+               var html = '<br/><br/>';
+               html    += '<select class="form-control" id="movingskins" onchange="document.getElementById(\'nick\').value = this.options[this.selectedIndex].value;">';
+               html    += '<option value="">---------------- Select Animated Skin ----------------</option>';
+               for ( key in tcm.l.skins ) {
+                  html += '<option value="' + key.toUpperCase() + '">' + key + ' (' + tcm.l.skins[key].frames.length + ' frames)</option>';
+               }
+               html += '</select>';
+               document.getElementById('openShopBtn').insertAdjacentHTML('afterend', html);
+            },
+         }
+      };
+      tcm.f.override();
+      tcm.f.register_skins();
+      tcm.f.inject_html();
+   }
+   else {
+      w.setTimeout(function() {
+         agarXTRA(w);
+
+      }, 100);
+   }
+	$("#movingskins").css( { marginTop : "-15px" } );
+	$("#movingskins").css( { marginBottom : "-30px" } );   
+   setTimeout(function() { 
+    //hide extra names
+    $('#movingskins>option:nth-child(68)').hide();
+	$('#movingskins>option:nth-child(69)').hide();
+	$('#movingskins>option:nth-child(70)').hide();
+	$('#movingskins>option:nth-child(71)').hide();
+   }, 300);
+})(window);
+
 }
