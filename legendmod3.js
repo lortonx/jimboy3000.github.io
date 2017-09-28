@@ -1,25 +1,43 @@
 /*************
- * LEGEND mod v2.595 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.517 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
+var semimodVersion = "71"; // the version 1.1-> 1.11
+ 
 loadersetings();
 loadericon();
 document.title = "Legend mod";
+
+//Authenticate Mod Script
+var accesstomod;
+setTimeout(function() {
+getaccesstoken();
+getaccesstoken2();
+}, 3000);
+
+$("#gamemode").prop('disabled', false);
+$("#region").prop('disabled', false);   
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
 //$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
  $("#region").on('change', function() {
+	setTimeout(function() {
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);                 
+	}, 200);
 	if (this.value == ":PrS") {
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
 		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
 		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
 		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
 		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');	
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
+//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
+//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -60,13 +78,21 @@ $('#gamemode').on('change', function() {
 	PrivateServer5();
     }
     else if (this.value == ":PrS6") {
-    console.log("Going to PRS5");
+    console.log("Going to PRS6");
 	PrivateServer6();
     }
     else if (this.value == ":PrS7") {
-    console.log("Going to PRS5");
+    console.log("Going to PRS7");
 	PrivateServer7();
-    }	
+    }
+    else if (this.value == ":PrS8") {
+    console.log("Going to PRS8");
+	PrivateServer8();
+    }
+    else if (this.value == ":PrS9") {
+    console.log("Going to PRS9");
+	PrivateServer9();
+    }		
 });
 
 /*		
@@ -174,7 +200,6 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "59"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -360,10 +385,26 @@ if (languagemod == 6) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
-		spectate();
+		//spectate();
+					if (privateSrv!=null) {
+						
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+				}
+				
+//				$(".btn-spectate").click();		
+		
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -383,16 +424,34 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
 			},250);
     }
+	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+	}
 });
 
 
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
-		spectate();
+		//spectate();
+				if (privateSrv!=null) {
+					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+				}
+
+//				$(".btn-spectate").click();
+				
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -413,6 +472,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		}
 		
     }
+	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
+	}
 });
 
 
@@ -479,7 +541,15 @@ setTimeout(function() {
 
                     if ($("#server").val().includes("#") == false) {
                         var texture2, texture3;
+					    var texture2, texture3;
                         texture3 = $("#server").val();
+                        texture2 = texture3.replace("live-arena-", "");
+						texture2 = texture2.replace(".agar.io:80", "");
+						$("#server-token").val(texture2);
+						$("#server-join").click();
+
+						
+/*                        texture3 = $("#server").val();
                         texture2 = texture3.substring(0, texture3.indexOf(':'));
                         texture2 = texture2.replace(".", "-");
                         texture2 = texture2.replace(".", "-");
@@ -487,7 +557,7 @@ setTimeout(function() {
                         texture3 = texture3.split(':').pop();
                         texture3 = "ws://ip-" + texture2 + ".tech.agar.io:" + texture3 + "/";
                         a.core.connect(texture3);
-
+*/
                         setTimeout(function() {
                             realmode = getGameMode();
 //                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
@@ -526,32 +596,13 @@ setTimeout(function() {
         })(window, window.jQuery);
     }
 }, 2500);
-/*
+
 setTimeout(function () {
-$("#connect2").click(function() {
-	if($("#top5-hud").is(":visible")){
-		$("#connect").click();
-		return false;
-	}
-	else{
-	realmode2=$('#gamemode').val();
-	$("#create-party-btn-2").click();
-	
-	
-		
-		setTimeout(function () {
-			if (openthecommunication=="YES"){
-		$('#gamemode').val(realmode2);
-		$("#connect").click();
-		return openthecommunication="NO";
-		}
-		},6000);
-	
-	return openthecommunication="YES", realmode2;
-	}
-});
-}, 4500);
-*/
+		if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+        }
+}, 6000);
+
 
 setTimeout(function() {
 
@@ -579,19 +630,7 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-	/*	else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
-				
-				logout();
-				setTimeout(function() {
-					MC.setQuality($('#quality').val());
-					spectate();
-            }, 500);
-				$("#gamemode").click(function() {                       
-						$(".toast.toast-warning").remove();
-                    });
-				return false;
-        }	*/
+	
 		
         $("#server-ws").on('change', function() {
 			adres();
@@ -797,7 +836,8 @@ setTimeout(function() {
 
 function init(modVersion) {
     //var connectedbanner=0;
-
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 
     if (timesopened != null) {
         timesopened++;
@@ -1139,18 +1179,22 @@ function init(modVersion) {
                 if (mode == ":party") {
                     copy("http://agar.io/#" + MC.getPartyToken());
                 } else if (mode != ":party") {
+					if (region!=null&&mode!=null){
                     copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + mode);
+					}
+					else{
+					copy("http://agar.io/?sip=" + searchSip);	
+					}
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
                     copy("http://agar.io/#" + currentToken);
-                } else if (realmode != ":party") {
+                } else if (realmode != ":party") {					
                     copy("http://agar.io/?sip=" + currentIP + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
             }
 			else if (privateSrv!=null) {
-                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");
-                
+                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");                
             }
         });
 
@@ -1946,16 +1990,13 @@ function init(modVersion) {
         });
 
         $("#OpenuserScripts").click(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
-                toastr["info"]("Mod Version must be 2.4 or higher").css("width", "250px");
-                return false;
-            } else {
+
                 $("#main-menu").hide();
                 $("#skins-panel").hide();
                 $("#quick-menu").hide();
                 $("#exp-bar").hide();
                 $("#userscripts").show();
-            }
+
         });
 
 
@@ -2042,7 +2083,10 @@ function init(modVersion) {
 
 			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
 			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
-			Pwdtosend=Pwdtosend.replace(" ", "_");
+			var i = 0, Pwdtosendlength = Pwdtosend.length; 
+			for(i; i < Pwdtosend ; i++) {
+				Pwdtosend = Pwdtosend.replace(" ", "_");
+				}
 			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
 			var i = 0, nicknametosendlength = nicknametosend.length; 
 			for(i; i < nicknametosendlength ; i++) {
@@ -2263,10 +2307,10 @@ function init(modVersion) {
 
         //Buttons for search Area
         $("#log").after('<button id="Backtomenu" onclick="doback(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
-        $("#tags-container").before('<div id="legendbanners" style="margin-top: 10px;"><img src="https://jimboy3100.github.io/legend.github.io/banners/iconinfo.png" data-original-title="Mod Information and choose Template" data-toggle="tooltip" id= "infoicon" onclick="openhelper();return false;" class="img-rounded" alt="Cinque Terre" width="87" height="40">' +
-            '<img src="https://jimboy3100.github.io/legend.github.io/banners/vanillapic2.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillasettings(); return false" class="img-rounded"  return false" width="87" height="40" >' +
-            '<img src="https://jimboy3100.github.io/legend.github.io/banners/iconlegenddefaultsmall.png" alt="Vanilla Like Settings" id = "defaultset" onclick="legenddefaultsettings(); return false" class="img-rounded"  return false" width="87" height="40"  >' +
-            '<img src="https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/agariosmall.png" alt="Vanilla Like Settings" id = "agarioset" class="img-rounded" return false" width="87" height="40" onclick="agariowhitesettings(); return false" > ' +
+        $("#tags-container").before('<div id="legendbanners" style="margin-top: 10px;"><img src="https://jimboy3100.github.io/banners/iconinfo.png" data-original-title="Mod Information and choose Template" data-toggle="tooltip" id= "infoicon" onclick="openhelper();return false;" class="img-rounded" alt="Cinque Terre" width="87" height="40">' +
+            '<img src="https://jimboy3100.github.io/banners/vanillapic2.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillasettings(); return false" class="img-rounded"  return false" width="87" height="40" >' +
+            '<img src="https://jimboy3100.github.io/banners/iconlegenddefaultsmall.png" alt="Vanilla Like Settings" id = "defaultset" onclick="legenddefaultsettings(); return false" class="img-rounded"  return false" width="87" height="40"  >' +
+            '<img src="https://jimboy3100.github.io/banners/agariosmall.png" alt="Vanilla Like Settings" id = "agarioset" class="img-rounded" return false" width="87" height="40" onclick="agariowhitesettings(); return false" > ' +
             '</div><div id="LEGENDAds"></div>');
         $("#legendbanners").css({
             marginTop: "-25px"
@@ -2280,60 +2324,66 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.4" && modVersion != "2.5") {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
             if (tag1.includes("♔Jimboy3100") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
             } else if (tag1.includes("GUARD") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
             } else if (tag1.includes("℄🌀") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("₣") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("℄") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("♋") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("۞ẒṨ۞") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
             } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
             } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
             } else if (tag1.includes("๔ɀ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
             } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
             } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
             } else if (tag1.includes("ΕΛ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
             } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
             } else if (tag1.includes("ƖƦ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
             } else if (tag1.includes("⚔ℱ") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
             } else if (tag1.includes("ƸU") == true) {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
             } else {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
             }
         }
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.4" && modVersion != "2.5") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font> ' + Premadeletter16 + ' <font color="yellow"><b>v2.4</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>');
+        if (modVersion != "2.5") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
-			  if (modVersion == "2.5"){
-			toastr["info"]('Current <font color="yellow"><b>v2.5</b></font> is <b>BETA</b>. <font color="yellow"><b>v2.4</b></font> is stable. <br>Visit: <a target="_blank" href="https://jimboy3100.github.io/goodoldlegendmod.user.js"><font color="red"><b><u>www.legendmod.ml</u></b></font></a>').css("width", "320px");	
-			}
-			else{
+/*			  if (modVersion == "2.5"){
+				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+				'Welcome to <font color="yellow"><b>v2.5</b></font> '+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
+				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
+				'No more conflicts due to official updates.'+
+				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="blue"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
+			  } */
+//			else{
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
-			if (userlastname!=null && userfirstname!=null){ 
+			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
 				if (usergender=="male"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
 				}
@@ -2344,193 +2394,200 @@ function init(modVersion) {
 			else{
 		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
 				}
-		}
+//		}
 	}
-        //toastr["info"](' QUICK Server reconnects may cause <b><font color="green">Google Plus / Facebook </font></b> logouts').css("width", "350px");}
-
+				//important announcement
+/*    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+				'<font color="yellow"><b>Important Notice</font> '+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
+				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
+				'Need some days to establish <font color="red">communication</font> sockets.'+
+				'<br><font color="#018cf6">Stay informed</font>.'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
+*/				
         $("#infoicon").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerinformation");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
         $("#vanillaset").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannervanillaliking");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannervanillaliking");
         });
         $("#defaultset").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannergalaxyliking");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannergalaxyliking");
         });
         $("#agarioset").mouseover(function() {
-            $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/banneragario");
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/banneragario");
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
                 } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
                 } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
                 } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
 
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.4" && modVersion != "2.5") {
-                $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerupdate");
+            if (modVersion != "2.5") {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
                 if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playeriamlegend");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/playerguard");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
                 } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannersflc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerzs");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
                 } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerdz");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
                 } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerrect");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
                 } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerscar");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
                 } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerEl");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
                 } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerex");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
                 } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerir");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
                 } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerFc");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
                 } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannereu");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
                 } else {
-                    $("#LEGENDAds").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerAll");
+                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
                 }
             }
 
@@ -2586,7 +2643,7 @@ function init(modVersion) {
                 $(".toast.toast-success").remove();
                 //without confirmation
                 if (commandMsg == "Team5") {
-                    $("#top5-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icogeneral.gif ")').css({
+                    $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
                         opacity: 0.8
                     });
                     setTimeout(function() {
@@ -2909,13 +2966,13 @@ function init(modVersion) {
             }
 
             if (dyinglight1load == null || dyinglight1load == "null") {
-                $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerDyingLight");
+                $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerDyingLight");
             } else if (dyinglight1load == "yes") {
                 opendyinglight();
-                $("#LEGENDAds2").load("https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/bannerStopDyingLight");
+                $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
             }
 		
-        }, 500);
+        }, 2000);
         if (searchSip != null) {
             $("#region").hide();
             $("#gamemode2").hide();
@@ -2938,7 +2995,8 @@ function init(modVersion) {
             //$(".agario-party").empty();$(".form-group.clearfix").hide();
             //$(".form-group").hide();
         }
-		else if (privateSrv!=null) {				
+		else if (privateSrv!=null) {
+
             $("#region").hide();
             $("#gamemode2").hide();
             $("#server").hide();
@@ -2953,7 +3011,7 @@ function init(modVersion) {
 			setTimeout(function() {
 				if(privateSrv.includes("fzogar.xyz")){
 					toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/FAYiz/FayizPromoCarSmall.jpg); color:#018cf6; font-size:16px; text-align:center"><b>Private Server</b>:'+ 
-					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by <font color="yellow"><b>FAYiz</b></font>.</font><br><b>Website:</b><a target="_blank" href="http://game.fzogar.xyz/"><font color="yellow"><b><u>http://game.fzogar.xyz/</u></b></font>'+
+					'<font color="red"><b>' + privateSrv + '</b></font><br>Server provided by <font color="yellow"><b>FAYiz</b></font>.</font><br><b>Website:</b><a target="_blank" href="http://fzogar.ml"><font color="yellow"><b><u>http://fzogar.ml</u></b></font>'+
 					'<br><br><font style="color:#018cf6; font-size:16px; text-align:center"><b>MultiOgar Github Library:</font></b><a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>CLICK HERE</u></b></font>'+
 					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
@@ -2962,7 +3020,7 @@ function init(modVersion) {
 				}
 			$("#server").hide();
             $("#connect2").hide();			
-			}, 3000); 
+			}, 3100); 
 			
 		}
 
@@ -3037,6 +3095,7 @@ function delay(time, func) {
 }
 
 function spectate() {
+
     hideMenu();
     $(".btn-spectate").click();
 }
@@ -3572,9 +3631,9 @@ function play() {
     $('*[data-itr="page_play"]').click();
 }
 
-function spectate() {
-    $('*[data-itr="page_spectate"]').click();
-}
+//function spectate() {
+//    $('*[data-itr="page_spectate"]').click();
+//}
 
 function appendLog(message) {
     var region = MC.getRegion();
@@ -3985,7 +4044,7 @@ function whenplayerdies() {
 			$("#canvas").css('background-image', 'url(" https://media.giphy.com/media/eVy46EWyclTIA/giphy.gif ")').css({
                 opacity: 0.8
             });
-            $("#minimap-hud").css('background-image', 'url(" https://raw.githubusercontent.com/jimboy3100/legend.github.io/master/banners/icoeucid.gif ")').css({
+            $("#minimap-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icoeucid.gif ")').css({
                 opacity: 1
             });
             $("#leaderboard-hud").css('background-image', 'url(" https://media.giphy.com/media/VSuWfl1qCiRsk/giphy.gif ")').css({
@@ -4116,7 +4175,7 @@ function legenddefaultsettings() {
 function vanillasettings() {
     if (dyinglight1load == null || dyinglight1load == "null") {
         $("#import-settings-btn").attr('class', 'btn btn-success');
-        document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
+        document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
         window.history.pushState(null, null, window.location.pathname);
         $('#import-settings-btn').click();
     } else if (dyinglight1load == "yes") {
@@ -4153,7 +4212,7 @@ function vanillasettings() {
         localStorage.setItem("dyinglight1load", dyinglight1load);
         setTimeout(function() {
             $("#import-settings-btn").attr('class', 'btn btn-success');
-            document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
+            document.getElementById("import-settings").value = '{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/TC7VFYr.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/zMHwfGu.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideCellsInfo":false,"autoHideFood":false,"hideMyName":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}';
             window.history.pushState(null, null, window.location.pathname);
             $('#import-settings-btn').click();
         }, 100);
@@ -4933,6 +4992,12 @@ function PrivateServer6(){
 function PrivateServer7(){
 	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
 }
+function PrivateServer8(){
+	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
+}
+function PrivateServer9(){
+	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
+}
 /*
 function adres() {
     var adrs = WebSocket.prototype.send;
@@ -4960,11 +5025,13 @@ function adres() {
 */
 function adres() {
 	if ($("#gamemode").val() != ":party") {
-		setTimeout(function(){
-	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
-            d = c.exec($("#server-ws").val());
-			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
-			currentIP=d[1].replace(/-/g, '.') + d[2];
+		setTimeout(function(){		
+			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
+			$("#server").val(currentIP);
+//	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
+//            d = c.exec($("#server-ws").val());
+//			$("#server").val(d[1].replace(/-/g, '.') + d[2]);
+//			currentIP=d[1].replace(/-/g, '.') + d[2];
 			setTimeout(function() {
 				 
 			    realmode = getGameMode();
@@ -5120,6 +5187,30 @@ function opendyinglight() {
     s.src = "https://jimboy3100.github.io/dyinglight.js";
     $("body").append(s);
 }
+
+function getaccesstoken() {
+    $.ajax({
+        type: "GET",
+        url: "https://jimboy3100.github.io/v3/accesstoken.html",
+        datatype: "json",
+        success: function(info) {
+		  accesstomod =  info[17];
+			return accesstomod;
+		}
+	});
+}
+
+function getaccesstoken2() {
+    setTimeout(function() {
+        if(accesstomod != "a" && accesstomod != null){
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
+				setTimeout(function() {
+					document.documentElement.innerHTML = "";
+					}, 21000);
+				}
+   }, 13000);
+}
+	
 
 //1. Animated Skins
 function animatedskins(){
