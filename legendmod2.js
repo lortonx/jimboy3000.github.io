@@ -1,13 +1,18 @@
 /*************
- * LEGEND mod v2.513 by Jimboy3100   email:jimboy3100@hotmail.com
- *************/ 
+ * LEGEND mod v2.517 by Jimboy3100   email:jimboy3100@hotmail.com
+ *************/
+var semimodVersion = "71"; // the version 1.1-> 1.11
+ 
 loadersetings();
 loadericon();
 document.title = "Legend mod";
 
 //Authenticate Mod Script
 var accesstomod;
+setTimeout(function() {
 getaccesstoken();
+getaccesstoken2();
+}, 3000);
 
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   
@@ -30,8 +35,8 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>'+
-		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
+//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
 //		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
     }
@@ -195,7 +200,6 @@ var setyt = "YES";
 var clanpassword;
 var searching;
 var timerId;
-var semimodVersion = "70"; // the version 1.1-> 1.11
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
@@ -387,7 +391,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		//spectate();
-/*					if (privateSrv!=null) {
+					if (privateSrv!=null) {
+						
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -395,10 +400,9 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
-*/				
+				
 //				$(".btn-spectate").click();		
 		
 		$("#overlays").show();
@@ -435,7 +439,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		//spectate();
-/*				if (privateSrv!=null) {
+				if (privateSrv!=null) {
 					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -443,10 +447,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
 					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else if(privateSrv.includes("DeadServer-oiepapuh546901.codeanyapp.com:8888")){$("#clantag").val("PS10");}
 					else{$("#clantag").val("PS");}
 				}
-*/
+
 //				$(".btn-spectate").click();
 				
 		$("#overlays").show();
@@ -593,32 +596,13 @@ setTimeout(function() {
         })(window, window.jQuery);
     }
 }, 2500);
-/*
+
 setTimeout(function () {
-$("#connect2").click(function() {
-	if($("#top5-hud").is(":visible")){
-		$("#connect").click();
-		return false;
-	}
-	else{
-	realmode2=$('#gamemode').val();
-	$("#create-party-btn-2").click();
-	
-	
-		
-		setTimeout(function () {
-			if (openthecommunication=="YES"){
-		$('#gamemode').val(realmode2);
-		$("#connect").click();
-		return openthecommunication="NO";
-		}
-		},6000);
-	
-	return openthecommunication="YES", realmode2;
-	}
-});
-}, 4500);
-*/
+		if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+        }
+}, 6000);
+
 
 setTimeout(function() {
 
@@ -646,19 +630,7 @@ setTimeout(function() {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
             }
         }	
-	/*	else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
-				
-				logout();
-				setTimeout(function() {
-					MC.setQuality($('#quality').val());
-					spectate();
-            }, 500);
-				$("#gamemode").click(function() {                       
-						$(".toast.toast-warning").remove();
-                    });
-				return false;
-        }	*/
+	
 		
         $("#server-ws").on('change', function() {
 			adres();
@@ -5216,8 +5188,6 @@ function opendyinglight() {
     $("body").append(s);
 }
 
-
-
 function getaccesstoken() {
     $.ajax({
         type: "GET",
@@ -5225,7 +5195,6 @@ function getaccesstoken() {
         datatype: "json",
         success: function(info) {
 		  accesstomod =  info[17];
-			getaccesstoken2();
 			return accesstomod;
 		}
 	});
@@ -5233,15 +5202,15 @@ function getaccesstoken() {
 
 function getaccesstoken2() {
     setTimeout(function() {
-        if(accesstomod != "a"){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate').css("width", "300px");
+        if(accesstomod != "a" && accesstomod != null){
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
-					}, 15000);
+					}, 21000);
 				}
-   }, 5000);
+   }, 13000);
 }
-
+	
 
 //1. Animated Skins
 function animatedskins(){
