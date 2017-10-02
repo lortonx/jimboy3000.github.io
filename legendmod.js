@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.520 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.521 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "72"; // the version 1.1-> 1.11
+var semimodVersion = "73"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2404,14 +2404,14 @@ function init(modVersion) {
 			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
 			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
 				if (usergender=="male"){
-				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '<br>Use Tag/Password until next LM update</span></font>!').css("width", "350px");	
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
 				}
 				else if (usergender=="female"){
-				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Ms. ' + userlastname +' '+ userfirstname + '<br>Use Tag/Password until next LM update</span></font>!').css("width", "350px");
+				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Ms. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");
 				}
 			}
 			else{
-		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '<br>Use Tag/Password until next LM update</span></font>!').css("width", "350px");		       
+		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
 				}
 //		}
 	}
