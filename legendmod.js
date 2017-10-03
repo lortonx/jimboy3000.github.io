@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.521 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.522 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "73"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3041,6 +3041,9 @@ function init(modVersion) {
             $("#connect2").hide();			
 			}, 3100); 
 			
+		}
+		else if (privateSrv==null) {
+							toastr["info"]('Agario servers are <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);"> DOWN</span></font></b> <br>Enjoy Private Servers by choosing <font color="yellow"><b>Region->Private Servers->Select</b></font>  (until agario gets fixed)<br><a target="_blank" href="http://fzogar.ml"><font color="yellow"><b><u>Click here</u></b></font></a> for Compatibility booletin with other mods').css("width", "400px");
 		}
 
         //if (searchSip==null){
