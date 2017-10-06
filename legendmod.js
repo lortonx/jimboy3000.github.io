@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.523 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.524 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "74"; // the version 1.1-> 1.11
+var semimodVersion = "75"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1653,9 +1653,9 @@ function init(modVersion) {
 				
         // listen for server disconnect
         MC.onDisconnect = function() {
-            toastr["error"](Premadeletter10).css("width", "210px");
+          toastr["error"](Premadeletter10).css("width", "210px");
             appendSysLog("DISCONNECTED :(");
-            if (timesdisconnected < 2) {
+ /*             if (timesdisconnected < 2) {
                 MC.reconnect();
 				setTimeout(function() {
                 adres();
@@ -1664,7 +1664,8 @@ function init(modVersion) {
                 return timesdisconnected;
             } else {
                 return timesdisconnected = 0;
-            }
+            } */
+			
         };
 
         // listen for player ban
