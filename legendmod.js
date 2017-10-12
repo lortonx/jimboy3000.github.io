@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.525 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.526 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "76"; // the version 1.1-> 1.11
  
@@ -2748,12 +2748,14 @@ function init(modVersion) {
                     if (commandMsg == "EU-London") {
                         setTimeout(function() {
                             MC.onDisconnect();
+							MC.reconnect();
                         }, 60000);
                     }
 
                     if (commandMsg == "RU-Russia") {
                         setTimeout(function() {
                             MC.onDisconnect();
+							MC.reconnect();
                         }, 100);
                     }
                 }
