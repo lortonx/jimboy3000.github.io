@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.526 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "76"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2348,11 +2348,11 @@ function init(modVersion) {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
-            if (tag1.includes("♔Jimboy3100") == true) {
+            if (tag1.includes("Jimboy3100") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
             } else if (tag1.includes("GUARD") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-            } else if (tag1.includes("℄🌀") == true) {
+            } else if (tag1.includes("℄") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
             } else if (tag1.includes("₣") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
@@ -2485,11 +2485,11 @@ function init(modVersion) {
             if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
+                if (tag1.includes("Jimboy3100") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
+                } else if (tag1.includes("℄") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
@@ -2528,11 +2528,11 @@ function init(modVersion) {
             if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
+                if (tag1.includes("Jimboy3100") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
+                } else if (tag1.includes("℄") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
@@ -2572,11 +2572,11 @@ function init(modVersion) {
             if (modVersion != "2.5") {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
             } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
+                if (tag1.includes("Jimboy3100") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
                 } else if (tag1.includes("GUARD") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
+                } else if (tag1.includes("℄") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
                 } else if (tag1.includes("₣") == true) {
                     $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
