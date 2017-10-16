@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.526 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.527 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -393,13 +393,13 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		//spectate();
 				if (privateSrv!=null) {
 					if ($('#clantag').val() != ""){
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
 					}
 				}
@@ -442,13 +442,13 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		//spectate();
 				if (privateSrv!=null) {
 					if ($('#clantag').val() != ""){
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
 					}
 				}
@@ -5001,28 +5001,28 @@ function enableshortcuts() {
 
 
 function PrivateServer1(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:4000","_self");
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:5001","_self");
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:5002","_self");
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:5002","_self");
 }
 function PrivateServer5(){
 	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
 }
 function PrivateServer6(){
-	window.open("http://agar.io/?ip=game1.fzogar.xyz:4000","_self");
+	window.open("http://agar.io/?ip=sg.fzogar.xyz:4000","_self");
 }
 function PrivateServer7(){
-	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
+	window.open("http://agar.io/?ip=sg.fzogar.xyz:4001","_self");
 }
 function PrivateServer8(){
-	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
+	window.open("http://agar.io/?ip=sg.fzogar.xyz:4002","_self");
 }
 function PrivateServer9(){
 	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
