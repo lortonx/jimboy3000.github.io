@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.529 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.527 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "78"; // the version 1.1-> 1.11
  
@@ -1203,7 +1203,7 @@ function init(modVersion) {
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-                    copy("http://agar.io/#" + currentToken);
+                    copy("http://agar.io/#" + MC.getPartyToken());
                 } else if (realmode != ":party") {					
                     copy("http://agar.io/?sip=" + currentIP + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
