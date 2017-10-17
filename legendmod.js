@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.528 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.529 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "79"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -183,12 +183,12 @@ var autoCoinBtn = localStorage.getItem("autoCoinBtn");
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 var region = getParameterByName("r", url);
-var mode = getParameterByName("m", url);
+var realmode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
 var privateSrv= getParameterByName("ip", url);
-var realmode = "";
 var realmode2 = "";
+var mode=""; //just in case
 var token = "";
 var messageone = 1; //If legendmod is being used
 var hiddenfromclan = 0;
@@ -481,10 +481,10 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 });
 
 
-if (mode == "") {
-    modebetter2 = ":ffa"
+if (realmode == "") {
+    modebetter2 = ":ffa";
 } else {
-    modebetter2 = mode
+    modebetter2 = realmode;
 }
 
 /*
@@ -637,7 +637,7 @@ setTimeout(function() {
 //                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2).attr("style", "opacity: 0;");
                 //	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
                 setTimeout(function() {
-                    history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
+                    history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
                 }, 5000);
             }
         } else if (searchSip == null && privateSrv==null) {
@@ -1183,7 +1183,7 @@ function init(modVersion) {
 
         $("#copyIPBtn").click(function() {
             if (searchSip != null) {
-                copy("http://agar.io/?r=" + region + "&m=" + mode + "&search=ws://" + searchSip);
+                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=ws://" + searchSip);
             } else {
                 copy("http://agar.io/?r=" + MC.getRegion() + "&m=" + realmode + "&search=ws://" + currentIP);
             }
@@ -1191,11 +1191,11 @@ function init(modVersion) {
 
         $("#copySIPBtn").click(function() {
             if (searchSip != null) {
-                if (mode == ":party") {
+                if (realmode == ":party") {
                     copy("http://agar.io/#" + MC.getPartyToken());
-                } else if (mode != ":party") {
-					if (region!=null&&mode!=null){
-                    copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + mode);
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+                    copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + realmode);
 					}
 					else{
 					copy("http://agar.io/?sip=" + searchSip);	
@@ -1765,7 +1765,7 @@ function init(modVersion) {
                 } else {
                     if (region != null) {
                         MC.setRegion(region);
-                        MC.setGameMode(mode);
+                        MC.setGameMode(realmode);
                     } else {
                         // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);		
                         //this makes game rejoin
@@ -3228,16 +3228,16 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
 
 function findIP(searchIP) {
     setTimeout(function() {
-        if (mode == ":party") {
+        if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
-        if (mode == "") {
+        if (realmode == "") {
             $('#gamemode option[value=""]').prop('selected', 'selected').change();
         }
-        if (mode == ":teams") {
+        if (realmode == ":teams") {
             $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
         }
-        if (mode == ":experimental") {
+        if (realmode == ":experimental") {
             $('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();
         }
     }, 1500); //weird
@@ -4553,8 +4553,8 @@ function ShowSIPurl(){
 	$("#create-party-btn-2").hide();
 	setTimeout(function (){$('#quality').val()},4000);
 	setTimeout(function () {
-			if (mode!=":party"){
-			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
+			if (realmode!=":party"){
+			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);}
 			 
 }, 2500)}	
 */
