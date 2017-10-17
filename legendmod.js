@@ -392,7 +392,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		setTimeout(function () {
 		//spectate();
 				if (privateSrv!=null) {
-					if ($('#clantag').val() != ""){
+					if ($('#clantag').val() == ""){
 					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
@@ -441,7 +441,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		setTimeout(function () {
 		//spectate();
 				if (privateSrv!=null) {
-					if ($('#clantag').val() != ""){
+					if ($('#clantag').val() == ""){
 					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
