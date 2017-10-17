@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.527 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.528 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "78"; // the version 1.1-> 1.11
+var semimodVersion = "79"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3182,13 +3182,16 @@ function searchTKHandler(searchStr) {
     searchStr = searchStr.trim();
 
     if (searchStr.startsWith("http://agar.io/#")) {
+		realmode = getGameMode();
         joinToken(searchStr.replace("http://agar.io/#", ""));
     } else if (searchStr.startsWith("agar.io/#")) {
-        joinToken(searchStr.replace("agar.io/#", ""));
+        realmode = getGameMode();
+		joinToken(searchStr.replace("agar.io/#", ""));		
     } else {
         return false;
     }
-    return true;
+    return realmode, true;
+	
 }
 
 function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
