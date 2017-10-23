@@ -2200,7 +2200,7 @@ function init(modVersion) {
             }
 
             url2 = "https://talky.io/" + semiurl2;
-
+			url2 = url2.toLowerCase();
             setTimeout(function() {
                 $("#VoiceBtn").focusout();
             }, 3000);
