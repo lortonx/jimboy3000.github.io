@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.531 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.532 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "81"; // the version 1.1-> 1.11
+var semimodVersion = "82"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -186,7 +186,8 @@ var region = getParameterByName("r", url);
 var realmode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
-var privateSrv= getParameterByName("ip", url);
+var privateSrv = getParameterByName("ip", url);
+var clanpass = getParameterByName("pass", url);
 var realmode2 = "";
 var mode=""; //just in case
 var token = "";
@@ -236,7 +237,7 @@ var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
 var fbresponse={};
 var prevPrivateServer = localStorage.getItem("prevPrivateServer");
-var clanpass="";
+
 
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -391,6 +392,10 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
 		//spectate();
+				if (clanpass!=null&&clanpass!="") {		
+					$("#clantag").val(clanpass);
+					$('#clantag').css('background-color', '#ff6347');						
+				}
 				if (privateSrv!=null) {
 					if ($('#clantag').val() == ""){
 					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
@@ -440,6 +445,10 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	        $(".command-text").text(Premadeletter0);
 		setTimeout(function () {
 		//spectate();
+				if (clanpass!=null&&clanpass!="") {		
+					$("#clantag").val(clanpass);
+					$('#clantag').css('background-color', '#ff6347');						
+				}
 				if (privateSrv!=null) {
 					if ($('#clantag').val() == ""){
 					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
@@ -601,12 +610,12 @@ setTimeout(function() {
 }, 2500);
 
 setTimeout(function () {
+
 		if (privateSrv!=null) {				
 			$(".btn-spectate").click();
 			prevPrivateServer=1;
 			localStorage.setItem("prevPrivateServer", 1);
-			return prevPrivateServer=1;			
-			
+			return prevPrivateServer=1;						
         }
 		else{
 			if (prevPrivateServer=="1"){
