@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.530 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.531 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "82"; // the version 1.1-> 1.11
+var semimodVersion = "81"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -655,7 +655,7 @@ setTimeout(function() {
                     if (realmode != ":party") {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
                     }
-                    if (realmode == ":party") {
+                    else if (realmode == ":party") {
                         window.history.pushState(null, null, window.location.pathname);
                         history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());
                     }
@@ -1223,7 +1223,7 @@ function init(modVersion) {
         $("#copySIPandPass").click(function() {
             if (searchSip != null) {
                 if (realmode == ":party") {
-                    copy("http://agar.io/#" + MC.getPartyToken() + "&?pass=" + $("#clantag").val());
+                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + MC.getPartyToken());
                 } else if (realmode != ":party") {
 					if (region!=null&&realmode!=null){
                     copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode);
@@ -1234,7 +1234,7 @@ function init(modVersion) {
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-                    copy("http://agar.io/#" + MC.getPartyToken());
+                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + MC.getPartyToken());
                 } else if (realmode != ":party") {					
                     copy("http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
