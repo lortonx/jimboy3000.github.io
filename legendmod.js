@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.534 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.533 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "83"; // the version 1.1-> 1.11
  
@@ -4760,10 +4760,10 @@ function copyToClipboardAll(){
 VoiceChan();	
 $("#CopyTkPwLb").remove();
 	if ($("#top5-pos").text()!=""){
-		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>Teamboard:' +$("#top5-pos").text() +'<br>My Game Name: ' +$("#nick").val() +'<br>Voice Channel: ' +url2 +'</er>');
+		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>Teamboard:' +$("#top5-pos").text() +'<br>My Game Name: ' +$("#nick").val() +'</er>');
 	}
 	else{
-		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>My Game Name: ' +$("#nick").val()+'<br>Voice Channel: ' +url2 +'</er>');
+		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>My Game Name: ' +$("#nick").val()+'</er>');
 	}
 copyToClipboard('er#CopyTkPwLb');
 }
