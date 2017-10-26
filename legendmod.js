@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.533 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.534 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "83"; // the version 1.1-> 1.11
  
@@ -2286,6 +2286,7 @@ function init(modVersion) {
             var win = window.open(url2, '_blank');
 
         });
+		
 		
 		//blue onmouseover-onmouseout buttons
         $('#searchShortcut').mouseenter(function() {$('#searchShortcut').css('background-color', '#018cf6');})
@@ -4756,12 +4757,13 @@ function copyToClipboard(element) {
 }
 
 function copyToClipboardAll(){
+VoiceChan();	
 $("#CopyTkPwLb").remove();
 	if ($("#top5-pos").text()!=""){
-		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard()+'<br>Teamboard:' +$("#top5-pos").text() +'<br>My Game Name: ' +$("#nick").val() +'</er>');
+		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>Teamboard:' +$("#top5-pos").text() +'<br>My Game Name: ' +$("#nick").val() +'<br>Voice Channel: ' +url2 +'</er>');
 	}
 	else{
-		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard()+'</er>');
+		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>My Game Name: ' +$("#nick").val()+'<br>Voice Channel: ' +url2 +'</er>');
 	}
 copyToClipboard('er#CopyTkPwLb');
 }
@@ -5208,6 +5210,30 @@ function adres() {
 		setTimeout(function(){MC.setQuality($('#quality').val());}, 11000);
 }		
 
+        function VoiceChan() {
+            if (searchSip == null) {
+                if (ogario.gameMode == ":party") {
+                    semiurl2 = MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
+                } else {
+                    var currentIP2 = currentIP.replace(".", "");
+                    currentIP2 = currentIP2.replace(".", "");
+                    currentIP2 = currentIP2.replace(".", "");
+                    currentIP2 = currentIP2.replace(":", "");
+                    semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + currentIP;
+                }
+            } else if (searchSip != null) {
+                var currentIP2 = searchSip.replace(".", "");
+                currentIP2 = currentIP2.replace(".", "");
+                currentIP2 = currentIP2.replace(".", "");
+                currentIP2 = currentIP2.replace(":", "");
+                semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + searchSip;
+            }
+
+            url2 = "https://talky.io/" + semiurl2;
+			url2 = url2.toLowerCase();
+			return url2;
+        }
+		
 function joinpartyfromconnect() {
     MC.joinParty($("#server").val());
 //    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
