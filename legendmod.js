@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.535 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.533 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "84"; // the version 1.1-> 1.11
+var semimodVersion = "83"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3354,7 +3354,7 @@ function findIP(searchIP) {
                 changeServer();
                 timerId = setInterval(function() {
 //                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
-					if (MC.onConnect() == false || numAttempts == maxAttempts) {
+					if (MC.isInGame() == true || numAttempts == maxAttempts) {
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         numTries++;
@@ -3448,7 +3448,9 @@ function searchPlayer(searchString) {
 
                 timerId = setInterval(function() {
 
-                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+                //    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+					if (MC.isInGame() == true || numAttempts == maxAttempts) {	
+						
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         leaderboard = $(ogario.leaderboardHTML).text();
