@@ -339,8 +339,19 @@ $(".agario-panel.sounds-panel>div>span").eq(0).text(Languageletter287);
 $(".agario-panel.sounds-panel>div>span").eq(1).text(Languageletter288);
 
 $("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
-$("#copySIPBtn").mouseenter(function () {$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter290);$("#dropDown").show(100);});
-$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter291);});
+
+        $("#copySIPBtn").mouseenter(function() {
+            $("#dropDown3").hide();
+            $("#copySIPBtn").text(Languageletter290);
+			if ($("#clantag").val()!=""){
+				$("#dropDown2").show(100);
+			}
+            else {
+				$("#dropDown").show(100);
+				}
+        });
+
+$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#dropDown2").hide();$("#copySIPBtn").text(Languageletter291);});
 $("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
 $("#searchShortcut").attr('data-original-title', Languageletter292);
 $("#reconnectBtn").attr('data-original-title', Languageletter293);
