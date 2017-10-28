@@ -3405,7 +3405,7 @@ function searchPlayer(searchString) {
             searching = true;
             //var interval = 2500;
             var interval = 1800;
-            var maxTries = 30;
+            var maxTries = 5
             var numTries = 0;
             var minNamesFound = 3;
             var numAttempts = 0;
