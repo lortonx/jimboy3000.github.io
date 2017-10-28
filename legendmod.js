@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.533 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.534 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "83"; // the version 1.1-> 1.11
  
@@ -3333,7 +3333,7 @@ function findIP(searchIP) {
             showCancelSearch();
             searching = true;
             var interval = 1800;
-            var maxTries = 30;
+            var maxTries = 5;
             var numTries = 0;
             var numAttempts = 0;
             var maxAttempts = 2;
@@ -3353,7 +3353,8 @@ function findIP(searchIP) {
             } else {
                 changeServer();
                 timerId = setInterval(function() {
-                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+//                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+					if (MC.onConnect() == false || numAttempts == maxAttempts) {
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         numTries++;
