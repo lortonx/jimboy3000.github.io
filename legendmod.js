@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.533 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.534 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "83"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3333,7 +3333,7 @@ function findIP(searchIP) {
             showCancelSearch();
             searching = true;
             var interval = 1800;
-            var maxTries = 5;
+            var maxTries = 4;
             var numTries = 0;
             var numAttempts = 0;
             var maxAttempts = 2;
@@ -3405,7 +3405,7 @@ function searchPlayer(searchString) {
             searching = true;
             //var interval = 2500;
             var interval = 1800;
-            var maxTries = 5
+            var maxTries = 4;
             var numTries = 0;
             var minNamesFound = 3;
             var numAttempts = 0;
