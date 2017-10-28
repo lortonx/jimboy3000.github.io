@@ -2,12 +2,12 @@
 //Legend Mod By Jimboy3100
 
 
-$(".icon-home").attr('data-original-title',Languageletter0);
-$(".icon-user").attr('data-original-title',Languageletter1);
-$(".icon-cog").attr('data-original-title',Languageletter2);
-$(".icon-droplet").attr('data-original-title',Languageletter3);
-$(".hotkeys-link.icon-keyboard").attr('data-original-title',Languageletter4);
-$(".icon-music").attr('data-original-title',Languageletter5);
+$(".ogicon-home").attr('data-original-title',Languageletter0);
+$(".ogicon-user").attr('data-original-title',Languageletter1);
+$(".ogicon-cog").attr('data-original-title',Languageletter2);
+$(".ogicon-droplet").attr('data-original-title',Languageletter3);
+$(".hotkeys-link.ogicon-keyboard").attr('data-original-title',Languageletter4);
+$(".ogicon-music").attr('data-original-title',Languageletter5);
 $(".legend-tab").attr('data-original-title',Languageletter6);
 
 $("#clantag").attr('placeholder',Languageletter7a).attr('data-original-title',Languageletter7);
@@ -24,12 +24,12 @@ $(".btn.btn-primary.btn-login.btn-fb").children().last().text(Languageletter17);
 $(".btn.btn-primary.btn-login.btn-gplus").children().last().text(Languageletter18);
 $(".btn.btn-play.btn-primary.btn-needs-server").text(Languageletter19);
 
-$(".quick-shop.icon-cart").attr('data-original-title',Languageletter20);
-$(".quick-free-coins.icon-coin-dollar").attr('data-original-title',Languageletter21);
-$(".quick-free-gifts.icon-gift").attr('data-original-title',Languageletter22);
-$(".quick-quests.icon-trophy").attr('data-original-title',Languageletter23);
-$(".quick-more-skins.icon-grin").attr('data-original-title',Languageletter24);
-$(".fa.fa-thumbs-o-up").attr('data-original-title',Languageletter25);
+$(".quick-shop.ogicon-cart").attr('data-original-title',Languageletter20);
+$(".quick-free-coins.ogicon-coin-dollar").attr('data-original-title',Languageletter21);
+$(".quick-free-gifts.ogicon-gift").attr('data-original-title',Languageletter22);
+$(".quick-quests.ogicon-trophy").attr('data-original-title',Languageletter23);
+$(".quick-more-skins.ogicon-grin").attr('data-original-title',Languageletter24);
+$(".quick-yt.ogicon-youtube2").attr('data-original-title',Languageletter25);
 
 $("#more-skins").text(Languageletter26);
 
@@ -158,12 +158,12 @@ $("#exp-imp-settings>LABEL").replace('Theme', Languageletter126);
 $("#export-settings-btn").text(Languageletter127);
 $("#import-settings-btn").text(Languageletter128);
 
-$("#theme>ul>li>.icon-paint-format").attr('data-original-title', Languageletter129);
-$("#theme>ul>li>.icon-menu").attr('data-original-title', Languageletter130);
-$("#theme>ul>li>.icon-display").attr('data-original-title', Languageletter131);
-$("#theme>ul>li>.icon-bubbles").attr('data-original-title', Languageletter132);
-$("#theme>ul>li>.icon-location2").attr('data-original-title', Languageletter133);
-$("#theme>ul>li>.icon-compass").attr('data-original-title', Languageletter134);
+$("#theme>ul>li>.ogicon-paint-format").attr('data-original-title', Languageletter129);
+$("#theme>ul>li>.ogicon-menu").attr('data-original-title', Languageletter130);
+$("#theme>ul>li>.ogicon-display").attr('data-original-title', Languageletter131);
+$("#theme>ul>li>.ogicon-bubbles").attr('data-original-title', Languageletter132);
+$("#theme>ul>li>.ogicon-location2").attr('data-original-title', Languageletter133);
+$("#theme>ul>li>.ogicon-compass").attr('data-original-title', Languageletter134);
 
 $(".preset-box>span").text(Languageletter135);
 
@@ -295,7 +295,7 @@ $("#hotkeys-cfg>div>div:nth-child(1)").eq(16).text(Languageletter249);
 $("#hotkeys-cfg>div>div:nth-child(1)").eq(17).text(Languageletter250);
 $("#hotkeys-cfg>div>div:nth-child(1)").eq(18).text(Languageletter251);
 $("#hotkeys-cfg>div>div:nth-child(1)").eq(19).text(Languageletter252);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(10).text(Languageletter253);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(20).text(Languageletter253);
 $("#hotkeys-cfg>div>div:nth-child(1)").eq(21).text(Languageletter254);
 $("#hotkeys-cfg>div>div:nth-child(1)").eq(22).text(Languageletter255);
 $("#hotkeys-cfg>div>div:nth-child(1)").eq(23).text(Languageletter256);
@@ -339,7 +339,7 @@ $(".agario-panel.sounds-panel>div>span").eq(0).text(Languageletter287);
 $(".agario-panel.sounds-panel>div>span").eq(1).text(Languageletter288);
 
 $("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
-
+$("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
         $("#copySIPBtn").mouseenter(function() {
             $("#dropDown3").hide();
             $("#copySIPBtn").text(Languageletter290);
@@ -350,9 +350,10 @@ $("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languagelett
 				$("#dropDown").show(100);
 				}
         });
-
-$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#dropDown2").hide();$("#copySIPBtn").text(Languageletter291);});
+$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter291);});
 $("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
+$("#copySIPandPass").text(Languageletter290b).attr('data-original-title', Languageletter291b);
+$("#copySIPPassLB").text(Languageletter290c).attr('data-original-title', Languageletter291c);
 $("#searchShortcut").attr('data-original-title', Languageletter292);
 $("#reconnectBtn").attr('data-original-title', Languageletter293);
 $("#logTitle").attr("data-original-title", Languageletter294);
