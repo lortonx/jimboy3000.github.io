@@ -30,6 +30,8 @@ $(".quick-free-gifts.ogicon-gift").attr('data-original-title',Languageletter22);
 $(".quick-quests.ogicon-trophy").attr('data-original-title',Languageletter23);
 $(".quick-more-skins.ogicon-grin").attr('data-original-title',Languageletter24);
 $(".quick-yt.ogicon-youtube2").attr('data-original-title',Languageletter25);
+$("#LegGoogleForm").attr('data-original-title',Languageletter25a);
+$("#ModInfoQuick").attr('data-original-title',Languageletter25b);
 
 $("#more-skins").text(Languageletter26);
 
