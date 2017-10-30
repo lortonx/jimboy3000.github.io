@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.535 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.536 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "85"; // the version 1.1-> 1.11
+var semimodVersion = "86"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -373,6 +373,19 @@ if (languagemod == 6) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 7) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
     $("body").append(s);
     setTimeout(function() {
         $('#legendlanguages').val("6");
@@ -1020,6 +1033,7 @@ function init(modVersion) {
             '<option value="5" data-itr="">French - Français</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
             '<option value="3" data-itr="">Spanish - Español</option>' +
+			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
 
             //		
             //		'<option value="5" data-itr="">Icon 5</option>' +
@@ -5348,6 +5362,20 @@ function changeModLanguage() {
 
         }, 800);
     }
+    if ($("#legendlanguages").val() == 7) {
+        localStorage.setItem("languagemod", 7);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
 }
 
 function opendyinglight() {
