@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.536 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.537 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "86"; // the version 1.1-> 1.11
+var semimodVersion = "87"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -31,11 +31,11 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
 		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
 		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>');
+		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
 //		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
 //		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
 //		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-//		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
 //		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
 //		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
 		
@@ -417,7 +417,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
 					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
 					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else if(privateSrv.includes("in.fzogar.xyz:443")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
 					}
 				}
@@ -5149,7 +5149,7 @@ function PrivateServer6(){
 	window.open("http://agar.io/?ip=sg.fzogar.xyz:4000","_self");
 }
 function PrivateServer7(){
-	window.open("http://agar.io/?ip=sg.fzogar.xyz:4001","_self");
+	window.open("http://agar.io/?ip=in.fzogar.xyz:443","_self");
 }
 function PrivateServer8(){
 	window.open("http://agar.io/?ip=sg.fzogar.xyz:4002","_self");
