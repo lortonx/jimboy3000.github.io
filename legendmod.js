@@ -1442,13 +1442,9 @@ function init(modVersion) {
             marginBottom: "-5px"
         });
         $("#openShopBtn").css({
-            marginTop: "-10px",
-			width: "50%"
-        });
-		$("#openShopBtn").after('<button id="SpecialDealsBtn" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style="line-height: 24px; width: 50%; margin-top: -10px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');
-        $("#openShopBtn").css({
             marginTop: "-15px"
         });
+		$("#openShopBtn").after('<button id="SpecialDealsBtn" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style="line-height: 24px; width: 50%; margin-top: -15px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');		
         $("#gifting").css({
             marginTop: "25px"
         });
