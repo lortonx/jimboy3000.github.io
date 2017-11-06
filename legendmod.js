@@ -6862,9 +6862,9 @@ function animatedskins(){
 
 
 function SpecialDeals(){
-if (window.ironrv_userId!=null){
 toastr["info"]("Beta Version. Free for 1 week<br>Works only for Legend mod v2.4 (not 2.5)").css("width", "320px");
-toastr["info"]("Needs More fixes, purchases work").css("width", "320px");
+if (window.ironrv_userId!=null){
+toastr["info"]("Needs More fixes, purchases work").css("width", "320px");	
 $('#helloContainer').after('<div class="modal fade in" id="specialShopModal" aria-hidden="false" style="display: block;">' +
     '<div class="modal-backdrop fade in"></div>' +
     '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 500px;">' +
