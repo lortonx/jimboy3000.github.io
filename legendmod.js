@@ -1443,10 +1443,11 @@ function init(modVersion) {
         });
         $("#openShopBtn").css({
             marginTop: "-15px",
-			width: "50%"
+			width: "49.5%",
+			marginRight: "0.5%"
         });
-		$("#openShopBtn").after('<button id="SpecialDealsBtn" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style="line-height: 24px; width: 50%; margin-top: -15px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');		
-        $("#gifting").css({
+		$("#openShopBtn").after('<button id="SpecialDealsBtn" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style="line-height: 24px; width: 49.5%; margin-top: -15px; margin-left: 0.5%;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');		
+		$("#gifting").css({
             marginTop: "25px"
         });
         $("#dailyQuests").css({
