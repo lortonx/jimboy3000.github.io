@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.538 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.539 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "88"; // the version 1.1-> 1.11
+var semimodVersion = "89"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -6864,7 +6864,6 @@ function animatedskins(){
 
 
 function SpecialDeals(){
-toastr["error"]("<font color='blue'><b><b>Purchases available only for Legend Mod v2.4</b></font>").css("width", "300px");
 if (window.ironrv_userId!=null){
 toastr["info"]("Beta <b>V. 0.2</b>. Free for 1 week<BR>Enjoy Purchasing deals for you or friends").css("width", "300px");
 
