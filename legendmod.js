@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.540 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "89"; // the version 1.1-> 1.11
+var semimodVersion = "90"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -6866,8 +6866,6 @@ function animatedskins(){
 
 function SpecialDeals(){
 if (window.ironrv_userId!=null){
-toastr["info"]("Beta <b>V. 0.2</b>. Free for 1 week<BR>Enjoy purchasing deals for you or friends").css("width", "300px");
-
 $('#helloContainer').after('<div class="modal fade in" id="specialShopModal" aria-hidden="false" style="display: block;">' +
     '<div class="modal-backdrop fade in"></div>' +
     '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 500px;">' +
@@ -6895,7 +6893,10 @@ $("#CloseSpecialDeals").click(function() {
 MC.setQuality($('#quality').val());
 $("#specialShopModal").remove(); });
 $(".xpmt-buy-content").click(function() { 
-buydeals();
+        var ProLicenceUsersTableJS = document.createElement("script");
+        ProLicenceUsersTableJS.type = "text/javascript";
+        ProLicenceUsersTableJS.src = "https://jimboy3100.github.io/AjaxData/ProLicenceUsersTableJS.js";
+        $("body").append(ProLicenceUsersTableJS);
  });
 $('#agario_uid_input').blur(function() {
 if(letterCount($('#agario_uid_input').val(), '-', true)==4){
