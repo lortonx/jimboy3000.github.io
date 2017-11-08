@@ -1,3 +1,4 @@
+
 ProLicenceUsersTable = {};
 ProLicenceUsersTable = {
     "ProLicenceUsers": {
@@ -5,9 +6,17 @@ ProLicenceUsersTable = {
             "reason": "LMauthor",
             "notes": "Jimboy3100"
         },
-        "1ad344c0-40c4-4ffe-b1b0-142f6918d437": {
-            "reason": "LMauthor",
-            "notes": ""
+        "da4499e5-17a7-4159-8ca5-e80e4d87065f": {
+            "reason": "Aus Taipan",
+            "notes": "Greek australian girl"
+        },
+		"7bea1cb9-7e14-4e14-824c-c2682036b0a6": {
+            "reason": "℄🌀βurNouT",
+            "notes": "℄🌀"
+        },
+		"da4499e5-17a7-4159-8ca5-e80e4d87065f": {
+            "reason": "Aus Taipan",
+            "notes": "Greek australian girl"
         }
     },
     "versionsInfo": ["v-0.3", "LM-v2.5"]
