@@ -19,5 +19,5 @@ buydeals();
 }
 else{
 console.log("Non Authorised User");
-toastr["info"]("This Function is enabled to those who donated 6$ to author, contact Skype Id: Jimboy3100 and refer you <font color='red'><b>UID</b></font color='red'>", "", { timeOut: 4000, extendedTimeOut: 2000 }).css("width", "300px");
+toastr["info"]("This Function is enabled to those who donated 6$ to author, contact Skype Id: Jimboy3100 and refer your <font color='red'><b>UID</b></font color='red'>", "", { timeOut: 10000, extendedTimeOut: 10000 }).css("width", "300px");
 }
