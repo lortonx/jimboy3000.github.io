@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.539 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.540 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "89"; // the version 1.1-> 1.11
  
@@ -5388,7 +5388,7 @@ function opendyinglight() {
 function getaccesstoken() {
     $.ajax({
         type: "GET",
-        url: "https://jimboy3100.github.io/v3/accesstoken.html",
+        url: "https://jimboy3100.github.io/AjaxData/accesstoken.html",
         datatype: "json",
         success: function(info) {
 		  accesstomod =  info[17];
