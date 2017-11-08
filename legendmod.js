@@ -1,6 +1,7 @@
 /*************
  * LEGEND mod v2.540 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
+
 var semimodVersion = "90"; // the version 1.1-> 1.11
  
 loadersetings();
