@@ -13,9 +13,9 @@ ProLicenceUsersTable = {
             "reason": "℄🌀βurNouT",
             "notes": "℄🌀"
         },
-        "da4499e5-17a7-4159-8ca5-e80e4d87065f": {
-            "reason": "Aus Taipan",
-            "notes": "Greek australian girl"
+        "960e1b2a-58b2-42ca-aa74-2645da3c6ccb": {
+            "reason": "✵ΕΛ✵Gio",
+            "notes": "✵ΕΛ✵"
         }
     },
     "versionsInfo": ["v-0.3", "LM-v2.5"]
