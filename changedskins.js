@@ -1,5 +1,33 @@
 //v1.6
+//1. Lc celebration
+var checkonetimeLc = localStorage.getItem("checkonetimeLc");
+if (checkonetimeLc == null) {
+    if ($("#nick").val().includes("℄")) {
+        var checkdate;
+        Date.prototype.yyyymmdd = function() {
+            var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+            return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
 
+        var date = new Date();
+        checkdate = date.yyyymmdd();
+        if (checkdate == "2017/11/12") {
+            LcCelebration();
+        }
+    }
+}
+
+function LcCelebration() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/extras/LcHistory/LcHistoryBanner.js";
+    $("body").append(s);
+    checkonetimeLc = 1;
+    localStorage.setItem("checkonetimeLc", checkonetimeLc);
+    return checkonetimeLc;
+}
 
 //2. Administration Tools
 
