@@ -6879,7 +6879,7 @@ function SpecialDeals() {
             '<div class="modal-body"><input type="email" class="form-control" id="agario_uid_input" placeholder="*UID (do not enter anything here unless you know what it is)" style="width: 85%; display: inline-block">' +
             '<div class="custom-checkbox" style="display: inline-block; margin-left: 10px; vertical-align: sub;"><input id="checkBoxLockUID" type="checkbox" disabled="disabled" style="width: 20px; height: 20px"><label for="cb1"></label></div>' +
             '<div class="bs-callout bs-callout-buy bs-callout-clickable" id="buy_starterpack">' +
-            '<h4 class="pull-left">Daily Deal</h4>' +
+            '<h4 class="pull-left">Daily Deal (click on the orange icon to buy)</h4>' +
             '<h4 id="dealcost" class="text-right">9.99 $</h4>' +
             '<div class="xpmt-buy-content" style="font-size: 13px; margin-top: -30px; float: left;font-weight: 700; background-color: rgba(0, 0, 0, 0.2); background-image: url(https://jimboy3100.github.io/banners/icondeal2.png);padding: 3px; align: middle; border-radius: 4px;width: 100%;height: 150px;z-index: 15;margin: auto;">' +
             '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>7000 C</b></span></div>' +
