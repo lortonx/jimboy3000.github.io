@@ -1,8 +1,7 @@
 /*************
- * LEGEND mod v2.540 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.541 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-
-var semimodVersion = "90"; // the version 1.1-> 1.11
+var semimodVersion = "91"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -115,7 +114,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=Iu8sWFVQmkM";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=L7klPYKTx64";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -3283,16 +3282,17 @@ function searchHandler(searchStr) {
 function searchTKHandler(searchStr) {
     searchStr = searchStr.trim();
 
-    if (searchStr.startsWith("http://agar.io/#")) {
-		realmode = getGameMode();
+    if (searchStr.startsWith("http://agar.io/#")) {		
         joinToken(searchStr.replace("http://agar.io/#", ""));
+		return realmode = getGameMode();
     } else if (searchStr.startsWith("agar.io/#")) {
         realmode = getGameMode();
-		joinToken(searchStr.replace("agar.io/#", ""));		
+		joinToken(searchStr.replace("agar.io/#", ""));	
+		return realmode = getGameMode();		
     } else {
         return false;
     }
-    return realmode, true;
+    return true;
 	
 }
 
