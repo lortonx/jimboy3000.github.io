@@ -3284,11 +3284,12 @@ function searchTKHandler(searchStr) {
 
     if (searchStr.startsWith("http://agar.io/#")) {		
         joinToken(searchStr.replace("http://agar.io/#", ""));
-		return realmode = getGameMode();
+		realmode = getGameMode();
+		return realmode, true;
     } else if (searchStr.startsWith("agar.io/#")) {
-        realmode = getGameMode();
 		joinToken(searchStr.replace("agar.io/#", ""));	
-		return realmode = getGameMode();		
+		realmode = getGameMode();
+		return realmode, true;	
     } else {
         return false;
     }
