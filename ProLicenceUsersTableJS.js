@@ -16,8 +16,11 @@ ProLicenceUsersTable = {
         "960e1b2a-58b2-42ca-aa74-2645da3c6ccb": {
             "reason": "✵ΕΛ✵Gio",
             "notes": "✵ΕΛ✵"
-        }
+        },
+        "797c0547-40b3-4d8c-86ac-2b1082156bd6": {
+            "reason": "BadSfah",
+            "notes": ""
+        }		
     },
     "versionsInfo": ["v-0.3", "LM-v2.5"]
 };
-
