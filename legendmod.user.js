@@ -17,7 +17,7 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_deleteValue
-// @grant 	 GM_registerMenuCommand
+// @grant        GM_registerMenuCommand
 // @connect      jimboy3000.github.io
 // ==/UserScript==
 // Legend Mod by Jimboy3100
