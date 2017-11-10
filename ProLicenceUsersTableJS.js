@@ -21,24 +21,3 @@ ProLicenceUsersTable = {
     "versionsInfo": ["v-0.3", "LM-v2.5"]
 };
 
-
-
-
-if (ProLicenceUsersTable.ProLicenceUsers[window.ironrv_userId] != undefined) {
-    console.log("Authorised User");
-    buydeals();
-} else {
-    console.log("Non Authorised User");
-    var containsnickname = $("#nick").val();
-    if (~containsnickname.indexOf("℄") || ~containsnickname.indexOf("ΕΛ")) {
-        toastr["info"]("If you are Lc or EA player, contact Skype Id: Jimboy3100 and refer your <font color='red'><b>UID</b></font color='red'>", "", {
-            timeOut: 10000,
-            extendedTimeOut: 10000
-        }).css("width", "300px");
-    } else {
-        toastr["info"]("This Function is enabled to those who donated 6$ to author, contact Skype Id: Jimboy3100 and refer your <font color='red'><b>UID</b></font color='red'>", "", {
-            timeOut: 10000,
-            extendedTimeOut: 10000
-        }).css("width", "300px");
-    }
-}
