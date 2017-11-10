@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.543 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.541 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "91"; // the version 1.1-> 1.11
  
@@ -6919,7 +6919,7 @@ function SpecialDeals() {
         $('#agario_uid_input').blur(function() {
             if (letterCount($('#agario_uid_input').val(), '-', true) == 4) {
                 document.getElementById("checkBoxLockUID").checked = true;
-                toastr["info"]("If friend's UID is wrong, purchase will fail (Error 1205)").css("width", "250px");
+                toastr["info"]("If friend's UID is wrong, purchase will fail").css("width", "250px");
                 $("#exp-uid").text($('#agario_uid_input').val());
             } else {
                 document.getElementById("checkBoxLockUID").checked = false;
