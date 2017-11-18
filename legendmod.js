@@ -1442,6 +1442,12 @@ function init(modVersion) {
         $("#freeCoins").css({
             marginBottom: "-5px"
         });
+        $("#gifting").css({
+            marginTop: "10px"
+        });	
+        $("#dailyquests-panel").css({
+            marginTop: "-20px"
+        });				
         $("#openShopBtn").css({
             marginTop: "-15px",
 			width: "49.5%",
