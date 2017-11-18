@@ -1459,7 +1459,7 @@ function init(modVersion) {
 			marginTop: "5px",
         });
         $("#potions").css({
-			marginTop: "5px",
+			marginTop: "0px",
         });		
 		$("#quests-blocker").hide();
 		
