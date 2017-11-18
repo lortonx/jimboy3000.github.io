@@ -2510,14 +2510,17 @@ function init(modVersion) {
 //		}
 	}
 				//important announcement
-/*    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+   			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
-				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
-				'Need some days to establish <font color="red">communication</font> sockets.'+
+				'<br><font style="color:#018cf6; font-size:16px; text-align:center">LM needs more updates</font><font color="yellow"> (1-5) days</font><font color="black">'+
+				'<br>If you are able to play, <font color="red">DO NOT </font>CHANGE ANY SETTINGS'+
+				'<br>If not, go to Setting (4th)tab-><font color="red"> SKINS</font>'+
+				'<br>No Skins-> <font color="red">OFF</font>'+
+				'<br>Custom Skins-> <font color="red">ON</font>'+
+				'<br>Vanilla Skins-> <font color="red">ON</font>'+
 				'<br><font color="#018cf6">Stay informed</font>.'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
-*/				
+				
         $("#infoicon").mouseover(function() {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
