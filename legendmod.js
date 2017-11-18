@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.541 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.542 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "91"; // the version 1.1-> 1.11
+var semimodVersion = "92"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -6897,7 +6897,9 @@ function SpecialDeals() {
             $("#specialShopModal").remove();
         });
         $(".xpmt-buy-content").click(function() {
-            if (ProLicenceUsersTable.ProLicenceUsers[window.ironrv_userId] != undefined) {
+			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">Special Deals v0.3<br>Agario may or may not give you the Skin, but only the coins<br><font color="red">Use at you OWN RISK</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
+			$(".btn.btn-sm.btn-primary.btn-play.btn-do-DyingLight").click(function () { buydeals(); });	
+ /*           if (ProLicenceUsersTable.ProLicenceUsers[window.ironrv_userId] != undefined) {
                 console.log("Authorised User");
                 buydeals();
             } else {
@@ -6914,7 +6916,7 @@ function SpecialDeals() {
                         extendedTimeOut: 10000
                     }).css("width", "300px");
                 }
-            }
+            } */
         });
         $('#agario_uid_input').blur(function() {
             if (letterCount($('#agario_uid_input').val(), '-', true) == 4) {
