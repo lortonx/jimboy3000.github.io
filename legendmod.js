@@ -7144,7 +7144,7 @@ setTimeout(function() {
 						}
 						else{
 						console.log("description is not a String");
-			
+						$("#dealtype").text("Unknown");
 						}	
 					}
 				}
