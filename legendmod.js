@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.542 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.543 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "92"; // the version 1.1-> 1.11
+var semimodVersion = "93"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -6902,8 +6902,8 @@ function SpecialDeals() {
             '<h4 id="dealtype" class="pull-left">Daily Deal</h4><h4 class="pull-left"> (click on the orange icon to buy)</h4>' +
             '<h4 id="dealcost" class="text-right">9.99 $</h4>' +
             '<div class="xpmt-buy-content" style="font-size: 13px; margin-top: -30px; float: left;font-weight: 700; background-color: rgba(0, 0, 0, 0.2); background-image: url(https://jimboy3100.github.io/banners/icondeal2.png);padding: 3px; align: middle; border-radius: 4px;width: 100%;height: 150px;z-index: 15;margin: auto;">' +
-            '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>7000 C</b></span></div>' +
-            '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/Evil.png); background-size: cover; border-color: #7c0001"></div>' +
+            '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>125000 C</b></span></div>' +
+            '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(""); background-size: cover; border-color: #7c0001"></div>' +
             '</div>' +
             '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> For some payment methods</color>' +
             '<p class="alert-warning text-center">To make purchases, you must be logged in to your account…<br><span class="alert-success" id="exp-uid">' + window.ironrv_userId + '</span> <font color="red" onclick=copy(window.ironrv_userId);><b><u>COPY UID</u></b></font><br>*UID is used to buy offers for your friends</p>' +
@@ -6917,7 +6917,7 @@ setTimeout(function() { populateSD();}, 1500);
             $("#specialShopModal").remove();
         });
         $(".xpmt-buy-content").click(function() {
-			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">Special Deals v0.3<br>Agario may or may not give you the Skin, but only the coins<br><font color="red">Use at you OWN RISK</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
+			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">Special Deals v0.4<br>Agario may or may not give you the Skin, but only the coins<br><font color="red">Use at you OWN RISK</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-DyingLight").click(function () { buydeals(); });	
  /*           if (ProLicenceUsersTable.ProLicenceUsers[window.ironrv_userId] != undefined) {
                 console.log("Authorised User");
