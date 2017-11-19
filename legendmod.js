@@ -1435,7 +1435,7 @@ function init(modVersion) {
         // LEGEND footer
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
         $("#menu-footer").text("");
-
+		$(".agario-profile-name").css('vertical-align', '');
         $(".TimesUsedPanel").css({
             marginTop: "-10px"
         });
@@ -6878,6 +6878,16 @@ function animatedskins(){
 
 
 function SpecialDeals() {
+	GameConfiguration={};
+		$.ajax({
+        type: "GET",
+        url: "https://configs-web.agario.miniclippt.com/live/v9/1025/GameConfiguration.json",
+        datatype: "json",
+        success: function(info) {
+        return GameConfiguration=info;
+			}
+		});
+		
     if (window.ironrv_userId != null) {
         $('#helloContainer').after('<div class="modal fade in" id="specialShopModal" aria-hidden="false" style="display: block;">' +
             '<div class="modal-backdrop fade in"></div>' +
@@ -6889,19 +6899,19 @@ function SpecialDeals() {
             '<div class="modal-body"><input type="email" class="form-control" id="agario_uid_input" placeholder="*UID (do not enter anything here unless you know what it is)" style="width: 85%; display: inline-block">' +
             '<div class="custom-checkbox" style="display: inline-block; margin-left: 10px; vertical-align: sub;"><input id="checkBoxLockUID" type="checkbox" disabled="disabled" style="width: 20px; height: 20px"><label for="cb1"></label></div>' +
             '<div class="bs-callout bs-callout-buy bs-callout-clickable" id="buy_starterpack">' +
-            '<h4 class="pull-left">Daily Deal (click on the orange icon to buy)</h4>' +
+            '<h4 id="dealtype" class="pull-left">Daily Deal</h4><h4 class="pull-left"> (click on the orange icon to buy)</h4>' +
             '<h4 id="dealcost" class="text-right">9.99 $</h4>' +
             '<div class="xpmt-buy-content" style="font-size: 13px; margin-top: -30px; float: left;font-weight: 700; background-color: rgba(0, 0, 0, 0.2); background-image: url(https://jimboy3100.github.io/banners/icondeal2.png);padding: 3px; align: middle; border-radius: 4px;width: 100%;height: 150px;z-index: 15;margin: auto;">' +
             '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>7000 C</b></span></div>' +
             '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/Evil.png); background-size: cover; border-color: #7c0001"></div>' +
             '</div>' +
-            '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"><option value="com.miniclip.agar.io.dailydeal1">7000_coins + 1_skin_evil = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal2">32000_coins + 1_skin_evil = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal3">32000_coins + 1_skin_candy = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal4">14000_coins + 1_skin_starball = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal5">7000_coins + 1_skin_luchador = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal6">32000_coins + 1_skin_luchador = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal7">32000_coins + 1_skin_blueberry = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal8">14000_coins + 1_skin_neptune = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal9">7000_coins + 1_skin_nuclear = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal10">32000_coins + 1_skin_nuclear = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal11">14000_coins + 1_skin_wolf = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal12">6500_coins + 1_skin_cookie = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal13">3250_coins + 1_skin_grey = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal14">14000_coins + 1_skin_grey = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal15">6500_coins + 1_skin_hotdog = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal16">2500_coins + 1_skin_apple = 1.99 $</option><option value="com.miniclip.agar.io.dailydeal17">3250_coins + 1_skin_meteor = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal18">14000_coins + 1_skin_meteor = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal19">6500_coins + 1_skin_breakfast = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal20">2500_coins + 1_skin_banana = 1.99 $</option><option value="com.miniclip.agar.io.dailydeal21">7000_coins + 1_skin_jarbrain = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal22">32000_coins + 1_skin_jarbrain = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal23">32000_coins + 1_skin_bowling = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal24">14000_coins + 1_skin_uranus = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal25">7000_coins + 1_skin_space_dog = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal26">32000_coins + 1_skin_space_dog = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal27">32000_coins + 1_skin_pig = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal28">14000_coins + 1_skin_good = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal29">7000_coins + 1_skin_virus = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal30">32000_coins + 1_skin_virus = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal31">14000_coins + 1_skin_mouse = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal32">6500_coins + 1_skin_shuttle = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal33">3250_coins + 1_skin_octopus = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal34">14000_coins + 1_skin_octopus = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal35">6500_coins + 1_skin_pluto = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal36">2500_coins + 1_skin_ufo = 1.99 $</option><option value="com.miniclip.agar.io.dailydeal37">3250_coins + 1_skin_dog = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal38">14000_coins + 1_skin_dog = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal39">6500_coins + 1_skin_galaxy = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal40">2500_coins + 1_skin_mercury = 1.99 $</option><option value="com.miniclip.agar.io.dailydeal41">7000_coins + 1_skin_zombie = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal42">32000_coins + 1_skin_zombie = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal43">32000_coins + 1_skin_bomb = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal44">14000_coins + 1_skin_blackhole = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal45">7000_coins + 1_skin_toxic = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal46">32000_coins + 1_skin_toxic = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal47">32000_coins + 1_skin_goldfish = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal48">14000_coins + 1_skin_jupiter = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal49">7000_coins + 1_skin_eye = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal50">32000_coins + 1_skin_eye = 19.99 $</option><option value="com.miniclip.agar.io.dailydeal51">14000_coins + 1_skin_heart = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal52">6500_coins + 1_skin_tigerpattern = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal53">3250_coins + 1_skin_toon = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal54">14000_coins + 1_skin_toon = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal55">6500_coins + 1_skin_saturn = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal56">2500_coins + 1_skin_birdie = 1.99 $</option><option value="com.miniclip.agar.io.dailydeal57">3250_coins + 1_skin_astronaut = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal58">14000_coins + 1_skin_astronaut = 9.99 $</option><option value="com.miniclip.agar.io.dailydeal59">6500_coins + 1_skin_target = 4.99 $</option><option value="com.miniclip.agar.io.dailydeal60">2500_coins + 1_skin_venus = 1.99 $</option><option value="com.miniclip.agar.io.starterpack">7000_coins + 1_skin_rocket + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.starterpack2">7000_coins + 1_skin_starball + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.starterpack3">7000_coins + 1_skin_pig + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.starterpack4">7000_coins + 1_skin_blueberry + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.starterpack5">7000_coins + 1_skin_panda + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.starterpack6">7000_coins + 1_skin_tomatoface + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.starterpack7">7000_coins + 1_skin_meteor + 1_mass_boost_2x_1h = 1.99 $</option><option value="com.miniclip.agar.io.boosterpromo1">7000_coins + 1_mass_boost_3x_24h = 4.99 $</option><option value="com.miniclip.agar.io.boosterpromo2">16000_coins + 1_mass_boost_3x_24h + 1_xp_boost_3x_24h = 9.99 $</option><option value="com.miniclip.agar.io.boosterpromo3">50000_coins + 1_mass_boost_3x_24h + 1_xp_boost_3x_24h + 1_skin_husky = 19.99 $</option><option value="com.miniclip.agar.io.potionpromo1">3250_coins + 1_potion_epic_promo = 4.99 $</option><option value="com.miniclip.agar.io.potionpromo2">7000_coins + 1_potion_legendary_promo = 9.99 $</option><option value="com.miniclip.agar.io.potionpromo3">16000_coins_1800_dna + 1_potion_mythical_promo = 19.99 $</option><option value="com.miniclip.agar.io.potionpromo4">1250_coins + 1_potion_superior_promo = 1.99 $</option><option value="com.miniclip.agar.io.potionpromo5">3250_coins + 1_potion_epic_promo = 4.99 $</option><option value="com.miniclip.agar.io.potionpromo6">7000_coins_800_dna + 1_potion_legendary_promo = 9.99 $</option><option value="com.miniclip.agar.io.promotionpack1">3250_coins + 1_skin_moonlight_wendigo = 4.99 $</option><option value="com.miniclip.agar.io.promotionpack2">16000_coins + 1_skin_moonlight_red_fiend = 9.99 $</option><option value="com.miniclip.agar.io.promotionpack3">1800_dna + 1_skin_moonlight_wendigo + 1_skin_moonlight_night_hunter = 19.99 $</option><option value="com.miniclip.agar.io.promotionpack4">3250_coins + 1_skin_skull_bow = 4.99 $</option><option value="com.miniclip.agar.io.promotionpack7">16000_coins + 1_skin_power_ninja = 9.99 $</option><option value="com.miniclip.agar.io.promotionpack10">50000_coins + 1_skin_moonlight_wendigo + 1_skin_moonlight_night_hunter = 19.99 $</option><option value="com.miniclip.agar.io.promotionpack11">50000_coins + 1_skin_war_mask + 1_skin_skull_samurai = 19.99 $</option><option value="com.miniclip.agar.io.promotionpack12">7000_coins + 1_mass_boost_3x_24h + 1_skin_rabid + 1_skin_delighted = 9.99 $</option><option value="com.miniclip.agar.io.promotionpack13">3250_coins + 1_skin_elephant_ball = 4.99 $</option><option value="com.miniclip.agar.io.promotionpack14">3250_coins + 1_skin_war_mask = 4.99 $</option><option value="com.miniclip.agar.io.promotionpack15">16000_coins + 1_skin_rogue_samurai = 9.99 $</option><option value="com.miniclip.agar.io.promotionpack16">1800_dna + 1_skin_war_mask + 1_skin_skull_samurai = 19.99 $</option><option value="com.miniclip.agar.io.zodiacpromo">800_dna + 1_skin_zodiac_2017_scorpio = 4.99 $</option><option value="com.miniclip.agar.io.zodiacpromoweb">7000_coins + 1_skin_zodiac_2017_scorpio = 4.99 $</option><option value="com.miniclip.agar.io.collector1">3250_coins + 1_mass_boost_3x_24h = 4.99 $</option><option value="com.miniclip.agar.io.collector2">16000_coins + 1_skin_birthday_sir + 1_skin_hot_pepper = 9.99 $</option><option value="com.miniclip.agar.io.collector3">3250_coins + 1_mass_boost_3x_1h = 1.99 $</option><option value="com.miniclip.agar.io.collector4">7000_coins + 1_skin_rooster + 1_skin_birthday_doge = 4.99 $</option><option value="com.miniclip.agar.io.promotionpack17">1800_dna + 1_skin_skull_bow + 1_skin_giant_human = 19.99 $</option><option value="com.miniclip.agar.io.promotionpack18">50000_coins + 1_skin_skull_bow + 1_skin_giant_human = 19.99 $</option></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> For some payment methods</color>' +
+            '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> For some payment methods</color>' +
             '<p class="alert-warning text-center">To make purchases, you must be logged in to your account…<br><span class="alert-success" id="exp-uid">' + window.ironrv_userId + '</span> <font color="red" onclick=copy(window.ironrv_userId);><b><u>COPY UID</u></b></font><br>*UID is used to buy offers for your friends</p>' +
             '</div>' +
             '</div>' +
             '</div>' +
             '</div>');
-
+setTimeout(function() { populateSD();}, 1500);
         $("#CloseSpecialDeals").click(function() {
             MC.setQuality($('#quality').val());
             $("#specialShopModal").remove();
@@ -7071,6 +7081,35 @@ setTimeout(function() {
 	window.open(buytoken, "PopupWindow", "width=600,height=600,scrollbars=yes,resizable=no");
 }, 3000);
 }
+
+            function populateSD(){
+			var select = document.getElementById("ss-select-purchases");
+                for(i=0;i<GameConfiguration.gameConfig["Wallet - In-App Purchases"].length;i++){
+                    if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="2"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 1.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="5"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 4.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="10"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 9.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}						
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="20"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 19.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="50"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 49.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="60"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 99.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}					
+                    else {
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}					
+				}
+
+            }
+			
 function letterCount(string, letter, caseSensitive) {
     var count = 0;
     if ( !caseSensitive) {
