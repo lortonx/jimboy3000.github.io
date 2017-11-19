@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.543 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.544 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "93"; // the version 1.1-> 1.11
+var semimodVersion = "94"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -6899,7 +6899,7 @@ function SpecialDeals() {
             '<div class="modal-body"><input type="email" class="form-control" id="agario_uid_input" placeholder="*UID (do not enter anything here unless you know what it is)" style="width: 85%; display: inline-block">' +
             '<div class="custom-checkbox" style="display: inline-block; margin-left: 10px; vertical-align: sub;"><input id="checkBoxLockUID" type="checkbox" disabled="disabled" style="width: 20px; height: 20px"><label for="cb1"></label></div>' +
             '<div class="bs-callout bs-callout-buy bs-callout-clickable" id="buy_starterpack">' +
-            '<h4 id="dealtype" class="pull-left">Daily Deal</h4><h4 class="pull-left"> (click on the orange icon to buy)</h4>' +
+            '<h4 id="dealtype" class="pull-left">Daily Deal</h4><h5 class="pull-left"> <i> (click on the orange icon to buy)</i></h5>' +
             '<h4 id="dealcost" class="text-right">9.99 $</h4>' +
             '<div class="xpmt-buy-content" style="font-size: 13px; margin-top: -30px; float: left;font-weight: 700; background-color: rgba(0, 0, 0, 0.2); background-image: url(https://jimboy3100.github.io/banners/icondeal2.png);padding: 3px; align: middle; border-radius: 4px;width: 100%;height: 150px;z-index: 15;margin: auto;">' +
             '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>125000 C</b></span></div>' +
@@ -6953,6 +6953,7 @@ setTimeout(function() { populateSD();}, 1500);
 
         $('#ss-select-purchases').on('change', function() {
             console.log(this.value);
+			findSDescription();
             $(".xpmt-skins2").remove();
             $(".xpmt-money-stack").text($("#ss-select-purchases option:selected").text().substr(0, $("#ss-select-purchases option:selected").text().indexOf('_')) + " C");
             $("#dealcost").text($("#ss-select-purchases option:selected").text().split('=').pop());
@@ -7109,7 +7110,45 @@ setTimeout(function() {
 				}
 
             }
+
+            function findSDescription(){
+			var findSDiconlocationString2=$("#ss-select-purchases option:selected").text().split('=').pop();
+			findSDiconlocationString2=$("#ss-select-purchases option:selected").text().replace(findSDiconlocationString2, '');
+			findSDiconlocationString2=findSDiconlocationString2.replace(' =', '');	
+			var select = document.getElementById("ss-select-purchases");
+                for(i=0;i<GameConfiguration.gameConfig["Visual - Bundles"].length;i++){
+					
+                    if(GameConfiguration.gameConfig["Visual - Bundles"][i].bundleId==findSDiconlocationString2){
+						console.log("bundleId found");
+						var findSDicondescriptionString=GameConfiguration.gameConfig["Visual - Bundles"][i].description;
+						if (typeof findSDicondescriptionString === 'string' || findSDicondescriptionString instanceof String){
+							// it's a string
+							
+							console.log(findSDicondescriptionString);
+							if(findSDicondescriptionString!="na"){		
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');	
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace(' name','');
+								$("#dealtype").text(findSDicondescriptionString);
+							}
+							else{
+								console.log("no description");
+								var findSDicondescriptionString=$('#ss-select-purchases').val();
+								findSDicondescriptionString = findSDicondescriptionString.replace('com.miniclip.agar.io.','');
+								findSDicondescriptionString = findSDicondescriptionString.charAt(0).toUpperCase() + findSDicondescriptionString.slice(1);
+								$("#dealtype").text(findSDicondescriptionString);
+							}
+						}
+						else{
+						console.log("description is not a String");
 			
+						}	
+					}
+				}
+			}			
 function letterCount(string, letter, caseSensitive) {
     var count = 0;
     if ( !caseSensitive) {
