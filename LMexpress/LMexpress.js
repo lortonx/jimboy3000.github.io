@@ -16,80 +16,7 @@ getaccesstoken2();
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   		
 var oldgamemode=$("#gamemode");
-
-//Private Servers
- $("#region").on('change', function() {
-	setTimeout(function() {
-	$("#gamemode").prop('disabled', false);
-	$("#region").prop('disabled', false);                 
-	}, 200);
-	if (this.value == ":PrS") {
-    console.log("Going to PrS");
-        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
-		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
-		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
-//		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
-//		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
-//		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
-//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
-//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');			
-    }
-	else if (this.value != ":PrS") {
-    console.log("Leaving PrS");	
-        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
-		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
-		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
-		'<option value=":party" data-itr="page_party">Party Mode</option>');	
-    }	
-	adres();
-});
-$('#gamemode').on('change', function() {
-   adres();
-    if (this.value == ":party") {
-        $("#create-party-btn").click();
-    console.log("Party stuff fixed");
-	}
-    else if (this.value == ":PrS1") {
-    console.log("Going to PRS1");
-	PrivateServer1();
-    }
-    else if (this.value == ":PrS2") {
-    console.log("Going to PRS2");
-	PrivateServer2();
-    }  
-    else if (this.value == ":PrS3") {
-    console.log("Going to PRS3");
-	PrivateServer3();
-    }
-    else if (this.value == ":PrS4") {
-    console.log("Going to PRS4");
-	PrivateServer4();
-    }
-    else if (this.value == ":PrS5") {
-    console.log("Going to PRS5");
-	PrivateServer5();
-    }
-    else if (this.value == ":PrS6") {
-    console.log("Going to PRS6");
-	PrivateServer6();
-    }
-    else if (this.value == ":PrS7") {
-    console.log("Going to PRS7");
-	PrivateServer7();
-    }
-    else if (this.value == ":PrS8") {
-    console.log("Going to PRS8");
-	PrivateServer8();
-    }
-    else if (this.value == ":PrS9") {
-    console.log("Going to PRS9");
-	PrivateServer9();
-    }		
-});
+privateservutil();
 
 var currentIP = "0.0.0.0:0";
 var currentToken = "";
@@ -99,9 +26,7 @@ var defaultMusicUrl = "https://www.youtube.com/watch?v=L7klPYKTx64";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
-var stateObj = {
-    foo: "bar"
-};
+var stateObj = {foo: "bar"};
 var containermain;
 var closebutton1 = "0";
 var modebetter = "";
@@ -142,25 +67,17 @@ var leadbtext = localStorage.getItem("leadbtext");
 var teambtext = localStorage.getItem("teambtext");
 var imgUrl = localStorage.getItem("imgUrl");
 var imgHref = localStorage.getItem("imgHref");
-//var autoRespawn = localStorage.getItem("autoRespawn");
 var showToken = localStorage.getItem("showTK");
 var showPlayer = localStorage.getItem("showPlayer");
-//var IPBtn = localStorage.getItem("IPBtn");
 var SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
 var XPBtn = localStorage.getItem("XPBtn");
-//var TIMEBtn = localStorage.getItem("TIMEBtn");
-//var MAINBBtn = localStorage.getItem("MAINBBtn");
-//var MAINBTBtn = localStorage.getItem("MAINBTBtn");
-//var MANUIBtn = localStorage.getItem("MANUIBtn");
 var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 var AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
-// var RotationBtn = localStorage.getItem("RotationBtn");
 var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 var troll1Btn = localStorage.getItem("troll1Btn");
 var ComPosition = localStorage.getItem("ComPosition");
 var autoCoinBtn = localStorage.getItem("autoCoinBtn");
-//var copyGameNames = localStorage.getItem("copyGameNames");
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 var region = getParameterByName("r", url);
@@ -211,7 +128,6 @@ var setscriptingcom = "YES";
 var usedonceSkin=0;
 var toastrSkinNotice=0;
 var detailed="";
-//var userIp;
 var detailed1;
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
@@ -274,8 +190,6 @@ var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
 var Premadeletter51 = "Hide Timer Calc."
-//var Premadeletter52="Edit Names";
-//var Premadeletter52a="Close Names";
 var Premadeletter53 = "Auto free coins";
 var Premadeletter54 = "Stop free coins";
 var Premadeletter55 = "Troll on Death";
@@ -284,8 +198,33 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
+
 languagemod();
 appendLMhiFbPs();
+if (realmode == "") {modebetter2 = ":ffa";} 
+else {modebetter2 = realmode;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -576,5 +515,81 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
 	}
+});
+}
+
+function privateservutil(){
+//Private Servers
+ $("#region").on('change', function() {
+	setTimeout(function() {
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);                 
+	}, 200);
+	if (this.value == ":PrS") {
+    console.log("Going to PrS");
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
+		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
+		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
+		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+//		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
+//		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
+//		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
+//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
+//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');			
+    }
+	else if (this.value != ":PrS") {
+    console.log("Leaving PrS");	
+        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
+		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
+		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
+		'<option value=":party" data-itr="page_party">Party Mode</option>');	
+    }	
+	adres();
+});
+$('#gamemode').on('change', function() {
+   adres();
+    if (this.value == ":party") {
+        $("#create-party-btn").click();
+    console.log("Party stuff fixed");
+	}
+    else if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }  
+    else if (this.value == ":PrS3") {
+    console.log("Going to PRS3");
+	PrivateServer3();
+    }
+    else if (this.value == ":PrS4") {
+    console.log("Going to PRS4");
+	PrivateServer4();
+    }
+    else if (this.value == ":PrS5") {
+    console.log("Going to PRS5");
+	PrivateServer5();
+    }
+    else if (this.value == ":PrS6") {
+    console.log("Going to PRS6");
+	PrivateServer6();
+    }
+    else if (this.value == ":PrS7") {
+    console.log("Going to PRS7");
+	PrivateServer7();
+    }
+    else if (this.value == ":PrS8") {
+    console.log("Going to PRS8");
+	PrivateServer8();
+    }
+    else if (this.value == ":PrS9") {
+    console.log("Going to PRS9");
+	PrivateServer9();
+    }		
 });
 }
