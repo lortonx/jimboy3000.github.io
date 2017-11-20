@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "01"; // the version 1.1-> 1.11
@@ -246,7 +246,7 @@ function init(modVersion) {
         $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
 
         $("#overlays").css("z-index", 100);
-/*
+
         $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><i class="fa fa-search retro"></i><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
             '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
             '<div id="" style="margin-top: 10px;">' +
@@ -255,7 +255,7 @@ function init(modVersion) {
             '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><span class="glyphicon glyphicon-remove-circle"></span></button>' +
             '</div></div>'
         );
-*/
+
         $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
             '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
             '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
@@ -486,9 +486,10 @@ function init(modVersion) {
         $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
             '</div></div>');
+			/*
         $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
             '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
-            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
+            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
             '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
             'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
 
@@ -507,7 +508,7 @@ function init(modVersion) {
 
             '<input id="tempCopy" style="display: none;" value="">' +
             '</div>');
-
+			*/
         //$("#searchShortcut").mouseenter(function () {
         //$("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
         $("#copySIPBtn").mouseenter(function() {
@@ -1452,13 +1453,16 @@ setTimeout(function() {
 }
 function onhashchange(){return false}
 function LMminimapTextAct(){
+setTimeout(function() {LMminimapText();  }, 3000);
+setTimeout(function() {LMminimapText();  }, 3500);
+setTimeout(function() {LMminimapText();  }, 4000);
+setTimeout(function() {LMminimapText();  }, 4500);
+setTimeout(function() {LMminimapText();  }, 5500);
 setTimeout(function() {LMminimapText();  }, 6000);
 setTimeout(function() {LMminimapText();  }, 6500);
 setTimeout(function() {LMminimapText();  }, 7000);
-setTimeout(function() {LMminimapText();   }, 7500);
-setTimeout(function() {LMminimapText();   }, 8000);
-setTimeout(function() {LMminimapText();  }, 9000);
-setTimeout(function() {LMminimapText();}, 10000);
+setTimeout(function() {LMminimapText();  }, 7500);
+
 setTimeout(function() {   //Load Private Servers			
 	if($('#region>option:nth-child(1)').val()!=":PrS")	{
 	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
