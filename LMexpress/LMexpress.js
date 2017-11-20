@@ -47,102 +47,6 @@ var oldgamemode=$("#gamemode");
     }	
 	adres();
 });
-
-
-
-
-function loadersetings() {
-    setTimeout(function() {
-        if (timesopened >= 3) {
-            if (checkonlyonce != "true") {
-                //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-                if (SHOSHOBtn != "true") {
-                    toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
-                        timeOut: 15000,
-                        extendedTimeOut: 15000
-                    }).css("width", "300px");
-                    $("#enableshortcuts1").click(function() {
-                        enableshortcuts();
-                    });
-                }
-            }
-        }
-        if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
-            //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-            if (SHOSHOBtn != "true") {
-                toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
-                    timeOut: 15000,
-                    extendedTimeOut: 15000
-                }).css("width", "300px");
-                $("#enableshortcuts").click(function() {
-                    enableshortcuts();
-                });
-            }
-        }
-        checkonlyonce = "true";
-        localStorage.setItem("checkonlyonce", checkonlyonce);
-    }, 3500);
-}
-function loadericon() {
-	//continue loadericon
-    setTimeout(function() {
-        setTimeout(function() {
-        $("#imagebig").fadeOut(2500);
-		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
-		}, 3000);   
-		}, 1000);
-}
-function PremiumUsers(){
-        var ProLicenceUsersTableJS = document.createElement("script");
-        ProLicenceUsersTableJS.type = "text/javascript";
-        ProLicenceUsersTableJS.src = "https://jimboy3100.github.io/AjaxData/ProLicenceUsersTableJS.js";
-        $("body").append(ProLicenceUsersTableJS);
-}
-function getaccesstoken() {
-    $.ajax({
-        type: "GET",
-        url: "https://jimboy3100.github.io/AjaxData/accesstoken.html",
-        datatype: "json",
-        success: function(info) {
-		  accesstomod =  info[17];
-			return accesstomod;
-		}
-	});
-}
-
-function getaccesstoken2() {
-    setTimeout(function() {
-        if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
-				setTimeout(function() {
-					document.documentElement.innerHTML = "";
-					}, 21000);
-				}
-   }, 13000);
-}
-function enableshortcuts() {
-    if ($("#IPBtn").attr('aria-pressed') == "false") {
-        $("#IPBtn").click();
-    }
-    if ($("#SHOSHOBtn").attr('aria-pressed') == "false") {
-        $("#SHOSHOBtn").click();
-    }
-    //	if($("#TIMEBtn").attr('aria-pressed') == "false"){
-    //	$("#TIMEBtn").click(); }
-    //	if($("#MAINBBtn").attr('aria-pressed') == "false"){
-    //	$("#MAINBBtn").click(); }
-    //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
-    //	$("#MAINBTBtn").click(); }
-	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
-				$("#MAINBTBtn").click(); }
-//			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
-//				$("#AnimatedSkinBtn").click(); }
-    if ($("#XPBtn").attr('aria-pressed') == "false") {
-        $("#XPBtn").click();
-    }
-    //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
-    //	$("#MANUIBtn").click(); }
-}
 $('#gamemode').on('change', function() {
    adres();
     if (this.value == ":party") {
@@ -380,4 +284,102 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
+
+
+
+
+
+
+function loadersetings() {
+    setTimeout(function() {
+        if (timesopened >= 3) {
+            if (checkonlyonce != "true") {
+                //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+                if (SHOSHOBtn != "true") {
+                    toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+                        timeOut: 15000,
+                        extendedTimeOut: 15000
+                    }).css("width", "300px");
+                    $("#enableshortcuts1").click(function() {
+                        enableshortcuts();
+                    });
+                }
+            }
+        }
+        if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
+            //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
+            if (SHOSHOBtn != "true") {
+                toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+                    timeOut: 15000,
+                    extendedTimeOut: 15000
+                }).css("width", "300px");
+                $("#enableshortcuts").click(function() {
+                    enableshortcuts();
+                });
+            }
+        }
+        checkonlyonce = "true";
+        localStorage.setItem("checkonlyonce", checkonlyonce);
+    }, 3500);
+}
+function loadericon() {
+	//continue loadericon
+    setTimeout(function() {
+        setTimeout(function() {
+        $("#imagebig").fadeOut(2500);
+		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
+		}, 3000);   
+		}, 1000);
+}
+function PremiumUsers(){
+        var ProLicenceUsersTableJS = document.createElement("script");
+        ProLicenceUsersTableJS.type = "text/javascript";
+        ProLicenceUsersTableJS.src = "https://jimboy3100.github.io/AjaxData/ProLicenceUsersTableJS.js";
+        $("body").append(ProLicenceUsersTableJS);
+}
+function getaccesstoken() {
+    $.ajax({
+        type: "GET",
+        url: "https://jimboy3100.github.io/AjaxData/accesstoken.html",
+        datatype: "json",
+        success: function(info) {
+		  accesstomod =  info[17];
+			return accesstomod;
+		}
+	});
+}
+
+function getaccesstoken2() {
+    setTimeout(function() {
+        if(accesstomod != "a" && accesstomod != null){
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
+				setTimeout(function() {
+					document.documentElement.innerHTML = "";
+					}, 21000);
+				}
+   }, 13000);
+}
+function enableshortcuts() {
+    if ($("#IPBtn").attr('aria-pressed') == "false") {
+        $("#IPBtn").click();
+    }
+    if ($("#SHOSHOBtn").attr('aria-pressed') == "false") {
+        $("#SHOSHOBtn").click();
+    }
+    //	if($("#TIMEBtn").attr('aria-pressed') == "false"){
+    //	$("#TIMEBtn").click(); }
+    //	if($("#MAINBBtn").attr('aria-pressed') == "false"){
+    //	$("#MAINBBtn").click(); }
+    //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+    //	$("#MAINBTBtn").click(); }
+	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+				$("#MAINBTBtn").click(); }
+//			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
+//				$("#AnimatedSkinBtn").click(); }
+    if ($("#XPBtn").attr('aria-pressed') == "false") {
+        $("#XPBtn").click();
+    }
+    //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
+    //	$("#MANUIBtn").click(); }
+}
 
