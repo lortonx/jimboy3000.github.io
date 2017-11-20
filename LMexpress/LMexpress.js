@@ -219,7 +219,7 @@ var usergender = localStorage.getItem("usergender");
 var fbresponse={};
 var prevPrivateServer = localStorage.getItem("prevPrivateServer");
 var CopyTkPwLb2; 
-
+var languagemod = localStorage.getItem("languagemod");
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
 var Premadeletter2 = "You cannot chat if player name > 15 chars";
@@ -284,8 +284,8 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
-
-
+languagemod();
+appendLMhiFbPs();
 
 
 
@@ -391,4 +391,190 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+
+
+function languagemod(){
+if (languagemod == 2) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("2");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 3) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("3");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 4) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("4");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 5) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("5");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 6) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 7) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+}
+
+function appendLMhiFbPs(){
+$("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
+    MSGCOMMANDS2 = $(".toast.toast-warning").html();
+    if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
+        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
+		$(".toast.toast-warning").remove();
+		setTimeout(function () {
+		//spectate();
+				if (clanpass!=null&&clanpass!="") {		
+					$("#clantag").val(clanpass);
+					$('#clantag').css('background-color', '#ff6347');						
+				}
+				if (privateSrv!=null) {
+					if ($('#clantag').val() == ""){
+					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("in.fzogar.xyz:443")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+					}
+				}
+				
+//				$(".btn-spectate").click();		
+		
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();	
+		},200);
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
+    }
+	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+	}
+});
+
+
+$("body").on('DOMSubtreeModified', "#chat-box", function() {
+    MSGCOMMANDS3 = $(".command-text").text();
+    if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
+	//	$(".toast.toast-warning").remove();
+	        $(".command-text").text(Premadeletter0);
+		setTimeout(function () {
+		//spectate();
+				if (clanpass!=null&&clanpass!="") {		
+					$("#clantag").val(clanpass);
+					$('#clantag').css('background-color', '#ff6347');						
+				}
+				if (privateSrv!=null) {
+					if ($('#clantag').val() == ""){
+					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+					}
+				}
+
+//				$(".btn-spectate").click();
+				
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();			
+		},200);
+
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
+		}
+		
+    }
+	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
+	}
+});
 }
