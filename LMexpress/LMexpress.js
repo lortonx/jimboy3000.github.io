@@ -203,9 +203,17 @@ languagemodfun();
 appendLMhiFbPs();
 if (realmode == "") {modebetter2 = ":ffa";} 
 else {modebetter2 = realmode;}
-
-
-
+LMserverbox();
+privateserverpassword();
+urlIpWhenOpened();
+var minbtext2 = minbtext;
+var minbtext3 = minbtext;
+if (minbtext == null || minbtext == "") {
+    minbtext = "Legend Mod/Locked";
+    minbtext2 = "Legend Mod";
+	minbtext3 = "Legend Mod/Private";
+}
+LMminimapTextAct();
 
 
 
@@ -413,10 +421,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
 		$("#gamemode").prop('disabled', false);
 		$("#region").prop('disabled', false);   
-        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
 		setTimeout(function () {
-		//spectate();
 				if (clanpass!=null&&clanpass!="") {		
 					$("#clantag").val(clanpass);
 					$('#clantag').css('background-color', '#ff6347');						
@@ -432,10 +438,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					else if(privateSrv.includes("in.fzogar.xyz:443")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
 					}
-				}
-				
-//				$(".btn-spectate").click();		
-		
+				}		
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -482,10 +485,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
 					else{$("#clantag").val("PS");}
 					}
-				}
-
-//				$(".btn-spectate").click();
-				
+				}			
 		$("#overlays").show();
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
@@ -501,8 +501,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
 			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
 			},250);
-		}
-		
+		}		
     }
 	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
@@ -584,4 +583,194 @@ $('#gamemode').on('change', function() {
 	PrivateServer9();
     }		
 });
+}
+function adres() {
+	if ($("#gamemode").val() != ":party") {
+		setTimeout(function(){		
+			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
+			$("#server").val(currentIP);
+			setTimeout(function() {				 
+			    realmode = $("#gamemode").val();
+                if (searchSip == null && privateSrv==null) {
+                    if (realmode != ":party") {
+                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + window.location.href.replace('http://agar.io/#','') + "&?m=" + realmode);
+                    }
+                    else if (realmode == ":party") {
+                        window.history.pushState(null, null, window.location.pathname);
+                        history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
+                    }
+				}
+				else if (privateSrv!=null) {				
+                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");			
+			}	                
+									}, 1000);
+			}, 800);
+	}
+	else {
+            setTimeout(function() {
+                $("#server").val("#" + window.location.href.replace('http://agar.io/#',''));
+            }, 2000);
+        }
+}
+function privateserverpassword(){
+setTimeout(function () {
+		if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+			prevPrivateServer=1;
+			localStorage.setItem("prevPrivateServer", 1);
+			return prevPrivateServer=1;						
+        }
+		else{
+			if (prevPrivateServer=="1"){
+				$("#clantag").val(saveclanpassword);
+				prevPrivateServer=0;
+				localStorage.setItem("prevPrivateServer", 0);
+			return prevPrivateServer=0;
+			}
+		}
+}, 6000);
+}
+function LMserverbox(){
+setTimeout(function() {
+    if (searchSip == null) {
+        (function(a, c) {
+            function r(a, d) {
+                if (d) {
+                    var f = new Date;
+                    f.setTime(f.getTime() + 864E5 * d);
+                    f = "; expires=" + f.toGMTString()
+                } else f = "";
+                document.cookie = "agario_redirect=" + a + f + "; path=/"
+            }
+            $(function() {
+                $("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+                $("#connect2").tooltip({
+                    title: "Connect to server, or restablish communication",
+                    placement: "left"
+                });
+                $("#connect2").click(function() {
+
+
+                    if ($("#server").val().includes("#") == false) {
+                        var texture2, texture3;
+					    var texture2, texture3;
+                        texture3 = $("#server").val();
+                        texture2 = texture3.replace("live-arena-", "");
+						texture2 = texture2.replace(".agar.io:80", "");
+						$("#server-token").val(texture2);
+						$("#server-join").click();
+
+						
+/*                        texture3 = $("#server").val();
+                        texture2 = texture3.substring(0, texture3.indexOf(':'));
+                        texture2 = texture2.replace(".", "-");
+                        texture2 = texture2.replace(".", "-");
+                        texture2 = texture2.replace(".", "-");
+                        texture3 = texture3.split(':').pop();
+                        texture3 = "ws://ip-" + texture2 + ".tech.agar.io:" + texture3 + "/";
+                        a.core.connect(texture3);
+*/
+                        setTimeout(function() {
+                            realmode = $("#gamemode").val();
+//                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
+                            var tmz = $("#server").val();
+                            // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
+//                            $("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");
+                            currentIP = tmz;
+                            if (realmode != ":party") {
+                                setTimeout(function() {
+                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
+                                }, 3000);
+                                setTimeout(function() {
+                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
+                                }, 5000);
+                                setTimeout(function() {
+                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
+                                }, 7000);
+                            }
+                        }, 1000);
+                    } else {
+                        joinpartyfromconnect();
+                    }
+
+                });
+            })
+            setTimeout(function() {
+                adres();
+            }, 5000);
+            setTimeout(function() {
+                adres();
+            }, 7000);
+            adres();
+
+        })(window, window.jQuery);
+    }
+}, 2500);		
+}
+function urlIpWhenOpened(){
+setTimeout(function() {
+        if (searchSip != null && privateSrv==null) {
+            if (region == null) {
+                setTimeout(function() {
+                    history.pushState(stateObj, "page 2", "?sip=" + searchSip);
+                }, 5000);
+            } else {
+               setTimeout(function() {
+                    history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
+                }, 5000);
+            }
+        } else if (searchSip == null && privateSrv==null) {
+            if (realmode != ":party") {
+                history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + window.location.href.replace('http://agar.io/#','') + "&?m=" + realmode);
+            }
+        }		
+        $("#server-ws").on('change', function() {
+			adres();
+            setTimeout(function() {
+                realmode = $("#gamemode").val();
+                if (searchSip == null) {
+                    if (realmode != ":party") {
+                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + window.location.href.replace('http://agar.io/#','') + "&?m=" + realmode);
+                    }
+                    else if (realmode == ":party") {
+                        window.history.pushState(null, null, window.location.pathname);
+                        history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
+                    }
+                }               
+                return realmode;
+            }, 1000);
+            setTimeout(function() {             
+                lastIP = currentIP;
+                localStorage.setItem("lastIP", lastIP);
+            }, 10000);
+        });
+    }, //5000
+    9000); //9000
+}
+function LMminimapTextAct(){
+setTimeout(function() {LMminimapText();  }, 6000);
+setTimeout(function() {LMminimapText();  }, 6500);
+setTimeout(function() {LMminimapText();  }, 7000);
+setTimeout(function() {LMminimapText();   }, 7500);
+setTimeout(function() {LMminimapText();   }, 8000);
+setTimeout(function() {LMminimapText();  }, 9000);
+setTimeout(function() {LMminimapText();}, 10000);
+setTimeout(function() {   //Load Private Servers			
+	if($('#region>option:nth-child(1)').val()!=":PrS")	{
+	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+	}	
+}, 13000);
+setTimeout(function() {LMminimapText();}, 11000);
+setTimeout(function() {LMminimapText();}, 12000);
+setTimeout(function() {LMminimapText();}, 18000);
+setTimeout(function() {LMminimapText();}, 22000);
+}
+function LMminimapText(){
+	var c = document.getElementById("minimap-sectors");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height / 9);
+    ctx.font = "16px Georgia";
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }	
 }
