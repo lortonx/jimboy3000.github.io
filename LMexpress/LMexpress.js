@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "01"; // the version 1.1-> 1.11
@@ -265,9 +265,11 @@ function init(modVersion) {
             '<input id="note6" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
             '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
             '</div>');
-
-        $(".menu-tabs").children().attr("style", "width: 14.27%;");
-		/*
+		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout" data-toggle="tooltip" title="Logout"><span class="glyphicon glyphicon-off"></span></button>');
+		$(".menu-tabs").children().attr("style", "width: 19.27%;");
+		$(".profile-tab").hide();
+ /*       $(".menu-tabs").children().attr("style", "width: 14.27%;");
+		
         $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
         //  $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 150px;\')" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
         //	$(".menu-tabs").children().last().before('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
