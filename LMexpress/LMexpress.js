@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "00"; // the version 1.1-> 1.11
@@ -968,7 +968,7 @@ function loadericon() {
         setTimeout(function() {
         $("#imagebig").fadeOut(1500);
 		setTimeout(function() {$("#imagebig").remove();}, 1600); //remove it
-		}, 2000);   
+		}, 1000);   
 		}, 100);
 }
 function PremiumUsers(){
@@ -1393,16 +1393,14 @@ setTimeout(function() {
 
                 });
             });
+            setTimeout(function() {
 			if (searchSip != null) {
 			$("#server").val(searchSip);
 			$("#connect2").click();
 			}
-            setTimeout(function() {
-                adres();
+			else(){
+			adres();}
             }, 2000);
-            setTimeout(function() {
-                adres();
-            }, 4000);
             adres();
 	
         })(window, window.jQuery);
