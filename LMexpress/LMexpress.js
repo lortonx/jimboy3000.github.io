@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "00"; // the version 1.1-> 1.11
@@ -216,9 +216,26 @@ if (minbtext == null || minbtext == "") {
 LMminimapTextAct();
 
 
+function init(modVersion) {
+    //var connectedbanner=0;
+	$("#gamemode").prop('disabled', false);
+	$("#region").prop('disabled', false);   
 
+    if (timesopened != null) {
+        timesopened++;
+        localStorage.setItem("timesopened", timesopened);
+    } else if (timesopened == null) {
+        localStorage.setItem("timesopened", "0");
+    }
 
+    setTimeout(function() {
+        document.title = "Legend mod v" + modVersion;
 
+        console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
+		
+    }, 1500);
+
+}
 
 
 
