@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "00"; // the version 1.1-> 1.11
@@ -217,6 +217,8 @@ LMminimapTextAct();
 
 
 function init(modVersion) {
+	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
+	
     //var connectedbanner=0;
 	$("#gamemode").prop('disabled', false);
 	$("#region").prop('disabled', false);   
@@ -736,7 +738,160 @@ function init(modVersion) {
 		$(".agario-profile-name").css('vertical-align', ' baseline');
 		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
 				
-		
+		        //Legend Mod Cursors
+        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
+        }
+        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
+        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
+        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
+        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
+        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
+        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
+        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
+        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
+        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
+        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
+        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
+        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
+        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
+        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
+        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
+        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
+        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
+        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
+        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
+        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
+        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
+        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
+        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
+        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
+        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
+        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
+        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
+        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
+        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
+        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
+        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
+        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
+        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
+        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
+        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
+        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
+
+        $('#themePreset').on('change', function() {
+            setTimeout(function() {
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+					ctx.clearRect(0, 0, c.width, c.height / 9);
+					ctx.font = "16px Georgia";
+					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+					else {ctx.fillText(minbtext2, c.width / 2, 22); }
+					MC.setQuality($('#quality').val());
+            }, 200);
+        })
+        $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
+            setTimeout(function() {
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+				ctx.clearRect(0, 0, c.width, c.height / 9);
+				ctx.font = "16px Georgia";
+				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+				else {ctx.fillText(minbtext2, c.width / 2, 22); }
+				MC.setQuality($('#quality').val());
+            }, 100);
+        })
+
+        $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
+
+        $(".agario-panel.ogario-yt-panel").css({
+            marginBottom: "-10px"
+        });
+        //	'Scripts used: ' + '<a href="http://ogario.ovh" target="_blank">ogario</a>'+ ", " + '<a href="https://kittymod.github.io/" target="_blank">kitty</a>' + " & " + '<a href="https://greasyfork.org/en/scripts/by-site/agar.io" target="_blank">others</a><br>'+
+
+        //		$(".agario-panel.agario-shop-panel").after('<button id="OpenInfo" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 25%;"><i class="fa fa-info-circle"></i>Information</button>');
+        //		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
+        //		$("#OpenInfo").click(function () {openhelper();});
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend Express v' + modVersion + semimodVersion + '</a></span>' +
+            '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
+        // donate button
+        //kitty's
+        // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+        //jimboy's
+        $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+        //$("#minimap-sectors").attr("style", "opacity: 0.25;");
+        // keybinds
+
 		
         console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');		
     }, 1500);
@@ -1231,7 +1386,7 @@ setTimeout(function() {
                                 setTimeout(function() {
 									if (searchSip != null) {
 										$("#server").val(searchSip);
-										$(".submit2").click();
+										$("#connect2").click();
 									}
                                     history.pushState(stateObj, "page 2", "?sip=" + tmz);
                                 }, 3000);
