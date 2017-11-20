@@ -2519,7 +2519,7 @@ function init(modVersion) {
 				//important announcement
    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font  font-size:16px; text-align:center"><a href="https://jimboy3100.github.io/legendmod.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4,2.5)<font color="black">'+
+				'<br><font  font-size:16px; text-align:center"><a href="jimboy3100.github.io/LMexpress/LMexpress.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4,2.5)<font color="black">'+
 				'<br>If you are able to play, <font color="red">DO NOT </font>CHANGE ANY SETTINGS'+
 				'<br>If not, go to Setting (4th)tab-><font color="red"> SKINS</font>'+
 				'<br>No Skins-> <font color="red">OFF</font>'+
