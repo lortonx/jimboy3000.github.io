@@ -88,8 +88,6 @@ function loadericon() {
     setTimeout(function() {
         setTimeout(function() {
         $("#imagebig").fadeOut(2500);
-        
-        MC.setQuality($('#quality').val());
 		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
 		}, 3000);   
 		}, 1000);
@@ -145,5 +143,241 @@ function enableshortcuts() {
     //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
     //	$("#MANUIBtn").click(); }
 }
+$('#gamemode').on('change', function() {
+   adres();
+    if (this.value == ":party") {
+        $("#create-party-btn").click();
+    console.log("Party stuff fixed");
+	}
+    else if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }  
+    else if (this.value == ":PrS3") {
+    console.log("Going to PRS3");
+	PrivateServer3();
+    }
+    else if (this.value == ":PrS4") {
+    console.log("Going to PRS4");
+	PrivateServer4();
+    }
+    else if (this.value == ":PrS5") {
+    console.log("Going to PRS5");
+	PrivateServer5();
+    }
+    else if (this.value == ":PrS6") {
+    console.log("Going to PRS6");
+	PrivateServer6();
+    }
+    else if (this.value == ":PrS7") {
+    console.log("Going to PRS7");
+	PrivateServer7();
+    }
+    else if (this.value == ":PrS8") {
+    console.log("Going to PRS8");
+	PrivateServer8();
+    }
+    else if (this.value == ":PrS9") {
+    console.log("Going to PRS9");
+	PrivateServer9();
+    }		
+});
 
+var currentIP = "0.0.0.0:0";
+var currentToken = "";
+var previousMode = localStorage.getItem("gamemode");
+var checkonlyonce = localStorage.getItem("checkonlyonce");
+var defaultMusicUrl = "https://www.youtube.com/watch?v=L7klPYKTx64";
+var coinTimer;
+var musicPlayer;
+var originalDeath;
+var stateObj = {
+    foo: "bar"
+};
+var containermain;
+var closebutton1 = "0";
+var modebetter = "";
+var modbetter2 = "";
+var fullornot = "NO";
+var minimapbckimg = "";
+var leadbimg = "";
+var teambimg = "";
+var canvasbimg = "";
+var pic1urlimg = "http://i.imgur.com/RVBi3T1.gif";
+var pic2urlimg = "http://i.imgur.com/p2T29QE.gif";
+var pic3urlimg = "http://i.imgur.com/EucIfYY.gif";
+var pic4urlimg = "http://i.imgur.com/KOoBDaK.gif";
+var pic5urlimg = "http://i.imgur.com/CS03xWv.gif";
+var pic6urlimg = "http://i.imgur.com/tfMUu2J.gif";
+var pic1dataimg = "Bad Choice!";
+var pic2dataimg = "Why?";
+var pic3dataimg = "Yow!!";
+var pic4dataimg = "Death!";
+var pic5dataimg = "Relax!";
+var pic6dataimg = "Legend Mod!";
+var yt1url = "dQw4w9WgXcQ";
+var yt2url = "btPJPFnesV4";
+var yt3url = "UD-MkihnOXg";
+var yt4url = "vpoqWs6BuIY";
+var yt5url = "VUvfn5-BLM8";
+var yt6url = "CnIfNSpCf70";
+var yt1data = "Rick Astley - Never Gonna Give You Up";
+var yt2data = "Survivor - Eye Of The Tiger";
+var yt3data = "Lion king - The Lion Sleeps Tonight";
+var yt4data = "Agario - Jumbo Solo vs Teams";
+var yt5data = "Agario - Kill3r vs Teams";
+var yt6data = "Legend Mod Promo";
+var lastIP = "";
+var previousnickname = localStorage.getItem("previousnickname");
+var minbtext = localStorage.getItem("minbtext");
+var leadbtext = localStorage.getItem("leadbtext");
+var teambtext = localStorage.getItem("teambtext");
+var imgUrl = localStorage.getItem("imgUrl");
+var imgHref = localStorage.getItem("imgHref");
+//var autoRespawn = localStorage.getItem("autoRespawn");
+var showToken = localStorage.getItem("showTK");
+var showPlayer = localStorage.getItem("showPlayer");
+//var IPBtn = localStorage.getItem("IPBtn");
+var SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
+var XPBtn = localStorage.getItem("XPBtn");
+//var TIMEBtn = localStorage.getItem("TIMEBtn");
+//var MAINBBtn = localStorage.getItem("MAINBBtn");
+//var MAINBTBtn = localStorage.getItem("MAINBTBtn");
+//var MANUIBtn = localStorage.getItem("MANUIBtn");
+var MAINBTBtn = localStorage.getItem("MAINBTBtn");
+var AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
+// var RotationBtn = localStorage.getItem("RotationBtn");
+var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
+var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
+var troll1Btn = localStorage.getItem("troll1Btn");
+var ComPosition = localStorage.getItem("ComPosition");
+var autoCoinBtn = localStorage.getItem("autoCoinBtn");
+//var copyGameNames = localStorage.getItem("copyGameNames");
+var timesopened = localStorage.getItem("timesopened");
+var url = localStorage.getItem("url");
+var region = getParameterByName("r", url);
+var realmode = getParameterByName("m", url);
+var searchStr = getParameterByName("search", url);
+var searchSip = getParameterByName("sip", url);
+var privateSrv = getParameterByName("ip", url);
+var clanpass = getParameterByName("pass", url);
+var realmode2 = "";
+var mode=""; //just in case
+var token = "";
+var messageone = 1; //If legendmod is being used
+var hiddenfromclan = 0;
+var saveclanpassword= localStorage.getItem("saveclanpassword");
+var troll1;
+var seticon = "YES";
+var setmessagecom = "YES";
+var setyt = "YES";
+var searching;
+var timerId;
+T = {};
+var MSGCOMMANDS = "";
+var MSGCOMMANDS2;
+var MSGCOMMANDS;
+var playerMsg = "";
+var commandMsg = "";
+var otherMsg = "";
+var rotateminimap = 0;
+var rotateminimapfirst = 0;
+var openthecommunication = "NO";
+var clickedname = "NO";
+var oldteammode;
+var checkedGameNames = 0;
+var timesdisconnected = 0;
+var PanelImageSrc;
+var AdminClanSymbol;
+var AdminPassword;
+var AdminRights = 0;
+var LegendClanSymbol = "0";
+var legbgcolor = $("#menuPanelColor").val();
+var legbgpic = $("#menuBg").val();
+var dyinglight1load = localStorage.getItem("dyinglight1load");
+var url2;
+var semiurl2;
+var PostedThings;
+var Ultimouseenabled=0;
+var setscriptingcom = "YES";
+var usedonceSkin=0;
+var toastrSkinNotice=0;
+var detailed="";
+//var userIp;
+var detailed1;
+var userfirstname = localStorage.getItem("userfirstname");
+var userlastname = localStorage.getItem("userlastname");
+var usergender = localStorage.getItem("usergender");
+var fbresponse={};
+var prevPrivateServer = localStorage.getItem("prevPrivateServer");
+var CopyTkPwLb2; 
+
+var Premadeletter0 = "Communication Activated";
+var Premadeletter1 = "Cannot open this youtube URL";
+var Premadeletter2 = "You cannot chat if player name > 15 chars";
+var Premadeletter3 = "Easter Egg 1 Activated";
+var Premadeletter4 = "Easter Egg 2 Activated";
+var Premadeletter5 = "Easter Egg 3 Activated";
+var Premadeletter6 = "Video works better on vanilla, visit:";
+var Premadeletter7 = "Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.";
+var Premadeletter8 = "Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.";
+var Premadeletter9 = "If logout occurs on onload events, delete Chrome cookies from ";
+var Premadeletter10 = "Disconnected from server :(";
+var Premadeletter11 = "You were banned, restart your rooter!";
+var Premadeletter12 = "Connected!";
+var Premadeletter13 = "PLAY";
+var Premadeletter14 = "SPECTATE";
+var Premadeletter15 = "Invalid token or server has closed :(";
+var Premadeletter16 = "can be Updated to";
+var Premadeletter17 = "Welcome back";
+var Premadeletter18 = "Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
+var Premadeletter19 = "Enable Them";
+var Premadeletter20 = "Keep Them Disabled";
+var Premadeletter21 = "Searching IP";
+var Premadeletter22 = "Your teammate";
+var Premadeletter23 = "wants you to hide all (leaderboard and minimap)";
+var Premadeletter24 = "Accept";
+var Premadeletter25 = "NO WAY!";
+var Premadeletter26 = "wants you to change your name to";
+var Premadeletter27 = "wants you to Enable Troll on death";
+var Premadeletter28 = "wants you to open Youtube Player";
+var Premadeletter29 = "Leaderboard found";
+var Premadeletter30 = "Search";
+var Premadeletter31 = "The leaderboard was not found. Keep trying...";
+var Premadeletter32 = "Search was canceled";
+var Premadeletter33 = "You are invisible to Team / Clan";
+var Premadeletter34 = "You are visible to Team / Clan";
+var Premadeletter35 = "Hide/Show can be used only while playing";
+var Premadeletter36 = "This is not valid Discord Webhook address";
+var Premadeletter37 = "Server is locked";
+var Premadeletter38 = "You must be on spectate mode";
+var Premadeletter39 = "Due to spamming issues, you must be in game and use password";
+var Premadeletter40 = "Auto Youtube On";
+var Premadeletter41 = "Auto Youtube Off";
+var Premadeletter42 = "Show Shortcuts";
+var Premadeletter43 = "Hide Shortcuts";
+var Premadeletter44 = "Show XP BAR";
+var Premadeletter45 = "Hide XP BAR";
+var Premadeletter45a = "Rounded Hud";
+var Premadeletter45b = "Square Hud";
+var Premadeletter46 = "Show Anim. Skins";
+var Premadeletter47 = "Hide Anim. Skins";
+var Premadeletter48 = "Show Everything";
+var Premadeletter49 = "Hide Everything";
+var Premadeletter50 = "Show Timer Calc.";
+var Premadeletter51 = "Hide Timer Calc."
+//var Premadeletter52="Edit Names";
+//var Premadeletter52a="Close Names";
+var Premadeletter53 = "Auto free coins";
+var Premadeletter54 = "Stop free coins";
+var Premadeletter55 = "Troll on Death";
+var Premadeletter56 = "No troll on Death";
+var Premadeletter57 = "Communication";
+var Premadeletter58 = "Hidden";
+var Premadeletter59 = "Visible";
+var Premadeletter60 = "Pause";
 
