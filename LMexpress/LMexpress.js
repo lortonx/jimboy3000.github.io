@@ -394,9 +394,6 @@ function init(modVersion) {
             placement: "bottom"
         });
         //Fix Class Legend Tab
-        $(".legend-tab").click(function() {
-            MC.setQuality($('#quality').val())
-        });
 
         var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
         //	var savemusic=$(".agario-panel.sounds-panel").html();
