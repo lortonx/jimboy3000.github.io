@@ -1,8 +1,8 @@
 /*************
- * LEGEND mod Express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "00"; // the version 1.1-> 1.11
+var semimodVersion = "01"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -1398,7 +1398,7 @@ setTimeout(function() {
 			$("#server").val(searchSip);
 			$("#connect2").click();
 			}
-			else(){
+			else{
 			adres();}
             }, 2000);
             adres();
