@@ -199,7 +199,7 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
-languagemod();
+languagemodfun();
 appendLMhiFbPs();
 if (realmode == "") {modebetter2 = ":ffa";} 
 else {modebetter2 = realmode;}
@@ -305,21 +305,13 @@ function enableshortcuts() {
     if ($("#SHOSHOBtn").attr('aria-pressed') == "false") {
         $("#SHOSHOBtn").click();
     }
-    //	if($("#TIMEBtn").attr('aria-pressed') == "false"){
-    //	$("#TIMEBtn").click(); }
-    //	if($("#MAINBBtn").attr('aria-pressed') == "false"){
-    //	$("#MAINBBtn").click(); }
-    //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
-    //	$("#MAINBTBtn").click(); }
-	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
-				$("#MAINBTBtn").click(); }
-//			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
-//				$("#AnimatedSkinBtn").click(); }
+	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+		$("#MAINBTBtn").click(); }
     if ($("#XPBtn").attr('aria-pressed') == "false") {
         $("#XPBtn").click();
     }
-    //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
-    //	$("#MANUIBtn").click(); }
+
+	
 }
 
 function getParameterByName(name, url) {
@@ -334,7 +326,7 @@ function getParameterByName(name, url) {
 
 
 
-function languagemod(){
+function languagemodfun(){
 if (languagemod == 2) {
     var s = document.createElement("script");
     s.type = "text/javascript";
