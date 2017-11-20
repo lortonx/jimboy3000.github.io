@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "00"; // the version 1.1-> 1.11
@@ -1071,10 +1071,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
         });
 		
 	
-	        if (searchSip != null) {
-			$("#server").val(searchSip);
-			$("#submit2").click();
-        }
+
 });
 }
 
@@ -1232,6 +1229,10 @@ setTimeout(function() {
                             currentIP = tmz;
                             if (realmode != ":party") {
                                 setTimeout(function() {
+									if (searchSip != null) {
+										$("#server").val(searchSip);
+										$(".submit2").click();
+									}
                                     history.pushState(stateObj, "page 2", "?sip=" + tmz);
                                 }, 3000);
                                 setTimeout(function() {
@@ -1250,10 +1251,10 @@ setTimeout(function() {
             })
             setTimeout(function() {
                 adres();
-            }, 5000);
+            }, 2000);
             setTimeout(function() {
                 adres();
-            }, 7000);
+            }, 4000);
             adres();
 
         })(window, window.jQuery);
