@@ -2519,14 +2519,14 @@ function init(modVersion) {
 				//important announcement
    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center">LM needs more updates</font><font color="yellow"> (1-5) days</font><font color="black">'+
+				'<br><font  font-size:16px; text-align:center"><a href="https://jimboy3100.github.io/legendmod.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4,2.5)<font color="black">'+
 				'<br>If you are able to play, <font color="red">DO NOT </font>CHANGE ANY SETTINGS'+
 				'<br>If not, go to Setting (4th)tab-><font color="red"> SKINS</font>'+
 				'<br>No Skins-> <font color="red">OFF</font>'+
 				'<br>Custom Skins-> <font color="red">ON</font>'+
 				'<br>Vanilla Skins-> <font color="red">ON</font>'+
-				'<br><font color="#018cf6">Stay informed</font>.'+
-				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
+				'<font  font-size:16px; text-align:center"><br>Visit <a href="https://legendmod.joomla.com/en/" target="_blank" class="title"><font color="blue"><u>www.legendmod.ml</u></a></font></font>'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");
 				
         $("#infoicon").mouseover(function() {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
