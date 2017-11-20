@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod Express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "00"; // the version 1.1-> 1.11
@@ -267,6 +267,7 @@ function init(modVersion) {
             '</div>');
 
         $(".menu-tabs").children().attr("style", "width: 14.27%;");
+		/*
         $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
         //  $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 150px;\')" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
         //	$(".menu-tabs").children().last().before('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
@@ -396,7 +397,7 @@ function init(modVersion) {
             placement: "bottom"
         });
         //Fix Class Legend Tab
-
+*/
         var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
         //	var savemusic=$(".agario-panel.sounds-panel").html();
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
@@ -965,10 +966,10 @@ function loadericon() {
 	//continue loadericon
     setTimeout(function() {
         setTimeout(function() {
-        $("#imagebig").fadeOut(2500);
-		setTimeout(function() {$("#imagebig").remove();}, 2600); //remove it
-		}, 3000);   
-		}, 1000);
+        $("#imagebig").fadeOut(1500);
+		setTimeout(function() {$("#imagebig").remove();}, 1600); //remove it
+		}, 2000);   
+		}, 100);
 }
 function PremiumUsers(){
         var ProLicenceUsersTableJS = document.createElement("script");
@@ -1376,10 +1377,6 @@ setTimeout(function() {
                             currentIP = tmz;
                             if (realmode != ":party") {
                                 setTimeout(function() {
-									if (searchSip != null) {
-										$("#server").val(searchSip);
-										$("#connect2").click();
-									}
                                     history.pushState(stateObj, "page 2", "?sip=" + tmz);
                                 }, 3000);
                                 setTimeout(function() {
@@ -1395,7 +1392,11 @@ setTimeout(function() {
                     }
 
                 });
-            })
+            });
+			if (searchSip != null) {
+			$("#server").val(searchSip);
+			$("#connect2").click();
+			}
             setTimeout(function() {
                 adres();
             }, 2000);
@@ -1403,7 +1404,7 @@ setTimeout(function() {
                 adres();
             }, 4000);
             adres();
-
+	
         })(window, window.jQuery);
     
 }, 1500);		
