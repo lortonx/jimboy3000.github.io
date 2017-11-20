@@ -593,11 +593,11 @@ function adres() {
 			    realmode = $("#gamemode").val();
                 if (searchSip == null && privateSrv==null) {
                     if (realmode != ":party") {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + window.location.href.replace('http://agar.io/#','') + "&?m=" + realmode);
+                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                     }
                     else if (realmode == ":party") {
-                        window.history.pushState(null, null, window.location.pathname);
-                        history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
+ //                       window.history.pushState(null, null, window.location.pathname);
+//                        history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
                     }
 				}
 				else if (privateSrv!=null) {				
@@ -649,8 +649,6 @@ setTimeout(function() {
                     placement: "left"
                 });
                 $("#connect2").click(function() {
-
-
                     if ($("#server").val().includes("#") == false) {
                         var texture2, texture3;
 					    var texture2, texture3;
@@ -659,23 +657,9 @@ setTimeout(function() {
 						texture2 = texture2.replace(".agar.io:80", "");
 						$("#server-token").val(texture2);
 						$("#server-join").click();
-
-						
-/*                        texture3 = $("#server").val();
-                        texture2 = texture3.substring(0, texture3.indexOf(':'));
-                        texture2 = texture2.replace(".", "-");
-                        texture2 = texture2.replace(".", "-");
-                        texture2 = texture2.replace(".", "-");
-                        texture3 = texture3.split(':').pop();
-                        texture3 = "ws://ip-" + texture2 + ".tech.agar.io:" + texture3 + "/";
-                        a.core.connect(texture3);
-*/
                         setTimeout(function() {
                             realmode = $("#gamemode").val();
-//                            $("#cur-tk-hud").fadeTo('fast', 0.2).fadeTo('fast', 1.0);
                             var tmz = $("#server").val();
-                            // tmz=tmz.replace("ip-", "");tmz=tmz.replace(/-/g,".");tmz=tmz.replace(".tech.agar.io","");tmz=tmz.replace("ws://","");tmz=tmz.replace("/","");
-//                            $("#cur-tk-hud").text(" IP:" + tmz).attr("style", "opacity: 0;");
                             currentIP = tmz;
                             if (realmode != ":party") {
                                 setTimeout(function() {
@@ -721,7 +705,7 @@ setTimeout(function() {
             }
         } else if (searchSip == null && privateSrv==null) {
             if (realmode != ":party") {
-                history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + window.location.href.replace('http://agar.io/#','') + "&?m=" + realmode);
+                history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
             }
         }		
         $("#server-ws").on('change', function() {
@@ -730,11 +714,11 @@ setTimeout(function() {
                 realmode = $("#gamemode").val();
                 if (searchSip == null) {
                     if (realmode != ":party") {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + window.location.href.replace('http://agar.io/#','') + "&?m=" + realmode);
+                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                     }
                     else if (realmode == ":party") {
-                        window.history.pushState(null, null, window.location.pathname);
-                        history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
+ //                       window.history.pushState(null, null, window.location.pathname);
+ //                       history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
                     }
                 }               
                 return realmode;
@@ -747,6 +731,7 @@ setTimeout(function() {
     }, //5000
     9000); //9000
 }
+function onhashchange(){return false}
 function LMminimapTextAct(){
 setTimeout(function() {LMminimapText();  }, 6000);
 setTimeout(function() {LMminimapText();  }, 6500);
