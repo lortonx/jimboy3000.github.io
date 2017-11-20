@@ -471,7 +471,271 @@ function init(modVersion) {
                 localStorage.setItem("musicUrl", pastedData.trim());
             }
         });
+
+        // save notes
+        $(".note").keyup(function(event) {
+            localStorage.setItem(event.target.id, $(event.target).val());
+        });
+
+        $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
+            '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
+            '</div></div>');
+        $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
+            '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
+            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
+            '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
+            'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
+
+            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; left: 0px; padding: 0px; border-radius: 0px;">' +
+            '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
+            '</div>' +
+            '<div id="dropDown2" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 90px; left: 67px; padding: 0px; border-radius: 0px;">' +
+            '<a id="copySIPandPass" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Password">TK&PW</a>' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
+            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP, Password, Leaderboard...">TK&ALL</a>' +            
+			'</div>' +
+            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: 0px; border-radius: 0px;">' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
+//            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
+            '</div>' +
+
+            '<input id="tempCopy" style="display: none;" value="">' +
+            '</div>');
+
+        //$("#searchShortcut").mouseenter(function () {
+        //$("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
+        $("#copySIPBtn").mouseenter(function() {
+            $("#dropDown3").hide();
+            $("#copySIPBtn").text("Token");
+			if ($("#clantag").val()!=""){
+				$("#dropDown2").show(100);
+			}
+            else {
+				$("#dropDown").show(100);
+				}
+        });
+        $("#leaderboard-menu").mouseleave(function() {
+            $("#dropDown").hide();
+			$("#dropDown2").hide();
+            $("#dropDown3").hide();
+            $("#copySIPBtn").text("Copy");
+        });
+        $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><span class="glyphicon glyphicon-ban-circle"></span></a>');
+        $("#searchBtn").tooltip('disable');
+        $("#copyLBBtn").click(function() {
+            copy(getLeaderboard());
+        });
+        $("#lastIPBtn").click(function() {
+            lastIP = localStorage.getItem("lastIP");
+            dosearch();
+            document.getElementById("searchInput").value = lastIP;
+            $("#searchBtn").click();
+        });
+        //	$("#OpenInfo").click(function () {openhelper();});
+
+        $("#copyIPBtn").click(function() {
+            if (searchSip != null) {
+                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=ws://" + searchSip);
+            } else {
+                copy("http://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=ws://" + currentIP);
+            }
+        });
+
+        $("#copySIPBtn").click(function() {
+            if (searchSip != null) {
+                if (realmode == ":party") {
+                    copy("http://agar.io/#" + window.location.href.replace('http://agar.io/#',''));
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+                    copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + realmode);
+					}
+					else{
+					copy("http://agar.io/?sip=" + searchSip);	
+					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+                    copy("http://agar.io/#" + window.location.href.replace('http://agar.io/#',''));
+                } else if (realmode != ":party") {					
+                    copy("http://agar.io/?sip=" + currentIP + "&?r=" + $('#region').val() + "&m=" + realmode);
+                }
+            }
+			else if (privateSrv!=null) {
+                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");                
+            }
+        });
+        $("#copySIPandPass").click(function() {
+            if (searchSip != null) {
+                if (realmode == ":party") {
+                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#',''));
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+                    copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode);
+					}
+					else{
+					copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val());	
+					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#',''));
+                } else if (realmode != ":party") {					
+                    copy("http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode);
+                }
+            }
+			else if (privateSrv!=null) {
+                    copy("http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE");                
+            }
+        });	
+        $("#copySIPPassLB").click(function() {
+
+            if (searchSip != null) {
+                if (realmode == ":party") {
+                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#','');
+					copyToClipboardAll();					
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copyToClipboardAll();
+					}
+					else{
+					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val();	
+					copyToClipboardAll();
+					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#','');
+					copyToClipboardAll();
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copyToClipboardAll();
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copyToClipboardAll();					
+            }
+        });			
+
+        $("#reconnectBtn").click(function() {
+            realmode=getGameMode();
+			ogario.gameMode = realmode;
+            hideMenu();
+            changeServer();
+            if (!$("#searchHud").is(':visible')) {
+                delay(200, spectate);
 		
+            }
+        });
+	
+
+
+        /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
+        $("#reconnectBtn").mouseenter(function() {
+            $("#dropDown").hide();
+			$("#dropDown2").hide();
+            $("#copySIPBtn").text("Copy");
+        });
+
+        $("#searchBtn").click(function() {
+            var searchString = $("#searchInput").val();
+            searchHandler(searchString);
+        });		
+        $("#searchInput").keyup(function(event) {
+            if (event.keyCode == 13) {
+                $("#searchBtn").click();
+            }
+        });
+	
+        $("#closeBtn").click(function() {
+            hideSearchHud();
+        });
+        $("#searchShortcut").click(function() {
+            hideMenu();
+            showSearchHud();
+            $("#searchInput").focus().select();
+        });
+
+        $('#nick').mouseenter(function() {
+            $('#nick').css('background-color', '#000066');
+            return clickedname = "YES"
+        }).mouseleave(function() {
+            $('#nick').css('background-color', '');
+        });
+        $('#nick').blur(function() {
+			previousnickname=$("#nick").val();
+			localStorage.setItem("previousnickname", previousnickname);
+            if (clickedname == "YES") {
+                if ($("#nick").val().length >= 16) {
+                    toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
+                }
+            }
+            if ($("#nick").val() == "EasterEgg1") {
+                toastr["info"](Premadeletter3).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openbleedmod();
+            } else if ($("#nick").val() == "EasterEgg2") {
+                toastr["info"](Premadeletter4).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openrotatingmod();
+            } else if ($("#nick").val() == "EasterEgg3") {
+                toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>');
+                $("#nick").val("Video");
+                openvidmod();
+            }
+        });
+		
+		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
+        $('#clantag').mouseenter(function() {
+            $('#clantag').css('background-color', '#000066');
+        }).mouseleave(function() {
+            $('#clantag').css('background-color', '');
+			if (privateSrv==null){
+			saveclanpassword=$("#clantag").val();
+			localStorage.setItem("saveclanpassword", saveclanpassword);
+			}
+        });
+        //	$('#region').unbind('mouseenter');
+        //	$('#gamemode').unbind('mouseenter');
+        $('#region').mouseenter(function() {
+            $('#region').css('background-color', '#003300');
+        }).mouseleave(function() {
+            $('#region').css('background-color', '');
+        });
+        $('#gamemode').mouseenter(function() {
+            $('#gamemode').css('background-color', '#003300');
+        }).mouseleave(function() {
+            $('#gamemode').css('background-color', '');
+        });
+
+        //define if it is clicked
+        $("#create-party-btn-2").click(function() {
+            if (hiddenfromclan == 0) {
+                $("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+                $("#ChatBtn1").attr('class', 'fa fa-eye-slash');
+            } else if (hiddenfromclan == 1) {
+                $("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+            }
+            //return messageone=1;
+        });
+
+		
+		
+		
+        $("#boostButton").css("display", "inline-block");
+        $("#massButton").css("display", "inline-block");
+        $("#massButton").after($("#promo-badge-container"));
+
+	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
+        '<br>Legend Mod by jimboy3100</i></h6></div>');
+		$(".agario-profile-name").css('display', 'inline-block');
+		$(".agario-profile-name").css('vertical-align', ' baseline');
+		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
+				
 		
 		
         console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');		
