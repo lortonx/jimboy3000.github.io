@@ -2,7 +2,7 @@
  * LM Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "02"; // the version 1.1-> 1.11
+var semimodVersion = "03"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1456,7 +1456,8 @@ setTimeout(function() {
 			$("#server").val(searchSip);
 			$("#connect2").click();
 			}
-			else if(window.location.href.includes('http://agar.io/#')==true){
+			else if(url.includes('http://agar.io/#')==true){
+			$("#server").val(url.replace('http://agar.io/#',''))			
 			joinpartyfromconnect();
 			}
 			else{
