@@ -1,5 +1,5 @@
 /*************
- * LM Express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "03"; // the version 1.1-> 1.11
@@ -130,6 +130,7 @@ var usedonceSkin=0;
 var toastrSkinNotice=0;
 var detailed="";
 var detailed1;
+var fromstart="false";
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
@@ -1356,13 +1357,18 @@ $('#gamemode').on('change', function() {
     }		
 });
 }
-function adres() {
+function adres(thismode) {
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
 			$("#server").val(currentIP);
-			setTimeout(function() {				 
-			    realmode = $("#gamemode").val();
+			setTimeout(function() {	
+				if(!thismode){
+					realmode = $("#gamemode").val();
+				}
+				else {
+					realmode=thismode;
+				}
                 if (privateSrv==null) {
                     if (realmode != ":party") {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
@@ -1430,7 +1436,15 @@ setTimeout(function() {
 						$("#server-token").val(texture2);
 						$("#server-join").click();
                         setTimeout(function() {
+
+							if (fromstart==true){
+								realmode = getParameterByName("m", url);
+								realmode = $("#gamemode").val();
+								returnfromstartfalse();
+							}
+							else{
                             realmode = $("#gamemode").val();
+							}
                             var tmz = $("#server").val();
                             currentIP = tmz;
                             if (realmode != ":party") {
@@ -1469,7 +1483,7 @@ setTimeout(function() {
 			}
 			else{
 			adres();}
-            }, 2000);
+            }, 1000);
             adres();
 	
         })(window, window.jQuery);
@@ -1628,8 +1642,13 @@ function realmodereturn(){
 }
 function realmodereturnfromStart(){
 		realmode = getParameterByName("m", url);
-		return realmode;
+		return fromstart=true;
+		return realmode,fromstart;
 }
+function returnfromstartfalse(){
+return fromstart=false;	
+}
+
 function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
     //	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
     $("#Backtomenu").hide();
@@ -1911,7 +1930,7 @@ function legendformIframe() {
     s.src = "https://jimboy3100.github.io/legendformIframe.js";
     $("body").append(s);
 }
-function joinpartyfromconnect() {
-    $("#party-token").val($("#server").val());
-	$("#join-party-btn-2").click();
+function joinpartyfromconnect(thismode) {
+					    $("#party-token").val($("#server").val());
+						$("#join-party-btn-2").click();
 }
