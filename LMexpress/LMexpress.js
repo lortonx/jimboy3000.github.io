@@ -1,9 +1,10 @@
 /*************
- * LM Express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "02"; // the version 1.1-> 1.11
 loadersetings();
+appendLMhiFbPs();
 loadericon();
 PremiumUsers();
 document.title = "Legend mod";
@@ -199,8 +200,8 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
+
 languagemodfun();
-appendLMhiFbPs();
 if (realmode == "") {modebetter2 = ":ffa";} 
 else {modebetter2 = realmode;}
 LMserverbox();
@@ -1455,6 +1456,9 @@ setTimeout(function() {
 			$("#server").val(searchSip);
 			$("#connect2").click();
 			}
+			else if(window.location.href.includes('http://agar.io/#')==true){
+			joinpartyfromconnect();
+			}
 			else{
 			adres();}
             }, 2000);
@@ -1587,6 +1591,14 @@ function joinToken(token) {
 
 }
 
+function searchHandler(searchStr) {
+    searchStr = searchStr.trim();
+    if (searchIPHandler(searchStr)) { // is an IP      
+    } else if (searchTKHandler(searchStr)) { // is a token     
+    } else {
+        searchPlayer(searchStr);
+    }
+}
 function searchTKHandler(searchStr) {
     searchStr = searchStr.trim();
 
