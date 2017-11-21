@@ -1,5 +1,5 @@
 /*************
- * LM Express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "03"; // the version 1.1-> 1.11
@@ -1439,7 +1439,6 @@ setTimeout(function() {
 
 							if (fromstart==true){
 								realmode = getParameterByName("m", url);
-								realmode = $("#gamemode").val();
 								returnfromstartfalse();
 							}
 							else{
