@@ -211,7 +211,7 @@ urlIpWhenOpened();
 var minbtext2 = minbtext;
 var minbtext3 = minbtext;
 if (minbtext == null || minbtext == "") {
-    minbtext = "Legend Mod"; //LM Express/Locked
+    minbtext = "Legend Express"; //LM Express/Locked
     minbtext2 = "LM Express";
 	minbtext3 = "LM Express/Private";
 }
