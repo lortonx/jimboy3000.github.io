@@ -1453,12 +1453,15 @@ setTimeout(function() {
             });
             setTimeout(function() {
 			if (searchSip != null) {
+			realmodereturnfromStart();
 			$("#server").val(searchSip);
 			$("#connect2").click();
 			}
 			else if(url.includes('http://agar.io/#')==true){
-			$("#server").val(url.replace('http://agar.io/#',''))			
+			realmodereturnfromStart();
+			$("#server").val(url.replace('http://agar.io/#',''));			
 			joinpartyfromconnect();
+			
 			}
 			else{
 			adres();}
@@ -1619,7 +1622,10 @@ function realmodereturn(){
 		realmode = $("#gamemode").val();
 		return realmode;
 }
-
+function realmodereturnfromStart(){
+		realmode = getParameterByName("m", url);
+		return realmode;
+}
 function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
     //	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
     $("#Backtomenu").hide();
