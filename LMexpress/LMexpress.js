@@ -1,5 +1,5 @@
 /*************
- * LM Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "03"; // the version 1.1-> 1.11
@@ -1453,11 +1453,15 @@ setTimeout(function() {
             });
             setTimeout(function() {
 			if (searchSip != null) {
+			if(realmode=null){
+			$('#gamemode').val(realmode);}
 			realmodereturnfromStart();
 			$("#server").val(searchSip);
 			$("#connect2").click();
 			}
 			else if(url.includes('http://agar.io/#')==true){
+			
+			$('#gamemode').val(":party");
 			realmodereturnfromStart();
 			$("#server").val(url.replace('http://agar.io/#',''));			
 			joinpartyfromconnect();
