@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "01"; // the version 1.1-> 1.11
@@ -209,9 +209,9 @@ urlIpWhenOpened();
 var minbtext2 = minbtext;
 var minbtext3 = minbtext;
 if (minbtext == null || minbtext == "") {
-    minbtext = "Legend Mod"; //Legend Mod/Locked
-    minbtext2 = "Legend Mod";
-	minbtext3 = "Legend Mod/Private";
+    minbtext = "Legend Mod"; //LM Express/Locked
+    minbtext2 = "LM Express";
+	minbtext3 = "LM Express/Private";
 }
 LMminimapTextAct();
 
@@ -231,8 +231,8 @@ function init(modVersion) {
     }
 
     setTimeout(function() {
-        document.title = "Legend mod v" + modVersion;
-
+        document.title = "LM Express v" + modVersion;
+		$("#leaderboard-hud > h4").text("Leaderboard");
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
         $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
@@ -269,6 +269,42 @@ function init(modVersion) {
 		$("#exp-bar").hide();
 		$(".menu-tabs").children().attr("style", "width: 19.99%;");
 		$(".profile-tab").hide();
+		$('#server').css("width", "-=40px");	
+$('#connect2').before('<button id="CopyAll" class="fa fa-clipboard" style="background-color: transparent;"><i class="fa fa-language"></i></button>');
+$("#CopyAll").tooltip({
+    title: "Copy Server, Password, Teamboroad & Leaderboard",
+    placement: "left"
+});
+        $("#CopyAll").click(function() {
+
+            if (searchSip != null) {
+                if (realmode == ":party") {
+                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + $("#server").val();
+					copyToClipboardAll();					
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copyToClipboardAll();
+					}
+					else{
+					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val();	
+					copyToClipboardAll();
+					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + $("#server").val();
+					copyToClipboardAll();
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copyToClipboardAll();
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copyToClipboardAll();					
+            }
+        });	
  /*       $(".menu-tabs").children().attr("style", "width: 14.27%;");
 		
         $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
@@ -738,12 +774,12 @@ function init(modVersion) {
         $("#massButton").after($("#promo-badge-container"));
 
 	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-        '<br>Legend Mod by jimboy3100</i></h6></div>');
+        '<br>LM Express by jimboy3100</i></h6></div>');
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
 		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
 				
-		        //Legend Mod Cursors
+		        //LM Express Cursors
         if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
         } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
@@ -883,7 +919,7 @@ function init(modVersion) {
             marginBottom: "-10px"
         });
         $("#menu-footer").text("");
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend Express v' + modVersion + semimodVersion + ' Beta</a></span>' +
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="LM Express Website" data-placement="left">Legend Express v' + modVersion + semimodVersion + ' Beta</a></span>' +
             '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
 
         $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -1397,13 +1433,13 @@ setTimeout(function() {
                             if (realmode != ":party") {
                                 setTimeout(function() {
                                     history.pushState(stateObj, "page 2", "?sip=" + tmz);
+                                }, 1000);
+                                setTimeout(function() {
+                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
+                                }, 2000);
+                                setTimeout(function() {
+                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
                                 }, 3000);
-                                setTimeout(function() {
-                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
-                                }, 5000);
-                                setTimeout(function() {
-                                    history.pushState(stateObj, "page 2", "?sip=" + tmz);
-                                }, 7000);
                             }
                         }, 1000);
                     } else {
@@ -1424,7 +1460,7 @@ setTimeout(function() {
 	
         })(window, window.jQuery);
     
-}, 1500);		
+}, 500);		
 }
 function urlIpWhenOpened(){
 setTimeout(function() {
@@ -1513,7 +1549,7 @@ function changeServer() {
     MC.setGameMode(ogario.gameMode);
     MC.reconnect();
     adres();
-    appendLog(getLeaderboard());
+    appendLog($("#leaderboard-positions").text());
 }
 
 function isValidIpAndPort(input) {
@@ -1789,6 +1825,27 @@ function searchPlayer(searchString) {
         hideCancelSearch();
         toastr["error"](Premadeletter32).css("width", "210px");
     }
+}
+function copyToClipboard(element) {
+  var $temp = $("<textarea>");
+  $("body").append($temp);
+  var html = $(element).html();
+  html = html.replace(/<br>/g, "\n"); // or \r\n
+  console.log(html);
+  $temp.val(html).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+function copyToClipboardAll(){	
+$("#CopyTkPwLb").remove();
+	if ($("#top5-pos").text()!=""){
+		$("#connect2").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+$("#leaderboard-positions").text() + '<br>Teamboard:' +$("#top5-pos").text() +'<br>My Game Name: ' +$("#nick").val() +'</er>');
+	}
+	else{
+		$("#connect2").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+$("#leaderboard-positions").text() + '<br>My Game Name: ' +$("#nick").val()+'</er>');
+	}
+copyToClipboard('er#CopyTkPwLb');
 }
 
 function foundName(leaderboard, name) {
