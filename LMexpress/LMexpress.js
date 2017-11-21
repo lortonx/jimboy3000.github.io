@@ -1,5 +1,5 @@
 /*************
- * LM Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "02"; // the version 1.1-> 1.11
@@ -1591,7 +1591,7 @@ function searchTKHandler(searchStr) {
     searchStr = searchStr.trim();
 
     if (searchStr.startsWith("http://agar.io/#")) {		
-        joinToken(searchStr.replace("http://agar.io/#", ""));
+        joinpartyfromconnect(searchStr.replace("http://agar.io/#", ""));
 		realmodereturn();
 		
     } else if (searchStr.startsWith("agar.io/#")) {
@@ -1887,4 +1887,8 @@ function legendformIframe() {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/legendformIframe.js";
     $("body").append(s);
+}
+function joinpartyfromconnect() {
+    $("#party-token").val($("#server").val());
+	$("#join-party-btn-2").click();
 }
