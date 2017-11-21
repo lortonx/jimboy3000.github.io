@@ -1,8 +1,8 @@
 /*************
- * LM Express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "03"; // the version 1.1-> 1.11
+var semimodVersion = "04"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1932,4 +1932,5 @@ function legendformIframe() {
 function joinpartyfromconnect(thismode) {
 					    $("#party-token").val($("#server").val());
 						$("#join-party-btn-2").click();
+						return realmode = ":party";
 }
