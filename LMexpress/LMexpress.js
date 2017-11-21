@@ -1,8 +1,8 @@
 /*************
- * LM Express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "01"; // the version 1.1-> 1.11
+var semimodVersion = "02"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -271,7 +271,7 @@ function init(modVersion) {
 		$(".profile-tab").hide();
 				
 		$('#server').css("width", "-=40px");	
-		$('#server').after('<button id="CopyAll" class="btn btn-info" style="background-color: transparent; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
+		$('#server').before('<button id="CopyAll" class="btn btn-info" style="background-color: transparent; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
 
 		$("#CopyAll").tooltip({
 		title: "Copy Server, Password, Teamboroad & Leaderboard",
