@@ -1,8 +1,8 @@
 /*************
- * LM Express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "03"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -283,7 +283,7 @@ function init(modVersion) {
 
             if (searchSip != null) {
                 if (realmode == ":party") {
-                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + $("#server").val();
+                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();					
                 } else if (realmode != ":party") {
 					if (region!=null&&realmode!=null){
@@ -297,7 +297,7 @@ function init(modVersion) {
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + $("#server").val();
+					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();
                 } else if (realmode != ":party") {					
                     CopyTkPwLb2="http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
