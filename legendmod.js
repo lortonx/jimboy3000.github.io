@@ -2517,6 +2517,7 @@ function init(modVersion) {
 //		}
 	}
 				//important announcement
+				/*
    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
 				'<br><font  font-size:16px; text-align:center"><a href="jimboy3100.github.io/LMexpress/LMexpress.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4,2.5)<font color="black">'+
@@ -2527,7 +2528,7 @@ function init(modVersion) {
 				'<br>Vanilla Skins-> <font color="red">ON</font>'+
 				'<font  font-size:16px; text-align:center"><br>Visit <a href="https://legendmod.joomla.com/en/" target="_blank" class="title"><font color="blue"><u>www.legendmod.ml</u></a></font></font>'+
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");
-				
+				*/
         $("#infoicon").mouseover(function() {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
