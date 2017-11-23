@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.544 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.545 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "94"; // the version 1.1-> 1.11
+var semimodVersion = "01"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1128,7 +1128,8 @@ function init(modVersion) {
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-		
+		$(".quick-quests.ogicon-trophy").after('<a id= "LegGoogleForm" class="fa fa-briefcase" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Special Deals" onclick="SpecialDeals(); return false;"></a>'+
+		'<a id= "ModInfoQuick" class="fa fa-grav" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Vanilla Skins" onclick="openVanillaSkins(); return false;"></a>');		
         // prevent edit
         $("#musicUrl").on("input", function() {
             $(this).attr("maxlength", "0");
@@ -4736,7 +4737,9 @@ function dosendmsgcommand() {
     }
 
 }
-
+function openVanillaSkins(){		
+	$("#skinButton").click(); return false;
+}
 
 function openhelper() {
     var s = document.createElement("script");
