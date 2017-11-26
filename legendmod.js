@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.545 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "01"; // the version 1.1-> 1.11
+var semimodVersion = "02"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1208,6 +1208,9 @@ function init(modVersion) {
         $("#copyLBBtn").click(function() {
             copy(getLeaderboard());
         });
+        $("#dropDown>#copyLBBtn").click(function() {
+            copy(getLeaderboard());
+        });		
         $("#lastIPBtn").click(function() {
             lastIP = localStorage.getItem("lastIP");
             dosearch();
@@ -2317,7 +2320,9 @@ function init(modVersion) {
         $('#copySIPBtn').mouseenter(function() {$('#copySIPBtn').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#copySIPBtn').css('background-color', "transparent");});		
         $('#copyLBBtn').mouseenter(function() {$('#copyLBBtn').css('background-color', '#018cf6');})
-		.mouseleave(function() {$('#copyLBBtn').css('background-color', "transparent");});	
+		.mouseleave(function() {$('#copyLBBtn').css('background-color', "transparent");});			
+        $('#dropDown>#copyLBBtn').mouseenter(function() {$('#dropDown>#copyLBBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#dropDown>#copyLBBtn').css('background-color', "transparent");});			
 		$('#copySIPandPass').mouseenter(function() {$('#copySIPandPass').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#copySIPandPass').css('background-color', "transparent");});
 		$('#copySIPPassLB').mouseenter(function() {$('#copySIPPassLB').css('background-color', '#018cf6');})
@@ -2904,7 +2909,12 @@ function init(modVersion) {
                 if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
                 }
-            });
+            });			
+            $("#dropDown>#copyLBBtn").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
             $("#copySIPandPass").blur(function() {
                 if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
