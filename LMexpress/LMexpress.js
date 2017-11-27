@@ -782,7 +782,14 @@ function init(modVersion) {
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
 		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
-				
+
+        $('#themePreset>option:nth-child(1)').text("Legend v2");
+        $('#themePreset>option:nth-child(2)').text("Legend v1");
+        $('#themePreset>option:nth-child(3)').text("Legend Original");
+        $('#themePreset>option:nth-child(4)').text("Crazy Style 1");
+        $('#themePreset>option:nth-child(5)').text("Crazy Style 2");
+        $('#menuPreset>option:nth-child(1)').text("Legend v2");
+        $('#menuPreset>option:nth-child(2)').text("Legend v1");				
 		        //LM Express Cursors
         if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
