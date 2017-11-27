@@ -2,7 +2,7 @@
  * LM Express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "05"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -940,10 +940,10 @@ function init(modVersion) {
             if (checked) {
                 localStorage.setItem("YoutubeAutoBtn", true);
                 setTimeout(function() {
-                    $("#playerBtn").click();
+                    playYoutube();
                 }, 2000);
                 setTimeout(function() {
-                    $("#playerBtn").focusout();
+                    playYoutube();
                 }, 2100);
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter41);
             } else {
@@ -951,11 +951,11 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
-		setTimeout(function() {
+//		setTimeout(function() {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
-		}, 1500);	
+//		}, 1500);	
         console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');		
     }, 1500);
 }
@@ -1905,7 +1905,16 @@ copyToClipboard('er#CopyTkPwLb');
 function foundName(leaderboard, name) {
     return leaderboard.includes(name);
 }
-
+function playYoutube(){
+    if (musicPlayer != undefined) {
+        var playerState = musicPlayer.getPlayerState();
+        if (playerState != 1) {
+            musicPlayer.playVideo();
+            } else {
+        musicPlayer.pauseVideo();
+        }
+    }
+}
 function foundNames(leaderboard, names, minNamesFound) {
     var numNames = names.length;
     var countFound = 0;
