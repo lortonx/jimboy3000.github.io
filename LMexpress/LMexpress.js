@@ -951,7 +951,11 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
-		
+		setTimeout(function() {
+		     if (YoutubeAutoBtn == "true") {
+                $("#YoutubeAutoBtn").click();
+            }
+		}, 1500);	
         console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');		
     }, 1500);
 }
