@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.546 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -4937,7 +4937,7 @@ function msgcommand6f() {
 
 function dosendmsgcommand() {
 
-    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+//    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
         if ($('#message-box').css('display') == 'none') {
             KeyEvent.simulate(13, 13);
         };
@@ -4951,9 +4951,9 @@ function dosendmsgcommand() {
                 KeyEvent.simulate(13, 13);
             }
         }, 100);
-    } else {
-        toastr["info"](Premadeletter39);
-    }
+ //   } else {
+ //       toastr["info"](Premadeletter39);
+ //   }
 
 }
 function openVanillaSkins(){		
