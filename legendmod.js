@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.545 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "02"; // the version 1.1-> 1.11
+var semimodVersion = "03"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3034,9 +3034,9 @@ function init(modVersion) {
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
                         TeamboardController9();
-                    });                   		
-                else }	
-                if (commandMsg == "Teamer10") {	
+                    }); 
+				}					
+                else if (commandMsg == "Teamer10") {	
 					SkinChangerAccepted();
                     toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput10").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
