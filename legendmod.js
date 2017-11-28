@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.546 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "06"; // the version 1.1-> 1.11
+var semimodVersion = "03"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1389,12 +1389,12 @@ function init(modVersion) {
         });
 		
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
-		$('#opennamechars').attr('placeholder', 'Name').tooltip({
+		$('#opennamechars').tooltip({
             title: "Design Nickname Font",
             placement: "bottom"
         });
-		$('#hide-url').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="ReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
-		$('#opennamechars').attr('placeholder', 'Name').tooltip({
+		$('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="ReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
+		$('#openskinchanger').attr('placeholder', 'Name').tooltip({
             title: "Flag the Fake's Skin",
             placement: "bottom"
         });		
