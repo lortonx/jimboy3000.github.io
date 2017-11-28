@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.545 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "03"; // the version 1.1-> 1.11
+var semimodVersion = "04"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2847,203 +2847,203 @@ function init(modVersion) {
                     //	$("#playerBtn").click();			
                 }
                 else if (commandMsg == "Leader1") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput1").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController1();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader2") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput2").val()+' as fake.<br>Do you want '+$("#LeaderboardInput2").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController2();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader3") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput3").val()+' as fake.<br>Do you want '+$("#LeaderboardInput3").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController3();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader4") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput4").val()+' as fake.<br>Do you want '+$("#LeaderboardInput4").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController4();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader5") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput5").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController5();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader6") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput6").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController6();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader7") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput7").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController7();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader8") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput8").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController8();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader9") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput9").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController9();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Leader10") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#LeaderboardInput10").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController10();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer1") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput1").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController1();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer2") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput2").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController2();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer3") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput3").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController3();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer4") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput4").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController4();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer5") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput5").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController5();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer6") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput6").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController6();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer7") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput7").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController7();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer8") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput8").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController8();
+                        LeaderboardController();
                     });                   		
                 }	
                 else if (commandMsg == "Teamer9") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput9").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController9();
+                        LeaderboardController();
                     }); 
 				}					
                 else if (commandMsg == "Teamer10") {	
-					SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +$("#LeaderboardInput1").val()+' as fake.<br>Do you want '+$("#TeamboardInput10").val()+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+					//SkinChangerAccepted();
+                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
                         extendedTimeOut: 20000
                     }).css("width", "300px");
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        TeamboardController10();
+                        LeaderboardController();
                     });                   		
                 }									
             }
@@ -7383,3 +7383,4 @@ function PremiumUsers(){
         ProLicenceUsersTableJS.src = "https://jimboy3100.github.io/AjaxData/ProLicenceUsersTableJS.js";
         $("body").append(ProLicenceUsersTableJS);
 }
+
