@@ -7394,7 +7394,7 @@ function PremiumUsers(){
 }
 
 function ReportFakesSkin() {
-$("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 500px; width: 500px; ";>'+
+$("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 520px; width: 500px; ";>'+
 	'<div id="SkinChangerhud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>Report as Fake (change Skin)</b></h5>'+	
 	'<p style="color:white; font-size:12px";" align="middle">Enter your EXACT name of the player</p>'+
@@ -7418,8 +7418,29 @@ $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-
 											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
-											'</div><p style="color:white; font-size:12px";" align="middle">Beta Function</u></p>'+											
+											'</div><p style="color:white; font-size:12px";" align="middle">LM BETA Utility</u></p>'+											
 											'</div></div>');
+$('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput3').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput4').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput5').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput6').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput7').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput8').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput9').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput10').copyCSS('#server').css('width', '40%');	
+$('#TeamboardInput1').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput2').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput3').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput4').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput5').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput6').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput7').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput8').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput9').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput10').copyCSS('#server').css('width', '40%');
+											
 $("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
 OthersSkinChanger();
 SkinBtnsPut();
