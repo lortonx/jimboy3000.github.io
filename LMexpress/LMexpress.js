@@ -570,7 +570,7 @@ function init(modVersion) {
         $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><span class="glyphicon glyphicon-ban-circle"></span></a>');
         $("#searchBtn").tooltip('disable');
         $("#copyLBBtn").click(function() {
-            copy(getLeaderboard());
+            copy($("#leaderboard-positions").text());
         });
         $("#lastIPBtn").click(function() {
             lastIP = localStorage.getItem("lastIP");
@@ -1618,7 +1618,7 @@ function validateNum(input, min, max) {
 
 function joinToken(token) {
     //var lastMode = $("#gamemode").val();
-    appendLog(getLeaderboard());
+    appendLog($("#leaderboard-positions").text());
     $("#joinPartyToken").val(token);
     $("#join-party-btn").click();
     $("#joinPartyToken").val("");
@@ -1799,7 +1799,7 @@ function searchPlayer(searchString) {
             var numAttempts = 0;
             var maxAttempts = 2;
             toastr["success"](Premadeletter30 + " \'" + searchString + "\'...").css("width", "210px");
-            var leaderboard = getLeaderboard();
+            var leaderboard = $("#leaderboard-positions").text();
             var names = searchString.split(/[1-9]\.\s|10\.\s/g).filter(function(el) {
                 return el.length != 0;
             });
@@ -2031,7 +2031,7 @@ OpenSkinChanger();
 
 
 function OthersSkinChanger(){
-	var leaderboardnames = [getLeaderboard().split('1. ').pop().split('2. ')[0], getLeaderboard().split('2. ').pop().split('3. ')[0], getLeaderboard().split('3. ').pop().split('4. ')[0], getLeaderboard().split('4. ').pop().split('5. ')[0], getLeaderboard().split('5. ').pop().split('6. ')[0], getLeaderboard().split('6. ').pop().split('7. ')[0], getLeaderboard().split('7. ').pop().split('8. ')[0], getLeaderboard().split('8. ').pop().split('9. ')[0], getLeaderboard().split('9. ').pop().split('10. ')[0], getLeaderboard().split('10. ').pop().split('11. ')[0]];
+	var leaderboardnames = [$("#leaderboard-positions").text().split('1. ').pop().split('2. ')[0], $("#leaderboard-positions").text().split('2. ').pop().split('3. ')[0], $("#leaderboard-positions").text().split('3. ').pop().split('4. ')[0], $("#leaderboard-positions").text().split('4. ').pop().split('5. ')[0], $("#leaderboard-positions").text().split('5. ').pop().split('6. ')[0], $("#leaderboard-positions").text().split('6. ').pop().split('7. ')[0], $("#leaderboard-positions").text().split('7. ').pop().split('8. ')[0], $("#leaderboard-positions").text().split('8. ').pop().split('9. ')[0], $("#leaderboard-positions").text().split('9. ').pop().split('10. ')[0], $("#leaderboard-positions").text().split('10. ').pop().split('11. ')[0]];
 $(".team-top-limit")[2].click();
 var Top5b={};
 var Top5c={};
