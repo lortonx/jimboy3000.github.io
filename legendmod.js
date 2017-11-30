@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.546 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.547 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "03"; // the version 1.1-> 1.11
+var semimodVersion = "04"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2855,7 +2855,7 @@ function init(modVersion) {
                     });
                     //	$("#playerBtn").click();			
                 }
-                else if (commandMsg == "Leader1") {	
+            /*    else if (commandMsg == "Leader1") {	
 					//SkinChangerAccepted();
                     toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
                         timeOut: 20000,
@@ -3054,7 +3054,7 @@ function init(modVersion) {
                     $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
                         LeaderboardController();
                     });                   		
-                }									
+                }	*/								
             }
 
             if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
