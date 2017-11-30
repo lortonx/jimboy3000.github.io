@@ -3412,7 +3412,7 @@ function loadersetings() {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
                 if (SHOSHOBtn != "true") {
-                    toastr["error"](Premadeletter18 + '</br> <button id="enableshortcuts1" class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+                    toastr["error"](Premadeletter18 + '</br> <button id="enableshortcuts1" class="btn btn-sm btn-primary btn-spectate btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
                         timeOut: 15000,
                         extendedTimeOut: 15000
                     }).css("width", "300px");
@@ -3425,7 +3425,7 @@ function loadersetings() {
         if (timesopened >= 4) {
             if (checkonlyonce2 != "true") {
                 if (AnimatedSkinBtn == "false") {
-                    toastr["error"]('Your Custom Animated Skins are disabled. We Suggest you to enable them' + '</br> <button id="enableshortcuts2" class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+                    toastr["error"]('Your Custom Animated Skins are disabled. We Suggest you to enable them' + '</br> <button id="enableshortcuts2" class="btn btn-sm btn-primary btn-spectate btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
                         timeOut: 15000,
                         extendedTimeOut: 15000
                     }).css("width", "300px");
@@ -3438,7 +3438,7 @@ function loadersetings() {
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
-                toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+                toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-spectate btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
                     timeOut: 15000,
                     extendedTimeOut: 15000
                 }).css("width", "300px");
