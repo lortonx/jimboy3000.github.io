@@ -7074,7 +7074,7 @@ function animatedskins(){
                   html += '<option value="' + key.toUpperCase() + '">' + key + ' (' + tcm.l.skins[key].frames.length + ' frames)</option>';
                }
                html += '</select>';
-               document.getElementById('openShopBtn').insertAdjacentHTML('afterend', html);
+               document.getElementById('SpecialDealsBtn').insertAdjacentHTML('afterend', html);
             },
          }
       };
