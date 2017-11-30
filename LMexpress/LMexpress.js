@@ -2,7 +2,7 @@
  * LM Express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "05"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -736,6 +736,16 @@ function init(modVersion) {
         });
 		
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#opennamechars').tooltip({
+            title: "Design Nickname Font",
+            placement: "bottom"
+        });
+		$('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="BeforeReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
+		$('#openskinchanger').attr('placeholder', 'Name').tooltip({
+            title: "Flag the Fake's Skin",
+            placement: "bottom"
+        });		
+		
 		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
@@ -1953,4 +1963,289 @@ function joinpartyfromconnect(thismode) {
 					    $("#party-token").val($("#server").val());
 						$("#join-party-btn-2").click();
 						return realmode = ":party";
+}
+
+function BeforeReportFakesSkin(){
+	if ($("#skin").val()!="https://jimboy3100.github.io/banners/iconfake1.png"){
+		toastr["info"]('Fake\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area in order to activate the fake\'s flag function').css("width", "350px");		
+		copy("https://jimboy3100.github.io/banners/iconfake1.png");		
+	}
+	else{
+		ReportFakesSkin();
+	}
+}
+function ReportFakesSkin() {
+$("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 540px; width: 500px; ";>'+
+	'<div id="SkinChangerhud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>Report as Fake (change Skin)</b></h5>'+	
+	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">Enter your EXACT name of the player'+
+	'<br><font style="color:white; size:12px; margin-right: 70px;">Leaderboard</font><font style="color:white; size:12px; margin-left: 70px;">Teamboard</font></p>'+
+											'<input id="LeaderboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline; " " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of Legend Mod</u></p>'+											
+											'</div></div>');
+$('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput3').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput4').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput5').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput6').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput7').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput8').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput9').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput10').copyCSS('#server').css('width', '40%');	
+$('#TeamboardInput1').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput2').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput3').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput4').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput5').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput6').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput7').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput8').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput9').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput10').copyCSS('#server').css('width', '40%');
+										
+$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+OthersSkinChanger();
+SkinBtnsPut();
+OpenSkinChanger();
+}
+
+
+function OthersSkinChanger(){
+	var leaderboardnames = [getLeaderboard().split('1. ').pop().split('2. ')[0], getLeaderboard().split('2. ').pop().split('3. ')[0], getLeaderboard().split('3. ').pop().split('4. ')[0], getLeaderboard().split('4. ').pop().split('5. ')[0], getLeaderboard().split('5. ').pop().split('6. ')[0], getLeaderboard().split('6. ').pop().split('7. ')[0], getLeaderboard().split('7. ').pop().split('8. ')[0], getLeaderboard().split('8. ').pop().split('9. ')[0], getLeaderboard().split('9. ').pop().split('10. ')[0], getLeaderboard().split('10. ').pop().split('11. ')[0]];
+$(".team-top-limit")[2].click();
+var Top5b={};
+var Top5c={};
+var Top5d={};
+var Top5a=$("#top5-pos").text();
+for (var n=1;n<=21;n++){
+	Top5b[n]=Top5a.split('[')[n];
+if (Top5b[n]!=null){
+	Top5c[n]=Top5b[n].split('] ')[1];
+	Top5d[n]=Top5c[n].slice(0, -1);	
+}
+else {Top5d[n-1]=Top5c[n-1];break;}
+console.log(Top5d[n]);
+}
+//}
+
+$("#LeaderboardInput1").val(leaderboardnames[0]);
+$("#LeaderboardInput2").val(leaderboardnames[1]);
+$("#LeaderboardInput3").val(leaderboardnames[2]);
+$("#LeaderboardInput4").val(leaderboardnames[3]);
+$("#LeaderboardInput5").val(leaderboardnames[4]);
+$("#LeaderboardInput6").val(leaderboardnames[5]);
+$("#LeaderboardInput7").val(leaderboardnames[6]);
+$("#LeaderboardInput8").val(leaderboardnames[7]);
+$("#LeaderboardInput9").val(leaderboardnames[8]);
+$("#LeaderboardInput10").val(leaderboardnames[9]);
+
+$("#TeamboardInput1").val(Top5d[1]);
+$("#TeamboardInput2").val(Top5d[2]);
+$("#TeamboardInput3").val(Top5d[3]);
+$("#TeamboardInput4").val(Top5d[4]);
+$("#TeamboardInput5").val(Top5d[5]);
+$("#TeamboardInput6").val(Top5d[6]);
+$("#TeamboardInput7").val(Top5d[7]);
+$("#TeamboardInput8").val(Top5d[8]);
+$("#TeamboardInput9").val(Top5d[9]);
+$("#TeamboardInput10").val(Top5d[10]);
+
+}
+function SkinBtnsPut(){
+$("#LeaderboardInput1").before('<button id="LeaderboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Leader11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput2").before('<button id="LeaderboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Leader12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput3").before('<button id="LeaderboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Leader13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput4").before('<button id="LeaderboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Leader14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput5").before('<button id="LeaderboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Leader15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput6").before('<button id="LeaderboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Leader16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput7").before('<button id="LeaderboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Leader17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput8").before('<button id="LeaderboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Leader18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput9").before('<button id="LeaderboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Leader19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput10").before('<button id="LeaderboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Leader20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+
+
+$("#TeamboardInput1").after('<button id="TeamboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Teamer11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput2").after('<button id="TeamboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Teamer12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput3").after('<button id="TeamboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Teamer13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput4").after('<button id="TeamboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Teamer14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput5").after('<button id="TeamboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Teamer15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput6").after('<button id="TeamboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Teamer16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput7").after('<button id="TeamboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Teamer17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput8").after('<button id="TeamboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Teamber18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput9").after('<button id="TeamboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Teamer19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput10").after('<button id="TeamboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Teamer20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+
+}
+
+
+
+
+function exitSkinChanger(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#SkinChanger").remove();		
+}
+
+function OpenSkinChanger(){
+$("#main-menu").hide();	
+$("#skins-panel").hide();
+$("#quick-menu").hide();
+$("#exp-bar").hide();
+$("#SkinChanger").show();	
+}
+
+//function LeaderboardController(){core.registerSkin(otherMsg, null, 'https://jimboy3100.github.io/banners/iconfake1.png', 1, null);}
+function ProceedToChangeSkins(){
+	console.log("ProceedToChangeSkins function loaded");
+	$("#loaderIframeIcon1").show();
+	loadericon();
+	$("#SkinBacktomenu").click();
+//    setTimeout(function() {
+		setTimeout(function() {$('#server-join').click();}, 1500);
+		
+		setTimeout(function() {$("#nick").val(previousnickname);}, 4500);
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();			
+//    }, 4000);	
+}
+function BeforeChangingSkins(){
+	$(".btn.btn-play.btn-primary").click();
+	$( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https://jimboy3100.github.io/extras/banneranimated2applyingskins.html" name="CodePen" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="display: none; position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');	
+	setTimeout(function() {
+	if($("#captchaWindow").is(":visible")==false){
+	console.log("No recapatcha");
+	ProceedToChangeSkins();
+	}
+	else{
+        toastr["warning"]('Inform me when you finish with Recapatcha!' + '<button class="btn btn-sm btn-warning btn-spectate btn-noplay-finishedRecapatcha" style="margin-top: 10px;border-color: darkblue;">I have finished</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">Never Mind</button>', "", {
+                        timeOut: 40000,
+                        extendedTimeOut: 40000
+                    }).css("width", "300px");
+                     $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click(function() {
+                        ProceedToChangeSkins();
+                    });  
+	console.log("Recapatcha needed");
+	ogarioplayfalse();
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 1000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 1500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 2000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 2500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 3000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 3500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 4000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 4500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 5000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 5500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 6000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 6500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 7000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 7500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 8000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 8500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 9000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 9500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 10000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 10500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 11000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 11500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 12000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 12500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 13000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 13500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 14000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}, 14500);
+
+	}}, 2500);
+}
+function prevnamereturner(){
+	return previousnickname=$("#nick").val();
+}
+function ogarioplayfalse(){
+	return ogario.play="false";
+}
+
+function Leader11() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput1').val()); BeforeChangingSkins();
+}
+function Leader12() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput2').val()); BeforeChangingSkins();
+}
+function Leader13() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput3').val()); BeforeChangingSkins();
+}
+function Leader14() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput4').val()); BeforeChangingSkins();
+}
+function Leader15() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput5').val()); BeforeChangingSkins();
+}
+function Leader16() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput6').val()); BeforeChangingSkins();
+}
+function Leader17() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput7').val()); BeforeChangingSkins();
+}
+function Leader18() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput8').val()); BeforeChangingSkins();
+}
+function Leader19() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput9').val()); BeforeChangingSkins();
+}
+function Leader20() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput10').val()); BeforeChangingSkins();
+}
+function Teamer11() {
+	prevnamereturner(); $("#nick").val($("#TeamboardInput1").val()); BeforeChangingSkins();
+}
+function Teamer12() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput2").val()); BeforeChangingSkins();
+}
+function Teamer13() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput3").val()); BeforeChangingSkins();	
+}
+function Teamer14() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput4").val()); BeforeChangingSkins();
+}
+function Teamer15() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput5").val()); BeforeChangingSkins();	
+}
+function Teamer16() {
+	prevnamereturner(); $("#nick").val($("#TeamboardInput6").val()); BeforeChangingSkins();
+}
+function Teamer17() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput7").val()); BeforeChangingSkins();	
+}
+function Teamer18() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput8").val()); BeforeChangingSkins();		
+}
+function Teamer19() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput9").val()); BeforeChangingSkins();		
+}
+function Teamer20() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput10").val()); BeforeChangingSkins();	
 }
