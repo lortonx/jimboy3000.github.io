@@ -1,8 +1,8 @@
 /*************
- * LM Express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LM Express v0.009 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "06"; // the version 1.1-> 1.11
+var semimodVersion = "07"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -257,7 +257,9 @@ function init(modVersion) {
             '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><span class="glyphicon glyphicon-remove-circle"></span></button>' +
             '</div></div>'
         );
-
+		$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
+            '</div>');
+			
         $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
             '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
             '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
@@ -940,7 +942,7 @@ function init(modVersion) {
             marginBottom: "-10px"
         });
         $("#menu-footer").text("");
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="LM Express Website" data-placement="left">Legend Express v' + modVersion + semimodVersion + ' Beta</a></span>' +
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="LM Express Website" data-placement="left">Legend Express v' + modVersion + semimodVersion + '</a></span>' +
             '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
 
         $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -2248,4 +2250,12 @@ function Teamer19() {
 }
 function Teamer20() {
     prevnamereturner(); $("#nick").val($("#TeamboardInput10").val()); BeforeChangingSkins();	
+}
+function copy(text) {
+    $("#tempCopy").val(text);
+    $("#tempCopy").show();
+    $("#tempCopy").select();
+    document.execCommand('copy');
+    $("#tempCopy").hide();
+    $("#tempCopy").val("");
 }
