@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.548 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "06"; // the version 1.1-> 1.11
+var semimodVersion = "07"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -557,21 +557,35 @@ setTimeout(function() {
                 document.cookie = "agario_redirect=" + a + f + "; path=/"
             }
             $(function() {
-                $("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+                $("#gamemode").after('<input id="server" class="form-control" placeholder="Server or direct IP" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
                 $("#connect2").tooltip({
                     title: "Connect to server, or restablish communication",
                     placement: "left"
                 });
                 $("#connect2").click(function() {
 
-
-                    if ($("#server").val().includes("#") == false) {
+					if (letterCount($('#server').val(), '.', true) == 3){
+						if ($("#server").val().includes("ws://") == false){
+							var texture2="ws://"+$('#server').val();							
+						}
+						else{
+							var texture2=$('#server').val();
+						}
+						$("#server-token").val(texture2.replace("ws://", ""));	
+						$("#server-ws").val(texture2);											
+						window.core.disableIntegrityChecks(true);
+						$("#server-connect").click();
+					}
+                    else if ($("#server").val().includes("#") == false) {
                         var texture2, texture3;
 					    var texture2, texture3;
                         texture3 = $("#server").val();
                         texture2 = texture3.replace("live-arena-", "");
 						texture2 = texture2.replace(".agar.io:80", "");
 						$("#server-token").val(texture2);
+				//		if ($("#server-ws").val().includes("live-arena-") == false){
+				//		window.core.disableIntegrityChecks(true);
+				//		}
 						$("#server-join").click();
 
 						
@@ -2740,7 +2754,14 @@ function init(modVersion) {
         $('#server-connect').click(function() {
             adres();
 			setTimeout(function() {
+				if (letterCount($('#server-ws').val(), '.', true) == 3){
+					var texture2=$('#server-ws').val();		
+					$("#server-token").val(texture2.replace("ws://", ""));
+					$("#server").val(texture2.replace("ws://", ""));
+				}
+				else{
                 $("#server").val(currentIP);
+				}
             }, 1500);
         });
         $('#server-reconnect').click(function() {
