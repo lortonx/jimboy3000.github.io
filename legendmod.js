@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "08"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -404,34 +404,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$("#region").prop('disabled', false);   
         //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
-		setTimeout(function () {
-		//spectate();
-				if (clanpass!=null&&clanpass!="") {		
-					$("#clantag").val(clanpass);
-					$('#clantag').css('background-color', '#ff6347');						
-				}
-				if (privateSrv!=null) {
-					if ($('#clantag').val() == ""){
-					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("in.fzogar.xyz:443")){$("#clantag").val("PS7");}
-					else{$("#clantag").val("PS");}
-					}
-				}
-				
-//				$(".btn-spectate").click();		
-		
-		$("#overlays").show();
-		$(".center-container.ogario-menu").show();
-		$(".side-container.right-container").show();
-		$(".side-container.left-container").show();	
-		},200);
-	
-	
+		setPasswordforPrS1();	
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
@@ -457,34 +430,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		$("#region").prop('disabled', false);   
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
-		setTimeout(function () {
-		//spectate();
-				if (clanpass!=null&&clanpass!="") {		
-					$("#clantag").val(clanpass);
-					$('#clantag').css('background-color', '#ff6347');						
-				}
-				if (privateSrv!=null) {
-					if ($('#clantag').val() == ""){
-					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else{$("#clantag").val("PS");}
-					}
-				}
-
-//				$(".btn-spectate").click();
-				
-		$("#overlays").show();
-		$(".center-container.ogario-menu").show();
-		$(".side-container.right-container").show();
-		$(".side-container.left-container").show();			
-		},200);
-
-		
+		setPasswordforPrS1();	
 		MC.setQuality($('#quality').val());
 		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
@@ -659,21 +605,7 @@ setTimeout(function() {
 }, 2500);
 
 setTimeout(function () {
-
-		if (privateSrv!=null) {				
-			$(".btn-spectate").click();
-			prevPrivateServer=1;
-			localStorage.setItem("prevPrivateServer", 1);
-			return prevPrivateServer=1;						
-        }
-		else{
-			if (prevPrivateServer=="1"){
-				$("#clantag").val(saveclanpassword);
-				prevPrivateServer=0;
-				localStorage.setItem("prevPrivateServer", 0);
-			return prevPrivateServer=0;
-			}
-		}
+setPasswordforPrS();
 }, 6000);
 
 
@@ -7720,4 +7652,50 @@ function Teamer19() {
 }
 function Teamer20() {
     prevnamereturner(); $("#nick").val($("#TeamboardInput10").val()); BeforeChangingSkins();	
+}
+
+function setPasswordforPrS(){
+			if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+			prevPrivateServer=1;
+			localStorage.setItem("prevPrivateServer", 1);
+			return prevPrivateServer=1;						
+        }
+		else{
+			if (prevPrivateServer=="1"){
+				$("#clantag").val(saveclanpassword);
+				prevPrivateServer=0;
+				localStorage.setItem("prevPrivateServer", 0);
+			return prevPrivateServer=0;
+			}
+		}
+}
+
+function setPasswordforPrS1(){
+		setTimeout(function () {
+		//spectate();
+				if (clanpass!=null&&clanpass!="") {		
+					$("#clantag").val(clanpass);
+					$('#clantag').css('background-color', '#ff6347');						
+				}
+				if (privateSrv!=null) {
+					if ($('#clantag').val() == ""){
+					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else{$("#clantag").val("PS");}
+					}
+				}
+
+//				$(".btn-spectate").click();
+				
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();			
+		},200);
 }
