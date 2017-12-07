@@ -5356,49 +5356,49 @@ function enableshortcuts() {
 
 
 function PrivateServer1(){
-	$("#server").val("eu.fzogar.xyz:4000");
-	$("#connect2").click();
-//	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
+//	$("#server").val("eu.fzogar.xyz:4000");
+//	$("#connect2").click();
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
-	$("#server").val("eu.fzogar.xyz:4001");
-	$("#connect2").click();	
-//	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
+//	$("#server").val("eu.fzogar.xyz:4001");
+//	$("#connect2").click();	
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-	$("#server").val("eu.fzogar.xyz:5001");
-	$("#connect2").click();	
-//	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
+//	$("#server").val("eu.fzogar.xyz:5001");
+//	$("#connect2").click();	
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
-	$("#server").val("eu.fzogar.xyz:5002");
-	$("#connect2").click();
-//	window.open("http://agar.io/?ip=eu.fzogar.xyz:5002","_self");
+//	$("#server").val("eu.fzogar.xyz:5002");
+//	$("#connect2").click();
+	window.open("http://agar.io/?ip=eu.fzogar.xyz:5002","_self");
 }
 function PrivateServer5(){
-	$("#server").val("172.73.178.205:8880");
-	$("#connect2").click();
-//	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+//	$("#server").val("172.73.178.205:8880");
+//	$("#connect2").click();
+	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
 }
 function PrivateServer6(){
-	$("#server").val("sg.fzogar.xyz:4000");
-	$("#connect2").click();	
-//	window.open("http://agar.io/?ip=sg.fzogar.xyz:4000","_self");
+//	$("#server").val("sg.fzogar.xyz:4000");
+//	$("#connect2").click();	
+	window.open("http://agar.io/?ip=sg.fzogar.xyz:4000","_self");
 }
 function PrivateServer7(){
-	$("#server").val("in.fzogar.xyz:443");
-	$("#connect2").click();	
-//	window.open("http://agar.io/?ip=in.fzogar.xyz:443","_self");
+//	$("#server").val("in.fzogar.xyz:443");
+//	$("#connect2").click();	
+	window.open("http://agar.io/?ip=in.fzogar.xyz:443","_self");
 }
 function PrivateServer8(){
-	$("#server").val("sg.fzogar.xyz:4002");
-	$("#connect2").click();	
-//	window.open("http://agar.io/?ip=sg.fzogar.xyz:4002","_self");
+//	$("#server").val("sg.fzogar.xyz:4002");
+//	$("#connect2").click();	
+	window.open("http://agar.io/?ip=sg.fzogar.xyz:4002","_self");
 }
 function PrivateServer9(){
-	$("#server").val("DeadServer-oiepapuh546901.codeanyapp.com:8888");
-	$("#connect2").click();	
-//	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
+//	$("#server").val("DeadServer-oiepapuh546901.codeanyapp.com:8888");
+//	$("#connect2").click();	
+	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
 }
 /*
 function adres() {
