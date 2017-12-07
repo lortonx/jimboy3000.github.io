@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
  
@@ -53,12 +53,15 @@ var oldgamemode=$("#gamemode");
 	adres();
 });
 $('#gamemode').on('change', function() {
-   adres();
-    if (this.value == ":party") {
-        $("#create-party-btn").click();
-    console.log("Party stuff fixed");
-	}
-    else if (this.value == ":PrS1") {
+	if (this.value!=":PrS"){
+		adres();		
+		if (this.value == ":party") {
+			$("#create-party-btn").click();	
+			console.log("Party stuff fixed");
+		}
+	}	
+	else{	
+    if (this.value == ":PrS1") {
     console.log("Going to PRS1");
 	PrivateServer1();
     }
@@ -93,7 +96,8 @@ $('#gamemode').on('change', function() {
     else if (this.value == ":PrS9") {
     console.log("Going to PRS9");
 	PrivateServer9();
-    }		
+    }	
+	}	
 });
 
 /*		
