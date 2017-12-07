@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "07"; // the version 1.1-> 1.11
+var semimodVersion = "08"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -309,7 +309,10 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
-
+//Fix Login Bug
+$(".btn.btn-warning.btn-login-play").click(function() {
+    toggleSocialLogin();
+});
 /*
   $(function() {
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
