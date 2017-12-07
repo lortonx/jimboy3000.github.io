@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "08"; // the version 1.1-> 1.11
+var semimodVersion = "07"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -588,11 +588,6 @@ setTimeout(function() {
 						if ($("#server").val().includes("ws://") == true){
 							var texture2="ws://"+$('#server').val();
 							$('#server').val($('#server').val().replace("ws://", ""));
-						}
-						else{
-//							var texture2=$('#server').val();
-//							$('#server').val(texture2);
-						}				
 						  privateSrvReturner();
 						  window.core.disableIntegrityChecks(true);
 						  core.connect("ws://"+$("#server").val());
@@ -600,10 +595,34 @@ setTimeout(function() {
 						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
 						  setTimeout(function () {
 							setPasswordforPrS();
-						  },4000);						  
+						  },4000);									
+						}
+						else if ($("#server").val().includes("wss://") == true||$("#server").val().includes("uws://")){
+						  privateSrvReturner();
+						  window.core.disableIntegrityChecks(true);
+						  core.connect($("#server").val());
+						  $("#server-token").val($("#server").val());
+						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						  setTimeout(function () {
+							setPasswordforPrS();
+						  },4000);									
+						}						
+						else{
+//							var texture2=$('#server').val();
+//							$('#server').val(texture2);
+										
+						  privateSrvReturner();
+						  window.core.disableIntegrityChecks(true);
+						  core.connect("ws://"+$("#server").val());
+						  $("#server-token").val($("#server").val());
+						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						  setTimeout(function () {
+							setPasswordforPrS();
+						  },4000);	
+						}
 					  }
                 });
-            })
+            });
             setTimeout(function() {
                 adres();
             }, 5000);
