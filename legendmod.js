@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "09"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -53,7 +53,7 @@ var oldgamemode=$("#gamemode");
 	adres();
 });
 $('#gamemode').on('change', function() {
-	if (this.value!=":PrS"){
+	if ($('#gamemode').val()!=":PrS"){
 		adres();		
 		if (this.value == ":party") {
 			$("#create-party-btn").click();	
