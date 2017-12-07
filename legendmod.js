@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "06"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -524,7 +524,10 @@ setTimeout(function() {
 						privateSrvReturner();
 						window.core.disableIntegrityChecks(true);
 						$("#server-connect").click();
-						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val())
+						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						setTimeout(function () {
+							setPasswordforPrS();
+						},4000);
 					}
                     else if ($("#server").val().includes("live-arena") == true) {
                         var texture2, texture3;
@@ -591,6 +594,9 @@ setTimeout(function() {
 						  core.connect("ws://"+$("#server").val());
 						  $("#server-token").val($("#server").val());
 						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						  setTimeout(function () {
+							setPasswordforPrS();
+						  },4000);						  
 					  }
                 });
             })
