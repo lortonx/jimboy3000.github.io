@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.548 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "07"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -576,7 +576,7 @@ setTimeout(function() {
 						window.core.disableIntegrityChecks(true);
 						$("#server-connect").click();
 					}
-                    else if ($("#server").val().includes("#") == false) {
+                    else if ($("#server").val().includes("live-arena") == true) {
                         var texture2, texture3;
 					    var texture2, texture3;
                         texture3 = $("#server").val();
@@ -619,10 +619,19 @@ setTimeout(function() {
 
                             MC.setQuality($('#quality').val());
                         }, 1000);
-                    } else {
+                    } else if ($("#server").val().length<7) {
+						if ($("#server").val().includes("#") == true){
                         joinpartyfromconnect();
+						}
+						else if ($("#server").val().includes("#") == false){
+							$("#server").val("#"+$("#server").val());
+						}
                     }
-
+					  else if ($("#server").val().includes("live-arena") == false) {
+						  window.core.disableIntegrityChecks(true);
+						  core.connect("ws://"+$("#server").val());
+						  $("#server-token").val($("#server").val());	
+					  }
                 });
             })
             setTimeout(function() {
@@ -5513,6 +5522,7 @@ function adres() {
 		
 function joinpartyfromconnect() {
     MC.joinParty($("#server").val());
+	$("#server-token").val($("#server").val().replace("#", ""));	
 //    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
 }
 
