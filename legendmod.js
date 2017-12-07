@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "07"; // the version 1.1-> 1.11
+var semimodVersion = "08"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -30,15 +30,15 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
-		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
-		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>');
-//		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
-//		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
-//		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-//		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
-//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
-//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
+		'<option value=":PrS1" data-itr="PrS1">2vs2 Arena(1)</option>'+
+		'<option value=":PrS2" data-itr="PrS2">2vs2 Arena(2)</option>'+
+		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+		'<option value=":PrS4" data-itr="PrS4">N. America 1</option>'+
+		'<option value=":PrS5" data-itr="PrS5">N. America 2</option>'+
+		'<option value=":PrS6" data-itr="PrS6">Proxiemind 1</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Proxiemind 2</option>'+
+		'<option value=":PrS8" data-itr="PrS8">Proxiemind 3</option>'+
+		'<option value=":PrS9" data-itr="PrS9">Proxiemind 4</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -5373,33 +5373,34 @@ function PrivateServer3(){
 function PrivateServer4(){
 //	$("#server").val("eu.fzogar.xyz:5002");
 //	$("#connect2").click();
-	window.open("http://agar.io/?ip=eu.fzogar.xyz:5002","_self");
+	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
 }
 function PrivateServer5(){
-//	$("#server").val("172.73.178.205:8880");
+//	$("#server").val("eu.fzogar.xyz:5002");
 //	$("#connect2").click();
-	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
 }
 function PrivateServer6(){
-//	$("#server").val("sg.fzogar.xyz:4000");
-//	$("#connect2").click();	
-	window.open("http://agar.io/?ip=sg.fzogar.xyz:4000","_self");
+//	$("#server").val("eu.fzogar.xyz:5002");
+//	$("#connect2").click();
+	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
 }
 function PrivateServer7(){
-//	$("#server").val("in.fzogar.xyz:443");
-//	$("#connect2").click();	
-	window.open("http://agar.io/?ip=in.fzogar.xyz:443","_self");
+//	$("#server").val("172.73.178.205:8880");
+//	$("#connect2").click();
+	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
 }
 function PrivateServer8(){
-//	$("#server").val("sg.fzogar.xyz:4002");
+//	$("#server").val("sg.fzogar.xyz:4000");
 //	$("#connect2").click();	
-	window.open("http://agar.io/?ip=sg.fzogar.xyz:4002","_self");
+	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
 }
 function PrivateServer9(){
-//	$("#server").val("DeadServer-oiepapuh546901.codeanyapp.com:8888");
+//	$("#server").val("in.fzogar.xyz:443");
 //	$("#connect2").click();	
-	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
+	window.open("http://agar.io/?ip=145.239.82.188:4000","_self");
 }
+
 /*
 function adres() {
     var adrs = WebSocket.prototype.send;
@@ -7713,10 +7714,12 @@ function setPasswordforPrS1(){
 					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
 					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
 					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("eu.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("sg.fzogar.xyz:4002")){$("#clantag").val("PS7");}
+					else if(privateSrv.includes("66.70.189.222:4011")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("66.70.189.222:4031")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("145.239.81.206:4011")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("145.239.82.188:4050")){$("#clantag").val("PS7");}
+					else if(privateSrv.includes("145.239.81.206:4031")){$("#clantag").val("PS8");}
+					else if(privateSrv.includes("145.239.82.188:4000")){$("#clantag").val("PS9");}
 					else{$("#clantag").val("PS");}
 					}
 				}
