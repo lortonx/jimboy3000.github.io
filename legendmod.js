@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "09"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -520,7 +520,8 @@ setTimeout(function() {
 //							$('#server').val(texture2);
 						}	
 						$("#server-token").val($('#server').val());	
-						$("#server-ws").val("ws://"+$('#server').val());											
+						$("#server-ws").val("ws://"+$('#server').val());
+						privateSrvReturner();
 						window.core.disableIntegrityChecks(true);
 						$("#server-connect").click();
 						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val())
@@ -584,7 +585,8 @@ setTimeout(function() {
 						else{
 //							var texture2=$('#server').val();
 //							$('#server').val(texture2);
-						}						  
+						}				
+						  privateSrvReturner();
 						  window.core.disableIntegrityChecks(true);
 						  core.connect("ws://"+$("#server").val());
 						  $("#server-token").val($("#server").val());
@@ -7698,4 +7700,8 @@ function setPasswordforPrS1(){
 		$(".side-container.right-container").show();
 		$(".side-container.left-container").show();			
 		},200);
+}
+function privateSrvReturner(){
+	privateSrv=$("#server").val();
+	return privateSrv;
 }
