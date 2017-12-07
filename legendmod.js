@@ -1,7 +1,7 @@
 /*************
  * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "07"; // the version 1.1-> 1.11
+var semimodVersion = "08"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -565,14 +565,16 @@ setTimeout(function() {
                 $("#connect2").click(function() {
 
 					if (letterCount($('#server').val(), '.', true) == 3){
-						if ($("#server").val().includes("ws://") == false){
+						if ($("#server").val().includes("ws://") == true){
 							var texture2="ws://"+$('#server').val();
+							$('#server').val($('#server').val().replace("ws://", ""));
 						}
 						else{
-							var texture2=$('#server').val();
-						}
-						$("#server-token").val(texture2.replace("ws://", ""));	
-						$("#server-ws").val(texture2);											
+//							var texture2=$('#server').val();
+//							$('#server').val(texture2);
+						}	
+						$("#server-token").val($('#server').val());	
+						$("#server-ws").val("ws://"+$('#server').val());											
 						window.core.disableIntegrityChecks(true);
 						$("#server-connect").click();
 						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val())
@@ -629,6 +631,14 @@ setTimeout(function() {
 						}
                     }
 					  else if ($("#server").val().includes("live-arena") == false) {
+						if ($("#server").val().includes("ws://") == true){
+							var texture2="ws://"+$('#server').val();
+							$('#server').val($('#server').val().replace("ws://", ""));
+						}
+						else{
+//							var texture2=$('#server').val();
+//							$('#server').val(texture2);
+						}						  
 						  window.core.disableIntegrityChecks(true);
 						  core.connect("ws://"+$("#server").val());
 						  $("#server-token").val($("#server").val());
