@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "08"; // the version 1.1-> 1.11
  
@@ -768,6 +768,7 @@ setTimeout(function() {
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
+	
     //var connectedbanner=0;
 	$("#gamemode").prop('disabled', false);
 	$("#region").prop('disabled', false);   
@@ -2212,7 +2213,12 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        loadbannerProfileClans();
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
 
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
@@ -2270,16 +2276,36 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            loadbannerProfileClans();
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         $("#vanillaset").mouseout(function() {
-            loadbannerProfileClans();
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         $("#defaultset").mouseout(function() {
-            loadbannerProfileClans();
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         $("#agarioset").mouseout(function() {
-            loadbannerProfileClans();
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         //Load Lc Announcement
         if (tag1.includes("℄") == true) {
@@ -7447,10 +7473,6 @@ function LegendModCursors(){
 }
 
 function loadbannerProfileClans(){
-        if (modVersion != "2.5") {
-            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-        } 
-		else {
             if (tag1.includes("Jimboy3100") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
             } else if (tag1.includes("GUARD") == true) {
@@ -7487,6 +7509,5 @@ function loadbannerProfileClans(){
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
             } else {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-            }
-        }	
+            } 
 }
