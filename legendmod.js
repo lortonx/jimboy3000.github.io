@@ -702,74 +702,25 @@ if (minbtext == null || minbtext == "") {
 	minbtext3 = "Legend Mod/Private";
 }
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 6000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 6500);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 7000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 7500);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 8000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 9000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 10000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
@@ -782,24 +733,10 @@ setTimeout(function() {
     MC.setQuality($('#quality').val());
 }, 14000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 11000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 12000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
@@ -808,24 +745,10 @@ setTimeout(function() {
     MC.setQuality($('#quality').val());
 }, 14000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
 }, 18000);
 setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
+	fillminimapLegendLogo();
     //if(dyinglight1load!="yes"){whenplayerdies();}
 }, 22000);
 
@@ -1007,18 +930,7 @@ function init(modVersion) {
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
             '<option value="3" data-itr="">Spanish - Español</option>' +
 			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
-
-            //		
-            //		'<option value="5" data-itr="">Icon 5</option>' +
-            //		'<option value="6" data-itr="">Icon 6</option>' +
-            //		'<option value="7" data-itr="">Youtube 1</option>' +
-            //		'<option value="8" data-itr="">Youtube 2</option>' +
-            //		'<option value="9" data-itr="">Youtube 3</option>' +
-            //		'<option value="10" data-itr="">Youtube 4</option>' +
-            //		'<option value="11" data-itr="">Youtube 5</option>' +
-            //		'<option value="12" data-itr="">Youtube 6</option>' +
             '</select></div>' +
-
 
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
             '<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
@@ -1030,14 +942,8 @@ function init(modVersion) {
             '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
             '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
-            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +
-
-
-            '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
+            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
             '</div></div>');
-        //  '<button id="showCurTKBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 50%; border-color: darkslategrey;"> Show token</button>' +//  '<button id="showPlayerBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 50%; border-color: darkslategrey;">Show player</button>' +
-
-
         $("#HideAllBthn").tooltip({
             title: "Temporarily Hide/Show Everything. Function for Youtubers",
             placement: "bottom"
@@ -1301,8 +1207,6 @@ function init(modVersion) {
             }
         });
 	
-
-
         /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
         $("#reconnectBtn").mouseenter(function() {
             $("#dropDown").hide();
@@ -1403,10 +1307,7 @@ function init(modVersion) {
             }
             //return messageone=1;
         });
-
-		
-		
-		
+	
         $("#boostButton").css("display", "inline-block");
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
@@ -1458,136 +1359,15 @@ function init(modVersion) {
         $('#menuPreset>option:nth-child(2)').text("Legend v1");
 
         //Legend Mod Cursors
-        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
-        }
-        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
-        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
-        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
-        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
-        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
-        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
-        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
-        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
-        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
-        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
-        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
-        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
-        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
-        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
-        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
-        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
-        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
-        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
-        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
-        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
-        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
-        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
-        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
-        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
-        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
-        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
-        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
-        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
-        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
-        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
-        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
-        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
-        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
-        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
-        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
-        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
-
+		LegendModCursors();
         $('#themePreset').on('change', function() {
             setTimeout(function() {
-				var c = document.getElementById("minimap-sectors");
-				var ctx = c.getContext("2d");
-					ctx.clearRect(0, 0, c.width, c.height / 9);
-					ctx.font = "16px Georgia";
-					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-					else {ctx.fillText(minbtext2, c.width / 2, 22); }
-					MC.setQuality($('#quality').val());
+				fillminimapLegendLogo();
             }, 200);
         })
         $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
             setTimeout(function() {
-				var c = document.getElementById("minimap-sectors");
-				var ctx = c.getContext("2d");
-				ctx.clearRect(0, 0, c.width, c.height / 9);
-				ctx.font = "16px Georgia";
-				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-				else {ctx.fillText(minbtext2, c.width / 2, 22); }
-				MC.setQuality($('#quality').val());
+				fillminimapLegendLogo();
             }, 100);
         })
 
@@ -2432,48 +2212,7 @@ function init(modVersion) {
         //Other things
         // ADS
         var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.5") {
-            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-        } 
-		else {
-            if (tag1.includes("Jimboy3100") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-            } else if (tag1.includes("GUARD") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-            } else if (tag1.includes("℄") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("₣") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("℄") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("♋") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("۞ẒṨ۞") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("๔ɀ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-            } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-            } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-            } else if (tag1.includes("ΕΛ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-            } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-            } else if (tag1.includes("ƖƦ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-            } else if (tag1.includes("⚔ℱ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-            } else if (tag1.includes("ƸU") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-            } else {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-            }
-        }
+        loadbannerProfileClans();
 
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
@@ -2531,178 +2270,16 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
+            loadbannerProfileClans();
         });
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
+            loadbannerProfileClans();
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
-
+            loadbannerProfileClans();
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
-
+            loadbannerProfileClans();
         });
         //Load Lc Announcement
         if (tag1.includes("℄") == true) {
@@ -7746,4 +7323,170 @@ function doDOMonloadevents1(){
 			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
 			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
 			},250);		
+}
+
+function fillminimapLegendLogo(){
+	var c = document.getElementById("minimap-sectors");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height / 9);
+    ctx.font = "16px Georgia";
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
+    MC.setQuality($('#quality').val());	
+}
+
+function LegendModCursors(){
+        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
+        }
+        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
+        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
+        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
+        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
+        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
+        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
+        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
+        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
+        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
+        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
+        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
+        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
+        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
+        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
+        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
+        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
+        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
+        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
+        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
+        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
+        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
+        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
+        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
+        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
+        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
+        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
+        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
+        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
+        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
+        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
+        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
+        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
+        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
+        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
+        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
+        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');	
+}
+
+function loadbannerProfileClans(){
+        if (modVersion != "2.5") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+            if (tag1.includes("Jimboy3100") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
+            } else if (tag1.includes("GUARD") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
+            } else if (tag1.includes("℄") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if (tag1.includes("₣") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if (tag1.includes("℄") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if (tag1.includes("♋") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if (tag1.includes("۞ẒṨ۞") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
+            } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
+            } else if (tag1.includes("۞ᵶᵴ™") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
+            } else if (tag1.includes("๔ɀ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
+            } else if (tag1.includes("ﾏｮʞʇ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
+            } else if (tag1.includes("₴₵₳Ɽ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
+            } else if (tag1.includes("ΕΛ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
+            } else if (tag1.includes("⋩ᕮχ⋨") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
+            } else if (tag1.includes("ƖƦ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+            } else if (tag1.includes("⚔ℱ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
+            } else if (tag1.includes("ƸU") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
+            } else {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
+            }
+        }	
 }
