@@ -2212,7 +2212,7 @@ function init(modVersion) {
         });
         //Other things
         // ADS
-        var tag1 = document.getElementById("nick").value;
+ //       var tag1 = document.getElementById("nick").value;
         if (modVersion != "2.5") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
@@ -2223,7 +2223,7 @@ function init(modVersion) {
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
+		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 /*			  if (modVersion == "2.5"){
 				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
@@ -2235,7 +2235,7 @@ function init(modVersion) {
 				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
 			  } */
 //			else{
-			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
+			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + $("#nick").val() + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
 			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
 				if (usergender=="male"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
@@ -2245,7 +2245,7 @@ function init(modVersion) {
 				}
 			}
 			else{
-		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
+		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + $("#nick").val() + '</span></font>!').css("width", "350px");		       
 				}
 //		}
 	}
@@ -2308,7 +2308,7 @@ function init(modVersion) {
 		}
         });
         //Load Lc Announcement
-        if (tag1.includes("℄") == true) {
+        if ($("#nick").val().includes("℄") == true) {
             $("#LEGENDAds").after('<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 0px 0 0px 0;"><a href="https://jimboy3100.github.io/LcClanPriviledges.txt" target="_blank" id= "LegendPrivileges" class="title" style=""><u>Priviledges of Legend ℄ Clan Players</u></a></class>');
         }
 
@@ -7473,39 +7473,39 @@ function LegendModCursors(){
 }
 
 function loadbannerProfileClans(){
-            if (tag1.includes("Jimboy3100") == true) {
+            if ($("#nick").val().includes("Jimboy3100") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-            } else if (tag1.includes("GUARD") == true) {
+            } else if ($("#nick").val().includes("GUARD") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-            } else if (tag1.includes("℄") == true) {
+            } else if ($("#nick").val().includes("℄") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("₣") == true) {
+            } else if ($("#nick").val().includes("₣") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("℄") == true) {
+            } else if ($("#nick").val().includes("℄") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("♋") == true) {
+            } else if ($("#nick").val().includes("♋") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("۞ẒṨ۞") == true) {
+            } else if ($("#nick").val().includes("۞ẒṨ۞") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
+            } else if ($("#nick").val().includes("ᴺ૯ᵂ۞") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("۞ᵶᵴ™") == true) {
+            } else if ($("#nick").val().includes("۞ᵶᵴ™") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("๔ɀ") == true) {
+            } else if ($("#nick").val().includes("๔ɀ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-            } else if (tag1.includes("ﾏｮʞʇ") == true) {
+            } else if ($("#nick").val().includes("ﾏｮʞʇ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-            } else if (tag1.includes("₴₵₳Ɽ") == true) {
+            } else if ($("#nick").val().includes("₴₵₳Ɽ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-            } else if (tag1.includes("ΕΛ") == true) {
+            } else if ($("#nick").val().includes("ΕΛ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-            } else if (tag1.includes("⋩ᕮχ⋨") == true) {
+            } else if ($("#nick").val().includes("⋩ᕮχ⋨") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-            } else if (tag1.includes("ƖƦ") == true) {
+            } else if ($("#nick").val().includes("ƖƦ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-            } else if (tag1.includes("⚔ℱ") == true) {
+            } else if ($("#nick").val().includes("⚔ℱ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-            } else if (tag1.includes("ƸU") == true) {
+            } else if ($("#nick").val().includes("ƸU") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
             } else {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
