@@ -1,5 +1,5 @@
 /*************
- * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "08"; // the version 1.1-> 1.11
  
@@ -407,24 +407,10 @@ if (languagemod == 7) {
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
-		$("#gamemode").prop('disabled', false);
-		$("#region").prop('disabled', false);   
-        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
-		setPasswordforPrS1();	
-		MC.setQuality($('#quality').val());
-		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		}
-		//Save Name, Surname, Gender
-		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
-		setTimeout(function (){ 
-			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-			},250);
+		doDOMonloadevents1();
     }
-	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
+	else if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
 		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 	}
 });
@@ -433,25 +419,10 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-		$("#gamemode").prop('disabled', false);
-		$("#region").prop('disabled', false);   
-	//	$(".toast.toast-warning").remove();
-	        $(".command-text").text(Premadeletter0);
-		setPasswordforPrS1();	
-		MC.setQuality($('#quality').val());
-		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		//Save Name, Surname, Gender
-		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
-		setTimeout(function (){ 
-			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-			},250);
-		}
-		
+		$(".command-text").text(Premadeletter0);
+		doDOMonloadevents1();
     }
-	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	else if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
 	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
 	}
 });
@@ -7757,4 +7728,22 @@ function setPasswordforPrS1(){
 function privateSrvReturner(){
 	privateSrv=$("#server").val();
 	return privateSrv;
+}
+
+function doDOMonloadevents1(){
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
+	//	$(".toast.toast-warning").remove();	        
+		setPasswordforPrS1();	
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		//Save Name, Surname, Gender		
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);		
 }
