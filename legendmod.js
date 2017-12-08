@@ -1241,6 +1241,7 @@ function init(modVersion) {
             $('#nick').css('background-color', '');
         });
         $('#nick').blur(function() {
+			loadbannerProfileClans();
 			previousnickname=$("#nick").val();
 			localStorage.setItem("previousnickname", previousnickname);
             if (clickedname == "YES") {
