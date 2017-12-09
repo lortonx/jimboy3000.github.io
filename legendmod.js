@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.549 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "08"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -411,7 +411,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		doDOMonloadevents1();
     }
 	else if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
-		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 	}
 });
 
@@ -423,7 +423,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		doDOMonloadevents1();
     }
 	else if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
-	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
+	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}
 });
 
@@ -1001,7 +1001,7 @@ function init(modVersion) {
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
 		
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Promotional Video');
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
@@ -1315,7 +1315,7 @@ function init(modVersion) {
         $("#massButton").after($("#promo-badge-container"));
 
 	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-        '<br>Legend Mod by jimboy3100</i></h6></div>');
+        '<br>Extension by jimboy3100</i></h6></div>');
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
 		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
@@ -1393,6 +1393,23 @@ function init(modVersion) {
         //$("#minimap-sectors").attr("style", "opacity: 0.25;");
         // keybinds
 
+		$("#chat-emoticons").append('<span id="emoticon1">👪 </span><span id="emoticon2">👳 </span><span id="emoticon3">👴 </span><span id="emoticon4">👵 </span><span id="emoticon5">👶 </span><span id="emoticon6">😱 </span><span id="emoticon7">🏆 </span><span id="emoticon8">🌑 </span><span id="emoticon9">🚽 </span><span id="emoticon10">⚖️ </span><span id="emoticon11">🔪 </span><span id="emoticon12">💥 </span><span id="emoticon13">💪 </span><span id="emoticon14">🍌 </span><span id="emoticon15">℄ </span>');
+		$("#emoticon1").click(function() {$("#message").val($("#message").val()+"👪")});
+		$("#emoticon2").click(function() {$("#message").val($("#message").val()+"👳")});
+		$("#emoticon3").click(function() {$("#message").val($("#message").val()+"👴")});
+		$("#emoticon4").click(function() {$("#message").val($("#message").val()+"👵")});
+		$("#emoticon5").click(function() {$("#message").val($("#message").val()+"👶")});
+		$("#emoticon6").click(function() {$("#message").val($("#message").val()+"😱")});
+		$("#emoticon7").click(function() {$("#message").val($("#message").val()+"🏆")});
+		$("#emoticon8").click(function() {$("#message").val($("#message").val()+"🌑")});
+		$("#emoticon9").click(function() {$("#message").val($("#message").val()+"🚽")});
+		$("#emoticon10").click(function() {$("#message").val($("#message").val()+"⚖️")});
+		$("#emoticon11").click(function() {$("#message").val($("#message").val()+"🔪")});
+		$("#emoticon12").click(function() {$("#message").val($("#message").val()+"💥")});
+		$("#emoticon13").click(function() {$("#message").val($("#message").val()+"💪")});
+		$("#emoticon14").click(function() {$("#message").val($("#message").val()+"🍌")});
+		$("#emoticon15").click(function() {$("#message").val($("#message").val()+"℄")});
+		
         $(document).keyup(function(event) {
             if (event.which == 8) { // search
                 if ($('input:focus').length == 0) {
@@ -1918,7 +1935,7 @@ function init(modVersion) {
             '<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Lion king - The Lion Sleeps Tonight"><i id="sendyt31" class="fa fa-music" style="padding-center: 0px;"></i></button>' +
             '<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Agario - Jumbo Solo vs Teams"><i id="sendyt41" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>' +
             '<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Agario - Kill3r vs Teams"><i id="sendyt51" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Legend Mod Promo"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Promotional Video"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
             '<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>' +
@@ -3526,7 +3543,7 @@ function StartEditGameNames() {
                         return '<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css" />'
                     },
                     html: function() {
-                        return '<div id="tcm" style="display:block;"><div id="tcm-header"><span>Legend Mod Copy Tools</span><p>copy leaderboard names and cell names. (press x to show/hide)</p></div><div id="tcm-main"><div><span>leaderboard names</span><div id="tcm-leaderboard"></div></div><div><span>cell names</span><div id="tcm-names"></div></div><div></div></div></div>'
+                        return '<div id="tcm" style="display:block;"><div id="tcm-header"><span>Copy Tools</span><p>copy leaderboard names and cell names. (press x to show/hide)</p></div><div id="tcm-main"><div><span>leaderboard names</span><div id="tcm-leaderboard"></div></div><div><span>cell names</span><div id="tcm-names"></div></div><div></div></div></div>'
                     },
                     span: function(e, o) {
                         return "<span onclick=\"javascript:prompt('" + e + "', '" + o + "')\">" + o + "</span>"
@@ -5242,7 +5259,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Game will terminate now').css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
@@ -7032,7 +7049,7 @@ $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-
 											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
-											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of Legend Mod</u></p>'+											
+											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of this extension</u></p>'+											
 											'</div></div>');
 $('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
 $('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
