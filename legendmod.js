@@ -465,8 +465,8 @@ $("#adsBottom").remove();
 
 //remove adds
 $("#adsGameOver").remove();
-
-//Loader Icons 
+//Fix Skin Area Profiles Tab
+$("#skinButton").html('<div id="skinButton" class="circle" style="cursor:pointer;" data-type="OWNED"><div class="circle big green" style="top:75px;"><span class="outlined-text plus-text" style="cursor:pointer;line-height: 26px;">+</span></div><div class="circle bordered skinWrapper" style="border: 3px solid rgb(131, 131, 131); overflow: hidden; height: 96px; width: 96px;"><img src="" crossorigin="anonymous" style="width: 180px; display: none;"></div><span id="skinLabel" class="outlined-text" style="display: block;" data-itr="page_main_menu_skins">Skins</span></div>');
 
 
 setTimeout(function() {
