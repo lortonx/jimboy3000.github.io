@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
+ * LEGEND mod v2.551 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "09"; // the version 1.1-> 1.11
+var semimodVersion = "10"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7175,10 +7175,7 @@ function ProceedToChangeSkins(){
 		setTimeout(function() {$('#server-join').click();}, 1500);
 		
 		setTimeout(function() {$("#nick").val(previousnickname);}, 4500);
-		$("#overlays").show();
-		$(".center-container.ogario-menu").show();
-		$(".side-container.right-container").show();
-		$(".side-container.left-container").show();			
+		showmenuoverlays();	
 //    }, 4000);	
 }
 function BeforeChangingSkins(){
@@ -7317,7 +7314,7 @@ function setPasswordforPrS(){
 }
 
 function setPasswordforPrS1(){
-		setTimeout(function () {
+		//setTimeout(function () {
 		//spectate();
 				if (clanpass!=null&&clanpass!="") {		
 					$("#clantag").val(clanpass);
@@ -7337,14 +7334,13 @@ function setPasswordforPrS1(){
 					else{$("#clantag").val("PS");}
 					}
 				}
+				if (privateSrv==null) {
+					$(".btn-spectate").click();
+					}
 
 //				$(".btn-spectate").click();
-				
-		$("#overlays").show();
-		$(".center-container.ogario-menu").show();
-		$(".side-container.right-container").show();
-		$(".side-container.left-container").show();			
-		},200);
+		showmenuoverlays();		
+		//},200);
 }
 function privateSrvReturner(){
 	privateSrv=$("#server").val();
@@ -7528,4 +7524,10 @@ function loadbannerProfileClans(){
             } else {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
             } 
+}
+function showmenuoverlays(){
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();		
 }
