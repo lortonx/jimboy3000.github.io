@@ -1,5 +1,5 @@
 /*************
- * LM Express v0.009 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.009 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "08"; // the version 1.1-> 1.11
@@ -60,7 +60,7 @@ var yt2data = "Survivor - Eye Of The Tiger";
 var yt3data = "Lion king - The Lion Sleeps Tonight";
 var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
-var yt6data = "Legend Mod Promo";
+var yt6data = "Legend mod Promo";
 var lastIP = "";
 var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
@@ -211,9 +211,9 @@ urlIpWhenOpened();
 var minbtext2 = minbtext;
 var minbtext3 = minbtext;
 if (minbtext == null || minbtext == "") {
-    minbtext = "Legend Express"; //LM Express/Locked
-    minbtext2 = "LM Express";
-	minbtext3 = "LM Express/Private";
+    minbtext = "Legend express"; //Legend express/Locked
+    minbtext2 = "Legend express";
+	minbtext3 = "Legend express/Private";
 }
 LMminimapTextAct();
 
@@ -233,7 +233,7 @@ function init(modVersion) {
     }
 
     setTimeout(function() {
-        document.title = "LM Express v" + modVersion;
+        document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
@@ -678,7 +678,7 @@ function init(modVersion) {
         $("#massButton").after($("#promo-badge-container"));
 
 	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-        '<br>LM Express by jimboy3100</i></h6></div>');
+        '<br>Legend express by jimboy3100</i></h6></div>');
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
 		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
@@ -690,7 +690,7 @@ function init(modVersion) {
         $('#themePreset>option:nth-child(5)').text("Crazy Style 2");
         $('#menuPreset>option:nth-child(1)').text("Legend v2");
         $('#menuPreset>option:nth-child(2)').text("Legend v1");				
-		        //LM Express Cursors
+		        //Legend express Cursors
         if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
         } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
@@ -830,7 +830,7 @@ function init(modVersion) {
             marginBottom: "-10px"
         });
         $("#menu-footer").text("");
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="LM Express Website" data-placement="left">Legend Express v' + modVersion + semimodVersion + '</a></span>' +
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend express Website" data-placement="left">Legend express v' + modVersion + semimodVersion + '</a></span>' +
             '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
 
         $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -962,7 +962,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Game will terminate now').css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
@@ -1119,7 +1119,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 			},250);
     }
 	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
-		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 	}
 });
 
@@ -1168,7 +1168,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 				
     }
 	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
+	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}
 	        $('#server-connect').click(function() {
             adres();
@@ -1892,7 +1892,7 @@ $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-
 											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
-											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of Legend Mod</u></p>'+											
+											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of this extension</u></p>'+											
 											'</div></div>');
 $('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
 $('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
