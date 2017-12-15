@@ -1,7 +1,7 @@
 /*************
- * LEGEND mod v2.551 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.550 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "10"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -146,7 +146,7 @@ var pic2dataimg = "Why?";
 var pic3dataimg = "Yow!!";
 var pic4dataimg = "Death!";
 var pic5dataimg = "Relax!";
-var pic6dataimg = "Legend Mod!";
+var pic6dataimg = "Legend mod!";
 var yt1url = "dQw4w9WgXcQ";
 var yt2url = "btPJPFnesV4";
 var yt3url = "UD-MkihnOXg";
@@ -158,7 +158,7 @@ var yt2data = "Survivor - Eye Of The Tiger";
 var yt3data = "Lion king - The Lion Sleeps Tonight";
 var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
-var yt6data = "Legend Mod Promo";
+var yt6data = "Legend mod Promo";
 var lastIP = "";
 var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
@@ -691,15 +691,15 @@ setTimeout(function() {
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
 //	if (this.value == ":party") { $("#create-party-btn").click(); }}
-//		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+//		console.log( "Legend mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 var minbtext2 = minbtext;
 var minbtext3 = minbtext;
 
 if (minbtext == null || minbtext == "") {
-    minbtext = "Legend Mod/Locked";
-    minbtext2 = "Legend Mod";
-	minbtext3 = "Legend Mod/Private";
+    minbtext = "Legend mod/Locked";
+    minbtext2 = "Legend mod";
+	minbtext3 = "Legend mod/Private";
 }
 setTimeout(function() {
 	fillminimapLegendLogo();
@@ -1008,7 +1008,7 @@ function init(modVersion) {
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 		$(".quick-quests.ogicon-trophy").after('<a id= "LegGoogleForm" class="fa fa-briefcase" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Special Deals" onclick="SpecialDeals(); return false;"></a>'+
-		'<a id= "ModInfoQuick" class="fa fa-grav" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Vanilla Skins" onclick="openVanillaSkins(); return false;"></a>');		
+		'<a id= "OldSkinsQuick" class="fa fa-grav" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins" onclick="OldSkinsFunction(); return false;"></a>');		
         // prevent edit
         $("#musicUrl").on("input", function() {
             $(this).attr("maxlength", "0");
@@ -1348,8 +1348,11 @@ function init(modVersion) {
 			marginTop: "5px",
         });
         $("#potions").css({
-			marginTop: "0px",
-        });		
+            marginTop: "0px",
+			width: "49.5%",
+			marginRight: "0.5%"
+        });
+		$("#potions").after('<button id="oldSkinsBtn" onclick="OldSkinsFunction(); return false;" class="btn btn-primary btn-success" style="line-height: 24px; width: 49.5%; margin-top: -px; margin-left: 0.5%;" data-itr="page_shop"><i class="fa fa-grav"></i>Old Skins</button>');	
 		$("#quests-blocker").hide();
 		
         $('#themePreset>option:nth-child(1)').text("Legend v2");
@@ -1360,7 +1363,7 @@ function init(modVersion) {
         $('#menuPreset>option:nth-child(1)').text("Legend v2");
         $('#menuPreset>option:nth-child(2)').text("Legend v1");
 
-        //Legend Mod Cursors
+        //Legend mod Cursors
 		LegendModCursors();
         $('#themePreset').on('change', function() {
             setTimeout(function() {
@@ -1383,13 +1386,13 @@ function init(modVersion) {
         //		$(".agario-panel.agario-shop-panel").after('<button id="OpenInfo" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 25%;"><i class="fa fa-info-circle"></i>Information</button>');
         //		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
         //		$("#OpenInfo").click(function () {openhelper();});
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
             '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
         // donate button
         //kitty's
         // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
         //jimboy's
-        $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+        $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
         //$("#minimap-sectors").attr("style", "opacity: 0.25;");
         // keybinds
 
@@ -1927,7 +1930,7 @@ function init(modVersion) {
             '<button id="sendicon3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendicon31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>' +
             '<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>' +
             '<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
             '<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Rick Astley - Never Gonna Give You Up"><i id="sendyt11" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
@@ -2210,7 +2213,7 @@ function init(modVersion) {
             placement: "top"
         });
 
-        //	document.getElementsByClassName('yt-username')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";//	document.getElementsByClassName('yt-username')[0].innerHTML = "Legend Mod Promo";//	document.getElementsByClassName('btn btn-play btn-primary btn-needs-server')[0].id="playerofgame";//	document.getElementsByClassName('btn btn-play-guest btn-success btn-needs-server')[0].id="playerguest";//	document.getElementsByClassName('btn btn-warning btn-login-play btn-needs-server')[0].id="playerlogin";//	$("#playerofgame").attr("onclick","MC.setQuality($('#quality').val());MC.setNick(document.getElementById('nick').value); return false;");
+        //	document.getElementsByClassName('yt-username')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";//	document.getElementsByClassName('yt-username')[0].innerHTML = "Legend mod Promo";//	document.getElementsByClassName('btn btn-play btn-primary btn-needs-server')[0].id="playerofgame";//	document.getElementsByClassName('btn btn-play-guest btn-success btn-needs-server')[0].id="playerguest";//	document.getElementsByClassName('btn btn-warning btn-login-play btn-needs-server')[0].id="playerlogin";//	$("#playerofgame").attr("onclick","MC.setQuality($('#quality').val());MC.setNick(document.getElementById('nick').value); return false;");
 
         //Buttons for search Area
         $("#log").after('<button id="Backtomenu" onclick="doback(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
@@ -2241,7 +2244,7 @@ function init(modVersion) {
         // ANNOUNCEMENTS
         if (modVersion != "2.5") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
+		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 /*			  if (modVersion == "2.5"){
 				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
@@ -2995,7 +2998,7 @@ function init(modVersion) {
 
 
 
-        console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
+        console.log('%c Legend mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
 		
     }, 1500);
 
@@ -7530,4 +7533,9 @@ function showmenuoverlays(){
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
 		$(".side-container.left-container").show();		
+}
+
+function OldSkinsFunction(){
+	localStorage.setItem("oldskins", true);
+	location.replace("http://agar.io");
 }
