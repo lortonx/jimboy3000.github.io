@@ -1,5 +1,5 @@
 /*************
- * Legend mod v2.750 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.751 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "09"; // the version 1.1-> 1.11
  
@@ -1347,12 +1347,12 @@ function init(modVersion) {
             marginBottom: "5px",
 			marginTop: "5px",
         });
-        $("#potions").css({
-            marginTop: "0px",
-			width: "49.5%",
-			marginRight: "0.5%"
-        });
-		$("#potions").after('<button id="oldSkinsBtn" class="btn btn-primary btn-success" style="line-height: 24px; width: 49.5%; margin-top: -px; margin-left: 0.5%;" data-itr="page_shop"><i class="fa fa-grav"></i>Old Skins</button>');	
+      //  $("#potions").css({
+      //      marginTop: "0px",
+	//		width: "49.5%",
+	//		marginRight: "0.5%"
+     //   });
+	//	$("#potions").after('<button id="oldSkinsBtn" class="btn btn-primary btn" style="line-height: 24px; width: 49.5%; margin-top: -px; margin-left: 0.5%;" data-itr="page_shop"><i class="fa fa-grav"></i>Old Skins</button>');	
 		$("#quests-blocker").hide();
 		
         $('#themePreset>option:nth-child(1)').text("Legend v2");
