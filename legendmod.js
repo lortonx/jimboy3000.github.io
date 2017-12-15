@@ -2305,7 +2305,7 @@ function init(modVersion) {
 		}
         });
 		$("#oldSkinsBtn").click(function() {
-			if (modVersion != "2.6" || modVersion != "2.7") {
+			if (modVersion == "2.6" || modVersion == "2.7") {
 		localStorage.setItem("oldskins", true);
 		location.replace("http://agar.io");
 			}
@@ -2314,7 +2314,7 @@ function init(modVersion) {
 			}
 		});
 		$("#OldSkinsQuick").click(function() {
-			if (modVersion != "2.6" || modVersion != "2.7") {
+			if (modVersion == "2.6" || modVersion == "2.7") {
 		localStorage.setItem("oldskins", true);
 		location.replace("http://agar.io");
 			}
