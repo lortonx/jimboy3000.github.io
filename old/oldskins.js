@@ -1160,8 +1160,10 @@ setTimeout(function() {
 $("#canvas").remove();
 $("#adsBottom").remove();
 $("#rightPanel").remove();
-$("#helloContainer").hide();
 $("#skinButton").click();
 $("#imagebig").remove();
-
-}, 10000);
+$(".center-container").hide();
+$("#dailyquests-panel").hide();
+$("#leftPanel>div.agario-panel.agario-side-panel.agario-shop-panel").show();
+$("#helloContainer").css("margin-left", "-150px");
+}, 8000);
