@@ -1,7 +1,7 @@
 /*************
  * Legend mod v2.750 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "09"; // the version 1.1-> 1.11
+var semimodVersion = "10"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2012,9 +2012,10 @@ function init(modVersion) {
 			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
-                                        setTimeout(function() {
+        $('#loaderIframeInfo1').hide();
+		setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
-                                }, 6000);
+                                }, 4000);
 		});
 
 
