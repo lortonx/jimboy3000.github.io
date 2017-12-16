@@ -1975,7 +1975,7 @@ function init(modVersion) {
                 }
             }
         });
-/*
+
 		$('*[data-itr="page_play"]').click(function() {
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE"; 
@@ -2000,23 +2000,23 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
                                         setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
                                 }, 6000);
 		});
-*/
+
 
 
         $("#topright").click(function() {
