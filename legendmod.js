@@ -2011,7 +2011,6 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-		if (privateSrv!=null) {
 			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
