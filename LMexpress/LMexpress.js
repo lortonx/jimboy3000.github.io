@@ -1229,31 +1229,31 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 2000);
+            }, 2500);
         });
         $('#server-reconnect').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 2000);
+            }, 2500);
         });
         $('#server-join').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 2000);
+            }, 2500);
         });
 		$("#gamemode").change(function () {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 2000);
+            }, 2500);
         });
 		$("#region").change(function () {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 2000);
+            }, 2500);
         });		
 /*
 function privateservutil(){
