@@ -2011,16 +2011,17 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		if (privateSrv!=null) {
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname + "&mode=" + modetosend + "&region=" + regiontosend;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname + "&mode=" + modetosend + "&region=" + regiontosend;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname + "&mode=" + modetosend + "&region=" + regiontosend;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}			
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
