@@ -309,10 +309,7 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
-//Fix Login Bug
-$(".btn.btn-warning.btn-login-play").click(function() {
-    toggleSocialLogin();
-});
+
 /*
   $(function() {
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
@@ -768,7 +765,12 @@ setTimeout(function() {
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
-	
+	//Fix Login Bug
+	if (modVersion=="2.6"){
+		$(".btn.btn-warning.btn-login-play").click(function() {
+		toggleSocialLogin();
+		});	
+	}
     //var connectedbanner=0;
 	$("#gamemode").prop('disabled', false);
 	$("#region").prop('disabled', false);   
