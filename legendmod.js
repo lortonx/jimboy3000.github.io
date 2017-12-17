@@ -1,7 +1,7 @@
 /*************
  * Legend mod v2.750 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "10"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1983,7 +1983,18 @@ function init(modVersion) {
 			var nicknametosend="NotFound";
 			var userfirstname = localStorage.getItem("userfirstname");
 			var userlastname = localStorage.getItem("userlastname");
-
+			var modetosend="NotFound";
+			var regiontosend="NotFound";
+			if (searchSip == null) {
+				modetosend=$('#gamemode').val();
+				regiontosend=$('#region').val();
+			}
+			else{
+				if (searchSip==$('#server').val()){
+				modetosend=realmode;
+				regiontosend=region;
+				}
+			}
 			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
 			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
 			var i = 0, Pwdtosendlength = Pwdtosend.length; 
@@ -2000,17 +2011,17 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname + "&mode=" + modetosend + "&region=" + regiontosend;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname + "&mode=" + modetosend + "&region=" + regiontosend;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AjaxData/analytics.html?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}		
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname + "&mode=" + modetosend + "&region=" + regiontosend;
+		}			
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
 		setTimeout(function() {
