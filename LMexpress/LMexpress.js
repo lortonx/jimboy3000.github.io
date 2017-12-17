@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.009 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.010 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "08"; // the version 1.1-> 1.11
+var semimodVersion = "10"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1210,29 +1210,40 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}
+
+});
+}
+
 	        $('#server-connect').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 1500);
+            }, 2000);
         });
         $('#server-reconnect').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 1500);
+            }, 2000);
         });
         $('#server-join').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
-            }, 1500);
+            }, 2000);
         });
-		
-	
-
-});
-}
+		$("#gamemode").change(function () {
+            adres();
+			setTimeout(function() {
+                $("#server").val(currentIP);
+            }, 2000);
+        });
+		$("#region").change(function () {
+            adres();
+			setTimeout(function() {
+                $("#server").val(currentIP);
+            }, 2000);
+        });		
 /*
 function privateservutil(){
 //Private Servers
@@ -1311,10 +1322,12 @@ $('#gamemode').on('change', function() {
 }
 */
 function adres(thismode) {
+	var thismode;
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
 			$("#server").val(currentIP);
+			console.log(currentIP);
 			setTimeout(function() {	
 				if(!thismode){
 					realmode = $("#gamemode").val();
