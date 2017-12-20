@@ -104,7 +104,7 @@ function disconnectnow(){
 		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now");
 		}}	
 function showstatsphp(){
-	window.open('http://104.236.44.149/sys/report.php', '_blank');
+	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
 }
 		
 function dosendadmincommand(){
