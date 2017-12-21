@@ -7,7 +7,7 @@
 			var userlastname = localStorage.getItem("userlastname");
 			var modetosend="NotFound";			
 			var regiontosend="NotFound";
-			var actiontype;
+			var actiontype=window.actiontype;
 			console.log(actiontype);
 			var searchSip;
 			var privateSrv;
