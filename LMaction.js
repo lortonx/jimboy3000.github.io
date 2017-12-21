@@ -8,7 +8,6 @@
 			var modetosend="NotFound";			
 			var regiontosend="NotFound";
 			var actiontype=window.actiontype;
-			console.log(actiontype);
 			var searchSip;
 			var privateSrv;
 			if (searchSip == null) {
