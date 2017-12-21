@@ -5,9 +5,10 @@
 			var nicknametosend="NotFound";
 			var userfirstname = localStorage.getItem("userfirstname");
 			var userlastname = localStorage.getItem("userlastname");
-			var modetosend="NotFound";
+			var modetosend="NotFound";			
 			var regiontosend="NotFound";
 			var actiontype;
+			console.log(actiontype);
 			var searchSip;
 			var privateSrv;
 			if (searchSip == null) {
