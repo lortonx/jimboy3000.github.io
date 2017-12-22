@@ -16,7 +16,6 @@ getaccesstoken();
 getaccesstoken2();
 }, 3000);
 
-$('.btn').css("text-transform", "capitalize");
 videoskins();
 //Map Auto Start
 CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage, CanvasRenderingContext2D.prototype.drawImage = function() {
@@ -2750,7 +2749,7 @@ function init(modVersion) {
 
         setTimeout(function() {
 
-			
+			$('.btn').css("text-transform", "capitalize");
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                 $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
