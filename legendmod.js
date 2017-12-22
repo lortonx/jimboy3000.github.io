@@ -1,5 +1,5 @@
 /*************
- * Legend mod v2.752 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.753 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "11"; // the version 1.1-> 1.11
  
@@ -11,6 +11,7 @@ document.title = "Legend mod";
 //Authenticate Mod Script
 var accesstomod;
 setTimeout(function() {
+$("#tcm-videoskin").hide();	
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
@@ -711,7 +712,7 @@ if (minbtext == null || minbtext == "") {
 	minbtext3 = "Legend mod/Private";
 }
 setTimeout(function() {
-	$("#tcm-videoskin").hide();
+	$("#tcm-videoskin").hide();	
 	fillminimapLegendLogo();
 }, 6000);
 setTimeout(function() {
@@ -721,7 +722,6 @@ setTimeout(function() {
 	fillminimapLegendLogo();
 }, 7000);
 setTimeout(function() {
-	$("#tcm-videoskin").hide();
 	fillminimapLegendLogo();
 }, 7500);
 setTimeout(function() {
