@@ -1,5 +1,5 @@
 /*************
- * Legend mod v2.750 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.751 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "10"; // the version 1.1-> 1.11
  
@@ -777,6 +777,7 @@ setTimeout(function() {
 //setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
 
 function init(modVersion) {
+	$("#tcm-videoskin").hide();
 	//Fix Login Bug
 	if (modVersion=="2.6"){
 		$(".btn.btn-warning.btn-login-play").click(function() {
@@ -1022,7 +1023,7 @@ function init(modVersion) {
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 		$(".quick-quests.ogicon-trophy").after('<a id= "LegGoogleForm" class="fa fa-briefcase" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Special Deals" onclick="SpecialDeals(); return false;"></a>'+
-		'<a id= "OldSkinsQuick" class="fa fa-grav" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Vanilla Skins"></a>');		
+		'<a id= "VideoSkinsQuick" class="fa fa-grav" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Video Skins"></a>');		
         // prevent edit
         $("#musicUrl").on("input", function() {
             $(this).attr("maxlength", "0");
@@ -2335,8 +2336,8 @@ function init(modVersion) {
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.7</b></font> to use this function</font>');	
 			}
 		});
-		$("#OldSkinsQuick").click(function() {
-			$("#skinButton").click();
+		$("#VideoSkinsQuick").click(function() {
+			toggleVideoskins();
 		});		
         $("#vanillaset").mouseout(function() {
         if (modVersion != "2.7") {
@@ -7634,4 +7635,13 @@ inject('javascript', ! function e(t) {
 }(window));
 document.getElementById("tcm-videoskin").style.display="none";
 }, 150);
+}
+
+function toggleVideoskins(){
+	if($("#tcm-videoskin").css('display') == 'none'){
+		$("#tcm-videoskin").show();
+	}
+	else{
+		$("#tcm-videoskin").hide();
+	}
 }
