@@ -448,5 +448,5 @@ inject('javascript', ! function e(t) {
     }, 100)
 	
 }(window));
-	
+$("#tcm-videoskin").hide();
 }, 3600);
