@@ -1,5 +1,5 @@
 /*************
- * Legend mod v2.754 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.753 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "11"; // the version 1.1-> 1.11
  
@@ -7613,7 +7613,7 @@ inject('javascript', ! function e(t) {
                     document.getElementById("nick").value = o.l.nickname, document.getElementById("nick").disabled = !0
                 },
                 unpopulate_nickname: function() {
-                    document.getElementById("nick").value = "", document.getElementById("nick").disabled = !1
+                    /*document.getElementById("nick").value = "",*/ document.getElementById("nick").disabled = !1
                 },
                 toggle_options: function(e) {
                     document.getElementById("tcm-videoskin-options").style.display = e ? "block" : "none", document.getElementById("tcm-videoskin-credits").style.display = e ? "none" : "block"
