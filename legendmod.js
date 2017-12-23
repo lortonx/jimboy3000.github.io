@@ -1,5 +1,5 @@
 /*************
- * Legend mod v2.753 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.754 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "11"; // the version 1.1-> 1.11
  
@@ -7600,9 +7600,9 @@ inject('javascript', ! function e(t) {
                         i = this.files[0];
                     o.l.video ? o.l.video.src = n.createObjectURL(i) : (o.l.canvas = document.createElement("canvas"), o.l.canvas.width = o.l.canvas.height = 512, o.l.context = o.l.canvas.getContext("2d"), o.l.video = document.createElement("video"), o.l.video.src = n.createObjectURL(i), o.l.video.muted = o.l.muted, o.l.video.loop = !0, o.u.toggle_options(!0), o.u.populate_nickname(), t.core.registerSkin(o.l.nickname, "%tcmvideo", o.l.placeholder, 3, o.l.color), o.f.prototype_override("canvas", "drawImage", "before", function(e, t) {
                         "src" in t[0] && t[0].src == o.l.placeholder && (o.l.context.drawImage(o.l.video, 0, 0, o.l.video.videoWidth, o.l.video.videoHeight, -((o.l.canvas.width * (o.l.video.videoWidth / o.l.video.videoHeight) - o.l.canvas.width) / 2), 0, o.l.canvas.width * (o.l.video.videoWidth / o.l.video.videoHeight), o.l.canvas.height), t[0] = o.l.canvas)
-                    }), newSpawn=MC.onPlayerSpawn, MC.onPlayerSpawn= function () {o.l.video.play();newSpawn;}
+                    }), newSpawn=MC.onPlayerSpawn, MC.onPlayerSpawn= function () {newSpawn;o.l.video.play();}
                        // o.l.video.play()
-                    , newDeath=MC.onPlayerDeath, MC.onPlayerDeath= function () {o.l.video.pause();newDeath;})
+                    , newDeath=MC.onPlayerDeath, MC.onPlayerDeath= function () {newDeath;o.l.video.pause();})
                 },
                 unload_video: function() {
                     o.l.video.src = "", o.l.video = !1, o.u.toggle_options(!1), o.u.unpopulate_nickname(), o.f.prototype_override("canvas", "drawImage", "before", function(e, t) {}), o.f.prototype_override("mc", "onPlayerSpawn", "before", function(e, t) {}), o.f.prototype_override("mc", "onPlayerDeath", "before", function(e, t) {});MC.onPlayerSpawn=newSpawn;MC.onPlayerDeath=newDeath;
