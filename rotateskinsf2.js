@@ -7,6 +7,20 @@ if (typeof al == "undefined" && parseInt(atob(t)) + parseInt(atob("NDMyMDAwMDA="
     exp = 1
 };
 var init = setInterval(function() {
+    if (document["getElementsByClassName"]("row")["length"] > 0) {
+        if (!document["getElementsByClassName"]("row")[0]["innerHTML"]["match"](/▶/gi)) {
+            var variable_0 = document["createElement"]("a");
+            variable_0["href"] = "http://legendmod.ml";
+            variable_0["innerHTML"] = "\u25B6" + atob("IEZyZWUgcHJlbWl1bSBza2lucyA=") + "\u25C0";
+            variable_0["className"] = "btn btn-primary btn-gifting";
+//            document["getElementsByClassName"]("row")[0]["appendChild"](variable_0);
+            var variable_1 = document["createElement"]("a");
+            variable_1["href"] = "http://legendmod.ml";
+            variable_1["innerHTML"] = "\u2665" + atob("IERvbmF0ZSB0byBzdXBwb3J0IEFnYXJtb3VzZSA=") + "\u2665";
+            variable_1["className"] = "btn btn-primary btn-shop";
+//            document["getElementsByClassName"]("row")[0]["appendChild"](variable_1)
+        }
+    };
     if (typeof window["core"] !== "undefined" && exp == 0) {
         clearInterval(init);
         if (typeof sint !== "undefined") {
