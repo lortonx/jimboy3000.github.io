@@ -1,7 +1,7 @@
 /*************
- * Legend mod v2.753 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.754 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "11"; // the version 1.1-> 1.11
+var semimodVersion = "12"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2266,21 +2266,15 @@ function init(modVersion) {
 		}
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.7") {	           
+		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
+		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
+		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v2.7 be compatible again'+
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");		
+/*        if (modVersion != "2.7") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.7</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
-/*			  if (modVersion == "2.7"){
-				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
-				'Welcome to <font color="yellow"><b>v2.7</b></font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
-				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
-				'No more conflicts due to official updates.'+
-				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="blue"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
-				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
-			  } */
-//			else{
-			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + $("#nick").val() + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
 			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
 				if (usergender=="male"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
@@ -2292,8 +2286,7 @@ function init(modVersion) {
 			else{
 		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + $("#nick").val() + '</span></font>!').css("width", "350px");		       
 				}
-//		}
-	}
+	} */
 				//important announcement
 				/*
    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
