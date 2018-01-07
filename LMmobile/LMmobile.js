@@ -1,4 +1,6 @@
-    var variable_0 = setInterval(function() {
+ //javascript:(function() {var script = document.createElement('script');script.id='Airstick';script.setAttribute('data-version','MTUxNTMwNDIxODMwOQ==');script.src = 'https://jimboy3000.github.io/LMmobile/LMmobile.js?v=MTUxNTMwNDIxODMwOQ==';document.head.appendChild(script);})();
+
+	var variable_0 = setInterval(function() {
         if (document["getElementsByClassName"]("row")["length"] > 0 && typeof window["core"] !== "undefined") {
             clearInterval(variable_0);
             var variable_1 = document["createElement"]("SCRIPT");
