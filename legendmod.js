@@ -2266,12 +2266,12 @@ function init(modVersion) {
 		}
 
         // ANNOUNCEMENTS
-		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+/*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
 		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v2.7 be compatible again'+
-		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");		
-/*        if (modVersion != "2.7") {	           
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/	
+        if (modVersion != "2.7") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.7</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
@@ -2286,7 +2286,7 @@ function init(modVersion) {
 			else{
 		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + $("#nick").val() + '</span></font>!').css("width", "350px");		       
 				}
-	} */
+		} 
 				//important announcement
 				/*
    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
