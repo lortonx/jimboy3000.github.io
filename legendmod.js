@@ -42,7 +42,7 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
-		'<option value=":PrS1" data-itr="PrS1">2vs2 Arena</option>'+
+//		'<option value=":PrS1" data-itr="PrS1">2vs2 Arena</option>'+
 //		'<option value=":PrS2" data-itr="PrS2">2vs2 Arena(2)</option>'+
 		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
 		'<option value=":PrS4" data-itr="PrS4">N. America 1</option>'+
