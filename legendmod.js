@@ -4042,7 +4042,7 @@ function settroll1false() {
 
 function whenplayerdies() {
     if (troll1 == "YES") {
-        MC.onPlayerDeath = function() {
+        olddeath = function() {
 			
             //afterdeathtonormalmode();
 			playSound("https://jimboy3100.github.io/banners/troll1.mp3");	
@@ -4076,11 +4076,13 @@ function whenplayerdies() {
 
         }
     } else {
-        MC.onPlayerDeath = function() {
+        olddeath = function() {
 			
             //afterdeathtonormalmode();
         };
     }
+	newDeath=MC.onPlayerDeath; 
+	MC.onPlayerDeath= function () {newDeath;olddeath();}
 }
 
 function agariowhitesettings() {
