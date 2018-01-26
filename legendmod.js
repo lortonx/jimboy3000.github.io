@@ -1,7 +1,7 @@
 /*************
  * Legend mod v2.754 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "12"; // the version 1.1-> 1.11
+var semimodVersion = "13"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7627,7 +7627,7 @@ inject('javascript', ! function e(t) {
     }, 100)
 	
 }(window));
-document.getElementById("tcm-videoskin").style.display="none";
+//document.getElementById("tcm-videoskin").style.display="none";
 }, 150);
 }
 
