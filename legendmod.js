@@ -1,7 +1,7 @@
 /*************
  * Legend mod v2.754 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "13"; // the version 1.1-> 1.11
+var semimodVersion = "14"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -44,7 +44,7 @@ var oldgamemode=$("#gamemode");
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
 //		'<option value=":PrS1" data-itr="PrS1">2vs2 Arena</option>'+
 //		'<option value=":PrS2" data-itr="PrS2">2vs2 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
+//		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
 		'<option value=":PrS4" data-itr="PrS4">N. America 1</option>'+
 		'<option value=":PrS5" data-itr="PrS5">N. America 2</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Proxiemind 1</option>'+
