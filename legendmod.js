@@ -1,7 +1,7 @@
 /*************
- * Legend mod v2.754 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v2.755 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "14"; // the version 1.1-> 1.11
+var semimodVersion = "15"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -443,7 +443,7 @@ if (realmode == "") {
     modebetter2 = realmode;
 }
 
-/*
+var datasent2;
 ///////////////////////////////////////////////////////////////////////////
 // Here "addEventListener" is for standards-compliant web browsers and "attachEvent" is for IE Browsers.
 var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -458,14 +458,22 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 eventer(messageEvent, function (e) {
        //alert(e.data);
        // Do whatever you want to do with the data got from IFrame in Parent form.
-	   if (~e.data.indexOf("CustomSkins")){ 
-	   var PostedThings=getParameterByName("skin", e.data);
-	   $("#skin").val(PostedThings);
-	   //alert(e.data);
+	   if (~e.data.indexOf("PostedOgarSettings1")){ 
+
+//		try{window.parent.postMessage("PostedOgarSettings2?datasent="+$('#export-settings').val(), "*"); 
+//        } catch (e) {}
+		//alert(e.data);
+		datasent2=e.data;
+		datasent2=datasent2.replace("PostedOgarSettings1?datasent=", "");
+		fzogarOgarSettings(datasent2);
+	//	var datasent = getParameterByName("datasent", datasent2);
+	//   alert(datasent);
+	   
 	   }
-}, false);   
+		return datasent2;
+}, false);
 ///////////////////////////////////////////////////////////////////////////
-*/
+
 
 //Delete agario divs and images from memory
 $("#advertisement").remove();
@@ -7641,3 +7649,11 @@ function toggleVideoskins(){
 		$("#tcm-videoskin").hide();
 	}
 }
+function fzogarOgarSettings(datasent2){
+        setTimeout(function() {
+            $("#import-settings-btn").attr('class', 'btn btn-success');
+            document.getElementById("import-settings").value = datasent2;
+            window.history.pushState(null, null, window.location.pathname);
+            $('#import-settings-btn').click();
+        }, 100);
+}		
