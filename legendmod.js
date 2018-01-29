@@ -1,7 +1,7 @@
 /*************
  * Legend mod v2.755 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "15"; // the version 1.1-> 1.11
+var semimodVersion = "16"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7657,3 +7657,9 @@ function fzogarOgarSettings(datasent2){
             $('#import-settings-btn').click();
         }, 100);
 }		
+function fzogarOgarIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/AjaxData/fzogarOgarIframe.js";
+    $("body").append(s);
+}
