@@ -1,7 +1,7 @@
 /*************
  * Legend mod v2.755 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "16"; // the version 1.1-> 1.11
+var semimodVersion = "17"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1060,6 +1060,9 @@ function init(modVersion) {
         $(".note").keyup(function(event) {
             localStorage.setItem(event.target.id, $(event.target).val());
         });
+		//fzogar Upload / Download Settings
+		$("#import-settings-btn").attr('class', 'btn btn-success');
+		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
 
         $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
