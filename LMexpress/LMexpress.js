@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.011 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.012 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "11"; // the version 1.1-> 1.11
+var semimodVersion = "12"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -217,6 +217,8 @@ if (minbtext == null || minbtext == "") {
 }
 LMminimapTextAct();
 
+var datasent2;
+fzogarOgarIframeListener();
 
 function init(modVersion) {
 	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
@@ -412,35 +414,14 @@ function init(modVersion) {
         $(".note").keyup(function(event) {
             localStorage.setItem(event.target.id, $(event.target).val());
         });
+		//fzogar Upload / Download Settings
+		$("#import-settings-btn").attr('class', 'btn btn-success');
+		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
 
         $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
             '</div></div>');
-			/*
-        $("#leaderboard-hud").append('<div id="leaderboard-menu">' +
-            '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
-            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
-            '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
-            'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
 
-            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; left: 0px; padding: 0px; border-radius: 0px;">' +
-            '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
-            '</div>' +
-            '<div id="dropDown2" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 90px; left: 67px; padding: 0px; border-radius: 0px;">' +
-            '<a id="copySIPandPass" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Password">TK&PW</a>' +
-            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
-            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP, Password, Leaderboard...">TK&ALL</a>' +            
-			'</div>' +
-            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: 0px; border-radius: 0px;">' +
-            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
-//            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
-            '</div>' +
-
-            '<input id="tempCopy" style="display: none;" value="">' +
-            '</div>');
-			*/
-        //$("#searchShortcut").mouseenter(function () {
-        //$("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
         $("#copySIPBtn").mouseenter(function() {
             $("#dropDown3").hide();
             $("#copySIPBtn").text("Token");
@@ -468,7 +449,6 @@ function init(modVersion) {
             document.getElementById("searchInput").value = lastIP;
             $("#searchBtn").click();
         });
-        //	$("#OpenInfo").click(function () {openhelper();});
 
         $("#copyIPBtn").click(function() {
             if (searchSip != null) {
@@ -902,34 +882,12 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
-//		setTimeout(function() {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
-//		}, 1500);	
         console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');		
     }, 1500);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function getEmbedUrl(url) {
@@ -1255,83 +1213,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
                 $("#server").val(currentIP);
             }, 2500);
         });		
-/*
-function privateservutil(){
-//Private Servers
- $("#region").on('change', function() {
-	setTimeout(function() {
-	$("#gamemode").prop('disabled', false);
-	$("#region").prop('disabled', false);                 
-	}, 200);
-	if (this.value == ":PrS") {
-    console.log("Going to PrS");
-        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
-		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
-		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
-//		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
-//		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
-//		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
-//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
-//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');			
-    }
-	else if (this.value != ":PrS") {
-    console.log("Leaving PrS");	
-        $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
-		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
-		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
-		'<option value=":party" data-itr="page_party">Party Mode</option>');	
-    }	
-	adres();
-});
-$('#gamemode').on('change', function() {
-   adres();
-    if (this.value == ":party") {
-        $("#create-party-btn").click();
-    console.log("Party stuff fixed");
-	}
-    else if (this.value == ":PrS1") {
-    console.log("Going to PRS1");
-	PrivateServer1();
-    }
-    else if (this.value == ":PrS2") {
-    console.log("Going to PRS2");
-	PrivateServer2();
-    }  
-    else if (this.value == ":PrS3") {
-    console.log("Going to PRS3");
-	PrivateServer3();
-    }
-    else if (this.value == ":PrS4") {
-    console.log("Going to PRS4");
-	PrivateServer4();
-    }
-    else if (this.value == ":PrS5") {
-    console.log("Going to PRS5");
-	PrivateServer5();
-    }
-    else if (this.value == ":PrS6") {
-    console.log("Going to PRS6");
-	PrivateServer6();
-    }
-    else if (this.value == ":PrS7") {
-    console.log("Going to PRS7");
-	PrivateServer7();
-    }
-    else if (this.value == ":PrS8") {
-    console.log("Going to PRS8");
-	PrivateServer8();
-    }
-    else if (this.value == ":PrS9") {
-    console.log("Going to PRS9");
-	PrivateServer9();
-    }		
-});
-}
-*/
+
 function adres(thismode) {
 	var thismode;
 	if ($("#gamemode").val() != ":party") {
@@ -1351,8 +1233,6 @@ function adres(thismode) {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                     }
                     else if (realmode == ":party") {
- //                       window.history.pushState(null, null, window.location.pathname);
-//                        history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
                     }
 				}
 				else if (privateSrv!=null) {				
@@ -1492,8 +1372,6 @@ setTimeout(function() {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
                     }
                     else if (realmode == ":party") {
- //                       window.history.pushState(null, null, window.location.pathname);
- //                       history.pushState(stateObj, "page 2", "#" + window.location.href.replace('http://agar.io/#',''));
                     }
                              
                 return realmode;
@@ -1518,11 +1396,6 @@ setTimeout(function() {LMminimapText();  }, 6500);
 setTimeout(function() {LMminimapText();  }, 7000);
 setTimeout(function() {LMminimapText();  }, 7500);
 
-//setTimeout(function() {   //Load Private Servers			
-//	if($('#region>option:nth-child(1)').val()!=":PrS")	{
-//	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-//	}	
-//}, 13000);
 setTimeout(function() {LMminimapText();}, 11000);
 setTimeout(function() {LMminimapText();}, 12000);
 setTimeout(function() {LMminimapText();}, 18000);
@@ -1641,9 +1514,6 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
     } else if (isValidIpAndPort(searchStr.replace("http://agar.io/?search=ws://", ""))) {
         findIP(searchStr.replace("http://agar.io/?search=ws://", ""));
     } else if (getParameterByName("search", searchStr)) {
-        //    var region = getParameterByName("r", searchStr);
-        //    var mode = getParameterByName("m", searchStr);
-        //    var ip = getParameterByName("search", searchStr);		
         if (region) {
             MC.setRegion(region);
             getInfo();
@@ -2212,4 +2082,50 @@ function copy(text) {
     document.execCommand('copy');
     $("#tempCopy").hide();
     $("#tempCopy").val("");
+}
+function fzogarOgarSettings(datasent2){
+        setTimeout(function() {
+            $("#import-settings-btn").attr('class', 'btn btn-success');
+            document.getElementById("import-settings").value = datasent2;
+            window.history.pushState(null, null, window.location.pathname);
+            $('#import-settings-btn').click();
+        }, 100);
+}		
+function fzogarOgarIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/AjaxData/fzogarOgarIframe.js";
+    $("body").append(s);
+}
+
+function fzogarOgarIframeListener(){
+///////////////////////////////////////////////////////////////////////////
+// Here "addEventListener" is for standards-compliant web browsers and "attachEvent" is for IE Browsers.
+var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+var eventer = window[eventMethod];
+// Now...
+// if 
+//    "attachEvent", then we need to select "onmessage" as the event. 
+// if 
+//    "addEventListener", then we need to select "message" as the event
+var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+// Listen to message from child IFrame window
+eventer(messageEvent, function (e) {
+       //alert(e.data);
+       // Do whatever you want to do with the data got from IFrame in Parent form.
+	   if (~e.data.indexOf("PostedOgarSettings1")){ 
+
+//		try{window.parent.postMessage("PostedOgarSettings2?datasent="+$('#export-settings').val(), "*"); 
+//        } catch (e) {}
+		//alert(e.data);
+		datasent2=e.data;
+		datasent2=datasent2.replace("PostedOgarSettings1?datasent=", "");
+		fzogarOgarSettings(datasent2);
+	//	var datasent = getParameterByName("datasent", datasent2);
+	//   alert(datasent);
+	   
+	   }
+		return datasent2;
+}, false);
+///////////////////////////////////////////////////////////////////////////
 }
