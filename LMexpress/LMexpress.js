@@ -290,7 +290,7 @@ function init(modVersion) {
             '<input id="note6" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
             '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
             '</div>');
-		$('.btn.btn-warning.btn-spectate.btn-needs-server').replaceWith('<button class="btn btn-warning btn-spectate btn-needs-server" data-itr="page_spectate">Spectate</button>');
+		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
 		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
 		
 		$("#exp-bar").hide();
