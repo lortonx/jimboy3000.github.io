@@ -2284,9 +2284,9 @@ function init(modVersion) {
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
 		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v3.0 be compatible again'+
 		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/	
-        if (modVersion != "3.0") {	           
-			toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
-		}
+                   
+		toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
+		
         if (modVersion != "3.0") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.0</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
