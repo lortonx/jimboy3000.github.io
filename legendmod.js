@@ -1986,19 +1986,21 @@ function init(modVersion) {
         $("#cleartimer").hide();
 
         // player shortcut
-        $("#playerBtn").click(function() {
-            if (musicPlayer != undefined) {
-                var playerState = musicPlayer.getPlayerState();
+		var playerState = 0;
+        $("#playerBtn").click(function() {           
+                
                 if (playerState != 1) {
-                    musicPlayer.playVideo();
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
                     $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
                     $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
+					return playerState = 1;
                 } else {
-                    musicPlayer.pauseVideo();
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
                     $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
                     $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
+					return playerState = 0;
                 }
-            }
+            
         });
 
 		$('*[data-itr="page_play"]').click(function() {
