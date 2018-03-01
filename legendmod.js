@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.02 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.13 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "05"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2273,7 +2273,7 @@ function init(modVersion) {
         //Other things
         // ADS
  //       var tag1 = document.getElementById("nick").value;
-        if (modVersion != "3.0") {
+        if (modVersion != "3.1") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
@@ -2284,13 +2284,13 @@ function init(modVersion) {
 /*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
-		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v3.0 be compatible again'+
+		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v3.1 be compatible again'+
 		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/	
                    
-		toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
+		//toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
 		
-        if (modVersion != "3.0") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.0</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+        if (modVersion != "3.1") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.1</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
 			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
@@ -2309,7 +2309,7 @@ function init(modVersion) {
 				/*
    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font  font-size:16px; text-align:center"><a href="jimboy3100.github.io/LMexpress/LMexpress.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4-3.0)<font color="black">'+
+				'<br><font  font-size:16px; text-align:center"><a href="jimboy3100.github.io/LMexpress/LMexpress.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4-3.1)<font color="black">'+
 				'<br>If you are able to play, <font color="red">DO NOT </font>CHANGE ANY SETTINGS'+
 				'<br>If not, go to Setting (4th)tab-><font color="red"> SKINS</font>'+
 				'<br>No Skins-> <font color="red">OFF</font>'+
@@ -2332,7 +2332,7 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-        if (modVersion != "3.0") {
+        if (modVersion != "3.1") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
@@ -2340,19 +2340,19 @@ function init(modVersion) {
 		}
         });
 		$("#oldSkinsBtn").click(function() {
-			if (modVersion == "2.8" || modVersion == "3.0") {
+			if (modVersion == "2.8" || modVersion == "3.1") {
 		localStorage.setItem("oldskins", true);
 		location.replace("http://agar.io");
 			}
 			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.0</b></font> to use this function</font>');	
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.1</b></font> to use this function</font>');	
 			}
 		});
 		$("#VideoSkinsQuick").click(function() {
 			toggleVideoskins();
 		});		
         $("#vanillaset").mouseout(function() {
-        if (modVersion != "3.0") {
+        if (modVersion != "3.1") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
@@ -2360,7 +2360,7 @@ function init(modVersion) {
 		}
         });
         $("#defaultset").mouseout(function() {
-        if (modVersion != "3.0") {
+        if (modVersion != "3.1") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
@@ -2368,7 +2368,7 @@ function init(modVersion) {
 		}
         });
         $("#agarioset").mouseout(function() {
-        if (modVersion != "3.0") {
+        if (modVersion != "3.1") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
