@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.13 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "05"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -15,6 +15,8 @@ $("#tcm-videoskin").hide();
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
+
+MC.onPlayerDeath=function(){$("#connect2").click(); } //temporary until i fix the error
 
 videoskins();
 //Map Auto Start
