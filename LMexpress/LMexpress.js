@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.013 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.014 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "13"; // the version 1.1-> 1.11
+var semimodVersion = "14"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1220,7 +1220,7 @@ function adres(thismode) {
 	var thismode;
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
-			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
+			currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
 			$("#server").val(currentIP);
 			console.log(currentIP);
 			setTimeout(function() {	
@@ -1287,11 +1287,13 @@ setTimeout(function() {
                 });
                 $("#connect2").click(function() {
                     if ($("#server").val().includes("#") == false) {
+						if ($("#server").val().includes(":80") == true) {$("#server").val($("#server").val().replace(":80",""));} //fixing code for :80  
                         var texture2, texture3;
 					    var texture2, texture3;
                         texture3 = $("#server").val();
                         texture2 = texture3.replace("live-arena-", "");
 						texture2 = texture2.replace(".agar.io:80", "");
+						texture2 = texture2.replace(".agar.io", "");
 						$("#server-token").val(texture2);
 						$("#server-join").click();
                         setTimeout(function() {
