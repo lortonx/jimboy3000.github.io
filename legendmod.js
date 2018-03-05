@@ -19,6 +19,7 @@ getaccesstoken2();
 MC.onPlayerDeath=function(){
 	setTimeout(function() {
 	$("#connect2").click(); 
+	showmenuoverlays();
 	}, 300);
 	} //temporary until i fix the error
 
