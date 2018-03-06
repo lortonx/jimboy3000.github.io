@@ -6785,7 +6785,7 @@ function SpecialDeals() {
 			}
 		});
 		
-    if (window.ironrv_userId != null) {
+    if (MC.getUserId() != null) {
         $('#helloContainer').after('<div class="modal fade in" id="specialShopModal" aria-hidden="false" style="display: block;">' +
             '<div class="modal-backdrop fade in"></div>' +
             '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 500px;">' +
@@ -6803,7 +6803,7 @@ function SpecialDeals() {
             '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(""); background-size: cover; border-color: #7c0001"></div>' +
             '</div>' +
             '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> For some payment methods</color>' +
-            '<p class="alert-warning text-center">To make purchases, you must be logged in to your account…<br><span class="alert-success" id="exp-uid">' + window.ironrv_userId + '</span> <font color="red" onclick=copy(window.ironrv_userId);><b><u>COPY UID</u></b></font><br>*UID is used to buy offers for your friends</p>' +
+            '<p class="alert-warning text-center">To make purchases, you must be logged in to your account…<br><span class="alert-success" id="exp-uid">' + MC.getUserId() + '</span> <font color="red" onclick=copy(MC.getUserId());><b><u>COPY UID</u></b></font><br>*UID is used to buy offers for your friends</p>' +
             '</div>' +
             '</div>' +
             '</div>' +
@@ -6816,7 +6816,7 @@ setTimeout(function() { populateSD();}, 1500);
         $(".xpmt-buy-content").click(function() {
 			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">Special Deals v0.4<br>Agario may or may not give you the Skin, but only the coins<br><font color="red">Use at you OWN RISK</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-DyingLight").click(function () { buydeals(); });	
- /*           if (ProLicenceUsersTable.ProLicenceUsers[window.ironrv_userId] != undefined) {
+ /*           if (ProLicenceUsersTable.ProLicenceUsers[MC.getUserId()] != undefined) {
                 console.log("Authorised User");
                 buydeals();
             } else {
@@ -6843,7 +6843,7 @@ setTimeout(function() { populateSD();}, 1500);
             } else {
                 document.getElementById("checkBoxLockUID").checked = false;
                 toastr["info"]("UID Factory Settings").css("width", "210px");
-                $("#exp-uid").text(window.ironrv_userId);
+                $("#exp-uid").text(MC.getUserId());
             }
         });
 
