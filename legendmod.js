@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.15 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "09"; // the version 1.1-> 1.11
+var semimodVersion = "10"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1451,13 +1451,14 @@ function init(modVersion) {
                 $("#reconnectBtn").click();
 
             } else if (event.which == 27) { // ESCAPE
-
+				if (DeathFPSfixVariable!=1){
                 if ($('#searchHud').is(':visible')) {
                     hideSearchHud();
                 } else {
                     showMenu();
                 }
             }
+			}
         });
 
         $(".btn.btn-play-guest.btn-success.btn-needs-server").attr("onclick", "newsubmit()");
