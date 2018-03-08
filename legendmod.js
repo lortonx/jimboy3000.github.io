@@ -7703,8 +7703,7 @@ toastr["info"]("Calculating your XP, please wait...", "", { timeOut: 5000, exten
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 4000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 5000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 6000);
-	setTimeout(function() {DeathFPSfixWithSpawn();}, 7000);
-	return DeathFPSfixVariable="2";
+	setTimeout(function() {DeathFPSfixWithSpawn();return DeathFPSfixVariable="2";}, 7000);	
 }
 
 function DeathFPSfixWithSpawn(){
