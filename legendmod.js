@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.15 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.16 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "12"; // the version 1.1-> 1.11
+var semimodVersion = "13"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1458,8 +1458,10 @@ function init(modVersion) {
                     showMenu();
                 }
             }
-				else if (DeathFPSfixVariable=="1"){
+				else if (DeathFPSfixVariable=="1"){					
 					hideMenu();
+					DeathFPSfixWithSpawn();
+					toastr["error"]("You pressed <font color='blue'><b>ESC</font></b>, restart if <b>FPS</b> drops", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 				}
 			}
         });
@@ -7695,7 +7697,7 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
 hideMenu();
-toastr["info"]("Calculating your XP, please wait...", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
+toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
@@ -7705,7 +7707,7 @@ toastr["info"]("Calculating your XP, please wait...", "", { timeOut: 5000, exten
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 5000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 6000);
 	setTimeout(function() {DeathFPSfixWithSpawn();
-	if (DeathFPSfixVariable=="1"){showMenu();}
+	if (DeathFPSfixVariable=="1"){showMenu();showmenuoverlays();}
 	return DeathFPSfixVariable="2";
 	}, 7000);	
 }
@@ -7716,7 +7718,7 @@ function DeathFPSfixWithSpawn(){
 		MC.onPlayerSpawn();
 		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
 		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
-		setTimeout(function() {showMenu();}, 2100);
+		setTimeout(function() {showMenu();showmenuoverlays();}, 2100);
 		console.log("HUD is Ready - XP saved");	
 		return DeathFPSfixVariable="0";
 	}
