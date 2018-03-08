@@ -7712,7 +7712,7 @@ function DeathFPSfixWithSpawn(){
 		MC.onPlayerSpawn();
 		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
 		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
-		setTimeout(function() {showmenuoverlays();}, 2100);
+		setTimeout(function() {showMenu();}, 2100);
 		console.log("HUD is Ready - XP saved");	
 		return DeathFPSfixVariable="0";
 	}
