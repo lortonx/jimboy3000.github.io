@@ -7688,7 +7688,7 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
-toastr["info"]("Calculating your XP, please wait", "", { timeOut: 4000, extendedTimeOut: 4000 }).css("width", "280px");
+toastr["info"]("Calculating your XP, please wait", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
