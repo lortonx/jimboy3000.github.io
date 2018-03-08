@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.15 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "11"; // the version 1.1-> 1.11
+var semimodVersion = "12"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7694,6 +7694,7 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
+hideMenu();
 toastr["info"]("Calculating your XP, please wait...", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
@@ -7703,7 +7704,10 @@ toastr["info"]("Calculating your XP, please wait...", "", { timeOut: 5000, exten
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 4000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 5000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 6000);
-	setTimeout(function() {DeathFPSfixWithSpawn();return DeathFPSfixVariable="2";}, 7000);	
+	setTimeout(function() {DeathFPSfixWithSpawn();
+	if (DeathFPSfixVariable=="1"){showMenu();}
+	return DeathFPSfixVariable="2";
+	}, 7000);	
 }
 
 function DeathFPSfixWithSpawn(){
