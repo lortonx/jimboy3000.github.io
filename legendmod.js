@@ -1459,8 +1459,7 @@ function init(modVersion) {
                 }
             }
 				else if (DeathFPSfixVariable=="1"){					
-					hideMenu();
-					DeathFPSfixWithSpawn();
+					MC.onPlayerSpawn();
 					toastr["error"]("You pressed <font color='blue'><b>ESC</font></b>, restart if <b>FPS</b> drops", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 				}
 			}
