@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.15 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "10"; // the version 1.1-> 1.11
+var semimodVersion = "11"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1451,13 +1451,16 @@ function init(modVersion) {
                 $("#reconnectBtn").click();
 
             } else if (event.which == 27) { // ESCAPE
-				if (DeathFPSfixVariable!=1){
+				if (DeathFPSfixVariable!="1"){
                 if ($('#searchHud').is(':visible')) {
                     hideSearchHud();
                 } else {
                     showMenu();
                 }
             }
+				else if (DeathFPSfixVariable=="1"){
+					hideMenu();
+				}
 			}
         });
 
@@ -3532,7 +3535,9 @@ function showMenu() {
 function hideMenu() {
     $("#overlays").css("left", "-999em");
 }
-
+function hideMenu2() {
+    $("#overlays").hide();
+}
 function getLeaderboard() {
     return $(ogario.leaderboardHTML).text();
 }
@@ -7689,7 +7694,7 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
-toastr["info"]("Calculating your XP, please wait", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
+toastr["info"]("Calculating your XP, please wait...", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
@@ -7699,7 +7704,7 @@ toastr["info"]("Calculating your XP, please wait", "", { timeOut: 5000, extended
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 5000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 6000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 7000);
-	
+	return DeathFPSfixVariable="2";
 }
 
 function DeathFPSfixWithSpawn(){
@@ -7710,7 +7715,7 @@ function DeathFPSfixWithSpawn(){
 		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
 		setTimeout(function() {showmenuoverlays();}, 2100);
 		console.log("HUD is Ready - XP saved");	
-		return DeathFPSfixVariable=0;
+		return DeathFPSfixVariable="0";
 	}
 	else{
 		console.log("HUD Not Ready Yet - Counting the XP");
