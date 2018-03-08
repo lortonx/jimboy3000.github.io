@@ -134,7 +134,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=L7klPYKTx64";
+var defaultMusicUrl = "http://www.youtube.com/watch?v=L7klPYKTx64";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -1029,7 +1029,7 @@ function init(modVersion) {
         $('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
 		
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "http://www.youtube.com/watch?v=CnIfNSpCf70";
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Promotional Video');
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
@@ -3961,14 +3961,14 @@ function getEmbedUrl(url) {
     var listId = getParameterByName("list", url);
 
     if (videoId != null && listId == null) {
-        return "https://www.youtube.com/embed/" + videoId + "?" + musicParams;
+        return "http://www.youtube.com/embed/" + videoId + "?" + musicParams;
     } else if (listId != null && videoId != null) {
-        return "https://www.youtube.com/embed/" + videoId + "?list=" + listId + "&" + musicParams;
+        return "http://www.youtube.com/embed/" + videoId + "?list=" + listId + "&" + musicParams;
     } else if (url.startsWith("https://youtu.be/")) {
         if (listId != null) {
-            return url.replace("https://youtu.be/", "https://www.youtube.com/embed/") + "&" + musicParams;
+            return url.replace("http://youtu.be/", "http://www.youtube.com/embed/") + "&" + musicParams;
         } else {
-            return url.replace("https://youtu.be/", "https://www.youtube.com/embed/") + "?" + musicParams;
+            return url.replace("http://youtu.be/", "http://www.youtube.com/embed/") + "?" + musicParams;
         }
     } else {
         return false;
@@ -7681,7 +7681,7 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
-toastr["info"]("Calculating your XP, please wait", "", { timeOut: 3000, extendedTimeOut: 3000 }).css("width", "280px");
+toastr["info"]("Calculating your XP, please wait", "", { timeOut: 4000, extendedTimeOut: 4000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
@@ -7699,7 +7699,8 @@ function DeathFPSfixWithSpawn(){
     if($(".progress-bar-star.sprite.leaguestar-kraken.animated.tada").length > 0){
 		MC.onPlayerSpawn();
 		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
-		setTimeout(function() {showmenuoverlays();}, 1100);
+		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
+		setTimeout(function() {showmenuoverlays();}, 2100);
 		console.log("HUD is Ready - XP saved");	
 		return DeathFPSfixVariable=0;
 	}
