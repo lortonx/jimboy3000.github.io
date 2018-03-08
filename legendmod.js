@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.14 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.15 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "08"; // the version 1.1-> 1.11
+var semimodVersion = "09"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3031,6 +3031,7 @@ function init(modVersion) {
             $("#connect2").hide();			
 			}, 3600); 
 			
+	
 		}
 /*		else if (privateSrv==null) {
 			setTimeout(function() {
@@ -3042,6 +3043,12 @@ function init(modVersion) {
 
         //if (searchSip==null){
         //afterdeathtonormalmode();}
+$('.side-container.left-container.disable-mouse.ogario-menu').css({
+        opacity: 1
+    });
+$('.side-container.right-container.disable-mouse.ogario-menu').css({
+        opacity: 1
+    });				
         if (timesopened == null) {
             openhelper();
         }
