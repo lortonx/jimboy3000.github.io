@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.13 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.14 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "07"; // the version 1.1-> 1.11
+var semimodVersion = "08"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -16,12 +16,8 @@ getaccesstoken();
 getaccesstoken2();
 }, 3000);
 
-MC.onPlayerDeath=function(){
-	setTimeout(function() {
-	$("#connect2").click(); 
-	showmenuoverlays();
-	}, 300);
-	} //temporary until i fix the error
+var DeathFPSfixVariable;
+MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
 
 videoskins();
 //Map Auto Start
@@ -7679,4 +7675,36 @@ function fzogarOgarIframe() {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/AjaxData/fzogarOgarIframe.js";
     $("body").append(s);
+}
+
+function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0],function(){b.apply(new a)}}
+
+function DeathFPSfix(){	
+DeathFPSfixVariable="1";
+toastr["info"]("Calculating your XP, please wait", "", { timeOut: 3000, extendedTimeOut: 3000 }).css("width", "280px");
+	MC.onPlayerSpawn();
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 2000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 3000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 4000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 5000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 6000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 7000);
+	
+}
+
+function DeathFPSfixWithSpawn(){
+	if (DeathFPSfixVariable=="1"){
+    if($(".progress-bar-star.sprite.leaguestar-kraken.animated.tada").length > 0){
+		MC.onPlayerSpawn();
+		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
+		setTimeout(function() {showmenuoverlays();}, 1100);
+		console.log("HUD is Ready - XP saved");	
+		return DeathFPSfixVariable=0;
+	}
+	else{
+		console.log("HUD Not Ready Yet - Counting the XP");
+	}
+	}
 }
