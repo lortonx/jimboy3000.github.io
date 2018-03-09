@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.16 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "13"; // the version 1.1-> 1.11
+var semimodVersion = "14"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1768,7 +1768,7 @@ function init(modVersion) {
                 $("#shortcuts-hud").hide();
                 $("#rotate-hud").hide();
                 $("#images-hud").hide();
-                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter44);
+                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter42);
                 return seticon = "YES";
             }
         });
