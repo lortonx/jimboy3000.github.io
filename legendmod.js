@@ -2113,20 +2113,20 @@ function init(modVersion) {
         $("#VoiceBtn").click(function() {
             if (searchSip == null) {
                 if (ogario.gameMode == ":party") {
-                    semiurl2 = MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
+                    semiurl2 = "?token=" + MC.getPartyToken() + $("#clantag").val() + "&?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
                 } else {
                     var currentIP2 = currentIP.replace(".", "");
                     currentIP2 = currentIP2.replace(".", "");
                     currentIP2 = currentIP2.replace(".", "");
                     currentIP2 = currentIP2.replace(":", "");
-                    semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + currentIP;
+                    semiurl2 = "?token=" + currentIP2 + $("#clantag").val() + "&?name=" + $("#nick").val() + "&?ip=" + currentIP;
                 }
             } else if (searchSip != null) {
                 var currentIP2 = searchSip.replace(".", "");
                 currentIP2 = currentIP2.replace(".", "");
                 currentIP2 = currentIP2.replace(".", "");
                 currentIP2 = currentIP2.replace(":", "");
-                semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + searchSip;
+                semiurl2 = "?token=" + currentIP2 + $("#clantag").val() + "&?name=" + $("#nick").val() + "&?ip=" + searchSip;
             }
 
             url2 = "https://talky.io/" + semiurl2;
