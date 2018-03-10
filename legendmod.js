@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.16 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "14"; // the version 1.1-> 1.11
+var semimodVersion = "15"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -571,7 +571,7 @@ setTimeout(function() {
 
                             MC.setQuality($('#quality').val());
                         }, 1000);
-                    } else if ($("#server").val().length<7) {
+                    } else if ($("#server").val().length<8) {
 						if ($("#server").val().includes("#") == true){
                         joinpartyfromconnect();
 						}
