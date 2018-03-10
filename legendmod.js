@@ -574,6 +574,10 @@ setTimeout(function() {
                     } else if ($("#server").val().length<8) {
 						if ($("#server").val().includes("#") == true){
                         joinpartyfromconnect();
+						setTimeout(function () {
+							MC.setQuality($('#quality').val());
+						},4000);
+						
 						}
 						else if ($("#server").val().includes("#") == false){
 							$("#server").val("#"+$("#server").val());
