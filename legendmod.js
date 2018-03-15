@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.16 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.17 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "16"; // the version 1.1-> 1.11
+var semimodVersion = "17"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -19,7 +19,7 @@ getaccesstoken2();
 var DeathFPSfixVariable;
 MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
 MC._onDisconnect = MC.onDisconnect;
-MC.onPlayerDeath = joint([ MC._onPlayerDeath, onDisconnectfix ]);
+MC.onDisconnect = joint([ MC._onDisconnect, onDisconnectfix ]);
 
 
 videoskins();
@@ -7737,10 +7737,10 @@ function DeathFPSfixWithSpawn(){
 function onDisconnectfix(){
 	    toastr["error"](Premadeletter10).css("width", "250px");
         appendSysLog("DISCONNECTED :(");
-        setTimeout(function() {
+		setTimeout(function() {
 			adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-			}, 3000);
-		}, 1500);
+		}, 8000);
+		setTimeout(function() {
+			adres();
+		}, 10000);		
 }
