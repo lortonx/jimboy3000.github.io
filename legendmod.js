@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.16 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "15"; // the version 1.1-> 1.11
+var semimodVersion = "16"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -18,6 +18,9 @@ getaccesstoken2();
 
 var DeathFPSfixVariable;
 MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
+MC._onDisconnect = MC.onDisconnect;
+MC.onPlayerDeath = joint([ MC._onPlayerDeath, onDisconnectfix ]);
+
 
 videoskins();
 //Map Auto Start
@@ -7729,4 +7732,15 @@ function DeathFPSfixWithSpawn(){
 		console.log("HUD Not Ready Yet - Counting the XP");
 	}
 	}
+}
+
+function onDisconnectfix(){
+	    toastr["error"](Premadeletter10).css("width", "250px");
+        appendSysLog("DISCONNECTED :(");
+        setTimeout(function() {
+			adres();
+			setTimeout(function() {
+                $("#server").val(currentIP);
+			}, 3000);
+		}, 1500);
 }
