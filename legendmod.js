@@ -3088,9 +3088,9 @@ $('.side-container.right-container.disable-mouse.ogario-menu').css({
             openhelper();
         }
 
-console.group('%cLegend mod™%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+console.group('%cLegend mod%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
     console.group("Part of");    		
-		console.log('%cThe Legend mod Project', stylesLegendModConsole2);
+		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
     console.groupEnd();
     console.group("Mod developed by"); 
 		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
