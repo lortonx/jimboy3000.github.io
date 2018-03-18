@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.17 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "18"; // the version 1.1-> 1.11
+var semimodVersion = "19"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -327,6 +327,28 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
+var stylesLegendModConsole1 = [
+    'background: linear-gradient(#D33106, #571402)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #99c2ff'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+    , 'line-height: 40px'
+    , 'text-align: center'
+    , 'font-weight: bold'
+].join(';');
+var stylesLegendModConsole2 = [
+    'background: linear-gradient(#FF0000, #571402)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #FFFFFF'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+    , 'line-height: 40px'
+    , 'text-align: center'
+    , 'font-weight: bold'
+].join(';');
 
 /*
   $(function() {
@@ -3065,9 +3087,9 @@ $('.side-container.right-container.disable-mouse.ogario-menu').css({
             openhelper();
         }
 
+console.log('%c Legend mod, all rights reserved. %chttp://www.legendmod.ml', stylesLegendModConsole1, stylesLegendModConsole2);
 
 
-        console.log('%c Legend mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
 		
     }, 1500);
 
@@ -7704,7 +7726,8 @@ function DeathFPSfix(){
 DeathFPSfixVariable="1";
 hideMenu();
 hideMenu2();
-toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
+console.log('%c Game Over. %chttp://www.legendmod.ml', stylesLegendModConsole1, stylesLegendModConsole2);
+toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
@@ -7725,7 +7748,7 @@ function DeathFPSfixWithSpawn(){
 		MC.onPlayerSpawn();
 		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
 		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
-		setTimeout(function() {showMenu();showmenuoverlays();}, 2100);
+		setTimeout(function() {showMenu();showmenuoverlays();}, 4100);
 		console.log("HUD is Ready - XP saved");	
 		return DeathFPSfixVariable="0";
 	}
@@ -7738,6 +7761,7 @@ function DeathFPSfixWithSpawn(){
 function onDisconnectfix(){
 	    toastr["error"](Premadeletter10).css("width", "250px");
         appendSysLog("DISCONNECTED :(");
+		console.log('%c Server Disconnection. %chttp://www.legendmod.ml', stylesLegendModConsole1, stylesLegendModConsole2);
 		setTimeout(function() {
 			adres();
 		}, 8000);
