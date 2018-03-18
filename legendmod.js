@@ -16,6 +16,19 @@ getaccesstoken();
 getaccesstoken2();
 }, 3000);
 
+
+
+(function(){
+    var _privateLog = console.log;
+    console.log = function (message) {
+		if (~message.indexOf("OGARio by szymy")){
+		}
+		else{
+			_privateLog.apply(console, arguments);
+		}
+    };
+})();
+
 var DeathFPSfixVariable;
 MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
 MC._onDisconnect = MC.onDisconnect;
