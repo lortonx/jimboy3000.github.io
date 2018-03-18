@@ -200,11 +200,11 @@
                 variable_1["setAttribute"]("data-src", "jsi");
                 document["body"]["appendChild"](variable_1)
             });*/
-            var variable_14 = document["createElement"]("a");
+ /*           var variable_14 = document["createElement"]("a");
             variable_14["href"] = "javascript:window.MC.setNick(document.getElementById(\"nick\").value);";
             variable_14["innerHTML"] = "\u25B6 Fast respawn \u25C0";
             variable_14["className"] = "btn btn-primary btn-shop";
-            document["getElementById"]("socialStats")["appendChild"](variable_14);
+            document["getElementById"]("socialStats")["appendChild"](variable_14); */
             document["getElementById"]("adbg")["innerHTML"] = "<br><a id=\"ftbtn\" href=\"http://legendmod.ml/\" target=\"_blank\"><img style=\"margin-top:-20px\" width=\"300\" height=\"250\" src=\"https://jimboy3100.github.io/banners/CropedImage128.gif\"></a><br/><br/>"
         }
     }, 100)
