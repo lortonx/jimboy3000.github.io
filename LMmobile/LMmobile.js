@@ -1,4 +1,29 @@
  //javascript:(function() {var script = document.createElement('script');script.id='Airstick';script.setAttribute('data-version','MTUxNTMwNDIxODMwOQ==');script.src = 'https://jimboy3000.github.io/LMmobile/LMmobile.js?v=MTUxNTMwNDIxODMwOQ==';document.head.appendChild(script);})();
+var stylesLegendModConsole1 = [
+    'background: linear-gradient(#D33106, #571402)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #99c2ff'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+    , 'line-height: 40px'
+    , 'text-align: center'
+    , 'font-weight: bold'
+].join(';');
+var stylesLegendModConsole2 = [
+    'background: linear-gradient(grey, black)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #FFFFFF'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+//    , 'line-height: 40px'
+    , 'text-align: center'
+//    , 'font-weight: bold'
+].join(';');
+
+$("#adsBottomInner").remove();
+$("#mcbanners-container").remove();
 
 	var variable_0 = setInterval(function() {
         if (document["getElementsByClassName"]("row")["length"] > 0 && typeof window["core"] !== "undefined") {
@@ -207,4 +232,15 @@
             document["getElementById"]("socialStats")["appendChild"](variable_14); */
             document["getElementById"]("adbg")["innerHTML"] = "<br><a id=\"ftbtn\" href=\"http://legendmod.ml/\" target=\"_blank\"><img style=\"margin-top:-20px\" width=\"300\" height=\"250\" src=\"https://jimboy3100.github.io/banners/CropedImage128.gif\"></a><br/><br/>"
         }
-    }, 100)
+    }, 100);
+
+setTimeout(function() {
+	console.group('%cLegend mod%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+    console.group("Part of");    		
+		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by"); 
+		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
+    console.groupEnd();
+console.groupEnd();
+}, 1500);	
