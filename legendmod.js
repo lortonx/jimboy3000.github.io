@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.17 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.18 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "19"; // the version 1.1-> 1.11
+var semimodVersion = "20"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -339,16 +339,17 @@ var stylesLegendModConsole1 = [
     , 'font-weight: bold'
 ].join(';');
 var stylesLegendModConsole2 = [
-    'background: linear-gradient(#FF0000, #571402)'
+    'background: linear-gradient(grey, black)'
     , 'border: 1px solid #3E0E02'
     , 'color: #FFFFFF'
     , 'display: block'
     , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
     , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
-    , 'line-height: 40px'
+//    , 'line-height: 40px'
     , 'text-align: center'
-    , 'font-weight: bold'
+//    , 'font-weight: bold'
 ].join(';');
+
 
 /*
   $(function() {
@@ -3087,10 +3088,14 @@ $('.side-container.right-container.disable-mouse.ogario-menu').css({
             openhelper();
         }
 
-console.log('%c Legend mod, all rights reserved. %chttp://www.legendmod.ml', stylesLegendModConsole1, stylesLegendModConsole2);
-
-
-		
+console.group('%cLegend mod™%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+    console.group("Part of");    		
+		console.log('%cThe Legend mod Project', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by"); 
+		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
+    console.groupEnd();
+console.groupEnd();		
     }, 1500);
 
 }
@@ -7726,7 +7731,7 @@ function DeathFPSfix(){
 DeathFPSfixVariable="1";
 hideMenu();
 hideMenu2();
-console.log('%c Game Over. %chttp://www.legendmod.ml', stylesLegendModConsole1, stylesLegendModConsole2);
+console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
 toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
@@ -7761,7 +7766,7 @@ function DeathFPSfixWithSpawn(){
 function onDisconnectfix(){
 	    toastr["error"](Premadeletter10).css("width", "250px");
         appendSysLog("DISCONNECTED :(");
-		console.log('%c Server Disconnection. %chttp://www.legendmod.ml', stylesLegendModConsole1, stylesLegendModConsole2);
+		console.group('%cServer %c  %cDisconnection',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
 		setTimeout(function() {
 			adres();
 		}, 8000);
