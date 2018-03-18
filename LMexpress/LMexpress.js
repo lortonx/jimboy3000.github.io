@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.014 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.015 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "14"; // the version 1.1-> 1.11
+var semimodVersion = "15"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -14,6 +14,18 @@ setTimeout(function() {
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
+
+(function(){
+    var _privateLog = console.log;
+    console.log = function (message) {
+		if (~message.indexOf("OGARio by szymy")){
+		}
+		else{
+			_privateLog.apply(console, arguments);
+		}
+    };
+})();
+
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   		
 var oldgamemode=$("#gamemode");
@@ -201,6 +213,28 @@ var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 
+var stylesLegendModConsole1 = [
+    'background: linear-gradient(#D33106, #571402)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #99c2ff'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+    , 'line-height: 40px'
+    , 'text-align: center'
+    , 'font-weight: bold'
+].join(';');
+var stylesLegendModConsole2 = [
+    'background: linear-gradient(grey, black)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #FFFFFF'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+//    , 'line-height: 40px'
+    , 'text-align: center'
+//    , 'font-weight: bold'
+].join(';');
 
 languagemodfun();
 if (realmode == "") {modebetter2 = ":ffa";} 
@@ -887,7 +921,14 @@ function init(modVersion) {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
-        console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');		
+        console.group('%cLegend mod%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+    console.group("Part of");    		
+		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by"); 
+		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
+    console.groupEnd();
+console.groupEnd();	
     }, 1500);
 }
 
