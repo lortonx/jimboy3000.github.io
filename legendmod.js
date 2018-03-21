@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.18 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.19 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "18"; // the version 1.1-> 1.11
+var semimodVersion = "9"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -265,6 +265,7 @@ var CopyTkPwLb2;
 var LegendJSON;
 var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
+var switcheryLegendSwitch, switcheryLegendSwitch2;
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -1952,6 +1953,7 @@ function init(modVersion) {
 					LegendSettingsfirst();
 					return LegendSettingsfirstclicked = "true";
 				} else {
+					$("#export-settings-btn").click();
 					return false;
 				}
 			}, 100);
@@ -7789,6 +7791,7 @@ function LegendSettingsfirst() {
     $("#import-settings-btn").hide();
     $("#import-settings-btn2").click(function() {
         LegendSettingsImport(switcheryLegendSwitch2);
+		return switcheryLegendSwitch, switcheryLegendSwitch2;
     });
 
 }
