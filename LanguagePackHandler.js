@@ -159,6 +159,7 @@ $("#exp-imp-settings>LABEL").replace('Settings', Languageletter125);
 $("#exp-imp-settings>LABEL").replace('Theme', Languageletter126);
 $("#export-settings-btn").text(Languageletter127);
 $("#import-settings-btn").text(Languageletter128);
+$("#import-settings-btn2").text(Languageletter128);
 
 $("#theme>ul>li>.ogicon-paint-format").attr('data-original-title', Languageletter129);
 $("#theme>ul>li>.ogicon-menu").attr('data-original-title', Languageletter130);
