@@ -695,7 +695,7 @@ function init(modVersion) {
 			setTimeout(function() {
 				if (LegendSettingsfirstclicked == "false") {
 					LegendSettingsfirst();
-					return LegendSettingsfirstclicked == "true";
+					return LegendSettingsfirstclicked = "true";
 				} else {
 					return false;
 				}
