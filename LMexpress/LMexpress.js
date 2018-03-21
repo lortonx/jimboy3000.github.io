@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.016 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.017 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "16"; // the version 1.1-> 1.11
+var semimodVersion = "17"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -154,6 +154,7 @@ var languagemod = localStorage.getItem("languagemod");
 var LegendJSON;
 var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
+var switcheryLegendSwitch, switcheryLegendSwitch2;
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -697,6 +698,7 @@ function init(modVersion) {
 					LegendSettingsfirst();
 					return LegendSettingsfirstclicked = "true";
 				} else {
+					$("#export-settings-btn").click();
 					return false;
 				}
 			}, 100);
@@ -2221,6 +2223,7 @@ function LegendSettingsfirst() {
     $("#import-settings-btn").hide();
     $("#import-settings-btn2").click(function() {
         LegendSettingsImport(switcheryLegendSwitch2);
+		return switcheryLegendSwitch, switcheryLegendSwitch2;
     });
 
 }
