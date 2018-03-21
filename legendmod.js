@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.19 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.22 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "21"; // the version 1.1-> 1.11
+var semimodVersion = "22"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7742,7 +7742,8 @@ function fzogarOgarSettings(datasent2){
             $("#import-settings-btn").attr('class', 'btn btn-success');
             document.getElementById("import-settings").value = datasent2;
             window.history.pushState(null, null, window.location.pathname);
-            $('#import-settings-btn').click();
+//            $('#import-settings-btn').click();
+			$('#import-settings-btn2').click();
         }, 100);
 }		
 function fzogarOgarIframe() {
@@ -8048,6 +8049,46 @@ function parseLegendJSONAPI(LegendJSON) {
     if (LegendJSON.legendSettings.discwebhook2 == "null") {
         LegendJSON.legendSettings.discwebhook2 = ""
     };
+    LegendJSON.legendSettings.Userscript1 = localStorage.getItem("Userscript1");
+    if (LegendJSON.legendSettings.Userscript1 == "null") {
+        LegendJSON.legendSettings.Userscript1 = ""
+    };
+    LegendJSON.legendSettings.Userscript2 = localStorage.getItem("Userscript2");
+    if (LegendJSON.legendSettings.Userscript2 == "null") {
+        LegendJSON.legendSettings.Userscript2 = ""
+    };
+    LegendJSON.legendSettings.Userscript3 = localStorage.getItem("Userscript3");
+    if (LegendJSON.legendSettings.Userscript3 == "null") {
+        LegendJSON.legendSettings.Userscript3 = ""
+    };
+    LegendJSON.legendSettings.Userscript4 = localStorage.getItem("Userscript4");
+    if (LegendJSON.legendSettings.Userscript4 == "null") {
+        LegendJSON.legendSettings.Userscript4 = ""
+    };
+    LegendJSON.legendSettings.Userscript5 = localStorage.getItem("Userscript5");
+    if (LegendJSON.legendSettings.Userscript5 == "null") {
+        LegendJSON.legendSettings.Userscript5 = ""
+    };	
+    LegendJSON.legendSettings.Userscripttexture1 = localStorage.getItem("Userscripttexture1");
+    if (LegendJSON.legendSettings.Userscripttexture1 == "null") {
+        LegendJSON.legendSettings.Userscripttexture1 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture2 = localStorage.getItem("Userscripttexture2");
+    if (LegendJSON.legendSettings.Userscripttexture2 == "null") {
+        LegendJSON.legendSettings.Userscripttexture2 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture3 = localStorage.getItem("Userscripttexture3");
+    if (LegendJSON.legendSettings.Userscripttexture3 == "null") {
+        LegendJSON.legendSettings.Userscripttexture3 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture4 = localStorage.getItem("Userscripttexture4");
+    if (LegendJSON.legendSettings.Userscripttexture4 == "null") {
+        LegendJSON.legendSettings.Userscripttexture4 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture5 = localStorage.getItem("Userscripttexture5");
+    if (LegendJSON.legendSettings.Userscripttexture5 == "null") {
+        LegendJSON.legendSettings.Userscripttexture5 = ""
+    };	
     return LegendJSON;
 }
 
@@ -8132,4 +8173,14 @@ function saveLegendJSONAPI() {
     localStorage.setItem("yt6dataimg", LegendJSON.legendSettings.yt6dataimg);
     localStorage.setItem("discwebhook1", LegendJSON.legendSettings.discwebhook1);
     localStorage.setItem("discwebhook2", LegendJSON.legendSettings.discwebhook2);
+	localStorage.setItem("Userscript1", LegendJSON.legendSettings.Userscript1);
+	localStorage.setItem("Userscript2", LegendJSON.legendSettings.Userscript2);
+	localStorage.setItem("Userscript3", LegendJSON.legendSettings.Userscript3);
+	localStorage.setItem("Userscript4", LegendJSON.legendSettings.Userscript4);
+	localStorage.setItem("Userscript5", LegendJSON.legendSettings.Userscript5);
+	localStorage.setItem("Userscripttexture1", LegendJSON.legendSettings.Userscripttexture1);
+	localStorage.setItem("Userscripttexture2", LegendJSON.legendSettings.Userscripttexture2);
+	localStorage.setItem("Userscripttexture3", LegendJSON.legendSettings.Userscripttexture3);
+	localStorage.setItem("Userscripttexture4", LegendJSON.legendSettings.Userscripttexture4);
+	localStorage.setItem("Userscripttexture5", LegendJSON.legendSettings.Userscripttexture5);
 }
