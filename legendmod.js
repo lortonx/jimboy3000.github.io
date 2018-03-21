@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.18 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "20"; // the version 1.1-> 1.11
+var semimodVersion = "18"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -15,19 +15,6 @@ $("#tcm-videoskin").hide();
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
-
-
-
-(function(){
-    var _privateLog = console.log;
-    console.log = function (message) {
-		if (~message.indexOf("OGARio by szymy")){
-		}
-		else{
-			_privateLog.apply(console, arguments);
-		}
-    };
-})();
 
 var DeathFPSfixVariable;
 MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
@@ -273,8 +260,12 @@ var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
 var fbresponse={};
 var prevPrivateServer = localStorage.getItem("prevPrivateServer");
-var CopyTkPwLb2; 
-
+var CopyTkPwLb2;
+//for the LM JSON
+var LegendJSON;
+var LegendSettings="true";
+var LegendSettingsfirstclicked="false"; 
+//
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
 var Premadeletter2 = "You cannot chat if player name > 15 chars";
@@ -339,29 +330,6 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
-
-var stylesLegendModConsole1 = [
-    'background: linear-gradient(#D33106, #571402)'
-    , 'border: 1px solid #3E0E02'
-    , 'color: #99c2ff'
-    , 'display: block'
-    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
-    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
-    , 'line-height: 40px'
-    , 'text-align: center'
-    , 'font-weight: bold'
-].join(';');
-var stylesLegendModConsole2 = [
-    'background: linear-gradient(grey, black)'
-    , 'border: 1px solid #3E0E02'
-    , 'color: #FFFFFF'
-    , 'display: block'
-    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
-    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
-//    , 'line-height: 40px'
-    , 'text-align: center'
-//    , 'font-weight: bold'
-].join(';');
 
 
 /*
@@ -1978,7 +1946,16 @@ function init(modVersion) {
 
         });
 
-
+		$(".btn.btn-block.btn-success.btn-export").click(function() {
+			setTimeout(function() {
+				if (LegendSettingsfirstclicked == "false") {
+					LegendSettingsfirst();
+					return LegendSettingsfirstclicked == "true";
+				} else {
+					return false;
+				}
+			}, 100);
+		});
 
 //        $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
         //$("#cur-tk-hud").attr("style", "opacity: 0;");
@@ -3101,14 +3078,10 @@ $('.side-container.right-container.disable-mouse.ogario-menu').css({
             openhelper();
         }
 
-console.group('%cLegend mod%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
-    console.group("Part of");    		
-		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
-    console.groupEnd();
-    console.group("Mod developed by"); 
-		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
-    console.groupEnd();
-console.groupEnd();		
+
+
+        console.log('%c Legend mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
+		
     }, 1500);
 
 }
@@ -7743,9 +7716,7 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
 hideMenu();
-hideMenu2();
-console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
-toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
+toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
@@ -7766,7 +7737,7 @@ function DeathFPSfixWithSpawn(){
 		MC.onPlayerSpawn();
 		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
 		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
-		setTimeout(function() {showMenu();showmenuoverlays();}, 4100);
+		setTimeout(function() {showMenu();showmenuoverlays();}, 2100);
 		console.log("HUD is Ready - XP saved");	
 		return DeathFPSfixVariable="0";
 	}
@@ -7779,11 +7750,349 @@ function DeathFPSfixWithSpawn(){
 function onDisconnectfix(){
 	    toastr["error"](Premadeletter10).css("width", "250px");
         appendSysLog("DISCONNECTED :(");
-		console.group('%cServer %c  %cDisconnection',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
 		setTimeout(function() {
 			adres();
 		}, 8000);
 		setTimeout(function() {
 			adres();
 		}, 10000);		
+}
+
+
+function LegendSettingsfirst() {
+    $('#export-settings').before('<label><input type="checkbox" id="export-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
+    var elemLegendSwitch = document.querySelector('#export-LegendSettings');
+    var switcheryLegendSwitch = new Switchery(elemLegendSwitch, {
+        size: 'small',
+        color: '#01d9cc',
+        jackColor: 'rgb(250, 250, 250)'
+    });
+    $('#import-settings').before('<label><input type="checkbox" id="import-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
+    var elemLegendSwitch2 = document.querySelector('#import-LegendSettings');
+    var switcheryLegendSwitch2 = new Switchery(elemLegendSwitch2, {
+        size: 'small',
+        color: '#01d9cc',
+        jackColor: 'rgb(250, 250, 250)'
+    });
+
+    LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+    LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
+    $("#export-settings-btn").click(function() {
+        LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
+    });
+
+    $("#import-settings-btn").clone().insertAfter("#import-settings-btn").attr('id', 'import-settings-btn2');
+    $("#import-settings-btn2").css({
+        width: "676px",
+        margin: "12px"
+    });
+    $("#import-settings-btn").hide();
+    $("#import-settings-btn2").click(function() {
+        LegendSettingsImport(switcheryLegendSwitch2);
+    });
+
+}
+
+function LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch) {
+    setTimeout(function() {
+        if (switcheryLegendSwitch.isChecked()) {
+            LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+            parseLegendJSONAPI(LegendJSON);
+            var LegendJSONnice = JSON.stringify(LegendJSON, null, 4);
+            document.getElementById("export-settings").value = LegendJSONnice;
+        } else {
+            LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+            parseLegendJSONAPI(LegendJSON);
+            delete LegendJSON.legendSettings;
+            var LegendJSONnice = JSON.stringify(LegendJSON, null, 4);
+            document.getElementById("export-settings").value = LegendJSONnice;
+        }
+        return LegendJSON;
+    }, 100);
+}
+
+function parseLegendJSONAPI(LegendJSON) {
+    LegendJSON.legendSettings = {};
+    LegendJSON.legendSettings.previousMode = localStorage.getItem("gamemode");
+    LegendJSON.legendSettings.checkonlyonce = localStorage.getItem("checkonlyonce");
+    LegendJSON.legendSettings.previousnickname = localStorage.getItem("previousnickname");
+    LegendJSON.legendSettings.showToken = localStorage.getItem("showTK");
+    LegendJSON.legendSettings.showPlayer = localStorage.getItem("showPlayer");
+    LegendJSON.legendSettings.SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
+    LegendJSON.legendSettings.XPBtn = localStorage.getItem("XPBtn");
+    LegendJSON.legendSettings.MAINBTBtn = localStorage.getItem("MAINBTBtn");
+    LegendJSON.legendSettings.AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
+    LegendJSON.legendSettings.YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
+    LegendJSON.legendSettings.TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
+    LegendJSON.legendSettings.troll1Btn = localStorage.getItem("troll1Btn ");
+    LegendJSON.legendSettings.ComPosition = localStorage.getItem("ComPosition");
+    LegendJSON.legendSettings.autoCoinBtn = localStorage.getItem("autoCoinBtn");
+    LegendJSON.legendSettings.timesopened = localStorage.getItem("timesopened");
+    LegendJSON.legendSettings.saveclanpassword = localStorage.getItem("saveclanpassword");
+    LegendJSON.legendSettings.dyinglight1load = localStorage.getItem("dyinglight1load");
+    LegendJSON.legendSettings.languagemod = localStorage.getItem("languagemod");
+    LegendJSON.legendSettings.userfirstname = localStorage.getItem("userfirstname");
+    LegendJSON.legendSettings.userlastname = localStorage.getItem("userlastname");
+    LegendJSON.legendSettings.usergender = localStorage.getItem("usergender");
+    LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
+    LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
+    if (LegendJSON.legendSettings.initialMusicUrl == "null") {
+        LegendJSON.legendSettings.initialMusicUrl = "http://www.youtube.com/watch?v=L7klPYKTx64"
+    };
+    LegendJSON.legendSettings.lastIP = localStorage.getItem("lastIP");
+    if (LegendJSON.legendSettings.lastIP == "null") {
+        LegendJSON.legendSettings.lastIP = "0.0.0.0:0"
+    };
+    LegendJSON.legendSettings.note1 = localStorage.getItem("note1");
+    if (LegendJSON.legendSettings.note1 == "null") {
+        LegendJSON.legendSettings.note1 = ""
+    };
+    LegendJSON.legendSettings.note2 = localStorage.getItem("note2");
+    if (LegendJSON.legendSettings.note2 == "null") {
+        LegendJSON.legendSettings.note2 = ""
+    };
+    LegendJSON.legendSettings.note3 = localStorage.getItem("note3");
+    if (LegendJSON.legendSettings.note3 == "null") {
+        LegendJSON.legendSettings.note3 = ""
+    };
+    LegendJSON.legendSettings.note4 = localStorage.getItem("note4");
+    if (LegendJSON.legendSettings.note4 == "null") {
+        LegendJSON.legendSettings.note4 = ""
+    };
+    LegendJSON.legendSettings.note5 = localStorage.getItem("note5");
+    if (LegendJSON.legendSettings.note5 == "null") {
+        LegendJSON.legendSettings.note5 = ""
+    };
+    LegendJSON.legendSettings.note6 = localStorage.getItem("note6");
+    if (LegendJSON.legendSettings.note6 == "null") {
+        LegendJSON.legendSettings.note6 = ""
+    };
+    LegendJSON.legendSettings.note7 = localStorage.getItem("note7");
+    if (LegendJSON.legendSettings.note7 == "null") {
+        LegendJSON.legendSettings.note7 = ""
+    };
+    LegendJSON.legendSettings.minimapbckimg = localStorage.getItem("minimapbckimg");
+    if (LegendJSON.legendSettings.minimapbckimg == "null") {
+        LegendJSON.legendSettings.minimapbckimg = ""
+    };
+    LegendJSON.legendSettings.teambimg = localStorage.getItem("teambimg");
+    if (LegendJSON.legendSettings.teambimg == "null") {
+        LegendJSON.legendSettings.teambimg = ""
+    };
+    LegendJSON.legendSettings.canvasbimg = localStorage.getItem("canvasbimg");
+    if (LegendJSON.legendSettings.canvasbimg == "null") {
+        LegendJSON.legendSettings.canvasbimg = ""
+    };
+    LegendJSON.legendSettings.leadbtext = localStorage.getItem("leadbtext");
+    if (LegendJSON.legendSettings.leadbtext == "null") {
+        LegendJSON.legendSettings.leadbtext = ""
+    };
+    LegendJSON.legendSettings.leadbimg = localStorage.getItem("leadbimg");
+    if (LegendJSON.legendSettings.leadbimg == "null") {
+        LegendJSON.legendSettings.leadbimg = ""
+    };
+    LegendJSON.legendSettings.teambtext = localStorage.getItem("teambtext");
+    if (LegendJSON.legendSettings.teambtext == "null") {
+        LegendJSON.legendSettings.teambtext = ""
+    };
+    LegendJSON.legendSettings.imgUrl = localStorage.getItem("imgUrl");
+    if (LegendJSON.legendSettings.imgUrl == "null") {
+        LegendJSON.legendSettings.imgUrl = ""
+    };
+    LegendJSON.legendSettings.imgHref = localStorage.getItem("imgHref");
+    if (LegendJSON.legendSettings.imgHref == "null") {
+        LegendJSON.legendSettings.imgHref = ""
+    };
+    LegendJSON.legendSettings.minbtext = localStorage.getItem("minbtext");
+    if (LegendJSON.legendSettings.minbtext == "null") {
+        LegendJSON.legendSettings.minbtext = ""
+    };
+    LegendJSON.legendSettings.pic1urlimg = localStorage.getItem("pic1urlimg");
+    if (LegendJSON.legendSettings.pic1urlimg == "null") {
+        LegendJSON.legendSettings.pic1urlimg = ""
+    };
+    LegendJSON.legendSettings.pic2urlimg = localStorage.getItem("pic2urlimg");
+    if (LegendJSON.legendSettings.pic2urlimg == "null") {
+        LegendJSON.legendSettings.pic2urlimg = ""
+    };
+    LegendJSON.legendSettings.pic3urlimg = localStorage.getItem("pic3urlimg");
+    if (LegendJSON.legendSettings.pic3urlimg == "null") {
+        LegendJSON.legendSettings.pic3urlimg = ""
+    };
+    LegendJSON.legendSettings.pic4urlimg = localStorage.getItem("pic4urlimg");
+    if (LegendJSON.legendSettings.pic4urlimg == "null") {
+        LegendJSON.legendSettings.pic4urlimg = ""
+    };
+    LegendJSON.legendSettings.pic5urlimg = localStorage.getItem("pic5urlimg");
+    if (LegendJSON.legendSettings.pic5urlimg == "null") {
+        LegendJSON.legendSettings.pic5urlimg = ""
+    };
+    LegendJSON.legendSettings.pic6urlimg = localStorage.getItem("pic6urlimg");
+    if (LegendJSON.legendSettings.pic6urlimg == "null") {
+        LegendJSON.legendSettings.pic6urlimg = ""
+    };
+    LegendJSON.legendSettings.yt1urlimg = localStorage.getItem("yt1urlimg");
+    if (LegendJSON.legendSettings.yt1urlimg == "null") {
+        LegendJSON.legendSettings.yt1urlimg = ""
+    };
+    LegendJSON.legendSettings.yt2urlimg = localStorage.getItem("yt2urlimg");
+    if (LegendJSON.legendSettings.yt2urlimg == "null") {
+        LegendJSON.legendSettings.yt2urlimg = ""
+    };
+    LegendJSON.legendSettings.yt3urlimg = localStorage.getItem("yt3urlimg");
+    if (LegendJSON.legendSettings.yt3urlimg == "null") {
+        LegendJSON.legendSettings.yt3urlimg = ""
+    };
+    LegendJSON.legendSettings.yt4urlimg = localStorage.getItem("yt4urlimg");
+    if (LegendJSON.legendSettings.yt4urlimg == "null") {
+        LegendJSON.legendSettings.yt4urlimg = ""
+    };
+    LegendJSON.legendSettings.yt5urlimg = localStorage.getItem("yt5urlimg");
+    if (LegendJSON.legendSettings.yt5urlimg == "null") {
+        LegendJSON.legendSettings.yt5urlimg = ""
+    };
+    LegendJSON.legendSettings.yt6urlimg = localStorage.getItem("yt6urlimg");
+    if (LegendJSON.legendSettings.yt6urlimg == "null") {
+        LegendJSON.legendSettings.yt6urlimg = ""
+    };
+    LegendJSON.legendSettings.pic1dataimg = localStorage.getItem("pic1dataimg");
+    if (LegendJSON.legendSettings.pic1dataimg == "null") {
+        LegendJSON.legendSettings.pic1dataimg = ""
+    };
+    LegendJSON.legendSettings.pic2dataimg = localStorage.getItem("pic2dataimg");
+    if (LegendJSON.legendSettings.pic2dataimg == "null") {
+        LegendJSON.legendSettings.pic2dataimg = ""
+    };
+    LegendJSON.legendSettings.pic3dataimg = localStorage.getItem("pic3dataimg");
+    if (LegendJSON.legendSettings.pic3dataimg == "null") {
+        LegendJSON.legendSettings.pic3dataimg = ""
+    };
+    LegendJSON.legendSettings.pic4dataimg = localStorage.getItem("pic4dataimg");
+    if (LegendJSON.legendSettings.pic4dataimg == "null") {
+        LegendJSON.legendSettings.pic4dataimg = ""
+    };
+    LegendJSON.legendSettings.pic5dataimg = localStorage.getItem("pic5dataimg");
+    if (LegendJSON.legendSettings.pic5dataimg == "null") {
+        LegendJSON.legendSettings.pic5dataimg = ""
+    };
+    LegendJSON.legendSettings.pic6dataimg = localStorage.getItem("pic6dataimg");
+    if (LegendJSON.legendSettings.pic6dataimg == "null") {
+        LegendJSON.legendSettings.pic6dataimg = ""
+    };
+    LegendJSON.legendSettings.yt1dataimg = localStorage.getItem("yt1dataimg");
+    if (LegendJSON.legendSettings.yt1dataimg == "null") {
+        LegendJSON.legendSettings.yt1dataimg = ""
+    };
+    LegendJSON.legendSettings.yt2dataimg = localStorage.getItem("yt2dataimg");
+    if (LegendJSON.legendSettings.yt2dataimg == "null") {
+        LegendJSON.legendSettings.yt2dataimg = ""
+    };
+    LegendJSON.legendSettings.yt3dataimg = localStorage.getItem("yt3dataimg");
+    if (LegendJSON.legendSettings.yt3dataimg == "null") {
+        LegendJSON.legendSettings.yt3dataimg = ""
+    };
+    LegendJSON.legendSettings.yt4dataimg = localStorage.getItem("yt4dataimg");
+    if (LegendJSON.legendSettings.yt4dataimg == "null") {
+        LegendJSON.legendSettings.yt4dataimg = ""
+    };
+    LegendJSON.legendSettings.yt5dataimg = localStorage.getItem("yt5dataimg");
+    if (LegendJSON.legendSettings.yt5dataimg == "null") {
+        LegendJSON.legendSettings.yt5dataimg = ""
+    };
+    LegendJSON.legendSettings.yt6dataimg = localStorage.getItem("yt6dataimg");
+    if (LegendJSON.legendSettings.yt6dataimg == "null") {
+        LegendJSON.legendSettings.yt6dataimg = ""
+    };
+    LegendJSON.legendSettings.discwebhook1 = localStorage.getItem("discwebhook1");
+    if (LegendJSON.legendSettings.discwebhook1 == "null") {
+        LegendJSON.legendSettings.discwebhook1 = ""
+    };
+    LegendJSON.legendSettings.discwebhook2 = localStorage.getItem("discwebhook2");
+    if (LegendJSON.legendSettings.discwebhook2 == "null") {
+        LegendJSON.legendSettings.discwebhook2 = ""
+    };
+    return LegendJSON;
+}
+
+function LegendSettingsImport(switcheryLegendSwitch2) {
+    if (switcheryLegendSwitch2.isChecked()) {
+        LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+        parseLegendJSONAPI(LegendJSON);
+        saveLegendJSONAPI();
+        setTimeout(function() {
+            $("#import-settings-btn").click();
+        }, 100)
+    } else {
+        $("#import-settings-btn").click();
+    }
+}
+
+function saveLegendJSONAPI() {
+    //LegendJSON.legendSettings={};
+    localStorage.setItem("gamemode", LegendJSON.legendSettings.previousMode);
+    localStorage.setItem("checkonlyonce", LegendJSON.legendSettings.checkonlyonce);
+    localStorage.setItem("previousnickname", LegendJSON.legendSettings.previousnickname);
+    localStorage.setItem("showTK", LegendJSON.legendSettings.showToken);
+    localStorage.setItem("showPlayer", LegendJSON.legendSettings.showPlayer);
+    localStorage.setItem("SHOSHOBtn", LegendJSON.legendSettings.SHOSHOBtn);
+    localStorage.setItem("XPBtn", LegendJSON.legendSettings.XPBtn);
+    localStorage.setItem("MAINBTBtn", LegendJSON.legendSettings.MAINBTBtn);
+    localStorage.setItem("AnimatedSkinBtn", LegendJSON.legendSettings.AnimatedSkinBtn);
+    localStorage.setItem("YoutubeAutoBtn", LegendJSON.legendSettings.YoutubeAutoBtn);
+    localStorage.setItem("TIMEcalBtn", LegendJSON.legendSettings.TIMEcalBtn);
+    localStorage.setItem("troll1Btn", LegendJSON.legendSettings.troll1Btn);
+    localStorage.setItem("ComPosition", LegendJSON.legendSettings.ComPosition);
+    localStorage.setItem("autoCoinBtn", LegendJSON.legendSettings.autoCoinBtn);
+    localStorage.setItem("timesopened", LegendJSON.legendSettings.timesopened);
+    localStorage.setItem("saveclanpassword", LegendJSON.legendSettings.saveclanpassword);
+    localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
+    localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
+    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
+    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
+    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
+    localStorage.setItem("prevPrivateServer", LegendJSON.legendSettings.prevPrivateServer);
+    localStorage.setItem("musicUrl", LegendJSON.legendSettings.initialMusicUrl);
+    localStorage.setItem("lastIP", LegendJSON.legendSettings.lastIP);
+    localStorage.setItem("note1", LegendJSON.legendSettings.note1);
+    localStorage.setItem("note2", LegendJSON.legendSettings.note2);
+    localStorage.setItem("note3", LegendJSON.legendSettings.note3);
+    localStorage.setItem("note4", LegendJSON.legendSettings.note4);
+    localStorage.setItem("note5", LegendJSON.legendSettings.note5);
+    localStorage.setItem("note6", LegendJSON.legendSettings.note6);
+    localStorage.setItem("note7", LegendJSON.legendSettings.note7);
+    localStorage.setItem("minimapbckimg", LegendJSON.legendSettings.minimapbckimg);
+    localStorage.setItem("teambimg", LegendJSON.legendSettings.teambimg);
+    localStorage.setItem("canvasbimg", LegendJSON.legendSettings.canvasbimg);
+    localStorage.setItem("leadbtext", LegendJSON.legendSettings.leadbtext);
+    localStorage.setItem("leadbimg", LegendJSON.legendSettings.leadbimg);
+    localStorage.setItem("teambtext", LegendJSON.legendSettings.teambtext);
+    localStorage.setItem("imgUrl", LegendJSON.legendSettings.imgUrl);
+    localStorage.setItem("imgHref", LegendJSON.legendSettings.imgHref);
+    localStorage.setItem("minbtext", LegendJSON.legendSettings.minbtext);
+    localStorage.setItem("pic1urlimg", LegendJSON.legendSettings.pic1urlimg);
+    localStorage.setItem("pic2urlimg", LegendJSON.legendSettings.pic2urlimg);
+    localStorage.setItem("pic3urlimg", LegendJSON.legendSettings.pic3urlimg);
+    localStorage.setItem("pic4urlimg", LegendJSON.legendSettings.pic4urlimg);
+    localStorage.setItem("pic5urlimg", LegendJSON.legendSettings.pic5urlimg);
+    localStorage.setItem("pic6urlimg", LegendJSON.legendSettings.pic6urlimg);
+    localStorage.setItem("yt1urlimg", LegendJSON.legendSettings.yt1urlimg);
+    localStorage.setItem("yt2urlimg", LegendJSON.legendSettings.yt2urlimg);
+    localStorage.setItem("yt3urlimg", LegendJSON.legendSettings.yt3urlimg);
+    localStorage.setItem("yt4urlimg", LegendJSON.legendSettings.yt4urlimg);
+    localStorage.setItem("yt5urlimg", LegendJSON.legendSettings.yt5urlimg);
+    localStorage.setItem("yt6urlimg", LegendJSON.legendSettings.yt6urlimg);
+    localStorage.setItem("pic1dataimg", LegendJSON.legendSettings.pic1dataimg);
+    localStorage.setItem("pic2dataimg", LegendJSON.legendSettings.pic2dataimg);
+    localStorage.setItem("pic3dataimg", LegendJSON.legendSettings.pic3dataimg);
+    localStorage.setItem("pic4dataimg", LegendJSON.legendSettings.pic4dataimg);
+    localStorage.setItem("pic5dataimg", LegendJSON.legendSettings.pic5dataimg);
+    localStorage.setItem("pic6dataimg", LegendJSON.legendSettings.pic6dataimg);
+    localStorage.setItem("yt1dataimg", LegendJSON.legendSettings.yt1dataimg);
+    localStorage.setItem("yt2dataimg", LegendJSON.legendSettings.yt2dataimg);
+    localStorage.setItem("yt3dataimg", LegendJSON.legendSettings.yt3dataimg);
+    localStorage.setItem("yt4dataimg", LegendJSON.legendSettings.yt4dataimg);
+    localStorage.setItem("yt5dataimg", LegendJSON.legendSettings.yt5dataimg);
+    localStorage.setItem("yt6dataimg", LegendJSON.legendSettings.yt6dataimg);
+    localStorage.setItem("discwebhook1", LegendJSON.legendSettings.discwebhook1);
+    localStorage.setItem("discwebhook2", LegendJSON.legendSettings.discwebhook2);
 }
