@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.19 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "9"; // the version 1.1-> 1.11
+var semimodVersion = "19"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
