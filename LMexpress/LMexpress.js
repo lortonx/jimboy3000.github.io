@@ -2194,20 +2194,13 @@ eventer(messageEvent, function (e) {
 }
 
 function LegendSettingsfirst() {
-    $('#export-settings').before('<label><input type="checkbox" id="export-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
-    var elemLegendSwitch = document.querySelector('#export-LegendSettings');
-    var switcheryLegendSwitch = new Switchery(elemLegendSwitch, {
-        size: 'small',
-        color: '#01d9cc',
-        jackColor: 'rgb(250, 250, 250)'
-    });
-    $('#import-settings').before('<label><input type="checkbox" id="import-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
-    var elemLegendSwitch2 = document.querySelector('#import-LegendSettings');
-    var switcheryLegendSwitch2 = new Switchery(elemLegendSwitch2, {
-        size: 'small',
-        color: '#01d9cc',
-        jackColor: 'rgb(250, 250, 250)'
-    });
+	$('#export-settings').before('<label><input type="checkbox" id="export-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
+	var elemLegendSwitch = document.querySelector('#export-LegendSettings');
+	var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+	var switcheryLegendSwitch = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+	$('#import-settings').before('<label><input type="checkbox" id="import-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
+	var elemLegendSwitch2 = document.querySelector('#import-LegendSettings');
+	var switcheryLegendSwitch2 = new Switchery(elemLegendSwitch2, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
 
     LegendJSON = JSON.parse(document.getElementById("export-settings").value);
     LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
