@@ -7966,7 +7966,7 @@ function parseLegendJSONAPI(LegendJSON) {
         LegendJSON.legendSettings.pic5urlimg = ""
     };
     LegendJSON.legendSettings.pic6urlimg = localStorage.getItem("pic6urlimg");
-    if (LegendJSON.legendSettings.pic6urlimg == "null" || LegendJSON.legendSettings.pic6urlimg=null) {
+    if (LegendJSON.legendSettings.pic6urlimg == "null" || LegendJSON.legendSettings.pic6urlimg==null) {
         LegendJSON.legendSettings.pic6urlimg = ""
     };
     LegendJSON.legendSettings.yt1urlimg = localStorage.getItem("yt1urlimg");
