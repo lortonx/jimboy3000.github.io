@@ -7874,219 +7874,219 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.usergender = localStorage.getItem("usergender");
     LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
-    if (LegendJSON.legendSettings.initialMusicUrl == "null") {
+    if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
         LegendJSON.legendSettings.initialMusicUrl = "http://www.youtube.com/watch?v=L7klPYKTx64"
     };
     LegendJSON.legendSettings.lastIP = localStorage.getItem("lastIP");
-    if (LegendJSON.legendSettings.lastIP == "null") {
+    if (LegendJSON.legendSettings.lastIP == "null" || LegendJSON.legendSettings.lastIP==null) {
         LegendJSON.legendSettings.lastIP = "0.0.0.0:0"
     };
     LegendJSON.legendSettings.note1 = localStorage.getItem("note1");
-    if (LegendJSON.legendSettings.note1 == "null") {
+    if (LegendJSON.legendSettings.note1 == "null" || LegendJSON.legendSettings.note1==null) {
         LegendJSON.legendSettings.note1 = ""
     };
     LegendJSON.legendSettings.note2 = localStorage.getItem("note2");
-    if (LegendJSON.legendSettings.note2 == "null") {
+    if (LegendJSON.legendSettings.note2 == "null" || LegendJSON.legendSettings.note2==null) {
         LegendJSON.legendSettings.note2 = ""
     };
     LegendJSON.legendSettings.note3 = localStorage.getItem("note3");
-    if (LegendJSON.legendSettings.note3 == "null") {
+    if (LegendJSON.legendSettings.note3 == "null" || LegendJSON.legendSettings.note3==null) {
         LegendJSON.legendSettings.note3 = ""
     };
     LegendJSON.legendSettings.note4 = localStorage.getItem("note4");
-    if (LegendJSON.legendSettings.note4 == "null") {
+    if (LegendJSON.legendSettings.note4 == "null" || LegendJSON.legendSettings.note4==null) {
         LegendJSON.legendSettings.note4 = ""
     };
     LegendJSON.legendSettings.note5 = localStorage.getItem("note5");
-    if (LegendJSON.legendSettings.note5 == "null") {
+    if (LegendJSON.legendSettings.note5 == "null" || LegendJSON.legendSettings.note5==null) {
         LegendJSON.legendSettings.note5 = ""
     };
     LegendJSON.legendSettings.note6 = localStorage.getItem("note6");
-    if (LegendJSON.legendSettings.note6 == "null") {
+    if (LegendJSON.legendSettings.note6 == "null" || LegendJSON.legendSettings.note6==null) {
         LegendJSON.legendSettings.note6 = ""
     };
     LegendJSON.legendSettings.note7 = localStorage.getItem("note7");
-    if (LegendJSON.legendSettings.note7 == "null") {
+    if (LegendJSON.legendSettings.note7 == "null" || LegendJSON.legendSettings.note7==null) {
         LegendJSON.legendSettings.note7 = ""
     };
     LegendJSON.legendSettings.minimapbckimg = localStorage.getItem("minimapbckimg");
-    if (LegendJSON.legendSettings.minimapbckimg == "null") {
+    if (LegendJSON.legendSettings.minimapbckimg == "null" || LegendJSON.legendSettings.minimapbckimg==null) {
         LegendJSON.legendSettings.minimapbckimg = ""
     };
     LegendJSON.legendSettings.teambimg = localStorage.getItem("teambimg");
-    if (LegendJSON.legendSettings.teambimg == "null") {
+    if (LegendJSON.legendSettings.teambimg == "null" || LegendJSON.legendSettings.teambimg==null) {
         LegendJSON.legendSettings.teambimg = ""
     };
     LegendJSON.legendSettings.canvasbimg = localStorage.getItem("canvasbimg");
-    if (LegendJSON.legendSettings.canvasbimg == "null") {
+    if (LegendJSON.legendSettings.canvasbimg == "null" || LegendJSON.legendSettings.canvasbimg==null) {
         LegendJSON.legendSettings.canvasbimg = ""
     };
     LegendJSON.legendSettings.leadbtext = localStorage.getItem("leadbtext");
-    if (LegendJSON.legendSettings.leadbtext == "null") {
+    if (LegendJSON.legendSettings.leadbtext == "null" || LegendJSON.legendSettings.leadbtext==null) {
         LegendJSON.legendSettings.leadbtext = ""
     };
     LegendJSON.legendSettings.leadbimg = localStorage.getItem("leadbimg");
-    if (LegendJSON.legendSettings.leadbimg == "null") {
+    if (LegendJSON.legendSettings.leadbimg == "null" || LegendJSON.legendSettings.leadbimg==null) {
         LegendJSON.legendSettings.leadbimg = ""
     };
     LegendJSON.legendSettings.teambtext = localStorage.getItem("teambtext");
-    if (LegendJSON.legendSettings.teambtext == "null") {
+    if (LegendJSON.legendSettings.teambtext == "null" || LegendJSON.legendSettings.teambtext==null) {
         LegendJSON.legendSettings.teambtext = ""
     };
     LegendJSON.legendSettings.imgUrl = localStorage.getItem("imgUrl");
-    if (LegendJSON.legendSettings.imgUrl == "null") {
+    if (LegendJSON.legendSettings.imgUrl == "null" || LegendJSON.legendSettings.imgUrl==null) {
         LegendJSON.legendSettings.imgUrl = ""
     };
     LegendJSON.legendSettings.imgHref = localStorage.getItem("imgHref");
-    if (LegendJSON.legendSettings.imgHref == "null") {
+    if (LegendJSON.legendSettings.imgHref == "null" || LegendJSON.legendSettings.imgHref==null) {
         LegendJSON.legendSettings.imgHref = ""
     };
     LegendJSON.legendSettings.minbtext = localStorage.getItem("minbtext");
-    if (LegendJSON.legendSettings.minbtext == "null") {
+    if (LegendJSON.legendSettings.minbtext == "null" || LegendJSON.legendSettings.minbtext==null) {
         LegendJSON.legendSettings.minbtext = ""
     };
     LegendJSON.legendSettings.pic1urlimg = localStorage.getItem("pic1urlimg");
-    if (LegendJSON.legendSettings.pic1urlimg == "null") {
+    if (LegendJSON.legendSettings.pic1urlimg == "null" || LegendJSON.legendSettings.pic1urlimg==null) {
         LegendJSON.legendSettings.pic1urlimg = ""
     };
     LegendJSON.legendSettings.pic2urlimg = localStorage.getItem("pic2urlimg");
-    if (LegendJSON.legendSettings.pic2urlimg == "null") {
+    if (LegendJSON.legendSettings.pic2urlimg == "null" || LegendJSON.legendSettings.pic2urlimg==null) {
         LegendJSON.legendSettings.pic2urlimg = ""
     };
     LegendJSON.legendSettings.pic3urlimg = localStorage.getItem("pic3urlimg");
-    if (LegendJSON.legendSettings.pic3urlimg == "null") {
+    if (LegendJSON.legendSettings.pic3urlimg == "null" || LegendJSON.legendSettings.pic3urlimg==null) {
         LegendJSON.legendSettings.pic3urlimg = ""
     };
     LegendJSON.legendSettings.pic4urlimg = localStorage.getItem("pic4urlimg");
-    if (LegendJSON.legendSettings.pic4urlimg == "null") {
+    if (LegendJSON.legendSettings.pic4urlimg == "null" || LegendJSON.legendSettings.pic4urlimg==null) {
         LegendJSON.legendSettings.pic4urlimg = ""
     };
     LegendJSON.legendSettings.pic5urlimg = localStorage.getItem("pic5urlimg");
-    if (LegendJSON.legendSettings.pic5urlimg == "null") {
+    if (LegendJSON.legendSettings.pic5urlimg == "null" || LegendJSON.legendSettings.pic5urlimg==null) {
         LegendJSON.legendSettings.pic5urlimg = ""
     };
     LegendJSON.legendSettings.pic6urlimg = localStorage.getItem("pic6urlimg");
-    if (LegendJSON.legendSettings.pic6urlimg == "null") {
+    if (LegendJSON.legendSettings.pic6urlimg == "null" || LegendJSON.legendSettings.pic6urlimg=null) {
         LegendJSON.legendSettings.pic6urlimg = ""
     };
     LegendJSON.legendSettings.yt1urlimg = localStorage.getItem("yt1urlimg");
-    if (LegendJSON.legendSettings.yt1urlimg == "null") {
+    if (LegendJSON.legendSettings.yt1urlimg == "null" || LegendJSON.legendSettings.yt1urlimg==null) {
         LegendJSON.legendSettings.yt1urlimg = ""
     };
     LegendJSON.legendSettings.yt2urlimg = localStorage.getItem("yt2urlimg");
-    if (LegendJSON.legendSettings.yt2urlimg == "null") {
+    if (LegendJSON.legendSettings.yt2urlimg == "null" || LegendJSON.legendSettings.yt2urlimg==null) {
         LegendJSON.legendSettings.yt2urlimg = ""
     };
     LegendJSON.legendSettings.yt3urlimg = localStorage.getItem("yt3urlimg");
-    if (LegendJSON.legendSettings.yt3urlimg == "null") {
+    if (LegendJSON.legendSettings.yt3urlimg == "null" || LegendJSON.legendSettings.yt3urlimg==null) {
         LegendJSON.legendSettings.yt3urlimg = ""
     };
     LegendJSON.legendSettings.yt4urlimg = localStorage.getItem("yt4urlimg");
-    if (LegendJSON.legendSettings.yt4urlimg == "null") {
+    if (LegendJSON.legendSettings.yt4urlimg == "null" || LegendJSON.legendSettings.yt4urlimg==null) {
         LegendJSON.legendSettings.yt4urlimg = ""
     };
     LegendJSON.legendSettings.yt5urlimg = localStorage.getItem("yt5urlimg");
-    if (LegendJSON.legendSettings.yt5urlimg == "null") {
+    if (LegendJSON.legendSettings.yt5urlimg == "null" || LegendJSON.legendSettings.yt5urlimg==null) {
         LegendJSON.legendSettings.yt5urlimg = ""
     };
     LegendJSON.legendSettings.yt6urlimg = localStorage.getItem("yt6urlimg");
-    if (LegendJSON.legendSettings.yt6urlimg == "null") {
+    if (LegendJSON.legendSettings.yt6urlimg == "null" || LegendJSON.legendSettings.yt6urlimg==null) {
         LegendJSON.legendSettings.yt6urlimg = ""
     };
     LegendJSON.legendSettings.pic1dataimg = localStorage.getItem("pic1dataimg");
-    if (LegendJSON.legendSettings.pic1dataimg == "null") {
+    if (LegendJSON.legendSettings.pic1dataimg == "null" || LegendJSON.legendSettings.pic1dataimg==null) {
         LegendJSON.legendSettings.pic1dataimg = ""
     };
     LegendJSON.legendSettings.pic2dataimg = localStorage.getItem("pic2dataimg");
-    if (LegendJSON.legendSettings.pic2dataimg == "null") {
+    if (LegendJSON.legendSettings.pic2dataimg == "null" || LegendJSON.legendSettings.pic2dataimg==null) {
         LegendJSON.legendSettings.pic2dataimg = ""
     };
     LegendJSON.legendSettings.pic3dataimg = localStorage.getItem("pic3dataimg");
-    if (LegendJSON.legendSettings.pic3dataimg == "null") {
+    if (LegendJSON.legendSettings.pic3dataimg == "null" || LegendJSON.legendSettings.pic3dataimg==null) {
         LegendJSON.legendSettings.pic3dataimg = ""
     };
     LegendJSON.legendSettings.pic4dataimg = localStorage.getItem("pic4dataimg");
-    if (LegendJSON.legendSettings.pic4dataimg == "null") {
+    if (LegendJSON.legendSettings.pic4dataimg == "null" || LegendJSON.legendSettings.pic4dataimg==null) {
         LegendJSON.legendSettings.pic4dataimg = ""
     };
     LegendJSON.legendSettings.pic5dataimg = localStorage.getItem("pic5dataimg");
-    if (LegendJSON.legendSettings.pic5dataimg == "null") {
+    if (LegendJSON.legendSettings.pic5dataimg == "null" || LegendJSON.legendSettings.pic5dataimg==null) {
         LegendJSON.legendSettings.pic5dataimg = ""
     };
     LegendJSON.legendSettings.pic6dataimg = localStorage.getItem("pic6dataimg");
-    if (LegendJSON.legendSettings.pic6dataimg == "null") {
+    if (LegendJSON.legendSettings.pic6dataimg == "null" || LegendJSON.legendSettings.pic6dataimg==null) {
         LegendJSON.legendSettings.pic6dataimg = ""
     };
     LegendJSON.legendSettings.yt1dataimg = localStorage.getItem("yt1dataimg");
-    if (LegendJSON.legendSettings.yt1dataimg == "null") {
+    if (LegendJSON.legendSettings.yt1dataimg == "null" || LegendJSON.legendSettings.yt1dataimg==null) {
         LegendJSON.legendSettings.yt1dataimg = ""
     };
     LegendJSON.legendSettings.yt2dataimg = localStorage.getItem("yt2dataimg");
-    if (LegendJSON.legendSettings.yt2dataimg == "null") {
+    if (LegendJSON.legendSettings.yt2dataimg == "null" || LegendJSON.legendSettings.yt2dataimg==null) {
         LegendJSON.legendSettings.yt2dataimg = ""
     };
     LegendJSON.legendSettings.yt3dataimg = localStorage.getItem("yt3dataimg");
-    if (LegendJSON.legendSettings.yt3dataimg == "null") {
+    if (LegendJSON.legendSettings.yt3dataimg == "null" || LegendJSON.legendSettings.yt3dataimg==null) {
         LegendJSON.legendSettings.yt3dataimg = ""
     };
     LegendJSON.legendSettings.yt4dataimg = localStorage.getItem("yt4dataimg");
-    if (LegendJSON.legendSettings.yt4dataimg == "null") {
+    if (LegendJSON.legendSettings.yt4dataimg == "null" || LegendJSON.legendSettings.yt4dataimg==null) {
         LegendJSON.legendSettings.yt4dataimg = ""
     };
     LegendJSON.legendSettings.yt5dataimg = localStorage.getItem("yt5dataimg");
-    if (LegendJSON.legendSettings.yt5dataimg == "null") {
+    if (LegendJSON.legendSettings.yt5dataimg == "null" || LegendJSON.legendSettings.yt5dataimg==null) {
         LegendJSON.legendSettings.yt5dataimg = ""
     };
     LegendJSON.legendSettings.yt6dataimg = localStorage.getItem("yt6dataimg");
-    if (LegendJSON.legendSettings.yt6dataimg == "null") {
+    if (LegendJSON.legendSettings.yt6dataimg == "null" || LegendJSON.legendSettings.yt6dataimg==null) {
         LegendJSON.legendSettings.yt6dataimg = ""
     };
     LegendJSON.legendSettings.discwebhook1 = localStorage.getItem("discwebhook1");
-    if (LegendJSON.legendSettings.discwebhook1 == "null") {
+    if (LegendJSON.legendSettings.discwebhook1 == "null" || LegendJSON.legendSettings.discwebhook1==null) {
         LegendJSON.legendSettings.discwebhook1 = ""
     };
     LegendJSON.legendSettings.discwebhook2 = localStorage.getItem("discwebhook2");
-    if (LegendJSON.legendSettings.discwebhook2 == "null") {
+    if (LegendJSON.legendSettings.discwebhook2 == "null" || LegendJSON.legendSettings.discwebhook2==null) {
         LegendJSON.legendSettings.discwebhook2 = ""
     };
     LegendJSON.legendSettings.Userscript1 = localStorage.getItem("Userscript1");
-    if (LegendJSON.legendSettings.Userscript1 == "null") {
+    if (LegendJSON.legendSettings.Userscript1 == "null" || LegendJSON.legendSettings.Userscript1==null) {
         LegendJSON.legendSettings.Userscript1 = ""
     };
     LegendJSON.legendSettings.Userscript2 = localStorage.getItem("Userscript2");
-    if (LegendJSON.legendSettings.Userscript2 == "null") {
+    if (LegendJSON.legendSettings.Userscript2 == "null" || LegendJSON.legendSettings.Userscript2==null) {
         LegendJSON.legendSettings.Userscript2 = ""
     };
     LegendJSON.legendSettings.Userscript3 = localStorage.getItem("Userscript3");
-    if (LegendJSON.legendSettings.Userscript3 == "null") {
+    if (LegendJSON.legendSettings.Userscript3 == "null" || LegendJSON.legendSettings.Userscript3==null) {
         LegendJSON.legendSettings.Userscript3 = ""
     };
     LegendJSON.legendSettings.Userscript4 = localStorage.getItem("Userscript4");
-    if (LegendJSON.legendSettings.Userscript4 == "null") {
+    if (LegendJSON.legendSettings.Userscript4 == "null" || LegendJSON.legendSettings.Userscript4==null) {
         LegendJSON.legendSettings.Userscript4 = ""
     };
     LegendJSON.legendSettings.Userscript5 = localStorage.getItem("Userscript5");
-    if (LegendJSON.legendSettings.Userscript5 == "null") {
+    if (LegendJSON.legendSettings.Userscript5 == "null" || LegendJSON.legendSettings.Userscript5==null) {
         LegendJSON.legendSettings.Userscript5 = ""
     };	
     LegendJSON.legendSettings.Userscripttexture1 = localStorage.getItem("Userscripttexture1");
-    if (LegendJSON.legendSettings.Userscripttexture1 == "null") {
+    if (LegendJSON.legendSettings.Userscripttexture1 == "null" || LegendJSON.legendSettings.Userscripttexture1==null) {
         LegendJSON.legendSettings.Userscripttexture1 = ""
     };
     LegendJSON.legendSettings.Userscripttexture2 = localStorage.getItem("Userscripttexture2");
-    if (LegendJSON.legendSettings.Userscripttexture2 == "null") {
+    if (LegendJSON.legendSettings.Userscripttexture2 == "null" || LegendJSON.legendSettings.Userscripttexture2==null) {
         LegendJSON.legendSettings.Userscripttexture2 = ""
     };
     LegendJSON.legendSettings.Userscripttexture3 = localStorage.getItem("Userscripttexture3");
-    if (LegendJSON.legendSettings.Userscripttexture3 == "null") {
+    if (LegendJSON.legendSettings.Userscripttexture3 == "null" || LegendJSON.legendSettings.Userscripttexture3==null) {
         LegendJSON.legendSettings.Userscripttexture3 = ""
     };
     LegendJSON.legendSettings.Userscripttexture4 = localStorage.getItem("Userscripttexture4");
-    if (LegendJSON.legendSettings.Userscripttexture4 == "null") {
+    if (LegendJSON.legendSettings.Userscripttexture4 == "null" || LegendJSON.legendSettings.Userscripttexture4==null) {
         LegendJSON.legendSettings.Userscripttexture4 = ""
     };
     LegendJSON.legendSettings.Userscripttexture5 = localStorage.getItem("Userscripttexture5");
-    if (LegendJSON.legendSettings.Userscripttexture5 == "null") {
+    if (LegendJSON.legendSettings.Userscripttexture5 == "null" || LegendJSON.legendSettings.Userscripttexture5==null) {
         LegendJSON.legendSettings.Userscripttexture5 = ""
     };	
     return LegendJSON;
