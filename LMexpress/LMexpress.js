@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.018 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.019 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "18"; // the version 1.1-> 1.11
+var semimodVersion = "19"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -2486,7 +2486,7 @@ function parseLegendJSONAPI(LegendJSON) {
 function LegendSettingsImport(switcheryLegendSwitch2) {
     if (switcheryLegendSwitch2.isChecked()) {
         LegendJSON = JSON.parse(document.getElementById("import-settings").value);
-        parseLegendJSONAPI(LegendJSON);
+//        parseLegendJSONAPI(LegendJSON);
         saveLegendJSONAPI();
         setTimeout(function() {
             $("#import-settings-btn").click();
