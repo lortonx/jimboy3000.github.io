@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.22 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.23 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "22"; // the version 1.1-> 1.11
+var semimodVersion = "23"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7869,9 +7869,9 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.saveclanpassword = localStorage.getItem("saveclanpassword");
     LegendJSON.legendSettings.dyinglight1load = localStorage.getItem("dyinglight1load");
     LegendJSON.legendSettings.languagemod = localStorage.getItem("languagemod");
-    LegendJSON.legendSettings.userfirstname = localStorage.getItem("userfirstname");
-    LegendJSON.legendSettings.userlastname = localStorage.getItem("userlastname");
-    LegendJSON.legendSettings.usergender = localStorage.getItem("usergender");
+//    LegendJSON.legendSettings.userfirstname = localStorage.getItem("userfirstname");
+//   LegendJSON.legendSettings.userlastname = localStorage.getItem("userlastname");
+//    LegendJSON.legendSettings.usergender = localStorage.getItem("usergender");
     LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
     if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
@@ -8095,7 +8095,7 @@ function parseLegendJSONAPI(LegendJSON) {
 function LegendSettingsImport(switcheryLegendSwitch2) {
     if (switcheryLegendSwitch2.isChecked()) {
         LegendJSON = JSON.parse(document.getElementById("import-settings").value);
- //       parseLegendJSONAPI(LegendJSON);
+        parseLegendJSONAPI(LegendJSON);
         saveLegendJSONAPI();
         setTimeout(function() {
             $("#import-settings-btn").click();
@@ -8106,7 +8106,8 @@ function LegendSettingsImport(switcheryLegendSwitch2) {
 }
 
 function saveLegendJSONAPI() {
-    //LegendJSON.legendSettings={};
+	if (LegendJSON.legendSettings!=undefined){
+
     localStorage.setItem("gamemode", LegendJSON.legendSettings.previousMode);
     localStorage.setItem("checkonlyonce", LegendJSON.legendSettings.checkonlyonce);
     localStorage.setItem("previousnickname", LegendJSON.legendSettings.previousnickname);
@@ -8125,9 +8126,9 @@ function saveLegendJSONAPI() {
     localStorage.setItem("saveclanpassword", LegendJSON.legendSettings.saveclanpassword);
     localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
     localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
-    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
-    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
-    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
+//    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
+//    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
+//    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
     localStorage.setItem("prevPrivateServer", LegendJSON.legendSettings.prevPrivateServer);
     localStorage.setItem("musicUrl", LegendJSON.legendSettings.initialMusicUrl);
     localStorage.setItem("lastIP", LegendJSON.legendSettings.lastIP);
@@ -8183,4 +8184,5 @@ function saveLegendJSONAPI() {
 	localStorage.setItem("Userscripttexture3", LegendJSON.legendSettings.Userscripttexture3);
 	localStorage.setItem("Userscripttexture4", LegendJSON.legendSettings.Userscripttexture4);
 	localStorage.setItem("Userscripttexture5", LegendJSON.legendSettings.Userscripttexture5);
+	}
 }
