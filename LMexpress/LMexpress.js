@@ -2485,8 +2485,8 @@ function parseLegendJSONAPI(LegendJSON) {
 
 function LegendSettingsImport(switcheryLegendSwitch2) {
     if (switcheryLegendSwitch2.isChecked()) {
-        LegendJSON = JSON.parse(document.getElementById("export-settings").value);
-        parseLegendJSONAPI(LegendJSON);
+        LegendJSON = JSON.parse(document.getElementById("import-settings").value);
+ //       parseLegendJSONAPI(LegendJSON);
         saveLegendJSONAPI();
         setTimeout(function() {
             $("#import-settings-btn").click();
