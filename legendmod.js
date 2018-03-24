@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.23 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.24 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "23"; // the version 1.1-> 1.11
+var semimodVersion = "24"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -8095,7 +8095,7 @@ function parseLegendJSONAPI(LegendJSON) {
 function LegendSettingsImport(switcheryLegendSwitch2) {
     if (switcheryLegendSwitch2.isChecked()) {
         LegendJSON = JSON.parse(document.getElementById("import-settings").value);
-        parseLegendJSONAPI(LegendJSON);
+//        parseLegendJSONAPI(LegendJSON);
         saveLegendJSONAPI();
         setTimeout(function() {
             $("#import-settings-btn").click();
