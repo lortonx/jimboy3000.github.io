@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.25 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.26 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "25"; // the version 1.1-> 1.11
+var semimodVersion = "26"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3122,6 +3122,7 @@ console.group('%cLegend mod%c  %chttp://www.legendmod.ml',stylesLegendModConsole
     console.group("Mod developed by"); 
 		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
     console.groupEnd();
+	console.groupEnd();
 console.groupEnd();		
     }, 1500);
 
@@ -7759,7 +7760,7 @@ function DeathFPSfix(){
 DeathFPSfixVariable="1";
 hideMenu();
 hideMenu2();
-console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
 toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
@@ -7794,7 +7795,7 @@ function DeathFPSfixWithSpawn(){
 function onDisconnectfix(){
 	    toastr["error"](Premadeletter10).css("width", "250px");
         appendSysLog("DISCONNECTED :(");
-		console.group('%cServer %c  %cDisconnection',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+		console.group('%cServer %c  %cDisconnection',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
 		setTimeout(function() {
 			adres();
 		}, 8000);
