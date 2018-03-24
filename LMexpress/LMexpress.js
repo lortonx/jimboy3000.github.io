@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.019 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.020 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "19"; // the version 1.1-> 1.11
+var semimodVersion = "20"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -338,7 +338,7 @@ function init(modVersion) {
 		$(".profile-tab").hide();
 				
 		$('#server').css("width", "-=40px");	
-		$('#server').before('<button id="CopyAll" class="btn btn-info" style="background-color: #018cf6; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
+		$('#server').before('<button id="CopyAll" class="btn btn-warning" style="background-color: #018cf6; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
 
 		$("#CopyAll").tooltip({
 		title: "Copy Server, Password, Teamboroad & Leaderboard",
