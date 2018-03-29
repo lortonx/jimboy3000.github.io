@@ -7879,6 +7879,8 @@ function saveLegendJSONAPI() {
 function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
 
 			if (MSGCOMMANDS.includes("url")) {
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();				
 			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
@@ -7893,6 +7895,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });
 			}
 			else if (MSGCOMMANDS.includes("yut")) {
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();				
 			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
