@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.021 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.022 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "21"; // the version 1.1-> 1.11
+var semimodVersion = "22"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -2601,6 +2601,8 @@ function YoutubeEmbPlayer(pastedDataorNot){
 function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
 
 			if (MSGCOMMANDS.includes("url")) {
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();		
 			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
@@ -2615,6 +2617,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });
 			}
 			else if (MSGCOMMANDS.includes("yut")) {
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();		
 			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
@@ -2634,7 +2638,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });
 			}
 
-		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
+		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {	
 		        commandMsg = getParameterByName("com", MSGCOMMANDS);
 		        otherMsg = getParameterByName("do", MSGCOMMANDS);
 		        $(".message-text").remove();
@@ -2654,7 +2658,5 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		                }, 100);
 		            }
 		        }
-		    }
-		        $(".message-text").remove();
-				$(".toast.toast-success").remove();			
+		    }	
 }
