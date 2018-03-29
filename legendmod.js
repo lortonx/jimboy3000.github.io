@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.27 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.28 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "27"; // the version 1.1-> 1.11
+var semimodVersion = "28"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -240,6 +240,7 @@ T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
 var MSGCOMMANDS;
+var MSGNICK;
 var playerMsg = "";
 var commandMsg = "";
 var otherMsg = "";
@@ -309,6 +310,8 @@ var Premadeletter25 = "NO WAY!";
 var Premadeletter26 = "wants you to change your name to";
 var Premadeletter27 = "wants you to Enable Troll on death";
 var Premadeletter28 = "wants you to open Youtube Player";
+var Premadeletter28a = "wants you to open the url";
+var Premadeletter28b = "wants you to embed and play this youtube video";
 var Premadeletter29 = "Leaderboard found";
 var Premadeletter30 = "Search";
 var Premadeletter31 = "The leaderboard was not found. Keep trying...";
@@ -487,12 +490,14 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 // load Message Commands
 $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
             MSGCOMMANDS = $(".toast.toast-success").text();
-			MsgCommands1(MSGCOMMANDS);
+			MSGNICK = $(".message-nick").last().text().replace(": ", "");
+			MsgCommands1(MSGCOMMANDS, MSGNICK);
 
 });	
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
             MSGCOMMANDS = $(".message-text").text();
-			MsgCommands1(MSGCOMMANDS);
+			MSGNICK = $(".message-nick").last().text().replace(": ", "");
+			MsgCommands1(MSGCOMMANDS, MSGNICK);
 
 });
 
@@ -1105,22 +1110,10 @@ function init(modVersion) {
         });
         $("#musicUrl").bind("paste", function(e) {
             $(this).attr("maxlength", "1000");
-            var pastedData = e.originalEvent.clipboardData.getData('text');
-            var finalUrl = getEmbedUrl(pastedData.trim());
-            if (finalUrl == false) {
-                toastr["error"](Premadeletter1).css("width", "210px");
-                setTimeout(function() {
-                    if (localStorage.getItem("musicUrl") == null) {
-                        $("#musicUrl").val(defaultMusicUrl);
-                    } else {
-                        $("#musicUrl").val(localStorage.getItem("musicUrl"));
-                    }
-                }, 500);
-            } else {
-                $("#musicFrame").attr("src", finalUrl);
-                localStorage.setItem("musicUrl", pastedData.trim());
-            }
-        });
+            var pastedDataorNot = e.originalEvent.clipboardData.getData('text');
+			YoutubeEmbPlayer(pastedDataorNot);
+
+        });		
 
         // save notes
         $(".note").keyup(function(event) {
@@ -7883,8 +7876,37 @@ function saveLegendJSONAPI() {
 	}
 }
 
-function MsgCommands1(MSGCOMMANDS) {
-		    if (MSGCOMMANDS.includes("Legend.Mod")) {
+function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
+
+			if (MSGCOMMANDS.includes("url")) {
+			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28a + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button class="btn btn-sm btn-primary btn-play btn-do-visiturl" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "250px");
+			$(".btn.btn-sm.btn-primary.btn-play.btn-do-visiturl").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });
+			}
+			else if (MSGCOMMANDS.includes("yut")) {
+			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28b + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button class="btn btn-sm btn-primary btn-play btn-do-useyut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "300px");
+			$(".btn.btn-sm.btn-primary.btn-play.btn-do-useyut").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });
+			}
+		    else if (MSGCOMMANDS.includes("Legend.Mod")) {
 
 		        playerMsg = getParameterByName("player", MSGCOMMANDS);
 		        commandMsg = getParameterByName("com", MSGCOMMANDS);
@@ -7984,4 +8006,21 @@ function MsgCommands1(MSGCOMMANDS) {
 		            }
 		        }
 		    }
+}
+
+function YoutubeEmbPlayer(pastedDataorNot){
+            var finalUrl = getEmbedUrl(pastedDataorNot.trim());
+            if (finalUrl == false) {
+                toastr["error"](Premadeletter1).css("width", "210px");
+                setTimeout(function() {
+                    if (localStorage.getItem("musicUrl") == null) {
+                        $("#musicUrl").val(defaultMusicUrl);
+                    } else {
+                        $("#musicUrl").val(localStorage.getItem("musicUrl"));
+                    }
+                }, 500);
+            } else {
+                $("#musicFrame").attr("src", finalUrl);
+                localStorage.setItem("musicUrl", pastedDataorNot.trim());
+            }
 }
