@@ -2605,7 +2605,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				$(".toast.toast-success").remove();		
 			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
-				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
 			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28a + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
@@ -2621,7 +2621,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				$(".toast.toast-success").remove();		
 			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
-				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
 			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28b + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
