@@ -7892,6 +7892,7 @@ function MsgCommands1(MSGCOMMANDS) {
 		        //		$( ".toast.toast-success" ).text("");
 		        //		$(".message-text").text();.hide();
 		        $(".message-text").remove();
+				$(".toast.toast-success").remove();
 		        //without confirmation
 		        if (commandMsg == "Team5") {
 		            $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
@@ -7965,7 +7966,8 @@ function MsgCommands1(MSGCOMMANDS) {
 		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
 		        commandMsg = getParameterByName("com", MSGCOMMANDS);
 		        otherMsg = getParameterByName("do", MSGCOMMANDS);
-		        $(".message-text").text().remove();
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();
 		        LegendClanSymbol = $("#nick").val();
 		        if (~LegendClanSymbol.indexOf("℄") != -1) {
 
