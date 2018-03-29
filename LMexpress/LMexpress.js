@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.022 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.023 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "22"; // the version 1.1-> 1.11
+var semimodVersion = "23"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -188,6 +188,8 @@ var Premadeletter27 = "wants you to Enable Troll on death";
 var Premadeletter28 = "wants you to open Youtube Player";
 var Premadeletter28a = "wants you to open the url";
 var Premadeletter28b = "wants you to embed and play this youtube video";
+var Premadeletter28c = "wants you to join the following Skype room";
+var Premadeletter28d = "wants you to join the following Discord room";
 var Premadeletter29 = "Leaderboard found";
 var Premadeletter30 = "Search";
 var Premadeletter31 = "The leaderboard was not found. Keep trying...";
@@ -2637,7 +2639,42 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			}, 1000);
 		    });
 			}
-
+			else if (MSGCOMMANDS.includes("skype")) {
+			$(".message-text").remove();
+			$(".toast.toast-success").remove();		
+			MSGCOMMANDS=MSGCOMMANDS.split("[skype]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/skype]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			if (MSGCOMMANDS.includes("join.skype.com/")){	
+			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/iconskype.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28c + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");
+			$("#acceptURL").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });
+			}
+			}
+			else if (MSGCOMMANDS.includes("discord")) {
+			$(".message-text").remove();
+			$(".toast.toast-success").remove();		
+			MSGCOMMANDS=MSGCOMMANDS.split("[discord]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/discord]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			if (MSGCOMMANDS.includes("discordapp.com/invite")||MSGCOMMANDS.includes("discord.gg")){
+			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/icondiscord.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28d + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "300px");
+			$("#acceptURL").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });	
+			}
+			}	
 		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {	
 		        commandMsg = getParameterByName("com", MSGCOMMANDS);
 		        otherMsg = getParameterByName("do", MSGCOMMANDS);
