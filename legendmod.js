@@ -482,6 +482,19 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}
 });
+        //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
+        //Legend.Mod&?player=a&?com=Team5&?do=donothing
+// load Message Commands
+$("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+            MSGCOMMANDS = $(".toast.toast-success").text();
+			MsgCommands1(MSGCOMMANDS);
+
+});	
+$("body").on('DOMSubtreeModified', "#chat-box", function() {
+            MSGCOMMANDS = $(".message-text").text();
+			MsgCommands1(MSGCOMMANDS);
+
+});
 
 
 if (realmode == "") {
@@ -2479,22 +2492,7 @@ function init(modVersion) {
         //	$("#legendbanners").hide();
         //	$(".input-group.skin.colorpicker-element").hide();
         $("#timertools-hud").hide();
-
-        //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
-        //Legend.Mod&?player=a&?com=Team5&?do=donothing
-
-		// load Message Commands
-        $("body").on('DOMSubtreeModified', "#chat-box", function() {
-            MSGCOMMANDS = $(".message-text").text();
-			MsgCommands1(MSGCOMMANDS);
-
-        });
-        $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
-            MSGCOMMANDS = $(".toast.toast-success").text();
-			MsgCommands1(MSGCOMMANDS);
-
-        });		
-		
+			
         // load tooltips
         $('[data-toggle="tooltip"]').tooltip();
         $("#playerBtn").tooltip();
