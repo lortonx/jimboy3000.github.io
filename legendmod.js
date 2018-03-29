@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.26 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.27 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "26"; // the version 1.1-> 1.11
+var semimodVersion = "27"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2483,321 +2483,18 @@ function init(modVersion) {
         //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
         //Legend.Mod&?player=a&?com=Team5&?do=donothing
 
+		// load Message Commands
+        $("body").on('DOMSubtreeModified', "#chat-box", function() {
+            MSGCOMMANDS = $(".message-text").text();
+			MsgCommands1(MSGCOMMANDS);
+
+        });
         $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
             MSGCOMMANDS = $(".toast.toast-success").text();
+			MsgCommands1(MSGCOMMANDS);
 
-
-
-            if (MSGCOMMANDS.includes("Legend.Mod")) {
-
-                playerMsg = getParameterByName("player", MSGCOMMANDS);
-                commandMsg = getParameterByName("com", MSGCOMMANDS);
-                otherMsg = getParameterByName("do", MSGCOMMANDS);
-                //		$( ".toast.toast-success" ).text("");
-                //		$(".toast.toast-success").hide();
-                $(".toast.toast-success").remove();
-                //without confirmation
-                if (commandMsg == "Team5") {
-                    $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
-                        opacity: 0.8
-                    });
-                    setTimeout(function() {
-                        $("#top5-hud").css('background-image', 'url(" ")').css({
-                            opacity: 1
-                        });
-                    }, 12000);
-                }
-
-                else if (commandMsg == "Hello") {
-                    if (MC.isInGame()) {
-                        if (!ogario.spectate) {
-                            var nickname = $("#nick").val();
-                            $("#nick").val("Hello Team");
-                            $("#helloContainer").show();
-                            newsubmit();
-                            setTimeout(function() {
-                                $("#nick").val(nickname);
-                                $("#helloContainer").show();
-                                newsubmit();
-                            }, 5000);
-                        }
-                    }
-                }
-
-                //with confirmation
-                else if (commandMsg == "HideAll") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function() {
-                        $("#HideAllBthn").click();
-                    });
-                }
-
-                else if (commandMsg == "NamePerm") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg + ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function() {
-                        $("#nick").val(playerMsg);
-                        $("#helloContainer").show();
-                        newsubmit();
-                    });
-                }
-
-                else if (commandMsg == "dTroll2") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function() {
-                        settroll1true();
-                        whenplayerdies();
-                    });
-                }
-
-                else if (commandMsg == "Youtube") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function() {
-                        $("#playerBtn").click();
-                        setTimeout(function() {
-                            $("#playerBtn").focusout();
-                        }, 100);
-                    });
-                    //	$("#playerBtn").click();			
-                }
-            /*    else if (commandMsg == "Leader1") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader2") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader3") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader4") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader5") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader6") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader7") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader8") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader9") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Leader10") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer1") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer2") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer3") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer4") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer5") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer6") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer7") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer8") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	
-                else if (commandMsg == "Teamer9") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    }); 
-				}					
-                else if (commandMsg == "Teamer10") {	
-					//SkinChangerAccepted();
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + 'Reported ' +otherMsg+' as fake.<br>Do you want '+otherMsg+'\'s skin to change?' + '<button class="btn btn-sm btn-primary btn-play btn-play-fake" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "300px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-fake").click(function() {
-                        LeaderboardController();
-                    });                   		
-                }	*/								
-            }
-
-            if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
-                commandMsg = getParameterByName("com", MSGCOMMANDS);
-                otherMsg = getParameterByName("do", MSGCOMMANDS);
-                $(".toast.toast-success").remove();
-                LegendClanSymbol = $("#nick").val();
-                if (~LegendClanSymbol.indexOf("℄") != -1) {
-
-                    if (commandMsg == "EU-London") {
-                        setTimeout(function() {
-                            MC.onDisconnect();
-							MC.reconnect();
-                        }, 60000);
-                    }
-
-                    else if (commandMsg == "RU-Russia") {
-                        setTimeout(function() {
-                            MC.onDisconnect();
-							MC.reconnect();
-                        }, 100);
-                    }
-                }
-            }
-        });
-
-
+        });		
+		
         // load tooltips
         $('[data-toggle="tooltip"]').tooltip();
         $("#playerBtn").tooltip();
@@ -8186,4 +7883,105 @@ function saveLegendJSONAPI() {
 	localStorage.setItem("Userscripttexture4", LegendJSON.legendSettings.Userscripttexture4);
 	localStorage.setItem("Userscripttexture5", LegendJSON.legendSettings.Userscripttexture5);
 	}
+}
+
+function MsgCommands1(MSGCOMMANDS) {
+		    if (MSGCOMMANDS.includes("Legend.Mod")) {
+
+		        playerMsg = getParameterByName("player", MSGCOMMANDS);
+		        commandMsg = getParameterByName("com", MSGCOMMANDS);
+		        otherMsg = getParameterByName("do", MSGCOMMANDS);
+		        //		$( ".toast.toast-success" ).text("");
+		        //		$(".message-text").text();.hide();
+		        $(".message-text").remove();
+		        //without confirmation
+		        if (commandMsg == "Team5") {
+		            $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
+		                opacity: 0.8
+		            });
+		            setTimeout(function() {
+		                $("#top5-hud").css('background-image', 'url(" ")').css({
+		                    opacity: 1
+		                });
+		            }, 12000);
+		        } else if (commandMsg == "Hello") {
+		            if (MC.isInGame()) {
+		                if (!ogario.spectate) {
+		                    var nickname = $("#nick").val();
+		                    $("#nick").val("Hello Team");
+		                    $("#helloContainer").show();
+		                    newsubmit();
+		                    setTimeout(function() {
+		                        $("#nick").val(nickname);
+		                        $("#helloContainer").show();
+		                        newsubmit();
+		                    }, 5000);
+		                }
+		            }
+		        }
+
+		        //with confirmation
+		        else if (commandMsg == "HideAll") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function() {
+		                $("#HideAllBthn").click();
+		            });
+		        } else if (commandMsg == "NamePerm") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg + ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function() {
+		                $("#nick").val(playerMsg);
+		                $("#helloContainer").show();
+		                newsubmit();
+		            });
+		        } else if (commandMsg == "dTroll2") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function() {
+		                settroll1true();
+		                whenplayerdies();
+		            });
+		        } else if (commandMsg == "Youtube") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function() {
+		                $("#playerBtn").click();
+		                setTimeout(function() {
+		                    $("#playerBtn").focusout();
+		                }, 100);
+		            });
+		            //	$("#playerBtn").click();			
+		        }
+
+		    }
+
+		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
+		        commandMsg = getParameterByName("com", MSGCOMMANDS);
+		        otherMsg = getParameterByName("do", MSGCOMMANDS);
+		        $(".message-text").text().remove();
+		        LegendClanSymbol = $("#nick").val();
+		        if (~LegendClanSymbol.indexOf("℄") != -1) {
+
+		            if (commandMsg == "EU-London") {
+		                setTimeout(function() {
+		                    MC.onDisconnect();
+		                    MC.reconnect();
+		                }, 60000);
+		            } else if (commandMsg == "RU-Russia") {
+		                setTimeout(function() {
+		                    MC.onDisconnect();
+		                    MC.reconnect();
+		                }, 100);
+		            }
+		        }
+		    }
 }
