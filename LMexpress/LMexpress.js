@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.020 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.021 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "20"; // the version 1.1-> 1.11
+var semimodVersion = "21"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -115,6 +115,7 @@ T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
 var MSGCOMMANDS;
+var MSGNICK;
 var playerMsg = "";
 var commandMsg = "";
 var otherMsg = "";
@@ -185,6 +186,8 @@ var Premadeletter25 = "NO WAY!";
 var Premadeletter26 = "wants you to change your name to";
 var Premadeletter27 = "wants you to Enable Troll on death";
 var Premadeletter28 = "wants you to open Youtube Player";
+var Premadeletter28a = "wants you to open the url";
+var Premadeletter28b = "wants you to embed and play this youtube video";
 var Premadeletter29 = "Leaderboard found";
 var Premadeletter30 = "Search";
 var Premadeletter31 = "The leaderboard was not found. Keep trying...";
@@ -431,25 +434,12 @@ function init(modVersion) {
 		
         // prevent edit
         $("#musicUrl").on("input", function() {
-            $(this).attr("maxlength", "0");
+            $(this).attr("maxlength", "1000");
         });
         $("#musicUrl").bind("paste", function(e) {
             $(this).attr("maxlength", "1000");
-            var pastedData = e.originalEvent.clipboardData.getData('text');
-            var finalUrl = getEmbedUrl(pastedData.trim());
-            if (finalUrl == false) {
-                toastr["error"](Premadeletter1).css("width", "210px");
-                setTimeout(function() {
-                    if (localStorage.getItem("musicUrl") == null) {
-                        $("#musicUrl").val(defaultMusicUrl);
-                    } else {
-                        $("#musicUrl").val(localStorage.getItem("musicUrl"));
-                    }
-                }, 500);
-            } else {
-                $("#musicFrame").attr("src", finalUrl);
-                localStorage.setItem("musicUrl", pastedData.trim());
-            }
+            var pastedDataorNot = e.originalEvent.clipboardData.getData('text');
+			YoutubeEmbPlayer(pastedDataorNot);
         });
 
         // save notes
@@ -1240,6 +1230,19 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}
+
+});
+
+$("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+            MSGCOMMANDS = $(".toast.toast-success").text();
+			MSGNICK = $(".message-nick").last().text().replace(": ", "");
+			MsgCommands1(MSGCOMMANDS, MSGNICK);
+
+});	
+$("body").on('DOMSubtreeModified', "#chat-box", function() {
+            MSGCOMMANDS = $(".message-text").text();
+			MSGNICK = $(".message-nick").last().text().replace(": ", "");
+			MsgCommands1(MSGCOMMANDS, MSGNICK);
 
 });
 }
@@ -2576,4 +2579,82 @@ function saveLegendJSONAPI() {
 	localStorage.setItem("Userscripttexture4", LegendJSON.legendSettings.Userscripttexture4);
 	localStorage.setItem("Userscripttexture5", LegendJSON.legendSettings.Userscripttexture5);
 	}
+}
+
+function YoutubeEmbPlayer(pastedDataorNot){
+            var finalUrl = getEmbedUrl(pastedDataorNot.trim());
+            if (finalUrl == false) {
+                toastr["error"](Premadeletter1).css("width", "210px");
+                setTimeout(function() {
+                    if (localStorage.getItem("musicUrl") == null) {
+                        $("#musicUrl").val(defaultMusicUrl);
+                    } else {
+                        $("#musicUrl").val(localStorage.getItem("musicUrl"));
+                    }
+                }, 500);
+            } else {
+                $("#musicFrame").attr("src", finalUrl);
+                localStorage.setItem("musicUrl", pastedDataorNot.trim());
+            }
+}
+
+function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
+
+			if (MSGCOMMANDS.includes("url")) {
+			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28a + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "250px");
+			$("#acceptURL").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });
+			}
+			else if (MSGCOMMANDS.includes("yut")) {
+			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28b + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "300px");
+			$("#acceptYoutubeEmb").click(function() {
+		    YoutubeEmbPlayer(MSGCOMMANDS);
+			$("#musicUrl").val(MSGCOMMANDS);
+			setTimeout(function() {
+			//$("#playerI").click();
+			playYoutube(); //it's different on LME
+			}, 1000);
+		    });
+			}
+
+		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
+		        commandMsg = getParameterByName("com", MSGCOMMANDS);
+		        otherMsg = getParameterByName("do", MSGCOMMANDS);
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();
+		        LegendClanSymbol = $("#nick").val();
+		        if (~LegendClanSymbol.indexOf("℄") != -1) {
+
+		            if (commandMsg == "EU-London") {
+		                setTimeout(function() {
+		                    MC.onDisconnect();
+		                    MC.reconnect();
+		                }, 60000);
+		            } else if (commandMsg == "RU-Russia") {
+		                setTimeout(function() {
+		                    MC.onDisconnect();
+		                    MC.reconnect();
+		                }, 100);
+		            }
+		        }
+		    }
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();			
 }
