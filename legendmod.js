@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.29 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.30 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "29"; // the version 1.1-> 1.11
+var semimodVersion = "30"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1109,7 +1109,7 @@ function init(modVersion) {
             $(this).attr("maxlength", "0");
         });
         $("#musicUrl").bind("paste", function(e) {
-            $(this).attr("maxlength", "1000");
+            $(this).attr("maxlength", "0");
             var pastedDataorNot = e.originalEvent.clipboardData.getData('text');
 			YoutubeEmbPlayer(pastedDataorNot);
 
@@ -7884,7 +7884,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
-			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28a + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28a + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "250px");
@@ -7898,7 +7898,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false) {
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
-			toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28b + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28b + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "300px");
