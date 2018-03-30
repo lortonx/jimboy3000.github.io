@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.023 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.024 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "23"; // the version 1.1-> 1.11
+var semimodVersion = "24"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1270,7 +1270,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		$("#gamemode").change(function () {
             adres();
 			setTimeout(function() {
+				if ($("#gamemode").val() != ":party") {				
                 $("#server").val(currentIP);
+				}
             }, 2500);
         });
 		$("#region").change(function () {
