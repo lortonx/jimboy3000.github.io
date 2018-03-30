@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.31 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.32 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "31"; // the version 1.1-> 1.11
+var semimodVersion = "32"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1056,7 +1056,8 @@ function init(modVersion) {
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
             '<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
             '<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">' +
-            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>');
+            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
+			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + 'Enable YT as background' + '</button></div>');
         $('.agario-panel.radio-panel').hide();
         $('.agario-panel.ogario-yt-panel').hide();
 
@@ -1347,7 +1348,18 @@ function init(modVersion) {
                 $("#nick").val("Easter Egg");
                 $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
                 openrotatingmod();
+            } else if ($("#nick").val() == "EasterEgg3") {
+                toastr["info"](Premadeletter4).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openrotatingmod();
+            } else if ($("#nick").val() == "EasterEgg4") {
+                toastr["info"](Premadeletter4).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openrotatingmod();
             } 
+			
         });
 		
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
@@ -1910,7 +1922,17 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
-
+		 $("#YoutubeBackgroundBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {               
+				YoutubebackgroundEnable();
+                $(this).html('<i class="fa fa-youtube-play"></i>' + 'Disable YT as background');
+            } else {
+				YoutubebackgroundDisable();
+                $(this).html('<i class="fa fa-youtube-play"></i>' + 'Enable YT as background');
+            }
+        });
+		
         $("#TIMEcalBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
@@ -8071,3 +8093,11 @@ function YoutubeEmbPlayer(pastedDataorNot){
             }
 }
 
+function YoutubebackgroundEnable(){
+inject('stylesheet', '*{-webkit-box-sizing: border-box;box-sizing: border-box}.video-background{background: #000;position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: -99}.video-foreground,.video-background iframe{position: absolute;top: 0;left: 0;width: 100%;height: 100%;pointer-events: none}#vidtop-content{top: 0;color: #fff}.vid-info{position: absolute;top: 0;right: 0;width: 33%;background: rgba(0,0,0,0.3);color: #fff;padding: 1rem;font-family: Avenir, Helvetica, sans-serif}.vid-info h1{font-size: 2rem;font-weight: 700;margin-top: 0;line-height: 1.2}.vid-info a{display: block;color: #fff;text-decoration: none;background: rgba(0,0,0,0.5);-webkit-transition: .6s background;transition: .6s background;border-bottom: none;margin: 1rem auto;text-align: center}@media (min-aspect-ratio: 16/9){.video-foreground{height: 300%;top: -100%}}@media (max-aspect-ratio: 16/9){.video-foreground{width: 300%;left: -100%}}@media all and (max-width: 600px){.vid-info{width: 50%;padding: .5rem}.vid-info h1{margin-bottom: .2rem}}@media all and (max-width: 500px){.vid-info .acronym{display: none}}');
+  
+$("body").append('<div class="video-background"><div class="video-foreground"><iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ"></iframe></div></div></div>');
+}
+function YoutubebackgroundEnable(){
+$('.video-background').remove();
+}
