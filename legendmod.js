@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.35 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.36 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "35"; // the version 1.1-> 1.11
+var semimodVersion = "36"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -275,6 +275,13 @@ var usergender = localStorage.getItem("usergender");
 var fbresponse={};
 var prevPrivateServer = localStorage.getItem("prevPrivateServer");
 var CopyTkPwLb2; 
+//for MsgCommands
+var MSGCOMMANDS2a;
+var MSGCOMMANDSA;
+var MSGCOMMANDS2;
+var MSGCOMMANDS3;
+var Express;
+var acceptServerBtnFlag=null;
 //for the LM JSON
 var LegendJSON;
 var LegendSettings="true";
@@ -314,6 +321,7 @@ var Premadeletter28a = "wants you to open the url";
 var Premadeletter28b = "wants you to embed and play this youtube video";
 var Premadeletter28c = "wants you to join the following Skype room";
 var Premadeletter28d = "wants you to join the following Discord room";
+var Premadeletter28e = "wants you to leave this server an join this new one";
 var Premadeletter29 = "Leaderboard found";
 var Premadeletter30 = "Search";
 var Premadeletter31 = "The leaderboard was not found. Keep trying...";
@@ -7973,7 +7981,15 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    window.open(MSGCOMMANDS,'_blank');
 		    });	
 			}
-			}			
+			}	
+			else if (MSGCOMMANDS.includes("server")) {
+				if (MSGCOMMANDS.includes("sip=")||MSGCOMMANDS.includes("agar.io/#")){
+			$(".message-text").remove();
+			$(".toast.toast-success").remove(); //split pop is included on functions above
+			MsgServCommandsreturner();
+			acceptServerBtn();
+				}
+			}
 		    else if (MSGCOMMANDS.includes("Legend.Mod")) {
 
 		        playerMsg = getParameterByName("player", MSGCOMMANDS);
@@ -8099,4 +8115,94 @@ $("body").append('<div class="video-background"><div class="video-foreground"><i
 }
 function YoutubebackgroundDisable(){
 $('.video-background').remove();
+}
+
+function isLegendExpress(Express){
+    try {
+        MC.onConnect();
+		return Express="False";
+    }
+    catch(err) {
+      //  console.log(err);
+	  return Express="True";
+    }
+//var Express;isLegendExpress(Express);
+}
+
+function MsgServCommandsreturner2(MSGCOMMANDS2a){
+	return MSGCOMMANDS2a;
+}
+function acceptServerBtn(){
+	if (acceptServerBtnFlag==null){
+			$("#acceptServer").click(function() {
+				
+				
+				if(isLegendExpress(Express)=="True"){ //if is Legend Express
+					if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
+					console.log("1a - Legend Express, Party mode");
+					$('#server').val(MSGCOMMANDSA);
+					$("#connect2").click();					
+					}
+					else if (MSGCOMMANDS3.includes("sip=")){	//if not Party mode
+					console.log("1b - Legend Express, Not Party mode");
+				$("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
+				$("#server-join").click();			
+					}
+				}
+				else{ //if is Legend mod
+					if (searchSip==null){ //if is not Locked
+						if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
+						console.log("2a - Legend Mod, No Locked, Party Mode");
+						$('#server').val(MSGCOMMANDSA);
+						$("#connect2").click();							
+						}
+						else if(MSGCOMMANDS3.includes("sip=")){	 //if not Party	mode	
+							console.log("2b - Legend Mod, Locked, No Party mode");
+					$("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
+					$("#server-join").click();	
+					
+					}
+					}
+					else{	//if Locked	
+					console.log("2b - Legend Mod, Locked");	
+					location.replace(MSGCOMMANDS);
+					//window.open(MSGCOMMANDS,'_blank');
+								
+					}
+				}
+		   // window.open(MSGCOMMANDS2a,'_blank');
+		    });
+			}
+	return acceptServerBtnFlag=1;
+}
+function MsgServCommandsreturner(){
+			MSGCOMMANDS2=MSGCOMMANDS;
+			MSGCOMMANDS3=MSGCOMMANDS;
+			MSGCOMMANDS2=MSGCOMMANDS2.split("[server]").pop();
+			MSGCOMMANDS2=MSGCOMMANDS2.split('[/server]')[0];	
+			if (MSGCOMMANDS2.includes("http://")==false&&MSGCOMMANDS2.includes("https://")==false&&MSGCOMMANDS2.includes("HTTP://")==false&&MSGCOMMANDS2.includes("HTTPS://")==false) {
+			MSGCOMMANDS2="http://"+MSGCOMMANDS2;	
+			}				
+			if (MSGCOMMANDS2.includes("agar.io/#")){ //if sent server is Party mode
+			MSGCOMMANDS2a=MSGCOMMANDS2;
+			MsgServCommandsreturner2(MSGCOMMANDS2a);
+			MSGCOMMANDSA= "#"+MSGCOMMANDS2a.split("#").pop();
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e + '</font></a></br>Server (Party mode): '+ MSGCOMMANDSA + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {		    
+			timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");
+			}
+			else if (getParameterByName("r", MSGCOMMANDS2a)!=null){
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br>Mode: '+ getParameterByName("mode", MSGCOMMANDS)+ '</br> Region: '+ getParameterByName("r", MSGCOMMANDS)+ '</br> <button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+		    timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");
+			}
+			else {
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+		    timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");	
+			}
+			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
 }
