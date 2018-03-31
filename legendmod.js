@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.36 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.37 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "36"; // the version 1.1-> 1.11
+var semimodVersion = "37"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -8173,7 +8173,7 @@ function acceptServerBtn(){
 		   // window.open(MSGCOMMANDS2a,'_blank');
 		    });
 			}
-	return acceptServerBtnFlag=1;
+	//return acceptServerBtnFlag=1;
 }
 function MsgServCommandsreturner(){
 			MSGCOMMANDS2=MSGCOMMANDS;
