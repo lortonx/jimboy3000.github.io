@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.38 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "38"; // the version 1.1-> 1.11
+var semimodVersion = "37"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -8166,7 +8166,7 @@ function acceptServerBtn(){
 					else{	//if Locked	
 					console.log("2b - Legend Mod, Locked");	
 					MSGCOMMANDS=MSGCOMMANDS.split("[server]").pop();
-					MSGCOMMAND2=MSGCOMMANDS.split('[/server]')[0];	
+					MSGCOMMANDS=MSGCOMMANDS.split('[/server]')[0];	
 					location.replace(MSGCOMMANDS);
 					//window.open(MSGCOMMANDS,'_blank');
 								
