@@ -2685,7 +2685,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });	
 			}
 			}
-			else if (MSGCOMMANDS.includes("server")) {
+			else if (MSGCOMMANDS.includes("srv")) {
 				if (MSGCOMMANDS.includes("sip=")||MSGCOMMANDS.includes("agar.io/#")){
 			$(".message-text").remove();
 			$(".toast.toast-success").remove(); //split pop is included on functions above
