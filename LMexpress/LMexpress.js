@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.025 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.026 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "25"; // the version 1.1-> 1.11
+var semimodVersion = "26"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -2739,11 +2739,17 @@ function acceptServerBtn(){
 				if(isLegendExpress(Express)=="True"){ //if is Legend Express
 					if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
 					console.log("1a - Legend Express, Party mode");
+				if (getParameterByName("pass", MSGCOMMANDS)!=null){
+					$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+				};				
 					$('#server').val(MSGCOMMANDSA);
 					$("#connect2").click();					
 					}
 					else if (MSGCOMMANDS3.includes("sip=")){	//if not Party mode
 					console.log("1b - Legend Express, Not Party mode");
+				if (getParameterByName("pass", MSGCOMMANDS)!=null){
+					$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+				};						
 				$("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
 				$("#server-join").click();			
 					}
@@ -2752,11 +2758,17 @@ function acceptServerBtn(){
 					if (searchSip==null){ //if is not Locked
 						if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
 						console.log("2a - Legend Mod, No Locked, Party Mode");
+							if (getParameterByName("pass", MSGCOMMANDS)!=null){
+							$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+							};							
 						$('#server').val(MSGCOMMANDSA);
 						$("#connect2").click();							
 						}
 						else if(MSGCOMMANDS3.includes("sip=")){	 //if not Party	mode	
 							console.log("2b - Legend Mod, Locked, No Party mode");
+							if (getParameterByName("pass", MSGCOMMANDS)!=null){
+							$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+							};								
 					$("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
 					$("#server-join").click();	
 					
@@ -2764,9 +2776,12 @@ function acceptServerBtn(){
 					}
 					else{	//if Locked	
 					console.log("2b - Legend Mod, Locked");	
-					MSGCOMMANDS=MSGCOMMANDS.split("[server]").pop();
-					MSGCOMMANDS=MSGCOMMANDS.split('[/server]')[0];	
-					location.replace(MSGCOMMANDS);
+					MSGCOMMANDS=MSGCOMMANDS.split("[srv]").pop();
+					MSGCOMMANDS=MSGCOMMANDS.split('[/srv]')[0];	
+					if (MSGCOMMANDS.length>70){
+						MSGCOMMANDS=MSGCOMMANDS.split('[')[0];	
+					}
+					location.replace(MSGCOMMANDS);					
 					//window.open(MSGCOMMANDS,'_blank');
 								
 					}
@@ -2779,8 +2794,8 @@ function acceptServerBtn(){
 function MsgServCommandsreturner(){
 			MSGCOMMANDS2=MSGCOMMANDS;
 			MSGCOMMANDS3=MSGCOMMANDS;
-			MSGCOMMANDS2=MSGCOMMANDS2.split("[server]").pop();
-			MSGCOMMANDS2=MSGCOMMANDS2.split('[/server]')[0];	
+			MSGCOMMANDS2=MSGCOMMANDS2.split("[srv]").pop();
+			MSGCOMMANDS2=MSGCOMMANDS2.split('[/srv]')[0];	
 			if (MSGCOMMANDS2.includes("http://")==false&&MSGCOMMANDS2.includes("https://")==false&&MSGCOMMANDS2.includes("HTTP://")==false&&MSGCOMMANDS2.includes("HTTPS://")==false) {
 			MSGCOMMANDS2="http://"+MSGCOMMANDS2;	
 			}				
@@ -2794,13 +2809,35 @@ function MsgServCommandsreturner(){
 		    }).css("width", "300px");
 			}
 			else if (getParameterByName("r", MSGCOMMANDS2a)!=null){
-			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br>Mode: '+ getParameterByName("mode", MSGCOMMANDS)+ '</br> Region: '+ getParameterByName("r", MSGCOMMANDS)+ '</br> <button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+				var modetosend, passtosend;
+				
+				if (getParameterByName("pass", MSGCOMMANDS)==null){
+					passtosend="No Password Loaded";		
+				}
+				else{
+					passtosend=getParameterByName("pass", MSGCOMMANDS);
+				}
+				if (getParameterByName("mode", MSGCOMMANDS)==null){
+					modetosend="Unknown";
+				}
+				else{
+					modetosend=getParameterByName("mode", MSGCOMMANDS);
+				}				
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br>Mode: ' + modetosend + '</br> Region: '+ getParameterByName("r", MSGCOMMANDS)+ '</br> Password: ' + passtosend + '</br> <button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
 		    timeOut: 10000,
 		    extendedTimeOut: 10000
 		    }).css("width", "300px");
 			}
 			else {
-			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+				var passtosend;
+				
+				if (getParameterByName("pass", MSGCOMMANDS)==null){
+					passtosend="No Password Loaded";		
+				}
+				else{
+					passtosend=getParameterByName("pass", MSGCOMMANDS);
+				}				
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br> Password: ' + passtosend + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
 		    timeOut: 10000,
 		    extendedTimeOut: 10000
 		    }).css("width", "300px");	
