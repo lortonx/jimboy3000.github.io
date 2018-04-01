@@ -480,7 +480,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		doDOMonloadevents1();
     }
 	else if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
-		$(".toast.toast-warning").html('<b>[srv]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 	}
 });
 
@@ -1343,7 +1343,7 @@ function init(modVersion) {
 			localStorage.setItem("previousnickname", previousnickname);
             if (clickedname == "YES") {
                 if ($("#nick").val().length >= 16) {
-                    toastr["warning"]("<b>[srv]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
+                    toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
                 }
             }
             if ($("#nick").val() == "EasterEgg1") {
@@ -5104,7 +5104,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[srv]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Game will terminate now').css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Game will terminate now').css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
