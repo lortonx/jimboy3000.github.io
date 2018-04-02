@@ -357,6 +357,8 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
+var Premadeletter61 = "Enable YT as background";
+var Premadeletter62 = "Disable YT as background";
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -1065,7 +1067,7 @@ function init(modVersion) {
             '<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
             '<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">' +
             '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
-			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + 'Enable YT as background' + '</button></div>');
+			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter61 + '</button></div>');
         $('.agario-panel.radio-panel').hide();
         $('.agario-panel.ogario-yt-panel').hide();
 
@@ -1934,10 +1936,10 @@ function init(modVersion) {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {               
 				YoutubebackgroundEnable();
-                $(this).html('<i class="fa fa-youtube-play"></i>' + 'Disable YT as background');
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter62);
             } else {
 				YoutubebackgroundDisable();
-                $(this).html('<i class="fa fa-youtube-play"></i>' + 'Enable YT as background');
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter61);
             }
         });
 		
