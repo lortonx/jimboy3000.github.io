@@ -466,6 +466,8 @@ $('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-origi
 $("#HideAllBthn").attr('data-original-title',Languageletter345);
 
 //$("#legendlanguagetext").text(Languageletter346+ "  :");
+$(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
+
 
 setTimeout(function () {
 $("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
