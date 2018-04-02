@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.39 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.40 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "39"; // the version 1.1-> 1.11
+var semimodVersion = "40"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -150,7 +150,7 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "http://www.youtube.com/watch?v=L7klPYKTx64";
+var defaultMusicUrl = "http://www.youtube.com/watch?v=qkKiyneiSTo";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
@@ -7911,8 +7911,10 @@ function saveLegendJSONAPI() {
 function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
 
 			if (MSGCOMMANDS.includes("url")) {
-		        $(".message-text").remove();
-				$(".toast.toast-success").remove();				
+				if ($("#nick").val().includes("url")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}			
 			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
@@ -7927,8 +7929,10 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });
 			}
 			else if (MSGCOMMANDS.includes("yut")) {
-		        $(".message-text").remove();
-				$(".toast.toast-success").remove();				
+				if ($("#nick").val().includes("yut")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}			
 			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
@@ -7947,8 +7951,10 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });
 			}
 			else if (MSGCOMMANDS.includes("skype")) {
-			$(".message-text").remove();
-			$(".toast.toast-success").remove();		
+				if ($("#nick").val().includes("skype")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}	
 			MSGCOMMANDS=MSGCOMMANDS.split("[skype]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/skype]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
@@ -7965,8 +7971,10 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			}
 			}
 			else if (MSGCOMMANDS.includes("discord")) {
-			$(".message-text").remove();
-			$(".toast.toast-success").remove();		
+				if ($("#nick").val().includes("discord")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}	
 			MSGCOMMANDS=MSGCOMMANDS.split("[discord]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/discord]')[0];	
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
@@ -7984,8 +7992,10 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			}	
 			else if (MSGCOMMANDS.includes("srv")) {
 				if (MSGCOMMANDS.includes("sip=")||MSGCOMMANDS.includes("agar.io/#")){
-			$(".message-text").remove();
-			$(".toast.toast-success").remove(); //split pop is included on functions above
+				if ($("#nick").val().includes("srv")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}	//split pop is included on functions above
 			MsgServCommandsreturner();
 			acceptServerBtn();
 				}
