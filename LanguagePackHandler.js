@@ -36,7 +36,7 @@ $("#ModInfoQuick").attr('data-original-title',Languageletter25b);
 $("#more-skins").text(Languageletter26);
 
 
-$("#freeCoins").text(Languageletter27);
+$(".btn.btn-primary.btn-success.btn-freecoins").text(Languageletter21);
 $("#gifting").text(Languageletter22);
 $("#dailyQuests").text(Languageletter23);
 $("#openShopBtn").text(Languageletter20);
