@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.40 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.41 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "40"; // the version 1.1-> 1.11
+var semimodVersion = "41"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -317,11 +317,6 @@ var Premadeletter25 = "NO WAY!";
 var Premadeletter26 = "wants you to change your name to";
 var Premadeletter27 = "wants you to Enable Troll on death";
 var Premadeletter28 = "wants you to open Youtube Player";
-var Premadeletter28a = "wants you to open the url";
-var Premadeletter28b = "wants you to embed and play this youtube video";
-var Premadeletter28c = "wants you to join the following Skype room";
-var Premadeletter28d = "wants you to join the following Discord room";
-var Premadeletter28e = "wants you to leave this server an join this new one";
 var Premadeletter29 = "Leaderboard found";
 var Premadeletter30 = "Search";
 var Premadeletter31 = "The leaderboard was not found. Keep trying...";
@@ -359,6 +354,11 @@ var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
 var Premadeletter61 = "Enable YT as background";
 var Premadeletter62 = "Disable YT as background";
+var Premadeletter63 = "wants you to open the url";
+var Premadeletter64 = "wants you to embed and play this youtube video";
+var Premadeletter65 = "wants you to join the following Skype room";
+var Premadeletter66 = "wants you to join the following Discord room";
+var Premadeletter67 = "wants you to leave this server and join this new one";
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -1498,7 +1498,7 @@ function init(modVersion) {
         //kitty's
         // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
         //jimboy's
-        $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+        $("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
         //$("#minimap-sectors").attr("style", "opacity: 0.25;");
         // keybinds
 
@@ -7922,7 +7922,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
-			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28a + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "250px");
@@ -7940,7 +7940,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
-			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28b + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter64 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "300px");
@@ -7963,7 +7963,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
 			if (MSGCOMMANDS.includes("join.skype.com/")){	
-			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/iconskype.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28c + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/iconskype.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter65 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 10000,
 		    extendedTimeOut: 10000
 		    }).css("width", "300px");
@@ -7983,7 +7983,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				MSGCOMMANDS="http://"+MSGCOMMANDS;	
 				}
 			if (MSGCOMMANDS.includes("discordapp.com/invite")||MSGCOMMANDS.includes("discord.gg")){
-			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/icondiscord.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28d + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/icondiscord.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter66 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "300px");
@@ -8216,7 +8216,7 @@ function MsgServCommandsreturner(){
 			MSGCOMMANDS2a=MSGCOMMANDS2;
 			MsgServCommandsreturner2(MSGCOMMANDS2a);
 			MSGCOMMANDSA= "#"+MSGCOMMANDS2a.split("#").pop();
-			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e + '</font></a></br>Server (Party mode): '+ MSGCOMMANDSA + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {		    
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter67 + '</font></a></br>Server (Party mode): '+ MSGCOMMANDSA + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {		    
 			timeOut: 10000,
 		    extendedTimeOut: 10000
 		    }).css("width", "300px");
@@ -8236,7 +8236,7 @@ function MsgServCommandsreturner(){
 				else{
 					modetosend=getParameterByName("mode", MSGCOMMANDS);
 				}				
-			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br>Mode: ' + modetosend + '</br> Region: '+ getParameterByName("r", MSGCOMMANDS)+ '</br> Password: ' + passtosend + '</br> <button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter67  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br>Mode: ' + modetosend + '</br> Region: '+ getParameterByName("r", MSGCOMMANDS)+ '</br> Password: ' + passtosend + '</br> <button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
 		    timeOut: 10000,
 		    extendedTimeOut: 10000
 		    }).css("width", "300px");
@@ -8250,7 +8250,7 @@ function MsgServCommandsreturner(){
 				else{
 					passtosend=getParameterByName("pass", MSGCOMMANDS);
 				}				
-			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter28e  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br> Password: ' + passtosend + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter67  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br> Password: ' + passtosend + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
 		    timeOut: 10000,
 		    extendedTimeOut: 10000
 		    }).css("width", "300px");	
