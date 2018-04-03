@@ -1115,7 +1115,7 @@ function init(modVersion) {
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-		$(".quick-quests.ogicon-trophy").after('<a id= "LegGoogleForm" class="fa fa-briefcase" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Special Deals" onclick="SpecialDeals(); return false;"></a>'+
+		$(".quick-quests.ogicon-trophy").after('<a id= "SpecialDealsQuickBtn" class="fa fa-briefcase" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Special Deals" onclick="SpecialDeals(); return false;"></a>'+
 		'<a id= "VideoSkinsQuick" class="fa fa-video-camera" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Video Skins"></a>');		
         // prevent edit
         $("#musicUrl").on("input", function() {
