@@ -471,9 +471,9 @@ $(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
 $("#potions").text(Languageletter349);
 $("#oldSkinsBtn").text(Languageletter350);
 $("#SpecialDealsBtn").text(Languageletter351);
+$("#SpecialDealsQuickBtn").attr("data-original-title", Languageletter351);
 $(".btn.btn-primary.btn-success.btn-leagues").text(Languageletter352); //Leaderboards
 $("#LegGoogleForm").attr("data-original-title", Languageletter353);
-$("#SpecialDealsQuickBtn").text(Languageletter351);
 $("#VideoSkinsQuick").attr("data-original-title", Languageletter354);
 $("#MiniScripts").attr("data-original-title", Languageletter355);
 $("#OpenuserScripts").text(Languageletter356);
