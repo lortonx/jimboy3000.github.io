@@ -40,7 +40,7 @@ $("#menu-footer").after('<div id="administrationtools" style="display: none; bac
 											'<input id="AdminPassword" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
 											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
 											'</div></div>');
-$("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="administrationtools(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="administrationtools(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
 	$("#AdminClanSymbol").val("℄");
 	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
 	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
@@ -153,11 +153,31 @@ $("#exp-bar").hide();
 $("#userscripts").show();
 */
 
+var Externalletter6;
+var Externalletter7;
+var Externalletter8;
+var Externalletter9;
+var Externalletter10;
+var Externalletter11;
+var Externalletter12;
+var Externalletter13;
+
+var Externalletter6 = "Paste your Script in this Textarea, you can load multiple Scripts"; //Paste your Script in this Textarea, you can load multiple Scripts
+var Externalletter7 = "Load Script from Textarea"; //Load Script from Textarea
+var Externalletter8 = "Choose"; //Choose
+var Externalletter9 = "Erase Script"; //Erase Script
+var Externalletter10 = "Name"; //Name
+var Externalletter11 = "Url of Raw Github, or other Raw Script, starting with"; //Url of Raw Github, or other Raw Script, starting with
+var Externalletter12 = "Leave this empty if script not imported from URL"; //Leave this empty if script not imported from URL
+var Externalletter13 = "IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES"; //IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES
+
+
+
 $("#menu-footer").after('<div id="userscripts" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 600px; width: 600px; ";>'+
 	'<div id="Userscriptshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="Userscriptshud2" align="middle"><h5 class="main-color">USER SCRIPTS</h5>'+
 	
-	'<p style="color:white; font-size:12px";" align="middle">Paste your Script in this Textarea, you can load multiple Scripts</p>'+
+	'<p style="color:white; font-size:12px";" align="middle">'+Externalletter6+'</p>'+
 	
 	
    '<textarea id="Userscripttexture1" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: block;"></textarea>'+
@@ -165,14 +185,14 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url('+le
    '<textarea id="Userscripttexture3" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
    '<textarea id="Userscripttexture4" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
    '<textarea id="Userscripttexture5" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
-	'<button id="userscriptBtn1" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: block;"><i class="fa fa-code"></i>Load Script from Textarea</button>'+
-	'<button id="userscriptBtn2" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>Load Script from Textarea</button>'+
-	'<button id="userscriptBtn3" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>Load Script from Textarea</button>'+
-	'<button id="userscriptBtn4" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>Load Script from Textarea</button>'+
-	'<button id="userscriptBtn5" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>Load Script from Textarea</button>'+
+	'<button id="userscriptBtn1" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: block;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn2" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn3" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn4" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn5" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
 	
 		'<br>'+
-											'<div class="input-box" style=" color:white; font-size:12px";" text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span id="userscriptpages" class="title" style="">Choose User Script:  </span>' +
+											'<div class="input-box" style=" color:white; font-size:12px";" text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span id="userscriptpages" class="title" style="">'+Externalletter8+' User Script:  </span>' +
 											'<select id="Userscriptpages3" class="form-control" onchange="userscriptpages();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
 											'<option value="1" data-itr="">User Script 1</option>' +
 											'<option value="2" data-itr="">User Script 2</option>' +
@@ -180,23 +200,23 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url('+le
 											'<option value="4" data-itr="">User Script 4</option>' +
 											'<option value="5" data-itr="">User Script 5</option>' +
 											'</select>' +
-											'<button id="EraseScripter" align="left" onclick="erasescripter(); return false" class="btn btn-primary btn" data-itr="page_login_and_play" data-original-title="" title="" style="display:inline; margin-top: -4px; margin-left: 60px; width: 30%; ">Erase Script</button>' +
-											'<input id="UserscripttextA" class="form-control" placeholder="User Script 1 Name" value="" style="margin-top: 2px; display: block;" onblur="Userscripttext11();" >' +
+											'<button id="EraseScripter" align="left" onclick="erasescripter(); return false" class="btn btn-primary btn" data-itr="page_login_and_play" data-original-title="" title="" style="display:inline; margin-top: -4px; margin-left: 60px; width: 30%; ">'+Externalletter9+'</button>' +
+											'<input id="UserscripttextA" class="form-control" placeholder="User Script 1 '+Externalletter10+'" value="" style="margin-top: 2px; display: block;" onblur="Userscripttext11();" >' +
 											
-											'<input id="UserscripttextB" class="form-control" placeholder="User Script 2 Name" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext12();"  >' +
-											'<input id="UserscripttextC" class="form-control" placeholder="User Script 3 Name" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext13();"  >' +						
-											'<input id="UserscripttextD" class="form-control" placeholder="User Script 4 Name" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext14();"  >' +
-											'<input id="UserscripttextE" class="form-control" placeholder="User Script 5 Name" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext15();"  >' +	
-											'<input id="UserscriptA" class="form-control" placeholder="User Script 1 .js URL (Leave this empty if script not imported from URL)" text="Url 1" style="margin-top: 2px; display: block;" " data-toggle="tooltip" data-placement="top" data-original-title="Url of Raw Github, or other Raw Script, starting with http://... or https://..." >' +	
-											'<input id="UserscriptB" class="form-control" placeholder="User Script 2 .js URL (Leave this empty if script not imported from URL)" text="Url 2" style="margin-top: 2px; display: none"  " data-toggle="tooltip" data-placement="top" data-original-title="Url of Raw Github, or other Raw Script, starting with http://... or https://..." >' +		
-											'<input id="UserscriptC" class="form-control" placeholder="User Script 3 .js URL (Leave this empty if script not imported from URL)" text="Url 3" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="Url of Raw Github, or other Raw Script, starting with http://... or https://..." >' +		
-											'<input id="UserscriptD" class="form-control" placeholder="User Script 4 .js URL (Leave this empty if script not imported from URL)" text="Url 4" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="Url of Raw Github, or other Raw Script, starting with http://... or https://..." >' +		
-											'<input id="UserscriptE" class="form-control" placeholder="User Script 5 .js URL (Leave this empty if script not imported from URL)" text="Url 5" style="margin-top: 2px; display: none;" "data-toggle="tooltip" data-placement="top" data-original-title="Url of Raw Github, or other Raw Script, starting with http://... or https://..." >' +												
+											'<input id="UserscripttextB" class="form-control" placeholder="User Script 2 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext12();"  >' +
+											'<input id="UserscripttextC" class="form-control" placeholder="User Script 3 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext13();"  >' +						
+											'<input id="UserscripttextD" class="form-control" placeholder="User Script 4 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext14();"  >' +
+											'<input id="UserscripttextE" class="form-control" placeholder="User Script 5 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext15();"  >' +	
+											'<input id="UserscriptA" class="form-control" placeholder="User Script 1 .js URL ('+Externalletter12+')" text="Url 1" style="margin-top: 2px; display: block;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +	
+											'<input id="UserscriptB" class="form-control" placeholder="User Script 2 .js URL ('+Externalletter12+')" text="Url 2" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +		
+											'<input id="UserscriptC" class="form-control" placeholder="User Script 3 .js URL ('+Externalletter12+')" text="Url 3" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +		
+											'<input id="UserscriptD" class="form-control" placeholder="User Script 4 .js URL ('+Externalletter12+')" text="Url 4" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +		
+											'<input id="UserscriptE" class="form-control" placeholder="User Script 5 .js URL ('+Externalletter12+')" text="Url 5" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +												
 											'</div>' +	
-											'<p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES: <u>chrome://settings/clearBrowserData</u></p>'+											
+											'<p style="color:white; font-size:12px";" align="middle">'+Externalletter13+': <u>chrome://settings/clearBrowserData</u></p>'+											
 											'</div>'+
 											'</div>');
-$("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
 
 $('[data-toggle="tooltip"]').tooltip();
 $("#userscripts").hide();
