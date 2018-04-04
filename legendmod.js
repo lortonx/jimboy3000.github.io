@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.42 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.41 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "42"; // the version 1.1-> 1.11
+var semimodVersion = "41"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -402,7 +402,15 @@ var Premadeletter106 = "unselect video skin";
 var Premadeletter107 = "mute audio";
 var Premadeletter108 = "The LM Project";
 var Premadeletter109 = "Upload / Download";		
-
+var Premadeletter110 = "do not enter anything here unless you know what it is";	
+var Premadeletter111 = "click on the orange icon to buy";	
+var Premadeletter112 = "For some payment methods";
+var Premadeletter113 = "Close";		//Close		
+var Premadeletter114 = "COPY";			
+var Premadeletter115 = "is used to buy offers for your friends";
+var Premadeletter116 = "To make purchases, you must be logged in to your account…";
+		
+		
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
     , 'border: 1px solid #3E0E02'
@@ -6627,20 +6635,20 @@ function SpecialDeals() {
             '<div class="modal-backdrop fade in"></div>' +
             '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 500px;">' +
             '<div class="modal-content">' +
-            '<div id="CloseSpecialDeals" class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
+            '<div id="CloseSpecialDeals" class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
             '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">Special deals</h4>' +
             '</div>' +
-            '<div class="modal-body"><input type="email" class="form-control" id="agario_uid_input" placeholder="*UID (do not enter anything here unless you know what it is)" style="width: 85%; display: inline-block">' +
+            '<div class="modal-body"><input type="email" class="form-control" id="agario_uid_input" placeholder="*UID (' + Premadeletter110 + ')" style="width: 85%; display: inline-block">' +
             '<div class="custom-checkbox" style="display: inline-block; margin-left: 10px; vertical-align: sub;"><input id="checkBoxLockUID" type="checkbox" disabled="disabled" style="width: 20px; height: 20px"><label for="cb1"></label></div>' +
             '<div class="bs-callout bs-callout-buy bs-callout-clickable" id="buy_starterpack">' +
-            '<h4 id="dealtype" class="pull-left">purchase 125000 coins</h4><h5 class="pull-left"> <i> (click on the orange icon to buy)</i></h5>' +
+            '<h4 id="dealtype" class="pull-left">purchase 125000 coins</h4><h5 class="pull-left"> <i> (' + Premadeletter111 + ')</i></h5>' +
             '<h4 id="dealcost" class="text-right">99.99 $</h4>' +
             '<div class="xpmt-buy-content" style="font-size: 13px; margin-top: -30px; float: left;font-weight: 700; background-color: rgba(0, 0, 0, 0.2); background-image: url(https://jimboy3100.github.io/banners/icondeal2.png);padding: 3px; align: middle; border-radius: 4px;width: 100%;height: 150px;z-index: 15;margin: auto;">' +
             '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>125000 C</b></span></div>' +
             '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(""); background-size: cover; border-color: #7c0001"></div>' +
             '</div>' +
-            '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> For some payment methods</color>' +
-            '<p class="alert-warning text-center">To make purchases, you must be logged in to your account…<br><span class="alert-success" id="exp-uid">' + MC.getUserId() + '</span> <font color="red" onclick=copy(MC.getUserId());><b><u>COPY UID</u></b></font><br>*UID is used to buy offers for your friends</p>' +
+            '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> ' + Premadeletter112 + '</color>' +
+            '<p class="alert-warning text-center">' + Premadeletter116 + '<br><span class="alert-success" id="exp-uid">' + MC.getUserId() + '</span> <font color="red" onclick=copy(MC.getUserId());><b><u>'+Premadeletter114+' UID</u></b></font><br>*UID ' + Premadeletter115 + '</p>' +
             '</div>' +
             '</div>' +
             '</div>' +
