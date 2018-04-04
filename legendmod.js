@@ -4974,7 +4974,7 @@ if (languagemod == 1) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
@@ -4997,7 +4997,7 @@ if (languagemod == 2) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
@@ -5020,7 +5020,7 @@ if (languagemod == 3) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
@@ -5043,7 +5043,7 @@ if (languagemod == 4) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
@@ -5066,7 +5066,7 @@ if (languagemod == 5) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
@@ -5089,7 +5089,7 @@ if (languagemod == 6) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
@@ -5112,7 +5112,7 @@ if (languagemod == 7) {
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
         $("body").append(s1);
     }, 1000);		
 	}
