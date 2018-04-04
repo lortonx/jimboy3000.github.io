@@ -396,8 +396,12 @@ var Premadeletter100 = "Calculating your XP, please wait...";
 var Premadeletter101 = "Do";
 var Premadeletter102 = "NOT";
 var Premadeletter103 = "press";
-
-
+var Premadeletter104 = "Erase custom skin URL";
+var Premadeletter105 = "select video skin";	
+var Premadeletter106 = "unselect video skin";	
+var Premadeletter107 = "mute audio";
+var Premadeletter108 = "The LM Project";
+var Premadeletter109 = "Upload / Download";		
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -1173,7 +1177,7 @@ function init(modVersion) {
         });
 		//fzogar Upload / Download Settings
 		$("#import-settings-btn").attr('class', 'btn btn-success');
-		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
+		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109 + '</button>');
 
         $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
@@ -1532,7 +1536,7 @@ function init(modVersion) {
         //		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
         //		$("#OpenInfo").click(function () {openhelper();});
         $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-            '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
+            '<a id="MorefpsText" href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
         // donate button
         //kitty's
         // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
@@ -7473,7 +7477,7 @@ inject('javascript', ! function e(t) {
                 },
                 html: function() {
                     var e = '<div id="tcm-videoskin">';
-                    return e += '<button id="tcm-video-load">select video skin</button>', e += '<input type="file" accept="video/*" id="tcm-video-input" />', e += '<div id="tcm-videoskin-options">', e += '<button id="tcm-video-unload">unselect video skin</button>', e += '<button id="tcm-video-mute">mute audio</button>', e += "</div>", e += '<span id="tcm-videoskin-credits">*Erase custom skin URL - <a href="http://www.legendmod.ml" target="_blank">The LM Project</a>.</span>', e += "</div>"
+                    return e += '<button id="tcm-video-load">' + Premadeletter105 + '</button>', e += '<input type="file" accept="video/*" id="tcm-video-input" />', e += '<div id="tcm-videoskin-options">', e += '<button id="tcm-video-unload">' + Premadeletter106 + '</button>', e += '<button id="tcm-video-mute">' + Premadeletter107 + '</button>', e += "</div>", e += '<span id="tcm-videoskin-credits">*' + Premadeletter81 + ' - <a href="http://www.legendmod.ml" target="_blank">' + Premadeletter108 + '</a>.</span>', e += "</div>"
                 }
             }
         };
