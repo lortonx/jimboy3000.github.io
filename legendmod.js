@@ -405,7 +405,7 @@ var Premadeletter109 = "Upload / Download";
 var Premadeletter110 = "do not enter anything here unless you know what it is";	
 var Premadeletter111 = "click on the orange icon to buy";	
 var Premadeletter112 = "For some payment methods";
-var Premadeletter113 = "Close";		//Close		
+var Premadeletter113 = "Close";			
 var Premadeletter114 = "COPY";			
 var Premadeletter115 = "is used to buy offers for your friends";
 var Premadeletter116 = "To make purchases, you must be logged in to your account…";
@@ -1589,7 +1589,7 @@ function init(modVersion) {
             }
 				else if (DeathFPSfixVariable=="1"){					
 					MC.onPlayerSpawn();
-					toastr["error"](Premadeletter22 + "  <font color='blue'><b>ESC</font></b>, " + Premadeletter69+ " <b>FPS</b> "+Premadeletter70, "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
+					toastr["error"](Premadeletter68 + "  <font color='blue'><b>ESC</font></b>, " + Premadeletter69+ " <b>FPS</b> "+Premadeletter70, "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 				}
 			}
         });
