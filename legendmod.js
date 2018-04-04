@@ -450,84 +450,10 @@ var stylesLegendModConsole2 = [
 
 
 var languagemod = localStorage.getItem("languagemod");
-if (languagemod == 2) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("2");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 3) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("3");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 4) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("4");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 5) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("5");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 6) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("6");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 7) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("6");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
+var languagehander = "starter";
+Languagehandlerfunction();
+
+
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
@@ -5037,6 +4963,161 @@ function openrotatingmod() {
     $("body").append(s);
 }
 
+function Languagehandlerfunction(){
+if (languagemod == 1) {	
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";
+    $("body").append(s);
+	$('#legendlanguages').val("2");
+	if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}	
+if (languagemod == 2) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
+    $("body").append(s);
+	$('#legendlanguages').val("2");
+	if (languagehander=="starter"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+	else if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}
+if (languagemod == 3) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
+    $("body").append(s);
+	$('#legendlanguages').val("3");
+    if (languagehander=="starter"){
+	setTimeout(function() {       
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+	else if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}
+if (languagemod == 4) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
+    $("body").append(s);
+	$('#legendlanguages').val("4");
+	if (languagehander=="starter"){
+    setTimeout(function() {       
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+	else if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}
+if (languagemod == 5) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
+    $("body").append(s);
+	$('#legendlanguages').val("5");
+	if (languagehander=="starter"){
+    setTimeout(function() {        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+	else if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}
+if (languagemod == 6) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
+    $("body").append(s);
+	$('#legendlanguages').val("6");
+	if (languagehander=="starter"){
+    setTimeout(function() {       
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+	else if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}
+if (languagemod == 7) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+    $("body").append(s);
+	$('#legendlanguages').val("7");
+	if (languagehander=="starter"){
+    setTimeout(function() {      		
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+	else if (languagehander=="externals"){
+    setTimeout(function() {		        
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerlegendExternals.js";
+        $("body").append(s1);
+    }, 1000);		
+	}
+}
+}
 
 function changeModLanguage() {
     if ($("#legendlanguages").val() == 1) {
