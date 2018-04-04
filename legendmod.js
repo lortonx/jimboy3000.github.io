@@ -94,43 +94,8 @@ $('#gamemode').on('change', function() {
 		}
 	}	
 	else{	
-    if (this.value == ":PrS1") {
-    console.log("Going to PRS1");
-	PrivateServer1();
-    }
-    else if (this.value == ":PrS2") {
-    console.log("Going to PRS2");
-	PrivateServer2();
-    }  
-    else if (this.value == ":PrS3") {
-    console.log("Going to PRS3");
-	PrivateServer3();
-    }
-    else if (this.value == ":PrS4") {
-    console.log("Going to PRS4");
-	PrivateServer4();
-    }
-    else if (this.value == ":PrS5") {
-    console.log("Going to PRS5");
-	PrivateServer5();
-    }
-    else if (this.value == ":PrS6") {
-    console.log("Going to PRS6");
-	PrivateServer6();
-    }
-    else if (this.value == ":PrS7") {
-    console.log("Going to PRS7");
-	PrivateServer7();
-    }
-    else if (this.value == ":PrS8") {
-    console.log("Going to PRS8");
-	PrivateServer8();
-    }
-    else if (this.value == ":PrS9") {
-    console.log("Going to PRS9");
-	PrivateServer9();
-    }	
-	}	
+		PrivateServerSenderFunction();
+		}		
 });
 
 /*		
@@ -781,72 +746,7 @@ if (minbtext == null || minbtext == "") {
     minbtext2 = "Legend mod";
 	minbtext3 = "Legend mod/Private";
 }
-setTimeout(function() {
-	$("#tcm-videoskin").hide();	
-	fillminimapLegendLogo();
-}, 6000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 6500);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 7000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 7500);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 8000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 9000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 10000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-			//Load Private Servers
-	if($('#region>option:nth-child(1)').val()!=":PrS")	{
-	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-	}	
-}, 13000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 14000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 11000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 12000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 13000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 14000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-}, 18000);
-setTimeout(function() {
-	fillminimapLegendLogo();
-    //if(dyinglight1load!="yes"){whenplayerdies();}
-}, 22000);
-
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 24000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-    //if(dyinglight1load!="yes"){whenplayerdies();}
-}, 25000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 30000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 40000);
-//setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
+setTimeoutLateResponse();
 
 function init(modVersion) {
 	$("#tcm-videoskin").hide();
@@ -4802,7 +4702,113 @@ function enableshortcuts() {
     //	$("#MANUIBtn").click(); }
 }
 
+function setTimeoutLateResponse(){
+setTimeout(function() {
+	$("#tcm-videoskin").hide();	
+	fillminimapLegendLogo();
+}, 6000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 6500);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 7000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 7500);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 8000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 9000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 10000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+			//Load Private Servers
+	if($('#region>option:nth-child(1)').val()!=":PrS")	{
+	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+	}	
+}, 13000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 14000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 11000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 12000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 13000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 14000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 18000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+    //if(dyinglight1load!="yes"){whenplayerdies();}
+}, 22000);
 
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 24000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+    //if(dyinglight1load!="yes"){whenplayerdies();}
+}, 25000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 30000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 40000);
+//setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
+}
+
+function PrivateServerSenderFunction(){	
+    if (this.value == ":PrS1") {
+    console.log("Going to PRS1");
+	PrivateServer1();
+    }
+    else if (this.value == ":PrS2") {
+    console.log("Going to PRS2");
+	PrivateServer2();
+    }  
+    else if (this.value == ":PrS3") {
+    console.log("Going to PRS3");
+	PrivateServer3();
+    }
+    else if (this.value == ":PrS4") {
+    console.log("Going to PRS4");
+	PrivateServer4();
+    }
+    else if (this.value == ":PrS5") {
+    console.log("Going to PRS5");
+	PrivateServer5();
+    }
+    else if (this.value == ":PrS6") {
+    console.log("Going to PRS6");
+	PrivateServer6();
+    }
+    else if (this.value == ":PrS7") {
+    console.log("Going to PRS7");
+	PrivateServer7();
+    }
+    else if (this.value == ":PrS8") {
+    console.log("Going to PRS8");
+	PrivateServer8();
+    }
+    else if (this.value == ":PrS9") {
+    console.log("Going to PRS9");
+	PrivateServer9();
+    }	
+}
 function PrivateServer1(){
 //	$("#server").val("eu.fzogar.xyz:4000");
 //	$("#connect2").click();
