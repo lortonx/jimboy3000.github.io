@@ -409,8 +409,9 @@ var Premadeletter113 = "Close";
 var Premadeletter114 = "COPY";			
 var Premadeletter115 = "is used to buy offers for your friends";
 var Premadeletter116 = "To make purchases, you must be logged in to your account…";
-		
-		
+var Premadeletter117 = "Library"; 
+var Premadeletter118 = "visit"; 
+
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
     , 'border: 1px solid #3E0E02'
@@ -2860,7 +2861,7 @@ function init(modVersion) {
 					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
 				else{
-					toastr["info"]('<b>' + Premadeletter81 + '</b>: <font color="red"><b>' + privateSrv + '</b></font><br>' + Premadeletter82 + ' agar.io/?ip= ' + Premadeletter83 + '.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>'+Premadeletter84, '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+					toastr["info"]('<b>' + Premadeletter81 + '</b>: <font color="red"><b>' + privateSrv + '</b></font><br>' + Premadeletter82 + ' agar.io/?ip= ' + Premadeletter83 + '.<br>' + Premadeletter117 + ': <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>'+Premadeletter84, '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
 				}
 			$("#server").hide();
             $("#connect2").hide();			
@@ -5157,7 +5158,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
