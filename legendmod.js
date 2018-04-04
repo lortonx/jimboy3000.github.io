@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.41 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.42 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "41"; // the version 1.1-> 1.11
+var semimodVersion = "42"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -17,14 +17,16 @@ getaccesstoken2();
 }, 3000);
 
 
-
+var CutNameConflictwithMessage=false;
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
+		if (CutNameConflictwithMessage==false){
 		if (~message.indexOf("OGARio by szymy")){
 		}
 		else{
 			_privateLog.apply(console, arguments);
+		}
 		}
     };
 })();
@@ -2247,7 +2249,7 @@ function init(modVersion) {
             chatfunction();
         });
 
-        $("#Cutnames").click(function() {
+        $("#Cutnames").click(function() {			
             if (checkedGameNames == 0) {
                 StartEditGameNames();
                 return checkedGameNames = 2;
@@ -2258,6 +2260,7 @@ function init(modVersion) {
                 StopEditGameNames();
                 return checkedGameNames = 1;
             }
+			return CutNameConflictwithMessage=true;
         });
         $("#VoiceBtn").click(function() {
             if (searchSip == null) {
@@ -7591,6 +7594,9 @@ function LegendSettingsfirst() {
     LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
     $("#export-settings-btn").click(function() {
         LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
+		setTimeout(function() {
+			copy($("#export-settings").val());
+			}, 200);
     });
 
     $("#import-settings-btn").clone().insertAfter("#import-settings-btn").attr('id', 'import-settings-btn2');
