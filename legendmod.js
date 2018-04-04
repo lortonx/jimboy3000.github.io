@@ -7485,7 +7485,7 @@ inject('javascript', ! function e(t) {
                 },
                 html: function() {
                     var e = '<div id="tcm-videoskin">';
-                    return e += '<button id="tcm-video-load">' + Premadeletter105 + '</button>', e += '<input type="file" accept="video/*" id="tcm-video-input" />', e += '<div id="tcm-videoskin-options">', e += '<button id="tcm-video-unload">' + Premadeletter106 + '</button>', e += '<button id="tcm-video-mute">' + Premadeletter107 + '</button>', e += "</div>", e += '<span id="tcm-videoskin-credits">*' + Premadeletter81 + ' - <a href="http://www.legendmod.ml" target="_blank">' + Premadeletter108 + '</a>.</span>', e += "</div>"
+                    return e += '<button id="tcm-video-load">' + Premadeletter105 + '</button>', e += '<input type="file" accept="video/*" id="tcm-video-input" />', e += '<div id="tcm-videoskin-options">', e += '<button id="tcm-video-unload">' + Premadeletter106 + '</button>', e += '<button id="tcm-video-mute">' + Premadeletter107 + '</button>', e += "</div>", e += '<span id="tcm-videoskin-credits">*' + Premadeletter104 + ' - <a href="http://www.legendmod.ml" target="_blank">' + Premadeletter108 + '</a>.</span>', e += "</div>"
                 }
             }
         };
