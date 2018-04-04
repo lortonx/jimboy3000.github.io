@@ -378,6 +378,10 @@ var Premadeletter115 = "is used to buy offers for your friends";
 var Premadeletter116 = "To make purchases, you must be logged in to your account…";
 var Premadeletter117 = "Library"; 
 var Premadeletter118 = "visit"; 
+var Premadeletter119 = "Report as Fake (change Skin)"; 
+var Premadeletter120 = "Enter your EXACT name of the player"; 
+var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
+var Premadeletter122 = "to permenant ban from usage of this extension"; 
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -7013,11 +7017,18 @@ function BeforeReportFakesSkin(){
 	}
 }
 function ReportFakesSkin() {
+var Temporaryletter1 = "Teamboard";
+var Temporaryletter2 = "Leaderboard";
+var Languageletter320;		//Leaderboard
+var Languageletter321;		//Teamboard
+if (Languageletter320!=null){Temporaryletter2=Languageletter320}
+if (Languageletter321!=null){Temporaryletter1=Languageletter321}
+
 $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 540px; width: 500px; ";>'+
 	'<div id="SkinChangerhud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
-	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>Report as Fake (change Skin)</b></h5>'+	
-	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">Enter your EXACT name of the player'+
-	'<br><font style="color:white; size:12px; margin-right: 70px;">Leaderboard</font><font style="color:white; size:12px; margin-left: 70px;">Teamboard</font></p>'+
+	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>'+Premadeletter119+'</b></h5>'+	
+	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">'+Premadeletter120+
+	'<br><font style="color:white; size:12px; margin-right: 70px;">'+Temporaryletter2+'</font><font style="color:white; size:12px; margin-left: 70px;">'+Temporaryletter1+'</font></p>'+
 											'<input id="LeaderboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline; " " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
@@ -7038,7 +7049,7 @@ $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-
 											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
-											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of this extension</u></p>'+											
+											'</div><p style="color:white; font-size:12px";" align="middle">'+Premadeletter121+'<br>'+Premadeletter122+'</u></p>'+											
 											'</div></div>');
 $('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
 $('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
@@ -7061,7 +7072,7 @@ $('#TeamboardInput8').copyCSS('#server').css('width', '40%');
 $('#TeamboardInput9').copyCSS('#server').css('width', '40%');
 $('#TeamboardInput10').copyCSS('#server').css('width', '40%');
 										
-$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
 OthersSkinChanger();
 SkinBtnsPut();
 OpenSkinChanger();
