@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.41 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.42 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "41"; // the version 1.1-> 1.11
+var semimodVersion = "42"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -359,6 +359,45 @@ var Premadeletter64 = "wants you to embed and play this youtube video";
 var Premadeletter65 = "wants you to join the following Skype room";
 var Premadeletter66 = "wants you to join the following Discord room";
 var Premadeletter67 = "wants you to leave this server and join this new one";
+
+var Premadeletter68 = "You pressed";
+var Premadeletter69 = "restart if";
+var Premadeletter70 = "drops";
+var Premadeletter71 = "Animated skins";
+var Premadeletter72 = "enabled";
+var Premadeletter73 = "drop";
+var Premadeletter74 = "when";
+var Premadeletter75 = "Animated skins will be";
+var Premadeletter76 = "disabled";
+var Premadeletter77 = "after rejoin";
+var Premadeletter78 = "Better FPS";
+var Premadeletter79 = "performance when 16";
+var Premadeletter80 = "When Dying Light Expansion is enabled, Troll on death cannot occur";
+var Premadeletter81 = "Private Server";
+var Premadeletter82 = "Connect to any";
+var Premadeletter83 = "server, or make your own";
+var Premadeletter84 = "Play agario-like games if you know the IP of servers";
+var Premadeletter85 = "Your account\'s image has been copied to clipboard. Paste it"; // erase the 's
+var Premadeletter86 = "to custom skin Url area";
+var Premadeletter87 = "You must Login to use picture of your profile";
+var Premadeletter88 = "You are using a wrong version";
+var Premadeletter89 = "Game will terminate now";
+var Premadeletter90 = "Special Deals";
+var Premadeletter91 = "Agario may or may not give you the Skin, but only the coins";
+var Premadeletter92 = "If friend's UID is wrong, purchase will fail";
+var Premadeletter93 = "UID Factory Settings";
+var Premadeletter94 = "You must login to load Special Deals";
+var Premadeletter95 = "Fake\'s image has been copied to clipboard. Paste it"; // erase the 's
+var Premadeletter96 = "to custom skin Url area in order to activate the fake\'s flag function"; // erase the 's
+var Premadeletter97 = "Inform me when you finish with Recapatcha";
+var Premadeletter98 = "I have finished";
+var Premadeletter99 = "Never Mind";
+var Premadeletter100 = "Calculating your XP, please wait...";
+var Premadeletter101 = "Do";
+var Premadeletter102 = "NOT";
+var Premadeletter103 = "press";
+
+
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -1538,7 +1577,7 @@ function init(modVersion) {
             }
 				else if (DeathFPSfixVariable=="1"){					
 					MC.onPlayerSpawn();
-					toastr["error"]("You pressed <font color='blue'><b>ESC</font></b>, restart if <b>FPS</b> drops", "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
+					toastr["error"](Premadeletter22 + "  <font color='blue'><b>ESC</font></b>, " + Premadeletter69+ " <b>FPS</b> "+Premadeletter70, "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
 				}
 			}
         });
@@ -1886,10 +1925,10 @@ function init(modVersion) {
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
             $("#AnimatedSkinBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
-				if (toastrSkinNotice==1){toastr["info"]("Animated skins <font color='red'><b>enabled</font></b>, <font color='red'><b>FPS drop</font></b> when 16").css("width", "300px");}
+				if (toastrSkinNotice==1){toastr["info"](Premadeletter71 + " <font color='red'><b>" + Premadeletter72 + "</font></b>, <font color='red'><b>FPS " + Premadeletter73 + "</font></b> "+Premadeletter74+" 16").css("width", "300px");}
 				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
         		else {localStorage.setItem("AnimatedSkinBtn", false);
-				toastr["info"]("Animated skins will be <font color='red'><b>disabled</font></b> after rejoin. <font color='red'><b>Better FPS</font></b> performance when 16").css("width", "300px");
+				toastr["info"](Premadeletter75 +" <font color='red'><b>" + Premadeletter76 + "</font></b> " + Premadeletter77 + ". <font color='red'><b>" + Premadeletter78 + "</font></b> "+Premadeletter79).css("width", "300px");
 				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);}} );  				
        /*         $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("MANUIBtn", true);
@@ -1999,7 +2038,7 @@ function init(modVersion) {
             if (checked) {
                 localStorage.setItem("troll1Btn", true);
 				if (dyinglight1load=="yes") { 
-					toastr["info"]("When Dying Light Expansion is enabled, Troll on death cannot occur").css("width", "300px");
+					toastr["info"](Premadeletter80).css("width", "300px");
 					return false;
 				}
                 settroll1true();
@@ -2809,7 +2848,7 @@ function init(modVersion) {
 					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
 				else{
-					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+					toastr["info"]('<b>' + Premadeletter81 + '</b>: <font color="red"><b>' + privateSrv + '</b></font><br>' + Premadeletter82 + ' agar.io/?ip= ' + Premadeletter83 + '.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>'+Premadeletter84, '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
 				}
 			$("#server").hide();
             $("#connect2").hide();			
@@ -3606,10 +3645,10 @@ function exitFullscreen() {
 function useProfilePhotoCustom(){
 	if ($('.agario-profile-picture').attr('src')!= "https://agar.io/mc/img/profilepic_guest.png" && $('.agario-profile-picture').attr('src')!="mc/img/profilepic_guest.png"){	
 		copy($(".agario-profile-picture").attr('src'));
-		toastr["info"]('Your account\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area').css("width", "350px");
+		toastr["info"](Premadeletter85 + ' <font color="red"><b>Ctrl+V</font></b>, '+Premadeletter86).css("width", "350px");
 	}
 	else{
-		toastr["info"]('You must Login to use picture of your profile').css("width", "350px");
+		toastr["info"](Premadeletter87).css("width", "350px");
 	}
 }
 
@@ -5106,7 +5145,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Game will terminate now').css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
@@ -6608,7 +6647,7 @@ setTimeout(function() { populateSD();}, 1500);
             $("#specialShopModal").remove();
         });
         $(".xpmt-buy-content").click(function() {
-			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">Special Deals v0.4<br>Agario may or may not give you the Skin, but only the coins<br><font color="red">Use at you OWN RISK</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
+			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">' + Premadeletter90 +' v0.4<br>' + Premadeletter91 + '<br><font color="red">Use at you OWN RISK</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-DyingLight").click(function () { buydeals(); });	
  /*           if (ProLicenceUsersTable.ProLicenceUsers[MC.getUserId()] != undefined) {
                 console.log("Authorised User");
@@ -6632,11 +6671,11 @@ setTimeout(function() { populateSD();}, 1500);
         $('#agario_uid_input').blur(function() {
             if (letterCount($('#agario_uid_input').val(), '-', true) == 4) {
                 document.getElementById("checkBoxLockUID").checked = true;
-                toastr["info"]("If friend's UID is wrong, purchase will fail").css("width", "250px");
+                toastr["info"](Premadeletter92).css("width", "250px");
                 $("#exp-uid").text($('#agario_uid_input').val());
             } else {
                 document.getElementById("checkBoxLockUID").checked = false;
-                toastr["info"]("UID Factory Settings").css("width", "210px");
+                toastr["info"](Premadeletter93).css("width", "210px");	
                 $("#exp-uid").text(MC.getUserId());
             }
         });
@@ -6755,7 +6794,7 @@ setTimeout(function() { populateSD();}, 1500);
             }, 500);
         });
     } else {
-        toastr["info"]("You must login to load Special Deals").css("width", "300px");
+        toastr["info"](Premadeletter94).css("width", "300px");	
     }
 }
 
@@ -6863,7 +6902,7 @@ function PremiumUsers(){
 
 function BeforeReportFakesSkin(){
 	if ($("#skin").val()!="https://jimboy3100.github.io/banners/iconfake1.png"){
-		toastr["info"]('Fake\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area in order to activate the fake\'s flag function').css("width", "350px");		
+			toastr["info"](Premadeletter95 + ' <font color="red"><b>Ctrl+V</font></b>, ' + Premadeletter96).css("width", "350px"); // erase the 's	
 		copy("https://jimboy3100.github.io/banners/iconfake1.png");		
 	}
 	else{
@@ -7034,7 +7073,7 @@ function BeforeChangingSkins(){
 	ProceedToChangeSkins();
 	}
 	else{
-        toastr["warning"]('Inform me when you finish with Recapatcha!' + '<button class="btn btn-sm btn-warning btn-spectate btn-noplay-finishedRecapatcha" style="margin-top: 10px;border-color: darkblue;">I have finished</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">Never Mind</button>', "", {
+			toastr["warning"](Premadeletter97 + '!' + '<button class="btn btn-sm btn-warning btn-spectate btn-noplay-finishedRecapatcha" style="margin-top: 10px;border-color: darkblue;">'+Premadeletter98+'</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter99 + '</button>', "", {
                         timeOut: 40000,
                         extendedTimeOut: 40000
                     }).css("width", "300px");
@@ -7483,7 +7522,7 @@ DeathFPSfixVariable="1";
 hideMenu();
 hideMenu2();
 console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
-toastr["info"]("Calculating your XP, please wait...<br>Do <b>NOT</b> press <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
+			toastr["info"](Premadeletter100 + "<br>" + Premadeletter101 + " <b>" + Premadeletter102 + "</b> " + Premadeletter103 + " <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
 	MC.onPlayerSpawn();
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
