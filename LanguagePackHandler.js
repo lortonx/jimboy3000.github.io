@@ -483,13 +483,7 @@ $("#VoiceBtn").attr("data-original-title", Languageletter357);
 $("#donationbtn").attr("data-original-title", Languageletter358);
 $("#opennamechars").attr("data-original-title", Languageletter359);
 $("#openskinchanger").attr("data-original-title", Languageletter360);
-
-var Languageletter355="Mini Scripts"; //Mini Scripts
-var Languageletter356="User Scripts"; //User Scripts
-var Languageletter357="Voice & Camera Chat";	//Voice & Camera Chat
-var Languageletter358="Please support the development of Legend mod";	//Please support the development of Legend mod
-var Languageletter359="Design Nickname Font";	//Design Nickname Font
-var Languageletter360="Flag the Fake's Skin";	//Flag the Fake's Skin
+$("#MorefpsText").text(Languageletter361);
 
 setTimeout(function () {
 $("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
