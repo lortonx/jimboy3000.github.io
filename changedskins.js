@@ -162,15 +162,14 @@ var Externalletter11;
 var Externalletter12;
 var Externalletter13;
 
-var Externalletter6 = "Paste your Script in this Textarea, you can load multiple Scripts"; //Paste your Script in this Textarea, you can load multiple Scripts
-var Externalletter7 = "Load Script from Textarea"; //Load Script from Textarea
-var Externalletter8 = "Choose"; //Choose
-var Externalletter9 = "Erase Script"; //Erase Script
-var Externalletter10 = "Name"; //Name
-var Externalletter11 = "Url of Raw Github, or other Raw Script, starting with"; //Url of Raw Github, or other Raw Script, starting with
-var Externalletter12 = "Leave this empty if script not imported from URL"; //Leave this empty if script not imported from URL
-var Externalletter13 = "IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES"; //IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES
-
+if(Externalletter6==null){Externalletter6 = "Paste your Script in this Textarea, you can load multiple Scripts";}
+if(Externalletter7==null){Externalletter7 = "Load Script from Textarea";}
+if(Externalletter8==null){Externalletter8 = "Choose";}
+if(Externalletter9==null){Externalletter9 = "Erase Script";}
+if(Externalletter10==null){Externalletter10 = "Name";}
+if(Externalletter11==null){Externalletter11 = "Url of Raw Github, or other Raw Script, starting with";}
+if(Externalletter12==null){Externalletter12 = "Leave this empty if script not imported from URL";}
+if(Externalletter13==null){Externalletter13 = "IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES";}
 
 
 $("#menu-footer").after('<div id="userscripts" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 600px; width: 600px; ";>'+
