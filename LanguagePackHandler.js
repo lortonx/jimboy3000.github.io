@@ -135,9 +135,12 @@ $(".options-box.statsGroup>LABEL").replace('Show current time', Languageletter10
 $(".options-box.extrasGroup>h5").text(Languageletter106);
 $(".options-box.extrasGroup>LABEL").replace('Skip stats after death', Languageletter107);
 $(".options-box.extrasGroup>LABEL").replace('Show quest', Languageletter108);
+$(".options-box.extrasGroup>LABEL").replace('Game sounds', Languageletter108a);
+$(".options-box.extrasGroup>LABEL").replace('Menu sounds', Languageletter108b);
 $(".options-box.extrasGroup>LABEL").replace('Block popups', Languageletter109);
-
-
+$(".options-box.voiceGroup>.menu-main-color").text(Languageletter109a);
+$(".options-box.voiceGroup>LABEL").replace('Voice-Prefix', Languageletter109b);
+$(".options-box.voiceGroup>LABEL").replace('Voice-lang', Languageletter109c);
 
 $('#quality>option:nth-child(1)').text(Languageletter110);
 $('#quality>option:nth-child(2)').text(Languageletter111);
