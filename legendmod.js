@@ -6944,18 +6944,18 @@ function BeforeReportFakesSkin(){
 	}
 }
 function ReportFakesSkin() {
-var Temporaryletter1 = "Teamboard";
-var Temporaryletter2 = "Leaderboard";
+var Temporaryletter1;
+var Temporaryletter2;
 var Languageletter320;		//Leaderboard
 var Languageletter321;		//Teamboard
-if (Languageletter320!=null){Temporaryletter2=Languageletter320}
-if (Languageletter321!=null){Temporaryletter1=Languageletter321}
+if (Languageletter320!=null){Temporaryletter2=Languageletter320} else{Temporaryletter2 = "Leaderboard";}
+if (Languageletter321!=null){Temporaryletter1=Languageletter321} else{Temporaryletter1 = "Teamboard";}
 
 $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 540px; width: 500px; ";>'+
 	'<div id="SkinChangerhud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>'+Premadeletter119+'</b></h5>'+	
 	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">'+Premadeletter120+
-	'<br><font style="color:white; size:12px; margin-right: 70px;">'+Temporaryletter2+'</font><font style="color:white; size:12px; margin-left: 70px;">'+Temporaryletter1+'</font></p>'+
+	'<br><font id= "Leadboardlet1" style="color:white; size:12px; margin-right: 70px;">'+Temporaryletter2+'</font><font id= "Teamboardlet1" style="color:white; size:12px; margin-left: 70px;">'+Temporaryletter1+'</font></p>'+
 											'<input id="LeaderboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline; " " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
