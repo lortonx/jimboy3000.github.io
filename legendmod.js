@@ -18,6 +18,7 @@ getaccesstoken2();
 
 
 var CutNameConflictwithMessage=false;
+/*
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -30,7 +31,7 @@ var CutNameConflictwithMessage=false;
 		}
     };
 })();
-
+*/
 var DeathFPSfixVariable;
 MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
 MC._onDisconnect = MC.onDisconnect;
@@ -1964,7 +1965,7 @@ function init(modVersion) {
 
 		$("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
             '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
-            '<button id="Ultimouse" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
             '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
