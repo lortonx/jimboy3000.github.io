@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.43 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.42 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "43"; // the version 1.1-> 1.11
+var semimodVersion = "42"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -2080,7 +2080,8 @@ function init(modVersion) {
             chatfunction();
         });
 
-        $("#Cutnames").click(function() {			
+        $("#Cutnames").click(function() {	
+		CutNameConflictwithMessageFunction();			
             if (checkedGameNames == 0) {
                 StartEditGameNames();
                 return checkedGameNames = 2;
@@ -2091,7 +2092,7 @@ function init(modVersion) {
                 StopEditGameNames();
                 return checkedGameNames = 1;
             }
-			CutNameConflictwithMessageFunction();			
+					
         });
         $("#VoiceBtn").click(function() {
             if (searchSip == null) {
