@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.42 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.43 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "42"; // the version 1.1-> 1.11
+var semimodVersion = "43"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -421,7 +421,7 @@ var stylesLegendModConsole2 = [
 
 
 var languagemod = localStorage.getItem("languagemod");
-Languagehandlerfunction();
+languagemodfun();
 
 
 
@@ -4975,15 +4975,14 @@ function openrotatingmod() {
     $("body").append(s);
 }
 
-function Languagehandlerfunction(){
-	
+function languagemodfun(){
 if (languagemod == 2) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
     $("body").append(s);
-	$('#legendlanguages').val("2");
-    setTimeout(function() {		        
+    setTimeout(function() {
+        $('#legendlanguages').val("2");
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
@@ -4995,8 +4994,8 @@ if (languagemod == 3) {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
     $("body").append(s);
-	$('#legendlanguages').val("3");
-	setTimeout(function() {       
+    setTimeout(function() {
+        $('#legendlanguages').val("3");
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
@@ -5008,22 +5007,21 @@ if (languagemod == 4) {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
     $("body").append(s);
-	$('#legendlanguages').val("4");
-    setTimeout(function() {       
+    setTimeout(function() {
+        $('#legendlanguages').val("4");
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
         $("body").append(s1);
     }, 4000);
-
 }
 if (languagemod == 5) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
     $("body").append(s);
-	$('#legendlanguages').val("5");
-    setTimeout(function() {        
+    setTimeout(function() {
+        $('#legendlanguages').val("5");
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
@@ -5035,8 +5033,8 @@ if (languagemod == 6) {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
     $("body").append(s);
-	$('#legendlanguages').val("6");
-    setTimeout(function() {       
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
@@ -5048,14 +5046,13 @@ if (languagemod == 7) {
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
     $("body").append(s);
-	$('#legendlanguages').val("7");
-    setTimeout(function() {      		
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
         $("body").append(s1);
     }, 4000);
-
 }
 }
 function changeModLanguage() {
