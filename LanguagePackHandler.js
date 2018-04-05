@@ -362,6 +362,8 @@ $("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDow
 $("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
 $("#copySIPandPass").text(Languageletter290b).attr('data-original-title', Languageletter291b);
 $("#copySIPPassLB").text(Languageletter290c).attr('data-original-title', Languageletter291c);
+//$("#CopyAll").text(Languageletter290c).attr('data-original-title', Languageletter291c +"ΤΚ+);
+
 $("#searchShortcut").attr('data-original-title', Languageletter292);
 $("#reconnectBtn").attr('data-original-title', Languageletter293);
 $("#logTitle").attr("data-original-title", Languageletter294);
@@ -392,7 +394,7 @@ $("#playerBtn").attr("data-original-title", Languageletter306);
 $("#fullscreenBtn").attr("data-original-title", Languageletter307);
 $("#RotateRight").attr("data-original-title", Languageletter308);
 $("#bottomleft").text( Languageletter309);
-$("#Backtomenu").text( Languageletter310);
+$("#Backtomenu").text( Languageletter283);
 $("#notesaveforlater").text(Languageletter311);
 $("#notesRegion").text(Languageletter312 + ": ");
 $("#notesPlayers").text(Languageletter313 + ": ");
@@ -491,7 +493,7 @@ $("#openskinchanger").attr("data-original-title", Languageletter360);
 $("#MorefpsText").text(Languageletter361);
 
 setTimeout(function () {
-$("#Backtomenu").text(Languageletter310);
+$("#Backtomenu").text(Languageletter283);
 $("#userscripter1").text(Externalletter6);
 $("#userscripter2").text(Externalletter13);
 $("#userscriptBtn1").text(Externalletter7);
