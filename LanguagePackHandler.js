@@ -1,493 +1,384 @@
-//Language Pack Handler
-//Legend Mod By Jimboy3100
+//v1.6
+//1. Lc celebration
+var checkonetimeLc = localStorage.getItem("checkonetimeLc");
+if (checkonetimeLc == null) {
+    if ($("#nick").val().includes("℄")) {
+        var checkdate;
+        Date.prototype.yyyymmdd = function() {
+            var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+            return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
 
+        var date = new Date();
+        checkdate = date.yyyymmdd();
+        if (checkdate == "2017/11/12") {
+            LcCelebration();
+        }
+    }
+}
 
-$(".ogicon-home").attr('data-original-title',Languageletter0);
-$(".ogicon-user").attr('data-original-title',Languageletter1);
-$(".ogicon-cog").attr('data-original-title',Languageletter2);
-$(".ogicon-droplet").attr('data-original-title',Languageletter3);
-$(".hotkeys-link.ogicon-keyboard").attr('data-original-title',Languageletter4);
-$(".ogicon-music").attr('data-original-title',Languageletter5);
-$(".legend-tab").attr('data-original-title',Languageletter6);
+function LcCelebration() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/extras/LcHistory/LcHistoryBanner.js";
+    $("body").append(s);
+    checkonetimeLc = 1;
+    localStorage.setItem("checkonetimeLc", checkonetimeLc);
+    return checkonetimeLc;
+}
 
-$("#clantag").attr('placeholder',Languageletter7a).attr('data-original-title',Languageletter7);
-$("#nick").attr('placeholder',Languageletter8a).attr('data-original-title',Languageletter8);
-$("#skin").attr('placeholder',Languageletter9a).attr('data-original-title',Languageletter9);
-$("#region").attr('data-original-title',Languageletter10);
-$("#gamemode").attr('data-original-title',Languageletter11);
-$("#connect2").text(Languageletter12a).attr('data-original-title',Languageletter12);
-$("#server-join").text(Languageletter13);
-$(".btn.btn-play-guest.btn-success.btn-needs-server").text(Languageletter14);
-$(".btn.btn-play-guest.btn-success").text(Languageletter14);
-$(".btn.btn-warning.btn-login-play.btn-needs-server").text(Languageletter15);
-$(".btn.btn-warning.btn-login-play").text(Languageletter15);
-$(".btn.btn-warning.btn-spectate.btn-needs-server").attr('data-original-title',Languageletter16);
-$(".btn.btn-primary.btn-login.btn-fb").children().last().text(Languageletter17);
-$(".btn.btn-primary.btn-login.btn-gplus").children().last().text(Languageletter18);
-$(".btn.btn-play.btn-primary.btn-needs-server").text(Languageletter19);
-
-$(".quick-shop.ogicon-cart").attr('data-original-title',Languageletter20);
-$(".quick-free-coins.ogicon-coin-dollar").attr('data-original-title',Languageletter21);
-$(".quick-free-gifts.ogicon-gift").attr('data-original-title',Languageletter22);
-$(".quick-quests.ogicon-trophy").attr('data-original-title',Languageletter23);
-$(".quick-more-skins.ogicon-grin").attr('data-original-title',Languageletter24);
-$(".quick-yt.ogicon-youtube2").attr('data-original-title',Languageletter25);
-$("#LegGoogleForm").attr('data-original-title',Languageletter25a);
-$("#ModInfoQuick").attr('data-original-title',Languageletter25b);
-
-$("#more-skins").text(Languageletter26);
-
-
-$(".btn.btn-primary.btn-success.btn-freecoins").text(Languageletter21);
-$("#gifting").text(Languageletter22);
-$("#dailyQuests").text(Languageletter23);
-$("#openShopBtn").text(Languageletter20);
-$(".btn.btn-danger.btn-logout").attr('data-original-title',Languageletter31);
-
-
-$(".TimesUsedPanel").replaceWith('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>' + Languageletter32+' '+timesopened+
-		'<br>'+ Languageletter33 + ' jimboy3100<br>' + Languageletter34 + ' ' + translator + '</i></h6></div>');
-
-$("#tcm>#tcm-header>p").text(Languageletter35);
-
-
-$(".options-box.animationGroup>h5").text(Languageletter36);
-$(".options-box.animationGroup>DIV>DIV>SPAN:nth-child(1)").text(Languageletter37 + ": ");
-$(".options-box.zoomGroup>h5").text(Languageletter37b);
-$(".options-box.zoomGroup>LABEL").replace('Auto zoom', Languageletter37a);
-$(".options-box.zoomGroup>DIV>DIV>SPAN:nth-child(1)").text(Languageletter38 + ": ");
-
-$(".options-box.respGroup>h5").text(Languageletter39);
-$(".options-box.respGroup>LABEL").replace('Quick respawn', Languageletter41);
-$(".options-box.respGroup>LABEL").replace('Auto respawn', Languageletter40);
-$(".options-box.namesGroup>h5").text(Languageletter42);
-$(".options-box.namesGroup>LABEL").replace('No names', Languageletter43);
-$(".options-box.namesGroup>LABEL").replace('Optimized names', Languageletter44);
-$(".options-box.namesGroup>LABEL").replace('Auto hide names', Languageletter45);
-$(".options-box.namesGroup>LABEL").replace('Hide my name', Languageletter46);
-$(".options-box.namesGroup>LABEL").replace('Hide teammates names', Languageletter47);
-$(".options-box.namesGroup>LABEL").replace('Names stroke', Languageletter48);
-$(".options-box.massGroup>h5").text(Languageletter49);
-$(".options-box.massGroup>LABEL").replace('Show mass', Languageletter50);
-$(".options-box.massGroup>LABEL").replace('Optimized mass',  Languageletter51);
-$(".options-box.massGroup>LABEL").replace('Auto hide mass', Languageletter52);
-$(".options-box.massGroup>LABEL").replace('Hide my mass', Languageletter53);
-$(".options-box.massGroup>LABEL").replace('Hide enemies mass', Languageletter54);
-$(".options-box.massGroup>LABEL").replace('Short mass', Languageletter55);
-$(".options-box.massGroup>LABEL").replace('Virus shots', Languageletter56);
-$(".options-box.massGroup>LABEL").replace('Mass stroke', Languageletter57);
-$(".options-box.skinsGroup>h5").text(Languageletter58);
-$(".options-box.skinsGroup>LABEL").replace('No skins', Languageletter59);
-$(".options-box.skinsGroup>LABEL").replace('Custom skins', Languageletter60);
-$(".options-box.skinsGroup>LABEL").replace('Vanilla skins', Languageletter61);
-$(".options-box.foodGroup>h5").text(Languageletter6a2);
-$(".options-box.foodGroup>LABEL").replace('Optimized food', Languageletter62);
-$(".options-box.foodGroup>LABEL").replace('Auto hide food', Languageletter63);
-$(".options-box.foodGroup>LABEL").replace('Auto hide food', Languageletter64);
-$(".options-box.foodGroup>LABEL").replace('Rainbow food', Languageletter65);
-$(".options-box.transparencyGroup>h5").text(Languageletter66);
-$(".options-box.transparencyGroup>LABEL").replace('No colors', Languageletter67);
-$(".options-box.transparencyGroup>LABEL").replace('My custom color', Languageletter68);
-$(".options-box.transparencyGroup>LABEL").replace('My transparent skin', Languageletter69);
-$(".options-box.transparencyGroup>LABEL").replace('Transparent skins', Languageletter70);
-$(".options-box.transparencyGroup>LABEL").replace('Transparent cells', Languageletter70a);
-$(".options-box.transparencyGroup>LABEL").replace('Transparent viruses', Languageletter71);
-$(".options-box.gridGroup>h5").text(Languageletter72);
-$(".options-box.gridGroup>LABEL").replace('Show grid', Languageletter73);
-$(".options-box.gridGroup>LABEL").replace('Show background sectors', Languageletter74);
-$(".options-box.gridGroup>LABEL").replace('Show map borders', Languageletter75);
-$(".options-box.chatGroup>h5").text(Languageletter76);
-$(".options-box.chatGroup>LABEL").replace('Disable chat', Languageletter77);
-$(".options-box.chatGroup>LABEL").replace('Sound notifications', Languageletter78);
-$(".options-box.chatGroup>LABEL").replace('Emoticons', Languageletter79);
-$(".options-box.chatGroup>LABEL").replace('Show images on chat', Languageletter80);
-$(".options-box.chatGroup>LABEL").replace('Show videos on chat', Languageletter81);
-$(".options-box.chatGroup>LABEL").replace('Chatbox instead of popups', Languageletter82);
-$(".options-box.miniMapGroup>h5").text(Languageletter82a);
-$(".options-box.miniMapGroup>LABEL").replace('Show minimap', Languageletter82b);
-$(".options-box.miniMapGroup>LABEL").replace('Show minimap grid', Languageletter82c);
-$(".options-box.miniMapGroup>LABEL").replace('Show minimap guides', Languageletter82d);
-$(".options-box.miniMapGroup>LABEL").replace('One-colored teammates', Languageletter82e);
-$(".options-box.helpersGroup>h5").text(Languageletter83);
-$(".options-box.helpersGroup>LABEL").replace('Opponents colors', Languageletter84);
-$(".options-box.helpersGroup>LABEL").replace('Opponents rings', Languageletter85);
-$(".options-box.helpersGroup>LABEL").replace('Viruses colors', Languageletter86);
-$(".options-box.helpersGroup>LABEL").replace('Split range', Languageletter87);
-$(".options-box.helpersGroup>LABEL").replace('Viruses range', Languageletter88);
-$(".options-box.helpersGroup>LABEL").replace('Cursor tracking', Languageletter89);
-$(".options-box.helpersGroup>LABEL").replace('Teammates indicators', Languageletter90);
-$(".options-box.mouseGroup>h5").text(Languageletter91);
-$(".options-box.mouseGroup>LABEL").replace('LMB - Mouse split', Languageletter92);
-$(".options-box.mouseGroup>LABEL").replace('RMB - Mouse feed', Languageletter93);
-$(".options-box.mouseGroup>LABEL").replace('Invert mouse buttons', Languageletter94);
-$(".options-box.hudGroup>h5").text(Languageletter94a);
-$(".options-box.hudGroup>LABEL").replace('Show team top 5', Languageletter95);
-$(".options-box.hudGroup>LABEL").replace('Show targeting', Languageletter96);
-$(".options-box.hudGroup>LABEL").replace('Centered leaderboard', Languageletter97);
-$(".options-box.hudGroup>LABEL").replace('Game stats at the top', Languageletter98);
-$(".options-box.statsGroup>h5").text(Languageletter99);
-$(".options-box.statsGroup>LABEL").replace('Show game stats', Languageletter100);
-$(".options-box.statsGroup>LABEL").replace('Game stats: Mass', Languageletter101);
-$(".options-box.statsGroup>LABEL").replace('Game stats: STE', Languageletter102);
-$(".options-box.statsGroup>LABEL").replace('Game stats: n/16', Languageletter103);
-$(".options-box.statsGroup>LABEL").replace('Game stats: FPS', Languageletter104);
-$(".options-box.statsGroup>LABEL").replace('Show current time', Languageletter105);
-$(".options-box.extrasGroup>h5").text(Languageletter106);
-$(".options-box.extrasGroup>LABEL").replace('Skip stats after death', Languageletter107);
-$(".options-box.extrasGroup>LABEL").replace('Show quest', Languageletter108);
-$(".options-box.extrasGroup>LABEL").replace('Block popups', Languageletter109);
-
-
-
-$('#quality>option:nth-child(1)').text(Languageletter110);
-$('#quality>option:nth-child(2)').text(Languageletter111);
-$('#quality>option:nth-child(3)').text(Languageletter112);
-$('#quality>option:nth-child(4)').text(Languageletter113);
-$('#quality>option:nth-child(5)').text(Languageletter114);
-$('#quality>option:nth-child(6)').text(Languageletter115);
-
-$(".btn.btn-block.btn-success.btn-export").text(Languageletter116);
-$(".restore-settings>a").eq(0).text(Languageletter117);
-
-$("#exp-imp-settings>h1").eq(0).text(Languageletter118);
-$("#exp-imp-settings>h1").eq(1).text(Languageletter119);
-$("#exp-imp-settings>h2").eq(0).text(Languageletter120);
-$("#exp-imp-settings>h2").eq(1).text(Languageletter121);
-
-$("#exp-imp-settings>LABEL").replace('Commands', Languageletter122);
-$("#exp-imp-settings>LABEL").replace('Hotkeys', Languageletter123);
-$("#exp-imp-settings>LABEL").replace('Profiles', Languageletter124);
-$("#exp-imp-settings>LABEL").replace('Settings', Languageletter125);
-$("#exp-imp-settings>LABEL").replace('Theme', Languageletter126);
-$("#export-settings-btn").text(Languageletter127);
-$("#import-settings-btn").text(Languageletter128);
-$("#import-settings-btn2").text(Languageletter128);
-
-$("#theme>ul>li>.ogicon-paint-format").attr('data-original-title', Languageletter129);
-$("#theme>ul>li>.ogicon-menu").attr('data-original-title', Languageletter130);
-$("#theme>ul>li>.ogicon-display").attr('data-original-title', Languageletter131);
-$("#theme>ul>li>.ogicon-bubbles").attr('data-original-title', Languageletter132);
-$("#theme>ul>li>.ogicon-location2").attr('data-original-title', Languageletter133);
-$("#theme>ul>li>.ogicon-compass").attr('data-original-title', Languageletter134);
-
-$(".preset-box>span").text(Languageletter135);
-
-$('#themePreset>option:nth-child(3)').text(Languageletter136);
-$('#themePreset>option:nth-child(4)').text(Languageletter137 + " 1");
-$('#themePreset>option:nth-child(5)').text(Languageletter137 + " 2");
-
-$("#theme-main>div>span").eq(1).text(Languageletter139);
-$("#theme-main>div>span").eq(2).text(Languageletter140);
-$("#theme-main>div>span").eq(3).text(Languageletter141);
-$("#theme-main>div>span").eq(4).text(Languageletter142);
-$("#theme-main>div>span").eq(5).text(Languageletter143);
-$("#theme-main>div>span").eq(6).text(Languageletter144);
-$("#theme-main>div>span").eq(7).text(Languageletter145);
-$("#theme-main>div>span").eq(8).text(Languageletter146);
-$("#theme-main>div>span").eq(9).text(Languageletter147);
-$("#theme-main>div>span").eq(10).text(Languageletter148);
-$("#theme-main>div>span").eq(11).text(Languageletter149);
-$("#theme-main>div>span").eq(12).text(Languageletter150);
-$("#theme-main>div>span").eq(13).text(Languageletter151);
-$("#theme-main>div>span").eq(14).text(Languageletter152);
-$("#theme-main>div>span").eq(15).text(Languageletter153);
-$("#theme-main>div>span").eq(16).text(Languageletter154);
-$("#theme-main>div>span").eq(17).text(Languageletter155 + ": ");
-
-$("#theme-main>div>div>span:nth-child(1)").eq(0).text(Languageletter157 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(1).text(Languageletter158 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(2).text(Languageletter159 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(3).text(Languageletter160 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(4).text(Languageletter161 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(5).text(Languageletter162 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(6).text(Languageletter163 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(7).text(Languageletter164 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(8).text(Languageletter165 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(9).text(Languageletter166 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(10).text(Languageletter167 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(11).text(Languageletter168 + ": ");
-$("#theme-main>div>div>span:nth-child(1)").eq(12).text(Languageletter169 + ": ");
-
-$(".restore-settings>a").eq(1).text(Languageletter170);
-$(".btn.btn-block.btn-success.btn-save").text(Languageletter171);
-
-$(".preset-box>span").eq(1).text(Languageletter172);
-$(".preset-box>div>span").eq(1).text(Languageletter173);
-
-$("#theme-menu>div>div>span:nth-child(1)").eq(0).text(Languageletter174 + ": ");
-$("#theme-menu>div>span").eq(1).text(Languageletter175);
-$("#theme-menu>div>span").eq(2).text(Languageletter176);
-$("#theme-menu>div>span").eq(3).text(Languageletter177);
-$("#theme-menu>div>span").eq(4).text(Languageletter177 + " (2)");
-$("#theme-menu>div>span").eq(5).text(Languageletter179);
-$("#theme-menu>div>span").eq(6).text(Languageletter179 + " (2)");
-$("#theme-menu>div>span").eq(7).text(Languageletter181 +" #1");
-$("#theme-menu>div>span").eq(8).text(Languageletter181 +" #1 (2)");
-$("#theme-menu>div>span").eq(9).text(Languageletter181 +" #2");
-$("#theme-menu>div>span").eq(10).text(Languageletter181 +" #2 (2)");
-$("#theme-menu>div>span").eq(11).text(Languageletter181 +" #3");
-$("#theme-menu>div>span").eq(12).text(Languageletter181 +" #3 (2)");
-$("#theme-menu>div>span").eq(13).text(Languageletter181 +" #4");
-$("#theme-menu>div>span").eq(14).text(Languageletter181 +" #4 (2)");
-$("#theme-menu>div>span").eq(15).text(Languageletter189);
-$("#menuBg").attr('placeholder', Languageletter190);
-
-$("#theme-hud>div>span").eq(0).text(Languageletter191);
-$("#theme-hud>div>span").eq(1).text(Languageletter192);
-$("#theme-hud>div>span").eq(2).text(Languageletter193);
-$("#theme-hud>div>span").eq(3).text(Languageletter194);
-$("#theme-hud>div>span").eq(4).text(Languageletter195);
-$("#theme-hud>div>span").eq(5).text(Languageletter196);
-$("#theme-hud>div>span").eq(6).text(Languageletter197);
-$("#theme-hud>div>span").eq(7).text(Languageletter198);
-$("#theme-hud>div>span").eq(8).text(Languageletter199);
-$("#theme-hud>div>div>span:nth-child(1)").eq(0).text(Languageletter200 + ": ");
-
-$("#theme-chat>div>span").eq(0).text(Languageletter201);
-$("#theme-chat>div>span").eq(1).text(Languageletter202);
-$("#theme-chat>div>span").eq(2).text(Languageletter203);
-$("#theme-chat>div>span").eq(3).text(Languageletter204);
-$("#theme-chat>div>span").eq(4).text(Languageletter205);
-$("#theme-chat>div>span").eq(5).text(Languageletter206);
-$("#theme-chat>div>span").eq(6).text(Languageletter207);
-$("#theme-chat>div>span").eq(7).text(Languageletter208);
-$("#theme-chat>div>span").eq(8).text(Languageletter209);
-$("#theme-chat>div>div>span:nth-child(1)").eq(0).text(Languageletter210 + ": ");
-
-$("#theme-minimap>div>span").eq(0).text(Languageletter211);
-$("#theme-minimap>div>span").eq(1).text(Languageletter212);
-$("#theme-minimap>div>span").eq(2).text(Languageletter213);
-$("#theme-minimap>div>span").eq(3).text(Languageletter214);
-$("#theme-minimap>div>span").eq(4).text(Languageletter215);
-$("#theme-minimap>div>span").eq(5).text(Languageletter216);
-$("#theme-minimap>div>span").eq(6).text(Languageletter217);
-$("#theme-minimap>div>span").eq(7).text(Languageletter218);
-$("#theme-minimap>div>span").eq(8).text(Languageletter219);
-$("#theme-minimap>div>span").eq(9).text(Languageletter220);
-$("#theme-minimap>div>span").eq(9).text(Languageletter221);
-
-$("#theme-minimap>div>div>span:nth-child(1)").eq(0).text(Languageletter222 + ": ");
-$("#theme-minimap>div>div>span:nth-child(1)").eq(1).text(Languageletter223 + ": ");
-$("#theme-minimap>div>div>span:nth-child(1)").eq(2).text(Languageletter224 + ": ");
-$("#theme-minimap>div>div>span:nth-child(1)").eq(3).text(Languageletter225 + ": ");
-$("#theme-minimap>div>div>span:nth-child(1)").eq(4).text(Languageletter226 + ": ");
-$("#theme-minimap>div>div>span:nth-child(1)").eq(5).text(Languageletter227 + ": ");
-$("#theme-minimap>div>div>span:nth-child(1)").eq(6).text(Languageletter228 + ": ");
-
-$("#theme-images>div>span").eq(0).text(Languageletter229);
-$("#theme-images>div>span").eq(1).text(Languageletter230);
-$("#customBackground").attr('placeholder',Languageletter231);
-$("#customCursor").attr('placeholder',Languageletter232);
-
-
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(0).text(Languageletter233);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(1).text(Languageletter234);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(2).text(Languageletter235);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(3).text(Languageletter236);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(4).text(Languageletter237);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(5).text(Languageletter238);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(6).text(Languageletter239);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(7).text(Languageletter240);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(8).text(Languageletter241);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(9).text(Languageletter242);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(10).text(Languageletter243);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(11).text(Languageletter244);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(12).text(Languageletter245);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(13).text(Languageletter246);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(14).text(Languageletter247);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(15).text(Languageletter248);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(16).text(Languageletter249);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(17).text(Languageletter250);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(18).text(Languageletter251);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(19).text(Languageletter252);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(20).text(Languageletter253);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(21).text(Languageletter254);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(22).text(Languageletter255);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(23).text(Languageletter256);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(24).text(Languageletter257);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(25).text(Languageletter258);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(26).text(Languageletter259);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(27).text(Languageletter260);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(28).text(Languageletter261);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(29).text(Languageletter262);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(30).text(Languageletter263);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(31).text(Languageletter264);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(32).text(Languageletter265);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(33).text(Languageletter266);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(34).text(Languageletter267);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(35).text(Languageletter268);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(36).text(Languageletter269);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(37).text(Languageletter270);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(38).text(Languageletter271 + " 1");
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(39).text(Languageletter271 + " 2");
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(40).text(Languageletter271 + " 3");
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(41).text(Languageletter271 + " 4");
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(42).text(Languageletter271 + " 5");
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(43).text(Languageletter272);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(44).text(Languageletter273);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(45).text(Languageletter274);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(46).text(Languageletter275);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(47).text(Languageletter276);
-$("#hotkeys-cfg>div>div:nth-child(1)").eq(48).text(Languageletter277);
-
-$("#hotkeys-inst").replaceWith('<div id="hotkeys-inst"><ul><li>' + Languageletter278 + '</li><li>' + Languageletter279 + '</li><li>' + Languageletter280 + '</li></ul></div>');
-
-$("#reset-hotkeys").text(Languageletter281);
-$("#save-hotkeys").text(Languageletter282);
-$("#close-hotkeys").text(Languageletter283);
-$("#close-exp-imp").text(Languageletter283);
-
-$("#youtubeplayer>h5").text(Languageletter284);
-$("#musicUrl").attr('placeholder', Languageletter284a).attr('data-original-title',Languageletter285);
-$(".agario-panel.sounds-panel>h5").text(Languageletter286);
-$(".agario-panel.sounds-panel>div>span").eq(0).text(Languageletter287);
-$(".agario-panel.sounds-panel>div>span").eq(1).text(Languageletter288);
-
-$("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
-$("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
-        $("#copySIPBtn").mouseenter(function() {
-            $("#dropDown3").hide();
-            $("#copySIPBtn").text(Languageletter290);
-			if ($("#clantag").val()!=""){
-				$("#dropDown2").show(100);
-			}
-            else {
-				$("#dropDown").show(100);
-				}
-        });
-$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter291);});
-$("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
-$("#copySIPandPass").text(Languageletter290b).attr('data-original-title', Languageletter291b);
-$("#copySIPPassLB").text(Languageletter290c).attr('data-original-title', Languageletter291c);
-$("#searchShortcut").attr('data-original-title', Languageletter292);
-$("#reconnectBtn").attr('data-original-title', Languageletter293);
-$("#logTitle").attr("data-original-title", Languageletter294);
-$("#searchInput").attr('placeholder',Languageletter295);
-$("#closeBtn").attr("data-original-title", Languageletter283);
-
-//$("#top5-total").each(function() { var text = $(this).html();
-//   $(this).html(text.replace(' Active players: ', ' ' + Languageletter296 + ': ')); 
-//});
-//$("#top5-total").each(function() { var text = $(this).html();
-//  $(this).html(text.replace(' Total mass: ', ' ' + Languageletter297 + ': ')); 
-//});
-
-if($('#teambtext').val()==""){
-	$("#top5-hud > h5").each(function() { var text = $(this).html();
-   $(this).html(text.replace('Team top ', Languageletter298 + ' ')); 
-});}
-if($('#leadbtext').val()==""){
-	$("#leaderboard-hud > h4").text(Languageletter299);
-};
-$("#ChatBtn").attr("data-original-title", Languageletter300);
-$("#SendCommands").attr("data-original-title", Languageletter301);
-$("#Images").attr("data-original-title", Languageletter302);
-$("#yout").attr("data-original-title", Languageletter303);
-$("#Cutnames").attr("data-original-title", Languageletter304);
-$("#Bino").attr("data-original-title", Languageletter305);
-$("#playerBtn").attr("data-original-title", Languageletter306);
-$("#fullscreenBtn").attr("data-original-title", Languageletter307);
-$("#RotateRight").attr("data-original-title", Languageletter308);
-$("#bottomleft").text( Languageletter309);
-$("#Backtomenu").text( Languageletter310);
-$("#notesaveforlater").text(Languageletter311);
-$("#notesRegion").text(Languageletter312 + ": ");
-$("#notesPlayers").text(Languageletter313 + ": ");
-$("#notesServer").text(Languageletter314 + ": ");
-if($("#target-status").text()=="[Target not set]"){$("#target-status").text(Languageletter315)}
-
-$("#legendmanualback").text(Languageletter316 + ":  ");
-$("#legendmanualmess").text(Languageletter317 + ":  ");
-$("#chatbtntitle").text(Languageletter318 + ":  ");
-$("#legenddiscordwebh").text(Languageletter319 +"  ");
-
-$('#backgroundPic>option:nth-child(1)').text(Languageletter133);
-$('#backgroundPic>option:nth-child(2)').text(Languageletter320);
-$('#backgroundPic>option:nth-child(3)').text(Languageletter321);
-$('#backgroundPic>option:nth-child(4)').text(Languageletter322);
-$('#backgroundPic>option:nth-child(5)').text(Languageletter323);
-
-$('#msgcommand1').attr("data-original-title", Languageletter324);
-$('#msgcommand2').attr("data-original-title", Languageletter325);
-$('#msgcommand3').attr("data-original-title", Languageletter326);
-$('#msgcommand4').attr("data-original-title", Languageletter327);
-$('#msgcommand5').attr("data-original-title", Languageletter328);
-$('#msgcommand6').attr("data-original-title", Languageletter329);
-
-
-$('#minimapPicture').attr('placeholder',Languageletter331).attr('data-original-title',Languageletter330);
-$('#minbtext').attr('placeholder',Languageletter332);
-$('#leadbPicture').attr('placeholder',Languageletter333a).attr('data-original-title',Languageletter330);
-$('#leadbtext').attr('placeholder',Languageletter334);
-$('#teambPicture').attr('placeholder',Languageletter334a).attr('data-original-title',Languageletter330);
-$('#leadbtext').attr('placeholder',Languageletter334);
-$('#canvasPicture').attr('placeholder',Languageletter335).attr('data-original-title',Languageletter330);
-$('#imgUrl').attr('placeholder',Languageletter336).attr('data-original-title',Languageletter330);
-$('#imgHref').attr('placeholder',Languageletter337).attr('data-original-title',Languageletter341);
-
-$('#changephotos>option:nth-child(1)').text(Languageletter338 + " 1");
-$('#changephotos>option:nth-child(2)').text(Languageletter338 + " 2");
-$('#changephotos>option:nth-child(3)').text(Languageletter338 + " 3");
-$('#changephotos>option:nth-child(4)').text(Languageletter338 + " 4");
-$('#changephotos>option:nth-child(5)').text(Languageletter338 + " 5");
-$('#changephotos>option:nth-child(6)').text(Languageletter338 + " 6");
-
-
-$('#pic1url').attr('placeholder',Languageletter342c + " 1").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic2url').attr('placeholder',Languageletter342c + " 2").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic3url').attr('placeholder',Languageletter342c + " 3").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic4url').attr('placeholder',Languageletter342c + " 4").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic5url').attr('placeholder',Languageletter342c + " 5").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-$('#pic6url').attr('placeholder',Languageletter342c + " 6").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
-
-$('#yt1url').attr('placeholder',Languageletter342d + " 1").attr("data-original-title", Languageletter340);
-$('#yt2url').attr('placeholder',Languageletter342d + " 2").attr("data-original-title", Languageletter340);
-$('#yt3url').attr('placeholder',Languageletter342d + " 3").attr("data-original-title", Languageletter340);
-$('#yt4url').attr('placeholder',Languageletter342d + " 4").attr("data-original-title", Languageletter340);
-$('#yt5url').attr('placeholder',Languageletter342d + " 5").attr("data-original-title", Languageletter340);
-$('#yt6url').attr('placeholder',Languageletter342d + " 6").attr("data-original-title", Languageletter340);
-
-$('#pic1data').attr('placeholder',Languageletter342a + " 1");
-$('#pic2data').attr('placeholder',Languageletter342a + " 2");
-$('#pic3data').attr('placeholder',Languageletter342a + " 3");
-$('#pic4data').attr('placeholder',Languageletter342a + " 4");
-$('#pic5data').attr('placeholder',Languageletter342a + " 5");
-$('#pic6data').attr('placeholder',Languageletter342a + " 6");
-
-$('#yt1data').attr('placeholder',Languageletter342b + " 1");
-$('#yt2data').attr('placeholder',Languageletter342b + " 2");
-$('#yt3data').attr('placeholder',Languageletter342b + " 3");
-$('#yt4data').attr('placeholder',Languageletter342b + " 4");
-$('#yt5data').attr('placeholder',Languageletter342b + " 5");
-$('#yt6data').attr('placeholder',Languageletter342b + " 6");
-
-
-$('#discwebhook1').attr('placeholder',Languageletter342 + ' 1').attr('data-original-title', Languageletter343 + '. https://discordapp.com/api/webhooks/.../...');
-$('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-original-title', Languageletter344 + '. https://discordapp.com/api/webhooks/.../...');
-
-$("#HideAllBthn").attr('data-original-title',Languageletter345);
-
-
-$("#Backtomenu").text(Languageletter283);
-//$("#legendlanguagetext").text(Languageletter346+ "  :");
-$(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
-
-$("#potions").text(Languageletter349);
-$("#oldSkinsBtn").text(Languageletter350);
-$("#SpecialDealsBtn").text(Languageletter351);
-$("#SpecialDealsQuickBtn").attr("data-original-title", Languageletter351);
-$(".btn.btn-primary.btn-success.btn-leagues").text(Languageletter352); //Leaderboards
-$("#LegGoogleForm").attr("data-original-title", Languageletter353);
-$("#VideoSkinsQuick").attr("data-original-title", Languageletter354);
-$("#MiniScripts").attr("data-original-title", Languageletter355);
-$("#OpenuserScripts").text(Languageletter356);
-$("#VoiceBtn").attr("data-original-title", Languageletter357);
-$("#donationbtn").attr("data-original-title", Languageletter358);
-$("#opennamechars").attr("data-original-title", Languageletter359);
-$("#openskinchanger").attr("data-original-title", Languageletter360);
-$("#MorefpsText").text(Languageletter361);
+//2. Administration Tools
 
 setTimeout(function () {
-$("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
-$("#block-warn").replace('Temporary unblock', Languageletter348);
-}, 1500);
+$("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 165px; width: 500px; ";>'+
+	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
+	'<p style="color:white; font-size:12px";" align="middle">Enter your Clan symbol and ADMIN Password</p>'+
+											'<input id="AdminClanSymbol" class="form-control" placeholder="Clan Symbol" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="The symbol of Clan you belong" >' +	
+											'<input id="AdminPassword" class="form-control" placeholder="Password" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="Put ADMIN password" >' +																							
+											'</div><p style="color:white; font-size:12px";" align="middle">IMPORTANT NOTICE: Admin Tools can only be used by the Admins of the Legend mod</u></p>'+											
+											'</div></div>');
+$("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="administrationtools(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
+	$("#AdminClanSymbol").val("℄");
+	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
+	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
+	
+	$("#AdminClanSymbol").blur(function(){ 
+		AdminClanSymbol=$("#AdminClanSymbol").val();
+		localStorage.setItem("AdminClanSymbol", AdminClanSymbol);
+	});
+			
+	$("#AdminPassword").blur(function(){
+		AdminPassword=$("#AdminPassword").val();
+		if ($("#AdminClanSymbol").val()!=""){	
+			if (AdminPassword=="LEGEND69"){
+				localStorage.setItem("AdminPassword", AdminPassword);
+			//	toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools <font color="red">' + document.getElementById("nick").value + '</font></b>!');
+				$("#main-menu").show();	
+				$("#skins-panel").show();
+				$("#quick-menu").show();
+				$("#exp-bar").show();
+				$("#administrationtools").hide();		
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 35%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+				
+				'</div>');
+//				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
+//				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
+				return AdminRights=1;
+			}
+			else { toastr["info"]('Access denied!'); }
+		}
+		else { toastr["info"]('You must register your Clan Symbol first'); }
+	});
+setTimeout(function () {	
+	$("#nick").blur(function(){
+		if ($('#administrationtoolshud').is(':hidden')) {
+			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄ 🌀 ☠ 🐦EΛ"){
+			$("#main-menu").hide();
+			$("#skins-panel").hide();
+			$("#quick-menu").hide();
+			$("#exp-bar").hide();
+			$("#administrationtools").show();		
+		}	}	
+});	}, 8000);
+if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
+}, 100);
+
+function disconnect2min(){
+	if (AdminRights==1){
+		commandMsg="EU-London"; 
+		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
+		dosendadmincommand();
+		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
+		}}
+		
+function disconnectnow(){
+	if (AdminRights==1){
+		commandMsg="RU-Russia";
+		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
+		dosendadmincommand();
+		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now");
+		}}	
+function showstatsphp(){
+	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
+}
+		
+function dosendadmincommand(){
+		if(AdminRights==1){
+		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
+		setTimeout(function (){$("#message").val("http://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
+		}
+		else{
+			toastr["info"](Premadeletter39);}
+}		
+
+function administrationtools(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#administrationtools").hide();		
+}
+
+
+
+//3. User Scripts
+var Userscript1;
+var Userscript2;
+var Userscript3;
+var Userscript4;
+var Userscript5;
+var Userscripttext11;
+var Userscripttext12;
+var Userscripttext13;
+var Userscripttext14;
+var Userscripttext15;
+var Userscripttexture1;
+var Userscripttexture2;
+var Userscripttexture3;
+var Userscripttexture4;
+var Userscripttexture5;
+setTimeout(function () {
+	
+
+/*
+$("#main-menu").hide();
+$("#skins-panel").hide();
+$("#quick-menu").hide();
+$("#exp-bar").hide();
+$("#userscripts").show();
+*/
+
+var Externalletter6;
+var Externalletter7;
+var Externalletter8;
+var Externalletter9;
+var Externalletter10;
+var Externalletter11;
+var Externalletter12;
+var Externalletter13;
+
+if(Externalletter6==null){Externalletter6 = "Paste your Script in this Textarea, you can load multiple Scripts";}
+if(Externalletter7==null){Externalletter7 = "Load Script from Textarea";}
+if(Externalletter8==null){Externalletter8 = "Choose";}
+if(Externalletter9==null){Externalletter9 = "Erase Script";}
+if(Externalletter10==null){Externalletter10 = "Name";}
+if(Externalletter11==null){Externalletter11 = "Url of Raw Github, or other Raw Script, starting with";}
+if(Externalletter12==null){Externalletter12 = "Leave this empty if script not imported from URL";}
+if(Externalletter13==null){Externalletter13 = "IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES";}
+
+
+$("#menu-footer").after('<div id="userscripts" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 600px; width: 600px; ";>'+
+	'<div id="Userscriptshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<div id="Userscriptshud2" align="middle"><h5 class="main-color">USER SCRIPTS</h5>'+
+	
+	'<p id="userscripter1" style="color:white; font-size:12px";" align="middle">'+Externalletter6+'</p>'+
+	
+	
+   '<textarea id="Userscripttexture1" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: block;"></textarea>'+
+   '<textarea id="Userscripttexture2" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
+   '<textarea id="Userscripttexture3" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
+   '<textarea id="Userscripttexture4" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
+   '<textarea id="Userscripttexture5" class="form-control ps-container ps-theme-default" rows="14" cols="100" spellcheck="false" align="middle" style="display: none;"></textarea>'+
+	'<button id="userscriptBtn1" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: block;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn2" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn3" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn4" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	'<button id="userscriptBtn5" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; display: none;"><i class="fa fa-code"></i>'+Externalletter7+'</button>'+
+	
+		'<br>'+
+											'<div class="input-box" style=" color:white; font-size:12px";" text-align: center; font-size: 12px; margin-top: 4px; padding: 4px 0 6px 0;"><span id="userscriptpages" class="title" style="">'+Externalletter8+' User Script:  </span>' +
+											'<select id="Userscriptpages3" class="form-control" onchange="userscriptpages();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
+											'<option value="1" data-itr="">User Script 1</option>' +
+											'<option value="2" data-itr="">User Script 2</option>' +
+											'<option value="3" data-itr="">User Script 3</option>' +
+											'<option value="4" data-itr="">User Script 4</option>' +
+											'<option value="5" data-itr="">User Script 5</option>' +
+											'</select>' +
+											'<button id="EraseScripter" align="left" onclick="erasescripter(); return false" class="btn btn-primary btn" data-itr="page_login_and_play" data-original-title="" title="" style="display:inline; margin-top: -4px; margin-left: 60px; width: 30%; ">'+Externalletter9+'</button>' +
+											'<input id="UserscripttextA" class="form-control" placeholder="User Script 1 '+Externalletter10+'" value="" style="margin-top: 2px; display: block;" onblur="Userscripttext11();" >' +
+											
+											'<input id="UserscripttextB" class="form-control" placeholder="User Script 2 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext12();"  >' +
+											'<input id="UserscripttextC" class="form-control" placeholder="User Script 3 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext13();"  >' +						
+											'<input id="UserscripttextD" class="form-control" placeholder="User Script 4 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext14();"  >' +
+											'<input id="UserscripttextE" class="form-control" placeholder="User Script 5 '+Externalletter10+'" value="" style="margin-top: 2px; display: none;" onblur="Userscripttext15();"  >' +	
+											'<input id="UserscriptA" class="form-control" placeholder="User Script 1 .js URL ('+Externalletter12+')" text="Url 1" style="margin-top: 2px; display: block;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +	
+											'<input id="UserscriptB" class="form-control" placeholder="User Script 2 .js URL ('+Externalletter12+')" text="Url 2" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +		
+											'<input id="UserscriptC" class="form-control" placeholder="User Script 3 .js URL ('+Externalletter12+')" text="Url 3" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +		
+											'<input id="UserscriptD" class="form-control" placeholder="User Script 4 .js URL ('+Externalletter12+')" text="Url 4" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +		
+											'<input id="UserscriptE" class="form-control" placeholder="User Script 5 .js URL ('+Externalletter12+')" text="Url 5" style="margin-top: 2px; display: none;" " data-toggle="tooltip" data-placement="top" data-original-title="'+Externalletter11+' http://... or https://..." >' +												
+											'</div>' +	
+											'<p id="userscripter2" style="color:white; font-size:12px";" align="middle">'+Externalletter13+': <u>chrome://settings/clearBrowserData</u></p>'+											
+											'</div>'+
+											'</div>');
+$("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
+
+$('[data-toggle="tooltip"]').tooltip();
+$("#userscripts").hide();
+	
+
+
+
+
+
+
+$('#UserscriptA').blur(function(){
+if ($("#UserscriptA").val()!=""){
+Userscript1=$("#UserscriptA").val();localStorage.setItem("Userscript1", Userscript1);
+$("#Userscripttexture1").load(Userscript1);setTimeout(function () {$("#userscriptBtn1").click(); }, 300); }return false;});
+$('#UserscriptB').blur(function(){
+if ($("#UserscriptB").val()!=""){
+Userscript2=$("#UserscriptB").val();localStorage.setItem("Userscript2", Userscript2);
+$("#Userscripttexture2").load(Userscript2);setTimeout(function () {$("#userscriptBtn2").click(); }, 400); }return false;});
+$('#UserscriptC').blur(function(){
+if ($("#UserscriptC").val()!=""){
+Userscript3=$("#UserscriptC").val();localStorage.setItem("Userscript3", Userscript3);
+$("#Userscripttexture3").load(Userscript3);setTimeout(function () {$("#userscriptBtn3").click(); }, 500); }return false;});
+$('#UserscriptD').blur(function(){
+if ($("#UserscriptD").val()!=""){
+Userscript4=$("#UserscriptD").val();localStorage.setItem("Userscript4", Userscript4);
+$("#Userscripttexture4").load(Userscript4);setTimeout(function () {$("#userscriptBtn4").click(); }, 600); }return false;});
+$('#UserscriptE').blur(function(){
+if ($("#UserscriptE").val()!=""){
+Userscript5=$("#UserscriptE").val();localStorage.setItem("Userscript5", Userscript5);
+$("#Userscripttexture5").load(Userscript5);setTimeout(function () {$("#userscriptBtn5").click(); }, 700); }return false;});
+
+$("#Userscripttexture1").blur(function(){
+if ($("#Userscripttexture1").val()!=""){Userscripttexture1=$("#Userscripttexture1").val();localStorage.setItem("Userscripttexture1", Userscripttexture1);}});	
+$("#Userscripttexture2").blur(function(){
+if ($("#Userscripttexture2").val()!=""){Userscripttexture2=$("#Userscripttexture2").val();localStorage.setItem("Userscripttexture2", Userscripttexture2);}});	
+$("#Userscripttexture3").blur(function(){
+if ($("#Userscripttexture3").val()!=""){Userscripttexture3=$("#Userscripttexture3").val();localStorage.setItem("Userscripttexture3", Userscripttexture3);}});	
+$("#Userscripttexture4").blur(function(){
+if ($("#Userscripttexture4").val()!=""){Userscripttexture4=$("#Userscripttexture4").val();localStorage.setItem("Userscripttexture4", Userscripttexture4);}});	
+$("#Userscripttexture5").blur(function(){
+if ($("#Userscripttexture5").val()!=""){Userscripttexture5=$("#Userscripttexture5").val();localStorage.setItem("Userscripttexture5", Userscripttexture5);}});	
+	
+
+
+
+
+$("#userscriptBtn1").click(function() {
+	var sUser1 = document.createElement("script");sUser1.type = "text/javascript"; sUser1.text=$("#Userscripttexture1").val(); $("head").append(sUser1);});
+$("#userscriptBtn2").click(function() {
+	var sUser2 = document.createElement("script");sUser2.type = "text/javascript"; sUser2.text=$("#Userscripttexture2").val(); $("head").append(sUser2);});
+$("#userscriptBtn3").click(function() {
+	var sUser3 = document.createElement("script");sUser3.type = "text/javascript"; sUser3.text=$("#Userscripttexture3").val(); $("head").append(sUser3);});
+$("#userscriptBtn4").click(function() {
+	var sUser4 = document.createElement("script");sUser4.type = "text/javascript"; sUser4.text=$("#Userscripttexture4").val(); $("head").append(sUser4);});
+$("#userscriptBtn5").click(function() {
+	var sUser5 = document.createElement("script");sUser5.type = "text/javascript"; sUser5.text=$("#Userscripttexture5").val(); $("head").append(sUser5);});
+
+
+	document.getElementById("UserscripttextA").value =localStorage.getItem("Userscripttext11");
+	document.getElementById("UserscripttextB").value =localStorage.getItem("Userscripttext12");
+	document.getElementById("UserscripttextC").value =localStorage.getItem("Userscripttext13");
+	document.getElementById("UserscripttextD").value =localStorage.getItem("Userscripttext14");
+	document.getElementById("UserscripttextE").value =localStorage.getItem("Userscripttext15");
+
+	$('#UserscriptA').val(localStorage.getItem("Userscript1"));
+	if($('#UserscriptA').val()!=""){$('#UserscriptA').blur();}
+	else if($('#UserscriptA').val()==""){document.getElementById("Userscripttexture1").value =localStorage.getItem("Userscripttexture1");setTimeout(function () {$("#userscriptBtn1").click(); }, 100);}
+	$('#UserscriptB').val(localStorage.getItem("Userscript2"));
+	if($('#UserscriptB').val()!=""){$('#UserscriptB').blur();}
+	else if($('#UserscriptB').val()==""){document.getElementById("Userscripttexture2").value =localStorage.getItem("Userscripttexture2");setTimeout(function () {$("#userscriptBtn2").click(); }, 100);}
+	$('#UserscriptC').val(localStorage.getItem("Userscript3"));
+	if($('#UserscriptC').val()!=""){$('#UserscriptC').blur();}
+	else if($('#UserscriptC').val()==""){document.getElementById("Userscripttexture3").value =localStorage.getItem("Userscripttexture3");setTimeout(function () {$("#userscriptBtn3").click(); }, 100);}
+	$('#UserscriptD').val(localStorage.getItem("Userscript4"));
+	if($('#UserscriptD').val()!=""){$('#UserscriptD').blur();}
+	else if($('#UserscriptD').val()==""){document.getElementById("Userscripttexture4").value =localStorage.getItem("Userscripttexture4");setTimeout(function () {$("#userscriptBtn4").click(); }, 100);}
+	$('#UserscriptE').val(localStorage.getItem("Userscript5"));
+	if($('#UserscriptE').val()!=""){$('#UserscriptE').blur();}
+	else if($('#UserscriptE').val()==""){document.getElementById("Userscripttexture5").value =localStorage.getItem("Userscripttexture5");setTimeout(function () {$("#userscriptBtn5").click(); }, 100);}
+
+}, 5000);
+
+function Userscripttext11(){ Userscripttext11=$("#UserscripttextA").val();localStorage.setItem("Userscripttext11", Userscripttext11);
+if (Userscripttext11!=""){$('#Userscriptpages3>option:nth-child(1)').text(Userscripttext11);}}
+function Userscripttext12(){ Userscripttext12=$("#UserscripttextB").val();localStorage.setItem("Userscripttext12", Userscripttext12);
+if (Userscripttext12!=""){$('#Userscriptpages3>option:nth-child(2)').text(Userscripttext12);}}
+function Userscripttext13(){ Userscripttext13=$("#UserscripttextC").val();localStorage.setItem("Userscripttext13", Userscripttext13);
+if (Userscripttext13!=""){$('#Userscriptpages3>option:nth-child(3)').text(Userscripttext13);}}
+function Userscripttext14(){ Userscripttext14=$("#UserscripttextD").val();localStorage.setItem("Userscripttext14", Userscripttext14);
+if (Userscripttext14!=""){$('#Userscriptpages3>option:nth-child(4)').text(Userscripttext14);}}
+function Userscripttext15(){ Userscripttext15=$("#UserscripttextE").val();localStorage.setItem("Userscripttext15", Userscripttext15);
+if (Userscripttext15!=""){$('#Userscriptpages3>option:nth-child(5)').text(Userscripttext15);}}
+
+function closeuserscripts(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#userscripts").hide();
+}
+
+function userscriptpages(){
+	$("#UserscriptA").hide();
+	$("#UserscriptB").hide();
+	$("#UserscriptC").hide();
+	$("#UserscriptD").hide();
+	$("#UserscriptE").hide();
+	$("#UserscripttextA").hide();
+	$("#UserscripttextB").hide();
+	$("#UserscripttextC").hide();
+	$("#UserscripttextD").hide();
+	$("#UserscripttextE").hide();
+	$("#Userscripttexture1").hide();
+	$("#Userscripttexture2").hide();
+	$("#Userscripttexture3").hide();
+	$("#Userscripttexture4").hide();
+	$("#Userscripttexture5").hide();
+	$("#userscriptBtn1").hide();
+	$("#userscriptBtn2").hide();
+	$("#userscriptBtn3").hide();
+	$("#userscriptBtn4").hide();
+	$("#userscriptBtn5").hide();
+		if ($("#Userscriptpages3").val()==1){
+			$("#UserscriptA").show();
+			$("#UserscripttextA").show();
+			$("#Userscripttexture1").show();
+			$("#userscriptBtn1").show();
+		}
+		if ($("#Userscriptpages3").val()==2){
+			$("#UserscriptB").show();
+			$("#UserscripttextB").show();
+			$("#Userscripttexture2").show();
+			$("#userscriptBtn2").show();			
+		}
+		if ($("#Userscriptpages3").val()==3){
+			$("#UserscriptC").show();
+			$("#UserscripttextC").show();
+			$("#Userscripttexture3").show();
+			$("#userscriptBtn3").show();
+		}
+		if ($("#Userscriptpages3").val()==4){
+			$("#UserscriptD").show();
+			$("#UserscripttextD").show();
+			$("#Userscripttexture4").show();
+			$("#userscriptBtn4").show();
+		}
+		if ($("#Userscriptpages3").val()==5){
+			$("#UserscriptE").show();
+			$("#UserscripttextE").show();
+			$("#Userscripttexture5").show();
+			$("#userscriptBtn5").show();
+		}		
+}
+
+function erasescripter(){
+	if ($("#Userscriptpages3").val()==1){
+		$("#Userscripttexture1").val(""); localStorage.setItem("Userscripttexture1", ""); $('#Userscriptpages3>option:nth-child(1)').text("User Script 1"); $("#UserscripttextA").val(""); localStorage.setItem("Userscripttext11", ""); $("#UserscriptA").val(""); localStorage.setItem("Userscript1", "");}
+	if ($("#Userscriptpages3").val()==2){
+		$("#Userscripttexture2").val(""); localStorage.setItem("Userscripttexture2", ""); $('#Userscriptpages3>option:nth-child(2)').text("User Script 2"); $("#UserscripttextB").val(""); localStorage.setItem("Userscripttext12", ""); $("#UserscriptB").val(""); localStorage.setItem("Userscript2", "");}
+	if ($("#Userscriptpages3").val()==3){
+		$("#Userscripttexture3").val(""); localStorage.setItem("Userscripttexture3", ""); $('#Userscriptpages3>option:nth-child(3)').text("User Script 3"); $("#UserscripttextC").val(""); localStorage.setItem("Userscripttext13", ""); $("#UserscriptC").val(""); localStorage.setItem("Userscript3", "");}
+	if ($("#Userscriptpages3").val()==4){
+		$("#Userscripttexture4").val(""); localStorage.setItem("Userscripttexture4", ""); $('#Userscriptpages3>option:nth-child(4)').text("User Script 4"); $("#UserscripttextD").val(""); localStorage.setItem("Userscripttext14", ""); $("#UserscriptD").val(""); localStorage.setItem("Userscript4", "");}
+	if ($("#Userscriptpages3").val()==5){
+		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
+}
