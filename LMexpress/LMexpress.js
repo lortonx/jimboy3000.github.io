@@ -345,7 +345,7 @@ function init(modVersion) {
             '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
             '</div>');
 		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
-		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
+		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
 		
 		$("#exp-bar").hide();
 		$(".menu-tabs").children().attr("style", "width: 19.99%;");
