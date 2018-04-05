@@ -4734,9 +4734,9 @@ setTimeout(function() {
 setTimeout(function() {
     MC.setQuality($('#quality').val());
 			//Load Private Servers
-	if($('#region>option:nth-child(1)').val()!=":PrS")	{
-	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-	}	
+//	if($('#region>option:nth-child(1)').val()!=":PrS")	{
+//	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+//	}	
 }, 13000);
 setTimeout(function() {
     MC.setQuality($('#quality').val());
@@ -7279,9 +7279,9 @@ function doDOMonloadevents1(){
 	//	$(".toast.toast-warning").remove();	        
 		setPasswordforPrS1();	
 		MC.setQuality($('#quality').val());
-		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		}
+//		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+//		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+//		}
 		//Save Name, Surname, Gender		
 		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
 		setTimeout(function (){ 
