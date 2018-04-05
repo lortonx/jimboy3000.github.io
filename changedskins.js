@@ -215,7 +215,7 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url('+le
 											'<p style="color:white; font-size:12px";" align="middle">'+Externalletter13+': <u>chrome://settings/clearBrowserData</u></p>'+											
 											'</div>'+
 											'</div>');
-$("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
+$("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
 $('[data-toggle="tooltip"]').tooltip();
 $("#userscripts").hide();
