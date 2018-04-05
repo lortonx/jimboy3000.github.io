@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.028 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "27"; // the version 1.1-> 1.11
+var semimodVersion = "28"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -2290,6 +2290,9 @@ function LegendSettingsfirst() {
     LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
     $("#export-settings-btn").click(function() {
         LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
+		setTimeout(function() {
+			copy($("#export-settings").val());
+			}, 200);		
     });
 
     $("#import-settings-btn").clone().insertAfter("#import-settings-btn").attr('id', 'import-settings-btn2');
