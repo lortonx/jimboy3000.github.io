@@ -218,6 +218,8 @@ var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
 var Premadeletter51 = "Hide Timer Calc."
+//var Premadeletter52="Edit Names";
+//var Premadeletter52a="Close Names";
 var Premadeletter53 = "Auto free coins";
 var Premadeletter54 = "Stop free coins";
 var Premadeletter55 = "Troll on Death";
@@ -226,12 +228,70 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
-
+var Premadeletter61 = "Enable YT as background";
+var Premadeletter62 = "Disable YT as background";
 var Premadeletter63 = "wants you to open the url";
 var Premadeletter64 = "wants you to embed and play this youtube video";
 var Premadeletter65 = "wants you to join the following Skype room";
 var Premadeletter66 = "wants you to join the following Discord room";
 var Premadeletter67 = "wants you to leave this server and join this new one";
+
+var Premadeletter68 = "You pressed";
+var Premadeletter69 = "restart if";
+var Premadeletter70 = "drops";
+var Premadeletter71 = "Animated skins";
+var Premadeletter72 = "enabled";
+var Premadeletter73 = "drop";
+var Premadeletter74 = "when";
+var Premadeletter75 = "Animated skins will be";
+var Premadeletter76 = "disabled";
+var Premadeletter77 = "after rejoin";
+var Premadeletter78 = "Better FPS";
+var Premadeletter79 = "performance when 16";
+var Premadeletter80 = "When Dying Light Expansion is enabled, Troll on death cannot occur";
+var Premadeletter81 = "Private Server";
+var Premadeletter82 = "Connect to any";
+var Premadeletter83 = "server, or make your own";
+var Premadeletter84 = "Play agario-like games if you know the IP of servers";
+var Premadeletter85 = "Your account\'s image has been copied to clipboard. Paste it"; // erase the 's
+var Premadeletter86 = "to custom skin Url area";
+var Premadeletter87 = "You must Login to use picture of your profile";
+var Premadeletter88 = "You are using a wrong version";
+var Premadeletter89 = "Game will terminate now";
+var Premadeletter90 = "Special Deals";
+var Premadeletter91 = "Agario may or may not give you the Skin, but only the coins";
+var Premadeletter91a = "Use at your own risk";
+var Premadeletter92 = "If friend's UID is wrong, purchase will fail";
+var Premadeletter93 = "UID Factory Settings";
+var Premadeletter94 = "You must login to load Special Deals";
+var Premadeletter95 = "Fake\'s image has been copied to clipboard. Paste it"; // erase the 's
+var Premadeletter96 = "to custom skin Url area in order to activate the fake\'s flag function"; // erase the 's
+var Premadeletter97 = "Inform me when you finish with Recapatcha";
+var Premadeletter98 = "I have finished";
+var Premadeletter99 = "Never Mind";
+var Premadeletter100 = "Calculating your XP, please wait...";
+var Premadeletter101 = "Do";
+var Premadeletter102 = "NOT";
+var Premadeletter103 = "press";
+var Premadeletter104 = "Erase custom skin URL";
+var Premadeletter105 = "select video skin";	
+var Premadeletter106 = "unselect video skin";	
+var Premadeletter107 = "mute audio";
+var Premadeletter108 = "The LM Project";
+var Premadeletter109 = "Upload / Download";		
+var Premadeletter110 = "do not enter anything here unless you know what it is";	
+var Premadeletter111 = "click on the orange icon to buy";	
+var Premadeletter112 = "For some payment methods";
+var Premadeletter113 = "Close";			
+var Premadeletter114 = "COPY";			
+var Premadeletter115 = "is used to buy offers for your friends";
+var Premadeletter116 = "To make purchases, you must be logged in to your account…";
+var Premadeletter117 = "Library"; 
+var Premadeletter118 = "visit"; 
+var Premadeletter119 = "Report as Fake (change Skin)"; 
+var Premadeletter120 = "Enter your EXACT name of the player"; 
+var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
+var Premadeletter122 = "to permanent ban from usage of this extension"; 
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -1033,7 +1093,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Game will terminate now').css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
@@ -1872,7 +1932,7 @@ function joinpartyfromconnect(thismode) {
 
 function BeforeReportFakesSkin(){
 	if ($("#skin").val()!="https://jimboy3100.github.io/banners/iconfake1.png"){
-		toastr["info"]('Fake\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area in order to activate the fake\'s flag function').css("width", "350px");		
+		toastr["info"](Premadeletter95 + ' <font color="red"><b>Ctrl+V</font></b>, ' + Premadeletter96).css("width", "350px"); // erase the 's		
 		copy("https://jimboy3100.github.io/banners/iconfake1.png");		
 	}
 	else{
@@ -1880,11 +1940,18 @@ function BeforeReportFakesSkin(){
 	}
 }
 function ReportFakesSkin() {
+var Temporaryletter1;
+var Temporaryletter2;
+var Languageletter320;		//Leaderboard
+var Languageletter321;		//Teamboard
+if (Languageletter320!=null){Temporaryletter2=Languageletter320} else{Temporaryletter2 = "Leaderboard";}
+if (Languageletter321!=null){Temporaryletter1=Languageletter321} else{Temporaryletter1 = "Teamboard";}
+
 $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 540px; width: 500px; ";>'+
 	'<div id="SkinChangerhud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
-	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>Report as Fake (change Skin)</b></h5>'+	
-	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">Enter your EXACT name of the player'+
-	'<br><font style="color:white; size:12px; margin-right: 70px;">Leaderboard</font><font style="color:white; size:12px; margin-left: 70px;">Teamboard</font></p>'+
+	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>'+Premadeletter119+'</b></h5>'+	
+	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">'+Premadeletter120+
+	'<br><font id= "Leadboardlet1" style="color:white; size:12px; margin-right: 70px;">'+Temporaryletter2+'</font><font id= "Teamboardlet1" style="color:white; size:12px; margin-left: 70px;">'+Temporaryletter1+'</font></p>'+
 											'<input id="LeaderboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline; " " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
@@ -1905,7 +1972,7 @@ $("#menu-footer").after('<div id="SkinChanger" style="display: none; background-
 											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
 											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
 											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
-											'</div><p style="color:white; font-size:12px";" align="middle">Abusing players and inappropriate use will lead user\'s UID <br>to permenant ban from usage of this extension</u></p>'+											
+											'</div><p style="color:white; font-size:12px";" align="middle">'+Premadeletter121+'<br>'+Premadeletter122+'</u></p>'+											
 											'</div></div>');
 $('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
 $('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
@@ -1928,7 +1995,7 @@ $('#TeamboardInput8').copyCSS('#server').css('width', '40%');
 $('#TeamboardInput9').copyCSS('#server').css('width', '40%');
 $('#TeamboardInput10').copyCSS('#server').css('width', '40%');
 										
-$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
+$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
 OthersSkinChanger();
 SkinBtnsPut();
 OpenSkinChanger();
