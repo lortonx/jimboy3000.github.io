@@ -382,7 +382,7 @@ var Premadeletter118 = "visit";
 var Premadeletter119 = "Report as Fake (change Skin)"; 
 var Premadeletter120 = "Enter your EXACT name of the player"; 
 var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
-var Premadeletter122 = "to permenant ban from usage of this extension"; 
+var Premadeletter122 = "to permanent ban from usage of this extension"; 
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -420,7 +420,6 @@ var stylesLegendModConsole2 = [
 
 
 var languagemod = localStorage.getItem("languagemod");
-var languagehander = "starter";
 Languagehandlerfunction();
 
 
@@ -4975,43 +4974,19 @@ function openrotatingmod() {
 }
 
 function Languagehandlerfunction(){
-if (languagemod == 1) {	
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";
-    $("body").append(s);
-	$('#legendlanguages').val("2");
-	if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
-}	
+	
 if (languagemod == 2) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
     $("body").append(s);
 	$('#legendlanguages').val("2");
-	if (languagehander=="starter"){
     setTimeout(function() {		        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
         $("body").append(s1);
     }, 4000);
-}
-	else if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
 }
 if (languagemod == 3) {
     var s = document.createElement("script");
@@ -5019,7 +4994,6 @@ if (languagemod == 3) {
     s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
     $("body").append(s);
 	$('#legendlanguages').val("3");
-    if (languagehander=="starter"){
 	setTimeout(function() {       
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
@@ -5027,37 +5001,19 @@ if (languagemod == 3) {
         $("body").append(s1);
     }, 4000);
 }
-	else if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
-}
 if (languagemod == 4) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
     $("body").append(s);
 	$('#legendlanguages').val("4");
-	if (languagehander=="starter"){
     setTimeout(function() {       
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
         $("body").append(s1);
     }, 4000);
-}
-	else if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
+
 }
 if (languagemod == 5) {
     var s = document.createElement("script");
@@ -5065,7 +5021,6 @@ if (languagemod == 5) {
     s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
     $("body").append(s);
 	$('#legendlanguages').val("5");
-	if (languagehander=="starter"){
     setTimeout(function() {        
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
@@ -5073,22 +5028,12 @@ if (languagemod == 5) {
         $("body").append(s1);
     }, 4000);
 }
-	else if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
-}
 if (languagemod == 6) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
     $("body").append(s);
 	$('#legendlanguages').val("6");
-	if (languagehander=="starter"){
     setTimeout(function() {       
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
@@ -5096,40 +5041,21 @@ if (languagemod == 6) {
         $("body").append(s1);
     }, 4000);
 }
-	else if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
-}
 if (languagemod == 7) {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
     $("body").append(s);
 	$('#legendlanguages').val("7");
-	if (languagehander=="starter"){
     setTimeout(function() {      		
         var s1 = document.createElement("script");
         s1.type = "text/javascript";
         s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
         $("body").append(s1);
     }, 4000);
-}
-	else if (languagehander=="externals"){
-    setTimeout(function() {		        
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandlerExternals.js";
-        $("body").append(s1);
-    }, 1000);		
-	}
-}
-}
 
+}
+}
 function changeModLanguage() {
     if ($("#legendlanguages").val() == 1) {
         localStorage.setItem("languagemod", 1);
