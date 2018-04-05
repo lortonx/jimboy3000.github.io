@@ -1,4 +1,5 @@
-//v1.6
+//v1.7
+
 //1. Lc celebration
 var checkonetimeLc = localStorage.getItem("checkonetimeLc");
 if (checkonetimeLc == null) {
@@ -30,7 +31,7 @@ function LcCelebration() {
 }
 
 //2. Administration Tools
-
+Premadeletter39="Due to spamming issues, you must be in game and use password";
 setTimeout(function () {
 $("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 165px; width: 500px; ";>'+
 	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
@@ -113,7 +114,7 @@ function dosendadmincommand(){
 		setTimeout(function (){$("#message").val("http://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
 		}
 		else{
-			toastr["info"](Premadeletter39);}
+			toastr["info"]("Something gone wrong");}
 }		
 
 function administrationtools(){
