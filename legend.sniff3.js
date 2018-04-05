@@ -170,7 +170,7 @@ if(Externalletter9==null){Externalletter9 = "Erase Script";}
 if(Externalletter10==null){Externalletter10 = "Name";}
 if(Externalletter11==null){Externalletter11 = "Url of Raw Github, or other Raw Script, starting with";}
 if(Externalletter12==null){Externalletter12 = "Leave this empty if script not imported from URL";}
-if(Externalletter13==null){Externalletter13 = "IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Senario damages onload events, then DELETE COOKIES";}
+if(Externalletter13==null){Externalletter13 = "IMPORTANT NOTICE: Do not keep URLs which do not work, because they are used as onload events. If Scenario damages onload events, then DELETE COOKIES";}
 
 
 $("#menu-footer").after('<div id="userscripts" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 600px; width: 600px; ";>'+
