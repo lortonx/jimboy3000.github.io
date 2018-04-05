@@ -470,6 +470,7 @@ $('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-origi
 
 $("#HideAllBthn").attr('data-original-title',Languageletter345);
 
+$("#logoutbtn").text(Languageletter31); //for LM Express
 
 //$("#legendlanguagetext").text(Languageletter346+ "  :");
 $(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
