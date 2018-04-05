@@ -415,7 +415,7 @@ function init(modVersion) {
 		$('#server').before('<button id="CopyAll" class="btn btn-warning" style="background-color: #018cf6; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
 
 		$("#CopyAll").tooltip({
-		title: "Copy Server, Password, TeamboaΡd & Leaderboard",
+		title: "Copy Server, Password, Teamboard & Leaderboard",
 		placement: "left"
 		});
         $("#CopyAll").click(function() {
@@ -2113,7 +2113,7 @@ function BeforeChangingSkins(){
 	ProceedToChangeSkins();
 	}
 	else{
-        toastr["warning"]('Inform me when you finish with Recapatcha!' + '<button class="btn btn-sm btn-warning btn-spectate btn-noplay-finishedRecapatcha" style="margin-top: 10px;border-color: darkblue;">I have finished</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">Never Mind</button>', "", {
+			toastr["warning"](Premadeletter97 + '!' + '<button class="btn btn-sm btn-warning btn-spectate btn-noplay-finishedRecapatcha" style="margin-top: 10px;border-color: darkblue;">'+Premadeletter98+'</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter99 + '</button>', "", {
                         timeOut: 40000,
                         extendedTimeOut: 40000
                     }).css("width", "300px");
