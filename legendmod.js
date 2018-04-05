@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.42 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.43 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "42"; // the version 1.1-> 1.11
+var semimodVersion = "43"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -18,7 +18,7 @@ getaccesstoken2();
 
 
 var CutNameConflictwithMessage=false;
-/*
+
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -31,7 +31,7 @@ var CutNameConflictwithMessage=false;
 		}
     };
 })();
-*/
+
 var DeathFPSfixVariable;
 MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
 MC._onDisconnect = MC.onDisconnect;
@@ -2091,7 +2091,7 @@ function init(modVersion) {
                 StopEditGameNames();
                 return checkedGameNames = 1;
             }
-			return CutNameConflictwithMessage=true;
+			CutNameConflictwithMessageFunction();			
         });
         $("#VoiceBtn").click(function() {
             if (searchSip == null) {
@@ -8340,4 +8340,8 @@ function MsgServCommandsreturner(){
 		    }).css("width", "300px");	
 			}
 			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
+}
+
+function CutNameConflictwithMessageFunction(){
+	return CutNameConflictwithMessage=true;
 }
