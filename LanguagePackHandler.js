@@ -466,7 +466,7 @@ $('#discwebhook1').attr('placeholder',Languageletter342 + ' 1').attr('data-origi
 $('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-original-title', Languageletter344 + '. https://discordapp.com/api/webhooks/.../...');
 
 $("#HideAllBthn").attr('data-original-title',Languageletter345);
-$("#Backtomenu").text(Languageletter283);
+
 
 //$("#legendlanguagetext").text(Languageletter346+ "  :");
 $(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
@@ -485,10 +485,11 @@ $("#donationbtn").attr("data-original-title", Languageletter358);
 $("#opennamechars").attr("data-original-title", Languageletter359);
 $("#openskinchanger").attr("data-original-title", Languageletter360);
 $("#MorefpsText").text(Languageletter361);
+
+setTimeout(function () {
+$("#Backtomenu").text(Languageletter310);
 $("#userscripter1").text(Externalletter6);
 $("#userscripter2").text(Externalletter13);
-
-
 $("#userscriptBtn1").text(Externalletter7);
 $("#userscriptpages").text(Externalletter8);
 $("#EraseScripter").text(Externalletter9);
@@ -502,7 +503,7 @@ $("#UserscriptB").attr('placeholder','User Script 2 .js URL ('+ Externalletter12
 $("#UserscriptC").attr('placeholder','User Script 3 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
 $("#UserscriptD").attr('placeholder','User Script 4 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
 $("#UserscriptE").attr('placeholder','User Script 5 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
-
+}, 4000);
 
 setTimeout(function () {
 $("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
