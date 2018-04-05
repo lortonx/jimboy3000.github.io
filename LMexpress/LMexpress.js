@@ -355,7 +355,7 @@ function init(modVersion) {
 		$('#server').before('<button id="CopyAll" class="btn btn-warning" style="background-color: #018cf6; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
 
 		$("#CopyAll").tooltip({
-		title: "Copy Server, Password, Teamboroad & Leaderboard",
+		title: "Copy Server, Password, TeamboaΡd & Leaderboard",
 		placement: "left"
 		});
         $("#CopyAll").click(function() {
