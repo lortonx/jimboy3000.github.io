@@ -1,240 +1,538 @@
-//v0.5
+//Language Pack Handler
+//Legend Mod By Jimboy3100
 var Languagetimesused;
-var Languagetimesused1=0;
-var Externalletter0a;
-var Externalletter0b;
-var Externalletter1;
-var Externalletter2;
-var Externalletter3;
-var Externalletter4;
-var Externalletter5;
+var Languagetimesused1;
 
-if(Externalletter0a==null){Externalletter0a = "LANGUAGES";}
-if(Externalletter0b==null){Externalletter0b = "Choose a language";}
-if(Externalletter1==null){Externalletter1 = "INFORMATION";}
-if(Externalletter2==null){Externalletter2 = "TEMPLATES";}
-if(Externalletter3==null){Externalletter3 = "MANUAL TEMPLATES";}
-if(Externalletter4==null){Externalletter4 = "MANUAL TEMPLATES";}
-if(Externalletter5==null){Externalletter5 = "Or choose an expansion";}
+$(".ogicon-home").attr('data-original-title',Languageletter0);
+$(".ogicon-user").attr('data-original-title',Languageletter1);
+$(".ogicon-cog").attr('data-original-title',Languageletter2);
+$(".ogicon-droplet").attr('data-original-title',Languageletter3);
+$(".hotkeys-link.ogicon-keyboard").attr('data-original-title',Languageletter4);
+$(".ogicon-music").attr('data-original-title',Languageletter5);
+$(".legend-tab").attr('data-original-title',Languageletter6);
 
-$("#main-menu").hide();
-$("#skins-panel").hide();
-$("#quick-menu").hide();
-$("#exp-bar").hide();
-$("#menu-footer").after('<div id="legendhelper" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; position:absolute;  height: 560px; width: 940px; margin-top: 0px;margin-left: -240px; ">'+
-	'<div id="Userscriptshud2" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
-	'<br><div id="Userscriptshud3"><iframe id="customskinsIframe2" src="https://jimboy3100.github.io/extras/helper.html" width="920" height="490" >'+
-    '<p>Your browser does not support iframes.</p>'+
-	'</iframe>'	+
-											'</div></div>'+
-											    '<button id= "Backtomenu" onclick="closecustomskinsIframe(); return false" style="margin-left: 10px;" class="btn btn-danger"  data-original-title="" title="">' + Premadeletter113 + '</button>'+
-												'<button id= "Infobtn11" onclick="Infobtn11(); return false" style="margin-left: 10px;" class="btn btn-success"  data-original-title="" title="">' + Externalletter1 + '</button>'+
-												'<button id= "TemplatesBtn" onclick="templatesIframe(); return false" style="margin-left: 10px;" class="btn btn-success"  data-original-title="" title="">' + Externalletter2 + '</button>'+
-												'<button id= "ManualyTemplatesBtn" onclick="manualytemplatesIframe(); return false" style="margin-left: 10px;" class="btn btn-success"  data-original-title="" title="">' + Externalletter3 + '</button>'+
-												'<button id= "LanguagesTempBtn" onclick="LanguagesTempIframe(); return false" style="margin-left: 10px;" class="btn btn-success"  data-original-title="" title="">' + Externalletter0a + '</button></div>');
+$("#clantag").attr('placeholder',Languageletter7a).attr('data-original-title',Languageletter7);
+$("#nick").attr('placeholder',Languageletter8a).attr('data-original-title',Languageletter8);
+$("#skin").attr('placeholder',Languageletter9a).attr('data-original-title',Languageletter9);
+$("#region").attr('data-original-title',Languageletter10);
+$("#gamemode").attr('data-original-title',Languageletter11);
+$("#connect2").text(Languageletter12a).attr('data-original-title',Languageletter12);
+$("#server-join").text(Languageletter13);
+$(".btn.btn-play-guest.btn-success.btn-needs-server").text(Languageletter14);
+$(".btn.btn-play-guest.btn-success").text(Languageletter14);
+$(".btn.btn-warning.btn-login-play.btn-needs-server").text(Languageletter15);
+$(".btn.btn-warning.btn-login-play").text(Languageletter15);
+$(".btn.btn-warning.btn-spectate.btn-needs-server").attr('data-original-title',Languageletter16);
+$(".btn.btn-primary.btn-login.btn-fb").children().last().text(Languageletter17);
+$(".btn.btn-primary.btn-login.btn-gplus").children().last().text(Languageletter18);
+$(".btn.btn-play.btn-primary.btn-needs-server").text(Languageletter19);
 
-									
-function closecustomskinsIframe(){
-$("#main-menu").show();	
-$("#skins-panel").show();
-$("#quick-menu").show();
-$("#exp-bar").show();
-$("#legendhelper").remove();
+$(".quick-shop.ogicon-cart").attr('data-original-title',Languageletter20);
+$(".quick-free-coins.ogicon-coin-dollar").attr('data-original-title',Languageletter21);
+$(".quick-free-gifts.ogicon-gift").attr('data-original-title',Languageletter22);
+$(".quick-quests.ogicon-trophy").attr('data-original-title',Languageletter23);
+$(".quick-more-skins.ogicon-grin").attr('data-original-title',Languageletter24);
+$(".quick-yt.ogicon-youtube2").attr('data-original-title',Languageletter25);
+$("#LegGoogleForm").attr('data-original-title',Languageletter25a);
+$("#ModInfoQuick").attr('data-original-title',Languageletter25b);
+
+$("#more-skins").text(Languageletter26);
+
+
+$(".btn.btn-primary.btn-success.btn-freecoins").text(Languageletter21);
+$("#gifting").text(Languageletter22);
+$("#dailyQuests").text(Languageletter23);
+$("#openShopBtn").text(Languageletter20);
+$(".btn.btn-danger.btn-logout").attr('data-original-title',Languageletter31);
+
+
+$(".TimesUsedPanel").replaceWith('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>' + Languageletter32+' '+timesopened+
+		'<br>'+ Languageletter33 + ' jimboy3100<br>' + Languageletter34 + ' ' + translator + '</i></h6></div>');
+
+$("#tcm>#tcm-header>p").text(Languageletter35);
+
+
+$(".options-box.animationGroup>h5").text(Languageletter36);
+$(".options-box.animationGroup>DIV>DIV>SPAN:nth-child(1)").text(Languageletter37 + ": ");
+$(".options-box.zoomGroup>h5").text(Languageletter37b);
+$(".options-box.zoomGroup>LABEL").replace('Auto zoom', Languageletter37a);
+$(".options-box.zoomGroup>DIV>DIV>SPAN:nth-child(1)").text(Languageletter38 + ": ");
+
+$(".options-box.respGroup>h5").text(Languageletter39);
+$(".options-box.respGroup>LABEL").replace('Quick respawn', Languageletter41);
+$(".options-box.respGroup>LABEL").replace('Auto respawn', Languageletter40);
+$(".options-box.namesGroup>h5").text(Languageletter42);
+$(".options-box.namesGroup>LABEL").replace('No names', Languageletter43);
+$(".options-box.namesGroup>LABEL").replace('Optimized names', Languageletter44);
+$(".options-box.namesGroup>LABEL").replace('Auto hide names', Languageletter45);
+$(".options-box.namesGroup>LABEL").replace('Hide my name', Languageletter46);
+$(".options-box.namesGroup>LABEL").replace('Hide teammates names', Languageletter47);
+$(".options-box.namesGroup>LABEL").replace('Names stroke', Languageletter48);
+$(".options-box.massGroup>h5").text(Languageletter49);
+$(".options-box.massGroup>LABEL").replace('Show mass', Languageletter50);
+$(".options-box.massGroup>LABEL").replace('Optimized mass',  Languageletter51);
+$(".options-box.massGroup>LABEL").replace('Auto hide mass', Languageletter52);
+$(".options-box.massGroup>LABEL").replace('Hide my mass', Languageletter53);
+$(".options-box.massGroup>LABEL").replace('Hide enemies mass', Languageletter54);
+$(".options-box.massGroup>LABEL").replace('Short mass', Languageletter55);
+$(".options-box.massGroup>LABEL").replace('Virus shots', Languageletter56);
+$(".options-box.massGroup>LABEL").replace('Mass stroke', Languageletter57);
+$(".options-box.skinsGroup>h5").text(Languageletter58);
+$(".options-box.skinsGroup>LABEL").replace('No skins', Languageletter59);
+$(".options-box.skinsGroup>LABEL").replace('Custom skins', Languageletter60);
+$(".options-box.skinsGroup>LABEL").replace('Vanilla skins', Languageletter61);
+$(".options-box.foodGroup>h5").text(Languageletter6a2);
+$(".options-box.foodGroup>LABEL").replace('Optimized food', Languageletter62);
+$(".options-box.foodGroup>LABEL").replace('Auto hide food', Languageletter63);
+$(".options-box.foodGroup>LABEL").replace('Auto hide food', Languageletter64);
+$(".options-box.foodGroup>LABEL").replace('Rainbow food', Languageletter65);
+$(".options-box.transparencyGroup>h5").text(Languageletter66);
+$(".options-box.transparencyGroup>LABEL").replace('No colors', Languageletter67);
+$(".options-box.transparencyGroup>LABEL").replace('My custom color', Languageletter68);
+$(".options-box.transparencyGroup>LABEL").replace('My transparent skin', Languageletter69);
+$(".options-box.transparencyGroup>LABEL").replace('Transparent skins', Languageletter70);
+$(".options-box.transparencyGroup>LABEL").replace('Transparent cells', Languageletter70a);
+$(".options-box.transparencyGroup>LABEL").replace('Transparent viruses', Languageletter71);
+$(".options-box.gridGroup>h5").text(Languageletter72);
+$(".options-box.gridGroup>LABEL").replace('Show grid', Languageletter73);
+$(".options-box.gridGroup>LABEL").replace('Show background sectors', Languageletter74);
+$(".options-box.gridGroup>LABEL").replace('Show map borders', Languageletter75);
+$(".options-box.chatGroup>h5").text(Languageletter76);
+$(".options-box.chatGroup>LABEL").replace('Disable chat', Languageletter77);
+$(".options-box.chatGroup>LABEL").replace('Sound notifications', Languageletter78);
+$(".options-box.chatGroup>LABEL").replace('Emoticons', Languageletter79);
+$(".options-box.chatGroup>LABEL").replace('Show images on chat', Languageletter80);
+$(".options-box.chatGroup>LABEL").replace('Show videos on chat', Languageletter81);
+$(".options-box.chatGroup>LABEL").replace('Chatbox instead of popups', Languageletter82);
+$(".options-box.miniMapGroup>h5").text(Languageletter82a);
+$(".options-box.miniMapGroup>LABEL").replace('Show minimap', Languageletter82b);
+$(".options-box.miniMapGroup>LABEL").replace('Show minimap grid', Languageletter82c);
+$(".options-box.miniMapGroup>LABEL").replace('Show minimap guides', Languageletter82d);
+$(".options-box.miniMapGroup>LABEL").replace('One-colored teammates', Languageletter82e);
+$(".options-box.helpersGroup>h5").text(Languageletter83);
+$(".options-box.helpersGroup>LABEL").replace('Opponents colors', Languageletter84);
+$(".options-box.helpersGroup>LABEL").replace('Opponents rings', Languageletter85);
+$(".options-box.helpersGroup>LABEL").replace('Viruses colors', Languageletter86);
+$(".options-box.helpersGroup>LABEL").replace('Split range', Languageletter87);
+$(".options-box.helpersGroup>LABEL").replace('Viruses range', Languageletter88);
+$(".options-box.helpersGroup>LABEL").replace('Cursor tracking', Languageletter89);
+$(".options-box.helpersGroup>LABEL").replace('Teammates indicators', Languageletter90);
+$(".options-box.mouseGroup>h5").text(Languageletter91);
+$(".options-box.mouseGroup>LABEL").replace('LMB - Mouse split', Languageletter92);
+$(".options-box.mouseGroup>LABEL").replace('RMB - Mouse feed', Languageletter93);
+$(".options-box.mouseGroup>LABEL").replace('Invert mouse buttons', Languageletter94);
+$(".options-box.hudGroup>h5").text(Languageletter94a);
+$(".options-box.hudGroup>LABEL").replace('Show team top 5', Languageletter95);
+$(".options-box.hudGroup>LABEL").replace('Show targeting', Languageletter96);
+$(".options-box.hudGroup>LABEL").replace('Centered leaderboard', Languageletter97);
+$(".options-box.hudGroup>LABEL").replace('Game stats at the top', Languageletter98);
+$(".options-box.statsGroup>h5").text(Languageletter99);
+$(".options-box.statsGroup>LABEL").replace('Show game stats', Languageletter100);
+$(".options-box.statsGroup>LABEL").replace('Game stats: Mass', Languageletter101);
+$(".options-box.statsGroup>LABEL").replace('Game stats: STE', Languageletter102);
+$(".options-box.statsGroup>LABEL").replace('Game stats: n/16', Languageletter103);
+$(".options-box.statsGroup>LABEL").replace('Game stats: FPS', Languageletter104);
+$(".options-box.statsGroup>LABEL").replace('Show current time', Languageletter105);
+$(".options-box.extrasGroup>h5").text(Languageletter106);
+$(".options-box.extrasGroup>LABEL").replace('Skip stats after death', Languageletter107);
+$(".options-box.extrasGroup>LABEL").replace('Show quest', Languageletter108);
+$(".options-box.extrasGroup>LABEL").replace('Game sounds', Languageletter108a);
+$(".options-box.extrasGroup>LABEL").replace('Menu sounds', Languageletter108b);
+$(".options-box.extrasGroup>LABEL").replace('Block popups', Languageletter109);
+$(".options-box.voiceGroup>.menu-main-color").text(Languageletter109a);
+$(".options-box.voiceGroup>LABEL").replace('Voice-Prefix', Languageletter109b);
+$(".options-box.voiceGroup>LABEL").replace('Voice-lang', Languageletter109c);
+
+$('#quality>option:nth-child(1)').text(Languageletter110);
+$('#quality>option:nth-child(2)').text(Languageletter111);
+$('#quality>option:nth-child(3)').text(Languageletter112);
+$('#quality>option:nth-child(4)').text(Languageletter113);
+$('#quality>option:nth-child(5)').text(Languageletter114);
+$('#quality>option:nth-child(6)').text(Languageletter115);
+
+$(".btn.btn-block.btn-success.btn-export").text(Languageletter116);
+$(".restore-settings>a").eq(0).text(Languageletter117);
+
+$("#exp-imp-settings>h1").eq(0).text(Languageletter118);
+$("#exp-imp-settings>h1").eq(1).text(Languageletter119);
+$("#exp-imp-settings>h2").eq(0).text(Languageletter120);
+$("#exp-imp-settings>h2").eq(1).text(Languageletter121);
+
+$("#exp-imp-settings>LABEL").replace('Commands', Languageletter122);
+$("#exp-imp-settings>LABEL").replace('Hotkeys', Languageletter123);
+$("#exp-imp-settings>LABEL").replace('Profiles', Languageletter124);
+$("#exp-imp-settings>LABEL").replace('Settings', Languageletter125);
+$("#exp-imp-settings>LABEL").replace('Theme', Languageletter126);
+$("#export-settings-btn").text(Languageletter127);
+$("#import-settings-btn").text(Languageletter128);
+$("#import-settings-btn2").text(Languageletter128);
+
+$("#theme>ul>li>.ogicon-paint-format").attr('data-original-title', Languageletter129);
+$("#theme>ul>li>.ogicon-menu").attr('data-original-title', Languageletter130);
+$("#theme>ul>li>.ogicon-display").attr('data-original-title', Languageletter131);
+$("#theme>ul>li>.ogicon-bubbles").attr('data-original-title', Languageletter132);
+$("#theme>ul>li>.ogicon-location2").attr('data-original-title', Languageletter133);
+$("#theme>ul>li>.ogicon-compass").attr('data-original-title', Languageletter134);
+
+$(".preset-box>span").text(Languageletter135);
+
+$('#themePreset>option:nth-child(3)').text(Languageletter136);
+$('#themePreset>option:nth-child(4)').text(Languageletter137 + " 1");
+$('#themePreset>option:nth-child(5)').text(Languageletter137 + " 2");
+
+$("#theme-main>div>span").eq(1).text(Languageletter139);
+$("#theme-main>div>span").eq(2).text(Languageletter140);
+$("#theme-main>div>span").eq(3).text(Languageletter141);
+$("#theme-main>div>span").eq(4).text(Languageletter142);
+$("#theme-main>div>span").eq(5).text(Languageletter143);
+$("#theme-main>div>span").eq(6).text(Languageletter144);
+$("#theme-main>div>span").eq(7).text(Languageletter145);
+$("#theme-main>div>span").eq(8).text(Languageletter146);
+$("#theme-main>div>span").eq(9).text(Languageletter147);
+$("#theme-main>div>span").eq(10).text(Languageletter148);
+$("#theme-main>div>span").eq(11).text(Languageletter149);
+$("#theme-main>div>span").eq(12).text(Languageletter150);
+$("#theme-main>div>span").eq(13).text(Languageletter151);
+$("#theme-main>div>span").eq(14).text(Languageletter152);
+$("#theme-main>div>span").eq(15).text(Languageletter153);
+$("#theme-main>div>span").eq(16).text(Languageletter154);
+$("#theme-main>div>span").eq(17).text(Languageletter155 + ": ");
+
+$("#theme-main>div>div>span:nth-child(1)").eq(0).text(Languageletter157 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(1).text(Languageletter158 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(2).text(Languageletter159 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(3).text(Languageletter160 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(4).text(Languageletter161 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(5).text(Languageletter162 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(6).text(Languageletter163 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(7).text(Languageletter164 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(8).text(Languageletter165 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(9).text(Languageletter166 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(10).text(Languageletter167 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(11).text(Languageletter168 + ": ");
+$("#theme-main>div>div>span:nth-child(1)").eq(12).text(Languageletter169 + ": ");
+
+$(".restore-settings>a").eq(1).text(Languageletter170);
+$(".btn.btn-block.btn-success.btn-save").text(Languageletter171);
+
+$(".preset-box>span").eq(1).text(Languageletter172);
+$(".preset-box>div>span").eq(1).text(Languageletter173);
+
+$("#theme-menu>div>div>span:nth-child(1)").eq(0).text(Languageletter174 + ": ");
+$("#theme-menu>div>span").eq(1).text(Languageletter175);
+$("#theme-menu>div>span").eq(2).text(Languageletter176);
+$("#theme-menu>div>span").eq(3).text(Languageletter177);
+$("#theme-menu>div>span").eq(4).text(Languageletter177 + " (2)");
+$("#theme-menu>div>span").eq(5).text(Languageletter179);
+$("#theme-menu>div>span").eq(6).text(Languageletter179 + " (2)");
+$("#theme-menu>div>span").eq(7).text(Languageletter181 +" #1");
+$("#theme-menu>div>span").eq(8).text(Languageletter181 +" #1 (2)");
+$("#theme-menu>div>span").eq(9).text(Languageletter181 +" #2");
+$("#theme-menu>div>span").eq(10).text(Languageletter181 +" #2 (2)");
+$("#theme-menu>div>span").eq(11).text(Languageletter181 +" #3");
+$("#theme-menu>div>span").eq(12).text(Languageletter181 +" #3 (2)");
+$("#theme-menu>div>span").eq(13).text(Languageletter181 +" #4");
+$("#theme-menu>div>span").eq(14).text(Languageletter181 +" #4 (2)");
+$("#theme-menu>div>span").eq(15).text(Languageletter189);
+$("#menuBg").attr('placeholder', Languageletter190);
+
+$("#theme-hud>div>span").eq(0).text(Languageletter191);
+$("#theme-hud>div>span").eq(1).text(Languageletter192);
+$("#theme-hud>div>span").eq(2).text(Languageletter193);
+$("#theme-hud>div>span").eq(3).text(Languageletter194);
+$("#theme-hud>div>span").eq(4).text(Languageletter195);
+$("#theme-hud>div>span").eq(5).text(Languageletter196);
+$("#theme-hud>div>span").eq(6).text(Languageletter197);
+$("#theme-hud>div>span").eq(7).text(Languageletter198);
+$("#theme-hud>div>span").eq(8).text(Languageletter199);
+$("#theme-hud>div>div>span:nth-child(1)").eq(0).text(Languageletter200 + ": ");
+
+$("#theme-chat>div>span").eq(0).text(Languageletter201);
+$("#theme-chat>div>span").eq(1).text(Languageletter202);
+$("#theme-chat>div>span").eq(2).text(Languageletter203);
+$("#theme-chat>div>span").eq(3).text(Languageletter204);
+$("#theme-chat>div>span").eq(4).text(Languageletter205);
+$("#theme-chat>div>span").eq(5).text(Languageletter206);
+$("#theme-chat>div>span").eq(6).text(Languageletter207);
+$("#theme-chat>div>span").eq(7).text(Languageletter208);
+$("#theme-chat>div>span").eq(8).text(Languageletter209);
+$("#theme-chat>div>div>span:nth-child(1)").eq(0).text(Languageletter210 + ": ");
+
+$("#theme-minimap>div>span").eq(0).text(Languageletter211);
+$("#theme-minimap>div>span").eq(1).text(Languageletter212);
+$("#theme-minimap>div>span").eq(2).text(Languageletter213);
+$("#theme-minimap>div>span").eq(3).text(Languageletter214);
+$("#theme-minimap>div>span").eq(4).text(Languageletter215);
+$("#theme-minimap>div>span").eq(5).text(Languageletter216);
+$("#theme-minimap>div>span").eq(6).text(Languageletter217);
+$("#theme-minimap>div>span").eq(7).text(Languageletter218);
+$("#theme-minimap>div>span").eq(8).text(Languageletter219);
+$("#theme-minimap>div>span").eq(9).text(Languageletter220);
+$("#theme-minimap>div>span").eq(9).text(Languageletter221);
+
+$("#theme-minimap>div>div>span:nth-child(1)").eq(0).text(Languageletter222 + ": ");
+$("#theme-minimap>div>div>span:nth-child(1)").eq(1).text(Languageletter223 + ": ");
+$("#theme-minimap>div>div>span:nth-child(1)").eq(2).text(Languageletter224 + ": ");
+$("#theme-minimap>div>div>span:nth-child(1)").eq(3).text(Languageletter225 + ": ");
+$("#theme-minimap>div>div>span:nth-child(1)").eq(4).text(Languageletter226 + ": ");
+$("#theme-minimap>div>div>span:nth-child(1)").eq(5).text(Languageletter227 + ": ");
+$("#theme-minimap>div>div>span:nth-child(1)").eq(6).text(Languageletter228 + ": ");
+
+$("#theme-images>div>span").eq(0).text(Languageletter229);
+$("#theme-images>div>span").eq(1).text(Languageletter230);
+$("#customBackground").attr('placeholder',Languageletter231);
+$("#customCursor").attr('placeholder',Languageletter232);
+
+
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(0).text(Languageletter233);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(1).text(Languageletter234);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(2).text(Languageletter235);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(3).text(Languageletter236);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(4).text(Languageletter237);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(5).text(Languageletter238);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(6).text(Languageletter239);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(7).text(Languageletter240);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(8).text(Languageletter241);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(9).text(Languageletter242);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(10).text(Languageletter243);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(11).text(Languageletter244);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(12).text(Languageletter245);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(13).text(Languageletter246);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(14).text(Languageletter247);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(15).text(Languageletter248);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(16).text(Languageletter249);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(17).text(Languageletter250);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(18).text(Languageletter251);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(19).text(Languageletter252);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(20).text(Languageletter253);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(21).text(Languageletter254);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(22).text(Languageletter255);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(23).text(Languageletter256);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(24).text(Languageletter257);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(25).text(Languageletter258);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(26).text(Languageletter259);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(27).text(Languageletter260);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(28).text(Languageletter261);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(29).text(Languageletter262);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(30).text(Languageletter263);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(31).text(Languageletter264);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(32).text(Languageletter265);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(33).text(Languageletter266);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(34).text(Languageletter267);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(35).text(Languageletter268);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(36).text(Languageletter269);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(37).text(Languageletter270);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(38).text(Languageletter271 + " 1");
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(39).text(Languageletter271 + " 2");
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(40).text(Languageletter271 + " 3");
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(41).text(Languageletter271 + " 4");
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(42).text(Languageletter271 + " 5");
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(43).text(Languageletter272);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(44).text(Languageletter273);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(45).text(Languageletter274);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(46).text(Languageletter275);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(47).text(Languageletter276);
+$("#hotkeys-cfg>div>div:nth-child(1)").eq(48).text(Languageletter277);
+
+$("#hotkeys-inst").replaceWith('<div id="hotkeys-inst"><ul><li>' + Languageletter278 + '</li><li>' + Languageletter279 + '</li><li>' + Languageletter280 + '</li></ul></div>');
+
+$("#reset-hotkeys").text(Languageletter281);
+$("#save-hotkeys").text(Languageletter282);
+$("#close-hotkeys").text(Languageletter283);
+$("#close-exp-imp").text(Languageletter283);
+
+$("#youtubeplayer>h5").text(Languageletter284);
+$("#musicUrl").attr('placeholder', Languageletter284a).attr('data-original-title',Languageletter285);
+$(".agario-panel.sounds-panel>h5").text(Languageletter286);
+$(".agario-panel.sounds-panel>div>span").eq(0).text(Languageletter287);
+$(".agario-panel.sounds-panel>div>span").eq(1).text(Languageletter288);
+
+$("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
+$("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languageletter289);
+        $("#copySIPBtn").mouseenter(function() {
+            $("#dropDown3").hide();
+            $("#copySIPBtn").text(Languageletter290);
+			if ($("#clantag").val()!=""){
+				$("#dropDown2").show(100);
+			}
+            else {
+				$("#dropDown").show(100);
+				}
+        });
+$("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter291);});
+$("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
+$("#copySIPandPass").text(Languageletter290b).attr('data-original-title', Languageletter291b);
+$("#copySIPPassLB").text(Languageletter290c).attr('data-original-title', Languageletter291c);
+//$("#CopyAll").text(Languageletter290c).attr('data-original-title', Languageletter291c +"ΤΚ+);
+
+$("#searchShortcut").attr('data-original-title', Languageletter292);
+$("#reconnectBtn").attr('data-original-title', Languageletter293);
+$("#logTitle").attr("data-original-title", Languageletter294);
+$("#searchInput").attr('placeholder',Languageletter295);
+$("#closeBtn").attr("data-original-title", Languageletter283);
+
+//$("#top5-total").each(function() { var text = $(this).html();
+//   $(this).html(text.replace(' Active players: ', ' ' + Languageletter296 + ': ')); 
+//});
+//$("#top5-total").each(function() { var text = $(this).html();
+//  $(this).html(text.replace(' Total mass: ', ' ' + Languageletter297 + ': ')); 
+//});
+
+if($('#teambtext').val()==""){
+	$("#top5-hud > h5").each(function() { var text = $(this).html();
+   $(this).html(text.replace('Team top ', Languageletter298 + ' ')); 
+});}
+if($('#leadbtext').val()==""){
+	$("#leaderboard-hud > h4").text(Languageletter299);
+};
+$("#ChatBtn").attr("data-original-title", Languageletter300);
+$("#SendCommands").attr("data-original-title", Languageletter301);
+$("#Images").attr("data-original-title", Languageletter302);
+$("#yout").attr("data-original-title", Languageletter303);
+$("#Cutnames").attr("data-original-title", Languageletter304);
+$("#Bino").attr("data-original-title", Languageletter305);
+$("#playerBtn").attr("data-original-title", Languageletter306);
+$("#fullscreenBtn").attr("data-original-title", Languageletter307);
+$("#RotateRight").attr("data-original-title", Languageletter308);
+$("#bottomleft").text( Languageletter309);
+$("#Backtomenu").text( Languageletter283);
+$("#notesaveforlater").text(Languageletter311);
+$("#notesRegion").text(Languageletter312 + ": ");
+$("#notesPlayers").text(Languageletter313 + ": ");
+$("#notesServer").text(Languageletter314 + ": ");
+if($("#target-status").text()=="[Target not set]"){$("#target-status").text(Languageletter315)}
+
+$("#legendmanualback").text(Languageletter316 + ":  ");
+$("#legendmanualmess").text(Languageletter317 + ":  ");
+$("#chatbtntitle").text(Languageletter318 + ":  ");
+$("#legenddiscordwebh").text(Languageletter319 +"  ");
+
+$('#backgroundPic>option:nth-child(1)').text(Languageletter133);
+$('#backgroundPic>option:nth-child(2)').text(Languageletter320);
+$('#backgroundPic>option:nth-child(3)').text(Languageletter321);
+$('#backgroundPic>option:nth-child(4)').text(Languageletter322);
+$('#backgroundPic>option:nth-child(5)').text(Languageletter323);
+
+$('#msgcommand1').attr("data-original-title", Languageletter324);
+$('#msgcommand2').attr("data-original-title", Languageletter325);
+$('#msgcommand3').attr("data-original-title", Languageletter326);
+$('#msgcommand4').attr("data-original-title", Languageletter327);
+$('#msgcommand5').attr("data-original-title", Languageletter328);
+$('#msgcommand6').attr("data-original-title", Languageletter329);
+
+
+$('#minimapPicture').attr('placeholder',Languageletter331).attr('data-original-title',Languageletter330);
+$('#minbtext').attr('placeholder',Languageletter332);
+$('#leadbPicture').attr('placeholder',Languageletter333a).attr('data-original-title',Languageletter330);
+$('#leadbtext').attr('placeholder',Languageletter334);
+$('#teambPicture').attr('placeholder',Languageletter334a).attr('data-original-title',Languageletter330);
+$('#leadbtext').attr('placeholder',Languageletter334);
+$('#canvasPicture').attr('placeholder',Languageletter335).attr('data-original-title',Languageletter330);
+$('#imgUrl').attr('placeholder',Languageletter336).attr('data-original-title',Languageletter330);
+$('#imgHref').attr('placeholder',Languageletter337).attr('data-original-title',Languageletter341);
+
+$('#changephotos>option:nth-child(1)').text(Languageletter338 + " 1");
+$('#changephotos>option:nth-child(2)').text(Languageletter338 + " 2");
+$('#changephotos>option:nth-child(3)').text(Languageletter338 + " 3");
+$('#changephotos>option:nth-child(4)').text(Languageletter338 + " 4");
+$('#changephotos>option:nth-child(5)').text(Languageletter338 + " 5");
+$('#changephotos>option:nth-child(6)').text(Languageletter338 + " 6");
+
+
+$('#pic1url').attr('placeholder',Languageletter342c + " 1").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic2url').attr('placeholder',Languageletter342c + " 2").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic3url').attr('placeholder',Languageletter342c + " 3").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic4url').attr('placeholder',Languageletter342c + " 4").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic5url').attr('placeholder',Languageletter342c + " 5").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+$('#pic6url').attr('placeholder',Languageletter342c + " 6").attr("data-original-title", Languageletter339 + " http://i.imgur.com/RVBi3T1.gif");
+
+$('#yt1url').attr('placeholder',Languageletter342d + " 1").attr("data-original-title", Languageletter340);
+$('#yt2url').attr('placeholder',Languageletter342d + " 2").attr("data-original-title", Languageletter340);
+$('#yt3url').attr('placeholder',Languageletter342d + " 3").attr("data-original-title", Languageletter340);
+$('#yt4url').attr('placeholder',Languageletter342d + " 4").attr("data-original-title", Languageletter340);
+$('#yt5url').attr('placeholder',Languageletter342d + " 5").attr("data-original-title", Languageletter340);
+$('#yt6url').attr('placeholder',Languageletter342d + " 6").attr("data-original-title", Languageletter340);
+
+$('#pic1data').attr('placeholder',Languageletter342a + " 1");
+$('#pic2data').attr('placeholder',Languageletter342a + " 2");
+$('#pic3data').attr('placeholder',Languageletter342a + " 3");
+$('#pic4data').attr('placeholder',Languageletter342a + " 4");
+$('#pic5data').attr('placeholder',Languageletter342a + " 5");
+$('#pic6data').attr('placeholder',Languageletter342a + " 6");
+
+$('#yt1data').attr('placeholder',Languageletter342b + " 1");
+$('#yt2data').attr('placeholder',Languageletter342b + " 2");
+$('#yt3data').attr('placeholder',Languageletter342b + " 3");
+$('#yt4data').attr('placeholder',Languageletter342b + " 4");
+$('#yt5data').attr('placeholder',Languageletter342b + " 5");
+$('#yt6data').attr('placeholder',Languageletter342b + " 6");
+
+
+$('#discwebhook1').attr('placeholder',Languageletter342 + ' 1').attr('data-original-title', Languageletter343 + '. https://discordapp.com/api/webhooks/.../...');
+$('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-original-title', Languageletter344 + '. https://discordapp.com/api/webhooks/.../...');
+
+$("#HideAllBthn").attr('data-original-title',Languageletter345);
+
+$("#logoutbtn").text(Languageletter31); //for LM Express
+
+//$("#legendlanguagetext").text(Languageletter346+ "  :");
+$(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
+
+$("#potions").text(Languageletter349);
+$("#oldSkinsBtn").text(Languageletter350);
+$("#SpecialDealsBtn").text(Languageletter351);
+$("#SpecialDealsQuickBtn").attr("data-original-title", Languageletter351);
+$(".btn.btn-primary.btn-success.btn-leagues").text(Languageletter352); //Leaderboards
+$("#LegGoogleForm").attr("data-original-title", Languageletter353);
+$("#VideoSkinsQuick").attr("data-original-title", Languageletter354);
+$("#MiniScripts").attr("data-original-title", Languageletter355);
+$("#OpenuserScripts").text(Languageletter356);
+$("#VoiceBtn").attr("data-original-title", Languageletter357);
+$("#donationbtn").attr("data-original-title", Languageletter358);
+$("#opennamechars").attr("data-original-title", Languageletter359);
+$("#openskinchanger").attr("data-original-title", Languageletter360);
+$("#MorefpsText").text(Languageletter361);
+
+$("#Infobtn11").text(Externalletter1);
+$("#TemplatesBtn").text(Externalletter2);
+$("#ManualyTemplatesBtn").text(Externalletter3);
+$("#LanguagesTempBtn").text(Externalletter0a);
+$("#chooselangtext1").text(Externalletter0b);
+
+if (Languagetimesused=="1"){
+	Languagestimeusedplus1();
+	if (Languagetimesused1==1){
+toastr["info"](Externalletter0c, "", {
+    timeOut: 5000,
+    extendedTimeOut: 5000
+     }).css("width", "300px");
+	}
 }
-function templatesIframe(){
+setTimeout(function () {
+$("#Backtomenu").text(Languageletter283);
+$("#userscripter1").text(Externalletter6);
+$("#userscripter2").text(Externalletter13);
+$("#userscriptBtn1").text(Externalletter7);
+$("#userscriptpages").text(Externalletter8);
+$("#EraseScripter").text(Externalletter9);
+$("#UserscripttextA").attr('placeholder','User Script 1 '+ Externalletter10);
+$("#UserscripttextB").attr('placeholder','User Script 2 '+ Externalletter10);
+$("#UserscripttextC").attr('placeholder','User Script 3 '+ Externalletter10);
+$("#UserscripttextD").attr('placeholder','User Script 4 '+ Externalletter10);
+$("#UserscripttextE").attr('placeholder','User Script 5 '+ Externalletter10);
+$("#UserscriptA").attr('placeholder','User Script 1 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
+$("#UserscriptB").attr('placeholder','User Script 2 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
+$("#UserscriptC").attr('placeholder','User Script 3 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
+$("#UserscriptD").attr('placeholder','User Script 4 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
+$("#UserscriptE").attr('placeholder','User Script 5 .js URL ('+ Externalletter12+')').attr("data-original-title", Externalletter11+" http://... or https://...");
+}, 4000);
 
-$("#Userscriptshud3").html('<div id="tutorial9" style="display:block;" width="820" height="490">'+
-	'<p style="color:white; font-size:24px"; align="middle"><b>' + Externalletter4 + '</b></p>'+	
-	'<div id="settingbanners"><img src="https://jimboy3100.github.io/banners/iconagario.png" alt="Search Servers" id= "searchicon" onclick="agariowhitesettings(); return false" class="img-rounded" alt="Cinque Terre" width=20% height="50">' +
-	'<u style="color:white; font-size:22px"; align="left" onclick="agariowhitesettings(); return false">Agario Default(White)</u><br>'+	
-	'<img src="https://jimboy3100.github.io/banners/iconnosoup.png" alt="NoSoupsSettings" id = "legendclanbanner" class="img-rounded"  width=20% height="50" onclick="nosoups(); return false" > '+
-	'<u style="color:white; font-size:22px"; align="right" onclick="nosoups(); return false">No Soups Settings (Black)</u><br>'+
-	'<img src="https://jimboy3100.github.io/banners/vanillapic.jpg" alt="Vanilla Like Settings" id = "vanillaset" onclick="vanillabetter(); return false" class="img-rounded" width=20% height="50" >' +
-	'<u style="color:white; font-size:22px"; align="right" onclick="vanillabetter(); return false">Vanilla better (Grey)</u><br>'+	
-	'<img src="https://jimboy3100.github.io/banners/galaxybanner.jpg" alt=" Vanilla Like Settings" id = "galaxyset" onclick="galaxysettings(); return false" class="img-rounded"  return false" width=20%" height="50"  >' +
-	'<u style="color:white; font-size:22px"; align="left" onclick="galaxysettings(); return false">Galaxy (Black)</u><br>'+	
-	'<img src="https://jimboy3100.github.io/banners/iconmod.png" alt="Vanilla Like Settings" id = "legendclanbanner" class="img-rounded" width=20% height="50" onclick="legenddefaultsettings(); return false" > '+
-	'<u style="color:white; font-size:22px"; align="right" onclick="legenddefaultsettings(); return false">Legend Default (Dark Blue)</u><br>'+
-	'<img src="https://jimboy3100.github.io/banners/iconvanilla.jpg" alt="Vanilla Like Settings" id = "legendclanbanner" class="img-rounded" width=20% height="50" onclick="vanillalike(); return false" > '+
-	'<u style="color:white; font-size:22px"; align="right" onclick="vanillalike(); return false">Vanilla like (Grey)</u><br>'+
-	'<p style="color:white; font-size:24px"; align="middle"><b>' + Externalletter5 + '</b></p></div>'+
-	'<div id="LEGENDAds2"><a id="legendAdAnchor2" onclick="opendyinglight(); return false"><img id="legendAdImg" height="70px" src="https://jimboy3100.github.io/banners/dyinglightbanner2.jpg" style="width: 40%"></a><u style="color:white; font-size:22px"; align="right" onclick="opendyinglight(); return false">Dying Light</u></div>'+	   
-	'<br><br></div></div>');
-//$('#TemplatesBtn').hide();	
-}
+setTimeout(function () {
+$("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
+$("#block-warn").replace('Temporary unblock', Languageletter348);
+}, 1500);
 
-function LanguagesTempIframe(){
-$("#Userscriptshud3").html('<div id="tutorial10" style="display:block;" width="820" height="490">'+
-	'<p id="chooselangtext1" style="color:white; font-size:24px"; align="middle"><b>' + Externalletter0b + '</b></p>'+
-	'<br><br><select id="legendlanguages2" class="form-control" onchange="changeModLanguage2();" required="" data-original-title="" title="" style="display:inline; width: 50%"><option value="1" data-itr="">English</option><option value="6" data-itr="">Arabic - عربى</option><option value="4" data-itr="">Bulgarian - български</option><option value="5" data-itr="">French - Français</option><option value="2" data-itr="">Greek - Ελληνικά</option><option value="3" data-itr="">Spanish - Español</option><option value="7" data-itr="">Trad. Chinese - 繁體中文</option></select>'+ 
-	'<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><br><br>');
-	$('#legendlanguages2').val(languagemod);
-}
-
-function Infobtn11(){
-
-$("#Userscriptshud3").html('<iframe id="customskinsIframe2" src="https://jimboy3100.github.io/extras/helper.html" width="920" height="490" >'+
-    '<p>Your browser does not support iframes.</p>'+
-	'</iframe>');
-//$('#TemplatesBtn').hide();	
-}
-function manualytemplatesIframe(){
-window.open('https://jimboy3100.github.io/themes/','_blank');
-}
-
-function agariowhitesettings(){
-$("#import-settings-btn").attr('class', 'btn btn-success');document.getElementById("import-settings").value = 
-'{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Hello Team!","comm9":"Tricksplit!","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/cvZgi38.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"https://i.imgur.com/qcgMD45.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/g6Cqym2.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":true,"autoZoom":false,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":false,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":false,"massStroke":false,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"agario-light","darkTheme":false,"mainColor":"#ffffff","bgColor":"#f2fbff","gridColor":"#ced6d9","bordersColor":"#858a8c","foodColor":"#2de52d","virusColor":"#33ff33","virusStrokeColor":"#2de52d","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"ubuntu-bold","namesFontFamily":"Ubuntu","namesFontWeight":700,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":40,"sectorsWidth":40,"sectorsFontSize":1200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#01d9cc","menuBtnTextColor":"#ffffff","menuPanelColor":"#00243e","menuPanelColor2":"#002f52","menuTextColor":"#ffffff","menuTextColor2":"#8096a7","btn1Color":"#018cf6","btn1Color2":"#0176ce","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#bf00aa","btn4Color2":"#a80096","menuBg":"http://cdn.ogario.ovh/static/img/pattern.png","menuOpacity":0.96,"hudMainColor":"#ffffff","hudColor":"rgba(0,0,0,0.4)","hudTextColor":"#ffffff","statsHudColor":"#ffffff","timeHudColor":"#ffffff","top5MassColor":"#ffffff","lbMeColor":"#bf00aa","lbTeammateColor":"#018cf6","hudFont":"ubuntu-bold","hudFontFamily":"Ubuntu","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#ffffff","commandsColor":"rgba(255,255,255,0.9)","commandsTextColor":"#000000","commandsTimeColor":"#ffffff","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#ffffff","miniMapNickColor":"#ffffff","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#ffffff","miniMapTeammatesColor":"#ffffff","miniMapDeathLocationColor":"#ffffff","miniMapFont":"ubuntu-bold","miniMapFontFamily":"Ubuntu","miniMapFontWeight":700,"miniMapNickFont":"ubuntu-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":240,"miniMapTop":24,"miniMapSectorsOpacity":0.25,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur"}}'
-	$('#import-settings-btn').click();
-}	
-
-
-function legenddefaultsettings(){
-$("#import-settings-btn").attr('class', 'btn btn-success');document.getElementById("import-settings").value = 
-'{"ogarioCommands":{"comm1":"Feed me!","comm2":"Split into me!","comm3":"Need backup at %currentSector%!","comm4":"Enemy spotted at %currentSector%!","comm5":"Need a teammate!","comm6":"Tank the virus!","comm7":"Eat the virus!","comm8":"Lets bait!","comm9":"Fake tricksplit!","comm0":"Fuck!","comm10":"Tricksplit!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"Profile #1","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #2","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #3","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #4","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #5","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #6","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #7","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #8","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #9","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"Profile #10","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":true,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":true,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":false,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":false,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":false,"oppColors":false,"oppRings":false,"virColors":false,"splitRange":false,"virusesRange":false,"textStroke":false,"namesStroke":false,"massStroke":false,"cursorTracking":true,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":false,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":false,"showStatsN16":false,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#000a11","gridColor":"#00243e","bordersColor":"#01d9cc","foodColor":"#5000ff","virusColor":"#002f52","virusStrokeColor":"#00b9e8","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"ubuntu-bold","namesFontFamily":"Ubuntu","namesFontWeight":700,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":40,"sectorsWidth":40,"sectorsFontSize":1200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#01d9cc","menuBtnTextColor":"#ffffff","menuPanelColor":"#00243e","menuPanelColor2":"#002f52","menuTextColor":"#ffffff","menuTextColor2":"#8096a7","btn1Color":"#018cf6","btn1Color2":"#0176ce","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#bf00aa","btn4Color2":"#a80096","menuBg":"http://cdn.ogario.ovh/static/img/pattern.png","menuOpacity":0.96,"hudMainColor":"#01d9cc","hudColor":"rgba(0,0,0,0.4)","hudTextColor":"#ffffff","statsHudColor":"#ffffff","timeHudColor":"#01d9cc","top5MassColor":"#bf00aa","lbMeColor":"#bf00aa","lbTeammateColor":"#018cf6","hudFont":"ubuntu-bold","hudFontFamily":"Ubuntu","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#01d9cc","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#ffffff","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu-bold","miniMapFontFamily":"Ubuntu","miniMapFontWeight":700,"miniMapNickFont":"ubuntu-bold","miniMapNickFontFamily":"Ubuntu","miniMapNickFontWeight":700,"miniMapWidth":240,"miniMapTop":24,"miniMapSectorsOpacity":0.1,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur"}}'
-	$('#import-settings-btn').click();
-}		
-
-
-
-function vanillalike(){
-$("#import-settings-btn").attr('class', 'btn btn-success');document.getElementById("import-settings").value = 
-'{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Hello Team!","comm9":"Tricksplit!","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/cvZgi38.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"https://i.imgur.com/qcgMD45.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/g6Cqym2.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":true,"autoZoom":false,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":false,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":false,"massStroke":false,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"ubuntu-bold","namesFontFamily":"Ubuntu","namesFontWeight":700,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":40,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/legend.github.io/banners/grey-08.jpg","menuOpacity":0.97,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur"}}'
-	$('#import-settings-btn').click();
-}
-
-function nosoups(){
-$("#import-settings-btn").attr('class', 'btn btn-success');document.getElementById("import-settings").value = 
-'{"ogarioCommands":{"comm1":"Feed me!","comm2":"Split into me!","comm3":"Check if you are close to me. I in trouble. HELP!!!","comm4":"Enemy spotted at %currentSector%!","comm5":"I am alone, need a teammate, who wants to team with me?","comm6":"Shoot a virus!","comm7":"Eat the virus!","comm8":"Lets bait!","comm9":"Fake tricksplit!","comm0":"Fuck!","comm10":"Tricksplit!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"},{"nick":"","clanTag":"","skinURL":"","color":"#ff7800"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":true,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":false,"virMassShots":false,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":false,"showMiniMap":true,"showMiniMapGrid":true,"showMiniMapGuides":false,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":false,"oppRings":false,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":true,"massStroke":true,"cursorTracking":false,"teammatesInd":true,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":false,"showChatVideos":false,"showTop5":true,"showTargeting":false,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":false,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"agario-dark","darkTheme":false,"mainColor":"#ffffff","bgColor":"#111111","gridColor":"#333333","bordersColor":"#999999","foodColor":"#2de52d","virusColor":"#33ff33","virusStrokeColor":"#2de52d","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"ubuntu-bold","namesFontFamily":"Ubuntu","namesFontWeight":700,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":20,"sectorsWidth":40,"sectorsFontSize":1200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#01d9cc","menuBtnTextColor":"#ffffff","menuPanelColor":"#00243e","menuPanelColor2":"#002f52","menuTextColor":"#ffffff","menuTextColor2":"#8096a7","btn1Color":"#018cf6","btn1Color2":"#0176ce","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#bf00aa","btn4Color2":"#a80096","menuBg":"http://cdn.ogario.ovh/static/img/pattern.png","menuOpacity":0.96,"hudMainColor":"#01d9cc","hudColor":"rgba(0,0,0,0.4)","hudTextColor":"#ffffff","statsHudColor":"#ffffff","timeHudColor":"#01d9cc","top5MassColor":"#bf00aa","lbMeColor":"#bf00aa","lbTeammateColor":"#018cf6","hudFont":"ubuntu-bold","hudFontFamily":"Ubuntu","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#111111","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#01d9cc","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#ffffff","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu-bold","miniMapFontFamily":"Ubuntu","miniMapFontWeight":700,"miniMapNickFont":"ubuntu-bold","miniMapNickFontFamily":"Ubuntu","miniMapNickFontWeight":700,"miniMapWidth":240,"miniMapTop":24,"miniMapSectorsOpacity":0.1,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur"}}'
-	$('#import-settings-btn').click();
-}
-
-function vanillabetter(){
-$("#import-settings-btn").attr('class', 'btn btn-success');document.getElementById("import-settings").value = 
-'{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Hello Team!","comm9":"Tricksplit!","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/cvZgi38.jpg","color":"#01d9cc"},{"nick":"jimboplkam","clanTag":"","skinURL":"https://i.imgur.com/qcgMD45.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/2gcNlAr.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":true,"autoZoom":false,"autoHideNames":true,"autoHideMass":true,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":false,"massStroke":false,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#191919","bordersColor":"#000000","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"roboto-bold","namesFontFamily":"Roboto","namesFontWeight":700,"sectorsFont":"roboto","sectorsFontFamily":"Roboto","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":0.9,"massScale":3,"massScaleMargin":1.125,"foodSize":4,"bordersWidth":10,"sectorsWidth":14,"sectorsFontSize":300,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.52,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/banners/grey-08.jpg","menuOpacity":0.96,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1.1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"oswald","miniMapNickFontFamily":"Oswald","miniMapNickFontWeight":400,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":16,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}'
-	$('#import-settings-btn').click();
-}
-
-
-function galaxysettings(){
-$("#import-settings-btn").attr('class', 'btn btn-success');document.getElementById("import-settings").value = 
-'{"ogarioCommands":{"comm1":"Dont W or Split too much! We dont want to get ANTI","comm2":"Split him! Stick to the Viruses!","comm3":"I am not ANTI. You can give me mass!","comm4":"I am ANTI. Do NOT give me mass!","comm5":"%currentSector%!","comm6":"Need backup at %currentSector%!","comm7":"Enemy spotted at %currentSector%!","comm8":"Tricksplit!","comm9":"[img]http://i.imgur.com/EucIfYY.gif[/img]","comm0":"Dont Ally with them!","comm10":"They are Allies!","comm11":"Left!","comm12":"Up!","comm13":"Right!","comm14":"Bottom!"},"ogarioHotkeys":{"0":"hk-comm0","1":"hk-comm1","2":"hk-comm2","3":"hk-comm3","4":"hk-comm4","5":"hk-comm5","6":"hk-comm6","7":"hk-comm7","8":"hk-comm8","9":"hk-comm9","W":"hk-feed","E":"hk-macroFeed","SPACE":"hk-split","Q":"hk-doubleSplit","ALT+Q":"hk-popSplit","SHIFT":"hk-split16","R":"hk-pause","T":"hk-showTop5","ALT+T":"hk-showTime","U":"hk-showSplitRange","I":"hk-showSplitInd","ALT+I":"hk-showTeammatesInd","O":"hk-showOppColors","A":"hk-toggleSkins","S":"hk-showSkins","ALT+S":"hk-showStats","D":"hk-toggleCells","F":"hk-showFood","G":"hk-showGrid","ALT+G":"hk-showMiniMapGuides","H":"hk-hideChat","ALT+H":"hk-showHUD","L":"hk-copyLb","ALT+L":"hk-showLb","":"hk-privateMiniMap","Z":"hk-resetZoom","X":"hk-toggleDeath","C":"hk-clearChat","B":"hk-showBgSectors","ALT+B":"hk-hideBots","N":"hk-showNames","M":"hk-showMass","ALT+M":"hk-showMiniMap","ENTER":"hk-chatMessage","TILDE":"hk-quickResp","ALT+1":"hk-zoom1","ALT+2":"hk-zoom2","ALT+3":"hk-zoom3","ALT+4":"hk-zoom4","ALT+5":"hk-zoom5","=":"hk-switchServerMode","MOUSE WHEEL":"hk-comm10","LEFT":"hk-comm11","UP":"hk-comm12","RIGHT":"hk-comm13","DOWN":"hk-comm14","spec-messageKey":"ENTER"},"ogarioPlayerProfiles":[{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/itbCL0A.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"https://i.imgur.com/qcgMD45.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/mLZ4lDZ.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/ujeKpeV.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/AlX80bX.png","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"http://i.imgur.com/tyAhouV.jpg","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"},{"nick":"","clanTag":"","skinURL":"","color":"#01d9cc"}],"ogarioSettings":{"quickResp":true,"autoResp":false,"autoZoom":false,"autoHideNames":true,"autoHideMass":false,"autoHideFood":false,"autoHideFoodOnZoom":false,"noNames":false,"optimizedNames":true,"hideMyName":false,"showMass":true,"optimizedMass":true,"shortMass":true,"virMassShots":true,"hideMyMass":false,"hideEnemiesMass":false,"vanillaSkins":true,"customSkins":true,"myTransparentSkin":false,"myCustomColor":false,"transparentCells":false,"transparentViruses":true,"transparentSkins":false,"showGrid":true,"showBgSectors":false,"showMapBorders":true,"showMiniMap":true,"showMiniMapGrid":false,"showMiniMapGuides":true,"oneColoredTeammates":false,"optimizedFood":true,"rainbowFood":true,"oppColors":true,"oppRings":true,"virColors":false,"splitRange":true,"virusesRange":false,"textStroke":true,"namesStroke":false,"massStroke":false,"cursorTracking":false,"teammatesInd":false,"mouseSplit":false,"mouseFeed":false,"mouseInvert":false,"disableChat":false,"hideChat":false,"showChatBox":false,"showChatImages":true,"showChatVideos":true,"showTop5":true,"showTargeting":true,"showTime":true,"normalLb":true,"centeredLb":true,"fpsAtTop":true,"showStats":true,"showStatsMass":true,"showStatsSTE":true,"showStatsN16":true,"showStatsFPS":true,"blockPopups":false,"streamMode":false,"hideSkinUrl":false,"showQuickMenu":true,"showSkinsPanel":true,"zoomSpeedValue":0.9},"ogarioThemeSettings":{"preset":"ogario-v3","darkTheme":true,"mainColor":"#01d9cc","bgColor":"#757575","gridColor":"#1c1e1f","bordersColor":"#6e0909","foodColor":"#0038ff","virusColor":"#00523e","virusStrokeColor":"#178a5a","cursorTrackingColor":"#ffffff","splitRangeColor":"#ffffff","teammatesIndColor":"#ffffff","namesFont":"roboto","namesFontFamily":"Roboto","namesFontWeight":400,"sectorsFont":"ubuntu","sectorsFontFamily":"Ubuntu","sectorsFontWeight":400,"sectorsX":5,"sectorsY":5,"animation":140,"nameScale":1,"massScale":3,"massScaleMargin":1.25,"foodSize":5,"bordersWidth":14,"sectorsWidth":40,"sectorsFontSize":200,"cellsAlpha":0.9,"skinsAlpha":0.7,"virusAlpha":0.6,"virusStrokeSize":14,"menuPreset":"ogario-v3","menuMainColor":"#fafafa","menuBtnTextColor":"#ffffff","menuPanelColor":"#373838","menuPanelColor2":"#4d4c4c","menuTextColor":"#ffffff","menuTextColor2":"#000000","btn1Color":"#018cf6","btn1Color2":"#151a1f","btn2Color":"#00b9e8","btn2Color2":"#0099c0","btn3Color":"#8d5fe6","btn3Color2":"#814ee3","btn4Color":"#960000","btn4Color2":"#19233b","menuBg":"https://jimboy3100.github.io/banners/grey-08.jpg","menuOpacity":0.95,"hudMainColor":"#ababab","hudColor":"rgba(189,189,189,0.4)","hudTextColor":"#210000","statsHudColor":"#202026","timeHudColor":"#0b2120","top5MassColor":"#bf00aa","lbMeColor":"#f2f0f2","lbTeammateColor":"#1f5431","hudFont":"oswald-bold","hudFontFamily":"Oswald","hudFontWeight":700,"hudScale":1,"messageColor":"rgba(0,0,0,0.4)","messageTextColor":"#ffffff","messageTimeColor":"#018cf6","messageNickColor":"#01d9cc","commandsColor":"rgba(191,0,170,0.9)","commandsTextColor":"#ffffff","commandsTimeColor":"#bf00aa","commandsNickColor":"#ffffff","chatBoxColor":"rgba(0,0,0,0.4)","chatScale":1,"miniMapSectorsColor":"#ffffff","miniMapSectorColor":"#ffffff","miniMapGuidesColor":"#bf00aa","miniMapNickColor":"#163ec9","miniMapNickStrokeColor":"#000000","miniMapMyCellColor":"#ffffff","miniMapMyCellStrokeColor":"#bf00aa","miniMapTeammatesColor":"#01d9cc","miniMapDeathLocationColor":"#bf00aa","miniMapFont":"ubuntu","miniMapFontFamily":"Ubuntu","miniMapFontWeight":400,"miniMapNickFont":"roboto-bold","miniMapNickFontFamily":"Roboto","miniMapNickFontWeight":700,"miniMapWidth":226,"miniMapTop":23,"miniMapSectorsOpacity":0.66,"miniMapNickSize":11,"miniMapNickStrokeSize":2,"miniMapMyCellSize":7.5,"miniMapMyCellStrokeSize":4,"miniMapTeammatesSize":5.5,"customBackground":"https://jimboy3100.github.io/banners/darkrift.jpg","customCursor":"http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur"}}'
-	$('#import-settings-btn').click();
-}
-
-function openbleedmod() {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/BleedingMod.js";
-    $("body").append(s);
-}
-
-function openrotatingmod() {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/rotating500images.js";
-    $("body").append(s);
-}
-
-function changeModLanguage2() {
-	
-    if ($("#legendlanguages2").val() == 1) {
-        localStorage.setItem("languagemod", 1);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-    if ($("#legendlanguages2").val() == 2) {
-        localStorage.setItem("languagemod", 2);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-    if ($("#legendlanguages2").val() == 3) {
-        localStorage.setItem("languagemod", 3);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-    if ($("#legendlanguages2").val() == 4) {
-        localStorage.setItem("languagemod", 4);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-    if ($("#legendlanguages2").val() == 5) {
-        localStorage.setItem("languagemod", 5);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-    if ($("#legendlanguages2").val() == 6) {
-        localStorage.setItem("languagemod", 6);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-    if ($("#legendlanguages2").val() == 7) {
-        localStorage.setItem("languagemod", 7);
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
-        $("body").append(s);
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.type = "text/javascript";
-            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-            $("body").append(s1);
-
-        }, 800);
-    }
-		return Languagetimesused="1";
+function Languagestimeusedplus1(){
+Languagetimesused1++;
+return Languagetimesused1;
 }
