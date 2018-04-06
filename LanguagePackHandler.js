@@ -492,6 +492,21 @@ $("#opennamechars").attr("data-original-title", Languageletter359);
 $("#openskinchanger").attr("data-original-title", Languageletter360);
 $("#MorefpsText").text(Languageletter361);
 
+$("#Infobtn11").text(Externalletter1);
+$("#TemplatesBtn").text(Externalletter2);
+$("#ManualyTemplatesBtn").text(Externalletter3);
+$("#LanguagesTempBtn").text(Externalletter0a);
+$("#chooselangtext1").text(Externalletter0b);
+
+if (Languagetimesused=="1"){
+	Languagestimeusedplus1();
+	if (Languagetimesused1==1){
+toastr["info"](Externalletter0c, "", {
+    timeOut: 5000,
+    extendedTimeOut: 5000
+     }).css("width", "300px");
+	}
+}
 setTimeout(function () {
 $("#Backtomenu").text(Languageletter283);
 $("#userscripter1").text(Externalletter6);
@@ -515,3 +530,8 @@ setTimeout(function () {
 $("#block-warn").replace('WARNING! Popups are blocked in the settings.', Languageletter347);
 $("#block-warn").replace('Temporary unblock', Languageletter348);
 }, 1500);
+
+function Languagestimeusedplus1(){
+Languagetimesused1++;
+return Languagetimesused1;
+}
