@@ -363,7 +363,7 @@ $("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDow
 $("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
 $("#copySIPandPass").text(Languageletter290b).attr('data-original-title', Languageletter291b);
 $("#copySIPPassLB").text(Languageletter290c).attr('data-original-title', Languageletter291c);
-//$("#CopyAll").text(Languageletter290c).attr('data-original-title', Languageletter291c +"ΤΚ+);
+
 
 $("#searchShortcut").attr('data-original-title', Languageletter292);
 $("#reconnectBtn").attr('data-original-title', Languageletter293);
@@ -474,7 +474,7 @@ $('#discwebhook2').attr('placeholder',Languageletter342 + ' 2').attr('data-origi
 $("#HideAllBthn").attr('data-original-title',Languageletter345);
 
 $("#logoutbtn").text(Languageletter31); //for LM Express
-
+$("#CopyAll").attr('data-original-title',Languageletter26a); //for LM Express
 //$("#legendlanguagetext").text(Languageletter346+ "  :");
 $(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
 
