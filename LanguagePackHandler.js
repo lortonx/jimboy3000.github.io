@@ -361,16 +361,18 @@ $("#copySIPBtn").text(Languageletter291).attr('data-original-title',Languagelett
         });
 $("#leaderboard-menu").mouseleave(function () {$("#dropDown").hide();$("#dropDown3").hide();$("#copySIPBtn").text(Languageletter291);});
 $("#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
+$("#dropDown>#copyLBBtn").text(Languageletter290a).attr('data-original-title', Languageletter291a);
 $("#copySIPandPass").text(Languageletter290b).attr('data-original-title', Languageletter291b);
 $("#copySIPPassLB").text(Languageletter290c).attr('data-original-title', Languageletter291c);
 
 
 $("#searchShortcut").attr('data-original-title', Languageletter292);
 $("#reconnectBtn").attr('data-original-title', Languageletter293);
-$("#logTitle").attr("data-original-title", Languageletter294);
+$("#logTitle").text(Languageletter294);
 $("#searchInput").attr('placeholder',Languageletter295);
 $("#closeBtn").attr("data-original-title", Languageletter283);
-
+$("#notesclear").attr("data-original-title", Languageletter295a);
+$("#message").attr('placeholder', Languageletter295b);
 //$("#top5-total").each(function() { var text = $(this).html();
 //   $(this).html(text.replace(' Active players: ', ' ' + Languageletter296 + ': ')); 
 //});
