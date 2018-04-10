@@ -22,12 +22,12 @@ $(".btn.btn-play-guest.btn-success.btn-needs-server").text(Languageletter14);
 $(".btn.btn-play-guest.btn-success").text(Languageletter14);
 $(".btn.btn-warning.btn-login-play.btn-needs-server").text(Languageletter15);
 $(".btn.btn-warning.btn-login-play").text(Languageletter15);
-$(".btn.btn-warning.btn-spectate.btn-needs-server").attr('data-original-title',Languageletter16);
+
 $(".btn.btn-warning.btn-spectate.btn-needs-server").tooltip({
             title: Languageletter16,
             placement: "top"
         });
-
+$(".btn.btn-warning.btn-spectate.btn-needs-server").attr('data-original-title',Languageletter16);
 $(".btn.btn-primary.btn-login.btn-fb").children().last().text(Languageletter17);
 $(".btn.btn-primary.btn-login.btn-gplus").children().last().text(Languageletter18);
 $(".btn.btn-play.btn-primary.btn-needs-server").text(Languageletter19);
