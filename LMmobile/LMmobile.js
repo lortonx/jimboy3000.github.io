@@ -1,4 +1,3 @@
- //javascript:(function() {var script = document.createElement('script');script.id='Airstick';script.setAttribute('data-version','MTUxNTMwNDIxODMwOQ==');script.src = 'https://jimboy3000.github.io/LMmobile/LMmobile.js?v=MTUxNTMwNDIxODMwOQ==';document.head.appendChild(script);})();
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
     , 'border: 1px solid #3E0E02'
@@ -17,13 +16,15 @@ var stylesLegendModConsole2 = [
     , 'display: block'
     , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
     , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
-//    , 'line-height: 40px'
     , 'text-align: center'
-//    , 'font-weight: bold'
 ].join(';');
 
 $("#adsBottomInner").remove();
 $("#mcbanners-container").remove();
+$("#instructions").remove();
+//$("#adsBottom").remove();
+$(".tosBox.left").remove();
+$(".tosBox.right").remove();
 
 	var variable_0 = setInterval(function() {
         if (document["getElementsByClassName"]("row")["length"] > 0 && typeof window["core"] !== "undefined") {
@@ -62,8 +63,8 @@ $("#mcbanners-container").remove();
                 })
             };
             document["getElementsByTagName"]("head")[0]["appendChild"](variable_1);
-            var variable_8 = "https://i.imgur.com/3efYSTO.png";
-            var variable_9 = "https://i.imgur.com/N3q4yKR.png";
+            var variable_8 = "https://jimboy3100.github.io/banners/iconMobileSplit.png";
+            var variable_9 = "https://jimboy3100.github.io/banners/iconMobileFeed.png";
 
             function canvaselement2(variable_11, variable_12, variable_13, variable_14, variable_00) {
                 return Math["pow"](variable_11 - variable_12, 2) + Math["pow"](variable_13 - variable_14, 2) >= variable_00 * variable_00
@@ -139,27 +140,27 @@ $("#mcbanners-container").remove();
             variable_0b["style"]["zIndex"] = "99998";
             variable_0b["style"]["margin"] = "-5vh 0 0 -5vh";
             document["body"]["appendChild"](variable_0b);
-            var variable_0c = ({
-                "\x78": 0,
-                "\x79": 0
-            });
-            var variable_0d = ({
-                "\x78": 0,
-                "\x79": 0
-            });
-            var variable_0e = ({
-                "\x78": 0,
-                "\x79": 0
+			var variable_0c = ({ 
+			"x": 0,
+			"y": 0
+			});
+			var variable_0d = ({ 
+			"x": 0, 
+			"y": 0 
+			});            
+			var variable_0e = ({
+            "x": 0,
+			"y": 0
             });
             var variable_0f = window["innerWidth"] / window["innerHeight"];
             var canvaselement = document["getElementById"]("canvas");
             canvaselement["style"]["width"] = "100vw";
             canvaselement["style"]["height"] = "100vh";
             canvaselement["addEventListener"]("touchstart", function(variable_7) {
-                var variable_11 = new MouseEvent("mousemove", {
-                    "\x63\x6C\x69\x65\x6E\x74\x58": variable_7["changedTouches"][0]["clientX"],
-                    "\x63\x6C\x69\x65\x6E\x74\x59": variable_7["changedTouches"][0]["clientY"]
-                });
+			var variable_11 = new MouseEvent("mousemove", {   
+			"clientX": variable_7["changedTouches"][0]["clientX"],
+			"clientY": variable_7["changedTouches"][0]["clientY"] 
+			});
                 variable_0c["x"] = variable_7["changedTouches"][0]["clientX"];
                 variable_0c["y"] = variable_7["changedTouches"][0]["clientY"];
                 canvaselement["dispatchEvent"](variable_11);
@@ -171,14 +172,13 @@ $("#mcbanners-container").remove();
                 variable_0b["style"]["top"] = variable_0c["y"] + "px"
             }, false);
             canvaselement["addEventListener"]("touchend", function(variable_7) {
-                var variable_11 = new MouseEvent("mousemove", {
-                    "\x63\x6C\x69\x65\x6E\x74\x58": window["innerWidth"] / 2,
-                    "\x63\x6C\x69\x65\x6E\x74\x59": window["innerHeight"] / 2
-                });
-                variable_0c = ({
-                    "\x78": 0,
-                    "\x79": 0
-                });
+				var variable_11 = new MouseEvent("mousemove", { 
+				"clientX": window["innerWidth"] / 2,
+				"clientY": window["innerHeight"] / 2 
+				});
+				variable_0c = ({ 
+				"x": 0,
+				"y": 0});
                 canvaselement["dispatchEvent"](variable_11);
                 variable_0a["style"]["display"] = "none";
                 variable_0b["style"]["display"] = "none"
@@ -186,18 +186,18 @@ $("#mcbanners-container").remove();
             canvaselement["addEventListener"]("touchmove", function(variable_7) {
                 variable_0e["x"] = -(variable_0c["x"] - variable_7["changedTouches"][0]["clientX"]) * 300;
                 variable_0e["y"] = -(variable_0c["y"] - variable_7["changedTouches"][0]["clientY"]) * 300 * variable_0f;
-                var variable_11 = new MouseEvent("mousemove", {
-                    "\x63\x6C\x69\x65\x6E\x74\x58": (window["innerWidth"] / 2) + variable_0e["x"],
-                    "\x63\x6C\x69\x65\x6E\x74\x59": (window["innerHeight"] / 2) + variable_0e["y"]
+				var variable_11 = new MouseEvent("mousemove", { 
+				"clientX": (window["innerWidth"] / 2) + variable_0e["x"],
+				"clientY": (window["innerHeight"] / 2) + variable_0e["y"]
                 });
                 canvaselement["dispatchEvent"](variable_11);
                 variable_0a["style"]["display"] = "inline-block";
                 variable_0b["style"]["display"] = "inline-block";
-                if (canvaselement2(variable_0c["x"], variable_7["changedTouches"][0]["clientX"], variable_0c["y"], variable_7["changedTouches"][0]["clientY"], (window["innerHeight"] * 10) / 100) == true) {
-                    variable_0d = variable_01({
-                        "\x78": variable_7["changedTouches"][0]["clientX"] - variable_0c["x"],
-                        "\x79": variable_7["changedTouches"][0]["clientY"] - variable_0c["y"]
-                    }, (window["innerHeight"] * 10) / 100);
+				if (canvaselement2(variable_0c["x"], variable_7["changedTouches"][0]["clientX"], variable_0c["y"], variable_7["changedTouches"][0]["clientY"], (window["innerHeight"] * 10) / 100) == true){
+                    variable_0d = variable_01({                        
+					"x": variable_7["changedTouches"][0]["clientX"] - variable_0c["x"],
+					"y": variable_7["changedTouches"][0]["clientY"] - variable_0c["y"] 
+					}, (window["innerHeight"] * 10) / 100);
                     variable_0b["style"]["left"] = variable_0d["x"] + variable_0c["x"] + "px";
                     variable_0b["style"]["top"] = variable_0d["y"] + variable_0c["y"] + "px"
                 } else {
@@ -205,35 +205,24 @@ $("#mcbanners-container").remove();
                     variable_0b["style"]["top"] = variable_7["changedTouches"][0]["clientY"] + "px"
                 }
             }, false);
- //           document["getElementsByClassName"]("form-group clearfix")[0]["innerHTML"] = "<h1> <b>Agar.io LM Mobile</b></h1><br><input class=\"form-control\" type=\"text\" id=\"agarSkin\" placeholder=\"Paste your FREE PREMIUM SKINS code here...\"></font></b>";
 			document["getElementsByClassName"]("form-group clearfix")[0]["innerHTML"] = "<h1> <b>Agar.io LM Mobile</b></h1></font></b>";
             if (!document["getElementsByClassName"]("row")[0]["innerHTML"]["match"](/▶/gi)) {
                 var variable_12 = document["createElement"]("a");
-                variable_12["href"] = "https://goo.gl/yAT5bV";
-                variable_12["innerHTML"] = "\u25B6" + atob("IEZyZWUgcHJlbWl1bSBza2lucyA=") + "\u25C0";
+                variable_12["href"] = "http://legendmod.ml";
+				variable_12["innerHTML"] = "." + "Free premium scripts" + ".";
                 variable_12["className"] = "btn btn-primary btn-gifting";
-               // document["getElementsByClassName"]("row")[0]["appendChild"](variable_12);
-                var variable_13 = document["createElement"]("a");
-                variable_13["href"] = "https://streamlabs.com/airweb";
-                variable_13["innerHTML"] = "\u2665" + atob("IERvbmF0ZSB0byBzdXBwb3J0IEFnYXJTdGljayA=") + "\u2665";
-                variable_13["className"] = "btn btn-primary btn-shop";
-               // document["getElementsByClassName"]("row")[0]["appendChild"](variable_13)
-            };
-       /*     document["getElementById"]("agarSkin")["addEventListener"]("input", function() {
-                var variable_1 = document["createElement"]("script");
-                variable_1["innerHTML"] = document["getElementById"]("agarSkin")["value"];
-                variable_1["setAttribute"]("data-src", "jsi");
-                document["body"]["appendChild"](variable_1)
-            });*/
- /*           var variable_14 = document["createElement"]("a");
-            variable_14["href"] = "javascript:window.MC.setNick(document.getElementById(\"nick\").value);";
-            variable_14["innerHTML"] = "\u25B6 Fast respawn \u25C0";
-            variable_14["className"] = "btn btn-primary btn-shop";
-            document["getElementById"]("socialStats")["appendChild"](variable_14); */
-            document["getElementById"]("adbg")["innerHTML"] = "<br><a id=\"ftbtn\" href=\"http://legendmod.ml/\" target=\"_blank\"><img style=\"margin-top:-20px\" width=\"300\" height=\"250\" src=\"https://jimboy3100.github.io/banners/CropedImage128.gif\"></a><br/><br/>"
-        }
-    }, 100);
 
+                var variable_13 = document["createElement"]("a");
+                variable_13["href"] = "http://legendmod.ml";
+				variable_13["innerHTML"] = "." + "Donate to support LM" + ".";
+                variable_13["className"] = "btn btn-primary btn-shop";
+            };
+            document["getElementById"]("adbg")["innerHTML"] = "<br><a id=\"ftbtn\" href=\"http://legendmod.ml/\" target=\"_blank\"><img style=\"margin-top:-20px\" width=\"300\" height=\"100\" src=\"https://jimboy3100.github.io/banners/iconmod3.png\"></a><br/><br/>";
+			$("#advertisement").css("height", "140px");
+			
+
+		}
+    }, 100);
 setTimeout(function() {
 	console.group('%cLegend Mobile%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
     console.group("Part of");    		
