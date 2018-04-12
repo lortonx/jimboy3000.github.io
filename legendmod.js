@@ -7559,6 +7559,8 @@ function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0
 
 function DeathFPSfix(){	
 DeathFPSfixVariable="1";
+setTimeout(function() {spectate();}, 200);
+
 hideMenu();
 hideMenu2();
 console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
