@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.44a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.45 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "44"; // the version 1.1-> 1.11
+var semimodVersion = "45"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -238,6 +238,7 @@ var detailed="";
 //var userIp;
 var detailed1;
 userData = {}; 
+userData = JSON.parse(localStorage.getItem("userData"));
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
@@ -7320,6 +7321,9 @@ function doDOMonloadevents1(){
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
 		var userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		setTimeout(function (){ 
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},150);
 		//Save Name, Surname, Gender			
 		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
 		setTimeout(function (){ 
