@@ -1226,6 +1226,19 @@ if (languagemod == 7) {
         $("body").append(s1);
     }, 4000);
 }
+if (languagemod == 8) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
 }
 
 function appendLMhiFbPs(){
