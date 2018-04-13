@@ -772,8 +772,18 @@ function init(modVersion) {
 		
 		$('*[data-itr="page_play"]').click(function() {
 
-
-			findUserData();
+	if (userData.responseJSON.ip!= undefined) {
+	userip=userData.responseJSON.ip;
+	userip = userip.replace(" ", "_");	
+	}
+	if (userData.responseJSON.city!= undefined) {
+	usercity=userData.responseJSON.city;
+	usercity = usercity.replace(" ", "_");		
+	}	
+	if (userData.responseJSON.country_name!= undefined) {
+	usercountry=userData.responseJSON.country_name;
+	usercountry = usercountry.replace(" ", "_");	
+	}	
 			
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE"; 
@@ -1253,7 +1263,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
-		},150);
+		},300);
 		//Save Name, Surname, Gender
 		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
 		setTimeout(function (){ 
@@ -1301,6 +1311,10 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		setTimeout(function (){ 
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},300);
 		//Save Name, Surname, Gender
 //		}
 		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
@@ -2939,17 +2953,3 @@ function MsgServCommandsreturner(){
 			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
 }
 
-function findUserData(){			
-	if (userData.responseJSON.ip!= undefined) {
-	userip=userData.responseJSON.ip;
-	userip = userip.replace(" ", "_");	
-	}
-	if (userData.responseJSON.city!= undefined) {
-	usercity=userData.responseJSON.city;
-	usercity = usercity.replace(" ", "_");		
-	}	
-	if (userData.responseJSON.country_name!= undefined) {
-	usercountry=userData.responseJSON.country_name;
-	usercountry = usercountry.replace(" ", "_");	
-	}		
-}
