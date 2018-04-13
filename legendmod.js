@@ -1,5 +1,5 @@
 /*************
- * Legend mod v3.44 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.44a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "44"; // the version 1.1-> 1.11
  
@@ -237,6 +237,7 @@ var toastrSkinNotice=0;
 var detailed="";
 //var userIp;
 var detailed1;
+userData = {}; 
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
@@ -1995,14 +1996,22 @@ function init(modVersion) {
         });
 
 		$('*[data-itr="page_play"]').click(function() {
+
+			var userip="0.0.0.0:0";
+			var usercity="NotFound";
+			var usercountry="NotFound";
+			findUserData();
+			
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE"; 
 			var servertosend="NotFound";
 			var nicknametosend="NotFound";
 			var userfirstname = localStorage.getItem("userfirstname");
-			var userlastname = localStorage.getItem("userlastname");
+			var userlastname = localStorage.getItem("userlastname");			
 			var modetosend="NotFound";
 			var regiontosend="NotFound";
+			
+
 			if (searchSip == null) {
 				modetosend=$('#gamemode').val();
 				regiontosend=$('#region').val();
@@ -2012,7 +2021,7 @@ function init(modVersion) {
 				modetosend=realmode;
 				regiontosend=region;
 				}
-			}
+			}			
 			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
 			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
 			var i = 0, Pwdtosendlength = Pwdtosend.length; 
@@ -2029,16 +2038,16 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}			
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
@@ -7310,7 +7319,8 @@ function doDOMonloadevents1(){
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
-		//Save Name, Surname, Gender		
+		var userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		//Save Name, Surname, Gender			
 		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
 		setTimeout(function (){ 
 			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
@@ -8372,4 +8382,19 @@ function MsgServCommandsreturner(){
 
 function CutNameConflictwithMessageFunction(){
 	return CutNameConflictwithMessage=true;
+}
+
+function findUserData(){			
+	if (userData.responseJSON.ip!= undefined) {
+	userip=userData.responseJSON.ip;
+	userip = userip.replace(" ", "_");	
+	}
+	if (userData.responseJSON.city!= undefined) {
+	usercity=userData.responseJSON.city;
+	usercity = usercity.replace(" ", "_");		
+	}	
+	if (userData.responseJSON.country_name!= undefined) {
+	usercountry=userData.responseJSON.country_name;
+	usercountry = usercountry.replace(" ", "_");	
+	}		
 }
