@@ -239,6 +239,9 @@ var detailed="";
 var detailed1;
 userData = {}; 
 userData = JSON.parse(localStorage.getItem("userData"));
+var userip="0.0.0.0:0";
+var usercity="NotFound";
+var usercountry="NotFound";
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
@@ -1998,9 +2001,6 @@ function init(modVersion) {
 
 		$('*[data-itr="page_play"]').click(function() {
 
-			var userip="0.0.0.0:0";
-			var usercity="NotFound";
-			var usercountry="NotFound";
 			findUserData();
 			
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
@@ -7320,7 +7320,7 @@ function doDOMonloadevents1(){
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
-		var userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		},150);
