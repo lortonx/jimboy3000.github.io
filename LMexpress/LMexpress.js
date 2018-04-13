@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.028 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.029 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "28"; // the version 1.1-> 1.11
+var semimodVersion = "29"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -144,6 +144,11 @@ var toastrSkinNotice=0;
 var detailed="";
 var detailed1;
 var fromstart="false";
+userData = {}; 
+userData = JSON.parse(localStorage.getItem("userData"));
+var userip="0.0.0.0:0";
+var usercity="NotFound";
+var usercountry="NotFound";
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
@@ -766,6 +771,10 @@ function init(modVersion) {
 		});
 		
 		$('*[data-itr="page_play"]').click(function() {
+
+
+			findUserData();
+			
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE"; 
 			var servertosend="NotFound";
@@ -800,16 +809,16 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
@@ -1241,6 +1250,10 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
+		userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		setTimeout(function (){ 
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},150);
 		//Save Name, Surname, Gender
 		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
 		setTimeout(function (){ 
@@ -2924,4 +2937,19 @@ function MsgServCommandsreturner(){
 		    }).css("width", "300px");	
 			}
 			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
+}
+
+function findUserData(){			
+	if (userData.responseJSON.ip!= undefined) {
+	userip=userData.responseJSON.ip;
+	userip = userip.replace(" ", "_");	
+	}
+	if (userData.responseJSON.city!= undefined) {
+	usercity=userData.responseJSON.city;
+	usercity = usercity.replace(" ", "_");		
+	}	
+	if (userData.responseJSON.country_name!= undefined) {
+	usercountry=userData.responseJSON.country_name;
+	usercountry = usercountry.replace(" ", "_");	
+	}		
 }
