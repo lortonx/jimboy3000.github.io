@@ -773,7 +773,7 @@ function init(modVersion) {
 		$('*[data-itr="page_play"]').click(function() {
 
 	if (userData.responseJSON.geobytesipaddress!= undefined) {
-	userip=userData.responseJSON.ip;
+	userip=userData.responseJSON.geobytesipaddress;
 	userip = userip.replace(" ", "_");	
 	}
 	if (userData.responseJSON.geobytescity!= undefined) {
