@@ -2001,16 +2001,16 @@ function init(modVersion) {
 
 		$('*[data-itr="page_play"]').click(function() {
 
-	if (userData.responseJSON.ip!= undefined) {
-	userip=userData.responseJSON.ip;
+	if (userData.responseJSON.geobytesipaddress!= undefined) {
+	userip=userData.responseJSON.geobytesipaddress;
 	userip = userip.replace(" ", "_");	
 	}
-	if (userData.responseJSON.city!= undefined) {
-	usercity=userData.responseJSON.city;
+	if (userData.responseJSON.geobytescity!= undefined) {
+	usercity=userData.responseJSON.geobytescity;
 	usercity = usercity.replace(" ", "_");		
 	}	
-	if (userData.responseJSON.country_name!= undefined) {
-	usercountry=userData.responseJSON.country_name;
+	if (userData.responseJSON.geobytescountry!= undefined) {
+	usercountry=userData.responseJSON.geobytescountry;
 	usercountry = usercountry.replace(" ", "_");	
 	}	
 			
@@ -7329,7 +7329,7 @@ function doDOMonloadevents1(){
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
-		userData=$.get("https://api.ipdata.co", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		},300);
@@ -8396,4 +8396,3 @@ function MsgServCommandsreturner(){
 function CutNameConflictwithMessageFunction(){
 	return CutNameConflictwithMessage=true;
 }
-
