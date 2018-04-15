@@ -7496,6 +7496,8 @@ function loadbannerProfileClans(){
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
             } else if ($("#nick").val().includes("⚔ℱ") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
+            } else if ($("#nick").val().includes("ֆ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerSenpai");				
             } else if ($("#nick").val().includes("ƸU") == true) {
                 $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
             } else {
