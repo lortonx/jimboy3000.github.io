@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.45 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.46 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "45"; // the version 1.1-> 1.11
+var semimodVersion = "46"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -925,6 +925,7 @@ function init(modVersion) {
             '<option value="6" data-itr="">Arabic - عربى</option>' +
             '<option value="4" data-itr="">Bulgarian - български</option>' +
             '<option value="5" data-itr="">French - Français</option>' +
+			'<option value="9" data-itr="">German - Deutsche</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
 			'<option value="8" data-itr="">Russian - Русские</option>' +
             '<option value="3" data-itr="">Spanish - Español</option>' +
@@ -5087,6 +5088,19 @@ if (languagemod == 8) {
         $("body").append(s1);
     }, 4000);
 }
+if (languagemod == 9) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackGerman.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("9");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
 }
 function changeModLanguage() {
     if ($("#legendlanguages").val() == 1) {
@@ -5192,6 +5206,20 @@ function changeModLanguage() {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://jimboy3100.github.io/LanguagePackRussian.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
+    if ($("#legendlanguages").val() == 9) {
+        localStorage.setItem("languagemod", 9);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackGerman.js";
         $("body").append(s);
         setTimeout(function() {
             var s1 = document.createElement("script");
