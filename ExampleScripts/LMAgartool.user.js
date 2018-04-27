@@ -1377,7 +1377,7 @@ var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
 var fbresponse={};
 
-function doDOMonloadevents1(){
+function doDOMonloadevents2(){
 		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
 		setTimeout(function (){
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
