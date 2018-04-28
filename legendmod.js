@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.46 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.47 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "46"; // the version 1.1-> 1.11
+var semimodVersion = "47"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -7647,7 +7647,7 @@ hideMenu2();
 console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
 			toastr["info"](Premadeletter100 + "<br>" + Premadeletter101 + " <b>" + Premadeletter102 + "</b> " + Premadeletter103 + " <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
 	MC.onPlayerSpawn();
-	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
+	setTimeout(function() {DeathFPSfixWithSpawn(); $(".btn.btn-warning.btn-spectate.btn-needs-server").prop('disabled', false);}, 100);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 2000);
 	setTimeout(function() {DeathFPSfixWithSpawn();}, 3000);
