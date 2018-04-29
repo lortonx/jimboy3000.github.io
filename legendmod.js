@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.48 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.49 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "48"; // the version 1.1-> 1.11
+var semimodVersion = "49"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -810,10 +810,10 @@ function init(modVersion) {
 		
 		$("#DoubleSplitRange").click(function() {
 			if (DoubleSplitRange.isChecked()) {
-				window.ogario.customDraw=window.ogario.save_customDraw;
-				localStorage.setItem("DoubleSplitRangeSaved", true);
-			} else {
 				window.ogario.customDraw=window.ogario.save_customDraw2;
+				localStorage.setItem("DoubleSplitRangeSaved", true);
+			} else {				
+				window.ogario.customDraw=window.ogario.save_customDraw;
 				localStorage.setItem("DoubleSplitRangeSaved", false);
 			}
 		});		
