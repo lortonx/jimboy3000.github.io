@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.030 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.029 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "30"; // the version 1.1-> 1.11
+var semimodVersion = "29"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -168,7 +168,6 @@ var LegendJSON;
 var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
 var switcheryLegendSwitch, switcheryLegendSwitch2;
-var DoubleSplitRangeSaved = localStorage.getItem("DoubleSplitRangeSaved");
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -356,23 +355,6 @@ function init(modVersion) {
 
     setTimeout(function() {
         document.title = "Legend express v" + modVersion;
-
-		$('.options-box.helpersGroup').append('<label><input type="checkbox" id="DoubleSplitRange" class="js-switch" data-switchery="true" style="display: none;"> Double Spilit Range</label>');
-	//	$('.options-box.helpersGroup').append('<label><input type="checkbox" id="DoubleSplitRange" class="js-switch" data-switchery="true" checked style="display: none;"> Double Spilit Range</label>');
-		var elemLegendSwitch = document.querySelector('#DoubleSplitRange');
-		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
-		var DoubleSplitRange = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
-		
-		$("#DoubleSplitRange").click(function() {
-			if (DoubleSplitRange.isChecked()) {
-				window.ogario.customDraw=window.ogario.save_customDraw2;
-				localStorage.setItem("DoubleSplitRangeSaved", true);
-			} else {				
-				window.ogario.customDraw=window.ogario.save_customDraw;
-				localStorage.setItem("DoubleSplitRangeSaved", false);
-			}
-		});	
-		
 		$("#leaderboard-hud > h4").text("Leaderboard");
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
@@ -1037,9 +1019,6 @@ function init(modVersion) {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
-            if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
-                $("#DoubleSplitRange").click();
-            }					
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
     console.group("Part of");    		
 		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
