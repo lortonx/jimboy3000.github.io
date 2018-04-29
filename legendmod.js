@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.47 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.48 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "47"; // the version 1.1-> 1.11
+var semimodVersion = "48"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -260,6 +260,7 @@ var LegendJSON;
 var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
 var switcheryLegendSwitch, switcheryLegendSwitch2;
+var DoubleSplitRangeSaved = localStorage.getItem("DoubleSplitRangeSaved");
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -799,8 +800,24 @@ function init(modVersion) {
         		},3000);}
         	MC.setGameMode($('#gamemode2').val());
         	adres();
-        	});		*/
-
+        	});		*/			
+			//For the Setting DoubleSplitRange
+		$('.options-box.helpersGroup').append('<label><input type="checkbox" id="DoubleSplitRange" class="js-switch" data-switchery="true" style="display: none;"> Double Spilit Range</label>');
+	//	$('.options-box.helpersGroup').append('<label><input type="checkbox" id="DoubleSplitRange" class="js-switch" data-switchery="true" checked style="display: none;"> Double Spilit Range</label>');
+		var elemLegendSwitch = document.querySelector('#DoubleSplitRange');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var DoubleSplitRange = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+		
+		$("#DoubleSplitRange").click(function() {
+			if (DoubleSplitRange.isChecked()) {
+				window.ogario.customDraw=window.ogario.save_customDraw;
+				localStorage.setItem("DoubleSplitRangeSaved", true);
+			} else {
+				window.ogario.customDraw=window.ogario.save_customDraw2;
+				localStorage.setItem("DoubleSplitRangeSaved", false);
+			}
+		});		
+		
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
         $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
@@ -809,7 +826,7 @@ function init(modVersion) {
         $("#create-party-btn-2").attr('data-toggle', "tooltip").prop('title', "Create party");
 
         $("#join-party-btn").html('<span class="glyphicon glyphicon-save"></span>').attr('data-toggle', "tooltip").prop('title', "Join party").attr("style", "width: 49% !important; float: right;");
-
+		
         //backgroud div
         $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
 
@@ -2514,6 +2531,9 @@ function init(modVersion) {
             if (ComPosition == 2) {
                 $("#bottomright").click();
             }
+            if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
+                $("#DoubleSplitRange").click();
+            }			
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
             if (autoCoinBtn == "true") {
                 setTimeout(function() {
