@@ -949,7 +949,7 @@ if ($("#ao2t-capture").hasClass("connected")){
         $("#overlays").append('<div id="ao2t-cfg-dlg"'+
             '  style="width:400px; height:450px; top:150px; left:300px; display: none;'+
             '">'+
-              my.name+
+              'Universal Chat tools'+
               '<div style="overflow: scroll; '+
                     'position: relative; top:1.5em; left:0.5em; right:0.5em; bottom:1.5em;">'+
                 '<div id="ao2t-cfg-base">'+
