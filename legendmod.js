@@ -677,7 +677,6 @@ MC.onConnect2 = MC.onConnect;
 MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);		
 
 function Universalchatfix(){	
-console.log("hi");
 if ($("#ao2t-capture").hasClass("connected")){
 	$("#ao2t-capture").click();
 	
