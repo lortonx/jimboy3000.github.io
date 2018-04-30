@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.50 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "51"; // the version 1.1-> 1.11
+var semimodVersion = "50"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -261,7 +261,7 @@ var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var DoubleSplitRangeSaved = localStorage.getItem("DoubleSplitRangeSaved");
-var UniversalChatSaved = localStorage.getItem("DoubleSplitRangeSaved");
+var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
