@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.50 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "50"; // the version 1.1-> 1.11
+var semimodVersion = "51"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -261,6 +261,7 @@ var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var DoubleSplitRangeSaved = localStorage.getItem("DoubleSplitRangeSaved");
+var UniversalChatSaved = localStorage.getItem("DoubleSplitRangeSaved");
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -936,7 +937,7 @@ if ($("#ao2t-capture").hasClass("connected")){
 
     // -----  Configuration  -----
     my.config = function(){
-        my.log("config_click2");
+//        my.log("config_click2");
         if(!($('#ao2t-cfg-dlg').length)){
             my.config_init();
         }
@@ -1519,6 +1520,20 @@ function init(modVersion) {
 				localStorage.setItem("DoubleSplitRangeSaved", false);
 			}
 		});		
+		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Universal Chat</input></label>');
+		var elemLegendSwitch = document.querySelector('#UniversalChat');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var UniversalChat = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+
+		$("#UniversalChat").click(function() {
+			if (UniversalChat.isChecked()) {
+				$("#ao2t-hud").show();
+				localStorage.setItem("UniversalChatSaved", true);
+			} else {				
+				$("#ao2t-hud").hide();
+				localStorage.setItem("UniversalChatSaved", false);
+			}
+		});			
 		
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
@@ -3235,7 +3250,10 @@ function init(modVersion) {
             }
             if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
                 $("#DoubleSplitRange").click();
-            }			
+            }	
+           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
+                $("#UniversalChat").click();
+            }				
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
             if (autoCoinBtn == "true") {
                 setTimeout(function() {
