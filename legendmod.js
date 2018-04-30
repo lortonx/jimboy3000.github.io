@@ -764,7 +764,7 @@ if ($("#ao2t-capture").hasClass("connected")){
         local_style += '}';
         local_style += '#ao2t-cfg-dlg {';
         local_style +=     ' border-radius:0; font-size: 80%; padding: 2px 10px; position: fixed;';
-        local_style +=     ' pointer-events: auto; background-color: rgba(32,32,32,0.4); color: #ffffff;';
+        local_style +=     ' pointer-events: auto; background-image: url('+legbgpic+'); background-color: '+legbgcolor+' ; color: #ffffff;';
         local_style +=     ' overflow: hidden;';
         local_style += '}';
         local_style += '#ao2t-cfg-dlg * {';
@@ -988,15 +988,26 @@ if ($("#ao2t-capture").hasClass("connected")){
             my.cfg_load(cfg_org);
         });
         $("#ao2t-cfg-ok").click(function(){
-            cfg = my.cfg_save();
+			if ($("#helloContainer").is(":visible")){
+			      setTimeout(function() {
+					showMenu();
+				   }, 100);
+			};
+		cfg = my.cfg_save();
 //            GM_setValue("config", JSON.stringify(cfg));
 			my.storage_setValue("config", JSON.stringify(cfg));
             my.config_cancel();
             $("#message-box").css("bottom", stat.messageBoxBottom[cfg.chat_vcenter ? 1: 0]);
             my.skinToggle_start();
+		
          });
         $("#ao2t-cfg-cancel").click(function(){
-            my.config_cancel();
+			if ($("#helloContainer").is(":visible")){
+			      setTimeout(function() {
+					showMenu();
+				   }, 100);
+			};
+			my.config_cancel();			
         });
         my.config_cancel = function(){
             $("#overlays").hide();
