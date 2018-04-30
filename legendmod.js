@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.50 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.51 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "50"; // the version 1.1-> 1.11
+var semimodVersion = "51"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -688,7 +688,7 @@ if ($("#ao2t-capture").hasClass("connected")){
     'use strict';
     var global = window;
     var my = {
-        "name": "Universal Chat",
+        "name": "ⓐ",
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>'); },
@@ -901,7 +901,7 @@ if ($("#ao2t-capture").hasClass("connected")){
             global.toastr.error("L.M:->A.T: not connected");
             return;
         }
-        var msg = '[Agar Tools / Legend Mod]:' + $("#message").val();
+        var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
 		var msgLM=$("#message").val();
         if(msgLM.length){
             my.sendMinimapServerCommand({
