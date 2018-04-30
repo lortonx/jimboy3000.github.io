@@ -802,13 +802,13 @@ if ($("#ao2t-capture").hasClass("connected")){
             }
         });
         $('#ao2t-capture').mouseenter(function() {
-            $('#ao2t-capture').css('color', 'black');
+            $('#ao2t-capture').css('color', $("#hudTextColor").val());
             return clickedname = "YES"
         }).mouseleave(function() {
             $('#ao2t-capture').css('color', '');
         });
         $('#ao2t-config').mouseenter(function() {
-            $('#ao2t-config').css('color', 'black');
+            $('#ao2t-config').css('color', $("#hudTextColor").val());
             return clickedname = "YES"
         }).mouseleave(function() {
             $('#ao2t-config').css('color', '');
