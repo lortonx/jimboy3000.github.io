@@ -1,18 +1,3 @@
-// ==UserScript==
-// @name         AgarTool⇒Legend Mod
-// @name:ja      AgarTool⇒Legend Mod
-// @name:en      AgarTool⇒Legend Mod
-// @version      0.12
-// @namespace    AgarTool⇒Legend Mod
-// @description   Link Agar Tool to Legend Mod 
-// @description:ja   Legend Mod 上から Agar Tool へ情報連携します
-// @description:en   Link to Agar Tool on Legend Mod
-// @author       tannichi & Jimboy3100
-// @match        http://agar.io/*
-// @grant        unsafeWindow
-// @grant GM_setValue
-// @grant GM_getValue
-// ==/UserScript==
 
 (function() {
     'use strict';
@@ -61,7 +46,7 @@
         "ogar_prefix": "L.M",
         "ogar_color": "#8C81C7",
         "update_interval": 1000,
-        "tgar_prefix": "☺",
+        "tgar_prefix": "[Legend Mod/Agar Tool]",
         "tgar_user": true,
         "ogar_skinURL": "",
         "chat_close": false,
