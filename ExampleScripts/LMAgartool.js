@@ -373,7 +373,7 @@
 		var msg = global.emojiHandler[0].emojioneArea.getText();
 		if(msg.length){
 //			stat.ogar.chatSend(msg);
-			stat.ogar.chatSend('[Legend Mod/Agar tools]'+msg);			
+			stat.ogar.chatSend('[Legend Mod/Agar tool]'+msg);			
 			//if(flg.tgar){
 			//	keyDownUp(stat.keyCodeEnter);
 			//}else{
