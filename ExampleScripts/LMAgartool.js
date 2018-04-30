@@ -46,7 +46,7 @@
         "ogar_prefix": "L.M",
         "ogar_color": "#8C81C7",
         "update_interval": 1000,
-        "tgar_prefix": "[Legend Mod/Agar Tool]",
+        "tgar_prefix": "ⓐ",
         "tgar_user": true,
         "ogar_skinURL": "",
         "chat_close": false,
@@ -372,7 +372,8 @@
 		//var msg = $("#enterChatMsg").val();
 		var msg = global.emojiHandler[0].emojioneArea.getText();
 		if(msg.length){
-			stat.ogar.chatSend(msg);
+//			stat.ogar.chatSend(msg);
+			stat.ogar.chatSend('[Legend Mod/Agar tools]'+msg);			
 			//if(flg.tgar){
 			//	keyDownUp(stat.keyCodeEnter);
 			//}else{
@@ -538,8 +539,9 @@
 		}
 		if (ev.message.includes("Welcome! You are connected to the OGARio")){
 		ev.message="[SERVER]: Agar Tool and Legend Mod connected. Use L.M button on chat box to send to Legend Mod";
-
+		
 		}
+//		ev.message='[Legend Mod/Agar tools]'+ev.message;
 		let msg = my.chatParse(ev.message);
 		let htmlTd = '<td style="padding-left:8px;padding-right:8px">'
 			+ '<b><span class="playerNameInMsg">' + escapeHtml(ev.nick)
