@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Legend Express Agar.io Extension Tester
+// @name         Legend Express Agar.io Extension
 // @namespace    Legend Express Agario Mod
 // @version      1.1
 // @description  Agario Mod - Legend,Ogario,Kitty,Old Skins,Animated Skins,Language Packs,Manual User Scripts,Chat,60++ Macros/Hotkeys(Tricksplit,Doublesplit,Quick Feeding,Popsplit,Auto Coins,Freeze Cell Macro,Auto respawn)
@@ -10,7 +10,7 @@
 // @match        http://agar.io/*
 // @match        https://talky.io/*
 // @match        https://play.google.com/*
-// @match        http://ext.fzogar.xyz/ogs/*
+// @match 	 http://ext.fzogar.xyz/ogs/*
 // @downloadURL  jimboy3100.github.io/legendmod.user.js
 // @updateURL    jimboy3100.github.io/legendmod.user.js
 // @run-at       document-start
@@ -19,13 +19,14 @@
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
 // @grant        GM_deleteValue
+// @connect      jimboy3100.github.io
 // @connect      jimboy3000.github.io
 // ==/UserScript==
-// Legend Mod by Jimboy3100
 
+// Legend Mod by Jimboy3100
 /*MIT License
 
-Copyright (c) [2017] [The Legend Mod]
+Copyright (c) [The Legend Mod]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +57,29 @@ GM_registerMenuCommand('LM Library', function() {
 GM_registerMenuCommand('Donate for Legend Mod', function() {
     window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM3GDVCW6PBF6");
 }, 'r');
-if (location.host === "agar.io" && location.pathname === "/") {
+
+url = window.location.href;
+if(getParameterByName("mod", url)=="tiny"){
+var tinyJS = '<script src="http://jimboy3100.github.io/ExampleScripts/LMTiny.user.js"></script>';
+	    function inject(page) {
+        page = page.replace("</body>", tinyJS + "</body>");
+        return page;
+    }
+    window.stop();
+    document.documentElement.innerHTML = "";
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://agar.io/",
+        onload: function(e) {
+            var doc = inject(e.responseText);
+            document.open();
+            document.write(doc);
+			document.close();
+        }
+    });
+
+}
+else if (location.host === "agar.io" && location.pathname === "/") {
 	window.stop();	
 	location.href = "about:blank" + window.location.search + location.hash;
 // Dependencies
@@ -101,7 +124,7 @@ if (location.host === "agar.io" && location.pathname === "/") {
                 "default": "default",
                 "ja": "日本語",
                 "en-US": "English",
-                "en-US": "Ελληνικά",
+                "el-GR": "Ελληνικά",
                 "zh-CN": "简体中文",
                 "zh-TW": "繁體中文",
                 "ko": "한국어"
@@ -210,19 +233,14 @@ if (location.host === "agar.io" && location.pathname === "/") {
         }
     })();
 }
-
-//runs only if play.google.com is a popup, doesnt if directly joined
-if (location.host == "play.google.com") {
-	window.close();
-}
 //runs only for http://ext.fzogar.xyz/ogs settings
 if (location.href == "http://ext.fzogar.xyz/ogs/") {
     setTimeout(function() {
-    $("#login_form").append('<span style="float: left; font-size: 13px;">Powered by <a target="_blank" href="http://ext.fzogar.xyz/ogs/" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend mod Website" data-placement="left"><u>http://ext.fzogar.xyz/ogs/</u></a></span>');
-    $("#upload-button").after('<input type="submit" id="sendInfo" class="btn btn-default " value="Apply Settings to Mod" style="margin-left: 7px;">');
+    $("#login_form").append('<span style="float: left; font-size: 13px;">Powered by <a target="_blank" href="http://fzogar.xyz/ogs" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend mod Website" data-placement="left"><u>http://fzogar.xyz/ogs</u></a></span>');
+    $("#Loadbtn").after('<input type="submit" id="sendInfo" class="btn btn-default " value="Apply Settings to Mod" style="margin-left: 7px;">');
 //    $("#sendInfo").after('<input type="submit" id="sendInfo2" class="btn btn-default " value="Upload from Legend Mod" style="margin-left: 7px;">');
     $("#sendInfo").click(function() {
-        showpaste();
+//        showpaste();
 //        alert($("#jsonupdate").val());
         try{window.parent.postMessage("PostedOgarSettings1?datasent="+$("#jsonupdate").val(), "*");
         } catch (e) {}
@@ -230,9 +248,13 @@ if (location.href == "http://ext.fzogar.xyz/ogs/") {
 
         }, 1100);
 }
+//runs only if play.google.com is a popup, doesnt if directly joined
+if (location.host == "play.google.com") {
+	window.close();
+}
 // Inject Chat Talky.io Userscript
 if (location.host == "talky.io") {
-	
+
 	(function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -242,48 +264,39 @@ if (location.host == "talky.io") {
 	})();
 
 	document.title="Legend Mod - Talky";
-	
+
     var url2 = window.location.href;
-    url2 = url2.toLowerCase();
+	url2 = url2.toLowerCase();
     var gamename = getParameterByName("name", url2);
     var IPAgario = getParameterByName("ip", url2);
+    var IPtoken = getParameterByName("token", url2);
+    setTimeout(function() {
+       // document.getElementsByClassName('text__NUZ8yEiB TalkyButton__text _2jD5C')[0].click();
+        document.getElementById('join').click();
+    }, 4000);
 
     setTimeout(function() {
-        document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
-        document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
-        document.getElementsByClassName('_26dP_7FWLFRnvW8hs-AIzR')[0].remove();
-    }, 6100);
+        document.getElementsByClassName('create-room-form-input')[0].value = IPtoken;
+	//document.getElementById('join').click();
+        document.getElementsByClassName('create-room-form-button button button-default button-undefined')[0].click();
+        document.getElementById('skip').click();
+        document.getElementsByClassName('TalkyButton__text')[0].click();
+    }, 2000);
+    setTimeout(function() {
+        document.getElementsByClassName('SDuUr')[1].value = gamename;
+        //<a href="http://legendmod.ml" target="_blank" id="LegendModWebsite" class="title" style=""><u>Legend Mod</u></a> <a href=IPAgario target="_blank" id="IPAgario" class="title" style=""><u>Copy Agar.io Token</u></a>
 
-    setTimeout(function() {
-	document.getElementById('join').click();
-    document.getElementById('skip').click();
-    document.getElementsByClassName('TalkyButton__text')[0].click();
-    }, 5500);
-    setTimeout(function() {
-        document.getElementsByClassName('_1U4l9')[1].value = gamename;
-        //<a href="http://legendmod.ml" target="_blank" id="LegendModWebsite" class="title" style=""><u>Legend Mod</u></a> <a href=IPAgario target="_blank" id="IPAgario" class="title" style=""><u>Copy Agar.io Token</u></a> 
-        
-		if (IPAgario.length==28){
-		document.getElementsByClassName('message message-info message-full-width')[0].before("[Talky.io]: Legend Mod. Server: " + "http://agar.io/#" + IPAgario + " . [PARTY] (Password rooms are different than Public)");}
+		if (IPAgario.length==6){
+		document.getElementsByClassName('_24sME message message-info message-full-width')[0].before("[Talky.io]: Legend Mod. Server: " + "http://agar.io/#" + IPAgario + " . [PARTY] (Password rooms are different than Public)");}
 		else{
-		document.getElementsByClassName('message message-info message-full-width')[0].before("[Talky.io]: Legend Mod. Server: " + "http://agar.io/?sip=" + IPAgario + " . (Password rooms are different than Public)");}	
-		
-        document.getElementsByClassName('_1U4l9qYTHl6ExTsW9IvwnO')[1].value = gamename;
+		document.getElementsByClassName('_24sME message message-info message-full-width')[0].before("[Talky.io]: Legend Mod. Server: " + "http://agar.io/?sip=" + IPAgario + " . (Password rooms are different than Public)");}
 
+        document.getElementsByClassName('_1U4l9qYTHl6ExTsW9IvwnO')[1].value = gamename;
+        document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('_24sME message message-info message-full-width')[0].remove();
         document.getElementsByClassName('Box _3-HLf')[0].remove();
-        document.getElementsByClassName('_2kpBd')[0].remove();
-		document.getElementsByClassName('Box _2vX5-')[0].remove();
-		document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';
-		document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';
 
     }, 6000);
-      setTimeout(function() {
-		document.getElementsByClassName('Box _3-HLf')[0].remove();
-        document.getElementsByClassName('_2kpBd')[0].remove();
-		document.getElementsByClassName('Box _2vX5-')[0].remove();
-		document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';
-		document.getElementsByClassName('message message-info message-full-width')[0].style.visibility = 'hidden';  
-		}, 6200);
 }
 
 //example: https://talky.io/dddd?name=&?ip=
