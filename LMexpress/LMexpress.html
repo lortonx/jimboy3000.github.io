@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>LM Express</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:700">
-  <link rel="stylesheet" href="http://agar.io/css/master.css">
+  <link rel="stylesheet" href="https://jimboy3100.github.io/LMexpress/master.css">
   <link rel="stylesheet" href="https://jimboy3100.github.io/bootstrap-colorpicker.min.css"></link>
   <link rel="stylesheet" href="https://jimboy3100.github.io/toastr.min.css"></link>
   <link rel="stylesheet" href="https://jimboy3100.github.io/switchery.min.css"></link>
@@ -24,8 +24,8 @@
   <script src="https://jimboy3100.github.io/perfect-scrollbar.jquery.min.js"></script>
   <script src="https://jimboy3100.github.io/Youtubeiframe_api.js"></script>
   <script src="https://jimboy3100.github.io/key-event.js"></script>
-  <script src="https://jimboy3000.github.io/legend.sniff2.js"></script>
-  <script src="http://agar.io/i18n.js"></script>
+  <script src="https://jimboy3100.github.io/LMexpress/legend.sniff2.js"></script>
+  <script src="http://cdn.ogario.ovh/static/js/i18n.js"></script>
   <script src="http://cdn.ogario.ovh/v4/beta/ogario.v4.master.js?v=26"></script>
 
   
@@ -79,7 +79,6 @@
        <div id="locationUnknown">
         <select id="region" class="form-control" onchange="master.setRegion($('#region').val());" required>
          <option selected value="" data-itr="page_region_select"></option>
-		 <option value=":PrS" data-itr="Private Servers"></option>
          <option value="US-Atlanta" data-itr="page_region_north_america"></option>
          <option value="BR-Brazil" data-itr="page_region_south_america"></option>
          <option value="EU-London" data-itr="page_region_europe"></option>
@@ -100,7 +99,7 @@
        <div id="socialLoginContainer" style="display:none;">
         <div class="row">
          <button onclick="master.facebookLogin(); return false;" class="btn btn-primary btn-login btn-fb">
-          <span class="social social-facebook fb-icon"></span>
+          <span class="fa fa-facebook fa-lg" style="position: absolute; left: 15px; top: 12px;"></span>
           <span class="btn-text" data-itr="page_menu_login_facebook"></span>
          </button>
         </div>
@@ -117,8 +116,8 @@
         <div id="locationKnown"></div>
        </div>
        <div style="float: right; width: 120px;">
-        <button class="btn btn-warning btn-spectate btn-needs-server" data-itr="page_spectate"></button>
-        <button onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout"></button>
+        <button class="btn btn-warning btn-spectate btn-needs-server" data-itr="page_spectate">Spectate</button>
+        <button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>
        </div>
        <br clear="both"/>
       </div>
@@ -139,10 +138,10 @@
   </div>
  </div>
  <canvas id="canvas"></canvas>
- <script src="https://jimboy3000.github.io/LMexpress/LMexpress.sniff.js"></script>
+ <script src="https://jimboy3100.github.io/LMexpress/LMexpress.sniff.js"></script>
  <script src="http://cdn.ogario.ovh/v4/beta/ogario.v4.js?v=26" charset="utf-8"></script>
- <script src="https://jimboy3000.github.io/LMexpress/LMexpress.js"></script>
- <script src="https://jimboy3000.github.io/LMexpress/LMexpress.sniff3.js"></script>
+ <script src="https://jimboy3000.github.io/LMexpress/LMexpressMain.js"></script>
+ <script src="https://jimboy3100.github.io/LMexpress/LMexpress.sniff3.js"></script>
  <div style="font-family:'Ubuntu'">&nbsp;</div>
  <div id="captchaWindow" style="display:none; position:absolute; top:0px; left:0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index:500">
   <div id="verifyUser" style="position:absolute; top:50%; left:50%; margin-left:-152px; margin-top:-40px;"></div>
@@ -154,7 +153,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-92655864-5', 'auto');
+  ga('create', 'UA-92655864-6', 'auto');
   ga('send', 'pageview');
 
  </script>
