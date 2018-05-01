@@ -539,9 +539,15 @@
 		if(! cfg.chat_slim){
 			trStyle = 'height:40px;'+ trStyle;
 		}
-		if (ev.message.includes("Welcome! You are connected to the OGARio")){
-		ev.message="[SERVER]: Agar Tool and Legend Mod connected. Use L.M button on chat box to send to Legend Mod";
 		
+		if (ev.message.includes("Welcome! You are connected to the OGARio")){
+		if ($("#at2o-controller").hasClass("OnceUsed")==false){
+		ev.message="[SERVER]: Agar Tool and Legend Mod connected. Use L.M button on chat box to send to Legend Mod";
+		$("#at2o-controller").addClass("OnceUsed");
+		}
+		else{
+		ev.message="";	
+		}
 		}
 //		ev.message='[Legend Mod/Agar tools]'+ev.message;
 		let msg = my.chatParse(ev.message);
