@@ -546,7 +546,7 @@
 		$("#at2o-controller").addClass("OnceUsed");
 		}
 		else{
-		ev.message="";	
+		ev.message="Applying changes to communication...";	
 		}
 		}
 //		ev.message='[Legend Mod/Agar tools]'+ev.message;
@@ -786,6 +786,9 @@ function doDOMonloadevents2(){
 setTimeout(function() {
 MC.onConnect2 = MC.onConnect;
 MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);		
+$('#tag').blur(function() {
+			Universalchatfix();
+        });
 }, 1500);
 function Universalchatfix(){	
 if ($("#at2o-capture").hasClass("connected")){
