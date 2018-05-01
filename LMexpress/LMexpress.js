@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.030 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.029 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "30"; // the version 1.1-> 1.11
+var semimodVersion = "29"; // the version 1.1-> 1.11
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -3690,3 +3690,8 @@ if ($("#ao2t-capture").hasClass("connected")){
 	$("#ao2t-capture").click();
 }
 };
+function showMenu() {
+    $("#overlays").css("left", "0");
+    $("#overlays").show();
+    $('a[href="#main-panel"]').click();
+}
