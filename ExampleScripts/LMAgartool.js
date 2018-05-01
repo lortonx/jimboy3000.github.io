@@ -1,4 +1,4 @@
-
+//1.1
 (function() {
     'use strict';
     var global = window.unsafeWindow || window;
@@ -128,9 +128,11 @@
 			my.log("capture_click");
 			stat.capture = ! stat.capture;
 			if(stat.capture){
+				$("#at2o-capture").removeClass("disconnected").addClass("connected");
 				$("#at2o-capture").text('⌫');
 				my.capture_start();
 			}else{
+				$("#at2o-capture").removeClass("connected").addClass("disconnected");
 				$("#at2o-capture").html('<img src="https://jimboy3100.github.io/banners/icon16.png" alt="icon16.png">');
 				my.capture_end();
 			}
@@ -775,3 +777,14 @@ function doDOMonloadevents2(){
 		});
 }
 }, 8000);
+setTimeout(function() {
+MC.onConnect2 = MC.onConnect;
+MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);		
+}, 1500);
+function Universalchatfix(){	
+if ($("#at2o-capture").hasClass("connected")){
+	$("#at2o-capture").click();
+	
+	$("#at2o-capture").click();
+}}
+function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0],function(){b.apply(new a)}};
