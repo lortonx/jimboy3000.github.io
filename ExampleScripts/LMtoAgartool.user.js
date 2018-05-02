@@ -9,6 +9,8 @@
 // @description:en   Link to Legend Mod on Agar Tool
 // @author       tannichi & Jimboy3100
 // @match        http://agar.io/*
+// @downloadURL  jimboy3100.github.io/ExampleScripts/LMtoAgartool.user.js
+// @updateURL    jimboy3100.github.io/ExampleScripts/LMtoAgartool.user.js
 // @grant        none
 // @run-at document-end
 // @grant none
@@ -815,7 +817,7 @@ var fbresponse={};
 
 			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMforAgartoolScript=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 
-		$('#resetCheckboxes').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
+		$('#more-skins').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
 		setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
@@ -854,7 +856,7 @@ console.group('%cLegend Mod⇒Agar Tool%c  %chttp://www.legendmod.ml',stylesLege
     console.groupEnd();
 	console.groupEnd();
 console.groupEnd();
-}, 6000);
+}, 4000);
 }
 
 
