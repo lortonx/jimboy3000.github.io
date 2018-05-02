@@ -1,18 +1,23 @@
 // ==UserScript==
-// @name         AgarTool⇒Legend Mod
-// @name:ja      AgarTool⇒Legend Mod
-// @name:en      AgarTool⇒Legend Mod
+// @name         Legend Mod⇒AgarTool
+// @name:ja      Legend Mod⇒AgarTool
+// @name:en      Legend Mod⇒AgarTool
 // @version      0.12
-// @namespace    AgarTool⇒Legend Mod
-// @description  Link Agar Tool to Legend Mod 
+// @namespace    Legend Mod⇒AgarTool
+// @description  Link Legend Mod to Agar tool
 // @description:ja   Legend Mod 上から Agar Tool へ情報連携します
-// @description:en   Link to Agar Tool on Legend Mod
+// @description:en   Link to Legend Mod on Agar Tool
 // @author       tannichi & Jimboy3100
 // @match        http://agar.io/*
 // @grant        none
 // @run-at document-end
 // @grant none
 // ==/UserScript==
+
+//This  Script is the opposite of the script AgarTool⇒Legend Mod.
+//It is already installed on LM Main version.
+//It can be installed for LM Express, Kitty mod, Ogario v3&v4,
+//so people can communicate with Agar Tool mod users.
 
 //v0.12
 
