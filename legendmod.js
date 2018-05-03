@@ -1658,7 +1658,7 @@ function init(modVersion) {
             '<option value="6" data-itr="">Arabic - عربى</option>' +
             '<option value="4" data-itr="">Bulgarian - български</option>' +
             '<option value="5" data-itr="">French - Français</option>' +
-			'<option value="9" data-itr="">German - Deutsche</option>' +
+			'<option value="9" data-itr="">German - Deutsch</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
 			'<option value="8" data-itr="">Russian - Русские</option>' +
             '<option value="3" data-itr="">Spanish - Español</option>' +
