@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.51 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.52 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "51"; // the version 1.1-> 1.11
+var semimodVersion = "52"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -697,7 +697,7 @@ if ($("#ao2t-capture").hasClass("connected")){
         "AgarToolVersion": 4,
         "AgarToolServer": "ws://minimap.agartool.io:8000",
         minimapBalls: {},
-        "socketIoURL": "http://cdn.agartool.io/socket-io-1.7.3.min.js",
+        "socketIoURL": "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
         // ---- Legend Mod settings  -----
         "minimapNickFont": "700 11px Ubuntu",
         "minimapNickColor": "#ffffff",
