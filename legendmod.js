@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.56 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.54 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -894,7 +894,8 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
             global.toastr.error("L.M:->A.T: not connected");
             return;
         }
-        var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
+        //var msg = $("#message").val();
+		var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
 		var msgLM=$("#message").val();
         if(msgLM.length){
             my.sendMinimapServerCommand({
@@ -1076,7 +1077,7 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
     };
 	my.minimap_connect = function(){
 		if ($("#ao2t-hud").hasClass("OnceUsed")==false){		
-		toastr["warning"]('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
+//		toastr["warning"]('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
         $("#ao2t-hud").addClass("OnceUsed");
 		}		
 		my.log("minimap server="+ stat.minimap_info.minimapServer);
@@ -1377,7 +1378,7 @@ $('#message').keydown(function(e){
 		$('#message').val("");		
     }
 });	
-}, 2700);	
+}, 4000);	
 	
 setTimeout(function() {
 
