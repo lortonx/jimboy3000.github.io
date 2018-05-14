@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.58 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.59 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "58"; // the version 1.1-> 1.11
+var semimodVersion = "59"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -678,7 +678,7 @@ MC.onConnect2 = MC.onConnect;
 MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);		
 
 
-(function() {
+//Start of Universal tools
 //    'use strict';
     var global = window;
     var my = {
@@ -1158,6 +1158,7 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
                 my.resetMinimap();
                 break;
             case "chat":
+				console.log(cmd);
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
@@ -1166,7 +1167,7 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;
             default:
-                my.log("Received a command with an unknown name: " + cmd.name);
+                my.log("Received a command with an unknown name: " + cmd.name); console.log(cmd);
         }
     };
     my.sendMinimapServerCommand = function(e){
@@ -1206,16 +1207,7 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
             stat.minimapBalls[id].y = y;
         }
     };
-    function MinimapBall(isDefault, name, x, y, color, visible) {
-        this.isDefault = isDefault;
-        this.name = name;
-        this.x = x;
-        this.y = y;
-        this.lastX = x;
-        this.lastY = y;
-        this.color = color;
-        this.visible = visible;
-    }
+
     my.tgarAlive = function(alive){
         stat.alive = alive;
         if(cfg.ogar_user){
@@ -1379,7 +1371,17 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
     }
-})();
+    function MinimapBall(isDefault, name, x, y, color, visible) {
+        this.isDefault = isDefault;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+        this.lastX = x;
+        this.lastY = y;
+        this.color = color;
+        this.visible = visible;
+    }
+//End of Universal tools
 
 
 
