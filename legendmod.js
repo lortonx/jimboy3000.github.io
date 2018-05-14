@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.55 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.56 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1377,7 +1377,7 @@ $('#message').keydown(function(e){
 		$('#message').val("");		
     }
 });	
-}, 1700);	
+}, 2700);	
 	
 setTimeout(function() {
 
