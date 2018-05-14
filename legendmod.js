@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.53 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.54 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "53"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1370,6 +1370,13 @@ if ($("#ao2t-capture").hasClass("connected")){
             .replace(/'/g, "&#039;");
     }
 })();
+$('#message').keydown(function(e){
+    if (e.keyCode === 13) { // If Enter key pressed
+		$('#ao2t-message').click();        
+    }
+});
+
+$('#ao2t-capture').click();
 }, 3100);
 
 setTimeout(function() {
