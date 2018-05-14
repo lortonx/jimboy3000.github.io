@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.55 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.56 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -3043,7 +3043,11 @@ function init(modVersion) {
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
 		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v3.1 be compatible again'+
 		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/	
-                   
+		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
+		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Important Notice</font></b><font color="black">'+
+		'<br><b>We use <font color="blue"><b>Agar tool socket</b></font> until we fix our own'+
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px") ;	                   
 		//toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
 		
         if (modVersion != "3.1") {	           
