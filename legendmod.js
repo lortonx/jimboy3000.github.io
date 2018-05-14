@@ -3047,7 +3047,7 @@ function init(modVersion) {
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Important Notice</font></b><font color="black">'+
 		'<br><b>We use <font color="blue"><b>Agar tool socket</b></font> until we fix our own'+
-		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px") ;	                   
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "420px") ;	                   
 		//toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
 		
         if (modVersion != "3.1") {	           
