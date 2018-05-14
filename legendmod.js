@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.57 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.58 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -679,16 +679,27 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
 
 
 (function() {
-    'use strict';
+//    'use strict';
     var global = window;
     var my = {
         "name": "ⓐ",
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
-//		"log": function(msg){ toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>'); },
-		"log": function(msg){ toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>'); playSound($('#messageSound').val());},
-
-		//        "tool_symbol": "Send text Universaly"
+		"log": function(msg){ 
+		    if (~msg.indexOf("Received a command with an unknown name")) {
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			else if (~msg.indexOf("load socket.io")) {
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#commandSound').val());} 
+			else if (~msg.indexOf("minimap server")) {
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 				
+			else {
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#messageSound').val());}
+			},
+//        "tool_symbol": "Send text Universaly"
 		"tool_symbol": ""
     };
     var stat = {
