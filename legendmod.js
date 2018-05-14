@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.62 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.61 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "62"; // the version 1.1-> 1.11
+var semimodVersion = "61"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -1166,8 +1166,18 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
                 my.log(""+ cmd.playerName +":"+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;
+            case "command":
+				//console.log(cmd);
+                if(! cmd.playerName){
+                    cmd.playerName = "An unnamed cell";
+                }
+//                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
+                my.log(""+ cmd.playerName +":"+ cmd.message);				
+                my.ogarChatAdd(cmd.playerName, cmd.message);
+                break;				
             default:
-                my.log("Received a command with an unknown name: " + cmd.name); console.log(Object.getOwnPropertyNames(cmd));
+               // my.log("Received a command with an unknown name: " + cmd.name); console.log(Object.getOwnPropertyNames(cmd));
+				my.log("Received a command with an unknown name: " + cmd.name);
         }
     };
     my.sendMinimapServerCommand = function(e){
