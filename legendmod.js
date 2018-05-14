@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.56 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.57 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "57"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -436,7 +436,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
 		$(".toast.toast-warning").remove();
-		doDOMonloadevents1();
+		//doDOMonloadevents1();
     }
 	else if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
 		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
@@ -448,12 +448,13 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 		$(".command-text").text(Premadeletter0);
-		doDOMonloadevents1();
+		//doDOMonloadevents1();
     }
 	else if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
 	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
-	}
+	}	
 });
+setTimeout(function() { doDOMonloadevents1(); }, 4000);
         //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
         //Legend.Mod&?player=a&?com=Team5&?do=donothing
 // load Message Commands
