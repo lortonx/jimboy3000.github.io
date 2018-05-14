@@ -1019,6 +1019,7 @@ function init(modVersion) {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
+						
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
     console.group("Part of");    		
 		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
@@ -1027,6 +1028,12 @@ function init(modVersion) {
 		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
     console.groupEnd();
 console.groupEnd();	
+
+		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
+		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
+		'<br><b>If you play FFA, use <a target="_blank" href="https://legendmod.joomla.com/en/"><font color="blue"><b><u>LM v3.1</u></b></font></a> until LM Express be compatible again </b><i>(disable LM Express on tampermonkey / agarioscripts before)</i>'+
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
     }, 1500);
 }
 
