@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.54 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.55 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "54"; // the version 1.1-> 1.11
+var semimodVersion = "55"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -685,7 +685,8 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>'); },
-        "tool_symbol": "Send text Universaly"
+//        "tool_symbol": "Send text Universaly"
+		"tool_symbol": ""
     };
     var stat = {
         "AgarToolVersion": 4,
