@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.54 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.55 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "54"; // the version 1.1-> 1.11
+var semimodVersion = "55"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -676,13 +676,7 @@ MC.onConnect2 = MC.onConnect;
 
 MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);		
 
-function Universalchatfix(){	
-if ($("#ao2t-capture").hasClass("connected")){
-	$("#ao2t-capture").click();
-	
-	$("#ao2t-capture").click();
-}
-};
+
 (function() {
     'use strict';
     var global = window;
@@ -1370,15 +1364,21 @@ if ($("#ao2t-capture").hasClass("connected")){
             .replace(/'/g, "&#039;");
     }
 })();
+
+
+
+}, 1600);
+setTimeout(function() {
+$('#ao2t-capture').click();
 $('#message').keydown(function(e){
     if (e.keyCode === 13) { // If Enter key pressed
-		$('#ao2t-message').click();        
+		
+		$('#ao2t-message').click(); 
+		$('#message').val("");		
     }
-});
-
-$('#ao2t-capture').click();
-}, 3100);
-
+});	
+}, 1700);	
+	
 setTimeout(function() {
 
         //	$("body").show();	
