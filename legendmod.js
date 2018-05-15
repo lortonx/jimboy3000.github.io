@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.62 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.63 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "62"; // the version 1.1-> 1.11
+var semimodVersion = "63"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -917,7 +917,8 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
             my.sendMinimapServerCommand({
                 name: "chat",
 //                nick: "LM: " + stat.nick,
-				nick: stat.nick,
+//				nick: stat.nick,
+				nick: $('#nick').val(),
                 message: msg
             });
             if(flg.ogar){
