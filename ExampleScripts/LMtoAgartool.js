@@ -1,4 +1,4 @@
-//v1.2b
+//v1.2c
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -154,9 +154,9 @@ var legbgcolor = $("#menuPanelColor").val();
             if(stat.capture){
                 if(global.ogario){
 		    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
-                    $("#ao2t-capture").text('⌫');
-                }else{
                     $("#ao2t-capture").text('🔙');
+                }else{
+                    $("#ao2t-capture").text('⚠');
 			$("#ao2t-capture").removeClass("disconnected").addClass("connected");
                 }
                 my.capture_start();
