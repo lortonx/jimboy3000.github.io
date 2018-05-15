@@ -1,4 +1,4 @@
-//v1.2c
+//v1.2d
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -860,6 +860,9 @@ console.groupEnd();
 setTimeout(function() {
 $('#ao2t-capture').click();
 
+$('#clantag').blur(function() {
+			Universalchatfix();
+        });
 $('#message').keydown(function(e){
     if (e.keyCode === 13) { // If Enter key pressed
 		
