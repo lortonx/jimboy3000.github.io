@@ -809,9 +809,9 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
             if(stat.capture){
                 if(global.ogario){
 		    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
-                    $("#ao2t-capture").text('⌫');
-                }else{
                     $("#ao2t-capture").text('🔙');
+                }else{
+                    $("#ao2t-capture").text('⚠');
                 }
                 my.capture_start();
             }else{
