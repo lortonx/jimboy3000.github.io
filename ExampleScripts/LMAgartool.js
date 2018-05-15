@@ -115,7 +115,6 @@
 			  '<span id="at2o-capture"><img src="https://jimboy3100.github.io/banners/icon16.png" alt="icon16.png"></span>'+
 			  '<span id="at2o-config">⚙</span>'+
 			'</div>');
-		// ダークテーマ
 		try{
 			if(global.AgarTool.settings.checkboxes.darkTheme){
 				$("#at2o-hud").css(stat.darkThemeHudCss);
@@ -129,7 +128,7 @@
 			stat.capture = ! stat.capture;
 			if(stat.capture){
 				$("#at2o-capture").removeClass("disconnected").addClass("connected");
-				$("#at2o-capture").text('⌫');
+				$("#at2o-capture").text('🔙');
 				my.capture_start();
 			}else{
 				$("#at2o-capture").removeClass("connected").addClass("disconnected");
