@@ -1,4 +1,4 @@
-//v1.2c
+//v1.2b
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -436,7 +436,6 @@ var legbgcolor = $("#menuPanelColor").val();
         if(stat.connected && stat.alive){
             my.tgarAlive(false);
         }
-		my.resetMinimap();
         stat.connected = false;
         stat.alive = false;
         var save_grab_socket = stat.grab_socket;
@@ -466,11 +465,6 @@ var legbgcolor = $("#menuPanelColor").val();
         stat.minimap_socket.on("command", my.minimap_command);
         stat.minimap_socket.on("connect", function(){
             stat.connected = true;
-			if(global.ogario){
-				$("#ao2t-capture").text('💫');
-			}else{
-				$("#ao2t-capture").text('🔙');
-			}			
             //if(stat.alive){
             //    my.sendMinimapServerCommand({
             //        name: "alive",
@@ -481,16 +475,14 @@ var legbgcolor = $("#menuPanelColor").val();
         stat.minimap_socket.on("disconnect", function(){
             stat.minimap_socket = null;
             my.minimap_disconnect();
-			$("#ao2t-capture").text('⚠');
         });
         stat.minimap_socket.on("connect_error", function(){
             stat.minimap_socket = null;
             my.minimap_disconnect();
-			$("#ao2t-capture").text('⚠');
         });
     };
 	my.minimap_disconnect = function(){
-/*        stat.connected = false;
+        stat.connected = false;
         var save_grab_socket = stat.grab_socket;
         var save_minimap_socket = stat.minimap_socket;
         stat.grab_socket = null;
@@ -500,8 +492,7 @@ var legbgcolor = $("#menuPanelColor").val();
         }
         if(save_minimap_socket){
             save_minimap_socket.disconnect();
-        } */
-		my.disconnect();
+        }
     };
     // =====  Agar Tool Communication processing / processing  =====
     my.minimap_command = function(cmd){
