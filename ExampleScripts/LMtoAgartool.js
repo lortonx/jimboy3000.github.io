@@ -517,7 +517,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log(""+ cmd.playerName +":"+ cmd.message);				
+                my.log(""+ cmd.playerName +": "+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;
             case "command":
@@ -526,7 +526,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log("ɱ"+ cmd.playerName +":"+ cmd.message);				
+                my.log("ɱ"+ cmd.playerName +": "+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;	
             default:
