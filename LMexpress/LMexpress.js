@@ -1,11 +1,13 @@
 /*************
- * Legend express v0.030 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.031 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "30"; // the version 1.1-> 1.11
+var semimodVersion = "31"; // the version 1.1-> 1.11
 //fix ffa
-$('#gamemode>option:nth-child(1)').val(':ffa');
-$('#gamemode').trigger('change');
+//$('#gamemode>option:nth-child(1)').val(':ffa');
+//setTimeout(function() {
+//$('#gamemode').trigger('change');
+//}, 2500);
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -22,7 +24,6 @@ getaccesstoken2();
     var _privateLog = console.log;
     console.log = function (message) {
 		if (~message.indexOf("OGARio by szymy")){
-			$('#gamemode').trigger('change');
 		}
 		else{
 			_privateLog.apply(console, arguments);
