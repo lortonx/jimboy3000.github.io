@@ -860,9 +860,6 @@ console.groupEnd();
 setTimeout(function() {
 $('#ao2t-capture').click();
 
-$('#clantag').blur(function() {
-			Universalchatfix();
-        });
 $('#message').keydown(function(e){
     if (e.keyCode === 13) { // If Enter key pressed
 		
@@ -873,6 +870,9 @@ $('#message').keydown(function(e){
 }, 2500);	
 
 function fixservbtn(){
+$("#clantag").blur(function() {
+			Universalchatfix();
+        });	
 $("#server-connect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
