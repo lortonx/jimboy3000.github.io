@@ -1,8 +1,7 @@
 /*************
- * Legend mod v3.62 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.63 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "62"; // the version 1.1-> 1.11
- 
+var semimodVersion = "63"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -79,7 +78,7 @@ var oldgamemode=$("#gamemode");
     console.log("Leaving PrS");
 	
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":ffa" data-itr="page_gamemode_ffa">FFA</option>'+
 		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
 		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
 		'<option value=":party" data-itr="page_party">Party Mode</option>');	
@@ -698,7 +697,12 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
 				}
 			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				} 				
+				} 		
+			else if (~msg.indexOf('ɱ')) {
+				msg.slice(1);
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#commandSound').val());
+				} 					
 			else {
 				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				playSound($('#messageSound').val());}
@@ -1168,7 +1172,7 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log(""+ cmd.playerName +":"+ cmd.message);				
+                my.log(""+ cmd.playerName +": "+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;
             case "command":
@@ -1177,7 +1181,7 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log(""+ cmd.playerName +":"+ cmd.message);				
+                my.log("ɱ"+ cmd.playerName +": "+ cmd.message);						
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;				
             default:
@@ -3713,8 +3717,8 @@ function findIP(searchIP) {
         if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
-        if (realmode == "") {
-            $('#gamemode option[value=""]').prop('selected', 'selected').change();
+        if (realmode == ":ffa") {
+            $('#gamemode option[value=":ffa"]').prop('selected', 'selected').change();
         }
         if (realmode == ":teams") {
             $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
@@ -5137,8 +5141,8 @@ function afterdeathtonormalmode() {
             if (realmode == ":party") {
                 $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
             }
-            if (realmode == "") {
-                $('#gamemode option[value=""]').prop('selected', 'selected').change();
+            if (realmode == ":ffa") {
+                $('#gamemode option[value=":ffa"]').prop('selected', 'selected').change();
             }
             if (realmode == ":teams") {
                 $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
