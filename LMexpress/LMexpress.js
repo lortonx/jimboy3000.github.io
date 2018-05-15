@@ -22,6 +22,7 @@ getaccesstoken2();
     var _privateLog = console.log;
     console.log = function (message) {
 		if (~message.indexOf("OGARio by szymy")){
+			$('#gamemode').trigger('change');
 		}
 		else{
 			_privateLog.apply(console, arguments);
