@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.65 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.66 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "65"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -8920,7 +8920,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			}, 1000);
 		    });
 			}
-			else if (MSGCOMMANDS.includes("skype")) {
+			else if (MSGCOMMANDS.includes("[skype]")) {
 				if ($("#nick").val().includes("skype")==false){
 				$(".message-text").remove();
 				$(".toast.toast-success").remove();
