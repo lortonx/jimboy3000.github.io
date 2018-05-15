@@ -2777,7 +2777,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			}, 1000);
 		    });
 			}
-			else if (MSGCOMMANDS.includes("skype")) {
+			else if (MSGCOMMANDS.includes("[skype]")) {
 				if ($("#nick").val().includes("skype")==false){
 				$(".message-text").remove();
 				$(".toast.toast-success").remove();
