@@ -1,4 +1,4 @@
-//v1.1
+//v1.1 
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -42,7 +42,12 @@ var legbgcolor = $("#menuPanelColor").val();
 				}
 			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				} 				
+				} 
+			else if (~msg.indexOf('ɱ')) {
+				msg.slice(1);
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#commandSound').val());
+				} 					
 			else {
 				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				playSound($('#messageSound').val());}
@@ -521,7 +526,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log(""+ cmd.playerName +":"+ cmd.message);				
+                my.log("ɱ"+ cmd.playerName +":"+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;	
             default:
