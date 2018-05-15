@@ -1,4 +1,4 @@
-//v1.2a
+//v1.2b
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -263,8 +263,10 @@ var legbgcolor = $("#menuPanelColor").val();
     my.chatSend = function(flg_){
         var flg = flg_ || {};
         if(! stat.connected){
+			if ($("#ao2t-capture").hasClass("connected")){
             global.toastr.error("L.M:->A.T: not connected");
             return;
+			}
         }
         var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
 		var msgLM=$("#message").val();
@@ -945,4 +947,3 @@ function doDOMonloadevents2(){
 }
 }
 }, 1100);
-
