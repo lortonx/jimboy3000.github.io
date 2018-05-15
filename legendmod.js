@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.63 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.64 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "63"; // the version 1.1-> 1.11
+var semimodVersion = "64"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -698,6 +698,9 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
 			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 		
+			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 					
 			else if (~msg.indexOf('ɱ')) {
 				msg.slice(1);
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
