@@ -5,6 +5,7 @@
 var semimodVersion = "30"; // the version 1.1-> 1.11
 //fix ffa
 $('#gamemode>option:nth-child(1)').val(':ffa');
+$('#gamemode').trigger('change');
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1720,8 +1721,8 @@ function findIP(searchIP) {
         if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
-        if (realmode == "") {
-            $('#gamemode option[value=""]').prop('selected', 'selected').change();
+        if (realmode == ":ffa") {
+            $('#gamemode option[value=":ffa"]').prop('selected', 'selected').change();
         }
         if (realmode == ":teams") {
             $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
