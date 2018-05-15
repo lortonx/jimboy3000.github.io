@@ -3,6 +3,8 @@
  *************/
  
 var semimodVersion = "29"; // the version 1.1-> 1.11
+//fix ffa
+$('#themePreset>option:nth-child(1)').val(':ffa');
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1029,11 +1031,11 @@ function init(modVersion) {
     console.groupEnd();
 console.groupEnd();	
 
-		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+/*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
 		'<br><b>If you play FFA, use <a target="_blank" href="https://legendmod.joomla.com/en/"><font color="blue"><b><u>LM v3.1</u></b></font></a> until LM Express be compatible again </b><i>(disable LM Express on tampermonkey / agarioscripts before)</i>'+
-		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/
     }, 1500);
 }
 
