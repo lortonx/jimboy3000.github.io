@@ -1,4 +1,4 @@
-//v1.2 
+//v1.2a
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -43,6 +43,9 @@ var legbgcolor = $("#menuPanelColor").val();
 			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 
+			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 				
 			else if (~msg.indexOf('ɱ')) {
 				msg.slice(1);
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
