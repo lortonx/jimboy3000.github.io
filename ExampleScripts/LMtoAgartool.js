@@ -1,4 +1,4 @@
-//v1.0
+//v1.1
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -22,15 +22,33 @@ fixservbtn2();
 var legbgpic = $("#menuBg").val();
 var legbgcolor = $("#menuPanelColor").val();
 
-(function() {
-    'use strict';
+
+ //   'use strict';
     var global = window;
     var my = {
         "name": "ⓐ",
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
-//		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },
-		"log": function(msg){ toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>'); },
-        "tool_symbol": "Send text Universaly"
+//		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
+		"log": function(msg){ 
+		    if (~msg.indexOf("Received a command with an unknown name")) {
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			else if (~msg.indexOf("load socket.io")) {
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				//playSound($('#commandSound').val());
+				} 
+			else if (~msg.indexOf("minimap server")) {
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			else if (~msg.indexOf($('#nick').val()+':')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 				
+			else {
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#messageSound').val());}
+			},
+//        "tool_symbol": "Send text Universaly"
+		"tool_symbol": ""
     };
     var stat = {
         "AgarToolVersion": 4,
@@ -246,13 +264,14 @@ var legbgcolor = $("#menuPanelColor").val();
             my.sendMinimapServerCommand({
                 name: "chat",
 //                nick: "LM: " + stat.nick,
-				nick: stat.nick,
+//				nick: stat.nick,
+				nick:  $('#nick').val(),
                 message: msg
             });
             if(flg.ogar){
                 $(document).trigger(jQuery.Event('keydown',{ keyCode: stat.keyCodeEnter, which: stat.keyCodeEnter } ));
             }else{
-                $("#message-box").hide();
+ //               $("#message-box").hide();
             }
         }
     };
@@ -709,7 +728,7 @@ var legbgcolor = $("#menuPanelColor").val();
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
     }
-})();
+
 }, 1000);
 
 
@@ -813,11 +832,21 @@ console.group('%cLegend Mod⇒Agar Tool%c  %chttp://www.legendmod.ml',stylesLege
     console.groupEnd();
 	console.groupEnd();
 console.groupEnd();
-}, 4000);
+}, 1600);
 }
+setTimeout(function() {
+$('#ao2t-capture').click();
 
+$('#message').keydown(function(e){
+    if (e.keyCode === 13) { // If Enter key pressed
+		
+		$('#ao2t-message').click(); 
+//		$('#message').val("");		
+    }
+});	
+}, 4000);	
 
-}, 3000);
+}, 1500);
 
 function fixservbtn(){
 $("#server-connect").click(function() {
