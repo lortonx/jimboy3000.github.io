@@ -1,4 +1,4 @@
-//v1.1 
+//v1.2 
 setTimeout(function() {
 var isLegendExpress2;
 var clickedname = "NO";
@@ -850,7 +850,7 @@ console.groupEnd();
 }, 200);
 
 
-}
+
 
 setTimeout(function() {
 $('#ao2t-capture').click();
@@ -863,8 +863,6 @@ $('#message').keydown(function(e){
     }
 });	
 }, 2500);	
-
-}, 1100);
 
 function fixservbtn(){
 $("#server-connect").click(function() {
@@ -942,3 +940,6 @@ function doDOMonloadevents2(){
 			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
 			},250);
 }
+}
+}, 1100);
+
