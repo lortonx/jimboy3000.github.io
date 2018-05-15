@@ -4,10 +4,11 @@
  
 var semimodVersion = "31"; // the version 1.1-> 1.11
 //fix ffa
-//$('#gamemode>option:nth-child(1)').val(':ffa');
-//setTimeout(function() {
-//$('#gamemode').trigger('change');
-//}, 2500);
+
+setTimeout(function() {
+$('#gamemode>option:nth-child(1)').val(':ffa');	
+$('#gamemode').trigger('change');
+}, 1500);
 loadersetings();
 appendLMhiFbPs();
 loadericon();
@@ -1530,7 +1531,7 @@ setTimeout(function() {
 			}
 			else{
 			adres();}
-            }, 1000);
+            }, 2000);
             adres();
 	
         })(window, window.jQuery);
