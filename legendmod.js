@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.63 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.62 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "63"; // the version 1.1-> 1.11
+var semimodVersion = "62"; // the version 1.1-> 1.11
  
 loadersetings();
 loadericon();
@@ -695,6 +695,9 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
 				} 
 			else if (~msg.indexOf("minimap server")) {
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			else if (~msg.indexOf($('#nick').val()+':')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 				
 			else {
 				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
@@ -1404,7 +1407,7 @@ $('#ao2t-capture').click();
 $('#message').keydown(function(e){
     if (e.keyCode === 13) { // If Enter key pressed
 		
-//		$('#ao2t-message').click(); 
+		$('#ao2t-message').click(); 
 //		$('#message').val("");		
     }
 });	
