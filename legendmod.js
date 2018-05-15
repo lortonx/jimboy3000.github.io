@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.64 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.65 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "64"; // the version 1.1-> 1.11
+var semimodVersion = "65"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -917,8 +917,10 @@ MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);
     my.chatSend = function(flg_){
         var flg = flg_ || {};
         if(! stat.connected){
+			if ($("#ao2t-capture").hasClass("connected")){
             global.toastr.error("L.M:->A.T: not connected");
             return;
+			}
         }
         //var msg = $("#message").val();
 		var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
@@ -1577,9 +1579,15 @@ function init(modVersion) {
 			if (UniversalChat.isChecked()) {
 				$("#ao2t-hud").show();
 				localStorage.setItem("UniversalChatSaved", true);
+					if ($("#ao2t-capture").hasClass("disconnected")){
+					$("#ao2t-capture").click();
+				}				
 			} else {				
 				$("#ao2t-hud").hide();
 				localStorage.setItem("UniversalChatSaved", false);
+					if ($("#ao2t-capture").hasClass("connected")){
+					$("#ao2t-capture").click();
+				}
 			}
 		});			
 		
