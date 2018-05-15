@@ -441,7 +441,7 @@ var legbgcolor = $("#menuPanelColor").val();
     };
 	my.minimap_connect = function(){
 		if ($("#ao2t-hud").hasClass("OnceUsed")==false){
-		toastr["warning"]('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
+//		toastr["warning"]('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
         $("#ao2t-hud").addClass("OnceUsed");
 		}
 		my.log("minimap server="+ stat.minimap_info.minimapServer);
