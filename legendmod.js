@@ -1,5 +1,5 @@
 /*************
- * Legend mod v3.66 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.66a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "66"; // the version 1.1-> 1.11
 loadersetings();
@@ -1512,7 +1512,8 @@ if (minbtext == null || minbtext == "") {
 setTimeoutLateResponse();
 
 function init(modVersion) {
-	ogario.autoZoom=true; //Fix ZOOM
+//Fix ZOOM
+//	ogario.autoZoom=true; 
 	$("#tcm-videoskin").hide();
 	//Fix Login Bug
 	if (modVersion=="2.8"){
