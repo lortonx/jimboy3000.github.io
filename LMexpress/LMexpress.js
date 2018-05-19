@@ -1,14 +1,15 @@
 /*************
- * Legend express v0.032 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.033 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "32"; // the version 1.1-> 1.11
+var semimodVersion = "33"; // the version 1.1-> 1.11
 //fix ffa
-
+/*
 setTimeout(function() {
 $('#gamemode>option:nth-child(1)').val(':ffa');	
 $('#gamemode').trigger('change');
 }, 1500);
+*/
 loadersetings();
 appendLMhiFbPs();
 loadericon();
