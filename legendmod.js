@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.67 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.66a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "67"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -550,11 +550,10 @@ setTimeout(function() {
 						}	
 						$("#server-token").val($('#server').val());	
 						$("#server-ws").val("ws://"+$('#server').val());
-						$(".btn.btn-danger.btn-logout").click();
 						privateSrvReturner();
 						window.core.disableIntegrityChecks(true);
 						$("#server-connect").click();
-//						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
 						setTimeout(function () {
 							setPasswordforPrS();
 						},4000);
