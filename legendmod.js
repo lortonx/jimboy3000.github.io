@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.67a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.67b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "67"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -54,6 +54,7 @@ $("#region").prop('disabled', false);
 var oldgamemode=$("#gamemode");
 		//Private Servers
 $('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');
  $("#region").on('change', function() {
 	setTimeout(function() {
 	$("#gamemode").prop('disabled', false);
@@ -5603,6 +5604,7 @@ setTimeout(function() {
 }
 
 function PrivateServerSenderFunction(){	
+//setTimeout(function() {
     if (this.value == ":PrS1") {
     console.log("Going to PRS1");
 	PrivateServer1();
@@ -5639,6 +5641,7 @@ function PrivateServerSenderFunction(){
     console.log("Going to PRS9");
 	PrivateServer9();
     }	
+//}, 3000);	
 }
 function PrivateServer1(){
 	$("#server").val("mgar.ml:443");
