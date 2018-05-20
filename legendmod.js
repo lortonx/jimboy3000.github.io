@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.66b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "67"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -5608,38 +5608,47 @@ function PrivateServerSenderFunction(){
 //setTimeout(function() {
     if ($('#gamemode').val() == ":PrS1") {
     console.log("Going to PRS1");
+	$("#clantag").val("PRS1");
 	PrivateServer1();
     }
     else if ($('#gamemode').val() == ":PrS2") {
+	$("#clantag").val("PRS2");
     console.log("Going to PRS2");
 	PrivateServer2();
     }  
     else if ($('#gamemode').val() == ":PrS3") {
     console.log("Going to PRS3");
+	$("#clantag").val("PRS3");
 	PrivateServer3();
     }
     else if ($('#gamemode').val() == ":PrS4") {
     console.log("Going to PRS4");
+	$("#clantag").val("PRS4");
 	PrivateServer4();
     }
     else if ($('#gamemode').val() == ":PrS5") {
     console.log("Going to PRS5");
+	$("#clantag").val("PRS5");
 	PrivateServer5();
     }
     else if ($('#gamemode').val() == ":PrS6") {
     console.log("Going to PRS6");
+	$("#clantag").val("PRS6");
 	PrivateServer6();
     }
     else if ($('#gamemode').val() == ":PrS7") {
     console.log("Going to PRS7");
+	$("#clantag").val("PRS7");
 	PrivateServer7();
     }
     else if ($('#gamemode').val() == ":PrS8") {
     console.log("Going to PRS8");
+	$("#clantag").val("PRS8");
 	PrivateServer8();
     }
     else if ($('#gamemode').val() == ":PrS9") {
     console.log("Going to PRS9");
+	$("#clantag").val("PRS9");
 	PrivateServer9();
     }	
 //}, 3000);	
