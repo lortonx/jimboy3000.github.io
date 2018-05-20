@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.67b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.66b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -554,7 +554,7 @@ setTimeout(function() {
 						privateSrvReturner();
 						window.core.disableIntegrityChecks(true);
 						$("#server-connect").click();
-						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+//						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
 						setTimeout(function () {
 							setPasswordforPrS();
 						},4000);
@@ -634,7 +634,7 @@ setTimeout(function() {
 						  window.core.disableIntegrityChecks(true);
 						  core.connect($("#server").val());
 						  $("#server-token").val($("#server").val());
-						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+//						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
 						  setTimeout(function () {
 							setPasswordforPrS();
 						  },4000);									
@@ -5606,39 +5606,39 @@ setTimeout(function() {
 
 function PrivateServerSenderFunction(){	
 //setTimeout(function() {
-    if (this.value == ":PrS1") {
+    if ($('#gamemode').val() == ":PrS1") {
     console.log("Going to PRS1");
 	PrivateServer1();
     }
-    else if (this.value == ":PrS2") {
+    else if ($('#gamemode').val() == ":PrS2") {
     console.log("Going to PRS2");
 	PrivateServer2();
     }  
-    else if (this.value == ":PrS3") {
+    else if ($('#gamemode').val() == ":PrS3") {
     console.log("Going to PRS3");
 	PrivateServer3();
     }
-    else if (this.value == ":PrS4") {
+    else if ($('#gamemode').val() == ":PrS4") {
     console.log("Going to PRS4");
 	PrivateServer4();
     }
-    else if (this.value == ":PrS5") {
+    else if ($('#gamemode').val() == ":PrS5") {
     console.log("Going to PRS5");
 	PrivateServer5();
     }
-    else if (this.value == ":PrS6") {
+    else if ($('#gamemode').val() == ":PrS6") {
     console.log("Going to PRS6");
 	PrivateServer6();
     }
-    else if (this.value == ":PrS7") {
+    else if ($('#gamemode').val() == ":PrS7") {
     console.log("Going to PRS7");
 	PrivateServer7();
     }
-    else if (this.value == ":PrS8") {
+    else if ($('#gamemode').val() == ":PrS8") {
     console.log("Going to PRS8");
 	PrivateServer8();
     }
-    else if (this.value == ":PrS9") {
+    else if ($('#gamemode').val() == ":PrS9") {
     console.log("Going to PRS9");
 	PrivateServer9();
     }	
@@ -5737,7 +5737,7 @@ function adres() {
                     }
 				}
 				else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
+//                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
 				
 			}	                
 			
@@ -5763,20 +5763,20 @@ function adres() {
         function VoiceChan() {
             if (searchSip == null) {
                 if (ogario.gameMode == ":party") {
-                    semiurl2 = MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
+ //                   semiurl2 = MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
                 } else {
                     var currentIP2 = currentIP.replace(".", "");
                     currentIP2 = currentIP2.replace(".", "");
                     currentIP2 = currentIP2.replace(".", "");
                     currentIP2 = currentIP2.replace(":", "");
-                    semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + currentIP;
+//                    semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + currentIP;
                 }
             } else if (searchSip != null) {
                 var currentIP2 = searchSip.replace(".", "");
                 currentIP2 = currentIP2.replace(".", "");
                 currentIP2 = currentIP2.replace(".", "");
                 currentIP2 = currentIP2.replace(":", "");
-                semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + searchSip;
+//                semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + searchSip;
             }
 
             url2 = "https://talky.io/" + semiurl2;
