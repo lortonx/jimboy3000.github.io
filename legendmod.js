@@ -1,7 +1,7 @@
 /*************
  * Legend mod v3.66b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -69,10 +69,10 @@ $('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</optio
 		'<option value=":PrS3" data-itr="PrS3">FFA</option>'+
 		'<option value=":PrS4" data-itr="PrS4">Instant</option>'+
 		'<option value=":PrS5" data-itr="PrS5">Minions</option>'+
-		'<option value=":PrS6" data-itr="PrS6">Proxiemind 1</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Proxiemind 2</option>'+
-		'<option value=":PrS8" data-itr="PrS8">Proxiemind 3</option>'+
-		'<option value=":PrS9" data-itr="PrS9">Proxiemind 4</option>');	
+		'<option value=":PrS6" data-itr="PrS6">Bots 1</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Bots 2</option>'+
+		'<option value=":PrS8" data-itr="PrS8">Instant 2</option>'+
+		'<option value=":PrS9" data-itr="PrS9">--</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -5645,42 +5645,44 @@ function PrivateServerSenderFunction(){
 //}, 3000);	
 }
 function PrivateServer1(){
+	setTimeout(function() {
 	$("#server").val("mgar.ml:443");
-	$("#connect2").click();
+//	$("#connect2").click();
+	}, 3000);	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
 	$("#server").val("mgar.ml:441");
-	$("#connect2").click();	
+//	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
 	$("#server").val("mgar.ml:444");
-	$("#connect2").click();	
+//	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
 	$("#server").val("mgar.ml:442");
-	$("#connect2").click();
+//	$("#connect2").click();
 //	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
 }
 function PrivateServer5(){
 	$("#server").val("mgar.ml:400");
-	$("#connect2").click();
+//	$("#connect2").click();
 //	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
 }
 function PrivateServer6(){
-//	$("#server").val("eu.fzogar.xyz:5002");
+	$("#server").val("35.231.64.21:8081");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
 }
 function PrivateServer7(){
-//	$("#server").val("172.93.178.205:8880");
+	$("#server").val("35.231.64.21:8082");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
 }
 function PrivateServer8(){
-//	$("#server").val("sg.fzogar.xyz:4000");
+	$("#server").val("35.231.64.21:8083");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
 }
