@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.66a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.67a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -53,7 +53,7 @@ $("#region").prop('disabled', false);
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
-//$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
  $("#region").on('change', function() {
 	setTimeout(function() {
 	$("#gamemode").prop('disabled', false);
@@ -63,11 +63,11 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
-//		'<option value=":PrS1" data-itr="PrS1">2vs2 Arena</option>'+
-//		'<option value=":PrS2" data-itr="PrS2">2vs2 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">EXP bot</option>'+
-		'<option value=":PrS4" data-itr="PrS4">N. America 1</option>'+
-		'<option value=":PrS5" data-itr="PrS5">N. America 2</option>'+
+		'<option value=":PrS1" data-itr="PrS1">Ultrasplit1</option>'+
+		'<option value=":PrS2" data-itr="PrS2">Ultrasplit2</option>'+
+		'<option value=":PrS3" data-itr="PrS3">FFA</option>'+
+		'<option value=":PrS4" data-itr="PrS4">Instant</option>'+
+		'<option value=":PrS5" data-itr="PrS5">Minions</option>'+
 		'<option value=":PrS6" data-itr="PrS6">Proxiemind 1</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Proxiemind 2</option>'+
 		'<option value=":PrS8" data-itr="PrS8">Proxiemind 3</option>'+
@@ -623,7 +623,7 @@ setTimeout(function() {
 						  window.core.disableIntegrityChecks(true);
 						  core.connect("ws://"+$("#server").val());
 						  $("#server-token").val($("#server").val());
-						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+//						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
 						  setTimeout(function () {
 							setPasswordforPrS();
 						  },4000);									
@@ -646,7 +646,7 @@ setTimeout(function() {
 						  window.core.disableIntegrityChecks(true);
 						  core.connect("ws://"+$("#server").val());
 						  $("#server-token").val($("#server").val());
-						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+//						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
 						  setTimeout(function () {
 							setPasswordforPrS();
 						  },4000);	
@@ -5641,49 +5641,49 @@ function PrivateServerSenderFunction(){
     }	
 }
 function PrivateServer1(){
-//	$("#server").val("eu.fzogar.xyz:4000");
-//	$("#connect2").click();
-	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
+	$("#server").val("mgar.ml:443");
+	$("#connect2").click();
+//	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
-//	$("#server").val("eu.fzogar.xyz:4001");
-//	$("#connect2").click();	
-	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
+	$("#server").val("mgar.ml:441");
+	$("#connect2").click();	
+//	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-//	$("#server").val("eu.fzogar.xyz:5001");
-//	$("#connect2").click();	
-	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
+	$("#server").val("mgar.ml:444");
+	$("#connect2").click();	
+//	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
-//	$("#server").val("eu.fzogar.xyz:5002");
-//	$("#connect2").click();
-	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
+	$("#server").val("mgar.ml:442");
+	$("#connect2").click();
+//	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
 }
 function PrivateServer5(){
-//	$("#server").val("eu.fzogar.xyz:5002");
-//	$("#connect2").click();
-	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
+	$("#server").val("mgar.ml:400");
+	$("#connect2").click();
+//	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
 }
 function PrivateServer6(){
 //	$("#server").val("eu.fzogar.xyz:5002");
 //	$("#connect2").click();
-	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
+//	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
 }
 function PrivateServer7(){
 //	$("#server").val("172.93.178.205:8880");
 //	$("#connect2").click();
-	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
+//	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
 }
 function PrivateServer8(){
 //	$("#server").val("sg.fzogar.xyz:4000");
 //	$("#connect2").click();	
-	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
+//	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
 }
 function PrivateServer9(){
 //	$("#server").val("in.fzogar.xyz:443");
 //	$("#connect2").click();	
-	window.open("http://agar.io/?ip=145.239.82.188:4000","_self");
+//	window.open("http://agar.io/?ip=145.239.82.188:4000","_self");
 }
 
 /*
@@ -8158,9 +8158,9 @@ function doDOMonloadevents1(){
 	//	$(".toast.toast-warning").remove();	        
 		setPasswordforPrS1();	
 		MC.setQuality($('#quality').val());
-//		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-//		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-//		}
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
 		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
