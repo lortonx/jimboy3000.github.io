@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.66b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.69b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "69"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -68,8 +68,8 @@ $('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</optio
 		'<option value=":PrS2" data-itr="PrS2">Ultrasplit2</option>'+
 		'<option value=":PrS3" data-itr="PrS3">FFA</option>'+
 		'<option value=":PrS4" data-itr="PrS4">Instant</option>'+
-		'<option value=":PrS5" data-itr="PrS5">Minions</option>'+
-		'<option value=":PrS6" data-itr="PrS6">Bots 1</option>'+
+//		'<option value=":PrS5" data-itr="PrS5">Minions</option>'+
+//		'<option value=":PrS6" data-itr="PrS6">Bots 1</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Bots 2</option>'+
 		'<option value=":PrS8" data-itr="PrS8">Instant 2</option>'+
 		'<option value=":PrS9" data-itr="PrS9">--</option>');	
@@ -5609,55 +5609,65 @@ function PrivateServerSenderFunction(){
     if ($('#gamemode').val() == ":PrS1") {
     console.log("Going to PRS1");
 	$("#clantag").val("PRS1");
+	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
 	PrivateServer1();
     }
     else if ($('#gamemode').val() == ":PrS2") {
 	$("#clantag").val("PRS2");
     console.log("Going to PRS2");
+	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
 	PrivateServer2();
     }  
     else if ($('#gamemode').val() == ":PrS3") {
     console.log("Going to PRS3");
 	$("#clantag").val("PRS3");
+	toastr["info"]("<b>Server</b> not ready yet").css("width", "250px");
 	PrivateServer3();
     }
     else if ($('#gamemode').val() == ":PrS4") {
     console.log("Going to PRS4");
 	$("#clantag").val("PRS4");
+	toastr["info"]("<b>Server</b> not ready yet").css("width", "250px");
 	PrivateServer4();
     }
     else if ($('#gamemode').val() == ":PrS5") {
     console.log("Going to PRS5");
 	$("#clantag").val("PRS5");
+	toastr["info"]("<b>Server</b> not ready yet").css("width", "250px");
 	PrivateServer5();
     }
     else if ($('#gamemode').val() == ":PrS6") {
     console.log("Going to PRS6");
 	$("#clantag").val("PRS6");
+	toastr["info"]("<b>Server</b> not ready yet").css("width", "250px");
 	PrivateServer6();
     }
     else if ($('#gamemode').val() == ":PrS7") {
     console.log("Going to PRS7");
 	$("#clantag").val("PRS7");
+	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
 	PrivateServer7();
     }
     else if ($('#gamemode').val() == ":PrS8") {
     console.log("Going to PRS8");
 	$("#clantag").val("PRS8");
+	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
 	PrivateServer8();
     }
     else if ($('#gamemode').val() == ":PrS9") {
     console.log("Going to PRS9");
 	$("#clantag").val("PRS9");
+	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
 	PrivateServer9();
     }	
 //}, 3000);	
 }
 function PrivateServer1(){
-	setTimeout(function() {
+	
 	$("#server").val("mgar.ml:443");
+	
 //	$("#connect2").click();
-	}, 3000);	
+		
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
