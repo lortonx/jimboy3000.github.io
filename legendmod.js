@@ -54,7 +54,7 @@ $("#region").prop('disabled', false);
 var oldgamemode=$("#gamemode");
 		//Private Servers
 $('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');
+
  $("#region").on('change', function() {
 	setTimeout(function() {
 	$("#gamemode").prop('disabled', false);
@@ -669,6 +669,7 @@ setTimeout(function() {
 
 setTimeout(function () {
 setPasswordforPrS();
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 }, 6000);
 
 setTimeout(function() {
