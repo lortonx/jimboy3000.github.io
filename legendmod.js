@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.69b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.66b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "69"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -53,7 +53,7 @@ $("#region").prop('disabled', false);
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
-$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Beta Servers</option>');	
 
  $("#region").on('change', function() {
 	setTimeout(function() {
