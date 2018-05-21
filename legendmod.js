@@ -1,7 +1,7 @@
 /*************
- * Legend mod v3.66b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.67b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
 PremiumUsers();
@@ -66,13 +66,13 @@ $('#region').prepend('<option value=":PrS" data-itr="PrS">Beta Servers</option>'
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
 		'<option value=":PrS1" data-itr="PrS1">Ultrasplit1</option>'+
 		'<option value=":PrS2" data-itr="PrS2">Ultrasplit2</option>'+
-		'<option value=":PrS3" data-itr="PrS3">FFA</option>'+
-		'<option value=":PrS4" data-itr="PrS4">Instant</option>'+
+//		'<option value=":PrS3" data-itr="PrS3">FFA</option>'+
+//		'<option value=":PrS4" data-itr="PrS4">Instant</option>'+
 //		'<option value=":PrS5" data-itr="PrS5">Minions</option>'+
-//		'<option value=":PrS6" data-itr="PrS6">Bots 1</option>'+
+		'<option value=":PrS6" data-itr="PrS6">Bots 1</option>'+
 		'<option value=":PrS7" data-itr="PrS7">Bots 2</option>'+
-		'<option value=":PrS8" data-itr="PrS8">Instant 2</option>'+
-		'<option value=":PrS9" data-itr="PrS9">--</option>');	
+		'<option value=":PrS8" data-itr="PrS8">Instant 2</option>');
+//		'<option value=":PrS9" data-itr="PrS9">--</option>');	
 		
     }
 	else if (this.value != ":PrS") {
@@ -5609,7 +5609,7 @@ function PrivateServerSenderFunction(){
     if ($('#gamemode').val() == ":PrS1") {
     console.log("Going to PRS1");
 	$("#clantag").val("PRS1");
-	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
+//	toastr["info"]("Beta Function. Click <b>Connect</b> when ready").css("width", "250px");
 	PrivateServer1();
     }
     else if ($('#gamemode').val() == ":PrS2") {
@@ -5663,45 +5663,58 @@ function PrivateServerSenderFunction(){
 //}, 3000);	
 }
 function PrivateServer1(){
-	
-	$("#server").val("mgar.ml:443");
-	
-//	$("#connect2").click();
-		
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:443");	
+//	$("#server").val("mgar.ml:443");	
+//	$("#connect2").click();		
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
-	$("#server").val("mgar.ml:441");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:441");		
+//	$("#server").val("mgar.ml:441");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-	$("#server").val("mgar.ml:444");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:444");		
+//	$("#server").val("mgar.ml:444");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
-	$("#server").val("mgar.ml:442");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:442");		
+//	$("#server").val("mgar.ml:442");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
 }
 function PrivateServer5(){
-	$("#server").val("mgar.ml:400");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:400");		
+//	$("#server").val("mgar.ml:400");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
 }
 function PrivateServer6(){
-	$("#server").val("35.231.64.21:8081");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://35.231.64.21:8081");			
+//	$("#server").val("35.231.64.21:8081");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
 }
 function PrivateServer7(){
-	$("#server").val("35.231.64.21:8082");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://35.231.64.21:8082");			
+//	$("#server").val("35.231.64.21:8082");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
 }
 function PrivateServer8(){
-	$("#server").val("35.231.64.21:8083");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://35.231.64.21:8083");			
+//	$("#server").val("35.231.64.21:8083");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
 }
