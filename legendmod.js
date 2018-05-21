@@ -5666,61 +5666,61 @@ setTimeout(function() {
 function PrivateServer1(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://mgar.ml:443");	
-//	$("#server").val("mgar.ml:443");	
+	$("#server").val("mgar.ml:443");	
 //	$("#connect2").click();		
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://mgar.ml:441");		
-//	$("#server").val("mgar.ml:441");
+	$("#server").val("mgar.ml:441");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://mgar.ml:444");		
-//	$("#server").val("mgar.ml:444");
+	$("#server").val("mgar.ml:444");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://mgar.ml:442");		
-//	$("#server").val("mgar.ml:442");
+	$("#server").val("mgar.ml:442");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
 }
 function PrivateServer5(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://mgar.ml:400");		
-//	$("#server").val("mgar.ml:400");
+	$("#server").val("mgar.ml:400");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
 }
 function PrivateServer6(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://35.231.64.21:8081");			
-//	$("#server").val("35.231.64.21:8081");
+	$("#server").val("35.231.64.21:8081");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
 }
 function PrivateServer7(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://35.231.64.21:8082");			
-//	$("#server").val("35.231.64.21:8082");
+	$("#server").val("35.231.64.21:8082");
 //	$("#connect2").click();
 //	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
 }
 function PrivateServer8(){
 window.core.disableIntegrityChecks(true);
 core.connect("ws://35.231.64.21:8083");			
-//	$("#server").val("35.231.64.21:8083");
+	$("#server").val("35.231.64.21:8083");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
 }
 function PrivateServer9(){
-//	$("#server").val("in.fzogar.xyz:443");
+	$("#server").val("in.fzogar.xyz:443");
 //	$("#connect2").click();	
 //	window.open("http://agar.io/?ip=145.239.82.188:4000","_self");
 }
