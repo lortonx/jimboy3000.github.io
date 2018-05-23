@@ -1,4 +1,4 @@
-//v0.14
+//v0.14a
 var _0x13aa=['setShowTeammatesInd','hk-showOppColors','setShowOppColors','toggleSkins','hk-transparentSkins','setTransparentSkins','hk-showSkins','hk-showStats','setShowStats','hk-toggleCells','toggleCells','hk-showFood','setShowFood','hk-showGrid','setShowGrid','hk-showMiniMapGuides','ALT+G','setShowMiniMapGuides','hk-showHUD','ALT+H','copyLb','hk-showLb','setShowLb','hk-toggleAutoZoom','hk-resetZoom','resetZoom','hk-clearChat','displayChatHistory','hk-showBgSectors','setShowBgSectors','hk-hideBots','ALT+B','setHideSmallBots','hk-showNames','setShowNames','hk-hideTeammatesNames','setHideTeammatesNames','hk-showMass','setShowMass','hk-showMiniMap','ALT+M','setShowMiniMap','hk-chatMessage','ENTER','special','hk-quickResp','hk-autoResp','hk-zoomLevel','ALT+1','ALT+2','setZoom','ALT+4','ALT+5','hk-switchServerMode','switchServerMode','hk-showTargeting','setShowTargeting','hk-setTargeting','hk-cancelTargeting','hk-changeTarget','hk-showQuest','setShowQuest','comm1','command','sendCommand',
 'comm4','comm8','LEFT','RIGHT','DOWN',
 'custom-key-in form-control input-sm','spec-messageKey','ogarioHotkeys','loadDefaultHotkeys','ogarioCommands','saveCommands',
@@ -19,7 +19,7 @@ var _0x13aa=['setShowTeammatesInd','hk-showOppColors','setShowOppColors','toggle
 '_onConnect','onConnect','sendServerJoin','sendServerData','_onPlayerSpawn','onPlayerDeath','_onPlayerDeath','onAgarioCoreLoaded','_onAgarioCoreLoaded','setNames','hash','#join-party-btn-2','onPlayerBanned','innerWidth','innerHeight','#helloContainer','menuHeight','translate(-50%, 0%) scale(','transform','-ms-transform','-webkit-transform','onkeydown','getPressedKey','INPUT','target','inputClassName','ESC','showMenu','setHotkey','keyDown','onkeyup','keyUp','onmousedown','mouseInvert','which','onmouseup','onbeforeunload','exit','resize','specialOn','specialOff','getWS',
 'displayLeaderboard','leaderboardHTML','drawGrid','customDraw','drawCellInfo','setVirusColor','setVirusStrokeColor','setOppColor','/ogario','pathname','NREUM','ajax','$1 var ogario=$2.ogario,gameCtx=null;','$1 ogario.getWS($2); $3$4','if($2.id==="canvas"){$1 gameCtx=$2;}else{$1}',
 '$1 ogario.getString=$2;',
-'\x69\x66\x28\x24\x31\x3c\x6f\x67\x61\x72\x69\x6f\x2e\x7a\x6f\x6f\x6d\x52\x65\x73\x65\x74\x56\x61\x6c\x75\x65\x29\x7b',
+'if($1<<ogario.zoomResetValue){',
 'if(!ogario.autoZoom){$1=ogario.zoomValue;} $1=$1*$2((ogario.zoomSpeedValue||0.9),$3); ogario.zoomValue=$1;','ogario.playerCellsMass=[]; $1$2; ogario.playerCellsMass.push($2)$3 ogario.playerMass=$5; ogario.calculateMass();',
 '$1$2$3 if(1){ogario.drawGrid(gameCtx);$5}','$1 ogario.viewScale=$2; ogario.playerX=$4; ogario.playerY=$5; ogario.customDraw(gameCtx);',
 '$1$2 ogario.drawRemovedCells=true; $3 ogario.drawRemovedCells=false; $4$5$6','$1$14','$1=1; $2 if(!ogario.vanillaSkins&&ogario.customSkins){$4}else{$3}}else{$4}',
