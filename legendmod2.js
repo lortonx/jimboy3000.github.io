@@ -1,25 +1,61 @@
 /*************
- * LEGEND mod v2.517 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend mod v3.68 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "71"; // the version 1.1-> 1.11
- 
+var semimodVersion = "68"; // the version 1.1-> 1.11
 loadersetings();
 loadericon();
+PremiumUsers();
 document.title = "Legend mod";
 
 //Authenticate Mod Script
 var accesstomod;
 setTimeout(function() {
+$("#tcm-videoskin").hide();	
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
+
+
+var CutNameConflictwithMessage=false;
+
+/*
+(function(){
+    var _privateLog = console.log;
+    console.log = function (message) {
+		if (CutNameConflictwithMessage==false){
+		if (~message.indexOf("OGARio by szymy")){
+		}
+		else{
+			_privateLog.apply(console, arguments);
+		}
+		}
+    };
+})();
+*/
+var DeathFPSfixVariable;
+MC.onPlayerDeath = joint([ MC._onPlayerDeath, DeathFPSfix ]); //temporary until i fix the error
+MC._onDisconnect = MC.onDisconnect;
+MC.onDisconnect = joint([ MC._onDisconnect, onDisconnectfix ]);
+
+
+videoskins();
+//Map Auto Start
+CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage, CanvasRenderingContext2D.prototype.drawImage = function() {
+  if (arguments[0].src) {
+    if ("http://agar.io/img/background.png" == arguments[0].src) {
+      arguments[0].src = "";
+    }
+  }
+  this._drawImage.apply(this, arguments);
+};
 
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   
 		
 var oldgamemode=$("#gamemode");
 		//Private Servers
-//$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Beta Servers</option>');	
+
  $("#region").on('change', function() {
 	setTimeout(function() {
 	$("#gamemode").prop('disabled', false);
@@ -29,22 +65,22 @@ var oldgamemode=$("#gamemode");
     console.log("Going to PrS");
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
 		'<option value=":PrS0" data-itr="PrS0">-SELECT-</option>'+		
-		'<option value=":PrS1" data-itr="PrS1">1vs1 Arena(1)</option>'+
-		'<option value=":PrS2" data-itr="PrS2">1vs1 Arena(2)</option>'+
-		'<option value=":PrS3" data-itr="PrS3">Party Server(1)</option>'+
-		'<option value=":PrS4" data-itr="PrS4">Party Server(2)</option>'+
-		'<option value=":PrS6" data-itr="PrS6">Instant Merge(1)</option>'+
-		'<option value=":PrS5" data-itr="PrS5">Instant Merge(2)</option>'+
-		'<option value=":PrS7" data-itr="PrS7">Experimental</option>');
-//		'<option value=":PrS8" data-itr="PrS8">Virus Mode</option>');
-//		'<option value=":PrS9" data-itr="PrS9">Small Bots</option>');	
+		'<option value=":PrS1" data-itr="PrS1">Ultrasplit1</option>'+
+		'<option value=":PrS2" data-itr="PrS2">Ultrasplit2</option>'+
+//		'<option value=":PrS3" data-itr="PrS3">FFA</option>'+
+//		'<option value=":PrS4" data-itr="PrS4">Instant</option>'+
+//		'<option value=":PrS5" data-itr="PrS5">Minions</option>'+
+		'<option value=":PrS6" data-itr="PrS6">Bots 1</option>'+
+		'<option value=":PrS7" data-itr="PrS7">Bots 2</option>'+
+		'<option value=":PrS8" data-itr="PrS8">Instant 2</option>');
+//		'<option value=":PrS9" data-itr="PrS9">--</option>');	
 		
     }
 	else if (this.value != ":PrS") {
     console.log("Leaving PrS");
 	
         $("#gamemode").html('<select id="gamemode" class="form-control" required="" data-original-title="" title="">'+
-		'<option value="" data-itr="page_gamemode_ffa">FFA</option>'+
+		'<option value=":ffa" data-itr="page_gamemode_ffa">FFA</option>'+
 		'<option value=":teams" data-itr="page_gamemode_teams">Teams</option>'+
 		'<option value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+
 		'<option value=":party" data-itr="page_party">Party Mode</option>');	
@@ -52,47 +88,16 @@ var oldgamemode=$("#gamemode");
 	adres();
 });
 $('#gamemode').on('change', function() {
-   adres();
-    if (this.value == ":party") {
-        $("#create-party-btn").click();
-    console.log("Party stuff fixed");
-	}
-    else if (this.value == ":PrS1") {
-    console.log("Going to PRS1");
-	PrivateServer1();
-    }
-    else if (this.value == ":PrS2") {
-    console.log("Going to PRS2");
-	PrivateServer2();
-    }  
-    else if (this.value == ":PrS3") {
-    console.log("Going to PRS3");
-	PrivateServer3();
-    }
-    else if (this.value == ":PrS4") {
-    console.log("Going to PRS4");
-	PrivateServer4();
-    }
-    else if (this.value == ":PrS5") {
-    console.log("Going to PRS5");
-	PrivateServer5();
-    }
-    else if (this.value == ":PrS6") {
-    console.log("Going to PRS6");
-	PrivateServer6();
-    }
-    else if (this.value == ":PrS7") {
-    console.log("Going to PRS7");
-	PrivateServer7();
-    }
-    else if (this.value == ":PrS8") {
-    console.log("Going to PRS8");
-	PrivateServer8();
-    }
-    else if (this.value == ":PrS9") {
-    console.log("Going to PRS9");
-	PrivateServer9();
-    }		
+	if ($('#region').val()!=":PrS"){
+		adres();		
+		if (this.value == ":party") {
+			$("#create-party-btn").click();	
+			console.log("Party stuff fixed");
+		}
+	}	
+	else{	
+		PrivateServerSenderFunction();
+		}		
 });
 
 /*		
@@ -114,14 +119,14 @@ var currentIP = "0.0.0.0:0";
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=Iu8sWFVQmkM";
+var defaultMusicUrl = "http://www.youtube.com/watch?v=qkKiyneiSTo";
 var coinTimer;
 var musicPlayer;
 var originalDeath;
 var stateObj = {
     foo: "bar"
 };
-var containermain;
+//var containermain;
 var closebutton1 = "0";
 var modebetter = "";
 var modbetter2 = "";
@@ -141,7 +146,7 @@ var pic2dataimg = "Why?";
 var pic3dataimg = "Yow!!";
 var pic4dataimg = "Death!";
 var pic5dataimg = "Relax!";
-var pic6dataimg = "Legend Mod!";
+var pic6dataimg = "Legend mod!";
 var yt1url = "dQw4w9WgXcQ";
 var yt2url = "btPJPFnesV4";
 var yt3url = "UD-MkihnOXg";
@@ -153,7 +158,7 @@ var yt2data = "Survivor - Eye Of The Tiger";
 var yt3data = "Lion king - The Lion Sleeps Tonight";
 var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
-var yt6data = "Legend Mod Promo";
+var yt6data = "Legend mod Promo";
 var lastIP = "";
 var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
@@ -183,27 +188,28 @@ var autoCoinBtn = localStorage.getItem("autoCoinBtn");
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 var region = getParameterByName("r", url);
-var mode = getParameterByName("m", url);
+var realmode = getParameterByName("m", url);
 var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
-var privateSrv= getParameterByName("ip", url);
-var realmode = "";
+var privateSrv = getParameterByName("ip", url);
+var clanpass = getParameterByName("pass", url);
 var realmode2 = "";
+var mode=""; //just in case
 var token = "";
 var messageone = 1; //If legendmod is being used
 var hiddenfromclan = 0;
-var saveclanpassword;
+var saveclanpassword= localStorage.getItem("saveclanpassword");
 var troll1;
 var seticon = "YES";
 var setmessagecom = "YES";
 var setyt = "YES";
-var clanpassword;
 var searching;
 var timerId;
 T = {};
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
 var MSGCOMMANDS;
+var MSGNICK;
 var playerMsg = "";
 var commandMsg = "";
 var otherMsg = "";
@@ -232,12 +238,32 @@ var toastrSkinNotice=0;
 var detailed="";
 //var userIp;
 var detailed1;
+userData = {}; 
+userData = JSON.parse(localStorage.getItem("userData"));
+var userip="0.0.0.0:0";
+var usercity="NotFound";
+var usercountry="NotFound";
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
 var fbresponse={};
-
-
+var prevPrivateServer = localStorage.getItem("prevPrivateServer");
+var CopyTkPwLb2; 
+//for MsgCommands
+var MSGCOMMANDS2a;
+var MSGCOMMANDSA;
+var MSGCOMMANDS2;
+var MSGCOMMANDS3;
+var Express;
+var acceptServerBtnFlag=null;
+//for the LM JSON
+var LegendJSON;
+var LegendSettings="true";
+var LegendSettingsfirstclicked="false"; 
+var switcheryLegendSwitch, switcheryLegendSwitch2;
+var DoubleSplitRangeSaved = localStorage.getItem("DoubleSplitRangeSaved");
+var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
+//
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
 var Premadeletter2 = "You cannot chat if player name > 15 chars";
@@ -302,6 +328,93 @@ var Premadeletter57 = "Communication";
 var Premadeletter58 = "Hidden";
 var Premadeletter59 = "Visible";
 var Premadeletter60 = "Pause";
+var Premadeletter61 = "Enable YT as background";
+var Premadeletter62 = "Disable YT as background";
+var Premadeletter63 = "wants you to open the url";
+var Premadeletter64 = "wants you to embed and play this youtube video";
+var Premadeletter65 = "wants you to join the following Skype room";
+var Premadeletter66 = "wants you to join the following Discord room";
+var Premadeletter67 = "wants you to leave this server and join this new one";
+
+var Premadeletter68 = "You pressed";
+var Premadeletter69 = "restart if";
+var Premadeletter70 = "drops";
+var Premadeletter71 = "Animated skins";
+var Premadeletter72 = "enabled";
+var Premadeletter73 = "drop";
+var Premadeletter74 = "when";
+var Premadeletter75 = "Animated skins will be";
+var Premadeletter76 = "disabled";
+var Premadeletter77 = "after rejoin";
+var Premadeletter78 = "Better FPS";
+var Premadeletter79 = "performance when 16";
+var Premadeletter80 = "When Dying Light Expansion is enabled, Troll on death cannot occur";
+var Premadeletter81 = "Private Server";
+var Premadeletter82 = "Connect to any";
+var Premadeletter83 = "server, or make your own";
+var Premadeletter84 = "Play agario-like games if you know the IP of servers";
+var Premadeletter85 = "Your account\'s image has been copied to clipboard. Paste it"; // erase the 's
+var Premadeletter86 = "to custom skin Url area";
+var Premadeletter87 = "You must Login to use picture of your profile";
+var Premadeletter88 = "You are using a wrong version";
+var Premadeletter89 = "Game will terminate now";
+var Premadeletter90 = "Special Deals";
+var Premadeletter91 = "Agario may or may not give you the Skin, but only the coins";
+var Premadeletter91a = "Use at your own risk";
+var Premadeletter92 = "If friend's UID is wrong, purchase will fail";
+var Premadeletter93 = "UID Factory Settings";
+var Premadeletter94 = "You must login to load Special Deals";
+var Premadeletter95 = "Fake\'s image has been copied to clipboard. Paste it"; // erase the 's
+var Premadeletter96 = "to custom skin Url area in order to activate the fake\'s flag function"; // erase the 's
+var Premadeletter97 = "Inform me when you finish with Recapatcha";
+var Premadeletter98 = "I have finished";
+var Premadeletter99 = "Never Mind";
+var Premadeletter100 = "Calculating your XP, please wait...";
+var Premadeletter101 = "Do";
+var Premadeletter102 = "NOT";
+var Premadeletter103 = "press";
+var Premadeletter104 = "Erase custom skin URL";
+var Premadeletter105 = "select video skin";	
+var Premadeletter106 = "unselect video skin";	
+var Premadeletter107 = "mute audio";
+var Premadeletter108 = "The LM Project";
+var Premadeletter109 = "Upload / Download";		
+var Premadeletter110 = "do not enter anything here unless you know what it is";	
+var Premadeletter111 = "click on the orange icon to buy";	
+var Premadeletter112 = "For some payment methods";
+var Premadeletter113 = "Close";			
+var Premadeletter114 = "COPY";			
+var Premadeletter115 = "is used to buy offers for your friends";
+var Premadeletter116 = "To make purchases, you must be logged in to your account…";
+var Premadeletter117 = "Library"; 
+var Premadeletter118 = "visit"; 
+var Premadeletter119 = "Report as Fake (change Skin)"; 
+var Premadeletter120 = "Enter your EXACT name of the player"; 
+var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
+var Premadeletter122 = "to permanent ban from usage of this extension"; 
+
+var stylesLegendModConsole1 = [
+    'background: linear-gradient(#D33106, #571402)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #99c2ff'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+    , 'line-height: 40px'
+    , 'text-align: center'
+    , 'font-weight: bold'
+].join(';');
+var stylesLegendModConsole2 = [
+    'background: linear-gradient(grey, black)'
+    , 'border: 1px solid #3E0E02'
+    , 'color: #FFFFFF'
+    , 'display: block'
+    , 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)'
+    , 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+//    , 'line-height: 40px'
+    , 'text-align: center'
+//    , 'font-weight: bold'
+].join(';');
 
 
 /*
@@ -316,116 +429,18 @@ var Premadeletter60 = "Pause";
 
 
 var languagemod = localStorage.getItem("languagemod");
-if (languagemod == 2) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("2");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 3) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("3");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 4) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("4");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 5) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("5");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
-if (languagemod == 6) {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
-    $("body").append(s);
-    setTimeout(function() {
-        $('#legendlanguages').val("6");
-        var s1 = document.createElement("script");
-        s1.type = "text/javascript";
-        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
-        $("body").append(s1);
-    }, 4000);
-}
+languagemodfun();
+
+
 
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
-		$("#gamemode").prop('disabled', false);
-		$("#region").prop('disabled', false);   
-        //$(".toast.toast-warning").html("<b>[SERVER]:</b> " + Premadeletter0);
 		$(".toast.toast-warning").remove();
-		setTimeout(function () {
-		//spectate();
-					if (privateSrv!=null) {
-						
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else{$("#clantag").val("PS");}
-				}
-				
-//				$(".btn-spectate").click();		
-		
-		$("#overlays").show();
-		$(".center-container.ogario-menu").show();
-		$(".side-container.right-container").show();
-		$(".side-container.left-container").show();	
-		},200);
-	
-	
-		MC.setQuality($('#quality').val());
-		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		}
-		//Save Name, Surname, Gender
-		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
-		setTimeout(function (){ 
-			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-			},250);
+		//doDOMonloadevents1();
     }
-	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
-		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+	else if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
+		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 	}
 });
 
@@ -433,58 +448,38 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     MSGCOMMANDS3 = $(".command-text").text();
     if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-		$("#gamemode").prop('disabled', false);
-		$("#region").prop('disabled', false);   
-	//	$(".toast.toast-warning").remove();
-	        $(".command-text").text(Premadeletter0);
-		setTimeout(function () {
-		//spectate();
-				if (privateSrv!=null) {
-					if(privateSrv.includes("game.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
-					else if(privateSrv.includes("game.fzogar.xyz:4001")){$("#clantag").val("PS2");}
-					else if(privateSrv.includes("game.fzogar.xyz:5001")){$("#clantag").val("PS3");}
-					else if(privateSrv.includes("game.fzogar.xyz:5002")){$("#clantag").val("PS4");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4000")){$("#clantag").val("PS5");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4001")){$("#clantag").val("PS6");}
-					else if(privateSrv.includes("game1.fzogar.xyz:4002")){$("#clantag").val("PS7");}
-					else{$("#clantag").val("PS");}
-				}
-
-//				$(".btn-spectate").click();
-				
-		$("#overlays").show();
-		$(".center-container.ogario-menu").show();
-		$(".side-container.right-container").show();
-		$(".side-container.left-container").show();			
-		},200);
-
-		
-		MC.setQuality($('#quality').val());
-		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		//Save Name, Surname, Gender
-		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
-		setTimeout(function (){ 
-			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-			},250);
-		}
-		
+		$(".command-text").text(Premadeletter0);
+		//doDOMonloadevents1();
     }
-	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-	$(".command-text").text('You are using a wrong version of Legend Mod, visit: www.legendmod.ml');	
-	}
+	else if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
+	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
+	}	
+});
+setTimeout(function() { doDOMonloadevents1(); }, 4000);
+        //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
+        //Legend.Mod&?player=a&?com=Team5&?do=donothing
+// load Message Commands
+$("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+            MSGCOMMANDS = $(".toast.toast-success").text();
+			MSGNICK = $(".message-nick").last().text().replace(": ", "");
+			MsgCommands1(MSGCOMMANDS, MSGNICK);
+
+});	
+$("body").on('DOMSubtreeModified', "#chat-box", function() {
+            MSGCOMMANDS = $(".message-text").text();
+			MSGNICK = $(".message-nick").last().text().replace(": ", "");
+			MsgCommands1(MSGCOMMANDS, MSGNICK);
+
 });
 
 
-if (mode == "") {
-    modebetter2 = ":ffa"
+if (realmode == "") {
+    modebetter2 = ":ffa";
 } else {
-    modebetter2 = mode
+    modebetter2 = realmode;
 }
 
-/*
+var datasent2;
 ///////////////////////////////////////////////////////////////////////////
 // Here "addEventListener" is for standards-compliant web browsers and "attachEvent" is for IE Browsers.
 var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -499,14 +494,22 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 eventer(messageEvent, function (e) {
        //alert(e.data);
        // Do whatever you want to do with the data got from IFrame in Parent form.
-	   if (~e.data.indexOf("CustomSkins")){ 
-	   var PostedThings=getParameterByName("skin", e.data);
-	   $("#skin").val(PostedThings);
-	   //alert(e.data);
+	   if (~e.data.indexOf("PostedOgarSettings1")){ 
+
+//		try{window.parent.postMessage("PostedOgarSettings2?datasent="+$('#export-settings').val(), "*"); 
+//        } catch (e) {}
+		//alert(e.data);
+		datasent2=e.data;
+		datasent2=datasent2.replace("PostedOgarSettings1?datasent=", "");
+		fzogarOgarSettings(datasent2);
+	//	var datasent = getParameterByName("datasent", datasent2);
+	//   alert(datasent);
+	   
 	   }
-}, false);   
+		return datasent2;
+}, false);
 ///////////////////////////////////////////////////////////////////////////
-*/
+
 
 //Delete agario divs and images from memory
 $("#advertisement").remove();
@@ -515,9 +518,9 @@ $("#adsBottom").remove();
 
 //remove adds
 $("#adsGameOver").remove();
-
-//Loader Icons 
-
+//Fix Skin Area Profiles Tab
+$("#skinButton").html('<div id="skinButton" class="circle" style="cursor:pointer;" data-type="OWNED"><div class="circle big green" style="top:75px;"><span class="outlined-text plus-text" style="cursor:pointer;line-height: 26px;">+</span></div><div class="circle bordered skinWrapper" style="border: 3px solid rgb(131, 131, 131); overflow: hidden; height: 96px; width: 96px;"><img src="" crossorigin="anonymous" style="width: 180px; display: none;"></div><span id="skinLabel" class="outlined-text" style="display: block;" data-itr="page_main_menu_skins">Skins</span></div>');
+$("#skinButton").click( function(){MC._onPlayerDeath();});
 
 setTimeout(function() {
     if (searchSip == null) {
@@ -531,21 +534,43 @@ setTimeout(function() {
                 document.cookie = "agario_redirect=" + a + f + "; path=/"
             }
             $(function() {
-                $("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+                $("#gamemode").after('<input id="server" class="form-control" placeholder="Server or direct IP" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
                 $("#connect2").tooltip({
                     title: "Connect to server, or restablish communication",
                     placement: "left"
                 });
                 $("#connect2").click(function() {
 
-
-                    if ($("#server").val().includes("#") == false) {
+					if (letterCount($('#server').val(), '.', true) == 3){
+						if ($("#server").val().includes("ws://") == true){
+							var texture2="ws://"+$('#server').val();
+							$('#server').val($('#server').val().replace("ws://", ""));
+						}
+						else{
+//							var texture2=$('#server').val();
+//							$('#server').val(texture2);
+						}	
+						$("#server-token").val($('#server').val());	
+						$("#server-ws").val("ws://"+$('#server').val());
+						privateSrvReturner();
+						window.core.disableIntegrityChecks(true);
+						$("#server-connect").click();
+//						history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						setTimeout(function () {
+							setPasswordforPrS();
+						},4000);
+					}
+                    else if ($("#server").val().includes("live-arena") == true) {
                         var texture2, texture3;
 					    var texture2, texture3;
                         texture3 = $("#server").val();
                         texture2 = texture3.replace("live-arena-", "");
 						texture2 = texture2.replace(".agar.io:80", "");
+						texture2 = texture2.replace(".agar.io", "");
 						$("#server-token").val(texture2);
+				//		if ($("#server-ws").val().includes("live-arena-") == false){
+				//		window.core.disableIntegrityChecks(true);
+				//		}
 						$("#server-join").click();
 
 						
@@ -579,12 +604,58 @@ setTimeout(function() {
 
                             MC.setQuality($('#quality').val());
                         }, 1000);
-                    } else {
+                    } else if ($("#server").val().length<8) {
+						if ($("#server").val().includes("#") == true){
                         joinpartyfromconnect();
+						setTimeout(function () {
+							MC.setQuality($('#quality').val());
+						},4000);
+						
+						}
+						else if ($("#server").val().includes("#") == false){
+							$("#server").val("#"+$("#server").val());
+						}
                     }
-
+					  else if ($("#server").val().includes("live-arena") == false) {
+						if ($("#server").val().includes(":80") == true) {$("#server").val($("#server").val().replace(":80",""));} //fixing code for :80  
+						if ($("#server").val().includes("ws://") == true){
+							var texture2="ws://"+$('#server').val();
+							$('#server').val($('#server').val().replace("ws://", ""));
+						  privateSrvReturner();
+						  window.core.disableIntegrityChecks(true);
+						  core.connect("ws://"+$("#server").val());
+						  $("#server-token").val($("#server").val());
+//						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						  setTimeout(function () {
+							setPasswordforPrS();
+						  },4000);									
+						}
+						else if ($("#server").val().includes("wss://") == true||$("#server").val().includes("uws://")){
+						  privateSrvReturner();
+						  window.core.disableIntegrityChecks(true);
+						  core.connect($("#server").val());
+						  $("#server-token").val($("#server").val());
+//						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						  setTimeout(function () {
+							setPasswordforPrS();
+						  },4000);									
+						}						
+						else{
+//							var texture2=$('#server').val();
+//							$('#server').val(texture2);
+										
+						  privateSrvReturner();
+						  window.core.disableIntegrityChecks(true);
+						  core.connect("ws://"+$("#server").val());
+						  $("#server-token").val($("#server").val());
+//						  history.pushState(stateObj, "page 2", "?ip=" + $("#server").val());
+						  setTimeout(function () {
+							setPasswordforPrS();
+						  },4000);	
+						}
+					  }
                 });
-            })
+            });
             setTimeout(function() {
                 adres();
             }, 5000);
@@ -598,12 +669,762 @@ setTimeout(function() {
 }, 2500);
 
 setTimeout(function () {
-		if (privateSrv!=null) {				
-			$(".btn-spectate").click();
-        }
+setPasswordforPrS();
+$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 }, 6000);
 
+setTimeout(function() {
+//$("#ao2t-hud").show();
+MC.onConnect2 = MC.onConnect;
 
+MC.onConnect = joint([ MC.onConnect2, Universalchatfix ]);		
+
+
+//Start of Universal tools
+//    'use strict';
+    var global = window;
+    var my = {
+        "name": "ⓐ",
+//        "log": function(msg){ console.log(this.name + ":"+ msg); },
+//		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
+		"log": function(msg){ 
+		    if (~msg.indexOf("Received a command with an unknown name")) {
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			else if (~msg.indexOf("load socket.io")) {
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				//playSound($('#commandSound').val());
+				} 
+			else if (~msg.indexOf("minimap server")) {
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			else if (~msg.indexOf($('#nick').val()+':')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 		
+			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 					
+			else if (~msg.indexOf('ɱ')) {
+				msg.slice(1);
+				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#commandSound').val());
+				} 					
+			else {
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#messageSound').val());}
+			},
+//        "tool_symbol": "Send text Universaly"
+		"tool_symbol": ""
+    };
+    var stat = {
+        "AgarToolVersion": 4,
+        "AgarToolServer": "ws://minimap.agartool.io:8000",
+        minimapBalls: {},
+        "socketIoURL": "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
+        // ---- Legend Mod settings  -----
+        "minimapNickFont": "700 11px Ubuntu",
+        "minimapNickColor": "#ffffff",
+        "minimapNickStrokeColor": "#000000",
+        "minimapNickStrokeSize": 0x2,
+        "minimapTop": 0x18,
+        "minimapTeammatesSize": 5.5,
+        //"minimapTeammatesColor": "#F03A17",
+        //"minimapOffsetX": 0.5,
+        //"minimapOffsetY": 0x18 + 9.5, // miniMapTop + 9.5
+        "minimapOffsetX": 71,
+        // -----  for Legend Mod Express  ----
+        "mapSize": 14142, // ogario.mapSize,
+        "mapOffset": 7071, // ogario.mapOffset,
+        // -----  other  -----
+        "pi2": 0x2 * Math.PI,
+        "messageBoxBottom": ["82px", "40%"],
+        "keyCodeEnter": 13, // Enter
+        "keyCodeA": 65, // 'A'
+        "keyCodeR": 82 // 'R'
+    };
+    var cfg= {}, cfg_org = {
+        "user_show": true,
+        "minimap_show": true,
+        "tgar_prefix": "O",
+        "tgar_color": "#8C81C7",
+        "update_interval": 1000,
+        "ogar_user": true,
+        "ogar_prefix": "L.M",
+        "lmsa_teamtop": false,
+        "lmsa_chat": false,
+        "chat_close": false,
+        "chat_unpause": true,
+        "chat_vcenter": false,
+        "chat_alt": true,
+        "chat_ctrlalt": true,
+        "chat_ctrl": true,
+        "skin_toggle_auto": false,
+        "skin_toggle_interval": 10000
+    };
+    function pre_loop(){
+        // At this point jQuery can not be used
+        if(! document.getElementById("top5-hud")){
+            my.pre_loop_timeout = (my.pre_loop_timeout || 1000) + 1000;
+            setTimeout(pre_loop, my.pre_loop_timeout);
+            my.log("wait for Legend Mod load");
+            return;
+        }
+        // Just to be sure, another 1 sec wait
+        setTimeout(initialize, 1000);
+    }
+    pre_loop();
+
+    function initialize(){
+//      $.extend(cfg, cfg_org, JSON.parse(GM_getValue("config", '{}')));
+		$.extend(cfg, cfg_org, JSON.parse(my.storage_getValue("config",'{}')));		
+        global.ao2t = {my:my, stat:stat, cfg:cfg};
+        var local_style = '';
+        local_style += '#ao2t-hud {';
+        local_style +=     ' font-size: 80%; pointer-events: auto;';
+        local_style += '}';
+        local_style += '#ao2t-hud * {';
+        local_style +=     ' user-select: auto!important;';
+        local_style += '}';
+        local_style += '#ao2t-cfg-dlg {';
+        local_style +=     ' border-radius:0; font-size: 80%; padding: 2px 10px; position: fixed;';
+        local_style +=     ' pointer-events: auto; background-image: url('+legbgpic+'); background-color: '+legbgcolor+' ; color: #ffffff;';
+        local_style +=     ' overflow: hidden;';
+        local_style += '}';
+        local_style += '#ao2t-cfg-dlg * {';
+        local_style +=     ' width: auto; user-select: auto!important; pointer-events: auto;';
+        local_style +=     ' position: relative; float: initial;';
+        //local_style +=     ' display: run-in;'; // NG
+        local_style += '}';
+        local_style += '#ao2t-cfg-dlg input {';
+        local_style +=     ' background-color: rgba(0,0,0,0.4); color: #ffffff;';
+        local_style += '}';
+        $("head").append('<style>\n'+ local_style +'\n</style>');
+        $("#top5-hud").append(''+
+            '<div id="ao2t-hud"><span class="hud-main-color">Universal:'+
+                 ' <span id="ao2t-capture">ⓐ</span>'+
+                 ' <span id="ao2t-config">⚙</span></span>'+
+//                 '<div id="ao2t-top5" style="padding-left: 1em;"></div>'+
+				 '<div id="ao2t-top5" style="font-size: 14px;"></div>'+
+            '</div>');
+        $("#ao2t-capture").click(function(event){
+//            my.log("capture_click");
+            stat.capture = ! stat.capture;
+            if(stat.capture){
+                if(global.ogario){
+		    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
+                    $("#ao2t-capture").text('🔙');
+                }else{
+                    $("#ao2t-capture").text('⚠');
+                }
+                my.capture_start();
+            }else{
+		$("#ao2t-capture").removeClass("connected").addClass("disconnected");
+                $("#ao2t-capture").text('ⓐ');
+                my.capture_end();
+            }
+        });
+        $('#ao2t-capture').mouseenter(function() {
+            $('#ao2t-capture').css('color', $("#hudTextColor").val());
+            return clickedname = "YES"
+        }).mouseleave(function() {
+            $('#ao2t-capture').css('color', '');
+        });
+        $('#ao2t-config').mouseenter(function() {
+            $('#ao2t-config').css('color', $("#hudTextColor").val());
+            return clickedname = "YES"
+        }).mouseleave(function() {
+            $('#ao2t-config').css('color', '');
+        });		
+		
+        $("#ao2t-config").click(my.config);
+        // LMB-Mouse split correction (Do not separate by left click on button)
+        if(cfg.lmsa_teamtop){
+            //$(".team-top-menu").mousedown(function(){return false;});
+            $("#top5-hud").mousedown(function(){return false;});
+        }else{
+            $("#ao2t-hud").mousedown(function(event){ return false;});
+        }
+        if(cfg.lmsa_chat){
+            $("#message-box").mousedown(function(){return false;});
+        }
+        // --- chat close ---
+        if(cfg.chat_close){
+            $("#message-menu").append('<a href="#" id="ao2t-chat-close" style="float:right;">X</a>');
+            $("#ao2t-chat-close").click(function(){
+                my.chatClose();
+            });
+        }
+        if(cfg.chat_vcenter){
+            $("#message-box").css("bottom", stat.messageBoxBottom[1]);
+        }
+        $("#message").keydown(function(event){
+            var modify = (event.altKey ? "a" : "")+
+                (event.ctrlKey ? "c" : "")+
+                (event.metaKey ? "m" : "")+
+                (event.shiftKey ? "s" : "");
+            if(event.keyCode === stat.keyCodeEnter){
+                if(modify === "a" && cfg.chat_alt){
+                    my.chatSend();
+                    return false;
+                }else if(modify === "ac" && cfg.chat_ctrlalt){
+                    my.chatSend({"ogar":true});
+                    return false;
+                }else if(modify === "c" && cfg.chat_ctrl){
+                    my.chatClose();
+                    return false;
+                }
+            }
+        });
+        // --- skin toggle ---
+        my.skinToggle_start();
+    }
+    my.capture_start = function(){
+        // If not, add chat submit button
+        if($("#ao2t-message").length){
+            $("#ao2t-message").show(); // .prop('disabled', false);
+            $("#ao2t-minimap").show();
+        }else{
+            my.capture_init();
+        }
+        // Connection
+        stat.tag = $('#clantag').val();
+        stat.nick = $('#nick').val();
+        stat.token = $('#server-token').val();
+        stat.ws = 'ws://live-arena-'+ stat.token +'.agar.io:80';
+        my.connect();
+        stat.update_timerid = setInterval(my.update, cfg.update_interval);
+    };
+    my.capture_end = function(){
+        $("#ao2t-message").hide(); // .prop('disabled', true);
+        $('#ao2t-top5').html('');
+        $("#ao2t-minimap").hide();
+        my.disconnect();
+        clearInterval(stat.update_timerid);
+        stat.update_timerid = null;
+    };
+    my.capture_init = function(){
+//        $("#message-menu").append('<a href="#" id="ao2t-message" style="float:right;">'+ my.tool_symbol +'</a>');
+		  $("#message-menu").prepend('<a href="#" id="ao2t-message" style="float:left;">'+ my.tool_symbol +'</a>');
+//	  	$(".show-chat-emoticons.ogicon-smile").after('<a href="#" id="ao2t-message" style="float:right;">'+ my.tool_symbol +'</a>');
+		 
+        $("#ao2t-message").click(my.chatSend);
+        // minimap
+        var minimap = $("#minimap");
+        var minimapWidth = minimap.attr('width');
+        var minimapHeight = minimap.attr('height');
+        minimap.before('<canvas id="ao2t-minimap"'+
+                       ' style="position: absolute;"'+
+                       ' width="'+ minimapWidth +'" height="'+ minimapHeight +'">');
+        //stat.minimapOffsetX = stat.minimapOffsetY + minimapHeight - minimapWidth;
+    };
+    my.chatSend = function(flg_){
+        var flg = flg_ || {};
+        if(! stat.connected){
+			if ($("#ao2t-capture").hasClass("connected")){
+            global.toastr.error("L.M:->A.T: not connected");
+            return;
+			}
+        }
+        //var msg = $("#message").val();
+		var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
+		var msgLM=$("#message").val();
+        if(msgLM.length){
+            my.sendMinimapServerCommand({
+                name: "chat",
+//                nick: "LM: " + stat.nick,
+//				nick: stat.nick,
+				nick: $('#nick').val(),
+                message: msg
+            });
+            if(flg.ogar){
+                $(document).trigger(jQuery.Event('keydown',{ keyCode: stat.keyCodeEnter, which: stat.keyCodeEnter } ));
+            }else{
+                //$("#message-box").hide();
+            }
+        }
+    };
+    my.chatClose = function(){
+        $("#message-box").css("display", "none");
+        if(cfg.chat_unpause && $("#pause-hud").css("display") == "block"){ // Release during PAUSE
+            $(document).trigger(jQuery.Event('keydown',{ keyCode: stat.keyCodeR, which: stat.keyCodeR } ));
+            $(document).trigger(jQuery.Event('keyup',{ keyCode: stat.keyCodeR, which: stat.keyCodeR } ));
+        }
+    };
+    my.update = function(){
+        var ogarAlive = my.ogarIsAlive();
+        if(ogarAlive != stat.alive){
+            my.tgarAlive(ogarAlive);
+        }
+        if(stat.alive){
+            my.tgarReposition();
+        }
+        my.ogarMinimapUpdate();
+    };
+
+    // -----  Configuration  -----
+    my.config = function(){
+//        my.log("config_click2");
+        if(!($('#ao2t-cfg-dlg').length)){
+            my.config_init();
+        }
+        my.cfg_load(cfg);
+        $("#ao2t-cfg-dlg").show();
+        $("#overlays").show();
+    };
+    my.config_init = function(){
+        $("#overlays").append('<div id="ao2t-cfg-dlg"'+
+            '  style="width:400px; height:450px; top:150px; left:300px; display: none;'+
+            '">'+
+              'Universal Chat tools'+
+              '<div style="overflow: scroll; '+
+                    'position: relative; top:1.5em; left:0.5em; right:0.5em; bottom:1.5em;">'+
+                '<div id="ao2t-cfg-base">'+
+                '</div>'+
+              '</div><br><br>'+
+              '&nbsp;<span id="ao2t-cfg-default" class="btn btn-primary">DEFAULT</span>'+
+              '&nbsp;<span id="ao2t-cfg-ok" class="btn btn-success">OK</span>'+
+              '&nbsp;<span id="ao2t-cfg-cancel" class="btn btn-danger">CANCEL</span>'+
+            '</div>');
+        $('#ao2t-cfg-base').append(''+
+            '&nbsp;&nbsp;&nbsp;Update frequency [milliseconds]:<input type="text" data-ao2t-config="update_interval" style="width:6em;"/>'+
+            '<br/>Agar Tool Obtained from'+
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="user_show"/>user list</label>'+
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="minimap_show"/>minimap</label>'+
+              '&nbsp;Prefix:<input type="text" data-ao2t-config="tgar_prefix" style="width:4em;"/>'+
+              '&nbsp;&nbsp;color:<input type="text" data-ao2t-config="tgar_color" style="width:6em;"/>'+
+            //    '<span class="input-group-addon"><i id="tgar_color" style="background-color: rgb(0, 0, 0);"></i></span>'+
+            '<br/>Send to Agar Tool'+
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="ogar_user"/>user info</label>'+
+              '&nbsp;Prefix:<input type="text" data-ao2t-config="ogar_prefix" style="width:4em;"/>'+
+            '<br/>LMB-Mouse split correction'+
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_teamtop"/>Team top</label>'+
+              '&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_chat"/>chat</label>'+
+            '<br/>Chat option'+
+              '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="chat_close"/>close</label>'+
+                '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_unpause"/>unpause</label>'+
+                '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_vcenter"/>vcenter</label>'+
+              '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="chat_alt"/>Alt>T</label>'+
+                '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_ctrlalt"/>Ctrl+Alt>O+T</label>'+
+                '&nbsp;<label><input type="checkbox" data-ao2t-config="chat_ctrl"/>Ctrl>Close</label>'+
+            '<br/>Other'+
+              '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="skin_toggle_auto"/>skin auto toggle</label>'+
+              '&nbsp;&nbsp;&nbsp;Frequency [milliseconds]:<input type="text" data-ao2t-config="skin_toggle_interval" style="width:6em;"/>'+
+            '<br/>&nbsp;&nbsp;* Changes will be reflected after restart'+
+            '');
+        $("#ao2t-cfg-default").click(function(){
+            my.cfg_load(cfg_org);
+        });
+        $("#ao2t-cfg-ok").click(function(){
+			if ($("#helloContainer").is(":visible")){
+			      setTimeout(function() {
+					showMenu();
+				   }, 100);
+			};
+		cfg = my.cfg_save();
+//            GM_setValue("config", JSON.stringify(cfg));
+			my.storage_setValue("config", JSON.stringify(cfg));
+            my.config_cancel();
+            $("#message-box").css("bottom", stat.messageBoxBottom[cfg.chat_vcenter ? 1: 0]);
+            my.skinToggle_start();
+		
+         });
+        $("#ao2t-cfg-cancel").click(function(){
+			if ($("#helloContainer").is(":visible")){
+			      setTimeout(function() {
+					showMenu();
+				   }, 100);
+			};
+			my.config_cancel();			
+        });
+        my.config_cancel = function(){
+            $("#overlays").hide();
+            $("#ao2t-cfg-dlg").hide();
+        };
+        //$("#tgar_color").colorpicker({'format': 'hex'}).on('changeColor.colorpicker', function(event){
+        //    var id = event.target.id;
+        //    $('[data-ao2t-config="'+ id +'"]').val(event.color.toHex());
+        //    event.target.style.backgroundColor = event.color.toRGB();
+        //});
+    };
+    // -----  skin toggle  -----
+    my.skinToggle_start = function(){
+        if(stat.skinToggle_timerid){
+            clearInterval(stat.skinToggle_timerid);
+            delete stat.skinToggle_timerid;
+        }
+        if(cfg.skin_toggle_auto && cfg.skin_toggle_interval > 0){
+            stat.skinToggle_timerid = setInterval(my.skinToggle_update, cfg.skin_toggle_interval);
+        }
+    };
+    my.skinToggle_update = function(){
+        //my.log("skinToggle_update in");
+        // --- check Legend Mod.v3 mode ---
+        if(global.ogario && global.ogario.customSkins && global.ogario.vanillaSkins){
+            //my.log("skinToggle_update hasBoth");
+            stat.skinToggle_hasBoth = true;
+        }
+        my.skinToggle_update_sub();
+        if(stat.skinToggle_hasBoth && global.ogario.customSkins && ! global.ogario.vanillaSkins){
+            //my.log("skinToggle_update retry");
+            my.skinToggle_update_sub();
+        }
+    };
+    my.skinToggle_update_sub = function(){
+        $(document).trigger(jQuery.Event('keydown',{ keyCode: stat.keyCodeA, which: stat.keyCodeA } ));
+        $(document).trigger(jQuery.Event('keyup',{ keyCode: stat.keyCodeA, which: stat.keyCodeA } ));
+    };
+    // =====  Agar Tool Communication processing / connection  =====
+    my.connect = function(){
+        my.disconnect();
+        if(! global.io){
+            my.log("load socket.io");
+            return loadScript(stat.socketIoURL, my.connect);
+        }
+        var grab_opt = {
+            query: "version=" + encodeURIComponent(stat.AgarToolVersion) +
+                 "&server=" + encodeURIComponent(stat.ws)
+        };
+        stat.grab_socket = io.connect(stat.AgarToolServer, grab_opt);
+        stat.grab_socket.on("info", function(minimap_info){
+            stat.minimap_info = minimap_info;
+            my.minimap_connect();
+        });
+    };
+    my.disconnect = function(){
+        if(stat.connected && stat.alive){
+            my.tgarAlive(false);
+        }
+        stat.connected = false;
+        stat.alive = false;
+        var save_grab_socket = stat.grab_socket;
+        var save_minimap_socket = stat.minimap_socket;
+        stat.grab_socket = null;
+        stat.minimap_socket = null;
+        if(save_grab_socket){
+            save_grab_socket.disconnect();
+        }
+        if(save_minimap_socket){
+            save_minimap_socket.disconnect();
+        }
+    };
+	my.minimap_connect = function(){
+		if ($("#ao2t-hud").hasClass("OnceUsed")==false){		
+//		toastr["warning"]('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
+        $("#ao2t-hud").addClass("OnceUsed");
+		}		
+		my.log("minimap server="+ stat.minimap_info.minimapServer);
+        my.resetMinimap();
+        var minimap_opt = {
+            reconnection: !1,
+            query: "server=" + encodeURIComponent(stat.minimap_info.agarServer)+
+               "&tag=" + encodeURIComponent(stat.tag)
+        };
+        stat.minimap_socket = io.connect(stat.minimap_info.minimapServer, minimap_opt);
+        stat.minimap_socket.on("command", my.minimap_command);
+        stat.minimap_socket.on("connect", function(){
+            stat.connected = true;
+            //if(stat.alive){
+            //    my.sendMinimapServerCommand({
+            //        name: "alive",
+            //        playerName: stat.nick
+            //    });
+            //}
+        });
+        stat.minimap_socket.on("disconnect", function(){
+            stat.minimap_socket = null;
+            my.minimap_disconnect();
+        });
+        stat.minimap_socket.on("connect_error", function(){
+            stat.minimap_socket = null;
+            my.minimap_disconnect();
+        });
+    };
+	my.minimap_disconnect = function(){
+        stat.connected = false;
+        var save_grab_socket = stat.grab_socket;
+        var save_minimap_socket = stat.minimap_socket;
+        stat.grab_socket = null;
+        stat.minimap_socket = null;
+        if(save_grab_socket){
+            save_grab_socket.disconnect();
+        }
+        if(save_minimap_socket){
+            save_minimap_socket.disconnect();
+        }
+    };
+    // =====  Agar Tool Communication processing / processing  =====
+    my.minimap_command = function(cmd){
+        if (void 0 === cmd.name){
+            return;
+        }
+        //my.log("cmd="+ cmd.name);
+        switch (cmd.name){
+            case "add":
+                if(! cmd.playerName){
+                    cmd.playerName = "An unnamed cell";
+                }
+                my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+                break;
+            case "remove":
+                my.removeBallFromMinimap(cmd.socketID);
+                break;
+            case "position":
+                my.moveBallOnMinimap(cmd.socketID, cmd.x, cmd.y);
+                break;
+            case "reset":
+                my.resetMinimap();
+                break;
+            case "chat":
+				//console.log(cmd);
+                if(! cmd.playerName){
+                    cmd.playerName = "An unnamed cell";
+                }
+//                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
+                my.log(""+ cmd.playerName +": "+ cmd.message);				
+                my.ogarChatAdd(cmd.playerName, cmd.message);
+                break;
+            case "command":
+				//console.log(cmd);
+                if(! cmd.playerName){
+                    cmd.playerName = "An unnamed cell";
+                }
+//                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
+                my.log("ɱ"+ cmd.playerName +": "+ cmd.message);						
+                my.ogarChatAdd(cmd.playerName, cmd.message);
+                break;				
+            default:
+               // my.log("Received a command with an unknown name: " + cmd.name); console.log(Object.getOwnPropertyNames(cmd));
+				my.log("Received a command with an unknown name: " + cmd.name);
+        }
+    };
+    my.sendMinimapServerCommand = function(e){
+        if(stat.minimap_socket && stat.minimap_socket.connected){
+            stat.minimap_socket.emit("command", e);
+            return true;
+        }
+        return false;
+    };
+    my.resetMinimap = function(){
+        //$("#messageTableTemp").empty(), $("#messageTableComplete").empty();
+        for (var e in stat.minimapBalls){
+            if(! stat.minimapBalls[e].isDefault){
+                delete stat.minimapBalls[e];
+            }
+        }
+        // test
+        //my.addBallToMinimap(true, "a", "0x0", 0, 0, "#FF0000", !0);
+        //my.addBallToMinimap(true, "b", "UL3000", -3000, -3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "c", "UR3000", -3000,  3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "d", "DR3000",  3000,  3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "e", "DL3000",  3000, -3000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "f", "TL", -7000,  -7000, "#FF0000", !0);
+        //my.addBallToMinimap(true, "g", "BR",  7000,   7000, "#FF0000", !0);
+    };
+    my.addBallToMinimap = function(isDefault, id, name, x, y, color, visible){
+        stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
+    };
+    my.removeBallFromMinimap = function (id){
+        if(stat.minimapBalls[id]){
+            delete stat.minimapBalls[id];
+        }
+    };
+    my.moveBallOnMinimap = function(id, x, y){
+        if(stat.minimapBalls[id]){
+            stat.minimapBalls[id].x = x;
+            stat.minimapBalls[id].y = y;
+        }
+    };
+
+    my.tgarAlive = function(alive){
+        stat.alive = alive;
+        if(cfg.ogar_user){
+            //my.log("alive -> "+ stat.alive +" name="+ cfg.ogar_prefix + stat.nick);
+            if(stat.alive){
+                stat.alive = my.sendMinimapServerCommand({
+                    name: "alive",
+                    playerName: cfg.ogar_prefix + stat.nick
+                });
+                //my.log("alive >>"+ stat.alive);
+            }else{
+                my.sendMinimapServerCommand({
+                    name: "dead"
+                });
+            }
+        }
+    };
+    my.tgarReposition = function(){
+        if(cfg.ogar_user && global.ogario){
+            my.sendMinimapServerCommand({
+                name: "position",
+                x: ogario.playerX + ogario.mapOffsetX,
+                y: ogario.playerY + ogario.mapOffsetY
+            });
+        }
+    };
+
+    // =====  Process Legend Mod  ======
+    my.ogarChatAdd = function(nick, msg){
+        var time_txt = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+        var user_icon = my.tool_symbol;
+        var chat_html = '<div class="message">'+
+            '<span class="message-time">['+ time_txt +'] </span>'+
+            //user_icon +
+            //'<span class="message-nick">'+ escapeHtml(nick) +': </span>'+
+            '<span style="color:'+ cfg.tgar_color +'; font-weight:700;">'+
+                user_icon +' '+ escapeHtml(nick) +'</span>: '+
+            '<span class="message-text">' + escapeHtml(msg) + '</span>'+
+            '</div>';
+        $("#chat-box").append(chat_html);
+        $("#chat-box").perfectScrollbar('update');
+        $('#chat-box').animate({
+            'scrollTop': $("#chat-box").prop("scrollHeight")
+        }, 0x1f4);
+    };
+    my.ogarMinimapUpdate = function(){
+        var minimap_elem = document.getElementById("ao2t-minimap");
+        var minimapWidth = minimap_elem.width;
+        var minimapHeight = minimap_elem.height;
+        var minimapMulti = (minimapWidth - 0x12) / my.ogarGetMapSize();
+        var mapOffset = my.ogarGetMapOffset();
+        //var mapOffsetX = ogario.mapOffset - ogario.mapOffsetX;
+        //var mapOffsetY = ogario.mapOffset - ogario.mapOffsetY;
+        stat.minimapOffsetX = 0x12 / 2;
+        stat.minimapOffsetY = stat.minimapOffsetX + (minimapHeight - minimapWidth);
+        var mapOffsetX = stat.minimapOffsetX;
+        var mapOffsetY = stat.minimapOffsetY;
+        var mapOffsetT = -(0x2 * stat.minimapTeammatesSize + 2);
+        var ctx = minimap_elem.getContext('2d');
+        ctx.clearRect(0, 0, minimapWidth, minimapHeight);
+        ctx.font = stat.minimapNickFont;
+        var user_txt = '';
+        var sep = '1. ';
+        var keys = Object.keys(stat.minimapBalls).sort();
+        if(keys.length === 0){
+            user_txt = "no tgar user";
+        }
+		var count=2;
+        for(var key; (key = keys.shift()); ){
+			
+            var ball = stat.minimapBalls[key];
+			
+            user_txt += sep + escapeHtml(ball.name);
+//			user_txt += count + ": ";
+            sep = '<br/>'+ count + ". ";
+//			user_txt += count + ": ";
+			count++;
+            if(cfg.minimap_show){
+                var name = cfg.tgar_prefix + ball.name;
+                var mapX = (ball.x + mapOffset) * minimapMulti + mapOffsetX;
+                var mapY = (ball.y + mapOffset) * minimapMulti + mapOffsetY;
+                ctx.textAlign = 'center';
+                ctx.lineWidth = stat.minimapNickStrokeSize;
+                ctx.strokeStyle = stat.minimapNickStrokeColor;
+                ctx.strokeText(name, mapX, mapY + mapOffsetT);
+                ctx.fillStyle = cfg.tgar_color; // stat.minimapNickColor
+                ctx.fillText(name, mapX, mapY + mapOffsetT);
+                ctx.beginPath();
+                ctx.arc(mapX, mapY, stat.minimapTeammatesSize, 0x0, stat.pi2, !0x1);
+                ctx.closePath();
+                ctx.fillStyle = ball.color;
+                ctx.fill();
+            }
+        }
+        if(cfg.user_show){
+            $('#ao2t-top5').html(user_txt);
+        }
+    };
+    // --- for Legend Mod Express ----
+    my.ogarIsAlive = function(){
+        return global.ogario ? global.ogario.play : false;
+    };
+    my.ogarGetMapSize = function(){
+        return global.ogario ? global.ogario.mapSize : stat.mapSize;
+    };
+    my.ogarGetMapOffset = function(){
+        return global.ogario ? global.ogario.mapOffset : stat.mapOffset;
+    };
+
+    // =====  Other processing ======
+    my.cfg_save = function(){
+        var cfg_new = {};
+        $('[data-ao2t-config]').each(function(){
+            var elem = $(this);
+            var type = elem.prop('type');
+            var name = elem.attr('data-ao2t-config');
+            var value;
+            if(type === "checkbox"){
+                value = elem.prop('checked');
+            }else{
+                value = $(this).val();
+            }
+            cfg_new[name] = value;
+        });
+        return cfg_new;
+    };
+    my.cfg_load = function(cfg_new){
+        $('[data-ao2t-config]').each(function(){
+            var elem = $(this);
+            var type = elem.prop('type');
+            var name = elem.attr('data-ao2t-config');
+            if(cfg_new.hasOwnProperty(name)){
+                var value = cfg_new[name];
+                if(type === "checkbox"){
+                    elem.prop('checked', value);
+                }else{
+                    $(this).val(value);
+                }
+            }
+        });
+    };
+	my.storage_getValue = function(name, defval_){
+		return	global.localStorage[my.name +"_"+ name] || defval_;
+	};
+	my.storage_setValue = function(name, value){
+		global.localStorage[my.name +"_"+ name] = value;
+	};	
+	function loadScript(url, callback){
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = url;
+		if(typeof callback !== 'undefined'){
+			script.onload = callback;
+		}
+		document.head.appendChild(script);
+	}
+    function escapeHtml(e) {
+        return e.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+    function MinimapBall(isDefault, name, x, y, color, visible) {
+        this.isDefault = isDefault;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+        this.lastX = x;
+        this.lastY = y;
+        this.color = color;
+        this.visible = visible;
+    }
+//End of Universal tools
+
+
+
+}, 1600);
+setTimeout(function() {
+$('#ao2t-capture').click();
+
+$('#message').keydown(function(e){
+    if (e.keyCode === 13) { // If Enter key pressed
+		
+		$('#ao2t-message').click(); 
+//		$('#message').val("");		
+    }
+});	
+}, 4000);	
+	
 setTimeout(function() {
 
         //	$("body").show();	
@@ -622,7 +1443,7 @@ setTimeout(function() {
 //                $("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>' + "IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2).attr("style", "opacity: 0;");
                 //	$("#cur-tk-hud").html('<i class="fa fa-lock" aria-hidden="true"></i>'+"IP:" + searchSip + "<br>Region:" + region + " Mode" + modebetter2 ).attr("style", "opacity: 0;");
                 setTimeout(function() {
-                    history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);
+                    history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
                 }, 5000);
             }
         } else if (searchSip == null && privateSrv==null) {
@@ -640,7 +1461,7 @@ setTimeout(function() {
                     if (realmode != ":party") {
                         history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MC.getRegion() + "&?m=" + realmode);
                     }
-                    if (realmode == ":party") {
+                    else if (realmode == ":party") {
                         window.history.pushState(null, null, window.location.pathname);
                         history.pushState(stateObj, "page 2", "#" + MC.getPartyToken());
                     }
@@ -681,160 +1502,28 @@ setTimeout(function() {
 //  	THIS COMMMAND IS IMPORTANT, DISABLE FOR INGAME COMMUNICATION
 //  	$('#gamemode').on('change', function () {
 //	if (this.value == ":party") { $("#create-party-btn").click(); }}
-//		console.log( "Legend Mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
+//		console.log( "Legend mod ready!" );});$('#gamemode option[value=":party"]').prop('selected', 'selected').change();
 //		history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP);
 var minbtext2 = minbtext;
 var minbtext3 = minbtext;
 
 if (minbtext == null || minbtext == "") {
-    minbtext = "Legend Mod/Locked";
-    minbtext2 = "Legend Mod";
-	minbtext3 = "Legend Mod/Private";
+    minbtext = "Legend mod/Locked";
+    minbtext2 = "Legend mod";
+	minbtext3 = "Legend mod/Private";
 }
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 6000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 6500);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 7000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 7500);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 8000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 9000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 10000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-			//Load Private Servers
-	if($('#region>option:nth-child(1)').val()!=":PrS")	{
-	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-	}	
-}, 13000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 14000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 11000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 12000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 13000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 14000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-}, 18000);
-setTimeout(function() {
-	var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-	else {ctx.fillText(minbtext2, c.width / 2, 22); }
-    MC.setQuality($('#quality').val());
-    //if(dyinglight1load!="yes"){whenplayerdies();}
-}, 22000);
-
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 24000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-    //if(dyinglight1load!="yes"){whenplayerdies();}
-}, 25000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 30000);
-setTimeout(function() {
-    MC.setQuality($('#quality').val());
-}, 40000);
-//setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
+setTimeoutLateResponse();
 
 function init(modVersion) {
+//Fix ZOOM
+//	ogario.autoZoom=true; 
+	$("#tcm-videoskin").hide();
+	//Fix Login Bug
+	if (modVersion=="2.8"){
+		$(".btn.btn-warning.btn-login-play").click(function() {
+		toggleSocialLogin();
+		});	
+	}
     //var connectedbanner=0;
 	$("#gamemode").prop('disabled', false);
 	$("#region").prop('disabled', false);   
@@ -868,8 +1557,44 @@ function init(modVersion) {
         		},3000);}
         	MC.setGameMode($('#gamemode2').val());
         	adres();
-        	});		*/
+        	});		*/			
+			//For the Setting DoubleSplitRange
+		$('.options-box.helpersGroup').append('<label><input type="checkbox" id="DoubleSplitRange" class="js-switch" data-switchery="true" style="display: none;"> Double Spilit Range</label>');
+	//	$('.options-box.helpersGroup').append('<label><input type="checkbox" id="DoubleSplitRange" class="js-switch" data-switchery="true" checked style="display: none;"> Double Spilit Range</label>');
+		var elemLegendSwitch = document.querySelector('#DoubleSplitRange');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var DoubleSplitRange = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+		
+		$("#DoubleSplitRange").click(function() {
+			if (DoubleSplitRange.isChecked()) {
+				window.ogario.customDraw=window.ogario.save_customDraw2;
+				localStorage.setItem("DoubleSplitRangeSaved", true);
+			} else {				
+				window.ogario.customDraw=window.ogario.save_customDraw;
+				localStorage.setItem("DoubleSplitRangeSaved", false);
+			}
+		});		
+		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Universal Chat</input></label>');
+		var elemLegendSwitch = document.querySelector('#UniversalChat');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var UniversalChat = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
 
+		$("#UniversalChat").click(function() {
+			if (UniversalChat.isChecked()) {
+				$("#ao2t-hud").show();
+				localStorage.setItem("UniversalChatSaved", true);
+					if ($("#ao2t-capture").hasClass("disconnected")){
+					$("#ao2t-capture").click();
+				}				
+			} else {				
+				$("#ao2t-hud").hide();
+				localStorage.setItem("UniversalChatSaved", false);
+					if ($("#ao2t-capture").hasClass("connected")){
+					$("#ao2t-capture").click();
+				}
+			}
+		});			
+		
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
         $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
@@ -878,7 +1603,7 @@ function init(modVersion) {
         $("#create-party-btn-2").attr('data-toggle', "tooltip").prop('title', "Create party");
 
         $("#join-party-btn").html('<span class="glyphicon glyphicon-save"></span>').attr('data-toggle', "tooltip").prop('title', "Join party").attr("style", "width: 49% !important; float: right;");
-
+		
         //backgroud div
         $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
 
@@ -909,12 +1634,12 @@ function init(modVersion) {
         //	$(".menu-tabs").children().last().before('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="Tools" data-placement="top"><a style="height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); $(\'#helloContainer\').attr(\'style\',\'transform: translate(-50%, 0%) scale(1); top: 207px;\')" href="javascript:void(0);" class="fa fa-cogs"></a></li>');
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
-            '<button id="XPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
+            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
+            '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
-            											'<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
+            											'<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
             '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
             '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
@@ -994,20 +1719,12 @@ function init(modVersion) {
             '<option value="6" data-itr="">Arabic - عربى</option>' +
             '<option value="4" data-itr="">Bulgarian - български</option>' +
             '<option value="5" data-itr="">French - Français</option>' +
+			'<option value="9" data-itr="">German - Deutsch</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
+			'<option value="8" data-itr="">Russian - Русские</option>' +
             '<option value="3" data-itr="">Spanish - Español</option>' +
-
-            //		
-            //		'<option value="5" data-itr="">Icon 5</option>' +
-            //		'<option value="6" data-itr="">Icon 6</option>' +
-            //		'<option value="7" data-itr="">Youtube 1</option>' +
-            //		'<option value="8" data-itr="">Youtube 2</option>' +
-            //		'<option value="9" data-itr="">Youtube 3</option>' +
-            //		'<option value="10" data-itr="">Youtube 4</option>' +
-            //		'<option value="11" data-itr="">Youtube 5</option>' +
-            //		'<option value="12" data-itr="">Youtube 6</option>' +
+			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
             '</select></div>' +
-
 
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
             '<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
@@ -1019,14 +1736,8 @@ function init(modVersion) {
             '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
             '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
-            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +
-
-
-            '' + //<h5 class="menu-main-color" style="margin-top: 10px;">Other features</h5>        
+            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
             '</div></div>');
-        //  '<button id="showCurTKBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 50%; border-color: darkslategrey;"> Show token</button>' +//  '<button id="showPlayerBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 50%; border-color: darkslategrey;">Show player</button>' +
-
-
         $("#HideAllBthn").tooltip({
             title: "Temporarily Hide/Show Everything. Function for Youtubers",
             placement: "bottom"
@@ -1041,7 +1752,8 @@ function init(modVersion) {
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
             '<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
             '<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">' +
-            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>');
+            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
+			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter61 + '</button></div>');
         $('.agario-panel.radio-panel').hide();
         $('.agario-panel.ogario-yt-panel').hide();
 
@@ -1082,41 +1794,33 @@ function init(modVersion) {
         $('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
         document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
 		
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "http://www.youtube.com/watch?v=CnIfNSpCf70";
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Promotional Video');
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-		
+		$(".quick-quests.ogicon-trophy").after('<a id= "SpecialDealsQuickBtn" class="fa fa-briefcase" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Special Deals" onclick="SpecialDeals(); return false;"></a>'+
+		'<a id= "VideoSkinsQuick" class="fa fa-video-camera" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Video Skins"></a>');		
         // prevent edit
         $("#musicUrl").on("input", function() {
-            $(this).attr("maxlength", "0");
+            $(this).attr("maxlength", "1000");
         });
         $("#musicUrl").bind("paste", function(e) {
             $(this).attr("maxlength", "1000");
-            var pastedData = e.originalEvent.clipboardData.getData('text');
-            var finalUrl = getEmbedUrl(pastedData.trim());
-            if (finalUrl == false) {
-                toastr["error"](Premadeletter1).css("width", "210px");
-                setTimeout(function() {
-                    if (localStorage.getItem("musicUrl") == null) {
-                        $("#musicUrl").val(defaultMusicUrl);
-                    } else {
-                        $("#musicUrl").val(localStorage.getItem("musicUrl"));
-                    }
-                }, 500);
-            } else {
-                $("#musicFrame").attr("src", finalUrl);
-                localStorage.setItem("musicUrl", pastedData.trim());
-            }
-        });
+            var pastedDataorNot = e.originalEvent.clipboardData.getData('text');
+			YoutubeEmbPlayer(pastedDataorNot);
+
+        });		
 
         // save notes
         $(".note").keyup(function(event) {
             localStorage.setItem(event.target.id, $(event.target).val());
         });
+		//fzogar Upload / Download Settings
+		$("#import-settings-btn").attr('class', 'btn btn-success');
+		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109 + '</button>');
 
         $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
@@ -1129,27 +1833,36 @@ function init(modVersion) {
             '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
             'background-color: transparent;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
 
-            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30x; left: 0px; padding: 0px; border-radius: 0px;">' +
+            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; left: 0px; padding: 0px; border-radius: 0px;">' +
             '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
             '</div>' +
-
-            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: 0px; border-radius: 0px;">' +
-            //   '<a id="copyIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy IP Address">IP</a>' +
+            '<div id="dropDown2" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 90px; left: 67px; padding: 0px; border-radius: 0px;">' +
+            '<a id="copySIPandPass" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Password">TK&PW</a>' +
             '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
+            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP, Password, Leaderboard...">TK&ALL</a>' +            
+			'</div>' +
+            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: 0px; border-radius: 0px;">' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">Board</a>' +
+//            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
             '</div>' +
 
             '<input id="tempCopy" style="display: none;" value="">' +
             '</div>');
-
         //$("#searchShortcut").mouseenter(function () {
         //$("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
         $("#copySIPBtn").mouseenter(function() {
             $("#dropDown3").hide();
             $("#copySIPBtn").text("Token");
-            $("#dropDown").show(100);
+			if ($("#clantag").val()!=""){
+				$("#dropDown2").show(100);
+			}
+            else {
+				$("#dropDown").show(100);
+				}
         });
         $("#leaderboard-menu").mouseleave(function() {
             $("#dropDown").hide();
+			$("#dropDown2").hide();
             $("#dropDown3").hide();
             $("#copySIPBtn").text("Copy");
         });
@@ -1158,6 +1871,9 @@ function init(modVersion) {
         $("#copyLBBtn").click(function() {
             copy(getLeaderboard());
         });
+        $("#dropDown>#copyLBBtn").click(function() {
+            copy(getLeaderboard());
+        });		
         $("#lastIPBtn").click(function() {
             lastIP = localStorage.getItem("lastIP");
             dosearch();
@@ -1168,7 +1884,7 @@ function init(modVersion) {
 
         $("#copyIPBtn").click(function() {
             if (searchSip != null) {
-                copy("http://agar.io/?r=" + region + "&m=" + mode + "&search=ws://" + searchSip);
+                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=ws://" + searchSip);
             } else {
                 copy("http://agar.io/?r=" + MC.getRegion() + "&m=" + realmode + "&search=ws://" + currentIP);
             }
@@ -1176,11 +1892,11 @@ function init(modVersion) {
 
         $("#copySIPBtn").click(function() {
             if (searchSip != null) {
-                if (mode == ":party") {
+                if (realmode == ":party") {
                     copy("http://agar.io/#" + MC.getPartyToken());
-                } else if (mode != ":party") {
-					if (region!=null&&mode!=null){
-                    copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + mode);
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+                    copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + realmode);
 					}
 					else{
 					copy("http://agar.io/?sip=" + searchSip);	
@@ -1188,7 +1904,7 @@ function init(modVersion) {
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-                    copy("http://agar.io/#" + currentToken);
+                    copy("http://agar.io/#" + MC.getPartyToken());
                 } else if (realmode != ":party") {					
                     copy("http://agar.io/?sip=" + currentIP + "&?r=" + MC.getRegion() + "&m=" + realmode);
                 }
@@ -1197,6 +1913,59 @@ function init(modVersion) {
                     copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");                
             }
         });
+        $("#copySIPandPass").click(function() {
+            if (searchSip != null) {
+                if (realmode == ":party") {
+                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + MC.getPartyToken());
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+                    copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode);
+					}
+					else{
+					copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val());	
+					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + MC.getPartyToken());
+                } else if (realmode != ":party") {					
+                    copy("http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + MC.getRegion() + "&m=" + realmode);
+                }
+            }
+			else if (privateSrv!=null) {
+                    copy("http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE");                
+            }
+        });	
+        $("#copySIPPassLB").click(function() {
+
+            if (searchSip != null) {
+                if (realmode == ":party") {
+                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + MC.getPartyToken();
+					copyToClipboardAll();					
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copyToClipboardAll();
+					}
+					else{
+					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val();	
+					copyToClipboardAll();
+					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + MC.getPartyToken();
+					copyToClipboardAll();
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + MC.getRegion() + "&m=" + realmode;
+					copyToClipboardAll();
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copyToClipboardAll();					
+            }
+        });			
 
         $("#reconnectBtn").click(function() {
             realmode=getGameMode();
@@ -1223,11 +1992,10 @@ function init(modVersion) {
             }
         });
 	
-
-
         /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
         $("#reconnectBtn").mouseenter(function() {
             $("#dropDown").hide();
+			$("#dropDown2").hide();
             $("#copySIPBtn").text("Copy");
         });
 
@@ -1256,7 +2024,8 @@ function init(modVersion) {
         }).mouseleave(function() {
             $('#nick').css('background-color', '');
         });
-        $('#nick').blur(function() {
+        $('#nick').blur(function() {			
+			loadbannerProfileClans();
 			previousnickname=$("#nick").val();
 			localStorage.setItem("previousnickname", previousnickname);
             if (clickedname == "YES") {
@@ -1275,18 +2044,40 @@ function init(modVersion) {
                 $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
                 openrotatingmod();
             } else if ($("#nick").val() == "EasterEgg3") {
-                toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>');
-                $("#nick").val("Video");
-                openvidmod();
-            }
+                toastr["info"](Premadeletter4).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openrotatingmod();
+            } else if ($("#nick").val() == "EasterEgg4") {
+                toastr["info"](Premadeletter4).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openrotatingmod();
+            } 
+			
         });
 		
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#opennamechars').tooltip({
+            title: "Design Nickname Font",
+            placement: "bottom"
+        });
+		$('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="BeforeReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
+		$('#openskinchanger').attr('placeholder', 'Name').tooltip({
+            title: "Flag the Fake's Skin",
+            placement: "bottom"
+        });		
 		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
         }).mouseleave(function() {
             $('#clantag').css('background-color', '');
+			if (privateSrv==null){
+			saveclanpassword=$("#clantag").val();
+			localStorage.setItem("saveclanpassword", saveclanpassword);
+			}
+        }).blur(function() {
+			Universalchatfix();
         });
         //	$('#region').unbind('mouseenter');
         //	$('#gamemode').unbind('mouseenter');
@@ -1311,16 +2102,13 @@ function init(modVersion) {
             }
             //return messageone=1;
         });
-
-		
-		
-		
+	
         $("#boostButton").css("display", "inline-block");
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
 
 	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-        '<br>Legend Mod by jimboy3100</i></h6></div>');
+        '<br>Extension by jimboy3100</i></h6></div>');
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
 		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
@@ -1328,25 +2116,36 @@ function init(modVersion) {
         // LEGEND footer
         var ogarioVersion = $("#menu-footer").text().split("| ")[1];
         $("#menu-footer").text("");
-
+		$(".agario-profile-name").css('vertical-align', '');
         $(".TimesUsedPanel").css({
             marginTop: "-10px"
         });
+		$(".agario-panel.agario-shop-panel").css("margin-bottom", "10px");
         $("#freeCoins").css({
             marginBottom: "-5px"
         });
-        $("#openShopBtn").css({
-            marginTop: "-10px"
-        });
-        $("#openShopBtn").css({
-            marginTop: "-15px"
-        });
         $("#gifting").css({
-            marginTop: "25px"
+            marginTop: "10px"
+        });	
+        $("#dailyquests-panel").css({
+            marginTop: "-20px"
+        });				
+        $("#openShopBtn").css({
+            marginTop: "-15px",
+			width: "49.5%",
+			marginRight: "0.5%"
         });
+		$("#openShopBtn").after('<button id="SpecialDealsBtn" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style="line-height: 24px; width: 49.5%; margin-top: -15px; margin-left: 0.5%;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');		
         $("#dailyQuests").css({
-            marginBottom: "5px"
+            marginBottom: "5px",
+			marginTop: "5px",
         });
+        $("#potions").css({
+            marginTop: "0px",
+			width: "49.5%",
+			marginRight: "0.5%"
+        });
+		$("#potions").after('<button id="oldSkinsBtn" class="btn btn-primary btn" style="line-height: 24px; width: 49.5%; margin-top: -px; margin-left: 0.5%;" data-itr="page_shop"><i class="fa fa-grav"></i>Old Skins</button>');	
 		$("#quests-blocker").hide();
 		
         $('#themePreset>option:nth-child(1)').text("Legend v2");
@@ -1357,137 +2156,16 @@ function init(modVersion) {
         $('#menuPreset>option:nth-child(1)').text("Legend v2");
         $('#menuPreset>option:nth-child(2)').text("Legend v1");
 
-        //Legend Mod Cursors
-        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
-        }
-        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
-        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
-        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
-        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
-        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
-        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
-        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
-        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
-        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
-        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
-        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
-        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
-        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
-        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
-        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
-        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
-        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
-        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
-        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
-        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
-        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
-        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
-        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
-        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
-        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
-        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
-        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
-        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
-        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
-        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
-        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
-        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
-        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
-        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
-        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
-        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
-
+        //Legend mod Cursors
+		LegendModCursors();
         $('#themePreset').on('change', function() {
             setTimeout(function() {
-				var c = document.getElementById("minimap-sectors");
-				var ctx = c.getContext("2d");
-					ctx.clearRect(0, 0, c.width, c.height / 9);
-					ctx.font = "16px Georgia";
-					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-					else {ctx.fillText(minbtext2, c.width / 2, 22); }
-					MC.setQuality($('#quality').val());
+				fillminimapLegendLogo();
             }, 200);
         })
         $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
             setTimeout(function() {
-				var c = document.getElementById("minimap-sectors");
-				var ctx = c.getContext("2d");
-				ctx.clearRect(0, 0, c.width, c.height / 9);
-				ctx.font = "16px Georgia";
-				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-				else {ctx.fillText(minbtext2, c.width / 2, 22); }
-				MC.setQuality($('#quality').val());
+				fillminimapLegendLogo();
             }, 100);
         })
 
@@ -1501,16 +2179,33 @@ function init(modVersion) {
         //		$(".agario-panel.agario-shop-panel").after('<button id="OpenInfo" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 25%;"><i class="fa fa-info-circle"></i>Information</button>');
         //		$("#OpenInfo").tooltip({title: "Mod Information and choose Template", placement: "bottom"});
         //		$("#OpenInfo").click(function () {openhelper();});
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend Mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
-            '<a href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend mod Website" data-placement="left">Legend mod v' + modVersion + semimodVersion + '</a></span>' +
+            '<a id="MorefpsText" href="https://legendmod.joomla.com/en/more-fps.html" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
         // donate button
         //kitty's
         // $("#menu-footer").after('<form onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'donate\');" data-toggle="tooltip" data-title="Please support " data-placement="left" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="ELCEHJY3M52K8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
         //jimboy's
-        $("#menu-footer").after('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+        $("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
         //$("#minimap-sectors").attr("style", "opacity: 0.25;");
         // keybinds
 
+		$("#chat-emoticons").append('<span id="emoticon1">👪 </span><span id="emoticon2">👳 </span><span id="emoticon3">👴 </span><span id="emoticon4">👵 </span><span id="emoticon5">👶 </span><span id="emoticon6">😱 </span><span id="emoticon7">🏆 </span><span id="emoticon8">🌑 </span><span id="emoticon9">🚽 </span><span id="emoticon10">⚖️ </span><span id="emoticon11">🔪 </span><span id="emoticon12">💥 </span><span id="emoticon13">💪 </span><span id="emoticon14">🍌 </span><span id="emoticon15">℄ </span>');
+		$("#emoticon1").click(function() {$("#message").val($("#message").val()+"👪")});
+		$("#emoticon2").click(function() {$("#message").val($("#message").val()+"👳")});
+		$("#emoticon3").click(function() {$("#message").val($("#message").val()+"👴")});
+		$("#emoticon4").click(function() {$("#message").val($("#message").val()+"👵")});
+		$("#emoticon5").click(function() {$("#message").val($("#message").val()+"👶")});
+		$("#emoticon6").click(function() {$("#message").val($("#message").val()+"😱")});
+		$("#emoticon7").click(function() {$("#message").val($("#message").val()+"🏆")});
+		$("#emoticon8").click(function() {$("#message").val($("#message").val()+"🌑")});
+		$("#emoticon9").click(function() {$("#message").val($("#message").val()+"🚽")});
+		$("#emoticon10").click(function() {$("#message").val($("#message").val()+"⚖️")});
+		$("#emoticon11").click(function() {$("#message").val($("#message").val()+"🔪")});
+		$("#emoticon12").click(function() {$("#message").val($("#message").val()+"💥")});
+		$("#emoticon13").click(function() {$("#message").val($("#message").val()+"💪")});
+		$("#emoticon14").click(function() {$("#message").val($("#message").val()+"🍌")});
+		$("#emoticon15").click(function() {$("#message").val($("#message").val()+"℄")});
+		
         $(document).keyup(function(event) {
             if (event.which == 8) { // search
                 if ($('input:focus').length == 0) {
@@ -1521,18 +2216,24 @@ function init(modVersion) {
                 $("#reconnectBtn").click();
 
             } else if (event.which == 27) { // ESCAPE
-
+				if (DeathFPSfixVariable!="1"){
                 if ($('#searchHud').is(':visible')) {
                     hideSearchHud();
                 } else {
                     showMenu();
                 }
             }
+				else if (DeathFPSfixVariable=="1"){					
+					MC.onPlayerSpawn();
+					toastr["error"](Premadeletter68 + "  <font color='blue'><b>ESC</font></b>, " + Premadeletter69+ " <b>FPS</b> "+Premadeletter70, "", { timeOut: 5000, extendedTimeOut: 5000 }).css("width", "280px");
+				}
+			}
         });
 
-        $(".btn.btn-play-guest.btn-success.btn-needs-server").attr("onclick", "newsubmit()");
-        $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick", "newsubmit()");
-
+ //       $(".btn.btn-play-guest.btn-success.btn-needs-server").attr("onclick", "newsubmit()");
+ //       $(".btn.btn-play.btn-primary.btn-needs-server").attr("onclick", "newsubmit()");
+		$(".btn.btn-play-guest.btn-success").attr("onclick", "newsubmit()");
+		$(".btn.btn-play.btn-primary").attr("onclick", "newsubmit()");
         //$('.btn.btn-warning.btn-spectate.btn-needs-server').click(function () {
         //	if ($("#gamemode2").val()!=":party"){
         //	toastr["info"]("Communication is disabled, after Spectate, save your ip and click <b>CONNECT</b> to fix", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "350px");	
@@ -1633,10 +2334,10 @@ function init(modVersion) {
                 }, 1000);});
 				
         // listen for server disconnect
-        MC.onDisconnect = function() {
-            toastr["error"](Premadeletter10).css("width", "210px");
+  /*       MC.onDisconnect = function() {
+          toastr["error"](Premadeletter10).css("width", "210px");
             appendSysLog("DISCONNECTED :(");
-            if (timesdisconnected < 2) {
+             if (timesdisconnected < 2) {
                 MC.reconnect();
 				setTimeout(function() {
                 adres();
@@ -1645,8 +2346,9 @@ function init(modVersion) {
                 return timesdisconnected;
             } else {
                 return timesdisconnected = 0;
-            }
-        };
+            } 
+			
+        };*/
 
         // listen for player ban
         MC.onPlayerBanned = function() {
@@ -1745,7 +2447,7 @@ function init(modVersion) {
                 } else {
                     if (region != null) {
                         MC.setRegion(region);
-                        MC.setGameMode(mode);
+                        MC.setGameMode(realmode);
                     } else {
                         // bug fix//            MC.setRegion(region);//            MC.setGameMode(mode);		
                         //this makes game rejoin
@@ -1832,7 +2534,7 @@ function init(modVersion) {
                 $("#shortcuts-hud").hide();
                 $("#rotate-hud").hide();
                 $("#images-hud").hide();
-                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter44);
+                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter42);
                 return seticon = "YES";
             }
         });
@@ -1856,7 +2558,7 @@ function init(modVersion) {
 				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
 				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
 				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
-				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
 				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
 				'#time-hud { border-radius: 10px; } </style>');				
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
@@ -1866,16 +2568,16 @@ function init(modVersion) {
 				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
 				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
 				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
-				'#menu-footer, #leaderboard-hud, #dropDown, #minimap-hud,'+
+				'#menu-footer, #leaderboard-hud, #dropDown, #dropDown2, #minimap-hud,'+
 				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
 				'#time-hud { border-radius: 0 0 0 0 } </style>');
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
             $("#AnimatedSkinBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
-				if (toastrSkinNotice==1){toastr["info"]("Animated skins <font color='red'><b>enabled</font></b>, <font color='red'><b>FPS drop</font></b> when 16").css("width", "300px");}
+				if (toastrSkinNotice==1){toastr["info"](Premadeletter71 + " <font color='red'><b>" + Premadeletter72 + "</font></b>, <font color='red'><b>FPS " + Premadeletter73 + "</font></b> "+Premadeletter74+" 16").css("width", "300px");}
 				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
         		else {localStorage.setItem("AnimatedSkinBtn", false);
-				toastr["info"]("Animated skins will be <font color='red'><b>disabled</font></b> after rejoin. <font color='red'><b>Better FPS</font></b> performance when 16").css("width", "300px");
+				toastr["info"](Premadeletter75 +" <font color='red'><b>" + Premadeletter76 + "</font></b> " + Premadeletter77 + ". <font color='red'><b>" + Premadeletter78 + "</font></b> "+Premadeletter79).css("width", "300px");
 				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);}} );  				
        /*         $("#MANUIBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("MANUIBtn", true);
@@ -1918,7 +2620,17 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
-
+		 $("#YoutubeBackgroundBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {               
+				YoutubebackgroundEnable();
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter62);
+            } else {
+				YoutubebackgroundDisable();
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter61);
+            }
+        });
+		
         $("#TIMEcalBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
@@ -1975,7 +2687,7 @@ function init(modVersion) {
             if (checked) {
                 localStorage.setItem("troll1Btn", true);
 				if (dyinglight1load=="yes") { 
-					toastr["info"]("When Dying Light Expansion is enabled, Troll on death cannot occur").css("width", "300px");
+					toastr["info"](Premadeletter80).css("width", "300px");
 					return false;
 				}
                 settroll1true();
@@ -1998,9 +2710,18 @@ function init(modVersion) {
                 $("#userscripts").show();
 
         });
-
-
-
+		
+		$(".btn.btn-block.btn-success.btn-export").click(function() {
+			setTimeout(function() {
+				if (LegendSettingsfirstclicked == "false") {
+					LegendSettingsfirst();
+					return LegendSettingsfirstclicked = "true";
+				} else {
+					$("#export-settings-btn").click();
+					return false;
+				}
+			}, 100);
+		});
 //        $("#stats-hud").after('<div id="cur-tk-hud" class="hud main-color hud-top" align="right" style=" right: 220px; font-size: 13px; padding: 6px;"></div>');
         //$("#cur-tk-hud").attr("style", "opacity: 0;");
 
@@ -2027,7 +2748,7 @@ function init(modVersion) {
             '<button id="sendicon3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendicon31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>' +
             '<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>' +
             '<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend Mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
             '<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Rick Astley - Never Gonna Give You Up"><i id="sendyt11" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
@@ -2035,7 +2756,7 @@ function init(modVersion) {
             '<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Lion king - The Lion Sleeps Tonight"><i id="sendyt31" class="fa fa-music" style="padding-center: 0px;"></i></button>' +
             '<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Agario - Jumbo Solo vs Teams"><i id="sendyt41" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>' +
             '<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Agario - Kill3r vs Teams"><i id="sendyt51" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Legend Mod Promo"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Promotional Video"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
             '<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>' +
@@ -2047,7 +2768,7 @@ function init(modVersion) {
 
 		$("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
             '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
-            '<button id="Ultimouse" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
 
         $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
             '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
@@ -2058,29 +2779,56 @@ function init(modVersion) {
         $("#cleartimer").hide();
 
         // player shortcut
-        $("#playerBtn").click(function() {
-            if (musicPlayer != undefined) {
-                var playerState = musicPlayer.getPlayerState();
+		var playerState = 0;
+        $("#playerBtn").click(function() {           
+                
                 if (playerState != 1) {
-                    musicPlayer.playVideo();
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
                     $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
                     $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
+					return playerState = 1;
                 } else {
-                    musicPlayer.pauseVideo();
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
                     $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
                     $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
+					return playerState = 0;
                 }
-            }
+            
         });
 
 		$('*[data-itr="page_play"]').click(function() {
+
+	if (userData.responseJSON.geobytesipaddress!= undefined) {
+	userip=userData.responseJSON.geobytesipaddress;
+	userip = userip.replace(" ", "_");	
+	}
+	if (userData.responseJSON.geobytescity!= undefined) {
+	usercity=userData.responseJSON.geobytescity;
+	usercity = usercity.replace(" ", "_");		
+	}	
+	if (userData.responseJSON.geobytescountry!= undefined) {
+	usercountry=userData.responseJSON.geobytescountry;
+	usercountry = usercountry.replace(" ", "_");	
+	}	
+			
 			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE"; 
 			var servertosend="NotFound";
 			var nicknametosend="NotFound";
 			var userfirstname = localStorage.getItem("userfirstname");
-			var userlastname = localStorage.getItem("userlastname");
-
+			var userlastname = localStorage.getItem("userlastname");			
+			var modetosend="NotFound";
+			var regiontosend="NotFound";
+			if (searchSip == null) {
+				modetosend=$('#gamemode').val();
+				regiontosend=$('#region').val();
+			}
+			else{
+				if (searchSip==$('#server').val()){
+				modetosend=realmode;
+				regiontosend=region;
+				}
+			}			
 			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
 			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
 			var i = 0, Pwdtosendlength = Pwdtosend.length; 
@@ -2097,21 +2845,22 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="http://104.236.44.149/sys/index.php?" + "action=Play" + "&name=" + nicknametosend + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}		
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}			
 		$('#LEGENDAds3').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
-                                        setTimeout(function() {
+        $('#loaderIframeInfo1').hide();
+		setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
-                                }, 6000);
+                                }, 4000);
 		});
 
 
@@ -2148,7 +2897,8 @@ function init(modVersion) {
             chatfunction();
         });
 
-        $("#Cutnames").click(function() {
+        $("#Cutnames").click(function() {	
+		CutNameConflictwithMessageFunction();			
             if (checkedGameNames == 0) {
                 StartEditGameNames();
                 return checkedGameNames = 2;
@@ -2159,28 +2909,29 @@ function init(modVersion) {
                 StopEditGameNames();
                 return checkedGameNames = 1;
             }
+					
         });
         $("#VoiceBtn").click(function() {
             if (searchSip == null) {
                 if (ogario.gameMode == ":party") {
-                    semiurl2 = MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
+                    semiurl2 = "?token=" + MC.getPartyToken() + $("#clantag").val() + "&?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
                 } else {
                     var currentIP2 = currentIP.replace(".", "");
                     currentIP2 = currentIP2.replace(".", "");
                     currentIP2 = currentIP2.replace(".", "");
                     currentIP2 = currentIP2.replace(":", "");
-                    semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + currentIP;
+                    semiurl2 = "?token=" + currentIP2 + $("#clantag").val() + "&?name=" + $("#nick").val() + "&?ip=" + currentIP;
                 }
             } else if (searchSip != null) {
                 var currentIP2 = searchSip.replace(".", "");
                 currentIP2 = currentIP2.replace(".", "");
                 currentIP2 = currentIP2.replace(".", "");
                 currentIP2 = currentIP2.replace(":", "");
-                semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + searchSip;
+                semiurl2 = "?token=" + currentIP2 + $("#clantag").val() + "&?name=" + $("#nick").val() + "&?ip=" + searchSip;
             }
 
             url2 = "https://talky.io/" + semiurl2;
-
+			url2 = url2.toLowerCase();
             setTimeout(function() {
                 $("#VoiceBtn").focusout();
             }, 3000);
@@ -2194,13 +2945,20 @@ function init(modVersion) {
 
         });
 		
+		
 		//blue onmouseover-onmouseout buttons
         $('#searchShortcut').mouseenter(function() {$('#searchShortcut').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#searchShortcut').css('background-color', "transparent");});
         $('#copySIPBtn').mouseenter(function() {$('#copySIPBtn').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#copySIPBtn').css('background-color', "transparent");});		
         $('#copyLBBtn').mouseenter(function() {$('#copyLBBtn').css('background-color', '#018cf6');})
-		.mouseleave(function() {$('#copyLBBtn').css('background-color', "transparent");});
+		.mouseleave(function() {$('#copyLBBtn').css('background-color', "transparent");});			
+        $('#dropDown>#copyLBBtn').mouseenter(function() {$('#dropDown>#copyLBBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#dropDown>#copyLBBtn').css('background-color', "transparent");});			
+		$('#copySIPandPass').mouseenter(function() {$('#copySIPandPass').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copySIPandPass').css('background-color', "transparent");});
+		$('#copySIPPassLB').mouseenter(function() {$('#copySIPPassLB').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copySIPPassLB').css('background-color', "transparent");});		
         $('#reconnectBtn').mouseenter(function() {$('#reconnectBtn').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#reconnectBtn').css('background-color', "transparent");});
 		
@@ -2303,7 +3061,7 @@ function init(modVersion) {
             placement: "top"
         });
 
-        //	document.getElementsByClassName('yt-username')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";//	document.getElementsByClassName('yt-username')[0].innerHTML = "Legend Mod Promo";//	document.getElementsByClassName('btn btn-play btn-primary btn-needs-server')[0].id="playerofgame";//	document.getElementsByClassName('btn btn-play-guest btn-success btn-needs-server')[0].id="playerguest";//	document.getElementsByClassName('btn btn-warning btn-login-play btn-needs-server')[0].id="playerlogin";//	$("#playerofgame").attr("onclick","MC.setQuality($('#quality').val());MC.setNick(document.getElementById('nick').value); return false;");
+        //	document.getElementsByClassName('yt-username')[0].href="https://www.youtube.com/watch?v=CnIfNSpCf70";//	document.getElementsByClassName('yt-username')[0].innerHTML = "Legend mod Promo";//	document.getElementsByClassName('btn btn-play btn-primary btn-needs-server')[0].id="playerofgame";//	document.getElementsByClassName('btn btn-play-guest btn-success btn-needs-server')[0].id="playerguest";//	document.getElementsByClassName('btn btn-warning btn-login-play btn-needs-server')[0].id="playerlogin";//	$("#playerofgame").attr("onclick","MC.setQuality($('#quality').val());MC.setNick(document.getElementById('nick').value); return false;");
 
         //Buttons for search Area
         $("#log").after('<button id="Backtomenu" onclick="doback(); return false" class="btn btn-danger" data-itr="page_login_and_play" data-original-title="" title="">CLOSE</button>');
@@ -2323,66 +3081,31 @@ function init(modVersion) {
         });
         //Other things
         // ADS
-        var tag1 = document.getElementById("nick").value;
-        if (modVersion != "2.5") {
+ //       var tag1 = document.getElementById("nick").value;
+        if (modVersion != "3.1") {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
         } 
 		else {
-            if (tag1.includes("♔Jimboy3100") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-            } else if (tag1.includes("GUARD") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-            } else if (tag1.includes("℄🌀") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("₣") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("℄") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("♋") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-            } else if (tag1.includes("۞ẒṨ۞") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-            } else if (tag1.includes("๔ɀ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-            } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-            } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-            } else if (tag1.includes("ΕΛ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-            } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-            } else if (tag1.includes("ƖƦ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-            } else if (tag1.includes("⚔ℱ") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-            } else if (tag1.includes("ƸU") == true) {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-            } else {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-            }
-        }
+			loadbannerProfileClans()
+		}
 
         // ANNOUNCEMENTS
-        if (modVersion != "2.5") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v2.5</b></font>. <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-		}//else{toastr["info"]('Hello ' + tag1 +'! </br>Legend Mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
+		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
+		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
+		'<br><b>Use <a target="_blank" href="http://jimboy3100.github.io/LMexpress/LMexpress.user.js"><font color="blue"><b><u>LM Express</u></b></font></a> until LM v2.4-v3.1 be compatible again'+
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");		
+/*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
+		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Important Notice</font></b><font color="black">'+
+		'<br><b>We use <font color="blue"><b>Agar tool socket</b></font> until we fix our own'+
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "420px") ;	  */                 
+		//toastr["info"]('<b>LM Needs more fixes</b><br> If <font color="yellow"><b>Minimap</b></font> does not load, hit <font color="red"><b>F5</b></font>');
+		
+        if (modVersion != "3.1") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.1</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}//else{toastr["info"]('Hello ' + $("#nick").val() +'! </br>Legend mod v' + modVersion + ' website: <a target="_blank" href="http://www.legendmod.ml/">LINK</a>');
 		else {
-/*			  if (modVersion == "2.5"){
-				toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
-				'Welcome to <font color="yellow"><b>v2.5</b></font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>What\'s new:</font></b><font color="black">'+
-				'<br><b>In this version, there are <b>NO</b> agar.io librares at <b>ALL.<br>'+
-				'No more conflicts due to official updates.'+
-				'<br>With <a target="_blank" href="https://github.com/jimboy3100/jimboy3100.github.io"><font color="blue"><b><u>LM Libraries</u></b></font></a>. users can play on Private or Official Agario servers.'+
-				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");			
-			  } */
-//			else{
-			//  toastr["info"](Premadeletter17 + ' <b><font color="red">' + tag1 + '</font></b>!<br>When experiencing lag, press <font color="red"><b>'+$("#hk-showSkins").val()+'</b></font> to disable skins. <br><i> Less to draw means better performance.</i>').css("width", "380px");
 			if (userlastname!=null && userfirstname!=null && userlastname!="[object Object]" && userfirstname!="[object Object]"){ 
 				if (usergender=="male"){
 				toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Mr. ' + userlastname +' '+ userfirstname + '</span></font>!').css("width", "350px");	
@@ -2392,19 +3115,22 @@ function init(modVersion) {
 				}
 			}
 			else{
-		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + tag1 + '</span></font>!').css("width", "350px");		       
+		   toastr["info"](Premadeletter17 + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">' + $("#nick").val() + '</span></font>!').css("width", "350px");		       
 				}
-//		}
-	}
+		} 
 				//important announcement
-/*    			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+				/*
+   			toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 				'<font color="yellow"><b>Important Notice</font> '+
-				'<br><font style="color:#018cf6; font-size:16px; text-align:center">New Tokens</font><font color="yellow"> Agar.io v3</font><font color="black">'+
-				'<br>New tokens are been enstablished due to <font color="red">MASKED</font> new agar.io tokens.<br>'+
-				'Need some days to establish <font color="red">communication</font> sockets.'+
-				'<br><font color="#018cf6">Stay informed</font>.'+
-				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	
-*/				
+				'<br><font  font-size:16px; text-align:center"><a href="jimboy3100.github.io/LMexpress/LMexpress.user.js" target="_blank" class="title"><font color="blue"><u>Try LM Express</u></a></font></font><font color="yellow"> <i> No skins-No lag</i></font><font color="yellow"></font> (Disable LM v2.4-3.1)<font color="black">'+
+				'<br>If you are able to play, <font color="red">DO NOT </font>CHANGE ANY SETTINGS'+
+				'<br>If not, go to Setting (4th)tab-><font color="red"> SKINS</font>'+
+				'<br>No Skins-> <font color="red">OFF</font>'+
+				'<br>Custom Skins-> <font color="red">ON</font>'+
+				'<br>Vanilla Skins-> <font color="red">ON</font>'+
+				'<font  font-size:16px; text-align:center"><br>Visit <a href="https://legendmod.joomla.com/en/" target="_blank" class="title"><font color="blue"><u>www.legendmod.ml</u></a></font></font>'+
+				'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");
+				*/
         $("#infoicon").mouseover(function() {
             $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerinformation");
         });
@@ -2419,188 +3145,65 @@ function init(modVersion) {
         });
 
         $("#infoicon").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
+        if (modVersion != "3.1") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
+		$("#oldSkinsBtn").click(function() {
+			if (modVersion == "2.8" || modVersion == "3.1") {
+		localStorage.setItem("oldskins", true);
+		location.replace("http://agar.io");
+			}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.1</b></font> to use this function</font>');	
+			}
+		});
+		$("#VideoSkinsQuick").click(function() {
+			toggleVideoskins();
+		});		
         $("#vanillaset").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
+        if (modVersion != "3.1") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         $("#defaultset").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
-
+        if (modVersion != "3.1") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         $("#agarioset").mouseout(function() {
-            if (modVersion != "2.5") {
-                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
-            } else {
-                if (tag1.includes("♔Jimboy3100") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
-                } else if (tag1.includes("GUARD") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
-                } else if (tag1.includes("℄🌀") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("₣") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("℄") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("♋") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
-                } else if (tag1.includes("۞ẒṨ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("ᴺ૯ᵂ۞") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("۞ᵶᵴ™") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
-                } else if (tag1.includes("๔ɀ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
-                } else if (tag1.includes("ﾏｮʞʇ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
-                } else if (tag1.includes("₴₵₳Ɽ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
-                } else if (tag1.includes("ΕΛ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
-                } else if (tag1.includes("⋩ᕮχ⋨") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
-                } else if (tag1.includes("ƖƦ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
-                } else if (tag1.includes("⚔ℱ") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
-                } else if (tag1.includes("ƸU") == true) {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
-                } else {
-                    $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
-                }
-            }
-
+        if (modVersion != "3.1") {
+            $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerupdate");
+        } 
+		else {
+			loadbannerProfileClans()
+		}
         });
         //Load Lc Announcement
-        if (tag1.includes("℄") == true) {
+        if ($("#nick").val().includes("℄") == true) {
             $("#LEGENDAds").after('<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 0px 0 0px 0;"><a href="https://jimboy3100.github.io/LcClanPriviledges.txt" target="_blank" id= "LegendPrivileges" class="title" style=""><u>Priviledges of Legend ℄ Clan Players</u></a></class>');
         }
 
         $('#server-connect').click(function() {
             adres();
 			setTimeout(function() {
+				if (letterCount($('#server-ws').val(), '.', true) == 3){
+					var texture2=$('#server-ws').val();		
+					$("#server-token").val(texture2.replace("ws://", ""));
+					$("#server").val(texture2.replace("ws://", ""));
+				}
+				else{
                 $("#server").val(currentIP);
+				}
             }, 1500);
         });
         $('#server-reconnect').click(function() {
@@ -2624,123 +3227,7 @@ function init(modVersion) {
         //	$("#legendbanners").hide();
         //	$(".input-group.skin.colorpicker-element").hide();
         $("#timertools-hud").hide();
-
-        //Legend.Mod&?player=lala&?com=HideAll&?do=donothing
-        //Legend.Mod&?player=a&?com=Team5&?do=donothing
-
-        $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
-            MSGCOMMANDS = $(".toast.toast-success").text();
-
-
-
-            if (MSGCOMMANDS.includes("Legend.Mod")) {
-
-                playerMsg = getParameterByName("player", MSGCOMMANDS);
-                commandMsg = getParameterByName("com", MSGCOMMANDS);
-                otherMsg = getParameterByName("do", MSGCOMMANDS);
-                //		$( ".toast.toast-success" ).text("");
-                //		$(".toast.toast-success").hide();
-                $(".toast.toast-success").remove();
-                //without confirmation
-                if (commandMsg == "Team5") {
-                    $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
-                        opacity: 0.8
-                    });
-                    setTimeout(function() {
-                        $("#top5-hud").css('background-image', 'url(" ")').css({
-                            opacity: 1
-                        });
-                    }, 12000);
-                }
-
-                if (commandMsg == "Hello") {
-                    if (MC.isInGame()) {
-                        if (!ogario.spectate) {
-                            var nickname = $("#nick").val();
-                            $("#nick").val("Hello Team");
-                            $("#helloContainer").show();
-                            newsubmit();
-                            setTimeout(function() {
-                                $("#nick").val(nickname);
-                                $("#helloContainer").show();
-                                newsubmit();
-                            }, 5000);
-                        }
-                    }
-                }
-
-                //with confirmation
-                if (commandMsg == "HideAll") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function() {
-                        $("#HideAllBthn").click();
-                    });
-                }
-
-                if (commandMsg == "NamePerm") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg + ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function() {
-                        $("#nick").val(playerMsg);
-                        $("#helloContainer").show();
-                        newsubmit();
-                    });
-                }
-
-                if (commandMsg == "dTroll2") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function() {
-                        settroll1true();
-                        whenplayerdies();
-                    });
-                }
-
-                if (commandMsg == "Youtube") {
-                    toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
-                        timeOut: 20000,
-                        extendedTimeOut: 20000
-                    }).css("width", "210px");
-                    $(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function() {
-                        $("#playerBtn").click();
-                        setTimeout(function() {
-                            $("#playerBtn").focusout();
-                        }, 100);
-                    });
-                    //	$("#playerBtn").click();			
-                }
-            }
-
-            if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
-                commandMsg = getParameterByName("com", MSGCOMMANDS);
-                otherMsg = getParameterByName("do", MSGCOMMANDS);
-                $(".toast.toast-success").remove();
-                LegendClanSymbol = $("#nick").val();
-                if (~LegendClanSymbol.indexOf("℄") != -1) {
-
-                    if (commandMsg == "EU-London") {
-                        setTimeout(function() {
-                            MC.onDisconnect();
-                        }, 60000);
-                    }
-
-                    if (commandMsg == "RU-Russia") {
-                        setTimeout(function() {
-                            MC.onDisconnect();
-                        }, 100);
-                    }
-                }
-            }
-        });
-
-
+			
         // load tooltips
         $('[data-toggle="tooltip"]').tooltip();
         $("#playerBtn").tooltip();
@@ -2768,7 +3255,7 @@ function init(modVersion) {
 
         setTimeout(function() {
 
-			
+			$('.btn').css("text-transform", "capitalize");
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                 $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
@@ -2777,8 +3264,22 @@ function init(modVersion) {
                 if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
                 }
-            });
-
+            });			
+            $("#dropDown>#copyLBBtn").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#copySIPandPass").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#copySIPPassLB").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });	
             //	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
             //	if (IPBtn  == "true") { $("#IPBtn").click(); }
             if (SHOSHOBtn == "true") {
@@ -2813,6 +3314,12 @@ function init(modVersion) {
             if (ComPosition == 2) {
                 $("#bottomright").click();
             }
+            if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
+                $("#DoubleSplitRange").click();
+            }	
+           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
+                $("#UniversalChat").click();
+            }				
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
             if (autoCoinBtn == "true") {
                 setTimeout(function() {
@@ -2972,7 +3479,7 @@ function init(modVersion) {
                 $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
             }
 		
-        }, 2000);
+        }, 3500);
         if (searchSip != null) {
             $("#region").hide();
             $("#gamemode2").hide();
@@ -3016,24 +3523,43 @@ function init(modVersion) {
 					'<br><i>Please donate to Fayiz if you enjoyed PS.<br>Maintenance of Servers cost much.</i></div>', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");		
 				}
 				else{
-					toastr["info"]('<b>Private Server</b>: <font color="red"><b>' + privateSrv + '</b></font><br>Connect to any agar.io/?ip= server or make your own.<br>Library: <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>Play agario-like games if you know the IP of servers', '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
+					toastr["info"]('<b>' + Premadeletter81 + '</b>: <font color="red"><b>' + privateSrv + '</b></font><br>' + Premadeletter82 + ' agar.io/?ip= ' + Premadeletter83 + '.<br>' + Premadeletter117 + ': <a target="_blank" href="https://github.com/Megabyte918/MultiOgar-Edited"><font color="yellow"><b><u>https://github.com/Megabyte918/MultiOgar-Edited</u></b></font><br>'+Premadeletter84, '', '{ timeOut: 10000, extendedTimeOut: 10000 }').css("width", "420px");
 				}
 			$("#server").hide();
             $("#connect2").hide();			
-			}, 3100); 
+			}, 3600); 
 			
+	
 		}
+/*		else if (privateSrv==null) {
+			setTimeout(function() {
+			toastr["info"]('Agario leaderboards are <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);"> DOWN</span></font></b> <br>Enjoy Private Servers by choosing <font color="yellow"><b>Region->Private Servers->Select</b></font>  (until agario gets fixed)<br><a target="_blank" href="http://fzogar.ml"><font color="yellow"><b><u>Click here</u></b></font></a> for Compatibility bulletin with other mods').css("width", "400px");
+			$("#gamemode").prop('disabled', false);
+			$("#region").prop('disabled', false);
+			}, 5000);
+		} */
 
         //if (searchSip==null){
         //afterdeathtonormalmode();}
+$('.side-container.left-container.disable-mouse.ogario-menu').css({
+        opacity: 1
+    });
+$('.side-container.right-container.disable-mouse.ogario-menu').css({
+        opacity: 1
+    });				
         if (timesopened == null) {
             openhelper();
         }
 
-
-
-        console.log('%c Legend Mod, all rights reserved. %chttp://www.legendmod.ml', 'background: #1E1E1E; color: #FF0000', 'background: #FF0000; color: #FFFFFF');
-		
+console.group('%cLegend mod%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+    console.group("Part of");    		
+		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by"); 
+		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
+    console.groupEnd();
+	console.groupEnd();
+console.groupEnd();		
     }, 1500);
 
 }
@@ -3152,14 +3678,21 @@ function searchHandler(searchStr) {
 function searchTKHandler(searchStr) {
     searchStr = searchStr.trim();
 
-    if (searchStr.startsWith("http://agar.io/#")) {
+    if (searchStr.startsWith("http://agar.io/#")) {		
         joinToken(searchStr.replace("http://agar.io/#", ""));
+		realmodereturn();
+		
     } else if (searchStr.startsWith("agar.io/#")) {
-        joinToken(searchStr.replace("agar.io/#", ""));
+		joinToken(searchStr.replace("agar.io/#", ""));	
+		realmodereturn();
     } else {
         return false;
     }
-    return true;
+    return true;	
+}
+function realmodereturn(){
+		realmode = getGameMode();
+		return realmode;
 }
 
 function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
@@ -3196,16 +3729,16 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
 
 function findIP(searchIP) {
     setTimeout(function() {
-        if (mode == ":party") {
+        if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
-        if (mode == "") {
-            $('#gamemode option[value=""]').prop('selected', 'selected').change();
+        if (realmode == ":ffa") {
+            $('#gamemode option[value=":ffa"]').prop('selected', 'selected').change();
         }
-        if (mode == ":teams") {
+        if (realmode == ":teams") {
             $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
         }
-        if (mode == ":experimental") {
+        if (realmode == ":experimental") {
             $('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();
         }
     }, 1500); //weird
@@ -3214,7 +3747,7 @@ function findIP(searchIP) {
             showCancelSearch();
             searching = true;
             var interval = 1800;
-            var maxTries = 30;
+            var maxTries = 4;
             var numTries = 0;
             var numAttempts = 0;
             var maxAttempts = 2;
@@ -3234,7 +3767,8 @@ function findIP(searchIP) {
             } else {
                 changeServer();
                 timerId = setInterval(function() {
-                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+//                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+					if (MC.isInGame() == true || numAttempts == maxAttempts) {
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         numTries++;
@@ -3285,7 +3819,7 @@ function searchPlayer(searchString) {
             searching = true;
             //var interval = 2500;
             var interval = 1800;
-            var maxTries = 30;
+            var maxTries = 4;
             var numTries = 0;
             var minNamesFound = 3;
             var numAttempts = 0;
@@ -3328,7 +3862,9 @@ function searchPlayer(searchString) {
 
                 timerId = setInterval(function() {
 
-                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+                //    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
+					if (MC.isInGame() == true || numAttempts == maxAttempts) {	
+						
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         leaderboard = $(ogario.leaderboardHTML).text();
@@ -3498,7 +4034,9 @@ function showMenu() {
 function hideMenu() {
     $("#overlays").css("left", "-999em");
 }
-
+function hideMenu2() {
+    $("#overlays").hide();
+}
 function getLeaderboard() {
     return $(ogario.leaderboardHTML).text();
 }
@@ -3512,8 +4050,6 @@ function bumpLog() {
         scrollTop: 0
     }, "slow");
 }
-
-function StartEditGameNames() {
     function inject(type, code) {
         switch (type) {
             case 'javascript':
@@ -3529,6 +4065,8 @@ function StartEditGameNames() {
         }
         (document.head || document.documentElement).appendChild(inject);
     }
+function StartEditGameNames() {
+
     inject('stylesheet', '#tcm,#tcm>#tcm-main>div>div{overflow-x:hidden;overflow-y:auto}#tcm>#tcm-header,#tcm>#tcm-main>div{text-align:center}@keyframes bounce-in{0%,100%,20%,40%,60%,80%{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}100%{opacity:1;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@-webkit-keyframes bounce-in{0%,100%,20%,40%,60%,80%{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}100%{opacity:1;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@-moz-keyframes bounce-in{0%,100%,20%,40%,60%,80%{-moz-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-moz-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-moz-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-moz-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-moz-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-moz-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}100%{opacity:1;-moz-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}#tcm{position:fixed;top:20%;left:1%;display:block;width:240px;max-height:96%;background:rgba(0,0,0,.8);border:1px solid #444;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;z-index:999999999;animation:1s both bounce-in;-webkit-animation:1s both bounce-in;-moz-animation:1s both bounce-in}#tcm>#tcm-header,#tcm>#tcm-header>p,#tcm>#tcm-header>span{position:relative;display:block}#tcm :focus{outline:0}#tcm *{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}#tcm>#tcm-header{width:initial;background:rgba(255,255,255,.4);padding:8px}#tcm>#tcm-header>span{font-family:Pacifico,cursive;font-size:20px;color:#FFF;text-transform:capitalize;margin:0 0 8px}#tcm>#tcm-header>p{font-size:12px;color:#222;margin:0}#tcm>#tcm-main>div>div,#tcm>#tcm-main>div>span{margin:0 0 8px;position:relative;display:block}#tcm>#tcm-main,#tcm>#tcm-main>div{position:relative;display:block;width:initial}#tcm>#tcm-main{padding:8px}#tcm>#tcm-main>div>span{font-size:14px;color:#FFF;text-transform:capitalize}#tcm>#tcm-main>div>div{width:100%;max-height:160px;min-height:20px;background:#222;border:1px solid #444;border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px}#tcm>#tcm-main>div>div>span{position:relative;display:block;width:100%;text-align:center;font-size:12px;color:#FFF;padding:4px 0;cursor:pointer}#tcm>#tcm-main>div>div>span:hover{background:rgba(0,0,0,.2)}');
     inject('javascript', ! function e(o) {
         if ("undefined" != typeof document.getElementsByTagName("head")[0] && "undefined" != typeof document.getElementsByTagName("body")[0]) {
@@ -3570,7 +4108,7 @@ function StartEditGameNames() {
                         return '<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css" />'
                     },
                     html: function() {
-                        return '<div id="tcm" style="display:block;"><div id="tcm-header"><span>Legend Mod Copy Tools</span><p>copy leaderboard names and cell names. (press x to show/hide)</p></div><div id="tcm-main"><div><span>leaderboard names</span><div id="tcm-leaderboard"></div></div><div><span>cell names</span><div id="tcm-names"></div></div><div></div></div></div>'
+                        return '<div id="tcm" style="display:block;"><div id="tcm-header"><span>Copy Tools</span><p>copy leaderboard names and cell names. (press x to show/hide)</p></div><div id="tcm-main"><div><span>leaderboard names</span><div id="tcm-leaderboard"></div></div><div><span>cell names</span><div id="tcm-names"></div></div><div></div></div></div>'
                     },
                     span: function(e, o) {
                         return "<span onclick=\"javascript:prompt('" + e + "', '" + o + "')\">" + o + "</span>"
@@ -3782,10 +4320,10 @@ function exitFullscreen() {
 function useProfilePhotoCustom(){
 	if ($('.agario-profile-picture').attr('src')!= "https://agar.io/mc/img/profilepic_guest.png" && $('.agario-profile-picture').attr('src')!="mc/img/profilepic_guest.png"){	
 		copy($(".agario-profile-picture").attr('src'));
-		toastr["info"]('Your account\'s image has been copied to clipboard. Paste it <font color="red"><b>Ctrl+V</font></b>, to custom skin Url area').css("width", "350px");
+		toastr["info"](Premadeletter85 + ' <font color="red"><b>Ctrl+V</font></b>, '+Premadeletter86).css("width", "350px");
 	}
 	else{
-		toastr["info"]('You must Login to use picture of your profile').css("width", "350px");
+		toastr["info"](Premadeletter87).css("width", "350px");
 	}
 }
 
@@ -3935,14 +4473,14 @@ function getEmbedUrl(url) {
     var listId = getParameterByName("list", url);
 
     if (videoId != null && listId == null) {
-        return "https://www.youtube.com/embed/" + videoId + "?" + musicParams;
+        return "http://www.youtube.com/embed/" + videoId + "?" + musicParams;
     } else if (listId != null && videoId != null) {
-        return "https://www.youtube.com/embed/" + videoId + "?list=" + listId + "&" + musicParams;
+        return "http://www.youtube.com/embed/" + videoId + "?list=" + listId + "&" + musicParams;
     } else if (url.startsWith("https://youtu.be/")) {
         if (listId != null) {
-            return url.replace("https://youtu.be/", "https://www.youtube.com/embed/") + "&" + musicParams;
+            return url.replace("http://youtu.be/", "http://www.youtube.com/embed/") + "&" + musicParams;
         } else {
-            return url.replace("https://youtu.be/", "https://www.youtube.com/embed/") + "?" + musicParams;
+            return url.replace("http://youtu.be/", "http://www.youtube.com/embed/") + "?" + musicParams;
         }
     } else {
         return false;
@@ -4000,8 +4538,9 @@ function testmessage() {
 function newsubmit() {
     //if (searchSip==null){ 
     MC.setNick(document.getElementById('nick').value);
+	setTimeout(function() {MC.onPlayerSpawn();}, 2000);
     //setTimeout(function (){$('#quality').val()},1500);
-    return false;
+    //return false;
     //else if (searchSip!=null){	
     //realmode = getGameMode();
     //testmessage();MC.setNick(document.getElementById('nick').value); return realmode;}
@@ -4037,7 +4576,7 @@ function settroll1false() {
 
 function whenplayerdies() {
     if (troll1 == "YES") {
-        MC.onPlayerDeath = function() {
+        olddeath = function() {
 			
             //afterdeathtonormalmode();
 			playSound("https://jimboy3100.github.io/banners/troll1.mp3");	
@@ -4071,11 +4610,13 @@ function whenplayerdies() {
 
         }
     } else {
-        MC.onPlayerDeath = function() {
+        olddeath = function() {
 			
             //afterdeathtonormalmode();
         };
     }
+	newDeath=MC.onPlayerDeath; 
+	MC.onPlayerDeath= function () {newDeath;olddeath();}
 }
 
 function agariowhitesettings() {
@@ -4521,8 +5062,8 @@ function ShowSIPurl(){
 	$("#create-party-btn-2").hide();
 	setTimeout(function (){$('#quality').val()},4000);
 	setTimeout(function () {
-			if (mode!=":party"){
-			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + mode);}
+			if (realmode!=":party"){
+			history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);}
 			 
 }, 2500)}	
 */
@@ -4565,7 +5106,7 @@ function msgcommand6f() {
 
 function dosendmsgcommand() {
 
-    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+//    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
         if ($('#message-box').css('display') == 'none') {
             KeyEvent.simulate(13, 13);
         };
@@ -4579,12 +5120,14 @@ function dosendmsgcommand() {
                 KeyEvent.simulate(13, 13);
             }
         }, 100);
-    } else {
-        toastr["info"](Premadeletter39);
-    }
+ //   } else {
+ //       toastr["info"](Premadeletter39);
+ //   }
 
 }
-
+function openVanillaSkins(){		
+	$("#skinButton").click(); return false;
+}
 
 function openhelper() {
     var s = document.createElement("script");
@@ -4613,8 +5156,8 @@ function afterdeathtonormalmode() {
             if (realmode == ":party") {
                 $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
             }
-            if (realmode == "") {
-                $('#gamemode option[value=""]').prop('selected', 'selected').change();
+            if (realmode == ":ffa") {
+                $('#gamemode option[value=":ffa"]').prop('selected', 'selected').change();
             }
             if (realmode == ":teams") {
                 $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
@@ -4624,6 +5167,29 @@ function afterdeathtonormalmode() {
             }
         }, 100);
     }
+}
+
+function copyToClipboard(element) {
+  var $temp = $("<textarea>");
+  $("body").append($temp);
+  var html = $(element).html();
+  html = html.replace(/<br>/g, "\n"); // or \r\n
+  console.log(html);
+  $temp.val(html).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+function copyToClipboardAll(){
+VoiceChan();	
+$("#CopyTkPwLb").remove();
+	if ($("#top5-pos").text()!=""){
+		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>Teamboard:' +$("#top5-pos").text() +'<br>My Game Name: ' +$("#nick").val() +'</er>');
+	}
+	else{
+		$("#LEGENDAds3").after('<er id="CopyTkPwLb" style="display: none;">Server: '+CopyTkPwLb2+'<br>Leaderboard: '+getLeaderboard() + '<br>My Game Name: ' +$("#nick").val()+'</er>');
+	}
+copyToClipboard('er#CopyTkPwLb');
 }
 
 function rotateminimapsectors() {
@@ -4970,34 +5536,196 @@ function enableshortcuts() {
     //	$("#MANUIBtn").click(); }
 }
 
+function setTimeoutLateResponse(){
+setTimeout(function() {
+	$("#tcm-videoskin").hide();	
+	fillminimapLegendLogo();
+}, 6000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 6500);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 7000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 7500);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 8000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 9000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 10000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+			//Load Private Servers
+//	if($('#region>option:nth-child(1)').val()!=":PrS")	{
+//	$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+//	}	
+}, 13000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 14000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 11000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 12000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 13000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 14000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+}, 18000);
+setTimeout(function() {
+	fillminimapLegendLogo();
+    //if(dyinglight1load!="yes"){whenplayerdies();}
+}, 22000);
 
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 24000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+    //if(dyinglight1load!="yes"){whenplayerdies();}
+}, 25000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 30000);
+setTimeout(function() {
+    MC.setQuality($('#quality').val());
+}, 40000);
+//setTimeout(function () {history.pushState(stateObj, "page 2", "?r=" + MC.getRegion() + "&m=" + getGameMode() + "&search=ws://" + currentIP); }, 25000);
+}
+
+function PrivateServerSenderFunction(){	
+toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+setTimeout(function() {
+    if ($('#gamemode').val() == ":PrS1") {
+    console.log("Going to PRS1");
+	$("#clantag").val("PRS1");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer1();
+    }
+    else if ($('#gamemode').val() == ":PrS2") {
+	$("#clantag").val("PRS2");
+    console.log("Going to PRS2");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer2();
+    }  
+    else if ($('#gamemode').val() == ":PrS3") {
+    console.log("Going to PRS3");
+	$("#clantag").val("PRS3");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer3();
+    }
+    else if ($('#gamemode').val() == ":PrS4") {
+    console.log("Going to PRS4");
+	$("#clantag").val("PRS4");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer4();
+    }
+    else if ($('#gamemode').val() == ":PrS5") {
+    console.log("Going to PRS5");
+	$("#clantag").val("PRS5");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer5();
+    }
+    else if ($('#gamemode').val() == ":PrS6") {
+    console.log("Going to PRS6");
+	$("#clantag").val("PRS6");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer6();
+    }
+    else if ($('#gamemode').val() == ":PrS7") {
+    console.log("Going to PRS7");
+	$("#clantag").val("PRS7");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer7();
+    }
+    else if ($('#gamemode').val() == ":PrS8") {
+    console.log("Going to PRS8");
+	$("#clantag").val("PRS8");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer8();
+    }
+    else if ($('#gamemode').val() == ":PrS9") {
+    console.log("Going to PRS9");
+	$("#clantag").val("PRS9");
+//	toastr["info"]("Beta Function. Please wait...").css("width", "250px");
+	PrivateServer9();
+    }	
+}, 7000);	
+}
 function PrivateServer1(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:4000","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:443");	
+	$("#server").val("mgar.ml:443");	
+//	$("#connect2").click();		
+//	window.open("http://agar.io/?ip=eu.fzogar.xyz:4000","_self");
 }
 function PrivateServer2(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:4001","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:441");		
+	$("#server").val("mgar.ml:441");
+//	$("#connect2").click();	
+//	window.open("http://agar.io/?ip=eu.fzogar.xyz:4001","_self");
 }
 function PrivateServer3(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:5001","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:444");		
+	$("#server").val("mgar.ml:444");
+//	$("#connect2").click();	
+//	window.open("http://agar.io/?ip=eu.fzogar.xyz:5001","_self");
 }
 function PrivateServer4(){
-	window.open("http://agar.io/?ip=game.fzogar.xyz:5002","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:442");		
+	$("#server").val("mgar.ml:442");
+//	$("#connect2").click();
+//	window.open("http://agar.io/?ip=66.70.189.222:4011","_self");
 }
 function PrivateServer5(){
-	window.open("http://agar.io/?ip=172.73.178.205:8880","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://mgar.ml:400");		
+	$("#server").val("mgar.ml:400");
+//	$("#connect2").click();
+//	window.open("http://agar.io/?ip=66.70.189.222:4031","_self");
 }
 function PrivateServer6(){
-	window.open("http://agar.io/?ip=game1.fzogar.xyz:4000","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://35.231.64.21:8081");			
+	$("#server").val("35.231.64.21:8081");
+//	$("#connect2").click();
+//	window.open("http://agar.io/?ip=145.239.81.206:4011","_self");
 }
 function PrivateServer7(){
-	window.open("http://agar.io/?ip=game1.fzogar.xyz:4001","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://35.231.64.21:8082");			
+	$("#server").val("35.231.64.21:8082");
+//	$("#connect2").click();
+//	window.open("http://agar.io/?ip=145.239.82.188:4050","_self");
 }
 function PrivateServer8(){
-	window.open("http://agar.io/?ip=game1.fzogar.xyz:4002","_self");
+window.core.disableIntegrityChecks(true);
+core.connect("ws://35.231.64.21:8083");			
+	$("#server").val("35.231.64.21:8083");
+//	$("#connect2").click();	
+//	window.open("http://agar.io/?ip=145.239.81.206:4031","_self");
 }
 function PrivateServer9(){
-	window.open("http://agar.io/?ip=DeadServer-oiepapuh546901.codeanyapp.com:8888","_self");
+	$("#server").val("in.fzogar.xyz:443");
+//	$("#connect2").click();	
+//	window.open("http://agar.io/?ip=145.239.82.188:4000","_self");
 }
+
 /*
 function adres() {
     var adrs = WebSocket.prototype.send;
@@ -5026,7 +5754,7 @@ function adres() {
 function adres() {
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
-			currentIP = "live-arena-"+$("#server-token").val()+".agar.io:80";
+			currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
 			$("#server").val(currentIP);
 //	            var c = /((?:[0-9]{1,3}(?:\.|\-)){1,3}[0-9]{1,3})(?:.*?)?(\:[0-9]{1,5})/,
 //            d = c.exec($("#server-ws").val());
@@ -5045,7 +5773,7 @@ function adres() {
                     }
 				}
 				else if (privateSrv!=null) {				
-                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
+//                history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
 				
 			}	                
 			
@@ -5068,8 +5796,33 @@ function adres() {
 		setTimeout(function(){MC.setQuality($('#quality').val());}, 11000);
 }		
 
+        function VoiceChan() {
+            if (searchSip == null) {
+                if (ogario.gameMode == ":party") {
+ //                   semiurl2 = MC.getPartyToken() + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + MC.getPartyToken();
+                } else {
+                    var currentIP2 = currentIP.replace(".", "");
+                    currentIP2 = currentIP2.replace(".", "");
+                    currentIP2 = currentIP2.replace(".", "");
+                    currentIP2 = currentIP2.replace(":", "");
+//                    semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + currentIP;
+                }
+            } else if (searchSip != null) {
+                var currentIP2 = searchSip.replace(".", "");
+                currentIP2 = currentIP2.replace(".", "");
+                currentIP2 = currentIP2.replace(".", "");
+                currentIP2 = currentIP2.replace(":", "");
+//                semiurl2 = currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() + "&?ip=" + searchSip;
+            }
+
+            url2 = "https://talky.io/" + semiurl2;
+			url2 = url2.toLowerCase();
+			return url2;
+        }
+		
 function joinpartyfromconnect() {
     MC.joinParty($("#server").val());
+	$("#server-token").val($("#server").val().replace("#", ""));	
 //    $("#cur-tk-hud").text("Party Token: " + $("#server").val()).attr("style", "opacity: 0;");;
 }
 
@@ -5087,13 +5840,112 @@ function openrotatingmod() {
     $("body").append(s);
 }
 
-function openvidmod() {
+function languagemodfun(){
+if (languagemod == 2) {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "https://jimboy3100.github.io/VidMod.js";
+    s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
     $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("2");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
 }
-
+if (languagemod == 3) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("3");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 4) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("4");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 5) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("5");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 6) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 7) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("7");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 8) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackRussian.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("8");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 9) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackGerman.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("9");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+}
 function changeModLanguage() {
     if ($("#legendlanguages").val() == 1) {
         localStorage.setItem("languagemod", 1);
@@ -5179,6 +6031,48 @@ function changeModLanguage() {
 
         }, 800);
     }
+    if ($("#legendlanguages").val() == 7) {
+        localStorage.setItem("languagemod", 7);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
+    if ($("#legendlanguages").val() == 8) {
+        localStorage.setItem("languagemod", 8);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackRussian.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
+    if ($("#legendlanguages").val() == 9) {
+        localStorage.setItem("languagemod", 9);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackGerman.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }		
 }
 
 function opendyinglight() {
@@ -5191,7 +6085,7 @@ function opendyinglight() {
 function getaccesstoken() {
     $.ajax({
         type: "GET",
-        url: "https://jimboy3100.github.io/v3/accesstoken.html",
+        url: "https://jimboy3100.github.io/AjaxData/accesstoken.html",
         datatype: "json",
         success: function(info) {
 		  accesstomod =  info[17];
@@ -5203,7 +6097,7 @@ function getaccesstoken() {
 function getaccesstoken2() {
     setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
-			toastr["error"]('<b>[SERVER]:</b> You are using a wrong version of Legend Mod, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>Legend mod will terminate now').css("width", "300px");
+			toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
 					}, 21000);
@@ -6638,7 +7532,7 @@ function animatedskins(){
                   html += '<option value="' + key.toUpperCase() + '">' + key + ' (' + tcm.l.skins[key].frames.length + ' frames)</option>';
                }
                html += '</select>';
-               document.getElementById('openShopBtn').insertAdjacentHTML('afterend', html);
+               document.getElementById('SpecialDealsBtn').insertAdjacentHTML('afterend', html);
             },
          }
       };
@@ -6662,5 +7556,1724 @@ function animatedskins(){
 	$('#movingskins>option:nth-child(71)').hide();
    }, 300);
 })(window);
+}
+
+
+function SpecialDeals() {
+	GameConfiguration={};
+		$.ajax({
+        type: "GET",
+        url: "https://configs-web.agario.miniclippt.com/live/v9/1025/GameConfiguration.json",
+        datatype: "json",
+        success: function(info) {
+        return GameConfiguration=info;
+			}
+		});
+		
+    if (MC.getUserId() != null) {
+        $('#helloContainer').after('<div class="modal fade in" id="specialShopModal" aria-hidden="false" style="display: block;">' +
+            '<div class="modal-backdrop fade in"></div>' +
+            '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 500px;">' +
+            '<div class="modal-content">' +
+            '<div id="CloseSpecialDeals" class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+            '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">Special deals</h4>' +
+            '</div>' +
+            '<div class="modal-body"><input type="email" class="form-control" id="agario_uid_input" placeholder="*UID (' + Premadeletter110 + ')" style="width: 85%; display: inline-block">' +
+            '<div class="custom-checkbox" style="display: inline-block; margin-left: 10px; vertical-align: sub;"><input id="checkBoxLockUID" type="checkbox" disabled="disabled" style="width: 20px; height: 20px"><label for="cb1"></label></div>' +
+            '<div class="bs-callout bs-callout-buy bs-callout-clickable" id="buy_starterpack">' +
+            '<h4 id="dealtype" class="pull-left">purchase 125000 coins</h4><h5 class="pull-left"> <i> (' + Premadeletter111 + ')</i></h5>' +
+            '<h4 id="dealcost" class="text-right">99.99 $</h4>' +
+            '<div class="xpmt-buy-content" style="font-size: 13px; margin-top: -30px; float: left;font-weight: 700; background-color: rgba(0, 0, 0, 0.2); background-image: url(https://jimboy3100.github.io/banners/icondeal2.png);padding: 3px; align: middle; border-radius: 4px;width: 100%;height: 150px;z-index: 15;margin: auto;">' +
+            '<div class="xpmt-money-stack" style="display: inline-block; margin-left: 70px; margin-top: 115px;"><span class="coins" style=""><b>125000 C</b></span></div>' +
+            '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(""); background-size: cover; border-color: #7c0001"></div>' +
+            '</div>' +
+            '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> ' + Premadeletter112 + '</color>' +
+            '<p class="alert-warning text-center">' + Premadeletter116 + '<br><span class="alert-success" id="exp-uid">' + MC.getUserId() + '</span> <font color="red" onclick=copy(MC.getUserId());><b><u>'+Premadeletter114+' UID</u></b></font><br>*UID ' + Premadeletter115 + '</p>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>');
+setTimeout(function() { populateSD();}, 1500);
+        $("#CloseSpecialDeals").click(function() {
+            MC.setQuality($('#quality').val());
+            $("#specialShopModal").remove();
+        });
+        $(".xpmt-buy-content").click(function() {
+			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">' + Premadeletter90 +' v0.4<br>' + Premadeletter91 + '<br><font color="red">' + Premadeletter91a + '</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
+			$(".btn.btn-sm.btn-primary.btn-play.btn-do-DyingLight").click(function () { buydeals(); });	
+ /*           if (ProLicenceUsersTable.ProLicenceUsers[MC.getUserId()] != undefined) {
+                console.log("Authorised User");
+                buydeals();
+            } else {
+                console.log("Non Authorised User");
+                var containsnickname = $("#nick").val();
+                if (~containsnickname.indexOf("℄") || ~containsnickname.indexOf("ΕΛ")) {
+                    toastr["info"]("If you are Lc or EA player, contact Skype Id: Jimboy3100 and refer your <font color='red'><b>UID</b></font color='red'>", "", {
+                        timeOut: 10000,
+                        extendedTimeOut: 10000
+                    }).css("width", "300px");
+                } else {
+                    toastr["info"]("This Function is enabled to those who donated 6$ to author, contact Skype Id: Jimboy3100 and refer your <font color='red'><b>UID</b></font color='red'>", "", {
+                        timeOut: 10000,
+                        extendedTimeOut: 10000
+                    }).css("width", "300px");
+                }
+            } */
+        });
+        $('#agario_uid_input').blur(function() {
+            if (letterCount($('#agario_uid_input').val(), '-', true) == 4) {
+                document.getElementById("checkBoxLockUID").checked = true;
+                toastr["info"](Premadeletter92).css("width", "250px");
+                $("#exp-uid").text($('#agario_uid_input').val());
+            } else {
+                document.getElementById("checkBoxLockUID").checked = false;
+                toastr["info"](Premadeletter93).css("width", "210px");	
+                $("#exp-uid").text(MC.getUserId());
+            }
+        });
+
+
+        $('#ss-select-purchases').on('change', function() {
+            console.log(this.value);
+			findSDescription();
+            $(".xpmt-skins2").remove();
+            $(".xpmt-money-stack").text($("#ss-select-purchases option:selected").text().substr(0, $("#ss-select-purchases option:selected").text().indexOf('_')) + " C");
+            $("#dealcost").text($("#ss-select-purchases option:selected").text().split('=').pop());
+
+            var textcropped1 = $("#ss-select-purchases option:selected").text().split('1_skin_').pop();
+            textcropped1 = textcropped1.substr(0, textcropped1.indexOf(' ')).replace(' ', '');
+            textcropped1 = textcropped1.charAt(0).toUpperCase() + textcropped1.slice(1);
+            $(".xpmt-skins").css('background-image', 'url("https://configs-web.agario.miniclippt.com/live/v9/1018/' + textcropped1 + '.png")');
+            setTimeout(function() {
+                if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal7") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Blueberry_Face.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal15") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Hot_Dog.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal17") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Comet.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal18") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Comet.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal21") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Jar_Brain.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal22") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Jar_Brain.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal25") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Laika.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal26") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Laika.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal27") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/pig.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal36") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/UFO.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal41") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/zombie.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal42") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/zombie.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal52") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Tiger_Pattern.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal53") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/toon.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.dailydeal54") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/toon.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.starterpack3") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/pig.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.starterpack4") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Blueberry_Face.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.starterpack6") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Tomato_Face.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.starterpack7") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Comet.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.boosterpromo3") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/monthly_web_husky.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack1") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_wendigo.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack2") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_red_fiend.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack3") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_wendigo.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_red_fiend.png); background-size: cover; border-color: #7c0001"></div>');
+                    $(".xpmt-money-stack").text("1800 DNA");
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack4") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/anime_skull_bow.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack5") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/anime_skull_bow.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack7") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/anime_power_ninja.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack10") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_wendigo.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_night_hunter.png); background-size: cover; border-color: #7c0001"></div>');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack11") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/samurai_war_mask.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/samurai_skull_samurai.png); background-size: cover; border-color: #7c0001"></div>');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack12") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/birthday_2017_2_rabid.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/birthday_2017_2_delighted.png); background-size: cover; border-color: #7c0001"></div>');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack13") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/pet_balls_elephant.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack14") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/samurai_war_mask.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack15") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/samurai_rogue_samurai.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack16") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/samurai_war_mask.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/samurai_rogue_samurai.png); background-size: cover; border-color: #7c0001"></div>');
+                    $(".xpmt-money-stack").text("1800 DNA");
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.zodiacpromo") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/zodiac_2017_skin_scorpio.png ")');
+                    $(".xpmt-money-stack").text("800 DNA");
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.zodiacpromoweb") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/zodiac_2017_skin_scorpio.png ")');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.collector2") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/birthday_sir.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/ChilliPepper.png); background-size: cover; border-color: #7c0001"></div>');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.collector4") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/Rooster.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/birthday_doge.png); background-size: cover; border-color: #7c0001"></div>');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack17") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/anime_skull_bow.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/anime_giant_human.png); background-size: cover; border-color: #7c0001"></div>');
+                    $(".xpmt-money-stack").text("1800 DNA");
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.promotionpack18") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/anime_skull_bow.png ")');
+                    $('.xpmt-skins').after('<div class="xpmt-skins2" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: 35px 350px; background-image: url(https://configs-web.agario.miniclippt.com/live/v9/1018/anime_giant_human.png); background-size: cover; border-color: #7c0001"></div>');
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.potionpromo3") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_wendigo.png ")');
+                    $(".xpmt-money-stack").text("16000 C+ 1800 DNA");
+                } else if ($('#ss-select-purchases').val() == "com.miniclip.agar.io.potionpromo6") {
+                    $(".xpmt-skins").css('background-image', 'url(" https://configs-web.agario.miniclippt.com/live/v9/1018/moonlight_wendigo.png ")');
+                    $(".xpmt-money-stack").text("7000 C+ 800 DNA");
+                }
+            }, 500);
+        });
+    } else {
+        toastr["info"](Premadeletter94).css("width", "300px");	
+    }
+}
+
+//EU OR USD
+function buydeals(){
+   $.ajax({
+        type: "GET",
+        url: "https://payments.agario.miniclippt.com/pay/"+$("#exp-uid").text()+"/"+$( "#ss-select-purchases option:selected" ).val()+"/"+$("#BuyDealCurrency").val(),
+        datatype: "json",
+        success: function(info) {
+        return buytoken=info.iframe_url;
+			}
+		});
+setTimeout(function() {		
+	window.open(buytoken, "PopupWindow", "width=600,height=600,scrollbars=yes,resizable=no");
+}, 3000);
+}
+
+            function populateSD(){
+			var select = document.getElementById("ss-select-purchases");
+                for(i=0;i<GameConfiguration.gameConfig["Wallet - In-App Purchases"].length;i++){
+                    if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="2"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 1.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="5"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 4.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="10"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 9.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}						
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="20"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 19.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="50"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 49.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}
+                    else if(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].priceTier=="60"){
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId+" = 99.99 $", GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}					
+                    else {
+                    select.options[select.options.length] = new Option(GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].bundleId, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id, GameConfiguration.gameConfig["Wallet - In-App Purchases"][i].id);
+					}					
+				}
+
+            }
+
+            function findSDescription(){
+			var findSDiconlocationString2=$("#ss-select-purchases option:selected").text().split('=').pop();
+			findSDiconlocationString2=$("#ss-select-purchases option:selected").text().replace(findSDiconlocationString2, '');
+			findSDiconlocationString2=findSDiconlocationString2.replace(' =', '');	
+			var select = document.getElementById("ss-select-purchases");
+                for(i=0;i<GameConfiguration.gameConfig["Visual - Bundles"].length;i++){
+					
+                    if(GameConfiguration.gameConfig["Visual - Bundles"][i].bundleId==findSDiconlocationString2){
+						console.log("bundleId found");
+						var findSDicondescriptionString=GameConfiguration.gameConfig["Visual - Bundles"][i].description;
+						if (typeof findSDicondescriptionString === 'string' || findSDicondescriptionString instanceof String){
+							// it's a string
+							
+							console.log(findSDicondescriptionString);
+							if(findSDicondescriptionString!="na"){		
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');	
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace('_',' ');
+								findSDicondescriptionString=findSDicondescriptionString.replace(' name','');
+								$("#dealtype").text(findSDicondescriptionString);
+							}
+							else{
+								console.log("no description");
+								var findSDicondescriptionString=$('#ss-select-purchases').val();
+								findSDicondescriptionString = findSDicondescriptionString.replace('com.miniclip.agar.io.','');
+								findSDicondescriptionString = findSDicondescriptionString.charAt(0).toUpperCase() + findSDicondescriptionString.slice(1);
+								$("#dealtype").text(findSDicondescriptionString);
+							}
+						}
+						else{
+						console.log("description is not a String");
+						$("#dealtype").text("Unknown");
+						}	
+					}
+				}
+			}			
+function letterCount(string, letter, caseSensitive) {
+    var count = 0;
+    if ( !caseSensitive) {
+        string = string.toUpperCase();
+        letter = letter.toUpperCase();
+    }
+    for (var i=0, l=string.length; i<string.length; i += 1) {
+        if (string[i] === letter) {
+            count += 1;
+        }
+    }
+    return count;
+}
+
+function PremiumUsers(){
+        var ProLicenceUsersTableJS = document.createElement("script");
+        ProLicenceUsersTableJS.type = "text/javascript";
+        ProLicenceUsersTableJS.src = "https://jimboy3100.github.io/AjaxData/ProLicenceUsersTableJS.js";
+        $("body").append(ProLicenceUsersTableJS);
+}
+
+function BeforeReportFakesSkin(){
+	if ($("#skin").val()!="https://jimboy3100.github.io/banners/iconfake1.png"){
+			toastr["info"](Premadeletter95 + ' <font color="red"><b>Ctrl+V</font></b>, ' + Premadeletter96).css("width", "350px"); // erase the 's	
+		copy("https://jimboy3100.github.io/banners/iconfake1.png");		
+	}
+	else{
+		ReportFakesSkin();
+	}
+}
+function ReportFakesSkin() {
+var Temporaryletter1;
+var Temporaryletter2;
+var Languageletter320;		//Leaderboard
+var Languageletter321;		//Teamboard
+if (Languageletter320!=null){Temporaryletter2=Languageletter320} else{Temporaryletter2 = "Leaderboard";}
+if (Languageletter321!=null){Temporaryletter1=Languageletter321} else{Temporaryletter1 = "Teamboard";}
+
+$("#menu-footer").after('<div id="SkinChanger" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 540px; width: 500px; ";>'+
+	'<div id="SkinChangerhud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<div id="SkinChangertoolshud1" align="middle"><h5 class="main-color"><b>'+Premadeletter119+'</b></h5>'+	
+	'<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">'+Premadeletter120+
+	'<br><font id= "Leadboardlet1" style="color:white; size:12px; margin-right: 70px;">'+Temporaryletter2+'</font><font id= "Teamboardlet1" style="color:white; size:12px; margin-left: 70px;">'+Temporaryletter1+'</font></p>'+
+											'<input id="LeaderboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline; " " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="LeaderboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +																							
+											'<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +	
+											'</div><p style="color:white; font-size:12px";" align="middle">'+Premadeletter121+'<br>'+Premadeletter122+'</u></p>'+											
+											'</div></div>');
+$('#LeaderboardInput1').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput2').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput3').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput4').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput5').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput6').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput7').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput8').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput9').copyCSS('#server').css('width', '40%');	
+$('#LeaderboardInput10').copyCSS('#server').css('width', '40%');	
+$('#TeamboardInput1').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput2').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput3').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput4').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput5').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput6').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput7').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput8').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput9').copyCSS('#server').css('width', '40%');
+$('#TeamboardInput10').copyCSS('#server').css('width', '40%');
+										
+$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
+OthersSkinChanger();
+SkinBtnsPut();
+OpenSkinChanger();
+}
+
+
+function OthersSkinChanger(){
+	var leaderboardnames = [getLeaderboard().split('1. ').pop().split('2. ')[0], getLeaderboard().split('2. ').pop().split('3. ')[0], getLeaderboard().split('3. ').pop().split('4. ')[0], getLeaderboard().split('4. ').pop().split('5. ')[0], getLeaderboard().split('5. ').pop().split('6. ')[0], getLeaderboard().split('6. ').pop().split('7. ')[0], getLeaderboard().split('7. ').pop().split('8. ')[0], getLeaderboard().split('8. ').pop().split('9. ')[0], getLeaderboard().split('9. ').pop().split('10. ')[0], getLeaderboard().split('10. ').pop().split('11. ')[0]];
+$(".team-top-limit")[2].click();
+var Top5b={};
+var Top5c={};
+var Top5d={};
+var Top5a=$("#top5-pos").text();
+for (var n=1;n<=21;n++){
+	Top5b[n]=Top5a.split('[')[n];
+if (Top5b[n]!=null){
+	Top5c[n]=Top5b[n].split('] ')[1];
+	Top5d[n]=Top5c[n].slice(0, -1);	
+}
+else {Top5d[n-1]=Top5c[n-1];break;}
+console.log(Top5d[n]);
+}
+//}
+
+$("#LeaderboardInput1").val(leaderboardnames[0]);
+$("#LeaderboardInput2").val(leaderboardnames[1]);
+$("#LeaderboardInput3").val(leaderboardnames[2]);
+$("#LeaderboardInput4").val(leaderboardnames[3]);
+$("#LeaderboardInput5").val(leaderboardnames[4]);
+$("#LeaderboardInput6").val(leaderboardnames[5]);
+$("#LeaderboardInput7").val(leaderboardnames[6]);
+$("#LeaderboardInput8").val(leaderboardnames[7]);
+$("#LeaderboardInput9").val(leaderboardnames[8]);
+$("#LeaderboardInput10").val(leaderboardnames[9]);
+
+$("#TeamboardInput1").val(Top5d[1]);
+$("#TeamboardInput2").val(Top5d[2]);
+$("#TeamboardInput3").val(Top5d[3]);
+$("#TeamboardInput4").val(Top5d[4]);
+$("#TeamboardInput5").val(Top5d[5]);
+$("#TeamboardInput6").val(Top5d[6]);
+$("#TeamboardInput7").val(Top5d[7]);
+$("#TeamboardInput8").val(Top5d[8]);
+$("#TeamboardInput9").val(Top5d[9]);
+$("#TeamboardInput10").val(Top5d[10]);
 
 }
+function SkinBtnsPut(){
+$("#LeaderboardInput1").before('<button id="LeaderboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Leader11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput2").before('<button id="LeaderboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Leader12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput3").before('<button id="LeaderboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Leader13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput4").before('<button id="LeaderboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Leader14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput5").before('<button id="LeaderboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Leader15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput6").before('<button id="LeaderboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Leader16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput7").before('<button id="LeaderboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Leader17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput8").before('<button id="LeaderboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Leader18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput9").before('<button id="LeaderboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Leader19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#LeaderboardInput10").before('<button id="LeaderboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Leader20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+
+
+$("#TeamboardInput1").after('<button id="TeamboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Teamer11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput2").after('<button id="TeamboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Teamer12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput3").after('<button id="TeamboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Teamer13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput4").after('<button id="TeamboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Teamer14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput5").after('<button id="TeamboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Teamer15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput6").after('<button id="TeamboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Teamer16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput7").after('<button id="TeamboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Teamer17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput8").after('<button id="TeamboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Teamber18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput9").after('<button id="TeamboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Teamer19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+$("#TeamboardInput10").after('<button id="TeamboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Teamer20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+
+}
+
+
+
+
+function exitSkinChanger(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#SkinChanger").remove();		
+}
+
+function OpenSkinChanger(){
+$("#main-menu").hide();	
+$("#skins-panel").hide();
+$("#quick-menu").hide();
+$("#exp-bar").hide();
+$("#SkinChanger").show();	
+}
+
+//function LeaderboardController(){core.registerSkin(otherMsg, null, 'https://jimboy3100.github.io/banners/iconfake1.png', 1, null);}
+function ProceedToChangeSkins(){
+	console.log("ProceedToChangeSkins function loaded");
+	$("#loaderIframeIcon1").show();
+	loadericon();
+	$("#SkinBacktomenu").click();
+//    setTimeout(function() {
+		setTimeout(function() {$('#server-join').click();}, 1500);
+		
+		setTimeout(function() {$("#nick").val(previousnickname);}, 4500);
+		showmenuoverlays();	
+//    }, 4000);	
+}
+function BeforeChangingSkins(){
+	$(".btn.btn-play.btn-primary").click();
+	$( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https://jimboy3100.github.io/extras/banneranimated2applyingskins.html" name="CodePen" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="display: none; position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');	
+	setTimeout(function() {
+	if($("#captchaWindow").is(":visible")==false){
+	console.log("No recapatcha");
+	ProceedToChangeSkins();
+	}
+	else{
+			toastr["warning"](Premadeletter97 + '!' + '<button class="btn btn-sm btn-warning btn-spectate btn-noplay-finishedRecapatcha" style="margin-top: 10px;border-color: darkblue;">'+Premadeletter98+'</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter99 + '</button>', "", {
+                        timeOut: 40000,
+                        extendedTimeOut: 40000
+                    }).css("width", "300px");
+                     $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click(function() {
+                        ProceedToChangeSkins();
+                    });  
+	console.log("Recapatcha needed");
+	ogarioplayfalse();
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 1000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 1500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 2000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 2500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 3000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 3500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 4000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 4500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 5000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 5500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 6000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 6500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 7000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 7500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 8000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 8500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 9000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 9500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 10000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 10500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 11000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 11500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 12000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 12500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 13000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 13500);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 14000);
+	setTimeout(function() {if($("#captchaWindow").is(":visible")==false){if(ogario.play){$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();return false;}}}, 14500);
+
+	}}, 2500);
+}
+function prevnamereturner(){
+	return previousnickname=$("#nick").val();
+}
+function ogarioplayfalse(){
+	return ogario.play="false";
+}
+
+function Leader11() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput1').val()); BeforeChangingSkins();
+}
+function Leader12() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput2').val()); BeforeChangingSkins();
+}
+function Leader13() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput3').val()); BeforeChangingSkins();
+}
+function Leader14() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput4').val()); BeforeChangingSkins();
+}
+function Leader15() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput5').val()); BeforeChangingSkins();
+}
+function Leader16() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput6').val()); BeforeChangingSkins();
+}
+function Leader17() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput7').val()); BeforeChangingSkins();
+}
+function Leader18() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput8').val()); BeforeChangingSkins();
+}
+function Leader19() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput9').val()); BeforeChangingSkins();
+}
+function Leader20() {
+	prevnamereturner(); $("#nick").val($('#LeaderboardInput10').val()); BeforeChangingSkins();
+}
+function Teamer11() {
+	prevnamereturner(); $("#nick").val($("#TeamboardInput1").val()); BeforeChangingSkins();
+}
+function Teamer12() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput2").val()); BeforeChangingSkins();
+}
+function Teamer13() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput3").val()); BeforeChangingSkins();	
+}
+function Teamer14() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput4").val()); BeforeChangingSkins();
+}
+function Teamer15() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput5").val()); BeforeChangingSkins();	
+}
+function Teamer16() {
+	prevnamereturner(); $("#nick").val($("#TeamboardInput6").val()); BeforeChangingSkins();
+}
+function Teamer17() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput7").val()); BeforeChangingSkins();	
+}
+function Teamer18() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput8").val()); BeforeChangingSkins();		
+}
+function Teamer19() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput9").val()); BeforeChangingSkins();		
+}
+function Teamer20() {
+    prevnamereturner(); $("#nick").val($("#TeamboardInput10").val()); BeforeChangingSkins();	
+}
+
+function setPasswordforPrS(){
+			if (privateSrv!=null) {				
+			$(".btn-spectate").click();
+			prevPrivateServer=1;
+			localStorage.setItem("prevPrivateServer", 1);
+			return prevPrivateServer=1;						
+        }
+		else{
+			if (prevPrivateServer=="1"){
+				$("#clantag").val(saveclanpassword);
+				prevPrivateServer=0;
+				localStorage.setItem("prevPrivateServer", 0);
+			return prevPrivateServer=0;
+			}
+		}
+}
+
+function setPasswordforPrS1(){
+		//setTimeout(function () {
+		//spectate();
+				if (clanpass!=null&&clanpass!="") {		
+					$("#clantag").val(clanpass);
+					$('#clantag').css('background-color', '#ff6347');						
+				}
+				if (privateSrv!=null) {
+					if ($('#clantag').val() == ""){
+					if(privateSrv.includes("eu.fzogar.xyz:4000")){$("#clantag").val("PS1");} 
+					else if(privateSrv.includes("eu.fzogar.xyz:4001")){$("#clantag").val("PS2");}
+					else if(privateSrv.includes("eu.fzogar.xyz:5001")){$("#clantag").val("PS3");}
+					else if(privateSrv.includes("66.70.189.222:4011")){$("#clantag").val("PS4");}
+					else if(privateSrv.includes("66.70.189.222:4031")){$("#clantag").val("PS5");}
+					else if(privateSrv.includes("145.239.81.206:4011")){$("#clantag").val("PS6");}
+					else if(privateSrv.includes("145.239.82.188:4050")){$("#clantag").val("PS7");}
+					else if(privateSrv.includes("145.239.81.206:4031")){$("#clantag").val("PS8");}
+					else if(privateSrv.includes("145.239.82.188:4000")){$("#clantag").val("PS9");}
+					else{$("#clantag").val("PS");}
+					}
+				}
+			/*	if (privateSrv==null) {
+					$(".btn-spectate").click();
+					} */
+
+//				$(".btn-spectate").click();
+		showmenuoverlays();		
+		//},200);
+}
+function privateSrvReturner(){
+	privateSrv=$("#server").val();
+	return privateSrv;
+}
+
+function doDOMonloadevents1(){
+		$("#gamemode").prop('disabled', false);
+		$("#region").prop('disabled', false);   
+	//	$(".toast.toast-warning").remove();	        
+		setPasswordforPrS1();	
+		MC.setQuality($('#quality').val());
+		if($('#region>option:nth-child(1)').val()!=":PrS")	{
+		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
+		}
+		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		setTimeout(function (){ 
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},300);
+		//Save Name, Surname, Gender			
+		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
+		setTimeout(function (){ 
+			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+			},250);		
+}
+
+function fillminimapLegendLogo(){
+	var c = document.getElementById("minimap-sectors");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height / 9);
+    ctx.font = "16px Georgia";
+    if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+	else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+	else {ctx.fillText(minbtext2, c.width / 2, 22); }
+    MC.setQuality($('#quality').val());	
+}
+
+function LegendModCursors(){
+        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
+        }
+        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
+        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
+        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
+        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
+        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
+        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
+        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
+        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
+        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
+        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
+        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
+        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
+        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
+        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
+        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
+        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
+        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
+        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
+        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
+        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
+        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
+        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
+        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
+        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
+        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
+        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
+        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
+        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
+        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
+        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
+        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
+        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
+        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
+        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
+        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
+        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');	
+}
+
+function loadbannerProfileClans(){
+            if ($("#nick").val().includes("Jimboy3100") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playeriamlegend");
+            } else if ($("#nick").val().includes("GUARD") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/playerguard");
+            } else if ($("#nick").val().includes("℄") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if ($("#nick").val().includes("₣") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if ($("#nick").val().includes("℄") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if ($("#nick").val().includes("♋") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannersflc");
+            } else if ($("#nick").val().includes("۞ẒṨ۞") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
+            } else if ($("#nick").val().includes("ᴺ૯ᵂ۞") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
+            } else if ($("#nick").val().includes("۞ᵶᵴ™") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerzs");
+            } else if ($("#nick").val().includes("๔ɀ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerdz");
+            } else if ($("#nick").val().includes("ﾏｮʞʇ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerrect");
+            } else if ($("#nick").val().includes("₴₵₳Ɽ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerscar");
+            } else if ($("#nick").val().includes("ΕΛ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerEl");
+            } else if ($("#nick").val().includes("⋩ᕮχ⋨") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerex");
+            } else if ($("#nick").val().includes("ƖƦ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerir");
+            } else if ($("#nick").val().includes("⚔ℱ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerFc");
+            } else if ($("#nick").val().includes("ֆ") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerSenpai");				
+            } else if ($("#nick").val().includes("ƸU") == true) {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannereu");
+            } else {
+                $("#LEGENDAds").load("https://jimboy3100.github.io/banners/bannerAll");
+            } 
+}
+function showmenuoverlays(){
+		$("#overlays").show();
+		$(".center-container.ogario-menu").show();
+		$(".side-container.right-container").show();
+		$(".side-container.left-container").show();		
+}
+
+//3. Video Skins
+function videoskins(){
+setTimeout(function() {
+inject('stylesheet', '@-webkit-keyframes bounce-in-left{60%,75%,90%,from,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate3d(-3000px,0,0);transform:translate3d(-3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(25px,0,0);transform:translate3d(25px,0,0)}75%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}90%{-webkit-transform:translate3d(5px,0,0);transform:translate3d(5px,0,0)}to{-webkit-transform:none;transform:none}}@-moz-keyframes bounce-in-left{60%,75%,90%,from,to{-moz-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-moz-transform:translate3d(-3000px,0,0);transform:translate3d(-3000px,0,0)}60%{opacity:1;-moz-transform:translate3d(25px,0,0);transform:translate3d(25px,0,0)}75%{-moz-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}90%{-moz-transform:translate3d(5px,0,0);transform:translate3d(5px,0,0)}to{-moz-transform:none;transform:none}}@keyframes bounce-in-left{60%,75%,90%,from,to{-moz-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-moz-transform:translate3d(-3000px,0,0);transform:translate3d(-3000px,0,0)}60%{opacity:1;-moz-transform:translate3d(25px,0,0);transform:translate3d(25px,0,0)}75%{-moz-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}90%{-moz-transform:translate3d(5px,0,0);transform:translate3d(5px,0,0)}to{-moz-transform:none;transform:none}}@-webkit-keyframes bounce-in-right{60%,75%,90%,from,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}from{opacity:0;-webkit-transform:translate3d(3000px,0,0);transform:translate3d(3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(-25px,0,0);transform:translate3d(-25px,0,0)}75%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}90%{-webkit-transform:translate3d(-5px,0,0);transform:translate3d(-5px,0,0)}to{-webkit-transform:none;transform:none}}@-moz-keyframes bounce-in-right{60%,75%,90%,from,to{-moz-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}from{opacity:0;-moz-transform:translate3d(3000px,0,0);transform:translate3d(3000px,0,0)}60%{opacity:1;-moz-transform:translate3d(-25px,0,0);transform:translate3d(-25px,0,0)}75%{-moz-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}90%{-moz-transform:translate3d(-5px,0,0);transform:translate3d(-5px,0,0)}to{-moz-transform:none;transform:none}}@keyframes bounce-in-right{60%,75%,90%,from,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}from{opacity:0;-webkit-transform:translate3d(3000px,0,0);transform:translate3d(3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(-25px,0,0);transform:translate3d(-25px,0,0)}75%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}90%{-webkit-transform:translate3d(-5px,0,0);transform:translate3d(-5px,0,0)}to{-webkit-transform:none;transform:none}}#tcm-videoskin :focus{outline:0}#tcm-videoskin{position:relative;display:block;width:100%;margin:0 0 15px;overflow:hidden;background:#EEE;border:1px solid #DDD;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px}#tcm-videoskin>#tcm-videoskin-options>button,#tcm-videoskin>button{position:relative;display:block;padding:8px;float:left;cursor:pointer;color:#FFF;font-size:13px;text-transform:capitalize;border:none;border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;transition:background .2s ease-in-out;-webkit-transition:background .2s ease-in-out;-moz-transition:background .2s ease-in-out}#tcm-videoskin>button#tcm-video-load{width:96%;margin:2%;background:#43A047;border-bottom:3px solid #388E3C}#tcm-videoskin>button#tcm-video-load:hover{background:#66BB6A}#tcm-videoskin>#tcm-video-input{display:none}#tcm-videoskin>#tcm-videoskin-options{position:relative;display:none;width:100%;overflow:hidden}#tcm-videoskin>#tcm-videoskin-options>button#tcm-video-unload{width:57%;margin:0 1% 2% 2%;background:#E53935;border-bottom:3px solid #D32F2F;animation:1s both bounce-in-left;-webkit-animation:1s both bounce-in-left;-moz-animation:1s both bounce-in-left}#tcm-videoskin>#tcm-videoskin-options>button#tcm-video-mute{width:37%;margin:0 2% 2% 1%;background:#E53935;border-bottom:3px solid #D32F2F;animation:1s both bounce-in-right;-webkit-animation:1s both bounce-in-right;-moz-animation:1s both bounce-in-right}#tcm-videoskin>#tcm-videoskin-options>button#tcm-video-mute:hover,#tcm-videoskin>#tcm-videoskin-options>button#tcm-video-unload:hover{background:#EF5350}#tcm-videoskin>#tcm-videoskin-credits{position:relative;display:block;width:100%;margin:0 0 2%;overflow:hidden;font-size:13px;color:#666;text-align:center;cursor:default}#tcm-videoskin>#tcm-videoskin-credits>a{color:#43A047;cursor:pointer;text-decoration:none}#tcm-videoskin>#tcm-videoskin-credits>a:hover{text-decoration:underline}');
+
+inject('javascript', ! function e(t) {
+    if ("undefined" != typeof t.MC && "undefined" != typeof t.core && document.getElementById("agario-main-buttons")) {
+        var a=document.getElementById("nick").value;
+//        console.log("a="+a);
+		var o = {
+            l: {
+                nickname: a,
+                placeholder: "http://i.imgur.com/rIko2gr.jpg",
+                color: "0xFFFFFF",
+                canvas: !1,
+                context: !1,
+                video: !1,
+                muted: !1,
+                prototypes: {
+                    canvas: CanvasRenderingContext2D.prototype,
+                    mc: Object.getPrototypeOf(t.MC),
+                    old: {}
+                }
+            },
+            f: {
+                prototype_override: function(e, t, n, i) {
+                    e in o.l.prototypes.old || (o.l.prototypes.old[e] = {}), t in o.l.prototypes.old[e] || (o.l.prototypes.old[e][t] = o.l.prototypes[e][t]), o.l.prototypes[e][t] = function() {
+                        "before" == n && i(this, arguments), o.l.prototypes.old[e][t].apply(this, arguments), "after" == n && i(this, arguments)
+                    }
+                },
+                load_video: function(e) {
+                    var n = t.URL || t.webkitURL,
+                        i = this.files[0];
+                    o.l.video ? o.l.video.src = n.createObjectURL(i) : (o.l.canvas = document.createElement("canvas"), o.l.canvas.width = o.l.canvas.height = 512, o.l.context = o.l.canvas.getContext("2d"), o.l.video = document.createElement("video"), o.l.video.src = n.createObjectURL(i), o.l.video.muted = o.l.muted, o.l.video.loop = !0, o.u.toggle_options(!0), o.u.populate_nickname(), t.core.registerSkin(o.l.nickname, "%tcmvideo", o.l.placeholder, 3, o.l.color), o.f.prototype_override("canvas", "drawImage", "before", function(e, t) {
+                        "src" in t[0] && t[0].src == o.l.placeholder && (o.l.context.drawImage(o.l.video, 0, 0, o.l.video.videoWidth, o.l.video.videoHeight, -((o.l.canvas.width * (o.l.video.videoWidth / o.l.video.videoHeight) - o.l.canvas.width) / 2), 0, o.l.canvas.width * (o.l.video.videoWidth / o.l.video.videoHeight), o.l.canvas.height), t[0] = o.l.canvas)
+                    }), newSpawn=MC.onPlayerSpawn, MC.onPlayerSpawn= function () {newSpawn;o.l.video.play();}
+                       // o.l.video.play()
+                    , newDeath=MC.onPlayerDeath, MC.onPlayerDeath= function () {newDeath;o.l.video.pause();})
+                },
+                unload_video: function() {
+                    o.l.video.src = "", o.l.video = !1, o.u.toggle_options(!1), o.u.unpopulate_nickname(), o.f.prototype_override("canvas", "drawImage", "before", function(e, t) {}), o.f.prototype_override("mc", "onPlayerSpawn", "before", function(e, t) {}), o.f.prototype_override("mc", "onPlayerDeath", "before", function(e, t) {});MC.onPlayerSpawn=newSpawn;MC.onPlayerDeath=newDeath;
+                }
+            },
+            u: {
+                populate_nickname: function() {
+                    document.getElementById("nick").value = o.l.nickname, document.getElementById("nick").disabled = !0
+                },
+                unpopulate_nickname: function() {
+                    /*document.getElementById("nick").value = "",*/ document.getElementById("nick").disabled = !1
+                },
+                toggle_options: function(e) {
+                    document.getElementById("tcm-videoskin-options").style.display = e ? "block" : "none", document.getElementById("tcm-videoskin-credits").style.display = e ? "none" : "block"
+                },
+                html: function() {
+                    var e = '<div id="tcm-videoskin">';
+                    return e += '<button id="tcm-video-load">' + Premadeletter105 + '</button>', e += '<input type="file" accept="video/*" id="tcm-video-input" />', e += '<div id="tcm-videoskin-options">', e += '<button id="tcm-video-unload">' + Premadeletter106 + '</button>', e += '<button id="tcm-video-mute">' + Premadeletter107 + '</button>', e += "</div>", e += '<span id="tcm-videoskin-credits">*' + Premadeletter104 + ' - <a href="http://www.legendmod.ml" target="_blank">' + Premadeletter108 + '</a>.</span>', e += "</div>"
+                }
+            }
+        };
+        document.getElementById("agario-main-buttons").insertAdjacentHTML("beforebegin", o.u.html()), document.getElementById("tcm-video-load").addEventListener("click", function() {
+            document.getElementById("tcm-video-input").click()
+        }, !1), document.getElementById("tcm-video-input").addEventListener("change", o.f.load_video, !1), document.getElementById("tcm-video-unload").addEventListener("click", o.f.unload_video, !1), document.getElementById("tcm-video-mute").addEventListener("click", function() {
+            o.l.muted = o.l.muted ? !1 : !0, o.l.video.muted = o.l.muted, this.innerHTML = o.l.muted ? "unmute audio" : "mute audio"
+        }, !1)
+    } else t.setTimeout(function() {
+        e(t)
+    }, 100)
+	
+}(window));
+//document.getElementById("tcm-videoskin").style.display="none";
+}, 150);
+}
+
+function toggleVideoskins(){
+	if($("#tcm-videoskin").css('display') == 'none'){
+		$("#tcm-videoskin").show();
+	}
+	else{
+		$("#tcm-videoskin").hide();
+	}
+}
+function fzogarOgarSettings(datasent2){
+        setTimeout(function() {
+            $("#import-settings-btn").attr('class', 'btn btn-success');
+            document.getElementById("import-settings").value = datasent2;
+            window.history.pushState(null, null, window.location.pathname);
+//            $('#import-settings-btn').click();
+			$('#import-settings-btn2').click();
+        }, 100);
+}		
+function fzogarOgarIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/AjaxData/fzogarOgarIframe.js";
+    $("body").append(s);
+}
+
+function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0],function(){b.apply(new a)}}
+
+function DeathFPSfix(){	
+DeathFPSfixVariable="1";
+setTimeout(function() {spectate();}, 200);
+
+hideMenu();
+hideMenu2();
+console.group('%cGame %c  %cOver',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
+			toastr["info"](Premadeletter100 + "<br>" + Premadeletter101 + " <b>" + Premadeletter102 + "</b> " + Premadeletter103 + " <font color='red'><b>ESC</font></b>", "", { timeOut: 6000, extendedTimeOut: 6000 }).css("width", "280px");
+	MC.onPlayerSpawn();
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 100);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 1000);
+	setTimeout(function() {DeathFPSfixWithSpawn(); $(".btn.btn-warning.btn-spectate.btn-needs-server").prop('disabled', false);}, 2000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 3000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 4000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 5000);
+	setTimeout(function() {DeathFPSfixWithSpawn();}, 6000);
+	setTimeout(function() {DeathFPSfixWithSpawn();
+	if (DeathFPSfixVariable=="1"){showMenu();showmenuoverlays();}
+	return DeathFPSfixVariable="2";
+	}, 7000);	
+}
+
+function DeathFPSfixWithSpawn(){
+	if (DeathFPSfixVariable=="1"){
+    if($(".progress-bar-star.sprite.leaguestar-kraken.animated.tada").length > 0){
+		MC.onPlayerSpawn();
+		setTimeout(function() {MC.onPlayerSpawn();}, 1000);
+		setTimeout(function() {MC.onPlayerSpawn();}, 2000);
+		setTimeout(function() {showMenu();showmenuoverlays();}, 4100);
+		console.log("HUD is Ready - XP saved");	
+		return DeathFPSfixVariable="0";
+	}
+	else{
+		console.log("HUD Not Ready Yet - Counting the XP");
+	}
+	}
+}
+
+function onDisconnectfix(){
+	    toastr["error"](Premadeletter10).css("width", "250px");
+        appendSysLog("DISCONNECTED :(");
+		console.group('%cServer %c  %cDisconnection',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);console.groupEnd();
+		setTimeout(function() {
+			adres();
+		}, 8000);
+		setTimeout(function() {
+			adres();
+		}, 10000);		
+}
+
+function LegendSettingsfirst() {
+	$('#export-settings').before('<label><input type="checkbox" id="export-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
+	var elemLegendSwitch = document.querySelector('#export-LegendSettings');
+	var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+	var switcheryLegendSwitch = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+	$('#import-settings').before('<label><input type="checkbox" id="import-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
+	var elemLegendSwitch2 = document.querySelector('#import-LegendSettings');
+	var switcheryLegendSwitch2 = new Switchery(elemLegendSwitch2, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+
+    LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+    LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
+    $("#export-settings-btn").click(function() {
+        LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch);
+		setTimeout(function() {
+			copy($("#export-settings").val());
+			}, 200);
+    });
+
+    $("#import-settings-btn").clone().insertAfter("#import-settings-btn").attr('id', 'import-settings-btn2');
+    $("#import-settings-btn2").css({
+        width: "676px",
+        margin: "12px"
+    });
+    $("#import-settings-btn").hide();
+    $("#import-settings-btn2").click(function() {
+        LegendSettingsImport(switcheryLegendSwitch2);
+		return switcheryLegendSwitch, switcheryLegendSwitch2;
+    });
+
+}
+
+function LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch) {
+    setTimeout(function() {
+        if (switcheryLegendSwitch.isChecked()) {
+            LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+            parseLegendJSONAPI(LegendJSON);
+            var LegendJSONnice = JSON.stringify(LegendJSON, null, 4);
+            document.getElementById("export-settings").value = LegendJSONnice;
+        } else {
+            LegendJSON = JSON.parse(document.getElementById("export-settings").value);
+            parseLegendJSONAPI(LegendJSON);
+            delete LegendJSON.legendSettings;
+            var LegendJSONnice = JSON.stringify(LegendJSON, null, 4);
+            document.getElementById("export-settings").value = LegendJSONnice;
+        }
+        return LegendJSON;
+    }, 100);
+}
+
+function parseLegendJSONAPI(LegendJSON) {
+    LegendJSON.legendSettings = {};
+    LegendJSON.legendSettings.previousMode = localStorage.getItem("gamemode");
+    LegendJSON.legendSettings.checkonlyonce = localStorage.getItem("checkonlyonce");
+    LegendJSON.legendSettings.previousnickname = localStorage.getItem("previousnickname");
+    LegendJSON.legendSettings.showToken = localStorage.getItem("showTK");
+    LegendJSON.legendSettings.showPlayer = localStorage.getItem("showPlayer");
+    LegendJSON.legendSettings.SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
+    LegendJSON.legendSettings.XPBtn = localStorage.getItem("XPBtn");
+    LegendJSON.legendSettings.MAINBTBtn = localStorage.getItem("MAINBTBtn");
+    LegendJSON.legendSettings.AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
+    LegendJSON.legendSettings.YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
+    LegendJSON.legendSettings.TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
+    LegendJSON.legendSettings.troll1Btn = localStorage.getItem("troll1Btn ");
+    LegendJSON.legendSettings.ComPosition = localStorage.getItem("ComPosition");
+    LegendJSON.legendSettings.autoCoinBtn = localStorage.getItem("autoCoinBtn");
+    LegendJSON.legendSettings.timesopened = localStorage.getItem("timesopened");
+    LegendJSON.legendSettings.saveclanpassword = localStorage.getItem("saveclanpassword");
+    LegendJSON.legendSettings.dyinglight1load = localStorage.getItem("dyinglight1load");
+    LegendJSON.legendSettings.languagemod = localStorage.getItem("languagemod");
+//    LegendJSON.legendSettings.userfirstname = localStorage.getItem("userfirstname");
+//   LegendJSON.legendSettings.userlastname = localStorage.getItem("userlastname");
+//    LegendJSON.legendSettings.usergender = localStorage.getItem("usergender");
+    LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
+    LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
+    if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
+        LegendJSON.legendSettings.initialMusicUrl = "http://www.youtube.com/watch?v=L7klPYKTx64"
+    };
+    LegendJSON.legendSettings.lastIP = localStorage.getItem("lastIP");
+    if (LegendJSON.legendSettings.lastIP == "null" || LegendJSON.legendSettings.lastIP==null) {
+        LegendJSON.legendSettings.lastIP = "0.0.0.0:0"
+    };
+    LegendJSON.legendSettings.note1 = localStorage.getItem("note1");
+    if (LegendJSON.legendSettings.note1 == "null" || LegendJSON.legendSettings.note1==null) {
+        LegendJSON.legendSettings.note1 = ""
+    };
+    LegendJSON.legendSettings.note2 = localStorage.getItem("note2");
+    if (LegendJSON.legendSettings.note2 == "null" || LegendJSON.legendSettings.note2==null) {
+        LegendJSON.legendSettings.note2 = ""
+    };
+    LegendJSON.legendSettings.note3 = localStorage.getItem("note3");
+    if (LegendJSON.legendSettings.note3 == "null" || LegendJSON.legendSettings.note3==null) {
+        LegendJSON.legendSettings.note3 = ""
+    };
+    LegendJSON.legendSettings.note4 = localStorage.getItem("note4");
+    if (LegendJSON.legendSettings.note4 == "null" || LegendJSON.legendSettings.note4==null) {
+        LegendJSON.legendSettings.note4 = ""
+    };
+    LegendJSON.legendSettings.note5 = localStorage.getItem("note5");
+    if (LegendJSON.legendSettings.note5 == "null" || LegendJSON.legendSettings.note5==null) {
+        LegendJSON.legendSettings.note5 = ""
+    };
+    LegendJSON.legendSettings.note6 = localStorage.getItem("note6");
+    if (LegendJSON.legendSettings.note6 == "null" || LegendJSON.legendSettings.note6==null) {
+        LegendJSON.legendSettings.note6 = ""
+    };
+    LegendJSON.legendSettings.note7 = localStorage.getItem("note7");
+    if (LegendJSON.legendSettings.note7 == "null" || LegendJSON.legendSettings.note7==null) {
+        LegendJSON.legendSettings.note7 = ""
+    };
+    LegendJSON.legendSettings.minimapbckimg = localStorage.getItem("minimapbckimg");
+    if (LegendJSON.legendSettings.minimapbckimg == "null" || LegendJSON.legendSettings.minimapbckimg==null) {
+        LegendJSON.legendSettings.minimapbckimg = ""
+    };
+    LegendJSON.legendSettings.teambimg = localStorage.getItem("teambimg");
+    if (LegendJSON.legendSettings.teambimg == "null" || LegendJSON.legendSettings.teambimg==null) {
+        LegendJSON.legendSettings.teambimg = ""
+    };
+    LegendJSON.legendSettings.canvasbimg = localStorage.getItem("canvasbimg");
+    if (LegendJSON.legendSettings.canvasbimg == "null" || LegendJSON.legendSettings.canvasbimg==null) {
+        LegendJSON.legendSettings.canvasbimg = ""
+    };
+    LegendJSON.legendSettings.leadbtext = localStorage.getItem("leadbtext");
+    if (LegendJSON.legendSettings.leadbtext == "null" || LegendJSON.legendSettings.leadbtext==null) {
+        LegendJSON.legendSettings.leadbtext = ""
+    };
+    LegendJSON.legendSettings.leadbimg = localStorage.getItem("leadbimg");
+    if (LegendJSON.legendSettings.leadbimg == "null" || LegendJSON.legendSettings.leadbimg==null) {
+        LegendJSON.legendSettings.leadbimg = ""
+    };
+    LegendJSON.legendSettings.teambtext = localStorage.getItem("teambtext");
+    if (LegendJSON.legendSettings.teambtext == "null" || LegendJSON.legendSettings.teambtext==null) {
+        LegendJSON.legendSettings.teambtext = ""
+    };
+    LegendJSON.legendSettings.imgUrl = localStorage.getItem("imgUrl");
+    if (LegendJSON.legendSettings.imgUrl == "null" || LegendJSON.legendSettings.imgUrl==null) {
+        LegendJSON.legendSettings.imgUrl = ""
+    };
+    LegendJSON.legendSettings.imgHref = localStorage.getItem("imgHref");
+    if (LegendJSON.legendSettings.imgHref == "null" || LegendJSON.legendSettings.imgHref==null) {
+        LegendJSON.legendSettings.imgHref = ""
+    };
+    LegendJSON.legendSettings.minbtext = localStorage.getItem("minbtext");
+    if (LegendJSON.legendSettings.minbtext == "null" || LegendJSON.legendSettings.minbtext==null) {
+        LegendJSON.legendSettings.minbtext = ""
+    };
+    LegendJSON.legendSettings.pic1urlimg = localStorage.getItem("pic1urlimg");
+    if (LegendJSON.legendSettings.pic1urlimg == "null" || LegendJSON.legendSettings.pic1urlimg==null) {
+        LegendJSON.legendSettings.pic1urlimg = ""
+    };
+    LegendJSON.legendSettings.pic2urlimg = localStorage.getItem("pic2urlimg");
+    if (LegendJSON.legendSettings.pic2urlimg == "null" || LegendJSON.legendSettings.pic2urlimg==null) {
+        LegendJSON.legendSettings.pic2urlimg = ""
+    };
+    LegendJSON.legendSettings.pic3urlimg = localStorage.getItem("pic3urlimg");
+    if (LegendJSON.legendSettings.pic3urlimg == "null" || LegendJSON.legendSettings.pic3urlimg==null) {
+        LegendJSON.legendSettings.pic3urlimg = ""
+    };
+    LegendJSON.legendSettings.pic4urlimg = localStorage.getItem("pic4urlimg");
+    if (LegendJSON.legendSettings.pic4urlimg == "null" || LegendJSON.legendSettings.pic4urlimg==null) {
+        LegendJSON.legendSettings.pic4urlimg = ""
+    };
+    LegendJSON.legendSettings.pic5urlimg = localStorage.getItem("pic5urlimg");
+    if (LegendJSON.legendSettings.pic5urlimg == "null" || LegendJSON.legendSettings.pic5urlimg==null) {
+        LegendJSON.legendSettings.pic5urlimg = ""
+    };
+    LegendJSON.legendSettings.pic6urlimg = localStorage.getItem("pic6urlimg");
+    if (LegendJSON.legendSettings.pic6urlimg == "null" || LegendJSON.legendSettings.pic6urlimg==null) {
+        LegendJSON.legendSettings.pic6urlimg = ""
+    };
+    LegendJSON.legendSettings.yt1urlimg = localStorage.getItem("yt1urlimg");
+    if (LegendJSON.legendSettings.yt1urlimg == "null" || LegendJSON.legendSettings.yt1urlimg==null) {
+        LegendJSON.legendSettings.yt1urlimg = ""
+    };
+    LegendJSON.legendSettings.yt2urlimg = localStorage.getItem("yt2urlimg");
+    if (LegendJSON.legendSettings.yt2urlimg == "null" || LegendJSON.legendSettings.yt2urlimg==null) {
+        LegendJSON.legendSettings.yt2urlimg = ""
+    };
+    LegendJSON.legendSettings.yt3urlimg = localStorage.getItem("yt3urlimg");
+    if (LegendJSON.legendSettings.yt3urlimg == "null" || LegendJSON.legendSettings.yt3urlimg==null) {
+        LegendJSON.legendSettings.yt3urlimg = ""
+    };
+    LegendJSON.legendSettings.yt4urlimg = localStorage.getItem("yt4urlimg");
+    if (LegendJSON.legendSettings.yt4urlimg == "null" || LegendJSON.legendSettings.yt4urlimg==null) {
+        LegendJSON.legendSettings.yt4urlimg = ""
+    };
+    LegendJSON.legendSettings.yt5urlimg = localStorage.getItem("yt5urlimg");
+    if (LegendJSON.legendSettings.yt5urlimg == "null" || LegendJSON.legendSettings.yt5urlimg==null) {
+        LegendJSON.legendSettings.yt5urlimg = ""
+    };
+    LegendJSON.legendSettings.yt6urlimg = localStorage.getItem("yt6urlimg");
+    if (LegendJSON.legendSettings.yt6urlimg == "null" || LegendJSON.legendSettings.yt6urlimg==null) {
+        LegendJSON.legendSettings.yt6urlimg = ""
+    };
+    LegendJSON.legendSettings.pic1dataimg = localStorage.getItem("pic1dataimg");
+    if (LegendJSON.legendSettings.pic1dataimg == "null" || LegendJSON.legendSettings.pic1dataimg==null) {
+        LegendJSON.legendSettings.pic1dataimg = ""
+    };
+    LegendJSON.legendSettings.pic2dataimg = localStorage.getItem("pic2dataimg");
+    if (LegendJSON.legendSettings.pic2dataimg == "null" || LegendJSON.legendSettings.pic2dataimg==null) {
+        LegendJSON.legendSettings.pic2dataimg = ""
+    };
+    LegendJSON.legendSettings.pic3dataimg = localStorage.getItem("pic3dataimg");
+    if (LegendJSON.legendSettings.pic3dataimg == "null" || LegendJSON.legendSettings.pic3dataimg==null) {
+        LegendJSON.legendSettings.pic3dataimg = ""
+    };
+    LegendJSON.legendSettings.pic4dataimg = localStorage.getItem("pic4dataimg");
+    if (LegendJSON.legendSettings.pic4dataimg == "null" || LegendJSON.legendSettings.pic4dataimg==null) {
+        LegendJSON.legendSettings.pic4dataimg = ""
+    };
+    LegendJSON.legendSettings.pic5dataimg = localStorage.getItem("pic5dataimg");
+    if (LegendJSON.legendSettings.pic5dataimg == "null" || LegendJSON.legendSettings.pic5dataimg==null) {
+        LegendJSON.legendSettings.pic5dataimg = ""
+    };
+    LegendJSON.legendSettings.pic6dataimg = localStorage.getItem("pic6dataimg");
+    if (LegendJSON.legendSettings.pic6dataimg == "null" || LegendJSON.legendSettings.pic6dataimg==null) {
+        LegendJSON.legendSettings.pic6dataimg = ""
+    };
+    LegendJSON.legendSettings.yt1dataimg = localStorage.getItem("yt1dataimg");
+    if (LegendJSON.legendSettings.yt1dataimg == "null" || LegendJSON.legendSettings.yt1dataimg==null) {
+        LegendJSON.legendSettings.yt1dataimg = ""
+    };
+    LegendJSON.legendSettings.yt2dataimg = localStorage.getItem("yt2dataimg");
+    if (LegendJSON.legendSettings.yt2dataimg == "null" || LegendJSON.legendSettings.yt2dataimg==null) {
+        LegendJSON.legendSettings.yt2dataimg = ""
+    };
+    LegendJSON.legendSettings.yt3dataimg = localStorage.getItem("yt3dataimg");
+    if (LegendJSON.legendSettings.yt3dataimg == "null" || LegendJSON.legendSettings.yt3dataimg==null) {
+        LegendJSON.legendSettings.yt3dataimg = ""
+    };
+    LegendJSON.legendSettings.yt4dataimg = localStorage.getItem("yt4dataimg");
+    if (LegendJSON.legendSettings.yt4dataimg == "null" || LegendJSON.legendSettings.yt4dataimg==null) {
+        LegendJSON.legendSettings.yt4dataimg = ""
+    };
+    LegendJSON.legendSettings.yt5dataimg = localStorage.getItem("yt5dataimg");
+    if (LegendJSON.legendSettings.yt5dataimg == "null" || LegendJSON.legendSettings.yt5dataimg==null) {
+        LegendJSON.legendSettings.yt5dataimg = ""
+    };
+    LegendJSON.legendSettings.yt6dataimg = localStorage.getItem("yt6dataimg");
+    if (LegendJSON.legendSettings.yt6dataimg == "null" || LegendJSON.legendSettings.yt6dataimg==null) {
+        LegendJSON.legendSettings.yt6dataimg = ""
+    };
+    LegendJSON.legendSettings.discwebhook1 = localStorage.getItem("discwebhook1");
+    if (LegendJSON.legendSettings.discwebhook1 == "null" || LegendJSON.legendSettings.discwebhook1==null) {
+        LegendJSON.legendSettings.discwebhook1 = ""
+    };
+    LegendJSON.legendSettings.discwebhook2 = localStorage.getItem("discwebhook2");
+    if (LegendJSON.legendSettings.discwebhook2 == "null" || LegendJSON.legendSettings.discwebhook2==null) {
+        LegendJSON.legendSettings.discwebhook2 = ""
+    };
+    LegendJSON.legendSettings.Userscript1 = localStorage.getItem("Userscript1");
+    if (LegendJSON.legendSettings.Userscript1 == "null" || LegendJSON.legendSettings.Userscript1==null) {
+        LegendJSON.legendSettings.Userscript1 = ""
+    };
+    LegendJSON.legendSettings.Userscript2 = localStorage.getItem("Userscript2");
+    if (LegendJSON.legendSettings.Userscript2 == "null" || LegendJSON.legendSettings.Userscript2==null) {
+        LegendJSON.legendSettings.Userscript2 = ""
+    };
+    LegendJSON.legendSettings.Userscript3 = localStorage.getItem("Userscript3");
+    if (LegendJSON.legendSettings.Userscript3 == "null" || LegendJSON.legendSettings.Userscript3==null) {
+        LegendJSON.legendSettings.Userscript3 = ""
+    };
+    LegendJSON.legendSettings.Userscript4 = localStorage.getItem("Userscript4");
+    if (LegendJSON.legendSettings.Userscript4 == "null" || LegendJSON.legendSettings.Userscript4==null) {
+        LegendJSON.legendSettings.Userscript4 = ""
+    };
+    LegendJSON.legendSettings.Userscript5 = localStorage.getItem("Userscript5");
+    if (LegendJSON.legendSettings.Userscript5 == "null" || LegendJSON.legendSettings.Userscript5==null) {
+        LegendJSON.legendSettings.Userscript5 = ""
+    };	
+    LegendJSON.legendSettings.Userscripttexture1 = localStorage.getItem("Userscripttexture1");
+    if (LegendJSON.legendSettings.Userscripttexture1 == "null" || LegendJSON.legendSettings.Userscripttexture1==null) {
+        LegendJSON.legendSettings.Userscripttexture1 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture2 = localStorage.getItem("Userscripttexture2");
+    if (LegendJSON.legendSettings.Userscripttexture2 == "null" || LegendJSON.legendSettings.Userscripttexture2==null) {
+        LegendJSON.legendSettings.Userscripttexture2 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture3 = localStorage.getItem("Userscripttexture3");
+    if (LegendJSON.legendSettings.Userscripttexture3 == "null" || LegendJSON.legendSettings.Userscripttexture3==null) {
+        LegendJSON.legendSettings.Userscripttexture3 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture4 = localStorage.getItem("Userscripttexture4");
+    if (LegendJSON.legendSettings.Userscripttexture4 == "null" || LegendJSON.legendSettings.Userscripttexture4==null) {
+        LegendJSON.legendSettings.Userscripttexture4 = ""
+    };
+    LegendJSON.legendSettings.Userscripttexture5 = localStorage.getItem("Userscripttexture5");
+    if (LegendJSON.legendSettings.Userscripttexture5 == "null" || LegendJSON.legendSettings.Userscripttexture5==null) {
+        LegendJSON.legendSettings.Userscripttexture5 = ""
+    };	
+    return LegendJSON;
+}
+
+function LegendSettingsImport(switcheryLegendSwitch2) {
+    if (switcheryLegendSwitch2.isChecked()) {
+        LegendJSON = JSON.parse(document.getElementById("import-settings").value);
+//        parseLegendJSONAPI(LegendJSON);
+        saveLegendJSONAPI();
+        setTimeout(function() {
+            $("#import-settings-btn").click();
+        }, 100)
+    } else {
+        $("#import-settings-btn").click();
+    }
+}
+
+function saveLegendJSONAPI() {
+	if (LegendJSON.legendSettings!=undefined){
+
+    localStorage.setItem("gamemode", LegendJSON.legendSettings.previousMode);
+    localStorage.setItem("checkonlyonce", LegendJSON.legendSettings.checkonlyonce);
+    localStorage.setItem("previousnickname", LegendJSON.legendSettings.previousnickname);
+    localStorage.setItem("showTK", LegendJSON.legendSettings.showToken);
+    localStorage.setItem("showPlayer", LegendJSON.legendSettings.showPlayer);
+    localStorage.setItem("SHOSHOBtn", LegendJSON.legendSettings.SHOSHOBtn);
+    localStorage.setItem("XPBtn", LegendJSON.legendSettings.XPBtn);
+    localStorage.setItem("MAINBTBtn", LegendJSON.legendSettings.MAINBTBtn);
+    localStorage.setItem("AnimatedSkinBtn", LegendJSON.legendSettings.AnimatedSkinBtn);
+    localStorage.setItem("YoutubeAutoBtn", LegendJSON.legendSettings.YoutubeAutoBtn);
+    localStorage.setItem("TIMEcalBtn", LegendJSON.legendSettings.TIMEcalBtn);
+    localStorage.setItem("troll1Btn", LegendJSON.legendSettings.troll1Btn);
+    localStorage.setItem("ComPosition", LegendJSON.legendSettings.ComPosition);
+    localStorage.setItem("autoCoinBtn", LegendJSON.legendSettings.autoCoinBtn);
+    localStorage.setItem("timesopened", LegendJSON.legendSettings.timesopened);
+    localStorage.setItem("saveclanpassword", LegendJSON.legendSettings.saveclanpassword);
+    localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
+    localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
+//    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
+//    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
+//    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
+    localStorage.setItem("prevPrivateServer", LegendJSON.legendSettings.prevPrivateServer);
+    localStorage.setItem("musicUrl", LegendJSON.legendSettings.initialMusicUrl);
+    localStorage.setItem("lastIP", LegendJSON.legendSettings.lastIP);
+    localStorage.setItem("note1", LegendJSON.legendSettings.note1);
+    localStorage.setItem("note2", LegendJSON.legendSettings.note2);
+    localStorage.setItem("note3", LegendJSON.legendSettings.note3);
+    localStorage.setItem("note4", LegendJSON.legendSettings.note4);
+    localStorage.setItem("note5", LegendJSON.legendSettings.note5);
+    localStorage.setItem("note6", LegendJSON.legendSettings.note6);
+    localStorage.setItem("note7", LegendJSON.legendSettings.note7);
+    localStorage.setItem("minimapbckimg", LegendJSON.legendSettings.minimapbckimg);
+    localStorage.setItem("teambimg", LegendJSON.legendSettings.teambimg);
+    localStorage.setItem("canvasbimg", LegendJSON.legendSettings.canvasbimg);
+    localStorage.setItem("leadbtext", LegendJSON.legendSettings.leadbtext);
+    localStorage.setItem("leadbimg", LegendJSON.legendSettings.leadbimg);
+    localStorage.setItem("teambtext", LegendJSON.legendSettings.teambtext);
+    localStorage.setItem("imgUrl", LegendJSON.legendSettings.imgUrl);
+    localStorage.setItem("imgHref", LegendJSON.legendSettings.imgHref);
+    localStorage.setItem("minbtext", LegendJSON.legendSettings.minbtext);
+    localStorage.setItem("pic1urlimg", LegendJSON.legendSettings.pic1urlimg);
+    localStorage.setItem("pic2urlimg", LegendJSON.legendSettings.pic2urlimg);
+    localStorage.setItem("pic3urlimg", LegendJSON.legendSettings.pic3urlimg);
+    localStorage.setItem("pic4urlimg", LegendJSON.legendSettings.pic4urlimg);
+    localStorage.setItem("pic5urlimg", LegendJSON.legendSettings.pic5urlimg);
+    localStorage.setItem("pic6urlimg", LegendJSON.legendSettings.pic6urlimg);
+    localStorage.setItem("yt1urlimg", LegendJSON.legendSettings.yt1urlimg);
+    localStorage.setItem("yt2urlimg", LegendJSON.legendSettings.yt2urlimg);
+    localStorage.setItem("yt3urlimg", LegendJSON.legendSettings.yt3urlimg);
+    localStorage.setItem("yt4urlimg", LegendJSON.legendSettings.yt4urlimg);
+    localStorage.setItem("yt5urlimg", LegendJSON.legendSettings.yt5urlimg);
+    localStorage.setItem("yt6urlimg", LegendJSON.legendSettings.yt6urlimg);
+    localStorage.setItem("pic1dataimg", LegendJSON.legendSettings.pic1dataimg);
+    localStorage.setItem("pic2dataimg", LegendJSON.legendSettings.pic2dataimg);
+    localStorage.setItem("pic3dataimg", LegendJSON.legendSettings.pic3dataimg);
+    localStorage.setItem("pic4dataimg", LegendJSON.legendSettings.pic4dataimg);
+    localStorage.setItem("pic5dataimg", LegendJSON.legendSettings.pic5dataimg);
+    localStorage.setItem("pic6dataimg", LegendJSON.legendSettings.pic6dataimg);
+    localStorage.setItem("yt1dataimg", LegendJSON.legendSettings.yt1dataimg);
+    localStorage.setItem("yt2dataimg", LegendJSON.legendSettings.yt2dataimg);
+    localStorage.setItem("yt3dataimg", LegendJSON.legendSettings.yt3dataimg);
+    localStorage.setItem("yt4dataimg", LegendJSON.legendSettings.yt4dataimg);
+    localStorage.setItem("yt5dataimg", LegendJSON.legendSettings.yt5dataimg);
+    localStorage.setItem("yt6dataimg", LegendJSON.legendSettings.yt6dataimg);
+    localStorage.setItem("discwebhook1", LegendJSON.legendSettings.discwebhook1);
+    localStorage.setItem("discwebhook2", LegendJSON.legendSettings.discwebhook2);
+	localStorage.setItem("Userscript1", LegendJSON.legendSettings.Userscript1);
+	localStorage.setItem("Userscript2", LegendJSON.legendSettings.Userscript2);
+	localStorage.setItem("Userscript3", LegendJSON.legendSettings.Userscript3);
+	localStorage.setItem("Userscript4", LegendJSON.legendSettings.Userscript4);
+	localStorage.setItem("Userscript5", LegendJSON.legendSettings.Userscript5);
+	localStorage.setItem("Userscripttexture1", LegendJSON.legendSettings.Userscripttexture1);
+	localStorage.setItem("Userscripttexture2", LegendJSON.legendSettings.Userscripttexture2);
+	localStorage.setItem("Userscripttexture3", LegendJSON.legendSettings.Userscripttexture3);
+	localStorage.setItem("Userscripttexture4", LegendJSON.legendSettings.Userscripttexture4);
+	localStorage.setItem("Userscripttexture5", LegendJSON.legendSettings.Userscripttexture5);
+	}
+}
+
+function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
+
+			if (MSGCOMMANDS.includes("url")) {
+				if ($("#nick").val().includes("url")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}			
+			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "250px");
+			$("#acceptURL").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });
+			}
+			else if (MSGCOMMANDS.includes("yut")) {
+				if ($("#nick").val().includes("yut")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}			
+			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter64 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "300px");
+			$("#acceptYoutubeEmb").click(function() {
+		    YoutubeEmbPlayer(MSGCOMMANDS);
+			$("#musicUrl").val(MSGCOMMANDS);
+			setTimeout(function() {
+			$("#playerI").click();
+			}, 1000);
+		    });
+			}
+			else if (MSGCOMMANDS.includes("[skype]")) {
+				if ($("#nick").val().includes("skype")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}	
+			MSGCOMMANDS=MSGCOMMANDS.split("[skype]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/skype]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			if (MSGCOMMANDS.includes("join.skype.com/")){	
+			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/iconskype.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter65 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");
+			$("#acceptURL").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });
+			}
+			}
+			else if (MSGCOMMANDS.includes("discord")) {
+				if ($("#nick").val().includes("discord")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}	
+			MSGCOMMANDS=MSGCOMMANDS.split("[discord]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/discord]')[0];	
+				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				}
+			if (MSGCOMMANDS.includes("discordapp.com/invite")||MSGCOMMANDS.includes("discord.gg")){
+			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/icondiscord.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter66 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "300px");
+			$("#acceptURL").click(function() {
+		    window.open(MSGCOMMANDS,'_blank');
+		    });	
+			}
+			}	
+			else if (MSGCOMMANDS.includes("srv")) {
+				if (MSGCOMMANDS.includes("sip=")||MSGCOMMANDS.includes("agar.io/#")){
+				if ($("#nick").val().includes("srv")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}	//split pop is included on functions above
+			MsgServCommandsreturner();
+			acceptServerBtn();
+				}
+			}
+		    else if (MSGCOMMANDS.includes("Legend.Mod")) {
+
+		        playerMsg = getParameterByName("player", MSGCOMMANDS);
+		        commandMsg = getParameterByName("com", MSGCOMMANDS);
+		        otherMsg = getParameterByName("do", MSGCOMMANDS);
+		        //		$( ".toast.toast-success" ).text("");
+		        //		$(".message-text").text();.hide();
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();
+		        //without confirmation
+		        if (commandMsg == "Team5") {
+		            $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
+		                opacity: 0.8
+		            });
+		            setTimeout(function() {
+		                $("#top5-hud").css('background-image', 'url(" ")').css({
+		                    opacity: 1
+		                });
+		            }, 12000);
+		        } else if (commandMsg == "Hello") {
+		            if (MC.isInGame()) {
+		                if (!ogario.spectate) {
+		                    var nickname = $("#nick").val();
+		                    $("#nick").val("Hello Team");
+		                    $("#helloContainer").show();
+		                    newsubmit();
+		                    setTimeout(function() {
+		                        $("#nick").val(nickname);
+		                        $("#helloContainer").show();
+		                        newsubmit();
+		                    }, 5000);
+		                }
+		            }
+		        }
+
+		        //with confirmation
+		        else if (commandMsg == "HideAll") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function() {
+		                $("#HideAllBthn").click();
+		            });
+		        } else if (commandMsg == "NamePerm") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg + ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function() {
+		                $("#nick").val(playerMsg);
+		                $("#helloContainer").show();
+		                newsubmit();
+		            });
+		        } else if (commandMsg == "dTroll2") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function() {
+		                settroll1true();
+		                whenplayerdies();
+		            });
+		        } else if (commandMsg == "Youtube") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function() {
+		                $("#playerBtn").click();
+		                setTimeout(function() {
+		                    $("#playerBtn").focusout();
+		                }, 100);
+		            });
+		            //	$("#playerBtn").click();			
+		        }
+
+		    }
+
+		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {
+		        commandMsg = getParameterByName("com", MSGCOMMANDS);
+		        otherMsg = getParameterByName("do", MSGCOMMANDS);
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();
+		        LegendClanSymbol = $("#nick").val();
+		        if (~LegendClanSymbol.indexOf("℄") != -1) {
+
+		            if (commandMsg == "EU-London") {
+		                setTimeout(function() {
+		                    MC.onDisconnect();
+		                    MC.reconnect();
+		                }, 60000);
+		            } else if (commandMsg == "RU-Russia") {
+		                setTimeout(function() {
+		                    MC.onDisconnect();
+		                    MC.reconnect();
+		                }, 100);
+		            }
+		        }
+		    }
+}
+
+function YoutubeEmbPlayer(pastedDataorNot){
+            var finalUrl = getEmbedUrl(pastedDataorNot.trim());
+            if (finalUrl == false) {
+                toastr["error"](Premadeletter1).css("width", "210px");
+                setTimeout(function() {
+                    if (localStorage.getItem("musicUrl") == null) {
+                        $("#musicUrl").val(defaultMusicUrl);
+                    } else {
+                        $("#musicUrl").val(localStorage.getItem("musicUrl"));
+                    }
+                }, 500);
+            } else {
+                $("#musicFrame").attr("src", finalUrl);
+                localStorage.setItem("musicUrl", pastedDataorNot.trim());
+            }
+}
+
+function YoutubebackgroundEnable(){
+inject('stylesheet', '*{-webkit-box-sizing: border-box;box-sizing: border-box}.video-background{background: #000;position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: -99}.video-foreground,.video-background iframe{position: absolute;top: 0;left: 0;width: 100%;height: 100%;pointer-events: none}#vidtop-content{top: 0;color: #fff}.vid-info{position: absolute;top: 0;right: 0;width: 33%;background: rgba(0,0,0,0.3);color: #fff;padding: 1rem;font-family: Avenir, Helvetica, sans-serif}.vid-info h1{font-size: 2rem;font-weight: 700;margin-top: 0;line-height: 1.2}.vid-info a{display: block;color: #fff;text-decoration: none;background: rgba(0,0,0,0.5);-webkit-transition: .6s background;transition: .6s background;border-bottom: none;margin: 1rem auto;text-align: center}@media (min-aspect-ratio: 16/9){.video-foreground{height: 300%;top: -100%}}@media (max-aspect-ratio: 16/9){.video-foreground{width: 300%;left: -100%}}@media all and (max-width: 600px){.vid-info{width: 50%;padding: .5rem}.vid-info h1{margin-bottom: .2rem}}@media all and (max-width: 500px){.vid-info .acronym{display: none}}');
+$("body").append('<div class="video-background"><div class="video-foreground"><iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/'+getParameterByName("v", $("#musicUrl").val())+'?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&&playlist='+getParameterByName("v", $("#musicUrl").val())+'"></iframe></div></div></div>');
+}
+function YoutubebackgroundDisable(){
+$('.video-background').remove();
+}
+
+function isLegendExpress(Express){
+    try {
+        MC.onConnect();
+		return Express="False";
+    }
+    catch(err) {
+      //  console.log(err);
+	  return Express="True";
+    }
+//var Express;isLegendExpress(Express);
+}
+
+function MsgServCommandsreturner2(MSGCOMMANDS2a){
+	return MSGCOMMANDS2a;
+}
+function acceptServerBtn(){
+	if (acceptServerBtnFlag==null){
+			$("#acceptServer").click(function() {
+				
+				
+				if(isLegendExpress(Express)=="True"){ //if is Legend Express
+					if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
+					console.log("1a - Legend Express, Party mode");
+				if (getParameterByName("pass", MSGCOMMANDS)!=null){
+					$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+				};				
+					$('#server').val(MSGCOMMANDSA);
+					$("#connect2").click();					
+					}
+					else if (MSGCOMMANDS3.includes("sip=")){	//if not Party mode
+					console.log("1b - Legend Express, Not Party mode");
+				if (getParameterByName("pass", MSGCOMMANDS)!=null){
+					$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+				};						
+				$("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
+				$("#server-join").click();			
+					}
+				}
+				else{ //if is Legend mod
+					if (searchSip==null){ //if is not Locked
+						if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
+						console.log("2a - Legend Mod, No Locked, Party Mode");
+							if (getParameterByName("pass", MSGCOMMANDS)!=null){
+							$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+							};							
+						$('#server').val(MSGCOMMANDSA);
+						$("#connect2").click();							
+						}
+						else if(MSGCOMMANDS3.includes("sip=")){	 //if not Party	mode	
+							console.log("2b - Legend Mod, Locked, No Party mode");
+							if (getParameterByName("pass", MSGCOMMANDS)!=null){
+							$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
+							};								
+					$("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
+					$("#server-join").click();	
+					
+					}
+					}
+					else{	//if Locked	
+					console.log("2b - Legend Mod, Locked");	
+					MSGCOMMANDS=MSGCOMMANDS.split("[srv]").pop();
+					MSGCOMMANDS=MSGCOMMANDS.split('[/srv]')[0];	
+					if (MSGCOMMANDS.length>70){
+						MSGCOMMANDS=MSGCOMMANDS.split('[')[0];	
+					}
+					location.replace(MSGCOMMANDS);					
+					//window.open(MSGCOMMANDS,'_blank');
+								
+					}
+				}
+		   // window.open(MSGCOMMANDS2a,'_blank');
+		    });
+			}
+	//return acceptServerBtnFlag=1;
+}
+function MsgServCommandsreturner(){
+			MSGCOMMANDS2=MSGCOMMANDS;
+			MSGCOMMANDS3=MSGCOMMANDS;
+			MSGCOMMANDS2=MSGCOMMANDS2.split("[srv]").pop();
+			MSGCOMMANDS2=MSGCOMMANDS2.split('[/srv]')[0];	
+			if (MSGCOMMANDS2.includes("http://")==false&&MSGCOMMANDS2.includes("https://")==false&&MSGCOMMANDS2.includes("HTTP://")==false&&MSGCOMMANDS2.includes("HTTPS://")==false) {
+			MSGCOMMANDS2="http://"+MSGCOMMANDS2;	
+			}				
+			if (MSGCOMMANDS2.includes("agar.io/#")){ //if sent server is Party mode
+			MSGCOMMANDS2a=MSGCOMMANDS2;
+			MsgServCommandsreturner2(MSGCOMMANDS2a);
+			MSGCOMMANDSA= "#"+MSGCOMMANDS2a.split("#").pop();
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter67 + '</font></a></br>Server (Party mode): '+ MSGCOMMANDSA + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {		    
+			timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");
+			}
+			else if (getParameterByName("r", MSGCOMMANDS2a)!=null){
+				var modetosend, passtosend;
+				
+				if (getParameterByName("pass", MSGCOMMANDS)==null){
+					passtosend="No Password Loaded";		
+				}
+				else{
+					passtosend=getParameterByName("pass", MSGCOMMANDS);
+				}
+				if (getParameterByName("mode", MSGCOMMANDS)==null){
+					modetosend="Unknown";
+				}
+				else{
+					modetosend=getParameterByName("mode", MSGCOMMANDS);
+				}				
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter67  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br>Mode: ' + modetosend + '</br> Region: '+ getParameterByName("r", MSGCOMMANDS)+ '</br> Password: ' + passtosend + '</br> <button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+		    timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");
+			}
+			else {
+				var passtosend;
+				
+				if (getParameterByName("pass", MSGCOMMANDS)==null){
+					passtosend="No Password Loaded";		
+				}
+				else{
+					passtosend=getParameterByName("pass", MSGCOMMANDS);
+				}				
+			toastr["warning"]('<div><img src="https://jimboy3100.github.io/banners/iconagario.png" style="float:left;width:100px;height:100px;"></img>'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter67  + '</font></a></br>Server: '+ getParameterByName("sip", MSGCOMMANDS).replace("live-arena-", "").replace(".agar.io", "")+ '</br> Password: ' + passtosend + '<button id="acceptServer" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button></div>', "", {
+		    timeOut: 10000,
+		    extendedTimeOut: 10000
+		    }).css("width", "300px");	
+			}
+			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
+}
+
+function CutNameConflictwithMessageFunction(){
+	return CutNameConflictwithMessage=true;
+}
+function Universalchatfix(){	
+if ($("#ao2t-capture").hasClass("connected")){
+	$("#ao2t-capture").click();
+	
+	$("#ao2t-capture").click();
+}
+};
