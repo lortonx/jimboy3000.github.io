@@ -19,7 +19,8 @@ document.title = "Legend mod";
 
 	
 var CutNameConflictwithMessage=false;	
-(function(){
+/*
+	(function(){
     var _privateLog = console.log;
     console.log = function (message) {
 		if (CutNameConflictwithMessage==false){
@@ -31,7 +32,7 @@ var CutNameConflictwithMessage=false;
 		}
     };
 })();
-    
+*/    
 /*$(document).on("keydown", function(e) {
     if(e.keyCode == 65 || e.keyCode == 83) {
       e.stopImmediatePropagation();
