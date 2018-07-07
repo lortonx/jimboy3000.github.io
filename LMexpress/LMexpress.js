@@ -168,7 +168,7 @@ var MSGCOMMANDS2a;
 var MSGCOMMANDSA;
 var MSGCOMMANDS2;
 var MSGCOMMANDS3;
-var Express;
+var Express= "True";
 var acceptServerBtnFlag=null;
 //for the LM JSON
 var LegendJSON;
