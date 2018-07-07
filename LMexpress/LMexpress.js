@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.036 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.037 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "36"; // the version 1.1-> 1.11
+var semimodVersion = "37"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -373,7 +373,12 @@ function init(modVersion) {
 		});	
            if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
                 $("#UniversalChat").click();
+				setTimeout(function() {
+				$("#ao2t-hud").hide();
+				}, 100);
             }		
+
+				   
     //var connectedbanner=0;
 	$("#gamemode").prop('disabled', false);
 	$("#region").prop('disabled', false);   
