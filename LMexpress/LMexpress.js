@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.033 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.034 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "33"; // the version 1.1-> 1.11
+var semimodVersion = "34"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -10,7 +10,7 @@ $('#gamemode>option:nth-child(1)').val(':ffa');
 $('#gamemode').trigger('change');
 }, 1500);
 */
-loadersetings();
+//loadersetings();
 appendLMhiFbPs();
 loadericon();
 PremiumUsers();
@@ -192,7 +192,7 @@ var Premadeletter12 = "Connected!";
 var Premadeletter13 = "PLAY";
 var Premadeletter14 = "SPECTATE";
 var Premadeletter15 = "Invalid token or server has closed :(";
-var Premadeletter16 = "can be Updated to";
+var Premadeletter16 = "must be Updated to";
 var Premadeletter17 = "Welcome back";
 var Premadeletter18 = "Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
 var Premadeletter19 = "Enable Them";
@@ -531,7 +531,7 @@ function init(modVersion) {
         });
 		//fzogar Upload / Download Settings
 		$("#import-settings-btn").attr('class', 'btn btn-success');
-		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
+//		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
 
         $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
@@ -2292,12 +2292,14 @@ function fzogarOgarSettings(datasent2){
 			$('#import-settings-btn2').click();
         }, 100);
 }		
+/*
 function fzogarOgarIframe() {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/AjaxData/fzogarOgarIframe.js";
     $("body").append(s);
 }
+*/
 
 function fzogarOgarIframeListener(){
 ///////////////////////////////////////////////////////////////////////////
@@ -2979,3 +2981,12 @@ function MsgServCommandsreturner(){
 			}
 			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
 }
+
+		$("#oldSkinsBtn").click(function() {
+			if (modVersion == "1.2" ) {
+		location.replace("http://agar.io/LMoldskins");
+			}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.2</b></font>, in order to use this function</font>');	
+			}
+		});
