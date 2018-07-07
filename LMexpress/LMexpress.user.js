@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Legend Express Agar.io Extension
 // @namespace    Legend Express Agario Mod
-// @version      1.1
+// @version      1.2
 // @description  Agario Mod - Legend,Ogario,Kitty,Old Skins,Animated Skins,Language Packs,Manual User Scripts,Chat,60++ Macros/Hotkeys(Tricksplit,Doublesplit,Quick Feeding,Popsplit,Auto Coins,Freeze Cell Macro,Auto respawn)
 // @homepage     http://www.legendmod.ml
 // @author       Jimboy3100
@@ -19,7 +19,6 @@
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
 // @grant        GM_deleteValue
-// @connect      jimboy3100.github.io
 // @connect      jimboy3000.github.io
 // ==/UserScript==
 
@@ -49,7 +48,7 @@ SOFTWARE.
 
 // Start of script
 GM_registerMenuCommand('Legend Mod Website', function() {
-    window.open("https://legendmod.joomla.com/en/");
+    window.open("http://legendmod.ml");
 }, 'r');
 GM_registerMenuCommand('LM Library', function() {
     window.open("https://github.com/jimboy3100/jimboy3100.github.io/");
@@ -58,8 +57,19 @@ GM_registerMenuCommand('Donate for Legend Mod', function() {
     window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM3GDVCW6PBF6");
 }, 'r');
 
-url = window.location.href;
-if(getParameterByName("mod", url)=="tiny"){
+var url = window.location.href;
+if (location.pathname == "/LMoldskins"){
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('"k l";m(2(){2 e(){7 e=n.p("q"),t=9;r(e){s{t=u.v(e)}w(e){4.x(!1,e)}t&&t.5&&(y.z(t.5),4.A("%c[b] d B C...","D: E"))}}!2(t,a){7 o=3.F("G");o.H="I/J",o.K="L-8",o.6?o.f=2(){"d"!=o.6&&"M"!=o.6||(o.f=9,a&&a())}:(3.g&&3.g.N("O-h-i",t),a&&(o.P=a,o.Q=e)),o.5=t+"?R="+~~(S.T()/U/V),3.W("X")[0].Y(o)}("Z://10.11.12/13/j/h.i.j",2(){4.14("[b] 15 16...")})},0);',62,69,'||function|document|console|src|readyState|var||null||VANILLA||loaded||onreadystatechange|body|vanilla|core|js|use|strict|setTimeout|localStorage||getItem|cachedVanilla|if|try||JSON|parse|catch|assert|window|eval|log|from|cache|color|darkorange|createElement|script|type|text|javascript|charset|utf|complete|setAttribute|data|onload|onerror|ts|Date|now|1e3|60|getElementsByTagName|head|appendChild|http|imasters|org|ru|agar|info|inject|success'.split('|'),0,{}))
+setTimeout(function() {
+
+document.body.style.background = "#f3f3f3 url('https://jimboy3100.github.io/banners/iconmod3.png') no-repeat center fixed";
+$( "body" ).append('<div id="imagebig"><iframe id="loaderIframeIcon1" src="https://jimboy3100.github.io/extras/banneranimated1oldskins.html" name="CodePen" allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowtransparency="true" scrolling="no" frameBorder="0" class="result-iframe" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe></div>');
+}, 3000);
+setTimeout(function() {
+$("#canvas").remove();$("#adsBottom").remove();$("#rightPanel").remove();$(".agario-panel.agario-side-panel.agario-profile-panel").remove();$("#dailyquests-panel").remove();$("#v-ex-menu").remove();$("#service-message-area").remove();$(".radio-module").remove();$(".tosBox.right").remove();$(".tosBox.left").remove();$(".form-group.clearfix").remove();$("#skinCustomButton").remove();$("#settings").remove();$("#vanilla-home-link").remove();$("#settingsButton").remove();$("#instructions").remove();$(".btn.btn-play.btn-primary").remove();$(".btn.btn-play-guest.btn-success").remove();$(".btn.btn-warning.btn-login-play").text("Login");$(".btn.btn-warning.btn-login-play").css("margin-left", "80px");$("#helloContainer").css("margin-left", "-150px");$('.agario-panel.agario-side-panel.agario-shop-panel').append('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');$("#imagebig").remove();
+}, 7000);
+}
+else if(getParameterByName("mod", url)=="tiny"){
 var tinyJS = '<script src="http://jimboy3100.github.io/ExampleScripts/LMTiny.user.js"></script>';
 	    function inject(page) {
         page = page.replace("</body>", tinyJS + "</body>");
@@ -80,7 +90,7 @@ var tinyJS = '<script src="http://jimboy3100.github.io/ExampleScripts/LMTiny.use
 
 }
 else if (location.host === "agar.io" && location.pathname === "/") {
-	window.stop();	
+	window.stop();
 	location.href = "about:blank" + window.location.search + location.hash;
 // Dependencies
 
@@ -102,7 +112,7 @@ else if (location.host === "agar.io" && location.pathname === "/") {
             document.open();
             document.write(doc);
             document.close();
-        }       
+        }
     });
 
     // Inject Chat to text userscript
