@@ -513,6 +513,7 @@ function init(modVersion) {
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
+		'<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
 		
         // prevent edit
@@ -996,6 +997,14 @@ function init(modVersion) {
             }, 100);
         })
 
+		$("#oldSkinsBtn").click(function() {
+			if (modVersion == "1.2" ) {
+		location.replace("http://agar.io/LMoldskins");
+			}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.2</b></font>, in order to use this function</font>');	
+			}
+		});		
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 
         $(".agario-panel.ogario-yt-panel").css({
@@ -2982,11 +2991,3 @@ function MsgServCommandsreturner(){
 			return MSGCOMMANDS, MSGCOMMANDS2, MSGCOMMANDS2a, MSGCOMMANDSA, MSGCOMMANDS3;
 }
 
-		$("#oldSkinsBtn").click(function() {
-			if (modVersion == "1.2" ) {
-		location.replace("http://agar.io/LMoldskins");
-			}
-			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.2</b></font>, in order to use this function</font>');	
-			}
-		});
