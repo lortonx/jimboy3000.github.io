@@ -1,13 +1,17 @@
-//v1.2d
+//v1.2e
+if (Express!="True"){
 setTimeout(function() {
 var isLegendExpress2;
+var Express;
 var clickedname = "NO";
+
 try {
    isLegendExpress2 = isLegendExpress();
 }
 catch(err) {
     console.log(err.message);
 }
+
 if (isLegendExpress2!="False"){
 
 setTimeout(function() {
@@ -949,4 +953,6 @@ function doDOMonloadevents2(){
 			},250);
 }
 }
+
 }, 1100);
+}
