@@ -1004,7 +1004,7 @@ function init(modVersion) {
 		location.replace("http://agar.io/LMoldskins");
 			}
 			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v3.2</b></font>, in order to use this function</font>');	
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.2</b></font>, in order to use this function</font>');	
 			}
 		});		
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
