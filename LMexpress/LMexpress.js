@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.034 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.035 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "34"; // the version 1.1-> 1.11
+var semimodVersion = "35"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -513,10 +513,12 @@ function init(modVersion) {
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
 		$("#quick-menu").append('<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+
-		'<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates"></a>'+
+		'<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins"></a>'+
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-		
-        // prevent edit
+        $("#LegGoogleForm").tooltip('show').tooltip('hide');;
+		$("#oldSkinsBtn").tooltip('show').tooltip('hide');;
+		$("#ModInfoQuick").tooltip('show').tooltip('hide');
+		// prevent edit
         $("#musicUrl").on("input", function() {
             $(this).attr("maxlength", "1000");
         });
