@@ -1,8 +1,9 @@
-//v1.2e
+//v1.2f
+var Express;
 if (Express!="True"){
 setTimeout(function() {
 var isLegendExpress2;
-var Express;
+
 var clickedname = "NO";
 
 try {
