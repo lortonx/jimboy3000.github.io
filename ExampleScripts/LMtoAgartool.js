@@ -1,4 +1,4 @@
-//v1.2f
+//v1.2fa
 var Express;
 if (Express!="True"){
 setTimeout(function() {
@@ -36,8 +36,12 @@ var legbgcolor = $("#menuPanelColor").val();
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
 		    if (~msg.indexOf("Received a command with an unknown name")) {
-				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				if (~msg.indexOf("Received a command with an unknown name: customSkins")) {
 				}
+				else{
+					toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			}
 			else if (~msg.indexOf("load socket.io")) {
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				//playSound($('#commandSound').val());
