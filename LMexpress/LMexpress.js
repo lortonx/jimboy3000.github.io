@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.039 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.040 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "38"; // the version 1.1-> 1.11
+var semimodVersion = "39"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3054,8 +3054,12 @@ var legbgcolor = $("#menuPanelColor").val();
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
 		    if (~msg.indexOf("Received a command with an unknown name")) {
-				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				if (~msg.indexOf("Received a command with an unknown name: customSkins")) {
 				}
+				else{
+					toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				}
+			}
 			else if (~msg.indexOf("load socket.io")) {
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				//playSound($('#commandSound').val());
