@@ -140,6 +140,7 @@
 		my.config_apply();
 		// --- Reconnect ---
 		//$("#settingsButton").after(''+	// $("#connect").before
+		$("#server").css("width", "100px"); //added
 		$("#server").after(''+
 			'<button id="at2o-reconnect" class="btn btn-primary"'+
 			' style="float:left;">🎲</button>'+
