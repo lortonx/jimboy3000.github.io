@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.040 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.041 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "39"; // the version 1.1-> 1.11
+var semimodVersion = "40"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -515,7 +515,7 @@ function init(modVersion) {
         //							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
         //	$('#music').append(savemusic+'</div>');						
 
-
+/*
         if (typeof YT !== 'undefined') {
             musicPlayer = new YT.Player('musicFrame', {
                 events: {
@@ -531,6 +531,7 @@ function init(modVersion) {
                 }
             });
         }
+*/		
         //roller and other icons
         $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
         //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
