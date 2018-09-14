@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.041 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "40"; // the version 1.1-> 1.11
+var semimodVersion = "41"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3088,7 +3088,7 @@ var legbgcolor = $("#menuPanelColor").val();
     };
     var stat = {
         "AgarToolVersion": 4,
-        "AgarToolServer": "ws://minimap.agartool.io:8000",
+        "AgarToolServer": "wss://minimap.agartool.io:8000",
         minimapBalls: {},
         "socketIoURL": "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
         // ---- Legend Mod settings  -----
