@@ -2,7 +2,7 @@
  * Legend express v0.042 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "41"; // the version 1.1-> 1.11
+var semimodVersion = "42"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -543,14 +543,14 @@ function init(modVersion) {
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
-		$("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins"></a>'+
-		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
+		$("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins/Needs LME Expansion 1"></a>'+
+//		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
 		'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+	
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
         $("#LegGoogleForm").tooltip('show').tooltip('hide');;
 		$("#oldSkinsBtn").tooltip('show').tooltip('hide');;
 		$("#ModInfoQuick").tooltip('show').tooltip('hide');
-		$("#LMImplements").tooltip('show').tooltip('hide');
+//		$("#LMImplements").tooltip('show').tooltip('hide');
 		// prevent edit
         $("#musicUrl").on("input", function() {
             $(this).attr("maxlength", "1000");
@@ -1034,20 +1034,21 @@ function init(modVersion) {
 
 		$("#oldSkinsBtn").click(function() {
 			if (modVersion == "1.3" ) {
-		location.replace("http://agar.io/LMoldskins");
+		location.replace("https://agar.io/LMoldskins");
 			}
 			else{
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
 			}
 		});	
-		$("#LMImplements").click(function() {
+/*		$("#LMImplements").click(function() {
 			if (modVersion == "1.3" ) {
 			var myWindow = window.open("http://agar.io/LMImplements", "_blank", "width=400,height=800");
 			}
 			else{
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
 			}
-		});				
+		});		
+*/		
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 
         $(".agario-panel.ogario-yt-panel").css({
