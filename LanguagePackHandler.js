@@ -498,7 +498,7 @@ $("#VoiceBtn").attr("data-original-title", Languageletter357);
 $("#donationbtn").attr("data-original-title", Languageletter358);
 $("#opennamechars").attr("data-original-title", Languageletter359);
 $("#openskinchanger").attr("data-original-title", Languageletter360);
-$("#MorefpsText").text(Languageletter361);
+//$("#MorefpsText").text(Languageletter361);
 
 $("#Infobtn11").text(Externalletter1);
 $("#TemplatesBtn").text(Externalletter2);
