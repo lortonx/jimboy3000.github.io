@@ -486,7 +486,7 @@ $("#CopyAll").attr('data-original-title',Languageletter26a); //for LM Express
 $(".btn.btn-play.btn-primary").text(Languageletter19); //may not work
 
 $("#potions").text(Languageletter349);
-$("#oldSkinsBtn").text(Languageletter350);
+//$("#oldSkinsBtn").text(Languageletter350);
 $("#SpecialDealsBtn").text(Languageletter351);
 $("#SpecialDealsQuickBtn").attr("data-original-title", Languageletter351);
 $(".btn.btn-primary.btn-success.btn-leagues").text(Languageletter352); //Leaderboards
