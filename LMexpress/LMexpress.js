@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.042 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.043 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "42"; // the version 1.1-> 1.11
+var semimodVersion = "43"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -836,6 +836,13 @@ function init(modVersion) {
 			var userlastname = localStorage.getItem("userlastname");
 			var modetosend="NotFound";
 			var regiontosend="NotFound";
+			var currentdate = new Date(); 
+			var datetime =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + "@"  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
 			if (searchSip == null) {
 				modetosend=$('#gamemode').val();
 				regiontosend=$('#region').val();
@@ -862,16 +869,16 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LMEXPRESSaction=Play" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LMEXPRESSaction=Play" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LMEXPRESSaction=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
