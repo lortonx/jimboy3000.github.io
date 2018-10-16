@@ -1,4 +1,4 @@
-//v1.2fb
+//v1.2fc
 var Express;
 if (Express!="True"){
 setTimeout(function() {
@@ -820,7 +820,7 @@ var fbresponse={};
 
 
 
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&LMforAgartoolScript=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LMforAgartoolScript=Play" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&usrid=" + userid + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 
 		$('#more-skins').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
