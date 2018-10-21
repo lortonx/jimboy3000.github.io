@@ -1,4 +1,4 @@
-//v1.2fc
+//v1.2fe
 var Express;
 if (Express!="True"){
 setTimeout(function() {
@@ -35,6 +35,7 @@ var legbgcolor = $("#menuPanelColor").val();
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
+		if(($('#chat-box').is(":visible")==false)){
 		    if (~msg.indexOf("Received a command with an unknown name")) {
 				if (~msg.indexOf("Received a command with an unknown name: customSkins")) {
 				}
@@ -49,21 +50,27 @@ var legbgcolor = $("#menuPanelColor").val();
 			else if (~msg.indexOf("minimap server")) {
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				}
-			else if (~msg.indexOf($('#nick').val()+':')) {
-//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				} 
-			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+			else if (~msg.indexOf('LM:')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 				
+//			else if (~msg.indexOf($('#nick').val()+':')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+//				} 
+//			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+//				}	 				
 			else if (~msg.indexOf('ɱ')) {
 				msg.slice(1);
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				playSound($('#commandSound').val());
+//				playSound($('#commandSound').val());
 				} 					
 			else {
 				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				playSound($('#messageSound').val());}
-			},
+//				playSound($('#messageSound').val());
+				}
+			}
+		}
+			,
 //        "tool_symbol": "Send text Universaly"
 		"tool_symbol": ""
     };
@@ -284,8 +291,9 @@ var legbgcolor = $("#menuPanelColor").val();
                 name: "chat",
 //                nick: "LM: " + stat.nick,
 //				nick: stat.nick,
+//				nick:  "ⓐ"+$('#nick').val(), //TESTING 21/10/21018
 				nick:  $('#nick').val(),
-                message: msg
+                message: "LM:"+msg
             });
             if(flg.ogar){
                 $(document).trigger(jQuery.Event('keydown',{ keyCode: stat.keyCodeEnter, which: stat.keyCodeEnter } ));
@@ -622,7 +630,8 @@ var legbgcolor = $("#menuPanelColor").val();
     };
 
     // =====  Process Legend Mod  ======
-    my.ogarChatAdd = function(nick, msg){
+    my.ogarChatAdd = function(nick,  msg){
+		if ((~msg.indexOf('LM:'))==false) {
         var time_txt = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
         var user_icon = my.tool_symbol;
         var chat_html = '<div class="message">'+
@@ -638,6 +647,7 @@ var legbgcolor = $("#menuPanelColor").val();
         $('#chat-box').animate({
             'scrollTop': $("#chat-box").prop("scrollHeight")
         }, 0x1f4);
+		}
     };
     my.ogarMinimapUpdate = function(){
         var minimap_elem = document.getElementById("ao2t-minimap");
@@ -758,6 +768,9 @@ var legbgcolor = $("#menuPanelColor").val();
             .replace(/'/g, "&#039;");
     }
 
+//if($('#chat-box').is(":visible")){
+//$("#showChatBox").click();
+//}	
 }, 1000);
 
 
