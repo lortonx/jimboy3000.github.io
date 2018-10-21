@@ -56,7 +56,7 @@ var legbgcolor = $("#menuPanelColor").val();
 //			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 //				} 
-//			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+//			else if (~msg.indexOf('[Universal chat]:')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 //				}	 				
 			else if (~msg.indexOf('ɱ')) {
@@ -284,7 +284,7 @@ var legbgcolor = $("#menuPanelColor").val();
             return;
 			}
         }
-        var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
+        var msg = '[Universal chat]:' + $("#message").val();
 		var msgLM=$("#message").val();
         if(msgLM.length){
             my.sendMinimapServerCommand({
