@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.043 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.044 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "43"; // the version 1.1-> 1.11
+var semimodVersion = "44"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -351,7 +351,7 @@ function init(modVersion) {
 	
 	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
 	universalchat();
-		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Universal Chat</input></label>');
+		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Agar Tool/Legend Mod</input></label>');
 		var elemLegendSwitch = document.querySelector('#UniversalChat');
 		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
 		var UniversalChat = new Switchery(elemLegendSwitch, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
@@ -3062,6 +3062,7 @@ var legbgcolor = $("#menuPanelColor").val();
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
+		if(($('#chat-box').is(":visible")==false)){
 		    if (~msg.indexOf("Received a command with an unknown name")) {
 				if (~msg.indexOf("Received a command with an unknown name: customSkins")) {
 				}
@@ -3073,13 +3074,16 @@ var legbgcolor = $("#menuPanelColor").val();
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				//playSound($('#commandSound').val());
 				} 
-			else if (~msg.indexOf("minimap server")) {
+			else if (~msg.indexOf("minimap server")) {				
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				}
+			else if (~msg.indexOf('LM:')) {
+//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				} 				
 			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 
-			else if (~msg.indexOf('[Agar Tool/Legend Mod]:')) {
+			else if (~msg.indexOf('[Universal chat]:')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 				
 			else if (~msg.indexOf('ɱ')) {
@@ -3090,6 +3094,7 @@ var legbgcolor = $("#menuPanelColor").val();
 			else {
 				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				playSound($('#messageSound').val());}
+		}
 			},
 //        "tool_symbol": "Send text Universaly"
 		"tool_symbol": ""
@@ -3304,7 +3309,7 @@ var legbgcolor = $("#menuPanelColor").val();
             return;
 			}
         }
-        var msg = '[Agar Tool/Legend Mod]:' + $("#message").val();
+        var msg = '[Universal chat]:' + $("#message").val();
 		var msgLM=$("#message").val();
         if(msgLM.length){
             my.sendMinimapServerCommand({
@@ -3312,7 +3317,7 @@ var legbgcolor = $("#menuPanelColor").val();
 //                nick: "LM: " + stat.nick,
 //				nick: stat.nick,
 				nick:  $('#nick').val(),
-                message: msg
+                message: "LM:"+msg
             });
             if(flg.ogar){
                 $(document).trigger(jQuery.Event('keydown',{ keyCode: stat.keyCodeEnter, which: stat.keyCodeEnter } ));
@@ -3353,7 +3358,7 @@ var legbgcolor = $("#menuPanelColor").val();
         $("#overlays").append('<div id="ao2t-cfg-dlg"'+
             '  style="width:400px; height:450px; top:150px; left:300px; display: none;'+
             '">'+
-              'Universal Chat tools'+
+              'Agar Tool/Legend Mod tools'+
               '<div style="overflow: scroll; '+
                     'position: relative; top:1.5em; left:0.5em; right:0.5em; bottom:1.5em;">'+
                 '<div id="ao2t-cfg-base">'+
@@ -3650,6 +3655,7 @@ var legbgcolor = $("#menuPanelColor").val();
 
     // =====  Process Legend Mod  ======
     my.ogarChatAdd = function(nick, msg){
+		if ((~msg.indexOf('LM:'))==false) {
         var time_txt = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
         var user_icon = my.tool_symbol;
         var chat_html = '<div class="message">'+
@@ -3665,6 +3671,7 @@ var legbgcolor = $("#menuPanelColor").val();
         $('#chat-box').animate({
             'scrollTop': $("#chat-box").prop("scrollHeight")
         }, 0x1f4);
+		}
     };
     my.ogarMinimapUpdate = function(){
         var minimap_elem = document.getElementById("ao2t-minimap");
