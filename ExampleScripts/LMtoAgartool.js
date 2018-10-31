@@ -1,4 +1,4 @@
-//v1.2fe
+//v1.2ff
 var Express;
 if (Express!="True"){
 setTimeout(function() {
@@ -75,8 +75,8 @@ var legbgcolor = $("#menuPanelColor").val();
 		"tool_symbol": ""
     };
     var stat = {
-        "AgarToolVersion": 4,
-        "AgarToolServer": "wss://minimap.agartool.io:8000",
+        "AgarToolVersion": 5,
+        "AgarToolServer": "wss://minimap.agartool.io:9000",
         minimapBalls: {},
         "socketIoURL": "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
         // ---- Legend Mod settings  -----
