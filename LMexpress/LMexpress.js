@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.045 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.046 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "45"; // the version 1.1-> 1.11
+var semimodVersion = "46"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -464,24 +464,28 @@ function init(modVersion) {
 
             if (searchSip != null) {
                 if (realmode == ":party") {
-                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();					
                 } else if (realmode != ":party") {
 					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
 					copyToClipboardAll();
 					}
 					else{
-					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val();	
+					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
 					copyToClipboardAll();
 					}
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();
                 } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					copyToClipboardAll();
                 }
             }
