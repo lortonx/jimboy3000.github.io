@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.046 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.047 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "46"; // the version 1.1-> 1.11
+var semimodVersion = "47"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -12,12 +12,14 @@ $('#gamemode').trigger('change');
 */
 //loadersetings();
 appendLMhiFbPs();
+PreLcCelebration();
 loadericon();
 PremiumUsers();
 document.title = "Legend mod";
 //Authenticate Mod Script
 var accesstomod;
 setTimeout(function() {
+	
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
@@ -3932,4 +3934,35 @@ function showMenu() {
     $("#overlays").css("left", "0");
     $("#overlays").show();
     $('a[href="#main-panel"]').click();
+}
+
+function PreLcCelebration() {
+var checkonetimeLc = localStorage.getItem("checkonetimeLc");
+if (checkonetimeLc == null) {
+//   if ($("#nick").val().includes("℄")) {
+        var checkdate;
+        Date.prototype.yyyymmdd = function() {
+            var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+            return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
+
+        var date = new Date();
+        checkdate = date.yyyymmdd();
+        if (checkdate == "2018/11/12") {
+            LcCelebration();
+        }
+//    }
+}
+}
+
+function LcCelebration() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/extras/LcHistory/LcHistoryBanner.js";
+    $("body").append(s);
+    checkonetimeLc = 1;
+    localStorage.setItem("checkonetimeLc", checkonetimeLc);
+    return checkonetimeLc;
 }
