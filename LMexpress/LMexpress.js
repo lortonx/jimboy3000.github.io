@@ -1093,7 +1093,7 @@ function init(modVersion) {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
-		}, 100);
+		}, 2100);
 
 
 
