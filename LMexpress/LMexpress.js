@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.048 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.049 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "48"; // the version 1.1-> 1.11
+var semimodVersion = "49"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1077,9 +1077,9 @@ function init(modVersion) {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
                 localStorage.setItem("YoutubeAutoBtn", true);
-                setTimeout(function() {
+ //               setTimeout(function() {
                     playYoutube();
-                }, 2000);
+ //               }, 4000);
 //               setTimeout(function() {
 //                    playYoutube();
 //                }, 2100);
