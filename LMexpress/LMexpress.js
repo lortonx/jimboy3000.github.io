@@ -2809,7 +2809,7 @@ function YoutubeEmbPlayer(pastedDataorNot){
 
 function MsgCommands1(MSGCOMMANDS, MSGNICK) {	
 
-			if (MSGCOMMANDS.includes("url")) {
+			if (MSGCOMMANDS.includes("[url]")) {
 				if ($("#nick").val().includes("url")==false){
 				$(".message-text").remove();
 				$(".toast.toast-success").remove();
@@ -2827,7 +2827,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    window.open(MSGCOMMANDS,'_blank');
 		    });
 			}
-			else if (MSGCOMMANDS.includes("yut")) {
+			else if (MSGCOMMANDS.includes("[yut]")) {
 				if ($("#nick").val().includes("yut")==false){
 				$(".message-text").remove();
 				$(".toast.toast-success").remove();
