@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.047 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.048 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "47"; // the version 1.1-> 1.11
+var semimodVersion = "48"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -19,7 +19,7 @@ document.title = "Legend mod";
 //Authenticate Mod Script
 var accesstomod;
 setTimeout(function() {
-	
+SquareAgar();	
 getaccesstoken();
 getaccesstoken2();
 }, 3000);
@@ -2870,7 +2870,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });
 			}
 			}
-			else if (MSGCOMMANDS.includes("discord")) {
+			else if (MSGCOMMANDS.includes("[discord]")) {
 				if ($("#nick").val().includes("discord")==false){
 				$(".message-text").remove();
 				$(".toast.toast-success").remove();
@@ -2890,7 +2890,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    });	
 			}
 			}
-			else if (MSGCOMMANDS.includes("srv")) {
+			else if (MSGCOMMANDS.includes("[srv]")) {
 				if (MSGCOMMANDS.includes("sip=")||MSGCOMMANDS.includes("agar.io/#")){
 				if ($("#nick").val().includes("srv")==false){
 				$(".message-text").remove();
@@ -3965,4 +3965,16 @@ function LcCelebration() {
     checkonetimeLc = 1;
     localStorage.setItem("checkonetimeLc", checkonetimeLc);
     return checkonetimeLc;
+}
+
+function SquareAgar(){
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
+//				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 15px 15px 15px 15px;}'+
+				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
+				'#time-hud { border-radius: 10px; } </style>');	
 }
