@@ -1089,9 +1089,11 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
+		setTimeout(function() {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
             }
+		}, 100);
 
 
 
