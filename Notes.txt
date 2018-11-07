@@ -151,7 +151,6 @@ $("#minimap-sectors").css("background-image", "url('http://i.imgur.com/AlX80bX.p
 
 
 
-
     $("#minimap-hud").prepend('<div id="shortcuts-hud2" class="hud" style="width: 20%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: block;">'+
 	'<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>');
 	
@@ -165,7 +164,12 @@ $("#minimap-sectors").css("background-image", "url('http://i.imgur.com/AlX80bX.p
 					var pass2=$("#clantag").val();
 					//var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
 				//semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP;	
+				if (pass2!=""){
 				semiurl2=currentIP2 + "?pass="+pass2;	
+				}
+				else{
+				semiurl2=currentIP2;	
+				}
 				}
 				
 
