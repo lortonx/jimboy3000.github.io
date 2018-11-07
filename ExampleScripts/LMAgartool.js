@@ -11,7 +11,7 @@
         "AgarToolVersion": 5,
         "AgarToolServer": "wss://minimap.agartool.io:9000",
         minimapBalls: {},
-        "socketIoURL": "http://cdn.agartool.io/socket-io-1.7.3.min.js",
+        "socketIoURL": "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
         // ---- Legend Mod settings  -----
         "minimapNickFont": "700 11px Ubuntu",
         "minimapNickColor": "#ffffff",
