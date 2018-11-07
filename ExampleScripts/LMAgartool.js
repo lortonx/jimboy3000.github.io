@@ -8,8 +8,8 @@
         "tool_symbol": "L.M"
     };
     var stat = {
-        "AgarToolVersion": 4,
-        "AgarToolServer": "ws://minimap.agartool.io:8000",
+        "AgarToolVersion": 5,
+        "AgarToolServer": "wss://minimap.agartool.io:9000",
         minimapBalls: {},
         "socketIoURL": "http://cdn.agartool.io/socket-io-1.7.3.min.js",
         // ---- Legend Mod settings  -----
