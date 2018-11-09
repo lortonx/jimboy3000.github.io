@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "60"; // the version 1.1-> 1.11
+var semimodVersion = "61"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -619,7 +619,7 @@ function init(modVersion) {
             $("#copySIPBtn").text("Copy");
         });	
 		
-        $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><i class="fa fa-trash fa-2"></i></a>');
+        $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="" data-placement="left" data-original-title="Clear list"><i class="fa fa-trash fa-2"></i></a>');
         $("#searchBtn").tooltip('disable');
 		$("#copyLBBtn").click(function() {
             copy($("#leaderboard-positions").text());
@@ -809,6 +809,25 @@ function init(modVersion) {
             }
         });
 		
+        $(document).keyup(function(event) {
+            if (event.which == 8) { // search
+                if ($('input:focus').length == 0) {
+                    $("#searchShortcut").click();
+                }
+
+            } else if (event.which == 187 && !($("input").is(":focus")) && ogario.play == false) { // refresh server
+                $("#reconnectBtn").click();
+
+            } else if (event.which == 27) { // ESCAPE
+
+                if ($('#searchHud').is(':visible')) {
+                    hideSearchHud();
+                } else {
+                    showMenu();
+                }
+            }
+			
+        });			
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
 		$('#opennamechars').tooltip({
             title: "Design Nickname Font",
