@@ -1,5 +1,5 @@
 /*************
- * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.063 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "62"; // the version 1.1-> 1.11
@@ -1849,7 +1849,7 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
             $('#region option[value="'+region+'"]').prop('selected', 'selected').change();
-//            getInfo();
+            getInfo();
         }
         //      MC.setGameMode(mode);                  //important
         findIP(ip.replace("ws://", ""));
@@ -4010,7 +4010,7 @@ function hideMenu2() {
             $("#searchInput").focus().select();
         });
 function showSearchHud() {
-    //getInfo();
+    getInfo();
     $("#backgroundFade").fadeIn();
     $("#notes").fadeIn();
     $("#statsInfo").fadeIn();
@@ -4061,6 +4061,33 @@ if (checkonetimeLc == null) {
 }
 }
 
+function getInfo() {
+$("#currentRegion").html($('#region').val());
+/*    $.ajax({
+        type: "GET",
+        url: "http://m.agar.io/info",
+        datatype: "json",
+        success: function(info) {
+            
+            var regions = info.regions;
+            var currentRegion;
+            for (var key in regions) {
+                if (key == MC.getRegion()) {
+                    currentRegion = regions[key];
+                    break;
+                }
+            }
+            //console.log(info);
+            //console.log(currentRegion);
+            if (currentRegion != undefined) {
+                $("#numPlayers").html(kFormatter(currentRegion.numPlayers));
+                $("#numServers").html(currentRegion.numRealms);
+                $("#pps").html(Math.round(currentRegion.avgPlayersPerRealm));
+            }
+            $("#totalPlayers").html(kFormatter(info.totals.numPlayers));
+        }
+    }); */
+}
 function LcCelebration() {
     var s = document.createElement("script");
     s.type = "text/javascript";
