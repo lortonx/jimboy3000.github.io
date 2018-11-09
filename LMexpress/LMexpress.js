@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.049 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.050 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "49"; // the version 1.1-> 1.11
+var semimodVersion = "50"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -82,7 +82,7 @@ var yt3data = "Lion king - The Lion Sleeps Tonight";
 var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
 var yt6data = "Legend mod Promo";
-var lastIP = "";
+var lastIP = localStorage.getItem("lastIP");
 var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
 var leadbtext = localStorage.getItem("leadbtext");
@@ -142,6 +142,7 @@ var AdminRights = 0;
 var LegendClanSymbol = "0";
 var legbgcolor = $("#menuPanelColor").val();
 var legbgpic = $("#menuBg").val();
+var legmaincolor = $("#hudMainColor ").val();
 var dyinglight1load = localStorage.getItem("dyinglight1load");
 var url2;
 var semiurl2;
@@ -462,6 +463,7 @@ function init(modVersion) {
 		title: "Copy Server, Password, Teamboard & Leaderboard",
 		placement: "left"
 		});
+		
         $("#CopyAll").click(function() {
 
             if (searchSip != null) {
@@ -579,6 +581,27 @@ function init(modVersion) {
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
             '</div></div>');
 
+         $("#leaderboard-hud").append('<div id="leaderboard-menu" style="pointer-events: auto;">' +
+            '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ; " data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
+            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
+            '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
+            'background-color: transparent;color: '+legmaincolor+' ;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
+
+            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; left: 0px; padding: 0px; border-radius: 0px;">' +
+            '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><span class="glyphicon glyphicon-download-alt"></span></a>' +
+            '</div>' +
+            '<div id="dropDown2" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 90px; left: 67px; padding: 0px; border-radius: 0px;">' +
+            '<a id="copySIPandPass" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Password">TK&PW</a>' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
+            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP, Password, Leaderboard...">TK&ALL</a>' +            
+			'</div>' +
+            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: -30px; border-radius: 0px;">' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
+//            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
+            '</div>' +
+
+            '<input id="tempCopy" style="display: none;" value="">' +
+            '</div>');			
         $("#copySIPBtn").mouseenter(function() {
             $("#dropDown3").hide();
             $("#copySIPBtn").text("Token");
@@ -594,17 +617,20 @@ function init(modVersion) {
 			$("#dropDown2").hide();
             $("#dropDown3").hide();
             $("#copySIPBtn").text("Copy");
-        });
+        });	
+		
         $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="tooltip" data-placement="left" data-original-title="Clear list"><span class="glyphicon glyphicon-ban-circle"></span></a>');
         $("#searchBtn").tooltip('disable');
-        $("#copyLBBtn").click(function() {
+		$("#copyLBBtn").click(function() {
             copy($("#leaderboard-positions").text());
         });
+        $("#dropDown>#copyLBBtn").click(function() {
+            copy($("#leaderboard-positions").text());
+        });	
         $("#lastIPBtn").click(function() {
             lastIP = localStorage.getItem("lastIP");
-            dosearch();
-            document.getElementById("searchInput").value = lastIP;
-            $("#searchBtn").click();
+            $('#server-token').val(lastIP);
+			$('#server-join').click();
         });
 
         $("#copyIPBtn").click(function() {
@@ -616,81 +642,105 @@ function init(modVersion) {
         });
 
         $("#copySIPBtn").click(function() {
-            if (searchSip != null) {
                 if (realmode == ":party") {
-                    copy("http://agar.io/#" + window.location.href.replace('http://agar.io/#',''));
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);					
                 } else if (realmode != ":party") {
 					if (region!=null&&realmode!=null){
-                    copy("http://agar.io/?sip=" + searchSip + "&?r=" + region + "&m=" + realmode);
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copy(CopyTkPwLb2);
 					}
 					else{
-					copy("http://agar.io/?sip=" + searchSip);	
+					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val();	
+					copy(CopyTkPwLb2);
 					}
                 }
-            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+             else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-                    copy("http://agar.io/#" + window.location.href.replace('http://agar.io/#',''));
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);
                 } else if (realmode != ":party") {					
-                    copy("http://agar.io/?sip=" + currentIP + "&?r=" + $('#region').val() + "&m=" + realmode);
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copy(CopyTkPwLb2);
                 }
             }
 			else if (privateSrv!=null) {
-                    copy("http://agar.io/?ip=" + privateSrv + "&?SERVER=PRIVATE");                
-            }
-        });
-        $("#copySIPandPass").click(function() {
-            if (searchSip != null) {
-                if (realmode == ":party") {
-                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#',''));
-                } else if (realmode != ":party") {
-					if (region!=null&&realmode!=null){
-                    copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode);
-					}
-					else{
-					copy("http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val());	
-					}
-                }
-            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
-                if (realmode == ":party") {
-                    copy("http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#',''));
-                } else if (realmode != ":party") {					
-                    copy("http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode);
-                }
-            }
-			else if (privateSrv!=null) {
-                    copy("http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE");                
-            }
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copy(CopyTkPwLb2);					
+            }	
         });	
-        $("#copySIPPassLB").click(function() {
-
+		
+		$("#copySIPandPass").click(function() {		
             if (searchSip != null) {
                 if (realmode == ":party") {
-                    CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#','');
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);					
+                } else if (realmode != ":party") {
+//					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copy(CopyTkPwLb2);
+//					}
+//					else{
+//					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
+//					copy(CopyTkPwLb2);
+//					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copy(CopyTkPwLb2);
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copy(CopyTkPwLb2);					
+            }	
+		});	
+			
+		$("#copySIPPassLB").click(function() {		
+            if (searchSip != null) {
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();					
                 } else if (realmode != ":party") {
-					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
-					copyToClipboardAll();
-					}
-					else{
-					CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val();	
-					copyToClipboardAll();
-					}
+//					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copy(CopyTkPwLb2);
+//					}
+//					else{
+//					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
+//					copy(CopyTkPwLb2);
+//					}
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + "#" + window.location.href.replace('http://agar.io/#','');
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();
                 } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip=" + currentIP + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					copyToClipboardAll();
                 }
             }
 			else if (privateSrv!=null) {
 					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
 					copyToClipboardAll();					
-            }
-        });			
+            }	
+		});			
 
         $("#reconnectBtn").click(function() {
             realmode=$("#gamemode").val();
@@ -820,7 +870,7 @@ function init(modVersion) {
 		});
 		
 		$('*[data-itr="page_play"]').click(function() {
-
+		localStorage.setItem("lastIP", $('#server-token').val());
 	if (userData.responseJSON.geobytesipaddress!= undefined) {
 	userip=userData.responseJSON.geobytesipaddress;
 	userip = userip.replace(" ", "_");	
@@ -1641,10 +1691,10 @@ setTimeout(function() {
                              
                 return realmode;
             }, 1000);
-            setTimeout(function() {             
-                lastIP = currentIP;
-                localStorage.setItem("lastIP", lastIP);
-            }, 10000);
+//            setTimeout(function() {             
+//                lastIP = currentIP;
+//                localStorage.setItem("lastIP", lastIP);
+//            }, 10000);
         });
     }, //5000
     9000); //9000
