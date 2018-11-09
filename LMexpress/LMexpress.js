@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1076,7 +1076,7 @@ function init(modVersion) {
 					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
 					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 					else {ctx.fillText(minbtext2, c.width / 2, 22); }
-					MC.setQuality($('#quality').val());
+					//MC.setQuality($('#quality').val());
             }, 200);
         })
         $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
@@ -1088,7 +1088,7 @@ function init(modVersion) {
 				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
 				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
 				else {ctx.fillText(minbtext2, c.width / 2, 22); }
-				MC.setQuality($('#quality').val());
+				//MC.setQuality($('#quality').val());
             }, 100);
         })
 
@@ -1826,7 +1826,7 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
         findIP(searchStr.replace("http://agar.io/?search=ws://", ""));
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
-            MC.setRegion(region);
+            $('#region option[value="'+region+'"]').prop('selected', 'selected').change();
 //            getInfo();
         }
         //      MC.setGameMode(mode);                  //important
@@ -1843,8 +1843,8 @@ function findIP(searchIP) {
         if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
-        if (realmode == ":ffa") {
-            $('#gamemode option[value=":ffa"]').prop('selected', 'selected').change();
+        if (realmode == "") {
+            $('#gamemode option[value=""]').prop('selected', 'selected').change();
         }
         if (realmode == ":teams") {
             $('#gamemode option[value=":teams"]').prop('selected', 'selected').change();
@@ -1873,13 +1873,13 @@ function findIP(searchIP) {
                     extendedTimeOut: 20000
                 }).css("width", "210px");
                 //    testmessage();
-                MC.setQuality($('#quality').val());
+                //MC.setQuality($('#quality').val());
                 //showMenu();
             } else {
                 changeServer();
                 timerId = setInterval(function() {
 //                    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
-					if (MC.isInGame() == true || numAttempts == maxAttempts) {
+					if (numAttempts == maxAttempts) {
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
                         numTries++;
@@ -1901,7 +1901,7 @@ function findIP(searchIP) {
                             }).css("width", "210px");
                             //       testmessage();
                             //		$("#gamemode").val("nothing");
-                            MC.setQuality($('#quality').val());
+                            //MC.setQuality($('#quality').val());
                             //showMenu();
                         } else {
                             //console.log("MC.isConnecting(): " + MC.isConnecting());
@@ -1964,7 +1964,7 @@ function searchPlayer(searchString) {
                 }).css("width", "210px");
                 //		testmessage();
                 $("#gamemode").val("nothing");
-                MC.setQuality($('#quality').val());
+                //MC.setQuality($('#quality').val());
                 //showMenu();
             } else {
                 changeServer();
@@ -1974,11 +1974,11 @@ function searchPlayer(searchString) {
                 timerId = setInterval(function() {
 
                 //    if (MC.isConnecting() == false || numAttempts == maxAttempts) {
-					if (MC.isInGame() == true || numAttempts == maxAttempts) {	
+					if (numAttempts == maxAttempts) {	
 						
                         numAttempts = 0;
                         //console.log("MC.isConnecting(): " + MC.isConnecting());
-                        leaderboard = $(ogario.leaderboardHTML).text();
+                        leaderboard = $("#leaderboard-positions").text();
 
                         //console.log(leaderboard);
                         //console.log("Number of names: " + numNames);
@@ -2006,7 +2006,7 @@ function searchPlayer(searchString) {
                                 extendedTimeOut: 20000
                             }).css("width", "210px");
                             //			testmessage();
-                            MC.setQuality($('#quality').val());
+                            //MC.setQuality($('#quality').val());
                             //showMenu();
                         } else {
                             //console.log("MC.isConnecting(): " + MC.isConnecting());
@@ -2958,13 +2958,11 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 
 		            if (commandMsg == "EU-London") {
 		                setTimeout(function() {
-		                    MC.onDisconnect();
-		                    MC.reconnect();
+							 $("#server-join").click();
 		                }, 60000);
 		            } else if (commandMsg == "RU-Russia") {
 		                setTimeout(function() {
-		                    MC.onDisconnect();
-		                    MC.reconnect();
+		                    $("#server-join").click();
 		                }, 100);
 		            }
 		        }
@@ -2972,14 +2970,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 }
 
 function isLegendExpress(Express){
-    try {
-        MC.onConnect();
-		return Express="False";
-    }
-    catch(err) {
-      //  console.log(err);
-	  return Express="True";
-    }
+    if (messageone!="0"&&messageone!="1"){return Express="False";}
+	else {return Express="True";}
 //var Express;isLegendExpress(Express);
 }
 
