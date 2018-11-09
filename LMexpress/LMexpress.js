@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "57"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1735,8 +1735,7 @@ function spectate() {
 }
 
 function changeServer() {
-    MC.setGameMode(ogario.gameMode);
-    MC.reconnect();
+    $("#server-reconnect").click();	
     adres();
     appendLog($("#leaderboard-positions").text());
 }
@@ -4010,6 +4009,21 @@ function hideSearchHud() {
     $("#notes").fadeOut();
     $("#statsInfo").fadeOut();
     $("#searchLog").fadeOut();
+}
+function appendLog(message) {
+    var region = $("#gamemode").val();
+    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
+        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
+        '<a href="javascript:void(0);" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
+
+    $("#log p").first().show(100);
+    bumpLog();
+}
+
+function bumpLog() {
+    $("#log").animate({
+        scrollTop: 0
+    }, "slow");
 }
 
 function PreLcCelebration() {
