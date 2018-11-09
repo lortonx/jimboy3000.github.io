@@ -1,5 +1,5 @@
 /*************
- * Legend express v0.063 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "62"; // the version 1.1-> 1.11
@@ -457,13 +457,13 @@ function init(modVersion) {
 		$(".menu-tabs").children().attr("style", "width: 19.99%;");
 		$(".profile-tab").hide();
 				
-		$('#server').css("width", "-=40px");	
+/*		$('#server').css("width", "-=40px");	
 		$('#server').before('<button id="CopyAll" class="btn btn-warning" style="background-color: #018cf6; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
-
 		$("#CopyAll").tooltip({
 		title: "Copy Server, Password, Teamboard & Leaderboard",
 		placement: "left"
 		});
+		
 		
         $("#CopyAll").click(function() {
 
@@ -499,7 +499,7 @@ function init(modVersion) {
 					copyToClipboardAll();					
             }
         });	
-
+*/
         var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
         //	var savemusic=$(".agario-panel.sounds-panel").html();
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
