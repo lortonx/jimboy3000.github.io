@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "59"; // the version 1.1-> 1.11
+var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1870,7 +1870,7 @@ function findIP(searchIP) {
                 searching = false;
 //                hideCancelSearch();
                 //hideSearchHud();
-	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
+	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=hideSearchHud();play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" onclick=hideSearchHud(); style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "210px");
@@ -1897,7 +1897,7 @@ function findIP(searchIP) {
                             searching = false;
                             hideCancelSearch();
                             //hideSearchHud();
-	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
+	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=hideSearchHud();play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" onclick=hideSearchHud(); style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "210px");
@@ -1960,7 +1960,7 @@ function searchPlayer(searchString) {
                 searching = false;
 //                hideCancelSearch();
                 //hideSearchHud();
-	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
+	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=hideSearchHud();play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" onclick=hideSearchHud(); style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "210px");
@@ -2003,7 +2003,7 @@ function searchPlayer(searchString) {
                             searching = false;
 //                            hideCancelSearch();
                             //hideSearchHud();
-	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
+	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=hideSearchHud();play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" onclick=hideSearchHud(); style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "210px");
