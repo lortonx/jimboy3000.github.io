@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1828,7 +1828,7 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
             MC.setRegion(region);
-            getInfo();
+//            getInfo();
         }
         //      MC.setGameMode(mode);                  //important
         findIP(ip.replace("ws://", ""));
@@ -1856,7 +1856,7 @@ function findIP(searchIP) {
     }, 1500); //weird
     if (!searching) {
         if ($.trim(searchIP) == '') {} else {
-            showCancelSearch();
+//            showCancelSearch();
             searching = true;
             var interval = 1800;
             var maxTries = 4;
@@ -1867,7 +1867,7 @@ function findIP(searchIP) {
             numTries++;
             if (currentIP == searchIP) {
                 searching = false;
-                hideCancelSearch();
+//                hideCancelSearch();
                 //hideSearchHud();
                 toastr["info"](Premadeletter29 + '! </br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
@@ -1919,7 +1919,7 @@ function findIP(searchIP) {
     } else {
         clearInterval(timerId);
         searching = false;
-        hideCancelSearch();
+//        hideCancelSearch();
         toastr["error"](Premadeletter32 + "!").css("width", "210px");
     }
 }
@@ -1927,7 +1927,7 @@ function findIP(searchIP) {
 function searchPlayer(searchString) {
     if (!searching) {
         if ($.trim(searchString) == '') {} else {
-            showCancelSearch();
+//            showCancelSearch();
             searching = true;
             //var interval = 2500;
             var interval = 1800;
@@ -1957,7 +1957,7 @@ function searchPlayer(searchString) {
 
             if (found) {
                 searching = false;
-                hideCancelSearch();
+//                hideCancelSearch();
                 //hideSearchHud();
                 toastr["info"](Premadeletter29 + '!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
@@ -1994,13 +1994,13 @@ function searchPlayer(searchString) {
                         if (numTries >= maxTries) {
                             clearInterval(timerId);
                             searching = false;
-                            hideCancelSearch();
+//                            hideCancelSearch();
                             toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (found) {
                             clearInterval(timerId);
                             searching = false;
-                            hideCancelSearch();
+//                            hideCancelSearch();
                             //hideSearchHud();
                             toastr["info"](Premadeletter29 + '!</br> <button class="btn btn-sm btn-primary btn-play btn-play-shortcut" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                                 timeOut: 20000,
@@ -2024,7 +2024,7 @@ function searchPlayer(searchString) {
     } else {
         clearInterval(timerId);
         searching = false;
-        hideCancelSearch();
+//        hideCancelSearch();
         toastr["error"](Premadeletter32).css("width", "210px");
     }
 }
