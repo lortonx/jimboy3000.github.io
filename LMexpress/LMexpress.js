@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "52"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -524,7 +524,7 @@ function init(modVersion) {
         //							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
         //	$('#music').append(savemusic+'</div>');						
 
-
+/*
         if (typeof YT !== 'undefined') {
             musicPlayer = new YT.Player('musicFrame', {
                 events: {
@@ -540,7 +540,24 @@ function init(modVersion) {
                 }
             });
         }
-		
+*/
+        // player shortcut
+		var playerState = 0;
+        $("#playerBtn").click(function() {           
+                
+                if (playerState != 1) {
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+                    $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
+                    $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
+					return playerState = 1;
+                } else {
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+                    $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
+                    $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
+					return playerState = 0;
+                }
+            
+        });		
         //roller and other icons
         $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
         //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
@@ -582,6 +599,52 @@ function init(modVersion) {
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
             '</div></div>');
 
+        $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
+            //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
+            '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
+
+        $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
+            '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
+            '<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter57 + '><i id="ChatBtn1" class="fa fa-comment-o" style="padding-left: 0px;"></i></button>' +
+            '<button id="MiniScripts" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setscriptingfunction();" data-toggle="tooltip" data-original-title="Mini Scripts"><i id="MiniScripts1" class="fa fa-linode" style="padding-left: 0px;"></i></button>' +
+            '<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>' +
+            '<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>' +
+            '<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>' +
+            '<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>' +
+            '<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter13 + '><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>' +
+            '<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 11%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+
+
+        $("#minimap-hud").prepend('<div id="images-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="sendicon1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendicon11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendicon2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon2();" data-toggle="tooltip" data-original-title="Why?"><i id="sendicon21" class="fa fa-question-circle" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendicon3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendicon31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+
+        $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Rick Astley - Never Gonna Give You Up"><i id="sendyt11" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendyt2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt2();" data-toggle="tooltip" data-original-title="Survivor - Eye Of The Tiger"><i id="sendyt21" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Lion king - The Lion Sleeps Tonight"><i id="sendyt31" class="fa fa-music" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Agario - Jumbo Solo vs Teams"><i id="sendyt41" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Agario - Kill3r vs Teams"><i id="sendyt51" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Promotional Video"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+
+        $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>' +
+            '<button id="msgcommand2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand2f();" data-toggle="tooltip" data-original-title="Laugh to Team"><i id="msgcommand21" class="fa fa-smile-o" style="padding-left: 0px;"></i></button>' +
+            '<button id="msgcommand3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand3f();" data-toggle="tooltip" data-original-title="Team Change Name to yours"><i id="msgcommand31" class="fa fa-magic" style="padding-center: 0px;"></i></button>' +
+            '<button id="msgcommand4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand4f();" data-toggle="tooltip" data-original-title="Troll on Death"><i id="msgcommand41" class="fa fa-bath" style="padding-center: 0px;"></i></button>' +
+            '<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>' +
+            '<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
+
+		$("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
+			
+			
+			
          $("#leaderboard-hud").append('<div id="leaderboard-menu" style="pointer-events: auto;">' +
             '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ; " data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
             '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
@@ -4117,4 +4180,666 @@ function SquareAgar(){
 				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 15px 15px 15px 15px;}'+
 				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
 				'#time-hud { border-radius: 10px; } </style>');	
+}
+
+
+function rotateminimapsectors() {
+    var c = document.getElementById("minimap");
+    var ctx = c.getContext("2d");
+    ctx.rotate(90 * Math.PI / 180);
+    var a = $("#minimap").height() - $("#minimap").width();
+    ctx.translate(a, -$("#minimap").height());
+    //		rotateminimap=rotateminimap+1;
+    //		if (rotateminimap==4){rotateminimap=0};
+    //	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendrotateminimap.js";$("body").append(s);
+    //		return rotateminimap;
+}
+		
+function sendicon1() {
+    if ($('#message-box').css('display') == 'block') {
+        KeyEvent.simulate(13, 13);
+    }
+    KeyEvent.simulate(13, 13);
+    $("#message").val("[img]" + pic1urlimg + "[/img]");
+    setTimeout(function() {
+        KeyEvent.simulate(13, 13);
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+    }, 50);
+}
+
+function sendicon2() {
+    if ($('#message-box').css('display') == 'block') {
+        KeyEvent.simulate(13, 13);
+    }
+    KeyEvent.simulate(13, 13);
+    $("#message").val("[img]" + pic2urlimg + "[/img]");
+    setTimeout(function() {
+        KeyEvent.simulate(13, 13);
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+    }, 50);
+}
+
+function sendicon3() {
+    if ($('#message-box').css('display') == 'block') {
+        KeyEvent.simulate(13, 13);
+    }
+    KeyEvent.simulate(13, 13);
+    $("#message").val("[img]" + pic3urlimg + "[/img]");
+    setTimeout(function() {
+        KeyEvent.simulate(13, 13);
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+    }, 50);
+}
+
+function sendicon4() {
+    if ($('#message-box').css('display') == 'block') {
+        KeyEvent.simulate(13, 13);
+    }
+    KeyEvent.simulate(13, 13);
+    $("#message").val("[img]" + pic4urlimg + "[/img]");
+    setTimeout(function() {
+        KeyEvent.simulate(13, 13);
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+    }, 50);
+}
+
+function sendicon5() {
+    if ($('#message-box').css('display') == 'block') {
+        KeyEvent.simulate(13, 13);
+    }
+    KeyEvent.simulate(13, 13);
+    $("#message").val("[img]" + pic5urlimg + "[/img]");
+    setTimeout(function() {
+        KeyEvent.simulate(13, 13);
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+    }, 50);
+}
+
+function sendicon6() {
+    if ($('#message-box').css('display') == 'block') {
+        KeyEvent.simulate(13, 13);
+    }
+    KeyEvent.simulate(13, 13);
+    $("#message").val("[img]" + pic6urlimg + "[/img]");
+    setTimeout(function() {
+        KeyEvent.simulate(13, 13);
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+    }, 50);
+}
+
+function setpic1data() {
+    localStorage.setItem("pic1dataimg", $("#pic1data").val())
+    $("#sendicon1").attr("data-original-title", $("#pic1data").val());
+}
+
+function setpic2data() {
+    localStorage.setItem("pic2dataimg", $("#pic2data").val())
+    $("#sendicon2").attr("data-original-title", $("#pic2data").val());
+}
+
+function setpic3data() {
+    localStorage.setItem("pic3dataimg", $("#pic3data").val())
+    $("#sendicon3").attr("data-original-title", $("#pic3data").val());
+}
+
+function setpic4data() {
+    localStorage.setItem("pic4dataimg", $("#pic4data").val())
+    $("#sendicon4").attr("data-original-title", $("#pic4data").val());
+}
+
+function setpic5data() {
+    localStorage.setItem("pic5dataimg", $("#pic5data").val())
+    $("#sendicon5").attr("data-original-title", $("#pic5data").val());
+}
+
+function setpic6data() {
+    localStorage.setItem("pic6dataimg", $("#pic6data").val())
+    $("#sendicon6").attr("data-original-title", $("#pic6data").val());
+}
+
+
+function sendyt1() {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+        KeyEvent.simulate(13, 13);
+        $("#message").val("[yt]" + yt1url + "[/yt]");
+        setTimeout(function() {
+            KeyEvent.simulate(13, 13);
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 50);
+    } else {
+        toastr["info"](Premadeletter39);
+    }
+}
+
+function sendyt2() {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+        KeyEvent.simulate(13, 13);
+        $("#message").val("[yt]" + yt2url + "[/yt]");
+        setTimeout(function() {
+            KeyEvent.simulate(13, 13);
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 50);
+    } else {
+        toastr["info"](Premadeletter39);
+    }
+}
+
+function sendyt3() {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+        KeyEvent.simulate(13, 13);
+        $("#message").val("[yt]" + yt3url + "[/yt]");
+        setTimeout(function() {
+            KeyEvent.simulate(13, 13);
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 50);
+    } else {
+        toastr["info"](Premadeletter39);
+    }
+}
+
+function sendyt4() {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+        KeyEvent.simulate(13, 13);
+        $("#message").val("[yt]" + yt4url + "[/yt]");
+        setTimeout(function() {
+            KeyEvent.simulate(13, 13);
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 50);
+    } else {
+        toastr["info"](Premadeletter39);
+    }
+}
+
+function sendyt5() {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+        KeyEvent.simulate(13, 13);
+        $("#message").val("[yt]" + yt5url + "[/yt]");
+        setTimeout(function() {
+            KeyEvent.simulate(13, 13);
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 50);
+    } else {
+        toastr["info"](Premadeletter39);
+    }
+}
+
+function sendyt6() {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'block') {
+            KeyEvent.simulate(13, 13);
+        }
+        KeyEvent.simulate(13, 13);
+        $("#message").val("[yt]" + yt6url + "[/yt]");
+        setTimeout(function() {
+            KeyEvent.simulate(13, 13);
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 50);
+    } else {
+        toastr["info"](Premadeletter39);
+    }
+}
+
+function setyt1data() {
+    localStorage.setItem("yt1dataimg", $("#yt1data").val())
+    $("#sendyt1").attr("data-original-title", $("#yt1data").val());
+}
+
+function setyt2data() {
+    localStorage.setItem("yt2dataimg", $("#yt2data").val())
+    $("#sendyt2").attr("data-original-title", $("#yt2data").val());
+}
+
+function setyt3data() {
+    localStorage.setItem("yt3dataimg", $("#yt3data").val())
+    $("#sendyt3").attr("data-original-title", $("#yt3data").val());
+}
+
+function setyt4data() {
+    localStorage.setItem("yt4dataimg", $("#yt4data").val())
+    $("#sendyt4").attr("data-original-title", $("#yt4data").val());
+}
+
+function setyt5data() {
+    localStorage.setItem("yt5dataimg", $("#yt5data").val())
+    $("#sendyt5").attr("data-original-title", $("#yt5data").val());
+}
+
+function setyt6data() {
+    localStorage.setItem("yt6dataimg", $("#yt6data").val())
+    $("#sendyt6").attr("data-original-title", $("#yt6data").val());
+}
+
+function setyt1url() {
+    yt1url = $("#yt1url").val();
+    if (getParameterByName("v", yt1url) != null) {
+        yt1url = getParameterByName("v", yt1url);
+    }
+    localStorage.setItem("yt1urlimg", yt1url);
+    return yt1url;
+}
+
+function setyt2url() {
+    yt2url = $("#yt2url").val();
+    if (getParameterByName("v", yt2url) != null) {
+        yt2url = getParameterByName("v", yt2url);
+    }
+    localStorage.setItem("yt2urlimg", yt2url);
+    return yt2url;
+}
+
+function setyt3url() {
+    yt3url = $("#yt3url").val();
+    if (getParameterByName("v", yt3url) != null) {
+        yt3url = getParameterByName("v", yt3url);
+    }
+    localStorage.setItem("yt3urlimg", yt3url);
+    return yt3url;
+}
+
+function setyt4url() {
+    yt4url = $("#yt4url").val();
+    if (getParameterByName("v", yt4url) != null) {
+        yt4url = getParameterByName("v", yt4url);
+    }
+    localStorage.setItem("yt4urlimg", yt4url);
+    return yt4url;
+}
+
+function setyt5url() {
+    yt5url = $("#yt5url").val();
+    if (getParameterByName("v", yt5url) != null) {
+        yt5url = getParameterByName("v", yt5url);
+    }
+    localStorage.setItem("yt5urlimg", yt5url);
+    return yt5url;
+}
+
+function setyt6url() {
+    yt6url = $("#yt6url").val();
+    if (getParameterByName("v", yt6url) != null) {
+        yt6url = getParameterByName("v", yt6url);
+    }
+    localStorage.setItem("yt6urlimg", yt6url);
+    return yt6url;
+}
+
+function enableshortcuts() {
+    if ($("#IPBtn").attr('aria-pressed') == "false") {
+        $("#IPBtn").click();
+    }
+    if ($("#SHOSHOBtn").attr('aria-pressed') == "false") {
+        $("#SHOSHOBtn").click();
+    }
+    //	if($("#TIMEBtn").attr('aria-pressed') == "false"){
+    //	$("#TIMEBtn").click(); }
+    //	if($("#MAINBBtn").attr('aria-pressed') == "false"){
+    //	$("#MAINBBtn").click(); }
+    //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+    //	$("#MAINBTBtn").click(); }
+	    	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
+				$("#MAINBTBtn").click(); }
+//			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
+//				$("#AnimatedSkinBtn").click(); }
+    if ($("#XPBtn").attr('aria-pressed') == "false") {
+        $("#XPBtn").click();
+    }
+    //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
+    //	$("#MANUIBtn").click(); }
+}		
+
+
+function seticonfunction() {
+    if (setmessagecom == "NO") {
+        YessetMsgComReturn();
+    }
+    if (setyt == "NO") {
+        YessetytReturn();
+    }
+	if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }	
+    if (seticon == "YES") {
+        NoseticonReturn();
+    } else if (seticon == "NO") {
+        YesseticonReturn();
+    }
+}
+
+function setmessagecomfunction() {
+    if (seticon == "NO") {
+        YesseticonReturn();
+    }
+    if (setyt == "NO") {
+        YessetytReturn();
+    }
+	if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }	
+    if (setmessagecom == "YES") {
+        NosetMsgComReturn();
+    } else if (setmessagecom == "NO") {
+        YessetMsgComReturn();
+    }
+}
+
+function setytfunction() {
+    if (setmessagecom == "NO") {
+        YessetMsgComReturn();
+    }
+    if (seticon == "NO") {
+        YesseticonReturn();
+    }
+	if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }	
+    if (setyt == "YES") {
+        NosetytReturn();		
+    } else if (setyt == "NO") {
+        YessetytReturn();
+    }
+}
+function setscriptingfunction() {
+    if (seticon == "NO") {
+        YesseticonReturn();
+    }	
+    if (setyt == "NO") {
+        YessetytReturn();
+    }
+    if (setmessagecom == "NO") {
+        YessetMsgComReturn();
+    }	
+    if (setscriptingcom == "YES") {
+        NosetScriptingComReturn();
+    } else if (setscriptingcom == "NO") {
+        YessetScriptingComReturn();
+    }
+}
+
+function NoseticonReturn() {
+    $("#images-hud").show();
+    return seticon = "NO";
+}
+
+function YesseticonReturn() {
+    $("#images-hud").hide();
+    return seticon = "YES";
+}
+
+function NosetMsgComReturn() {
+    $("#msgcommands-hud").show();
+    return setmessagecom = "NO";
+}
+
+function YessetMsgComReturn() {
+    $("#msgcommands-hud").hide();
+    return setmessagecom = "YES";
+}
+
+function NosetytReturn() {
+    $("#yt-hud").show();
+    return setyt = "NO";
+}
+
+function YessetytReturn() {
+    $("#yt-hud").hide();
+    return setyt = "YES";
+}
+function NosetScriptingComReturn() {
+    $("#scripting-hud").show();
+    return setscriptingcom = "NO";
+}
+
+function YessetScriptingComReturn() {
+    $("#scripting-hud").hide();
+    return setscriptingcom = "YES";
+}
+
+
+function changePicFun() {
+    $("#minimapPicture").hide();
+    $("#leadbPicture").hide();
+    $("#teambPicture").hide();
+    $("#canvasPicture").hide();
+    $("#leadbtext").hide();
+    $("#teambtext").hide();
+    $("#imgUrl").hide();
+    $("#imgHref").hide();
+    $("#minbtext").hide();
+    if ($("#backgroundPic").val() == 1) {
+        $("#minimapPicture").show();
+        $("#minbtext").show();
+    }
+    if ($("#backgroundPic").val() == 2) {
+        $("#leadbPicture").show();
+        $("#leadbtext").show();
+    }
+    if ($("#backgroundPic").val() == 3) {
+        $("#teambPicture").show();
+        $("#teambtext").show();
+    }
+    if ($("#backgroundPic").val() == 4) {
+        $("#canvasPicture").show();
+    }
+    if ($("#backgroundPic").val() == 5) {
+        $("#imgUrl").show();
+        $("#imgHref").show();
+    }
+}
+
+function changePhotoFun() {
+    $("#pic1url").hide();
+    $("#pic2url").hide();
+    $("#pic3url").hide();
+    $("#pic4url").hide();
+    $("#pic5url").hide();
+    $("#pic6url").hide();
+    $("#yt1url").hide();
+    $("#yt2url").hide();
+    $("#yt3url").hide();
+    $("#yt4url").hide();
+    $("#yt5url").hide();
+    $("#yt6url").hide();
+
+    $("#pic1data").hide();
+    $("#pic2data").hide();
+    $("#pic3data").hide();
+    $("#pic4data").hide();
+    $("#pic5data").hide();
+    $("#pic6data").hide();
+    $("#yt1data").hide();
+    $("#yt2data").hide();
+    $("#yt3data").hide();
+    $("#yt4data").hide();
+    $("#yt5data").hide();
+    $("#yt6data").hide();
+
+    if ($("#changephotos").val() == 1) {
+        $("#pic1url").show();
+        $("#pic1data").show();
+    }
+    if ($("#changephotos").val() == 2) {
+        $("#pic2url").show();
+        $("#pic2data").show();
+    }
+    if ($("#changephotos").val() == 3) {
+        $("#pic3url").show();
+        $("#pic3data").show();
+    }
+    if ($("#changephotos").val() == 4) {
+        $("#pic4url").show();
+        $("#pic4data").show();
+    }
+    if ($("#changephotos").val() == 5) {
+        $("#pic5url").show();
+        $("#pic5data").show();
+    }
+    if ($("#changephotos").val() == 6) {
+        $("#pic6url").show();
+        $("#pic6data").show();
+    }
+    if ($("#changephotos").val() == 7) {
+        $("#yt1url").show();
+        $("#yt1data").show();
+    }
+    if ($("#changephotos").val() == 8) {
+        $("#yt2url").show();
+        $("#yt2data").show();
+    }
+    if ($("#changephotos").val() == 9) {
+        $("#yt3url").show();
+        $("#yt3data").show();
+    }
+    if ($("#changephotos").val() == 10) {
+        $("#yt4url").show();
+        $("#yt4data").show();
+    }
+    if ($("#changephotos").val() == 11) {
+        $("#yt5url").show();
+        $("#yt5data").show();
+    }
+    if ($("#changephotos").val() == 12) {
+        $("#yt6url").show();
+        $("#yt6data").show();
+    }
+
+}		
+
+function toggleFullScreen(fullornot) {
+    if (fullornot == "NO") {
+        launchIntoFullscreen(document.documentElement);
+        return this.fullornot = "YES"
+    } else {
+        exitFullscreen();
+        return this.fullornot = "NO"
+    }
+}
+
+function launchIntoFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}
+
+function Bino() {
+//    if (MC.isInGame()) {
+//        if (ogario.spectate) {
+            KeyEvent.simulate(81, 81)
+//        } else {
+//            toastr["info"](Premadeletter38);
+//        }
+//    }
+}
+
+
+function msgcommand1f() {
+    commandMsg = "Hello";
+    otherMsg = "";
+    dosendmsgcommand();
+}
+
+function msgcommand2f() {
+    commandMsg = "Team5";
+    otherMsg = "";
+    dosendmsgcommand();
+}
+
+function msgcommand3f() {
+    commandMsg = "NamePerm";
+    otherMsg = "";
+    dosendmsgcommand();
+}
+
+function msgcommand4f() {
+    commandMsg = "dTroll2";
+    otherMsg = "";
+    dosendmsgcommand();
+}
+
+function msgcommand5f() {
+    commandMsg = "Youtube";
+    otherMsg = "";
+    dosendmsgcommand();
+}
+
+function msgcommand6f() {
+    commandMsg = "HideAll";
+    otherMsg = "";
+    dosendmsgcommand();
+}
+
+function dosendmsgcommand() {
+
+//    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+        if ($('#message-box').css('display') == 'none') {
+            KeyEvent.simulate(13, 13);
+        };
+        setTimeout(function() {
+            $("#message").val("Legend.Mod&?player=" + $("#nick").val() + "&?com=" + commandMsg + "&?do=" + otherMsg);
+            KeyEvent.simulate(13, 13);
+            if ($('#message').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            };
+            if ($('#message-box').css('display') == 'block') {
+                KeyEvent.simulate(13, 13);
+            }
+        }, 100);
+ //   } else {
+ //       toastr["info"](Premadeletter39);
+ //   }
+
 }
