@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "52"; // the version 1.1-> 1.11
+var semimodVersion = "53"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -129,8 +129,8 @@ var MSGNICK;
 var playerMsg = "";
 var commandMsg = "";
 var otherMsg = "";
-var rotateminimap = 0;
-var rotateminimapfirst = 0;
+//var rotateminimap = 0;
+var  = 0;
 var openthecommunication = "NO";
 var clickedname = "NO";
 var oldteammode;
@@ -582,6 +582,10 @@ function init(modVersion) {
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
             '</div></div>');
 
+        $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
+            //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
+            '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
+			
          $("#leaderboard-hud").append('<div id="leaderboard-menu" style="pointer-events: auto;">' +
             '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ; " data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
             '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
@@ -4047,6 +4051,19 @@ function bumpLog() {
     $("#log").animate({
         scrollTop: 0
     }, "slow");
+}
+
+
+function rotateminimapsectors() {
+    var c = document.getElementById("minimap");
+    var ctx = c.getContext("2d");
+    ctx.rotate(90 * Math.PI / 180);
+    var a = $("#minimap").height() - $("#minimap").width();
+    ctx.translate(a, -$("#minimap").height());
+    //		rotateminimap=rotateminimap+1;
+    //		if (rotateminimap==4){rotateminimap=0};
+    //	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://jimboy3100.github.io/legendrotateminimap.js";$("body").append(s);
+    //		return rotateminimap;
 }
 
 function PreLcCelebration() {
