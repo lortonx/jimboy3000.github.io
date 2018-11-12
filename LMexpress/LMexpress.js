@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "57"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -916,7 +916,9 @@ function init(modVersion) {
             }
 */			
         });	
-
+        $("#ChatBtn").click(function() {
+            chatfunction();
+        });
         $("#Cutnames").click(function() {	
 		CutNameConflictwithMessageFunction();			
             if (checkedGameNames == 0) {
@@ -4990,4 +4992,50 @@ function Ultimouse() {
 		$("body").append(s);
 		return Ultimouseenabled=1;
 	}
+}
+function chatfunction() {
+//    if (MC.isInGame()) {
+//        if (!ogario.spectate) {
+            //	if (messageone==1){
+            if (hiddenfromclan == 0) {
+                saveclanpassword = $("#clantag").val();
+                toastr["info"](Premadeletter33);
+                $("#ChatBtn1").attr('class', 'fa fa-comments-o');
+                $("#ChatBtn").attr("data-original-title", Premadeletter58);
+                $("#clantag").val("HIDDEN");
+                //	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
+                $(".btn.btn-play.btn-primary.btn-needs-server").click();
+                hiddenfromclan = 1;
+                return saveclanpassword, hiddenfromclan;
+            } else if (hiddenfromclan == 1) {
+                toastr["info"](Premadeletter34);
+                $("#ChatBtn1").attr('class', 'fa fa-eye-slash');
+                $("#ChatBtn").attr("data-original-title", Premadeletter59);
+                $("#clantag").val(saveclanpassword);
+                $(".btn.btn-play.btn-primary.btn-needs-server").click();
+                hiddenfromclan = 0;
+                return hiddenfromclan;
+            }
+ //       }
+        /* else if (messageone==0){
+		var tempmode = getGameMode();
+		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
+		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
+		$("#create-party-btn-2").click();
+		setTimeout(function () {
+		if(tempmode==":party"){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
+		if(tempmode==""){$('#gamemode option[value=""]').prop('selected', 'selected').change();}
+		if(tempmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
+		if(tempmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
+		}, 6000);
+		setTimeout(function () {
+		MC.setQuality($('#quality').val());
+		}, 8000);
+	}
+	
+	
+    } else {
+        toastr["info"](Premadeletter35 + "!").css("width", "210px");
+    }}*/
 }
