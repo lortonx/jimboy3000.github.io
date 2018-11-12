@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -26,6 +26,7 @@ getaccesstoken2();
 }, 3000);
 
 var CutNameConflictwithMessage=false;
+/*
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -35,6 +36,17 @@ var CutNameConflictwithMessage=false;
 		else{
 			_privateLog.apply(console, arguments);
 		}
+		}
+    };
+})();
+*/
+(function(){
+    var _privateLog = console.log;
+    console.log = function (message) {
+		if (~message.indexOf("OGARio by szymy")){
+		}
+		else{
+			_privateLog.apply(console, arguments);
 		}
     };
 })();
