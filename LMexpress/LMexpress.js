@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -20,9 +20,10 @@ document.title = "Legend mod";
 var accesstomod;
 setTimeout(function() {
 $('[data-toggle="tooltip"]').tooltip();
-SquareAgar();	
+//SquareAgar();	
 getaccesstoken();
 getaccesstoken2();
+triggerLMbtns();
 }, 3000);
 
 var CutNameConflictwithMessage=false;
@@ -484,30 +485,7 @@ function init(modVersion) {
 //        $(".menu-tabs").children().attr("style", "width: 14.27%;");
         $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 		$(".menu-tabs").children().attr("style", "width: 16.66%;");
-            PanelImageSrc = $("#menuBg").val();
-            if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
-                $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-            }
-            $("#copyLBBtn").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
-                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-                }
-            });			
-            $("#dropDown>#copyLBBtn").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
-                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-                }
-            });			
-            $("#copySIPandPass").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
-                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-                }
-            });			
-            $("#copySIPPassLB").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
-                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
-                }
-            });	
+
 		$(".profile-tab").hide();    
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
@@ -612,7 +590,7 @@ function init(modVersion) {
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>' +
             '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
             '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
-//            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
             '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
             '</div></div>');
 			
@@ -5882,3 +5860,228 @@ function changeModLanguage() {
         }, 800);
     }		
 }
+function triggerLMbtns() {
+			$('.btn').css("text-transform", "capitalize");
+            PanelImageSrc = $("#menuBg").val();
+            if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+            }
+            $("#copyLBBtn").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#dropDown>#copyLBBtn").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#copySIPandPass").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#copySIPPassLB").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });	
+            //	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
+            //	if (IPBtn  == "true") { $("#IPBtn").click(); }
+            if (SHOSHOBtn == "true") {
+                $("#SHOSHOBtn").click();
+            }
+            //	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
+            //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
+            //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
+            //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
+			if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
+            if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click();  }
+			toastrSkinNotice=1;
+            //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
+            if (YoutubeAutoBtn == "true") {
+                $("#YoutubeAutoBtn").click();
+            }
+            if (XPBtn == "true") {
+                $("#XPBtn").click();
+            }
+            if (TIMEcalBtn == "true") {
+                $("#TIMEcalBtn").click();
+            }
+            if (troll1Btn == "true") {
+                $("#troll1Btn").click();
+            }
+            if (ComPosition == 0) {
+                $("#topright").click();
+            }
+            if (ComPosition == 1) {
+                $("#topleft").click();
+            }
+            if (ComPosition == 2) {
+                $("#bottomright").click();
+            }
+ //           if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
+ //               $("#DoubleSplitRange").click();
+ //           }	
+ //          if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
+ //               $("#UniversalChat").click();
+ //           }				
+            //	if (ComPosition  == 3) { $("#bottomleft").click(); }
+            if (autoCoinBtn == "true") {
+                setTimeout(function() {
+                    $("#autoCoinBtn").click();
+                }, 5000);
+            }
+            //	if (copyGameNames == "true") {
+            //		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
+
+            document.getElementById("minimapPicture").value = localStorage.getItem("minimapbckimg");
+            if ($('#minimapPicture').val() != "") {
+                setminbgname();
+            }
+            document.getElementById("leadbPicture").value = localStorage.getItem("leadbimg");
+            if ($('#leadbPicture').val() != "") {
+                setleadbgname();
+            }
+            document.getElementById("teambPicture").value = localStorage.getItem("teambimg");
+            if ($('#teambPicture').val() != "") {
+                setteambgname();
+            }
+            document.getElementById("canvasPicture").value = localStorage.getItem("canvasbimg");
+            if ($('#canvasPicture').val() != "") {
+                setcanvasbgname();
+            }
+            document.getElementById("leadbtext").value = localStorage.getItem("leadbtext");
+            if ($('#leadbtext').val() != "") {
+                setleadbtext();
+            }
+            document.getElementById("teambtext").value = localStorage.getItem("teambtext");
+            if ($('#teambtext').val() != "") {
+                setteambtext();
+            }
+            document.getElementById("imgUrl").value = localStorage.getItem("imgUrl");
+            if ($('#imgUrl').val() != "") {
+                setimgUrl();
+            }
+            document.getElementById("imgHref").value = localStorage.getItem("imgHref");
+            if ($('#imgHref').val() != "") {
+                setimgHref();
+            }
+            document.getElementById("minbtext").value = localStorage.getItem("minbtext");
+            if ($('minbtext').val() != "") {
+                setminbtext();
+            }
+
+            document.getElementById("pic1url").value = localStorage.getItem("pic1urlimg");
+            if ($('#pic1url').val() != "") {
+                setpic1url();
+            }
+            document.getElementById("pic2url").value = localStorage.getItem("pic2urlimg");
+            if ($('#pic2url').val() != "") {
+                setpic2url();
+            }
+            document.getElementById("pic3url").value = localStorage.getItem("pic3urlimg");
+            if ($('#pic3url').val() != "") {
+                setpic3url();
+            }
+            document.getElementById("pic4url").value = localStorage.getItem("pic4urlimg");
+            if ($('#pic4url').val() != "") {
+                setpic4url();
+            }
+            document.getElementById("pic5url").value = localStorage.getItem("pic5urlimg");
+            if ($('#pic5url').val() != "") {
+                setpic5url();
+            }
+            document.getElementById("pic6url").value = localStorage.getItem("pic6urlimg");
+            if ($('#pic6url').val() != "") {
+                setpic6url();
+            }
+            document.getElementById("yt1url").value = localStorage.getItem("yt1urlimg");
+            if ($('#yt1url').val() != "") {
+                setyt1url();
+            }
+            document.getElementById("yt2url").value = localStorage.getItem("yt2urlimg");
+            if ($('#yt2url').val() != "") {
+                setyt2url();
+            }
+            document.getElementById("yt3url").value = localStorage.getItem("yt3urlimg");
+            if ($('#yt3url').val() != "") {
+                setyt3url();
+            }
+            document.getElementById("yt4url").value = localStorage.getItem("yt4urlimg");
+            if ($('#yt4url').val() != "") {
+                setyt4url();
+            }
+            document.getElementById("yt5url").value = localStorage.getItem("yt5urlimg");
+            if ($('#yt5url').val() != "") {
+                setyt5url();
+            }
+            document.getElementById("yt6url").value = localStorage.getItem("yt6urlimg");
+            if ($('#yt6url').val() != "") {
+                setyt6url();
+            }
+            document.getElementById("pic1data").value = localStorage.getItem("pic1dataimg");
+            if ($('#pic1data').val() != "") {
+                setpic1data();
+            }
+            document.getElementById("pic2data").value = localStorage.getItem("pic2dataimg");
+            if ($('#pic2data').val() != "") {
+                setpic2data();
+            }
+            document.getElementById("pic3data").value = localStorage.getItem("pic3dataimg");
+            if ($('#pic3data').val() != "") {
+                setpic3data();
+            }
+            document.getElementById("pic4data").value = localStorage.getItem("pic4dataimg");
+            if ($('#pic4data').val() != "") {
+                setpic4data();
+            }
+            document.getElementById("pic5data").value = localStorage.getItem("pic5dataimg");
+            if ($('#pic5data').val() != "") {
+                setpic5data();
+            }
+            document.getElementById("pic6data").value = localStorage.getItem("pic6dataimg");
+            if ($('#pic6data').val() != "") {
+                setpic6data();
+            }
+            document.getElementById("yt1data").value = localStorage.getItem("yt1dataimg");
+            if ($('#yt1data').val() != "") {
+                setyt1data();
+            }
+            document.getElementById("yt2data").value = localStorage.getItem("yt2dataimg");
+            if ($('#yt2data').val() != "") {
+                setyt2data();
+            }
+            document.getElementById("yt3data").value = localStorage.getItem("yt3dataimg");
+            if ($('#yt3data').val() != "") {
+                setyt3data();
+            }
+            document.getElementById("yt4data").value = localStorage.getItem("yt4dataimg");
+            if ($('#yt4data').val() != "") {
+                setyt4data();
+            }
+            document.getElementById("yt5data").value = localStorage.getItem("yt5dataimg");
+            if ($('#yt5data').val() != "") {
+                setyt5data();
+            }
+            document.getElementById("yt6data").value = localStorage.getItem("yt6dataimg");
+            if ($('#yt6data').val() != "") {
+                setyt6data();
+            }
+
+            document.getElementById("discwebhook1").value = localStorage.getItem("discwebhook1");
+            if ($('#discwebhook1').val() != "" && $('#discwebhook1').val() != null) {
+                setdiscwebhook1();
+            }
+            document.getElementById("discwebhook2").value = localStorage.getItem("discwebhook2");
+            if ($('#discwebhook2').val() != "" && $('#discwebhook2').val() != null) {
+                setdiscwebhook2();
+            }
+
+            if (dyinglight1load == null || dyinglight1load == "null") {
+                $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerDyingLight");
+            } else if (dyinglight1load == "yes") {
+                opendyinglight();
+                $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
+            }
+}			
