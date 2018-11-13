@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.051 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "51"; // the version 1.1-> 1.11
+var semimodVersion = "52"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -469,7 +469,7 @@ function init(modVersion) {
             '<input id="note5" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
             '<input id="note6" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
             '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
-            '</div>');
+            '</div>');			
 		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
 		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
 		
@@ -477,49 +477,45 @@ function init(modVersion) {
 		$(".menu-tabs").children().attr("style", "width: 19.99%;");
 		$(".profile-tab").hide();
 				
-/*		$('#server').css("width", "-=40px");	
-		$('#server').before('<button id="CopyAll" class="btn btn-warning" style="background-color: #018cf6; height: 100%" class="fa fa-puzzle-piece fa-lg"><i class="fa fa-clipboard"></i></button>');
-		$("#CopyAll").tooltip({
-		title: "Copy Server, Password, Teamboard & Leaderboard",
-		placement: "left"
-		});
-		
-		
-        $("#CopyAll").click(function() {
+        $("#time-hud").attr("style", "top: 290px !important;");
 
-            if (searchSip != null) {
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copyToClipboardAll();					
-                } else if (realmode != ":party") {
-					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
-					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
-					copyToClipboardAll();
-					}
-					else{
-					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
-					copyToClipboardAll();
-					}
-                }
-            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copyToClipboardAll();
-                } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					copyToClipboardAll();
-                }
+        // fix leaderboard buttons
+        $("#leaderboard-menu").css("pointer-events", "auto");
+        $("#searchHud").css("pointer-events", "auto");
+
+        // fix stats text size
+        $('[id="statsText"]').css("font-size", "medium");
+
+        // detect paste
+        $(document).bind("paste", function(e) {
+            if (!searching && !($("input,textarea").is(":focus"))) {
+                var pastedData = e.originalEvent.clipboardData.getData('text');
+                hideMenu();
+                showSearchHud();
+                $("#searchInput").val(pastedData);
+                $("#searchInput").select();
+                searchHandler(pastedData);
             }
-			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
-					copyToClipboardAll();					
+        });
+
+        $("#searchInput").bind("paste", function(e) {
+            if (!searching) {
+                var pastedData = e.originalEvent.clipboardData.getData('text');
+                $("#searchInput").val(pastedData);
+                $("#searchInput").select();
+                searchHandler(pastedData);
             }
-        });	
-*/
+        });
+
+        //load notes
+        $("#note1").val(localStorage.getItem('note1'));
+        $("#note2").val(localStorage.getItem('note2'));
+        $("#note3").val(localStorage.getItem('note3'));
+        $("#note4").val(localStorage.getItem('note4'));
+        $("#note5").val(localStorage.getItem('note5'));
+        $("#note6").val(localStorage.getItem('note6'));
+        $("#note7").val(localStorage.getItem('note7'));
+
         var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
         //	var savemusic=$(".agario-panel.sounds-panel").html();
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
