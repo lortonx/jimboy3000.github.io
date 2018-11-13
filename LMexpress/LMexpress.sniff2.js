@@ -39,6 +39,8 @@ $(".agario-profile-name").css('vertical-align', '');
 //2. Administration Tools
 Premadeletter39="Due to spamming issues, you must be in game and use password";
 setTimeout(function () {
+var legbgpic = $("#menuBg").val();
+var legbgcolor = $("#menuPanelColor").val();	
 $("#menu-footer").after('<div id="administrationtools" style="display: none; background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; height: 165px; width: 500px; ";>'+
 	'<div id="administrationtoolshud" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
 	'<div id="administrationtoolshud1" align="middle"><h5 class="main-color">ADMINISTRATOR TOOLS</h5>'+	
