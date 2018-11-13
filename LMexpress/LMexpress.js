@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "53"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
