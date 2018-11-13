@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.063 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "63"; // the version 1.1-> 1.11
+var semimodVersion = "53 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6106,7 +6106,7 @@ function bluebtns(){
         $('#searchShortcut').mouseenter(function() {$('#searchShortcut').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#searchShortcut').css('background-color', "transparent");});		
         $('#lastIPBtn').mouseenter(function() {$('#dropDown3').css('background-color', '#018cf6');})
-		.mouseleave(function() {$('#lastIPBtn').css('background-color', "transparent");});		
+		.mouseleave(function() {$('#dropDown3').css('background-color', "transparent");});	
         $('#copySIPBtn').mouseenter(function() {$('#copySIPBtn').css('background-color', '#018cf6');})
 		.mouseleave(function() {$('#copySIPBtn').css('background-color', "transparent");});		
         $('#copyLBBtn').mouseenter(function() {$('#copyLBBtn').css('background-color', '#018cf6');})
