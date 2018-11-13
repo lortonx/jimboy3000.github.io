@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "60"; // the version 1.1-> 1.11
+var semimodVersion = "51"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -369,7 +369,10 @@ var datasent2;
 fzogarOgarIframeListener();
 
 function init(modVersion) {
-	
+// ANNOUNCEMENTS
+        if (modVersion != "1.4") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}	
 	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
 	universalchat();
 		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Agar Tool/Legend Mod</input></label>');
@@ -1243,11 +1246,11 @@ function init(modVersion) {
         })
 
 		$("#oldSkinsBtn").click(function() {
-			if (modVersion == "1.3" ) {
+			if (modVersion == "1.3||1.4" ) {
 		location.replace("https://agar.io/LMoldskins");
 			}
 			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
 			}
 		});	
 /*		$("#LMImplements").click(function() {
@@ -3120,8 +3123,9 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		                });
 		            }, 12000);
 		        } else if (commandMsg == "Hello") {
-		            if (MC.isInGame()) {
-		                if (!ogario.spectate) {
+					if ($('#message-box').css('display') == 'none') {
+//		            if (MC.isInGame()) {
+//		                if (!ogario.spectate) {
 		                    var nickname = $("#nick").val();
 		                    $("#nick").val("Hello Team");
 		                    $("#helloContainer").show();
@@ -3131,7 +3135,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		                        $("#helloContainer").show();
 		                        newsubmit();
 		                    }, 5000);
-		                }
+//		                }
 		            }
 		        }
 
