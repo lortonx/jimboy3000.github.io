@@ -1066,7 +1066,7 @@ function init(modVersion) {
 					//var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
 				//semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP;	
 				if (pass2!=""){
-				semiurl2=currentIP2 + "?pass="+pass2;	
+				semiurl2=currentIP2 + "pass="+pass2;	
 				}
 				else{
 				semiurl2=currentIP2;	
