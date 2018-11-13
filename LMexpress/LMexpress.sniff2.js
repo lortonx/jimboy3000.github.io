@@ -95,7 +95,7 @@ setTimeout(function () {
 		}	}	
 });	}, 8000);
 if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
-}, 100);
+}, 2100);
 
 function disconnect2min(){
 	if (AdminRights==1){
