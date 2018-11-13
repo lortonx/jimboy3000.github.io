@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "58"; // the version 1.1-> 1.11
+var semimodVersion = "59"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -10,7 +10,7 @@ $('#gamemode>option:nth-child(1)').val(':ffa');
 $('#gamemode').trigger('change');
 }, 1500);
 */
-//loadersetings();
+
 appendLMhiFbPs();
 PreLcCelebration();
 loadericon();
@@ -24,6 +24,7 @@ $('[data-toggle="tooltip"]').tooltip();
 getaccesstoken();
 getaccesstoken2();
 triggerLMbtns();
+loadersetings();
 }, 3000);
 
 var CutNameConflictwithMessage=false;
@@ -483,7 +484,7 @@ function init(modVersion) {
         $("#cleartimer").hide();
 		
 //        $(".menu-tabs").children().attr("style", "width: 14.27%;");
-        $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
+        $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; padding:12px;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 		$(".menu-tabs").children().attr("style", "width: 16.66%;");
 
 		$(".profile-tab").hide();    
@@ -1611,7 +1612,7 @@ function getEmbedUrl(url) {
     }
 }
 function loadersetings() {
-    setTimeout(function() {
+//    setTimeout(function() {
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -1640,7 +1641,7 @@ function loadersetings() {
         }
         checkonlyonce = "true";
         localStorage.setItem("checkonlyonce", checkonlyonce);
-    }, 3500);
+//    }, 3500);
 }
 function loadericon() {
 	//continue loadericon
@@ -6084,4 +6085,12 @@ function triggerLMbtns() {
                 opendyinglight();
                 $("#LEGENDAds2").load("https://jimboy3100.github.io/banners/bannerStopDyingLight");
             }
+}
+function opendyinglight() {
+toastr["info"]("Function is not ready yet");	
+/*    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/dyinglight.js";
+    $("body").append(s);
+	*/
 }			
