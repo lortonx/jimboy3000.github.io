@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -26,7 +26,7 @@ getaccesstoken2();
 }, 3000);
 
 var CutNameConflictwithMessage=false;
-/*
+
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -39,7 +39,7 @@ var CutNameConflictwithMessage=false;
 		}
     };
 })();
-*/
+/*
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -50,7 +50,7 @@ var CutNameConflictwithMessage=false;
 		}
     };
 })();
-
+*/
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   		
 var oldgamemode=$("#gamemode");
@@ -137,6 +137,7 @@ var setyt = "YES";
 var searching;
 var timerId;
 T = {};
+var playerState = 0;
 var MSGCOMMANDS = "";
 var MSGCOMMANDS2;
 var MSGCOMMANDS;
@@ -324,6 +325,7 @@ var Premadeletter119 = "Report as Fake (change Skin)";
 var Premadeletter120 = "Enter your EXACT name of the player"; 
 var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
 var Premadeletter122 = "to permanent ban from usage of this extension"; 
+
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -557,7 +559,7 @@ function init(modVersion) {
         }
 */
         // player shortcut
-		var playerState = 0;
+		
         $("#playerBtn").click(function() {           
                 
                 if (playerState != 1) {
@@ -4995,6 +4997,7 @@ function Ultimouse() {
 }
 function chatfunction() {
 //    if (MC.isInGame()) {
+      if ($("#helloContainer").is(":visible")==false) {	
 //        if (!ogario.spectate) {
             //	if (messageone==1){
             if (hiddenfromclan == 0) {
@@ -5016,7 +5019,7 @@ function chatfunction() {
                 hiddenfromclan = 0;
                 return hiddenfromclan;
             }
- //       }
+        }
         /* else if (messageone==0){
 		var tempmode = getGameMode();
 		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
