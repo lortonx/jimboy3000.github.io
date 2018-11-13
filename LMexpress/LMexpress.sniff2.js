@@ -1,3 +1,41 @@
+//Legend Mod Sniff2 by jimboy3100
+(function() {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = 'https://jimboy3100.github.io/banners/icon32croped.ico.gif';
+    document.getElementsByTagName('head')[0].appendChild(link);
+})();
+
+document.title = "LM express";   
+setTimeout(function () {
+document.title = "LM express";   
+}, 700);
+setTimeout(function () {
+document.title = "LM express";   
+}, 1300);
+setTimeout(function () {
+document.title = "LM express";   
+}, 1500);
+
+var CutNameConflictwithMessage=false;	
+(function(){
+    var _privateLog = console.log;
+    console.log = function (message) {
+		if (CutNameConflictwithMessage==false){
+		if (~message.indexOf("OGARio by szymy")){
+		}
+		else{
+			_privateLog.apply(console, arguments);
+		}
+		}
+    };
+})();
+
+setTimeout(function () {
+$(".agario-profile-name").css('vertical-align', '');
+}, 6000);
+
 //2. Administration Tools
 Premadeletter39="Due to spamming issues, you must be in game and use password";
 setTimeout(function () {
