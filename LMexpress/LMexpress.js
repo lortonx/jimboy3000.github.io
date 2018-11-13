@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.063 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "62"; // the version 1.1-> 1.11
+var semimodVersion = "63"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1563,7 +1563,14 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
-	
+	    $("#shortcuts-hud").hide();
+        $("#rotate-hud").hide();
+        $("#exp-bar").hide();
+        $("#time-hud").hide();
+        //	$("#LEGENDAds").hide();
+        //	$("#legendbanners").hide();
+        //	$(".input-group.skin.colorpicker-element").hide();
+        $("#timertools-hud").hide();
 		setTimeout(function() {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
