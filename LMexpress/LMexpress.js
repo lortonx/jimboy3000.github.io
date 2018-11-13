@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "53 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "54 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -373,9 +373,9 @@ fzogarOgarIframeListener();
 
 function init(modVersion) {
 // ANNOUNCEMENTS
-        if (modVersion != "1.4") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-		}	
+//        if (modVersion != "1.4") {	           
+//			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+//		}	
 	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
 	universalchat();
 		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Agar Tool/Legend Mod</input></label>');
@@ -1059,7 +1059,8 @@ function init(modVersion) {
             }
 					
         });
-			$("#VoiceBtn").click(function () {						
+			$("#VoiceBtn").click(function () {
+				if (modVersion == "1.3||1.4" ) {
 					var currentIP2=$("#server-token").val();
 					var pass2=$("#clantag").val();
 					//var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
@@ -1080,7 +1081,10 @@ function init(modVersion) {
 			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
 			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
 			var win = window.open(url2, '_blank');	
-					
+				}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
+			}					
 		});	
 		
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
