@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "58"; // the version 1.1-> 1.11
+var semimodVersion = "59"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3099,8 +3099,86 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			MsgServCommandsreturner();
 			acceptServerBtn();
 				}
-			}			
-		    if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {	
+			}
+		    else if (MSGCOMMANDS.includes("Legend.Mod")) {
+
+		        playerMsg = getParameterByName("player", MSGCOMMANDS);
+		        commandMsg = getParameterByName("com", MSGCOMMANDS);
+		        otherMsg = getParameterByName("do", MSGCOMMANDS);
+		        //		$( ".toast.toast-success" ).text("");
+		        //		$(".message-text").text();.hide();
+		        $(".message-text").remove();
+				$(".toast.toast-success").remove();
+		        //without confirmation
+		        if (commandMsg == "Team5") {
+		            $("#top5-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icogeneral.gif ")').css({
+		                opacity: 0.8
+		            });
+		            setTimeout(function() {
+		                $("#top5-hud").css('background-image', 'url(" ")').css({
+		                    opacity: 1
+		                });
+		            }, 12000);
+		        } else if (commandMsg == "Hello") {
+		            if (MC.isInGame()) {
+		                if (!ogario.spectate) {
+		                    var nickname = $("#nick").val();
+		                    $("#nick").val("Hello Team");
+		                    $("#helloContainer").show();
+		                    newsubmit();
+		                    setTimeout(function() {
+		                        $("#nick").val(nickname);
+		                        $("#helloContainer").show();
+		                        newsubmit();
+		                    }, 5000);
+		                }
+		            }
+		        }
+
+		        //with confirmation
+		        else if (commandMsg == "HideAll") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter23 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-hideall" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-hideall").click(function() {
+		                $("#HideAllBthn").click();
+		            });
+		        } else if (commandMsg == "NamePerm") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter26 + ': ' + playerMsg + ' </br> <button class="btn btn-sm btn-primary btn-play btn-do-NamePerm" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-NamePerm" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-NamePerm").click(function() {
+		                $("#nick").val(playerMsg);
+		                $("#helloContainer").show();
+		                newsubmit();
+		            });
+		        } else if (commandMsg == "dTroll2") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter27 + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-troll" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-troll" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function() {
+		                settroll1true();
+		                whenplayerdies();
+		            });
+		        } else if (commandMsg == "Youtube") {
+		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
+		                timeOut: 20000,
+		                extendedTimeOut: 20000
+		            }).css("width", "210px");
+		            $(".btn.btn-sm.btn-primary.btn-play.btn-play-youtube").click(function() {
+		                $("#playerBtn").click();
+		                setTimeout(function() {
+		                    $("#playerBtn").focusout();
+		                }, 100);
+		            });
+		            //	$("#playerBtn").click();			
+		        }
+
+		    }			
+		    else if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {	
 		        commandMsg = getParameterByName("com", MSGCOMMANDS);
 		        otherMsg = getParameterByName("do", MSGCOMMANDS);
 		        $(".message-text").remove();
