@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "54 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "55 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6107,6 +6107,8 @@ function bluebtns(){
 		//blue onmouseover-onmouseout buttons
         $('#searchShortcut').mouseenter(function() {$('#searchShortcut').css('background-color', Top5MassColor);})
 		.mouseleave(function() {$('#searchShortcut').css('background-color', "transparent");});		
+        $('#dropDown3>#lastIPBtn').mouseenter(function() {$('#dropDown3>#lastIPBtn').css('background-color', Top5MassColor);})
+		.mouseleave(function() {$('#dropDown3>#lastIPBtn').css('background-color', "transparent");});	
         $('#lastIPBtn').mouseenter(function() {$('#dropDown3').css('background-color', Top5MassColor);})
 		.mouseleave(function() {$('#dropDown3').css('background-color', "transparent");});		
         $('#copySIPBtn').mouseenter(function() {$('#copySIPBtn').css('background-color', Top5MassColor);})
@@ -6188,6 +6190,10 @@ function bluebtns(){
         $('#RotateRight').mouseenter(function() {$('#RotateRight').css('background-color', Top5MassColor);})
 		.mouseleave(function() {$('#RotateRight').css('background-color', "transparent");});
 }		
+
+
+
+
 
 
 
