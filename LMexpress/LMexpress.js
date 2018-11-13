@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "59"; // the version 1.1-> 1.11
+var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5042,7 +5042,7 @@ function StartEditGameNames() {
                         return '<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css" />'
                     },
                     html: function() {
-                        return '<div id="tcm" style="display:block;"><div id="tcm-header"><span>Copy Tools</span><p>copy leaderboard names and cell names. (press x to show/hide)</p></div><div id="tcm-main"><div><span>leaderboard names</span><div id="tcm-leaderboard"></div></div><div><span>cell names</span><div id="tcm-names"></div></div><div></div></div></div>'
+                        return '<div id="tcm" style="display:block;"><div id="tcm-header"><span>Copy Tools</span><p>copy cell names. (press x to show/hide)</p></div><div id="tcm-main"><div><span style="display: none;">leaderboard names</span><div id="tcm-leaderboard" style="display: none;"></div></div><div><span>cell names</span><div id="tcm-names"></div></div><div></div></div></div>'
                     },
                     span: function(e, o) {
                         return "<span onclick=\"javascript:prompt('" + e + "', '" + o + "')\">" + o + "</span>"
