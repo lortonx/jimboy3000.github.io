@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "57"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -484,6 +484,30 @@ function init(modVersion) {
 //        $(".menu-tabs").children().attr("style", "width: 14.27%;");
         $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
 		$(".menu-tabs").children().attr("style", "width: 16.66%;");
+            PanelImageSrc = $("#menuBg").val();
+            if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+            }
+            $("#copyLBBtn").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#dropDown>#copyLBBtn").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#copySIPandPass").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });			
+            $("#copySIPPassLB").blur(function() {
+                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                    $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
+                }
+            });	
 		$(".profile-tab").hide();    
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
@@ -1531,7 +1555,8 @@ function init(modVersion) {
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
 			}
 		});		
-*/		
+*/
+		
         $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 
         $(".agario-panel.ogario-yt-panel").css({
@@ -1559,6 +1584,7 @@ function init(modVersion) {
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
         });
+	
 		setTimeout(function() {
 		     if (YoutubeAutoBtn == "true") {
                 $("#YoutubeAutoBtn").click();
