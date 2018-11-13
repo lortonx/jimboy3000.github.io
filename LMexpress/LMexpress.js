@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "60"; // the version 1.1-> 1.11
+var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -24,6 +24,7 @@ $('[data-toggle="tooltip"]').tooltip();
 getaccesstoken();
 getaccesstoken2();
 triggerLMbtns();
+bluebtns();
 loadersetings();
 }, 3000);
 
@@ -5908,9 +5909,9 @@ function triggerLMbtns() {
             if (TIMEcalBtn == "true") {
                 $("#TIMEcalBtn").click();
             }
-            if (troll1Btn == "true") {
+/*            if (troll1Btn == "true") {
                 $("#troll1Btn").click();
-            }
+            }*/
             if (ComPosition == 0) {
                 $("#topright").click();
             }
@@ -5927,11 +5928,11 @@ function triggerLMbtns() {
  //               $("#UniversalChat").click();
  //           }				
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
-            if (autoCoinBtn == "true") {
+/*            if (autoCoinBtn == "true") {
                 setTimeout(function() {
                     $("#autoCoinBtn").click();
-                }, 5000);
-            }
+                }, 5000); 
+            }*/
             //	if (copyGameNames == "true") {
             //		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
 
@@ -6092,4 +6093,89 @@ toastr["info"]("Function is not ready yet");
     s.src = "https://jimboy3100.github.io/dyinglight.js";
     $("body").append(s);
 	*/
+}	
+function bluebtns(){
+		//blue onmouseover-onmouseout buttons
+        $('#searchShortcut').mouseenter(function() {$('#searchShortcut').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#searchShortcut').css('background-color', "transparent");});		
+        $('#lastIPBtn').mouseenter(function() {$('#dropDown3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#lastIPBtn').css('background-color', "transparent");});		
+        $('#copySIPBtn').mouseenter(function() {$('#copySIPBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copySIPBtn').css('background-color', "transparent");});		
+        $('#copyLBBtn').mouseenter(function() {$('#copyLBBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copyLBBtn').css('background-color', "transparent");});			
+        $('#dropDown>#copyLBBtn').mouseenter(function() {$('#dropDown>#copyLBBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#dropDown>#copyLBBtn').css('background-color', "transparent");});			
+		$('#copySIPandPass').mouseenter(function() {$('#copySIPandPass').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copySIPandPass').css('background-color', "transparent");});
+		$('#copySIPPassLB').mouseenter(function() {$('#copySIPPassLB').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#copySIPPassLB').css('background-color', "transparent");});		
+        $('#reconnectBtn').mouseenter(function() {$('#reconnectBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#reconnectBtn').css('background-color', "transparent");});
+		
+        $('#VoiceBtn').mouseenter(function() {$('#VoiceBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#VoiceBtn').css('background-color', "transparent");});
+        $('#ChatBtn').mouseenter(function() {$('#ChatBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#ChatBtn').css('background-color', "transparent");});
+        $('#MiniScripts').mouseenter(function() {$('#MiniScripts').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#MiniScripts').css('background-color', "transparent");});
+		$('#SendCommands').mouseenter(function() {$('#SendCommands').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#SendCommands').css('background-color', "transparent");});
+        $('#shortcuts-hud>#Images').mouseenter(function() {$('#shortcuts-hud>#Images').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#shortcuts-hud>#Images').css('background-color', "transparent");});
+        $('#yout').mouseenter(function() {$('#yout').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#yout').css('background-color', "transparent");});
+        $('#Bino').mouseenter(function() {$('#Bino').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#Bino').css('background-color', "transparent");});
+        $('#playerBtn').mouseenter(function() {$('#playerBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#playerBtn').css('background-color', "transparent");});
+        $('#fullscreenBtn').mouseenter(function() {$('#fullscreenBtn').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#fullscreenBtn').css('background-color', "transparent");});
+
+        $('#Cutnames').mouseenter(function() {$('#Cutnames').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#Cutnames').css('background-color', "transparent");});				
+        $('#Ultimouse').mouseenter(function() {$('#Ultimouse').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#Ultimouse').css('background-color', "transparent");});						
+		
+        $('#msgcommand1').mouseenter(function() {$('#msgcommand1').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand1').css('background-color', "transparent");});	
+        $('#msgcommand2').mouseenter(function() {$('#msgcommand2').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand2').css('background-color', "transparent");});	
+        $('#msgcommand3').mouseenter(function() {$('#msgcommand3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand3').css('background-color', "transparent");});	
+        $('#msgcommand4').mouseenter(function() {$('#msgcommand4').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand4').css('background-color', "transparent");});	
+        $('#msgcommand5').mouseenter(function() {$('#msgcommand5').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand5').css('background-color', "transparent");});	
+        $('#msgcommand6').mouseenter(function() {$('#msgcommand6').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#msgcommand6').css('background-color', "transparent");});	
+		
+        $('#sendicon1').mouseenter(function() {$('#sendicon1').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon1').css('background-color', "transparent");});	
+        $('#sendicon2').mouseenter(function() {$('#sendicon2').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon2').css('background-color', "transparent");});	
+        $('#sendicon3').mouseenter(function() {$('#sendicon3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon3').css('background-color', "transparent");});	
+        $('#sendicon4').mouseenter(function() {$('#sendicon4').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon4').css('background-color', "transparent");});	
+        $('#sendicon5').mouseenter(function() {$('#sendicon5').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon5').css('background-color', "transparent");});	
+        $('#sendicon6').mouseenter(function() {$('#sendicon6').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendicon6').css('background-color', "transparent");});
+		
+        $('#sendyt1').mouseenter(function() {$('#sendyt1').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt1').css('background-color', "transparent");});	
+        $('#sendyt2').mouseenter(function() {$('#sendyt2').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt2').css('background-color', "transparent");});	
+        $('#sendyt3').mouseenter(function() {$('#sendyt3').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt3').css('background-color', "transparent");});	
+        $('#sendyt4').mouseenter(function() {$('#sendyt4').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt4').css('background-color', "transparent");});	
+        $('#sendyt5').mouseenter(function() {$('#sendyt5').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt5').css('background-color', "transparent");});	
+        $('#sendyt6').mouseenter(function() {$('#sendyt6').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#sendyt6').css('background-color', "transparent");});
+		
+        $('#RotateRight').mouseenter(function() {$('#RotateRight').css('background-color', '#018cf6');})
+		.mouseleave(function() {$('#RotateRight').css('background-color', "transparent");});
 }			
