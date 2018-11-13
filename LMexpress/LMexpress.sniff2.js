@@ -86,7 +86,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 setTimeout(function () {	
 	$("#nick").blur(function(){
 		if ($('#administrationtoolshud').is(':hidden')) {
-			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄ 🌀 ☠ 🐦EΛ"){
+			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){
 			$("#main-menu").hide();
 			$("#skins-panel").hide();
 			$("#quick-menu").hide();
@@ -391,4 +391,3 @@ function erasescripter(){
 	if ($("#Userscriptpages3").val()==5){
 		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
 }
-
