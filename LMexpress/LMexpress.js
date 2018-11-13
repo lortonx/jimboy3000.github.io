@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "52"; // the version 1.1-> 1.11
+var semimodVersion = "53"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -560,20 +560,9 @@ function init(modVersion) {
         // player shortcut
 		
         $("#playerBtn").click(function() {           
-                
-                if (playerState != 1) {
-                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-                    $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                    $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
-					return playerState = 1;
-                } else {
-                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-                    $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                    $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
-					return playerState = 0;
-                }
-            
-        });		
+         playYoutube()            
+        });	
+		
         //roller and other icons
         $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
         //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
