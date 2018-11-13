@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "54"; // the version 1.1-> 1.11
+var semimodVersion = "55"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -472,10 +472,128 @@ function init(modVersion) {
             '</div>');			
 		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
 		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
+
+        $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
+            '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
+            '<button id="stoptimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="stopTimer();" data-toggle="tooltip" data-original-title="Pause Timer""><i id="pausetime" class="fa fa-pause-circle" style="padding-left: 0px;"></i></button>' +
+            '<button id="cleartimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="clearTimer();" data-toggle="tooltip" data-original-title="Stop Timer"><i id="cleartime" class="fa fa-stop-circle" style="padding-left: 0px;"></i></button>' +
+            '<a id="timer" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100% position: absolute; right: 0px;">00:00</a>');
+        $("#stoptimer").hide();
+        $("#cleartimer").hide();
 		
-		$("#exp-bar").hide();
-		$(".menu-tabs").children().attr("style", "width: 19.99%;");
-		$(".profile-tab").hide();
+        $(".menu-tabs").children().attr("style", "width: 14.27%;");
+        $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 14.27%; height: 100%;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
+    
+        $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
+            //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
+            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
+            '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
+            //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
+            //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
+            											'<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
+            //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
+            '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
+            '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
+            //											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: none;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
+ /*           '<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
+            //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
+            '<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
+            //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
+ */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn" data-itr="page_play" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
+            '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
+            '<option value="1" data-itr="">Minimap</option>' +
+            '<option value="2" data-itr="">Leaderboard</option>' +
+            '<option value="3" data-itr="">Teamboard</option>' +
+            '<option value="4" data-itr="">Main Canvas</option>' +
+            '<option value="5" data-itr="">Main Banner</option>' +
+            '</select>' +
+
+            '<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
+            '<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
+            '<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
+            '<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +
+            '</div>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 0px 0;"><span id="legendmanualmess" class="title" style="">Manual Message Icons&Youtube:  </span>' +
+            '<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
+            '<option value="1" data-itr="">Icon 1</option>' +
+            '<option value="2" data-itr="">Icon 2</option>' +
+            '<option value="3" data-itr="">Icon 3</option>' +
+            '<option value="4" data-itr="">Icon 4</option>' +
+            '<option value="5" data-itr="">Icon 5</option>' +
+            '<option value="6" data-itr="">Icon 6</option>' +
+            '<option value="7" data-itr="">Youtube 1</option>' +
+            '<option value="8" data-itr="">Youtube 2</option>' +
+            '<option value="9" data-itr="">Youtube 3</option>' +
+            '<option value="10" data-itr="">Youtube 4</option>' +
+            '<option value="11" data-itr="">Youtube 5</option>' +
+            '<option value="12" data-itr="">Youtube 6</option>' +
+            '</select>' +
+
+            '<input id="pic1data" class="form-control" placeholder="Message Icon Text 1" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
+            '<input id="pic2data" class="form-control" placeholder="Message Icon Text 2" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
+            '<input id="pic3data" class="form-control" placeholder="Message Icon Text 3" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
+            '<input id="pic4data" class="form-control" placeholder="Message Icon Text 4" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
+            '<input id="pic5data" class="form-control" placeholder="Message Icon Text 5" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
+            '<input id="pic6data" class="form-control" placeholder="Message Icon Text 6" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
+            '<input id="yt1data" class="form-control" placeholder="Youtube Message Text 1" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
+            '<input id="yt2data" class="form-control" placeholder="Youtube Message Text 2" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
+            '<input id="yt3data" class="form-control" placeholder="Youtube Message Text 3" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
+            '<input id="yt4data" class="form-control" placeholder="Youtube Message Text 4" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
+            '<input id="yt5data" class="form-control" placeholder="Youtube Message Text 5" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
+            '<input id="yt6data" class="form-control" placeholder="Youtube Message Text 6" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
+
+            '<input id="pic1url" class="form-control" placeholder="Message Icon Imgur Url 1" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic2url" class="form-control" placeholder="Message Icon Imgur Url 2" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic3url" class="form-control" placeholder="Message Icon Imgur Url 3" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic4url" class="form-control" placeholder="Message Icon Imgur Url 4" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic5url" class="form-control" placeholder="Message Icon Imgur Url 5" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic6url" class="form-control" placeholder="Message Icon Imgur Url 6" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="yt1url" class="form-control" placeholder="Youtube Message Url 1" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt2url" class="form-control" placeholder="Youtube Message Url 2" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt3url" class="form-control" placeholder="Youtube Message Url 3" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt4url" class="form-control" placeholder="Youtube Message Url 4" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt5url" class="form-control" placeholder="Youtube Message Url 5" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt6url" class="form-control" placeholder="Youtube Message Url 6" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '</div></div>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
+            '<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
+            '<option value="1" data-itr="">English</option>' +
+            '<option value="6" data-itr="">Arabic - عربى</option>' +
+            '<option value="4" data-itr="">Bulgarian - български</option>' +
+            '<option value="5" data-itr="">French - Français</option>' +
+			'<option value="9" data-itr="">German - Deutsch</option>' +
+            '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
+			'<option value="8" data-itr="">Russian - Русские</option>' +
+            '<option value="3" data-itr="">Spanish - Español</option>' +
+			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
+            '</select></div>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
+            '<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
+            '<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
+            '<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
+            '<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
+            '</div></div>' +
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>' +
+            '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
+            '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
+//            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
+            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
+            '</div></div>');
+			
+//		$("#exp-bar").hide();
+//		$(".menu-tabs").children().attr("style", "width: 19.99%;");
+//		$(".profile-tab").hide();
 				
         $("#time-hud").attr("style", "top: 290px !important;");
 
@@ -486,6 +604,7 @@ function init(modVersion) {
         // fix stats text size
         $('[id="statsText"]').css("font-size", "medium");
 
+		
         // detect paste
         $(document).bind("paste", function(e) {
             if (!searching && !($("input,textarea").is(":focus"))) {
@@ -516,6 +635,9 @@ function init(modVersion) {
         $("#note6").val(localStorage.getItem('note6'));
         $("#note7").val(localStorage.getItem('note7'));
 
+		$(".note").keyup(function(event) {
+            localStorage.setItem(event.target.id, $(event.target).val());
+        });
         var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
         //	var savemusic=$(".agario-panel.sounds-panel").html();
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
@@ -588,9 +710,7 @@ function init(modVersion) {
         });
 
         // save notes
-        $(".note").keyup(function(event) {
-            localStorage.setItem(event.target.id, $(event.target).val());
-        });
+
 		//fzogar Upload / Download Settings
 		$("#import-settings-btn").attr('class', 'btn btn-success');
 //		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
@@ -917,6 +1037,7 @@ function init(modVersion) {
             }
 */			
         });	
+		
         $("#ChatBtn").click(function() {
             chatfunction();
         });
@@ -1240,7 +1361,159 @@ function init(modVersion) {
 				//MC.setQuality($('#quality').val());
             }, 100);
         })
+        $("#HideAllBthn").tooltip({
+            title: "Temporarily Hide/Show Everything. Function for Youtubers",
+            placement: "bottom"
+        });			
 
+
+
+
+        $("#SHOSHOBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("SHOSHOBtn", true);
+                $("#shortcuts-hud").show();
+                $("#rotate-hud").show();
+                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter43);
+            } else {
+                localStorage.setItem("SHOSHOBtn", false);
+                $("#shortcuts-hud").hide();
+                $("#rotate-hud").hide();
+                $("#images-hud").hide();
+                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter42);
+                return seticon = "YES";
+            }
+        });		
+        $("#XPBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("XPBtn", true);
+                $("#exp-bar").show();
+                $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter45);
+            } else {
+                localStorage.setItem("XPBtn", false);
+                $("#exp-bar").hide();
+                $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);
+            }
+        });	
+		        $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MAINBTBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
+				'#time-hud { border-radius: 10px; } </style>');				
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
+        		else {localStorage.setItem("MAINBTBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
+				'#menu-footer, #leaderboard-hud, #dropDown, #dropDown2, #minimap-hud,'+
+				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
+				'#time-hud { border-radius: 0 0 0 0 } </style>');
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
+            $("#AnimatedSkinBtn").click(function () {
+				toastr["info"]("Function is not ready yet");
+/*				var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
+				if (toastrSkinNotice==1){toastr["info"](Premadeletter71 + " <font color='red'><b>" + Premadeletter72 + "</font></b>, <font color='red'><b>FPS " + Premadeletter73 + "</font></b> "+Premadeletter74+" 16").css("width", "300px");}
+				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
+        		else {localStorage.setItem("AnimatedSkinBtn", false);
+				toastr["info"](Premadeletter75 +" <font color='red'><b>" + Premadeletter76 + "</font></b> " + Premadeletter77 + ". <font color='red'><b>" + Premadeletter78 + "</font></b> "+Premadeletter79).css("width", "300px");
+				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);} */
+				} );  	
+        $("#TIMEcalBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("TIMEcalBtn", true);
+                $("#timertools-hud").show();
+                $(this).html('<i class="fa fa-calculator"></i>' + Premadeletter51);
+                T.timerDiv = document.getElementById('timer');
+                return T.timerDiv;
+            } else {
+                localStorage.setItem("TIMEcalBtn", false);
+                $("#timertools-hud").hide();
+                $(this).html('<i class="fa fa-calculator"></i>' + Premadeletter50);
+            }
+        });
+        $("#HideAllBthn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                //		$("#cur-tk-hud").hide();
+                $("#shortcuts-hud").hide();
+                $("#rotate-hud").hide();
+                $("#exp-bar").hide();
+                $("#time-hud").hide();
+                //		$(".input-group.skin.colorpicker-element").hide();
+                //		$("#legendbanners").hide();
+                $("#leaderboard-hud").hide();
+                $("#minimap-hud").hide();
+                $("#stats-hud").hide();
+                $("#top5-hud").hide();
+                $("#target-hud").hide();
+                $("#target-panel-hud").hide();
+                $(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter48);
+            } else {
+                //		$("#cur-tk-hud").show();
+                $("#shortcuts-hud").show();
+                $("#rotate-hud").show();
+                $("#exp-bar").show();
+                $("#time-hud").show();
+                //		$(".input-group.skin.colorpicker-element").show();
+                //		$("#legendbanners").show();
+                $("#leaderboard-hud").show();
+                $("#minimap-hud").show();
+                $("#stats-hud").show();
+                $("#top5-hud").show();
+                $("#target-panel-hud").show();
+                $("#target-hud").show();
+                $(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter49);
+            }
+        });				
+        $("#OpenuserScripts").click(function() {
+
+                $("#main-menu").hide();
+                $("#skins-panel").hide();
+                $("#quick-menu").hide();
+                $("#exp-bar").hide();
+                $("#userscripts").show();
+
+        });				
+        $("#topright").click(function() {
+            localStorage.setItem("ComPosition", 0);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-top-right"
+            }
+        });
+        $("#topleft").click(function() {
+            localStorage.setItem("ComPosition", 1);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-top-left"
+            }
+        });
+        $("#bottomright").click(function() {
+            localStorage.setItem("ComPosition", 2);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-bottom-right"
+            }
+        });
+        $("#bottomleft").click(function() {
+            localStorage.setItem("ComPosition", 3);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-bottom-left"
+            }
+        });	
+		
 		$("#oldSkinsBtn").click(function() {
 			if (modVersion == "1.3||1.4" ) {
 		location.replace("https://agar.io/LMoldskins");
@@ -5119,4 +5392,466 @@ function chatfunction() {
     } else {
         toastr["info"](Premadeletter35 + "!").css("width", "210px");
     }}*/
+}
+function displayTimer() {
+    // initilized all local variables:
+    var minutes = '00',
+        seconds = '00',
+        time = '',
+        timeNow = new Date().getTime();
+
+    T.difference = timeNow - T.timerStarted;
+
+
+    // seconds
+    if (T.difference > 1000) {
+        seconds = Math.floor(T.difference / 1000);
+        if (seconds > 60) {
+            seconds = seconds % 60;
+        }
+        if (seconds < 10) {
+            seconds = '0' + String(seconds);
+        }
+    }
+
+    // minutes
+    if (T.difference > 60000) {
+        minutes = Math.floor11(T.difference / 60000);
+        1
+        if (minutes > 60) {
+            minutes = minutes % 60;
+        }
+        if (minutes < 10) {
+            minutes = '0' + String(minutes);
+        }
+    }
+
+
+    time += minutes + ':'
+    time += seconds
+
+    T.timerDiv.innerHTML = time;
+}
+
+function startTimer() {
+    $("#playtimer").hide();
+    $("#stoptimer").show();
+    $("#cleartimer").show();
+    // save start time
+    T.timerStarted = new Date().getTime()
+    console.log('T.timerStarted: ' + T.timerStarted)
+
+    if (T.difference > 0) {
+        T.timerStarted = T.timerStarted - T.difference
+    }
+    // update timer periodically
+    T.timerInterval = setInterval(function() {
+        displayTimer()
+    }, 10);
+
+}
+
+function stopTimer() {
+    $("#playtimer").show();
+    $("#stoptimer").hide();
+    $("#cleartimer").show();
+    clearInterval(T.timerInterval); // stop updating the timer
+
+}
+
+function clearTimer() {
+    $("#playtimer").show();
+    $("#stoptimer").hide();
+    $("#cleartimer").hide();
+    clearInterval(T.timerInterval);
+    T.timerDiv.innerHTML = "00:00";
+    T.difference = 0;
+}
+
+
+function setminbgname() {
+    minimapbckimg = $("#minimapPicture").val();
+    localStorage.setItem("minimapbckimg", minimapbckimg);
+    $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({
+        opacity: 0.8
+    });
+}
+
+function setminbtext() {
+    var minbtext = $("#minbtext").val();
+    localStorage.setItem("minbtext", minbtext);
+    var c = document.getElementById("minimap-sectors");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height / 9);
+    ctx.font = "16px Georgia";
+    ctx.fillText(minbtext, c.width / 2, 22);
+}
+
+function setleadbgname() {
+    leadbimg = $("#leadbPicture").val();
+    localStorage.setItem("leadbimg", leadbimg);
+    $("#leaderboard-hud").css('background-image', 'url("' + leadbimg + '")').css({
+        opacity: 0.8
+    });
+}
+
+function setteambgname() {
+    teambimg = $("#teambPicture").val();
+    localStorage.setItem("teambimg", teambimg);
+    $("#top5-hud").css('background-image', 'url("' + teambimg + '")').css({
+        opacity: 0.8
+    });
+}
+
+function setcanvasbgname() {
+    canvasbimg = $("#canvasPicture").val();
+    localStorage.setItem("canvasbimg", canvasbimg);
+    $("#canvas").css('background-image', 'url("' + canvasbimg + '")').css({
+        opacity: 1
+    });
+}
+
+function setleadbtext() {
+    leadbtext = $("#leadbtext").val();
+    localStorage.setItem("leadbtext", leadbtext);
+    $("#leaderboard-hud > h4").text(leadbtext);
+}
+
+function setteambtext() {
+    teambtext = $("#teambtext").val();
+    localStorage.setItem("teambtext", teambtext);
+    $("#top5-hud > h5").text(teambtext);
+}
+
+function setimgUrl() {
+    imgUrl = $("#imgUrl").val();
+    localStorage.setItem("imgUrl", imgUrl);
+}
+
+function setimgHref() {
+    imgHref = $("#imgHref").val();
+    localStorage.setItem("imgHref", imgHref);
+}
+
+
+function setpic1url() {
+    pic1urlimg = $("#pic1url").val();
+    localStorage.setItem("pic1urlimg", pic1urlimg);
+    return pic1urlimg;
+}
+
+function setpic2url() {
+    pic2urlimg = $("#pic2url").val();
+    localStorage.setItem("pic2urlimg", pic2urlimg);
+    return pic2urlimg;
+}
+
+function setpic3url() {
+    pic3urlimg = $("#pic3url").val();
+    localStorage.setItem("pic3urlimg", pic3urlimg);
+    return pic3urlimg;
+}
+
+function setpic4url() {
+    pic4urlimg = $("#pic4url").val();
+    localStorage.setItem("pic4urlimg", pic4urlimg);
+    return pic4urlimg;
+}
+
+function setpic5url() {
+    pic5urlimg = $("#pic5url").val();
+    localStorage.setItem("pic5urlimg", pic5urlimg);
+    return pic5urlimg;
+}
+
+function setpic6url() {
+    pic6urlimg = $("#pic6url").val();
+    localStorage.setItem("pic6urlimg", pic6urlimg);
+    return pic6urlimg;
+}
+
+function setdiscwebhook1() {
+    discwebhook1 = $("#discwebhook1").val();
+    var containsrealwebhook = $('#discwebhook1').val();
+
+    if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")) {
+        localStorage.setItem("discwebhook1", discwebhook1);
+        setTimeout(function() {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";
+            $("body").append(s);
+        }, 1000);
+    } else {
+        if (containsrealwebhook == "") {
+            localStorage.setItem("discwebhook1", discwebhook1);
+        } else {
+            toastr["error"](Premadeletter36).css("width", "210px");
+        }
+        //return discwebhook1;
+    }
+}
+
+function setdiscwebhook2() {
+    discwebhook2 = $("#discwebhook2").val();
+    var containsrealwebhook = $('#discwebhook2').val();
+    if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")) {
+        localStorage.setItem("discwebhook2", discwebhook2);
+    } else {
+        if (containsrealwebhook == "") {
+            localStorage.setItem("discwebhook2", discwebhook2);
+        } else {
+            toastr["error"](Premadeletter36).css("width", "210px");
+        }
+        //return discwebhook2;
+    }
+}
+
+function openbleedmod() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/BleedingMod.js";
+    $("body").append(s);
+}
+
+function openrotatingmod() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/rotating500images.js";
+    $("body").append(s);
+}
+
+function languagemodfun(){
+if (languagemod == 2) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("2");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 3) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("3");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 4) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("4");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 5) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("5");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 6) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("6");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 7) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("7");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 8) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackRussian.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("8");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+if (languagemod == 9) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackGerman.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("9");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 4000);
+}
+}
+function changeModLanguage() {
+    if ($("#legendlanguages").val() == 1) {
+        localStorage.setItem("languagemod", 1);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 2) {
+        localStorage.setItem("languagemod", 2);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackGreek.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 3) {
+        localStorage.setItem("languagemod", 3);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackSpanish.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 4) {
+        localStorage.setItem("languagemod", 4);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackBulgarian.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 5) {
+        localStorage.setItem("languagemod", 5);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackFrench.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 6) {
+        localStorage.setItem("languagemod", 6);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackArabic.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 7) {
+        localStorage.setItem("languagemod", 7);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackTraditionalChinese.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
+    if ($("#legendlanguages").val() == 8) {
+        localStorage.setItem("languagemod", 8);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackRussian.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
+    if ($("#legendlanguages").val() == 9) {
+        localStorage.setItem("languagemod", 9);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackGerman.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }		
 }
