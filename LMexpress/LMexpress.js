@@ -1,8 +1,8 @@
 /*************
- * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "55 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "56 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -25,6 +25,7 @@ getaccesstoken2();
 triggerLMbtns();
 bluebtns();
 loadersetings();
+preventcanvasimagecrash();
 $('[data-toggle="tooltip"]').tooltip();
 }, 3000);
 
@@ -6196,9 +6197,16 @@ function bluebtns(){
         $('#RotateRight').mouseenter(function() {$('#RotateRight').css('background-color', Top5MassColor);})
 		.mouseleave(function() {$('#RotateRight').css('background-color', "transparent");});	
 }		
-
-
-
+function preventcanvasimagecrash(){
+CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage;
+CanvasRenderingContext2D.prototype.drawImage = function() {
+	
+    const image = arguments[0];
+	//console.log(image.width);
+    if (!image || image.width < 1 || image.height < 1) return void console.log('Preventing canvas to crash from image width and height');
+    this._drawImage(...arguments);
+}
+}
 
 
 
