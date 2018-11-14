@@ -2,7 +2,7 @@
  * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "54 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "55 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3470,8 +3470,9 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		        $(".message-text").remove();
 				$(".toast.toast-success").remove();
 		        LegendClanSymbol = $("#nick").val();
+				console.log("Step1");
 		        if (~LegendClanSymbol.indexOf("℄") != -1) {
-
+					console.log("Step2");
 		            if (commandMsg == "EU-London") {
 		                setTimeout(function() {
 							 $("#server-join").click();
@@ -3479,8 +3480,14 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		            } else if (commandMsg == "RU-Russia") {
 		                setTimeout(function() {
 		                    $("#server-join").click();
-		                }, 100);
+		                }, 1000);
 		            }
+					else{
+						//bug fix
+		                setTimeout(function() {
+		                    $("#server-join").click();
+		                }, 1000);						
+					}
 		        }
 		    }	
 }
@@ -6189,7 +6196,6 @@ function bluebtns(){
         $('#RotateRight').mouseenter(function() {$('#RotateRight').css('background-color', Top5MassColor);})
 		.mouseleave(function() {$('#RotateRight').css('background-color', "transparent");});	
 }		
-
 
 
 
