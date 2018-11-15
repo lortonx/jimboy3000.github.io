@@ -1,8 +1,8 @@
-/*************
- * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
+/**************
+ * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "58 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "59 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1941,6 +1941,13 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 });
 }
 
+core.disconnect= function () {
+            adres();
+			setTimeout(function() {
+                $("#server").val(currentIP);
+            }, 2500);
+}
+/*
 	        $('#server-connect').click(function() {
             adres();
 			setTimeout(function() {
@@ -1973,14 +1980,15 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
                 $("#server").val(currentIP);
             }, 2500);
         });		
-
+*/
+		
 function adres(thismode) {
 	var thismode;
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
 			$("#server").val(currentIP);
-			console.log(currentIP);
+//			console.log(currentIP);
 			setTimeout(function() {	
 				if(!thismode){
 					realmode = $("#gamemode").val();
@@ -6262,5 +6270,4 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
     this._drawImage(...arguments);
 }
 }
-
 
