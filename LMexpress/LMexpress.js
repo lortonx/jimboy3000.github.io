@@ -1,5 +1,5 @@
 /*************
- * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "57 BETA"; // the version 1.1-> 1.11
@@ -3457,8 +3457,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		                extendedTimeOut: 20000
 		            }).css("width", "210px");
 		            $(".btn.btn-sm.btn-primary.btn-play.btn-do-troll").click(function() {
-		                settroll1true();
-		                whenplayerdies();
+		                settrolling();		                
 		            });
 		        } else if (commandMsg == "Youtube") {
 		            toastr["warning"](Premadeletter22 + ' ' + playerMsg + ' ' + Premadeletter28 + '<button class="btn btn-sm btn-primary btn-play btn-play-youtube" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-noplay-youtube" style="width: 100%;margin-top: 10px;">' + Premadeletter25 + '</button>', "", {
@@ -6216,6 +6215,39 @@ function YoutubebackgroundDisable(){
 $('.video-background').remove();
 }
 
+function settrolling() {
+			
+            //afterdeathtonormalmode();
+			playSound("https://jimboy3100.github.io/banners/troll1.mp3");	
+			$("#canvas").css('background-image', 'url(" https://media.giphy.com/media/eVy46EWyclTIA/giphy.gif ")').css({
+                opacity: 0.8
+            });
+            $("#minimap-hud").css('background-image', 'url(" https://jimboy3100.github.io/banners/icoeucid.gif ")').css({
+                opacity: 1
+            });
+            $("#leaderboard-hud").css('background-image', 'url(" https://media.giphy.com/media/VSuWfl1qCiRsk/giphy.gif ")').css({
+                opacity: 0.8
+            });
+            setTimeout(function() {
+                $("#canvas").css('background-image', 'url(" https://media.giphy.com/media/aw9WgvgNd1bQk/giphy.gif ")').css({
+                    opacity: 0.8
+                });
+            }, 4000);
+            setTimeout(function() {
+                $("#canvas").css('background-image', 'url(" ")').css({
+                    opacity: 1
+                });
+                $("#leaderboard-hud").css('background-image', 'url("' + leadbimg + '")').css({
+                    opacity: 0.8
+                });
+            }, 8000);
+            setTimeout(function() {
+                $("#minimap-hud").css('background-image', 'url("' + minimapbckimg + '")').css({
+                    opacity: 0.8
+                });
+				}, 27000);
+ 
+}
 function preventcanvasimagecrash(){
 CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage;
 CanvasRenderingContext2D.prototype.drawImage = function() {
