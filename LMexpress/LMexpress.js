@@ -2,7 +2,7 @@
  * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "57 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "58 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1400,6 +1400,10 @@ function init(modVersion) {
                 $("#shortcuts-hud").hide();
                 $("#rotate-hud").hide();
                 $("#images-hud").hide();
+				$("#scripting-hud").hide();
+				$("#msgcommands-hud").hide();
+				$("#yt-hud").hide();
+				$("#images-hud").hide();
                 $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter42);
                 return seticon = "YES";
             }
