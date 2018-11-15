@@ -70,10 +70,10 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 				$("#quick-menu").show();
 				$("#exp-bar").show();
 				$("#administrationtools").hide();		
-				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 35%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
-				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+				
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%; display: none;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+				
 				'</div>');
 //				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
 //				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
@@ -86,7 +86,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 setTimeout(function () {	
 	$("#nick").blur(function(){
 		if ($('#administrationtoolshud').is(':hidden')) {
-			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){
+			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"||$("#nick").val()=="℄🌀       ᒎᗴᖇᖇƳ"){
 			$("#main-menu").hide();
 			$("#skins-panel").hide();
 			$("#quick-menu").hide();
