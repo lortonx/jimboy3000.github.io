@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "59 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "60 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1639,26 +1639,20 @@ function loadersetings() {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
                 if (SHOSHOBtn != "true") {
-                    toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+                    toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" onclick="enableshortcuts();" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
                         timeOut: 15000,
                         extendedTimeOut: 15000
                     }).css("width", "300px");
-                    $("#enableshortcuts1").click(function() {
-                        enableshortcuts();
-                    });
                 }
             }
         }
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
-                toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
-                    timeOut: 15000,
+                    toastr["error"](Premadeletter18 + '</br> <button id=enableshortcuts1 class="btn btn-sm btn-primary btn-play btn-enable-shortcuts" onclick="enableshortcuts();" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter19 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-play btn-enable-shortcuts" style="width: 100%;margin-top: 10px;">' + Premadeletter20 + '</button>', "", {
+					timeOut: 15000,
                     extendedTimeOut: 15000
                 }).css("width", "300px");
-                $("#enableshortcuts").click(function() {
-                    enableshortcuts();
-                });
             }
         }
         checkonlyonce = "true";
@@ -6270,4 +6264,3 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
     this._drawImage(...arguments);
 }
 }
-
