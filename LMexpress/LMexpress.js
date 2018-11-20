@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "61 BETA"; // the version 1.1-> 1.11
@@ -668,7 +668,7 @@ function init(modVersion) {
         //							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
         //	$('#music').append(savemusic+'</div>');						
 
-/*
+
         if (typeof YT !== 'undefined') {
             musicPlayer = new YT.Player('musicFrame', {
                 events: {
@@ -684,7 +684,7 @@ function init(modVersion) {
                 }
             });
         }
-		*/
+		
 		 $("#YoutubeBackgroundBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {               
