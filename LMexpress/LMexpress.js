@@ -6119,12 +6119,12 @@ function triggerLMbtns() {
             }
 }
 function opendyinglight() {
-toastr["info"]("Function is not ready yet");	
-/*    var s = document.createElement("script");
+//toastr["info"]("Function is not ready yet");	
+    var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/dyinglight.js";
     $("body").append(s);
-	*/
+	
 }	
 
 function bluebtns(){
