@@ -1111,7 +1111,9 @@ function init(modVersion) {
             placement: "bottom"
         });		
 		
-		$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
+		//$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
+		$('#clantag').css("width", "95.5px");
+		$('#nick').css("width", "171px");	
         $('#clantag').mouseenter(function() {
             $('#clantag').css('background-color', '#000066');
         }).mouseleave(function() {
