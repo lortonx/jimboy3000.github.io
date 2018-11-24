@@ -1,4 +1,4 @@
-//
+//1
 'use strict';
 /** @type {!Array} */
 var _0x4593 = ["region", "val", "#region", "#locationKnown", "#locationUnknown", "append", "makeMasterSimpleRequest", "info", "parse", "regions", '#region option[value="', "regionNames", "numPlayers", "#region option", "each", "applyGameMode", "gameMode", "data-gamemode", "#gamemode", ":party", "replaceHistoryState", "encodeURIComponent", "replace", "now", "findingServer", ":battleroyale", "setRequestMsg", "curValidFindServer", "makeMasterRequest", "endpoints", "0.0.0.0:0", "partyToken", "token", 
@@ -35,9 +35,9 @@ var _0x4593 = ["region", "val", "#region", "#locationKnown", "#locationUnknown",
         /** @type {number} */
         var url = 0;
         /** @type {number} */
-        url = 0;
+        
         var key = value["length"];
-        for (; url < key; url++) {
+        for (url = 0; url < key; url++) {
           var i = value[url];
           /** @type {string} */
           cookie = cookie + ("; " + i);
@@ -741,7 +741,7 @@ var _0x72da = function(i, parameter1) {
         PL$24[_0x72da("0x70")](element[_0x72da("0x71")]);
         /** @type {number} */
         var PL$26 = 0;
-        for (; PL$26 < element[_0x72da("0x71")]; PL$26++) {
+        for (PL$26 = 0; PL$26 < element[_0x72da("0x71")]; PL$26++) {
           PL$24[_0x72da("0x70")](element[_0x72da("0x72")](PL$26));
         }
       };
