@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "61 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "62 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -27,7 +27,7 @@ bluebtns();
 loadersetings();
 preventcanvasimagecrash();
 $('[data-toggle="tooltip"]').tooltip();
-$('#server-join').click();
+//$('#server-join').click(); //next time that ogario will be down
 }, 3000);
 
 var CutNameConflictwithMessage=false;
