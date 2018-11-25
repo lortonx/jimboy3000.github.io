@@ -4585,17 +4585,16 @@ if (checkonetimeLc == null) {
 }
 
 function getInfo() {
-$("#currentRegion").html($('#region').val());
-/*    $.ajax({
+    $.ajax({
         type: "GET",
-        url: "http://m.agar.io/info",
+        url: "https://webbouncer-live-v6-0.agario.miniclippt.com/info",
         datatype: "json",
         success: function(info) {
-            
+            $("#currentRegion").html($('#region').val());
             var regions = info.regions;
             var currentRegion;
             for (var key in regions) {
-                if (key == MC.getRegion()) {
+                if (key == $('#region').val()) {
                     currentRegion = regions[key];
                     break;
                 }
@@ -4609,7 +4608,7 @@ $("#currentRegion").html($('#region').val());
             }
             $("#totalPlayers").html(kFormatter(info.totals.numPlayers));
         }
-    }); */
+    });
 }
 function LcCelebration() {
     var s = document.createElement("script");
@@ -6226,7 +6225,9 @@ $("body").append('<div class="video-background"><div class="video-foreground"><i
 function YoutubebackgroundDisable(){
 $('.video-background').remove();
 }
-
+function kFormatter(num) {
+    return num > 999 ? (num / 1000).toFixed(1) + "k" : num;
+}
 function settrolling() {
 			
             //afterdeathtonormalmode();
