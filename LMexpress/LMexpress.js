@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.065 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.066 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "65"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -604,8 +604,8 @@ function init(modVersion) {
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
             '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
             '</div></div>');
-			
-			loginsfbGpl();			
+		    loginsfbGpl2();
+//			loginsfbGpl();			
 //		$("#exp-bar").hide();
 //		$(".menu-tabs").children().attr("style", "width: 19.99%;");
 //		$(".profile-tab").hide();
@@ -6331,14 +6331,31 @@ function loginsfbGplstart(){
 }
 function loginsfbGpl(){	
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
-				master.doLoginWithGPlus = joint([ master._doLoginWithGPlus, doGl2]);
+				//master.doLoginWithGPlus = joint([ master._doLoginWithGPlus, doGl2]);
+				master.doLoginWithGPlus = joint([ doGl2, master._doLoginWithGPlus]);
 				master._doLoginWithFB=master.doLoginWithFB;
-				master._doLoginWithFB = joint([ master._doLoginWithFB, doFB2]);
+				//master._doLoginWithFB = joint([ master._doLoginWithFB, doFB2]);
+				master._doLoginWithFB = joint([ doFB2, master._doLoginWithFB]);
 		$("#logoutbtn").click(
 		            function() {
                 setTimeout(function() {
 					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
                 }, 100);});			
 }
-
+function loginsfbGpl2(){	
+		$("#logoutbtn").click(function() {
+                setTimeout(function() {
+					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
+                }, 100);});		
+		$(".btn.btn-primary.btn-login.btn-fb").click(function() {
+     setTimeout(function() {	
+	 doFB2();
+	 }, 5000);
+        });
+		$(".btn.btn-primary.btn-login.btn-gplus").click(function() {
+     setTimeout(function() {	
+	 doGl2();
+	 }, 5000);
+        });
+}
 function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0],function(){b.apply(new a)}}
