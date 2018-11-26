@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.063 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "62 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "63"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -477,7 +477,7 @@ function init(modVersion) {
             '</div>');			
 		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
 		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
-
+				
         $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
             '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
             '<button id="stoptimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="stopTimer();" data-toggle="tooltip" data-original-title="Pause Timer""><i id="pausetime" class="fa fa-pause-circle" style="padding-left: 0px;"></i></button>' +
@@ -493,7 +493,13 @@ function init(modVersion) {
 		$(".profile-tab").hide();    
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-            '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
+            '<div id="UserProfile"  style="margin-bottom: 10px;">' +
+			'<div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div>' +
+			'<div style="display:inline-block; width: 70%;">' +
+			'<div id="UserProfileName">User: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
+			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br>' +
+			'</div></div>' +
+			'<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
             '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
             //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
             //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
@@ -598,6 +604,7 @@ function init(modVersion) {
             '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
             '</div></div>');
 			
+			loginsfbGpl();			
 //		$("#exp-bar").hide();
 //		$(".menu-tabs").children().attr("style", "width: 19.99%;");
 //		$(".profile-tab").hide();
@@ -6270,4 +6277,48 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
     if (!image || image.width < 1 || image.height < 1) return void console.log('Preventing canvas to crash from image width and height');
     this._drawImage(...arguments);
 }
+}
+
+function doGl(){
+FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {      
+	document.getElementById('UserProfilePic').innerHTML = '<img style="width: 60px;" align="right" src='+gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa +' />';
+	$("#UserProfileName1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
+	$("#UserProfileUID1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
+//	},250);
+});
+}
+function doFB(){
+FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {      
+	document.getElementById('UserProfilePic').innerHTML = '<img style="width: 60px;" align="right" src="http://graph.facebook.com/' + fbresponse.id + '/picture?type=large" />';
+//	setTimeout(function (){ 
+	$("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
+	$("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[3]]);
+//	},250);
+});
+}
+function loginsfbGpl(){
+				master._doLoginWithGPlus=master.doLoginWithGPlus;
+				master.doLoginWithGPlus = function () {
+				setTimeout(function() {	
+				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
+				doGl();	
+				}				
+            }, 2000); 
+			}
+			master._doLoginWithFB=master.doLoginWithFB;
+			master.doLoginWithFB = function () {
+				setTimeout(function() {	
+				FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+				doFB();	
+				}	
+				});
+			
+            }, 2000); 
+			}
+		$("#logoutbtn").click(
+		            function() {
+                setTimeout(function() {
+					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">User: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
+                }, 100);});			
 }
