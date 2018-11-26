@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.066 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.065 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "65"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6333,7 +6333,7 @@ function loginsfbGpl(){
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
 				master.doLoginWithGPlus = joint([ master._doLoginWithGPlus, doGl2]);
 				master._doLoginWithFB=master.doLoginWithFB;
-				master.doLoginWithGPlus = joint([ master._doLoginWithGPlus, doFB2]);
+				master._doLoginWithFB = joint([ master._doLoginWithFB, doFB2]);
 		$("#logoutbtn").click(
 		            function() {
                 setTimeout(function() {
