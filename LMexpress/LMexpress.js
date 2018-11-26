@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.065 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.066 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "65"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6297,6 +6297,24 @@ FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse
 //	},250);
 });
 }
+function doGl2(){
+				setTimeout(function() {	
+				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
+				doGl();	
+				}				
+            }, 1000); 	
+}
+
+function doFB2(){
+				setTimeout(function() {	
+				FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+				doFB();	
+				}	
+				});			
+            }, 1000); 	
+}	
+
 function loginsfbGplstart(){
 				setTimeout(function() {	
 				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
@@ -6311,27 +6329,11 @@ function loginsfbGplstart(){
 				});			
             }, 1000); 			
 }
-function loginsfbGpl(){
+function loginsfbGpl(){	
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
-				master.doLoginWithGPlus = function () {
-				master._doLoginWithGPlus;
-				setTimeout(function() {	
-				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
-				doGl();	
-				}				
-            }, 1000); 
-			}
-			master._doLoginWithFB=master.doLoginWithFB;
-			master.doLoginWithFB = function () {
-			master._doLoginWithFB;
-				setTimeout(function() {	
-				FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-				doFB();	
-				}	
-				});			
-            }, 1000); 
-			}
+				master.doLoginWithGPlus = joint([ master._doLoginWithGPlus, doGl2]);
+				master._doLoginWithFB=master.doLoginWithFB;
+				master.doLoginWithGPlus = joint([ master._doLoginWithGPlus, doFB2]);
 		$("#logoutbtn").click(
 		            function() {
                 setTimeout(function() {
