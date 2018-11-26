@@ -493,10 +493,10 @@ function init(modVersion) {
 		$(".profile-tab").hide();    
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-            '<div id="UserProfile"  style="margin-bottom: 10px;">' +
+            '<div id="UserProfile" style="margin-bottom: 10px;">' +
 			'<div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div>' +
 			'<div style="display:inline-block; width: 70%;">' +
-			'<div id="UserProfileName">User: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
+			'<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
 			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br>' +
 			'</div></div>' +
 			'<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
@@ -6332,6 +6332,6 @@ function loginsfbGpl(){
 		$("#logoutbtn").click(
 		            function() {
                 setTimeout(function() {
-					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">User: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
+					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
                 }, 100);});			
 }
