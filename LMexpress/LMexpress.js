@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.064 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.065 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "64"; // the version 1.1-> 1.11
+var semimodVersion = "65"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6314,6 +6314,7 @@ function loginsfbGplstart(){
 function loginsfbGpl(){
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
 				master.doLoginWithGPlus = function () {
+				master._doLoginWithGPlus;
 				setTimeout(function() {	
 				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 				doGl();	
@@ -6322,6 +6323,7 @@ function loginsfbGpl(){
 			}
 			master._doLoginWithFB=master.doLoginWithFB;
 			master.doLoginWithFB = function () {
+			master._doLoginWithFB;
 				setTimeout(function() {	
 				FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
@@ -6336,3 +6338,5 @@ function loginsfbGpl(){
 					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
                 }, 100);});			
 }
+
+function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0],function(){b.apply(new a)}}
