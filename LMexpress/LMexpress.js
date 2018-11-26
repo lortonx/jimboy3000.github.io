@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.063 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "63"; // the version 1.1-> 1.11
@@ -6296,6 +6296,20 @@ FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse
 //	},250);
 });
 }
+function loginsfbGplstart(){
+				setTimeout(function() {	
+				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
+				doGl();	
+				}				
+            }, 1000);	
+				setTimeout(function() {	
+				FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+				doFB();	
+				}	
+				});			
+            }, 1000); 			
+}
 function loginsfbGpl(){
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
 				master.doLoginWithGPlus = function () {
@@ -6303,7 +6317,7 @@ function loginsfbGpl(){
 				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 				doGl();	
 				}				
-            }, 2000); 
+            }, 1000); 
 			}
 			master._doLoginWithFB=master.doLoginWithFB;
 			master.doLoginWithFB = function () {
@@ -6312,9 +6326,8 @@ function loginsfbGpl(){
 				if (response.status === 'connected') {
 				doFB();	
 				}	
-				});
-			
-            }, 2000); 
+				});			
+            }, 1000); 
 			}
 		$("#logoutbtn").click(
 		            function() {
