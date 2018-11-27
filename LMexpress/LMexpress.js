@@ -2,7 +2,7 @@
  * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1879,6 +1879,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		userid=gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
 		userlastname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;		
 		}
+		else{
 		FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
 					setTimeout(function (){
@@ -1892,7 +1893,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 					});	
 					},200);
 				}	
-				});			
+				});
+		}
     }	
 
 
@@ -1947,6 +1949,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		userid=gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;	
 		userlastname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
 		}
+		else{
 		FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
 					setTimeout(function (){
@@ -1960,7 +1963,8 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 					});	
 					},200);
 				}	
-				});			
+				});	
+		}				
     
 				
     }
