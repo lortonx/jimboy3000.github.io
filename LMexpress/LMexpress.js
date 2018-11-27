@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.067 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "68"; // the version 1.1-> 1.11
@@ -606,6 +606,8 @@ function init(modVersion) {
             '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
             '</div></div>');
 		    loginsfbGpl2();
+			//fix userprofile
+			$("#UserProfile").css("font-size", "12px");
 //			loginsfbGpl();			
 //		$("#exp-bar").hide();
 //		$(".menu-tabs").children().attr("style", "width: 19.99%;");
