@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "69"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -496,11 +496,11 @@ function init(modVersion) {
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
             '<div id="UserProfile" style="margin-bottom: 10px;">' +
-			'<div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" onclick="useProfilePhotoCustom();" style="width: 60px; display:inline-block;"></img></div>' +
+			'<div id="UserProfilePic" class="user-picture"><img align="right" src="img/profilepic_guest.jpg" onclick="useProfilePhotoCustom();" style="width: 60px; display:inline-block;"></img></div>' +
 			'<div style="display:inline-block; width: 70%;">' +
 			'<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
 			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
-			'<div id="TimesUsedPanel" display:inline-block;>Times Used: ' + timesopened + '</div><br>'+				
+			'<div id="TimesUsedPanel" style="display:inline-block;">Times Used: ' + timesopened + '</div>'+				
 			'</div></div>' +
 			'<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
             '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
