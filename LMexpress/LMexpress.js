@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.067 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -497,7 +497,7 @@ function init(modVersion) {
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
             '<div id="UserProfile" style="margin-bottom: 10px;">' +
-			'<div id="UserProfilePic" class="user-picture"><img align="right" src="img/profilepic_guest.jpg" onclick="useProfilePhotoCustom();" style="width: 60px; display:inline-block;"></img></div>' +
+			'<div id="UserProfilePic" class="user-picture"><img align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div>' +
 			'<div style="display:inline-block; width: 70%;">' +
 			'<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
 			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
@@ -610,6 +610,7 @@ function init(modVersion) {
 		    loginsfbGpl2();
 			//fix userprofile
 			$("#UserProfile").css("font-size", "12px");
+			$("#UserProfilePic").click(function() {useProfilePhotoCustom();});
 //			loginsfbGpl();			
 //		$("#exp-bar").hide();
 //		$(".menu-tabs").children().attr("style", "width: 19.99%;");
