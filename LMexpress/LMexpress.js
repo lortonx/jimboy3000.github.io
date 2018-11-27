@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.067 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "69"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6320,13 +6320,13 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
 }
 
 function doGl(){  
-	document.getElementById('UserProfilePic').innerHTML = '<img style="width: 60px;" align="right" src='+gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa +' />';
+	$("#UserProfilePic>img").attr('src',gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
 	$("#UserProfileName1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
 	$("#UserProfileUID1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
 }
 function doFB(){
-FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {      
-	document.getElementById('UserProfilePic').innerHTML = '<img style="width: 60px;" align="right" src="http://graph.facebook.com/' + fbresponse.id + '/picture?type=large" />';
+FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {   
+    $("#UserProfilePic>img").attr('src','http://graph.facebook.com/' + fbresponse.id + '/picture?type=large');
 //	setTimeout(function (){ 
 	$("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
 	$("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[3]]);
