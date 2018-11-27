@@ -2,7 +2,7 @@
  * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "67"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1187,10 +1187,10 @@ function init(modVersion) {
 			var Pwdtosend="NONE"; 
 			var servertosend="NotFound";
 			var nicknametosend="NotFound";
-//			var userfirstname = localStorage.getItem("userfirstname");
-//			var userlastname = localStorage.getItem("userlastname");
+			var userfirstname = localStorage.getItem("userfirstname");
+			var userlastname = localStorage.getItem("userlastname");
 //			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");			
-//			var userid = localStorage.getItem("userid");
+			var userid = localStorage.getItem("userid");
 			var modetosend="NotFound";
 			var regiontosend="NotFound";
 			var currentdate = new Date(); 
