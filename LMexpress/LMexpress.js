@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "69"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -496,10 +496,11 @@ function init(modVersion) {
         $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
             //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
             '<div id="UserProfile" style="margin-bottom: 10px;">' +
-			'<div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div>' +
+			'<div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" onclick="useProfilePhotoCustom();" style="width: 60px; display:inline-block;"></img></div>' +
 			'<div style="display:inline-block; width: 70%;">' +
 			'<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
-			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br>' +
+			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
+			'<div id="TimesUsedPanel" display:inline-block;>Times Used: ' + timesopened + '</div><br>'+				
 			'</div></div>' +
 			'<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
             '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
@@ -1252,11 +1253,9 @@ function init(modVersion) {
         $("#massButton").css("display", "inline-block");
         $("#massButton").after($("#promo-badge-container"));
 
-	    $(".agario-profile-name-container").after('<div class="TimesUsedPanel" align="right" display:inline-block;><h6><i>Times Used: ' + timesopened +
-        '<br>Legend express by jimboy3100</i></h6></div>');
+
 		$(".agario-profile-name").css('display', 'inline-block');
 		$(".agario-profile-name").css('vertical-align', ' baseline');
-		$(".agario-profile-name").before('<i id=ProfilePhotoCustom class="fa fa-clipboard" onclick="useProfilePhotoCustom();" aria-hidden="true" style="display: inline-block; margin-top: 0px; vertical-align: middle;" data-toggle="tooltip" data-title="Copy Account Image Url" data-placement="top"></i>');
 
         $('#themePreset>option:nth-child(1)').text("Legend v2");
         $('#themePreset>option:nth-child(2)').text("Legend v1");
@@ -6371,17 +6370,18 @@ function loginsfbGpl(){
 				master._doLoginWithFB=master.doLoginWithFB;
 				//master._doLoginWithFB = joint([ master._doLoginWithFB, doFB2]);
 				master._doLoginWithFB = joint([ doFB2, master._doLoginWithFB]);
-		$("#logoutbtn").click(
-		            function() {
-                setTimeout(function() {
-					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
-                }, 100);});			
+		$("#logoutbtn").click(function() {
+					$("#UserProfileName1").text("Guest");
+					$("#UserProfileUID1").text("");
+					$("#UserProfilePic>img").attr('src','img/profilepic_guest.jpg');	
+                }, 100);					
 }
 function loginsfbGpl2(){	
 		$("#logoutbtn").click(function() {
-                setTimeout(function() {
-					$("#UserProfile").html('<div id="UserProfile"  style="margin-bottom: 10px;"><div id="UserProfilePic" class="user-picture"><img style="width: 60px;" align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;"></img></div><div style="display:inline-block; width: 70%;"><div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div><div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div><br></div></div>');
-                }, 100);});		
+					$("#UserProfileName1").text("Guest");
+					$("#UserProfileUID1").text("");
+					$("#UserProfilePic>img").attr('src','img/profilepic_guest.jpg');	
+                }, 100);		
 		$(".btn.btn-primary.btn-login.btn-fb").click(function() {
      setTimeout(function() {	
 	 doFB2();
@@ -6394,6 +6394,16 @@ function loginsfbGpl2(){
         });
 }
 function joint(a){var b;return b=a[a.length-1],a.pop(),a=a.length>1?joint(a):a[0],function(){b.apply(new a)}}
+
+function useProfilePhotoCustom(){
+	if ($("#UserProfilePic>img").attr('src')!= "https://agar.io/mc/img/profilepic_guest.jpg" && $("#UserProfilePic>img").attr('src')!="img/profilepic_guest.jpg"){	
+		copy($("#UserProfilePic>img").attr('src'));
+		toastr["info"](Premadeletter85 + ' <font color="red"><b>Ctrl+V</font></b>, '+Premadeletter86).css("width", "350px");
+	}
+	else{
+		toastr["info"](Premadeletter87).css("width", "350px");
+	}
+}
 
 function emphasischat(){
     var global = window; // unsafeWindow;
