@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.067 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "67"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6375,14 +6375,14 @@ function loginsfbGpl(){
 					$("#UserProfileName1").text("Guest");
 					$("#UserProfileUID1").text("");
 					$("#UserProfilePic>img").attr('src','img/profilepic_guest.jpg');	
-                }, 100);					
+                });					
 }
 function loginsfbGpl2(){	
 		$("#logoutbtn").click(function() {
 					$("#UserProfileName1").text("Guest");
 					$("#UserProfileUID1").text("");
 					$("#UserProfilePic>img").attr('src','img/profilepic_guest.jpg');	
-                }, 100);		
+                });		
 		$(".btn.btn-primary.btn-login.btn-fb").click(function() {
      setTimeout(function() {	
 	 doFB2();
