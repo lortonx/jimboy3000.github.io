@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "69"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2000,25 +2000,28 @@ core.disconnect= function () {
                 $("#server").val(currentIP);
             }, 2500);
 }
-/*
+        $('#server-join').click(function() {
+            adres();
+			setTimeout(function() {
+                $("#server").val(currentIP);
+            }, 2500);
+			});
 	        $('#server-connect').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 2500);
-        });
+        });        
+		
+/*
+
         $('#server-reconnect').click(function() {
             adres();
 			setTimeout(function() {
                 $("#server").val(currentIP);
             }, 2500);
         });
-        $('#server-join').click(function() {
-            adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-            }, 2500);
-        });
+
 		$("#gamemode").change(function () {
             adres();
 			setTimeout(function() {
