@@ -6422,20 +6422,20 @@ function emphasischat(){
     var stat = {
     };
     var cfg= {}, cfg_org = {
-        "emphasis_bgcolor": "rgba(128,128,128,0.9)", // 履歴強調の背景色
-        "emphasis_time": 5000,	// 強調時間[ミリ秒]
-        "histhide_time": 10000, // 履歴を消去する時間[ミリ秒]
-        "scroll_dulation": 200, // 履歴スクロール完了期間[ミリ秒]
+        "emphasis_bgcolor": "rgba(128,128,128,0.9)", // Historical emphasis background color
+        "emphasis_time": 5000,	// Emphasis time [milliseconds]
+        "histhide_time": 10000, // Time to erase history [milliseconds]
+        "scroll_dulation": 200, // History scroll completion period [milliseconds]
     };
     function pre_loop(){
-        // この時点では jQuery は使えない
+        // At this point jQuery can not be used
         if(! document.getElementById("top5-hud")){
             my.pre_loop_timeout = (my.pre_loop_timeout || 1000) + 1000;
             setTimeout(pre_loop, my.pre_loop_timeout);
             my.log("wait for OGARio load");
             return;
         }
-        // 念のため、もう１wait入れる
+        // Just to be sure, another 1 wait
         setTimeout(initialize, 1000);
     }
     pre_loop();
@@ -6480,14 +6480,14 @@ function emphasischat(){
                 }, cfg.emphasis_time);
             }
         });
-        // スクロール調整
+        // Scroll adjustment
         var chat_box = $("#chat-box");
         chat_box.perfectScrollbar("update");
         chat_box.animate({"scrollTop": chat_box.prop("scrollHeight")}, cfg.scroll_dulation);
         //chat_box.prop("scrollTop", chat_box.prop("scrollHeight"));
     };
     my.hist_show = function(withTimer){
-        // タイマーを止める
+        // Stop the timer
         if(stat.histhide_timeID){
             clearTimeout(stat.histhide_timeID);
             stat.histhide_timeID = null;
