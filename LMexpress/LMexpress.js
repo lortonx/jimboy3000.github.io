@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.070 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "69"; // the version 1.1-> 1.11
+var semimodVersion = "70"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1878,30 +1878,8 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		},300);
 		
 		//Save Name, Surname, Gender, Id
-		if (gapi.auth2.getAuthInstance().isSignedIn.get()){
-		userfirstname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
-		userid=gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
-		userlastname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
-		if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-		if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-		if (userid!=null) {localStorage.setItem("userid", userid);}
-		}
-		else{
-		FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					setTimeout(function (){
-				FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(response) {
-					fbresponse=response;
-					userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-					usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-					userid=fbresponse[Object.keys(fbresponse)[3]]; if (userid!=null) {localStorage.setItem("userid", userid);}
-					return userfirstname, userlastname, usergender, userid;
-					});	
-					},200);
-				}	
-				});
-		}
+		FbCheck();
+		GoogleCheck();
     }	
 
 
@@ -6516,3 +6494,32 @@ function emphasischat(){
          //$("#chat-box").hide();
     };
 }
+function GoogleCheck(){
+		if (gapi.auth2.getAuthInstance().isSignedIn.get()){
+		userfirstname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
+		userid=gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
+		userlastname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
+		if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+		if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+		if (userid!=null) {localStorage.setItem("userid", userid);}
+		}
+}
+function FbCheck(){	
+		
+		FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					setTimeout(function (){
+				FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(response) {
+					fbresponse=response;
+					userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
+					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
+					usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
+					userid=fbresponse[Object.keys(fbresponse)[3]]; if (userid!=null) {localStorage.setItem("userid", userid);}
+					return userfirstname, userlastname, usergender, userid;
+					});	
+					},200);
+				}	
+				});
+}
+
+		
