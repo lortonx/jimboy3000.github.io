@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.070b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.070c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "70"; // the version 1.1-> 1.11
@@ -6297,8 +6297,6 @@ FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse
 //	setTimeout(function (){ 
 	$("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
 	$("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[3]]);
-
-					fbresponse=response;
 					userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
 					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
 					usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
