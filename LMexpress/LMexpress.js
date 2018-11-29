@@ -1840,6 +1840,9 @@ if (languagemod == 8) {
 function appendLMhiFbPs(){
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
+	if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".toast.toast-warning").remove();
+	}	
     if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
 		$("#gamemode").prop('disabled', false);
 		$("#region").prop('disabled', false);   
@@ -1873,9 +1876,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		setTimeout(function (){ 
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		},300);
-	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
-	}		
+		
 		//Save Name, Surname, Gender, Id
 		if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 		userfirstname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
@@ -1908,8 +1909,11 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 
 
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
-    MSGCOMMANDS3 = $(".command-text").text();
-    if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+    var MSGCOMMANDS3 = $(".command-text").text();
+	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
+	}	
+    else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
 		$("#gamemode").prop('disabled', false);
 		$("#region").prop('disabled', false);   
 	//	$(".toast.toast-warning").remove();
@@ -1946,9 +1950,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		},300);
 
 //		}
-	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
-	}
+
 		//Save Name, Surname, Gender, Id
 		if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 		userfirstname=gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
