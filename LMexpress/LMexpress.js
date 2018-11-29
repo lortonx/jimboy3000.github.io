@@ -1182,11 +1182,15 @@ function init(modVersion) {
 	}
 	if (userData.responseJSON.geobytescity!= undefined) {
 	usercity=userData.responseJSON.geobytescity;
-	usercity = usercity.replace(" ", "_");		
+	usercity = usercity.replace(" ", "_");	
+	usercity = usercity.replace(" ", "_");
+	usercity = usercity.replace(" ", "_");	
 	}	
 	if (userData.responseJSON.geobytescountry!= undefined) {
 	usercountry=userData.responseJSON.geobytescountry;
-	usercountry = usercountry.replace(" ", "_");	
+	usercountry = usercountry.replace(" ", "_");
+	usercity = usercity.replace(" ", "_");
+	usercity = usercity.replace(" ", "_");	
 	}	
 			
 			var Pwdtosend="NONE"; 
