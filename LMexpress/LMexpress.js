@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.070a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.070b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "70"; // the version 1.1-> 1.11
@@ -6329,15 +6329,15 @@ function loginsfbGplstart(){
 				setTimeout(function() {	
 				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 				doGl();	
-				}				
-            }, 1000);	
-				setTimeout(function() {	
+				}
+				else{
 				FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
 				doFB();	
 				}	
-				});			
-            }, 1000); 			
+				});						
+				}
+            }, 1000);					
 }
 function loginsfbGpl(){	
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
