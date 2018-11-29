@@ -4569,7 +4569,7 @@ if ($("#ao2t-capture").hasClass("connected")){
 }
 }
 function showMenu() {
-$("#overlays").css("right", "-999em");
+$("#overlays").css("right", "0em");
 $('a[href="#main-panel"]').click();
 }
 
