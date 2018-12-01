@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.070c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.071 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "70"; // the version 1.1-> 1.11
+var semimodVersion = "71"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1844,10 +1844,12 @@ if (languagemod == 8) {
 function appendLMhiFbPs(){
 $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
     MSGCOMMANDS2 = $(".toast.toast-warning").html();
-	if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-	$(".toast.toast-warning").remove();
-	}	
-    if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+	if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {
+	toastr["error"]("You are using a wrong version, visit: www.legendmod.ml");
+	
+	}		
+    else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+		$(".toast.toast-warning").remove();
 		$("#gamemode").prop('disabled', false);
 		$("#region").prop('disabled', false);   
 		$(".toast.toast-warning").remove();
@@ -1888,7 +1890,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 
 $("body").on('DOMSubtreeModified', "#chat-box", function() {
     var MSGCOMMANDS3 = $(".command-text").text();
-	if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
+	if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
 	$(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');	
 	}	
     else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
