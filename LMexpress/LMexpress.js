@@ -6519,7 +6519,7 @@ toastr["warning"]("<b>[SERVER]:</b> User login needed");
 }
 else{
 postSNEZ("http://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
-toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded");
+toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded. UID: <font color='yellow'><b>"+userid+"</b></font>");
 }
 }	
 function SNEZOgarDownload() {
