@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "72"; // the version 1.1-> 1.11
+var semimodVersion = "73"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -33,7 +33,7 @@ $("#TimesUsed").text(timesopened);
 
 
 		//SNEZ Upload / Download Settings
-		//SNEZServers();
+		SNEZServers();
 		$("#import-settings-btn").attr('class', 'btn btn-success');		
 		$("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
 		$("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109b + '</button>');
@@ -6537,4 +6537,158 @@ var responseSNEZ= xhttp.response;
 $('#import-settings').val(responseSNEZ);
 $("#import-settings-btn2").click();
 }		
+}
+
+function SNEZServers(){
+var onUILoaded = function(callback, params)
+{
+    var timerID = setInterval(function()
+    {
+        var elements = ["nick", "server", "clantag", "server-reconnect"];
+        var loaded = true;
+        elements.forEach(function(elementId)
+        {
+            if (!document.getElementById(elementId))
+                loaded = false;
+        });
+
+        if (loaded)
+        {
+            clearInterval(timerID);
+            callback(params);
+        }
+    }, 100);
+}
+
+// ---------------
+
+var state = {
+    nickname: null,
+    server: null,
+    tag: null
+};
+
+var socket = {
+    server: "ws://lc.snez.org:3050/",
+    client: null,
+    connect: function()
+    {
+        socket.client = new WebSocket(socket.server);
+        socket.client.onopen = socket.updateServerDetails;
+        socket.client.onclose = socket.reconnect;
+        socket.client.onmessage = socket.onMessage;
+    },
+    reconnect: function()
+    {
+        console.log("Reconnecting in 5 seconds...");
+
+        setTimeout(function(){
+            socket.connect();
+        }, 5000);
+    },
+    updateServerDetails: function()
+    {
+        console.log("Details have changed");
+//        console.log(state);
+
+        socket.send({
+            id: getSessionID(),
+            type: "update_details",
+            data: state
+        });
+    },
+    updateDetails: function()
+    {
+        var nick = document.getElementById("nick");
+        var server = document.getElementById("server");
+        var tag = document.getElementById("clantag");
+
+        state.nickname = nick.value;
+        state.server = server.value;
+        state.tag = tag.value;
+
+        socket.updateServerDetails();
+    },
+    send: function(msg)
+    {
+        if (socket.client.readyState !== socket.client.OPEN)
+            return;
+
+        socket.client.send(JSON.stringify(msg));
+    },
+    onMessage: function(message)
+    {
+        try
+        {
+            var data = JSON.parse(message.data);
+            switch(data.type)
+            {
+                case "ping":
+                    socket.send({ type: "pong" });
+                    break;
+            }
+        }
+        catch (e)
+        {
+            console.log(e);
+        }
+    }
+};
+
+var initLc = function()
+{
+    var nick = document.getElementById("nick");
+    var server = document.getElementById("server");
+    var tag = document.getElementById("clantag");
+    var reconnectButton = document.getElementById("server-reconnect");
+
+    if (!nick)
+    {
+        console.log("Could not initialize Lc");
+        return;
+    }
+
+    nick.addEventListener("change", socket.updateDetails);
+    server.addEventListener("change", socket.updateDetails);
+    tag.addEventListener("change", socket.updateDetails);
+
+    var reconnectTimer = null;
+
+    reconnectButton.addEventListener("click", function(e)
+    {
+        clearTimeout(reconnectTimer);
+        reconnectTimer = setTimeout(socket.updateDetails, 5000);
+    });
+
+    socket.connect();
+
+    setTimeout(socket.updateDetails, 5000);
+};
+
+function getSessionID()
+{
+    return getCookie("__cfduid");
+}
+
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+(function(){
+    onUILoaded(initLc, null);
+})();
+	
 }
