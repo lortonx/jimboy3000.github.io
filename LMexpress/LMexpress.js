@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.071 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "71"; // the version 1.1-> 1.11
+var semimodVersion = "72"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -30,6 +30,13 @@ $('[data-toggle="tooltip"]').tooltip();
 //$('#server-join').click(); //next time that ogario will be down
 loginsfbGplstart();
 $("#TimesUsed").text(timesopened);
+
+
+		//SNEZ Upload / Download Settings
+		$("#import-settings-btn").attr('class', 'btn btn-success');		
+		$("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
+		$("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109b + '</button>');
+
 }, 3000);
 
 var CutNameConflictwithMessage=false;
@@ -319,7 +326,9 @@ var Premadeletter105 = "select video skin";
 var Premadeletter106 = "unselect video skin";	
 var Premadeletter107 = "mute audio";
 var Premadeletter108 = "The LM Project";
-var Premadeletter109 = "Upload / Download";		
+var Premadeletter109 = "Upload / Download";
+var Premadeletter109a = "Upload";
+var Premadeletter109b = "Download";	
 var Premadeletter110 = "do not enter anything here unless you know what it is";	
 var Premadeletter111 = "click on the orange icon to buy";	
 var Premadeletter112 = "For some payment methods";
@@ -334,6 +343,23 @@ var Premadeletter120 = "Enter your EXACT name of the player";
 var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
 var Premadeletter122 = "to permanent ban from usage of this extension"; 
 
+var xhttp = new XMLHttpRequest();
+//var a= xhttp.response;
+
+function postSNEZ(server, username, password, data)
+{
+xhttp.open("POST", server, false);
+xhttp.setRequestHeader("username", username);
+xhttp.setRequestHeader("password", password);
+xhttp.send(data);
+}
+function getSNEZ(server, username, password)
+{
+xhttp.open("GET", server, false);
+xhttp.setRequestHeader("username", username);
+xhttp.setRequestHeader("password", password);
+xhttp.send();
+}
 
 var stylesLegendModConsole1 = [
     'background: linear-gradient(#D33106, #571402)'
@@ -6484,5 +6510,27 @@ function emphasischat(){
     };
 }
 
+function SNEZOgarUpload() {
+//$("#export-settings-btn").click();
+//postSNEZ("http://lmsettings.snez.org/", "test", "test1234", "{ a: 1, b: 2, d: 4}");
 
+if (userid==""||userid==null){
+toastr["warning"]("<b>[SERVER]:</b> User login needed");	
+}
+else{
+postSNEZ("http://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
+toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded");
+}
+}	
+function SNEZOgarDownload() {
+if (userid==""||userid==null){
+toastr["warning"]("<b>[SERVER]:</b> User login needed");	
+}
+else{	
+getSNEZ("http://lmsettings.snez.org/", userid, "LMSettings");
+var responseSNEZ= xhttp.response;
+$('#import-settings').val(responseSNEZ);
+$("#import-settings-btn2").click();
+}		
+}
 		
