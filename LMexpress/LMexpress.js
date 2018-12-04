@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "75"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6822,6 +6822,7 @@ client2 = {
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
 					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
+					showonceusers3++;
 					//JSON.stringify(data[player]);
 					//console.log(data[player]);
 					
@@ -6840,12 +6841,13 @@ client2 = {
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
 					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
+					showonceusers3++;
 					//JSON.stringify(data[player]);
 					//console.log(data[player]);
 					
     			}					
 				
-				else if (showonceusers==0&&showonceusers2==0){
+				else if (showonceusers3==0){
 		            toastr["warning"]('Server / Leaderboard, not found. Do you want the 1-by-1 manual search leaderboards of <font color="yellow">' + $("#region").val() + ' / ' + $("#gamemode").val() + '</font> ?' + '</br> <button id= "manualsearch" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-exit" style="width: 100%;margin-top: -20px;">' + Premadeletter25 + '</button>', "", {
 		                timeOut: 20000,
 		                extendedTimeOut: 20000
