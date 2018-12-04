@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "75"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -344,6 +344,7 @@ var Premadeletter120 = "Enter your EXACT name of the player";
 var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
 var Premadeletter122 = "to permanent ban from usage of this extension"; 
 
+var showonceusers3=0;
 var client2;
 var xhttp = new XMLHttpRequest();
 //var a= xhttp.response;
@@ -6804,7 +6805,7 @@ client2 = {
     {
 		var showonceusers=0;
 		var showonceusers2=0;
-		var showonceusers3=0;
+		showonceusers3=0;
 		var showonceusers4=0;
 		for (var player in data) {
   			if (data.hasOwnProperty(player)) {
@@ -6824,6 +6825,7 @@ client2 = {
 					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
 					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
 					showonceusers3++;
+					showonceusers3returner(showonceusers3);
 					//JSON.stringify(data[player]);
 					//console.log(data[player]);
 					
@@ -6843,12 +6845,14 @@ client2 = {
 					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
 					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
 					showonceusers3++;
+					showonceusers3returner(showonceusers3);
 					//JSON.stringify(data[player]);
 					//console.log(data[player]);
 					
-    			}					
-				
-				else if (showonceusers3==0){
+    			}									
+				}
+  			}
+				 if (showonceusers3==0){
 					showonceusers4++;
 					if (showonceusers4==1){
 						
@@ -6861,9 +6865,7 @@ client2 = {
             searchHandler(searchString);	                
 		            });
 				}
-				}
-				}
-  			}
+				}			
 		}
 		client2.ws.close();	
 	return client2;	
@@ -6874,4 +6876,7 @@ client2 = {
     }
 };
 
+}
+function showonceusers3returner(showonceusers3){
+	return showonceusers3;
 }
