@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "74"; // the version 1.1-> 1.11
+var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -649,14 +649,7 @@ function init(modVersion) {
 
         // fix leaderboard buttons
         $("#leaderboard-menu").css("pointer-events", "auto");
-        $("#searchHud").css("pointer-events", "auto");
-		
-        $("#searchShortcut").click(function() {
-            hideMenu();
-//			showMenu();
-            showSearchHud();
-            $("#searchInput").focus().select();
-        });
+
 		
         // fix stats text size
         $('[id="statsText"]').css("font-size", "medium");
@@ -1052,6 +1045,15 @@ function init(modVersion) {
         });
 		$("#searchShortcut").mouseenter(function () {
         $("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
+		
+        $("#searchHud").css("pointer-events", "auto");
+		
+        $("#searchShortcut").click(function() {
+            hideMenu();
+//			showMenu();
+            showSearchHud();
+            $("#searchInput").focus().select();
+        });		
 
         $('#nick').mouseenter(function() {
             $('#nick').css('background-color', '#000066');
