@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "75"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -675,7 +675,7 @@ function init(modVersion) {
                 $("#searchInput").select();
                 //searchHandler(pastedData);
 				$("#searchBtn").click();
-            }
+            }		
         });
 
         //load notes
@@ -1027,8 +1027,15 @@ function init(modVersion) {
         });
 
         $("#searchBtn").click(function() {
-			getSNEZServers();
-			client2.connect();
+		if (!searching) {
+		getSNEZServers();
+		client2.connect();}
+		else{
+        clearInterval(timerId);
+        searching = false;
+//        hideCancelSearch();
+        toastr["error"](Premadeletter32 + "!").css("width", "210px");			
+		}
             //var searchString = $("#searchInput").val();
             //searchHandler(searchString);
         });		
