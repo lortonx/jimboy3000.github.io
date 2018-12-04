@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "75"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -4036,7 +4036,7 @@ var legbgcolor = $("#menuPanelColor").val();
         $("#ao2t-cfg-ok").click(function(){
 			if ($("#helloContainer").is(":visible")){
 			      setTimeout(function() {
-					showMenu();
+					showMenu2();
 				   }, 100);
 			}
 		cfg = my.cfg_save();
@@ -4050,7 +4050,7 @@ var legbgcolor = $("#menuPanelColor").val();
         $("#ao2t-cfg-cancel").click(function(){
 			if ($("#helloContainer").is(":visible")){
 			      setTimeout(function() {
-					showMenu();
+					showMenu2();
 				   }, 100);
 			}
 			my.config_cancel();
@@ -4577,7 +4577,8 @@ function hideMenu2() {
 }
 
         $("#searchShortcut").click(function() {
-            hideMenu();
+            //hideMenu();
+			showMenu2();
             showSearchHud();
             $("#searchInput").focus().select();
         });
