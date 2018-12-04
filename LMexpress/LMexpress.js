@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "75"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -652,8 +652,8 @@ function init(modVersion) {
         $("#searchHud").css("pointer-events", "auto");
 		
         $("#searchShortcut").click(function() {
-            //hideMenu();
-			showMenu();
+            hideMenu();
+//			showMenu();
             showSearchHud();
             $("#searchInput").focus().select();
         });
@@ -1047,6 +1047,7 @@ function init(modVersion) {
 	
         $("#closeBtn").click(function() {
             hideSearchHud();
+//			hideMenu();
 			showMenu2();
         });
 		$("#searchShortcut").mouseenter(function () {
@@ -2231,7 +2232,7 @@ function delay(time, func) {
 }
 
 function spectate() {
-    hideMenu();
+//    hideMenu();
     $(".btn-spectate").click();
 }
 function play() {
@@ -4562,16 +4563,20 @@ if ($("#ao2t-capture").hasClass("connected")){
 }
 }
 function showMenu() {
-$("#overlays").css("right", "0em");
+	$("#overlays").show();
+//$("#overlays").css("right", "0em");
+
 $('a[href="#main-panel"]').click();
 }
 function showMenu2() {
-$("#overlays").css("right", "-999em");
+	$("#overlays").show();
+//$("#overlays").css("right", "-999em");
 $('a[href="#main-panel"]').click();
 }
 
 function hideMenu() {
-    $("#overlays").css("left", "-999em");
+	$("#overlays").hide();
+    //$("#overlays").css("left", "-999em");
 }
 function hideMenu2() {
     $("#overlays").hide();
