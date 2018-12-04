@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "74"; // the version 1.1-> 1.11
+var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -344,6 +344,7 @@ var Premadeletter120 = "Enter your EXACT name of the player";
 var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
 var Premadeletter122 = "to permanent ban from usage of this extension"; 
 
+var client2;
 var xhttp = new XMLHttpRequest();
 //var a= xhttp.response;
 
@@ -6715,7 +6716,7 @@ function getCookie(cname)
 }
 
 function getSNEZServers(){
-var client2 = {
+client2 = {
 
     // Properties
     server: "ws://lc.snez.org:3050/",
@@ -6824,7 +6825,7 @@ var client2 = {
 					//console.log(data[player]);
 					
     			}
-    			if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
+    			else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
 					if (showonceusers2==0){
 					showonceusers2++;					
 					toastr["info"]("Server Found. Revealing users...");
@@ -6863,4 +6864,5 @@ var client2 = {
         client2.ws.send(JSON.stringify(data));
     }
 };
+return client2;
 }
