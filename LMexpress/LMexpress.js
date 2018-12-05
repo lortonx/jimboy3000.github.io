@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "74"; // the version 1.1-> 1.11
+var semimodVersion = "76"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1605,7 +1605,8 @@ function init(modVersion) {
         });	
 		
 		$("#oldSkinsBtn").click(function() {
-			if (modVersion == "1.3||1.4" ) {
+			
+			if (modVersion == "1.3" || modVersion == "1.4" ) {
 		location.replace("https://agar.io/LMoldskins");
 			}
 			else{
@@ -6367,11 +6368,11 @@ FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse
     $("#UserProfilePic>img").attr('src','http://graph.facebook.com/' + fbresponse.id + '/picture?type=large');
 //	setTimeout(function (){ 
 	$("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
-	$("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[3]]);
+	$("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[2]]);
 					userfirstname=fbresponse[Object.keys(fbresponse)[0]]; if (userfirstname!=null) {localStorage.setItem("userfirstname", userfirstname);}
-					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}
-					usergender=fbresponse[Object.keys(fbresponse)[2]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
-					userid=fbresponse[Object.keys(fbresponse)[3]]; if (userid!=null) {localStorage.setItem("userid", userid);}
+					userlastname=fbresponse[Object.keys(fbresponse)[1]]; if (userlastname!=null) {localStorage.setItem("userlastname", userlastname);}					
+					userid=fbresponse[Object.keys(fbresponse)[2]]; if (userid!=null) {localStorage.setItem("userid", userid);}
+					usergender=fbresponse[Object.keys(fbresponse)[3]]; if (usergender!=null) {localStorage.setItem("usergender", usergender);}
 					return userfirstname, userlastname, usergender, userid;	
 //	},250);
 });
