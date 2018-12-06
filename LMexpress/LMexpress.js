@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "76"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -432,13 +432,13 @@ function init(modVersion) {
 				}
 			}
 		});	
-           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
+/*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
                 $("#UniversalChat").click();
 				setTimeout(function() {
 				$("#ao2t-hud").hide();
 				}, 1100);
             }		
-
+*/
 				   
     //var connectedbanner=0;
 	$("#gamemode").prop('disabled', false);
@@ -1151,7 +1151,7 @@ function init(modVersion) {
 			
 			setTimeout(function (){ $("#VoiceBtn").focusout();}, 3000);
 			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
-			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
+//			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
 			var win = window.open(url2, '_blank');	
 				}
 			else{
@@ -1729,12 +1729,12 @@ function loadersetings() {
 }
 function loadericon() {
 	//continue loadericon
-    setTimeout(function() {
+//    setTimeout(function() {
         setTimeout(function() {
         $("#imagebig").fadeOut(1500);
 		setTimeout(function() {$("#imagebig").remove();}, 1600); //remove it
 		}, 1000);   
-		}, 100);
+//		}, 100);
 }
 function PremiumUsers(){
         var ProLicenceUsersTableJS = document.createElement("script");
@@ -1749,20 +1749,21 @@ function getaccesstoken() {
         datatype: "json",
         success: function(info) {
 		  accesstomod =  info[17];
-			return accesstomod;
+			//return accesstomod;
+			getaccesstoken2(accesstomod);
 		}
 	});
 }
 
-function getaccesstoken2() {
-    setTimeout(function() {
+function getaccesstoken2(accesstomod) {
+//    setTimeout(function() {
         if(accesstomod != "a" && accesstomod != null){
 			toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
 				setTimeout(function() {
 					document.documentElement.innerHTML = "";
-					}, 21000);
+					}, 8000);
 				}
-   }, 13000);
+//   }, 10000);
 }
 function enableshortcuts() {
     if ($("#IPBtn").attr('aria-pressed') == "false") {
