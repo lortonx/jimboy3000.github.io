@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.078 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -20,12 +20,6 @@ document.title = "Legend mod";
 var accesstomod;
 getaccesstoken();
 loadersetings();
-
-setTimeout(function() {
-$('[data-toggle="tooltip"]').tooltip();
-//$('#server-join').click(); //next time that ogario will be down
-loginsfbGplstart();
-}, 3000);
 
 var CutNameConflictwithMessage=false;
 
@@ -5644,8 +5638,8 @@ function showonceusers3returner(showonceusers3){
 
 function pre_loopLM(modVersion) {
             if (!document.getElementById("message-box")) {
-                setTimeout(pre_loop, 200);
-                console.log("VoiceDeOChat:wait for Legend load");
+                setTimeout(pre_loopLM, 200);
+                console.log("Ogario not loaded");
                 return;
             }
             return initializeLM(modVersion);
@@ -6862,7 +6856,7 @@ preventcanvasimagecrash();
 		
 		$("#TimesUsed").text(timesopened);
 		LMserverbox();
-		triggerLMbtns();
+		
 		bluebtns();		
 		//SNEZ Upload / Download Settings
 		SNEZServers();
@@ -6872,15 +6866,9 @@ preventcanvasimagecrash();
 
 
 
-core.disconnect= function () {
-            adres();
-}
-        $('#server-join').click(function() {
-            adres();
-			});
-	        $('#server-connect').click(function() {
-            adres();
-        });	
+core.disconnect= function () {adres();}
+        $('#server-join').click(function() {adres();});
+	    $('#server-connect').click(function() {adres();});	
 
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
@@ -6892,6 +6880,12 @@ core.disconnect= function () {
     console.groupEnd();
 console.groupEnd();	
 
+setTimeout(function() {
+$('[data-toggle="tooltip"]').tooltip();
+//$('#server-join').click(); //next time that ogario will be down
+loginsfbGplstart();
+triggerLMbtns();
+}, 1000);
 /*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
