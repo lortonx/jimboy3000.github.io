@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.078 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "78"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -932,7 +932,7 @@ function joinToken(token) {
 //        $("#cur-tk-hud").text("TK: #" + currentToken).attr("style", "opacity: 0;");
 
     }
-
+	$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
 }
 
 function searchHandler(searchStr) {
@@ -956,6 +956,7 @@ function searchTKHandler(searchStr) {
     } else {
         return false;
     }
+	$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
     return true;	
 }
 function realmodereturn(){
@@ -1047,12 +1048,14 @@ function findIP(searchIP) {
                         numTries++;
                         toastr["success"](Premadeletter30 + ": " + numTries + "\/" + maxTries).css("width", "210px");
                         if (numTries >= maxTries) {
+							$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
                             toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (currentIP == searchIP) {
+							$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
@@ -1078,9 +1081,11 @@ function findIP(searchIP) {
             }
         }
     } else {
+		$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
         clearInterval(timerId);
         searching = false;
 //        hideCancelSearch();
+		$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
         toastr["error"](Premadeletter32 + "!").css("width", "210px");
     }
 }
