@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.078 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "78"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -20,9 +20,8 @@ document.title = "LM Express";
 var accesstomod;
 getaccesstoken();
 loadersetings();
-
+/*
 var CutNameConflictwithMessage=false;
-
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -35,7 +34,7 @@ var CutNameConflictwithMessage=false;
 		}
     };
 })();
-/*
+
 (function(){
     var _privateLog = console.log;
     console.log = function (message) {
@@ -6392,6 +6391,8 @@ preventcanvasimagecrash();
 		}		
 		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
+		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
+
 		setTimeout(function() {
                                     $('#loaderIframeInfo1').remove();
                                 }, 4000);
@@ -6734,7 +6735,7 @@ preventcanvasimagecrash();
 
         $("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 
-        $("#YoutubeAutoBtn").click(function() {
+/*        $("#YoutubeAutoBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
                 localStorage.setItem("YoutubeAutoBtn", true);
@@ -6749,7 +6750,20 @@ preventcanvasimagecrash();
                 localStorage.setItem("YoutubeAutoBtn", false);
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
-        });
+        }); */
+        $("#YoutubeAutoBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("YoutubeAutoBtn", true);
+				
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter41);
+				return YoutubeAutoBtn=true;
+            } else {
+                localStorage.setItem("YoutubeAutoBtn", false);
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
+				return YoutubeAutoBtn=false;
+            }
+        });			
 	    $("#shortcuts-hud").hide();
         $("#rotate-hud").hide();
         $("#exp-bar").hide();
