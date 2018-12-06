@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "78"; // the version 1.1-> 1.11
+var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -403,7 +403,7 @@ if (minbtext == null || minbtext == "") {
 LMminimapTextAct();
 
 var datasent2;
-fzogarOgarIframeListener();
+//fzogarOgarIframeListener();
 emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
@@ -1149,8 +1149,8 @@ function init(modVersion) {
 			
 			url2="https://talky.io/"+semiurl2;
 			
-			setTimeout(function (){ $("#VoiceBtn").focusout();}, 3000);
-			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
+			setTimeout(function (){ $("#VoiceBtn").focusout();}, 100);
+//			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
 //			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
 			var win = window.open(url2, '_blank');	
 				}
@@ -2217,6 +2217,7 @@ setTimeout(function() {
 }
 function onhashchange(){return false}
 function LMminimapTextAct(){
+LMminimapText();
 setTimeout(function() {LMminimapText();  }, 3000);
 setTimeout(function() {LMminimapText();  }, 3500);
 setTimeout(function() {LMminimapText();  }, 4000);
@@ -2362,7 +2363,7 @@ function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
 }
 
 function findIP(searchIP) {
-    setTimeout(function() {
+ //   setTimeout(function() {
         if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
@@ -2375,7 +2376,7 @@ function findIP(searchIP) {
         if (realmode == ":experimental") {
             $('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();
         }
-    }, 1500); //weird
+ //   }, 1500); //weird
     if (!searching) {
         if ($.trim(searchIP) == '') {} else {
 //            showCancelSearch();
@@ -2924,6 +2925,7 @@ function copy(text) {
     $("#tempCopy").hide();
     $("#tempCopy").val("");
 }
+/*
 function fzogarOgarSettings(datasent2){
         setTimeout(function() {
             $("#import-settings-btn").attr('class', 'btn btn-success');
@@ -2933,14 +2935,14 @@ function fzogarOgarSettings(datasent2){
 			$('#import-settings-btn2').click();
         }, 100);
 }		
-/*
+
 function fzogarOgarIframe() {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://jimboy3100.github.io/AjaxData/fzogarOgarIframe.js";
     $("body").append(s);
 }
-*/
+
 
 function fzogarOgarIframeListener(){
 ///////////////////////////////////////////////////////////////////////////
@@ -2973,7 +2975,7 @@ eventer(messageEvent, function (e) {
 }, false);
 ///////////////////////////////////////////////////////////////////////////
 }
-
+*/
 function LegendSettingsfirst() {
 	$('#export-settings').before('<label><input type="checkbox" id="export-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
 	var elemLegendSwitch = document.querySelector('#export-LegendSettings');
@@ -3365,13 +3367,13 @@ function YoutubeEmbPlayer(pastedDataorNot){
             var finalUrl = getEmbedUrl(pastedDataorNot.trim());
             if (finalUrl == false) {
                 toastr["error"](Premadeletter1).css("width", "210px");
-                setTimeout(function() {
+ //               setTimeout(function() {
                     if (localStorage.getItem("musicUrl") == null) {
                         $("#musicUrl").val(defaultMusicUrl);
                     } else {
                         $("#musicUrl").val(localStorage.getItem("musicUrl"));
                     }
-                }, 500);
+ //               }, 500);
             } else {
                 $("#musicFrame").attr("src", finalUrl);
                 localStorage.setItem("musicUrl", pastedDataorNot.trim());
@@ -3415,10 +3417,10 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			$("#acceptYoutubeEmb").click(function() {
 		    YoutubeEmbPlayer(MSGCOMMANDS);
 			$("#musicUrl").val(MSGCOMMANDS);
-			setTimeout(function() {
+			//setTimeout(function() {
 			//$("#playerI").click();
 			playYoutube(); //it's different on LME
-			}, 1000);
+			//}, 1000);
 		    });
 			}
 			else if (MSGCOMMANDS.includes("[skype]")) {
@@ -4053,9 +4055,9 @@ var legbgcolor = $("#menuPanelColor").val();
         });
         $("#ao2t-cfg-ok").click(function(){
 			if ($("#helloContainer").is(":visible")){
-			      setTimeout(function() {
+//			      setTimeout(function() {
 					showMenu2();
-				   }, 100);
+//				   }, 100);
 			}
 		cfg = my.cfg_save();
 //            GM_setValue("config", JSON.stringify(cfg));
@@ -4067,9 +4069,9 @@ var legbgcolor = $("#menuPanelColor").val();
          });
         $("#ao2t-cfg-cancel").click(function(){
 			if ($("#helloContainer").is(":visible")){
-			      setTimeout(function() {
+//			      setTimeout(function() {
 					showMenu2();
-				   }, 100);
+//				   }, 100);
 			}
 			my.config_cancel();
         });
@@ -4456,7 +4458,7 @@ var legbgcolor = $("#menuPanelColor").val();
 
 
 
-setTimeout(function() {
+//setTimeout(function() {
 $('#ao2t-capture').click();
 
 $('#message').keydown(function(e){
@@ -4466,7 +4468,7 @@ $('#message').keydown(function(e){
 //		$('#message').val("");		
     }
 });	
-}, 500);	
+//}, 500);	
 
 
 
