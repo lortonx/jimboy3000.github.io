@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "81"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -450,1235 +450,7 @@ function init(modVersion) {
     } else if (timesopened == null) {
         localStorage.setItem("timesopened", "0");
     }
-
-    setTimeout(function() {
-        document.title = "Legend express v" + modVersion;
-		$("#leaderboard-hud > h4").text("Leaderboard");
-        $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
-        $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
-        $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
-
-        $("#create-party-btn-2").html('<span class="glyphicon glyphicon-plus"></span>');
-        $("#create-party-btn-2").attr('data-toggle', "tooltip").prop('title', "Create party");
-
-        $("#join-party-btn").html('<span class="glyphicon glyphicon-save"></span>').attr('data-toggle', "tooltip").prop('title', "Join party").attr("style", "width: 49% !important; float: right;");
-
-        //backgroud div
-        $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
-
-        $("#overlays").css("z-index", 100);
-
-        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><i class="fa fa-search retro"></i><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
-            '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
-            '<div id="" style="margin-top: 10px;">' +
-            '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="pointer-events: auto;margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
-            '<button id="searchBtn" class="btn btn-copy-token copy-party-token btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Cancel search" style="pointer-events: auto;margin-bottom:10px;width: 15%;"><span id="searchSpan"><i class="fa fa-search"></i></span></button>' +
-            '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="pointer-events: auto;color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><i class="fa fa-window-close fa-2"></i></button>' +
-            '</div></div>'
-        );
-		$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
-            '</div>');
-        $("#clantag").attr('placeholder', 'Password').tooltip({
-            title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
-            placement: "left"
-        });
-        $("#skin").attr('maxlength', 150).attr('placeholder', 'Manual direct skin URL').tooltip({
-            title: "Insert your manual skin weblink",
-            placement: "left"
-        });
-        $("#region").tooltip({
-            title: "The region to play",
-            placement: "left"
-        });
-        $("#gamemode").tooltip({
-            title: "The mode to play",
-            placement: "top"
-        });
-        $("#nick").attr('placeholder', 'Name').tooltip({
-            title: "Insert your in-game name",
-            placement: "bottom"
-        });
-        $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
-            '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
-            '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
-            '<input id="note3" class="form-control main-color note" style="background: transparent; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
-            '<input id="note4" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 25%; float: left; border: none; border-bottom: 1px solid; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
-            '<input id="note5" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
-            '<input id="note6" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
-            '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
-            '</div>');			
-		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
-		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
-				
-        $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
-            '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
-            '<button id="stoptimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="stopTimer();" data-toggle="tooltip" data-original-title="Pause Timer""><i id="pausetime" class="fa fa-pause-circle" style="padding-left: 0px;"></i></button>' +
-            '<button id="cleartimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="clearTimer();" data-toggle="tooltip" data-original-title="Stop Timer"><i id="cleartime" class="fa fa-stop-circle" style="padding-left: 0px;"></i></button>' +
-            '<a id="timer" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100% position: absolute; right: 0px;">00:00</a>');
-        $("#stoptimer").hide();
-        $("#cleartimer").hide();
-		
-//        $(".menu-tabs").children().attr("style", "width: 14.27%;");
-          $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; padding:12px;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%; padding:12px;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');		$(".menu-tabs").children().attr("style", "width: 16.66%;");
-
-		$(".menu-tabs").children().attr("style", "width: 16.66%;");
-		$(".profile-tab").hide();    
-        $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
-            //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
-            '<div id="UserProfile" style="margin-bottom: 10px;">' +
-			'<div id="UserProfilePic" class="user-picture"><img align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;border-radius: 30px;"></img></div>' +
-			'<div style="display:inline-block; width: 70%;">' +
-			'<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
-			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
-			'<div id="TimesUsedPanel" class="user-name" style="display:inline-block;">Times Used: <div id="TimesUsed" style="display:inline-block"></div></div><br>'+			
-			'</div></div>' +
-			'<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
-            '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
-            //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
-            //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
-                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
-            											'<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
-            //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
-            '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
-            '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
-            //											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: none;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
- /*           '<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
-            //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
-            '<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
-            //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
- */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn" data-itr="page_play" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
-
-            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
-            '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
-            '<option value="1" data-itr="">Minimap</option>' +
-            '<option value="2" data-itr="">Leaderboard</option>' +
-            '<option value="3" data-itr="">Teamboard</option>' +
-            '<option value="4" data-itr="">Main Canvas</option>' +
-            '<option value="5" data-itr="">Main Banner</option>' +
-            '</select>' +
-
-            '<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
-            '<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
-            '<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
-            '<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
-            '<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with http://... or https://..." >' +
-            '<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
-            '<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
-            '<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
-            '<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +
-            '</div>' +
-
-            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 0px 0;"><span id="legendmanualmess" class="title" style="">Manual Message Icons&Youtube:  </span>' +
-            '<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
-            '<option value="1" data-itr="">Icon 1</option>' +
-            '<option value="2" data-itr="">Icon 2</option>' +
-            '<option value="3" data-itr="">Icon 3</option>' +
-            '<option value="4" data-itr="">Icon 4</option>' +
-            '<option value="5" data-itr="">Icon 5</option>' +
-            '<option value="6" data-itr="">Icon 6</option>' +
-            '<option value="7" data-itr="">Youtube 1</option>' +
-            '<option value="8" data-itr="">Youtube 2</option>' +
-            '<option value="9" data-itr="">Youtube 3</option>' +
-            '<option value="10" data-itr="">Youtube 4</option>' +
-            '<option value="11" data-itr="">Youtube 5</option>' +
-            '<option value="12" data-itr="">Youtube 6</option>' +
-            '</select>' +
-
-            '<input id="pic1data" class="form-control" placeholder="Message Icon Text 1" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
-            '<input id="pic2data" class="form-control" placeholder="Message Icon Text 2" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
-            '<input id="pic3data" class="form-control" placeholder="Message Icon Text 3" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
-            '<input id="pic4data" class="form-control" placeholder="Message Icon Text 4" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
-            '<input id="pic5data" class="form-control" placeholder="Message Icon Text 5" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
-            '<input id="pic6data" class="form-control" placeholder="Message Icon Text 6" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
-            '<input id="yt1data" class="form-control" placeholder="Youtube Message Text 1" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
-            '<input id="yt2data" class="form-control" placeholder="Youtube Message Text 2" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
-            '<input id="yt3data" class="form-control" placeholder="Youtube Message Text 3" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
-            '<input id="yt4data" class="form-control" placeholder="Youtube Message Text 4" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
-            '<input id="yt5data" class="form-control" placeholder="Youtube Message Text 5" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
-            '<input id="yt6data" class="form-control" placeholder="Youtube Message Text 6" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
-
-            '<input id="pic1url" class="form-control" placeholder="Message Icon Imgur Url 1" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic2url" class="form-control" placeholder="Message Icon Imgur Url 2" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic3url" class="form-control" placeholder="Message Icon Imgur Url 3" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic4url" class="form-control" placeholder="Message Icon Imgur Url 4" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic5url" class="form-control" placeholder="Message Icon Imgur Url 5" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic6url" class="form-control" placeholder="Message Icon Imgur Url 6" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="yt1url" class="form-control" placeholder="Youtube Message Url 1" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-            '<input id="yt2url" class="form-control" placeholder="Youtube Message Url 2" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-            '<input id="yt3url" class="form-control" placeholder="Youtube Message Url 3" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-            '<input id="yt4url" class="form-control" placeholder="Youtube Message Url 4" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-            '<input id="yt5url" class="form-control" placeholder="Youtube Message Url 5" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-            '<input id="yt6url" class="form-control" placeholder="Youtube Message Url 6" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
-            '</div></div>' +
-
-            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
-            '<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
-            '<option value="1" data-itr="">English</option>' +
-            '<option value="6" data-itr="">Arabic - عربى</option>' +
-            '<option value="4" data-itr="">Bulgarian - български</option>' +
-            '<option value="5" data-itr="">French - Français</option>' +
-			'<option value="9" data-itr="">German - Deutsch</option>' +
-            '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
-			'<option value="8" data-itr="">Russian - Русские</option>' +
-            '<option value="3" data-itr="">Spanish - Español</option>' +
-			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
-            '</select></div>' +
-
-            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
-            '<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
-            '<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
-            '<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
-            '<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
-            '</div></div>' +
-            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>' +
-            '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
-            '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
-            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
-            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
-            '</div></div>');
-		    loginsfbGpl2();
-			//fix userprofile
-			$("#UserProfile").css("font-size", "12px");
-			$("#UserProfilePic").click(function() {useProfilePhotoCustom();});
-//			loginsfbGpl();			
-//		$("#exp-bar").hide();
-//		$(".menu-tabs").children().attr("style", "width: 19.99%;");
-//		$(".profile-tab").hide();
-				
-        $("#time-hud").attr("style", "top: 290px !important;");
-
-        // fix leaderboard buttons
-        $("#leaderboard-menu").css("pointer-events", "auto");
-
-		
-        // fix stats text size
-        $('[id="statsText"]').css("font-size", "medium");
-
-		
-        // detect paste
-        $(document).bind("paste", function(e) {
-            if (!searching && !($("input,textarea").is(":focus"))) {
-                var pastedData = e.originalEvent.clipboardData.getData('text');
-                hideMenu();
-                showSearchHud();
-                $("#searchInput").val(pastedData);
-                $("#searchInput").select();
-                //searchHandler(pastedData);
-				$("#searchBtn").click();
-            }
-        });
-
-        $("#searchInput").bind("paste", function(e) {
-            if (!searching) {
-                var pastedData = e.originalEvent.clipboardData.getData('text');
-                $("#searchInput").val(pastedData);
-                $("#searchInput").select();
-                //searchHandler(pastedData);
-				$("#searchBtn").click();
-            }		
-        });
-
-        //load notes
-        $("#note1").val(localStorage.getItem('note1'));
-        $("#note2").val(localStorage.getItem('note2'));
-        $("#note3").val(localStorage.getItem('note3'));
-        $("#note4").val(localStorage.getItem('note4'));
-        $("#note5").val(localStorage.getItem('note5'));
-        $("#note6").val(localStorage.getItem('note6'));
-        $("#note7").val(localStorage.getItem('note7'));
-
-		$(".note").keyup(function(event) {
-            localStorage.setItem(event.target.id, $(event.target).val());
-        });
-        var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
-        //	var savemusic=$(".agario-panel.sounds-panel").html();
-        $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
-            '<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
-            '<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">' +
-            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
-			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter61 + '</button></div>'); 
-		$('.agario-panel.radio-panel').hide();
-        $('.agario-panel.ogario-yt-panel').hide();
-
-        if ($('#menuBg').val() == "http://cdn.ogario.ovh/static/img/pattern.png") {
-            $('#menuBg').val("https://jimboy3100.github.io/pattern.png");
-        }
-        if ($('#messageSound').val() == "http://cdn.ogario.ovh/static/sounds/notification_01.mp3") {
-            $('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");
-        }
-        if ($('#commandSound').val() == "http://cdn.ogario.ovh/static/sounds/notification_02.mp3") {
-            $('#commandSound').val("https://jimboy3100.github.io/notification_02.mp3");
-        }
-        //    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
-        //                            '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
-        //                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
-        //							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
-        //	$('#music').append(savemusic+'</div>');						
-
-
-        if (typeof YT !== 'undefined') {
-            musicPlayer = new YT.Player('musicFrame', {
-                events: {
-                    'onStateChange': function(state) {
-                        if (state.data == 1) {
-                            $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                            $("#playerBtn").attr('data-original-title', Premadeletter60).tooltip('fixTitle');
-                        } else {
-                            $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                            $("#playerBtn").attr('data-original-title', Premadeletter13).tooltip('fixTitle');
-                        }
-                    }
-                }
-            });
-        }
-		
-		 $("#YoutubeBackgroundBtn").click(function() {
-            var checked = !($(this).attr('aria-pressed') == "true");
-            if (checked) {               
-				YoutubebackgroundEnable();
-                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter62);
-            } else {
-				YoutubebackgroundDisable();
-                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter61);
-            }
-        });
-
-        //roller and other icons
-        $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
-        //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
-        $('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
-		
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
-        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
- //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
-        $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
-        $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
-		$("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins/Needs LME Expansion 1"></a>'+
-//		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
-		'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+	
-		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-        $("#LegGoogleForm").tooltip('show').tooltip('hide');;
-		$("#oldSkinsBtn").tooltip('show').tooltip('hide');;
-		$("#ModInfoQuick").tooltip('show').tooltip('hide');
-//		$("#LMImplements").tooltip('show').tooltip('hide');
-		// prevent edit
-        $("#musicUrl").on("input", function() {
-            $(this).attr("maxlength", "1000");
-        });
-        $("#musicUrl").bind("paste", function(e) {
-            $(this).attr("maxlength", "1000");
-            var pastedDataorNot = e.originalEvent.clipboardData.getData('text');
-			YoutubeEmbPlayer(pastedDataorNot);
-        });
-
-        // save notes
-
-		//fzogar Upload / Download Settings
-		$("#import-settings-btn").attr('class', 'btn btn-success');
-//		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
-
-        $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
-            '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
-            '</div></div>');
-
-        $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
-            //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
-            '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
-
-        $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
-            '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
-            '<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter57 + '><i id="ChatBtn1" class="fa fa-comment-o" style="padding-left: 0px;"></i></button>' +
-            '<button id="MiniScripts" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setscriptingfunction();" data-toggle="tooltip" data-original-title="Mini Scripts"><i id="MiniScripts1" class="fa fa-linode" style="padding-left: 0px;"></i></button>' +
-            '<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>' +
-            '<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>' +
-            '<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>' +
-            '<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>' +
-            '<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter13 + '><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>' +
-            '<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 11%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
-
-
-        $("#minimap-hud").prepend('<div id="images-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
-            '<button id="sendicon1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendicon11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendicon2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon2();" data-toggle="tooltip" data-original-title="Why?"><i id="sendicon21" class="fa fa-question-circle" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendicon3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendicon31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>' +
-            '<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>' +
-            '<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
-
-        $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
-            '<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Rick Astley - Never Gonna Give You Up"><i id="sendyt11" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendyt2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt2();" data-toggle="tooltip" data-original-title="Survivor - Eye Of The Tiger"><i id="sendyt21" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Lion king - The Lion Sleeps Tonight"><i id="sendyt31" class="fa fa-music" style="padding-center: 0px;"></i></button>' +
-            '<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Agario - Jumbo Solo vs Teams"><i id="sendyt41" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>' +
-            '<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Agario - Kill3r vs Teams"><i id="sendyt51" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>' +
-            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Promotional Video"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
-
-        $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
-            '<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>' +
-            '<button id="msgcommand2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand2f();" data-toggle="tooltip" data-original-title="Laugh to Team"><i id="msgcommand21" class="fa fa-smile-o" style="padding-left: 0px;"></i></button>' +
-            '<button id="msgcommand3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand3f();" data-toggle="tooltip" data-original-title="Team Change Name to yours"><i id="msgcommand31" class="fa fa-magic" style="padding-center: 0px;"></i></button>' +
-            '<button id="msgcommand4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand4f();" data-toggle="tooltip" data-original-title="Troll Teammate"><i id="msgcommand41" class="fa fa-bath" style="padding-center: 0px;"></i></button>' +
-            '<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>' +
-            '<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
-
-		$("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
-            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
-            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
-			
-			
-			
-         $("#leaderboard-hud").append('<div id="leaderboard-menu" style="pointer-events: auto;">' +
-            '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ; " data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
-            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
-            '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
-            'background-color: transparent;color: '+legmaincolor+' ;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
-
-            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; left: 0px; padding: 0px; border-radius: 0px;">' +
-            '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 100%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px; margin-right: 2px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><i class="fa fa-arrow-circle-down fa-lg"></i></a>' +
-            '</div>' +
-            '<div id="dropDown2" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 90px; left: 67px; padding: 0px; border-radius: 0px;">' +
-            '<a id="copySIPandPass" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Password">TK&PW</a>' +
-            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
-            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP, Password, Leaderboard...">TK&ALL</a>' +            
-			'</div>' +
-            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: -30px; border-radius: 0px;">' +
-            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
-//            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
-            '</div>' +
-
-            '<input id="tempCopy" style="display: none;" value="">' +
-            '</div>');	
-        // player shortcut
-		
-        $("#playerBtn").click(function() {                          
-                if (playerState != 1) {
-                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-                    $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                    $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
-					return playerState = 1;
-                } else {
-                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-                    $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                    $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
-					return playerState = 0;
-                }
-            
-        });					
-        $("#copySIPBtn").mouseenter(function() {
-            $("#dropDown3").hide();
-            $("#copySIPBtn").text("Token");
-			if ($("#clantag").val()!=""){
-				$("#dropDown2").show(100);
-			}
-            else {
-				$("#dropDown").show(100);
-				}
-        });
-        $("#leaderboard-menu").mouseleave(function() {
-            $("#dropDown").hide();
-			$("#dropDown2").hide();
-            $("#dropDown3").hide();
-            $("#copySIPBtn").text("Copy");
-        });	
-		
-        $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="" data-placement="left" data-original-title="Clear list"><i class="fa fa-trash fa-2"></i></a>');
-        $("#searchBtn").tooltip('disable');
-		$("#copyLBBtn").click(function() {
-            copy($("#leaderboard-positions").text());
-        });
-        $("#dropDown>#copyLBBtn").click(function() {
-            copy($("#leaderboard-positions").text());
-        });	
-        $("#lastIPBtn").click(function() {
-            lastIP = localStorage.getItem("lastIP");
-            if (lastIP==""||lastIP==null){}
-			else{	
-				$('#server-token').val(lastIP);
-				$('#server-join').click();
-				setTimeout(function() {
-					if ($('#server-token').val()!=lastIP){
-						                            toastr["error"](Premadeletter31).css("width", "210px");
-					}
-				}, 1000);
-				}
-        });
-
-        $("#copyIPBtn").click(function() {
-            if (searchSip != null) {
-                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=ws://" + searchSip);
-            } else {
-                copy("http://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=ws://" + currentIP);
-            }
-        });
-
-        $("#copySIPBtn").click(function() {
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copy(CopyTkPwLb2);					
-                } else if (realmode != ":party") {
-					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;	
-					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
-					copy(CopyTkPwLb2);
-					}
-					else{
-					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val();	
-					copy(CopyTkPwLb2);
-					}
-                }
-             else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copy(CopyTkPwLb2);
-                } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;
-					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					copy(CopyTkPwLb2);
-                }
-            }
-			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
-					copy(CopyTkPwLb2);					
-            }	
-        });	
-		
-		$("#copySIPandPass").click(function() {		
-            if (searchSip != null) {
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copy(CopyTkPwLb2);					
-                } else if (realmode != ":party") {
-//					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
-					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
-					copy(CopyTkPwLb2);
-//					}
-//					else{
-//					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
-//					copy(CopyTkPwLb2);
-//					}
-                }
-            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copy(CopyTkPwLb2);
-                } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					copy(CopyTkPwLb2);
-                }
-            }
-			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
-					copy(CopyTkPwLb2);					
-            }	
-		});	
-			
-		$("#copySIPPassLB").click(function() {		
-            if (searchSip != null) {
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copyToClipboardAll();					
-                } else if (realmode != ":party") {
-//					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
-					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
-					copy(CopyTkPwLb2);
-//					}
-//					else{
-//					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
-//					copy(CopyTkPwLb2);
-//					}
-                }
-            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
-                if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
-                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
-					copyToClipboardAll();
-                } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-					copyToClipboardAll();
-                }
-            }
-			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
-					copyToClipboardAll();					
-            }	
-		});			
-
-        $("#reconnectBtn").click(function() {
-            $("#server-reconnect").click();			
-        });
-	
-
-
-        /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
-        $("#reconnectBtn").mouseenter(function() {
-            $("#dropDown").hide();
-			$("#dropDown2").hide();
-            $("#copySIPBtn").text("Copy");
-        });
-
-        $("#searchBtn").click(function() {
-		if (!searching) {
-		getSNEZServers();
-		client2.connect();}
-		else{
-        clearInterval(timerId);
-        searching = false;
-//        hideCancelSearch();
-        toastr["error"](Premadeletter32 + "!").css("width", "210px");			
-		}
-            //var searchString = $("#searchInput").val();
-            //searchHandler(searchString);
-        });		
-        $("#searchInput").keyup(function(event) {
-            if (event.keyCode == 13) {
-                $("#searchBtn").click();
-            }
-        });
-	
-        $("#closeBtn").click(function() {
-            hideSearchHud();
-//			hideMenu();
-			showMenu2();
-        });
-		$("#searchShortcut").mouseenter(function () {
-        $("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
-		
-        $("#searchHud").css("pointer-events", "auto");
-		
-        $("#searchShortcut").click(function() {
-            hideMenu();
-//			showMenu();
-            showSearchHud();
-            $("#searchInput").focus().select();
-        });		
-
-        $('#nick').mouseenter(function() {
-            $('#nick').css('background-color', '#000066');
-            return clickedname = "YES"
-        }).mouseleave(function() {
-            $('#nick').css('background-color', '');
-        });
-        $('#nick').blur(function() {
-			previousnickname=$("#nick").val();
-			localStorage.setItem("previousnickname", previousnickname);
-            if (clickedname == "YES") {
-                if ($("#nick").val().length >= 16) {
-                    toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
-                }
-            }
-            if ($("#nick").val() == "EasterEgg1") {
-                toastr["info"](Premadeletter3).css("width", "210px");
-                $("#nick").val("Easter Egg");
-                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
-                openbleedmod();
-            } else if ($("#nick").val() == "EasterEgg2") {
-                toastr["info"](Premadeletter4).css("width", "210px");
-                $("#nick").val("Easter Egg");
-                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
-                openrotatingmod();
-            } else if ($("#nick").val() == "EasterEgg3") {
-                toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>');
-                $("#nick").val("Video");
-                openvidmod();
-            }
-        });
-		
-        $(document).keyup(function(event) {
-            if (event.which == 8) { // search
-                if ($('input:focus').length == 0) {
-                    $("#searchShortcut").click();
-                }
-
-            } else if (event.which == 187 && !($("input").is(":focus")) && ogario.play == false) { // refresh server
-                $("#reconnectBtn").click();
-
-            } 
-/*			else if (event.which == 27) { // ESCAPE
-
-                if ($('#searchHud').is(':visible')) {
-                    hideSearchHud();
-                } else {
- //                   showMenu();
-                }
-            }
-*/			
-        });	
-		
-        $("#ChatBtn").click(function() {
-            chatfunction();
-        });
-        $("#Cutnames").click(function() {	
-		CutNameConflictwithMessageFunction();			
-            if (checkedGameNames == 0) {
-                StartEditGameNames();
-                return checkedGameNames = 2;
-            } else if (checkedGameNames == 1) {
-                ContinueEditGameNames();
-                return checkedGameNames = 2;
-            } else if (checkedGameNames == 2) {
-                StopEditGameNames();
-                return checkedGameNames = 1;
-            }
-					
-        });
-			$("#VoiceBtn").click(function () {
-				if (modVersion == "1.4" ) {
-					var currentIP2=$("#server-token").val();
-					var pass2=$("#clantag").val();
-					//var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
-				//semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP;	
-				if (pass2!=""){
-				semiurl2=currentIP2 + "pass="+pass2;	
-				}
-				else{
-				semiurl2=currentIP2;	
-				}
-				
-				
-
-			
-			url2="https://talky.io/"+semiurl2;
-			
-			setTimeout(function (){ $("#VoiceBtn").focusout();}, 100);
-//			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
-//			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
-			var win = window.open(url2, '_blank');	
-				}
-			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
-			}					
-		});	
-		
-		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
-		$('#opennamechars').tooltip({
-            title: "Design Nickname Font",
-            placement: "bottom"
-        });
-		$('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="BeforeReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
-		$('#openskinchanger').attr('placeholder', 'Name').tooltip({
-            title: "Flag the Fake's Skin",
-            placement: "bottom"
-        });		
-		
-		//$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
-		$('#clantag').css("width", "95.5px");
-		$('#nick').css("width", "171px");	
-        $('#clantag').mouseenter(function() {
-            $('#clantag').css('background-color', '#000066');
-        }).mouseleave(function() {
-            $('#clantag').css('background-color', '');
-			if (privateSrv==null){
-			saveclanpassword=$("#clantag").val();
-			localStorage.setItem("saveclanpassword", saveclanpassword);
-			}
-        });
-        //	$('#region').unbind('mouseenter');
-        //	$('#gamemode').unbind('mouseenter');
-        $('#region').mouseenter(function() {
-            $('#region').css('background-color', '#003300');
-        }).mouseleave(function() {
-            $('#region').css('background-color', '');
-        });
-        $('#gamemode').mouseenter(function() {
-            $('#gamemode').css('background-color', '#003300');
-        }).mouseleave(function() {
-            $('#gamemode').css('background-color', '');
-        });
-
-        //define if it is clicked
-        $("#create-party-btn-2").click(function() {
-            if (hiddenfromclan == 0) {
-                $("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
-                $("#ChatBtn1").attr('class', 'fa fa-eye-slash');
-            } else if (hiddenfromclan == 1) {
-                $("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
-            }
-            //return messageone=1;
-        });
-		
-		$(".btn.btn-block.btn-success.btn-export").click(function() {
-			setTimeout(function() {
-				if (LegendSettingsfirstclicked == "false") {
-					LegendSettingsfirst();
-					return LegendSettingsfirstclicked = "true";
-				} else {
-					$("#export-settings-btn").click();
-					return false;
-				}
-			}, 100);
-		});
-		
-		$('*[data-itr="page_play"]').click(function() {
-		localStorage.setItem("lastIP", $('#server-token').val());
-	if (userData.responseJSON.geobytesipaddress!= undefined) {
-	userip=userData.responseJSON.geobytesipaddress;
-	userip = userip.replace(" ", "_");	
-	}
-	if (userData.responseJSON.geobytescity!= undefined) {
-	usercity=userData.responseJSON.geobytescity;
-	usercity = usercity.replace(" ", "_");	
-	usercity = usercity.replace(" ", "_");
-	usercity = usercity.replace(" ", "_");	
-	}	
-	if (userData.responseJSON.geobytescountry!= undefined) {
-	usercountry=userData.responseJSON.geobytescountry;
-	usercountry = usercountry.replace(" ", "_");
-	usercity = usercity.replace(" ", "_");
-	usercity = usercity.replace(" ", "_");	
-	}	
-			
-			var Pwdtosend="NONE"; 
-			var servertosend="NotFound";
-			var nicknametosend="NotFound";
-			var userfirstname = localStorage.getItem("userfirstname");
-			var userlastname = localStorage.getItem("userlastname");
-//			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");			
-			var userid = localStorage.getItem("userid");
-			var modetosend="NotFound";
-			var regiontosend="NotFound";
-			var currentdate = new Date(); 
-			var datetime =  currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + "@"  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-			if (searchSip == null) {
-				modetosend=$('#gamemode').val();
-				regiontosend=$('#region').val();
-			}
-			else{
-				if (searchSip==$('#server').val()){
-				modetosend=realmode;
-				regiontosend=region;
-				}
-			}
-			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
-			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
-			var i = 0, Pwdtosendlength = Pwdtosend.length; 
-			for(i; i < Pwdtosend ; i++) {
-				Pwdtosend = Pwdtosend.replace(" ", "_");
-				}
-			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
-			var i = 0, nicknametosendlength = nicknametosend.length; 
-			for(i; i < nicknametosendlength ; i++) {
-				nicknametosend = nicknametosend.replace(" ", "_");
-				}
-			if ($('#server').val()!= undefined ) {
-				if (servertosend.indexOf("#")==false) {
-					servertosend= $('#server').val().replace('#', 'Party-');}}
-					
-		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}
-		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}
-		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}
-		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
-		}		
-		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
-        $('#loaderIframeInfo1').hide();
-		setTimeout(function() {
-                                    $('#loaderIframeInfo1').remove();
-                                }, 4000);
-		return lastIP=$('#server-token').val();				
-		});		
-		
-		
-        $("#boostButton").css("display", "inline-block");
-        $("#massButton").css("display", "inline-block");
-        $("#massButton").after($("#promo-badge-container"));
-
-
-		$(".agario-profile-name").css('display', 'inline-block');
-		$(".agario-profile-name").css('vertical-align', ' baseline');
-
-        $('#themePreset>option:nth-child(1)').text("Legend v2");
-        $('#themePreset>option:nth-child(2)').text("Legend v1");
-        $('#themePreset>option:nth-child(3)').text("Legend Original");
-        $('#themePreset>option:nth-child(4)').text("Crazy Style 1");
-        $('#themePreset>option:nth-child(5)').text("Crazy Style 2");
-        $('#menuPreset>option:nth-child(1)').text("Legend v2");
-        $('#menuPreset>option:nth-child(2)').text("Legend v1");				
-		        //Legend express Cursors
-        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
-            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
-        }
-        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
-        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
-        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
-        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
-        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
-        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
-        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
-        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
-        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
-        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
-        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
-        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
-        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
-        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
-        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
-        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
-        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
-        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
-        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
-        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
-        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
-        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
-        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
-        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
-        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
-        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
-        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
-        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
-        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
-        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
-        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
-        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
-        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
-        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
-        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
-        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
-
-        $('#themePreset').on('change', function() {
-            setTimeout(function() {
-				var c = document.getElementById("minimap-sectors");
-				var ctx = c.getContext("2d");
-					ctx.clearRect(0, 0, c.width, c.height / 9);
-					ctx.font = "16px Georgia";
-					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-					else {ctx.fillText(minbtext2, c.width / 2, 22); }
-					//MC.setQuality($('#quality').val());
-            }, 200);
-        })
-        $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
-            setTimeout(function() {
-				var c = document.getElementById("minimap-sectors");
-				var ctx = c.getContext("2d");
-				ctx.clearRect(0, 0, c.width, c.height / 9);
-				ctx.font = "16px Georgia";
-				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
-				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
-				else {ctx.fillText(minbtext2, c.width / 2, 22); }
-				//MC.setQuality($('#quality').val());
-            }, 100);
-        })
-        $("#HideAllBthn").tooltip({
-            title: "Temporarily Hide/Show Everything. Function for Youtubers",
-            placement: "bottom"
-        });			
-
-
-
-
-        $("#SHOSHOBtn").click(function() {
-            var checked = !($(this).attr('aria-pressed') == "true");
-            if (checked) {
-                localStorage.setItem("SHOSHOBtn", true);
-                $("#shortcuts-hud").show();
-                $("#rotate-hud").show();
-                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter43);
-            } else {
-                localStorage.setItem("SHOSHOBtn", false);
-                $("#shortcuts-hud").hide();
-                $("#rotate-hud").hide();
-                $("#images-hud").hide();
-				$("#scripting-hud").hide();
-				$("#msgcommands-hud").hide();
-				$("#yt-hud").hide();
-				$("#images-hud").hide();
-                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter42);
-                return seticon = "YES";
-            }
-        });		
-        $("#XPBtn").click(function() {
-            var checked = !($(this).attr('aria-pressed') == "true");
-            if (checked) {
-                localStorage.setItem("XPBtn", true);
-                $("#exp-bar").show();
-                $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter45);
-            } else {
-                localStorage.setItem("XPBtn", false);
-                $("#exp-bar").hide();
-                $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);
-            }
-        });	
-		        $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
-        		if (checked) {localStorage.setItem("MAINBTBtn", true);
-				var headID = document.getElementsByTagName("head")[0];
-				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
-				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
-				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
-				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
-				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
-				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
-				'#time-hud { border-radius: 10px; } </style>');				
-				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
-        		else {localStorage.setItem("MAINBTBtn", false);
-				var headID = document.getElementsByTagName("head")[0];
-				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
-				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
-				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
-				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
-				'#menu-footer, #leaderboard-hud, #dropDown, #dropDown2, #minimap-hud,'+
-				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
-				'#time-hud { border-radius: 0 0 0 0 } </style>');
-				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
-            $("#AnimatedSkinBtn").click(function () {
-				toastr["info"]("Function is not ready yet");
-/*				var checked = !($(this).attr('aria-pressed') == "true");
-        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
-				if (toastrSkinNotice==1){toastr["info"](Premadeletter71 + " <font color='red'><b>" + Premadeletter72 + "</font></b>, <font color='red'><b>FPS " + Premadeletter73 + "</font></b> "+Premadeletter74+" 16").css("width", "300px");}
-				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
-        		else {localStorage.setItem("AnimatedSkinBtn", false);
-				toastr["info"](Premadeletter75 +" <font color='red'><b>" + Premadeletter76 + "</font></b> " + Premadeletter77 + ". <font color='red'><b>" + Premadeletter78 + "</font></b> "+Premadeletter79).css("width", "300px");
-				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);} */
-				} );  	
-        $("#TIMEcalBtn").click(function() {
-            var checked = !($(this).attr('aria-pressed') == "true");
-            if (checked) {
-                localStorage.setItem("TIMEcalBtn", true);
-                $("#timertools-hud").show();
-                $(this).html('<i class="fa fa-calculator"></i>' + Premadeletter51);
-                T.timerDiv = document.getElementById('timer');
-                return T.timerDiv;
-            } else {
-                localStorage.setItem("TIMEcalBtn", false);
-                $("#timertools-hud").hide();
-                $(this).html('<i class="fa fa-calculator"></i>' + Premadeletter50);
-            }
-        });
-        $("#HideAllBthn").click(function() {
-            var checked = !($(this).attr('aria-pressed') == "true");
-            if (checked) {
-                //		$("#cur-tk-hud").hide();
-                $("#shortcuts-hud").hide();
-                $("#rotate-hud").hide();
-                $("#exp-bar").hide();
-                $("#time-hud").hide();
-                //		$(".input-group.skin.colorpicker-element").hide();
-                //		$("#legendbanners").hide();
-                $("#leaderboard-hud").hide();
-                $("#minimap-hud").hide();
-                $("#stats-hud").hide();
-                $("#top5-hud").hide();
-                $("#target-hud").hide();
-                $("#target-panel-hud").hide();
-                $(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter48);
-            } else {
-                //		$("#cur-tk-hud").show();
-                $("#shortcuts-hud").show();
-                $("#rotate-hud").show();
-                $("#exp-bar").show();
-                $("#time-hud").show();
-                //		$(".input-group.skin.colorpicker-element").show();
-                //		$("#legendbanners").show();
-                $("#leaderboard-hud").show();
-                $("#minimap-hud").show();
-                $("#stats-hud").show();
-                $("#top5-hud").show();
-                $("#target-panel-hud").show();
-                $("#target-hud").show();
-                $(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter49);
-            }
-        });				
-        $("#OpenuserScripts").click(function() {
-
-                $("#main-menu").hide();
-                $("#skins-panel").hide();
-                $("#quick-menu").hide();
-                $("#exp-bar").hide();
-                $("#userscripts").show();
-
-        });				
-        $("#topright").click(function() {
-            localStorage.setItem("ComPosition", 0);
-            toastr.remove();
-            toastr.options = {
-                "positionClass": "toast-top-right"
-            }
-        });
-        $("#topleft").click(function() {
-            localStorage.setItem("ComPosition", 1);
-            toastr.remove();
-            toastr.options = {
-                "positionClass": "toast-top-left"
-            }
-        });
-        $("#bottomright").click(function() {
-            localStorage.setItem("ComPosition", 2);
-            toastr.remove();
-            toastr.options = {
-                "positionClass": "toast-bottom-right"
-            }
-        });
-        $("#bottomleft").click(function() {
-            localStorage.setItem("ComPosition", 3);
-            toastr.remove();
-            toastr.options = {
-                "positionClass": "toast-bottom-left"
-            }
-        });	
-		
-		$("#oldSkinsBtn").click(function() {
-			
-			if (modVersion == "1.3" || modVersion == "1.4" ) {
-		location.replace("https://agar.io/LMoldskins");
-			}
-			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
-			}
-		});	
-/*		$("#LMImplements").click(function() {
-			if (modVersion == "1.3" ) {
-			var myWindow = window.open("http://agar.io/LMImplements", "_blank", "width=400,height=800");
-			}
-			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
-			}
-		});		
-*/
-		
-        $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
-
-        $(".agario-panel.ogario-yt-panel").css({
-            marginBottom: "-10px"
-        });
-        $("#menu-footer").text("");
-        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend express Website" data-placement="left">Legend express v' + modVersion + semimodVersion + '</a></span>' +
-            '<a id="MorefpsText" href="https://jimboy3100.github.io/extras/website/index2.html?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
-
-        $("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
-
-        $("#YoutubeAutoBtn").click(function() {
-            var checked = !($(this).attr('aria-pressed') == "true");
-            if (checked) {
-                localStorage.setItem("YoutubeAutoBtn", true);
- //               setTimeout(function() {
-                    playYoutube();
- //               }, 4000);
-//               setTimeout(function() {
-//                    playYoutube();
-//                }, 2100);
-                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter41);
-            } else {
-                localStorage.setItem("YoutubeAutoBtn", false);
-                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
-            }
-        });
-	    $("#shortcuts-hud").hide();
-        $("#rotate-hud").hide();
-        $("#exp-bar").hide();
-        $("#time-hud").hide();
-        //	$("#LEGENDAds").hide();
-        //	$("#legendbanners").hide();
-        //	$(".input-group.skin.colorpicker-element").hide();
-        $("#timertools-hud").hide();
-
-
-
-
-
-			
-        console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
-    console.group("Part of");    		
-		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
-    console.groupEnd();
-    console.group("Mod developed by"); 
-		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
-    console.groupEnd();
-console.groupEnd();	
-
-/*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
-		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
-		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
-		'<br><b>If you play FFA, use <a target="_blank" href="http://legendmod.joomla.com/en/"><font color="blue"><b><u>LM v3.1</u></b></font></a> until LM Express be compatible again </b><i>(disable LM Express on tampermonkey / agarioscripts before)</i>'+
-		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/
-    }, 1500);
+	pre_loopLM(modVersion);
 }
 
 
@@ -2218,6 +990,8 @@ setTimeout(function() {
 function onhashchange(){return false}
 function LMminimapTextAct(){
 LMminimapText();
+setTimeout(function() {LMminimapText();  }, 2000);
+setTimeout(function() {LMminimapText();  }, 2500);
 setTimeout(function() {LMminimapText();  }, 3000);
 setTimeout(function() {LMminimapText();  }, 3500);
 setTimeout(function() {LMminimapText();  }, 4000);
@@ -6901,3 +5675,1242 @@ client2 = {
 function showonceusers3returner(showonceusers3){
 	return showonceusers3;
 }
+
+function pre_loopLM(modVersion) {
+            if (!document.getElementById("message-box")) {
+                setTimeout(pre_loop, 200);
+                console.log("VoiceDeOChat:wait for Legend load");
+                return;
+            }
+            return initializeLM(modVersion);
+}
+function initializeLM(modVersion) {
+//    setTimeout(function() {
+        document.title = "Legend express v" + modVersion;
+		$("#leaderboard-hud > h4").text("Leaderboard");
+        $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
+        $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
+        $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
+
+        $("#create-party-btn-2").html('<span class="glyphicon glyphicon-plus"></span>');
+        $("#create-party-btn-2").attr('data-toggle', "tooltip").prop('title', "Create party");
+
+        $("#join-party-btn").html('<span class="glyphicon glyphicon-save"></span>').attr('data-toggle', "tooltip").prop('title', "Join party").attr("style", "width: 49% !important; float: right;");
+
+        //backgroud div
+        $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
+
+        $("#overlays").css("z-index", 100);
+
+        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><i class="fa fa-search retro"></i><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
+            '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
+            '<div id="" style="margin-top: 10px;">' +
+            '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="pointer-events: auto;margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
+            '<button id="searchBtn" class="btn btn-copy-token copy-party-token btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Cancel search" style="pointer-events: auto;margin-bottom:10px;width: 15%;"><span id="searchSpan"><i class="fa fa-search"></i></span></button>' +
+            '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="pointer-events: auto;color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><i class="fa fa-window-close fa-2"></i></button>' +
+            '</div></div>'
+        );
+		$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
+            '</div>');
+        $("#clantag").attr('placeholder', 'Password').tooltip({
+            title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
+            placement: "left"
+        });
+        $("#skin").attr('maxlength', 150).attr('placeholder', 'Manual direct skin URL').tooltip({
+            title: "Insert your manual skin weblink",
+            placement: "left"
+        });
+        $("#region").tooltip({
+            title: "The region to play",
+            placement: "left"
+        });
+        $("#gamemode").tooltip({
+            title: "The mode to play",
+            placement: "top"
+        });
+        $("#nick").attr('placeholder', 'Name').tooltip({
+            title: "Insert your in-game name",
+            placement: "bottom"
+        });
+        $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
+            '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
+            '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
+            '<input id="note3" class="form-control main-color note" style="background: transparent; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
+            '<input id="note4" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 25%; float: left; border: none; border-bottom: 1px solid; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
+            '<input id="note5" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
+            '<input id="note6" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 49%; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
+            '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
+            '</div>');			
+		$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
+		$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
+				
+        $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
+            '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
+            '<button id="stoptimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="stopTimer();" data-toggle="tooltip" data-original-title="Pause Timer""><i id="pausetime" class="fa fa-pause-circle" style="padding-left: 0px;"></i></button>' +
+            '<button id="cleartimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="clearTimer();" data-toggle="tooltip" data-original-title="Stop Timer"><i id="cleartime" class="fa fa-stop-circle" style="padding-left: 0px;"></i></button>' +
+            '<a id="timer" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100% position: absolute; right: 0px;">00:00</a>');
+        $("#stoptimer").hide();
+        $("#cleartimer").hide();
+		
+//        $(".menu-tabs").children().attr("style", "width: 14.27%;");
+          $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; padding:12px;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%; padding:12px;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');		$(".menu-tabs").children().attr("style", "width: 16.66%;");
+
+		$(".menu-tabs").children().attr("style", "width: 16.66%;");
+		$(".profile-tab").hide();    
+        $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
+            //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
+            '<div id="UserProfile" style="margin-bottom: 10px;">' +
+			'<div id="UserProfilePic" class="user-picture"><img align="right" src="img/profilepic_guest.jpg" style="width: 60px; display:inline-block;border-radius: 30px;"></img></div>' +
+			'<div style="display:inline-block; width: 70%;">' +
+			'<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
+			'<div id="UserProfileUID">User ID (UID): <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
+			'<div id="TimesUsedPanel" class="user-name" style="display:inline-block;">Times Used: <div id="TimesUsed" style="display:inline-block"></div></div><br>'+			
+			'</div></div>' +
+			'<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
+            '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
+            //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
+            //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
+                                                        '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
+            											'<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
+            //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
+            '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
+            '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
+            //											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: none;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
+ /*           '<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
+            //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
+            '<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
+            //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
+ */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn" data-itr="page_play" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
+            '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
+            '<option value="1" data-itr="">Minimap</option>' +
+            '<option value="2" data-itr="">Leaderboard</option>' +
+            '<option value="3" data-itr="">Teamboard</option>' +
+            '<option value="4" data-itr="">Main Canvas</option>' +
+            '<option value="5" data-itr="">Main Banner</option>' +
+            '</select>' +
+
+            '<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
+            '<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
+            '<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
+            '<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +
+            '</div>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 4px 0 0px 0;"><span id="legendmanualmess" class="title" style="">Manual Message Icons&Youtube:  </span>' +
+            '<select id="changephotos" class="form-control" onchange="changePhotoFun();" required="" data-original-title="" title="" style="display:inline; width: 35%" >' +
+            '<option value="1" data-itr="">Icon 1</option>' +
+            '<option value="2" data-itr="">Icon 2</option>' +
+            '<option value="3" data-itr="">Icon 3</option>' +
+            '<option value="4" data-itr="">Icon 4</option>' +
+            '<option value="5" data-itr="">Icon 5</option>' +
+            '<option value="6" data-itr="">Icon 6</option>' +
+            '<option value="7" data-itr="">Youtube 1</option>' +
+            '<option value="8" data-itr="">Youtube 2</option>' +
+            '<option value="9" data-itr="">Youtube 3</option>' +
+            '<option value="10" data-itr="">Youtube 4</option>' +
+            '<option value="11" data-itr="">Youtube 5</option>' +
+            '<option value="12" data-itr="">Youtube 6</option>' +
+            '</select>' +
+
+            '<input id="pic1data" class="form-control" placeholder="Message Icon Text 1" value="" style="margin-top: 2px; display: block; " onblur="setpic1data();">' +
+            '<input id="pic2data" class="form-control" placeholder="Message Icon Text 2" value="" style="margin-top: 2px; display: none; " onblur="setpic2data();">' +
+            '<input id="pic3data" class="form-control" placeholder="Message Icon Text 3" value="" style="margin-top: 2px; display: none; " onblur="setpic3data();">' +
+            '<input id="pic4data" class="form-control" placeholder="Message Icon Text 4" value="" style="margin-top: 2px; display: none; " onblur="setpic4data();">' +
+            '<input id="pic5data" class="form-control" placeholder="Message Icon Text 5" value="" style="margin-top: 2px; display: none; " onblur="setpic5data();">' +
+            '<input id="pic6data" class="form-control" placeholder="Message Icon Text 6" value="" style="margin-top: 2px; display: none; " onblur="setpic6data();">' +
+            '<input id="yt1data" class="form-control" placeholder="Youtube Message Text 1" value="" style="margin-top: 2px; display: none; " onblur="setyt1data();">' +
+            '<input id="yt2data" class="form-control" placeholder="Youtube Message Text 2" value="" style="margin-top: 2px; display: none; " onblur="setyt2data();">' +
+            '<input id="yt3data" class="form-control" placeholder="Youtube Message Text 3" value="" style="margin-top: 2px; display: none; " onblur="setyt3data();">' +
+            '<input id="yt4data" class="form-control" placeholder="Youtube Message Text 4" value="" style="margin-top: 2px; display: none; " onblur="setyt4data();">' +
+            '<input id="yt5data" class="form-control" placeholder="Youtube Message Text 5" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
+            '<input id="yt6data" class="form-control" placeholder="Youtube Message Text 6" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
+
+            '<input id="pic1url" class="form-control" placeholder="Message Icon Imgur Url 1" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic2url" class="form-control" placeholder="Message Icon Imgur Url 2" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic3url" class="form-control" placeholder="Message Icon Imgur Url 3" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic4url" class="form-control" placeholder="Message Icon Imgur Url 4" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic5url" class="form-control" placeholder="Message Icon Imgur Url 5" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic6url" class="form-control" placeholder="Message Icon Imgur Url 6" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="yt1url" class="form-control" placeholder="Youtube Message Url 1" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt2url" class="form-control" placeholder="Youtube Message Url 2" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt3url" class="form-control" placeholder="Youtube Message Url 3" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt4url" class="form-control" placeholder="Youtube Message Url 4" value="" style="margin-top: 2px; display: none;" onblur="setyt4url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt5url" class="form-control" placeholder="Youtube Message Url 5" value="" style="margin-top: 2px; display: none;" onblur="setyt5url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '<input id="yt6url" class="form-control" placeholder="Youtube Message Url 6" value="" style="margin-top: 2px; display: none;" onblur="setyt6url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
+            '</div></div>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
+            '<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
+            '<option value="1" data-itr="">English</option>' +
+            '<option value="6" data-itr="">Arabic - عربى</option>' +
+            '<option value="4" data-itr="">Bulgarian - български</option>' +
+            '<option value="5" data-itr="">French - Français</option>' +
+			'<option value="9" data-itr="">German - Deutsch</option>' +
+            '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
+			'<option value="8" data-itr="">Russian - Русские</option>' +
+            '<option value="3" data-itr="">Spanish - Español</option>' +
+			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
+            '</select></div>' +
+
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
+            '<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
+            '<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
+            '<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
+            '<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
+            '</div></div>' +
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>' +
+            '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
+            '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
+            '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
+            '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +   
+            '</div></div>');
+		    loginsfbGpl2();
+			//fix userprofile
+			$("#UserProfile").css("font-size", "12px");
+			$("#UserProfilePic").click(function() {useProfilePhotoCustom();});
+//			loginsfbGpl();			
+//		$("#exp-bar").hide();
+//		$(".menu-tabs").children().attr("style", "width: 19.99%;");
+//		$(".profile-tab").hide();
+				
+        $("#time-hud").attr("style", "top: 290px !important;");
+
+        // fix leaderboard buttons
+        $("#leaderboard-menu").css("pointer-events", "auto");
+
+		
+        // fix stats text size
+        $('[id="statsText"]').css("font-size", "medium");
+
+		
+        // detect paste
+        $(document).bind("paste", function(e) {
+            if (!searching && !($("input,textarea").is(":focus"))) {
+                var pastedData = e.originalEvent.clipboardData.getData('text');
+                hideMenu();
+                showSearchHud();
+                $("#searchInput").val(pastedData);
+                $("#searchInput").select();
+                //searchHandler(pastedData);
+				$("#searchBtn").click();
+            }
+        });
+
+        $("#searchInput").bind("paste", function(e) {
+            if (!searching) {
+                var pastedData = e.originalEvent.clipboardData.getData('text');
+                $("#searchInput").val(pastedData);
+                $("#searchInput").select();
+                //searchHandler(pastedData);
+				$("#searchBtn").click();
+            }		
+        });
+
+        //load notes
+        $("#note1").val(localStorage.getItem('note1'));
+        $("#note2").val(localStorage.getItem('note2'));
+        $("#note3").val(localStorage.getItem('note3'));
+        $("#note4").val(localStorage.getItem('note4'));
+        $("#note5").val(localStorage.getItem('note5'));
+        $("#note6").val(localStorage.getItem('note6'));
+        $("#note7").val(localStorage.getItem('note7'));
+
+		$(".note").keyup(function(event) {
+            localStorage.setItem(event.target.id, $(event.target).val());
+        });
+        var initialMusicUrl = (localStorage.getItem("musicUrl") == null ? defaultMusicUrl : localStorage.getItem("musicUrl"));
+        //	var savemusic=$(".agario-panel.sounds-panel").html();
+        $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
+            '<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
+            '<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">' +
+            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
+			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter61 + '</button></div>'); 
+		$('.agario-panel.radio-panel').hide();
+        $('.agario-panel.ogario-yt-panel').hide();
+
+        if ($('#menuBg').val() == "http://cdn.ogario.ovh/static/img/pattern.png") {
+            $('#menuBg').val("https://jimboy3100.github.io/pattern.png");
+        }
+        if ($('#messageSound').val() == "http://cdn.ogario.ovh/static/sounds/notification_01.mp3") {
+            $('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");
+        }
+        if ($('#commandSound').val() == "http://cdn.ogario.ovh/static/sounds/notification_02.mp3") {
+            $('#commandSound').val("https://jimboy3100.github.io/notification_02.mp3");
+        }
+        //    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
+        //                            '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
+        //                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
+        //							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
+        //	$('#music').append(savemusic+'</div>');						
+
+
+        if (typeof YT !== 'undefined') {
+            musicPlayer = new YT.Player('musicFrame', {
+                events: {
+                    'onStateChange': function(state) {
+                        if (state.data == 1) {
+                            $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
+                            $("#playerBtn").attr('data-original-title', Premadeletter60).tooltip('fixTitle');
+                        } else {
+                            $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
+                            $("#playerBtn").attr('data-original-title', Premadeletter13).tooltip('fixTitle');
+                        }
+                    }
+                }
+            });
+        }
+		
+		 $("#YoutubeBackgroundBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {               
+				YoutubebackgroundEnable();
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter62);
+            } else {
+				YoutubebackgroundDisable();
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter61);
+            }
+        });
+
+        //roller and other icons
+        $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
+        //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
+        $('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
+		
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
+        document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
+ //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
+        $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
+        $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
+		$("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins/Needs LME Expansion 1"></a>'+
+//		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
+		'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+	
+		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
+        $("#LegGoogleForm").tooltip('show').tooltip('hide');;
+		$("#oldSkinsBtn").tooltip('show').tooltip('hide');;
+		$("#ModInfoQuick").tooltip('show').tooltip('hide');
+//		$("#LMImplements").tooltip('show').tooltip('hide');
+		// prevent edit
+        $("#musicUrl").on("input", function() {
+            $(this).attr("maxlength", "1000");
+        });
+        $("#musicUrl").bind("paste", function(e) {
+            $(this).attr("maxlength", "1000");
+            var pastedDataorNot = e.originalEvent.clipboardData.getData('text');
+			YoutubeEmbPlayer(pastedDataorNot);
+        });
+
+        // save notes
+
+		//fzogar Upload / Download Settings
+		$("#import-settings-btn").attr('class', 'btn btn-success');
+//		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
+
+        $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
+            '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
+            '</div></div>');
+
+        $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
+            //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
+            '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
+
+        $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
+            '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
+            '<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter57 + '><i id="ChatBtn1" class="fa fa-comment-o" style="padding-left: 0px;"></i></button>' +
+            '<button id="MiniScripts" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setscriptingfunction();" data-toggle="tooltip" data-original-title="Mini Scripts"><i id="MiniScripts1" class="fa fa-linode" style="padding-left: 0px;"></i></button>' +
+            '<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>' +
+            '<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>' +
+            '<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>' +
+            '<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>' +
+            '<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter13 + '><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>' +
+            '<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 11%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
+
+
+        $("#minimap-hud").prepend('<div id="images-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="sendicon1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon1();" data-toggle="tooltip" data-original-title="Bad Choice!"><i id="sendicon11" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendicon2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon2();" data-toggle="tooltip" data-original-title="Why?"><i id="sendicon21" class="fa fa-question-circle" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendicon3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendicon31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+
+        $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Rick Astley - Never Gonna Give You Up"><i id="sendyt11" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendyt2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt2();" data-toggle="tooltip" data-original-title="Survivor - Eye Of The Tiger"><i id="sendyt21" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendyt3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt3();" data-toggle="tooltip" data-original-title="Lion king - The Lion Sleeps Tonight"><i id="sendyt31" class="fa fa-music" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendyt4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt4();" data-toggle="tooltip" data-original-title="Agario - Jumbo Solo vs Teams"><i id="sendyt41" class="fa fa-video-camera" style="padding-center: 0px;"></i></button>' +
+            '<button id="sendyt5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt5();" data-toggle="tooltip" data-original-title="Agario - Kill3r vs Teams"><i id="sendyt51" class="fa fa-video-camera" style="padding-left: 0px;"></i></button>' +
+            '<button id="sendyt6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt6();" data-toggle="tooltip" data-original-title="Promotional Video"><i id="sendyt61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+
+        $("#minimap-hud").prepend('<div id="msgcommands-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="msgcommand1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand1f();" data-toggle="tooltip" data-original-title="Hello Team!"><i id="msgcommand11" class="fa fa-coffee" style="padding-left: 0px;"></i></button>' +
+            '<button id="msgcommand2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand2f();" data-toggle="tooltip" data-original-title="Laugh to Team"><i id="msgcommand21" class="fa fa-smile-o" style="padding-left: 0px;"></i></button>' +
+            '<button id="msgcommand3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand3f();" data-toggle="tooltip" data-original-title="Team Change Name to yours"><i id="msgcommand31" class="fa fa-magic" style="padding-center: 0px;"></i></button>' +
+            '<button id="msgcommand4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand4f();" data-toggle="tooltip" data-original-title="Troll Teammate"><i id="msgcommand41" class="fa fa-bath" style="padding-center: 0px;"></i></button>' +
+            '<button id="msgcommand5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand5f();" data-toggle="tooltip" data-original-title="Open Youtube Music"><i id="msgcommand51" class="fa fa-youtube-play" style="padding-left: 0px;"></i></button>' +
+            '<button id="msgcommand6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="msgcommand6f();" data-toggle="tooltip" data-original-title="Insane mode (Hide Everything)"><i id="msgcommand" class="fa fa-exclamation-triangle" style="padding-left: 0px;"></i></button></div>');
+
+		$("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
+            '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button></div>');
+			
+			
+			
+         $("#leaderboard-hud").append('<div id="leaderboard-menu" style="pointer-events: auto;">' +
+            '<a id="searchShortcut" class="btn btn-info" data-toggle="tooltip" data-placement="left" data-original-title="Join server (Backspace)" style="width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ; " data-toggle="tooltip" data-original-title="Search leaderboards" title=""><i class="fa fa-search fa-lg"></i></a>' +
+            '<a id="copySIPBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 33.3%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;/* border: none; */border-left-style: none;border-right-style: none;border-bottom-style: none;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP">Copy</a>' +
+            '<a id="reconnectBtn" class="btn btn-info" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Change server (+)" style="' +
+            'background-color: transparent;color: '+legmaincolor+' ;width: 33.3%; text-shadow: 0.3px 0.3px #000000; font-size: small; margin-top: 0px; border: none;"><i class="fa fa-refresh fa-lg"></i></a>' +
+
+            '<div id="dropDown3" class="hud" style="position: absolute; pointer-events: auto; width: 33%; left: 0px; padding: 0px; border-radius: 0px;">' +
+            '<a id="lastIPBtn" data-disabled="true" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="width: 100%;text-shadow: 0.3px 0.3px #000000;font-size: small;margin-top: 0px;border-top-color: rgb(141, 201, 64);border-bottom-style: none;border-left-style: none;border: none;margin-top: 0px; background-color: transparent;color: '+legmaincolor+' ;" data-toggle="tooltip" data-html="true" data-placement="left" data-original-title="<p style=&quot;margin-top:3px; margin-bottom:0px; margin-right: 2px;&quot; align=&quot;center&quot;><span class=&quot;hud-main-color&quot; style=&quot;position:absolute; left: 15px;&quot;>NEW</span>Join back</p><hr style=&quot;margin-top:5px; margin-bottom:10px; border-color:darkslategray;&quot;/><p class=&quot;&quot; style=&quot;margin-bottom:3px; font-weight:normal;&quot; align=&quot;justify&quot;>Connect to last IP you played</p>"><i class="fa fa-arrow-circle-down fa-lg"></i></a>' +
+            '</div>' +
+            '<div id="dropDown2" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 90px; left: 67px; padding: 0px; border-radius: 0px;">' +
+            '<a id="copySIPandPass" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Password">TK&PW</a>' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
+            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP, Password, Leaderboard...">TK&ALL</a>' +            
+			'</div>' +
+            '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: -30px; border-radius: 0px;">' +
+            '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: '+legmaincolor+' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
+//            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
+            '</div>' +
+
+            '<input id="tempCopy" style="display: none;" value="">' +
+            '</div>');	
+        // player shortcut
+		
+        $("#playerBtn").click(function() {                          
+                if (playerState != 1) {
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+                    $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
+                    $(this).attr('data-original-title', Premadeletter60).tooltip('fixTitle').tooltip('show');
+					return playerState = 1;
+                } else {
+                    $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+                    $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
+                    $(this).attr('data-original-title', Premadeletter13).tooltip('fixTitle').tooltip('show');
+					return playerState = 0;
+                }
+            
+        });					
+        $("#copySIPBtn").mouseenter(function() {
+            $("#dropDown3").hide();
+            $("#copySIPBtn").text("Token");
+			if ($("#clantag").val()!=""){
+				$("#dropDown2").show(100);
+			}
+            else {
+				$("#dropDown").show(100);
+				}
+        });
+        $("#leaderboard-menu").mouseleave(function() {
+            $("#dropDown").hide();
+			$("#dropDown2").hide();
+            $("#dropDown3").hide();
+            $("#copySIPBtn").text("Copy");
+        });	
+		
+        $("#logTitle").after('<a href="#" id="notesclear" style="color: lightgrey;float: right;position: absolute;right: 12px;top: 9px;" class="main-color" onclick="$(\'#log\').html(\'\');" data-toggle="" data-placement="left" data-original-title="Clear list"><i class="fa fa-trash fa-2"></i></a>');
+        $("#searchBtn").tooltip('disable');
+		$("#copyLBBtn").click(function() {
+            copy($("#leaderboard-positions").text());
+        });
+        $("#dropDown>#copyLBBtn").click(function() {
+            copy($("#leaderboard-positions").text());
+        });	
+        $("#lastIPBtn").click(function() {
+            lastIP = localStorage.getItem("lastIP");
+            if (lastIP==""||lastIP==null){}
+			else{	
+				$('#server-token').val(lastIP);
+				$('#server-join').click();
+				setTimeout(function() {
+					if ($('#server-token').val()!=lastIP){
+						                            toastr["error"](Premadeletter31).css("width", "210px");
+					}
+				}, 1000);
+				}
+        });
+
+        $("#copyIPBtn").click(function() {
+            if (searchSip != null) {
+                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=ws://" + searchSip);
+            } else {
+                copy("http://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=ws://" + currentIP);
+            }
+        });
+
+        $("#copySIPBtn").click(function() {
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);					
+                } else if (realmode != ":party") {
+					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copy(CopyTkPwLb2);
+					}
+					else{
+					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val();	
+					copy(CopyTkPwLb2);
+					}
+                }
+             else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copy(CopyTkPwLb2);
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copy(CopyTkPwLb2);					
+            }	
+        });	
+		
+		$("#copySIPandPass").click(function() {		
+            if (searchSip != null) {
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);					
+                } else if (realmode != ":party") {
+//					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copy(CopyTkPwLb2);
+//					}
+//					else{
+//					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
+//					copy(CopyTkPwLb2);
+//					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copy(CopyTkPwLb2);
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copy(CopyTkPwLb2);
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copy(CopyTkPwLb2);					
+            }	
+		});	
+			
+		$("#copySIPPassLB").click(function() {		
+            if (searchSip != null) {
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copyToClipboardAll();					
+                } else if (realmode != ":party") {
+//					if (region!=null&&realmode!=null){
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
+					copy(CopyTkPwLb2);
+//					}
+//					else{
+//					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
+//					copy(CopyTkPwLb2);
+//					}
+                }
+            } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
+                if (realmode == ":party") {
+					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+                   // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
+					copyToClipboardAll();
+                } else if (realmode != ":party") {					
+                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+					copyToClipboardAll();
+                }
+            }
+			else if (privateSrv!=null) {
+					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					copyToClipboardAll();					
+            }	
+		});			
+
+        $("#reconnectBtn").click(function() {
+            $("#server-reconnect").click();			
+        });
+	
+
+
+        /*$("#createPartyBtn").click(function(){ hideMenu();$("#create-party-btn-2").click();if (!$("#searchHud").is(':visible')) {delay(200, spectate);}});*/
+        $("#reconnectBtn").mouseenter(function() {
+            $("#dropDown").hide();
+			$("#dropDown2").hide();
+            $("#copySIPBtn").text("Copy");
+        });
+
+        $("#searchBtn").click(function() {
+		if (!searching) {
+		getSNEZServers();
+		client2.connect();}
+		else{
+        clearInterval(timerId);
+        searching = false;
+//        hideCancelSearch();
+        toastr["error"](Premadeletter32 + "!").css("width", "210px");			
+		}
+            //var searchString = $("#searchInput").val();
+            //searchHandler(searchString);
+        });		
+        $("#searchInput").keyup(function(event) {
+            if (event.keyCode == 13) {
+                $("#searchBtn").click();
+            }
+        });
+	
+        $("#closeBtn").click(function() {
+            hideSearchHud();
+//			hideMenu();
+			showMenu2();
+        });
+		$("#searchShortcut").mouseenter(function () {
+        $("#dropDown").hide();$("#dropDown3").show(100);$("#copySIPBtn").text("Copy");});
+		
+        $("#searchHud").css("pointer-events", "auto");
+		
+        $("#searchShortcut").click(function() {
+            hideMenu();
+//			showMenu();
+            showSearchHud();
+            $("#searchInput").focus().select();
+        });		
+
+        $('#nick').mouseenter(function() {
+            $('#nick').css('background-color', '#000066');
+            return clickedname = "YES"
+        }).mouseleave(function() {
+            $('#nick').css('background-color', '');
+        });
+        $('#nick').blur(function() {
+			previousnickname=$("#nick").val();
+			localStorage.setItem("previousnickname", previousnickname);
+            if (clickedname == "YES") {
+                if ($("#nick").val().length >= 16) {
+                    toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
+                }
+            }
+            if ($("#nick").val() == "EasterEgg1") {
+                toastr["info"](Premadeletter3).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openbleedmod();
+            } else if ($("#nick").val() == "EasterEgg2") {
+                toastr["info"](Premadeletter4).css("width", "210px");
+                $("#nick").val("Easter Egg");
+                $(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+                openrotatingmod();
+            } else if ($("#nick").val() == "EasterEgg3") {
+                toastr["info"](Premadeletter5 + ',<br>' + Premadeletter6 + '<a target="_blank" href="https://github.com/jimboy3100">https://github.com/jimboy3100</a>');
+                $("#nick").val("Video");
+                openvidmod();
+            }
+        });
+		
+        $(document).keyup(function(event) {
+            if (event.which == 8) { // search
+                if ($('input:focus').length == 0) {
+                    $("#searchShortcut").click();
+                }
+
+            } else if (event.which == 187 && !($("input").is(":focus")) && ogario.play == false) { // refresh server
+                $("#reconnectBtn").click();
+
+            } 
+/*			else if (event.which == 27) { // ESCAPE
+
+                if ($('#searchHud').is(':visible')) {
+                    hideSearchHud();
+                } else {
+ //                   showMenu();
+                }
+            }
+*/			
+        });	
+		
+        $("#ChatBtn").click(function() {
+            chatfunction();
+        });
+        $("#Cutnames").click(function() {	
+		CutNameConflictwithMessageFunction();			
+            if (checkedGameNames == 0) {
+                StartEditGameNames();
+                return checkedGameNames = 2;
+            } else if (checkedGameNames == 1) {
+                ContinueEditGameNames();
+                return checkedGameNames = 2;
+            } else if (checkedGameNames == 2) {
+                StopEditGameNames();
+                return checkedGameNames = 1;
+            }
+					
+        });
+			$("#VoiceBtn").click(function () {
+				if (modVersion == "1.4" ) {
+					var currentIP2=$("#server-token").val();
+					var pass2=$("#clantag").val();
+					//var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
+				//semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP;	
+				if (pass2!=""){
+				semiurl2=currentIP2 + "pass="+pass2;	
+				}
+				else{
+				semiurl2=currentIP2;	
+				}
+				
+				
+
+			
+			url2="https://talky.io/"+semiurl2;
+			
+			setTimeout(function (){ $("#VoiceBtn").focusout();}, 100);
+//			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
+//			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
+			var win = window.open(url2, '_blank');	
+				}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
+			}					
+		});	
+		
+		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+		$('#opennamechars').tooltip({
+            title: "Design Nickname Font",
+            placement: "bottom"
+        });
+		$('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="BeforeReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
+		$('#openskinchanger').attr('placeholder', 'Name').tooltip({
+            title: "Flag the Fake's Skin",
+            placement: "bottom"
+        });		
+		
+		//$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
+		$('#clantag').css("width", "95.5px");
+		$('#nick').css("width", "171px");	
+        $('#clantag').mouseenter(function() {
+            $('#clantag').css('background-color', '#000066');
+        }).mouseleave(function() {
+            $('#clantag').css('background-color', '');
+			if (privateSrv==null){
+			saveclanpassword=$("#clantag").val();
+			localStorage.setItem("saveclanpassword", saveclanpassword);
+			}
+        });
+        //	$('#region').unbind('mouseenter');
+        //	$('#gamemode').unbind('mouseenter');
+        $('#region').mouseenter(function() {
+            $('#region').css('background-color', '#003300');
+        }).mouseleave(function() {
+            $('#region').css('background-color', '');
+        });
+        $('#gamemode').mouseenter(function() {
+            $('#gamemode').css('background-color', '#003300');
+        }).mouseleave(function() {
+            $('#gamemode').css('background-color', '');
+        });
+
+        //define if it is clicked
+        $("#create-party-btn-2").click(function() {
+            if (hiddenfromclan == 0) {
+                $("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+                $("#ChatBtn1").attr('class', 'fa fa-eye-slash');
+            } else if (hiddenfromclan == 1) {
+                $("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
+            }
+            //return messageone=1;
+        });
+		
+		$(".btn.btn-block.btn-success.btn-export").click(function() {
+			setTimeout(function() {
+				if (LegendSettingsfirstclicked == "false") {
+					LegendSettingsfirst();
+					return LegendSettingsfirstclicked = "true";
+				} else {
+					$("#export-settings-btn").click();
+					return false;
+				}
+			}, 100);
+		});
+		
+		$('*[data-itr="page_play"]').click(function() {
+		localStorage.setItem("lastIP", $('#server-token').val());
+	if (userData.responseJSON.geobytesipaddress!= undefined) {
+	userip=userData.responseJSON.geobytesipaddress;
+	userip = userip.replace(" ", "_");	
+	}
+	if (userData.responseJSON.geobytescity!= undefined) {
+	usercity=userData.responseJSON.geobytescity;
+	usercity = usercity.replace(" ", "_");	
+	usercity = usercity.replace(" ", "_");
+	usercity = usercity.replace(" ", "_");	
+	}	
+	if (userData.responseJSON.geobytescountry!= undefined) {
+	usercountry=userData.responseJSON.geobytescountry;
+	usercountry = usercountry.replace(" ", "_");
+	usercity = usercity.replace(" ", "_");
+	usercity = usercity.replace(" ", "_");	
+	}	
+			
+			var Pwdtosend="NONE"; 
+			var servertosend="NotFound";
+			var nicknametosend="NotFound";
+			var userfirstname = localStorage.getItem("userfirstname");
+			var userlastname = localStorage.getItem("userlastname");
+//			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");			
+			var userid = localStorage.getItem("userid");
+			var modetosend="NotFound";
+			var regiontosend="NotFound";
+			var currentdate = new Date(); 
+			var datetime =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + "@"  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+			if (searchSip == null) {
+				modetosend=$('#gamemode').val();
+				regiontosend=$('#region').val();
+			}
+			else{
+				if (searchSip==$('#server').val()){
+				modetosend=realmode;
+				regiontosend=region;
+				}
+			}
+			if ($('#server').val() != ""&& $('#server').val() != null&& $('#server').val() != undefined) {servertosend=$('#server').val(); }
+			if ($('#clantag').val() != ""&& $('#clantag').val() != undefined) {Pwdtosend=$('#clantag').val(); }
+			var i = 0, Pwdtosendlength = Pwdtosend.length; 
+			for(i; i < Pwdtosend ; i++) {
+				Pwdtosend = Pwdtosend.replace(" ", "_");
+				}
+			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
+			var i = 0, nicknametosendlength = nicknametosend.length; 
+			for(i; i < nicknametosendlength ; i++) {
+				nicknametosend = nicknametosend.replace(" ", "_");
+				}
+			if ($('#server').val()!= undefined ) {
+				if (servertosend.indexOf("#")==false) {
+					servertosend= $('#server').val().replace('#', 'Party-');}}
+					
+		if (privateSrv!=null) {
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else if (searchSip == null) {		
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else if (searchSip != null) {
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}
+		else {
+			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+		}		
+		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
+        $('#loaderIframeInfo1').hide();
+		setTimeout(function() {
+                                    $('#loaderIframeInfo1').remove();
+                                }, 4000);
+		return lastIP=$('#server-token').val();				
+		});		
+		
+		
+        $("#boostButton").css("display", "inline-block");
+        $("#massButton").css("display", "inline-block");
+        $("#massButton").after($("#promo-badge-container"));
+
+
+		$(".agario-profile-name").css('display', 'inline-block');
+		$(".agario-profile-name").css('vertical-align', ' baseline');
+
+        $('#themePreset>option:nth-child(1)').text("Legend v2");
+        $('#themePreset>option:nth-child(2)').text("Legend v1");
+        $('#themePreset>option:nth-child(3)').text("Legend Original");
+        $('#themePreset>option:nth-child(4)').text("Crazy Style 1");
+        $('#themePreset>option:nth-child(5)').text("Crazy Style 2");
+        $('#menuPreset>option:nth-child(1)').text("Legend v2");
+        $('#menuPreset>option:nth-child(2)').text("Legend v1");				
+		        //Legend express Cursors
+        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
+        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
+            $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
+        }
+        $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
+        $(".cursor-box>a>img").eq(1).attr("src", "https://jimboy3100.github.io/cursors/cursor_02.cur");
+        $(".cursor-box>a>img").eq(2).attr("src", "https://jimboy3100.github.io/cursors/cursor_03.cur");
+        $(".cursor-box>a>img").eq(3).attr("src", "https://jimboy3100.github.io/cursors/cursor_04.cur");
+        $(".cursor-box>a>img").eq(4).attr("src", "https://jimboy3100.github.io/cursors/cursor_05.cur");
+        $(".cursor-box>a>img").eq(5).attr("src", "https://jimboy3100.github.io/cursors/cursor_06.cur");
+        $(".cursor-box>a>img").eq(6).attr("src", "https://jimboy3100.github.io/cursors/cursor_07.cur");
+        $(".cursor-box>a>img").eq(7).attr("src", "https://jimboy3100.github.io/cursors/cursor_08.cur");
+        $(".cursor-box>a>img").eq(8).attr("src", "https://jimboy3100.github.io/cursors/cursor_09.cur");
+        $(".cursor-box>a>img").eq(9).attr("src", "https://jimboy3100.github.io/cursors/cursor_10.cur");
+        $(".cursor-box>a>img").eq(10).attr("src", "https://jimboy3100.github.io/cursors/cursor_11.cur");
+        $(".cursor-box>a>img").eq(11).attr("src", "https://jimboy3100.github.io/cursors/cursor_12.cur");
+        $(".cursor-box>a>img").eq(12).attr("src", "https://jimboy3100.github.io/cursors/cursor_13.cur");
+        $(".cursor-box>a>img").eq(13).attr("src", "https://jimboy3100.github.io/cursors/cursor_14.cur");
+        $(".cursor-box>a>img").eq(14).attr("src", "https://jimboy3100.github.io/cursors/cursor_15.cur");
+        $(".cursor-box>a>img").eq(15).attr("src", "https://jimboy3100.github.io/cursors/cursor_16.cur");
+        $(".cursor-box>a>img").eq(16).attr("src", "https://jimboy3100.github.io/cursors/cursor_17.cur");
+        $(".cursor-box>a>img").eq(17).attr("src", "https://jimboy3100.github.io/cursors/cursor_18.cur");
+        $(".cursor-box>a>img").eq(18).attr("src", "https://jimboy3100.github.io/cursors/cursor_19.cur");
+        $(".cursor-box>a>img").eq(19).attr("src", "https://jimboy3100.github.io/cursors/cursor_20.cur");
+        $(".cursor-box>a>img").eq(20).attr("src", "https://jimboy3100.github.io/cursors/cursor_21.cur");
+        $(".cursor-box>a>img").eq(21).attr("src", "https://jimboy3100.github.io/cursors/cursor_22.cur");
+        $(".cursor-box>a>img").eq(22).attr("src", "https://jimboy3100.github.io/cursors/cursor_23.cur");
+        $(".cursor-box>a>img").eq(23).attr("src", "https://jimboy3100.github.io/cursors/cursor_24.cur");
+        $(".cursor-box>a>img").eq(24).attr("src", "https://jimboy3100.github.io/cursors/cursor_25.cur");
+        $(".cursor-box>a>img").eq(25).attr("src", "https://jimboy3100.github.io/cursors/cursor_26.cur");
+        $(".cursor-box>a>img").eq(26).attr("src", "https://jimboy3100.github.io/cursors/cursor_27.cur");
+        $(".cursor-box>a>img").eq(27).attr("src", "https://jimboy3100.github.io/cursors/cursor_28.cur");
+        $(".cursor-box>a>img").eq(28).attr("src", "https://jimboy3100.github.io/cursors/cursor_29.cur");
+        $(".cursor-box>a>img").eq(29).attr("src", "https://jimboy3100.github.io/cursors/cursor_30.cur");
+        $(".cursor-box>a>img").eq(30).attr("src", "https://jimboy3100.github.io/cursors/cursor_31.cur");
+        $(".cursor-box>a>img").eq(31).attr("src", "https://jimboy3100.github.io/cursors/cursor_32.cur");
+        $(".cursor-box>a>img").eq(32).attr("src", "https://jimboy3100.github.io/cursors/cursor_33.cur");
+        $(".cursor-box>a>img").eq(33).attr("src", "https://jimboy3100.github.io/cursors/cursor_34.cur");
+        $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
+        $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
+
+        $('#themePreset').on('change', function() {
+            setTimeout(function() {
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+					ctx.clearRect(0, 0, c.width, c.height / 9);
+					ctx.font = "16px Georgia";
+					if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+					else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+					else {ctx.fillText(minbtext2, c.width / 2, 22); }
+					//MC.setQuality($('#quality').val());
+            }, 200);
+        })
+        $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
+            setTimeout(function() {
+				var c = document.getElementById("minimap-sectors");
+				var ctx = c.getContext("2d");
+				ctx.clearRect(0, 0, c.width, c.height / 9);
+				ctx.font = "16px Georgia";
+				if (searchSip != null) { ctx.fillText(minbtext, c.width / 2, 22) }
+				else if (privateSrv!=null) {ctx.fillText(minbtext3, c.width / 2, 22);}
+				else {ctx.fillText(minbtext2, c.width / 2, 22); }
+				//MC.setQuality($('#quality').val());
+            }, 100);
+        })
+        $("#HideAllBthn").tooltip({
+            title: "Temporarily Hide/Show Everything. Function for Youtubers",
+            placement: "bottom"
+        });			
+
+
+
+
+        $("#SHOSHOBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("SHOSHOBtn", true);
+                $("#shortcuts-hud").show();
+                $("#rotate-hud").show();
+                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter43);
+            } else {
+                localStorage.setItem("SHOSHOBtn", false);
+                $("#shortcuts-hud").hide();
+                $("#rotate-hud").hide();
+                $("#images-hud").hide();
+				$("#scripting-hud").hide();
+				$("#msgcommands-hud").hide();
+				$("#yt-hud").hide();
+				$("#images-hud").hide();
+                $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter42);
+                return seticon = "YES";
+            }
+        });		
+        $("#XPBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("XPBtn", true);
+                $("#exp-bar").show();
+                $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter45);
+            } else {
+                localStorage.setItem("XPBtn", false);
+                $("#exp-bar").hide();
+                $(this).html('<i class="fa fa-gamepad"></i>' + Premadeletter44);
+            }
+        });	
+		        $("#MAINBTBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("MAINBTBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
+				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
+				'#top5-hud{ border-radius: 15px; } #target-hud{ border-radius: 15px; } #legendAdImg, #stats-hud { border-radius: 10px; } '+
+				'#time-hud { border-radius: 10px; } </style>');				
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45b);}
+        		else {localStorage.setItem("MAINBTBtn", false);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
+				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
+				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
+				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
+				'#menu-footer, #leaderboard-hud, #dropDown, #dropDown2, #minimap-hud,'+
+				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
+				'#time-hud { border-radius: 0 0 0 0 } </style>');
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
+            $("#AnimatedSkinBtn").click(function () {
+				toastr["info"]("Function is not ready yet");
+/*				var checked = !($(this).attr('aria-pressed') == "true");
+        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
+				if (toastrSkinNotice==1){toastr["info"](Premadeletter71 + " <font color='red'><b>" + Premadeletter72 + "</font></b>, <font color='red'><b>FPS " + Premadeletter73 + "</font></b> "+Premadeletter74+" 16").css("width", "300px");}
+				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
+        		else {localStorage.setItem("AnimatedSkinBtn", false);
+				toastr["info"](Premadeletter75 +" <font color='red'><b>" + Premadeletter76 + "</font></b> " + Premadeletter77 + ". <font color='red'><b>" + Premadeletter78 + "</font></b> "+Premadeletter79).css("width", "300px");
+				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);} */
+				} );  	
+        $("#TIMEcalBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("TIMEcalBtn", true);
+                $("#timertools-hud").show();
+                $(this).html('<i class="fa fa-calculator"></i>' + Premadeletter51);
+                T.timerDiv = document.getElementById('timer');
+                return T.timerDiv;
+            } else {
+                localStorage.setItem("TIMEcalBtn", false);
+                $("#timertools-hud").hide();
+                $(this).html('<i class="fa fa-calculator"></i>' + Premadeletter50);
+            }
+        });
+        $("#HideAllBthn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                //		$("#cur-tk-hud").hide();
+                $("#shortcuts-hud").hide();
+                $("#rotate-hud").hide();
+                $("#exp-bar").hide();
+                $("#time-hud").hide();
+                //		$(".input-group.skin.colorpicker-element").hide();
+                //		$("#legendbanners").hide();
+                $("#leaderboard-hud").hide();
+                $("#minimap-hud").hide();
+                $("#stats-hud").hide();
+                $("#top5-hud").hide();
+                $("#target-hud").hide();
+                $("#target-panel-hud").hide();
+                $(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter48);
+            } else {
+                //		$("#cur-tk-hud").show();
+                $("#shortcuts-hud").show();
+                $("#rotate-hud").show();
+                $("#exp-bar").show();
+                $("#time-hud").show();
+                //		$(".input-group.skin.colorpicker-element").show();
+                //		$("#legendbanners").show();
+                $("#leaderboard-hud").show();
+                $("#minimap-hud").show();
+                $("#stats-hud").show();
+                $("#top5-hud").show();
+                $("#target-panel-hud").show();
+                $("#target-hud").show();
+                $(this).html('<i class="fa fa-exclamation-triangle"></i>' + Premadeletter49);
+            }
+        });				
+        $("#OpenuserScripts").click(function() {
+
+                $("#main-menu").hide();
+                $("#skins-panel").hide();
+                $("#quick-menu").hide();
+                $("#exp-bar").hide();
+                $("#userscripts").show();
+
+        });				
+        $("#topright").click(function() {
+            localStorage.setItem("ComPosition", 0);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-top-right"
+            }
+        });
+        $("#topleft").click(function() {
+            localStorage.setItem("ComPosition", 1);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-top-left"
+            }
+        });
+        $("#bottomright").click(function() {
+            localStorage.setItem("ComPosition", 2);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-bottom-right"
+            }
+        });
+        $("#bottomleft").click(function() {
+            localStorage.setItem("ComPosition", 3);
+            toastr.remove();
+            toastr.options = {
+                "positionClass": "toast-bottom-left"
+            }
+        });	
+		
+		$("#oldSkinsBtn").click(function() {
+			
+			if (modVersion == "1.3" || modVersion == "1.4" ) {
+		location.replace("https://agar.io/LMoldskins");
+			}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
+			}
+		});	
+/*		$("#LMImplements").click(function() {
+			if (modVersion == "1.3" ) {
+			var myWindow = window.open("http://agar.io/LMImplements", "_blank", "width=400,height=800");
+			}
+			else{
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.3</b></font>, in order to use this function</font>');	
+			}
+		});		
+*/
+		
+        $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
+
+        $(".agario-panel.ogario-yt-panel").css({
+            marginBottom: "-10px"
+        });
+        $("#menu-footer").text("");
+        $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend express Website" data-placement="left">Legend express v' + modVersion + semimodVersion + '</a></span>' +
+            '<a id="MorefpsText" href="https://jimboy3100.github.io/extras/website/index2.html?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
+
+        $("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+
+        $("#YoutubeAutoBtn").click(function() {
+            var checked = !($(this).attr('aria-pressed') == "true");
+            if (checked) {
+                localStorage.setItem("YoutubeAutoBtn", true);
+ //               setTimeout(function() {
+                    playYoutube();
+ //               }, 4000);
+//               setTimeout(function() {
+//                    playYoutube();
+//                }, 2100);
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter41);
+            } else {
+                localStorage.setItem("YoutubeAutoBtn", false);
+                $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
+            }
+        });
+	    $("#shortcuts-hud").hide();
+        $("#rotate-hud").hide();
+        $("#exp-bar").hide();
+        $("#time-hud").hide();
+        //	$("#LEGENDAds").hide();
+        //	$("#legendbanners").hide();
+        //	$(".input-group.skin.colorpicker-element").hide();
+        $("#timertools-hud").hide();
+
+
+
+
+
+			
+        console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
+    console.group("Part of");    		
+		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by"); 
+		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
+    console.groupEnd();
+console.groupEnd();	
+
+/*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
+		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
+		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
+		'<br><b>If you play FFA, use <a target="_blank" href="http://legendmod.joomla.com/en/"><font color="blue"><b><u>LM v3.1</u></b></font></a> until LM Express be compatible again </b><i>(disable LM Express on tampermonkey / agarioscripts before)</i>'+
+		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/
+//    }, 1500);
+}		
