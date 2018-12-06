@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "81"; // the version 1.1-> 1.11
+var semimodVersion = "82"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -671,7 +671,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$("#gamemode").prop('disabled', false);
 		$("#region").prop('disabled', false);   
 		$(".toast.toast-warning").remove();
-		setTimeout(function () {
+//		setTimeout(function () {
 				if (clanpass!=null&&clanpass!="") {		
 					$("#clantag").val(clanpass);
 					$('#clantag').css('background-color', '#ff6347');						
@@ -692,7 +692,7 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
 		$(".side-container.left-container").show();	
-		},200);
+//		},200);
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
@@ -953,20 +953,20 @@ function urlIpWhenOpened(){
 setTimeout(function() {
         if (searchSip != null && privateSrv==null) {
             if (region == null) {
-                setTimeout(function() {
+//                setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
-                }, 5000);
+//               }, 5000);
             } else {
-               setTimeout(function() {
+//               setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
-                }, 5000);
+//                }, 5000);
             }
         } else if (privateSrv==null) {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
             }
         }		
-        $("#server-ws").on('change', function() {
+/*        $("#server-ws").on('change', function() {
 			adres();
             setTimeout(function() {
                 realmode = $("#gamemode").val();
@@ -983,7 +983,7 @@ setTimeout(function() {
 //                lastIP = currentIP;
 //                localStorage.setItem("lastIP", lastIP);
 //            }, 10000);
-        });
+        }); */
     }, //5000
     9000); //9000
 }
