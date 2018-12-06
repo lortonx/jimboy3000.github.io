@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "85"; // the version 1.1-> 1.11
+var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
