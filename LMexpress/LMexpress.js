@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "79"; // the version 1.1-> 1.11
+var semimodVersion = "80"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5701,12 +5701,12 @@ function setdiscwebhook1() {
 
     if (~containsrealwebhook.indexOf("discordapp.com/api/webhooks/")) {
         localStorage.setItem("discwebhook1", discwebhook1);
-        setTimeout(function() {
+ //       setTimeout(function() {
             var s = document.createElement("script");
             s.type = "text/javascript";
             s.src = "https://jimboy3100.github.io/DiscordSIP.user.js";
             $("body").append(s);
-        }, 1000);
+  //      }, 1000);
     } else {
         if (containsrealwebhook == "") {
             localStorage.setItem("discwebhook1", discwebhook1);
@@ -6386,25 +6386,25 @@ FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse
 });
 }
 function doGl2(){
-				setTimeout(function() {	
+//				setTimeout(function() {	
 				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 				doGl();	
 				}				
-            }, 1000); 	
+//            }, 1000); 	
 }
 
 function doFB2(){
-				setTimeout(function() {	
+//				setTimeout(function() {	
 				FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
 				doFB();	
 				}	
 				});			
-            }, 1000); 	
+//            }, 1000); 	
 }	
 
 function loginsfbGplstart(){
-				setTimeout(function() {	
+//				setTimeout(function() {	
 				if (gapi.auth2.getAuthInstance().isSignedIn.get()){
 				doGl();	
 				}
@@ -6415,7 +6415,7 @@ function loginsfbGplstart(){
 				}	
 				});						
 				}
-            }, 1000);					
+//            }, 1000);					
 }
 function loginsfbGpl(){	
 				master._doLoginWithGPlus=master.doLoginWithGPlus;
@@ -6687,7 +6687,7 @@ var initLc = function()
 
     if (!nick)
     {
-        console.log("Could not initialize Lc");
+        console.log("Could not initialize Snez Info sending");
         return;
     }
 
