@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.076 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "76"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6434,7 +6434,7 @@ function initializeLM(modVersion) {
 				}
 			}, 100);
 		});
-		
+
 		$('*[data-itr="page_play"]').click(function() {
 		localStorage.setItem("lastIP", $('#server-token').val());
 	if (userData.responseJSON.geobytesipaddress!= undefined) {
@@ -6508,10 +6508,13 @@ function initializeLM(modVersion) {
 			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
-        $('#loaderIframeInfo1').remove();
+        $('#loaderIframeInfo1').hide();
+		setTimeout(function() {
+                                    $('#loaderIframeInfo1').remove();
+                                }, 4000);
 		return lastIP=$('#server-token').val();				
 		});		
-		
+
 		
         $("#boostButton").css("display", "inline-block");
         $("#massButton").css("display", "inline-block");
