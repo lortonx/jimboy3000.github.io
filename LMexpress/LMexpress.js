@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "83"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -391,7 +391,6 @@ var stylesLegendModConsole2 = [
 languagemodfun();
 if (realmode == "") {modebetter2 = ":ffa";} 
 else {modebetter2 = realmode;}
-LMserverbox();
 privateserverpassword();
 urlIpWhenOpened();
 var minbtext2 = minbtext;
@@ -878,7 +877,7 @@ setTimeout(function() {
 						texture2 = texture2.replace(".agar.io", "");
 						$("#server-token").val(texture2);
 						$("#server-join").click();
-                        setTimeout(function() {
+/*                     setTimeout(function() {
 
 							if (fromstart==true){
 								realmode = getParameterByName("m", url);
@@ -900,14 +899,14 @@ setTimeout(function() {
                                     history.pushState(stateObj, "page 2", "?sip=" + tmz);
                                 }, 3000);
                             }
-                        }, 1000);
+                        }, 1000); */
                     } else {
                         joinpartyfromconnect();
                     }
 
                 });
             });
-            setTimeout(function() {
+/*            setTimeout(function() {
 			if (searchSip != null) {
 			if(realmode=null){
 			$('#gamemode').val(realmode);}
@@ -925,7 +924,7 @@ setTimeout(function() {
 			}
 			else{
 			adres();}
-            }, 2200);
+            }, 2200); */
             adres();
 	
         })(window, window.jQuery);
@@ -6888,7 +6887,7 @@ core.disconnect= function () {
 	        $('#server-connect').click(function() {
             adres();
         });	
-
+LMserverbox();
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
     console.group("Part of");    		
