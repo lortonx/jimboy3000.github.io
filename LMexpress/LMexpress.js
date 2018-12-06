@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "84"; // the version 1.1-> 1.11
+var semimodVersion = "85"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6508,10 +6508,7 @@ function initializeLM(modVersion) {
 			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
-        $('#loaderIframeInfo1').hide();
-		setTimeout(function() {
-                                    $('#loaderIframeInfo1').remove();
-                                }, 4000);
+        $('#loaderIframeInfo1').remove();
 		return lastIP=$('#server-token').val();				
 		});		
 		
