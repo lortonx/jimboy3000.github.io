@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.078 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1028,6 +1028,7 @@ function findIP(searchIP) {
             toastr["success"](Premadeletter21 + " \'ws://" + searchIP + "\'...").css("width", "210px");
             numTries++;
             if (currentIP == searchIP) {
+				$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
                 searching = false;
 //                hideCancelSearch();
                 //hideSearchHud();
@@ -1059,7 +1060,7 @@ function findIP(searchIP) {
                             clearInterval(timerId);
                             searching = false;
                             hideCancelSearch();
-                            //hideSearchHud();
+                            //hideSearchHud();							
 	                toastr["info"](Premadeletter29 + '! </br> <button  class="btn btn-play btn-primary btn-needs-server" onclick=hideSearchHud();play(); style="margin-top: 10px;border-color: darkblue;">' + Premadeletter13 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-spectate-shortcut" onclick=hideSearchHud(); style="width: 100%;margin-top: 10px;">' + Premadeletter14 + '</button>', "", {
                     timeOut: 20000,
                     extendedTimeOut: 20000
@@ -1122,6 +1123,7 @@ function searchPlayer(searchString) {
             }
 
             if (found) {
+				$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
                 searching = false;
 //                hideCancelSearch();
                 //hideSearchHud();
@@ -1164,6 +1166,7 @@ function searchPlayer(searchString) {
                             toastr["error"](Premadeletter31).css("width", "210px");
                         }
                         if (found) {
+							$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
                             clearInterval(timerId);
                             searching = false;
 //                            hideCancelSearch();
