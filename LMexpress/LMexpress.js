@@ -924,7 +924,7 @@ setTimeout(function() {
 			}
 			else{
 			adres();}
-            }, 2200); 
+            }, 1200); 
             adres();
 	
         })(window, window.jQuery);
