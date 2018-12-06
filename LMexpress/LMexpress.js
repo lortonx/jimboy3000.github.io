@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.076 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "76"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -22,23 +22,9 @@ getaccesstoken();
 loadersetings();
 
 setTimeout(function() {
-
-triggerLMbtns();
-bluebtns();
-
-preventcanvasimagecrash();
 $('[data-toggle="tooltip"]').tooltip();
 //$('#server-join').click(); //next time that ogario will be down
 loginsfbGplstart();
-$("#TimesUsed").text(timesopened);
-
-
-		//SNEZ Upload / Download Settings
-		SNEZServers();
-		$("#import-settings-btn").attr('class', 'btn btn-success');		
-		$("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
-		$("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109b + '</button>');
-
 }, 3000);
 
 var CutNameConflictwithMessage=false;
@@ -5667,7 +5653,7 @@ function pre_loopLM(modVersion) {
             return initializeLM(modVersion);
 }
 function initializeLM(modVersion) {
-
+preventcanvasimagecrash();
 //    setTimeout(function() {
         document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
@@ -6875,6 +6861,15 @@ function initializeLM(modVersion) {
         //	$("#legendbanners").hide();
         //	$(".input-group.skin.colorpicker-element").hide();
         $("#timertools-hud").hide();
+		
+		$("#TimesUsed").text(timesopened);
+		triggerLMbtns();
+		bluebtns();		
+		//SNEZ Upload / Download Settings
+		SNEZServers();
+		$("#import-settings-btn").attr('class', 'btn btn-success');		
+		$("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
+		$("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109b + '</button>');
 
 
 
