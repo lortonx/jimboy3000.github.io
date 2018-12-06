@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1924,10 +1924,13 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
-		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
-		setTimeout(function (){ 
+		//userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
+		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4));
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
-		},300);
+		}, "jsonp");
+/*		setTimeout(function (){ 
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},300); */
     }	
 
 
@@ -1944,7 +1947,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		$("#region").prop('disabled', false);   
 	//	$(".toast.toast-warning").remove();
 	        $(".command-text").text(Premadeletter0);
-		setTimeout(function () {
+//		setTimeout(function () {
 		//spectate();
 				if (clanpass!=null&&clanpass!="") {		
 					$("#clantag").val(clanpass);
@@ -1966,14 +1969,16 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		$(".center-container.ogario-menu").show();
 		$(".side-container.right-container").show();
 		$(".side-container.left-container").show();			
-		},200);
+//		},200);
 
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
-		setTimeout(function (){ 
+		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4));
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
-		},300);
+		}, "jsonp");
+/*		setTimeout(function (){ 
+		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
+		},300); */
 
 //		}		
     }
