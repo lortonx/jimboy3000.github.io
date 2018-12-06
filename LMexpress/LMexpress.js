@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.078 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -10,7 +10,7 @@ $('#gamemode>option:nth-child(1)').val(':ffa');
 $('#gamemode').trigger('change');
 }, 1500);
 */
-
+$("#toast-container").hide();setTimeout(function() {$("#toast-container").show()}, 8000);
 appendLMhiFbPs();
 PreLcCelebration();
 loadericon();
@@ -5522,6 +5522,7 @@ client2 = {
 		                extendedTimeOut: 20000
 		            }).css("width", "350px");
 		            $("#manualsearch").click(function() {
+					$("#searchSpan>i").removeClass("fa fa-search").addClass("fa fa-times");
             var searchString = $("#searchInput").val();
             searchHandler(searchString);	                
 		            });
@@ -6127,9 +6128,11 @@ preventcanvasimagecrash();
 
         $("#searchBtn").click(function() {
 		if (!searching) {
+			
 		getSNEZServers();
 		client2.connect();}
 		else{
+			$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
         clearInterval(timerId);
         searching = false;
 //        hideCancelSearch();
