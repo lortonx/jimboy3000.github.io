@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.076 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "75"; // the version 1.1-> 1.11
+var semimodVersion = "76"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -906,7 +906,7 @@ setTimeout(function() {
 
                 });
             });
-/*            setTimeout(function() {
+            setTimeout(function() {
 			if (searchSip != null) {
 			if(realmode=null){
 			$('#gamemode').val(realmode);}
@@ -924,7 +924,7 @@ setTimeout(function() {
 			}
 			else{
 			adres();}
-            }, 2200); */
+            }, 2200); 
             adres();
 	
         })(window, window.jQuery);
