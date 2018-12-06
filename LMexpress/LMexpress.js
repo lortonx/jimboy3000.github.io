@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.076 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "76"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -835,7 +835,7 @@ setTimeout(function () {
 }, 6000);
 }
 function LMserverbox(){
-setTimeout(function() {
+
     
         (function(a, c) {
             function r(a, d) {
@@ -892,7 +892,7 @@ setTimeout(function() {
 
                 });
             });
-            setTimeout(function() {
+
 			if (searchSip != null) {
 			if(realmode=null){
 			$('#gamemode').val(realmode);}
@@ -908,14 +908,12 @@ setTimeout(function() {
 			joinpartyfromconnect();
 			
 			}
-			else{
-			adres();}
-            }, 1200); 
+
             adres();
 	
         })(window, window.jQuery);
     
-}, 500);		
+	
 }
 function urlIpWhenOpened(){
 setTimeout(function() {
@@ -6863,6 +6861,7 @@ preventcanvasimagecrash();
         $("#timertools-hud").hide();
 		
 		$("#TimesUsed").text(timesopened);
+		LMserverbox();
 		triggerLMbtns();
 		bluebtns();		
 		//SNEZ Upload / Download Settings
@@ -6882,7 +6881,7 @@ core.disconnect= function () {
 	        $('#server-connect').click(function() {
             adres();
         });	
-LMserverbox();
+
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
     console.group("Part of");    		
