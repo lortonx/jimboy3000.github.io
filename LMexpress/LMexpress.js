@@ -2,7 +2,7 @@
  * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "82"; // the version 1.1-> 1.11
+var semimodVersion = "83"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -18,13 +18,14 @@ PremiumUsers();
 document.title = "Legend mod";
 //Authenticate Mod Script
 var accesstomod;
-setTimeout(function() {
-//SquareAgar();	
 getaccesstoken();
-getaccesstoken2();
+loadersetings();
+
+setTimeout(function() {
+
 triggerLMbtns();
 bluebtns();
-loadersetings();
+
 preventcanvasimagecrash();
 $('[data-toggle="tooltip"]').tooltip();
 //$('#server-join').click(); //next time that ogario will be down
@@ -771,24 +772,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 });
 }
 
-core.disconnect= function () {
-            adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-            }, 2500);
-}
-        $('#server-join').click(function() {
-            adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-            }, 2500);
-			});
-	        $('#server-connect').click(function() {
-            adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-            }, 2500);
-        });        
+        
 		
 /*
 
@@ -822,7 +806,6 @@ function adres(thismode) {
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
 			$("#server").val(currentIP);
 //			console.log(currentIP);
-			setTimeout(function() {	
 				if(!thismode){
 					realmode = $("#gamemode").val();
 				}
@@ -839,8 +822,8 @@ function adres(thismode) {
 				else if (privateSrv!=null) {				
                 history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");			
 			}	                
-									}, 1000);
-			}, 800);
+
+			}, 1800);
 	}
 	else {
             setTimeout(function() {
@@ -1032,7 +1015,7 @@ function play() {
 
 function changeServer() {
     $("#server-reconnect").click();	
-    adres();
+//    adres();
     appendLog($("#leaderboard-positions").text());
 }
 
@@ -5685,6 +5668,7 @@ function pre_loopLM(modVersion) {
             return initializeLM(modVersion);
 }
 function initializeLM(modVersion) {
+
 //    setTimeout(function() {
         document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
@@ -6895,7 +6879,15 @@ function initializeLM(modVersion) {
 
 
 
-
+core.disconnect= function () {
+            adres();
+}
+        $('#server-join').click(function() {
+            adres();
+			});
+	        $('#server-connect').click(function() {
+            adres();
+        });	
 
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
