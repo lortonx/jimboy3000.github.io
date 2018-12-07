@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.079 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "79"; // the version 1.1-> 1.11
+var semimodVersion = "80"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -790,25 +790,7 @@ function LMserverbox(){
 
                 });
             });
-			setTimeout(function() {
-			if (searchSip != null) {
-			if(realmode=null){
-			$('#gamemode').val(realmode);}
-			realmodereturnfromStart();
-			$("#server").val(searchSip);
-			$("#connect2").click();
-			}
-			else if(url.includes('http://agar.io/#')==true){
-			
-			$('#gamemode').val(":party");
-			realmodereturnfromStart();
-			$("#server").val(url.replace('http://agar.io/#',''));			
-			joinpartyfromconnect();
-			
-			}
-
-            adres();
-			}, 1000);
+		joinSIPonstart();
 	
         })(window, window.jQuery);
     
@@ -3265,7 +3247,7 @@ function hideSearchHud() {
 }
 function appendLog(message) {
 	$("#logTitle").text("Leaderboard history");
-    var region = $("#gamemode").val();
+    var region = $("#region").val();
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
         '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a href="javascript:void(0);" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
@@ -3275,7 +3257,7 @@ function appendLog(message) {
 }
 function appendLog2(message, message2) {
 	$("#logTitle").text("Legend mod users (click and join)");
-    var region = $("#gamemode").val();
+    var region = $("#region").val();
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
         '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a onclick="connectto(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
@@ -6824,4 +6806,50 @@ languagemodfun();
 		'<br><b>If you play FFA, use <a target="_blank" href="http://legendmod.joomla.com/en/"><font color="blue"><b><u>LM v3.1</u></b></font></a> until LM Express be compatible again </b><i>(disable LM Express on tampermonkey / agarioscripts before)</i>'+
 		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/
 //    }, 1500);
+}	
+function joinSIPonstart(){
+			setTimeout(function() {
+			if (searchSip != null) {
+			if(realmode!=null&&region!=null){
+			$('#gamemode').val(realmode);
+			$("#region").val(region);				
+			}
+			if (getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", "")!=$("#server-token").val()) {
+			joinSIPonstart1();
+			joinSIPonstart2();
+			}
+			}
+			else if(url.includes('http://agar.io/#')==true){			
+			$('#gamemode').val(":party");
+			realmodereturnfromStart();
+			$("#server").val(url.replace('http://agar.io/#',''));			
+			joinpartyfromconnect();			
+			}
+
+            adres();
+			}, 1000);
+}
+
+function joinSIPonstart2(){
+			setTimeout(function() {				
+			if (getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", "")!=$("#server-token").val()) {	
+			joinSIPonstart1();
+			joinSIPonstart3();	
+			}
+			}, 1000);
 }		
+function joinSIPonstart3(){
+			setTimeout(function() {
+			if (getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", "")!=$("#server-token").val()) {
+			toastr["error"]("Server not found!");
+			}
+			}, 1500);
+}	
+
+function joinSIPonstart1(){
+			realmodereturnfromStart();
+			$("#server-token").val(getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", ""));
+			$("#server-join").click();	
+			//$("#server").val(searchSip);
+			//$("#connect2").click();			
+}				
