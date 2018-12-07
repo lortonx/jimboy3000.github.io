@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "81"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6867,8 +6867,9 @@ function joinPLAYERonstart(){
 
 	setTimeout(function() {
 if ($('.logEntry').html()!=undefined)
-{		
-toastr["info"]("Player <font color='yellow'>" + $('.logEntry').html() + "</font> contains <font color='yellow'>"+searchedplayer+"!</font>. Connected into Server");		
+{
+$('.logEntry').click();	
+toastr["info"]("Player <font color='yellow'>" + html() + "</font> contains <font color='yellow'>"+searchedplayer+"!</font>. Connected into Server");		
 }
 }, 1000);
 		}
