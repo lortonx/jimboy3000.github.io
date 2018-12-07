@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.079 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "79"; // the version 1.1-> 1.11
+var semimodVersion = "80"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -119,7 +119,7 @@ var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
 var privateSrv = getParameterByName("ip", url);
 var clanpass = getParameterByName("pass", url);
-var searchedplayer = getParameterByName("pass", player);
+var searchedplayer = getParameterByName("player", url);
 var realmode2 = "";
 var mode=""; //just in case
 var token = "";
@@ -5274,11 +5274,13 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById("nick");
-        var server = document.getElementById("server");
+        //var server = document.getElementById("server");
+		//var server = document.getElementById("server-ws").value;
+		var server = $("#server-ws").val().replace("ws://", "").replace(":80", "");
         var tag = document.getElementById("clantag");
 
         state.nickname = nick.value;
-        state.server = server.value;
+        state.server = server;
         state.tag = tag.value;
 
         socket.updateServerDetails();
