@@ -5276,7 +5276,7 @@ var socket = {
         var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
 		//var server = document.getElementById("server-ws").value;
-		var server = $("#server-ws").val().replace("ws://", "").replace(":80", "");
+		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
         var tag = document.getElementById("clantag");
 
         state.nickname = nick.value;
