@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -119,6 +119,7 @@ var searchStr = getParameterByName("search", url);
 var searchSip = getParameterByName("sip", url);
 var privateSrv = getParameterByName("ip", url);
 var clanpass = getParameterByName("pass", url);
+var searchedplayer = getParameterByName("pass", player);
 var realmode2 = "";
 var mode=""; //just in case
 var token = "";
@@ -791,6 +792,7 @@ function LMserverbox(){
                 });
             });
 		joinSIPonstart();
+		joinPLAYERonstart();
 	
         })(window, window.jQuery);
     
@@ -6852,4 +6854,21 @@ function joinSIPonstart1(){
 			$("#server-join").click();	
 			//$("#server").val(searchSip);
 			//$("#connect2").click();			
-}				
+}	
+
+function joinPLAYERonstart(){
+			setTimeout(function() {
+		if (searchedplayer != null) {
+		$("#searchInput").val(searchedplayer);
+		getSNEZServers();
+		client2.connect();	
+
+	setTimeout(function() {
+if ($('.logEntry').html()!=undefined)
+{		
+toastr["info"]("Player <font color='yellow'>" + $('.logEntry').html() + "</font> contains <font color='yellow'>"+searchedplayer+"!</font>. Connected into Server");		
+}
+}, 1000);
+		}
+			}, 1000);
+}			
