@@ -5288,7 +5288,8 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById(elements.nickname);
-        var server = document.getElementById(elements.server);
+		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
+//        var server = document.getElementById(elements.server);
         var tag = document.getElementById(elements.tag);
 		
         //var nick = document.getElementById("nick");
@@ -5571,7 +5572,7 @@ function pre_loopLM(modVersion) {
 function initializeLM(modVersion) {
 preventcanvasimagecrash();
 //    setTimeout(function() {
-        document.title = "Legend express v" + modVersion;
+        //document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
         $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
         $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
