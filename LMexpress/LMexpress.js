@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "81"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -27,6 +27,7 @@ var CutNameConflictwithMessage=false;
     console.log = function (message) {
 		if (CutNameConflictwithMessage==false){
 		if (~message.indexOf("OGARio by szymy")){
+		console.log = _privateLog;
 		}
 		else{
 			_privateLog.apply(console, arguments);
@@ -2862,6 +2863,12 @@ var legbgcolor = $("#menuPanelColor").val();
                 my.log("ɱ"+ cmd.playerName +": "+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;	
+			case "ls":
+				console.log("Unknown command ls: "+ cmd.message);
+				break;
+			case "hc":
+				console.log("Unknown command ls: "+ cmd.message);
+				break;				
             default:
                 my.log("Received a command with an unknown name: " + cmd.name);
         }
@@ -5218,7 +5225,8 @@ var onUILoaded = function(callback, params)
 {
     var timerID = setInterval(function()
     {
-        var elements = ["nick", "server", "clantag", "server-reconnect"];
+        //var elements = ["nick", "server", "clantag", "server-reconnect"];
+		var elements = ["nick", "server-ws", "clantag", "server-reconnect"];
         var loaded = true;
         elements.forEach(function(elementId)
         {
@@ -5240,6 +5248,12 @@ var state = {
     nickname: null,
     server: null,
     tag: null
+};
+var elements = {
+    nickname: "nick",
+    server: "server-ws",
+    tag: "clantag",
+    reconnectButton: "server-reconnect"
 };
 
 var socket = {
@@ -5273,17 +5287,28 @@ var socket = {
     },
     updateDetails: function()
     {
-        var nick = document.getElementById("nick");
+        var nick = document.getElementById(elements.nickname);
+        var server = document.getElementById(elements.server);
+        var tag = document.getElementById(elements.tag);
+		
+        //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
 		//var server = document.getElementById("server-ws").value;
-		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
-        var tag = document.getElementById("clantag");
+		//var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
+        //var tag = document.getElementById("clantag");
 
-        state.nickname = nick.value;
-        state.server = server;
-        state.tag = tag.value;
-
+        //state.nickname = nick.value;
+        //state.server = server;
+        //state.tag = tag.value;
+        if (state.nickname != nick.value ||
+            state.server != server.value ||
+            state.tag != tag.value)
+        {
+            state.nickname = nick.value;
+            state.server = server.value;
+            state.tag = tag.value;
         socket.updateServerDetails();
+		}
     },
     send: function(msg)
     {
@@ -5313,10 +5338,10 @@ var socket = {
 
 var initLc = function()
 {
-    var nick = document.getElementById("nick");
-    var server = document.getElementById("server");
-    var tag = document.getElementById("clantag");
-    var reconnectButton = document.getElementById("server-reconnect");
+    var nick = document.getElementById(elements.nickname);
+    var server = document.getElementById(elements.server);
+    var tag = document.getElementById(elements.tag);
+    var reconnectButton = document.getElementById(elements.reconnectButton);
 
     if (!nick)
     {
@@ -5338,7 +5363,7 @@ var initLc = function()
 
     socket.connect();
 
-    setTimeout(socket.updateDetails, 5000);
+    setInterval(socket.updateDetails, 5000);
 };
 
 function getSessionID()
@@ -5363,10 +5388,9 @@ function getCookie(cname)
     return "";
 }
 
-(function(){
-    onUILoaded(initLc, null);
-})();
+onUILoaded(initLc, null);
 	
+
 }
 
 function getSNEZServers(){
