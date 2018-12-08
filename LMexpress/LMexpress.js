@@ -5302,11 +5302,11 @@ var socket = {
         //state.server = server;
         //state.tag = tag.value;
         if (state.nickname != nick.value ||
-            state.server != server.value ||
+            state.server != server ||
             state.tag != tag.value)
         {
             state.nickname = nick.value;
-            state.server = server.value;
+            state.server = server;
             state.tag = tag.value;
         socket.updateServerDetails();
 		}
