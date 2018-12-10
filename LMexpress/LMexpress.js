@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "81"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5288,7 +5288,7 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById(elements.nickname);
-		var server2 = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
+		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
 //        var server = document.getElementById(elements.server);
         var tag = document.getElementById(elements.tag);
 		
@@ -5301,21 +5301,14 @@ var socket = {
         //state.nickname = nick.value;
         //state.server = server;
         //state.tag = tag.value;
-		console.log("check");
         if (state.nickname != nick.value ||
-            state.server != server2 ||
+            state.server != server ||
             state.tag != tag.value)
         {
-			console.log("state.nickname= "+state.nickname +", nick.value= "+nick.value);
-            state.nickname = nick.value;	
-			console.log("state.server= "+state.server+", state.value= "+server2);			
-            state.server = server2;
-			console.log("state.tag= "+state.tag+", tag.value= "+tag.value);	
+            state.nickname = nick.value;
+            state.server = server;
             state.tag = tag.value;
-//       setTimeout(function() {
-		socket.updateServerDetails();
-//		}, 100);   			
-        
+        socket.updateServerDetails();
 		}
     },
     send: function(msg)
@@ -5372,8 +5365,6 @@ var initLc = function()
     socket.connect();
 
     setInterval(socket.updateDetails, 5000);
-//	setTimeout(socket.updateDetails, 5000);
-	
 };
 
 function getSessionID()
