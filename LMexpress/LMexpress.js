@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.082 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "81"; // the version 1.1-> 1.11
+var semimodVersion = "82"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5225,7 +5225,7 @@ var onUILoaded = function(callback, params)
 {
     var timerID = setInterval(function()
     {
-        //var elements = ["nick", "server", "clantag", "server-reconnect"];
+        //var elements = ["nick", "server2", "clantag", "server-reconnect"];
 		var elements = ["nick", "server-ws", "clantag", "server-reconnect"];
         var loaded = true;
         elements.forEach(function(elementId)
@@ -5246,22 +5246,22 @@ var onUILoaded = function(callback, params)
 
 var state = {
     nickname: null,
-    server: null,
+    server2: null,
     tag: null
 };
 var elements = {
     nickname: "nick",
-    server: "server-ws",
+    server2: "server-ws",
     tag: "clantag",
     reconnectButton: "server-reconnect"
 };
 
 var socket = {
-    server: "ws://lc.snez.org:3050/",
+    server2: "ws://lc.snez.org:3050/",
     client: null,
     connect: function()
     {
-        socket.client = new WebSocket(socket.server);
+        socket.client = new WebSocket(socket.server2);
         socket.client.onopen = socket.updateServerDetails;
         socket.client.onclose = socket.reconnect;
         socket.client.onmessage = socket.onMessage;
@@ -5288,27 +5288,34 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById(elements.nickname);
-		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
-//        var server = document.getElementById(elements.server);
+		var server2 = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
+//        var server2 = document.getElementById(elements.server);
         var tag = document.getElementById(elements.tag);
 		
         //var nick = document.getElementById("nick");
-        //var server = document.getElementById("server");
-		//var server = document.getElementById("server-ws").value;
-		//var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
+        //var server2 = document.getElementById("server");
+		//var server2 = document.getElementById("server-ws").value;
+		//var server2 = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
         //var tag = document.getElementById("clantag");
 
         //state.nickname = nick.value;
-        //state.server = server;
+        //state.server2 = server2;
         //state.tag = tag.value;
+		console.log("check");
         if (state.nickname != nick.value ||
-            state.server != server ||
+            state.server2 != server2 ||
             state.tag != tag.value)
         {
-            state.nickname = nick.value;
-            state.server = server;
+			console.log("state.nickname= "+state.nickname +", nick.value= "+nick.value);
+            state.nickname = nick.value;	
+			console.log("state.server2= "+state.server2+", state.value= "+server2);			
+            state.server2 = server2;
+			console.log("state.tag= "+state.tag+", tag.value= "+tag.value);	
             state.tag = tag.value;
-        socket.updateServerDetails();
+        setTimeout(function() {
+		socket.updateServerDetails();
+		}, 100);   			
+        
 		}
     },
     send: function(msg)
@@ -5340,7 +5347,7 @@ var socket = {
 var initLc = function()
 {
     var nick = document.getElementById(elements.nickname);
-    var server = document.getElementById(elements.server);
+    var server2 = document.getElementById(elements.server2);
     var tag = document.getElementById(elements.tag);
     var reconnectButton = document.getElementById(elements.reconnectButton);
 
@@ -5351,7 +5358,7 @@ var initLc = function()
     }
 
     nick.addEventListener("change", socket.updateDetails);
-    server.addEventListener("change", socket.updateDetails);
+    server2.addEventListener("change", socket.updateDetails);
     tag.addEventListener("change", socket.updateDetails);
 
     var reconnectTimer = null;
