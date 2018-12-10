@@ -5582,9 +5582,8 @@ $("#server-token").css("margin-top", "-10px");
 $("#server-join").css("margin-top", "-10px");
 $("#agario-main-buttons").css("margin-top", "-10px");
 $("#gamemode").css("margin-left", "2px");
-
-$(".btn.btn-warning.btn-server-info.ogicon-cogs").after($("#server-reconnect"));
-
+$("#server-reconnect").hide();
+$(".btn.btn-warning.btn-server-info.ogicon-cogs").after('<button id="server-reconnect" class="btn btn-success" style="display: inline-block; float: left; margin-top: 6px; width: 11%; text-transform: capitalize;"><i class="fa fa-refresh"></i></button>');
 
 $("#server-reconnect").css("display", "inline-block");
 $("#server-reconnect").css("float", "left");
