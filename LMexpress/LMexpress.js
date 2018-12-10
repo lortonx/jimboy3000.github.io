@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.082 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "82"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -747,7 +747,7 @@ function LMserverbox(){
                 document.cookie = "agario_redirect=" + a + f + "; path=/"
             }
             $(function() {
-                $("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: inline-block; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: inline-block; margin-left: 6px; margin-top: -3px">Connect</button>');
+                $("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: none; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button>');
                 $("#connect2").tooltip({
                     title: "Connect to server, or restablish communication",
                     placement: "left"
@@ -5570,6 +5570,27 @@ function pre_loopLM(modVersion) {
             return initializeLM(modVersion);
 }
 function initializeLM(modVersion) {
+	
+$("#server-ws").hide();
+$("#server-connect").hide();
+$('#region').before($("#server-reconnect"));
+$("#server-info").show();
+//$(".btn.btn-warning.btn-server-info.ogicon-cogs").after($("#server-reconnect"));
+$(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
+
+$("#server-token").css("margin-top", "-10px");
+$("#server-join").css("margin-top", "-10px");
+$("#agario-main-buttons").css("margin-top", "-10px");
+$("#gamemode").css("margin-left", "2px");
+
+$(".btn.btn-warning.btn-server-info.ogicon-cogs").after($("#server-reconnect"));
+
+
+$("#server-reconnect").css("display", "inline-block");
+$("#server-reconnect").css("float", "left");
+$("#server-reconnect").css("margin-top", "6px");
+$("#server-reconnect").css("width", "11%");
+	
 preventcanvasimagecrash();
 //    setTimeout(function() {
         //document.title = "Legend express v" + modVersion;
