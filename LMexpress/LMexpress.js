@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "81"; // the version 1.1-> 1.11
+var semimodVersion = "80"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5312,9 +5312,9 @@ var socket = {
             state.server = server2;
 			console.log("state.tag= "+state.tag+", tag.value= "+tag.value);	
             state.tag = tag.value;
-        setTimeout(function() {
+//       setTimeout(function() {
 		socket.updateServerDetails();
-		}, 100);   			
+//		}, 100);   			
         
 		}
     },
@@ -5371,7 +5371,9 @@ var initLc = function()
 
     socket.connect();
 
-    setInterval(socket.updateDetails, 5000);
+//    setInterval(socket.updateDetails, 5000);
+	setTimeout(socket.updateDetails, 5000);
+	
 };
 
 function getSessionID()
