@@ -5371,8 +5371,8 @@ var initLc = function()
 
     socket.connect();
 
-//    setInterval(socket.updateDetails, 5000);
-	setTimeout(socket.updateDetails, 5000);
+    setInterval(socket.updateDetails, 5000);
+//	setTimeout(socket.updateDetails, 5000);
 	
 };
 
