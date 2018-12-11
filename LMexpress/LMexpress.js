@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.082 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.083 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "82"; // the version 1.1-> 1.11
+var semimodVersion = "83"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5226,7 +5226,7 @@ var onUILoaded = function(callback, params)
     var timerID = setInterval(function()
     {
         //var elements = ["nick", "server", "clantag", "server-reconnect"];
-		var elements = ["nick", "server-ws", "clantag", "server-reconnect"];
+		var elements = ["nick", "server-token", "clantag", "server-reconnect"];
         var loaded = true;
         elements.forEach(function(elementId)
         {
@@ -5251,13 +5251,13 @@ var state = {
 };
 var elements = {
     nickname: "nick",
-    server: "server-ws",
+    server: "server-token",
     tag: "clantag",
     reconnectButton: "server-reconnect"
 };
 
 var socket = {
-    server: "ws://lc.snez.org:3050/",
+    server: "ws://agar.snez.org:3050/",
     client: null,
     connect: function()
     {
@@ -5398,7 +5398,7 @@ function getSNEZServers(){
 client2 = {
 
     // Properties
-    server: "ws://lc.snez.org:3050/",
+    server: "ws://agar.snez.org:3050/",
     ws: null,
     isOpen: false,
     onOpenCallback: null,
@@ -5573,7 +5573,7 @@ function initializeLM(modVersion) {
 	
 $("#server-ws").hide();
 $("#server-connect").hide();
-$('#region').before($("#server-reconnect"));
+//$('#region').before($("#server-reconnect"));
 $("#server-info").show();
 //$(".btn.btn-warning.btn-server-info.ogicon-cogs").after($("#server-reconnect"));
 $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
@@ -5582,7 +5582,7 @@ $("#server-token").css("margin-top", "-10px");
 $("#server-join").css("margin-top", "-10px");
 $("#agario-main-buttons").css("margin-top", "-10px");
 $("#gamemode").css("margin-left", "2px");
-$("#server-reconnect").hide();
+$("#server-reconnect").remove();
 $(".btn.btn-warning.btn-server-info.ogicon-cogs").after('<button id="server-reconnect" class="btn btn-success" style="display: inline-block; float: left; margin-top: 6px; width: 11%; text-transform: capitalize;"><i class="fa fa-refresh"></i></button>');
 
 $("#server-reconnect").css("display", "inline-block");
