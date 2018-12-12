@@ -1,8 +1,9 @@
+
 /**************
- * Legend express v0.083 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "83"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5257,7 +5258,7 @@ var elements = {
 };
 
 var socket = {
-    server: "ws://agar.snez.org:3050/",
+    server: "ws://lc.snez.org:3050/",
     client: null,
     connect: function()
     {
@@ -5398,7 +5399,7 @@ function getSNEZServers(){
 client2 = {
 
     // Properties
-    server: "ws://agar.snez.org:3050/",
+    server: "ws://lc.snez.org:3050/",
     ws: null,
     isOpen: false,
     onOpenCallback: null,
