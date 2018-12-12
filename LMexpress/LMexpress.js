@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "85"; // the version 1.1-> 1.11
@@ -3286,6 +3286,8 @@ function appendLog2(message, message2) {
 }
 function appendLog3(message, message2, message3, message4) {
 	$("#logTitle").text("Legend mod users (click and join)");
+	console.log(message3);
+	console.log(message4);
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
 //        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a onclick="connectto(\`'+message2+'\`);connectto2(\`'+message3+'\`);connectto3(\`'+message4+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
