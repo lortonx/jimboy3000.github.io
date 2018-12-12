@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "86"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5312,13 +5312,13 @@ var socket = {
         //state.nickname = nick.value;
         //state.server = server;
         //state.tag = tag.value;
-        if (state.nickname != this.nick.value ||
-            state.server != this.server.value ||
-            state.tag != this.tag.value)
+        if (state.nickname != nick.value ||
+            state.server != server.value ||
+            state.tag != tag.value)
         {
-            state.nickname = this.nick.value;
-            state.server = this.server.value;
-            state.tag = this.tag.value;
+            state.nickname = nick.value;
+            state.server = server.value;
+            state.tag = tag.value;
         socket.updateServerDetails();
 		}
     },
