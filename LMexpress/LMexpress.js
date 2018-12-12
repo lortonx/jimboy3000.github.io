@@ -5299,7 +5299,7 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById(elements.nickname);
-		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "")+"&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val();		
+		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "")+"&?r=" + $('#region').val() + "&?m=" + realmode;		
 //        var server = document.getElementById(elements.server);
         var tag = document.getElementById(elements.tag);
 		
