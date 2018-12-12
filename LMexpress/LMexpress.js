@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "85"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5299,8 +5299,8 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById(elements.nickname);
-		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "")+"&?r=" + $('#region').val() + "&?m=" + realmode;		
-//        var server = document.getElementById(elements.server);
+//		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "")+"&?r=" + $('#region').val() + "&?m=" + realmode;		
+        var server = document.getElementById(elements.server);
         var tag = document.getElementById(elements.tag);
 		
         //var nick = document.getElementById("nick");
@@ -5507,18 +5507,18 @@ client2 = {
 					var temporaryserver=JSON.stringify(data[player]);
 					var temporaryserver2;
 					var temporaryserver3;
+					var temporaryserver1 = getParameterByName("r", temporaryserver);
+					var temporaryserver1a = getParameterByName("m", temporaryserver);					
 					temporaryserver = temporaryserver.substring(0, temporaryserver.indexOf('.agar.io'));
 					temporaryserver2 = temporaryserver.split('live-arena-').pop();
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
-					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
-					//appendLog2("<span class='main-color'></span>" +temporaryserver3+"</span>" + " (" + temporaryserver2 + ")", temporaryserver2);
-					appendLog2("<span class='main-color'>" +temporaryserver3+"</span>" + " (" + temporaryserver2 + ")", temporaryserver2);
+					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
+					appendLog2("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". <span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2);}
+					else{appendLog2("<span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
-					//JSON.stringify(data[player]);
-					//console.log(data[player]);
-					
+					//console.log(data[player]);				
     			}
     			else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
 					if (showonceusers2==0){
@@ -5528,18 +5528,18 @@ client2 = {
 					var temporaryserver=JSON.stringify(data[player]);
 					var temporaryserver2;
 					var temporaryserver3;
+					var temporaryserver1 = getParameterByName("r", temporaryserver);
+					var temporaryserver1a = getParameterByName("m", temporaryserver);						
 					temporaryserver = temporaryserver.substring(0, temporaryserver.indexOf('.agar.io'));
 					temporaryserver2 = temporaryserver.split('live-arena-').pop();
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
-					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
-					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
-					appendLog2(temporaryserver3 + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);
+					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
+					appendLog2("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". " + temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);}	
+					else{appendLog2(temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
-					//JSON.stringify(data[player]);
-					//console.log(data[player]);
-					
+					//console.log(data[player]);				
     			}									
 				}
   			}
@@ -6254,11 +6254,11 @@ preventcanvasimagecrash();
                     $("#searchShortcut").click();
                 }
 
-            } else if (event.which == 187 && !($("input").is(":focus")) && ogario.play == false) { // refresh server
+            }/* else if (event.which == 187 && !($("input").is(":focus")) && ogario.play == false) { // refresh server
                 $("#reconnectBtn").click();
 
             } 
-/*			else if (event.which == 27) { // ESCAPE
+			else if (event.which == 27) { // ESCAPE
 
                 if ($('#searchHud').is(':visible')) {
                     hideSearchHud();
