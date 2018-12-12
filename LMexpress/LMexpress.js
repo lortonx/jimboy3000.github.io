@@ -1,9 +1,8 @@
-
 /**************
- * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "84"; // the version 1.1-> 1.11
+var semimodVersion = "85"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3265,11 +3264,22 @@ function appendLog(message) {
     $("#log p").first().show(100);
     bumpLog();
 }
+/*
 function appendLog2(message, message2) {
 	$("#logTitle").text("Legend mod users (click and join)");
     var region = $("#region").val();
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
         '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
+        '<a onclick="connectto(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
+
+    $("#log p").first().show(100);
+    bumpLog();
+}*/
+function appendLog2(message, message2) {
+	$("#logTitle").text("Legend mod users (click and join)");
+    var region = $("#region").val();
+    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
+//        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a onclick="connectto(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
 
     $("#log p").first().show(100);
@@ -5289,7 +5299,7 @@ var socket = {
     updateDetails: function()
     {
         var nick = document.getElementById(elements.nickname);
-		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "");
+		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "")+"&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val();		
 //        var server = document.getElementById(elements.server);
         var tag = document.getElementById(elements.tag);
 		
@@ -5502,7 +5512,8 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
-					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
+					//appendLog2("<span class='main-color'></span>" +temporaryserver3+"</span>" + " (" + temporaryserver2 + ")", temporaryserver2);
+					appendLog2("<span class='main-color'>" +temporaryserver3+"</span>" + " (" + temporaryserver2 + ")", temporaryserver2);
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
 					//JSON.stringify(data[player]);
@@ -5523,6 +5534,7 @@ client2 = {
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					//temporaryserver.substring(0, temporaryserver.indexOf(':'));
 					appendLog2(temporaryserver3 + " (" + temporaryserver2 + ")", temporaryserver2);
+					appendLog2(temporaryserver3 + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
 					//JSON.stringify(data[player]);
