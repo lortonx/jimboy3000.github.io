@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "86"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3289,7 +3289,7 @@ function appendLog3(message, message2, message3, message4) {
 	$("#logTitle").text("Legend mod users (click and join)");
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
 //        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
-        '<a onclick="connectto(\`'+message2+'\`);connectto2();return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
+        '<a onclick="connectto(\`'+message2+'\`);connectto2(\`'+message3+'\`);connectto3(\`'+message4+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
     $("#log p").first().show(100);
     bumpLog();
 	return message3, message4;
@@ -3299,9 +3299,13 @@ function connectto(message2){
 				$('#server-join').click();
 }
 
-function connectto2(){
+function connectto2(message3){
 		setTimeout(function () {
-			$('#gamemode').val(message3);
+			$('#gamemode').val(message3);		
+		}, 1000);
+}
+function connectto3(message4){
+		setTimeout(function () {
 			$("#region").val(message4);			
 		}, 1000);
 }
