@@ -2,7 +2,7 @@
  * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "85"; // the version 1.1-> 1.11
+var semimodVersion = "86"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5300,8 +5300,8 @@ var socket = {
     {
         var nick = document.getElementById(elements.nickname);
 //		var server = $("#server-ws").val().replace("wss://", "").replace("ws://", "").replace(":80", "")+"&?r=" + $('#region').val() + "&?m=" + realmode;		
-        var server = document.getElementById(elements.server);
-		var servertemp = "live-arena-" + server + ".agar.io"+"&?r=" + $('#region').val() + "&?m=" + realmode;
+//        var server = document.getElementById(elements.server);
+		var servertemp = "live-arena-" + $('#server-token').val() + ".agar.io"+"&?r=" + $('#region').val() + "&?m=" + realmode;
         var tag = document.getElementById(elements.tag);
 		
         //var nick = document.getElementById("nick");
