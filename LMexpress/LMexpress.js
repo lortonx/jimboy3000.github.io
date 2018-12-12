@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "84"; // the version 1.1-> 1.11
+var semimodVersion = "85"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -47,7 +47,6 @@ var CutNameConflictwithMessage=false;
     };
 })();
 */
-var message3, message4;
 $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);   		
 var oldgamemode=$("#gamemode");
@@ -3292,7 +3291,6 @@ function appendLog3(message, message2, message3, message4) {
         '<a onclick="connectto(\`'+message2+'\`);connectto2(\`'+message3+'\`);connectto3(\`'+message4+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
     $("#log p").first().show(100);
     bumpLog();
-	return message3, message4;
 }
 function connectto(message2){
 				$('#server-token').val(message2);
@@ -3300,14 +3298,10 @@ function connectto(message2){
 }
 
 function connectto2(message3){
-		setTimeout(function () {
 			$('#gamemode').val(message3);		
-		}, 1000);
 }
 function connectto3(message4){
-		setTimeout(function () {
 			$("#region").val(message4);			
-		}, 1000);
 }
 function bumpLog() {
     $("#log").animate({
