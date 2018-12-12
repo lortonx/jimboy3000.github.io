@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "86"; // the version 1.1-> 1.11
+var semimodVersion = "85"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3285,11 +3285,26 @@ function appendLog2(message, message2) {
     $("#log p").first().show(100);
     bumpLog();
 }
+function appendLog3(message, message2, message3, message4) {
+	$("#logTitle").text("Legend mod users (click and join)");
+    var region = $("#region").val();
+    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
+//        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
+        '<a onclick="connectto(\`'+message2+'\`);connectto2(message3, message4);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
+
+    $("#log p").first().show(100);
+    bumpLog();
+}
 function connectto(message2){
 				$('#server-token').val(message2);
 				$('#server-join').click();
 }
-
+function connectto2(message3, message4){
+		setTimeout(function () {
+			$('#gamemode').val(message3);
+			$("#region").val(message4);			
+		}, 1000);
+}
 function bumpLog() {
     $("#log").animate({
         scrollTop: 0
@@ -5515,7 +5530,7 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog2("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". <span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2);}
+					appendLog3("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". <span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2, temporaryserver1, temporaryserver1a);}
 					else{appendLog2("<span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
@@ -5536,7 +5551,7 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog2("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". " + temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);}	
+					appendLog3("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". " + temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
 					else{appendLog2(temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
