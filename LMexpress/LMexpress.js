@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -2346,7 +2346,7 @@ var legbgcolor = $("#menuPanelColor").val();
 
     var global = window;
     var my = {
-        "name": "<i class='fa fa-universal-access' aria-hidden='true'><i>",
+        "name": "<i class='fa fa-universal-access' aria-hidden='true'></i>",
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
