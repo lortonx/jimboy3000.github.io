@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "86"; // the version 1.1-> 1.11
+var semimodVersion = "85"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2346,7 +2346,7 @@ var legbgcolor = $("#menuPanelColor").val();
 
     var global = window;
     var my = {
-        "name": "?",
+        "name": "<i class='fa fa-times' aria-hidden='true'><i>",
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
@@ -2483,15 +2483,17 @@ var legbgcolor = $("#menuPanelColor").val();
             if(stat.capture){
                 if(global.ogario){
 		    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
-                    $("#ao2t-capture").text('??');
-                }else{
-                    $("#ao2t-capture").text('?');
-			$("#ao2t-capture").removeClass("disconnected").addClass("connected");
+                    //$("#ao2t-capture").text('??');
+					$("#ao2t-capture").html('<i class="fa fa-times" aria-hidden="true"></i>');
+                }else{                   
+			$("#ao2t-capture").removeClass("disconnected").addClass("connected");					
+			$("#ao2t-capture").html('<i class="fa fa-times" aria-hidden="true"></i>');
+					
                 }
                 my.capture_start();
             }else{
 		$("#ao2t-capture").removeClass("connected").addClass("disconnected");
-                $("#ao2t-capture").text('?');
+                $("#ao2t-capture").html('<i class="fa fa-wrench" aria-hidden="true"></i>');
                 my.capture_end();
             }
         });
