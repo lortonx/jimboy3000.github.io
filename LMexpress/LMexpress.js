@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "85"; // the version 1.1-> 1.11
+var semimodVersion = "86"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2190,7 +2190,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				$(".toast.toast-success").remove();
 		        LegendClanSymbol = $("#nick").val();
 				console.log("Step1");
-		        if (~LegendClanSymbol.indexOf("℄") != -1) {
+		        if (~LegendClanSymbol.indexOf("?") != -1) {
 					console.log("Step2");
 		            if (commandMsg == "EU-London") {
 		                setTimeout(function() {
@@ -2346,7 +2346,7 @@ var legbgcolor = $("#menuPanelColor").val();
 
     var global = window;
     var my = {
-        "name": "ⓐ",
+        "name": "?",
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
@@ -2374,7 +2374,7 @@ var legbgcolor = $("#menuPanelColor").val();
 			else if (~msg.indexOf('[Universal chat]:')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 				
-			else if (~msg.indexOf('ɱ')) {
+			else if (~msg.indexOf('?')) {
 				msg.slice(1);
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				playSound($('#commandSound').val());
@@ -2472,8 +2472,8 @@ var legbgcolor = $("#menuPanelColor").val();
         $("head").append('<style>\n'+ local_style +'\n</style>');
         $("#top5-hud").append(''+
             '<div id="ao2t-hud"><span class="hud-main-color">Universal:'+
-                 ' <span id="ao2t-capture">ⓐ</span>'+
-                 ' <span id="ao2t-config">⚙</span></span>'+
+                 ' <span id="ao2t-capture">?</span>'+
+                 ' <span id="ao2t-config">?</span></span>'+
 //                 '<div id="ao2t-top5" style="padding-left: 1em;"></div>'+
 				 '<div id="ao2t-top5" style="font-size: 14px;"></div>'+
             '</div>');
@@ -2483,15 +2483,15 @@ var legbgcolor = $("#menuPanelColor").val();
             if(stat.capture){
                 if(global.ogario){
 		    $("#ao2t-capture").removeClass("disconnected").addClass("connected");
-                    $("#ao2t-capture").text('🔙');
+                    $("#ao2t-capture").text('??');
                 }else{
-                    $("#ao2t-capture").text('⚠');
+                    $("#ao2t-capture").text('?');
 			$("#ao2t-capture").removeClass("disconnected").addClass("connected");
                 }
                 my.capture_start();
             }else{
 		$("#ao2t-capture").removeClass("connected").addClass("disconnected");
-                $("#ao2t-capture").text('ⓐ');
+                $("#ao2t-capture").text('?');
                 my.capture_end();
             }
         });
@@ -2860,7 +2860,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log("ɱ"+ cmd.playerName +": "+ cmd.message);				
+                my.log("?"+ cmd.playerName +": "+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;	
 			case "ls":
@@ -3314,7 +3314,7 @@ function bumpLog() {
 function PreLcCelebration() {
 var checkonetimeLc = localStorage.getItem("checkonetimeLc");
 if (checkonetimeLc == null) {
-//   if ($("#nick").val().includes("℄")) {
+//   if ($("#nick").val().includes("?")) {
         var checkdate;
         Date.prototype.yyyymmdd = function() {
             var yyyy = this.getFullYear().toString();
@@ -3509,7 +3509,7 @@ function setpic6data() {
 
 
 function sendyt1() {
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'block') {
             KeyEvent.simulate(13, 13);
         }
@@ -3527,7 +3527,7 @@ function sendyt1() {
 }
 
 function sendyt2() {
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'block') {
             KeyEvent.simulate(13, 13);
         }
@@ -3545,7 +3545,7 @@ function sendyt2() {
 }
 
 function sendyt3() {
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'block') {
             KeyEvent.simulate(13, 13);
         }
@@ -3563,7 +3563,7 @@ function sendyt3() {
 }
 
 function sendyt4() {
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'block') {
             KeyEvent.simulate(13, 13);
         }
@@ -3581,7 +3581,7 @@ function sendyt4() {
 }
 
 function sendyt5() {
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'block') {
             KeyEvent.simulate(13, 13);
         }
@@ -3599,7 +3599,7 @@ function sendyt5() {
 }
 
 function sendyt6() {
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'block') {
             KeyEvent.simulate(13, 13);
         }
@@ -4022,7 +4022,7 @@ function msgcommand6f() {
 
 function dosendmsgcommand() {
 
-//    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
+//    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'none') {
             KeyEvent.simulate(13, 13);
         };
@@ -5283,7 +5283,7 @@ var elements = {
 };
 
 var socket = {
-    server: "ws://lc.snez.org:3050/",
+    server: "ws://agar.snez.org:3050/",
     client: null,
     connect: function()
     {
@@ -5425,7 +5425,7 @@ function getSNEZServers(){
 client2 = {
 
     // Properties
-    server: "ws://lc.snez.org:3050/",
+    server: "ws://agar.snez.org:3050/",
     ws: null,
     isOpen: false,
     onOpenCallback: null,
@@ -5512,8 +5512,11 @@ client2 = {
 		var showonceusers2=0;
 		showonceusers3=0;
 		var showonceusers4=0;
-		for (var player in data) {
-  			if (data.hasOwnProperty(player)) {
+		data = JSON.parse(data); //...
+//		for (var player in data) {
+ // 			if (data.hasOwnProperty(player)) {
+        for (var player = 0; player < data.length; player++) {
+            if (data[player].nickname) {				
 				if (data[player].nickname){
     			if (data[player].nickname.indexOf($("#searchInput").val()) >= 0) {
 					if (showonceusers==0){
@@ -5783,14 +5786,14 @@ preventcanvasimagecrash();
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
             '<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
             '<option value="1" data-itr="">English</option>' +
-            '<option value="6" data-itr="">Arabic - عربى</option>' +
-            '<option value="4" data-itr="">Bulgarian - български</option>' +
-            '<option value="5" data-itr="">French - Français</option>' +
+            '<option value="6" data-itr="">Arabic - ????</option>' +
+            '<option value="4" data-itr="">Bulgarian - ?????????</option>' +
+            '<option value="5" data-itr="">French - Francais</option>' +
 			'<option value="9" data-itr="">German - Deutsch</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
-			'<option value="8" data-itr="">Russian - Русские</option>' +
-            '<option value="3" data-itr="">Spanish - Español</option>' +
-			'<option value="7" data-itr="">Trad. Chinese - 繁體中文</option>' +
+			'<option value="8" data-itr="">Russian - ???????</option>' +
+            '<option value="3" data-itr="">Spanish - Espanol</option>' +
+			'<option value="7" data-itr="">Trad. Chinese - ????</option>' +
             '</select></div>' +
 
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
@@ -6867,7 +6870,7 @@ core.disconnect= function () {adres();}
 		console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
     console.groupEnd();
     console.group("Mod developed by"); 
-		console.log('%c℄🌀Jimboy3100', stylesLegendModConsole2);
+		console.log('%c???Jimboy3100', stylesLegendModConsole2);
     console.groupEnd();
 console.groupEnd();	
 
