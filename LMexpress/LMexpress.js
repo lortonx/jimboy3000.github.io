@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -2493,7 +2493,7 @@ var legbgcolor = $("#menuPanelColor").val();
                 my.capture_start();
             }else{
 		$("#ao2t-capture").removeClass("connected").addClass("disconnected");
-                $("#ao2t-capture").html('<i class="fa fa-wrench" aria-hidden="true"></i>');
+                $("#ao2t-capture").html('<i class="fa fa-universal-access" aria-hidden="true"></i>');
                 my.capture_end();
             }
         });
