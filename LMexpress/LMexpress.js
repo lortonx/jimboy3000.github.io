@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.088 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -5423,7 +5423,7 @@ onUILoaded(initLc, null);
 
 }
 
-function getSNEZServers(){
+function getSNEZServers(ifcalled){
 client2 = {
 
     // Properties
@@ -5523,7 +5523,8 @@ client2 = {
     			if (data[player].nickname.indexOf($("#searchInput").val()) >= 0) {
 					if (showonceusers==0){
 					showonceusers++;
-					toastr["info"]("User Found. Revealing server...");
+					if (ifcalled==null){
+					toastr["info"]("User Found. Revealing server...");}
 					}
 					var temporaryserver=JSON.stringify(data[player]);
 					var temporaryserver2;
@@ -5535,16 +5536,17 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog3("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". <span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2, temporaryserver1, temporaryserver1a);}
-					else{appendLog2("<span class='main-color'>" +temporaryserver3.trim() + "</span>" + " (" + temporaryserver2 + ")", temporaryserver2);}
+					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}
+					else{appendLog2("<span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
 					//console.log(data[player]);				
     			}
     			else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
 					if (showonceusers2==0){
-					showonceusers2++;					
-					toastr["info"]("Server Found. Revealing users...");
+					showonceusers2++;
+					if (ifcalled==null){
+					toastr["info"]("Server Found. Revealing users...");}
 					}
 					var temporaryserver=JSON.stringify(data[player]);
 					var temporaryserver2;
@@ -5556,8 +5558,8 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog3("Region:" + temporaryserver1 + ", Mode" + temporaryserver1a + ". " + temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
-					else{appendLog2(temporaryserver3.trim() + " (<span class='main-color'>" + temporaryserver2 + "</span>)", temporaryserver2);}
+					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + "</span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
+					else{appendLog2("<span id='playerinfo'>" + temporaryserver3.trim() + "</span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
 					//console.log(data[player]);				
@@ -5570,11 +5572,12 @@ client2 = {
 				 if (showonceusers3==0){
 					showonceusers4++;
 					if (showonceusers4==1){
-						
+					if (ifcalled==null){	
 		            toastr["warning"]('Server / Leaderboard, not found. Do you want the 1-by-1 manual search leaderboards of <font color="yellow">' + $("#region").val() + ' / ' + $("#gamemode").val() + '</font> ?' + '</br> <button id= "manualsearch" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-exit" style="width: 100%;margin-top: -20px;">' + Premadeletter25 + '</button>', "", {
 		                timeOut: 20000,
 		                extendedTimeOut: 20000
 		            }).css("width", "350px");
+					}
 		            $("#manualsearch").click(function() {
 					$("#searchSpan>i").removeClass("fa fa-search").addClass("fa fa-times");
             var searchString = $("#searchInput").val();
@@ -6941,13 +6944,13 @@ function joinPLAYERonstart(){
 			setTimeout(function() {
 		if (searchedplayer != null) {
 		$("#searchInput").val(searchedplayer);
-		getSNEZServers();
+		getSNEZServers("NoText");
 		client2.connect();	
 
 	setTimeout(function() {
 if ($('.logEntry').html()!=undefined)
 {
-toastr["info"]("Player <font color='yellow'>" + $('.logEntry').html() + "</font> contains <font color='yellow'>"+searchedplayer+"!</font>. Connected into Server");
+toastr["info"]("Player <font color='yellow'>" + $('.logEntry>#playerinfo').html() + "</font> contains <font color='yellow'>"+searchedplayer+"!</font>. Connected into Server");
 $('.logEntry').click();			
 }
 }, 1000);
