@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -710,7 +710,7 @@ function adres(info, thismode, thisregion) {
 						history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 						return currentIPopened=false;
 						}
-						if (thismode!=null && thisregion!=null){							
+						else if (thismode!=null && thisregion!=null){							
 						history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 						//history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 						}
@@ -6970,7 +6970,9 @@ function joinSIPonstart3(){
 function joinSIPonstart1(){
 			realmodereturnfromStart();
 			$("#server-token").val(getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", ""));
+			if (region!=null && realmode!=null){
 			currentIPopened=true;
+			}
 			$("#server-join").click();	
 			//$("#server").val(searchSip);
 			//$("#connect2").click();			
