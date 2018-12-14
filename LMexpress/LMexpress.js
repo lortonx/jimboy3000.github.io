@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.095 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.096 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -687,6 +687,9 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 		
 function adres(info, thismode, thisregion) {
 	var info, thismode, thisregion;
+if (thismode==null || thisregion==null){
+	joinSERVERfindinfo();
+}
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
@@ -847,7 +850,7 @@ currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
         }		
 
     }, //5000
-    9000); //8000
+    6000); //8000
 }
 function onhashchange(){return false}
 function LMminimapTextAct(){
@@ -7089,23 +7092,26 @@ for (var i=-1; i<countModes.length; i++){
 		}	
 	}
 }
+if ($("#region").val()!=MaxRegion || $("#gamemode").val()!=MaxMode){
 FinalText=FinalText + "<br><font color='yellow'>Best choice: Region:" + MaxRegion+", Mode"+MaxMode +"</font>";
 FinalText=FinalText + "<br>Information changed!";
 toastr["info"](FinalText).css("width", "350px");
 $("#region").val(MaxRegion);
 $("#gamemode").val(MaxMode);
-
+}
 
 }
+/*
 else{
 var FinalText = "No wispers found</font>";
 toastr["info"](FinalText).css("width", "350px");	
 }
+*/
 //$('.logEntry').click();			
 }
-}, 1000);
+}, 1500);
 		}
-			}, 1000);
+			}, 100);
 }
 
 		
