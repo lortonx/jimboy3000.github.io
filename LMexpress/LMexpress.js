@@ -711,6 +711,9 @@ function adres(info, thismode, thisregion) {
 						}
                        else{
 						   history.pushState(stateObj, "page 2", "?sip=" + currentIP);
+						   realmode=null;
+						   region=null;
+						   return realmode, region;
 					   }
                     }
                     else if (realmode == ":party") {
