@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.097 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.098 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -7092,18 +7092,21 @@ for (var i=-1; i<countModes.length; i++){
 		}	
 	}
 }
+realmode=MaxMode;
+region=MaxRegion;
+setTimeout(function() {
+history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);
+ModeRegionregion();
+}, 1500);
 if ($("#region").val()!=MaxRegion || $("#gamemode").val()!=MaxMode){
 FinalText=FinalText + "<br><font color='yellow'>Best choice: Region:" + MaxRegion+", Mode"+MaxMode +"</font>";
 FinalText=FinalText + "<br>Information changed!";
 toastr["info"](FinalText).css("width", "350px");
 $("#region").val(MaxRegion);
 $("#gamemode").val(MaxMode);
-realmode=MaxMode;
-region=MaxRegion;
-history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + region + "&?m=" + realmode);
+
 //adres();
 }
-
 }
 /*
 else{
@@ -7117,5 +7120,9 @@ toastr["info"](FinalText).css("width", "350px");
 		}
 			}, 100);
 }
-
+function ModeRegionregion(){
+realmode=$("#gamemode").val();
+region=$("#region").val();
+return realmode, region;
+}
 		
