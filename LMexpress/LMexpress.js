@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.088 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -6956,4 +6956,112 @@ $('.logEntry').click();
 }, 1000);
 		}
 			}, 1000);
-}			
+}	
+
+function joinSERVERfindinfo(){
+	$('#log').html('');
+	var searchedtoken;	
+			setTimeout(function() {
+				searchedtoken= $("#server-token").val();
+		if (searchedtoken != null) {
+		$("#searchInput").val(searchedtoken);
+		getSNEZServers("NoText");
+		client2.connect();	
+
+	setTimeout(function() {
+if ($('.logEntry').html()!=undefined && $('.logEntry').html()!=""){
+	console.log("Searching..");
+for (var i=0; i<$('.logEntry').length; i++){
+		if ($('.logEntry>#playerinfo').eq(i).html()== $('#nick').val()){
+			$('.logEntry').eq(i).remove();
+		}
+		if ($('.logEntry>#regioninfo').eq(i).html()==null || $('.logEntry>#regioninfo').eq(i).html()=="null"){
+			$('.logEntry').eq(i).remove();
+		}
+		if ($('.logEntry>#modeinfo').eq(i).html()==null || $('.logEntry>#modeinfo').eq(i).html()=="null"){
+			$('.logEntry').eq(i).remove();
+		}	
+}
+
+//if ($('.logEntry').html()!=undefined && $('.logEntry').html()!=""){
+//$("#region").val($('.logEntry>#regioninfo').html());
+//$("#gamemode").val($('.logEntry>#modeinfo').html());}
+if ($('.logEntry').html()!=undefined && $('.logEntry').html()!=""){
+Regions={}
+var count2=0;
+$('#region').find('option').each(function() {
+    Regions[count2]=$(this).val();
+	count2++;
+});
+Modes={}						
+var count=0;
+$('#gamemode').find('option').each(function() {
+    Modes[count]=$(this).val();
+	count++;
+});
+
+countRegions = new Array(8).fill(0);
+for (var i=0; i<$('.logEntry').length; i++){
+		if ($('.logEntry>#regioninfo').eq(i).html()!=null && $('.logEntry>#regioninfo').eq(i).html()!=null){
+			for (var n=0; n<=8; n++){
+				if ($('.logEntry>#regioninfo').eq(i).html()==Regions[n]){countRegions[n]++}
+			}	
+		}
+}
+countModes = new Array(5).fill(0);
+for (var i=0; i<$('.logEntry').length; i++){
+		if ($('.logEntry>#modeinfo').eq(i).html()!=null && $('.logEntry>#regioninfo').eq(i).html()!=null){
+			for (var n=0; n<5; n++){
+				if ($('.logEntry>#modeinfo').eq(i).html()==Modes[n]){countModes[n]++}
+			}
+		}
+}
+var countRegionsMax=0;
+var countModesMax=0;
+var MaxRegion=0;
+var MaxMode=0;
+var FinalText="";
+for (var i=0; i<countRegions.length; i++){
+	if (countRegions[i]>0){
+		if (i!=0){
+			FinalText=FinalText + "<br>" + countRegions[i]+" player(s) wispered it is "+Regions[i];
+			//toastr["info"](countRegions[i]+" player(s) wispered it is "+Regions[i] );
+			if (countRegions[i]>countRegionsMax){
+				countRegionsMax=countRegions[i];
+				MaxRegion=Regions[i];
+			}
+		}	
+	}
+}
+for (var i=-1; i<countModes.length; i++){
+	if (countModes[i]>0){
+		if (i!=-1){
+			FinalText=FinalText + "<br>" + countModes[i]+" player(s) wispered it is "+Modes[i];
+			//toastr["info"](countModes[i]+" player(s) wispered it is "+Modes[i] );
+			if (countModes[i]>countModesMax){
+				countModesMax=countModes[i];
+				MaxMode=Modes[i];
+			}			
+		}	
+	}
+}
+FinalText=FinalText + "<br><font color='yellow'>Best choice: Region:" + MaxRegion+", Mode: "+MaxMode +"</font>";
+FinalText=FinalText + "<br>Information changed!";
+toastr["info"](FinalText).css("width", "350px");
+$("#region").val(MaxRegion);
+$("#gamemode").val(MaxMode);
+
+
+}
+else{
+var FinalText = "No wispers found</font>";
+toastr["info"](FinalText).css("width", "350px");	
+}
+//$('.logEntry').click();			
+}
+}, 1000);
+		}
+			}, 1000);
+}
+
+		
