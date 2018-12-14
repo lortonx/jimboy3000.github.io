@@ -7024,7 +7024,7 @@ var FinalText="";
 for (var i=0; i<countRegions.length; i++){
 	if (countRegions[i]>0){
 		if (i!=0){
-			FinalText=FinalText + "<br>" + countRegions[i]+" player(s) wispered it is "+Regions[i];
+			FinalText=FinalText + "<br>" + countRegions[i]+" player(s) wispered it is:"+Regions[i];
 			//toastr["info"](countRegions[i]+" player(s) wispered it is "+Regions[i] );
 			if (countRegions[i]>countRegionsMax){
 				countRegionsMax=countRegions[i];
@@ -7036,7 +7036,7 @@ for (var i=0; i<countRegions.length; i++){
 for (var i=-1; i<countModes.length; i++){
 	if (countModes[i]>0){
 		if (i!=-1){
-			FinalText=FinalText + "<br>" + countModes[i]+" player(s) wispered it is "+Modes[i];
+			FinalText=FinalText + "<br>" + countModes[i]+" player(s) wispered it is"+Modes[i];
 			//toastr["info"](countModes[i]+" player(s) wispered it is "+Modes[i] );
 			if (countModes[i]>countModesMax){
 				countModesMax=countModes[i];
@@ -7045,7 +7045,7 @@ for (var i=-1; i<countModes.length; i++){
 		}	
 	}
 }
-FinalText=FinalText + "<br><font color='yellow'>Best choice: Region:" + MaxRegion+", Mode: "+MaxMode +"</font>";
+FinalText=FinalText + "<br><font color='yellow'>Best choice: Region:" + MaxRegion+", Mode"+MaxMode +"</font>";
 FinalText=FinalText + "<br>Information changed!";
 toastr["info"](FinalText).css("width", "350px");
 $("#region").val(MaxRegion);
