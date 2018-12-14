@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.090 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -705,7 +705,7 @@ function adres(info, thismode, thisregion) {
 				else {
 					region=thisregion;
 				}						
-						if (thismode!=null && thisregion!=null){
+						if (thismode!=null && thisregion!=null){							
 						history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 						//history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 						}
@@ -819,6 +819,7 @@ function LMserverbox(){
 	
 }
 function urlIpWhenOpened(){
+	currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
 setTimeout(function() {
         if (searchSip != null && privateSrv==null) {
             if (region == null) {
@@ -826,14 +827,21 @@ setTimeout(function() {
             } else {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
             }
-        } else if (privateSrv==null) {
+        }
+        else if (searchSip == null) {
+                    history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + $('#gamemode').val());
+					region=$('#region').val();
+					realmode=$('#gamemode').val();
+					return region, realmode;
+        }		
+		else if (privateSrv==null) {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
             }
         }		
 
     }, //5000
-    9000); //9000
+    8000); //9000
 }
 function onhashchange(){return false}
 function LMminimapTextAct(){
