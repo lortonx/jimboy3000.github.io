@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.090 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -684,22 +684,34 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
         });		
 */
 		
-function adres(thismode) {
-	var thismode;
+function adres(info, thismode, thisregion) {
+	var info, thismode, thisregion;
 	if ($("#gamemode").val() != ":party") {
 		setTimeout(function(){		
 			currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
 			$("#server").val(currentIP);
-//			console.log(currentIP);
+				
+                if (privateSrv==null) {
+                    if (realmode != ":party") {
 				if(!thismode){
 					realmode = $("#gamemode").val();
-				}
+				}				
 				else {
 					realmode=thismode;
 				}
-                if (privateSrv==null) {
-                    if (realmode != ":party") {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+				if(!thisregion){
+					region = $("#region").val();
+				}				
+				else {
+					region=thisregion;
+				}						
+						if (thismode!=null && thisregion!=null){
+						history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+						//history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+						}
+                       else{
+						   history.pushState(stateObj, "page 2", "?sip=" + currentIP);
+					   }
                     }
                     else if (realmode == ":party") {
                     }
@@ -712,10 +724,14 @@ function adres(thismode) {
 	}
 	else {
             setTimeout(function() {
+				if (info!="noinfo"){
+				window.history.pushState(null, null, window.location.pathname);
                 $("#server").val("#" + window.location.href.replace('http://agar.io/#',''));
+				}			
             }, 2000);
         }
 }
+
 function privateserverpassword(){
 setTimeout(function () {
 		if (privateSrv!=null) {				
@@ -803,37 +819,16 @@ function urlIpWhenOpened(){
 setTimeout(function() {
         if (searchSip != null && privateSrv==null) {
             if (region == null) {
-//                setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
-//               }, 5000);
             } else {
-//               setTimeout(function() {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip + "&?r=" + region + "&?m=" + realmode);
-//                }, 5000);
             }
         } else if (privateSrv==null) {
             if (realmode != ":party") {
                 history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
             }
         }		
-/*        $("#server-ws").on('change', function() {
-			adres();
-            setTimeout(function() {
-                realmode = $("#gamemode").val();
 
-                    if (realmode != ":party") {
-                        history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
-                    }
-                    else if (realmode == ":party") {
-                    }
-                             
-                return realmode;
-            }, 1000);
-//            setTimeout(function() {             
-//                lastIP = currentIP;
-//                localStorage.setItem("lastIP", lastIP);
-//            }, 10000);
-        }); */
     }, //5000
     9000); //9000
 }
@@ -946,13 +941,15 @@ function searchTKHandler(searchStr) {
     return true;	
 }
 function realmodereturn(){
+		region = $("#region").val();
 		realmode = $("#gamemode").val();
-		return realmode;
+		return realmode, region;
 }
 function realmodereturnfromStart(){
+		region = getParameterByName("r", url);
 		realmode = getParameterByName("m", url);
-		return fromstart=true;
-		return realmode,fromstart;
+		fromstart=true;
+		return fromstart, region, realmode,fromstart;
 }
 function returnfromstartfalse(){
 return fromstart=false;	
@@ -6865,9 +6862,30 @@ preventcanvasimagecrash();
 
 
 
-core.disconnect= function () {adres();}
-        $('#server-join').click(function() {adres();});
-	    $('#server-connect').click(function() {adres();});	
+core.disconnect= function () {adres("noinfo",$('#gamemode').val(),$('#region').val());}
+        $('#server-reconnect').click(function() {
+            setTimeout(function() {
+			adres("noinfo",$('#gamemode').val(),$('#region').val());			
+                $("#server").val(currentIP);
+            }, 100);
+        });
+
+		$("#gamemode").change(function () {
+            setTimeout(function() {
+			adres("noinfo",$('#gamemode').val(),$('#region').val());		
+                $("#server").val(currentIP);
+            }, 100);
+        });
+		$("#region").change(function () {
+            setTimeout(function() {
+			adres("noinfo",$('#gamemode').val(),$('#region').val());			
+                $("#server").val(currentIP);
+            }, 100);
+        });
+
+        $('#server-join').click(function() {adres("noinfo",null,null);});
+		
+	    $('#server-connect').click(function() {adres("noinfo",null,null);});	
 
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
@@ -6912,7 +6930,7 @@ function joinSIPonstart(){
 			joinpartyfromconnect();			
 			}
 
-            adres();
+            //adres();
 			}, 1000);
 }
 
