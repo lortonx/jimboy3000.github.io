@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.098 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.097 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -7071,7 +7071,7 @@ var FinalText="";
 for (var i=0; i<countRegions.length; i++){
 	if (countRegions[i]>0){
 		if (i!=0){
-			FinalText=FinalText + "<br>" + countRegions[i]+" player(s) wispered it is:"+Regions[i];
+			FinalText=FinalText + countRegions[i]+" player(s) wispered it is:"+Regions[i] + "<br>";
 			//toastr["info"](countRegions[i]+" player(s) wispered it is "+Regions[i] );
 			if (countRegions[i]>countRegionsMax){
 				countRegionsMax=countRegions[i];
@@ -7083,7 +7083,7 @@ for (var i=0; i<countRegions.length; i++){
 for (var i=-1; i<countModes.length; i++){
 	if (countModes[i]>0){
 		if (i!=-1){
-			FinalText=FinalText + "<br>" + countModes[i]+" player(s) wispered it is"+Modes[i];
+			FinalText=FinalText + countModes[i]+" player(s) wispered it is"+Modes[i] + "<br>";
 			//toastr["info"](countModes[i]+" player(s) wispered it is "+Modes[i] );
 			if (countModes[i]>countModesMax){
 				countModesMax=countModes[i];
@@ -7099,8 +7099,8 @@ history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion +
 ModeRegionregion();
 }, 1500);
 if ($("#region").val()!=MaxRegion || $("#gamemode").val()!=MaxMode){
-FinalText=FinalText + "<br><font color='yellow'>Best choice: Region:" + MaxRegion+", Mode"+MaxMode +"</font>";
-FinalText=FinalText + "<br>Information changed!";
+FinalText=FinalText + "<font color='yellow'>Best choice: Region:" + MaxRegion+", Mode"+MaxMode +"</font><br>";
+FinalText=FinalText + "Information changed!";
 toastr["info"](FinalText).css("width", "350px");
 $("#region").val(MaxRegion);
 $("#gamemode").val(MaxMode);
