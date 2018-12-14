@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -53,6 +53,7 @@ var oldgamemode=$("#gamemode");
 //privateservutil();
 
 var currentIP = "0.0.0.0:0";
+var currentIPopened;
 var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
@@ -704,7 +705,11 @@ function adres(info, thismode, thisregion) {
 				}				
 				else {
 					region=thisregion;
-				}						
+				}					
+						if (currentIPopened==true){							
+						history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
+						return currentIPopened=false;
+						}
 						if (thismode!=null && thisregion!=null){							
 						history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
 						//history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + $('#region').val() + "&?m=" + realmode);
@@ -842,7 +847,7 @@ currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
         }		
 
     }, //5000
-    8000); //8000
+    9000); //8000
 }
 function onhashchange(){return false}
 function LMminimapTextAct(){
@@ -6965,6 +6970,7 @@ function joinSIPonstart3(){
 function joinSIPonstart1(){
 			realmodereturnfromStart();
 			$("#server-token").val(getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", ""));
+			currentIPopened=true;
 			$("#server-join").click();	
 			//$("#server").val(searchSip);
 			//$("#connect2").click();			
