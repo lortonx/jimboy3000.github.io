@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.091 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -819,8 +819,9 @@ function LMserverbox(){
 	
 }
 function urlIpWhenOpened(){
-	currentIP = "live-arena-"+$("#server-token").val()+".agar.io";
+	
 setTimeout(function() {
+currentIP = "live-arena-"+$("#server-token").val()+".agar.io";	
         if (searchSip != null && privateSrv==null) {
             if (region == null) {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
@@ -841,7 +842,7 @@ setTimeout(function() {
         }		
 
     }, //5000
-    8000); //9000
+    8000); //8000
 }
 function onhashchange(){return false}
 function LMminimapTextAct(){
