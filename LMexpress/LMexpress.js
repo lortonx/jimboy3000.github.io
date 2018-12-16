@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.099 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -686,7 +686,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 */
 		
 function adres(info, thismode, thisregion) {
-	var thismode, thisregion;
+	var info, thismode, thisregion;
 if (thismode==null || thisregion==null){
 	joinSERVERfindinfo();
 }
@@ -725,6 +725,8 @@ if (thismode==null || thisregion==null){
 					   }
                     }
                     else if (realmode == ":party") {
+				window.history.pushState(null, null, window.location.pathname);
+                $("#server").val("#" + window.location.href.replace('http://agar.io/#',''));						
                     }
 				}
 				else if (privateSrv!=null) {				
@@ -735,7 +737,7 @@ if (thismode==null || thisregion==null){
 	}
 	else {
             setTimeout(function() {
-//				if (info!="noinfo"){
+//				if (info!="noinfo"){                     
 				window.history.pushState(null, null, window.location.pathname);
                 $("#server").val("#" + window.location.href.replace('http://agar.io/#',''));
 //				}			
@@ -6888,30 +6890,30 @@ preventcanvasimagecrash();
 
 
 
-core.disconnect= function () {adres($('#gamemode').val(),$('#region').val());}
+core.disconnect= function () {adres(null,$('#gamemode').val(),$('#region').val());}
         $('#server-reconnect').click(function() {
             setTimeout(function() {
-			adres($('#gamemode').val(),$('#region').val());			
+			adres(null,$('#gamemode').val(),$('#region').val());			
                 $("#server").val(currentIP);
             }, 100);
         });
 
 		$("#gamemode").change(function () {
             setTimeout(function() {
-			adres($('#gamemode').val(),$('#region').val());		
+			adres(null,$('#gamemode').val(),$('#region').val());		
                 $("#server").val(currentIP);
             }, 100);
         });
 		$("#region").change(function () {
             setTimeout(function() {
-			adres($('#gamemode').val(),$('#region').val());			
+			adres(null,$('#gamemode').val(),$('#region').val());			
                 $("#server").val(currentIP);
             }, 100);
         });
 
-        $('#server-join').click(function() {adres(null,null);});
+        $('#server-join').click(function() {adres(null,null,null);});
 		
-	    $('#server-connect').click(function() {adres(null,null);});	
+	    $('#server-connect').click(function() {adres(null,null,null);});	
 
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
