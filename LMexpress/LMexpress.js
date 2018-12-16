@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -7106,7 +7106,8 @@ FinalText=FinalText + "Information changed!";
 toastr["info"](FinalText).css("width", "350px");
 $("#region").val(MaxRegion);
 $("#gamemode").val(MaxMode);
-
+master.region=$("#region").val();
+master.gamemode=$("#gamemode").val();
 //adres();
 }
 }
