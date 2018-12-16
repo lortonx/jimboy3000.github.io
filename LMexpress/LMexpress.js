@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "87"; // the version 1.1-> 1.11
+var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -370,6 +370,16 @@ var stylesLegendModConsole2 = [
 //    , 'font-weight: bold'
 ].join(';');
 
+
+var $head = $("head");
+var $headlinklast = $head.find("link[rel='stylesheet']:last");
+var linkElement = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css' type='text/css' media='screen'>";
+if ($headlinklast.length){
+   $headlinklast.after(linkElement);
+}
+else {
+   $head.append(linkElement);
+}
 
 if (realmode == "") {modebetter2 = ":ffa";} 
 else {modebetter2 = realmode;}
@@ -5561,11 +5571,10 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}
-					else{appendLog2("<span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);}
+					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span><span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}
+					else{appendLog2("<span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span><span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);}
 					showonceusers3++;
-					showonceusers3returner(showonceusers3);
-					//console.log(data[player]);				
+					showonceusers3returner(showonceusers3);	
     			}
     			else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
 					if ($("#searchInput").val().length>=4){
@@ -5584,8 +5593,8 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + "</span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
-					else{appendLog2("<span id='playerinfo'>" + temporaryserver3.trim() + "</span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2);}
+					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + "<span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
+					else{appendLog2("<span id='playerinfo'>" + temporaryserver3.trim() + "<span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
 					//console.log(data[player]);				
