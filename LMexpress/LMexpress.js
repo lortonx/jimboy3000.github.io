@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -5568,6 +5568,7 @@ client2 = {
 					//console.log(data[player]);				
     			}
     			else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
+					if ($("#searchInput").val().length>=4){
 					if (showonceusers2==0){
 					showonceusers2++;
 					if (ifcalled==null){
@@ -5588,7 +5589,8 @@ client2 = {
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
 					//console.log(data[player]);				
-    			}									
+					}
+				}									
 				}
   			}
 		
