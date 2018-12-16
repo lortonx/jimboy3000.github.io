@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.098 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.099 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -686,7 +686,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 */
 		
 function adres(info, thismode, thisregion) {
-	var info, thismode, thisregion;
+	var thismode, thisregion;
 if (thismode==null || thisregion==null){
 	joinSERVERfindinfo();
 }
@@ -6888,30 +6888,30 @@ preventcanvasimagecrash();
 
 
 
-core.disconnect= function () {adres(null,$('#gamemode').val(),$('#region').val());}
+core.disconnect= function () {adres($('#gamemode').val(),$('#region').val());}
         $('#server-reconnect').click(function() {
             setTimeout(function() {
-			adres(null,$('#gamemode').val(),$('#region').val());			
+			adres($('#gamemode').val(),$('#region').val());			
                 $("#server").val(currentIP);
             }, 100);
         });
 
 		$("#gamemode").change(function () {
             setTimeout(function() {
-			adres(null,$('#gamemode').val(),$('#region').val());		
+			adres($('#gamemode').val(),$('#region').val());		
                 $("#server").val(currentIP);
             }, 100);
         });
 		$("#region").change(function () {
             setTimeout(function() {
-			adres(null,$('#gamemode').val(),$('#region').val());			
+			adres($('#gamemode').val(),$('#region').val());			
                 $("#server").val(currentIP);
             }, 100);
         });
 
-        $('#server-join').click(function() {adres(null,null,null);});
+        $('#server-join').click(function() {adres(null,null);});
 		
-	    $('#server-connect').click(function() {adres(null,null,null);});	
+	    $('#server-connect').click(function() {adres(null,null);});	
 
 			
         console.group('%cLegend express%c  %chttp://www.legendmod.ml',stylesLegendModConsole1, 'font-size: 48px; background: url(https://jimboy3100.github.io/banners/icon48.png) no-repeat' , stylesLegendModConsole1);
