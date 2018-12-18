@@ -1,8 +1,7 @@
 /**************
- * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-
 var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
 /*
@@ -5685,7 +5684,7 @@ preventcanvasimagecrash();
 
         $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;">'+
 			'<i class="fa fa-search retro"></i>  '+
-			'<select id="regioncheck" class="form-control main-color note" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">'+
+			'<select id="regioncheck" class="form-control main-color note" onchange="getInfo2();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">'+
          '<option style="background:'+legbgcolor+'" value="US-Atlanta" data-itr="page_region_north_america">North America</option>'+
          '<option style="background:'+legbgcolor+'" value="BR-Brazil" data-itr="page_region_south_america">South America</option>'+
 		 '<option style="background:'+legbgcolor+'"  value="EU-London" data-itr="page_region_europe">Europe</option>'+
@@ -7167,5 +7166,41 @@ function ytFrame(){
                 }
             });
         }
-}, 500);		
+}, 1500);		
 }
+
+function getInfo2() {
+	var region2search= $("#regioncheck")val();
+	var gamemode2search= $("#gamemodecheck")val();
+    $.ajax({
+        type: "GET",
+        url: "https://agarlist.alien.moe/graphql?query={serverList(length:5,region:%20%22"+region2search+"%22,mode:%22"+gamemode2search+"%22)%20{%20addr,%20lastChecked%20}}",
+        datatype: "json",
+        success: function(info) {
+            //$("#currentRegion").html($('#region').val());
+			servers=info.data.serverList;
+			for (var player = 0; player < servers.length; player++) {
+				console.log(servers[player].addr);
+				var lastchecked=servers[player].lastChecked;
+				console.log(servers[player].lastChecked);
+				var hourschecked = new Date(Date.now()-lastchecked).getHours()-2;
+				var minuteschecked = new Date(Date.now()-lastchecked).getMinutes();
+				var secondachecked = new Date(Date.now()-lastchecked).getSeconds();
+				var resulttime;				
+				if (hourschecked==0){
+					if (minuteschecked==0){
+							resulttime=("Seconds: "+ secondachecked + " ago");
+					}
+					else{
+						resulttime=("Minutes: "+ minuteschecked + " Seconds: "+ secondachecked + " ago");
+					}
+				}
+				else{
+					resulttime=("Hours: " + hourschecked + " Minutes: "+ minuteschecked + " Seconds: "+ secondachecked + " ago");
+				}
+				console.log(resulttime);				
+			}
+
+        }
+    });
+}	
