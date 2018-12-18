@@ -5929,22 +5929,7 @@ preventcanvasimagecrash();
         //							'<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>Auto Youtube On</button></div>');
         //	$('#music').append(savemusic+'</div>');						
 
-
-        if (typeof YT !== 'undefined') {
-            musicPlayer = new YT.Player('musicFrame', {
-                events: {
-                    'onStateChange': function(state) {
-                        if (state.data == 1) {
-                            $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
-                            $("#playerBtn").attr('data-original-title', Premadeletter60).tooltip('fixTitle');
-                        } else {
-                            $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
-                            $("#playerBtn").attr('data-original-title', Premadeletter13).tooltip('fixTitle');
-                        }
-                    }
-                }
-            });
-        }
+		ytFrame();
 		
 		 $("#YoutubeBackgroundBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
@@ -7140,4 +7125,21 @@ realmode=$("#gamemode").val();
 region=$("#region").val();
 return realmode, region;
 }
-		
+	
+function ytFrame(){
+        if (typeof YT !== 'undefined') {
+            musicPlayer = new YT.Player('musicFrame', {
+                events: {
+                    'onStateChange': function(state) {
+                        if (state.data == 1) {
+                            $("#playerI").removeClass("fa-play-circle").addClass("fa-pause-circle");
+                            $("#playerBtn").attr('data-original-title', Premadeletter60).tooltip('fixTitle');
+                        } else {
+                            $("#playerI").removeClass("fa-pause-circle").addClass("fa-play-circle");
+                            $("#playerBtn").attr('data-original-title', Premadeletter13).tooltip('fixTitle');
+                        }
+                    }
+                }
+            });
+        }	
+}
