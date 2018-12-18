@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "87"; // the version 1.1-> 1.11
+var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3369,7 +3369,7 @@ function getInfo() {
         url: "https://webbouncer-live-v6-0.agario.miniclippt.com/info",
         datatype: "json",
         success: function(info) {
-            $("#currentRegion").html($('#region').val());
+            //$("#currentRegion").html($('#region').val());
             var regions = info.regions;
             var currentRegion;
             for (var key in regions) {
@@ -5682,7 +5682,29 @@ preventcanvasimagecrash();
 
         $("#overlays").css("z-index", 100);
 
-        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 24px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;"><i class="fa fa-search retro"></i><span id="notesRegion">Region: </span><span id="currentRegion" data-toggle="tooltip" data-placement="top" data-original-title="The region you are searching"></span></p><p style="float: right;margin-right: 225px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p><p style="margin-left: 245px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
+        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;">'+
+			'<i class="fa fa-search retro"></i>  '+
+			'<select id="regioncheck" class="form-control main-color note" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">'+
+         '<option style="background:'+legbgcolor+'" value="US-Atlanta" data-itr="page_region_north_america">North America</option>'+
+         '<option style="background:'+legbgcolor+'" value="BR-Brazil" data-itr="page_region_south_america">South America</option>'+
+		 '<option style="background:'+legbgcolor+'"  value="EU-London" data-itr="page_region_europe">Europe</option>'+
+         '<option style="background:'+legbgcolor+'"  value="RU-Russia" data-itr="page_region_russia">Russia</option>'+
+         '<option style="background:'+legbgcolor+'" value="TK-Turkey" data-itr="page_region_turkey">Turkey</option>'+
+         '<option style="background:'+legbgcolor+'"  value="JP-Tokyo" data-itr="page_region_east_asia">East Asia</option>'+
+         '<option style="background:'+legbgcolor+'"  value="CN-China" data-itr="page_region_china">China </option>'+
+         '<option style="background:'+legbgcolor+'"  value="SG-Singapore" data-itr="page_region_oceania">Oceania</option></select>'+			
+		
+        '<select id="gamemodecheck" class="form-control main-color note" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">'+
+         '<option style="background:'+legbgcolor+'" value=":ffa" data-itr="page_gamemode_ffa">FFA</option>'+	
+         '<option style="background:'+legbgcolor+'" value=":battleroyale" data-itr="page_gamemode_battle_royale">Battle Royal</option>'+	
+         '<option style="background:'+legbgcolor+'" value=":teams" data-itr="page_gamemode_teams">Teams</option>'+	
+         '<option style="background:'+legbgcolor+'" value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>'+	
+         '<option style="background:'+legbgcolor+'" value=":party" data-itr="page_party">Party</option>'+	
+        '</select>'+	
+		'</p>'+
+			
+			'<p style="float: right; margin-right: 10px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p>'+
+			'<p style="float: right;margin-right: 100px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
             '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
             '<div id="" style="margin-top: 10px;">' +
             '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="pointer-events: auto;margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
@@ -5690,6 +5712,7 @@ preventcanvasimagecrash();
             '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="pointer-events: auto;color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><i class="fa fa-window-close fa-2"></i></button>' +
             '</div></div>'
         );
+		
 		$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
             '</div>');
         $("#clantag").attr('placeholder', 'Password').tooltip({
@@ -7127,6 +7150,7 @@ return realmode, region;
 }
 	
 function ytFrame(){
+	setTimeout(function() {
         if (typeof YT !== 'undefined') {
             musicPlayer = new YT.Player('musicFrame', {
                 events: {
@@ -7141,5 +7165,6 @@ function ytFrame(){
                     }
                 }
             });
-        }	
+        }
+}, 500);		
 }
