@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -5132,6 +5132,7 @@ function loginsfbGpl2(){
 					$("#UserProfilePic>img").attr('src','https://jimboy3100.github.io/banners/profilepic_guest.png');	
                 });		
 		$(".btn.btn-primary.btn-login.btn-fb").click(function() {
+		toastr["warning"]("<b>[SERVER]:</b> Facebook login info will be reflected after restart");		
      setTimeout(function() {	
 	 doFB2();
 	 }, 5000);
