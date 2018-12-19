@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -3339,10 +3339,20 @@ function appendLog4(message, message2) {
 function connectto(message2){
 				$('#server-token').val(message2);
 				$('#server-join').click();
+        setTimeout(function() {
+			if ($('#server-token').val()!=$('#searchInput').val()){
+				toastr["error"]("Server not available!");
+			}
+			}, 1500);				
 }
 function connectto1a(message2){
-				$('#server-ws').val(message2);
+				$('#server-ws').val("wss://" + message2);
 				$('#server-connect').click();
+        setTimeout(function() {
+			if ($('#server-token').val()!=$('#searchInput').val()){
+				toastr["error"]("Server not available!");
+			}
+			}, 1500);					
 }
 function connectto2(message3){
 			$('#region').val(message3);		
@@ -6296,6 +6306,8 @@ preventcanvasimagecrash();
         $("#searchShortcut").click(function() {
             hideMenu();
 //			showMenu();
+			$("#regioncheck").val($("#region").val());
+			$("#gamemodecheck").val($("#gamemode").val());
             showSearchHud();
             $("#searchInput").focus().select();
         });		
@@ -7217,9 +7229,15 @@ function getInfo2() {
 					resulttime=(hourschecked +" hours: " + minuteschecked + " minutes "+ secondachecked + " seconds " + " ago");
 				}
 				if (hourschecked==0){
-//				appendLog(servers[player].addr+ " " +resulttime);	
+				if (servers[player].addr.indexOf("ip-") >= 0) { //if wss
 				appendLog4("<span id='playerinfo'>" + resulttime + "</span> (<span class='main-color'><span id='tokeninfo'>" + servers[player].addr + "</span></span>)", servers[player].addr);
+				}
+				else { //if wss
+				servers[player].addr=servers[player].addr.replace("live-arena-", "").replace(".agar.io", "").replace(":80", "");
+				appendLog2("<span id='playerinfo'>" + resulttime + "</span> (<span class='main-color'><span id='tokeninfo'>" + servers[player].addr + "</span></span>)", servers[player].addr);
 				}				
+				}	
+				
 			}
 
         }
