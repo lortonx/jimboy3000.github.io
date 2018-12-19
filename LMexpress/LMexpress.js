@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "88"; // the version 1.1-> 1.11
@@ -7171,8 +7171,8 @@ function ytFrame(){
 }
 
 function getInfo2() {
-	var region2search= $("#regioncheck")val();
-	var gamemode2search= $("#gamemodecheck")val();
+	var region2search= $("#regioncheck").val();
+	var gamemode2search= $("#gamemodecheck").val();
     $.ajax({
         type: "GET",
         url: "https://agarlist.alien.moe/graphql?query={serverList(length:5,region:%20%22"+region2search+"%22,mode:%22"+gamemode2search+"%22)%20{%20addr,%20lastChecked%20}}",
