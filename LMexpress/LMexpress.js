@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "87"; // the version 1.1-> 1.11
@@ -3287,7 +3287,7 @@ function hideSearchHud() {
     $("#searchLog").fadeOut();
 }
 function appendLog(message) {
-	$("#logTitle").text("Leaderboard history");
+	//$("#logTitle").text("Leaderboard history");
     var region = $("#region").val();
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
         '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
@@ -3308,7 +3308,7 @@ function appendLog2(message, message2) {
     bumpLog();
 }*/
 function appendLog2(message, message2) {
-	$("#logTitle").text("Legend mod users (click and join)");
+	//$("#logTitle").text("Legend mod users (click and join)");
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
 //        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a onclick="connectto(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
@@ -3318,7 +3318,7 @@ function appendLog2(message, message2) {
 }
 
 function appendLog3(message, message2, message3, message4) {
-	$("#logTitle").text("Legend mod users (click and join)");
+	//$("#logTitle").text("Legend mod users (click and join)");
 //	console.log(message3);
 //	console.log(message4);
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
@@ -3328,7 +3328,7 @@ function appendLog3(message, message2, message3, message4) {
     bumpLog();
 }
 function appendLog4(message, message2) {
-	$("#logTitle").text("Alive Servers");
+	//$("#logTitle").text("Alive Servers");
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
 //        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a onclick="connectto1a(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
@@ -6024,7 +6024,7 @@ preventcanvasimagecrash();
 		$("#import-settings-btn").attr('class', 'btn btn-success');
 //		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
 
-        $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Leaderboard history</h5>' +
+        $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Results</h5>' +
             '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
             '</div></div>');
 
