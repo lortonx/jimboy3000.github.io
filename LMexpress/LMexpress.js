@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "87"; // the version 1.1-> 1.11
+var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -988,8 +988,10 @@ function returnfromstartfalse(){
 return fromstart=false;	
 }
 
-function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
+function searchIPHandler(searchStr) {	//VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
     //	if (messageone==0){toastr["info"]("Initializing Communication, please wait...").css("width", "250px");}
+	region=$("#regioncheck").val(); //...
+	realmode=$("#gamemodecheck").val(); //...
     $("#Backtomenu").hide();
     hideMenu();
     showSearchHud();
@@ -1022,7 +1024,7 @@ function findIP(searchIP) {
         if (realmode == ":party") {
             $('#gamemode option[value=":party"]').prop('selected', 'selected').change();
         }
-        if (realmode == "") {
+        if (realmode == ":ffa") {
             $('#gamemode option[value=""]').prop('selected', 'selected').change();
         }
         if (realmode == ":teams") {
@@ -3296,6 +3298,7 @@ function appendLog(message) {
     $("#log p").first().show(100);
     bumpLog();
 }
+
 /*
 function appendLog2(message, message2) {
 	$("#logTitle").text("Legend mod users (click and join)");
@@ -3332,6 +3335,22 @@ function appendLog4(message, message2) {
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
 //        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
         '<a onclick="connectto1a(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
+
+    $("#log p").first().show(100);
+    bumpLog();
+}
+function appendLogGraphql() {
+    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
+        '<span class="main-color">Graphql</span> &nbsp;' +
+        '<a href="https://github.com/vbalien/agarlist/tree/master/server" target="_blank" class="logEntry" style="color: lightgrey; font-size: 14px;">by 엘련</a></p>');
+
+    $("#log p").first().show(100);
+    bumpLog();
+}
+function appendLogGraphMain() {
+    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
+        '<span class="main-color">Main Graph</span> &nbsp;' +
+        '<a href="javascript:void(0);" target="_blank" class="logEntry" style="color: lightgrey; font-size: 14px;">by Snez</a></p>');
 
     $("#log p").first().show(100);
     bumpLog();
@@ -5622,10 +5641,12 @@ client2 = {
 					else{appendLog2("<span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
-					//console.log(data[player]);				
+					//console.log(data[player]);	
+										
 					}
 				}									
 				}
+				
   			}
 		
 		}
