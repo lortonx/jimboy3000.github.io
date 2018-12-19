@@ -2,7 +2,7 @@
  * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "88"; // the version 1.1-> 1.11
+var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3316,6 +3316,7 @@ function appendLog2(message, message2) {
     $("#log p").first().show(100);
     bumpLog();
 }
+
 function appendLog3(message, message2, message3, message4) {
 	$("#logTitle").text("Legend mod users (click and join)");
 //	console.log(message3);
@@ -3326,11 +3327,23 @@ function appendLog3(message, message2, message3, message4) {
     $("#log p").first().show(100);
     bumpLog();
 }
+function appendLog4(message, message2) {
+	$("#logTitle").text("Alive Servers");
+    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
+//        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
+        '<a onclick="connectto1a(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
+
+    $("#log p").first().show(100);
+    bumpLog();
+}
 function connectto(message2){
 				$('#server-token').val(message2);
 				$('#server-join').click();
 }
-
+function connectto1a(message2){
+				$('#server-ws').val(message2);
+				$('#server-connect').click();
+}
 function connectto2(message3){
 			$('#region').val(message3);		
 }
@@ -7171,8 +7184,12 @@ function ytFrame(){
 }
 
 function getInfo2() {
+	//console.log("hi");
+	//$("#logTitle").text("Alive Servers");
+	$('#log').html('');
 	var region2search= $("#regioncheck").val();
 	var gamemode2search= $("#gamemodecheck").val();
+	gamemode2search=gamemode2search.replace(':','');
     $.ajax({
         type: "GET",
         url: "https://agarlist.alien.moe/graphql?query={serverList(length:5,region:%20%22"+region2search+"%22,mode:%22"+gamemode2search+"%22)%20{%20addr,%20lastChecked%20}}",
@@ -7181,25 +7198,28 @@ function getInfo2() {
             //$("#currentRegion").html($('#region').val());
 			servers=info.data.serverList;
 			for (var player = 0; player < servers.length; player++) {
-				console.log(servers[player].addr);
+				//console.log(servers[player].addr);
 				var lastchecked=servers[player].lastChecked;
-				console.log(servers[player].lastChecked);
+				//console.log(lastchecked);
 				var hourschecked = new Date(Date.now()-lastchecked).getHours()-2;
 				var minuteschecked = new Date(Date.now()-lastchecked).getMinutes();
 				var secondachecked = new Date(Date.now()-lastchecked).getSeconds();
 				var resulttime;				
 				if (hourschecked==0){
 					if (minuteschecked==0){
-							resulttime=("Seconds: "+ secondachecked + " ago");
+							resulttime=(secondachecked + " seconds " + " ago");
 					}
 					else{
-						resulttime=("Minutes: "+ minuteschecked + " Seconds: "+ secondachecked + " ago");
+						resulttime=(minuteschecked + " minutes "+ secondachecked + " seconds " + " ago");
 					}
 				}
 				else{
-					resulttime=("Hours: " + hourschecked + " Minutes: "+ minuteschecked + " Seconds: "+ secondachecked + " ago");
+					resulttime=(hourschecked +" hours: " + minuteschecked + " minutes "+ secondachecked + " seconds " + " ago");
 				}
-				console.log(resulttime);				
+				if (hourschecked==0){
+//				appendLog(servers[player].addr+ " " +resulttime);	
+				appendLog4("<span id='playerinfo'>" + resulttime + "</span> (<span class='main-color'><span id='tokeninfo'>" + servers[player].addr + "</span></span>)", servers[player].addr);
+				}				
 			}
 
         }
