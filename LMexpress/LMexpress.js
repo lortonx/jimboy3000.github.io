@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "88"; // the version 1.1-> 1.11
@@ -326,6 +326,7 @@ var Premadeletter119 = "Report as Fake (change Skin)";
 var Premadeletter120 = "Enter your EXACT name of the player"; 
 var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
 var Premadeletter122 = "to permanent ban from usage of this extension"; 
+
 
 var showonceusers3=0;
 var client2;
@@ -5694,7 +5695,7 @@ preventcanvasimagecrash();
          '<option style="background:'+legbgcolor+'"  value="CN-China" data-itr="page_region_china">China </option>'+
          '<option style="background:'+legbgcolor+'"  value="SG-Singapore" data-itr="page_region_oceania">Oceania</option></select>'+			
 		
-        '<select id="gamemodecheck" class="form-control main-color note" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">'+
+        '<select id="gamemodecheck" class="form-control main-color note" onchange="getInfo2();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">'+
          '<option style="background:'+legbgcolor+'" value=":ffa" data-itr="page_gamemode_ffa">FFA</option>'+	
          '<option style="background:'+legbgcolor+'" value=":battleroyale" data-itr="page_gamemode_battle_royale">Battle Royal</option>'+	
          '<option style="background:'+legbgcolor+'" value=":teams" data-itr="page_gamemode_teams">Teams</option>'+	
