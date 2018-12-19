@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.010 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.011 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "88"; // the version 1.1-> 1.11
@@ -3432,6 +3432,7 @@ function getInfo() {
         }
     });
 }
+
 function LcCelebration() {
     var s = document.createElement("script");
     s.type = "text/javascript";
@@ -5729,7 +5730,7 @@ preventcanvasimagecrash();
 
         $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;">'+
 			'<i class="fa fa-search retro" onclick="getInfo2(); return false;"></i>  '+
-			'<select id="regioncheck" class="form-control main-color note" onchange="getInfo2();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">'+
+			'<select id="regioncheck" class="form-control main-color note" onchange="getInfo2();getInfo3();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">'+
          '<option style="background:'+legbgcolor+'" value="US-Atlanta" data-itr="page_region_north_america">North America</option>'+
          '<option style="background:'+legbgcolor+'" value="BR-Brazil" data-itr="page_region_south_america">South America</option>'+
 		 '<option style="background:'+legbgcolor+'"  value="EU-London" data-itr="page_region_europe">Europe</option>'+
@@ -7264,3 +7265,29 @@ function getInfo2() {
         }
     });
 }	
+function getInfo3() {
+    $.ajax({
+        type: "GET",
+        url: "https://webbouncer-live-v6-0.agario.miniclippt.com/info",
+        datatype: "json",
+        success: function(info) {
+            //$("#currentRegion").html($('#region').val());
+            var regions = info.regions;
+            var currentRegion;
+            for (var key in regions) {
+                if (key == $("#regioncheck").val()) {
+                    currentRegion = regions[key];
+                    break;
+                }
+            }
+            //console.log(info);
+            //console.log(currentRegion);
+            if (currentRegion != undefined) {
+                $("#numPlayers").html(kFormatter(currentRegion.numPlayers));
+                $("#numServers").html(currentRegion.numRealms);
+                $("#pps").html(Math.round(currentRegion.avgPlayersPerRealm));
+            }
+            $("#totalPlayers").html(kFormatter(info.totals.numPlayers));
+        }
+    });
+}
