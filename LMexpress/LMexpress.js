@@ -5728,8 +5728,8 @@ preventcanvasimagecrash();
 
         $("#overlays").css("z-index", 100);
 
-        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p style="float: left;margin-left: 10px;">'+
-			'<i id="regionmodecheck" class="fa fa-search retro" onclick="getInfo2(); return false;"></i>  '+
+        $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p id="regionmodecheck" style="float: left;margin-left: 10px;">'+
+			'<i class="fa fa-search retro" onclick="getInfo2(); return false;"></i>  '+
 			'<select id="regioncheck" class="form-control main-color note" onchange="getInfo2();getInfo3();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:'+legbgcolor+'"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">'+
          '<option style="background:'+legbgcolor+'" value="US-Atlanta" data-itr="page_region_north_america">North America</option>'+
          '<option style="background:'+legbgcolor+'" value="BR-Brazil" data-itr="page_region_south_america">South America</option>'+
