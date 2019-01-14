@@ -17,7 +17,6 @@
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
 // @grant        GM_deleteValue
-// @connect      jimboy3100.github.io
 // @connect      jimboy3000.github.io
 // ==/UserScript==
 
