@@ -2,7 +2,7 @@
  * Legend express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "02"; // the version 1.1-> 1.11
+var semimodVersion = "03"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -71,12 +71,12 @@ var minimapbckimg = "";
 var leadbimg = "";
 var teambimg = "";
 var canvasbimg = "";
-var pic1urlimg = "http://i.imgur.com/RVBi3T1.gif";
-var pic2urlimg = "http://i.imgur.com/p2T29QE.gif";
-var pic3urlimg = "http://i.imgur.com/EucIfYY.gif";
-var pic4urlimg = "http://i.imgur.com/KOoBDaK.gif";
-var pic5urlimg = "http://i.imgur.com/CS03xWv.gif";
-var pic6urlimg = "http://i.imgur.com/tfMUu2J.gif";
+var pic1urlimg = "https://i.imgur.com/RVBi3T1.gif";
+var pic2urlimg = "https://i.imgur.com/p2T29QE.gif";
+var pic3urlimg = "https://i.imgur.com/EucIfYY.gif";
+var pic4urlimg = "https://i.imgur.com/KOoBDaK.gif";
+var pic5urlimg = "https://i.imgur.com/CS03xWv.gif";
+var pic6urlimg = "https://i.imgur.com/tfMUu2J.gif";
 var pic1dataimg = "Bad Choice!";
 var pic2dataimg = "Why?";
 var pic3dataimg = "Yow!!";
@@ -737,7 +737,7 @@ if (thismode==null || thisregion==null){
                     }
                     else if (realmode == ":party") {
 				window.history.pushState(null, null, window.location.pathname);
-                $("#server").val("#" + window.location.href.replace('http://agar.io/#',''));						
+                $("#server").val("#" + window.location.href.replace('https://agar.io/#',''));						
                     }
 				}
 				else if (privateSrv!=null) {				
@@ -750,7 +750,7 @@ if (thismode==null || thisregion==null){
             setTimeout(function() {
 //				if (info!="noinfo"){                     
 				window.history.pushState(null, null, window.location.pathname);
-                $("#server").val("#" + window.location.href.replace('http://agar.io/#',''));
+                $("#server").val("#" + window.location.href.replace('https://agar.io/#',''));
 //				}			
             }, 2000);
         }
@@ -960,8 +960,8 @@ function searchHandler(searchStr) {
 function searchTKHandler(searchStr) {
     searchStr = searchStr.trim();
 
-    if (searchStr.startsWith("http://agar.io/#")) {		
-        joinpartyfromconnect(searchStr.replace("http://agar.io/#", ""));
+    if (searchStr.startsWith("https://agar.io/#")) {		
+        joinpartyfromconnect(searchStr.replace("https://agar.io/#", ""));
 		realmodereturn();
 		
     } else if (searchStr.startsWith("agar.io/#")) {
@@ -1003,8 +1003,8 @@ function searchIPHandler(searchStr) {	//VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
         findIP(searchStr.replace("wss://", ""));
     } else if (isValidIpAndPort(searchStr.replace("agar.io/?search=wss://", ""))) {
         findIP(searchStr.replace("agar.io/?search=wss://", ""));
-    } else if (isValidIpAndPort(searchStr.replace("http://agar.io/?search=wss://", ""))) {
-        findIP(searchStr.replace("http://agar.io/?search=wss://", ""));
+    } else if (isValidIpAndPort(searchStr.replace("https://agar.io/?search=wss://", ""))) {
+        findIP(searchStr.replace("https://agar.io/?search=wss://", ""));
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
             $('#region option[value="'+region+'"]').prop('selected', 'selected').change();
@@ -1715,7 +1715,7 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
     if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
-        LegendJSON.legendSettings.initialMusicUrl = "http://www.youtube.com/watch?v=L7klPYKTx64"
+        LegendJSON.legendSettings.initialMusicUrl = "https://www.youtube.com/watch?v=L7klPYKTx64"
     };
     LegendJSON.legendSettings.lastIP = localStorage.getItem("lastIP");
     if (LegendJSON.legendSettings.lastIP == "null" || LegendJSON.legendSettings.lastIP==null) {
@@ -2053,8 +2053,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				}				
 			MSGCOMMANDS=MSGCOMMANDS.split("[url]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/url]')[0];	
-				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
-				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				if (MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
+				MSGCOMMANDS="https://"+MSGCOMMANDS;	
 				}
 			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
@@ -2071,10 +2071,10 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				}		
 			MSGCOMMANDS=MSGCOMMANDS.split("[yut]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/yut]')[0];	
-				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
-				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				if (MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTPS://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {	
+				MSGCOMMANDS="https://"+MSGCOMMANDS;	
 				}
-			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter64 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="http://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter64 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <iframe type="text/html" width="100%" height="auto" src="https://www.youtube.com/embed/' + getParameterByName("v", MSGCOMMANDS) + '?autoplay=1&amp;vq=tiny" frameborder="0"></iframe></br> <button id="acceptYoutubeEmb" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="margin-top: -10px; width: 100%">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "300px");
@@ -2094,8 +2094,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				}		
 			MSGCOMMANDS=MSGCOMMANDS.split("[skype]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/skype]')[0];	
-				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
-				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				if (MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="https://"+MSGCOMMANDS;	
 				}
 			if (MSGCOMMANDS.includes("join.skype.com/")){	
 			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/iconskype.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter65 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
@@ -2114,8 +2114,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				}		
 			MSGCOMMANDS=MSGCOMMANDS.split("[discord]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/discord]')[0];	
-				if (MSGCOMMANDS.includes("http://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTP://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
-				MSGCOMMANDS="http://"+MSGCOMMANDS;	
+				if (MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("https://")==false&&MSGCOMMANDS.includes("HTTPS://")==false&&MSGCOMMANDS.includes("HTTPS://")==false) {
+				MSGCOMMANDS="https://"+MSGCOMMANDS;	
 				}
 				if (MSGCOMMANDS.includes("discordapp.com/invite")||MSGCOMMANDS.includes("discord.gg")){
 			toastr["warning"]('<img src="https://jimboy3100.github.io/banners/icondiscord.png" style="float:left;width:100px;height:100px;">'+Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter66 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
@@ -2215,7 +2215,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		        }
 
 		    }			
-		    else if (MSGCOMMANDS.includes("http://agar.io/sip=151.80.91.73:1511")) {	
+		    else if (MSGCOMMANDS.includes("https://agar.io/sip=151.80.91.73:1511")) {	
 		        commandMsg = getParameterByName("com", MSGCOMMANDS);
 		        otherMsg = getParameterByName("do", MSGCOMMANDS);
 		        $(".message-text").remove();
@@ -2317,8 +2317,8 @@ function MsgServCommandsreturner(){
 			MSGCOMMANDS3=MSGCOMMANDS;
 			MSGCOMMANDS2=MSGCOMMANDS2.split("[srv]").pop();
 			MSGCOMMANDS2=MSGCOMMANDS2.split('[/srv]')[0];	
-			if (MSGCOMMANDS2.includes("http://")==false&&MSGCOMMANDS2.includes("https://")==false&&MSGCOMMANDS2.includes("HTTP://")==false&&MSGCOMMANDS2.includes("HTTPS://")==false) {
-			MSGCOMMANDS2="http://"+MSGCOMMANDS2;	
+			if (MSGCOMMANDS2.includes("https://")==false&&MSGCOMMANDS2.includes("https://")==false&&MSGCOMMANDS2.includes("HTTP://")==false&&MSGCOMMANDS2.includes("HTTPS://")==false) {
+			MSGCOMMANDS2="https://"+MSGCOMMANDS2;	
 			}				
 			if (MSGCOMMANDS2.includes("agar.io/#")){ //if sent server is Party mode
 			MSGCOMMANDS2a=MSGCOMMANDS2;
@@ -4722,26 +4722,26 @@ function changeModLanguage() {
 function triggerLMbtns() {
 			$('.btn').css("text-transform", "capitalize");
             PanelImageSrc = $("#menuBg").val();
-            if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+            if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                 $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
             }
             $("#copyLBBtn").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
                 }
             });			
             $("#dropDown>#copyLBBtn").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
                 }
             });			
             $("#copySIPandPass").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
                 }
             });			
             $("#copySIPPassLB").blur(function() {
-                if (PanelImageSrc != "" || PanelImageSrc != "http://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
+                if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
                     $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
                 }
             });	
@@ -5112,7 +5112,7 @@ function doGl(){
 function doFB(){
 	
 FB.api('/me', {fields: 'first_name, last_name, gender, id'}, function(fbresponse) {   
-    $("#UserProfilePic>img").attr('src','http://graph.facebook.com/' + fbresponse.id + '/picture?type=large');
+    $("#UserProfilePic>img").attr('src','https://graph.facebook.com/' + fbresponse.id + '/picture?type=large');
 //	setTimeout(function (){ 
 	$("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
 	$("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[2]]);
@@ -5840,13 +5840,13 @@ preventcanvasimagecrash();
             '<option value="5" data-itr="">Main Banner</option>' +
             '</select>' +
 
-            '<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="minimapPicture" class="form-control" placeholder="Minimap Image URL" value="" style="margin-top: 2px; display: block;" onblur="setminbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with https://... or https://..." >' +
             '<input id="minbtext" class="form-control" placeholder="Minimap Text" value="" style="margin-top: 2px; display: block;" onblur="setminbtext();">' +
-            '<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="leadbPicture" class="form-control" placeholder="Leaderboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setleadbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with https://... or https://..." >' +
             '<input id="leadbtext" class="form-control" placeholder="Leaderboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setleadbtext();">' +
-            '<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="teambPicture" class="form-control" placeholder="Teamboard Image URL" value="" style="margin-top: 2px; display: none;" onblur="setteambgname();" data-toggle="tooltip" data-placement="right"  data-original-title="Url of image starting with https://... or https://..." >' +
             '<input id="teambtext" class="form-control" placeholder="Teamboard Logo Text" value="" style="margin-top: 2px; display: none; " onblur="setteambtext();">' +
-            '<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
+            '<input id="canvasPicture" class="form-control" placeholder="Main Canvas Image URL" value="" style="margin-top: 2px; display: none;" onblur="setcanvasbgname();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with https://... or https://..." >' +
             '<input id="imgUrl" class="form-control" placeholder="Main Banner Icon URL" value="" style="margin-top: 2px; display: none; " onblur="setimgUrl();" data-toggle="tooltip" data-placement="right" data-original-title="Url of image starting with http://... or https://..." >' +
             '<input id="imgHref" class="form-control" placeholder="Main Banner Link URL" value="" style="margin-top: 2px; display: none; " onblur="setimgHref();" data-toggle="tooltip" data-placement="right" data-original-title="Url of link to redirect" >' +
             '</div>' +
@@ -5880,12 +5880,12 @@ preventcanvasimagecrash();
             '<input id="yt5data" class="form-control" placeholder="Youtube Message Text 5" value="" style="margin-top: 2px; display: none; " onblur="setyt5data();">' +
             '<input id="yt6data" class="form-control" placeholder="Youtube Message Text 6" value="" style="margin-top: 2px; display: none; " onblur="setyt6data();">' +
 
-            '<input id="pic1url" class="form-control" placeholder="Message Icon Imgur Url 1" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic2url" class="form-control" placeholder="Message Icon Imgur Url 2" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic3url" class="form-control" placeholder="Message Icon Imgur Url 3" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic4url" class="form-control" placeholder="Message Icon Imgur Url 4" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic5url" class="form-control" placeholder="Message Icon Imgur Url 5" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
-            '<input id="pic6url" class="form-control" placeholder="Message Icon Imgur Url 6" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. http://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic1url" class="form-control" placeholder="Message Icon Imgur Url 1" value="" style="margin-top: 2px; display: block;" onblur="setpic1url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. https://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic2url" class="form-control" placeholder="Message Icon Imgur Url 2" value="" style="margin-top: 2px; display: none;" onblur="setpic2url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. https://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic3url" class="form-control" placeholder="Message Icon Imgur Url 3" value="" style="margin-top: 2px; display: none;" onblur="setpic3url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. https://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic4url" class="form-control" placeholder="Message Icon Imgur Url 4" value="" style="margin-top: 2px; display: none;" onblur="setpic4url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. https://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic5url" class="form-control" placeholder="Message Icon Imgur Url 5" value="" style="margin-top: 2px; display: none;" onblur="setpic5url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. https://i.imgur.com/RVBi3T1.gif" >' +
+            '<input id="pic6url" class="form-control" placeholder="Message Icon Imgur Url 6" value="" style="margin-top: 2px; display: none;" onblur="setpic6url();" data-toggle="tooltip" data-placement="right" data-original-title="e.g. https://i.imgur.com/RVBi3T1.gif" >' +
             '<input id="yt1url" class="form-control" placeholder="Youtube Message Url 1" value="" style="margin-top: 2px; display: none;" onblur="setyt1url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
             '<input id="yt2url" class="form-control" placeholder="Youtube Message Url 2" value="" style="margin-top: 2px; display: none;" onblur="setyt2url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
             '<input id="yt3url" class="form-control" placeholder="Youtube Message Url 3" value="" style="margin-top: 2px; display: none;" onblur="setyt3url();" data-toggle="tooltip" data-placement="right" data-original-title="Url of youtube to be shown" >' +
@@ -5983,13 +5983,13 @@ preventcanvasimagecrash();
 		$('.agario-panel.radio-panel').hide();
         $('.agario-panel.ogario-yt-panel').hide();
 
-        if ($('#menuBg').val() == "http://cdn.ogario.ovh/static/img/pattern.png") {
+        if ($('#menuBg').val() == "https://cdn.ogario.ovh/static/img/pattern.png") {
             $('#menuBg').val("https://jimboy3100.github.io/pattern.png");
         }
-        if ($('#messageSound').val() == "http://cdn.ogario.ovh/static/sounds/notification_01.mp3") {
+        if ($('#messageSound').val() == "https://cdn.ogario.ovh/static/sounds/notification_01.mp3") {
             $('#messageSound').val("https://jimboy3100.github.io/notification_01.mp3");
         }
-        if ($('#commandSound').val() == "http://cdn.ogario.ovh/static/sounds/notification_02.mp3") {
+        if ($('#commandSound').val() == "https://cdn.ogario.ovh/static/sounds/notification_02.mp3") {
             $('#commandSound').val("https://jimboy3100.github.io/notification_02.mp3");
         }
         //    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
@@ -6174,41 +6174,41 @@ preventcanvasimagecrash();
 
         $("#copyIPBtn").click(function() {
             if (searchSip != null) {
-                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=wss://" + searchSip);
+                copy("https://agar.io/?r=" + region + "&m=" + realmode + "&search=wss://" + searchSip);
             } else {
-                copy("http://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=wss://" + currentIP);
+                copy("https://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=wss://" + currentIP);
             }
         });
 
         $("#copySIPBtn").click(function() {
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val();
                    // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copy(CopyTkPwLb2);					
                 } else if (realmode != ":party") {
 					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;	
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;	
 					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
 					copy(CopyTkPwLb2);
 					}
 					else{
-					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val();	
+					CopyTkPwLb2="https://agar.io/?sip=" +$("#server-token").val();	
 					copy(CopyTkPwLb2);
 					}
                 }
              else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val();
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val();
                    // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copy(CopyTkPwLb2);
                 } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;
+                    CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?r=" + $('#region').val() + "&m=" + realmode;
 					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					copy(CopyTkPwLb2);
                 }
             }
 			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					CopyTkPwLb2="https://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
 					copy(CopyTkPwLb2);					
             }	
         });	
@@ -6216,12 +6216,12 @@ preventcanvasimagecrash();
 		$("#copySIPandPass").click(function() {		
             if (searchSip != null) {
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
                    // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copy(CopyTkPwLb2);					
                 } else if (realmode != ":party") {
 //					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
 					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
 					copy(CopyTkPwLb2);
 //					}
@@ -6232,17 +6232,17 @@ preventcanvasimagecrash();
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
                    // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copy(CopyTkPwLb2);
                 } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                    CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					copy(CopyTkPwLb2);
                 }
             }
 			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					CopyTkPwLb2="https://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
 					copy(CopyTkPwLb2);					
             }	
 		});	
@@ -6250,12 +6250,12 @@ preventcanvasimagecrash();
 		$("#copySIPPassLB").click(function() {		
             if (searchSip != null) {
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
                    // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();					
                 } else if (realmode != ":party") {
 //					if (region!=null&&realmode!=null){
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;	
 					//CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
 					copy(CopyTkPwLb2);
 //					}
@@ -6266,17 +6266,17 @@ preventcanvasimagecrash();
                 }
             } else if (privateSrv==null) { //else if (searchSip != null && privateSrv==null)
                 if (realmode == ":party") {
-					CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
+					CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val();
                    // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
 					copyToClipboardAll();
                 } else if (realmode != ":party") {					
-                    CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
+                    CopyTkPwLb2="https://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					//CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
 					copyToClipboardAll();
                 }
             }
 			else if (privateSrv!=null) {
-					CopyTkPwLb2="http://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
+					CopyTkPwLb2="https://agar.io/?ip=" + privateSrv + "&?pass=" + $("#clantag").val() + "&?SERVER=PRIVATE"; 
 					copyToClipboardAll();					
             }	
 		});			
@@ -6589,75 +6589,75 @@ preventcanvasimagecrash();
         $('#menuPreset>option:nth-child(1)').text("Legend v2");
         $('#menuPreset>option:nth-child(2)').text("Legend v1");				
 		        //Legend express Cursors
-        if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
+        if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_01.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_02.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_03.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_04.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_05.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_06.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_07.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_08.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_09.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_10.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_11.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_12.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_13.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_14.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_15.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_16.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_17.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_18.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_19.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_20.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_21.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_22.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_23.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_24.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_25.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_26.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_27.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_28.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_29.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_30.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_31.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_32.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_33.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_34.cur")
-        } else if ($("#customCursor").val() == "http://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
+        } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
             $("#customCursor").val("https://jimboy3100.github.io/cursors/cursor_35.cur")
         }
         $(".cursor-box>a>img").eq(0).attr("src", "https://jimboy3100.github.io/cursors/cursor_01.cur");
@@ -7019,10 +7019,10 @@ function joinSIPonstart(){
 			joinSIPonstart2();
 			}
 			}
-			else if(url.includes('http://agar.io/#')==true){			
+			else if(url.includes('https://agar.io/#')==true){			
 			$('#gamemode').val(":party");
 			realmodereturnfromStart();
-			$("#server").val(url.replace('http://agar.io/#',''));			
+			$("#server").val(url.replace('https://agar.io/#',''));			
 			joinpartyfromconnect();			
 			}
 
