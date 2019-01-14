@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.012 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "89"; // the version 1.1-> 1.11
+var semimodVersion = "01"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -400,9 +400,9 @@ var datasent2;
 emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
-//        if (modVersion != "1.4") {	           
-//			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
-//		}	
+        if (modVersion != "1.5") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+		}	
 	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
 	universalchat();
 		$('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Agar Tool/Legend Mod</input></label>');
@@ -999,19 +999,19 @@ function searchIPHandler(searchStr) {	//VERY WEIRD FUNCTION, MOD DOESNT LOAD IF 
     searchStr = searchStr.trim();
     if (isValidIpAndPort(searchStr)) {
         findIP(searchStr);
-    } else if (isValidIpAndPort(searchStr.replace("ws://", ""))) {
-        findIP(searchStr.replace("ws://", ""));
-    } else if (isValidIpAndPort(searchStr.replace("agar.io/?search=ws://", ""))) {
-        findIP(searchStr.replace("agar.io/?search=ws://", ""));
-    } else if (isValidIpAndPort(searchStr.replace("http://agar.io/?search=ws://", ""))) {
-        findIP(searchStr.replace("http://agar.io/?search=ws://", ""));
+    } else if (isValidIpAndPort(searchStr.replace("wss://", ""))) {
+        findIP(searchStr.replace("wss://", ""));
+    } else if (isValidIpAndPort(searchStr.replace("agar.io/?search=wss://", ""))) {
+        findIP(searchStr.replace("agar.io/?search=wss://", ""));
+    } else if (isValidIpAndPort(searchStr.replace("http://agar.io/?search=wss://", ""))) {
+        findIP(searchStr.replace("http://agar.io/?search=wss://", ""));
     } else if (getParameterByName("search", searchStr)) {
         if (region) {
             $('#region option[value="'+region+'"]').prop('selected', 'selected').change();
             getInfo();
         }
         //      MC.setGameMode(mode);                  //important
-        findIP(ip.replace("ws://", ""));
+        findIP(ip.replace("wss://", ""));
     } else {
         return false;
     }
@@ -1043,7 +1043,7 @@ function findIP(searchIP) {
             var numTries = 0;
             var numAttempts = 0;
             var maxAttempts = 2;
-            toastr["success"](Premadeletter21 + " \'ws://" + searchIP + "\'...").css("width", "210px");
+            toastr["success"](Premadeletter21 + " \'wss://" + searchIP + "\'...").css("width", "210px");
             numTries++;
             if (currentIP == searchIP) {
 				$("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
@@ -2596,7 +2596,7 @@ var legbgcolor = $("#menuPanelColor").val();
         stat.tag = $('#clantag').val();
         stat.nick = $('#nick').val();
         stat.token = $('#server-token').val();
-        stat.ws = 'ws://live-arena-'+ stat.token +'.agar.io:80';
+        stat.ws = 'wss://live-arena-'+ stat.token +'.agar.io:80';
         my.connect();
         stat.update_timerid = setInterval(my.update, cfg.update_interval);
     };
@@ -5359,7 +5359,7 @@ var elements = {
 };
 
 var socket = {
-    server: "ws://agar.snez.org:3050/",
+    server: "wss://agar.snez.org:3050/",
     client: null,
     connect: function()
     {
@@ -5507,7 +5507,7 @@ function getSNEZServers(ifcalled){
 client2 = {
 
     // Properties
-    server: "ws://agar.snez.org:3050/",
+    server: "wss://agar.snez.org:3050/",
     ws: null,
     isOpen: false,
     onOpenCallback: null,
@@ -6174,9 +6174,9 @@ preventcanvasimagecrash();
 
         $("#copyIPBtn").click(function() {
             if (searchSip != null) {
-                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=ws://" + searchSip);
+                copy("http://agar.io/?r=" + region + "&m=" + realmode + "&search=wss://" + searchSip);
             } else {
-                copy("http://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=ws://" + currentIP);
+                copy("http://agar.io/?r=" + $('#region').val() + "&m=" + realmode + "&search=wss://" + currentIP);
             }
         });
 
@@ -6404,7 +6404,7 @@ preventcanvasimagecrash();
 					
         });
 			$("#VoiceBtn").click(function () {
-				if (modVersion == "1.4" ) {
+//				if (modVersion == "1.4" ) {
 					var currentIP2=$("#server-token").val();
 					var pass2=$("#clantag").val();
 					//var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
@@ -6425,10 +6425,10 @@ preventcanvasimagecrash();
 //			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
 //			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
 			var win = window.open(url2, '_blank');	
-				}
-			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
-			}					
+//				}
+//			else{
+//			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
+//			}					
 		});	
 		
 		$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
@@ -6880,11 +6880,11 @@ preventcanvasimagecrash();
 		
 		$("#oldSkinsBtn").click(function() {
 			
-			if (modVersion == "1.3" || modVersion == "1.4" ) {
+			if (modVersion == "1.4" || modVersion == "1.5" ) {
 		location.replace("https://agar.io/LMoldskins");
 			}
 			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>, in order to use this function</font>');	
 			}
 		});	
 /*		$("#LMImplements").click(function() {
