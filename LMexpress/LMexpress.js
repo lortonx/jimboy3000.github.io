@@ -5306,7 +5306,8 @@ if (userid==""||userid==null){
 toastr["warning"]("<b>[SERVER]:</b> User login needed");	
 }
 else{
-postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
+//postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
+postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", JSON.parse($('#export-settings').val()));
 toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded. UID: <font color='yellow'><b>"+userid+"</b></font>");
 }
 }	
@@ -5317,7 +5318,8 @@ toastr["warning"]("<b>[SERVER]:</b> User login needed");
 else{	
 getSNEZ("https://lmsettings.snez.org/", userid, "LMSettings");
 var responseSNEZ= xhttp.response;
-$('#import-settings').val(responseSNEZ);
+$('#import-settings').val(JSON.stringify(responseSNEZ));
+//$('#import-settings').val(responseSNEZ);
 $("#import-settings-btn2").click();
 }		
 }
