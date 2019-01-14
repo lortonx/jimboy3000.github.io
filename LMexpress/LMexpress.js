@@ -2,7 +2,7 @@
  * Legend express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "01"; // the version 1.1-> 1.11
+var semimodVersion = "02"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5300,13 +5300,13 @@ function emphasischat(){
 
 function SNEZOgarUpload() {
 //$("#export-settings-btn").click();
-//postSNEZ("http://lmsettings.snez.org/", "test", "test1234", "{ a: 1, b: 2, d: 4}");
+//postSNEZ("https://lmsettings.snez.org/", "test", "test1234", "{ a: 1, b: 2, d: 4}");
 
 if (userid==""||userid==null){
 toastr["warning"]("<b>[SERVER]:</b> User login needed");	
 }
 else{
-postSNEZ("http://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
+postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
 toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded. UID: <font color='yellow'><b>"+userid+"</b></font>");
 }
 }	
@@ -5315,7 +5315,7 @@ if (userid==""||userid==null){
 toastr["warning"]("<b>[SERVER]:</b> User login needed");	
 }
 else{	
-getSNEZ("http://lmsettings.snez.org/", userid, "LMSettings");
+getSNEZ("https://lmsettings.snez.org/", userid, "LMSettings");
 var responseSNEZ= xhttp.response;
 $('#import-settings').val(responseSNEZ);
 $("#import-settings-btn2").click();
@@ -5359,7 +5359,7 @@ var elements = {
 };
 
 var socket = {
-    server: "wss://agar.snez.org:3050/",
+    server: "wss://agar.snez.org:3051/",
     client: null,
     connect: function()
     {
@@ -5507,7 +5507,7 @@ function getSNEZServers(ifcalled){
 client2 = {
 
     // Properties
-    server: "wss://agar.snez.org:3050/",
+    server: "wss://agar.snez.org:3051/",
     ws: null,
     isOpen: false,
     onOpenCallback: null,
