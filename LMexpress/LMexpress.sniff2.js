@@ -72,7 +72,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 setTimeout(function () {	
 	$("#nick").blur(function(){
 		if ($('#administrationtoolshud').is(':hidden')) {
-			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"||$("#nick").val()=="℄🌀       ᒎᗴᖇᖇƳ"){
+			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"||$("#nick").val()=="℄🌀       ᒎᗴᖇᖇƳ"||$("#nick").val()=="℄🌀 𝙨𝙣𝙚𝙯"){
 			$("#main-menu").hide();
 			$("#skins-panel").hide();
 			$("#quick-menu").hide();
@@ -105,7 +105,7 @@ function showstatsphp(){
 function dosendadmincommand(){
 		if(AdminRights==1){
 		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
-		setTimeout(function (){$("#message").val("http://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
+		setTimeout(function (){$("#message").val("https://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
 		}
 		else{
 			toastr["info"]("Something gone wrong");}
