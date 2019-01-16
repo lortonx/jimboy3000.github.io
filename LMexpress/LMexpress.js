@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.001 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "03"; // the version 1.1-> 1.11
+var semimodVersion = "04"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5307,7 +5307,7 @@ toastr["warning"]("<b>[SERVER]:</b> User login needed");
 }
 else{
 //postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
-postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", JSON.parse($('#export-settings').val()));
+postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", escape($('#export-settings').val()));
 toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded. UID: <font color='yellow'><b>"+userid+"</b></font>");
 }
 }	
@@ -5318,7 +5318,7 @@ toastr["warning"]("<b>[SERVER]:</b> User login needed");
 else{	
 getSNEZ("https://lmsettings.snez.org/", userid, "LMSettings");
 var responseSNEZ= xhttp.response;
-$('#import-settings').val(JSON.stringify(responseSNEZ));
+$('#import-settings').val(unescape(responseSNEZ));
 //$('#import-settings').val(responseSNEZ);
 $("#import-settings-btn2").click();
 }		
