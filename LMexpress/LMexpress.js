@@ -4222,7 +4222,7 @@ function chatfunction() {
                 $("#ChatBtn").attr("data-original-title", Premadeletter58);
                 $("#clantag").val("HIDDEN");
                 //	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
-                $(".btn.btn-play.btn-primary.btn-needs-server").click();
+                $(".btn.btn-warning.btn-spectate.btn-needs-server").click();
                 hiddenfromclan = 1;
                 return saveclanpassword, hiddenfromclan;
             } else if (hiddenfromclan == 1) {
@@ -4230,7 +4230,7 @@ function chatfunction() {
                 $("#ChatBtn1").attr('class', 'fa fa-eye-slash');
                 $("#ChatBtn").attr("data-original-title", Premadeletter59);
                 $("#clantag").val(saveclanpassword);
-                $(".btn.btn-play.btn-primary.btn-needs-server").click();
+                $(".btn.btn-warning.btn-spectate.btn-needs-server").click();
                 hiddenfromclan = 0;
                 return hiddenfromclan;
             }
@@ -4253,9 +4253,10 @@ function chatfunction() {
 	}
 	
 	
-    } else {
+    }   */
+	else {
         toastr["info"](Premadeletter35 + "!").css("width", "210px");
-    }}*/
+    }
 }
 function displayTimer() {
     // initilized all local variables:
