@@ -6793,12 +6793,13 @@ preventcanvasimagecrash();
 '#top5-hud{top:10px!important;background:linear-gradient(to right,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
 '#leaderboard-hud{top:10px!important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
 '#chat-box{important;background:linear-gradient(to right,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
-'#minimap-hud,#shortcuts-hud, #time-hud,#msgcommands-hud, #scripting-hud, #images-hud, #yt-hud{important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#minimap-hud,#timertools-hud, #shortcuts-hud, #time-hud,#msgcommands-hud, #scripting-hud, #images-hud, #yt-hud{important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
 '#leaderboard-hud{top:10px!important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
 '#target-hud,#target-panel-hud {background:linear-gradient(to bottom,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
 '#stats-hud{background:linear-gradient(to top,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
 '#stats-hud{left: 50%!important; transform: translateX(-50%)!important;}'+
 '.hud-top{top: 95.7%!important;}'+
+'#chat-box{bottom: 2%!important;}'+
 '</style>');			
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter47);}
         		else {localStorage.setItem("AnimatedSkinBtn", false);
