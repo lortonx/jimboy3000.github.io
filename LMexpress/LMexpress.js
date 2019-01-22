@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "05"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1355,7 +1355,7 @@ $('#TeamboardInput8').copyCSS('#server').css('width', '40%');
 $('#TeamboardInput9').copyCSS('#server').css('width', '40%');
 $('#TeamboardInput10').copyCSS('#server').css('width', '40%');
 										
-$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">'+Premadeletter113+'</button>');
+$("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-original-title="" title="">'+Premadeletter113+'</button>');
 OthersSkinChanger();
 SkinBtnsPut();
 OpenSkinChanger();
@@ -5831,7 +5831,7 @@ preventcanvasimagecrash();
             //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
             '<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
             //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
- */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn" data-itr="page_play" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
+ */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
 
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
             '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
