@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.002 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "05"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -244,8 +244,8 @@ var Premadeletter44 = "Show XP BAR";
 var Premadeletter45 = "Hide XP BAR";
 var Premadeletter45a = "Rounded Hud";
 var Premadeletter45b = "Square Hud";
-var Premadeletter46 = "Show Anim. Skins";
-var Premadeletter47 = "Hide Anim. Skins";
+var Premadeletter46 = "Lin. color Hud";
+var Premadeletter47 = "Bold color Hud";
 var Premadeletter48 = "Show Everything";
 var Premadeletter49 = "Hide Everything";
 var Premadeletter50 = "Show Timer Calc.";
@@ -6767,7 +6767,7 @@ preventcanvasimagecrash();
         		if (checked) {localStorage.setItem("MAINBTBtn", true);
 				var headID = document.getElementsByTagName("head")[0];
 				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
-				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
+				'.input-group-addon,#chat-box, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel{border-radius: 10px;}.menu-tabs,'+
 				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys{border-radius: 10px 10px 0 0;} #hotkeys {border-radius: 10px;} .skin, .input-group-btn, .input-group.nick {border-radius: 0 15px 15px 0;}  '+
 				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i{ border-radius: 50%; }.agario-profile-picture { border-radius: 32px;}'+
 				'#menu-footer { border-radius: 0 0 10px 10px; } #leaderboard-hud { border-radius: 15px;} #dropDown, #dropDown2 { border-radius: 15px;} #minimap-hud { border-radius: 0 0 15px 15px;}'+
@@ -6777,23 +6777,43 @@ preventcanvasimagecrash();
         		else {localStorage.setItem("MAINBTBtn", false);
 				var headID = document.getElementsByTagName("head")[0];
 				$(headID).append('<style type="text/css" id="RNCN">.agario-panel, .center-container, .btn, .form-control, '+
-				'.input-group-addon, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
+				'.input-group-addon,#chat-box, .input-group-sm>.input-group-addon, .agario-party, .agario-side-panel, .menu-tabs,'+
 				'#main-panel, #profile, #legend, #og-settings, #theme, #music, #hotkeys,  #hotkeys, .skin, .input-group-btn, .input-group.nick,  '+
 				'.colorpicker-element .input-group-addon i, .colorpicker-element .add-on i, .agario-profile-picture,'+
 				'#menu-footer, #leaderboard-hud, #dropDown, #dropDown2, #minimap-hud,'+
 				'#top5-hud, #target-hud, #legendAdImg, #stats-hud, '+
 				'#time-hud { border-radius: 0 0 0 0 } </style>');
 				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter45a);}} ); 
-            $("#AnimatedSkinBtn").click(function () {
-				toastr["info"]("Function is not ready yet");
+            $("#AnimatedSkinBtn").click(function () {var checked = !($(this).attr('aria-pressed') == "true");
+				//toastr["info"]("Function is not ready yet");
+        		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);
+				var headID = document.getElementsByTagName("head")[0];
+				$(headID).append('<style type="text/css" id="MGx">	'+			
+'#top5-hud{top:10px!important;background:linear-gradient(to right,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#leaderboard-hud{top:10px!important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#chat-box{important;background:linear-gradient(to right,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#minimap-hud,#shortcuts-hud, #time-hud,#msgcommands-hud, #scripting-hud, #images-hud, #yt-hud{important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#leaderboard-hud{top:10px!important;background:linear-gradient(to left,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#target-hud,#target-panel-hud {background:linear-gradient(to bottom,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#stats-hud{background:linear-gradient(to top,'+$("#hudColor").val()+',rgba(255,255,255,0))}'+
+'#stats-hud{left: 50%!important; transform: translateX(-50%)!important;}'+
+'.hud-top{top: 95.7%!important;}'+
+'</style>');			
+				$(this).html('<i class="fa fa-minus"></i>'+Premadeletter47);}
+        		else {localStorage.setItem("AnimatedSkinBtn", false);
+				$("#MGx").remove();
+				$(this).html('<i class="fa fa-grav"></i>'+Premadeletter46);}} ); 				
+				
+				
+				
 /*				var checked = !($(this).attr('aria-pressed') == "true");
         		if (checked) {localStorage.setItem("AnimatedSkinBtn", true);if (usedonceSkin==0){animatedskins();}
 				if (toastrSkinNotice==1){toastr["info"](Premadeletter71 + " <font color='red'><b>" + Premadeletter72 + "</font></b>, <font color='red'><b>FPS " + Premadeletter73 + "</font></b> "+Premadeletter74+" 16").css("width", "300px");}
 				$(this).html('<i class="fa fa-grav"></i>'+ Premadeletter47); return usedonceSkin=1;}
         		else {localStorage.setItem("AnimatedSkinBtn", false);
 				toastr["info"](Premadeletter75 +" <font color='red'><b>" + Premadeletter76 + "</font></b> " + Premadeletter77 + ". <font color='red'><b>" + Premadeletter78 + "</font></b> "+Premadeletter79).css("width", "300px");
-				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);} */
-				} );  	
+				$(this).html('<i class="fa fa-grav"></i>' + Premadeletter46);} 
+				} );  	*/
         $("#TIMEcalBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
