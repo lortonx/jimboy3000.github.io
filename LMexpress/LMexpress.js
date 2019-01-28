@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.003 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "04"; // the version 1.1-> 1.11
+var semimodVersion = "05"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -594,8 +594,10 @@ $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
 //		}
+	
+
 		//userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
-		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4));
+		userData=$.get("https://extreme-ip-lookup.com/json/", function (response) { $("#response").html(JSON.stringify(response, null, 4));
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		}, "jsonp");
 /*		setTimeout(function (){ 
@@ -643,7 +645,7 @@ $("body").on('DOMSubtreeModified', "#chat-box", function() {
 
 //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
 //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-		userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4));
+		userData=$.get("https://extreme-ip-lookup.com/json/", function (response) { $("#response").html(JSON.stringify(response, null, 4));
 		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 		}, "jsonp");
 /*		setTimeout(function (){ 
@@ -5761,7 +5763,7 @@ preventcanvasimagecrash();
 //            '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="pointer-events: auto;color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><i class="fa fa-window-close fa-2"></i></button>' +
             '</div></div>'
         );
-		$("#regionmodecheck").hide();
+		//$("#regionmodecheck").hide();
 		$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
             '</div>');
         $("#clantag").attr('placeholder', 'Password').tooltip({
@@ -6496,18 +6498,18 @@ preventcanvasimagecrash();
 
 		$('*[data-itr="page_play"]').click(function() {
 		localStorage.setItem("lastIP", $('#server-token').val());
-	if (userData.responseJSON.geobytesipaddress!= undefined) {
-	userip=userData.responseJSON.geobytesipaddress;
+	if (userData.responseJSON.query!= undefined) {
+	userip=userData.responseJSON.query;
 	userip = userip.replace(" ", "_");	
 	}
-	if (userData.responseJSON.geobytescity!= undefined) {
-	usercity=userData.responseJSON.geobytescity;
+	if (userData.responseJSON.city!= undefined) {
+	usercity=userData.responseJSON.city;
 	usercity = usercity.replace(" ", "_");	
 	usercity = usercity.replace(" ", "_");
 	usercity = usercity.replace(" ", "_");	
 	}	
-	if (userData.responseJSON.geobytescountry!= undefined) {
-	usercountry=userData.responseJSON.geobytescountry;
+	if (userData.responseJSON.country!= undefined) {
+	usercountry=userData.responseJSON.country;
 	usercountry = usercountry.replace(" ", "_");
 	usercity = usercity.replace(" ", "_");
 	usercity = usercity.replace(" ", "_");	
