@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "09 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "10 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -195,6 +195,7 @@ var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
+var VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
 if (localStorage.getItem("leaderboardlimit")!=null){
 	window.leaderboardlimit=localStorage.getItem("leaderboardlimit");
 }
@@ -403,7 +404,7 @@ var datasent2;
 emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
-//		toastr["info"]("BETA VERSION. Legend Express will soon be named" + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font>!<br>Stay tuned!<br><font color="red"><i></b>inform me for any bugs/lag</i></font>').css("width", "350px");	
+toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla Skins on Settings</font>').css("width", "350px");
         if (modVersion != "1.5") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}	
@@ -429,6 +430,21 @@ function init(modVersion) {
 				}
 			}
 		});	
+		$('.options-box.skinsGroup').append('<label><input type="checkbox" id="Vanillaskins" class="js-switch" data-switchery="true" style="display: none;"> Vanilla Skins</input></label>');
+		var elemLegendSwitch2 = document.querySelector('#Vanillaskins');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var Vanillaskinsbtn = new Switchery(elemLegendSwitch2, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+
+		$("#Vanillaskins").click(function() {
+			if (Vanillaskins.isChecked()) {
+				localStorage.setItem("VanillaskinsSaved", true);
+				window.vanillaskins=true;							
+			} else {				
+				localStorage.setItem("VanillaskinsSaved", false);
+				toastr["info"]("Skins will be fully");
+				window.vanillaskins=false;
+			}
+		});			
 /*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
                 $("#UniversalChat").click();
 				setTimeout(function() {
