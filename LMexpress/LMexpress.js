@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "06"; // the version 1.1-> 1.11
+var semimodVersion = "07"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6132,8 +6132,8 @@ preventcanvasimagecrash();
    '<h5 class="menu-main-color">leaderbaord</h5>'+
    '<label>Leaderboard Players<input type="checkbox" class="js-switch" id="quickleaderbaord" data-switchery="true" style="display: none;">'+
    '<span><select id="leaderboardlimit" class="form-control" onchange="changeleaderboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
-            '<option value="10" data-itr="">10</option>' +
-            '<option selected value="15" data-itr="">15</option>' +
+            '<option selected value="10" data-itr="">10</option>' +
+            '<option value="15" data-itr="">15</option>' +
             '<option value="20" data-itr="">20</option>' +
             '<option value="25" data-itr="">25</option>' +
             '<option value="30" data-itr="">30</option>' +
