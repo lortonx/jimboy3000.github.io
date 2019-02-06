@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.47
+//v1.48
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -19,8 +19,9 @@ window.LMGameConfiguration = $.ajax({
 		}
 }).responseJSON;
 //weird but it works....
-if (window.LMGameConfiguration==undefined){
+
 setTimeout(function(){ 
+if (window.LMGameConfiguration==undefined){
 window.LMGameConfiguration = $.ajax({
         type: "GET",
 		url: "https://configs-web.agario.miniclippt.com/live/v12/1922/GameConfiguration.json",
