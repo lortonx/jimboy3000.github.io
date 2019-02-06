@@ -404,7 +404,7 @@ var datasent2;
 emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
-toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla Skins on Settings</font>').css("width", "350px");
+toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
         if (modVersion != "1.5") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}	
@@ -438,11 +438,11 @@ toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #
 		$("#Vanillaskins").click(function() {
 			if (Vanillaskinsbtn.isChecked()) {
 				localStorage.setItem("VanillaskinsSaved", "true");
-				window.vanillaskins="true";							
+				window.vanillaskins=true;							
 			} else {				
 				localStorage.setItem("VanillaskinsSaved", "false");
 				toastr["info"]("Changes will fully be reflected after restart");
-				window.vanillaskins="false";
+				window.vanillaskins=false;
 			}
 		});			
 /*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
