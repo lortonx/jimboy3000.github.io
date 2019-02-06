@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.39
+//v1.41
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -8069,7 +8069,7 @@ ogcustom1=
                 if (0 != this['cacheQueue'][`length`]) {
                     var e = this[`cacheQueue`]['shift']();
                     if (e) {
-                        console.log(e);
+                        //console.log(e);
                         var i = document[`createElement`](`canvas`);
                         i[`width`] = 512, i[`height`] = 512;
                         var s = i[`getContext`]('2d');
@@ -8096,12 +8096,15 @@ ogcustom1=
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
                     var s = ':party' === this['gameMode'] ? t + e : t;
+					console.log(this[`customSkinsMap`][s]);
+					console.log(s);
                     if (s && (this[`customSkinsMap`][s] = i), this[`customSkinsCache`].hasOwnProperty(i)) return;
                     this['loadSkin'](this[`customSkinsCache`], i);
                 }
             },
             'checkSkinsMap': function(t, e) {
                 var i = `:party` === this['gameMode'] ? t + e : t;
+				//console.log(['customSkinsMap'].hasOwnProperty(i));
                 return !!this['customSkinsMap'].hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
