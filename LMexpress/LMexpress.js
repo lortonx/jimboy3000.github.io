@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "10 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "11 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -437,12 +437,12 @@ toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #
 
 		$("#Vanillaskins").click(function() {
 			if (Vanillaskinsbtn.isChecked()) {
-				localStorage.setItem("VanillaskinsSaved", true);
-				window.vanillaskins=true;							
+				localStorage.setItem("VanillaskinsSaved", "true");
+				window.vanillaskins="true";							
 			} else {				
-				localStorage.setItem("VanillaskinsSaved", false);
+				localStorage.setItem("VanillaskinsSaved", "false");
 				toastr["info"]("Changes will fully be reflected after restart");
-				window.vanillaskins=false;
+				window.vanillaskins="false";
 			}
 		});			
 /*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
@@ -4810,7 +4810,7 @@ function triggerLMbtns() {
            if (UniversalChatSaved == "false") { 
                 $("#UniversalChat").click();
            }
-           if (VanillaskinsSaved == true) { 
+           if (VanillaskinsSaved == "true") { 
                 $("#Vanillaskins").click();
            }		   		
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
