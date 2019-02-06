@@ -430,7 +430,7 @@ toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #
 				}
 			}
 		});	
-		$('.options-box.skinsGroup').append('<label><input type="checkbox" id="Vanillaskins" class="js-switch" data-switchery="true" style="display: none;"> Vanilla Skins</input></label>');
+		$('.options-box.skinsGroup').append('<label><input type="checkbox" id="Vanillaskins" class="js-switch" data-switchery="true" style="display: none;"> Vanilla skins</input></label>');
 		var elemLegendSwitch2 = document.querySelector('#Vanillaskins');
 		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
 		var Vanillaskinsbtn = new Switchery(elemLegendSwitch2, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
