@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "05"; // the version 1.1-> 1.11
+var semimodVersion = "06"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -195,6 +195,9 @@ var LegendSettings="true";
 var LegendSettingsfirstclicked="false"; 
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
+if (localStorage.getItem("leaderboardlimit")!=null){
+	window.leaderboardlimit=localStorage.getItem("leaderboardlimit");
+}
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -4723,6 +4726,8 @@ function changeModLanguage() {
     }		
 }
 function triggerLMbtns() {
+			$('#leaderboardlimit').val(window.leaderboardlimit);
+			
 			$('.btn').css("text-transform", "capitalize");
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
@@ -6123,7 +6128,16 @@ preventcanvasimagecrash();
             '</div>');	
         // player shortcut			
 			
-
+	$(".options-box.zoomGroup").after('<div class="options-box leaderbaord">'+
+   '<h5 class="menu-main-color">leaderbaord</h5>'+
+   '<label>Leaderboard Players<input type="checkbox" class="js-switch" id="quickleaderbaord" data-switchery="true" style="display: none;">'+
+   '<span><select id="leaderboardlimit" class="form-control" onchange="changeleaderboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
+            '<option value="10" data-itr="">10</option>' +
+            '<option selected value="15" data-itr="">15</option>' +
+            '<option value="20" data-itr="">20</option>' +
+            '<option value="25" data-itr="">25</option>' +
+            '<option value="30" data-itr="">30</option>' +
+            '</select></span></label></div>');
 		
         $("#playerBtn").click(function() {                          
                 if (playerState != 1) {
@@ -6496,6 +6510,7 @@ preventcanvasimagecrash();
 			}, 100);
 		});
 
+	
 		$('*[data-itr="page_play"]').click(function() {
 		localStorage.setItem("lastIP", $('#server-token').val());
 	if (userData.responseJSON.query!= undefined) {
@@ -7318,3 +7333,9 @@ function getInfo3() {
         }
     });
 }
+
+function changeleaderboardlimit(){
+window.leaderboardlimit=$("#leaderboardlimit").val();
+localStorage.setItem("leaderboardlimit", window.leaderboardlimit);
+}					
+	
