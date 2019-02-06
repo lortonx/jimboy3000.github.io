@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.48
+//v1.49
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -21,8 +21,8 @@ window.LMGameConfiguration = $.ajax({
 //weird but it works....
 
 setTimeout(function(){ 
-if (window.LMGameConfiguration==undefined){
-window.LMGameConfiguration = $.ajax({
+	if (window.LMGameConfiguration==undefined){
+		window.LMGameConfiguration = $.ajax({
         type: "GET",
 		url: "https://configs-web.agario.miniclippt.com/live/v12/1922/GameConfiguration.json",
 		async: false,
@@ -30,12 +30,10 @@ window.LMGameConfiguration = $.ajax({
         success: function(info) {
 			//var GameConfiguration = info;
 		}
-}).responseJSON;
-//setTimeout(function(){ 
-//return window.LMGameConfiguration;
-// }, 3000);
+		}).responseJSON;
+	}
  }, 4000);
-}
+
 //set values outside ogario
 window.leaderboardlimit=10;
 window.vanillaskins=false;
