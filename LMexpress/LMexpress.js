@@ -6129,8 +6129,8 @@ preventcanvasimagecrash();
             '</div>');	
         // player shortcut			
 			
-	$(".options-box.zoomGroup").after('<div class="options-box leaderbaord">'+
-   '<h5 class="menu-main-color">leaderbaord</h5>'+
+	$(".options-box.zoomGroup").after('<div class="options-box leaderboard">'+
+   '<h5 class="menu-main-color">leaderboard</h5>'+
    '<label>Leaderboard Players<input type="checkbox" class="js-switch" id="quickleaderbaord" data-switchery="true" style="display: none;">'+
    '<span><select id="leaderboardlimit" class="form-control" onchange="changeleaderboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
             '<option selected value="10" data-itr="">10</option>' +
