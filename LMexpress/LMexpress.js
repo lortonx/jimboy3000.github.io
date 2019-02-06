@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "08 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "09 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -403,7 +403,7 @@ var datasent2;
 emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
-		toastr["info"]("BETA VERSION. Legend Express will soon be named" + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font>!<br>Stay tuned!<br>').css("width", "350px");	
+		toastr["info"]("BETA VERSION. Legend Express will soon be named" + ' <b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font>!<br>Stay tuned!<br><font color="red"><i></b>inform me for any bugs/lag</i></font>').css("width", "350px");	
         if (modVersion != "1.5") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}	
