@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.45
+//v1.46
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -23,7 +23,7 @@ var LMGameConfiguration = $.ajax({
 
 //set values outside ogario
 window.leaderboardlimit=10;
-window.vanillaskins=false;
+window.vanillaskins="false";
 
 function ogcustom4(ogcustom5) {
 	var ogcustom2 = {};
@@ -9357,7 +9357,7 @@ ogcustom1=
                     if (8 & d) {
                         y = e['decodeURIComponent'](escape(s()));
                         if (g != null) {
-							if (window.vanillaskins==true){
+							if (window.vanillaskins=="true"){
                             var skin2search = g.replace('%', '');
                             var LMAgarGameConfiguration = window.LMGameConfiguration;
                             if (LMAgarGameConfiguration != undefined) {
