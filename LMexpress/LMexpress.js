@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "9 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "10 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -436,7 +436,7 @@ toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #
 		var Vanillaskinsbtn = new Switchery(elemLegendSwitch2, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
 
 		$("#Vanillaskins").click(function() {
-			if (Vanillaskins.isChecked()) {
+			if (Vanillaskinsbtn.isChecked()) {
 				localStorage.setItem("VanillaskinsSaved", true);
 				window.vanillaskins=true;							
 			} else {				
@@ -4807,9 +4807,12 @@ function triggerLMbtns() {
  //           if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
  //               $("#DoubleSplitRange").click();
  //           }	
- //          if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
- //               $("#UniversalChat").click();
- //           }				
+           if (UniversalChatSaved == "false") { 
+                $("#UniversalChat").click();
+           }
+           if (VanillaskinsSaved == true) { 
+                $("#Vanillaskins").click();
+           }		   		
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
 /*            if (autoCoinBtn == "true") {
                 setTimeout(function() {
