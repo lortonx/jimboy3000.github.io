@@ -4,14 +4,15 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.44
+//v1.45
 
 //Game Configurations
 //var agarversion="v12/1922/";
 var agarversion="";
 var LMGameConfiguration = $.ajax({
         type: "GET",
-		url: "https://jimboy3100.github.io/agario/live/"+agarversion+"GameConfiguration.json",
+//		url: "https://jimboy3100.github.io/agario/live/"+agarversion+"GameConfiguration.json",
+		url: "https://configs-web.agario.miniclippt.com/live/v12/1922/GameConfiguration.json",
 		async: false,
         datatype: "json",
         success: function(info) {
