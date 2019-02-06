@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.43
+//v1.44
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -22,7 +22,7 @@ var LMGameConfiguration = $.ajax({
 
 //set values outside ogario
 window.leaderboardlimit=10;
-
+window.vanillaskins=false;
 
 function ogcustom4(ogcustom5) {
 	var ogcustom2 = {};
@@ -9356,8 +9356,7 @@ ogcustom1=
                     if (8 & d) {
                         y = e['decodeURIComponent'](escape(s()));
                         if (g != null) {
-                            //loadSkin(y,g);					
-                            //console.log('Player '+y+' is using skin : '+g);
+							if (window.vanillaskins==true){
                             var skin2search = g.replace('%', '');
                             var LMAgarGameConfiguration = window.LMGameConfiguration;
                             if (LMAgarGameConfiguration != undefined) {
@@ -9366,15 +9365,15 @@ ogcustom1=
                                     //console.log(LMAgarGameConfiguration.gameConfig["Gameplay - Equippable Skins"]);
                                     if (EquippableSkins[player].productId == "skin_" + skin2search) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
-						//if (EquippableSkins[player].image == "Kraken.png" || EquippableSkins[player].image == "Tiger_Pattern.png" || EquippableSkins[player].image == "UFO.png" || EquippableSkins[player].image == "artshop_pencil.png" || EquippableSkins[player].image == "birthday_2017_1_sad.png"  || EquippableSkins[player].image == "last_master_duel_master.png"  || EquippableSkins[player].image == "party_mode.png" ){
 						if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){
 						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/v12/1922/"+EquippableSkins[player].image;
 						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/v12/1922/"+EquippableSkins[player].image);
 							}
-						//}				
+									
                                     }
                                 }
                             }
+						}
                         }
                     }
                     //8 & d && (y = e['decodeURIComponent'](escape(s())));
