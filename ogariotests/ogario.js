@@ -21,7 +21,7 @@ var LMGameConfiguration = $.ajax({
 
 
 //set values outside ogario
-window.leaderboardlimit=15;
+window.leaderboardlimit=10;
 
 
 function ogcustom4(ogcustom5) {
