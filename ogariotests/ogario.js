@@ -4,14 +4,25 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.46
+//v1.47
 
 //Game Configurations
 //var agarversion="v12/1922/";
 var agarversion="";
-var LMGameConfiguration = $.ajax({
+window.LMGameConfiguration = $.ajax({
         type: "GET",
-//		url: "https://jimboy3100.github.io/agario/live/"+agarversion+"GameConfiguration.json",
+		url: "https://jimboy3100.github.io/agario/live/"+agarversion+"GameConfiguration.json",
+		async: false,
+        datatype: "json",
+        success: function(info) {
+			//var GameConfiguration = info;
+		}
+}).responseJSON;
+//weird but it works....
+if (window.LMGameConfiguration==undefined){
+setTimeout(function(){ 
+window.LMGameConfiguration = $.ajax({
+        type: "GET",
 		url: "https://configs-web.agario.miniclippt.com/live/v12/1922/GameConfiguration.json",
 		async: false,
         datatype: "json",
@@ -19,11 +30,14 @@ var LMGameConfiguration = $.ajax({
 			//var GameConfiguration = info;
 		}
 }).responseJSON;
-
-
+//setTimeout(function(){ 
+//return window.LMGameConfiguration;
+// }, 3000);
+ }, 4000);
+}
 //set values outside ogario
 window.leaderboardlimit=10;
-window.vanillaskins="false";
+window.vanillaskins=false;
 
 function ogcustom4(ogcustom5) {
 	var ogcustom2 = {};
@@ -9357,9 +9371,9 @@ ogcustom1=
                     if (8 & d) {
                         y = e['decodeURIComponent'](escape(s()));
                         if (g != null) {
-							if (window.vanillaskins=="true"){
+							if (window.vanillaskins==true){
                             var skin2search = g.replace('%', '');
-                            var LMAgarGameConfiguration = window.LMGameConfiguration;
+                            var LMAgarGameConfiguration = window.window.LMGameConfiguration;
                             if (LMAgarGameConfiguration != undefined) {
                                 var EquippableSkins = LMAgarGameConfiguration.gameConfig["Gameplay - Equippable Skins"];
                                 for (var player = 0; player < EquippableSkins.length; player++) {
