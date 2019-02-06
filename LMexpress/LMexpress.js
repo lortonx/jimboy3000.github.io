@@ -2,7 +2,7 @@
  * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "10 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "9 BETA"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -441,7 +441,7 @@ toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #
 				window.vanillaskins=true;							
 			} else {				
 				localStorage.setItem("VanillaskinsSaved", false);
-				toastr["info"]("Skins will be fully");
+				toastr["info"]("Changes will fully be reflected after restart");
 				window.vanillaskins=false;
 			}
 		});			
