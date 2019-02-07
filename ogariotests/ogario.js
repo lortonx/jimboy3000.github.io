@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.50
+//v1.51
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -8914,7 +8914,10 @@ ogcustom1=
                         var a = this[`color`];
                         M[`play`] && (this[`isPlayerCell`] ? v[`myCustomColor`] && (a = ogarcopythelb[`color`]) : v[`oppColors`] && !v[`oppRings`] && (a = this['oppColor'])), t[`fillStyle`] = a, t[`fill`](), s && (t['globalAlpha'] = i, s = !1);
                         var n = null;
-                        if (v['customSkins'] && M['showCustomSkins'] && (n = ogarminimapdrawer['getCustomSkin'](this['targetNick'], this['color'])) && (((v[`transparentSkins`] || M[`play`] && v[`oppColors`]) && (!this[`isPlayerCell`] || v['myTransparentSkin']) || this['isPlayerCell'] && v['myTransparentSkin']) && (t[`globalAlpha`] *= g[`skinsAlpha`], s = !0), t[`drawImage`](n, this['x'] - o, this['y'] - o, 2 * o, 2 * o), s && (t[`globalAlpha`] = i, s = !1)), v[`teammatesInd`] && !this[`isPlayerCell`] && o <= 200 && (n || ogarminimapdrawer[`checkSkinsMap`](this[`targetNick`], this[`color`])) && ogarfooddrawer[`drawTeammatesInd`](t, this['x'], this['y'], o), v[`noNames`] && !v[`showMass`] || e) t['restore']();
+						//ogarfooddrawer[
+//                        if (v['customSkins'] && M['showCustomSkins'] && (n = ogarminimapdrawer['getCustomSkin'](this['targetNick'], this['color'])) && (((v[`transparentSkins`] || M[`play`] && v[`oppColors`]) && (!this[`isPlayerCell`] || v['myTransparentSkin']) || this['isPlayerCell'] && v['myTransparentSkin']) && (t[`globalAlpha`] *= g[`skinsAlpha`], s = !0), t[`drawImage`](n, this['x'] - o, this['y'] - o, 2 * o, 2 * o), s && (t[`globalAlpha`] = i, s = !1)), v[`teammatesInd`] && !this[`isPlayerCell`] && o <= 200 && (n || ogarminimapdrawer[`checkSkinsMap`](this[`targetNick`], this[`color`])) && ogarfooddrawer[`drawTeammatesInd`](t, this['x'], this['y'], o), v[`noNames`] && !v[`showMass`] || e) t['restore']();
+                        if (v['customSkins'] && M['showCustomSkins'] && (n = ogarminimapdrawer['getCustomSkin'](this['targetNick'], this['color'])) && (((v[`transparentSkins`] || M[`play`] && v[`oppColors`]) && (!this[`isPlayerCell`] || v['myTransparentSkin']) || this['isPlayerCell'] && v['myTransparentSkin']) && (t[`globalAlpha`] *= g[`skinsAlpha`], s = !0), t[`drawImage`](n, this['x'] - o, this['y'] - o, 2 * o, 2 * o), s && (t[`globalAlpha`] = i, s = !1)), v[`teammatesInd`] && !this[`isPlayerCell`] && o <= 200 && (n || ogarminimapdrawer[`checkSkinsMap`](this[`targetNick`], this[`color`])) && ogarminimapdrawer[`drawTeammatesInd`](t, this['x'], this['y'], o), v[`noNames`] && !v[`showMass`] || e) t['restore']();
+
                         else {
                             var r = !1;
                             !this[`isPlayerCell`] && (r = ogarminimapdrawer[`setAutoHideCellInfo`](o)) && v[`autoHideNames`] && v[`autoHideMass`] ? t[`restore`]() : (this[`setDrawing`](), this['setDrawingScale'](), t[`globalAlpha`] *= g[`textAlpha`], v['noNames'] || r && v[`autoHideNames`] || this[`isPlayerCell`] && v[`hideMyName`] || n && v[`hideTeammatesNames`] || this[`setNick`](this[`targetNick`]) && this[`drawNick`](t), !v[`showMass`] || r && v[`autoHideMass`] || this[`isPlayerCell`] && v[`hideMyMass`] || v[`hideEnemiesMass`] && !this[`isPlayerCell`] && !this[`isVirus`] || this[`setMass`](this[`size`]) && this[`drawMass`](t), t[`restore`]());
