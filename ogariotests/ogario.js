@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.49 test
+//v1.49
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -9551,14 +9551,12 @@ ogcustom1=
                     this[`setScale`](),
 					M[`playerCells`][`length`] ?
 					(M[`calculatePlayerMassAndPosition`](),
-					this.camX += (M.viewX - this.camX) / 2,
-					this.camY += (M.viewY - this.camY) / 2) :
-					((this.camX += 29 * this.camX + this[`viewX`]) / 30,
-					this.camY += (29 * this.camY + this[`viewY`]) / 30),
-//					this.camX = (this.camX + M[`viewX`]) / 2,
-//					this.camY = (this.camY + M[`viewY`]) / 2) :
-//					(this.camX = (29 * this.camX + M[`viewX`]) / 30,
-//					this.camY = (29 * this.camY + M[`viewY`]) / 30),
+//					this.camX += (M.viewX - this.camX) / 2,
+//					this.camY += (M.viewY - this.camY) / 2) :
+					this.camX = (this.camX + M[`viewX`]) / 2,
+					this.camY = (this.camY + M[`viewY`]) / 2) :
+					(this.camX = (29 * this.camX + M[`viewX`]) / 30,
+					this.camY = (29 * this.camY + M[`viewY`]) / 30),
 					M['playerX'] = this.camX, M[`playerY`] = this['camY'];
                 },
                 'setScale': function() {
