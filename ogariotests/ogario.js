@@ -4,7 +4,7 @@
 // Thank you Snez for decoding Feross
 // Thank you volum for the case 16: instance
 
-//v1.49
+//v1.50
 
 //Game Configurations
 //var agarversion="v12/1922/";
@@ -9676,9 +9676,9 @@ ogcustom1=
                     t[`lineWidth`] = a, t[`strokeStyle`] = n;
                     for (var l = 0; l < o; l += 2) t[`beginPath`](), t[`arc`](e, i, s - a / 2, l * r, (l + 1) * r, !1), t[`stroke`]();
                 },
-                'drawTeammatesInd': function(t, e, i, s) {
-                    this[`indicator`] && t[`drawImage`](this[`indicator`], e - 45, i - s - 90);
-                },
+//                'drawTeammatesInd': function(t, e, i, s) {
+//                   this[`indicator`] && t[`drawImage`](this[`indicator`], e - 45, i - s - 90);
+//                },
                 'drawPieChart': function() {
                     this['pieChart'] || (this[`pieChart`] = document[`createElement`](`canvas`));
                     var t = this[`pieChart`][`getContext`]('2d'),
