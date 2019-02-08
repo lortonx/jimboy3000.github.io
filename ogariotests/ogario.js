@@ -2,7 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.59
+//v1.60
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -42,7 +42,14 @@ setTimeout(function(){
 //set values outside ogario
 window.leaderboardlimit=10;
 window.vanillaskins=false;
+//window.customskinsname;
+//window.customskinsurl;
 
+//core.registerskin('fly', null, 'https://configs-web.agario.miniclippt.com/live/v9/1027/fly.png', 1, null)
+core.registerskin = function(a, b, c, d, e){
+	window.customskinsname=a;
+	window.customskinsurl=c;
+}
 
 var core = function(t, e, i) {
     //here starts ogario
@@ -3687,11 +3694,9 @@ var core = function(t, e, i) {
 
 				if (window.customskinsname!=null && window.customskinsname!=undefined){
 					for (i=0; i<=this[`leaderboard`].length-1; i++){		
-							console.log(this[`leaderboard`]);
 						if (this[`leaderboard`][i]['nick'] == window.customskinsname){
-							console.log("is: " + window.customskinsname);
-							ogarminimapdrawer[`customSkinsMap`][window.customskinsname]="https://i.imgur.com/poFMdZd.png";
-							ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://i.imgur.com/poFMdZd.png");
+							ogarminimapdrawer[`customSkinsMap`][window.customskinsname]=window.customskinsurl;
+							ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], window.customskinsurl);
 							window.customskinsname=undefined;
 						}
 					}
