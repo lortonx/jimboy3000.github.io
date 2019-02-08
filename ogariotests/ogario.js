@@ -2,13 +2,15 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.51
+//v1.52
 //Game Configurations
-//var agarversion="v12/1922/";
-var agarversion="";
+
+var agarversion="v12/1963/";
+var Lmagarversion="";
+
 window.LMGameConfiguration = $.ajax({
         type: "GET",
-		url: "https://jimboy3100.github.io/agario/live/"+agarversion+"GameConfiguration.json",
+		url: "https://jimboy3100.github.io/agario/live/"+Lmagarversion+"GameConfiguration.json",
 		async: false,
         datatype: "json",
         success: function(info) {
@@ -21,7 +23,7 @@ setTimeout(function(){
 	if (window.LMGameConfiguration==undefined){
 		window.LMGameConfiguration = $.ajax({
         type: "GET",
-		url: "https://configs-web.agario.miniclippt.com/live/v12/1922/GameConfiguration.json",
+		url: "https://configs-web.agario.miniclippt.com/live/"+agarversion+"GameConfiguration.json",
 		async: false,
         datatype: "json",
         success: function(info) {
@@ -3751,7 +3753,7 @@ var core = function(t, e, i) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 						if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){
 						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/v12/1922/"+window.EquippableSkins[player].image;
-						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/v12/1922/"+window.EquippableSkins[player].image);
+						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/"+agarversion+window.EquippableSkins[player].image);
 							}
 									
                                     }
