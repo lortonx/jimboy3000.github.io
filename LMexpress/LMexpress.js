@@ -2279,9 +2279,9 @@ function acceptServerBtn(){
 			$("#acceptServer").click(function() {
 				
 				
-				if(isLegendExpress(Express)=="True"){ //if is Legend Express
+				if(isLegendExpress(Express)=="True"){ //if is Legend express
 					if (MSGCOMMANDS.includes("agar.io/#")){ //if sent server is Party mode
-					console.log("1a - Legend Express, Party mode");
+					console.log("1a - Legend express, Party mode");
 				if (getParameterByName("pass", MSGCOMMANDS)!=null){
 					$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
 				};				
@@ -2289,7 +2289,7 @@ function acceptServerBtn(){
 					$("#connect2").click();					
 					}
 					else if (MSGCOMMANDS3.includes("sip=")){	//if not Party mode
-					console.log("1b - Legend Express, Not Party mode");
+					console.log("1b - Legend express, Not Party mode");
 				if (getParameterByName("pass", MSGCOMMANDS)!=null){
 					$("#clantag").val(getParameterByName("pass", MSGCOMMANDS));	
 				};						
