@@ -2,7 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.60
+//v1.61
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -45,11 +45,12 @@ window.vanillaskins=false;
 //window.customskinsname;
 //window.customskinsurl;
 
-//core.registerskin('fly', null, 'https://configs-web.agario.miniclippt.com/live/v9/1027/fly.png', 1, null)
-core.registerskin = function(a, b, c, d, e){
+/*core.registerskin('fly', null, 'https://configs-web.agario.miniclippt.com/live/v9/1027/fly.png', 1, null)
+var core.registerskin = function(a, b, c, d, e){
 	window.customskinsname=a;
 	window.customskinsurl=c;
 }
+*/
 
 var core = function(t, e, i) {
     //here starts ogario
