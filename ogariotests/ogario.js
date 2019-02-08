@@ -2,7 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.56
+//v1.57
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -3678,7 +3678,7 @@ var core = function(t, e, i) {
             'handleLeaderboard': function() {
 				console.log("hi");
 				if (window.customskinsname!=null){
-					(for i=0; i<=window.legendmod.leaderboard.length; i++){
+					for (i=0; i<=window.legendmod.leaderboard.length; i++){
 						if (window.legendmod.leaderboard[i].nick == window.customskinsname){
 							console.log(window.customskinsname);
 						}
