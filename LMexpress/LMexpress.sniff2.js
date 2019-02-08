@@ -1,4 +1,4 @@
-//Legend Mod Sniff2 by jimboy3100
+//Legend mod Sniff2 by jimboy3100
 (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -88,7 +88,7 @@ function disconnect2min(){
 		commandMsg="EU-London"; 
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
 		dosendadmincommand();
-		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
+		toastr["info"]("Those who use Legend mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
 		}}
 		
 function disconnectnow(){
@@ -96,7 +96,7 @@ function disconnectnow(){
 		commandMsg="RU-Russia";
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
 		dosendadmincommand();
-		toastr["info"]("Those who use Legend Mod (except those who use ℄ symbol), same password will disconnect now");
+		toastr["info"]("Those who use Legend mod (except those who use ℄ symbol), same password will disconnect now");
 		}}	
 function showstatsphp(){
 	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
