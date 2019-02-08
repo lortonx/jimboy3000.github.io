@@ -3752,8 +3752,10 @@ var core = function(t, e, i) {
                                     if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 						if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){
-						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/v12/1922/"+window.EquippableSkins[player].image;
+						console.log("https://configs-web.agario.miniclippt.com/live/"+agarversion+window.EquippableSkins[player].image);							
+						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/"+agarversion+window.EquippableSkins[player].image;
 						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/"+agarversion+window.EquippableSkins[player].image);
+
 							}
 									
                                     }
