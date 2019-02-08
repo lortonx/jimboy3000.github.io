@@ -2,8 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.50
-
+//v1.51
 //Game Configurations
 //var agarversion="v12/1922/";
 var agarversion="";
@@ -30,7 +29,13 @@ setTimeout(function(){
 		}
 		}).responseJSON;
 	}
- }, 4000);
+ }, 3000);
+setTimeout(function(){ 
+	if (window.LMGameConfiguration!=undefined){
+		 window.LMAgarGameConfiguration = window.LMGameConfiguration;
+         window.EquippableSkins = LMAgarGameConfiguration.gameConfig["Gameplay - Equippable Skins"];		 
+	}
+ }, 5000);
 
 //set values outside ogario
 window.leaderboardlimit=10;
@@ -3288,7 +3293,7 @@ var core = function(t, e, i) {
                         }
                     }
                 };
-        }
+        }		
 		window.legendmod1=ogarbasicassembly;
         var M = {
             'ws': null,
@@ -3739,16 +3744,14 @@ var core = function(t, e, i) {
                         if (g != null) {
 							if (window.vanillaskins==true){
                             var skin2search = g.replace('%', '');
-                            var LMAgarGameConfiguration = window.window.LMGameConfiguration;
-                            if (LMAgarGameConfiguration != undefined) {
-                                var EquippableSkins = LMAgarGameConfiguration.gameConfig["Gameplay - Equippable Skins"];
-                                for (var player = 0; player < EquippableSkins.length; player++) {
+                            if (window.LMAgarGameConfiguration != undefined) {
+                                for (var player = 0; player < window.EquippableSkins.length; player++) {
                                     //console.log(LMAgarGameConfiguration.gameConfig["Gameplay - Equippable Skins"]);
-                                    if (EquippableSkins[player].productId == "skin_" + skin2search) {
+                                    if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 						if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){
-						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/v12/1922/"+EquippableSkins[player].image;
-						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/v12/1922/"+EquippableSkins[player].image);
+						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/v12/1922/"+window.EquippableSkins[player].image;
+						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/v12/1922/"+window.EquippableSkins[player].image);
 							}
 									
                                     }
@@ -3886,6 +3889,7 @@ var core = function(t, e, i) {
             }
         };
 		window.legendmod = M; // look at this
+		
         e['sendAction'] = function(t) {
             M['sendAction'](t);
         };
