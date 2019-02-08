@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.63
+//v1.64
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -3690,17 +3690,19 @@ var core = function(t, e, i) {
                 if (this[`playerPosition`] > window.leaderboardlimit && (t += '<span class=\"me\">' + this[`playerPosition`] + '. ' + ogarminimapdrawer[`escapeHTML`](this['playerNick']) + `</span>`), v[`showLbData`])
                     for (var o = 0; o < this[`ghostCells`][`length`] && o != i; o++) e += '<span class=\"lb-data\">', e += `<span class=\"top5-mass-color\">[` + ogarminimapdrawer[`shortMassFormat`](this['ghostCells'][o][`mass`]) + `]</span>`, e += `<span class=\"hud-main-color\">[` + ogarminimapdrawer[`calculateMapSector`](this[`ghostCells`][o]['x'], this[`ghostCells`][o]['y']) + `]</span>`, e += `</span>`;
                 ogarminimapdrawer[`displayLeaderboard`](t, e);
-				/////////////////
-
-				if (window.customskinsname!=null && window.customskinsname!=undefined){
-					for (i=0; i<=this[`leaderboard`].length-1; i++){		
-						if (this[`leaderboard`][i]['nick'] == window.customskinsname){
-							ogarminimapdrawer[`customSkinsMap`][window.customskinsname]=window.customskinsurl;
-							ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], window.customskinsurl);
-							window.customskinsname=undefined;
+				///////////////// establish core.registerSkin
+				if (window.vanillaskins==true){
+					if (window.customskinsname!=null && window.customskinsname!=undefined){
+						for (i=0; i<=this[`leaderboard`].length-1; i++){		
+							if (this[`leaderboard`][i]['nick'] == window.customskinsname){
+								ogarminimapdrawer[`customSkinsMap`][window.customskinsname]=window.customskinsurl;
+								ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], window.customskinsurl);
+								window.customskinsname=undefined;
+							}
 						}
 					}
-				}					
+				}
+				
             },
             'flushCellsData': function() {
                 this[`indexedCells`] = {}, this[`cells`] = [], this[`playerCells`] = [], this[`playerCellIDs`] = [], this[`ghostCells`] = [], this[`food`] = [], this[`viruses`] = [];
