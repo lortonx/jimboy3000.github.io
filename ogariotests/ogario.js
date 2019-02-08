@@ -44,8 +44,8 @@ window.vanillaskins=false;
 //window.customskinsname;
 //window.customskinsurl;
 
-/*core.registerskin('fly', null, 'https://i.imgur.com/poFMdZd.png', 1, null)
-core.registerskin = function(a, b, c, d, e){
+/*core.registerSkin('fly', null, 'https://i.imgur.com/poFMdZd.png', 1, null)
+core.registerSkin = function(a, b, c, d, e){
 	window.customskinsname=a;
 	window.customskinsurl=c;
 }
