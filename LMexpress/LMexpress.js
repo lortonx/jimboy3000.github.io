@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.004 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "11 BETA"; // the version 1.1-> 1.11
+var semimodVersion = "12"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -404,7 +404,7 @@ var datasent2;
 emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
-toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
+//toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
         if (modVersion != "1.5") {	           
 			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}	
@@ -1736,8 +1736,12 @@ function parseLegendJSONAPI(LegendJSON) {
 //    LegendJSON.legendSettings.usergender = localStorage.getItem("usergender");
     LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
+	
+	LegendJSON.legendSettings.VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
+	LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
+	
     if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
-        LegendJSON.legendSettings.initialMusicUrl = "https://www.youtube.com/watch?v=L7klPYKTx64"
+        LegendJSON.legendSettings.initialMusicUrl = defaultMusicUrl;
     };
     LegendJSON.legendSettings.lastIP = localStorage.getItem("lastIP");
     if (LegendJSON.legendSettings.lastIP == "null" || LegendJSON.legendSettings.lastIP==null) {
@@ -1988,6 +1992,9 @@ function saveLegendJSONAPI() {
     localStorage.setItem("saveclanpassword", LegendJSON.legendSettings.saveclanpassword);
     localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
     localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
+	
+    localStorage.setItem("VanillaskinsSaved", LegendJSON.legendSettings.VanillaskinsSaved);
+    localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);	
 //    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
 //    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
 //    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
