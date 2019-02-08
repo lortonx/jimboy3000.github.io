@@ -1,11 +1,11 @@
-// Open Source script (ogario.v4.js)
+// Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.55
+//v1.56
 //Game Configurations
 
-var window.agarversion="v12/1963/";
+window.agarversion="v12/1963/";
 var Lmagarversion="";
 
 window.LMGameConfiguration = $.ajax({
@@ -3677,7 +3677,13 @@ var core = function(t, e, i) {
             },
             'handleLeaderboard': function() {
 				console.log("hi");
-				
+				if (window.customskinsname!=null){
+					(for i=0; i<=window.legendmod.leaderboard.length; i++){
+						if (window.legendmod.leaderboard[i].nick == window.customskinsname){
+							console.log(window.customskinsname);
+						}
+					}
+				}	
 				
                 for (var t = '', e = '', i = 0; i < this['leaderboard'][`length`] && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
