@@ -2,7 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.57
+//v1.58
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -3675,16 +3675,7 @@ var core = function(t, e, i) {
                         console[`log`]('[Legend mod Express] Unknown sub opcode:', t[`readUInt8`](0));
                 }
             },
-            'handleLeaderboard': function() {
-				console.log("hi");
-				if (window.customskinsname!=null){
-					for (i=0; i<=window.legendmod.leaderboard.length; i++){
-						if (window.legendmod.leaderboard[i].nick == window.customskinsname){
-							console.log(window.customskinsname);
-						}
-					}
-				}	
-				
+            'handleLeaderboard': function() {				
                 for (var t = '', e = '', i = 0; i < this['leaderboard'][`length`] && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
                     'isPlayer' === this[`leaderboard`][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb['clanTag'][`length`] && 0 == this[`leaderboard`][i][`nick`].indexOf(ogarcopythelb[`clanTag`]) && (s = `<span class=\"teammate\">`), t += s + (i + 1) + '. ' + ogarminimapdrawer[`escapeHTML`](this['leaderboard'][i]['nick']) + `</span>`;
@@ -3692,6 +3683,18 @@ var core = function(t, e, i) {
                 if (this[`playerPosition`] > window.leaderboardlimit && (t += '<span class=\"me\">' + this[`playerPosition`] + '. ' + ogarminimapdrawer[`escapeHTML`](this['playerNick']) + `</span>`), v[`showLbData`])
                     for (var o = 0; o < this[`ghostCells`][`length`] && o != i; o++) e += '<span class=\"lb-data\">', e += `<span class=\"top5-mass-color\">[` + ogarminimapdrawer[`shortMassFormat`](this['ghostCells'][o][`mass`]) + `]</span>`, e += `<span class=\"hud-main-color\">[` + ogarminimapdrawer[`calculateMapSector`](this[`ghostCells`][o]['x'], this[`ghostCells`][o]['y']) + `]</span>`, e += `</span>`;
                 ogarminimapdrawer[`displayLeaderboard`](t, e);
+				/////////////////
+				console.log("hi");
+				if (window.customskinsname!=null && window.customskinsname!=undefined){
+					for (i=0; i<=this[`leaderboard`].length; i++){						
+						if (this[`leaderboard`][i]['name'] == window.customskinsname){
+							console.log(window.customskinsname);
+							ogarminimapdrawer[`customSkinsMap`][window.customskinsname]="https://i.imgur.com/poFMdZd.png";
+							ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://i.imgur.com/poFMdZd.png");
+							window.customskinsname=undefined;
+						}
+					}
+				}					
             },
             'flushCellsData': function() {
                 this[`indexedCells`] = {}, this[`cells`] = [], this[`playerCells`] = [], this[`playerCellIDs`] = [], this[`ghostCells`] = [], this[`food`] = [], this[`viruses`] = [];
