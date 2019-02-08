@@ -1,11 +1,11 @@
-// Open Source script
+// Open Source script (ogario.v4.js)
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
 //v1.55
 //Game Configurations
 
-var agarversion="v12/1963/";
+var window.agarversion="v12/1963/";
 var Lmagarversion="";
 
 window.LMGameConfiguration = $.ajax({
@@ -23,7 +23,7 @@ setTimeout(function(){
 	if (window.LMGameConfiguration==undefined){
 		window.LMGameConfiguration = $.ajax({
         type: "GET",
-		url: "https://configs-web.agario.miniclippt.com/live/"+agarversion+"GameConfiguration.json",
+		url: "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+"GameConfiguration.json",
 		async: false,
         datatype: "json",
         success: function(info) {
@@ -3676,6 +3676,9 @@ var core = function(t, e, i) {
                 }
             },
             'handleLeaderboard': function() {
+				console.log("hi");
+				
+				
                 for (var t = '', e = '', i = 0; i < this['leaderboard'][`length`] && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
                     'isPlayer' === this[`leaderboard`][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb['clanTag'][`length`] && 0 == this[`leaderboard`][i][`nick`].indexOf(ogarcopythelb[`clanTag`]) && (s = `<span class=\"teammate\">`), t += s + (i + 1) + '. ' + ogarminimapdrawer[`escapeHTML`](this['leaderboard'][i]['nick']) + `</span>`;
@@ -3751,8 +3754,8 @@ var core = function(t, e, i) {
                                     if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 						if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){					
-						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/"+agarversion+window.EquippableSkins[player].image;
-						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/"+agarversion+window.EquippableSkins[player].image);
+						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image;
+						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image);
 											}								
 										}
 									}
