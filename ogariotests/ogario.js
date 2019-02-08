@@ -2,7 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
 
-//v1.58
+//v1.59
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -3684,11 +3684,12 @@ var core = function(t, e, i) {
                     for (var o = 0; o < this[`ghostCells`][`length`] && o != i; o++) e += '<span class=\"lb-data\">', e += `<span class=\"top5-mass-color\">[` + ogarminimapdrawer[`shortMassFormat`](this['ghostCells'][o][`mass`]) + `]</span>`, e += `<span class=\"hud-main-color\">[` + ogarminimapdrawer[`calculateMapSector`](this[`ghostCells`][o]['x'], this[`ghostCells`][o]['y']) + `]</span>`, e += `</span>`;
                 ogarminimapdrawer[`displayLeaderboard`](t, e);
 				/////////////////
-				console.log("hi");
+
 				if (window.customskinsname!=null && window.customskinsname!=undefined){
-					for (i=0; i<=this[`leaderboard`].length; i++){						
-						if (this[`leaderboard`][i]['name'] == window.customskinsname){
-							console.log(window.customskinsname);
+					for (i=0; i<=this[`leaderboard`].length-1; i++){		
+							console.log(this[`leaderboard`]);
+						if (this[`leaderboard`][i]['nick'] == window.customskinsname){
+							console.log("is: " + window.customskinsname);
 							ogarminimapdrawer[`customSkinsMap`][window.customskinsname]="https://i.imgur.com/poFMdZd.png";
 							ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://i.imgur.com/poFMdZd.png");
 							window.customskinsname=undefined;
