@@ -378,11 +378,3 @@ function erasescripter(){
 		$("#Userscripttexture5").val(""); localStorage.setItem("Userscripttexture5", ""); $('#Userscriptpages3>option:nth-child(5)').text("User Script 5"); $("#UserscripttextE").val(""); localStorage.setItem("Userscripttext15", ""); $("#UserscriptE").val(""); localStorage.setItem("Userscript5", "");}
 }
 
-//1. RegisterSkins
-if ( typeof core != 'undefined'){
-//core.registerSkin('fly', null, 'https://i.imgur.com/poFMdZd.png', 1, null);
-	core.registerSkin = function(a, b, c, d, e){
-	window.customskinsname=a;
-	window.customskinsurl=c;
-	}
-}
