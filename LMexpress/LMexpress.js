@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "12"; // the version 1.1-> 1.11
@@ -1738,10 +1738,10 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
 	
 	LegendJSON.legendSettings.VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
-	LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
 	if (localStorage.getItem("leaderboardlimit")!=null){
 	LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
 	}	
+	
     if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
         LegendJSON.legendSettings.initialMusicUrl = defaultMusicUrl;
     };
