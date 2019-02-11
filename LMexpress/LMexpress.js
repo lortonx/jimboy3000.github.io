@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "12"; // the version 1.1-> 1.11
+var semimodVersion = "13"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2401,6 +2401,9 @@ function MsgServCommandsreturner(){
 function universalchat(){
 $("#overlays").css("z-index", 100);
 fixservbtn();
+ setTimeout(function() {
+		fixservbtn2(); 
+}, 2000);
 
 var legbgpic = $("#menuBg").val();
 var legbgcolor = $("#menuPanelColor").val();
@@ -3177,7 +3180,6 @@ $('#message').keydown(function(e){
 
 }
 
-
 function fixservbtn(){
 $("#clantag").blur(function() {
 			Universalchatfix();
@@ -3187,11 +3189,11 @@ $("#server-connect").click(function() {
 		Universalchatfix();
 			}, 200);
     });
-$("#server-reconnect").click(function() {
+/*$("#server-reconnect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
 			}, 200);
-    });
+    });*/
 $("#server-join").click(function() {
         setTimeout(function() {
 		Universalchatfix();
@@ -3223,7 +3225,13 @@ $("#create-party-btn-2").click(function () {
 			}, 200);
 		});
 }
-
+function fixservbtn2(){
+$("#server-connect").click(function() {
+        setTimeout(function() {
+		Universalchatfix();
+			}, 200);
+    });
+}
 
 function Universalchatfix(){
 if ($("#ao2t-capture").hasClass("connected")){
