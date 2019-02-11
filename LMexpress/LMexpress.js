@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "13"; // the version 1.1-> 1.11
@@ -3226,7 +3226,7 @@ $("#create-party-btn-2").click(function () {
 		});
 }
 function fixservbtn2(){
-$("#server-connect").click(function() {
+$("#server-reconnect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
 			}, 200);
