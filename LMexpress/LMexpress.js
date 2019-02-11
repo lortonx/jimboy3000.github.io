@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.005 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "12"; // the version 1.1-> 1.11
@@ -3177,51 +3177,7 @@ $('#message').keydown(function(e){
 
 }
 
-function fixservbtn(){
-$("#clantag").blur(function() {
-			Universalchatfix();
-        });	
-$("#server-connect").click(function() {
-        setTimeout(function() {
-		Universalchatfix();
-			}, 200);
-    });
-$("#server-reconnect").click(function() {
-        setTimeout(function() {
-		Universalchatfix();
-			}, 200);
-    });
-$("#server-join").click(function() {
-        setTimeout(function() {
-		Universalchatfix();
-			}, 200);
-    });
-$('#tag').blur(function() {
-			setTimeout(function() {
-			Universalchatfix();
-			}, 200);
-        });
-$("#gamemode").change(function () {
-			setTimeout(function() {
-			Universalchatfix();
-			}, 200);
-		});
-$("#region").change(function () {
-			setTimeout(function() {
-			Universalchatfix();
-			}, 200);
-		});
-$("#join-party-btn-2").click(function () {
-			setTimeout(function() {
-			Universalchatfix();
-			}, 200);
-		});
-$("#create-party-btn-2").click(function () {
-			setTimeout(function() {
-			Universalchatfix();
-			}, 200);
-		});
-}
+
 function fixservbtn(){
 $("#clantag").blur(function() {
 			Universalchatfix();
@@ -3268,13 +3224,6 @@ $("#create-party-btn-2").click(function () {
 		});
 }
 
-function fixservbtn2(){
-$("#server-connect").click(function() {
-        setTimeout(function() {
-		Universalchatfix();
-			}, 200);
-    });
-}
 
 function Universalchatfix(){
 if ($("#ao2t-capture").hasClass("connected")){
