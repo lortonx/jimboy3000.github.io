@@ -2401,7 +2401,7 @@ function MsgServCommandsreturner(){
 function universalchat(){
 $("#overlays").css("z-index", 100);
 fixservbtn();
-fixservbtn2();
+
 var legbgpic = $("#menuBg").val();
 var legbgcolor = $("#menuPanelColor").val();
 
