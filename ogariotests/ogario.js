@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.70 WebGL tests
+//v1.72 WebGL tests
 
 //Game Configurations
 
@@ -4135,9 +4135,9 @@ var core = function(t, e, i) {
                     this[`indicator`] = null;
                     var t = document['createElement'](`canvas`);
                     t['width'] = 90, t[`height`] = 50;
-                    //var e = t.getContext('2d');
-					e.start2D();
+                    //var e = t.getContext('2d');					
 					var e = enableWebGLCanvas(e);
+					e.start2D();
                     e[`lineWidth`] = 2, e[`fillStyle`] = g['teammatesIndColor'], e['strokeStyle'] = `#000000`, e[`beginPath`](), e[`moveTo`](0, 0), e[`lineTo`](90, 0), e[`lineTo`](45, 50), e[`closePath`](), e[`fill`](), e[`stroke`](), this[`indicator`] = new Image(), this['indicator'][`src`] = t[`toDataURL`](), t = null;
 					e.finish2D();
 				},
