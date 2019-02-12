@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.69 WebGL tests
+//v1.70 WebGL tests
 
 //Game Configurations
 
@@ -4079,12 +4079,15 @@ var core = function(t, e, i) {
                 },
                 'drawPieChart': function() {
                     this['pieChart'] || (this[`pieChart`] = document[`createElement`](`canvas`));
-                    var t = this[`pieChart`].getContext('2d'),
+                    var t = enableWebGLCanvas(this.pieChart),					
+					//var t = this[`pieChart`].getContext('2d'),
                         e = Math['min'](200, 0.3 * this[`canvasWidth`]) / 200;
+						t.start2D();
                     this['pieChart'][`width`] = 200 * e, this[`pieChart`][`height`] = 240 * e, t['scale'](e, e);
                     for (var i = [`#333333`, `#FF3333`, '#33FF33', `#3333FF`], s = 0, o = 0; o < M[`pieChart`][`length`]; o++) {
                         var a = s + M['pieChart'][o] * this[`pi2`];
                         t[`fillStyle`] = i[o + 1], t['beginPath'](), t[`moveTo`](100, 140), t[`arc`](100, 140, 80, s, a, !1), t['fill'](), s = a;
+						t.finish2D();
                     }
                 },
                 'drawBattleArea': function(t) {
@@ -4122,16 +4125,22 @@ var core = function(t, e, i) {
                     var t = 10 + g[`foodSize`],
                         e = document[`createElement`](`canvas`);
                     e['width'] = 2 * t, e['height'] = 2 * t;
-                    var i = e.getContext('2d');
+                    //var i = e.getContext('2d');
+					var i = enableWebGLCanvas(e);
+					i.start2D();
                     i[`arc`](t, t, t, 0, this[`pi2`], !1), i[`fillStyle`] = g[`foodColor`], i[`fill`](), this['pellet'] = new Image(), this[`pellet`][`src`] = e[`toDataURL`](), e = null;
+					i.finish2D();
                 },
                 'preDrawIndicator': function() {
                     this[`indicator`] = null;
                     var t = document['createElement'](`canvas`);
                     t['width'] = 90, t[`height`] = 50;
-                    var e = t.getContext('2d');
+                    //var e = t.getContext('2d');
+					e.start2D();
+					var e = enableWebGLCanvas(e);
                     e[`lineWidth`] = 2, e[`fillStyle`] = g['teammatesIndColor'], e['strokeStyle'] = `#000000`, e[`beginPath`](), e[`moveTo`](0, 0), e[`lineTo`](90, 0), e[`lineTo`](45, 50), e[`closePath`](), e[`fill`](), e[`stroke`](), this[`indicator`] = new Image(), this['indicator'][`src`] = t[`toDataURL`](), t = null;
-                },
+					e.finish2D();
+				},
                 'countFps': function() {
                     if (v['showStatsFPS']) {
                         var t = Date[`now`]();
