@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.68 WebGL tests
+//v1.69 WebGL tests
 
 //Game Configurations
 
@@ -2468,7 +2468,7 @@ var core = function(t, e, i) {
                         //console.log(e);
                         var i = document[`createElement`](`canvas`);
                         i[`width`] = 512, i[`height`] = 512;
-						s = enableWebGLCanvas(i);
+						var s = enableWebGLCanvas(i);
                         //var s = i.getContext('2d');
 						s.start2D();
                         s[`beginPath`](), s[`arc`](256, 256, 256, 0, 2 * Math['PI'], !1), s[`clip`](), s[`drawImage`](this[`customSkinsCache`][e], 0, 0, 512, 512), this[`customSkinsCache`][e + `_cached`] = new Image(), this[`customSkinsCache`][e + `_cached`][`src`] = i[`toDataURL`](), i = null, this[`cacheSkin`](this[`customSkinsCache`]);
