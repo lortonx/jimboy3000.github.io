@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.72 WebGL tests
+//v1.76 WebGL tests
 
 //Game Configurations
 
@@ -3180,7 +3180,11 @@ var core = function(t, e, i) {
                 this[`createCanvas`] = function() {
                     this[`txtCanvas`] || (this[`txtCanvas`] = document[`createElement`]('canvas'),
                         this[`txtCtx`] = this[`txtCanvas`].getContext('2d'),
-                        this[`txtCtx`][`ogarioCtx`] = !0);
+					    //this[`txtCtx`] = enableWebGLCanvas(this.txtCanvas),
+						//this.txtCtx.start2D(),                
+                        //this[`txtCtx`][`ogarioCtx`] = !0,
+						//this.txtCtx.finish2D());
+						this[`txtCtx`][`ogarioCtx`] = !0);
                 },
                 this[`setDrawing`] = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
                     this[`setColor`](ogarsetDrawinglabel1),
@@ -3935,9 +3939,9 @@ var core = function(t, e, i) {
                 'pellet': null,
                 'indicator': null,
                 'setCanvas': function() {
-					this.canvas = document.getElementById(`canvas`), this.ctx = this.canvas.getContext('2d'), this.canvas.onmousemove= function(t) {
+					//this.canvas = document.getElementById(`canvas`), this.ctx = this.canvas.getContext('2d'), this.canvas.onmousemove= function(t) {
 					//this.canvas = document.getElementById(`canvas`), this.ctx = enableWebGLCanvas(canvas);this.ctx = this.canvas.getContext('2d'), this.canvas.onmousemove= function(t) {
-					//this.canvas = document.getElementById(`canvas`), this.ctx = enableWebGLCanvas(canvas); this.canvas.onmousemove= function(t) {
+					this.canvas = document.getElementById(`canvas`), this.ctx = enableWebGLCanvas(canvas); this.canvas.onmousemove= function(t) {
 						
                         M['clientX'] = t[`clientX`], M[`clientY`] = t['clientY'], M[`getCursorPosition`]();
                     };
@@ -4136,7 +4140,7 @@ var core = function(t, e, i) {
                     var t = document['createElement'](`canvas`);
                     t['width'] = 90, t[`height`] = 50;
                     //var e = t.getContext('2d');					
-					var e = enableWebGLCanvas(e);
+					var e = enableWebGLCanvas(t);
 					e.start2D();
                     e[`lineWidth`] = 2, e[`fillStyle`] = g['teammatesIndColor'], e['strokeStyle'] = `#000000`, e[`beginPath`](), e[`moveTo`](0, 0), e[`lineTo`](90, 0), e[`lineTo`](45, 50), e[`closePath`](), e[`fill`](), e[`stroke`](), this[`indicator`] = new Image(), this['indicator'][`src`] = t[`toDataURL`](), t = null;
 					e.finish2D();
