@@ -1,784 +1,658 @@
-!(function(o, n) {
-    function e(n) {
-        if (null !== o.FB)
-            return (
-                (s.loginIntent = "1"),
-                (s.context = "facebook"),
-                o.updateStorage(),
-                o.FB.login(
-                    function(o) {
-                        t(o);
-                    }, {
-                        scope: "public_profile, email"
-                    }
-                ),
-                !0
-            );
-        alert(
-            "You seem to have something blocking Facebook on your browser, please check for any extensions"
-        );
-    }
-
-    function t(e) {
-        if ("connected" === e.status) {
-            var t = e.authResponse.accessToken;
-            t
-                ?
-                (master.doLoginWithFB(t),
-                    o.FB.api("/me/picture?width=180&height=180", function(e) {
-                        e.data &&
-                            e.data.url &&
-                            ((s.userInfo.picture = e.data.url),
-                                n(".agario-profile-picture").attr("src", e.data.url),
-                                o.updateStorage());
-                    }),
-                    n("#helloContainer").attr("data-logged-in", "1"),
-                    n(".progress-bar-striped").width("100%")) :
-                S < 3 && (S++, o.facebookRelogin(), o.logout());
+// Decoded by Jimboy3100
+// v1.4
+function t1() {
+	global=window;
+	require=window["jQuery"]
+  /**
+   * @return {?}
+   */
+  function timeoutSaver() {
+    /** @type {boolean} */
+    var closeExpr = !![];
+    return function(object__360, function__361) {
+      /** @type {!Function} */
+      var closingExpr = closeExpr ? function() {
+        if (function__361) {
+          var cssobj = function__361["apply"](object__360, arguments);
+          /** @type {null} */
+          function__361 = null;
+          return cssobj;
         }
+      } : function() {
+      };
+      /** @type {boolean} */
+      closeExpr = ![];
+      return closingExpr;
+    };
+  }
+  /**
+   * @param {?} keyBindingMapper
+   * @return {?}
+   */
+  function initialize(keyBindingMapper) {
+    if (null !== global["FB"]) {
+      return message["loginIntent"] = "1", message["context"] = "facebook", global["updateStorage"](), global["FB"]["login"](function(requestTokenResult) {
+        init(requestTokenResult);
+      }, {
+        "scope" : "public_profile, email"
+      }), true;
     }
-
-    function a() {
-        U.currentUser.get(),
-            "1" === s.loginIntent &&
-            "google" === s.context &&
-            !U.isSignedIn.get() &&
-            U.signIn();
-    }
-
-    function i(e) {
-        if (
-            e &&
-            U &&
-            "1" === s.loginIntent &&
-            "google" === s.context &&
-            U.isSignedIn.get()
-        ) {
-            var t = e.getAuthResponse().access_token,
-                a = e.getBasicProfile().getImageUrl();
-            master.doLoginWithGPlus(t),
-                a &&
-                ((s.userInfo.picture = a),
-                    o.updateStorage(),
-                    n(".agario-profile-picture").attr("src", a)),
-                n("#helloContainer").attr("data-logged-in", "1"),
-                n(".progress-bar-striped").width("100%");
+    alert("You seem to have something blocking Facebook on your browser, please check for any extensions");
+  }
+  /**
+   * @param {!Object} response
+   * @return {undefined}
+   */
+  function init(response) {
+    if ("connected" === response["status"]) {
+      var accessToken = response["authResponse"]["accessToken"];
+      if (accessToken) {
+        master["doLoginWithFB"](accessToken);
+        global["FB"]["api"]("/me/picture?width=180&height=180", function(images) {
+          if (images["data"] && images["data"]["url"]) {
+            message["userInfo"]["picture"] = images["data"]["url"];
+            require(".agario-profile-picture")["attr"]("src", images["data"]["url"]);
+            global["updateStorage"]();
+          }
+        });
+        require("#helloContainer")["attr"]("data-logged-in", "1");
+        require(".progress-bar-striped")["width"]("100%");
+      } else {
+        if (_0x136f53 < 3) {
+          _0x136f53++;
+          global["facebookRelogin"]();
+          global["logout"]();
         }
+      }
     }
-    var r = {
-            AF: "JP-Tokyo",
-            AX: "EU-London",
-            AL: "EU-London",
-            DZ: "EU-London",
-            AS: "SG-Singapore",
-            AD: "EU-London",
-            AO: "EU-London",
-            AI: "US-Atlanta",
-            AG: "US-Atlanta",
-            AR: "BR-Brazil",
-            AM: "JP-Tokyo",
-            AW: "US-Atlanta",
-            AU: "SG-Singapore",
-            AT: "EU-London",
-            AZ: "JP-Tokyo",
-            BS: "US-Atlanta",
-            BH: "JP-Tokyo",
-            BD: "JP-Tokyo",
-            BB: "US-Atlanta",
-            BY: "EU-London",
-            BE: "EU-London",
-            BZ: "US-Atlanta",
-            BJ: "EU-London",
-            BM: "US-Atlanta",
-            BT: "JP-Tokyo",
-            BO: "BR-Brazil",
-            BQ: "US-Atlanta",
-            BA: "EU-London",
-            BW: "EU-London",
-            BR: "BR-Brazil",
-            IO: "JP-Tokyo",
-            VG: "US-Atlanta",
-            BN: "JP-Tokyo",
-            BG: "EU-London",
-            BF: "EU-London",
-            BI: "EU-London",
-            KH: "JP-Tokyo",
-            CM: "EU-London",
-            CA: "US-Atlanta",
-            CV: "EU-London",
-            KY: "US-Atlanta",
-            CF: "EU-London",
-            TD: "EU-London",
-            CL: "BR-Brazil",
-            CN: "CN-China",
-            CX: "JP-Tokyo",
-            CC: "JP-Tokyo",
-            CO: "BR-Brazil",
-            KM: "EU-London",
-            CD: "EU-London",
-            CG: "EU-London",
-            CK: "SG-Singapore",
-            CR: "US-Atlanta",
-            CI: "EU-London",
-            HR: "EU-London",
-            CU: "US-Atlanta",
-            CW: "US-Atlanta",
-            CY: "JP-Tokyo",
-            CZ: "EU-London",
-            DK: "EU-London",
-            DJ: "EU-London",
-            DM: "US-Atlanta",
-            DO: "US-Atlanta",
-            EC: "BR-Brazil",
-            EG: "EU-London",
-            SV: "US-Atlanta",
-            GQ: "EU-London",
-            ER: "EU-London",
-            EE: "EU-London",
-            ET: "EU-London",
-            FO: "EU-London",
-            FK: "BR-Brazil",
-            FJ: "SG-Singapore",
-            FI: "EU-London",
-            FR: "EU-London",
-            GF: "BR-Brazil",
-            PF: "SG-Singapore",
-            GA: "EU-London",
-            GM: "EU-London",
-            GE: "JP-Tokyo",
-            DE: "EU-London",
-            GH: "EU-London",
-            GI: "EU-London",
-            GR: "EU-London",
-            GL: "US-Atlanta",
-            GD: "US-Atlanta",
-            GP: "US-Atlanta",
-            GU: "SG-Singapore",
-            GT: "US-Atlanta",
-            GG: "EU-London",
-            GN: "EU-London",
-            GW: "EU-London",
-            GY: "BR-Brazil",
-            HT: "US-Atlanta",
-            VA: "EU-London",
-            HN: "US-Atlanta",
-            HK: "JP-Tokyo",
-            HU: "EU-London",
-            IS: "EU-London",
-            IN: "JP-Tokyo",
-            ID: "JP-Tokyo",
-            IR: "JP-Tokyo",
-            IQ: "JP-Tokyo",
-            IE: "EU-London",
-            IM: "EU-London",
-            IL: "JP-Tokyo",
-            IT: "EU-London",
-            JM: "US-Atlanta",
-            JP: "JP-Tokyo",
-            JE: "EU-London",
-            JO: "JP-Tokyo",
-            KZ: "JP-Tokyo",
-            KE: "EU-London",
-            KI: "SG-Singapore",
-            KP: "JP-Tokyo",
-            KR: "JP-Tokyo",
-            KW: "JP-Tokyo",
-            KG: "JP-Tokyo",
-            LA: "JP-Tokyo",
-            LV: "EU-London",
-            LB: "JP-Tokyo",
-            LS: "EU-London",
-            LR: "EU-London",
-            LY: "EU-London",
-            LI: "EU-London",
-            LT: "EU-London",
-            LU: "EU-London",
-            MO: "JP-Tokyo",
-            MK: "EU-London",
-            MG: "EU-London",
-            MW: "EU-London",
-            MY: "JP-Tokyo",
-            MV: "JP-Tokyo",
-            ML: "EU-London",
-            MT: "EU-London",
-            MH: "SG-Singapore",
-            MQ: "US-Atlanta",
-            MR: "EU-London",
-            MU: "EU-London",
-            YT: "EU-London",
-            MX: "US-Atlanta",
-            FM: "SG-Singapore",
-            MD: "EU-London",
-            MC: "EU-London",
-            MN: "JP-Tokyo",
-            ME: "EU-London",
-            MS: "US-Atlanta",
-            MA: "EU-London",
-            MZ: "EU-London",
-            MM: "JP-Tokyo",
-            NA: "EU-London",
-            NR: "SG-Singapore",
-            NP: "JP-Tokyo",
-            NL: "EU-London",
-            NC: "SG-Singapore",
-            NZ: "SG-Singapore",
-            NI: "US-Atlanta",
-            NE: "EU-London",
-            NG: "EU-London",
-            NU: "SG-Singapore",
-            NF: "SG-Singapore",
-            MP: "SG-Singapore",
-            NO: "EU-London",
-            OM: "JP-Tokyo",
-            PK: "JP-Tokyo",
-            PW: "SG-Singapore",
-            PS: "JP-Tokyo",
-            PA: "US-Atlanta",
-            PG: "SG-Singapore",
-            PY: "BR-Brazil",
-            PE: "BR-Brazil",
-            PH: "JP-Tokyo",
-            PN: "SG-Singapore",
-            PL: "EU-London",
-            PT: "EU-London",
-            PR: "US-Atlanta",
-            QA: "JP-Tokyo",
-            RE: "EU-London",
-            RO: "EU-London",
-            RU: "RU-Russia",
-            RW: "EU-London",
-            BL: "US-Atlanta",
-            SH: "EU-London",
-            KN: "US-Atlanta",
-            LC: "US-Atlanta",
-            MF: "US-Atlanta",
-            PM: "US-Atlanta",
-            VC: "US-Atlanta",
-            WS: "SG-Singapore",
-            SM: "EU-London",
-            ST: "EU-London",
-            SA: "EU-London",
-            SN: "EU-London",
-            RS: "EU-London",
-            SC: "EU-London",
-            SL: "EU-London",
-            SG: "JP-Tokyo",
-            SX: "US-Atlanta",
-            SK: "EU-London",
-            SI: "EU-London",
-            SB: "SG-Singapore",
-            SO: "EU-London",
-            ZA: "EU-London",
-            SS: "EU-London",
-            ES: "EU-London",
-            LK: "JP-Tokyo",
-            SD: "EU-London",
-            SR: "BR-Brazil",
-            SJ: "EU-London",
-            SZ: "EU-London",
-            SE: "EU-London",
-            CH: "EU-London",
-            SY: "EU-London",
-            TW: "JP-Tokyo",
-            TJ: "JP-Tokyo",
-            TZ: "EU-London",
-            TH: "JP-Tokyo",
-            TL: "JP-Tokyo",
-            TG: "EU-London",
-            TK: "SG-Singapore",
-            TO: "SG-Singapore",
-            TT: "US-Atlanta",
-            TN: "EU-London",
-            TR: "TK-Turkey",
-            TM: "JP-Tokyo",
-            TC: "US-Atlanta",
-            TV: "SG-Singapore",
-            UG: "EU-London",
-            UA: "EU-London",
-            AE: "EU-London",
-            GB: "EU-London",
-            US: "US-Atlanta",
-            UM: "SG-Singapore",
-            VI: "US-Atlanta",
-            UY: "BR-Brazil",
-            UZ: "JP-Tokyo",
-            VU: "SG-Singapore",
-            VE: "BR-Brazil",
-            VN: "JP-Tokyo",
-            WF: "SG-Singapore",
-            EH: "EU-London",
-            YE: "JP-Tokyo",
-            ZM: "EU-London",
-            ZW: "EU-London"
+  }
+  /**
+   * @return {undefined}
+   */
+  function login() {
+    PL$12["currentUser"]["get"]();
+    if ("1" === message["loginIntent"] && "google" === message["context"] && !PL$12["isSignedIn"]["get"]()) {
+      PL$12["signIn"]();
+    }
+  }
+  /**
+   * @param {?} pointSizeParam
+   * @return {undefined}
+   */
+  function callback(pointSizeParam) {
+    if (pointSizeParam && PL$12 && "1" === message["loginIntent"] && "google" === message["context"] && PL$12["isSignedIn"]["get"]()) {
+      var access_token = pointSizeParam["getAuthResponse"]()["access_token"];
+      var attrVal = pointSizeParam["getBasicProfile"]()["getImageUrl"]();
+      master["doLoginWithGPlus"](access_token);
+      if (attrVal) {
+        message["userInfo"]["picture"] = attrVal;
+        global["updateStorage"]();
+        require(".agario-profile-picture")["attr"]("src", attrVal);
+      }
+      require("#helloContainer")["attr"]("data-logged-in", "1");
+      require(".progress-bar-striped")["width"]("100%");
+    }
+  }
+  var _LSSaver = timeoutSaver(this, function() {
+  });
+  _LSSaver();
+
+  var message = {
+    "context" : null,
+    "defaultProvider" : "facebook",
+    "loginIntent" : "0",
+    "userInfo" : {
+      "socialToken" : null,
+      "tokenExpires" : "",
+      "level" : "",
+      "xp" : "",
+      "xpNeeded" : "",
+      "name" : "",
+      "picture" : "",
+      "displayName" : "",
+      "loggedIn" : "0",
+      "socialId" : ""
+    }
+  };
+  var headers = {
+    "fb_app_id" : 677505792353827,
+    "gplus_client_id" : "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
+    "master_url" : "webbouncer-live-v6-0.agario.miniclippt.com",
+    "endpoint_version" : "v4",
+    "proto_version" : "12.0.1",
+    "client_version" : 30400,
+    "client_version_string" : "3.4.0"
+  };
+  /** @type {number} */
+  var _0x136f53 = 0;
+  /** @type {null} */
+  var PL$12 = null;
+  global["master"] = {
+    "ws" : null,
+    "serverIP" : null,
+    "endpoint" : null,
+    "region" : "",
+    "gameMode" : ":ffa",
+    "partyToken" : "",
+    "findingServer" : 0,
+    "curValidFindServer" : 0,
+    "backoffPeriod" : 500,
+    "regionNames" : {},
+    "context" : "",
+    "accessToken" : null,
+    "clientVersion" : headers["client_version"],
+    "clientVersionString" : headers["client_version_string"],
+    "getClientVersion" : function() {
+      if (null !== global["localStorage"]["getItem"]("ogarioClientVersionString")) {
+        this["clientVersionString"] = global["localStorage"]["getItem"]("ogarioClientVersionString");
+        this["clientVersion"] = this["parseClientVersion"](this["clientVersionString"]);
+      }
+      var dispatcher = this;
+      require["ajax"]("//agar.io/mc/agario.js", {
+        "error" : function() {
         },
-        s = {
-            context: null,
-            defaultProvider: "facebook",
-            loginIntent: "0",
-            userInfo: {
-                socialToken: null,
-                tokenExpires: "",
-                level: "",
-                xp: "",
-                xpNeeded: "",
-                name: "",
-                picture: "",
-                displayName: "",
-                loggedIn: "0",
-                socialId: ""
+        "success" : function(result) {
+          var subtitleParts = result["match"](/versionString="(\d+\.\d+\.\d+)"/);
+          if (subtitleParts) {
+            var timestamp = subtitleParts[1];
+            var data = dispatcher["parseClientVersion"](timestamp);
+            console["log"]("[Master] Current client version:", data, timestamp);
+            dispatcher["setClientVersion"](data, timestamp);
+          }
+        },
+        "dataType" : "text",
+        "method" : "GET",
+        "cache" : false,
+        "crossDomain" : true
+      });
+    },
+    "setClientVersion" : function(clientVersion, serverVersion) {
+      console["log"]("[Master] Your client version:", this["clientVersion"], this["clientVersionString"]);
+      if (this["clientVersion"] != clientVersion) {
+        console["log"]("[Master] Changing client version...");
+        this["clientVersion"] = clientVersion;
+        this["clientVersionString"] = serverVersion;
+        if (global["core"]) {
+          global["core"]["setClientVersion"](clientVersion, serverVersion);
+        }
+        global["localStorage"]["setItem"]("ogarioClientVersionString", serverVersion);
+        this["reconnect"](true);
+      }
+    },
+    "parseClientVersion" : function(layoutSets) {
+      return 10000 * parseInt(layoutSets["split"](".")[0]) + 100 * parseInt(layoutSets["split"](".")[1]) + parseInt(layoutSets["split"](".")[2]);
+    },
+    "getRegionCode" : function() {
+      var nextNodeLoc = global["localStorage"]["getItem"]("location");
+      if (nextNodeLoc) {
+        return this["setRegion"](nextNodeLoc, false), void(this["checkPartyHash"]() || this["reconnect"]());
+      }
+      var command_codes = this;
+	  require["get"]("https://webbouncer-live-v6-0.agario.miniclippt.com/getCountry", function(layoutSets) {   
+	  //require["get"]("//gc.agar.io", function(layoutSets) {
+        var data = layoutSets["split"](" ")[0];
+        command_codes["setRegionCode"](data);
+      }, "text");
+    },
+    "setRegionCode" : function(key) {
+      if (regionobj["hasOwnProperty"](key)) {
+        this["setRegion"](regionobj[key], false);
+        if (!this["checkPartyHash"]()) {
+          this["reconnect"]();
+        }
+      }
+    },
+    "setRegion" : function(region, width) {
+      if (null == width) {
+        /** @type {boolean} */
+        width = true;
+      }
+      if (region) {
+        this["region"] = region;
+        global["localStorage"]["setItem"]("location", region);
+        if (require("#region")["val"]() !== region) {
+          require("#region")["val"](region);
+        }
+        if (width) {
+          this["reconnect"]();
+        }
+      }
+    },
+    "checkRegion" : function() {
+      var style = require("#region");
+      var options = style["val"]();
+      if (options) {
+        global["localStorage"]["setItem"]("location", options);
+      } else {
+        if (options = global["localStorage"]["getItem"]("location")) {
+          $("#region")["val"](options);
+        }
+      }
+      if (style["val"]()) {
+        require("#locationKnown")["append"](style);
+      } else {
+        require("#locationUnknown")["append"](style);
+      }
+    },
+    "refreshRegionInfo" : function() {
+      var _0x4939d9 = this;
+      this["makeMasterSimpleRequest"]("info", "text", function(data) {
+        var PL$10 = (data = JSON["parse"](data))["regions"];
+        var PL$11;
+        for (PL$11 in PL$10) {
+          if (PL$10["hasOwnProperty"](PL$11)) {
+            require('#region option[value="' + PL$11 + '"]')["text"](_0x4939d9["regionNames"][PL$11] + " (" + PL$10[PL$11]["numPlayers"] + ")");
+          }
+        }
+      });
+    },
+    "getRegionNames" : function() {
+      var PL$5 = this;
+      require("#region option")["each"](function() {
+        var bigg_id = require(this)["val"]();
+        var this_gene_data = require(this)["text"]();
+        if (!PL$5["regionNames"]["hasOwnProperty"](bigg_id)) {
+          PL$5["regionNames"][bigg_id] = this_gene_data;
+        }
+      });
+    },
+    "setGameMode" : function(val, opt_validate) {
+      if (null == opt_validate) {
+        /** @type {boolean} */
+        opt_validate = true;
+      }
+      this["applyGameMode"](val);
+      this["gameMode"] = val;
+      if (opt_validate) {
+        this["reconnect"]();
+      }
+    },
+    "applyGameMode" : function(colorString) {
+      require("#helloContainer, #overlays-hud")["attr"]("data-gamemode", colorString);
+      require("#gamemode")["val"](colorString);
+      if (":party" !== colorString) {
+        this["replaceHistoryState"]("/#" + global["encodeURIComponent"](colorString["replace"](":", "")));
+      }
+    },
+    "handleChangeMode" : function() {
+      var artistTrack = require("#gamemode")["val"]();
+      this["setGameMode"](artistTrack);
+    },
+    "findServer" : function(el, dr) {
+      var _0xbb82b = Date["now"]();
+      if (!(_0xbb82b - this["findingServer"] < 500)) {
+        if (global["core"]) {
+          global["core"]["disconnect"]();
+        }
+        /** @type {string} */
+        var picKey = "findServer";
+        if (null == el) {
+          /** @type {string} */
+          el = "";
+        }
+        if (null == dr) {
+          /** @type {string} */
+          dr = ":ffa";
+        } else {
+          if (":battleroyale" === dr) {
+            /** @type {string} */
+            picKey = "findBattleRoyaleServer";
+          }
+        }
+        var options = this;
+        var backEl = this["setRequestMsg"](el, dr);
+        /** @type {number} */
+        var defaultWarningTime = ++this["curValidFindServer"];
+        this["findingServer"] = _0xbb82b;
+        this["makeMasterRequest"](headers["endpoint_version"] + "/" + picKey, backEl, function(response) {
+          if (defaultWarningTime == options["curValidFindServer"]) {
+            var key = response["endpoints"];
+            if (null !== key && "0.0.0.0:0" !== key["https"]) {
+              options["serverIP"] = key["https"];
+              if (null !== response["token"]) {
+                options["partyToken"] = response["token"];
+              }
+              /** @type {number} */
+              options["backoffPeriod"] = 500;
+              options["connect"](options["serverIP"]);
+            } else {
+              options["findServer"](el, dr);
             }
-        },
-        c = 677505792353827,
-        l =
-        "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
-        d = "webbouncer-live-v6-0.agario.miniclippt.com",
-        g = "v4",
-        u = "12.0.1",
-        h = 30400,
-        p = "3.4.0",
-        S = 0,
-        U = null;
-    (o.master = {
-        ws: null,
-        serverIP: null,
-        endpoint: null,
-        region: "",
-        gameMode: ":ffa",
-        partyToken: "",
-        findingServer: 0,
-        curValidFindServer: 0,
-        backoffPeriod: 500,
-        regionNames: {},
-        context: "",
-        accessToken: null,
-        clientVersion: h,
-        clientVersionString: p,
-        getClientVersion: function() {
-            null !== o.localStorage.getItem("ogarioClientVersionString") &&
-                ((this.clientVersionString = o.localStorage.getItem(
-                        "ogarioClientVersionString"
-                    )),
-                    (this.clientVersion = this.parseClientVersion(
-                        this.clientVersionString
-                    )));
-            var e = this;
-            n.ajax("//agar.io/mc/agario.js", {
-                error: function() {},
-                success: function(o) {
-                    var n = o.match(/versionString=\"(\d+\.\d+\.\d+)\"/);
-                    if (n) {
-                        var t = n[1],
-                            a = e.parseClientVersion(t);
-                        console.log("[Master] Current client version:", a, t),
-                            e.setClientVersion(a, t);
-                    }
-                },
-                dataType: "text",
-                method: "GET",
-                cache: !1,
-                crossDomain: !0
-            });
-        },
-        setClientVersion: function(n, e) {
-            console.log(
-                    "[Master] Your client version:",
-                    this.clientVersion,
-                    this.clientVersionString
-                ),
-                this.clientVersion != n &&
-                (console.log("[Master] Changing client version..."),
-                    (this.clientVersion = n),
-                    (this.clientVersionString = e),
-                    o.core && o.core.setClientVersion(n, e),
-                    o.localStorage.setItem("ogarioClientVersionString", e),
-                    this.reconnect(!0));
-        },
-        parseClientVersion: function(o) {
-            return (
-                1e4 * parseInt(o.split(".")[0]) +
-                100 * parseInt(o.split(".")[1]) +
-                parseInt(o.split(".")[2])
-            );
-        },
-        getRegionCode: function() {
-            var e = o.localStorage.getItem("location");
-            if (e)
-                return (
-                    this.setRegion(e, !1),
-                    void(this.checkPartyHash() || this.reconnect())
-                );
-            var t = this;
-            n.get(
-                "//gc.agar.io",
-                function(o) {
-                    var n = o.split(" ")[0];
-                    t.setRegionCode(n);
-                },
-                "text"
-            );
-        },
-        setRegionCode: function(o) {
-            r.hasOwnProperty(o) &&
-                (this.setRegion(r[o], !1), this.checkPartyHash() || this.reconnect());
-        },
-        setRegion: function(e, t) {
-            null == t && (t = !0),
-                e &&
-                ((this.region = e),
-                    o.localStorage.setItem("location", e),
-                    n("#region").val() !== e && n("#region").val(e),
-                    t && this.reconnect());
-        },
-        checkRegion: function() {
-            var e = n("#region"),
-                t = e.val();
-            t
-                ?
-                o.localStorage.setItem("location", t) :
-                (t = o.localStorage.getItem("location")) && $("#region").val(t),
-                e.val() ?
-                n("#locationKnown").append(e) :
-                n("#locationUnknown").append(e);
-        },
-        refreshRegionInfo: function() {
-            var o = this;
-            this.makeMasterSimpleRequest("info", "text", function(e) {
-                var t = (e = JSON.parse(e)).regions;
-                for (var a in t)
-                    t.hasOwnProperty(a) &&
-                    n('#region option[value="' + a + '"]').text(
-                        o.regionNames[a] + " (" + t[a].numPlayers + ")"
-                    );
-            });
-        },
-        getRegionNames: function() {
-            var o = this;
-            n("#region option").each(function() {
-                var e = n(this).val(),
-                    t = n(this).text();
-                o.regionNames.hasOwnProperty(e) || (o.regionNames[e] = t);
-            });
-        },
-        setGameMode: function(o, n) {
-            null == n && (n = !0),
-                this.applyGameMode(o),
-                (this.gameMode = o),
-                n && this.reconnect();
-        },
-        applyGameMode: function(e) {
-            n("#helloContainer, #overlays-hud").attr("data-gamemode", e),
-                n("#gamemode").val(e),
-                ":party" !== e &&
-                this.replaceHistoryState(
-                    "/#" + o.encodeURIComponent(e.replace(":", ""))
-                );
-        },
-        handleChangeMode: function() {
-            var o = n("#gamemode").val();
-            this.setGameMode(o);
-        },
-        findServer: function(n, e) {
-            var t = Date.now();
-            if (!(t - this.findingServer < 500)) {
-                o.core && o.core.disconnect();
-                var a = "findServer";
-                null == n && (n = ""),
-                    null == e ?
-                    (e = ":ffa") :
-                    ":battleroyale" === e && (a = "findBattleRoyaleServer");
-                var i = this,
-                    r = this.setRequestMsg(n, e),
-                    s = ++this.curValidFindServer;
-                (this.findingServer = t),
-                this.makeMasterRequest(
-                    g + "/" + a,
-                    r,
-                    function(o) {
-                        if (s == i.curValidFindServer) {
-                            var t = o.endpoints;
-                            null !== t && "0.0.0.0:0" !== t.https ?
-                                ((i.serverIP = t.https),
-                                    null !== o.token && (i.partyToken = o.token),
-                                    (i.backoffPeriod = 500),
-                                    i.connect(i.serverIP)) :
-                                i.findServer(n, e);
-                        }
-                    },
-                    function() {
-                        (i.backoffPeriod *= 2),
-                        setTimeout(function() {
-                            i.findServer(n, e);
-                        }, i.backoffPeriod);
-                    }
-                );
-            }
-        },
-        setRequestMsg: function(o, n, e) {
-            var t = function(o) {
-                    a.push(o.length);
-                    for (var n = 0; n < o.length; n++) a.push(o.charCodeAt(n));
-                },
-                a = [10, 4 + o.length + n.length, 10];
-            return (
-                t(o),
-                a.push(18),
-                t(n),
-                e && (a.push(26, 8, 10), t(e)),
-                new Uint8Array(a)
-            );
-        },
-        makeMasterRequest: function(o, e, t, a, i) {
-            var r = this;
-            null == i && (i = "application/octet-stream"),
-                n.ajax("https://" + d + "/" + o, {
-                    beforeSend: function(o) {
-                        return (
-                            o.setRequestHeader("Accept", "text/plain"),
-                            o.setRequestHeader("Accept", "*/*"),
-                            o.setRequestHeader("Accept", "q=0.01"),
-                            o.setRequestHeader("Content-Type", i),
-                            o.setRequestHeader("x-support-proto-version", u),
-                            o.setRequestHeader("x-client-version", r.clientVersion),
-                            !0
-                        );
-                    },
-                    error: function() {
-                        a && a();
-                    },
-                    success: function(o) {
-                        t(o);
-                    },
-                    dataType: "json",
-                    method: "POST",
-                    data: e,
-                    processData: !1,
-                    cache: !1,
-                    crossDomain: !0
-                });
-        },
-        makeMasterSimpleRequest: function(o, e, t, a) {
-            var i = this;
-            n.ajax("https://" + d + "/" + o, {
-                beforeSend: function(o) {
-                    return (
-                        o.setRequestHeader("x-support-proto-version", u),
-                        o.setRequestHeader("x-client-version", i.clientVersion),
-                        !0
-                    );
-                },
-                error: function() {
-                    a && a();
-                },
-                success: function(o) {
-                    t(o);
-                },
-                dataType: e,
-                method: "GET",
-                cache: !1,
-                crossDomain: !0
-            });
-        },
-        createParty: function() {
-            this.setPartyState("3"), this.setGameMode(":party");
-        },
-        joinParty: function(n) {
-            var e = this; -
-            1 != n.indexOf("#") && (n = n.split("#")[1]),
-                this.setGameMode(":party", !1),
-                (this.partyToken = n),
-                this.replaceHistoryState("/#" + o.encodeURIComponent(n));
-            var t = this.setRequestMsg(this.region, "", n);
-            this.makeMasterRequest(
-                g + "/getToken",
-                t,
-                function(o) {
-                    (e.endpoint = o.endpoints.https), e.setPartyState("9");
-                },
-                function() {
-                    e.setPartyState("6");
-                }
-            );
-        },
-        setPartyState: function(o) {
-            "9" === o &&
-                (this.updatePartyToken(),
-                    this.setGameMode(":party", !1),
-                    this.connect(this.endpoint),
-                    (o = "5")),
-                n("#helloContainer").attr("data-party-state", o);
-        },
-        connect: function(n) {
-            console.log("[Master] Connect to:", n),
-                (this.ws = "wss://" + n),
-                ":party" === this.gameMode &&
-                this.partyToken &&
-                (this.ws += "?party_id=" + o.encodeURIComponent(this.partyToken)),
-                o.core && o.core.connect(this.ws);
-        },
-        reconnect: function(o) {
-            this.region &&
-                (o && this.serverIP ?
-                    this.connect(this.serverIP) :
-                    this.findServer(this.region, this.gameMode));
-        },
-        onConnect: function() {
-            ":party" === this.gameMode && this.updatePartyToken();
-        },
-        onDisconnect: function() {
-            this.reconnect();
-        },
-        recaptchaRequested: function() {
-            requestCaptcha(!0);
-        },
-        sendRecaptchaResponse: function(n) {
-            o.core && o.core.recaptchaResponse(n);
-        },
-        notifyToken: function(o) {
-            this.sendRecaptchaResponse(o);
-        },
-        setNick: function() {
-            this.login();
-            var e = n("#nick").val();
-            e && e.length > 15 && (e = e.substring(0, 15)),
-                o.core && o.core.sendNick(e);
-        },
-        spectate: function() {
-            o.core && o.core.sendSpectate();
-        },
-        updatePartyToken: function() {
-            n("#party-token, .party-token").val(this.partyToken);
-        },
-        checkHash: function() {
-            this.checkPartyHash() ?
-                this.joinParty(o.location.hash) :
-                o.location.hash &&
-                -1 != ["#ffa", "#battleroyale", "#teams", "#experimental"].indexOf(
-                    o.location.hash
-                ) &&
-                this.setGameMode(o.location.hash.replace("#", ":"));
-        },
-        checkPartyHash: function() {
-            return o.location.hash && 7 == o.location.hash.length;
-        },
-        replaceHistoryState: function(n) {
-            o.history &&
-                o.history.replaceState &&
-                o.history.replaceState({}, o.document.title, n);
-        },
-        facebookLogin: function() {
-            o.facebookLogin();
-        },
-        doLoginWithFB: function(o) {
-            (this.context = "facebook"), (this.accessToken = o);
-        },
-        doLoginWithGPlus: function(o) {
-            (this.context = "google"), (this.accessToken = o);
-        },
-        login: function() {
-            this.accessToken &&
-                ("facebook" === this.context &&
-                    o.core &&
-                    o.core.sendFbToken &&
-                    o.core.sendFbToken(this.accessToken),
-                    "google" === this.context &&
-                    o.core &&
-                    o.core.sendGplusToken &&
-                    o.core.sendGplusToken(this.accessToken));
-        },
-        logout: function() {
-            (this.accessToken = null), this.reconnect();
-        },
-        setUI: function() {
-            var e = this;
-            n("[data-itr]").each(function() {
-                    var e = n(this),
-                        t = e.attr("data-itr");
-                    e.html(o.i18n(t));
-                }),
-                n("#gamemode").on("change", function() {
-                    e.handleChangeMode();
-                }),
-                n(".btn-play, .btn-play-guest").on("click", function(o) {
-                    o.preventDefault(), e.setNick();
-                }),
-                n(".btn-spectate").on("click", function(o) {
-                    o.preventDefault(), e.spectate();
-                }),
-                n("#create-party-btn-2").on("click", function(o) {
-                    o.preventDefault(), e.createParty();
-                }),
-                $("#join-party-btn-2").on("click", function(o) {
-                    o.preventDefault(), e.joinParty(n("#party-token").val());
-                }),
-                (o.toggleSocialLogin = function() {
-                    n("#socialLoginContainer").toggle();
-                });
-        },
-        init: function() {
-            var o = this;
-            this.setUI(),
-                this.getRegionNames(),
-                this.refreshRegionInfo(),
-                this.checkHash(),
-                this.getRegionCode(),
-                this.checkRegion(),
-                setInterval(function() {
-                    o.refreshRegionInfo();
-                }, 18e4);
+          }
+        }, function() {
+          options["backoffPeriod"] *= 2;
+          setTimeout(function() {
+            options["findServer"](el, dr);
+          }, options["backoffPeriod"]);
+        });
+      }
+    },
+    "setRequestMsg" : function(props, source, o) {
+      /**
+       * @param {!Object} regionobj
+       * @return {undefined}
+       */
+      var getOwnPropertyNames = function(regionobj) {
+        output["push"](regionobj["length"]);
+        /** @type {number} */
+        var value = 0;
+        for (; value < regionobj["length"]; value++) {
+          output["push"](regionobj["charCodeAt"](value));
         }
-    }),
-    (o.getStorage = function() {
-        null !== o.localStorage.getItem("storeObjectInfo") &&
-            (s = JSON.parse(o.localStorage.getItem("storeObjectInfo")));
-    }),
-    (o.updateStorage = function() {
-        o.localStorage.setItem("storeObjectInfo", JSON.stringify(s));
-    }),
-    (o.logout = function() {
-        "google" === s.context && U && U.signOut(),
-            delete o.localStorage.storeObjectInfo,
-            n("#helloContainer").attr("data-logged-in", "0"),
-            n(".progress-bar-striped").width("0%"),
-            master.logout();
-    }),
-    (o.facebookLogin = function() {
-        alert(
-            "You seem to have something blocking Facebook on your browser, please check for any extensions"
-        );
-    }),
-    (o.fbAsyncInit = function() {
-        o.FB.init({
-                appId: c,
-                cookie: !0,
-                xfbml: !0,
-                status: !0,
-                version: "v2.8"
-            }),
-            o.getStorage(),
-            "1" === s.loginIntent &&
-            "facebook" === s.context &&
-            o.FB.getLoginStatus(function(n) {
-                "connected" === n.status ? t(n) : o.logout();
-            }),
-            (o.facebookRelogin = e),
-            (o.facebookLogin = e);
-    }),
-    (o.gapiAsyncInit = function() {
-        o.getStorage(),
-            o.gapi.load("auth2", function() {
-                U = o.gapi.auth2.init({
-                    client_id: l,
-                    cookie_policy: "single_host_origin",
-                    scope: "https://www.googleapis.com/auth/plus.login email",
-                    app_package_name: "com.miniclip.agar.io"
-                });
-                var n = document.getElementById("gplusLogin");
-                n.addEventListener("click", function() {
-                        (s.loginIntent = "1"), (s.context = "google"), o.updateStorage();
-                    }),
-                    U.attachClickHandler(n),
-                    U.currentUser.listen(i),
-                    U.then(a);
-            });
+      };
+      /** @type {!Array} */
+      var output = [10, 4 + props["length"] + source["length"], 10];
+      return getOwnPropertyNames(props), output["push"](18), getOwnPropertyNames(source), o && (output["push"](26, 8, 10), getOwnPropertyNames(o)), new Uint8Array(output);
+    },
+    "makeMasterRequest" : function(uri, data, callback, event, XMLHttpRequest) {
+      var header = this;
+      if (null == XMLHttpRequest) {
+        /** @type {string} */
+        XMLHttpRequest = "application/octet-stream";
+      }
+      require["ajax"]("https://" + headers["master_url"] + "/" + uri, {
+        "beforeSend" : function(xhr) {
+          return xhr["setRequestHeader"]("Accept", "text/plain"), xhr["setRequestHeader"]("Accept", "*/*"), xhr["setRequestHeader"]("Accept", "q=0.01"), xhr["setRequestHeader"]("Content-Type", XMLHttpRequest), xhr["setRequestHeader"]("x-support-proto-version", headers["proto_version"]), xhr["setRequestHeader"]("x-client-version", header["clientVersion"]), true;
+        },
+        "error" : function() {
+          if (event) {
+            event();
+          }
+        },
+        "success" : function(playlistCopy) {
+          callback(playlistCopy);
+        },
+        "dataType" : "json",
+        "method" : "POST",
+        "data" : data,
+        "processData" : false,
+        "cache" : false,
+        "crossDomain" : true
+      });
+    },
+    "makeMasterSimpleRequest" : function(courseId, cmid, refresh, callback) {
+      var header = this;
+      require["ajax"]("https://" + headers["master_url"] + "/" + courseId, {
+        "beforeSend" : function(xhr) {
+          return xhr["setRequestHeader"]("x-support-proto-version", headers["proto_version"]), xhr["setRequestHeader"]("x-client-version", header["clientVersion"]), true;
+        },
+        "error" : function() {
+          if (callback) {
+            callback();
+          }
+        },
+        "success" : function(users) {
+          refresh(users);
+        },
+        "dataType" : cmid,
+        "method" : "GET",
+        "cache" : false,
+        "crossDomain" : true
+      });
+    },
+    "createParty" : function() {
+      this["setPartyState"]("3");
+      this["setGameMode"](":party");
+    },
+    "joinParty" : function(code) {
+      var scopeHeaderOverrides = this;
+      if (-1 != code["indexOf"]("#")) {
+        code = code["split"]("#")[1];
+      }
+      this["setGameMode"](":party", false);
+      /** @type {!Object} */
+      this["partyToken"] = code;
+      this["replaceHistoryState"]("/#" + global["encodeURIComponent"](code));
+      var pre = this["setRequestMsg"](this["region"], "", code);
+      this["makeMasterRequest"](headers["endpoint_version"] + "/getToken", pre, function(moduleParams) {
+        scopeHeaderOverrides["endpoint"] = moduleParams["endpoints"]["https"];
+        scopeHeaderOverrides["setPartyState"]("9");
+      }, function() {
+        scopeHeaderOverrides["setPartyState"]("6");
+      });
+    },
+    "setPartyState" : function(value) {
+      if ("9" === value) {
+        this["updatePartyToken"]();
+        this["setGameMode"](":party", false);
+        this["connect"](this["endpoint"]);
+        /** @type {string} */
+        value = "5";
+      }
+      require("#helloContainer")["attr"]("data-party-state", value);
+    },
+    "connect" : function(body) {
+      console["log"]("[Master] Connect to:", body);
+      /** @type {string} */
+      this["ws"] = "wss://" + body;
+      if (":party" === this["gameMode"] && this["partyToken"]) {
+        this["ws"] += "?party_id=" + global["encodeURIComponent"](this["partyToken"]);
+      }
+      if (global["core"]) {
+        global["core"]["connect"](this["ws"]);
+      }
+    },
+    "reconnect" : function(sdkVersion) {
+      if (this["region"]) {
+        if (sdkVersion && this["serverIP"]) {
+          this["connect"](this["serverIP"]);
+        } else {
+          this["findServer"](this["region"], this["gameMode"]);
+        }
+      }
+    },
+    "onConnect" : function() {
+      if (":party" === this["gameMode"]) {
+        this["updatePartyToken"]();
+      }
+    },
+    "onDisconnect" : function() {
+      this["reconnect"]();
+    },
+    "recaptchaRequested" : function() {
+      requestCaptcha(true);
+    },
+    "sendRecaptchaResponse" : function(mmCoreSplitViewBlock) {
+      if (global["core"]) {
+        global["core"]["recaptchaResponse"](mmCoreSplitViewBlock);
+      }
+    },
+    "notifyToken" : function(mmCoreSplitViewBlock) {
+      this["sendRecaptchaResponse"](mmCoreSplitViewBlock);
+    },
+    "setNick" : function() {
+      this["login"]();
+      var result = require("#nick")["val"]();
+      if (result && result["length"] > 15) {
+        result = result["substring"](0, 15);
+      }
+      if (global["core"]) {
+        global["core"]["sendNick"](result);
+      }
+    },
+    "spectate" : function() {
+      if (global["core"]) {
+        global["core"]["sendSpectate"]();
+      }
+    },
+    "updatePartyToken" : function() {
+      require("#party-token, .party-token")["val"](this["partyToken"]);
+    },
+    "checkHash" : function() {
+      if (this["checkPartyHash"]()) {
+        this["joinParty"](global["location"]["hash"]);
+      } else {
+        if (global["location"]["hash"] && -1 != ["#ffa", "#battleroyale", "#teams", "#experimental"]["indexOf"](global["location"]["hash"])) {
+          this["setGameMode"](global["location"]["hash"]["replace"]("#", ":"));
+        }
+      }
+    },
+    "checkPartyHash" : function() {
+      return global["location"]["hash"] && 7 == global["location"]["hash"]["length"];
+    },
+    "replaceHistoryState" : function(name) {
+      if (global["history"] && global["history"]["replaceState"]) {
+        global["history"]["replaceState"]({}, global["document"]["title"], name);
+      }
+    },
+    "facebookLogin" : function() {
+      global["facebookLogin"]();
+    },
+    "doLoginWithFB" : function(session) {
+      /** @type {string} */
+      this["context"] = "facebook";
+      this["accessToken"] = session;
+    },
+    "doLoginWithGPlus" : function(session) {
+      /** @type {string} */
+      this["context"] = "google";
+      this["accessToken"] = session;
+    },
+    "login" : function() {
+      if (this["accessToken"]) {
+        if ("facebook" === this["context"] && global["core"] && global["core"]["sendFbToken"]) {
+          global["core"]["sendFbToken"](this["accessToken"]);
+        }
+        if ("google" === this["context"] && global["core"] && global["core"]["sendGplusToken"]) {
+          global["core"]["sendGplusToken"](this["accessToken"]);
+        }
+      }
+    },
+    "logout" : function() {
+      /** @type {null} */
+      this["accessToken"] = null;
+      this["reconnect"]();
+    },
+    "setUI" : function() {
+      var window = this;
+      require("[data-itr]")["each"](function() {
+        var Filters = require(this);
+        var val = Filters["attr"]("data-itr");
+        Filters["html"](global["i18n"](val));
+      });
+      require("#gamemode")["on"]("change", function() {
+        window["handleChangeMode"]();
+      });
+      require(".btn-play, .btn-play-guest")["on"]("click", function(result) {
+        result["preventDefault"]();
+        window["setNick"]();
+      });
+      require(".btn-spectate")["on"]("click", function(result) {
+        result["preventDefault"]();
+        window["spectate"]();
+      });
+      require("#create-party-btn-2")["on"]("click", function(result) {
+        result["preventDefault"]();
+        window["createParty"]();
+      });
+      $("#join-party-btn-2")["on"]("click", function(result) {
+        result["preventDefault"]();
+        window["joinParty"](require("#party-token")["val"]());
+      });
+      /**
+       * @return {undefined}
+       */
+      global["toggleSocialLogin"] = function() {
+        require("#socialLoginContainer")["toggle"]();
+      };
+    },
+    "init" : function() {
+      var _0x4939d9 = this;
+      this["setUI"]();
+      this["getRegionNames"]();
+      this["refreshRegionInfo"]();
+      this["checkHash"]();
+      this["getRegionCode"]();
+      this["checkRegion"]();
+      setInterval(function() {
+        _0x4939d9["refreshRegionInfo"]();
+      }, 180000);
+    }
+  };
+  /**
+   * @return {undefined}
+   */
+  global["getStorage"] = function() {
+    if (null !== global["localStorage"]["getItem"]("storeObjectInfo")) {
+      message = JSON["parse"](global["localStorage"]["getItem"]("storeObjectInfo"));
+    }
+  };
+  /**
+   * @return {undefined}
+   */
+  global["updateStorage"] = function() {
+    global["localStorage"]["setItem"]("storeObjectInfo", JSON["stringify"](message));
+  };
+  /**
+   * @return {undefined}
+   */
+  global["logout"] = function() {
+    if ("google" === message["context"] && PL$12) {
+      PL$12["signOut"]();
+    }
+    delete global["localStorage"]["storeObjectInfo"];
+    require("#helloContainer")["attr"]("data-logged-in", "0");
+    require(".progress-bar-striped")["width"]("0%");
+    master["logout"]();
+  };
+  /**
+   * @return {undefined}
+   */
+  global["facebookLogin"] = function() {
+    alert("You seem to have something blocking Facebook on your browser, please check for any extensions");
+  };
+  /**
+   * @return {undefined}
+   */
+  global["fbAsyncInit"] = function() {
+    global["FB"]["init"]({
+      "appId" : headers["fb_app_id"],
+      "cookie" : true,
+      "xfbml" : true,
+      "status" : true,
+      "version" : "v2.8"
     });
-})(window, window.jQuery);
+    if (true) {
+      global["getStorage"]();
+      if ("1" === message["loginIntent"] && "facebook" === message["context"]) {
+        global["FB"]["getLoginStatus"](function(ctx) {
+          if ("connected" === ctx["status"]) {
+            init(ctx);
+          } else {
+            global["logout"]();
+          }
+        });
+      }
+      /** @type {function(?): ?} */
+      global["facebookRelogin"] = initialize;
+      /** @type {function(?): ?} */
+      global["facebookLogin"] = initialize;
+    }
+  };
+  /**
+   * @return {undefined}
+   */
+  global["gapiAsyncInit"] = function() {
+    global["getStorage"]();
+    global["gapi"]["load"]("auth2", function() {
+      PL$12 = global["gapi"]["auth2"]["init"]({
+        "client_id" : headers["gplus_client_id"],
+        "cookie_policy" : "single_host_origin",
+        "scope" : "https://www.googleapis.com/auth/plus.login email",
+        "app_package_name" : "com.miniclip.agar.io"
+      });
+      var contextMenu = document["getElementById"]("gplusLogin");
+      contextMenu["addEventListener"]("click", function() {
+        /** @type {string} */
+        message["loginIntent"] = "1";
+        /** @type {string} */
+        message["context"] = "google";
+        global["updateStorage"]();
+      });
+      PL$12["attachClickHandler"](contextMenu);
+      PL$12["currentUser"]["listen"](callback);
+      PL$12["then"](login);
+    });
+  };
+};
+t1();
