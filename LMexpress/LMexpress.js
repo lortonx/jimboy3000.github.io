@@ -2,7 +2,7 @@
  * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "13"; // the version 1.1-> 1.11
+var semimodVersion = "14"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5345,7 +5345,8 @@ var onUILoaded = function(callback, params)
 var state = {
     nickname: null,
     server: null,
-    tag: null
+    tag: null,
+	mass: null
 };
 var elements = {
     nickname: "nick",
@@ -5396,7 +5397,7 @@ var socket = {
 		servertemp = "live-arena-" + $('#server-token').val() + ".agar.io";
 		}		
         var tag = document.getElementById(elements.tag);
-		
+		state.mass = legendmod.playerMass;
         //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
 		//var server = document.getElementById("server-ws").value;
