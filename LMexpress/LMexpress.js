@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.009 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.010 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "15"; // the version 1.1-> 1.11
@@ -5375,7 +5375,7 @@ var socket = {
     },
     updateServerDetails: function()
     {
-//        console.log("Details have changed");
+       console.log("Details have changed");
 //        console.log(state);
 
         socket.send({
