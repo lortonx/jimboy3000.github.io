@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.010 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.011 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "15"; // the version 1.1-> 1.11
@@ -5337,11 +5337,20 @@ var onUILoaded = function(callback, params)
             clearInterval(timerID);
             callback(params);
         }
-    }, 100);
+    }, 500);
 }
 
 // ---------------
-
+/*
+var myVar = setInterval(myTimer, 10000);
+		function myTimer() {
+			state.mass = legendmod.playerMass;
+			socket.updateServerDetails();
+			}
+		function myStopFunction() {
+		clearInterval(myVar);
+		}	
+		*/
 var state = {
     nickname: null,
     server: null,
@@ -5397,17 +5406,6 @@ var socket = {
 		servertemp = "live-arena-" + $('#server-token').val() + ".agar.io";
 		}		
         var tag = document.getElementById(elements.tag);
-
-////		
-		var myVar = setInterval(myTimer, 10000);
-		function myTimer() {
-			state.mass = legendmod.playerMass;
-			socket.updateServerDetails();
-			}
-		function myStopFunction() {
-		clearInterval(myVar);
-		}		
-////		
         //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
 		//var server = document.getElementById("server-ws").value;
@@ -5419,11 +5417,13 @@ var socket = {
         //state.tag = tag.value;
         if (state.nickname != nick.value ||
             state.server != servertemp ||
-            state.tag != tag.value)
+            state.tag != tag.value ||
+			state.mass != legendmod.playerMass)
         {
             state.nickname = nick.value;
             state.server = servertemp;
             state.tag = tag.value;
+			state.mass = legendmod.playerMass;
         socket.updateServerDetails();
 		}
     },
