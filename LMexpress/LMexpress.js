@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "13"; // the version 1.1-> 1.11
@@ -1996,7 +1996,9 @@ function saveLegendJSONAPI() {
     localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
 	
     localStorage.setItem("VanillaskinsSaved", LegendJSON.legendSettings.VanillaskinsSaved);
-    localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);	
+	if (LegendJSON.legendSettings.leaderboardlimit!=null){
+	localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);	
+	}	  
 //    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
 //    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
 //    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
