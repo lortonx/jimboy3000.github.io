@@ -191,6 +191,7 @@ function t1() {
 	  require["get"]("https://webbouncer-live-v6-0.agario.miniclippt.com/getCountry", function(layoutSets) {   
 	  //require["get"]("//gc.agar.io", function(layoutSets) {
         var data = layoutSets["split"](" ")[0];
+		data="GR";
         command_codes["setRegionCode"](data);
       }, "text");
     },
