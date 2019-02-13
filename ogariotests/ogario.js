@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.68
+//v1.69
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -1667,8 +1667,8 @@ var core = function(t, e, i) {
                 'commandSound': 'https://cdn.ogario.ovh/static/sounds/notification_02.mp3'
             };
         var ogarminimapdrawer = {
-            'name': `Legend express`,
-            'version': `v4 (4.0.0 b35)`,
+            'name': `LM express`,
+            'version': `v1`,
             'privateMode': !1,
             'protocolMode': !0,
             'publicIP': 'wss://srv.ogario.eu',
