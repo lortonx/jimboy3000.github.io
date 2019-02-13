@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.65
+//v1.66
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -11,7 +11,7 @@ window.LMGameConfiguration = $.ajax({
         type: "GET",
 		url: "https://jimboy3100.github.io/agario/live/"+Lmagarversion+"GameConfiguration.json",
 		async: false,
-        datatype: "json",
+        datatype: "jsonp",
         success: function(info) {
 			//var GameConfiguration = info;
 		}
@@ -24,7 +24,7 @@ setTimeout(function(){
         type: "GET",
 		url: "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+"GameConfiguration.json",
 		async: false,
-        datatype: "json",
+        datatype: "jsonp",
         success: function(info) {
 			//var GameConfiguration = info;
 		}
@@ -2117,7 +2117,7 @@ var core = function(t, e, i) {
                 if (s('#' + e)[`empty`]()[`addClass`](`default`), t && 0 != t[`length`]) {
                     var i = this,
                         o = new Image();
-                    o[`crossOrigin`] = 'Anonymous', o[`onload`] = function() {
+                    o.crossOrigin = 'Anonymous', o[`onload`] = function() {
                         i[`changeSkinPreview`](o, e);
                     }, o[`src`] = t;
                 }
@@ -2455,7 +2455,7 @@ var core = function(t, e, i) {
             },
             'loadSkin': function(t, e) {
                 var i = this;
-                t[e] = new Image(), t[e][`crossOrigin`] = `Anonymous`, t[e]['onload'] = function() {
+                t[e] = new Image(), t[e].crossOrigin = `Anonymous`, t[e]['onload'] = function() {
                     this[`complete`] && this[`width`] && this[`height`] && this[`width`] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'][`push`](e), 1 == i[`cacheQueue`][`length`] && i[`cacheSkin`](i['customSkinsCache']));
                 }, t[e]['src'] = e;
             },
