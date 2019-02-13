@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "15"; // the version 1.1-> 1.11
@@ -5397,16 +5397,17 @@ var socket = {
 		servertemp = "live-arena-" + $('#server-token').val() + ".agar.io";
 		}		
         var tag = document.getElementById(elements.tag);
-	
-		var myVar = setInterval(myTimer, 10000);
 
+////		
+		var myVar = setInterval(myTimer, 10000);
 		function myTimer() {
 			state.mass = legendmod.playerMass;
+			socket.updateServerDetails();
 			}
-
 		function myStopFunction() {
 		clearInterval(myVar);
 		}		
+////		
         //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
 		//var server = document.getElementById("server-ws").value;
@@ -5613,7 +5614,7 @@ client2 = {
 					toastr["info"]("User Found. Revealing server...");}
 					}
 					var temporaryserver=JSON.stringify(data[player]);
-					//console.log(temporaryserver);
+					console.log(temporaryserver);
 					var temporaryserver2;
 					var temporaryserver3;
 					var temporaryserver1 = getParameterByName("r", temporaryserver);
