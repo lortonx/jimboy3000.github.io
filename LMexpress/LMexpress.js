@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.011 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.006 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "15"; // the version 1.1-> 1.11
+var semimodVersion = "13"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5337,25 +5337,15 @@ var onUILoaded = function(callback, params)
             clearInterval(timerID);
             callback(params);
         }
-    }, 500);
+    }, 100);
 }
 
 // ---------------
-/*
-var myVar = setInterval(myTimer, 10000);
-		function myTimer() {
-			state.mass = legendmod.playerMass;
-			socket.updateServerDetails();
-			}
-		function myStopFunction() {
-		clearInterval(myVar);
-		}	
-		*/
+
 var state = {
     nickname: null,
     server: null,
-    tag: null,
-	mass: null
+    tag: null
 };
 var elements = {
     nickname: "nick",
@@ -5384,7 +5374,7 @@ var socket = {
     },
     updateServerDetails: function()
     {
-       console.log("Details have changed");
+//        console.log("Details have changed");
 //        console.log(state);
 
         socket.send({
@@ -5406,6 +5396,7 @@ var socket = {
 		servertemp = "live-arena-" + $('#server-token').val() + ".agar.io";
 		}		
         var tag = document.getElementById(elements.tag);
+		
         //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
 		//var server = document.getElementById("server-ws").value;
@@ -5417,13 +5408,11 @@ var socket = {
         //state.tag = tag.value;
         if (state.nickname != nick.value ||
             state.server != servertemp ||
-            state.tag != tag.value ||
-			state.mass != legendmod.playerMass)
+            state.tag != tag.value)
         {
             state.nickname = nick.value;
             state.server = servertemp;
             state.tag = tag.value;
-			state.mass = legendmod.playerMass;
         socket.updateServerDetails();
 		}
     },
@@ -5614,8 +5603,6 @@ client2 = {
 					toastr["info"]("User Found. Revealing server...");}
 					}
 					var temporaryserver=JSON.stringify(data[player]);
-					//console.log(temporaryserver);
-					var temporaryserver4 = JSON.parse(temporaryserver);
 					var temporaryserver2;
 					var temporaryserver3;
 					var temporaryserver1 = getParameterByName("r", temporaryserver);
@@ -5625,7 +5612,7 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " Mass:" + temporaryserver4.mass + ". (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}
+					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}
 					else{appendLog2("<span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);	
@@ -5638,7 +5625,6 @@ client2 = {
 					toastr["info"]("Server Found. Revealing users...");}
 					}
 					var temporaryserver=JSON.stringify(data[player]);
-					var temporaryserver4 = JSON.parse(temporaryserver);
 					var temporaryserver2;
 					var temporaryserver3;
 					var temporaryserver1 = getParameterByName("r", temporaryserver);
@@ -5648,7 +5634,7 @@ client2 = {
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
 					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
-					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " Mass:" + temporaryserver4.mass + ". (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
+					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}	
 					else{appendLog2("<span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2);}
 					showonceusers3++;
 					showonceusers3returner(showonceusers3);
