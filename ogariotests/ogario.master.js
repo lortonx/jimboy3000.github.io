@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.4
+// v1.5
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -188,10 +188,10 @@ function t1() {
         return this["setRegion"](nextNodeLoc, false), void(this["checkPartyHash"]() || this["reconnect"]());
       }
       var command_codes = this;
-	  require["get"]("https://webbouncer-live-v6-0.agario.miniclippt.com/getCountry", function(layoutSets) {   
-	  //require["get"]("//gc.agar.io", function(layoutSets) {
+	  //require["get"]("https://webbouncer-live-v6-0.agario.miniclippt.com/getCountry", function(layoutSets) {   
+	  require["get"]("//gc.agar.io", function(layoutSets) {
         var data = layoutSets["split"](" ")[0];
-		data="GR";
+		//data="GR";
         command_codes["setRegionCode"](data);
       }, "text");
     },
