@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.67
+//v1.68
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2678,27 +2678,27 @@ var core = function(t, e, i) {
                 e && (this[`skipServerData`] = !0, this[`gameServerConnect`](e));
             },
             'connect': function() {
-                this[`closeConnection`](), this[`flushData`](), this[`setParty`](), console[`log`](`[Legend mod Express] Connecting to server`), this['privateMode'] && this[`privateIP`] ? this[`socket`] = new WebSocket(this[`privateIP`]) : this[`socket`] = new WebSocket(this[`publicIP`]), this[`socket`][`ogarioWS`] = !0, this[`socket`][`binaryType`] = `arraybuffer`;
+                this[`closeConnection`](), this[`flushData`](), this[`setParty`](), console.log(`[Legend mod Express] Connecting to server`), this['privateMode'] && this[`privateIP`] ? this.socket = new WebSocket(this[`privateIP`]) : this.socket = new WebSocket(this[`publicIP`]), this.socket[`ogarioWS`] = !0, this.socket[`binaryType`] = `arraybuffer`;
                 var t = this;
-                this[`socket`][`onopen`] = function() {
-                    console['log']('[Legend mod Express] Socket open');
+                this.socket[`onopen`] = function() {
+                    console.log('[Legend mod Express] Socket open');
                     var e = t['createView'](3);
-                    e[`setUint8`](0, 0), e[`setUint16`](1, 401, !0), t['sendBuffer'](e), t[`sendPartyData`]();
-                }, this[`socket`][`onmessage`] = function(e) {
+                    e.setUint8(0, 0), e.setUint16(1, 401, !0), t['sendBuffer'](e), t[`sendPartyData`]();
+                }, this.socket[`onmessage`] = function(e) {
                     t[`handleMessage`](e);
-                }, this[`socket`][`onclose`] = function(e) {
-                    t[`flushData`](), console[`log`](`[Legend mod Express] Socket close`, e);
-                }, this[`socket`][`onerror`] = function(e) {
-                    t[`flushData`](), console[`log`](`[Legend mod Express] Socket error`, e);
+                }, this.socket[`onclose`] = function(e) {
+                    t[`flushData`](), console.log(`[Legend mod Express] Socket close`, e);
+                }, this.socket[`onerror`] = function(e) {
+                    t[`flushData`](), console.log(`[Legend mod Express] Socket error`, e);
                 };
             },
             'closeConnection': function() {
-                if (this[`socket`]) {
-                    this[`socket`][`onmessage`] = null;
+                if (this.socket) {
+                    this.socket[`onmessage`] = null;
                     try {
-                        this['socket'][`close`]();
+                        this.socket[`close`]();
                     } catch (ogarcloseconlabel) {}
-                    this[`socket`] = null;
+                    this.socket = null;
                 }
             },
             'reconnect': function() {
@@ -2712,27 +2712,27 @@ var core = function(t, e, i) {
                 this[`privateIP`] && (this['privateMode'] = !this[`privateMode`], this['isSocketOpen']() && (this[`closeConnection`](), toastr[`error`](`Zamknięto połączenie z serwerem!`)), this[`privateMode`] ? (toastr[`info`]('Przełączono na serwer prywatny!'), s(`.party-panel`)[`show`]()) : (toastr[`info`](`Przełączono na serwer publiczny!`), s(`#active-parties`)[`empty`](), s(`.party-panel`)['hide']()), this[`onJoin`](), i['play'] && this[`onPlayerSpawn`]());
             },
             'isSocketOpen': function() {
-                return null !== this['socket'] && this['socket'][`readyState`] === this[`socket`][`OPEN`];
+                return null !== this.socket && this.socket[`readyState`] === this.socket[`OPEN`];
             },
             'createView': function(t) {
                 return new DataView(new ArrayBuffer(t));
             },
             'strToBuff': function(t, e) {
                 var i = this[`createView`](1 + 2 * e['length']);
-                i['setUint8'](0, t);
-                for (var s = 0; s < e[`length`]; s++) i[`setUint16`](1 + 2 * s, e[`charCodeAt`](s), !0);
+                i.setUint8(0, t);
+                for (var s = 0; s < e[`length`]; s++) i.setUint16(1 + 2 * s, e[`charCodeAt`](s), !0);
                 return i;
             },
             'sendBuffer': function(t) {
-                this[`socket`][`send`](t[`buffer`]);
+                this.socket[`send`](t[`buffer`]);
             },
             'handleMessage': function(t) {
                 this['readMessage'](new DataView(t[`data`]));
             },
             'readMessage': function(t) {
-                switch (t[`getUint8`](0)) {
+                switch (t.getUint8(0)) {
                     case 0:
-                        this[`playerID`] = t['getUint32'](1, !0);
+                        this[`playerID`] = t.getUint32(1, !0);
                         break;
                     case 1:
                         this[`sendPlayerUpdate`]();
@@ -2752,7 +2752,7 @@ var core = function(t, e, i) {
             'sendPlayerState': function(t) {
                 if (this[`isSocketOpen`]()) {
                     var e = this['createView'](1);
-                    e[`setUint8`](0, t), this[`sendBuffer`](e);
+                    e.setUint8(0, t), this[`sendBuffer`](e);
                 }
             },
             'sendPlayerSpawn': function() {
@@ -2823,13 +2823,13 @@ var core = function(t, e, i) {
             'sendPlayerUpdate': function() {
                 if (this[`isSocketOpen`]() && i[`play`] && this['playerID'] && i[`playerColor`]) {
                     function t(t) {
-                        for (var e = 0; e < t[`length`]; e++) s[`setUint16`](o, t[`charCodeAt`](e), !0), o += 2;
-                        s[`setUint16`](o, 0, !0), o += 2;
+                        for (var e = 0; e < t[`length`]; e++) s.setUint16(o, t[`charCodeAt`](e), !0), o += 2;
+                        s.setUint16(o, 0, !0), o += 2;
                     }
                     var e = 41;
                     e += 2 * ogarcopythelb[`nick`][`length`], e += 2 * ogarcopythelb[`skinURL`][`length`];
                     var s = this['createView'](e);
-                    s[`setUint8`](0, 20), s[`setUint32`](1, this[`playerID`], !0);
+                    s.setUint8(0, 20), s.setUint32(1, this[`playerID`], !0);
                     var o = 5;
                     t(ogarcopythelb[`nick`]), t(ogarcopythelb['skinURL']), t(ogarcopythelb[`color`]), t(i['playerColor']), this['sendBuffer'](s);
                 }
@@ -2837,7 +2837,7 @@ var core = function(t, e, i) {
             'sendPlayerPosition': function() {
                 if (this['isSocketOpen']() && i[`play`] && this[`playerID`]) {
                     var t = this['createView'](17);
-                    t[`setUint8`](0, 30), t[`setUint32`](1, this[`playerID`], !0), t['setInt32'](5, this[`getPlayerX`](), !0), t[`setInt32`](9, this['getPlayerY'](), !0), void 0 !== i[`playerMass`] ? t[`setUint32`](13, i[`playerMass`], !0) : t['setUint32'](13, this[`playerMass`], !0), this[`sendBuffer`](t);
+                    t.setUint8(0, 30), t.setUint32(1, this[`playerID`], !0), t['setInt32'](5, this[`getPlayerX`](), !0), t[`setInt32`](9, this['getPlayerY'](), !0), void 0 !== i[`playerMass`] ? t.setUint32(13, i[`playerMass`], !0) : t.setUint32(13, this[`playerMass`], !0), this[`sendBuffer`](t);
                 }
             },
             'checkPlayerID': function(t) {
@@ -2849,13 +2849,13 @@ var core = function(t, e, i) {
             'updateTeamPlayer': function(t) {
                 function e() {
                     for (var e = '';;) {
-                        var i = t[`getUint16`](s, !0);
+                        var i = t.getUint16(s, !0);
                         if (0 == i) break;
                         e += String[`fromCharCode`](i), s += 2;
                     }
                     return s += 2, e;
                 }
-                var i = t[`getUint32`](1, !0),
+                var i = t.getUint32(1, !0),
                     s = 5,
                     o = e(),
                     a = this[`checkSkinURL`](e()),
@@ -2882,12 +2882,12 @@ var core = function(t, e, i) {
                 this['cacheCustomSkin'](o, r, a);
             },
             'updateTeamPlayerPosition': function(t) {
-                var e = t[`getUint32`](1, !0),
+                var e = t.getUint32(1, !0),
                     i = this[`checkPlayerID`](e);
                 if (null !== i) {
                     var s = t[`getInt32`](5, !0),
                         o = t[`getInt32`](9, !0),
-                        a = t[`getUint32`](13, !0);
+                        a = t.getUint32(13, !0);
                     if (a > 360000) return;
                     var n = this[`teamPlayers`][i];
                     n['x'] = s, n['y'] = o, n['mass'] = a, n[`alive`] = !0, n[`updateTime`] = Date[`now`](), this[`targeting`] && this[`targetID`] && e == this[`targetID`] && this['updateTarget'](n[`nick`], n[`skinURL`], s, o, a, n[`color`]);
@@ -2912,9 +2912,9 @@ var core = function(t, e, i) {
             },
             'updateParties': function(t) {
                 this['parties'] = [];
-                for (var e = t[`getUint8`](1), i = 2, s = 0; s < e; s++) {
+                for (var e = t.getUint8(1), i = 2, s = 0; s < e; s++) {
                     for (var o = '';;) {
-                        var a = t[`getUint16`](i, !0);
+                        var a = t.getUint16(i, !0);
                         if (0 == a) break;
                         o += String['fromCharCode'](a), i += 2;
                     }
@@ -2924,12 +2924,12 @@ var core = function(t, e, i) {
             'readChatMessage': function(t) {
                 if (!v[`disableChat`]) {
                     var e = new Date()[`toTimeString`]()[`replace`](/^(\d{2}:\d{2}).*/, '$1'),
-                        i = t[`getUint8`](1),
-                        s = t['getUint32'](2, !0),
-                        o = t[`getUint32`](6, !0);
+                        i = t.getUint8(1),
+                        s = t.getUint32(2, !0),
+                        o = t.getUint32(6, !0);
                     if (!(this[`isChatUserMuted`](s) || 0 != o && o != this['playerID'] && s != this[`playerID`])) {
                         for (var a = '', n = 10; n < t[`byteLength`]; n += 2) {
-                            var r = t['getUint16'](n, !0);
+                            var r = t.getUint16(n, !0);
                             if (0 == r) break;
                             a += String[`fromCharCode`](r);
                         }
@@ -2941,8 +2941,8 @@ var core = function(t, e, i) {
                 if (!(Date[`now`]() - this[`lastMessageSentTime`] < 500 || 0 == e[`length`] || 0 == ogarcopythelb[`nick`][`length`]) && this['isSocketOpen']()) {
                     e = ogarcopythelb['nick'] + ': ' + e;
                     var i = this[`createView`](10 + 2 * e['length']);
-                    i['setUint8'](0, 100), i[`setUint8`](1, t), i[`setUint32`](2, this[`playerID`], !0), i[`setUint32`](6, 0, !0);
-                    for (var s = 0; s < e[`length`]; s++) i[`setUint16`](10 + 2 * s, e['charCodeAt'](s), !0);
+                    i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this[`playerID`], !0), i.setUint32(6, 0, !0);
+                    for (var s = 0; s < e[`length`]; s++) i.setUint16(10 + 2 * s, e['charCodeAt'](s), !0);
                     this[`sendBuffer`](i), this[`lastMessageSentTime`] = Date[`now`]();
                 }
             },
@@ -3401,49 +3401,49 @@ var core = function(t, e, i) {
             'hideSmallBots': !1,
             'pressedKeys': {},
             'connect': function(t) {
-                console['log'](`[Legend mod Express] Connecting to game server:`, t);
+                console.log(`[Legend mod Express] Connecting to game server:`, t);
                 var i = this;
-                this[`closeConnection`](), this[`flushCellsData`](), this[`protocolKey`] = null, this[`clientKey`] = null, this[`accessTokenSent`] = !1, this[`connectionOpened`] = !1, this[`mapOffsetFixed`] = !1, this[`leaderboard`] = [], this['ws'] = t, this[`socket`] = new WebSocket(t), this['socket'][`binaryType`] = `arraybuffer`, this[`socket`][`onopen`] = function() {
+                this[`closeConnection`](), this[`flushCellsData`](), this[`protocolKey`] = null, this[`clientKey`] = null, this[`accessTokenSent`] = !1, this[`connectionOpened`] = !1, this[`mapOffsetFixed`] = !1, this[`leaderboard`] = [], this['ws'] = t, this.socket = new WebSocket(t), this.socket[`binaryType`] = `arraybuffer`, this.socket[`onopen`] = function() {
                     i[`onOpen`]();
-                }, this[`socket`][`onmessage`] = function(t) {
+                }, this.socket[`onmessage`] = function(t) {
                     i['onMessage'](t);
-                }, this['socket'][`onerror`] = function(t) {
+                }, this.socket[`onerror`] = function(t) {
                     i[`onError`](t);
-                }, this['socket']['onclose'] = function(t) {
+                }, this.socket['onclose'] = function(t) {
                     i[`onClose`](t);
                 }, ogarminimapdrawer[`getWS`](this['ws']), ogarminimapdrawer['sendServerJoin'](), ogarminimapdrawer[`sendServerData`](), ogarminimapdrawer[`displayLeaderboard`](''), e[`master`] && e[`master`][`onConnect`] && e[`master`][`onConnect`]();
             },
             'onOpen': function(t) {
-                console[`log`](`[Legend mod Express] Game server socket open`), this[`time`] = Date[`now`]();
+                console.log(`[Legend mod Express] Game server socket open`), this[`time`] = Date[`now`]();
                 var e = this[`createView`](5);
-                e[`setUint8`](0, 254), e['setUint32'](1, 20, !0), this[`sendMessage`](e), (e = this['createView'](5))[`setUint8`](0, 255), e[`setUint32`](1, this[`clientVersion`], !0), this[`sendMessage`](e), this[`connectionOpened`] = !0;
+                e.setUint8(0, 254), e.setUint32(1, 20, !0), this[`sendMessage`](e), (e = this['createView'](5)).setUint8(0, 255), e.setUint32(1, this[`clientVersion`], !0), this[`sendMessage`](e), this[`connectionOpened`] = !0;
             },
             'onMessage': function(t) {
                 t = new DataView(t[`data`]), this[`protocolKey`] && (t = this[`shiftMessage`](t, this['protocolKey'] ^ this[`clientVersion`])), this['handleMessage'](t);
             },
             'onError': function(t) {
-                console[`log`](`[Legend mod Express] Game server socket error`), this[`flushCellsData`](), e[`master`] && e[`master`][`onDisconnect`] && e[`master`][`onDisconnect`]();
+                console.log(`[Legend mod Express] Game server socket error`), this[`flushCellsData`](), e[`master`] && e[`master`][`onDisconnect`] && e[`master`][`onDisconnect`]();
             },
             'onClose': function(t) {
-                console['log'](`[Legend mod Express] Game server socket close`), this[`flushCellsData`](), e[`master`] && e[`master`][`onDisconnect`] && e[`master`]['onDisconnect']();
+                console.log(`[Legend mod Express] Game server socket close`), this[`flushCellsData`](), e[`master`] && e[`master`][`onDisconnect`] && e[`master`]['onDisconnect']();
             },
             'closeConnection': function() {
-                if (this[`socket`]) {
-                    this[`socket`][`onopen`] = null, this[`socket`][`onmessage`] = null, this[`socket`][`onerror`] = null, this['socket'][`onclose`] = null;
+                if (this.socket) {
+                    this.socket[`onopen`] = null, this.socket[`onmessage`] = null, this.socket[`onerror`] = null, this.socket[`onclose`] = null;
                     try {
-                        this[`socket`]['close']();
+                        this.socket['close']();
                     } catch (ogarcloseconncloser) {}
-                    this[`socket`] = null, this['ws'] = null;
+                    this.socket = null, this['ws'] = null;
                 }
             },
             'isSocketOpen': function() {
-                return null !== this[`socket`] && this[`socket`][`readyState`] === this[`socket`][`OPEN`];
+                return null !== this.socket && this.socket[`readyState`] === this.socket[`OPEN`];
             },
             'createView': function(t) {
                 return new DataView(new ArrayBuffer(t));
             },
             'sendBuffer': function(t) {
-                this[`socket`][`send`](t[`buffer`]);
+                this.socket[`send`](t[`buffer`]);
             },
             'sendMessage': function(t) {
                 if (this[`connectionOpened`]) {
@@ -3455,7 +3455,7 @@ var core = function(t, e, i) {
             'sendAction': function(t) {
                 if (this[`isSocketOpen`]()) {
                     var e = this[`createView`](1);
-                    e[`setUint8`](0, t), this[`sendMessage`](e);
+                    e.setUint8(0, t), this[`sendMessage`](e);
                 }
             },
             'sendSpectate': function() {
@@ -3473,8 +3473,8 @@ var core = function(t, e, i) {
             'sendNick': function(t) {
                 this[`playerNick`] = t, t = e[`unescape`](e[`encodeURIComponent`](t));
                 var i = this[`createView`](1 + t[`length`]);
-                i[`setUint8`](0, 0);
-                for (var s = 0; s < t['length']; s++) i[`setUint8`](s + 1, t[`charCodeAt`](s));
+                i.setUint8(0, 0);
+                for (var s = 0; s < t['length']; s++) i.setUint8(s + 1, t[`charCodeAt`](s));
                 this[`sendMessage`](i);
             },
             'sendPosition': function() {
@@ -3483,7 +3483,7 @@ var core = function(t, e, i) {
                         e = this['cursorY'];
                     (!this['play'] && this[`targeting`] || this[`pause`]) && (t = this['targetX'], e = this[`targetY`]);
                     var i = this['createView'](13);
-                    i[`setUint8`](0, 16), i[`setInt32`](1, t, !0), i['setInt32'](5, e, !0), i[`setUint32`](9, this['protocolKey'], !0), this['sendMessage'](i);
+                    i.setUint8(0, 16), i[`setInt32`](1, t, !0), i['setInt32'](5, e, !0), i.setUint32(9, this['protocolKey'], !0), this['sendMessage'](i);
                 }
             },
             'sendAccessToken': function(t, e, i) {
@@ -3497,19 +3497,19 @@ var core = function(t, e, i) {
                 }
             },
             'sendFbToken': function(t) {
-                this['sendAccessToken'](t, 2);
+                this.sendAccessToken(t, 2);
             },
             'sendGplusToken': function(t) {
-                this['sendAccessToken'](t, 3);
+                this.sendAccessToken(t, 3);
             },
             'sendRecaptcha': function(t) {
                 var e = this[`createView`](2 + t['length']);
-                e[`setUint8`](0, 86);
-                for (var i = 0; i < t[`length`]; i++) e[`setUint8`](1 + i, t[`charCodeAt`](i));
-                e[`setUint8`](t[`length`] + 1, 0), this[`sendMessage`](e);
+                e.setUint8(0, 86);
+                for (var i = 0; i < t[`length`]; i++) e.setUint8(1 + i, t[`charCodeAt`](i));
+                e.setUint8(t[`length`] + 1, 0), this[`sendMessage`](e);
             },
             'setClientVersion': function(t, e) {
-                this[`clientVersion`] = t, this[`clientVersionString`] = e, console[`log`]('[Legend mod Express] Client version:', t, e);
+                this[`clientVersion`] = t, this[`clientVersionString`] = e, console.log('[Legend mod Express] Client version:', t, e);
             },
             'generateClientKey': function(t, e) {
                 if (!t['length'] || !e[`byteLength`]) return null;
@@ -3528,7 +3528,7 @@ var core = function(t, e, i) {
                     default:
                         i = u;
                 }
-                return i != u && (i = 0 | Math[`imul`](n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math[`imul`](i, s), i ^= u = i >>> 15, console[`log`]('[Legend mod Express] Generated client key:', i), i;
+                return i != u && (i = 0 | Math[`imul`](n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math[`imul`](i, s), i ^= u = i >>> 15, console.log('[Legend mod Express] Generated client key:', i), i;
             },
             'shiftKey': function(t) {
                 return t = 0 | Math['imul'](t, 1540483477), t = 114296087 ^ (0 | Math[`imul`](t >>> 24 ^ t, 1540483477)), (t = 0 | Math[`imul`](t >>> 13 ^ t, 1540483477)) >>> 15 ^ t;
@@ -3537,18 +3537,18 @@ var core = function(t, e, i) {
                 if (i)
                     for (s = 0; s < t[`length`]; s++) t['writeUInt8'](t['readUInt8'](s) ^ e >>> s % 4 * 8 & 255, s);
                 else
-                    for (var s = 0; s < t[`byteLength`]; s++) t[`setUint8`](s, t[`getUint8`](s) ^ e >>> s % 4 * 8 & 255);
+                    for (var s = 0; s < t[`byteLength`]; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
                 return t;
             },
             'decompressMessage': function(t) {
                 var e = new o(t['buffer']),
-                    i = new o(e[`readUInt32LE`](1));
+                    i = new o(e.readUInt32LE(1));
                 return a[`decodeBlock`](e[`slice`](5), i), i;
             },
             'handleMessage': function(t) {
                 var i = function() {
                         for (var e = '';;) {
-                            var i = t[`getUint8`](s++);
+                            var i = t.getUint8(s++);
                             if (0 == i) break;
                             e += String[`fromCharCode`](i);
                         }
@@ -3566,25 +3566,25 @@ var core = function(t, e, i) {
                         this[`protocolKey`] && (this[`protocolKey`] = this[`shiftKey`](this[`protocolKey`])), this[`flushCellsData`]();
                         break;
                     case 32:
-                        this[`playerCellIDs`][`push`](t[`getUint32`](s, !0)), this[`play`] || (this[`play`] = !0, ogarminimapdrawer[`hideMenu`](), this[`playerColor`] = null, ogarminimapdrawer[`onPlayerSpawn`]());
+                        this[`playerCellIDs`][`push`](t.getUint32(s, !0)), this[`play`] || (this[`play`] = !0, ogarminimapdrawer[`hideMenu`](), this[`playerColor`] = null, ogarminimapdrawer[`onPlayerSpawn`]());
                         break;
                     case 50:
                         this[`pieChart`] = [];
-                        var a = t[`getUint32`](s, !0);
+                        var a = t.getUint32(s, !0);
                         s += 4;
                         for (var n = 0; n < a; n++) this[`pieChart`][`push`](t[`getFloat32`](s, !0)), s += 4;
                         ogarfooddrawer[`drawPieChart`]();
                         break;
                     case 53:
-                        if (this[`leaderboard`] = [], this[`playerPosition`] = 0, 54 == t[`getUint8`](0)) {
-                            t[`getUint16`](s, !0);
+                        if (this[`leaderboard`] = [], this[`playerPosition`] = 0, 54 == t.getUint8(0)) {
+                            t.getUint16(s, !0);
                             s += 2;
                         }
                         for (var r = 0; s < t[`byteLength`];) {
                             var l = '',
                                 h = 0,
                                 c = !1;
-                            r++, 2 & (y = t['getUint8'](s++)) && (l = e[`decodeURIComponent`](escape(i()))), 4 & y && (h = t[`getUint32`](s, !0), s += 4), 8 & y && (l = this['playerNick'], h = `isPlayer`, this[`playerPosition`] = r), 16 & y && (c = !0), this[`leaderboard`][`push`]({
+                            r++, 2 & (y = t['getUint8'](s++)) && (l = e[`decodeURIComponent`](escape(i()))), 4 & y && (h = t.getUint32(s, !0), s += 4), 8 & y && (l = this['playerNick'], h = `isPlayer`, this[`playerPosition`] = r), 16 & y && (c = !0), this[`leaderboard`][`push`]({
                                 'nick': l,
                                 'id': h,
                                 'isFriend': c
@@ -3595,14 +3595,14 @@ var core = function(t, e, i) {
                     case 54:
                         break;
                     case 69:
-                        var u = t[`getUint16`](s, !0);
+                        var u = t.getUint16(s, !0);
                         s += 2, this['ghostCells'] = [];
                         for (n = 0; n < u; n++) {
                             var d = t[`getInt32`](s, !0);
                             s += 4;
                             var f = t[`getInt32`](s, !0);
                             s += 4;
-                            var m = t[`getUint32`](s, !0);
+                            var m = t.getUint32(s, !0);
                             s += 5;
                             var g = ~~Math['sqrt'](100 * m);
                             this[`ghostCells`][`push`]({
@@ -3615,7 +3615,7 @@ var core = function(t, e, i) {
                         }
                         break;
                     case 85:
-                        console[`log`](`[Legend mod Express] Captcha requested`), e[`master`] && e[`master`][`recaptchaRequested`] && e[`master`][`recaptchaRequested`]();
+                        console.log(`[Legend mod Express] Captcha requested`), e[`master`] && e[`master`][`recaptchaRequested`] && e[`master`][`recaptchaRequested`]();
                         break;
                     case 102:
                         t['byteLength'] < 20 && e[`logout`] && e[`logout`]();
@@ -3627,27 +3627,27 @@ var core = function(t, e, i) {
                     case 161:
                         break;
                     case 176:
-                        this[`battleRoyale`][`startTime`] = t['getUint32'](s, !0);
+                        this[`battleRoyale`][`startTime`] = t.getUint32(s, !0);
                         break;
                     case 177:
                         this[`battleRoyale`][`joined`] = !0;
                         break;
                     case 178:
-                        this[`battleRoyale`]['players'] = t[`getUint16`](s, !0), s += 2;
-                        var y = t[`getUint16`](s, !0);
-                        s += 2, y || (this[`battleRoyale`]['state'] = 0, this['battleRoyale'][`joined`] = !1), 3 & y && (this[`battleRoyale`][`state`] = t[`getUint8`](s++), this[`battleRoyale`]['x'] = t['getInt32'](s, !0), s += 4, this[`battleRoyale`]['y'] = t['getInt32'](s, !0), s += 4, this[`battleRoyale`][`radius`] = t[`getUint32`](s, !0), s += 4, this[`battleRoyale`][`shrinkTime`] = 1000 * t[`getUint32`](s, !0), s += 4, this[`battleRoyale`]['shrinkTime'] && (this[`battleRoyale`][`timeLeft`] = ~~((this[`battleRoyale`]['shrinkTime'] - Date[`now`]() + this[`serverTimeDiff`]) / 1000), this[`battleRoyale`][`timeLeft`] < 0 && (this[`battleRoyale`][`timeLeft`] = 0))), 2 & y && (this[`battleRoyale`][`targetX`] = t[`getInt32`](s, !0), s += 4, this['battleRoyale'][`targetY`] = t[`getInt32`](s, !0), s += 4, this[`battleRoyale`][`targetRadius`] = t['getUint32'](s, !0));
+                        this[`battleRoyale`]['players'] = t.getUint16(s, !0), s += 2;
+                        var y = t.getUint16(s, !0);
+                        s += 2, y || (this[`battleRoyale`]['state'] = 0, this['battleRoyale'][`joined`] = !1), 3 & y && (this[`battleRoyale`][`state`] = t.getUint8(s++), this[`battleRoyale`]['x'] = t['getInt32'](s, !0), s += 4, this[`battleRoyale`]['y'] = t['getInt32'](s, !0), s += 4, this[`battleRoyale`][`radius`] = t.getUint32(s, !0), s += 4, this[`battleRoyale`][`shrinkTime`] = 1000 * t.getUint32(s, !0), s += 4, this[`battleRoyale`]['shrinkTime'] && (this[`battleRoyale`][`timeLeft`] = ~~((this[`battleRoyale`]['shrinkTime'] - Date[`now`]() + this[`serverTimeDiff`]) / 1000), this[`battleRoyale`][`timeLeft`] < 0 && (this[`battleRoyale`][`timeLeft`] = 0))), 2 & y && (this[`battleRoyale`][`targetX`] = t[`getInt32`](s, !0), s += 4, this['battleRoyale'][`targetY`] = t[`getInt32`](s, !0), s += 4, this[`battleRoyale`][`targetRadius`] = t.getUint32(s, !0));
                         break;
                     case 179:
-                        y = t[`getUint8`](s), e[`decodeURIComponent`](escape(i()));
-                        y || e['decodeURIComponent'](escape(i()));
+                        y = t.getUint8(s), e[`decodeURIComponent`](escape(i()));
+                        y || e.decodeURIComponent(escape(i()));
                         break;
                     case 180:
-                        this[`battleRoyale`]['joined'] = !1, this[`battleRoyale`][`rank`] = [], this[`battleRoyale`]['playerRank'] = t[`getUint32`](s, !0), s += 8;
-                        var ogario1PlayerProfiles = t[`getUint16`](s, !0);
+                        this[`battleRoyale`]['joined'] = !1, this[`battleRoyale`][`rank`] = [], this[`battleRoyale`]['playerRank'] = t.getUint32(s, !0), s += 8;
+                        var ogario1PlayerProfiles = t.getUint16(s, !0);
                         s += 2;
                         for (n = 0; n < ogario1PlayerProfiles; n++) {
                             var ogarcopythelb = e[`decodeURIComponent`](escape(i())),
-                                v = t[`getUint32`](s, !0);
+                                v = t.getUint32(s, !0);
                             s += 4, this[`battleRoyale`][`rank`]['push']({
                                 'place': v,
                                 'name': ogarcopythelb
@@ -3657,18 +3657,18 @@ var core = function(t, e, i) {
                     case 226:
                         break;
                     case 241:
-                        this['protocolKey'] = t[`getUint32`](s, !0), console[`log`](`[Legend mod Express] Received protocol key:`, this[`protocolKey`]);
+                        this['protocolKey'] = t.getUint32(s, !0), console.log(`[Legend mod Express] Received protocol key:`, this[`protocolKey`]);
                         var irenderfromagario = new Uint8Array(t[`buffer`], s += 4);
                         this[`clientKey`] = this[`generateClientKey`](this['ws'], irenderfromagario), e[`master`] && e[`master`][`login`] && e[`master`][`login`]();
                         break;
                     case 242:
-                        this[`serverTime`] = 1000 * t[`getUint32`](s, !0), this[`serverTimeDiff`] = Date['now']() - this[`serverTime`];
+                        this[`serverTime`] = 1000 * t.getUint32(s, !0), this[`serverTimeDiff`] = Date['now']() - this[`serverTime`];
                         break;
                     case 255:
                         this[`handleSubmessage`](t);
                         break;
                     default:
-                        console['log']('[Legend mod Express] Unknown opcode:', t[`getUint8`](0));
+                        console.log('[Legend mod Express] Unknown opcode:', t.getUint8(0));
                 }
             },
             'handleSubmessage': function(t) {
@@ -3681,7 +3681,7 @@ var core = function(t, e, i) {
                         this[`viewMinX`] = t[`readDoubleLE`](e), e += 8, this[`viewMinY`] = t[`readDoubleLE`](e), e += 8, this['viewMaxX'] = t[`readDoubleLE`](e), e += 8, this['viewMaxY'] = t[`readDoubleLE`](e), this[`setMapOffset`](this[`viewMinX`], this[`viewMinY`], this[`viewMaxX`], this[`viewMaxY`]);
                         break;
                     default:
-                        console[`log`]('[Legend mod Express] Unknown sub opcode:', t[`readUInt8`](0));
+                        console.log('[Legend mod Express] Unknown sub opcode:', t[`readUInt8`](0));
                 }
             },
             'handleLeaderboard': function() {				
@@ -3710,7 +3710,7 @@ var core = function(t, e, i) {
                 this[`indexedCells`] = {}, this[`cells`] = [], this[`playerCells`] = [], this[`playerCellIDs`] = [], this[`ghostCells`] = [], this[`food`] = [], this[`viruses`] = [];
             },
             'setMapOffset': function(t, e, i, s) {
-                i - t > 14000 && s - e > 14000 && (this[`mapOffsetX`] = this[`mapOffset`] - i, this[`mapOffsetY`] = this[`mapOffset`] - s, this[`mapMinX`] = ~~(-this[`mapOffset`] - this[`mapOffsetX`]), this[`mapMinY`] = ~~(-this[`mapOffset`] - this[`mapOffsetY`]), this[`mapMaxX`] = ~~(this[`mapOffset`] - this['mapOffsetX']), this[`mapMaxY`] = ~~(this[`mapOffset`] - this['mapOffsetY']), this['mapOffsetFixed'] || (this[`viewX`] = (i + t) / 2, this[`viewY`] = (s + e) / 2), this['mapOffsetFixed'] = !0, console['log']('[Legend mod Express] Map offset fixed (x, y):', this['mapOffsetX'], this['mapOffsetY']));
+                i - t > 14000 && s - e > 14000 && (this[`mapOffsetX`] = this[`mapOffset`] - i, this[`mapOffsetY`] = this[`mapOffset`] - s, this[`mapMinX`] = ~~(-this[`mapOffset`] - this[`mapOffsetX`]), this[`mapMinY`] = ~~(-this[`mapOffset`] - this[`mapOffsetY`]), this[`mapMaxX`] = ~~(this[`mapOffset`] - this['mapOffsetX']), this[`mapMaxY`] = ~~(this[`mapOffset`] - this['mapOffsetY']), this['mapOffsetFixed'] || (this[`viewX`] = (i + t) / 2, this[`viewY`] = (s + e) / 2), this['mapOffsetFixed'] = !0, console.log('[Legend mod Express] Map offset fixed (x, y):', this['mapOffsetX'], this['mapOffsetY']));
             },
             'isInView': function(t, e, i) {
                 var s = this['canvasWidth'] / 2 / this[`scale`],
@@ -3727,21 +3727,21 @@ var core = function(t, e, i) {
                     return e;
                 };
                 this[`time`] = Date[`now`](), this[`removePlayerCell`] = !1;
-                var o = t[`readUInt16LE`](i);
+                var o = t.readUInt16LE(i);
                 i += 2;
                 for (var a = 0; a < o; a++) {
-                    var n = this[`indexedCells`][t[`readUInt32LE`](i)],
-                        r = this['indexedCells'][t['readUInt32LE'](i + 4)];
+                    var n = this[`indexedCells`][t.readUInt32LE(i)],
+                        r = this['indexedCells'][t.readUInt32LE(i + 4)];
                     i += 8, n && r && (r[`targetX`] = n['x'], r[`targetY`] = n['y'], r[`targetSize`] = r[`size`], r[`time`] = this[`time`], r[`removeCell`]());
                 }
                 for (a = 0;;) {
-                    var l = t[`readUInt32LE`](i);
+                    var l = t.readUInt32LE(i);
                     if (i += 4, 0 == l) break;
                     var h = t[`readInt32LE`](i);
                     i += 4;
                     var c = t[`readInt32LE`](i);
                     i += 4;
-                    var u = t[`readUInt16LE`](i);
+                    var u = t.readUInt16LE(i);
                     i += 2;
                     var d = t[`readUInt8`](i++),
                         f = 0;
@@ -3757,14 +3757,14 @@ var core = function(t, e, i) {
                     }
 
                     //4 & d && (g = s()),
-                    //8 & d && (y = e['decodeURIComponent'](escape(s())));
+                    //8 & d && (y = e.decodeURIComponent(escape(s())));
                     if (4 & d) {
 						g = s();
 //						console.log('skin '+g);
                         
                     }
                     if (8 & d) {
-                        y = e['decodeURIComponent'](escape(s()));
+                        y = e.decodeURIComponent(escape(s()));
                         if (g != null) {
 							if (window.vanillaskins==true){
                             var skin2search = g.replace('%', '');
@@ -3782,14 +3782,14 @@ var core = function(t, e, i) {
 							}
                         }
                     }
-                    //8 & d && (y = e['decodeURIComponent'](escape(s())));
+                    //8 & d && (y = e.decodeURIComponent(escape(s())));
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this[`indexedCells`][l], m && (ogariocellssetts[`color`] = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, !1, v[`shortMass`], v[`virMassShots`]))[`time`] = this[`time`], ogarioset1final ? this['food'][`push`](ogariocellssetts) : (M && v[`virusesRange`] && this[`viruses`][`push`](ogariocellssetts), this[`cells`][`push`](ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this[`playerCells`].indexOf(ogariocellssetts) && (ogariocellssetts[`isPlayerCell`] = !0, this[`playerColor`] = m, this[`playerCells`]['push'](ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts[`isPlayerCell`] && (y = this['playerNick']), y && (ogariocellssetts[`targetNick`] = y), ogariocellssetts[`targetX`] = h, ogariocellssetts[`targetY`] = c, ogariocellssetts[`targetSize`] = u, ogariocellssetts[`isFood`] = ogarioset1final, ogariocellssetts[`isVirus`] = M, g && (ogariocellssetts[`skin`] = g), 4 & f && (t[`readUInt32LE`](i), i += 4);
+                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this[`indexedCells`][l], m && (ogariocellssetts[`color`] = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, !1, v[`shortMass`], v[`virMassShots`]))[`time`] = this[`time`], ogarioset1final ? this['food'][`push`](ogariocellssetts) : (M && v[`virusesRange`] && this[`viruses`][`push`](ogariocellssetts), this[`cells`][`push`](ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this[`playerCells`].indexOf(ogariocellssetts) && (ogariocellssetts[`isPlayerCell`] = !0, this[`playerColor`] = m, this[`playerCells`]['push'](ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts[`isPlayerCell`] && (y = this['playerNick']), y && (ogariocellssetts[`targetNick`] = y), ogariocellssetts[`targetX`] = h, ogariocellssetts[`targetY`] = c, ogariocellssetts[`targetSize`] = u, ogariocellssetts[`isFood`] = ogarioset1final, ogariocellssetts[`isVirus`] = M, g && (ogariocellssetts[`skin`] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
-                for (o = t[`readUInt16LE`](i), i += 2, a = 0; a < o; a++) {
-                    l = t[`readUInt32LE`](i);
+                for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
+                    l = t.readUInt32LE(i);
                     i += 4, (ogariocellssetts = this[`indexedCells`][l]) && ogariocellssetts[`removeCell`]();
                 }
                 this['removePlayerCell'] && !this[`playerCells`][`length`] && (this[`play`] = !1, ogarminimapdrawer[`onPlayerDeath`](), ogarminimapdrawer[`showMenu`](300));
@@ -4956,7 +4956,7 @@ var core = function(t, e, i) {
                     8 == t[0] && t[`unshift`](102);
                     var e = M[`createView`](t[`length`]);
                     M[`sendMessage`](e);
-                } else console[`log`](`ProxyMobileData ERROR: Array data required.`);
+                } else console.log(`ProxyMobileData ERROR: Array data required.`);
             }
         }, e['master'][`getClientVersion`](), y[`init`](), ogarminimapdrawer[`init`](), ogarminimapdrawer[`getDefaultSettings`](), ogarminimapdrawer[`connect`](), lastkeys[`init`](), M['init'](), ogarfooddrawer[`init`](), e[`master`][`init`](), ogarhusettings();
     })(window, window[`ogario`], window[`jQuery`]);
