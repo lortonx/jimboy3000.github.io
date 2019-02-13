@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.75 WebGL tests
+//v1.76 WebGL tests
 
 //Game Configurations
 
@@ -3179,11 +3179,12 @@ var core = function(t, e, i) {
                 },
                 this[`createCanvas`] = function() {
                     this[`txtCanvas`] || (this[`txtCanvas`] = document[`createElement`]('canvas'),
-                       // this[`txtCtx`] = this[`txtCanvas`].getContext('2d'),
-					    this[`txtCtx`] = enableWebGLCanvas(this.txtCanvas),
-						this.txtCtx.start2D(),                
-                        this[`txtCtx`][`ogarioCtx`] = !0,
-						this.txtCtx.finish2D());
+                        this[`txtCtx`] = this[`txtCanvas`].getContext('2d'),
+					    //this[`txtCtx`] = enableWebGLCanvas(this.txtCanvas),
+						//this.txtCtx.start2D(),                
+                        //this[`txtCtx`][`ogarioCtx`] = !0,
+						//this.txtCtx.finish2D());
+						this[`txtCtx`][`ogarioCtx`] = !0);
                 },
                 this[`setDrawing`] = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
                     this[`setColor`](ogarsetDrawinglabel1),
