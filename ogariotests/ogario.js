@@ -1,8 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.72 WebGL tests
-
+//v1.65
 //Game Configurations
 
 window.agarversion="v12/1963/";
@@ -2295,7 +2294,7 @@ var core = function(t, e, i) {
                         e = s(`#message`),
                         i = e.val();
                     i[`length`] + t[`length`] <= 80 && e.val(i + t), e['focus']();
-                }), this['statsHUD'] = document.getElementById(`stats-hud`), this['activeParties'] = document.getElementById(`active-parties`), this[`top5pos`] = document.getElementById(`top5-pos`), this[`top5totalMass`] = document.getElementById(`top5-total-mass`), this['top5totalPlayers'] = document.getElementById('top5-total-players'), this[`leaderboardPositionsHUD`] = document.getElementById(`leaderboard-positions`), this['leaderboardDataHUD'] = document.getElementById(`leaderboard-data`), this[`timeHUD`] = document.getElementById(`time-hud`), this[`questHUD`] = document.getElementById(`quest-hud`), s(`#canvas`)[`bind`](`contextmenu`, function() {
+                }), this['statsHUD'] = document[`getElementById`](`stats-hud`), this['activeParties'] = document['getElementById'](`active-parties`), this[`top5pos`] = document[`getElementById`](`top5-pos`), this[`top5totalMass`] = document[`getElementById`](`top5-total-mass`), this['top5totalPlayers'] = document[`getElementById`]('top5-total-players'), this[`leaderboardPositionsHUD`] = document['getElementById'](`leaderboard-positions`), this['leaderboardDataHUD'] = document['getElementById'](`leaderboard-data`), this[`timeHUD`] = document[`getElementById`](`time-hud`), this[`questHUD`] = document[`getElementById`](`quest-hud`), s(`#canvas`)[`bind`](`contextmenu`, function() {
                     return !1;
                 }), s(document)['on']('mouseup', `.btn`, function() {
                     $(this)[`blur`]();
@@ -2468,12 +2467,9 @@ var core = function(t, e, i) {
                         //console.log(e);
                         var i = document[`createElement`](`canvas`);
                         i[`width`] = 512, i[`height`] = 512;
-						var s = enableWebGLCanvas(i);
-                        //var s = i.getContext('2d');
-						s.start2D();
+                        var s = i[`getContext`]('2d');
                         s[`beginPath`](), s[`arc`](256, 256, 256, 0, 2 * Math['PI'], !1), s[`clip`](), s[`drawImage`](this[`customSkinsCache`][e], 0, 0, 512, 512), this[`customSkinsCache`][e + `_cached`] = new Image(), this[`customSkinsCache`][e + `_cached`][`src`] = i[`toDataURL`](), i = null, this[`cacheSkin`](this[`customSkinsCache`]);
-						s.finish2D();
-					}
+                    }
                 }
             },
             'cacheVanillaSkin': function(vanSkin) {
@@ -2484,7 +2480,7 @@ var core = function(t, e, i) {
                     console.log(e);
                     var i = document[`createElement`](`canvas`);
                     i[`width`] = 512, i[`height`] = 512;
-                    var s = i.getContext('2d');
+                    var s = i[`getContext`]('2d');
                     s[`beginPath`](), s[`arc`](256, 256, 256, 0, 2 * Math['PI'], !1), s[`clip`](), s[`drawImage`](this[`customSkinsCache`][e], 0, 0, 512, 512), this[`customSkinsCache`][e + `_cached`] = new Image(), this[`customSkinsCache`][e + `_cached`][`src`] = i[`toDataURL`](), i = null, this[`cacheSkin`](this[`customSkinsCache`]);
                     //}
                 }
@@ -2545,7 +2541,7 @@ var core = function(t, e, i) {
                         s = t + e,
                         o = t - 18,
                         a = e + 9.5;
-                    this[`miniMap`] ? this[`miniMapCtx`][`clearRect`](0, 0, t, s) : (this[`miniMap`] = document.getElementById(`minimap`), this[`miniMapCtx`] = this['miniMap'].getContext('2d'), this['miniMapCtx'][`ogarioCtx`] = !0, this[`miniMap`][`width`] = t, this[`miniMap`][`height`] = s), this[`miniMap`][`width`] != t && (this[`miniMap`][`width`] = t, this[`miniMap`][`height`] = s);
+                    this[`miniMap`] ? this[`miniMapCtx`][`clearRect`](0, 0, t, s) : (this[`miniMap`] = document[`getElementById`](`minimap`), this[`miniMapCtx`] = this['miniMap'][`getContext`]('2d'), this['miniMapCtx'][`ogarioCtx`] = !0, this[`miniMap`][`width`] = t, this[`miniMap`][`height`] = s), this[`miniMap`][`width`] != t && (this[`miniMap`][`width`] = t, this[`miniMap`][`height`] = s);
                     var n = o / i[`mapSize`],
                         r = i[`mapOffsetX`] + i[`mapOffset`],
                         l = i[`mapOffsetY`] + i[`mapOffset`];
@@ -2574,8 +2570,8 @@ var core = function(t, e, i) {
                 }
             },
             'drawMiniMapSectors': function(t, e, s, o, a) {
-                this['miniMapSectors'] = document.getElementById(`minimap-sectors`);
-                var n = this[`miniMapSectors`].getContext('2d');
+                this['miniMapSectors'] = document[`getElementById`](`minimap-sectors`);
+                var n = this[`miniMapSectors`][`getContext`]('2d');
                 n[`ogarioCtx`] = !0, this[`miniMapSectors`]['width'] = s, this['miniMapSectors'][`height`] = o, n[`fillStyle`] = '#FFFFFF', this[`dTok`](n, s - 1), ogarfooddrawer[`drawSectors`](n, i[`mapOffsetFixed`], t, e, 0.5, a, s - 0.5, o - 9.5, g['miniMapSectorsColor'], g[`miniMapSectorsColor`], 1, !1);
             },
             'resetMiniMapSectors': function() {
@@ -3179,7 +3175,7 @@ var core = function(t, e, i) {
                 },
                 this[`createCanvas`] = function() {
                     this[`txtCanvas`] || (this[`txtCanvas`] = document[`createElement`]('canvas'),
-                        this[`txtCtx`] = this[`txtCanvas`].getContext('2d'),
+                        this[`txtCtx`] = this[`txtCanvas`][`getContext`]('2d'),
                         this[`txtCtx`][`ogarioCtx`] = !0);
                 },
                 this[`setDrawing`] = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
@@ -3285,7 +3281,7 @@ var core = function(t, e, i) {
                     }
                     return ptx;
                 },
-                this.draw = function(t, e) {
+                this[`draw`] = function(t, e) {
                     if (!(M[`hideSmallBots`] && this['size'] <= 36)) {
                         t[`save`](), this['redrawed']++, e && this[`moveCell`](), this['removed'] && (t['globalAlpha'] *= 1 - this[`alpha`]);
                         var i = t[`globalAlpha`],
@@ -3935,15 +3931,12 @@ var core = function(t, e, i) {
                 'pellet': null,
                 'indicator': null,
                 'setCanvas': function() {
-					this.canvas = document.getElementById(`canvas`), this.ctx = this.canvas.getContext('2d'), this.canvas.onmousemove= function(t) {
-					//this.canvas = document.getElementById(`canvas`), this.ctx = enableWebGLCanvas(canvas);this.ctx = this.canvas.getContext('2d'), this.canvas.onmousemove= function(t) {
-					//this.canvas = document.getElementById(`canvas`), this.ctx = enableWebGLCanvas(canvas); this.canvas.onmousemove= function(t) {
-						
+                    this[`canvas`] = document[`getElementById`](`canvas`), this[`ctx`] = this[`canvas`][`getContext`]('2d'), this[`canvas`][`onmousemove`] = function(t) {
                         M['clientX'] = t[`clientX`], M[`clientY`] = t['clientY'], M[`getCursorPosition`]();
                     };
                 },
                 'resizeCanvas': function() {
-                    this[`canvasWidth`] = e[`innerWidth`], this[`canvasHeight`] = e[`innerHeight`], this.canvas[`width`] = this[`canvasWidth`], this.canvas[`height`] = this[`canvasHeight`], M[`canvasWidth`] = this[`canvasWidth`], M[`canvasHeight`] = this[`canvasHeight`], this['renderFrame']();
+                    this[`canvasWidth`] = e[`innerWidth`], this[`canvasHeight`] = e[`innerHeight`], this[`canvas`][`width`] = this[`canvasWidth`], this['canvas'][`height`] = this[`canvasHeight`], M[`canvasWidth`] = this[`canvasWidth`], M[`canvasHeight`] = this[`canvasHeight`], this['renderFrame']();
                 },
                 'setView': function() {
                     this[`setScale`](),
@@ -3966,14 +3959,14 @@ var core = function(t, e, i) {
                 },
                 'renderFrame': function() {
                     for (M[`time`] = Date[`now`](), e = 0; e < M['cells'][`length`]; e++) M[`cells`][e][`moveCell`]();
-                    if (this[`setView`](), M[`getCursorPosition`](), M[`sortCells`](), M[`compareCells`](), this.ctx[`clearRect`](0, 0, this[`canvasWidth`], this[`canvasHeight`]), v[`showGrid`] && this[`drawGrid`](this.ctx, this[`canvasWidth`], this[`canvasHeight`], this[`scale`], this.camX, this.camY), this.ctx[`save`](), this.ctx[`translate`](this[`canvasWidth`] / 2, this[`canvasHeight`] / 2), this.ctx[`scale`](this[`scale`], this[`scale`]), this.ctx['translate'](-this.camX, -this.camY), v[`showBgSectors`] && this[`drawSectors`](this.ctx, M[`mapOffsetFixed`], g[`sectorsX`], g[`sectorsY`], M[`mapMinX`], M[`mapMinY`], M[`mapMaxX`], M['mapMaxY'], g[`gridColor`], g[`sectorsColor`], g[`sectorsWidth`], !0), `:battleroyale` === M[`gameMode`] && this[`drawBattleArea`](this.ctx), v['showMapBorders']) {
+                    if (this[`setView`](), M[`getCursorPosition`](), M[`sortCells`](), M[`compareCells`](), this[`ctx`][`clearRect`](0, 0, this[`canvasWidth`], this[`canvasHeight`]), v[`showGrid`] && this[`drawGrid`](this[`ctx`], this[`canvasWidth`], this[`canvasHeight`], this[`scale`], this.camX, this.camY), this['ctx'][`save`](), this[`ctx`][`translate`](this[`canvasWidth`] / 2, this[`canvasHeight`] / 2), this[`ctx`][`scale`](this[`scale`], this[`scale`]), this['ctx']['translate'](-this.camX, -this.camY), v[`showBgSectors`] && this[`drawSectors`](this['ctx'], M[`mapOffsetFixed`], g[`sectorsX`], g[`sectorsY`], M[`mapMinX`], M[`mapMinY`], M[`mapMaxX`], M['mapMaxY'], g[`gridColor`], g[`sectorsColor`], g[`sectorsWidth`], !0), `:battleroyale` === M[`gameMode`] && this[`drawBattleArea`](this[`ctx`]), v['showMapBorders']) {
                         var t = g['bordersWidth'] / 2;
-                        this[`drawMapBorders`](this.ctx, M[`mapOffsetFixed`], M[`mapMinX`] - t, M[`mapMinY`] - t, M[`mapMaxX`] + t, M[`mapMaxY`] + t, g[`bordersColor`], g['bordersWidth']);
+                        this[`drawMapBorders`](this[`ctx`], M[`mapOffsetFixed`], M[`mapMinX`] - t, M[`mapMinY`] - t, M[`mapMaxX`] + t, M[`mapMaxY`] + t, g[`bordersColor`], g['bordersWidth']);
                     }
-                    v['virusesRange'] && this[`drawVirusesRange`](this.ctx, M[`viruses`]), this[`drawFood`](), M[`play`] && (v[`splitRange`] && this[`drawSplitRange`](this.ctx, M[`biggerSTECellsCache`], M[`playerCells`], M['selectBiggestCell']), v[`oppRings`] && this['drawOppRings'](this.ctx, this[`scale`], M[`biggerSTECellsCache`], M[`biggerCellsCache`], M[`smallerCellsCache`], M[`STECellsCache`]), v['cursorTracking'] && this[`drawCursorTracking`](this.ctx, M['playerCells'], M[`cursorX`], M['cursorY'])), this[`drawGhostCells`]();
-                    for (var e = 0; e < M[`removedCells`][`length`]; e++) M[`removedCells`][e].draw(this.ctx, !0);
-                    for (e = 0; e < M[`cells`][`length`]; e++) M[`cells`][e].draw(this.ctx);
-                    this.ctx[`restore`](), ':teams' === M[`gameMode`] && this['pieChart'] && this[`pieChart`][`width`] && this.ctx[`drawImage`](this[`pieChart`], this[`canvasWidth`] - this[`pieChart`][`width`] - 10, 10);
+                    v['virusesRange'] && this[`drawVirusesRange`](this[`ctx`], M[`viruses`]), this[`drawFood`](), M[`play`] && (v[`splitRange`] && this[`drawSplitRange`](this[`ctx`], M[`biggerSTECellsCache`], M[`playerCells`], M['selectBiggestCell']), v[`oppRings`] && this['drawOppRings'](this[`ctx`], this[`scale`], M[`biggerSTECellsCache`], M[`biggerCellsCache`], M[`smallerCellsCache`], M[`STECellsCache`]), v['cursorTracking'] && this[`drawCursorTracking`](this[`ctx`], M['playerCells'], M[`cursorX`], M['cursorY'])), this[`drawGhostCells`]();
+                    for (var e = 0; e < M[`removedCells`][`length`]; e++) M[`removedCells`][e]['draw'](this['ctx'], !0);
+                    for (e = 0; e < M[`cells`][`length`]; e++) M[`cells`][e][`draw`](this['ctx']);
+                    this[`ctx`][`restore`](), ':teams' === M[`gameMode`] && this['pieChart'] && this[`pieChart`][`width`] && this['ctx'][`drawImage`](this[`pieChart`], this[`canvasWidth`] - this[`pieChart`][`width`] - 10, 10);
                 },
                 'drawGrid': function(t, e, i, s, o, a) {
                     var n = e / s,
@@ -4022,8 +4015,8 @@ var core = function(t, e, i) {
                     if (M[`showFood`] && !(v[`autoHideFoodOnZoom`] && this['scale'] < 0.2)) {
                         if (v['autoHideFood'] && !M['foodIsHidden'] && M[`playerMass`] > 1000) return M[`showFood`] = !1, void(M['foodIsHidden'] = !0);
                         if (v[`rainbowFood`])
-                            for (var t = 0; t < M['food'][`length`]; t++) M['food'][t][`moveCell`](), M[`food`][t].draw(this.ctx);
-                        else this[`drawCachedFood`](this.ctx, M[`food`], this['scale']);
+                            for (var t = 0; t < M['food'][`length`]; t++) M['food'][t][`moveCell`](), M[`food`][t][`draw`](this['ctx']);
+                        else this[`drawCachedFood`](this[`ctx`], M[`food`], this['scale']);
                     }
                 },
                 'drawCachedFood': function(t, e, i, s) {
@@ -4079,15 +4072,12 @@ var core = function(t, e, i) {
                 },
                 'drawPieChart': function() {
                     this['pieChart'] || (this[`pieChart`] = document[`createElement`](`canvas`));
-                    var t = enableWebGLCanvas(this.pieChart),					
-					//var t = this[`pieChart`].getContext('2d'),
+                    var t = this[`pieChart`][`getContext`]('2d'),
                         e = Math['min'](200, 0.3 * this[`canvasWidth`]) / 200;
-						t.start2D();
                     this['pieChart'][`width`] = 200 * e, this[`pieChart`][`height`] = 240 * e, t['scale'](e, e);
                     for (var i = [`#333333`, `#FF3333`, '#33FF33', `#3333FF`], s = 0, o = 0; o < M[`pieChart`][`length`]; o++) {
                         var a = s + M['pieChart'][o] * this[`pi2`];
                         t[`fillStyle`] = i[o + 1], t['beginPath'](), t[`moveTo`](100, 140), t[`arc`](100, 140, 80, s, a, !1), t['fill'](), s = a;
-						t.finish2D();
                     }
                 },
                 'drawBattleArea': function(t) {
@@ -4095,7 +4085,7 @@ var core = function(t, e, i) {
                 },
                 'drawBattleAreaOnMinimap': function(t, e, i, s, o, a) {
                     if (M[`battleRoyale`][`state`]) {
-                        this['battleAreaMap'] || (this[`battleAreaMap`] = document['createElement']('canvas'), this[`battleAreaMapCtx`] = this[`battleAreaMap`].getContext('2d')), this['battleAreaMap'][`width`] != e ? (this[`battleAreaMap`][`width`] = e, this[`battleAreaMap`]['height'] = i) : this[`battleAreaMapCtx`][`clearRect`](0, 0, e, i);
+                        this['battleAreaMap'] || (this[`battleAreaMap`] = document['createElement']('canvas'), this[`battleAreaMapCtx`] = this[`battleAreaMap`]['getContext']('2d')), this['battleAreaMap'][`width`] != e ? (this[`battleAreaMap`][`width`] = e, this[`battleAreaMap`]['height'] = i) : this[`battleAreaMapCtx`][`clearRect`](0, 0, e, i);
                         var n = (M[`battleRoyale`]['x'] + o) * s,
                             r = (M[`battleRoyale`]['y'] + a) * s,
                             l = M[`battleRoyale`][`radius`] * s;
@@ -4111,13 +4101,13 @@ var core = function(t, e, i) {
                 'drawGhostCells': function() {
                     if (v[`showGhostCells`]) {
                         var t = M[`ghostCells`];
-                        this.ctx['beginPath']();
+                        this['ctx']['beginPath']();
                         for (var e = 0; e < t['length']; e++)
                             if (!t[e][`inView`]) {
                                 var i = t[e]['x'],
                                     s = t[e]['y'];
-                                this.ctx[`moveTo`](i, s), this.ctx[`arc`](i, s, t[e][`size`], 0, this[`pi2`], !1);
-                            } this.ctx[`fillStyle`] = g[`ghostCellsColor`], this.ctx[`globalAlpha`] = g[`ghostCellsAlpha`], this.ctx[`shadowColor`] = g[`ghostCellsColor`], this.ctx[`shadowBlur`] = 40, this.ctx[`shadowOffsetX`] = 0, this.ctx[`shadowOffsetY`] = 0, this.ctx[`fill`](), this.ctx['globalAlpha'] = 1, this.ctx[`shadowBlur`] = 0;
+                                this[`ctx`][`moveTo`](i, s), this[`ctx`][`arc`](i, s, t[e][`size`], 0, this[`pi2`], !1);
+                            } this[`ctx`][`fillStyle`] = g[`ghostCellsColor`], this[`ctx`][`globalAlpha`] = g[`ghostCellsAlpha`], this[`ctx`][`shadowColor`] = g[`ghostCellsColor`], this[`ctx`][`shadowBlur`] = 40, this[`ctx`][`shadowOffsetX`] = 0, this[`ctx`][`shadowOffsetY`] = 0, this[`ctx`][`fill`](), this['ctx']['globalAlpha'] = 1, this[`ctx`][`shadowBlur`] = 0;
                     }
                 },
                 'preDrawPellet': function() {
@@ -4125,22 +4115,16 @@ var core = function(t, e, i) {
                     var t = 10 + g[`foodSize`],
                         e = document[`createElement`](`canvas`);
                     e['width'] = 2 * t, e['height'] = 2 * t;
-                    //var i = e.getContext('2d');
-					var i = enableWebGLCanvas(e);
-					i.start2D();
+                    var i = e[`getContext`]('2d');
                     i[`arc`](t, t, t, 0, this[`pi2`], !1), i[`fillStyle`] = g[`foodColor`], i[`fill`](), this['pellet'] = new Image(), this[`pellet`][`src`] = e[`toDataURL`](), e = null;
-					i.finish2D();
                 },
                 'preDrawIndicator': function() {
                     this[`indicator`] = null;
                     var t = document['createElement'](`canvas`);
                     t['width'] = 90, t[`height`] = 50;
-                    //var e = t.getContext('2d');					
-					var e = enableWebGLCanvas(e);
-					e.start2D();
+                    var e = t[`getContext`]('2d');
                     e[`lineWidth`] = 2, e[`fillStyle`] = g['teammatesIndColor'], e['strokeStyle'] = `#000000`, e[`beginPath`](), e[`moveTo`](0, 0), e[`lineTo`](90, 0), e[`lineTo`](45, 50), e[`closePath`](), e[`fill`](), e[`stroke`](), this[`indicator`] = new Image(), this['indicator'][`src`] = t[`toDataURL`](), t = null;
-					e.finish2D();
-				},
+                },
                 'countFps': function() {
                     if (v['showStatsFPS']) {
                         var t = Date[`now`]();
