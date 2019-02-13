@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.73 WebGL tests
+//v1.74 WebGL tests
 
 //Game Configurations
 
@@ -3181,7 +3181,9 @@ var core = function(t, e, i) {
                     this[`txtCanvas`] || (this[`txtCanvas`] = document[`createElement`]('canvas'),
                        // this[`txtCtx`] = this[`txtCanvas`].getContext('2d'),
 					    this[`txtCtx`] = enableWebGLCanvas(this.txtCanvas),
-                        this[`txtCtx`][`ogarioCtx`] = !0);
+						txtCtx.start2D(),                
+                        this[`txtCtx`][`ogarioCtx`] = !0,
+						txtCtx.finish2D());
                 },
                 this[`setDrawing`] = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
                     this[`setColor`](ogarsetDrawinglabel1),
@@ -4137,7 +4139,7 @@ var core = function(t, e, i) {
                     var t = document['createElement'](`canvas`);
                     t['width'] = 90, t[`height`] = 50;
                     //var e = t.getContext('2d');					
-					var e = enableWebGLCanvas(e);
+					var e = enableWebGLCanvas(t);
 					e.start2D();
                     e[`lineWidth`] = 2, e[`fillStyle`] = g['teammatesIndColor'], e['strokeStyle'] = `#000000`, e[`beginPath`](), e[`moveTo`](0, 0), e[`lineTo`](90, 0), e[`lineTo`](45, 50), e[`closePath`](), e[`fill`](), e[`stroke`](), this[`indicator`] = new Image(), this['indicator'][`src`] = t[`toDataURL`](), t = null;
 					e.finish2D();
