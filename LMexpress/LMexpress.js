@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.009 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "14"; // the version 1.1-> 1.11
@@ -7355,7 +7355,7 @@ for (i=0; i<10; i++ ){
 for (animatedi=0; animatedi<legendmod.leaderboard.length; animatedi++ ){
 	for (animatedkey in animatedskins) {
 		if (animatedkey==legendmod.leaderboard[animatedi].nick){
-			console.log(animatedkey);
+			//console.log(animatedkey);
 			e = animatedskins[animatedkey].frames.length-1;
 			for (animateda=0; animateda<=animatedskins[animatedkey].frames.length-1; animateda++)
 			{				
@@ -7377,15 +7377,15 @@ function animateSkin(a, b, c, d, e, i)
 			setTimeout(function() {
 				//if (c==legendmod.leaderboard[d].nick){
 				legendmod3.cacheCustomSkin(c, animatedskins[c].color, "https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");				
-				console.log("https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");
-				console.log(window.a);
+				//console.log("https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");
+				//console.log(window.a);
 				if (b==e){
-					console.log("Animated Skins: End of cycle: " + i);
+					//console.log("Animated Skins: End of cycle: " + i);
 					if (i==9){
 						window.a=0;
 						if (animatedserverchanged==false){
 						//animateSkincheck();
-						console.log("Animated Skins: End of total cycles");
+						//console.log("Animated Skins: End of total cycles");
 						}
 					}
 					//animateSkincheck()
