@@ -450,7 +450,7 @@ function init(modVersion) {
 				localStorage.setItem("VanillaskinsSaved", "true");
 				window.vanillaskins=true;
 				// Animated Skins
-				var animateSkinsStart = setInterval(animateSkincheckTimer, 10000);
+				var animateSkinsStart = setInterval(animateSkincheckTimer, 60000);
 			} else {				
 				localStorage.setItem("VanillaskinsSaved", "false");
 				toastr["info"]("Changes will fully be reflected after restart");
