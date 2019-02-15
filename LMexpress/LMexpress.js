@@ -6365,6 +6365,13 @@ preventcanvasimagecrash();
         $('#nick').blur(function() {
 			previousnickname=$("#nick").val();
 			localStorage.setItem("previousnickname", previousnickname);
+			//Animated Skins
+			for (animatedkey in animatedskins) {
+				if (animatedkey==$("#nick").val()){
+					toastr["info"]("Nickname reserved for <font color='yellow'><b>Animated Skins</font></b>");
+				}
+			}	
+			//
             if (clickedname == "YES") {
                 if ($("#nick").val().length >= 16) {
                     toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
