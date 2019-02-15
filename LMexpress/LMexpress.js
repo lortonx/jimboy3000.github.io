@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.007 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.008 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "13"; // the version 1.1-> 1.11
+var semimodVersion = "14"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -337,6 +337,16 @@ var client2;
 var xhttp = new XMLHttpRequest();
 //var a= xhttp.response;
 
+
+//Animated Skins
+var animatedi;
+var animateda;
+var animatedkey;
+window.a=0;
+var b,c;
+var animatedserverchanged=false;
+
+//
 function postSNEZ(server, username, password, data)
 {
 xhttp.open("POST", server, false);
@@ -438,11 +448,15 @@ function init(modVersion) {
 		$("#Vanillaskins").click(function() {
 			if (Vanillaskinsbtn.isChecked()) {
 				localStorage.setItem("VanillaskinsSaved", "true");
-				window.vanillaskins=true;							
+				window.vanillaskins=true;
+				// Animated Skins
+				var animateSkinsStart = setInterval(animateSkincheckTimer, 60000);
 			} else {				
 				localStorage.setItem("VanillaskinsSaved", "false");
 				toastr["info"]("Changes will fully be reflected after restart");
 				window.vanillaskins=false;
+				// Animated Skins
+				animateSkinsStop();
 			}
 		});			
 /*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
@@ -7325,5 +7339,59 @@ function getInfo3() {
 function changeleaderboardlimit(){
 window.leaderboardlimit=$("#leaderboardlimit").val();
 localStorage.setItem("leaderboardlimit", window.leaderboardlimit);
-}					
+}	
+
+//Animated Skins
+function animateSkincheckTimer() {
+animateSkincheck();
+}
+
+function animateSkinsStop() {
+  clearInterval(animateSkinsStart);
+}
+
+function animateSkincheck(){	
+for (i=0; i<10; i++ ){
+for (animatedi=0; animatedi<legendmod.leaderboard.length; animatedi++ ){
+	for (animatedkey in animatedskins) {
+		if (animatedkey==legendmod.leaderboard[animatedi].nick){
+			console.log(animatedkey);
+			e = animatedskins[animatedkey].frames.length-1;
+			for (animateda=0; animateda<=animatedskins[animatedkey].frames.length-1; animateda++)
+			{				
+				b = animateda;
+				c = animatedkey;
+				window.a = window.a+ animatedskins[c].frames[b].delay*1000;
+				d = animatedi;
+				animateSkin(window.a, b, c, d, e, i);	
+				
+			}
+		}
+	}
+}
+}
+}
+
+function animateSkin(a, b, c, d, e, i)
+{
+			setTimeout(function() {
+				//if (c==legendmod.leaderboard[d].nick){
+				legendmod3.cacheCustomSkin(c, animatedskins[c].color, "https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");				
+				console.log("https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");
+				console.log(window.a);
+				if (b==e){
+					console.log("Animated Skins: End of cycle: " + i);
+					if (i==9){
+						window.a=0;
+						if (animatedserverchanged==false){
+						//animateSkincheck();
+						console.log("Animated Skins: End of total cycles");
+						}
+					}
+					//animateSkincheck()
+				}
+				//}
+				}, window.a);	
+}	
+				
 	
