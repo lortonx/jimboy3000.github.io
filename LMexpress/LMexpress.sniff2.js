@@ -1700,7 +1700,7 @@ function erasescripter(){
                      {id: 'QclZjeR', delay: '0.1'}
                   ]
                },			   
-               '℄🌀jimboy3100': {
+               '℄🌀Jimboy3100': {
                   cached:    false,
                   ready:     false,
                   current:   0,
