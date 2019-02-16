@@ -1683,21 +1683,23 @@ function erasescripter(){
                      {id: 'G4jxjM9', delay: '0.06'},
                      {id: 'WQA1R3N', delay: '0.06'}
                   ]
-               },
-               '℄🌀ℱ₳𝓗∀🌛': {
+			   },
+               '℄💖   ᒎᑌᑎᛕƳ🆇🅻': {
                   cached:    false,
                   ready:     false,
                   current:   0,
                   timestamp: 0,
-                  id:        'zombie',
-                  color:     '004F0F',
+                  id:        'trippy_2',
+                  color:     'ffffff',
                   frames:    [
-                     {id: 'uVqUXBN', delay: '3'},
-                     {id: 'QclZjeR', delay: '0.1'},
-                     {id: 'iXdYrD8', delay: '0.1'},
-                     {id: 'vF0ZIcs', delay: '0.1'},
-                     {id: 'iXdYrD8', delay: '0.1'},
-                     {id: 'QclZjeR', delay: '0.1'}
+                     {id: '2MG25OA', delay: '0.03'},
+                     {id: 'ypypCpM', delay: '0.03'},
+                     {id: 'xjJyohm', delay: '0.03'},
+                     {id: '46tVXfT', delay: '0.03'},
+                     {id: 'gDwtKiL', delay: '0.03'},
+                     {id: 'Jey9A4m', delay: '0.03'},
+                     {id: 'eSwYkS3', delay: '0.03'},
+                     {id: 'uId5x5t', delay: '0.03'}
                   ]
                },			   
                '℄🌀Jimboy3100': {
