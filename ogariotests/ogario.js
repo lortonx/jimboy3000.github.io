@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.76
+//v1.77
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3045,7 +3045,8 @@ var core = function(t, e, i) {
                 return t ? new Audio(t) : null;
             },
             'playSound': function(t) {
-                t && t.play && (t.pause(), t.currentTime = 0, t.play());
+                //t && t.play && (t.pause(), t.currentTime = 0, t.play());
+				t && t.play && t.play!==null && (t.pause(), t.currentTime = 0, t.play());
             },
             'setTargeting': function() {
                 this[`targetID`] && (this['targeting'] = !this[`targeting`], i[`targeting`] = this['targeting'], this['setTargetingInfo']());
