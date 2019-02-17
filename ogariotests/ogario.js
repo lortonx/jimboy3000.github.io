@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.71
+//v1.72
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -1664,8 +1664,8 @@ var core = function(t, e, i) {
                 'showSkinsPanel': !0,
                 'animation': 140,
                 'zoomSpeedValue': 0.9,
-                'messageSound': `https://cdn.ogario.ovh/static/sounds/notification_01.mp3`,
-                'commandSound': 'https://cdn.ogario.ovh/static/sounds/notification_02.mp3'
+                'messageSound': 'https://jimboy3100.github.io/sounds/notification_01.mp3',
+                'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
             };
         var ogarminimapdrawer = {
             'name': `LM express`,
