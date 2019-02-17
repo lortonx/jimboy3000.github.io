@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.73
+//v1.74
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3775,9 +3775,11 @@ var core = function(t, e, i) {
                                 for (var player = 0; player < window.EquippableSkins.length; player++) {
                                     if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
-						if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){					
-						ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image;
-						ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image);
+										if (ogarminimapdrawer[`customSkinsMap`][y]==undefined){	
+											if (window.agarversion+window.EquippableSkins[player].image!="uses_spine"){
+												ogarminimapdrawer[`customSkinsMap`][y]="https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image;
+												ogarminimapdrawer['loadSkin'](ogarminimapdrawer[`customSkinsCache`], "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image);
+												}
 											}								
 										}
 									}
