@@ -3045,8 +3045,8 @@ var core = function(t, e, i) {
                 return t ? new Audio(t) : null;
             },
             'playSound': function(t) {
-                //t && t.play && (t.pause(), t.currentTime = 0, t.play());
-				t && t.play && t.play!==null && (t.pause(), t.currentTime = 0, t.play());
+                t && t.play && (t.pause(), t.currentTime = 0, t.play());
+				//t && t.play && t.play!==null && (t.pause(), t.currentTime = 0, t.play());
             },
             'setTargeting': function() {
                 this[`targetID`] && (this['targeting'] = !this[`targeting`], i[`targeting`] = this['targeting'], this['setTargetingInfo']());
