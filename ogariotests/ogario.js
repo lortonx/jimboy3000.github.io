@@ -2409,7 +2409,8 @@ var core = function(t, e, i) {
                 }
             },
             'onPlay': function() {
-                this[`play`](), this['hideMenu'](), e[`addKeyListeners`] && e[`addKeyListeners`](), v[`autoHideFood`] && (i[`showFood`] = !0), e['ga'] && e['ga'](`create`, `UA-92655864-7`, `auto`, `ogarioTracker`), e['ga'] && e['ga'](`ogarioTracker.send`, `pageview`);
+//                this[`play`](), this['hideMenu'](), e[`addKeyListeners`] && e[`addKeyListeners`](), v[`autoHideFood`] && (i[`showFood`] = !0), e['ga'] && e['ga'](`create`, `UA-92655864-7`, `auto`, `ogarioTracker`), e['ga'] && e['ga'](`ogarioTracker.send`, `pageview`);
+                this[`play`](), this['hideMenu'](), e[`addKeyListeners`] && e[`addKeyListeners`](), v[`autoHideFood`] && (i[`showFood`] = !0);
             },
             'onSpectate': function() {
                 this[`onJoin`](), this[`sendPlayerJoin`](), this[`hideMenu`](), e[`addKeyListeners`] && e['addKeyListeners'](), v[`autoHideFood`] && (i[`showFood`] = !1);
