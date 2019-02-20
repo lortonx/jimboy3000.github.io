@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.5
+// v1.6
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -148,7 +148,9 @@ function t1() {
         this["clientVersion"] = this["parseClientVersion"](this["clientVersionString"]);
       }
       var dispatcher = this;
-      require["ajax"]("//agar.io/mc/agario.js", {
+//      require["ajax"]("//agar.io/mc/agario.js", {
+
+		require["ajax"]("https://cdn.agartool.io/dist/6f6998d523cc36475d3d105b988be10f.js", {
         "error" : function() {
         },
         "success" : function(result) {
