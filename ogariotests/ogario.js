@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.87 test
+//v1.88 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2972,6 +2972,7 @@ var core = function(t, e, i) {
                 }
             },
             'sendChatMessage': function(t, e) {
+				//console.log(t);console.log(e);
                 if (!(Date[`now`]() - this[`lastMessageSentTime`] < 500 || 0 == e.length || 0 == ogarcopythelb[`nick`].length) && this['isSocketOpen']()) {
                     e = ogarcopythelb['nick'] + ': ' + e;
                     var i = this[`createView`](10 + 2 * e.length);
@@ -3491,6 +3492,7 @@ var core = function(t, e, i) {
                 this.socket[`send`](t[`buffer`]);
             },
             'sendMessage': function(t) {
+				//console.log(t);
                 if (this[`connectionOpened`]) {
                     if (!this[`clientKey`]) return;
                     t = this[`shiftMessage`](t, this['clientKey']), this[`clientKey`] = this[`shiftKey`](this['clientKey']);
@@ -4589,10 +4591,10 @@ var core = function(t, e, i) {
                     'label': h['hk-voiceChat'],
                     'defaultKey': `=`,
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer[`enterChatMessage`]();
-						if ($('#message-box').css('display') == 'block') {
+                        //ogarminimapdrawer && ogarminimapdrawer[`enterChatMessage`]();
+						//if ($('#message-box').css('display') == 'block') {
 						$(".voice-start.icon-mic").click();
-						}
+						//}
                     },
                     'keyUp': null,
                     'type': `special`
