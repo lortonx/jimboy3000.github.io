@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.84 test
+//v1.85 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3540,9 +3540,11 @@ var core = function(t, e, i) {
                 }
             },
             'sendFbToken': function(t) {
+				console.log("Facebook token: " + t);
                 this.sendAccessToken(t, 2);
             },
             'sendGplusToken': function(t) {
+				console.log("Google Plus token: " + t);
                 this.sendAccessToken(t, 3);
             },
             'sendRecaptcha': function(t) {
