@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.85 test
+//v1.86 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -201,6 +201,7 @@ var core = function(t, e, i) {
                     'hk-autoResp': `Włącz/wyłacz auto odrodzenie`,
                     'hk-switchServerMode': `Przełącz serwer [publiczny/prywatny]`,
                     'hk-showTargeting': `Pokaż/ukryj panel namierzania`,
+					'hk-voiceChat': 'Głos do tekstu',
                     'hk-setTargeting': `Włącz/wyłącz namierzanie (śledzenie)`,
                     'hk-cancelTargeting': 'Zatrzymaj namierzanie',
                     'hk-changeTarget': `Zmień cel`,
@@ -541,6 +542,7 @@ var core = function(t, e, i) {
                     'hk-autoResp': `Toggle auto respawn`,
                     'hk-switchServerMode': `Switch server [public/private]`,
                     'hk-showTargeting': 'Show/hide targeting panel',
+					'hk-voiceChat': 'Voice to text',
                     'hk-setTargeting': 'Start/stop targeting (following)',
                     'hk-cancelTargeting': 'Cancel targeting',
                     'hk-changeTarget': `Change target`,
@@ -4583,6 +4585,18 @@ var core = function(t, e, i) {
                     'keyUp': null,
                     'type': `normal`
                 },
+                'hk-voiceChat': {
+                    'label': h['hk-voiceChat'],
+                    'defaultKey': `-`,
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`enterChatMessage`]();
+						if ($('#message-box').css('display') == 'block') {
+						$(".voice-start.icon-mic").click();
+						}
+                    },
+                    'keyUp': null,
+                    'type': `special`
+                },				
                 'hk-switchServerMode': {
                     'label': h[`hk-switchServerMode`],
                     'defaultKey': '=',
