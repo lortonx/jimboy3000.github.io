@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.9
+// v1.10
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -643,7 +643,8 @@ function t1() {
         "client_id" : headers["gplus_client_id"],
         "cookie_policy" : "single_host_origin",
 //        "scope" : "https://www.googleapis.com/auth/plus.login email",
-		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile".		
+		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",	
+		//"scope" :openid%20profile%20email,
         "app_package_name" : "com.miniclip.agar.io"
       });
       var contextMenu = document["getElementById"]("gplusLogin");
