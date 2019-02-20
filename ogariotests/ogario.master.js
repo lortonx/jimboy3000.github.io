@@ -1,6 +1,5 @@
 // Decoded by Jimboy3100
-// v1.6
-
+// v1.7
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -151,7 +150,7 @@ function t1() {
       var dispatcher = this;
 //      require["ajax"]("//agar.io/mc/agario.js", {
 
-		require["ajax"]("https://cdn.agartool.io/dist/6f6998d523cc36475d3d105b988be10f.js", {
+		require["ajax"]("https://jimboy3000.github.io/ogariotests/agario.js", {
         "error" : function() {
         },
         "success" : function(result) {
