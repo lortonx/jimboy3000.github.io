@@ -148,10 +148,10 @@ function t1() {
         this["clientVersion"] = this["parseClientVersion"](this["clientVersionString"]);
       }
       var dispatcher = this;
-//      require["ajax"]("//agar.io/mc/agario.js", {
-
-		require["ajax"]("https://jimboy3000.github.io/ogariotests/agario.js", {
+      require["ajax"]("//agar.io/mc/agario.js", {
+	//require["ajax"]("https://jimboy3000.github.io/ogariotests/agario.js", {
         "error" : function() {
+		console.log("[Master] Errpr on retreiving Client version from core.js);
         },
         "success" : function(result) {
           var subtitleParts = result["match"](/versionString="(\d+\.\d+\.\d+)"/);
