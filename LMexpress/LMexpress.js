@@ -5186,7 +5186,7 @@ function loginsfbGpl2(){
 					$("#UserProfilePic>img").attr('src','https://jimboy3100.github.io/banners/profilepic_guest.png');	
                 });		
 		$(".btn.btn-primary.btn-login.btn-fb").click(function() {
-		toastr["warning"]("<b>[SERVER]:</b> Facebook login info will be reflected after restart");		
+		//toastr["warning"]("<b>[SERVER]:</b> Facebook login info will be reflected after restart");		
      setTimeout(function() {	
 	 doFB2();
 	 }, 5000);
