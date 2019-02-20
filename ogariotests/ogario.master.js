@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.5
+// v1.12
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -117,6 +117,7 @@ function t1() {
   var headers = {
     "fb_app_id" : 677505792353827,
     "gplus_client_id" : "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
+//	686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com
     "master_url" : "webbouncer-live-v6-0.agario.miniclippt.com",
     "endpoint_version" : "v4",
     "proto_version" : "12.0.1",
@@ -149,7 +150,9 @@ function t1() {
       }
       var dispatcher = this;
       require["ajax"]("//agar.io/mc/agario.js", {
+	//require["ajax"]("https://jimboy3000.github.io/ogariotests/agario.js", {
         "error" : function() {
+		console.log("[Master] Error on retreiving Client version from core.js");
         },
         "success" : function(result) {
           var subtitleParts = result["match"](/versionString="(\d+\.\d+\.\d+)"/);
@@ -464,8 +467,8 @@ function t1() {
     "setNick" : function() {
       this["login"]();
       var result = require("#nick")["val"]();
-      if (result && result["length"] > 15) {
-        result = result["substring"](0, 15);
+      if (result && result["length"] > 50) {
+        result = result["substring"](0, 50);
       }
       if (global["core"]) {
         global["core"]["sendNick"](result);
@@ -615,12 +618,13 @@ function t1() {
     });
     if (true) {
       global["getStorage"]();
+	  console.log(message["loginIntent"]);
       if ("1" === message["loginIntent"] && "facebook" === message["context"]) {
         global["FB"]["getLoginStatus"](function(ctx) {
           if ("connected" === ctx["status"]) {
             init(ctx);
           } else {
-            global["logout"]();
+            /*global["logout"]();*/
           }
         });
       }
@@ -639,7 +643,9 @@ function t1() {
       PL$12 = global["gapi"]["auth2"]["init"]({
         "client_id" : headers["gplus_client_id"],
         "cookie_policy" : "single_host_origin",
-        "scope" : "https://www.googleapis.com/auth/plus.login email",
+/       "scope" : "https://www.googleapis.com/auth/plus.login email",
+//		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",	
+//		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me",
         "app_package_name" : "com.miniclip.agar.io"
       });
       var contextMenu = document["getElementById"]("gplusLogin");
