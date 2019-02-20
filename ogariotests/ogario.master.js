@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.8
+// v1.9
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -117,6 +117,7 @@ function t1() {
   var headers = {
     "fb_app_id" : 677505792353827,
     "gplus_client_id" : "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
+//	686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com
     "master_url" : "webbouncer-live-v6-0.agario.miniclippt.com",
     "endpoint_version" : "v4",
     "proto_version" : "12.0.1",
@@ -641,7 +642,8 @@ function t1() {
       PL$12 = global["gapi"]["auth2"]["init"]({
         "client_id" : headers["gplus_client_id"],
         "cookie_policy" : "single_host_origin",
-        "scope" : "https://www.googleapis.com/auth/plus.login email",
+//        "scope" : "https://www.googleapis.com/auth/plus.login email",
+		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile".		
         "app_package_name" : "com.miniclip.agar.io"
       });
       var contextMenu = document["getElementById"]("gplusLogin");
