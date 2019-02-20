@@ -123,7 +123,7 @@ else if (location.host === "agar.io" && location.pathname === "/") {
     // Inject Chat to text userscript
     (function() {
         'use strict';
-
+var textspeach="";
         function pre_loop() {
             if (!document.getElementById("message-box")) {
                 setTimeout(pre_loop, 4000);
@@ -169,6 +169,7 @@ else if (location.host === "agar.io" && location.pathname === "/") {
             $("#message-menu").append('<a href="#" class="chatbox-clear icon-clear" style="float:right;">C</a>');
             $(".chatbox-clear").click(function() {
                 $("#message").val("");
+				textspeach="";
             });
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
             var recognition = new window.SpeechRecognition();
@@ -178,13 +179,15 @@ else if (location.host === "agar.io" && location.pathname === "/") {
             console.log("cfg.lang/recognition.lang=" + cfg.lang + "/" + recognition.lang);
             recognition.addEventListener('result', function(event) {
                 var text_to = event.results.item(0).item(0).transcript;
-                var text_pre = $("#message").val();
+/*                var text_pre = $("#message").val();
                 if (text_pre === "") {
                     text_to = cfg.prefix + text_to;
                 } else {
                     text_to = text_pre + " " + text_to;
                 }
-                $("#message").val(text_to);
+                $("#message").val(text_to); */
+				textspeach=text_to;
+				legendmod3.sendChatMessage(101,text_to)
             }, false);
             recognition.addEventListener('end', function(event) {
                 fn_recognition_end();
