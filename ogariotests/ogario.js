@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.86 test
+//v1.87 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4587,7 +4587,7 @@ var core = function(t, e, i) {
                 },
                 'hk-voiceChat': {
                     'label': h['hk-voiceChat'],
-                    'defaultKey': `-`,
+                    'defaultKey': `=`,
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`enterChatMessage`]();
 						if ($('#message-box').css('display') == 'block') {
