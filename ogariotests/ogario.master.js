@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.12
+// v1.13
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -61,7 +61,7 @@ function t1() {
         if (_0x136f53 < 3) {
           _0x136f53++;
           global["facebookRelogin"]();
-          global["logout"]();
+          /*global["logout"]();*/
         }
       }
     }
@@ -643,7 +643,7 @@ function t1() {
       PL$12 = global["gapi"]["auth2"]["init"]({
         "client_id" : headers["gplus_client_id"],
         "cookie_policy" : "single_host_origin",
-/       "scope" : "https://www.googleapis.com/auth/plus.login email",
+       "scope" : "https://www.googleapis.com/auth/plus.login email",
 //		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",	
 //		"scope" : "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me",
         "app_package_name" : "com.miniclip.agar.io"
