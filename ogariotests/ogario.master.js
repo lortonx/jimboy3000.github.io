@@ -1,5 +1,6 @@
 // Decoded by Jimboy3100
 // v1.6
+
 function t1() {
 	global=window;
 	require=window["jQuery"]
