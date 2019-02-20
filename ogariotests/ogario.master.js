@@ -1,5 +1,5 @@
 // Decoded by Jimboy3100
-// v1.7
+// v1.8
 function t1() {
 	global=window;
 	require=window["jQuery"]
@@ -151,7 +151,7 @@ function t1() {
       require["ajax"]("//agar.io/mc/agario.js", {
 	//require["ajax"]("https://jimboy3000.github.io/ogariotests/agario.js", {
         "error" : function() {
-		console.log("[Master] Errpr on retreiving Client version from core.js);
+		console.log("[Master] Error on retreiving Client version from core.js");
         },
         "success" : function(result) {
           var subtitleParts = result["match"](/versionString="(\d+\.\d+\.\d+)"/);
