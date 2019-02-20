@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.88 test
+//v1.89 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -223,6 +223,22 @@ var core = function(t, e, i) {
                     'comm12': `Góra!`,
                     'comm13': `Prawo!`,
                     'comm14': `Dół!`,
+					'comm15': '',
+					'comm16': '',
+					'comm17': '',
+					'comm18': '',
+					'comm19': '',
+					'comm20': '',
+					'comm21': '',
+					'comm22': '',
+					'comm23': '',
+					'comm24': '',
+					'comm25': '',
+					'comm26': '',
+					'comm27': '',
+					'comm28': '',
+					'comm29': '',
+					'comm30': '',					
                     'saveComm': `Zapisz komendy`,
                     'theme': 'Wygląd',
                     'restoreThemeSettings': `Przywróc ustawienia domyślne wyglądu`,
@@ -564,6 +580,22 @@ var core = function(t, e, i) {
                     'comm12': `Up!`,
                     'comm13': `Right!`,
                     'comm14': `Bottom!`,
+					'comm15': '',
+					'comm16': '',
+					'comm17': '',
+					'comm18': '',
+					'comm19': '',
+					'comm20': '',
+					'comm21': '',
+					'comm22': '',
+					'comm23': '',
+					'comm24': '',
+					'comm25': '',
+					'comm26': '',
+					'comm27': '',
+					'comm28': '',
+					'comm29': '',
+					'comm30': '',					
                     'saveComm': `Save commands`,
                     'theme': `Theme`,
                     'restoreThemeSettings': 'Restore theme default settings',
@@ -750,7 +782,23 @@ var core = function(t, e, i) {
                 'comm11': h.comm11,
                 'comm12': h.comm12,
                 'comm13': h.comm13,
-                'comm14': h.comm14
+                'comm14': h.comm14,
+                'comm15': h.comm15,
+                'comm16': h.comm16,
+                'comm17': h.comm17,
+                'comm18': h.comm18,
+                'comm19': h.comm19,
+                'comm20': h.comm20,
+                'comm21': h.comm21,
+                'comm22': h.comm22,
+                'comm23': h.comm23,
+                'comm24': h.comm24,
+                'comm25': h.comm25,
+                'comm26': h.comm26,
+                'comm27': h.comm27,
+                'comm28': h.comm28,
+                'comm29': h.comm29,
+                'comm30': h.comm30				
             },
             u = {
                 '&': '&amp;',
@@ -4796,7 +4844,151 @@ var core = function(t, e, i) {
                     },
                     'keyUp': null,
                     'type': `command`
-                }
+                },
+                'hk-comm15': {
+                    'label': c[`comm15`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](15);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm16': {
+                    'label': c[`comm16`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](16);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm17': {
+                    'label': c[`comm17`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](17);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm18': {
+                    'label': c[`comm18`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](18);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm19': {
+                    'label': c[`comm19`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](19);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm20': {
+                    'label': c[`comm20`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](20);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm21': {
+                    'label': c[`comm21`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](21);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm22': {
+                    'label': c[`comm22`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](22);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm23': {
+                    'label': c[`comm23`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](23);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm24': {
+                    'label': c[`comm24`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](24);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm25': {
+                    'label': c[`comm25`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](25);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm26': {
+                    'label': c[`comm26`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](26);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm27': {
+                    'label': c[`comm27`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](27);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },
+                'hk-comm28': {
+                    'label': c[`comm28`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](28);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },		
+                'hk-comm29': {
+                    'label': c[`comm29`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](29);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                },	
+                'hk-comm30': {
+                    'label': c[`comm30`],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](30);
+                    },
+                    'keyUp': null,
+                    'type': `command`
+                }				
             },
             lastkeys = {
                 'lastPressedKey': '',
