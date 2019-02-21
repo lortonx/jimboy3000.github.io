@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.013 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.014 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "16"; // the version 1.1-> 1.11
@@ -7060,7 +7060,7 @@ $('[data-toggle="tooltip"]').tooltip();
 loginsfbGplstart();
 triggerLMbtns();
 languagemodfun();
-}, 1000);
+}, 2000);
 /*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
 		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
