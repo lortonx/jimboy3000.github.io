@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.98 test
+//v1.99 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -1453,134 +1453,134 @@ var core = function(t, e, i) {
                 'cursorCSS': null,
                 'loadThemeSettings': function() {
                     var t = null;
-                    for (var s in null !== e.localStorage.getItem(`ogarioThemeSettings`) && (t = JSON.parse(e.localStorage.getItem(`ogarioThemeSettings`))), g) g.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (g[s] = t[s]), i.hasOwnProperty(s) && (i[s] = g[s]));
+                    for (var s in null !== e.localStorage.getItem('ogarioThemeSettings') && (t = JSON.parse(e.localStorage.getItem('ogarioThemeSettings'))), g) g.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (g[s] = t[s]), i.hasOwnProperty(s) && (i[s] = g[s]));
                 },
                 'saveThemeSettings': function() {
-                    e.localStorage.setItem(`ogarioThemeSettings`, JSON.stringify(g));
+                    e.localStorage.setItem('ogarioThemeSettings', JSON.stringify(g));
                 },
                 'restoreThemeSettings': function() {
-                    null !== e.localStorage.getItem(`ogarioThemeSettings`) && (e.localStorage.removeItem(`ogarioThemeSettings`), e.location.reload());
+                    null !== e.localStorage.getItem('ogarioThemeSettings') && (e.localStorage.removeItem('ogarioThemeSettings'), e.location.reload());
                 },
                 'addCustomCSS': function(t, e) {
-                    this[t] || (this[t] = s(`<style type=\'text/css\'>`)[`appendTo`](`head`)), this[t]['html'](e);
+                    this[t] || (this[t] = s('<style type=\'text/css\'>')['appendTo']('head')), this[t]['html'](e);
                 },
                 'addPresetBox': function(t, e, i, o, a) {
-                    for (var n in s(t).append(`<div class=\"preset-box\"><span class=\"title-box\">` + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + `\" class=\"form-control\"></select></div></div>`), i) i.hasOwnProperty(n) && s('#' + e).append(`<option value=\"` + n + '\">' + i[n][`name`] + `</option>`);
+                    for (var n in s(t).append('<div class=\"preset-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>'), i) i.hasOwnProperty(n) && s('#' + e).append('<option value=\"' + n + '\">' + i[n]['name'] + '</option>');
                     s('#' + e).val(g[o]);
                     var r = this;
-                    s('#' + e)['on'](`change`, function() {
+                    s('#' + e)['on']('change', function() {
                         var t = this.value;
                         g[o] = t, r[a](t);
                     });
                 },
                 'addColorBox': function(t, e, o) {
-                    if (s(t).append(`<div class=\"color-box\"><span class=\"title-box\">` + h[e] + '</span><div class=\"input-group ' + e + `-picker\"><input type=\"text\" value=\"` + g[e] + `\" id=\"` + e + `\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>`), o) {
+                    if (s(t).append('<div class=\"color-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + g[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
                         var a = this;
-                        s(t + ' .' + e + `-picker`)['colorpicker']({
-                            'format': `hex`
-                        })['on'](`changeColor.colorpicker`, function(t) {
-                            g[e] = t[`color`][`toHex`](), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
+                        s(t + ' .' + e + '-picker')['colorpicker']({
+                            'format': 'hex'
+                        })['on']('changeColor.colorpicker', function(t) {
+                            g[e] = t['color']['toHex'](), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
-                        'format': `hex`
-                    })['on'](`changeColor.colorpicker`, function(t) {
-                        g[e] = t[`color`]['toHex'](), i.hasOwnProperty(e) && (i[e] = g[e]);
+                        'format': 'hex'
+                    })['on']('changeColor.colorpicker', function(t) {
+                        g[e] = t['color']['toHex'](), i.hasOwnProperty(e) && (i[e] = g[e]);
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
-                    if (s(t).append(`<div class=\"color-box\"><span class=\"title-box\">` + h[e] + `</span><div class=\"input-group ` + e + `-picker\"><input type=\"text\" value=\"` + g[e] + `\" id=\"` + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
+                    if (s(t).append('<div class=\"color-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + g[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
                         var a = this;
-                        s(t + ' .' + e + `-picker`).colorpicker({
-                            'format': `rgba`
-                        })['on'](`changeColor.colorpicker`, function(t) {
-                            var s = t[`color`][`toRGB`]();
+                        s(t + ' .' + e + '-picker').colorpicker({
+                            'format': 'rgba'
+                        })['on']('changeColor.colorpicker', function(t) {
+                            var s = t['color']['toRGB']();
                             g[e] = 'rgba(' + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
                         });
-                    } else s(t + ' .' + e + `-picker`).colorpicker({
+                    } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'rgba'
-                    })['on'](`changeColor.colorpicker`, function(t) {
-                        var s = t[`color`][`toRGB`]();
-                        g[e] = `rgba(` + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]);
+                    })['on']('changeColor.colorpicker', function(t) {
+                        var s = t['color']['toRGB']();
+                        g[e] = 'rgba(' + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]);
                     });
                 },
                 'addSliderBox': function(t, e, o, a, n, r) {
-                    if (s(t).append(`<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">` + h[e] + `: </span><span id=\"` + e + '-value\" class=\"value\">' + g[e] + `</span></div><input id=\"` + e + '-slider\" type=\"range\" min=\"' + o + `\" max=\"` + a + `\" step=\"` + n + `\" value=\"` + g[e] + `\"></div>`), r) {
+                    if (s(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + h[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + g[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + g[e] + '\"></div>'), r) {
                         var l = this;
-                        s('#' + e + `-slider`)['on'](`input`, function() {
+                        s('#' + e + '-slider')['on']('input', function() {
                             var t = parseFloat(s(this).val());
-                            s('#' + e + '-value')[`text`](t), g[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r]();
+                            s('#' + e + '-value')['text'](t), g[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r]();
                         });
-                    } else s('#' + e + `-slider`)['on'](`input`, function() {
+                    } else s('#' + e + '-slider')['on']('input', function() {
                         var t = parseFloat(s(this)['val']());
-                        s('#' + e + '-value')[`text`](t), g[e] = t, i.hasOwnProperty(e) && (i[e] = t);
+                        s('#' + e + '-value')['text'](t), g[e] = t, i.hasOwnProperty(e) && (i[e] = t);
                     });
                 },
                 'addInputBox': function(t, e, i, o) {
-                    s(t).append(`<div class=\"input-box\"><span class=\"title-box\">` + h[e] + '</span><input id=\"' + e + `\" class=\"form-control\" placeholder=\"` + i + '\" value=\"' + g[e] + '\" /></div>');
+                    s(t).append('<div class=\"input-box\"><span class=\"title-box\">' + h[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + g[e] + '\" /></div>');
                     var a = this;
-                    s('#' + e)['on'](`input`, function() {
+                    s('#' + e)['on']('input', function() {
                         g[e] = this.value, a[o]();
                     });
                 },
                 'addCursorBox': function(t, e) {
-                    e === g.customCursor ? s(t).append(`<div class=\"cursor-box\"><a href=\"#\" class=\"active\"><img src=\"` + e + `\"></a></div>`) : s(t).append(`<div class=\"cursor-box\"><a href=\"#\"><img src=\"` + e + '\"></a></div>');
+                    e === g.customCursor ? s(t).append('<div class=\"cursor-box\"><a href=\"#\" class=\"active\"><img src=\"' + e + '\"></a></div>') : s(t).append('<div class=\"cursor-box\"><a href=\"#\"><img src=\"' + e + '\"></a></div>');
                 },
                 'setFont': function(t, e) {
-                    g[t] = e, g[t + `Family`] = this[`setFontFamily`](e), g[t + 'Weight'] = this.setFontWeight(e), i.hasOwnProperty(t + `Family`) && (i[t + `Family`] = g[t + `Family`]), i.hasOwnProperty(t + `Weight`) && (i[t + 'Weight'] = g[t + `Weight`]);
+                    g[t] = e, g[t + 'Family'] = this['setFontFamily'](e), g[t + 'Weight'] = this.setFontWeight(e), i.hasOwnProperty(t + 'Family') && (i[t + 'Family'] = g[t + 'Family']), i.hasOwnProperty(t + 'Weight') && (i[t + 'Weight'] = g[t + 'Weight']);
                 },
                 'addFontBox': function(t, e, i) {
-                    s(t).append('<div class=\"font-box\"><span class=\"title-box\">' + h[e] + `</span><div class=\"select-wrapper\"><select id=\"` + e + `\" class=\"form-control\"></select></div></div>`), s('#' + e).append(`<option value=\"ubuntu\">Ubuntu</option><option value=\"ubuntu-bold\">Ubuntu Bold</option>`), s('#' + e).append(`<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>`), s('#' + e).append(`<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>`), s('#' + e).val(g[e]);
+                    s(t).append('<div class=\"font-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>'), s('#' + e).append('<option value=\"ubuntu\">Ubuntu</option><option value=\"ubuntu-bold\">Ubuntu Bold</option>'), s('#' + e).append('<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>'), s('#' + e).append('<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>'), s('#' + e).val(g[e]);
                     var o = this;
-                    i ? s('#' + e)['on'](`change`, function() {
+                    i ? s('#' + e)['on']('change', function() {
                         var t = this.value;
                         o.setFont(e, t), o[i]();
-                    }) : s('#' + e)['on'](`change`, function() {
+                    }) : s('#' + e)['on']('change', function() {
                         var t = this['value'];
                         o.setFont(e, t);
                     });
                 },
                 'setFontFamily': function(t) {
-                    return -1 != t.indexOf(`roboto`) ? `Roboto` : -1 != t.indexOf(`oswald`) ? `Oswald` : 'Ubuntu';
+                    return -1 != t.indexOf('roboto') ? 'Roboto' : -1 != t.indexOf('oswald') ? 'Oswald' : 'Ubuntu';
                 },
                 'setFontWeight': function(t) {
                     return -1 != t.indexOf('bold') ? 700 : 400;
                 },
                 'setThemeMenu': function() {
                     var t = this;
-                    s(`#theme`).append(`<ul class=\"submenu-tabs\"><li class=\"theme-main-tab active\"><a href=\"#theme-main\" class=\"active ogicon-paint-format\" data-toggle=\"tab-tooltip\" title=\"` + h[`basicTheming`] + `\"></a></li><li class=\"theme-menu-tab\"><a href=\"#theme-menu\" class=\"ogicon-menu\" data-toggle=\"tab-tooltip\" title=\"` + h[`menuTheming`] + `\"></a></li><li class=\"theme-hud-tab\"><a href=\"#theme-hud\" class=\"ogicon-display\" data-toggle=\"tab-tooltip\" title=\"` + h[`hudTheming`] + `\"></a></li><li class=\"theme-chat-tab\"><a href=\"#theme-chat\" class=\"ogicon-bubbles\" data-toggle=\"tab-tooltip\" title=\"` + h[`chatTheming`] + '\"></a></li><li class=\"theme-minimap-tab\"><a href=\"#theme-minimap\" class=\"ogicon-location2\" data-toggle=\"tab-tooltip\" title=\"' + h[`miniMapTheming`] + `\"></a></li><li class=\"theme-images-tab\"><a href=\"#theme-images\" class=\"ogicon-compass\" data-toggle=\"tab-tooltip\" title=\"` + h[`imagesTheming`] + '\"></a></li></ul><div id=\"theme-main\" class=\"submenu-panel\"></div><div id=\"theme-menu\" class=\"submenu-panel\"></div><div id=\"theme-hud\" class=\"submenu-panel\"></div><div id=\"theme-chat\" class=\"submenu-panel\"></div><div id=\"theme-minimap\" class=\"submenu-panel\"></div><div id=\"theme-images\" class=\"submenu-panel\"></div>'), this[`addPresetBox`](`#theme-main`, `themePreset`, f, `preset`, `changeThemePreset`), this[`addColorBox`](`#theme-main`, `bgColor`, `setBgColor`), this[`addColorBox`](`#theme-main`, `bordersColor`), this[`addColorBox`](`#theme-main`, `gridColor`), this[`addColorBox`]('#theme-main', `sectorsColor`), this[`addColorBox`](`#theme-main`, `namesColor`), this[`addColorBox`](`#theme-main`, `namesStrokeColor`), this[`addColorBox`]('#theme-main', `massColor`), this[`addColorBox`](`#theme-main`, `massStrokeColor`), this[`addColorBox`](`#theme-main`, `virusColor`), this[`addColorBox`](`#theme-main`, `virusStrokeColor`), this.addColorBox('#theme-main', 'mVirusColor'), this.addColorBox('#theme-main', 'mVirusStrokeColor'), this[`addColorBox`](`#theme-main`, `foodColor`, `setFoodColor`), this['addColorBox'](`#theme-main`, 'teammatesIndColor', `setIndicatorColor`), this[`addColorBox`]('#theme-main', `cursorTrackingColor`), this['addColorBox']('#theme-main', `splitRangeColor`), this[`addColorBox`](`#theme-main`, `safeAreaColor`), this[`addColorBox`](`#theme-main`, `dangerAreaColor`), this['addColorBox'](`#theme-main`, `ghostCellsColor`), this[`addFontBox`](`#theme-main`, `namesFont`), this[`addFontBox`](`#theme-main`, 'massFont'), this[`addFontBox`]('#theme-main', `sectorsFont`), this['addSliderBox'](`#theme-main`, `sectorsFontSize`, 200, 2000, 10), this[`addSliderBox`](`#theme-main`, `namesScale`, 0.5, 2, 0.1), this[`addSliderBox`]('#theme-main', `massScale`, 1, 5, 1), this[`addSliderBox`](`#theme-main`, `virMassScale`, 1, 5, 1), this[`addSliderBox`](`#theme-main`, `strokeScale`, 1, 4, 0.1), this[`addSliderBox`](`#theme-main`, `foodSize`, 1, 50, 1, 'setFoodColor'), this[`addSliderBox`](`#theme-main`, `virusStrokeSize`, 2, 40, 1), this['addSliderBox'](`#theme-main`, `bordersWidth`, 2, 200, 2), this[`addSliderBox`](`#theme-main`, `sectorsWidth`, 2, 200, 2), this[`addSliderBox`](`#theme-main`, 'cellsAlpha', 0.01, 0.99, 0.01), this[`addSliderBox`](`#theme-main`, `skinsAlpha`, 0.01, 0.99, 0.01), this[`addSliderBox`](`#theme-main`, 'virusAlpha', 0, 1, 0.01), this[`addSliderBox`](`#theme-main`, `textAlpha`, 0.1, 1, 0.01), this[`addSliderBox`](`#theme-main`, `ghostCellsAlpha`, 0.01, 0.99, 0.01), this[`addPresetBox`](`#theme-menu`, `menuPreset`, m, `menuPreset`, 'changeMenuPreset'), this[`addSliderBox`](`#theme-menu`, `menuOpacity`, 0.1, 1, 0.01, 'setMenuOpacity'), this[`addColorBox`](`#theme-menu`, `menuMainColor`, 'setMenuMainColor'), this[`addColorBox`]('#theme-menu', 'menuBtnTextColor', 'setMenuButtons'), this[`addColorBox`](`#theme-menu`, `menuPanelColor`, `setMenuPanelColor`), this[`addColorBox`](`#theme-menu`, 'menuPanelColor2', `setMenuPanelColor`), this['addColorBox']('#theme-menu', `menuTextColor`, `setMenuTextColor`), this[`addColorBox`](`#theme-menu`, `menuTextColor2`, `setMenuTextColor`), this[`addColorBox`](`#theme-menu`, 'btn1Color', `setMenuButtons`), this[`addColorBox`](`#theme-menu`, `btn1Color2`, `setMenuButtons`), this[`addColorBox`](`#theme-menu`, `btn2Color`, `setMenuButtons`), this[`addColorBox`](`#theme-menu`, 'btn2Color2', `setMenuButtons`), this[`addColorBox`](`#theme-menu`, `btn3Color`, `setMenuButtons`), this[`addColorBox`]('#theme-menu', `btn3Color2`, `setMenuButtons`), this[`addColorBox`](`#theme-menu`, 'btn4Color', `setMenuButtons`), this[`addColorBox`](`#theme-menu`, `btn4Color2`, `setMenuButtons`), this[`addInputBox`](`#theme-menu`, `menuBg`, `Image URL`, `setMenuBg`), this[`addColorBox`]('#theme-hud', `hudMainColor`, `setHudColors`), this[`addRgbaColorBox`](`#theme-hud`, `hudColor`, 'setHudColors'), this['addColorBox'](`#theme-hud`, `hudTextColor`, `setHudColors`), this[`addColorBox`](`#theme-hud`, `statsHudColor`, 'setHudColors'), this['addColorBox'](`#theme-hud`, `timeHudColor`, `setHudColors`), this[`addColorBox`](`#theme-hud`, `top5MassColor`, `setHudColors`), this[`addColorBox`](`#theme-hud`, 'lbMeColor', `setHudColors`), this[`addColorBox`](`#theme-hud`, `lbTeammateColor`, 'setHudColors'), this[`addFontBox`](`#theme-hud`, `hudFont`, 'setHudFont'), this['addSliderBox']('#theme-hud', `hudScale`, 1, 2, 0.01, `setHudScale`), this[`addRgbaColorBox`](`#theme-chat`, `messageColor`, 'setChatColors'), this[`addColorBox`](`#theme-chat`, `messageTextColor`, `setChatColors`), this[`addColorBox`](`#theme-chat`, `messageTimeColor`, `setChatColors`), this[`addColorBox`](`#theme-chat`, `messageNickColor`, `setChatColors`), this[`addRgbaColorBox`](`#theme-chat`, `commandsColor`, `setChatColors`), this['addColorBox']('#theme-chat', `commandsTextColor`, `setChatColors`), this[`addColorBox`]('#theme-chat', 'commandsTimeColor', `setChatColors`), this[`addColorBox`](`#theme-chat`, `commandsNickColor`, `setChatColors`), this[`addRgbaColorBox`](`#theme-chat`, 'chatBoxColor', 'setChatColors'), this[`addSliderBox`]('#theme-chat', `chatScale`, 1, 2, 0.01, `setChatScale`), this[`addColorBox`](`#theme-minimap`, `miniMapSectorsColor`, 'setMiniMapSectorsColor'), this[`addColorBox`](`#theme-minimap`, `miniMapSectorColor`), this[`addColorBox`](`#theme-minimap`, `miniMapNickColor`), this['addColorBox'](`#theme-minimap`, `miniMapNickStrokeColor`), this[`addColorBox`](`#theme-minimap`, `miniMapMyCellColor`), this['addColorBox']('#theme-minimap', `miniMapMyCellStrokeColor`), this[`addColorBox`]('#theme-minimap', 'miniMapTeammatesColor'), this[`addColorBox`](`#theme-minimap`, `miniMapDeathLocationColor`), this[`addColorBox`](`#theme-minimap`, `miniMapGuidesColor`), this[`addColorBox`](`#theme-minimap`, `miniMapGhostCellsColor`), this[`addFontBox`](`#theme-minimap`, `miniMapFont`, `setMiniMapFont`), this['addFontBox']('#theme-minimap', `miniMapNickFont`), this[`addSliderBox`](`#theme-minimap`, `miniMapWidth`, 200, 400, 2, `setMiniMapWidth`), this['addSliderBox']('#theme-minimap', 'miniMapSectorsOpacity', 0, 1, 0.01, `setMiniMapSectorsOpacity`), this['addSliderBox']('#theme-minimap', `miniMapNickSize`, 8, 16, 1), this[`addSliderBox`](`#theme-minimap`, `miniMapNickStrokeSize`, 0, 6, 1), this[`addSliderBox`](`#theme-minimap`, `miniMapMyCellSize`, 4, 10, 0.5), this[`addSliderBox`](`#theme-minimap`, `miniMapMyCellStrokeSize`, 0, 10, 1), this[`addSliderBox`](`#theme-minimap`, `miniMapTeammatesSize`, 4, 10, 0.5), this['addSliderBox'](`#theme-minimap`, `miniMapGhostCellsAlpha`, 0.01, 0.99, 0.01), this[`addInputBox`](`#theme-images`, `customBackground`, `Image URL`, `setCustomBackground`), this[`addInputBox`]('#theme-images', `customCursor`, 'Cursor image URL', 'setCustomCursor');
-                    for (var e = `https://jimboy3100.github.io/cursors/cursor_`, i = 0; i < 35; i++) i < 9 ? this[`addCursorBox`](`#theme-images`, e + '0' + (i + 1) + `.cur`) : this['addCursorBox'](`#theme-images`, e + '' + (i + 1) + `.cur`);
-                    s(document)['on'](`click`, `#theme-images .cursor-box a`, function(e) {
+                    s('#theme').append('<ul class=\"submenu-tabs\"><li class=\"theme-main-tab active\"><a href=\"#theme-main\" class=\"active ogicon-paint-format\" data-toggle=\"tab-tooltip\" title=\"' + h['basicTheming'] + '\"></a></li><li class=\"theme-menu-tab\"><a href=\"#theme-menu\" class=\"ogicon-menu\" data-toggle=\"tab-tooltip\" title=\"' + h['menuTheming'] + '\"></a></li><li class=\"theme-hud-tab\"><a href=\"#theme-hud\" class=\"ogicon-display\" data-toggle=\"tab-tooltip\" title=\"' + h['hudTheming'] + '\"></a></li><li class=\"theme-chat-tab\"><a href=\"#theme-chat\" class=\"ogicon-bubbles\" data-toggle=\"tab-tooltip\" title=\"' + h['chatTheming'] + '\"></a></li><li class=\"theme-minimap-tab\"><a href=\"#theme-minimap\" class=\"ogicon-location2\" data-toggle=\"tab-tooltip\" title=\"' + h['miniMapTheming'] + '\"></a></li><li class=\"theme-images-tab\"><a href=\"#theme-images\" class=\"ogicon-compass\" data-toggle=\"tab-tooltip\" title=\"' + h['imagesTheming'] + '\"></a></li></ul><div id=\"theme-main\" class=\"submenu-panel\"></div><div id=\"theme-menu\" class=\"submenu-panel\"></div><div id=\"theme-hud\" class=\"submenu-panel\"></div><div id=\"theme-chat\" class=\"submenu-panel\"></div><div id=\"theme-minimap\" class=\"submenu-panel\"></div><div id=\"theme-images\" class=\"submenu-panel\"></div>'), this['addPresetBox']('#theme-main', 'themePreset', f, 'preset', 'changeThemePreset'), this['addColorBox']('#theme-main', 'bgColor', 'setBgColor'), this['addColorBox']('#theme-main', 'bordersColor'), this['addColorBox']('#theme-main', 'gridColor'), this['addColorBox']('#theme-main', 'sectorsColor'), this['addColorBox']('#theme-main', 'namesColor'), this['addColorBox']('#theme-main', 'namesStrokeColor'), this['addColorBox']('#theme-main', 'massColor'), this['addColorBox']('#theme-main', 'massStrokeColor'), this['addColorBox']('#theme-main', 'virusColor'), this['addColorBox']('#theme-main', 'virusStrokeColor'), this.addColorBox('#theme-main', 'mVirusColor'), this.addColorBox('#theme-main', 'mVirusStrokeColor'), this['addColorBox']('#theme-main', 'foodColor', 'setFoodColor'), this['addColorBox']('#theme-main', 'teammatesIndColor', 'setIndicatorColor'), this['addColorBox']('#theme-main', 'cursorTrackingColor'), this['addColorBox']('#theme-main', 'splitRangeColor'), this['addColorBox']('#theme-main', 'safeAreaColor'), this['addColorBox']('#theme-main', 'dangerAreaColor'), this['addColorBox']('#theme-main', 'ghostCellsColor'), this['addFontBox']('#theme-main', 'namesFont'), this['addFontBox']('#theme-main', 'massFont'), this['addFontBox']('#theme-main', 'sectorsFont'), this['addSliderBox']('#theme-main', 'sectorsFontSize', 200, 2000, 10), this['addSliderBox']('#theme-main', 'namesScale', 0.5, 2, 0.1), this['addSliderBox']('#theme-main', 'massScale', 1, 5, 1), this['addSliderBox']('#theme-main', 'virMassScale', 1, 5, 1), this['addSliderBox']('#theme-main', 'strokeScale', 1, 4, 0.1), this['addSliderBox']('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor'), this['addSliderBox']('#theme-main', 'virusStrokeSize', 2, 40, 1), this['addSliderBox']('#theme-main', 'bordersWidth', 2, 200, 2), this['addSliderBox']('#theme-main', 'sectorsWidth', 2, 200, 2), this['addSliderBox']('#theme-main', 'cellsAlpha', 0.01, 0.99, 0.01), this['addSliderBox']('#theme-main', 'skinsAlpha', 0.01, 0.99, 0.01), this['addSliderBox']('#theme-main', 'virusAlpha', 0, 1, 0.01), this['addSliderBox']('#theme-main', 'textAlpha', 0.1, 1, 0.01), this['addSliderBox']('#theme-main', 'ghostCellsAlpha', 0.01, 0.99, 0.01), this['addPresetBox']('#theme-menu', 'menuPreset', m, 'menuPreset', 'changeMenuPreset'), this['addSliderBox']('#theme-menu', 'menuOpacity', 0.1, 1, 0.01, 'setMenuOpacity'), this['addColorBox']('#theme-menu', 'menuMainColor', 'setMenuMainColor'), this['addColorBox']('#theme-menu', 'menuBtnTextColor', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'menuPanelColor', 'setMenuPanelColor'), this['addColorBox']('#theme-menu', 'menuPanelColor2', 'setMenuPanelColor'), this['addColorBox']('#theme-menu', 'menuTextColor', 'setMenuTextColor'), this['addColorBox']('#theme-menu', 'menuTextColor2', 'setMenuTextColor'), this['addColorBox']('#theme-menu', 'btn1Color', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn1Color2', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn2Color', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn2Color2', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn3Color', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn3Color2', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn4Color', 'setMenuButtons'), this['addColorBox']('#theme-menu', 'btn4Color2', 'setMenuButtons'), this['addInputBox']('#theme-menu', 'menuBg', 'Image URL', 'setMenuBg'), this['addColorBox']('#theme-hud', 'hudMainColor', 'setHudColors'), this['addRgbaColorBox']('#theme-hud', 'hudColor', 'setHudColors'), this['addColorBox']('#theme-hud', 'hudTextColor', 'setHudColors'), this['addColorBox']('#theme-hud', 'statsHudColor', 'setHudColors'), this['addColorBox']('#theme-hud', 'timeHudColor', 'setHudColors'), this['addColorBox']('#theme-hud', 'top5MassColor', 'setHudColors'), this['addColorBox']('#theme-hud', 'lbMeColor', 'setHudColors'), this['addColorBox']('#theme-hud', 'lbTeammateColor', 'setHudColors'), this['addFontBox']('#theme-hud', 'hudFont', 'setHudFont'), this['addSliderBox']('#theme-hud', 'hudScale', 1, 2, 0.01, 'setHudScale'), this['addRgbaColorBox']('#theme-chat', 'messageColor', 'setChatColors'), this['addColorBox']('#theme-chat', 'messageTextColor', 'setChatColors'), this['addColorBox']('#theme-chat', 'messageTimeColor', 'setChatColors'), this['addColorBox']('#theme-chat', 'messageNickColor', 'setChatColors'), this['addRgbaColorBox']('#theme-chat', 'commandsColor', 'setChatColors'), this['addColorBox']('#theme-chat', 'commandsTextColor', 'setChatColors'), this['addColorBox']('#theme-chat', 'commandsTimeColor', 'setChatColors'), this['addColorBox']('#theme-chat', 'commandsNickColor', 'setChatColors'), this['addRgbaColorBox']('#theme-chat', 'chatBoxColor', 'setChatColors'), this['addSliderBox']('#theme-chat', 'chatScale', 1, 2, 0.01, 'setChatScale'), this['addColorBox']('#theme-minimap', 'miniMapSectorsColor', 'setMiniMapSectorsColor'), this['addColorBox']('#theme-minimap', 'miniMapSectorColor'), this['addColorBox']('#theme-minimap', 'miniMapNickColor'), this['addColorBox']('#theme-minimap', 'miniMapNickStrokeColor'), this['addColorBox']('#theme-minimap', 'miniMapMyCellColor'), this['addColorBox']('#theme-minimap', 'miniMapMyCellStrokeColor'), this['addColorBox']('#theme-minimap', 'miniMapTeammatesColor'), this['addColorBox']('#theme-minimap', 'miniMapDeathLocationColor'), this['addColorBox']('#theme-minimap', 'miniMapGuidesColor'), this['addColorBox']('#theme-minimap', 'miniMapGhostCellsColor'), this['addFontBox']('#theme-minimap', 'miniMapFont', 'setMiniMapFont'), this['addFontBox']('#theme-minimap', 'miniMapNickFont'), this['addSliderBox']('#theme-minimap', 'miniMapWidth', 200, 400, 2, 'setMiniMapWidth'), this['addSliderBox']('#theme-minimap', 'miniMapSectorsOpacity', 0, 1, 0.01, 'setMiniMapSectorsOpacity'), this['addSliderBox']('#theme-minimap', 'miniMapNickSize', 8, 16, 1), this['addSliderBox']('#theme-minimap', 'miniMapNickStrokeSize', 0, 6, 1), this['addSliderBox']('#theme-minimap', 'miniMapMyCellSize', 4, 10, 0.5), this['addSliderBox']('#theme-minimap', 'miniMapMyCellStrokeSize', 0, 10, 1), this['addSliderBox']('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5), this['addSliderBox']('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01), this['addInputBox']('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground'), this['addInputBox']('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
+                    for (var e = 'https://jimboy3100.github.io/cursors/cursor_', i = 0; i < 35; i++) i < 9 ? this['addCursorBox']('#theme-images', e + '0' + (i + 1) + '.cur') : this['addCursorBox']('#theme-images', e + '' + (i + 1) + '.cur');
+                    s(document)['on']('click', '#theme-images .cursor-box a', function(e) {
                         e.preventDefault();
-                        var i = s(`img`, this)['attr'](`src`);
-                        g.customCursor = i, t[`setCustomCursor`](), s(`#customCursor`).val(i), s(`#theme-images .cursor-box a`)['removeClass']('active'), s(this)[`addClass`](`active`);
-                    }), s(`#theme`).append('<button class=\"btn btn-block btn-success btn-save\"\">' + h[`saveSett`] + `</button>`), s(document)['on'](`click`, `#theme .btn-save`, function(e) {
+                        var i = s('img', this)['attr']('src');
+                        g.customCursor = i, t['setCustomCursor'](), s('#customCursor').val(i), s('#theme-images .cursor-box a')['removeClass']('active'), s(this)['addClass']('active');
+                    }), s('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h['saveSett'] + '</button>'), s(document)['on']('click', '#theme .btn-save', function(e) {
                         e.preventDefault();
                         var i = s(this);
-                        i[`text`](h[`saved`]), t['saveThemeSettings'](), setTimeout(function() {
-                            i[`text`](h['saveSett']);
+                        i['text'](h['saved']), t['saveThemeSettings'](), setTimeout(function() {
+                            i['text'](h['saveSett']);
                         }, 500);
-                    }), s(`#theme`).append(`<div class=\"restore-settings\"><a href=\"#\">` + h[`restoreThemeSettings`] + '</a></div>'), s(document)['on']('click', `#theme .restore-settings a`, function(e) {
-                        e.preventDefault(), t[`restoreThemeSettings`]();
-                    }), s(`.skin`).colorpicker({
-                        'format': `hex`,
-                        'input': `#color`
+                    }), s('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + h['restoreThemeSettings'] + '</a></div>'), s(document)['on']('click', '#theme .restore-settings a', function(e) {
+                        e.preventDefault(), t['restoreThemeSettings']();
+                    }), s('.skin').colorpicker({
+                        'format': 'hex',
+                        'input': '#color'
                     });
                 },
                 'changePreset': function(t, e) {
                     if (e[t]) {
                         g[t] = t;
                         t = e[t];
-                        for (var o in t) t.hasOwnProperty(o) && g.hasOwnProperty(o) && (g[o] = t[o], i.hasOwnProperty(o) && (i[o] = g[o]), s(`#theme .` + o + `-picker`) && s('#theme .' + o + `-picker`).colorpicker('setValue', g[o]), s('#' + o + '-slider') && s('#' + o + `-slider`).val(g[o])[`change`](), (s(`input[type=text]#` + o) || s(`select#` + o)) && s('#' + o).val(g[o]));
+                        for (var o in t) t.hasOwnProperty(o) && g.hasOwnProperty(o) && (g[o] = t[o], i.hasOwnProperty(o) && (i[o] = g[o]), s('#theme .' + o + '-picker') && s('#theme .' + o + '-picker').colorpicker('setValue', g[o]), s('#' + o + '-slider') && s('#' + o + '-slider').val(g[o])['change'](), (s('input[type=text]#' + o) || s('select#' + o)) && s('#' + o).val(g[o]));
                     }
                 },
                 'changeThemePreset': function(t) {
                     this.changePreset(t, f), this.setTheme();
                 },
                 'setFonts': function() {
-                    this.setFont('namesFont', g.namesFont), this.setFont(`massFont`, g.namesFont), this.setFont(`sectorsFont`, g.sectorsFont);
+                    this.setFont('namesFont', g.namesFont), this.setFont('massFont', g.namesFont), this.setFont('sectorsFont', g.sectorsFont);
                 },
                 'setBgColor': function() {
-                    s(`body`).css(`background-color`, g.bgColor);
+                    s('body').css('background-color', g.bgColor);
                 },
                 'setFoodColor': function() {
                     v['optimizedFood'] && ogarfooddrawer && ogarfooddrawer.preDrawPellet();
@@ -1589,113 +1589,113 @@ var core = function(t, e, i) {
                     ogarfooddrawer && ogarfooddrawer.preDrawIndicator();
                 },
                 'setCustomBackground': function() {
-                    g['customBackground'] ? s(`body`).css(`background-image`, `url(` + g[`customBackground`] + ')') : s(`body`)['css'](`background-image`, `none`);
+                    g['customBackground'] ? s('body').css('background-image', 'url(' + g['customBackground'] + ')') : s('body')['css']('background-image', 'none');
                 },
                 'setCustomCursor': function() {
-                    if (g.customCursor) var t = `*{cursor:url(` + g.customCursor + `), auto !important}`;
-                    else t = `*{cursor: auto}`;
-                    this.addCustomCSS(`cursorCSS`, t);
+                    if (g.customCursor) var t = '*{cursor:url(' + g.customCursor + '), auto !important}';
+                    else t = '*{cursor: auto}';
+                    this.addCustomCSS('cursorCSS', t);
                 },
                 'setMenu': function() {
-                    this.setMenuOpacity(), this.setMenuMainColor(), this['setMenuPanelColor'](), this[`setMenuTextColor`](), this[`setMenuButtons`](), this[`setMenuBg`]();
+                    this.setMenuOpacity(), this.setMenuMainColor(), this['setMenuPanelColor'](), this['setMenuTextColor'](), this['setMenuButtons'](), this['setMenuBg']();
                 },
                 'changeMenuPreset': function(t) {
                     this.changePreset(t, m), this['setMenu']();
                 },
                 'setMenuOpacity': function() {
-                    s('#helloContainer, #hotkeys, #exp-imp')['css'](`opacity`, g[`menuOpacity`]);
+                    s('#helloContainer, #hotkeys, #exp-imp')['css']('opacity', g['menuOpacity']);
                 },
                 'setMenuMainColor': function() {
-                    var t = '::-moz-selection{background-color:' + g['menuMainColor'] + `!important}::selection{background-color:` + g[`menuMainColor`] + `!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:` + g[`menuMainColor`] + `}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:` + g['menuMainColor'] + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + g['menuMainColor'] + `}.ps-scrollbar-y{background-color:` + g[`menuMainColor`] + `!important}`;
+                    var t = '::-moz-selection{background-color:' + g['menuMainColor'] + '!important}::selection{background-color:' + g['menuMainColor'] + '!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:' + g['menuMainColor'] + '}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:' + g['menuMainColor'] + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + g['menuMainColor'] + '}.ps-scrollbar-y{background-color:' + g['menuMainColor'] + '!important}';
                     this.addCustomCSS('menuMainColorCSS', t);
                 },
                 'setMenuPanelColor': function() {
-                    var t = `#main-menu,.agario-side-panel,#hotkeys,#exp-imp{background-color: ` + g['menuPanelColor'] + '}label:hover,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.nick .input-group-btn,.skin .input-group-btn,#stream-mode,#hide-url,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs,#exp-bar .progress,#quick-menu a:hover,.quick,.select-wrapper,#hotkeys-cfg div.row:hover,#hotkeys-cfg .command-in,#exp-imp-settings textarea,.restore-settings{background-color: ' + g[`menuPanelColor2`] + `}.agario-panel h5,.agario-side-panel h5,#stats h2,.menu-tabs,.submenu-tabs,#skins a.default,#stats hr,#hotkeys-cfg div.row, #exp-imp h1{border-color: ` + g[`menuPanelColor2`] + `}.quick:hover,#skins a,#profiles{color:` + g['menuPanelColor2'] + '}input.stream-mode,input.hide-url{color:' + g['menuPanelColor2'] + `!important}`;
-                    this.addCustomCSS(`menuPanelColorCSS`, t);
+                    var t = '#main-menu,.agario-side-panel,#hotkeys,#exp-imp{background-color: ' + g['menuPanelColor'] + '}label:hover,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.nick .input-group-btn,.skin .input-group-btn,#stream-mode,#hide-url,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs,#exp-bar .progress,#quick-menu a:hover,.quick,.select-wrapper,#hotkeys-cfg div.row:hover,#hotkeys-cfg .command-in,#exp-imp-settings textarea,.restore-settings{background-color: ' + g['menuPanelColor2'] + '}.agario-panel h5,.agario-side-panel h5,#stats h2,.menu-tabs,.submenu-tabs,#skins a.default,#stats hr,#hotkeys-cfg div.row, #exp-imp h1{border-color: ' + g['menuPanelColor2'] + '}.quick:hover,#skins a,#profiles{color:' + g['menuPanelColor2'] + '}input.stream-mode,input.hide-url{color:' + g['menuPanelColor2'] + '!important}';
+                    this.addCustomCSS('menuPanelColorCSS', t);
                 },
                 'setMenuTextColor': function() {
-                    var t = `.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:` + g[`menuTextColor`] + `}#skins a.default:hover{border-color:` + g[`menuTextColor`] + `}::-webkit-input-placeholder{color:` + g[`menuTextColor2`] + `!important}::-moz-placeholder{color:` + g[`menuTextColor2`] + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + g[`menuTextColor2`] + `}#hotkeys-cfg .command-in,#theme .color-box{border-color:` + g[`menuTextColor2`] + '}';
+                    var t = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + g['menuTextColor'] + '}#skins a.default:hover{border-color:' + g['menuTextColor'] + '}::-webkit-input-placeholder{color:' + g['menuTextColor2'] + '!important}::-moz-placeholder{color:' + g['menuTextColor2'] + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + g['menuTextColor2'] + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + g['menuTextColor2'] + '}';
                     this.addCustomCSS('menuTextColorCSS', t);
                 },
                 'setMenuButtons': function() {
-                    var t = `a,a:hover{color:` + g[`btn1Color`] + `}.btn,#hotkeys-cfg .custom-key-in{color:` + g[`menuBtnTextColor`] + `}.btn-primary{background-color:` + g[`btn1Color`] + `!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:` + g['btn1Color2'] + `!important}.btn-success{background-color:` + g[`btn2Color`] + `!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:` + g[`btn2Color2`] + '!important}.btn-warning{background-color:' + g[`btn3Color`] + `!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:` + g[`btn3Color2`] + `!important}.btn-danger{background-color:` + g[`btn4Color`] + `!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:` + g[`btn4Color2`] + `!important}#hotkeys-cfg .custom-key-in{background-color:` + g['btn4Color2'] + `;border-color:` + g[`btn4Color2`] + '}';
-                    this.addCustomCSS(`menuButtonsCSS`, t);
+                    var t = 'a,a:hover{color:' + g['btn1Color'] + '}.btn,#hotkeys-cfg .custom-key-in{color:' + g['menuBtnTextColor'] + '}.btn-primary{background-color:' + g['btn1Color'] + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + g['btn1Color2'] + '!important}.btn-success{background-color:' + g['btn2Color'] + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + g['btn2Color2'] + '!important}.btn-warning{background-color:' + g['btn3Color'] + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + g['btn3Color2'] + '!important}.btn-danger{background-color:' + g['btn4Color'] + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + g['btn4Color2'] + '!important}#hotkeys-cfg .custom-key-in{background-color:' + g['btn4Color2'] + ';border-color:' + g['btn4Color2'] + '}';
+                    this.addCustomCSS('menuButtonsCSS', t);
                 },
                 'setMenuBg': function() {
-                    s(`#menuBg`).val(g[`menuBg`]), g['menuBg'] ? s(`.menu-panel, .agario-side-panel, #hotkeys, #exp-imp`).css(`background-image`, 'url(' + g[`menuBg`] + ')') : s(`.menu-panel, .agario-side-panel, #hotkeys, #exp-imp`).css(`background-image`, `none`);
+                    s('#menuBg').val(g['menuBg']), g['menuBg'] ? s('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'url(' + g['menuBg'] + ')') : s('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'none');
                 },
                 'setHud': function() {
-                    this[`setHudColors`](), this[`setHudFont`](), this[`setHudScale`]();
+                    this['setHudColors'](), this['setHudFont'](), this['setHudScale']();
                 },
                 'setHudColors': function() {
-                    var t = `.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:` + g[`hudMainColor`] + '}.hud,.hud-b,#chat-emoticons{background-color:' + g[`hudColor`] + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + g[`hudTextColor`] + `}.stats-hud-color{color:` + g[`statsHudColor`] + `}.time-hud-color{color:` + g[`timeHudColor`] + `}.top5-mass-color{color:` + g[`top5MassColor`] + `}#leaderboard-positions .me{color:` + g[`lbMeColor`] + `}#leaderboard-positions .teammate{color:` + g[`lbTeammateColor`] + '}';
-                    this.addCustomCSS(`hudCSS`, t);
+                    var t = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + g['hudMainColor'] + '}.hud,.hud-b,#chat-emoticons{background-color:' + g['hudColor'] + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + g['hudTextColor'] + '}.stats-hud-color{color:' + g['statsHudColor'] + '}.time-hud-color{color:' + g['timeHudColor'] + '}.top5-mass-color{color:' + g['top5MassColor'] + '}#leaderboard-positions .me{color:' + g['lbMeColor'] + '}#leaderboard-positions .teammate{color:' + g['lbTeammateColor'] + '}';
+                    this.addCustomCSS('hudCSS', t);
                 },
                 'setHudFont': function() {
-                    this.setFont(`hudFont`, g[`hudFont`]), s(`#overlays-hud`).css({
-                        'font-family': g[`hudFontFamily`],
-                        'font-weight': g[`hudFontWeight`]
+                    this.setFont('hudFont', g['hudFont']), s('#overlays-hud').css({
+                        'font-family': g['hudFontFamily'],
+                        'font-weight': g['hudFontWeight']
                     });
                 },
                 'setHudScale': function() {
-                    var t = Math['round'](20 * g[`hudScale`]),
-                        e = Math[`round`](200 * g['hudScale']),
-                        i = Math[`floor`](55 * g[`hudScale`]),
-                        o = Math['floor'](6 * g[`hudScale`]),
-                        a = Math[`floor`](280 * g[`hudScale`]),
-                        n = Math['floor'](85 * g[`hudScale`]),
-                        r = Math['floor'](20 * g[`hudScale`]);
-                    s(`#overlays-hud`)['css'](`font-size`, t + 'px'), s('#leaderboard-hud, #time-hud')['width'](e), s(`#top5-hud`)[`width`](e + 30).css(`top`, i + 'px'), s(`#top5-pos`).css(`padding-left`, o + 'px'), s(`#time-hud`).css(`top`, a + 'px'), s(`#pause-hud`)['css']('top', n + 'px'), s(`#target-hud`).css(`padding-top`, r + 'px');
+                    var t = Math['round'](20 * g['hudScale']),
+                        e = Math['round'](200 * g['hudScale']),
+                        i = Math['floor'](55 * g['hudScale']),
+                        o = Math['floor'](6 * g['hudScale']),
+                        a = Math['floor'](280 * g['hudScale']),
+                        n = Math['floor'](85 * g['hudScale']),
+                        r = Math['floor'](20 * g['hudScale']);
+                    s('#overlays-hud')['css']('font-size', t + 'px'), s('#leaderboard-hud, #time-hud')['width'](e), s('#top5-hud')['width'](e + 30).css('top', i + 'px'), s('#top5-pos').css('padding-left', o + 'px'), s('#time-hud').css('top', a + 'px'), s('#pause-hud')['css']('top', n + 'px'), s('#target-hud').css('padding-top', r + 'px');
                 },
                 'setChat': function() {
-                    this[`setChatColors`](), this[`setChatScale`]();
+                    this['setChatColors'](), this['setChatScale']();
                 },
                 'setChatColors': function() {
-                    var t = `#message,#messages li,.toast-success{background-color:` + g[`messageColor`] + `}#message,.message-text,.toast-success .message-text{color:` + g[`messageTextColor`] + `}.message-nick,.mute-user,.mute-user:hover,.toast-success .message-nick,.toast .mute-user,.toast .mute-user:hover{color:` + g[`messageNickColor`] + `}.message-time{color:` + g[`messageTimeColor`] + '}.toast-warning{background-color:' + g[`commandsColor`] + `}.command-text,.toast-warning .command-text{color:` + g[`commandsTextColor`] + '}.command-nick,.toast-warning .command-nick,.toast-warning .mute-user,.toast-warning .mute-user:hover{color:' + g[`commandsNickColor`] + `}.command-time{color:` + g[`commandsTimeColor`] + `}#chat-box{background-color:` + g[`chatBoxColor`] + '}';
-                    this.addCustomCSS(`chatCSS`, t);
+                    var t = '#message,#messages li,.toast-success{background-color:' + g['messageColor'] + '}#message,.message-text,.toast-success .message-text{color:' + g['messageTextColor'] + '}.message-nick,.mute-user,.mute-user:hover,.toast-success .message-nick,.toast .mute-user,.toast .mute-user:hover{color:' + g['messageNickColor'] + '}.message-time{color:' + g['messageTimeColor'] + '}.toast-warning{background-color:' + g['commandsColor'] + '}.command-text,.toast-warning .command-text{color:' + g['commandsTextColor'] + '}.command-nick,.toast-warning .command-nick,.toast-warning .mute-user,.toast-warning .mute-user:hover{color:' + g['commandsNickColor'] + '}.command-time{color:' + g['commandsTimeColor'] + '}#chat-box{background-color:' + g['chatBoxColor'] + '}';
+                    this.addCustomCSS('chatCSS', t);
                 },
                 'setChatScale': function() {
-                    var t = Math['round'](14 * g[`chatScale`]),
-                        e = Math[`round`](280 * g['chatScale']),
-                        i = Math[`round`](350 * g['chatScale']),
-                        o = Math['round'](300 * g[`chatScale`]),
-                        a = Math[`floor`](14 * g[`chatScale`]);
-                    s(`#message-box, #messages, #toast-container, #chat-box`)['css'](`font-size`, t + 'px'), s(`#messages, #toast-container, #chat-box`)[`width`](e), s(`#message-box`)['width'](i), s('#chat-box')[`height`](o), s('.user-list').css(`padding-left`, a + 'px');
-                    var n = `#toast-container{width:` + e + `px;font-size:` + t + `px}`;
-                    this.addCustomCSS(`chatScaleCSS`, n);
+                    var t = Math['round'](14 * g['chatScale']),
+                        e = Math['round'](280 * g['chatScale']),
+                        i = Math['round'](350 * g['chatScale']),
+                        o = Math['round'](300 * g['chatScale']),
+                        a = Math['floor'](14 * g['chatScale']);
+                    s('#message-box, #messages, #toast-container, #chat-box')['css']('font-size', t + 'px'), s('#messages, #toast-container, #chat-box')['width'](e), s('#message-box')['width'](i), s('#chat-box')['height'](o), s('.user-list').css('padding-left', a + 'px');
+                    var n = '#toast-container{width:' + e + 'px;font-size:' + t + 'px}';
+                    this.addCustomCSS('chatScaleCSS', n);
                 },
                 'setMiniMap': function() {
-                    this[`setMiniMapFont`](), this[`setMiniMapWidth`](), this[`setMiniMapSectorsOpacity`]();
+                    this['setMiniMapFont'](), this['setMiniMapWidth'](), this['setMiniMapSectorsOpacity']();
                 },
                 'setMiniMapFont': function() {
                     this.setFont('miniMapFont', g['miniMapFont']), ogarminimapdrawer && ogarminimapdrawer['resetMiniMapSectors']();
                 },
                 'setMiniMapWidth': function() {
-                    var t = g[`miniMapWidth`] / 200;
-                    g[`miniMapTop`] = Math[`round`](20 * t), s(`#minimap-hud`).css({
-                        'width': g[`miniMapWidth`],
-                        'height': g[`miniMapWidth`] + g[`miniMapTop`]
-                    }), ogarminimapdrawer && ogarminimapdrawer[`resetMiniMapSectors`]();
+                    var t = g['miniMapWidth'] / 200;
+                    g['miniMapTop'] = Math['round'](20 * t), s('#minimap-hud').css({
+                        'width': g['miniMapWidth'],
+                        'height': g['miniMapWidth'] + g['miniMapTop']
+                    }), ogarminimapdrawer && ogarminimapdrawer['resetMiniMapSectors']();
                 },
                 'setMiniMapSectorsColor': function() {
                     ogarminimapdrawer && ogarminimapdrawer['resetMiniMapSectors']();
                 },
                 'setMiniMapSectorsOpacity': function() {
-                    s(`#minimap-sectors`).css(`opacity`, g[`miniMapSectorsOpacity`]);
+                    s('#minimap-sectors').css('opacity', g['miniMapSectorsOpacity']);
                 },
                 'setTheme': function() {
-                    this[`setFonts`](), this['setBgColor'](), this[`setCustomBackground`](), this[`setCustomCursor`](), this[`setMenu`](), this[`setHud`](), this[`setChat`](), this[`setMiniMap`]();
+                    this['setFonts'](), this['setBgColor'](), this['setCustomBackground'](), this['setCustomCursor'](), this['setMenu'](), this['setHud'](), this['setChat'](), this['setMiniMap']();
                 },
                 'init': function() {
-                    this[`loadThemeSettings`]();
+                    this['loadThemeSettings']();
                 }
             },
             ogario1PlayerProfiles = [],
             ogarcopythelb = {
-                'nick': `I<3Legendmod`,
+                'nick': 'I<3Legendmod',
                 'clanTag': 'Ⓜ',
                 'skinURL': '',
-                'color': g[`mainColor`]
+                'color': g['mainColor']
             },
             v = {
                 'quickResp': !0,
