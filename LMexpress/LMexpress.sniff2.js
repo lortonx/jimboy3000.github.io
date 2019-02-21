@@ -1725,9 +1725,9 @@ function erasescripter(){
 }
 
 //5. fixes:
-setTimeout(function () {
+//setTimeout(function () {
 if ($("#comm15").val()=="undefined"){
 		$("#comm15").val(window.legendmod4.comm15); $("#comm16").val(window.legendmod4.comm16); $("#comm17").val(window.legendmod4.comm17); $("#comm18").val(window.legendmod4.comm18); $("#comm19").val(window.legendmod4.comm19); $("#comm20").val(window.legendmod4.comm20); $("#comm21").val(window.legendmod4.comm21); $("#comm22").val(window.legendmod4.comm22); $("#comm23").val(window.legendmod4.comm23); $("#comm24").val(window.legendmod4.comm24);
 		$("#comm25").val(window.legendmod4.comm25); $("#comm26").val(window.legendmod4.comm26); $("#comm27").val(window.legendmod4.comm27); $("#comm28").val(window.legendmod4.comm28); $("#comm29").val(window.legendmod4.comm29); $("#comm30").val(window.legendmod4.comm30);		
 }
-}, 6000);
+//}, 6000);
