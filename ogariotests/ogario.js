@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.90 test
+//v1.91 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -223,22 +223,22 @@ var core = function(t, e, i) {
                     'comm12': `Góra!`,
                     'comm13': `Prawo!`,
                     'comm14': `Dół!`,
-					'comm15': '',
-					'comm16': '',
-					'comm17': '',
-					'comm18': '',
-					'comm19': '',
-					'comm20': '',
-					'comm21': '',
-					'comm22': '',
-					'comm23': '',
-					'comm24': '',
-					'comm25': '',
-					'comm26': '',
-					'comm27': '',
-					'comm28': '',
-					'comm29': '',
-					'comm30': '',					
+					'comm15': 'Fake Tricksplit',
+					'comm16': 'Popsplit',
+					'comm17': 'Double Popsplit',
+					'comm18': 'Reversed Tricksplit',
+					'comm19': 'Canonsplit',
+					'comm20': 'Reversed Canonsplit',
+					'comm21': 'Bowlingsplit',
+					'comm22': 'Auto feed trick',
+					'comm23': 'Pause',
+					'comm24': 'ANTI alarm stage 1',
+					'comm25': 'ANTI alarm stage 2',
+					'comm26': 'ANTI alarm stage 3',
+					'comm27': 'ANTI alarm stage 4',
+					'comm28': 'ANTI alarm stage 5',
+					'comm29': 'Presplit',
+					'comm30': 'Party Run tricks',					
                     'saveComm': `Zapisz komendy`,
                     'theme': 'Wygląd',
                     'restoreThemeSettings': `Przywróc ustawienia domyślne wyglądu`,
@@ -580,22 +580,22 @@ var core = function(t, e, i) {
                     'comm12': `Up!`,
                     'comm13': `Right!`,
                     'comm14': `Bottom!`,
-					'comm15': '',
-					'comm16': '',
-					'comm17': '',
-					'comm18': '',
-					'comm19': '',
-					'comm20': '',
-					'comm21': '',
-					'comm22': '',
-					'comm23': '',
-					'comm24': '',
-					'comm25': '',
-					'comm26': '',
-					'comm27': '',
-					'comm28': '',
-					'comm29': '',
-					'comm30': '',					
+					'comm15': 'Fake Tricksplit',
+					'comm16': 'Popsplit',
+					'comm17': 'Double Popsplit',
+					'comm18': 'Reversed Tricksplit',
+					'comm19': 'Canonsplit',
+					'comm20': 'Reversed Canonsplit',
+					'comm21': 'Bowlingsplit',
+					'comm22': 'Auto feed trick',
+					'comm23': 'Pause',
+					'comm24': 'ANTI alarm stage 1',
+					'comm25': 'ANTI alarm stage 2',
+					'comm26': 'ANTI alarm stage 3',
+					'comm27': 'ANTI alarm stage 4',
+					'comm28': 'ANTI alarm stage 5',
+					'comm29': 'Presplit',
+					'comm30': 'Party Run tricks',					
                     'saveComm': `Save commands`,
                     'theme': `Theme`,
                     'restoreThemeSettings': 'Restore theme default settings',
@@ -4847,7 +4847,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm15': {
                     'label': c[`comm15`],
-                    'defaultKey': 'Fake Tricksplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](15);
                     },
@@ -4856,7 +4856,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm16': {
                     'label': c[`comm16`],
-                    'defaultKey': 'Popsplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](16);
                     },
@@ -4865,7 +4865,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm17': {
                     'label': c[`comm17`],
-                    'defaultKey': 'Double Popsplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](17);
                     },
@@ -4874,7 +4874,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm18': {
                     'label': c[`comm18`],
-                    'defaultKey': 'Reversed Tricksplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](18);
                     },
@@ -4883,7 +4883,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm19': {
                     'label': c[`comm19`],
-                    'defaultKey': 'Canonsplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](19);
                     },
@@ -4892,7 +4892,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm20': {
                     'label': c[`comm20`],
-                    'defaultKey': 'Reversed Canonsplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](20);
                     },
@@ -4901,7 +4901,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm21': {
                     'label': c[`comm21`],
-                    'defaultKey': 'Bowlingsplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](21);
                     },
@@ -4910,7 +4910,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm22': {
                     'label': c[`comm22`],
-                    'defaultKey': 'Auto feed trick',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](22);
                     },
@@ -4919,7 +4919,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm23': {
                     'label': c[`comm23`],
-                    'defaultKey': 'Pause',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](23);
                     },
@@ -4928,7 +4928,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm24': {
                     'label': c[`comm24`],
-                    'defaultKey': 'ANTI alarm stage 1',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](24);
                     },
@@ -4937,7 +4937,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm25': {
                     'label': c[`comm25`],
-                    'defaultKey': 'ANTI alarm stage 2',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](25);
                     },
@@ -4946,7 +4946,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm26': {
                     'label': c[`comm26`],
-                    'defaultKey': 'ANTI alarm stage 3',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](26);
                     },
@@ -4955,7 +4955,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm27': {
                     'label': c[`comm27`],
-                    'defaultKey': 'ANTI alarm stage 4',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](27);
                     },
@@ -4964,7 +4964,7 @@ var core = function(t, e, i) {
                 },
                 'hk-comm28': {
                     'label': c[`comm28`],
-                    'defaultKey': 'ANTI alarm stage 5',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](28);
                     },
@@ -4973,7 +4973,7 @@ var core = function(t, e, i) {
                 },		
                 'hk-comm29': {
                     'label': c[`comm29`],
-                    'defaultKey': 'Presplit',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](29);
                     },
@@ -4982,7 +4982,7 @@ var core = function(t, e, i) {
                 },	
                 'hk-comm30': {
                     'label': c[`comm30`],
-                    'defaultKey': 'Party Run tricks',
+                    'defaultKey': '',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer[`sendCommand`](30);
                     },
