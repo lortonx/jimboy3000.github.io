@@ -767,8 +767,8 @@ var core = function(t, e, i) {
             l = e.navigator.language || e.navigator.userLanguage;
         l && n.hasOwnProperty(l) && (r = l);
         var h = n[r];
-		if (h.comm15!=undefined){
-			//console.log(h.comm15);
+		//if (n[r].comm15==undefined){
+			//console.log(n[r].comm15);
             c = {
                 'comm1': h.comm1,
                 'comm2': h.comm2,
@@ -779,7 +779,6 @@ var core = function(t, e, i) {
                 'comm7': h.comm7,
                 'comm8': h.comm8,
                 'comm9': h.comm9,
-                'comm0': h.comm0,
                 'comm10': h.comm10,
                 'comm11': h.comm11,
                 'comm12': h.comm12,
@@ -801,7 +800,8 @@ var core = function(t, e, i) {
                 'comm28': h.comm28,
                 'comm29': h.comm29,
                 'comm30': h.comm30				
-		}}
+		}
+		/*}
 		else{
             c = { //new JSON
                 'comm1': h.comm1,
@@ -813,7 +813,6 @@ var core = function(t, e, i) {
                 'comm7': h.comm7,
                 'comm8': h.comm8,
                 'comm9': h.comm9,
-                'comm0': h.comm0,
                 'comm10': h.comm10,
                 'comm11': h.comm11,
                 'comm12': h.comm12,
@@ -836,9 +835,9 @@ var core = function(t, e, i) {
 					'comm29': 'Presplit',
 					'comm30': 'Party Run tricks'				
 			}; 		
-			h.comm15=c.comm15; h.comm16=c.comm16; h.comm17=c.comm17; h.comm18=c.comm18; h.comm19=c.comm19; h.comm20=c.comm20; h.comm21=c.comm21; h.comm22=c.comm22; h.comm23=c.comm23; h.comm24=c.comm24;
-			c.comm25; h.comm26=c.comm26; h.comm27=c.comm27; h.comm28=c.comm28; h.comm29=c.comm29; h.comm30=c.comm30;
 		};
+		n[r].comm15=c.comm15; n[r].comm16=c.comm16; n[r].comm17=c.comm17; n[r].comm18=c.comm18; n[r].comm19=c.comm19; n[r].comm20=c.comm20; n[r].comm21=c.comm21; n[r].comm22=c.comm22; n[r].comm23=c.comm23; n[r].comm24=c.comm24;
+		n[r].comm25=c.comm25; n[r].comm26=c.comm26; n[r].comm27=c.comm27; n[r].comm28=c.comm28; n[r].comm29=c.comm29; n[r].comm30=c.comm30;		*/
             u = {
                 '&': '&amp;',
                 '<': '&lt;',
