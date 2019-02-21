@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.011 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.012 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "15"; // the version 1.1-> 1.11
+var semimodVersion = "16"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1726,6 +1726,14 @@ function LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch) {
 }
 
 function parseLegendJSONAPI(LegendJSON) {
+	
+	if(LegendJSON.ogarioCommands.comm15=undefined){
+		LegendJSON.ogarioCommands.comm15="Fake Tricksplit";LegendJSON.ogarioCommands.comm16="Popsplit";LegendJSON.ogarioCommands.comm17="Double Popsplit";LegendJSON.ogarioCommands.comm18="Reversed Tricksplit";
+		LegendJSON.ogarioCommands.comm19="Canonsplit";LegendJSON.ogarioCommands.comm20="Reversed Canonsplit";LegendJSON.ogarioCommands.comm21="Bowlingsplit";LegendJSON.ogarioCommands.comm22="Auto feed trick";
+		LegendJSON.ogarioCommands.comm23="Pause";LegendJSON.ogarioCommands.comm24="ANTI alarm stage 1";LegendJSON.ogarioCommands.comm25="ANTI alarm stage 2";LegendJSON.ogarioCommands.comm26="ANTI alarm stage 3";
+		LegendJSON.ogarioCommands.comm27="ANTI alarm stage 4";LegendJSON.ogarioCommands.comm28="ANTI alarm stage 5";LegendJSON.ogarioCommands.comm29="Presplit";LegendJSON.ogarioCommands.comm30="Party Run tricks";
+	}
+	
     LegendJSON.legendSettings = {};
     LegendJSON.legendSettings.previousMode = localStorage.getItem("gamemode");
     LegendJSON.legendSettings.checkonlyonce = localStorage.getItem("checkonlyonce");
