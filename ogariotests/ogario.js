@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.92 test
+//v1.93 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -768,6 +768,7 @@ var core = function(t, e, i) {
         l && n.hasOwnProperty(l) && (r = l);
         var h = n[r];
 		if (h.comm15!=undefined){
+			//console.log(h.comm15);
             c = {
                 'comm1': h.comm1,
                 'comm2': h.comm2,
@@ -834,7 +835,9 @@ var core = function(t, e, i) {
 					'comm28': 'ANTI alarm stage 5',
 					'comm29': 'Presplit',
 					'comm30': 'Party Run tricks'				
-			}				
+			}; 		
+			h.comm15=c.comm15; h.comm16=c.comm16; h.comm17=c.comm17; h.comm18=c.comm18; h.comm19=c.comm19; h.comm20=c.comm20; h.comm21=c.comm21; h.comm22=c.comm22; h.comm23=c.comm23; h.comm24=c.comm24;
+			c.comm25; h.comm26=c.comm26; h.comm27=c.comm27; h.comm28=c.comm28; h.comm29=c.comm29; h.comm30=c.comm30;
 		};
             u = {
                 '&': '&amp;',
