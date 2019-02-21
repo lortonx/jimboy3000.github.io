@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.91 test
+//v1.92 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -766,7 +766,8 @@ var core = function(t, e, i) {
             r = 'en',
             l = e.navigator.language || e.navigator.userLanguage;
         l && n.hasOwnProperty(l) && (r = l);
-        var h = n[r],
+        var h = n[r];
+		if (h.comm15!=undefined){
             c = {
                 'comm1': h.comm1,
                 'comm2': h.comm2,
@@ -799,7 +800,42 @@ var core = function(t, e, i) {
                 'comm28': h.comm28,
                 'comm29': h.comm29,
                 'comm30': h.comm30				
-            },
+		}}
+		else{
+            c = { //new JSON
+                'comm1': h.comm1,
+                'comm2': h.comm2,
+                'comm3': h.comm3,
+                'comm4': h.comm4,
+                'comm5': h.comm5,
+                'comm6': h.comm6,
+                'comm7': h.comm7,
+                'comm8': h.comm8,
+                'comm9': h.comm9,
+                'comm0': h.comm0,
+                'comm10': h.comm10,
+                'comm11': h.comm11,
+                'comm12': h.comm12,
+                'comm13': h.comm13,
+                'comm14': h.comm14,
+				'comm15': 'Fake Tricksplit',
+					'comm16': 'Popsplit',
+					'comm17': 'Double Popsplit',
+					'comm18': 'Reversed Tricksplit',
+					'comm19': 'Canonsplit',
+					'comm20': 'Reversed Canonsplit',
+					'comm21': 'Bowlingsplit',
+					'comm22': 'Auto feed trick',
+					'comm23': 'Pause',
+					'comm24': 'ANTI alarm stage 1',
+					'comm25': 'ANTI alarm stage 2',
+					'comm26': 'ANTI alarm stage 3',
+					'comm27': 'ANTI alarm stage 4',
+					'comm28': 'ANTI alarm stage 5',
+					'comm29': 'Presplit',
+					'comm30': 'Party Run tricks'				
+			}				
+		};
             u = {
                 '&': '&amp;',
                 '<': '&lt;',
@@ -1736,6 +1772,7 @@ var core = function(t, e, i) {
 //                'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
                 'commandSound': 'https://jimboy3100.github.io/sounds/chat-message.mp3'
             };
+			window.legendmod4= c;
         var ogarminimapdrawer = {
             'name': `LM express`,
             'version': `v1`,
