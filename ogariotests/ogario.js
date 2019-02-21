@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.97 test
+//v1.98 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2522,7 +2522,7 @@ var core = function(t, e, i) {
             'play': function() {
                 if (this['setPlayerSettings'](), this['setParty'](), this['isSocketOpen']()) this['sendPartyData']();
                 else {
-                    this['connect']();
+                    this.connect();
                     var t = this;
                     setTimeout(function() {
                         t['sendPartyData']();
@@ -2542,7 +2542,7 @@ var core = function(t, e, i) {
             'onJoin': function() {
                 if (this['setParty'](), this['isSocketOpen']()) this['join']();
                 else {
-                    this['connect']();
+                    this.connect();
                     var t = this;
                     setTimeout(function() {
                         t['join'](), t['sendPlayerJoin']();
@@ -2791,10 +2791,10 @@ var core = function(t, e, i) {
                 s('#server-ws')['val'](this['ws']), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this['partyToken']);
             },
             'gameServerConnect': function(t) {
-                t && (this['skipServerData'] = !0, e['core'] && e['core']['connect'] && e['core']['connect'](t));
+                t && (this['skipServerData'] = !0, e['core'] && e['core'].connect && e['core'].connect(t));
             },
             'gameServerReconnect': function() {
-                e['MC'] && e['MC']['reconnect'] ? e['MC']['reconnect']() : e['master'] && e['master']['reconnect'] && e['master']['reconnect']();
+                e['MC'] && e['MC']['reconnect'] ? e['MC']['reconnect']() : e.master && e.master['reconnect'] && e.master['reconnect']();
             },
             'gameServerJoin': function(t) {
                 var e = this['recreateWS'](t);
@@ -2828,7 +2828,7 @@ var core = function(t, e, i) {
                 this['setParty']();
                 var t = this;
                 setTimeout(function() {
-                    t['connect']();
+                    t.connect();
                 }, 1000);
             },
             'switchServerMode': function() {
@@ -3546,7 +3546,7 @@ var core = function(t, e, i) {
                     i['onError'](t);
                 }, this.socket['onclose'] = function(t) {
                     i['onClose'](t);
-                }, ogarminimapdrawer['getWS'](this['ws']), ogarminimapdrawer['sendServerJoin'](), ogarminimapdrawer['sendServerData'](), ogarminimapdrawer['displayLeaderboard'](''), e['master'] && e['master']['onConnect'] && e['master']['onConnect']();
+                }, ogarminimapdrawer['getWS'](this['ws']), ogarminimapdrawer['sendServerJoin'](), ogarminimapdrawer['sendServerData'](), ogarminimapdrawer['displayLeaderboard'](''), e.master && e.master['onConnect'] && e.master['onConnect']();
             },
             'onOpen': function(t) {
                 console.log('[Legend mod Express] Game server socket open'), this['time'] = Date['now']();
@@ -3557,10 +3557,10 @@ var core = function(t, e, i) {
                 t = new DataView(t['data']), this['protocolKey'] && (t = this['shiftMessage'](t, this['protocolKey'] ^ this['clientVersion'])), this['handleMessage'](t);
             },
             'onError': function(t) {
-                console.log('[Legend mod Express] Game server socket error'), this['flushCellsData'](), e['master'] && e['master']['onDisconnect'] && e['master']['onDisconnect']();
+                console.log('[Legend mod Express] Game server socket error'), this['flushCellsData'](), e.master && e.master['onDisconnect'] && e.master['onDisconnect']();
             },
             'onClose': function(t) {
-                console.log('[Legend mod Express] Game server socket close'), this['flushCellsData'](), e['master'] && e['master']['onDisconnect'] && e['master']['onDisconnect']();
+                console.log('[Legend mod Express] Game server socket close'), this['flushCellsData'](), e.master && e.master['onDisconnect'] && e.master['onDisconnect']();
             },
             'closeConnection': function() {
                 if (this.socket) {
@@ -3753,7 +3753,7 @@ var core = function(t, e, i) {
                         }
                         break;
                     case 85:
-                        console.log('[Legend mod Express] Captcha requested'), e['master'] && e['master']['recaptchaRequested'] && e['master']['recaptchaRequested']();
+                        console.log('[Legend mod Express] Captcha requested'), e.master && e.master['recaptchaRequested'] && e.master['recaptchaRequested']();
                         break;
                     case 102:
                         t['byteLength'] < 20 && e['logout'] && e['logout']();
@@ -3797,7 +3797,7 @@ var core = function(t, e, i) {
                     case 241:
                         this['protocolKey'] = t.getUint32(s, !0), console.log('[Legend mod Express] Received protocol key:', this['protocolKey']);
                         var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
-                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e['master'] && e['master']['login'] && e['master']['login']();
+                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e.master && e.master['login'] && e.master['login']();
                         break;
                     case 242:
                         this['serverTime'] = 1000 * t.getUint32(s, !0), this['serverTimeDiff'] = Date['now']() - this['serverTime'];
@@ -4047,7 +4047,7 @@ var core = function(t, e, i) {
                     t['setZoom'](e);
                 }, setInterval(function() {
                     t['sendPosition']();
-                }, 40), e['master'] && e['master']['clientVersion'] && this['setClientVersion'](e['master']['clientVersion'], e['master']['clientVersionString']);
+                }, 40), e.master && e.master['clientVersion'] && this['setClientVersion'](e.master['clientVersion'], e.master['clientVersionString']);
             }
         };
 		window.legendmod = M; // look at this
@@ -5214,7 +5214,7 @@ var core = function(t, e, i) {
             ogarfooddrawer['resizeCanvas'](), ogarhusettings();
         }, ogarassembler(), e['core'] = {
             'connect': function(t) {
-                M['connect'](t);
+                M.connect(t);
             },
             'disconnect': function() {},
             'sendNick': function(t) {
@@ -5248,14 +5248,14 @@ var core = function(t, e, i) {
                 M['setClientVersion'](t, e);
             },
             'proxyMobileData': function(t = []) {
-                if (Array['isArray'](t)) {
-                    8 == t[0] && t['unshift'](102);
+                if (Array.isArray(t)) {
+                    8 == t[0] && t.unshift(102);
                     var e = M['createView'](t.length);
                     M['sendMessage'](e);
                 } else console.log('ProxyMobileData ERROR: Array data required.');
             }
-        }, e['master']['getClientVersion'](), y['init'](), ogarminimapdrawer['init'](), ogarminimapdrawer['getDefaultSettings'](), ogarminimapdrawer['connect'](), lastkeys['init'](), M['init'](), ogarfooddrawer['init'](), e['master']['init'](), ogarhusettings();
-    })(window, window['ogario'], window['jQuery']);
+        }, e.master.getClientVersion(), y.init(), ogarminimapdrawer.init(), ogarminimapdrawer.getDefaultSettings(), ogarminimapdrawer.connect(), lastkeys.init(), M.init(), ogarfooddrawer.init(), e.master.init(), ogarhusettings();
+    })(window, window.ogario, window.jQuery);
 }
 
 
@@ -5264,7 +5264,7 @@ var core = function(t, e, i) {
 
 
 
-//m00
+
 
 
 
