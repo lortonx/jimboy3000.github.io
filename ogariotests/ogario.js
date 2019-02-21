@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.100 test
+//v1.101 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2678,13 +2678,13 @@ var core = function(t, e, i) {
                                 var u = ~~((h[c]['x'] + r) * n),
                                     d = ~~((h[c]['y'] + l) * n);
                                 this['miniMapCtx']['moveTo'](u, d), this['miniMapCtx'].arc(u, d, ~~(h[c]['size'] * n), 0, this.pi2, !1);
-                            } this['miniMapCtx']['fillStyle'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['globalAlpha'] = g['miniMapGhostCellsAlpha'], this['miniMapCtx']['shadowColor'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['shadowBlur'] = 10, this['miniMapCtx']['shadowOffsetX'] = 0, this['miniMapCtx']['shadowOffsetY'] = 0, this['miniMapCtx'].fil(), this['miniMapCtx']['globalAlpha'] = 1, this['miniMapCtx']['shadowBlur'] = 0;
+                            } this['miniMapCtx']['fillStyle'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['globalAlpha'] = g['miniMapGhostCellsAlpha'], this['miniMapCtx']['shadowColor'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['shadowBlur'] = 10, this['miniMapCtx']['shadowOffsetX'] = 0, this['miniMapCtx']['shadowOffsetY'] = 0, this['miniMapCtx'].fill(), this['miniMapCtx']['globalAlpha'] = 1, this['miniMapCtx']['shadowBlur'] = 0;
                     }
                     if (v['showMiniMapGuides']) {
                         u = Math['round']((i['playerX'] + r) * n), d = Math['round']((i['playerY'] + l) * n);
                         this['miniMapCtx']['lineWidth'] = 1, this['miniMapCtx']['strokeStyle'] = g['miniMapGuidesColor'], this['miniMapCtx']['beginPath'](), this['miniMapCtx']['moveTo'](u, 0), this['miniMapCtx']['lineTo'](u, o - 1), this['miniMapCtx']['moveTo'](0, d), this['miniMapCtx']['lineTo'](o - 1, d), this['miniMapCtx']['stroke']();
                     }
-                    if (this['miniMapCtx']['beginPath'](), this['miniMapCtx'].arc((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this.pi2, !1), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx'].fil(), this['teamPlayers'].length)
+                    if (this['miniMapCtx']['beginPath'](), this['miniMapCtx'].arc((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this.pi2, !1), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx'].fill(), this['teamPlayers'].length)
                         for (c = 0; c < this['teamPlayers'].length; c++) this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID']);
                     if (this['deathLocations'].length > 0) {
                         u = Math['round']((this['deathLocations'][this['lastDeath']]['x'] + i['mapOffset']) * n), d = Math['round']((this['deathLocations'][this['lastDeath']]['y'] + i['mapOffset']) * n);
@@ -2703,7 +2703,7 @@ var core = function(t, e, i) {
                 this['miniMapSectors'] = null;
             },
             'drawSelectedCell': function(t) {
-                i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t['fillStyle'] = '#FFFFFF', t['globalAlpha'] = this['selectBiggestCell'] ? 0.6 : 0.3, t['beginPath'](), t.arc(0x30, 15, 6, 0, this.pi2, !1), t['closePath'](), t.fil(), t['globalAlpha'] = this['selectBiggestCell'] ? 0.3 : 0.6, t['beginPath'](), t.arc(0x3c, 15, 4, 0, this.pi2, !1), t['closePath'](), t.fil());
+                i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t['fillStyle'] = '#FFFFFF', t['globalAlpha'] = this['selectBiggestCell'] ? 0.6 : 0.3, t['beginPath'](), t.arc(0x30, 15, 6, 0, this.pi2, !1), t['closePath'](), t.fill(), t['globalAlpha'] = this['selectBiggestCell'] ? 0.3 : 0.6, t['beginPath'](), t.arc(0x3c, 15, 4, 0, this.pi2, !1), t['closePath'](), t.fill());
             },
             'dTok': function(t, e) {
                 t['font'] = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t['fillText'](atob(this['token']), e, 7);
@@ -2996,7 +2996,7 @@ var core = function(t, e, i) {
                                 this['lastX'] = (29 * this['lastX'] + this['x']) / 30, this['lastY'] = (29 * this['lastY'] + this['y']) / 30;
                                 var a = (this['lastX'] + e) * i,
                                     n = (this['lastY'] + e) * i;
-                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fil();
+                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fill();
                             }
                         };
                     }(i, o, l, a);
@@ -3424,13 +3424,13 @@ var core = function(t, e, i) {
                         var i = t['globalAlpha'],
                             s = !1,
                             o = this['isFood'] ? this['size'] + g['foodSize'] : this['size'];
-                        if (t['beginPath'](), t.arc(this['x'], this['y'], o, 0, this.pi2, !1), t['closePath'](), this['isFood']) return t['fillStyle'] = this['color'], t.fil(), void t['restore']();
+                        if (t['beginPath'](), t.arc(this['x'], this['y'], o, 0, this.pi2, !1), t['closePath'](), this['isFood']) return t['fillStyle'] = this['color'], t.fill(), void t['restore']();
                         if (this['isVirus']) {
-                            return v['transparentViruses'] && (t['globalAlpha'] *= g['virusAlpha'], s = !0), v['virColors'] && M.play ? (t['fillStyle'] = ogarminimapdrawer['setVirusColor'](o), t['strokeStyle'] = ogarminimapdrawer['setVirusStrokeColor'](o)) : (t['fillStyle'] = this.virusColor, t['strokeStyle'] = this.virusStroke), t.fil(), s && (t['globalAlpha'] = i, s = !1), t['lineWidth'] = g['virusStrokeSize'], t['stroke'](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v['showMass'] && (this['setDrawing'](), this['setDrawingScale'](), this['setMass'](this['size']), this['drawMass'](t)), void t['restore']();
+                            return v['transparentViruses'] && (t['globalAlpha'] *= g['virusAlpha'], s = !0), v['virColors'] && M.play ? (t['fillStyle'] = ogarminimapdrawer['setVirusColor'](o), t['strokeStyle'] = ogarminimapdrawer['setVirusStrokeColor'](o)) : (t['fillStyle'] = this.virusColor, t['strokeStyle'] = this.virusStroke), t.fill(), s && (t['globalAlpha'] = i, s = !1), t['lineWidth'] = g['virusStrokeSize'], t['stroke'](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v['showMass'] && (this['setDrawing'](), this['setDrawingScale'](), this['setMass'](this['size']), this['drawMass'](t)), void t['restore']();
                         }
                         v['transparentCells'] && (t['globalAlpha'] *= g['cellsAlpha'], s = !0);
                         var a = this['color'];
-                        M.play && (this['isPlayerCell'] ? v['myCustomColor'] && (a = ogarcopythelb['color']) : v['oppColors'] && !v['oppRings'] && (a = this['oppColor'])), t['fillStyle'] = a, t.fil(), s && (t['globalAlpha'] = i, s = !1);
+                        M.play && (this['isPlayerCell'] ? v['myCustomColor'] && (a = ogarcopythelb['color']) : v['oppColors'] && !v['oppRings'] && (a = this['oppColor'])), t['fillStyle'] = a, t.fill(), s && (t['globalAlpha'] = i, s = !1);
                         var n = null;
                         if (v['customSkins'] && M['showCustomSkins'] && (n = ogarminimapdrawer['getCustomSkin'](this['targetNick'], this['color'])) && (((v['transparentSkins'] || M.play && v['oppColors']) && (!this['isPlayerCell'] || v['myTransparentSkin']) || this['isPlayerCell'] && v['myTransparentSkin']) && (t['globalAlpha'] *= g['skinsAlpha'], s = !0), t['drawImage'](n, this['x'] - o, this['y'] - o, 2 * o, 2 * o), s && (t['globalAlpha'] = i, s = !1)), v['teammatesInd'] && !this['isPlayerCell'] && o <= 200 && (n || ogarminimapdrawer['checkSkinsMap'](this['targetNick'], this['color'])) && ogarfooddrawer['drawTeammatesInd'](t, this['x'], this['y'], o), v['noNames'] && !v['showMass'] || e) t['restore']();
                         else {
@@ -4150,7 +4150,7 @@ var core = function(t, e, i) {
                                 a = e[s]['y'];
                             t['moveTo'](o, a), t.arc(o, a, e[s]['size'] + 820, 0, this.pi2, !1);
                         }
-                        t['fillStyle'] = g['virusColor'], t['globalAlpha'] = 0.1, t.fil(), t['globalAlpha'] = 1, i && (e = []);
+                        t['fillStyle'] = g['virusColor'], t['globalAlpha'] = 0.1, t.fill(), t['globalAlpha'] = 1, i && (e = []);
                     }
                 },
                 'drawFood': function() {
@@ -4177,7 +4177,7 @@ var core = function(t, e, i) {
                                         t['rect'](a - r, n - r, 2 * r, 2 * r);
                                     } else t.arc(a, n, e[o]['size'] + g['foodSize'], 0, this.pi2, !1);
                                 }
-                                t['fillStyle'] = g['foodColor'], t['globalAlpha'] = 1, t.fil();
+                                t['fillStyle'] = g['foodColor'], t['globalAlpha'] = 1, t.fill();
                             }
                         s && (e = []);
                     }
@@ -4219,7 +4219,7 @@ var core = function(t, e, i) {
                     this['pieChart']['width'] = 200 * e, this['pieChart']['height'] = 240 * e, t['scale'](e, e);
                     for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < M['pieChart'].length; o++) {
                         var a = s + M['pieChart'][o] * this.pi2;
-                        t['fillStyle'] = i[o + 1], t['beginPath'](), t['moveTo'](100, 140), t.arc(100, 140, 80, s, a, !1), t.fil(), s = a;
+                        t['fillStyle'] = i[o + 1], t['beginPath'](), t['moveTo'](100, 140), t.arc(100, 140, 80, s, a, !1), t.fill(), s = a;
                     }
                 },
                 'drawBattleArea': function(t) {
@@ -4235,7 +4235,7 @@ var core = function(t, e, i) {
                     }
                 },
                 'drawDangerArea': function(t, e, i, s, o, a, n, r, l, h) {
-                    M['battleRoyale']['radius'] == M['battleRoyale']['maxRadius'] || s <= 0 || (t['save'](), t['globalAlpha'] = h, t['fillStyle'] = l, t['fillRect'](o, a, n, r), t['globalCompositeOperation'] = 'destination-out', t['globalAlpha'] = 1, t['beginPath'](), t.arc(e, i, s, 0, this.pi2, !1), t.fil(), t['restore']());
+                    M['battleRoyale']['radius'] == M['battleRoyale']['maxRadius'] || s <= 0 || (t['save'](), t['globalAlpha'] = h, t['fillStyle'] = l, t['fillRect'](o, a, n, r), t['globalCompositeOperation'] = 'destination-out', t['globalAlpha'] = 1, t['beginPath'](), t.arc(e, i, s, 0, this.pi2, !1), t.fill(), t['restore']());
                 },
                 'drawSafeArea': function(t, e, i, s, o, a) {
                     M['battleRoyale']['state'] > 2 || s <= 0 || this['drawDashedCircle'](t, e, i, s, 0x3c, o, a);
@@ -4249,7 +4249,7 @@ var core = function(t, e, i) {
                                 var i = t[e]['x'],
                                     s = t[e]['y'];
                                 this['ctx']['moveTo'](i, s), this['ctx'].arc(i, s, t[e]['size'], 0, this.pi2, !1);
-                            } this['ctx']['fillStyle'] = g['ghostCellsColor'], this['ctx']['globalAlpha'] = g['ghostCellsAlpha'], this['ctx']['shadowColor'] = g['ghostCellsColor'], this['ctx']['shadowBlur'] = 40, this['ctx']['shadowOffsetX'] = 0, this['ctx']['shadowOffsetY'] = 0, this['ctx'].fil(), this['ctx']['globalAlpha'] = 1, this['ctx']['shadowBlur'] = 0;
+                            } this['ctx']['fillStyle'] = g['ghostCellsColor'], this['ctx']['globalAlpha'] = g['ghostCellsAlpha'], this['ctx']['shadowColor'] = g['ghostCellsColor'], this['ctx']['shadowBlur'] = 40, this['ctx']['shadowOffsetX'] = 0, this['ctx']['shadowOffsetY'] = 0, this['ctx'].fill(), this['ctx']['globalAlpha'] = 1, this['ctx']['shadowBlur'] = 0;
                     }
                 },
                 'preDrawPellet': function() {
@@ -4258,14 +4258,14 @@ var core = function(t, e, i) {
                         e = document['createElement']('canvas');
                     e['width'] = 2 * t, e['height'] = 2 * t;
                     var i = e['getContext']('2d');
-                    i.arc(t, t, t, 0, this.pi2, !1), i['fillStyle'] = g['foodColor'], i.fil(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
+                    i.arc(t, t, t, 0, this.pi2, !1), i['fillStyle'] = g['foodColor'], i.fill(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
                 },
                 'preDrawIndicator': function() {
                     this['indicator'] = null;
                     var t = document['createElement']('canvas');
                     t['width'] = 90, t['height'] = 50;
                     var e = t['getContext']('2d');
-                    e['lineWidth'] = 2, e['fillStyle'] = g['teammatesIndColor'], e['strokeStyle'] = '#000000', e['beginPath'](), e['moveTo'](0, 0), e['lineTo'](90, 0), e['lineTo'](45, 50), e['closePath'](), e.fil(), e['stroke'](), this['indicator'] = new Image(), this['indicator'].src = t.toDataURL(), t = null;
+                    e['lineWidth'] = 2, e['fillStyle'] = g['teammatesIndColor'], e['strokeStyle'] = '#000000', e['beginPath'](), e['moveTo'](0, 0), e['lineTo'](90, 0), e['lineTo'](45, 50), e['closePath'](), e.fill(), e['stroke'](), this['indicator'] = new Image(), this['indicator'].src = t.toDataURL(), t = null;
                 },
                 'countFps': function() {
                     if (v['showStatsFPS']) {
