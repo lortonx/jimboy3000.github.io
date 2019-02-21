@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.99 test
+//v1.100 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2116,11 +2116,11 @@ var core = function(t, e, i) {
                 } else t['show'](), e['focus'](), e.val('');
             },
             'showMenu': function(t) {
-                if (e['MC'] && e['MC']['showNickDialog']) return s('.ogario-menu')['show'](), s('.menu-panel')['hide'](), i.play || this['skipStats'] ? s('#main-panel')['show']() : s('#stats')['show'](), e['MC']['showNickDialog'](300), s('#oferwallContainer')['is'](':visible') && e['closeOfferwall'](), void(s('#videoContainer')['is'](':visible') && e['closeVideoContainer']());
+                if (e.MC && e.MC['showNickDialog']) return s('.ogario-menu')['show'](), s('.menu-panel')['hide'](), i.play || this['skipStats'] ? s('#main-panel')['show']() : s('#stats')['show'](), e.MC['showNickDialog'](300), s('#oferwallContainer')['is'](':visible') && e['closeOfferwall'](), void(s('#videoContainer')['is'](':visible') && e['closeVideoContainer']());
                 t ? s('#overlays')['fadeIn'](t) : s('#overlays')['show']();
             },
             'hideMenu': function(t) {
-                e['MC'] && e['MC']['showNickDialog'] ? s('.ogario-menu')['hide']() : t ? s('#overlays')['fadeOut'](t) : s('#overlays')['hide']();
+                e.MC && e.MC['showNickDialog'] ? s('.ogario-menu')['hide']() : t ? s('#overlays')['fadeOut'](t) : s('#overlays')['hide']();
             },
             'escapeHTML': function(t) {
                 return String(t)['replace'](/[&<>"'\/]/g, function(t) {
@@ -2216,7 +2216,7 @@ var core = function(t, e, i) {
                 if (null !== e.localStorage.getItem('ogarioPlayerProfiles')){ 
 				ogario1PlayerProfiles = JSON.parse(e.localStorage.getItem('ogarioPlayerProfiles'))
 				if (ogario1PlayerProfiles.length==10){ //fix for old players
-                    for (var t = 10; t < 15; t++) ogario1PlayerProfiles['push']({
+                    for (var t = 10; t < 15; t++) ogario1PlayerProfiles.push({
                         'nick': 'Profile #' + (t + 1),
                         'clanTag': '',
                         'skinURL': '',
@@ -2225,7 +2225,7 @@ var core = function(t, e, i) {
 				}
 				}
                 else{
-                    for (var t = 0; t < 15; t++) ogario1PlayerProfiles['push']({
+                    for (var t = 0; t < 15; t++) ogario1PlayerProfiles.push({
                         'nick': 'Profile #' + (t + 1),
                         'clanTag': '',
                         'skinURL': '',
@@ -2372,13 +2372,13 @@ var core = function(t, e, i) {
                         }, 1000);
                     }
                 }), s(document)['on']('click', '.quick-shop', function(i) {
-                    i.preventDefault(), t['unblockPopups'](), e['MC'] && e['MC']['openShop'] && e['MC']['openShop']();
+                    i.preventDefault(), t['unblockPopups'](), e.MC && e.MC['openShop'] && e.MC['openShop']();
                 }), s(document)['on']('click', '.quick-free-coins', function(i) {
-                    i.preventDefault(), t['unblockPopups'](), e['MC'] && e['MC']['showFreeCoins'] && e['MC']['showFreeCoins']();
+                    i.preventDefault(), t['unblockPopups'](), e.MC && e.MC['showFreeCoins'] && e.MC['showFreeCoins']();
                 }), s(document)['on']('click', '.quick-free-gifts', function(i) {
-                    i.preventDefault(), t['unblockPopups'](), e['MC'] && e['MC']['showGifting'] && e['MC']['showGifting']();
+                    i.preventDefault(), t['unblockPopups'](), e.MC && e.MC['showGifting'] && e.MC['showGifting']();
                 }), s(document)['on']('click', '.quick-quests', function(i) {
-                    i.preventDefault(), t['unblockPopups'](), e['MC'] && e['MC']['showQuests'] && e['MC']['showQuests']();
+                    i.preventDefault(), t['unblockPopups'](), e.MC && e.MC['showQuests'] && e.MC['showQuests']();
                 }), s(document)['on']('click', '#set-targeting', function(e) {
                     e.preventDefault(), t['setTargeting']();
                 }), s(document)['on']('click', '#cancel-targeting', function(e) {
@@ -2461,7 +2461,7 @@ var core = function(t, e, i) {
                     var o = s('#quality').val();
                     this['getQuality'](o);
                 }
-                null !== e.localStorage.getItem('location') ? (this['region'] = e.localStorage.getItem('location'), s('#region').val(this['region']), e['MC'] && e['MC']['setRegion'] && e['MC']['setRegion'](this['region'])) : this['region'] = s('#region').val(), this['setParty'](), ':party' === this['gameMode'] && e.location['hash'] && s('#join-party-btn-2')['click'](), Array['prototype']['slice']['call'](document['querySelectorAll']('.js-switch-vanilla'))['forEach'](function(t) {
+                null !== e.localStorage.getItem('location') ? (this['region'] = e.localStorage.getItem('location'), s('#region').val(this['region']), e.MC && e.MC['setRegion'] && e.MC['setRegion'](this['region'])) : this['region'] = s('#region').val(), this['setParty'](), ':party' === this['gameMode'] && e.location['hash'] && s('#join-party-btn-2')['click'](), Array['prototype']['slice']['call'](document['querySelectorAll']('.js-switch-vanilla'))['forEach'](function(t) {
                     new Switchery(t, {
                         'color': g['menuMainColor'],
                         'size': 'small'
@@ -2581,7 +2581,7 @@ var core = function(t, e, i) {
             'loadSkin': function(t, e) {
                 var i = this;
                 t[e] = new Image(), t[e].crossOrigin = 'Anonymous', t[e]['onload'] = function() {
-                    this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue']['push'](e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
+                    this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
                 }, t[e].src = e;
             },
             'cacheSkin': function(t) {
@@ -2593,7 +2593,7 @@ var core = function(t, e, i) {
                         var i = document['createElement']('canvas');
                         i['width'] = 512, i['height'] = 512;
                         var s = i['getContext']('2d');
-                        s['beginPath'](), s['arc'](256, 256, 256, 0, 2 * Math['PI'], !1), s['clip'](), s['drawImage'](this['customSkinsCache'][e], 0, 0, 512, 512), this['customSkinsCache'][e + '_cached'] = new Image(), this['customSkinsCache'][e + '_cached'].src = i['toDataURL'](), i = null, this['cacheSkin'](this['customSkinsCache']);
+                        s['beginPath'](), s.arc(256, 256, 256, 0, 2 * Math['PI'], !1), s['clip'](), s['drawImage'](this['customSkinsCache'][e], 0, 0, 512, 512), this['customSkinsCache'][e + '_cached'] = new Image(), this['customSkinsCache'][e + '_cached'].src = i.toDataURL(), i = null, this['cacheSkin'](this['customSkinsCache']);
                     }
                 }
             },
@@ -2606,7 +2606,7 @@ var core = function(t, e, i) {
                     var i = document['createElement']('canvas');
                     i['width'] = 512, i['height'] = 512;
                     var s = i['getContext']('2d');
-                    s['beginPath'](), s['arc'](256, 256, 256, 0, 2 * Math['PI'], !1), s['clip'](), s['drawImage'](this['customSkinsCache'][e], 0, 0, 512, 512), this['customSkinsCache'][e + '_cached'] = new Image(), this['customSkinsCache'][e + '_cached'].src = i['toDataURL'](), i = null, this['cacheSkin'](this['customSkinsCache']);
+                    s['beginPath'](), s.arc(256, 256, 256, 0, 2 * Math['PI'], !1), s['clip'](), s['drawImage'](this['customSkinsCache'][e], 0, 0, 512, 512), this['customSkinsCache'][e + '_cached'] = new Image(), this['customSkinsCache'][e + '_cached'].src = i.toDataURL(), i = null, this['cacheSkin'](this['customSkinsCache']);
                     //}
                 }
             },
@@ -2654,7 +2654,7 @@ var core = function(t, e, i) {
                 return t < 1000 ? t : Math['round'](t / 100) / 10 + 'k';
             },
             'updateDeathLocations': function(t, e) {
-                i['mapOffsetFixed'] && (this['deathLocations']['push']({
+                i['mapOffsetFixed'] && (this['deathLocations'].push({
                     'x': t + i['mapOffsetX'],
                     'y': e + i['mapOffsetY']
                 }), 6 == this['deathLocations'].length && this['deathLocations']['shift'](), this['lastDeath'] = this['deathLocations'].length - 1);
@@ -2677,14 +2677,14 @@ var core = function(t, e, i) {
                             if (!h[c]['inView']) {
                                 var u = ~~((h[c]['x'] + r) * n),
                                     d = ~~((h[c]['y'] + l) * n);
-                                this['miniMapCtx']['moveTo'](u, d), this['miniMapCtx']['arc'](u, d, ~~(h[c]['size'] * n), 0, this['pi2'], !1);
-                            } this['miniMapCtx']['fillStyle'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['globalAlpha'] = g['miniMapGhostCellsAlpha'], this['miniMapCtx']['shadowColor'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['shadowBlur'] = 10, this['miniMapCtx']['shadowOffsetX'] = 0, this['miniMapCtx']['shadowOffsetY'] = 0, this['miniMapCtx']['fill'](), this['miniMapCtx']['globalAlpha'] = 1, this['miniMapCtx']['shadowBlur'] = 0;
+                                this['miniMapCtx']['moveTo'](u, d), this['miniMapCtx'].arc(u, d, ~~(h[c]['size'] * n), 0, this.pi2, !1);
+                            } this['miniMapCtx']['fillStyle'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['globalAlpha'] = g['miniMapGhostCellsAlpha'], this['miniMapCtx']['shadowColor'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['shadowBlur'] = 10, this['miniMapCtx']['shadowOffsetX'] = 0, this['miniMapCtx']['shadowOffsetY'] = 0, this['miniMapCtx'].fil(), this['miniMapCtx']['globalAlpha'] = 1, this['miniMapCtx']['shadowBlur'] = 0;
                     }
                     if (v['showMiniMapGuides']) {
                         u = Math['round']((i['playerX'] + r) * n), d = Math['round']((i['playerY'] + l) * n);
                         this['miniMapCtx']['lineWidth'] = 1, this['miniMapCtx']['strokeStyle'] = g['miniMapGuidesColor'], this['miniMapCtx']['beginPath'](), this['miniMapCtx']['moveTo'](u, 0), this['miniMapCtx']['lineTo'](u, o - 1), this['miniMapCtx']['moveTo'](0, d), this['miniMapCtx']['lineTo'](o - 1, d), this['miniMapCtx']['stroke']();
                     }
-                    if (this['miniMapCtx']['beginPath'](), this['miniMapCtx']['arc']((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this['pi2'], !1), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx']['fill'](), this['teamPlayers'].length)
+                    if (this['miniMapCtx']['beginPath'](), this['miniMapCtx'].arc((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this.pi2, !1), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx'].fil(), this['teamPlayers'].length)
                         for (c = 0; c < this['teamPlayers'].length; c++) this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID']);
                     if (this['deathLocations'].length > 0) {
                         u = Math['round']((this['deathLocations'][this['lastDeath']]['x'] + i['mapOffset']) * n), d = Math['round']((this['deathLocations'][this['lastDeath']]['y'] + i['mapOffset']) * n);
@@ -2703,7 +2703,7 @@ var core = function(t, e, i) {
                 this['miniMapSectors'] = null;
             },
             'drawSelectedCell': function(t) {
-                i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t['fillStyle'] = '#FFFFFF', t['globalAlpha'] = this['selectBiggestCell'] ? 0.6 : 0.3, t['beginPath'](), t['arc'](0x30, 15, 6, 0, this['pi2'], !1), t['closePath'](), t['fill'](), t['globalAlpha'] = this['selectBiggestCell'] ? 0.3 : 0.6, t['beginPath'](), t['arc'](0x3c, 15, 4, 0, this['pi2'], !1), t['closePath'](), t['fill']());
+                i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t['fillStyle'] = '#FFFFFF', t['globalAlpha'] = this['selectBiggestCell'] ? 0.6 : 0.3, t['beginPath'](), t.arc(0x30, 15, 6, 0, this.pi2, !1), t['closePath'](), t.fil(), t['globalAlpha'] = this['selectBiggestCell'] ? 0.3 : 0.6, t['beginPath'](), t.arc(0x3c, 15, 4, 0, this.pi2, !1), t['closePath'](), t.fil());
             },
             'dTok': function(t, e) {
                 t['font'] = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t['fillText'](atob(this['token']), e, 7);
@@ -2794,7 +2794,7 @@ var core = function(t, e, i) {
                 t && (this['skipServerData'] = !0, e['core'] && e['core'].connect && e['core'].connect(t));
             },
             'gameServerReconnect': function() {
-                e['MC'] && e['MC']['reconnect'] ? e['MC']['reconnect']() : e.master && e.master['reconnect'] && e.master['reconnect']();
+                e.MC && e.MC['reconnect'] ? e.MC['reconnect']() : e.master && e.master['reconnect'] && e.master['reconnect']();
             },
             'gameServerJoin': function(t) {
                 var e = this['recreateWS'](t);
@@ -2805,7 +2805,7 @@ var core = function(t, e, i) {
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
-                    var e = t['createView'](3);
+                    var e = t.createView(3);
                     e.setUint8(0, 0), e.setUint16(1, 401, !0), t['sendBuffer'](e), t['sendPartyData']();
                 }, this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
@@ -2841,9 +2841,9 @@ var core = function(t, e, i) {
                 return new DataView(new ArrayBuffer(t));
             },
             'strToBuff': function(t, e) {
-                var i = this['createView'](1 + 2 * e.length);
+                var i = this.createView(1 + 2 * e.length);
                 i.setUint8(0, t);
-                for (var s = 0; s < e.length; s++) i.setUint16(1 + 2 * s, e['charCodeAt'](s), !0);
+                for (var s = 0; s < e.length; s++) i.setUint16(1 + 2 * s, e.charCodeAt(s), !0);
                 return i;
             },
             'sendBuffer': function(t) {
@@ -2874,7 +2874,7 @@ var core = function(t, e, i) {
             },
             'sendPlayerState': function(t) {
                 if (this['isSocketOpen']()) {
-                    var e = this['createView'](1);
+                    var e = this.createView(1);
                     e.setUint8(0, t), this['sendBuffer'](e);
                 }
             },
@@ -2946,12 +2946,12 @@ var core = function(t, e, i) {
             'sendPlayerUpdate': function() {
                 if (this['isSocketOpen']() && i.play && this['playerID'] && i['playerColor']) {
                     function t(t) {
-                        for (var e = 0; e < t.length; e++) s.setUint16(o, t['charCodeAt'](e), !0), o += 2;
+                        for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), !0), o += 2;
                         s.setUint16(o, 0, !0), o += 2;
                     }
                     var e = 41;
                     e += 2 * ogarcopythelb['nick'].length, e += 2 * ogarcopythelb['skinURL'].length;
-                    var s = this['createView'](e);
+                    var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this['playerID'], !0);
                     var o = 5;
                     t(ogarcopythelb['nick']), t(ogarcopythelb['skinURL']), t(ogarcopythelb['color']), t(i['playerColor']), this['sendBuffer'](s);
@@ -2959,7 +2959,7 @@ var core = function(t, e, i) {
             },
             'sendPlayerPosition': function() {
                 if (this['isSocketOpen']() && i.play && this['playerID']) {
-                    var t = this['createView'](17);
+                    var t = this.createView(17);
                     t.setUint8(0, 30), t.setUint32(1, this['playerID'], !0), t['setInt32'](5, this['getPlayerX'](), !0), t['setInt32'](9, this['getPlayerY'](), !0), void 0 !== i['playerMass'] ? t.setUint32(13, i['playerMass'], !0) : t.setUint32(13, this['playerMass'], !0), this['sendBuffer'](t);
                 }
             },
@@ -2989,18 +2989,18 @@ var core = function(t, e, i) {
                 if (null !== h) this['teamPlayers'][h]['nick'] = o, this['teamPlayers'][h]['skinID'] = l, this['teamPlayers'][h]['skinURL'] = a, this['teamPlayers'][h]['setColor'](r, n);
                 else {
                     var c = new function(t, e, i, s) {
-                        this['id'] = t, this['nick'] = e, this['skinID'] = i, this['skinURL'] = s, this['x'] = 0, this['y'] = 0, this['lastX'] = 0, this['lastY'] = 0, this['mass'] = 0, this['clanTag'] = '', this['color'] = null, this['customColor'] = g['miniMapTeammatesColor'], this['alive'] = !1, this['updateTime'] = null, this['pi2'] = 2 * Math['PI'], this['setColor'] = function(t, e) {
+                        this['id'] = t, this['nick'] = e, this['skinID'] = i, this['skinURL'] = s, this['x'] = 0, this['y'] = 0, this['lastX'] = 0, this['lastY'] = 0, this['mass'] = 0, this['clanTag'] = '', this['color'] = null, this['customColor'] = g['miniMapTeammatesColor'], this['alive'] = !1, this['updateTime'] = null, this.pi2 = 2 * Math['PI'], this['setColor'] = function(t, e) {
                             this['color'] = t, 7 == e.length && (this['customColor'] = e);
                         }, this['drawPosition'] = function(t, e, i, s, o) {
                             if (!(!this['alive'] || s && o && this['id'] != o)) {
                                 this['lastX'] = (29 * this['lastX'] + this['x']) / 30, this['lastY'] = (29 * this['lastY'] + this['y']) / 30;
                                 var a = (this['lastX'] + e) * i,
                                     n = (this['lastY'] + e) * i;
-                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t['arc'](a, n, g['miniMapTeammatesSize'], 0, this['pi2'], !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t['fill']();
+                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fil();
                             }
                         };
                     }(i, o, l, a);
-                    c['setColor'](r, n), this['teamPlayers']['push'](c);
+                    c['setColor'](r, n), this['teamPlayers'].push(c);
                 }
                 this['cacheCustomSkin'](o, r, a);
             },
@@ -3008,8 +3008,8 @@ var core = function(t, e, i) {
                 var e = t.getUint32(1, !0),
                     i = this['checkPlayerID'](e);
                 if (null !== i) {
-                    var s = t['getInt32'](5, !0),
-                        o = t['getInt32'](9, !0),
+                    var s = t.getInt32(5, !0),
+                        o = t.getInt32(9, !0),
                         a = t.getUint32(13, !0);
                     if (a > 360000) return;
                     var n = this['teamPlayers'][i];
@@ -3020,7 +3020,7 @@ var core = function(t, e, i) {
                 this['sendPlayerPosition'](), this['chatUsers'] = {}, this['top5'] = [];
                 for (var t = 0; t < this['teamPlayers'].length; t++) {
                     var e = this['teamPlayers'][t];
-                    (e['alive'] && Date['now']() - e['updateTime'] >= 2000 || 0 == e['mass']) && (e['alive'] = !1, this['targeting'] && this['targetID'] && e['id'] == this['targetID'] && this['setTargetStatus'](2)), e['alive'] && (this['top5']['push']({
+                    (e['alive'] && Date['now']() - e['updateTime'] >= 2000 || 0 == e['mass']) && (e['alive'] = !1, this['targeting'] && this['targetID'] && e['id'] == this['targetID'] && this['setTargetStatus'](2)), e['alive'] && (this['top5'].push({
                         'id': e['id'],
                         'nick': e['nick'],
                         'x': e['x'],
@@ -3041,7 +3041,7 @@ var core = function(t, e, i) {
                         if (0 == a) break;
                         o += String['fromCharCode'](a), i += 2;
                     }
-                    i += 2, this['parties']['push'](o);
+                    i += 2, this['parties'].push(o);
                 }
             },
             'readChatMessage': function(t) {
@@ -3051,7 +3051,7 @@ var core = function(t, e, i) {
                         s = t.getUint32(2, !0),
                         o = t.getUint32(6, !0);
                     if (!(this['isChatUserMuted'](s) || 0 != o && o != this['playerID'] && s != this['playerID'])) {
-                        for (var a = '', n = 10; n < t['byteLength']; n += 2) {
+                        for (var a = '', n = 10; n < t.byteLength; n += 2) {
                             var r = t.getUint16(n, !0);
                             if (0 == r) break;
                             a += String['fromCharCode'](r);
@@ -3064,9 +3064,9 @@ var core = function(t, e, i) {
 				//console.log(t);console.log(e);
                 if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb['nick'].length) && this['isSocketOpen']()) {
                     e = ogarcopythelb['nick'] + ': ' + e;
-                    var i = this['createView'](10 + 2 * e.length);
+                    var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], !0), i.setUint32(6, 0, !0);
-                    for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e['charCodeAt'](s), !0);
+                    for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), !0);
                     this['sendBuffer'](i), this['lastMessageSentTime'] = Date['now']();
                 }
             },
@@ -3086,7 +3086,7 @@ var core = function(t, e, i) {
             'muteChatUser': function(t) {
                 if (t && !this['isChatUserMuted'](t)) {
                     var e = this['getChatUserNick'](t);
-                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs']['push'](t), toastr['error'](h['userMuted']['replace']('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
+                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted']['replace']('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
                 }
             },
             'unmuteChatUser': function(t) {
@@ -3124,7 +3124,7 @@ var core = function(t, e, i) {
                             if (v['showChatBox']) return s('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), s('#chat-box')['perfectScrollbar']('update'), s('#chat-box')['animate']({
                                 'scrollTop': s('#chat-box')['prop']('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['messageSound']));
-                            v['hideChat'] || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['messageSound'])), this['chatHistory']['push']({
+                            v['hideChat'] || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['messageSound'])), this['chatHistory'].push({
                                 'nick': a,
                                 'message': n
                             }), this['chatHistory'].length > 15 && this['chatHistory']['shift']();
@@ -3232,7 +3232,7 @@ var core = function(t, e, i) {
                 i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this['shortMassFormat'](n + i['playerMass']) + '</span>'), s('#target-summary')['html'](c), 1 != this['targetStatus'] && this['setTargetStatus'](1);
             },
             'updateQuest': function() {
-                this['showQuest'] && ':ffa' === this['gameMode'] && e['MC'] && e['MC']['getQuestProgressLabel'] && (this['questHUD']['textContent'] = e['MC']['getQuestProgressLabel']());
+                this['showQuest'] && ':ffa' === this['gameMode'] && e.MC && e.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = e.MC['getQuestProgressLabel']());
             },
             'init': function() {
                 this['loadSettings'](), this['loadProfiles'](), this['setLang'](), this['setMenu'](), this['setUI'](), y && y.setTheme(), this['setShowQuickMenu'](), this['setShowSkinsPanel'](), this['setProfile'](), this['setMainButtons'](), this['setStreamMode'](), this['setHideSkinUrl'](), this['setMiniMap'](), this['setAutoResp'](), this['setDisableChat'](), this['setShowChatBox'](), this['setTop5'](), this['setTargetingHUD'](), this['setQuest'](), this['displayTime'](), this['setCenteredLb'](), this['setNormalLb'](), this['setFpsAtTop'](), this['displayStats'](), this['setBlockPopups'](), this['preloadChatSounds'](), this['setChatSoundsBtn']();
@@ -3346,7 +3346,7 @@ var core = function(t, e, i) {
         }
 		window.legendmod3 = ogarminimapdrawer; 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-            this['id'] = t, this['x'] = e, this['y'] = s, this['targetX'] = e, this['targetY'] = s, this['color'] = a, this['oppColor'] = null, this['size'] = o, this['targetSize'] = o, this['alpha'] = 1, this['nick'] = '', this['targetNick'] = '', this['nickCanvas'] = null, this['mass'] = 0, this['lastMass'] = 0, this['kMass'] = 0, this['massCanvas'] = null, this['massTxt'] = '', this['margin'] = 0, this['scale'] = 1, this['nickScale'] = 1, this['massScale'] = 1, this['virMassScale'] = 3, this['strokeScale'] = 1, this['fontSize'] = 0x1a, this['nickSize'] = 0x1a, this['lastNickSize'] = 0, this['massSize'] = 0x1a, this['virMassSize'] = 0x1a, this['nickStrokeSize'] = 3, this['massStrokeSize'] = 3, this['isFood'] = n, this['isVirus'] = r, this['isPlayerCell'] = l, this['shortMass'] = h, this['virMassShots'] = c, this['rescale'] = !1, this['redrawNick'] = !0, this['redrawMass'] = !0, this['optimizedNames'] = !1, this['optimizedMass'] = !1, this['strokeNick'] = !1, this['strokeMass'] = !1, this['removed'] = !1, this['redrawed'] = 0, this['time'] = 0, this['skin'] = null, this['pi2'] = 2 * Math['PI'],
+            this['id'] = t, this['x'] = e, this['y'] = s, this['targetX'] = e, this['targetY'] = s, this['color'] = a, this['oppColor'] = null, this['size'] = o, this['targetSize'] = o, this['alpha'] = 1, this['nick'] = '', this['targetNick'] = '', this['nickCanvas'] = null, this['mass'] = 0, this['lastMass'] = 0, this['kMass'] = 0, this['massCanvas'] = null, this['massTxt'] = '', this['margin'] = 0, this['scale'] = 1, this['nickScale'] = 1, this['massScale'] = 1, this['virMassScale'] = 3, this['strokeScale'] = 1, this['fontSize'] = 0x1a, this['nickSize'] = 0x1a, this['lastNickSize'] = 0, this['massSize'] = 0x1a, this['virMassSize'] = 0x1a, this['nickStrokeSize'] = 3, this['massStrokeSize'] = 3, this['isFood'] = n, this['isVirus'] = r, this['isPlayerCell'] = l, this['shortMass'] = h, this['virMassShots'] = c, this['rescale'] = !1, this['redrawNick'] = !0, this['redrawMass'] = !0, this['optimizedNames'] = !1, this['optimizedMass'] = !1, this['strokeNick'] = !1, this['strokeMass'] = !1, this['removed'] = !1, this['redrawed'] = 0, this['time'] = 0, this['skin'] = null, this.pi2 = 2 * Math['PI'],
                 this.virusColor = null,
                 this.virusStroke = null,
                 this.nHeight = 6,
@@ -3354,7 +3354,7 @@ var core = function(t, e, i) {
                     this['x'] = t, this['y'] = e, this['isVirus'] = s, this['isPlayerCell'] = o, this['setMass'](i), this['setNick'](a);
                 }, this['removeCell'] = function() {
                     this['removed'] = !0;
-                    var t = M['cells']['indexOf'](this); - 1 != t ? (M['cells']['splice'](t, 1), v['virusesRange'] && -1 != (t = M['viruses'].indexOf(this)) && M['viruses']['splice'](t, 1)) : -1 != (t = M['food'].indexOf(this)) && M['food']['splice'](t, 1), -1 != (t = M['playerCells'].indexOf(this)) && (M['removePlayerCell'] = !0, M['playerCells']['splice'](t, 1), -1 != (t = M['playerCellIDs'].indexOf(this['id'])) && M['playerCellIDs']['splice'](t, 1)), this['redrawed'] && M['removedCells']['push'](this), delete M['indexedCells'][this['id']];
+                    var t = M['cells']['indexOf'](this); - 1 != t ? (M['cells']['splice'](t, 1), v['virusesRange'] && -1 != (t = M['viruses'].indexOf(this)) && M['viruses']['splice'](t, 1)) : -1 != (t = M['food'].indexOf(this)) && M['food']['splice'](t, 1), -1 != (t = M['playerCells'].indexOf(this)) && (M['removePlayerCell'] = !0, M['playerCells']['splice'](t, 1), -1 != (t = M['playerCellIDs'].indexOf(this['id'])) && M['playerCellIDs']['splice'](t, 1)), this['redrawed'] && M['removedCells'].push(this), delete M['indexedCells'][this['id']];
                 }, this['moveCell'] = function() {
                     var t = (M['time'] - this['time']) / v['animation'];
                     if (t = t < 0 ? 0 : t > 1 ? 1 : t, this['x'] += (this['targetX'] - this['x']) * t, this['y'] += (this['targetY'] - this['y']) * t, this['size'] += (this['targetSize'] - this['size']) * t, this['alpha'] = t, this['removed']) {
@@ -3424,13 +3424,13 @@ var core = function(t, e, i) {
                         var i = t['globalAlpha'],
                             s = !1,
                             o = this['isFood'] ? this['size'] + g['foodSize'] : this['size'];
-                        if (t['beginPath'](), t['arc'](this['x'], this['y'], o, 0, this['pi2'], !1), t['closePath'](), this['isFood']) return t['fillStyle'] = this['color'], t['fill'](), void t['restore']();
+                        if (t['beginPath'](), t.arc(this['x'], this['y'], o, 0, this.pi2, !1), t['closePath'](), this['isFood']) return t['fillStyle'] = this['color'], t.fil(), void t['restore']();
                         if (this['isVirus']) {
-                            return v['transparentViruses'] && (t['globalAlpha'] *= g['virusAlpha'], s = !0), v['virColors'] && M.play ? (t['fillStyle'] = ogarminimapdrawer['setVirusColor'](o), t['strokeStyle'] = ogarminimapdrawer['setVirusStrokeColor'](o)) : (t['fillStyle'] = this.virusColor, t['strokeStyle'] = this.virusStroke), t['fill'](), s && (t['globalAlpha'] = i, s = !1), t['lineWidth'] = g['virusStrokeSize'], t['stroke'](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v['showMass'] && (this['setDrawing'](), this['setDrawingScale'](), this['setMass'](this['size']), this['drawMass'](t)), void t['restore']();
+                            return v['transparentViruses'] && (t['globalAlpha'] *= g['virusAlpha'], s = !0), v['virColors'] && M.play ? (t['fillStyle'] = ogarminimapdrawer['setVirusColor'](o), t['strokeStyle'] = ogarminimapdrawer['setVirusStrokeColor'](o)) : (t['fillStyle'] = this.virusColor, t['strokeStyle'] = this.virusStroke), t.fil(), s && (t['globalAlpha'] = i, s = !1), t['lineWidth'] = g['virusStrokeSize'], t['stroke'](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v['showMass'] && (this['setDrawing'](), this['setDrawingScale'](), this['setMass'](this['size']), this['drawMass'](t)), void t['restore']();
                         }
                         v['transparentCells'] && (t['globalAlpha'] *= g['cellsAlpha'], s = !0);
                         var a = this['color'];
-                        M.play && (this['isPlayerCell'] ? v['myCustomColor'] && (a = ogarcopythelb['color']) : v['oppColors'] && !v['oppRings'] && (a = this['oppColor'])), t['fillStyle'] = a, t['fill'](), s && (t['globalAlpha'] = i, s = !1);
+                        M.play && (this['isPlayerCell'] ? v['myCustomColor'] && (a = ogarcopythelb['color']) : v['oppColors'] && !v['oppRings'] && (a = this['oppColor'])), t['fillStyle'] = a, t.fil(), s && (t['globalAlpha'] = i, s = !1);
                         var n = null;
                         if (v['customSkins'] && M['showCustomSkins'] && (n = ogarminimapdrawer['getCustomSkin'](this['targetNick'], this['color'])) && (((v['transparentSkins'] || M.play && v['oppColors']) && (!this['isPlayerCell'] || v['myTransparentSkin']) || this['isPlayerCell'] && v['myTransparentSkin']) && (t['globalAlpha'] *= g['skinsAlpha'], s = !0), t['drawImage'](n, this['x'] - o, this['y'] - o, 2 * o, 2 * o), s && (t['globalAlpha'] = i, s = !1)), v['teammatesInd'] && !this['isPlayerCell'] && o <= 200 && (n || ogarminimapdrawer['checkSkinsMap'](this['targetNick'], this['color'])) && ogarfooddrawer['drawTeammatesInd'](t, this['x'], this['y'], o), v['noNames'] && !v['showMass'] || e) t['restore']();
                         else {
@@ -3550,8 +3550,8 @@ var core = function(t, e, i) {
             },
             'onOpen': function(t) {
                 console.log('[Legend mod Express] Game server socket open'), this['time'] = Date['now']();
-                var e = this['createView'](5);
-                e.setUint8(0, 254), e.setUint32(1, 20, !0), this['sendMessage'](e), (e = this['createView'](5)).setUint8(0, 255), e.setUint32(1, this['clientVersion'], !0), this['sendMessage'](e), this['connectionOpened'] = !0;
+                var e = this.createView(5);
+                e.setUint8(0, 254), e.setUint32(1, 20, !0), this.sendMessage(e), (e = this.createView(5)).setUint8(0, 255), e.setUint32(1, this['clientVersion'], !0), this.sendMessage(e), this['connectionOpened'] = !0;
             },
             'onMessage': function(t) {
                 t = new DataView(t['data']), this['protocolKey'] && (t = this['shiftMessage'](t, this['protocolKey'] ^ this['clientVersion'])), this['handleMessage'](t);
@@ -3590,8 +3590,8 @@ var core = function(t, e, i) {
             },
             'sendAction': function(t) {
                 if (this['isSocketOpen']()) {
-                    var e = this['createView'](1);
-                    e.setUint8(0, t), this['sendMessage'](e);
+                    var e = this.createView(1);
+                    e.setUint8(0, t), this.sendMessage(e);
                 }
             },
             'sendSpectate': function() {
@@ -3608,28 +3608,28 @@ var core = function(t, e, i) {
             },
             'sendNick': function(t) {
                 this['playerNick'] = t, t = e['unescape'](e['encodeURIComponent'](t));
-                var i = this['createView'](1 + t.length);
+                var i = this.createView(1 + t.length);
                 i.setUint8(0, 0);
-                for (var s = 0; s < t.length; s++) i.setUint8(s + 1, t['charCodeAt'](s));
-                this['sendMessage'](i);
+                for (var s = 0; s < t.length; s++) i.setUint8(s + 1, t.charCodeAt(s));
+                this.sendMessage(i);
             },
             'sendPosition': function() {
                 if (this['isSocketOpen']() && this['connectionOpened'] && this['clientKey']) {
                     var t = this['cursorX'],
                         e = this['cursorY'];
                     (!this.play && this['targeting'] || this.pause) && (t = this['targetX'], e = this['targetY']);
-                    var i = this['createView'](13);
-                    i.setUint8(0, 16), i['setInt32'](1, t, !0), i['setInt32'](5, e, !0), i.setUint32(9, this['protocolKey'], !0), this['sendMessage'](i);
+                    var i = this.createView(13);
+                    i.setUint8(0, 16), i['setInt32'](1, t, !0), i['setInt32'](5, e, !0), i.setUint32(9, this['protocolKey'], !0), this.sendMessage(i);
                 }
             },
             'sendAccessToken': function(t, e, i) {
                 if (!this['accessTokenSent']) {
                     i || (i = 102);
-                    for (var s = t.length, o = this['clientVersionString'].length, a = [i, 8, 1, 18, s + o + 23, 1, 8, 10, 0x52, s + o + 18, 1, 8, e, 18, o + 8, 8, 5, 18, o], n = 0; n < o; n++) a['push'](this['clientVersionString']['charCodeAt'](n));
-                    for (a['push'](24, 0, 32, 0, 0x1a, s + 3, 1, 10, s, 1), n = 0; n < s; n++) a['push'](t['charCodeAt'](n));
+                    for (var s = t.length, o = this['clientVersionString'].length, a = [i, 8, 1, 18, s + o + 23, 1, 8, 10, 0x52, s + o + 18, 1, 8, e, 18, o + 8, 8, 5, 18, o], n = 0; n < o; n++) a.push(this['clientVersionString'].charCodeAt(n));
+                    for (a.push(24, 0, 32, 0, 0x1a, s + 3, 1, 10, s, 1), n = 0; n < s; n++) a.push(t.charCodeAt(n));
                     a = new Uint8Array(a);
                     var r = new DataView(a['buffer']);
-                    this['sendMessage'](r);
+                    this.sendMessage(r);
                 }
             },
             'sendFbToken': function(t) {
@@ -3641,19 +3641,19 @@ var core = function(t, e, i) {
                 this.sendAccessToken(t, 3);
             },
             'sendRecaptcha': function(t) {
-                var e = this['createView'](2 + t.length);
+                var e = this.createView(2 + t.length);
                 e.setUint8(0, 86);
-                for (var i = 0; i < t.length; i++) e.setUint8(1 + i, t['charCodeAt'](i));
-                e.setUint8(t.length + 1, 0), this['sendMessage'](e);
+                for (var i = 0; i < t.length; i++) e.setUint8(1 + i, t.charCodeAt(i));
+                e.setUint8(t.length + 1, 0), this.sendMessage(e);
             },
             'setClientVersion': function(t, e) {
                 this['clientVersion'] = t, this['clientVersionString'] = e, console.log('[Legend mod Express] Client version:', t, e);
             },
             'generateClientKey': function(t, e) {
-                if (!t.length || !e['byteLength']) return null;
-                for (var i = null, s = 1540483477, o = t['match'](/(ws+:\/\/)([^:]*)(:\d+)/)[2], a = o.length + e['byteLength'], n = new Uint8Array(a), r = 0; r < o.length; r++) n[r] = o['charCodeAt'](r);
+                if (!t.length || !e.byteLength) return null;
+                for (var i = null, s = 1540483477, o = t['match'](/(ws+:\/\/)([^:]*)(:\d+)/)[2], a = o.length + e.byteLength, n = new Uint8Array(a), r = 0; r < o.length; r++) n[r] = o.charCodeAt(r);
                 n['set'](e, o.length);
-                for (var l = new DataView(n['buffer']), h = a - 1, c = 4 + (h - 4 & -4) | 0, u = 255 ^ h, d = 0; h > 3;) i = 0 | Math['imul'](l['getInt32'](d, !0), s), u = (0 | Math['imul'](i >>> 24 ^ i, s)) ^ (0 | Math['imul'](u, s)), h -= 4, d += 4;
+                for (var l = new DataView(n['buffer']), h = a - 1, c = 4 + (h - 4 & -4) | 0, u = 255 ^ h, d = 0; h > 3;) i = 0 | Math['imul'](l.getInt32(d, !0), s), u = (0 | Math['imul'](i >>> 24 ^ i, s)) ^ (0 | Math['imul'](u, s)), h -= 4, d += 4;
                 switch (h) {
                     case 3:
                         u = n[c + 2] << 16 ^ u, u = n[c + 1] << 8 ^ u;
@@ -3673,9 +3673,9 @@ var core = function(t, e, i) {
             },
             'shiftMessage': function(t, e, i) {
                 if (i)
-                    for (s = 0; s < t.length; s++) t['writeUInt8'](t['readUInt8'](s) ^ e >>> s % 4 * 8 & 255, s);
+                    for (s = 0; s < t.length; s++) t.writeUInt8(t.readUInt8(s) ^ e >>> s % 4 * 8 & 255, s);
                 else
-                    for (var s = 0; s < t['byteLength']; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
+                    for (var s = 0; s < t.byteLength; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
                 return t;
             },
             'decompressMessage': function(t) {
@@ -3698,19 +3698,19 @@ var core = function(t, e, i) {
                     case 5:
                         break;
                     case 17:
-                        this['viewX'] = t['getFloat32'](s, !0), s += 4, this['viewY'] = t['getFloat32'](s, !0), s += 4, this['scale'] = t['getFloat32'](s, !0);
+                        this['viewX'] = t.getFloat32(s, !0), s += 4, this['viewY'] = t.getFloat32(s, !0), s += 4, this['scale'] = t.getFloat32(s, !0);
                         break;
                     case 18:
                         this['protocolKey'] && (this['protocolKey'] = this['shiftKey'](this['protocolKey'])), this['flushCellsData']();
                         break;
                     case 32:
-                        this['playerCellIDs']['push'](t.getUint32(s, !0)), this.play || (this.play = !0, ogarminimapdrawer['hideMenu'](), this['playerColor'] = null, ogarminimapdrawer['onPlayerSpawn']());
+                        this['playerCellIDs'].push(t.getUint32(s, !0)), this.play || (this.play = !0, ogarminimapdrawer['hideMenu'](), this['playerColor'] = null, ogarminimapdrawer['onPlayerSpawn']());
                         break;
                     case 50:
                         this['pieChart'] = [];
                         var a = t.getUint32(s, !0);
                         s += 4;
-                        for (var n = 0; n < a; n++) this['pieChart']['push'](t['getFloat32'](s, !0)), s += 4;
+                        for (var n = 0; n < a; n++) this['pieChart'].push(t.getFloat32(s, !0)), s += 4;
                         ogarfooddrawer['drawPieChart']();
                         break;
                     case 53:
@@ -3718,11 +3718,11 @@ var core = function(t, e, i) {
                             t.getUint16(s, !0);
                             s += 2;
                         }
-                        for (var r = 0; s < t['byteLength'];) {
+                        for (var r = 0; s < t.byteLength;) {
                             var l = '',
                                 h = 0,
                                 c = !1;
-                            r++, 2 & (y = t['getUint8'](s++)) && (l = e['decodeURIComponent'](escape(i()))), 4 & y && (h = t.getUint32(s, !0), s += 4), 8 & y && (l = this['playerNick'], h = 'isPlayer', this['playerPosition'] = r), 16 & y && (c = !0), this['leaderboard']['push']({
+                            r++, 2 & (y = t['getUint8'](s++)) && (l = e['decodeURIComponent'](escape(i()))), 4 & y && (h = t.getUint32(s, !0), s += 4), 8 & y && (l = this['playerNick'], h = 'isPlayer', this['playerPosition'] = r), 16 & y && (c = !0), this['leaderboard'].push({
                                 'nick': l,
                                 'id': h,
                                 'isFriend': c
@@ -3736,14 +3736,14 @@ var core = function(t, e, i) {
                         var u = t.getUint16(s, !0);
                         s += 2, this['ghostCells'] = [];
                         for (n = 0; n < u; n++) {
-                            var d = t['getInt32'](s, !0);
+                            var d = t.getInt32(s, !0);
                             s += 4;
-                            var f = t['getInt32'](s, !0);
+                            var f = t.getInt32(s, !0);
                             s += 4;
                             var m = t.getUint32(s, !0);
                             s += 5;
                             var g = ~~Math['sqrt'](100 * m);
-                            this['ghostCells']['push']({
+                            this['ghostCells'].push({
                                 'x': d,
                                 'y': f,
                                 'size': g,
@@ -3756,7 +3756,7 @@ var core = function(t, e, i) {
                         console.log('[Legend mod Express] Captcha requested'), e.master && e.master['recaptchaRequested'] && e.master['recaptchaRequested']();
                         break;
                     case 102:
-                        t['byteLength'] < 20 && e['logout'] && e['logout']();
+                        t.byteLength < 20 && e['logout'] && e['logout']();
                         break;
                     case 103:
                         this['loggedInTime'] = Date['now'](), this['accessTokenSent'] = !0;
@@ -3773,7 +3773,7 @@ var core = function(t, e, i) {
                     case 178:
                         this['battleRoyale']['players'] = t.getUint16(s, !0), s += 2;
                         var y = t.getUint16(s, !0);
-                        s += 2, y || (this['battleRoyale']['state'] = 0, this['battleRoyale']['joined'] = !1), 3 & y && (this['battleRoyale']['state'] = t.getUint8(s++), this['battleRoyale']['x'] = t['getInt32'](s, !0), s += 4, this['battleRoyale']['y'] = t['getInt32'](s, !0), s += 4, this['battleRoyale']['radius'] = t.getUint32(s, !0), s += 4, this['battleRoyale']['shrinkTime'] = 1000 * t.getUint32(s, !0), s += 4, this['battleRoyale']['shrinkTime'] && (this['battleRoyale']['timeLeft'] = ~~((this['battleRoyale']['shrinkTime'] - Date['now']() + this['serverTimeDiff']) / 1000), this['battleRoyale']['timeLeft'] < 0 && (this['battleRoyale']['timeLeft'] = 0))), 2 & y && (this['battleRoyale']['targetX'] = t['getInt32'](s, !0), s += 4, this['battleRoyale']['targetY'] = t['getInt32'](s, !0), s += 4, this['battleRoyale']['targetRadius'] = t.getUint32(s, !0));
+                        s += 2, y || (this['battleRoyale']['state'] = 0, this['battleRoyale']['joined'] = !1), 3 & y && (this['battleRoyale']['state'] = t.getUint8(s++), this['battleRoyale']['x'] = t.getInt32(s, !0), s += 4, this['battleRoyale']['y'] = t.getInt32(s, !0), s += 4, this['battleRoyale']['radius'] = t.getUint32(s, !0), s += 4, this['battleRoyale']['shrinkTime'] = 1000 * t.getUint32(s, !0), s += 4, this['battleRoyale']['shrinkTime'] && (this['battleRoyale']['timeLeft'] = ~~((this['battleRoyale']['shrinkTime'] - Date['now']() + this['serverTimeDiff']) / 1000), this['battleRoyale']['timeLeft'] < 0 && (this['battleRoyale']['timeLeft'] = 0))), 2 & y && (this['battleRoyale']['targetX'] = t.getInt32(s, !0), s += 4, this['battleRoyale']['targetY'] = t.getInt32(s, !0), s += 4, this['battleRoyale']['targetRadius'] = t.getUint32(s, !0));
                         break;
                     case 179:
                         y = t.getUint8(s), e['decodeURIComponent'](escape(i()));
@@ -3786,7 +3786,7 @@ var core = function(t, e, i) {
                         for (n = 0; n < ogario1PlayerProfiles; n++) {
                             var ogarcopythelb = e['decodeURIComponent'](escape(i())),
                                 v = t.getUint32(s, !0);
-                            s += 4, this['battleRoyale']['rank']['push']({
+                            s += 4, this['battleRoyale']['rank'].push({
                                 'place': v,
                                 'name': ogarcopythelb
                             });
@@ -3797,7 +3797,7 @@ var core = function(t, e, i) {
                     case 241:
                         this['protocolKey'] = t.getUint32(s, !0), console.log('[Legend mod Express] Received protocol key:', this['protocolKey']);
                         var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
-                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e.master && e.master['login'] && e.master['login']();
+                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e.master && e.master.login && e.master.login();
                         break;
                     case 242:
                         this['serverTime'] = 1000 * t.getUint32(s, !0), this['serverTimeDiff'] = Date['now']() - this['serverTime'];
@@ -3811,15 +3811,15 @@ var core = function(t, e, i) {
             },
             'handleSubmessage': function(t) {
                 var e = 0;
-                switch ((t = this['decompressMessage'](t))['readUInt8'](e++)) {
+                switch ((t = this['decompressMessage'](t)).readUInt8(e++)) {
                     case 16:
                         this['updateCells'](t, e);
                         break;
                     case 64:
-                        this['viewMinX'] = t['readDoubleLE'](e), e += 8, this['viewMinY'] = t['readDoubleLE'](e), e += 8, this['viewMaxX'] = t['readDoubleLE'](e), e += 8, this['viewMaxY'] = t['readDoubleLE'](e), this['setMapOffset'](this['viewMinX'], this['viewMinY'], this['viewMaxX'], this['viewMaxY']);
+                        this['viewMinX'] = t.readDoubleLE(e), e += 8, this['viewMinY'] = t.readDoubleLE(e), e += 8, this['viewMaxX'] = t.readDoubleLE(e), e += 8, this['viewMaxY'] = t.readDoubleLE(e), this['setMapOffset'](this['viewMinX'], this['viewMinY'], this['viewMaxX'], this['viewMaxY']);
                         break;
                     default:
-                        console.log('[Legend mod Express] Unknown sub opcode:', t['readUInt8'](0));
+                        console.log('[Legend mod Express] Unknown sub opcode:', t.readUInt8(0));
                 }
             },
             'handleLeaderboard': function() {				
@@ -3858,7 +3858,7 @@ var core = function(t, e, i) {
             'updateCells': function(t, i) {
                 var s = function() {
                     for (var e = '';;) {
-                        var s = t['readUInt8'](i++);
+                        var s = t.readUInt8(i++);
                         if (0 == s) break;
                         e += String['fromCharCode'](s);
                     }
@@ -3881,16 +3881,16 @@ var core = function(t, e, i) {
                     i += 4;
                     var u = t.readUInt16LE(i);
                     i += 2;
-                    var d = t['readUInt8'](i++),
+                    var d = t.readUInt8(i++),
                         f = 0;
-                    128 & d && (f = t['readUInt8'](i++));
+                    128 & d && (f = t.readUInt8(i++));
                     var m = null,
                         g = null,
                         y = '';
                     if (2 & d) {
-                        var ogario1PlayerProfiles = t['readUInt8'](i++),
-                            ogarcopythelb = t['readUInt8'](i++),
-                            irenderfromagario = t['readUInt8'](i++);
+                        var ogario1PlayerProfiles = t.readUInt8(i++),
+                            ogarcopythelb = t.readUInt8(i++),
+                            irenderfromagario = t.readUInt8(i++);
                         m = this['rgb2Hex'](~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
                     }
 
@@ -3926,7 +3926,7 @@ var core = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts['color'] = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, !1, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food']['push'](ogariocellssetts) : (M && v['virusesRange'] && this['viruses']['push'](ogariocellssetts), this['cells']['push'](ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = !0, this['playerColor'] = m, this['playerCells']['push'](ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts['color'] = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, !1, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = !0, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -3982,19 +3982,19 @@ var core = function(t, e, i) {
                 }
             },
             'cacheCells': function(t, e, i, s, o) {
-                return s >= 2.5 ? void this['biggerSTECellsCache']['push']({
+                return s >= 2.5 ? void this['biggerSTECellsCache'].push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : s >= 1.25 ? void this['biggerCellsCache']['push']({
+                }) : s >= 1.25 ? void this['biggerCellsCache'].push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : s < 1.25 && s > 0.75 ? void 0 : s > o ? void this['smallerCellsCache']['push']({
+                }) : s < 1.25 && s > 0.75 ? void 0 : s > o ? void this['smallerCellsCache'].push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : void this['STECellsCache']['push']({
+                }) : void this['STECellsCache'].push({
                     'x': t,
                     'y': e,
                     'size': i
@@ -4148,9 +4148,9 @@ var core = function(t, e, i) {
                         for (var s = 0; s < e.length; s++) {
                             var o = e[s]['x'],
                                 a = e[s]['y'];
-                            t['moveTo'](o, a), t['arc'](o, a, e[s]['size'] + 820, 0, this['pi2'], !1);
+                            t['moveTo'](o, a), t.arc(o, a, e[s]['size'] + 820, 0, this.pi2, !1);
                         }
-                        t['fillStyle'] = g['virusColor'], t['globalAlpha'] = 0.1, t['fill'](), t['globalAlpha'] = 1, i && (e = []);
+                        t['fillStyle'] = g['virusColor'], t['globalAlpha'] = 0.1, t.fil(), t['globalAlpha'] = 1, i && (e = []);
                     }
                 },
                 'drawFood': function() {
@@ -4175,9 +4175,9 @@ var core = function(t, e, i) {
                                     if (t['moveTo'](a, n), i < 0.16) {
                                         var r = e[o]['size'] + g['foodSize'];
                                         t['rect'](a - r, n - r, 2 * r, 2 * r);
-                                    } else t['arc'](a, n, e[o]['size'] + g['foodSize'], 0, this['pi2'], !1);
+                                    } else t.arc(a, n, e[o]['size'] + g['foodSize'], 0, this.pi2, !1);
                                 }
-                                t['fillStyle'] = g['foodColor'], t['globalAlpha'] = 1, t['fill']();
+                                t['fillStyle'] = g['foodColor'], t['globalAlpha'] = 1, t.fil();
                             }
                         s && (e = []);
                     }
@@ -4185,7 +4185,7 @@ var core = function(t, e, i) {
                 'drawSplitRange': function(t, e, i, s, o) {
                     if (this['drawCircles'](t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
                         var a = s ? i.length - 1 : 0;
-                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t['arc'](i[a]['x'], i[a]['y'], i[a]['size'] + 760, 0, this['pi2'], !1), t['closePath'](), t['stroke']();
+                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], i[a]['size'] + 760, 0, this.pi2, !1), t['closePath'](), t['stroke']();
                     }
                     t['globalAlpha'] = 1, o && (e = []);
                 },
@@ -4201,13 +4201,13 @@ var core = function(t, e, i) {
                 },
                 'drawCircles': function(t, e, i, s, o, a) {
                     t['lineWidth'] = s, t['globalAlpha'] = o, t['strokeStyle'] = a;
-                    for (var n = 0; n < e.length; n++) t['beginPath'](), t['arc'](e[n]['x'], e[n]['y'], e[n]['size'] + i, 0, this['pi2'], !1), t['closePath'](), t['stroke']();
+                    for (var n = 0; n < e.length; n++) t['beginPath'](), t.arc(e[n]['x'], e[n]['y'], e[n]['size'] + i, 0, this.pi2, !1), t['closePath'](), t['stroke']();
                     t['globalAlpha'] = 1;
                 },
                 'drawDashedCircle': function(t, e, i, s, o, a, n) {
-                    var r = this['pi2'] / o;
+                    var r = this.pi2 / o;
                     t['lineWidth'] = a, t['strokeStyle'] = n;
-                    for (var l = 0; l < o; l += 2) t['beginPath'](), t['arc'](e, i, s - a / 2, l * r, (l + 1) * r, !1), t['stroke']();
+                    for (var l = 0; l < o; l += 2) t['beginPath'](), t.arc(e, i, s - a / 2, l * r, (l + 1) * r, !1), t['stroke']();
                 },
                 'drawTeammatesInd': function(t, e, i, s) {
                     this['indicator'] && t['drawImage'](this['indicator'], e - 45, i - s - 90);
@@ -4218,8 +4218,8 @@ var core = function(t, e, i) {
                         e = Math['min'](200, 0.3 * this['canvasWidth']) / 200;
                     this['pieChart']['width'] = 200 * e, this['pieChart']['height'] = 240 * e, t['scale'](e, e);
                     for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < M['pieChart'].length; o++) {
-                        var a = s + M['pieChart'][o] * this['pi2'];
-                        t['fillStyle'] = i[o + 1], t['beginPath'](), t['moveTo'](100, 140), t['arc'](100, 140, 80, s, a, !1), t['fill'](), s = a;
+                        var a = s + M['pieChart'][o] * this.pi2;
+                        t['fillStyle'] = i[o + 1], t['beginPath'](), t['moveTo'](100, 140), t.arc(100, 140, 80, s, a, !1), t.fil(), s = a;
                     }
                 },
                 'drawBattleArea': function(t) {
@@ -4235,7 +4235,7 @@ var core = function(t, e, i) {
                     }
                 },
                 'drawDangerArea': function(t, e, i, s, o, a, n, r, l, h) {
-                    M['battleRoyale']['radius'] == M['battleRoyale']['maxRadius'] || s <= 0 || (t['save'](), t['globalAlpha'] = h, t['fillStyle'] = l, t['fillRect'](o, a, n, r), t['globalCompositeOperation'] = 'destination-out', t['globalAlpha'] = 1, t['beginPath'](), t['arc'](e, i, s, 0, this['pi2'], !1), t['fill'](), t['restore']());
+                    M['battleRoyale']['radius'] == M['battleRoyale']['maxRadius'] || s <= 0 || (t['save'](), t['globalAlpha'] = h, t['fillStyle'] = l, t['fillRect'](o, a, n, r), t['globalCompositeOperation'] = 'destination-out', t['globalAlpha'] = 1, t['beginPath'](), t.arc(e, i, s, 0, this.pi2, !1), t.fil(), t['restore']());
                 },
                 'drawSafeArea': function(t, e, i, s, o, a) {
                     M['battleRoyale']['state'] > 2 || s <= 0 || this['drawDashedCircle'](t, e, i, s, 0x3c, o, a);
@@ -4248,8 +4248,8 @@ var core = function(t, e, i) {
                             if (!t[e]['inView']) {
                                 var i = t[e]['x'],
                                     s = t[e]['y'];
-                                this['ctx']['moveTo'](i, s), this['ctx']['arc'](i, s, t[e]['size'], 0, this['pi2'], !1);
-                            } this['ctx']['fillStyle'] = g['ghostCellsColor'], this['ctx']['globalAlpha'] = g['ghostCellsAlpha'], this['ctx']['shadowColor'] = g['ghostCellsColor'], this['ctx']['shadowBlur'] = 40, this['ctx']['shadowOffsetX'] = 0, this['ctx']['shadowOffsetY'] = 0, this['ctx']['fill'](), this['ctx']['globalAlpha'] = 1, this['ctx']['shadowBlur'] = 0;
+                                this['ctx']['moveTo'](i, s), this['ctx'].arc(i, s, t[e]['size'], 0, this.pi2, !1);
+                            } this['ctx']['fillStyle'] = g['ghostCellsColor'], this['ctx']['globalAlpha'] = g['ghostCellsAlpha'], this['ctx']['shadowColor'] = g['ghostCellsColor'], this['ctx']['shadowBlur'] = 40, this['ctx']['shadowOffsetX'] = 0, this['ctx']['shadowOffsetY'] = 0, this['ctx'].fil(), this['ctx']['globalAlpha'] = 1, this['ctx']['shadowBlur'] = 0;
                     }
                 },
                 'preDrawPellet': function() {
@@ -4258,14 +4258,14 @@ var core = function(t, e, i) {
                         e = document['createElement']('canvas');
                     e['width'] = 2 * t, e['height'] = 2 * t;
                     var i = e['getContext']('2d');
-                    i['arc'](t, t, t, 0, this['pi2'], !1), i['fillStyle'] = g['foodColor'], i['fill'](), this['pellet'] = new Image(), this['pellet'].src = e['toDataURL'](), e = null;
+                    i.arc(t, t, t, 0, this.pi2, !1), i['fillStyle'] = g['foodColor'], i.fil(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
                 },
                 'preDrawIndicator': function() {
                     this['indicator'] = null;
                     var t = document['createElement']('canvas');
                     t['width'] = 90, t['height'] = 50;
                     var e = t['getContext']('2d');
-                    e['lineWidth'] = 2, e['fillStyle'] = g['teammatesIndColor'], e['strokeStyle'] = '#000000', e['beginPath'](), e['moveTo'](0, 0), e['lineTo'](90, 0), e['lineTo'](45, 50), e['closePath'](), e['fill'](), e['stroke'](), this['indicator'] = new Image(), this['indicator'].src = t['toDataURL'](), t = null;
+                    e['lineWidth'] = 2, e['fillStyle'] = g['teammatesIndColor'], e['strokeStyle'] = '#000000', e['beginPath'](), e['moveTo'](0, 0), e['lineTo'](90, 0), e['lineTo'](45, 50), e['closePath'](), e.fil(), e['stroke'](), this['indicator'] = new Image(), this['indicator'].src = t.toDataURL(), t = null;
                 },
                 'countFps': function() {
                     if (v['showStatsFPS']) {
@@ -5250,8 +5250,8 @@ var core = function(t, e, i) {
             'proxyMobileData': function(t = []) {
                 if (Array.isArray(t)) {
                     8 == t[0] && t.unshift(102);
-                    var e = M['createView'](t.length);
-                    M['sendMessage'](e);
+                    var e = M.createView(t.length);
+                    M.sendMessage(e);
                 } else console.log('ProxyMobileData ERROR: Array data required.');
             }
         }, e.master.getClientVersion(), y.init(), ogarminimapdrawer.init(), ogarminimapdrawer.getDefaultSettings(), ogarminimapdrawer.connect(), lastkeys.init(), M.init(), ogarfooddrawer.init(), e.master.init(), ogarhusettings();
