@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.102 test
+//v1.103 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2123,12 +2123,13 @@ var core = function(t, e, i) {
                 e.MC && e.MC['showNickDialog'] ? s('.ogario-menu').hide() : t ? s('#overlays')['fadeOut'](t) : s('#overlays').hide();
             },
             'escapeHTML': function(t) {
-                return String(t)['replace'](/[&<>"'\/]/g, function(t) {
+                return String(t).replace(/[&<>"'\/]/g, function(t) {
                     return u[t];
                 });
             },
             'checkSkinURL': function(t) {
-                return /^https?:\/\/i\.(?:imgur|hizliresim)\.com\/\w{6,8}\.(?:jpg|jpeg|png)\??\d*$/i ['test'](t) ? t['replace']('http:', 'https:') : '';
+                //return /^https?:\/\/i\.(?:imgur|hizliresim)\.com\/\w{6,8}\.(?:jpg|jpeg|png)\??\d*$/i .test(t) ? t.replace('http:', 'https:') : '';
+				return /^https?:\/\/i\.(?:imgur|hizliresim|put)\.(com|re)\/\w{6,8}\.(?:jpg|jpeg|png)\??\d*$/i .test(t) ? t.replace('http:', 'https:') : '';
             },
             'loadSettings': function() {
                 var t = null;
@@ -2770,17 +2771,17 @@ var core = function(t, e, i) {
             'recreateWS': function(t) {
                 if (!t) return null;
                 var e = null;
-                if (/^[a-zA-Z0-9=+\/]{12,}$/ ['test'](t)) {
+                if (/^[a-zA-Z0-9=+\/]{12,}$/ .test(t)) {
                     var i = atob(t);
-                    /[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/ ['test'](i) && (e = 'wss://ip-' + i['replace'](/\./g, '-')['replace'](':', '.tech.agar.io:'));
+                    /[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/ .test(i) && (e = 'wss://ip-' + i.replace(/\./g, '-').replace(':', '.tech.agar.io:'));
                 }
-                return !e && /^[a-z0-9]{5,}$/ ['test'](t) && (e = 'wss://live-arena-' + t + '.agar.io:443'), e;
+                return !e && /^[a-z0-9]{5,}$/ .test(t) && (e = 'wss://live-arena-' + t + '.agar.io:443'), e;
             },
             'createServerToken': function() {
                 var t = this['ws']['match'](/ip-\d+/),
                     i = this['ws']['match'](/live-arena-([\w\d]+)/),
                     s = null;
-                t && ((t = this['ws']['replace']('.tech.agar.io', '')['replace'](/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
+                t && ((t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
                     this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this['partyToken'] = '';
                     var o = this['ws']['match'](/party_id=([A-Z0-9]{6})/);
@@ -3046,7 +3047,7 @@ var core = function(t, e, i) {
             },
             'readChatMessage': function(t) {
                 if (!v['disableChat']) {
-                    var e = new Date()['toTimeString']()['replace'](/^(\d{2}:\d{2}).*/, '$1'),
+                    var e = new Date()['toTimeString']().replace(/^(\d{2}:\d{2}).*/, '$1'),
                         i = t.getUint8(1),
                         s = t.getUint32(2, !0),
                         o = t.getUint32(6, !0);
@@ -3071,7 +3072,7 @@ var core = function(t, e, i) {
                 }
             },
             'prepareCommand': function(t) {
-                return t['replace']('%currentSector%', this['currentSector']);
+                return t.replace('%currentSector%', this['currentSector']);
             },
             'sendCommand': function(t) {
                 var e = this['prepareCommand'](c['comm' + t]);
@@ -3086,12 +3087,12 @@ var core = function(t, e, i) {
             'muteChatUser': function(t) {
                 if (t && !this['isChatUserMuted'](t)) {
                     var e = this['getChatUserNick'](t);
-                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted']['replace']('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
+                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted'].replace('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
                 }
             },
             'unmuteChatUser': function(t) {
                 if (t) {
-                    var e = this['chatMutedUserIDs'].indexOf(t); - 1 != e && (this['chatMutedUserIDs']['splice'](e, 1), toastr['info'](h['userUnmuted']['replace']('%user%', '<strong>' + this['escapeHTML'](this['chatMutedUsers'][t]) + '</strong>')), delete this['chatMutedUsers'][t]);
+                    var e = this['chatMutedUserIDs'].indexOf(t); - 1 != e && (this['chatMutedUserIDs']['splice'](e, 1), toastr['info'](h['userUnmuted'].replace('%user%', '<strong>' + this['escapeHTML'](this['chatMutedUsers'][t]) + '</strong>')), delete this['chatMutedUsers'][t]);
                 }
             },
             'isChatUserMuted': function(t) {
@@ -3099,14 +3100,14 @@ var core = function(t, e, i) {
             },
             'parseMessage': function(t) {
                 var e = /\[img\](https?:\/\/i\.(?:imgur|hizliresim)\.com\/\w{6,8}\.(?:jpg|jpeg|png|gif)\??\d*)\[\/img\]/i;
-                if (e['test'](t)) return v['showChatImages'] ? '<img src=\"' + t['match'](e)[1]['replace']('http:', 'https:') + '\" style=\"width:100%;border:none;\">' : '';
+                if (e.test(t)) return v['showChatImages'] ? '<img src=\"' + t['match'](e)[1].replace('http:', 'https:') + '\" style=\"width:100%;border:none;\">' : '';
                 var i = /\[yt\]([\w-]{11})\[\/yt\]/i;
-                if (i['test'](t)) return v['showChatVideos'] ? '<iframe type=\"text/html\" width=\"100%\" height=\"auto\" src=\"https://www.youtube.com/embed/' + t['match'](i)[1] + '?autoplay=1&amp;vq=tiny\" frameborder=\"0\" />' : '';
+                if (i.test(t)) return v['showChatVideos'] ? '<iframe type=\"text/html\" width=\"100%\" height=\"auto\" src=\"https://www.youtube.com/embed/' + t['match'](i)[1] + '?autoplay=1&amp;vq=tiny\" frameborder=\"0\" />' : '';
                 var s = this['escapeHTML'](t);
                 return v['chatEmoticons'] && (s = this['parseEmoticons'](s)), s;
             },
             'parseEmoticons': function(t) {
-                /*return String(t)['replace'](/\&lt\;3/g, '<3')['replace'](/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\))/g, function(t) {
+                /*return String(t).replace(/\&lt\;3/g, '<3').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\))/g, function(t) {
                     return '<img src=\"https://jimboy3100.github.io/banners/emoticons/' + d[t] + '\" alt=\"' + t + '\" class=\"emoticon\">';
                 });*/
                 return String(t).replace(/\&lt\;3/g, '<3').replace(/℄/g, '℄ Legend Clan').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\)|\(angry\)|\(clown\)|\(crazy\)|\(devil\)|\(devil2\)|\(fb\)|\(google\)|\(ghost\)|\(heel\)|\(kiss\)|\(lipstick\)|\(rage\)|\(teacher\)|\(together\)|\(toothy\)|\(evil\)|\(baby\)|\(wow\))/g, function(t) {
@@ -3117,7 +3118,7 @@ var core = function(t, e, i) {
             'displayChatMessage': function(t, e, i, o) {
                 if (0 != o.length) {
                     var a = o.split(': ', 1)['toString'](),
-                        n = this['parseMessage'](o['replace'](a + ': ', ''));
+                        n = this['parseMessage'](o.replace(a + ': ', ''));
                     if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                         var r = '';
                         if (0 != i && i != this['playerID'] && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this['escapeHTML'](a), 101 == e) {
@@ -4041,7 +4042,7 @@ var core = function(t, e, i) {
             },
             'init': function() {
                 var t = this;
-                /firefox/i ['test'](navigator['userAgent']) ? document.addEventListener('DOMMouseScroll', function(e) {
+                /firefox/i .test(navigator['userAgent']) ? document.addEventListener('DOMMouseScroll', function(e) {
                     t['setZoom'](e);
                 }, !1): document['body']['onmousewheel'] = function(e) {
                     t['setZoom'](e);
@@ -5071,7 +5072,7 @@ var core = function(t, e, i) {
                                     break;
                                 } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer['privateIP']) continue;
                             if ('command' === i['type']) {
-                                var n = e['replace']('hk-', '');
+                                var n = e.replace('hk-', '');
                                 s('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                             } else s('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i['label'] + '</div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                         } s(document).on('click', '#reset-hotkeys', function(e) {
