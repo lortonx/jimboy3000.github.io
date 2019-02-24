@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.014 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.016 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "16"; // the version 1.1-> 1.11
+var semimodVersion = "17"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6962,8 +6962,8 @@ preventcanvasimagecrash();
             marginBottom: "-10px"
         });
         $("#menu-footer").text("");
-		$("#agario-main-buttons").after('<div id="LEGENDAds4"></div>'); //
-		$("#LEGENDAds4").load("https://jimboy3100.github.io/banners/bannerLMdevs"); //
+		//$("#agario-main-buttons").after('<div id="LEGENDAds4"></div>'); //
+		//$("#LEGENDAds4").load("https://jimboy3100.github.io/banners/bannerLMdevs"); //
         $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend express Website" data-placement="left">Legend express v' + modVersion + semimodVersion + '</a></span>' +
             '<a id="MorefpsText" href="https://jimboy3100.github.io/extras/website/index2.html?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
 
@@ -7377,10 +7377,10 @@ for (animatedi=0; animatedi<legendmod.leaderboard.length; animatedi++ ){
 			for (animateda=0; animateda<=animatedskins[animatedkey].frames.length-1; animateda++)
 			{				
 				b = animateda;
-				c = animatedkey;
-				window.a = window.a+ animatedskins[c].frames[b].delay*1000;
+				verifiednames = animatedkey;
+				window.anual = window.anual+ animatedskins[verifiednames].frames[b].delay*1000;
 				d = animatedi;
-				animateSkin(window.a, b, c, d, e, i);	
+				animateSkin(window.anual, b, verifiednames, d, e, i);	
 				
 			}
 		}
@@ -7389,17 +7389,18 @@ for (animatedi=0; animatedi<legendmod.leaderboard.length; animatedi++ ){
 }
 }
 
-function animateSkin(a, b, c, d, e, i)
+function animateSkin(a, b, verifiednames, d, e, i)
 {
 			setTimeout(function() {
-				//if (c==legendmod.leaderboard[d].nick){
-				legendmod3.cacheCustomSkin(c, animatedskins[c].color, "https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");				
-				//console.log("https://i.imgur.com/" + animatedskins[c].frames[b].id + ".png");
+				//if (verifiednames==legendmod.leaderboard[d].nick){
+				legendmod3.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");	
+				//console.log(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");		
+				//console.log("https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
 				//console.log(window.a);
 				if (b==e){
 					//console.log("Animated Skins: End of cycle: " + i);
 					if (i==9){
-						window.a=0;
+						window.anual=0;
 						if (animatedserverchanged==false){
 						//animateSkincheck();
 						//console.log("Animated Skins: End of total cycles");
@@ -7408,7 +7409,7 @@ function animateSkin(a, b, c, d, e, i)
 					//animateSkincheck()
 				}
 				//}
-				}, window.a);	
+				}, window.anual);	
 }	
 				
 	
