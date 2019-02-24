@@ -3655,18 +3655,22 @@ var core = function(t, e, i) {
           var curr = shapes["length"];
           var count = this["clientVersionString"]["length"];
           var data = [oW, 8, 1, 18];
-          this["writeUint32"](data, curr + count + 23);
+          //this["writeUint32"](data, curr + count + 23);
+		  ogarminimapdrawer["writeUint32"](data, curr + count + 23);
           data["push"](8, 10, 82);
-          this['writeUint32'](data, curr + count + 18);
+		  ogarminimapdrawer['writeUint32'](data, curr + count + 18);
+          //this['writeUint32'](data, curr + count + 18);
           data["push"](8, options, 18, count + 8, 8, 5, 18, count);
           var prev = 0;
           for (; prev < count; prev++) {
             data["push"](this["clientVersionString"]["charCodeAt"](prev));
           }
           data["push"](24, 0, 32, 0, 26);
-          this["writeUint32"](data, curr + 3);
+		  ogarminimapdrawer["writeUint32"](data, curr + 3);
+          //this["writeUint32"](data, curr + 3);
           data["push"](10);
-          this["writeUint32"](data, curr);
+		  ogarminimapdrawer["writeUint32"](data, curr);
+          //this["writeUint32"](data, curr);
           prev = 0;
           for (; prev < curr; prev++) {
             data["push"](shapes["charCodeAt"](prev));
