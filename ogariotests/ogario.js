@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.015 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.016 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "17"; // the version 1.1-> 1.11
@@ -7394,7 +7394,7 @@ function animateSkin(a, b, verifiednames, d, e, i)
 			setTimeout(function() {
 				//if (verifiednames==legendmod.leaderboard[d].nick){
 				legendmod3.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");	
-				console.log(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");		
+				//console.log(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");		
 				//console.log("https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
 				//console.log(window.a);
 				if (b==e){
