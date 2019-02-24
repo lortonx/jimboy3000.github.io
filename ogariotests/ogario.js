@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.110 test
+//v1.111 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2839,6 +2839,17 @@ var core = function(t, e, i) {
             'isSocketOpen': function() {
                 return null !== this.socket && this.socket['readyState'] === this.socket['OPEN'];
             },
+        "writeUint32" : function(data, value) {
+          for (; !![];) {
+            if ((value & -128) == 0) {
+              data["push"](value);
+              return;
+            } else {
+              data["push"](value & 127 | 128);
+              value = value >>> 7;
+            }
+          }
+        },			
             'createView': function(t) {
                 return new DataView(new ArrayBuffer(t));
             },
