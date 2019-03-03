@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.114 test
+//v1.115 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2567,6 +2567,9 @@ var core = function(t, e, i) {
                 if (i.play = !0, i['playerColor']) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb['nick'], i['playerColor'], ogarcopythelb['skinURL']);
                 var t = this;
                 setTimeout(function() {
+					///////// trigger special effects
+					ogarfooddrawer.drawCommander();
+					/////////
                     t['onPlayerSpawn']();
                 }, 100);
             },
@@ -4190,6 +4193,55 @@ var core = function(t, e, i) {
                             }
                     }
                 },
+				///////////////////// special effects
+				'drawCommander': function() {
+                                var t = this.ctx;
+                                cimg = new Image();
+                                cimg.src = g.commanderImage;
+                                cimg1 = new Image();
+                                cimg1.src = g.commanderImage1;
+                                cimg2 = new Image();
+                                cimg2.src = g.commanderImage2;
+                                t.save(),
+                                    t.globalAlpha = M.cAlpha,
+                                    t.translate(i.playerX, i.playerY),
+                                    t.rotate(M.cAngle),
+                                    t.drawImage(cimg, M.cRadius),
+                                    t.restore();
+                                t.save(),
+                                    t.globalAlpha = M.cAlpha,
+                                    t.translate(i.playerX, i.playerY),
+                                    t.rotate(M.cAngle1),
+                                    t.drawImage(cimg1, M.cRadius),
+                                    t.restore();
+                                t.save(),
+                                    t.globalAlpha = M.cAlpha,
+                                    t.translate(i.playerX, i.playerY),
+                                    t.rotate(M.cAngle2),
+                                    t.drawImage(cimg2, M.cRadius),
+                                    t.restore();
+                                t.globalAlpha = 1;
+                                this.updateCommander();
+                            },
+				'updateCommander': function() {
+                    M.cRadius += 7,
+                        M.cAngle += 0.007;
+                    M.cAngle1 -= 0.006;
+                    M.cAngle2 += 0.003;
+          M.cAlpha *= 0.9887;
+                    if (M.cAlpha <= 0.0001) {
+                        this.resetCommander();
+                    }
+                },
+				///////
+                'resetCommander': function() {
+                    M.cRadius = 10,
+                        M.cAngle = 4,
+                        M.cAngle1 = 0,
+                        M.cAngle2 = 0,
+                        M.cAlpha = 1;
+                    M.drawCommander = !1;
+                },				
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
                     e && (t['strokeStyle'] = n, t['lineWidth'] = r, t['beginPath'](), t['moveTo'](i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t['closePath'](), t['stroke']());
                 },
