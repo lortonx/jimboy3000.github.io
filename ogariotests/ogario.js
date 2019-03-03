@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.115 test
+//v1.116 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4195,6 +4195,7 @@ var core = function(t, e, i) {
                 },
 				///////////////////// special effects
 				'drawCommander': function() {
+								console.log("starting drawCommander");
                                 var t = this.ctx;
                                 cimg = new Image();
                                 cimg.src = g.commanderImage;
@@ -4203,6 +4204,7 @@ var core = function(t, e, i) {
                                 cimg2 = new Image();
                                 cimg2.src = g.commanderImage2;
                                 t.save(),
+								
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle),
@@ -4224,6 +4226,7 @@ var core = function(t, e, i) {
                                 this.updateCommander();
                             },
 				'updateCommander': function() {
+					console.log("update drawCommander");
                     M.cRadius += 7,
                         M.cAngle += 0.007;
                     M.cAngle1 -= 0.006;
@@ -4235,6 +4238,7 @@ var core = function(t, e, i) {
                 },
 				///////
                 'resetCommander': function() {
+					console.log("reset drawCommander");
                     M.cRadius = 10,
                         M.cAngle = 4,
                         M.cAngle1 = 0,
