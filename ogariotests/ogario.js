@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.116 test
+//v1.117 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2568,7 +2568,7 @@ var core = function(t, e, i) {
                 var t = this;
                 setTimeout(function() {
 					///////// trigger special effects
-					ogarfooddrawer.drawCommander();
+					//ogarfooddrawer.drawCommander();
 					/////////
                     t['onPlayerSpawn']();
                 }, 100);
@@ -4193,15 +4193,18 @@ var core = function(t, e, i) {
                             }
                     }
                 },
-				///////////////////// special effects
+				///////////////////// special effects - not work
 				'drawCommander': function() {
 								console.log("starting drawCommander");
                                 var t = this.ctx;
                                 cimg = new Image();
-                                cimg.src = g.commanderImage;
+                                //cimg.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
+								cimg.src = g.commanderImage;
                                 cimg1 = new Image();
                                 cimg1.src = g.commanderImage1;
+								//cimg1.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53221702_10156422422342261_562265876800208896_n.jpg?_nc_cat=108&_nc_ht=scontent.fskg1-1.fna&oh=ef19be66005c1c6cacdc27e41b8d42a9&oe=5D155E79";
                                 cimg2 = new Image();
+								//cimg2.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53169405_10205850786385701_7192010659427516416_o.jpg?_nc_cat=101&_nc_ht=scontent.fskg1-1.fna&oh=c75d0d11379b4d0297a38b4d19cba329&oe=5D151D7D";
                                 cimg2.src = g.commanderImage2;
                                 t.save(),
 								
@@ -4235,8 +4238,7 @@ var core = function(t, e, i) {
                     if (M.cAlpha <= 0.0001) {
                         this.resetCommander();
                     }
-                },
-				///////
+                },				
                 'resetCommander': function() {
 					console.log("reset drawCommander");
                     M.cRadius = 10,
@@ -4245,7 +4247,8 @@ var core = function(t, e, i) {
                         M.cAngle2 = 0,
                         M.cAlpha = 1;
                     M.drawCommander = !1;
-                },				
+                },			
+			///////				
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
                     e && (t['strokeStyle'] = n, t['lineWidth'] = r, t['beginPath'](), t['moveTo'](i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t['closePath'](), t['stroke']());
                 },
