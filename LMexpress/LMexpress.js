@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.016 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.017 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "17"; // the version 1.1-> 1.11
+var semimodVersion = "18"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -415,8 +415,8 @@ emphasischat();
 function init(modVersion) {
 // ANNOUNCEMENTS
 //toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
-        if (modVersion != "1.5") {	           
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
+        if (modVersion != "1.6") {	           
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.6</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
 		}	
 	$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
 	universalchat();
@@ -6939,11 +6939,11 @@ preventcanvasimagecrash();
 		
 		$("#oldSkinsBtn").click(function() {
 			
-			if (modVersion == "1.4" || modVersion == "1.5" ) {
+			if (modVersion == "1.5" || modVersion == "1.6" ) {
 		location.replace("https://agar.io/LMoldskins");
 			}
 			else{
-			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.5</b></font>, in order to use this function</font>');	
+			toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.6</b></font>, in order to use this function</font>');	
 			}
 		});	
 /*		$("#LMImplements").click(function() {
