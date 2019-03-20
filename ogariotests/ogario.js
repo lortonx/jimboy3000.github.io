@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.117 test
+//v1.118 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -53,6 +53,10 @@ core.registerSkin = function(a, b, c, d, e){
 	window.customskinsurl=c;
 }
 */
+function UpperCase(str) {
+    return str.toUpperCase();
+}
+
 
 var core = function(t, e, i) {
     //here starts ogario
@@ -3966,7 +3970,12 @@ var core = function(t, e, i) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 										if (ogarminimapdrawer['customSkinsMap'][y]==undefined){	
 											if (window.EquippableSkins[player].image!="uses_spine"){
+												if(UpperCase(y)=="GREECE"){
+												ogarminimapdrawer['customSkinsMap'][y]="https://jimboy3100.github.io/agario/live/flags/greece.png";	
+												}
+												else{
 												ogarminimapdrawer['customSkinsMap'][y]="https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image;
+												}
 												ogarminimapdrawer['loadSkin'](ogarminimapdrawer['customSkinsCache'], "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image);
 												}
 											}								
