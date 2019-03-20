@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.121 test
+//v1.122 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3975,6 +3975,7 @@ var core = function(t, e, i) {
 											if (window.EquippableSkins[player].image!="uses_spine"){		
 																					
 												if(legendflags.includes(LowerCase(y))){
+													console.log("[Legend mod Express] " + LowerCase(y) + " skin found. Skin registered");
 													core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/"+ LowerCase(y) +".png", null);
 												}
 												else{
