@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.120 test
+//v1.121 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -56,7 +56,10 @@ core.registerSkin = function(a, b, c, d, e){
 function UpperCase(str) {
     return str.toUpperCase();
 }
-
+function LowerCase(str) {
+    return str.toLowerCase();
+}
+var legendflags =["2ch", "4chan", "8ch", "9gag","cameron", "irs", "receita-federal", "9gag","agario-candle", "australia", "austria", "ayy-lmao", "bait", "bangladesh", "belgium", "berlusconi","blatter", "boris", "bosnia", "botswana","brazil", "bulgaria", "bush", "byzantium","cambodia", "canada", "chavez", "chile","china", "cia", "clinton", "confederate","croatia", "cuba", "denmark", "dilma","earth", "estonia", "european-union", "facebook", "facepunch", "feminism", "fidel", "finland", "france", "french-kingdom", "german-empire","germany", "greece", "hillary", "hollande", "hungary", "imperial-japan", "india", "indiana", "iran", "iraq", "ireland", "italy","jamaica", "japan", "kc", "kim-jong-un","latvia", "lithuania", "luxembourg", "maldivas","mars", "matriarchy", "merkel", "mexico","nasa", "netherlands", "nigeria", "north-korea","norway", "obama", "origin","pakistan","palin", "patriarchy", "peru", "pewdiepie","piccolo", "pokerface", "portugal", "prodota","prussia", "putin", "qing-dynasty", "quebec", "queen", "reddit", "romania"];
 
 var core = function(t, e, i) {
     //here starts ogario
@@ -3969,15 +3972,15 @@ var core = function(t, e, i) {
                                     if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                         //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 										if (ogarminimapdrawer['customSkinsMap'][y]==undefined){	
-											if (window.EquippableSkins[player].image!="uses_spine"){												
-												if(UpperCase(y)=="GREECE"){
-													core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/greece.png", null);
+											if (window.EquippableSkins[player].image!="uses_spine"){		
+																					
+												if(legendflags.includes(LowerCase(y))){
+													core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/"+ LowerCase(y) +".png", null);
 												}
 												else{
-												ogarminimapdrawer['customSkinsMap'][y]="https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image;
-												}
+												ogarminimapdrawer['customSkinsMap'][y]="https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image;												
 												ogarminimapdrawer['loadSkin'](ogarminimapdrawer['customSkinsCache'], "https://configs-web.agario.miniclippt.com/live/"+window.agarversion+window.EquippableSkins[player].image);
-												
+												}
 												}
 											}								
 										}
