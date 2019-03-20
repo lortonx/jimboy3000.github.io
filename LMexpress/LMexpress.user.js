@@ -17,7 +17,7 @@
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
 // @grant        GM_deleteValue
-// @connect      jimboy3100.github.io
+// @connect      jimboy3000.github.io
 // ==/UserScript==
 
 // Legend Mod by Jimboy3100
@@ -40,7 +40,7 @@ document.documentElement.innerHTML = "";
 
 GM_xmlhttpRequest({
     method : "GET",
-    url : "https://jimboy3100.github.io/LMexpress/LMexpress.html",
+    url : "https://jimboy3000.github.io/LMexpress/LMexpress.html",
     onload : function(legend) {
         var doc = inject(legend.responseText);
         document.open();
