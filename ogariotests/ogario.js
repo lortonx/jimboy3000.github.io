@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.118 test
+//v1.119 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3967,10 +3967,12 @@ var core = function(t, e, i) {
                             if (window.LMAgarGameConfiguration != undefined) {
                                 for (var player = 0; player < window.EquippableSkins.length; player++) {
                                     if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
-                                        //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
+                                        console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
 										if (ogarminimapdrawer['customSkinsMap'][y]==undefined){	
 											if (window.EquippableSkins[player].image!="uses_spine"){
+												
 												if(UpperCase(y)=="GREECE"){
+													console.log(UpperCase(y));
 												ogarminimapdrawer['customSkinsMap'][y]="https://jimboy3100.github.io/agario/live/flags/greece.png";	
 												}
 												else{
