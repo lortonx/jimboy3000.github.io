@@ -6071,12 +6071,14 @@ preventcanvasimagecrash();
  //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
         $("#more-skins").attr('href', 'https://jimboy3100.github.io/skins/');
         $(".quick-more-skins.ogicon-grin").attr('href', 'https://jimboy3100.github.io/skins/');
-		$("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins/ MassX3 1h"></a>'+
+		$("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins/ MassX3 1h"></a>');
+		$(".quick-more-skins.ogicon-grin").after('<a id= "themesBtn" target="_blank" href="https://jimboy3100.github.io/themes/" class="fa fa-tint" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>'+
 //		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
 		'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>'+	
 		'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>');
-        $("#LegGoogleForm").tooltip('show').tooltip('hide');;
-		$("#oldSkinsBtn").tooltip('show').tooltip('hide');;
+        $("#LegGoogleForm").tooltip('show').tooltip('hide');
+		$("#oldSkinsBtn").tooltip('show').tooltip('hide');
+		$("#oldSkinsBtn").hide();
 		$("#ModInfoQuick").tooltip('show').tooltip('hide');
 //		$("#LMImplements").tooltip('show').tooltip('hide');
 		// prevent edit
