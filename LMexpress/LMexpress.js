@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.018 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.019 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "19"; // the version 1.1-> 1.11
+var semimodVersion = "20"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -4603,6 +4603,19 @@ if (languagemod == 9) {
         $("body").append(s1);
     }, 800);
 }
+if (languagemod == 10) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackTurkish.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("10");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 800);
+}
 }
 function changeModLanguage() {
     if ($("#legendlanguages").val() == 1) {
@@ -4730,7 +4743,21 @@ function changeModLanguage() {
             $("body").append(s1);
 
         }, 800);
-    }		
+    }	
+    if ($("#legendlanguages").val() == 10) {
+        localStorage.setItem("languagemod", 10);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackTurkish.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }	
 }
 function triggerLMbtns() {
 			$('#leaderboardlimit').val(window.leaderboardlimit);
@@ -5918,14 +5945,15 @@ preventcanvasimagecrash();
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://jimboy3100.github.io/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
             '<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
             '<option value="1" data-itr="">English</option>' +
-            '<option value="6" data-itr="">Arabic - ????</option>' +
-            '<option value="4" data-itr="">Bulgarian - ?????????</option>' +
+            '<option value="6" data-itr="">Arabic</option>' +
+            '<option value="4" data-itr="">Bulgarian</option>' +
             '<option value="5" data-itr="">French - Francais</option>' +
 			'<option value="9" data-itr="">German - Deutsch</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
-			'<option value="8" data-itr="">Russian - ???????</option>' +
+			'<option value="8" data-itr="">Russian</option>' +
             '<option value="3" data-itr="">Spanish - Espanol</option>' +
-			'<option value="7" data-itr="">Trad. Chinese - ????</option>' +
+			'<option value="7" data-itr="">Trad. Chinese</option>' +
+			'<option value="10" data-itr="">Turkish - Türk</option>' +
             '</select></div>' +
 
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
