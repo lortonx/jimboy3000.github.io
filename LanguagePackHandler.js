@@ -3,6 +3,15 @@
 var Languagetimesused;
 var Languagetimesused1;
 
+if($('#LanguageAuthorPanel').length==0){
+	$("#TimesUsed").after('<div id="LanguageAuthorPanel" class="user-name" style="display:inline-block;">'+Languageletter34+': <div id="LanguageAuthor" style="display:inline-block"></div></div><br>');
+	$("#LanguageAuthor").text(translator);
+	}
+else{
+	$("#LanguageAuthor").text(translator);
+}
+
+
 $(".ogicon-home").attr('data-original-title',Languageletter0);
 $(".ogicon-user").attr('data-original-title',Languageletter1);
 $(".ogicon-cog").attr('data-original-title',Languageletter2);
