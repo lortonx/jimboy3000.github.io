@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.126 test
+//v1.127 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4209,6 +4209,14 @@ var core = function(t, e, i) {
                 },
 				///////////////////// special effects - not work
 				'drawCommander': function() {
+					
+					            M.cRadius = 10,
+								M.cAngle = 4,
+								M.cAngle1 = 0,
+								M.cAngle2 = 0,
+								M.cAlpha = 1;
+								M.drawCommander = !1;
+								
 								console.log("starting drawCommander");
                                 var t = this.ctx;
                                 cimg = new Image();
