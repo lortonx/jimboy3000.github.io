@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.124 test
+//v1.125 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2575,7 +2575,7 @@ var core = function(t, e, i) {
                 var t = this;
                 setTimeout(function() {
 					///////// trigger special effects
-					//ogarfooddrawer.drawCommander();
+					ogarfooddrawer.drawCommander();
 					/////////
                     t['onPlayerSpawn']();
                 }, 100);
