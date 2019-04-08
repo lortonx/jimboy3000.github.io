@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.123 test
+//v1.124 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4212,7 +4212,7 @@ var core = function(t, e, i) {
 								console.log("starting drawCommander");
                                 var t = this.ctx;
                                 cimg = new Image();
-                                img.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
+                                cimg.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
 								cimg.src = g.commanderImage;
                                 cimg1 = new Image();
                                 cimg1.src = g.commanderImage1;
