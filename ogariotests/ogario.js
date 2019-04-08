@@ -4212,13 +4212,13 @@ var core = function(t, e, i) {
 								console.log("starting drawCommander");
                                 var t = this.ctx;
                                 cimg = new Image();
-                                //cimg.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
+                                img.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
 								cimg.src = g.commanderImage;
                                 cimg1 = new Image();
                                 cimg1.src = g.commanderImage1;
-								//cimg1.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53221702_10156422422342261_562265876800208896_n.jpg?_nc_cat=108&_nc_ht=scontent.fskg1-1.fna&oh=ef19be66005c1c6cacdc27e41b8d42a9&oe=5D155E79";
+								cimg1.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53221702_10156422422342261_562265876800208896_n.jpg?_nc_cat=108&_nc_ht=scontent.fskg1-1.fna&oh=ef19be66005c1c6cacdc27e41b8d42a9&oe=5D155E79";
                                 cimg2 = new Image();
-								//cimg2.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53169405_10205850786385701_7192010659427516416_o.jpg?_nc_cat=101&_nc_ht=scontent.fskg1-1.fna&oh=c75d0d11379b4d0297a38b4d19cba329&oe=5D151D7D";
+								cimg2.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53169405_10205850786385701_7192010659427516416_o.jpg?_nc_cat=101&_nc_ht=scontent.fskg1-1.fna&oh=c75d0d11379b4d0297a38b4d19cba329&oe=5D151D7D";
                                 cimg2.src = g.commanderImage2;
                                 t.save(),
 								
