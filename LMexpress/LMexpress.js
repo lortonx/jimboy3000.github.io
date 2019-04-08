@@ -1,7 +1,9 @@
 /**************
- * Legend express v0.019 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.020 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
- 
+//function preventcanvasimagecrash
+
+
 var semimodVersion = "20"; // the version 1.1-> 1.11
 //fix ffa
 /*
@@ -5129,6 +5131,7 @@ function settrolling() {
 				}, 27000);
  
 }
+/*
 function preventcanvasimagecrash(){
 CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage;
 CanvasRenderingContext2D.prototype.drawImage = function() {
@@ -5139,7 +5142,7 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
     this._drawImage(...arguments);
 }
 }
-
+*/
 function doGl(){  
 	$("#UserProfilePic>img").attr('src',gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
 	$("#UserProfileName1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
