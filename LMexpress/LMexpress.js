@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.019 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.020 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "20"; // the version 1.1-> 1.11
@@ -196,6 +196,7 @@ var LegendSettingsfirstclicked="false";
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
 var VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
+var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
 if (localStorage.getItem("leaderboardlimit")!=null){
 	window.leaderboardlimit=localStorage.getItem("leaderboardlimit");
 }
@@ -385,6 +386,42 @@ var stylesLegendModConsole2 = [
 //    , 'font-weight: bold'
 ].join(';');
 
+//Animated color texts
+   var tcm2 = {
+      prototypes:  {
+         canvas: (CanvasRenderingContext2D.prototype),
+         old:    {}
+      },
+      f: {
+         prototype_override: function(type, name, runat, callback) {
+            if ( !(type in tcm2.prototypes.old) )       tcm2.prototypes.old[type]       = {};
+            if ( !(name in tcm2.prototypes.old[type]) ) tcm2.prototypes.old[type][name] = tcm2.prototypes[type][name];
+            tcm2.prototypes[type][name] = function() {
+               (runat == 'before' && callback(this, arguments));
+               tcm2.prototypes.old[type][name].apply(this, arguments);
+               (runat == 'after'  && callback(this, arguments));
+            };
+         },
+		   gradient: function(a) {
+		      var c = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
+		      var g = a.createLinearGradient(0, 0, a.canvas.width, 0);
+		      g.addColorStop(0, c[Math.floor(Math.random() * c.length)]);
+		      g.addColorStop(1, c[Math.floor(Math.random() * c.length)]);
+		      return g;
+		   },
+         override: function() {
+			  tcm2.f.prototype_override('canvas', 'fillText', 'before', function(a, b) {
+				  if (a.canvas.id!="minimap" && a.canvas.id!="minimap-sectors" && a.canvas.id!="ao2t-minimap"){
+				  //console.log(a.canvas.id);
+				  a.fillStyle   = tcm2.f.gradient(a);
+				  }
+			  }
+);
+         }
+      }
+   };
+   //tcm2.f.override();
+
 
 var $head = $("head");
 var $headlinklast = $head.find("link[rel='stylesheet']:last");
@@ -459,6 +496,24 @@ function init(modVersion) {
 				animateSkinsStop();
 			}
 		});			
+		
+		$('.options-box.transparencyGroup').append('<label><input type="checkbox" id="AnimatedRainbowColor" class="js-switch" data-switchery="true" style="display: none;">Animated rainbow colors</input></label>');
+		var elemLegendSwitch2 = document.querySelector('#AnimatedRainbowColor');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var AnimatedRainbowColorbtn = new Switchery(elemLegendSwitch2, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });		
+		
+		$("#AnimatedRainbowColor").click(function() {
+			if (AnimatedRainbowColorbtn.isChecked()) {
+				localStorage.setItem("AnimatedRainbowColorSaved", "true");
+				tcm2.f.override();
+				// Animated Skins
+				
+			} else {				
+				localStorage.setItem("AnimatedRainbowColorSaved", "false");
+				toastr["info"]("Changes will fully be reflected after restart");
+			}
+		});			
+		
 /*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
                 $("#UniversalChat").click();
 				setTimeout(function() {
@@ -1763,7 +1818,10 @@ function parseLegendJSONAPI(LegendJSON) {
 	if (localStorage.getItem("leaderboardlimit")!=null){
 	LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
 	}	
-	
+	LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
+	if (localStorage.getItem("AnimatedRainbowColorSaved")!=null){
+	LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
+	}	
     if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl==null) {
         LegendJSON.legendSettings.initialMusicUrl = defaultMusicUrl;
     };
@@ -2021,6 +2079,10 @@ function saveLegendJSONAPI() {
 	if (LegendJSON.legendSettings.leaderboardlimit!=null){
 	localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);	
 	}	  
+    localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
+	if (LegendJSON.legendSettings.AnimatedRainbowColorSaved!=null){
+	localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);	
+	}		
 //    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
 //    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
 //    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
@@ -4829,7 +4891,10 @@ function triggerLMbtns() {
            }
            if (VanillaskinsSaved == "true") { 
                 $("#Vanillaskins").click();
-           }		   		
+           }	
+           if (AnimatedRainbowColorSaved == "true") { 
+                $("#AnimatedRainbowColor").click();
+           }			   
             //	if (ComPosition  == 3) { $("#bottomleft").click(); }
 /*            if (autoCoinBtn == "true") {
                 setTimeout(function() {
@@ -7448,4 +7513,5 @@ function animateSkin(a, b, verifiednames, d, e, i)
 				}, window.anual);	
 }	
 				
+	
 	
