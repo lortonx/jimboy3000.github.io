@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.125 test
+//v1.126 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4249,6 +4249,7 @@ var core = function(t, e, i) {
                     M.cAngle1 -= 0.006;
                     M.cAngle2 += 0.003;
           M.cAlpha *= 0.9887;
+					console.log(M.cAlpha);
                     if (M.cAlpha <= 0.0001) {
                         this.resetCommander();
                     }
