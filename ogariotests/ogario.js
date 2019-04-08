@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.125 test
+//v1.124 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4225,19 +4225,19 @@ var core = function(t, e, i) {
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle),
-                                    t.drawImage(cimg, M.cRadius),
+                                    t.drawImage(cimg, M.cRadius, M.cRadius),
                                     t.restore();
                                 t.save(),
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle1),
-                                    t.drawImage(cimg1, M.cRadius),
+                                    t.drawImage(cimg1, M.cRadius, M.cRadius),
                                     t.restore();
                                 t.save(),
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle2),
-                                    t.drawImage(cimg2, M.cRadius),
+                                    t.drawImage(cimg2, M.cRadius, M.cRadius),
                                     t.restore();
                                 t.globalAlpha = 1;
                                 this.updateCommander();
