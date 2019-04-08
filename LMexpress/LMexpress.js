@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.020 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.022 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 //function preventcanvasimagecrash
 
@@ -5131,7 +5131,7 @@ function settrolling() {
 				}, 27000);
  
 }
-/*
+
 function preventcanvasimagecrash(){
 CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage;
 CanvasRenderingContext2D.prototype.drawImage = function() {
@@ -5142,7 +5142,7 @@ CanvasRenderingContext2D.prototype.drawImage = function() {
     this._drawImage(...arguments);
 }
 }
-*/
+
 function doGl(){  
 	$("#UserProfilePic>img").attr('src',gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
 	$("#UserProfileName1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
@@ -5760,7 +5760,7 @@ $("#server-reconnect").css("float", "left");
 $("#server-reconnect").css("margin-top", "6px");
 $("#server-reconnect").css("width", "11%");
 	
-preventcanvasimagecrash();
+//preventcanvasimagecrash();
 //    setTimeout(function() {
         //document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
