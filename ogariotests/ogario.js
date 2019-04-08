@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.127 test
+//v1.123 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2575,7 +2575,7 @@ var core = function(t, e, i) {
                 var t = this;
                 setTimeout(function() {
 					///////// trigger special effects
-					ogarfooddrawer.drawCommander();
+					//ogarfooddrawer.drawCommander();
 					/////////
                     t['onPlayerSpawn']();
                 }, 100);
@@ -4209,43 +4209,35 @@ var core = function(t, e, i) {
                 },
 				///////////////////// special effects - not work
 				'drawCommander': function() {
-					
-					            M.cRadius = 10,
-								M.cAngle = 4,
-								M.cAngle1 = 0,
-								M.cAngle2 = 0,
-								M.cAlpha = 1;
-								M.drawCommander = !1;
-								
 								console.log("starting drawCommander");
                                 var t = this.ctx;
                                 cimg = new Image();
-                                cimg.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
-								//cimg.src = g.commanderImage;
+                                //cimg.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
+								cimg.src = g.commanderImage;
                                 cimg1 = new Image();
-                                //cimg1.src = g.commanderImage1;
-								cimg1.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53221702_10156422422342261_562265876800208896_n.jpg?_nc_cat=108&_nc_ht=scontent.fskg1-1.fna&oh=ef19be66005c1c6cacdc27e41b8d42a9&oe=5D155E79";
+                                cimg1.src = g.commanderImage1;
+								//cimg1.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53221702_10156422422342261_562265876800208896_n.jpg?_nc_cat=108&_nc_ht=scontent.fskg1-1.fna&oh=ef19be66005c1c6cacdc27e41b8d42a9&oe=5D155E79";
                                 cimg2 = new Image();
-								cimg2.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53169405_10205850786385701_7192010659427516416_o.jpg?_nc_cat=101&_nc_ht=scontent.fskg1-1.fna&oh=c75d0d11379b4d0297a38b4d19cba329&oe=5D151D7D";
-                                //cimg2.src = g.commanderImage2;
+								//cimg2.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53169405_10205850786385701_7192010659427516416_o.jpg?_nc_cat=101&_nc_ht=scontent.fskg1-1.fna&oh=c75d0d11379b4d0297a38b4d19cba329&oe=5D151D7D";
+                                cimg2.src = g.commanderImage2;
                                 t.save(),
 								
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle),
-                                    t.drawImage(cimg, M.cRadius, M.cRadius),
+                                    t.drawImage(cimg, M.cRadius),
                                     t.restore();
                                 t.save(),
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle1),
-                                    t.drawImage(cimg1, M.cRadius, M.cRadius),
+                                    t.drawImage(cimg1, M.cRadius),
                                     t.restore();
                                 t.save(),
                                     t.globalAlpha = M.cAlpha,
                                     t.translate(i.playerX, i.playerY),
                                     t.rotate(M.cAngle2),
-                                    t.drawImage(cimg2, M.cRadius, M.cRadius),
+                                    t.drawImage(cimg2, M.cRadius),
                                     t.restore();
                                 t.globalAlpha = 1;
                                 this.updateCommander();
@@ -4257,7 +4249,6 @@ var core = function(t, e, i) {
                     M.cAngle1 -= 0.006;
                     M.cAngle2 += 0.003;
           M.cAlpha *= 0.9887;
-					console.log(M.cAlpha);
                     if (M.cAlpha <= 0.0001) {
                         this.resetCommander();
                     }
