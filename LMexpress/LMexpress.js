@@ -1,9 +1,7 @@
 /**************
- * Legend express v0.022 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.019 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-//function preventcanvasimagecrash
-
-
+ 
 var semimodVersion = "20"; // the version 1.1-> 1.11
 //fix ffa
 /*
@@ -5131,7 +5129,6 @@ function settrolling() {
 				}, 27000);
  
 }
-
 function preventcanvasimagecrash(){
 CanvasRenderingContext2D.prototype._drawImage = CanvasRenderingContext2D.prototype.drawImage;
 CanvasRenderingContext2D.prototype.drawImage = function() {
@@ -5760,7 +5757,7 @@ $("#server-reconnect").css("float", "left");
 $("#server-reconnect").css("margin-top", "6px");
 $("#server-reconnect").css("width", "11%");
 	
-//preventcanvasimagecrash();
+preventcanvasimagecrash();
 //    setTimeout(function() {
         //document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
