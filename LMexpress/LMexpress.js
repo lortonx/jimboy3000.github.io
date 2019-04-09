@@ -5822,7 +5822,7 @@ $("#server-reconnect").css("float", "left");
 $("#server-reconnect").css("margin-top", "6px");
 $("#server-reconnect").css("width", "11%");
 	
-//preventcanvasimagecrash();
+preventcanvasimagecrash();
 //    setTimeout(function() {
         //document.title = "Legend express v" + modVersion;
 		$("#leaderboard-hud > h4").text("Leaderboard");
