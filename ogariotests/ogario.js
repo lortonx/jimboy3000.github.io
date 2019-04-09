@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.130 test
+//v1.131 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4218,32 +4218,37 @@ var core = function(t, e, i) {
 								M.drawCommander = !1;
 								
 								console.log("starting drawCommander");
-                                var t = this.ctx;
+                                
                                 cimg = new Image();
+								cimg.crossOrigin="anonymous";
                                 cimg.src = "https://jimboy3100.github.io/banners/CropedImage128.gif";
 								//cimg.src = g.commanderImage;
                                 cimg1 = new Image();
+								cimg1.crossOrigin="anonymous";
                                 //cimg1.src = g.commanderImage1;
 								cimg1.src = "https://jimboy3100.github.io/banners/CropedImage128.gif";
                                 cimg2 = new Image();
-								cimg2.src = "https://jimboy3100.github.io/banners/CropedImage128.gif";
+								cimg2.crossOrigin="anonymous";
+								cimg2.src = "https://jimboy3100.github.io/banners/CropedImage128.gif";								
                                 //cimg2.src = g.commanderImage2;
+								
+								var t = this.ctx;
                                 t.save(),
 								
                                     t.globalAlpha = M.cAlpha,
-                                    t.translate(i.playerX, i.playerY),
+                                    t.translate(legendmod.playerX, legendmod.playerY),
                                     t.rotate(M.cAngle),
                                     t.drawImage(cimg, M.cRadius, M.cRadius),
                                     t.restore();
                                 t.save(),
                                     t.globalAlpha = M.cAlpha,
-                                    t.translate(i.playerX, i.playerY),
+                                    t.translate(legendmod.playerX, legendmod.playerY),
                                     t.rotate(M.cAngle1),
                                     t.drawImage(cimg1, M.cRadius, M.cRadius),
                                     t.restore();
                                 t.save(),
                                     t.globalAlpha = M.cAlpha,
-                                    t.translate(i.playerX, i.playerY),
+                                    t.translate(legendmod.playerX, legendmod.playerY),
                                     t.rotate(M.cAngle2),
                                     t.drawImage(cimg2, M.cRadius, M.cRadius),
                                     t.restore();
