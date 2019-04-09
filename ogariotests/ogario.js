@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.129 test
+//v1.130 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -4261,6 +4261,9 @@ var core = function(t, e, i) {
                     if (M.cAlpha <= 0.0001) {
                         this.resetCommander();
                     }
+					else{
+						this.updateCommander();
+					}
                 },				
                 'resetCommander': function() {
 					console.log("reset drawCommander");
