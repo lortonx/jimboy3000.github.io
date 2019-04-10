@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.020 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.021 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "20"; // the version 1.1-> 1.11
+var semimodVersion = "21"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3122,6 +3122,7 @@ var legbgcolor = $("#menuPanelColor").val();
 		}
     };
     my.ogarMinimapUpdate = function(){
+		window.agartoolteammatenicks=[];
         var minimap_elem = document.getElementById("ao2t-minimap");
         var minimapWidth = minimap_elem.width;
         var minimapHeight = minimap_elem.height;
@@ -3147,12 +3148,14 @@ var legbgcolor = $("#menuPanelColor").val();
         for(var key; (key = keys.shift()); ){
 
             var ball = stat.minimapBalls[key];
-
+			///////Public Array for agar tool teammates 
+			window.agartoolteammatenicks.push(escapeHtml(ball.name));
             user_txt += sep + escapeHtml(ball.name);
 //			user_txt += count + ": ";
             sep = '<br/>'+ count + ". ";
 //			user_txt += count + ": ";
 			count++;
+			
             if(cfg.minimap_show){
                 var name = cfg.tgar_prefix + ball.name;
                 var mapX = (ball.x + mapOffset) * minimapMulti + mapOffsetX;
