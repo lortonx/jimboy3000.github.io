@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.021 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.023 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "21"; // the version 1.1-> 1.11
@@ -3148,6 +3148,7 @@ var legbgcolor = $("#menuPanelColor").val();
         for(var key; (key = keys.shift()); ){
 
             var ball = stat.minimapBalls[key];
+			window.agtoolball=stat;
 			///////Public Array for agar tool teammates 
 			window.agartoolteammatenicks.push(escapeHtml(ball.name));
             user_txt += sep + escapeHtml(ball.name);
