@@ -3150,7 +3150,7 @@ var legbgcolor = $("#menuPanelColor").val();
             var ball = stat.minimapBalls[key];
 			window.agtoolball=stat;
 			///////Public Array for agar tool teammates 
-			window.agartoolteammatenicks.push(escapeHtml(ball.name));
+			//window.agartoolteammatenicks.push(escapeHtml(ball.name));
             user_txt += sep + escapeHtml(ball.name);
 //			user_txt += count + ": ";
             sep = '<br/>'+ count + ". ";
