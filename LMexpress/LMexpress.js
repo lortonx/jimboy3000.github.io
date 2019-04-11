@@ -2999,7 +2999,7 @@ var legbgcolor = $("#menuPanelColor").val();
                 break;
             case "customSkins":				
                 window.agtoolball=cmd.customs;
-				if(legendmod.customSkins){
+				if(legendmod.showCustomSkins){
 				Object.keys(window.agtoolball).forEach(function(key) {
 				console.log("Custom skin from agar tool added: " + key.split("%")[0] +"  "+ window.agtoolball[key]);
 				core.registerSkin(key.split("%")[0], null, window.agtoolball[key], 1, null)
