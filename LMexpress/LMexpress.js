@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.024 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.025 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "22"; // the version 1.1-> 1.11
@@ -2988,7 +2988,7 @@ var legbgcolor = $("#menuPanelColor").val();
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
-				window.agtoolball=cmd;
+				
                 my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
                 break;
             case "remove":
@@ -2997,6 +2997,9 @@ var legbgcolor = $("#menuPanelColor").val();
             case "position":
                 my.moveBallOnMinimap(cmd.socketID, cmd.x, cmd.y);
                 break;
+            case "customSkins":
+                window.agtoolball=cmd.customs;
+                break;				
             case "reset":
                 my.resetMinimap();
                 break;
@@ -3020,6 +3023,7 @@ var legbgcolor = $("#menuPanelColor").val();
                 break;	
 			case "ls":
 				console.log("Unknown command ls: "+ cmd.message);
+				window.agtoolball1
 				break;
 			case "hc":
 				console.log("Unknown command ls: "+ cmd.message);
