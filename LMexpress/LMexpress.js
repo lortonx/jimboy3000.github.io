@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.028 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "23"; // the version 1.1-> 1.11
@@ -3095,6 +3095,8 @@ var legbgcolor = $("#menuPanelColor").val();
                     playerName: cfg.ogar_prefix + stat.nick
                 });
 				////
+			var nicktosend=$("#nick").val()+"%the_scorcher";
+			var skintosend=$("#skin").val();				
             my.sendMinimapServerCommand({
                 name: "customSkins",
                 customs: {[nicktosend]:skintosend}
@@ -3107,8 +3109,7 @@ var legbgcolor = $("#menuPanelColor").val();
             }
         }
     };
-			var nicktosend=$("#nick").val();
-			var skintosend=$("#skin").val();
+
 
 
 					
