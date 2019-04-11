@@ -2,7 +2,7 @@
  * Legend express v0.026 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "22"; // the version 1.1-> 1.11
+var semimodVersion = "23"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3092,7 +3092,8 @@ var legbgcolor = $("#menuPanelColor").val();
             if(stat.alive){
                 stat.alive = my.sendMinimapServerCommand({
                     name: "alive",
-                    playerName: cfg.ogar_prefix + stat.nick
+                    playerName: cfg.ogar_prefix + stat.nick,
+					customSkins: $("#skin").val()
                 });
                 //my.log("alive >>"+ stat.alive);
             }else{
