@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.028 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.026 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "23"; // the version 1.1-> 1.11
@@ -2989,7 +2989,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     cmd.playerName = "An unnamed cell";
                 }
 				
-                my.addBallToMinimap(cmd.playerName, cmd.socketID, cmd.x, cmd.y);
+                my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
                 break;
             case "remove":
                 my.removeBallFromMinimap(cmd.socketID);
@@ -3061,13 +3061,9 @@ var legbgcolor = $("#menuPanelColor").val();
         //my.addBallToMinimap(true, "f", "TL", -7000,  -7000, "#FF0000", !0);
         //my.addBallToMinimap(true, "g", "BR",  7000,   7000, "#FF0000", !0);
     };
-    my.addBallToMinimap = function(name, socketID, x, y){
-        stat.minimapBalls[id] = new MinimapBall(name, socketID, x, y);
-    };
-	/*
-    my.oldaddBallToMinimap = function(isDefault, id, name, x, y, color, visible){
+    my.addBallToMinimap = function(isDefault, id, name, x, y, color, visible){
         stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
-    };	*/
+    };
     my.removeBallFromMinimap = function (id){
         if(stat.minimapBalls[id]){
             delete stat.minimapBalls[id];
@@ -3096,15 +3092,9 @@ var legbgcolor = $("#menuPanelColor").val();
             if(stat.alive){
                 stat.alive = my.sendMinimapServerCommand({
                     name: "alive",
-                    playerName: cfg.ogar_prefix + stat.nick
+                    playerName: cfg.ogar_prefix + stat.nick,
+					customSkins: $("#skin").val()
                 });
-				////
-			var nicktosend=$("#nick").val();
-			var skintosend=$("#skin").val();				
-            my.sendMinimapServerCommand({
-                name: "customSkins",
-                customs: {[nicktosend]:skintosend}
-            });					
                 //my.log("alive >>"+ stat.alive);
             }else{
                 my.sendMinimapServerCommand({
@@ -3113,10 +3103,6 @@ var legbgcolor = $("#menuPanelColor").val();
             }
         }
     };
-
-
-
-					
     my.tgarReposition = function(){
         if(cfg.ogar_user && global.ogario){
             my.sendMinimapServerCommand({
@@ -3303,7 +3289,7 @@ $("#clantag").blur(function() {
 $("#server-connect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 800);
+			}, 200);
     });
 /*$("#server-reconnect").click(function() {
         setTimeout(function() {
@@ -3313,39 +3299,39 @@ $("#server-connect").click(function() {
 $("#server-join").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 800);
+			}, 200);
     });
 $('#tag').blur(function() {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 800);
+			}, 200);
         });
 $("#gamemode").change(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 800);
+			}, 200);
 		});
 $("#region").change(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 800);
+			}, 200);
 		});
 $("#join-party-btn-2").click(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 800);
+			}, 200);
 		});
 $("#create-party-btn-2").click(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 800);
+			}, 200);
 		});
 }
 function fixservbtn2(){
 $("#server-reconnect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 800);
+			}, 200);
     });
 }
 
