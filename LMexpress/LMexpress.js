@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.026 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "23"; // the version 1.1-> 1.11
@@ -3092,9 +3092,13 @@ var legbgcolor = $("#menuPanelColor").val();
             if(stat.alive){
                 stat.alive = my.sendMinimapServerCommand({
                     name: "alive",
-                    playerName: cfg.ogar_prefix + stat.nick,
-					customSkins: $("#skin").val()
+                    playerName: cfg.ogar_prefix + stat.nick
                 });
+				////
+            my.sendMinimapServerCommand({
+                name: "customSkins",
+                customs: {[nicktosend]:skintosend}
+            });					
                 //my.log("alive >>"+ stat.alive);
             }else{
                 my.sendMinimapServerCommand({
@@ -3103,6 +3107,11 @@ var legbgcolor = $("#menuPanelColor").val();
             }
         }
     };
+			var nicktosend=$("#nick").val();
+			var skintosend=$("#skin").val();
+
+
+					
     my.tgarReposition = function(){
         if(cfg.ogar_user && global.ogario){
             my.sendMinimapServerCommand({
