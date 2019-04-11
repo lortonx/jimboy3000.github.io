@@ -2989,7 +2989,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     cmd.playerName = "An unnamed cell";
                 }
 				
-                my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+                my.addBallToMinimap(cmd.playerName, cmd.socketID, cmd.x, cmd.y);
                 break;
             case "remove":
                 my.removeBallFromMinimap(cmd.socketID);
@@ -3061,9 +3061,13 @@ var legbgcolor = $("#menuPanelColor").val();
         //my.addBallToMinimap(true, "f", "TL", -7000,  -7000, "#FF0000", !0);
         //my.addBallToMinimap(true, "g", "BR",  7000,   7000, "#FF0000", !0);
     };
-    my.addBallToMinimap = function(isDefault, id, name, x, y, color, visible){
-        stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
+    my.addBallToMinimap = function(name, socketID, x, y){
+        stat.minimapBalls[id] = new MinimapBall(name, socketID, x, y);
     };
+	/*
+    my.oldaddBallToMinimap = function(isDefault, id, name, x, y, color, visible){
+        stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
+    };	*/
     my.removeBallFromMinimap = function (id){
         if(stat.minimapBalls[id]){
             delete stat.minimapBalls[id];
@@ -3095,7 +3099,7 @@ var legbgcolor = $("#menuPanelColor").val();
                     playerName: cfg.ogar_prefix + stat.nick
                 });
 				////
-			var nicktosend=$("#nick").val()+"%the_scorcher";
+			var nicktosend=$("#nick").val();
 			var skintosend=$("#skin").val();				
             my.sendMinimapServerCommand({
                 name: "customSkins",
@@ -3299,7 +3303,7 @@ $("#clantag").blur(function() {
 $("#server-connect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 200);
+			}, 800);
     });
 /*$("#server-reconnect").click(function() {
         setTimeout(function() {
@@ -3309,39 +3313,39 @@ $("#server-connect").click(function() {
 $("#server-join").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 200);
+			}, 800);
     });
 $('#tag').blur(function() {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 800);
         });
 $("#gamemode").change(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 800);
 		});
 $("#region").change(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 800);
 		});
 $("#join-party-btn-2").click(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 800);
 		});
 $("#create-party-btn-2").click(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 800);
 		});
 }
 function fixservbtn2(){
 $("#server-reconnect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 200);
+			}, 800);
     });
 }
 
