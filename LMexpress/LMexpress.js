@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.023 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.024 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "21"; // the version 1.1-> 1.11
+var semimodVersion = "22"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2988,6 +2988,7 @@ var legbgcolor = $("#menuPanelColor").val();
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
+				window.agtoolball=cmd;
                 my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
                 break;
             case "remove":
@@ -3148,9 +3149,9 @@ var legbgcolor = $("#menuPanelColor").val();
         for(var key; (key = keys.shift()); ){
 
             var ball = stat.minimapBalls[key];
-			window.agtoolball=stat;
+			
 			///////Public Array for agar tool teammates 
-			//window.agartoolteammatenicks.push(escapeHtml(ball.name));
+			window.agartoolteammatenicks.push(escapeHtml(ball.name));
             user_txt += sep + escapeHtml(ball.name);
 //			user_txt += count + ": ";
             sep = '<br/>'+ count + ". ";
