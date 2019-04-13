@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.026 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "23"; // the version 1.1-> 1.11
@@ -3002,7 +3002,8 @@ var legbgcolor = $("#menuPanelColor").val();
 				if(legendmod.showCustomSkins){
 				Object.keys(window.agtoolball).forEach(function(key) {
 				console.log("Custom skin from agar tool added: " + key.split("%")[0] +"  "+ window.agtoolball[key]);
-				core.registerSkin(key.split("%")[0], null, window.agtoolball[key], 1, null)
+				if (key.split("%")[0]!=0){
+				core.registerSkin(key.split("%")[0], null, window.agtoolball[key], 1, null)}
 				});	
 				}
                 break;				
