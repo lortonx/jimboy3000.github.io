@@ -2,7 +2,7 @@
  * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "23"; // the version 1.1-> 1.11
+var semimodVersion = "24"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2181,6 +2181,21 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    window.open(MSGCOMMANDS,'_blank');
 		    });
 			}
+			else if (MSGCOMMANDS.includes("[tag]")) {
+				if ($("#nick").val().includes("tag")==false){
+				$(".message-text").remove();
+				$(".toast.toast-success").remove();
+				}				
+			MSGCOMMANDS=MSGCOMMANDS.split("[tag]").pop();
+			MSGCOMMANDS=MSGCOMMANDS.split('[/tag]')[0];	
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "250px");
+			$("#acceptURL").click(function() {
+		    $("#clantag").val(MSGCOMMANDS);
+		    });
+			}			
 			else if (MSGCOMMANDS.includes("[yut]")) {
 				if ($("#nick").val().includes("yut")==false){
 				$(".message-text").remove();
@@ -2751,8 +2766,11 @@ var legbgcolor = $("#menuPanelColor").val();
             return;
 			}
         }
+		if (MSGCOMMANDS.indexOf('[url]')==-1 || MSGCOMMANDS.indexOf('[yut]')==-1 || MSGCOMMANDS.indexOf('[skype]')==-1 || MSGCOMMANDS.indexOf('[discord]')==-1 || MSGCOMMANDS.indexOf('[srv]')==-1 || MSGCOMMANDS.indexOf('[tag]')==-1 ||MSGCOMMANDS.indexOf('Legend.Mod')==-1 || MSGCOMMANDS.indexOf('https://agar.io/sip=151.80.91.73:1511')==-1){
+
         var msg = '[Universal chat]:' + $("#message").val();
 		var msgLM=$("#message").val();
+		newsubmit();
         if(msgLM.length){
             my.sendMinimapServerCommand({
                 name: "chat",
@@ -2767,7 +2785,8 @@ var legbgcolor = $("#menuPanelColor").val();
  //               $("#message-box").hide();
             }
         }
-    };
+    }
+	};
     my.chatClose = function(){
         $("#message-box").css("display", "none");
         if(cfg.chat_unpause && $("#pause-hud").css("display") == "block"){ // Release during PAUSE
@@ -4837,6 +4856,11 @@ function changeModLanguage() {
 
         }, 800);
     }	
+}
+function newsubmit(){
+	if (legendmod.play==true){
+		$('*[data-itr="page_play"]').click();
+	}
 }
 function triggerLMbtns() {
 			$('#leaderboardlimit').val(window.leaderboardlimit);
