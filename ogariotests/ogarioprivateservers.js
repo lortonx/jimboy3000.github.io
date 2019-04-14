@@ -3765,6 +3765,17 @@ var core = function(t, e, i) {
                 switch (54 == o && (o = 53), o) {
                     case 5:
                         break;
+						/////////////
+					case 16:
+						console.log(t);
+						break;
+					case 64:
+						console.log(t);
+						break;			
+					case 99:
+						console.log(t);
+						break;	
+						////						
                     case 17:
                         this['viewX'] = t.getFloat32(s, !0), s += 4, this['viewY'] = t.getFloat32(s, !0), s += 4, this['scale'] = t.getFloat32(s, !0);
                         break;
