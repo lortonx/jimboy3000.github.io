@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.027b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.028 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "25"; // the version 1.1-> 1.11
@@ -2197,6 +2197,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    }).css("width", "250px");
 			$("#acceptURL").click(function() {
 		    $("#clantag").val(MSGCOMMANDS);
+			$('#clantag').css('background-color', '#ff6347');	
 			newsubmit();
 		    });
 			}
@@ -2208,6 +2209,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    }).css("width", "250px");
 			$("#acceptURL").click(function() {
 		    $("#clantag").val(MSGCOMMANDS);
+			$('#clantag').css('background-color', '#ff6347');	
 			newsubmit();
 		    });
 			}
@@ -2529,7 +2531,7 @@ var legbgcolor = $("#menuPanelColor").val();
 
     var global = window;
     var my = {
-        "name": "<i class='fa fa-universal-access' aria-hidden='true'></i>",
+        "name": cfg.tgar_prefix,
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
@@ -2599,7 +2601,7 @@ var legbgcolor = $("#menuPanelColor").val();
     var cfg= {}, cfg_org = {
         "user_show": true,
         "minimap_show": true,
-        "tgar_prefix": "O",
+        "tgar_prefix": "@",
         "tgar_color": "#8C81C7",
         "update_interval": 1000,
         "ogar_user": true,
@@ -3327,7 +3329,7 @@ $("#clantag").blur(function() {
 $("#server-connect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 200);
+			}, 1000);
     });
 /*$("#server-reconnect").click(function() {
         setTimeout(function() {
@@ -3337,39 +3339,39 @@ $("#server-connect").click(function() {
 $("#server-join").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 200);
+			}, 1000);
     });
 $('#tag').blur(function() {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 1000);
         });
 $("#gamemode").change(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 1000);
 		});
 $("#region").change(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 1000);
 		});
 $("#join-party-btn-2").click(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 1000);
 		});
 $("#create-party-btn-2").click(function () {
 			setTimeout(function() {
 			Universalchatfix();
-			}, 200);
+			}, 1000);
 		});
 }
 function fixservbtn2(){
 $("#server-reconnect").click(function() {
         setTimeout(function() {
 		Universalchatfix();
-			}, 200);
+			}, 1000);
     });
 }
 
