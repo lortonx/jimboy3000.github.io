@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.147 test
+//v1.148 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3013,7 +3013,7 @@ var core = function(t, e, i) {
 							//image1.onload = drawImageActualSize; // Draw when image has loaded
 
 							// Load an image of intrinsic size 300x227 in CSS pixels
-							image1.src = 'ncolor';
+							image1.src = ncolor;
 							
                             if (!(!this['alive'] || s && o && this['id'] != o)) {
                                 this['lastX'] = (29 * this['lastX'] + this['x']) / 30, this['lastY'] = (29 * this['lastY'] + this['y']) / 30;
