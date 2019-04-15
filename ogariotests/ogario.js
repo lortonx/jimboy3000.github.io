@@ -2,14 +2,14 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.150 test
+//v1.151 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
 window.agarversion="v12/1922/";
 
 
-window.disableIntegrity=false;
+//window.disableIntegrity=false;
 var Lmagarversion="";
 
 window.LMGameConfiguration = $.ajax({
@@ -3706,6 +3706,7 @@ var core = function(t, e, i) {
                 e.setUint8(t.length + 1, 0), this.sendMessage(e);
             },
             'setClientVersion': function(t, e) {
+				
 				if (window.disableIntegrity!=false){ //
 					this.clientVersion = t, this.clientVersionString = e, console.log('[Legend mod Express] Client version:', t, e);
 				} //
