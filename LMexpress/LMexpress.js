@@ -2,7 +2,7 @@
  * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "24"; // the version 1.1-> 1.11
+var semimodVersion = "25"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2194,6 +2194,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    }).css("width", "250px");
 			$("#acceptURL").click(function() {
 		    $("#clantag").val(MSGCOMMANDS);
+			newsubmit();
 		    });
 			}			
 			else if (MSGCOMMANDS.includes("[yut]")) {
@@ -2766,11 +2767,11 @@ var legbgcolor = $("#menuPanelColor").val();
             return;
 			}
         }
-		if (MSGCOMMANDS.indexOf('[url]')==-1 || MSGCOMMANDS.indexOf('[yut]')==-1 || MSGCOMMANDS.indexOf('[skype]')==-1 || MSGCOMMANDS.indexOf('[discord]')==-1 || MSGCOMMANDS.indexOf('[srv]')==-1 || MSGCOMMANDS.indexOf('[tag]')==-1 ||MSGCOMMANDS.indexOf('Legend.Mod')==-1 || MSGCOMMANDS.indexOf('https://agar.io/sip=151.80.91.73:1511')==-1){
-
+		
         var msg = '[Universal chat]:' + $("#message").val();
 		var msgLM=$("#message").val();
-		newsubmit();
+		if (msgLM.indexOf('[url]')==-1 || msgLM.indexOf('[yut]')==-1 || msgLM.indexOf('[skype]')==-1 || msgLM.indexOf('[discord]')==-1 || msgLM.indexOf('[srv]')==-1 || msgLM.indexOf('[tag]')==-1 ||msgLM.indexOf('Legend.Mod')==-1 || msgLM.indexOf('https://agar.io/sip=151.80.91.73:1511')==-1){
+
         if(msgLM.length){
             my.sendMinimapServerCommand({
                 name: "chat",
@@ -2786,6 +2787,9 @@ var legbgcolor = $("#menuPanelColor").val();
             }
         }
     }
+	else {
+		console.log("Message included Script command, thus it is not sent to agar tool");
+	}
 	};
     my.chatClose = function(){
         $("#message-box").css("display", "none");
