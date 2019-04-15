@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.149 test
+//v1.150 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3741,16 +3741,16 @@ var core = function(t, e, i) {
 				//} //
             },
             'shiftMessage': function(t, e, i) {
-				if (window.disableIntegrity!=false){ //
+				//if (window.disableIntegrity!=false){ //
                 if (i)
                     for (s = 0; s < t.length; s++) t.writeUInt8(t.readUInt8(s) ^ e >>> s % 4 * 8 & 255, s);
                 else
                     for (var s = 0; s < t.byteLength; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
                 return t;
-				} //
-				else{ //				
-					return t; //
-				} //
+				//} //
+				//else{ //				
+					//return t; //
+				//} //
             },
             'decompressMessage': function(t) {
                 var e = new o(t['buffer']),
