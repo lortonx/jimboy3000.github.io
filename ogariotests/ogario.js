@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.149 test
+//v1.110 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3022,7 +3022,7 @@ var core = function(t, e, i) {
 									
                                 //this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fill();
                                 //this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = ncolor, t.fill();
-								this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['drawImage'](image1), t.fill();
+								this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['drawImage'](image1,0,0), t.fill();
 								
 
 								//console.log('gminiMapNickStrokeColorg: '+g["miniMapNickStrokeColor"]); //returns #000000
