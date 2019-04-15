@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.132b test
+//v1.133 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2083,8 +2083,8 @@ var core = function(t, e, i) {
             },
             'displayTop5': function() {
                 if (v['showTop5']) {
-					console.log(['top5'].length);
-					console.log(['teamPlayers'].length);
+					//console.log(['top5'].length);
+					//console.log(['teamPlayers'].length);
                     for (var t = '', e = 0, s = this['teamPlayers'].length, o = 0; o < s; o++) e += this['teamPlayers'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['teamPlayers'][o]['color'] + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['teamPlayers'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['teamPlayers'][o]['x'], this['teamPlayers'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['teamPlayers'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['teamPlayers'][o]['nick']) + '</li>');
                     this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                 }
@@ -2683,6 +2683,7 @@ var core = function(t, e, i) {
                     }
                     if (v['showMiniMapGuides']) {
                         u = Math.round((i['playerX'] + r) * n), d = Math.round((i['playerY'] + l) * n);
+						console.log(g['miniMapGuidesColor']);
                         this['miniMapCtx']['lineWidth'] = 1, this['miniMapCtx']['strokeStyle'] = g['miniMapGuidesColor'], this['miniMapCtx']['beginPath'](), this['miniMapCtx']['moveTo'](u, 0), this['miniMapCtx']['lineTo'](u, o - 1), this['miniMapCtx']['moveTo'](0, d), this['miniMapCtx']['lineTo'](o - 1, d), this['miniMapCtx']['stroke']();
                     }
                     if (this['miniMapCtx']['beginPath'](), this['miniMapCtx'].arc((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this.pi2, !1), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx'].fill(), this['teamPlayers'].length)
