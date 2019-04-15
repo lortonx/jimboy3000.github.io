@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.027b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "25"; // the version 1.1-> 1.11
@@ -2200,7 +2200,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 			newsubmit();
 		    });
 			}
-			}	
+				
 			else {
 			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63b + ': <i id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></i></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
