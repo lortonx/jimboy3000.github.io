@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.148 test
+//v1.149 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -3733,12 +3733,12 @@ var core = function(t, e, i) {
                 return i != u && (i = 0 | Math['imul'](n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math['imul'](i, s), i ^= u = i >>> 15, console.log('[Legend mod Express] Generated client key:', i), i;
             },
             'shiftKey': function(t) {
-				if (window.disableIntegrity!=false){ //
+				//if (window.disableIntegrity!=false){ //
 					return t = 0 | Math['imul'](t, 1540483477), t = 114296087 ^ (0 | Math['imul'](t >>> 24 ^ t, 1540483477)), (t = 0 | Math['imul'](t >>> 13 ^ t, 1540483477)) >>> 15 ^ t;
-				} //
-				else{ //
-					return 0; //	
-				} //
+				//} //
+				//else{ //
+					//return 0; //	
+				//} //
             },
             'shiftMessage': function(t, e, i) {
 				if (window.disableIntegrity!=false){ //
@@ -3748,7 +3748,7 @@ var core = function(t, e, i) {
                     for (var s = 0; s < t.byteLength; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
                 return t;
 				} //
-				else{ //
+				else{ //				
 					return t; //
 				} //
             },
