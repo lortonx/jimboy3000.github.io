@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.145 test
+//v1.124 test
 //Game Configurations
 
 //window.agarversion="v12/1963/";
@@ -2083,9 +2083,7 @@ var core = function(t, e, i) {
             },
             'displayTop5': function() {
                 if (v['showTop5']) {
-					//console.log(['top5'].length);
-					//console.log(['teamPlayers'].length);
-                    for (var t = '', e = 0, s = this['teamPlayers'].length, o = 0; o < s; o++) e += this['teamPlayers'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['teamPlayers'][o]['color'] + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['teamPlayers'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['teamPlayers'][o]['x'], this['teamPlayers'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['teamPlayers'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['teamPlayers'][o]['nick']) + '</li>');
+                    for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o]['color'] + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o]['nick']) + '</li>');
                     this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                 }
             },
@@ -2611,6 +2609,19 @@ var core = function(t, e, i) {
                     }
                 }
             },
+            'cacheVanillaSkin': function(vanSkin) {
+                //console.log(t);  //////// returns img scr of server/tag
+                //if (0 != this['cacheQueue'].length) {
+                var e = vanSkin;
+                if (e) {
+                    console.log(e);
+                    var i = document['createElement']('canvas');
+                    i['width'] = 512, i['height'] = 512;
+                    var s = i['getContext']('2d');
+                    s['beginPath'](), s.arc(256, 256, 256, 0, 2 * Math['PI'], !1), s['clip'](), s['drawImage'](this['customSkinsCache'][e], 0, 0, 512, 512), this['customSkinsCache'][e + '_cached'] = new Image(), this['customSkinsCache'][e + '_cached'].src = i.toDataURL(), i = null, this['cacheSkin'](this['customSkinsCache']);
+                    //}
+                }
+            },
             'getCachedSkin': function(t, e) {
                 return t[e + '_cached'] && t[e + '_cached']['complete'] && t[e + '_cached']['width'] ? t[e + '_cached'] : null;
             },
@@ -2686,10 +2697,7 @@ var core = function(t, e, i) {
                         this['miniMapCtx']['lineWidth'] = 1, this['miniMapCtx']['strokeStyle'] = g['miniMapGuidesColor'], this['miniMapCtx']['beginPath'](), this['miniMapCtx']['moveTo'](u, 0), this['miniMapCtx']['lineTo'](u, o - 1), this['miniMapCtx']['moveTo'](0, d), this['miniMapCtx']['lineTo'](o - 1, d), this['miniMapCtx']['stroke']();
                     }
                     if (this['miniMapCtx']['beginPath'](), this['miniMapCtx'].arc((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this.pi2, !1), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx'].fill(), this['teamPlayers'].length)
-                        for (c = 0; c < this['teamPlayers'].length; c++) {
-						//console.log(legendmod3['teamPlayers'][c]['color']);
-						//this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID']);}
-						this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID'], legendmod3['teamPlayers'][c]['color']);}
+                        for (c = 0; c < this['teamPlayers'].length; c++) this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID']);
                     if (this['deathLocations'].length > 0) {
                         u = Math.round((this['deathLocations'][this['lastDeath']]['x'] + i['mapOffset']) * n), d = Math.round((this['deathLocations'][this['lastDeath']]['y'] + i['mapOffset']) * n);
                         var f = Math['max'](g['miniMapMyCellSize'] - 2, 4);
@@ -3006,19 +3014,13 @@ var core = function(t, e, i) {
                     var c = new function(t, e, i, s) {
                         this['id'] = t, this['nick'] = e, this['skinID'] = i, this['skinURL'] = s, this['x'] = 0, this['y'] = 0, this['lastX'] = 0, this['lastY'] = 0, this['mass'] = 0, this['clanTag'] = '', this['color'] = null, this['customColor'] = g['miniMapTeammatesColor'], this['alive'] = !1, this['updateTime'] = null, this.pi2 = 2 * Math['PI'], this['setColor'] = function(t, e) {
                             this['color'] = t, 7 == e.length && (this['customColor'] = e);
-                        }, this['drawPosition'] = function(t, e, i, s, o, ncolor) {
+                        }, this['drawPosition'] = function(t, e, i, s, o) {
                             if (!(!this['alive'] || s && o && this['id'] != o)) {
                                 this['lastX'] = (29 * this['lastX'] + this['x']) / 30, this['lastY'] = (29 * this['lastY'] + this['y']) / 30;
                                 var a = (this['lastX'] + e) * i,
                                     n = (this['lastY'] + e) * i;
-                                //this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fill();
-                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = ncolor, t.fill();
-
-								//console.log('gminiMapNickStrokeColorg: '+g["miniMapNickStrokeColor"]); //returns #000000
-								//console.log('gminiMapNickStrokeColor: '+g["miniMapNickColor"]); //shows the team color
-								//console.log('voneColoredTeammates: '+v['oneColoredTeammates']); //returns false
-								
-								}
+                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, !1), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fill();
+                            }
                         };
                     }(i, o, l, a);
                     c['setColor'](r, n), this['teamPlayers'].push(c);
@@ -3703,14 +3705,12 @@ var core = function(t, e, i) {
                 for (var i = 0; i < t.length; i++) e.setUint8(1 + i, t.charCodeAt(i));
                 e.setUint8(t.length + 1, 0), this.sendMessage(e);
             },
-            'setClientVersion': function(t, e) {
-				if (core.disableIntegrity!=false){ //
-					this.clientVersion = t, this.clientVersionString = e, console.log('[Legend mod Express] Client version:', t, e);
-				} //
-				else{ //
-					this.clientVersion = 0, this.clientVersionString = e, console.log('[Legend mod Express] Client version:', t, e); //
-				} //
-            },
+/*            'setClientVersion': function(t, e) {
+                this.clientVersion = t, this.clientVersionString = e, console.log('[Legend mod Express] Client version:', t, e);
+            }, */
+			'setClientVersion': function(t, e) {
+                this.clientVersion = 0, this.clientVersionString = e, console.log('[Legend mod Express] Client version:', t, e);
+            },			
             'generateClientKey': function(t, e) {
                 if (!t.length || !e.byteLength) return null;
                 for (var i = null, s = 1540483477, o = t['match'](/(ws+:\/\/)([^:]*)(:\d+)/)[2], a = o.length + e.byteLength, n = new Uint8Array(a), r = 0; r < o.length; r++) n[r] = o.charCodeAt(r);
@@ -3730,26 +3730,22 @@ var core = function(t, e, i) {
                 }
                 return i != u && (i = 0 | Math['imul'](n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math['imul'](i, s), i ^= u = i >>> 15, console.log('[Legend mod Express] Generated client key:', i), i;
             },
-            'shiftKey': function(t) {
-				if (core.disableIntegrity!=false){ //
-					return t = 0 | Math['imul'](t, 1540483477), t = 114296087 ^ (0 | Math['imul'](t >>> 24 ^ t, 1540483477)), (t = 0 | Math['imul'](t >>> 13 ^ t, 1540483477)) >>> 15 ^ t;
-				} //
-				else{ //
-					return 0; //	
-				} //
-            },
-            'shiftMessage': function(t, e, i) {
-				if (core.disableIntegrity!=false){ //
+/*            'shiftKey': function(t) {
+                return t = 0 | Math['imul'](t, 1540483477), t = 114296087 ^ (0 | Math['imul'](t >>> 24 ^ t, 1540483477)), (t = 0 | Math['imul'](t >>> 13 ^ t, 1540483477)) >>> 15 ^ t;
+            }, */
+			'shiftKey': function(t) {
+                return 0;
+            },			
+/*            'shiftMessage': function(t, e, i) {
                 if (i)
                     for (s = 0; s < t.length; s++) t.writeUInt8(t.readUInt8(s) ^ e >>> s % 4 * 8 & 255, s);
                 else
                     for (var s = 0; s < t.byteLength; s++) t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
                 return t;
-				} //
-				else{ //
-					return t; //
-				} //
-            },
+            },*/
+			'shiftMessage': function(t, e, i) {
+                return t;
+            },			
             'decompressMessage': function(t) {
                 var e = new o(t['buffer']),
                     i = new o(e.readUInt32LE(1));
@@ -3769,6 +3765,17 @@ var core = function(t, e, i) {
                 switch (54 == o && (o = 53), o) {
                     case 5:
                         break;
+						/////////////
+					case 16:
+						console.log(t);
+						break;
+					case 64:
+						console.log(t);
+						break;			
+					case 99:
+						console.log(t);
+						break;	
+						////						
                     case 17:
                         this['viewX'] = t.getFloat32(s, !0), s += 4, this['viewY'] = t.getFloat32(s, !0), s += 4, this['scale'] = t.getFloat32(s, !0);
                         break;
@@ -3895,21 +3902,11 @@ var core = function(t, e, i) {
                 }
             },
             'handleLeaderboard': function() {				
-/*                for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
+                for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
                     'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb['clanTag'].length && 0 == this['leaderboard'][i]['nick'].indexOf(ogarcopythelb['clanTag']) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer['escapeHTML'](this['leaderboard'][i]['nick']) + '</span>';
-                } */
-				window.teammatenicks=[];
-				for (i=0;i<legendmod3.top5.length;i++){
-					window.teammatenicks.push(legendmod3.top5[i].nick);		
-				}
-				if (window.agartoolteammatenicks!=undefined){
-					window.teammatenicks = window.teammatenicks.concat(window.agartoolteammatenicks); 
-				}
-				for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
-                    var s = '<span>';
-                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb['clanTag'].length && 0 != window.teammatenicks.includes(this['leaderboard'][i]['nick']) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer['escapeHTML'](this['leaderboard'][i]['nick']) + '</span>';
-                }				
+                }
+				
                 if (this['playerPosition'] > window.leaderboardlimit && (t += '<span class=\"me\">' + this['playerPosition'] + '. ' + ogarminimapdrawer['escapeHTML'](this['playerNick']) + '</span>'), v['showLbData']);
 					t+='<span class="me">Total : '+this.leaderboard.length+'</span>';
                     for (var o = 0; o < this['ghostCells'].length && o != i; o++) e += '<span class=\"lb-data\">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this['ghostCells'][o]['mass']) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this['ghostCells'][o]['x'], this['ghostCells'][o]['y']) + ']</span>', e += '</span>';
