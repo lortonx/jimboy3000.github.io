@@ -2,7 +2,7 @@
  * Legend express v0.028 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "25"; // the version 1.1-> 1.11
+var semimodVersion = "26"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2526,10 +2526,27 @@ fixservbtn();
 
 var legbgpic = $("#menuBg").val();
 var legbgcolor = $("#menuPanelColor").val();
-
-
-
     var global = window;
+	
+    var cfg= {}, cfg_org = {
+        "user_show": true,
+        "minimap_show": true,
+        "tgar_prefix": "@",
+        "tgar_color": "#8C81C7",
+        "update_interval": 1000,
+        "ogar_user": true,
+        "ogar_prefix": "L.M",
+        "lmsa_teamtop": false,
+        "lmsa_chat": false,
+        "chat_close": false,
+        "chat_unpause": true,
+        "chat_vcenter": false,
+        "chat_alt": true,
+        "chat_ctrlalt": true,
+        "chat_ctrl": true,
+        "skin_toggle_auto": false,
+        "skin_toggle_interval": 10000
+    };	
     var my = {
         "name": cfg.tgar_prefix,
 //        "log": function(msg){ console.log(this.name + ":"+ msg); },
@@ -2598,25 +2615,7 @@ var legbgcolor = $("#menuPanelColor").val();
         "keyCodeA": 65, // 'A'
         "keyCodeR": 82 // 'R'
     };
-    var cfg= {}, cfg_org = {
-        "user_show": true,
-        "minimap_show": true,
-        "tgar_prefix": "@",
-        "tgar_color": "#8C81C7",
-        "update_interval": 1000,
-        "ogar_user": true,
-        "ogar_prefix": "L.M",
-        "lmsa_teamtop": false,
-        "lmsa_chat": false,
-        "chat_close": false,
-        "chat_unpause": true,
-        "chat_vcenter": false,
-        "chat_alt": true,
-        "chat_ctrlalt": true,
-        "chat_ctrl": true,
-        "skin_toggle_auto": false,
-        "skin_toggle_interval": 10000
-    };
+
     function pre_loop(){
         // At this point jQuery can not be used
         if(! document.getElementById("top5-hud")){
