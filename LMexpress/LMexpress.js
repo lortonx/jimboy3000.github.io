@@ -2,7 +2,7 @@
  * Legend express v0.027 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "24"; // the version 1.1-> 1.11
+var semimodVersion = "25"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -268,6 +268,8 @@ var Premadeletter60 = "Pause";
 var Premadeletter61 = "Enable YT as background";
 var Premadeletter62 = "Disable YT as background";
 var Premadeletter63 = "wants you to open the url";
+var Premadeletter63a = "wants you to join server with tag/password";
+var Premadeletter63b = "wants you to join server with NO TAG";
 var Premadeletter64 = "wants you to embed and play this youtube video";
 var Premadeletter65 = "wants you to join the following Skype room";
 var Premadeletter66 = "wants you to join the following Discord room";
@@ -2188,7 +2190,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 				}				
 			MSGCOMMANDS=MSGCOMMANDS.split("[tag]").pop();
 			MSGCOMMANDS=MSGCOMMANDS.split('[/tag]')[0];	
-			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63 + ': <a id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></a></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+			if (MSGCOMMANDS!=""){
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63a + ': <i id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></i></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
 		    timeOut: 20000,
 		    extendedTimeOut: 20000
 		    }).css("width", "250px");
@@ -2196,7 +2199,19 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		    $("#clantag").val(MSGCOMMANDS);
 			newsubmit();
 		    });
-			}			
+			}
+			}	
+			else {
+			toastr["warning"](Premadeletter22 + ' ' + MSGNICK + ' ' + Premadeletter63b + ': <i id="visiturl" href=' + MSGCOMMANDS + ' target="_blank"><font color="blue">' + MSGCOMMANDS + '</font></i></br> <button id="acceptURL" class="btn btn-block btn-info" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: -10px;">' + Premadeletter25 + '</button>', "", {
+		    timeOut: 20000,
+		    extendedTimeOut: 20000
+		    }).css("width", "250px");
+			$("#acceptURL").click(function() {
+		    $("#clantag").val(MSGCOMMANDS);
+			newsubmit();
+		    });
+			}
+			}				
 			else if (MSGCOMMANDS.includes("[yut]")) {
 				if ($("#nick").val().includes("yut")==false){
 				$(".message-text").remove();
