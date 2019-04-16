@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.027c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.027d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "25"; // the version 1.1-> 1.11
+var semimodVersion = "26"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6467,6 +6467,9 @@ preventcanvasimagecrash();
             }	
 		});			
 
+		//fix message-box focus
+		$('#message').click(function(){$("#message").focus();});
+		
         $("#reconnectBtn").click(function() {
             $("#server-reconnect").click();			
         });
