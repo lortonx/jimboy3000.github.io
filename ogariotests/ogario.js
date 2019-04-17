@@ -2,11 +2,11 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.152 test
+//v1.153 test
 //Game Configurations
 
-//window.agarversion="v12/1963/";
-window.agarversion="v12/1922/";
+window.agarversion="v12/2106/";
+//window.agarversion="v12/1922/";
 
 
 //window.disableIntegrity=false;
@@ -2253,7 +2253,7 @@ var core = function(t, e, i) {
                 if (s('#' + e)['empty']().addClass('default'), t && 0 != t.length) {
                     var i = this,
                         o = new Image();
-                    o.crossOrigin = 'Anonymous', o.onload = function() {
+                    o.crossOrigin = 'anonymous', o.onload = function() {
                         i['changeSkinPreview'](o, e);
                     }, o.src = t;
                 }
@@ -2596,7 +2596,7 @@ var core = function(t, e, i) {
             },
             'loadSkin': function(t, e) {
                 var i = this;
-                t[e] = new Image(), t[e].crossOrigin = 'Anonymous', t[e]['onload'] = function() {
+                t[e] = new Image(), t[e].crossOrigin = 'anonymous', t[e]['onload'] = function() {
                     this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
                 }, t[e].src = e;
             },
