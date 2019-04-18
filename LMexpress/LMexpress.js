@@ -540,8 +540,8 @@ function init(modVersion) {
 
 function getEmbedUrl(url) {
     url = url.trim();
-    //var musicParams = "showinfo=0&controls=2&vq=tiny&enablejsapi=1";
-	var musicParams = "showinfo=0&controls=2&vq=tiny&enablejsapi=1&autoplay=1";
+    var musicParams = "showinfo=0&controls=2&vq=tiny&enablejsapi=1";
+	//var musicParams = "showinfo=0&controls=2&vq=tiny&enablejsapi=1&autoplay=1";
     var videoId = getParameterByName("v", url);
     var listId = getParameterByName("list", url);
     if (videoId != null && listId == null) {
