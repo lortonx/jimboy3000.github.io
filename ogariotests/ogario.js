@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.157 test
+//v1.154 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -49,7 +49,6 @@ setTimeout(function(){
 //set values outside ogario
 window.leaderboardlimit=10;
 window.vanillaskins=false;
-window.videoskins=false;
 //window.customskinsname;
 //window.customskinsurl;
 
@@ -2579,23 +2578,17 @@ var core = function(t, e, i) {
                 this['setParty'](), ':party' === this['gameMode'] && this['partyToken'] ? this['gameServerReconnect']() : this['createParty'](), this['create']();
             },
             'onPlayerSpawn': function() {
-				MC.onPlayerSpawn(); 
-				if (window.videoskins==false){
                 if (i.play = !0, i['playerColor']) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb['nick'], i['playerColor'], ogarcopythelb['skinURL']);
                 var t = this;
                 setTimeout(function() {
 					///////// trigger special effects
 					//ogarfooddrawer.drawCommander();
 					/////////
-					
-                    //t['onPlayerSpawn']();
+                    t['onPlayerSpawn']();
                 }, 100);
-				}
-				
             },
             'onPlayerDeath': function() {
                 i.play = !1, i['playerColor'] = null, i['foodIsHidden'] = !1, i['playerMass'] = 0, i['playerScore'] = 0, i['playerSplitCells'] = 0, this['showMenu'](300), this['sendPlayerDeath'](), this['updateDeathLocations'](i['playerX'], i['playerY']), this['unlockButtons'](), ogarcommando1(), this['autoResp']();
-				MC.onPlayerDeath(); 
             },
             'setPlayerSettings': function() {
                 var t = s('#nick').val(),
@@ -2968,9 +2961,7 @@ var core = function(t, e, i) {
                 this['skipServerData'] ? this['skipServerData'] = !1 : (this['region'] = s('#region').val(), this['gameMode'] = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
-				if (window.videoskins=false){
                 this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
-				}
             },
             'sendPlayerUpdate': function() {
                 if (this['isSocketOpen']() && i.play && this['playerID'] && i['playerColor']) {
