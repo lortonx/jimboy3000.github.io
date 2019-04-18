@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.156 test
+//v1.157 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2968,7 +2968,9 @@ var core = function(t, e, i) {
                 this['skipServerData'] ? this['skipServerData'] = !1 : (this['region'] = s('#region').val(), this['gameMode'] = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
+				if (window.videoskins=false){
                 this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
+				}
             },
             'sendPlayerUpdate': function() {
                 if (this['isSocketOpen']() && i.play && this['playerID'] && i['playerColor']) {
