@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.160 test
+//v1.161 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2090,6 +2090,7 @@ var core = function(t, e, i) {
                 for (var t = '', e = 0; e < this['parties'].length; e++) t += '<li><a href=\"https://agar.io/#' + this['parties'][e] + '\" onclick=\"$(\'#party-token\').val(\'' + this['parties'][e] + '\'); $(\'#join-party-btn-2\').click();\">https://agar.io/#' + this['parties'][e] + '</a></li>';
                 this['activeParties']['className'] = '' === t ? 'no-parties' : '', this['activeParties']['innerHTML'] = t;
             },
+////			
             'displayTop5': function() {
                 if (v['showTop5']) {
 					//console.log(['top5'].length);
@@ -2101,6 +2102,35 @@ var core = function(t, e, i) {
             'setTop5limit': function(t) {
                 t && (this['top5limit'] = t);
             },
+////
+        "displayTop5" : function() {
+          if (v["showTop5"]) {
+            var pix_color = "";
+            var bufferString = 0;
+            var PL$29 = this["top5"]["length"];
+            var entityType = 0;
+            for (; entityType < PL$29; entityType++) {
+              bufferString = bufferString + this["top5"][entityType]["mass"];
+              if (!(entityType >= v["limTP"])) {
+                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img src' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://i.imgur.com/FDbM6yv.png") + '" alt=""> ' + 
+				this["escapeHTML"](this["top5"][entityType]["nick"]) + '</span><span id="top5marker" class=""> ' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) + '</span><span id= "top5mass" class=""> ' + 
+                this["shortMassFormat"](this["top5"][entityType]["mass"]) + '</span></li>');
+              }
+            }
+            this["top5pos"]["innerHTML"] = pix_color;
+            if (i["play"] && i["playerMass"]) {
+              bufferString = bufferString + i["playerMass"];
+              PL$29++;
+            }
+            this["top5totalMass"]["textContent"] = this["shortMassFormat"](bufferString);
+            this["top5totalPlayers"]["textContent"] = PL$29;
+          }
+        },
+        "setTop5limit" : function(canCreateDiscussions) {
+          if (canCreateDiscussions) {
+            this["top5limit"] = canCreateDiscussions;
+          }
+        },			
             'displayChatHistory': function(t) {
                 if (t) {
                     this['clearChatHistory'](!0);
