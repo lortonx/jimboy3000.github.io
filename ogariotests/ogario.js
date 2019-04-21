@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.156 test
+//v1.157 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -4260,19 +4260,19 @@ var core = function(t, e, i) {
             cimg2["src"] = g["commanderImage2"];
             pickerAxes["save"]();
             pickerAxes["globalAlpha"] = M["cAlpha"];
-            pickerAxes["translate"](attributes["spawnX"], attributes["spawnY"]);
+            pickerAxes["translate"](i["spawnX"], i["spawnY"]);
             pickerAxes["rotate"](M["cAngle"]);
             pickerAxes["drawImage"](cimg, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
             pickerAxes["restore"]();
             pickerAxes["save"]();
             pickerAxes["globalAlpha"] = M["cAlpha"];
-            pickerAxes["translate"](attributes["spawnX"], attributes["spawnY"]);
+            pickerAxes["translate"](i["spawnX"], i["spawnY"]);
             pickerAxes["rotate"](M["cAngle1"]);
             pickerAxes["drawImage"](cimg1, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
             pickerAxes["restore"]();
             pickerAxes["save"]();
             pickerAxes["globalAlpha"] = M["cAlpha"];
-            pickerAxes["translate"](attributes["spawnX"], attributes["spawnY"]);
+            pickerAxes["translate"](i["spawnX"], i["spawnY"]);
             pickerAxes["rotate"](M["cAngle2"]);
             pickerAxes["drawImage"](cimg2, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
             pickerAxes["restore"]();
@@ -4299,9 +4299,9 @@ var core = function(t, e, i) {
           M["cAngle2"] = 0;
           M["cAlpha"] = 1;
           M["drawCommander"] = false;
-          g["spawnX"] = 0;
-          g["spawnY"] = 0;
-        },		
+          i["spawnX"] = 0;
+          i["spawnY"] = 0;
+        },
 			///////				
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
                     e && (t['strokeStyle'] = n, t['lineWidth'] = r, t['beginPath'](), t['moveTo'](i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t['closePath'](), t['stroke']());
