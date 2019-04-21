@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.178 test
+//v1.180 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2111,7 +2111,7 @@ var core = function(t, e, i) {
             'setTop5limit': function(t) {
                 t && (this['top5limit'] = t);
             },
-*/
+
         "displayTop5" : function() {
           if (v["showTop5"]) {
             var pix_color = "";
@@ -2135,6 +2135,17 @@ var core = function(t, e, i) {
             this["top5totalPlayers"]["textContent"] = PL$29;
           }
         },
+*/		
+            'displayTop5': function() {
+                if (v['showTop5']) {
+                    for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span id="pos-skin" style="background-color: ' + this["top5"][e]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
+					+ (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o]['nick']) + '</li>');
+                    this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
+                }
+            },
+            'setTop5limit': function(t) {
+                t && (this['top5limit'] = t);
+            },		
         "setTop5limit" : function(canCreateDiscussions) {
           if (canCreateDiscussions) {
             this["top5limit"] = canCreateDiscussions;
