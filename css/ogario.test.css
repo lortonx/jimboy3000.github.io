@@ -1,4 +1,4 @@
-//v2.1
+//v2.2
 
 @import url(https://jimboy3100.github.io/css/ogicomoon.css?v=338);
 @import url(https:///fonts.googleapis.com/css?family=Ubuntu:400,700&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext);
@@ -1395,11 +1395,10 @@ input.hide-url::selection,input.stream-mode::selection{
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	box-shadow: 0 0 2px #000;
+	box-shadow: 0 0 8px #000;
 }
 #top5-pos li {
 	margin-top: 0px;
-	border-bottom: #fff solid 2px;
 	width: 250px;
 	height: 25px;
 }
