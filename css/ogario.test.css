@@ -1389,7 +1389,6 @@ input.hide-url::selection,input.stream-mode::selection{
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	box-shadow: 0 0 8px #000;
 }
 #top5-pos li {
 	margin-top: 5px;
@@ -1405,3 +1404,4 @@ input.hide-url::selection,input.stream-mode::selection{
 #top5-pos {
 	padding-left: 0!important;
 }
+
