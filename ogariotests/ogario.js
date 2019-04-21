@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.166 test
+//v1.170 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2121,7 +2121,7 @@ var core = function(t, e, i) {
             for (; entityType < PL$29; entityType++) {
               bufferString = bufferString + this["top5"][entityType]["mass"];
               if (!(entityType >= v["limTP"])) {
-                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://i.imgur.com/FDbM6yv.png") + '" alt=""> ' + 
+                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
 				this["escapeHTML"](this["top5"][entityType]["nick"]) + '</span><span id="top5marker" class=""> ' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) + '</span><span id= "top5mass" class=""> ' + 
                 this["shortMassFormat"](this["top5"][entityType]["mass"]) + '</span></li>');
               }
@@ -3100,7 +3100,8 @@ var core = function(t, e, i) {
                         'x': e['x'],
                         'y': e['y'],
                         'mass': e['mass'],
-                        'color': e['color']
+                        'color': e['color'],
+						"skin" : e["skinURL"]
                     }), this['isChatUserMuted'](e['id']) || this['addChatUser'](e['id'], e['nick']));
                 }
                 this['top5']['sort'](function(t, e) {
