@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.184 test
+//v1.185 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -1436,9 +1436,9 @@ var core = function(t, e, i) {
 				////
 				"color" : "#fff",
 				//"commanderImage" : "https://i.imgur.com/wQKUDB3.png",				
-				"commanderImage" : "jimboy3100.github.io/banners/drawCommander.png",
-				"commanderImage1" : "jimboy3100.github.io/banners/drawCommander1.png",
-				"commanderImage2" : "jimboy3100.github.io/banners/drawCommander2.png",				
+				"commanderImage" : "https://jimboy3100.github.io/banners/drawCommander.png",
+				"commanderImage1" : "https://jimboy3100.github.io/banners/drawCommander1.png",
+				"commanderImage2" : "https://jimboy3100.github.io/banners/drawCommander2.png",				
 				////
                 'miniMapFont': 'ubuntu-bold',
                 'miniMapFontFamily': 'Ubuntu',
