@@ -1392,6 +1392,7 @@ input.hide-url::selection,input.stream-mode::selection{
 ////
 
 #pos-skin, #pos-skin img {
+	margin-top: -5px;
 	width: 25px;
 	height: 25px;
 	box-shadow: 0 0 8px #000;
@@ -1402,8 +1403,7 @@ input.hide-url::selection,input.stream-mode::selection{
 	width: 250px;
 	height: 25px;
 }
-#pos-skin, #top5-pos .cell-counter {
-	margin-top: -5px;
+#pos-skin, #top5-pos .cell-counter	
 	height: 30px!important;
 	width: 30px!important;
 }
