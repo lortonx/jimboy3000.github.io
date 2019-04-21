@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.161 test
+//v1.162 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2090,7 +2090,7 @@ var core = function(t, e, i) {
                 for (var t = '', e = 0; e < this['parties'].length; e++) t += '<li><a href=\"https://agar.io/#' + this['parties'][e] + '\" onclick=\"$(\'#party-token\').val(\'' + this['parties'][e] + '\'); $(\'#join-party-btn-2\').click();\">https://agar.io/#' + this['parties'][e] + '</a></li>';
                 this['activeParties']['className'] = '' === t ? 'no-parties' : '', this['activeParties']['innerHTML'] = t;
             },
-////			
+/*			
             'displayTop5': function() {
                 if (v['showTop5']) {
 					//console.log(['top5'].length);
@@ -2102,7 +2102,7 @@ var core = function(t, e, i) {
             'setTop5limit': function(t) {
                 t && (this['top5limit'] = t);
             },
-////
+*/
         "displayTop5" : function() {
           if (v["showTop5"]) {
             var pix_color = "";
