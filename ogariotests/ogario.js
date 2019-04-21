@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.155 test
+//v1.156 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2586,7 +2586,7 @@ var core = function(t, e, i) {
           setTimeout(function() {
             i["spawnX"] = i["playerX"];
             i["spawnY"] = i["playerY"];
-            attrs["drawCommander"] = true;
+            M["drawCommander"] = true;
           }, 100);				
             },
             'onPlayerDeath': function() {
