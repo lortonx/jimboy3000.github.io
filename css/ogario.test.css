@@ -1,4 +1,4 @@
-//v2
+//v2.1
 
 @import url(https://jimboy3100.github.io/css/ogicomoon.css?v=338);
 @import url(//fonts.googleapis.com/css?family=Ubuntu:400,700&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext);
@@ -1411,41 +1411,9 @@ input.hide-url::selection,input.stream-mode::selection{
 	height: 30px!important;
 	width: 30px!important;
 }
-#top5-hud {
-	width: 260px!important;
-	left: 5px!important;
-}
-#top5-hud h5 {
-	text-align: left!important;
-	margin-left: 5px!important;
-	font-family: Raleway;
-	font-size: 13px!important;
-	font-weight: 600!important;
-	text-transform: uppercase;
-	user-select: none!important;
-	color: #fff;
-}
 #top5-pos {
 	font-family: ubuntu!important;
 	font-size: 14px;
 	padding-left: 0!important;
 }
-#top5marker {
-	visibility: hidden;
-	position: absolute!important;
-	text-align: right!important;
-	right: 52px!important;
-	padding: 2px;
-	background: #2E2A30;
-	font-size: 131%;
-}
-#top5mass {
-	position: absolute!important;
-	text-align: right!important;
-	right: 0px!important;
-	padding: 2px;
-	background: #2E2A30;
-	font-size: 13.4px;
-	font-family: ubuntu;
-	background: #2E2A30;
-}
+
