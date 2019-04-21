@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.171 test
+//v1.172 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2121,7 +2121,7 @@ var core = function(t, e, i) {
             for (; entityType < PL$29; entityType++) {
               bufferString = bufferString + this["top5"][entityType]["mass"];
               if (!(entityType >= v["limTP"])) {
-                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 33px; height:33px; display: inline-block;"><img style="width: 30px; height:30px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
+                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 33px; height:33px; display: inline-block;"><img style="margin-left 1px; width: 30px; height:30px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
 				this["escapeHTML"](this["top5"][entityType]["nick"]) + '</span><span id="top5marker" class=""> ' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) + '</span><span id= "top5mass" class=""> ' + 
                 this["shortMassFormat"](this["top5"][entityType]["mass"]) + '</span></li>');
               }
