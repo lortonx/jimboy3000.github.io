@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.162 test
+//v1.163 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -1787,7 +1787,16 @@ var core = function(t, e, i) {
                 'showQuickMenu': !0,
                 'showSkinsPanel': !0,
                 'animation': 140,
-                'zoomSpeedValue': 0.9,
+				////
+				"cameraSpeed" : 7,
+				"commanderDelay" : 1E3,
+				"suckAnimation" : false,
+				"virusGlow" : false,
+				"borderGlow" : false,
+				"limLB" : 10,
+				"limTP" : 5,	
+				////				
+                'zoomSpeedValue': .87,
                 'messageSound': 'https://jimboy3100.github.io/sounds/notification_01.mp3',
 //                'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
                 'commandSound': 'https://jimboy3100.github.io/sounds/chat-message.mp3'
