@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.177 test
+//v1.178 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2122,8 +2122,8 @@ var core = function(t, e, i) {
               bufferString = bufferString + this["top5"][entityType]["mass"];
               if (!(entityType >= v["limTP"])) {
 				  console.log(this["calculateMapSector"](this["top5"][entityType]["x"]));
-                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 1px; margin-top: 1px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
-				this["escapeHTML"](this["top5"][entityType]["nick"]) + '</span><span id="top5marker" class=""> ' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) + '</span><span id= "top5mass" class=""> ' + 
+                pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
+				this["escapeHTML"](this["top5"][entityType]["nick"]) + '</span><span class=\"hud-main-color\"> ' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) + '</span><span id= "top5mass" class=""> ' + 
                 this["shortMassFormat"](this["top5"][entityType]["mass"]) + '</span></li>');
               }
             }
