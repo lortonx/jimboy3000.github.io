@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.154 test
+//v1.160 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -1433,6 +1433,13 @@ var core = function(t, e, i) {
                 'miniMapTeammatesColor': '#01d9cc',
                 'miniMapDeathLocationColor': '#bf00aa',
                 'miniMapGhostCellsColor': '#ffffff',
+				////
+				"color" : "#fff",
+				//"commanderImage" : "https://i.imgur.com/wQKUDB3.png",				
+				"commanderImage" : "jimboy3100.github.io/banners/drawCommander.png",
+				"commanderImage1" : "jimboy3100.github.io/banners/drawCommander1.png",
+				"commanderImage2" : "jimboy3100.github.io/banners/drawCommander2.png",				
+				////
                 'miniMapFont': 'ubuntu-bold',
                 'miniMapFontFamily': 'Ubuntu',
                 'miniMapFontWeight': 700,
@@ -2583,6 +2590,11 @@ var core = function(t, e, i) {
 					/////////
                     t['onPlayerSpawn']();
                 }, 100);
+          setTimeout(function() {
+            i["spawnX"] = i["playerX"];
+            i["spawnY"] = i["playerY"];
+            M["drawCommander"] = true;
+          }, 100);				
             },
             'onPlayerDeath': function() {
                 i.play = !1, i['playerColor'] = null, i['foodIsHidden'] = !1, i['playerMass'] = 0, i['playerScore'] = 0, i['playerSplitCells'] = 0, this['showMenu'](300), this['sendPlayerDeath'](), this['updateDeathLocations'](i['playerX'], i['playerY']), this['unlockButtons'](), ogarcommando1(), this['autoResp']();
@@ -3532,6 +3544,14 @@ var core = function(t, e, i) {
             'targetX': 0,
             'targetY': 0,
             'targetDistance': 0,
+			////
+			"cRadius" : 10,
+			"cAngle" : 4,
+			"cAngle1" : 0,
+			"cAngle2" : 0,
+			"cAlpha" : 1,	
+			"drawCommander" : 0,			
+			////
             'battleRoyale': {
                 'state': 0,
                 'players': 0,
@@ -4200,6 +4220,7 @@ var core = function(t, e, i) {
                         var t = g['bordersWidth'] / 2;
                         this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M['mapMinX'] - t, M['mapMinY'] - t, M['mapMaxX'] + t, M['mapMaxY'] + t, g['bordersColor'], g['bordersWidth']);
                     }
+					this["drawCommander"]();
                     v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this['scale'], M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], !0);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
@@ -4235,60 +4256,59 @@ var core = function(t, e, i) {
                     }
                 },
 				///////////////////// special effects - not work
-				'drawCommander': function() {
-								console.log("starting drawCommander");
-                                var t = this.ctx;
-                                cimg = new Image();
-                                //cimg.src = "https://i1.wp.com/ithacalaundry.gr/wp-content/uploads/cropped-ithaca-favicon.png?fit=512%2C512&ssl=1";
-								cimg.src = g.commanderImage;
-                                cimg1 = new Image();
-                                cimg1.src = g.commanderImage1;
-								//cimg1.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53221702_10156422422342261_562265876800208896_n.jpg?_nc_cat=108&_nc_ht=scontent.fskg1-1.fna&oh=ef19be66005c1c6cacdc27e41b8d42a9&oe=5D155E79";
-                                cimg2 = new Image();
-								//cimg2.src = "https://scontent.fskg1-1.fna.fbcdn.net/v/t1.0-9/53169405_10205850786385701_7192010659427516416_o.jpg?_nc_cat=101&_nc_ht=scontent.fskg1-1.fna&oh=c75d0d11379b4d0297a38b4d19cba329&oe=5D151D7D";
-                                cimg2.src = g.commanderImage2;
-                                t.save(),
-								
-                                    t.globalAlpha = M.cAlpha,
-                                    t.translate(i.playerX, i.playerY),
-                                    t.rotate(M.cAngle),
-                                    t.drawImage(cimg, M.cRadius),
-                                    t.restore();
-                                t.save(),
-                                    t.globalAlpha = M.cAlpha,
-                                    t.translate(i.playerX, i.playerY),
-                                    t.rotate(M.cAngle1),
-                                    t.drawImage(cimg1, M.cRadius),
-                                    t.restore();
-                                t.save(),
-                                    t.globalAlpha = M.cAlpha,
-                                    t.translate(i.playerX, i.playerY),
-                                    t.rotate(M.cAngle2),
-                                    t.drawImage(cimg2, M.cRadius),
-                                    t.restore();
-                                t.globalAlpha = 1;
-                                this.updateCommander();
-                            },
-				'updateCommander': function() {
-					console.log("update drawCommander");
-                    M.cRadius += 7,
-                        M.cAngle += 0.007;
-                    M.cAngle1 -= 0.006;
-                    M.cAngle2 += 0.003;
-          M.cAlpha *= 0.9887;
-                    if (M.cAlpha <= 0.0001) {
-                        this.resetCommander();
-                    }
-                },				
-                'resetCommander': function() {
-					console.log("reset drawCommander");
-                    M.cRadius = 10,
-                        M.cAngle = 4,
-                        M.cAngle1 = 0,
-                        M.cAngle2 = 0,
-                        M.cAlpha = 1;
-                    M.drawCommander = !1;
-                },			
+        "drawCommander" : function() {
+          if (M["drawCommander"]) {
+            var pickerAxes = this["ctx"];
+            cimg = new Image;
+            cimg["src"] = g["commanderImage"];
+            cimg1 = new Image;
+            cimg1["src"] = g["commanderImage1"];
+            cimg2 = new Image;
+            cimg2["src"] = g["commanderImage2"];
+            pickerAxes["save"]();
+            pickerAxes["globalAlpha"] = M["cAlpha"];
+            pickerAxes["translate"](i["spawnX"], i["spawnY"]);
+            pickerAxes["rotate"](M["cAngle"]);
+            pickerAxes["drawImage"](cimg, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
+            pickerAxes["restore"]();
+            pickerAxes["save"]();
+            pickerAxes["globalAlpha"] = M["cAlpha"];
+            pickerAxes["translate"](i["spawnX"], i["spawnY"]);
+            pickerAxes["rotate"](M["cAngle1"]);
+            pickerAxes["drawImage"](cimg1, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
+            pickerAxes["restore"]();
+            pickerAxes["save"]();
+            pickerAxes["globalAlpha"] = M["cAlpha"];
+            pickerAxes["translate"](i["spawnX"], i["spawnY"]);
+            pickerAxes["rotate"](M["cAngle2"]);
+            pickerAxes["drawImage"](cimg2, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
+            pickerAxes["restore"]();
+            pickerAxes["globalAlpha"] = 1;
+            this["updateCommander"]();
+          }
+        },
+        "updateCommander" : function() {
+          M["cRadius"] += 7;
+          M["cAngle"] += .007;
+          M["cAngle1"] -= .006;
+          M["cAngle2"] += .003;
+          if (2025 <= M["cRadius"]) {
+            M["cAlpha"] *= .95;
+          }
+          if (1E-4 >= M["cAlpha"]) {
+            this["resetCommander"]();
+          }
+        },
+        "resetCommander" : function() {
+          M["cRadius"] = 10; //M['clientX']
+          M["cAngle"] = 4;
+          M["cAngle1"] = 0;
+          M["cAngle2"] = 0;
+          M["cAlpha"] = 1;
+          M["drawCommander"] = false;
+          i["spawnX"] = 0;
+          i["spawnY"] = 0;
+        },
 			///////				
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
                     e && (t['strokeStyle'] = n, t['lineWidth'] = r, t['beginPath'](), t['moveTo'](i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t['closePath'](), t['stroke']());
