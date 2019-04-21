@@ -1408,8 +1408,8 @@ input.hide-url::selection,input.stream-mode::selection{
 }
 #pos-skin, #top5-pos .cell-counter {
 	margin-right: 5px;
-	height: 33px!important;
-	width: 33px!important;
+	height: 30px!important;
+	width: 30px!important;
 }
 #top5-hud {
 	width: 260px!important;
