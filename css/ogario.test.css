@@ -1393,7 +1393,6 @@ input.hide-url::selection,input.stream-mode::selection{
 }
 #top5-pos li {
 	margin-top: 5px;
-	background: #0000004f;
 	border-bottom: #fff solid 2px;
 	width: 250px;
 	height: 25px;
