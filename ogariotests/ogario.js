@@ -1435,7 +1435,8 @@ var core = function(t, e, i) {
                 'miniMapGhostCellsColor': '#ffffff',
 				////
 				"color" : "#fff",
-				"commanderImage" : "https://i.imgur.com/wQKUDB3.png",
+				//"commanderImage" : "https://i.imgur.com/wQKUDB3.png",				
+				"commanderImage" : "https://jimboy3100.github.io/banners/CropedImage128.gif",
 				"commanderImage1" : "https://i.imgur.com/XODc5iZ.png",
 				"commanderImage2" : "https://i.imgur.com/Ux8Pt9I.png",				
 				////
