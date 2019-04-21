@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.157 test
+//v1.158 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -1433,6 +1433,12 @@ var core = function(t, e, i) {
                 'miniMapTeammatesColor': '#01d9cc',
                 'miniMapDeathLocationColor': '#bf00aa',
                 'miniMapGhostCellsColor': '#ffffff',
+				////
+				"color" : "#fff",
+				"commanderImage" : "https://i.imgur.com/wQKUDB3.png",
+				"commanderImage1" : "https://i.imgur.com/XODc5iZ.png",
+				"commanderImage2" : "https://i.imgur.com/Ux8Pt9I.png",				
+				////
                 'miniMapFont': 'ubuntu-bold',
                 'miniMapFontFamily': 'Ubuntu',
                 'miniMapFontWeight': 700,
