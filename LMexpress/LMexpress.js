@@ -2,7 +2,7 @@
  * Legend express v0.028d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "28"; // the version 1.1-> 1.11
+var semimodVersion = "29"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -196,6 +196,8 @@ var LegendSettingsfirstclicked="false";
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
 var VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
+var top5skins = localStorage.getItem("top5skinsSaved");
+var spawnspecialeffects = localStorage.getItem("spawnspecialeffectsSaved");
 var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
 if (localStorage.getItem("leaderboardlimit")!=null){
 	window.leaderboardlimit=localStorage.getItem("leaderboardlimit");
@@ -496,6 +498,34 @@ function init(modVersion) {
 				window.vanillaskins=false;
 				// Animated Skins
 				animateSkinsStop();
+			}
+		});	
+		$('.options-box.hudGroup').append('<label><input type="checkbox" id="top5skins" class="js-switch" data-switchery="true" style="display: none;"> Skins on team top5</input></label>');
+		var elemLegendSwitch3 = document.querySelector('#top5skins');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var top5skinsbtn = new Switchery(elemLegendSwitch3, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+
+		$("#top5skins").click(function() {
+			if (top5skinsbtn.isChecked()) {
+				localStorage.setItem("top5skinsSaved", "true");
+				window.top5skins=true;
+			} else {				
+				localStorage.setItem("top5skinsSaved", "false");
+				window.top5skins=false;
+			}
+		});	
+		$('.options-box.respGroup').append('<label><input type="checkbox" id="spawnspecialeffects" class="js-switch" data-switchery="true" style="display: none;"> Spawn special effects</input></label>');
+		var elemLegendSwitch4 = document.querySelector('#spawnspecialeffects');
+		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
+		var spawnspecialeffectsbtn = new Switchery(elemLegendSwitch4, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
+
+		$("#spawnspecialeffects").click(function() {
+			if (spawnspecialeffectsbtn.isChecked()) {
+				localStorage.setItem("spawnspecialeffectsSaved", "true");
+				window.spawnspecialeffects=true;
+			} else {				
+				localStorage.setItem("spawnspecialeffectsSaved", "false");
+				window.spawnspecialeffects=false;
 			}
 		});			
 		
@@ -1818,6 +1848,8 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
 	
 	LegendJSON.legendSettings.VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
+	LegendJSON.legendSettings.top5skinsSaved = localStorage.getItem("top5skinsSaved");
+	LegendJSON.legendSettings.spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
 	if (localStorage.getItem("leaderboardlimit")!=null){
 	LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
 	}	
@@ -2079,6 +2111,8 @@ function saveLegendJSONAPI() {
     localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
 	
     localStorage.setItem("VanillaskinsSaved", LegendJSON.legendSettings.VanillaskinsSaved);
+	localStorage.setItem("top5skinsSaved", LegendJSON.legendSettings.top5skinsSaved);
+	localStorage.setItem("spawnspecialeffectsSaved", LegendJSON.legendSettings.spawnspecialeffectsSaved);
 	if (LegendJSON.legendSettings.leaderboardlimit!=null){
 	localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);	
 	}	  
@@ -4954,6 +4988,12 @@ function triggerLMbtns() {
            if (VanillaskinsSaved == "true") { 
                 $("#Vanillaskins").click();
            }	
+           if (top5skinsSaved == "true") { 
+                $("#top5skins").click();
+           }		
+           if (spawnspecialeffectsSaved == "true") { 
+                $("#spawnspecialeffects").click();
+           }			   
            if (AnimatedRainbowColorSaved == "true") { 
                 $("#AnimatedRainbowColor").click();
            }			   
