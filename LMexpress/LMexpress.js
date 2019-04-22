@@ -2,7 +2,7 @@
  * Legend express v0.028d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "29"; // the version 1.1-> 1.11
+var semimodVersion = "30"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -196,8 +196,8 @@ var LegendSettingsfirstclicked="false";
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
 var VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
-var top5skins = localStorage.getItem("top5skinsSaved");
-var spawnspecialeffects = localStorage.getItem("spawnspecialeffectsSaved");
+var top5skinsSaved = localStorage.getItem("top5skinsSaved");
+var spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
 var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
 if (localStorage.getItem("leaderboardlimit")!=null){
 	window.leaderboardlimit=localStorage.getItem("leaderboardlimit");
