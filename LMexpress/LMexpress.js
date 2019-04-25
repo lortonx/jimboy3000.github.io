@@ -2,7 +2,7 @@
  * Legend express v0.028d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "31"; // the version 1.1-> 1.11
+var semimodVersion = "30"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -19,7 +19,7 @@ document.title = "LM express";
 //Authenticate Mod Script
 var accesstomod;
 getaccesstoken();
-loadersetings();
+
 /*
 var CutNameConflictwithMessage=false;
 (function(){
@@ -353,6 +353,8 @@ window.a=0;
 var b,c;
 var animatedserverchanged=false;
 
+loadersetings();
+
 //
 function postSNEZ(server, username, password, data)
 {
@@ -608,7 +610,7 @@ function loadersetings() {
             if (checkonlytwice != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 			toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend Box </span></font> is released!<br><font color="red">It\'s Multibox</font></b></a><iframe id="animatedpromosIframe4" class="result-iframe" style="border: none;" src="https://jimboy3100.github.io/extras/banneranimated5.html" name="CodePen" width="300" height="300" frameborder="0" scrolling="no" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowfullscreen="allowfullscreen"></iframe><br><b><u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>').css("width", "350px");
-        checkonlycheckonlytwice = "true";
+        checkonlytwice = "true";
         localStorage.setItem("checkonlytwice", checkonlytwice);				
             }					
         }
