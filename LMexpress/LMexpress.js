@@ -2,7 +2,7 @@
  * Legend express v0.028d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "30"; // the version 1.1-> 1.11
+var semimodVersion = "31"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -593,7 +593,7 @@ function getEmbedUrl(url) {
     }
 }
 function loadersetings() {
-//    setTimeout(function() {
+    setTimeout(function() {
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -626,7 +626,7 @@ function loadersetings() {
             }
         }
 
-//    }, 3500);
+    }, 3500);
 }
 function loadericon() {
 	//continue loadericon
