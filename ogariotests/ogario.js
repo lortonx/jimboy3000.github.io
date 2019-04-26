@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.27 test
+//v1.28 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -3524,9 +3524,13 @@ var core = function(t, e, i) {
                             s = !1,
                             o = this['isFood'] ? this['size'] + g['foodSize'] : this['size'];
                         if (t['beginPath'](), t.arc(this['x'], this['y'], o, 0, this.pi2, !1), t['closePath'](), this['isFood']) return t['fillStyle'] = this['color'], t.fill(), void t['restore']();
-                        if (this['isVirus']) {
+/*/                        if (this['isVirus']) {
                             return v['transparentViruses'] && (t['globalAlpha'] *= g['virusAlpha'], s = !0), v['virColors'] && M.play ? (t['fillStyle'] = ogarminimapdrawer['setVirusColor'](o), t['strokeStyle'] = ogarminimapdrawer['setVirusStrokeColor'](o)) : (t['fillStyle'] = this.virusColor, t['strokeStyle'] = this.virusStroke), t.fill(), s && (t['globalAlpha'] = i, s = !1), t['lineWidth'] = g['virusStrokeSize'], t['stroke'](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v['showMass'] && (this['setDrawing'](), this['setDrawingScale'](), this['setMass'](this['size']), this['drawMass'](t)), void t['restore']();
                         }
+*/						
+                        if (this["isVirus"]) {
+                            return v["transparentViruses"] && (t["globalAlpha"] *= g["virusAlpha"], s = !0), v["virColors"] && M.play ? (t["fillStyle"] = ogarminimapdrawer["setVirusColor"](o), t["strokeStyle"] = ogarminimapdrawer["setVirusStrokeColor"](o)) : (t["fillStyle"] = this.virusColor, t["strokeStyle"] = this.virusStroke), t.fill(), s && (t["globalAlpha"] = i, s = !1), t["lineWidth"] = g["virusStrokeSize"], v["virusGlow"] ? (t["shadowBlur"] = g["virusGlowSize"],  t["shadowColor"] = g["virusGlowColor"]) : "yeet",  t["stroke"](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v["showMass"] && (this["setDrawing"](), this["setDrawingScale"](), v["virusGlow"] ? t["shadowBlur"] = 0 : "yote", this["setMass"](this["size"]), this["drawMass"](t)), void t["restore"]();
+                        }			
                         v['transparentCells'] && (t['globalAlpha'] *= g['cellsAlpha'], s = !0);
                         var a = this['color'];
                         M.play && (this['isPlayerCell'] ? v['myCustomColor'] && (a = ogarcopythelb['color']) : v['oppColors'] && !v['oppRings'] && (a = this['oppColor'])), t['fillStyle'] = a, t.fill(), s && (t['globalAlpha'] = i, s = !1);
