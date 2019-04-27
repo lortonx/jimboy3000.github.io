@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.30 test
+//v1.31 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -99,6 +99,9 @@ var core = function(t, e, i) {
                     'showQuest': 'Pokaż zadanie (quest)',
                     'autoZoom': 'Auto zoom',
                     'animation': 'Opóźnienie animacji',
+					'suckAnimation' : 'Cell Eat [Sucking] Animation',
+					'virusGlow' : 'Virus Glow',
+					'borderGlow' : 'Border Glow',							
                     'zoomSpeedValue': 'Szybkość zoomu',
                     'quickResp': 'Szybkie odrodzenie (klawisz)',
                     'autoResp': 'Auto odrodzenie',
@@ -458,6 +461,9 @@ var core = function(t, e, i) {
                     'showQuest': 'Show quest',
                     'autoZoom': 'Auto zoom',
                     'animation': 'Animation delay',
+					'suckAnimation' : 'Cell Eat [Sucking] Animation',
+					'virusGlow' : 'Virus Glow',
+					'borderGlow' : 'Border Glow',					
                     'zoomSpeedValue': 'Zoom speed',
                     'quickResp': 'Quick respawn (hotkey)',
                     'autoResp': 'Auto respawn',
