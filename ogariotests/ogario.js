@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.32 test
+//v1.33 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -3545,6 +3545,9 @@ var core = function(t, e, i) {
                         }
 */						
                         if (this["isVirus"]) {
+							console.log('virusGlow:' +v["virusGlow"]);
+							console.log('virusGlowSize:' +g["virusGlowSize"]);
+							console.log('virusGlowColor:' +g["virusGlowColor"]);
                             return v["transparentViruses"] && (t["globalAlpha"] *= g["virusAlpha"], s = true), v["virColors"] && M.play ? (t["fillStyle"] = ogarminimapdrawer["setVirusColor"](o), t["strokeStyle"] = ogarminimapdrawer["setVirusStrokeColor"](o)) : (t["fillStyle"] = this.virusColor, t["strokeStyle"] = this.virusStroke), t.fill(), s && (t["globalAlpha"] = i, s = false), t["lineWidth"] = g["virusStrokeSize"], v["virusGlow"] ? (t["shadowBlur"] = g["virusGlowSize"],  t["shadowColor"] = g["virusGlowColor"]) : "yeet",  t["stroke"](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v["showMass"] && (this["setDrawing"](), this["setDrawingScale"](), v["virusGlow"] ? t["shadowBlur"] = 0 : "yote", this["setMass"](this["size"]), this["drawMass"](t)), void t["restore"]();
                         }			
                         v['transparentCells'] && (t['globalAlpha'] *= g['cellsAlpha'], s = true);
