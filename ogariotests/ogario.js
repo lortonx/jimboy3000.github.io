@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.35 test
+//v1.36 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -1402,6 +1402,7 @@ var core = function(t, e, i) {
                 'virusAlpha': 0.6,
                 'textAlpha': 1,
                 'virusStrokeSize': 20,
+				'virusGlowColor' : '#fff',				
 			    'virusGlowSize' : 14,
 				'borderGlowSize' : 15,							
                 'ghostCellsAlpha': 0.3,
