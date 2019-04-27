@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.33 test
+//v1.34 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -1400,6 +1400,9 @@ var core = function(t, e, i) {
                 'skinsAlpha': 0.7,
                 'virusAlpha': 0.6,
                 'textAlpha': 1,
+                'virusStrokeSize': 20,
+			    'virusGlowSize' : 14,
+				'borderGlowSize' : 15,							
                 'ghostCellsAlpha': 0.3,
                 'virusStrokeSize': 14,
                 'menuPreset': 'ogario-v3',
