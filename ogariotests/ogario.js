@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.39 test
+//v1.40 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -272,7 +272,8 @@ var core = function(t, e, i) {
                     'massStrokeColor': 'Obwódki masy',
                     'virusColor': 'Wirusy',
                     'virusStrokeColor': 'Obwódki wirusów',
-					'virusGlowColor': "Virus Glow",
+					'virusGlowColor': "Virus Glow",	
+					"borderGlowColor" : "Border Glow",					
                     'mVirusColor': 'Mothercell',
                     'mVirusStrokeColor': 'Mothercell stroke',
                     'foodColor': 'Pokarm',
@@ -635,6 +636,7 @@ var core = function(t, e, i) {
                     'virusColor': 'Virus',
                     'virusStrokeColor': 'Virus stroke',
 					'virusGlowColor': "Virus Glow",
+					"borderGlowColor" : "Border Glow",
                     'mVirusColor': 'Mothercell',
                     'mVirusStrokeColor': 'Mothercell stroke',
                     'foodColor': 'Food',
