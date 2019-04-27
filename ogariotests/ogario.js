@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.41 test
+//v1.42 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -642,7 +642,7 @@ var core = function(t, e, i) {
                     'mVirusColor': 'Mothercell',
                     'mVirusStrokeColor': 'Mothercell stroke',
 					'virusGlowSize' : 'Virus Glow Size',
-					'borderGlowSize' : "Border Glow Size',					
+					'borderGlowSize' : 'Border Glow Size',					
                     'foodColor': 'Food',
                     'namesFont': 'Names font',
                     'massFont': 'Mass font',
