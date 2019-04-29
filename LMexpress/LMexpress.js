@@ -2,7 +2,7 @@
  * Legend express v0.028d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "31"; // the version 1.1-> 1.11
+var semimodVersion = "32"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -110,7 +110,7 @@ var SHOSHOBtn = localStorage.getItem("SHOSHOBtn");
 var XPBtn = localStorage.getItem("XPBtn");
 var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 var AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
-var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
+//var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 var troll1Btn = localStorage.getItem("troll1Btn");
 var ComPosition = localStorage.getItem("ComPosition");
@@ -1846,7 +1846,7 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.XPBtn = localStorage.getItem("XPBtn");
     LegendJSON.legendSettings.MAINBTBtn = localStorage.getItem("MAINBTBtn");
     LegendJSON.legendSettings.AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
-    LegendJSON.legendSettings.YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
+//    LegendJSON.legendSettings.YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
     LegendJSON.legendSettings.TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
     LegendJSON.legendSettings.troll1Btn = localStorage.getItem("troll1Btn ");
     LegendJSON.legendSettings.ComPosition = localStorage.getItem("ComPosition");
@@ -2114,7 +2114,7 @@ function saveLegendJSONAPI() {
     localStorage.setItem("XPBtn", LegendJSON.legendSettings.XPBtn);
     localStorage.setItem("MAINBTBtn", LegendJSON.legendSettings.MAINBTBtn);
     localStorage.setItem("AnimatedSkinBtn", LegendJSON.legendSettings.AnimatedSkinBtn);
-    localStorage.setItem("YoutubeAutoBtn", LegendJSON.legendSettings.YoutubeAutoBtn);
+//    localStorage.setItem("YoutubeAutoBtn", LegendJSON.legendSettings.YoutubeAutoBtn);
     localStorage.setItem("TIMEcalBtn", LegendJSON.legendSettings.TIMEcalBtn);
     localStorage.setItem("troll1Btn", LegendJSON.legendSettings.troll1Btn);
     localStorage.setItem("ComPosition", LegendJSON.legendSettings.ComPosition);
@@ -4972,9 +4972,9 @@ function triggerLMbtns() {
             if (AnimatedSkinBtn  == "true") { $("#AnimatedSkinBtn").click();  }
 			toastrSkinNotice=1;
             //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
-            if (YoutubeAutoBtn == "true") {
-                $("#YoutubeAutoBtn").click();
-            }
+//            if (YoutubeAutoBtn == "true") {
+//                $("#YoutubeAutoBtn").click();
+//            }
             if (XPBtn == "true") {
                 $("#XPBtn").click();
             }
@@ -6208,8 +6208,9 @@ $("#server-reconnect").css("width", "11%");
         $('.agario-panel.radio-panel').after('<div id="youtubeplayer" style="margin-left: 0px;"><h5 class="main-color" style="margin-right: 15px;">Youtube player</h5>' +
             '<iframe id="musicFrame" width="350" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe></div>' +
             '<div id="afteryoutubeplayer"><input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">' +
-            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
-			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter61 + '</button></div>'); 
+//            '<button id="YoutubeAutoBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter40 + '</button></div>'+
+//			'<button id="YoutubeBackgroundBtn" type="button" class="btn btn-block btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px;"><i class="fa fa-youtube-play"></i>' + Premadeletter61 + '</button></div>' +
+			); 
 		$('.agario-panel.radio-panel').hide();
         $('.agario-panel.ogario-yt-panel').hide();
 
@@ -6230,7 +6231,7 @@ $("#server-reconnect").css("width", "11%");
 
 		ytFrame();
 		
-		 $("#YoutubeBackgroundBtn").click(function() {
+/*		 $("#YoutubeBackgroundBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {               
 				YoutubebackgroundEnable();
@@ -6239,7 +6240,7 @@ $("#server-reconnect").css("width", "11%");
 				YoutubebackgroundDisable();
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter61);
             }
-        });
+        });*/
 
         //roller and other icons
         $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
@@ -6814,9 +6815,9 @@ $("#server-reconnect").css("width", "11%");
 		else {
 			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
-		$('#YoutubeAutoBtn').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
+		$('#musicUrl').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
-		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
+//		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
 
 		setTimeout(function() {
                                if(legendflags.includes(LowerCase($("#nick").val()))){
@@ -7204,7 +7205,7 @@ $("#server-reconnect").css("width", "11%");
                 localStorage.setItem("YoutubeAutoBtn", false);
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
             }
-        }); */
+        }); 
         $("#YoutubeAutoBtn").click(function() {
             var checked = !($(this).attr('aria-pressed') == "true");
             if (checked) {
@@ -7217,7 +7218,7 @@ $("#server-reconnect").css("width", "11%");
                 $(this).html('<i class="fa fa-youtube-play"></i>' + Premadeletter40);
 				return YoutubeAutoBtn=false;
             }
-        });			
+        });			 */
 	    $("#shortcuts-hud").hide();
         $("#rotate-hud").hide();
         $("#exp-bar").hide();
