@@ -2,7 +2,7 @@
  * Legend express v0.028e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "33"; // the version 1.1-> 1.11
+var semimodVersion = "32"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -219,7 +219,7 @@ var Premadeletter10 = "Disconnected from server :(";
 var Premadeletter11 = "You were banned, restart your rooter!";
 var Premadeletter12 = "Connected!";
 var Premadeletter13 = "PLAY";
-var //Premadeletter13a = "Click play on youtube tab at first";
+//var Premadeletter13a = "Click play on youtube tab at first";
 var Premadeletter14 = "SPECTATE";
 var Premadeletter15 = "Invalid token or server has closed :(";
 var Premadeletter16 = "can be Updated to";
