@@ -2,7 +2,7 @@
  * Legend express v0.028e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "32"; // the version 1.1-> 1.11
+var semimodVersion = "33"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -219,7 +219,7 @@ var Premadeletter10 = "Disconnected from server :(";
 var Premadeletter11 = "You were banned, restart your rooter!";
 var Premadeletter12 = "Connected!";
 var Premadeletter13 = "PLAY";
-var Premadeletter13a = "Click play on youtube tab at first";
+var //Premadeletter13a = "Click play on youtube tab at first";
 var Premadeletter14 = "SPECTATE";
 var Premadeletter15 = "Invalid token or server has closed :(";
 var Premadeletter16 = "can be Updated to";
@@ -6296,7 +6296,7 @@ $("#server-reconnect").css("width", "11%");
             '<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>' +
             '<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>' +
             '<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>' +
-            '<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter13a + '><i id="playerI" class="fa fa-stop-circle" style="padding-center: 0px;"></i></button>' +
+            '<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Click play on youtube tab at first"><i id="playerI" class="fa fa-stop-circle" style="padding-center: 0px;"></i></button>' +
             '<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 11%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 
 
