@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.50 test
+//v1.51 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -2360,7 +2360,15 @@ var core = function(t, e, i) {
                 null !== e.localStorage.getItem('ogarioSelectedProfile') && (this['selectedProfile'] = JSON['parse'](e.localStorage.getItem('ogarioSelectedProfile'))), ogarcopythelb['nick'] = ogario1PlayerProfiles[this['selectedProfile']]['nick'], ogarcopythelb['clanTag'] = ogario1PlayerProfiles[this['selectedProfile']]['clanTag'], ogarcopythelb['skinURL'] = ogario1PlayerProfiles[this['selectedProfile']]['skinURL'], ogarcopythelb['color'] = ogario1PlayerProfiles[this['selectedProfile']]['color'];
             },
             'changeSkinPreview': function(t, e) {
-                t && e && ('skin-preview' === e ? (s('#skin-preview').removeClass('default').append('<a href=\"#\" id=\"skin-popover\" data-toggle=\"popover\" title=\"\" data-html=\"true\" data-content=\"<img src=\'' + t.src + '\' width=\'500\'>\"></a>'), s('#skin-popover').append(s(t)['fadeIn'](1000)), s('#skin-popover')['popover']()) : s('#' + e).removeClass('default').append(s(t)['fadeIn'](1000)));
+if (t && e) {
+  if ("skin-preview" === e) {
+    s("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + t.src + "' width='500'>\"></a>");
+    s("#skin-popover").append(s(t)["fadeIn"](1000));
+    s("#skin-popover")["popover"]();
+  } else {
+    s("#" + e).removeClass("default").append(s(t)["fadeIn"](1000));
+  }
+}
             },
             'setSkinPreview': function(t, e) {
                 if (s('#' + e)['empty']().addClass('default'), t && 0 != t.length) {
@@ -2421,14 +2429,50 @@ var core = function(t, e, i) {
                     for (var t in e['i18n_dict']['en']) e['i18n_dict']['en'].hasOwnProperty(t) && h.hasOwnProperty(t) && (e['i18n_dict']['en'][t] = h[t]);
             },
             'setMenu': function() {
-                for (var t in document['title'] = this['name'], s('#mainPanel')['before']('<div id=\"exp-bar\" class=\"agario-panel\"><span class=\"ogicon-user\"></span><div class=\"agario-exp-bar progress\"><span class=\"progress-bar-text\"></span><div class=\"progress-bar progress-bar-striped\" style=\"width: 0%;\"></div></div><div class=\"progress-bar-star\"></div></div><div id=\"main-menu\" class=\"agario-panel\"><ul class=\"menu-tabs\"><li class=\"start-tab active\"><a href=\"#main-panel\" class=\"active ogicon-home\" data-toggle=\"tab-tooltip\" title=\"' + h['start'] + '\"></a></li><li class=\"profile-tab\"><a href=\"#profile\" class=\"ogicon-user\" data-toggle=\"tab-tooltip\" title=\"' + h['profile'] + '\"></a></li><li class=\"settings-tab\"><a href=\"#og-settings\" class=\"ogicon-cog\" data-toggle=\"tab-tooltip\" title=\"' + h['settings'] + '\"></a></li><li class=\"theme-tab\"><a href=\"#theme\" class=\"ogicon-droplet\" data-toggle=\"tab-tooltip\" title=\"' + h['theme'] + '\"></a></li><li class=\"hotkeys-tab\"><a href=\"#\" class=\"hotkeys-link ogicon-keyboard\" data-toggle=\"tab-tooltip\" title=\"' + h['hotkeys'] + '\"></a></li><li class=\"music-tab\"><a href=\"#music\" class=\"ogicon-music\" data-toggle=\"tab-tooltip\" title=\"Radio / ' + h['sounds'] + '\"></a></li></ul><div id=\"main-panel\" class=\"menu-panel\"></div><div id=\"profile\" class=\"menu-panel\"></div><div id=\"og-settings\" class=\"menu-panel\"><div class=\"submenu-panel\"></div></div><div id=\"theme\" class=\"menu-panel\"></div><div id=\"music\" class=\"menu-panel\"></div></div>'), s('#main-panel').append('<a href=\"#\" class=\"quick quick-menu ogicon-menu\"></a><a href=\"#\" class=\"quick quick-skins ogicon-images\"></a><div id=\"profiles\"><div id=\"prev-profile\"></div><div id=\"skin-preview\"></div><div id=\"next-profile\"></div></div>'), s('#mainPanel div[role=form]').appendTo(s('#main-panel')), s('#main-panel div[role=form] .form-group:first').remove(), s('#nick')['before']('<input id=\"clantag\" class=\"form-control\" placeholder=\"Tag, e.g. Ⓜ\" maxlength=\"10\"><div class=\"input-group nick\"></div>'), s('#nick').appendTo(s('.nick')), s('.nick').append('<span class=\"input-group-btn\"><button id=\"stream-mode\" class=\"btn active ogicon-eye\"></button></span>'), s('.nick')['after']('<div class=\"input-group skin\"><input id=\"skin\" class=\"form-control\" placeholder=\"Skin URL (imgur.com direct link)\" maxlength=\"40\"><input type=\"hidden\" id=\"color\" value=\"' + ogarcopythelb['color'] + '\" maxlength=\"7\" /><span class=\"input-group-addon\"><i></i></span><span class=\"input-group-btn\"><button id=\"hide-url\" class=\"btn active ogicon-eye\"></button></span></div>'), s('#locationKnown, #locationUnknown')['insertAfter'](s('.skin')), s('#region')['before']('<button class=\"btn btn-warning btn-server-info ogicon-cogs\"></button>'), s('.btn-spectate, .btn-logout').appendTo('#agario-main-buttons'), s('#agario-main-buttons').addClass('clearfix')['before']('<div id=\"server-info\" class=\"form-group clearfix\"><input id=\"server-ws\" class=\"form-control\" placeholder=\"Server WS\"><button id=\"server-connect\" class=\"btn btn-success ogicon-power\"></button><button id=\"server-reconnect\" class=\"btn btn-primary ogicon-redo2\"></button><input id=\"server-token\" class=\"form-control\" placeholder=\"Server token\"><button id=\"server-join\" class=\"btn btn-success\" data-itr=\"page_join_party\">Join</button></div>'), s('#helloContainer div[role=form]')['after']('<div id=\"ogario-party\" class=\"clearfix\"><input id=\"party-token\" class=\"form-control\" placeholder=\"Party token\"></div>'), s('#ogario-party').append('<button id=\"join-party-btn-2\" class=\"btn btn-success\" data-itr=\"page_join_party\">Join</button><button id=\"create-party-btn-2\" class=\"btn btn-primary\" data-itr=\"page_create_party\">Create</button>'), s('#pre-join-party-btn:first, #join-party-btn:first, #create-party-btn:first, #leave-party-btn:first, #joinPartyToken:first, .party-icon-back:first').appendTo(s('#ogario-party')), s('#settingsChoice, #options').appendTo(s('#og-settings .submenu-panel')), s('#stats').appendTo(s('#main-menu')).addClass('menu-panel'), s('#statsContinue')['attr']('id', 'statsContinue2'), s('#mainPanel')['empty']().remove(), s('.center-container').addClass('ogario-menu'), s('.center-container').append('<div id=\"menu-footer\" class=\"menu-main-color\">' + h['visit'] + ' <a href=\"http://legendmod.ml\" target=\"_blank\">legendmod.ml</a> | ' + this['version'] + ' <a href=\"https://goo.gl/nRREoR\" class=\"release ogicon-info\" target=\"_blank\"></a></div>'), s('#leftPanel, #rightPanel').addClass('ogario-menu')['removeAttr']('id'), s('.agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel').appendTo(s('#profile')).removeClass('agario-side-panel'), s('.agario-profile-panel')['after']('<div id=\"block-warn\">' + h['blockWarn'] + '<br><a href=\"#\" id=\"unblock-popups\">' + h['unblockPopups'] + '</a></div>'), s('#exp-bar').addClass('agario-profile-panel'), s('.left-container')['empty'](), s('.agario-shop-panel')['after']('<div class=\"agario-panel ogario-yt-panel\"><h5 class=\"menu-main-color\">The Legend Mod Project</h5><div class=\"g-ytsubscribe\" data-channelid=\"UCaWiPNJWnhzYDrBQoXokn6w\" data-layout=\"full\" data-theme=\"dark\" data-count=\"default\"></div></div>'), s('#tags-container').appendTo(s('#profile')), s('.btn-logout').appendTo(s('#profile')), s('.left-container').append('<div id=\"quick-menu\" class=\"agario-panel agario-side-panel\"><a href=\"https://jimboy3100.github.io/skins/\" class=\"quick-more-skins ogicon-grin\" target=\"_blank\" data-toggle=\"tab-tooltip\" data-placement=\"left\" title=\"' + h['skins'] + '\"></a><a href=\"https://youtube.com/channel/UCaWiPNJWnhzYDrBQoXokn6w\" class=\"quick-yt ogicon-youtube2\" target=\"_blank\" data-toggle=\"tab-tooltip\" data-placement=\"left\" title=\"Team OGARio\"></a></div>'), this['protocolMode'] || s('#quick-menu')['prepend']('<a href=\"#\" class=\"quick-shop ogicon-cart\" data-toggle=\"tab-tooltip\" data-placement=\"left\" title=\"' + h['page_shop'] + '\"></a><a href=\"#\" class=\"quick-free-coins ogicon-coin-dollar\" data-toggle=\"tab-tooltip\" data-placement=\"left\" title=\"' + h['page_menu_main_free_coins'] + '\"></a><a href=\"#\" class=\"quick-free-gifts ogicon-gift\" data-toggle=\"tab-tooltip\" data-placement=\"left\" title=\"' + h['page_menu_main_gifts'] + '\"></a><a href=\"#\" class=\"quick-quests ogicon-trophy\" data-toggle=\"tab-tooltip\" data-placement=\"left\" title=\"' + h['page_menu_main_dailyquests'] + '\"></a>'), s('.party-dialog, .partymode-info').remove(), s('.agario-party-6').appendTo(s('.center-container')), s('.right-container')['empty'](), s('.right-container').append('<div class=\"agario-party\"></div>'), s('.agario-party-6').appendTo(s('.agario-party')).addClass('agario-panel agario-side-panel'), s('.agario-party h4, #cancel-party-btn').remove(), s('.agario-party .btn').addClass('btn-sm'), s('.right-container').append('<div id=\"skins-panel\" class=\"agario-panel agario-side-panel\"><div id=\"skins\"></div><a href=\"https://ogario.ovh/skins/\" id=\"more-skins\" class=\"btn btn-block btn-success\" target=\"_blank\">' + h['moreSkins'] + '</a></div>'), s('.btn-settings, .text-muted, .tosBox, .agario-promo, #agario-web-incentive, span[data-itr=\'page_option_dark_theme\'], #options #darkTheme').remove(), s('#advertisement, #adbg, #a320x250, #g320x250, #s320x250, #adsBottom').css('display', 'none'), s('#advertisement').removeClass('agario-panel'), s('#adsBottom')['css']({
-                        'z-index': '1',
-                        'opacity': '0',
-                        'bottom': '-100px'
-                    }), s('#noNames, #showMass').remove(), s('#og-settings .submenu-panel').append('<div id=\"og-options\"></div>'), this['addOptions']([], 'animationGroup'), this['addOptions'](['autoZoom'], 'zoomGroup'), this['addOptions'](['quickResp', 'autoResp'], 'respGroup'), this['addOptions'](['noNames', 'optimizedNames', 'autoHideNames', 'hideMyName', 'hideTeammatesNames', 'namesStroke'], 'namesGroup'), this['addOptions'](['showMass', 'optimizedMass', 'autoHideMass', 'hideMyMass', 'hideEnemiesMass', 'shortMass', 'virMassShots', 'massStroke'], 'massGroup'), this['protocolMode'] ? this['addOptions'](['customSkins'], 'skinsGroup') : this['addOptions'](['customSkins', 'vanillaSkins'], 'skinsGroup'), this['addOptions'](['optimizedFood', 'autoHideFood', 'autoHideFoodOnZoom', 'rainbowFood'], 'foodGroup'), this['addOptions'](['myCustomColor', 'myTransparentSkin', 'transparentSkins', 'transparentCells', 'transparentViruses', 'virusGlow'], 'transparencyGroup'), this['addOptions'](['showGrid', 'showBgSectors', 'showMapBorders', 'borderGlow'], 'gridGroup'), this['addOptions'](['disableChat', 'chatSounds', 'chatEmoticons', 'showChatImages', 'showChatVideos', 'showChatBox'], 'chatGroup'), this['addOptions'](['showMiniMap', 'showMiniMapGrid', 'showMiniMapGuides', 'showMiniMapGhostCells', 'oneColoredTeammates'], 'miniMapGroup'), this['addOptions'](['oppColors', 'oppRings', 'virColors', 'splitRange', 'virusesRange', 'cursorTracking', 'teammatesInd', 'showGhostCells'], 'helpersGroup'), this['addOptions'](['mouseSplit', 'mouseFeed', 'mouseInvert'], 'mouseGroup'), this['addOptions'](['showTop5', 'showTargeting', 'showLbData', 'centeredLb', 'normalLb', 'fpsAtTop'], 'hudGroup'), this['addOptions'](['showStats', 'showStatsMass', 'showStatsSTE', 'showStatsN16', 'showStatsFPS', 'showTime'], 'statsGroup'), this['protocolMode'] || (this['addOptions'](['blockPopups'], 'extrasGroup'), s('#noSkins, #noColors, #skipStats, #showQuest').addClass('js-switch-vanilla'), s('.skinsGroup h5')['after']('<label class=\"noSkins\">' + h['noSkins'] + ' </label>'), s('#noSkins').appendTo(s('.noSkins')), s('.transparencyGroup h5')['after']('<label class=\"noColors\">' + h['noColors'] + ' </label>'), s('#noColors').appendTo(s('.noColors')), s('.extrasGroup h5')['after']('<label class=\"skipStats\">' + h['skipStats'] + ' </label>'), s('#skipStats').appendTo(s('.skipStats')), s('.skipStats')['after']('<label class=\"showQuest\">' + h['showQuest'] + ' </label>'), s('#showQuest').appendTo(s('.showQuest')), s('#options').remove(), s('#settingsChoice').appendTo(s('.extrasGroup')).addClass('select-wrapper')), this['addSliderBox']('.animationGroup', 'animation', 100, 200, 1), this['addSliderBox']('.zoomGroup', 'zoomSpeedValue', 0.50, 1.99, 0.01), s('#og-settings').append('<button class=\"btn btn-block btn-success btn-export\">' + h['exportImport'] + '</button>'), s('#og-settings').append('<div class=\"restore-settings\"><a href=\"#\">' + h['restoreSettings'] + '</a></div>'), s('#music').append('<div class=\"agario-panel radio-panel\"><h5 class=\"menu-main-color\">Radio (' + h['thanks'] + ')</h5><audio src=\"" controls></audio><span class=\"playlist\"><span class=\"ogicon-file-music\"></span> <a href=\"" target=\"_blank\">' + h['playlist'] + '</a></span></div>'), s('#music').append('<div class=\"agario-panel sounds-panel\"><h5 class=\"menu-main-color\">' + h['sounds'] + '</h5></div>'), s('#music').append('<div class=\"agario-panel ogario-yt-panel\"><h5 class=\"menu-main-color\">Legend Clan (tag: Ⓜ)</h5><div class=\"g-ytsubscribe\" data-channelid=\"UCaWiPNJWnhzYDrBQoXokn6w\" data-layout=\"full\" data-theme=\"dark\" data-count=\"default\"></div></div>'), this['addInputBox']('.sounds-panel', 'messageSound', 'Sound URL', 'setMessageSound'), this['addInputBox']('.sounds-panel', 'commandSound', 'Sound URL', 'setCommandSound'), s('body').append('<div id=\"overlays-hud\" data-gamemode=\":ffa\"><div id=\"stats-hud\" class=\"hud stats-hud-color\"></div> <div id=\"top5-hud\" class=\"hud\"><h5 class=\"hud-main-color\">Team top <span class=\"team-top\">5</span></h5><div class=\"hud-main-color team-top-menu\"><a href=\"#\" data-limit=\"5\" class=\"team-top-limit active\">5</a> | <a href=\"#\" data-limit=\"15\" class=\"team-top-limit\">10</a> | <a href=\"#\" data-limit=\"100\" class=\"team-top-limit\">100</a></div><ol id=\"top5-pos\"></ol><div id=\"top5-total\"><span class=\"hud-main-color ogicon-users\"></span> ' + h['totalPartyPlayers'] + ': <span id=\"top5-total-players\" class=\"top5-mass-color\">0</span><br><span class=\"hud-main-color ogicon-pacman\"></span> ' + h['totalPartyMass'] + ': <span id=\"top5-total-mass\" class=\"top5-mass-color\">0</span></div></div> <div id=\"time-hud\" class=\"hud time-hud-color\"></div> <div id=\"pause-hud\" class=\"hud\">' + h.pause + '</div> <div id=\"leaderboard-hud\" class=\"hud-b\"><h4 class=\"hud-main-color\">legendmod.ml</h4><div id=\"leaderboard-data\"></div><div id=\"leaderboard-positions\"></div></div> <div id=\"btl-leaderboard-hud\"><div class=\"hud hud-c\"><span id=\"btl-players-status\">Players ready</span>: <span id=\"btl-players-count\">0</span></div></div> <div id=\"minimap-hud\" class=\"hud-b\"><canvas id=\"minimap-sectors\"></canvas><canvas id=\"minimap\"></canvas></div><div id=\"target-hud\" class=\"hud\"><div id=\"target-player\"><span id=\"target-skin\"><img src=\"https://jimboy3100.github.io/banners/static/img/blank.png\" alt=\"\"> </span><span id=\"target-nick\"></span> <span id=\"target-status\" class=\"hud-main-color\">[' + h['targetNotSet'] + ']</span></div><div id=\"target-summary\"></div></div><div id=\"target-panel-hud\" class=\"hud\"><a href=\"#\" id=\"set-targeting\" class=\"ogicon-target\"></a><a href=\"#\" id=\"set-private-minimap\" class=\"ogicon-location2\"></a><a href=\"#\" id=\"cancel-targeting\" class=\"ogicon-cancel-circle\"></a><a href=\"#\" id=\"change-target\" class=\"ogicon-arrow-right\"></a></div> <div id=\"quest-hud\" class=\"hud\"></div> <div id=\"btl-hud\" class=\"hud\"></div></div>'), s('body').append('<ul id=\"messages\"></ul>'), s('body').append('<div id=\"message-box\"><div id=\"chat-emoticons\"></div><div id=\"message-menu\"><a href=\"#\" class=\"chat-sound-notifications ogicon-volume-high\"></a><a href=\"#\" class=\"chat-active-users ogicon-user-check\"></a><a href=\"#\" class=\"chat-muted-users ogicon-user-minus\"></a><a href=\"#\" class=\"show-chat-emoticons ogicon-smile\"></a></div><input type=\"text\" id=\"message\" class=\"form-control\" placeholder=\"' + h['enterChatMsg'] + '...\" maxlength=\"80\"></div>'), s('body').append('<div id=\"chat-box\"></div>'), d) d.hasOwnProperty(t) && s('#chat-emoticons').append('<img src=\"https://jimboy3100.github.io/banners/emoticons/' + d[t] + '\" alt=\"' + t + '\" class=\"emoticon\">');
-                s('body').append('<div id=\"exp-imp\"><div id=\"exp-imp-menu\"><button id=\"close-exp-imp\" class=\"btn btn-danger\">' + h['close'] + '</button></div><div id=\"exp-imp-settings\"></div></div>'), s('#exp-imp-settings').append('<h1>' + h['exportSettings'] + '</h1><h2>' + h['exportInfo'] + '</h2>'), this['addOption']('#exp-imp-settings', 'export-ogarioCommands', h['commands'], true), this['addOption']('#exp-imp-settings', 'export-ogarioHotkeys', h['hotkeys'], true), this['addOption']('#exp-imp-settings', 'export-ogarioPlayerProfiles', h['profiles'], true), this['addOption']('#exp-imp-settings', 'export-ogarioSettings', h['settings'], true), this['addOption']('#exp-imp-settings', 'export-ogarioThemeSettings', h['theme'], true), s('#exp-imp-settings').append('<textarea id=\"export-settings\" class=\"form-control\" rows=\"14\" cols=\"100\" spellcheck=\"false\" readonly /><button id=\"export-settings-btn\" class=\"btn btn-block btn-success\">' + h['exportSettings'] + '</button>'), s('#exp-imp-settings').append('<h1>' + h['importSettings'] + '</h1><h2>' + h['importInfo'] + '</h2>'), this['addOption']('#exp-imp-settings', 'import-ogarioCommands', h['commands'], true), this['addOption']('#exp-imp-settings', 'import-ogarioHotkeys', h['hotkeys'], true), this['addOption']('#exp-imp-settings', 'import-ogarioPlayerProfiles', h['profiles'], true), this['addOption']('#exp-imp-settings', 'import-ogarioSettings', h['settings'], true), this['addOption']('#exp-imp-settings', 'import-ogarioThemeSettings', h['theme'], true), s('#exp-imp-settings').append('<textarea id=\"import-settings\" class=\"form-control\" rows=\"14\" cols=\"100\" spellcheck=\"false\" /><button id=\"import-settings-btn\" class=\"btn btn-block btn-success\">' + h['importSettings'] + '</button>'), y && y['setThemeMenu']();
-                for (var e = 0; e < ogario1PlayerProfiles.length; e++) s('#skins').append('<div class=\"skin-box\"><a href=\"#profile-' + e + '\" id=\"profile-' + e + '\" data-profile=\"' + e + '\"></a></div>'), this['setSkinPreview'](ogario1PlayerProfiles[e]['skinURL'], 'profile-' + e), e == this['selectedProfile'] && s('#profile-' + e).addClass('selected');
-            },
+var t;
+for (t in document["title"] = this["name"], s("#mainPanel")["before"]('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' + 
+h["start"] + '"></a></li><li class="profile-tab"><a href="#profile" class="ogicon-user" data-toggle="tab-tooltip" title="' + h["profile"] + '"></a></li><li class="settings-tab"><a href="#og-settings" class="ogicon-cog" data-toggle="tab-tooltip" title="' + h["settings"] + '"></a></li><li class="theme-tab"><a href="#theme" class="ogicon-droplet" data-toggle="tab-tooltip" title="' + h["theme"] + '"></a></li><li class="hotkeys-tab"><a href="#" class="hotkeys-link ogicon-keyboard" data-toggle="tab-tooltip" title="' + 
+h["hotkeys"] + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="Radio / ' + h["sounds"] + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>'), s("#main-panel").append('<a href="#" class="quick quick-menu ogicon-menu"></a><a href="#" class="quick quick-skins ogicon-images"></a><div id="profiles"><div id="prev-profile"></div><div id="skin-preview"></div><div id="next-profile"></div></div>'), 
+s("#mainPanel div[role=form]").appendTo(s("#main-panel")), s("#main-panel div[role=form] .form-group:first").remove(), s("#nick")["before"]('<input id="clantag" class="form-control" placeholder="Tag, e.g. \u24c2" maxlength="10"><div class="input-group nick"></div>'), s("#nick").appendTo(s(".nick")), s(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>'), s(".nick")["after"]('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Skin URL (imgur.com direct link)" maxlength="40"><input type="hidden" id="color" value="' + 
+ogarcopythelb["color"] + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>'), s("#locationKnown, #locationUnknown")["insertAfter"](s(".skin")), s("#region")["before"]('<button class="btn btn-warning btn-server-info ogicon-cogs"></button>'), s(".btn-spectate, .btn-logout").appendTo("#agario-main-buttons"), s("#agario-main-buttons").addClass("clearfix")["before"]('<div id="server-info" class="form-group clearfix"><input id="server-ws" class="form-control" placeholder="Server WS"><button id="server-connect" class="btn btn-success ogicon-power"></button><button id="server-reconnect" class="btn btn-primary ogicon-redo2"></button><input id="server-token" class="form-control" placeholder="Server token"><button id="server-join" class="btn btn-success" data-itr="page_join_party">Join</button></div>'), 
+s("#helloContainer div[role=form]")["after"]('<div id="ogario-party" class="clearfix"><input id="party-token" class="form-control" placeholder="Party token"></div>'), s("#ogario-party").append('<button id="join-party-btn-2" class="btn btn-success" data-itr="page_join_party">Join</button><button id="create-party-btn-2" class="btn btn-primary" data-itr="page_create_party">Create</button>'), s("#pre-join-party-btn:first, #join-party-btn:first, #create-party-btn:first, #leave-party-btn:first, #joinPartyToken:first, .party-icon-back:first").appendTo(s("#ogario-party")), 
+s("#settingsChoice, #options").appendTo(s("#og-settings .submenu-panel")), s("#stats").appendTo(s("#main-menu")).addClass("menu-panel"), s("#statsContinue")["attr"]("id", "statsContinue2"), s("#mainPanel")["empty"]().remove(), s(".center-container").addClass("ogario-menu"), s(".center-container").append('<div id="menu-footer" class="menu-main-color">' + h["visit"] + ' <a href="http://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this["version"] + ' <a href="https://goo.gl/nRREoR" class="release ogicon-info" target="_blank"></a></div>'), 
+s("#leftPanel, #rightPanel").addClass("ogario-menu")["removeAttr"]("id"), s(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo(s("#profile")).removeClass("agario-side-panel"), s(".agario-profile-panel")["after"]('<div id="block-warn">' + h["blockWarn"] + '<br><a href="#" id="unblock-popups">' + h["unblockPopups"] + "</a></div>"), s("#exp-bar").addClass("agario-profile-panel"), s(".left-container")["empty"](), s(".agario-shop-panel")["after"]('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCaWiPNJWnhzYDrBQoXokn6w" data-layout="full" data-theme="dark" data-count="default"></div></div>'), 
+s("#tags-container").appendTo(s("#profile")), s(".btn-logout").appendTo(s("#profile")), s(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://jimboy3100.github.io/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + h["skins"] + '"></a><a href="https://youtube.com/channel/UCaWiPNJWnhzYDrBQoXokn6w" class="quick-yt ogicon-youtube2" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="Team OGARio"></a></div>'), 
+this["protocolMode"] || s("#quick-menu")["prepend"]('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + h["page_shop"] + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + h["page_menu_main_free_coins"] + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + h["page_menu_main_gifts"] + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + 
+h["page_menu_main_dailyquests"] + '"></a>'), s(".party-dialog, .partymode-info").remove(), s(".agario-party-6").appendTo(s(".center-container")), s(".right-container")["empty"](), s(".right-container").append('<div class="agario-party"></div>'), s(".agario-party-6").appendTo(s(".agario-party")).addClass("agario-panel agario-side-panel"), s(".agario-party h4, #cancel-party-btn").remove(), s(".agario-party .btn").addClass("btn-sm"), s(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://ogario.ovh/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' + 
+h["moreSkins"] + "</a></div>"), s(".btn-settings, .text-muted, .tosBox, .agario-promo, #agario-web-incentive, span[data-itr='page_option_dark_theme'], #options #darkTheme").remove(), s("#advertisement, #adbg, #a320x250, #g320x250, #s320x250, #adsBottom").css("display", "none"), s("#advertisement").removeClass("agario-panel"), s("#adsBottom")["css"]({
+  "z-index" : "1",
+  "opacity" : "0",
+  "bottom" : "-100px"
+}), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), this["addOptions"]([], "animationGroup"), this["addOptions"](["autoZoom"], "zoomGroup"), this["addOptions"](["quickResp", "autoResp"], "respGroup"), this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", 
+"virMassShots", "massStroke"], "massGroup"), this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", 
+"borderGlow"], "gridGroup"), this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), this["addOptions"](["mouseSplit", "mouseFeed", 
+"mouseInvert"], "mouseGroup"), this["addOptions"](["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"), this["addOptions"](["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"), this["protocolMode"] || (this["addOptions"](["blockPopups"], "extrasGroup"), s("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"), s(".skinsGroup h5")["after"]('<label class="noSkins">' + h["noSkins"] + 
+" </label>"), s("#noSkins").appendTo(s(".noSkins")), s(".transparencyGroup h5")["after"]('<label class="noColors">' + h["noColors"] + " </label>"), s("#noColors").appendTo(s(".noColors")), s(".extrasGroup h5")["after"]('<label class="skipStats">' + h["skipStats"] + " </label>"), s("#skipStats").appendTo(s(".skipStats")), s(".skipStats")["after"]('<label class="showQuest">' + h["showQuest"] + " </label>"), s("#showQuest").appendTo(s(".showQuest")), s("#options").remove(), s("#settingsChoice").appendTo(s(".extrasGroup")).addClass("select-wrapper")), 
+this["addSliderBox"](".animationGroup", "animation", 100, 200, 1), this["addSliderBox"](".zoomGroup", "zoomSpeedValue", 0.50, 1.99, 0.01), s("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + h["exportImport"] + "</button>"), s("#og-settings").append('<div class="restore-settings"><a href="#">' + h["restoreSettings"] + "</a></div>"), s("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + h["thanks"] + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' + 
+h["playlist"] + "</a></span></div>"), s("#music").append('<div class="agario-panel sounds-panel"><h5 class="menu-main-color">' + h["sounds"] + "</h5></div>"), s("#music").append('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">Legend Clan (tag: \u24c2)</h5><div class="g-ytsubscribe" data-channelid="UCaWiPNJWnhzYDrBQoXokn6w" data-layout="full" data-theme="dark" data-count="default"></div></div>'), this["addInputBox"](".sounds-panel", "messageSound", "Sound URL", "setMessageSound"), 
+this["addInputBox"](".sounds-panel", "commandSound", "Sound URL", "setCommandSound"), s("body").append('<div id="overlays-hud" data-gamemode=":ffa"><div id="stats-hud" class="hud stats-hud-color"></div> <div id="top5-hud" class="hud"><h5 class="hud-main-color">Team top <span class="team-top">5</span></h5><div class="hud-main-color team-top-menu"><a href="#" data-limit="5" class="team-top-limit active">5</a> | <a href="#" data-limit="15" class="team-top-limit">10</a> | <a href="#" data-limit="100" class="team-top-limit">100</a></div><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' + 
+h["totalPartyPlayers"] + ': <span id="top5-total-players" class="top5-mass-color">0</span><br><span class="hud-main-color ogicon-pacman"></span> ' + h["totalPartyMass"] + ': <span id="top5-total-mass" class="top5-mass-color">0</span></div></div> <div id="time-hud" class="hud time-hud-color"></div> <div id="pause-hud" class="hud">' + h.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h4 class="hud-main-color">legendmod.ml</h4><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"><span id="btl-players-status">Players ready</span>: <span id="btl-players-count">0</span></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://jimboy3100.github.io/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span> <span id="target-status" class="hud-main-color">[' + 
+h["targetNotSet"] + ']</span></div><div id="target-summary"></div></div><div id="target-panel-hud" class="hud"><a href="#" id="set-targeting" class="ogicon-target"></a><a href="#" id="set-private-minimap" class="ogicon-location2"></a><a href="#" id="cancel-targeting" class="ogicon-cancel-circle"></a><a href="#" id="change-target" class="ogicon-arrow-right"></a></div> <div id="quest-hud" class="hud"></div> <div id="btl-hud" class="hud"></div></div>'), s("body").append('<ul id="messages"></ul>'), s("body").append('<div id="message-box"><div id="chat-emoticons"></div><div id="message-menu"><a href="#" class="chat-sound-notifications ogicon-volume-high"></a><a href="#" class="chat-active-users ogicon-user-check"></a><a href="#" class="chat-muted-users ogicon-user-minus"></a><a href="#" class="show-chat-emoticons ogicon-smile"></a></div><input type="text" id="message" class="form-control" placeholder="' + 
+h["enterChatMsg"] + '..." maxlength="80"></div>'), s("body").append('<div id="chat-box"></div>'), d) {
+  if (d.hasOwnProperty(t)) {
+    s("#chat-emoticons").append('<img src="https://jimboy3100.github.io/banners/emoticons/' + d[t] + '" alt="' + t + '" class="emoticon">');
+  }
+}
+s("body").append('<div id="exp-imp"><div id="exp-imp-menu"><button id="close-exp-imp" class="btn btn-danger">' + h["close"] + '</button></div><div id="exp-imp-settings"></div></div>'), s("#exp-imp-settings").append("<h1>" + h["exportSettings"] + "</h1><h2>" + h["exportInfo"] + "</h2>"), this["addOption"]("#exp-imp-settings", "export-ogarioCommands", h["commands"], true), this["addOption"]("#exp-imp-settings", "export-ogarioHotkeys", h["hotkeys"], true), this["addOption"]("#exp-imp-settings", "export-ogarioPlayerProfiles", 
+h["profiles"], true), this["addOption"]("#exp-imp-settings", "export-ogarioSettings", h["settings"], true), this["addOption"]("#exp-imp-settings", "export-ogarioThemeSettings", h["theme"], true), s("#exp-imp-settings").append('<textarea id="export-settings" class="form-control" rows="14" cols="100" spellcheck="false" readonly /><button id="export-settings-btn" class="btn btn-block btn-success">' + h["exportSettings"] + "</button>"), s("#exp-imp-settings").append("<h1>" + h["importSettings"] + "</h1><h2>" + 
+h["importInfo"] + "</h2>"), this["addOption"]("#exp-imp-settings", "import-ogarioCommands", h["commands"], true), this["addOption"]("#exp-imp-settings", "import-ogarioHotkeys", h["hotkeys"], true), this["addOption"]("#exp-imp-settings", "import-ogarioPlayerProfiles", h["profiles"], true), this["addOption"]("#exp-imp-settings", "import-ogarioSettings", h["settings"], true), this["addOption"]("#exp-imp-settings", "import-ogarioThemeSettings", h["theme"], true), s("#exp-imp-settings").append('<textarea id="import-settings" class="form-control" rows="14" cols="100" spellcheck="false" /><button id="import-settings-btn" class="btn btn-block btn-success">' + 
+h["importSettings"] + "</button>"), y && y["setThemeMenu"]();
+/** @type {number} */
+var e = 0;
+for (; e < ogario1PlayerProfiles.length; e++) {
+  s("#skins").append('<div class="skin-box"><a href="#profile-' + e + '" id="profile-' + e + '" data-profile="' + e + '"></a></div>');
+  this["setSkinPreview"](ogario1PlayerProfiles[e]["skinURL"], "profile-" + e);
+  if (e == this["selectedProfile"]) {
+    s("#profile-" + e).addClass("selected");
+  }
+}},
             'setUI': function() {
                 var t = this;
                 s(document).on("click", ".menu-tabs a", function(event) {
@@ -2670,20 +2714,19 @@ var core = function(t, e, i) {
                 s(o)['fadeIn'](1000), ogarhusettings(), s('.submenu-panel')['perfectScrollbar']('update');
             },
             'getDefaultSettings': function() {
-                if (this["noSkins"] = s("#noSkins")["prop"]("checked"), this["noColors"] = s("#noColors")["prop"]("checked"), this["skipStats"] = s("#skipStats")["prop"]("checked"), this["showQuest"] = s("#showQuest")["prop"]("checked"), i["showCustomSkins"] = !this["noSkins"], null !== e.localStorage.getItem("scale_setting")) {
-                    var t = JSON["parse"](e.localStorage.getItem("scale_setting"));
-                    this["setCanvasScale"](t);
-                } else {
-                    var o = s("#quality").val();
-                    this["getQuality"](o);
-                }
-                null !== e.localStorage.getItem("location") ? (this["region"] = e.localStorage.getItem("location"), s("#region").val(this["region"]), e.MC && e.MC["setRegion"] && e.MC["setRegion"](this["region"])) : this["region"] = s("#region").val(), this["setParty"](), ":party" === this["gameMode"] && e.location["hash"] && s("#join-party-btn-2")["click"](), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch-vanilla"))["forEach"](function(remove) {
-                    new Switchery(remove, {
-                        "color": g["menuMainColor"],
-                        "size": "small"
-                    });
-                }), s("#nick").val(ogarcopythelb["nick"])["blur"](), s("#noNames")["prop"]("checked", !v["noNames"]), s("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();
-            },
+if (this["noSkins"] = s("#noSkins")["prop"]("checked"), this["noColors"] = s("#noColors")["prop"]("checked"), this["skipStats"] = s("#skipStats")["prop"]("checked"), this["showQuest"] = s("#showQuest")["prop"]("checked"), i["showCustomSkins"] = !this["noSkins"], null !== e.localStorage.getItem("scale_setting")) {
+  var t = JSON["parse"](e.localStorage.getItem("scale_setting"));
+  this["setCanvasScale"](t);
+} else {
+  var o = s("#quality").val();
+  this["getQuality"](o);
+}
+null !== e.localStorage.getItem("location") ? (this["region"] = e.localStorage.getItem("location"), s("#region").val(this["region"]), e.MC && e.MC["setRegion"] && e.MC["setRegion"](this["region"])) : this["region"] = s("#region").val(), this["setParty"](), ":party" === this["gameMode"] && e.location["hash"] && s("#join-party-btn-2")["click"](), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch-vanilla"))["forEach"](function(remove) {
+  new Switchery(remove, {
+    "color" : g["menuMainColor"],
+    "size" : "small"
+  });
+}), s("#nick").val(ogarcopythelb["nick"])["blur"](), s("#noNames")["prop"]("checked", !v["noNames"]), s("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"](); },
             'getQuality': function(t) {
                 var i = 1;
                 switch ('devicePixelRatio' in e && (i = e['devicePixelRatio']), t) {
@@ -2707,33 +2750,51 @@ var core = function(t, e, i) {
                 this['canvasScale'] = t, i['canvasScale'] = t;
             },
             'setStreamMode': function() {
-                v['streamMode'] ? (s('#stream-mode').addClass('ogicon-eye-blocked'), s('#clantag, #nick, #party-token').addClass('stream-mode')) : (s('#stream-mode').removeClass('ogicon-eye-blocked'), s('#clantag, #nick, #party-token').removeClass('stream-mode'));
-            },
+if (v["streamMode"]) {
+  s("#stream-mode").addClass("ogicon-eye-blocked");
+  s("#clantag, #nick, #party-token").addClass("stream-mode");
+} else {
+  s("#stream-mode").removeClass("ogicon-eye-blocked");
+  s("#clantag, #nick, #party-token").removeClass("stream-mode");
+}            },
             'setHideSkinUrl': function() {
-                v['hideSkinUrl'] ? (s('#hide-url').addClass('ogicon-eye-blocked'), s('#skin').addClass('hide-url')) : (s('#hide-url').removeClass('ogicon-eye-blocked'), s('#skin').removeClass('hide-url'));
-            },
+if (v["hideSkinUrl"]) {
+  s("#hide-url").addClass("ogicon-eye-blocked");
+  s("#skin").addClass("hide-url");
+} else {
+  s("#hide-url").removeClass("ogicon-eye-blocked");
+  s("#skin").removeClass("hide-url");
+}            },
             'setShowQuickMenu': function() {
-                v['showQuickMenu'] ? s('#quick-menu')['fadeIn'](500) : s('#quick-menu')['fadeOut'](500);
-            },
+if (v["showQuickMenu"]) {
+  s("#quick-menu")["fadeIn"](500);
+} else {
+  s("#quick-menu")["fadeOut"](500);
+}            },
             'setShowSkinsPanel': function() {
-                v['showSkinsPanel'] ? s('#skins-panel')['fadeIn'](500) : s('#skins-panel')['fadeOut'](500);
-            },
+if (v["showSkinsPanel"]) {
+  s("#skins-panel")["fadeIn"](500);
+} else {
+  s("#skins-panel")["fadeOut"](500);
+}            },
             'unlockButtons': function() {
                 s('.btn-play, .btn-play-guest, .btn-login-play, .btn-spectate')['prop']('disabled', false);
             },
             'setMainButtons': function() {
-                var t = this;
-                s(document).on('click', '.btn-play, .btn-play-guest', function() {
-                    t['onPlay']();
-                }), s(document).on('click', '.btn-spectate', function() {
-                    t['onSpectate']();
-                }), s(document).on('click', '#create-party-btn-2', function() {
-                    t['onCreate']();
-                }), s(document).on('click', '#join-party-btn-2', function() {
-                    t['skipServerData'] = true, t['joinParty'](), t['onJoin']();
-                }), s(document).on('click', '#statsContinue2', function() {
-                    s('#stats, #main-panel')['toggle']();
-                });
+var t = this;
+s(document).on("click", ".btn-play, .btn-play-guest", function() {
+  t["onPlay"]();
+}), s(document).on("click", ".btn-spectate", function() {
+  t["onSpectate"]();
+}), s(document).on("click", "#create-party-btn-2", function() {
+  t["onCreate"]();
+}), s(document).on("click", "#join-party-btn-2", function() {
+  t["skipServerData"] = true;
+  t["joinParty"]();
+  t["onJoin"]();
+}), s(document).on("click", "#statsContinue2", function() {
+  s("#stats, #main-panel")["toggle"]();
+});
             },
             'play': function() {
                 if (this['setPlayerSettings'](), this['setParty'](), this['isSocketOpen']()) this['sendPartyData']();
@@ -2872,49 +2933,96 @@ var core = function(t, e, i) {
                 return t < 1000 ? t : Math.round(t / 100) / 10 + 'k';
             },
             'updateDeathLocations': function(t, e) {
-                i['mapOffsetFixed'] && (this['deathLocations'].push({
-                    'x': t + i['mapOffsetX'],
-                    'y': e + i['mapOffsetY']
-                }), 6 == this['deathLocations'].length && this['deathLocations']['shift'](), this['lastDeath'] = this['deathLocations'].length - 1);
+if (i["mapOffsetFixed"]) {
+  this["deathLocations"].push({
+    "x" : t + i["mapOffsetX"],
+    "y" : e + i["mapOffsetY"]
+  });
+  if (6 == this["deathLocations"].length) {
+    this["deathLocations"]["shift"]();
+  }
+  this["lastDeath"] = this["deathLocations"].length - 1;
+}
             },
             'drawMiniMap': function() {
-                if (i['mapOffsetFixed']) {
-                    var t = g['miniMapWidth'],
-                        e = g['miniMapTop'],
-                        s = t + e,
-                        o = t - 18,
-                        a = e + 9.5;
-                    this['miniMap'] ? this['miniMapCtx']['clearRect'](0, 0, t, s) : (this['miniMap'] = document.getElementById('minimap'), this['miniMapCtx'] = this['miniMap']['getContext']('2d'), this['miniMapCtx']['ogarioCtx'] = true, this['miniMap']['width'] = t, this['miniMap']['height'] = s), this['miniMap']['width'] != t && (this['miniMap']['width'] = t, this['miniMap']['height'] = s);
-                    var n = o / i['mapSize'],
-                        r = i['mapOffsetX'] + i['mapOffset'],
-                        l = i['mapOffsetY'] + i['mapOffset'];
-                    if (this['drawSelectedCell'](this['miniMapCtx']), this['currentSector'] = this['calculateMapSector'](i['playerX'], i['playerY'], true), this['miniMapCtx']['globalAlpha'] = 1, this['miniMapCtx']['font'] = g['miniMapFontWeight'] + ' ' + (e - 4) + 'px ' + g['miniMapFontFamily'], this['miniMapCtx']['fillStyle'] = g['miniMapSectorColor'], this['miniMapCtx']['fillText'](this['currentSector'], 10, e), this['miniMapSectors'] || this['drawMiniMapSectors'](g['sectorsX'], g['sectorsY'], o, s, a), this['miniMapCtx']['save'](), this['miniMapCtx']['translate'](9.5, a), ':battleroyale' === this['gameMode'] && ogarfooddrawer && ogarfooddrawer['drawBattleAreaOnMinimap'](this['miniMapCtx'], o, o, n, r, l), v['showMiniMapGhostCells']) {
-                        var h = i['ghostCells'];
-                        this['miniMapCtx']['beginPath']();
-                        for (var c = 0; c < h.length; c++)
-                            if (!h[c]['inView']) {
-                                var u = ~~((h[c]['x'] + r) * n),
-                                    d = ~~((h[c]['y'] + l) * n);
-                                this['miniMapCtx']['moveTo'](u, d), this['miniMapCtx'].arc(u, d, ~~(h[c]['size'] * n), 0, this.pi2, false);
-                            } this['miniMapCtx']['fillStyle'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['globalAlpha'] = g['miniMapGhostCellsAlpha'], this['miniMapCtx']['shadowColor'] = g['miniMapGhostCellsColor'], this['miniMapCtx']['shadowBlur'] = 10, this['miniMapCtx']['shadowOffsetX'] = 0, this['miniMapCtx']['shadowOffsetY'] = 0, this['miniMapCtx'].fill(), this['miniMapCtx']['globalAlpha'] = 1, this['miniMapCtx']['shadowBlur'] = 0;
-                    }
-                    if (v['showMiniMapGuides']) {
-                        u = Math.round((i['playerX'] + r) * n), d = Math.round((i['playerY'] + l) * n);
-                        this['miniMapCtx']['lineWidth'] = 1, this['miniMapCtx']['strokeStyle'] = g['miniMapGuidesColor'], this['miniMapCtx']['beginPath'](), this['miniMapCtx']['moveTo'](u, 0), this['miniMapCtx']['lineTo'](u, o - 1), this['miniMapCtx']['moveTo'](0, d), this['miniMapCtx']['lineTo'](o - 1, d), this['miniMapCtx']['stroke']();
-                    }
-                    if (this['miniMapCtx']['beginPath'](), this['miniMapCtx'].arc((i['playerX'] + r) * n, (i['playerY'] + l) * n, g['miniMapMyCellSize'], 0, this.pi2, false), this['miniMapCtx']['closePath'](), g['miniMapMyCellStrokeSize'] > 0 && (this['miniMapCtx']['lineWidth'] = g['miniMapMyCellStrokeSize'], this['miniMapCtx']['strokeStyle'] = g['miniMapMyCellStrokeColor'], this['miniMapCtx']['stroke']()), this['miniMapCtx']['fillStyle'] = g['miniMapMyCellColor'], this['miniMapCtx'].fill(), this['teamPlayers'].length)
-                        for (c = 0; c < this['teamPlayers'].length; c++) {
-                            //console.log(legendmod3['teamPlayers'][c]['color']);
-                            //this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID']);}
-                            this['teamPlayers'][c]['drawPosition'](this['miniMapCtx'], i['mapOffset'], n, this['privateMiniMap'], this['targetID'], legendmod3['teamPlayers'][c]['color']);
-                        }
-                    if (this['deathLocations'].length > 0) {
-                        u = Math.round((this['deathLocations'][this['lastDeath']]['x'] + i['mapOffset']) * n), d = Math.round((this['deathLocations'][this['lastDeath']]['y'] + i['mapOffset']) * n);
-                        var f = Math['max'](g['miniMapMyCellSize'] - 2, 4);
-                        this['miniMapCtx']['lineWidth'] = 1, this['miniMapCtx']['strokeStyle'] = this['deathLocations'].length - 1 == this['lastDeath'] ? g['miniMapDeathLocationColor'] : '#FFFFFF', this['miniMapCtx']['beginPath'](), this['miniMapCtx']['moveTo'](u - f, d), this['miniMapCtx']['lineTo'](u + f, d), this['miniMapCtx']['moveTo'](u, d - f), this['miniMapCtx']['lineTo'](u, d + f), this['miniMapCtx']['stroke']();
-                    }
-                    this['miniMapCtx']['restore']();
-                }
+if (i["mapOffsetFixed"]) {
+  var t = g["miniMapWidth"];
+  var e = g["miniMapTop"];
+  var s = t + e;
+  var o = t - 18;
+  var a = e + 9.5;
+  if (this["miniMap"]) {
+    this["miniMapCtx"]["clearRect"](0, 0, t, s);
+  } else {
+    this["miniMap"] = document.getElementById("minimap");
+    this["miniMapCtx"] = this["miniMap"]["getContext"]("2d");
+    this["miniMapCtx"]["ogarioCtx"] = true;
+    this["miniMap"]["width"] = t;
+    this["miniMap"]["height"] = s;
+  }
+  if (this["miniMap"]["width"] != t) {
+    this["miniMap"]["width"] = t;
+    this["miniMap"]["height"] = s;
+  }
+  var n = o / i["mapSize"];
+  var r = i["mapOffsetX"] + i["mapOffset"];
+  var l = i["mapOffsetY"] + i["mapOffset"];
+  if (this["drawSelectedCell"](this["miniMapCtx"]), this["currentSector"] = this["calculateMapSector"](i["playerX"], i["playerY"], true), this["miniMapCtx"]["globalAlpha"] = 1, this["miniMapCtx"]["font"] = g["miniMapFontWeight"] + " " + (e - 4) + "px " + g["miniMapFontFamily"], this["miniMapCtx"]["fillStyle"] = g["miniMapSectorColor"], this["miniMapCtx"]["fillText"](this["currentSector"], 10, e), this["miniMapSectors"] || this["drawMiniMapSectors"](g["sectorsX"], g["sectorsY"], o, s, a), this["miniMapCtx"]["save"](), 
+  this["miniMapCtx"]["translate"](9.5, a), ":battleroyale" === this["gameMode"] && ogarfooddrawer && ogarfooddrawer["drawBattleAreaOnMinimap"](this["miniMapCtx"], o, o, n, r, l), v["showMiniMapGhostCells"]) {
+    var h = i["ghostCells"];
+    this["miniMapCtx"]["beginPath"]();
+    var c = 0;
+    for (; c < h.length; c++) {
+      if (!h[c]["inView"]) {
+        var u = ~~((h[c]["x"] + r) * n);
+        var d = ~~((h[c]["y"] + l) * n);
+        this["miniMapCtx"]["moveTo"](u, d);
+        this["miniMapCtx"].arc(u, d, ~~(h[c]["size"] * n), 0, this.pi2, false);
+      }
+    }
+    this["miniMapCtx"]["fillStyle"] = g["miniMapGhostCellsColor"];
+    this["miniMapCtx"]["globalAlpha"] = g["miniMapGhostCellsAlpha"];
+    this["miniMapCtx"]["shadowColor"] = g["miniMapGhostCellsColor"];
+    this["miniMapCtx"]["shadowBlur"] = 10;
+    this["miniMapCtx"]["shadowOffsetX"] = 0;
+    this["miniMapCtx"]["shadowOffsetY"] = 0;
+    this["miniMapCtx"].fill();
+    this["miniMapCtx"]["globalAlpha"] = 1;
+    this["miniMapCtx"]["shadowBlur"] = 0;
+  }
+  if (v["showMiniMapGuides"]) {
+    u = Math.round((i["playerX"] + r) * n);
+    d = Math.round((i["playerY"] + l) * n);
+    this["miniMapCtx"]["lineWidth"] = 1;
+    this["miniMapCtx"]["strokeStyle"] = g["miniMapGuidesColor"];
+    this["miniMapCtx"]["beginPath"]();
+    this["miniMapCtx"]["moveTo"](u, 0);
+    this["miniMapCtx"]["lineTo"](u, o - 1);
+    this["miniMapCtx"]["moveTo"](0, d);
+    this["miniMapCtx"]["lineTo"](o - 1, d);
+    this["miniMapCtx"]["stroke"]();
+  }
+  if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
+    c = 0;
+    for (; c < this["teamPlayers"].length; c++) {
+      this["teamPlayers"][c]["drawPosition"](this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this["targetID"], legendmod3["teamPlayers"][c]["color"]);
+    }
+  }
+  if (this["deathLocations"].length > 0) {
+    u = Math.round((this["deathLocations"][this["lastDeath"]]["x"] + i["mapOffset"]) * n);
+    d = Math.round((this["deathLocations"][this["lastDeath"]]["y"] + i["mapOffset"]) * n);
+    var f = Math["max"](g["miniMapMyCellSize"] - 2, 4);
+    this["miniMapCtx"]["lineWidth"] = 1;
+    this["miniMapCtx"]["strokeStyle"] = this["deathLocations"].length - 1 == this["lastDeath"] ? g["miniMapDeathLocationColor"] : "#FFFFFF";
+    this["miniMapCtx"]["beginPath"]();
+    this["miniMapCtx"]["moveTo"](u - f, d);
+    this["miniMapCtx"]["lineTo"](u + f, d);
+    this["miniMapCtx"]["moveTo"](u, d - f);
+    this["miniMapCtx"]["lineTo"](u, d + f);
+    this["miniMapCtx"]["stroke"]();
+  }
+  this["miniMapCtx"]["restore"]();
+}
             },
             'drawMiniMapSectors': function(t, e, s, o, a) {
                 this['miniMapSectors'] = document.getElementById('minimap-sectors');
@@ -3054,8 +3162,25 @@ var core = function(t, e, i) {
                 }, 1000);
             },
             'switchServerMode': function() {
-                this['privateIP'] && (this['privateMode'] = !this['privateMode'], this['isSocketOpen']() && (this['closeConnection'](), toastr['error']('Zamknięto połączenie z serwerem!')), this['privateMode'] ? (toastr['info']('Przełączono na serwer prywatny!'), s('.party-panel').show()) : (toastr['info']('Przełączono na serwer publiczny!'), s('#active-parties')['empty'](), s('.party-panel').hide()), this['onJoin'](), i.play && this['onPlayerSpawn']());
-            },
+if (this["privateIP"]) {
+  this["privateMode"] = !this["privateMode"];
+  if (this["isSocketOpen"]()) {
+    this["closeConnection"]();
+    toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
+  }
+  if (this["privateMode"]) {
+    toastr["info"]("Prze\u0142\u0105czono na serwer prywatny!");
+    s(".party-panel").show();
+  } else {
+    toastr["info"]("Prze\u0142\u0105czono na serwer publiczny!");
+    s("#active-parties")["empty"]();
+    s(".party-panel").hide();
+  }
+  this["onJoin"]();
+  if (i.play) {
+    this["onPlayerSpawn"]();
+  }
+}            },
             'isSocketOpen': function() {
                 return null !== this.socket && this.socket['readyState'] === this.socket['OPEN'];
             },
@@ -3191,10 +3316,19 @@ var core = function(t, e, i) {
                 }
             },
             'sendPlayerPosition': function() {
-                if (this['isSocketOpen']() && i.play && this['playerID']) {
-                    var t = this.createView(17);
-                    t.setUint8(0, 30), t.setUint32(1, this['playerID'], true), t['setInt32'](5, this['getPlayerX'](), true), t['setInt32'](9, this['getPlayerY'](), true), void 0 !== i['playerMass'] ? t.setUint32(13, i['playerMass'], true) : t.setUint32(13, this['playerMass'], true), this['sendBuffer'](t);
-                }
+if (this["isSocketOpen"]() && i.play && this["playerID"]) {
+  var t = this.createView(17);
+  t.setUint8(0, 30);
+  t.setUint32(1, this["playerID"], true);
+  t["setInt32"](5, this["getPlayerX"](), true);
+  t["setInt32"](9, this["getPlayerY"](), true);
+  if (void 0 !== i["playerMass"]) {
+    t.setUint32(13, i["playerMass"], true);
+  } else {
+    t.setUint32(13, this["playerMass"], true);
+  }
+  this["sendBuffer"](t);
+}
             },
             'checkPlayerID': function(t) {
                 if (t)
@@ -3203,45 +3337,87 @@ var core = function(t, e, i) {
                 return null;
             },
             'updateTeamPlayer': function(t) {
-                function e() {
-                    for (var e = '';;) {
-                        var i = t.getUint16(s, true);
-                        if (0 == i) break;
-                        e += String['fromCharCode'](i), s += 2;
-                    }
-                    return s += 2, e;
-                }
-                var i = t.getUint32(1, true),
-                    s = 5,
-                    o = e(),
-                    a = this['checkSkinURL'](e()),
-                    n = e(),
-                    r = e(),
-                    l = ':party' === this['gameMode'] ? o + r : o,
-                    h = this['checkPlayerID'](i);
-                if (null !== h) this['teamPlayers'][h]['nick'] = o, this['teamPlayers'][h]['skinID'] = l, this['teamPlayers'][h]['skinURL'] = a, this['teamPlayers'][h]['setColor'](r, n);
-                else {
-                    var c = new function(t, e, i, s) {
-                        this['id'] = t, this['nick'] = e, this['skinID'] = i, this['skinURL'] = s, this['x'] = 0, this['y'] = 0, this['lastX'] = 0, this['lastY'] = 0, this['mass'] = 0, this['clanTag'] = '', this['color'] = null, this['customColor'] = g['miniMapTeammatesColor'], this['alive'] = false, this['updateTime'] = null, this.pi2 = 2 * Math['PI'], this['setColor'] = function(t, e) {
-                            this['color'] = t, 7 == e.length && (this['customColor'] = e);
-                        }, this['drawPosition'] = function(t, e, i, s, o, ncolor) {
-                            if (!(!this['alive'] || s && o && this['id'] != o)) {
-                                this['lastX'] = (29 * this['lastX'] + this['x']) / 30, this['lastY'] = (29 * this['lastY'] + this['y']) / 30;
-                                var a = (this['lastX'] + e) * i,
-                                    n = (this['lastY'] + e) * i;
-                                //this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, false), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = this['customColor'], t.fill();
-                                this['nick'].length > 0 && (t['font'] = g['miniMapNickFontWeight'] + ' ' + g['miniMapNickSize'] + 'px ' + g['miniMapNickFontFamily'], t['textAlign'] = 'center', g['miniMapNickStrokeSize'] > 0 && (t['lineWidth'] = g['miniMapNickStrokeSize'], t['strokeStyle'] = g['miniMapNickStrokeColor'], t['strokeText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['fillStyle'] = g['miniMapNickColor'], t['fillText'](this['nick'], a, n - (2 * g['miniMapTeammatesSize'] + 2))), t['beginPath'](), t.arc(a, n, g['miniMapTeammatesSize'], 0, this.pi2, false), t['closePath'](), v['oneColoredTeammates'] ? t['fillStyle'] = g['miniMapTeammatesColor'] : t['fillStyle'] = ncolor, t.fill();
-
-                                //console.log('gminiMapNickStrokeColorg: '+g["miniMapNickStrokeColor"]); //returns #000000
-                                //console.log('gminiMapNickStrokeColor: '+g["miniMapNickColor"]); //shows the team color
-                                //console.log('voneColoredTeammates: '+v['oneColoredTeammates']); //returns false
-
-                            }
-                        };
-                    }(i, o, l, a);
-                    c['setColor'](r, n), this['teamPlayers'].push(c);
-                }
-                this['cacheCustomSkin'](o, r, a);
+function e() {
+  var paginationStr = "";
+  for (;;) {
+    var i = t.getUint16(s, true);
+    if (0 == i) {
+      break;
+    }
+    paginationStr = paginationStr + String["fromCharCode"](i);
+    s = s + 2;
+  }
+  return s = s + 2, paginationStr;
+}
+var i = t.getUint32(1, true);
+var s = 5;
+var o = e();
+var a = this["checkSkinURL"](e());
+var n = e();
+var r = e();
+var l = ":party" === this["gameMode"] ? o + r : o;
+var h = this["checkPlayerID"](i);
+if (null !== h) {
+  this["teamPlayers"][h]["nick"] = o;
+  this["teamPlayers"][h]["skinID"] = l;
+  this["teamPlayers"][h]["skinURL"] = a;
+  this["teamPlayers"][h]["setColor"](r, n);
+} else {
+  var c = new function(envId, cb, i, s) {
+    this["id"] = envId;
+    this["nick"] = cb;
+    this["skinID"] = i;
+    this["skinURL"] = s;
+    this["x"] = 0;
+    this["y"] = 0;
+    this["lastX"] = 0;
+    this["lastY"] = 0;
+    this["mass"] = 0;
+    this["clanTag"] = "";
+    this["color"] = null;
+    this["customColor"] = g["miniMapTeammatesColor"];
+    this["alive"] = false;
+    this["updateTime"] = null;
+    this.pi2 = 2 * Math["PI"];
+    this["setColor"] = function(i, inRevIdx) {
+      this["color"] = i;
+      if (7 == inRevIdx.length) {
+        this["customColor"] = inRevIdx;
+      }
+    };
+    this["drawPosition"] = function(options, margin, mult, startcode, endcode, value) {
+      if (!(!this["alive"] || startcode && endcode && this["id"] != endcode)) {
+        this["lastX"] = (29 * this["lastX"] + this["x"]) / 30;
+        this["lastY"] = (29 * this["lastY"] + this["y"]) / 30;
+        var w = (this["lastX"] + margin) * mult;
+        var h = (this["lastY"] + margin) * mult;
+        if (this["nick"].length > 0) {
+          options["font"] = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
+          options["textAlign"] = "center";
+          if (g["miniMapNickStrokeSize"] > 0) {
+            options["lineWidth"] = g["miniMapNickStrokeSize"];
+            options["strokeStyle"] = g["miniMapNickStrokeColor"];
+            options["strokeText"](this["nick"], w, h - (2 * g["miniMapTeammatesSize"] + 2));
+          }
+          options["fillStyle"] = g["miniMapNickColor"];
+          options["fillText"](this["nick"], w, h - (2 * g["miniMapTeammatesSize"] + 2));
+        }
+        options["beginPath"]();
+        options.arc(w, h, g["miniMapTeammatesSize"], 0, this.pi2, false);
+        options["closePath"]();
+        if (v["oneColoredTeammates"]) {
+          options["fillStyle"] = g["miniMapTeammatesColor"];
+        } else {
+          options["fillStyle"] = value;
+        }
+        options.fill();
+      }
+    };
+  }(i, o, l, a);
+  c["setColor"](r, n);
+  this["teamPlayers"].push(c);
+}
+this["cacheCustomSkin"](o, r, a);
             },
             'updateTeamPlayerPosition': function(t) {
                 var e = t.getUint32(1, true),
@@ -3256,22 +3432,35 @@ var core = function(t, e, i) {
                 }
             },
             'updateTeamPlayers': function() {
-                this['sendPlayerPosition'](), this['chatUsers'] = {}, this['top5'] = [];
-                for (var t = 0; t < this['teamPlayers'].length; t++) {
-                    var e = this['teamPlayers'][t];
-                    (e['alive'] && Date['now']() - e['updateTime'] >= 2000 || 0 == e['mass']) && (e['alive'] = false, this['targeting'] && this['targetID'] && e['id'] == this['targetID'] && this['setTargetStatus'](2)), e['alive'] && (this['top5'].push({
-                        'id': e['id'],
-                        'nick': e['nick'],
-                        'x': e['x'],
-                        'y': e['y'],
-                        'mass': e['mass'],
-                        'color': e['color'],
-                        "skin": e["skinURL"]
-                    }), this['isChatUserMuted'](e['id']) || this['addChatUser'](e['id'], e['nick']));
-                }
-                this['top5']['sort'](function(t, e) {
-                    return e['mass'] - t['mass'];
-                }), this['displayTop5']();
+this["sendPlayerPosition"](), this["chatUsers"] = {}, this["top5"] = [];
+var t = 0;
+for (; t < this["teamPlayers"].length; t++) {
+  var e = this["teamPlayers"][t];
+  if (e["alive"] && Date["now"]() - e["updateTime"] >= 2000 || 0 == e["mass"]) {
+    e["alive"] = false;
+    if (this["targeting"] && this["targetID"] && e["id"] == this["targetID"]) {
+      this["setTargetStatus"](2);
+    }
+  }
+  if (e["alive"]) {
+    this["top5"].push({
+      "id" : e["id"],
+      "nick" : e["nick"],
+      "x" : e["x"],
+      "y" : e["y"],
+      "mass" : e["mass"],
+      "color" : e["color"],
+      "skin" : e["skinURL"]
+    });
+    if (!this["isChatUserMuted"](e["id"])) {
+      this["addChatUser"](e["id"], e["nick"]);
+    }
+  }
+}
+this["top5"]["sort"](function(row, conf) {
+  return conf["mass"] - row["mass"];
+}), this["displayTop5"]();
+
             },
             'updateParties': function(t) {
                 this['parties'] = [];
