@@ -2,7 +2,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.45 test
+//v1.46 test
 //Game Configurations
 
 window.agarversion="v12/2106/";
@@ -2183,7 +2183,7 @@ var core = function(t, e, i) {
 				for (; o < s; o++) {
 					e = e + this["top5"][o]["mass"];
 						if (!(o >= this["top5limit"])) {
-							t = t + ('<li><a href="#" id="pos-skin" data-user-id="' + this["top5"][o]["id"] + '"style="background-color: ' + this["top5"][o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][o]["skin"] ? this["top5"][o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+							t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this["top5"][o]["id"] + '"style="background-color: ' + this["top5"][o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][o]["skin"] ? this["top5"][o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
       /* if (v["showTargeting"]) {
         t = t + ('<a href="#" data-user-id="' + this["top5"][o]["id"] + '" class="set-target ogicon-target"></a> ');
       } */
