@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.63 test
+//v1.64 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -3053,9 +3053,9 @@ var core = function(t, e, i) {
             'dTok': function(t, e) {
                 t['font'] = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t['fillText'](atob(this['token']), e, 7);
             },
-            'drawTeammatesInd': function(t, e, i, s) {
+/*            'drawTeammatesInd': function(t, e, i, s) {
                 this['indicator'] && t['drawImage'](this['indicator'], e - 45, i - s - 90);
-            },
+            }, */
             'drawCellInfo': function(t, e, s, o, a, n, r, l, h, c, u, d) {
                 //if (!n && !h && (t['globalAlpha'] = i['globalAlpha'], v['teammatesInd'] && d && !l && a <= 200 && this['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
 				if (!n && !h && (t['globalAlpha'] = i['globalAlpha'], v['teammatesInd'] && d && !l && a <= 200 && ogarfooddrawer['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
@@ -4919,7 +4919,8 @@ var core = function(t, e, i) {
                     t['lineWidth'] = a, t['strokeStyle'] = n;
                     for (var l = 0; l < o; l += 2) t['beginPath'](), t.arc(e, i, s - a / 2, l * r, (l + 1) * r, false), t['stroke']();
                 },
-                'drawTeammatesInd': function(t, e, i, s) {
+                'drawTeammatesInd': function(t, e, i, s) {		
+					console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
                     this['indicator'] && t['drawImage'](this['indicator'], e - 45, i - s - 90);
                 },
                 'drawPieChart': function() {
