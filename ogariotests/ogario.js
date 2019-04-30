@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.52 test
+//v1.53 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -2217,7 +2217,11 @@ var core = function(t, e, i) {
                 s('#messages')['empty'](), t && (toastr['clear'](), v['showChatBox'] && (s('#chat-box .message').remove(), this['chatHistory'].length = 0));
             },
             'displayChatInfo': function(t, e) {
-                t ? toastr['info'](h[e + 'A']) : toastr['error'](h[e + 'B']);
+                if (t) {
+                    toastr["info"](h[e + "A"]);
+                } else {
+                    toastr["error"](h[e + "B"]);
+                }
             },
             'setDisableChat': function() {
                 v['hideChat'] = v['disableChat'], this['setHideChat']();
@@ -2229,22 +2233,48 @@ var core = function(t, e, i) {
                 v['hideChat'] && s('#message-box').hide(), this['setShowChatBox']();
             },
             'setShowChatBox': function() {
-                !v['hideChat'] && v['showChatBox'] ? s('#chat-box').show() : s('#chat-box').hide();
+                if (!v["hideChat"] && v["showChatBox"]) {
+                    s("#chat-box").show();
+                } else {
+                    s("#chat-box").hide();
+                }
             },
             'enterChatMessage': function() {
-                var t = s('#message-box'),
-                    e = s('#message');
-                if (t['is'](':visible')) {
+                var t = s("#message-box");
+                var e = s("#message");
+                if (t["is"](":visible")) {
                     var o = e.val();
-                    o.length ? (this['sendChatMessage'](101, o), i.play && (e['blur'](), t.hide())) : (e['blur'](), t.hide()), e.val('');
-                } else t.show(), e['focus'](), e.val('');
+                    if (o.length) {
+                        this["sendChatMessage"](101, o);
+                        if (i.play) {
+                            e["blur"]();
+                            t.hide();
+                        }
+                    } else {
+                        e["blur"]();
+                        t.hide();
+                    }
+                    e.val("");
+                } else {
+                    t.show();
+                    e["focus"]();
+                    e.val("");
+                }
             },
             'showMenu': function(t) {
                 if (e.MC && e.MC['showNickDialog']) return s('.ogario-menu').show(), s('.menu-panel').hide(), i.play || this['skipStats'] ? s('#main-panel').show() : s('#stats').show(), e.MC['showNickDialog'](300), s('#oferwallContainer')['is'](':visible') && e['closeOfferwall'](), void(s('#videoContainer')['is'](':visible') && e['closeVideoContainer']());
                 t ? s('#overlays')['fadeIn'](t) : s('#overlays').show();
             },
             'hideMenu': function(t) {
-                e.MC && e.MC['showNickDialog'] ? s('.ogario-menu').hide() : t ? s('#overlays')['fadeOut'](t) : s('#overlays').hide();
+                if (e.MC && e.MC["showNickDialog"]) {
+                    s(".ogario-menu").hide();
+                } else {
+                    if (t) {
+                        s("#overlays")["fadeOut"](t);
+                    } else {
+                        s("#overlays").hide();
+                    }
+                }
             },
             'escapeHTML': function(t) {
                 return String(t).replace(/[&<>"'\/]/g, function(t) {
@@ -2258,7 +2288,17 @@ var core = function(t, e, i) {
             },
             'loadSettings': function() {
                 var t = null;
-                for (var s in null !== e.localStorage.getItem('ogarioSettings') && (t = JSON.parse(e.localStorage.getItem('ogarioSettings'))), v) v.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (v[s] = t[s]), i.hasOwnProperty(s) && (i[s] = v[s]));
+                var s;
+                for (s in null !== e.localStorage.getItem("ogarioSettings") && (t = JSON.parse(e.localStorage.getItem("ogarioSettings"))), v) {
+                    if (v.hasOwnProperty(s)) {
+                        if (t && t.hasOwnProperty(s)) {
+                            v[s] = t[s];
+                        }
+                        if (i.hasOwnProperty(s)) {
+                            i[s] = v[s];
+                        }
+                    }
+                }
             },
             'saveSettings': function(t, i) {
                 e.localStorage.setItem(i, JSON['stringify'](t));
@@ -3104,7 +3144,14 @@ var core = function(t, e, i) {
                 this['chatUsers'] = {};
             },
             'getWS': function(t) {
-                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this['closeConnection']());
+                if (t) {
+                    this["ws"] = t;
+                    this["createServerToken"]();
+                    this["updateServerInfo"]();
+                    if (-1 == this["ws"].indexOf("agar.io")) {
+                        this["closeConnection"]();
+                    }
+                }
             },
             'recreateWS': function(t) {
                 if (!t) return null;
@@ -3791,154 +3838,283 @@ var core = function(t, e, i) {
         }
         window.legendmod3 = ogarminimapdrawer;
 
-        function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-            this['id'] = t, this['x'] = e, this['y'] = s, this['targetX'] = e, this['targetY'] = s, this['color'] = a, this['oppColor'] = null, this['size'] = o, this['targetSize'] = o, this['alpha'] = 1, this['nick'] = '', this['targetNick'] = '', this['nickCanvas'] = null, this['mass'] = 0, this['lastMass'] = 0, this['kMass'] = 0, this['massCanvas'] = null, this['massTxt'] = '', this['margin'] = 0, this['scale'] = 1, this['nickScale'] = 1, this['massScale'] = 1, this['virMassScale'] = 3, this['strokeScale'] = 1, this['fontSize'] = 0x1a, this['nickSize'] = 0x1a, this['lastNickSize'] = 0, this['massSize'] = 0x1a, this['virMassSize'] = 0x1a, this['nickStrokeSize'] = 3, this['massStrokeSize'] = 3, this['isFood'] = n, this['isVirus'] = r, this['isPlayerCell'] = l, this['shortMass'] = h, this['virMassShots'] = c, this['rescale'] = false, this['redrawNick'] = true, this['redrawMass'] = true, this['optimizedNames'] = false, this['optimizedMass'] = false, this['strokeNick'] = false, this['strokeMass'] = false, this['removed'] = false, this['redrawed'] = 0, this['time'] = 0, this['skin'] = null, this.pi2 = 2 * Math['PI'],
-                this.virusColor = null,
-                this.virusStroke = null,
-                this.nHeight = 6,
-                this['update'] = function(t, e, i, s, o, a) {
-                    this['x'] = t, this['y'] = e, this['isVirus'] = s, this['isPlayerCell'] = o, this['setMass'](i), this['setNick'](a);
-                }, this['removeCell'] = function() {
-                    this['removed'] = true;
-                    var t = M['cells']['indexOf'](this); - 1 != t ? (M['cells']['splice'](t, 1), v['virusesRange'] && -1 != (t = M['viruses'].indexOf(this)) && M['viruses']['splice'](t, 1)) : -1 != (t = M['food'].indexOf(this)) && M['food']['splice'](t, 1), -1 != (t = M['playerCells'].indexOf(this)) && (M['removePlayerCell'] = true, M['playerCells']['splice'](t, 1), -1 != (t = M['playerCellIDs'].indexOf(this['id'])) && M['playerCellIDs']['splice'](t, 1)), this['redrawed'] && M['removedCells'].push(this), delete M['indexedCells'][this['id']];
-                }, this['moveCell'] = function() {
-                    var t = (M['time'] - this['time']) / v['animation'];
-                    if (t = t < 0 ? 0 : t > 1 ? 1 : t, this['x'] += (this['targetX'] - this['x']) * t, this['y'] += (this['targetY'] - this['y']) * t, this['size'] += (this['targetSize'] - this['size']) * t, this['alpha'] = t, this['removed']) {
-                        if (1 == t) {
-                            var e = M['removedCells'].indexOf(this); - 1 != e && M['removedCells']['splice'](e, 1);
-                        }
-                    } else this['time'] = M['time'];
-                }, this['isInView'] = function() {
-                    return !(this['id'] <= 0) && !(this['x'] + this['size'] + 40 < M['viewX'] - M['canvasWidth'] / 2 / M['scale'] || this['y'] + this['size'] + 40 < M['viewY'] - M['canvasHeight'] / 2 / M['scale'] || this['x'] - this['size'] - 40 > M['viewX'] + M['canvasWidth'] / 2 / M['scale'] || this['y'] - this['size'] - 40 > M['viewY'] + M['canvasHeight'] / 2 / M['scale']);
-                }, this['setMass'] = function(t) {
-                    return this['size'] = t, !(t <= 40) && (this['massCanvas'] ? (this['mass'] = ~~(t * t / 100), this['redrawMass'] = true, this['isVirus'] ? (this['virMassShots'] && this['mass'] < 200 && (this['mass'] = ~~((200 - this['mass']) / 14)), this['massTxt'] = this['mass']['toString'](), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this['massTxt'] = this['mass']['toString'](), this['mass'] <= 200 || (this['shortMass'] && this['mass'] >= 1000 ? (this['kMass'] = Math.round(this['mass'] / 100) / 10, this['massTxt'] = this['kMass'] + 'k', true) : (this['optimizedMass'] && (this['redrawMass'] = Math['abs']((this['mass'] - this['lastMass']) / this['mass']) >= 0.02 || this['rescale']), true)))) : (this['massCanvas'] = new irenderfromagario(), false));
-                }, this['setNick'] = function(t) {
-                    return this['nick'] = t, !(!t || this['isVirus']) && (!!this['nickCanvas'] || (this['nickCanvas'] = new irenderfromagario(), false));
-                }, this['setScale'] = function(t, e, i, s, o) {
-                    var a = Math['ceil'](10 * t) / 10;
-                    this['rescale'] = false, this['scale'] != a && (this['scale'] = a, this['rescale'] = true), this['nickScale'] = e, this['massScale'] = i, this['virMassScale'] = s, this['strokeScale'] = o;
-                }, this['setFontSize'] = function() {
-                    this['isVirus'] ? this['massSize'] = Math['ceil'](this['virMassSize'] * this['scale'] * this['virMassScale']) : (this['fontSize'] = Math['max'](0.3 * this['size'], 0x1a) * this['scale'], this['nickSize'] = ~~(this['fontSize'] * this['nickScale']), this['massSize'] = ~~(0.5 * this['fontSize'] * this['massScale']), this['optimizedNames'] ? this['redrawNick'] = Math['abs']((this['nickSize'] - this['lastNickSize']) / this['nickSize']) >= 0.3 || this['rescale'] : this['redrawNick'] = true);
-                }, this['setStrokeSize'] = function() {
-                    this['strokeNick'] && !this['isVirus'] && (this['nickStrokeSize'] = ~~(0.1 * this['nickSize'] * this['strokeScale'])), this['strokeMass'] && (this['massStrokeSize'] = ~~(0.1 * this['massSize'] * this['strokeScale']));
-                }, this['setDrawing'] = function() {
-                    this['optimizedNames'] = v['optimizedNames'], this['optimizedMass'] = v['optimizedMass'], this['shortMass'] = v['shortMass'], this['virMassShots'] = v['virMassShots'], this['strokeNick'] = v['namesStroke'], this['strokeMass'] = v['massStroke'];
-                }, this['setDrawingScale'] = function() {
-                    this['setScale'](i['viewScale'], g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), this['setFontSize'](), this['setStrokeSize'](), this['margin'] = 0;
-                }, this['drawNick'] = function(mainCanvas) {
-                    if (this['nick'] && this['nickCanvas'] && !this['isVirus']) {
-                        var nickCanvas = this['nickCanvas'];
-                        nickCanvas['setDrawing'](g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], this['strokeNick'], this['nickStrokeSize'], g['namesStrokeColor']), nickCanvas['setTxt'](this['nick']), this['redrawNick'] && (nickCanvas['setFontSize'](this['nickSize']), this['lastNickSize'] = this['nickSize']), nickCanvas['setScale'](this['scale']);
-                        const nickImg = nickCanvas.drawTxt(),
-                            w = ~~(nickImg.width / this.scale),
-                            h = ~~(nickImg.height / this.scale);
-                        this.margin = ~~(h / 2);
-                        if (w > 1 && h > 1) {
-                            mainCanvas.drawImage(nickImg, ~~(this.x - w / 2), ~~this.y - this.margin, w, h);
+        function ogarbasicassembly(date, y, z, value, color1, color2, percent, i, h, centx) {
+            this["id"] = date;
+            this["x"] = y;
+            this["y"] = z;
+            this["targetX"] = y;
+            this["targetY"] = z;
+            this["color"] = color1;
+            this["oppColor"] = null;
+            this["size"] = value;
+            this["targetSize"] = value;
+            this["alpha"] = 1;
+            this["nick"] = "";
+            this["targetNick"] = "";
+            this["nickCanvas"] = null;
+            this["mass"] = 0;
+            this["lastMass"] = 0;
+            this["kMass"] = 0;
+            this["massCanvas"] = null;
+            this["massTxt"] = "";
+            this["margin"] = 0;
+            this["scale"] = 1;
+            this["nickScale"] = 1;
+            this["massScale"] = 1;
+            this["virMassScale"] = 3;
+            this["strokeScale"] = 1;
+            this["fontSize"] = 26;
+            this["nickSize"] = 26;
+            this["lastNickSize"] = 0;
+            this["massSize"] = 26;
+            this["virMassSize"] = 26;
+            this["nickStrokeSize"] = 3;
+            this["massStrokeSize"] = 3;
+            this["isFood"] = color2;
+            this["isVirus"] = percent;
+            this["isPlayerCell"] = i;
+            this["shortMass"] = h;
+            this["virMassShots"] = centx;
+            this["rescale"] = false;
+            this["redrawNick"] = true;
+            this["redrawMass"] = true;
+            this["optimizedNames"] = false;
+            this["optimizedMass"] = false;
+            this["strokeNick"] = false;
+            this["strokeMass"] = false;
+            this["removed"] = false;
+            this["redrawed"] = 0;
+            this["time"] = 0;
+            this["skin"] = null;
+            this.pi2 = 2 * Math["PI"];
+            this.virusColor = null;
+            this.virusStroke = null;
+            this.nHeight = 6;
+            this["update"] = function(s, ocolor, i, boardManager, canCreateDiscussions, a) {
+                this["x"] = s;
+                this["y"] = ocolor;
+                this["isVirus"] = boardManager;
+                this["isPlayerCell"] = canCreateDiscussions;
+                this["setMass"](i);
+                this["setNick"](a);
+            };
+            this["removeCell"] = function() {
+                this["removed"] = true;
+                var i = M["cells"]["indexOf"](this);
+                if (-1 != i) {
+                    M["cells"]["splice"](i, 1);
+                    if (v["virusesRange"] && -1 != (i = M["viruses"].indexOf(this))) {
+                        M["viruses"]["splice"](i, 1);
+                    }
+                } else {
+                    if (-1 != (i = M["food"].indexOf(this))) {
+                        M["food"]["splice"](i, 1);
+                    }
+                }
+                if (-1 != (i = M["playerCells"].indexOf(this))) {
+                    M["removePlayerCell"] = true;
+                    M["playerCells"]["splice"](i, 1);
+                    if (-1 != (i = M["playerCellIDs"].indexOf(this["id"]))) {
+                        M["playerCellIDs"]["splice"](i, 1);
+                    }
+                }
+                if (this["redrawed"]) {
+                    M["removedCells"].push(this);
+                }
+                delete M["indexedCells"][this["id"]];
+            };
+            this["moveCell"] = function() {
+                var start = (M["time"] - this["time"]) / v["animation"];
+                if (start = start < 0 ? 0 : start > 1 ? 1 : start, this["x"] += (this["targetX"] - this["x"]) * start, this["y"] += (this["targetY"] - this["y"]) * start, this["size"] += (this["targetSize"] - this["size"]) * start, this["alpha"] = start, this["removed"]) {
+                    if (1 == start) {
+                        var i = M["removedCells"].indexOf(this);
+                        if (-1 != i) {
+                            M["removedCells"]["splice"](i, 1);
                         }
                     }
-                }, this["drawMass"] = function(context) {
-                    if (this["massCanvas"] && !(this["size"] <= 40)) {
-                        var massCanvas = this["massCanvas"];
-                        massCanvas["setDrawing"](g["massColor"], g["massFontFamily"], g["massFontWeight"], this["strokeMass"], this["massStrokeSize"], g["massStrokeColor"]);
-                        if (this["redrawMass"]) {
-                            massCanvas["setTxt"](this["massTxt"]);
-                            this["lastMass"] = this["mass"];
-                        }
-                        massCanvas["setFontSize"](this["massSize"]);
-                        massCanvas["setScale"](this["scale"]);
-                        let data = massCanvas.drawTxt();
-                        let width = ~~(data.width / this.scale);
-                        let height = ~~(data.height / this.scale);
-                        let textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
-                        if (width > 1 && height > 1) {
-                            context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
-                        }
+                } else {
+                    this["time"] = M["time"];
+                }
+            };
+            this["isInView"] = function() {
+                return !(this["id"] <= 0) && !(this["x"] + this["size"] + 40 < M["viewX"] - M["canvasWidth"] / 2 / M["scale"] || this["y"] + this["size"] + 40 < M["viewY"] - M["canvasHeight"] / 2 / M["scale"] || this["x"] - this["size"] - 40 > M["viewX"] + M["canvasWidth"] / 2 / M["scale"] || this["y"] - this["size"] - 40 > M["viewY"] + M["canvasHeight"] / 2 / M["scale"]);
+            };
+            this["setMass"] = function(size) {
+                return this["size"] = size, !(size <= 40) && (this["massCanvas"] ? (this["mass"] = ~~(size * size / 100), this["redrawMass"] = true, this["isVirus"] ? (this["virMassShots"] && this["mass"] < 200 && (this["mass"] = ~~((200 - this["mass"]) / 14)), this["massTxt"] = this["mass"]["toString"](), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this["massTxt"] = this["mass"]["toString"](),
+                    this["mass"] <= 200 || (this["shortMass"] && this["mass"] >= 1000 ? (this["kMass"] = Math.round(this["mass"] / 100) / 10, this["massTxt"] = this["kMass"] + "k", true) : (this["optimizedMass"] && (this["redrawMass"] = Math["abs"]((this["mass"] - this["lastMass"]) / this["mass"]) >= 0.02 || this["rescale"]), true)))) : (this["massCanvas"] = new irenderfromagario, false));
+            };
+            this["setNick"] = function(cb) {
+                return this["nick"] = cb, !(!cb || this["isVirus"]) && (!!this["nickCanvas"] || (this["nickCanvas"] = new irenderfromagario, false));
+            };
+            this["setScale"] = function(factor, isSlidingUp, i, s, canCreateDiscussions) {
+                var retinaURI = Math["ceil"](10 * factor) / 10;
+                this["rescale"] = false;
+                if (this["scale"] != retinaURI) {
+                    this["scale"] = retinaURI;
+                    this["rescale"] = true;
+                }
+                this["nickScale"] = isSlidingUp;
+                this["massScale"] = i;
+                this["virMassScale"] = s;
+                this["strokeScale"] = canCreateDiscussions;
+            };
+            this["setFontSize"] = function() {
+                if (this["isVirus"]) {
+                    this["massSize"] = Math["ceil"](this["virMassSize"] * this["scale"] * this["virMassScale"]);
+                } else {
+                    this["fontSize"] = Math["max"](0.3 * this["size"], 26) * this["scale"];
+                    this["nickSize"] = ~~(this["fontSize"] * this["nickScale"]);
+                    this["massSize"] = ~~(0.5 * this["fontSize"] * this["massScale"]);
+                    if (this["optimizedNames"]) {
+                        this["redrawNick"] = Math["abs"]((this["nickSize"] - this["lastNickSize"]) / this["nickSize"]) >= 0.3 || this["rescale"];
+                    } else {
+                        this["redrawNick"] = true;
                     }
-                },
-                this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
-                    const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
-                    const GROUPSIZE = this.pi2 / nAngelsOfVirus;
-                    const degreeStep = GROUPSIZE / 2;
-                    const ctxfx = new Path2D;
-                    const radiusX = zeroSizeMax - pixelSizeTargetMax;
-                    const tileHeight = radiusX + this.nHeight;
-                    const n = this.pi2 + GROUPSIZE;
-                    for (let i = 0, j = degreeStep; i <= n; j = (i = i + GROUPSIZE) + degreeStep) {
-                        ctxfx.lineTo(~~(shadowXpos + radiusX * Math.sin(i)), ~~(shadowYpos + radiusX * Math.cos(i)));
-                        ctxfx.lineTo(~~(shadowXpos + tileHeight * Math.sin(j)), ~~(shadowYpos + tileHeight * Math.cos(j)));
+                }
+            };
+            this["setStrokeSize"] = function() {
+                if (this["strokeNick"] && !this["isVirus"]) {
+                    this["nickStrokeSize"] = ~~(0.1 * this["nickSize"] * this["strokeScale"]);
+                }
+                if (this["strokeMass"]) {
+                    this["massStrokeSize"] = ~~(0.1 * this["massSize"] * this["strokeScale"]);
+                }
+            };
+            this["setDrawing"] = function() {
+                this["optimizedNames"] = v["optimizedNames"];
+                this["optimizedMass"] = v["optimizedMass"];
+                this["shortMass"] = v["shortMass"];
+                this["virMassShots"] = v["virMassShots"];
+                this["strokeNick"] = v["namesStroke"];
+                this["strokeMass"] = v["massStroke"];
+            };
+            this["setDrawingScale"] = function() {
+                this["setScale"](i["viewScale"], g["namesScale"], g["massScale"], g["virMassScale"], g["strokeScale"]);
+                this["setFontSize"]();
+                this["setStrokeSize"]();
+                this["margin"] = 0;
+            };
+            this["drawNick"] = function(port) {
+                if (this["nick"] && this["nickCanvas"] && !this["isVirus"]) {
+                    var nickCanvas = this["nickCanvas"];
+                    nickCanvas["setDrawing"](g["namesColor"], g["namesFontFamily"], g["namesFontWeight"], this["strokeNick"], this["nickStrokeSize"], g["namesStrokeColor"]);
+                    nickCanvas["setTxt"](this["nick"]);
+                    if (this["redrawNick"]) {
+                        nickCanvas["setFontSize"](this["nickSize"]);
+                        this["lastNickSize"] = this["nickSize"];
                     }
-                    return ctxfx;
-                },
-                this["draw"] = function(style, canCreateDiscussions) {
-                    if (!(M["hideSmallBots"] && this["size"] <= 36)) {
-                        style["save"]();
-                        this["redrawed"]++;
-                        if (canCreateDiscussions) {
-                            this["moveCell"]();
-                        }
-                        if (this["removed"]) {
-                            style["globalAlpha"] *= 1 - this["alpha"];
-                        }
-                        var value = style["globalAlpha"];
-                        var s = false;
-                        var y = this["isFood"] ? this["size"] + g["foodSize"] : this["size"];
-                        if (style["beginPath"](), style.arc(this["x"], this["y"], y, 0, this.pi2, false), style["closePath"](), this["isFood"]) {
-                            return style["fillStyle"] = this["color"], style.fill(), void style["restore"]();
-                        }
-                        if (this["isVirus"]) {
-                            return v["transparentViruses"] && (style["globalAlpha"] *= g["virusAlpha"], s = true), v["virColors"] && M.play ? (style["fillStyle"] = ogarminimapdrawer["setVirusColor"](y), style["strokeStyle"] = ogarminimapdrawer["setVirusStrokeColor"](y)) : (style["fillStyle"] = this.virusColor, style["strokeStyle"] = this.virusStroke), style.fill(), s && (style["globalAlpha"] = value, s = false), style["lineWidth"] = g["virusStrokeSize"], v["virusGlow"] ? (style["shadowBlur"] = g["virusGlowSize"], style["shadowColor"] =
-                                g["virusGlowColor"]) : "yeet", style["stroke"](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v["showMass"] && (this["setDrawing"](), this["setDrawingScale"](), v["virusGlow"] ? style["shadowBlur"] = 0 : "yote", this["setMass"](this["size"]), this["drawMass"](style)), void style["restore"]();
-                        }
-                        if (v["transparentCells"]) {
-                            style["globalAlpha"] *= g["cellsAlpha"];
-                            s = true;
-                        }
-                        var color = this["color"];
-                        if (M.play) {
-                            if (this["isPlayerCell"]) {
-                                if (v["myCustomColor"]) {
-                                    color = ogarcopythelb["color"];
-                                }
-                            } else {
-                                if (v["oppColors"] && !v["oppRings"]) {
-                                    color = this["oppColor"];
-                                }
+                    nickCanvas["setScale"](this["scale"]);
+                    const data = nickCanvas.drawTxt();
+                    const width = ~~(data.width / this.scale);
+                    const height = ~~(data.height / this.scale);
+                    this.margin = ~~(height / 2);
+                    if (width > 1 && height > 1) {
+                        port.drawImage(data, ~~(this.x - width / 2), ~~this.y - this.margin, width, height);
+                    }
+                }
+            };
+            this["drawMass"] = function(context) {
+                if (this["massCanvas"] && !(this["size"] <= 40)) {
+                    var massCanvas = this["massCanvas"];
+                    massCanvas["setDrawing"](g["massColor"], g["massFontFamily"], g["massFontWeight"], this["strokeMass"], this["massStrokeSize"], g["massStrokeColor"]);
+                    if (this["redrawMass"]) {
+                        massCanvas["setTxt"](this["massTxt"]);
+                        this["lastMass"] = this["mass"];
+                    }
+                    massCanvas["setFontSize"](this["massSize"]);
+                    massCanvas["setScale"](this["scale"]);
+                    let data = massCanvas.drawTxt();
+                    let width = ~~(data.width / this.scale);
+                    let height = ~~(data.height / this.scale);
+                    let textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
+                    if (width > 1 && height > 1) {
+                        context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+                    }
+                }
+            };
+            this.createStrokeVirusPath = function(shadowXpos, shadowYpos, graphicValue, range_secs = 6) {
+                const nAngelsOfVirus = ~~(45 * graphicValue / 98);
+                const GROUPSIZE = this.pi2 / nAngelsOfVirus;
+                const degreeStep = GROUPSIZE / 2;
+                const ctxfx = new Path2D;
+                const radiusX = graphicValue - range_secs;
+                const tileHeight = radiusX + this.nHeight;
+                const n = this.pi2 + GROUPSIZE;
+                for (let i = 0, j = degreeStep; i <= n; j = (i = i + GROUPSIZE) + degreeStep) {
+                    ctxfx.lineTo(~~(shadowXpos + radiusX * Math.sin(i)), ~~(shadowYpos + radiusX * Math.cos(i)));
+                    ctxfx.lineTo(~~(shadowXpos + tileHeight * Math.sin(j)), ~~(shadowYpos + tileHeight * Math.cos(j)));
+                }
+                return ctxfx;
+            };
+            this["draw"] = function(result, canCreateDiscussions) {
+                if (!(M["hideSmallBots"] && this["size"] <= 36)) {
+                    result["save"]();
+                    this["redrawed"]++;
+                    if (canCreateDiscussions) {
+                        this["moveCell"]();
+                    }
+                    if (this["removed"]) {
+                        result["globalAlpha"] *= 1 - this["alpha"];
+                    }
+                    var elem = result["globalAlpha"];
+                    var $el = false;
+                    var y = this["isFood"] ? this["size"] + g["foodSize"] : this["size"];
+                    if (result["beginPath"](), result.arc(this["x"], this["y"], y, 0, this.pi2, false), result["closePath"](), this["isFood"]) {
+                        return result["fillStyle"] = this["color"], result.fill(), void result["restore"]();
+                    }
+                    if (this["isVirus"]) {
+                        return v["transparentViruses"] && (result["globalAlpha"] *= g["virusAlpha"], $el = true), v["virColors"] && M.play ? (result["fillStyle"] = ogarminimapdrawer["setVirusColor"](y), result["strokeStyle"] = ogarminimapdrawer["setVirusStrokeColor"](y)) : (result["fillStyle"] = this.virusColor, result["strokeStyle"] = this.virusStroke), result.fill(), $el && (result["globalAlpha"] = elem, $el = false), result["lineWidth"] = g["virusStrokeSize"], v["virusGlow"] ? (result["shadowBlur"] = g["virusGlowSize"],
+                            result["shadowColor"] = g["virusGlowColor"]) : "yeet", result["stroke"](this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v["showMass"] && (this["setDrawing"](), this["setDrawingScale"](), v["virusGlow"] ? result["shadowBlur"] = 0 : "yote", this["setMass"](this["size"]), this["drawMass"](result)), void result["restore"]();
+                    }
+                    if (v["transparentCells"]) {
+                        result["globalAlpha"] *= g["cellsAlpha"];
+                        $el = true;
+                    }
+                    var color = this["color"];
+                    if (M.play) {
+                        if (this["isPlayerCell"]) {
+                            if (v["myCustomColor"]) {
+                                color = ogarcopythelb["color"];
                             }
-                        }
-                        style["fillStyle"] = color;
-                        style.fill();
-                        if (s) {
-                            style["globalAlpha"] = value;
-                            s = false;
-                        }
-                        var node = null;
-                        if (v["customSkins"] && M["showCustomSkins"] && (node = ogarminimapdrawer["getCustomSkin"](this["targetNick"], this["color"])) && (((v["transparentSkins"] || M.play && v["oppColors"]) && (!this["isPlayerCell"] || v["myTransparentSkin"]) || this["isPlayerCell"] && v["myTransparentSkin"]) && (style["globalAlpha"] *= g["skinsAlpha"], s = true), style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), s && (style["globalAlpha"] = value, s = false)), v["teammatesInd"] && !this["isPlayerCell"] &&
-                            y <= 200 && (node || ogarminimapdrawer["checkSkinsMap"](this["targetNick"], this["color"])) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
-                            style["restore"]();
                         } else {
-                            var recursive = false;
-                            if (!this["isPlayerCell"] && (recursive = ogarminimapdrawer["setAutoHideCellInfo"](y)) && v["autoHideNames"] && v["autoHideMass"]) {
-                                style["restore"]();
-                            } else {
-                                this["setDrawing"]();
-                                this["setDrawingScale"]();
-                                style["globalAlpha"] *= g["textAlpha"];
-                                if (!(v["noNames"] || recursive && v["autoHideNames"] || this["isPlayerCell"] && v["hideMyName"] || node && v["hideTeammatesNames"])) {
-                                    if (this["setNick"](this["targetNick"])) {
-                                        this["drawNick"](style);
-                                    }
-                                }
-                                if (!(!v["showMass"] || recursive && v["autoHideMass"] || this["isPlayerCell"] && v["hideMyMass"] || v["hideEnemiesMass"] && !this["isPlayerCell"] && !this["isVirus"])) {
-                                    if (this["setMass"](this["size"])) {
-                                        this["drawMass"](style);
-                                    }
-                                }
-                                style["restore"]();
+                            if (v["oppColors"] && !v["oppRings"]) {
+                                color = this["oppColor"];
                             }
                         }
                     }
-                };
+                    result["fillStyle"] = color;
+                    result.fill();
+                    if ($el) {
+                        result["globalAlpha"] = elem;
+                        $el = false;
+                    }
+                    var radixToPower = null;
+                    if (v["customSkins"] && M["showCustomSkins"] && (radixToPower = ogarminimapdrawer["getCustomSkin"](this["targetNick"], this["color"])) && (((v["transparentSkins"] || M.play && v["oppColors"]) && (!this["isPlayerCell"] || v["myTransparentSkin"]) || this["isPlayerCell"] && v["myTransparentSkin"]) && (result["globalAlpha"] *= g["skinsAlpha"], $el = true), result["drawImage"](radixToPower, this["x"] - y, this["y"] - y, 2 * y, 2 * y), $el && (result["globalAlpha"] = elem, $el = false)), v["teammatesInd"] &&
+                        !this["isPlayerCell"] && y <= 200 && (radixToPower || ogarminimapdrawer["checkSkinsMap"](this["targetNick"], this["color"])) && ogarfooddrawer["drawTeammatesInd"](result, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
+                        result["restore"]();
+                    } else {
+                        var recursive = false;
+                        if (!this["isPlayerCell"] && (recursive = ogarminimapdrawer["setAutoHideCellInfo"](y)) && v["autoHideNames"] && v["autoHideMass"]) {
+                            result["restore"]();
+                        } else {
+                            this["setDrawing"]();
+                            this["setDrawingScale"]();
+                            result["globalAlpha"] *= g["textAlpha"];
+                            if (!(v["noNames"] || recursive && v["autoHideNames"] || this["isPlayerCell"] && v["hideMyName"] || radixToPower && v["hideTeammatesNames"])) {
+                                if (this["setNick"](this["targetNick"])) {
+                                    this["drawNick"](result);
+                                }
+                            }
+                            if (!(!v["showMass"] || recursive && v["autoHideMass"] || this["isPlayerCell"] && v["hideMyMass"] || v["hideEnemiesMass"] && !this["isPlayerCell"] && !this["isVirus"])) {
+                                if (this["setMass"](this["size"])) {
+                                    this["drawMass"](result);
+                                }
+                            }
+                            result["restore"]();
+                        }
+                    }
+                }
+            };
         }
         window.legendmod1 = ogarbasicassembly;
         var M = {
@@ -6039,6 +6215,44 @@ var core = function(t, e, i) {
         }, e.master.getClientVersion(), y.init(), ogarminimapdrawer.init(), ogarminimapdrawer.getDefaultSettings(), ogarminimapdrawer.connect(), lastkeys.init(), M.init(), ogarfooddrawer.init(), e.master.init(), ogarhusettings();
     })(window, window.ogario, window.jQuery);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.arrayIteratorImpl=function(c){var l=0;return function(){return l<c.length?{done:!1,value:c[l++]}:{done:!0}}};$jscomp.arrayIterator=function(c){return{next:$jscomp.arrayIteratorImpl(c)}};$jscomp.ASSUME_ES5=!1;$jscomp.ASSUME_NO_NATIVE_MAP=!1;$jscomp.ASSUME_NO_NATIVE_SET=!1;$jscomp.SIMPLE_FROUND_POLYFILL=!1;
