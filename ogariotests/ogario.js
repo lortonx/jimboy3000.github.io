@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.49 test
+//v1.50 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -2430,229 +2430,229 @@ var core = function(t, e, i) {
                 for (var e = 0; e < ogario1PlayerProfiles.length; e++) s('#skins').append('<div class=\"skin-box\"><a href=\"#profile-' + e + '\" id=\"profile-' + e + '\" data-profile=\"' + e + '\"></a></div>'), this['setSkinPreview'](ogario1PlayerProfiles[e]['skinURL'], 'profile-' + e), e == this['selectedProfile'] && s('#profile-' + e).addClass('selected');
             },
             'setUI': function() {
-var t = this;
-s(document).on("click", ".menu-tabs a", function(event) {
-  event.preventDefault();
-  t["switchMenuTabs"](s(this), "menu-panel");
-}), s(document).on("click", ".submenu-tabs a", function(event) {
-  event.preventDefault();
-  t["switchMenuTabs"](s(this), "submenu-panel");
-}), s(document).on("click", ".quick-menu", function(event) {
-  event.preventDefault();
-  v["showQuickMenu"] = !v["showQuickMenu"];
-  t["saveSettings"](v, "ogarioSettings");
-  t["setShowQuickMenu"]();
-}), s(document).on("click", ".quick-skins", function(event) {
-  event.preventDefault();
-  v["showSkinsPanel"] = !v["showSkinsPanel"];
-  t["saveSettings"](v, "ogarioSettings");
-  t["setShowSkinsPanel"]();
-}), s(document).on("change", "#region", function() {
-  t["region"] = this.value;
-}), s(document).on("change", "#gamemode", function() {
-  var dummy = this.value;
-  if (":party" !== dummy) {
-    t["leaveParty"]();
-  }
-  t["gameMode"] = i["gameMode"] = dummy;
-  t["setQuest"]();
-}), s(document).on("change", "#quality", function() {
-  t["getQuality"](this.value);
-  ogarhusettings();
-}), s(document).on("input", "#skin", function() {
-  var hexInputVal = this.value;
-  t["setSkinPreview"](hexInputVal, "skin-preview");
-  t["setSkinPreview"](hexInputVal, "profile-" + t["selectedProfile"]);
-}), s(document).on("click", "#skins a", function(event) {
-  event.preventDefault();
-  t["selectProfile"](s(this)["attr"]("data-profile"));
-}), s(document).on("click", "#prev-profile", function() {
-  t["prevProfile"]();
-}), s(document).on("click", "#next-profile", function() {
-  t["nextProfile"]();
-}), s(document).on("click", "#stream-mode", function() {
-  /** @type {boolean} */
-  v["streamMode"] = !v["streamMode"];
-  t["saveSettings"](v, "ogarioSettings");
-  t["setStreamMode"]();
-}), s(document).on("click", "#hide-url", function() {
-  /** @type {boolean} */
-  v["hideSkinUrl"] = !v["hideSkinUrl"];
-  t["saveSettings"](v, "ogarioSettings");
-  t["setHideSkinUrl"]();
-}), s(document).on("click", ".btn-server-info", function() {
-  s("#server-info")["toggle"]();
-}), s(document).on("click", "#server-connect", function() {
-  t["gameServerConnect"](s("#server-ws").val());
-}), s(document).on("click", "#server-reconnect", function() {
-  t["gameServerReconnect"]();
-}), s(document).on("click", "#server-join", function() {
-  t["gameServerJoin"](s("#server-token").val());
-}), s(document).on("change", "#og-options input[type='checkbox']", function() {
-  var template = s(this);
-  t["setSettings"](template["attr"]("id"), template["prop"]("checked"));
-}), s(document).on("change", ".js-switch-vanilla", function() {
-  var template = s(this);
-  var p = template["attr"]("id");
-  if (void 0 !== t[p]) {
-    t[p] = template["prop"]("checked");
-    if ("noSkins" === p) {
-      /** @type {boolean} */
-      i["showCustomSkins"] = !t["noSkins"];
-    }
-    if ("showQuest" === p) {
-      t["setQuest"]();
-    }
-  }
-}), s(document).on("click", "#og-settings .restore-settings a", function(result) {
-  result["preventDefault"]();
-  t["restoreSettings"]();
-}), s(document).on("click", "#og-settings .btn-export", function(result) {
-  result["preventDefault"]();
-  t["exportSettings"]();
-  s("#exp-imp")["fadeIn"](500);
-  s("#exp-imp-settings, #export-settings")["perfectScrollbar"]("update");
-}), s(document).on("click", "#close-exp-imp", function(event) {
-  event.preventDefault();
-  s("#exp-imp")["fadeOut"](500);
-}), s(document).on("focus", "#export-settings", function() {
-  s(this).select();
-}), s(document).on("click", "#export-settings-btn", function(event) {
-  event.preventDefault();
-  t["exportSettings"]();
-}), s(document).on("click", "#import-settings-btn", function(result) {
-  result["preventDefault"]();
-  t["importSettings"]();
-}), s(document).on("click", "#unblock-popups", function(result) {
-  result["preventDefault"]();
-  t["unblockPopups"]();
-}), s(document).on("click", "#openfl-overlay.disabler", function() {
-  if (v["blockPopups"]) {
-    t["blockPopups"]();
-  }
-}), s(document).on("click", "#openfl-content", function() {
-  if (v["blockPopups"]) {
-    var container = s(this);
-    setTimeout(function() {
-      if (!container["is"](":visible")) {
-        t["blockPopups"]();
-      }
-    }, 1000);
-  }
-}), s(document).on("click", ".quick-shop", function(event) {
-  event.preventDefault();
-  t["unblockPopups"]();
-  if (e.MC && e.MC["openShop"]) {
-    e.MC["openShop"]();
-  }
-}), s(document).on("click", ".quick-free-coins", function(event) {
-  event.preventDefault();
-  t["unblockPopups"]();
-  if (e.MC && e.MC["showFreeCoins"]) {
-    e.MC["showFreeCoins"]();
-  }
-}), s(document).on("click", ".quick-free-gifts", function(event) {
-  event.preventDefault();
-  t["unblockPopups"]();
-  if (e.MC && e.MC["showGifting"]) {
-    e.MC["showGifting"]();
-  }
-}), s(document).on("click", ".quick-quests", function(event) {
-  event.preventDefault();
-  t["unblockPopups"]();
-  if (e.MC && e.MC["showQuests"]) {
-    e.MC["showQuests"]();
-  }
-}), s(document).on("click", "#set-targeting", function(event) {
-  event.preventDefault();
-  t["setTargeting"]();
-}), s(document).on("click", "#cancel-targeting", function(event) {
-  event.preventDefault();
-  t["cancelTargeting"]();
-}), s(document).on("click", "#set-private-minimap", function(event) {
-  event.preventDefault();
-  t["setPrivateMiniMap"]();
-}), s(document).on("click", "#change-target", function(result) {
-  result["preventDefault"]();
-  t["changeTarget"]();
-}), s(document).on("click", ".team-top-limit", function(event) {
-  event.preventDefault();
-  var template = s(this);
-  /** @type {number} */
-  var param = parseInt(template["attr"]("data-limit"));
-  if (param) {
-    t["setTop5limit"](param);
-    t["displayTop5"]();
-    s(".team-top").text(param);
-    s(".team-top-limit").removeClass("active");
-    template.addClass("active");
-  }
-}), s(document).on("click", "#top5-pos .set-target", function(event) {
-  event.preventDefault();
-  t["setTarget"](parseInt(s(this)["attr"]("data-user-id")));
-}), s(document).on("click", ".mute-user", function(event) {
-  event.preventDefault();
-  t["muteChatUser"](parseInt(s(this)["attr"]("data-user-id")));
-}), s(document).on("click", ".btn-mute-user", function() {
-  var template = s(this);
-  t["muteChatUser"](parseInt(template["attr"]("data-user-id")));
-  template.removeClass("btn-red btn-mute-user").addClass("btn-green btn-unmute-user").text(h["unmute"]);
-}), s(document).on("click", ".btn-unmute-user", function() {
-  var template = s(this);
-  t["unmuteChatUser"](parseInt(template["attr"]("data-user-id")));
-  template.removeClass("btn-green btn-unmute-user").addClass("btn-red btn-mute-user").text(h["mute"]);
-}), s(document).on("click", ".chat-sound-notifications", function(result) {
-  result["preventDefault"]();
-  /** @type {boolean} */
-  v["chatSounds"] = !v["chatSounds"];
-  t["saveSettings"](v, "ogarioSettings");
-  t["setChatSoundsBtn"]();
-}), s(document).on("click", ".chat-active-users", function(event) {
-  event.preventDefault();
-  t["displayChatActiveUsers"]();
-}), s(document).on("click", ".chat-muted-users", function(event) {
-  event.preventDefault();
-  t["displayChatMutedUsers"]();
-}), s(document).on("click", ".show-chat-emoticons", function(result) {
-  result["preventDefault"]();
-  var template = s(this);
-  var p = s("#chat-emoticons");
-  p["toggle"]();
-  if (p["is"](":visible")) {
-    template.addClass("active");
-  } else {
-    template.removeClass("active");
-    s("#message")["focus"]();
-  }
-}), s(document).on("click", "#chat-emoticons .emoticon", function() {
-  var d = s(this)["attr"]("alt");
-  var e = s("#message");
-  var n = e.val();
-  if (n.length + d.length <= 80) {
-    e.val(n + d);
-  }
-  e["focus"]();
-}), this["statsHUD"] = document.getElementById("stats-hud"), this["activeParties"] = document.getElementById("active-parties"), this["top5pos"] = document.getElementById("top5-pos"), this["top5totalMass"] = document.getElementById("top5-total-mass"), this["top5totalPlayers"] = document.getElementById("top5-total-players"), this["leaderboardPositionsHUD"] = document.getElementById("leaderboard-positions"), this["leaderboardDataHUD"] = document.getElementById("leaderboard-data"), this["timeHUD"] = 
-document.getElementById("time-hud"), this["questHUD"] = document.getElementById("quest-hud"), s("#canvas")["bind"]("contextmenu", function() {
-  return false;
-}), s(document).on("mouseup", ".btn", function() {
-  $(this)["blur"]();
-}), s("[data-toggle='tab-tooltip']")["tooltip"]({
-  "trigger" : "hover"
-}), s(".submenu-panel, #chat-box, #exp-imp-settings, #export-settings, #import-settings")["perfectScrollbar"]({
-  "suppressScrollX" : true
-}), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch"))["forEach"](function(remove) {
-  new Switchery(remove, {
-    "color" : g["menuMainColor"],
-    "size" : "small"
-  });
-}), s("input[type='range']")["rangeslider"]({
-  "polyfill" : false
-}), toastr["options"] = {
-  "newestOnTop" : false,
-  "positionClass" : "toast-bottom-left",
-  "timeOut" : 15000
-};
+                var t = this;
+                s(document).on("click", ".menu-tabs a", function(event) {
+                        event.preventDefault();
+                        t["switchMenuTabs"](s(this), "menu-panel");
+                    }), s(document).on("click", ".submenu-tabs a", function(event) {
+                        event.preventDefault();
+                        t["switchMenuTabs"](s(this), "submenu-panel");
+                    }), s(document).on("click", ".quick-menu", function(event) {
+                        event.preventDefault();
+                        v["showQuickMenu"] = !v["showQuickMenu"];
+                        t["saveSettings"](v, "ogarioSettings");
+                        t["setShowQuickMenu"]();
+                    }), s(document).on("click", ".quick-skins", function(event) {
+                        event.preventDefault();
+                        v["showSkinsPanel"] = !v["showSkinsPanel"];
+                        t["saveSettings"](v, "ogarioSettings");
+                        t["setShowSkinsPanel"]();
+                    }), s(document).on("change", "#region", function() {
+                        t["region"] = this.value;
+                    }), s(document).on("change", "#gamemode", function() {
+                        var dummy = this.value;
+                        if (":party" !== dummy) {
+                            t["leaveParty"]();
+                        }
+                        t["gameMode"] = i["gameMode"] = dummy;
+                        t["setQuest"]();
+                    }), s(document).on("change", "#quality", function() {
+                        t["getQuality"](this.value);
+                        ogarhusettings();
+                    }), s(document).on("input", "#skin", function() {
+                        var hexInputVal = this.value;
+                        t["setSkinPreview"](hexInputVal, "skin-preview");
+                        t["setSkinPreview"](hexInputVal, "profile-" + t["selectedProfile"]);
+                    }), s(document).on("click", "#skins a", function(event) {
+                        event.preventDefault();
+                        t["selectProfile"](s(this)["attr"]("data-profile"));
+                    }), s(document).on("click", "#prev-profile", function() {
+                        t["prevProfile"]();
+                    }), s(document).on("click", "#next-profile", function() {
+                        t["nextProfile"]();
+                    }), s(document).on("click", "#stream-mode", function() {
+                        /** @type {boolean} */
+                        v["streamMode"] = !v["streamMode"];
+                        t["saveSettings"](v, "ogarioSettings");
+                        t["setStreamMode"]();
+                    }), s(document).on("click", "#hide-url", function() {
+                        /** @type {boolean} */
+                        v["hideSkinUrl"] = !v["hideSkinUrl"];
+                        t["saveSettings"](v, "ogarioSettings");
+                        t["setHideSkinUrl"]();
+                    }), s(document).on("click", ".btn-server-info", function() {
+                        s("#server-info")["toggle"]();
+                    }), s(document).on("click", "#server-connect", function() {
+                        t["gameServerConnect"](s("#server-ws").val());
+                    }), s(document).on("click", "#server-reconnect", function() {
+                        t["gameServerReconnect"]();
+                    }), s(document).on("click", "#server-join", function() {
+                        t["gameServerJoin"](s("#server-token").val());
+                    }), s(document).on("change", "#og-options input[type='checkbox']", function() {
+                        var template = s(this);
+                        t["setSettings"](template["attr"]("id"), template["prop"]("checked"));
+                    }), s(document).on("change", ".js-switch-vanilla", function() {
+                        var template = s(this);
+                        var p = template["attr"]("id");
+                        if (void 0 !== t[p]) {
+                            t[p] = template["prop"]("checked");
+                            if ("noSkins" === p) {
+                                /** @type {boolean} */
+                                i["showCustomSkins"] = !t["noSkins"];
+                            }
+                            if ("showQuest" === p) {
+                                t["setQuest"]();
+                            }
+                        }
+                    }), s(document).on("click", "#og-settings .restore-settings a", function(result) {
+                        result["preventDefault"]();
+                        t["restoreSettings"]();
+                    }), s(document).on("click", "#og-settings .btn-export", function(result) {
+                        result["preventDefault"]();
+                        t["exportSettings"]();
+                        s("#exp-imp")["fadeIn"](500);
+                        s("#exp-imp-settings, #export-settings")["perfectScrollbar"]("update");
+                    }), s(document).on("click", "#close-exp-imp", function(event) {
+                        event.preventDefault();
+                        s("#exp-imp")["fadeOut"](500);
+                    }), s(document).on("focus", "#export-settings", function() {
+                        s(this).select();
+                    }), s(document).on("click", "#export-settings-btn", function(event) {
+                        event.preventDefault();
+                        t["exportSettings"]();
+                    }), s(document).on("click", "#import-settings-btn", function(result) {
+                        result["preventDefault"]();
+                        t["importSettings"]();
+                    }), s(document).on("click", "#unblock-popups", function(result) {
+                        result["preventDefault"]();
+                        t["unblockPopups"]();
+                    }), s(document).on("click", "#openfl-overlay.disabler", function() {
+                        if (v["blockPopups"]) {
+                            t["blockPopups"]();
+                        }
+                    }), s(document).on("click", "#openfl-content", function() {
+                        if (v["blockPopups"]) {
+                            var container = s(this);
+                            setTimeout(function() {
+                                if (!container["is"](":visible")) {
+                                    t["blockPopups"]();
+                                }
+                            }, 1000);
+                        }
+                    }), s(document).on("click", ".quick-shop", function(event) {
+                        event.preventDefault();
+                        t["unblockPopups"]();
+                        if (e.MC && e.MC["openShop"]) {
+                            e.MC["openShop"]();
+                        }
+                    }), s(document).on("click", ".quick-free-coins", function(event) {
+                        event.preventDefault();
+                        t["unblockPopups"]();
+                        if (e.MC && e.MC["showFreeCoins"]) {
+                            e.MC["showFreeCoins"]();
+                        }
+                    }), s(document).on("click", ".quick-free-gifts", function(event) {
+                        event.preventDefault();
+                        t["unblockPopups"]();
+                        if (e.MC && e.MC["showGifting"]) {
+                            e.MC["showGifting"]();
+                        }
+                    }), s(document).on("click", ".quick-quests", function(event) {
+                        event.preventDefault();
+                        t["unblockPopups"]();
+                        if (e.MC && e.MC["showQuests"]) {
+                            e.MC["showQuests"]();
+                        }
+                    }), s(document).on("click", "#set-targeting", function(event) {
+                        event.preventDefault();
+                        t["setTargeting"]();
+                    }), s(document).on("click", "#cancel-targeting", function(event) {
+                        event.preventDefault();
+                        t["cancelTargeting"]();
+                    }), s(document).on("click", "#set-private-minimap", function(event) {
+                        event.preventDefault();
+                        t["setPrivateMiniMap"]();
+                    }), s(document).on("click", "#change-target", function(result) {
+                        result["preventDefault"]();
+                        t["changeTarget"]();
+                    }), s(document).on("click", ".team-top-limit", function(event) {
+                        event.preventDefault();
+                        var template = s(this);
+                        /** @type {number} */
+                        var param = parseInt(template["attr"]("data-limit"));
+                        if (param) {
+                            t["setTop5limit"](param);
+                            t["displayTop5"]();
+                            s(".team-top").text(param);
+                            s(".team-top-limit").removeClass("active");
+                            template.addClass("active");
+                        }
+                    }), s(document).on("click", "#top5-pos .set-target", function(event) {
+                        event.preventDefault();
+                        t["setTarget"](parseInt(s(this)["attr"]("data-user-id")));
+                    }), s(document).on("click", ".mute-user", function(event) {
+                        event.preventDefault();
+                        t["muteChatUser"](parseInt(s(this)["attr"]("data-user-id")));
+                    }), s(document).on("click", ".btn-mute-user", function() {
+                        var template = s(this);
+                        t["muteChatUser"](parseInt(template["attr"]("data-user-id")));
+                        template.removeClass("btn-red btn-mute-user").addClass("btn-green btn-unmute-user").text(h["unmute"]);
+                    }), s(document).on("click", ".btn-unmute-user", function() {
+                        var template = s(this);
+                        t["unmuteChatUser"](parseInt(template["attr"]("data-user-id")));
+                        template.removeClass("btn-green btn-unmute-user").addClass("btn-red btn-mute-user").text(h["mute"]);
+                    }), s(document).on("click", ".chat-sound-notifications", function(result) {
+                        result["preventDefault"]();
+                        /** @type {boolean} */
+                        v["chatSounds"] = !v["chatSounds"];
+                        t["saveSettings"](v, "ogarioSettings");
+                        t["setChatSoundsBtn"]();
+                    }), s(document).on("click", ".chat-active-users", function(event) {
+                        event.preventDefault();
+                        t["displayChatActiveUsers"]();
+                    }), s(document).on("click", ".chat-muted-users", function(event) {
+                        event.preventDefault();
+                        t["displayChatMutedUsers"]();
+                    }), s(document).on("click", ".show-chat-emoticons", function(result) {
+                        result["preventDefault"]();
+                        var template = s(this);
+                        var p = s("#chat-emoticons");
+                        p["toggle"]();
+                        if (p["is"](":visible")) {
+                            template.addClass("active");
+                        } else {
+                            template.removeClass("active");
+                            s("#message")["focus"]();
+                        }
+                    }), s(document).on("click", "#chat-emoticons .emoticon", function() {
+                        var d = s(this)["attr"]("alt");
+                        var e = s("#message");
+                        var n = e.val();
+                        if (n.length + d.length <= 80) {
+                            e.val(n + d);
+                        }
+                        e["focus"]();
+                    }), this["statsHUD"] = document.getElementById("stats-hud"), this["activeParties"] = document.getElementById("active-parties"), this["top5pos"] = document.getElementById("top5-pos"), this["top5totalMass"] = document.getElementById("top5-total-mass"), this["top5totalPlayers"] = document.getElementById("top5-total-players"), this["leaderboardPositionsHUD"] = document.getElementById("leaderboard-positions"), this["leaderboardDataHUD"] = document.getElementById("leaderboard-data"), this["timeHUD"] =
+                    document.getElementById("time-hud"), this["questHUD"] = document.getElementById("quest-hud"), s("#canvas")["bind"]("contextmenu", function() {
+                        return false;
+                    }), s(document).on("mouseup", ".btn", function() {
+                        $(this)["blur"]();
+                    }), s("[data-toggle='tab-tooltip']")["tooltip"]({
+                        "trigger": "hover"
+                    }), s(".submenu-panel, #chat-box, #exp-imp-settings, #export-settings, #import-settings")["perfectScrollbar"]({
+                        "suppressScrollX": true
+                    }), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch"))["forEach"](function(remove) {
+                        new Switchery(remove, {
+                            "color": g["menuMainColor"],
+                            "size": "small"
+                        });
+                    }), s("input[type='range']")["rangeslider"]({
+                        "polyfill": false
+                    }), toastr["options"] = {
+                        "newestOnTop": false,
+                        "positionClass": "toast-bottom-left",
+                        "timeOut": 15000
+                    };
 
             },
             'switchMenuTabs': function(t, e) {
@@ -2670,19 +2670,20 @@ document.getElementById("time-hud"), this["questHUD"] = document.getElementById(
                 s(o)['fadeIn'](1000), ogarhusettings(), s('.submenu-panel')['perfectScrollbar']('update');
             },
             'getDefaultSettings': function() {
-if (this["noSkins"] = s("#noSkins")["prop"]("checked"), this["noColors"] = s("#noColors")["prop"]("checked"), this["skipStats"] = s("#skipStats")["prop"]("checked"), this["showQuest"] = s("#showQuest")["prop"]("checked"), i["showCustomSkins"] = !this["noSkins"], null !== e.localStorage.getItem("scale_setting")) {
-  var t = JSON["parse"](e.localStorage.getItem("scale_setting"));
-  this["setCanvasScale"](t);
-} else {
-  var o = s("#quality").val();
-  this["getQuality"](o);
-}
-null !== e.localStorage.getItem("location") ? (this["region"] = e.localStorage.getItem("location"), s("#region").val(this["region"]), e.MC && e.MC["setRegion"] && e.MC["setRegion"](this["region"])) : this["region"] = s("#region").val(), this["setParty"](), ":party" === this["gameMode"] && e.location["hash"] && s("#join-party-btn-2")["click"](), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch-vanilla"))["forEach"](function(remove) {
-  new Switchery(remove, {
-    "color" : g["menuMainColor"],
-    "size" : "small"
-  });
-}), s("#nick").val(ogarcopythelb["nick"])["blur"](), s("#noNames")["prop"]("checked", !v["noNames"]), s("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();           },
+                if (this["noSkins"] = s("#noSkins")["prop"]("checked"), this["noColors"] = s("#noColors")["prop"]("checked"), this["skipStats"] = s("#skipStats")["prop"]("checked"), this["showQuest"] = s("#showQuest")["prop"]("checked"), i["showCustomSkins"] = !this["noSkins"], null !== e.localStorage.getItem("scale_setting")) {
+                    var t = JSON["parse"](e.localStorage.getItem("scale_setting"));
+                    this["setCanvasScale"](t);
+                } else {
+                    var o = s("#quality").val();
+                    this["getQuality"](o);
+                }
+                null !== e.localStorage.getItem("location") ? (this["region"] = e.localStorage.getItem("location"), s("#region").val(this["region"]), e.MC && e.MC["setRegion"] && e.MC["setRegion"](this["region"])) : this["region"] = s("#region").val(), this["setParty"](), ":party" === this["gameMode"] && e.location["hash"] && s("#join-party-btn-2")["click"](), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch-vanilla"))["forEach"](function(remove) {
+                    new Switchery(remove, {
+                        "color": g["menuMainColor"],
+                        "size": "small"
+                    });
+                }), s("#nick").val(ogarcopythelb["nick"])["blur"](), s("#noNames")["prop"]("checked", !v["noNames"]), s("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();
+            },
             'getQuality': function(t) {
                 var i = 1;
                 switch ('devicePixelRatio' in e && (i = e['devicePixelRatio']), t) {
@@ -2809,23 +2810,23 @@ null !== e.localStorage.getItem("location") ? (this["region"] = e.localStorage.g
             },
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
-if (0 != this["cacheQueue"].length) {
-  var e = this["cacheQueue"]["shift"]();
-  if (e) {
-    var i = document["createElement"]("canvas");
-    i["width"] = 512;
-    i["height"] = 512;
-    var s = i["getContext"]("2d");
-    s["beginPath"]();
-    s.arc(256, 256, 256, 0, 2 * Math["PI"], false);
-    s["clip"]();
-    s["drawImage"](this["customSkinsCache"][e], 0, 0, 512, 512);
-    this["customSkinsCache"][e + "_cached"] = new Image;
-    this["customSkinsCache"][e + "_cached"].src = i.toDataURL();
-    i = null;
-    this["cacheSkin"](this["customSkinsCache"]);
-  }
-}
+                if (0 != this["cacheQueue"].length) {
+                    var e = this["cacheQueue"]["shift"]();
+                    if (e) {
+                        var i = document["createElement"]("canvas");
+                        i["width"] = 512;
+                        i["height"] = 512;
+                        var s = i["getContext"]("2d");
+                        s["beginPath"]();
+                        s.arc(256, 256, 256, 0, 2 * Math["PI"], false);
+                        s["clip"]();
+                        s["drawImage"](this["customSkinsCache"][e], 0, 0, 512, 512);
+                        this["customSkinsCache"][e + "_cached"] = new Image;
+                        this["customSkinsCache"][e + "_cached"].src = i.toDataURL();
+                        i = null;
+                        this["cacheSkin"](this["customSkinsCache"]);
+                    }
+                }
             },
             'getCachedSkin': function(t, e) {
                 return t[e + '_cached'] && t[e + '_cached']['complete'] && t[e + '_cached']['width'] ? t[e + '_cached'] : null;
@@ -3917,12 +3918,19 @@ if (0 != this["cacheQueue"].length) {
                 this.sendMessage(i);
             },
             'sendPosition': function() {
-                if (this['isSocketOpen']() && this['connectionOpened'] && this['clientKey']) {
-                    var t = this['cursorX'],
-                        e = this['cursorY'];
-                    (!this.play && this['targeting'] || this.pause) && (t = this['targetX'], e = this['targetY']);
+                if (this["isSocketOpen"]() && this["connectionOpened"] && this["clientKey"]) {
+                    var t = this["cursorX"];
+                    var e = this["cursorY"];
+                    if (!this.play && this["targeting"] || this.pause) {
+                        t = this["targetX"];
+                        e = this["targetY"];
+                    }
                     var i = this.createView(13);
-                    i.setUint8(0, 16), i['setInt32'](1, t, true), i['setInt32'](5, e, true), i.setUint32(9, this['protocolKey'], true), this.sendMessage(i);
+                    i.setUint8(0, 16);
+                    i["setInt32"](1, t, true);
+                    i["setInt32"](5, e, true);
+                    i.setUint32(9, this["protocolKey"], true);
+                    this.sendMessage(i);
                 }
             },
             /*            'sendAccessToken': function(t, e, i) {
@@ -4339,16 +4347,27 @@ if (0 != this["cacheQueue"].length) {
                 }
             },
             'compareCells': function() {
-                if (this.play && (v['oppColors'] || v['oppRings'] || v['splitRange'])) {
-                    (v['oppRings'] || v['splitRange']) && (this['biggerSTECellsCache'] = [], this['biggerCellsCache'] = [], this['smallerCellsCache'] = [], this['STECellsCache'] = []);
-                    for (var t = 0; t < this['cells'].length; t++) {
-                        var e = this['cells'][t];
-                        if (!e['isVirus']) {
-                            var i = ~~(e['size'] * e['size'] / 100),
-                                s = this['selectBiggestCell'] ? this['playerMaxMass'] : this['playerMinMass'],
-                                o = i / s,
-                                a = s < 1000 ? 0.35 : 0.38;
-                            v['oppColors'] && !v['oppRings'] && (e['oppColor'] = this['setCellOppColor'](e['isPlayerCell'], o, a)), e['isPlayerCell'] || !v['splitRange'] && !v['oppRings'] || this['cacheCells'](e['x'], e['y'], e['size'], o, a);
+                if (this.play && (v["oppColors"] || v["oppRings"] || v["splitRange"])) {
+                    if (v["oppRings"] || v["splitRange"]) {
+                        this["biggerSTECellsCache"] = [];
+                        this["biggerCellsCache"] = [];
+                        this["smallerCellsCache"] = [];
+                        this["STECellsCache"] = [];
+                    }
+                    var t = 0;
+                    for (; t < this["cells"].length; t++) {
+                        var e = this["cells"][t];
+                        if (!e["isVirus"]) {
+                            var i = ~~(e["size"] * e["size"] / 100);
+                            var s = this["selectBiggestCell"] ? this["playerMaxMass"] : this["playerMinMass"];
+                            var o = i / s;
+                            var a = s < 1000 ? 0.35 : 0.38;
+                            if (v["oppColors"] && !v["oppRings"]) {
+                                e["oppColor"] = this["setCellOppColor"](e["isPlayerCell"], o, a);
+                            }
+                            if (!(e["isPlayerCell"] || !v["splitRange"] && !v["oppRings"])) {
+                                this["cacheCells"](e["x"], e["y"], e["size"], o, a);
+                            }
                         }
                     }
                 }
@@ -4485,32 +4504,58 @@ if (0 != this["cacheQueue"].length) {
                     this['ctx']['restore'](), ':teams' === M['gameMode'] && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
                 },
                 'drawGrid': function(t, e, i, s, o, a) {
-                    var n = e / s,
-                        r = i / s,
-                        l = (n / 2 - o) % 50,
-                        h = (r / 2 - a) % 50;
-                    for (t['strokeStyle'] = g['gridColor'], t['globalAlpha'] = 1 * s, t['beginPath'](); l < n; l += 50) t['moveTo'](l * s - 0.5, 0), t['lineTo'](l * s - 0.5, r * s);
-                    for (; h < r; h += 50) t['moveTo'](0, h * s - 0.5), t['lineTo'](n * s, h * s - 0.5);
-                    t['stroke'](), t['globalAlpha'] = 1;
+                    var n = e / s;
+                    var r = i / s;
+                    var l = (n / 2 - o) % 50;
+                    var h = (r / 2 - a) % 50;
+                    t["strokeStyle"] = g["gridColor"], t["globalAlpha"] = 1 * s, t["beginPath"]();
+                    for (; l < n; l = l + 50) {
+                        t["moveTo"](l * s - 0.5, 0);
+                        t["lineTo"](l * s - 0.5, r * s);
+                    }
+                    for (; h < r; h = h + 50) {
+                        t["moveTo"](0, h * s - 0.5);
+                        t["lineTo"](n * s, h * s - 0.5);
+                    }
+                    t["stroke"](), t["globalAlpha"] = 1;
                 },
                 'drawSectors': function(t, e, i, s, o, a, n, r, l, h, c, u) {
                     if (e || !u) {
-                        var d = ~~((n - o) / i),
-                            f = ~~((r - a) / s),
-                            m = 0,
-                            y = 0;
-                        if (t['strokeStyle'] = l, t['fillStyle'] = h, t['lineWidth'] = c, u || !u && v['showMiniMapGrid']) {
-                            t['beginPath']();
-                            for (var ogario1PlayerProfiles = 0; ogario1PlayerProfiles < i + 1; ogario1PlayerProfiles++) m = o + d * ogario1PlayerProfiles, t['moveTo'](ogario1PlayerProfiles == i ? n : m, a), t['lineTo'](ogario1PlayerProfiles == i ? n : m, r);
-                            for (ogario1PlayerProfiles = 0; ogario1PlayerProfiles < s + 1; ogario1PlayerProfiles++) y = a + f * ogario1PlayerProfiles, t['moveTo'](o - c / 2, ogario1PlayerProfiles == s ? r : y), t['lineTo'](n + c / 2, ogario1PlayerProfiles == s ? r : y);
-                            t['stroke']();
-                        } else this['drawMapBorders'](t, e, o, a, n, r, l, c);
-                        t['font'] = u ? g['sectorsFontWeight'] + ' ' + g['sectorsFontSize'] + 'px ' + g['sectorsFontFamily'] : g['miniMapFontWeight'] + ' ' + ~~(0.4 * f) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'center', t['textBaseline'] = 'middle';
-                        for (ogario1PlayerProfiles = 0; ogario1PlayerProfiles < s; ogario1PlayerProfiles++)
-                            for (var ogarcopythelb = 0; ogarcopythelb < i; ogarcopythelb++) {
-                                var ogarminimapdrawer = String['fromCharCode'](65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
-                                m = ~~(o + d / 2 + ogarcopythelb * d), y = ~~(a + f / 2 + ogario1PlayerProfiles * f), t['fillText'](ogarminimapdrawer, m, y);
+                        var d = ~~((n - o) / i);
+                        var f = ~~((r - a) / s);
+                        var m = 0;
+                        var y = 0;
+                        if (t["strokeStyle"] = l, t["fillStyle"] = h, t["lineWidth"] = c, u || !u && v["showMiniMapGrid"]) {
+                            t["beginPath"]();
+                            var ogario1PlayerProfiles = 0;
+                            for (; ogario1PlayerProfiles < i + 1; ogario1PlayerProfiles++) {
+                                m = o + d * ogario1PlayerProfiles;
+                                t["moveTo"](ogario1PlayerProfiles == i ? n : m, a);
+                                t["lineTo"](ogario1PlayerProfiles == i ? n : m, r);
                             }
+                            ogario1PlayerProfiles = 0;
+                            for (; ogario1PlayerProfiles < s + 1; ogario1PlayerProfiles++) {
+                                y = a + f * ogario1PlayerProfiles;
+                                t["moveTo"](o - c / 2, ogario1PlayerProfiles == s ? r : y);
+                                t["lineTo"](n + c / 2, ogario1PlayerProfiles == s ? r : y);
+                            }
+                            t["stroke"]();
+                        } else {
+                            this["drawMapBorders"](t, e, o, a, n, r, l, c);
+                        }
+                        t["font"] = u ? g["sectorsFontWeight"] + " " + g["sectorsFontSize"] + "px " + g["sectorsFontFamily"] : g["miniMapFontWeight"] + " " + ~~(0.4 * f) + "px " + g["miniMapFontFamily"];
+                        t["textAlign"] = "center";
+                        t["textBaseline"] = "middle";
+                        ogario1PlayerProfiles = 0;
+                        for (; ogario1PlayerProfiles < s; ogario1PlayerProfiles++) {
+                            var ogarcopythelb = 0;
+                            for (; ogarcopythelb < i; ogarcopythelb++) {
+                                var ogarminimapdrawer = String["fromCharCode"](65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
+                                m = ~~(o + d / 2 + ogarcopythelb * d);
+                                y = ~~(a + f / 2 + ogario1PlayerProfiles * f);
+                                t["fillText"](ogarminimapdrawer, m, y);
+                            }
+                        }
                     }
                 },
                 ///////////////////// special effects - not work
@@ -5614,8 +5659,8 @@ if (0 != this["cacheQueue"].length) {
         window.legendmod2 = ogarfooddrawer; //look at this
         function ogarjoiner(t) {
             if (e["history"] && e["history"]["replaceState"]) {
-  e["history"]["replaceState"]({}, e["document"]["title"], t);
-}
+                e["history"]["replaceState"]({}, e["document"]["title"], t);
+            }
         }
 
         function ogarassembler() {
@@ -5625,20 +5670,20 @@ if (0 != this["cacheQueue"].length) {
         }
 
         function ogarhusettings() {
-var t = e["innerWidth"];
-var o = e["innerHeight"];
-var a = s("#helloContainer");
-var n = a["innerHeight"]();
-if (n > 0) {
-  i["menuHeight"] = n;
-} else {
-  n = i["menuHeight"] || 618;
-}
-var r = Math["min"](1, o / n);
-var l = n * r;
-var h = Math.round(o / 2 - 0.5 * l);
-var c = "translate(-50%, 0%) scale(" + r + ")";
-a.css("transform", c), a.css("-ms-transform", c), a.css("-webkit-transform", c), a.css("top", h + "px"), i["innerW"] = t, i["innerH"] = o;
+            var t = e["innerWidth"];
+            var o = e["innerHeight"];
+            var a = s("#helloContainer");
+            var n = a["innerHeight"]();
+            if (n > 0) {
+                i["menuHeight"] = n;
+            } else {
+                n = i["menuHeight"] || 618;
+            }
+            var r = Math["min"](1, o / n);
+            var l = n * r;
+            var h = Math.round(o / 2 - 0.5 * l);
+            var c = "translate(-50%, 0%) scale(" + r + ")";
+            a.css("transform", c), a.css("-ms-transform", c), a.css("-webkit-transform", c), a.css("top", h + "px"), i["innerW"] = t, i["innerH"] = o;
 
         }
 
@@ -5718,12 +5763,6 @@ a.css("transform", c), a.css("-ms-transform", c), a.css("-webkit-transform", c),
         }, e.master.getClientVersion(), y.init(), ogarminimapdrawer.init(), ogarminimapdrawer.getDefaultSettings(), ogarminimapdrawer.connect(), lastkeys.init(), M.init(), ogarfooddrawer.init(), e.master.init(), ogarhusettings();
     })(window, window.ogario, window.jQuery);
 }
-
-
-
-
-
-
 
 
 
