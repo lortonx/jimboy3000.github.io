@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.52 test
+//v1.53 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -2174,6 +2174,7 @@ var core = function(t, e, i) {
                         this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                     }
                 }
+				else{
                 if (v["showTop5"]) {
                     var t = "";
                     var e = 0;
@@ -2198,6 +2199,7 @@ var core = function(t, e, i) {
                     this["top5totalMass"]["textContent"] = this["shortMassFormat"](e);
                     this["top5totalPlayers"]["textContent"] = s;
                 }
+				}
             },
             'setTop5limit': function(t) {
                 t && (this['top5limit'] = t);
