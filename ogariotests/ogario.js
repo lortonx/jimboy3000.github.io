@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.56 test
+//v1.57 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -2085,7 +2085,7 @@ var core = function(t, e, i) {
                 v['centeredLb'] ? s('#leaderboard-hud').addClass('hud-text-center') : s('#leaderboard-hud').removeClass('hud-text-center');
             },
             'setNormalLb': function() {
-                v['normalLb'] ? s('#leaderboard-hud h4').html(h['leaderboard']) : s('#leaderboard-hud h4').html('legendmod.ml');
+                v['normalLb'] ? s('#leaderboard-hud h5').html(h['leaderboard']) : s('#leaderboard-hud h5').html('legendmod.ml');
             },
             'setFpsAtTop': function() {
                 v['fpsAtTop'] ? s('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : s('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
