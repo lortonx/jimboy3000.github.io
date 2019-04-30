@@ -204,6 +204,9 @@ var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved"
 if (localStorage.getItem("leaderboardlimit")!=null){
 	window.leaderboardlimit=localStorage.getItem("leaderboardlimit");
 }
+if (localStorage.getItem("teamboardlimit")!=null){
+	window.teamboardlimit=localStorage.getItem("teamboardlimit");
+}
 //
 var Premadeletter0 = "Communication Activated";
 var Premadeletter1 = "Cannot open this youtube URL";
@@ -1870,6 +1873,9 @@ function parseLegendJSONAPI(LegendJSON) {
 	if (localStorage.getItem("leaderboardlimit")!=null){
 	LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
 	}	
+	if (localStorage.getItem("teamboardlimit")!=null){
+	LegendJSON.legendSettings.teamboardlimit = localStorage.getItem("teamboardlimit");
+	}	
 	LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
 	if (localStorage.getItem("AnimatedRainbowColorSaved")!=null){
 	LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
@@ -2133,6 +2139,9 @@ function saveLegendJSONAPI() {
 	if (LegendJSON.legendSettings.leaderboardlimit!=null){
 	localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);	
 	}	  
+	if (LegendJSON.legendSettings.teamboardlimit!=null){
+	localStorage.setItem("teamboardlimit", LegendJSON.legendSettings.teamboardlimit);	
+	}	
     localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
 	if (LegendJSON.legendSettings.AnimatedRainbowColorSaved!=null){
 	localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);	
@@ -4936,7 +4945,7 @@ function newsubmit(){
 }
 function triggerLMbtns() {
 			$('#leaderboardlimit').val(window.leaderboardlimit);
-			
+			$('#teamboardlimit').val(window.teamboardlimit);
 			$('.btn').css("text-transform", "capitalize");
             PanelImageSrc = $("#menuBg").val();
             if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://jimboy3100.github.io/pattern.png") {
@@ -6354,7 +6363,7 @@ $("#server-reconnect").css("width", "11%");
         // player shortcut			
 			
 	$(".options-box.zoomGroup").after('<div class="options-box leaderboard">'+
-   '<h5 class="menu-main-color">leaderboard</h5>'+
+   '<h5 class="menu-main-color">Leaderboards</h5>'+
    '<label>Leaderboard Players<input type="checkbox" class="js-switch" id="quickleaderbaord" data-switchery="true" style="display: none;">'+
    '<span><select id="leaderboardlimit" class="form-control" onchange="changeleaderboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
             '<option selected value="10" data-itr="">10</option>' +
@@ -6362,7 +6371,18 @@ $("#server-reconnect").css("width", "11%");
             '<option value="20" data-itr="">20</option>' +
             '<option value="25" data-itr="">25</option>' +
             '<option value="30" data-itr="">30</option>' +
-            '</select></span></label></div>');
+            '</select></span></label><br><br>'+
+   '<label>Team Players<input type="checkbox" class="js-switch" id="quickteambaord" data-switchery="true" style="display: none;">'+
+   '<span><select id="teamboardlimit" class="form-control" onchange="changeteamboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
+            '<option selected value="10" data-itr="">10</option>' +
+            '<option value="15" data-itr="">15</option>' +
+            '<option value="20" data-itr="">20</option>' +
+            '<option value="25" data-itr="">25</option>' +
+            '<option value="30" data-itr="">30</option>' +
+			'<option value="35" data-itr="">30</option>' +
+			'<option value="40" data-itr="">30</option>' +
+            '</select></span></label>'+			
+			'</div>');
 		
         $("#playerBtn").click(function() {                          
                 if (playerState != 1) {
@@ -7582,6 +7602,10 @@ window.leaderboardlimit=$("#leaderboardlimit").val();
 localStorage.setItem("leaderboardlimit", window.leaderboardlimit);
 }	
 
+function changeteamboardlimit(){
+window.teamboardlimit=$("#teamboardlimit").val();
+localStorage.setItem("teamboardlimit", window.teamboardlimit);
+}
 //Animated Skins
 function animateSkincheckTimer() {
 animateSkincheck();
