@@ -508,7 +508,7 @@ function init(modVersion) {
 				animateSkinsStop();
 			}
 		});	
-		$('.options-box.hudGroup').append('<label><input type="checkbox" id="top5skins" class="js-switch" data-switchery="true" style="display: none;"> Skins on team top5</input></label>');
+		$('.options-box.hudGroup').append('<label><input type="checkbox" id="top5skins" class="js-switch" data-switchery="true" style="display: none;"> Skins on teamboard</input></label>');
 		var elemLegendSwitch3 = document.querySelector('#top5skins');
 		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
 		var top5skinsbtn = new Switchery(elemLegendSwitch3, { size: 'small', color: ogarioswitchbackcolor, jackColor: 'rgb(250, 250, 250)' });
@@ -1508,7 +1508,7 @@ OpenSkinChanger();
 
 function OthersSkinChanger(){
 	var leaderboardnames = [$("#leaderboard-positions").text().split('1. ').pop().split('2. ')[0], $("#leaderboard-positions").text().split('2. ').pop().split('3. ')[0], $("#leaderboard-positions").text().split('3. ').pop().split('4. ')[0], $("#leaderboard-positions").text().split('4. ').pop().split('5. ')[0], $("#leaderboard-positions").text().split('5. ').pop().split('6. ')[0], $("#leaderboard-positions").text().split('6. ').pop().split('7. ')[0], $("#leaderboard-positions").text().split('7. ').pop().split('8. ')[0], $("#leaderboard-positions").text().split('8. ').pop().split('9. ')[0], $("#leaderboard-positions").text().split('9. ').pop().split('10. ')[0], $("#leaderboard-positions").text().split('10. ').pop().split('11. ')[0]];
-$(".team-top-limit")[2].click();
+//$(".team-top-limit")[2].click();
 var Top5b={};
 var Top5c={};
 var Top5d={};
@@ -2922,7 +2922,7 @@ var legbgcolor = $("#menuPanelColor").val();
             '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="ogar_user"/>user info</label>'+
               '&nbsp;Prefix:<input type="text" data-ao2t-config="ogar_prefix" style="width:4em;"/>'+
             '<br/>LMB-Mouse split correction'+
-            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_teamtop"/>Team top</label>'+
+            '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_teamtop"/>Teamboard</label>'+
               '&nbsp;<label><input type="checkbox" data-ao2t-config="lmsa_chat"/>chat</label>'+
             '<br/>Chat option'+
               '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="chat_close"/>close</label>'+
@@ -6380,8 +6380,8 @@ $("#server-reconnect").css("width", "11%");
             '<option value="20" data-itr="">20</option>' +
             '<option value="25" data-itr="">25</option>' +
             '<option value="30" data-itr="">30</option>' +
-			'<option value="35" data-itr="">30</option>' +
-			'<option value="40" data-itr="">30</option>' +
+			'<option value="35" data-itr="">35</option>' +
+			'<option value="40" data-itr="">40</option>' +
             '</select></span></label>'+			
 			'</div>');
 		
