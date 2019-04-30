@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.028e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.028f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "33"; // the version 1.1-> 1.11
@@ -6374,8 +6374,9 @@ $("#server-reconnect").css("width", "11%");
             '</select></span></label><br><br>'+
    '<label>Team Players<input type="checkbox" class="js-switch" id="quickteambaord" data-switchery="true" style="display: none;">'+
    '<span><select id="teamboardlimit" class="form-control" onchange="changeteamboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
-            '<option selected value="10" data-itr="">10</option>' +
-            '<option value="15" data-itr="">15</option>' +
+            '<option selected value="5" data-itr="">5</option>' +
+            '<option value="10" data-itr="">10</option>' +
+			'<option value="15" data-itr="">15</option>' +
             '<option value="20" data-itr="">20</option>' +
             '<option value="25" data-itr="">25</option>' +
             '<option value="30" data-itr="">30</option>' +
