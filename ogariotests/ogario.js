@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.67 test
+//v1.68 test
 //Game Configurations
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -3353,6 +3353,12 @@ var core = function(t, e, i) {
                         if (this['teamPlayers'][e]['id'] == t) return e;
                 return null;
             },
+            'checkPlayerChat': function(t) {
+                if (t)
+                    for (var e = 0; e < this['teamPlayers'].length; e++)
+                        if (this['teamPlayers'][e]['id'] == t) return e;
+                return null;
+            },			
             'updateTeamPlayer': function(t) {
                 function e() {
                     var paginationStr = "";
@@ -3922,7 +3928,7 @@ var core = function(t, e, i) {
                         var node = null;
                         if (v["customSkins"] && M["showCustomSkins"] && (node = ogarminimapdrawer["getCustomSkin"](this["targetNick"], this["color"])) && (((v["transparentSkins"] || M.play && v["oppColors"]) && (!this["isPlayerCell"] || v["myTransparentSkin"]) || this["isPlayerCell"] && v["myTransparentSkin"]) && (style["globalAlpha"] *= g["skinsAlpha"], s = true), style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), s && (style["globalAlpha"] = value, s = false)), v["teammatesInd"] && !this["isPlayerCell"] &&
 //                            y <= 200 && (node || ogarminimapdrawer["checkSkinsMap"](this["targetNick"], this["color"])) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
-                            y <= 400 && (node || ogarminimapdrawer["checkPlayerID"](this["id"])) && console.log(this["id"]) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
+                            y <= 400 && (window.teammatenicks.includes(this["targetNick"])) && console.log(this["id"]) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
 
                             style["restore"]();
                         } else {
