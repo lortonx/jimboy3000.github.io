@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.77 MEGA TEST
+//v1.78 MEGA TEST
 //Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3932,7 +3932,7 @@ var core = function(t, e, i) {
                         if (v["customSkins"] && M["showCustomSkins"] && (node = ogarminimapdrawer["getCustomSkin"](this["targetNick"], this["color"])) && (((v["transparentSkins"] || M.play && v["oppColors"]) && (!this["isPlayerCell"] || v["myTransparentSkin"]) || this["isPlayerCell"] && v["myTransparentSkin"]) && (style["globalAlpha"] *= g["skinsAlpha"], s = true), 
 						
 						//style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), s && (style["globalAlpha"] = value, s = false)), 
-						style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), style["drawImage"](cimg2, this["x"] - y/1.2, this["y"] - y/1.2, 2.4 * y, 2.4 * y), s && (style["globalAlpha"] = value, s = false)), 
+						style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), style["drawImage"](cimg2, this["x"] - y*1.2, this["y"] - y*1.2, 2.4 * y, 2.4 * y), s && (style["globalAlpha"] = value, s = false)), 
 						v["teammatesInd"] && !this["isPlayerCell"] && y <= 800 && window.teammatenicks && (window.teammatenicks.includes(this["targetNick"])) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
 
 //                            y <= 200 && (node || ogarminimapdrawer["checkSkinsMap"](this["targetNick"], this["color"])) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
