@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.90 MEGA TEST
+//v1.91 MEGA TEST
 //Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3935,7 +3935,7 @@ var core = function(t, e, i) {
 						//style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), s && (style["globalAlpha"] = value, s = false)), 
 						style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), 
 						//this["targetNick"].includes("℄") && (style["rotate"](M["cAngle1"])) && (style["drawImage"](cimg2, this["x"] - y * 1.5, this["y"] - y * 1.5, 3 * y, 3 * y)) &&
-						this["targetNick"].includes("℄") && (style["drawImage"](cimg2, this["x"] - y * 1.5, this["y"] - y * 1.5, 3 * y, 3 * y)),
+						this["targetNick"].includes("℄🌀Jimboy3100") && (style["drawImage"](cimg2, this["x"] - y * 2, this["y"] - y * 2, 4 * y, 4 * y)),
 						//(M["cAngle"] += .007), console.log(M["cAngle"]),
 						//style["rotate"](M["cAngle1"]),
 						s && (style["globalAlpha"] = value, s = false)), 
