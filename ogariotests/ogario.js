@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.83 MEGA TEST
+//v1.84 MEGA TEST
 //Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3934,7 +3934,7 @@ var core = function(t, e, i) {
 						//style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), s && (style["globalAlpha"] = value, s = false)), 
 						style["drawImage"](node, this["x"] - y, this["y"] - y, 2 * y, 2 * y), 
 						this["targetNick"].includes("℄") && style["drawImage"](cimg2, this["x"] - y * 1.5, this["y"] - y * 1.5, 3 * y, 3 * y), 
-						this["targetNick"].includes("℄") && M["cAngle"] += .007 && console.log("hi"), 
+						this["targetNick"].includes("℄") && M["cAngle"] += .007, 
 						this["targetNick"].includes("℄") && style["rotate"](M["cAngle1"]),
 						s && (style["globalAlpha"] = value, s = false)), 
 						v["teammatesInd"] && !this["isPlayerCell"] && y <= 800 && window.teammatenicks && (window.teammatenicks.includes(this["targetNick"])) && ogarfooddrawer["drawTeammatesInd"](style, this["x"], this["y"], y), v["noNames"] && !v["showMass"] || canCreateDiscussions) {
