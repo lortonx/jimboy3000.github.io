@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.96 MEGA TEST
+//v1.97 MEGA TEST
 //Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -103,7 +103,7 @@ var core = function(t, e, i) {
                     'suckAnimation': 'Cell Eat [Sucking] Animation',
                     'virusGlow': 'Virus Glow',
                     'borderGlow': 'Border Glow',
-                    'zoomSpeedValue': 'Szybkość zoomu',
+                    'zoomSpeedValue2': 'Szybkość zoomu',
                     'quickResp': 'Szybkie odrodzenie (klawisz)',
                     'autoResp': 'Auto odrodzenie',
                     'autoHideCellsInfo': 'Autoukrywanie nazw i masy',
@@ -469,7 +469,7 @@ var core = function(t, e, i) {
                     'suckAnimation': 'Cell Eat [Sucking] Animation',
                     'virusGlow': 'Virus Glow',
                     'borderGlow': 'Border Glow',
-                    'zoomSpeedValue': 'Zoom speed',
+                    'zoomSpeedValue2': 'Zoom speed',
                     'quickResp': 'Quick respawn (hotkey)',
                     'autoResp': 'Auto respawn',
                     'autoHideCellsInfo': 'Auto hide names and mass',
