@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.97 MEGA TEST
+//v1.98 MEGA TEST
 //Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1808,8 +1808,8 @@ var core = function(t, e, i) {
                 'showTop5': true,
                 'showTargeting': true,
                 'showLbData': true,
-                'showTime': true,
-                'normalLb': false,
+                'showTime': false,
+                'normalLb': true,
                 'centeredLb': true,
                 'fpsAtTop': true,
                 'showStats': true,
