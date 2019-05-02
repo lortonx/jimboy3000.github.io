@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.028f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.029f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "34"; // the version 1.1-> 1.11
@@ -2598,7 +2598,7 @@ var legbgcolor = $("#menuPanelColor").val();
 		"log": function(msg){ 
 		if(($('#chat-box').is(":visible")==false)){
 			window.teammatelegendmodnicks.forEach(function(a){
-				if (~msg.indexOf(a)) {	
+				if (~msg.indexOf(a)+":") {	
 					msg="[Universal chat]:";
 				}
 				});
