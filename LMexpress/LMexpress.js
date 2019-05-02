@@ -2,7 +2,7 @@
  * Legend express v0.028f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "33"; // the version 1.1-> 1.11
+var semimodVersion = "34"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2597,6 +2597,11 @@ var legbgcolor = $("#menuPanelColor").val();
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
 		if(($('#chat-box').is(":visible")==false)){
+			window.teammatelegendmodnicks.forEach(function(a){
+				if (~msg.indexOf(a)) {	
+					msg="[Universal chat]:";
+				}
+				});
 		    if (~msg.indexOf("Received a command with an unknown name")) {
 				if (~msg.indexOf("Received a command with an unknown name: customSkins")) {
 				}
@@ -2610,10 +2615,7 @@ var legbgcolor = $("#menuPanelColor").val();
 				} 
 			else if (~msg.indexOf("minimap server")) {				
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				}
-			else if (~msg.indexOf('LM:')) {
-//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				} 				
+				}		
 			else if (~msg.indexOf($('#nick').val()+':')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 
@@ -2633,51 +2635,47 @@ var legbgcolor = $("#menuPanelColor").val();
 //        "tool_symbol": "Send text Universaly"
 		"tool_symbol": ""
     };
-    var stat = {
-        "AgarToolVersion": 5,
-        "AgarToolServer": "wss://minimap.agartool.io:9000",
-        minimapBalls: {},
-        "socketIoURL": "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
-        // ---- Legend Mod settings  -----
-        "minimapNickFont": "700 11px Ubuntu",
-        "minimapNickColor": "#ffffff",
-        "minimapNickStrokeColor": "#000000",
-        "minimapNickStrokeSize": 0x2,
-        "minimapTop": 0x18,
-        "minimapTeammatesSize": 5.5,
-        //"minimapTeammatesColor": "#F03A17",
-        //"minimapOffsetX": 0.5,
-        //"minimapOffsetY": 0x18 + 9.5, // miniMapTop + 9.5
-        "minimapOffsetX": 71,
-        // -----  for Legend Mod Express  ----
-        "mapSize": 14142, // ogario.mapSize,
-        "mapOffset": 7071, // ogario.mapOffset,
-        // -----  other  -----
-        "pi2": 0x2 * Math.PI,
-        "messageBoxBottom": ["82px", "40%"],
-        "keyCodeEnter": 13, // Enter
-        "keyCodeA": 65, // 'A'
-        "keyCodeR": 82 // 'R'
-    };
-    var cfg= {}, cfg_org = {
-        "user_show": true,
-        "minimap_show": true,
-        "tgar_prefix": "O",
-        "tgar_color": "#8C81C7",
-        "update_interval": 1000,
-        "ogar_user": true,
-        "ogar_prefix": "L.M",
-        "lmsa_teamtop": false,
-        "lmsa_chat": false,
-        "chat_close": false,
-        "chat_unpause": true,
-        "chat_vcenter": false,
-        "chat_alt": true,
-        "chat_ctrlalt": true,
-        "chat_ctrl": true,
-        "skin_toggle_auto": false,
-        "skin_toggle_interval": 10000
-    };
+'use strict';
+var stat = {
+  "AgarToolVersion" : 5,
+  "AgarToolServer" : "wss://minimap.agartool.io:9000",
+  minimapBalls : {},
+  "socketIoURL" : "https://jimboy3100.github.io/ExampleScripts/socket-io.min.js",
+  "minimapNickFont" : "700 11px Ubuntu",
+  "minimapNickColor" : "#ffffff",
+  "minimapNickStrokeColor" : "#000000",
+  "minimapNickStrokeSize" : 2,
+  "minimapTop" : 24,
+  "minimapTeammatesSize" : 5.5,
+  "minimapOffsetX" : 71,
+  "mapSize" : 14142,
+  "mapOffset" : 7071,
+  "pi2" : 2 * Math.PI,
+  "messageBoxBottom" : ["82px", "40%"],
+  "keyCodeEnter" : 13,
+  "keyCodeA" : 65,
+  "keyCodeR" : 82
+};
+var cfg = {};
+var cfg_org = {
+  "user_show" : true,
+  "minimap_show" : true,
+  "tgar_prefix" : "O",
+  "tgar_color" : "#8C81C7",
+  "update_interval" : 1000,
+  "ogar_user" : true,
+  "ogar_prefix" : "L.M",
+  "lmsa_teamtop" : false,
+  "lmsa_chat" : false,
+  "chat_close" : false,
+  "chat_unpause" : true,
+  "chat_vcenter" : false,
+  "chat_alt" : true,
+  "chat_ctrlalt" : true,
+  "chat_ctrl" : true,
+  "skin_toggle_auto" : false,
+  "skin_toggle_interval" : 10000
+};
     function pre_loop(){
         // At this point jQuery can not be used
         if(! document.getElementById("top5-hud")){
