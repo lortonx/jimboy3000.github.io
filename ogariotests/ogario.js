@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-//v1.92 MEGA TEST
+//v1.93 MEGA TEST
 //Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1837,6 +1837,7 @@ var core = function(t, e, i) {
                 //                'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
                 'commandSound': 'https://jimboy3100.github.io/sounds/chat-message.mp3'
             };
+			if (v['zoomSpeedValue']>1){v['zoomSpeedValue']=v['zoomSpeedValue']-1};
         window.legendmod4 = c;
         var ogarminimapdrawer = {
             'name': 'LM express',
