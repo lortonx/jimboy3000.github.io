@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.102 MEGA TEST
+// v1.103 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3990,7 +3990,7 @@ var core = function(t, e, i) {
 						this.quadtree.insert(cell.points[n]);
 					}
 				}
-			}			
+			},			
             'ws': null,
             'socket': null,
             'protocolKey': null,
