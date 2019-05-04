@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.106 MEGA TEST
+// v1.107 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4769,31 +4769,31 @@ var core = function(t, e, i) {
             M.sendAction(t);
         };
         var ogarfooddrawer = {
-                'canvas': null,
-                'ctx': null,
-                'canvasWidth': 0,
-                'canvasHeight': 0,
-                'camX': 0,
-                'camY': 0,
-                'scale': 1,
-                'fpsLastRequest': null,
-                'renderedFrames': 0,
-                'fps': 0,
-                'pi2': 2 * Math['PI'],
-                'battleAreaMap': null,
-                'battleAreaMapCtx': null,
-                'pieChart': null,
-                'pellet': null,
-                'indicator': null,
-                'setCanvas': function() {
+                this.canvas = null;
+                this.ctx = null;
+                this.canvasWidth = 0;
+                this.canvasHeight = 0;
+                this.camX = 0;
+                this.camY = 0;
+                this.scale = 1;
+                this.fpsLastRequest = null;
+                this.renderedFrames = 0;
+                this.fps = 0;
+                this.pi2 = 2 * Math['PI'];
+                this.battleAreaMap = null;
+                this.battleAreaMapCtx = null;
+                this.pieChart = null;
+                this.pellet = null;
+                this.indicator = null;
+                this.setCanvas = function() {
                     this.canvas = document.getElementById('canvas'), this['ctx'] = this.canvas['getContext']('2d'), this.canvas['onmousemove'] = function(t) {
                         M['clientX'] = t['clientX'], M['clientY'] = t['clientY'], M['getCursorPosition']();
                     };
-                },
-                'resizeCanvas': function() {
+                }
+                this.resizeCanvas = function() {
                     this['canvasWidth'] = e['innerWidth'], this['canvasHeight'] = e['innerHeight'], this.canvas['width'] = this['canvasWidth'], this.canvas['height'] = this['canvasHeight'], M['canvasWidth'] = this['canvasWidth'], M['canvasHeight'] = this['canvasHeight'], this['renderFrame']();
                 },
-                'setView': function() {
+                this.setView = function() {
                     this['setScale'](),
                         M['playerCells'].length ?
                         (M['calculatePlayerMassAndPosition'](),
@@ -4805,13 +4805,13 @@ var core = function(t, e, i) {
                             this.camY = (29 * this.camY + M['viewY']) / 30),
                         M['playerX'] = this.camX, M['playerY'] = this['camY'];
                 },
-                'setScale': function() {
+                this.setScale = function() {
                     if (!M['autoZoom']) return this['scale'] = (9 * this['scale'] + this['getZoom']()) / 10, void(M['viewScale'] = this['scale']);
                     M.play ? this['scale'] = (9 * this['scale'] + Math['pow'](Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this['scale'] = (9 * this['scale'] + M['scale'] * this['getZoom']()) / 10, M['viewScale'] = this['scale'];
-                },
-                'getZoom': function() {
+                }
+                this.getZoom = function() {
                     return Math['max'](this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
-                },
+                }
 /*                'renderFrame': function() {
                     //for (M['time'] = Date['now'](), e = 0; e < M['cells'].length; e++) M['cells'][e]['moveCell']();
 				    M.time = Date.now();
@@ -4828,7 +4828,7 @@ var core = function(t, e, i) {
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
                     this['ctx']['restore'](), ':teams' === M['gameMode'] && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
                 }, */
-        'renderFrame': function () {
+        this.renderFrame = function () {
             //this.ctx.start2D();
             M.time = Date.now();
             for (i = 0x0; i < M.cells.length; i++) {
@@ -4947,12 +4947,12 @@ var core = function(t, e, i) {
                 }
             }
             //this.ctx.finish2D();
-        },
-        pointInCircle: function(x, y, cx, cy, radius) {
+        }
+        this.pointInCircle: function(x, y, cx, cy, radius) {
             var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
             return distancesquared <= radius * radius;
-        },
-        drawRing : function (ctx, x, y, size, alpha, color) {
+        }
+        this.drawRing : function (ctx, x, y, size, alpha, color) {
             ctx.lineWidth = 20;
             ctx.globalAlpha = alpha;
             ctx.strokeStyle = color;
@@ -4962,10 +4962,10 @@ var core = function(t, e, i) {
                 ctx.stroke();
             
             ctx.globalAlpha = 1;
-        },
+        }
 
 		
-                'drawGrid': function(t, e, i, s, o, a) {
+                this.drawGrid = function(t, e, i, s, o, a) {
                     var n = e / s;
                     var r = i / s;
                     var l = (n / 2 - o) % 50;
@@ -4980,8 +4980,8 @@ var core = function(t, e, i) {
                         t["lineTo"](n * s, h * s - 0.5);
                     }
                     t["stroke"](), t["globalAlpha"] = 1;
-                },
-                'drawSectors': function(t, e, i, s, o, a, n, r, l, h, c, u) {
+                }
+                this.drawSectors = function(t, e, i, s, o, a, n, r, l, h, c, u) {
                     if (e || !u) {
                         var d = ~~((n - o) / i);
                         var f = ~~((r - a) / s);
@@ -5019,9 +5019,9 @@ var core = function(t, e, i) {
                             }
                         }
                     }
-                },
+                }
                 ///////////////////// special effects - not work
-                "drawCommander": function() {
+                this.drawCommander = function() {
                     if (M["drawCommander"]) {
                         var pickerAxes = this["ctx"];
                         cimg = new Image;
@@ -5051,8 +5051,8 @@ var core = function(t, e, i) {
                         pickerAxes["globalAlpha"] = 1;
                         this["updateCommander"]();
                     }
-                },
-                "updateCommander": function() {
+                }
+                this.updateCommander = function() {
                     M["cRadius"] += 7;
                     M["cAngle"] += .007;
                     M["cAngle1"] -= .006;
@@ -5063,8 +5063,8 @@ var core = function(t, e, i) {
                     if (1E-4 >= M["cAlpha"]) {
                         this["resetCommander"]();
                     }
-                },
-                "resetCommander": function() {
+                };
+                this.resetCommander = function() {
                     M["cRadius"] = 10; //M['clientX']
                     M["cAngle"] = 4;
                     M["cAngle1"] = 0;
@@ -5073,13 +5073,13 @@ var core = function(t, e, i) {
                     M["drawCommander"] = false;
                     i["spawnX"] = 0;
                     i["spawnY"] = 0;
-                },
+                }
                 /*			
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
                     e && (t['strokeStyle'] = n, t['lineWidth'] = r, t['beginPath'](), t['moveTo'](i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t['closePath'](), t['stroke']());
                 },
 				*/
-                "drawMapBorders": function(ctx, macros, text, x1, x0, y0, radius, canvas) {
+                this.drawMapBorders = function(ctx, macros, text, x1, x0, y0, radius, canvas) {
                     if (macros) {
                         ctx["strokeStyle"] = radius;
                         ctx["lineWidth"] = canvas;
@@ -5102,8 +5102,8 @@ var core = function(t, e, i) {
                     } else {
                         "skrrt";
                     }
-                },
-                'drawVirusesRange': function(t, e, i) {
+                }
+                this.drawVirusesRange = function(t, e, i) {
                     if (e.length) {
                         t['beginPath']();
                         for (var s = 0; s < e.length; s++) {
@@ -5113,16 +5113,16 @@ var core = function(t, e, i) {
                         }
                         t['fillStyle'] = g['virusColor'], t['globalAlpha'] = 0.1, t.fill(), t['globalAlpha'] = 1, i && (e = []);
                     }
-                },
-                'drawFood': function() {
+                }
+                this.drawFood = function() {
                     if (M['showFood'] && !(v['autoHideFoodOnZoom'] && this['scale'] < 0.2)) {
                         if (v['autoHideFood'] && !M['foodIsHidden'] && M['playerMass'] > 1000) return M['showFood'] = false, void(M['foodIsHidden'] = true);
                         if (v['rainbowFood'])
                             for (var t = 0; t < M['food'].length; t++) M['food'][t]['moveCell'](), M['food'][t]['draw'](this['ctx']);
                         else this['drawCachedFood'](this['ctx'], M['food'], this['scale']);
                     }
-                },
-                'drawCachedFood': function(t, e, i, s) {
+                }
+                this.drawCachedFood = function(t, e, i, s) {
                     if (e.length) {
                         if (v['optimizedFood'] && this['pellet'])
                             for (var o = 0; o < e.length; o++) {
@@ -5142,39 +5142,39 @@ var core = function(t, e, i) {
                             }
                         s && (e = []);
                     }
-                },
-                'drawSplitRange': function(t, e, i, s, o) {
+                }
+                this.drawSplitRange = function(t, e, i, s, o) {
                     if (this['drawCircles'](t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
                         var a = s ? i.length - 1 : 0;
                         t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], i[a]['size'] + 760, 0, this.pi2, false), t['closePath'](), t['stroke']();
                     }
                     t['globalAlpha'] = 1, o && (e = []);
-                },
-                'drawOppRings': function(t, e, i, s, o, a, n) {
+                }
+                this.drawOppRings = function(t, e, i, s, o, a, n) {
                     var r = 14 + 2 / e,
                         l = 12 + 1 / e;
                     this['drawCircles'](t, i, r, l, 0.75, '#BE00FF'), this['drawCircles'](t, s, r, l, 0.75, '#FF0A00'), this['drawCircles'](t, o, r, l, 0.75, '#00C8FF'), this['drawCircles'](t, a, r, l, 0.75, '#64FF00'), n && (i = [], s = [], o = [], a = []);
-                },
-                'drawCursorTracking': function(t, e, i, s) {
+                }
+                this.drawCursorTracking = function(t, e, i, s) {
                     t['lineWidth'] = 4, t['globalAlpha'] = g['darkTheme'] ? 0.75 : 0.35, t['strokeStyle'] = g['cursorTrackingColor'], t['beginPath']();
                     for (var o = 0; o < e.length; o++) t['moveTo'](e[o]['x'], e[o]['y']), t['lineTo'](i, s);
                     t['stroke'](), t['globalAlpha'] = 1;
-                },
-                'drawCircles': function(t, e, i, s, o, a) {
+                }
+                this.drawCircles = function(t, e, i, s, o, a) {
                     t['lineWidth'] = s, t['globalAlpha'] = o, t['strokeStyle'] = a;
                     for (var n = 0; n < e.length; n++) t['beginPath'](), t.arc(e[n]['x'], e[n]['y'], e[n]['size'] + i, 0, this.pi2, false), t['closePath'](), t['stroke']();
                     t['globalAlpha'] = 1;
-                },
-                'drawDashedCircle': function(t, e, i, s, o, a, n) {
+                }
+                this.drawDashedCircle = function(t, e, i, s, o, a, n) {
                     var r = this.pi2 / o;
                     t['lineWidth'] = a, t['strokeStyle'] = n;
                     for (var l = 0; l < o; l += 2) t['beginPath'](), t.arc(e, i, s - a / 2, l * r, (l + 1) * r, false), t['stroke']();
-                },
-                'drawTeammatesInd': function(t, e, i, s) {		
+                }
+                this.drawTeammatesInd = function(t, e, i, s) {		
 					//console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
                     this['indicator'] && t['drawImage'](this['indicator'], e - 45, i - s - 90);
-                },
-                'drawPieChart': function() {
+                }
+                this.drawPieChart = function() {
                     this['pieChart'] || (this['pieChart'] = document['createElement']('canvas'));
                     var t = this['pieChart']['getContext']('2d'),
                         e = Math['min'](200, 0.3 * this['canvasWidth']) / 200;
@@ -5183,14 +5183,14 @@ var core = function(t, e, i) {
                         var a = s + M['pieChart'][o] * this.pi2;
                         t['fillStyle'] = i[o + 1], t['beginPath'](), t['moveTo'](100, 140), t.arc(100, 140, 80, s, a, false), t.fill(), s = a;
                     }
-                },
-                'drawBattleArea': function(t) {
+                }
+                this.drawBattleArea = function(t) {
                     if (M["battleRoyale"]["state"]) {
                         this["drawDangerArea"](t, M["battleRoyale"]["x"], M["battleRoyale"]["y"], M["battleRoyale"]["radius"], M["mapMinX"], M["mapMinY"], M["mapMaxX"] - M["mapMinX"], M["mapMaxY"] - M["mapMinY"], g["dangerAreaColor"], 0.25);
                         this["drawSafeArea"](t, M["battleRoyale"]["targetX"], M["battleRoyale"]["targetY"], M["battleRoyale"]["targetRadius"], 40, g["safeAreaColor"]);
                     }
-                },
-                'drawBattleAreaOnMinimap': function(t, e, i, s, o, a) {
+                }
+                this.drawBattleAreaOnMinimap = function(t, e, i, s, o, a) {
                     if (M["battleRoyale"]["state"]) {
                         if (!this["battleAreaMap"]) {
                             this["battleAreaMap"] = document["createElement"]("canvas");
@@ -5212,8 +5212,8 @@ var core = function(t, e, i) {
                         this["drawSafeArea"](this["battleAreaMapCtx"], n, r, l, 2, g["safeAreaColor"]);
                         t["drawImage"](this["battleAreaMap"], 0, 0);
                     }
-                },
-                'drawDangerArea': function(t, e, i, s, o, a, n, r, l, h) {
+                }
+                this.drawDangerArea = function(t, e, i, s, o, a, n, r, l, h) {
                     if (!(M["battleRoyale"]["radius"] == M["battleRoyale"]["maxRadius"] || s <= 0)) {
                         t["save"]();
                         t["globalAlpha"] = h;
@@ -5226,13 +5226,13 @@ var core = function(t, e, i) {
                         t.fill();
                         t["restore"]();
                     }
-                },
-                'drawSafeArea': function(t, e, i, s, o, a) {
+                }
+                this.drawSafeArea = function(t, e, i, s, o, a) {
                     if (!(M["battleRoyale"]["state"] > 2 || s <= 0)) {
                         this["drawDashedCircle"](t, e, i, s, 60, o, a);
                     }
-                },
-                'drawGhostCells': function() {
+                }
+                this.drawGhostCells = function() {
                     if (v["showGhostCells"]) {
                         var t = M["ghostCells"];
                         this["ctx"]["beginPath"]();
@@ -5255,23 +5255,23 @@ var core = function(t, e, i) {
                         this["ctx"]["globalAlpha"] = 1;
                         this["ctx"]["shadowBlur"] = 0;
                     }
-                },
-                'preDrawPellet': function() {
+                }
+                this.preDrawPellet = function() {
                     this['pellet'] = null;
                     var t = 10 + g['foodSize'],
                         e = document['createElement']('canvas');
                     e['width'] = 2 * t, e['height'] = 2 * t;
                     var i = e['getContext']('2d');
                     i.arc(t, t, t, 0, this.pi2, false), i['fillStyle'] = g['foodColor'], i.fill(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
-                },
-                'preDrawIndicator': function() {
+                }
+                this.preDrawIndicator = function() {
                     this['indicator'] = null;
                     var t = document['createElement']('canvas');
                     t['width'] = 90, t['height'] = 50;
                     var e = t['getContext']('2d');
                     e['lineWidth'] = 2, e['fillStyle'] = g['teammatesIndColor'], e['strokeStyle'] = '#000000', e['beginPath'](), e['moveTo'](0, 0), e['lineTo'](90, 0), e['lineTo'](45, 50), e['closePath'](), e.fill(), e['stroke'](), this['indicator'] = new Image(), this['indicator'].src = t.toDataURL(), t = null;
-                },
-                'countFps': function() {
+                }
+                this.countFps = function() {
                     if (v["showStatsFPS"]) {
                         var t = Date["now"]();
                         if (!this["fpsLastRequest"]) {
@@ -5284,16 +5284,16 @@ var core = function(t, e, i) {
                         }
                         this["renderedFrames"]++;
                     }
-                },
-                'render': function() {
+                }
+                this.render= function() {
                     ogarfooddrawer['countFps'](), ogarfooddrawer['renderFrame'](), e['requestAnimationFrame'](ogarfooddrawer['render']);
-                },
-                'init': function() {
+                }
+                this.init = function() {
                     this['setCanvas'](), this['resizeCanvas'](), this['preDrawPellet'](), this.preDrawIndicator(), e['requestAnimationFrame'](ogarfooddrawer['render']);
                 }
-            },
-            ogarioefaultHotkeys = {},
-            ogario1Hotkeys = {},
+            }
+            ogarioefaultHotkeys = {};
+            ogario1Hotkeys = {};
             ogario11Hotkeys = {
                 'hk-feed': {
                     'label': h['hk-feed'],
@@ -6042,7 +6042,7 @@ var core = function(t, e, i) {
                     'keyUp': null,
                     'type': 'command'
                 }
-            },
+            }
             lastkeys = {
                 'lastPressedKey': '',
                 'lastKeyId': '',
