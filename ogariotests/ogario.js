@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.105 MEGA TEST
+// v1.106 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3818,40 +3818,103 @@ var core = function(t, e, i) {
 			cimg2 = new Image;
             cimg2["src"] = g["commanderImage2"];
 			
-            this['id'] = t, this['x'] = e, this['y'] = s, this['targetX'] = e, this['targetY'] = s, this['color'] = a, this['oppColor'] = null, this['size'] = o, this['targetSize'] = o, this['alpha'] = 1, this['nick'] = '', this['targetNick'] = '', this['nickCanvas'] = null, this['mass'] = 0, this['lastMass'] = 0, this['kMass'] = 0, this['massCanvas'] = null, this['massTxt'] = '', this['margin'] = 0, this['scale'] = 1, this['nickScale'] = 1, this['massScale'] = 1, this['virMassScale'] = 3, this['strokeScale'] = 1, this['fontSize'] = 0x1a, this['nickSize'] = 0x1a, this['lastNickSize'] = 0, this['massSize'] = 0x1a, this['virMassSize'] = 0x1a, this['nickStrokeSize'] = 3, this['massStrokeSize'] = 3, this['isFood'] = n, this['isVirus'] = r, this['isPlayerCell'] = l, this['shortMass'] = h, this['virMassShots'] = c, this['rescale'] = false, this['redrawNick'] = true, this['redrawMass'] = true, this['optimizedNames'] = false, this['optimizedMass'] = false, this['strokeNick'] = false, this['strokeMass'] = false, this['removed'] = false, this['redrawed'] = 0, this['time'] = 0, this['skin'] = null, this.pi2 = 2 * Math['PI'],
-                this.virusColor = null,
-                this.virusStroke = null,
-                this.nHeight = 6,
+            this['id'] = t; 
+			this['x'] = e; 
+			this['y'] = s; 
+			this['targetX'] = e;
+			this['targetY'] = s; 
+			this['color'] = a; 
+			this['oppColor'] = null;
+			this['size'] = o; 
+			this['targetSize'] = o;
+			this['alpha'] = 1;
+			this['nick'] = '';
+			this['targetNick'] = '';
+			this['nickCanvas'] = null;
+			this['mass'] = 0;
+			this['lastMass'] = 0;
+			this['kMass'] = 0; 
+			this['massCanvas'] = null;
+			this['massTxt'] = '';
+			this['margin'] = 0;
+			this['scale'] = 1;
+			this['nickScale'] = 1;
+			this['massScale'] = 1;
+			this['virMassScale'] = 3;
+			this['strokeScale'] = 1;
+			this['fontSize'] = 26;
+			this['nickSize'] = 26;
+			this['lastNickSize'] = 0;
+			this['massSize'] = 26;
+			this['virMassSize'] = 26;
+			this['nickStrokeSize'] = 3;
+			this['massStrokeSize'] = 3;
+			this['isFood'] = n;
+			this['isVirus'] = r;
+			this['isPlayerCell'] = l;
+			this['shortMass'] = h;
+			this['virMassShots'] = c;
+			this['rescale'] = false;
+			this['redrawNick'] = true;
+			this['redrawMass'] = true;
+			this['optimizedNames'] = false;
+			this['optimizedMass'] = false;
+			this['strokeNick'] = false;
+			this['strokeMass'] = false;
+			this['removed'] = false;
+			this['redrawed'] = 0;
+			this['time'] = 0;
+			this['skin'] = null;
+			this.pi2 = 2 * Math['PI'];			
+                this.virusColor = null;
+                this.virusStroke = null;
+                this.nHeight = 6;
                 this['update'] = function(t, e, i, s, o, a) {
-                    this['x'] = t, this['y'] = e, this['isVirus'] = s, this['isPlayerCell'] = o, this['setMass'](i), this['setNick'](a);
-                }, this['removeCell'] = function() {
+                    this['x'] = t;
+					this['y'] = e;
+					this['isVirus'] = s;
+					this['isPlayerCell'] = o;
+					this['setMass'](i);
+					this['setNick'](a);
+                };
+				this['removeCell'] = function() {
                     this['removed'] = true;
                     var t = M['cells']['indexOf'](this); - 1 != t ? (M['cells']['splice'](t, 1), v['virusesRange'] && -1 != (t = M['viruses'].indexOf(this)) && M['viruses']['splice'](t, 1)) : -1 != (t = M['food'].indexOf(this)) && M['food']['splice'](t, 1), -1 != (t = M['playerCells'].indexOf(this)) && (M['removePlayerCell'] = true, M['playerCells']['splice'](t, 1), -1 != (t = M['playerCellIDs'].indexOf(this['id'])) && M['playerCellIDs']['splice'](t, 1)), this['redrawed'] && M['removedCells'].push(this), delete M['indexedCells'][this['id']];
-                }, this['moveCell'] = function() {
+                };
+				this['moveCell'] = function() {
                     var t = (M['time'] - this['time']) / v['animation'];
                     if (t = t < 0 ? 0 : t > 1 ? 1 : t, this['x'] += (this['targetX'] - this['x']) * t, this['y'] += (this['targetY'] - this['y']) * t, this['size'] += (this['targetSize'] - this['size']) * t, this['alpha'] = t, this['removed']) {
                         if (1 == t) {
                             var e = M['removedCells'].indexOf(this); - 1 != e && M['removedCells']['splice'](e, 1);
                         }
                     } else this['time'] = M['time'];
-                }, this['isInView'] = function() {
+                };
+				this['isInView'] = function() {
                     return !(this['id'] <= 0) && !(this['x'] + this['size'] + 40 < M['viewX'] - M['canvasWidth'] / 2 / M['scale'] || this['y'] + this['size'] + 40 < M['viewY'] - M['canvasHeight'] / 2 / M['scale'] || this['x'] - this['size'] - 40 > M['viewX'] + M['canvasWidth'] / 2 / M['scale'] || this['y'] - this['size'] - 40 > M['viewY'] + M['canvasHeight'] / 2 / M['scale']);
-                }, this['setMass'] = function(t) {
+                };
+				this['setMass'] = function(t) {
                     return this['size'] = t, !(t <= 40) && (this['massCanvas'] ? (this['mass'] = ~~(t * t / 100), this['redrawMass'] = true, this['isVirus'] ? (this['virMassShots'] && this['mass'] < 200 && (this['mass'] = ~~((200 - this['mass']) / 14)), this['massTxt'] = this['mass']['toString'](), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this['massTxt'] = this['mass']['toString'](), this['mass'] <= 200 || (this['shortMass'] && this['mass'] >= 1000 ? (this['kMass'] = Math.round(this['mass'] / 100) / 10, this['massTxt'] = this['kMass'] + 'k', true) : (this['optimizedMass'] && (this['redrawMass'] = Math['abs']((this['mass'] - this['lastMass']) / this['mass']) >= 0.02 || this['rescale']), true)))) : (this['massCanvas'] = new irenderfromagario(), false));
-                }, this['setNick'] = function(t) {
+                };
+				this['setNick'] = function(t) {
                     return this['nick'] = t, !(!t || this['isVirus']) && (!!this['nickCanvas'] || (this['nickCanvas'] = new irenderfromagario(), false));
-                }, this['setScale'] = function(t, e, i, s, o) {
+                };
+				this['setScale'] = function(t, e, i, s, o) {
                     var a = Math['ceil'](10 * t) / 10;
                     this['rescale'] = false, this['scale'] != a && (this['scale'] = a, this['rescale'] = true), this['nickScale'] = e, this['massScale'] = i, this['virMassScale'] = s, this['strokeScale'] = o;
-                }, this['setFontSize'] = function() {
-                    this['isVirus'] ? this['massSize'] = Math['ceil'](this['virMassSize'] * this['scale'] * this['virMassScale']) : (this['fontSize'] = Math['max'](0.3 * this['size'], 0x1a) * this['scale'], this['nickSize'] = ~~(this['fontSize'] * this['nickScale']), this['massSize'] = ~~(0.5 * this['fontSize'] * this['massScale']), this['optimizedNames'] ? this['redrawNick'] = Math['abs']((this['nickSize'] - this['lastNickSize']) / this['nickSize']) >= 0.3 || this['rescale'] : this['redrawNick'] = true);
-                }, this['setStrokeSize'] = function() {
+                };
+				this['setFontSize'] = function() {
+                    this['isVirus'] ? this['massSize'] = Math['ceil'](this['virMassSize'] * this['scale'] * this['virMassScale']) : (this['fontSize'] = Math['max'](0.3 * this['size'], 26) * this['scale'], this['nickSize'] = ~~(this['fontSize'] * this['nickScale']), this['massSize'] = ~~(0.5 * this['fontSize'] * this['massScale']), this['optimizedNames'] ? this['redrawNick'] = Math['abs']((this['nickSize'] - this['lastNickSize']) / this['nickSize']) >= 0.3 || this['rescale'] : this['redrawNick'] = true);
+                };
+				this['setStrokeSize'] = function() {
                     this['strokeNick'] && !this['isVirus'] && (this['nickStrokeSize'] = ~~(0.1 * this['nickSize'] * this['strokeScale'])), this['strokeMass'] && (this['massStrokeSize'] = ~~(0.1 * this['massSize'] * this['strokeScale']));
-                }, this['setDrawing'] = function() {
+                };
+				this['setDrawing'] = function() {
                     this['optimizedNames'] = v['optimizedNames'], this['optimizedMass'] = v['optimizedMass'], this['shortMass'] = v['shortMass'], this['virMassShots'] = v['virMassShots'], this['strokeNick'] = v['namesStroke'], this['strokeMass'] = v['massStroke'];
-                }, this['setDrawingScale'] = function() {
+                };
+				this['setDrawingScale'] = function() {
                     this['setScale'](i['viewScale'], g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), this['setFontSize'](), this['setStrokeSize'](), this['margin'] = 0;
-                }, this['drawNick'] = function(mainCanvas) {
+                };
+				this['drawNick'] = function(mainCanvas) {
                     if (this['nick'] && this['nickCanvas'] && !this['isVirus']) {
                         var nickCanvas = this['nickCanvas'];
                         nickCanvas['setDrawing'](g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], this['strokeNick'], this['nickStrokeSize'], g['namesStrokeColor']), nickCanvas['setTxt'](this['nick']), this['redrawNick'] && (nickCanvas['setFontSize'](this['nickSize']), this['lastNickSize'] = this['nickSize']), nickCanvas['setScale'](this['scale']);
@@ -3863,7 +3926,8 @@ var core = function(t, e, i) {
                             mainCanvas.drawImage(nickImg, ~~(this.x - w / 2), ~~this.y - this.margin, w, h);
                         }
                     }
-                }, this["drawMass"] = function(context) {
+                };
+				this["drawMass"] = function(context) {
                     if (this["massCanvas"] && !(this["size"] <= 40)) {
                         var massCanvas = this["massCanvas"];
                         massCanvas["setDrawing"](g["massColor"], g["massFontFamily"], g["massFontWeight"], this["strokeMass"], this["massStrokeSize"], g["massStrokeColor"]);
@@ -3881,7 +3945,7 @@ var core = function(t, e, i) {
                             context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
                         }
                     }
-                },
+                };
                 this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
                     const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
                     const GROUPSIZE = this.pi2 / nAngelsOfVirus;
@@ -3895,7 +3959,7 @@ var core = function(t, e, i) {
                         ctxfx.lineTo(~~(shadowXpos + tileHeight * Math.sin(j)), ~~(shadowYpos + tileHeight * Math.cos(j)));
                     }
                     return ctxfx;
-                },
+                };
                 this["draw"] = function(style, canCreateDiscussions) {
                     if (!(M["hideSmallBots"] && this["size"] <= 36)) {
                         style["save"]();
@@ -4192,7 +4256,7 @@ var core = function(t, e, i) {
                             if (!this['accessTokenSent']) {
                                 i || (i = 102);
                                 for (var s = t.length, o = this.clientVersionString.length, a = [i, 8, 1, 18, s + o + 23, 1, 8, 10, 0x52, s + o + 18, 1, 8, e, 18, o + 8, 8, 5, 18, o], n = 0; n < o; n++) a.push(this.clientVersionString.charCodeAt(n));
-                                for (a.push(24, 0, 32, 0, 0x1a, s + 3, 1, 10, s, 1), n = 0; n < s; n++) a.push(t.charCodeAt(n));
+                                for (a.push(24, 0, 32, 0, 26, s + 3, 1, 10, s, 1), n = 0; n < s; n++) a.push(t.charCodeAt(n));
                                 a = new Uint8Array(a);
                                 var r = new DataView(a['buffer']);
                                 this.sendMessage(r);
