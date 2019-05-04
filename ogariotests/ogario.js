@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.104 MEGA TEST
+// v1.105 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4775,37 +4775,37 @@ var core = function(t, e, i) {
             M.sortCells();
             M.compareCells();
             this.ctx.clearRect(0x0, 0x0, this.canvasWidth, this.canvasHeight);
-            if (vS.showGrid) {
+            if (v.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }
             this.ctx.save();
             this.ctx.translate(this.canvasWidth / 0x2, this.canvasHeight / 0x2);
             this.ctx.scale(this.scale, this.scale);
             this.ctx.translate(-this.camX, -this.camY);
-            if (vS.showBgSectors) {
+            if (v.showBgSectors) {
                 this.drawSectors(this.ctx, M.mapOffsetFixed, g.sectorsX, g.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g.gridColor, g.sectorsColor, g.sectorsWidth, true);
             }
             if (M.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
             }
-            if (vS.showMapBorders) {
+            if (v.showMapBorders) {
                 var _0x6993ee = g.bordersWidth / 0x2;
                 this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, g.bordersColor, g.bordersWidth);
             }
 
 
-            if (vS.virusesRange) {
+            if (v.virusesRange) {
                 this.drawVirusesRange(this.ctx, M.viruses);
             }
             this.drawFood();
             if (M.play) {
-                if (vS.splitRange) {
+                if (v.splitRange) {
                     this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
                 }
-                if (vS.oppRings) {
+                if (v.oppRings) {
                     this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
                 }
-                if (vS.cursorTracking) {
+                if (v.cursorTracking) {
                     this.drawCursorTracking(this.ctx, M.playerCells, M.cursorX, M.cursorY);
                 }
             }
@@ -4817,11 +4817,11 @@ var core = function(t, e, i) {
             }
 
 
-            vS.jellyPhisycs&&M.updateQuadtree(M.cells);//
+            v.jellyPhisycs&&M.updateQuadtree(M.cells);//
 
             for (i = 0x0; i < M.cells.length; i++) {
 
-                if(vS.jellyPhisycs){
+                if(v.jellyPhisycs){
                     M.cells[i].updateNumPoints();
                     M.cells[i].movePoints();
                 }
