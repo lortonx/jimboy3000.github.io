@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.103 MEGA TEST
+// v1.104 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1750,6 +1750,8 @@ var core = function(t, e, i) {
                 'color': g['mainColor']
             },
             v = {
+				'jellyPhisycs':false,
+				'virusSound':true,				
                 'quickResp': true,
                 'autoResp': false,
                 'autoZoom': false,
@@ -4773,37 +4775,37 @@ var core = function(t, e, i) {
             M.sortCells();
             M.compareCells();
             this.ctx.clearRect(0x0, 0x0, this.canvasWidth, this.canvasHeight);
-            if (M_SETTINGS.showGrid) {
+            if (vS.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }
             this.ctx.save();
-            this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+            this.ctx.translate(this.canvasWidth / 0x2, this.canvasHeight / 0x2);
             this.ctx.scale(this.scale, this.scale);
             this.ctx.translate(-this.camX, -this.camY);
-            if (M_SETTINGS.showBgSectors) {
+            if (vS.showBgSectors) {
                 this.drawSectors(this.ctx, M.mapOffsetFixed, g.sectorsX, g.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g.gridColor, g.sectorsColor, g.sectorsWidth, true);
             }
             if (M.gameMode === ':battleroyale') {
                 this.drawBattleArea(this.ctx);
             }
-            if (M_SETTINGS.showMapBorders) {
-                var _0x6993ee = g.bordersWidth / 2;
+            if (vS.showMapBorders) {
+                var _0x6993ee = g.bordersWidth / 0x2;
                 this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, g.bordersColor, g.bordersWidth);
             }
 
 
-            if (M_SETTINGS.virusesRange) {
+            if (vS.virusesRange) {
                 this.drawVirusesRange(this.ctx, M.viruses);
             }
             this.drawFood();
             if (M.play) {
-                if (M_SETTINGS.splitRange) {
+                if (vS.splitRange) {
                     this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
                 }
-                if (M_SETTINGS.oppRings) {
+                if (vS.oppRings) {
                     this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
                 }
-                if (M_SETTINGS.cursorTracking) {
+                if (vS.cursorTracking) {
                     this.drawCursorTracking(this.ctx, M.playerCells, M.cursorX, M.cursorY);
                 }
             }
@@ -4815,11 +4817,11 @@ var core = function(t, e, i) {
             }
 
 
-            M_SETTINGS.jellyPhisycs&&M.updateQuadtree(M.cells);//
+            vS.jellyPhisycs&&M.updateQuadtree(M.cells);//
 
             for (i = 0x0; i < M.cells.length; i++) {
 
-                if(M_SETTINGS.jellyPhisycs){
+                if(vS.jellyPhisycs){
                     M.cells[i].updateNumPoints();
                     M.cells[i].movePoints();
                 }
