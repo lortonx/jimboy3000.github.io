@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.99 MEGA TEST
+// v1.102 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3977,6 +3977,20 @@ var core = function(t, e, i) {
         }
         window.legendmod1 = ogarbasicassembly;
         var M = {
+				'quadtree':null,
+				updateQuadtree: function(cells) {
+				var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
+				var h = ogarfooddrawer.canvasHeight / ogarfooddrawer.scale;
+				var x = (M.viewX - w / 2);
+				var y = (M.viewY - h / 2);
+				this.quadtree = new PointQuadTree(x, y, w, h, 32);
+				for (var i = 0; i < cells.length; ++i) {
+					var cell = cells[i];
+					for (var n = 0; n < cell.points.length; ++n) {
+						this.quadtree.insert(cell.points[n]);
+					}
+				}
+			}			
             'ws': null,
             'socket': null,
             'protocolKey': null,
@@ -4732,8 +4746,12 @@ var core = function(t, e, i) {
                 'getZoom': function() {
                     return Math['max'](this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
                 },
-                'renderFrame': function() {
-                    for (M['time'] = Date['now'](), e = 0; e < M['cells'].length; e++) M['cells'][e]['moveCell']();
+/*                'renderFrame': function() {
+                    //for (M['time'] = Date['now'](), e = 0; e < M['cells'].length; e++) M['cells'][e]['moveCell']();
+				    M.time = Date.now();
+						for (i = 0; i < M.cells.length; i++) {
+							M.cells[i].moveCell();
+						}	
                     if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this['scale'], this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx']['scale'](this['scale'], this['scale']), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M['gameMode'] && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
                         var t = g['bordersWidth'] / 2;
                         this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M['mapMinX'] - t, M['mapMinY'] - t, M['mapMaxX'] + t, M['mapMaxY'] + t, g['bordersColor'], g['bordersWidth']);
@@ -4743,7 +4761,144 @@ var core = function(t, e, i) {
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], true);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
                     this['ctx']['restore'](), ':teams' === M['gameMode'] && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
-                },
+                }, */
+        'renderFrame': function () {
+            //this.ctx.start2D();
+            M.time = Date.now();
+            for (i = 0x0; i < M.cells.length; i++) {
+                M.cells[i].moveCell();
+            }
+            this.setView();
+            M.getCursorPosition();
+            M.sortCells();
+            M.compareCells();
+            this.ctx.clearRect(0x0, 0x0, this.canvasWidth, this.canvasHeight);
+            if (M_SETTINGS.showGrid) {
+                this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
+            }
+            this.ctx.save();
+            this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
+            this.ctx.scale(this.scale, this.scale);
+            this.ctx.translate(-this.camX, -this.camY);
+            if (M_SETTINGS.showBgSectors) {
+                this.drawSectors(this.ctx, M.mapOffsetFixed, g.sectorsX, g.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g.gridColor, g.sectorsColor, g.sectorsWidth, true);
+            }
+            if (M.gameMode === ':battleroyale') {
+                this.drawBattleArea(this.ctx);
+            }
+            if (M_SETTINGS.showMapBorders) {
+                var _0x6993ee = g.bordersWidth / 2;
+                this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, g.bordersColor, g.bordersWidth);
+            }
+
+
+            if (M_SETTINGS.virusesRange) {
+                this.drawVirusesRange(this.ctx, M.viruses);
+            }
+            this.drawFood();
+            if (M.play) {
+                if (M_SETTINGS.splitRange) {
+                    this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
+                }
+                if (M_SETTINGS.oppRings) {
+                    this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
+                }
+                if (M_SETTINGS.cursorTracking) {
+                    this.drawCursorTracking(this.ctx, M.playerCells, M.cursorX, M.cursorY);
+                }
+            }
+
+            this.drawGhostCells();
+            
+            for (var i = 0x0; i < M.removedCells.length; i++) {
+                M.removedCells[i].draw(this.ctx, true);
+            }
+
+
+            M_SETTINGS.jellyPhisycs&&M.updateQuadtree(M.cells);//
+
+            for (i = 0x0; i < M.cells.length; i++) {
+
+                if(M_SETTINGS.jellyPhisycs){
+                    M.cells[i].updateNumPoints();
+                    M.cells[i].movePoints();
+                }
+
+                M.cells[i].draw(this.ctx);
+
+
+                if(ogarfooddrawer.LMB && this.pointInCircle(M.cursorX, M.cursorY, M.cells[i].x, M.cells[i].y, M.cells[i].size)){
+                   M.selected = M.cells[i].id
+                   //this.drawRing(this.ctx,M.cells[i].x,M.cells[i].y,M.cells[i].size,0.75,'#ffffff')
+                }
+            }
+            M.indexedCells[M.selected] && this.drawRing(this.ctx,
+                M.indexedCells[M.selected].x,
+                M.indexedCells[M.selected].y,
+                M.indexedCells[M.selected].size,
+            0.75,'#ffffff')
+            
+            if(ogarfooddrawer.RMB && M.indexedCells[M.selected] && M.playerCellIDs.length){
+                var index = M.selectBiggestCell ? M.playerCells.length - 0x1 : 0x0;
+                //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0x0, this.pi2, false);
+                if(M.playerCells[index] == undefined) return;
+                var xc = M.playerCells[index].targetX//.x
+                var yc = M.playerCells[index].targetY//.y
+                
+                var x = M.indexedCells[M.selected].targetX//.x
+                var y = M.indexedCells[M.selected].targetY//.y
+                
+                var a = xc - x
+                var b = yc - y
+                var distance = Math.sqrt( a*a + b*b ) - (M.indexedCells[M.selected].size+M.playerCells[index].size)
+                
+                var ang = Math.atan2(y - yc, x - xc);
+             
+                M.cursorX= xc +(Math.cos(ang)*distance)
+                M.cursorY= yc +(Math.sin(ang)*distance)
+                M.sendPosition()
+                //console.log(xc,yc,x,y,M.cursorX,M.cursorY)
+                //Math.deg(ang)
+
+                
+                /*var xc = M.playerCells[index].x,
+                    yc = M.playerCells[index].y,*/
+                //R = 100000000,
+                /*ang = Math.atan2(M.indexedCells[M.selected].y - yc, M.indexedCells[M.selected].x - xc);
+                M.cursorX= Math.cos(ang)
+                M.cursorY= Math.sin(ang)*/
+                //Math.deg(ang)
+
+                //M.cursorX = M.indexedCells[M.selected].x
+                //M.cursorY = M.indexedCells[M.selected].y
+            }
+
+
+            this.ctx.restore();
+            if (M.gameMode === ':teams') {
+                if (this.pieChart && this.pieChart.width) {
+                    this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 0xa, 0xa);
+                }
+            }
+            //this.ctx.finish2D();
+        },
+        pointInCircle: function(x, y, cx, cy, radius) {
+            var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+            return distancesquared <= radius * radius;
+        },
+        drawRing : function (ctx, x, y, size, alpha, color) {
+            ctx.lineWidth = 20;
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = color;
+                ctx.beginPath();
+                ctx.arc(x, y, size-10, 0x0, this.pi2, false);
+                ctx.closePath();
+                ctx.stroke();
+            
+            ctx.globalAlpha = 1;
+        },
+
+		
                 'drawGrid': function(t, e, i, s, o, a) {
                     var n = e / s;
                     var r = i / s;
