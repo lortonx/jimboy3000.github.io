@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.110 MEGA TEST
+// v1.111 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3982,18 +3982,56 @@ var core = function(t, e, i) {
 					this.setMass(i);
 					this.setNick(a);
                 };
-				this.removeCell = function() {
-                    this.removed = true;
-                    var t = M.cells.indexOf(this); - 1 != t ? (M.cells.splice(t, 1), v.virusesRange && -1 != (t = M.viruses.indexOf(this)) && M.viruses.splice(t, 1)) : -1 != (t = M.food.indexOf(this)) && M.food.splice(t, 1), -1 != (t = M.playerCells.indexOf(this)) && (M.removePlayerCell = true, M.playerCells.splice(t, 1), -1 != (t = M.playerCellIDs.indexOf(this.id)) && M.playerCellIDs.splice(t, 1)), this.redrawed && M.removedCells.push(this), delete M.indexedCells[this.id];
-                };
-				this.moveCell = function() {
-                    var t = (M.time - this.time) / v.animation;
-                    if (t = t < 0 ? 0 : t > 1 ? 1 : t, this.x += (this.targetX - this.x) * t, this.y += (this.targetY - this.y) * t, this.size += (this.targetSize - this.size) * t, this.alpha = t, this.removed) {
-                        if (1 == t) {
-                            var e = M.removedCells.indexOf(this); - 1 != e && M.removedCells.splice(e, 1);
-                        }
-                    } else this.time = M.time;
-                };
+        this.removeCell = function () {
+            this.removed = true;
+            var t = M.cells.indexOf(this);
+            if (t != -1) {
+                M.cells.splice(t, 1);
+                if (v.virusesRange) {
+                    t = M.viruses.indexOf(this);
+                    if (t != -1) {
+                        M.viruses.splice(t, 1);
+                    }
+                }
+            } else {
+                t = M.food.indexOf(this);
+                if (t != -1) {
+                    M.food.splice(t, 1);
+                }
+            }
+            t = M.playerCells.indexOf(this);
+            if (t != -1) {
+                M.removePlayerCell = true;
+                M.playerCells.splice(t, 1);
+                t = M.playerCellIDs.indexOf(this.id);
+                if (t != -1) {
+                    M.playerCellIDs.splice(t, 1);
+                }
+            }
+            if (this.redrawed) {
+                M.removedCells.push(this);
+            }
+            delete M.indexedCells[this.id];
+        };
+        this.moveCell = function () {
+            var t = M.time - this.time;
+            var t1 = t / v.animation;
+            t1 = t1 < 0 ? 0 : t1 > 1 ? 1 : t1;
+            this.x += (this.targetX - this.x) * t1;
+            this.y += (this.targetY - this.y) * t1;
+            this.size += (this.targetSize - this.size) * t1;
+            this.alpha = t1;
+            if (!this.removed) {
+                this.time = M.time;
+                return;
+            }
+            if (t1 == 1) {
+                var t2 = M.removedCells.indexOf(this);
+                if (t2 != -1) {
+                    M.removedCells.splice(t2, 1);
+                }
+            }
+        };
 				this.isInView = function() {
                     return !(this.id <= 0) && !(this.x + this.size + 40 < M.viewX - M.canvasWidth / 2 / M.scale || this.y + this.size + 40 < M.viewY - M.canvasHeight / 2 / M.scale || this.x - this.size - 40 > M.viewX + M.canvasWidth / 2 / M.scale || this.y - this.size - 40 > M.viewY + M.canvasHeight / 2 / M.scale);
                 };
