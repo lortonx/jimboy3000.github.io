@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.107 MEGA TEST
+// v1.108 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4769,13 +4769,13 @@ var core = function(t, e, i) {
             M.sendAction(t);
         };
         var ogarfooddrawer = {
-                this.canvas = null;
-                this.ctx = null;
-                this.canvasWidth = 0;
-                this.canvasHeight = 0;
-                this.camX = 0;
-                this.camY = 0;
-                this.scale = 1;
+                canvas = null;
+                ctx = null;
+                canvasWidth = 0;
+                canvasHeight = 0;
+                camX = 0;
+                camY = 0;
+                scale = 1;
                 this.fpsLastRequest = null;
                 this.renderedFrames = 0;
                 this.fps = 0;
