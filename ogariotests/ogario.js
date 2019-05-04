@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.111 MEGA TEST
+// v1.112 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4035,41 +4035,118 @@ var core = function(t, e, i) {
 				this.isInView = function() {
                     return !(this.id <= 0) && !(this.x + this.size + 40 < M.viewX - M.canvasWidth / 2 / M.scale || this.y + this.size + 40 < M.viewY - M.canvasHeight / 2 / M.scale || this.x - this.size - 40 > M.viewX + M.canvasWidth / 2 / M.scale || this.y - this.size - 40 > M.viewY + M.canvasHeight / 2 / M.scale);
                 };
-				this.setMass = function(t) {
-                    return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
-                };
-				this.setNick = function(t) {
-                    return this.nick = t, !(!t || this.isVirus) && (!!this.nickCanvas || (this.nickCanvas = new irenderfromagario(), false));
-                };
-				this.setScale = function(t, e, i, s, o) {
-                    var a = Math.ceil(10 * t) / 10;
-                    this.rescale = false, this.scale != a && (this.scale = a, this.rescale = true), this.nickScale = e, this.massScale = i, this.virMassScale = s, this.strokeScale = o;
-                };
-				this.setFontSize = function() {
-                    this.isVirus ? this.massSize = Math.ceil(this.virMassSize * this.scale * this.virMassScale) : (this.fontSize = Math.max(0.3 * this.size, 26) * this.scale, this.nickSize = ~~(this.fontSize * this.nickScale), this.massSize = ~~(0.5 * this.fontSize * this.massScale), this.optimizedNames ? this.redrawNick = Math.abs((this.nickSize - this.lastNickSize) / this.nickSize) >= 0.3 || this.rescale : this.redrawNick = true);
-                };
-				this.setStrokeSize = function() {
-                    this.strokeNick && !this.isVirus && (this.nickStrokeSize = ~~(0.1 * this.nickSize * this.strokeScale)), this.strokeMass && (this.massStrokeSize = ~~(0.1 * this.massSize * this.strokeScale));
-                };
-				this.setDrawing = function() {
-                    this.optimizedNames = v.optimizedNames, this.optimizedMass = v.optimizedMass, this.shortMass = v.shortMass, this.virMassShots = v.virMassShots, this.strokeNick = v.namesStroke, this.strokeMass = v.massStroke;
-                };
-				this.setDrawingScale = function() {
-                    this.setScale(i.viewScale, g.namesScale, g.massScale, g.virMassScale, g.strokeScale), this.setFontSize(), this.setStrokeSize(), this.margin = 0;
-                };
-				this.drawNick = function(mainCanvas) {
-                    if (this.nick && this.nickCanvas && !this.isVirus) {
-                        var nickCanvas = this.nickCanvas;
-                        nickCanvas.setDrawing(g.namesColor, g.namesFontFamily, g.namesFontWeight, this.strokeNick, this.nickStrokeSize, g.namesStrokeColor), nickCanvas.setTxt(this.nick), this.redrawNick && (nickCanvas.setFontSize(this.nickSize), this.lastNickSize = this.nickSize), nickCanvas.setScale(this.scale);
-                        const nickImg = nickCanvas.drawTxt(),
-                            w = ~~(nickImg.width / this.scale),
-                            h = ~~(nickImg.height / this.scale);
-                        this.margin = ~~(h / 2);
-                        if (w > 1 && h > 1) {
-                            mainCanvas.drawImage(nickImg, ~~(this.x - w / 2), ~~this.y - this.margin, w, h);
-                        }
-                    }
-                };
+        this.setMass = function (t) {
+            this.size = t;
+            if (t <= 40) {
+                return false;
+            }
+            if (!this.massCanvas) {
+                this.massCanvas = new _0x1b0494();
+                return false;
+            }
+            this.mass = ~~(t * t / 100);
+            this.redrawMass = true;
+            if (this.isVirus) {
+                if (this.virMassShots && this.mass < 200) {
+                    this.mass = ~~((200 - this.mass) / 14);
+                    //M00
+                    if(v.virusSound && this.lastMass && this.mass < this.lastMass) {MapChatUiCtrl.playSound(soundFood)}
+                    this.lastMass = this.mass
+                }
+                this.massTxt = this.mass.toString();
+                return true;
+            }
+            this.massTxt = this.mass.toString();
+            if (this.mass <= 200) {
+                return true;
+            }
+            if (this.shortMass && this.mass >= 1000) {
+                this.kMass = Math.round(this.mass / 100) / 10;
+                this.massTxt = this.kMass + 'k';
+                return true;
+            }
+            if (this.optimizedMass) {
+                this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale;
+            }
+            return true;
+        };
+        this.setNick = function (t) {
+            this.nick = t;
+            if (!t || this.isVirus) {
+                return false;
+            }
+            if (!this.nickCanvas) {
+                this.nickCanvas = new irenderfromagario();
+                return false;
+            }
+            return true;
+        };
+        this.setScale = function (t, e, i, s, o) {
+            var _0xc322d1 = Math.ceil(t * 10) / 10;
+            this.rescale = false;
+            if (this.scale != _0xc322d1) {
+                this.scale = _0xc322d1;
+                this.rescale = true;
+            }
+            this.nickScale = e;
+            this.massScale = i;
+            this.virMassScale = s;
+            this.strokeScale = o;
+        };
+        this.setFontSize = function () {
+            if (this.isVirus) {
+                this.massSize = Math.ceil(this.virMassSize * this.scale * this.virMassScale);
+                return;
+            }
+            this.fontSize = Math.max(this.size * 0.3, 26) * this.scale;
+            this.nickSize = ~~(this.fontSize * this.nickScale);
+            this.massSize = ~~(this.fontSize * 0.5 * this.massScale);
+            if (this.optimizedNames) {
+                this.redrawNick = Math.abs((this.nickSize - this.lastNickSize) / this.nickSize) >= 0.3 || this.rescale;
+                return;
+            }
+            this.redrawNick = true;
+        };
+        this.setStrokeSize = function () {
+            if (this.strokeNick && !this.isVirus) {
+                this.nickStrokeSize = ~~(this.nickSize * 0.1 * this.strokeScale);
+            }
+            if (this.strokeMass) {
+                this.massStrokeSize = ~~(this.massSize * 0.1 * this.strokeScale);
+            }
+        };
+        this.setDrawing = function () {
+            this.optimizedNames = v.optimizedNames;
+            this.optimizedMass = v.optimizedMass;
+            this.shortMass = v.shortMass;
+            this.virMassShots = v.virMassShots;
+            this.strokeNick = v.namesStroke;
+            this.strokeMass = v.massStroke;
+        };
+        this.setDrawingScale = function () {
+            this.setScale(i.viewScale, g.namesScale, g.massScale, g.virMassScale, g.strokeScale);
+            this.setFontSize();
+            this.setStrokeSize();
+            this.margin = 0;
+        };
+        this.drawNick = function (_0x30d2d1) {
+            if (!this.nick || !this.nickCanvas || this.isVirus) {
+                return;
+            }
+            var nickCanvas = this.nickCanvas;
+            nickCanvas.setDrawing(g.namesColor, g.namesFontFamily, g.namesFontWeight, this.strokeNick, this.nickStrokeSize, g.namesStrokeColor);
+            nickCanvas.setTxt(this.nick);
+            if (this.redrawNick) {
+                nickCanvas.setFontSize(this.nickSize);
+                this.lastNickSize = this.nickSize;
+            }
+            nickCanvas.setScale(this.scale);
+            var nickImg = nickCanvas.drawTxt();
+            var w = ~~(nickImg.width / this.scale);
+            var h = ~~(nickImg.height / this.scale);
+            this.margin = ~~(h / 2);
+            _0x30d2d1.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
+        };
 				this.drawMass = function(context) {
                     if (this.massCanvas && !(this.size <= 40)) {
                         var massCanvas = this.massCanvas;
