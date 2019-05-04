@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.112 MEGA TEST
+// v1.113 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4041,7 +4041,7 @@ var core = function(t, e, i) {
                 return false;
             }
             if (!this.massCanvas) {
-                this.massCanvas = new _0x1b0494();
+                this.massCanvas = new irenderfromagario();
                 return false;
             }
             this.mass = ~~(t * t / 100);
