@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130b MEGA TEST
+// v1.130a MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3843,9 +3843,6 @@ var core = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-			this.points = [];
-			this.pointsVel = [];
-			this.maxPointRad = 0;			
 			cimg2 = new Image;
             cimg2.src = g.commanderImage2;
 			
@@ -4234,19 +4231,7 @@ var core = function(t, e, i) {
                         var value = style.globalAlpha;
                         var s = false;
                         var y = this.isFood ? this.size + g.foodSize : this.size;
-						if (v.jellyPhisycs && this.points.length) {
-							var point = this.points[0];
-							draw.moveTo(point.x, point.y);
-							for (var i = 0; i < this.points.length; ++i) {
-								var point = this.points[i];
-								draw.lineTo(point.x, point.y);
-							}
-						}						
-                        else{
-							style.beginPath();
-							style.arc(this.x, this.y, y, 0, this.pi2, false);
-							style.closePath();
-							this.isFood;
+                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
                             return style.fillStyle = this.color, style.fill(), void style.restore();
                         }
                         if (this.isVirus) {
