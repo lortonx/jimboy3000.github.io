@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.131 MEGA TEST
+// v1.132 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -5142,10 +5142,10 @@ var core = function(t, e, i) {
             }
 
 
-            /*v.jellyPhisycs&&M.updateQuadtree(M.cells);
+            //v.jellyPhisycs&&M.updateQuadtree(M.cells);
 
             for (i = 0; i < M.cells.length; i++) {
-
+/*
                 if(v.jellyPhisycs){
                     M.cells[i].updateNumPoints();
                     M.cells[i].movePoints();
