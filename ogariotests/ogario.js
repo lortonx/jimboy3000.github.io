@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130a MEGA TEST
+// v1.131 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3845,6 +3845,8 @@ var core = function(t, e, i) {
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
 			cimg2 = new Image;
             cimg2.src = g.commanderImage2;
+			cimg5 = new Image;
+            cimg5.src = g.commanderImage5;
 			
             this.id = t; 
 			this.x = e; 
@@ -4261,16 +4263,27 @@ var core = function(t, e, i) {
                             s = false;
                         }
                         var node = null;
-                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && (((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
+                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && 
+						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
+						
 						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
+						
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
-						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀Shere Khan")) && (style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
+						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
+						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀Shere Khan")) && 
+						(style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						//(M.cAngle += .007), console.log(M.cAngle),
 						//style.rotate(M.cAngle1),
 						s && (style.globalAlpha = value, s = false)), 
-						v.teammatesInd && !this.isPlayerCell && y <= 800 && window.teammatenicks && (window.teammatenicks.includes(this.targetNick)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), v.noNames && !v.showMass || canCreateDiscussions) {
+						
+						v.teammatesInd && !this.isPlayerCell && y <= 800 && 
+						window.teammatenicks && 
+						(window.teammatenicks.includes(this.targetNick)) && 
+						ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), 
+						
+						v.noNames && !v.showMass || canCreateDiscussions) {
 
 //                            y <= 200 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), v.noNames && !v.showMass || canCreateDiscussions) {
 
