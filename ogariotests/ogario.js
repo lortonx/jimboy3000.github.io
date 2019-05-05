@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.119 MEGA TEST
+// v1.120 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4056,13 +4056,18 @@ var core = function(t, e, i) {
 				if(this.virMassShots){
 					if(this.mass <= 200){
 					this.mass = ~~((200 - this.mass) / 14);					
-					this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor;						
+					this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor;	
+					//
+                    if(v.virusSound && this.lastMass && this.mass < this.lastMass) {MapChatUiCtrl.playSound(soundFood)}
+                    this.lastMass = this.mass;					
 					}
 					else if (this.mass > 220){
 					this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor;
+					//
+                    if(v.virusSound && this.lastMass && this.mass < this.lastMass) {MapChatUiCtrl.playSound(soundFood)}
+                    this.lastMass = this.mass;					
 					}					
-				}	
-			return true;		
+				}																
 			}
             if (this.shortMass && this.mass >= 1000) {
                 this.kMass = Math.round(this.mass / 100) / 10;
