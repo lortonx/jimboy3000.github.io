@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130 MEGA TEST
+// v1.131 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3833,7 +3833,10 @@ var core = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-			cimg2 = new Image;
+        this.points = [];
+        this.pointsVel = [];
+        this.maxPointRad = 0;
+		cimg2 = new Image;
             cimg2.src = g.commanderImage2;
 			
             this.id = t; 
@@ -4221,10 +4224,20 @@ var core = function(t, e, i) {
                         var value = style.globalAlpha;
                         var s = false;
                         var y = this.isFood ? this.size + g.foodSize : this.size;
-                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
-                            return style.fillStyle = this.color, style.fill(), void style.restore();
-                        }
-                        if (this.isVirus) {
+						
+            //var jelly = true
+
+            style.beginPath();
+            if(this.isVirus) draw.lineJoin = "miter"
+            if (v.jellyPhisycs && this.points.length) {
+                var point = this.points[0];
+                draw.moveTo(point.x, point.y);
+                for (var i = 0; i < this.points.length; ++i) {
+                    var point = this.points[i];
+                    draw.lineTo(point.x, point.y);
+                }
+            }
+			if (this.isVirus) {
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
                         }
@@ -4291,7 +4304,7 @@ var core = function(t, e, i) {
         }
         window.legendmod1 = ogarbasicassembly;
         var M = {
-				'quadtree':null,
+/*				'quadtree':null,
 				updateQuadtree: function(cells) {
 				var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
 				var h = ogarfooddrawer.canvasHeight / ogarfooddrawer.scale;
@@ -4304,7 +4317,7 @@ var core = function(t, e, i) {
 						this.quadtree.insert(cell.points[n]);
 					}
 				}
-			},			
+			},		*/	
             'ws': null,
             'socket': null,
             'protocolKey': null,
@@ -5129,15 +5142,15 @@ var core = function(t, e, i) {
             }
 
 
-            v.jellyPhisycs&&M.updateQuadtree(M.cells);//
+            /*v.jellyPhisycs&&M.updateQuadtree(M.cells);
 
-            for (i = 0x0; i < M.cells.length; i++) {
+            for (i = 0; i < M.cells.length; i++) {
 
                 if(v.jellyPhisycs){
                     M.cells[i].updateNumPoints();
                     M.cells[i].movePoints();
                 }
-
+*/
                 M.cells[i].draw(this.ctx);
 
 
