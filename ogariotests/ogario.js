@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.133 MEGA TEST
+// v1.132 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4228,7 +4228,7 @@ var core = function(t, e, i) {
             //var jelly = true
 
             style.beginPath();
-            if(this.isVirus) stye.lineJoin = "miter"
+            if(this.isVirus) style.lineJoin = "miter"
             if (v.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
