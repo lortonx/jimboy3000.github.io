@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.114 MEGA TEST
+// v1.115 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4035,9 +4035,24 @@ var core = function(t, e, i) {
 				this.isInView = function() {
                     return !(this.id <= 0) && !(this.x + this.size + 40 < M.viewX - M.canvasWidth / 2 / M.scale || this.y + this.size + 40 < M.viewY - M.canvasHeight / 2 / M.scale || this.x - this.size - 40 > M.viewX + M.canvasWidth / 2 / M.scale || this.y - this.size - 40 > M.viewY + M.canvasHeight / 2 / M.scale);
                 };
+				/*
 				this.setMass = function(t) {
                     return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
                 };
+				*/
+				this.setMass = function(t) {
+					this.size = t;
+					if (t <= 40) {
+						return false;
+					}
+					if (!this.massCanvas) {
+						this.massCanvas = new irenderfromagario();
+					return false;
+            }			
+			this.mass = ~~(t * t / 100); 
+			this.redrawMass = true;
+			this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)));
+                };			
         this.setNick = function (t) {
             this.nick = t;
             if (!t || this.isVirus) {
