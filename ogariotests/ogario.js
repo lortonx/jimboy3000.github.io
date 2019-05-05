@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.137 MEGA TEST
+// v1.138 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4241,6 +4241,9 @@ var core = function(t, e, i) {
                             return style.fillStyle = this.color, style.fill(), void style.restore();
                         }
                         if (this.isVirus) {
+							if (dyinglight1load == "yes" ) {
+							style.drawImage(cimgDyingLight, this.x - this.size, this.y - this.size, 2 * this.size, 2 * this.size);
+							}							
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
                         }
@@ -5149,6 +5152,7 @@ var core = function(t, e, i) {
                 }
                 if (v.oppRings) {
                     this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
+					
                 }
                 if (v.cursorTracking) {
                     this.drawCursorTracking(this.ctx, M.playerCells, M.cursorX, M.cursorY);
