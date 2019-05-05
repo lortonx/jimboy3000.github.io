@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.135 MEGA TEST
+// v1.136 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4294,7 +4294,7 @@ var core = function(t, e, i) {
 
                             style.restore();
                         } else {
-							if (dyinglight1load == "yes") {
+							if (dyinglight1load == "yes" && node!=null) {
 							style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
 							}
 							
