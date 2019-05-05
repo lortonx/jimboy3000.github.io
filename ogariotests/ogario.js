@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.132 MEGA TEST
+// v1.130a MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -2468,13 +2468,23 @@ var core = function(t, e, i) {
                         "z-index": "1",
                         "opacity": "0",
                         "bottom": "-100px"
-                    }), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), this["addOptions"]([], "animationGroup"), this["addOptions"](["autoZoom"], "zoomGroup"), this["addOptions"](["quickResp", "autoResp"], "respGroup"), this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass",
-                        "virMassShots", "massStroke"
-                    ], "massGroup"), this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), this["addOptions"](["showGrid", "showBgSectors", "showMapBorders",
-                        "borderGlow"
-                    ], "gridGroup"), this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), this["addOptions"](["mouseSplit", "mouseFeed",
-                        "mouseInvert"
-                    ], "mouseGroup"), this["addOptions"](["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"), this["addOptions"](["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"), this["protocolMode"] || (this["addOptions"](["blockPopups"], "extrasGroup"), s("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"), s(".skinsGroup h5")["after"]('<label class="noSkins">' + h["noSkins"] +
+                    }), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), 
+					this["addOptions"]([], "animationGroup"), 
+					this["addOptions"](["autoZoom"], "zoomGroup"), 
+					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
+					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
+					this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSoundurl"], "massGroup"),
+					this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), 
+					this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), 
+					this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), 
+					this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"), 
+					this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), 
+					this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), 
+					this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), 
+					this["addOptions"](["mouseSplit", "mouseFeed","mouseInvert"], "mouseGroup"), 
+					this["addOptions"](["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"), 
+					this["addOptions"](["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"), 
+					this["protocolMode"] || (this["addOptions"](["blockPopups"], "extrasGroup"), s("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"), s(".skinsGroup h5")["after"]('<label class="noSkins">' + h["noSkins"] +
                         " </label>"), s("#noSkins").appendTo(s(".noSkins")), s(".transparencyGroup h5")["after"]('<label class="noColors">' + h["noColors"] + " </label>"), s("#noColors").appendTo(s(".noColors")), s(".extrasGroup h5")["after"]('<label class="skipStats">' + h["skipStats"] + " </label>"), s("#skipStats").appendTo(s(".skipStats")), s(".skipStats")["after"]('<label class="showQuest">' + h["showQuest"] + " </label>"), s("#showQuest").appendTo(s(".showQuest")), s("#options").remove(), s("#settingsChoice").appendTo(s(".extrasGroup")).addClass("select-wrapper")),
                     this["addSliderBox"](".animationGroup", "animation", 20, 200, 1), this["addSliderBox"](".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01), s("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + h["exportImport"] + "</button>"), s("#og-settings").append('<div class="restore-settings"><a href="#">' + h["restoreSettings"] + "</a></div>"), s("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + h["thanks"] + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' +
                         h["playlist"] + "</a></span></div>"), s("#music").append('<div class="agario-panel sounds-panel"><h5 class="menu-main-color">' + h["sounds"] + "</h5></div>"), s("#music").append('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">Legend Clan (tag: \u24c2)</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>'), this["addInputBox"](".sounds-panel", "messageSound", "Sound URL", "setMessageSound"),
@@ -3833,10 +3843,7 @@ var core = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-        this.points = [];
-        this.pointsVel = [];
-        this.maxPointRad = 0;
-		cimg2 = new Image;
+			cimg2 = new Image;
             cimg2.src = g.commanderImage2;
 			
             this.id = t; 
@@ -4224,20 +4231,10 @@ var core = function(t, e, i) {
                         var value = style.globalAlpha;
                         var s = false;
                         var y = this.isFood ? this.size + g.foodSize : this.size;
-						
-            //var jelly = true
-
-            style.beginPath();
-            if(this.isVirus) style.lineJoin = "miter"
-            if (v.jellyPhisycs && this.points.length) {
-                var point = this.points[0];
-                style.moveTo(point.x, point.y);
-                for (var i = 0; i < this.points.length; ++i) {
-                    var point = this.points[i];
-                    style.lineTo(point.x, point.y);
-                }
-            }
-			if (this.isVirus) {
+                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
+                            return style.fillStyle = this.color, style.fill(), void style.restore();
+                        }
+                        if (this.isVirus) {
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
                         }
@@ -4304,7 +4301,7 @@ var core = function(t, e, i) {
         }
         window.legendmod1 = ogarbasicassembly;
         var M = {
-/*				'quadtree':null,
+				'quadtree':null,
 				updateQuadtree: function(cells) {
 				var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
 				var h = ogarfooddrawer.canvasHeight / ogarfooddrawer.scale;
@@ -4317,7 +4314,7 @@ var core = function(t, e, i) {
 						this.quadtree.insert(cell.points[n]);
 					}
 				}
-			},		*/	
+			},			
             'ws': null,
             'socket': null,
             'protocolKey': null,
@@ -5142,15 +5139,15 @@ var core = function(t, e, i) {
             }
 
 
-            //v.jellyPhisycs&&M.updateQuadtree(M.cells);
+            v.jellyPhisycs&&M.updateQuadtree(M.cells);//
 
-            for (i = 0; i < M.cells.length; i++) {
-/*
+            for (i = 0x0; i < M.cells.length; i++) {
+
                 if(v.jellyPhisycs){
                     M.cells[i].updateNumPoints();
                     M.cells[i].movePoints();
                 }
-*/
+
                 M.cells[i].draw(this.ctx);
 
 
@@ -5166,7 +5163,7 @@ var core = function(t, e, i) {
             0.75,'#ffffff')
             
             if(ogarfooddrawer.RMB && M.indexedCells[M.selected] && M.playerCellIDs.length){
-                var index = M.selectBiggestCell ? M.playerCells.length - 1 : 0;
+                var index = M.selectBiggestCell ? M.playerCells.length - 0x1 : 0x0;
                 //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0x0, this.pi2, false);
                 if(M.playerCells[index] == undefined) return;
                 var xc = M.playerCells[index].targetX//.x
@@ -5218,7 +5215,7 @@ var core = function(t, e, i) {
             ctx.globalAlpha = alpha;
             ctx.strokeStyle = color;
                 ctx.beginPath();
-                ctx.arc(x, y, size-10, 0, this.pi2, false);
+                ctx.arc(x, y, size-10, 0x0, this.pi2, false);
                 ctx.closePath();
                 ctx.stroke();
             
