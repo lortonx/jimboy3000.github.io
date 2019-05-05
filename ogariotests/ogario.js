@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.131 MEGA TEST
+// v1.132 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -57,6 +57,7 @@ core.registerSkin = function(a, b, c, d, e){
 	window.customskinsurl=c;
 }
 */
+var dyinglight1load;
 function UpperCase(str) {
     return str.toUpperCase();
 }
@@ -1475,7 +1476,8 @@ var core = function(t, e, i) {
                 "commanderImage2": "https://jimboy3100.github.io/banners/drawCommander2.png",
                 "commanderImage3": "https://jimboy3100.github.io/banners/drawCommander3.png",
                 "commanderImage4": "https://jimboy3100.github.io/banners/drawCommander4.png",
-                "commanderImage5": "https://jimboy3100.github.io/banners/drawCommander5.png",				
+                "commanderImage5": "https://jimboy3100.github.io/banners/drawCommander5.png",	
+				"commanderImageDyingLight": "https://jimboy3100.github.io/banners/icondyinglightzombie.png",					
                 ////
                 'miniMapFont': 'ubuntu-bold',
                 'miniMapFontFamily': 'Ubuntu',
@@ -3847,6 +3849,8 @@ var core = function(t, e, i) {
             cimg2.src = g.commanderImage2;
 			cimg5 = new Image;
             cimg5.src = g.commanderImage5;
+			cimgDyingLight = new Image;
+            cimgDyingLight.src = g.commanderImageDyingLight;	
 			
             this.id = t; 
 			this.x = e; 
@@ -4276,6 +4280,7 @@ var core = function(t, e, i) {
 						(style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						//(M.cAngle += .007), console.log(M.cAngle),
 						//style.rotate(M.cAngle1),
+						(dyinglight1loadstyle == "yes" && style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y)),
 						s && (style.globalAlpha = value, s = false)), 
 						
 						v.teammatesInd && !this.isPlayerCell && y <= 800 && 
