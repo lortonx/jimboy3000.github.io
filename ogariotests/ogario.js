@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.134 MEGA TEST
+// v1.135 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4346,9 +4346,8 @@ var core = function(t, e, i) {
             style.restore();
                             }
                         }
-                    }
-                };
-        }
+                    }            
+				}
         window.legendmod1 = ogarbasicassembly;
         var M = {
 				'quadtree':null,
