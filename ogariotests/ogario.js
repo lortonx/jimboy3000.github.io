@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.133 MEGA TEST
+// v1.134 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4270,17 +4270,22 @@ var core = function(t, e, i) {
                             style.globalAlpha = value;
                             s = false;
                         }
-                        var node = null;
-                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && (((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
-						
-						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
-						                    (if(v.jellyPhisycs){
-                        var lineWidth = Math.max(~~(y / 50), 10);
+            var node = null;
+            if (v.customSkins && M.showCustomSkins) {
+                node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
+                if (node) {
+                    if ((v.transparentSkins || M.play && v.oppColors) && !(this.isPlayerCell && !v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) {
+                        style.globalAlpha *= g.skinsAlpha;
+                        isAlphaChanged = true;
+                    }
+
+                    if(v.jellyPhisycs){
+                        var lineWidth = Math.max(~~(size / 50), 10);
                         style.save();
                         style.clip();
-                        this.maxPointRad && (y=this.maxPointRad)
-                        style.drawImage(node, this.x - y-lineWidth, this.y - y-lineWidth, 2 * y+lineWidth*2, 2 * y+lineWidth*2);
-    
+                        this.maxPointRad && (size=this.maxPointRad)
+                        style.drawImage(node, this.x - size-lineWidth, this.y - size-lineWidth, 2 * size+lineWidth*2, 2 * size+lineWidth*2);
+						
                         style.globalCompositeOperation='luminosity'
     
                         style.lineWidth = lineWidth
@@ -4289,36 +4294,56 @@ var core = function(t, e, i) {
                         style.globalCompositeOperation=''
                         style.restore();
     
-                    } else style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y)),
-						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
-						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀Shere Khan")) && (style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
-						//(M.cAngle += .007), console.log(M.cAngle),
-						//style.rotate(M.cAngle1),
-						s && (style.globalAlpha = value, s = false)), 
-						v.teammatesInd && !this.isPlayerCell && y <= 800 && window.teammatenicks && (window.teammatenicks.includes(this.targetNick)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), v.noNames && !v.showMass || canCreateDiscussions) {
+                    } else style.drawImage(node, this.x - size, this.y - size, 2 * size, 2 * size);
 
-//                            y <= 200 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), v.noNames && !v.showMass || canCreateDiscussions) {
 
-                            style.restore();
-                        } else {
-                            var recursive = false;
-                            if (!this.isPlayerCell && (recursive = ogarminimapdrawer.setAutoHideCellInfo(y)) && v.autoHideNames && v.autoHideMass) {
-                                style.restore();
-                            } else {
-                                this.setDrawing();
-                                this.setDrawingScale();
-                                style.globalAlpha *= g.textAlpha;
-                                if (!(v.noNames || recursive && v.autoHideNames || this.isPlayerCell && v.hideMyName || node && v.hideTeammatesNames)) {
-                                    if (this.setNick(this.targetNick)) {
-                                        this.drawNick(style);
-                                    }
-                                }
-                                if (!(!v.showMass || recursive && v.autoHideMass || this.isPlayerCell && v.hideMyMass || v.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
-                                    if (this.setMass(this.size)) {
-                                        this.drawMass(style);
-                                    }
-                                }
-                                style.restore();
+                    //style.drawImage(node, this.x - size, this.y - size, 2 * size, 2 * size);
+                    if (isAlphaChanged) {
+                        style.globalAlpha = prevAlpha;
+                        isAlphaChanged = false;
+                    }
+                }
+            }
+            if (v.teammatesInd && !this.isPlayerCell && size <= 0xc8 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color))) {
+                ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, size);
+            }
+
+
+            //
+           // x,y is the point to test
+            // cx, cy is circle center, and radius is circle radius
+            
+
+
+
+
+            
+            if (v.noNames && !v.showMass || canCreateDiscussions) {
+                style.restore();
+                return;
+            }
+            var _0x2e2c68 = false;
+            if (!this.isPlayerCell) {
+                _0x2e2c68 = ogarminimapdrawer.setAutoHideCellInfo(size);
+                if (_0x2e2c68 && v.autoHideNames && v.autoHideMass) {
+                    style.restore();
+                    return;
+                }
+            }
+            this.setDrawing();
+            this.setDrawingScale();
+            style.globalAlpha *= g.textAlpha;
+            if (!v.noNames && !(_0x2e2c68 && v.autoHideNames) && !(this.isPlayerCell && v.hideMyName) && !(node && v.hideTeammatesNames)) {
+                if (this.setNick(this.targetNick)) {
+                    this.drawNick(style);
+                }
+            }
+            if (v.showMass && !(_0x2e2c68 && v.autoHideMass) && !(this.isPlayerCell && v.hideMyMass) && !(v.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
+                if (this.setMass(this.size)) {
+                    this.drawMass(style);
+                }
+            }
+            style.restore();
                             }
                         }
                     }
