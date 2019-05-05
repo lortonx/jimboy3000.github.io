@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.132 MEGA TEST
+// v1.133 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3841,6 +3841,9 @@ var core = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
+        this.points = [];
+        this.pointsVel = [];	
+		this.maxPointRad = 0;		
 			cimg2 = new Image;
             cimg2.src = g.commanderImage2;
 			
@@ -4229,9 +4232,18 @@ var core = function(t, e, i) {
                         var value = style.globalAlpha;
                         var s = false;
                         var y = this.isFood ? this.size + g.foodSize : this.size;
-                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
+						
+/*                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
                             return style.fillStyle = this.color, style.fill(), void style.restore();
-                        }
+                        } */
+						if(this.isVirus) style.lineJoin = "miter"
+						if (v.jellyPhisycs && this.points.length) {
+						var point = this.points[0];
+						style.moveTo(point.x, point.y);
+						for (var i = 0; i < this.points.length; ++i) {
+						var point = this.points[i];
+						style.lineTo(point.x, point.y);
+						}						
                         if (this.isVirus) {
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
@@ -4262,7 +4274,22 @@ var core = function(t, e, i) {
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && (((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
-						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
+						                    (if(v.jellyPhisycs){
+                        var lineWidth = Math.max(~~(y / 50), 10);
+                        style.save();
+                        style.clip();
+                        this.maxPointRad && (y=this.maxPointRad)
+                        style.drawImage(node, this.x - y-lineWidth, this.y - y-lineWidth, 2 * y+lineWidth*2, 2 * y+lineWidth*2);
+    
+                        style.globalCompositeOperation='luminosity'
+    
+                        style.lineWidth = lineWidth
+                        style.strokeStyle = color;
+                        style.stroke();
+                        style.globalCompositeOperation=''
+                        style.restore();
+    
+                    } else style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀Shere Khan")) && (style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						//(M.cAngle += .007), console.log(M.cAngle),
