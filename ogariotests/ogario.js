@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.128 MEGA TEST
+// v1.129 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1924,6 +1924,7 @@ var core = function(t, e, i) {
             'messageSound': null,
             'commandSound': null,
 			'virusSound': null,
+			'virusSoundurl': null,
             'feedInterval': null,
             'getPlayerX': function() {
                 return i['playerX'] + i['mapOffsetX'];
@@ -4079,7 +4080,7 @@ var core = function(t, e, i) {
 					this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor;
 					}					
 				}
-				if(v.virusSound && this.lastMass && this.mass < this.lastMass) {ogarminimapdrawer.playSound(v['virusSoundurl'])}
+				if(v.virusSound && this.lastMass && this.mass < this.lastMass) {void ogarminimapdrawer.playSound(v['virusSoundurl'])}
 					this.massTxt = this.mass.toString();											
 			}
             this.massTxt = this.mass.toString();
