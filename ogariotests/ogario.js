@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.124 MEGA TEST
+// v1.125 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3629,7 +3629,7 @@ var core = function(t, e, i) {
                 this['displayUserList'](this['chatMutedUsers'], h['mutedUsers'], 'btn-green btn-unmute-user', h['unmute'], 'error');
             },
             'preloadChatSounds': function() {
-                this['setMessageSound'](), this['setCommandSound'](), this['setVirusFood']();
+                this['setMessageSound'](), this['setCommandSound'](), this['setvirusSound']();
             },
             'setChatSoundsBtn': function() {
                 v['chatSounds'] ? s('.chat-sound-notifications').removeClass('ogicon-volume-mute2').addClass('ogicon-volume-high') : s('.chat-sound-notifications').removeClass('ogicon-volume-high').addClass('ogicon-volume-mute2');
