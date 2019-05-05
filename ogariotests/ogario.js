@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130b MEGA TEST
+// v1.130c MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4242,7 +4242,11 @@ var core = function(t, e, i) {
 								draw.lineTo(point.x, point.y);
 							}
 						}						
-                        else (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
+                        else{
+							style.beginPath();
+							style.arc(this.x, this.y, y, 0, this.pi2, false);
+							style.closePath();
+							this.isFood;
                             return style.fillStyle = this.color, style.fill(), void style.restore();
                         }
                         if (this.isVirus) {
