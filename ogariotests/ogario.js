@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.139 MEGA TEST
+// v1.140 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3851,7 +3851,7 @@ var core = function(t, e, i) {
             cimg2.src = g.commanderImage2;		
 			cimg5 = new Image;			
             cimg5.src = g.commanderImage5;
-			if (dyinglight1load=="yes){
+			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
 			cimgDyingLight = new Image;
