@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.121 MEGA TEST
+// v1.122 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -159,6 +159,7 @@ var core = function(t, e, i) {
                     'showChatBox': 'Czatbox zamiast wyskakujących wiadomości',
                     'messageSound': 'Dźwięk powiadomienia o wiadomości',
                     'commandSound': 'Dźwięk powiadomienia o komendzie',
+					'soundFood': 'Virus shot sound',
                     'showTop5': 'Pokaż top 5 teamu',
                     'showTargeting': 'Pokaż namierzanie',
                     'showTime': 'Pokaż aktualny czas',
@@ -525,6 +526,7 @@ var core = function(t, e, i) {
                     'showChatBox': 'Chatbox instead of popups',
                     'messageSound': 'Message notification sound',
                     'commandSound': 'Command notification sound',
+					'soundFood': 'Virus shot sound',
                     'showTop5': 'Show teamboard',
                     'showTargeting': 'Show targeting',
                     'showTime': 'Show current time',
@@ -3644,7 +3646,7 @@ var core = function(t, e, i) {
             'setSound': function(t) {
                 return t ? new Audio(t) : null;
             },
-            'playSound': function(t) {
+/*            'playSound': function(t) {
                 //t && t.play && (t.pause(), t.currentTime = 0, t.play());
                 //t && t.play && t.play!==null && (t.pause(), t.currentTime = 0, t.play());
                 t.pause();
@@ -3654,6 +3656,14 @@ var core = function(t, e, i) {
                 };
                 (t.play() || nopromise).catch(function() {});
             },
+*/
+        'playSound': function (t) {
+            if (t && t.play) {
+                t.pause();
+                t.currentTime = 0;
+                t.play();
+            }
+        },			
             'setTargeting': function() {
                 this['targetID'] && (this['targeting'] = !this['targeting'], i['targeting'] = this['targeting'], this['setTargetingInfo']());
             },
