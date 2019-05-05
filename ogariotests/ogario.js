@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.135 MEGA TEST
+// v1.130 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -160,8 +160,6 @@ var core = function(t, e, i) {
                     'messageSound': 'Dźwięk powiadomienia o wiadomości',
                     'commandSound': 'Dźwięk powiadomienia o komendzie',
 					'virusSoundurl': 'Virus shot sound',
-					'virusSound': 'Virus shot sound',
-					'jellyPhisycs': 'Jelly effects',
                     'showTop5': 'Pokaż top 5 teamu',
                     'showTargeting': 'Pokaż namierzanie',
                     'showTime': 'Pokaż aktualny czas',
@@ -529,8 +527,6 @@ var core = function(t, e, i) {
                     'messageSound': 'Message notification sound',
                     'commandSound': 'Command notification sound',
 					'virusSoundurl': 'Virus shot sound',
-					'virusSound': 'Virus shot sound',
-					'jellyPhisycs': 'Jelly effects',
                     'showTop5': 'Show teamboard',
                     'showTargeting': 'Show targeting',
                     'showTime': 'Show current time',
@@ -2472,13 +2468,9 @@ var core = function(t, e, i) {
                         "z-index": "1",
                         "opacity": "0",
                         "bottom": "-100px"
-                    }), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), 
-					this["addOptions"]([], "animationGroup"), 
-					this["addOptions"](["autoZoom"], "zoomGroup"), 
-					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
-					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
-					this["addOptions"](["jellyPhisycs", "showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
-					this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), this["addOptions"](["showGrid", "showBgSectors", "showMapBorders",
+                    }), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), this["addOptions"]([], "animationGroup"), this["addOptions"](["autoZoom"], "zoomGroup"), this["addOptions"](["quickResp", "autoResp"], "respGroup"), this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass",
+                        "virMassShots", "massStroke"
+                    ], "massGroup"), this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), this["addOptions"](["showGrid", "showBgSectors", "showMapBorders",
                         "borderGlow"
                     ], "gridGroup"), this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), this["addOptions"](["mouseSplit", "mouseFeed",
                         "mouseInvert"
@@ -3841,9 +3833,6 @@ var core = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-        this.points = [];
-        this.pointsVel = [];	
-		this.maxPointRad = 0;		
 			cimg2 = new Image;
             cimg2.src = g.commanderImage2;
 			
@@ -4232,18 +4221,9 @@ var core = function(t, e, i) {
                         var value = style.globalAlpha;
                         var s = false;
                         var y = this.isFood ? this.size + g.foodSize : this.size;
-						
-/*                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
+                        if (style.beginPath(), style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
                             return style.fillStyle = this.color, style.fill(), void style.restore();
-                        } */
-						if(this.isVirus) style.lineJoin = "miter"
-						if (v.jellyPhisycs && this.points.length) {
-						var point = this.points[0];
-						style.moveTo(point.x, point.y);
-						for (var i = 0; i < this.points.length; ++i) {
-						var point = this.points[i];
-						style.lineTo(point.x, point.y);
-						}						
+                        }
                         if (this.isVirus) {
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
@@ -4270,84 +4250,45 @@ var core = function(t, e, i) {
                             style.globalAlpha = value;
                             s = false;
                         }
-            var node = null;
-            if (v.customSkins && M.showCustomSkins) {
-                node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
-                if (node) {
-                    if ((v.transparentSkins || M.play && v.oppColors) && !(this.isPlayerCell && !v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) {
-                        style.globalAlpha *= g.skinsAlpha;
-                        isAlphaChanged = true;
-                    }
-
-                    if(v.jellyPhisycs){
-                        var lineWidth = Math.max(~~(size / 50), 10);
-                        style.save();
-                        style.clip();
-                        this.maxPointRad && (size=this.maxPointRad)
-                        style.drawImage(node, this.x - size-lineWidth, this.y - size-lineWidth, 2 * size+lineWidth*2, 2 * size+lineWidth*2);
+                        var node = null;
+                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && (((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
-                        style.globalCompositeOperation='luminosity'
-    
-                        style.lineWidth = lineWidth
-                        style.strokeStyle = color;
-                        style.stroke();
-                        style.globalCompositeOperation=''
-                        style.restore();
-    
-                    } else style.drawImage(node, this.x - size, this.y - size, 2 * size, 2 * size);
+						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
+						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
+						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
+						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀Shere Khan")) && (style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
+						//(M.cAngle += .007), console.log(M.cAngle),
+						//style.rotate(M.cAngle1),
+						s && (style.globalAlpha = value, s = false)), 
+						v.teammatesInd && !this.isPlayerCell && y <= 800 && window.teammatenicks && (window.teammatenicks.includes(this.targetNick)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), v.noNames && !v.showMass || canCreateDiscussions) {
 
+//                            y <= 200 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), v.noNames && !v.showMass || canCreateDiscussions) {
 
-                    //style.drawImage(node, this.x - size, this.y - size, 2 * size, 2 * size);
-                    if (isAlphaChanged) {
-                        style.globalAlpha = prevAlpha;
-                        isAlphaChanged = false;
-                    }
-                }
-            }
-            if (v.teammatesInd && !this.isPlayerCell && size <= 0xc8 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color))) {
-                ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, size);
-            }
-
-
-            //
-           // x,y is the point to test
-            // cx, cy is circle center, and radius is circle radius
-            
-
-
-
-
-            
-            if (v.noNames && !v.showMass || canCreateDiscussions) {
-                style.restore();
-                return;
-            }
-            var _0x2e2c68 = false;
-            if (!this.isPlayerCell) {
-                _0x2e2c68 = ogarminimapdrawer.setAutoHideCellInfo(size);
-                if (_0x2e2c68 && v.autoHideNames && v.autoHideMass) {
-                    style.restore();
-                    return;
-                }
-            }
-            this.setDrawing();
-            this.setDrawingScale();
-            style.globalAlpha *= g.textAlpha;
-            if (!v.noNames && !(_0x2e2c68 && v.autoHideNames) && !(this.isPlayerCell && v.hideMyName) && !(node && v.hideTeammatesNames)) {
-                if (this.setNick(this.targetNick)) {
-                    this.drawNick(style);
-                }
-            }
-            if (v.showMass && !(_0x2e2c68 && v.autoHideMass) && !(this.isPlayerCell && v.hideMyMass) && !(v.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
-                if (this.setMass(this.size)) {
-                    this.drawMass(style);
-                }
-            }
-            style.restore();
+                            style.restore();
+                        } else {
+                            var recursive = false;
+                            if (!this.isPlayerCell && (recursive = ogarminimapdrawer.setAutoHideCellInfo(y)) && v.autoHideNames && v.autoHideMass) {
+                                style.restore();
+                            } else {
+                                this.setDrawing();
+                                this.setDrawingScale();
+                                style.globalAlpha *= g.textAlpha;
+                                if (!(v.noNames || recursive && v.autoHideNames || this.isPlayerCell && v.hideMyName || node && v.hideTeammatesNames)) {
+                                    if (this.setNick(this.targetNick)) {
+                                        this.drawNick(style);
+                                    }
+                                }
+                                if (!(!v.showMass || recursive && v.autoHideMass || this.isPlayerCell && v.hideMyMass || v.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
+                                    if (this.setMass(this.size)) {
+                                        this.drawMass(style);
+                                    }
+                                }
+                                style.restore();
                             }
                         }
-                    }            
-				}
+                    }
+                };
+        }
         window.legendmod1 = ogarbasicassembly;
         var M = {
 				'quadtree':null,
