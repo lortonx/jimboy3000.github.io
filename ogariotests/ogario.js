@@ -1753,7 +1753,7 @@ var core = function(t, e, i) {
             },
             v = {
 				'jellyPhisycs':false,
-				'virusSound':true,				
+				'virusSound':false,				
                 'quickResp': true,
                 'autoResp': false,
                 'autoZoom': false,
@@ -4272,7 +4272,7 @@ var core = function(t, e, i) {
 						
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
-						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀Shere Khan")) && 
+						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) && 
 						(style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						//(M.cAngle += .007), console.log(M.cAngle),
 						//style.rotate(M.cAngle1),
