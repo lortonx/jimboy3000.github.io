@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.127 MEGA TEST
+// v1.128 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -159,7 +159,7 @@ var core = function(t, e, i) {
                     'showChatBox': 'Czatbox zamiast wyskakujących wiadomości',
                     'messageSound': 'Dźwięk powiadomienia o wiadomości',
                     'commandSound': 'Dźwięk powiadomienia o komendzie',
-					'virusSound': 'Virus shot sound',
+					'virusSoundurl': 'Virus shot sound',
                     'showTop5': 'Pokaż top 5 teamu',
                     'showTargeting': 'Pokaż namierzanie',
                     'showTime': 'Pokaż aktualny czas',
@@ -526,7 +526,7 @@ var core = function(t, e, i) {
                     'showChatBox': 'Chatbox instead of popups',
                     'messageSound': 'Message notification sound',
                     'commandSound': 'Command notification sound',
-					'virusSound': 'Virus shot sound',
+					'virusSoundurl': 'Virus shot sound',
                     'showTop5': 'Show teamboard',
                     'showTargeting': 'Show targeting',
                     'showTime': 'Show current time',
