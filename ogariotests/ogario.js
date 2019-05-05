@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.138 MEGA TEST
+// v1.139 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1477,7 +1477,9 @@ var core = function(t, e, i) {
                 "commanderImage3": "https://jimboy3100.github.io/banners/drawCommander3.png",
                 "commanderImage4": "https://jimboy3100.github.io/banners/drawCommander4.png",
                 "commanderImage5": "https://jimboy3100.github.io/banners/drawCommander5.png",	
-				"commanderImageDyingLight": "https://jimboy3100.github.io/banners/icondyinglightzombie.png",					
+				"commanderImageDyingLight": "https://jimboy3100.github.io/banners/icondyinglightzombie.png",	
+				"commanderImageDyingLightvirus": "https://jimboy3100.github.io/banners/icondyinglightvirus.png",
+			
                 ////
                 'miniMapFont': 'ubuntu-bold',
                 'miniMapFontFamily': 'Ubuntu',
@@ -3846,12 +3848,17 @@ var core = function(t, e, i) {
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
 			cimg2 = new Image;
-            cimg2.src = g.commanderImage2;
-			cimg5 = new Image;
+            cimg2.src = g.commanderImage2;		
+			cimg5 = new Image;			
             cimg5.src = g.commanderImage5;
+			if (dyinglight1load=="yes){
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
-			
+			cimgDyingLight = new Image;
+            cimgDyingLight.src = g.commanderImageDyingLight;	
+			cimgDyingLightvirus = new Image;
+            cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;	
+			}			
             this.id = t; 
 			this.x = e; 
 			this.y = s; 
@@ -4242,7 +4249,7 @@ var core = function(t, e, i) {
                         }
                         if (this.isVirus) {
 							if (dyinglight1load == "yes" ) {
-							style.drawImage(cimgDyingLight, this.x - this.size, this.y - this.size, 2 * this.size, 2 * this.size);
+							style.drawImage(cimgDyingLightvirus, this.x - this.size, this.y - this.size, 2 * this.size, 2 * this.size);
 							}							
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
