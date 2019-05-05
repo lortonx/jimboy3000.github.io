@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.132 MEGA TEST
+// v1.133 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4228,13 +4228,13 @@ var core = function(t, e, i) {
             //var jelly = true
 
             style.beginPath();
-            if(this.isVirus) draw.lineJoin = "miter"
+            if(this.isVirus) stye.lineJoin = "miter"
             if (v.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
-                draw.moveTo(point.x, point.y);
+                style.moveTo(point.x, point.y);
                 for (var i = 0; i < this.points.length; ++i) {
                     var point = this.points[i];
-                    draw.lineTo(point.x, point.y);
+                    style.lineTo(point.x, point.y);
                 }
             }
 			if (this.isVirus) {
@@ -5166,7 +5166,7 @@ var core = function(t, e, i) {
             0.75,'#ffffff')
             
             if(ogarfooddrawer.RMB && M.indexedCells[M.selected] && M.playerCellIDs.length){
-                var index = M.selectBiggestCell ? M.playerCells.length - 0x1 : 0x0;
+                var index = M.selectBiggestCell ? M.playerCells.length - 1 : 0;
                 //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0x0, this.pi2, false);
                 if(M.playerCells[index] == undefined) return;
                 var xc = M.playerCells[index].targetX//.x
@@ -5218,7 +5218,7 @@ var core = function(t, e, i) {
             ctx.globalAlpha = alpha;
             ctx.strokeStyle = color;
                 ctx.beginPath();
-                ctx.arc(x, y, size-10, 0x0, this.pi2, false);
+                ctx.arc(x, y, size-10, 0, this.pi2, false);
                 ctx.closePath();
                 ctx.stroke();
             
