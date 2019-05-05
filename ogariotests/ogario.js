@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130a MEGA TEST
+// v1.130b MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -160,6 +160,7 @@ var core = function(t, e, i) {
                     'messageSound': 'Dźwięk powiadomienia o wiadomości',
                     'commandSound': 'Dźwięk powiadomienia o komendzie',
 					'virusSoundurl': 'Virus shot sound',
+					'virusSound': 'Virus shot sound',					
                     'showTop5': 'Pokaż top 5 teamu',
                     'showTargeting': 'Pokaż namierzanie',
                     'showTime': 'Pokaż aktualny czas',
@@ -527,6 +528,7 @@ var core = function(t, e, i) {
                     'messageSound': 'Message notification sound',
                     'commandSound': 'Command notification sound',
 					'virusSoundurl': 'Virus shot sound',
+					'virusSound': 'Virus shot sound',
                     'showTop5': 'Show teamboard',
                     'showTargeting': 'Show targeting',
                     'showTime': 'Show current time',
@@ -2473,7 +2475,7 @@ var core = function(t, e, i) {
 					this["addOptions"](["autoZoom"], "zoomGroup"), 
 					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
 					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
-					this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSoundurl"], "massGroup"),
+					this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
 					this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), 
 					this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), 
 					this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), 
