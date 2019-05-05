@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.133 MEGA TEST
+// v1.135 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4280,7 +4280,7 @@ var core = function(t, e, i) {
 						(style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						//(M.cAngle += .007), console.log(M.cAngle),
 						//style.rotate(M.cAngle1),
-						(dyinglight1load == "yes" && style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y)),
+						
 						s && (style.globalAlpha = value, s = false)), 
 						
 						v.teammatesInd && !this.isPlayerCell && y <= 800 && 
@@ -4294,6 +4294,11 @@ var core = function(t, e, i) {
 
                             style.restore();
                         } else {
+							if (dyinglight1load == "yes") {
+							style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
+							}
+							
+							
                             var recursive = false;
                             if (!this.isPlayerCell && (recursive = ogarminimapdrawer.setAutoHideCellInfo(y)) && v.autoHideNames && v.autoHideMass) {
                                 style.restore();
