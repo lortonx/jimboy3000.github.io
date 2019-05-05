@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.125 MEGA TEST
+// v1.126 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4079,7 +4079,7 @@ var core = function(t, e, i) {
 					this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor;
 					}					
 				}
-				if(v.virusSound && this.lastMass && this.mass < this.lastMass) {ogarminimapdrawer.playSound(virusSound)}
+				if(v.virusSound && this.lastMass && this.mass < this.lastMass) {ogarminimapdrawer.playSound(v['virusSound'])}
 					this.massTxt = this.mass.toString();											
 			}
             this.massTxt = this.mass.toString();
