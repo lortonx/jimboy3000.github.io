@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130b MEGA TEST
+// v1.130a MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4321,13 +4321,13 @@ var core = function(t, e, i) {
             'clientKey': null,
             'connectionOpened': false,
             'accessTokenSent': false,
-            'clientVersion': 30400,
+            'clientVersion': 0x76c0,
             'clientVersionString': '3.4.0',
             'time': Date['now'](),
             'serverTime': 0,
             'serverTimeDiff': 0,
             'loggedInTime': 0,
-            'mapSize': 15927,
+            'mapSize': 0x373e,
             'mapOffset': 7071,
             'mapOffsetX': 0,
             'mapOffsetY': 0,
@@ -5089,14 +5089,14 @@ var core = function(t, e, i) {
         'renderFrame': function () {
             //this.ctx.start2D();
             M.time = Date.now();
-            for (i = 0; i < M.cells.length; i++) {
+            for (i = 0x0; i < M.cells.length; i++) {
                 M.cells[i].moveCell();
             }
             this.setView();
             M.getCursorPosition();
             M.sortCells();
             M.compareCells();
-            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+            this.ctx.clearRect(0x0, 0x0, this.canvasWidth, this.canvasHeight);
             if (v.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }
@@ -5134,14 +5134,14 @@ var core = function(t, e, i) {
 
             this.drawGhostCells();
             
-            for (var i = 0; i < M.removedCells.length; i++) {
+            for (var i = 0x0; i < M.removedCells.length; i++) {
                 M.removedCells[i].draw(this.ctx, true);
             }
 
 
             v.jellyPhisycs&&M.updateQuadtree(M.cells);//
 
-            for (i = 0; i < M.cells.length; i++) {
+            for (i = 0x0; i < M.cells.length; i++) {
 
                 if(v.jellyPhisycs){
                     M.cells[i].updateNumPoints();
@@ -5163,8 +5163,8 @@ var core = function(t, e, i) {
             0.75,'#ffffff')
             
             if(ogarfooddrawer.RMB && M.indexedCells[M.selected] && M.playerCellIDs.length){
-                var index = M.selectBiggestCell ? M.playerCells.length - 1 : 0;
-                //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0, this.pi2, false);
+                var index = M.selectBiggestCell ? M.playerCells.length - 0x1 : 0x0;
+                //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0x0, this.pi2, false);
                 if(M.playerCells[index] == undefined) return;
                 var xc = M.playerCells[index].targetX//.x
                 var yc = M.playerCells[index].targetY//.y
@@ -5201,7 +5201,7 @@ var core = function(t, e, i) {
             this.ctx.restore();
             if (M.gameMode === ':teams') {
                 if (this.pieChart && this.pieChart.width) {
-                    this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                    this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 0xa, 0xa);
                 }
             }
             //this.ctx.finish2D();
@@ -5215,7 +5215,7 @@ var core = function(t, e, i) {
             ctx.globalAlpha = alpha;
             ctx.strokeStyle = color;
                 ctx.beginPath();
-                ctx.arc(x, y, size-10, 0, this.pi2, false);
+                ctx.arc(x, y, size-10, 0x0, this.pi2, false);
                 ctx.closePath();
                 ctx.stroke();
             
