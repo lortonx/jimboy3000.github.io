@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.130 MEGA TEST
+// v1.132 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -160,6 +160,8 @@ var core = function(t, e, i) {
                     'messageSound': 'Dźwięk powiadomienia o wiadomości',
                     'commandSound': 'Dźwięk powiadomienia o komendzie',
 					'virusSoundurl': 'Virus shot sound',
+					'virusSound': 'Virus shot sound',
+					'jellyPhisycs': 'Jelly effects',
                     'showTop5': 'Pokaż top 5 teamu',
                     'showTargeting': 'Pokaż namierzanie',
                     'showTime': 'Pokaż aktualny czas',
@@ -527,6 +529,8 @@ var core = function(t, e, i) {
                     'messageSound': 'Message notification sound',
                     'commandSound': 'Command notification sound',
 					'virusSoundurl': 'Virus shot sound',
+					'virusSound': 'Virus shot sound',
+					'jellyPhisycs': 'Jelly effects',
                     'showTop5': 'Show teamboard',
                     'showTargeting': 'Show targeting',
                     'showTime': 'Show current time',
@@ -2468,9 +2472,13 @@ var core = function(t, e, i) {
                         "z-index": "1",
                         "opacity": "0",
                         "bottom": "-100px"
-                    }), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), this["addOptions"]([], "animationGroup"), this["addOptions"](["autoZoom"], "zoomGroup"), this["addOptions"](["quickResp", "autoResp"], "respGroup"), this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass",
-                        "virMassShots", "massStroke"
-                    ], "massGroup"), this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), this["addOptions"](["showGrid", "showBgSectors", "showMapBorders",
+                    }), s("#noNames, #showMass").remove(), s("#og-settings .submenu-panel").append('<div id="og-options"></div>'), 
+					this["addOptions"]([], "animationGroup"), 
+					this["addOptions"](["autoZoom"], "zoomGroup"), 
+					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
+					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
+					this["addOptions"](["jellyPhisycs", "showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
+					this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins"], "skinsGroup"), this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), this["addOptions"](["showGrid", "showBgSectors", "showMapBorders",
                         "borderGlow"
                     ], "gridGroup"), this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), this["addOptions"](["mouseSplit", "mouseFeed",
                         "mouseInvert"
