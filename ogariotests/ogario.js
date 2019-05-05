@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.143 MEGA TEST
+// v1.144 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1848,7 +1848,6 @@ var core = function(t, e, i) {
                 //                'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
                 'commandSound': 'https://jimboy3100.github.io/sounds/chat-message.mp3',
 				'virusSoundurl': 'https://jimboy3100.github.io/sounds/sound-gunshot.mp3',
-				'virusSound': false,
 				'soundSplit': 'https://www.myinstants.com/media/sounds/quack_5.mp3'
 				
             };
