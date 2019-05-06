@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.148 MEGA TEST
+// v1.149 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3857,7 +3857,7 @@ var core = function(t, e, i) {
 			cimg6 = new Image;			
             cimg6.src = g.commanderImage6;		
 			cimg7 = new Image;			
-            cimg7.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/U%2B2104.svg/1200px-U%2B2104.svg.png	';				
+            cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
 						
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
