@@ -4299,6 +4299,10 @@ var core = function(t, e, i) {
                             style.globalAlpha = value;
                             s = false;
                         }
+						if (dyinglight1load != "yes"){
+                            style.globalAlpha = 1;
+                            s = false;							
+						}
                         var node = null;
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && 
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
