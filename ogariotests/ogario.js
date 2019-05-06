@@ -4291,7 +4291,7 @@ var core = function(t, e, i) {
                                 }
                             }
                         }
-						if (dyinglight1load != "yes){
+						if (dyinglight1load != "yes"){
                         style.fillStyle = color;
                         style.fill();
 						}
