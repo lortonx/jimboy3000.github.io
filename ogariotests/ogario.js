@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.161 MEGA TEST
+// v1.162 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3862,10 +3862,22 @@ var core = function(t, e, i) {
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
-			cimgDyingLight = new Image;
-            cimgDyingLight.src = g.commanderImageDyingLight;	
 			cimgDyingLightvirus = new Image;
             cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;	
+			
+			
+			cimgDyingLight1 = new Image;
+            cimgDyingLight1.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie2.png';			
+			cimgDyingLight2 = new Image;
+            cimgDyingLight2.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie3.png';		
+			cimgDyingLight3 = new Image;
+            cimgDyingLight3.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie4.png';		
+			cimgDyingLight4 = new Image;
+            cimgDyingLight4.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie5.png';		
+			cimgDyingLight5 = new Image;
+            cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';		
+			cimgDyingLight6 = new Image;
+            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';			
 			}		
 			this.oldAlpha=0;
             this.id = t; 
@@ -4315,8 +4327,28 @@ var core = function(t, e, i) {
                             style.restore();
                         } else {
 							if (dyinglight1load == "yes" && node==null) {
-							console.log(this.mass);
-							style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
+							//console.log(this.mass);
+							if (this.mass && this.mass<=500){							
+								style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
+								}
+							else if (this.mass && this.mass<=1000){
+								style.drawImage(cimgDyingLight1, this.x - y, this.y - y, 2 * y, 2 * y);
+								}
+							else if (this.mass && this.mass<=1500){
+								style.drawImage(cimgDyingLight2, this.x - y, this.y - y, 2 * y, 2 * y);
+								}
+							else if (this.mass && this.mass<=2500){
+								style.drawImage(cimgDyingLight3, this.x - y, this.y - y, 2 * y, 2 * y);
+								}
+							else if (this.mass && this.mass<=5000){
+								style.drawImage(cimgDyingLight4, this.x - y, this.y - y, 2 * y, 2 * y);
+								}
+							else if (this.mass && this.mass<=10000){
+								style.drawImage(cimgDyingLight5, this.x - y, this.y - y, 2 * y, 2 * y);
+								}	
+							else if (this.mass && this.mass>10000){
+								style.drawImage(cimgDyingLight6, this.x - y, this.y - y, 2 * y, 2 * y);
+								}									
 							}
 							
 							
