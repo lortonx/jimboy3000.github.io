@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.162 MEGA TEST
+// v1.164 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4291,8 +4291,10 @@ var core = function(t, e, i) {
                                 }
                             }
                         }
+						if (dyinglight1load != "yes){
                         style.fillStyle = color;
                         style.fill();
+						}
                         if (s) {
                             style.globalAlpha = value;
                             s = false;
@@ -4366,11 +4368,13 @@ var core = function(t, e, i) {
                                 }
                                 if (!(!v.showMass || recursive && v.autoHideMass || this.isPlayerCell && v.hideMyMass || v.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
                                     if (this.setMass(this.size)) {
+										
                                         this.drawMass(style);
                                     }
                                 }
                                 style.restore();
                             }
+							
                         }
                     }
                 };
