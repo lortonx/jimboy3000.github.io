@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.153 MEGA TEST
+// v1.154 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -5166,7 +5166,7 @@ var core = function(t, e, i) {
             if (M.play) {
                 if (v.splitRange) {
                     this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
-					console.log(M.playerCells[M.selectBiggestCell.length-1].size);
+					//console.log(M.playerCells[M.selectBiggestCell.length-1].size);
 					this.drawDoubleSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
                 }
                 if (v.oppRings) {
