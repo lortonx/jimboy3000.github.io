@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.147 MEGA TEST
+// v1.148 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3855,7 +3855,10 @@ var core = function(t, e, i) {
 			cimg5 = new Image;			
             cimg5.src = g.commanderImage5;
 			cimg6 = new Image;			
-            cimg6.src = g.commanderImage6;			
+            cimg6.src = g.commanderImage6;		
+			cimg7 = new Image;			
+            cimg7.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/U%2B2104.svg/1200px-U%2B2104.svg.png	';				
+						
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
@@ -4289,7 +4292,8 @@ var core = function(t, e, i) {
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						
 						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.4, style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y), style.globalAlpha=this.oldAlpha),
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.2, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha),
+						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) && 
