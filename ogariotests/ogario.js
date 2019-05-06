@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.151 MEGA TEST
+// v1.152 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -5457,7 +5457,7 @@ var core = function(t, e, i) {
                     if (this['drawCircles'](t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
 						//this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
                         var a = s ? i.length - 1 : 0;
-                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(2*i[a]['x'], 2*i[a]['y'], i[a]['size']/2 + 760, 0, this.pi2, false), t['closePath'](), t['stroke']();
+                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], 1.5*i[a]['size'] + 1520, 0, this.pi2, false), t['closePath'](), t['stroke']();
                     }
                     t['globalAlpha'] = 1, o && (e = []);
                 },				
