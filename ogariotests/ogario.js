@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.157 MEGA TEST
+// v1.158 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -5461,7 +5461,7 @@ var core = function(t, e, i) {
                         var a = s ? i.length - 1 : 0;
 						console.log(i[a]['size']);
 						if (i[a]['size']>=400){
-                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], 1.5*i[a]['size'] + 760, 0, this.pi2, false), t['closePath'](), t['stroke']();
+                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], 2*i[a]['size'] + 760, 0, this.pi2, false), t['closePath'](), t['stroke']();
 						}
 				   }
                     t['globalAlpha'] = 1, o && (e = []);
