@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.146 MEGA TEST
+// v1.147 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -3863,7 +3863,8 @@ var core = function(t, e, i) {
             cimgDyingLight.src = g.commanderImageDyingLight;	
 			cimgDyingLightvirus = new Image;
             cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;	
-			}			
+			}		
+			this.oldAlpha=0;
             this.id = t; 
 			this.x = e; 
 			this.y = s; 
@@ -4288,7 +4289,7 @@ var core = function(t, e, i) {
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						
 						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.4, style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y), style.globalAlpha=this.oldAlpha),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) && 
