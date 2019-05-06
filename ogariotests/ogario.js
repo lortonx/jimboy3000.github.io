@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.144 MEGA TEST
+// v1.145 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -1479,6 +1479,7 @@ var core = function(t, e, i) {
                 "commanderImage3": "https://jimboy3100.github.io/banners/drawCommander3.png",
                 "commanderImage4": "https://jimboy3100.github.io/banners/drawCommander4.png",
                 "commanderImage5": "https://jimboy3100.github.io/banners/drawCommander5.png",	
+				"commanderImage6": "https://jimboy3100.github.io/banners/iconJustWatchPro.png",	
 				"commanderImageDyingLight": "https://jimboy3100.github.io/banners/icondyinglightzombie.png",	
 				"commanderImageDyingLightvirus": "https://jimboy3100.github.io/banners/icondyinglightvirus.png",
 			
@@ -3853,6 +3854,8 @@ var core = function(t, e, i) {
             cimg2.src = g.commanderImage2;		
 			cimg5 = new Image;			
             cimg5.src = g.commanderImage5;
+			cimg6 = new Image;			
+            cimg6.src = g.commanderImage6;			
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
@@ -4285,7 +4288,7 @@ var core = function(t, e, i) {
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						
 						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
-						
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
 						(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) && 
