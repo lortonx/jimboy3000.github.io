@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.197 MEGA TEST
+// v1.198 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4919,6 +4919,7 @@ var core = function(t, e, i) {
             'isInView': function(t, e, i) {
                 var s = this['canvasWidth'] / 2 / this['scale'],
                     o = this['canvasHeight'] / 2 / this['scale'];
+					console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o))
                 return !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o);
             },
             'updateCells': function(t, i) {
