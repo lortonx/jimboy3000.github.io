@@ -4919,7 +4919,7 @@ var core = function(t, e, i) {
             'isInView': function(t, e, i) {
                 var s = this['canvasWidth'] / 2 / this['scale'],
                     o = this['canvasHeight'] / 2 / this['scale'];
-					console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o))
+					//console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o));
                 return !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o);
             },
             'updateCells': function(t, i) {
