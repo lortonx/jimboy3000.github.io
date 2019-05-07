@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.199 MEGA TEST
+// v1.200 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4335,9 +4335,9 @@ var core = function(t, e, i) {
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), !videoJustWatchPro.playing && videoJustWatchPro.play()
 						
-						//window.legendmod3.teamPlayers.forEach(function(a){a.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ" && (console.log(a.id), legendmod3.setTarget(a.id)
+						window.legendmod3.teamPlayers.forEach(function(a){a.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ" && (console.log(a.id), legendmod3.setTarget(a.id), legendmod3.calculateMapSector(legendmod3.top5.a.x, legendmod3.top5.a.y),
 						//window.targetDistance 
-						//)})
+						)})
 						),
 						(!this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
