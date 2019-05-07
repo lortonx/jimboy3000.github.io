@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.178 MEGA TEST
+// v1.179 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -20,7 +20,12 @@ function Video(src, append) {
   }
   return v;
 }
-						
+			videoJustWatchPro = new Video;
+			videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
+			//videoJustWatchPro = document.createElement("video"); // create a video element
+			//videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
+
+			
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
 
@@ -3875,10 +3880,8 @@ var core = function(t, e, i) {
             cimg6.src = g.commanderImage6;		
 			cimg7 = new Image;			
             cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
-			videoJustWatchPro = new Video;
-			videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
-			//videoJustWatchPro = document.createElement("video"); // create a video element
-			//videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";					
+
+				
 			
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
