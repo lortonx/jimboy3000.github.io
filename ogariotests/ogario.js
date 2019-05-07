@@ -1,11 +1,11 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.171 MEGA TEST
+// v1.172 MEGA TEST
 // Game Configurations
 
 						var videoJustWatchPro = document.createElement("video"); // create a video element
-						videoJustWatchPro.src = "https://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv";	
+						videoJustWatchPro.src = "https://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
 						
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
