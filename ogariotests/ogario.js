@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.178 MEGA TEST
+// v1.179 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -11,7 +11,7 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 })
 
 var videoJustWatchPro = document.createElement("video"); // create a video element
-videoJustWatchPro.src = "jimboy3100.github.io/banners/testvideomama.mp4";	
+videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
 						
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
