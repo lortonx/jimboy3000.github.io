@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.235 MEGA TEST
+// v1.236 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -51,7 +51,7 @@ function checkVideos2(){
 	checkvideoJustWatchProflag2();		 
 }
 
-functioncheckvideoJustWatchProflag2(){
+function checkvideoJustWatchProflag2(){
 	
 	if (!window.videoJustWatchProflag2){
 		window.videoJustWatchPro.volume = 0;
