@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.179 MEGA TEST
+// v1.180 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -10,20 +10,10 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     }
 })
 
-function Video(src, append) {
-  var v = document.createElement("video");
-  if (src != "") {
-    v.src = src;
-  }
-  if (append == true) {
-    document.body.appendChild(v);
-  }
-  return v;
-}
-			videoJustWatchPro = new Video;
-			videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
-			//videoJustWatchPro = document.createElement("video"); // create a video element
-			//videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
+videoJustWatchPro = document.createElement("image"); // create a video element
+videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
+videoJustWatchPro.src = "https://jimboy3100.github.io/banners/icondyinglightzombie2.png";
+
 
 			
 window.agarversion = "v12/2106/";
@@ -3887,9 +3877,7 @@ var core = function(t, e, i) {
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
 			cimgDyingLightvirus = new Image;
-            cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;	
-			
-			
+            cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;				
 			cimgDyingLight1 = new Image;
             cimgDyingLight1.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie2.png';			
 			cimgDyingLight2 = new Image;
@@ -3901,9 +3889,7 @@ var core = function(t, e, i) {
 			cimgDyingLight5 = new Image;
             cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';		
 			cimgDyingLight6 = new Image;
-            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';		
-
-		
+            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';				
 			}		
 			this.oldAlpha=0;
             this.id = t; 
