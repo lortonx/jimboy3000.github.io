@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.178 MEGA TEST
+// v1.173 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -10,22 +10,9 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     }
 })
 
-function Video(src, append) {
-  var v = document.createElement("video");
-  if (src != "") {
-    v.src = src;
-  }
-  if (append == true) {
-    document.body.appendChild(v);
-  }
-  return v;
-}
-			videoJustWatchPro = new Video;
-			videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
-			//videoJustWatchPro = document.createElement("video"); // create a video element
-			//videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
-
-			
+var videoJustWatchPro = document.createElement("video"); // create a video element
+videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
+						
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
 
@@ -2425,7 +2412,7 @@ var core = function(t, e, i) {
             'setSkinPreview': function(t, e) {
                 if (s('#' + e)['empty']().addClass('default'), t && 0 != t.length) {
                     var i = this,
-                        o = new Video();
+                        o = new Image();
                     o.crossOrigin = 'anonymous', o.onload = function() {
                         i['changeSkinPreview'](o, e);
                     }, o.src = t;
@@ -2936,7 +2923,7 @@ var core = function(t, e, i) {
             },
             'loadSkin': function(t, e) {
                 var i = this;
-                t[e] = new Video(), t[e].crossOrigin = 'anonymous', t[e]['onload'] = function() {
+                t[e] = new Image(), t[e].crossOrigin = 'anonymous', t[e]['onload'] = function() {
                     this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
                 }, t[e].src = e;
             },
@@ -2953,7 +2940,7 @@ var core = function(t, e, i) {
                         s.arc(256, 256, 256, 0, 2 * Math["PI"], false);
                         s["clip"]();
                         s["drawImage"](this["customSkinsCache"][e], 0, 0, 512, 512);
-                        this["customSkinsCache"][e + "_cached"] = new Video;
+                        this["customSkinsCache"][e + "_cached"] = new Image;
                         this["customSkinsCache"][e + "_cached"].src = i.toDataURL();
                         i = null;
                         this["cacheSkin"](this["customSkinsCache"]);
@@ -3880,9 +3867,7 @@ var core = function(t, e, i) {
             cimg6.src = g.commanderImage6;		
 			cimg7 = new Image;			
             cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
-
-				
-			
+						
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
@@ -3901,9 +3886,7 @@ var core = function(t, e, i) {
 			cimgDyingLight5 = new Image;
             cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';		
 			cimgDyingLight6 = new Image;
-            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';		
-
-		
+            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';			
 			}		
 			this.oldAlpha=0;
             this.id = t; 
@@ -4339,7 +4322,7 @@ var core = function(t, e, i) {
 						
 						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - y, this.y - y, 2 * y, 2 * y), !videoJustWatchPro.playing && videoJustWatchPro.play() ),
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - y, this.y - y, 1.4 * y, 1.4 * y), !videoJustWatchPro.playing && videoJustWatchPro.play() )
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)), 
