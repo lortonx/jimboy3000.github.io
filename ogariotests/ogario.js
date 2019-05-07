@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.205 MEGA TEST
+// v1.206 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4336,7 +4336,7 @@ var core = function(t, e, i) {
 						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), !videoJustWatchPro.playing && videoJustWatchPro.play(),
 						
 						window.legendmod3.teamPlayers.forEach(function(a){a.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ" && ( legendmod3.setTarget(a.id), 
-						videoJustWatchPro.volume = 0, legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ" && legendmod3.calculateMapSector(legendmod3.top5[a].x, legendmod3.top5[a].y) == legendmod3.currentSector && legendmod3.currentSector == C3 && videoJustWatchPro.volume = 1 )
+						videoJustWatchPro.volume = 0, (legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && (legendmod3.calculateMapSector(legendmod3.top5[a].x, legendmod3.top5[a].y) == legendmod3.currentSector) && (legendmod3.currentSector == C3) && videoJustWatchPro.volume = 1 )
 						//window.targetDistance 
 						})
 						),
