@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.193 MEGA TEST
+// v1.196 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -16,7 +16,7 @@ var videoJustWatchPro = document.createElement("video"); // create a video eleme
 videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
 
 
-//window.checkVidSkinStat=true;
+window.checkVidSkinStat=true;
 //window.checkVidSkinStat2=true;
 window.checkVidSkinStatFlag=false;
 
@@ -34,20 +34,23 @@ function myTimer() {
 		if (window.checkVidSkinStat){
 		!videoJustWatchPro.playing && videoJustWatchPro.play();
 		console.log("videos continues to play");
-	}}
-	else {
-		if (videoJustWatchPro.playing) {
-			window.checkVidSkinStat=false;
+		window.checkVidSkinStat=false;
+	}
+	else {	
+			window.checkVidSkinStat=true;
+			if (videoJustWatchPro.playing) {
 			videoJustWatchPro.pause();
 		myStopFunction();
 		window.checkVidSkinStatFlag=false;
 		}
 	
 	}
+	}
 }
 
 
 function checkVidSkinStat(){
+	console.log(" Flag for not calling many times");
 	if (!window.checkVidSkinStatFlag){
 		window.checkVidSkinStatFlag=true;
 		startcheckVideo();
