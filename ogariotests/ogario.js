@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.192 MEGA TEST
+// v1.193 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -37,6 +37,7 @@ function myTimer() {
 	}}
 	else {
 		if (videoJustWatchPro.playing) {
+			window.checkVidSkinStat=false;
 			videoJustWatchPro.pause();
 		myStopFunction();
 		window.checkVidSkinStatFlag=false;
