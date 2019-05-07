@@ -1,9 +1,12 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.170 MEGA TEST
+// v1.171 MEGA TEST
 // Game Configurations
 
+						var videoJustWatchPro = document.createElement("video"); // create a video element
+						videoJustWatchPro.src = "https://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv";	
+						
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
 
@@ -4304,11 +4307,7 @@ var core = function(t, e, i) {
                             s = false;							
 						}*/
                         var node = null;
-						
-						
-						var videoJustWatchPro = document.createElement("video"); // create a video element
-						videoJustWatchPro.src = "https://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv";	
-						
+																	
 
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && 
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
