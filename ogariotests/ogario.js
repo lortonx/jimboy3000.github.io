@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.216 MEGA TEST
+// v1.217 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -30,7 +30,7 @@ window.onload = function() {
 
 window.videoJustWatchProflag=true;
 
-function videoJustWatchProflag(){
+function videoJustWatchProflag2(){
 	if (window.videoJustWatchProflag){
 		window.videoJustWatchPro = document.createElement("video"); // create a video element
 		window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
@@ -4356,7 +4356,7 @@ var core = function(t, e, i) {
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (videoJustWatchProflag(), this.oldAlpha=style.globalAlpha, style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)) && 
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (videoJustWatchProflag2(), this.oldAlpha=style.globalAlpha, style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)) && 
 						checkVideos(),
 						this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
