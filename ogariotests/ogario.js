@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.179 MEGA TEST
+// v1.180 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -16,7 +16,11 @@ videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4"
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
 
-
+function pauseVideos(){
+	if (videoJustWatchPro.playing){ 
+	videoJustWatchPro.pause();
+		}
+}
 //window.disableIntegrity=false;
 var Lmagarversion = "";
 
@@ -2912,6 +2916,8 @@ var core = function(t, e, i) {
                 }
             },
             'onPlayerDeath': function() {
+				//
+				pauseVideos(),
                 i.play = false, i['playerColor'] = null, i['foodIsHidden'] = false, i['playerMass'] = 0, i['playerScore'] = 0, i['playerSplitCells'] = 0, this['showMenu'](300), this['sendPlayerDeath'](), this['updateDeathLocations'](i['playerX'], i['playerY']), this['unlockButtons'](), ogarcommando1(), this['autoResp']();
             },
             'setPlayerSettings': function() {
