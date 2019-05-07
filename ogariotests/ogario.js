@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.215 MEGA TEST
+// v1.216 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -25,6 +25,9 @@ function checkVideos(){
 	}
 	)
 }
+window.onload = function() {
+
+
 window.videoJustWatchProflag=true;
 
 function videoJustWatchProflag(){
@@ -35,7 +38,7 @@ function videoJustWatchProflag(){
 			}
 }
 
-
+};
 					
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
