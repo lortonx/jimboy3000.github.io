@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.168 MEGA TEST
+// v1.169 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4308,7 +4308,7 @@ var core = function(t, e, i) {
 						if (this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) {
 						var videoJustWatchPro = document.createElement("video"); // create a video element
 						videoJustWatchPro.src = "https://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv";	
-						style.drawImage(videoJustWatchPro, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+						style.drawImage(cimg2, this.x - y, this.y - y, 2 * y, 2 * y);
 						}
 						else{
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && 
