@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.210 MEGA TEST
+// v1.211 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -10,29 +10,23 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     }
 })
 function checkVideos(){
-	if (!videoJustWatchPro.playing){
-	videoJustWatchPro.play()};
+	if (!window.videoJustWatchPro.playing){
+	window.videoJustWatchPro.play()};
 	window.legendmod3.teamPlayers.forEach(
 	function(a){
 		if(a.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") {
 			legendmod3.setTarget(a.id);			
-	videoJustWatchPro.volume = 0;
+	window.videoJustWatchPro.volume = 0;
 	if(legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){
 	if (legendmod3.calculateMapSector(legendmod3.top5[a].x, legendmod3.top5[a].y) == legendmod3.currentSector && legendmod3.currentSector == "C3")
-	videoJustWatchPro.volume = 1;
+	window.videoJustWatchPro.volume = 1;
 			}
 		}
 	}
 	)
 }
 window.videoJustWatchProflag=true;
-function videoJustWatchProflag(){
-	if (videoJustWatchProflag){
-		window.videoJustWatchPro = document.createElement("video"); // create a video element
-		window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
-		window.videoJustWatchProflag=false;
-	}
-}
+
 
 					
 window.agarversion = "v12/2106/";
@@ -40,8 +34,8 @@ window.agarversion = "v12/2106/";
 
 function pauseVideos(){
 	setTimeout(function() {
-	if (videoJustWatchPro.playing){ 
-	videoJustWatchPro.pause();
+	if (window.videoJustWatchPro.playing){ 
+	window.videoJustWatchPro.pause();
 		}
 	}, 1000);
 }
@@ -4293,6 +4287,13 @@ var core = function(t, e, i) {
                     }
                     return ctxfx;
                 };
+				this.videoJustWatchProflag= function(){
+					if (videoJustWatchProflag){
+						window.videoJustWatchPro = document.createElement("video"); // create a video element
+						window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
+						window.videoJustWatchProflag=false;
+					}
+				}
                 this.draw = function(style, canCreateDiscussions) {
                     if (!(M.hideSmallBots && this.size <= 36)) {
                         style.save();
@@ -4351,7 +4352,7 @@ var core = function(t, e, i) {
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && videoJustWatchProflag() && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), 
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && videoJustWatchProflag() && (this.oldAlpha=style.globalAlpha, style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), 
 						checkVideos()
 						//window.targetDistance 
 						),
