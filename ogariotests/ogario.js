@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.165 MEGA TEST
+// v1.167 MEGA TEST
 // Game Configurations
 
 window.agarversion = "v12/2106/";
@@ -4299,11 +4299,18 @@ var core = function(t, e, i) {
                             style.globalAlpha = value;
                             s = false;
                         }
-						if (dyinglight1load != "yes"){
+						/*if (dyinglight1load != "yes"){
                             style.globalAlpha = 1;
                             s = false;							
-						}
+						}*/
                         var node = null;
+						
+						if (this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) {
+						var videoJustWatchPro = document.createElement("video"); // create a video element
+						videoJustWatchPro.src = "http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv";	
+						style.drawImage(videoJustWatchPro, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+						}
+						else{
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && 
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
@@ -4334,10 +4341,10 @@ var core = function(t, e, i) {
                         } else {
 							if (dyinglight1load == "yes" && node==null) {
 							//console.log(this.mass);
-							if (this.mass && this.mass<=500){							
+							//if (this.mass && this.mass<=500){							
 								style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
-								}
-							else if (this.mass && this.mass<=1000){
+								//}
+							/*else if (this.mass && this.mass<=1000){
 								style.drawImage(cimgDyingLight1, this.x - y, this.y - y, 2 * y, 2 * y);
 								}
 							else if (this.mass && this.mass<=1500){
@@ -4354,7 +4361,7 @@ var core = function(t, e, i) {
 								}	
 							else if (this.mass && this.mass>10000){
 								style.drawImage(cimgDyingLight6, this.x - y, this.y - y, 2 * y, 2 * y);
-								}									
+								}*/									
 							}
 							
 							
@@ -4380,6 +4387,7 @@ var core = function(t, e, i) {
                             }
 							
                         }
+						}
                     }
                 };
         }
