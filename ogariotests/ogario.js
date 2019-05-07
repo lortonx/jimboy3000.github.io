@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.214 MEGA TEST
+// v1.215 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -26,6 +26,14 @@ function checkVideos(){
 	)
 }
 window.videoJustWatchProflag=true;
+
+function videoJustWatchProflag(){
+	if (window.videoJustWatchProflag){
+		window.videoJustWatchPro = document.createElement("video"); // create a video element
+		window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
+		window.videoJustWatchProflag=false;
+			}
+}
 
 
 					
@@ -4287,13 +4295,6 @@ var core = function(t, e, i) {
                     }
                     return ctxfx;
                 };
-				this.videoJustWatchProflag= function(){
-					if (window.videoJustWatchProflag){
-						window.videoJustWatchPro = document.createElement("video"); // create a video element
-						window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
-						window.videoJustWatchProflag=false;
-					}
-				}
                 this.draw = function(style, canCreateDiscussions) {
                     if (!(M.hideSmallBots && this.size <= 36)) {
                         style.save();
