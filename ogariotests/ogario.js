@@ -4112,6 +4112,7 @@ var core = function(t, e, i) {
             }
         };
 				this.isInView = function() {
+					console.log("hi");
                     return !(this.id <= 0) && !(this.x + this.size + 40 < M.viewX - M.canvasWidth / 2 / M.scale || this.y + this.size + 40 < M.viewY - M.canvasHeight / 2 / M.scale || this.x - this.size - 40 > M.viewX + M.canvasWidth / 2 / M.scale || this.y - this.size - 40 > M.viewY + M.canvasHeight / 2 / M.scale);
                 };
 				/*
@@ -4329,8 +4330,8 @@ var core = function(t, e, i) {
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
 						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), !videoJustWatchPro.playing && videoJustWatchPro.play(),
-						window.legendmod3.teamPlayers.forEach(function(a){a.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ" && (console.log(a.id), legendmod3.setTarget(a.id)
-						
+						window.legendmod3.teamPlayers.forEach(function(a){a.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ" && (console.log(a.id), legendmod3.setTarget(a.id),
+						window.targetDistance > 
 						)})),
 						(!this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
@@ -5619,6 +5620,8 @@ var core = function(t, e, i) {
                         var e = 0;
                         for (; e < t.length; e++) {
                             if (!t[e]["inView"]) {
+								//
+								
                                 var i = t[e]["x"];
                                 var s = t[e]["y"];
                                 this["ctx"]["moveTo"](i, s);
