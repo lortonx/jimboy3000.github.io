@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.180 MEGA TEST
+// v1.181 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -9,7 +9,7 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
     }
 })
-
+window.targetDistance;
 var videoJustWatchPro = document.createElement("video"); // create a video element
 videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
 						
@@ -18,7 +18,10 @@ window.agarversion = "v12/2106/";
 
 function pauseVideos(){
 	if (videoJustWatchPro.playing){ 
+	setTimeout(function() {
+	console.log("Pausing video");
 	videoJustWatchPro.pause();
+	}, 1000);
 		}
 }
 //window.disableIntegrity=false;
@@ -4326,7 +4329,8 @@ var core = function(t, e, i) {
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), !videoJustWatchPro.playing && videoJustWatchPro.play() ),
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y), !videoJustWatchPro.playing && videoJustWatchPro.play(),
+						//(window.teammatenicks.includes(this.targetNick) && ),
 						(!this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
@@ -5083,7 +5087,7 @@ var core = function(t, e, i) {
                 this['zoomValue'] *= Math['pow'](v['zoomSpeedValue2']+1, t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
             },
             'setTargetPosition': function(t, e) {
-                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));
+                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));window.targetDistance=this['targetDistance'];
             },
             'resetTargetPosition': function() {
                 this['targetX'] = this['playerX'], this['targetY'] = this['playerY'];
