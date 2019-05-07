@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.198 MEGA TEST
+// v1.199 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2997,6 +2997,7 @@ var core = function(t, e, i) {
                     a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
                     n = Math['floor']((e + a) / (i['mapSize'] / g['sectorsY'])),
                     r = Math['floor']((t + o) / (i['mapSize'] / g['sectorsX']));
+					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
                 return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
             },
             'shortMassFormat': function(t) {
