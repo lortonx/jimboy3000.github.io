@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.182 MEGA TEST
+// v1.178 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -10,10 +10,20 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     }
 })
 
-videoJustWatchPro = new Video; // create a video element
-videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
-
-
+function Video(src, append) {
+  var v = document.createElement("video");
+  if (src != "") {
+    v.src = src;
+  }
+  if (append == true) {
+    document.body.appendChild(v);
+  }
+  return v;
+}
+			videoJustWatchPro = new Video;
+			videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
+			//videoJustWatchPro = document.createElement("video"); // create a video element
+			//videoJustWatchPro.src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";	
 
 			
 window.agarversion = "v12/2106/";
@@ -3877,7 +3887,9 @@ var core = function(t, e, i) {
 			cimgDyingLight = new Image;
             cimgDyingLight.src = g.commanderImageDyingLight;	
 			cimgDyingLightvirus = new Image;
-            cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;				
+            cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;	
+			
+			
 			cimgDyingLight1 = new Image;
             cimgDyingLight1.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie2.png';			
 			cimgDyingLight2 = new Image;
@@ -3889,7 +3901,9 @@ var core = function(t, e, i) {
 			cimgDyingLight5 = new Image;
             cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';		
 			cimgDyingLight6 = new Image;
-            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';				
+            cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';		
+
+		
 			}		
 			this.oldAlpha=0;
             this.id = t; 
@@ -4325,7 +4339,7 @@ var core = function(t, e, i) {
 						
 						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && ( style.drawImage(videoJustWatchPro, this.x - y, this.y - y, 2 * y, 2 * y)), // !videoJustWatchPro.playing && videoJustWatchPro.play() ),
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.drawImage(videoJustWatchPro, this.x - y, this.y - y, 2 * y, 2 * y), !videoJustWatchPro.playing && videoJustWatchPro.play() ),
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)), 
