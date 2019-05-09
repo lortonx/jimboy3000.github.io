@@ -2969,7 +2969,7 @@ var core = function(t, e, i) {
                 if (window.spawnspecialeffects == true) {
                     setTimeout(function() {
                         ///////// trigger special effects
-						console.log('Special effects stage 1');
+						//console.log('Special effects stage 1');
                         i["spawnX"] = i["playerX"];
                         i["spawnY"] = i["playerY"];
                         M["drawCommander"] = true;
@@ -5448,7 +5448,7 @@ var core = function(t, e, i) {
                 },
                 ///////////////////// special effects - not work
                 "drawCommander": function() {
-					console.log('Special effects stage 2');
+					//console.log('Special effects stage 2');
                     if (M["drawCommander"]) {
                         var pickerAxes = this["ctx"];
                         cimg = new Image;
