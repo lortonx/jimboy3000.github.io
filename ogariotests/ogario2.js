@@ -1,13 +1,86 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.166 MEGA TEST
+// v1.241 MEGA TEST
 // Game Configurations
 
+Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+    get: function(){
+        return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+    }
+})
+
+window.videoJustWatchProflag=true;
+window.videoJustWatchPro;
+
+function checkVideos(){
+	checkVideos1();
+	 //setTimeout(function() {
+		 if (window.videoJustWatchPro.readyState==4){
+	if (!window.videoJustWatchPro.playing){
+	window.videoJustWatchPro.play();
+	setTimeout(function() {
+		checkVideos2();
+	}, 2000);	
+	};
+
+		 }
+	//}, 2000);
+}
+
+function checkVideos2(){
+	
+	for(i=0; i<legendmod3.top5.length-1 ;i++){
+	
+		if(i.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") {
+			legendmod3.setTarget(i.id);				
+	if(legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){
+		window.videoJustWatchProflag2=false;
+	if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3"){
+	
+	window.videoJustWatchPro.volume = 1;
+	window.videoJustWatchProflag2=true;
+			}
+	else{
+		window.videoJustWatchPro.volume = 0;
+		}
+		
+		}
+		}
+		
+		 }
+	if(legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){	 
+	checkvideoJustWatchProflag2();		
+	}	
+}
+
+function checkvideoJustWatchProflag2(){
+	
+	if (!window.videoJustWatchProflag2){
+		window.videoJustWatchPro.volume = 0;
+	}
+}
+function checkVideos1(){
+	if (videoJustWatchProflag){
+		window.videoJustWatchPro = document.createElement("video"); // create a video element
+		window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
+		window.videoJustWatchProflag=false;
+	}
+};	
+
+
+
+					
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
 
-
+function pauseVideos(){
+	setTimeout(function() {
+	if (window.videoJustWatchPro.playing){ 
+	window.videoJustWatchPro.pause();
+		}
+	}, 1000);
+}
 //window.disableIntegrity=false;
 var Lmagarversion = "";
 
@@ -2896,6 +2969,7 @@ var core = function(t, e, i) {
                 if (window.spawnspecialeffects == true) {
                     setTimeout(function() {
                         ///////// trigger special effects
+						//console.log('Special effects stage 1');
                         i["spawnX"] = i["playerX"];
                         i["spawnY"] = i["playerY"];
                         M["drawCommander"] = true;
@@ -2903,6 +2977,8 @@ var core = function(t, e, i) {
                 }
             },
             'onPlayerDeath': function() {
+				//
+				pauseVideos(),
                 i.play = false, i['playerColor'] = null, i['foodIsHidden'] = false, i['playerMass'] = 0, i['playerScore'] = 0, i['playerSplitCells'] = 0, this['showMenu'](300), this['sendPlayerDeath'](), this['updateDeathLocations'](i['playerX'], i['playerY']), this['unlockButtons'](), ogarcommando1(), this['autoResp']();
             },
             'setPlayerSettings': function() {
@@ -2976,6 +3052,7 @@ var core = function(t, e, i) {
                     a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
                     n = Math['floor']((e + a) / (i['mapSize'] / g['sectorsY'])),
                     r = Math['floor']((t + o) / (i['mapSize'] / g['sectorsX']));
+					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
                 return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
             },
             'shortMassFormat': function(t) {
@@ -4095,6 +4172,7 @@ var core = function(t, e, i) {
             }
         };
 				this.isInView = function() {
+					//console.log("hi");
                     return !(this.id <= 0) && !(this.x + this.size + 40 < M.viewX - M.canvasWidth / 2 / M.scale || this.y + this.size + 40 < M.viewY - M.canvasHeight / 2 / M.scale || this.x - this.size - 40 > M.viewX + M.canvasWidth / 2 / M.scale || this.y - this.size - 40 > M.viewY + M.canvasHeight / 2 / M.scale);
                 };
 				/*
@@ -4114,15 +4192,14 @@ var core = function(t, e, i) {
 			this.mass = ~~(t * t / 100); 
 			this.redrawMass = true;
 			if(this.isVirus){
-				if(this.virMassShots){
-					if(this.mass <= 200){
-					this.mass = ~~((200 - this.mass) / 14);					
-					this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor;		
-					
-					}
+				if(this.mass <= 200){
+					this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor;							
+					}	
 					else if (this.mass > 220){
 					this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor;
 					}					
+				if(this.virMassShots){				
+					this.mass = ~~((200 - this.mass) / 14);										
 				}
 				if(v.virusSound && this.lastMass && this.mass < this.lastMass) {
 					void ogarminimapdrawer.playSound(ogarminimapdrawer.setSound(v['virusSoundurl']));
@@ -4252,7 +4329,7 @@ var core = function(t, e, i) {
                     }
                     return ctxfx;
                 };
-                this.draw = function(style, canCreateDiscussions) {
+                this.draw = function(style, canCreateDiscussions) {				
                     if (!(M.hideSmallBots && this.size <= 36)) {
                         style.save();
                         this.redrawed++;
@@ -4299,18 +4376,20 @@ var core = function(t, e, i) {
                             style.globalAlpha = value;
                             s = false;
                         }
-						if (dyinglight1load != "yes"){
+						/*if (dyinglight1load != "yes"){
                             style.globalAlpha = 1;
                             s = false;							
-						}
-                        var node = null;
+						}*/
+                        var node = null;							
+
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && 
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
-						
-						style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
-						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha),
+						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
+						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && checkVideos()),
+						this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && (style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
+						!this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
 						(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)), 
@@ -4380,6 +4459,7 @@ var core = function(t, e, i) {
                             }
 							
                         }
+						
                     }
                 };
         }
@@ -4890,6 +4970,7 @@ var core = function(t, e, i) {
             'isInView': function(t, e, i) {
                 var s = this['canvasWidth'] / 2 / this['scale'],
                     o = this['canvasHeight'] / 2 / this['scale'];
+					//console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o));
                 return !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o);
             },
             'updateCells': function(t, i) {
@@ -5065,7 +5146,7 @@ var core = function(t, e, i) {
                 this['zoomValue'] *= Math['pow'](v['zoomSpeedValue2']+1, t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
             },
             'setTargetPosition': function(t, e) {
-                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));
+                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));window.targetDistance=this['targetDistance'];
             },
             'resetTargetPosition': function() {
                 this['targetX'] = this['playerX'], this['targetY'] = this['playerY'];
@@ -5173,19 +5254,19 @@ var core = function(t, e, i) {
         'renderFrame': function () {
             //this.ctx.start2D();
             M.time = Date.now();
-            for (i = 0x0; i < M.cells.length; i++) {
+            for (i = 0; i < M.cells.length; i++) {
                 M.cells[i].moveCell();
             }
             this.setView();
             M.getCursorPosition();
             M.sortCells();
             M.compareCells();
-            this.ctx.clearRect(0x0, 0x0, this.canvasWidth, this.canvasHeight);
+            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
             if (v.showGrid) {
                 this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
             }
             this.ctx.save();
-            this.ctx.translate(this.canvasWidth / 0x2, this.canvasHeight / 0x2);
+            this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
             this.ctx.scale(this.scale, this.scale);
             this.ctx.translate(-this.camX, -this.camY);
             if (v.showBgSectors) {
@@ -5195,11 +5276,11 @@ var core = function(t, e, i) {
                 this.drawBattleArea(this.ctx);
             }
             if (v.showMapBorders) {
-                var _0x6993ee = g.bordersWidth / 0x2;
+                var _0x6993ee = g.bordersWidth / 2;
                 this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, g.bordersColor, g.bordersWidth);
             }
-
-
+			this["drawCommander"]();
+			
             if (v.virusesRange) {
                 this.drawVirusesRange(this.ctx, M.viruses);
             }
@@ -5221,14 +5302,14 @@ var core = function(t, e, i) {
 
             this.drawGhostCells();
             
-            for (var i = 0x0; i < M.removedCells.length; i++) {
+            for (var i = 0; i < M.removedCells.length; i++) {
                 M.removedCells[i].draw(this.ctx, true);
             }
 
 
             v.jellyPhisycs&&M.updateQuadtree(M.cells);//
 
-            for (i = 0x0; i < M.cells.length; i++) {
+            for (i = 0; i < M.cells.length; i++) {
 
                 if(v.jellyPhisycs){
                     M.cells[i].updateNumPoints();
@@ -5250,8 +5331,8 @@ var core = function(t, e, i) {
             0.75,'#ffffff')
             
             if(ogarfooddrawer.RMB && M.indexedCells[M.selected] && M.playerCellIDs.length){
-                var index = M.selectBiggestCell ? M.playerCells.length - 0x1 : 0x0;
-                //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0x0, this.pi2, false);
+                var index = M.selectBiggestCell ? M.playerCells.length - 1 : 0;
+                //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0, this.pi2, false);
                 if(M.playerCells[index] == undefined) return;
                 var xc = M.playerCells[index].targetX//.x
                 var yc = M.playerCells[index].targetY//.y
@@ -5302,7 +5383,7 @@ var core = function(t, e, i) {
             ctx.globalAlpha = alpha;
             ctx.strokeStyle = color;
                 ctx.beginPath();
-                ctx.arc(x, y, size-10, 0x0, this.pi2, false);
+                ctx.arc(x, y, size-10, 0, this.pi2, false);
                 ctx.closePath();
                 ctx.stroke();
             
@@ -5367,6 +5448,7 @@ var core = function(t, e, i) {
                 },
                 ///////////////////// special effects - not work
                 "drawCommander": function() {
+					//console.log('Special effects stage 2');
                     if (M["drawCommander"]) {
                         var pickerAxes = this["ctx"];
                         cimg = new Image;
@@ -5596,6 +5678,8 @@ var core = function(t, e, i) {
                         var e = 0;
                         for (; e < t.length; e++) {
                             if (!t[e]["inView"]) {
+								//
+								
                                 var i = t[e]["x"];
                                 var s = t[e]["y"];
                                 this["ctx"]["moveTo"](i, s);
