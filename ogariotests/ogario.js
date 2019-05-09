@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.239 MEGA TEST
+// v1.240 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2969,6 +2969,7 @@ var core = function(t, e, i) {
                 if (window.spawnspecialeffects == true) {
                     setTimeout(function() {
                         ///////// trigger special effects
+						console.log('Special effects stage 1');
                         i["spawnX"] = i["playerX"];
                         i["spawnY"] = i["playerY"];
                         M["drawCommander"] = true;
@@ -5447,6 +5448,7 @@ var core = function(t, e, i) {
                 },
                 ///////////////////// special effects - not work
                 "drawCommander": function() {
+					console.log('Special effects stage 2');
                     if (M["drawCommander"]) {
                         var pickerAxes = this["ctx"];
                         cimg = new Image;
