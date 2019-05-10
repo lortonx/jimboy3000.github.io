@@ -1,14 +1,25 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.249 MEGA TEST
+// v1.250 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
     }
-})
+});
+
+function Video(src, append) {
+  var v = document.createElement("video");
+  if (src != "") {
+    v.src = src;
+  }
+  if (append == true) {
+    document.body.appendChild(v);
+  }
+  return v;
+}
 
 window.videoJustWatchProflag=true;
 window.videoJustWatchPro;
