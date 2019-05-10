@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.263 MEGA TEST
+// v1.264 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2515,10 +2515,11 @@ var core = function(t, e, i) {
 					console.log("stage 1 videos");
 				}
 				else {					
-                    checktypeImgVid = new Image(); 
+                    checktypeImgVid = new Image();
+					console.log("stage 1 images");	
 				}				
                 if (s('#' + e).empty().addClass('default'), t && 0 != t.length) {
-
+					console.log("stage 1 images/videos: " + t);	
 					var i = this, 
 					o = checktypeImgVid;
                        // o = new Image(); 					
