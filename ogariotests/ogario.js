@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.261 MEGA TEST
+// v1.262 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -1628,12 +1628,12 @@ var core = function(t, e, i) {
                         s(t + ' .' + e + '-picker')['colorpicker']({
                             'format': 'hex'
                         }).on('changeColor.colorpicker', function(t) {
-                            g[e] = t['color'].toHex(), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
+                            g[e] = t.color.toHex(), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'hex'
                     }).on('changeColor.colorpicker', function(t) {
-                        g[e] = t['color'].toHex(), i.hasOwnProperty(e) && (i[e] = g[e]);
+                        g[e] = t.color.toHex(), i.hasOwnProperty(e) && (i[e] = g[e]);
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
@@ -1642,13 +1642,13 @@ var core = function(t, e, i) {
                         s(t + ' .' + e + '-picker').colorpicker({
                             'format': 'rgba'
                         }).on('changeColor.colorpicker', function(t) {
-                            var s = t['color'].toRGB();
+                            var s = t.color.toRGB();
                             g[e] = 'rgba(' + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'rgba'
                     }).on('changeColor.colorpicker', function(t) {
-                        var s = t['color'].toRGB();
+                        var s = t.color.toRGB();
                         g[e] = 'rgba(' + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]);
                     });
                 },
@@ -1844,7 +1844,7 @@ var core = function(t, e, i) {
                 'nick': 'I<3Legendmod',
                 'clanTag': 'Ⓜ',
                 'skinURL': '',
-                'color': g['mainColor']
+                'color': g.mainColor
             },
             v = {
 				'jellyPhisycs':false,
@@ -2246,7 +2246,7 @@ var core = function(t, e, i) {
                             if (v['showTop5']) {
             					//console.log(['top5'].length);
             					//console.log(['teamPlayers'].length);
-                                for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o]['color'] + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o]['nick']) + '</li>');
+                                for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o].color + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o].nick) + '</li>');
                                 this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                             }
                         },
@@ -2283,7 +2283,7 @@ var core = function(t, e, i) {
                     if (v['showTop5']) {
                         //console.log(['top5'].length);
                         //console.log(['teamPlayers'].length);
-                        for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o]['nick']) + '</li>');
+                        for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o].nick) + '</li>');
                         this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                     }
                 }
@@ -2327,11 +2327,11 @@ var core = function(t, e, i) {
             'displayChatHistory': function(t) {
                 if (t) {
                     this['clearChatHistory'](!0);
-                    for (var e = 0; e < this['chatHistory'].length; e++) s('#messages').append('<li><span class=\"message-nick\">' + this['chatHistory'][e]['nick'] + ': </span><span class=\"message-text\">' + this['chatHistory'][e]['message'] + '</span></li>');
+                    for (var e = 0; e < this['chatHistory'].length; e++) s('#messages').append('<li><span class=\"message-nick\">' + this['chatHistory'][e].nick + ': </span><span class=\"message-text\">' + this['chatHistory'][e]['message'] + '</span></li>');
                 } else this['clearChatHistory'](!1);
             },
             'clearChatHistory': function(t) {
-                s('#messages')['empty'](), t && (toastr['clear'](), v['showChatBox'] && (s('#chat-box .message').remove(), this['chatHistory'].length = 0));
+                s('#messages').empty(), t && (toastr['clear'](), v['showChatBox'] && (s('#chat-box .message').remove(), this['chatHistory'].length = 0));
             },
             'displayChatInfo': function(t, e) {
                 t ? toastr['info'](h[e + 'A']) : toastr['error'](h[e + 'B']);
@@ -2464,7 +2464,7 @@ var core = function(t, e, i) {
                             'nick': 'Profile #' + (t + 1),
                             'clanTag': '',
                             'skinURL': '',
-                            'color': g['mainColor']
+                            'color': g.mainColor
                         });
                     }
                 } else {
@@ -2472,16 +2472,16 @@ var core = function(t, e, i) {
                         'nick': 'Profile #' + (t + 1),
                         'clanTag': '',
                         'skinURL': '',
-                        'color': g['mainColor']
+                        'color': g.mainColor
                     });
                 }
                 if (null !== e.localStorage.getItem('ogarioSelectedProfile')){ 
 				this['selectedProfile'] = JSON['parse'](e.localStorage.getItem('ogarioSelectedProfile'));
 				}
-				ogarcopythelb['nick'] = ogario1PlayerProfiles[this['selectedProfile']]['nick'];
-				ogarcopythelb['clanTag'] = ogario1PlayerProfiles[this['selectedProfile']]['clanTag'];
-				ogarcopythelb['skinURL'] = ogario1PlayerProfiles[this['selectedProfile']]['skinURL'];
-				ogarcopythelb['color'] = ogario1PlayerProfiles[this['selectedProfile']]['color'];
+				ogarcopythelb.nick = ogario1PlayerProfiles[this['selectedProfile']].nick;
+				ogarcopythelb.clanTag = ogario1PlayerProfiles[this['selectedProfile']].clanTag;
+				ogarcopythelb.skinURL = ogario1PlayerProfiles[this['selectedProfile']].skinURL;
+				ogarcopythelb.color = ogario1PlayerProfiles[this['selectedProfile']].color;
             },
             'changeSkinPreview': function(t, e) {
                 if (t && e) {
@@ -2492,7 +2492,7 @@ var core = function(t, e, i) {
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						s("#skin-popover").append('<video id="videoskinpreview" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
-//						s("#skin-popover")["popover"]();
+//						s("#skin-popover").popover();
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						}
 						else{
@@ -2500,10 +2500,10 @@ var core = function(t, e, i) {
 						s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + t.src + "' width='500'>\"></a>");	
 						}
-                        s("#skin-popover").append(s(t)["fadeIn"](1000));
-                        s("#skin-popover")["popover"]();
+                        s("#skin-popover").append(s(t).fadeIn(1000));
+                        s("#skin-popover").popover();
                     } else {
-                        s("#" + e).removeClass("default").append(s(t)["fadeIn"](1000));
+                        s("#" + e).removeClass("default").append(s(t).fadeIn(1000));
                     }
                 }
             },
@@ -2517,7 +2517,7 @@ var core = function(t, e, i) {
 				else {					
                     checktypeImgVid = new Image(); 
 				}				
-                if (s('#' + e)['empty']().addClass('default'), t && 0 != t.length) {
+                if (s('#' + e).empty().addClass('default'), t && 0 != t.length) {
 
 					var i = this, 
 					o = checktypeImgVid;
@@ -2531,15 +2531,15 @@ var core = function(t, e, i) {
                 var t = (ogario1PlayerProfiles.length + this['selectedProfile'] - 1) % ogario1PlayerProfiles.length,
                     e = (this['selectedProfile'] + 1) % ogario1PlayerProfiles.length;
                 //console.log(ogario1PlayerProfiles.length);
-                this['setSkinPreview'](ogario1PlayerProfiles[t]['skinURL'], 'prev-profile');
-				this['setSkinPreview'](ogario1PlayerProfiles[this['selectedProfile']]['skinURL'], 'skin-preview');
-				this['setSkinPreview'](ogario1PlayerProfiles[e]['skinURL'], 'next-profile');
+                this['setSkinPreview'](ogario1PlayerProfiles[t].skinURL, 'prev-profile');
+				this['setSkinPreview'](ogario1PlayerProfiles[this['selectedProfile']].skinURL, 'skin-preview');
+				this['setSkinPreview'](ogario1PlayerProfiles[e].skinURL, 'next-profile');
 				this['saveSettings'](this['selectedProfile'], 'ogarioSelectedProfile');
-				s('#nick').val(ogario1PlayerProfiles[this['selectedProfile']]['nick']);
-				s('#clantag').val(ogario1PlayerProfiles[this['selectedProfile']]['clanTag']);
-				s('#skin').val(ogario1PlayerProfiles[this['selectedProfile']]['skinURL']);
-				s('#color').val(ogario1PlayerProfiles[this['selectedProfile']]['color']);
-				s('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this['selectedProfile']]['color']);
+				s('#nick').val(ogario1PlayerProfiles[this['selectedProfile']].nick);
+				s('#clantag').val(ogario1PlayerProfiles[this['selectedProfile']].clanTag);
+				s('#skin').val(ogario1PlayerProfiles[this['selectedProfile']].skinURL);
+				s('#color').val(ogario1PlayerProfiles[this['selectedProfile']].color);
+				s('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this['selectedProfile']].color);
 				s('#skins a').removeClass('selected');
 				s('#skins a[data-profile=\'' + this['selectedProfile'] + '\']').addClass('selected');
             },
@@ -2591,8 +2591,8 @@ var core = function(t, e, i) {
                 });
             },
             'setLang': function() {
-                if ('pl' === r && e['i18n_dict'] && e['i18n_dict']['en'])
-                    for (var t in e['i18n_dict']['en']) e['i18n_dict']['en'].hasOwnProperty(t) && h.hasOwnProperty(t) && (e['i18n_dict']['en'][t] = h[t]);
+                if ('pl' === r && e.i18n_dict && e.i18n_dict.en)
+                    for (var t in e.i18n_dict.en) e.i18n_dict.en.hasOwnProperty(t) && h.hasOwnProperty(t) && (e.i18n_dict.en[t] = h[t]);
             },
             'setMenu': function() {
                 var t;
@@ -2734,7 +2734,7 @@ var core = function(t, e, i) {
                     }), s(document).on("click", "#og-settings .btn-export", function(result) {
                         result["preventDefault"]();
                         t["exportSettings"]();
-                        s("#exp-imp")["fadeIn"](500);
+                        s("#exp-imp").fadeIn(500);
                         s("#exp-imp-settings, #export-settings")["perfectScrollbar"]("update");
                     }), s(document).on("click", "#close-exp-imp", function(event) {
                         event.preventDefault();
@@ -2950,14 +2950,14 @@ var core = function(t, e, i) {
             },
             'setShowQuickMenu': function() {
                 if (v["showQuickMenu"]) {
-                    s("#quick-menu")["fadeIn"](500);
+                    s("#quick-menu").fadeIn(500);
                 } else {
                     s("#quick-menu")["fadeOut"](500);
                 }
             },
             'setShowSkinsPanel': function() {
                 if (v["showSkinsPanel"]) {
-                    s("#skins-panel")["fadeIn"](500);
+                    s("#skins-panel").fadeIn(500);
                 } else {
                     s("#skins-panel")["fadeOut"](500);
                 }
@@ -3024,7 +3024,7 @@ var core = function(t, e, i) {
                 this['setParty'](), ':party' === this['gameMode'] && this['partyToken'] ? this['gameServerReconnect']() : this['createParty'](), this['create']();
             },
             'onPlayerSpawn': function() {
-                if (i.play = true, i['playerColor']) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb['nick'], i['playerColor'], ogarcopythelb['skinURL']);
+                if (i.play = true, i['playerColor']) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb.nick, i['playerColor'], ogarcopythelb.skinURL);
                 var t = this;
                 setTimeout(function() {
                     t['onPlayerSpawn']();
@@ -3049,15 +3049,15 @@ var core = function(t, e, i) {
                     e = s('#clantag').val(),
                     o = s('#skin').val(),
                     a = s('#color').val();
-                ogarcopythelb['nick'] = t, 
-				ogarcopythelb['clanTag'] = e['trim'](), 
-				ogarcopythelb['skinURL'] = this['checkSkinURL'](o['trim']()), 
-				7 == a.length && (ogarcopythelb['color'] = a), 
-				ogarcopythelb['clanTag'].length > 0 && (i['clanTag'] = ogarcopythelb['clanTag']), 
-				ogario1PlayerProfiles[this['selectedProfile']]['nick'] = ogarcopythelb['nick'], 
-				ogario1PlayerProfiles[this['selectedProfile']]['clanTag'] = ogarcopythelb['clanTag'], 
-				ogario1PlayerProfiles[this['selectedProfile']]['skinURL'] = ogarcopythelb['skinURL'], 
-				ogario1PlayerProfiles[this['selectedProfile']]['color'] = ogarcopythelb['color'], 
+                ogarcopythelb.nick = t, 
+				ogarcopythelb.clanTag = e['trim'](), 
+				ogarcopythelb.skinURL = this['checkSkinURL'](o['trim']()), 
+				7 == a.length && (ogarcopythelb.color = a), 
+				ogarcopythelb.clanTag.length > 0 && (i.clanTag = ogarcopythelb.clanTag), 
+				ogario1PlayerProfiles[this['selectedProfile']].nick = ogarcopythelb.nick, 
+				ogario1PlayerProfiles[this['selectedProfile']].clanTag = ogarcopythelb.clanTag, 
+				ogario1PlayerProfiles[this['selectedProfile']].skinURL = ogarcopythelb.skinURL, 
+				ogario1PlayerProfiles[this['selectedProfile']].color = ogarcopythelb.color, 
 				this['saveSettings'](ogario1PlayerProfiles, 'ogarioPlayerProfiles');
             },
             'loadSkin': function(t, e) {
@@ -3458,16 +3458,16 @@ var core = function(t, e, i) {
                 null !== this[e] && this[e] === i || this['isSocketOpen']() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
-                this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb['nick']);
+                this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
             },
             'sendPlayerClanTag': function() {
-                this['sendPlayerData'](11, 'lastSentClanTag', ogarcopythelb['clanTag']);
+                this['sendPlayerData'](11, 'lastSentClanTag', ogarcopythelb.clanTag);
             },
             'sendPlayerSkinURL': function() {
-                this['sendPlayerData'](12, 'lastSentSkinURL', ogarcopythelb['skinURL']);
+                this['sendPlayerData'](12, 'lastSentSkinURL', ogarcopythelb.skinURL);
             },
             'sendPlayerCustomColor': function() {
-                this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb['color']);
+                this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
                 this['isSocketOpen']() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
@@ -3517,11 +3517,11 @@ var core = function(t, e, i) {
                         s.setUint16(o, 0, true), o += 2;
                     }
                     var e = 41;
-                    e += 2 * ogarcopythelb['nick'].length, e += 2 * ogarcopythelb['skinURL'].length;
+                    e += 2 * ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
                     var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this['playerID'], true);
                     var o = 5;
-                    t(ogarcopythelb['nick']), t(ogarcopythelb['skinURL']), t(ogarcopythelb['color']), t(i['playerColor']), this['sendBuffer'](s);
+                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i['playerColor']), this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
@@ -3643,7 +3643,7 @@ var core = function(t, e, i) {
                         a = t.getUint32(13, true);
                     if (a > 360000) return;
                     var n = this['teamPlayers'][i];
-                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date['now'](), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n['nick'], n['skinURL'], s, o, a, n['color']);
+                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date['now'](), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n.nick, n.skinURL, s, o, a, n.color);
                 }
             },
             'updateTeamPlayers': function() {
@@ -3706,8 +3706,8 @@ var core = function(t, e, i) {
             },
             'sendChatMessage': function(t, e) {
                 //console.log(t);console.log(e);
-                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb['nick'].length) && this['isSocketOpen']()) {
-                    e = ogarcopythelb['nick'] + ': ' + e;
+                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this['isSocketOpen']()) {
+                    e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
@@ -3856,7 +3856,7 @@ var core = function(t, e, i) {
                 var e = this['checkPlayerID'](t);
                 if (null !== e) {
                     var i = this['teamPlayers'][e];
-                    if (this['targetID'] = i['id'], this['updateTarget'](i['nick'], i['skinURL'], i['x'], i['y'], i['mass'], i['color']), !i['alive']) return void this['setTargetStatus'](2);
+                    if (this['targetID'] = i['id'], this['updateTarget'](i.nick, i.skinURL, i['x'], i['y'], i['mass'], i.color), !i['alive']) return void this['setTargetStatus'](2);
                     this['setTargetStatus'](1);
                 } else this['setTargetStatus'](0);
             },
@@ -3910,7 +3910,7 @@ var core = function(t, e, i) {
             this['txt'] = '',
                 this['txtCanvas'] = null,
                 this['txtCtx'] = null,
-                this['color'] = '#FFFFFF',
+                this.color = '#FFFFFF',
                 this['stroke'] = false,
                 this['strokeWidth'] = 2,
                 this['strokeColor'] = '#000000',
@@ -3930,7 +3930,7 @@ var core = function(t, e, i) {
                         this['remeasure'] = true);
                 },
                 this['setColor'] = function(ogariocolorsetter) {
-                    this['color'] !== ogariocolorsetter && (this['color'] = ogariocolorsetter,
+                    this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
                         this['redraw'] = true);
                 },
                 this['setStroke'] = function(ogariostrokesetter) {
@@ -3999,7 +3999,7 @@ var core = function(t, e, i) {
                             this['txtCtx']['globalAlpha'] = 1,
                             this['txtCtx']['lineWidth'] = this['strokeWidth'],
                             this['txtCtx']['strokeStyle'] = this['strokeColor'],
-                            this['txtCtx']['fillStyle'] = this['color'],
+                            this['txtCtx']['fillStyle'] = this.color,
                             this['stroke'] && this['txtCtx']['strokeText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5)),
                             this['txtCtx']['fillText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5))),
                         this['txtCanvas'];
@@ -5009,7 +5009,7 @@ var core = function(t, e, i) {
             'handleLeaderboard': function() {
                 /*                for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
                                     var s = '<span>';
-                                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb['clanTag'].length && 0 == this['leaderboard'][i]['nick'].indexOf(ogarcopythelb['clanTag']) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer['escapeHTML'](this['leaderboard'][i]['nick']) + '</span>';
+                                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this['leaderboard'][i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer['escapeHTML'](this['leaderboard'][i].nick) + '</span>';
                                 } */
                 window.teammatenicks = [];
 				window.teammatelegendmodnicks = [];
@@ -5022,7 +5022,7 @@ var core = function(t, e, i) {
                 }
                 for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
-                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb['clanTag'].length && 0 != window.teammatenicks.includes(this['leaderboard'][i]['nick']) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer['escapeHTML'](this['leaderboard'][i]['nick']) + '</span>';
+                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this['leaderboard'][i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer['escapeHTML'](this['leaderboard'][i].nick) + '</span>';
                 }
                 if (this['playerPosition'] > window.leaderboardlimit && (t += '<span class=\"me\">' + this['playerPosition'] + '. ' + ogarminimapdrawer['escapeHTML'](this['playerNick']) + '</span>'), v['showLbData']);
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
@@ -5032,7 +5032,7 @@ var core = function(t, e, i) {
                 if (window.vanillaskins == true) {
                     if (window.customskinsname != null && window.customskinsname != undefined) {
                         for (i = 0; i <= this['leaderboard'].length - 1; i++) {
-                            if (this['leaderboard'][i]['nick'] == window.customskinsname) {
+                            if (this['leaderboard'][i].nick == window.customskinsname) {
                                 ogarminimapdrawer['customSkinsMap'][window.customskinsname] = window.customskinsurl;
                                 ogarminimapdrawer['loadSkin'](ogarminimapdrawer['customSkinsCache'], window.customskinsurl);
                                 window.customskinsname = undefined;
@@ -5131,7 +5131,7 @@ var core = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts['color'] = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -5217,7 +5217,7 @@ var core = function(t, e, i) {
                 });
             },
             'setCellOppColor': function(t, e, i) {
-                return t ? ogarcopythelb['color'] : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
+                return t ? ogarcopythelb.color : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
             },
             'getCursorPosition': function() {
                 this['cursorX'] = (this['clientX'] - this['canvasWidth'] / 2) / this['viewScale'] + this['viewX'], this['cursorY'] = (this['clientY'] - this['canvasHeight'] / 2) / this['viewScale'] + this['viewY'];
