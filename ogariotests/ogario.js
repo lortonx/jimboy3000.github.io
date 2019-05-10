@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.266 MEGA TEST
+// v1.267 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2483,7 +2483,7 @@ var core = function(t, e, i) {
 				ogarcopythelb.skinURL = ogario1PlayerProfiles[this['selectedProfile']].skinURL;
 				ogarcopythelb.color = ogario1PlayerProfiles[this['selectedProfile']].color;
             },
-            'changeSkinPreview': function(t, e) {
+            'changeSkinPreview': function(e, t) {
 				console.log(t,e)
                 if (t && e) {
                     if ("skin-preview" === t) {
