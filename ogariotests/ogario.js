@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.250 MEGA TEST
+// v1.251 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2476,7 +2476,12 @@ var core = function(t, e, i) {
             'changeSkinPreview': function(t, e) {
                 if (t && e) {
                     if ("skin-preview" === e) {
-                        s("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + t.src + "' width='500'>\"></a>");
+						if (t.includes(".mp4")){
+                        s("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
+						}
+						else{
+						s("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + t.src + "' width='500'>\"></a>");	
+						}
                         s("#skin-popover").append(s(t)["fadeIn"](1000));
                         s("#skin-popover")["popover"]();
                     } else {
@@ -3010,7 +3015,14 @@ var core = function(t, e, i) {
             },
             'loadSkin': function(t, e) {
                 var i = this;
-                t[e] = new Image(), t[e].crossOrigin = 'anonymous', t[e]['onload'] = function() {
+				if (t.includes(".mp4")){
+					t[e] = new Video();
+				}
+				else{
+					t[e] = new Image();
+				}
+				t[e].crossOrigin = 'anonymous'; 
+				t[e]['onload'] = function() {
                     this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
                 }, t[e].src = e;
             },
