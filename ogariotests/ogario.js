@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.253 MEGA TEST
+// v1.254 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2476,7 +2476,7 @@ var core = function(t, e, i) {
             'changeSkinPreview': function(t, e) {
                 if (t && e) {
                     if ("skin-preview" === e) {
-						if (e.includes(".mp4")){
+						if (e.includes(".mp4")){ console.log("stage 3 videos");
                         s("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						}
 						else{
@@ -2492,7 +2492,9 @@ var core = function(t, e, i) {
             'setSkinPreview': function(t, e) {
 				
 				if (e.includes(".mp4")){
+					console.log("stage 4 videos");
 					checktypeImgVid = new Video();
+					console.log("stage 1 videos");
 				}
 				else {					
                     checktypeImgVid = new Image(); 
@@ -3018,6 +3020,7 @@ var core = function(t, e, i) {
 				console.log ("t:" + t + "e:" + e);
 				if (e.includes(".mp4")){
 					t[e] = new Video();
+					console.log("stage 2 videos");
 				}
 				else{
 					t[e] = new Image();
