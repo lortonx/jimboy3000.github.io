@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.259 MEGA TEST
+// v1.260 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2524,26 +2524,44 @@ var core = function(t, e, i) {
                 var t = (ogario1PlayerProfiles.length + this['selectedProfile'] - 1) % ogario1PlayerProfiles.length,
                     e = (this['selectedProfile'] + 1) % ogario1PlayerProfiles.length;
                 //console.log(ogario1PlayerProfiles.length);
-                this['setSkinPreview'](ogario1PlayerProfiles[t]['skinURL'], 'prev-profile'), this['setSkinPreview'](ogario1PlayerProfiles[this['selectedProfile']]['skinURL'], 'skin-preview'), this['setSkinPreview'](ogario1PlayerProfiles[e]['skinURL'], 'next-profile'), this['saveSettings'](this['selectedProfile'], 'ogarioSelectedProfile'), s('#nick').val(ogario1PlayerProfiles[this['selectedProfile']]['nick']), s('#clantag').val(ogario1PlayerProfiles[this['selectedProfile']]['clanTag']), s('#skin').val(ogario1PlayerProfiles[this['selectedProfile']]['skinURL']), s('#color').val(ogario1PlayerProfiles[this['selectedProfile']]['color']), s('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this['selectedProfile']]['color']), s('#skins a').removeClass('selected'), s('#skins a[data-profile=\'' + this['selectedProfile'] + '\']').addClass('selected');
+                this['setSkinPreview'](ogario1PlayerProfiles[t]['skinURL'], 'prev-profile');
+				this['setSkinPreview'](ogario1PlayerProfiles[this['selectedProfile']]['skinURL'], 'skin-preview');
+				this['setSkinPreview'](ogario1PlayerProfiles[e]['skinURL'], 'next-profile');
+				this['saveSettings'](this['selectedProfile'], 'ogarioSelectedProfile');
+				s('#nick').val(ogario1PlayerProfiles[this['selectedProfile']]['nick']);
+				s('#clantag').val(ogario1PlayerProfiles[this['selectedProfile']]['clanTag']);
+				s('#skin').val(ogario1PlayerProfiles[this['selectedProfile']]['skinURL']);
+				s('#color').val(ogario1PlayerProfiles[this['selectedProfile']]['color']);
+				s('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this['selectedProfile']]['color']);
+				s('#skins a').removeClass('selected');
+				s('#skins a[data-profile=\'' + this['selectedProfile'] + '\']').addClass('selected');
             },
             'prevProfile': function() {
-                this['setPlayerSettings'](), this['selectedProfile'] = (ogario1PlayerProfiles.length + this['selectedProfile'] - 1) % ogario1PlayerProfiles.length, this['setProfile']();
+                this['setPlayerSettings'](),
+				this['selectedProfile'] = (ogario1PlayerProfiles.length + this['selectedProfile'] - 1) % ogario1PlayerProfiles.length, this['setProfile']();
             },
             'nextProfile': function() {
-                this['setPlayerSettings'](), this['selectedProfile'] = (this['selectedProfile'] + 1) % ogario1PlayerProfiles.length, this['setProfile']();
+                this['setPlayerSettings'](),
+				this['selectedProfile'] = (this['selectedProfile'] + 1) % ogario1PlayerProfiles.length, this['setProfile']();
             },
             'selectProfile': function(t) {
-                this['setPlayerSettings'](), this['selectedProfile'] = parseInt(t), this['setProfile']();
+                this['setPlayerSettings']();
+				this['selectedProfile'] = parseInt(t);
+				this['setProfile']();
             },
             'addOption': function(t, e, i, o) {
-                s(t).append('<label><input type=\"checkbox\" id=\"' + e + '\" class=\"js-switch\"> ' + i + '</label>'), s('#' + e)['prop']('checked', o);
+                s(t).append('<label><input type=\"checkbox\" id=\"' + e + '\" class=\"js-switch\"> ' + i + '</label>');
+				s('#' + e)['prop']('checked', o);
             },
             'addOptions': function(t, e) {
                 if (t) {
                     s('#og-options').append('<div class=\"options-box ' + e + '\"><h5 class=\"menu-main-color\">' + h[e] + '</h5></div>');
                     for (var i = 0; i < t.length; i++) {
                         var o = t[i];
-                        v.hasOwnProperty(o) && (s('.' + e).append('<label>' + h[o] + ' <input type=\"checkbox\" class=\"js-switch\" id=\"' + o + '\"></label>'), s('#' + o)['prop']('checked', v[o]));
+                        if(v.hasOwnProperty(o)){
+							s('.' + e).append('<label>' + h[o] + ' <input type=\"checkbox\" class=\"js-switch\" id=\"' + o + '\"></label>'); 
+							s('#' + o)['prop']('checked', v[o]);
+						}
                     }
                 }
             },
