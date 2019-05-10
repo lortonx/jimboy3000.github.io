@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.254 MEGA TEST
+// v1.255 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -21,6 +21,10 @@ function Video(src, append) {
   return v;
 }
 
+/*
+$("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
+$("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
+*/
 window.videoJustWatchProflag=true;
 window.videoJustWatchPro;
 
@@ -3013,7 +3017,16 @@ var core = function(t, e, i) {
                     e = s('#clantag').val(),
                     o = s('#skin').val(),
                     a = s('#color').val();
-                ogarcopythelb['nick'] = t, ogarcopythelb['clanTag'] = e['trim'](), ogarcopythelb['skinURL'] = this['checkSkinURL'](o['trim']()), 7 == a.length && (ogarcopythelb['color'] = a), ogarcopythelb['clanTag'].length > 0 && (i['clanTag'] = ogarcopythelb['clanTag']), ogario1PlayerProfiles[this['selectedProfile']]['nick'] = ogarcopythelb['nick'], ogario1PlayerProfiles[this['selectedProfile']]['clanTag'] = ogarcopythelb['clanTag'], ogario1PlayerProfiles[this['selectedProfile']]['skinURL'] = ogarcopythelb['skinURL'], ogario1PlayerProfiles[this['selectedProfile']]['color'] = ogarcopythelb['color'], this['saveSettings'](ogario1PlayerProfiles, 'ogarioPlayerProfiles');
+                ogarcopythelb['nick'] = t, 
+				ogarcopythelb['clanTag'] = e['trim'](), 
+				ogarcopythelb['skinURL'] = this['checkSkinURL'](o['trim']()), 
+				7 == a.length && (ogarcopythelb['color'] = a), 
+				ogarcopythelb['clanTag'].length > 0 && (i['clanTag'] = ogarcopythelb['clanTag']), 
+				ogario1PlayerProfiles[this['selectedProfile']]['nick'] = ogarcopythelb['nick'], 
+				ogario1PlayerProfiles[this['selectedProfile']]['clanTag'] = ogarcopythelb['clanTag'], 
+				ogario1PlayerProfiles[this['selectedProfile']]['skinURL'] = ogarcopythelb['skinURL'], 
+				ogario1PlayerProfiles[this['selectedProfile']]['color'] = ogarcopythelb['color'], 
+				this['saveSettings'](ogario1PlayerProfiles, 'ogarioPlayerProfiles');
             },
             'loadSkin': function(t, e) {
                 var i = this;
