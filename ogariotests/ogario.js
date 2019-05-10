@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.262 MEGA TEST
+// v1.263 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3072,8 +3072,10 @@ var core = function(t, e, i) {
 				}
 				t[e].crossOrigin = 'anonymous'; 
 				t[e]['onload'] = function() {
-                    if ( this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e)){
-					1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']);
+                    if ( this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e))){
+					if (1 == i['cacheQueue'].length){
+						i['cacheSkin'](i['customSkinsCache']);
+					}
 					};
                 };
 				t[e].src = e;
