@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.260 MEGA TEST
+// v1.261 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2475,7 +2475,13 @@ var core = function(t, e, i) {
                         'color': g['mainColor']
                     });
                 }
-                null !== e.localStorage.getItem('ogarioSelectedProfile') && (this['selectedProfile'] = JSON['parse'](e.localStorage.getItem('ogarioSelectedProfile'))), ogarcopythelb['nick'] = ogario1PlayerProfiles[this['selectedProfile']]['nick'], ogarcopythelb['clanTag'] = ogario1PlayerProfiles[this['selectedProfile']]['clanTag'], ogarcopythelb['skinURL'] = ogario1PlayerProfiles[this['selectedProfile']]['skinURL'], ogarcopythelb['color'] = ogario1PlayerProfiles[this['selectedProfile']]['color'];
+                if (null !== e.localStorage.getItem('ogarioSelectedProfile')){ 
+				this['selectedProfile'] = JSON['parse'](e.localStorage.getItem('ogarioSelectedProfile'));
+				}
+				ogarcopythelb['nick'] = ogario1PlayerProfiles[this['selectedProfile']]['nick'];
+				ogarcopythelb['clanTag'] = ogario1PlayerProfiles[this['selectedProfile']]['clanTag'];
+				ogarcopythelb['skinURL'] = ogario1PlayerProfiles[this['selectedProfile']]['skinURL'];
+				ogarcopythelb['color'] = ogario1PlayerProfiles[this['selectedProfile']]['color'];
             },
             'changeSkinPreview': function(t, e) {
                 if (t && e) {
@@ -2490,6 +2496,7 @@ var core = function(t, e, i) {
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						}
 						else{
+						console.log("default settings for images on changeSkinPreview")
 						s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + t.src + "' width='500'>\"></a>");	
 						}
