@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.261 MEGA TEST
+// v1.262 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -1628,12 +1628,12 @@ var core = function(t, e, i) {
                         s(t + ' .' + e + '-picker')['colorpicker']({
                             'format': 'hex'
                         }).on('changeColor.colorpicker', function(t) {
-                            g[e] = t['color'].toHex(), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
+                            g[e] = t.color.toHex(), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'hex'
                     }).on('changeColor.colorpicker', function(t) {
-                        g[e] = t['color'].toHex(), i.hasOwnProperty(e) && (i[e] = g[e]);
+                        g[e] = t.color.toHex(), i.hasOwnProperty(e) && (i[e] = g[e]);
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
@@ -1642,13 +1642,13 @@ var core = function(t, e, i) {
                         s(t + ' .' + e + '-picker').colorpicker({
                             'format': 'rgba'
                         }).on('changeColor.colorpicker', function(t) {
-                            var s = t['color'].toRGB();
+                            var s = t.color.toRGB();
                             g[e] = 'rgba(' + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'rgba'
                     }).on('changeColor.colorpicker', function(t) {
-                        var s = t['color'].toRGB();
+                        var s = t.color.toRGB();
                         g[e] = 'rgba(' + s['r'] + ',' + s['g'] + ',' + s['b'] + ',' + s['a'] + ')', i.hasOwnProperty(e) && (i[e] = g[e]);
                     });
                 },
@@ -2166,18 +2166,18 @@ var core = function(t, e, i) {
                     this['retryResp']++;
                     var t = this;
                     setTimeout(function() {
-                        s('.btn-play-guest')['is'](':visible') ? s('.btn-play-guest')['click']() : s('.btn-play')['click'](), i.play || t['tryResp']();
+                        s('.btn-play-guest').is(':visible') ? s('.btn-play-guest').click() : s('.btn-play').click(), i.play || t['tryResp']();
                     }, 500);
                 }
             },
             'quickResp': function() {
-                v['quickResp'] && (this['hideMenu'](), this['gameServerConnect'](this['ws']), i.play = false, this['tryResp']());
+                v['quickResp'] && (this['hideMenu'](), this['gameServerConnect'](this.ws), i.play = false, this['tryResp']());
             },
             'autoResp': function() {
-                v['autoResp'] && (this['setAutoResp'](), s('#overlays')['stop']().hide(), s('.btn-play-guest')['is'](':visible') ? s('.btn-play-guest')['click']() : s('.btn-play')['click']());
+                v['autoResp'] && (this['setAutoResp'](), s('#overlays')['stop']().hide(), s('.btn-play-guest').is(':visible') ? s('.btn-play-guest').click() : s('.btn-play').click());
             },
             'setAutoResp': function() {
-                v['autoResp'] && (s('#skipStats')['prop']('checked') || (s('#skipStats')['click'](), this['skipStats'] = true));
+                v['autoResp'] && (s('#skipStats')['prop']('checked') || (s('#skipStats').click(), this['skipStats'] = true));
             },
             'toggleAutoResp': function() {
                 v['autoResp'] = !v['autoResp'], this['setAutoResp'](), this['displayChatInfo'](v['autoResp'], 'autoRespMsg');
@@ -2209,7 +2209,7 @@ var core = function(t, e, i) {
                 s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').addClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', true), s('#block-warn').show();
             },
             'unblockPopups': function() {
-                s('#openfl-overlay.disabler')['click'](), s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').removeClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', false), s('#block-warn').hide();
+                s('#openfl-overlay.disabler').click(), s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').removeClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', false), s('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
                 v['blockPopups'] && this['unblockPopups']();
@@ -2246,7 +2246,7 @@ var core = function(t, e, i) {
                             if (v['showTop5']) {
             					//console.log(['top5'].length);
             					//console.log(['teamPlayers'].length);
-                                for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o]['color'] + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o]['nick']) + '</li>');
+                                for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o].color + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o]['nick']) + '</li>');
                                 this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                             }
                         },
@@ -2351,13 +2351,13 @@ var core = function(t, e, i) {
             'enterChatMessage': function() {
                 var t = s('#message-box'),
                     e = s('#message');
-                if (t['is'](':visible')) {
+                if (t.is(':visible')) {
                     var o = e.val();
                     o.length ? (this['sendChatMessage'](101, o), i.play && (e['blur'](), t.hide())) : (e['blur'](), t.hide()), e.val('');
                 } else t.show(), e['focus'](), e.val('');
             },
             'showMenu': function(t) {
-                if (e.MC && e.MC['showNickDialog']) return s('.ogario-menu').show(), s('.menu-panel').hide(), i.play || this['skipStats'] ? s('#main-panel').show() : s('#stats').show(), e.MC['showNickDialog'](300), s('#oferwallContainer')['is'](':visible') && e['closeOfferwall'](), void(s('#videoContainer')['is'](':visible') && e['closeVideoContainer']());
+                if (e.MC && e.MC['showNickDialog']) return s('.ogario-menu').show(), s('.menu-panel').hide(), i.play || this['skipStats'] ? s('#main-panel').show() : s('#stats').show(), e.MC['showNickDialog'](300), s('#oferwallContainer').is(':visible') && e['closeOfferwall'](), void(s('#videoContainer').is(':visible') && e['closeVideoContainer']());
                 t ? s('#overlays')['fadeIn'](t) : s('#overlays').show();
             },
             'hideMenu': function(t) {
@@ -2481,7 +2481,7 @@ var core = function(t, e, i) {
 				ogarcopythelb['nick'] = ogario1PlayerProfiles[this['selectedProfile']]['nick'];
 				ogarcopythelb['clanTag'] = ogario1PlayerProfiles[this['selectedProfile']]['clanTag'];
 				ogarcopythelb['skinURL'] = ogario1PlayerProfiles[this['selectedProfile']]['skinURL'];
-				ogarcopythelb['color'] = ogario1PlayerProfiles[this['selectedProfile']]['color'];
+				ogarcopythelb.color = ogario1PlayerProfiles[this['selectedProfile']].color;
             },
             'changeSkinPreview': function(t, e) {
                 if (t && e) {
@@ -2538,8 +2538,8 @@ var core = function(t, e, i) {
 				s('#nick').val(ogario1PlayerProfiles[this['selectedProfile']]['nick']);
 				s('#clantag').val(ogario1PlayerProfiles[this['selectedProfile']]['clanTag']);
 				s('#skin').val(ogario1PlayerProfiles[this['selectedProfile']]['skinURL']);
-				s('#color').val(ogario1PlayerProfiles[this['selectedProfile']]['color']);
-				s('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this['selectedProfile']]['color']);
+				s('#color').val(ogario1PlayerProfiles[this['selectedProfile']].color);
+				s('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this['selectedProfile']].color);
 				s('#skins a').removeClass('selected');
 				s('#skins a[data-profile=\'' + this['selectedProfile'] + '\']').addClass('selected');
             },
@@ -3045,19 +3045,19 @@ var core = function(t, e, i) {
                 i.play = false, i['playerColor'] = null, i['foodIsHidden'] = false, i['playerMass'] = 0, i['playerScore'] = 0, i['playerSplitCells'] = 0, this['showMenu'](300), this['sendPlayerDeath'](), this['updateDeathLocations'](i['playerX'], i['playerY']), this['unlockButtons'](), ogarcommando1(), this['autoResp']();
             },
             'setPlayerSettings': function() {
-                var t = s('#nick').val(),
-                    e = s('#clantag').val(),
-                    o = s('#skin').val(),
+                var t = s('#nick').val();
+                    e = s('#clantag').val();
+                    o = s('#skin').val();
                     a = s('#color').val();
-                ogarcopythelb['nick'] = t, 
-				ogarcopythelb['clanTag'] = e['trim'](), 
-				ogarcopythelb['skinURL'] = this['checkSkinURL'](o['trim']()), 
-				7 == a.length && (ogarcopythelb['color'] = a), 
-				ogarcopythelb['clanTag'].length > 0 && (i['clanTag'] = ogarcopythelb['clanTag']), 
-				ogario1PlayerProfiles[this['selectedProfile']]['nick'] = ogarcopythelb['nick'], 
-				ogario1PlayerProfiles[this['selectedProfile']]['clanTag'] = ogarcopythelb['clanTag'], 
-				ogario1PlayerProfiles[this['selectedProfile']]['skinURL'] = ogarcopythelb['skinURL'], 
-				ogario1PlayerProfiles[this['selectedProfile']]['color'] = ogarcopythelb['color'], 
+                ogarcopythelb['nick'] = t;
+				ogarcopythelb['clanTag'] = e['trim']();
+				ogarcopythelb['skinURL'] = this['checkSkinURL'](o['trim']());
+				7 == a.length && (ogarcopythelb.color = a); 
+				ogarcopythelb['clanTag'].length > 0 && (i['clanTag'] = ogarcopythelb['clanTag']); 
+				ogario1PlayerProfiles[this['selectedProfile']]['nick'] = ogarcopythelb['nick']; 
+				ogario1PlayerProfiles[this['selectedProfile']]['clanTag'] = ogarcopythelb['clanTag']; 
+				ogario1PlayerProfiles[this['selectedProfile']]['skinURL'] = ogarcopythelb['skinURL']; 
+				ogario1PlayerProfiles[this['selectedProfile']].color = ogarcopythelb.color; 
 				this['saveSettings'](ogario1PlayerProfiles, 'ogarioPlayerProfiles');
             },
             'loadSkin': function(t, e) {
@@ -3072,8 +3072,11 @@ var core = function(t, e, i) {
 				}
 				t[e].crossOrigin = 'anonymous'; 
 				t[e]['onload'] = function() {
-                    this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
-                }, t[e].src = e;
+                    if ( this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e)){
+					1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']);
+					};
+                };
+				t[e].src = e;
             },
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
@@ -3275,23 +3278,35 @@ var core = function(t, e, i) {
                 }
             },
             'createParty': function() {
-                s('#create-party-btn')['click']();
+                s('#create-party-btn').click();
             },
             'joinParty': function() {
                 var t = s('#party-token').val();
-                t && (s('#pre-join-party-btn')['click'](), s('.party-token').val(t), s('#join-party-btn')['click']());
+                t && (s('#pre-join-party-btn').click(), s('.party-token').val(t), s('#join-party-btn').click());
             },
             'leaveParty': function() {
-                s('#party-token, .party-token').val(''), s('#leave-party-btn')['click']();
+                s('#party-token, .party-token').val(''), s('#leave-party-btn').click();
             },
             'closeParty': function() {
-                s('#party-token, .party-token').val(''), s('.party-icon-back')['click']();
+                s('#party-token, .party-token').val(''), s('.party-icon-back').click();
             },
             'flushData': function() {
-                this['flushPartyData'](), this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting'](), i.play = false, i['playerColor'] = null;
+                this['flushPartyData'](); 
+				this['flushSkinsMap'](); 
+				this['flushChatData'](); 
+				this['cancelTargeting'](); 
+				i.play = false;
+				i['playerColor'] = null;
             },
             'flushPartyData': function() {
-                this['teamPlayers'] = [], this['parties'] = [], this['lastSentNick'] = '', this['lastSentClanTag'] = null, this['lastSentSkinURL'] = '', this['lastSentCustomColor'] = '', this['lastSentPartyToken'] = '', this['lastSentServerToken'] = '';
+                this['teamPlayers'] = [];
+				this['parties'] = [];
+				this['lastSentNick'] = '';
+				this['lastSentClanTag'] = null;
+				this['lastSentSkinURL'] = '';
+				this['lastSentCustomColor'] = '';
+				this['lastSentPartyToken'] = '';
+				this['lastSentServerToken'] = '';
             },
             'flushCells': function() {
                 this['cells'] = {};
@@ -3303,7 +3318,12 @@ var core = function(t, e, i) {
                 this['chatUsers'] = {};
             },
             'getWS': function(t) {
-                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this['closeConnection']());
+                if(t) { 
+				this.ws = t; this['createServerToken'](); this['updateServerInfo']();
+				if ( -1 == this.ws.indexOf('agar.io')) { 
+				this['closeConnection']();
+				}
+				}
             },
             'recreateWS': function(t) {
                 if (!t) return null;
@@ -3315,18 +3335,18 @@ var core = function(t, e, i) {
                 return !e && /^[a-z0-9]{5,}$/.test(t) && (e = 'wss://live-arena-' + t + '.agar.io:443'), e;
             },
             'createServerToken': function() {
-                var t = this['ws']['match'](/ip-\d+/),
-                    i = this['ws']['match'](/live-arena-([\w\d]+)/),
+                var t = this.ws['match'](/ip-\d+/),
+                    i = this.ws['match'](/live-arena-([\w\d]+)/),
                     s = null;
-                t && ((t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
+                t && ((t = this.ws.replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
                     this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this['partyToken'] = '';
-                    var o = this['ws']['match'](/party_id=([A-Z0-9]{6})/);
+                    var o = this.ws['match'](/party_id=([A-Z0-9]{6})/);
                     o && (this['partyToken'] = o[1], ogarjoiner('/#' + e['encodeURIComponent'](this['partyToken'])));
                 }
             },
             'updateServerInfo': function() {
-                s('#server-ws').val(this['ws']), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this['partyToken']);
+                s('#server-ws').val(this.ws), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this['partyToken']);
             },
             'gameServerConnect': function(t) {
                 t && (this['skipServerData'] = true, e.core && e.core.connect && e.core.connect(t));
@@ -3467,7 +3487,7 @@ var core = function(t, e, i) {
                 this['sendPlayerData'](12, 'lastSentSkinURL', ogarcopythelb['skinURL']);
             },
             'sendPlayerCustomColor': function() {
-                this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb['color']);
+                this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
                 this['isSocketOpen']() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
@@ -3521,7 +3541,7 @@ var core = function(t, e, i) {
                     var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this['playerID'], true);
                     var o = 5;
-                    t(ogarcopythelb['nick']), t(ogarcopythelb['skinURL']), t(ogarcopythelb['color']), t(i['playerColor']), this['sendBuffer'](s);
+                    t(ogarcopythelb['nick']), t(ogarcopythelb['skinURL']), t(ogarcopythelb.color), t(i['playerColor']), this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
@@ -3643,7 +3663,7 @@ var core = function(t, e, i) {
                         a = t.getUint32(13, true);
                     if (a > 360000) return;
                     var n = this['teamPlayers'][i];
-                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date['now'](), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n['nick'], n['skinURL'], s, o, a, n['color']);
+                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date['now'](), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n['nick'], n['skinURL'], s, o, a, n.color);
                 }
             },
             'updateTeamPlayers': function() {
@@ -3856,7 +3876,7 @@ var core = function(t, e, i) {
                 var e = this['checkPlayerID'](t);
                 if (null !== e) {
                     var i = this['teamPlayers'][e];
-                    if (this['targetID'] = i['id'], this['updateTarget'](i['nick'], i['skinURL'], i['x'], i['y'], i['mass'], i['color']), !i['alive']) return void this['setTargetStatus'](2);
+                    if (this['targetID'] = i['id'], this['updateTarget'](i['nick'], i['skinURL'], i['x'], i['y'], i['mass'], i.color), !i['alive']) return void this['setTargetStatus'](2);
                     this['setTargetStatus'](1);
                 } else this['setTargetStatus'](0);
             },
@@ -3910,7 +3930,7 @@ var core = function(t, e, i) {
             this['txt'] = '',
                 this['txtCanvas'] = null,
                 this['txtCtx'] = null,
-                this['color'] = '#FFFFFF',
+                this.color = '#FFFFFF',
                 this['stroke'] = false,
                 this['strokeWidth'] = 2,
                 this['strokeColor'] = '#000000',
@@ -3930,7 +3950,7 @@ var core = function(t, e, i) {
                         this['remeasure'] = true);
                 },
                 this['setColor'] = function(ogariocolorsetter) {
-                    this['color'] !== ogariocolorsetter && (this['color'] = ogariocolorsetter,
+                    this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
                         this['redraw'] = true);
                 },
                 this['setStroke'] = function(ogariostrokesetter) {
@@ -3999,7 +4019,7 @@ var core = function(t, e, i) {
                             this['txtCtx']['globalAlpha'] = 1,
                             this['txtCtx']['lineWidth'] = this['strokeWidth'],
                             this['txtCtx']['strokeStyle'] = this['strokeColor'],
-                            this['txtCtx']['fillStyle'] = this['color'],
+                            this['txtCtx']['fillStyle'] = this.color,
                             this['stroke'] && this['txtCtx']['strokeText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5)),
                             this['txtCtx']['fillText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5))),
                         this['txtCanvas'];
@@ -4664,7 +4684,7 @@ var core = function(t, e, i) {
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
-                this['closeConnection'](), this['flushCellsData'](), this['protocolKey'] = null, this['clientKey'] = null, this['accessTokenSent'] = false, this['connectionOpened'] = false, this['mapOffsetFixed'] = false, this['leaderboard'] = [], this['ws'] = t, this.socket = new WebSocket(t), this.socket['binaryType'] = 'arraybuffer', this.socket['onopen'] = function() {
+                this['closeConnection'](), this['flushCellsData'](), this['protocolKey'] = null, this['clientKey'] = null, this['accessTokenSent'] = false, this['connectionOpened'] = false, this['mapOffsetFixed'] = false, this['leaderboard'] = [], this.ws = t, this.socket = new WebSocket(t), this.socket['binaryType'] = 'arraybuffer', this.socket['onopen'] = function() {
                     i['onOpen']();
                 }, this.socket['onmessage'] = function(t) {
                     i['onMessage'](t);
@@ -4672,7 +4692,7 @@ var core = function(t, e, i) {
                     i['onError'](t);
                 }, this.socket['onclose'] = function(t) {
                     i['onClose'](t);
-                }, ogarminimapdrawer['getWS'](this['ws']), ogarminimapdrawer['sendServerJoin'](), ogarminimapdrawer['sendServerData'](), ogarminimapdrawer['displayLeaderboard'](''), e.master && e.master['onConnect'] && e.master['onConnect']();
+                }, ogarminimapdrawer['getWS'](this.ws), ogarminimapdrawer['sendServerJoin'](), ogarminimapdrawer['sendServerData'](), ogarminimapdrawer['displayLeaderboard'](''), e.master && e.master['onConnect'] && e.master['onConnect']();
             },
             'onOpen': function(t) {
                 console.log('[Legend mod Express] Game server socket open'), this['time'] = Date['now']();
@@ -4694,7 +4714,7 @@ var core = function(t, e, i) {
                     try {
                         this.socket['close']();
                     } catch (ogarcloseconncloser) {}
-                    this.socket = null, this['ws'] = null;
+                    this.socket = null, this.ws = null;
                 }
             },
             'isSocketOpen': function() {
@@ -4981,7 +5001,7 @@ var core = function(t, e, i) {
                     case 241:
                         this['protocolKey'] = t.getUint32(s, true), console.log('[Legend mod Express] Received protocol key:', this['protocolKey']);
                         var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
-                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e.master && e.master.login && e.master.login();
+                        this['clientKey'] = this['generateClientKey'](this.ws, irenderfromagario), e.master && e.master.login && e.master.login();
                         break;
                     case 242:
                         this['serverTime'] = 1000 * t.getUint32(s, true), this['serverTimeDiff'] = Date['now']() - this['serverTime'];
@@ -5131,7 +5151,7 @@ var core = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts['color'] = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -5217,17 +5237,17 @@ var core = function(t, e, i) {
                 });
             },
             'setCellOppColor': function(t, e, i) {
-                return t ? ogarcopythelb['color'] : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
+                return t ? ogarcopythelb.color : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
             },
             'getCursorPosition': function() {
                 this['cursorX'] = (this['clientX'] - this['canvasWidth'] / 2) / this['viewScale'] + this['viewX'], this['cursorY'] = (this['clientY'] - this['canvasHeight'] / 2) / this['viewScale'] + this['viewY'];
             },
             'setZoom': function(t) {
-                //t.preventDefault(), this['zoomValue'] *= Math['pow'](v['zoomSpeedValue2'], t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
-                this['zoomValue'] *= Math['pow'](v['zoomSpeedValue2']+1, t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
+                //t.preventDefault(), this['zoomValue'] *= Math.pow(v['zoomSpeedValue2'], t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
+                this['zoomValue'] *= Math.pow(v['zoomSpeedValue2']+1, t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
             },
             'setTargetPosition': function(t, e) {
-                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));window.targetDistance=this['targetDistance'];
+                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math.pow(this['playerX'] - this['targetX'], 2) + Math.pow(this['playerY'] - this['targetY'], 2)));window.targetDistance=this['targetDistance'];
             },
             'resetTargetPosition': function() {
                 this['targetX'] = this['playerX'], this['targetY'] = this['playerY'];
@@ -5258,9 +5278,9 @@ var core = function(t, e, i) {
             },
             'init': function() {
                 var t = this;
-                /firefox/i.test(navigator['userAgent']) ? document.addEventListener('DOMMouseScroll', function(e) {
+                /firefox/i.test(navigator.userAgent) ? document.addEventListener('DOMMouseScroll', function(e) {
                     t['setZoom'](e);
-                }, false) : document['body']['onmousewheel'] = function(e) {
+                }, false) : document.body.onmousewheel = function(e) {
                     t['setZoom'](e);
                 }, setInterval(function() {
                     t['sendPosition']();
@@ -5311,7 +5331,7 @@ var core = function(t, e, i) {
                 },
                 'setScale': function() {
                     if (!M['autoZoom']) return this['scale'] = (9 * this['scale'] + this['getZoom']()) / 10, void(M['viewScale'] = this['scale']);
-                    M.play ? this['scale'] = (9 * this['scale'] + Math['pow'](Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this['scale'] = (9 * this['scale'] + M['scale'] * this['getZoom']()) / 10, M['viewScale'] = this['scale'];
+                    M.play ? this['scale'] = (9 * this['scale'] + Math.pow(Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this['scale'] = (9 * this['scale'] + M['scale'] * this['getZoom']()) / 10, M['viewScale'] = this['scale'];
                 },
                 'getZoom': function() {
                     return Math['max'](this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
