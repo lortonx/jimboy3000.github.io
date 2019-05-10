@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.264 MEGA TEST
+// v1.263 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2119,7 +2119,7 @@ var core = function(t, e, i) {
                 v['showMiniMapGuides'] = !v['showMiniMapGuides'];
             },
             'setShowLb': function() {
-                ':teams' !== this.gameMode && s('#leaderboard-hud')['toggle']();
+                ':teams' !== this['gameMode'] && s('#leaderboard-hud')['toggle']();
             },
             'setShowBgSectors': function() {
                 v['showBgSectors'] = !v['showBgSectors'];
@@ -2143,10 +2143,10 @@ var core = function(t, e, i) {
                 v['showMiniMap'] ? s('#minimap-hud').show() : s('#minimap-hud').hide();
             },
             'setShowQuest': function() {
-                ':ffa' === this.gameMode && (this['showQuest'] = !this['showQuest'], this['setQuest']());
+                ':ffa' === this['gameMode'] && (this['showQuest'] = !this['showQuest'], this['setQuest']());
             },
             'setQuest': function() {
-                this['showQuest'] && ':ffa' === this.gameMode ? s('#quest-hud').show() : s('#quest-hud').hide();
+                this['showQuest'] && ':ffa' === this['gameMode'] ? s('#quest-hud').show() : s('#quest-hud').hide();
             },
             'toggleAutoZoom': function() {
                 i['autoZoom'] = !i['autoZoom'], this['displayChatInfo'](i['autoZoom'], 'autoZoomMsg');
@@ -2296,9 +2296,9 @@ var core = function(t, e, i) {
                     for (; o < s; o++) {
                         e = e + this["top5"][o].mass;
                         if (!(o >= window.teamboardlimit)) {
-                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this["top5"][o].id + '"style="background-color: ' + this["top5"][o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][o]["skin"] ? this["top5"][o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this["top5"][o]["id"] + '"style="background-color: ' + this["top5"][o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][o]["skin"] ? this["top5"][o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
                             /* if (v["showTargeting"]) {
-                              t = t + ('<a href="#" data-user-id="' + this["top5"][o].id + '" class="set-target ogicon-target"></a> ');
+                              t = t + ('<a href="#" data-user-id="' + this["top5"][o]["id"] + '" class="set-target ogicon-target"></a> ');
                             } */
                             t = t + ('<span class="hud-main-color">[' + this["calculateMapSector"](this["top5"][o]["x"], this["top5"][o]["y"]) + "]</span>");
                             t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this["top5"][o].mass) + "]</span> " + this["escapeHTML"](this["top5"][o].nick) + "</div></li>");
@@ -2738,7 +2738,7 @@ var core = function(t, e, i) {
                         s("#exp-imp-settings, #export-settings")["perfectScrollbar"]("update");
                     }), s(document).on("click", "#close-exp-imp", function(event) {
                         event.preventDefault();
-                        s("#exp-imp").fadeOut(500);
+                        s("#exp-imp")["fadeOut"](500);
                     }), s(document).on("focus", "#export-settings", function() {
                         s(this).select();
                     }), s(document).on("click", "#export-settings-btn", function(event) {
@@ -2952,14 +2952,14 @@ var core = function(t, e, i) {
                 if (v["showQuickMenu"]) {
                     s("#quick-menu").fadeIn(500);
                 } else {
-                    s("#quick-menu").fadeOut(500);
+                    s("#quick-menu")["fadeOut"](500);
                 }
             },
             'setShowSkinsPanel': function() {
                 if (v["showSkinsPanel"]) {
                     s("#skins-panel").fadeIn(500);
                 } else {
-                    s("#skins-panel").fadeOut(500);
+                    s("#skins-panel")["fadeOut"](500);
                 }
             },
             'unlockButtons': function() {
@@ -2976,13 +2976,13 @@ var core = function(t, e, i) {
                 }), s(document).on("click", "#join-party-btn-2", function() {
                     t["skipServerData"] = true;
                     t["joinParty"]();
-                    t.onJoin();
+                    t["onJoin"]();
                 }), s(document).on("click", "#statsContinue2", function() {
                     s("#stats, #main-panel")["toggle"]();
                 });
             },
             'play': function() {
-                if (this['setPlayerSettings'](), this.setParty(), this.isSocketOpen()) this['sendPartyData']();
+                if (this['setPlayerSettings'](), this['setParty'](), this['isSocketOpen']()) this['sendPartyData']();
                 else {
                     this.connect();
                     var t = this;
@@ -2996,32 +2996,32 @@ var core = function(t, e, i) {
                 this.play(), this['hideMenu'](), e['addKeyListeners'] && e['addKeyListeners'](), v['autoHideFood'] && (i['showFood'] = true);
             },
             'onSpectate': function() {
-                this.onJoin(), this['sendPlayerJoin'](), this['hideMenu'](), e['addKeyListeners'] && e['addKeyListeners'](), v['autoHideFood'] && (i['showFood'] = false);
+                this['onJoin'](), this['sendPlayerJoin'](), this['hideMenu'](), e['addKeyListeners'] && e['addKeyListeners'](), v['autoHideFood'] && (i['showFood'] = false);
             },
             'join': function() {
-                this.setParty(), this['setPlayerSettings'](), this['sendPartyData'](), this['sendPlayerDeath']();
+                this['setParty'](), this['setPlayerSettings'](), this['sendPartyData'](), this['sendPlayerDeath']();
             },
             'onJoin': function() {
-                if (this.setParty(), this.isSocketOpen()) this.join();
+                if (this['setParty'](), this['isSocketOpen']()) this['join']();
                 else {
                     this.connect();
                     var t = this;
                     setTimeout(function() {
-                        t.join(), t['sendPlayerJoin']();
+                        t['join'](), t['sendPlayerJoin']();
                     }, 1000);
                 }
             },
             'create': function() {
-                if (this.setParty(), this.partyToken) this.onJoin();
+                if (this['setParty'](), this['partyToken']) this['onJoin']();
                 else {
                     var t = this;
                     setTimeout(function() {
-                        t.create();
+                        t['create']();
                     }, 100);
                 }
             },
             'onCreate': function() {
-                this.setParty(), ':party' === this.gameMode && this.partyToken ? this.gameServerReconnect() : this.createParty(), this.create();
+                this['setParty'](), ':party' === this['gameMode'] && this['partyToken'] ? this['gameServerReconnect']() : this['createParty'](), this['create']();
             },
             'onPlayerSpawn': function() {
                 if (i.play = true, i['playerColor']) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb.nick, i['playerColor'], ogarcopythelb.skinURL);
@@ -3100,7 +3100,7 @@ var core = function(t, e, i) {
             },
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
-                    var s = ':party' === this.gameMode ? t + e : t;
+                    var s = ':party' === this['gameMode'] ? t + e : t;
                     //					console.log(this['customSkinsMap'][s]);
                     //					console.log(s);
                     //					console.log(i);
@@ -3118,13 +3118,13 @@ var core = function(t, e, i) {
                 }
             },
             'checkSkinsMap': function(t, e) {
-                var i = ':party' === this.gameMode ? t + e : t;
+                var i = ':party' === this['gameMode'] ? t + e : t;
                 //console.log(['customSkinsMap'].hasOwnProperty(i));
                 return !!this['customSkinsMap'].hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
                 if (!this['checkSkinsMap'](t, e)) return null;
-                var i = ':party' === this.gameMode ? t + e : t;
+                var i = ':party' === this['gameMode'] ? t + e : t;
                 return this['getCachedSkin'](this['customSkinsCache'], this['customSkinsMap'][i]);
             },
             'calculateMapSector': function(t, e, s = false) {
@@ -3209,10 +3209,10 @@ var core = function(t, e, i) {
                         this["miniMapCtx"]["lineTo"](o - 1, d);
                         this["miniMapCtx"]["stroke"]();
                     }
-                    if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this.teamPlayers.length) {
+                    if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
                         c = 0;
-                        for (; c < this.teamPlayers.length; c++) {
-                            this.teamPlayers[c]["drawPosition"](this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this["targetID"], legendmod3.teamPlayers[c]["color"]);
+                        for (; c < this["teamPlayers"].length; c++) {
+                            this["teamPlayers"][c]["drawPosition"](this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this["targetID"], legendmod3["teamPlayers"][c]["color"]);
                         }
                     }
                     if (this["deathLocations"].length > 0) {
@@ -3270,8 +3270,8 @@ var core = function(t, e, i) {
             },
             'setParty': function() {
                 var t = s('#party-token').val();
-                if (this.gameMode = i.gameMode = s('#gamemode').val(), this['setQuest'](), ':party' === this.gameMode && t) {
-                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this.partyToken !== e && (this.partyToken = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
+                if (this['gameMode'] = i['gameMode'] = s('#gamemode').val(), this['setQuest'](), ':party' === this['gameMode'] && t) {
+                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this['partyToken'] !== e && (this['partyToken'] = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
                 }
             },
             'createParty': function() {
@@ -3320,13 +3320,13 @@ var core = function(t, e, i) {
                     s = null;
                 t && ((t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
-                    this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this.partyToken = '';
+                    this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this['partyToken'] = '';
                     var o = this['ws']['match'](/party_id=([A-Z0-9]{6})/);
-                    o && (this.partyToken = o[1], ogarjoiner('/#' + e['encodeURIComponent'](this.partyToken)));
+                    o && (this['partyToken'] = o[1], ogarjoiner('/#' + e['encodeURIComponent'](this['partyToken'])));
                 }
             },
             'updateServerInfo': function() {
-                s('#server-ws').val(this['ws']), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this.partyToken);
+                s('#server-ws').val(this['ws']), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this['partyToken']);
             },
             'gameServerConnect': function(t) {
                 t && (this['skipServerData'] = true, e.core && e.core.connect && e.core.connect(t));
@@ -3339,7 +3339,7 @@ var core = function(t, e, i) {
                 e && (this['skipServerData'] = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                this['closeConnection'](), this['flushData'](), this.setParty(), console.log('[Legend mod Express] Connecting to server'), this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
+                this['closeConnection'](), this['flushData'](), this['setParty'](), console.log('[Legend mod Express] Connecting to server'), this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
@@ -3363,7 +3363,7 @@ var core = function(t, e, i) {
                 }
             },
             'reconnect': function() {
-                this.setParty();
+                this['setParty']();
                 var t = this;
                 setTimeout(function() {
                     t.connect();
@@ -3372,7 +3372,7 @@ var core = function(t, e, i) {
             'switchServerMode': function() {
                 if (this["privateIP"]) {
                     this["privateMode"] = !this["privateMode"];
-                    if (this.isSocketOpen()) {
+                    if (this["isSocketOpen"]()) {
                         this["closeConnection"]();
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
@@ -3384,22 +3384,22 @@ var core = function(t, e, i) {
                         s("#active-parties")["empty"]();
                         s(".party-panel").hide();
                     }
-                    this.onJoin();
+                    this["onJoin"]();
                     if (i.play) {
-                        this.onPlayerSpawn();
+                        this["onPlayerSpawn"]();
                     }
                 }
             },
             'isSocketOpen': function() {
-                return null !== this.socket && this.socket.readyState === this.socket.OPEN;
+                return null !== this.socket && this.socket['readyState'] === this.socket['OPEN'];
             },
             "writeUint32": function(data, value) {
                 for (; !![];) {
                     if ((value & -128) == 0) {
-                        data.push(value);
+                        data["push"](value);
                         return;
                     } else {
-                        data.push(value & 127 | 128);
+                        data["push"](value & 127 | 128);
                         value = value >>> 7;
                     }
                 }
@@ -3414,10 +3414,10 @@ var core = function(t, e, i) {
                 return i;
             },
             'sendBuffer': function(t) {
-                this.socket.send(t.buffer);
+                this.socket['send'](t['buffer']);
             },
             'handleMessage': function(t) {
-                this['readMessage'](new DataView(t.data));
+                this['readMessage'](new DataView(t['data']));
             },
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
@@ -3440,7 +3440,7 @@ var core = function(t, e, i) {
                 }
             },
             'sendPlayerState': function(t) {
-                if (this.isSocketOpen()) {
+                if (this['isSocketOpen']()) {
                     var e = this.createView(1);
                     e.setUint8(0, t), this['sendBuffer'](e);
                 }
@@ -3455,7 +3455,7 @@ var core = function(t, e, i) {
                 this['sendPlayerState'](3);
             },
             'sendPlayerData': function(t, e, i) {
-                null !== this[e] && this[e] === i || this.isSocketOpen() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
+                null !== this[e] && this[e] === i || this['isSocketOpen']() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
                 this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
@@ -3470,10 +3470,10 @@ var core = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                this.isSocketOpen() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
+                this['isSocketOpen']() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
             },
             'sendPartyToken': function() {
-                this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
+                this['setParty'](), this['sendPlayerData'](15, 'lastSentPartyToken', this['partyToken']);
             },
             'sendServerToken': function() {
                 this['sendPlayerData'](16, 'lastSentServerToken', this['serverToken']);
@@ -3484,12 +3484,12 @@ var core = function(t, e, i) {
             'sendServerRegion': function() {
                 if (this['region']) {
                     var t = this['region'].split('-');
-                    this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](17, t[0]));
+                    this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](17, t[0]));
                 }
             },
             'sendServerGameMode': function() {
                 var t = 'FFA';
-                switch (this.gameMode) {
+                switch (this['gameMode']) {
                     case ':battleroyale':
                         t = 'BTR';
                         break;
@@ -3502,16 +3502,16 @@ var core = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-                this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
+                this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
-                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = s('#region').val(), this.gameMode = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
+                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = s('#region').val(), this['gameMode'] = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
                 this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
             },
             'sendPlayerUpdate': function() {
-                if (this.isSocketOpen() && i.play && this['playerID'] && i['playerColor']) {
+                if (this['isSocketOpen']() && i.play && this['playerID'] && i['playerColor']) {
                     function t(t) {
                         for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), true), o += 2;
                         s.setUint16(o, 0, true), o += 2;
@@ -3525,7 +3525,7 @@ var core = function(t, e, i) {
                 }
             },
             'sendPlayerPosition': function() {
-                if (this.isSocketOpen() && i.play && this["playerID"]) {
+                if (this["isSocketOpen"]() && i.play && this["playerID"]) {
                     var t = this.createView(17);
                     t.setUint8(0, 30);
                     t.setUint32(1, this["playerID"], true);
@@ -3573,13 +3573,13 @@ var core = function(t, e, i) {
                 var l = ":party" === this["gameMode"] ? o + r : o;
                 var h = this["checkPlayerID"](i);
                 if (null !== h) {
-                    this.teamPlayers[h].nick = o;
-                    this.teamPlayers[h].skinID = l;
-                    this.teamPlayers[h].skinURL = a;
-                    this.teamPlayers[h].setColor(r, n);
+                    this["teamPlayers"][h].nick = o;
+                    this["teamPlayers"][h].skinID = l;
+                    this["teamPlayers"][h].skinURL = a;
+                    this["teamPlayers"][h].setColor(r, n);
                 } else {
                     var c = new function(envId, cb, i, s) {
-                        this.id = envId;
+                        this["id"] = envId;
                         this.nick = cb;
                         this.skinID = i;
                         this.skinURL = s;
@@ -3601,7 +3601,7 @@ var core = function(t, e, i) {
                             }
                         };
                         this["drawPosition"] = function(options, margin, mult, startcode, endcode, value) {
-                            if (!(!this["alive"] || startcode && endcode && this.id != endcode)) {
+                            if (!(!this["alive"] || startcode && endcode && this["id"] != endcode)) {
                                 this["lastX"] = (29 * this["lastX"] + this["x"]) / 30;
                                 this["lastY"] = (29 * this["lastY"] + this["y"]) / 30;
                                 var w = (this["lastX"] + margin) * mult;
@@ -3630,13 +3630,13 @@ var core = function(t, e, i) {
                         };
                     }(i, o, l, a);
                     c.setColor(r, n);
-                    this.teamPlayers.push(c);
+                    this["teamPlayers"].push(c);
                 }
                 this["cacheCustomSkin"](o, r, a);
             },
             'updateTeamPlayerPosition': function(t) {
                 var e = t.getUint32(1, true),
-                    i = this.checkPlayerID(e);
+                    i = this['checkPlayerID'](e);
                 if (null !== i) {
                     var s = t.getInt32(5, true),
                         o = t.getInt32(9, true),
@@ -3649,17 +3649,17 @@ var core = function(t, e, i) {
             'updateTeamPlayers': function() {
                 this["sendPlayerPosition"](), this["chatUsers"] = {}, this["top5"] = [];
                 var t = 0;
-                for (; t < this.teamPlayers.length; t++) {
-                    var e = this.teamPlayers[t];
+                for (; t < this["teamPlayers"].length; t++) {
+                    var e = this["teamPlayers"][t];
                     if (e["alive"] && Date["now"]() - e.updateTime >= 2000 || 0 == e.mass) {
                         e["alive"] = false;
-                        if (this["targeting"] && this["targetID"] && e.id == this["targetID"]) {
+                        if (this["targeting"] && this["targetID"] && e["id"] == this["targetID"]) {
                             this["setTargetStatus"](2);
                         }
                     }
                     if (e["alive"]) {
                         this["top5"].push({
-                            "id": e.id,
+                            "id": e["id"],
                             "nick": e.nick,
                             "x": e["x"],
                             "y": e["y"],
@@ -3667,8 +3667,8 @@ var core = function(t, e, i) {
                             "color": e["color"],
                             "skin": e.skinURL
                         });
-                        if (!this["isChatUserMuted"](e.id)) {
-                            this["addChatUser"](e.id, e.nick);
+                        if (!this["isChatUserMuted"](e["id"])) {
+                            this["addChatUser"](e["id"], e.nick);
                         }
                     }
                 }
@@ -3706,7 +3706,7 @@ var core = function(t, e, i) {
             },
             'sendChatMessage': function(t, e) {
                 //console.log(t);console.log(e);
-                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
+                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this['isSocketOpen']()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
@@ -3853,7 +3853,7 @@ var core = function(t, e, i) {
                 this['targetID'] && (this['privateMiniMap'] = !this['privateMiniMap'], this['privateMiniMap'] ? s('#set-private-minimap').addClass('active') : s('#set-private-minimap').removeClass('active'));
             },
             'setTarget': function(t) {
-                var e = this.checkPlayerID(t);
+                var e = this['checkPlayerID'](t);
                 if (null !== e) {
                     var i = this['teamPlayers'][e];
                     if (this['targetID'] = i['id'], this['updateTarget'](i.nick, i.skinURL, i['x'], i['y'], i['mass'], i.color), !i['alive']) return void this['setTargetStatus'](2);
@@ -3873,7 +3873,7 @@ var core = function(t, e, i) {
                 }
             },
             'changeTarget': function() {
-                for (var t = this.checkPlayerID(this['targetID']), e = null, i = 0; i < this['teamPlayers'].length; i++)
+                for (var t = this['checkPlayerID'](this['targetID']), e = null, i = 0; i < this['teamPlayers'].length; i++)
                     if (this['teamPlayers'][i]['alive']) {
                         if (null === t) {
                             t = i;
@@ -3893,7 +3893,7 @@ var core = function(t, e, i) {
                 i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this['shortMassFormat'](n + i['playerMass']) + '</span>'), s('#target-summary').html(c), 1 != this['targetStatus'] && this['setTargetStatus'](1);
             },
             'updateQuest': function() {
-                this['showQuest'] && ':ffa' === this.gameMode && e.MC && e.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = e.MC['getQuestProgressLabel']());
+                this['showQuest'] && ':ffa' === this['gameMode'] && e.MC && e.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = e.MC['getQuestProgressLabel']());
             },
             'init': function() {
                 this['loadSettings'](), this['loadProfiles'](), this['setLang'](), this['setMenu'](), this['setUI'](), y && y.setTheme(), this['setShowQuickMenu'](), this['setShowSkinsPanel'](), this['setProfile'](), this['setMainButtons'](), this['setStreamMode'](), this['setHideSkinUrl'](), this['setMiniMap'](), this['setAutoResp'](), this['setDisableChat'](), this['setShowChatBox'](), this['setTop5'](), this['setTargetingHUD'](), this['setQuest'](), this['displayTime'](), this['setCenteredLb'](), this['setNormalLb'](), this['setFpsAtTop'](), this['displayStats'](), this['setBlockPopups'](), this['preloadChatSounds'](), this['setChatSoundsBtn']();
@@ -4680,7 +4680,7 @@ var core = function(t, e, i) {
                 e.setUint8(0, 254), e.setUint32(1, 20, true), this.sendMessage(e), (e = this.createView(5)).setUint8(0, 255), e.setUint32(1, this.clientVersion, true), this.sendMessage(e), this['connectionOpened'] = true;
             },
             'onMessage': function(t) {
-                t = new DataView(t.data), this['protocolKey'] && (t = this['shiftMessage'](t, this['protocolKey'] ^ this.clientVersion)), this['handleMessage'](t);
+                t = new DataView(t['data']), this['protocolKey'] && (t = this['shiftMessage'](t, this['protocolKey'] ^ this.clientVersion)), this['handleMessage'](t);
             },
             'onError': function(t) {
                 console.log('[Legend mod Express] Game server socket error'), this['flushCellsData'](), e.master && e.master['onDisconnect'] && e.master['onDisconnect']();
@@ -4698,13 +4698,13 @@ var core = function(t, e, i) {
                 }
             },
             'isSocketOpen': function() {
-                return null !== this.socket && this.socket.readyState === this.socket.OPEN;
+                return null !== this.socket && this.socket['readyState'] === this.socket['OPEN'];
             },
             'createView': function(t) {
                 return new DataView(new ArrayBuffer(t));
             },
             'sendBuffer': function(t) {
-                this.socket.send(t.buffer);
+                this.socket['send'](t['buffer']);
             },
             'sendMessage': function(t) {
                 //console.log(t);
@@ -4715,7 +4715,7 @@ var core = function(t, e, i) {
                 this['sendBuffer'](t);
             },
             'sendAction': function(t) {
-                if (this.isSocketOpen()) {
+                if (this['isSocketOpen']()) {
                     var e = this.createView(1);
                     e.setUint8(0, t), this.sendMessage(e);
                 }
@@ -4740,7 +4740,7 @@ var core = function(t, e, i) {
                 this.sendMessage(i);
             },
             'sendPosition': function() {
-                if (this.isSocketOpen() && this["connectionOpened"] && this["clientKey"]) {
+                if (this["isSocketOpen"]() && this["connectionOpened"] && this["clientKey"]) {
                     var t = this["cursorX"];
                     var e = this["cursorY"];
                     if (!this.play && this["targeting"] || this.pause) {
@@ -4761,7 +4761,7 @@ var core = function(t, e, i) {
                                 for (var s = t.length, o = this.clientVersionString.length, a = [i, 8, 1, 18, s + o + 23, 1, 8, 10, 0x52, s + o + 18, 1, 8, e, 18, o + 8, 8, 5, 18, o], n = 0; n < o; n++) a.push(this.clientVersionString.charCodeAt(n));
                                 for (a.push(24, 0, 32, 0, 26, s + 3, 1, 10, s, 1), n = 0; n < s; n++) a.push(t.charCodeAt(n));
                                 a = new Uint8Array(a);
-                                var r = new DataView(a.buffer);
+                                var r = new DataView(a['buffer']);
                                 this.sendMessage(r);
                             }
                         }, */
@@ -4777,23 +4777,23 @@ var core = function(t, e, i) {
                 var data = [oW, 8, 1, 18];
                 //this["writeUint32"](data, curr + count + 23);
                 ogarminimapdrawer["writeUint32"](data, curr + count + 23);
-                data.push(8, 10, 82);
+                data["push"](8, 10, 82);
                 ogarminimapdrawer['writeUint32'](data, curr + count + 18);
                 //this['writeUint32'](data, curr + count + 18);
-                data.push(8, options, 18, count + 8, 8, 5, 18, count);
+                data["push"](8, options, 18, count + 8, 8, 5, 18, count);
                 var prev = 0;
                 for (; prev < count; prev++) {
-                    data.push(this["clientVersionString"]["charCodeAt"](prev));
+                    data["push"](this["clientVersionString"]["charCodeAt"](prev));
                 }
-                data.push(24, 0, 32, 0, 26);
+                data["push"](24, 0, 32, 0, 26);
                 ogarminimapdrawer["writeUint32"](data, curr + 3);
                 //this["writeUint32"](data, curr + 3);
-                data.push(10);
+                data["push"](10);
                 ogarminimapdrawer["writeUint32"](data, curr);
                 //this["writeUint32"](data, curr);
                 prev = 0;
                 for (; prev < curr; prev++) {
-                    data.push(shapes["charCodeAt"](prev));
+                    data["push"](shapes["charCodeAt"](prev));
                 }
                 data = new Uint8Array(data);
                 var raw_basefont = new DataView(data["buffer"]);
@@ -4827,7 +4827,7 @@ var core = function(t, e, i) {
                 if (!t.length || !e.byteLength) return null;
                 for (var i = null, s = 1540483477, o = t['match'](/(ws+:\/\/)([^:]*)(:\d+)/)[2], a = o.length + e.byteLength, n = new Uint8Array(a), r = 0; r < o.length; r++) n[r] = o.charCodeAt(r);
                 n['set'](e, o.length);
-                for (var l = new DataView(n.buffer), h = a - 1, c = 4 + (h - 4 & -4) | 0, u = 255 ^ h, d = 0; h > 3;) i = 0 | Math['imul'](l.getInt32(d, true), s), u = (0 | Math['imul'](i >>> 24 ^ i, s)) ^ (0 | Math['imul'](u, s)), h -= 4, d += 4;
+                for (var l = new DataView(n['buffer']), h = a - 1, c = 4 + (h - 4 & -4) | 0, u = 255 ^ h, d = 0; h > 3;) i = 0 | Math['imul'](l.getInt32(d, true), s), u = (0 | Math['imul'](i >>> 24 ^ i, s)) ^ (0 | Math['imul'](u, s)), h -= 4, d += 4;
                 switch (h) {
                     case 3:
                         u = n[c + 2] << 16 ^ u, u = n[c + 1] << 8 ^ u;
@@ -4863,7 +4863,7 @@ var core = function(t, e, i) {
                 //} //
             },
             'decompressMessage': function(t) {
-                var e = new o(t.buffer),
+                var e = new o(t['buffer']),
                     i = new o(e.readUInt32LE(1));
                 return a['decodeBlock'](e['slice'](5), i), i;
             },
@@ -4980,7 +4980,7 @@ var core = function(t, e, i) {
                         break;
                     case 241:
                         this['protocolKey'] = t.getUint32(s, true), console.log('[Legend mod Express] Received protocol key:', this['protocolKey']);
-                        var irenderfromagario = new Uint8Array(t.buffer, s += 4);
+                        var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
                         this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e.master && e.master.login && e.master.login();
                         break;
                     case 242:
@@ -5322,7 +5322,7 @@ var core = function(t, e, i) {
 						for (i = 0; i < M.cells.length; i++) {
 							M.cells[i].moveCell();
 						}	
-                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this['scale'], this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx']['scale'](this['scale'], this['scale']), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
+                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this['scale'], this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx']['scale'](this['scale'], this['scale']), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M['gameMode'] && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
                         var t = g['bordersWidth'] / 2;
                         this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M['mapMinX'] - t, M['mapMinY'] - t, M['mapMaxX'] + t, M['mapMaxY'] + t, g['bordersColor'], g['bordersWidth']);
                     }
@@ -5330,7 +5330,7 @@ var core = function(t, e, i) {
                     v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this['scale'], M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], true);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
-                    this['ctx']['restore'](), ':teams' === M.gameMode && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
+                    this['ctx']['restore'](), ':teams' === M['gameMode'] && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
                 }, */
         'renderFrame': function () {
             //this.ctx.start2D();
@@ -6773,7 +6773,7 @@ var core = function(t, e, i) {
             }
         }, e['onbeforeunload'] = function(t) {
             return i.play ? h['exit'] : void 0;
-        }, i = M, o = t('buffer').buffer, a = t('lz4'), '/ogario' === e.location['pathname'] && ogarjoiner('/' + e['location']['hash']), e['onresize'] = function() {
+        }, i = M, o = t('buffer')['Buffer'], a = t('lz4'), '/ogario' === e.location['pathname'] && ogarjoiner('/' + e['location']['hash']), e['onresize'] = function() {
             ogarfooddrawer['resizeCanvas'](), ogarhusettings();
         }, ogarassembler(), e.core = {
             'connect': function(t) {
