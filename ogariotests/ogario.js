@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.257 MEGA TEST
+// v1.258 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2479,12 +2479,12 @@ var core = function(t, e, i) {
             },
             'changeSkinPreview': function(t, e) {
                 if (t && e) {
-                    if ("skin-preview" === e) {
-						if (e.includes(".mp4")){ console.log("stage 3 videos");
+                    if ("skin-preview" === t) {
+						if (t.src.includes(".mp4")){ console.log("stage 3 videos");
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
-						s("#skin-popover").append('<video id="videoskinpreview" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>').fadeIn(1000);
-						s("#skin-popover")["popover"]();
+						s("#skin-popover").append('<video id="videoskinpreview" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
+//						s("#skin-popover")["popover"]();
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						}
 						else{
