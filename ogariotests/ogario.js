@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.262 MEGA TEST
+// v1.263 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2261,11 +2261,11 @@ var core = function(t, e, i) {
                         var PL$29 = this["top5"]["length"];
                         var entityType = 0;
                         for (; entityType < PL$29; entityType++) {
-                          bufferString = bufferString + this["top5"][entityType]["mass"];
+                          bufferString = bufferString + this["top5"][entityType].mass;
                           if (!(entityType >= v["limTP"])) {
                             pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
-            				'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][entityType]['mass']) + ']</span> ' + this["escapeHTML"](this["top5"][entityType]["nick"]) + '</span><span class=\"hud-main-color\">[' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) +']</span><span id= "top5mass" class=""> ' + 
-                            this["shortMassFormat"](this["top5"][entityType]["mass"]) + '</span></li>');
+            				'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][entityType]['mass']) + ']</span> ' + this["escapeHTML"](this["top5"][entityType].nick) + '</span><span class=\"hud-main-color\">[' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) +']</span><span id= "top5mass" class=""> ' + 
+                            this["shortMassFormat"](this["top5"][entityType].mass) + '</span></li>');
                           }
                         }
                         this["top5pos"]["innerHTML"] = pix_color;
@@ -2294,14 +2294,14 @@ var core = function(t, e, i) {
                     var s = this["top5"].length;
                     var o = 0;
                     for (; o < s; o++) {
-                        e = e + this["top5"][o]["mass"];
+                        e = e + this["top5"][o].mass;
                         if (!(o >= window.teamboardlimit)) {
                             t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this["top5"][o]["id"] + '"style="background-color: ' + this["top5"][o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][o]["skin"] ? this["top5"][o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
                             /* if (v["showTargeting"]) {
                               t = t + ('<a href="#" data-user-id="' + this["top5"][o]["id"] + '" class="set-target ogicon-target"></a> ');
                             } */
                             t = t + ('<span class="hud-main-color">[' + this["calculateMapSector"](this["top5"][o]["x"], this["top5"][o]["y"]) + "]</span>");
-                            t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this["top5"][o]["mass"]) + "]</span> " + this["escapeHTML"](this["top5"][o]["nick"]) + "</div></li>");
+                            t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this["top5"][o].mass) + "]</span> " + this["escapeHTML"](this["top5"][o].nick) + "</div></li>");
                         }
                     }
                     this["top5pos"]["innerHTML"] = t;
@@ -2647,7 +2647,7 @@ var core = function(t, e, i) {
                 var e = 0;
                 for (; e < ogario1PlayerProfiles.length; e++) {
                     s("#skins").append('<div class="skin-box"><a href="#profile-' + e + '" id="profile-' + e + '" data-profile="' + e + '"></a></div>');
-                    this["setSkinPreview"](ogario1PlayerProfiles[e]["skinURL"], "profile-" + e);
+                    this["setSkinPreview"](ogario1PlayerProfiles[e].skinURL, "profile-" + e);
                     if (e == this["selectedProfile"]) {
                         s("#profile-" + e).addClass("selected");
                     }
@@ -2906,7 +2906,7 @@ var core = function(t, e, i) {
                         "color": g["menuMainColor"],
                         "size": "small"
                     });
-                }), s("#nick").val(ogarcopythelb["nick"])["blur"](), s("#noNames")["prop"]("checked", !v["noNames"]), s("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();
+                }), s("#nick").val(ogarcopythelb.nick)["blur"](), s("#noNames")["prop"]("checked", !v["noNames"]), s("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();
             },
             'getQuality': function(t) {
                 var i = 1;
@@ -3085,7 +3085,7 @@ var core = function(t, e, i) {
                         i["height"] = 512;
                         var s = i["getContext"]("2d");
                         s["beginPath"]();
-                        s.arc(256, 256, 256, 0, 2 * Math["PI"], false);
+                        s.arc(256, 256, 256, 0, 2 * Math.PI, false);
                         s["clip"]();
                         s["drawImage"](this["customSkinsCache"][e], 0, 0, 512, 512);
                         this["customSkinsCache"][e + "_cached"] = new Image;
@@ -3573,28 +3573,28 @@ var core = function(t, e, i) {
                 var l = ":party" === this["gameMode"] ? o + r : o;
                 var h = this["checkPlayerID"](i);
                 if (null !== h) {
-                    this["teamPlayers"][h]["nick"] = o;
-                    this["teamPlayers"][h]["skinID"] = l;
-                    this["teamPlayers"][h]["skinURL"] = a;
-                    this["teamPlayers"][h]["setColor"](r, n);
+                    this["teamPlayers"][h].nick = o;
+                    this["teamPlayers"][h].skinID = l;
+                    this["teamPlayers"][h].skinURL = a;
+                    this["teamPlayers"][h].setColor(r, n);
                 } else {
                     var c = new function(envId, cb, i, s) {
                         this["id"] = envId;
-                        this["nick"] = cb;
-                        this["skinID"] = i;
-                        this["skinURL"] = s;
+                        this.nick = cb;
+                        this.skinID = i;
+                        this.skinURL = s;
                         this["x"] = 0;
                         this["y"] = 0;
                         this["lastX"] = 0;
                         this["lastY"] = 0;
-                        this["mass"] = 0;
-                        this["clanTag"] = "";
+                        this.mass = 0;
+                        this.clanTag = "";
                         this["color"] = null;
                         this["customColor"] = g["miniMapTeammatesColor"];
                         this["alive"] = false;
-                        this["updateTime"] = null;
-                        this.pi2 = 2 * Math["PI"];
-                        this["setColor"] = function(i, inRevIdx) {
+                        this.updateTime = null;
+                        this.pi2 = 2 * Math.PI;
+                        this.setColor = function(i, inRevIdx) {
                             this["color"] = i;
                             if (7 == inRevIdx.length) {
                                 this["customColor"] = inRevIdx;
@@ -3606,16 +3606,16 @@ var core = function(t, e, i) {
                                 this["lastY"] = (29 * this["lastY"] + this["y"]) / 30;
                                 var w = (this["lastX"] + margin) * mult;
                                 var h = (this["lastY"] + margin) * mult;
-                                if (this["nick"].length > 0) {
+                                if (this.nick.length > 0) {
                                     options["font"] = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
                                     options["textAlign"] = "center";
                                     if (g["miniMapNickStrokeSize"] > 0) {
                                         options["lineWidth"] = g["miniMapNickStrokeSize"];
                                         options["strokeStyle"] = g["miniMapNickStrokeColor"];
-                                        options["strokeText"](this["nick"], w, h - (2 * g["miniMapTeammatesSize"] + 2));
+                                        options["strokeText"](this.nick, w, h - (2 * g["miniMapTeammatesSize"] + 2));
                                     }
                                     options["fillStyle"] = g["miniMapNickColor"];
-                                    options["fillText"](this["nick"], w, h - (2 * g["miniMapTeammatesSize"] + 2));
+                                    options["fillText"](this.nick, w, h - (2 * g["miniMapTeammatesSize"] + 2));
                                 }
                                 options["beginPath"]();
                                 options.arc(w, h, g["miniMapTeammatesSize"], 0, this.pi2, false);
@@ -3629,7 +3629,7 @@ var core = function(t, e, i) {
                             }
                         };
                     }(i, o, l, a);
-                    c["setColor"](r, n);
+                    c.setColor(r, n);
                     this["teamPlayers"].push(c);
                 }
                 this["cacheCustomSkin"](o, r, a);
@@ -3651,7 +3651,7 @@ var core = function(t, e, i) {
                 var t = 0;
                 for (; t < this["teamPlayers"].length; t++) {
                     var e = this["teamPlayers"][t];
-                    if (e["alive"] && Date["now"]() - e["updateTime"] >= 2000 || 0 == e["mass"]) {
+                    if (e["alive"] && Date["now"]() - e.updateTime >= 2000 || 0 == e.mass) {
                         e["alive"] = false;
                         if (this["targeting"] && this["targetID"] && e["id"] == this["targetID"]) {
                             this["setTargetStatus"](2);
@@ -3660,20 +3660,20 @@ var core = function(t, e, i) {
                     if (e["alive"]) {
                         this["top5"].push({
                             "id": e["id"],
-                            "nick": e["nick"],
+                            "nick": e.nick,
                             "x": e["x"],
                             "y": e["y"],
-                            "mass": e["mass"],
+                            "mass": e.mass,
                             "color": e["color"],
-                            "skin": e["skinURL"]
+                            "skin": e.skinURL
                         });
                         if (!this["isChatUserMuted"](e["id"])) {
-                            this["addChatUser"](e["id"], e["nick"]);
+                            this["addChatUser"](e["id"], e.nick);
                         }
                     }
                 }
                 this["top5"]["sort"](function(row, conf) {
-                    return conf["mass"] - row["mass"];
+                    return conf.mass - row.mass;
                 }), this["displayTop5"]();
 
             },
