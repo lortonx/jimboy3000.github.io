@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.283 MEGA TEST
+// v1.284 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2517,13 +2517,12 @@ var core = function(t, e, i) {
             'setSkinPreview': function(t, e) {
 				
 				if (t.includes(".mp4")){
-					checktypeImgVid = new Video();
 					console.log("stage 1 videos");
 					
                 if (s('#' + e).empty().addClass('default'), t && 0 != t.length) {
 					console.log("stage 1 images/videos: " + t);	
 					var i = this;
-					newo = checktypeImgVid; 
+					newo = new Video(); 
 					newo.src = t;					
                        // o = new Image(); 					
                     newo.crossOrigin = 'anonymous';
