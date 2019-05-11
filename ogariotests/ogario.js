@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.319 MEGA TEST
+// v1.320 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4526,6 +4526,10 @@ var core = function(t, e, i) {
 
                             style.restore();
                         } else {
+							if (ogarminimapdrawer.customSkinsMap[this.targetNick] && node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]){
+							((node2.src.includes(".mp4") && checkVideos(node2.src, this.targetNick)),
+						    (node2.src.includes(".mp4") && style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ))	
+							}
 							if (dyinglight1load == "yes" && node==null) {
 							//console.log(this.mass);
 							//if (this.mass && this.mass<=500){							
