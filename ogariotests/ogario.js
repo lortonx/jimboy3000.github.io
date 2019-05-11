@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.289 MEGA TEST
+// v1.290 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2507,10 +2507,10 @@ var core = function(t, e, i) {
                         s("#skin-popover").popover();
                     } else {
 						if (e.src.includes(".mp4")){ console.log("stage 3b videos");
-						/*
+					
                         s("#" + t).removeClass("default");
 						s("#" + t).append(s(e).fadeIn(1000));
-						*/
+						
 						}
 						else{
                         s("#" + t).removeClass("default");
