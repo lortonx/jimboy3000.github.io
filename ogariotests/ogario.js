@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.273 MEGA TEST
+// v1.274 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2526,12 +2526,15 @@ var core = function(t, e, i) {
 				}				
                 if (s('#' + e).empty().addClass('default'), t && 0 != t.length) {
 					console.log("stage 1 images/videos: " + t);	
-					var i = this, 
+					var i = this;
 					o = checktypeImgVid;
                        // o = new Image(); 					
-                    o.crossOrigin = 'anonymous', o.onload = function() {
+                    o.crossOrigin = 'anonymous';
+					o.src = t;
+					o.onload = function() {
                         i['changeSkinPreview'](o, e);
-                    }, o.src = t;
+                    };
+					
                 }
             },
             'setProfile': function() {
