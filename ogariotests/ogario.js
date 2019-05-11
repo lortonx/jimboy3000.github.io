@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.313 MEGA TEST
+// v1.314 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -28,14 +28,14 @@ $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/
 window.videoJustWatchProflag=true;
 window.videoJustWatchPro;
 
-function checkVideos(node){
-	checkVideos1(node);
+function checkVideos(a, b){
+	checkVideos1(a);
 	 //setTimeout(function() {
 		 if (window.videoJustWatchPro.readyState==4){
 	if (!window.videoJustWatchPro.playing){
 	window.videoJustWatchPro.play();
 	setTimeout(function() {
-		checkVideos2();
+		checkVideos2(b);
 	}, 2000);	
 	};
 
@@ -43,13 +43,13 @@ function checkVideos(node){
 	//}, 2000);
 }
 
-function checkVideos2(){
+function checkVideos2(b){
 	
 	for(i=0; i<legendmod3.top5.length-1 ;i++){
 	
-		if(i.nick=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") {
+		if(i.nick==b) {
 			legendmod3.setTarget(i.id);				
-	if(legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){
+	if(legendmod3.lastSentNick != b){
 		window.videoJustWatchProflag2=false;
 	if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3"){
 	
@@ -64,7 +64,7 @@ function checkVideos2(){
 		}
 		
 		 }
-	if(legendmod3.lastSentNick != "℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"){	 
+	if(legendmod3.lastSentNick != b){	 
 	checkvideoJustWatchProflag2();		
 	}	
 }
@@ -75,10 +75,10 @@ function checkvideoJustWatchProflag2(){
 		window.videoJustWatchPro.volume = 0;
 	}
 }
-function checkVideos1(node){
+function checkVideos1(a){
 	if (videoJustWatchProflag){
 		window.videoJustWatchPro = document.createElement("video"); // create a video element
-		window.videoJustWatchPro.src = done;	
+		window.videoJustWatchPro.src = a;	
 		window.videoJustWatchProflag=false;
 	}
 };	
@@ -4489,14 +4489,14 @@ var core = function(t, e, i) {
                             s = false;							
 						}*/
                         var node = null;						
-						var node2 = new Video; //, node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
+						var node2 = {}; //, node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
 						
                         if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)) && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]) &&
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
-						(node2.src.includes(".mp4") && (node2.crossOrigin = 'anonymous') && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y))),
+						(node2.src.includes(".mp4") && checkVideos(node2.src, this.targetNick)), 
 						//node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
 						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && checkVideos()),
 						this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && (style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
