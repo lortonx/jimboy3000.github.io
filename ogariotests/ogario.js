@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.281 MEGA TEST
+// v1.282 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2526,7 +2526,7 @@ var core = function(t, e, i) {
 					var i = this,
 					
                        // o = new Image(); 					
-                    o.crossOrigin = 'anonymous'; o.onload = function() {
+                    o.crossOrigin = 'anonymous', o.onload = function() {
                         i['changeSkinPreview'](o, e);
                     }; 					
 				}
