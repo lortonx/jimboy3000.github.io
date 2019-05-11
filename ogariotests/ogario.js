@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.271 MEGA TEST
+// v1.272 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2484,14 +2484,14 @@ var core = function(t, e, i) {
 				ogarcopythelb.color = ogario1PlayerProfiles[this['selectedProfile']].color;
             },
             'changeSkinPreview': function(e, t) {
-				console.log(e,t)
+				console.log(e,t);
                 if (t && e) {
-                    if ("skin-preview" === e) { //or if ("skin-preview" === e)
-						console.log(t,t.src);
+                    if ("skin-preview" === t) { //or if ("skin-preview" === e)
+						console.log(e,e.src);
 						console.log(e);
-						if (t.src.includes(".mp4")){ console.log("stage 3a videos");
+						if (e.src.includes(".mp4")){ console.log("stage 3a videos");
                         s("#skin-preview").removeClass("default");
-						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
+						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='500'>\"></a>");
 						s("#skin-popover").append('<video id="videoskinpreview" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 //						s("#skin-popover").popover();
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
@@ -2499,18 +2499,18 @@ var core = function(t, e, i) {
 						else{
 						console.log("default settings for images on changeSkinPreview")
 						s("#skin-preview").removeClass("default");
-						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + t.src + "' width='500'>\"></a>");	
+						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + e.src + "' width='500'>\"></a>");	
 						}
-                        s("#skin-popover").append(s(t).fadeIn(1000));
+                        s("#skin-popover").append(s(e).fadeIn(1000));
                         s("#skin-popover").popover();
                     } else {
-						if (t.src.includes(".mp4")){ console.log("stage 3b videos");
+						if (e.src.includes(".mp4")){ console.log("stage 3b videos");
                         s("#" + e).removeClass("default");
-						s("#" + e).append(s(t).fadeIn(1000));
+						s("#" + e).append(s(e).fadeIn(1000));
 						}
 						else{
                         s("#" + e).removeClass("default");
-						s("#" + e).append(s(t).fadeIn(1000));
+						s("#" + e).append(s(e).fadeIn(1000));
 					}
                     }
                 }
