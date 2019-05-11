@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.266 MEGA TEST
+// v1.269 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2483,13 +2483,13 @@ var core = function(t, e, i) {
 				ogarcopythelb.skinURL = ogario1PlayerProfiles[this['selectedProfile']].skinURL;
 				ogarcopythelb.color = ogario1PlayerProfiles[this['selectedProfile']].color;
             },
-            'changeSkinPreview': function(t, e) {
-				console.log(t,e)
+            'changeSkinPreview': function(e, t) {
+				console.log(e,t)
                 if (t && e) {
-                    if ("skin-preview" === t) {
+                    if ("skin-preview" === e) { //or if ("skin-preview" === t)
 						console.log(t,t.src);
 						console.log(e);
-						if (t.src.includes(".mp4")){ console.log("stage 3 videos");
+						if (t.src.includes(".mp4")){ console.log("stage 3a videos");
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						s("#skin-popover").append('<video id="videoskinpreview" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
@@ -2504,7 +2504,14 @@ var core = function(t, e, i) {
                         s("#skin-popover").append(s(t).fadeIn(1000));
                         s("#skin-popover").popover();
                     } else {
-                        s("#" + e).removeClass("default").append(s(t).fadeIn(1000));
+						if (t.src.includes(".mp4")){ console.log("stage 3b videos");
+                        s("#" + e).removeClass("default");
+						s("#" + e).append(s(t).fadeIn(1000));
+						}
+						else{
+                        s("#" + e).removeClass("default");
+						s("#" + e).append(s(t).fadeIn(1000));
+					}
                     }
                 }
             },
