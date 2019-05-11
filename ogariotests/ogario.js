@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.270 MEGA TEST
+// v1.271 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2486,7 +2486,7 @@ var core = function(t, e, i) {
             'changeSkinPreview': function(e, t) {
 				console.log(e,t)
                 if (t && e) {
-                    if ("skin-preview" === t) { //or if ("skin-preview" === e)
+                    if ("skin-preview" === e) { //or if ("skin-preview" === e)
 						console.log(t,t.src);
 						console.log(e);
 						if (t.src.includes(".mp4")){ console.log("stage 3a videos");
