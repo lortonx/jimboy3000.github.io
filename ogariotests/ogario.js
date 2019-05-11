@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.299 MEGA TEST
+// v1.300 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3153,12 +3153,7 @@ var core = function(t, e, i) {
                 if (!this['checkSkinsMap'](t, e)) return null;
                 var i = ':party' === this['gameMode'] ? t + e : t;
                 return this['getCachedSkin'](this['customSkinsCache'], this['customSkinsMap'][i]);
-            },
-            'getCustomSkin2': function(t, e) {
-                if (!this['checkSkinsMap'](t, e)) return null;
-                var i = ':party' === this['gameMode'] ? t + e : t;
-                return this['customSkinsMap'][i];
-            },			
+            },	
             'calculateMapSector': function(t, e, s = false) {
                 if (!i['mapOffsetFixed']) return '';
                 var o = s ? i['mapOffsetX'] + i['mapOffset'] : i['mapOffset'],
@@ -4493,9 +4488,9 @@ var core = function(t, e, i) {
                             style.globalAlpha = 1;
                             s = false;							
 						}*/
-                        var node = null;							
-
-                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color), node2 = ogarminimapdrawer.getCustomSkin2(this.targetNick, this.color)) && 
+                        var node = null;						
+						var node2 = null;
+                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color), node2 = ogarminimapdrawer.customSkinsMap[this.targetNick]) && 
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
