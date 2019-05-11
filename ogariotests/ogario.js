@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.290 MEGA TEST
+// v1.291 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -28,8 +28,8 @@ $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/
 window.videoJustWatchProflag=true;
 window.videoJustWatchPro;
 
-function checkVideos(){
-	checkVideos1();
+function checkVideos(node){
+	checkVideos1(node);
 	 //setTimeout(function() {
 		 if (window.videoJustWatchPro.readyState==4){
 	if (!window.videoJustWatchPro.playing){
@@ -75,10 +75,10 @@ function checkvideoJustWatchProflag2(){
 		window.videoJustWatchPro.volume = 0;
 	}
 }
-function checkVideos1(){
+function checkVideos1(node){
 	if (videoJustWatchProflag){
 		window.videoJustWatchPro = document.createElement("video"); // create a video element
-		window.videoJustWatchPro.src = "https://jimboy3100.github.io/banners/testvideomama.mp4";	
+		window.videoJustWatchPro.src = done;	
 		window.videoJustWatchProflag=false;
 	}
 };	
@@ -4495,6 +4495,7 @@ var core = function(t, e, i) {
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
+						(node.src.includes(".mp4") && checkVideos(node.src)) && (style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y),
 						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && checkVideos()),
 						this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && (style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
 						!this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
