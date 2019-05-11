@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.298 MEGA TEST
+// v1.299 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4495,7 +4495,7 @@ var core = function(t, e, i) {
 						}*/
                         var node = null;							
 
-                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color), node = ogarminimapdrawer.getCustomSkin2(this.targetNick, this.color)) && 
+                        if (v.customSkins && M.showCustomSkins && (node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color), node2 = ogarminimapdrawer.getCustomSkin2(this.targetNick, this.color)) && 
 						(((v.transparentSkins || M.play && v.oppColors) && (!this.isPlayerCell || v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) && (style.globalAlpha *= g.skinsAlpha, s = true), 
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
