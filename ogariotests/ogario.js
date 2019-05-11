@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.321 MEGA TEST
+// v1.322 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -25,7 +25,10 @@ function Video(src, append) {
 $("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 */
-window.videoJustWatchProflag=true;
+window.videoJustWatchProflag={};
+window.videoJustWatchProflag2={};
+
+//window.videoJustWatchProflag=true;
 window.videoJustWatchPro;
 
 function checkVideos(a, b){
@@ -51,11 +54,11 @@ function checkVideos2(b){
 		if(i.nick==b) {
 			legendmod3.setTarget(i.id);				
 	if(legendmod3.lastSentNick != b){
-		window.videoJustWatchProflag2=false;
+		window.videoJustWatchProflag2[b]=false;
 	if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3"){
 	
 	window.videoJustWatchPro.volume = 1;
-	window.videoJustWatchProflag2=true;
+	window.videoJustWatchProflag2[b]=true;
 			}
 	else{
 		window.videoJustWatchPro.volume = 0;
@@ -66,23 +69,23 @@ function checkVideos2(b){
 		
 		 }
 	if(legendmod3.lastSentNick != b){	 
-	checkvideoJustWatchProflag2();		
+	checkvideoJustWatchProflag2(b);		
 	}	
 }
 
-function checkvideoJustWatchProflag2(){
+function checkvideoJustWatchProflag2(b){
 	
-	if (!window.videoJustWatchProflag2){
+	if (!window.videoJustWatchProflag2[b]){
 		window.videoJustWatchPro.volume = 0;
 	}
 }
 function checkVideos1(a){
 	
-	if (videoJustWatchProflag){
+	if (!videoJustWatchProflag[a]){
 		console.log("video skins activated");
 		window.videoJustWatchPro = document.createElement("video"); // create a video element
 		window.videoJustWatchPro.src = a;	
-		window.videoJustWatchProflag=false;
+		window.videoJustWatchProflag[a]=true;
 	}
 };	
 
@@ -4526,7 +4529,7 @@ var core = function(t, e, i) {
 
                             style.restore();
                         } else {
-							if (ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
+							if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
 								if (node2.src.includes(".mp4") && checkVideos(node2.src, this.targetNick)){
 						    (node2.src.includes(".mp4") && style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )
 								}							
