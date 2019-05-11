@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.272 MEGA TEST
+// v1.273 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2487,8 +2487,7 @@ var core = function(t, e, i) {
 				console.log(e,t);
                 if (t && e) {
                     if ("skin-preview" === t) { //or if ("skin-preview" === e)
-						console.log(e,e.src);
-						console.log(e);
+						console.log(e,e.src);						
 						if (e.src.includes(".mp4")){ console.log("stage 3a videos");
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='500'>\"></a>");
@@ -2505,12 +2504,12 @@ var core = function(t, e, i) {
                         s("#skin-popover").popover();
                     } else {
 						if (e.src.includes(".mp4")){ console.log("stage 3b videos");
-                        s("#" + e).removeClass("default");
-						s("#" + e).append(s(e).fadeIn(1000));
+                        s("#" + t).removeClass("default");
+						s("#" + t).append(s(e).fadeIn(1000));
 						}
 						else{
-                        s("#" + e).removeClass("default");
-						s("#" + e).append(s(e).fadeIn(1000));
+                        s("#" + t).removeClass("default");
+						s("#" + t).append(s(e).fadeIn(1000));
 					}
                     }
                 }
