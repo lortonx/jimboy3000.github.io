@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.326 MEGA TEST
+// v1.327 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -97,7 +97,7 @@ window.agarversion = "v12/2106/";
 
 function pauseVideos(){
 	setTimeout(function() {
-	if (window.videoJustWatchPro.playing){ 
+	if (window.videoJustWatchPro && window.videoJustWatchPro.playing){ 
 	window.videoJustWatchPro.pause();
 		}
 	}, 1000);
