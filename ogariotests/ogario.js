@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.323 MEGA TEST
+// v1.326 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -29,16 +29,16 @@ window.videoJustWatchProflag={};
 window.videoJustWatchProflag2={};
 
 //window.videoJustWatchProflag=true;
-window.videoJustWatchPro={};
+window.videoJustWatchPro;
 
 function checkVideos(a, b){
-	checkVideos1(a,b);
+	checkVideos1(a);
 	 //setTimeout(function() {
-		 if (window.videoJustWatchPro[a].readyState==4){
-	if (!window.videoJustWatchPro[a].playing){
-	window.videoJustWatchPro[a].play();
+		 if (window.videoJustWatchPro.readyState==4){
+	if (!window.videoJustWatchPro.playing){
+	window.videoJustWatchPro.play();
 	setTimeout(function() {
-		checkVideos2(b,a);
+		checkVideos2(b);
 	}, 2000);	
 	};
 
@@ -47,21 +47,21 @@ function checkVideos(a, b){
 	return true;
 }
 
-function checkVideos2(a, b){
+function checkVideos2(b){
 	
 	for(i=0; i<legendmod3.top5.length-1 ;i++){
 	
 		if(i.nick==b) {
 			legendmod3.setTarget(i.id);				
 	if(legendmod3.lastSentNick != b){
-		window.videoJustWatchProflag2[a]=false;
+		window.videoJustWatchProflag2[b]=false;
 	if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3"){
 	
-	window.videoJustWatchPro[a].volume = 1;
+	window.videoJustWatchPro.volume = 1;
 	window.videoJustWatchProflag2[b]=true;
 			}
 	else{
-		window.videoJustWatchPro[a].volume = 0;
+		window.videoJustWatchPro.volume = 0;
 		}
 		
 		}
@@ -69,22 +69,22 @@ function checkVideos2(a, b){
 		
 		 }
 	if(legendmod3.lastSentNick != b){	 
-	checkvideoJustWatchProflag2(a,b);		
+	checkvideoJustWatchProflag2(b);		
 	}	
 }
 
-function checkvideoJustWatchProflag2(a,b){
+function checkvideoJustWatchProflag2(b){
 	
-	if (!window.videoJustWatchProflag2[a]){
-		window.videoJustWatchPro[a].volume = 0;
+	if (!window.videoJustWatchProflag2[b]){
+		window.videoJustWatchPro.volume = 0;
 	}
 }
-function checkVideos1(a, b){
+function checkVideos1(a){
 	
 	if (!videoJustWatchProflag[a]){
 		console.log("video skins activated");
-		window.videoJustWatchPro[a] = document.createElement("video"); // create a video element
-		window.videoJustWatchPro[a].src = a;	
+		window.videoJustWatchPro = document.createElement("video"); // create a video element
+		window.videoJustWatchPro.src = a;	
 		window.videoJustWatchProflag[a]=true;
 	}
 };	
@@ -97,7 +97,7 @@ window.agarversion = "v12/2106/";
 
 function pauseVideos(){
 	setTimeout(function() {
-	if (window.videoJustWatchPro && window.videoJustWatchPro.playing){ 
+	if (window.videoJustWatchPro.playing){ 
 	window.videoJustWatchPro.pause();
 		}
 	}, 1000);
@@ -3372,12 +3372,7 @@ var core = function(t, e, i) {
                 e && (this['skipServerData'] = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                pauseVideos(),
-				this['closeConnection'](),
-				this['flushData'](),
-				this['setParty'](),
-				console.log('[Legend mod Express] Connecting to server'),
-				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
+                pauseVideos(), this['closeConnection'](), this['flushData'](), this['setParty'](), console.log('[Legend mod Express] Connecting to server'), this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
@@ -4507,11 +4502,11 @@ var core = function(t, e, i) {
 						
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
-						((node2.src.includes(".mp4") && checkVideos(this.targetNick, node2.src)),
-						(node2.src.includes(".mp4") && style.drawImage(window.videoJustWatchPro[this.targetNick], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )),
+						((node2.src.includes(".mp4") && checkVideos(node2.src, this.targetNick)),
+						(node2.src.includes(".mp4") && style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )),
 						//node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
 						(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && checkVideos("https://jimboy3100.github.io/banners/testvideomama.mp4","℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")),
-						this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && (style.drawImage(window.videoJustWatchPro[this.targetNick], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
+						this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && (style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
 						!this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ") && !node2.src.includes(".mp4") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
 						//this.targetNick.includes("℄") && (style.rotate(M.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
@@ -4535,8 +4530,8 @@ var core = function(t, e, i) {
                             style.restore();
                         } else {
 							if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
-								if (node2.src.includes(".mp4") && checkVideos(this.targetNick, node2.src)){
-						    (node2.src.includes(".mp4") && style.drawImage(window.videoJustWatchPro[this.targetNick], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )
+								if (node2.src.includes(".mp4") && checkVideos(node2.src, this.targetNick)){
+						    (node2.src.includes(".mp4") && style.drawImage(window.videoJustWatchPro, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )
 								}							
 							}
 							if (dyinglight1load == "yes" && node==null) {
