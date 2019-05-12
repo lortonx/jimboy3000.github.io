@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.327 MEGA TEST
+// v1.328 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2490,12 +2490,12 @@ var core = function(t, e, i) {
 				ogarcopythelb.color = ogario1PlayerProfiles[this['selectedProfile']].color;
             },
             'changeSkinPreview': function(e, t) {
-				console.log(e,t);
+				//console.log(e,t);
                 if (t && e) {
                     if ("skin-preview" === t) { //or if ("skin-preview" === e)
-						console.log(e,e.src);	
+						//console.log(e,e.src);	
 						
-						if (e.src.includes(".mp4")){ console.log("stage 3a videos");
+						if (e.src.includes(".mp4")){ //console.log("stage 3a videos");
 					
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='500'>\"></a>");
@@ -2505,14 +2505,14 @@ var core = function(t, e, i) {
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 						}
 						else{
-						console.log("default settings for images on changeSkinPreview")
+						//console.log("default settings for images on changeSkinPreview")
 						s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<img src=\'' + e.src + "' width='500'>\"></a>");	
 						}
                         s("#skin-popover").append(s(e).fadeIn(1000));
                         s("#skin-popover").popover();
                     } else {
-						if (e.src.includes(".mp4")){ console.log("stage 3b videos");
+						if (e.src.includes(".mp4")){ //console.log("stage 3b videos");
 					
                         s("#" + t).removeClass("default");
 						s("#" + t).append(s(e).fadeIn(1000));
@@ -2528,10 +2528,10 @@ var core = function(t, e, i) {
             'setSkinPreview': function(t, e) {
 				
 				if (t.includes(".mp4")){
-					console.log("stage 1 videos");
+					//console.log("stage 1 videos");
 					
                 if (s('#' + e).empty().addClass('default'), t && 0 != t.length) {
-					console.log("stage 1 images/videos: " + t);	
+					//console.log("stage 1 images/videos: " + t);	
 					var i = this;
 					o = new Video(); 
 					o.src = t;					
@@ -2547,10 +2547,10 @@ var core = function(t, e, i) {
 				}
 				else {					
                     checktypeImgVid = new Image();
-					console.log("stage 1 images");	
+					//console.log("stage 1 images");	
 								
                 if (s('#' + e).empty().addClass('default'), t && 0 != t.length) {
-					console.log("stage 1 images/videos: " + t);	
+					//console.log("stage 1 images/videos: " + t);	
 					var i = this, 
 					o = checktypeImgVid; o.src = t;
                        // o = new Image(); 					
@@ -3095,10 +3095,10 @@ var core = function(t, e, i) {
             },
             'loadSkin': function(t, e) {
                 var i = this;
-				console.log ("t:" + t + "e:" + e);
+				//console.log ("t:" + t + "e:" + e);
 				if (e.includes(".mp4")){
 					t[e] = new Video();
-					console.log("stage 2 videos");
+					//console.log("stage 2 videos");
 				}
 				else{
 					t[e] = new Image();
