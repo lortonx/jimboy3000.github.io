@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.331 MEGA TEST
+// v1.332 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -90,11 +90,11 @@ function checkVideos1(a){
 	}
 };	
 
-function checkVideos3(a){
-	if(window.videoJustWatchPro[a].readyState > 0) {
-		var minutes = parseInt(window.videoJustWatchPro[a].duration / 60, 10);
-		var seconds = window.videoJustWatchPro[a].duration % 60;
-		if (minutes>4){
+function checkVideos3(o){
+	if(o.readyState > 0) {
+		var minutes = parseInt(o.duration / 60, 10);
+		var seconds = o.duration % 60;
+		if (minutes>3){
 			toastr["warning"]("<b>[SERVER]:</b> " +"Avoid using video skins bigger than 4 minutes");
 		}
 	}		
@@ -2558,7 +2558,7 @@ var core = function(t, e, i) {
 					setTimeout(function() {
 					//newo.onload = function() {
                         i['changeSkinPreview'](o, e);
-						checkVideos3(o.src);
+						checkVideos3(o);
                     //}; 	
 					}, 500);
 					
