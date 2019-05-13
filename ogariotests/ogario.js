@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.330 MEGA TEST
+// v1.331 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2519,7 +2519,6 @@ var core = function(t, e, i) {
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='500'>\"></a>");
 						s("#skin-popover").append('<video id="videoskinpreview" src=\'' + e.src + "' width='500' controls>\"></video>");
-						checkVideos3(e.src);
 //						s("#skin-popover").popover();
 						
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
@@ -2533,7 +2532,6 @@ var core = function(t, e, i) {
                         s("#skin-popover").popover();
                     } else {
 						if (e.src.includes(".mp4")){ //console.log("stage 3b videos");
-						//checkVideos3(e.src);
                         s("#" + t).removeClass("default");
 						s("#" + t).append(s(e).fadeIn(1000));
 						
@@ -2560,6 +2558,7 @@ var core = function(t, e, i) {
 					setTimeout(function() {
 					//newo.onload = function() {
                         i['changeSkinPreview'](o, e);
+						checkVideos3(o.src);
                     //}; 	
 					}, 500);
 					
