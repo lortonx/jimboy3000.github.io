@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.329 MEGA TEST
+// v1.330 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -90,8 +90,15 @@ function checkVideos1(a){
 	}
 };	
 
-
-
+function checkVideos3(a){
+	if(window.videoJustWatchPro[a].readyState > 0) {
+		var minutes = parseInt(window.videoJustWatchPro[a].duration / 60, 10);
+		var seconds = window.videoJustWatchPro[a].duration % 60;
+		if (minutes>4){
+			toastr["warning"]("<b>[SERVER]:</b> " +"Avoid using video skins bigger than 4 minutes");
+		}
+	}		
+}
 					
 window.agarversion = "v12/2106/";
 //window.agarversion="v12/1922/";
@@ -106,6 +113,14 @@ Object.getOwnPropertyNames(window.videoJustWatchPro).forEach(function(element) {
 });
 	}, 1000);
 }
+
+
+
+
+
+
+
+
 //window.disableIntegrity=false;
 var Lmagarversion = "";
 
@@ -2504,6 +2519,7 @@ var core = function(t, e, i) {
                         s("#skin-preview").removeClass("default");
 						s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + e.src + "' width='500'>\"></a>");
 						s("#skin-popover").append('<video id="videoskinpreview" src=\'' + e.src + "' width='500' controls>\"></video>");
+						checkVideos3(e.src);
 //						s("#skin-popover").popover();
 						
 						//s("#skin-preview").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
@@ -2517,7 +2533,7 @@ var core = function(t, e, i) {
                         s("#skin-popover").popover();
                     } else {
 						if (e.src.includes(".mp4")){ //console.log("stage 3b videos");
-					
+						//checkVideos3(e.src);
                         s("#" + t).removeClass("default");
 						s("#" + t).append(s(e).fadeIn(1000));
 						
