@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.328e MEGA TEST
+// v1.328f MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -29,16 +29,16 @@ window.videoJustWatchProflag={};
 window.videoJustWatchProflag2={};
 
 //window.videoJustWatchProflag=true;
-window.videoJustWatchPro;
+window.videoJustWatchPro={};
 
 function checkVideos(a, b){
 	checkVideos1(a);
 	 //setTimeout(function() {
-		 if (window.videoJustWatchPro.readyState==4){
-	if (!window.videoJustWatchPro.playing){
-	window.videoJustWatchPro.play();
+		 if (window.videoJustWatchPro[a].readyState==4){
+	if (!window.videoJustWatchPro[a].playing){
+	window.videoJustWatchPro[a].play();
 	setTimeout(function() {
-		checkVideos2(b);
+		checkVideos2(a,b);
 	}, 2000);	
 	};
 
@@ -47,7 +47,7 @@ function checkVideos(a, b){
 	return true;
 }
 
-function checkVideos2(b){
+function checkVideos2(a,b){
 	
 	for(i=0; i<legendmod3.top5.length-1 ;i++){
 	
@@ -57,11 +57,11 @@ function checkVideos2(b){
 		window.videoJustWatchProflag2[b]=false;
 	if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3"){
 	
-	window.videoJustWatchPro.volume = 1;
+	window.videoJustWatchPro[a].volume = 1;
 	window.videoJustWatchProflag2[b]=true;
 			}
 	else{
-		window.videoJustWatchPro.volume = 0;
+		window.videoJustWatchPro[a].volume = 0;
 		}
 		
 		}
@@ -76,16 +76,16 @@ function checkVideos2(b){
 function checkvideoJustWatchProflag2(b){
 	
 	if (!window.videoJustWatchProflag2[b]){
-		window.videoJustWatchPro.volume = 0;
+		window.videoJustWatchPro[a].volume = 0;
 	}
 }
 function checkVideos1(a){
 	
 	if (!videoJustWatchProflag[a]){
 		console.log("video skins activated");
-		window.videoJustWatchPro = document.createElement("video"); // create a video element
+		window.videoJustWatchPro[a] = document.createElement("video"); // create a video element
 //		window.videoJustWatchPro.crossOrigin = 'anonymous';
-		window.videoJustWatchPro.src = a;	
+		window.videoJustWatchPro[a].src = a;	
 		window.videoJustWatchProflag[a]=true;
 	}
 };	
@@ -3106,7 +3106,14 @@ var core = function(t, e, i) {
 				}
 				t[e].crossOrigin = 'anonymous'; 
 				t[e]['onload'] = function() {
-                    this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000 && (i['cacheQueue'].push(e), 1 == i['cacheQueue'].length && i['cacheSkin'](i['customSkinsCache']));
+                    this['complete'] &&
+					this['width'] &&
+					this['height'] && 
+					this['width'] <= 2000 &&
+					this['height'] <= 2000 &&
+					(i['cacheQueue'].push(e), 
+					1 == i['cacheQueue'].length &&
+					i['cacheSkin'](i['customSkinsCache']));
                 }, t[e].src = e;
             },
             'cacheSkin': function(t) {
