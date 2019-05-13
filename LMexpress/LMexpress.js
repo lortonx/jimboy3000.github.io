@@ -2,7 +2,7 @@
  * Legend express v0.036a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "36"; // the version 1.1-> 1.11
+var semimodVersion = "37"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -58,7 +58,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-//var checkonlytwice = localStorage.getItem("checkonlytwice");
+var checkonlythird = localStorage.getItem("checkonlythird");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -611,15 +611,15 @@ function loadersetings() {
 				}
 				}
             }		
-			/*
-            if (checkonlytwice != "true") {
+			
+            if (checkonlythird != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-			toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend Box </span></font> is released!<br><font color="red">It\'s Multibox</font></b></a><iframe id="animatedpromosIframe4" class="result-iframe" style="border: none;" src="https://jimboy3100.github.io/extras/banneranimated5.html" name="CodePen" width="300" height="300" frameborder="0" scrolling="no" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms" allowfullscreen="allowfullscreen"></iframe><br><b><u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>').css("width", "350px");
-        checkonlytwice = "true";
-        localStorage.setItem("checkonlytwice", checkonlytwice);				
+			toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend Express </span></font> can support .mp4 .webm and .ogv files!<br><font color="red">Import them on skin url</font><br></a>Use them from Imgur or websites with no CORS policy</b><br><b><u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>').css("width", "350px");
+        checkonlythird = "true";
+        localStorage.setItem("checkonlythird", checkonlythird);				
             }					
-        }
-		*/
+        
+		
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
