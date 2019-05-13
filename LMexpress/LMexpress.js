@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.035a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.036 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "36"; // the version 1.1-> 1.11
@@ -4249,39 +4249,69 @@ function Bino() {
 
 
 function msgcommand1f() {
+	if (legendmod3.lastSentClanTag==""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}
+	else{
     commandMsg = "Hello";
     otherMsg = "";
     dosendmsgcommand();
+	}
 }
 
 function msgcommand2f() {
+	if (legendmod3.lastSentClanTag==""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}	
+	else{
     commandMsg = "Team5";
     otherMsg = "";
     dosendmsgcommand();
+	}
 }
 
 function msgcommand3f() {
+	if (legendmod3.lastSentClanTag==""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}	
+	else{	
     commandMsg = "NamePerm";
     otherMsg = "";
     dosendmsgcommand();
+	}
 }
 
 function msgcommand4f() {
+	if (legendmod3.lastSentClanTag==""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}	
+	else{		
     commandMsg = "dTroll2";
     otherMsg = "";
     dosendmsgcommand();
+	}
 }
 
 function msgcommand5f() {
+	if (legendmod3.lastSentClanTag==""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}	
+	else{		
     commandMsg = "Youtube";
     otherMsg = "";
     dosendmsgcommand();
+	}
 }
 
 function msgcommand6f() {
+	if (legendmod3.lastSentClanTag==""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}	
+	else{		
     commandMsg = "HideAll";
     otherMsg = "";
     dosendmsgcommand();
+	}
 }
 
 function dosendmsgcommand() {
