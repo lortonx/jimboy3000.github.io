@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.335 MEGA TEST
+// v1.336 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -2672,7 +2672,7 @@ var core = function(t, e, i) {
 					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
 					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
 					this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
-					this["protocolMode"] ? this["addOptions"](["customSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins", "videoSkins"], "skinsGroup"), 
+					this["protocolMode"] ? this["addOptions"](["customSkins", "videoSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins", "videoSkins"], "skinsGroup"), 
 					this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), 
 					this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), 
 					this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"), 
