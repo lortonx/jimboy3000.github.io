@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.036 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.036a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "36"; // the version 1.1-> 1.11
@@ -7293,7 +7293,10 @@ $("#server-reconnect").css("width", "11%");
 
 
 
-core.disconnect= function () {adres(null,$('#gamemode').val(),$('#region').val());}
+core.disconnect= function () {
+	adres(null,$('#gamemode').val(),$('#region').val());
+	pauseVideos();
+	};
         $('#server-reconnect').click(function() {
             setTimeout(function() {
 			adres(null,$('#gamemode').val(),$('#region').val());			
