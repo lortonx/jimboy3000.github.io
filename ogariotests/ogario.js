@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.332 MEGA TEST
+// v1.333 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -94,8 +94,8 @@ function checkVideos3(o){
 	if(o.readyState > 0) {
 		var minutes = parseInt(o.duration / 60, 10);
 		var seconds = o.duration % 60;
-		if (minutes>3){
-			toastr["warning"]("<b>[SERVER]:</b> " +"Avoid using video skins bigger than 4 minutes");
+		if (minutes>5){
+			toastr["warning"]("<b>[SERVER]:</b> " +"Avoid using video skins bigger than 6 minutes");
 		}
 	}		
 }
