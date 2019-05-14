@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.038a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.037b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "37"; // the version 1.1-> 1.11
@@ -4289,7 +4289,7 @@ function msgcommand6f() {
 }
 
 function dosendmsgcommand() {
-	if (legendmod3.lastSentClanTag!="" || $("#clantag").val() != ""){
+	if (legendmod3.lastSentClanTag=="" || $("#clantag").val() == ""){
 	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
 	}		
 	else{
