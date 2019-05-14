@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.405 MEGA TEST
+// v1.406 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -54,7 +54,7 @@ function checkVideos2(a, b) {
         if (i.nick == b) {
             //legendmod3.setTarget(i.id);				
             if (legendmod3.lastSentNick != b) {
-                if (legendmod5.videoSkinsMusic == false) {
+                if (legendmod5.videoSkinsMusic == true) {
                     window.videoJustWatchProflag2[b] = false;
                     if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3") {
 
@@ -64,6 +64,9 @@ function checkVideos2(a, b) {
                         window.videoJustWatchPro[a].volume = 0;
                     }
                 }
+				else{
+					window.videoJustWatchPro[a].volume = 0;
+				}
             }
         }
 
@@ -236,7 +239,7 @@ var core = function(t, e, i) {
                     'vanillaSkins': 'Podstawowe skiny',
                     'customSkins': 'Własne skiny',
 					'videoSkins': 'Video skins',
-					'videoSkinsMusic': 'Music from other\'s Video skins',
+					'videoSkinsMusic': 'Sound from other\'s Video skins when both C3',
                     'myTransparentSkin': 'Mój przezroczysty skin',
                     'myCustomColor': 'Mój własny kolor',
                     'transparentCells': 'Przezroczyste kulki',
@@ -606,7 +609,7 @@ var core = function(t, e, i) {
                     'vanillaSkins': 'Vanilla skins',
                     'customSkins': 'Custom skins',
 					'videoSkins': 'Video skins',
-					'videoSkinsMusic': 'Music from other\'s Video skins',
+					'videoSkinsMusic': 'Sound from other\'s Video skins when both C3',
                     'myTransparentSkin': 'My transparent skin',
                     'myCustomColor': 'My custom color',
                     'transparentCells': 'Transparent cells',
