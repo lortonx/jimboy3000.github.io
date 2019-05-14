@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.403 MEGA TEST
+// v1.404 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -11,66 +11,66 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 });
 
 function Video(src, append) {
-  var v = document.createElement("video");
-  if (src != "") {
-    v.src = src;
-  }
-  if (append == true) {
-    document.body.appendChild(v);
-  }
-  return v;
+    var v = document.createElement("video");
+    if (src != "") {
+        v.src = src;
+    }
+    if (append == true) {
+        document.body.appendChild(v);
+    }
+    return v;
 }
 
 /*
 $("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 */
-window.videoJustWatchProflag={};
-window.videoJustWatchProflag2={};
+window.videoJustWatchProflag = {};
+window.videoJustWatchProflag2 = {};
 
 //window.videoJustWatchProflag=true;
-window.videoJustWatchPro={};
+window.videoJustWatchPro = {};
 
-function checkVideos(a, b){
-	checkVideos1(a);
-	 //setTimeout(function() {
-		 if (window.videoJustWatchPro[a].readyState==4){
-	if (!window.videoJustWatchPro[a].playing){
-	window.videoJustWatchPro[a].play();
-	setTimeout(function() {
-		checkVideos2(a,b);
-	}, 2000);	
-	};
+function checkVideos(a, b) {
+    checkVideos1(a);
+    //setTimeout(function() {
+    if (window.videoJustWatchPro[a].readyState == 4) {
+        if (!window.videoJustWatchPro[a].playing) {
+            window.videoJustWatchPro[a].play();
+            setTimeout(function() {
+                checkVideos2(a, b);
+            }, 2000);
+        };
 
-		 }
-	//}, 2000);
-	return true;
+    }
+    //}, 2000);
+    return true;
 }
 
-function checkVideos2(a,b){
-	
-	for(i=0; i<legendmod3.top5.length-1 ;i++){
-	
-		if(i.nick==b) {
-			legendmod3.setTarget(i.id);				
-	if(legendmod3.lastSentNick != b){
-		window.videoJustWatchProflag2[b]=false;
-	if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3"){
-	
-	window.videoJustWatchPro[a].volume = 1;
-	window.videoJustWatchProflag2[b]=true;
-			}
-	else{
-		window.videoJustWatchPro[a].volume = 0;
-		}
-		
-		}
-		}
-		
-		 }
-	if(legendmod3.lastSentNick != b){	 
-	checkvideoJustWatchProflag2(b);		
-	}	
+function checkVideos2(a, b) {
+
+    for (i = 0; i < legendmod3.top5.length - 1; i++) {
+
+        if (i.nick == b) {
+            //legendmod3.setTarget(i.id);				
+            if (legendmod3.lastSentNick != b) {
+                if (legendmod5.videoSkinsMusic == false) {
+                    window.videoJustWatchProflag2[b] = false;
+                    if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3") {
+
+                        window.videoJustWatchPro[a].volume = 1;
+                        window.videoJustWatchProflag2[b] = true;
+                    } else {
+                        window.videoJustWatchPro[a].volume = 0;
+                    }
+                }
+            }
+        }
+
+    }
+    if (legendmod3.lastSentNick != b) {
+        checkvideoJustWatchProflag2(b);
+    }
 }
 
 function checkvideoJustWatchProflag2(b){
@@ -236,6 +236,7 @@ var core = function(t, e, i) {
                     'vanillaSkins': 'Podstawowe skiny',
                     'customSkins': 'Własne skiny',
 					'videoSkins': 'Video skins',
+					'videoSkinsMusic': 'Music from other\'s Video skins',
                     'myTransparentSkin': 'Mój przezroczysty skin',
                     'myCustomColor': 'Mój własny kolor',
                     'transparentCells': 'Przezroczyste kulki',
@@ -605,6 +606,7 @@ var core = function(t, e, i) {
                     'vanillaSkins': 'Vanilla skins',
                     'customSkins': 'Custom skins',
 					'videoSkins': 'Video skins',
+					'videoSkinsMusic': 'Music from other\'s Video skins'
                     'myTransparentSkin': 'My transparent skin',
                     'myCustomColor': 'My custom color',
                     'transparentCells': 'Transparent cells',
@@ -1896,6 +1898,7 @@ var core = function(t, e, i) {
                 'vanillaSkins': false,
                 'customSkins': true,
 				'videoSkins': true,
+				'videoSkinsMusic': false,
                 'myTransparentSkin': false,
                 'myCustomColor': false,
                 'transparentCells': false,
@@ -2674,7 +2677,7 @@ var core = function(t, e, i) {
 					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
 					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
 					this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
-					this["protocolMode"] ? this["addOptions"](["customSkins", "videoSkins"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins", "videoSkins"], "skinsGroup"), 
+					this["protocolMode"] ? this["addOptions"](["customSkins", "videoSkins", "videoSkinsMusic"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins", "videoSkins", "videoSkinsMusic"], "skinsGroup"), 
 					this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), 
 					this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), 
 					this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"), 
