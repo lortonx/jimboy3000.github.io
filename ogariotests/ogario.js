@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.409 MEGA TEST
+// v1.410 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -5260,12 +5260,13 @@ var core = function(t, e, i) {
                     for (; t < this["cells"].length; t++) {
                         var e = this["cells"][t];
                         if (!e["isVirus"]) {
+							console.log(i);
                             var i = ~~(e["size"] * e["size"] / 100);
                             var s = this["selectBiggestCell"] ? this["playerMaxMass"] : this["playerMinMass"];
                             var o = i / s;
                             var a = s < 1000 ? 0.35 : 0.38;
                             if (v["oppColors"] && !v["oppRings"]) {
-								console.log(i);
+								
                                 e["oppColor"] = this["setCellOppColor"](e["isPlayerCell"], o, a);
                             }
                             if (!(e["isPlayerCell"] || !v["splitRange"] && !v["oppRings"])) {
