@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.413 MEGA TEST
+// v1.414 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4082,10 +4082,10 @@ var core = function(t, e, i) {
             cimg2.src = g.commanderImage2;		
 			cimg5 = new Image;			
             cimg5.src = g.commanderImage5;
-			cimg6 = new Image;			
-            cimg6.src = g.commanderImage6;		
-			cimg7 = new Image;			
-            cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
+			//cimg6 = new Image;			
+            //cimg6.src = g.commanderImage6;		
+			//cimg7 = new Image;			
+            //cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
 						
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
