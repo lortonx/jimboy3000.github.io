@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.036a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.037a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "37"; // the version 1.1-> 1.11
@@ -4249,73 +4249,50 @@ function Bino() {
 
 
 function msgcommand1f() {
-	if (legendmod3.lastSentClanTag==""){
-	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
-	}
-	else{
-    commandMsg = "Hello";
+	commandMsg = "Hello";
     otherMsg = "";
-    dosendmsgcommand();
-	}
+    dosendmsgcommand();	
 }
 
 function msgcommand2f() {
-	if (legendmod3.lastSentClanTag==""){
-	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
-	}	
-	else{
-    commandMsg = "Team5";
+	commandMsg = "Team5";
     otherMsg = "";
-    dosendmsgcommand();
-	}
+    dosendmsgcommand();	
 }
 
 function msgcommand3f() {
-	if (legendmod3.lastSentClanTag==""){
-	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
-	}	
-	else{	
-    commandMsg = "NamePerm";
+	commandMsg = "NamePerm";
     otherMsg = "";
     dosendmsgcommand();
-	}
+	
 }
 
 function msgcommand4f() {
-	if (legendmod3.lastSentClanTag==""){
-	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
-	}	
-	else{		
-    commandMsg = "dTroll2";
+	 commandMsg = "dTroll2";
     otherMsg = "";
     dosendmsgcommand();
-	}
+	
 }
 
 function msgcommand5f() {
-	if (legendmod3.lastSentClanTag==""){
-	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
-	}	
-	else{		
-    commandMsg = "Youtube";
+	 commandMsg = "Youtube";
     otherMsg = "";
     dosendmsgcommand();
-	}
+	
 }
 
 function msgcommand6f() {
-	if (legendmod3.lastSentClanTag==""){
-	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
-	}	
-	else{		
-    commandMsg = "HideAll";
+ commandMsg = "HideAll";
     otherMsg = "";
     dosendmsgcommand();
-	}
+	
 }
 
 function dosendmsgcommand() {
-
+if (legendmod3.lastSentClanTag=="" || $("#clantag").val() != ""){
+	toastr["warning"]("<b>[SERVER]:</b> " +"Message commands work only while using password");	
+	}		
+	else{
 //    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'none') {
             KeyEvent.simulate(13, 13);
@@ -4335,7 +4312,7 @@ function dosendmsgcommand() {
  //   }
 
 }
-
+}
 function CutNameConflictwithMessageFunction(){
 	return CutNameConflictwithMessage=true;
 }
