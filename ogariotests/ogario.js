@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.408 MEGA TEST
+// v1.409 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -5265,7 +5265,7 @@ var core = function(t, e, i) {
                             var o = i / s;
                             var a = s < 1000 ? 0.35 : 0.38;
                             if (v["oppColors"] && !v["oppRings"]) {
-								console.log(e['size']);
+								console.log(i);
                                 e["oppColor"] = this["setCellOppColor"](e["isPlayerCell"], o, a);
                             }
                             if (!(e["isPlayerCell"] || !v["splitRange"] && !v["oppRings"])) {
