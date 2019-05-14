@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.404 MEGA TEST
+// v1.405 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -606,7 +606,7 @@ var core = function(t, e, i) {
                     'vanillaSkins': 'Vanilla skins',
                     'customSkins': 'Custom skins',
 					'videoSkins': 'Video skins',
-					'videoSkinsMusic': 'Music from other\'s Video skins'
+					'videoSkinsMusic': 'Music from other\'s Video skins',
                     'myTransparentSkin': 'My transparent skin',
                     'myCustomColor': 'My custom color',
                     'transparentCells': 'Transparent cells',
