@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.417 MEGA TEST
+// v1.418 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4592,13 +4592,8 @@ var core = function(t, e, i) {
                                     style.save();
                                     style.clip();
                                     this.maxPointRad && (y=this.maxPointRad);
-									if (v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv"))){
-										checkVideos(node2.src, this.targetNick);
-										style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
-									}
-									else{
                                     style.drawImage(node, this.x - y-lineWidth, this.y - y-lineWidth, 2 * y+lineWidth*2, 2 * y+lineWidth*2);
-									}
+									
                                     style.globalCompositeOperation='luminosity';
                 
                                     style.lineWidth = lineWidth
@@ -4607,7 +4602,7 @@ var core = function(t, e, i) {
                                     style.globalCompositeOperation='';
                                     style.restore();
                 
-                                } else style.drawImage(node, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)
+                                } else style.drawImage(node, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						//((v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
@@ -4641,35 +4636,14 @@ var core = function(t, e, i) {
                             style.restore();
                             return;
                         } else {
-						//	if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
-						//		if (v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)){
-						//    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )
-						//		}							
-						//	}
-						//if (dyinglight1load == "yes" && node==null) {
-							//console.log(this.mass);
-							//if (this.mass && this.mass<=500){							
-						//		style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
-								//}
-							/*else if (this.mass && this.mass<=1000){
-								style.drawImage(cimgDyingLight1, this.x - y, this.y - y, 2 * y, 2 * y);
-								}
-							else if (this.mass && this.mass<=1500){
-								style.drawImage(cimgDyingLight2, this.x - y, this.y - y, 2 * y, 2 * y);
-								}
-							else if (this.mass && this.mass<=2500){
-								style.drawImage(cimgDyingLight3, this.x - y, this.y - y, 2 * y, 2 * y);
-								}
-							else if (this.mass && this.mass<=5000){
-								style.drawImage(cimgDyingLight4, this.x - y, this.y - y, 2 * y, 2 * y);
-								}
-							else if (this.mass && this.mass<=10000){
-								style.drawImage(cimgDyingLight5, this.x - y, this.y - y, 2 * y, 2 * y);
-								}	
-							else if (this.mass && this.mass>10000){
-								style.drawImage(cimgDyingLight6, this.x - y, this.y - y, 2 * y, 2 * y);
-								}*/									
-						//	}
+							if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
+								if (v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)){
+						    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )
+								}							
+							}
+							if (dyinglight1load == "yes" && node==null && this.targetNick.includes("The Dying Light")==false) {					
+								style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);							
+							}
 							
 							
                             var recursive = false;
