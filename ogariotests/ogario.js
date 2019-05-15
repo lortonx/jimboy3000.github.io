@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.423 MEGA TEST
+// v1.424 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -9,6 +9,14 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
     }
 });
+
+
+function strokeCircle(ctx, midx, midy, radius){
+    ctx.moveTo(midx + radius, midy);
+    ctx.arc(midx, midy, radius, 0, 2 * Math.PI, false);
+    ctx.stroke();
+}
+
 
 function Video(src, append) {
     var v = document.createElement("video");
@@ -4541,15 +4549,9 @@ var core = function(t, e, i) {
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						((v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
 						(node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) &&
-						//style.arc(256, 256, 256, 0, 2 * Math.PI, false) && 
-						//style.clip() && 
-						//style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 
-						style.beginPath() &&
-						style.arc(this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y, 2 * Math.PI, false) && 						 
-						style.clip() && 
-						style.drawImage(window.videoJustWatchPro[node2.src], 0, 0) 
-						
-						//style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 
+
+						style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) && 
+						strokeCircle(style, 0.7 * y, 0.7 * y, 30)
 						),
 						//node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
 						!node2.src.includes(".mp4") && !node2.src.includes(".webm") && !node2.src.includes(".ogv") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
@@ -4577,11 +4579,8 @@ var core = function(t, e, i) {
 							if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
 								if (v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)){
 						    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && 
-						style.beginPath() &&
-						style.arc(this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y, 2 * Math.PI, false) && 
-						style.clip() && 
-						style.drawImage(window.videoJustWatchPro[node2.src], 0, 0) 					
-							//style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 
+							style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) &&
+							strokeCircle(style, 0.7 * y, 0.7 * y, 30)
 							)
 								}							
 							}
