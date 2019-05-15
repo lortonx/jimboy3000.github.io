@@ -161,7 +161,7 @@ setTimeout(function() {
 //set values outside ogario
 window.leaderboardlimit = 10;
 window.teamboardlimit = 5;
-window.vanillaskins = false;
+window.vanillaskins = false; //to enable vanilla skins it must be true
 window.spawnspecialeffects = false;
 window.top5skins = false;
 //window.customskinsname;
