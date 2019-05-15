@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.421 MEGA TEST
+// v1.422 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4500,7 +4500,7 @@ var core = function(t, e, i) {
                         var value = style.globalAlpha;
                         var s = false;
                         var y = this.isFood ? this.size + g.foodSize : this.size;
-                        style.beginPath()
+                        style.beginPath();
 
 
                         if (true/*CLIENT_SETTINGS.jellyPhisycs*/ && this.points.length) {
@@ -4572,14 +4572,15 @@ var core = function(t, e, i) {
                             s = false;							
 						}*/
                         var node = null;						
-						var node2 = {}; //, node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
+						var node2 = {}; //, 
+						node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick];
                         
                         
 
                         //lylko
                         if (v.customSkins && M.showCustomSkins){
-                             node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color)
-                             //node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
+                             node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
+                             node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]; //jimboy3100
                             if (node){
                                 if ((v.transparentSkins || M.play && v.oppColors) && !(this.isPlayerCell && !v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) {
                                     style.globalAlpha *= g.skinsAlpha;
@@ -4591,18 +4592,39 @@ var core = function(t, e, i) {
                                     var lineWidth = Math.max(~~(y / 50), 10);
                                     style.save();
                                     style.clip();
-                                    this.maxPointRad && (y=this.maxPointRad)
+                                    this.maxPointRad && (y=this.maxPointRad);
+									
+									
+									
+									if (v.videoSkins){
+										if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")){
+											checkVideos(node2.src, this.targetNick);
+											style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+											}
+									}
+									else{
                                     style.drawImage(node, this.x - y-lineWidth, this.y - y-lineWidth, 2 * y+lineWidth*2, 2 * y+lineWidth*2);
+									}
+                                    style.globalCompositeOperation='luminosity';
                 
-                                    style.globalCompositeOperation='luminosity'
-                
-                                    style.lineWidth = lineWidth
+                                    style.lineWidth = lineWidth;
                                     style.strokeStyle = color;
                                     style.stroke();
-                                    style.globalCompositeOperation=''
+                                    style.globalCompositeOperation='';
                                     style.restore();
                 
-                                } else style.drawImage(node, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)
+                                } else{ 
+									if (v.videoSkins){
+										if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")){
+											checkVideos(node2.src, this.targetNick);
+											style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+											}
+									}
+									else{
+                                    style.drawImage(node, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+									}								
+								
+								}
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						//((v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
