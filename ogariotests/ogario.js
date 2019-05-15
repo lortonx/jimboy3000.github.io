@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.418 MEGA TEST
+// v1.419 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4572,9 +4572,9 @@ var core = function(t, e, i) {
 							if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
 								if (v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)){
 						    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && 
-							style.arc(this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y, 2 * Math.PI, false) && 
+							style.arc(256, 256, 256, 0, 2 * Math.PI, false) && 
 							style.clip() && 
-							style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 							
+							style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 						
 							//style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 
 							)
 								}							
