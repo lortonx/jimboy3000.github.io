@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.423 MEGA TEST
+// v1.422 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4559,7 +4559,7 @@ var core = function(t, e, i) {
                                 }
                             }
                         }
-						if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light")){
+						if (dyinglight1load != "yes"){
                         style.fillStyle = color;
                         style.fill();
 						}
@@ -4603,14 +4603,6 @@ var core = function(t, e, i) {
                                     style.restore();
                 
                                 } else style.drawImage(node, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-
-								//special animations
-								if (this.targetNick.includes("The Dying Light")){
-									style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-								}
-								else if(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")){
-									style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-								}								
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						//((v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
@@ -4646,15 +4638,15 @@ var core = function(t, e, i) {
                         } else {
 							if (v.customSkins && M.showCustomSkins){
 								node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick];
-								ogarminimapdrawer.customSkinsMap[this.targetNick];								
-								if (node2.src){
+								ogarminimapdrawer.customSkinsMap[this.targetNick];
+								node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick];
 								if (v.videoSkins){ 
 								if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")){
 									checkVideos(node2.src, this.targetNick);
 									style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
 								}	
 							}								
-							}
+							
 							if (dyinglight1load == "yes" && node==null && this.targetNick.includes("The Dying Light")==false) {					
 								style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);							
 							}
