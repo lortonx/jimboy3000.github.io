@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.415 MEGA TEST
+// v1.416 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4519,7 +4519,7 @@ var core = function(t, e, i) {
                                 }
                             }
                         }
-						if (dyinglight1load != "yes" && this.targetNick.includes("The Dying Light")==false){
+						if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light")){
                         style.fillStyle = color;
                         style.fill();
 						}
