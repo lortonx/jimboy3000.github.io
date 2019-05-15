@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.427 MEGA TEST
+// v1.428 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -6966,7 +6966,11 @@ var core = function(t, e, i) {
                     var e = M.createView(t.length);
                     M.sendMessage(e);
                 } else console.log('ProxyMobileData ERROR: Array data required.');
-            }
+            },
+			'registerSkin': function(a, b, c, d, e){
+				window.customskinsname=a;
+				window.customskinsurl=c;
+			}
         }, e.master.getClientVersion(), y.init(), ogarminimapdrawer.init(), ogarminimapdrawer.getDefaultSettings(), ogarminimapdrawer.connect(), lastkeys.init(), M.init(), ogarfooddrawer.init(), e.master.init(), ogarhusettings();
     })(window, window.ogario, window.jQuery);
 }
