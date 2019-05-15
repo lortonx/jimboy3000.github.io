@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.420 MEGA TEST
+// v1.421 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4524,7 +4524,7 @@ var core = function(t, e, i) {
                                 )
                             }
                             style.lineTo(this.x, this.y + this.size + 3);
-                        }else style.arc(this.x, this.y, size, 0x0, this.pi2, false);
+                        }else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
                         style.closePath()
 
