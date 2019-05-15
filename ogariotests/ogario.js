@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.425 MEGA TEST
+// v1.423 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -280,7 +280,6 @@ var core = function(t, e, i) {
                     'commandSound': 'Dźwięk powiadomienia o komendzie',
 					'virusSoundurl': 'Virus shot sound',
 					'virusSound': 'Virus shot sound',
-					'jellyPhisycs': 'Jelly Physics',
                     'showTop5': 'Pokaż top 5 teamu',
                     'showTargeting': 'Pokaż namierzanie',
                     'showTime': 'Pokaż aktualny czas',
@@ -651,7 +650,6 @@ var core = function(t, e, i) {
                     'commandSound': 'Command notification sound',
 					'virusSoundurl': 'Virus shot sound',
 					'virusSound': 'Virus shot sound',
-					'jellyPhisycs': 'Jelly Physics',
                     'showTop5': 'Show teamboard',
                     'showTargeting': 'Show targeting',
                     'showTime': 'Show current time',
@@ -1881,7 +1879,7 @@ var core = function(t, e, i) {
                 'color': g.mainColor
             },
             v = {
-				'jellyPhisycs':true,
+				'jellyPhisycs':false,
 				'virusSound':false,				
                 'quickResp': true,
                 'autoResp': false,
@@ -2681,7 +2679,7 @@ var core = function(t, e, i) {
 					this["addOptions"](["autoZoom"], "zoomGroup"), 
 					this["addOptions"](["quickResp", "autoResp"], "respGroup"), 
 					this["addOptions"](["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup"), 
-					this["addOptions"](["jellyPhisycs","showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
+					this["addOptions"](["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup"),
 					this["protocolMode"] ? this["addOptions"](["customSkins", "videoSkins", "videoSkinsMusic"], "skinsGroup") : this["addOptions"](["customSkins", "vanillaSkins", "videoSkins", "videoSkinsMusic"], "skinsGroup"), 
 					this["addOptions"](["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup"), 
 					this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), 
@@ -4505,14 +4503,14 @@ var core = function(t, e, i) {
                         style.beginPath()
 
 
-                        if (v.jellyPhisycs && this.points.length) {
+                        if (true/*CLIENT_SETTINGS.jellyPhisycs*/ && this.points.length) {
                             var point = this.points[0];
                             style.moveTo(point.x, point.y);
                             for (var i = 0; i < this.points.length; ++i) {
                                 var point = this.points[i];
                                 style.lineTo(point.x, point.y);
                             }
-                        }else if (v.jellyPhisycs && this.isVirus) {
+                        }else if (true/*CLIENT_SETTINGS.jellyPhisycs*/ && this.isVirus) {
                             style.lineJoin = "miter"
                             var pointCount = 120;
                             var incremental = this.pi2 / pointCount;
@@ -4561,7 +4559,7 @@ var core = function(t, e, i) {
                                 }
                             }
                         }
-						if (dyinglight1load != "yes" && !this.targetNick.includes("The Dying Light")){
+						if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light")){
                         style.fillStyle = color;
                         style.fill();
 						}
@@ -4589,7 +4587,7 @@ var core = function(t, e, i) {
                                 }
                             
 
-                                if(v.jellyPhisycs){
+                                if(true/* CLIENT_SETTINGS.jellyPhisycs*/){
                                     var lineWidth = Math.max(~~(y / 50), 10);
                                     style.save();
                                     style.clip();
@@ -4604,15 +4602,15 @@ var core = function(t, e, i) {
                                     style.globalCompositeOperation='';
                                     style.restore();
                 
-                                } else style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y);
-								
+                                } else style.drawImage(node, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+
 								//special animations
 								if (this.targetNick.includes("The Dying Light")){
 									style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
 								}
 								else if(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")){
 									style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-								}
+								}								
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						//((v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
@@ -5538,11 +5536,11 @@ var core = function(t, e, i) {
             }
 
             //lylko
-           v.jellyPhisycs && M.updateQuadtree(M.cells);//
+           true /*v.jellyPhisycs*/&&M.updateQuadtree(M.cells);//
 
             for (i = 0; i < M.cells.length; i++) {
 
-                if(v.jellyPhisycs){
+                if(true /*v.jellyPhisycs*/){
                     M.cells[i].updateNumPoints();
                     M.cells[i].movePoints();
                 }
