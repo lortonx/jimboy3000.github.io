@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.424 MEGA TEST
+// v1.413 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -9,14 +9,6 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
     }
 });
-
-
-function strokeCircle(ctx, midx, midy, radius){
-    ctx.moveTo(midx + radius, midy);
-    ctx.arc(midx, midy, radius, 0, 2 * Math.PI, false);
-    ctx.stroke();
-}
-
 
 function Video(src, append) {
     var v = document.createElement("video");
@@ -4090,10 +4082,10 @@ var core = function(t, e, i) {
             cimg2.src = g.commanderImage2;		
 			cimg5 = new Image;			
             cimg5.src = g.commanderImage5;
-			//cimg6 = new Image;			
-            //cimg6.src = g.commanderImage6;		
-			//cimg7 = new Image;			
-            //cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
+			cimg6 = new Image;			
+            cimg6.src = g.commanderImage6;		
+			cimg7 = new Image;			
+            cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';				
 						
 			if (dyinglight1load=="yes"){
 			cimgDyingLight = new Image;
@@ -4548,11 +4540,7 @@ var core = function(t, e, i) {
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7						
 						((v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
-						(node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) &&
-
-						style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) && 
-						strokeCircle(style, 0.7 * y, 0.7 * y, 30)
-						),
+						(node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
 						//node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
 						!node2.src.includes(".mp4") && !node2.src.includes(".webm") && !node2.src.includes(".ogv") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), 
 						//(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
@@ -4578,10 +4566,7 @@ var core = function(t, e, i) {
                         } else {
 							if (v.customSkins && M.showCustomSkins && ogarminimapdrawer.customSkinsMap[this.targetNick] && (node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick])){
 								if (v.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)){
-						    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && 
-							style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) &&
-							strokeCircle(style, 0.7 * y, 0.7 * y, 30)
-							)
+						    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) )
 								}							
 							}
 							if (dyinglight1load == "yes" && node==null) {
