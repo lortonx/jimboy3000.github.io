@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.421 MEGA TEST
+// v1.422 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4547,7 +4547,7 @@ var core = function(t, e, i) {
 						
 						style.arc(this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y, 2 * Math.PI, false) && 
 						style.clip() && 
-						style.drawImage(window.videoJustWatchPro[node2.src], 0, 0, 512, 512) 
+						style.drawImage(window.videoJustWatchPro[node2.src], 0, 0) 
 						
 						//style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 
 						),
@@ -4579,7 +4579,7 @@ var core = function(t, e, i) {
 						    ( (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && 
 						style.arc(this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y, 2 * Math.PI, false) && 
 						style.clip() && 
-						style.drawImage(window.videoJustWatchPro[node2.src], 0, 0, 512, 512) 					
+						style.drawImage(window.videoJustWatchPro[node2.src], 0, 0) 					
 							//style.drawImage(window.videoJustWatchPro[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) 
 							)
 								}							
