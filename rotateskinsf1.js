@@ -28,11 +28,7 @@ var init = setInterval(function() {
         };
         var variable_3 = 0;
         var variable_4;
-        document["getElementsByClassName"]("btn btn-play btn-primary")[0];
-        addEventListener("click", function() {
-            variable_4 = document["getElementById"]("nick")["value"]
-        });
-        document["getElementsByClassName"]("btn btn-play-guest btn-success")[0];
+        document["getElementsById"]("play")[0];
         addEventListener("click", function() {
             variable_4 = document["getElementById"]("nick")["value"]
         });
@@ -45,5 +41,3 @@ var init = setInterval(function() {
             variable_3++
         }, speed)
     }
-}, 100)
-
