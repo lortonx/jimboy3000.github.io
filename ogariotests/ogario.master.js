@@ -1,4 +1,5 @@
-'use strict';
+
+
 ! function(self, jQuery) {
     function login() {
         if (l) {
@@ -457,7 +458,8 @@
 			userData=$.get("https://extreme-ip-lookup.com/json/", function (response) { $("#response").html(JSON.stringify(response, null, 4));
 				if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
 				_0xb6f198.setRegionCode(userData.responseJSON.countryCode);
-			}, "jsonp");			
+			}, "jsonp");
+		},			
         setRegionCode: function(segment) {
             if (target["hasOwnProperty"](segment)) {
                 this["setRegion"](target[segment], false);
