@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.438c MEGA TEST
+// v1.438d MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4039,13 +4039,14 @@ var core = function(t, e, i) {
 						i['targeting'] = false;
 						this['privateMiniMap'] = false;
 						s('#target-skin, #target-nick, #target-summary').hide(); 
-						$("#target-hud").hide(),;
+						$("#target-hud").hide();
 						s('#target-status').show().text( h['targetNotSet'] ); 
 						s('#target-panel-hud a').removeClass('active'); 
 						//s('#target-status').show().text('[' + h['targetNotSet'] + ']'), s('#target-panel-hud a').removeClass('active');
                         break;
                     case 1:
-                        this['targetStatus'] = 1, this['targeting'] || (this['targeting'] = true, i['targeting'] = true, $("#target-hud").show(), this['setTargetingInfo']()), s('#target-skin, #target-nick, #target-status, #target-summary').show();
+                        this['targetStatus'] = 1, this['targeting'] || (this['targeting'] = true, i['targeting'] = true, $("#target-hud").show(), this['setTargetingInfo']()), 
+						s('#target-skin, #target-nick, #target-status, #target-summary').show();
                         break;
                     case 2:
                         this['targetStatus'] = 2;
