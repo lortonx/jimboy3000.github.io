@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.438d MEGA TEST
+// v1.438e MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -5385,7 +5385,7 @@ var core = function(t, e, i) {
                         this['updateCells'](t, e);
                         break;
                     case 64:
-                        this['viewMinX'] = t.readDoubleLE(e),
+                        this['viewMinX'] = t.readDoubleLE(e);
 						e += 8; this['viewMinY'] = t.readDoubleLE(e);
 						e += 8; this['viewMaxX'] = t.readDoubleLE(e);
 						e += 8; this['viewMaxY'] = t.readDoubleLE(e);
