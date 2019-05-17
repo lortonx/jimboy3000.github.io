@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.432 MEGA TEST
+// v1.433 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -117,8 +117,11 @@ Object.getOwnPropertyNames(window.videoJustWatchPro).forEach(function(element) {
 	}, 1000);
 }
 
-function LegendModSpawn(){}
+//functions for mods
 
+function LegendModSpawn(){}
+//window.Bufferdata;
+//window.generatedClientKey;
 
 
 //window.disableIntegrity=false;
@@ -4876,8 +4879,9 @@ var core = function(t, e, i) {
                 this['sendPosition'](), this.sendAction(17);
             },
             'sendNick': function(t) {
-				console.log(e); //
+				
                 this['playerNick'] = t, t = e['unescape'](e['encodeURIComponent'](t));
+				window.Bufferdata = t; //
                 var i = this.createView(1 + t.length);
                 i.setUint8(0, 0);
                 for (var s = 0; s < t.length; s++) i.setUint8(s + 1, t.charCodeAt(s));
