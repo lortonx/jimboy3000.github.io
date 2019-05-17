@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.436 MEGA TEST
+// v1.437 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -5115,9 +5115,9 @@ var core = function(t, e, i) {
                             s += 2;
                         }
                         for (var r = 0; s < t.byteLength;) {
-                            var l = '',
-                                h = 0,
-                                c = false;
+                            var l = '';
+                            var h = 0;
+                            var c = false;
                             r++; 
 							if (2 & (y = t['getUint8'](s++))){ 
 							l = e['decodeURIComponent'](escape(i()));
@@ -5225,7 +5225,10 @@ var core = function(t, e, i) {
                         this['protocolKey'] = t.getUint32(s, true);
 						console.log('[Legend mod Express] Received protocol key:', this['protocolKey']);
                         var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
-                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario), e.master && e.master.login && e.master.login();
+                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario);
+						if (e.master && e.master.login){ 
+						e.master.login();
+						}
                         break;
                     case 242:
                         this['serverTime'] = 1000 * t.getUint32(s, true);
@@ -5440,11 +5443,14 @@ var core = function(t, e, i) {
             'recalculatePlayerMass': function() {
                 if (this['playerScore'] = Math['max'](this['playerScore'], this['playerMass']),
 				v['virColors'] || v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) {
-                    var t = this['playerCells'],
-                        e = t.length;
+                    var t = this['playerCells'];
+                    var e = t.length;
                     t['sort'](function(t, e) {
                         return t['size'] == e['size'] ? t['id'] - e['id'] : t['size'] - e['size'];
-                    }), this['playerMinMass'] = ~~(t[0]['size'] * t[0]['size'] / 100), this['playerMaxMass'] = ~~(t[e - 1]['size'] * t[e - 1]['size'] / 100), this['playerSplitCells'] = e;
+                    }); 
+					this['playerMinMass'] = ~~(t[0]['size'] * t[0]['size'] / 100);
+					this['playerMaxMass'] = ~~(t[e - 1]['size'] * t[e - 1]['size'] / 100);
+					this['playerSplitCells'] = e;
                 }
                 if (v['showStatsSTE']) {
                     var i = this['selectBiggestCell'] ? this['playerMaxMass'] : this['playerMinMass'];
@@ -5516,10 +5522,14 @@ var core = function(t, e, i) {
 				}
             },
             'setTargetPosition': function(t, e) {
-                this['targetX'] = t - this['mapOffsetX'], this['targetY'] = e - this['mapOffsetY'], this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));window.targetDistance=this['targetDistance'];
+                this['targetX'] = t - this['mapOffsetX'];
+				this['targetY'] = e - this['mapOffsetY'];
+				this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));
+				window.targetDistance=this['targetDistance'];
             },
             'resetTargetPosition': function() {
-                this['targetX'] = this['playerX'], this['targetY'] = this['playerY'];
+                this['targetX'] = this['playerX'];
+				this['targetY'] = this['playerY'];
             },
             'setKeys': function() {
                 var t = this;
@@ -5579,12 +5589,22 @@ var core = function(t, e, i) {
                 'pellet': null,
                 'indicator': null,
                 'setCanvas': function() {
-                    this.canvas = document.getElementById('canvas'), this['ctx'] = this.canvas['getContext']('2d'), this.canvas['onmousemove'] = function(t) {
-                        M['clientX'] = t['clientX'], M['clientY'] = t['clientY'], M['getCursorPosition']();
+                    this.canvas = document.getElementById('canvas');
+					this['ctx'] = this.canvas['getContext']('2d');
+					this.canvas['onmousemove'] = function(t) {
+                        M['clientX'] = t['clientX']; 
+						M['clientY'] = t['clientY']; 
+						M['getCursorPosition']();
                     };
                 },
                 'resizeCanvas': function() {
-                    this['canvasWidth'] = e['innerWidth'], this['canvasHeight'] = e['innerHeight'], this.canvas['width'] = this['canvasWidth'], this.canvas['height'] = this['canvasHeight'], M['canvasWidth'] = this['canvasWidth'], M['canvasHeight'] = this['canvasHeight'], this['renderFrame']();
+                    this['canvasWidth'] = e['innerWidth'];
+					this['canvasHeight'] = e['innerHeight']; 
+					this.canvas['width'] = this['canvasWidth']; 
+					this.canvas['height'] = this['canvasHeight']; 
+					M['canvasWidth'] = this['canvasWidth'];
+					M['canvasHeight'] = this['canvasHeight']; 
+					this['renderFrame']();
                 },
                 'setView': function() {
                     this['setScale'](),
@@ -5960,9 +5980,15 @@ var core = function(t, e, i) {
                     t['globalAlpha'] = 1, o && (e = []);
                 },				
                 'drawOppRings': function(t, e, i, s, o, a, n) {
-                    var r = 14 + 2 / e,
-                        l = 12 + 1 / e;
-                    this['drawCircles'](t, i, r, l, 0.75, '#BE00FF'), this['drawCircles'](t, s, r, l, 0.75, '#FF0A00'), this['drawCircles'](t, o, r, l, 0.75, '#00C8FF'), this['drawCircles'](t, a, r, l, 0.75, '#64FF00'), n && (i = [], s = [], o = [], a = []);
+                    var r = 14 + 2 / e;
+                    var l = 12 + 1 / e;
+                    this['drawCircles'](t, i, r, l, 0.75, '#BE00FF');
+					this['drawCircles'](t, s, r, l, 0.75, '#FF0A00');
+					this['drawCircles'](t, o, r, l, 0.75, '#00C8FF');
+					this['drawCircles'](t, a, r, l, 0.75, '#64FF00');
+					if(n){
+						i = [], s = [], o = [], a = [];
+					}
                 },
                 'drawCursorTracking': function(t, e, i, s) {
                     t['lineWidth'] = 4, t['globalAlpha'] = g['darkTheme'] ? 0.75 : 0.35, t['strokeStyle'] = g['cursorTrackingColor'], t['beginPath']();
@@ -5981,7 +6007,9 @@ var core = function(t, e, i) {
                 },
                 'drawTeammatesInd': function(t, e, i, s) {		
 					//console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
-                    this['indicator'] && t['drawImage'](this['indicator'], e - 45, i - s - 90);
+                    if(this['indicator']){
+						t['drawImage'](this['indicator'], e - 45, i - s - 90);
+					}
                 },
                 'drawPieChart': function() {
                     this['pieChart'] || (this['pieChart'] = document['createElement']('canvas'));
@@ -6080,7 +6108,19 @@ var core = function(t, e, i) {
                     var t = document['createElement']('canvas');
                     t['width'] = 90, t['height'] = 50;
                     var e = t['getContext']('2d');
-                    e['lineWidth'] = 2, e['fillStyle'] = g['teammatesIndColor'], e['strokeStyle'] = '#000000', e['beginPath'](), e['moveTo'](0, 0), e['lineTo'](90, 0), e['lineTo'](45, 50), e['closePath'](), e.fill(), e['stroke'](), this['indicator'] = new Image(), this['indicator'].src = t.toDataURL(), t = null;
+                    e['lineWidth'] = 2; 
+					e['fillStyle'] = g['teammatesIndColor']; 
+					e['strokeStyle'] = '#000000';
+					e['beginPath'](); 
+					e['moveTo'](0, 0); 
+					e['lineTo'](90, 0); 
+					e['lineTo'](45, 50); 
+					e['closePath']();
+					e.fill();
+					e['stroke'](); 
+					this['indicator'] = new Image(); 
+					this['indicator'].src = t.toDataURL();
+					t = null;
                 },
                 'countFps': function() {
                     if (v["showStatsFPS"]) {
@@ -6100,7 +6140,11 @@ var core = function(t, e, i) {
                     ogarfooddrawer['countFps'](), ogarfooddrawer['renderFrame'](), e['requestAnimationFrame'](ogarfooddrawer['render']);
                 },
                 'init': function() {
-                    this['setCanvas'](), this['resizeCanvas'](), this['preDrawPellet'](), this.preDrawIndicator(), e['requestAnimationFrame'](ogarfooddrawer['render']);
+                    this['setCanvas']();
+					this['resizeCanvas'](); 
+					this['preDrawPellet'](); 
+					this.preDrawIndicator(); 
+					e['requestAnimationFrame'](ogarfooddrawer['render']);
                 }
             },
             ogarioefaultHotkeys = {},
