@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.439 MEGA TEST
+// v1.440 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3291,7 +3291,7 @@ var core = function(t, e, i) {
 						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale;
 						var minidaxx = this.miniMap.width*miniax;
 						var minidayy = this.miniMap.height*miniay;						
-						this.miniMapCtx.rect(minidxx, minidyy, minidaxx, minidayy);
+						this.miniMapCtx.rect(minidxx-minidaxx/2, minidyy-minidayy/2, minidaxx, minidayy);
 						this.miniMapCtx.stroke();
 						
 						
