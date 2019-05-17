@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.438a MEGA TEST
+// v1.438b MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3453,7 +3453,8 @@ var core = function(t, e, i) {
 				s('#party-token, .party-token').val(this['partyToken']);
             },
             'gameServerConnect': function(t) {
-                if (t && (this['skipServerData'] = true){ 
+                if (t){ 
+				this['skipServerData'] = true;
 				if (e.core && e.core.connect) {
 					e.core.connect(t);
 					}
