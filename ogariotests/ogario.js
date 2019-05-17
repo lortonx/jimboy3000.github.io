@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.437 MEGA TEST
+// v1.438 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3247,7 +3247,14 @@ var core = function(t, e, i) {
                     var n = o / i["mapSize"];
                     var r = i["mapOffsetX"] + i["mapOffset"];
                     var l = i["mapOffsetY"] + i["mapOffset"];
-                    if (this["drawSelectedCell"](this["miniMapCtx"]), this["currentSector"] = this["calculateMapSector"](i["playerX"], i["playerY"], true), this["miniMapCtx"]["globalAlpha"] = 1, this["miniMapCtx"]["font"] = g["miniMapFontWeight"] + " " + (e - 4) + "px " + g["miniMapFontFamily"], this["miniMapCtx"]["fillStyle"] = g["miniMapSectorColor"], this["miniMapCtx"]["fillText"](this["currentSector"], 10, e), this["miniMapSectors"] || this["drawMiniMapSectors"](g["sectorsX"], g["sectorsY"], o, s, a), this["miniMapCtx"]["save"](),
+                    if (this["drawSelectedCell"](this["miniMapCtx"]), 
+					this["currentSector"] = this["calculateMapSector"](i["playerX"], i["playerY"], true), 
+					this["miniMapCtx"]["globalAlpha"] = 1,
+					this["miniMapCtx"]["font"] = g["miniMapFontWeight"] + " " + (e - 4) + "px " + g["miniMapFontFamily"],
+					this["miniMapCtx"]["fillStyle"] = g["miniMapSectorColor"],
+					this["miniMapCtx"]["fillText"](this["currentSector"], 10, e),
+					this["miniMapSectors"] || this["drawMiniMapSectors"](g["sectorsX"], g["sectorsY"], o, s, a),
+					this["miniMapCtx"]["save"](),
                         this["miniMapCtx"]["translate"](9.5, a), ":battleroyale" === this["gameMode"] && ogarfooddrawer && ogarfooddrawer["drawBattleAreaOnMinimap"](this["miniMapCtx"], o, o, n, r, l), v["showMiniMapGhostCells"]) {
                         var h = i["ghostCells"];
                         this["miniMapCtx"]["beginPath"]();
@@ -3270,6 +3277,19 @@ var core = function(t, e, i) {
                         this["miniMapCtx"]["globalAlpha"] = 1;
                         this["miniMapCtx"]["shadowBlur"] = 0;
                     }
+					
+					
+						//draw the yellow on minimap
+						this.miniMapCtx.beginPath();
+						this.miniMapCtx.lineWidth = "2";
+						this.miniMapCtx.strokeStyle = "yellow";
+						this.miniMapCtx.rect(5, 5, 5, 5);
+						this.miniMapCtx.stroke();
+						
+						
+						
+						
+						
                     if (v["showMiniMapGuides"]) {
                         u = Math.round((i["playerX"] + r) * n);
                         d = Math.round((i["playerY"] + l) * n);
