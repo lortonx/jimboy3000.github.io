@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.435 MEGA TEST
+// v1.436 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3417,7 +3417,10 @@ var core = function(t, e, i) {
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
                     var e = t.createView(3);
-                    e.setUint8(0, 0), e.setUint16(1, 401, true), t['sendBuffer'](e), t['sendPartyData']();
+                    e.setUint8(0, 0), 
+					e.setUint16(1, 401, true), 
+					t['sendBuffer'](e), 
+					t['sendPartyData']();
                 }, this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
                 }, this.socket['onclose'] = function(e) {
@@ -5130,6 +5133,7 @@ var core = function(t, e, i) {
 							}
 							if (16 & y){
 							c = true;
+							}
 							this['leaderboard'].push({
                                 'nick': l,
                                 'id': h,
