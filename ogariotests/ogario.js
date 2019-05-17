@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.433 MEGA TEST
+// v1.434 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4810,33 +4810,76 @@ var core = function(t, e, i) {
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
-                this['closeConnection'](), this['flushCellsData'](), this['protocolKey'] = null, this['clientKey'] = null, this['accessTokenSent'] = false, this['connectionOpened'] = false, this['mapOffsetFixed'] = false, this['leaderboard'] = [], this['ws'] = t, this.socket = new WebSocket(t), this.socket['binaryType'] = 'arraybuffer', this.socket['onopen'] = function() {
+                this['closeConnection'](); 
+				this['flushCellsData']();
+				this['protocolKey'] = null; 
+				this['clientKey'] = null;
+				this['accessTokenSent'] = false;
+				this['connectionOpened'] = false;
+				this['mapOffsetFixed'] = false; 
+				this['leaderboard'] = [];
+				this['ws'] = t;
+				this.socket = new WebSocket(t); 
+				this.socket['binaryType'] = 'arraybuffer'; 
+				this.socket['onopen'] = function() {
                     i['onOpen']();
-                }, this.socket['onmessage'] = function(t) {
+                };
+				this.socket['onmessage'] = function(t) {
                     i['onMessage'](t);
-                }, this.socket['onerror'] = function(t) {
+                };
+				this.socket['onerror'] = function(t) {
                     i['onError'](t);
-                }, this.socket['onclose'] = function(t) {
+                };
+				this.socket['onclose'] = function(t) {
                     i['onClose'](t);
-                }, ogarminimapdrawer['getWS'](this['ws']), ogarminimapdrawer['sendServerJoin'](), ogarminimapdrawer['sendServerData'](), ogarminimapdrawer['displayLeaderboard'](''), e.master && e.master['onConnect'] && e.master['onConnect']();
+                };
+				ogarminimapdrawer['getWS'](this['ws']);
+				ogarminimapdrawer['sendServerJoin']();
+				ogarminimapdrawer['sendServerData']();
+				ogarminimapdrawer['displayLeaderboard']('');
+				if (e.master && e.master['onConnect']) {
+					e.master['onConnect']();
+				}
             },
             'onOpen': function(t) {
-                console.log('[Legend mod Express] Game server socket open'), this['time'] = Date['now']();
+                console.log('[Legend mod Express] Game server socket open'),
+				this['time'] = Date['now']();
                 var e = this.createView(5);
-                e.setUint8(0, 254), e.setUint32(1, 20, true), this.sendMessage(e), (e = this.createView(5)).setUint8(0, 255), e.setUint32(1, this.clientVersion, true), this.sendMessage(e), this['connectionOpened'] = true;
+                e.setUint8(0, 254), 
+				e.setUint32(1, 20, true), 
+				this.sendMessage(e), 
+				(e = this.createView(5)).setUint8(0, 255), 
+				e.setUint32(1, this.clientVersion, true), 
+				this.sendMessage(e), 
+				this['connectionOpened'] = true;
             },
             'onMessage': function(t) {
-                t = new DataView(t['data']), this['protocolKey'] && (t = this['shiftMessage'](t, this['protocolKey'] ^ this.clientVersion)), this['handleMessage'](t);
+                t = new DataView(t['data']);
+				if (this['protocolKey']){
+				t = this['shiftMessage'](t, this['protocolKey'] ^ this.clientVersion);
+				} 
+				this['handleMessage'](t);
             },
             'onError': function(t) {
-                console.log('[Legend mod Express] Game server socket error'), this['flushCellsData'](), e.master && e.master['onDisconnect'] && e.master['onDisconnect']();
+                console.log('[Legend mod Express] Game server socket error'); 
+				this['flushCellsData']();
+				if (e.master && e.master['onDisconnect']){
+					e.master['onDisconnect']();
+				}
             },
             'onClose': function(t) {
-                console.log('[Legend mod Express] Game server socket close'), this['flushCellsData'](), e.master && e.master['onDisconnect'] && e.master['onDisconnect']();
+                console.log('[Legend mod Express] Game server socket close'); 
+				this['flushCellsData'](); 
+				if (e.master && e.master['onDisconnect']){
+					e.master['onDisconnect']();
+				}
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket['onopen'] = null, this.socket['onmessage'] = null, this.socket['onerror'] = null, this.socket['onclose'] = null;
+                    this.socket['onopen'] = null, 
+					this.socket['onmessage'] = null, 
+					this.socket['onerror'] = null, 
+					this.socket['onclose'] = null;
                     try {
                         this.socket['close']();
                     } catch (ogarcloseconncloser) {}
@@ -4856,14 +4899,16 @@ var core = function(t, e, i) {
                 //console.log(t);
                 if (this['connectionOpened']) {
                     if (!this['clientKey']) return;
-                    t = this['shiftMessage'](t, this['clientKey']), this['clientKey'] = this['shiftKey'](this['clientKey']);
+                    t = this['shiftMessage'](t, this['clientKey']);
+					this['clientKey'] = this['shiftKey'](this['clientKey']);
                 }
                 this['sendBuffer'](t);
             },
             'sendAction': function(t) {
                 if (this['isSocketOpen']()) {
                     var e = this.createView(1);
-                    e.setUint8(0, t), this.sendMessage(e);
+                    e.setUint8(0, t);
+					this.sendMessage(e);
                 }
             },
             'sendSpectate': function() {
@@ -4873,10 +4918,12 @@ var core = function(t, e, i) {
                 this.sendAction(18);
             },
             'sendEject': function() {
-                this['sendPosition'](), this.sendAction(21);
+                this['sendPosition']();
+				this.sendAction(21);
             },
             'sendSplit': function() {
-                this['sendPosition'](), this.sendAction(17);
+                this['sendPosition']();
+				this.sendAction(17);
             },
             'sendNick': function(t) {
 				
@@ -5086,13 +5133,14 @@ var core = function(t, e, i) {
                         }
                         break;
                     case 85:
-                        console.log('[Legend mod Express] Captcha requested'), e.master && e.master['recaptchaRequested'] && e.master['recaptchaRequested']();
+                        console.log('[Legend mod Express] Captcha requested'); if(e.master && e.master['recaptchaRequested']) { e.master['recaptchaRequested']();}
                         break;
                     case 102:
                         t.byteLength < 20 && e['logout'] && e['logout']();
                         break;
                     case 103:
-                        this['loggedInTime'] = Date['now'](), this['accessTokenSent'] = true;
+                        this['loggedInTime'] = Date['now']();
+						this['accessTokenSent'] = true;
                         break;
                     case 114:
                     case 161:
