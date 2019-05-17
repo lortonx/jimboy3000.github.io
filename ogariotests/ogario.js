@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.438 MEGA TEST
+// v1.439 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3281,9 +3281,17 @@ var core = function(t, e, i) {
 					
 						//draw the yellow on minimap
 						this.miniMapCtx.beginPath();
-						this.miniMapCtx.lineWidth = "2";
+						this.miniMapCtx.lineWidth = "1";
 						this.miniMapCtx.strokeStyle = "yellow";
-						this.miniMapCtx.rect(5, 5, 5, 5);
+						var minidx=(legendmod.cursorX - legendmod.viewMinX) / (legendmod.viewMaxX - legendmod.viewMinX); 
+						var	minidy=(legendmod.cursorY - legendmod.viewMinY) / (legendmod.viewMaxY - legendmod.viewMinY);
+						var minidxx = this.miniMap.width*minidx;
+						var minidyy = this.miniMap.height*minidy;
+						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale;
+						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale;
+						var minidaxx = this.miniMap.width*miniax;
+						var minidayy = this.miniMap.height*miniay;						
+						this.miniMapCtx.rect(minidxx, minidyy, minidaxx, minidayy);
 						this.miniMapCtx.stroke();
 						
 						
