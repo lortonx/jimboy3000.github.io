@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.438 MEGA TEST
+// v1.438a MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3350,11 +3350,12 @@ var core = function(t, e, i) {
 					e = (t = t.split('#'))[1];
 					}
 					if (this['partyToken'] !== e){ 
-					(this['partyToken'] = e;
-					}					
+					this['partyToken'] = e;
+										
 					this['flushSkinsMap']();
 					this['flushChatData']();
-					this['cancelTargeting']());
+					this['cancelTargeting']();
+					}
                 }
             },
             'createParty': function() {
