@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.447 MEGA TEST
+// v1.448 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3276,30 +3276,7 @@ var core = function(t, e, i) {
                         this["miniMapCtx"].fill();
                         this["miniMapCtx"]["globalAlpha"] = 1;
                         this["miniMapCtx"]["shadowBlur"] = 0;
-                    }
-					
-					
-						//draw the yellow on minimap
-						this.miniMapCtx.beginPath();
-						this.miniMapCtx.lineWidth = "1";
-						this.miniMapCtx.strokeStyle = "yellow";
-						//var minidx=(legendmod.cursorX - legendmod.viewMinX) / (legendmod.viewMaxX - legendmod.viewMinX); 
-						var minidx=((legendmod.playerX + legendmod.mapOffsetX) / (legendmod.viewMaxX - legendmod.viewMinX)) +0.5; 
-						var	minidy=((legendmod.playerY + legendmod.mapOffsetY) / (legendmod.viewMaxY - legendmod.viewMinY)) +0.5; 
-						var minidxx = this.miniMap.width*minidx;
-						var minidyy = this.miniMap.height*minidy;
-						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale; //CORRECT
-						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale; //CORRECT
-						var minidaxx = this.miniMap.width*miniax;
-						var minidayy = this.miniMap.height*miniay;		
-						this.miniMapCtx.rect(minidxx, minidyy, minidaxx, minidayy);						
-						//this.miniMapCtx.rect(minidxx - minidaxx/2, minidyy - minidayy/2, minidaxx, minidayy);
-						this.miniMapCtx.stroke();
-						
-						
-						
-						
-						
+                    }																
                     if (v["showMiniMapGuides"]) {
                         u = Math.round((i["playerX"] + r) * n);
                         d = Math.round((i["playerY"] + l) * n);
@@ -3311,6 +3288,24 @@ var core = function(t, e, i) {
                         this["miniMapCtx"]["moveTo"](0, d);
                         this["miniMapCtx"]["lineTo"](o - 1, d);
                         this["miniMapCtx"]["stroke"]();
+						
+						//draw the yellow on minimap
+						this.miniMapCtx.beginPath();
+						this.miniMapCtx.lineWidth = "1";
+						this.miniMapCtx.strokeStyle = "yellow";		
+						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale; //CORRECT
+						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale; //CORRECT
+						var minidaxx = this.miniMap.width*miniax;
+						var minidayy = this.miniMap.height*miniay;		
+/*
+						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale; //CORRECT
+						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale; //CORRECT
+						var minidaxx = this.miniMap.width*miniax;
+						var minidayy = this.miniMap.height*miniay;		
+*/						
+						this.miniMapCtx.rect(u-minidaxx, d-minidayy, minidaxx, minidayy);						
+						//this.miniMapCtx.rect(minidxx - minidaxx/2, minidyy - minidayy/2, minidaxx, minidayy);
+						this.miniMapCtx.stroke();						
                     }
                     if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
                         c = 0;
