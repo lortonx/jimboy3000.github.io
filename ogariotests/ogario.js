@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.431 MEGA TEST
+// v1.432 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -4876,6 +4876,7 @@ var core = function(t, e, i) {
                 this['sendPosition'](), this.sendAction(17);
             },
             'sendNick': function(t) {
+				console.log(e); //
                 this['playerNick'] = t, t = e['unescape'](e['encodeURIComponent'](t));
                 var i = this.createView(1 + t.length);
                 i.setUint8(0, 0);
