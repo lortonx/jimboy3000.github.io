@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.438e MEGA TEST
+// v1.437 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3138,14 +3138,15 @@ var core = function(t, e, i) {
 				}
 				t[e].crossOrigin = 'anonymous'; 
 				t[e]['onload'] = function() {
-                    if (this['complete'] && this['width'] && this['height'] && this['width'] <= 2000 && this['height'] <= 2000){
-					i['cacheQueue'].push(e); 
-						if (1 == i['cacheQueue'].length){
-						i['cacheSkin'](i['customSkinsCache']);
-						}
-					}
-                };
-				t[e].src = e;
+                    this['complete'] &&
+					this['width'] &&
+					this['height'] && 
+					this['width'] <= 2000 &&
+					this['height'] <= 2000 &&
+					(i['cacheQueue'].push(e), 
+					1 == i['cacheQueue'].length &&
+					i['cacheSkin'](i['customSkinsCache']));
+                }, t[e].src = e;
             },
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
@@ -3185,9 +3186,7 @@ var core = function(t, e, i) {
                     						}
                     */
 
-                    if (s && (this['customSkinsMap'][s] = i), this['customSkinsCache'].hasOwnProperty(i)) {
-						return;
-						}
+                    if (s && (this['customSkinsMap'][s] = i), this['customSkinsCache'].hasOwnProperty(i)) return;
                     this['loadSkin'](this['customSkinsCache'], i);
                 }
             },
@@ -3203,9 +3202,9 @@ var core = function(t, e, i) {
             },	
             'calculateMapSector': function(t, e, s = false) {
                 if (!i['mapOffsetFixed']) return '';
-                var o = s ? i['mapOffsetX'] + i['mapOffset'] : i['mapOffset'];
-                    a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'];
-                    n = Math['floor']((e + a) / (i['mapSize'] / g['sectorsY']));
+                var o = s ? i['mapOffsetX'] + i['mapOffset'] : i['mapOffset'],
+                    a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
+                    n = Math['floor']((e + a) / (i['mapSize'] / g['sectorsY'])),
                     r = Math['floor']((t + o) / (i['mapSize'] / g['sectorsX']));
 					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
                 return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
@@ -3345,17 +3344,7 @@ var core = function(t, e, i) {
             'setParty': function() {
                 var t = s('#party-token').val();
                 if (this['gameMode'] = i['gameMode'] = s('#gamemode').val(), this['setQuest'](), ':party' === this['gameMode'] && t) {
-                    var e = t; 
-					if (- 1 != t.indexOf('#')){ 
-					e = (t = t.split('#'))[1];
-					}
-					if (this['partyToken'] !== e){ 
-					this['partyToken'] = e;
-										
-					this['flushSkinsMap']();
-					this['flushChatData']();
-					this['cancelTargeting']();
-					}
+                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this['partyToken'] !== e && (this['partyToken'] = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
                 }
             },
             'createParty': function() {
@@ -3363,37 +3352,19 @@ var core = function(t, e, i) {
             },
             'joinParty': function() {
                 var t = s('#party-token').val();
-                if (t){
-					s('#pre-join-party-btn')['click']();
-					s('.party-token').val(t);
-					s('#join-party-btn')['click']();
-				}
+                t && (s('#pre-join-party-btn')['click'](), s('.party-token').val(t), s('#join-party-btn')['click']());
             },
             'leaveParty': function() {
-                s('#party-token, .party-token').val('');
-				s('#leave-party-btn')['click']();
+                s('#party-token, .party-token').val(''), s('#leave-party-btn')['click']();
             },
             'closeParty': function() {
-                s('#party-token, .party-token').val('');
-				s('.party-icon-back')['click']();
+                s('#party-token, .party-token').val(''), s('.party-icon-back')['click']();
             },
             'flushData': function() {
-                this['flushPartyData']();
-				this['flushSkinsMap']();
-				this['flushChatData']();
-				this['cancelTargeting']();
-				i.play = false;
-				i['playerColor'] = null;
+                this['flushPartyData'](), this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting'](), i.play = false, i['playerColor'] = null;
             },
             'flushPartyData': function() {
-                this['teamPlayers'] = [];
-				this['parties'] = [];
-				this['lastSentNick'] = '';
-				this['lastSentClanTag'] = null,
-				this['lastSentSkinURL'] = '';
-				this['lastSentCustomColor'] = '';
-				this['lastSentPartyToken'] = '';
-				this['lastSentServerToken'] = '';
+                this['teamPlayers'] = [], this['parties'] = [], this['lastSentNick'] = '', this['lastSentClanTag'] = null, this['lastSentSkinURL'] = '', this['lastSentCustomColor'] = '', this['lastSentPartyToken'] = '', this['lastSentServerToken'] = '';
             },
             'flushCells': function() {
                 this['cells'] = {};
@@ -3405,14 +3376,7 @@ var core = function(t, e, i) {
                 this['chatUsers'] = {};
             },
             'getWS': function(t) {
-                if (t) {
-					this['ws'] = t; 
-					this['createServerToken']();
-					this['updateServerInfo']();
-					if(-1 == this['ws'].indexOf('agar.io')){ 
-					this['closeConnection']();
-					}
-				}
+                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this['closeConnection']());
             },
             'recreateWS': function(t) {
                 if (!t) return null;
@@ -3424,80 +3388,45 @@ var core = function(t, e, i) {
                 return !e && /^[a-z0-9]{5,}$/.test(t) && (e = 'wss://live-arena-' + t + '.agar.io:443'), e;
             },
             'createServerToken': function() {
-                var t = this['ws']['match'](/ip-\d+/);
-                var i = this['ws']['match'](/live-arena-([\w\d]+)/);
-                var s = null;
-			if (t){
-				if (t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)){
-					this['serverIP'] = t[0]; 
-					s = btoa(this['serverIP']);
-				}
-			}
+                var t = this['ws']['match'](/ip-\d+/),
+                    i = this['ws']['match'](/live-arena-([\w\d]+)/),
+                    s = null;
+                t && ((t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
-                    if (this['serverToken'] !== s) {
-						this['serverToken'] = s; 
-						this['flushData'](); 
-						this['flushCells'](); 
-					}
-					this['partyToken'] = '';
+                    this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this['partyToken'] = '';
                     var o = this['ws']['match'](/party_id=([A-Z0-9]{6})/);
-                    if(o) {
-						this['partyToken'] = o[1];
-					ogarjoiner('/#' + e['encodeURIComponent'](this['partyToken']));
-					}
+                    o && (this['partyToken'] = o[1], ogarjoiner('/#' + e['encodeURIComponent'](this['partyToken'])));
                 }
             },
             'updateServerInfo': function() {
-                s('#server-ws').val(this['ws']);
-				s('#server-token').val(this['serverToken']); 
-				s('#party-token, .party-token').val(this['partyToken']);
+                s('#server-ws').val(this['ws']), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this['partyToken']);
             },
             'gameServerConnect': function(t) {
-                if (t){ 
-				this['skipServerData'] = true;
-				if (e.core && e.core.connect) {
-					e.core.connect(t);
-					}
-				}
+                t && (this['skipServerData'] = true, e.core && e.core.connect && e.core.connect(t));
             },
             'gameServerReconnect': function() {
                 e.MC && e.MC['reconnect'] ? e.MC['reconnect']() : e.master && e.master['reconnect'] && e.master['reconnect']();
             },
             'gameServerJoin': function(t) {
                 var e = this['recreateWS'](t);
-                if(e) {
-					this['skipServerData'] = true;
-					this['gameServerConnect'](e);
-				}
+                e && (this['skipServerData'] = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                pauseVideos(); 
-				this['closeConnection']();
-				this['flushData'](); 
-				this['setParty']();
-				console.log('[Legend mod Express] Connecting to server');
-				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']),
-				this.socket['ogarioWS'] = true; 
-				this.socket['binaryType'] = 'arraybuffer';
+                pauseVideos(), this['closeConnection'](), this['flushData'](), this['setParty'](), console.log('[Legend mod Express] Connecting to server'), this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
                     var e = t.createView(3);
-                    e.setUint8(0, 0);
-					e.setUint16(1, 401, true); 
-					t['sendBuffer'](e); 
+                    e.setUint8(0, 0), 
+					e.setUint16(1, 401, true), 
+					t['sendBuffer'](e), 
 					t['sendPartyData']();
-                };
-				this.socket['onmessage'] = function(e) {
+                }, this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
-                };
-				this.socket['onclose'] = function(e) {
-                    t['flushData']();
-					console.log('[Legend mod Express] Socket close', e);
-                };
-				this.socket['onerror'] = function(e) {
-                    t['flushData'](); 
-					console.log('[Legend mod Express] Socket error', e);
+                }, this.socket['onclose'] = function(e) {
+                    t['flushData'](), console.log('[Legend mod Express] Socket close', e);
+                }, this.socket['onerror'] = function(e) {
+                    t['flushData'](), console.log('[Legend mod Express] Socket error', e);
                 };
             },
             'closeConnection': function() {
@@ -3649,18 +3578,13 @@ var core = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-			if (this['isSocketOpen']()) {
-				this['sendBuffer'](this['strToBuff'](18, t));
-			}
+                this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
                 this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = s('#region').val(), this['gameMode'] = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
-                this['sendPlayerClanTag']();
-				this['sendPartyToken'](); 
-				this['sendServerToken'](); 
-				this['sendPlayerNick']();
+                this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
             },
             'sendPlayerUpdate': function() {
                 if (this['isSocketOpen']() && i.play && this['playerID'] && i['playerColor']) {
@@ -3799,9 +3723,7 @@ var core = function(t, e, i) {
                 }
             },
             'updateTeamPlayers': function() {
-                this["sendPlayerPosition"]();
-				this["chatUsers"] = {};
-				this["top5"] = [];
+                this["sendPlayerPosition"](), this["chatUsers"] = {}, this["top5"] = [];
                 var t = 0;
                 for (; t < this["teamPlayers"].length; t++) {
                     var e = this["teamPlayers"][t];
@@ -3828,8 +3750,7 @@ var core = function(t, e, i) {
                 }
                 this["top5"]["sort"](function(row, conf) {
                     return conf.mass - row.mass;
-                });
-				this["displayTop5"]();
+                }), this["displayTop5"]();
 
             },
             'updateParties': function(t) {
@@ -3866,8 +3787,7 @@ var core = function(t, e, i) {
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
-                    this['sendBuffer'](i); 
-					this['lastMessageSentTime'] = Date['now']();
+                    this['sendBuffer'](i), this['lastMessageSentTime'] = Date['now']();
                 }
             },
             'prepareCommand': function(t) {
@@ -3886,9 +3806,7 @@ var core = function(t, e, i) {
             'muteChatUser': function(t) {
                 if (t && !this['isChatUserMuted'](t)) {
                     var e = this['getChatUserNick'](t);
-                    this['chatMutedUsers'][t] = e; 
-					this['chatMutedUserIDs'].push(t); 
-					toastr['error'](h['userMuted'].replace('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
+                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted'].replace('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
                 }
             },
             'unmuteChatUser': function(t) {
@@ -3948,9 +3866,7 @@ var core = function(t, e, i) {
             'displayUserList': function(t, e, i, s, o) {
                 var a = '';
                 if (Object['keys'](t).length) {
-                    for (var n in a += '<ol class=\"user-list\">', t) if(t.hasOwnProperty(n)) {
-					(a += '<li><strong>' + this['escapeHTML'](t[n]) + '</strong> <button data-user-id=\"' + n + '\" class=\"btn btn-xs ' + i + '\">' + s + '</button></li>');
-					}
+                    for (var n in a += '<ol class=\"user-list\">', t) t.hasOwnProperty(n) && (a += '<li><strong>' + this['escapeHTML'](t[n]) + '</strong> <button data-user-id=\"' + n + '\" class=\"btn btn-xs ' + i + '\">' + s + '</button></li>');
                     a += '</ol>';
                 } else a += h['none'];
                 toastr[o](a, e, {
@@ -3965,9 +3881,7 @@ var core = function(t, e, i) {
                 this['displayUserList'](this['chatMutedUsers'], h['mutedUsers'], 'btn-green btn-unmute-user', h['unmute'], 'error');
             },
             'preloadChatSounds': function() {
-                this['setMessageSound'](); 
-				this['setCommandSound'](); 
-				this['setvirusSound']();
+                this['setMessageSound'](), this['setCommandSound'](), this['setvirusSound']();
             },
             'setChatSoundsBtn': function() {
                 v['chatSounds'] ? s('.chat-sound-notifications').removeClass('ogicon-volume-mute2').addClass('ogicon-volume-high') : s('.chat-sound-notifications').removeClass('ogicon-volume-high').addClass('ogicon-volume-mute2');
@@ -4003,11 +3917,7 @@ var core = function(t, e, i) {
             }
         },			
             'setTargeting': function() {
-                if(this['targetID']) {
-					this['targeting'] = !this['targeting'], 
-					i['targeting'] = this['targeting']; 
-					this['setTargetingInfo']()
-					};
+                this['targetID'] && (this['targeting'] = !this['targeting'], i['targeting'] = this['targeting'], this['setTargetingInfo']());
             },
             'setTargetingInfo': function() {
                 this['targeting'] ? (s('#set-targeting').addClass('active'), s('#target-status').show(), 2 != this['targetStatus'] && s('#target-summary').show()) : (s('#set-targeting').removeClass('active'), s('#target-summary, #target-status').hide());
@@ -4016,9 +3926,7 @@ var core = function(t, e, i) {
                 this['setTargetStatus'](0);
             },
             'setPrivateMiniMap': function() {
-			if (this['targetID']) {
-				this['privateMiniMap'] = !this['privateMiniMap'], this['privateMiniMap'] ? s('#set-private-minimap').addClass('active') : s('#set-private-minimap').removeClass('active');
-			}
+                this['targetID'] && (this['privateMiniMap'] = !this['privateMiniMap'], this['privateMiniMap'] ? s('#set-private-minimap').addClass('active') : s('#set-private-minimap').removeClass('active'));
             },
             'setTarget': function(t) {
                 var e = this['checkPlayerID'](t);
@@ -4031,29 +3939,13 @@ var core = function(t, e, i) {
             'setTargetStatus': function(t) {
                 switch (t) {
                     case 0:
-                        this['targetStatus'] = 0; 
-						this['targetID'] = 0;
-						this['targetNick'] = ''; 
-						this['targetSkinURL'] = '';
-						this['targeting'] = false;
-						i['targeting'] = false;
-						this['privateMiniMap'] = false;
-						s('#target-skin, #target-nick, #target-summary').hide(); 
-						$("#target-hud").hide();
-						s('#target-status').show().text( h['targetNotSet'] ); 
-						s('#target-panel-hud a').removeClass('active'); 
-						//s('#target-status').show().text('[' + h['targetNotSet'] + ']'), s('#target-panel-hud a').removeClass('active');
+                        this['targetStatus'] = 0, this['targetID'] = 0, this['targetNick'] = '', this['targetSkinURL'] = '', this['targeting'] = false, i['targeting'] = false, this['privateMiniMap'] = false, s('#target-skin, #target-nick, #target-summary').hide(), $("#target-hud").hide(), s('#target-status').show().text( h['targetNotSet'] ), s('#target-panel-hud a').removeClass('active'); //s('#target-status').show().text('[' + h['targetNotSet'] + ']'), s('#target-panel-hud a').removeClass('active');
                         break;
                     case 1:
-                        this['targetStatus'] = 1, this['targeting'] || (this['targeting'] = true, i['targeting'] = true, $("#target-hud").show(), this['setTargetingInfo']()), 
-						s('#target-skin, #target-nick, #target-status, #target-summary').show();
+                        this['targetStatus'] = 1, this['targeting'] || (this['targeting'] = true, i['targeting'] = true, $("#target-hud").show(), this['setTargetingInfo']()), s('#target-skin, #target-nick, #target-status, #target-summary').show();
                         break;
                     case 2:
-                        this['targetStatus'] = 2;
-						s('#target-summary').hide(); 
-						$("#target-hud").show();
-						s('#target-status').show().text('[' + h['targetDead'] + ']');
-						i['resetTargetPosition']();
+                        this['targetStatus'] = 2, s('#target-summary').hide(), $("#target-hud").show(), s('#target-status').show().text('[' + h['targetDead'] + ']'), i['resetTargetPosition']();
                 }
             },
             'changeTarget': function() {
@@ -4080,40 +3972,11 @@ var core = function(t, e, i) {
                 this['showQuest'] && ':ffa' === this['gameMode'] && e.MC && e.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = e.MC['getQuestProgressLabel']());
             },
             'init': function() {
-                this['loadSettings'](); 
-				this['loadProfiles'](); 
-				this['setLang']();
-				this['setMenu'](); 
-				this['setUI']();
-				if(y){
-				y.setTheme();
-				} 
-				this['setShowQuickMenu']();
-				this['setShowSkinsPanel']();
-				this['setProfile']();
-				this['setMainButtons']();
-				this['setStreamMode']();
-				this['setHideSkinUrl'](); 
-				this['setMiniMap']();
-				this['setAutoResp'](); 
-				this['setDisableChat']();
-				this['setShowChatBox'](); 
-				this['setTop5']();
-				this['setTargetingHUD'](); 
-				this['setQuest']();
-				this['displayTime'](); 
-				this['setCenteredLb'](); 
-				this['setNormalLb']();
-				this['setFpsAtTop'](); 
-				this['displayStats'](); 
-				this['setBlockPopups'](); 
-				this['preloadChatSounds'](); 
-				this['setChatSoundsBtn']();
+                this['loadSettings'](), this['loadProfiles'](), this['setLang'](), this['setMenu'](), this['setUI'](), y && y.setTheme(), this['setShowQuickMenu'](), this['setShowSkinsPanel'](), this['setProfile'](), this['setMainButtons'](), this['setStreamMode'](), this['setHideSkinUrl'](), this['setMiniMap'](), this['setAutoResp'](), this['setDisableChat'](), this['setShowChatBox'](), this['setTop5'](), this['setTargetingHUD'](), this['setQuest'](), this['displayTime'](), this['setCenteredLb'](), this['setNormalLb'](), this['setFpsAtTop'](), this['displayStats'](), this['setBlockPopups'](), this['preloadChatSounds'](), this['setChatSoundsBtn']();
                 var t = this;
                 setInterval(function() {
                     t['drawMiniMap']();
-                }, 33);
-				setInterval(function() {
+                }, 33), setInterval(function() {
                     t['updateTeamPlayers']();
                 }, this['updateInterval']);
             }
