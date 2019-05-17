@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.443 MEGA TEST
+// v1.444 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3283,16 +3283,17 @@ var core = function(t, e, i) {
 						this.miniMapCtx.beginPath();
 						this.miniMapCtx.lineWidth = "1";
 						this.miniMapCtx.strokeStyle = "yellow";
-						var minidx=(legendmod.cursorX - legendmod.viewMinX) / (legendmod.viewMaxX - legendmod.viewMinX); 
-						var	minidy=(legendmod.cursorY - legendmod.viewMinY) / (legendmod.viewMaxY - legendmod.viewMinY);
+						//var minidx=(legendmod.cursorX - legendmod.viewMinX) / (legendmod.viewMaxX - legendmod.viewMinX); 
+						var minidx=(legendmod.playerX - legendmod.mapOffsetX) / (legendmod.viewMaxX - legendmod.viewMinX); 
+						var	minidy=(legendmod.playerY - legendmod.mapOffsetY) / (legendmod.viewMaxY - legendmod.viewMinY);
 						var minidxx = this.miniMap.width*minidx;
 						var minidyy = this.miniMap.height*minidy;
-						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale;
-						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale;
+						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale; //CORRECT
+						var miniay = legendmod.canvasHeight / (legendmod.viewMaxY - legendmod.viewMinY) / legendmod.viewScale; //CORRECT
 						var minidaxx = this.miniMap.width*miniax;
 						var minidayy = this.miniMap.height*miniay;		
-						this.miniMapCtx.rect(minidxx, minidyy, minidaxx, minidayy);						
-						//this.miniMapCtx.rect(minidxx - minidaxx/2, minidyy - minidayy/2, minidaxx, minidayy);
+						//this.miniMapCtx.rect(minidxx, minidyy, minidaxx, minidayy);						
+						this.miniMapCtx.rect(minidxx - minidaxx/2, minidyy - minidayy/2, minidaxx, minidayy);
 						this.miniMapCtx.stroke();
 						
 						
