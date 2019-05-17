@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.038b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.039b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "38"; // the version 1.1-> 1.11
+var semimodVersion = "39"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -889,10 +889,10 @@ if (thismode==null || thisregion==null){
 
 			}, 1800);
 	}
-	else {
+	else { //if party
             setTimeout(function() {
 //				if (info!="noinfo"){                     
-				window.history.pushState(null, null, window.location.pathname);
+				//window.history.pushState(null, null, window.location.pathname);
                 $("#server").val("#" + window.location.href.replace('https://agar.io/#',''));
 //				}			
             }, 2000);
