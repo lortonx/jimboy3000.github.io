@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.444 MEGA TEST
+// v1.445 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3284,8 +3284,8 @@ var core = function(t, e, i) {
 						this.miniMapCtx.lineWidth = "1";
 						this.miniMapCtx.strokeStyle = "yellow";
 						//var minidx=(legendmod.cursorX - legendmod.viewMinX) / (legendmod.viewMaxX - legendmod.viewMinX); 
-						var minidx=(legendmod.playerX - legendmod.mapOffsetX) / (legendmod.viewMaxX - legendmod.viewMinX); 
-						var	minidy=(legendmod.playerY - legendmod.mapOffsetY) / (legendmod.viewMaxY - legendmod.viewMinY);
+						var minidx=((legendmod.playerX + legendmod.mapOffsetX) / (legendmod.viewMaxX - legendmod.viewMinX)) +0.5; 
+						var	minidy=((legendmod.playerY + legendmod.mapOffsetY) / (legendmod.viewMaxY - legendmod.viewMinY)) +0.5; 
 						var minidxx = this.miniMap.width*minidx;
 						var minidyy = this.miniMap.height*minidy;
 						var miniax = legendmod.canvasWidth / (legendmod.viewMaxX - legendmod.viewMinX) / legendmod.viewScale; //CORRECT
