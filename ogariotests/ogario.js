@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.461 MEGA TEST
+// v1.462 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3307,8 +3307,8 @@ var core = function(t, e, i) {
 						
 						var diffx, diffy;
 						
-						if (fixminidaxx+minidaxx>this.miniMap.width){ 
-						diffx=fixminidaxx+minidaxx-this.miniMap.width;
+						if (fixminidaxx+minidaxx>this.miniMap.width-10){ 
+						diffx=fixminidaxx+minidaxx-(this.miniMap.width-10);
 						minidaxx = minidaxx + diffx/2;
 						fixminidaxx = fixminidaxx - diffx/2;					
 						}
@@ -3316,8 +3316,8 @@ var core = function(t, e, i) {
 						
 						var fixminidayy = d-(minidayy/2);
 						
-						if (fixminidayy+minidayy>this.miniMap.height){
-						diffy=fixminidayy+minidayy-this.miniMap.height;	
+						if (fixminidayy+minidayy>this.miniMap.height-10){
+						diffy=fixminidayy+minidayy-(this.miniMap.height-10);	
 						minidayy = minidayy + diffy/2;
 						fixminidayy = fixminidayy - diffy/2;						
 						}
