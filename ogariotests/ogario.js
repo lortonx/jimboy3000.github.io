@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.480 MEGA TEST
+// v1.481 MEGA TEST
 // Game Configurations
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -3292,13 +3292,13 @@ var core = function(t, e, i) {
                         this["miniMapCtx"]["stroke"]();
 						
 						//draw the yellow on minimap
-/*						this.miniMapCtx.beginPath();
+						this.miniMapCtx.beginPath();
 						this.miniMapCtx.lineWidth = "1";
 						this.miniMapCtx.strokeStyle = "yellow";		
 						var miniax = legendmod.canvasWidth / (legendmod.mapMaxX - legendmod.mapMinX) / legendmod.viewScale; //CORRECT
 						var miniay = legendmod.canvasHeight / (legendmod.mapMaxY - legendmod.mapMinY) / legendmod.viewScale; //CORRECT
-						var minidaxx = this.miniMap.width*miniax;
-						var minidayy = this.miniMap.height*miniay;		
+						var minidaxx = legendmod3.miniMapSectors.width*miniax;
+						var minidayy = legendmod3.miniMapSectors.width*miniay;		
 					
 						
 						
@@ -3311,7 +3311,7 @@ var core = function(t, e, i) {
 						//if (fixminidayy<0){ fixminidayy=0; }	
 						this.miniMapCtx.rect(fixminidaxx, fixminidayy, minidaxx, minidayy);						
 						this.miniMapCtx.stroke();	
-*/						
+						
                     }
                     if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
                         c = 0;
