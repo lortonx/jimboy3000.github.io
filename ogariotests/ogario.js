@@ -252,6 +252,7 @@ var core = function(t, e, i) {
                     'showMiniMap': 'Pokaż minimapę',
                     'showMiniMapGrid': 'Pokaż siatkę minimapy',
                     'showMiniMapGuides': 'Pokaż prowadnice na minimapie',
+					'showExtraMiniMapGuides': 'Show extra minimap guides',
                     'showMiniMapGhostCells': 'Pokaż duchy kulek na minimapie',
                     'oneColoredTeammates': 'Jednokolorowi gracze',
                     'optimizedFood': 'Zoptymalizowany pokarm',
@@ -623,6 +624,7 @@ var core = function(t, e, i) {
                     'showMiniMap': 'Show minimap',
                     'showMiniMapGrid': 'Show minimap grid',
                     'showMiniMapGuides': 'Show minimap guides',
+					'showExtraMiniMapGuides': 'Show extra minimap guides',
                     'showMiniMapGhostCells': 'Show ghost cells',
                     'oneColoredTeammates': 'One-colored teammates',
                     'optimizedFood': 'Optimized food',
@@ -1916,6 +1918,7 @@ var core = function(t, e, i) {
                 'showMiniMap': true,
                 'showMiniMapGrid': false,
                 'showMiniMapGuides': true,
+				'showExtraMiniMapGuides': false,
                 'showMiniMapGhostCells': true,
                 'oneColoredTeammates': false,
                 'optimizedFood': true,
@@ -2687,7 +2690,7 @@ var core = function(t, e, i) {
 					this["addOptions"](["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"), 
 					this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"), 
 					this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), 
-					this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), 
+					this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), 
 					this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), 
 					this["addOptions"](["mouseSplit", "mouseFeed","mouseInvert"], "mouseGroup"), 
 					this["addOptions"](["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"), 
@@ -3289,7 +3292,11 @@ var core = function(t, e, i) {
                         this["miniMapCtx"]["lineTo"](u, o - 1);
                         this["miniMapCtx"]["moveTo"](0, d);
                         this["miniMapCtx"]["lineTo"](o - 1, d);
-                        this["miniMapCtx"]["stroke"]();
+                        this["miniMapCtx"]["stroke"]();						
+                    }
+                    if (v["showExtraMiniMapGuides"]) {
+                        u = Math.round((i["playerX"] + r) * n);
+                        d = Math.round((i["playerY"] + l) * n);
 						
 						//draw the yellow on minimap
 						this.miniMapCtx.beginPath();
@@ -3300,19 +3307,15 @@ var core = function(t, e, i) {
 						var minidaxx = legendmod3.miniMapSectors.width*miniax;
 						var minidayy = legendmod3.miniMapSectors.width*miniay;		
 					
-						
-						
-						
 						var fixminidaxx = u-(minidaxx/2);
 						var fixminidayy = d-(minidayy/2);						
-						
 						
 						//if (fixminidaxx<0){ fixminidaxx=0; }
 						//if (fixminidayy<0){ fixminidayy=0; }	
 						this.miniMapCtx.rect(fixminidaxx, fixminidayy, minidaxx, minidayy);						
 						this.miniMapCtx.stroke();	
 						
-                    }
+                    }					
                     if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
                         c = 0;
                         for (; c < this["teamPlayers"].length; c++) {
