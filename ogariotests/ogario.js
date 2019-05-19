@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.485 MEGA TEST
+// v1.487 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2258,7 +2258,12 @@ var core = function(t, e, i) {
                 v['blockPopups'] && this['unblockPopups']();
             },
             'displayLeaderboard': function(t, e = '') {
-                this['leaderboardPositionsHUD'] && (this['leaderboardPositionsHUD']['innerHTML'] = t, this['leaderboardDataHUD']['innerHTML'] = e);
+				if (this['leaderboardPositionsHUD'] && v['showLbData']){
+					this['leaderboardPositionsHUD']['innerHTML'] = t
+				}
+				else {
+				this['leaderboardDataHUD']['innerHTML'] = e);
+				}
             },
             'displayStats': function() {
                 if (v['showStats']) {
@@ -2926,8 +2931,9 @@ var core = function(t, e, i) {
                             e.val(n + d);
                         }
                         e["focus"]();
-                    }), this["statsHUD"] = document.getElementById("stats-hud"), this["activeParties"] = document.getElementById("active-parties"), this["top5pos"] = document.getElementById("top5-pos"), this["top5totalMass"] = document.getElementById("top5-total-mass"), this["top5totalPlayers"] = document.getElementById("top5-total-players"), this["leaderboardPositionsHUD"] = document.getElementById("leaderboard-positions"), this["leaderboardDataHUD"] = document.getElementById("leaderboard-data"), this["timeHUD"] =
-                    document.getElementById("time-hud"), this["questHUD"] = document.getElementById("quest-hud"), s("#canvas")["bind"]("contextmenu", function() {
+                    }), this["statsHUD"] = document.getElementById("stats-hud"), this["activeParties"] = document.getElementById("active-parties"), this["top5pos"] = document.getElementById("top5-pos"), this["top5totalMass"] = document.getElementById("top5-total-mass"), this["top5totalPlayers"] = document.getElementById("top5-total-players"), this["leaderboardPositionsHUD"] = document.getElementById("leaderboard-positions"), 
+					this["leaderboardDataHUD"] = document.getElementById("leaderboard-data"),
+					this["timeHUD"] = document.getElementById("time-hud"), this["questHUD"] = document.getElementById("quest-hud"), s("#canvas")["bind"]("contextmenu", function() {
                         return false;
                     }), s(document).on("mouseup", ".btn", function() {
                         $(this)["blur"]();
