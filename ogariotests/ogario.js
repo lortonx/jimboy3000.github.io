@@ -1,8 +1,10 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.483 MEGA TEST
+// v1.484 MEGA TEST
 // Game Configurations
+
+window.testobjects = {};
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
@@ -5223,7 +5225,8 @@ var core = function(t, e, i) {
                     case 102:
 						//in here there are sent info about the user
 						//searching how protocol works
-						console.log("t: " + t);
+						//console.log("t: " + t);
+						window.testobjects=t;
 						console.log("t.getUint32: " + t.getUint32(s, true));
                         if (t.byteLength < 20 && e['logout']){
 							e['logout']();
