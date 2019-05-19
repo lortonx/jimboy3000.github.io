@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.487 MEGA TEST
+// v1.488 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2262,7 +2262,7 @@ var core = function(t, e, i) {
 					this['leaderboardPositionsHUD']['innerHTML'] = t
 				}
 				else {
-				this['leaderboardDataHUD']['innerHTML'] = e);
+				this['leaderboardDataHUD']['innerHTML'] = e;
 				}
             },
             'displayStats': function() {
