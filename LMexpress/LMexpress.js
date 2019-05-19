@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.039b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.039c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "39"; // the version 1.1-> 1.11
@@ -5643,7 +5643,8 @@ var socket = {
 		else{
 		servertemp = "live-arena-" + $('#server-token').val() + ".agar.io";
 		}		
-        var tag = document.getElementById(elements.tag);
+        //var tag = document.getElementById(elements.tag); No1 not anymore 
+		var tag = "RespectPrivacy";
 		
         //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
@@ -5654,13 +5655,18 @@ var socket = {
         //state.nickname = nick.value;
         //state.server = server;
         //state.tag = tag.value;
-        if (state.nickname != nick.value ||
+        /*if (state.nickname != nick.value || no1: I stoped this
             state.server != servertemp ||
-            state.tag != tag.value)
+            state.tag != tag.value)*/
+			
+        if (state.nickname != nick.value ||
+            state.server != servertemp)			
+			
         {
             state.nickname = nick.value;
             state.server = servertemp;
-            state.tag = tag.value;
+            //state.tag = tag.value; no2: I stoped this
+			state.tag="RespectPrivacy";
         socket.updateServerDetails();
 		}
     },
@@ -5694,7 +5700,8 @@ var initLc = function()
 {
     var nick = document.getElementById(elements.nickname);
     var server = document.getElementById(elements.server);
-    var tag = document.getElementById(elements.tag);
+    //var tag = document.getElementById(elements.tag); no3: I stoped this
+	var tag = "RespectPrivacy"; 
     var reconnectButton = document.getElementById(elements.reconnectButton);
 
     if (!nick)
@@ -5705,7 +5712,7 @@ var initLc = function()
 
     nick.addEventListener("change", socket.updateDetails);
     server.addEventListener("change", socket.updateDetails);
-    tag.addEventListener("change", socket.updateDetails);
+    //tag.addEventListener("change", socket.updateDetails); no4: I stoped this
 
     var reconnectTimer = null;
 
