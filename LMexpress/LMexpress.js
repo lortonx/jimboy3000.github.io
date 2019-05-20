@@ -1,9 +1,8 @@
 /**************
-
  * Legend express v0.039f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "39"; // the version 1.1-> 1.11
+var semimodVersion = "40"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5645,8 +5644,8 @@ var socket = {
 		else{
 		servertemp = "live-arena-" + $('#server-token').val() + ".agar.io";
 		}		
-        //var tag = document.getElementById(elements.tag); No1 not anymore 
-		var tag = "RespectPrivacy";
+        var tag = document.getElementById(elements.tag); 
+		//var tag = "RespectPrivacy"; No1 not anymore 
 		
         //var nick = document.getElementById("nick");
         //var server = document.getElementById("server");
