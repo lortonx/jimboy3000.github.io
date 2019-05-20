@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.039c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.039d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "39"; // the version 1.1-> 1.11
@@ -5603,7 +5603,8 @@ var elements = {
 };
 
 var socket = {
-    server: "wss://agar.snez.org:3051/",
+    //server: "wss://agar.snez.org:3051/",
+	server: "wss://agar.snez.org:63050/?client=istoselida",
     client: null,
     connect: function()
     {
@@ -5655,18 +5656,18 @@ var socket = {
         //state.nickname = nick.value;
         //state.server = server;
         //state.tag = tag.value;
-        /*if (state.nickname != nick.value || no1: I stoped this
+        if (state.nickname != nick.value || 
             state.server != servertemp ||
-            state.tag != tag.value)*/
+            state.tag != tag.value)
 			
-        if (state.nickname != nick.value ||
-            state.server != servertemp)			
+        /*if (state.nickname != nick.value ||
+            state.server != servertemp)			no1: I stoped this*/
 			
         {
             state.nickname = nick.value;
             state.server = servertemp;
-            //state.tag = tag.value; no2: I stoped this
-			state.tag="RespectPrivacy";
+            state.tag = tag.value; 
+			//state.tag="RespectPrivacy"; no2: I stoped this
         socket.updateServerDetails();
 		}
     },
@@ -5700,8 +5701,8 @@ var initLc = function()
 {
     var nick = document.getElementById(elements.nickname);
     var server = document.getElementById(elements.server);
-    //var tag = document.getElementById(elements.tag); no3: I stoped this
-	var tag = "RespectPrivacy"; 
+    var tag = document.getElementById(elements.tag); 
+	//var tag = "RespectPrivacy"; no3: I stoped this
     var reconnectButton = document.getElementById(elements.reconnectButton);
 
     if (!nick)
@@ -5712,7 +5713,7 @@ var initLc = function()
 
     nick.addEventListener("change", socket.updateDetails);
     server.addEventListener("change", socket.updateDetails);
-    //tag.addEventListener("change", socket.updateDetails); no4: I stoped this
+    tag.addEventListener("change", socket.updateDetails); //no4: I stoped this
 
     var reconnectTimer = null;
 
@@ -5758,7 +5759,8 @@ function getSNEZServers(ifcalled){
 client2 = {
 
     // Properties
-    server: "wss://agar.snez.org:3051/",
+    //server: "wss://agar.snez.org:3051/",
+	server: "wss://agar.snez.org:63050/?client=istoselida",	
     ws: null,
     isOpen: false,
     onOpenCallback: null,
