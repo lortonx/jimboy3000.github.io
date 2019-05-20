@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.039d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.039e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "39"; // the version 1.1-> 1.11
@@ -5604,7 +5604,7 @@ var elements = {
 
 var socket = {
     //server: "wss://agar.snez.org:3051/",
-	server: "wss://agar.snez.org:63050/?client=istoselida",
+	server: "wss://agar.snez.org:63051/?client=istoselida",
     client: null,
     connect: function()
     {
@@ -5760,7 +5760,7 @@ client2 = {
 
     // Properties
     //server: "wss://agar.snez.org:3051/",
-	server: "wss://agar.snez.org:63050/?client=istoselida",	
+	server: "wss://agar.snez.org:63051/?client=istoselida",	
     ws: null,
     isOpen: false,
     onOpenCallback: null,
