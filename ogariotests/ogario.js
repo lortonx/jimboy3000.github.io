@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.494 MEGA TEST
+// v1.495 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -4593,7 +4593,7 @@ var core = function(t, e, i) {
 
 						if (!v.jellyPhisycs){
                         if (this.isVirus) {
-							console.log("is not jelly");
+							//console.log("is not jelly");
 							if (dyinglight1load == "yes" ) {
 							try {	
 							style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
@@ -4605,7 +4605,7 @@ var core = function(t, e, i) {
 						}	
 						else{
 						if (this.isVirus) {
-							console.log("is jelly");
+							//console.log("is jelly");
                 if (v.transparentViruses) {
                     style.globalAlpha *= g.virusAlpha;
                     isAlphaChanged = true;
@@ -5272,8 +5272,8 @@ var core = function(t, e, i) {
 						//searching how protocol works
 						//console.log("t: " + t);
 						window.testobjects=t;
-						console.log("t.getUint32: " + s);
-						console.log("t.getUint32: " + t.getUint32(s, true));
+						//console.log("t.getUint32: " + s);
+						//console.log("t.getUint32: " + t.getUint32(s, true));
                         if (t.byteLength < 20 && e['logout']){
 							e['logout']();
 							}
