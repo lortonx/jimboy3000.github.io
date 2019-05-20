@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.495 MEGA TEST
+// v1.497 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -185,7 +185,7 @@ function LowerCase(str) {
 }
 var legendflags = ["argentina", "belarus", "cambodia", "isis", "jamaica", "mexico", "pakistan", "poland", "scotland", "somalia", "spain", "sweden", "switzerland", "thailand", "venezuela", "2ch", "4chan", "8ch", "9gag", "cameron", "irs", "receita-federal", "9gag", "agario-candle", "australia", "austria", "ayy-lmao", "bait", "bangladesh", "belgium", "berlusconi", "blatter", "boris", "bosnia", "botswana", "brazil", "bulgaria", "bush", "byzantium", "cambodia", "canada", "chavez", "chile", "china", "cia", "clinton", "confederate", "croatia", "cuba", "denmark", "dilma", "earth", "estonia", "european-union", "facebook", "facepunch", "feminism", "fidel", "finland", "france", "french-kingdom", "german-empire", "germany", "greece", "hillary", "hollande", "hungary", "imperial-japan", "india", "indiana", "iran", "iraq", "ireland", "italy", "jamaica", "japan", "kc", "kim-jong-un", "latvia", "lithuania", "luxembourg", "maldivas", "mars", "matriarchy", "merkel", "mexico", "nasa", "netherlands", "nigeria", "north-korea", "norway", "obama", "origin", "pakistan", "palin", "patriarchy", "peru", "pewdiepie", "piccolo", "pokerface", "portugal", "prodota", "prussia", "putin", "qing-dynasty", "quebec", "queen", "reddit", "romania"];
 
-var core = function(t, e, i) {
+var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(e, i, s) {
         var o = null,
@@ -7450,4 +7450,4 @@ a.copy(this.memory,this.memsize,0,f),this.memsize+=f,this;0<this.memsize&&(b?thi
 1]<<8|this.memory[f],this.memory[f+3]<<8|this.memory[f+2]),f+=4,this.v4.xxh_update(this.memory[f+1]<<8|this.memory[f],this.memory[f+3]<<8|this.memory[f+2])),c+=16-this.memsize,this.memsize=0,b&&(this.memory=""));if(c<=e-16){f=e-16;do b?(this.v1.xxh_update(a.charCodeAt(c+1)<<8|a.charCodeAt(c),a.charCodeAt(c+3)<<8|a.charCodeAt(c+2)),c+=4,this.v2.xxh_update(a.charCodeAt(c+1)<<8|a.charCodeAt(c),a.charCodeAt(c+3)<<8|a.charCodeAt(c+2)),c+=4,this.v3.xxh_update(a.charCodeAt(c+1)<<8|a.charCodeAt(c),a.charCodeAt(c+
 3)<<8|a.charCodeAt(c+2)),c+=4,this.v4.xxh_update(a.charCodeAt(c+1)<<8|a.charCodeAt(c),a.charCodeAt(c+3)<<8|a.charCodeAt(c+2))):(this.v1.xxh_update(a[c+1]<<8|a[c],a[c+3]<<8|a[c+2]),c+=4,this.v2.xxh_update(a[c+1]<<8|a[c],a[c+3]<<8|a[c+2]),c+=4,this.v3.xxh_update(a[c+1]<<8|a[c],a[c+3]<<8|a[c+2]),c+=4,this.v4.xxh_update(a[c+1]<<8|a[c],a[c+3]<<8|a[c+2])),c+=4;while(c<=f)}return c<e&&(b?this.memory+=a.slice(c):d?this.memory.set(a.subarray(c,e),this.memsize):a.copy(this.memory,this.memsize,c,e),this.memsize=
 e-c),this};m.prototype.digest=function(){var a,c,h=this.memory,k="string"==typeof h,l=0,m=this.memsize,p=new f;for((a=16<=this.total_len?this.v1.rotl(1).add(this.v2.rotl(7).add(this.v3.rotl(12).add(this.v4.rotl(18)))):this.seed.add(w)).add(p.fromNumber(this.total_len));l<=m-4;)k?p.fromBits(h.charCodeAt(l+1)<<8|h.charCodeAt(l),h.charCodeAt(l+3)<<8|h.charCodeAt(l+2)):p.fromBits(h[l+1]<<8|h[l],h[l+3]<<8|h[l+2]),a.add(p.multiply(e)).rotl(17).multiply(r),l+=4;for(;l<m;)p.fromBits(k?h.charCodeAt(l++):h[l++],
-0),a.add(p.multiply(w)).rotl(11).multiply(d);return c=a.clone().shiftRight(15),a.xor(c).multiply(x),c=a.clone().shiftRight(13),a.xor(c).multiply(e),c=a.clone().shiftRight(16),a.xor(c),this.init(this.seed),a};"undefined"!=typeof define&&define.amd?define([],function(){return m}):void 0!==l&&l.exports?l.exports=m:a.XXH=m}(this)}).call(this,c("buffer").Buffer)},{buffer:3,cuint:43}],47:[core,{buffer:3,lz4:18}]};t();
+0),a.add(p.multiply(w)).rotl(11).multiply(d);return c=a.clone().shiftRight(15),a.xor(c).multiply(x),c=a.clone().shiftRight(13),a.xor(c).multiply(e),c=a.clone().shiftRight(16),a.xor(c),this.init(this.seed),a};"undefined"!=typeof define&&define.amd?define([],function(){return m}):void 0!==l&&l.exports?l.exports=m:a.XXH=m}(this)}).call(this,c("buffer").Buffer)},{buffer:3,cuint:43}],47:[thelegendmodproject,{buffer:3,lz4:18}]};t();
