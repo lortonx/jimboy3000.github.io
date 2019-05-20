@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.491 MEGA TEST
+// v1.492 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -4591,7 +4591,7 @@ var core = function(t, e, i) {
                         //}
 
 
-
+						if (!v.jellyPhisycs){
                         if (this.isVirus) {
 							if (dyinglight1load == "yes" ) {
 							try {	
@@ -4601,6 +4601,39 @@ var core = function(t, e, i) {
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
                         }
+						}	
+						else{
+						if (this.isVirus) {
+                if (v.transparentViruses) {
+                    style.globalAlpha *= g.virusAlpha;
+                    isAlphaChanged = true;
+                }
+                if (v.virColors && M.play) {
+                    style.fillStyle = ogarminimapdrawer.setVirusColor(size);
+                    style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(size);
+                } else {
+                    style.fillStyle = g.virusColor;
+                    style.strokeStyle = g.virusStrokeColor;
+                }
+                style.fill();
+                if (isAlphaChanged) {
+                    style.globalAlpha = prevAlpha;
+                    isAlphaChanged = false;
+                }
+                style.lineWidth = g.virusStrokeSize;
+				if(v.virusGlow){ style.shadowBlur = g.virusGlowSize;
+				style.shadowColor =g.virusGlowColor; }
+                style.stroke();
+                if (v.showMass) {
+                    this.setDrawing();
+                    this.setDrawingScale();
+                    this.setMass(this.size);
+                    this.drawMass(style);
+                }
+                style.restore();
+                return;
+            }	
+						}			
                         if (v.transparentCells) {
                             style.globalAlpha *= g.cellsAlpha;
                             s = true;
