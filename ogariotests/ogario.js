@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.498 MEGA TEST
+// v1.499 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -7177,7 +7177,8 @@ var thelegendmodproject = function(t, e, i) {
                     '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i]['keyDown'] && ogario11Hotkeys[i]['keyDown']();
                 }
             }
-        }, document.onkeyup = function(t) {
+        }
+		document.onkeyup = function(t) {
             var e = lastkeys['getPressedKey'](t);
             if ('' !== e) {
                 if (ogario1Hotkeys[e]) {
@@ -7186,7 +7187,8 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 ogarioefaultHotkeys[e] = false;
             }
-        }, e['onmousedown'] = function(t) {
+        } 
+		e['onmousedown'] = function(t) {
             if (!s("#overlays")["is"](":visible")) {
                 if (2 == t["which"]) {
                     t["preventDefault"]();
@@ -7208,15 +7210,26 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
             }
-        }, e['onmouseup'] = function(t) {
+        }
+		e['onmouseup'] = function(t) {
             if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"]) && ogarminimapdrawer) {
                 ogarminimapdrawer["macroFeed"](false);
             }
-        }, e['onbeforeunload'] = function(t) {
+        };
+		e['onbeforeunload'] = function(t) {
             return i.play ? h['exit'] : void 0;
-        }, i = M, o = t('buffer')['Buffer'], a = t('lz4'), '/ogario' === e.location['pathname'] && ogarjoiner('/' + e['location']['hash']), e['onresize'] = function() {
+        }; 
+		i = M; 
+		o = t('buffer')['Buffer'];
+		a = t('lz4');
+		if ('/ogario' === e.location['pathname']){
+			ogarjoiner('/' + e['location']['hash']); 
+		}
+		e['onresize'] = function() {
             ogarfooddrawer['resizeCanvas'](), ogarhusettings();
-        }, ogarassembler(), e.core = {
+        };
+		ogarassembler();
+		e.core = {
             'connect': function(t) {
                 M.connect(t);
             },
@@ -7262,7 +7275,17 @@ var thelegendmodproject = function(t, e, i) {
 				window.customskinsname=a;
 				window.customskinsurl=c;
 			}
-        }, e.master.getClientVersion(), y.init(), ogarminimapdrawer.init(), ogarminimapdrawer.getDefaultSettings(), ogarminimapdrawer.connect(), lastkeys.init(), M.init(), ogarfooddrawer.init(), e.master.init(), ogarhusettings();
+        }; 
+		e.master.getClientVersion(); 
+		y.init(); 
+		ogarminimapdrawer.init(); 
+		ogarminimapdrawer.getDefaultSettings(); 
+		ogarminimapdrawer.connect(); 
+		lastkeys.init(); 
+		M.init(); 
+		ogarfooddrawer.init(); 
+		e.master.init();
+		ogarhusettings();
     })(window, window.ogario, window.jQuery);
 }
 
