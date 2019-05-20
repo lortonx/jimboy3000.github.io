@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.492 MEGA TEST
+// v1.493 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -4617,7 +4617,7 @@ var core = function(t, e, i) {
                 }
                 style.fill();
                 if (isAlphaChanged) {
-                    style.globalAlpha = prevAlpha;
+                    style.globalAlpha = g.cellsAlpha;
                     isAlphaChanged = false;
                 }
                 style.lineWidth = g.virusStrokeSize;
