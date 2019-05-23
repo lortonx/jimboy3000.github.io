@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.518 MEGA TEST
+// v1.519 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -1639,7 +1639,7 @@ var thelegendmodproject = function(t, e, i) {
                 'cursorCSS': null,
                 'loadThemeSettings': function() {
                     var t = null;
-                    for (var s in null !== window.localStorage.getItem('ogarioThemeSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'))), g) g.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (g[s] = t[s]), window.ogario.hasOwnProperty(s) && (window.ogario[s] = g[s]));
+                    for (var s in null !== window.localStorage.getItem('ogarioThemeSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'))), g) g.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (g[s] = t[s]), g.hasOwnProperty(s) && (window.ogario[s] = g[s]));
 					//if (v['zoomSpeedValue2'] && v['zoomSpeedValue2']>0.99){v['zoomSpeedValue2']=v['zoomSpeedValue2']-1};
 				},
                 'saveThemeSettings': function() {
