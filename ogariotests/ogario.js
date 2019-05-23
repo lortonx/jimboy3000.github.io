@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.515 MEGA TEST
+// v1.516 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -187,7 +187,7 @@ var legendflags = ["argentina", "belarus", "cambodia", "isis", "jamaica", "mexic
 
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
-    (function(e, i) {
+    (function(i) {
         var o = null,
             a = null,
             n = {
@@ -7391,5 +7391,5 @@ var thelegendmodproject = function(t, e, i) {
 		ogarfooddrawer.init(); 
 		window.master.init();
 		ogarhusettings();
-    })(window, window.ogario);
+    })(window.ogario);
 }
