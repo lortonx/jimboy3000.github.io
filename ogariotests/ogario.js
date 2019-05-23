@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.558 MEGA TEST
+// v1.559 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3285,7 +3285,7 @@ var thelegendmodproject = function(t, e, i) {
                     a = $('#color').val();
                 ogarcopythelb.nick = t, 
 				ogarcopythelb.clanTag = e.trim(), 
-				ogarcopythelb.skinURL = this.checkSkinUR(o.trim()), 
+				ogarcopythelb.skinURL = this.checkSkinURL(o.trim()), 
 				7 == a.length && (ogarcopythelb.color = a), 
 				ogarcopythelb.clanTag.length > 0 && (i.clanTag = ogarcopythelb.clanTag), 
 				ogario1PlayerProfiles[this.selectedProfile].nick = ogarcopythelb.nick, 
