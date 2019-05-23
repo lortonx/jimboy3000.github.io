@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.547 MEGA TEST
+// v1.548 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2345,7 +2345,7 @@ var thelegendmodproject = function(t, e, i) {
                         'displayTop5': function() {
                             if (v['showTop5']) {
             					//console.log(['top5'].length);
-            					//console.log(['teamPlayers'].length);
+            					//console.log(.teamPlayers.length);
                                 for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o].color + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this.escapeHTML(this['top5'][o].nick) + '</li>');
                                 this['top5pos'].innerHTML = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass'].textContent= this['shortMassFormat'](e), this['top5totalPlayers'].textContent= s;
                             }
@@ -2369,8 +2369,8 @@ var thelegendmodproject = function(t, e, i) {
                           }
                         }
                         this["top5pos"].innerHTML = pix_color;
-                        if (i["play"] && i["playerMass"]) {
-                          bufferString = bufferString + i["playerMass"];
+                        if (i["play"] && i.playerMass) {
+                          bufferString = bufferString + i.playerMass;
                           PL$29++;
                         }
                         this["top5totalMass"].textContent= this["shortMassFormat"](bufferString);
@@ -2382,7 +2382,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (window.top5skins != true) {
                     if (v['showTop5']) {
                         //console.log(['top5'].length);
-                        //console.log(['teamPlayers'].length);
+                        //console.log(.teamPlayers.length);
                         for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), 
 						t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this.escapeHTML(this['top5'][o].nick) + '</li>');
                         this['top5pos'].innerHTML = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), 
@@ -2407,8 +2407,8 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     }
                     this["top5pos"].innerHTML = t;
-                    if (i.play && i["playerMass"]) {
-                        e = e + i["playerMass"];
+                    if (i.play && i.playerMass) {
+                        e = e + i.playerMass;
                         s++;
                     }
                     this["top5totalMass"].textContent= this["shortMassFormat"](e);
@@ -2920,7 +2920,7 @@ var thelegendmodproject = function(t, e, i) {
                         if (v["blockPopups"]) {
                             var container = $(this);
                             setTimeout(function() {
-                                if (!container["is"](":visible")) {
+                                if (!container.is(":visible")) {
                                     t["blockPopups"]();
                                 }
                             }, 1000);
@@ -3021,7 +3021,7 @@ var thelegendmodproject = function(t, e, i) {
                         var template = $(this);
                         var p = $("#chat-emoticons");
                         p.toggle();
-                        if (p["is"](":visible")) {
+                        if (p.is(":visible")) {
                             template.addClass("active");
                         } else {
                             template.removeClass("active");
@@ -3253,7 +3253,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (i.play = true, i.playerColor) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb.nick, i.playerColor, ogarcopythelb.skinURL);
                 var t = this;
                 setTimeout(function() {
-                    t['onPlayerSpawn']();
+                    t.onPlayerSpawn();
                 }, 100);
                 if (window.spawnspecialeffects == true) {
                     setTimeout(function() {
@@ -3567,7 +3567,7 @@ var thelegendmodproject = function(t, e, i) {
 				i.playerColor = null;
             },
             'flushPartyData': function() {
-                this['teamPlayers'] = [];
+                this.teamPlayers = [];
 				this.parties = []; 
 				this['lastSentNick'] = ''; 
 				this['lastSentClanTag'] = null; 
@@ -3612,14 +3612,14 @@ var thelegendmodproject = function(t, e, i) {
                 $('#server-ws').val(this.ws), $('#server-token').val(this.serverToken), $('#party-token, .party-token').val(this.partyToken);
             },
             'gameServerConnect': function(t) {
-                t && (this['skipServerData'] = true, window.core && window.core.connect && window.core.connect(t));
+                t && (this.skipServerData = true, window.core && window.core.connect && window.core.connect(t));
             },
             'gameServerReconnect': function() {
                 window.MC && window.MC.reconnect ? window.MC.reconnect() : window.master && window.master.reconnect && window.master.reconnect();
             },
             'gameServerJoin': function(t) {
                 var e = this.recreateWS(t);
-                e && (this['skipServerData'] = true, this['gameServerConnect'](e));
+                e && (this.skipServerData = true, this['gameServerConnect'](e));
             },
             'connect': function() {
                 pauseVideos(), 
@@ -3781,8 +3781,8 @@ var thelegendmodproject = function(t, e, i) {
 				this.sendPlayerJoin();
             },
             'sendServerRegion': function() {
-                if (this['region']) {
-                    var t = this['region'].split('-');
+                if (this.region) {
+                    var t = this.region.split('-');
                     if (this.isSocketOpen())
 					{
 						this['sendBuffer'](this['strToBuff'](17, t[0]));
@@ -3807,7 +3807,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
-                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = $('#region').val(), this.gameMode = $('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
+                this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
             },
             'sendPartyData': function() {
                 this.sendPlayerClanTag(), this.sendPartyToken(), this.sendServerToken(), this.sendPlayerNick();
@@ -3827,30 +3827,30 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'sendPlayerPosition': function() {
-                if (this.isSocketOpen() && i.play && this["playerID"]) {
+                if (this.isSocketOpen() && i.play && this.playerID) {
                     var t = this.createView(17);
                     t.setUint8(0, 30);
-                    t.setUint32(1, this["playerID"], true);
-                    t.setInt32(5, this["getPlayerX"](), true);
-                    t.setInt32(9, this["getPlayerY"](), true);
-                    if (void 0 !== i["playerMass"]) {
-                        t.setUint32(13, i["playerMass"], true);
+                    t.setUint32(1, this.playerID, true);
+                    t.setInt32(5, this.getPlayerX(), true);
+                    t.setInt32(9, this.getPlayerY(), true);
+                    if (void 0 !== i.playerMass) {
+                        t.setUint32(13, i.playerMass, true);
                     } else {
-                        t.setUint32(13, this["playerMass"], true);
+                        t.setUint32(13, this.playerMass, true);
                     }
                     this["sendBuffer"](t);
                 }
             },
             'checkPlayerID': function(t) {
                 if (t)
-                    for (var e = 0; e < this['teamPlayers'].length; e++)
-                        if (this['teamPlayers'][e]['id'] == t) return e;
+                    for (var e = 0; e < this.teamPlayers.length; e++)
+                        if (this.teamPlayers[e]['id'] == t) return e;
                 return null;
             },
             'checkPlayerChat': function(t) {
                 if (t)
-                    for (var e = 0; e < this['teamPlayers'].length; e++)
-                        if (this['teamPlayers'][e]['id'] == t) return e;
+                    for (var e = 0; e < this.teamPlayers.length; e++)
+                        if (this.teamPlayers[e]['id'] == t) return e;
                 return null;
             },			
             'updateTeamPlayer': function(t) {
@@ -3873,7 +3873,7 @@ var thelegendmodproject = function(t, e, i) {
                 var n = e();
                 var r = e();
                 var l = ":party" === this.gameMode ? o + r : o;
-                var h = this["checkPlayerID"](i);
+                var h = this.checkPlayerID(i);
                 if (null !== h) {
                     this.teamPlayers[h].nick = o;
                     this.teamPlayers[h].skinID = l;
@@ -3944,8 +3944,8 @@ var thelegendmodproject = function(t, e, i) {
                         o = t.getInt32(9, true),
                         a = t.getUint32(13, true);
                     if (a > 360000) return;
-                    var n = this['teamPlayers'][i];
-                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date.now(), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n.nick, n.skinURL, s, o, a, n.color);
+                    var n = this.teamPlayers[i];
+                    n['x'] = s, n['y'] = o, n['mass'] = a, n.alive = true, n['updateTime'] = Date.now(), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n.nick, n.skinURL, s, o, a, n.color);
                 }
             },
             'updateTeamPlayers': function() {
@@ -4017,7 +4017,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'prepareCommand': function(t) {
-                return t.replace('%currentSector%', this['currentSector']);
+                return t.replace('%currentSector%', this.currentSector);
             },
             'sendCommand': function(t) {
                 var e = this['prepareCommand'](c['comm' + t]);
@@ -4037,11 +4037,11 @@ var thelegendmodproject = function(t, e, i) {
             },
             'unmuteChatUser': function(t) {
                 if (t) {
-                    var e = this["chatMutedUserIDs"].indexOf(t);
+                    var e = this.chatMutedUserIDs.indexOf(t);
                     if (-1 != e) {
-                        this["chatMutedUserIDs"]["splice"](e, 1);
-                        toastr["info"](h["userUnmuted"].replace("%user%", "<strong>" + this.escapeHTML(this["chatMutedUsers"][t]) + "</strong>"));
-                        delete this["chatMutedUsers"][t];
+                        this.chatMutedUserIDs.splice(e, 1);
+                        toastr["info"](h["userUnmuted"].replace("%user%", "<strong>" + this.escapeHTML(this.chatMutedUser[t]) + "</strong>"));
+                        delete this.chatMutedUser[t];
                     }
                 }
             },
@@ -4157,8 +4157,8 @@ var thelegendmodproject = function(t, e, i) {
             'setTarget': function(t) {
                 var e = this.checkPlayerID(t);
                 if (null !== e) {
-                    var i = this['teamPlayers'][e];
-                    if (this['targetID'] = i['id'], this['updateTarget'](i.nick, i.skinURL, i['x'], i['y'], i['mass'], i.color), !i['alive']) return void this['setTargetStatus'](2);
+                    var i = this.teamPlayers[e];
+                    if (this['targetID'] = i['id'], this['updateTarget'](i.nick, i.skinURL, i['x'], i['y'], i['mass'], i.color), !i.alive) return void this['setTargetStatus'](2);
                     this['setTargetStatus'](1);
                 } else this['setTargetStatus'](0);
             },
@@ -4175,8 +4175,8 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'changeTarget': function() {
-                for (var t = this.checkPlayerID(this['targetID']), e = null, i = 0; i < this['teamPlayers'].length; i++)
-                    if (this['teamPlayers'][i]['alive']) {
+                for (var t = this.checkPlayerID(this['targetID']), e = null, i = 0; i < this.teamPlayers.length; i++)
+                    if (this.teamPlayers[i].alive) {
                         if (null === t) {
                             t = i;
                             break;
@@ -4186,7 +4186,7 @@ var thelegendmodproject = function(t, e, i) {
                             e = i;
                             break;
                         }
-                    } null !== e && (t = e), null !== t ? this['setTarget'](this['teamPlayers'][t]['id']) : this['setTargetStatus'](0);
+                    } null !== e && (t = e), null !== t ? this['setTarget'](this.teamPlayers[t]['id']) : this['setTargetStatus'](0);
             },
             'updateTarget': function(t, e, o, a, n, r) {
                 i['setTargetPosition'](o, a), this.targetNick !== t && (this.targetNick = t, $('#target-nick').html(this.escapeHTML(t))), $('#target-skin').css('background-color', r), e && this['targetSkinURL'] !== e && (this['customSkinsCache'].hasOwnProperty(e + '_cached') ? ($('#target-skin img')['attr']('src', e), this['targetSkinURL'] = e) : $('#target-skin img')['attr']('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this['shortMassFormat'](n) + ']');
@@ -5172,14 +5172,14 @@ var thelegendmodproject = function(t, e, i) {
             },
             'onError': function(t) {
                 console.log('[Legend mod Express] Game server socket error'); 
-				this['flushCellsData']();
+				this.flushCellsData();
 				if (window.master && window.master['onDisconnect']){
 					window.master['onDisconnect']();
 				}
             },
             'onClose': function(t) {
                 console.log('[Legend mod Express] Game server socket close'); 
-				this['flushCellsData'](); 
+				this.flushCellsData(); 
 				if (window.master && window.master['onDisconnect']){
 					window.master['onDisconnect']();
 				}
@@ -5238,7 +5238,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendNick': function(t) {
 				
-                this['playerNick'] = t, t = window.unescape(window.encodeURIComponent(t));
+                this.playerNick = t, t = window.unescape(window.encodeURIComponent(t));
 				window.Bufferdata = t; //
                 var i = this.createView(1 + t.length);
                 i.setUint8(0, 0);
@@ -5388,7 +5388,7 @@ var thelegendmodproject = function(t, e, i) {
                         return e;
                     },
                     s = 0,
-                    o = t['getUint8'](s++);
+                    o = t.getUint8(s++);
                 switch (54 == o && (o = 53), o) {
 					
 					
@@ -5400,9 +5400,9 @@ var thelegendmodproject = function(t, e, i) {
                     case 5:
                         break;
                     case 17:
-                        this['viewX'] = t.getFloat32(s, true);
+                        this.viewX = t.getFloat32(s, true);
 						s += 4;
-						this['viewY'] = t.getFloat32(s, true);
+						this.viewY = t.getFloat32(s, true);
 						s += 4;
 						this.scale = t.getFloat32(s, true);
                         break;
@@ -5410,21 +5410,21 @@ var thelegendmodproject = function(t, e, i) {
                         if (this.protocolKey){ 
 						this.protocolKey = this.shiftKey(this.protocolKey);
 						}
-						this['flushCellsData']();
+						this.flushCellsData();
                         break;
                     case 32:
-                        this['playerCellIDs'].push(t.getUint32(s, true));
-						this.play || (this.play = true, ogarminimapdrawer.hideMenu(), this.playerColor = null, ogarminimapdrawer['onPlayerSpawn']());
+                        this.playerCellIDs.push(t.getUint32(s, true));
+						this.play || (this.play = true, ogarminimapdrawer.hideMenu(), this.playerColor = null, ogarminimapdrawer.onPlayerSpawn());
                         break;
                     case 50:
-                        this['pieChart'] = [];
+                        this.pieChart = [];
                         var a = t.getUint32(s, true);
                         s += 4;
-                        for (var n = 0; n < a; n++) this['pieChart'].push(t.getFloat32(s, true)), s += 4;
-                        ogarfooddrawer['drawPieChart']();
+                        for (var n = 0; n < a; n++) this.pieChart.push(t.getFloat32(s, true)), s += 4;
+                        ogarfooddrawer.drawPieChart();
                         break;
                     case 53:
-                        if (this['leaderboard'] = [], this['playerPosition'] = 0, 54 == t.getUint8(0)) {
+                        if (this['leaderboard'] = [], this.playerPosition = 0, 54 == t.getUint8(0)) {
                             t.getUint16(s, true);
                             s += 2;
                         }
@@ -5433,7 +5433,7 @@ var thelegendmodproject = function(t, e, i) {
                             var h = 0;
                             var c = false;
                             r++; 
-							if (2 & (y = t['getUint8'](s++))){ 
+							if (2 & (y = t.getUint8(s++))){ 
 							l = window.decodeURIComponent(escape(i()));
 							}
 							if (4 & y){
@@ -5441,9 +5441,9 @@ var thelegendmodproject = function(t, e, i) {
 							s += 4;
 							}
 							if (8 & y){ 
-							l = this['playerNick'];
+							l = this.playerNick;
 							h = 'isPlayer';
-							this['playerPosition'] = r
+							this.playerPosition = r
 							}
 							if (16 & y){
 							c = true;
@@ -5525,25 +5525,25 @@ var thelegendmodproject = function(t, e, i) {
                     case 161:
                         break;
                     case 176:
-                        this['battleRoyale']['startTime'] = t.getUint32(s, true);
+                        this['battleRoyale'].startTime = t.getUint32(s, true);
                         break;
                     case 177:
-                        this['battleRoyale']['joined'] = true;
+                        this['battleRoyale'].joined = true;
                         break;
                     case 178:
-                        this['battleRoyale']['players'] = t.getUint16(s, true), s += 2;
+                        this['battleRoyale'].players = t.getUint16(s, true), s += 2;
                         var y = t.getUint16(s, true);
-                        s += 2, y || (this['battleRoyale']['state'] = 0, this['battleRoyale']['joined'] = false),
-						3 & y && (this['battleRoyale']['state'] = t.getUint8(s++),
+                        s += 2, y || (this['battleRoyale'].state = 0, this['battleRoyale'].joined = false),
+						3 & y && (this['battleRoyale'].state = t.getUint8(s++),
 						this['battleRoyale']['x'] = t.getInt32(s, true),
 						s += 4, this['battleRoyale']['y'] = t.getInt32(s, true),
-						s += 4, this['battleRoyale']['radius'] = t.getUint32(s, true),
-						s += 4, this['battleRoyale']['shrinkTime'] = 1000 * t.getUint32(s, true),
-						s += 4, this['battleRoyale']['shrinkTime'] && 
-						(this['battleRoyale']['timeLeft'] = ~~((this['battleRoyale']['shrinkTime'] - Date.now() + this['serverTimeDiff']) / 1000),
-						this['battleRoyale']['timeLeft'] < 0 && (this['battleRoyale']['timeLeft'] = 0))),
-						2 & y && (this['battleRoyale']['targetX'] = t.getInt32(s, true), s += 4,
-						this['battleRoyale']['targetY'] = t.getInt32(s, true), s += 4, this['battleRoyale']['targetRadius'] = t.getUint32(s, true));
+						s += 4, this['battleRoyale'].radius = t.getUint32(s, true),
+						s += 4, this['battleRoyale'].shrinkTime = 1000 * t.getUint32(s, true),
+						s += 4, this['battleRoyale'].shrinkTime && 
+						(this['battleRoyale'].timeLeft = ~~((this['battleRoyale'].shrinkTime - Date.now() + this.serverTimeDiff) / 1000),
+						this['battleRoyale'].timeLeft < 0 && (this['battleRoyale'].timeLeft = 0))),
+						2 & y && (this['battleRoyale'].targetX = t.getInt32(s, true), s += 4,
+						this['battleRoyale'].targetY = t.getInt32(s, true), s += 4, this['battleRoyale'].targetRadius = t.getUint32(s, true));
                         break;
                     case 179:
                         y = t.getUint8(s);
@@ -5551,16 +5551,16 @@ var thelegendmodproject = function(t, e, i) {
                         y || window.decodeURIComponent(escape(i()));
                         break;
                     case 180:
-                        this['battleRoyale']['joined'] = false;
-						this['battleRoyale']['rank'] = [];
-						this['battleRoyale']['playerRank'] = t.getUint32(s, true);
+                        this['battleRoyale'].joined = false;
+						this['battleRoyale'].rank = [];
+						this['battleRoyale'].playerRank = t.getUint32(s, true);
 						s += 8;
                         var ogario1PlayerProfiles = t.getUint16(s, true);
                         s += 2;
                         for (n = 0; n < ogario1PlayerProfiles; n++) {
                             var ogarcopythelb = window.decodeURIComponent(escape(i())),
                                 v = t.getUint32(s, true);
-                            s += 4, this['battleRoyale']['rank'].push({
+                            s += 4, this['battleRoyale'].rank.push({
                                 'place': v,
                                 'name': ogarcopythelb
                             });
@@ -5583,7 +5583,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 242:
                         this['serverTime'] = 1000 * t.getUint32(s, true);
-						this['serverTimeDiff'] = Date.now() - this['serverTime'];
+						this.serverTimeDiff = Date.now() - this['serverTime'];
                         break;
                     case 255:
                         this['handleSubmessage'](t);
@@ -5627,7 +5627,7 @@ var thelegendmodproject = function(t, e, i) {
                     var s = '<span>';
                     'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this['leaderboard'][i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this['leaderboard'][i].nick) + '</span>';
                 }
-                if (this['playerPosition'] > window.leaderboardlimit && (t += '<span class=\"me\">' + this['playerPosition'] + '. ' + ogarminimapdrawer.escapeHTML(this['playerNick']) + '</span>'), v['showLbData']);
+                if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), v['showLbData']);
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
                 for (var o = 0; o < this['ghostCells'].length && o != i; o++) e += '<span class=\"lb-data\">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this['ghostCells'][o]['mass']) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this['ghostCells'][o]['x'], this['ghostCells'][o]['y']) + ']</span>', e += '</span>';
                 ogarminimapdrawer['displayLeaderboard'](t, e);
@@ -5649,7 +5649,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.indexedCells = {}, 
 				this['cells'] = []; 
 				this['playerCells'] = []; 
-				this['playerCellIDs'] = []; 
+				this.playerCellIDs = []; 
 				this['ghostCells'] = [];
 				this['food'] = [];
 				this['viruses'] = [];
@@ -5663,7 +5663,7 @@ var thelegendmodproject = function(t, e, i) {
 				this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
 				this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
 				this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
-				this.mapOffsetFixed|| (this['viewX'] = (i + t) / 2, this['viewY'] = (s + e) / 2);
+				this.mapOffsetFixed|| (this.viewX = (i + t) / 2, this.viewY = (s + e) / 2);
 				this.mapOffsetFixed= true;
 				console.log('[Legend mod Express] Map offset fixed (x, y):', this.mapOffsetX, this.mapOffsetY);
 				}
@@ -5671,8 +5671,8 @@ var thelegendmodproject = function(t, e, i) {
             'isInView': function(t, e, i) {
                 var s = this['canvasWidth'] / 2 / this.scale,
                     o = this['canvasHeight'] / 2 / this.scale;
-					//console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o));
-                return !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o);
+					//console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o));
+                return !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o);
             },
             'updateCells': function(t, i) {
                 var s = function() {
@@ -5690,8 +5690,8 @@ var thelegendmodproject = function(t, e, i) {
                     var n = this.indexedCells[t.readUInt32LE(i)],
                         r = this.indexedCells[t.readUInt32LE(i + 4)];
                     if (i += 8, n && r){ 
-					r['targetX'] = n['x']; 
-					r['targetY'] = n['y']; 
+					r.targetX = n['x']; 
+					r.targetY = n['y']; 
 					r['targetSize'] = r['size'];
 					r.time = this.time;
 					r['removeCell']();
@@ -5757,7 +5757,7 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots'])).time = this.time, ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs'].indexOf(l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this.playerColor = m, this['playerCells'].push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts.targetNick = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots'])).time = this.time, ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this.playerCellIDs.indexOf(l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this.playerColor = m, this['playerCells'].push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this.playerNick), y && (ogariocellssetts.targetNick = y), ogariocellssetts.targetX = h, ogariocellssetts.targetY = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -5785,8 +5785,8 @@ var thelegendmodproject = function(t, e, i) {
 					i += n['x'] / o; 
 					s += n['y'] / o;
                 }
-                this['viewX'] = i; 
-				this['viewY'] = s; 
+                this.viewX = i; 
+				this.viewY = s; 
 				this['playerSize'] = t; 
 				this['playerMass'] = ~~(e / 100);
 				this['recalculatePlayerMass']();
@@ -5862,8 +5862,8 @@ var thelegendmodproject = function(t, e, i) {
                 return t ? ogarcopythelb.color : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
             },
             'getCursorPosition': function() {
-                this['cursorX'] = (this['clientX'] - this['canvasWidth'] / 2) / this['viewScale'] + this['viewX']; 
-				this['cursorY'] = (this['clientY'] - this['canvasHeight'] / 2) / this['viewScale'] + this['viewY'];
+                this['cursorX'] = (this['clientX'] - this['canvasWidth'] / 2) / this['viewScale'] + this.viewX; 
+				this['cursorY'] = (this['clientY'] - this['canvasHeight'] / 2) / this['viewScale'] + this.viewY;
             },
             'setZoom': function(t) {
                 //t.preventDefault(), this['zoomValue'] *= Math.pow(v['zoomSpeedValue2'], t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
@@ -5873,14 +5873,14 @@ var thelegendmodproject = function(t, e, i) {
 				}
             },
             'setTargetPosition': function(t, e) {
-                this['targetX'] = t - this.mapOffsetX;
-				this['targetY'] = e - this.mapOffsetY;
-				this['targetDistance'] = Math.round(Math.sqrt(Math.pow(this.playerX - this['targetX'], 2) + Math.pow(this.playerY - this['targetY'], 2)));
+                this.targetX = t - this.mapOffsetX;
+				this.targetY = e - this.mapOffsetY;
+				this['targetDistance'] = Math.round(Math.sqrt(Math.pow(this.playerX - this.targetX, 2) + Math.pow(this.playerY - this.targetY, 2)));
 				window.targetDistance=this['targetDistance'];
             },
             'resetTargetPosition': function() {
-                this['targetX'] = this.playerX;
-				this['targetY'] = this.playerY;
+                this.targetX = this.playerX;
+				this.targetY = this.playerY;
             },
             'setKeys': function() {
                 var t = this;
@@ -5963,10 +5963,10 @@ var thelegendmodproject = function(t, e, i) {
                         (M['calculatePlayerMassAndPosition'](),
                             //					this.camX += (M.viewX - this.camX) / 2,
                             //					this.camY += (M.viewY - this.camY) / 2) :
-                            this.camX = (this.camX + M['viewX']) / 2,
-                            this.camY = (this.camY + M['viewY']) / 2) :
-                        (this.camX = (29 * this.camX + M['viewX']) / 30,
-                            this.camY = (29 * this.camY + M['viewY']) / 30),
+                            this.camX = (this.camX + M.viewX) / 2,
+                            this.camY = (this.camY + M.viewY) / 2) :
+                        (this.camX = (29 * this.camX + M.viewX) / 30,
+                            this.camY = (29 * this.camY + M.viewY) / 30),
                         M.playerX = this.camX, M.playerY = this['camY'];
                 },
                 'setScale': function() {
@@ -5990,7 +5990,7 @@ var thelegendmodproject = function(t, e, i) {
                     v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this.scale, M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], true);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
-                    this['ctx']['restore'](), ':teams' === M.gameMode && this['pieChart'] && this['pieChart']['width'] && this['ctx'].drawImage(this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
+                    this['ctx']['restore'](), ':teams' === M.gameMode && this.pieChart && this.pieChart['width'] && this['ctx'].drawImage(this.pieChart, this['canvasWidth'] - this.pieChart['width'] - 10, 10);
                 }, */
         'renderFrame': function () {
             //this.ctx.start2D();
@@ -6371,12 +6371,12 @@ var thelegendmodproject = function(t, e, i) {
 					}
                 },
                 'drawPieChart': function() {
-                    this['pieChart'] || (this['pieChart'] = document.createElement('canvas'));
-                    var t = this['pieChart'].getContext('2d'),
+                    this.pieChart || (this.pieChart = document.createElement('canvas'));
+                    var t = this.pieChart.getContext('2d'),
                         e = Math['min'](200, 0.3 * this['canvasWidth']) / 200;
-                    this['pieChart']['width'] = 200 * e, this['pieChart']['height'] = 240 * e, t.scale(e, e);
-                    for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < M['pieChart'].length; o++) {
-                        var a = s + M['pieChart'][o] * this.pi2;
+                    this.pieChart['width'] = 200 * e, this.pieChart['height'] = 240 * e, t.scale(e, e);
+                    for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < M.pieChart.length; o++) {
+                        var a = s + M.pieChart[o] * this.pi2;
                         t.fillStyle = i[o + 1], t.beginPath(), t.moveTo(100, 140), t.arc(100, 140, 80, s, a, false), t.fill(), s = a;
                     }
                 },
@@ -7416,14 +7416,14 @@ var thelegendmodproject = function(t, e, i) {
         }
 
         function ogarhusettings() {
-            var t = window["innerWidth"];
-            var o = window["innerHeight"];
+            var t = window.innerWidth;
+            var o = window.innerHeight;
             var a = $("#helloContainer");
-            var n = a["innerHeight"]();
+            var n = a.innerHeight();
             if (n > 0) {
-                i["menuHeight"] = n;
+                i.menuHeight= n;
             } else {
-                n = i["menuHeight"] || 618;
+                n = i.menuHeight|| 618;
             }
             var r = Math.min(1, o / n);
             var l = n * r;
@@ -7459,20 +7459,20 @@ var thelegendmodproject = function(t, e, i) {
             }
         } 
 		window['onmousedown'] = function(t) {
-            if (!$("#overlays")["is"](":visible")) {
-                if (2 == t["which"]) {
+            if (!$("#overlays").is(":visible")) {
+                if (2 == t.which) {
                     t["preventDefault"]();
                     if (ogarminimapdrawer) {
                         ogarminimapdrawer["sendCommand"](10);
                     }
                 } else {
-                    if (v["mouseSplit"] && (1 == t["which"] && !v["mouseInvert"] || 3 == t["which"] && v["mouseInvert"])) {
+                    if (v["mouseSplit"] && (1 == t.which && !v["mouseInvert"] || 3 == t.which && v["mouseInvert"])) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer.split();
                         }
                     }
-                    if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"])) {
+                    if (v["mouseFeed"] && (3 == t.which && !v["mouseInvert"] || 1 == t.which && v["mouseInvert"])) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer["macroFeed"](true);
@@ -7481,12 +7481,12 @@ var thelegendmodproject = function(t, e, i) {
                 }
             }
         }
-		window['onmouseup'] = function(t) {
-            if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"]) && ogarminimapdrawer) {
+		window.onmouseup= function(t) {
+            if (v["mouseFeed"] && (3 == t.which && !v["mouseInvert"] || 1 == t.which && v["mouseInvert"]) && ogarminimapdrawer) {
                 ogarminimapdrawer["macroFeed"](false);
             }
         };
-		window['onbeforeunload'] = function(t) {
+		window.onbeforeunload = function(t) {
             return i.play ? h.exit : void 0;
         }; 
 		i = M; 
