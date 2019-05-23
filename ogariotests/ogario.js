@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.517 MEGA TEST
+// v1.518 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5132,7 +5132,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendNick': function(t) {
 				
-                this['playerNick'] = t, t = e['unescape'](e['encodeURIComponent'](t));
+                this['playerNick'] = t, t = window['unescape'](window['encodeURIComponent'](t));
 				window.Bufferdata = t; //
                 var i = this.createView(1 + t.length);
                 i.setUint8(0, 0);
