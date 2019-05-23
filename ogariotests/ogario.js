@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.526 MEGA TEST
+// v1.524 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -6439,7 +6439,7 @@ var thelegendmodproject = function(t, e, i) {
             ogario1Hotkeys = {},
             ogario11Hotkeys = {
                 'hk-feed': {
-                    'label': h.hk-feed,
+                    'label': h['hk-feed'],
                     'defaultKey': 'W',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.feed();
@@ -6448,18 +6448,18 @@ var thelegendmodproject = function(t, e, i) {
                     'type': 'normal'
                 },
                 'hk-macroFeed': {
-                    'label': h.hk-macroFeed,
+                    'label': h['hk-macroFeed'],
                     'defaultKey': 'E',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.macroFeed(!0);
+                        ogarminimapdrawer && ogarminimapdrawer['macroFeed'](!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.macroFeed(!1);
+                        ogarminimapdrawer && ogarminimapdrawer['macroFeed'](!1);
                     },
                     'type': 'normal'
                 },
                 'hk-split': {
-                    'label': h.hk-split,
+                    'label': h['hk-split'],
                     'defaultKey': 'SPACE',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.split();
@@ -6468,10 +6468,10 @@ var thelegendmodproject = function(t, e, i) {
                     'type': 'normal'
                 },
                 'hk-doubleSplit': {
-                    'label': h.hk-doubleSplit,
+                    'label': h['hk-doubleSplit'],
                     'defaultKey': 'Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.doubleSplit();
+                        ogarminimapdrawer && ogarminimapdrawer['doubleSplit']();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6480,362 +6480,362 @@ var thelegendmodproject = function(t, e, i) {
                     'label': 'Popsplit',
                     'defaultKey': 'ALT+Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.popSplit();
+                        ogarminimapdrawer && ogarminimapdrawer['popSplit']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-split16': {
-                    'label': h.hk-split16,
+                    'label': h['hk-split16'],
                     'defaultKey': 'SHIFT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.split16();
+                        ogarminimapdrawer && ogarminimapdrawer['split16']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-pause': {
-                    'label': h.hk-pause,
+                    'label': h['hk-pause'],
                     'defaultKey': 'R',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setPause();
+                        ogarminimapdrawer && ogarminimapdrawer['setPause']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showTop5': {
-                    'label': h.hk-showTop5,
+                    'label': h['hk-showTop5'],
                     'defaultKey': 'T',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTop5();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowTop5']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showTime': {
-                    'label': h.hk-showTime,
+                    'label': h['hk-showTime'],
                     'defaultKey': 'ALT+T',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTime();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowTime']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showSplitRange': {
-                    'label': h.hk-showSplitRange,
+                    'label': h['hk-showSplitRange'],
                     'defaultKey': 'U',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowSplitRange();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowSplitRange']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showSplitInd': {
-                    'label': h.hk-showSplitInd,
+                    'label': h['hk-showSplitInd'],
                     'defaultKey': 'I',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowSplitInd();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowSplitInd']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showTeammatesInd': {
-                    'label': h.hk-showTeammatesInd,
+                    'label': h['hk-showTeammatesInd'],
                     'defaultKey': 'ALT+I',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTeammatesInd();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowTeammatesInd']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showOppColors': {
-                    'label': h.hk-showOppColors,
+                    'label': h['hk-showOppColors'],
                     'defaultKey': 'O',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowOppColors();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowOppColors']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-toggleSkins': {
-                    'label': h.hk-toggleSkins,
+                    'label': h['hk-toggleSkins'],
                     'defaultKey': 'A',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleSkins();
+                        ogarminimapdrawer && ogarminimapdrawer['toggleSkins']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-transparentSkins': {
-                    'label': h.hk-transparentSkins,
+                    'label': h['hk-transparentSkins'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setTransparentSkins();
+                        ogarminimapdrawer && ogarminimapdrawer['setTransparentSkins']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showSkins': {
-                    'label': h.hk-showSkins,
+                    'label': h['hk-showSkins'],
                     'defaultKey': 'S',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowSkins();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowSkins']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showStats': {
-                    'label': h.hk-showStats,
+                    'label': h['hk-showStats'],
                     'defaultKey': 'ALT+S',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowStats();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowStats']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-toggleCells': {
-                    'label': h.hk-toggleCells,
+                    'label': h['hk-toggleCells'],
                     'defaultKey': 'D',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleCells();
+                        ogarminimapdrawer && ogarminimapdrawer['toggleCells']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showFood': {
-                    'label': h.hk-showFood,
+                    'label': h['hk-showFood'],
                     'defaultKey': 'F',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowFood();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowFood']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showGrid': {
-                    'label': h.hk-showGrid,
+                    'label': h['hk-showGrid'],
                     'defaultKey': 'G',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowGrid();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowGrid']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showMiniMapGuides': {
-                    'label': h.hk-showMiniMapGuides,
+                    'label': h['hk-showMiniMapGuides'],
                     'defaultKey': 'ALT+G',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowMiniMapGuides();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowMiniMapGuides']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-hideChat': {
-                    'label': h.hk-hideChat,
+                    'label': h['hk-hideChat'],
                     'defaultKey': 'H',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.hideChat();
+                        ogarminimapdrawer && ogarminimapdrawer['hideChat']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showHUD': {
-                    'label': h.hk-showHUD,
+                    'label': h['hk-showHUD'],
                     'defaultKey': 'ALT+H',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowHUD();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowHUD']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-copyLb': {
-                    'label': h.hk-copyLb,
+                    'label': h['hk-copyLb'],
                     'defaultKey': 'L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.copyLb();
+                        ogarminimapdrawer && ogarminimapdrawer['copyLb']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showLb': {
-                    'label': h.hk-showLb,
+                    'label': h['hk-showLb'],
                     'defaultKey': 'ALT+L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowLb();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowLb']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-toggleAutoZoom': {
-                    'label': h.hk-toggleAutoZoom,
+                    'label': h['hk-toggleAutoZoom'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleAutoZoom();
+                        ogarminimapdrawer && ogarminimapdrawer['toggleAutoZoom']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-resetZoom': {
-                    'label': h.hk-resetZoom,
+                    'label': h['hk-resetZoom'],
                     'defaultKey': 'Z',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.resetZoom(!0);
+                        ogarminimapdrawer && ogarminimapdrawer['resetZoom'](!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.resetZoom(!1);
+                        ogarminimapdrawer && ogarminimapdrawer['resetZoom'](!1);
                     },
                     'type': 'normal'
                 },
                 'hk-toggleDeath': {
-                    'label': h.hk-toggleDeath,
+                    'label': h['hk-toggleDeath'],
                     'defaultKey': 'X',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleDeath();
+                        ogarminimapdrawer && ogarminimapdrawer['toggleDeath']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-clearChat': {
-                    'label': h.hk-clearChat,
+                    'label': h['hk-clearChat'],
                     'defaultKey': 'C',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.displayChatHistory(!0);
+                        ogarminimapdrawer && ogarminimapdrawer['displayChatHistory'](!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.displayChatHistory(!1);
+                        ogarminimapdrawer && ogarminimapdrawer['displayChatHistory'](!1);
                     },
                     'type': 'normal'
                 },
                 'hk-showBgSectors': {
-                    'label': h.hk-showBgSectors,
+                    'label': h['hk-showBgSectors'],
                     'defaultKey': 'B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowBgSectors();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowBgSectors']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-hideBots': {
-                    'label': h.hk-hideBots,
+                    'label': h['hk-hideBots'],
                     'defaultKey': 'ALT+B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setHideSmallBots();
+                        ogarminimapdrawer && ogarminimapdrawer['setHideSmallBots']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showNames': {
-                    'label': h.hk-showNames,
+                    'label': h['hk-showNames'],
                     'defaultKey': 'N',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowNames();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowNames']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-hideTeammatesNames': {
-                    'label': h.hk-hideTeammatesNames,
+                    'label': h['hk-hideTeammatesNames'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setHideTeammatesNames();
+                        ogarminimapdrawer && ogarminimapdrawer['setHideTeammatesNames']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showMass': {
-                    'label': h.hk-showMass,
+                    'label': h['hk-showMass'],
                     'defaultKey': 'M',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowMass();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowMass']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showMiniMap': {
-                    'label': h.hk-showMiniMap,
+                    'label': h['hk-showMiniMap'],
                     'defaultKey': 'ALT+M',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowMiniMap();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowMiniMap']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-chatMessage': {
-                    'label': h.hk-chatMessage,
+                    'label': h['hk-chatMessage'],
                     'defaultKey': 'ENTER',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.enterChatMessage();
+                        ogarminimapdrawer && ogarminimapdrawer['enterChatMessage']();
                     },
                     'keyUp': null,
                     'type': 'special'
                 },
                 'hk-quickResp': {
-                    'label': h.hk-quickResp,
+                    'label': h['hk-quickResp'],
                     'defaultKey': 'TILDE',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.quickResp();
+                        ogarminimapdrawer && ogarminimapdrawer['quickResp']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-autoResp': {
-                    'label': h.hk-autoResp,
+                    'label': h['hk-autoResp'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleAutoResp();
+                        ogarminimapdrawer && ogarminimapdrawer['toggleAutoResp']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-zoom1': {
-                    'label': h.hk-zoomLevel + ' 1',
+                    'label': h['hk-zoomLevel'] + ' 1',
                     'defaultKey': 'ALT+1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.5);
+                        ogarminimapdrawer && ogarminimapdrawer['setZoom'](0.5);
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-zoom2': {
-                    'label': h.hk-zoomLevel + ' 2',
+                    'label': h['hk-zoomLevel'] + ' 2',
                     'defaultKey': 'ALT+2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.25);
+                        ogarminimapdrawer && ogarminimapdrawer['setZoom'](0.25);
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-zoom3': {
-                    'label': h.hk-zoomLevel + ' 3',
+                    'label': h['hk-zoomLevel'] + ' 3',
                     'defaultKey': 'ALT+3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.125);
+                        ogarminimapdrawer && ogarminimapdrawer['setZoom'](0.125);
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-zoom4': {
-                    'label': h.hk-zoomLevel + ' 4',
+                    'label': h['hk-zoomLevel'] + ' 4',
                     'defaultKey': 'ALT+4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.075);
+                        ogarminimapdrawer && ogarminimapdrawer['setZoom'](0.075);
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-zoom5': {
-                    'label': h.hk-zoomLevel + ' 5',
+                    'label': h['hk-zoomLevel'] + ' 5',
                     'defaultKey': 'ALT+5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.05);
+                        ogarminimapdrawer && ogarminimapdrawer['setZoom'](0.05);
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-voiceChat': {
-                    'label': h.hk-voiceChat,
+                    'label': h['hk-voiceChat'],
                     'defaultKey': '=',
                     'keyDown': function() {
-                        //ogarminimapdrawer && ogarminimapdrawer.enterChatMessage();
+                        //ogarminimapdrawer && ogarminimapdrawer['enterChatMessage']();
                         //if ($('#message-box').css('display') == 'block') {
                         $(".voice-start.icon-mic").click();
                         //}
@@ -6844,343 +6844,343 @@ var thelegendmodproject = function(t, e, i) {
                     'type': 'special'
                 },
                 'hk-switchServerMode': {
-                    'label': h.hk-switchServerMode,
+                    'label': h['hk-switchServerMode'],
                     'defaultKey': '=',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.switchServerMode();
+                        ogarminimapdrawer && ogarminimapdrawer['switchServerMode']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showTargeting': {
-                    'label': h.hk-showTargeting,
+                    'label': h['hk-showTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTargeting();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowTargeting']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-setTargeting': {
-                    'label': h.hk-setTargeting,
+                    'label': h['hk-setTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setTargeting();
+                        ogarminimapdrawer && ogarminimapdrawer['setTargeting']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-cancelTargeting': {
-                    'label': h.hk-cancelTargeting,
+                    'label': h['hk-cancelTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.cancelTargeting();
+                        ogarminimapdrawer && ogarminimapdrawer['cancelTargeting']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-changeTarget': {
-                    'label': h.hk-changeTarget,
+                    'label': h['hk-changeTarget'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.changeTarget();
+                        ogarminimapdrawer && ogarminimapdrawer['changeTarget']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-privateMiniMap': {
-                    'label': h.hk-privateMiniMap,
+                    'label': h['hk-privateMiniMap'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setPrivateMiniMap();
+                        ogarminimapdrawer && ogarminimapdrawer['setPrivateMiniMap']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-showQuest': {
-                    'label': h.hk-showQuest,
+                    'label': h['hk-showQuest'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowQuest();
+                        ogarminimapdrawer && ogarminimapdrawer['setShowQuest']();
                     },
                     'keyUp': null,
                     'type': 'normal'
                 },
                 'hk-comm1': {
-                    'label': c.comm1,
+                    'label': c['comm1'],
                     'defaultKey': '1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(1);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](1);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm2': {
-                    'label': c.comm2,
+                    'label': c['comm2'],
                     'defaultKey': '2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(2);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](2);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm3': {
-                    'label': c.comm3,
+                    'label': c['comm3'],
                     'defaultKey': '3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(3);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](3);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm4': {
-                    'label': c.comm4,
+                    'label': c['comm4'],
                     'defaultKey': '4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(4);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](4);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm5': {
-                    'label': c.comm5,
+                    'label': c['comm5'],
                     'defaultKey': '5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(5);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](5);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm6': {
-                    'label': c.comm6,
+                    'label': c['comm6'],
                     'defaultKey': '6',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(6);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](6);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm7': {
-                    'label': c.comm7,
+                    'label': c['comm7'],
                     'defaultKey': '7',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(7);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](7);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm8': {
-                    'label': c.comm8,
+                    'label': c['comm8'],
                     'defaultKey': '8',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(8);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](8);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm9': {
-                    'label': c.comm9,
+                    'label': c['comm9'],
                     'defaultKey': '9',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(9);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](9);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm0': {
-                    'label': c.comm0,
+                    'label': c['comm0'],
                     'defaultKey': '0',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(0);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](0);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm10': {
-                    'label': c.comm10,
+                    'label': c['comm10'],
                     'defaultKey': 'MOUSE WHEEL',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(10);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](10);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm11': {
-                    'label': c.comm11,
+                    'label': c['comm11'],
                     'defaultKey': 'LEFT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(11);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](11);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm12': {
-                    'label': c.comm12,
+                    'label': c['comm12'],
                     'defaultKey': 'UP',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(12);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](12);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm13': {
-                    'label': c.comm13,
+                    'label': c['comm13'],
                     'defaultKey': 'RIGHT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(13);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](13);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm14': {
-                    'label': c.comm14,
+                    'label': c['comm14'],
                     'defaultKey': 'DOWN',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(14);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](14);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm15': {
-                    'label': c.comm15,
+                    'label': c['comm15'],
                     'defaultKey': 'CTRL+1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(15);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](15);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm16': {
-                    'label': c.comm16,
+                    'label': c['comm16'],
                     'defaultKey': 'CTRL+2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(16);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](16);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm17': {
-                    'label': c.comm17,
+                    'label': c['comm17'],
                     'defaultKey': 'CTRL+3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(17);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](17);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm18': {
-                    'label': c.comm18,
+                    'label': c['comm18'],
                     'defaultKey': 'CTRL+4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(18);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](18);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm19': {
-                    'label': c.comm19,
+                    'label': c['comm19'],
                     'defaultKey': 'CTRL+5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(19);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](19);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm20': {
-                    'label': c.comm20,
+                    'label': c['comm20'],
                     'defaultKey': 'CTRL+7',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(20);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](20);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm21': {
-                    'label': c.comm21,
+                    'label': c['comm21'],
                     'defaultKey': 'CTRL+8',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(21);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](21);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm22': {
-                    'label': c.comm22,
+                    'label': c['comm22'],
                     'defaultKey': 'CTRL+9',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(22);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](22);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm23': {
-                    'label': c.comm23,
+                    'label': c['comm23'],
                     'defaultKey': 'CTRL+0',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(23);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](23);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm24': {
-                    'label': c.comm24,
+                    'label': c['comm24'],
                     'defaultKey': 'CTRL+Z',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(24);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](24);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm25': {
-                    'label': c.comm25,
+                    'label': c['comm25'],
                     'defaultKey': 'CTRL+X',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(25);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](25);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm26': {
-                    'label': c.comm26,
+                    'label': c['comm26'],
                     'defaultKey': 'CTRL+Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(26);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](26);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm27': {
-                    'label': c.comm27,
+                    'label': c['comm27'],
                     'defaultKey': 'CTRL+V',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(27);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](27);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm28': {
-                    'label': c.comm28,
+                    'label': c['comm28'],
                     'defaultKey': 'CTRL+B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(28);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](28);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm29': {
-                    'label': c.comm29,
+                    'label': c['comm29'],
                     'defaultKey': 'CTRL+A',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(29);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](29);
                     },
                     'keyUp': null,
                     'type': 'command'
                 },
                 'hk-comm30': {
-                    'label': c.comm30,
+                    'label': c['comm30'],
                     'defaultKey': 'CTRL+D',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(30);
+                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](30);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7192,31 +7192,31 @@ var thelegendmodproject = function(t, e, i) {
                 'defaultMessageKey': 'ENTER',
                 'inputClassName': 'custom-key-in form-control input-sm',
                 'loadDefaultHotkeys': function() {
-                    for (var t in ogario1Hotkeys = {}, ogario11Hotkeys) ogario11Hotkeys.hasOwnProperty(t) && (ogario1Hotkeys[ogario11Hotkeys[t].defaultKey] = t);
-                    ogario1Hotkeys["spec-messageKey"] = this.defaultMessageKey;
+                    for (var t in ogario1Hotkeys = {}, ogario11Hotkeys) ogario11Hotkeys.hasOwnProperty(t) && (ogario1Hotkeys[ogario11Hotkeys[t]['defaultKey']] = t);
+                    ogario1Hotkeys['spec-messageKey'] = this['defaultMessageKey'];
                 },
                 'loadHotkeys': function() {
-                    null !== window.localStorage.getItem('ogarioHotkeys') ? ogario1Hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys')) : this.loadDefaultHotkeys(), null !== window.localStorage.getItem('ogarioCommands') && (c = JSON.parse(window.localStorage.getItem('ogarioCommands')));
+                    null !== window.localStorage.getItem('ogarioHotkeys') ? ogario1Hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys')) : this['loadDefaultHotkeys'](), null !== window.localStorage.getItem('ogarioCommands') && (c = JSON.parse(window.localStorage.getItem('ogarioCommands')));
                 },
                 'saveHotkeys': function() {
-                    window.localStorage.setItem('ogarioHotkeys', JSON.stringify(ogario1Hotkeys)), this.saveCommands();
+                    window.localStorage.setItem('ogarioHotkeys', JSON.stringify(ogario1Hotkeys)), this['saveCommands']();
                 },
                 'saveCommands': function() {
-                    $('#hotkeys .command-in').each(function() {
+                    $('#hotkeys .command-in')['each'](function() {
                         var t = $(this),
-                            e = t.attr('id');
+                            e = t['attr']('id');
                         c.hasOwnProperty(e) && (c[e] = t.val());
-                    }), window.localStorage.setItem('ogarioCommands', JSON.stringify(c));
+                    }), window.localStorage['setItem']('ogarioCommands', JSON['stringify'](c));
                 },
                 'resetHotkeys': function() {
-                    this.loadDefaultHotkeys(), $('#hotkeys-cfg .custom-key-in').each(function() {
-                        var t = $(this).attr('id');
-                        ogario11Hotkeys[t] && $(this).val(ogario11Hotkeys[t].defaultKey);
+                    this['loadDefaultHotkeys'](), $('#hotkeys-cfg .custom-key-in')['each'](function() {
+                        var t = $(this)['attr']('id');
+                        ogario11Hotkeys[t] && $(this).val(ogario11Hotkeys[t]['defaultKey']);
                     });
                 },
                 'setHotkeysMenu': function() {
                     var t = this;
-                    for (var e in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + h.restoreSettings + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + h.saveSett + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + h.close + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + h.hk-inst-assign + '</li><li>' + h.hk-inst-delete + '</li><li>' + h.hk-inst-keys + '</li></ul></div></div>'), ogario11Hotkeys)
+                    for (var e in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + h['restoreSettings'] + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + h['saveSett'] + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + h['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + h['hk-inst-assign'] + '</li><li>' + h['hk-inst-delete'] + '</li><li>' + h['hk-inst-keys'] + '</li></ul></div></div>'), ogario11Hotkeys)
                         if (ogario11Hotkeys.hasOwnProperty(e)) {
                             var i = ogario11Hotkeys[e],
                                 o = '';
@@ -7224,37 +7224,37 @@ var thelegendmodproject = function(t, e, i) {
                                 if (ogario1Hotkeys.hasOwnProperty(a) && ogario1Hotkeys[a] === e) {
                                     o = a;
                                     break;
-                                } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer.privateIP) continue;
-                            if ('command' === i.type) {
+                                } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer['privateIP']) continue;
+                            if ('command' === i['type']) {
                                 var n = e.replace('hk-', '');
-                                $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i.defaultKey + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
-                            } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i.label + '</div><div class=\"default-key\">' + i.defaultKey + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
+                                $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
+                            } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i['label'] + '</div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                         } 
 					$(document).on('click', '#reset-hotkeys', function(t) {
                         t.preventDefault();
-						t.resetHotkeys();
+						t['resetHotkeys']();
                     }), 
 					$(document).on('click', '#save-hotkeys', function(t) {
                         t.preventDefault(); 
-						t.saveHotkeys();
-						$('#hotkeys').fadeOut(500);
+						t['saveHotkeys']();
+						$('#hotkeys')['fadeOut'](500);
                     }), 
 					$(document).on('click', '#close-hotkeys', function(t) {
                         t.preventDefault(); 
-						$('#hotkeys').fadeOut(500);
+						$('#hotkeys')['fadeOut'](500);
                     }), 
 					$(document).on('click', '.hotkeys-link', function(t) {
-                        $('#hotkeys').fadeIn(500);
-						$('#hotkeys-cfg').perfectScrollbar('update'); 
+                        $('#hotkeys')['fadeIn'](500);
+						$('#hotkeys-cfg')['perfectScrollbar']('update'); 
 						ogarcommando1();
                     }), 
-					$('#hotkeys-cfg').perfectScrollbar(), 
-					y && y.setMenuBg();
+					$('#hotkeys-cfg')['perfectScrollbar'](), 
+					y && y['setMenuBg']();
                 },
                 'getPressedKey': function(t) {
                     var e = '',
                         i = '';
-                    switch (t.ctrlKey || 17 == t.keyCode ? e = 'CTRL' : (t.altKey || 18 == t.keyCode) && (e = 'ALT'), t.keyCode) {
+                    switch (t['ctrlKey'] || 17 == t.keyCode ? e = 'CTRL' : (t['altKey'] || 18 == t.keyCode) && (e = 'ALT'), t.keyCode) {
                         case 9:
                             i = 'TAB';
                             break;
@@ -7296,7 +7296,7 @@ var thelegendmodproject = function(t, e, i) {
                             i = 'TILDE';
                             break;
                         default:
-                            i = String.fromCharCode(t.keyCode);
+                            i = String['fromCharCode'](t.keyCode);
                     }
                     return '' !== e ? '' !== i ? e + '+' + i : e : i;
                 },
@@ -7306,23 +7306,23 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setDefaultHotkey': function(t) {
                     var e = false;
-                    return ogario11Hotkeys[t] && !ogario1Hotkeys.hasOwnProperty(ogario11Hotkeys[t].defaultKey) ? (e = ogario11Hotkeys[t].defaultKey, ogario1Hotkeys[e] = t, e) : e;
+                    return ogario11Hotkeys[t] && !ogario1Hotkeys.hasOwnProperty(ogario11Hotkeys[t]['defaultKey']) ? (e = ogario11Hotkeys[t]['defaultKey'], ogario1Hotkeys[e] = t, e) : e;
                 },
                 'setHotkey': function(t, e) {
-                    if (e && (this.lastPressedKey !== t || this.lastKeyId !== e)) {
+                    if (e && (this['lastPressedKey'] !== t || this['lastKeyId'] !== e)) {
                         var i = $('#' + e).val();
-                        if (this.deleteHotkey(i, e), 'DEL' !== t) {
+                        if (this['deleteHotkey'](i, e), 'DEL' !== t) {
                             if (ogario1Hotkeys[t] && ogario1Hotkeys[t] !== e) {
                                 var o = ogario1Hotkeys[t],
-                                    a = this.setDefaultHotkey(o);
-                                a ? (ogario1Hotkeys[a] = o, $('#' + o).val(a)) : this.deleteHotkey(t, o);
+                                    a = this['setDefaultHotkey'](o);
+                                a ? (ogario1Hotkeys[a] = o, $('#' + o).val(a)) : this['deleteHotkey'](t, o);
                             }
                             ogario1Hotkeys[t] = e, 
 							$('#' + e).val(t); 
 							if ('hk-chatMessage' === e){ 
-							ogario1Hotkeys["spec-messageKey"] = t} 
-							this.lastPressedKey = t; 
-							this.lastKeyId = e;
+							ogario1Hotkeys['spec-messageKey'] = t} 
+							this['lastPressedKey'] = t; 
+							this['lastKeyId'] = e;
                         }
                     }
                 },
@@ -7345,77 +7345,77 @@ var thelegendmodproject = function(t, e, i) {
         }
 
         function ogarhusettings() {
-            var t = window.innerWidth;
-            var o = window.innerHeight;
+            var t = window["innerWidth"];
+            var o = window["innerHeight"];
             var a = $("#helloContainer");
-            var n = a.innerHeight();
+            var n = a["innerHeight"]();
             if (n > 0) {
-                i.menuHeight = n;
+                i["menuHeight"] = n;
             } else {
-                n = i.menuHeight || 618;
+                n = i["menuHeight"] || 618;
             }
             var r = Math.min(1, o / n);
             var l = n * r;
             var h = Math.round(o / 2 - 0.5 * l);
             var c = "translate(-50%, 0%) scale(" + r + ")";
-            a.css("transform", c), a.css("-ms-transform", c), a.css("-webkit-transform", c), a.css("top", h + "px"), i.innerW = t, i.innerH = o;
+            a.css("transform", c), a.css("-ms-transform", c), a.css("-webkit-transform", c), a.css("top", h + "px"), i["innerW"] = t, i["innerH"] = o;
 
         }
 
         function ogarcommando1() {
-            ogarminimapdrawer.protocolMode || (window.onkeydown = function(t) {});
+            ogarminimapdrawer['protocolMode'] || (window.onkeydown = function(t) {});
         }
         document.onkeydown = function(t) {
-            var e = lastkeys.getPressedKey(t);
-            if (('INPUT' !== t.target.tagName || t.target.className === lastkeys.inputClassName || e === ogario1Hotkeys["spec-messageKey"]) && '' !== e && !ogarioefaultHotkeys[e]) {
-                if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
-                if (t.target.className === lastkeys.inputClassName) return t.preventDefault(), void lastkeys.setHotkey(e, t.target.id);
+            var e = lastkeys['getPressedKey'](t);
+            if (('INPUT' !== t['target']['tagName'] || t['target']['className'] === lastkeys['inputClassName'] || e === ogario1Hotkeys['spec-messageKey']) && '' !== e && !ogarioefaultHotkeys[e]) {
+                if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer['showMenu']());
+                if (t['target']['className'] === lastkeys['inputClassName']) return t.preventDefault(), void lastkeys['setHotkey'](e, t['target']['id']);
                 if (ogario1Hotkeys[e]) {
                     t.preventDefault();
                     var i = ogario1Hotkeys[e];
-                    '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i].keyDown && ogario11Hotkeys[i].keyDown();
+                    '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i]['keyDown'] && ogario11Hotkeys[i]['keyDown']();
                 }
             }
         }
 		document.onkeyup = function(t) {
-            var e = lastkeys.getPressedKey(t);
+            var e = lastkeys['getPressedKey'](t);
             if ('' !== e) {
                 if (ogario1Hotkeys[e]) {
                     var i = ogario1Hotkeys[e];
-                    '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i].keyUp && ogario11Hotkeys[i].keyUp();
+                    '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i]['keyUp'] && ogario11Hotkeys[i]['keyUp']();
                 }
                 ogarioefaultHotkeys[e] = false;
             }
         } 
-		window.onmousedown = function(t) {
-            if (!$("#overlays").is(":visible")) {
-                if (2 == t.which) {
-                    t.preventDefault();
+		window['onmousedown'] = function(t) {
+            if (!$("#overlays")["is"](":visible")) {
+                if (2 == t["which"]) {
+                    t["preventDefault"]();
                     if (ogarminimapdrawer) {
-                        ogarminimapdrawer.sendCommand(10);
+                        ogarminimapdrawer["sendCommand"](10);
                     }
                 } else {
-                    if (v.mouseSplit && (1 == t.which && !v.mouseInvert || 3 == t.which && v.mouseInvert)) {
+                    if (v["mouseSplit"] && (1 == t["which"] && !v["mouseInvert"] || 3 == t["which"] && v["mouseInvert"])) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer.split();
                         }
                     }
-                    if (v.mouseFeed && (3 == t.which && !v.mouseInvert || 1 == t.which && v.mouseInvert)) {
+                    if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"])) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
-                            ogarminimapdrawer.macroFeed(true);
+                            ogarminimapdrawer["macroFeed"](true);
                         }
                     }
                 }
             }
         }
-		window.onmouseup = function(t) {
-            if (v.mouseFeed && (3 == t.which && !v.mouseInvert || 1 == t.which && v.mouseInvert) && ogarminimapdrawer) {
-                ogarminimapdrawer.macroFeed(false);
+		window['onmouseup'] = function(t) {
+            if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"]) && ogarminimapdrawer) {
+                ogarminimapdrawer["macroFeed"](false);
             }
         };
-		window.onbeforeunload = function(t) {
+		window['onbeforeunload'] = function(t) {
             return i.play ? h.exit : void 0;
         }; 
 		i = M; 
