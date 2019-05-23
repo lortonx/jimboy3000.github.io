@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.542 MEGA TEST
+// v1.543 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2086,10 +2086,10 @@ var thelegendmodproject = function(t, e, i) {
 			'virusSoundurl': null,
             'feedInterval': null,
             'getPlayerX': function() {
-                return i['playerX'] + i['mapOffsetX'];
+                return i['playerX'] + i.mapOffsetX;
             },
             'getPlayerY': function() {
-                return i['playerY'] + i['mapOffsetY'];
+                return i['playerY'] + i.mapOffsetY;
             },
             'feed': function() {
                 if (window.core && window.core.eject){ 
@@ -3321,7 +3321,7 @@ var thelegendmodproject = function(t, e, i) {
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
                 if (0 != this["cacheQueue"].length) {
-                    var e = this["cacheQueue"].shift();
+                    var e = this["cacheQueue"]["shift"]();
                     if (e) {
                         var i = document["createElement"]("canvas");
                         i["width"] = 512;
@@ -3364,8 +3364,8 @@ var thelegendmodproject = function(t, e, i) {
             },	
             'calculateMapSector': function(t, e, s = false) {
                 if (!i['mapOffsetFixed']) return '';
-                var o = s ? i['mapOffsetX'] + i['mapOffset'] : i['mapOffset'],
-                    a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
+                var o = s ? i.mapOffsetX+ i.mapOffset : i.mapOffset,
+                    a = s ? i.mapOffsetY + i.mapOffset : i.mapOffset,
                     n = Math.floor((e + a) / (i['mapSize'] / g['sectorsY'])),
                     r = Math.floor((t + o) / (i['mapSize'] / g['sectorsX']));
 					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String.fromCharCode(n + 65) + (r + 1);
@@ -3381,7 +3381,7 @@ var thelegendmodproject = function(t, e, i) {
                         "y": e + i["mapOffsetY"]
                     });
                     if (6 == this["deathLocations"].length) {
-                        this["deathLocations"].shift();
+                        this["deathLocations"]["shift"]();
                     }
                     this["lastDeath"] = this["deathLocations"].length - 1;
                 }
@@ -3482,7 +3482,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (this["deathLocations"].length > 0) {
                         u = Math.round((this["deathLocations"][this["lastDeath"]]["x"] + i["mapOffset"]) * n);
                         d = Math.round((this["deathLocations"][this["lastDeath"]]["y"] + i["mapOffset"]) * n);
-                        var f = Math.max(g["miniMapMyCellSize"] - 2, 4);
+                        var f = Math["max"](g["miniMapMyCellSize"] - 2, 4);
                         this["miniMapCtx"].lineWidth = 1;
                         this["miniMapCtx"].strokeStyle = this["deathLocations"].length - 1 == this["lastDeath"] ? g["miniMapDeathLocationColor"] : "#FFFFFF";
                         this["miniMapCtx"].beginPath();
@@ -3586,7 +3586,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['chatUsers'] = {};
             },
             'getWS': function(t) {
-                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this.closeConnection());
+                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this['closeConnection']());
             },
             'recreateWS': function(t) {
                 if (!t) return null;
@@ -3623,15 +3623,15 @@ var thelegendmodproject = function(t, e, i) {
             },
             'connect': function() {
                 pauseVideos(), 
-				this.closeConnection();
+				this['closeConnection']();
 				this['flushData']() ; 
 				this.setParty(); 
 				console.log('[Legend mod Express] Connecting to server'), 
 				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), 
 				this.socket['ogarioWS'] = true, 
-				this.socket.binaryType = 'arraybuffer';
+				this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
-                this.socket.onopen = function() {
+                this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
                     var e = t.createView(3);
                     e.setUint8(0, 0);
@@ -3639,21 +3639,21 @@ var thelegendmodproject = function(t, e, i) {
 					t['sendBuffer'](e);
 					t.sendPartyData();
                 }
-				this.socket.onMessage = function(e) {
+				this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
                 }
-				this.socket.onClose = function(e) {
+				this.socket['onclose'] = function(e) {
                     t['flushData']();
 					console.log('[Legend mod Express] Socket close', e);
                 }
-				this.socket.onError = function(e) {
+				this.socket['onerror'] = function(e) {
                     t['flushData']();
 					console.log('[Legend mod Express] Socket error', e);
                 };
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket.onMessage = null;
+                    this.socket['onmessage'] = null;
                     try {
                         this.socket['close']();
                     } catch (ogarcloseconlabel) {}
@@ -5093,7 +5093,7 @@ var thelegendmodproject = function(t, e, i) {
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
-                this.closeConnection(); 
+                this['closeConnection'](); 
 				this.flushCellsData();
 				this.protocolKey = null; 
 				this.clientKey = null;
@@ -5103,25 +5103,25 @@ var thelegendmodproject = function(t, e, i) {
 				this['leaderboard'] = [];
 				this['ws'] = t;
 				this.socket = new WebSocket(t); 
-				this.socket.binaryType = 'arraybuffer'; 
-				this.socket.onopen = function() {
-                    i.onopen();
+				this.socket['binaryType'] = 'arraybuffer'; 
+				this.socket['onopen'] = function() {
+                    i['onOpen']();
                 };
-				this.socket.onMessage = function(t) {
-                    i.onMessage(t);
+				this.socket['onmessage'] = function(t) {
+                    i['onMessage'](t);
                 };
-				this.socket.onError = function(t) {
-                    i.onError(t);
+				this.socket['onerror'] = function(t) {
+                    i['onError'](t);
                 };
-				this.socket.onClose = function(t) {
-                    i.onClose(t);
+				this.socket['onclose'] = function(t) {
+                    i['onClose'](t);
                 };
 				ogarminimapdrawer['getWS'](this['ws']);
 				ogarminimapdrawer['sendServerJoin']();
 				ogarminimapdrawer['sendServerData']();
 				ogarminimapdrawer['displayLeaderboard']('');
-				if (window.master && window.master.onConnect) {
-					window.master.onConnect();
+				if (window.master && window.master['onConnect']) {
+					window.master['onConnect']();
 				}
             },
             'onOpen': function(t) {
@@ -5146,23 +5146,23 @@ var thelegendmodproject = function(t, e, i) {
             'onError': function(t) {
                 console.log('[Legend mod Express] Game server socket error'); 
 				this['flushCellsData']();
-				if (window.master && window.master.onDisconnect){
-					window.master.onDisconnect();
+				if (window.master && window.master['onDisconnect']){
+					window.master['onDisconnect']();
 				}
             },
             'onClose': function(t) {
                 console.log('[Legend mod Express] Game server socket close'); 
 				this['flushCellsData'](); 
-				if (window.master && window.master.onDisconnect){
-					window.master.onDisconnect();
+				if (window.master && window.master['onDisconnect']){
+					window.master['onDisconnect']();
 				}
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket.onopen = null; 
-					this.socket.onMessage = null;
-					this.socket.onError = null; 
-					this.socket.onClose = null;
+                    this.socket['onopen'] = null; 
+					this.socket['onmessage'] = null;
+					this.socket['onerror'] = null; 
+					this.socket['onclose'] = null;
                     try {
                         this.socket['close']();
                     } catch (ogarcloseconncloser) {}
@@ -5441,7 +5441,7 @@ var thelegendmodproject = function(t, e, i) {
                             s += 4;
                             var m = t.getUint32(s, true);
                             s += 5;
-                            var g = ~~Math['sqrt'](100 * m);
+                            var g = ~~Math.sqrt(100 * m);
                             this['ghostCells'].push({
                                 'x': d,
                                 'y': f,
@@ -5619,7 +5619,7 @@ var thelegendmodproject = function(t, e, i) {
 
             },
             'flushCellsData': function() {
-                this['indexedCells'] = {}, 
+                this.indexedCells = {}, 
 				this['cells'] = []; 
 				this['playerCells'] = []; 
 				this['playerCellIDs'] = []; 
@@ -5630,15 +5630,15 @@ var thelegendmodproject = function(t, e, i) {
             'setMapOffset': function(t, e, i, s) {
                 if (i - t > 14000 && s - e > 14000){
 				
-				this['mapOffsetX'] = this['mapOffset'] - i; 
-				this['mapOffsetY'] = this['mapOffset'] - s; 
-				this['mapMinX'] = ~~(-this['mapOffset'] - this['mapOffsetX']);
-				this['mapMinY'] = ~~(-this['mapOffset'] - this['mapOffsetY']);
-				this['mapMaxX'] = ~~(this['mapOffset'] - this['mapOffsetX']);
-				this['mapMaxY'] = ~~(this['mapOffset'] - this['mapOffsetY']);
+				this.mapOffsetX= this.mapOffset - i; 
+				this.mapOffsetY = this.mapOffset - s; 
+				this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
+				this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
+				this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
+				this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
 				this.mapOffsetFixed|| (this['viewX'] = (i + t) / 2, this['viewY'] = (s + e) / 2);
 				this.mapOffsetFixed= true;
-				console.log('[Legend mod Express] Map offset fixed (x, y):', this['mapOffsetX'], this['mapOffsetY']);
+				console.log('[Legend mod Express] Map offset fixed (x, y):', this.mapOffsetX, this.mapOffsetY);
 				}
 			},
             'isInView': function(t, e, i) {
@@ -5660,8 +5660,8 @@ var thelegendmodproject = function(t, e, i) {
                 var o = t.readUInt16LE(i);
                 i += 2;
                 for (var a = 0; a < o; a++) {
-                    var n = this['indexedCells'][t.readUInt32LE(i)],
-                        r = this['indexedCells'][t.readUInt32LE(i + 4)];
+                    var n = this.indexedCells[t.readUInt32LE(i)],
+                        r = this.indexedCells[t.readUInt32LE(i + 4)];
                     if (i += 8, n && r){ 
 					r['targetX'] = n['x']; 
 					r['targetY'] = n['y']; 
@@ -5730,11 +5730,11 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots'])).time = this.time, ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs'].indexOf(l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots'])).time = this.time, ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs'].indexOf(l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
-                    i += 4, (ogariocellssetts = this['indexedCells'][l]) && ogariocellssetts['removeCell']();
+                    i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts['removeCell']();
                 }
                 this['removePlayerCell'] && !this['playerCells'].length && (this.play = false, ogarminimapdrawer['onPlayerDeath'](), ogarminimapdrawer['showMenu'](300));
             },
@@ -5765,7 +5765,7 @@ var thelegendmodproject = function(t, e, i) {
 				this['recalculatePlayerMass']();
             },
             'recalculatePlayerMass': function() {
-                if (this['playerScore'] = Math['max'](this['playerScore'], this['playerMass']),
+                if (this['playerScore'] = Math.max(this['playerScore'], this['playerMass']),
 				v['virColors'] || v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) {
                     var t = this['playerCells'];
                     var e = t.length;
@@ -5839,16 +5839,16 @@ var thelegendmodproject = function(t, e, i) {
 				this['cursorY'] = (this['clientY'] - this['canvasHeight'] / 2) / this['viewScale'] + this['viewY'];
             },
             'setZoom': function(t) {
-                //t.preventDefault(), this['zoomValue'] *= Math['pow'](v['zoomSpeedValue2'], t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
-                this['zoomValue'] *= Math['pow'](v['zoomSpeedValue2']+1, t['wheelDelta'] / -120 || t['detail'] || 0);
+                //t.preventDefault(), this['zoomValue'] *= Math.pow(v['zoomSpeedValue2'], t['wheelDelta'] / -120 || t['detail'] || 0), this['zoomValue'] > 4 / this['viewScale'] && (this['zoomValue'] = 4 / this['viewScale']);
+                this['zoomValue'] *= Math.pow(v['zoomSpeedValue2']+1, t['wheelDelta'] / -120 || t['detail'] || 0);
 				if (this['zoomValue'] > 4 / this['viewScale']){
 				this['zoomValue'] = 4 / this['viewScale'];
 				}
             },
             'setTargetPosition': function(t, e) {
-                this['targetX'] = t - this['mapOffsetX'];
-				this['targetY'] = e - this['mapOffsetY'];
-				this['targetDistance'] = Math.round(Math['sqrt'](Math['pow'](this['playerX'] - this['targetX'], 2) + Math['pow'](this['playerY'] - this['targetY'], 2)));
+                this['targetX'] = t - this.mapOffsetX;
+				this['targetY'] = e - this.mapOffsetY;
+				this['targetDistance'] = Math.round(Math.sqrt(Math.pow(this['playerX'] - this['targetX'], 2) + Math.pow(this['playerY'] - this['targetY'], 2)));
 				window.targetDistance=this['targetDistance'];
             },
             'resetTargetPosition': function() {
@@ -5944,10 +5944,10 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setScale': function() {
                     if (!M['autoZoom']) return this.scale = (9 * this.scale + this['getZoom']()) / 10, void(M['viewScale'] = this.scale);
-                    M.play ? this.scale = (9 * this.scale + Math['pow'](Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this.scale = (9 * this.scale + M.scale * this['getZoom']()) / 10, M['viewScale'] = this.scale;
+                    M.play ? this.scale = (9 * this.scale + Math.pow(Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this.scale = (9 * this.scale + M.scale * this['getZoom']()) / 10, M['viewScale'] = this.scale;
                 },
                 'getZoom': function() {
-                    return Math['max'](this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
+                    return Math.max(this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
                 },
 /*                'renderFrame': function() {
                     //for (M.time = Date.now(), e = 0; e < M['cells'].length; e++) M['cells'][e]['moveCell']();
@@ -5955,9 +5955,9 @@ var thelegendmodproject = function(t, e, i) {
 						for (i = 0; i < M.cells.length; i++) {
 							M.cells[i].moveCell();
 						}	
-                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this.scale, this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx'].scale(this.scale, this.scale), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
+                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this.scale, this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx'].scale(this.scale, this.scale), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
                         var t = g['bordersWidth'] / 2;
-                        this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M['mapMinX'] - t, M['mapMinY'] - t, M['mapMaxX'] + t, M['mapMaxY'] + t, g['bordersColor'], g['bordersWidth']);
+                        this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M.mapMinX - t, M.mapMinY - t, M.mapMaxX + t, M.mapMaxY + t, g['bordersColor'], g['bordersWidth']);
                     }
                     this["drawCommander"]();
                     v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this.scale, M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
