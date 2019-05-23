@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.516 MEGA TEST
+// v1.517 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2427,7 +2427,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'loadSettings': function() {
                 var t = null;
-                for (var s in null !== e.localStorage.getItem('ogarioSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioSettings'))), v) v.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (v[s] = t[s]), i.hasOwnProperty(s) && (i[s] = v[s]));
+                for (var s in null !== window.localStorage.getItem('ogarioSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioSettings'))), v) v.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (v[s] = t[s]), i.hasOwnProperty(s) && (i[s] = v[s]));
 				
             },
             'saveSettings': function(t, i) {
