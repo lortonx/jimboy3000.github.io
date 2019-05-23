@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.523 MEGA TEST
+// v1.524 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2051,7 +2051,7 @@ var thelegendmodproject = function(t, e, i) {
             'lastSentCustomColor': '',
             'lastSentPartyToken': '',
             'lastSentServerToken': '',
-            'lastMessageSentTime': Date['now'](),
+            'lastMessageSentTime': Date.now(),
             'rFps': 0,
             'renderedFrames': 0,
             'fpsLastRequest': null,
@@ -2510,11 +2510,11 @@ var thelegendmodproject = function(t, e, i) {
                         if (t.hasOwnProperty(i)) {
                             if (!$('#import-' + i)['prop']('checked')) continue;
                             window.localStorage.setItem(i, JSON.stringify(t[i]));
-                        } window['location'].reload();
+                        } window.location.reload();
                 }
             },
             'restoreSettings': function() {
-                null !== window.localStorage.getItem('ogarioSettings') && (window.localStorage.removeItem('ogarioSettings'), window['location'].reload());
+                null !== window.localStorage.getItem('ogarioSettings') && (window.localStorage.removeItem('ogarioSettings'), window.location.reload());
             },
             'setSettings': function(t, e) {
                 if (v.hasOwnProperty(t) && null !== e) {
@@ -3937,7 +3937,7 @@ var thelegendmodproject = function(t, e, i) {
                         a = t.getUint32(13, true);
                     if (a > 360000) return;
                     var n = this['teamPlayers'][i];
-                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date['now'](), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n.nick, n.skinURL, s, o, a, n.color);
+                    n['x'] = s, n['y'] = o, n['mass'] = a, n['alive'] = true, n['updateTime'] = Date.now(), this['targeting'] && this['targetID'] && e == this['targetID'] && this['updateTarget'](n.nick, n.skinURL, s, o, a, n.color);
                 }
             },
             'updateTeamPlayers': function() {
@@ -4000,12 +4000,12 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendChatMessage': function(t, e) {
                 //console.log(t);console.log(e);
-                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
+                if (!(Date.now() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
-                    this['sendBuffer'](i), this['lastMessageSentTime'] = Date['now']();
+                    this['sendBuffer'](i), this['lastMessageSentTime'] = Date.now();
                 }
             },
             'prepareCommand': function(t) {
@@ -4989,7 +4989,7 @@ var thelegendmodproject = function(t, e, i) {
             'accessTokenSent': false,
             'clientVersion': 0x76c0,
             'clientVersionString': '3.4.0',
-            'time': Date['now'](),
+            'time': Date.now(),
             'serverTime': 0,
             'serverTimeDiff': 0,
             'loggedInTime': 0,
@@ -5118,7 +5118,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'onOpen': function(t) {
                 console.log('[Legend mod Express] Game server socket open'),
-				this['time'] = Date['now']();
+				this.time = Date.now();
                 var e = this.createView(5);
                 e.setUint8(0, 254), 
 				e.setUint32(1, 20, true), 
@@ -5451,7 +5451,7 @@ var thelegendmodproject = function(t, e, i) {
 							}
                         break;
                     case 103:
-                        this['loggedInTime'] = Date['now']();
+                        this['loggedInTime'] = Date.now();
 						this['accessTokenSent'] = true;
                         break;
                     case 114:
@@ -5473,7 +5473,7 @@ var thelegendmodproject = function(t, e, i) {
 						s += 4, this['battleRoyale']['radius'] = t.getUint32(s, true),
 						s += 4, this['battleRoyale']['shrinkTime'] = 1000 * t.getUint32(s, true),
 						s += 4, this['battleRoyale']['shrinkTime'] && 
-						(this['battleRoyale']['timeLeft'] = ~~((this['battleRoyale']['shrinkTime'] - Date['now']() + this['serverTimeDiff']) / 1000),
+						(this['battleRoyale']['timeLeft'] = ~~((this['battleRoyale']['shrinkTime'] - Date.now() + this['serverTimeDiff']) / 1000),
 						this['battleRoyale']['timeLeft'] < 0 && (this['battleRoyale']['timeLeft'] = 0))),
 						2 & y && (this['battleRoyale']['targetX'] = t.getInt32(s, true), s += 4,
 						this['battleRoyale']['targetY'] = t.getInt32(s, true), s += 4, this['battleRoyale']['targetRadius'] = t.getUint32(s, true));
@@ -5512,7 +5512,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 242:
                         this['serverTime'] = 1000 * t.getUint32(s, true);
-						this['serverTimeDiff'] = Date['now']() - this['serverTime'];
+						this['serverTimeDiff'] = Date.now() - this['serverTime'];
                         break;
                     case 255:
                         this['handleSubmessage'](t);
@@ -5612,7 +5612,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     return e;
                 };
-                this['time'] = Date['now'](), this['removePlayerCell'] = false;
+                this.time = Date.now(), this['removePlayerCell'] = false;
                 var o = t.readUInt16LE(i);
                 i += 2;
                 for (var a = 0; a < o; a++) {
@@ -5622,16 +5622,16 @@ var thelegendmodproject = function(t, e, i) {
 					r['targetX'] = n['x']; 
 					r['targetY'] = n['y']; 
 					r['targetSize'] = r['size'];
-					r['time'] = this['time'];
+					r.time = this.time;
 					r['removeCell']();
 					}
                 }
                 for (a = 0;;) {
                     var l = t.readUInt32LE(i);
                     if (i += 4, 0 == l) break;
-                    var h = t['readInt32LE'](i);
+                    var h = t.readInt32LE(i);
                     i += 4;
-                    var c = t['readInt32LE'](i);
+                    var c = t.readInt32LE(i);
                     i += 4;
                     var u = t.readUInt16LE(i);
                     i += 2;
@@ -5686,7 +5686,7 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots'])).time = this.time, ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -5906,7 +5906,7 @@ var thelegendmodproject = function(t, e, i) {
                     return Math['max'](this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
                 },
 /*                'renderFrame': function() {
-                    //for (M['time'] = Date['now'](), e = 0; e < M['cells'].length; e++) M['cells'][e]['moveCell']();
+                    //for (M.time = Date.now(), e = 0; e < M['cells'].length; e++) M['cells'][e]['moveCell']();
 				    M.time = Date.now();
 						for (i = 0; i < M.cells.length; i++) {
 							M.cells[i].moveCell();
@@ -6120,7 +6120,7 @@ var thelegendmodproject = function(t, e, i) {
                 "drawCommander": function() {
 					//console.log('Special effects stage 2');
                     if (M["drawCommander"]) {
-                        var pickerAxes = this["ctx"];
+                        var pickerAxes = this.ctx;
                         cimg = new Image;
                         cimg["src"] = g["commanderImage"];
                         cimg1 = new Image;
@@ -6360,7 +6360,7 @@ var thelegendmodproject = function(t, e, i) {
                 'drawGhostCells': function() {
                     if (v["showGhostCells"]) {
                         var t = M["ghostCells"];
-                        this["ctx"]["beginPath"]();
+                        this.ctx["beginPath"]();
                         var e = 0;
                         for (; e < t.length; e++) {
                             if (!t[e]["inView"]) {
@@ -6368,19 +6368,19 @@ var thelegendmodproject = function(t, e, i) {
 								
                                 var i = t[e]["x"];
                                 var s = t[e]["y"];
-                                this["ctx"]["moveTo"](i, s);
-                                this["ctx"].arc(i, s, t[e]["size"], 0, this.pi2, false);
+                                this.ctx["moveTo"](i, s);
+                                this.ctx.arc(i, s, t[e]["size"], 0, this.pi2, false);
                             }
                         }
-                        this["ctx"]["fillStyle"] = g["ghostCellsColor"];
-                        this["ctx"]["globalAlpha"] = g["ghostCellsAlpha"];
-                        this["ctx"]["shadowColor"] = g["ghostCellsColor"];
-                        this["ctx"]["shadowBlur"] = 40;
-                        this["ctx"]["shadowOffsetX"] = 0;
-                        this["ctx"]["shadowOffsetY"] = 0;
-                        this["ctx"].fill();
-                        this["ctx"]["globalAlpha"] = 1;
-                        this["ctx"]["shadowBlur"] = 0;
+                        this.ctx["fillStyle"] = g["ghostCellsColor"];
+                        this.ctx["globalAlpha"] = g["ghostCellsAlpha"];
+                        this.ctx["shadowColor"] = g["ghostCellsColor"];
+                        this.ctx["shadowBlur"] = 40;
+                        this.ctx["shadowOffsetX"] = 0;
+                        this.ctx["shadowOffsetY"] = 0;
+                        this.ctx.fill();
+                        this.ctx["globalAlpha"] = 1;
+                        this.ctx["shadowBlur"] = 0;
                     }
                 },
                 'preDrawPellet': function() {
@@ -7327,8 +7327,8 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'init': function() {
-                    this['loadHotkeys'](); 
-					this['setHotkeysMenu']();
+                    this.loadHotkeys(); 
+					this.setHotkeysMenu();
                 }
             };
         window.legendmod2 = ogarfooddrawer; //look at this
@@ -7340,7 +7340,7 @@ var thelegendmodproject = function(t, e, i) {
 
         function ogarassembler() {
             window.onkeydown = function(t) {
-                81 == t.keyCode && window.core['specialOn'] && window.core['specialOn']();
+                81 == t.keyCode && window.core.specialOn && window.core.specialOn();
             }, window.onkeyup = function(t) {};
         }
 
@@ -7354,7 +7354,7 @@ var thelegendmodproject = function(t, e, i) {
             } else {
                 n = i["menuHeight"] || 618;
             }
-            var r = Math["min"](1, o / n);
+            var r = Math.min(1, o / n);
             var l = n * r;
             var h = Math.round(o / 2 - 0.5 * l);
             var c = "translate(-50%, 0%) scale(" + r + ")";
@@ -7416,13 +7416,13 @@ var thelegendmodproject = function(t, e, i) {
             }
         };
 		window['onbeforeunload'] = function(t) {
-            return i.play ? h['exit'] : void 0;
+            return i.play ? h.exit : void 0;
         }; 
 		i = M; 
 		o = t('buffer')['Buffer'];
 		a = t('lz4');
-		if ('/ogario' === window.location['pathname']){
-			ogarjoiner('/' + window['location']['hash']); 
+		if ('/ogario' === window.location.pathname){
+			ogarjoiner('/' + window.location.hash); 
 		}
 		window['onresize'] = function() {
             ogarfooddrawer['resizeCanvas'](), ogarhusettings();
