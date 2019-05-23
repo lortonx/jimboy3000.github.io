@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.541 MEGA TEST
+// v1.542 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3321,7 +3321,7 @@ var thelegendmodproject = function(t, e, i) {
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
                 if (0 != this["cacheQueue"].length) {
-                    var e = this["cacheQueue"]["shift"]();
+                    var e = this["cacheQueue"].shift();
                     if (e) {
                         var i = document["createElement"]("canvas");
                         i["width"] = 512;
@@ -3381,7 +3381,7 @@ var thelegendmodproject = function(t, e, i) {
                         "y": e + i["mapOffsetY"]
                     });
                     if (6 == this["deathLocations"].length) {
-                        this["deathLocations"]["shift"]();
+                        this["deathLocations"].shift();
                     }
                     this["lastDeath"] = this["deathLocations"].length - 1;
                 }
@@ -3482,7 +3482,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (this["deathLocations"].length > 0) {
                         u = Math.round((this["deathLocations"][this["lastDeath"]]["x"] + i["mapOffset"]) * n);
                         d = Math.round((this["deathLocations"][this["lastDeath"]]["y"] + i["mapOffset"]) * n);
-                        var f = Math["max"](g["miniMapMyCellSize"] - 2, 4);
+                        var f = Math.max(g["miniMapMyCellSize"] - 2, 4);
                         this["miniMapCtx"].lineWidth = 1;
                         this["miniMapCtx"].strokeStyle = this["deathLocations"].length - 1 == this["lastDeath"] ? g["miniMapDeathLocationColor"] : "#FFFFFF";
                         this["miniMapCtx"].beginPath();
@@ -3586,7 +3586,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['chatUsers'] = {};
             },
             'getWS': function(t) {
-                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this['closeConnection']());
+                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this.closeConnection());
             },
             'recreateWS': function(t) {
                 if (!t) return null;
@@ -3623,15 +3623,15 @@ var thelegendmodproject = function(t, e, i) {
             },
             'connect': function() {
                 pauseVideos(), 
-				this['closeConnection']();
+				this.closeConnection();
 				this['flushData']() ; 
 				this.setParty(); 
 				console.log('[Legend mod Express] Connecting to server'), 
 				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), 
 				this.socket['ogarioWS'] = true, 
-				this.socket['binaryType'] = 'arraybuffer';
+				this.socket.binaryType = 'arraybuffer';
                 var t = this;
-                this.socket['onopen'] = function() {
+                this.socket.onopen = function() {
                     console.log('[Legend mod Express] Socket open');
                     var e = t.createView(3);
                     e.setUint8(0, 0);
@@ -3639,21 +3639,21 @@ var thelegendmodproject = function(t, e, i) {
 					t['sendBuffer'](e);
 					t.sendPartyData();
                 }
-				this.socket['onmessage'] = function(e) {
+				this.socket.onMessage = function(e) {
                     t['handleMessage'](e);
                 }
-				this.socket['onclose'] = function(e) {
+				this.socket.onClose = function(e) {
                     t['flushData']();
 					console.log('[Legend mod Express] Socket close', e);
                 }
-				this.socket['onerror'] = function(e) {
+				this.socket.onError = function(e) {
                     t['flushData']();
 					console.log('[Legend mod Express] Socket error', e);
                 };
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket['onmessage'] = null;
+                    this.socket.onMessage = null;
                     try {
                         this.socket['close']();
                     } catch (ogarcloseconlabel) {}
@@ -5093,35 +5093,35 @@ var thelegendmodproject = function(t, e, i) {
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
-                this['closeConnection'](); 
-				this['flushCellsData']();
+                this.closeConnection(); 
+				this.flushCellsData();
 				this.protocolKey = null; 
 				this.clientKey = null;
-				this['accessTokenSent'] = false;
+				this.accessTokenSent = false;
 				this.connectionOpened = false;
-				this['mapOffsetFixed'] = false; 
+				this.mapOffsetFixed= false; 
 				this['leaderboard'] = [];
 				this['ws'] = t;
 				this.socket = new WebSocket(t); 
-				this.socket['binaryType'] = 'arraybuffer'; 
-				this.socket['onopen'] = function() {
-                    i['onOpen']();
+				this.socket.binaryType = 'arraybuffer'; 
+				this.socket.onopen = function() {
+                    i.onopen();
                 };
-				this.socket['onmessage'] = function(t) {
-                    i['onMessage'](t);
+				this.socket.onMessage = function(t) {
+                    i.onMessage(t);
                 };
-				this.socket['onerror'] = function(t) {
-                    i['onError'](t);
+				this.socket.onError = function(t) {
+                    i.onError(t);
                 };
-				this.socket['onclose'] = function(t) {
-                    i['onClose'](t);
+				this.socket.onClose = function(t) {
+                    i.onClose(t);
                 };
 				ogarminimapdrawer['getWS'](this['ws']);
 				ogarminimapdrawer['sendServerJoin']();
 				ogarminimapdrawer['sendServerData']();
 				ogarminimapdrawer['displayLeaderboard']('');
-				if (window.master && window.master['onConnect']) {
-					window.master['onConnect']();
+				if (window.master && window.master.onConnect) {
+					window.master.onConnect();
 				}
             },
             'onOpen': function(t) {
@@ -5146,23 +5146,23 @@ var thelegendmodproject = function(t, e, i) {
             'onError': function(t) {
                 console.log('[Legend mod Express] Game server socket error'); 
 				this['flushCellsData']();
-				if (window.master && window.master['onDisconnect']){
-					window.master['onDisconnect']();
+				if (window.master && window.master.onDisconnect){
+					window.master.onDisconnect();
 				}
             },
             'onClose': function(t) {
                 console.log('[Legend mod Express] Game server socket close'); 
 				this['flushCellsData'](); 
-				if (window.master && window.master['onDisconnect']){
-					window.master['onDisconnect']();
+				if (window.master && window.master.onDisconnect){
+					window.master.onDisconnect();
 				}
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket['onopen'] = null; 
-					this.socket['onmessage'] = null;
-					this.socket['onerror'] = null; 
-					this.socket['onclose'] = null;
+                    this.socket.onopen = null; 
+					this.socket.onMessage = null;
+					this.socket.onError = null; 
+					this.socket.onClose = null;
                     try {
                         this.socket['close']();
                     } catch (ogarcloseconncloser) {}
@@ -5636,8 +5636,8 @@ var thelegendmodproject = function(t, e, i) {
 				this['mapMinY'] = ~~(-this['mapOffset'] - this['mapOffsetY']);
 				this['mapMaxX'] = ~~(this['mapOffset'] - this['mapOffsetX']);
 				this['mapMaxY'] = ~~(this['mapOffset'] - this['mapOffsetY']);
-				this['mapOffsetFixed'] || (this['viewX'] = (i + t) / 2, this['viewY'] = (s + e) / 2);
-				this['mapOffsetFixed'] = true;
+				this.mapOffsetFixed|| (this['viewX'] = (i + t) / 2, this['viewY'] = (s + e) / 2);
+				this.mapOffsetFixed= true;
 				console.log('[Legend mod Express] Map offset fixed (x, y):', this['mapOffsetX'], this['mapOffsetY']);
 				}
 			},
