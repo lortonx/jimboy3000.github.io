@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.510 MEGA TEST
+// v1.511 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -1697,7 +1697,7 @@ var thelegendmodproject = function(t, e, i) {
                             var t = parseFloat($(this).val());
                             $('#' + e + '-value').text(t), g[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r]();
                         });
-                    } else s('#' + e + '-slider').on('input', function() {
+                    } else $('#' + e + '-slider').on('input', function() {
                         var t = parseFloat($(this).val());
                         $('#' + e + '-value').text(t), g[e] = t, i.hasOwnProperty(e) && (i[e] = t);
                     });
@@ -2287,7 +2287,7 @@ var thelegendmodproject = function(t, e, i) {
                     setTimeout(function() {
                         e['displayTime']();
                     }, 1000);
-                } else s('#time-hud').hide();
+                } else $('#time-hud').hide();
             },
             'displayParties': function() {
                 for (var t = '', e = 0; e < this['parties'].length; e++) t += '<li><a href=\"https://agar.io/#' + this['parties'][e] + '\" onclick=\"$(\'#party-token\').val(\'' + this['parties'][e] + '\'); $(\'#join-party-btn-2\').click();\">https://agar.io/#' + this['parties'][e] + '</a></li>';
