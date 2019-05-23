@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.512 MEGA TEST
+// v1.513 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3555,8 +3555,8 @@ var thelegendmodproject = function(t, e, i) {
                 window.ogario.MC && window.ogario.MC['reconnect'] ? window.ogario.MC['reconnect']() : window.ogario.master && window.ogario.master['reconnect'] && window.ogario.master['reconnect']();
             },
             'gameServerJoin': function(t) {
-                var window.ogario = this['recreateWS'](t);
-                window.ogario && (this['skipServerData'] = true, this['gameServerConnect'](window.ogario));
+                var e = this['recreateWS'](t);
+                e && (this['skipServerData'] = true, this['gameServerConnect'](e));
             },
             'connect': function() {
                 pauseVideos(), this['closeConnection'](), this['flushData'](), this['setParty'](), console.log('[Legend mod Express] Connecting to server'), this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
