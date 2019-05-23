@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.513 MEGA TEST
+// v1.514 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -7151,11 +7151,11 @@ var thelegendmodproject = function(t, e, i) {
                                 $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                             } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i['label'] + '</div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                         } 
-					$(document).on('click', '#reset-hotkeys', function(e) {
-                        window.ogario.preventDefault(), t['resetHotkeys']();
+					$(document).on('click', '#reset-hotkeys', function(t) {
+                        t.preventDefault(), t['resetHotkeys']();
                     }), 
-					$(document).on('click', '#save-hotkeys', function(window.ogario) {
-                        window.ogario.preventDefault(), t['saveHotkeys'](), $('#hotkeys')['fadeOut'](500);
+					$(document).on('click', '#save-hotkeys', function(t) {
+                        t.preventDefault(), t['saveHotkeys'](), $('#hotkeys')['fadeOut'](500);
                     }), 
 					$(document).on('click', '#close-hotkeys', function(t) {
                         t.preventDefault(), $('#hotkeys')['fadeOut'](500);
