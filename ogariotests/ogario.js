@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.501 MEGA TEST
+// v1.502 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2675,7 +2675,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setMenu': function() {
                 var t;
-                for (t in document["title"] = this["name"], s("#mainPanel")["before"]('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
+                for (t in document.title = this["name"], s("#mainPanel")["before"]('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
                         h["start"] + '"></a></li><li class="profile-tab"><a href="#profile" class="ogicon-user" data-toggle="tab-tooltip" title="' + h["profile"] + '"></a></li><li class="settings-tab"><a href="#og-settings" class="ogicon-cog" data-toggle="tab-tooltip" title="' + h["settings"] + '"></a></li><li class="theme-tab"><a href="#theme" class="ogicon-droplet" data-toggle="tab-tooltip" title="' + h["theme"] + '"></a></li><li class="hotkeys-tab"><a href="#" class="hotkeys-link ogicon-keyboard" data-toggle="tab-tooltip" title="' +
                         h["hotkeys"] + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="Radio / ' + h["sounds"] + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>'), s("#main-panel").append('<a href="#" class="quick quick-menu ogicon-menu"></a><a href="#" class="quick quick-skins ogicon-images"></a><div id="profiles"><div id="prev-profile"></div><div id="skin-preview"></div><div id="next-profile"></div></div>'),
                     s("#mainPanel div[role=form]").appendTo(s("#main-panel")), s("#main-panel div[role=form] .form-group:first").remove(), s("#nick")["before"]('<input id="clantag" class="form-control" placeholder="Tag, e.g. \u24c2" maxlength="10"><div class="input-group nick"></div>'), s("#nick").appendTo(s(".nick")), s(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>'), s(".nick")["after"]('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Skin URL (imgur.com direct link)" maxlength="40"><input type="hidden" id="color" value="' +
@@ -7235,14 +7235,14 @@ var thelegendmodproject = function(t, e, i) {
             };
         window.legendmod2 = ogarfooddrawer; //look at this
         function ogarjoiner(t) {
-            if (e["history"] && e["history"]["replaceState"]) {
-                e["history"]["replaceState"]({}, e["document"]["title"], t);
+            if (e.history && e.history.replaceState) {
+                e.history.replaceState({}, e.document.title, t);
             }
         }
 
         function ogarassembler() {
             e.onkeydown = function(t) {
-                81 == t.keyCode && e.core['specialOn'] && e.core['specialOn']();
+                81 == t.keyCode && e.core.specialOn && e.core.specialOn();
             }, e.onkeyup = function(t) {};
         }
 
@@ -7291,19 +7291,21 @@ var thelegendmodproject = function(t, e, i) {
         } 
 		e['onmousedown'] = function(t) {
             if (!s("#overlays")["is"](":visible")) {
-                if (2 == t["which"]) {
+                if (2 == t.which) {
                     t["preventDefault"]();
                     if (ogarminimapdrawer) {
                         ogarminimapdrawer["sendCommand"](10);
                     }
                 } else {
-                    if (v["mouseSplit"] && (1 == t["which"] && !v["mouseInvert"] || 3 == t["which"] && v["mouseInvert"])) {
+                    if (v["mouseSplit"]){
+						if (1 == t.which && !v["mouseInvert"] || 3 == t.which && v["mouseInvert"])) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer.split();
                         }
                     }
-                    if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"])) {
+					}
+                    if (v["mouseFeed"] && (3 == t.which && !v["mouseInvert"] || 1 == t.which && v["mouseInvert"])) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer["macroFeed"](true);
@@ -7313,12 +7315,12 @@ var thelegendmodproject = function(t, e, i) {
             }
         }
 		e['onmouseup'] = function(t) {
-            if (v["mouseFeed"] && (3 == t["which"] && !v["mouseInvert"] || 1 == t["which"] && v["mouseInvert"]) && ogarminimapdrawer) {
+            if (v["mouseFeed"] && (3 == t.which && !v["mouseInvert"] || 1 == t.which && v["mouseInvert"]) && ogarminimapdrawer) {
                 ogarminimapdrawer["macroFeed"](false);
             }
         };
 		e['onbeforeunload'] = function(t) {
-            return i.play ? h['exit'] : void 0;
+            return i.play ? h.exit : void 0;
         }; 
 		i = M; 
 		o = t('buffer')['Buffer'];
@@ -7327,7 +7329,8 @@ var thelegendmodproject = function(t, e, i) {
 			ogarjoiner('/' + e['location']['hash']); 
 		}
 		e['onresize'] = function() {
-            ogarfooddrawer['resizeCanvas'](), ogarhusettings();
+            ogarfooddrawer['resizeCanvas']();
+			ogarhusettings();
         };
 		ogarassembler();
 		e.core = {
@@ -7389,4 +7392,3 @@ var thelegendmodproject = function(t, e, i) {
 		ogarhusettings();
     })(window, window.ogario, window.jQuery);
 }
-
