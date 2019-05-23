@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.508 MEGA TEST
+// v1.509 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3475,25 +3475,25 @@ var thelegendmodproject = function(t, e, i) {
                 return t <= 40 || i['viewScale'] < 0.5 && t < 550 && t < 25 / i['viewScale'];
             },
             'setParty': function() {
-                var t = s('#party-token').val();
-                if (this['gameMode'] = i['gameMode'] = s('#gamemode').val(), this['setQuest'](), ':party' === this['gameMode'] && t) {
+                var t = $('#party-token').val();
+                if (this['gameMode'] = i['gameMode'] = $('#gamemode').val(), this['setQuest'](), ':party' === this['gameMode'] && t) {
                     var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this['partyToken'] !== e && (this['partyToken'] = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
                 }
             },
             'createParty': function() {
-                s('#create-party-btn')['click']();
+                $('#create-party-btn')['click']();
             },
             'joinParty': function() {
-                var t = s('#party-token').val();
-                t && (s('#pre-join-party-btn')['click'](), s('.party-token').val(t), s('#join-party-btn')['click']());
+                var t = $('#party-token').val();
+                t && ($('#pre-join-party-btn')['click'](), $('.party-token').val(t), $('#join-party-btn')['click']());
             },
             'leaveParty': function() {
-                s('#party-token, .party-token').val(''); 
-				s('#leave-party-btn')['click']();
+                $('#party-token, .party-token').val(''); 
+				$('#leave-party-btn')['click']();
             },
             'closeParty': function() {
-                s('#party-token, .party-token').val(''); 
-				s('.party-icon-back')['click']();
+                $('#party-token, .party-token').val(''); 
+				$('.party-icon-back')['click']();
             },
             'flushData': function() {
                 this['flushPartyData'](); 
@@ -3546,7 +3546,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'updateServerInfo': function() {
-                s('#server-ws').val(this['ws']), s('#server-token').val(this['serverToken']), s('#party-token, .party-token').val(this['partyToken']);
+                $('#server-ws').val(this['ws']), $('#server-token').val(this['serverToken']), $('#party-token, .party-token').val(this['partyToken']);
             },
             'gameServerConnect': function(t) {
                 t && (this['skipServerData'] = true, e.core && e.core.connect && e.core.connect(t));
@@ -3601,11 +3601,11 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     if (this["privateMode"]) {
                         toastr["info"]("Prze\u0142\u0105czono na serwer prywatny!");
-                        s(".party-panel").show();
+                        $(".party-panel").show();
                     } else {
                         toastr["info"]("Prze\u0142\u0105czono na serwer publiczny!");
-                        s("#active-parties")["empty"]();
-                        s(".party-panel").hide();
+                        $("#active-parties")["empty"]();
+                        $(".party-panel").hide();
                     }
                     this["onJoin"]();
                     if (i.play) {
@@ -3728,7 +3728,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
-                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = s('#region').val(), this['gameMode'] = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
+                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = $('#region').val(), this['gameMode'] = $('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
                 this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
@@ -3994,19 +3994,19 @@ var thelegendmodproject = function(t, e, i) {
                     if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                         var r = '';
                         if (0 != i && i != this['playerID'] && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this['escapeHTML'](a), 101 == e) {
-                            if (v['showChatBox']) return s('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), s('#chat-box')['perfectScrollbar']('update'), s('#chat-box')['animate']({
-                                'scrollTop': s('#chat-box')['prop']('scrollHeight')
+                            if (v['showChatBox']) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), $('#chat-box')['perfectScrollbar']('update'), $('#chat-box')['animate']({
+                                'scrollTop': $('#chat-box')['prop']('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['messageSound']));
                             v['hideChat'] || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['messageSound'])), this['chatHistory'].push({
                                 'nick': a,
                                 'message': n
                             }), this['chatHistory'].length > 15 && this['chatHistory']['shift']();
                         } else if (102 == e) {
-                            if (v['showChatBox']) return s('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + t + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'), s('#chat-box')['perfectScrollbar']('update'), s('#chat-box')['animate']({
-                                'scrollTop': s('#chat-box')['prop']('scrollHeight')
+                            if (v['showChatBox']) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + t + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'), $('#chat-box')['perfectScrollbar']('update'), $('#chat-box')['animate']({
+                                'scrollTop': $('#chat-box')['prop']('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['commandSound']));
                             v['hideChat'] || (toastr['warning']('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['commandSound']));
-                        } else s('#messages').append(o);
+                        } else $('#messages').append(o);
                     }
                 }
             },
@@ -4031,7 +4031,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['setMessageSound'](), this['setCommandSound'](), this['setvirusSound']();
             },
             'setChatSoundsBtn': function() {
-                v['chatSounds'] ? s('.chat-sound-notifications').removeClass('ogicon-volume-mute2').addClass('ogicon-volume-high') : s('.chat-sound-notifications').removeClass('ogicon-volume-high').addClass('ogicon-volume-mute2');
+                v['chatSounds'] ? $('.chat-sound-notifications').removeClass('ogicon-volume-mute2').addClass('ogicon-volume-high') : $('.chat-sound-notifications').removeClass('ogicon-volume-high').addClass('ogicon-volume-mute2');
             },
             'setMessageSound': function() {
                 this['messageSound'] = this['setSound'](v['messageSound']);
@@ -4067,13 +4067,13 @@ var thelegendmodproject = function(t, e, i) {
                 this['targetID'] && (this['targeting'] = !this['targeting'], i['targeting'] = this['targeting'], this['setTargetingInfo']());
             },
             'setTargetingInfo': function() {
-                this['targeting'] ? (s('#set-targeting').addClass('active'), s('#target-status').show(), 2 != this['targetStatus'] && s('#target-summary').show()) : (s('#set-targeting').removeClass('active'), s('#target-summary, #target-status').hide());
+                this['targeting'] ? ($('#set-targeting').addClass('active'), $('#target-status').show(), 2 != this['targetStatus'] && $('#target-summary').show()) : ($('#set-targeting').removeClass('active'), $('#target-summary, #target-status').hide());
             },
             'cancelTargeting': function() {
                 this['setTargetStatus'](0);
             },
             'setPrivateMiniMap': function() {
-                this['targetID'] && (this['privateMiniMap'] = !this['privateMiniMap'], this['privateMiniMap'] ? s('#set-private-minimap').addClass('active') : s('#set-private-minimap').removeClass('active'));
+                this['targetID'] && (this['privateMiniMap'] = !this['privateMiniMap'], this['privateMiniMap'] ? $('#set-private-minimap').addClass('active') : $('#set-private-minimap').removeClass('active'));
             },
             'setTarget': function(t) {
                 var e = this['checkPlayerID'](t);
@@ -4086,13 +4086,13 @@ var thelegendmodproject = function(t, e, i) {
             'setTargetStatus': function(t) {
                 switch (t) {
                     case 0:
-                        this['targetStatus'] = 0, this['targetID'] = 0, this['targetNick'] = '', this['targetSkinURL'] = '', this['targeting'] = false, i['targeting'] = false, this['privateMiniMap'] = false, s('#target-skin, #target-nick, #target-summary').hide(), $("#target-hud").hide(), s('#target-status').show().text( h['targetNotSet'] ), s('#target-panel-hud a').removeClass('active'); //s('#target-status').show().text('[' + h['targetNotSet'] + ']'), s('#target-panel-hud a').removeClass('active');
+                        this['targetStatus'] = 0, this['targetID'] = 0, this['targetNick'] = '', this['targetSkinURL'] = '', this['targeting'] = false, i['targeting'] = false, this['privateMiniMap'] = false, $('#target-skin, #target-nick, #target-summary').hide(), $("#target-hud").hide(), $('#target-status').show().text( h['targetNotSet'] ), $('#target-panel-hud a').removeClass('active'); //$('#target-status').show().text('[' + h['targetNotSet'] + ']'), $('#target-panel-hud a').removeClass('active');
                         break;
                     case 1:
-                        this['targetStatus'] = 1, this['targeting'] || (this['targeting'] = true, i['targeting'] = true, $("#target-hud").show(), this['setTargetingInfo']()), s('#target-skin, #target-nick, #target-status, #target-summary').show();
+                        this['targetStatus'] = 1, this['targeting'] || (this['targeting'] = true, i['targeting'] = true, $("#target-hud").show(), this['setTargetingInfo']()), $('#target-skin, #target-nick, #target-status, #target-summary').show();
                         break;
                     case 2:
-                        this['targetStatus'] = 2, s('#target-summary').hide(), $("#target-hud").show(), s('#target-status').show().text('[' + h['targetDead'] + ']'), i['resetTargetPosition']();
+                        this['targetStatus'] = 2, $('#target-summary').hide(), $("#target-hud").show(), $('#target-status').show().text('[' + h['targetDead'] + ']'), i['resetTargetPosition']();
                 }
             },
             'changeTarget': function() {
@@ -4110,10 +4110,10 @@ var thelegendmodproject = function(t, e, i) {
                     } null !== e && (t = e), null !== t ? this['setTarget'](this['teamPlayers'][t]['id']) : this['setTargetStatus'](0);
             },
             'updateTarget': function(t, e, o, a, n, r) {
-                i['setTargetPosition'](o, a), this['targetNick'] !== t && (this['targetNick'] = t, s('#target-nick').html(this['escapeHTML'](t))), s('#target-skin').css('background-color', r), e && this['targetSkinURL'] !== e && (this['customSkinsCache'].hasOwnProperty(e + '_cached') ? (s('#target-skin img')['attr']('src', e), this['targetSkinURL'] = e) : s('#target-skin img')['attr']('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), s('#target-status').text('[' + this['shortMassFormat'](n) + ']');
+                i['setTargetPosition'](o, a), this['targetNick'] !== t && (this['targetNick'] = t, $('#target-nick').html(this['escapeHTML'](t))), $('#target-skin').css('background-color', r), e && this['targetSkinURL'] !== e && (this['customSkinsCache'].hasOwnProperty(e + '_cached') ? ($('#target-skin img')['attr']('src', e), this['targetSkinURL'] = e) : $('#target-skin img')['attr']('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this['shortMassFormat'](n) + ']');
                 var l = this['calculateMapSector'](o, a),
                     c = h['targetDistance'] + ': <span class=\"hud-main-color\">' + i['targetDistance'] + ' [' + l + ']</span>';
-                i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this['shortMassFormat'](n + i['playerMass']) + '</span>'), s('#target-summary').html(c), 1 != this['targetStatus'] && this['setTargetStatus'](1);
+                i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this['shortMassFormat'](n + i['playerMass']) + '</span>'), $('#target-summary').html(c), 1 != this['targetStatus'] && this['setTargetStatus'](1);
             },
             'updateQuest': function() {
                 this['showQuest'] && ':ffa' === this['gameMode'] && e.MC && e.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = e.MC['getQuestProgressLabel']());
@@ -7123,21 +7123,21 @@ var thelegendmodproject = function(t, e, i) {
                     e.localStorage.setItem('ogarioHotkeys', JSON.stringify(ogario1Hotkeys)), this['saveCommands']();
                 },
                 'saveCommands': function() {
-                    s('#hotkeys .command-in')['each'](function() {
-                        var t = s(this),
+                    $('#hotkeys .command-in')['each'](function() {
+                        var t = $(this),
                             e = t['attr']('id');
                         c.hasOwnProperty(e) && (c[e] = t.val());
                     }), e.localStorage['setItem']('ogarioCommands', JSON['stringify'](c));
                 },
                 'resetHotkeys': function() {
-                    this['loadDefaultHotkeys'](), s('#hotkeys-cfg .custom-key-in')['each'](function() {
-                        var t = s(this)['attr']('id');
-                        ogario11Hotkeys[t] && s(this).val(ogario11Hotkeys[t]['defaultKey']);
+                    this['loadDefaultHotkeys'](), $('#hotkeys-cfg .custom-key-in')['each'](function() {
+                        var t = $(this)['attr']('id');
+                        ogario11Hotkeys[t] && $(this).val(ogario11Hotkeys[t]['defaultKey']);
                     });
                 },
                 'setHotkeysMenu': function() {
                     var t = this;
-                    for (var e in s('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + h['restoreSettings'] + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + h['saveSett'] + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + h['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + h['hk-inst-assign'] + '</li><li>' + h['hk-inst-delete'] + '</li><li>' + h['hk-inst-keys'] + '</li></ul></div></div>'), ogario11Hotkeys)
+                    for (var e in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + h['restoreSettings'] + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + h['saveSett'] + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + h['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + h['hk-inst-assign'] + '</li><li>' + h['hk-inst-delete'] + '</li><li>' + h['hk-inst-keys'] + '</li></ul></div></div>'), ogario11Hotkeys)
                         if (ogario11Hotkeys.hasOwnProperty(e)) {
                             var i = ogario11Hotkeys[e],
                                 o = '';
@@ -7148,17 +7148,17 @@ var thelegendmodproject = function(t, e, i) {
                                 } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer['privateIP']) continue;
                             if ('command' === i['type']) {
                                 var n = e.replace('hk-', '');
-                                s('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
-                            } else s('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i['label'] + '</div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
-                        } s(document).on('click', '#reset-hotkeys', function(e) {
+                                $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
+                            } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i['label'] + '</div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
+                        } $(document).on('click', '#reset-hotkeys', function(e) {
                         e.preventDefault(), t['resetHotkeys']();
-                    }), s(document).on('click', '#save-hotkeys', function(e) {
-                        e.preventDefault(), t['saveHotkeys'](), s('#hotkeys')['fadeOut'](500);
-                    }), s(document).on('click', '#close-hotkeys', function(t) {
-                        t.preventDefault(), s('#hotkeys')['fadeOut'](500);
-                    }), s(document).on('click', '.hotkeys-link', function(t) {
-                        s('#hotkeys')['fadeIn'](500), s('#hotkeys-cfg')['perfectScrollbar']('update'), ogarcommando1();
-                    }), s('#hotkeys-cfg')['perfectScrollbar'](), y && y['setMenuBg']();
+                    }), $(document).on('click', '#save-hotkeys', function(e) {
+                        e.preventDefault(), t['saveHotkeys'](), $('#hotkeys')['fadeOut'](500);
+                    }), $(document).on('click', '#close-hotkeys', function(t) {
+                        t.preventDefault(), $('#hotkeys')['fadeOut'](500);
+                    }), $(document).on('click', '.hotkeys-link', function(t) {
+                        $('#hotkeys')['fadeIn'](500), $('#hotkeys-cfg')['perfectScrollbar']('update'), ogarcommando1();
+                    }), $('#hotkeys-cfg')['perfectScrollbar'](), y && y['setMenuBg']();
                 },
                 'getPressedKey': function(t) {
                     var e = '',
@@ -7210,7 +7210,7 @@ var thelegendmodproject = function(t, e, i) {
                     return '' !== e ? '' !== i ? e + '+' + i : e : i;
                 },
                 'deleteHotkey': function(t, e) {
-                    delete ogario1Hotkeys[t], s('#' + e).val('');
+                    delete ogario1Hotkeys[t], $('#' + e).val('');
                 },
                 'setDefaultHotkey': function(t) {
                     var e = false;
@@ -7218,14 +7218,14 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setHotkey': function(t, e) {
                     if (e && (this['lastPressedKey'] !== t || this['lastKeyId'] !== e)) {
-                        var i = s('#' + e).val();
+                        var i = $('#' + e).val();
                         if (this['deleteHotkey'](i, e), 'DEL' !== t) {
                             if (ogario1Hotkeys[t] && ogario1Hotkeys[t] !== e) {
                                 var o = ogario1Hotkeys[t],
                                     a = this['setDefaultHotkey'](o);
-                                a ? (ogario1Hotkeys[a] = o, s('#' + o).val(a)) : this['deleteHotkey'](t, o);
+                                a ? (ogario1Hotkeys[a] = o, $('#' + o).val(a)) : this['deleteHotkey'](t, o);
                             }
-                            ogario1Hotkeys[t] = e, s('#' + e).val(t), 'hk-chatMessage' === e && (ogario1Hotkeys['spec-messageKey'] = t), this['lastPressedKey'] = t, this['lastKeyId'] = e;
+                            ogario1Hotkeys[t] = e, $('#' + e).val(t), 'hk-chatMessage' === e && (ogario1Hotkeys['spec-messageKey'] = t), this['lastPressedKey'] = t, this['lastKeyId'] = e;
                         }
                     }
                 },
@@ -7249,7 +7249,7 @@ var thelegendmodproject = function(t, e, i) {
         function ogarhusettings() {
             var t = e["innerWidth"];
             var o = e["innerHeight"];
-            var a = s("#helloContainer");
+            var a = $("#helloContainer");
             var n = a["innerHeight"]();
             if (n > 0) {
                 i["menuHeight"] = n;
@@ -7290,7 +7290,7 @@ var thelegendmodproject = function(t, e, i) {
             }
         } 
 		e['onmousedown'] = function(t) {
-            if (!s("#overlays")["is"](":visible")) {
+            if (!$("#overlays")["is"](":visible")) {
                 if (2 == t["which"]) {
                     t["preventDefault"]();
                     if (ogarminimapdrawer) {
