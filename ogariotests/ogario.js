@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.518 MEGA TEST
+// v1.519 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -1740,13 +1740,15 @@ var thelegendmodproject = function(t, e, i) {
                         e.preventDefault();
                         var i = $('img', this)['attr']('src');
                         g.customCursor = i, t['setCustomCursor'](), $('#customCursor').val(i), $('#theme-images .cursor-box a').removeClass('active'), $(this).addClass('active');
-                    }), $('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h['saveSett'] + '</button>'), $(document).on('click', '#theme .btn-save', function(e) {
+                    }), 
+					$('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h['saveSett'] + '</button>'), $(document).on('click', '#theme .btn-save', function(e) {
                         e.preventDefault();
                         var i = $(this);
                         i.text(h['saved']), t['saveThemeSettings'](), setTimeout(function() {
                             i.text(h['saveSett']);
                         }, 500);
-                    }), $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + h['restoreThemeSettings'] + '</a></div>'), $(document).on('click', '#theme .restore-settings a', function(e) {
+                    }), $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + h['restoreThemeSettings'] + '</a></div>'), 
+					$(document).on('click', '#theme .restore-settings a', function(e) {
                         e.preventDefault(), t['restoreThemeSettings']();
                     }), $('.skin').colorpicker({
                         'format': 'hex',
@@ -1773,7 +1775,9 @@ var thelegendmodproject = function(t, e, i) {
                     v['optimizedFood'] && ogarfooddrawer && ogarfooddrawer.preDrawPellet();
                 },
                 'setIndicatorColor': function() {
-                    ogarfooddrawer && ogarfooddrawer.preDrawIndicator();
+                    if(ogarfooddrawer){
+						ogarfooddrawer.preDrawIndicator();
+					}
                 },
                 'setCustomBackground': function() {
                     g['customBackground'] ? $('body').css('background-image', 'url(' + g['customBackground'] + ')') : $('body')['css']('background-image', 'none');
@@ -1842,20 +1846,28 @@ var thelegendmodproject = function(t, e, i) {
                     this.addCustomCSS('chatCSS', t);
                 },
                 'setChatScale': function() {
-                    var t = Math.round(14 * g['chatScale']),
-                        e = Math.round(280 * g['chatScale']),
-                        i = Math.round(350 * g['chatScale']),
-                        o = Math.round(300 * g['chatScale']),
-                        a = Math['floor'](14 * g['chatScale']);
-                    $('#message-box, #messages, #toast-container, #chat-box')['css']('font-size', t + 'px'), $('#messages, #toast-container, #chat-box')['width'](e), $('#message-box')['width'](i), $('#chat-box')['height'](o), $('.user-list').css('padding-left', a + 'px');
+                    var t = Math.round(14 * g['chatScale']);
+                    var e = Math.round(280 * g['chatScale']);
+                    var i = Math.round(350 * g['chatScale']);
+                    var o = Math.round(300 * g['chatScale']);
+                    var a = Math['floor'](14 * g['chatScale']);
+                    $('#message-box, #messages, #toast-container, #chat-box')['css']('font-size', t + 'px'); 
+					$('#messages, #toast-container, #chat-box')['width'](e); 
+					$('#message-box')['width'](i), $('#chat-box')['height'](o); 
+					$('.user-list').css('padding-left', a + 'px');
                     var n = '#toast-container{width:' + e + 'px;font-size:' + t + 'px}';
                     this.addCustomCSS('chatScaleCSS', n);
                 },
                 'setMiniMap': function() {
-                    this['setMiniMapFont'](), this['setMiniMapWidth'](), this['setMiniMapSectorsOpacity']();
+                    this['setMiniMapFont'](); 
+					this['setMiniMapWidth'](); 
+					this['setMiniMapSectorsOpacity']();
                 },
                 'setMiniMapFont': function() {
-                    this.setFont('miniMapFont', g['miniMapFont']), ogarminimapdrawer && ogarminimapdrawer['resetMiniMapSectors']();
+                    this.setFont('miniMapFont', g['miniMapFont']);
+					if (ogarminimapdrawer){
+						ogarminimapdrawer['resetMiniMapSectors']();
+					}
                 },
                 'setMiniMapWidth': function() {
                     var t = g['miniMapWidth'] / 200;
@@ -1865,13 +1877,22 @@ var thelegendmodproject = function(t, e, i) {
                     }), ogarminimapdrawer && ogarminimapdrawer['resetMiniMapSectors']();
                 },
                 'setMiniMapSectorsColor': function() {
-                    ogarminimapdrawer && ogarminimapdrawer['resetMiniMapSectors']();
+                    if (ogarminimapdrawer){ 
+					ogarminimapdrawer['resetMiniMapSectors']();
+					}
                 },
                 'setMiniMapSectorsOpacity': function() {
                     $('#minimap-sectors').css('opacity', g['miniMapSectorsOpacity']);
                 },
                 'setTheme': function() {
-                    this['setFonts'](), this['setBgColor'](), this['setCustomBackground'](), this['setCustomCursor'](), this['setMenu'](), this['setHud'](), this['setChat'](), this['setMiniMap']();
+                    this['setFonts'](); 
+					this['setBgColor'](); 
+					this['setCustomBackground'](); 
+					this['setCustomCursor']();
+					this['setMenu']();
+					this['setHud']();
+					this['setChat'](); 
+					this['setMiniMap']();
                 },
                 'init': function() {
                     this['loadThemeSettings']();
@@ -2071,7 +2092,9 @@ var thelegendmodproject = function(t, e, i) {
                 return i['playerY'] + i['mapOffsetY'];
             },
             'feed': function() {
-                window.core && window.core.eject && window.core.eject();
+                if (window.core && window.core.eject){ 
+				window.core.eject();
+				}
             },
             'macroFeed': function(t) {
                 if (t) {
@@ -2080,38 +2103,47 @@ var thelegendmodproject = function(t, e, i) {
                     this.feed(), this.feedInterval = setInterval(function() {
                         e.feed();
                     }, 80);
-                } else this.feedInterval && (clearInterval(this.feedInterval), this.feedInterval = null);
+                } else if (this.feedInterval) {
+				clearInterval(this.feedInterval); 
+				this.feedInterval = null
+				};
             },
             'split': function() {
                 window.core && window.core.split && window.core.split();
             },
             'doubleSplit': function() {
                 var t = this;
-                t.split(), setTimeout(function() {
+                t.split();
+				setTimeout(function() {
                     t.split();
                 }, 40);
             },
             'popSplit': function() {
                 var t = this;
-                t.split(), setTimeout(function() {
+                t.split();
+				setTimeout(function() {
                     t.split();
                 }, 200);
             },
             'split16': function() {
                 var t = this;
-                t.split(), setTimeout(function() {
+                t.split();
+				setTimeout(function() {
                     t.split();
-                }, 40), setTimeout(function() {
+                }, 40);
+				setTimeout(function() {
                     t.split();
-                }, 80), setTimeout(function() {
+                }, 80);
+				setTimeout(function() {
                     t.split();
-                }, 0x78);
+                }, 120);
             },
             'toggleSkins': function() {
                 i['vanillaSkins'] && i['customSkins'] ? i['vanillaSkins'] = false : !i['vannillaSkins'] && i['customSkins'] ? (i['vanillaSkins'] = true, i['customSkins'] = false) : (i['vanillaSkins'] = true, i['customSkins'] = true);
             },
             'toggleCells': function() {
-                this['selectBiggestCell'] = !this['selectBiggestCell'], i['selectBiggestCell'] = this['selectBiggestCell'];
+                this['selectBiggestCell'] = !this['selectBiggestCell'], 
+				i['selectBiggestCell'] = this['selectBiggestCell'];
             },
             'setShowTop5': function() {
                 v['showTop5'] = !v['showTop5'], this['setTop5']();
@@ -2168,7 +2200,8 @@ var thelegendmodproject = function(t, e, i) {
                 v['showBgSectors'] = !v['showBgSectors'];
             },
             'setHideSmallBots': function() {
-                i['hideSmallBots'] = !i['hideSmallBots'], this['displayChatInfo'](!i['hideSmallBots'], 'hideSmallBotsMsg');
+                i['hideSmallBots'] = !i['hideSmallBots'], 
+				this['displayChatInfo'](!i['hideSmallBots'], 'hideSmallBotsMsg');
             },
             'setShowNames': function() {
                 v['noNames'] = !v['noNames'];
@@ -2201,7 +2234,10 @@ var thelegendmodproject = function(t, e, i) {
                 i['zoomValue'] = t;
             },
             'toggleDeath': function() {
-                this['lastDeath']--, this['lastDeath'] < 0 && (this['lastDeath'] = this['deathLocations'].length - 1);
+                this['lastDeath']--, 
+				if (this['lastDeath'] < 0){
+					this['lastDeath'] = this['deathLocations'].length - 1;
+				}
             },
             'tryResp': function() {
                 if (i.play || 20 == this['retryResp']) this['retryResp'] = 0;
@@ -2214,10 +2250,17 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'quickResp': function() {
-                v['quickResp'] && (this['hideMenu'](), this['gameServerConnect'](this['ws']), i.play = false, this['tryResp']());
+                if(v['quickResp']){ 
+				this['hideMenu']();
+				this['gameServerConnect'](this['ws']);
+				i.play = false;
+				this['tryResp']();
+				}
             },
             'autoResp': function() {
-                v['autoResp'] && (this['setAutoResp'](), $('#overlays')['stop']().hide(), $('.btn-play-guest')['is'](':visible') ? $('.btn-play-guest')['click']() : $('.btn-play')['click']());
+                v['autoResp'] && (this['setAutoResp'](), 
+				$('#overlays')['stop']().hide(), 
+				$('.btn-play-guest')['is'](':visible') ? $('.btn-play-guest')['click']() : $('.btn-play')['click']());
             },
             'setAutoResp': function() {
                 v['autoResp'] && ($('#skipStats')['prop']('checked') || ($('#skipStats')['click'](), this['skipStats'] = true));
@@ -2227,7 +2270,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'copyLb': function() {
                 var t = $('<input>');
-                $('body').append(t), t.val($('#leaderboard-positions').text()).select();
+                $('body').append(t);
+				t.val($('#leaderboard-positions').text()).select();
                 try {
                     document.execCommand('copy');
                 } catch (ogarcopierlbcather) {}
@@ -2249,10 +2293,14 @@ var thelegendmodproject = function(t, e, i) {
                 this['protocolMode'] ? $('#block-warn').hide() : v['blockPopups'] ? this['blockPopups']() : this['unblockPopups']();
             },
             'blockPopups': function() {
-                $('#openfl-content, #openfl-overlay').hide(), $('#openfl-content, #openfl-overlay').addClass('block-popups'), $('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', true), $('#block-warn').show();
+                $('#openfl-content, #openfl-overlay').hide(); 
+				$('#openfl-content, #openfl-overlay').addClass('block-popups'); 
+				$('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', true), $('#block-warn').show();
             },
             'unblockPopups': function() {
-                $('#openfl-overlay.disabler')['click'](), $('#openfl-content, #openfl-overlay').hide(), $('#openfl-content, #openfl-overlay').removeClass('block-popups'), $('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', false), $('#block-warn').hide();
+                $('#openfl-overlay.disabler')['click'](), $('#openfl-content, #openfl-overlay').hide();
+				$('#openfl-content, #openfl-overlay').removeClass('block-popups'); 
+				$('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', false), $('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
                 v['blockPopups'] && this['unblockPopups']();
@@ -2335,8 +2383,10 @@ var thelegendmodproject = function(t, e, i) {
                     if (v['showTop5']) {
                         //console.log(['top5'].length);
                         //console.log(['teamPlayers'].length);
-                        for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o].nick) + '</li>');
-                        this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
+                        for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), 
+						t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this['escapeHTML'](this['top5'][o].nick) + '</li>');
+                        this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), 
+						this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                     }
                 }
 				else{
@@ -2389,24 +2439,30 @@ var thelegendmodproject = function(t, e, i) {
                 t ? toastr['info'](h[e + 'A']) : toastr['error'](h[e + 'B']);
             },
             'setDisableChat': function() {
-                v['hideChat'] = v['disableChat'], this['setHideChat']();
+                v['hideChat'] = v['disableChat']; 
+				this['setHideChat']();
             },
             'hideChat': function() {
                 v['hideChat'] = !v['hideChat'], this['setHideChat'](), this['displayChatInfo'](!v['hideChat'], 'hideChatMsg');
             },
             'setHideChat': function() {
-                v['hideChat'] && $('#message-box').hide(), this['setShowChatBox']();
+				if (v['hideChat']){
+					$('#message-box').hide();
+				}
+                 this['setShowChatBox']();
             },
             'setShowChatBox': function() {
                 !v['hideChat'] && v['showChatBox'] ? $('#chat-box').show() : $('#chat-box').hide();
             },
             'enterChatMessage': function() {
-                var t = $('#message-box'),
-                    e = $('#message');
+                var t = $('#message-box');
+                var e = $('#message');
                 if (t['is'](':visible')) {
                     var o = e.val();
                     o.length ? (this['sendChatMessage'](101, o), i.play && (e['blur'](), t.hide())) : (e['blur'](), t.hide()), e.val('');
-                } else t.show(), e['focus'](), e.val('');
+                } else { t.show();
+				e['focus']();
+				e.val('');}
             },
             'showMenu': function(t) {
                 if (window.MC && window.MC['showNickDialog']) return $('.ogario-menu').show(), $('.menu-panel').hide(), i.play || this['skipStats'] ? $('#main-panel').show() : $('#stats').show(), window.MC['showNickDialog'](300), $('#oferwallContainer')['is'](':visible') && window['closeOfferwall'](), void($('#videoContainer')['is'](':visible') && window['closeVideoContainer']());
@@ -3559,21 +3615,33 @@ var thelegendmodproject = function(t, e, i) {
                 e && (this['skipServerData'] = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                pauseVideos(), this['closeConnection'](), this['flushData'](), this['setParty'](), console.log('[Legend mod Express] Connecting to server'), this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), this.socket['ogarioWS'] = true, this.socket['binaryType'] = 'arraybuffer';
+                pauseVideos(), 
+				this['closeConnection']();
+				this['flushData']() ; 
+				this['setParty'](); 
+				console.log('[Legend mod Express] Connecting to server'), 
+				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), 
+				this.socket['ogarioWS'] = true, 
+				this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
                     var e = t.createView(3);
-                    e.setUint8(0, 0), 
-					e.setUint16(1, 401, true), 
-					t['sendBuffer'](e), 
+                    e.setUint8(0, 0);
+					e.setUint16(1, 401, true);
+					t['sendBuffer'](e);
 					t['sendPartyData']();
-                }, this.socket['onmessage'] = function(e) {
+                }
+				this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
-                }, this.socket['onclose'] = function(e) {
-                    t['flushData'](), console.log('[Legend mod Express] Socket close', e);
-                }, this.socket['onerror'] = function(e) {
-                    t['flushData'](), console.log('[Legend mod Express] Socket error', e);
+                }
+				this.socket['onclose'] = function(e) {
+                    t['flushData']();
+					console.log('[Legend mod Express] Socket close', e);
+                }
+				this.socket['onerror'] = function(e) {
+                    t['flushData'](),;
+					console.log('[Legend mod Express] Socket error', e);
                 };
             },
             'closeConnection': function() {
@@ -3707,7 +3775,10 @@ var thelegendmodproject = function(t, e, i) {
             'sendServerRegion': function() {
                 if (this['region']) {
                     var t = this['region'].split('-');
-                    this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](17, t[0]));
+                    if (this['isSocketOpen']())
+					{
+						this['sendBuffer'](this['strToBuff'](17, t[0]));
+					}
                 }
             },
             'sendServerGameMode': function() {
@@ -6183,10 +6254,18 @@ var thelegendmodproject = function(t, e, i) {
                         var a = s ? i.length - 1 : 0;
 						//console.log(i[a]['size']);
 						if (i[a]['size']>=400){
-                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], 2*i[a]['size'] + 760, 0, this.pi2, false), t['closePath'](), t['stroke']();
+                        t['lineWidth'] = 6, 
+						t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, 
+						t['strokeStyle'] = g['splitRangeColor']; 
+						t['beginPath'](); 
+						t.arc(i[a]['x'], i[a]['y'], 2*i[a]['size'] + 760, 0, this.pi2, false); 
+						t['closePath'](); 
+						t['stroke']();
 						}
 				   }
-                    t['globalAlpha'] = 1, o && (e = []);
+                    t['globalAlpha'] = 1; 
+					if (o){ e = [];
+					}
                 },				
                 'drawOppRings': function(t, e, i, s, o, a, n) {
                     var r = 14 + 2 / e;
@@ -7152,17 +7231,25 @@ var thelegendmodproject = function(t, e, i) {
                             } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i['label'] + '</div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                         } 
 					$(document).on('click', '#reset-hotkeys', function(t) {
-                        t.preventDefault(), t['resetHotkeys']();
+                        t.preventDefault();
+						t['resetHotkeys']();
                     }), 
 					$(document).on('click', '#save-hotkeys', function(t) {
-                        t.preventDefault(), t['saveHotkeys'](), $('#hotkeys')['fadeOut'](500);
+                        t.preventDefault(); 
+						t['saveHotkeys']();
+						$('#hotkeys')['fadeOut'](500);
                     }), 
 					$(document).on('click', '#close-hotkeys', function(t) {
-                        t.preventDefault(), $('#hotkeys')['fadeOut'](500);
+                        t.preventDefault(); 
+						$('#hotkeys')['fadeOut'](500);
                     }), 
 					$(document).on('click', '.hotkeys-link', function(t) {
-                        $('#hotkeys')['fadeIn'](500), $('#hotkeys-cfg')['perfectScrollbar']('update'), ogarcommando1();
-                    }), $('#hotkeys-cfg')['perfectScrollbar'](), y && y['setMenuBg']();
+                        $('#hotkeys')['fadeIn'](500);
+						$('#hotkeys-cfg')['perfectScrollbar']('update'); 
+						ogarcommando1();
+                    }), 
+					$('#hotkeys-cfg')['perfectScrollbar'](), 
+					y && y['setMenuBg']();
                 },
                 'getPressedKey': function(t) {
                     var e = '',
@@ -7214,7 +7301,8 @@ var thelegendmodproject = function(t, e, i) {
                     return '' !== e ? '' !== i ? e + '+' + i : e : i;
                 },
                 'deleteHotkey': function(t, e) {
-                    delete ogario1Hotkeys[t], $('#' + e).val('');
+                    delete ogario1Hotkeys[t]; 
+					$('#' + e).val('');
                 },
                 'setDefaultHotkey': function(t) {
                     var e = false;
@@ -7229,12 +7317,18 @@ var thelegendmodproject = function(t, e, i) {
                                     a = this['setDefaultHotkey'](o);
                                 a ? (ogario1Hotkeys[a] = o, $('#' + o).val(a)) : this['deleteHotkey'](t, o);
                             }
-                            ogario1Hotkeys[t] = e, $('#' + e).val(t), 'hk-chatMessage' === e && (ogario1Hotkeys['spec-messageKey'] = t), this['lastPressedKey'] = t, this['lastKeyId'] = e;
+                            ogario1Hotkeys[t] = e, 
+							$('#' + e).val(t); 
+							if ('hk-chatMessage' === e){ 
+							ogario1Hotkeys['spec-messageKey'] = t} 
+							this['lastPressedKey'] = t; 
+							this['lastKeyId'] = e;
                         }
                     }
                 },
                 'init': function() {
-                    this['loadHotkeys'](), this['setHotkeysMenu']();
+                    this['loadHotkeys'](); 
+					this['setHotkeysMenu']();
                 }
             };
         window.legendmod2 = ogarfooddrawer; //look at this
