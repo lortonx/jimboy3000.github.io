@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.525 MEGA TEST
+// v1.526 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -1780,7 +1780,7 @@ var thelegendmodproject = function(t, e, i) {
 					}
                 },
                 'setCustomBackground': function() {
-                    g['customBackground'] ? $('body').css('background-image', 'url(' + g['customBackground'] + ')') : $('body')['css']('background-image', 'none');
+                    g['customBackground'] ? $('body').css('background-image', 'url(' + g['customBackground'] + ')') : $('body').css('background-image', 'none');
                 },
                 'setCustomCursor': function() {
                     if (g.customCursor) var t = '*{cursor:url(' + g.customCursor + '), auto !important}';
@@ -1794,7 +1794,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.changePreset(t, m), this['setMenu']();
                 },
                 'setMenuOpacity': function() {
-                    $('#helloContainer, #hotkeys, #exp-imp')['css']('opacity', g['menuOpacity']);
+                    $('#helloContainer, #hotkeys, #exp-imp').css('opacity', g['menuOpacity']);
                 },
                 'setMenuMainColor': function() {
                     var t = '::-moz-selection{background-color:' + g['menuMainColor'] + '!important}::selection{background-color:' + g['menuMainColor'] + '!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:' + g['menuMainColor'] + '}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:' + g['menuMainColor'] + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + g['menuMainColor'] + '}.ps-scrollbar-y{background-color:' + g['menuMainColor'] + '!important}';
@@ -1831,12 +1831,12 @@ var thelegendmodproject = function(t, e, i) {
                 'setHudScale': function() {
                     var t = Math.round(20 * g['hudScale']),
                         e = Math.round(200 * g['hudScale']),
-                        i = Math['floor'](55 * g['hudScale']),
-                        o = Math['floor'](6 * g['hudScale']),
-                        a = Math['floor'](280 * g['hudScale']),
-                        n = Math['floor'](85 * g['hudScale']),
-                        r = Math['floor'](20 * g['hudScale']);
-                    $('#overlays-hud')['css']('font-size', t + 'px'), $('#leaderboard-hud, #time-hud')['width'](e), $('#top5-hud')['width'](e + 30).css('top', i + 'px'), $('#top5-pos').css('padding-left', o + 'px'), $('#time-hud').css('top', a + 'px'), $('#pause-hud')['css']('top', n + 'px'), $('#target-hud').css('padding-top', r + 'px');
+                        i = Math.floor(55 * g['hudScale']),
+                        o = Math.floor(6 * g['hudScale']),
+                        a = Math.floor(280 * g['hudScale']),
+                        n = Math.floor(85 * g['hudScale']),
+                        r = Math.floor(20 * g['hudScale']);
+                    $('#overlays-hud').css('font-size', t + 'px'), $('#leaderboard-hud, #time-hud')['width'](e), $('#top5-hud')['width'](e + 30).css('top', i + 'px'), $('#top5-pos').css('padding-left', o + 'px'), $('#time-hud').css('top', a + 'px'), $('#pause-hud').css('top', n + 'px'), $('#target-hud').css('padding-top', r + 'px');
                 },
                 'setChat': function() {
                     this['setChatColors'](), this['setChatScale']();
@@ -1850,8 +1850,8 @@ var thelegendmodproject = function(t, e, i) {
                     var e = Math.round(280 * g['chatScale']);
                     var i = Math.round(350 * g['chatScale']);
                     var o = Math.round(300 * g['chatScale']);
-                    var a = Math['floor'](14 * g['chatScale']);
-                    $('#message-box, #messages, #toast-container, #chat-box')['css']('font-size', t + 'px'); 
+                    var a = Math.floor(14 * g['chatScale']);
+                    $('#message-box, #messages, #toast-container, #chat-box').css('font-size', t + 'px'); 
 					$('#messages, #toast-container, #chat-box')['width'](e); 
 					$('#message-box')['width'](i), $('#chat-box')['height'](o); 
 					$('.user-list').css('padding-left', a + 'px');
@@ -3056,7 +3056,7 @@ var thelegendmodproject = function(t, e, i) {
 				$(".submenu-panel, #chat-box, #exp-imp-settings, #export-settings, #import-settings")["perfectScrollbar"]({
                         "suppressScrollX": true
                     }); 
-				Array.prototype.slice.call(document.querySelectorAl(".js-switch")).forEach(function(remove) {
+				Array.prototype.slice.call(document.querySelectorAll(".js-switch")).forEach(function(remove) {
                         new Switchery(remove, {
                             "color": g["menuMainColor"],
                             "size": "small"
@@ -3099,7 +3099,7 @@ var thelegendmodproject = function(t, e, i) {
 				window.MC && window.MC.setRegion && window.MC.setRegion(this.region)) : this.region = $("#region").val(), 
 				this.setParty(), ":party" === this.gameMode && window.location.hash && 
 				$("#join-party-btn-2").click(), 
-				Array.prototype.slice.call(document.querySelectorAl(".js-switch-vanilla")).forEach(function(remove) {
+				Array.prototype.slice.call(document.querySelectorAll(".js-switch-vanilla")).forEach(function(remove) {
                     new Switchery(remove, {
                         "color": g["menuMainColor"],
                         "size": "small"
@@ -3366,8 +3366,8 @@ var thelegendmodproject = function(t, e, i) {
                 if (!i['mapOffsetFixed']) return '';
                 var o = s ? i['mapOffsetX'] + i['mapOffset'] : i['mapOffset'],
                     a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
-                    n = Math['floor']((e + a) / (i['mapSize'] / g['sectorsY'])),
-                    r = Math['floor']((t + o) / (i['mapSize'] / g['sectorsX']));
+                    n = Math.floor((e + a) / (i['mapSize'] / g['sectorsY'])),
+                    r = Math.floor((t + o) / (i['mapSize'] / g['sectorsX']));
 					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
                 return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
             },
@@ -3529,10 +3529,10 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'setVirusColor': function(t) {
-                return Math['floor'](t * t / 100) > 183 ? '#C80000' : g['virusColor'];
+                return Math.floor(t * t / 100) > 183 ? '#C80000' : g['virusColor'];
             },
             'setVirusStrokeColor': function(t) {
-                return i.play && 0 != i['playerMaxMass'] ? Math['floor'](t * t / 100) / (this['selectBiggestCell'] ? i['playerMaxMass'] : i['playerMinMass']) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
+                return i.play && 0 != i['playerMaxMass'] ? Math.floor(t * t / 100) / (this['selectBiggestCell'] ? i['playerMaxMass'] : i['playerMinMass']) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
             },
             'setAutoHideCellInfo': function(t) {
                 return t <= 40 || i['viewScale'] < 0.5 && t < 550 && t < 25 / i['viewScale'];
@@ -3830,8 +3830,8 @@ var thelegendmodproject = function(t, e, i) {
                     var t = this.createView(17);
                     t.setUint8(0, 30);
                     t.setUint32(1, this["playerID"], true);
-                    t["setInt32"](5, this["getPlayerX"](), true);
-                    t["setInt32"](9, this["getPlayerY"](), true);
+                    t.setInt32(5, this["getPlayerX"](), true);
+                    t.setInt32(9, this["getPlayerY"](), true);
                     if (void 0 !== i["playerMass"]) {
                         t.setUint32(13, i["playerMass"], true);
                     } else {
@@ -5227,8 +5227,8 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     var i = this.createView(13);
                     i.setUint8(0, 16);
-                    i["setInt32"](1, t, true);
-                    i["setInt32"](5, e, true);
+                    i.setInt32(1, t, true);
+                    i.setInt32(5, e, true);
                     i.setUint32(9, this.protocolKey, true);
                     this.sendMessage(i);
                 }
@@ -5253,25 +5253,25 @@ var thelegendmodproject = function(t, e, i) {
                 var curr = shapes["length"];
                 var count = this.clientVersionString["length"];
                 var data = [oW, 8, 1, 18];
-                //this["writeUint32"](data, curr + count + 23);
-                ogarminimapdrawer["writeUint32"](data, curr + count + 23);
+                //this.writeUint32(data, curr + count + 23);
+                ogarminimapdrawer.writeUint32(data, curr + count + 23);
                 data["push"](8, 10, 82);
                 ogarminimapdrawer['writeUint32'](data, curr + count + 18);
                 //this['writeUint32'](data, curr + count + 18);
                 data["push"](8, options, 18, count + 8, 8, 5, 18, count);
                 var prev = 0;
                 for (; prev < count; prev++) {
-                    data["push"](this.clientVersionString["charCodeAt"](prev));
+                    data["push"](this.clientVersionString.charCodeAt(prev));
                 }
                 data["push"](24, 0, 32, 0, 26);
-                ogarminimapdrawer["writeUint32"](data, curr + 3);
-                //this["writeUint32"](data, curr + 3);
+                ogarminimapdrawer.writeUint32(data, curr + 3);
+                //this.writeUint32(data, curr + 3);
                 data["push"](10);
-                ogarminimapdrawer["writeUint32"](data, curr);
-                //this["writeUint32"](data, curr);
+                ogarminimapdrawer.writeUint32(data, curr);
+                //this.writeUint32(data, curr);
                 prev = 0;
                 for (; prev < curr; prev++) {
-                    data["push"](shapes["charCodeAt"](prev));
+                    data["push"](shapes.charCodeAt(prev));
                 }
                 data = new Uint8Array(data);
                 var raw_basefont = new DataView(data["buffer"]);
