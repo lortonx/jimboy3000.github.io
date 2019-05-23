@@ -1,26 +1,25 @@
-//v3
-legendmaster(window);
-function legendmaster(self) {
+//v4
+
     function login() {
         if (l) {
-            self.getStorage();
+            window.getStorage();
             if ("1" === options.loginIntent && "facebook" === options.context) {
-                self.FB.getLoginStatus(function(res) {
+                window.FB.getLoginStatus(function(res) {
                     if (res.status === "connected") {
                         init(res);
                     } else {
-                        self.logout();
+                        window.logout();
                     }
                 });
             }
-            self.facebookRelogin = clear;
-            self.facebookLogin = clear;
+            window.facebookRelogin = clear;
+            window.facebookLogin = clear;
         }
     }
 
     function clear(nbToClear) {
-        if (null !== self.FB) {
-            return options.loginIntent = "1", options.context = "facebook", self.updateStorage(), self.FB.login(function(requestTokenResult) {
+        if (null !== window.FB) {
+            return options.loginIntent = "1", options.context = "facebook", window.updateStorage(), window.FB.login(function(requestTokenResult) {
                 init(requestTokenResult);
             }, {
                 scope: "public_profile, email"
@@ -34,11 +33,11 @@ function legendmaster(self) {
             var accessToken = response.authResponse.accessToken;
             if (accessToken) {
                 master.doLoginWithFB(accessToken);
-                self.FB.api("/me/picture?width=180&height=180", function(images) {
+                window.FB.api("/me/picture?width=180&height=180", function(images) {
                     if (images.data && images.data.url) {
                         options.userInfo.picture = images.data.url;
                         $(".agario-profile-picture").attr("src", images.data.url);
-                        self.updateStorage();
+                        window.updateStorage();
                     }
                 });
                 $("#helloContainer").attr("data-logged-in", "1");
@@ -49,16 +48,16 @@ function legendmaster(self) {
             } else {
                 if (f < 3) {
                     f++;
-                    self.facebookRelogin();
-                    self.logout();
+                    window.facebookRelogin();
+                    window.logout();
                 }
             }
         }
     }
 
     function setup() {
-        self.gapi.load("auth2", function() {
-            api = self.gapi.auth2.init({
+        window.gapi.load("auth2", function() {
+            api = window.gapi.auth2.init({
                 client_id: headers.gplus_client_id,
                 cookie_policy: "single_host_origin",
                 scope: "profile",
@@ -68,7 +67,7 @@ function legendmaster(self) {
             contextMenu.addEventListener("click", function() {
                 options.loginIntent = "1";
                 options.context = "google";
-                self.updateStorage();
+                window.updateStorage();
             });
             api.attachClickHandler(contextMenu);
             api.currentUser.listen(transform);
@@ -90,7 +89,7 @@ function legendmaster(self) {
             master.doLoginWithGPlus(idToken);
             if (attrVal) {
                 options.userInfo.picture = attrVal;
-                self.updateStorage();
+                window.updateStorage();
                 $(".agario-profile-picture").attr("src", attrVal);
             }
             $("#helloContainer").attr("data-logged-in", "1");
@@ -129,7 +128,7 @@ function legendmaster(self) {
     var l = false;
     var f = 0;
     var api = null;
-    self.master = {
+    window.master = {
         ws: null,
         serverIP: null,
         endpoint: null,
@@ -145,8 +144,8 @@ function legendmaster(self) {
         clientVersion: headers.client_version,
         clientVersionString: headers.client_version_string,
         getClientVersion: function() {
-            if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
-                this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
+            if (null !== window.localStorage.getItem("ogarioClientVersionString")) {
+                this.clientVersionString = window.localStorage.getItem("ogarioClientVersionString");
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
@@ -173,10 +172,10 @@ function legendmaster(self) {
                 console.log("[Master] Changing client version...");
                 this.clientVersion = clientVersion;
                 this.clientVersionString = serverVersion;
-                if (self.core) {
-                    self.core.setClientVersion(clientVersion, serverVersion);
+                if (window.core) {
+                    window.core.setClientVersion(clientVersion, serverVersion);
                 }
-                self.localStorage.setItem("ogarioClientVersionString", serverVersion);
+                window.localStorage.setItem("ogarioClientVersionString", serverVersion);
                 this.reconnect(true);
             }
         },
@@ -184,7 +183,7 @@ function legendmaster(self) {
             return 1e4 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
 /*        getRegionCode: function() {
-            var nextNodeLoc = self.localStorage.getItem("location");
+            var nextNodeLoc = window.localStorage.getItem("location");
             if (nextNodeLoc) {
                 return this.setRegion(nextNodeLoc, false), void(this.checkPartyHash() || this.reconnect());
             }
@@ -229,7 +228,7 @@ function legendmaster(self) {
             }
             if (items) {
                 this.region = items;
-                self.localStorage.setItem("location", items);
+                window.localStorage.setItem("location", items);
                 if ($("#region").val() !== items) {
                     $("#region").val(items);
                 }
@@ -242,9 +241,9 @@ function legendmaster(self) {
             var x = $("#region");
             var options = x.val();
             if (options) {
-                self.localStorage.setItem("location", options);
+                window.localStorage.setItem("location", options);
             } else {
-                if (options = self.localStorage.getItem("location")) {
+                if (options = window.localStorage.getItem("location")) {
                     $("#region").val(options);
                 }
             }
@@ -290,7 +289,7 @@ function legendmaster(self) {
             $("#helloContainer, #overlays-hud").attr("data-gamemode", value);
             $("#gamemode").val(value);
             if (value !== ":party") {
-                this.replaceHistoryState("/#" + self.encodeURIComponent(value.replace(":", "")));
+                this.replaceHistoryState("/#" + window.encodeURIComponent(value.replace(":", "")));
             }
         },
         handleChangeMode: function() {
@@ -300,8 +299,8 @@ function legendmaster(self) {
         findServer: function(id, params) {
             var e = Date.now();
             if (!(e - this.findingServer < 500)) {
-                if (self.core) {
-                    self.core.disconnect();
+                if (window.core) {
+                    window.core.disconnect();
                 }
                 var picKey = "findServer";
                 if (null == id) {
@@ -408,7 +407,7 @@ function legendmaster(self) {
             }
             this.setGameMode(":party", false);
             this.partyToken = d;
-            this.replaceHistoryState("/#" + self.encodeURIComponent(d));
+            this.replaceHistoryState("/#" + window.encodeURIComponent(d));
             var label = this.setRequestMsg(this.region, "", d);
             this.makeMasterRequest(headers.endpoint_version + "/getToken", label, function(moduleParams) {
                 scopeHeaderOverrides.endpoint = moduleParams.endpoints.https;
@@ -430,10 +429,10 @@ function legendmaster(self) {
             console.log("[Master] Connect to:", body);
             this.ws = "wss://" + body;
             if (":party" === this.gameMode && this.partyToken) {
-                this.ws += "?party_id=" + self.encodeURIComponent(this.partyToken);
+                this.ws += "?party_id=" + window.encodeURIComponent(this.partyToken);
             }
-            if (self.core) {
-                self.core.connect(this.ws);
+            if (window.core) {
+                window.core.connect(this.ws);
             }
         },
         reconnect: function(table) {
@@ -457,8 +456,8 @@ function legendmaster(self) {
             requestCaptcha(true);
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
-            if (self.core) {
-                self.core.recaptchaResponse(mmCoreSplitViewBlock);
+            if (window.core) {
+                window.core.recaptchaResponse(mmCoreSplitViewBlock);
             }
         },
         notifyToken: function(n) {
@@ -470,13 +469,13 @@ function legendmaster(self) {
             if (result && result.length > 15) {
                 result = result.substring(0, 15);
             }
-            if (self.core) {
-                self.core.sendNick(result);
+            if (window.core) {
+                window.core.sendNick(result);
             }
         },
         spectate: function() {
-            if (self.core) {
-                self.core.sendSpectate();
+            if (window.core) {
+                window.core.sendSpectate();
             }
         },
         updatePartyToken: function() {
@@ -484,24 +483,24 @@ function legendmaster(self) {
         },
         checkHash: function() {
             if (this.checkPartyHash()) {
-                this.joinParty(self.location.hash);
+                this.joinParty(window.location.hash);
             } else {
                 var fm = ["#ffa", "#battleroyale", "#teams", "#experimental"];
-                if (self.location.hash && -1 != fm.indexOf(self.location.hash)) {
-                    this.setGameMode(self.location.hash.replace("#", ":"));
+                if (window.location.hash && -1 != fm.indexOf(window.location.hash)) {
+                    this.setGameMode(window.location.hash.replace("#", ":"));
                 }
             }
         },
         checkPartyHash: function() {
-            return self.location.hash && 7 == self.location.hash.length;
+            return window.location.hash && 7 == window.location.hash.length;
         },
         replaceHistoryState: function(name) {
-            if (self.history && self.history.replaceState) {
-                self.history.replaceState({}, self.document.title, name);
+            if (window.history && window.history.replaceState) {
+                window.history.replaceState({}, window.document.title, name);
             }
         },
         facebookLogin: function() {
-            self.facebookLogin();
+            window.facebookLogin();
         },
         doLoginWithFB: function(session) {
             this.context = "facebook";
@@ -513,11 +512,11 @@ function legendmaster(self) {
         },
         login: function() {
             if (this.accessToken) {
-                if (this.context === "facebook" && self.core && self.core.sendFbToken) {
-                    self.core.sendFbToken(this.accessToken);
+                if (this.context === "facebook" && window.core && window.core.sendFbToken) {
+                    window.core.sendFbToken(this.accessToken);
                 }
-                if (this.context === "google" && self.core && self.core.sendGplusToken) {
-                    self.core.sendGplusToken(this.accessToken);
+                if (this.context === "google" && window.core && window.core.sendGplusToken) {
+                    window.core.sendGplusToken(this.accessToken);
                 }
             }
         },
@@ -530,7 +529,7 @@ function legendmaster(self) {
             $("[data-itr]").each(function() {
                 var o = $(this);
                 var i = o.attr("data-itr");
-                o.html(self.i18n(i));
+                o.html(window.i18n(i));
             });
             $("#gamemode").on("change", function() {
                 chat.handleChangeMode();
@@ -551,7 +550,7 @@ function legendmaster(self) {
                 result.preventDefault();
                 chat.joinParty($("#party-token").val());
             });
-            self.toggleSocialLogin = function() {
+            window.toggleSocialLogin = function() {
                 $("#socialLoginContainer").toggle();
             };
         },
@@ -568,19 +567,19 @@ function legendmaster(self) {
             }, 18e4);
         }
     };
-    self.getStorage = function() {
-        if (null !== self.localStorage.getItem("storeObjectInfo")) {
-            options = JSON.parse(self.localStorage.getItem("storeObjectInfo"));
+    window.getStorage = function() {
+        if (null !== window.localStorage.getItem("storeObjectInfo")) {
+            options = JSON.parse(window.localStorage.getItem("storeObjectInfo"));
         }
     };
-    self.updateStorage = function() {
-        self.localStorage.setItem("storeObjectInfo", JSON.stringify(options));
+    window.updateStorage = function() {
+        window.localStorage.setItem("storeObjectInfo", JSON.stringify(options));
     };
-    self.logout = function() {
+    window.logout = function() {
         if (options.context === "google" && api) {
             api.signOut();
         }
-        delete self.localStorage.storeObjectInfo;
+        delete window.localStorage.storeObjectInfo;
         $("#helloContainer").attr("data-logged-in", "0");
         $(".progress-bar-striped").width("0%");
         $("#login-facebook").attr("class", "menu-bar-button");
@@ -588,11 +587,11 @@ function legendmaster(self) {
         toastr.warning("Logged out!");
         master.logout();
     };
-    self.facebookLogin = function() {
+    window.facebookLogin = function() {
         alert("You seem to have something blocking Facebook on your browser, please check for any extensions");
     };
-    self.fbAsyncInit = function() {
-        self.FB.init({
+    window.fbAsyncInit = function() {
+        window.FB.init({
             appId: headers.fb_app_id,
             cookie: true,
             xfbml: true,
@@ -602,8 +601,8 @@ function legendmaster(self) {
         l = true;
         login();
     };
-    self.gapiAsyncInit = function() {
-        self.getStorage();
+    window.gapiAsyncInit = function() {
+        window.getStorage();
         setup();
     };
-};
+
