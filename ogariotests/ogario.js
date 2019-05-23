@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.551 MEGA TEST
+// v1.552 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2219,7 +2219,7 @@ var thelegendmodproject = function(t, e, i) {
                 v['showMiniMap'] ? $('#minimap-hud').show() : $('#minimap-hud').hide();
             },
             'setShowQuest': function() {
-                ':ffa' === this.gameMode && (this.showQuest = !this.showQuest, this['setQuest']());
+                ':ffa' === this.gameMode && (this.showQuest = !this.showQuest, this.setQuest());
             },
             'setQuest': function() {
                 this.showQuest && ':ffa' === this.gameMode ? $('#quest-hud').show() : $('#quest-hud').hide();
@@ -2278,7 +2278,7 @@ var thelegendmodproject = function(t, e, i) {
                 t.remove();
             },
             'setPause': function() {
-                this.pause = !this.pause, i.pause = this.pause, this.pause ? (i['resetTargetPosition'](), $('#pause-hud').show()) : $('#pause-hud').hide();
+                this.pause = !this.pause, i.pause = this.pause, this.pause ? (i.resetTargetPosition(), $('#pause-hud').show()) : $('#pause-hud').hide();
             },
             'setCenteredLb': function() {
                 v['centeredLb'] ? $('#leaderboard-hud').addClass('hud-text-center') : $('#leaderboard-hud').removeClass('hud-text-center');
@@ -2737,11 +2737,11 @@ var thelegendmodproject = function(t, e, i) {
                     $("#mainPanel div[role=form]").appendTo($("#main-panel")), $("#main-panel div[role=form] .form-group:first").remove(), $("#nick")["before"]('<input id="clantag" class="form-control" placeholder="Tag, e.g. \u24c2" maxlength="10"><div class="input-group nick"></div>'), $("#nick").appendTo($(".nick")), $(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>'), $(".nick")["after"]('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Skin URL (imgur.com direct link)" maxlength="40"><input type="hidden" id="color" value="' +
                         ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>'), $("#locationKnown, #locationUnknown")["insertAfter"]($(".skin")), $("#region")["before"]('<button class="btn btn-warning btn-server-info ogicon-cogs"></button>'), $(".btn-spectate, .btn-logout").appendTo("#agario-main-buttons"), $("#agario-main-buttons").addClass("clearfix")["before"]('<div id="server-info" class="form-group clearfix"><input id="server-ws" class="form-control" placeholder="Server WS"><button id="server-connect" class="btn btn-success ogicon-power"></button><button id="server-reconnect" class="btn btn-primary ogicon-redo2"></button><input id="server-token" class="form-control" placeholder="Server token"><button id="server-join" class="btn btn-success" data-itr="page_join_party">Join</button></div>'),
                     $("#helloContainer div[role=form]")["after"]('<div id="ogario-party" class="clearfix"><input id="party-token" class="form-control" placeholder="Party token"></div>'), $("#ogario-party").append('<button id="join-party-btn-2" class="btn btn-success" data-itr="page_join_party">Join</button><button id="create-party-btn-2" class="btn btn-primary" data-itr="page_create_party">Create</button>'), $("#pre-join-party-btn:first, #join-party-btn:first, #create-party-btn:first, #leave-party-btn:first, #joinPartyToken:first, .party-icon-back:first").appendTo($("#ogario-party")),
-                    $("#settingsChoice, #options").appendTo($("#og-settings .submenu-panel")), $("#stats").appendTo($("#main-menu")).addClass("menu-panel"), $("#statsContinue")["attr"]("id", "statsContinue2"), $("#mainPanel")["empty"]().remove(), $(".center-container").addClass("ogario-menu"), $(".center-container").append('<div id="menu-footer" class="menu-main-color">' + h["visit"] + ' <a href="http://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this["version"] + ' <a href="https://goo.gl/nRREoR" class="release ogicon-info" target="_blank"></a></div>'),
-                    $("#leftPanel, #rightPanel").addClass("ogario-menu")["removeAttr"]("id"), $(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo($("#profile")).removeClass("agario-side-panel"), $(".agario-profile-panel")["after"]('<div id="block-warn">' + h["blockWarn"] + '<br><a href="#" id="unblock-popups">' + h["unblockPopups"] + "</a></div>"), $("#exp-bar").addClass("agario-profile-panel"), $(".left-container")["empty"](), $(".agario-shop-panel")["after"]('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>'),
+                    $("#settingsChoice, #options").appendTo($("#og-settings .submenu-panel")), $("#stats").appendTo($("#main-menu")).addClass("menu-panel"), $("#statsContinue")["attr"]("id", "statsContinue2"), $("#mainPanel").empty().remove(), $(".center-container").addClass("ogario-menu"), $(".center-container").append('<div id="menu-footer" class="menu-main-color">' + h["visit"] + ' <a href="http://legendmod.ml" target="_blank">legendmod.ml</a> | ' + this["version"] + ' <a href="https://goo.gl/nRREoR" class="release ogicon-info" target="_blank"></a></div>'),
+                    $("#leftPanel, #rightPanel").addClass("ogario-menu")["removeAttr"]("id"), $(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo($("#profile")).removeClass("agario-side-panel"), $(".agario-profile-panel")["after"]('<div id="block-warn">' + h["blockWarn"] + '<br><a href="#" id="unblock-popups">' + h["unblockPopups"] + "</a></div>"), $("#exp-bar").addClass("agario-profile-panel"), $(".left-container").empty(), $(".agario-shop-panel")["after"]('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>'),
                     $("#tags-container").appendTo($("#profile")), $(".btn-logout").appendTo($("#profile")), $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://jimboy3100.github.io/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + h["skins"] + '"></a><a href="https://youtube.com/channel/UCoj-ZStcJ0jLMOSK7FOBTbA" class="quick-yt ogicon-youtube2" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="Team OGARio"></a></div>'),
                     this["protocolMode"] || $("#quick-menu")["prepend"]('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + h["page_shop"] + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + h["page_menu_main_free_coins"] + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + h["page_menu_main_gifts"] + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' +
-                        h["page_menu_main_dailyquests"] + '"></a>'), $(".party-dialog, .partymode-info").remove(), $(".agario-party-6").appendTo($(".center-container")), $(".right-container")["empty"](), $(".right-container").append('<div class="agario-party"></div>'), $(".agario-party-6").appendTo($(".agario-party")).addClass("agario-panel agario-side-panel"), $(".agario-party h4, #cancel-party-btn").remove(), $(".agario-party .btn").addClass("btn-sm"), $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://ogario.ovh/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' +
+                        h["page_menu_main_dailyquests"] + '"></a>'), $(".party-dialog, .partymode-info").remove(), $(".agario-party-6").appendTo($(".center-container")), $(".right-container").empty(), $(".right-container").append('<div class="agario-party"></div>'), $(".agario-party-6").appendTo($(".agario-party")).addClass("agario-panel agario-side-panel"), $(".agario-party h4, #cancel-party-btn").remove(), $(".agario-party .btn").addClass("btn-sm"), $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://ogario.ovh/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' +
                         h["moreSkins"] + "</a></div>"), $(".btn-settings, .text-muted, .tosBox, .agario-promo, #agario-web-incentive, span[data-itr='page_option_dark_theme'], #options #darkTheme").remove(), $("#advertisement, #adbg, #a320x250, #g320x250, #s320x250, #adsBottom").css("display", "none"), $("#advertisement").removeClass("agario-panel"), $("#adsBottom")["css"]({
                         "z-index": "1",
                         "opacity": "0",
@@ -3376,14 +3376,14 @@ var thelegendmodproject = function(t, e, i) {
             },
             'updateDeathLocations': function(t, e) {
                 if (i["mapOffsetFixed"]) {
-                    this["deathLocations"].push({
+                    this.deathLocations.push({
                         "x": t + i["mapOffsetX"],
                         "y": e + i["mapOffsetY"]
                     });
-                    if (6 == this["deathLocations"].length) {
-                        this["deathLocations"]["shift"]();
+                    if (6 == this.deathLocations.length) {
+                        this.deathLocations["shift"]();
                     }
-                    this["lastDeath"] = this["deathLocations"].length - 1;
+                    this.lastDeath = this.deathLocations.length - 1;
                 }
             },
             'drawMiniMap': function() {
@@ -3394,11 +3394,11 @@ var thelegendmodproject = function(t, e, i) {
                     var o = t - 18;
                     var a = e + 9.5;
                     if (this["miniMap"]) {
-                        this["miniMapCtx"].clearRect(0, 0, t, s);
+                        this.miniMapCtx.clearRect(0, 0, t, s);
                     } else {
                         this["miniMap"] = document.getElementById("minimap");
-                        this["miniMapCtx"] = this["miniMap"].getContext("2d");
-                        this["miniMapCtx"].ogarioCtx = true;
+                        this.miniMapCtx = this["miniMap"].getContext("2d");
+                        this.miniMapCtx.ogarioCtx = true;
                         this["miniMap"].width = t;
                         this["miniMap"].height = s;
                     }
@@ -3407,49 +3407,49 @@ var thelegendmodproject = function(t, e, i) {
                         this["miniMap"].height = s;
                     }
                     var n = o / i["mapSize"];
-                    var r = i["mapOffsetX"] + i["mapOffset"];
-                    var l = i["mapOffsetY"] + i["mapOffset"];
-                    if (this["drawSelectedCell"](this["miniMapCtx"]), 
+                    var r = i["mapOffsetX"] + i.mapOffset;
+                    var l = i["mapOffsetY"] + i.mapOffset;
+                    if (this["drawSelectedCell"](this.miniMapCtx), 
 					this["currentSector"] = this["calculateMapSector"](i.playerX, i.playerY, true), 
-					this["miniMapCtx"].globalAlpha = 1,
-					this["miniMapCtx"].font = g["miniMapFontWeight"] + " " + (e - 4) + "px " + g["miniMapFontFamily"],
-					this["miniMapCtx"].fillStyle = g["miniMapSectorColor"],
-					this["miniMapCtx"].fillText(this["currentSector"], 10, e),
+					this.miniMapCtx.globalAlpha = 1,
+					this.miniMapCtx.font = g["miniMapFontWeight"] + " " + (e - 4) + "px " + g["miniMapFontFamily"],
+					this.miniMapCtx.fillStyle = g["miniMapSectorColor"],
+					this.miniMapCtx.fillText(this["currentSector"], 10, e),
 					this["miniMapSectors"] || this["drawMiniMapSectors"](g["sectorsX"], g["sectorsY"], o, s, a),
-					this["miniMapCtx"].save(),
-                        this["miniMapCtx"].translate(9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer["drawBattleAreaOnMinimap"](this["miniMapCtx"], o, o, n, r, l), v["showMiniMapGhostCells"]) {
+					this.miniMapCtx.save(),
+                        this.miniMapCtx.translate(9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer["drawBattleAreaOnMinimap"](this.miniMapCtx, o, o, n, r, l), v["showMiniMapGhostCells"]) {
                         var h = i.ghostCells;
-                        this["miniMapCtx"].beginPath();
+                        this.miniMapCtx.beginPath();
                         var c = 0;
                         for (; c < h.length; c++) {
                             if (!h[c]["inView"]) {
                                 var u = ~~((h[c]["x"] + r) * n);
                                 var d = ~~((h[c]["y"] + l) * n);
-                                this["miniMapCtx"].moveTo(u, d);
-                                this["miniMapCtx"].arc(u, d, ~~(h[c].size * n), 0, this.pi2, false);
+                                this.miniMapCtx.moveTo(u, d);
+                                this.miniMapCtx.arc(u, d, ~~(h[c].size * n), 0, this.pi2, false);
                             }
                         }
-                        this["miniMapCtx"].fillStyle = g["miniMapGhostCellsColor"];
-                        this["miniMapCtx"].globalAlpha = g["miniMapGhostCellsAlpha"];
-                        this["miniMapCtx"].shadowColor = g["miniMapGhostCellsColor"];
-                        this["miniMapCtx"].shadowBlur = 10;
-                        this["miniMapCtx"].shadowOffsetX = 0;
-                        this["miniMapCtx"].shadowOffsetY = 0;
-                        this["miniMapCtx"].fill();
-                        this["miniMapCtx"].globalAlpha = 1;
-                        this["miniMapCtx"].shadowBlur = 0;
+                        this.miniMapCtx.fillStyle = g["miniMapGhostCellsColor"];
+                        this.miniMapCtx.globalAlpha = g["miniMapGhostCellsAlpha"];
+                        this.miniMapCtx.shadowColor = g["miniMapGhostCellsColor"];
+                        this.miniMapCtx.shadowBlur = 10;
+                        this.miniMapCtx.shadowOffsetX = 0;
+                        this.miniMapCtx.shadowOffsetY = 0;
+                        this.miniMapCtx.fill();
+                        this.miniMapCtx.globalAlpha = 1;
+                        this.miniMapCtx.shadowBlur = 0;
                     }																
                     if (v["showMiniMapGuides"]) {
                         u = Math.round((i.playerX + r) * n);
                         d = Math.round((i.playerY + l) * n);
-                        this["miniMapCtx"].lineWidth = 1;
-                        this["miniMapCtx"].strokeStyle = g["miniMapGuidesColor"];
-                        this["miniMapCtx"].beginPath();
-                        this["miniMapCtx"].moveTo(u, 0);
-                        this["miniMapCtx"].lineTo(u, o - 1);
-                        this["miniMapCtx"].moveTo(0, d);
-                        this["miniMapCtx"].lineTo(o - 1, d);
-                        this["miniMapCtx"].stroke();						
+                        this.miniMapCtx.lineWidth = 1;
+                        this.miniMapCtx.strokeStyle = g["miniMapGuidesColor"];
+                        this.miniMapCtx.beginPath();
+                        this.miniMapCtx.moveTo(u, 0);
+                        this.miniMapCtx.lineTo(u, o - 1);
+                        this.miniMapCtx.moveTo(0, d);
+                        this.miniMapCtx.lineTo(o - 1, d);
+                        this.miniMapCtx.stroke();						
                     }
                     if (v["showExtraMiniMapGuides"]) {
                         u = Math.round((i.playerX + r) * n);
@@ -3473,58 +3473,58 @@ var thelegendmodproject = function(t, e, i) {
 						this.miniMapCtx.stroke();	
 						
                     }					
-                    if (this["miniMapCtx"].beginPath(), this["miniMapCtx"].arc((i.playerX + r) * n, (i.playerY + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"].closePath(), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"].lineWidth = g["miniMapMyCellStrokeSize"], this["miniMapCtx"].strokeStyle = g["miniMapMyCellStrokeColor"], this["miniMapCtx"].stroke()), this["miniMapCtx"].fillStyle = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this.teamPlayers.length) {
+                    if (this.miniMapCtx.beginPath(), this.miniMapCtx.arc((i.playerX + r) * n, (i.playerY + l) * n, g.miniMapMyCellSize, 0, this.pi2, false), this.miniMapCtx.closePath(), g.miniMapMyCellStrokeSize > 0 && (this.miniMapCtx.lineWidth = g.miniMapMyCellStrokeSize, this.miniMapCtx.strokeStyle = g.miniMapMyCellStrokeColor, this.miniMapCtx.stroke()), this.miniMapCtx.fillStyle = g.miniMapMyCellColor, this.miniMapCtx.fill(), this.teamPlayers.length) {
                         c = 0;
                         for (; c < this.teamPlayers.length; c++) {
-                            this.teamPlayers[c].drawPosition(this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this.targetID, legendmod3.teamPlayers[c].color);
+                            this.teamPlayers[c].drawPosition(this.miniMapCtx, i.mapOffset, n, this.privateMiniMap, this.targetID, legendmod3.teamPlayers[c].color);
                         }
                     }
-                    if (this["deathLocations"].length > 0) {
-                        u = Math.round((this["deathLocations"][this["lastDeath"]]["x"] + i["mapOffset"]) * n);
-                        d = Math.round((this["deathLocations"][this["lastDeath"]]["y"] + i["mapOffset"]) * n);
-                        var f = Math["max"](g["miniMapMyCellSize"] - 2, 4);
-                        this["miniMapCtx"].lineWidth = 1;
-                        this["miniMapCtx"].strokeStyle = this["deathLocations"].length - 1 == this["lastDeath"] ? g["miniMapDeathLocationColor"] : "#FFFFFF";
-                        this["miniMapCtx"].beginPath();
-                        this["miniMapCtx"].moveTo(u - f, d);
-                        this["miniMapCtx"].lineTo(u + f, d);
-                        this["miniMapCtx"].moveTo(u, d - f);
-                        this["miniMapCtx"].lineTo(u, d + f);
-                        this["miniMapCtx"].stroke();
+                    if (this.deathLocations.length > 0) {
+                        u = Math.round((this.deathLocations[this.lastDeath].x + i.mapOffset) * n);
+                        d = Math.round((this.deathLocations[this.lastDeath].y + i.mapOffset) * n);
+                        var f = Math.max(g.miniMapMyCellSize- 2, 4);
+                        this.miniMapCtx.lineWidth = 1;
+                        this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 == this.lastDeath ? g.miniMapDeathLocationColor : "#FFFFFF";
+                        this.miniMapCtx.beginPath();
+                        this.miniMapCtx.moveTo(u - f, d);
+                        this.miniMapCtx.lineTo(u + f, d);
+                        this.miniMapCtx.moveTo(u, d - f);
+                        this.miniMapCtx.lineTo(u, d + f);
+                        this.miniMapCtx.stroke();
                     }
-                    this["miniMapCtx"].restore();
+                    this.miniMapCtx.restore();
                 }
             },
             'drawMiniMapSectors': function(t, e, s, o, a) {
-                this['miniMapSectors'] = document.getElementById('minimap-sectors');
-                var n = this['miniMapSectors'].getContext('2d');
+                this.miniMapSectors = document.getElementById('minimap-sectors');
+                var n = this.miniMapSectors.getContext('2d');
                 n.ogarioCtx = true; 
-				this['miniMapSectors'].width = s; 
-				this['miniMapSectors'].height = o; 
+				this.miniMapSectors.width = s; 
+				this.miniMapSectors.height = o; 
 				n.fillStyle = '#FFFFFF'; 
-				this['dTok'](n, s - 1);
-				ogarfooddrawer['drawSectors'](n, i['mapOffsetFixed'], t, e, 0.5, a, s - 0.5, o - 9.5, g['miniMapSectorsColor'], g['miniMapSectorsColor'], 1, false);
+				this.dTok(n, s - 1);
+				ogarfooddrawer.drawSectors(n, i.mapOffsetFixed, t, e, 0.5, a, s - 0.5, o - 9.5, g.miniMapSectorsColor, g.miniMapSectorsColor, 1, false);
             },
             'resetMiniMapSectors': function() {
-                this['miniMapSectors'] = null;
+                this.miniMapSectors = null;
             },
             'drawSelectedCell': function(t) {
-                i.play && i.playerSplitCells > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this.selectBiggestCell ? 0.6 : 0.3, t.beginPath(), t.arc(0x30, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this.selectBiggestCell ? 0.3 : 0.6, t.beginPath(), t.arc(0x3c, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
+                i.play && i.playerSplitCells > 1 && (v.splitRange || v.oppColors || v.oppRings || v.showStatsSTE) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this.selectBiggestCell ? 0.6 : 0.3, t.beginPath(), t.arc(0x30, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this.selectBiggestCell ? 0.3 : 0.6, t.beginPath(), t.arc(0x3c, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
             },
             'dTok': function(t, e) {
-                t.font = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t.fillText(atob(this['token']), e, 7);
+                t.font = g.miniMapFontWeight + ' ' + (g.miniMapTop - 6) + 'px ' + g.miniMapFontFamily, t.textAlign = 'right', t.textBaseline = 'top', t.fillText(atob(this.token), e, 7);
             },
 /*            'drawTeammatesInd': function(t, e, i, s) {
                 this.indicator && t.drawImage(this.indicator, e - 45, i - s - 90);
             }, */
             'drawCellInfo': function(t, e, s, o, a, n, r, l, h, c, u, d) {
-                //if (!n && !h && (t.globalAlpha = i.globalAlpha, v['teammatesInd'] && d && !l && a <= 200 && this['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
-				if (!n && !h && (t.globalAlpha = i.globalAlpha, v['teammatesInd'] && d && !l && a <= 200 && ogarfooddrawer['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
+                //if (!n && !h && (t.globalAlpha = i.globalAlpha, v.teammatesInd && d && !l && a <= 200 && this.drawTeammatesInd(t, s, o, a), !v.noNames || v.showMass)) {
+				if (!n && !h && (t.globalAlpha = i.globalAlpha, v.teammatesInd && d && !l && a <= 200 && ogarfooddrawer.drawTeammatesInd(t, s, o, a), !v.noNames || v.showMass)) {
                     var f = false;
-                    if (l || r || !(f = this['setAutoHideCellInfo'](a)) || !v['autoHideNames'] || !v['autoHideMass']) {
+                    if (l || r || !(f = this.setAutoHideCellInfo(a)) || !v.autoHideNames || !v.autoHideMass) {
                         var m = null;
-                        if (!this.cells.hasOwnProperty(e)) return (m = new ogarbasicassembly(s, o, r, l, v['shortMass'], v['virMassShots']))['setMass'](a), m['setNick'](c), void(this.cells[e] = m);
-                        (m = this.cells[e]).update(s, o, a, r, l, c), m.setDrawing(v['optimizedNames'], v['optimizedMass'], v['shortMass'], v['virMassShots'], v['namesStroke'], v['massStroke']), m['setDrawingScale'](i.viewScale, g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), t.globalAlpha = g['textAlpha'], v['noNames'] || f && v['autoHideNames'] || l && v['hideMyName'] || d && v['hideTeammatesNames'] || m['drawNick'](t, g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], g['namesStrokeColor']), !v['showMass'] || f && v['autoHideMass'] || l && v['hideMyMass'] || v['hideEnemiesMass'] && !l && !r || m['drawMass'](t, g['massColor'], g['massFontFamily'], g['massFontWeight'], g['massStrokeColor']);
+                        if (!this.cells.hasOwnProperty(e)) return (m = new ogarbasicassembly(s, o, r, l, v.shortMass, v.virMassShots)).setMass(a), m.setNick(c), void(this.cells[e] = m);
+                        (m = this.cells[e]).update(s, o, a, r, l, c), m.setDrawing(v.optimizedNames, v.optimizedMass, v.shortMass, v.virMassShots, v.namesStroke, v.massStroke), m.setDrawingScale(i.viewScale, g.namesScale, g.massScale, g.virMassScale, g.strokeScale), t.globalAlpha = g.textAlpha, v.noNames || f && v.autoHideNames || l && v.hideMyName || d && v.hideTeammatesNames || m.drawNick(t, g.namesColor, g.namesFontFamily, g.namesFontWeight, g.namesStrokeColor), !v.showMass || f && v.autoHideMass || l && v.hideMyMass || v.hideEnemiesMass && !l && !r || m.drawMass(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor);
                     }
                 }
             },
@@ -3532,15 +3532,15 @@ var thelegendmodproject = function(t, e, i) {
                 return Math.floor(t * t / 100) > 183 ? '#C80000' : g.virusColor;
             },
             'setVirusStrokeColor': function(t) {
-                return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
+                return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g.virusStrokeColor;
             },
             'setAutoHideCellInfo': function(t) {
                 return t <= 40 || i.viewScale < 0.5 && t < 550 && t < 25 / i.viewScale;
             },
             'setParty': function() {
                 var t = $('#party-token').val();
-                if (this.gameMode = i.gameMode = $('#gamemode').val(), this['setQuest'](), ':party' === this.gameMode && t) {
-                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this.partyToken !== e && (this.partyToken = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
+                if (this.gameMode = i.gameMode = $('#gamemode').val(), this.setQuest(), ':party' === this.gameMode && t) {
+                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this.partyToken !== e && (this.partyToken = e, this.flushSkinsMap(), this.flushChatData(), this.cancelTargeting());
                 }
             },
             'createParty': function() {
@@ -3560,21 +3560,21 @@ var thelegendmodproject = function(t, e, i) {
             },
             'flushData': function() {
                 this['flushPartyData'](); 
-				this['flushSkinsMap'](); 
-				this['flushChatData'](); 
-				this['cancelTargeting'](); 
+				this.flushSkinsMap(); 
+				this.flushChatData(); 
+				this.cancelTargeting(); 
 				i.play = false; 
 				i.playerColor = null;
             },
             'flushPartyData': function() {
                 this.teamPlayers = [];
 				this.parties = []; 
-				this['lastSentNick'] = ''; 
-				this['lastSentClanTag'] = null; 
-				this['lastSentSkinURL'] = ''; 
-				this['lastSentCustomColor'] = ''; 
-				this['lastSentPartyToken'] = ''; 
-				this['lastSentServerToken'] = '';
+				this.lastSentNick = ''; 
+				this.lastSentClanTag = null; 
+				this.lastSentSkinURL = ''; 
+				this.lastSentCustomColor = ''; 
+				this.lastSentPartyToken = ''; 
+				this.lastSentServerToken = '';
             },
             'flushCells': function() {
                 this.cells = {};
@@ -3627,7 +3627,7 @@ var thelegendmodproject = function(t, e, i) {
 				this.flushData() ; 
 				this.setParty(); 
 				console.log('[Legend mod Express] Connecting to server'), 
-				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), 
+				this.privateMode && this.privateIP ? this.socket = new WebSocket(this.privateIP) : this.socket = new WebSocket(this.publicIP), 
 				this.socket['ogarioWS'] = true, 
 				this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
@@ -3668,23 +3668,23 @@ var thelegendmodproject = function(t, e, i) {
                 }, 1000);
             },
             'switchServerMode': function() {
-                if (this["privateIP"]) {
-                    this["privateMode"] = !this["privateMode"];
+                if (this.privateIP) {
+                    this.privateMode= !this.privateMode;
                     if (this.isSocketOpen()) {
                         this["closeConnection"]();
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
-                    if (this["privateMode"]) {
+                    if (this.privateMode) {
                         toastr["info"]("Prze\u0142\u0105czono na serwer prywatny!");
                         $(".party-panel").show();
                     } else {
                         toastr["info"]("Prze\u0142\u0105czono na serwer publiczny!");
-                        $("#active-parties")["empty"]();
+                        $("#active-parties").empty();
                         $(".party-panel").hide();
                     }
                     this.onJoin();
                     if (i.play) {
-                        this["onPlayerSpawn"]();
+                        this.onPlayerSpawn();
                     }
                 }
             },
@@ -3892,7 +3892,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.mass = 0;
                         this.clanTag = "";
                         this.color = null;
-                        this.customColor = g["miniMapTeammatesColor"];
+                        this.customColor = g.miniMapTeammatesColor;
                         this.alive = false;
                         this.updateTime = null;
                         this.pi2 = 2 * Math.PI;
@@ -3909,21 +3909,21 @@ var thelegendmodproject = function(t, e, i) {
                                 var w = (this.lastX + margin) * mult;
                                 var h = (this.lastY+ margin) * mult;
                                 if (this.nick.length > 0) {
-                                    options.font = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
+                                    options.font = g.miniMapNickFontWeight + " " + g.miniMapNickSize + "px " + g.miniMapNickFontFamily;
                                     options.textAlign = "center";
-                                    if (g["miniMapNickStrokeSize"] > 0) {
-                                        options.lineWidth = g["miniMapNickStrokeSize"];
-                                        options.strokeStyle = g["miniMapNickStrokeColor"];
-                                        options.strokeText(this.nick, w, h - (2 * g["miniMapTeammatesSize"] + 2));
+                                    if (g.miniMapNickStrokeSize > 0) {
+                                        options.lineWidth = g.miniMapNickStrokeSize;
+                                        options.strokeStyle = g.miniMapNickStrokeColor;
+                                        options.strokeText(this.nick, w, h - (2 * g.miniMapTeammatesSize+ 2));
                                     }
-                                    options.fillStyle = g["miniMapNickColor"];
-                                    options.fillText(this.nick, w, h - (2 * g["miniMapTeammatesSize"] + 2));
+                                    options.fillStyle = g.miniMapNickColor;
+                                    options.fillText(this.nick, w, h - (2 * g.miniMapTeammatesSize+ 2));
                                 }
                                 options.beginPath();
-                                options.arc(w, h, g["miniMapTeammatesSize"], 0, this.pi2, false);
+                                options.arc(w, h, g.miniMapTeammatesSize, 0, this.pi2, false);
                                 options.closePath();
-                                if (v["oneColoredTeammates"]) {
-                                    options.fillStyle = g["miniMapTeammatesColor"];
+                                if (v.oneColoredTeammates) {
+                                    options.fillStyle = g.miniMapTeammatesColor;
                                 } else {
                                     options.fillStyle = value;
                                 }
@@ -4171,7 +4171,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.targetStatus = 1, this.targeting || (this.targeting = true, i.targeting = true, $("#target-hud").show(), this.setTargetingInfo()), $('#target-skin, #target-nick, #target-status, #target-summary').show();
                         break;
                     case 2:
-                        this.targetStatus = 2, $('#target-summary').hide(), $("#target-hud").show(), $('#target-status').show().text('[' + h['targetDead'] + ']'), i['resetTargetPosition']();
+                        this.targetStatus = 2, $('#target-summary').hide(), $("#target-hud").show(), $('#target-status').show().text('[' + h['targetDead'] + ']'), i.resetTargetPosition();
                 }
             },
             'changeTarget': function() {
@@ -5757,7 +5757,7 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots'])).time = this.time, ogarioset1final ? this.food.push(ogariocellssetts) : (M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts), -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this.playerNick), y && (ogariocellssetts.targetNick = y), ogariocellssetts.targetX = h, ogariocellssetts.targetY = c, ogariocellssetts.targetSize = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v.shortMass, v.virMassShots)).time = this.time, ogarioset1final ? this.food.push(ogariocellssetts) : (M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts), -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this.playerNick), y && (ogariocellssetts.targetNick = y), ogariocellssetts.targetX = h, ogariocellssetts.targetY = c, ogariocellssetts.targetSize = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -6945,7 +6945,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-cancelTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['cancelTargeting']();
+                        ogarminimapdrawer && ogarminimapdrawer.cancelTargeting();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7295,7 +7295,7 @@ var thelegendmodproject = function(t, e, i) {
                                 if (ogario1Hotkeys.hasOwnProperty(a) && ogario1Hotkeys[a] === e) {
                                     o = a;
                                     break;
-                                } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer['privateIP']) continue;
+                                } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer.privateIP) continue;
                             if ('command' === i['type']) {
                                 var n = e.replace('hk-', '');
                                 $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i['defaultKey'] + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
