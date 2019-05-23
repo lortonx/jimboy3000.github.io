@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.544 MEGA TEST
+// v1.545 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2252,7 +2252,7 @@ var thelegendmodproject = function(t, e, i) {
             'quickResp': function() {
                 if(v['quickResp']){ 
 				this.hideMenu();
-				this['gameServerConnect'](this['ws']);
+				this['gameServerConnect'](this.ws);
 				i.play = false;
 				this['tryResp']();
 				}
@@ -3348,19 +3348,19 @@ var thelegendmodproject = function(t, e, i) {
                     var s = ':party' === this.gameMode ? t + e : t;
 					//console.log("t= " + t);
 					//console.log("e= " + e);
-                    if (s && (this['customSkinsMap'][s] = i), this['customSkinsCache'].hasOwnProperty(i)) return;
+                    if (s && (this.customSkinsMap[s] = i), this['customSkinsCache'].hasOwnProperty(i)) return;
                     this['loadSkin'](this['customSkinsCache'], i);
                 }
             },
             'checkSkinsMap': function(t, e) {
                 var i = ':party' === this.gameMode ? t + e : t;
-                //console.log(['customSkinsMap'].hasOwnProperty(i));
-                return !!this['customSkinsMap'].hasOwnProperty(i);
+                //console.log(.customSkinsMap.hasOwnProperty(i));
+                return !!this.customSkinsMap.hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
                 if (!this['checkSkinsMap'](t, e)) return null;
                 var i = ':party' === this.gameMode ? t + e : t;
-                return this['getCachedSkin'](this['customSkinsCache'], this['customSkinsMap'][i]);
+                return this['getCachedSkin'](this['customSkinsCache'], this.customSkinsMap[i]);
             },	
             'calculateMapSector': function(t, e, s = false) {
                 if (!i['mapOffsetFixed']) return '';
@@ -3580,13 +3580,13 @@ var thelegendmodproject = function(t, e, i) {
                 this['cells'] = {};
             },
             'flushSkinsMap': function() {
-                this['customSkinsMap'] = {};
+                this.customSkinsMap = {};
             },
             'flushChatData': function() {
-                this['chatUsers'] = {};
+                this.chatUsers = {};
             },
             'getWS': function(t) {
-                t && (this['ws'] = t, this['createServerToken'](), this['updateServerInfo'](), -1 == this['ws'].indexOf('agar.io') && this['closeConnection']());
+                t && (this.ws = t, this.createServerToken(), this.updateServerInfo(), -1 == this.ws.indexOf('agar.io') && this.closeConnection());
             },
             'recreateWS': function(t) {
                 if (!t) return null;
@@ -3598,33 +3598,33 @@ var thelegendmodproject = function(t, e, i) {
                 return !e && /^[a-z0-9]{5,}$/.test(t) && (e = 'wss://live-arena-' + t + '.agar.io:443'), e;
             },
             'createServerToken': function() {
-                var t = this['ws'].match(/ip-\d+/),
-                    i = this['ws'].match(/live-arena-([\w\d]+)/),
+                var t = this.ws.match(/ip-\d+/),
+                    i = this.ws.match(/live-arena-([\w\d]+)/),
                     s = null;
-                t && ((t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.').match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
+                t && ((t = this.ws.replace('.tech.agar.io', '').replace(/-/g, '.').match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this.serverIP = t[0], s = btoa(this.serverIP)));
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
-                    this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this.partyToken = '';
-                    var o = this['ws'].match(/party_id=([A-Z0-9]{6})/);
+                    this.serverToken !== s && (this.serverToken = s, this.flushData(), this.flushCells()), this.partyToken = '';
+                    var o = this.ws.match(/party_id=([A-Z0-9]{6})/);
                     o && (this.partyToken = o[1], ogarjoiner('/#' + window.encodeURIComponent(this.partyToken)));
                 }
             },
             'updateServerInfo': function() {
-                $('#server-ws').val(this['ws']), $('#server-token').val(this['serverToken']), $('#party-token, .party-token').val(this.partyToken);
+                $('#server-ws').val(this.ws), $('#server-token').val(this.serverToken), $('#party-token, .party-token').val(this.partyToken);
             },
             'gameServerConnect': function(t) {
                 t && (this['skipServerData'] = true, window.core && window.core.connect && window.core.connect(t));
             },
             'gameServerReconnect': function() {
-                window.MC && window.MC['reconnect'] ? window.MC['reconnect']() : window.master && window.master['reconnect'] && window.master['reconnect']();
+                window.MC && window.MC.reconnect ? window.MC.reconnect() : window.master && window.master.reconnect && window.master.reconnect();
             },
             'gameServerJoin': function(t) {
-                var e = this['recreateWS'](t);
+                var e = this.recreateWS(t);
                 e && (this['skipServerData'] = true, this['gameServerConnect'](e));
             },
             'connect': function() {
                 pauseVideos(), 
-				this['closeConnection']();
-				this['flushData']() ; 
+				this.closeConnection();
+				this.flushData() ; 
 				this.setParty(); 
 				console.log('[Legend mod Express] Connecting to server'), 
 				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), 
@@ -3643,11 +3643,11 @@ var thelegendmodproject = function(t, e, i) {
                     t['handleMessage'](e);
                 }
 				this.socket['onclose'] = function(e) {
-                    t['flushData']();
+                    t.flushData();
 					console.log('[Legend mod Express] Socket close', e);
                 }
 				this.socket['onerror'] = function(e) {
-                    t['flushData']();
+                    t.flushData();
 					console.log('[Legend mod Express] Socket error', e);
                 };
             },
@@ -3720,7 +3720,7 @@ var thelegendmodproject = function(t, e, i) {
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
                     case 0:
-                        this['playerID'] = t.getUint32(1, true);
+                        this.playerID = t.getUint32(1, true);
                         break;
                     case 1:
                         this['sendPlayerUpdate']();
@@ -3774,10 +3774,10 @@ var thelegendmodproject = function(t, e, i) {
                 this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
             },
             'sendServerToken': function() {
-                this['sendPlayerData'](16, 'lastSentServerToken', this['serverToken']);
+                this['sendPlayerData'](16, 'lastSentServerToken', this.serverToken);
             },
             'sendServerJoin': function() {
-                this['sendServerToken'](); 
+                this.sendServerToken(); 
 				this.sendPlayerJoin();
             },
             'sendServerRegion': function() {
@@ -3810,10 +3810,10 @@ var thelegendmodproject = function(t, e, i) {
                 this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = $('#region').val(), this.gameMode = $('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
-                this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
+                this.sendPlayerClanTag(), this.sendPartyToken(), this.sendServerToken(), this.sendPlayerNick();
             },
             'sendPlayerUpdate': function() {
-                if (this.isSocketOpen() && i.play && this['playerID'] && i.playerColor) {
+                if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
                     function t(t) {
                         for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), true), o += 2;
                         s.setUint16(o, 0, true), o += 2;
@@ -3821,7 +3821,7 @@ var thelegendmodproject = function(t, e, i) {
                     var e = 41;
                     e += 2 * ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
                     var s = this.createView(e);
-                    s.setUint8(0, 20), s.setUint32(1, this['playerID'], true);
+                    s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
                     var o = 5;
                     t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this['sendBuffer'](s);
                 }
@@ -3887,8 +3887,8 @@ var thelegendmodproject = function(t, e, i) {
                         this.skinURL = s;
                         this["x"] = 0;
                         this["y"] = 0;
-                        this["lastX"] = 0;
-                        this["lastY"] = 0;
+                        this.lastX = 0;
+                        this.lastY= 0;
                         this.mass = 0;
                         this.clanTag = "";
                         this["color"] = null;
@@ -3904,10 +3904,10 @@ var thelegendmodproject = function(t, e, i) {
                         };
                         this["drawPosition"] = function(options, margin, mult, startcode, endcode, value) {
                             if (!(!this.alive || startcode && endcode && this["id"] != endcode)) {
-                                this["lastX"] = (29 * this["lastX"] + this["x"]) / 30;
-                                this["lastY"] = (29 * this["lastY"] + this["y"]) / 30;
-                                var w = (this["lastX"] + margin) * mult;
-                                var h = (this["lastY"] + margin) * mult;
+                                this.lastX = (29 * this.lastX + this["x"]) / 30;
+                                this.lastY= (29 * this.lastY+ this["y"]) / 30;
+                                var w = (this.lastX + margin) * mult;
+                                var h = (this.lastY+ margin) * mult;
                                 if (this.nick.length > 0) {
                                     options.font = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
                                     options.textAlign = "center";
@@ -3996,7 +3996,7 @@ var thelegendmodproject = function(t, e, i) {
                         i = t.getUint8(1),
                         s = t.getUint32(2, true),
                         o = t.getUint32(6, true);
-                    if (!(this['isChatUserMuted'](s) || 0 != o && o != this['playerID'] && s != this['playerID'])) {
+                    if (!(this['isChatUserMuted'](s) || 0 != o && o != this.playerID && s != this.playerID)) {
                         for (var a = '', n = 10; n < t.byteLength; n += 2) {
                             var r = t.getUint16(n, true);
                             if (0 == r) break;
@@ -4011,7 +4011,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (!(Date.now() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
-                    i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
+                    i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this.playerID, true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
                     this['sendBuffer'](i), this['lastMessageSentTime'] = Date.now();
                 }
@@ -4024,10 +4024,10 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendChatMessage'](102, e);
             },
             'addChatUser': function(t, e) {
-                this['chatUsers'][t] = e;
+                this.chatUsers[t] = e;
             },
             'getChatUserNick': function(t) {
-                return this['chatUsers'].hasOwnProperty(t) ? this['chatUsers'][t] : '';
+                return this.chatUsers.hasOwnProperty(t) ? this.chatUsers[t] : '';
             },
             'muteChatUser': function(t) {
                 if (t && !this['isChatUserMuted'](t)) {
@@ -4072,7 +4072,7 @@ var thelegendmodproject = function(t, e, i) {
                         n = this['parseMessage'](o.replace(a + ': ', ''));
                     if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                         var r = '';
-                        if (0 != i && i != this['playerID'] && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == e) {
+                        if (0 != i && i != this.playerID && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == e) {
                             if (v['showChatBox']) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), $('#chat-box')['perfectScrollbar']('update'), $('#chat-box')['animate']({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['messageSound']));
@@ -4101,7 +4101,7 @@ var thelegendmodproject = function(t, e, i) {
                 });
             },
             'displayChatActiveUsers': function() {
-                this['displayUserList'](this['chatUsers'], h['activeUsers'], 'btn-red btn-mute-user', h['mute'], 'info');
+                this['displayUserList'](this.chatUsers, h['activeUsers'], 'btn-red btn-mute-user', h['mute'], 'info');
             },
             'displayChatMutedUsers': function() {
                 this['displayUserList'](this['chatMutedUsers'], h['mutedUsers'], 'btn-green btn-unmute-user', h['unmute'], 'error');
@@ -5093,7 +5093,7 @@ var thelegendmodproject = function(t, e, i) {
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
-                this['closeConnection'](); 
+                this.closeConnection(); 
 				this.flushCellsData();
 				this.protocolKey = null; 
 				this.clientKey = null;
@@ -5101,7 +5101,7 @@ var thelegendmodproject = function(t, e, i) {
 				this.connectionOpened = false;
 				this.mapOffsetFixed= false; 
 				this['leaderboard'] = [];
-				this['ws'] = t;
+				this.ws = t;
 				this.socket = new WebSocket(t); 
 				this.socket['binaryType'] = 'arraybuffer'; 
 				this.socket['onopen'] = function() {
@@ -5116,7 +5116,7 @@ var thelegendmodproject = function(t, e, i) {
 				this.socket['onclose'] = function(t) {
                     i['onClose'](t);
                 };
-				ogarminimapdrawer['getWS'](this['ws']);
+				ogarminimapdrawer['getWS'](this.ws);
 				ogarminimapdrawer['sendServerJoin']();
 				ogarminimapdrawer['sendServerData']();
 				ogarminimapdrawer['displayLeaderboard']('');
@@ -5167,7 +5167,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.socket['close']();
                     } catch (ogarcloseconncloser) {}
                     this.socket = null;
-					this['ws'] = null;
+					this.ws = null;
                 }
             },
             'isSocketOpen': function() {
@@ -5549,7 +5549,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.protocolKey = t.getUint32(s, true);
 						console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
                         var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
-                        this.clientKey = this['generateClientKey'](this['ws'], irenderfromagario);
+                        this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
 						if (window.master && window.master.login){ 
 						window.master.login();
 						}
@@ -5609,7 +5609,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (window.customskinsname != null && window.customskinsname != undefined) {
                         for (i = 0; i <= this['leaderboard'].length - 1; i++) {
                             if (this['leaderboard'][i].nick == window.customskinsname) {
-                                ogarminimapdrawer['customSkinsMap'][window.customskinsname] = window.customskinsurl;
+                                ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
                                 ogarminimapdrawer['loadSkin'](ogarminimapdrawer['customSkinsCache'], window.customskinsurl);
                                 window.customskinsname = undefined;
                             }
@@ -5708,14 +5708,14 @@ var thelegendmodproject = function(t, e, i) {
                                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                                         if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                             //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
-                                            if (ogarminimapdrawer['customSkinsMap'][y] == undefined) {
+                                            if (ogarminimapdrawer.customSkinsMap[y] == undefined) {
                                                 if (window.EquippableSkins[player].image != "uses_spine") {
 
                                                     if (legendflags.includes(LowerCase(y))) {
                                                         console.log("[Legend mod Express] " + LowerCase(y) + " skin found. Skin registered");
                                                         core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(y) + ".png", null);
                                                     } else {
-                                                        ogarminimapdrawer['customSkinsMap'][y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
+                                                        ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
                                                         ogarminimapdrawer['loadSkin'](ogarminimapdrawer['customSkinsCache'], "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
                                                     }
                                                 }
