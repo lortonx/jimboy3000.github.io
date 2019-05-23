@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.535 MEGA TEST
+// v1.536 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3327,11 +3327,11 @@ var thelegendmodproject = function(t, e, i) {
                         i["width"] = 512;
                         i["height"] = 512;
                         var $ = i["getContext"]("2d");
-                        $["beginPath"]();
+                        $.beginPath();
                         $.arc(256, 256, 256, 0, 2 * Math.PI, false);
                         $["clip"]();
 						try {
-                        $["drawImage"](this["customSkinsCache"][e], 0, 0, 512, 512);
+                        $.drawImage(this["customSkinsCache"][e], 0, 0, 512, 512);
 						} catch (e) {}
                         this["customSkinsCache"][e + "_cached"] = new Image;
                         this["customSkinsCache"][e + "_cached"].src = i.toDataURL();
@@ -3368,8 +3368,8 @@ var thelegendmodproject = function(t, e, i) {
                     a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
                     n = Math.floor((e + a) / (i['mapSize'] / g['sectorsY'])),
                     r = Math.floor((t + o) / (i['mapSize'] / g['sectorsX']));
-					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
-                return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
+					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String.fromCharCode(n + 65) + (r + 1);
+                return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String.fromCharCode(n + 65) + (r + 1);
             },
             'shortMassFormat': function(t) {
                 return t < 1000 ? t : Math.round(t / 100) / 10 + 'k';
@@ -3411,45 +3411,45 @@ var thelegendmodproject = function(t, e, i) {
                     var l = i["mapOffsetY"] + i["mapOffset"];
                     if (this["drawSelectedCell"](this["miniMapCtx"]), 
 					this["currentSector"] = this["calculateMapSector"](i["playerX"], i["playerY"], true), 
-					this["miniMapCtx"]["globalAlpha"] = 1,
+					this["miniMapCtx"].globalAlpha = 1,
 					this["miniMapCtx"]["font"] = g["miniMapFontWeight"] + " " + (e - 4) + "px " + g["miniMapFontFamily"],
 					this["miniMapCtx"]["fillStyle"] = g["miniMapSectorColor"],
 					this["miniMapCtx"]["fillText"](this["currentSector"], 10, e),
 					this["miniMapSectors"] || this["drawMiniMapSectors"](g["sectorsX"], g["sectorsY"], o, s, a),
-					this["miniMapCtx"]["save"](),
-                        this["miniMapCtx"]["translate"](9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer["drawBattleAreaOnMinimap"](this["miniMapCtx"], o, o, n, r, l), v["showMiniMapGhostCells"]) {
+					this["miniMapCtx"].save(),
+                        this["miniMapCtx"].translate(9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer["drawBattleAreaOnMinimap"](this["miniMapCtx"], o, o, n, r, l), v["showMiniMapGhostCells"]) {
                         var h = i["ghostCells"];
-                        this["miniMapCtx"]["beginPath"]();
+                        this["miniMapCtx"].beginPath();
                         var c = 0;
                         for (; c < h.length; c++) {
                             if (!h[c]["inView"]) {
                                 var u = ~~((h[c]["x"] + r) * n);
                                 var d = ~~((h[c]["y"] + l) * n);
-                                this["miniMapCtx"]["moveTo"](u, d);
+                                this["miniMapCtx"].moveTo(u, d);
                                 this["miniMapCtx"].arc(u, d, ~~(h[c]["size"] * n), 0, this.pi2, false);
                             }
                         }
                         this["miniMapCtx"]["fillStyle"] = g["miniMapGhostCellsColor"];
-                        this["miniMapCtx"]["globalAlpha"] = g["miniMapGhostCellsAlpha"];
+                        this["miniMapCtx"].globalAlpha = g["miniMapGhostCellsAlpha"];
                         this["miniMapCtx"]["shadowColor"] = g["miniMapGhostCellsColor"];
                         this["miniMapCtx"]["shadowBlur"] = 10;
                         this["miniMapCtx"]["shadowOffsetX"] = 0;
                         this["miniMapCtx"]["shadowOffsetY"] = 0;
                         this["miniMapCtx"].fill();
-                        this["miniMapCtx"]["globalAlpha"] = 1;
+                        this["miniMapCtx"].globalAlpha = 1;
                         this["miniMapCtx"]["shadowBlur"] = 0;
                     }																
                     if (v["showMiniMapGuides"]) {
                         u = Math.round((i["playerX"] + r) * n);
                         d = Math.round((i["playerY"] + l) * n);
-                        this["miniMapCtx"]["lineWidth"] = 1;
-                        this["miniMapCtx"]["strokeStyle"] = g["miniMapGuidesColor"];
-                        this["miniMapCtx"]["beginPath"]();
-                        this["miniMapCtx"]["moveTo"](u, 0);
-                        this["miniMapCtx"]["lineTo"](u, o - 1);
-                        this["miniMapCtx"]["moveTo"](0, d);
-                        this["miniMapCtx"]["lineTo"](o - 1, d);
-                        this["miniMapCtx"]["stroke"]();						
+                        this["miniMapCtx"].lineWidth = 1;
+                        this["miniMapCtx"].strokeStyle = g["miniMapGuidesColor"];
+                        this["miniMapCtx"].beginPath();
+                        this["miniMapCtx"].moveTo(u, 0);
+                        this["miniMapCtx"].lineTo(u, o - 1);
+                        this["miniMapCtx"].moveTo(0, d);
+                        this["miniMapCtx"].lineTo(o - 1, d);
+                        this["miniMapCtx"].stroke();						
                     }
                     if (v["showExtraMiniMapGuides"]) {
                         u = Math.round((i["playerX"] + r) * n);
@@ -3473,7 +3473,7 @@ var thelegendmodproject = function(t, e, i) {
 						this.miniMapCtx.stroke();	
 						
                     }					
-                    if (this["miniMapCtx"]["beginPath"](), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"]["closePath"](), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"]["lineWidth"] = g["miniMapMyCellStrokeSize"], this["miniMapCtx"]["strokeStyle"] = g["miniMapMyCellStrokeColor"], this["miniMapCtx"]["stroke"]()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
+                    if (this["miniMapCtx"].beginPath(), this["miniMapCtx"].arc((i["playerX"] + r) * n, (i["playerY"] + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"].closePath(), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"].lineWidth = g["miniMapMyCellStrokeSize"], this["miniMapCtx"].strokeStyle = g["miniMapMyCellStrokeColor"], this["miniMapCtx"].stroke()), this["miniMapCtx"]["fillStyle"] = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
                         c = 0;
                         for (; c < this["teamPlayers"].length; c++) {
                             this["teamPlayers"][c]["drawPosition"](this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this["targetID"], legendmod3["teamPlayers"][c]["color"]);
@@ -3483,16 +3483,16 @@ var thelegendmodproject = function(t, e, i) {
                         u = Math.round((this["deathLocations"][this["lastDeath"]]["x"] + i["mapOffset"]) * n);
                         d = Math.round((this["deathLocations"][this["lastDeath"]]["y"] + i["mapOffset"]) * n);
                         var f = Math["max"](g["miniMapMyCellSize"] - 2, 4);
-                        this["miniMapCtx"]["lineWidth"] = 1;
-                        this["miniMapCtx"]["strokeStyle"] = this["deathLocations"].length - 1 == this["lastDeath"] ? g["miniMapDeathLocationColor"] : "#FFFFFF";
-                        this["miniMapCtx"]["beginPath"]();
-                        this["miniMapCtx"]["moveTo"](u - f, d);
-                        this["miniMapCtx"]["lineTo"](u + f, d);
-                        this["miniMapCtx"]["moveTo"](u, d - f);
-                        this["miniMapCtx"]["lineTo"](u, d + f);
-                        this["miniMapCtx"]["stroke"]();
+                        this["miniMapCtx"].lineWidth = 1;
+                        this["miniMapCtx"].strokeStyle = this["deathLocations"].length - 1 == this["lastDeath"] ? g["miniMapDeathLocationColor"] : "#FFFFFF";
+                        this["miniMapCtx"].beginPath();
+                        this["miniMapCtx"].moveTo(u - f, d);
+                        this["miniMapCtx"].lineTo(u + f, d);
+                        this["miniMapCtx"].moveTo(u, d - f);
+                        this["miniMapCtx"].lineTo(u, d + f);
+                        this["miniMapCtx"].stroke();
                     }
-                    this["miniMapCtx"]["restore"]();
+                    this["miniMapCtx"].restore();
                 }
             },
             'drawMiniMapSectors': function(t, e, s, o, a) {
@@ -3501,7 +3501,7 @@ var thelegendmodproject = function(t, e, i) {
                 n['ogarioCtx'] = true; 
 				this['miniMapSectors']['width'] = s; 
 				this['miniMapSectors']['height'] = o; 
-				n['fillStyle'] = '#FFFFFF'; 
+				n.fillStyle = '#FFFFFF'; 
 				this['dTok'](n, s - 1);
 				ogarfooddrawer['drawSectors'](n, i['mapOffsetFixed'], t, e, 0.5, a, s - 0.5, o - 9.5, g['miniMapSectorsColor'], g['miniMapSectorsColor'], 1, false);
             },
@@ -3509,22 +3509,22 @@ var thelegendmodproject = function(t, e, i) {
                 this['miniMapSectors'] = null;
             },
             'drawSelectedCell': function(t) {
-                i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t['fillStyle'] = '#FFFFFF', t['globalAlpha'] = this['selectBiggestCell'] ? 0.6 : 0.3, t['beginPath'](), t.arc(0x30, 15, 6, 0, this.pi2, false), t['closePath'](), t.fill(), t['globalAlpha'] = this['selectBiggestCell'] ? 0.3 : 0.6, t['beginPath'](), t.arc(0x3c, 15, 4, 0, this.pi2, false), t['closePath'](), t.fill());
+                i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this['selectBiggestCell'] ? 0.6 : 0.3, t.beginPath(), t.arc(0x30, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this['selectBiggestCell'] ? 0.3 : 0.6, t.beginPath(), t.arc(0x3c, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
             },
             'dTok': function(t, e) {
                 t['font'] = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t['fillText'](atob(this['token']), e, 7);
             },
 /*            'drawTeammatesInd': function(t, e, i, s) {
-                this['indicator'] && t['drawImage'](this['indicator'], e - 45, i - s - 90);
+                this['indicator'] && t.drawImage(this['indicator'], e - 45, i - s - 90);
             }, */
             'drawCellInfo': function(t, e, s, o, a, n, r, l, h, c, u, d) {
-                //if (!n && !h && (t['globalAlpha'] = i['globalAlpha'], v['teammatesInd'] && d && !l && a <= 200 && this['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
-				if (!n && !h && (t['globalAlpha'] = i['globalAlpha'], v['teammatesInd'] && d && !l && a <= 200 && ogarfooddrawer['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
+                //if (!n && !h && (t.globalAlpha = i.globalAlpha, v['teammatesInd'] && d && !l && a <= 200 && this['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
+				if (!n && !h && (t.globalAlpha = i.globalAlpha, v['teammatesInd'] && d && !l && a <= 200 && ogarfooddrawer['drawTeammatesInd'](t, s, o, a), !v['noNames'] || v['showMass'])) {
                     var f = false;
                     if (l || r || !(f = this['setAutoHideCellInfo'](a)) || !v['autoHideNames'] || !v['autoHideMass']) {
                         var m = null;
                         if (!this['cells'].hasOwnProperty(e)) return (m = new ogarbasicassembly(s, o, r, l, v['shortMass'], v['virMassShots']))['setMass'](a), m['setNick'](c), void(this['cells'][e] = m);
-                        (m = this['cells'][e])['update'](s, o, a, r, l, c), m['setDrawing'](v['optimizedNames'], v['optimizedMass'], v['shortMass'], v['virMassShots'], v['namesStroke'], v['massStroke']), m['setDrawingScale'](i['viewScale'], g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), t['globalAlpha'] = g['textAlpha'], v['noNames'] || f && v['autoHideNames'] || l && v['hideMyName'] || d && v['hideTeammatesNames'] || m['drawNick'](t, g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], g['namesStrokeColor']), !v['showMass'] || f && v['autoHideMass'] || l && v['hideMyMass'] || v['hideEnemiesMass'] && !l && !r || m['drawMass'](t, g['massColor'], g['massFontFamily'], g['massFontWeight'], g['massStrokeColor']);
+                        (m = this['cells'][e])['update'](s, o, a, r, l, c), m['setDrawing'](v['optimizedNames'], v['optimizedMass'], v['shortMass'], v['virMassShots'], v['namesStroke'], v['massStroke']), m['setDrawingScale'](i['viewScale'], g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), t.globalAlpha = g['textAlpha'], v['noNames'] || f && v['autoHideNames'] || l && v['hideMyName'] || d && v['hideTeammatesNames'] || m['drawNick'](t, g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], g['namesStrokeColor']), !v['showMass'] || f && v['autoHideMass'] || l && v['hideMyMass'] || v['hideEnemiesMass'] && !l && !r || m['drawMass'](t, g['massColor'], g['massFontFamily'], g['massFontWeight'], g['massStrokeColor']);
                     }
                 }
             },
@@ -3911,16 +3911,16 @@ var thelegendmodproject = function(t, e, i) {
                                     options["font"] = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
                                     options["textAlign"] = "center";
                                     if (g["miniMapNickStrokeSize"] > 0) {
-                                        options["lineWidth"] = g["miniMapNickStrokeSize"];
-                                        options["strokeStyle"] = g["miniMapNickStrokeColor"];
+                                        options.lineWidth = g["miniMapNickStrokeSize"];
+                                        options.strokeStyle = g["miniMapNickStrokeColor"];
                                         options["strokeText"](this.nick, w, h - (2 * g["miniMapTeammatesSize"] + 2));
                                     }
                                     options["fillStyle"] = g["miniMapNickColor"];
                                     options["fillText"](this.nick, w, h - (2 * g["miniMapTeammatesSize"] + 2));
                                 }
-                                options["beginPath"]();
+                                options.beginPath();
                                 options.arc(w, h, g["miniMapTeammatesSize"], 0, this.pi2, false);
-                                options["closePath"]();
+                                options.closePath();
                                 if (v["oneColoredTeammates"]) {
                                     options["fillStyle"] = g["miniMapTeammatesColor"];
                                 } else {
@@ -3984,7 +3984,7 @@ var thelegendmodproject = function(t, e, i) {
                     for (var o = '';;) {
                         var a = t.getUint16(i, true);
                         if (0 == a) break;
-                        o += String['fromCharCode'](a), i += 2;
+                        o += String.fromCharCode(a), i += 2;
                     }
                     i += 2, this['parties'].push(o);
                 }
@@ -3999,7 +3999,7 @@ var thelegendmodproject = function(t, e, i) {
                         for (var a = '', n = 10; n < t.byteLength; n += 2) {
                             var r = t.getUint16(n, true);
                             if (0 == r) break;
-                            a += String['fromCharCode'](r);
+                            a += String.fromCharCode(r);
                         }
                         this['displayChatMessage'](e, i, s, a);
                     }
@@ -4212,7 +4212,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['txtCanvas'] = null,
                 this['txtCtx'] = null,
                 this.color = '#FFFFFF',
-                this['stroke'] = false,
+                this.stroke = false,
                 this['strokeWidth'] = 2,
                 this['strokeColor'] = '#000000',
                 this['font'] = '700 16px Ubuntu',
@@ -4235,16 +4235,16 @@ var thelegendmodproject = function(t, e, i) {
                         this['redraw'] = true);
                 },
                 this['setStroke'] = function(ogariostrokesetter) {
-                    this['stroke'] !== ogariostrokesetter && (this['stroke'] = ogariostrokesetter,
+                    this.stroke !== ogariostrokesetter && (this.stroke = ogariostrokesetter,
                         this['redraw'] = true);
                 },
                 this['setStrokeWidth'] = function(ogariostrokewidthsetter) {
-                    this['stroke'] && this['strokeWidth'] != ogariostrokewidthsetter && (this['strokeWidth'] = ogariostrokewidthsetter,
+                    this.stroke && this['strokeWidth'] != ogariostrokewidthsetter && (this['strokeWidth'] = ogariostrokewidthsetter,
                         this['redraw'] = true,
                         this['remeasure'] = true);
                 },
                 this['setStrokeColor'] = function(ogariostrokecolorsetter) {
-                    this['stroke'] && this['strokeColor'] !== ogariostrokecolorsetter && (this['strokeColor'] = ogariostrokecolorsetter,
+                    this.stroke && this['strokeColor'] !== ogariostrokecolorsetter && (this['strokeColor'] = ogariostrokecolorsetter,
                         this['redraw'] = true);
                 },
                 this.setFont = function() {
@@ -4273,7 +4273,7 @@ var thelegendmodproject = function(t, e, i) {
                         this['redraw'] = true);
                 },
                 this['createCanvas'] = function() {
-                    this['txtCanvas'] || (this['txtCanvas'] = document['createElement']('canvas'),
+                    this['txtCanvas'] || (this['txtCanvas'] = document.createElement('canvas'),
                         this['txtCtx'] = this['txtCanvas']['getContext']('2d'),
                         this['txtCtx']['ogarioCtx'] = true);
                 },
@@ -4297,11 +4297,11 @@ var thelegendmodproject = function(t, e, i) {
                             this['txtCanvas']['width'] = this['measureWidth'](),
                             this['txtCanvas']['height'] = this['fontSize'] + this['margin'] * 2,
                             this['txtCtx']['font'] = this['font'],
-                            this['txtCtx']['globalAlpha'] = 1,
-                            this['txtCtx']['lineWidth'] = this['strokeWidth'],
-                            this['txtCtx']['strokeStyle'] = this['strokeColor'],
-                            this['txtCtx']['fillStyle'] = this.color,
-                            this['stroke'] && this['txtCtx']['strokeText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5)),
+                            this['txtCtx'].globalAlpha = 1,
+                            this['txtCtx'].lineWidth = this['strokeWidth'],
+                            this['txtCtx'].strokeStyle = this['strokeColor'],
+                            this['txtCtx'].fillStyle = this.color,
+                            this.stroke && this['txtCtx']['strokeText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5)),
                             this['txtCtx']['fillText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5))),
                         this['txtCanvas'];
                 };
@@ -5355,7 +5355,7 @@ var thelegendmodproject = function(t, e, i) {
                         for (var e = '';;) {
                             var i = t.getUint8(s++);
                             if (0 == i) break;
-                            e += String['fromCharCode'](i);
+                            e += String.fromCharCode(i);
                         }
                         return e;
                     },
@@ -5651,7 +5651,7 @@ var thelegendmodproject = function(t, e, i) {
                     for (var e = '';;) {
                         var s = t.readUInt8(i++);
                         if (0 == s) break;
-                        e += String['fromCharCode'](s);
+                        e += String.fromCharCode(s);
                     }
                     return e;
                 };
@@ -5880,9 +5880,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'init': function() {
                 var t = this;
-                /firefox/i.test(navigator['userAgent']) ? document.addEventListener('DOMMouseScroll', function(e) {
+                /firefox/i.test(navigator.userAgent) ? document.addEventListener('DOMMouseScroll', function(e) {
                     t['setZoom'](e);
-                }, false) : document['body']['onmousewheel'] = function(e) {
+                }, false) : document.body.onmousewheel = function(e) {
                     t['setZoom'](e);
                 }, setInterval(function() {
                     t['sendPosition']();
@@ -5962,7 +5962,7 @@ var thelegendmodproject = function(t, e, i) {
                     v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this['scale'], M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], true);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
-                    this['ctx']['restore'](), ':teams' === M.gameMode && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
+                    this['ctx']['restore'](), ':teams' === M.gameMode && this['pieChart'] && this['pieChart']['width'] && this['ctx'].drawImage(this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
                 }, */
         'renderFrame': function () {
             //this.ctx.start2D();
@@ -6109,16 +6109,16 @@ var thelegendmodproject = function(t, e, i) {
                     var r = i / s;
                     var l = (n / 2 - o) % 50;
                     var h = (r / 2 - a) % 50;
-                    t["strokeStyle"] = g["gridColor"], t["globalAlpha"] = 1 * s, t["beginPath"]();
+                    t.strokeStyle = g["gridColor"], t.globalAlpha = 1 * s, t.beginPath();
                     for (; l < n; l = l + 50) {
-                        t["moveTo"](l * s - 0.5, 0);
-                        t["lineTo"](l * s - 0.5, r * s);
+                        t.moveTo(l * s - 0.5, 0);
+                        t.lineTo(l * s - 0.5, r * s);
                     }
                     for (; h < r; h = h + 50) {
-                        t["moveTo"](0, h * s - 0.5);
-                        t["lineTo"](n * s, h * s - 0.5);
+                        t.moveTo(0, h * s - 0.5);
+                        t.lineTo(n * s, h * s - 0.5);
                     }
-                    t["stroke"](), t["globalAlpha"] = 1;
+                    t.stroke(), t.globalAlpha = 1;
                 },
                 'drawSectors': function(t, e, i, s, o, a, n, r, l, h, c, u) {
                     if (e || !u) {
@@ -6126,21 +6126,21 @@ var thelegendmodproject = function(t, e, i) {
                         var f = ~~((r - a) / s);
                         var m = 0;
                         var y = 0;
-                        if (t["strokeStyle"] = l, t["fillStyle"] = h, t["lineWidth"] = c, u || !u && v["showMiniMapGrid"]) {
-                            t["beginPath"]();
+                        if (t.strokeStyle = l, t["fillStyle"] = h, t.lineWidth = c, u || !u && v["showMiniMapGrid"]) {
+                            t.beginPath();
                             var ogario1PlayerProfiles = 0;
                             for (; ogario1PlayerProfiles < i + 1; ogario1PlayerProfiles++) {
                                 m = o + d * ogario1PlayerProfiles;
-                                t["moveTo"](ogario1PlayerProfiles == i ? n : m, a);
-                                t["lineTo"](ogario1PlayerProfiles == i ? n : m, r);
+                                t.moveTo(ogario1PlayerProfiles == i ? n : m, a);
+                                t.lineTo(ogario1PlayerProfiles == i ? n : m, r);
                             }
                             ogario1PlayerProfiles = 0;
                             for (; ogario1PlayerProfiles < s + 1; ogario1PlayerProfiles++) {
                                 y = a + f * ogario1PlayerProfiles;
-                                t["moveTo"](o - c / 2, ogario1PlayerProfiles == s ? r : y);
-                                t["lineTo"](n + c / 2, ogario1PlayerProfiles == s ? r : y);
+                                t.moveTo(o - c / 2, ogario1PlayerProfiles == s ? r : y);
+                                t.lineTo(n + c / 2, ogario1PlayerProfiles == s ? r : y);
                             }
-                            t["stroke"]();
+                            t.stroke();
                         } else {
                             this["drawMapBorders"](t, e, o, a, n, r, l, c);
                         }
@@ -6165,30 +6165,30 @@ var thelegendmodproject = function(t, e, i) {
                     if (M["drawCommander"]) {
                         var pickerAxes = this.ctx;
                         cimg = new Image;
-                        cimg["src"] = g["commanderImage"];
+                        cimg.src = g["commanderImage"];
                         cimg1 = new Image;
-                        cimg1["src"] = g["commanderImage1"];
+                        cimg1.src = g["commanderImage1"];
                         cimg2 = new Image;
-                        cimg2["src"] = g["commanderImage2"];
-                        pickerAxes["save"]();
-                        pickerAxes["globalAlpha"] = M["cAlpha"];
-                        pickerAxes["translate"](i["spawnX"], i["spawnY"]);
-                        pickerAxes["rotate"](M["cAngle"]);
-                        pickerAxes["drawImage"](cimg, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
-                        pickerAxes["restore"]();
-                        pickerAxes["save"]();
-                        pickerAxes["globalAlpha"] = M["cAlpha"];
-                        pickerAxes["translate"](i["spawnX"], i["spawnY"]);
-                        pickerAxes["rotate"](M["cAngle1"]);
-                        pickerAxes["drawImage"](cimg1, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
-                        pickerAxes["restore"]();
-                        pickerAxes["save"]();
-                        pickerAxes["globalAlpha"] = M["cAlpha"];
-                        pickerAxes["translate"](i["spawnX"], i["spawnY"]);
-                        pickerAxes["rotate"](M["cAngle2"]);
-                        pickerAxes["drawImage"](cimg2, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
-                        pickerAxes["restore"]();
-                        pickerAxes["globalAlpha"] = 1;
+                        cimg2.src = g["commanderImage2"];
+                        pickerAxes.save();
+                        pickerAxes.globalAlpha = M["cAlpha"];
+                        pickerAxes.translate(i["spawnX"], i["spawnY"]);
+                        pickerAxes.rotate(M["cAngle"]);
+                        pickerAxes.drawImage(cimg, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
+                        pickerAxes.restore();
+                        pickerAxes.save();
+                        pickerAxes.globalAlpha = M["cAlpha"];
+                        pickerAxes.translate(i["spawnX"], i["spawnY"]);
+                        pickerAxes.rotate(M["cAngle1"]);
+                        pickerAxes.drawImage(cimg1, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
+                        pickerAxes.restore();
+                        pickerAxes.save();
+                        pickerAxes.globalAlpha = M["cAlpha"];
+                        pickerAxes.translate(i["spawnX"], i["spawnY"]);
+                        pickerAxes.rotate(M["cAngle2"]);
+                        pickerAxes.drawImage(cimg2, -M["cRadius"] / 2, -M["cRadius"] / 2, M["cRadius"], M["cRadius"]);
+                        pickerAxes.restore();
+                        pickerAxes.globalAlpha = 1;
                         this["updateCommander"]();
                     }
                 },
@@ -6216,26 +6216,26 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 /*			
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
-                    e && (t['strokeStyle'] = n, t['lineWidth'] = r, t['beginPath'](), t['moveTo'](i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t['closePath'](), t['stroke']());
+                    e && (t.strokeStyle = n, t.lineWidth = r, t.beginPath(), t.moveTo(i, s), t['lineTo'](o, s), t['lineTo'](o, a), t['lineTo'](i, a), t.closePath(), t.stroke());
                 },
 				*/
                 "drawMapBorders": function(ctx, macros, text, x1, x0, y0, radius, canvas) {
                     if (macros) {
-                        ctx["strokeStyle"] = radius;
-                        ctx["lineWidth"] = canvas;
-                        ctx["beginPath"]();
-                        ctx["moveTo"](text, x1);
-                        ctx["lineTo"](x0, x1);
-                        ctx["lineTo"](x0, y0);
-                        ctx["lineTo"](text, y0);
+                        ctx.strokeStyle = radius;
+                        ctx.lineWidth = canvas;
+                        ctx.beginPath();
+                        ctx.moveTo(text, x1);
+                        ctx.lineTo(x0, x1);
+                        ctx.lineTo(x0, y0);
+                        ctx.lineTo(text, y0);
                         if (v["borderGlow"]) {
                             ctx["shadowBlur"] = g["borderGlowSize"];
                             ctx["shadowColor"] = g["borderGlowColor"];
                         } else {
                             "skrrt";
                         }
-                        ctx["closePath"]();
-                        ctx["stroke"]();
+                        ctx.closePath();
+                        ctx.stroke();
                     }
                     if (v["borderGlow"]) {
                         ctx["shadowBlur"] = 0;
@@ -6245,13 +6245,13 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'drawVirusesRange': function(t, e, i) {
                     if (e.length) {
-                        t['beginPath']();
+                        t.beginPath();
                         for (var s = 0; s < e.length; s++) {
                             var o = e[s]['x'],
                                 a = e[s]['y'];
-                            t['moveTo'](o, a), t.arc(o, a, e[s]['size'] + 820, 0, this.pi2, false);
+                            t.moveTo(o, a), t.arc(o, a, e[s]['size'] + 820, 0, this.pi2, false);
                         }
-                        t['fillStyle'] = g['virusColor'], t['globalAlpha'] = 0.1, t.fill(), t['globalAlpha'] = 1, i && (e = []);
+                        t.fillStyle = g['virusColor'], t.globalAlpha = 0.1, t.fill(), t.globalAlpha = 1, i && (e = []);
                     }
                 },
                 'drawFood': function() {
@@ -6268,17 +6268,17 @@ var thelegendmodproject = function(t, e, i) {
                             for (var o = 0; o < e.length; o++) {
                                 var a = e[o]['x'] - 10 - g['foodSize'],
                                     n = e[o]['y'] - 10 - g['foodSize'];
-                                t['drawImage'](this['pellet'], a, n);
+                                t.drawImage(this['pellet'], a, n);
                             } else {
-                                t['beginPath']();
+                                t.beginPath();
                                 for (o = 0; o < e.length; o++) {
                                     a = e[o]['x'], n = e[o]['y'];
-                                    if (t['moveTo'](a, n), i < 0.16) {
+                                    if (t.moveTo(a, n), i < 0.16) {
                                         var r = e[o]['size'] + g['foodSize'];
-                                        t['rect'](a - r, n - r, 2 * r, 2 * r);
+                                        t.rect(a - r, n - r, 2 * r, 2 * r);
                                     } else t.arc(a, n, e[o]['size'] + g['foodSize'], 0, this.pi2, false);
                                 }
-                                t['fillStyle'] = g['foodColor'], t['globalAlpha'] = 1, t.fill();
+                                t.fillStyle = g['foodColor'], t.globalAlpha = 1, t.fill();
                             }
                         s && (e = []);
                     }
@@ -6286,9 +6286,9 @@ var thelegendmodproject = function(t, e, i) {
                 'drawSplitRange': function(t, e, i, s, o) {
                     if (this['drawCircles'](t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
                         var a = s ? i.length - 1 : 0;						
-                        t['lineWidth'] = 6, t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, t['strokeStyle'] = g['splitRangeColor'], t['beginPath'](), t.arc(i[a]['x'], i[a]['y'], i[a]['size'] + 760, 0, this.pi2, false), t['closePath'](), t['stroke']();
+                        t.lineWidth = 6, t.globalAlpha = g['darkTheme'] ? 0.7 : 0.35, t.strokeStyle = g['splitRangeColor'], t.beginPath(), t.arc(i[a]['x'], i[a]['y'], i[a]['size'] + 760, 0, this.pi2, false), t.closePath(), t.stroke();
                     }
-                    t['globalAlpha'] = 1, o && (e = []);
+                    t.globalAlpha = 1, o && (e = []);
                 },
                 'drawDoubleSplitRange': function(t, e, i, s, o) {
                     if (this['drawCircles'](t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
@@ -6297,16 +6297,16 @@ var thelegendmodproject = function(t, e, i) {
                         var a = s ? i.length - 1 : 0;
 						//console.log(i[a]['size']);
 						if (i[a]['size']>=400){
-                        t['lineWidth'] = 6, 
-						t['globalAlpha'] = g['darkTheme'] ? 0.7 : 0.35, 
-						t['strokeStyle'] = g['splitRangeColor']; 
-						t['beginPath'](); 
+                        t.lineWidth = 6, 
+						t.globalAlpha = g['darkTheme'] ? 0.7 : 0.35, 
+						t.strokeStyle = g['splitRangeColor']; 
+						t.beginPath(); 
 						t.arc(i[a]['x'], i[a]['y'], 2*i[a]['size'] + 760, 0, this.pi2, false); 
-						t['closePath'](); 
-						t['stroke']();
+						t.closePath(); 
+						t.stroke();
 						}
 				   }
-                    t['globalAlpha'] = 1; 
+                    t.globalAlpha = 1; 
 					if (o){ e = [];
 					}
                 },				
@@ -6322,34 +6322,34 @@ var thelegendmodproject = function(t, e, i) {
 					}
                 },
                 'drawCursorTracking': function(t, e, i, s) {
-                    t['lineWidth'] = 4, t['globalAlpha'] = g['darkTheme'] ? 0.75 : 0.35, t['strokeStyle'] = g['cursorTrackingColor'], t['beginPath']();
-                    for (var o = 0; o < e.length; o++) t['moveTo'](e[o]['x'], e[o]['y']), t['lineTo'](i, s);
-                    t['stroke'](), t['globalAlpha'] = 1;
+                    t.lineWidth = 4, t.globalAlpha = g['darkTheme'] ? 0.75 : 0.35, t.strokeStyle = g['cursorTrackingColor'], t.beginPath();
+                    for (var o = 0; o < e.length; o++) t.moveTo(e[o]['x'], e[o]['y']), t['lineTo'](i, s);
+                    t.stroke(), t.globalAlpha = 1;
                 },
                 'drawCircles': function(t, e, i, s, o, a) {
-                    t['lineWidth'] = s, t['globalAlpha'] = o, t['strokeStyle'] = a;
-                    for (var n = 0; n < e.length; n++) t['beginPath'](), t.arc(e[n]['x'], e[n]['y'], e[n]['size'] + i, 0, this.pi2, false), t['closePath'](), t['stroke']();
-                    t['globalAlpha'] = 1;
+                    t.lineWidth = s, t.globalAlpha = o, t.strokeStyle = a;
+                    for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n]['x'], e[n]['y'], e[n]['size'] + i, 0, this.pi2, false), t.closePath(), t.stroke();
+                    t.globalAlpha = 1;
                 },
                 'drawDashedCircle': function(t, e, i, s, o, a, n) {
                     var r = this.pi2 / o;
-                    t['lineWidth'] = a, t['strokeStyle'] = n;
-                    for (var l = 0; l < o; l += 2) t['beginPath'](), t.arc(e, i, s - a / 2, l * r, (l + 1) * r, false), t['stroke']();
+                    t.lineWidth = a, t.strokeStyle = n;
+                    for (var l = 0; l < o; l += 2) t.beginPath(), t.arc(e, i, s - a / 2, l * r, (l + 1) * r, false), t.stroke();
                 },
                 'drawTeammatesInd': function(t, e, i, s) {		
 					//console.log("t:"+ t + " e:" + e + " i:" + i + "s:" + s);
                     if(this['indicator']){
-						t['drawImage'](this['indicator'], e - 45, i - s - 90);
+						t.drawImage(this['indicator'], e - 45, i - s - 90);
 					}
                 },
                 'drawPieChart': function() {
-                    this['pieChart'] || (this['pieChart'] = document['createElement']('canvas'));
+                    this['pieChart'] || (this['pieChart'] = document.createElement('canvas'));
                     var t = this['pieChart']['getContext']('2d'),
                         e = Math['min'](200, 0.3 * this['canvasWidth']) / 200;
                     this['pieChart']['width'] = 200 * e, this['pieChart']['height'] = 240 * e, t['scale'](e, e);
                     for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < M['pieChart'].length; o++) {
                         var a = s + M['pieChart'][o] * this.pi2;
-                        t['fillStyle'] = i[o + 1], t['beginPath'](), t['moveTo'](100, 140), t.arc(100, 140, 80, s, a, false), t.fill(), s = a;
+                        t.fillStyle = i[o + 1], t.beginPath(), t.moveTo(100, 140), t.arc(100, 140, 80, s, a, false), t.fill(), s = a;
                     }
                 },
                 'drawBattleArea': function(t) {
@@ -6378,21 +6378,21 @@ var thelegendmodproject = function(t, e, i) {
                         r = ~~((M["battleRoyale"]["targetY"] + a) * s);
                         l = ~~(M["battleRoyale"]["targetRadius"] * s);
                         this["drawSafeArea"](this["battleAreaMapCtx"], n, r, l, 2, g["safeAreaColor"]);
-                        t["drawImage"](this["battleAreaMap"], 0, 0);
+                        t.drawImage(this["battleAreaMap"], 0, 0);
                     }
                 },
                 'drawDangerArea': function(t, e, i, s, o, a, n, r, l, h) {
                     if (!(M["battleRoyale"]["radius"] == M["battleRoyale"]["maxRadius"] || s <= 0)) {
-                        t["save"]();
-                        t["globalAlpha"] = h;
+                        t.save();
+                        t.globalAlpha = h;
                         t["fillStyle"] = l;
                         t["fillRect"](o, a, n, r);
                         t["globalCompositeOperation"] = "destination-out";
-                        t["globalAlpha"] = 1;
-                        t["beginPath"]();
+                        t.globalAlpha = 1;
+                        t.beginPath();
                         t.arc(e, i, s, 0, this.pi2, false);
                         t.fill();
-                        t["restore"]();
+                        t.restore();
                     }
                 },
                 'drawSafeArea': function(t, e, i, s, o, a) {
@@ -6403,7 +6403,7 @@ var thelegendmodproject = function(t, e, i) {
                 'drawGhostCells': function() {
                     if (v["showGhostCells"]) {
                         var t = M["ghostCells"];
-                        this.ctx["beginPath"]();
+                        this.ctx.beginPath();
                         var e = 0;
                         for (; e < t.length; e++) {
                             if (!t[e]["inView"]) {
@@ -6411,44 +6411,44 @@ var thelegendmodproject = function(t, e, i) {
 								
                                 var i = t[e]["x"];
                                 var s = t[e]["y"];
-                                this.ctx["moveTo"](i, s);
+                                this.ctx.moveTo(i, s);
                                 this.ctx.arc(i, s, t[e]["size"], 0, this.pi2, false);
                             }
                         }
                         this.ctx["fillStyle"] = g["ghostCellsColor"];
-                        this.ctx["globalAlpha"] = g["ghostCellsAlpha"];
+                        this.ctx.globalAlpha = g["ghostCellsAlpha"];
                         this.ctx["shadowColor"] = g["ghostCellsColor"];
                         this.ctx["shadowBlur"] = 40;
                         this.ctx["shadowOffsetX"] = 0;
                         this.ctx["shadowOffsetY"] = 0;
                         this.ctx.fill();
-                        this.ctx["globalAlpha"] = 1;
+                        this.ctx.globalAlpha = 1;
                         this.ctx["shadowBlur"] = 0;
                     }
                 },
                 'preDrawPellet': function() {
                     this['pellet'] = null;
                     var t = 10 + g['foodSize'],
-                        e = document['createElement']('canvas');
+                        e = document.createElement('canvas');
                     e['width'] = 2 * t, e['height'] = 2 * t;
                     var i = e['getContext']('2d');
-                    i.arc(t, t, t, 0, this.pi2, false), i['fillStyle'] = g['foodColor'], i.fill(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
+                    i.arc(t, t, t, 0, this.pi2, false), i.fillStyle = g['foodColor'], i.fill(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
                 },
                 'preDrawIndicator': function() {
                     this['indicator'] = null;
-                    var t = document['createElement']('canvas');
+                    var t = document.createElement('canvas');
                     t['width'] = 90, t['height'] = 50;
                     var e = t['getContext']('2d');
-                    e['lineWidth'] = 2; 
-					e['fillStyle'] = g['teammatesIndColor']; 
-					e['strokeStyle'] = '#000000';
-					e['beginPath'](); 
-					e['moveTo'](0, 0); 
+                    e.lineWidth = 2; 
+					e.fillStyle = g['teammatesIndColor']; 
+					e.strokeStyle = '#000000';
+					e.beginPath(); 
+					e.moveTo(0, 0); 
 					e['lineTo'](90, 0); 
 					e['lineTo'](45, 50); 
-					e['closePath']();
+					e.closePath();
 					e.fill();
-					e['stroke'](); 
+					e.stroke(); 
 					this['indicator'] = new Image(); 
 					this['indicator'].src = t.toDataURL();
 					t = null;
@@ -7339,7 +7339,7 @@ var thelegendmodproject = function(t, e, i) {
                             i = 'TILDE';
                             break;
                         default:
-                            i = String['fromCharCode'](t.keyCode);
+                            i = String.fromCharCode(t.keyCode);
                     }
                     return '' !== e ? '' !== i ? e + '+' + i : e : i;
                 },
