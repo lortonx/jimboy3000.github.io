@@ -1,6 +1,6 @@
-//v.1
+//v2
 
-! function(self, jQuery) {
+! function(self) {
     function login() {
         if (l) {
             self.getStorage();
@@ -37,14 +37,14 @@
                 self.FB.api("/me/picture?width=180&height=180", function(images) {
                     if (images.data && images.data.url) {
                         options.userInfo.picture = images.data.url;
-                        jQuery(".agario-profile-picture").attr("src", images.data.url);
+                        $(".agario-profile-picture").attr("src", images.data.url);
                         self.updateStorage();
                     }
                 });
-                jQuery("#helloContainer").attr("data-logged-in", "1");
-                jQuery(".progress-bar-striped").width("100%");
-                jQuery("#login-google").attr("class", "menu-bar-button");
-                jQuery("#login-facebook").attr("class", "menu-bar-button barf");
+                $("#helloContainer").attr("data-logged-in", "1");
+                $(".progress-bar-striped").width("100%");
+                $("#login-google").attr("class", "menu-bar-button");
+                $("#login-facebook").attr("class", "menu-bar-button barf");
                 toastr.info("Logged in to Facebook!");
             } else {
                 if (f < 3) {
@@ -91,12 +91,12 @@
             if (attrVal) {
                 options.userInfo.picture = attrVal;
                 self.updateStorage();
-                jQuery(".agario-profile-picture").attr("src", attrVal);
+                $(".agario-profile-picture").attr("src", attrVal);
             }
-            jQuery("#helloContainer").attr("data-logged-in", "1");
-            jQuery(".progress-bar-striped").width("100%");
-            jQuery("#login-facebook").attr("class", "menu-bar-button");
-            jQuery("#login-google").attr("class", "menu-bar-button barf");
+            $("#helloContainer").attr("data-logged-in", "1");
+            $(".progress-bar-striped").width("100%");
+            $("#login-facebook").attr("class", "menu-bar-button");
+            $("#login-google").attr("class", "menu-bar-button barf");
             toastr.info("Logged in to Google!");
         }
     }
@@ -150,7 +150,7 @@
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
-            jQuery.ajax("//agar.io/mc/agario.js", {
+            $.ajax("//agar.io/mc/agario.js", {
                 error: function() {},
                 success: function(sketchContents) {
                     var optionMatch = sketchContents.match(/versionString="(\d+\.\d+\.\d+)"/);
@@ -189,7 +189,7 @@
                 return this.setRegion(nextNodeLoc, false), void(this.checkPartyHash() || this.reconnect());
             }
             var canvasLayersManager = this;
-            jQuery.get("//gc.agar.io", function(layoutSets) {
+            $.get("//gc.agar.io", function(layoutSets) {
                 var j = layoutSets.split(" ")[0];
                 canvasLayersManager.setRegionCode(j);
             }, "text");
@@ -230,8 +230,8 @@
             if (items) {
                 this.region = items;
                 self.localStorage.setItem("location", items);
-                if (jQuery("#region").val() !== items) {
-                    jQuery("#region").val(items);
+                if ($("#region").val() !== items) {
+                    $("#region").val(items);
                 }
                 if (left) {
                     this.reconnect();
@@ -239,7 +239,7 @@
             }
         },
         checkRegion: function() {
-            var x = jQuery("#region");
+            var x = $("#region");
             var options = x.val();
             if (options) {
                 self.localStorage.setItem("location", options);
@@ -249,9 +249,9 @@
                 }
             }
             if (x.val()) {
-                jQuery("#locationKnown").append(x);
+                $("#locationKnown").append(x);
             } else {
-                jQuery("#locationUnknown").append(x);
+                $("#locationUnknown").append(x);
             }
         },
         refreshRegionInfo: function() {
@@ -261,16 +261,16 @@
                 var i;
                 for (i in regions) {
                     if (regions.hasOwnProperty(i)) {
-                        jQuery('#region option[value="' + i + '').text(that.regionNames[i] + " (" + regions[i].numPlayers + ")");
+                        $('#region option[value="' + i + '').text(that.regionNames[i] + " (" + regions[i].numPlayers + ")");
                     }
                 }
             });
         },
         getRegionNames: function() {
             var PL$5 = this;
-            jQuery("#region option").each(function() {
-                var bigg_id = jQuery(this).val();
-                var this_gene_data = jQuery(this).text();
+            $("#region option").each(function() {
+                var bigg_id = $(this).val();
+                var this_gene_data = $(this).text();
                 if (!PL$5.regionNames.hasOwnProperty(bigg_id)) {
                     PL$5.regionNames[bigg_id] = this_gene_data;
                 }
@@ -287,14 +287,14 @@
             }
         },
         applyGameMode: function(value) {
-            jQuery("#helloContainer, #overlays-hud").attr("data-gamemode", value);
-            jQuery("#gamemode").val(value);
+            $("#helloContainer, #overlays-hud").attr("data-gamemode", value);
+            $("#gamemode").val(value);
             if (value !== ":party") {
                 this.replaceHistoryState("/#" + self.encodeURIComponent(value.replace(":", "")));
             }
         },
         handleChangeMode: function() {
-            var n = jQuery("#gamemode").val();
+            var n = $("#gamemode").val();
             this.setGameMode(n);
         },
         findServer: function(id, params) {
@@ -357,7 +357,7 @@
             if (null == type) {
                 type = "application/octet-stream";
             }
-            jQuery.ajax("https://" + headers.master_url + "/" + _wid_attr, {
+            $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
                 },
@@ -379,7 +379,7 @@
         },
         makeMasterSimpleRequest: function(key, dataType, success, error) {
             var obj = this;
-            jQuery.ajax("https://" + headers.master_url + "/" + key, {
+            $.ajax("https://" + headers.master_url + "/" + key, {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", obj.clientVersion), true;
                 },
@@ -424,7 +424,7 @@
                 this.connect(this.endpoint);
                 value = "5";
             }
-            jQuery("#helloContainer").attr("data-party-state", value);
+            $("#helloContainer").attr("data-party-state", value);
         },
         connect: function(body) {
             console.log("[Master] Connect to:", body);
@@ -466,7 +466,7 @@
         },
         setNick: function() {
             this.login();
-            var result = jQuery("#nick").val();
+            var result = $("#nick").val();
             if (result && result.length > 15) {
                 result = result.substring(0, 15);
             }
@@ -480,7 +480,7 @@
             }
         },
         updatePartyToken: function() {
-            jQuery("#party-token, .party-token").val(this.partyToken);
+            $("#party-token, .party-token").val(this.partyToken);
         },
         checkHash: function() {
             if (this.checkPartyHash()) {
@@ -527,32 +527,32 @@
         },
         setUI: function() {
             var chat = this;
-            jQuery("[data-itr]").each(function() {
-                var o = jQuery(this);
+            $("[data-itr]").each(function() {
+                var o = $(this);
                 var i = o.attr("data-itr");
                 o.html(self.i18n(i));
             });
-            jQuery("#gamemode").on("change", function() {
+            $("#gamemode").on("change", function() {
                 chat.handleChangeMode();
             });
-            jQuery(".btn-play, .btn-play-guest").on("click", function(result) {
+            $(".btn-play, .btn-play-guest").on("click", function(result) {
                 result.preventDefault();
                 chat.setNick();
             });
-            jQuery(".btn-spectate").on("click", function(result) {
+            $(".btn-spectate").on("click", function(result) {
                 result.preventDefault();
                 chat.spectate();
             });
-            jQuery("#create-party-btn-2").on("click", function(event) {
+            $("#create-party-btn-2").on("click", function(event) {
                 event.preventDefault();
                 chat.createParty();
             });
             $("#join-party-btn-2").on("click", function(result) {
                 result.preventDefault();
-                chat.joinParty(jQuery("#party-token").val());
+                chat.joinParty($("#party-token").val());
             });
             self.toggleSocialLogin = function() {
-                jQuery("#socialLoginContainer").toggle();
+                $("#socialLoginContainer").toggle();
             };
         },
         init: function() {
@@ -581,10 +581,10 @@
             api.signOut();
         }
         delete self.localStorage.storeObjectInfo;
-        jQuery("#helloContainer").attr("data-logged-in", "0");
-        jQuery(".progress-bar-striped").width("0%");
-        jQuery("#login-facebook").attr("class", "menu-bar-button");
-        jQuery("#login-google").attr("class", "menu-bar-button");
+        $("#helloContainer").attr("data-logged-in", "0");
+        $(".progress-bar-striped").width("0%");
+        $("#login-facebook").attr("class", "menu-bar-button");
+        $("#login-google").attr("class", "menu-bar-button");
         toastr.warning("Logged out!");
         master.logout();
     };
@@ -606,4 +606,4 @@
         self.getStorage();
         setup();
     };
-}(window, window.jQuery);
+}(window);
