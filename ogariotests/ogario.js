@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.521 MEGA TEST
+// v1.522 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3180,7 +3180,7 @@ var thelegendmodproject = function(t, e, i) {
                 });
             },
             'play': function() {
-                if (this['setPlayerSettings'](), this['setParty'](), this['isSocketOpen']()) this['sendPartyData']();
+                if (this['setPlayerSettings'](), this['setParty'](), this.isSocketOpen()) this['sendPartyData']();
                 else {
                     this.connect();
                     var t = this;
@@ -3210,7 +3210,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['setParty'](), this['setPlayerSettings'](), this['sendPartyData'](), this['sendPlayerDeath']();
             },
             'onJoin': function() {
-                if (this['setParty'](), this['isSocketOpen']()) this['join']();
+                if (this['setParty'](), this.isSocketOpen()) this['join']();
                 else {
                     this.connect();
                     var t = this;
@@ -3598,7 +3598,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
                     this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this['partyToken'] = '';
                     var o = this['ws']['match'](/party_id=([A-Z0-9]{6})/);
-                    o && (this['partyToken'] = o[1], ogarjoiner('/#' + window['encodeURIComponent'](this['partyToken'])));
+                    o && (this['partyToken'] = o[1], ogarjoiner('/#' + window.encodeURIComponent(this['partyToken'])));
                 }
             },
             'updateServerInfo': function() {
@@ -3663,7 +3663,7 @@ var thelegendmodproject = function(t, e, i) {
             'switchServerMode': function() {
                 if (this["privateIP"]) {
                     this["privateMode"] = !this["privateMode"];
-                    if (this["isSocketOpen"]()) {
+                    if (this.isSocketOpen()) {
                         this["closeConnection"]();
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
@@ -3731,7 +3731,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'sendPlayerState': function(t) {
-                if (this['isSocketOpen']()) {
+                if (this.isSocketOpen()) {
                     var e = this.createView(1);
                     e.setUint8(0, t), this['sendBuffer'](e);
                 }
@@ -3746,7 +3746,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerState'](3);
             },
             'sendPlayerData': function(t, e, i) {
-                null !== this[e] && this[e] === i || this['isSocketOpen']() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
+                null !== this[e] && this[e] === i || this.isSocketOpen() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
                 this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
@@ -3761,7 +3761,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                this['isSocketOpen']() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
+                this.isSocketOpen() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
             },
             'sendPartyToken': function() {
                 this['setParty'](), this['sendPlayerData'](15, 'lastSentPartyToken', this['partyToken']);
@@ -3775,7 +3775,7 @@ var thelegendmodproject = function(t, e, i) {
             'sendServerRegion': function() {
                 if (this['region']) {
                     var t = this['region'].split('-');
-                    if (this['isSocketOpen']())
+                    if (this.isSocketOpen())
 					{
 						this['sendBuffer'](this['strToBuff'](17, t[0]));
 					}
@@ -3796,7 +3796,7 @@ var thelegendmodproject = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-                this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](18, t));
+                this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
                 this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = $('#region').val(), this['gameMode'] = $('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
@@ -3805,7 +3805,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
             },
             'sendPlayerUpdate': function() {
-                if (this['isSocketOpen']() && i.play && this['playerID'] && i['playerColor']) {
+                if (this.isSocketOpen() && i.play && this['playerID'] && i['playerColor']) {
                     function t(t) {
                         for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), true), o += 2;
                         s.setUint16(o, 0, true), o += 2;
@@ -3819,7 +3819,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'sendPlayerPosition': function() {
-                if (this["isSocketOpen"]() && i.play && this["playerID"]) {
+                if (this.isSocketOpen() && i.play && this["playerID"]) {
                     var t = this.createView(17);
                     t.setUint8(0, 30);
                     t.setUint32(1, this["playerID"], true);
@@ -4000,7 +4000,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendChatMessage': function(t, e) {
                 //console.log(t);console.log(e);
-                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this['isSocketOpen']()) {
+                if (!(Date['now']() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
@@ -5088,9 +5088,9 @@ var thelegendmodproject = function(t, e, i) {
                 this['closeConnection'](); 
 				this['flushCellsData']();
 				this['protocolKey'] = null; 
-				this['clientKey'] = null;
+				this.clientKey = null;
 				this['accessTokenSent'] = false;
-				this['connectionOpened'] = false;
+				this.connectionOpened = false;
 				this['mapOffsetFixed'] = false; 
 				this['leaderboard'] = [];
 				this['ws'] = t;
@@ -5126,7 +5126,7 @@ var thelegendmodproject = function(t, e, i) {
 				(e = this.createView(5)).setUint8(0, 255), 
 				e.setUint32(1, this.clientVersion, true), 
 				this.sendMessage(e), 
-				this['connectionOpened'] = true;
+				this.connectionOpened = true;
             },
             'onMessage': function(t) {
                 t = new DataView(t['data']);
@@ -5173,15 +5173,15 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendMessage': function(t) {
                 //console.log(t);
-                if (this['connectionOpened']) {
-                    if (!this['clientKey']) return;
-                    t = this['shiftMessage'](t, this['clientKey']);
-					this['clientKey'] = this['shiftKey'](this['clientKey']);
+                if (this.connectionOpened) {
+                    if (!this.clientKey) return;
+                    t = this['shiftMessage'](t, this.clientKey);
+					this.clientKey = this.shiftKey(this.clientKey);
                 }
                 this['sendBuffer'](t);
             },
             'sendAction': function(t) {
-                if (this['isSocketOpen']()) {
+                if (this.isSocketOpen()) {
                     var e = this.createView(1);
                     e.setUint8(0, t);
 					this.sendMessage(e);
@@ -5203,7 +5203,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendNick': function(t) {
 				
-                this['playerNick'] = t, t = window['unescape'](window['encodeURIComponent'](t));
+                this['playerNick'] = t, t = window.unescape(window.encodeURIComponent(t));
 				window.Bufferdata = t; //
                 var i = this.createView(1 + t.length);
                 i.setUint8(0, 0);
@@ -5211,7 +5211,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.sendMessage(i);
             },
             'sendPosition': function() {
-                if (this["isSocketOpen"]() && this["connectionOpened"] && this["clientKey"]) {
+                if (this.isSocketOpen() && this.connectionOpened && this.clientKey) {
                     var t = this["cursorX"];
                     var e = this["cursorY"];
                     if (!this.play && this["targeting"] || this.pause) {
@@ -5222,7 +5222,7 @@ var thelegendmodproject = function(t, e, i) {
                     i.setUint8(0, 16);
                     i["setInt32"](1, t, true);
                     i["setInt32"](5, e, true);
-                    i.setUint32(9, this["protocolKey"], true);
+                    i.setUint32(9, this.protocolKey, true);
                     this.sendMessage(i);
                 }
             },
@@ -5244,7 +5244,7 @@ var thelegendmodproject = function(t, e, i) {
                     oW = 102;
                 }
                 var curr = shapes["length"];
-                var count = this["clientVersionString"]["length"];
+                var count = this.clientVersionString["length"];
                 var data = [oW, 8, 1, 18];
                 //this["writeUint32"](data, curr + count + 23);
                 ogarminimapdrawer["writeUint32"](data, curr + count + 23);
@@ -5254,7 +5254,7 @@ var thelegendmodproject = function(t, e, i) {
                 data["push"](8, options, 18, count + 8, 8, 5, 18, count);
                 var prev = 0;
                 for (; prev < count; prev++) {
-                    data["push"](this["clientVersionString"]["charCodeAt"](prev));
+                    data["push"](this.clientVersionString["charCodeAt"](prev));
                 }
                 data["push"](24, 0, 32, 0, 26);
                 ogarminimapdrawer["writeUint32"](data, curr + 3);
@@ -5366,7 +5366,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 18:
                         if (this['protocolKey']){ 
-						this['protocolKey'] = this['shiftKey'](this['protocolKey']);
+						this['protocolKey'] = this.shiftKey(this['protocolKey']);
 						}
 						this['flushCellsData']();
                         break;
@@ -5505,7 +5505,7 @@ var thelegendmodproject = function(t, e, i) {
                         this['protocolKey'] = t.getUint32(s, true);
 						console.log('[Legend mod Express] Received protocol key:', this['protocolKey']);
                         var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
-                        this['clientKey'] = this['generateClientKey'](this['ws'], irenderfromagario);
+                        this.clientKey = this['generateClientKey'](this['ws'], irenderfromagario);
 						if (window.master && window.master.login){ 
 						window.master.login();
 						}
