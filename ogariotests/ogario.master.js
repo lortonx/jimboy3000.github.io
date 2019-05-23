@@ -1,25 +1,26 @@
-//v4
-
+//v3
+legendmaster(window);
+function legendmaster(self) {
     function login() {
         if (l) {
-            window.getStorage();
+            self.getStorage();
             if ("1" === options.loginIntent && "facebook" === options.context) {
-                window.FB.getLoginStatus(function(res) {
+                self.FB.getLoginStatus(function(res) {
                     if (res.status === "connected") {
                         init(res);
                     } else {
-                        window.logout();
+                        self.logout();
                     }
                 });
             }
-            window.facebookRelogin = clear;
-            window.facebookLogin = clear;
+            self.facebookRelogin = clear;
+            self.facebookLogin = clear;
         }
     }
 
     function clear(nbToClear) {
-        if (null !== window.FB) {
-            return options.loginIntent = "1", options.context = "facebook", window.updateStorage(), window.FB.login(function(requestTokenResult) {
+        if (null !== self.FB) {
+            return options.loginIntent = "1", options.context = "facebook", self.updateStorage(), self.FB.login(function(requestTokenResult) {
                 init(requestTokenResult);
             }, {
                 scope: "public_profile, email"
@@ -33,11 +34,11 @@
             var accessToken = response.authResponse.accessToken;
             if (accessToken) {
                 master.doLoginWithFB(accessToken);
-                window.FB.api("/me/picture?width=180&height=180", function(images) {
+                self.FB.api("/me/picture?width=180&height=180", function(images) {
                     if (images.data && images.data.url) {
                         options.userInfo.picture = images.data.url;
                         $(".agario-profile-picture").attr("src", images.data.url);
-                        window.updateStorage();
+                        self.updateStorage();
                     }
                 });
                 $("#helloContainer").attr("data-logged-in", "1");
@@ -48,16 +49,16 @@
             } else {
                 if (f < 3) {
                     f++;
-                    window.facebookRelogin();
-                    window.logout();
+                    self.facebookRelogin();
+                    self.logout();
                 }
             }
         }
     }
 
     function setup() {
-        window.gapi.load("auth2", function() {
-            api = window.gapi.auth2.init({
+        self.gapi.load("auth2", function() {
+            api = self.gapi.auth2.init({
                 client_id: headers.gplus_client_id,
                 cookie_policy: "single_host_origin",
                 scope: "profile",
@@ -67,7 +68,7 @@
             contextMenu.addEventListener("click", function() {
                 options.loginIntent = "1";
                 options.context = "google";
-                window.updateStorage();
+                self.updateStorage();
             });
             api.attachClickHandler(contextMenu);
             api.currentUser.listen(transform);
@@ -89,7 +90,7 @@
             master.doLoginWithGPlus(idToken);
             if (attrVal) {
                 options.userInfo.picture = attrVal;
-                window.updateStorage();
+                self.updateStorage();
                 $(".agario-profile-picture").attr("src", attrVal);
             }
             $("#helloContainer").attr("data-logged-in", "1");
@@ -128,7 +129,7 @@
     var l = false;
     var f = 0;
     var api = null;
-    window.master = {
+    self.master = {
         ws: null,
         serverIP: null,
         endpoint: null,
@@ -144,8 +145,8 @@
         clientVersion: headers.client_version,
         clientVersionString: headers.client_version_string,
         getClientVersion: function() {
-            if (null !== window.localStorage.getItem("ogarioClientVersionString")) {
-                this.clientVersionString = window.localStorage.getItem("ogarioClientVersionString");
+            if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
+                this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
@@ -172,10 +173,10 @@
                 console.log("[Master] Changing client version...");
                 this.clientVersion = clientVersion;
                 this.clientVersionString = serverVersion;
-                if (window.core) {
-                    window.core.setClientVersion(clientVersion, serverVersion);
+                if (self.core) {
+                    self.core.setClientVersion(clientVersion, serverVersion);
                 }
-                window.localStorage.setItem("ogarioClientVersionString", serverVersion);
+                self.localStorage.setItem("ogarioClientVersionString", serverVersion);
                 this.reconnect(true);
             }
         },
@@ -183,7 +184,7 @@
             return 1e4 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
 /*        getRegionCode: function() {
-            var nextNodeLoc = window.localStorage.getItem("location");
+            var nextNodeLoc = self.localStorage.getItem("location");
             if (nextNodeLoc) {
                 return this.setRegion(nextNodeLoc, false), void(this.checkPartyHash() || this.reconnect());
             }
@@ -228,7 +229,7 @@
             }
             if (items) {
                 this.region = items;
-                window.localStorage.setItem("location", items);
+                self.localStorage.setItem("location", items);
                 if ($("#region").val() !== items) {
                     $("#region").val(items);
                 }
@@ -241,9 +242,9 @@
             var x = $("#region");
             var options = x.val();
             if (options) {
-                window.localStorage.setItem("location", options);
+                self.localStorage.setItem("location", options);
             } else {
-                if (options = window.localStorage.getItem("location")) {
+                if (options = self.localStorage.getItem("location")) {
                     $("#region").val(options);
                 }
             }
@@ -289,7 +290,7 @@
             $("#helloContainer, #overlays-hud").attr("data-gamemode", value);
             $("#gamemode").val(value);
             if (value !== ":party") {
-                this.replaceHistoryState("/#" + window.encodeURIComponent(value.replace(":", "")));
+                this.replaceHistoryState("/#" + self.encodeURIComponent(value.replace(":", "")));
             }
         },
         handleChangeMode: function() {
@@ -299,8 +300,8 @@
         findServer: function(id, params) {
             var e = Date.now();
             if (!(e - this.findingServer < 500)) {
-                if (window.core) {
-                    window.core.disconnect();
+                if (self.core) {
+                    self.core.disconnect();
                 }
                 var picKey = "findServer";
                 if (null == id) {
@@ -407,7 +408,7 @@
             }
             this.setGameMode(":party", false);
             this.partyToken = d;
-            this.replaceHistoryState("/#" + window.encodeURIComponent(d));
+            this.replaceHistoryState("/#" + self.encodeURIComponent(d));
             var label = this.setRequestMsg(this.region, "", d);
             this.makeMasterRequest(headers.endpoint_version + "/getToken", label, function(moduleParams) {
                 scopeHeaderOverrides.endpoint = moduleParams.endpoints.https;
@@ -429,10 +430,10 @@
             console.log("[Master] Connect to:", body);
             this.ws = "wss://" + body;
             if (":party" === this.gameMode && this.partyToken) {
-                this.ws += "?party_id=" + window.encodeURIComponent(this.partyToken);
+                this.ws += "?party_id=" + self.encodeURIComponent(this.partyToken);
             }
-            if (window.core) {
-                window.core.connect(this.ws);
+            if (self.core) {
+                self.core.connect(this.ws);
             }
         },
         reconnect: function(table) {
@@ -456,8 +457,8 @@
             requestCaptcha(true);
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
-            if (window.core) {
-                window.core.recaptchaResponse(mmCoreSplitViewBlock);
+            if (self.core) {
+                self.core.recaptchaResponse(mmCoreSplitViewBlock);
             }
         },
         notifyToken: function(n) {
@@ -469,13 +470,13 @@
             if (result && result.length > 15) {
                 result = result.substring(0, 15);
             }
-            if (window.core) {
-                window.core.sendNick(result);
+            if (self.core) {
+                self.core.sendNick(result);
             }
         },
         spectate: function() {
-            if (window.core) {
-                window.core.sendSpectate();
+            if (self.core) {
+                self.core.sendSpectate();
             }
         },
         updatePartyToken: function() {
@@ -483,24 +484,24 @@
         },
         checkHash: function() {
             if (this.checkPartyHash()) {
-                this.joinParty(window.location.hash);
+                this.joinParty(self.location.hash);
             } else {
                 var fm = ["#ffa", "#battleroyale", "#teams", "#experimental"];
-                if (window.location.hash && -1 != fm.indexOf(window.location.hash)) {
-                    this.setGameMode(window.location.hash.replace("#", ":"));
+                if (self.location.hash && -1 != fm.indexOf(self.location.hash)) {
+                    this.setGameMode(self.location.hash.replace("#", ":"));
                 }
             }
         },
         checkPartyHash: function() {
-            return window.location.hash && 7 == window.location.hash.length;
+            return self.location.hash && 7 == self.location.hash.length;
         },
         replaceHistoryState: function(name) {
-            if (window.history && window.history.replaceState) {
-                window.history.replaceState({}, window.document.title, name);
+            if (self.history && self.history.replaceState) {
+                self.history.replaceState({}, self.document.title, name);
             }
         },
         facebookLogin: function() {
-            window.facebookLogin();
+            self.facebookLogin();
         },
         doLoginWithFB: function(session) {
             this.context = "facebook";
@@ -512,11 +513,11 @@
         },
         login: function() {
             if (this.accessToken) {
-                if (this.context === "facebook" && window.core && window.core.sendFbToken) {
-                    window.core.sendFbToken(this.accessToken);
+                if (this.context === "facebook" && self.core && self.core.sendFbToken) {
+                    self.core.sendFbToken(this.accessToken);
                 }
-                if (this.context === "google" && window.core && window.core.sendGplusToken) {
-                    window.core.sendGplusToken(this.accessToken);
+                if (this.context === "google" && self.core && self.core.sendGplusToken) {
+                    self.core.sendGplusToken(this.accessToken);
                 }
             }
         },
@@ -529,7 +530,7 @@
             $("[data-itr]").each(function() {
                 var o = $(this);
                 var i = o.attr("data-itr");
-                o.html(window.i18n(i));
+                o.html(self.i18n(i));
             });
             $("#gamemode").on("change", function() {
                 chat.handleChangeMode();
@@ -550,7 +551,7 @@
                 result.preventDefault();
                 chat.joinParty($("#party-token").val());
             });
-            window.toggleSocialLogin = function() {
+            self.toggleSocialLogin = function() {
                 $("#socialLoginContainer").toggle();
             };
         },
@@ -567,19 +568,19 @@
             }, 18e4);
         }
     };
-    window.getStorage = function() {
-        if (null !== window.localStorage.getItem("storeObjectInfo")) {
-            options = JSON.parse(window.localStorage.getItem("storeObjectInfo"));
+    self.getStorage = function() {
+        if (null !== self.localStorage.getItem("storeObjectInfo")) {
+            options = JSON.parse(self.localStorage.getItem("storeObjectInfo"));
         }
     };
-    window.updateStorage = function() {
-        window.localStorage.setItem("storeObjectInfo", JSON.stringify(options));
+    self.updateStorage = function() {
+        self.localStorage.setItem("storeObjectInfo", JSON.stringify(options));
     };
-    window.logout = function() {
+    self.logout = function() {
         if (options.context === "google" && api) {
             api.signOut();
         }
-        delete window.localStorage.storeObjectInfo;
+        delete self.localStorage.storeObjectInfo;
         $("#helloContainer").attr("data-logged-in", "0");
         $(".progress-bar-striped").width("0%");
         $("#login-facebook").attr("class", "menu-bar-button");
@@ -587,11 +588,11 @@
         toastr.warning("Logged out!");
         master.logout();
     };
-    window.facebookLogin = function() {
+    self.facebookLogin = function() {
         alert("You seem to have something blocking Facebook on your browser, please check for any extensions");
     };
-    window.fbAsyncInit = function() {
-        window.FB.init({
+    self.fbAsyncInit = function() {
+        self.FB.init({
             appId: headers.fb_app_id,
             cookie: true,
             xfbml: true,
@@ -601,8 +602,8 @@
         l = true;
         login();
     };
-    window.gapiAsyncInit = function() {
-        window.getStorage();
+    self.gapiAsyncInit = function() {
+        self.getStorage();
         setup();
     };
-
+};
