@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.531 MEGA TEST
+// v1.532 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5481,14 +5481,14 @@ var thelegendmodproject = function(t, e, i) {
 				console.log(this.id);
 				this['sendBuffer'](packet112);
 				break;
-				/*
+				
 			case 113:
-				const botID = buf.readUInt16LE(buf.byteLength - 2);
-				const packet113 = new Buffer.alloc(buf.byteLength - 2);
-				for (let i = 0; i < buf.byteLength - 2; i++) packet113.writeUInt8(buf.readUInt8(i), i);
-				this.send(packet113, true);
+				const botID = t.readUInt16LE(t.byteLength - 2);
+				const packet113 = t.byteLength - 2;
+				for (let i = 0; i < t.byteLength - 2; i++) packet113.writeUInt8(t.readUInt8(i), i);
+				this['sendBuffer'](packet113);
 				break;	
-				*/			
+				///			
 
 
 
