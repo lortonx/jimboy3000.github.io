@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.553 MEGA TEST
+// v1.554 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2245,7 +2245,7 @@ var thelegendmodproject = function(t, e, i) {
                     this['retryResp']++;
                     var t = this;
                     setTimeout(function() {
-                        $('.btn-play-guest')['is'](':visible') ? $('.btn-play-guest').click() : $('.btn-play').click(), i.play || t['tryResp']();
+                        $('.btn-play-guest').is(':visible') ? $('.btn-play-guest').click() : $('.btn-play').click(), i.play || t['tryResp']();
                     }, 500);
                 }
             },
@@ -2260,10 +2260,10 @@ var thelegendmodproject = function(t, e, i) {
             'autoResp': function() {
                 v['autoResp'] && (this['setAutoResp'](), 
 				$('#overlays')['stop']().hide(), 
-				$('.btn-play-guest')['is'](':visible') ? $('.btn-play-guest').click() : $('.btn-play').click());
+				$('.btn-play-guest').is(':visible') ? $('.btn-play-guest').click() : $('.btn-play').click());
             },
             'setAutoResp': function() {
-                v['autoResp'] && ($('#skipStats').prop('checked') || ($('#skipStats').click(), this['skipStats'] = true));
+                v['autoResp'] && ($('#skipStats').prop('checked') || ($('#skipStats').click(), this.skipStats = true));
             },
             'toggleAutoResp': function() {
                 v['autoResp'] = !v['autoResp'], this['setAutoResp'](), this['displayChatInfo'](v['autoResp'], 'autoRespMsg');
@@ -2457,7 +2457,7 @@ var thelegendmodproject = function(t, e, i) {
             'enterChatMessage': function() {
                 var t = $('#message-box');
                 var e = $('#message');
-                if (t['is'](':visible')) {
+                if (t.is(':visible')) {
                     var o = e.val();
                     o.length ? (this['sendChatMessage'](101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
                 } else { t.show();
@@ -2465,11 +2465,11 @@ var thelegendmodproject = function(t, e, i) {
 				e.val('');}
             },
             'showMenu': function(t) {
-                if (window.MC && window.MC['showNickDialog']) return $('.ogario-menu').show(), $('.menu-panel').hide(), i.play || this['skipStats'] ? $('#main-panel').show() : $('#stats').show(), window.MC['showNickDialog'](300), $('#oferwallContainer')['is'](':visible') && window['closeOfferwall'](), void($('#videoContainer')['is'](':visible') && window['closeVideoContainer']());
+                if (window.MC && window.MC.showNickDialog) return $('.ogario-menu').show(), $('.menu-panel').hide(), i.play || this.skipStats ? $('#main-panel').show() : $('#stats').show(), window.MC.showNickDialog(300), $('#oferwallContainer').is(':visible') && window.closeOfferwall(), void($('#videoContainer').is(':visible') && window.closeVideoContainer());
                 t ? $('#overlays').fadeIn(t) : $('#overlays').show();
             },
             'hideMenu': function(t) {
-                window.MC && window.MC['showNickDialog'] ? $('.ogario-menu').hide() : t ? $('#overlays').fadeOut(t) : $('#overlays').hide();
+                window.MC && window.MC.showNickDialog ? $('.ogario-menu').hide() : t ? $('#overlays').fadeOut(t) : $('#overlays').hide();
             },
             'escapeHTML': function(t) {
                 return String(t).replace(/[&<>"'\/]/g, function(t) {
@@ -7391,7 +7391,7 @@ var thelegendmodproject = function(t, e, i) {
                             ogario1Hotkeys[t] = e, 
 							$('#' + e).val(t); 
 							if ('hk-chatMessage' === e){ 
-							ogario1Hotkeys.spec-messageKey = t} 
+							ogario1Hotkeys['spec-messageKey'] = t} 
 							this.lastPressedKey = t; 
 							this.lastKeyId = e;
                         }
@@ -7438,7 +7438,7 @@ var thelegendmodproject = function(t, e, i) {
         }
         document.onkeydown = function(t) {
             var e = lastkeys.getPressedKey(t);
-            if (('INPUT' !== t.target.tagName || t.target.className === lastkeys.inputClassName || e === ogario1Hotkeys.spec-messageKey) && '' !== e && !ogarioefaultHotkeys[e]) {
+            if (('INPUT' !== t.target.tagName || t.target.className === lastkeys.inputClassName || e === ogario1Hotkeys['spec-messageKey']) && '' !== e && !ogarioefaultHotkeys[e]) {
                 if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
                 if (t.target.className === lastkeys.inputClassName) return t.preventDefault(), void lastkeys.setHotkey(e, t.target.id);
                 if (ogario1Hotkeys[e]) {
