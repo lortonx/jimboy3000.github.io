@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.039f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.039g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "40"; // the version 1.1-> 1.11
@@ -502,7 +502,7 @@ function init(modVersion) {
 				var animateSkinsStart = setInterval(animateSkincheckTimer, 60000);
 			} else {				
 				localStorage.setItem("VanillaskinsSaved", "false");
-				toastr["info"]("Changes will fully be reflected after restart");
+				legendmod3.flushSkinsMap();
 				window.vanillaskins=false;
 				// Animated Skins
 				animateSkinsStop();
