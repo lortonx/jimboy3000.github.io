@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.503 MEGA TEST
+// v1.504 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2386,7 +2386,7 @@ var thelegendmodproject = function(t, e, i) {
                 s('#messages').empty(), t && (toastr['clear'](), v['showChatBox'] && (s('#chat-box .message').remove(), this['chatHistory'].length = 0));
             },
             'displayChatInfo': function(t, e) {
-                t ? toastr['info'](h[e + 'A']) : toastr['error'](h[e + 'B']);
+                t ? toastr['info'](h[e + 'A']) : toastr.error(h[e + 'B']);
             },
             'setDisableChat': function() {
                 v['hideChat'] = v['disableChat'], this['setHideChat']();
@@ -3305,8 +3305,8 @@ var thelegendmodproject = function(t, e, i) {
                     a = s ? i['mapOffsetY'] + i['mapOffset'] : i['mapOffset'],
                     n = Math['floor']((e + a) / (i['mapSize'] / g['sectorsY'])),
                     r = Math['floor']((t + o) / (i['mapSize'] / g['sectorsX']));
-					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
-                return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String['fromCharCode'](n + 65) + (r + 1);
+					window.calculateMapSector = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String.fromCharCode(n + 65) + (r + 1);
+                return n = n < 0 ? 0 : n >= g['sectorsY'] ? g['sectorsY'] - 1 : n, r = r < 0 ? 0 : r >= g['sectorsX'] ? g['sectorsX'] - 1 : r, String.fromCharCode(n + 65) + (r + 1);
             },
             'shortMassFormat': function(t) {
                 return t < 1000 ? t : Math.round(t / 100) / 10 + 'k';
@@ -3566,7 +3566,7 @@ var thelegendmodproject = function(t, e, i) {
                     var e = t.createView(3);
                     e.setUint8(0, 0), 
 					e.setUint16(1, 401, true), 
-					t['sendBuffer'](e), 
+					t.sendBuffer(e), 
 					t['sendPartyData']();
                 }, this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
@@ -3600,10 +3600,10 @@ var thelegendmodproject = function(t, e, i) {
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
                     if (this["privateMode"]) {
-                        toastr["info"]("Prze\u0142\u0105czono na serwer prywatny!");
+                        toastr.info("Prze\u0142\u0105czono na serwer prywatny!");
                         s(".party-panel").show();
                     } else {
-                        toastr["info"]("Prze\u0142\u0105czono na serwer publiczny!");
+                        toastr.info("Prze\u0142\u0105czono na serwer publiczny!");
                         s("#active-parties")["empty"]();
                         s(".party-panel").hide();
                     }
@@ -3665,7 +3665,7 @@ var thelegendmodproject = function(t, e, i) {
             'sendPlayerState': function(t) {
                 if (this['isSocketOpen']()) {
                     var e = this.createView(1);
-                    e.setUint8(0, t), this['sendBuffer'](e);
+                    e.setUint8(0, t), this.sendBuffer(e);
                 }
             },
             'sendPlayerSpawn': function() {
@@ -3678,7 +3678,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerState'](3);
             },
             'sendPlayerData': function(t, e, i) {
-                null !== this[e] && this[e] === i || this['isSocketOpen']() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
+                null !== this[e] && this[e] === i || this['isSocketOpen']() && (this.sendBuffer(this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
                 this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
@@ -3693,7 +3693,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                this['isSocketOpen']() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
+                this['isSocketOpen']() && i['playerColor'] && this.sendBuffer(this['strToBuff'](14, i['playerColor']));
             },
             'sendPartyToken': function() {
                 this['setParty'](), this['sendPlayerData'](15, 'lastSentPartyToken', this['partyToken']);
@@ -3707,7 +3707,7 @@ var thelegendmodproject = function(t, e, i) {
             'sendServerRegion': function() {
                 if (this['region']) {
                     var t = this['region'].split('-');
-                    this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](17, t[0]));
+                    this['isSocketOpen']() && this.sendBuffer(this['strToBuff'](17, t[0]));
                 }
             },
             'sendServerGameMode': function() {
@@ -3725,7 +3725,7 @@ var thelegendmodproject = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-                this['isSocketOpen']() && this['sendBuffer'](this['strToBuff'](18, t));
+                this['isSocketOpen']() && this.sendBuffer(this['strToBuff'](18, t));
             },
             'sendServerData': function() {
                 this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = s('#region').val(), this['gameMode'] = s('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
@@ -3744,7 +3744,7 @@ var thelegendmodproject = function(t, e, i) {
                     var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this['playerID'], true);
                     var o = 5;
-                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i['playerColor']), this['sendBuffer'](s);
+                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i['playerColor']), this.sendBuffer(s);
                 }
             },
             'sendPlayerPosition': function() {
@@ -3906,14 +3906,14 @@ var thelegendmodproject = function(t, e, i) {
                     for (var o = '';;) {
                         var a = t.getUint16(i, true);
                         if (0 == a) break;
-                        o += String['fromCharCode'](a), i += 2;
+                        o += String.fromCharCode(a), i += 2;
                     }
                     i += 2, this['parties'].push(o);
                 }
             },
             'readChatMessage': function(t) {
                 if (!v['disableChat']) {
-                    var e = new Date()['toTimeString']().replace(/^(\d{2}:\d{2}).*/, '$1'),
+                    var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1'),
                         i = t.getUint8(1),
                         s = t.getUint32(2, true),
                         o = t.getUint32(6, true);
@@ -3921,7 +3921,7 @@ var thelegendmodproject = function(t, e, i) {
                         for (var a = '', n = 10; n < t.byteLength; n += 2) {
                             var r = t.getUint16(n, true);
                             if (0 == r) break;
-                            a += String['fromCharCode'](r);
+                            a += String.fromCharCode(r);
                         }
                         this['displayChatMessage'](e, i, s, a);
                     }
@@ -3934,7 +3934,7 @@ var thelegendmodproject = function(t, e, i) {
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this['playerID'], true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
-                    this['sendBuffer'](i), this['lastMessageSentTime'] = Date['now']();
+                    this.sendBuffer(i), this['lastMessageSentTime'] = Date['now']();
                 }
             },
             'prepareCommand': function(t) {
@@ -3953,7 +3953,7 @@ var thelegendmodproject = function(t, e, i) {
             'muteChatUser': function(t) {
                 if (t && !this['isChatUserMuted'](t)) {
                     var e = this['getChatUserNick'](t);
-                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted'].replace('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
+                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr.error(h['userMuted'].replace('%user%', '<strong>' + this['escapeHTML'](e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
                 }
             },
             'unmuteChatUser': function(t) {
@@ -3961,13 +3961,13 @@ var thelegendmodproject = function(t, e, i) {
                     var e = this["chatMutedUserIDs"].indexOf(t);
                     if (-1 != e) {
                         this["chatMutedUserIDs"]["splice"](e, 1);
-                        toastr["info"](h["userUnmuted"].replace("%user%", "<strong>" + this["escapeHTML"](this["chatMutedUsers"][t]) + "</strong>"));
+                        toastr.info(h["userUnmuted"].replace("%user%", "<strong>" + this["escapeHTML"](this["chatMutedUsers"][t]) + "</strong>"));
                         delete this["chatMutedUsers"][t];
                     }
                 }
             },
             'isChatUserMuted': function(t) {
-                return -1 != this['chatMutedUserIDs']['indexOf'](t);
+                return -1 != this['chatMutedUserIDs'].indexOf(t);
             },
             'parseMessage': function(t) {
                 var e = /\[img\](https?:\/\/i\.(?:imgur|hizliresim)\.com\/\w{6,8}\.(?:jpg|jpeg|png|gif)\??\d*)\[\/img\]/i;
@@ -5107,7 +5107,7 @@ var thelegendmodproject = function(t, e, i) {
                     t = this['shiftMessage'](t, this['clientKey']);
 					this['clientKey'] = this['shiftKey'](this['clientKey']);
                 }
-                this['sendBuffer'](t);
+                this.sendBuffer(t);
             },
             'sendAction': function(t) {
                 if (this['isSocketOpen']()) {
@@ -5277,7 +5277,7 @@ var thelegendmodproject = function(t, e, i) {
                         for (var e = '';;) {
                             var i = t.getUint8(s++);
                             if (0 == i) break;
-                            e += String['fromCharCode'](i);
+                            e += String.fromCharCode(i);
                         }
                         return e;
                     },
@@ -5537,7 +5537,7 @@ var thelegendmodproject = function(t, e, i) {
                     for (var e = '';;) {
                         var s = t.readUInt8(i++);
                         if (0 == s) break;
-                        e += String['fromCharCode'](s);
+                        e += String.fromCharCode(s);
                     }
                     return e;
                 };
@@ -5615,7 +5615,7 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs']['indexOf'](l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this['indexedCells'].hasOwnProperty(l) ? (ogariocellssetts = this['indexedCells'][l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v['shortMass'], v['virMassShots']))['time'] = this['time'], ogarioset1final ? this['food'].push(ogariocellssetts) : (M && v['virusesRange'] && this['viruses'].push(ogariocellssetts), this['cells'].push(ogariocellssetts), -1 != this['playerCellIDs'].indexOf(l) && -1 == this['playerCells'].indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this['playerColor'] = m, this['playerCells'].push(ogariocellssetts))), this['indexedCells'][l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this['playerNick']), y && (ogariocellssetts['targetNick'] = y), ogariocellssetts['targetX'] = h, ogariocellssetts['targetY'] = c, ogariocellssetts['targetSize'] = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -7205,7 +7205,7 @@ var thelegendmodproject = function(t, e, i) {
                             i = 'TILDE';
                             break;
                         default:
-                            i = String['fromCharCode'](t.keyCode);
+                            i = String.fromCharCode(t.keyCode);
                     }
                     return '' !== e ? '' !== i ? e + '+' + i : e : i;
                 },
