@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.522 MEGA TEST
+// v1.523 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2194,7 +2194,7 @@ var thelegendmodproject = function(t, e, i) {
                 v['showMiniMapGuides'] = !v['showMiniMapGuides'];
             },
             'setShowLb': function() {
-                ':teams' !== this['gameMode'] && $('#leaderboard-hud')['toggle']();
+                ':teams' !== this.gameMode && $('#leaderboard-hud')['toggle']();
             },
             'setShowBgSectors': function() {
                 v['showBgSectors'] = !v['showBgSectors'];
@@ -2219,10 +2219,10 @@ var thelegendmodproject = function(t, e, i) {
                 v['showMiniMap'] ? $('#minimap-hud').show() : $('#minimap-hud').hide();
             },
             'setShowQuest': function() {
-                ':ffa' === this['gameMode'] && (this['showQuest'] = !this['showQuest'], this['setQuest']());
+                ':ffa' === this.gameMode && (this['showQuest'] = !this['showQuest'], this['setQuest']());
             },
             'setQuest': function() {
-                this['showQuest'] && ':ffa' === this['gameMode'] ? $('#quest-hud').show() : $('#quest-hud').hide();
+                this['showQuest'] && ':ffa' === this.gameMode ? $('#quest-hud').show() : $('#quest-hud').hide();
             },
             'toggleAutoZoom': function() {
                 i['autoZoom'] = !i['autoZoom'], this['displayChatInfo'](i['autoZoom'], 'autoZoomMsg');
@@ -2251,7 +2251,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'quickResp': function() {
                 if(v['quickResp']){ 
-				this['hideMenu']();
+				this.hideMenu();
 				this['gameServerConnect'](this['ws']);
 				i.play = false;
 				this['tryResp']();
@@ -2679,15 +2679,15 @@ var thelegendmodproject = function(t, e, i) {
 				$('#skins a[data-profile=\'' + this['selectedProfile'] + '\']').addClass('selected');
             },
             'prevProfile': function() {
-                this['setPlayerSettings'](),
+                this.setPlayerSettings(),
 				this['selectedProfile'] = (ogario1PlayerProfiles.length + this['selectedProfile'] - 1) % ogario1PlayerProfiles.length, this['setProfile']();
             },
             'nextProfile': function() {
-                this['setPlayerSettings'](),
+                this.setPlayerSettings(),
 				this['selectedProfile'] = (this['selectedProfile'] + 1) % ogario1PlayerProfiles.length, this['setProfile']();
             },
             'selectProfile': function(t) {
-                this['setPlayerSettings']();
+                this.setPlayerSettings();
 				this['selectedProfile'] = parseInt(t);
 				this['setProfile']();
             },
@@ -2811,7 +2811,7 @@ var thelegendmodproject = function(t, e, i) {
                         t["setShowSkinsPanel"]();
                     }); 
 				$(document).on("change", "#region", function() {
-                        t["region"] = this.value;
+                        t.region = this.value;
                     }); 
 				$(document).on("change", "#gamemode", function() {
                         var dummy = this.value;
@@ -2822,7 +2822,7 @@ var thelegendmodproject = function(t, e, i) {
                         t["setQuest"]();
                     }); 
 				$(document).on("change", "#quality", function() {
-                        t["getQuality"](this.value);
+                        t.getQuality(this.value);
                         ogarhusettings();
                     }); 
 				$(document).on("input", "#skin", function() {
@@ -2853,7 +2853,7 @@ var thelegendmodproject = function(t, e, i) {
                         t["setHideSkinUrl"]();
                     }); 
 				$(document).on("click", ".btn-server-info", function() {
-                        $("#server-info")["toggle"]();
+                        $("#server-info").toggle();
                     }); 
 				$(document).on("click", "#server-connect", function() {
                         t["gameServerConnect"]($("#server-ws").val());
@@ -2866,13 +2866,13 @@ var thelegendmodproject = function(t, e, i) {
                     }); 
 				$(document).on("change", "#og-options input[type='checkbox']", function() {
                         var template = $(this);
-                        t["setSettings"](template["attr"]("id"), template["prop"]("checked"));
+                        t["setSettings"](template["attr"]("id"), template.prop("checked"));
                     }); 
 				$(document).on("change", ".js-switch-vanilla", function() {
                         var template = $(this);
                         var p = template["attr"]("id");
                         if (void 0 !== t[p]) {
-                            t[p] = template["prop"]("checked");
+                            t[p] = template.prop("checked");
                             if ("noSkins" === p) {
                                 /** @type {boolean} */
                                 i["showCustomSkins"] = !t["noSkins"];
@@ -3020,7 +3020,7 @@ var thelegendmodproject = function(t, e, i) {
                         result["preventDefault"]();
                         var template = $(this);
                         var p = $("#chat-emoticons");
-                        p["toggle"]();
+                        p.toggle();
                         if (p["is"](":visible")) {
                             template.addClass("active");
                         } else {
@@ -3087,19 +3087,19 @@ var thelegendmodproject = function(t, e, i) {
                 $(o)['fadeIn'](1000), ogarhusettings(), $('.submenu-panel')['perfectScrollbar']('update');
             },
             'getDefaultSettings': function() {
-                if (this["noSkins"] = $("#noSkins")["prop"]("checked"), this["noColors"] = $("#noColors")["prop"]("checked"), this["skipStats"] = $("#skipStats")["prop"]("checked"), this["showQuest"] = $("#showQuest")["prop"]("checked"), i["showCustomSkins"] = !this["noSkins"], null !== window.localStorage.getItem("scale_setting")) {
-                    var t = JSON["parse"](window.localStorage.getItem("scale_setting"));
+                if (this["noSkins"] = $("#noSkins").prop("checked"), this["noColors"] = $("#noColors").prop("checked"), this["skipStats"] = $("#skipStats").prop("checked"), this["showQuest"] = $("#showQuest").prop("checked"), i["showCustomSkins"] = !this["noSkins"], null !== window.localStorage.getItem("scale_setting")) {
+                    var t = JSON.parse(window.localStorage.getItem("scale_setting"));
                     this["setCanvasScale"](t);
                 } else {
                     var o = $("#quality").val();
-                    this["getQuality"](o);
+                    this.getQuality(o);
                 }
-                null !== window.localStorage.getItem("location") ? (this["region"] = window.localStorage.getItem("location"), $("#region").val(this["region"]), window.MC && window.MC["setRegion"] && window.MC["setRegion"](this["region"])) : this["region"] = $("#region").val(), this["setParty"](), ":party" === this["gameMode"] && window.location["hash"] && $("#join-party-btn-2")["click"](), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch-vanilla"))["forEach"](function(remove) {
+                null !== window.localStorage.getItem("location") ? (this.region = window.localStorage.getItem("location"), $("#region").val(this.region), window.MC && window.MC["setRegion"] && window.MC["setRegion"](this.region)) : this.region = $("#region").val(), this["setParty"](), ":party" === this["gameMode"] && window.location["hash"] && $("#join-party-btn-2")["click"](), Array["prototype"]["slice"]["call"](document["querySelectorAll"](".js-switch-vanilla"))["forEach"](function(remove) {
                     new Switchery(remove, {
                         "color": g["menuMainColor"],
                         "size": "small"
                     });
-                }), $("#nick").val(ogarcopythelb.nick)["blur"](), $("#noNames")["prop"]("checked", !v["noNames"]), $("#showMass")["prop"]("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();
+                }), $("#nick").val(ogarcopythelb.nick)["blur"](), $("#noNames").prop("checked", !v["noNames"]), $("#showMass").prop("checked", v["showMass"]), this["unlockButtons"](), this["setAutoResp"](), this["setQuest"]();
             },
             'getQuality': function(t) {
                 var i = 1;
@@ -3162,75 +3162,75 @@ var thelegendmodproject = function(t, e, i) {
             'setMainButtons': function() {
                 var t = this;
                 $(document).on("click", ".btn-play, .btn-play-guest", function() {
-                    t["onPlay"]();
+                    t.onPlay();
                 });
 				$(document).on("click", ".btn-spectate", function() {
-                    t["onSpectate"]();
+                    t.onSpectate();
                 }); 
 				$(document).on("click", "#create-party-btn-2", function() {
-                    t["onCreate"]();
+                    t.onCreate();
                 });
 				$(document).on("click", "#join-party-btn-2", function() {
-                    t["skipServerData"] = true;
-                    t["joinParty"]();
-                    t["onJoin"]();
+                    t.skipServerData = true;
+                    t.joinParty();
+                    t.onJoin();
                 }); 
 				$(document).on("click", "#statsContinue2", function() {
-                    $("#stats, #main-panel")["toggle"]();
+                    $("#stats, #main-panel").toggle();
                 });
             },
             'play': function() {
-                if (this['setPlayerSettings'](), this['setParty'](), this.isSocketOpen()) this['sendPartyData']();
+                if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()) this.sendPartyData();
                 else {
                     this.connect();
                     var t = this;
                     setTimeout(function() {
-                        t['sendPartyData']();
+                        t.sendPartyData();
                     }, 1000);
                 }
             },
             'onPlay': function() {
-                //                this.play(), this['hideMenu'](), window['addKeyListeners'] && window['addKeyListeners'](), v['autoHideFood'] && (i['showFood'] = true), window['ga'] && window['ga']('create', 'UA-92655864-7', 'auto', 'ogarioTracker'), window['ga'] && window['ga']('ogarioTracker.send', 'pageview');
+                //                this.play(), this.hideMenu(), window.addKeyListeners && window.addKeyListeners(), v['autoHideFood'] && (i['showFood'] = true), window['ga'] && window['ga']('create', 'UA-92655864-7', 'auto', 'ogarioTracker'), window['ga'] && window['ga']('ogarioTracker.send', 'pageview');
                 this.play(); 
-				this['hideMenu'](); 
-				if (window['addKeyListeners']){
-					window['addKeyListeners']();
+				this.hideMenu(); 
+				if (window.addKeyListeners){
+					window.addKeyListeners();
 					}
 				if (v['autoHideFood']){
 				i['showFood'] = true};
             },
             'onSpectate': function() {
-                this['onJoin'](), 
-				this['sendPlayerJoin'](), 
-				this['hideMenu'](), 
-				window['addKeyListeners'] && window['addKeyListeners'](), 
+                this.onJoin(), 
+				this.sendPlayerJoin(), 
+				this.hideMenu(), 
+				window.addKeyListeners && window.addKeyListeners(), 
 				v['autoHideFood'] && (i['showFood'] = false);
             },
             'join': function() {
-                this['setParty'](), this['setPlayerSettings'](), this['sendPartyData'](), this['sendPlayerDeath']();
+                this.setParty(), this.setPlayerSettings(), this.sendPartyData(), this.sendPlayerDeath();
             },
             'onJoin': function() {
-                if (this['setParty'](), this.isSocketOpen()) this['join']();
+                if (this.setParty(), this.isSocketOpen()) this.join();
                 else {
                     this.connect();
                     var t = this;
                     setTimeout(function() {
-                        t['join'](); 
-						t['sendPlayerJoin']();
+                        t.join(); 
+						t.sendPlayerJoin();
                     }, 1000);
                 }
             },
             'create': function() {
-                if (this['setParty'](), this['partyToken']) this['onJoin']();
+                if (this.setParty(), this.partyToken) this.onJoin();
                 else {
                     var t = this;
                     setTimeout(function() {
-                        t['create']();
+                        t.create();
                     }, 100);
                 }
             },
             'onCreate': function() {
-                this['setParty'](), ':party' === this['gameMode'] && this['partyToken'] ? this['gameServerReconnect']() : this['createParty'](), this['create']();
+                this.setParty(), ':party' === this.gameMode && this.partyToken ? this.gameServerReconnect() : this.createParty(), this.create();
             },
             'onPlayerSpawn': function() {
                 if (i.play = true, i['playerColor']) return this['sendPlayerSpawn'](), void this['cacheCustomSkin'](ogarcopythelb.nick, i['playerColor'], ogarcopythelb.skinURL);
@@ -3259,7 +3259,7 @@ var thelegendmodproject = function(t, e, i) {
 				i['playerScore'] = 0;
 				i['playerSplitCells'] = 0;
 				this['showMenu'](300);
-				this['sendPlayerDeath']();
+				this.sendPlayerDeath();
 				this['updateDeathLocations'](i['playerX'], i['playerY']);
 				this['unlockButtons'](), ogarcommando1(), this['autoResp']();
             },
@@ -3328,7 +3328,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
-                    var s = ':party' === this['gameMode'] ? t + e : t;
+                    var s = ':party' === this.gameMode ? t + e : t;
                     //					console.log(this['customSkinsMap'][s]);
                     //					console.log(s);
                     //					console.log(i);
@@ -3346,13 +3346,13 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'checkSkinsMap': function(t, e) {
-                var i = ':party' === this['gameMode'] ? t + e : t;
+                var i = ':party' === this.gameMode ? t + e : t;
                 //console.log(['customSkinsMap'].hasOwnProperty(i));
                 return !!this['customSkinsMap'].hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
                 if (!this['checkSkinsMap'](t, e)) return null;
-                var i = ':party' === this['gameMode'] ? t + e : t;
+                var i = ':party' === this.gameMode ? t + e : t;
                 return this['getCachedSkin'](this['customSkinsCache'], this['customSkinsMap'][i]);
             },	
             'calculateMapSector': function(t, e, s = false) {
@@ -3532,8 +3532,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setParty': function() {
                 var t = $('#party-token').val();
-                if (this['gameMode'] = i['gameMode'] = $('#gamemode').val(), this['setQuest'](), ':party' === this['gameMode'] && t) {
-                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this['partyToken'] !== e && (this['partyToken'] = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
+                if (this.gameMode = i.gameMode = $('#gamemode').val(), this['setQuest'](), ':party' === this.gameMode && t) {
+                    var e = t; - 1 != t.indexOf('#') && (e = (t = t.split('#'))[1]), this.partyToken !== e && (this.partyToken = e, this['flushSkinsMap'](), this['flushChatData'](), this['cancelTargeting']());
                 }
             },
             'createParty': function() {
@@ -3596,13 +3596,13 @@ var thelegendmodproject = function(t, e, i) {
                     s = null;
                 t && ((t = this['ws'].replace('.tech.agar.io', '').replace(/-/g, '.')['match'](/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/)) && (this['serverIP'] = t[0], s = btoa(this['serverIP'])));
                 if (!s && i && (this['serverArena'] = i[1], s = this['serverArena']), s) {
-                    this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this['partyToken'] = '';
+                    this['serverToken'] !== s && (this['serverToken'] = s, this['flushData'](), this['flushCells']()), this.partyToken = '';
                     var o = this['ws']['match'](/party_id=([A-Z0-9]{6})/);
-                    o && (this['partyToken'] = o[1], ogarjoiner('/#' + window.encodeURIComponent(this['partyToken'])));
+                    o && (this.partyToken = o[1], ogarjoiner('/#' + window.encodeURIComponent(this.partyToken)));
                 }
             },
             'updateServerInfo': function() {
-                $('#server-ws').val(this['ws']), $('#server-token').val(this['serverToken']), $('#party-token, .party-token').val(this['partyToken']);
+                $('#server-ws').val(this['ws']), $('#server-token').val(this['serverToken']), $('#party-token, .party-token').val(this.partyToken);
             },
             'gameServerConnect': function(t) {
                 t && (this['skipServerData'] = true, window.core && window.core.connect && window.core.connect(t));
@@ -3618,7 +3618,7 @@ var thelegendmodproject = function(t, e, i) {
                 pauseVideos(), 
 				this['closeConnection']();
 				this['flushData']() ; 
-				this['setParty'](); 
+				this.setParty(); 
 				console.log('[Legend mod Express] Connecting to server'), 
 				this['privateMode'] && this['privateIP'] ? this.socket = new WebSocket(this['privateIP']) : this.socket = new WebSocket(this['publicIP']), 
 				this.socket['ogarioWS'] = true, 
@@ -3630,7 +3630,7 @@ var thelegendmodproject = function(t, e, i) {
                     e.setUint8(0, 0);
 					e.setUint16(1, 401, true);
 					t['sendBuffer'](e);
-					t['sendPartyData']();
+					t.sendPartyData();
                 }
 				this.socket['onmessage'] = function(e) {
                     t['handleMessage'](e);
@@ -3654,7 +3654,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'reconnect': function() {
-                this['setParty']();
+                this.setParty();
                 var t = this;
                 setTimeout(function() {
                     t.connect();
@@ -3675,7 +3675,7 @@ var thelegendmodproject = function(t, e, i) {
                         $("#active-parties")["empty"]();
                         $(".party-panel").hide();
                     }
-                    this["onJoin"]();
+                    this.onJoin();
                     if (i.play) {
                         this["onPlayerSpawn"]();
                     }
@@ -3764,13 +3764,13 @@ var thelegendmodproject = function(t, e, i) {
                 this.isSocketOpen() && i['playerColor'] && this['sendBuffer'](this['strToBuff'](14, i['playerColor']));
             },
             'sendPartyToken': function() {
-                this['setParty'](), this['sendPlayerData'](15, 'lastSentPartyToken', this['partyToken']);
+                this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
             },
             'sendServerToken': function() {
                 this['sendPlayerData'](16, 'lastSentServerToken', this['serverToken']);
             },
             'sendServerJoin': function() {
-                this['sendServerToken'](), this['sendPlayerJoin']();
+                this['sendServerToken'](), this.sendPlayerJoin();
             },
             'sendServerRegion': function() {
                 if (this['region']) {
@@ -3783,7 +3783,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendServerGameMode': function() {
                 var t = 'FFA';
-                switch (this['gameMode']) {
+                switch (this.gameMode) {
                     case ':battleroyale':
                         t = 'BTR';
                         break;
@@ -3799,7 +3799,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
-                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = $('#region').val(), this['gameMode'] = $('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
+                this['skipServerData'] ? this['skipServerData'] = false : (this['region'] = $('#region').val(), this.gameMode = $('#gamemode').val(), this['sendServerRegion'](), this['sendServerGameMode']());
             },
             'sendPartyData': function() {
                 this['sendPlayerClanTag'](), this['sendPartyToken'](), this['sendServerToken'](), this['sendPlayerNick']();
@@ -4187,7 +4187,7 @@ var thelegendmodproject = function(t, e, i) {
                 i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this['shortMassFormat'](n + i['playerMass']) + '</span>'), $('#target-summary').html(c), 1 != this['targetStatus'] && this['setTargetStatus'](1);
             },
             'updateQuest': function() {
-                this['showQuest'] && ':ffa' === this['gameMode'] && window.MC && window.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = window.MC['getQuestProgressLabel']());
+                this['showQuest'] && ':ffa' === this.gameMode && window.MC && window.MC['getQuestProgressLabel'] && (this['questHUD']['textContent'] = window.MC['getQuestProgressLabel']());
             },
             'init': function() {
                 this['loadSettings'](), this['loadProfiles'](), this['setLang'](), this['setMenu'](), this['setUI'](), y && y.setTheme(), this['setShowQuickMenu'](), this['setShowSkinsPanel'](), this['setProfile'](), this['setMainButtons'](), this['setStreamMode'](), this['setHideSkinUrl'](), this['setMiniMap'](), this['setAutoResp'](), this['setDisableChat'](), this['setShowChatBox'](), this['setTop5'](), this['setTargetingHUD'](), this['setQuest'](), this['displayTime'](), this['setCenteredLb'](), this['setNormalLb'](), this['setFpsAtTop'](), this['displayStats'](), this['setBlockPopups'](), this['preloadChatSounds'](), this['setChatSoundsBtn']();
@@ -5372,7 +5372,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 32:
                         this['playerCellIDs'].push(t.getUint32(s, true));
-						this.play || (this.play = true, ogarminimapdrawer['hideMenu'](), this['playerColor'] = null, ogarminimapdrawer['onPlayerSpawn']());
+						this.play || (this.play = true, ogarminimapdrawer.hideMenu(), this['playerColor'] = null, ogarminimapdrawer['onPlayerSpawn']());
                         break;
                     case 50:
                         this['pieChart'] = [];
@@ -5911,7 +5911,7 @@ var thelegendmodproject = function(t, e, i) {
 						for (i = 0; i < M.cells.length; i++) {
 							M.cells[i].moveCell();
 						}	
-                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this['scale'], this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx']['scale'](this['scale'], this['scale']), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M['gameMode'] && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
+                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this['scale'], this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx']['scale'](this['scale'], this['scale']), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
                         var t = g['bordersWidth'] / 2;
                         this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M['mapMinX'] - t, M['mapMinY'] - t, M['mapMaxX'] + t, M['mapMaxY'] + t, g['bordersColor'], g['bordersWidth']);
                     }
@@ -5919,7 +5919,7 @@ var thelegendmodproject = function(t, e, i) {
                     v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this['scale'], M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], true);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
-                    this['ctx']['restore'](), ':teams' === M['gameMode'] && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
+                    this['ctx']['restore'](), ':teams' === M.gameMode && this['pieChart'] && this['pieChart']['width'] && this['ctx']['drawImage'](this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
                 }, */
         'renderFrame': function () {
             //this.ctx.start2D();
