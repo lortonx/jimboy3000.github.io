@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.537 MEGA TEST
+// v1.538 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2346,7 +2346,7 @@ var thelegendmodproject = function(t, e, i) {
                             if (v['showTop5']) {
             					//console.log(['top5'].length);
             					//console.log(['teamPlayers'].length);
-                                for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o].color + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this.escapeHTM(this['top5'][o].nick) + '</li>');
+                                for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= this['top5limit'] || (t += '<li><span class=\"cell-counter\" style=\"background-color: ' + this['top5'][o].color + '\">' + (o + 1) + '</span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += 					'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this.escapeHTML(this['top5'][o].nick) + '</li>');
                                 this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                             }
                         },
@@ -2364,7 +2364,7 @@ var thelegendmodproject = function(t, e, i) {
                           bufferString = bufferString + this["top5"][entityType].mass;
                           if (!(entityType >= v["limTP"])) {
                             pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
-            				'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][entityType]['mass']) + ']</span> ' + this["escapeHTML"](this["top5"][entityType].nick) + '</span><span class=\"hud-main-color\">[' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) +']</span><span id= "top5mass" class=""> ' + 
+            				'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][entityType]['mass']) + ']</span> ' + this["escapeHTMLL"](this["top5"][entityType].nick) + '</span><span class=\"hud-main-color\">[' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) +']</span><span id= "top5mass" class=""> ' + 
                             this["shortMassFormat"](this["top5"][entityType].mass) + '</span></li>');
                           }
                         }
@@ -2384,7 +2384,7 @@ var thelegendmodproject = function(t, e, i) {
                         //console.log(['top5'].length);
                         //console.log(['teamPlayers'].length);
                         for (var t = '', e = 0, s = this['top5'].length, o = 0; o < s; o++) e += this['top5'][o]['mass'], o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', v['showTargeting'] && (t += '<a href=\"#\" data-user-id=\"' + this['top5'][o]['id'] + '\" class=\"set-target ogicon-target\"></a> '), 
-						t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this.escapeHTM(this['top5'][o].nick) + '</li>');
+						t += '<span class=\"hud-main-color\">[' + this['calculateMapSector'](this['top5'][o]['x'], this['top5'][o]['y']) + ']</span>', t += '<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][o]['mass']) + ']</span> ' + this.escapeHTML(this['top5'][o].nick) + '</li>');
                         this['top5pos']['innerHTML'] = t, i.play && i['playerMass'] && (e += i['playerMass'], s++), 
 						this['top5totalMass']['textContent'] = this['shortMassFormat'](e), this['top5totalPlayers']['textContent'] = s;
                     }
@@ -2403,7 +2403,7 @@ var thelegendmodproject = function(t, e, i) {
                               t = t + ('<a href="#" data-user-id="' + this["top5"][o]["id"] + '" class="set-target ogicon-target"></a> ');
                             } */
                             t = t + ('<span class="hud-main-color">[' + this["calculateMapSector"](this["top5"][o]["x"], this["top5"][o]["y"]) + "]</span>");
-                            t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this["top5"][o].mass) + "]</span> " + this["escapeHTML"](this["top5"][o].nick) + "</div></li>");
+                            t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this["top5"][o].mass) + "]</span> " + this["escapeHTMLL"](this["top5"][o].nick) + "</div></li>");
                         }
                     }
                     this["top5pos"]["innerHTML"] = t;
@@ -2471,7 +2471,7 @@ var thelegendmodproject = function(t, e, i) {
             'hideMenu': function(t) {
                 window.MC && window.MC['showNickDialog'] ? $('.ogario-menu').hide() : t ? $('#overlays').fadeOut(t) : $('#overlays').hide();
             },
-            'escapeHTML': function(t) {
+            'escapeHTMLL': function(t) {
                 return String(t).replace(/[&<>"'\/]/g, function(t) {
                     return u[t];
                 });
@@ -3694,10 +3694,10 @@ var thelegendmodproject = function(t, e, i) {
             "writeUint32": function(data, value) {
                 for (; !![];) {
                     if ((value & -128) == 0) {
-                        data["push"](value);
+                        data.push(value);
                         return;
                     } else {
-                        data["push"](value & 127 | 128);
+                        data.push(value & 127 | 128);
                         value = value >>> 7;
                     }
                 }
@@ -3861,7 +3861,7 @@ var thelegendmodproject = function(t, e, i) {
                         if (0 == i) {
                             break;
                         }
-                        paginationStr = paginationStr + String["fromCharCode"](i);
+                        paginationStr = paginationStr + String.fromCharCode(i);
                         s = s + 2;
                     }
                     return s = s + 2, paginationStr;
@@ -3992,7 +3992,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'readChatMessage': function(t) {
                 if (!v['disableChat']) {
-                    var e = new Date()['toTimeString']().replace(/^(\d{2}:\d{2}).*/, '$1'),
+                    var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1'),
                         i = t.getUint8(1),
                         s = t.getUint32(2, true),
                         o = t.getUint32(6, true);
@@ -4032,7 +4032,7 @@ var thelegendmodproject = function(t, e, i) {
             'muteChatUser': function(t) {
                 if (t && !this['isChatUserMuted'](t)) {
                     var e = this['getChatUserNick'](t);
-                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted'].replace('%user%', '<strong>' + this.escapeHTM(e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
+                    this['chatMutedUsers'][t] = e, this['chatMutedUserIDs'].push(t), toastr['error'](h['userMuted'].replace('%user%', '<strong>' + this.escapeHTML(e) + '</strong>') + ' <button data-user-id=\"' + t + '\" class=\"btn btn-xs btn-green btn-unmute-user\">' + h['unmute'] + '</button>');
                 }
             },
             'unmuteChatUser': function(t) {
@@ -4040,7 +4040,7 @@ var thelegendmodproject = function(t, e, i) {
                     var e = this["chatMutedUserIDs"].indexOf(t);
                     if (-1 != e) {
                         this["chatMutedUserIDs"]["splice"](e, 1);
-                        toastr["info"](h["userUnmuted"].replace("%user%", "<strong>" + this["escapeHTML"](this["chatMutedUsers"][t]) + "</strong>"));
+                        toastr["info"](h["userUnmuted"].replace("%user%", "<strong>" + this["escapeHTMLL"](this["chatMutedUsers"][t]) + "</strong>"));
                         delete this["chatMutedUsers"][t];
                     }
                 }
@@ -4053,7 +4053,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (e.test(t)) return v['showChatImages'] ? '<img src=\"' + t['match'](e)[1].replace('http:', 'https:') + '\" style=\"width:100%;border:none;\">' : '';
                 var i = /\[yt\]([\w-]{11})\[\/yt\]/i;
                 if (i.test(t)) return v['showChatVideos'] ? '<iframe type=\"text/html\" width=\"100%\" height=\"auto\" src=\"https://www.youtube.com/embed/' + t['match'](i)[1] + '?autoplay=1&amp;vq=tiny\" frameborder=\"0\" />' : '';
-                var s = this.escapeHTM(t);
+                var s = this.escapeHTML(t);
                 return v['chatEmoticons'] && (s = this.parseEmoticons(s)), s;
             },
             'parseEmoticons': function(t) {
@@ -4072,14 +4072,14 @@ var thelegendmodproject = function(t, e, i) {
                         n = this['parseMessage'](o.replace(a + ': ', ''));
                     if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                         var r = '';
-                        if (0 != i && i != this['playerID'] && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTM(a), 101 == e) {
+                        if (0 != i && i != this['playerID'] && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == e) {
                             if (v['showChatBox']) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), $('#chat-box')['perfectScrollbar']('update'), $('#chat-box')['animate']({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['messageSound']));
                             v['hideChat'] || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['messageSound'])), this['chatHistory'].push({
                                 'nick': a,
                                 'message': n
-                            }), this['chatHistory'].length > 15 && this['chatHistory']['shift']();
+                            }), this['chatHistory'].length > 15 && this['chatHistory'].shift();
                         } else if (102 == e) {
                             if (v['showChatBox']) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + t + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'), $('#chat-box')['perfectScrollbar']('update'), $('#chat-box')['animate']({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
@@ -4092,7 +4092,7 @@ var thelegendmodproject = function(t, e, i) {
             'displayUserList': function(t, e, i, s, o) {
                 var a = '';
                 if (Object['keys'](t).length) {
-                    for (var n in a += '<ol class=\"user-list\">', t) t.hasOwnProperty(n) && (a += '<li><strong>' + this.escapeHTM(t[n]) + '</strong> <button data-user-id=\"' + n + '\" class=\"btn btn-xs ' + i + '\">' + s + '</button></li>');
+                    for (var n in a += '<ol class=\"user-list\">', t) t.hasOwnProperty(n) && (a += '<li><strong>' + this.escapeHTML(t[n]) + '</strong> <button data-user-id=\"' + n + '\" class=\"btn btn-xs ' + i + '\">' + s + '</button></li>');
                     a += '</ol>';
                 } else a += h['none'];
                 toastr[o](a, e, {
@@ -4189,7 +4189,7 @@ var thelegendmodproject = function(t, e, i) {
                     } null !== e && (t = e), null !== t ? this['setTarget'](this['teamPlayers'][t]['id']) : this['setTargetStatus'](0);
             },
             'updateTarget': function(t, e, o, a, n, r) {
-                i['setTargetPosition'](o, a), this['targetNick'] !== t && (this['targetNick'] = t, $('#target-nick').html(this.escapeHTM(t))), $('#target-skin').css('background-color', r), e && this['targetSkinURL'] !== e && (this['customSkinsCache'].hasOwnProperty(e + '_cached') ? ($('#target-skin img')['attr']('src', e), this['targetSkinURL'] = e) : $('#target-skin img')['attr']('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this['shortMassFormat'](n) + ']');
+                i['setTargetPosition'](o, a), this['targetNick'] !== t && (this['targetNick'] = t, $('#target-nick').html(this.escapeHTML(t))), $('#target-skin').css('background-color', r), e && this['targetSkinURL'] !== e && (this['customSkinsCache'].hasOwnProperty(e + '_cached') ? ($('#target-skin img')['attr']('src', e), this['targetSkinURL'] = e) : $('#target-skin img')['attr']('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this['shortMassFormat'](n) + ']');
                 var l = this['calculateMapSector'](o, a),
                     c = h['targetDistance'] + ': <span class=\"hud-main-color\">' + i['targetDistance'] + ' [' + l + ']</span>';
                 i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this['shortMassFormat'](n + i['playerMass']) + '</span>'), $('#target-summary').html(c), 1 != this['targetStatus'] && this['setTargetStatus'](1);
@@ -5256,23 +5256,23 @@ var thelegendmodproject = function(t, e, i) {
                 var data = [oW, 8, 1, 18];
                 //this.writeUint32(data, curr + count + 23);
                 ogarminimapdrawer.writeUint32(data, curr + count + 23);
-                data["push"](8, 10, 82);
+                data.push(8, 10, 82);
                 ogarminimapdrawer.writeUint32(data, curr + count + 18);
                 //this.writeUint32(data, curr + count + 18);
-                data["push"](8, options, 18, count + 8, 8, 5, 18, count);
+                data.push(8, options, 18, count + 8, 8, 5, 18, count);
                 var prev = 0;
                 for (; prev < count; prev++) {
-                    data["push"](this.clientVersionString.charCodeAt(prev));
+                    data.push(this.clientVersionString.charCodeAt(prev));
                 }
-                data["push"](24, 0, 32, 0, 26);
+                data.push(24, 0, 32, 0, 26);
                 ogarminimapdrawer.writeUint32(data, curr + 3);
                 //this.writeUint32(data, curr + 3);
-                data["push"](10);
+                data.push(10);
                 ogarminimapdrawer.writeUint32(data, curr);
                 //this.writeUint32(data, curr);
                 prev = 0;
                 for (; prev < curr; prev++) {
-                    data["push"](shapes.charCodeAt(prev));
+                    data.push(shapes.charCodeAt(prev));
                 }
                 data = new Uint8Array(data);
                 var raw_basefont = new DataView(data["buffer"]);
@@ -5585,7 +5585,7 @@ var thelegendmodproject = function(t, e, i) {
             'handleLeaderboard': function() {
                 /*                for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
                                     var s = '<span>';
-                                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this['leaderboard'][i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTM(this['leaderboard'][i].nick) + '</span>';
+                                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this['leaderboard'][i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this['leaderboard'][i].nick) + '</span>';
                                 } */
                 window.teammatenicks = [];
 				window.teammatelegendmodnicks = [];
@@ -5598,9 +5598,9 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 for (var t = '', e = '', i = 0; i < this['leaderboard'].length && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
-                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this['leaderboard'][i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTM(this['leaderboard'][i].nick) + '</span>';
+                    'isPlayer' === this['leaderboard'][i]['id'] ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this['leaderboard'][i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this['leaderboard'][i].nick) + '</span>';
                 }
-                if (this['playerPosition'] > window.leaderboardlimit && (t += '<span class=\"me\">' + this['playerPosition'] + '. ' + ogarminimapdrawer.escapeHTM(this['playerNick']) + '</span>'), v['showLbData']);
+                if (this['playerPosition'] > window.leaderboardlimit && (t += '<span class=\"me\">' + this['playerPosition'] + '. ' + ogarminimapdrawer.escapeHTML(this['playerNick']) + '</span>'), v['showLbData']);
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
                 for (var o = 0; o < this['ghostCells'].length && o != i; o++) e += '<span class=\"lb-data\">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this['ghostCells'][o]['mass']) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this['ghostCells'][o]['x'], this['ghostCells'][o]['y']) + ']</span>', e += '</span>';
                 ogarminimapdrawer['displayLeaderboard'](t, e);
@@ -6152,7 +6152,7 @@ var thelegendmodproject = function(t, e, i) {
                         for (; ogario1PlayerProfiles < s; ogario1PlayerProfiles++) {
                             var ogarcopythelb = 0;
                             for (; ogarcopythelb < i; ogarcopythelb++) {
-                                var ogarminimapdrawer = String["fromCharCode"](65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
+                                var ogarminimapdrawer = String.fromCharCode(65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
                                 m = ~~(o + d / 2 + ogarcopythelb * d);
                                 y = ~~(a + f / 2 + ogario1PlayerProfiles * f);
                                 t.fillText(ogarminimapdrawer, m, y);
