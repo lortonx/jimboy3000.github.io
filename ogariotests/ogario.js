@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.555 MEGA TEST
+// v1.556 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2439,20 +2439,20 @@ var thelegendmodproject = function(t, e, i) {
                 t ? toastr['info'](h[e + 'A']) : toastr['error'](h[e + 'B']);
             },
             'setDisableChat': function() {
-                v['hideChat'] = v['disableChat']; 
+                v.hideChat = v['disableChat']; 
 				this['setHideChat']();
             },
             'hideChat': function() {
-                v['hideChat'] = !v['hideChat'], this['setHideChat'](), this['displayChatInfo'](!v['hideChat'], 'hideChatMsg');
+                v.hideChat = !v.hideChat, this['setHideChat'](), this['displayChatInfo'](!v.hideChat, 'hideChatMsg');
             },
             'setHideChat': function() {
-				if (v['hideChat']){
+				if (v.hideChat){
 					$('#message-box').hide();
 				}
                  this['setShowChatBox']();
             },
             'setShowChatBox': function() {
-                !v['hideChat'] && v.showChatBox ? $('#chat-box').show() : $('#chat-box').hide();
+                !v.hideChat && v.showChatBox ? $('#chat-box').show() : $('#chat-box').hide();
             },
             'enterChatMessage': function() {
                 var t = $('#message-box');
@@ -4076,7 +4076,7 @@ var thelegendmodproject = function(t, e, i) {
                             if (v.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), $('#chat-box').perfectScrollbar('update'), $('#chat-box')['animate']({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
                             }, 500), void(v.chatSounds && this.playSound(this.messageSound));
-                            v['hideChat'] || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v.chatSounds && this.playSound(this.messageSound)), this.chatHistory.push({
+                            v.hideChat || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v.chatSounds && this.playSound(this.messageSound)), this.chatHistory.push({
                                 'nick': a,
                                 'message': n
                             }), this.chatHistory.length > 15 && this.chatHistory.shift();
@@ -4084,7 +4084,7 @@ var thelegendmodproject = function(t, e, i) {
                             if (v.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + t + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'), $('#chat-box').perfectScrollbar('update'), $('#chat-box')['animate']({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
                             }, 500), void(v.chatSounds && this.playSound(this.commandSound));
-                            v['hideChat'] || (toastr['warning']('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r), v.chatSounds && this.playSound(this.commandSound));
+                            v.hideChat || (toastr['warning']('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r), v.chatSounds && this.playSound(this.commandSound));
                         } else $('#messages').append(o);
                     }
                 }
@@ -6522,10 +6522,10 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-macroFeed'],
                     'defaultKey': 'E',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['macroFeed'](!0);
+                        ogarminimapdrawer && ogarminimapdrawer.macroFeed(!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['macroFeed'](!1);
+                        ogarminimapdrawer && ogarminimapdrawer.macroFeed(!1);
                     },
                     'type': 'normal'
                 },
@@ -6542,7 +6542,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-doubleSplit'],
                     'defaultKey': 'Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['doubleSplit']();
+                        ogarminimapdrawer && ogarminimapdrawer.doubleSplit();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6551,7 +6551,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': 'Popsplit',
                     'defaultKey': 'ALT+Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['popSplit']();
+                        ogarminimapdrawer && ogarminimapdrawer.popSplit();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6560,7 +6560,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-split16'],
                     'defaultKey': 'SHIFT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['split16']();
+                        ogarminimapdrawer && ogarminimapdrawer.split16();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6569,7 +6569,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-pause'],
                     'defaultKey': 'R',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setPause']();
+                        ogarminimapdrawer && ogarminimapdrawer.setPause();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6578,7 +6578,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showTop5'],
                     'defaultKey': 'T',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowTop5']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowTop5();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6587,7 +6587,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showTime'],
                     'defaultKey': 'ALT+T',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowTime']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowTime();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6596,7 +6596,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showSplitRange'],
                     'defaultKey': 'U',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowSplitRange']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowSplitRange();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6605,7 +6605,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showSplitInd'],
                     'defaultKey': 'I',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowSplitInd']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowSplitInd();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6614,7 +6614,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showTeammatesInd'],
                     'defaultKey': 'ALT+I',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowTeammatesInd']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowTeammatesInd();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6623,7 +6623,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showOppColors'],
                     'defaultKey': 'O',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowOppColors']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowOppColors();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6632,7 +6632,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-toggleSkins'],
                     'defaultKey': 'A',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['toggleSkins']();
+                        ogarminimapdrawer && ogarminimapdrawer.toggleSkins();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6641,7 +6641,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-transparentSkins'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setTransparentSkins']();
+                        ogarminimapdrawer && ogarminimapdrawer.setTransparentSkins();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6650,7 +6650,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showSkins'],
                     'defaultKey': 'S',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowSkins']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowSkins();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6659,7 +6659,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showStats'],
                     'defaultKey': 'ALT+S',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowStats']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowStats();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6668,7 +6668,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-toggleCells'],
                     'defaultKey': 'D',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['toggleCells']();
+                        ogarminimapdrawer && ogarminimapdrawer.toggleCells();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6677,7 +6677,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showFood'],
                     'defaultKey': 'F',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowFood']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowFood();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6686,7 +6686,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showGrid'],
                     'defaultKey': 'G',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowGrid']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowGrid();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6695,7 +6695,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showMiniMapGuides'],
                     'defaultKey': 'ALT+G',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowMiniMapGuides']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowMiniMapGuides();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6704,7 +6704,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-hideChat'],
                     'defaultKey': 'H',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['hideChat']();
+                        ogarminimapdrawer && ogarminimapdrawer.hideChat();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6713,7 +6713,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showHUD'],
                     'defaultKey': 'ALT+H',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowHUD']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowHUD();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6722,7 +6722,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-copyLb'],
                     'defaultKey': 'L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['copyLb']();
+                        ogarminimapdrawer && ogarminimapdrawer.copyLb();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6731,7 +6731,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showLb'],
                     'defaultKey': 'ALT+L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowLb']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowLb();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6740,7 +6740,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-toggleAutoZoom'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['toggleAutoZoom']();
+                        ogarminimapdrawer && ogarminimapdrawer.toggleAutoZoom();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6749,10 +6749,10 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-resetZoom'],
                     'defaultKey': 'Z',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['resetZoom'](!0);
+                        ogarminimapdrawer && ogarminimapdrawer.resetZoom(!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['resetZoom'](!1);
+                        ogarminimapdrawer && ogarminimapdrawer.resetZoom(!1);
                     },
                     'type': 'normal'
                 },
@@ -6760,7 +6760,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-toggleDeath'],
                     'defaultKey': 'X',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['toggleDeath']();
+                        ogarminimapdrawer && ogarminimapdrawer.toggleDeath();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6769,10 +6769,10 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-clearChat'],
                     'defaultKey': 'C',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['displayChatHistory'](!0);
+                        ogarminimapdrawer && ogarminimapdrawer.displayChatHistory(!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['displayChatHistory'](!1);
+                        ogarminimapdrawer && ogarminimapdrawer.displayChatHistory(!1);
                     },
                     'type': 'normal'
                 },
@@ -6780,7 +6780,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showBgSectors'],
                     'defaultKey': 'B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowBgSectors']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowBgSectors();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6789,7 +6789,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-hideBots'],
                     'defaultKey': 'ALT+B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setHideSmallBots']();
+                        ogarminimapdrawer && ogarminimapdrawer.setHideSmallBots();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6798,7 +6798,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showNames'],
                     'defaultKey': 'N',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowNames']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowNames();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6807,7 +6807,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-hideTeammatesNames'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setHideTeammatesNames']();
+                        ogarminimapdrawer && ogarminimapdrawer.setHideTeammatesNames();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6816,7 +6816,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showMass'],
                     'defaultKey': 'M',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowMass']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowMass();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6825,7 +6825,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showMiniMap'],
                     'defaultKey': 'ALT+M',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowMiniMap']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowMiniMap();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6834,7 +6834,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-chatMessage'],
                     'defaultKey': 'ENTER',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['enterChatMessage']();
+                        ogarminimapdrawer && ogarminimapdrawer.enterChatMessage();
                     },
                     'keyUp': null,
                     'type': 'special'
@@ -6843,7 +6843,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-quickResp'],
                     'defaultKey': 'TILDE',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['quickResp']();
+                        ogarminimapdrawer && ogarminimapdrawer.quickResp();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6852,7 +6852,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-autoResp'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['toggleAutoResp']();
+                        ogarminimapdrawer && ogarminimapdrawer.toggleAutoResp();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6918,7 +6918,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-switchServerMode'],
                     'defaultKey': '=',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['switchServerMode']();
+                        ogarminimapdrawer && ogarminimapdrawer.switchServerMode();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6927,7 +6927,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowTargeting']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowTargeting();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6936,7 +6936,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-setTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setTargeting']();
+                        ogarminimapdrawer && ogarminimapdrawer.setTargeting();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6954,7 +6954,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-changeTarget'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['changeTarget']();
+                        ogarminimapdrawer && ogarminimapdrawer.changeTarget();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6963,7 +6963,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-privateMiniMap'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setPrivateMiniMap']();
+                        ogarminimapdrawer && ogarminimapdrawer.setPrivateMiniMap();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6972,7 +6972,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-showQuest'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['setShowQuest']();
+                        ogarminimapdrawer && ogarminimapdrawer.setShowQuest();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -6981,7 +6981,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm1'],
                     'defaultKey': '1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](1);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(1);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -6990,7 +6990,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm2'],
                     'defaultKey': '2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](2);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(2);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -6999,7 +6999,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm3'],
                     'defaultKey': '3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](3);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(3);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7008,7 +7008,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm4'],
                     'defaultKey': '4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](4);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(4);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7017,7 +7017,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm5'],
                     'defaultKey': '5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](5);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(5);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7026,7 +7026,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm6'],
                     'defaultKey': '6',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](6);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(6);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7035,7 +7035,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm7'],
                     'defaultKey': '7',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](7);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(7);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7044,7 +7044,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm8'],
                     'defaultKey': '8',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](8);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(8);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7053,7 +7053,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm9'],
                     'defaultKey': '9',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](9);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(9);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7062,7 +7062,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm0'],
                     'defaultKey': '0',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](0);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(0);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7071,7 +7071,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm10'],
                     'defaultKey': 'MOUSE WHEEL',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](10);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(10);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7080,7 +7080,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm11'],
                     'defaultKey': 'LEFT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](11);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(11);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7089,7 +7089,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm12'],
                     'defaultKey': 'UP',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](12);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(12);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7098,7 +7098,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm13'],
                     'defaultKey': 'RIGHT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](13);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(13);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7107,7 +7107,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm14'],
                     'defaultKey': 'DOWN',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](14);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(14);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7116,7 +7116,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm15'],
                     'defaultKey': 'CTRL+1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](15);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(15);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7125,7 +7125,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm16'],
                     'defaultKey': 'CTRL+2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](16);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(16);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7134,7 +7134,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm17'],
                     'defaultKey': 'CTRL+3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](17);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(17);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7143,7 +7143,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm18'],
                     'defaultKey': 'CTRL+4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](18);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(18);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7152,7 +7152,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm19'],
                     'defaultKey': 'CTRL+5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](19);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(19);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7161,7 +7161,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm20'],
                     'defaultKey': 'CTRL+7',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](20);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(20);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7170,7 +7170,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm21'],
                     'defaultKey': 'CTRL+8',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](21);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(21);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7179,7 +7179,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm22'],
                     'defaultKey': 'CTRL+9',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](22);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(22);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7188,7 +7188,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm23'],
                     'defaultKey': 'CTRL+0',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](23);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(23);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7197,7 +7197,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm24'],
                     'defaultKey': 'CTRL+Z',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](24);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(24);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7206,7 +7206,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm25'],
                     'defaultKey': 'CTRL+X',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](25);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(25);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7215,7 +7215,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm26'],
                     'defaultKey': 'CTRL+Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](26);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(26);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7224,7 +7224,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm27'],
                     'defaultKey': 'CTRL+V',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](27);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(27);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7233,7 +7233,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm28'],
                     'defaultKey': 'CTRL+B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](28);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(28);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7242,7 +7242,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm29'],
                     'defaultKey': 'CTRL+A',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](29);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(29);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7251,7 +7251,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': c['comm30'],
                     'defaultKey': 'CTRL+D',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer['sendCommand'](30);
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(30);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -7270,7 +7270,7 @@ var thelegendmodproject = function(t, e, i) {
                     null !== window.localStorage.getItem('ogarioHotkeys') ? ogario1Hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys')) : this.loadDefaultHotkeys(), null !== window.localStorage.getItem('ogarioCommands') && (c = JSON.parse(window.localStorage.getItem('ogarioCommands')));
                 },
                 'saveHotkeys': function() {
-                    window.localStorage.setItem('ogarioHotkeys', JSON.stringify(ogario1Hotkeys)), this['saveCommands']();
+                    window.localStorage.setItem('ogarioHotkeys', JSON.stringify(ogario1Hotkeys)), this.saveCommands();
                 },
                 'saveCommands': function() {
                     $('#hotkeys .command-in').each(function() {
