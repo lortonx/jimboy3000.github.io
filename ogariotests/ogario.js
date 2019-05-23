@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.545 MEGA TEST
+// v1.546 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2338,7 +2338,7 @@ var thelegendmodproject = function(t, e, i) {
                 } else $('#time-hud').hide();
             },
             'displayParties': function() {
-                for (var t = '', e = 0; e < this['parties'].length; e++) t += '<li><a href=\"https://agar.io/#' + this['parties'][e] + '\" onclick=\"$(\'#party-token\').val(\'' + this['parties'][e] + '\'); $(\'#join-party-btn-2\').click();\">https://agar.io/#' + this['parties'][e] + '</a></li>';
+                for (var t = '', e = 0; e < this.parties.length; e++) t += '<li><a href=\"https://agar.io/#' + this.parties[e] + '\" onclick=\"$(\'#party-token\').val(\'' + this.parties[e] + '\'); $(\'#join-party-btn-2\').click();\">https://agar.io/#' + this.parties[e] + '</a></li>';
                 this['activeParties'].className = '' === t ? 'no-parties' : '', this['activeParties'].innerHTML = t;
             },
             /*			
@@ -2358,14 +2358,14 @@ var thelegendmodproject = function(t, e, i) {
                       if (v["showTop5"]) {
                         var pix_color = "";
                         var bufferString = 0;
-                        var PL$29 = this["top5"]["length"];
+                        var PL$29 = this.top5["length"];
                         var entityType = 0;
                         for (; entityType < PL$29; entityType++) {
-                          bufferString = bufferString + this["top5"][entityType].mass;
+                          bufferString = bufferString + this.top5[entityType].mass;
                           if (!(entityType >= v["limTP"])) {
-                            pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this["top5"][entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][entityType]["skin"] ? this["top5"][entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
-            				'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][entityType]['mass']) + ']</span> ' + this.escapeHTML(this["top5"][entityType].nick) + '</span><span class=\"hud-main-color\">[' + this["calculateMapSector"](this["top5"][entityType]["x"], this["top5"][entityType]["y"]) +']</span><span id= "top5mass" class=""> ' + 
-                            this["shortMassFormat"](this["top5"][entityType].mass) + '</span></li>');
+                            pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this.top5[entityType]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[entityType]["skin"] ? this.top5[entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' + 
+            				'<span class=\"top5-mass-color\">[' + this['shortMassFormat'](this['top5'][entityType]['mass']) + ']</span> ' + this.escapeHTML(this.top5[entityType].nick) + '</span><span class=\"hud-main-color\">[' + this["calculateMapSector"](this.top5[entityType]["x"], this.top5[entityType]["y"]) +']</span><span id= "top5mass" class=""> ' + 
+                            this["shortMassFormat"](this.top5[entityType].mass) + '</span></li>');
                           }
                         }
                         this["top5pos"].innerHTML = pix_color;
@@ -2393,17 +2393,17 @@ var thelegendmodproject = function(t, e, i) {
                 if (v["showTop5"]) {
                     var t = "";
                     var e = 0;
-                    var s = this["top5"].length;
+                    var s = this.top5.length;
                     var o = 0;
                     for (; o < s; o++) {
-                        e = e + this["top5"][o].mass;
+                        e = e + this.top5[o].mass;
                         if (!(o >= window.teamboardlimit)) {
-                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this["top5"][o]["id"] + '"style="background-color: ' + this["top5"][o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this["top5"][o]["skin"] ? this["top5"][o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o]["id"] + '"style="background-color: ' + this.top5[o]["color"] + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[o]["skin"] ? this.top5[o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
                             /* if (v["showTargeting"]) {
-                              t = t + ('<a href="#" data-user-id="' + this["top5"][o]["id"] + '" class="set-target ogicon-target"></a> ');
+                              t = t + ('<a href="#" data-user-id="' + this.top5[o]["id"] + '" class="set-target ogicon-target"></a> ');
                             } */
-                            t = t + ('<span class="hud-main-color">[' + this["calculateMapSector"](this["top5"][o]["x"], this["top5"][o]["y"]) + "]</span>");
-                            t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this["top5"][o].mass) + "]</span> " + this.escapeHTML(this["top5"][o].nick) + "</div></li>");
+                            t = t + ('<span class="hud-main-color">[' + this["calculateMapSector"](this.top5[o]["x"], this.top5[o]["y"]) + "]</span>");
+                            t = t + ('<span class="top5-mass-color">[' + this["shortMassFormat"](this.top5[o].mass) + "]</span> " + this.escapeHTML(this.top5[o].nick) + "</div></li>");
                         }
                     }
                     this["top5pos"].innerHTML = t;
@@ -2977,7 +2977,7 @@ var thelegendmodproject = function(t, e, i) {
                         var param = parseInt(template["attr"]("data-limit"));
                         if (param) {
                             t["setTop5limit"](param);
-                            t["displayTop5"]();
+                            t.displayTop5();
                             $(".team-top").text(param);
                             $(".team-top-limit").removeClass("active");
                             template.addClass("active");
@@ -3473,10 +3473,10 @@ var thelegendmodproject = function(t, e, i) {
 						this.miniMapCtx.stroke();	
 						
                     }					
-                    if (this["miniMapCtx"].beginPath(), this["miniMapCtx"].arc((i.playerX + r) * n, (i.playerY + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"].closePath(), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"].lineWidth = g["miniMapMyCellStrokeSize"], this["miniMapCtx"].strokeStyle = g["miniMapMyCellStrokeColor"], this["miniMapCtx"].stroke()), this["miniMapCtx"].fillStyle = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this["teamPlayers"].length) {
+                    if (this["miniMapCtx"].beginPath(), this["miniMapCtx"].arc((i.playerX + r) * n, (i.playerY + l) * n, g["miniMapMyCellSize"], 0, this.pi2, false), this["miniMapCtx"].closePath(), g["miniMapMyCellStrokeSize"] > 0 && (this["miniMapCtx"].lineWidth = g["miniMapMyCellStrokeSize"], this["miniMapCtx"].strokeStyle = g["miniMapMyCellStrokeColor"], this["miniMapCtx"].stroke()), this["miniMapCtx"].fillStyle = g["miniMapMyCellColor"], this["miniMapCtx"].fill(), this.teamPlayers.length) {
                         c = 0;
-                        for (; c < this["teamPlayers"].length; c++) {
-                            this["teamPlayers"][c]["drawPosition"](this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this["targetID"], legendmod3["teamPlayers"][c]["color"]);
+                        for (; c < this.teamPlayers.length; c++) {
+                            this.teamPlayers[c]["drawPosition"](this["miniMapCtx"], i["mapOffset"], n, this["privateMiniMap"], this.targetID, legendmod3.teamPlayers[c]["color"]);
                         }
                     }
                     if (this["deathLocations"].length > 0) {
@@ -3568,7 +3568,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'flushPartyData': function() {
                 this['teamPlayers'] = [];
-				this['parties'] = []; 
+				this.parties = []; 
 				this['lastSentNick'] = ''; 
 				this['lastSentClanTag'] = null; 
 				this['lastSentSkinURL'] = ''; 
@@ -3875,10 +3875,10 @@ var thelegendmodproject = function(t, e, i) {
                 var l = ":party" === this.gameMode ? o + r : o;
                 var h = this["checkPlayerID"](i);
                 if (null !== h) {
-                    this["teamPlayers"][h].nick = o;
-                    this["teamPlayers"][h].skinID = l;
-                    this["teamPlayers"][h].skinURL = a;
-                    this["teamPlayers"][h].setColor(r, n);
+                    this.teamPlayers[h].nick = o;
+                    this.teamPlayers[h].skinID = l;
+                    this.teamPlayers[h].skinURL = a;
+                    this.teamPlayers[h].setColor(r, n);
                 } else {
                     var c = new function(envId, cb, i, s) {
                         this["id"] = envId;
@@ -3932,13 +3932,13 @@ var thelegendmodproject = function(t, e, i) {
                         };
                     }(i, o, l, a);
                     c.setColor(r, n);
-                    this["teamPlayers"].push(c);
+                    this.teamPlayers.push(c);
                 }
                 this["cacheCustomSkin"](o, r, a);
             },
             'updateTeamPlayerPosition': function(t) {
                 var e = t.getUint32(1, true),
-                    i = this['checkPlayerID'](e);
+                    i = this.checkPlayerID(e);
                 if (null !== i) {
                     var s = t.getInt32(5, true),
                         o = t.getInt32(9, true),
@@ -3949,18 +3949,18 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'updateTeamPlayers': function() {
-                this["sendPlayerPosition"](), this["chatUsers"] = {}, this["top5"] = [];
+                this.sendPlayerPosition(), this.chatUsers = {}, this.top5 = [];
                 var t = 0;
-                for (; t < this["teamPlayers"].length; t++) {
-                    var e = this["teamPlayers"][t];
-                    if (e.alive && Date["now"]() - e.updateTime >= 2000 || 0 == e.mass) {
+                for (; t < this.teamPlayers.length; t++) {
+                    var e = this.teamPlayers[t];
+                    if (e.alive && Date.now() - e.updateTime >= 2000 || 0 == e.mass) {
                         e.alive = false;
-                        if (this["targeting"] && this["targetID"] && e["id"] == this["targetID"]) {
-                            this["setTargetStatus"](2);
+                        if (this["targeting"] && this.targetID && e["id"] == this.targetID) {
+                            this.setTargetStatus(2);
                         }
                     }
                     if (e.alive) {
-                        this["top5"].push({
+                        this.top5.push({
                             "id": e["id"],
                             "nick": e.nick,
                             "x": e["x"],
@@ -3969,25 +3969,25 @@ var thelegendmodproject = function(t, e, i) {
                             "color": e["color"],
                             "skin": e.skinURL
                         });
-                        if (!this["isChatUserMuted"](e["id"])) {
-                            this["addChatUser"](e["id"], e.nick);
+                        if (!this.isChatUserMuted(e["id"])) {
+                            this.addChatUser(e["id"], e.nick);
                         }
                     }
                 }
-                this["top5"]["sort"](function(row, conf) {
+                this.top5["sort"](function(row, conf) {
                     return conf.mass - row.mass;
-                }), this["displayTop5"]();
+                }), this.displayTop5();
 
             },
             'updateParties': function(t) {
-                this['parties'] = [];
+                this.parties = [];
                 for (var e = t.getUint8(1), i = 2, s = 0; s < e; s++) {
                     for (var o = '';;) {
                         var a = t.getUint16(i, true);
                         if (0 == a) break;
                         o += String.fromCharCode(a), i += 2;
                     }
-                    i += 2, this['parties'].push(o);
+                    i += 2, this.parties.push(o);
                 }
             },
             'readChatMessage': function(t) {
@@ -4002,18 +4002,18 @@ var thelegendmodproject = function(t, e, i) {
                             if (0 == r) break;
                             a += String.fromCharCode(r);
                         }
-                        this['displayChatMessage'](e, i, s, a);
+                        this.displayChatMessage(e, i, s, a);
                     }
                 }
             },
             'sendChatMessage': function(t, e) {
                 //console.log(t);console.log(e);
-                if (!(Date.now() - this['lastMessageSentTime'] < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
+                if (!(Date.now() - this.lastMessageSentTime < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this.playerID, true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
-                    this['sendBuffer'](i), this['lastMessageSentTime'] = Date.now();
+                    this['sendBuffer'](i), this.lastMessageSentTime = Date.now();
                 }
             },
             'prepareCommand': function(t) {
@@ -4155,7 +4155,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['targetID'] && (this['privateMiniMap'] = !this['privateMiniMap'], this['privateMiniMap'] ? $('#set-private-minimap').addClass('active') : $('#set-private-minimap').removeClass('active'));
             },
             'setTarget': function(t) {
-                var e = this['checkPlayerID'](t);
+                var e = this.checkPlayerID(t);
                 if (null !== e) {
                     var i = this['teamPlayers'][e];
                     if (this['targetID'] = i['id'], this['updateTarget'](i.nick, i.skinURL, i['x'], i['y'], i['mass'], i.color), !i['alive']) return void this['setTargetStatus'](2);
@@ -4175,7 +4175,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'changeTarget': function() {
-                for (var t = this['checkPlayerID'](this['targetID']), e = null, i = 0; i < this['teamPlayers'].length; i++)
+                for (var t = this.checkPlayerID(this['targetID']), e = null, i = 0; i < this['teamPlayers'].length; i++)
                     if (this['teamPlayers'][i]['alive']) {
                         if (null === t) {
                             t = i;
@@ -6456,7 +6456,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'countFps': function() {
                     if (v["showStatsFPS"]) {
-                        var t = Date["now"]();
+                        var t = Date.now();
                         if (!this["fpsLastRequest"]) {
                             this["fpsLastRequest"] = t;
                         }
