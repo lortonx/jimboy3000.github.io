@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.502 MEGA TEST
+// v1.503 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -2220,7 +2220,7 @@ var thelegendmodproject = function(t, e, i) {
                 v['autoResp'] && (this['setAutoResp'](), s('#overlays')['stop']().hide(), s('.btn-play-guest')['is'](':visible') ? s('.btn-play-guest')['click']() : s('.btn-play')['click']());
             },
             'setAutoResp': function() {
-                v['autoResp'] && (s('#skipStats')['prop']('checked') || (s('#skipStats')['click'](), this['skipStats'] = true));
+                v['autoResp'] && (s('#skipStats').prop('checked') || (s('#skipStats')['click'](), this['skipStats'] = true));
             },
             'toggleAutoResp': function() {
                 v['autoResp'] = !v['autoResp'], this['setAutoResp'](), this['displayChatInfo'](v['autoResp'], 'autoRespMsg');
@@ -2249,10 +2249,10 @@ var thelegendmodproject = function(t, e, i) {
                 this['protocolMode'] ? s('#block-warn').hide() : v['blockPopups'] ? this['blockPopups']() : this['unblockPopups']();
             },
             'blockPopups': function() {
-                s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').addClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', true), s('#block-warn').show();
+                s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').addClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests').prop('disabled', true), s('#block-warn').show();
             },
             'unblockPopups': function() {
-                s('#openfl-overlay.disabler')['click'](), s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').removeClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests')['prop']('disabled', false), s('#block-warn').hide();
+                s('#openfl-overlay.disabler')['click'](), s('#openfl-content, #openfl-overlay').hide(), s('#openfl-content, #openfl-overlay').removeClass('block-popups'), s('#freeCoins, #gifting, #openShopBtn, #dailyQuests').prop('disabled', false), s('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
                 v['blockPopups'] && this['unblockPopups']();
@@ -2405,7 +2405,7 @@ var thelegendmodproject = function(t, e, i) {
                     e = s('#message');
                 if (t['is'](':visible')) {
                     var o = e.val();
-                    o.length ? (this['sendChatMessage'](101, o), i.play && (e['blur'](), t.hide())) : (e['blur'](), t.hide()), e.val('');
+                    o.length ? (this['sendChatMessage'](101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
                 } else t.show(), e['focus'](), e.val('');
             },
             'showMenu': function(t) {
@@ -2431,7 +2431,7 @@ var thelegendmodproject = function(t, e, i) {
 				
             },
             'saveSettings': function(t, i) {
-                e.localStorage.setItem(i, JSON['stringify'](t));
+                e.localStorage.setItem(i, JSON.stringify(t));
             },
             'exportSettings': function() {
                 var t = {
@@ -2442,17 +2442,17 @@ var thelegendmodproject = function(t, e, i) {
                     'ogarioThemeSettings': g
                 };
                 for (var e in t) {
-                    if (t.hasOwnProperty(e)) s('#export-' + e)['prop']('checked') || delete t[e];
+                    if (t.hasOwnProperty(e)) s('#export-' + e).prop('checked') || delete t[e];
                 }
                 t = JSON.stringify(t), s('#export-settings').val(t), s('#import-settings').val(''), t = null;
             },
             'importSettings': function() {
-                s('#import-settings')['blur']();
+                s('#import-settings').blur();
                 var t = s('#import-settings').val();
                 if (t) {
                     for (var i in t = JSON.parse(t))
                         if (t.hasOwnProperty(i)) {
-                            if (!s('#import-' + i)['prop']('checked')) continue;
+                            if (!s('#import-' + i).prop('checked')) continue;
                             e.localStorage.setItem(i, JSON.stringify(t[i]));
                         } e['location'].reload();
                 }
@@ -2637,7 +2637,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'addOption': function(t, e, i, o) {
                 s(t).append('<label><input type=\"checkbox\" id=\"' + e + '\" class=\"js-switch\"> ' + i + '</label>');
-				s('#' + e)['prop']('checked', o);
+				s('#' + e).prop('checked', o);
             },
             'addOptions': function(t, e) {
                 if (t) {
@@ -2646,7 +2646,7 @@ var thelegendmodproject = function(t, e, i) {
                         var o = t[i];
                         if(v.hasOwnProperty(o)){
 							s('.' + e).append('<label>' + h[o] + ' <input type=\"checkbox\" class=\"js-switch\" id=\"' + o + '\"></label>'); 
-							s('#' + o)['prop']('checked', v[o]);
+							s('#' + o).prop('checked', v[o]);
 						}
                     }
                 }
@@ -3101,7 +3101,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'unlockButtons': function() {
-                s('.btn-play, .btn-play-guest, .btn-login-play, .btn-spectate')['prop']('disabled', false);
+                s('.btn-play, .btn-play-guest, .btn-login-play, .btn-spectate').prop('disabled', false);
             },
             'setMainButtons': function() {
                 var t = this;
@@ -3995,7 +3995,7 @@ var thelegendmodproject = function(t, e, i) {
                         var r = '';
                         if (0 != i && i != this['playerID'] && (this['addChatUser'](i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this['escapeHTML'](a), 101 == e) {
                             if (v['showChatBox']) return s('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'), s('#chat-box')['perfectScrollbar']('update'), s('#chat-box')['animate']({
-                                'scrollTop': s('#chat-box')['prop']('scrollHeight')
+                                'scrollTop': s('#chat-box').prop('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['messageSound']));
                             v['hideChat'] || (toastr['success']('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['messageSound'])), this['chatHistory'].push({
                                 'nick': a,
@@ -4003,7 +4003,7 @@ var thelegendmodproject = function(t, e, i) {
                             }), this['chatHistory'].length > 15 && this['chatHistory']['shift']();
                         } else if (102 == e) {
                             if (v['showChatBox']) return s('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + t + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'), s('#chat-box')['perfectScrollbar']('update'), s('#chat-box')['animate']({
-                                'scrollTop': s('#chat-box')['prop']('scrollHeight')
+                                'scrollTop': s('#chat-box').prop('scrollHeight')
                             }, 500), void(v['chatSounds'] && this['playSound'](this['commandSound']));
                             v['hideChat'] || (toastr['warning']('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r), v['chatSounds'] && this['playSound'](this['commandSound']));
                         } else s('#messages').append(o);
@@ -7127,7 +7127,7 @@ var thelegendmodproject = function(t, e, i) {
                         var t = s(this),
                             e = t['attr']('id');
                         c.hasOwnProperty(e) && (c[e] = t.val());
-                    }), e.localStorage['setItem']('ogarioCommands', JSON['stringify'](c));
+                    }), e.localStorage['setItem']('ogarioCommands', JSON.stringify(c));
                 },
                 'resetHotkeys': function() {
                     this['loadDefaultHotkeys'](), s('#hotkeys-cfg .custom-key-in')['each'](function() {
@@ -7298,7 +7298,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 } else {
                     if (v["mouseSplit"]){
-						if (1 == t.which && !v["mouseInvert"] || 3 == t.which && v["mouseInvert"])) {
+						if (1 == t.which && !v["mouseInvert"] || 3 == t.which && v["mouseInvert"]) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer.split();
