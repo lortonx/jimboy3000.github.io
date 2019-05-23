@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.533 MEGA TEST
+// v1.534 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5256,8 +5256,8 @@ var thelegendmodproject = function(t, e, i) {
                 //this.writeUint32(data, curr + count + 23);
                 ogarminimapdrawer.writeUint32(data, curr + count + 23);
                 data["push"](8, 10, 82);
-                ogarminimapdrawer['writeUint32'](data, curr + count + 18);
-                //this['writeUint32'](data, curr + count + 18);
+                ogarminimapdrawer.writeUint32(data, curr + count + 18);
+                //this.writeUint32(data, curr + count + 18);
                 data["push"](8, options, 18, count + 8, 8, 5, 18, count);
                 var prev = 0;
                 for (; prev < count; prev++) {
@@ -5470,7 +5470,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
 						
 						
-					//jimboy3100's protocols	
+					//jimboy3100's protocols	 112 & 113 NOT WORK
 			case 112:
 				
 				const packet112 = t.byteLength + 2;
@@ -5539,9 +5539,10 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         break;
                     case 226: //jimboy3100's					
-					t.writeUInt8(227, 0);
-					this.sendMessage(t)				
+					ogarminimapdrawer.writeUInt8(227, 0);
+					this.sendMessage(t);				
                         break;
+						
 						
                     case 241:
                         this['protocolKey'] = t.getUint32(s, true);
