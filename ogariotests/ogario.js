@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.539 MEGA TEST
+// v1.540 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -1713,7 +1713,7 @@ var thelegendmodproject = function(t, e, i) {
                     e === g.customCursor ? $(t).append('<div class=\"cursor-box\"><a href=\"#\" class=\"active\"><img src=\"' + e + '\"></a></div>') : $(t).append('<div class=\"cursor-box\"><a href=\"#\"><img src=\"' + e + '\"></a></div>');
                 },
                 'setFont': function(t, e) {
-                    g[t] = e, g[t + 'Family'] = this['setFontFamily'](e), g[t + 'Weight'] = this.setFontWeight(e), i.hasOwnProperty(t + 'Family') && (i[t + 'Family'] = g[t + 'Family']), i.hasOwnProperty(t + 'Weight') && (i[t + 'Weight'] = g[t + 'Weight']);
+                    g[t] = e, g[t + 'Family'] = this.setFontFamily(e), g[t + 'Weight'] = this.setFontWeight(e), i.hasOwnProperty(t + 'Family') && (i[t + 'Family'] = g[t + 'Family']), i.hasOwnProperty(t + 'Weight') && (i[t + 'Weight'] = g[t + 'Weight']);
                 },
                 'addFontBox': function(t, e, i) {
                     $(t).append('<div class=\"font-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>'), $('#' + e).append('<option value=\"ubuntu\">Ubuntu</option><option value=\"ubuntu-bold\">Ubuntu Bold</option>'), $('#' + e).append('<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>'), $('#' + e).append('<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>'), $('#' + e).val(g[e]);
@@ -3497,8 +3497,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'drawMiniMapSectors': function(t, e, s, o, a) {
                 this['miniMapSectors'] = document.getElementById('minimap-sectors');
-                var n = this['miniMapSectors']['getContext']('2d');
-                n['ogarioCtx'] = true; 
+                var n = this['miniMapSectors'].getContext('2d');
+                n.ogarioCtx = true; 
 				this['miniMapSectors']['width'] = s; 
 				this['miniMapSectors']['height'] = o; 
 				n.fillStyle = '#FFFFFF'; 
@@ -3512,7 +3512,7 @@ var thelegendmodproject = function(t, e, i) {
                 i.play && i['playerSplitCells'] > 1 && (v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this['selectBiggestCell'] ? 0.6 : 0.3, t.beginPath(), t.arc(0x30, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this['selectBiggestCell'] ? 0.3 : 0.6, t.beginPath(), t.arc(0x3c, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
             },
             'dTok': function(t, e) {
-                t['font'] = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t['fillText'](atob(this['token']), e, 7);
+                t.font = g['miniMapFontWeight'] + ' ' + (g['miniMapTop'] - 6) + 'px ' + g['miniMapFontFamily'], t['textAlign'] = 'right', t['textBaseline'] = 'top', t.fillText(atob(this['token']), e, 7);
             },
 /*            'drawTeammatesInd': function(t, e, i, s) {
                 this['indicator'] && t.drawImage(this['indicator'], e - 45, i - s - 90);
@@ -3524,7 +3524,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (l || r || !(f = this['setAutoHideCellInfo'](a)) || !v['autoHideNames'] || !v['autoHideMass']) {
                         var m = null;
                         if (!this['cells'].hasOwnProperty(e)) return (m = new ogarbasicassembly(s, o, r, l, v['shortMass'], v['virMassShots']))['setMass'](a), m['setNick'](c), void(this['cells'][e] = m);
-                        (m = this['cells'][e])['update'](s, o, a, r, l, c), m['setDrawing'](v['optimizedNames'], v['optimizedMass'], v['shortMass'], v['virMassShots'], v['namesStroke'], v['massStroke']), m['setDrawingScale'](i['viewScale'], g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), t.globalAlpha = g['textAlpha'], v['noNames'] || f && v['autoHideNames'] || l && v['hideMyName'] || d && v['hideTeammatesNames'] || m['drawNick'](t, g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], g['namesStrokeColor']), !v['showMass'] || f && v['autoHideMass'] || l && v['hideMyMass'] || v['hideEnemiesMass'] && !l && !r || m['drawMass'](t, g['massColor'], g['massFontFamily'], g['massFontWeight'], g['massStrokeColor']);
+                        (m = this['cells'][e])['update'](s, o, a, r, l, c), m.setDrawing(v['optimizedNames'], v['optimizedMass'], v['shortMass'], v['virMassShots'], v['namesStroke'], v['massStroke']), m['setDrawingScale'](i['viewScale'], g['namesScale'], g['massScale'], g['virMassScale'], g['strokeScale']), t.globalAlpha = g['textAlpha'], v['noNames'] || f && v['autoHideNames'] || l && v['hideMyName'] || d && v['hideTeammatesNames'] || m['drawNick'](t, g['namesColor'], g['namesFontFamily'], g['namesFontWeight'], g['namesStrokeColor']), !v['showMass'] || f && v['autoHideMass'] || l && v['hideMyMass'] || v['hideEnemiesMass'] && !l && !r || m['drawMass'](t, g['massColor'], g['massFontFamily'], g['massFontWeight'], g['massStrokeColor']);
                     }
                 }
             },
@@ -4210,101 +4210,101 @@ var thelegendmodproject = function(t, e, i) {
 
         function irenderfromagario() {
             this['txt'] = '',
-                this['txtCanvas'] = null,
-                this['txtCtx'] = null,
+                this.txtCanvas = null,
+                this.txtCtx = null,
                 this.color = '#FFFFFF',
                 this.stroke = false,
-                this['strokeWidth'] = 2,
-                this['strokeColor'] = '#000000',
-                this['font'] = '700 16px Ubuntu',
-                this['fontFamily'] = 'Ubuntu',
-                this['fontWeight'] = 700,
-                this['fontSize'] = 16,
-                this['margin'] = 3,
-                this['scale'] = 1,
-                this['quality'] = 1,
-                this['measuredWidth'] = 0,
-                this['redraw'] = false,
-                this['remeasure'] = false,
-                this['setTxt'] = function(ogariosettxtsetter) {
+                this.strokeWidth = 2,
+                this.strokeColor = '#000000',
+                this.font = '700 16px Ubuntu',
+                this.fontFamily = 'Ubuntu',
+                this.fontWeight = 700,
+                this.fontSize = 16,
+                this.margin = 3,
+                this.scale = 1,
+                this.quality = 1,
+                this.measuredWidth = 0,
+                this.redraw = false,
+                this.remeasure = false,
+                this.setTxt = function(ogariosettxtsetter) {
                     this['txt'] !== ogariosettxtsetter && (this['txt'] = ogariosettxtsetter,
-                        this['redraw'] = true,
-                        this['remeasure'] = true);
+                        this.redraw = true,
+                        this.remeasure = true);
                 },
-                this['setColor'] = function(ogariocolorsetter) {
+                this.setColor = function(ogariocolorsetter) {
                     this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
-                        this['redraw'] = true);
+                        this.redraw = true);
                 },
-                this['setStroke'] = function(ogariostrokesetter) {
+                this.setStroke = function(ogariostrokesetter) {
                     this.stroke !== ogariostrokesetter && (this.stroke = ogariostrokesetter,
-                        this['redraw'] = true);
+                        this.redraw = true);
                 },
-                this['setStrokeWidth'] = function(ogariostrokewidthsetter) {
-                    this.stroke && this['strokeWidth'] != ogariostrokewidthsetter && (this['strokeWidth'] = ogariostrokewidthsetter,
-                        this['redraw'] = true,
-                        this['remeasure'] = true);
+                this.setStrokeWidth = function(ogariostrokewidthsetter) {
+                    this.stroke && this.strokeWidth != ogariostrokewidthsetter && (this.strokeWidth = ogariostrokewidthsetter,
+                        this.redraw = true,
+                        this.remeasure = true);
                 },
-                this['setStrokeColor'] = function(ogariostrokecolorsetter) {
-                    this.stroke && this['strokeColor'] !== ogariostrokecolorsetter && (this['strokeColor'] = ogariostrokecolorsetter,
-                        this['redraw'] = true);
+                this.setStrokeColor = function(ogariostrokecolorsetter) {
+                    this.stroke && this.strokeColor !== ogariostrokecolorsetter && (this.strokeColor = ogariostrokecolorsetter,
+                        this.redraw = true);
                 },
                 this.setFont = function() {
-                    this['font'] = this['fontWeight'] + ' ' + this['fontSize'] + 'px ' + this['fontFamily'];
+                    this.font = this.fontWeight + ' ' + this.fontSize + 'px ' + this.fontFamily;
                 },
-                this['setFontFamily'] = function(ogariofontfamilysetter) {
-                    this['fontFamily'] !== ogariofontfamilysetter && (this['fontFamily'] = ogariofontfamilysetter,
+                this.setFontFamily = function(ogariofontfamilysetter) {
+                    this.fontFamily !== ogariofontfamilysetter && (this.fontFamily = ogariofontfamilysetter,
                         this.setFont(),
-                        this['redraw'] = true,
-                        this['remeasure'] = true);
+                        this.redraw = true,
+                        this.remeasure = true);
                 },
                 this.setFontWeight = function(ogariofontweightsetter) {
-                    this['fontWeight'] != ogariofontweightsetter && (this['fontWeight'] = ogariofontweightsetter,
+                    this.fontWeight != ogariofontweightsetter && (this.fontWeight = ogariofontweightsetter,
                         this.setFont(),
-                        this['redraw'] = true,
-                        this['remeasure'] = true);
+                        this.redraw = true,
+                        this.remeasure = true);
                 },
-                this['setFontSize'] = function(ogariofontsizesetter) {
-                    this['fontSize'] != ogariofontsizesetter && (this['fontSize'] = ogariofontsizesetter,
-                        this['margin'] = ~~(0.2 * ogariofontsizesetter),
+                this.setFontSize = function(ogariofontsizesetter) {
+                    this.fontSize != ogariofontsizesetter && (this.fontSize = ogariofontsizesetter,
+                        this.margin = ~~(0.2 * ogariofontsizesetter),
                         this.setFont(),
-                        this['redraw'] = true);
+                        this.redraw = true);
                 },
-                this['setScale'] = function(ogarioscalesetter) {
-                    this['scale'] != ogarioscalesetter && (this['scale'] = ogarioscalesetter,
-                        this['redraw'] = true);
+                this.setScale = function(ogarioscalesetter) {
+                    this.scale != ogarioscalesetter && (this.scale = ogarioscalesetter,
+                        this.redraw = true);
                 },
-                this['createCanvas'] = function() {
-                    this['txtCanvas'] || (this['txtCanvas'] = document.createElement('canvas'),
-                        this['txtCtx'] = this['txtCanvas']['getContext']('2d'),
-                        this['txtCtx']['ogarioCtx'] = true);
+                this.createCanvas = function() {
+                    this.txtCanvas || (this.txtCanvas = document.createElement('canvas'),
+                        this.txtCtx = this.txtCanvas.getContext('2d'),
+                        this.txtCtx.ogarioCtx = true);
                 },
-                this['setDrawing'] = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
-                    this['setColor'](ogarsetDrawinglabel1),
-                        this['setFontFamily'](ogarsetDrawinglabel2),
+                this.setDrawing = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
+                    this.setColor(ogarsetDrawinglabel1),
+                        this.setFontFamily(ogarsetDrawinglabel2),
                         this.setFontWeight(ogarsetDrawinglabel3),
-                        this['setStroke'](ogarsetDrawinglabel4),
-                        this['setStrokeWidth'](ogarsetDrawinglabel5),
-                        this['setStrokeColor'](ogarsetDrawinglabel6);
+                        this.setStroke(ogarsetDrawinglabel4),
+                        this.setStrokeWidth(ogarsetDrawinglabel5),
+                        this.setStrokeColor(ogarsetDrawinglabel6);
                 },
-                this['measureWidth'] = function() {
-                    return this['remeasure'] && (this['txtCtx']['font'] = this['fontWeight'] + ' 10px ' + this['fontFamily'],
-                            this['measuredWidth'] = this['txtCtx']['measureText'](this['txt'])['width'],
-                            this['remeasure'] = false),
-                        ~~(this['fontSize'] / 10 * this['measuredWidth']) + 2 * this['strokeWidth'];
+                this.measureWidth = function() {
+                    return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
+                            this.measuredWidth = this.txtCtx.measureText(this['txt'])['width'],
+                            this.remeasure = false),
+                        ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
                 this['drawTxt'] = function() {
-                    return this['createCanvas'](),
-                        this['redraw'] && (this['redraw'] = false,
-                            this['txtCanvas']['width'] = this['measureWidth'](),
-                            this['txtCanvas']['height'] = this['fontSize'] + this['margin'] * 2,
-                            this['txtCtx']['font'] = this['font'],
-                            this['txtCtx'].globalAlpha = 1,
-                            this['txtCtx'].lineWidth = this['strokeWidth'],
-                            this['txtCtx'].strokeStyle = this['strokeColor'],
-                            this['txtCtx'].fillStyle = this.color,
-                            this.stroke && this['txtCtx']['strokeText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5)),
-                            this['txtCtx']['fillText'](this['txt'], this['strokeWidth'], ~~(this['fontSize'] + this['margin'] * 0.5))),
-                        this['txtCanvas'];
+                    return this.createCanvas(),
+                        this.redraw && (this.redraw = false,
+                            this.txtCanvas['width'] = this.measureWidth(),
+                            this.txtCanvas['height'] = this.fontSize + this.margin * 2,
+                            this.txtCtx.font = this.font,
+                            this.txtCtx.globalAlpha = 1,
+                            this.txtCtx.lineWidth = this.strokeWidth,
+                            this.txtCtx.strokeStyle = this.strokeColor,
+                            this.txtCtx.fillStyle = this.color,
+                            this.stroke && this.txtCtx.strokeText(this['txt'], this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+                            this.txtCtx.fillText(this['txt'], this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
+                        this.txtCanvas;
                 };
         }
         window.legendmod3 = ogarminimapdrawer;
@@ -5377,7 +5377,7 @@ var thelegendmodproject = function(t, e, i) {
 						s += 4;
 						this['viewY'] = t.getFloat32(s, true);
 						s += 4;
-						this['scale'] = t.getFloat32(s, true);
+						this.scale = t.getFloat32(s, true);
                         break;
                     case 18:
                         if (this['protocolKey']){ 
@@ -5642,8 +5642,8 @@ var thelegendmodproject = function(t, e, i) {
 				}
 			},
             'isInView': function(t, e, i) {
-                var s = this['canvasWidth'] / 2 / this['scale'],
-                    o = this['canvasHeight'] / 2 / this['scale'];
+                var s = this['canvasWidth'] / 2 / this.scale,
+                    o = this['canvasHeight'] / 2 / this.scale;
 					//console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o));
                 return !(t + i < this['viewX'] - s || e + i < this['viewY'] - o || t - i > this['viewX'] + s || e - i > this['viewY'] + o);
             },
@@ -5914,7 +5914,7 @@ var thelegendmodproject = function(t, e, i) {
                 'indicator': null,
                 'setCanvas': function() {
                     this.canvas = document.getElementById('canvas');
-					this['ctx'] = this.canvas['getContext']('2d');
+					this['ctx'] = this.canvas.getContext('2d');
 					this.canvas['onmousemove'] = function(t) {
                         M['clientX'] = t['clientX']; 
 						M['clientY'] = t['clientY']; 
@@ -5931,7 +5931,7 @@ var thelegendmodproject = function(t, e, i) {
 					this['renderFrame']();
                 },
                 'setView': function() {
-                    this['setScale'](),
+                    this.setScale(),
                         M['playerCells'].length ?
                         (M['calculatePlayerMassAndPosition'](),
                             //					this.camX += (M.viewX - this.camX) / 2,
@@ -5943,8 +5943,8 @@ var thelegendmodproject = function(t, e, i) {
                         M['playerX'] = this.camX, M['playerY'] = this['camY'];
                 },
                 'setScale': function() {
-                    if (!M['autoZoom']) return this['scale'] = (9 * this['scale'] + this['getZoom']()) / 10, void(M['viewScale'] = this['scale']);
-                    M.play ? this['scale'] = (9 * this['scale'] + Math['pow'](Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this['scale'] = (9 * this['scale'] + M['scale'] * this['getZoom']()) / 10, M['viewScale'] = this['scale'];
+                    if (!M['autoZoom']) return this.scale = (9 * this.scale + this['getZoom']()) / 10, void(M['viewScale'] = this.scale);
+                    M.play ? this.scale = (9 * this.scale + Math['pow'](Math['min'](64 / M['playerSize'], 1), 0.4) * this['getZoom']()) / 10 : this.scale = (9 * this.scale + M.scale * this['getZoom']()) / 10, M['viewScale'] = this.scale;
                 },
                 'getZoom': function() {
                     return Math['max'](this['canvasWidth'] / 1080, this['canvasHeight'] / 1920) * M['zoomValue'];
@@ -5955,12 +5955,12 @@ var thelegendmodproject = function(t, e, i) {
 						for (i = 0; i < M.cells.length; i++) {
 							M.cells[i].moveCell();
 						}	
-                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this['scale'], this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx']['scale'](this['scale'], this['scale']), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
+                    if (this['setView'](), M['getCursorPosition'](), M['sortCells'](), M['compareCells'](), this['ctx']['clearRect'](0, 0, this['canvasWidth'], this['canvasHeight']), v['showGrid'] && this['drawGrid'](this['ctx'], this['canvasWidth'], this['canvasHeight'], this.scale, this.camX, this.camY), this['ctx']['save'](), this['ctx']['translate'](this['canvasWidth'] / 2, this['canvasHeight'] / 2), this['ctx'].scale(this.scale, this.scale), this['ctx']['translate'](-this.camX, -this.camY), v['showBgSectors'] && this['drawSectors'](this['ctx'], M['mapOffsetFixed'], g['sectorsX'], g['sectorsY'], M['mapMinX'], M['mapMinY'], M['mapMaxX'], M['mapMaxY'], g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this['ctx']), v['showMapBorders']) {
                         var t = g['bordersWidth'] / 2;
                         this['drawMapBorders'](this['ctx'], M['mapOffsetFixed'], M['mapMinX'] - t, M['mapMinY'] - t, M['mapMaxX'] + t, M['mapMaxY'] + t, g['bordersColor'], g['bordersWidth']);
                     }
                     this["drawCommander"]();
-                    v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this['scale'], M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
+                    v['virusesRange'] && this['drawVirusesRange'](this['ctx'], M['viruses']), this['drawFood'](), M.play && (v['splitRange'] && this['drawSplitRange'](this['ctx'], M['biggerSTECellsCache'], M['playerCells'], M['selectBiggestCell']), v['oppRings'] && this['drawOppRings'](this['ctx'], this.scale, M['biggerSTECellsCache'], M['biggerCellsCache'], M['smallerCellsCache'], M['STECellsCache']), v['cursorTracking'] && this['drawCursorTracking'](this['ctx'], M['playerCells'], M['cursorX'], M['cursorY'])), this['drawGhostCells']();
                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e]['draw'](this['ctx'], true);
                     for (e = 0; e < M['cells'].length; e++) M['cells'][e]['draw'](this['ctx']);
                     this['ctx']['restore'](), ':teams' === M.gameMode && this['pieChart'] && this['pieChart']['width'] && this['ctx'].drawImage(this['pieChart'], this['canvasWidth'] - this['pieChart']['width'] - 10, 10);
@@ -6256,11 +6256,11 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'drawFood': function() {
-                    if (M['showFood'] && !(v['autoHideFoodOnZoom'] && this['scale'] < 0.2)) {
+                    if (M['showFood'] && !(v['autoHideFoodOnZoom'] && this.scale < 0.2)) {
                         if (v['autoHideFood'] && !M['foodIsHidden'] && M['playerMass'] > 1000) return M['showFood'] = false, void(M['foodIsHidden'] = true);
                         if (v['rainbowFood'])
                             for (var t = 0; t < M['food'].length; t++) M['food'][t]['moveCell'](), M['food'][t]['draw'](this['ctx']);
-                        else this['drawCachedFood'](this['ctx'], M['food'], this['scale']);
+                        else this['drawCachedFood'](this['ctx'], M['food'], this.scale);
                     }
                 },
                 'drawCachedFood': function(t, e, i, s) {
@@ -6345,9 +6345,9 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'drawPieChart': function() {
                     this['pieChart'] || (this['pieChart'] = document.createElement('canvas'));
-                    var t = this['pieChart']['getContext']('2d'),
+                    var t = this['pieChart'].getContext('2d'),
                         e = Math['min'](200, 0.3 * this['canvasWidth']) / 200;
-                    this['pieChart']['width'] = 200 * e, this['pieChart']['height'] = 240 * e, t['scale'](e, e);
+                    this['pieChart']['width'] = 200 * e, this['pieChart']['height'] = 240 * e, t.scale(e, e);
                     for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < M['pieChart'].length; o++) {
                         var a = s + M['pieChart'][o] * this.pi2;
                         t.fillStyle = i[o + 1], t.beginPath(), t.moveTo(100, 140), t.arc(100, 140, 80, s, a, false), t.fill(), s = a;
@@ -6432,14 +6432,14 @@ var thelegendmodproject = function(t, e, i) {
                     var t = 10 + g['foodSize'],
                         e = document.createElement('canvas');
                     e['width'] = 2 * t, e['height'] = 2 * t;
-                    var i = e['getContext']('2d');
+                    var i = e.getContext('2d');
                     i.arc(t, t, t, 0, this.pi2, false), i.fillStyle = g['foodColor'], i.fill(), this['pellet'] = new Image(), this['pellet'].src = e.toDataURL(), e = null;
                 },
                 'preDrawIndicator': function() {
                     this['indicator'] = null;
                     var t = document.createElement('canvas');
                     t['width'] = 90, t['height'] = 50;
-                    var e = t['getContext']('2d');
+                    var e = t.getContext('2d');
                     e.lineWidth = 2; 
 					e.fillStyle = g['teammatesIndColor']; 
 					e.strokeStyle = '#000000';
