@@ -1,6 +1,6 @@
-//v2
-
-! function(self) {
+//v3
+legendmaster(window);
+function legendmaster(self) {
     function login() {
         if (l) {
             self.getStorage();
@@ -606,4 +606,4 @@
         self.getStorage();
         setup();
     };
-}(window);
+};
