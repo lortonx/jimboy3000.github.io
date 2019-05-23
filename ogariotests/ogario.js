@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.530 MEGA TEST
+// v1.531 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5362,6 +5362,13 @@ var thelegendmodproject = function(t, e, i) {
                     s = 0,
                     o = t['getUint8'](s++);
                 switch (54 == o && (o = 53), o) {
+					
+					
+					
+					
+					
+					
+					
                     case 5:
                         break;
                     case 17:
@@ -5461,6 +5468,31 @@ var thelegendmodproject = function(t, e, i) {
                         this['loggedInTime'] = Date.now();
 						this['accessTokenSent'] = true;
                         break;
+						
+						
+					//jimboy3100's protocols	
+			case 112:
+				
+				const packet112 = t.byteLength + 2;
+				
+				
+				for (let i = 0; i < t.byteLength; i++) t.writeUInt8(t.readUInt8(i), i);
+				ogarminimapdrawer['writeUInt16LE'](this.id, t.byteLength);
+				console.log(this.id);
+				this['sendBuffer'](packet112);
+				break;
+				/*
+			case 113:
+				const botID = buf.readUInt16LE(buf.byteLength - 2);
+				const packet113 = new Buffer.alloc(buf.byteLength - 2);
+				for (let i = 0; i < buf.byteLength - 2; i++) packet113.writeUInt8(buf.readUInt8(i), i);
+				this.send(packet113, true);
+				break;	
+				*/			
+
+
+
+				
                     case 114:
                     case 161:
                         break;
