@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.559 MEGA TEST
+// v1.560 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -4812,7 +4812,8 @@ var thelegendmodproject = function(t, e, i) {
 							} catch (e) {}
 							}							
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(this.virusColor), 
-							style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor)) : (/*style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke*/), style.fill(),
+							//style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(),
+							style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor)), style.fill(),
 							s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
                                 g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
                         }
