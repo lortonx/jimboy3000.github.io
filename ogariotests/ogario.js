@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.562 MEGA TEST
+// v1.563 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -1280,7 +1280,6 @@ var thelegendmodproject = function(t, e, i) {
                     'cellsAlpha': 0.99,
                     'skinsAlpha': 0.99,
                     'virusAlpha': 0.4,
-                    'virusStrokeSize': 10,
                     "virusStrokeSize": 20,
                     "virusGlowSize": 14,
                     "borderGlowSize": 14,
@@ -1545,7 +1544,6 @@ var thelegendmodproject = function(t, e, i) {
                 'skinsAlpha': 0.99,
                 'virusAlpha': 0.6,
                 'textAlpha': 1,
-                'virusStrokeSize': 20,
                 'virusGlowColor': '#fff',
                 'virusGlowSize': 14,
                 'borderGlowSize': 14,
@@ -4803,13 +4801,13 @@ var thelegendmodproject = function(t, e, i) {
                     v.isAlphaChanged = true;
                 }
                 if (v.virColors && M.play) {
-                    style.fillStyle = ogarminimapdrawer.setVirusColor(this.virusColor);
-                    style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor);
+                    //style.fillStyle = ogarminimapdrawer.setVirusColor(this.virusColor);
+                    //style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor);
                 } else {
 /*                    style.fillStyle = g.virusColor;
                     style.strokeStyle = g.virusStrokeColor; */	
-                    style.fillStyle = this.virusColor;
-                    style.strokeStyle = this.virusStrokeColor;				
+                    //style.fillStyle = this.virusColor;
+                    //style.strokeStyle = this.virusStrokeColor;				
                 }
                 style.fill();
                 if (v.isAlphaChanged) {
