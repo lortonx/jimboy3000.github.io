@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.556 MEGA TEST
+// v1.557 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -50,7 +50,7 @@ function checkVideos(a, b) {
 }
 
 function checkVideos2(a, b) {
-		console.log("b is: "+ b);
+		//console.log("b is: "+ b);
     for (i = 0; i < legendmod3.top5.length - 1; i++) {
 
         if (i.nick == b) {
