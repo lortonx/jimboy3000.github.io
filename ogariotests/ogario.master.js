@@ -1,6 +1,6 @@
-//v3
-legendmaster(window);
-function legendmaster(self) {
+//v.1
+
+! function(self, jQuery) {
     function login() {
         if (l) {
             self.getStorage();
@@ -37,14 +37,14 @@ function legendmaster(self) {
                 self.FB.api("/me/picture?width=180&height=180", function(images) {
                     if (images.data && images.data.url) {
                         options.userInfo.picture = images.data.url;
-                        $(".agario-profile-picture").attr("src", images.data.url);
+                        jQuery(".agario-profile-picture").attr("src", images.data.url);
                         self.updateStorage();
                     }
                 });
-                $("#helloContainer").attr("data-logged-in", "1");
-                $(".progress-bar-striped").width("100%");
-                $("#login-google").attr("class", "menu-bar-button");
-                $("#login-facebook").attr("class", "menu-bar-button barf");
+                jQuery("#helloContainer").attr("data-logged-in", "1");
+                jQuery(".progress-bar-striped").width("100%");
+                jQuery("#login-google").attr("class", "menu-bar-button");
+                jQuery("#login-facebook").attr("class", "menu-bar-button barf");
                 toastr.info("Logged in to Facebook!");
             } else {
                 if (f < 3) {
@@ -91,12 +91,12 @@ function legendmaster(self) {
             if (attrVal) {
                 options.userInfo.picture = attrVal;
                 self.updateStorage();
-                $(".agario-profile-picture").attr("src", attrVal);
+                jQuery(".agario-profile-picture").attr("src", attrVal);
             }
-            $("#helloContainer").attr("data-logged-in", "1");
-            $(".progress-bar-striped").width("100%");
-            $("#login-facebook").attr("class", "menu-bar-button");
-            $("#login-google").attr("class", "menu-bar-button barf");
+            jQuery("#helloContainer").attr("data-logged-in", "1");
+            jQuery(".progress-bar-striped").width("100%");
+            jQuery("#login-facebook").attr("class", "menu-bar-button");
+            jQuery("#login-google").attr("class", "menu-bar-button barf");
             toastr.info("Logged in to Google!");
         }
     }
@@ -150,7 +150,7 @@ function legendmaster(self) {
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
-            $.ajax("//agar.io/mc/agario.js", {
+            jQuery.ajax("//agar.io/mc/agario.js", {
                 error: function() {},
                 success: function(sketchContents) {
                     var optionMatch = sketchContents.match(/versionString="(\d+\.\d+\.\d+)"/);
@@ -189,7 +189,7 @@ function legendmaster(self) {
                 return this.setRegion(nextNodeLoc, false), void(this.checkPartyHash() || this.reconnect());
             }
             var canvasLayersManager = this;
-            $.get("//gc.agar.io", function(layoutSets) {
+            jQuery.get("//gc.agar.io", function(layoutSets) {
                 var j = layoutSets.split(" ")[0];
                 canvasLayersManager.setRegionCode(j);
             }, "text");
@@ -230,8 +230,8 @@ function legendmaster(self) {
             if (items) {
                 this.region = items;
                 self.localStorage.setItem("location", items);
-                if ($("#region").val() !== items) {
-                    $("#region").val(items);
+                if (jQuery("#region").val() !== items) {
+                    jQuery("#region").val(items);
                 }
                 if (left) {
                     this.reconnect();
@@ -239,7 +239,7 @@ function legendmaster(self) {
             }
         },
         checkRegion: function() {
-            var x = $("#region");
+            var x = jQuery("#region");
             var options = x.val();
             if (options) {
                 self.localStorage.setItem("location", options);
@@ -249,9 +249,9 @@ function legendmaster(self) {
                 }
             }
             if (x.val()) {
-                $("#locationKnown").append(x);
+                jQuery("#locationKnown").append(x);
             } else {
-                $("#locationUnknown").append(x);
+                jQuery("#locationUnknown").append(x);
             }
         },
         refreshRegionInfo: function() {
@@ -261,16 +261,16 @@ function legendmaster(self) {
                 var i;
                 for (i in regions) {
                     if (regions.hasOwnProperty(i)) {
-                        $('#region option[value="' + i + '').text(that.regionNames[i] + " (" + regions[i].numPlayers + ")");
+                        jQuery('#region option[value="' + i + '').text(that.regionNames[i] + " (" + regions[i].numPlayers + ")");
                     }
                 }
             });
         },
         getRegionNames: function() {
             var PL$5 = this;
-            $("#region option").each(function() {
-                var bigg_id = $(this).val();
-                var this_gene_data = $(this).text();
+            jQuery("#region option").each(function() {
+                var bigg_id = jQuery(this).val();
+                var this_gene_data = jQuery(this).text();
                 if (!PL$5.regionNames.hasOwnProperty(bigg_id)) {
                     PL$5.regionNames[bigg_id] = this_gene_data;
                 }
@@ -287,14 +287,14 @@ function legendmaster(self) {
             }
         },
         applyGameMode: function(value) {
-            $("#helloContainer, #overlays-hud").attr("data-gamemode", value);
-            $("#gamemode").val(value);
+            jQuery("#helloContainer, #overlays-hud").attr("data-gamemode", value);
+            jQuery("#gamemode").val(value);
             if (value !== ":party") {
                 this.replaceHistoryState("/#" + self.encodeURIComponent(value.replace(":", "")));
             }
         },
         handleChangeMode: function() {
-            var n = $("#gamemode").val();
+            var n = jQuery("#gamemode").val();
             this.setGameMode(n);
         },
         findServer: function(id, params) {
@@ -357,7 +357,7 @@ function legendmaster(self) {
             if (null == type) {
                 type = "application/octet-stream";
             }
-            $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
+            jQuery.ajax("https://" + headers.master_url + "/" + _wid_attr, {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
                 },
@@ -379,7 +379,7 @@ function legendmaster(self) {
         },
         makeMasterSimpleRequest: function(key, dataType, success, error) {
             var obj = this;
-            $.ajax("https://" + headers.master_url + "/" + key, {
+            jQuery.ajax("https://" + headers.master_url + "/" + key, {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", obj.clientVersion), true;
                 },
@@ -424,7 +424,7 @@ function legendmaster(self) {
                 this.connect(this.endpoint);
                 value = "5";
             }
-            $("#helloContainer").attr("data-party-state", value);
+            jQuery("#helloContainer").attr("data-party-state", value);
         },
         connect: function(body) {
             console.log("[Master] Connect to:", body);
@@ -466,7 +466,7 @@ function legendmaster(self) {
         },
         setNick: function() {
             this.login();
-            var result = $("#nick").val();
+            var result = jQuery("#nick").val();
             if (result && result.length > 15) {
                 result = result.substring(0, 15);
             }
@@ -480,7 +480,7 @@ function legendmaster(self) {
             }
         },
         updatePartyToken: function() {
-            $("#party-token, .party-token").val(this.partyToken);
+            jQuery("#party-token, .party-token").val(this.partyToken);
         },
         checkHash: function() {
             if (this.checkPartyHash()) {
@@ -527,32 +527,32 @@ function legendmaster(self) {
         },
         setUI: function() {
             var chat = this;
-            $("[data-itr]").each(function() {
-                var o = $(this);
+            jQuery("[data-itr]").each(function() {
+                var o = jQuery(this);
                 var i = o.attr("data-itr");
                 o.html(self.i18n(i));
             });
-            $("#gamemode").on("change", function() {
+            jQuery("#gamemode").on("change", function() {
                 chat.handleChangeMode();
             });
-            $(".btn-play, .btn-play-guest").on("click", function(result) {
+            jQuery(".btn-play, .btn-play-guest").on("click", function(result) {
                 result.preventDefault();
                 chat.setNick();
             });
-            $(".btn-spectate").on("click", function(result) {
+            jQuery(".btn-spectate").on("click", function(result) {
                 result.preventDefault();
                 chat.spectate();
             });
-            $("#create-party-btn-2").on("click", function(event) {
+            jQuery("#create-party-btn-2").on("click", function(event) {
                 event.preventDefault();
                 chat.createParty();
             });
             $("#join-party-btn-2").on("click", function(result) {
                 result.preventDefault();
-                chat.joinParty($("#party-token").val());
+                chat.joinParty(jQuery("#party-token").val());
             });
             self.toggleSocialLogin = function() {
-                $("#socialLoginContainer").toggle();
+                jQuery("#socialLoginContainer").toggle();
             };
         },
         init: function() {
@@ -581,10 +581,10 @@ function legendmaster(self) {
             api.signOut();
         }
         delete self.localStorage.storeObjectInfo;
-        $("#helloContainer").attr("data-logged-in", "0");
-        $(".progress-bar-striped").width("0%");
-        $("#login-facebook").attr("class", "menu-bar-button");
-        $("#login-google").attr("class", "menu-bar-button");
+        jQuery("#helloContainer").attr("data-logged-in", "0");
+        jQuery(".progress-bar-striped").width("0%");
+        jQuery("#login-facebook").attr("class", "menu-bar-button");
+        jQuery("#login-google").attr("class", "menu-bar-button");
         toastr.warning("Logged out!");
         master.logout();
     };
@@ -606,4 +606,4 @@ function legendmaster(self) {
         self.getStorage();
         setup();
     };
-};
+}(window, window.jQuery);
