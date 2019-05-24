@@ -56,7 +56,7 @@ function checkVideos2(a, b) {
         if (i.nick == b) {
             //legendmod3.setTarget(i.id);	
 			
-            if (legendmod3.lastSentNick != b) {
+            if ($("#nick").val() != b) {
                 if (legendmod5.videoSkinsMusic == true) {
                     window.videoJustWatchProflag2[b] = false;
                     if (legendmod3.calculateMapSector(legendmod3.top5[i].x, legendmod3.top5[i].y) == legendmod3.currentSector && legendmod3.currentSector == "C3") {
@@ -76,7 +76,7 @@ function checkVideos2(a, b) {
         }
 
     }
-    if (legendmod3.lastSentNick != b) {
+    if ($("#nick").val() != b) {
         checkvideoJustWatchProflag2(a,b);
     }
 }
