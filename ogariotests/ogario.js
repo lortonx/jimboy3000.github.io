@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.567 MEGA TEST
+// v1.568 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -393,7 +393,7 @@ var thelegendmodproject = function(t, e, i) {
                     'lightTheme': 'Jasny motyw',
                     'mainColor': 'Kolor główny',
                     'bgColor': 'Tło',
-                    'bordersColor': 'Granice mapy',
+                    'bordersColor': 'Map borders & Virus stroke',
                     'gridColor': 'Siatka',
                     'sectorsColor': 'Czcionka sektorów',
                     'namesColor': 'Nazwy',
@@ -765,7 +765,7 @@ var thelegendmodproject = function(t, e, i) {
                     'lightTheme': 'Light theme',
                     'mainColor': 'Main color',
                     'bgColor': 'Background',
-                    'bordersColor': 'Map borders',
+                    'bordersColor': 'Map borders & Virus stroke',
                     'gridColor': 'Grid',
                     'sectorsColor': 'Sectors font',
                     'namesColor': 'Names',
@@ -1120,7 +1120,7 @@ var thelegendmodproject = function(t, e, i) {
                     'skinsAlpha': 0.99,
                     'virusAlpha': 0.6,
                     'textAlpha': 1,
-                    'virusStrokeSize': 20,
+                    'virusStrokeSize': 2,
                     "virusGlowSize": "#fff",
                     "virusGlowSize": 14,
                     "borderGlowSize": 14,
@@ -1280,7 +1280,7 @@ var thelegendmodproject = function(t, e, i) {
                     'cellsAlpha': 0.99,
                     'skinsAlpha': 0.99,
                     'virusAlpha': 0.4,
-                    "virusStrokeSize": 20,
+                    "virusStrokeSize": 2,
                     "virusGlowSize": 14,
                     "borderGlowSize": 14,
                     'menuPreset': 'ogario-v3',
@@ -1548,7 +1548,7 @@ var thelegendmodproject = function(t, e, i) {
                 'virusGlowSize': 14,
                 'borderGlowSize': 14,
                 'ghostCellsAlpha': 0.3,
-                'virusStrokeSize': 14,
+                'virusStrokeSize': 2,
                 'menuPreset': 'ogario-v3',
                 'menuMainColor': '#01d9cc',
                 'menuBtnTextColor': '#ffffff',
