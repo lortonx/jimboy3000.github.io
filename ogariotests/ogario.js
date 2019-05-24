@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.565 MEGA TEST
+// v1.566 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -3535,7 +3535,8 @@ var thelegendmodproject = function(t, e, i) {
                 return Math.floor(t * t / 100) > 183 ? '#C80000' : g.virusColor;
             },
             'setVirusStrokeColor': function(t) {
-                return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
+                //return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
+				return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g.virusColor;
             },
             'setAutoHideCellInfo': function(t) {
                 return t <= 40 || i.viewScale < 0.5 && t < 550 && t < 25 / i.viewScale;
@@ -4801,9 +4802,9 @@ var thelegendmodproject = function(t, e, i) {
                     v.isAlphaChanged = true;
                 }
                 if (v.virColors && M.play) {
-                    style.fillStyle = ogarminimapdrawer.setVirusColor(this.virusColor);
+                    style.fillStyle = ogarminimapdrawer.setVirusColor(y);
                     //style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor);
-					style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusColor);
+					style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
                 } else {
 /*                    style.fillStyle = g.virusColor;
                     style.strokeStyle = g.virusStrokeColor; */	
