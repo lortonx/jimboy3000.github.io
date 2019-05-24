@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.560 MEGA TEST
+// v1.561 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -4796,31 +4796,8 @@ var thelegendmodproject = function(t, e, i) {
 
                         style.closePath();
 
-
-
-                        //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
-                        //    return style.fillStyle = this.color, style.fill(), void style.restore();
-                        //}
-
-
-						if (!v.jellyPhisycs){
-                        if (this.isVirus) {
-							//console.log("is not jelly");
-							if (dyinglight1load == "yes" ) {
-							try {	
-							style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
-							} catch (e) {}
-							}							
-                            return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(this.virusColor), 
-							//style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(),
-							style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor)), style.fill(),
-							s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
-                                g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
-                        }
-						}	
-						else{
 						if (this.isVirus) {
-							//console.log("is jelly");
+							
                 if (v.transparentViruses) {
                     style.globalAlpha *= g.virusAlpha;
                     v.isAlphaChanged = true;
@@ -4852,7 +4829,7 @@ var thelegendmodproject = function(t, e, i) {
                 style.restore();
                 return;
             }	
-						}			
+									
                         if (v.transparentCells) {
                             style.globalAlpha *= g.cellsAlpha;
                             s = true;
