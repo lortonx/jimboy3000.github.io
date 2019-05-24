@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.569 MEGA TEST
+// v1.567 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -265,7 +265,7 @@ var thelegendmodproject = function(t, e, i) {
                     'rainbowFood': 'Kolorowy pokarm',
                     'oppColors': 'Kolory przeciwników',
                     'oppRings': 'Ringi przeciwników',
-                    //'virColors': 'Kolory wirusów',
+                    'virColors': 'Kolory wirusów',
                     'splitRange': 'Zasięg podziału',
                     'virusesRange': 'Zasięg wirusów',
                     'textStroke': 'Obwódki nazw i masy',
@@ -637,7 +637,7 @@ var thelegendmodproject = function(t, e, i) {
                     'rainbowFood': 'Rainbow food',
                     'oppColors': 'Opponents colors',
                     'oppRings': 'Opponents rings',
-                    //'virColors': 'Viruses colors',
+                    'virColors': 'Viruses colors',
                     'splitRange': 'Split range',
                     'virusesRange': 'Viruses range',
                     'textStroke': 'Names and mass stroke',
@@ -1951,7 +1951,7 @@ var thelegendmodproject = function(t, e, i) {
                 'rainbowFood': false,
                 'oppColors': false,
                 'oppRings': false,
-                //'virColors': false,
+                'virColors': false,
                 'splitRange': false,
                 'virusesRange': false,
                 'textStroke': false,
@@ -2761,8 +2761,7 @@ var thelegendmodproject = function(t, e, i) {
 					this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"), 
 					this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), 
 					this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), 
-					//this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), 
-					this["addOptions"](["oppColors", "oppRings", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), 
+					this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), 
 					this["addOptions"](["mouseSplit", "mouseFeed","mouseInvert"], "mouseGroup"), 
 					this["addOptions"](["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"), 
 					this["addOptions"](["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"), 
@@ -4802,7 +4801,7 @@ var thelegendmodproject = function(t, e, i) {
                     style.globalAlpha *= g.virusAlpha;
                     v.isAlphaChanged = true;
                 }
-/*                if (v.virColors && M.play) {
+                if (v.virColors && M.play) {
                     style.fillStyle = ogarminimapdrawer.setVirusColor(y);
 					console.log(style.fillStyle);
                     //style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor);
@@ -4813,7 +4812,7 @@ var thelegendmodproject = function(t, e, i) {
                     style.strokeStyle = g.virusStrokeColor; */	
                     style.fillStyle = this.virusColor;
                     style.strokeStyle = this.virusStrokeColor;				
-                
+                }
                 style.fill();
                 if (v.isAlphaChanged) {
                     style.globalAlpha = g.cellsAlpha;
@@ -5783,8 +5782,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'recalculatePlayerMass': function() {
                 if (this.playerScore = Math.max(this.playerScore, this.playerMass),
-//				v['virColors'] || v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) {
-				v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) {
+				v['virColors'] || v['splitRange'] || v['oppColors'] || v['oppRings'] || v['showStatsSTE']) {
                     var t = this.playerCells;
                     var e = t.length;
                     t.sort(function(t, e) {
