@@ -2,7 +2,7 @@
  * Legend express v0.039g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "40"; // the version 1.1-> 1.11
+var semimodVersion = "41"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -58,7 +58,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlyforth = localStorage.getItem("checkonlyforth");
+//var checkonlyforth = localStorage.getItem("checkonlyforth");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -612,11 +612,11 @@ function loadersetings() {
 				}
             }		
 			
-            if (checkonlyforth != "true") {
+            //if (checkonlyforth != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-			toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend Express </span></font> supports Jelly physics!<br><font color="red">Enable on Settings tab</font><br></a>Function made by ɴᴇᴏ</b><br><b><u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>').css("width", "350px");        checkonlyforth = "true";
-        localStorage.setItem("checkonlyforth", checkonlyforth);				
-            }					
+			//toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend Express </span></font> supports Jelly physics!<br><font color="red">Enable on Settings tab</font><br></a>Function made by ɴᴇᴏ</b><br><b><u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>').css("width", "350px");        checkonlyforth = "true";
+       // localStorage.setItem("checkonlyforth", checkonlyforth);				
+            //}					
         
 		
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
