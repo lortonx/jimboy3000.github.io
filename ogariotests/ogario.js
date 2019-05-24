@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.557 MEGA TEST
+// v1.558 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -4823,11 +4823,13 @@ var thelegendmodproject = function(t, e, i) {
                     v.isAlphaChanged = true;
                 }
                 if (v.virColors && M.play) {
+                    //style.fillStyle = ogarminimapdrawer.setVirusColor(y);
+                    //style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
                     style.fillStyle = ogarminimapdrawer.setVirusColor(y);
-                    style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
+                    style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);					
                 } else {
-                    style.fillStyle = g.virusColor;
-                    style.strokeStyle = g.virusStrokeColor;
+                    style.fillStyle = this.virusColor;
+                    style.strokeStyle = this.virusStrokeColor;
                 }
                 style.fill();
                 if (v.isAlphaChanged) {
