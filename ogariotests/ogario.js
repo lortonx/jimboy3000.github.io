@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.567 MEGA TEST
+// v1.557 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -393,7 +393,7 @@ var thelegendmodproject = function(t, e, i) {
                     'lightTheme': 'Jasny motyw',
                     'mainColor': 'Kolor główny',
                     'bgColor': 'Tło',
-                    'bordersColor': 'Map borders & Virus stroke',
+                    'bordersColor': 'Granice mapy',
                     'gridColor': 'Siatka',
                     'sectorsColor': 'Czcionka sektorów',
                     'namesColor': 'Nazwy',
@@ -765,7 +765,7 @@ var thelegendmodproject = function(t, e, i) {
                     'lightTheme': 'Light theme',
                     'mainColor': 'Main color',
                     'bgColor': 'Background',
-                    'bordersColor': 'Map borders & Virus stroke',
+                    'bordersColor': 'Map borders',
                     'gridColor': 'Grid',
                     'sectorsColor': 'Sectors font',
                     'namesColor': 'Names',
@@ -1120,7 +1120,7 @@ var thelegendmodproject = function(t, e, i) {
                     'skinsAlpha': 0.99,
                     'virusAlpha': 0.6,
                     'textAlpha': 1,
-                    'virusStrokeSize': 2,
+                    'virusStrokeSize': 20,
                     "virusGlowSize": "#fff",
                     "virusGlowSize": 14,
                     "borderGlowSize": 14,
@@ -1280,7 +1280,8 @@ var thelegendmodproject = function(t, e, i) {
                     'cellsAlpha': 0.99,
                     'skinsAlpha': 0.99,
                     'virusAlpha': 0.4,
-                    "virusStrokeSize": 2,
+                    'virusStrokeSize': 10,
+                    "virusStrokeSize": 20,
                     "virusGlowSize": 14,
                     "borderGlowSize": 14,
                     'menuPreset': 'ogario-v3',
@@ -1544,11 +1545,12 @@ var thelegendmodproject = function(t, e, i) {
                 'skinsAlpha': 0.99,
                 'virusAlpha': 0.6,
                 'textAlpha': 1,
+                'virusStrokeSize': 20,
                 'virusGlowColor': '#fff',
                 'virusGlowSize': 14,
                 'borderGlowSize': 14,
                 'ghostCellsAlpha': 0.3,
-                'virusStrokeSize': 2,
+                'virusStrokeSize': 14,
                 'menuPreset': 'ogario-v3',
                 'menuMainColor': '#01d9cc',
                 'menuBtnTextColor': '#ffffff',
@@ -3535,8 +3537,7 @@ var thelegendmodproject = function(t, e, i) {
                 return Math.floor(t * t / 100) > 183 ? '#C80000' : g.virusColor;
             },
             'setVirusStrokeColor': function(t) {
-                //return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
-				return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g.virusColor;
+                return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g['virusStrokeColor'];
             },
             'setAutoHideCellInfo': function(t) {
                 return t <= 40 || i.viewScale < 0.5 && t < 550 && t < 25 / i.viewScale;
@@ -4795,23 +4796,38 @@ var thelegendmodproject = function(t, e, i) {
 
                         style.closePath();
 
+
+
+                        //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
+                        //    return style.fillStyle = this.color, style.fill(), void style.restore();
+                        //}
+
+
+						if (!v.jellyPhisycs){
+                        if (this.isVirus) {
+							//console.log("is not jelly");
+							if (dyinglight1load == "yes" ) {
+							try {	
+							style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
+							} catch (e) {}
+							}							
+                            return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
+                                g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
+                        }
+						}	
+						else{
 						if (this.isVirus) {
-							
+							//console.log("is jelly");
                 if (v.transparentViruses) {
                     style.globalAlpha *= g.virusAlpha;
                     v.isAlphaChanged = true;
                 }
                 if (v.virColors && M.play) {
                     style.fillStyle = ogarminimapdrawer.setVirusColor(y);
-					console.log(style.fillStyle);
-                    //style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(this.virusStrokeColor);
-					style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
-					console.log(style.strokeStyle);
+                    style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
                 } else {
-/*                    style.fillStyle = g.virusColor;
-                    style.strokeStyle = g.virusStrokeColor; */	
-                    style.fillStyle = this.virusColor;
-                    style.strokeStyle = this.virusStrokeColor;				
+                    style.fillStyle = g.virusColor;
+                    style.strokeStyle = g.virusStrokeColor;
                 }
                 style.fill();
                 if (v.isAlphaChanged) {
@@ -4831,7 +4847,7 @@ var thelegendmodproject = function(t, e, i) {
                 style.restore();
                 return;
             }	
-									
+						}			
                         if (v.transparentCells) {
                             style.globalAlpha *= g.cellsAlpha;
                             s = true;
