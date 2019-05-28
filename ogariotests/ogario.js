@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.565 MEGA TEST
+// v1.567 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5436,17 +5436,17 @@ var thelegendmodproject = function(t, e, i) {
           return this["readUint32"]() >>> 3;
         };
       },			
-            'handleMessage': function(t) {
+            'handleMessage': function(data) {
                 var i = function() {
                         for (var e = '';;) {
-                            var i = t.getUint8(s++);
+                            var i = data.getUint8(s++);
                             if (0 == i) break;
                             e += String.fromCharCode(i);
                         }
                         return e;
                     },
                     s = 0,
-                    o = t.getUint8(s++);
+                    o = data.getUint8(s++);
                 switch (54 == o && (o = 53), o) {
 					
 					
@@ -5458,11 +5458,11 @@ var thelegendmodproject = function(t, e, i) {
                     case 5:
                         break;
                     case 17:
-                        this.viewX = t.getFloat32(s, true);
+                        this.viewX = data.getFloat32(s, true);
 						s += 4;
-						this.viewY = t.getFloat32(s, true);
+						this.viewY = data.getFloat32(s, true);
 						s += 4;
-						this.scale = t.getFloat32(s, true);
+						this.scale = data.getFloat32(s, true);
                         break;
                     case 18:
                         if (this.protocolKey){ 
@@ -5471,31 +5471,31 @@ var thelegendmodproject = function(t, e, i) {
 						this.flushCellsData();
                         break;
                     case 32:
-                        this.playerCellIDs.push(t.getUint32(s, true));
+                        this.playerCellIDs.push(data.getUint32(s, true));
 						this.play || (this.play = true, ogarminimapdrawer.hideMenu(), this.playerColor = null, ogarminimapdrawer.onPlayerSpawn());
                         break;
                     case 50:
                         this.pieChart = [];
-                        var a = t.getUint32(s, true);
+                        var a = data.getUint32(s, true);
                         s += 4;
-                        for (var n = 0; n < a; n++) this.pieChart.push(t.getFloat32(s, true)), s += 4;
+                        for (var n = 0; n < a; n++) this.pieChart.push(data.getFloat32(s, true)), s += 4;
                         ogarfooddrawer.drawPieChart();
                         break;
                     case 53:
-                        if (this['leaderboard'] = [], this.playerPosition = 0, 54 == t.getUint8(0)) {
-                            t.getUint16(s, true);
+                        if (this['leaderboard'] = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
+                            data.getUint16(s, true);
                             s += 2;
                         }
-                        for (var r = 0; s < t.byteLength;) {
+                        for (var r = 0; s < data.byteLength;) {
                             var l = '';
                             var h = 0;
                             var c = false;
                             r++; 
-							if (2 & (y = t.getUint8(s++))){ 
+							if (2 & (y = data.getUint8(s++))){ 
 							l = window.decodeURIComponent(escape(i()));
 							}
 							if (4 & y){
-							h = t.getUint32(s, true);
+							h = data.getUint32(s, true);
 							s += 4;
 							}
 							if (8 & y){ 
@@ -5517,14 +5517,14 @@ var thelegendmodproject = function(t, e, i) {
                     case 54:
                         break;
                     case 69:
-                        var u = t.getUint16(s, true);
+                        var u = data.getUint16(s, true);
                         s += 2, this.ghostCells = [];
                         for (n = 0; n < u; n++) {
-                            var d = t.getInt32(s, true);
+                            var d = data.getInt32(s, true);
                             s += 4;
-                            var f = t.getInt32(s, true);
+                            var f = data.getInt32(s, true);
                             s += 4;
-                            var m = t.getUint32(s, true);
+                            var m = data.getUint32(s, true);
                             s += 5;
                             var g = ~~Math.sqrt(100 * m);
                             this.ghostCells.push({
@@ -5578,11 +5578,11 @@ var thelegendmodproject = function(t, e, i) {
                     case 102:
 						//in here there are sent info about the user
 						//searching how protocol works
-						//console.log("t: " + t);
-						window.testobjects=t;
-						//console.log("t.getUint32: " + s);
-						//console.log("t.getUint32: " + t.getUint32(s, true));
-                        if (t.byteLength < 20 && window['logout']){
+						//console.log("data: " + data);
+						window.testobjects=data;
+						//console.log("data.getUint32: " + s);
+						//console.log("data.getUint32: " + data.getUint32(s, true));
+                        if (data.byteLength < 20 && window['logout']){
 							window['logout']();
 							}
                         break;
@@ -5594,19 +5594,19 @@ var thelegendmodproject = function(t, e, i) {
 					//jimboy3100's protocols	 112 & 113 NOT WORK
 			case 112:
 				
-				const packet112 = t.byteLength + 2;
+				const packet112 = data.byteLength + 2;
 				
 				
-				for (let i = 0; i < t.byteLength; i++) t.writeUInt8(t.readUInt8(i), i);
-				ogarminimapdrawer['writeUInt16LE'](this.id, t.byteLength);
+				for (let i = 0; i < data.byteLength; i++) data.writeUInt8(data.readUInt8(i), i);
+				ogarminimapdrawer['writeUInt16LE'](this.id, data.byteLength);
 				console.log(this.id);
 				this['sendBuffer'](packet112);
 				break;
 				
 			case 113:
-				const botID = t.readUInt16LE(t.byteLength - 2);
-				const packet113 = t.byteLength - 2;
-				for (let i = 0; i < t.byteLength - 2; i++) packet113.writeUInt8(t.readUInt8(i), i);
+				const botID = data.readUInt16LE(data.byteLength - 2);
+				const packet113 = data.byteLength - 2;
+				for (let i = 0; i < data.byteLength - 2; i++) packet113.writeUInt8(data.readUInt8(i), i);
 				this['sendBuffer'](packet113);
 				break;	
 				///			
@@ -5619,41 +5619,41 @@ var thelegendmodproject = function(t, e, i) {
                     case 161:
                         break;
                     case 176:
-                        this['battleRoyale'].startTime = t.getUint32(s, true);
+                        this['battleRoyale'].startTime = data.getUint32(s, true);
                         break;
                     case 177:
                         this['battleRoyale'].joined = true;
                         break;
                     case 178:
-                        this['battleRoyale'].players = t.getUint16(s, true), s += 2;
-                        var y = t.getUint16(s, true);
+                        this['battleRoyale'].players = data.getUint16(s, true), s += 2;
+                        var y = data.getUint16(s, true);
                         s += 2, y || (this['battleRoyale'].state = 0, this['battleRoyale'].joined = false),
-						3 & y && (this['battleRoyale'].state = t.getUint8(s++),
-						this['battleRoyale']['x'] = t.getInt32(s, true),
-						s += 4, this['battleRoyale']['y'] = t.getInt32(s, true),
-						s += 4, this['battleRoyale'].radius = t.getUint32(s, true),
-						s += 4, this['battleRoyale'].shrinkTime = 1000 * t.getUint32(s, true),
+						3 & y && (this['battleRoyale'].state = data.getUint8(s++),
+						this['battleRoyale']['x'] = data.getInt32(s, true),
+						s += 4, this['battleRoyale']['y'] = data.getInt32(s, true),
+						s += 4, this['battleRoyale'].radius = data.getUint32(s, true),
+						s += 4, this['battleRoyale'].shrinkTime = 1000 * data.getUint32(s, true),
 						s += 4, this['battleRoyale'].shrinkTime && 
 						(this['battleRoyale'].timeLeft = ~~((this['battleRoyale'].shrinkTime - Date.now() + this.serverTimeDiff) / 1000),
 						this['battleRoyale'].timeLeft < 0 && (this['battleRoyale'].timeLeft = 0))),
-						2 & y && (this['battleRoyale'].targetX = t.getInt32(s, true), s += 4,
-						this['battleRoyale'].targetY = t.getInt32(s, true), s += 4, this['battleRoyale'].targetRadius = t.getUint32(s, true));
+						2 & y && (this['battleRoyale'].targetX = data.getInt32(s, true), s += 4,
+						this['battleRoyale'].targetY = data.getInt32(s, true), s += 4, this['battleRoyale'].targetRadius = data.getUint32(s, true));
                         break;
                     case 179:
-                        y = t.getUint8(s);
+                        y = data.getUint8(s);
 						window.decodeURIComponent(escape(i()));
                         y || window.decodeURIComponent(escape(i()));
                         break;
                     case 180:
                         this['battleRoyale'].joined = false;
 						this['battleRoyale'].rank = [];
-						this['battleRoyale'].playerRank = t.getUint32(s, true);
+						this['battleRoyale'].playerRank = data.getUint32(s, true);
 						s += 8;
-                        var ogario1PlayerProfiles = t.getUint16(s, true);
+                        var ogario1PlayerProfiles = data.getUint16(s, true);
                         s += 2;
                         for (n = 0; n < ogario1PlayerProfiles; n++) {
                             var ogarcopythelb = window.decodeURIComponent(escape(i())),
-                                v = t.getUint32(s, true);
+                                v = data.getUint32(s, true);
                             s += 4, this['battleRoyale'].rank.push({
                                 'place': v,
                                 'name': ogarcopythelb
@@ -5662,28 +5662,28 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 226: //jimboy3100's					
 					//ogarminimapdrawer.writeUInt8(227, 0);
-					//this.sendMessage(t);				
+					//this.sendMessage(data);				
                         break;
 						
 						
                     case 241:
-                        this.protocolKey = t.getUint32(s, true);
+                        this.protocolKey = data.getUint32(s, true);
 						console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
-                        var irenderfromagario = new Uint8Array(t['buffer'], s += 4);
+                        var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
                         this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
 						if (window.master && window.master.login){ 
 						window.master.login();
 						}
                         break;
                     case 242:
-                        this['serverTime'] = 1000 * t.getUint32(s, true);
+                        this['serverTime'] = 1000 * data.getUint32(s, true);
 						this.serverTimeDiff = Date.now() - this['serverTime'];
                         break;
                     case 255:
-                        this['handleSubmessage'](t);
+                        this['handleSubmessage'](data);
                         break;
                     default:
-                        console.log('[Legend mod Express] Unknown opcode:', t.getUint8(0));
+                        console.log('[Legend mod Express] Unknown opcode:', data.getUint8(0));
                 }
             },
             'handleSubmessage': function(t) {
