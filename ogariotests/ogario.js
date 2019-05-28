@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.574 MEGA TEST
+// v1.575 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5646,7 +5646,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
               }
             case 103:
-              M[accessTokenSent] = !![];
+              M["accessTokenSent"] = !![];
               break;			  
 			  /*
                     case 102:
