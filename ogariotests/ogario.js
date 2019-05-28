@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.567 MEGA TEST
+// v1.568 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5660,12 +5660,13 @@ var thelegendmodproject = function(t, e, i) {
                             });
                         }
                         break;
-                    case 226: //jimboy3100's					
-					//ogarminimapdrawer.writeUInt8(227, 0);
-					//this.sendMessage(data);				
-                        break;
-						
-						
+            case 226:
+              var extraOptions = data["getUint16"](1, !![]);
+              data = this["createView"](3);
+              data["setUint8"](0, 227);
+              data["setUint16"](1, extraOptions);
+              this["sendMessage"](data);
+              break;
                     case 241:
                         this.protocolKey = data.getUint32(s, true);
 						console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
