@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.571 MEGA TEST
+// v1.572 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5161,7 +5161,7 @@ var thelegendmodproject = function(t, e, i) {
 				this.time = Date.now();
                 var e = this.createView(5);
                 e.setUint8(0, 254), 
-				e.setUint32(1, 20, true), 
+				e.setUint32(1, 21, true), 
 				this.sendMessage(e), 
 				(e = this.createView(5)).setUint8(0, 255), 
 				e.setUint32(1, this.clientVersion, true), 
