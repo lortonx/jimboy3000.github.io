@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.570 MEGA TEST
+// v1.571 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5428,11 +5428,15 @@ var thelegendmodproject = function(t, e, i) {
         "shiftMessage" : function(PL$42, isSlidingUp, $cont) {
           if (!$cont) {
             var PL$41 = 0;
-            for (; PL$41 < PL$42['byteLength']; PL$41++) {
-              PL$42['setUint8'](PL$41, PL$42['getUint8'](PL$41) ^ isSlidingUp >>> PL$41 % 4 * 8 & 255);
+            for (; PL$41 < PL$42["byteLength"]; PL$41++) {
+              PL$42["setUint8"](PL$41, PL$42["getUint8"](PL$41) ^ isSlidingUp >>> PL$41 % 4 * 8 & 255);
+            }
+          } else {
             PL$41 = 0;
-            for (; PL$41 < PL$42['length']; PL$41++) {
-              PL$42['writeUInt8'](PL$42["readUInt8"](PL$41) ^ isSlidingUp >>> PL$41 % 4 * 8 & 255, PL$41);
+            for (; PL$41 < PL$42["length"]; PL$41++) {
+              PL$42["writeUInt8"](PL$42["readUInt8"](PL$41) ^ isSlidingUp >>> PL$41 % 4 * 8 & 255, PL$41);
+            }
+          }
           return PL$42;
         },
 		/*
