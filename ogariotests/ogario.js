@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.564 MEGA TEST
+// v1.565 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5383,6 +5383,59 @@ var thelegendmodproject = function(t, e, i) {
                 var i = new o(e.readUInt32LE(1));
                 return a['decodeBlock'](e['slice'](5), i), i;
             },
+      'Node': function (lsb, msb) {
+        this["view"] = lsb;
+        this["offset"] = msb;
+        this["contentType"] = 1;
+        this["uncompressedSize"] = 0;
+        this["setContentType"] = function() {
+          this["contentType"] = this["readUint32"]();
+        };
+        this["setUncompressedSize"] = function() {
+          this["uncompressedSize"] = this["readUint32"]();
+        };
+        this["compareBytesGt"] = function(first, second) {
+          var stripTerrain = first < 0;
+          var coast = second < 0;
+          if (stripTerrain != coast) {
+            return stripTerrain;
+          }
+          return first > second;
+        };
+        this["skipByte"] = function() {
+          var _0x4556d2 = this["readByte"]();
+          if (_0x4556d2 < 128) {
+            return;
+          }
+          this["skipByte"]();
+        };
+        this["readByte"] = function() {
+          return this["view"]["getUint8"](this["offset"]++);
+        };
+        this["readUint32"] = function() {
+          var result = 0;
+          var shift = 0;
+          for (; !![];) {
+            var digit = this["readByte"]();
+            if (this["compareBytesGt"](32, shift)) {
+              if (digit >= 128) {
+                result = result | (digit & 127) << shift;
+              } else {
+                result = result | digit << shift;
+                break;
+              }
+            } else {
+              this["skipByte"]();
+              break;
+            }
+            shift = shift + 7;
+          }
+          return result;
+        };
+        this["readFlag"] = function() {
+          return this["readUint32"]() >>> 3;
+        };
+      },			
             'handleMessage': function(t) {
                 var i = function() {
                         for (var e = '';;) {
@@ -5518,6 +5571,9 @@ var thelegendmodproject = function(t, e, i) {
                   window["logout"]();
                 }
               }
+            case 103:
+              this[accessTokenSent] = !![];
+              break;			  
 			  /*
                     case 102:
 						//in here there are sent info about the user
@@ -5559,6 +5615,7 @@ var thelegendmodproject = function(t, e, i) {
 
 				
                     case 114:
+						break;
                     case 161:
                         break;
                     case 176:
@@ -5681,60 +5738,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
 
-            },
-      'Node': function (lsb, msb) {
-        this["view"] = lsb;
-        this["offset"] = msb;
-        this["contentType"] = 1;
-        this["uncompressedSize"] = 0;
-        this["setContentType"] = function() {
-          this["contentType"] = this["readUint32"]();
-        };
-        this["setUncompressedSize"] = function() {
-          this["uncompressedSize"] = this["readUint32"]();
-        };
-        this["compareBytesGt"] = function(first, second) {
-          var stripTerrain = first < 0;
-          var coast = second < 0;
-          if (stripTerrain != coast) {
-            return stripTerrain;
-          }
-          return first > second;
-        };
-        this["skipByte"] = function() {
-          var _0x4556d2 = this["readByte"]();
-          if (_0x4556d2 < 128) {
-            return;
-          }
-          this["skipByte"]();
-        };
-        this["readByte"] = function() {
-          return this["view"]["getUint8"](this["offset"]++);
-        };
-        this["readUint32"] = function() {
-          var result = 0;
-          var shift = 0;
-          for (; !![];) {
-            var digit = this["readByte"]();
-            if (this["compareBytesGt"](32, shift)) {
-              if (digit >= 128) {
-                result = result | (digit & 127) << shift;
-              } else {
-                result = result | digit << shift;
-                break;
-              }
-            } else {
-              this["skipByte"]();
-              break;
-            }
-            shift = shift + 7;
-          }
-          return result;
-        };
-        this["readFlag"] = function() {
-          return this["readUint32"]() >>> 3;
-        };
-      },			
+            },			
             'flushCellsData': function() {
                 this.indexedCells = {}, 
 				this.cells = []; 
