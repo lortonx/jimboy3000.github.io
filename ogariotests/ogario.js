@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.559 MEGA TEST
+// v1.560 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -7539,13 +7539,17 @@ var thelegendmodproject = function(t, e, i) {
             'setClientVersion': function(t, e) {
                 M.setClientVersion(t, e);
             },
-            'proxyMobileData': function(t = []) {
-                if (Array.isArray(t)) {
-                    8 == t[0] && t.unshift(102);
-                    var e = M.createView(t.length);
-                    M.sendMessage(e);
-                } else console.log('ProxyMobileData ERROR: Array data required.');
-            },
+          "proxyMobileData" : function(arr = []) {
+            if (!Array["isArray"](arr)) {
+              console["log"]("ProxyMobileData ERROR: Array data required.");
+              return;
+            }
+            if (arr[0] == 8) {
+              arr["unshift"](102);
+            }
+            arr = new Uint8Array(arr);
+            M["sendMessage"](new DataView(arr["buffer"]));
+          }N
 			'registerSkin': function(a, b, c, d, e){
 				window.customskinsname=a;
 				window.customskinsurl=c;
