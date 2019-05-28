@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.569 MEGA TEST
+// v1.570 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5370,6 +5370,7 @@ var thelegendmodproject = function(t, e, i) {
         "generateClientKey" : function(option, _relatedTarget) {
           if (!option['length'] || !_relatedTarget['byteLength']) {
             return null;
+		  }
           var j = null;
           var suggestedValue = 1540483477;
           var constraints = option['match'](/(ws+:\/\/)([^:]*)(:\d+)/)[2];
@@ -5378,6 +5379,7 @@ var thelegendmodproject = function(t, e, i) {
           var value = 0;
           for (; value < constraints['length']; value++) {
             data[value] = constraints['charCodeAt'](value);
+		  }
           data['set'](_relatedTarget, constraints['length']);
           var dv = new DataView(data["buffer"]);
           var maxTextureAvailableSpace = framesize - 1;
@@ -5389,6 +5391,7 @@ var thelegendmodproject = function(t, e, i) {
             i = (Math['imul'](j >>> 24 ^ j, suggestedValue) | 0) ^ (Math['imul'](i, suggestedValue) | 0);
             maxTextureAvailableSpace = maxTextureAvailableSpace - 4;
             n = n + 4;
+		  }
           switch(maxTextureAvailableSpace) {
             case 3:
               i = data[k + 2] << 16 ^ i;
@@ -5402,8 +5405,10 @@ var thelegendmodproject = function(t, e, i) {
             default:
               j = i;
               break;
+		  }
           if (j != i) {
             j = Math['imul'](data[k] ^ i, suggestedValue) | 0;
+		  }
           i = j >>> 13;
           j = i ^ j;
           j = Math["imul"](j, suggestedValue) | 0;
@@ -5411,6 +5416,7 @@ var thelegendmodproject = function(t, e, i) {
           j = i ^ j;
           console['log']('[Legend mod Express] Generated client key:', j);
           return j;
+		  
         },	
         "shiftKey" : function(c) {
           var suggestedValue = 1540483477;
