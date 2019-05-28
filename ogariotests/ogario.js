@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.573 MEGA TEST
+// v1.574 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5277,7 +5277,7 @@ var thelegendmodproject = function(t, e, i) {
                             }
                         }, */
             "sendAccessToken": function(shapes, options, oW) {
-                if (this["accessTokenSent"]) {
+                if (M["accessTokenSent"]) {
                     return;
                 }
                 if (!oW) {
@@ -5646,7 +5646,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
               }
             case 103:
-              this[accessTokenSent] = !![];
+              M[accessTokenSent] = !![];
               break;			  
 			  /*
                     case 102:
