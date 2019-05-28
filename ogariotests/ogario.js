@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.562 MEGA TEST
+// v1.563 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5486,6 +5486,39 @@ var thelegendmodproject = function(t, e, i) {
                     case 85:
                         console.log('[Legend mod Express] Captcha requested'); if(window.master && window.master['recaptchaRequested']) { window.master['recaptchaRequested']();}
                         break;
+			  case 102:
+              var ret = new Node(data, left);
+              key_or_value = ret["readFlag"]();
+              if (key_or_value == 1) {
+                ret["setContentType"]();
+              }
+              key_or_value = ret["readFlag"]();
+              if (key_or_value == 2) {
+                ret["setUncompressedSize"]();
+              }
+              key_or_value = ret["readFlag"]();
+              if (key_or_value == 1) {
+                var obj = ret["readUint32"]();
+                var previousState = ret["readFlag"]();
+                var artistTrack = ret["readUint32"]();
+                switch(obj) {
+                  case 11:
+                    console["log"]("102 login response", ret["view"]["byteLength"], ret["contentType"], ret["uncompressedSize"], obj, previousState, artistTrack);
+                    break;
+                  case 62:
+                    console["log"]("102 game over");
+                    break;
+                  default:
+                    console["log"]("102 unknown", obj, previousState);
+                }
+              }
+              if (data["byteLength"] < 20) {
+                this["loggedIn"] = ![];
+                if (window["logout"]) {
+                  window["logout"]();
+                }
+              }
+			  /*
                     case 102:
 						//in here there are sent info about the user
 						//searching how protocol works
@@ -5502,7 +5535,7 @@ var thelegendmodproject = function(t, e, i) {
 						this['accessTokenSent'] = true;
                         break;
 /*					
-						
+						*/
 					//jimboy3100's protocols	 112 & 113 NOT WORK
 			case 112:
 				
@@ -5650,6 +5683,59 @@ var thelegendmodproject = function(t, e, i) {
                 }
 
             },
+      'Node': function (lsb, msb) {
+        this["view"] = lsb;
+        this["offset"] = msb;
+        this["contentType"] = 1;
+        this["uncompressedSize"] = 0;
+        this["setContentType"] = function() {
+          this["contentType"] = this["readUint32"]();
+        };
+        this["setUncompressedSize"] = function() {
+          this["uncompressedSize"] = this["readUint32"]();
+        };
+        this["compareBytesGt"] = function(first, second) {
+          var stripTerrain = first < 0;
+          var coast = second < 0;
+          if (stripTerrain != coast) {
+            return stripTerrain;
+          }
+          return first > second;
+        };
+        this["skipByte"] = function() {
+          var _0x4556d2 = this["readByte"]();
+          if (_0x4556d2 < 128) {
+            return;
+          }
+          this["skipByte"]();
+        };
+        this["readByte"] = function() {
+          return this["view"]["getUint8"](this["offset"]++);
+        };
+        this["readUint32"] = function() {
+          var result = 0;
+          var shift = 0;
+          for (; !![];) {
+            var digit = this["readByte"]();
+            if (this["compareBytesGt"](32, shift)) {
+              if (digit >= 128) {
+                result = result | (digit & 127) << shift;
+              } else {
+                result = result | digit << shift;
+                break;
+              }
+            } else {
+              this["skipByte"]();
+              break;
+            }
+            shift = shift + 7;
+          }
+          return result;
+        };
+        this["readFlag"] = function() {
+          return this["readUint32"]() >>> 3;
+        };
+      },			
             'flushCellsData': function() {
                 this.indexedCells = {}, 
 				this.cells = []; 
