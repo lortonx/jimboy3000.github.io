@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.568 MEGA TEST
+// v1.569 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5338,7 +5338,7 @@ var thelegendmodproject = function(t, e, i) {
 					console.log('[Legend mod Express] Client version:', t, e); //
                 } //
             },
-            
+/*            
 			'generateClientKey': function(t, e) {
                 if (!t.length || !e.byteLength) return null;
                 for (var i = null, s = 1540483477, o = t.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2], a = o.length + e.byteLength, n = new Uint8Array(a), r = 0; r < o.length; r++) n[r] = o.charCodeAt(r);
@@ -5357,7 +5357,7 @@ var thelegendmodproject = function(t, e, i) {
                         i = u;
                 }
                 return i != u && (i = 0 | Math['imul'](n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math['imul'](i, s), i ^= u = i >>> 15, console.log('[Legend mod Express] Generated client key:', i),window.generatedClientKey=i, i;
-            },
+            }, 
             'shiftKey': function(t) {
                 //if (window.disableIntegrity!=false){ //
                 return t = 0 | Math['imul'](t, 1540483477), t = 114296087 ^ (0 | Math['imul'](t >>> 24 ^ t, 1540483477)), (t = 0 | Math['imul'](t >>> 13 ^ t, 1540483477)) >>> 15 ^ t;
@@ -5365,7 +5365,71 @@ var thelegendmodproject = function(t, e, i) {
                 //else{ //
                 //return 0; //	
                 //} //
-            },
+            },			
+			*/
+        "generateClientKey" : function(option, _relatedTarget) {
+          if (!option['length'] || !_relatedTarget['byteLength']) {
+            return null;
+          var j = null;
+          var suggestedValue = 1540483477;
+          var constraints = option['match'](/(ws+:\/\/)([^:]*)(:\d+)/)[2];
+          var framesize = constraints['length'] + _relatedTarget['byteLength'];
+          var data = new Uint8Array(framesize);
+          var value = 0;
+          for (; value < constraints['length']; value++) {
+            data[value] = constraints['charCodeAt'](value);
+          data['set'](_relatedTarget, constraints['length']);
+          var dv = new DataView(data["buffer"]);
+          var maxTextureAvailableSpace = framesize - 1;
+          var k = (maxTextureAvailableSpace - 4 & -4) + 4 | 0;
+          var i = maxTextureAvailableSpace ^ 255;
+          var n = 0;
+          for (; maxTextureAvailableSpace > 3;) {
+            j = Math['imul'](dv['getInt32'](n, !![]), suggestedValue) | 0;
+            i = (Math['imul'](j >>> 24 ^ j, suggestedValue) | 0) ^ (Math['imul'](i, suggestedValue) | 0);
+            maxTextureAvailableSpace = maxTextureAvailableSpace - 4;
+            n = n + 4;
+          switch(maxTextureAvailableSpace) {
+            case 3:
+              i = data[k + 2] << 16 ^ i;
+              i = data[k + 1] << 8 ^ i;
+              break;
+            case 2:
+              i = data[k + 1] << 8 ^ i;
+              break;
+            case 1:
+              break;
+            default:
+              j = i;
+              break;
+          if (j != i) {
+            j = Math['imul'](data[k] ^ i, suggestedValue) | 0;
+          i = j >>> 13;
+          j = i ^ j;
+          j = Math["imul"](j, suggestedValue) | 0;
+          i = j >>> 15;
+          j = i ^ j;
+          console['log']('[Legend mod Express] Generated client key:', j);
+          return j;
+        },	
+        "shiftKey" : function(c) {
+          var suggestedValue = 1540483477;
+          c = Math['imul'](c, suggestedValue) | 0;
+          c = (Math['imul'](c >>> 24 ^ c, suggestedValue) | 0) ^ 114296087;
+          c = Math['imul'](c >>> 13 ^ c, suggestedValue) | 0;
+          return c >>> 15 ^ c;
+        },		
+        "shiftMessage" : function(PL$42, isSlidingUp, $cont) {
+          if (!$cont) {
+            var PL$41 = 0;
+            for (; PL$41 < PL$42['byteLength']; PL$41++) {
+              PL$42['setUint8'](PL$41, PL$42['getUint8'](PL$41) ^ isSlidingUp >>> PL$41 % 4 * 8 & 255);
+            PL$41 = 0;
+            for (; PL$41 < PL$42['length']; PL$41++) {
+              PL$42['writeUInt8'](PL$42["readUInt8"](PL$41) ^ isSlidingUp >>> PL$41 % 4 * 8 & 255, PL$41);
+          return PL$42;
+        },
+		/*
             'shiftMessage': function(t, e, i) {
                 //if (window.disableIntegrity!=false){ //
                 if (i)
@@ -5377,7 +5441,7 @@ var thelegendmodproject = function(t, e, i) {
                 //else{ //				
                 //return t; //
                 //} //
-            },
+            },		*/	
             'decompressMessage': function(t) {
                 var e = new o(t['buffer']);
                 var i = new o(e.readUInt32LE(1));
@@ -7644,7 +7708,7 @@ var thelegendmodproject = function(t, e, i) {
 				window.customskinsname=a;
 				window.customskinsurl=c;
 			}
-        }; 
+        }; 	
 		window.master.getClientVersion(); 
 		y.init(); 
 		ogarminimapdrawer.init(); 
