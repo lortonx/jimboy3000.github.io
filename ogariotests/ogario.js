@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.557 MEGA TEST
+// v1.558 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5501,7 +5501,10 @@ var thelegendmodproject = function(t, e, i) {
                         this['loggedInTime'] = Date.now();
 						this['accessTokenSent'] = true;
                         break;
-						
+                    case 128:
+                        this['loggedInTime'] = Date.now();
+						this['accessTokenSent'] = true;
+                        break;						
 						
 					//jimboy3100's protocols	 112 & 113 NOT WORK
 			case 112:
