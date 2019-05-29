@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.579 MEGA TEST
+// v1.580 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5007,59 +5007,7 @@ var thelegendmodproject = function(t, e, i) {
         }
         window.legendmod1 = ogarbasicassembly;
 		
-		function Node(lsb, msb) {
-        M["view"] = lsb;
-        M["offset"] = msb;
-        M["contentType"] = 1;
-        M["uncompressedSize"] = 0;
-        M["setContentType"] = function() {
-          M["contentType"] = M["readUint32"]();
-        };
-        M["setUncompressedSize"] = function() {
-          M["uncompressedSize"] = M["readUint32"]();
-        };
-        M["compareBytesGt"] = function(first, second) {
-          var stripTerrain = first < 0;
-          var coast = second < 0;
-          if (stripTerrain != coast) {
-            return stripTerrain;
-          }
-          return first > second;
-        };
-        M["skipByte"] = function() {
-          var _0x4556d2 = M["readByte"]();
-          if (_0x4556d2 < 128) {
-            return;
-          }
-          M["skipByte"]();
-        };
-        M["readByte"] = function() {
-          return M["view"]["getUint8"](M["offset"]++);
-        };
-        M["readUint32"] = function() {
-          var result = 0;
-          var shift = 0;
-          for (; !![];) {
-            var digit = M["readByte"]();
-            if (M["compareBytesGt"](32, shift)) {
-              if (digit >= 128) {
-                result = result | (digit & 127) << shift;
-              } else {
-                result = result | digit << shift;
-                break;
-              }
-            } else {
-              M["skipByte"]();
-              break;
-            }
-            shift = shift + 7;
-          }
-          return result;
-        };
-        M["readFlag"] = function() {
-          return M["readUint32"]() >>> 3;
-        };
-      };
+
 		
         var M = {
 				'quadtree':null,
@@ -5617,7 +5565,13 @@ var thelegendmodproject = function(t, e, i) {
                         console.log('[Legend mod Express] Captcha requested'); if(window.master && window.master['recaptchaRequested']) { window.master['recaptchaRequested']();}
                         break;
 			  case 102:
-			  /*
+              if (data["byteLength"] < 20) {
+                this["loggedIn"] = ![];
+                if (window["logout"]) {
+                  window["logout"]();
+                }
+              }			  
+			  
               var ret = new Node(data, s);
               key_or_value = ret["readFlag"]();
               if (key_or_value == 1) {
@@ -5643,13 +5597,8 @@ var thelegendmodproject = function(t, e, i) {
                     console["log"]("102 unknown", obj, previousState);
                 }
               }
-			  */
-              if (data["byteLength"] < 20) {
-                this["loggedIn"] = ![];
-                if (window["logout"]) {
-                  window["logout"]();
-                }
-              }
+			  
+
             case 103:
               M["accessTokenSent"] = !![];
               break;			  
@@ -6289,6 +6238,59 @@ var thelegendmodproject = function(t, e, i) {
             }
             //this.ctx.finish2D();
         },
+		Node : function(lsb, msb) {
+        M["view"] = lsb;
+        M["offset"] = msb;
+        M["contentType"] = 1;
+        M["uncompressedSize"] = 0;
+        M["setContentType"] = function() {
+          M["contentType"] = M["readUint32"]();
+        };
+        M["setUncompressedSize"] = function() {
+          M["uncompressedSize"] = M["readUint32"]();
+        };
+        M["compareBytesGt"] = function(first, second) {
+          var stripTerrain = first < 0;
+          var coast = second < 0;
+          if (stripTerrain != coast) {
+            return stripTerrain;
+          }
+          return first > second;
+        };
+        M["skipByte"] = function() {
+          var _0x4556d2 = M["readByte"]();
+          if (_0x4556d2 < 128) {
+            return;
+          }
+          M["skipByte"]();
+        };
+        M["readByte"] = function() {
+          return M["view"]["getUint8"](M["offset"]++);
+        };
+        M["readUint32"] = function() {
+          var result = 0;
+          var shift = 0;
+          for (; !![];) {
+            var digit = M["readByte"]();
+            if (M["compareBytesGt"](32, shift)) {
+              if (digit >= 128) {
+                result = result | (digit & 127) << shift;
+              } else {
+                result = result | digit << shift;
+                break;
+              }
+            } else {
+              M["skipByte"]();
+              break;
+            }
+            shift = shift + 7;
+          }
+          return result;
+        };
+        M["readFlag"] = function() {
+          return M["readUint32"]() >>> 3;
+        }
+      }		
         pointInCircle: function(x, y, cx, cy, radius) {
             var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
             return distancesquared <= radius * radius;
