@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.583 MEGA TEST
+// v1.584 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5572,23 +5572,23 @@ var thelegendmodproject = function(t, e, i) {
                 }
               }			  
 			  
-              var ret = new Node(data, s);
-              key_or_value = ret["readFlag"]();
+              window.ret = new Node(data, s);
+              var key_or_value = window.ret["readFlag"]();
               if (key_or_value == 1) {
-                ret["setContentType"]();
+                window.ret["setContentType"]();
               }
-              key_or_value = ret["readFlag"]();
+              key_or_value = window.ret["readFlag"]();
               if (key_or_value == 2) {
-                ret["setUncompressedSize"]();
+                window.ret["setUncompressedSize"]();
               }
-              key_or_value = ret["readFlag"]();
+              key_or_value = window.ret["readFlag"]();
               if (key_or_value == 1) {
-                var obj = ret["readUint32"]();
-                var previousState = ret["readFlag"]();
-                var artistTrack = ret["readUint32"]();
+                var obj = window.ret["readUint32"]();
+                var previousState = window.ret["readFlag"]();
+                var artistTrack = window.ret["readUint32"]();
                 switch(obj) {
                   case 11:
-                    console["log"]("102 login response", ret["view"]["byteLength"], ret["contentType"], ret["uncompressedSize"], obj, previousState, artistTrack);
+                    console["log"]("102 login response", window.ret["view"]["byteLength"], window.ret["contentType"], window.ret["uncompressedSize"], obj, previousState, artistTrack);
                     break;
                   case 62:
                     console["log"]("102 game over");
