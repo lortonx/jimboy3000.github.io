@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.580 MEGA TEST
+// v1.581 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -6290,7 +6290,7 @@ var thelegendmodproject = function(t, e, i) {
         M["readFlag"] = function() {
           return M["readUint32"]() >>> 3;
         }
-      }		
+      },		
         pointInCircle: function(x, y, cx, cy, radius) {
             var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
             return distancesquared <= radius * radius;
