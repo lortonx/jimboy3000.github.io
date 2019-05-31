@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.585 MEGA TEST
+// v1.586 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -7427,11 +7427,11 @@ var thelegendmodproject = function(t, e, i) {
                         } 
 					$(document).on('click', '#reset-hotkeys', function(t) {
                         t.preventDefault();
-						t['resetHotkeys']();
+						lastkeys['resetHotkeys']();
                     }), 
 					$(document).on('click', '#save-hotkeys', function(t) {
                         t.preventDefault(); 
-						t['saveHotkeys']();
+						lastkeys['saveHotkeys']();
 						$('#hotkeys').fadeOut(500);
                     }), 
 					$(document).on('click', '#close-hotkeys', function(t) {
