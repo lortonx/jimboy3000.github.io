@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.592 MEGA TEST
+// v1.593 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5576,7 +5576,7 @@ var thelegendmodproject = function(t, e, i) {
 			  var sampleBytes = new Uint8Array(window.testobjects.buffer);
 			  var enc = new TextDecoder();
 			  window.testobjects2=enc.decode(sampleBytes);
-			  window.agarioUID = window.testobjects2.split('$')[1].split('�')[0];
+			  window.agarioUID = window.testobjects2.split('$')[1].split('�')[0].split('�	')[0];
 			  window.agarioID = window.testobjects2.split('$')[1].split('')[1].split('')[0].replace(/\s/g, "");
 			  window.googlePic = "https"+window.testobjects2.split('https')[1].split('H')[0]+"H";
 			  }
