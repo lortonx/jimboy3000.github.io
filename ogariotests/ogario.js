@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.587 MEGA TEST
+// v1.588 MEGA TEST
 // Game Configurations
 
 window.testobjects = {};
@@ -5571,8 +5571,19 @@ var thelegendmodproject = function(t, e, i) {
                   window["logout"]();
                 }
               }			  
+			  if (data.buffer.byteLength>1000){
 			  window.testobjects = data;
+			  var sampleBytes = new Uint8Array(window.testobjects.buffer);
+			  var sampleBytes2 = new readUInt32LE(sampleBytes2);
+			  var enc = new TextDecoder();
+			  window.testobjects2=enc.decode(sampleBytes);
+			  window.testobjects3=enc.decode(sampleBytes2);
+			  }
+			  
+			  
+			  
               window.ret = new Node(data, s);
+			  
               var key_or_value = window.ret["readFlag"]();
               if (key_or_value == 1) {
                 window.ret["setContentType"]();
