@@ -1,3 +1,13 @@
+ //OLD DEALS
+ 
+ //for agarioUID, agarioID, look at the case 102: on this file https://jimboy3100.github.io/ogario/ogario.v4.js?v=32
+ 
+ /* you will need this
+	var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackEnglish.js";
+        $("body").append(s);
+*/
 if (window.agarioUID != null) {
 	localStorage.setItem("agarioUID", window.agarioUID);
 	localStorage.setItem("agarioID", window.agarioID);
@@ -6,6 +16,7 @@ else{
 	window.agarioUID=localStorage.getItem("agarioUID");
 	window.agarioID=localStorage.getItem("agarioID");
 }
+//$("#OpenuserScripts") put is after anything you like
 		$("#OpenuserScripts").after('<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');		
 
 		function SpecialDeals(){
@@ -289,6 +300,7 @@ function letterCount(string, letter, caseSensitive) {
     return count;
 }
 
+//not used
 function PremiumUsers(){
         var ProLicenceUsersTableJS = document.createElement("script");
         ProLicenceUsersTableJS.type = "text/javascript";
