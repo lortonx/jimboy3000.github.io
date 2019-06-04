@@ -1,8 +1,8 @@
 /**************
- * Legend express v0.039g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "41"; // the version 1.1-> 1.11
+var semimodVersion = "42"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6011,7 +6011,7 @@ $("#server-reconnect").css("width", "11%");
 //            '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="pointer-events: auto;color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><i class="fa fa-window-close fa-2"></i></button>' +
             '</div></div>'
         );
-		//$("#regionmodecheck").hide();
+		$("#regionmodecheck").hide();
 		$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
             '</div>');
         $("#clantag").attr('placeholder', 'Password').tooltip({
