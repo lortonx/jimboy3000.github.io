@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.590 MEGA TEST
+// v1.591 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5574,11 +5574,8 @@ var thelegendmodproject = function(t, e, i) {
 			  if (data.buffer.byteLength>1000){
 			  window.testobjects = data;			  
 			  var sampleBytes = new Uint8Array(window.testobjects.buffer);
-			  var ii = new o(e.readUInt32LE(1));
 			  var enc = new TextDecoder();
 			  window.testobjects2=enc.decode(sampleBytes);
-			  window.testobjects3=enc.decode(ii);
-			  window.testobjects4=ii;
 			  }
 			  
 			  
