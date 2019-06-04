@@ -1,5 +1,14 @@
+if (window.agarioUID != null) {
+	localStorage.setItem("agarioUID", window.agarioUID);
+	localStorage.setItem("agarioID", window.agarioID);
+}
+else{
+	window.agarioUID=localStorage.getItem("agarioUID");
+	window.agarioID=localStorage.getItem("agarioID");
+}
 		$("#OpenuserScripts").after('<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="SpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>');		
 
+		function SpecialDeals(){
 	GameConfiguration={};
 		$.ajax({
         type: "GET",
@@ -28,7 +37,7 @@ if (window.agarioUID != null) {
             '<div class="xpmt-skins" style="width: 110px;height: 110px;background: no-repeat 50% 50%;background-size: 106px;border-radius: 50%; border: 3px solid #708090;margin: -120px 310px; background-image: url(""); background-size: cover; border-color: #7c0001"></div>' +
             '</div>' +
             '</div><select id="ss-select-purchases" class="form-control" required="" style="margin-bottom: 30px"></select><select id="BuyDealCurrency" class="form-control" required="" style="display:inline; width: 40%; margin-top: -30px;"><option value="USD" data-itr="">USD</option><option value="EU" data-itr="">EU</option></select><color="red"> ' + Premadeletter112 + '</color>' +
-            '<p class="alert-warning text-center">' + Premadeletter116 + '<br><span class="alert-success" id="exp-uid">' + window.agarioUID + '</span> <font color="red" onclick=copy(window.agarioUID);><b><u>'+Premadeletter114+' UID</u></b></font><br>*UID ' + Premadeletter115 + '</p>' +
+            '<p class="alert-warning text-center">' + Premadeletter116 + '<br>UID:<span class="alert-success" id="exp-uid"> ' + window.agarioUID + '</span> <font color="red" onclick=copy(window.agarioUID);><b><u>'+Premadeletter114+' UID</u></b></font><br>ID: ' + window.agarioID + ' .*UID ' + Premadeletter115 + '</p>' +
             '</div>' +
             '</div>' +
             '</div>' +
@@ -40,7 +49,7 @@ setTimeout(function() { populateSD();}, 1500);
             $("#specialShopModal").remove();
         });
         $(".xpmt-buy-content").click(function() {
-			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">' + Premadeletter90 +' v0.4<br>' + Premadeletter91 + '<br><font color="red">' + Premadeletter91a + '</font>' + '</br> <button class="btn btn-sm btn-primary btn-play btn-do-DyingLight" style="margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
+			toastr["warning"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">' + Premadeletter90 +' v0.5<br>' + 'This is a BETA function, it may not work and you may loose your money' + '<br><font color="red">' + Premadeletter91a + '</font>' + '</br> <button class="btn btn-sm btn-primary" style="width: 100%; margin-top: 10px;border-color: darkblue;">' + Premadeletter24 + '</button><br><button class="btn btn-sm btn-warning btn-spectate btn-nodo-hideall" style="width: 100%;margin-top: 10px;">'+ Premadeletter25 + '</button></div>', "", { timeOut: 20000, extendedTimeOut: 20000 }).css("width", "300px");	
 			$(".btn.btn-sm.btn-primary.btn-play.btn-do-DyingLight").click(function () { buydeals(); });	
  /*           if (ProLicenceUsersTable.ProLicenceUsers[MC.getUserId()] != undefined) {
                 console.log("Authorised User");
@@ -184,7 +193,7 @@ setTimeout(function() { populateSD();}, 1500);
                 }
             }, 500);
         });	
-
+}
 //EU OR USD
 function buydeals(){
    $.ajax({
