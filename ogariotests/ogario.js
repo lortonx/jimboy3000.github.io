@@ -1,10 +1,13 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.595 MEGA TEST
+// v1.596 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
+function containsNonLatinCodepoints(s) {
+    return /[^\u0000-\u00ff]/.test(s);
+}
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
@@ -5600,13 +5603,13 @@ var thelegendmodproject = function(t, e, i) {
                 var artistTrack = window.ret["readUint32"]();
                 switch(obj) {
                   case 11:
-                    console["log"]("102 login response", window.ret["view"]["byteLength"], window.ret["contentType"], window.ret["uncompressedSize"], obj, previousState, artistTrack);
+                    console["log"]("[Legend mod Express] 102 Login response", window.ret["view"]["byteLength"], window.ret["contentType"], window.ret["uncompressedSize"], obj, previousState, artistTrack);
                     break;
                   case 62:
-                    console["log"]("102 game over");
+                    console["log"]("[Legend mod Express] 102 Game over");
                     break;
                   default:
-                    console["log"]("102 unknown", obj, previousState);
+                    console["log"]("[Legend mod Express] 102 Unknown", obj, previousState);
                 }
               }
 			  
