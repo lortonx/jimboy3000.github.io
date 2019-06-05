@@ -1,11 +1,13 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.597 MEGA TEST
+// v1.598 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
-
+function containsNonLatinCodepoints(s) {
+    return /[^\u0000-\u00ff]/.test(s);
+}
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
@@ -4923,7 +4925,7 @@ var thelegendmodproject = function(t, e, i) {
 								}
 								else if(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Qᴜᴇᴛᴢᴀʟ   ᶜᵒᵃᵗˡ") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")){
 									try {
-									style.rotate(M.cAngle); //try
+									cimg2.rotate(M.cAngle); //try
 									style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
 									} catch (e) {}
 								}
