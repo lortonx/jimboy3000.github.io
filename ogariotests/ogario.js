@@ -1,20 +1,23 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.627 MEGA TEST
+// v1.628 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
 
 
 /*
-                for (var o = 0; o < $("#leaderboard-data").children().length && o != i; o++){
-					document.getElementById("leaderboard-positions").children[o].addEventListener('click',function ()
+					document.getElementById("set-targeting").addEventListener('click',function ()
 					{
-					window.legendmod.targetingLead(o);
-					//validation code to see State field is mandatory.  
-					}  ); 
-				}
+					if ($("#target-nick").text()!=null && $("#target-nick").text()!=""){
+					for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
+						if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
+							window.legendmod.targetingLead(i);
+						}
+					}
+					}
+					}  ); 	
 */
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
@@ -3445,19 +3448,6 @@ var thelegendmodproject = function(t, e, i) {
                             }
                         }
                         this["miniMapCtx"].fillStyle = g["miniMapGhostCellsColor"];
-						
-						if (window.legendmod.drawCommander2){
-							console.log("window.legendmod.drawCommander2 loaded from minimap");
-						for (var i=0; i< 20 && i < window.legendmod.leaderboard.length ;i++){
-							if (window.legendmod.leaderboard[i].nick==$("#target-nick").text()){
-								console.log($("#target-nick").text(),i);
-							if (c=i){
-							this["miniMapCtx"].fillStyle = "red";	
-							}
-							}
-						}							
-						}	
-						
                         this["miniMapCtx"].globalAlpha = g["miniMapGhostCellsAlpha"];
                         this["miniMapCtx"].shadowColor = g["miniMapGhostCellsColor"];
                         this["miniMapCtx"].shadowBlur = 10;
