@@ -4925,10 +4925,11 @@ var thelegendmodproject = function(t, e, i) {
 								}
 								else if(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Qᴜᴇᴛᴢᴀʟ   ᶜᵒᵃᵗˡ") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")){
 									try {
-									style.stroke();
-									style.translate(this.x - y * 2, this.y - y * 2, this.y - y * 2);
-									style.rotate(M.cAngle); 
+									
+
 									style.drawImage(cimg2, -2*y, -2*y, 4 * y, 4 * y);
+									style.translate(this.x - y * 2, this.y - y * 2, this.y - y * 2);
+									style.rotate(M.cAngle); 									
 									//style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
 									//try
 									M.updateCommander();									
