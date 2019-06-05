@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.042a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "42"; // the version 1.1-> 1.11
@@ -461,6 +461,7 @@ LMminimapTextAct();
 var datasent2;
 //fzogarOgarIframeListener();
 emphasischat();
+specialeffecttargeting();
 function init(modVersion) {
 // ANNOUNCEMENTS
 //toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
@@ -7678,5 +7679,16 @@ function animateSkin(a, b, verifiednames, d, e, i)
 				}, window.anual);	
 }	
 				
-	
+function specialeffecttargeting(){
+					document.getElementById("set-targeting").addEventListener('click',function ()
+					{
+					if ($("#target-nick").text()!=null && $("#target-nick").text()!=""){
+					for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
+						if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
+							window.legendmod.targetingLead(i);
+						}
+					}
+					}
+					}  ); 		
+}
 	
