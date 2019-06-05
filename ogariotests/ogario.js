@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.610 MEGA TEST
+// v1.611 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5772,7 +5772,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), v['showLbData']);
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
-                for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this.ghostCells[o]['x'], this.ghostCells[o]['y']) + ']</span>', e += '</span>';
+                for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\" onclick="this.targetingLead(o);">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this.ghostCells[o]['x'], this.ghostCells[o]['y']) + ']</span>', e += '</span>';
                 ogarminimapdrawer['displayLeaderboard'](t, e);
                 ///////////////// establish core.registerSkin
                 if (window.vanillaskins == true) {
@@ -5787,6 +5787,11 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
 
+            },		
+            'targetingLead': function(o) {
+			window.targetingLeadX=legendmod.ghostCells[o].x;
+			window.targetingLeadY=legendmod.ghostCells[o].y;
+			legendmod.drawCommander2=true;
             },			
             'flushCellsData': function() {
                 this.indexedCells = {}, 
@@ -6374,19 +6379,19 @@ var thelegendmodproject = function(t, e, i) {
                         cimg2.src = g.commanderImage5;
                         pickerAxes.save();
                         pickerAxes.globalAlpha = M.cAlpha;
-                        pickerAxes.translate(legendmod.ghostCells[0].x, legendmod.ghostCells[0].y);
+                        pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
                         pickerAxes.rotate(M.cAngle);
                         pickerAxes.drawImage(cimg, -M.cRadius / 2, -M.cRadius / 2, M.cRadius, M.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
                         pickerAxes.globalAlpha = M.cAlpha;
-                        pickerAxes.translate(legendmod.ghostCells[0].x, legendmod.ghostCells[0].y);
+                        pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
                         pickerAxes.rotate(M.cAngle1);
                         pickerAxes.drawImage(cimg1, -M.cRadius / 2, -M.cRadius / 2, M.cRadius, M.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
                         pickerAxes.globalAlpha = M.cAlpha;
-                        pickerAxes.translate(legendmod.ghostCells[0].x, legendmod.ghostCells[0].y);
+                        pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
                         pickerAxes.rotate(M.cAngle2);
                         pickerAxes.drawImage(cimg2, -M.cRadius / 2, -M.cRadius / 2, M.cRadius, M.cRadius);
                         pickerAxes.restore();
