@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.622 MEGA TEST
+// v1.623 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6632,7 +6632,16 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         this.ctx.fillStyle = g.ghostCellsColor;
                         this.ctx.globalAlpha = g.ghostCellsAlpha;
-                        this.ctx.shadowColor = g.ghostCellsColor;
+						this.ctx.shadowColor = g.ghostCellsColor;
+						if (legendmod.drawCommander2){
+						for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
+							if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
+							if (e=i){
+							this.ctx.shadowColor = "red";	
+							}
+							}
+						}							
+						}
                         this.ctx.shadowBlur = 40;
                         this.ctx.shadowOffsetX = 0;
                         this.ctx.shadowOffsetY = 0;
