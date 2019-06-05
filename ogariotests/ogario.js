@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.617 MEGA TEST
+// v1.618 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5774,7 +5774,7 @@ var thelegendmodproject = function(t, e, i) {
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
                 for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this.ghostCells[o]['x'], this.ghostCells[o]['y']) + ']</span>', e += '</span>';
                 for (var o = 0; o < $("#leaderboard-data").children().length && o != i; o++){
-					$("#leaderboard-data").children().eq(o).onclick=window.legendmod.targetingLead(o)
+					$("#leaderboard-data").children().eq(o).click=window.legendmod.targetingLead(o);
 				}
 				ogarminimapdrawer['displayLeaderboard'](t, e);
                 ///////////////// establish core.registerSkin
@@ -5791,8 +5791,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
 
             },		
-            'targetingLead': function(o) {
-			console.log("start target animations of ghost cell " + o+1);
+            'targetingLead': function(o) {			
 			window.targetingLeadX=legendmod.ghostCells[o].x;
 			window.targetingLeadY=legendmod.ghostCells[o].y;
 			legendmod.drawCommander2=true;
