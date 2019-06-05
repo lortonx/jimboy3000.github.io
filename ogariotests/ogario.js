@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.623 MEGA TEST
+// v1.622 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4159,18 +4159,9 @@ var thelegendmodproject = function(t, e, i) {
         },			
             'setTargeting': function() {
                 this.targetID && (this.targeting = !this.targeting, i.targeting = this.targeting, this.setTargetingInfo());
-					if ($("#target-nick").text()!=null && $("#target-nick").text()!=""){
-					for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
-						if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
-							window.legendmod.targetingLead(i);
-						}
-					}
-					}				
             },
             'setTargetingInfo': function() {
-//                this.targeting ? ($('#set-targeting').addClass('active'), $('#target-status').show(), 2 != this.targetStatus && $('#target-summary').show()) : ($('#set-targeting').removeClass('active'), $('#target-summary, #target-status').hide());
-                $('#set-targeting').addClass('active'), $('#target-status').show(), 2 != this.targetStatus && $('#target-summary').show();
-
+                this.targeting ? ($('#set-targeting').addClass('active'), $('#target-status').show(), 2 != this.targetStatus && $('#target-summary').show()) : ($('#set-targeting').removeClass('active'), $('#target-summary, #target-status').hide());
             },
             'cancelTargeting': function() {
                 this.setTargetStatus(0);
