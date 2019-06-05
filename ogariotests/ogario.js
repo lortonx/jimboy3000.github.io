@@ -6164,7 +6164,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, g.bordersColor, g.bordersWidth);
             }
 			this.drawCommander();
-			
+			this.drawCommander2();
             if (v.virusesRange) {
                 this.drawVirusesRange(this.ctx, M.viruses);
             }
@@ -6330,7 +6330,6 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     }
                 },
-                ///////////////////// special effects - not work
                 "drawCommander": function() {
 					//console.log('Special effects stage 2');
                     if (M.drawCommander) {
@@ -6362,6 +6361,38 @@ var thelegendmodproject = function(t, e, i) {
                         pickerAxes.globalAlpha = 1;
                         this.updateCommander();
                     }
+                },				
+                "drawCommander2": function() {
+					//console.log('Special effects stage 2');
+                    if (M.drawCommander2) {
+                        var pickerAxes = this.ctx;
+                        cimg = new Image;
+                        cimg.src = g.commanderImage3;
+                        cimg1 = new Image;
+                        cimg1.src = g.commanderImage4;
+                        cimg2 = new Image;
+                        cimg2.src = g.commanderImage5;
+                        pickerAxes.save();
+                        pickerAxes.globalAlpha = M.cAlpha;
+                        pickerAxes.translate(legendmod.ghostCells[0].x, legendmod.ghostCells[0].y);
+                        pickerAxes.rotate(M.cAngle);
+                        pickerAxes.drawImage(cimg, -M.cRadius / 2, -M.cRadius / 2, M.cRadius, M.cRadius);
+                        pickerAxes.restore();
+                        pickerAxes.save();
+                        pickerAxes.globalAlpha = M.cAlpha;
+                        pickerAxes.translate(legendmod.ghostCells[0].x, legendmod.ghostCells[0].y);
+                        pickerAxes.rotate(M.cAngle1);
+                        pickerAxes.drawImage(cimg1, -M.cRadius / 2, -M.cRadius / 2, M.cRadius, M.cRadius);
+                        pickerAxes.restore();
+                        pickerAxes.save();
+                        pickerAxes.globalAlpha = M.cAlpha;
+                        pickerAxes.translate(legendmod.ghostCells[0].x, legendmod.ghostCells[0].y);
+                        pickerAxes.rotate(M.cAngle2);
+                        pickerAxes.drawImage(cimg2, -M.cRadius / 2, -M.cRadius / 2, M.cRadius, M.cRadius);
+                        pickerAxes.restore();
+                        pickerAxes.globalAlpha = 1;
+                        this.updateCommander();
+                    }
                 },
                 "updateCommander": function() {
                     M.cRadius += 7;
@@ -6382,6 +6413,7 @@ var thelegendmodproject = function(t, e, i) {
                     M.cAngle2 = 0;
                     M.cAlpha = 1;
                     M.drawCommander = false;
+					M.drawCommander2 = false;
                     i.spawnX = 0;
                     i.spawnY= 0;
                 },
