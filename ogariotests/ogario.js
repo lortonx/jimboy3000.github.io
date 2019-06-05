@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.604 MEGA TEST
+// v1.605 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4929,10 +4929,10 @@ var thelegendmodproject = function(t, e, i) {
 									
 									style.translate(this.x - y * 2, this.y - y * 2, this.y - y * 2, 4 * y, 4 * y);
 									style.rotate(M.cAngle); 
-									style.drawImage(cimg2, 4 * y, 4 * y);
+									style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
 									//style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
 									//try
-									M.updateCommander();									
+									M.updateCommanderWithoutRestore();									
 									} catch (e) {}
 								}
 						//style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)), 
@@ -6377,6 +6377,15 @@ var thelegendmodproject = function(t, e, i) {
                         this.resetCommander();
                     }
                 },
+                "updateCommanderWithoutRestore": function() {
+                    M.cRadius += 7;
+                    M.cAngle += .007;
+                    M.cAngle1 -= .006;
+                    M.cAngle2 += .003;
+                    if (2025 <= M.cRadius) {
+                        M.cAlpha *= .95;
+                    }
+                },				
                 "resetCommander": function() {
                     M.cRadius = 10; //M.clientX
                     M.cAngle = 4;
