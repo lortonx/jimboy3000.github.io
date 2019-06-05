@@ -1,13 +1,10 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.618 MEGA TEST
+// v1.619 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
-function containsNonLatinCodepoints(s) {
-    return /[^\u0000-\u00ff]/.test(s);
-}
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
@@ -5774,7 +5771,7 @@ var thelegendmodproject = function(t, e, i) {
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
                 for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer['shortMassFormat'](this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer['calculateMapSector'](this.ghostCells[o]['x'], this.ghostCells[o]['y']) + ']</span>', e += '</span>';
                 for (var o = 0; o < $("#leaderboard-data").children().length && o != i; o++){
-					$("#leaderboard-data").children().eq(o).click=window.legendmod.targetingLead(o);
+					$("#leaderboard-data").children().eq(o).click(function() {window.legendmod.targetingLead(o);)}
 				}
 				ogarminimapdrawer['displayLeaderboard'](t, e);
                 ///////////////// establish core.registerSkin
