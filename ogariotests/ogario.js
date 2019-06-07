@@ -1,24 +1,11 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.634 MEGA TEST
+// v1.635 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
 
-
-/*
-					document.getElementById("set-targeting").addEventListener('click',function ()
-					{
-					if ($("#target-nick").text()!=null && $("#target-nick").text()!=""){
-					for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
-						if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
-							window.legendmod.targetingLead(i);
-						}
-					}
-					}
-					}  ); 	
-*/
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
@@ -1757,6 +1744,7 @@ var thelegendmodproject = function(t, e, i) {
 						tempFont = 'Oswald';
 					}	
 					else if (t.indexOf('ruge+boogie')){
+						console.log('font: ruge+boogie');
 						tempFont = 'Ruge+Boogie';
 					}						
 //					else (if t.indexOf('ubuntu')){
