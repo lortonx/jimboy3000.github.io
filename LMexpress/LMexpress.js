@@ -2,7 +2,7 @@
  * Legend express v0.042b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "42"; // the version 1.1-> 1.11
+var semimodVersion = "43"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6084,8 +6084,8 @@ $("#server-reconnect").css("width", "11%");
             //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
             '<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
             //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
- */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
-
+ */           '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
+			  '<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="BeforeSpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>'+
             '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
             '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
             '<option value="1" data-itr="">Minimap</option>' +
@@ -7693,4 +7693,12 @@ function specialeffecttargeting(){
 					}  ); 		
 }
 */
+function BeforeSpecialDeals(){
+        var SpecialDealsJS = document.createElement("script");
+        SpecialDealsJS.type = "text/javascript";
+        SpecialDealsJS.src = "https://jimboy3100.github.io/LMexpress/olddeals.js";
+        $("body").append(SpecialDealsJS);
+		
+		window.open('https://jimboy3100.github.io/LMexpress/olddeals.html','_blank');
+}
 	
