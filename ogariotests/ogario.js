@@ -1,10 +1,11 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.635 MEGA TEST
+// v1.636 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
+
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
@@ -1724,7 +1725,7 @@ var thelegendmodproject = function(t, e, i) {
 					$('#' + e).append('<option value=\"ubuntu\">Ubuntu</option><option value=\"ubuntu-bold\">Ubuntu Bold</option>');
 					$('#' + e).append('<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>'); 
 					$('#' + e).append('<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>');
-					$('#' + e).append('<option value=\"ruge+boogie\">Ruge+Boogie</option><option value=\"ruge+boogie-bold\">Ruge+Boogie Bold</option>');
+					$('#' + e).append('<option value=\"rugeboogie\">Ruge+Boogie</option><option value=\"rugeboogie-bold\">Ruge+Boogie Bold</option>');
 					$('#' + e).val(g[e]);
                     var o = this;
                     i ? $('#' + e).on('change', function() {
@@ -1743,7 +1744,7 @@ var thelegendmodproject = function(t, e, i) {
 					else if (t.indexOf('oswald')){
 						tempFont = 'Oswald';
 					}	
-					else if (t.indexOf('ruge+boogie')){
+					else if (t.indexOf('rugeboogie')){
 						console.log('font: ruge+boogie');
 						tempFont = 'Ruge+Boogie';
 					}						
