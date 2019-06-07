@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.640 MEGA TEST
+// v1.641 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1726,9 +1726,7 @@ var thelegendmodproject = function(t, e, i) {
 					$('#' + e).append('<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>'); 
 					$('#' + e).append('<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>');
 					$('#' + e).append('<option value=\"shojumaru\">Shojumaru</option><option value=\"shojumaru-bold\">Shojumaru Bold</option>');
-					$('#' + e).append('<option value=\"b612\">B612</option><option value=\"b612-bold\">B612 Bold</option>');
-					$('#' + e).append('<option value=\"imfellenglishsc<\">IM+Fell+English+SC</option><option value=\"imfellenglishsc-bold\">IM+Fell+English+SC Bold</option>');
-
+					$('#' + e).append('<option value=\"specialelite\">Special+Elite</option><option value=\"specialelite-bold\">Special+Elite Bold</option>');
 					$('#' + e).append('<option value=\"allura\">Allura</option><option value=\"allura-bold\">Allura Bold</option>');
 					
 					$('#' + e).val(g[e]);
@@ -1753,14 +1751,10 @@ var thelegendmodproject = function(t, e, i) {
 						console.log('font: shojumaru');
 						tempFont = 'Shojumaru';
 					}		
-					else if (t.indexOf('b612')==0){
-						console.log('font: b612');
-						tempFont = 'B612';
-					}	
-					else if (t.indexOf('imfellenglishsc')==0){
-						console.log('font: imfellenglishsc');
-						tempFont = 'IM+Fell+English+SC';
-					}						
+					else if (t.indexOf('specialelite')==0){
+						console.log('font: specialelite');
+						tempFont = 'Special+Elite';
+					}							
 					else if (t.indexOf('allura')==0){
 						console.log('font: allura');
 						tempFont = 'Allura';
