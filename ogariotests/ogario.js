@@ -1,11 +1,24 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.633 MEGA TEST
+// v1.634 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
 
+
+/*
+					document.getElementById("set-targeting").addEventListener('click',function ()
+					{
+					if ($("#target-nick").text()!=null && $("#target-nick").text()!=""){
+					for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
+						if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
+							window.legendmod.targetingLead(i);
+						}
+					}
+					}
+					}  ); 	
+*/
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function(){
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
@@ -1737,18 +1750,20 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setFontFamily': function(t) {
 					var tempFont;
-					if t.indexOf('roboto'){
+					if (t.indexOf('roboto')){
 						tempFont = 'Roboto';
 					}
-					else if t.indexOf('oswald'){
+					else if (t.indexOf('oswald')){
 						tempFont = 'Oswald';
-					}		
-					else if t.indexOf('ubuntu'){
+					}	
+					else if (t.indexOf('ruge+boogie')){
+						tempFont = 'Ruge+Boogie';
+					}						
+//					else (if t.indexOf('ubuntu')){
+					else{	
 						tempFont = 'Ubuntu';
 					}		
-					else if t.indexOf('Ruge+Boogie'){
-						tempFont = 'Ruge+Boogie';
-					}		
+	
 					return tempFont;
                     //return -1 != t.indexOf('roboto') ? 'Roboto' : -1 != t.indexOf('oswald') ? 'Oswald' : 'Ubuntu';
                 },
