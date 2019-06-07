@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.636 MEGA TEST
+// v1.637 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1738,13 +1738,13 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setFontFamily': function(t) {
 					var tempFont;
-					if (t.indexOf('roboto')){
+					if (t.indexOf('roboto')==0){
 						tempFont = 'Roboto';
 					}
-					else if (t.indexOf('oswald')){
+					else if (t.indexOf('oswald')==0){
 						tempFont = 'Oswald';
 					}	
-					else if (t.indexOf('rugeboogie')){
+					else if (t.indexOf('rugeboogie')==0){
 						console.log('font: ruge+boogie');
 						tempFont = 'Ruge+Boogie';
 					}						
