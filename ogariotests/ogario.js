@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.637 MEGA TEST
+// v1.638 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1726,6 +1726,8 @@ var thelegendmodproject = function(t, e, i) {
 					$('#' + e).append('<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>'); 
 					$('#' + e).append('<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>');
 					$('#' + e).append('<option value=\"rugeboogie\">Ruge+Boogie</option><option value=\"rugeboogie-bold\">Ruge+Boogie Bold</option>');
+					$('#' + e).append('<option value=\"allura\">Allura</option><option value=\"allura-bold\">Allura Bold</option>');
+					
 					$('#' + e).val(g[e]);
                     var o = this;
                     i ? $('#' + e).on('change', function() {
@@ -1747,6 +1749,10 @@ var thelegendmodproject = function(t, e, i) {
 					else if (t.indexOf('rugeboogie')==0){
 						console.log('font: ruge+boogie');
 						tempFont = 'Ruge+Boogie';
+					}			
+					else if (t.indexOf('allura')==0){
+						console.log('font: allura');
+						tempFont = 'Allura';
 					}						
 //					else (if t.indexOf('ubuntu')){
 					else{	
