@@ -2,7 +2,7 @@
  * Legend express v0.042b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "43"; // the version 1.1-> 1.11
+var semimodVersion = "44"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -191,6 +191,7 @@ var MSGCOMMANDS2;
 var MSGCOMMANDS3;
 var Express= "True";
 var acceptServerBtnFlag=null;
+var animateSkinsStart;
 //for the LM JSON
 var LegendJSON;
 var LegendSettings="true";
@@ -500,7 +501,8 @@ function init(modVersion) {
 				localStorage.setItem("VanillaskinsSaved", "true");
 				window.vanillaskins=true;
 				// Animated Skins
-				var animateSkinsStart = setInterval(animateSkincheckTimer, 60000);
+				animateSkinsStart = setInterval(animateSkincheckTimer, 60000);
+				return animateSkinsStart;
 			} else {				
 				localStorage.setItem("VanillaskinsSaved", "false");
 				legendmod3.flushSkinsMap();
@@ -509,6 +511,7 @@ function init(modVersion) {
 				animateSkinsStop();
 			}
 		});	
+		$("#Vanillaskins").click(); //enabled by default
 		$('.options-box.hudGroup').append('<label><input type="checkbox" id="top5skins" class="js-switch" data-switchery="true" style="display: none;"> Skins on teamboard</input></label>');
 		var elemLegendSwitch3 = document.querySelector('#top5skins');
 		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
@@ -523,6 +526,7 @@ function init(modVersion) {
 				window.top5skins=false;
 			}
 		});	
+		$("#top5skins").click(); //enabled by default
 		$('.options-box.respGroup').append('<label><input type="checkbox" id="spawnspecialeffects" class="js-switch" data-switchery="true" style="display: none;"> Spawn special effects</input></label>');
 		var elemLegendSwitch4 = document.querySelector('#spawnspecialeffects');
 		var ogarioswitchbackcolor=$("input#export-ogarioThemeSettings.js-switch").next().css( "background-color" );
@@ -5016,10 +5020,10 @@ function triggerLMbtns() {
            if (UniversalChatSaved == "false") { 
                 $("#UniversalChat").click();
            }
-           if (VanillaskinsSaved == "true") { 
+           if (VanillaskinsSaved == "false") { 
                 $("#Vanillaskins").click();
            }	
-           if (top5skinsSaved == "true") { 
+           if (top5skinsSaved == "false") { 
                 $("#top5skins").click();
            }		
            if (spawnspecialeffectsSaved == "true") { 
