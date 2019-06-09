@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.666 MEGA TEST
+// v1.667 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6707,7 +6707,7 @@ var thelegendmodproject = function(t, e, i) {
 								angle = Math.PI * 0.8;
 								
 								if (legendmod.leaderboard[e]!=undefined){
-									this.ghostcellstext=legendmod.leaderboard[e];
+									this.ghostcellstext=legendmod.leaderboard[e].nick;
 								}
 								else{
 									this.ghostcellstext = "Legend mod";
