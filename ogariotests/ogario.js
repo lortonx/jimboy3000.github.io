@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.668 MEGA TEST
+// v1.669 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6699,15 +6699,15 @@ var thelegendmodproject = function(t, e, i) {
 								this.fontSize = Math.max(t[e].size * 0.3, 26) * this.scale;								
 								this.nickSize = ~~(this.fontSize * this.nickScale);
 //								this.massSize = ~~(this.fontSize * 0.5 * this.massScale);								
-								this.ctx.font = g.namesFontWeight + " " + this.nickSize*8 + "px " + g.namesFontFamily;
+								this.ctx.font = g.namesFontWeight + " " + this.nickSize*4 + "px " + g.namesFontFamily;
 								this.ctx.textAlign = 'center';
 								this.ctx.fillStyle = g.namesColor;
 								this.ctx.strokeStyle = g.namesStrokeColor;
 								this.ctx.lineWidth = 4;
 								angle = Math.PI * 0.8;
 								
-								if (legendmod.leaderboard[e]!=undefined){
-									this.ghostcellstext=legendmod.leaderboard[e].nick;
+								if (M.leaderboard[e]!=undefined){ //M instead of legendmod for quicker response
+									this.ghostcellstext=M.leaderboard[e].nick;
 								}
 								else{
 									this.ghostcellstext = "Legend mod";
