@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.682 MEGA TEST
+// v1.683 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6726,7 +6726,7 @@ var thelegendmodproject = function(t, e, i) {
 								//cimg2 = new Image;
 								//cimg2.src = g.commanderImage2;					
 								
-									node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);                           
+									node = ogarminimapdrawer.getCustomSkin(M.leaderboard[e].nick, "#000000");                           
 										if (node){								
 								this.ctx.drawImage(node, i-t[e].size/2, s-t[e].size/2, t[e].size, t[e].size);	
 										}		
