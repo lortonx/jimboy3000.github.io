@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.676 MEGA TEST
+// v1.679 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6723,7 +6723,7 @@ var thelegendmodproject = function(t, e, i) {
                                 this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);		
 								cimg2 = new Image;
 								cimg2.src = g.commanderImage2;									
-								this.ctx.drawImage(cimg2, 0, 0);								
+								this.ctx.drawImage(cimg2, i, s, t[e].size, t[e].size);								
                             }
                         }
                         this.ctx.fillStyle = g.ghostCellsColor;
