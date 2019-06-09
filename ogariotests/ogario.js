@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.663 MEGA TEST
+// v1.664 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6699,7 +6699,7 @@ var thelegendmodproject = function(t, e, i) {
 								this.fontSize = Math.max(t[e].size * 0.3, 26) * this.scale;								
 								this.nickSize = ~~(this.fontSize * this.nickScale);
 //								this.massSize = ~~(this.fontSize * 0.5 * this.massScale);								
-								this.ctx.font = g.namesFontWeight + " " + g["miniMapNickSize"] + "px " + g.namesFontFamily;
+								this.ctx.font = g.namesFontWeight + " " + this.nickSize + "px " + g.namesFontFamily;
 								this.ctx.textAlign = 'center';
 								this.ctx.fillStyle = g.namesColor;
 								this.ctx.strokeStyle = g.namesStrokeColor;
