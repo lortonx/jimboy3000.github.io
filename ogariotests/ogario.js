@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.673 MEGA TEST
+// v1.674 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6712,6 +6712,7 @@ var thelegendmodproject = function(t, e, i) {
 								angle = Math.PI * 0.8;
 								
 								if (M.leaderboard[e]!=undefined){ //M instead of legendmod for quicker response
+								
 									this.ghostcellstext = removeEmojis(ogarminimapdrawer.escapeHTML(M.leaderboard[e].nick)); //legendmod3.escapeHTML(legendmod.leaderboard[0].nick)
 								}
 								else{
@@ -6719,7 +6720,10 @@ var thelegendmodproject = function(t, e, i) {
 								}
 								this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size*this.pi2/6, angle);		
 								//
-                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
+                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);		
+								cimg2 = new Image;
+								cimg2.src = g.commanderImage2;									
+								this.drawImage(cimg2, 0, 0);								
                             }
                         }
                         this.ctx.fillStyle = g.ghostCellsColor;
