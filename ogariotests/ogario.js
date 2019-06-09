@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.665 MEGA TEST
+// v1.666 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6705,7 +6705,14 @@ var thelegendmodproject = function(t, e, i) {
 								this.ctx.strokeStyle = g.namesStrokeColor;
 								this.ctx.lineWidth = 4;
 								angle = Math.PI * 0.8;
-								this.drawTextAlongArc(this.ctx, legendmod.leaderboard[e], i, s, t[e].size*this.pi2/6, angle);		
+								
+								if (legendmod.leaderboard[e]!=undefined){
+									this.ghostcellstext=legendmod.leaderboard[e];
+								}
+								else{
+									this.ghostcellstext = "Legend mod";
+								}
+								this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size*this.pi2/6, angle);		
 								//
                                 this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
                             }
