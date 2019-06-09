@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.681 MEGA TEST
+// v1.682 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6720,10 +6720,17 @@ var thelegendmodproject = function(t, e, i) {
 								}
 								this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size*this.pi2/6, angle);		
 								//
-                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);		
-								cimg2 = new Image;
-								cimg2.src = g.commanderImage2;									
-								this.ctx.drawImage(cimg2, i-t[e].size/2, s-t[e].size/2, t[e].size, t[e].size);								
+                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);	
+								//								
+								if (v.customSkins && M.showCustomSkins){
+								//cimg2 = new Image;
+								//cimg2.src = g.commanderImage2;					
+								
+									node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);                           
+										if (node){								
+								this.ctx.drawImage(node, i-t[e].size/2, s-t[e].size/2, t[e].size, t[e].size);	
+										}		
+								}										
                             }
                         }
                         this.ctx.fillStyle = g.ghostCellsColor;
