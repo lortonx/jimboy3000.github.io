@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.653 MEGA TEST
+// v1.654 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6680,8 +6680,8 @@ var thelegendmodproject = function(t, e, i) {
     this.ctx.restore();
   }
   this.ctx.restore();
-				}				
-                'drawGhostCells': function() {
+				},				
+                'drawGhostCells' : function() {
                     if (v.showGhostCells) {
                         var t = M.ghostCells;
                         this.ctx.beginPath();
