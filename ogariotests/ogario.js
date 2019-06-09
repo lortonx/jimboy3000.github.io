@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.652 MEGA TEST
+// v1.653 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6664,7 +6664,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.drawDashedCircle(t, e, i, s, 60, o, a);
                     }
                 },
-				'drawTextAlongArc' : function (this.ctx, str, centerX, centerY, radius, angle) {
+				'drawTextAlongArc' : function (ctx, str, centerX, centerY, radius, angle) {
   var len = str.length,
     s;
   this.ctx.save();
