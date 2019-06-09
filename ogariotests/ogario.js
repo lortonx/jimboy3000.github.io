@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.660 MEGA TEST
+// v1.661 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4279,7 +4279,7 @@ var thelegendmodproject = function(t, e, i) {
         };
 
         function irenderfromagario() {
-            this['txt'] = '',
+            this.txt = '',
                 this.txtCanvas = null,
                 this.txtCtx = null,
                 this.color = '#FFFFFF',
@@ -4297,7 +4297,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.redraw = false,
                 this.remeasure = false,
                 this.setTxt = function(ogariosettxtsetter) {
-                    this['txt'] !== ogariosettxtsetter && (this['txt'] = ogariosettxtsetter,
+                    this.txt !== ogariosettxtsetter && (this.txt = ogariosettxtsetter,
                         this.redraw = true,
                         this.remeasure = true);
                 },
@@ -4358,11 +4358,11 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 this.measureWidth = function() {
                     return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
-                            this.measuredWidth = this.txtCtx.measureText(this['txt']).width,
+                            this.measuredWidth = this.txtCtx.measureText(this.txt).width,
                             this.remeasure = false),
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
-                this['drawTxt'] = function() {
+                this.drawTxt = function() {
                     return this.createCanvas(),
                         this.redraw && (this.redraw = false,
                             this.txtCanvas.width = this.measureWidth(),
@@ -4372,8 +4372,8 @@ var thelegendmodproject = function(t, e, i) {
                             this.txtCtx.lineWidth = this.strokeWidth,
                             this.txtCtx.strokeStyle = this.strokeColor,
                             this.txtCtx.fillStyle = this.color,
-                            this.stroke && this.txtCtx.strokeText(this['txt'], this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
-                            this.txtCtx.fillText(this['txt'], this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
+                            this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+                            this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
                         this.txtCanvas;
                 };
         }
@@ -6694,11 +6694,12 @@ var thelegendmodproject = function(t, e, i) {
                                 var s = t[e]["y"];
                                 this.ctx.moveTo(i, s);
 
-								this.ctx.font = '30pt Calibri';
+								this.ctx.font = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
 								this.ctx.textAlign = 'center';
 								this.ctx.fillStyle = 'blue';
 								this.ctx.strokeStyle = 'blue';
 								this.ctx.lineWidth = 4;
+								m.setDrawingScale();
 								angle = Math.PI * 0.8;
 								this.drawTextAlongArc(this.ctx, 'Text along arc path', i, s, t[e].size*this.pi2/6, angle);		
                                 this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
