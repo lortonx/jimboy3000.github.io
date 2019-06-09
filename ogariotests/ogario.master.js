@@ -1,4 +1,4 @@
-//v4
+//v5
 legendmaster(window);
 function legendmaster(self) {
     function login() {
@@ -456,8 +456,8 @@ function legendmaster(self) {
             }
         },
         onDisconnect: function() {
-			console.log("[Master] onDisconnect called, reconnecting");
-            this.reconnect();
+			console.log("[Master] onDisconnect called, not reconnecting");
+            //this.reconnect();
         },
         recaptchaRequested: function() {
             requestCaptcha(true);
