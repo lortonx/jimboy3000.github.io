@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.687 MEGA TEST
+// v1.688 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -260,7 +260,8 @@ var thelegendmodproject = function(t, e, i) {
                     'showGrid': 'Siatka',
                     'showBgSectors': 'Sektory w tle',
                     'showMapBorders': 'Granice mapy',
-                    'showGhostCells': 'Duchy kulek',
+                    'showGhostCells': 'Duchy kulek (fps drop)',
+					'showGhostCellsInfo': 'Ghost cells info (confusing)',
                     'showMiniMap': 'Pokaż minimapę',
                     'showMiniMapGrid': 'Pokaż siatkę minimapy',
                     'showMiniMapGuides': 'Pokaż prowadnice na minimapie',
@@ -632,7 +633,8 @@ var thelegendmodproject = function(t, e, i) {
                     'showGrid': 'Show grid',
                     'showBgSectors': 'Show background sectors',
                     'showMapBorders': 'Show map borders',
-                    'showGhostCells': 'Ghost cells',
+                    'showGhostCells': 'Ghost cells (fps drop)',
+					'showGhostCellsInfo': 'Ghost cells info (confusing)',
                     'showMiniMap': 'Show minimap',
                     'showMiniMapGrid': 'Show minimap grid',
                     'showMiniMapGuides': 'Show minimap guides',
@@ -1976,6 +1978,7 @@ var thelegendmodproject = function(t, e, i) {
                 'showBgSectors': false,
                 'showMapBorders': true,
                 'showGhostCells': false,
+				'showGhostCellsInfo': false,
                 'showMiniMap': true,
                 'showMiniMapGrid': false,
                 'showMiniMapGuides': true,
@@ -2804,7 +2807,7 @@ var thelegendmodproject = function(t, e, i) {
 					this["addOptions"](["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"), 
 					this["addOptions"](["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"), 
 					this["addOptions"](["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"), 
-					this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells"], "helpersGroup"), 
+					this["addOptions"](["oppColors", "oppRings", "virColors", "splitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"), 
 					this["addOptions"](["mouseSplit", "mouseFeed","mouseInvert"], "mouseGroup"), 
 					this["addOptions"](["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"), 
 					this["addOptions"](["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"), 
@@ -6692,18 +6695,16 @@ var thelegendmodproject = function(t, e, i) {
                         this.ctx.beginPath();
                         var e = 0;
                         for (; e < t.length; e++) {
-                            if (!t[e].inView) {
-								//
-								
+                            if (!t[e].inView) {						
                                 var i = t[e]["x"];
                                 var s = t[e]["y"];
                                 this.ctx.moveTo(i, s);
-
+								this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);	
 								//
+								if (v.showGhostCellsInfo){
 								this.nickScale = 1;								
 								this.fontSize = Math.max(t[e].size * 0.3, 26) * this.scale;								
-								this.nickSize = ~~(this.fontSize * this.nickScale);
-//								this.massSize = ~~(this.fontSize * 0.5 * this.massScale);								
+								this.nickSize = ~~(this.fontSize * this.nickScale);						
 								this.ctx.font = g.namesFontWeight + " " + this.nickSize*4 + "px " + g.namesFontFamily;
 								this.ctx.textAlign = 'center';
 								this.ctx.fillStyle = g.namesColor;
@@ -6718,21 +6719,18 @@ var thelegendmodproject = function(t, e, i) {
 								else{
 									this.ghostcellstext = "Legend mod";
 								}
-								this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size*this.pi2/6, angle);		
-								//
-                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);	
-								//								
-								if (v.customSkins && M.showCustomSkins){
-								//cimg2 = new Image;
-								//cimg2.src = g.commanderImage2;					
+								this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size*this.pi2/6, angle);									
+								if (v.customSkins && M.showCustomSkins){		
 									if (M.leaderboard[e]!=undefined){
 									node = ogarminimapdrawer.getCustomSkin(M.leaderboard[e].nick, "#000000");                           
 										if (node){								
 								this.ctx.drawImage(node, i-t[e].size, s-t[e].size, t[e].size*2, t[e].size*2);	
 										}
 									}	
-								}										
-                            }
+								}	
+								}
+                           //
+						   }							
                         }
                         this.ctx.fillStyle = g.ghostCellsColor;
                         this.ctx.globalAlpha = g.ghostCellsAlpha;
