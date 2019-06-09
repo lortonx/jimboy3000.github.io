@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.656 MEGA TEST
+// v1.657 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6665,21 +6665,21 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
 				'drawTextAlongArc' : function (ctx, str, centerX, centerY, radius, angle) {
-  var len = str.length,
-    s;
-  this.ctx.save();
-  this.ctx.translate(centerX, centerY);
-  this.ctx.rotate(-1 * angle / 2);
-  this.ctx.rotate(-1 * (angle / len) / 2);
-  for (var n = 0; n < len; n++) {
-    this.ctx.rotate(angle / len);
-    this.ctx.save();
-    this.ctx.translate(0, -1 * radius);
-    s = str[n];
-    this.ctx.fillText(s, 0, 0);
-    this.ctx.restore();
-  }
-  this.ctx.restore();
+					var len = str.length,
+					s;
+					this.ctx.save();
+					this.ctx.translate(centerX, centerY);
+					this.ctx.rotate(-1 * angle / 2);
+					this.ctx.rotate(-1 * (angle / len) / 2);
+					for (var n = 0; n < len; n++) {
+						this.ctx.rotate(angle / len);
+						this.ctx.save();
+						this.ctx.translate(0, -1 * radius);
+						s = str[n];
+						this.ctx.fillText(s, 0, 0);
+						this.ctx.restore();
+					}
+				this.ctx.restore();
 				},				
                 'drawGhostCells' : function() {
                     if (v.showGhostCells) {
@@ -6700,7 +6700,7 @@ var thelegendmodproject = function(t, e, i) {
 								this.ctx.strokeStyle = 'blue';
 								this.ctx.lineWidth = 4;
 								angle = Math.PI * 0.8;
-								this.drawTextAlongArc(this.ctx, 'Text along arc path', i, s, t[e].size*Math.PI, angle);		
+								this.drawTextAlongArc(this.ctx, 'Text along arc path', i, s, t[e].size*this.pi2/4, angle);		
                                 this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
                             }
                         }
