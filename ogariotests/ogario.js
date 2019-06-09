@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.655 MEGA TEST
+// v1.656 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6699,6 +6699,7 @@ var thelegendmodproject = function(t, e, i) {
 								this.ctx.fillStyle = 'blue';
 								this.ctx.strokeStyle = 'blue';
 								this.ctx.lineWidth = 4;
+								angle = Math.PI * 0.8;
 								this.drawTextAlongArc(this.ctx, 'Text along arc path', i, s, t[e].size*Math.PI, angle);		
                                 this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
                             }
