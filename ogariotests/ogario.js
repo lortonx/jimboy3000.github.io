@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.661 MEGA TEST
+// v1.662 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6694,12 +6694,11 @@ var thelegendmodproject = function(t, e, i) {
                                 var s = t[e]["y"];
                                 this.ctx.moveTo(i, s);
 
-								this.ctx.font = g["miniMapNickFontWeight"] + " " + g["miniMapNickSize"] + "px " + g["miniMapNickFontFamily"];
+								this.ctx.font = g.namesFontWeight + " " + g["miniMapNickSize"] + "px " + g.namesFontFamily;
 								this.ctx.textAlign = 'center';
-								this.ctx.fillStyle = 'blue';
-								this.ctx.strokeStyle = 'blue';
+								this.ctx.fillStyle = g.namesColor;
+								this.ctx.strokeStyle = g.namesStrokeColor;
 								this.ctx.lineWidth = 4;
-								m.setDrawingScale();
 								angle = Math.PI * 0.8;
 								this.drawTextAlongArc(this.ctx, 'Text along arc path', i, s, t[e].size*this.pi2/6, angle);		
                                 this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
