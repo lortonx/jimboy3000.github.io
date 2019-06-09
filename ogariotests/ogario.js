@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.651 MEGA TEST
+// v1.652 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6664,6 +6664,23 @@ var thelegendmodproject = function(t, e, i) {
                         this.drawDashedCircle(t, e, i, s, 60, o, a);
                     }
                 },
+				'drawTextAlongArc' : function (this.ctx, str, centerX, centerY, radius, angle) {
+  var len = str.length,
+    s;
+  this.ctx.save();
+  this.ctx.translate(centerX, centerY);
+  this.ctx.rotate(-1 * angle / 2);
+  this.ctx.rotate(-1 * (angle / len) / 2);
+  for (var n = 0; n < len; n++) {
+    this.ctx.rotate(angle / len);
+    this.ctx.save();
+    this.ctx.translate(0, -1 * radius);
+    s = str[n];
+    this.ctx.fillText(s, 0, 0);
+    this.ctx.restore();
+  }
+  this.ctx.restore();
+				}				
                 'drawGhostCells': function() {
                     if (v.showGhostCells) {
                         var t = M.ghostCells;
@@ -6676,7 +6693,14 @@ var thelegendmodproject = function(t, e, i) {
                                 var i = t[e]["x"];
                                 var s = t[e]["y"];
                                 this.ctx.moveTo(i, s);
-                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);
+
+								this.ctx.font = '30pt Calibri';
+								this.ctx.textAlign = 'center';
+								this.ctx.fillStyle = 'blue';
+								this.ctx.strokeStyle = 'blue';
+								this.ctx.lineWidth = 4;
+								drawTextAlongArc(this.ctx, 'Text along arc path', i, s, t[e].size*Math.PI, angle);		
+                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);								
                             }
                         }
                         this.ctx.fillStyle = g.ghostCellsColor;
