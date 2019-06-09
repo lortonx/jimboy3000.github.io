@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.685 MEGA TEST
+// v1.686 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6720,7 +6720,7 @@ var thelegendmodproject = function(t, e, i) {
 								}
 								this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size*this.pi2/6, angle);		
 								//
-                                //this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);	
+                                this.ctx.arc(i, s, t[e].size, 0, this.pi2, false);	
 								//								
 								if (v.customSkins && M.showCustomSkins){
 								//cimg2 = new Image;
