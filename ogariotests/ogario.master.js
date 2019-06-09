@@ -456,8 +456,8 @@ function legendmaster(self) {
             }
         },
         onDisconnect: function() {
-			console.log("[Master] onDisconnect called, not reconnecting");
-            //this.reconnect();
+			console.log("[Master] onDisconnect called, reconnecting");
+            this.reconnect();
         },
         recaptchaRequested: function() {
             requestCaptcha(true);
