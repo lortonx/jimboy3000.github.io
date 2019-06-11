@@ -1,4 +1,5 @@
 //Legend mod Sniff2 by jimboy3100
+//v2.1
 (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -212,7 +213,7 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url('+le
 											'</div>');
 $("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
-datatooltipfix();
+
 $("#userscripts").hide();
 	
 
@@ -291,6 +292,7 @@ $("#userscriptBtn5").click(function() {
 	if($('#UserscriptE').val()!=""){$('#UserscriptE').blur();}
 	else if($('#UserscriptE').val()==""){document.getElementById("Userscripttexture5").value =localStorage.getItem("Userscripttexture5");setTimeout(function () {$("#userscriptBtn5").click(); }, 100);}
 
+	datatooltipfix();
 }, 5000);
 
 function Userscripttext11(){ Userscripttext11=$("#UserscripttextA").val();localStorage.setItem("Userscripttext11", Userscripttext11);
