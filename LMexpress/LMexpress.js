@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.042c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "45"; // the version 1.1-> 1.11
@@ -7350,11 +7350,12 @@ core.disconnect= function () {
 console.groupEnd();	
 
 setTimeout(function() {
-$('[data-toggle="tooltip"]').tooltip();
+
 //$('#server-join').click(); //next time that ogario will be down
 loginsfbGplstart();
 triggerLMbtns();
 languagemodfun();
+$('[data-toggle="tooltip"]').tooltip();
 }, 2000);
 /*		toastr["info"]('<div id="tutorial" style="background-image: url(https://jimboy3100.github.io/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
 		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
