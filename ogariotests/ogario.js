@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.690 MEGA TEST
+// v1.691 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2207,8 +2207,8 @@ var thelegendmodproject = function(t, e, i) {
                 v['splitRange'] = !v['splitRange'], i['splitRange'] = v['splitRange'];
             },
             'setShowGhostCellsInfo': function() {
-                if (v['showGhostCells'] = false){
-			    v['showGhostCellsInfo'] = true;
+                if ( v['showGhostCells'] == false || v['showGhostCellsInfo'] == false ){
+			    v['showGhostCellsInfo'] = true;				
 				v['showGhostCells'] = true;
 				}
 				else{
