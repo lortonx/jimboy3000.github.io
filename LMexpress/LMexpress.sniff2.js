@@ -212,7 +212,7 @@ $("#menu-footer").after('<div id="userscripts" style="background-image: url('+le
 											'</div>');
 $("#Userscriptshud").after('<button id="Backtomenu" onclick="closeuserscripts(); return false" class="btn btn-danger" style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 
-$('[data-toggle="tooltip"]').tooltip();
+datatooltipfix();
 $("#userscripts").hide();
 	
 
@@ -1724,6 +1724,9 @@ function erasescripter(){
                }
 }
 
+function datatooltipfix(){
+	$('[data-toggle="tooltip"]').tooltip();
+}
 //5. fixes:
 setTimeout(function () {
 if ($("#comm15").val()=="undefined"){
