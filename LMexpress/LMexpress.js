@@ -2,7 +2,7 @@
  * Legend express v0.042b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "44"; // the version 1.1-> 1.11
+var semimodVersion = "45"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -4804,6 +4804,19 @@ if (languagemod == 10) {
         $("body").append(s1);
     }, 800);
 }
+if (languagemod == 11) {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://jimboy3100.github.io/LanguagePackPolish.js";
+    $("body").append(s);
+    setTimeout(function() {
+        $('#legendlanguages').val("11");
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+        s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+        $("body").append(s1);
+    }, 800);
+}
 }
 function changeModLanguage() {
     if ($("#legendlanguages").val() == 1) {
@@ -4937,6 +4950,20 @@ function changeModLanguage() {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://jimboy3100.github.io/LanguagePackTurkish.js";
+        $("body").append(s);
+        setTimeout(function() {
+            var s1 = document.createElement("script");
+            s1.type = "text/javascript";
+            s1.src = "https://jimboy3100.github.io/LanguagePackHandler.js";
+            $("body").append(s1);
+
+        }, 800);
+    }
+    if ($("#legendlanguages").val() == 11) {
+        localStorage.setItem("languagemod", 11);
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://jimboy3100.github.io/LanguagePackPolish.js";
         $("body").append(s);
         setTimeout(function() {
             var s1 = document.createElement("script");
