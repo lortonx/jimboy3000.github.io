@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.042b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "45"; // the version 1.1-> 1.11
@@ -6188,6 +6188,7 @@ $("#server-reconnect").css("width", "11%");
             '<option value="5" data-itr="">French - Francais</option>' +
 			'<option value="9" data-itr="">German - Deutsch</option>' +
             '<option value="2" data-itr="">Greek - Ελληνικά</option>' +
+            '<option value="11" data-itr="">Polish - Polskie</option>' +			
 			'<option value="8" data-itr="">Russian</option>' +
             '<option value="3" data-itr="">Spanish - Espanol</option>' +
 			'<option value="7" data-itr="">Trad. Chinese</option>' +
