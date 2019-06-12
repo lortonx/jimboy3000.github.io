@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.700 MEGA TEST
+// v1.701 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5216,7 +5216,7 @@ var thelegendmodproject = function(t, e, i) {
                     legendmod.onerror(t);
                 };
 				this.socket.onclose = function(t) {
-					/i.onclose(t);
+					//i.onclose(t);
                     legendmod.onclose(t);
                 };
 				ogarminimapdrawer['getWS'](this.ws);
