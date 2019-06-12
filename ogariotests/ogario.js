@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.699 MEGA TEST
+// v1.700 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5204,16 +5204,20 @@ var thelegendmodproject = function(t, e, i) {
 				this.socket = new WebSocket(t); 
 				this.socket.binaryType = 'arraybuffer'; 
 				this.socket.onopen = function() {
-                    M.onopen();
+                    //i.onopen();
+					legendmod.onopen();
                 };
 				this.socket.onmessage = function(t) {
-                    M.onmessage(t);
+					//i.onmessage(t);
+                    legendmod.onmessage(t);
                 };
 				this.socket.onerror = function(t) {
-                    M.onerror(t);
+					//i.onerror(t)
+                    legendmod.onerror(t);
                 };
 				this.socket.onclose = function(t) {
-                    M.onclose(t);
+					/i.onclose(t);
+                    legendmod.onclose(t);
                 };
 				ogarminimapdrawer['getWS'](this.ws);
 				ogarminimapdrawer['sendServerJoin']();
@@ -5223,7 +5227,8 @@ var thelegendmodproject = function(t, e, i) {
 					window.master['onConnect']();
 				}
             },
-            'onOpen': function(t) {
+            //'onOpen': function(t) {
+			'onOpen': function() {
                 console.log('[Legend mod Express] Game server socket open'),
 				this.time = Date.now();
                 var e = this.createView(5);
