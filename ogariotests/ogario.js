@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.698 MEGA TEST
+// v1.699 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5191,7 +5191,7 @@ var thelegendmodproject = function(t, e, i) {
             'pressedKeys': {},
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
-                var i = this;
+                //var i = this;
                 this.closeConnection(); 
 				this.flushCellsData();
 				this.protocolKey = null; 
@@ -5204,16 +5204,16 @@ var thelegendmodproject = function(t, e, i) {
 				this.socket = new WebSocket(t); 
 				this.socket.binaryType = 'arraybuffer'; 
 				this.socket.onopen = function() {
-                    i.onopen();
+                    M.onopen();
                 };
 				this.socket.onmessage = function(t) {
-                    i.onmessage(t);
+                    M.onmessage(t);
                 };
 				this.socket.onerror = function(t) {
-                    i.onerror(t);
+                    M.onerror(t);
                 };
 				this.socket.onclose = function(t) {
-                    i.onclose(t);
+                    M.onclose(t);
                 };
 				ogarminimapdrawer['getWS'](this.ws);
 				ogarminimapdrawer['sendServerJoin']();
