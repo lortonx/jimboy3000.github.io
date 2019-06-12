@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.698 MEGA TEST
+// v1.699 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5738,7 +5738,7 @@ var thelegendmodproject = function(t, e, i) {
 						window.testobjectsOpcode114 = data;	
 						break;
                     case 161:
-						console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+						//console.log('[Legend mod Express] opcode: ', data.getUint8(0));
 						window.testobjectsOpcode161 = data;	
                         break;
                     case 176:
