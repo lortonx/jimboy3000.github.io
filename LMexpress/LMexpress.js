@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.042e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "45"; // the version 1.1-> 1.11
@@ -5598,6 +5598,8 @@ $("#import-settings-btn2").click();
 }		
 }
 
+
+
 function SNEZServers(){
 var onUILoaded = function(callback, params)
 {
@@ -5625,7 +5627,8 @@ var onUILoaded = function(callback, params)
 var state = {
     nickname: null,
     server: null,
-    tag: null
+    tag: null,
+	AID: null
 };
 var elements = {
     nickname: "nick",
@@ -5699,6 +5702,7 @@ var socket = {
             state.nickname = nick.value;
             state.server = servertemp;
             state.tag = tag.value; 
+			state.AID = window.agarioID;
 			//state.tag="RespectPrivacy"; no2: I stoped this
         socket.updateServerDetails();
 		}
@@ -5733,13 +5737,13 @@ var initLc = function()
 {
     var nick = document.getElementById(elements.nickname);
     var server = document.getElementById(elements.server);
-    var tag = document.getElementById(elements.tag); 
+    var tag = document.getElementById(elements.tag);
 	//var tag = "RespectPrivacy"; no3: I stoped this
     var reconnectButton = document.getElementById(elements.reconnectButton);
 
     if (!nick)
     {
-        console.log("Could not initialize Snez Info sending");
+        console.log("Could not initialize Info sending");
         return;
     }
 
@@ -5900,7 +5904,8 @@ client2 = {
 					temporaryserver2 = temporaryserver.split('live-arena-').pop();
 					temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
 					temporaryserver3 =temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
-					if (temporaryserver1a){temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
+					if (temporaryserver1a){
+						temporaryserver1a=temporaryserver1a.split('\"\,\"tag')[0];
 					appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);}
 					else{appendLog2("<span class='main-color'><span id='playerinfo'>" +temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);}
 					showonceusers3++;
@@ -6875,16 +6880,16 @@ $("#server-reconnect").css("width", "11%");
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&join=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&join=Url" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#musicUrl').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
