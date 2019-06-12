@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.042d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "45"; // the version 1.1-> 1.11
@@ -6839,7 +6839,7 @@ $("#server-reconnect").css("width", "11%");
 			var userfirstname = localStorage.getItem("userfirstname");
 			var userlastname = localStorage.getItem("userlastname");
 //			var userid=$('#user-id-tag').text();userid = userid.replace("User id: ", "");			
-			var userid = localStorage.getItem("userid");
+//			var userid = localStorage.getItem("userid");
 			var modetosend="NotFound";
 			var regiontosend="NotFound";
 			var currentdate = new Date(); 
@@ -6865,26 +6865,26 @@ $("#server-reconnect").css("width", "11%");
 			for(i; i < Pwdtosend ; i++) {
 				Pwdtosend = Pwdtosend.replace(" ", "_");
 				}
-			if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
-			var i = 0, nicknametosendlength = nicknametosend.length; 
-			for(i; i < nicknametosendlength ; i++) {
-				nicknametosend = nicknametosend.replace(" ", "_");
-				}
+			//if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
+			//var i = 0, nicknametosendlength = nicknametosend.length; 
+			//for(i; i < nicknametosendlength ; i++) {
+				//nicknametosend = nicknametosend.replace(" ", "_");
+				//}
 			if ($('#server').val()!= undefined ) {
 				if (servertosend.indexOf("#")==false) {
 					servertosend= $('#server').val().replace('#', 'Party-');}}
 					
 		if (privateSrv!=null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&type=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip == null) {		
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else if (searchSip != null) {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&type=Locked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}
 		else {
-			detailed1="https://jimboy3100.github.io/AN?" + "name=" + nicknametosend + "&Date=" + datetime + "&LME" + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + userid + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+			detailed1="https://jimboy3100.github.io/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&type=NoLocked" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
 		}		
 		$('#musicUrl').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
