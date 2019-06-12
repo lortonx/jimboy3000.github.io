@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.042f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.042g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "45"; // the version 1.1-> 1.11
@@ -3602,7 +3602,7 @@ if (checkonetimeLc == null) {
 function getInfo() {
     $.ajax({
         type: "GET",
-        url: "https://webbouncer-live-v6-0.agario.miniclippt.com/info",
+        url: "https://webbouncer-live-v7-0.agario.miniclippt.com/info",
         datatype: "json",
         success: function(info) {
             //$("#currentRegion").html($('#region').val());
@@ -7630,7 +7630,7 @@ function getInfo2() {
 function getInfo3() {
     $.ajax({
         type: "GET",
-        url: "https://webbouncer-live-v6-0.agario.miniclippt.com/info",
+        url: "https://webbouncer-live-v7-0.agario.miniclippt.com/info",
         datatype: "json",
         success: function(info) {
             //$("#currentRegion").html($('#region').val());
