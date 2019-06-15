@@ -1,4 +1,10 @@
-//v6 test
+//v7 test
+
+jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
 legendmaster(window);
 function legendmaster(self) {
     function login() {
