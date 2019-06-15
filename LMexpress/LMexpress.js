@@ -2,7 +2,7 @@
  * Legend express v0.042h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "45"; // the version 1.1-> 1.11
+var semimodVersion = "46"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3113,7 +3113,7 @@ var cfg_org = {
                 my.resetMinimap();
                 break;
             case "chat":
-				//console.log(cmd);
+				console.log(cmd);
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
@@ -3122,7 +3122,7 @@ var cfg_org = {
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;
             case "command":
-				//console.log(cmd);
+				console.log(cmd);
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
