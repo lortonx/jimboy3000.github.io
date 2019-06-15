@@ -1,4 +1,4 @@
-//v5
+//v5 test
 legendmaster(window);
 function legendmaster(self) {
     function login() {
@@ -150,7 +150,8 @@ function legendmaster(self) {
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
-            $.ajax("//agar.io/mc/agario.js", {
+			  $.ajax("//jimboy3000.github.io/mc/agario2.js", {
+//            $.ajax("//agar.io/mc/agario.js", {
                 error: function() {},
                 success: function(sketchContents) {
                     var optionMatch = sketchContents.match(/versionString="(\d+\.\d+\.\d+)"/);
