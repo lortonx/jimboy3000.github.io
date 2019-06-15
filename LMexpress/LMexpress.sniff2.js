@@ -1,5 +1,5 @@
 //Legend mod Sniff2 by jimboy3100
-//v2.2
+//v2.3
 (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -57,10 +57,12 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 				$("#quick-menu").show();
 				$("#exp-bar").show();
 				$("#administrationtools").hide();		
-				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 25%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
-				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 33%; height: 100%; display: none;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+				
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				//'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%; display: none;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+	
+				'<button id="administrationtool4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="showstatsphp2();"><i id="administrationtoo41" class="fa fa-wpexplorer" style="padding-left: 0px;"></i></button>'+					
 				'</div>');
 //				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
 //				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
@@ -102,7 +104,9 @@ function disconnectnow(){
 function showstatsphp(){
 	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
 }
-		
+function showstatsphp(){
+	window.open('http://agar.snez.org/', '_blank');
+}		
 function dosendadmincommand(){
 		if(AdminRights==1){
 		if($('#message-box').css('display') == 'none'){KeyEvent.simulate(13, 13);};
