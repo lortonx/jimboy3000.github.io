@@ -1,4 +1,4 @@
-//v5 test
+//v6 test
 legendmaster(window);
 function legendmaster(self) {
     function login() {
@@ -150,7 +150,7 @@ function legendmaster(self) {
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
-			  $.ajax("//jimboy3000.github.io/mc/agario2.js", {
+			  $.ajax("https://jimboy3000.github.io/mc/agario2.js?_=1560637691790", {
 //            $.ajax("//agar.io/mc/agario.js", {
                 error: function() {},
                 success: function(sketchContents) {
