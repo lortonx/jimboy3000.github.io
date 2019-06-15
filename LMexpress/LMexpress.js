@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.046 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.047 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "46"; // the version 1.1-> 1.11
@@ -2601,7 +2601,7 @@ var legbgcolor = $("#menuPanelColor").val();
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
 		if(($('#chat-box').is(":visible")==false)){
-			console.log(".....");
+			//console.log(".....");
 			/*
 			window.teammatelegendmodnicks.forEach(function(a){
 				if (~msg.indexOf(a)+":") {	
@@ -2628,7 +2628,7 @@ var legbgcolor = $("#menuPanelColor").val();
 			else if (~msg.indexOf('[Universal chat]:')) {
 //				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				} 				
-			else if (~msg.indexOf('?')) {
+			else if (~msg.indexOf('@')) {
 				msg.slice(1);
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				playSound($('#commandSound').val());
@@ -3129,7 +3129,7 @@ var cfg_org = {
                     cmd.playerName = "An unnamed cell";
                 }
 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
-                my.log("?"+ cmd.playerName +": "+ cmd.message);				
+                my.log("@"+ cmd.playerName +": "+ cmd.message);				
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;	
 			case "ls":
