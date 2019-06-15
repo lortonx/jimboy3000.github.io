@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.044 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.045 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "46"; // the version 1.1-> 1.11
@@ -2601,6 +2601,7 @@ var legbgcolor = $("#menuPanelColor").val();
 //		"log": function(msg){ toastr["success"](this.name + ":"+ msg); },		
 		"log": function(msg){ 
 		if(($('#chat-box').is(":visible")==false)){
+			console.log(".....");
 			window.teammatelegendmodnicks.forEach(function(a){
 				if (~msg.indexOf(a)+":") {	
 					msg="[Universal chat]:";
@@ -3113,7 +3114,7 @@ var cfg_org = {
                 my.resetMinimap();
                 break;
             case "chat":
-				console.log(cmd);
+				//console.log(cmd);
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
@@ -3122,7 +3123,7 @@ var cfg_org = {
                 my.ogarChatAdd(cmd.playerName, cmd.message);
                 break;
             case "command":
-				console.log(cmd);
+				//console.log(cmd);
                 if(! cmd.playerName){
                     cmd.playerName = "An unnamed cell";
                 }
@@ -3219,7 +3220,7 @@ var cfg_org = {
     // =====  Process Legend Mod  ======
     my.ogarChatAdd = function(nick, msg){
 		//if ((~msg.indexOf('LM:'))==false) {
-			console.log("...")
+			//console.log("...")
         var time_txt = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
         var user_icon = my.tool_symbol;
         var chat_html = '<div class="message">'+
