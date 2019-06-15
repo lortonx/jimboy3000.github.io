@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.045 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.046 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "46"; // the version 1.1-> 1.11
@@ -2602,11 +2602,12 @@ var legbgcolor = $("#menuPanelColor").val();
 		"log": function(msg){ 
 		if(($('#chat-box').is(":visible")==false)){
 			console.log(".....");
+			/*
 			window.teammatelegendmodnicks.forEach(function(a){
 				if (~msg.indexOf(a)+":") {	
 					msg="[Universal chat]:";
 				}
-				});
+				}); */
 		    if (~msg.indexOf("Received a command with an unknown name")) {
 				if (~msg.indexOf("Received a command with an unknown name: customSkins")) {
 				}
