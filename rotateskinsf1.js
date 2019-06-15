@@ -1,6 +1,6 @@
 var exp = 0;
 var d = new Date()["getTime"]();
-if (typeof al == "undefined" && parseInt(atob(t)) + parseInt(atob("NDMyMDAwMDA=")) < d) {
+if (typeof al == "undefined" && parseInt(atob(t)) + parseInt("43200000") < d) {
     var al = document["createElement"]("font");
     al["innerHTML"] = errorMsg;
     al["color"] = "#FF0000";
@@ -8,15 +8,16 @@ if (typeof al == "undefined" && parseInt(atob(t)) + parseInt(atob("NDMyMDAwMDA="
 };
 var init = setInterval(function() {
     if (!document["getElementsByClassName"]("row")["length"] > 0) {
-        if (!document["getElementsByClassName"]("row")[0]["innerHTML"]["match"](/▶/gi)) {
+		if (true){
+        //if (!document["getElementsByClassName"]("row")[0]["innerHTML"]["match"](/▶/gi)) {
             var variable_0 = document["createElement"]("a");
             variable_0["href"] = "http://legendmod.ml";
-            variable_0["innerHTML"] = "\u25B6" + atob("IEZyZWUgcHJlbWl1bSBza2lucyA=") + "\u25C0";
+            variable_0["innerHTML"] = "\u25B6 Free premium skins \u25C0";
             variable_0["className"] = "btn btn-primary btn-gifting";
 //            document["getElementsByClassName"]("row")[0]["appendChild"](variable_0);
             var variable_1 = document["createElement"]("a");
             variable_1["href"] = "http://legendmod.ml";
-            variable_1["innerHTML"] = "\u2665" + atob("IERvbmF0ZSB0byBzdXBwb3J0IEFnYXJtb3VzZSA=") + "\u2665";
+            variable_1["innerHTML"] = "\u2665 Donate to support Agarmouse \u2665";
             variable_1["className"] = "btn btn-primary btn-shop";
 //            document["getElementsByClassName"]("row")[0]["appendChild"](variable_1)
         }
@@ -28,8 +29,7 @@ var init = setInterval(function() {
         };
         var variable_3 = 0;
         var variable_4;
-        document["getElementsById"]("play")[0];
-        addEventListener("click", function() {
+        document.getElementById("play").addEventListener("click", function() {
             variable_4 = document["getElementById"]("nick")["value"]
         });
         var variable_2 = setInterval(function() {
@@ -41,3 +41,4 @@ var init = setInterval(function() {
             variable_3++
         }, speed)
     }
+}, 100);
