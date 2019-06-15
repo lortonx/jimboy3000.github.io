@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.043 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.044 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
 var semimodVersion = "46"; // the version 1.1-> 1.11
@@ -3218,7 +3218,7 @@ var cfg_org = {
 
     // =====  Process Legend Mod  ======
     my.ogarChatAdd = function(nick, msg){
-		if ((~msg.indexOf('LM:'))==false) {
+		//if ((~msg.indexOf('LM:'))==false) {
 			console.log("...")
         var time_txt = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
         var user_icon = my.tool_symbol;
@@ -3236,7 +3236,7 @@ var cfg_org = {
             'scrollTop': $("#chat-box").prop("scrollHeight")
         }, 0x1f4);
 		}
-    };
+    //};
     my.ogarMinimapUpdate = function(){
 		window.agartoolteammatenicks=[];
         var minimap_elem = document.getElementById("ao2t-minimap");
