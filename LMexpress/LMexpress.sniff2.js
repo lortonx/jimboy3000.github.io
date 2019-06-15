@@ -104,7 +104,7 @@ function disconnectnow(){
 function showstatsphp(){
 	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
 }
-function showstatsphp(){
+function showstatsphp2(){
 	window.open('http://agar.snez.org/', '_blank');
 }		
 function dosendadmincommand(){
