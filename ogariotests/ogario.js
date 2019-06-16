@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.736 MEGA TEST
+// v1.738 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5337,31 +5337,23 @@ var thelegendmodproject = function(t, e, i) {
 					if (this.cells[node].isVirus){
                     let virus = this.cells[node];
                     let distanceVirus = this.calcDist(virus.x, virus.y);
-					window.distanceVirus1=distanceVirus;
                     if (distanceVirus < 200) {
-						//target.x=-10000;
-					//console.log("virus is close");
 					targetVirus = virus;
-					console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up
-					
-					if (targetVirus.x-legendmod.playerX>0){
-						target.x=-10000;
-					}else{
-						target.x=10000;
-					}
-					if (targetVirus.y-legendmod.playerY>0){
-						target.y=-10000;
-					}else{
-						target.y=10000;
-					}					
-					//else{console.log("virus is left");}
-					//if (targetVirus.y-legendmod.playerY<0){console.log("virus is down");}
-					//else{console.log("virus is up");}		
-
-					
-                    //targetVirus = virus;
-                    //bestDistVirus = distanceVirus;
+					console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
+					if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
+					if (targetVirus.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}					
                     }
+				}
+				//legendmod.cells[0].isPlayerCell is our cell
+				else if (this.cells[node].nick!=""){
+					let PlayerCell = this.cells[node];
+					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
+					if (distancePlayerCell < this.cells[node].size+760) {
+					targetPlayerCell = PlayerCell;
+					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
+					if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
+					if (targetPlayerCell.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}								
+					}
 				}
                 });
 				if (target!= undefined){ //not needed
