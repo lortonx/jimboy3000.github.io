@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.743 MEGA TEST
+// v1.744 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -33,14 +33,17 @@ function Video(src, append) {
 $("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 */
-window.videoJustWatchProflag = {};
-window.videoJustWatchProflag2 = {};
 
-//window.videoJustWatchProflag=true;
-window.videoJustWatchPro = {};
 window.targetFood = null;
 window.autoPlay = false;
+window.doSplitFlag = true;
 window.bestDist = 10000;
+
+window.videoJustWatchProflag = {};
+window.videoJustWatchProflag2 = {};
+//window.videoJustWatchProflag=true;
+window.videoJustWatchPro = {};
+
 function checkVideos(a, b) {
     checkVideos1(a);
     //setTimeout(function() {
@@ -5370,7 +5373,12 @@ var thelegendmodproject = function(t, e, i) {
 				if (target != undefined){ //not needed
                 this.sendPosition(target);
 				}
-				if (doSplit == true){ //not needed
+				if (doSplit == true && window.doSplitFlag == true){ 
+				doSplit = false;
+				window.doSplitFlag = false;
+				setTimeout(function() {
+					window.doSplitFlag = true;
+				}, 1000);
                 this.sendAction(17);
 				}				
             },
