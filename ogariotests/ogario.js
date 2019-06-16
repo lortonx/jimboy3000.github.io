@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.747 MEGA TEST
+// v1.748 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5347,10 +5347,10 @@ var thelegendmodproject = function(t, e, i) {
                     let distanceVirus = this.calcDist(virus.x, virus.y);
                     if (distanceVirus < 200 && legendmod.playerMass >125) {
 					targetVirus = virus;
-					if (window.VirusFlag == true){
+					if (window.VirusFlag == true){						
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
-					console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
-					
+						$('#pause-hud').text("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY));
+					//console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
 					}
 					//if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetVirus.x-legendmod.playerX>0){target2.x=-10000;}else{target2.x=10000;}
@@ -5366,7 +5366,8 @@ var thelegendmodproject = function(t, e, i) {
 					targetPlayerCell = PlayerCell;
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
-					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
+						$('#pause-hud').text(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+					//console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
 					//if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetPlayerCell.x-legendmod.playerX>0){target2.x=-10000;}else{target2.x=10000;}					
@@ -5381,7 +5382,8 @@ var thelegendmodproject = function(t, e, i) {
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
-					console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
+						$('#pause-hud').text(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+					//console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					//target = this.cells[node];	
@@ -5808,6 +5810,7 @@ var thelegendmodproject = function(t, e, i) {
                     break;
                   case 62:
                     console.log("[Legend mod Express] 102 Game over");
+					$('#pause-hud').text(h.pause);
                     break;
                   default:
                     console.log("[Legend mod Express] 102 Unknown", obj, previousState);
@@ -6125,7 +6128,7 @@ var thelegendmodproject = function(t, e, i) {
                     i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts.removeCell();
                 }
                 this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer['onPlayerDeath'](), ogarminimapdrawer.showMenu(300));
-                if (window.autoPlay) this.calcTarget();
+                if (window.autoPlay && legendmod.play) this.calcTarget();
             },
             'color2Hex': function(t) {
                 var e = t.toString(16);
