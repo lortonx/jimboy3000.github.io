@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.744 MEGA TEST
+// v1.745 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5341,7 +5341,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (this.cells[node].isVirus){
                     let virus = this.cells[node];
                     let distanceVirus = this.calcDist(virus.x, virus.y);
-                    if (distanceVirus < 200) {
+                    if (distanceVirus < 200 && legendmod.playerMass >125) {
 					targetVirus = virus;
 					console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
 					if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
