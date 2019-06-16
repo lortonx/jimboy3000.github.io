@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.745 MEGA TEST
+// v1.746 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -37,6 +37,9 @@ $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/
 window.targetFood = null;
 window.autoPlay = false;
 window.doSplitFlag = true;
+window.VirusFlag = true;
+window.BiggerCellFlag = true;
+window.SmallerCellFlag = true;
 window.bestDist = 10000;
 
 window.videoJustWatchProflag = {};
@@ -5343,7 +5346,11 @@ var thelegendmodproject = function(t, e, i) {
                     let distanceVirus = this.calcDist(virus.x, virus.y);
                     if (distanceVirus < 200 && legendmod.playerMass >125) {
 					targetVirus = virus;
+					if (window.VirusFlag == true){
+						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
 					console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
+					
+					}
 					if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetVirus.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}					
                     }
@@ -5354,7 +5361,10 @@ var thelegendmodproject = function(t, e, i) {
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
 					if (distancePlayerCell < this.cells[node].size+960) { //760 
 					targetPlayerCell = PlayerCell;
-					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
+					if (window.BiggerCellFlag == true){
+						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
+					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
+					}
 					if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetPlayerCell.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}								
 					}
@@ -5364,8 +5374,12 @@ var thelegendmodproject = function(t, e, i) {
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
 					if (distancePlayerCell < this.cells[node].size+600) { //760 
 					targetPlayerCell = PlayerCell;
+					if (window.SmallerCellFlag == true){
+						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
 					console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
-						target = this.cells[node];	
+					
+					}
+					target = this.cells[node];	
 						doSplit=true;
 					}
 				}				
@@ -5376,9 +5390,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (doSplit == true && window.doSplitFlag == true){ 
 				doSplit = false;
 				window.doSplitFlag = false;
-				setTimeout(function() {
-					window.doSplitFlag = true;
-				}, 1000);
+				setTimeout(function() {window.doSplitFlag = true;}, 1000);
                 this.sendAction(17);
 				}				
             },
