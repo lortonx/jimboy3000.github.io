@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.740 MEGA TEST
+// v1.741 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5345,10 +5345,10 @@ var thelegendmodproject = function(t, e, i) {
                     }
 				}
 				//legendmod.cells[0].isPlayerCell is our cell
-				else if (this.cells[node].nick!="" && this.cells[node].nick!=legendmod.playerNick && legendmod.cells[0].mass>legendmod.playerMass*1.25){
+				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass > legendmod.playerMass * 1.25){
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
-					if (distancePlayerCell < this.cells[node].size+760 +200) { //200 more
+					if (distancePlayerCell < this.cells[node].size+960) { //760 more
 					targetPlayerCell = PlayerCell;
 					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
 					if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
