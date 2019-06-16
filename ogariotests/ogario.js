@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.742 MEGA TEST
+// v1.743 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5356,7 +5356,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}								
 					}
 				}
-				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass < legendmod.playerMass * 1.35){
+				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass < legendmod.playerMass * 2.7){
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
 					if (distancePlayerCell < this.cells[node].size+600) { //760 
