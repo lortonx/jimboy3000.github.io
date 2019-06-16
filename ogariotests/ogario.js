@@ -5338,7 +5338,7 @@ var thelegendmodproject = function(t, e, i) {
                     let virus = this.cells[node];
                     let distanceVirus = this.calcDist(virus.x, virus.y);
 					window.distanceVirus1=distanceVirus;
-                    if (distanceVirus < 130) {
+                    if (distanceVirus < 200) {
 						//target.x=-10000;
 					//console.log("virus is close");
 					targetVirus = virus;
