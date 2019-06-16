@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.707 MEGA TEST
+// v1.708 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5204,8 +5204,8 @@ var thelegendmodproject = function(t, e, i) {
 				//this.socket = new WebSocket(t); 
 				//this.socket = new WebSocket(t, 'KF44oU2YSf1E76K35qvxqw=='); 
 				this.socket = new WebSocket(t, {
-				origin: 'https://agar.io'
-//				rejectUnauthorized: false
+				origin: 'https://agar.io',
+				rejectUnauthorized: false
 				});
 				this.socket['binaryType'] = 'arraybuffer'; 
 				this.socket['onopen'] = function() {
