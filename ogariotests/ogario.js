@@ -2,7 +2,7 @@
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Emanuel (Striker)
 //
 // This is part of the Legend mod project
-// v1.717 MEGA TEST
+// v1.718 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5361,12 +5361,12 @@ var thelegendmodproject = function(t, e, i) {
                         e = this.targetY;
                     }
                 } else {
-					try {
-					if ((cell.x !== undefined && cell.y !== undefined) ) {
+					//try {
+					if ((cell !== undefined) ) {
                     var t = cell.x;
                     var e = cell.y;
 					}                     
-					} catch (e) {}	
+					//} catch (e) {}	
                 }
                     var i = this.createView(13);
                     i.setUint8(0, 16);
