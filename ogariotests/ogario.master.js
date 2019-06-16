@@ -1,10 +1,11 @@
-//v7 test
-
+//v8 test
+/*
 jQuery.ajaxPrefilter(function(options) {
     if (options.crossDomain && jQuery.support.cors) {
         options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
     }
 });
+*/
 legendmaster(window);
 function legendmaster(self) {
     function login() {
@@ -156,8 +157,8 @@ function legendmaster(self) {
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
             var window = this;
-			  $.ajax("https://jimboy3000.github.io/mc/agario2.js?_=1560637691790", {
-//            $.ajax("//agar.io/mc/agario.js", {
+//			  $.ajax("https://jimboy3100.github.io/mc/agario2.js?_=1560637691790", {
+            $.ajax("//agar.io/mc/agario.js", {
                 error: function() {},
                 success: function(sketchContents) {
                     var optionMatch = sketchContents.match(/versionString="(\d+\.\d+\.\d+)"/);
