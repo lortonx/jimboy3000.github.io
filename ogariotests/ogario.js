@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.739 MEGA TEST
+// v1.740 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2224,7 +2224,7 @@ var thelegendmodproject = function(t, e, i) {
             'setAutoPlay': function() {
                 if ( window.autoPlay == false){
 			    window.autoPlay = true;
-				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.01");
+				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.02");
 				$('#pause-hud').show();
 				}
 				else{
@@ -5345,10 +5345,10 @@ var thelegendmodproject = function(t, e, i) {
                     }
 				}
 				//legendmod.cells[0].isPlayerCell is our cell
-				else if (this.cells[node].nick!="" && this.cells[node].nick!=legendmod.playerNick){
+				else if (this.cells[node].nick!="" && this.cells[node].nick!=legendmod.playerNick && legendmod.cells[0].mass>legendmod.playerMass*1.25){
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
-					if (distancePlayerCell < this.cells[node].size+760) {
+					if (distancePlayerCell < this.cells[node].size+760 +200) { //200 more
 					targetPlayerCell = PlayerCell;
 					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
 					if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
