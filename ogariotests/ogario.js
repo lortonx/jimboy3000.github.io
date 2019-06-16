@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.746 MEGA TEST
+// v1.747 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5322,7 +5322,8 @@ var thelegendmodproject = function(t, e, i) {
             },
 
             'calcTarget': function () {
-                let target;
+                let target; 
+				target2 = {};
                 let bestDist = 10000;
 				
 				let targetVirus;
@@ -5351,8 +5352,10 @@ var thelegendmodproject = function(t, e, i) {
 					console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
 					
 					}
-					if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
-					if (targetVirus.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}					
+					//if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
+					if (targetVirus.x-legendmod.playerX>0){target2.x=-10000;}else{target2.x=10000;}
+					//if (targetVirus.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}	
+					if (targetVirus.y-legendmod.playerY>0){target2.y=-10000;}else{target2.y=10000;}	
                     }
 				}
 				//legendmod.cells[0].isPlayerCell is our cell
@@ -5365,8 +5368,10 @@ var thelegendmodproject = function(t, e, i) {
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
 					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
-					if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
-					if (targetPlayerCell.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}								
+					//if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
+					if (targetPlayerCell.x-legendmod.playerX>0){target2.x=-10000;}else{target2.x=10000;}					
+					//if (targetPlayerCell.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}		
+					if (targetPlayerCell.y-legendmod.playerY>0){target2.y=-10000;}else{target2.y=10000;}	
 					}
 				}
 				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass < legendmod.playerMass * 2.7){
@@ -5378,13 +5383,14 @@ var thelegendmodproject = function(t, e, i) {
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
 					console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
-					target = this.cells[node];	
+					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
+					//target = this.cells[node];	
 						doSplit=true;
 					}
 				}				
                 });
 				if (target != undefined){ //not needed
-                this.sendPosition(target);
+                this.sendPosition(target, target2);
 				}
 				if (doSplit == true && window.doSplitFlag == true){ 
 				doSplit = false;
@@ -5416,7 +5422,7 @@ var thelegendmodproject = function(t, e, i) {
                 for (var s = 0; s < t.length; s++) i.setUint8(s + 1, t.charCodeAt(s));
                 this.sendMessage(i);
             },
-            'sendPosition': function(cell) {
+            'sendPosition': function(cell, target2) {
                 if (this.isSocketOpen() && this.connectionOpened && this.clientKey) {
                     if (!window.autoPlay) {
                     var t = this["cursorX"];
@@ -5427,8 +5433,14 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 } else {
 					//if (typeof cell != "undefined") { //when used, autoplay not working as expected
+					if (Object.keys(target2).length==0){
                     var t = cell.x;
                     var e = cell.y;
+					}
+					else{
+                    var t = target2.x;
+                    var e = target2.y;						
+					}
 					//}
                 }
 
