@@ -5376,8 +5376,7 @@ var thelegendmodproject = function(t, e, i) {
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
-					console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
-					
+					console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
 					target = this.cells[node];	
 						doSplit=true;
