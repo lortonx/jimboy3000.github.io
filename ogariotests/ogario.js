@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.741 MEGA TEST
+// v1.742 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5321,6 +5321,7 @@ var thelegendmodproject = function(t, e, i) {
 				
 				let targetVirus;
 				let bestDistVirus;
+				let doSplit=false;
 				
                 Object.keys(this.food).forEach(node => {
 					if (this.food[node].isFood){ //not needed
@@ -5348,17 +5349,30 @@ var thelegendmodproject = function(t, e, i) {
 				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass > legendmod.playerMass * 1.25){
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
-					if (distancePlayerCell < this.cells[node].size+960) { //760 more
+					if (distancePlayerCell < this.cells[node].size+960) { //760 
 					targetPlayerCell = PlayerCell;
 					console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
 					if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetPlayerCell.y-legendmod.playerY>0){target.y=-10000;}else{target.y=10000;}								
 					}
 				}
+				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass < legendmod.playerMass * 1.35){
+					let PlayerCell = this.cells[node];
+					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
+					if (distancePlayerCell < this.cells[node].size+600) { //760 
+					targetPlayerCell = PlayerCell;
+					console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up					
+						target = this.cells[node];	
+						doSplit=true;
+					}
+				}				
                 });
-				if (target!= undefined){ //not needed
+				if (target != undefined){ //not needed
                 this.sendPosition(target);
 				}
+				if (doSplit == true){ //not needed
+                this.sendAction(17);
+				}				
             },
             'sendSpectate': function() {
                 this.sendAction(1);
