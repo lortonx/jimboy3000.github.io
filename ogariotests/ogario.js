@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.700 MEGA TEST
+// v1.719 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -355,7 +355,8 @@ var thelegendmodproject = function(t, e, i) {
                     'hk-switchServerMode': 'Przełącz serwer [publiczny/prywatny]',
                     'hk-showTargeting': 'Pokaż/ukryj panel namierzania',
                     'hk-voiceChat': 'Głos do tekstu',
-					'hk-GhostCellsInfo': ' Show ghost cells information', 
+					'hk-GhostCellsInfo': 'Show ghost cells information', 
+					'hk-Autoplay': 'Auto Play',					
                     'hk-setTargeting': 'Włącz/wyłącz namierzanie (śledzenie)',
                     'hk-cancelTargeting': 'Zatrzymaj namierzanie',
                     'hk-changeTarget': 'Zmień cel',
@@ -730,6 +731,7 @@ var thelegendmodproject = function(t, e, i) {
                     'hk-showTargeting': 'Show/hide targeting panel',
                     'hk-voiceChat': 'Voice to text',
 					'hk-GhostCellsInfo': ' Show ghost cells information', 
+					'hk-Autoplay': 'Auto Play',	
                     'hk-setTargeting': 'Start/stop targeting (following)',
                     'hk-cancelTargeting': 'Cancel targeting',
                     'hk-changeTarget': 'Change target',
@@ -2218,7 +2220,15 @@ var thelegendmodproject = function(t, e, i) {
 				v['showGhostCells'] = false;					
 				}
 				
-            },			
+            },		
+            'setAutoPlay': function() {
+                if ( window.autoPlay == false){
+			    window.autoPlay = true;
+				}
+				else{
+			    window.autoPlay = false;				
+				}				
+            },				
             'setShowSplitInd': function() {
                 this['showSplitInd'] = !this['showSplitInd'], 
 				v['splitRange'] = this['showSplitInd'], 
@@ -7267,6 +7277,15 @@ var thelegendmodproject = function(t, e, i) {
                     'defaultKey': 'K',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.setShowGhostCellsInfo();
+                    },
+                    'keyUp': null,
+                    'type': 'special'
+                },	
+                'hk-Autoplay': {
+                    'label': h['hk-Autoplay'],
+                    'defaultKey': 'J',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer.setAutoPlay();
                     },
                     'keyUp': null,
                     'type': 'special'
