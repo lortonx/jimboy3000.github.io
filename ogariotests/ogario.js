@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.749 MEGA TEST
+// v1.750 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5435,7 +5435,6 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 } else {
 					//if (typeof cell != "undefined") { //when used, autoplay not working as expected
-					try {
 					if (Object.keys(target2).length==0){
                     var t = cell.x;
                     var e = cell.y;
@@ -5443,11 +5442,7 @@ var thelegendmodproject = function(t, e, i) {
 					else{
                     var t = target2.x;
                     var e = target2.y;						
-					}
-					}
-					catch(error) {
-					//console.error(error);
-					}
+					}			
 					//}
                 }
 
@@ -5815,7 +5810,7 @@ var thelegendmodproject = function(t, e, i) {
                     break;
                   case 62:
                     console.log("[Legend mod Express] 102 Game over");
-					$('#pause-hud').text(h.pause);
+					$('#pause-hud').text("PAUSE!");
                     break;
                   default:
                     console.log("[Legend mod Express] 102 Unknown", obj, previousState);
