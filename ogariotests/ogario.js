@@ -2231,7 +2231,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (legendmod.pause){ogarminimapdrawer && ogarminimapdrawer.setPause()};
                 if ( window.autoPlay == false){
 			    window.autoPlay = true;
-				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.03");
+				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.04");
 				$('#pause-hud').show();
 				}
 				else{
@@ -5379,23 +5379,21 @@ var thelegendmodproject = function(t, e, i) {
 					}
 				}
 				else if (distancePlayerCell < this.cells[node].size+600) {
-				if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 16)){
+				if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].mass * 2.7 < this.playerMass && this.playerCells.length==1 && !(this.cells[node].mass * 10 < this.playerMass )){
 					 //760 
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
-					if (this.playerCells.length==1){
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);	
-						if (this.cells[node].mass!=0 && this.cells[node].mass!="0" && this.playerCells.length==1){ //2nd time to check
+						if (this.cells[node].mass!=0 && this.cells[node].mass!="0" ){ //2nd time to check
 						doSplit=true;
 						}
 					}
-					}
 			
-				else if (this.cells[node].mass<50 && this.cells[node].mass < this.playerMass * 1.4 && !(this.cells[node].mass < this.playerMass * 10)){
+				else if (this.cells[node].mass<50 && this.cells[node].mass * 1.4 < this.playerMass && !(this.cells[node].mass * 10 < this.playerMass )){
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
