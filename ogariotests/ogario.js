@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.762 MEGA TEST
+// v1.763 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5363,7 +5363,7 @@ var thelegendmodproject = function(t, e, i) {
 					targetPlayerCell = PlayerCell;
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass:+ " this.cells[node].mass " +) is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
 					if (targetPlayerCell.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}							
 					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	
@@ -5376,7 +5376,7 @@ var thelegendmodproject = function(t, e, i) {
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass:+ " this.cells[node].mass " +) is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
 					if (this.playerCells.length==1){
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
@@ -5395,7 +5395,7 @@ var thelegendmodproject = function(t, e, i) {
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass:+ " this.cells[node].mass " +) is close, AI follows... X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close, AI follows... X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
 					//if (this.playerCells.length==1){
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
