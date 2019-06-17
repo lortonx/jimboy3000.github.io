@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.773 MEGA TEST
+// v1.774 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5348,6 +5348,7 @@ var thelegendmodproject = function(t, e, i) {
                     let PlayerCell = this.cells[node];
                     let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);		
 					
+					if (this.cells[node].nick != this.playerNick){
 					if (distancePlayerCell < 200 && this.playerMass >125) {
 					if (this.cells[node].isVirus){                    
 					targetVirus = PlayerCell;
@@ -5361,7 +5362,7 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				//this.cells[0].isPlayerCell is our cell
 				else if (distancePlayerCell < this.cells[node].size+960) {
-				if (this.cells[node].nick != this.playerNick && this.cells[node].mass > this.playerMass * 1.25){
+				if (this.cells[node].mass > this.playerMass * 1.25){
 					 //760 
 					targetPlayerCell = PlayerCell;
 					if (window.BiggerCellFlag == true){
@@ -5378,7 +5379,7 @@ var thelegendmodproject = function(t, e, i) {
 					}
 				}
 				else if (distancePlayerCell < this.cells[node].size+600) {
-				if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
+				if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 16)){
 					 //760 
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
@@ -5394,7 +5395,7 @@ var thelegendmodproject = function(t, e, i) {
 					}
 					}
 			
-				else if (this.cells[node].mass<50 && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 1.4 && !(this.cells[node].mass < this.playerMass * 10)){
+				else if (this.cells[node].mass<50 && this.cells[node].mass < this.playerMass * 1.4 && !(this.cells[node].mass < this.playerMass * 10)){
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
@@ -5403,6 +5404,7 @@ var thelegendmodproject = function(t, e, i) {
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);					
 				}	
+				}
 				}				
                 });
 				if (target != undefined){ //not needed
