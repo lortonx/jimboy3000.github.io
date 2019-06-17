@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.789 MEGA TEST
+// v1.790 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5352,11 +5352,14 @@ var thelegendmodproject = function(t, e, i) {
 					if (this.cells[node].nick != this.playerNick){
 					//remember cells
 					
-					
+						try{
 						window.DistanceX[this.cells[node].id] = targetVirus.x - this.playerX;
 						window.DistanceY[this.cells[node].id] = targetVirus.x - this.playerX;
-						
-						
+						}
+						catch(err) {
+						//document.getElementById("demo").innerHTML = err.message;
+						}
+						finally{
 					if (distancePlayerCell < 130 + this.cells[node].size && this.playerMass >125 && this.cells[node].isVirus) {					                   
 					targetVirus = PlayerCell;
 					if (window.VirusFlag == true){						
@@ -5425,7 +5428,7 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				}
 					}
-									
+				}				
                 });
 				if (target != undefined){ //not needed
                 this.sendPosition(target, target2);
