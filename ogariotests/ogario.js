@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.785 MEGA TEST
+// v1.786 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -33,6 +33,7 @@ function Video(src, append) {
 $("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 */
+window.cachedcells = [];
 window.autoteammatenicks = [];
 window.targetFood = null;
 window.autoPlay = false;
@@ -5333,10 +5334,10 @@ var thelegendmodproject = function(t, e, i) {
 				let bestDistVirus;
 				let doSplit = false;
 				let doFeed = false;
-				
+				window.cachedcells = [];
 				
                 Object.keys(this.food).forEach(node => {
-					if (this.food[node].isFood){ //not needed
+					if (this.food[node].isFood){ //not needed					
                     let cell = this.food[node];
                     let distance = this.calcDist(cell.x, cell.y);
                     if (distance < bestDist) {
@@ -5346,10 +5347,16 @@ var thelegendmodproject = function(t, e, i) {
 					} //
                 });
                        		
-                Object.keys(this.cells).forEach(node => {
+                Object.keys(this.cells).forEach(node => {					
                     let PlayerCell = this.cells[node];
                     let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);		
 					if (this.cells[node].nick != this.playerNick){
+					//remember cells
+					
+					if (!window.cachedcells[node].id.equals(this.cells[node].id)){
+						window.cachedcells[node] = this.cells[node];
+					}	
+						
 					if (distancePlayerCell < 130 + this.cells[node].size && this.playerMass >125 && this.cells[node].isVirus) {					                   
 					targetVirus = PlayerCell;
 					if (window.VirusFlag == true){						
