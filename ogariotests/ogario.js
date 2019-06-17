@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.772 MEGA TEST
+// v1.773 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5348,8 +5348,8 @@ var thelegendmodproject = function(t, e, i) {
                     let PlayerCell = this.cells[node];
                     let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);		
 					
-					if (this.cells[node].isVirus){
-                    if (distancePlayerCell < 200 && this.playerMass >125) {
+					if (distancePlayerCell < 200 && this.playerMass >125) {
+					if (this.cells[node].isVirus){                    
 					targetVirus = PlayerCell;
 					if (window.VirusFlag == true){						
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
@@ -5360,8 +5360,9 @@ var thelegendmodproject = function(t, e, i) {
                     }
 				}
 				//this.cells[0].isPlayerCell is our cell
-				else if (this.cells[node].nick != this.playerNick && this.cells[node].mass > this.playerMass * 1.25){
-					if (distancePlayerCell < this.cells[node].size+960) { //760 
+				else if (distancePlayerCell < this.cells[node].size+960) {
+				if (this.cells[node].nick != this.playerNick && this.cells[node].mass > this.playerMass * 1.25){
+					 //760 
 					targetPlayerCell = PlayerCell;
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
@@ -5376,8 +5377,9 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.y>legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }					
 					}
 				}
-				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
-					if (distancePlayerCell < this.cells[node].size+600) { //760 
+				else if (distancePlayerCell < this.cells[node].size+600) {
+				if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
+					 //760 
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
@@ -5391,17 +5393,16 @@ var thelegendmodproject = function(t, e, i) {
 						}
 					}
 					}
-				}	
+			
 				else if (this.cells[node].mass<50 && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 1.4 && !(this.cells[node].mass < this.playerMass * 10)){
-					if (distancePlayerCell < this.cells[node].size+600) { //760 
 					targetPlayerCell = PlayerCell;
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close, AI follows... X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
-					console.log("Target mass: " + this.cells[node].mass);
-					}
+					console.log("Target mass: " + this.cells[node].mass);					
+				}	
 				}				
                 });
 				if (target != undefined){ //not needed
