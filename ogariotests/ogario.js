@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.769 MEGA TEST
+// v1.770 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5372,8 +5372,8 @@ var thelegendmodproject = function(t, e, i) {
 					//Avoiding corners
 					if (targetPlayerCell.x<legendmod.mapMinX+1520){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding corners"); }
 					if (targetPlayerCell.y<legendmod.mapMinY+1520){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding corners"); }
-					if (targetPlayerCell.x<legendmod.mapMaxX-1520){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding corners"); }
-					if (targetPlayerCell.y<legendmod.mapMaxY-1520){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding corners"); }					
+					if (targetPlayerCell.x>legendmod.mapMaxX-1520){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding corners"); }
+					if (targetPlayerCell.y>legendmod.mapMaxY-1520){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding corners"); }					
 					}
 				}
 				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
