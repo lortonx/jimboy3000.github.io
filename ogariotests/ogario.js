@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.786 MEGA TEST
+// v1.789 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -33,7 +33,6 @@ function Video(src, append) {
 $("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
 $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 */
-window.cachedcells = [];
 window.autoteammatenicks = [];
 window.targetFood = null;
 window.autoPlay = false;
@@ -5334,7 +5333,7 @@ var thelegendmodproject = function(t, e, i) {
 				let bestDistVirus;
 				let doSplit = false;
 				let doFeed = false;
-				window.cachedcells = [];
+				window.DistanceX = [];window.DistanceY = [];
 				
                 Object.keys(this.food).forEach(node => {
 					if (this.food[node].isFood){ //not needed					
@@ -5351,7 +5350,13 @@ var thelegendmodproject = function(t, e, i) {
                     let PlayerCell = this.cells[node];
                     let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);		
 					if (this.cells[node].nick != this.playerNick){
+					//remember cells
 					
+					
+						window.DistanceX[this.cells[node].id] = targetVirus.x - this.playerX;
+						window.DistanceY[this.cells[node].id] = targetVirus.x - this.playerX;
+						
+						
 					if (distancePlayerCell < 130 + this.cells[node].size && this.playerMass >125 && this.cells[node].isVirus) {					                   
 					targetVirus = PlayerCell;
 					if (window.VirusFlag == true){						
