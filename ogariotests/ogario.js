@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.782 MEGA TEST
+// v1.783 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5361,10 +5361,10 @@ var thelegendmodproject = function(t, e, i) {
 				//this.cells[0].isPlayerCell is our cell
 				else if (distancePlayerCell < this.cells[node].size+960 && this.cells[node].mass > this.playerMass * 1.25) {
 					
-					if (distancePlayerCell + this.cells[node].size < bestDist2) {
-						bestDist2 = distancePlayerCell + this.cells[node].size;
+					if (distancePlayerCell - this.cells[node].size < bestDist2) {
+						bestDist2 = distancePlayerCell - this.cells[node].size;
 					}					
-					if (distancePlayerCell + this.cells[node].size <= bestDist2){ //watch the closer cells
+					if (distancePlayerCell - this.cells[node].size <= bestDist2){ //watch the closer cells
 					targetPlayerCell = PlayerCell;
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
