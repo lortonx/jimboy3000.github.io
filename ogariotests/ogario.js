@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.792 MEGA TEST
+// v1.793 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5361,7 +5361,12 @@ var thelegendmodproject = function(t, e, i) {
 						}
 						finally{
 					if (distancePlayerCell < 130 + PlayerCell.size && this.playerMass >125 && PlayerCell.isVirus) {					                   
-					
+					Object.keys(window.DistanceX).forEach(function(key) {
+						console.log(key, window.DistanceX[key]);
+					}
+					if(){
+						
+					}
 					if (window.VirusFlag == true){						
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>Virus</font> is close. X: " + parseInt(PlayerCell.x - this.playerX) + " , Y: " + parseInt(PlayerCell.y - this.playerY));
