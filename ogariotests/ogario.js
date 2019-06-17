@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.766 MEGA TEST
+// v1.767 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5368,8 +5368,13 @@ var thelegendmodproject = function(t, e, i) {
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='blue'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
-					if (targetPlayerCell.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}							
-					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	
+					if (targetPlayerCell.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
+					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
+					//Avoiding corners
+					if (targetPlayerCell.x<legendmod.mapMinX+1520){ target2.x=legendmod.mapMaxY }
+					if (targetPlayerCell.y<legendmod.mapMinY+1520){ target2.x=legendmod.mapMaxX }
+					if (targetPlayerCell.x<legendmod.mapMaxX-1520){ target2.x=legendmod.mapMinY }
+					if (targetPlayerCell.y<legendmod.mapMaxY-1520){ target2.x=legendmod.mapMinX }					
 					}
 				}
 				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
