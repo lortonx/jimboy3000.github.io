@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.763 MEGA TEST
+// v1.764 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5322,6 +5322,7 @@ var thelegendmodproject = function(t, e, i) {
             },
 
             'calcTarget': function () {
+				legendmod.zoomValue=0.3;
                 let target; 
 				target2 = {};
                 let bestDist = 10000;
@@ -5369,7 +5370,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	
 					}
 				}
-				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7){
+				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
 					if (distancePlayerCell < this.cells[node].size+600) { //760 
@@ -5382,13 +5383,13 @@ var thelegendmodproject = function(t, e, i) {
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);
 					//target2 = this.cells[node];	
-						if (this.cells[node].mass!=0 || this.cells[node].mass!="0"){
+						if (this.cells[node].mass!=0 || this.cells[node].mass!="0"){ //2nd time to check
 						doSplit=true;
 						}
 					}
 					}
 				}	
-				else if (this.cells[node].mass<50 && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 1.4){
+				else if (this.cells[node].mass<50 && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 1.4 && !(this.cells[node].mass < this.playerMass * 10)){
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
 					if (distancePlayerCell < this.cells[node].size+600) { //760 
