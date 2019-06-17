@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.780 MEGA TEST
+// v1.781 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5379,7 +5379,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.y>legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }	
 					}
 				}
-				else if (distancePlayerCell < this.cells[node].size+600 && this.cells[node].mass * 1.4 < this.playerMass) {
+				else if (distancePlayerCell < this.cells[node].size+480 && this.cells[node].mass * 1.4 < this.playerMass && this.playerMass>130) {
 					if (window.teammatenicks.includes(this.cells[node].name) && legendmod3.lastSentClanTag != ""){
 						$('#pause-hud').html("<font color='" + targetPlayerCell.color + "'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is teammate. X: " + parseInt(targetPlayerCell.x - this.playerX));
 					}
