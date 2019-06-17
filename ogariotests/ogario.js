@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.770 MEGA TEST
+// v1.772 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5370,10 +5370,10 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
 					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
 					//Avoiding corners
-					if (targetPlayerCell.x<legendmod.mapMinX+1520){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding corners"); }
-					if (targetPlayerCell.y<legendmod.mapMinY+1520){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding corners"); }
-					if (targetPlayerCell.x>legendmod.mapMaxX-1520){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding corners"); }
-					if (targetPlayerCell.y>legendmod.mapMaxY-1520){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding corners"); }					
+					if (targetPlayerCell.x<legendmod.mapMinX+760){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding cornersX- " + targetPlayerCell.x); }
+					if (targetPlayerCell.y<legendmod.mapMinY+760){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding cornersY- " + targetPlayerCell.y); }
+					if (targetPlayerCell.x>legendmod.mapMaxX-760){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding cornersX+ " + targetPlayerCell.x); }
+					if (targetPlayerCell.y>legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }					
 					}
 				}
 				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7 && !(this.cells[node].mass < this.playerMass * 10)){
@@ -5386,7 +5386,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (this.playerCells.length==1){
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);	
-						if (this.cells[node].mass!=0 || this.cells[node].mass!="0" && this.playerCells.length==1){ //2nd time to check
+						if (this.cells[node].mass!=0 && this.cells[node].mass!="0" && this.playerCells.length==1){ //2nd time to check
 						doSplit=true;
 						}
 					}
