@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.754 MEGA TEST
+// v1.755 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5809,7 +5809,7 @@ var thelegendmodproject = function(t, e, i) {
                     break;
                   case 62:
                     console.log("[Legend mod Express] 102 Game over");
-					$('#pause-hud').text("PAUSE!");
+					//$('#pause-hud').text("PAUSE!");
                     break;
                   default:
                     console.log("[Legend mod Express] 102 Unknown", obj, previousState);
