@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.750 MEGA TEST
+// v1.751 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5385,8 +5385,8 @@ var thelegendmodproject = function(t, e, i) {
 						$('#pause-hud').text(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					//console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
-					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
-					//target = this.cells[node];	
+					//target2.x = this.cells[node].x; target2.y = this.cells[node].y;
+					target2 = this.cells[node];	
 						doSplit=true;
 					}
 				}				
