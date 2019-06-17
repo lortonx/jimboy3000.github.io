@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.784 MEGA TEST
+// v1.785 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5336,7 +5336,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.x > legendmod.mapMaxX-760){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding cornersX+ " + targetPlayerCell.x); }
 					if (targetPlayerCell.y > legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }	
 					}				
-			}
+			},
             'autoCalcDist': function(x, y) {
                 return Math.round(Math.sqrt(Math.pow(this.playerX - x, 2) + Math.pow(this.playerY - y, 2)));
             },
