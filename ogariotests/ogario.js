@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.759 MEGA TEST
+// v1.760 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5386,7 +5386,9 @@ var thelegendmodproject = function(t, e, i) {
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);
 					//target2 = this.cells[node];	
+						if (this.cells[node].mass!=0){
 						doSplit=true;
+						}
 					}
 					}
 				}	
