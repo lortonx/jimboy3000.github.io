@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.791 MEGA TEST
+// v1.792 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5329,7 +5329,7 @@ var thelegendmodproject = function(t, e, i) {
 				target2 = {};
                 let bestDist = 10000;
 				let bestDist2 = 10000;
-				PlayerCell;
+				let PlayerCell;
 				let bestDistVirus;
 				let doSplit = false;
 				let doFeed = false;
