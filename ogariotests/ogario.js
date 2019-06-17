@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.783 MEGA TEST
+// v1.784 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5318,8 +5318,26 @@ var thelegendmodproject = function(t, e, i) {
 					this.sendMessage(e);
                 }
             },
-
-            'calcDist': function(x, y) {
+			'autoAvoidPlayers': function(){
+					if (distancePlayerCell - this.cells[node].size < bestDist2) {
+						bestDist2 = distancePlayerCell - this.cells[node].size;
+					}					
+					if (distancePlayerCell - this.cells[node].size <= bestDist2){ //watch the closer cells
+					targetPlayerCell = PlayerCell;
+					if (window.BiggerCellFlag == true){
+						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
+						$('#pause-hud').html("<font color='" + targetPlayerCell.color + "'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+					}
+					if (targetPlayerCell.x - this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
+					if (targetPlayerCell.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
+					//Avoiding corners
+					if (targetPlayerCell.x < legendmod.mapMinX+760){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding cornersX- " + targetPlayerCell.x); }
+					if (targetPlayerCell.y < legendmod.mapMinY+760){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding cornersY- " + targetPlayerCell.y); }
+					if (targetPlayerCell.x > legendmod.mapMaxX-760){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding cornersX+ " + targetPlayerCell.x); }
+					if (targetPlayerCell.y > legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }	
+					}				
+			}
+            'autoCalcDist': function(x, y) {
                 return Math.round(Math.sqrt(Math.pow(this.playerX - x, 2) + Math.pow(this.playerY - y, 2)));
             },
 
@@ -5337,7 +5355,7 @@ var thelegendmodproject = function(t, e, i) {
                 Object.keys(this.food).forEach(node => {
 					if (this.food[node].isFood){ //not needed
                     let cell = this.food[node];
-                    let distance = this.calcDist(cell.x, cell.y);
+                    let distance = this.autoCalcDist(cell.x, cell.y);
                     if (distance < bestDist) {
                     target = cell;
                     bestDist = distance;
@@ -5347,7 +5365,7 @@ var thelegendmodproject = function(t, e, i) {
                        		
                 Object.keys(this.cells).forEach(node => {
                     let PlayerCell = this.cells[node];
-                    let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);		
+                    let distancePlayerCell = this.autoCalcDist(PlayerCell.x, PlayerCell.y);		
 					if (this.cells[node].nick != this.playerNick){
 					if (distancePlayerCell < 130 + this.cells[node].size && this.playerMass >125 && this.cells[node].isVirus) {					                   
 					targetVirus = PlayerCell;
@@ -5355,29 +5373,15 @@ var thelegendmodproject = function(t, e, i) {
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='" + targetVirus.color + "'>Virus</font> is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY));
 					}
-					if (targetVirus.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}
-					if (targetVirus.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	                    
+					if (targetVirus.x - this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}
+					if (targetVirus.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	                    
 				}
 				//this.cells[0].isPlayerCell is our cell
-				else if (distancePlayerCell < this.cells[node].size+960 && this.cells[node].mass > this.playerMass * 1.25) {
-					
-					if (distancePlayerCell - this.cells[node].size < bestDist2) {
-						bestDist2 = distancePlayerCell - this.cells[node].size;
-					}					
-					if (distancePlayerCell - this.cells[node].size <= bestDist2){ //watch the closer cells
-					targetPlayerCell = PlayerCell;
-					if (window.BiggerCellFlag == true){
-						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='" + targetPlayerCell.color + "'>" + this.cells[node].nick + "</font> (mass: " + this.cells[node].mass + ") is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
-					}
-					if (targetPlayerCell.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
-					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
-					//Avoiding corners
-					if (targetPlayerCell.x<legendmod.mapMinX+760){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding cornersX- " + targetPlayerCell.x); }
-					if (targetPlayerCell.y<legendmod.mapMinY+760){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding cornersY- " + targetPlayerCell.y); }
-					if (targetPlayerCell.x>legendmod.mapMaxX-760){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding cornersX+ " + targetPlayerCell.x); }
-					if (targetPlayerCell.y>legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }	
-					}
+				else if (distancePlayerCell < this.cells[node].size+960 && this.cells[node].mass > this.playerMass * 2.5) {		
+				this.autoAvoidPlayers();
+				}				
+				else if (distancePlayerCell < this.cells[node].size+480 && this.cells[node].mass > this.playerMass * 1.25) {					
+				this.autoAvoidPlayers();
 				}
 				else if (distancePlayerCell < this.cells[node].size+480 && this.cells[node].mass * 1.4 < this.playerMass && this.playerMass>130) {
 					if (window.teammatenicks.includes(this.cells[node].name) && legendmod3.lastSentClanTag != ""){
