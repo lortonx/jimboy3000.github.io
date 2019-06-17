@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.765 MEGA TEST
+// v1.766 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2228,9 +2228,10 @@ var thelegendmodproject = function(t, e, i) {
 				
             },		
             'setAutoPlay': function() {
+				if (legendmod.pause){ogarminimapdrawer && ogarminimapdrawer.setPause()};
                 if ( window.autoPlay == false){
 			    window.autoPlay = true;
-				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.02");
+				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.03");
 				$('#pause-hud').show();
 				}
 				else{
@@ -2362,7 +2363,8 @@ var thelegendmodproject = function(t, e, i) {
                 t.remove();
             },
             'setPause': function() {
-                this.pause = !this.pause, i.pause = this.pause, this.pause ? (i['resetTargetPosition'](), $('#pause-hud').text(h.pause), $('#pause-hud').show()) : $('#pause-hud').hide();
+				if (window.autoPlay){ogarminimapdrawer && ogarminimapdrawer.setAutoPlay()};
+                this.pause = !this.pause, i.pause = this.pause, this.pause ? (i['resetTargetPosition'](), $('#pause-hud').text(h.pause), $('#pause-hud').show()) : $('#pause-hud').hide();				
             },
             'setCenteredLb': function() {
                 v['centeredLb'] ? $('#leaderboard-hud').addClass('hud-text-center') : $('#leaderboard-hud').removeClass('hud-text-center');
