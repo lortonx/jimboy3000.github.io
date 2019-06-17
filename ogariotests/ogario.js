@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.779 MEGA TEST
+// v1.780 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5348,9 +5348,6 @@ var thelegendmodproject = function(t, e, i) {
                 Object.keys(this.cells).forEach(node => {
                     let PlayerCell = this.cells[node];
                     let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);		
-					if (distancePlayerCell < bestDist2) {
-						bestDist2 = distancePlayerCell;
-						
 					if (this.cells[node].nick != this.playerNick){
 					if (distancePlayerCell < 200 && this.playerMass >125 && this.cells[node].isVirus) {					                   
 					targetVirus = PlayerCell;
@@ -5363,7 +5360,11 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				//this.cells[0].isPlayerCell is our cell
 				else if (distancePlayerCell < this.cells[node].size+960 && this.cells[node].mass > this.playerMass * 1.25) {
-					 //760 
+					
+					if (distancePlayerCell + this.cells[node].size < bestDist2) {
+						bestDist2 = distancePlayerCell + this.cells[node].size;
+					}					
+					if (distancePlayerCell + this.cells[node].size <= bestDist2){ //watch the closer cells
 					targetPlayerCell = PlayerCell;
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
@@ -5375,7 +5376,8 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.x<legendmod.mapMinX+760){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding cornersX- " + targetPlayerCell.x); }
 					if (targetPlayerCell.y<legendmod.mapMinY+760){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding cornersY- " + targetPlayerCell.y); }
 					if (targetPlayerCell.x>legendmod.mapMaxX-760){ target2.x=legendmod.mapMinY;$('#pause-hud').html("Avoiding cornersX+ " + targetPlayerCell.x); }
-					if (targetPlayerCell.y>legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }										
+					if (targetPlayerCell.y>legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + targetPlayerCell.x); }	
+					}
 				}
 				else if (distancePlayerCell < this.cells[node].size+600 && this.cells[node].mass * 1.4 < this.playerMass) {
 					if (window.teammatenicks.includes(this.cells[node].name) && legendmod3.lastSentClanTag != ""){
@@ -5408,7 +5410,7 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				}
 					}
-				}					
+									
                 });
 				if (target != undefined){ //not needed
                 this.sendPosition(target, target2);
