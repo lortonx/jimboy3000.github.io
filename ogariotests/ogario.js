@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.748 MEGA TEST
+// v1.749 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5435,6 +5435,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 } else {
 					//if (typeof cell != "undefined") { //when used, autoplay not working as expected
+					try {
 					if (Object.keys(target2).length==0){
                     var t = cell.x;
                     var e = cell.y;
@@ -5442,6 +5443,10 @@ var thelegendmodproject = function(t, e, i) {
 					else{
                     var t = target2.x;
                     var e = target2.y;						
+					}
+					}
+					catch(error) {
+					//console.error(error);
 					}
 					//}
                 }
@@ -6128,7 +6133,7 @@ var thelegendmodproject = function(t, e, i) {
                     i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts.removeCell();
                 }
                 this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer['onPlayerDeath'](), ogarminimapdrawer.showMenu(300));
-                if (window.autoPlay && legendmod.play) this.calcTarget();
+                if (window.autoPlay && legendmod.play) {this.calcTarget();}
             },
             'color2Hex': function(t) {
                 var e = t.toString(16);
