@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.752 MEGA TEST
+// v1.753 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5350,7 +5350,6 @@ var thelegendmodproject = function(t, e, i) {
 					if (window.VirusFlag == true){						
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
 						$('#pause-hud').text("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY));
-					//console.log("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY)); //x positive virus is right, y positive virus is up					
 					}
 					//if (targetVirus.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetVirus.x-legendmod.playerX>0){target2.x=-10000;}else{target2.x=10000;}
@@ -5367,7 +5366,6 @@ var thelegendmodproject = function(t, e, i) {
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
 						$('#pause-hud').text(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
-					//console.log(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
 					//if (targetPlayerCell.x-legendmod.playerX>0){target.x=-10000;}else{target.x=10000;}
 					if (targetPlayerCell.x-legendmod.playerX>0){target2.x=-10000;}else{target2.x=10000;}					
@@ -5375,8 +5373,8 @@ var thelegendmodproject = function(t, e, i) {
 					if (targetPlayerCell.y-legendmod.playerY>0){target2.y=-10000;}else{target2.y=10000;}	
 					}
 				}
-				else if (this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass < legendmod.playerMass * 2.7){
-					console.log("target mass: " + this.cells[node].mass);
+				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != legendmod.playerNick && this.cells[node].mass < legendmod.playerMass * 2.7){
+					
 					let PlayerCell = this.cells[node];
 					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
 					if (distancePlayerCell < this.cells[node].size+600) { //760 
@@ -5384,9 +5382,9 @@ var thelegendmodproject = function(t, e, i) {
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
 						$('#pause-hud').text(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
-					//console.log(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY)); //x positive PlayerCell is right, y positive PlayerCell is up										
 					}
 					//target2.x = this.cells[node].x; target2.y = this.cells[node].y;
+					console.log("Target mass: " + this.cells[node].mass);
 					target2 = this.cells[node];	
 						doSplit=true;
 					}
