@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.757 MEGA TEST
+// v1.758 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5388,6 +5388,23 @@ var thelegendmodproject = function(t, e, i) {
 					//target2 = this.cells[node];	
 						doSplit=true;
 					}
+					}
+				}	
+				else if (this.cells[node].mass<50 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 1.4){
+					let PlayerCell = this.cells[node];
+					let distancePlayerCell = this.calcDist(PlayerCell.x, PlayerCell.y);
+					if (distancePlayerCell < this.cells[node].size+600) { //760 
+					targetPlayerCell = PlayerCell;
+					if (window.SmallerCellFlag == true){
+						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
+						$('#pause-hud').text(this.cells[node].nick + " is close, AI follows... X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
+					}
+					//if (this.playerCells.length==1){
+					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
+					console.log("Target mass: " + this.cells[node].mass);
+					//target2 = this.cells[node];	
+						//doSplit=true;
+					//}
 					}
 				}				
                 });
