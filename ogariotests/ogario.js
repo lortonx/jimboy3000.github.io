@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.753 MEGA TEST
+// v1.754 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5383,9 +5383,9 @@ var thelegendmodproject = function(t, e, i) {
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
 						$('#pause-hud').text(this.cells[node].nick + " is close and will be eaten by split. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
-					//target2.x = this.cells[node].x; target2.y = this.cells[node].y;
+					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);
-					target2 = this.cells[node];	
+					//target2 = this.cells[node];	
 						doSplit=true;
 					}
 				}				
@@ -5396,7 +5396,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (doSplit == true && window.doSplitFlag == true){ 
 				doSplit = false;
 				window.doSplitFlag = false;
-				setTimeout(function() {window.doSplitFlag = true;}, 1000);
+				setTimeout(function() {window.doSplitFlag = true;}, 2000);
                 this.sendAction(17);
 				}				
             },
