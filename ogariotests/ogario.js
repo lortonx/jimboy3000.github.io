@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.760 MEGA TEST
+// v1.761 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5351,10 +5351,8 @@ var thelegendmodproject = function(t, e, i) {
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
 						$('#pause-hud').text("Virus is close. X: " + parseInt(targetVirus.x - this.playerX) + " , Y: " + parseInt(targetVirus.y - this.playerY));
 					}
-					//if (targetVirus.x-this.playerX>0){target.x=-10000;}else{target.x=10000;}
-					if (targetVirus.x-this.playerX>0){target2.x=-10000;}else{target2.x=10000;}
-					//if (targetVirus.y-this.playerY>0){target.y=-10000;}else{target.y=10000;}	
-					if (targetVirus.y-this.playerY>0){target2.y=-10000;}else{target2.y=10000;}	
+					if (targetVirus.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}
+					if (targetVirus.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	
                     }
 				}
 				//this.cells[0].isPlayerCell is our cell
@@ -5367,10 +5365,8 @@ var thelegendmodproject = function(t, e, i) {
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
 						$('#pause-hud').text(this.cells[node].nick + " is close. X: " + parseInt(targetPlayerCell.x - this.playerX) + " , Y: " + parseInt(targetPlayerCell.y - this.playerY));
 					}
-					//if (targetPlayerCell.x-this.playerX>0){target.x=-10000;}else{target.x=10000;}
-					if (targetPlayerCell.x-this.playerX>0){target2.x=-10000;}else{target2.x=10000;}					
-					//if (targetPlayerCell.y-this.playerY>0){target.y=-10000;}else{target.y=10000;}		
-					if (targetPlayerCell.y-this.playerY>0){target2.y=-10000;}else{target2.y=10000;}	
+					if (targetPlayerCell.x-this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}							
+					if (targetPlayerCell.y-this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	
 					}
 				}
 				else if (this.cells[node].mass!=0 && this.cells[node].nick != "" && this.cells[node].nick != this.playerNick && this.cells[node].mass < this.playerMass * 2.7){
@@ -5386,7 +5382,7 @@ var thelegendmodproject = function(t, e, i) {
 					target2.x = this.cells[node].x; target2.y = this.cells[node].y;
 					console.log("Target mass: " + this.cells[node].mass);
 					//target2 = this.cells[node];	
-						if (this.cells[node].mass!=0){
+						if (this.cells[node].mass!=0 || this.cells[node].mass!="0"){
 						doSplit=true;
 						}
 					}
