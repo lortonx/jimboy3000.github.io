@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.795 MEGA TEST
+// v1.796 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5324,7 +5324,8 @@ var thelegendmodproject = function(t, e, i) {
             },
 			
             'calcTarget': function () {
-				legendmod.zoomValue=0.3;
+				//legendmod.zoomValue=0.3;
+				v.virMassShots=false; v.noNames=false; v.autoHideNames=false; v.autoHideMass=false; v.hideMyName=false; v.hideTeammatesNames=false; v.showMass=true; v.hideEnemiesMass=false;
                 let target; 
 				target2 = {};
                 let bestDist = 10000;
@@ -5360,8 +5361,8 @@ var thelegendmodproject = function(t, e, i) {
 						//document.getElementById("demo").innerHTML = err.message;
 						}
 						finally{
-					if (distancePlayerCell < 130 + PlayerCell.size && this.playerMass >125 && PlayerCell.isVirus) {		
-					console.log(PlayerCell.mass, PlayerCell.size);
+					if ( distancePlayerCell < 130 + PlayerCell.size && this.playerMass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {		
+					//console.log(PlayerCell.mass, PlayerCell.size); //v.virMassShots=false-> 7, 100... 6, 105.9999999999999  .....    v.virMassShots=true->100,100... 112, 106 
 					//Object.keys(window.DistanceX).forEach(function(key) {
 						//console.log(key, window.DistanceX[key]);
 					//});
