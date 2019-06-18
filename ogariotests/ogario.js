@@ -5384,8 +5384,8 @@ var thelegendmodproject = function(t, e, i) {
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>Virus</font> is close. X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]));
 					}
-					if (PlayerCell.x - this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}
-					if (PlayerCell.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	                    
+					if (window.DistanceX[PlayerCell.id]>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}
+					if (window.DistanceY[PlayerCell.id]>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	                    
 				}
 				//this.cells[0].isPlayerCell is our cell
 				else if ((distancePlayerCell < PlayerCell.size + this.playerSize + 760 && PlayerCell.mass > biggercellmass * 2.5) || (distancePlayerCell < PlayerCell.size + this.playerSize + 95 && PlayerCell.mass > biggercellmass * 1.25)) {					
@@ -5398,8 +5398,8 @@ var thelegendmodproject = function(t, e, i) {
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
 						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close. X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]));
 					}
-					if (PlayerCell.x - this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
-					if (PlayerCell.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
+					if (window.DistanceX[PlayerCell.id]>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
+					if (window.DistanceY[PlayerCell.id]>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
 					//Avoiding corners
 					if (PlayerCell.x < legendmod.mapMinX+760){ target2.x=legendmod.mapMaxY;$('#pause-hud').html("Avoiding cornersX- " + PlayerCell.x); }
 					if (PlayerCell.y < legendmod.mapMinY+760){ target2.x=legendmod.mapMaxX;$('#pause-hud').html("Avoiding cornersY- " + PlayerCell.y); }
