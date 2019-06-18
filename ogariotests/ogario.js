@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.796 MEGA TEST
+// v1.797 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5325,7 +5325,7 @@ var thelegendmodproject = function(t, e, i) {
 			
             'calcTarget': function () {
 				//legendmod.zoomValue=0.3;
-				v.virMassShots=false; v.noNames=false; v.autoHideNames=false; v.autoHideMass=false; v.hideMyName=false; v.hideTeammatesNames=false; v.showMass=true; v.hideEnemiesMass=false;
+				v.virMassShots=true; v.noNames=false; v.autoHideNames=false; v.autoHideMass=false; v.hideMyName=false; v.hideTeammatesNames=false; v.showMass=true; v.hideEnemiesMass=false;
                 let target; 
 				target2 = {};
                 let bestDist = 10000;
