@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.798 MEGA TEST
+// v1.796 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5484,13 +5484,6 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 } else {
 					//if (typeof cell != "undefined") { //when used, autoplay not working as expected
-					try{
-						cell;
-					}
-					catch(e) {
-					// Handler-block
-					} 
-					else {
 					if (Object.keys(target2).length==0){
                     var t = cell.x;
                     var e = cell.y;
@@ -5498,11 +5491,7 @@ var thelegendmodproject = function(t, e, i) {
 					else{
                     var t = target2.x;
                     var e = target2.y;						
-					}	
-					}
-					finally {
-					// Final-block
-					}
+					}			
 					//}
                 }
 
