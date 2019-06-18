@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.803 MEGA TEST
+// v1.804 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5325,7 +5325,7 @@ var thelegendmodproject = function(t, e, i) {
 			
             'calcTarget': function () {
 				//legendmod.zoomValue=0.3;
-				v.virMassShots=true; v.noNames=false; v.autoHideNames=false; v.autoHideMass=false; v.hideMyName=false; v.hideTeammatesNames=false; v.showMass=true; v.hideEnemiesMass=false;
+				v.virMassShots=true; v.noNames=false; v.autoHideNames=false; v.autoHideMass=false; v.hideMyName=false; v.hideTeammatesNames=false; v.showMass=true; v.hideEnemiesMass=false; v.autoHideFood=false; autoHideFoodOnZoom=false;
                 let target; 
 				target2 = {};
                 let bestDist = 10000;
@@ -5407,7 +5407,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (PlayerCell.y > legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + PlayerCell.x); }	
 					}					
 				}				
-				else if (distancePlayerCell < PlayerCell.size + this.playerSize + 380 && PlayerCell.mass * 1.4 < biggercellmass && biggercellmass>130) {
+				else if (distancePlayerCell < PlayerCell.size + this.playerSize + 320 && PlayerCell.mass * 1.4 < biggercellmass && biggercellmass>130) {
 					if (window.teammatenicks.includes(PlayerCell.name) && legendmod3.lastSentClanTag != ""){
 						if (!window.autoteammatenicks.includes(PlayerCell.name)){
 							window.autoteammatenicks[PlayerCell.name]=true;
@@ -5420,7 +5420,7 @@ var thelegendmodproject = function(t, e, i) {
 						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is teammate. X: " + parseInt(PlayerCell.x - this.playerX));
 					}
 					else{
-				if (PlayerCell.mass!=0 && PlayerCell.nick != "" && PlayerCell.mass * 2.7 < biggercellmass && this.playerCells.length==1 && !(PlayerCell.mass * 10 < biggercellmass )){
+				if (PlayerCell.mass!=0 && PlayerCell.nick != "" && PlayerCell.mass * 2.8 < biggercellmass && this.playerCells.length==1 && !(PlayerCell.mass * 10 < biggercellmass && biggercellmass>260)){
 					 //760 
 					
 					if (window.SmallerCellFlag == true){
