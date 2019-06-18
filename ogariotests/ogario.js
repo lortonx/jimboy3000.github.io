@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.806 MEGA TEST
+// v1.807 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5365,7 +5365,7 @@ var thelegendmodproject = function(t, e, i) {
 					
 						try{
 						window.DistanceX[PlayerCell.id] = PlayerCell.x - this.playerX;
-						window.DistanceY[PlayerCell.id] = PlayerCell.x - this.playerX;
+						window.DistanceY[PlayerCell.id] = PlayerCell.y - this.playerY;
 						}
 						catch(err) {
 						//document.getElementById("demo").innerHTML = err.message;
