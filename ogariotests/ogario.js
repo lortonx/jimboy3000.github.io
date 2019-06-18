@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.802 MEGA TEST
+// v1.803 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5337,12 +5337,12 @@ var thelegendmodproject = function(t, e, i) {
 				window.DistanceX = [];window.DistanceY = [];
 				var biggercellmass=0;
 				var smallercellmass=25000;
-				for (var i=0;i<legendmod.playerCells.length;i++){
-					if (legendmod.playerCells[i].mass>biggercellmass){
-					biggercellmass=legendmod.playerCells[i].mass;
+				for (var i=0;i<this.playerCells.length;i++){
+					if (this.playerCells[i].mass>biggercellmass){
+					biggercellmass=this.playerCells[i].mass;
 					}
-					if (legendmod.playerCells[i].mass<smallercellmass){
-					smallercellmass=legendmod.playerCells[i].mass;
+					if (this.playerCells[i].mass<smallercellmass){
+					smallercellmass=this.playerCells[i].mass;
 					}					
 				}
 				
@@ -5371,7 +5371,7 @@ var thelegendmodproject = function(t, e, i) {
 						//document.getElementById("demo").innerHTML = err.message;
 						}
 						finally{
-					if ( distancePlayerCell < this.playerSize + (PlayerCell.size) && biggercellmass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {			
+					if ( distancePlayerCell < this.playerSize + (PlayerCell.size) && biggercellmass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus && this.playerCells.length != 16 ) {			
 					//if ( distancePlayerCell < this.playerSize + PlayerCell.size && biggercellmass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {		
 					//console.log(PlayerCell.mass, PlayerCell.size); //v.virMassShots=false-> 7, 100... 6, 105.9999999999999  .....    v.virMassShots=true->100,100... 112, 106 
 					//Object.keys(window.DistanceX).forEach(function(key) {
