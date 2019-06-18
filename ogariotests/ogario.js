@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.801 MEGA TEST
+// v1.802 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2231,7 +2231,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (legendmod.pause){ogarminimapdrawer && ogarminimapdrawer.setPause()};
                 if ( window.autoPlay == false){
 			    window.autoPlay = true;
-				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.05");
+				$('#pause-hud').text("AI (Emanuel & Jimboy3100) SkyNet v0.06");
 				$('#pause-hud').show();
 				}
 				else{
@@ -5335,6 +5335,16 @@ var thelegendmodproject = function(t, e, i) {
 				let doSplit = false;
 				let doFeed = false;
 				window.DistanceX = [];window.DistanceY = [];
+				var biggercellmass=0;
+				var smallercellmass=25000;
+				for (var i=0;i<legendmod.playerCells.length;i++){
+					if (legendmod.playerCells[i].mass>biggercellmass){
+					biggercellmass=legendmod.playerCells[i].mass;
+					}
+					if (legendmod.playerCells[i].mass<smallercellmass){
+					smallercellmass=legendmod.playerCells[i].mass;
+					}					
+				}
 				
                 Object.keys(this.food).forEach(node => {
 					if (this.food[node].isFood){ //not needed					
@@ -5361,8 +5371,8 @@ var thelegendmodproject = function(t, e, i) {
 						//document.getElementById("demo").innerHTML = err.message;
 						}
 						finally{
-					if ( distancePlayerCell < this.playerSize + (PlayerCell.size) / 2 && this.playerMass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {			
-					//if ( distancePlayerCell < this.playerSize + PlayerCell.size && this.playerMass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {		
+					if ( distancePlayerCell < this.playerSize + (PlayerCell.size) && biggercellmass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {			
+					//if ( distancePlayerCell < this.playerSize + PlayerCell.size && biggercellmass > 125 + 1.25 * (( 7 - PlayerCell.mass ) * 12 ) && PlayerCell.isVirus ) {		
 					//console.log(PlayerCell.mass, PlayerCell.size); //v.virMassShots=false-> 7, 100... 6, 105.9999999999999  .....    v.virMassShots=true->100,100... 112, 106 
 					//Object.keys(window.DistanceX).forEach(function(key) {
 						//console.log(key, window.DistanceX[key]);
@@ -5378,7 +5388,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (PlayerCell.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	                    
 				}
 				//this.cells[0].isPlayerCell is our cell
-				else if ((distancePlayerCell < PlayerCell.size + this.playerSize + 760 && PlayerCell.mass > this.playerMass * 2.5) || (distancePlayerCell < PlayerCell.size + this.playerSize + 95 && PlayerCell.mass > this.playerMass * 1.25)) {					
+				else if ((distancePlayerCell < PlayerCell.size + this.playerSize + 760 && PlayerCell.mass > biggercellmass * 2.5) || (distancePlayerCell < PlayerCell.size + this.playerSize + 95 && PlayerCell.mass > biggercellmass * 1.25)) {					
 					if (distancePlayerCell - PlayerCell.size < bestDist2) {
 						bestDist2 = distancePlayerCell - PlayerCell.size;
 					}					
@@ -5397,7 +5407,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (PlayerCell.y > legendmod.mapMaxY-760){ target2.x=legendmod.mapMinX;$('#pause-hud').html("Avoiding cornersY+ " + PlayerCell.x); }	
 					}					
 				}				
-				else if (distancePlayerCell < PlayerCell.size + this.playerSize + 380 && PlayerCell.mass * 1.4 < this.playerMass && this.playerMass>130) {
+				else if (distancePlayerCell < PlayerCell.size + this.playerSize + 380 && PlayerCell.mass * 1.4 < biggercellmass && biggercellmass>130) {
 					if (window.teammatenicks.includes(PlayerCell.name) && legendmod3.lastSentClanTag != ""){
 						if (!window.autoteammatenicks.includes(PlayerCell.name)){
 							window.autoteammatenicks[PlayerCell.name]=true;
@@ -5410,7 +5420,7 @@ var thelegendmodproject = function(t, e, i) {
 						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is teammate. X: " + parseInt(PlayerCell.x - this.playerX));
 					}
 					else{
-				if (PlayerCell.mass!=0 && PlayerCell.nick != "" && PlayerCell.mass * 2.7 < this.playerMass && this.playerCells.length==1 && !(PlayerCell.mass * 10 < this.playerMass )){
+				if (PlayerCell.mass!=0 && PlayerCell.nick != "" && PlayerCell.mass * 2.7 < biggercellmass && this.playerCells.length==1 && !(PlayerCell.mass * 10 < biggercellmass )){
 					 //760 
 					
 					if (window.SmallerCellFlag == true){
@@ -5424,7 +5434,7 @@ var thelegendmodproject = function(t, e, i) {
 						}
 					}
 			
-				else if (PlayerCell.mass * 1.4 < this.playerMass && !(PlayerCell.mass * 10 < this.playerMass )){
+				else if (PlayerCell.mass * 1.4 < biggercellmass && !(PlayerCell.mass * 10 < biggercellmass )){
 					
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
