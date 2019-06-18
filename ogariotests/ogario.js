@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.804 MEGA TEST
+// v1.805 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5382,7 +5382,7 @@ var thelegendmodproject = function(t, e, i) {
 					//}
 					if (window.VirusFlag == true){						
 						window.VirusFlag = false; setTimeout(function() {window.VirusFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>Virus</font> is close. X: " + parseInt(PlayerCell.x - this.playerX) + " , Y: " + parseInt(PlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>Virus</font> is close. X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]));
 					}
 					if (PlayerCell.x - this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}
 					if (PlayerCell.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}	                    
@@ -5396,7 +5396,7 @@ var thelegendmodproject = function(t, e, i) {
 					
 					if (window.BiggerCellFlag == true){
 						window.BiggerCellFlag = false; setTimeout(function() {window.BiggerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close. X: " + parseInt(PlayerCell.x - this.playerX) + " , Y: " + parseInt(PlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close. X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]);
 					}
 					if (PlayerCell.x - this.playerX>0){target2.x=legendmod.mapMinX;}else{target2.x=legendmod.mapMaxX;}						
 					if (PlayerCell.y - this.playerY>0){target2.y=legendmod.mapMinY;}else{target2.y=legendmod.mapMaxY;}		
@@ -5417,7 +5417,7 @@ var thelegendmodproject = function(t, e, i) {
 						doFeed=true;
 						}							
 						}
-						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is teammate. X: " + parseInt(PlayerCell.x - this.playerX));
+						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is teammate. X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]);
 					}
 					else{
 				if (PlayerCell.mass!=0 && PlayerCell.nick != "" && PlayerCell.mass * 2.8 < biggercellmass && this.playerCells.length==1 && !(PlayerCell.mass * 10 < biggercellmass && biggercellmass>260)){
@@ -5425,7 +5425,7 @@ var thelegendmodproject = function(t, e, i) {
 					
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close and will be eaten by split. X: " + parseInt(PlayerCell.x - this.playerX) + " , Y: " + parseInt(PlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close and will be eaten by split. X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]));
 					}
 					target2.x = PlayerCell.x; target2.y = PlayerCell.y;
 					console.log("Target mass: " + PlayerCell.mass);	
@@ -5438,7 +5438,7 @@ var thelegendmodproject = function(t, e, i) {
 					
 					if (window.SmallerCellFlag == true){
 						window.SmallerCellFlag = false; setTimeout(function() {window.SmallerCellFlag = true;}, 1000);
-						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close, AI follows... X: " + parseInt(PlayerCell.x - this.playerX) + " , Y: " + parseInt(PlayerCell.y - this.playerY));
+						$('#pause-hud').html("<font color='" + PlayerCell.color + "'>" + PlayerCell.nick + "</font> (mass: " + PlayerCell.mass + ") is close, AI follows... X: " + parseInt(window.DistanceX[PlayerCell.id]) + " , Y: " + parseInt(window.DistanceY[PlayerCell.id]));
 					}
 					target2.x = PlayerCell.x; target2.y = PlayerCell.y;
 					console.log("Target mass: " + PlayerCell.mass);					
