@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.808 MEGA TEST
+// v1.809 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5334,7 +5334,7 @@ var thelegendmodproject = function(t, e, i) {
 				let bestDistVirus;
 				let doSplit = false;
 				let doFeed = false;
-				window.DistanceX = [];window.DistanceY = [];window.FlagDangerCells= [];
+				window.DistanceX = [];window.DistanceY = [];window.DangerDistanceX = [];window.DangerDistanceY = [];window.FlagDangerCells= []; 				
 				var biggercellmass=0;
 				var smallercellmass=25000;
 				for (var i=0;i<this.playerCells.length;i++){
