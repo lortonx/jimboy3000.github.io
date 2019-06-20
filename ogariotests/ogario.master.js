@@ -1,4 +1,4 @@
-//v8
+//v9
 //legendmaster(window);
 //function legendmaster() {
     function login() {
@@ -461,6 +461,9 @@
         },
         recaptchaRequested: function() {
             requestCaptcha(true);
+			setTimeout(function() {
+			$(".recaptcha-checkbox-border").click();
+			}, 200);
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
             if (core) {
