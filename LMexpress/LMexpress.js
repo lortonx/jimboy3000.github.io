@@ -124,7 +124,7 @@ var searchSip = getParameterByName("sip", url);
 var privateSrv = getParameterByName("ip", url);
 var clanpass = getParameterByName("pass", url);
 var searchedplayer = getParameterByName("player", url);
-var autoplayplayer = getParameterByName("autoplay", url);
+var autoplayplayer = getParameterByName("autoplayer", url);
 var realmode2 = "";
 var mode=""; //just in case
 var token = "";
@@ -7438,7 +7438,7 @@ $('.logEntry').click();
 }
 }, 1000);
 		}
-		if (autoplayplayer != null) {
+		if (autoplayplayer != "yes") {
 			autoplayplaying();
 			window.autoPlay=true;
 		}
