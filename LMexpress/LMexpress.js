@@ -7438,7 +7438,7 @@ $('.logEntry').click();
 }
 }, 1000);
 		}
-		if (autoplayplayer != "yes") {
+		if (autoplayplayer == "yes") {
 			autoplayplaying();
 			window.autoPlay=true;
 		}
