@@ -7440,6 +7440,7 @@ $('.logEntry').click();
 		}
 		if (autoplayplayer != null) {
 			autoplayplaying();
+			calcTarget();
 		}
 			}, 1000);
 }	
