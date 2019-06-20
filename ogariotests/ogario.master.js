@@ -1,4 +1,4 @@
-//v7
+//v8
 //legendmaster(window);
 //function legendmaster() {
     function login() {
@@ -464,6 +464,7 @@
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
             if (core) {
+				console.log("RecaptchaResponse mmCoreSplitViewBlock: " + mmCoreSplitViewBlock);
                 core.recaptchaResponse(mmCoreSplitViewBlock);
             }
         },
