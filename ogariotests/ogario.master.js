@@ -1,6 +1,6 @@
-//v6
-legendmaster(window);
-function legendmaster() {
+//v7
+//legendmaster(window);
+//function legendmaster() {
     function login() {
         if (l) {
             getStorage();
@@ -613,4 +613,4 @@ function legendmaster() {
         getStorage();
         setup();
     };
-};
+//};
