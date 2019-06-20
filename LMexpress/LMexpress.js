@@ -2,7 +2,7 @@
  * Legend express v0.047 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "46"; // the version 1.1-> 1.11
+var semimodVersion = "47"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -124,6 +124,7 @@ var searchSip = getParameterByName("sip", url);
 var privateSrv = getParameterByName("ip", url);
 var clanpass = getParameterByName("pass", url);
 var searchedplayer = getParameterByName("player", url);
+var autoplayplayer = getParameterByName("autoplay", url);
 var realmode2 = "";
 var mode=""; //just in case
 var token = "";
@@ -7437,9 +7438,42 @@ $('.logEntry').click();
 }
 }, 1000);
 		}
+		if (autoplayplayer != null) {
+			autoplayplaying();
+		}
 			}, 1000);
 }	
 
+function autoplayplaying(){
+$("#nick").val("LM Autoplay");
+
+window.legendmod5.customSkins=false;
+window.legendmod5.videoSkins=false;
+window.legendmod5.jellyPhisycs=false;
+window.legendmod5.rainbowFood=false;
+window.legendmod5.virusGlow=false;
+window.legendmod5.borderGlow=false;
+window.legendmod5.showBgSectors=false;
+window.legendmod5.showMapBorders=false;
+window.legendmod5.showMiniMapGhostCells=false;
+window.legendmod5.showExtraMiniMapGuides=false;
+window.legendmod5.oppColors=false;
+window.legendmod5.oppRings=false;
+window.legendmod5.virColors=false;
+window.legendmod5.splitRange=false;
+window.legendmod5.virusesRange=false;
+window.legendmod5.teammatesInd=false;
+window.legendmod5.showGhostCells=false;
+window.legendmod5.showGhostCellsInfo=false;
+window.legendmod5.top5skins=false;
+window.legendmod5.showChatImages=false;
+window.legendmod5.showChatVideos=false;
+window.legendmod5.chatSounds=false;
+window.legendmod5.spawnspecialeffects=false;
+
+window.legendmod5.autoResp=true;
+	$(".btn.btn-play-guest.btn-success.btn-needs-server").click();
+}
 function joinSERVERfindinfo(){
 	$('#log').html('');
 	var searchedtoken;	
