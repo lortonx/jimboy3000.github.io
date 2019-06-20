@@ -7440,7 +7440,7 @@ $('.logEntry').click();
 		}
 		if (autoplayplayer != null) {
 			autoplayplaying();
-			calcTarget();
+			window.autoPlay=true;
 		}
 			}, 1000);
 }	
