@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.818 MEGA TEST
+// v1.819 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4806,21 +4806,23 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.massCanvas && !(this.size <= 40)) {
                         var massCanvas = this.massCanvas;
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
-                        if (this.redrawMass) {
-                            massCanvas.setTxt(this.massTxt);
-                            this.lastMass = this.mass;
+ 							//
 							this.historyMass.unshift(this.mass);
-							if (this.historyMass.length > 20){
+							if (this.historyMass.length > 500){
 								this.historyMass.pop();
 							}
 							this.historyX.unshift(this.x);
-							if (this.historyX.length > 20){
+							if (this.historyX.length > 500){
 								this.historyX.pop();
 							}		
 							this.historyY.unshift(this.y);
-							if (this.historyY.length > 20){
+							if (this.historyY.length > 500){
 								this.historyY.pop();
-							}								
+							}
+							//
+						if (this.redrawMass) {
+                            massCanvas.setTxt(this.massTxt);
+                            this.lastMass = this.mass;								
                         }
                         massCanvas.setFontSize(this.massSize);
                         massCanvas.setScale(this.scale);
