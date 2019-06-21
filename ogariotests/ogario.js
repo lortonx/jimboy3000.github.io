@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.816 MEGA TEST
+// v1.817 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -140,7 +140,7 @@ function LegendModSpawn(){};
 //window.disableIntegrity=false;
 
 function calcTarget(){};
-function historystate(){};
+//function historystate(){};
 var Lmagarversion = "";
 
 window.LMGameConfiguration = $.ajax({
@@ -4473,6 +4473,7 @@ var thelegendmodproject = function(t, e, i) {
 			this.nickCanvas = null;
 			this.mass = 0;
 			this.lastMass = 0;
+			this.historyMass = [];
 			this.kMass = 0; 
 			this.massCanvas = null;
 			this.massTxt = '';
@@ -4806,6 +4807,10 @@ var thelegendmodproject = function(t, e, i) {
                         if (this.redrawMass) {
                             massCanvas.setTxt(this.massTxt);
                             this.lastMass = this.mass;
+							this.historyMass.unshift(this.mass);
+							if (this.historyMass.length > 20){
+								this.historyMass.pop();
+							}
                         }
                         massCanvas.setFontSize(this.massSize);
                         massCanvas.setScale(this.scale);
@@ -6044,7 +6049,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer['onPlayerDeath'](), ogarminimapdrawer.showMenu(300));
                 if (window.autoPlay && legendmod.play) {calcTarget();}
-				if (window.historystate && legendmod.play) {historystate();}
+				//if (window.historystate && legendmod.play) {historystate();}
             },
             'color2Hex': function(t) {
                 var e = t.toString(16);
