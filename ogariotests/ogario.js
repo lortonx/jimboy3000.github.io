@@ -138,7 +138,7 @@ function LegendModSpawn(){};
 
 
 //window.disableIntegrity=false;
-
+window.lastejected=false;
 function calcTarget(){};
 //function historystate(){};
 var Lmagarversion = "";
@@ -5344,6 +5344,7 @@ var thelegendmodproject = function(t, e, i) {
             'sendSplit': function() {
                 this.sendPosition();
 				this.sendAction(17);
+				
             },
             'sendNick': function(t) {
 				
@@ -7960,9 +7961,11 @@ var thelegendmodproject = function(t, e, i) {
             },
             'eject': function() {
                 M.sendEject();
+				window.lastejected=true;
             },
             'split': function() {
                 M.sendSplit();
+				
             },
             'specialOn': function() {
                 M.sendFreeSpectate();
