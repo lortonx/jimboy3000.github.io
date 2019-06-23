@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.832 MEGA TEST
+// v1.833 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4723,7 +4723,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale;				
             }
             //if (this.mergeTime && this.mergeTime > 0) {     
-			if(window.cellsId[this.id].mergeTime && window.cellsId[this.id].mergeTime > 0 ){
+			if(window.cellsId && window.cellsId[this.id] && window.cellsId[this.id].mergeTime && window.cellsId[this.id].mergeTime > 0 ){
                 this.massTxt = this.massTxt + '[' + window.cellsId[this.id].mergeTime + ']';
             return true;    
             }			
@@ -4813,7 +4813,8 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.massCanvas && !(this.size <= 40)) {
                         var massCanvas = this.massCanvas;
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
- 							if (window.cellsId[this.id]==undefined){
+ 							if (window.cellsId){
+							if (window.cellsId[this.id]==undefined){
 							window.cellsId[this.id]={};
 							window.cellsId[this.id].historyMass=[];
 							window.cellsId[this.id].historyX=[];
@@ -4833,6 +4834,7 @@ var thelegendmodproject = function(t, e, i) {
 								//this.historyY.pop();
 								window.cellsId[this.id].historyY.pop();
 							}							
+							}
 							}
 							//
 						if (this.redrawMass) {
