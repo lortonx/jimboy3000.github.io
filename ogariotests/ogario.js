@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.826 MEGA TEST
+// v1.828 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -176,6 +176,7 @@ setTimeout(function() {
 
 //set values outside ogario
 window.cellsId = [];
+window.counterCell=0;
 window.leaderboardlimit = 20;
 window.teamboardlimit = 20;
 window.vanillaskins = false; //to enable vanilla skins it must be true
@@ -4473,8 +4474,7 @@ var thelegendmodproject = function(t, e, i) {
 			this.targetNick = '';
 			this.nickCanvas = null;
 			this.mass = 0;
-			this.lastMass = 0;
-			this.counter=0;
+			this.lastMass = 0;			
 			this.historyMass = [];
 			this.historyX = [];
 			this.historyY = [];
@@ -4814,7 +4814,7 @@ var thelegendmodproject = function(t, e, i) {
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
  							//
 								
-								window.cellsId[this.counter]=this.id;
+								window.cellsId[window.counterCell]=this.id;
 							this.historyMass.unshift(this.mass);
 							if (this.historyMass.length > 500){
 								this.historyMass.pop();
@@ -4844,7 +4844,7 @@ var thelegendmodproject = function(t, e, i) {
                             context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
 							} catch (e) {}			
                         }
-						this.counter++;
+						window.counterCell++;
                     }
                 };
                 this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
@@ -4918,7 +4918,8 @@ var thelegendmodproject = function(t, e, i) {
 							} catch (e) {}
 							}							
                             return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
-                                g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", this.setMass(this.size), this.drawMass(style)), void style.restore();
+                                g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote", 
+								this.setMass(this.size), this.drawMass(style)), void style.restore();
                         }
 						}	
 						else{
@@ -5981,6 +5982,32 @@ var thelegendmodproject = function(t, e, i) {
 					//console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o));
                 return !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o);
             },
+             'vanillaskins': function(y, g) {
+                        if (g != null) {
+                            if (window.vanillaskins == true) {
+                                var skin2search = g.replace('%', '');
+                                if (window.LMAgarGameConfiguration != undefined) {
+                                    for (var player = 0; player < window.EquippableSkins.length; player++) {
+                                        if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
+                                            //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
+                                            if (ogarminimapdrawer.customSkinsMap[y] == undefined) {
+                                                if (window.EquippableSkins[player].image != "uses_spine") {
+
+                                                    if (legendflags.includes(LowerCase(y))) {
+                                                        console.log("[Legend mod Express] " + LowerCase(y) + " skin found. Skin registered");
+                                                        core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(y) + ".png", null);
+                                                    } else {
+                                                        ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
+                                                        ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+            },			
             'updateCells': function(t, i) {
                 var s = function() {
                     for (var e = '';;) {
@@ -6034,31 +6061,8 @@ var thelegendmodproject = function(t, e, i) {
 
                     }
                     if (8 & d) {
-                        y = window.decodeURIComponent(escape(s()));
-                        if (g != null) {
-                            if (window.vanillaskins == true) {
-                                var skin2search = g.replace('%', '');
-                                if (window.LMAgarGameConfiguration != undefined) {
-                                    for (var player = 0; player < window.EquippableSkins.length; player++) {
-                                        if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
-                                            //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
-                                            if (ogarminimapdrawer.customSkinsMap[y] == undefined) {
-                                                if (window.EquippableSkins[player].image != "uses_spine") {
-
-                                                    if (legendflags.includes(LowerCase(y))) {
-                                                        console.log("[Legend mod Express] " + LowerCase(y) + " skin found. Skin registered");
-                                                        core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(y) + ".png", null);
-                                                    } else {
-                                                        ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                                        ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+						y = window.decodeURIComponent(escape(s()));
+                        this.vanillaskins(s, g);
                     }
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
                     var M = 1 & d,
@@ -6071,8 +6075,9 @@ var thelegendmodproject = function(t, e, i) {
                     l = t.readUInt32LE(i);
                     i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts.removeCell();
                 }
-                this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer['onPlayerDeath'](), ogarminimapdrawer.showMenu(300));
-                if (window.autoPlay && legendmod.play) {calcTarget();}
+                this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer.onPlayerDeath(), ogarminimapdrawer.showMenu(300));
+                window.counterCell=0;
+				if (window.autoPlay && legendmod.play) {calcTarget();}
 				//if (window.historystate && legendmod.play) {historystate();}
             },
             'color2Hex': function(t) {
