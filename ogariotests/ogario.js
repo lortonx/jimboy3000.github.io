@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.825 MEGA TEST
+// v1.826 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4844,7 +4844,7 @@ var thelegendmodproject = function(t, e, i) {
                             context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
 							} catch (e) {}			
                         }
-						counter++;
+						this.counter++;
                     }
                 };
                 this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
