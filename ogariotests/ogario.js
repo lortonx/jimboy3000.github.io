@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.830 MEGA TEST
+// v1.831 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -175,7 +175,7 @@ setTimeout(function() {
 }, 5000);
 
 //set values outside ogario
-//window.cellsId = [];
+window.cellsId = [];
 //window.counterCell=0;
 window.leaderboardlimit = 20;
 window.teamboardlimit = 20;
@@ -4475,9 +4475,9 @@ var thelegendmodproject = function(t, e, i) {
 			this.nickCanvas = null;
 			this.mass = 0;
 			this.lastMass = 0;			
-			this.historyMass = [];
-			this.historyX = [];
-			this.historyY = [];
+//			this.historyMass = [];
+//			this.historyX = [];
+//			this.historyY = [];
 			this.kMass = 0; 
 			this.massCanvas = null;
 			this.massTxt = '';
@@ -4812,20 +4812,26 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.massCanvas && !(this.size <= 40)) {
                         var massCanvas = this.massCanvas;
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
- 							//window.cellsId[window.counterCell]=this.id;
-							this.historyMass.unshift(this.mass);
-							if (this.historyMass.length > 500){
-								this.historyMass.pop();
+ 							if (window.cellsId[this.id]==undefined){
+							window.cellsId[this.id]={};
+							window.cellsId[this.id].historyMass=[];
+							window.cellsId[this.id].historyX=[];
+							window.cellsId[this.id].historyY=[];
 							}
-							this.historyX.unshift(this.x);
-							if (this.historyX.length > 500){
-								this.historyX.pop();
+							else{
+							window.cellsId[this.id].historyMass.unshift(this.mass);
+							if (window.cellsId[this.id].historyMass.length > 500){
+								window.cellsId[this.id].historyMass.pop();
+							}
+							window.cellsId[this.id].historyX.unshift(this.x);
+							if (window.cellsId[this.id].historyX.length > 500){
+								window.cellsId[this.id].historyX.pop();
 							}		
-							this.historyY.unshift(this.y);
-							if (this.historyY.length > 500){
-								this.historyY.pop();
+							window.cellsId[this.id].historyY.unshift(this.y);
+							if (window.cellsId[this.id].historyY.length > 500){
+								window.cellsId[this.id].historyY.pop();
 							}							
-							
+							}
 							//
 						if (this.redrawMass) {
                             massCanvas.setTxt(this.massTxt);
