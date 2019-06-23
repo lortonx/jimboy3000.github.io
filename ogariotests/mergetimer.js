@@ -15,7 +15,7 @@ function CellTimer() {
 			}
 			else{
 				if(window.playerCellsId && window.legendmod.playerCells[i] && window.legendmod.playerCells[i].id && window.playerCellsId[legendmod.playerCells[i].id]){
-				window.playerCellsId[legendmod.playerCells[i].id].mergeTime=null;
+				//window.playerCellsId[legendmod.playerCells[i].id].mergeTime=null;
 			}
 			}
 			
