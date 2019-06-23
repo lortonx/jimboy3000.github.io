@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.821 MEGA TEST
+// v1.822 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4474,6 +4474,7 @@ var thelegendmodproject = function(t, e, i) {
 			this.mass = 0;
 			this.lastMass = 0;
 			this.historyMass = [];
+			this.historyId = null;
 			this.historyX = [];
 			this.historyY = [];
 			this.kMass = 0; 
@@ -4811,6 +4812,10 @@ var thelegendmodproject = function(t, e, i) {
                         var massCanvas = this.massCanvas;
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
  							//
+							if (!this.historyId){
+								this.historyId=this.id;
+							}
+							if (this.id==this.historyId){
 							this.historyMass.unshift(this.mass);
 							if (this.historyMass.length > 500){
 								this.historyMass.pop();
@@ -4822,6 +4827,10 @@ var thelegendmodproject = function(t, e, i) {
 							this.historyY.unshift(this.y);
 							if (this.historyY.length > 500){
 								this.historyY.pop();
+							}							
+							}
+							else{
+								console.log("error");
 							}
 							//
 						if (this.redrawMass) {
