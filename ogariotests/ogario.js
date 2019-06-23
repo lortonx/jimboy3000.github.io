@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.823 MEGA TEST
+// v1.824 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -175,6 +175,7 @@ setTimeout(function() {
 }, 5000);
 
 //set values outside ogario
+window.cellsId = [];
 window.leaderboardlimit = 20;
 window.teamboardlimit = 20;
 window.vanillaskins = false; //to enable vanilla skins it must be true
