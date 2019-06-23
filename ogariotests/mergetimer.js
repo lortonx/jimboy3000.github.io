@@ -1,5 +1,6 @@
 var Intervalstatistics = setInterval(CellTimer, 1000);	
 function CellTimer() {
+	if (!window.legendmod5.optimizedMass){
 	myCells = [];
 	for (var i = 0; i < window.legendmod.playerCells.length; i++) {
 //legendmod.cells[i].historyMass->window.playerCellsId[legendmod.cells[i].id].historyMass
@@ -19,12 +20,13 @@ function CellTimer() {
 			}
 			
 		}
+}
 	}	
 
 function MergeCells(j,x){
 x++;
 if (window.playerCellsId && window.legendmod.playerCells[j] && window.legendmod.playerCells[j].id && window.playerCellsId[legendmod.playerCells[j].id]){
-window.playerCellsId[legendmod.playerCells[j].id].mergeTime = 30 + (2.33/100)*window.playerCellsId[legendmod.playerCells[j].id].historyMass[0] - x;
+window.playerCellsId[legendmod.playerCells[j].id].mergeTime = 30 + (7/300)*window.playerCellsId[legendmod.playerCells[j].id].historyMass[0] - x;
 	console.log(j,x, Math.round(window.playerCellsId[legendmod.playerCells[j].id].mergeTime));
 	if (window.playerCellsId[legendmod.playerCells[j].id].mergeTime>0){
 	setTimeout(function() {	
