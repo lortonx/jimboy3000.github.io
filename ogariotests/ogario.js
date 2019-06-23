@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.829 MEGA TEST
+// v1.830 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -175,8 +175,8 @@ setTimeout(function() {
 }, 5000);
 
 //set values outside ogario
-window.cellsId = [];
-window.counterCell=0;
+//window.cellsId = [];
+//window.counterCell=0;
 window.leaderboardlimit = 20;
 window.teamboardlimit = 20;
 window.vanillaskins = false; //to enable vanilla skins it must be true
@@ -4812,9 +4812,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.massCanvas && !(this.size <= 40)) {
                         var massCanvas = this.massCanvas;
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
- 							//
-								
-								window.cellsId[window.counterCell]=this.id;
+ 							//window.cellsId[window.counterCell]=this.id;
 							this.historyMass.unshift(this.mass);
 							if (this.historyMass.length > 500){
 								this.historyMass.pop();
@@ -4844,7 +4842,7 @@ var thelegendmodproject = function(t, e, i) {
                             context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
 							} catch (e) {}			
                         }
-						window.counterCell++;
+						//window.counterCell++;
                     }
                 };
                 this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
@@ -6076,7 +6074,7 @@ var thelegendmodproject = function(t, e, i) {
                     i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts.removeCell();
                 }
                 this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer.onPlayerDeath(), ogarminimapdrawer.showMenu(300));
-                window.counterCell=0;
+                //window.counterCell=0;
 				if (window.autoPlay && legendmod.play) {calcTarget();}
 				//if (window.historystate && legendmod.play) {historystate();}
             },
