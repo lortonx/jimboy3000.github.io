@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.822 MEGA TEST
+// v1.823 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4473,8 +4473,8 @@ var thelegendmodproject = function(t, e, i) {
 			this.nickCanvas = null;
 			this.mass = 0;
 			this.lastMass = 0;
+			var counter=0;
 			this.historyMass = [];
-			this.historyId = null;
 			this.historyX = [];
 			this.historyY = [];
 			this.kMass = 0; 
@@ -4812,10 +4812,8 @@ var thelegendmodproject = function(t, e, i) {
                         var massCanvas = this.massCanvas;
                         massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
  							//
-							if (!this.historyId){
-								this.historyId=this.id;
-							}
-							if (this.id==this.historyId){
+								
+								window.cellsId[counter]=this.id
 							this.historyMass.unshift(this.mass);
 							if (this.historyMass.length > 500){
 								this.historyMass.pop();
@@ -4828,10 +4826,7 @@ var thelegendmodproject = function(t, e, i) {
 							if (this.historyY.length > 500){
 								this.historyY.pop();
 							}							
-							}
-							else{
-								console.log("error");
-							}
+							
 							//
 						if (this.redrawMass) {
                             massCanvas.setTxt(this.massTxt);
@@ -4848,6 +4843,7 @@ var thelegendmodproject = function(t, e, i) {
                             context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
 							} catch (e) {}			
                         }
+						counter++;
                     }
                 };
                 this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
