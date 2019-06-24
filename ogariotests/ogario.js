@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.850 MEGA TEST
+// v1.851 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4416,7 +4416,7 @@ var thelegendmodproject = function(t, e, i) {
                             this.txtCtx.lineWidth = this.strokeWidth;
                             this.txtCtx.strokeStyle = this.strokeColor;
                             this.txtCtx.fillStyle = this.color;
-						if (customTxt!=null){
+						if (customTxt!=null || customTxt!=undefined){
 						if (this.stroke){
 							this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5));
 							}
@@ -4827,9 +4827,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         massCanvas.setFontSize(this.massSize);
                         massCanvas.setScale(this.scale);	
-						var data = massCanvas.drawTxt(customTxt);						
-                        var width = ~~(data.width / this.scale);
-                        var height = ~~(data.height / this.scale);
+
 						///
 							if (window.ExternalScripts && !v.optimizedMass && window.playerCellsId && this.isPlayerCell && !this.isVirus){
 							if (window.playerCellsId[this.id]==undefined){
@@ -4855,7 +4853,7 @@ var thelegendmodproject = function(t, e, i) {
 							}
             //if (this.mergeTime && this.mergeTime > 0) {     
 			if( window.legendmod.playerCellIDs.length>1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1 ){
-                var customTxt = this.massTxt + '[' + Math.round(window.playerCellsId[this.id].mergeTime) + ']';
+                var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
 						var data = massCanvas.drawTxt(customTxt);						
                         var width = ~~(data.width / this.scale);
                         var height = ~~(data.height / this.scale);	
