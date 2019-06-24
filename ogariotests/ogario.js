@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.879 MEGA TEST
+// v1.880 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4403,18 +4403,20 @@ var thelegendmodproject = function(t, e, i) {
                             this.remeasure = false),
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
+				//
                 this.measureWidthCustom = function(customTxt) {
                     return customTxt && this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
                             this.measuredWidth = this.txtCtx.measureText(customTxt).width,
                             this.remeasure = false),
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
-                },				
+                },	
+//				
                 this.drawTxt = function(customTxt) {
                     return this.createCanvas(),
                         this.redraw && (this.redraw = false,
                             
 							this.txtCanvas.width = this.measureWidth(),
-							this.txtCanvas.width = this.measureWidthCustom(customTxt),
+//							this.txtCanvas.width = this.measureWidthCustom(customTxt),
                             this.txtCanvas.height = this.fontSize + this.margin * 2,
                             this.txtCtx.font = this.font,
                             this.txtCtx.globalAlpha = 1,
@@ -4856,8 +4858,8 @@ var thelegendmodproject = function(t, e, i) {
                         if (window.legendmod.playerCellIDs.length > 1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1) {
                             var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
                             var data = mergeCanvas.drawTxt(customTxt);
-                            var width = ~~(data.width / this.scale);
-							console.log(data.width, this.scale, width, this.x - width / 2);
+                            var width = ~~(data.width / this.scale)+50;
+							//console.log(data.width, this.scale, width, this.x - width / 2);
                             var height = ~~(data.height / this.scale);
                             var textureY = this.margin === 0 ? ~~(this.y + height ) : ~~this.y - 2 * this.margin;
                             if (width > 1 && height > 1) {
