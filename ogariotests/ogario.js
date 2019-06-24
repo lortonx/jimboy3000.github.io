@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.876 MEGA TEST
+// v1.877 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4397,16 +4397,17 @@ var thelegendmodproject = function(t, e, i) {
                         this.setStrokeWidth(ogarsetDrawinglabel5),
                         this.setStrokeColor(ogarsetDrawinglabel6);
                 },
-                this.measureWidth = function() {
+                this.measureWidth = function(customTxt) {
                     return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
-                            this.measuredWidth = this.txtCtx.measureText(this.txt).width,
+                            !customTxt && this.measuredWidth = this.txtCtx.measureText(this.txt).width,
+							customTxt && this.measuredWidth = this.txtCtx.measureText(customTxt).width,
                             this.remeasure = false),
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
                 this.drawTxt = function(customTxt) {
                     return this.createCanvas(),
                         this.redraw && (this.redraw = false,
-                            this.txtCanvas.width = this.measureWidth(),
+                            this.txtCanvas.width = this.measureWidth(customTxt),
                             this.txtCanvas.height = this.fontSize + this.margin * 2,
                             this.txtCtx.font = this.font,
                             this.txtCtx.globalAlpha = 1,
@@ -4881,7 +4882,7 @@ var thelegendmodproject = function(t, e, i) {
 
                     var data = massCanvas.drawTxt();
                     var width = ~~(data.width / this.scale);
-					console.log("m:"+data.width, this.scale, width, this.x - width / 2);
+					//console.log("m:"+data.width, this.scale, width, this.x - width / 2);
                     var height = ~~(data.height / this.scale)
                     var textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
                     if (width > 1 && height > 1) {
