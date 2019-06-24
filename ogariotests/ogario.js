@@ -4822,7 +4822,7 @@ var thelegendmodproject = function(t, e, i) {
 							window.playerCellsId[this.id].historyY=[];
 							}
 							else{
-							window.playerCellsId[this.id].historyMass.unshift(this.size); //i test mass with size to find out the merging time
+							window.playerCellsId[this.id].historyMass.unshift(this.mass); //i test mass with size to find out the merging time
 							if (window.playerCellsId[this.id].historyMass.length > 500){
 								window.playerCellsId[this.id].historyMass.pop();
 							}
