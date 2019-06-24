@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.872 MEGA TEST
+// v1.873 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4850,7 +4850,7 @@ var thelegendmodproject = function(t, e, i) {
                             var data2 = mergeCanvas.drawTxt(customTxt);
                             var width = ~~(data2.width / this.scale);
                             var height = ~~(data2.height / this.scale);
-                            var textureY = this.margin === 0 ? ~~(this.y + height) : ~~this.y - 2 * this.margin;
+                            var textureY = this.margin === 0 ? ~~(this.y + height / 2) : ~~this.y - 2 * this.margin;
                             if (width > 1 && height > 1) {
                                 try {
                                     context.drawImage(data2, ~~(this.x - width / 2), textureY, width, height);
