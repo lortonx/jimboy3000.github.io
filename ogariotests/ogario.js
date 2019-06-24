@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.845 MEGA TEST
+// v1.846 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4820,7 +4820,8 @@ var thelegendmodproject = function(t, e, i) {
                             this.lastMass = this.mass;								
                         }
                         massCanvas.setFontSize(this.massSize);
-                        massCanvas.setScale(this.scale);						
+                        massCanvas.setScale(this.scale);	
+						let data = massCanvas.drawTxt();						
                         let width = ~~(data.width / this.scale);
                         let height = ~~(data.height / this.scale);
 						///
@@ -4846,7 +4847,7 @@ var thelegendmodproject = function(t, e, i) {
 								window.playerCellsId[this.id].historyY.pop();
 							}							
 							}
-						let data = massCanvas.drawTxt();
+						
                         let textureY = this.margin === 0 ? ~~(this.y + height / 2) : ~~this.y - this.margin;
                         if (width > 1 && height > 1) {
 							try {
