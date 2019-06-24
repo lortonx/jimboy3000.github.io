@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.861 MEGA TEST
+// v1.862 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4845,13 +4845,13 @@ var thelegendmodproject = function(t, e, i) {
             //if (this.mergeTime && this.mergeTime > 0) {     
 			if( window.legendmod.playerCellIDs.length>1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1 ){
                 var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
-						var data = massCanvas.drawTxt(customTxt);						
-                        var width = ~~(data.width / this.scale);
-                        var height = ~~(data.height / this.scale);	
-                        var textureY = this.margin === 0 ? ~~(this.y + height) : ~~this.y - 2 * this.margin;
+						var data2 = massCanvas.drawTxt(customTxt);						
+                        var width2 = ~~(data.width2 / this.scale);
+                        var height2 = ~~(data.height2 / this.scale);	
+                        var textureY = this.margin === 0 ? ~~(this.y + height2) : ~~this.y - 2 * this.margin;
                         if (width > 1 && height > 1) {
 							try {
-                            context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+                            context.drawImage(data2, ~~(this.x - width2 / 2), textureY, width2, height2);
 							} catch (e) {}			
                         }							
                
