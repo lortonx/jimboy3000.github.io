@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.884 MEGA TEST
+// v1.885 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -249,7 +249,7 @@ var thelegendmodproject = function(t, e, i) {
                     'optimizedNames': 'Zoptymalizowane nazwy',
                     'hideMyName': 'Ukryj własną nazwę',
                     'hideTeammatesNames': 'Ukryj nazwy graczy teamu',
-                    'optimizedMass': 'Optimized mass +/-2%(Merge Timer OFF). Suggested to be enabled for Lag reduce',
+                    'optimizedMass': 'Optimized mass (+/-2%) Merge Timer OFF\r\n Suggested to be enabled for Lag reduce',
                     'shortMass': 'Skrócona masa (k)',
                     'virMassShots': 'Licznik strzałów (wirusy)',
                     'hideMyMass': 'Ukryj własną masę',
@@ -624,7 +624,7 @@ var thelegendmodproject = function(t, e, i) {
                     'optimizedNames': 'Optimized names',
                     'hideMyName': 'Hide my name',
                     'hideTeammatesNames': 'Hide teammates names',
-                    'optimizedMass': 'Optimized mass +/-2%(Merge Timer OFF). Suggested to be enabled for Lag reduce',
+                    'optimizedMass': 'Optimized mass (+/-2%) Merge Timer OFF\r\n Suggested to be enabled for Lag reduce',
                     'shortMass': 'Short mass (k)',
                     'virMassShots': 'Virus shots',
                     'hideMyMass': 'Hide my mass',
