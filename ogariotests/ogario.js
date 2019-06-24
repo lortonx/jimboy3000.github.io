@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.880 MEGA TEST
+// v1.881 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4337,11 +4337,12 @@ var thelegendmodproject = function(t, e, i) {
                 this.measuredWidth = 0,
                 this.redraw = false,
                 this.remeasure = false,
+				this.remeasureCustom=false,
                 this.setTxt = function(ogariosettxtsetter) {
                     this.txt !== ogariosettxtsetter && (this.txt = ogariosettxtsetter,
                         this.redraw = true,
                         this.remeasure = true);
-                },
+                },			
                 this.setColor = function(ogariocolorsetter) {
                     this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
                         this.redraw = true);
@@ -4416,7 +4417,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.redraw && (this.redraw = false,
                             
 							this.txtCanvas.width = this.measureWidth(),
-//							this.txtCanvas.width = this.measureWidthCustom(customTxt),
+							this.txtCanvas.width = this.measureWidthCustom(customTxt),
                             this.txtCanvas.height = this.fontSize + this.margin * 2,
                             this.txtCtx.font = this.font,
                             this.txtCtx.globalAlpha = 1,
@@ -4825,8 +4826,8 @@ var thelegendmodproject = function(t, e, i) {
                     mergeCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
                     /*
                     if (this.redrawMass) {
-                        mergeCanvas.setTxt(this.massTxt);
-                        this.lastMass = this.mass;
+                        mergeCanvas.setCustomTxt(this.mergeTxt);
+                        //this.lastMass = this.mass;
                     }
 					*/
                     mergeCanvas.setFontSize(this.massSize);
@@ -4858,7 +4859,7 @@ var thelegendmodproject = function(t, e, i) {
                         if (window.legendmod.playerCellIDs.length > 1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1) {
                             var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
                             var data = mergeCanvas.drawTxt(customTxt);
-                            var width = ~~(data.width / this.scale)+50;
+                            var width = ~~(data.width / this.scale);
 							//console.log(data.width, this.scale, width, this.x - width / 2);
                             var height = ~~(data.height / this.scale);
                             var textureY = this.margin === 0 ? ~~(this.y + height ) : ~~this.y - 2 * this.margin;
