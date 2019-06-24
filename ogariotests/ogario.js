@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.859 MEGA TEST
+// v1.860 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4415,10 +4415,10 @@ var thelegendmodproject = function(t, e, i) {
                             this.txtCtx.lineWidth = this.strokeWidth,
                             this.txtCtx.strokeStyle = this.strokeColor,
                             this.txtCtx.fillStyle = this.color,
-                            customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin)),
-							!customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
-                            customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin)),
-							!customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
+                            this.customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin)),
+							!this.customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+                            this.customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin)),
+							!this.customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
                         this.txtCanvas;
                 };
 				
@@ -4859,7 +4859,7 @@ var thelegendmodproject = function(t, e, i) {
 						
 							}	
 						///
-						var data = massCanvas.drawTxt();
+						var data = massCanvas.drawTxt(this.txt);
                         var width = ~~(data.width / this.scale);
                         var height = ~~(data.height / this.scale)												
                         var textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
