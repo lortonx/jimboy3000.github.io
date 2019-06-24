@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.878 MEGA TEST
+// v1.879 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4404,7 +4404,7 @@ var thelegendmodproject = function(t, e, i) {
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
                 this.measureWidthCustom = function(customTxt) {
-                    return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
+                    return customTxt && this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
                             this.measuredWidth = this.txtCtx.measureText(customTxt).width,
                             this.remeasure = false),
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
@@ -4412,8 +4412,9 @@ var thelegendmodproject = function(t, e, i) {
                 this.drawTxt = function(customTxt) {
                     return this.createCanvas(),
                         this.redraw && (this.redraw = false,
-                            customTxt && this.txtCanvas.width = this.measureWidthCustom(customTxt),
-							!customTxt && this.txtCanvas.width = this.measureWidth(),
+                            
+							this.txtCanvas.width = this.measureWidth(),
+							this.txtCanvas.width = this.measureWidthCustom(customTxt),
                             this.txtCanvas.height = this.fontSize + this.margin * 2,
                             this.txtCtx.font = this.font,
                             this.txtCtx.globalAlpha = 1,
