@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.856 MEGA TEST
+// v1.857 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4405,32 +4405,20 @@ var thelegendmodproject = function(t, e, i) {
                             this.remeasure = false),
                         ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
-			
-				
                 this.drawTxt = function(customTxt) {
-						this.createCanvas();
-                        if (this.redraw){
-							this.redraw = false;
-                            this.txtCanvas.width = this.measureWidth();
-                            this.txtCanvas.height = this.fontSize + this.margin * 2;
-                            this.txtCtx.font = this.font;
-                            this.txtCtx.globalAlpha = 1;
-                            this.txtCtx.lineWidth = this.strokeWidth;
-                            this.txtCtx.strokeStyle = this.strokeColor;
-                            this.txtCtx.fillStyle = this.color;
-						if (customTxt){
-						if (this.stroke){
-							this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5));
-							}
-						this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))
-						}	
-						else{						
-						if (this.stroke){
-							this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5));
-							}
-						this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))
-						}
-						}
+                    return this.createCanvas(),
+                        this.redraw && (this.redraw = false,
+                            this.txtCanvas.width = this.measureWidth(),
+                            this.txtCanvas.height = this.fontSize + this.margin * 2,
+                            this.txtCtx.font = this.font,
+                            this.txtCtx.globalAlpha = 1,
+                            this.txtCtx.lineWidth = this.strokeWidth,
+                            this.txtCtx.strokeStyle = this.strokeColor,
+                            this.txtCtx.fillStyle = this.color,
+                            customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+							!customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+                            customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+							!customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
                         this.txtCanvas;
                 };
 				
