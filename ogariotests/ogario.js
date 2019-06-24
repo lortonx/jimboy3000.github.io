@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.870 MEGA TEST
+// v1.871 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4481,6 +4481,7 @@ var thelegendmodproject = function(t, e, i) {
             //			this.historyY = [];
             this.kMass = 0;
             this.massCanvas = null;
+            this.mergeCanvas = null;			
             this.massTxt = '';
             this.margin = 0;
             this.scale = 1;
@@ -4696,6 +4697,10 @@ var thelegendmodproject = function(t, e, i) {
                     this.massCanvas = new irenderfromagario();
                     return false;
                 }
+                if (!window.legendmod5.optimizedMass && window.ExternalScripts && !this.mergeCanvas) {
+                    this.mergeCanvas = new irenderfromagario();
+                    return false;
+                }				
                 this.mass = ~~(t * t / 100);
                 this.redrawMass = true;
                 if (this.isVirus) {
