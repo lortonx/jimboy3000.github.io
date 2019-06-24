@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.882 MEGA TEST
+// v1.883 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4337,12 +4337,11 @@ var thelegendmodproject = function(t, e, i) {
                 this.measuredWidth = 0,
                 this.redraw = false,
                 this.remeasure = false,
-				this.remeasureCustom=false,
                 this.setTxt = function(ogariosettxtsetter) {
                     this.txt !== ogariosettxtsetter && (this.txt = ogariosettxtsetter,
                         this.redraw = true,
                         this.remeasure = true);
-                },			
+                },				
                 this.setColor = function(ogariocolorsetter) {
                     this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
                         this.redraw = true);
@@ -4516,6 +4515,7 @@ var thelegendmodproject = function(t, e, i) {
             this.rescale = false;
             this.redrawNick = true;
             this.redrawMass = true;
+			this.redrawMerge = true;
             this.optimizedNames = false;
             this.optimizedMass = false;
             this.strokeNick = false;
@@ -4825,12 +4825,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (this.mergeCanvas && !(this.size <= 40)) {
                     var mergeCanvas = this.mergeCanvas;
                     mergeCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
-                    /*
-                    if (this.redrawMass) {
-                        mergeCanvas.setCustomTxt(this.mergeTxt);
-                        //this.lastMass = this.mass;
-                    }
-					*/
+                    					
                     mergeCanvas.setFontSize(this.massSize);
                     mergeCanvas.setScale(this.scale);
 
@@ -4859,6 +4854,12 @@ var thelegendmodproject = function(t, e, i) {
                         //if (this.mergeTime && this.mergeTime > 0) {     
                         if (window.legendmod.playerCellIDs.length > 1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1) {
                             var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
+							
+						    if (this.redrawMerge) {
+							mergeCanvas.setTxt(this.mergeTxt);
+								//this.lastMass = this.mass;
+							}	
+							
                             var data = mergeCanvas.drawTxt(customTxt);
                             var width = ~~(data.width / this.scale);
 							//console.log(data.width, this.scale, width, this.x - width / 2);
