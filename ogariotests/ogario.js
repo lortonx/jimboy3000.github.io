@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.881 MEGA TEST
+// v1.882 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4416,8 +4416,9 @@ var thelegendmodproject = function(t, e, i) {
                     return this.createCanvas(),
                         this.redraw && (this.redraw = false,
                             
-							this.txtCanvas.width = this.measureWidth(),
+							
 							this.txtCanvas.width = this.measureWidthCustom(customTxt),
+							this.txtCanvas.width = this.measureWidth(),
                             this.txtCanvas.height = this.fontSize + this.margin * 2,
                             this.txtCtx.font = this.font,
                             this.txtCtx.globalAlpha = 1,
