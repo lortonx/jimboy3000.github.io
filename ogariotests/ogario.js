@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.867 MEGA TEST
+// v1.868 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4818,7 +4818,16 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         massCanvas.setFontSize(this.massSize);
                         massCanvas.setScale(this.scale);	
-
+						
+						var data = massCanvas.drawTxt();
+                        var width = ~~(data.width / this.scale);
+                        var height = ~~(data.height / this.scale)												
+                        var textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
+                        if (width > 1 && height > 1) {
+							try {
+                            context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+							} catch (e) {}			
+                        }
 						///
 							if (window.ExternalScripts && !v.optimizedMass && window.playerCellsId && this.isPlayerCell && !this.isVirus){
 							if (window.playerCellsId[this.id]==undefined){
@@ -4859,15 +4868,7 @@ var thelegendmodproject = function(t, e, i) {
 						
 							}	
 						///
-						var data = massCanvas.drawTxt();
-                        var width = ~~(data.width / this.scale);
-                        var height = ~~(data.height / this.scale)												
-                        var textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
-                        if (width > 1 && height > 1) {
-							try {
-                            context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
-							} catch (e) {}			
-                        }
+
 						
 						//window.counterCell++;
                     }
