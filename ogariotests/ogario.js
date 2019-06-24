@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.846 MEGA TEST
+// v1.848 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4856,8 +4856,8 @@ var thelegendmodproject = function(t, e, i) {
                         }							
 							}	
 						///
-						let data = massCanvas.drawTxt();
-                        let textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
+						data = massCanvas.drawTxt();
+                        textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
                         if (width > 1 && height > 1) {
 							try {
                             context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
