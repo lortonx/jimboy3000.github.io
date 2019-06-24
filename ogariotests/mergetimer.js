@@ -31,7 +31,7 @@ function MergeCells(j,x){
 x++;
 if (window.playerCellsId && window.legendmod.playerCells[j] && window.legendmod.playerCells[j].id && window.playerCellsId[legendmod.playerCells[j].id]){
 window.playerCellsId[legendmod.playerCells[j].id].mergeTime = 29 + (7/300)*window.playerCellsId[legendmod.playerCells[j].id].historyMass[0] - x;
-	console.log(j,x, Math.round(window.playerCellsId[legendmod.playerCells[j].id].mergeTime));
+	//console.log(j,x, Math.round(window.playerCellsId[legendmod.playerCells[j].id].mergeTime));
 	if (window.playerCellsId[legendmod.playerCells[j].id].mergeTime>0){
 	setTimeout(function() {	
 		MergeCells(j,x);
