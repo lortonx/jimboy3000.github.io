@@ -7701,7 +7701,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'hk-comm27': {
                     'label': c['comm27'],
-                    'defaultKey': 'CTRL+V',
+                    'defaultKey': 'CTRL+M',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.sendCommand(27);
                     },
@@ -7719,7 +7719,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'hk-comm29': {
                     'label': c['comm29'],
-                    'defaultKey': 'CTRL+A',
+                    'defaultKey': 'CTRL+L',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.sendCommand(29);
                     },
