@@ -3732,8 +3732,10 @@ var thelegendmodproject = function(t, e, i) {
                     console.log('[Legend mod Express] Socket close', e);
                 }
                 this.socket['onerror'] = function(e) {
-                    //t.flushData();
+                    //t.flushData();									
                     console.log('[Legend mod Express] Socket error', e);
+					window.noOgarioSocket=true;
+					toastr["error"]("Our Socket is down, connecting to Universal tools");
                 };
             },
             'closeConnection': function() {
