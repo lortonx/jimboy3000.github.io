@@ -2,7 +2,7 @@
  * Legend express v0.047 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "48"; // the version 1.1-> 1.11
+var semimodVersion = "49"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2624,11 +2624,15 @@ var legbgcolor = $("#menuPanelColor").val();
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
 				}		
 			else if (~msg.indexOf($('#nick').val()+':')) {
-//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				} 
+				if (window.noOgarioSocket){					
+				toastr["success"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
+				playSound($('#messageSound').val());
+				}
+				else{
+				} 	
+			} 
 			else if (~msg.indexOf('[Universal chat]:')) {
-//				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
-				} 				
+			}				
 			else if (~msg.indexOf('@')) {
 				msg.slice(1);
 				toastr["warning"]('<div class="toast-message"><span class="message-nick">'+this.name+': </span><span class="message-text">'+msg+'</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
