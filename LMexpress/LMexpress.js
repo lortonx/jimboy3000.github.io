@@ -3378,7 +3378,8 @@ var cfg_org = {
 
 
 setTimeout(function() {
-	if (window.noOgarioSocket){					
+	if (window.noOgarioSocket){		
+		toastr["error"]("Our Socket is down, connecting to Universal tools");
 		$('#ao2t-capture').click();
 	}
 }, 1000);
