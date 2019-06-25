@@ -2,7 +2,7 @@
  * Legend express v0.047 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
  
-var semimodVersion = "49"; // the version 1.1-> 1.11
+var semimodVersion = "50"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3377,8 +3377,11 @@ var cfg_org = {
 
 
 
-//setTimeout(function() {
-$('#ao2t-capture').click();
+setTimeout(function() {
+	if (window.noOgarioSocket){					
+		$('#ao2t-capture').click();
+	}
+}, 1000);
 
 $('#message').keydown(function(e){
     if (e.keyCode === 13) { // If Enter key pressed
