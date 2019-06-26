@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.050 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.051 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "50"; // the version 1.1-> 1.11
 //fix ffa
@@ -3438,7 +3438,7 @@ function universalchat() {
                 my.moveBallOnMinimap(cmd.socketID, cmd.x, cmd.y);
                 break;
             case "customSkins":
-				if (!isEquivalent(window.agtoolball, cmd.customs)){
+				if (!window.agtoolball || !isEquivalent(window.agtoolball, cmd.customs)){
                     window.agtoolball = cmd.customs;
                     if (legendmod.showCustomSkins) {
                         Object.keys(window.agtoolball).forEach(function(key) {
