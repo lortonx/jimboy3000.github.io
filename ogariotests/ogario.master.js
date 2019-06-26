@@ -1,15 +1,16 @@
-//v6
+//v7
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
             success: function(sketchContents) {
 				var parsed = $.parseHTML(sketchContents);
                 window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
-				var F=new Function (window.EnvConfig);
+				var runEnvConfig = new Function (window.EnvConfig);
 				//return(F());
-				F();
-				legendmaster(window);				
-
+				runEnvConfig();
+				legendmaster(window);	
+				var runthelegendmodprojectStatic = new Function (thelegendmodprojectStatic);
+				runthelegendmodprojectStatic();
             },
             dataType: "text",
             method: "GET",
