@@ -1,4 +1,4 @@
-//v5
+//v6
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -6,7 +6,8 @@
 				var parsed = $.parseHTML(sketchContents);
                 window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
 				var F=new Function (window.EnvConfig);
-				return(F());
+				//return(F());
+				F();
 				legendmaster(window);				
 
             },
