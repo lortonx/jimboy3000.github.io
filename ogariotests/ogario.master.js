@@ -6,7 +6,8 @@
 				var parsed = $.parseHTML(sketchContents);
                 window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
 				var F=new Function (window.EnvConfig);
-				return(F());				
+				return(F());
+				legendmaster(window);				
 
             },
             dataType: "text",
@@ -15,7 +16,7 @@
             crossDomain: true
         });
 
-legendmaster(window);
+//legendmaster(window);
 function legendmaster(self) {
     function login() {
         if (l) {
