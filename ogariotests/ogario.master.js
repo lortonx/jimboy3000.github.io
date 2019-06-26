@@ -1,4 +1,4 @@
-//v7.1
+//v7.2
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -139,7 +139,7 @@ function legendmaster(self) {
     var headers = {
 		fb_app_id: window.EnvConfig.fb_app_id,
         gplus_client_id: window.EnvConfig.google_client_id,
-		master_url: window.EnvConfig.master_url,
+		master_url: window.EnvConfig.master_url.replace("https://",""),
         endpoint_version: "v4",
         proto_version: "12.0.1",
         client_version: 30406,
