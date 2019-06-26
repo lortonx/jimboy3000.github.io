@@ -1,4 +1,4 @@
-//v7
+//v7.1
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -6,11 +6,10 @@
 				var parsed = $.parseHTML(sketchContents);
                 window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
 				var runEnvConfig = new Function (window.EnvConfig);
-				//return(F());
 				runEnvConfig();
 				legendmaster(window);	
-				var runthelegendmodprojectStatic = new Function (thelegendmodprojectStatic);
-				runthelegendmodprojectStatic();
+				//var runthelegendmodprojectStatic = new Function (thelegendmodprojectStatic);
+				//runthelegendmodprojectStatic();
             },
             dataType: "text",
             method: "GET",
@@ -136,18 +135,28 @@ function legendmaster(self) {
             socialId: ""
         }
     };
+	if (window.EnvConfig && window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url){
     var headers = {
-        //fb_app_id: 677505792353827,
 		fb_app_id: window.EnvConfig.fb_app_id,
-        //gplus_client_id: "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
         gplus_client_id: window.EnvConfig.google_client_id,
-        //master_url: "webbouncer-live-v7-0.agario.miniclippt.com",
 		master_url: window.EnvConfig.master_url,
         endpoint_version: "v4",
         proto_version: "12.0.1",
         client_version: 30406,
         client_version_string: "3.4.6"
     };
+	}
+	else{
+    var headers = {
+        fb_app_id: 677505792353827,
+        gplus_client_id: "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
+        master_url: "webbouncer-live-v7-0.agario.miniclippt.com",
+        endpoint_version: "v4",
+        proto_version: "12.0.1",
+        client_version: 30406,
+        client_version_string: "3.4.6"
+    };		
+	}
     var l = false;
     var f = 0;
     var api = null;
