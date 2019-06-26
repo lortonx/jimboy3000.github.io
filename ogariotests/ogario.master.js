@@ -1,4 +1,4 @@
-//v7.2
+//v7.3
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -8,8 +8,6 @@
 				var runEnvConfig = new Function (window.EnvConfig);
 				runEnvConfig();
 				legendmaster(window);	
-				//var runthelegendmodprojectStatic = new Function (thelegendmodprojectStatic);
-				//runthelegendmodprojectStatic();
             },
             dataType: "text",
             method: "GET",
@@ -136,6 +134,7 @@ function legendmaster(self) {
         }
     };
 	if (window.EnvConfig && window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url){
+		console.log("[Master] window.EnvConfig loaded from //agar.io/index.html");
     var headers = {
 		fb_app_id: window.EnvConfig.fb_app_id,
         gplus_client_id: window.EnvConfig.google_client_id,
