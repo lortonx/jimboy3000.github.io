@@ -1,4 +1,4 @@
-//v7.3
+//v7.4
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -7,7 +7,7 @@
                 window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
 				var runEnvConfig = new Function (window.EnvConfig);
 				runEnvConfig();
-				legendmaster(window);	
+				//legendmaster(window);	
             },
             dataType: "text",
             method: "GET",
@@ -15,7 +15,7 @@
             crossDomain: true
         });
 
-//legendmaster(window);
+legendmaster(window);
 function legendmaster(self) {
     function login() {
         if (l) {
