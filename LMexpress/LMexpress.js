@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.048 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.049 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "50"; // the version 1.1-> 1.11
 //fix ffa
@@ -3438,7 +3438,7 @@ function universalchat() {
                 my.moveBallOnMinimap(cmd.socketID, cmd.x, cmd.y);
                 break;
             case "customSkins":
-                if (window.agtoolball != cmd.customs) {
+				if (!isEquivalent(window.agtoolball, cmd.customs){
                     window.agtoolball = cmd.customs;
                     if (legendmod.showCustomSkins) {
                         Object.keys(window.agtoolball).forEach(function(key) {
@@ -8349,4 +8349,31 @@ function BeforeSpecialDeals() {
     $("body").append(SpecialDealsJS);
 
     window.open('https://jimboy3100.github.io/LMexpress/olddeals.html', '_blank');
+}
+
+
+function isEquivalent(a, b) {
+    // Create arrays of property names
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    // If number of properties is different,
+    // objects are not equivalent
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+
+    // If we made it this far, objects
+    // are considered equivalent
+    return true;
 }
