@@ -1,5 +1,5 @@
 // Open Source script
-// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
+// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
 // v1.898 MEGA TEST
 // Game Configurations
@@ -5267,10 +5267,12 @@ var thelegendmodproject = function(t, e, i) {
             'playerNick': '',
             'playerPosition': 0,
             'leaderboard': [],
+            'biggerSTEDCellsCache': [], //Sonia
             'biggerSTECellsCache': [],
             'biggerCellsCache': [],
             'smallerCellsCache': [],
             'STECellsCache': [],
+            'STEDCellsCache': [], //Sonia
             'STE': 0,
             'autoZoom': false,
             'zoomValue': 0.1,
@@ -6214,10 +6216,12 @@ var thelegendmodproject = function(t, e, i) {
             'compareCells': function() {
                 if (this.play && (v.oppColors || v.oppRings || v.splitRange)) {
                     if (v.oppRings || v.splitRange) {
+                        this.biggerSTEDCellsCache = []; //Sonia
                         this.biggerSTECellsCache = [];
                         this.biggerCellsCache = [];
                         this.smallerCellsCache = [];
                         this.STECellsCache = [];
+                        this.STEDCellsCache = []; //Sonia
                     }
                     var t = 0;
                     for (; t < this.cells.length; t++) {
@@ -6242,20 +6246,29 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
             },
+            //Sonia (entire function updated)
             'cacheCells': function(t, e, i, s, o) {
-                return s >= 2.5 ? void this.biggerSTECellsCache.push({
+                return s >= 5.32 ? void this.biggerSTEDCellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : s >= 1.25 ? void this.biggerCellsCache.push({
+                }) : s >= 2.66 ? void this.biggerSTECellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : s < 1.25 && s > 0.75 ? void 0 : s > o ? void this.smallerCellsCache.push({
+                }) : s >= 1.33 ? void this.biggerCellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : void this.STECellsCache.push({
+                }) : s < 1.33 && s > 0.75 ? void 0 : s>0.375 ? void this.smallerCellsCache.push({
+                    'x': t,
+                    'y': e,
+                    'size': i
+                }) : s>0.1875 ? void this.STECellsCache.push({
+                    'x': t,
+                    'y': e,
+                    'size': i
+                }): void this.STEDCellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
@@ -6432,11 +6445,12 @@ var thelegendmodproject = function(t, e, i) {
                     if (M.play) {
                         if (v.splitRange) {
                             this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
+                            this.drawSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
                             //console.log(M.playerCells[M.selectBiggestCell.length-1].size);
-                            this.drawDoubleSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
+                            this.drawDoubleSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
                         }
                         if (v.oppRings) {
-                            this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
+                            this.drawOppRings(this.ctx, this.scale, M.biggerSTEDCellsCache, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache, M.STEDCellsCache); //Sonia
 
                         }
                         if (v.cursorTracking) {
@@ -6747,14 +6761,14 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'drawSplitRange': function(t, e, i, s, o) {
-                    if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
+                    if (this.drawCircles(t, e, 760, 4, 0.4, '#ff0000'), i.length) { //Sonia
                         var a = s ? i.length - 1 : 0;
                         t.lineWidth = 6, t.globalAlpha = g.darkTheme ? 0.7 : 0.35, t.strokeStyle = g.splitRangeColor, t.beginPath(), t.arc(i[a].x, i[a].y, i[a].size + 760, 0, this.pi2, false), t.closePath(), t.stroke();
                     }
                     t.globalAlpha = 1, o && (e = []);
                 },
                 'drawDoubleSplitRange': function(t, e, i, s, o) {
-                    if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
+                    if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia
                         //this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
 
                         var a = s ? i.length - 1 : 0;
@@ -6774,13 +6788,16 @@ var thelegendmodproject = function(t, e, i) {
                         e = [];
                     }
                 },
-                'drawOppRings': function(t, e, i, s, o, a, n) {
+                //Sonia (entire function update)
+                'drawOppRings': function(t, e, ip, i, s, o, a, ap, n) {
                     var r = 14 + 2 / e;
                     var l = 12 + 1 / e;
-                    this.drawCircles(t, i, r, l, 0.75, '#BE00FF');
-                    this.drawCircles(t, s, r, l, 0.75, '#FF0A00');
-                    this.drawCircles(t, o, r, l, 0.75, '#00C8FF');
-                    this.drawCircles(t, a, r, l, 0.75, '#64FF00');
+                    this.drawCircles(t, ip, r, l, 0.75, '#8000ff');
+                    this.drawCircles(t, i, r, l, 0.75, '#ff0000');
+                    this.drawCircles(t, s, r, l, 0.75, '#ff8000');
+                    this.drawCircles(t, o, r, l, 0.75, '#008000');
+                    this.drawCircles(t, a, r, l, 0.75, '#80ff00');
+                    this.drawCircles(t, ap, r, l, 0.75, '#0080ff');
                     if (n) {
                         i = [], s = [], o = [], a = [];
                     }
@@ -6793,6 +6810,12 @@ var thelegendmodproject = function(t, e, i) {
                 'drawCircles': function(t, e, i, s, o, a) {
                     t.lineWidth = s, t.globalAlpha = o, t.strokeStyle = a;
                     for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, e[n].size + i, 0, this.pi2, false), t.closePath(), t.stroke();
+                    t.globalAlpha = 1;
+                },
+                //Sonia (added entire function)
+                'draw2Circles': function(t, e, i, s, o, a) {
+                    t.lineWidth = s, t.globalAlpha = o, t.strokeStyle = a;
+                    for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 1.5*e[n].size + 2*i, 0, this.pi2, false), t.closePath(), t.stroke();
                     t.globalAlpha = 1;
                 },
                 'drawDashedCircle': function(t, e, i, s, o, a, n) {
