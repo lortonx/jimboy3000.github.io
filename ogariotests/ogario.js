@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.899 MEGA TEST
+// v1.900 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2402,7 +2402,7 @@ var thelegendmodproject = function(t, e, i) {
             'displayStats': function() {
                 if (v['showStats']) {
                     var t = '';
-                    i.play && (v.showStatsMass && i.playerMass && (t += h.mass + ': ' + i.playerMass + ' | '), i.playerScore && (t += h['score'] + ': ' + i.playerScore), v.showStatsSTE && i['STE'] && (t += ' | STE: ' + i['STE']), v['showStatsN16'] && i.playerSplitCells && (t += ' | ' + i.playerSplitCells + '/16'), v['showStatsFPS'] && (t += ' | ')), v['showStatsFPS'] && (t += 'FPS: ' + ogarfooddrawer['fps']), this['statsHUD'].textContent = t;
+                    i.play && (v.showStatsMass && i.playerMass && (t += h.mass + ': ' + i.playerMass + ' | '), i.playerScore && (t += h['score'] + ': ' + i.playerScore), v.showStatsSTE && i.STE && (t += ' | STE: ' + i.STE), v['showStatsN16'] && i.playerSplitCells && (t += ' | ' + i.playerSplitCells + '/16'), v['showStatsFPS'] && (t += ' | ')), v['showStatsFPS'] && (t += 'FPS: ' + ogarfooddrawer['fps']), this['statsHUD'].textContent = t;
                     var e = this;
                     setTimeout(function() {
                         e.displayStats();
@@ -5267,12 +5267,12 @@ var thelegendmodproject = function(t, e, i) {
             'playerNick': '',
             'playerPosition': 0,
             'leaderboard': [],
-            'biggerSTEDCellsCache': [], //Sonia
+            'biggerSTEDCellsCache': [], //Sonia			
             'biggerSTECellsCache': [],
             'biggerCellsCache': [],
             'smallerCellsCache': [],
             'STECellsCache': [],
-            'STEDCellsCache': [], //Sonia
+            'STEDCellsCache': [], //Sonia			
             'STE': 0,
             'autoZoom': false,
             'zoomValue': 0.1,
@@ -6156,8 +6156,8 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v.shortMass, v.virMassShots)).time = this.time, ogarioset1final ? this.food.push(ogariocellssetts) : (M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts), -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts['isPlayerCell'] = true, this.playerColor = m,
-                        this.playerCells.push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts['isPlayerCell'] && (y = this.playerNick), y && (ogariocellssetts.targetNick = y), ogariocellssetts.targetX = h, ogariocellssetts.targetY = c, ogariocellssetts.targetSize = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v.shortMass, v.virMassShots)).time = this.time, ogarioset1final ? this.food.push(ogariocellssetts) : (M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts), -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m,
+                        this.playerCells.push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts.isPlayerCell && (y = this.playerNick), y && (ogariocellssetts.targetNick = y), ogariocellssetts.targetX = h, ogariocellssetts.targetY = c, ogariocellssetts.targetSize = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, g && (ogariocellssetts['skin'] = g), 4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
@@ -6198,7 +6198,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'recalculatePlayerMass': function() {
                 if (this.playerScore = Math.max(this.playerScore, this.playerMass),
-                    v['virColors'] || v.splitRange || v.oppColors || v.oppRings || v.showStatsSTE) {
+                    v.virColors || v.splitRange || v.oppColors || v.oppRings || v.showStatsSTE) {
                     var t = this.playerCells;
                     var e = t.length;
                     t.sort(function(t, e) {
@@ -6210,18 +6210,18 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 if (v.showStatsSTE) {
                     var i = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
-                    this['STE'] = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null;
+                    this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null;
                 }
             },
             'compareCells': function() {
                 if (this.play && (v.oppColors || v.oppRings || v.splitRange)) {
                     if (v.oppRings || v.splitRange) {
-                        this.biggerSTEDCellsCache = []; //Sonia
                         this.biggerSTECellsCache = [];
                         this.biggerCellsCache = [];
                         this.smallerCellsCache = [];
                         this.STECellsCache = [];
-                        this.STEDCellsCache = []; //Sonia
+						this.biggerSTEDCellsCache = []; //Sonia
+                        this.STEDCellsCache = []; //Sonia						
                     }
                     var t = 0;
                     for (; t < this.cells.length; t++) {
@@ -6246,6 +6246,25 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
             },
+            /*'cacheCells': function(t, e, i, s, o) {
+                return s >= 2.5 ? void this.biggerSTECellsCache.push({
+                    'x': t,
+                    'y': e,
+                    'size': i
+                }) : s >= 1.25 ? void this.biggerCellsCache.push({
+                    'x': t,
+                    'y': e,
+                    'size': i
+                }) : s < 1.25 && s > 0.75 ? void 0 : s > o ? void this.smallerCellsCache.push({
+                    'x': t,
+                    'y': e,
+                    'size': i
+                }) : void this.STECellsCache.push({
+                    'x': t,
+                    'y': e,
+                    'size': i
+                });
+            },*/
             //Sonia (entire function updated)
             'cacheCells': function(t, e, i, s, o) {
                 return s >= 5.32 ? void this.biggerSTEDCellsCache.push({
@@ -6273,7 +6292,7 @@ var thelegendmodproject = function(t, e, i) {
                     'y': e,
                     'size': i
                 });
-            },
+            },			
             'setCellOppColor': function(t, e, i) {
                 return t ? ogarcopythelb.color : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
             },
@@ -6445,13 +6464,13 @@ var thelegendmodproject = function(t, e, i) {
                     if (M.play) {
                         if (v.splitRange) {
                             this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
-                            this.drawSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
-                            //console.log(M.playerCells[M.selectBiggestCell.length-1].size);
-                            this.drawDoubleSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
+							//this.drawSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
+                            this.drawDoubleSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
+							//this.drawDoubleSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
                         }
                         if (v.oppRings) {
-                            this.drawOppRings(this.ctx, this.scale, M.biggerSTEDCellsCache, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache, M.STEDCellsCache); //Sonia
-
+                            //this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
+							this.drawOppRings(this.ctx, this.scale, M.biggerSTEDCellsCache, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache, M.STEDCellsCache); //Sonia
                         }
                         if (v.cursorTracking) {
                             this.drawCursorTracking(this.ctx, M.playerCells, M.cursorX, M.cursorY);
@@ -6761,14 +6780,16 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'drawSplitRange': function(t, e, i, s, o) {
-                    if (this.drawCircles(t, e, 760, 4, 0.4, '#ff0000'), i.length) { //Sonia
+                    if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
+					//if (this.drawCircles(t, e, 760, 4, 0.4, '#ff0000'), i.length) { //Sonia	
                         var a = s ? i.length - 1 : 0;
                         t.lineWidth = 6, t.globalAlpha = g.darkTheme ? 0.7 : 0.35, t.strokeStyle = g.splitRangeColor, t.beginPath(), t.arc(i[a].x, i[a].y, i[a].size + 760, 0, this.pi2, false), t.closePath(), t.stroke();
                     }
                     t.globalAlpha = 1, o && (e = []);
                 },
                 'drawDoubleSplitRange': function(t, e, i, s, o) {
-                    if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia
+                    if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
+					//if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia	
                         //this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
 
                         var a = s ? i.length - 1 : 0;
@@ -6788,16 +6809,17 @@ var thelegendmodproject = function(t, e, i) {
                         e = [];
                     }
                 },
-                //Sonia (entire function update)
-                'drawOppRings': function(t, e, ip, i, s, o, a, ap, n) {
-                    var r = 14 + 2 / e;
+				//Sonia (entire function update)
+                //'drawOppRings': function(t, e, i, s, o, a, n) {					
+					'drawOppRings': function(t, e, ip, i, s, o, a, ap, n) {
+				  var r = 14 + 2 / e;
                     var l = 12 + 1 / e;
-                    this.drawCircles(t, ip, r, l, 0.75, '#8000ff');
-                    this.drawCircles(t, i, r, l, 0.75, '#ff0000');
-                    this.drawCircles(t, s, r, l, 0.75, '#ff8000');
-                    this.drawCircles(t, o, r, l, 0.75, '#008000');
-                    this.drawCircles(t, a, r, l, 0.75, '#80ff00');
-                    this.drawCircles(t, ap, r, l, 0.75, '#0080ff');
+                    this.drawCircles(t, ip, r, l, 0.75, '#8000ff'); //Sonia					
+                    this.drawCircles(t, i, r, l, 0.75, '#BE00FF');
+                    this.drawCircles(t, s, r, l, 0.75, '#FF0A00');
+                    this.drawCircles(t, o, r, l, 0.75, '#00C8FF');
+                    this.drawCircles(t, a, r, l, 0.75, '#64FF00');
+                    this.drawCircles(t, ap, r, l, 0.75, '#0080ff'); //Sonia					
                     if (n) {
                         i = [], s = [], o = [], a = [];
                     }
@@ -6817,7 +6839,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.lineWidth = s, t.globalAlpha = o, t.strokeStyle = a;
                     for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 1.5*e[n].size + 2*i, 0, this.pi2, false), t.closePath(), t.stroke();
                     t.globalAlpha = 1;
-                },
+                },				
                 'drawDashedCircle': function(t, e, i, s, o, a, n) {
                     var r = this.pi2 / o;
                     t.lineWidth = a, t.strokeStyle = n;
