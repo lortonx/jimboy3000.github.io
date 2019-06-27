@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.894 MEGA TEST
+// v1.895 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6054,7 +6054,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
                     this.mapOffsetFixed || (this.viewX = (i + t) / 2, this.viewY = (s + e) / 2);
                     this.mapOffsetFixed = true;
-                    console.log('[Legend mod Express] Map offset fixed (x, y):', this.mapOffsetX, this.mapOffsetY);
+					console.log('[Legend mod Express] Map offset fixed: (', this.mapOffsetX ,',', this.mapOffsetY,')');
                 }
             },
             'isInView': function(t, e, i) {
