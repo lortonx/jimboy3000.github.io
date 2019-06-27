@@ -1,4 +1,4 @@
-//v7.8
+//v7.9
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -138,6 +138,7 @@ function legendmaster(self) {
         }
     };
 	try{
+	window.EnvConfig={};
 	window.EnvConfig.fb_app_id=self.localStorage.getItem("EnvConfig.fb_app_id");
 	window.EnvConfig.google_client_id=self.localStorage.getItem("EnvConfig.google_client_id");
 	window.EnvConfig.EnvConfig.master_url=self.localStorage.getItem("EnvConfig.EnvConfig.master_url");
