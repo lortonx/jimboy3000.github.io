@@ -1,4 +1,4 @@
-//v7.6
+//v7.7
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -137,9 +137,12 @@ function legendmaster(self) {
             socialId: ""
         }
     };
-	window.EnvConfig.fb_app_id=localStorage.getItem("EnvConfig.fb_app_id");
-	window.EnvConfig.google_client_id=localStorage.getItem("EnvConfig.google_client_id");
-	window.EnvConfig.EnvConfig.master_url=localStorage.getItem("EnvConfig.EnvConfig.master_url");
+	try(){
+	window.EnvConfig.fb_app_id=self.localStorage.getItem("EnvConfig.fb_app_id");
+	window.EnvConfig.google_client_id=self.localStorage.getItem("EnvConfig.google_client_id");
+	window.EnvConfig.EnvConfig.master_url=self.localStorage.getItem("EnvConfig.EnvConfig.master_url");
+	}
+	catch(){}
 	if ( window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url ){
 		console.log("[Master] window.EnvConfig loaded from //agar.io/index.html from the previous time");
     var headers = {
