@@ -7925,7 +7925,7 @@ function initializeLM(modVersion) {
     console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
     console.groupEnd();
     console.group("Mod developed by");
-    console.log('www.legendclan.ml', stylesLegendModConsole2);
+    console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
     console.groupEnd();
     console.groupEnd();
 
