@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.901 MEGA TEST
+// v1.902 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4239,6 +4239,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (t && t.play) {
                     t.pause();
                     t.currentTime = 0;
+					//t.play();
                     var nopromise = {
                         catch: new Function()
                     };
@@ -6265,8 +6266,8 @@ var thelegendmodproject = function(t, e, i) {
                     'size': i
                 });
             },*/
-            //Sonia (entire function updated)
-            'cacheCells': function(t, e, i, s, o) {
+            //Sonia (entire function updated) // this is great :D
+            'cacheCells': function(t, e, i, s, o) { 
                 return s >= 5.32 ? void this.biggerSTEDCellsCache.push({
                     'x': t,
                     'y': e,
@@ -6464,9 +6465,9 @@ var thelegendmodproject = function(t, e, i) {
                     if (M.play) {
                         if (v.splitRange) {
                             this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
-							//this.drawSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
-                            this.drawDoubleSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
-							//this.drawDoubleSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
+							this.drawSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
+                            //this.drawDoubleSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
+							this.drawDoubleSplitRange(this.ctx, M.biggerSTEDCellsCache, M.playerCells, M.selectBiggestCell); //Sonia
                         }
                         if (v.oppRings) {
                             //this.drawOppRings(this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache);
