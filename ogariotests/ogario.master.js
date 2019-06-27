@@ -472,7 +472,7 @@ function legendmaster(self) {
             $("#helloContainer").attr("data-party-state", value);
         },
         connect: function(body) {
-            console.log("[Master] Connect to:", body);
+//            console.log("[Master] Connect to:", body);
             this.ws = "wss://" + body;
             if (":party" === this.gameMode && this.partyToken) {
                 this.ws += "?party_id=" + self.encodeURIComponent(this.partyToken);
