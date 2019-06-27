@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.900 MEGA TEST
+// v1.901 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6788,7 +6788,8 @@ var thelegendmodproject = function(t, e, i) {
                     t.globalAlpha = 1, o && (e = []);
                 },
                 'drawDoubleSplitRange': function(t, e, i, s, o) {
-                    if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
+                    //if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
+					if (this.draw2Circles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) { //Sonia
 					//if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia	
                         //this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
 
@@ -6837,7 +6838,8 @@ var thelegendmodproject = function(t, e, i) {
                 //Sonia (added entire function)
                 'draw2Circles': function(t, e, i, s, o, a) {
                     t.lineWidth = s, t.globalAlpha = o, t.strokeStyle = a;
-                    for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 1.5*e[n].size + 2*i, 0, this.pi2, false), t.closePath(), t.stroke();
+                    //for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 1.5*e[n].size + 2*i, 0, this.pi2, false), t.closePath(), t.stroke();
+					for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 2 * e[n].size + i, 0, this.pi2, false), t.closePath(), t.stroke(); //760+2*cell.size is the correct
                     t.globalAlpha = 1;
                 },				
                 'drawDashedCircle': function(t, e, i, s, o, a, n) {
