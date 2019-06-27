@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.896 MEGA TEST
+// v1.897 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2843,7 +2843,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                     this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"),
                     this.addOptions(["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
-                    this.protocolMode || (this.addOptions(.blockPopups, "extrasGroup"), $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"), $(".skinsGroup h5")["after"]('<label class="noSkins">' + h.noSkins +
+                    this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup"), $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"), $(".skinsGroup h5")["after"]('<label class="noSkins">' + h.noSkins +
                         " </label>"), $("#noSkins").appendTo($(".noSkins")), $(".transparencyGroup h5")["after"]('<label class="noColors">' + h.noColors + " </label>"), $("#noColors").appendTo($(".noColors")), $(".extrasGroup h5")["after"]('<label class="skipStats">' + h.skipStats + " </label>"), $("#skipStats").appendTo($(".skipStats")), $(".skipStats")["after"]('<label class="showQuest">' + h.showQuest + " </label>"), $("#showQuest").appendTo($(".showQuest")), $("#options").remove(), $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper")),
                     this["addSliderBox"](".animationGroup", "animation", 20, 200, 1), 
 					this["addSliderBox"](".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01), 
@@ -3002,16 +3002,16 @@ var thelegendmodproject = function(t, e, i) {
                     t.unblockPopups();
                 });
                 $(document).on("click", "#openfl-overlay.disabler", function() {
-                    if (v.blockPopups) {
-                        t.blockPopups();
+                    if (v["blockPopups"]) {
+                        t["blockPopups"]();
                     }
                 });
                 $(document).on("click", "#openfl-content", function() {
-                    if (v.blockPopups) {
+                    if (v["blockPopups"]) {
                         var container = $(this);
                         setTimeout(function() {
                             if (!container.is(":visible")) {
-                                t.blockPopups();
+                                t["blockPopups"]();
                             }
                         }, 1000);
                     }
