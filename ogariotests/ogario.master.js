@@ -1,4 +1,4 @@
-//v7.5
+//v7.6
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -8,7 +8,9 @@
 				var runEnvConfig = new Function (window.EnvConfig);
 				
 				runEnvConfig();
-				localStorage.setItem("EnvConfig", window.EnvConfig);				
+				localStorage.setItem("EnvConfig.fb_app_id", window.EnvConfig.fb_app_id);	
+				localStorage.setItem("EnvConfig.google_client_id", window.EnvConfig.google_client_id);
+				localStorage.setItem("EnvConfig.EnvConfig.master_url", window.EnvConfig.master_url);
 				//legendmaster(window);	
             },
             dataType: "text",
@@ -135,8 +137,10 @@ function legendmaster(self) {
             socialId: ""
         }
     };
-	window.EnvConfig=localStorage.getItem("EnvConfig");
-	if (window.EnvConfig && window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url){
+	window.EnvConfig.fb_app_id=localStorage.getItem("EnvConfig.fb_app_id");
+	window.EnvConfig.google_client_id=localStorage.getItem("EnvConfig.google_client_id");
+	window.EnvConfig.EnvConfig.master_url=localStorage.getItem("EnvConfig.EnvConfig.master_url");
+	if ( window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url ){
 		console.log("[Master] window.EnvConfig loaded from //agar.io/index.html from the previous time");
     var headers = {
 		fb_app_id: window.EnvConfig.fb_app_id,
