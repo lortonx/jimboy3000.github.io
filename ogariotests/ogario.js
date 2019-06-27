@@ -5948,9 +5948,11 @@ var thelegendmodproject = function(t, e, i) {
                         case 241:
                             window.testobjectsOpcode241 = data;
                             this.protocolKey = data.getUint32(s, true);
+							//window.testobjectsOpcode241.getUint32(1, true);
                             console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
                             var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
                             this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
+							//legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
                             if (window.master && window.master.login) {
                                 window.master.login();
                             }
