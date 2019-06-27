@@ -7925,7 +7925,7 @@ function initializeLM(modVersion) {
     console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
     console.groupEnd();
     console.group("Mod developed by");
-    console.log('%c???Jimboy3100', stylesLegendModConsole2);
+    console.log('The Legend clan of agario www.legendclan.ml', stylesLegendModConsole2);
     console.groupEnd();
     console.groupEnd();
 
