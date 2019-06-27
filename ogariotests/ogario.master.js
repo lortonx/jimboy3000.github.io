@@ -1,4 +1,4 @@
-//v7.4
+//v7.5
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -6,7 +6,9 @@
 				var parsed = $.parseHTML(sketchContents);
                 window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
 				var runEnvConfig = new Function (window.EnvConfig);
+				
 				runEnvConfig();
+				localStorage.setItem("EnvConfig", window.EnvConfig);				
 				//legendmaster(window);	
             },
             dataType: "text",
@@ -133,8 +135,9 @@ function legendmaster(self) {
             socialId: ""
         }
     };
+	window.EnvConfig=localStorage.getItem("EnvConfig");
 	if (window.EnvConfig && window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url){
-		console.log("[Master] window.EnvConfig loaded from //agar.io/index.html");
+		console.log("[Master] window.EnvConfig loaded from //agar.io/index.html from the previous time");
     var headers = {
 		fb_app_id: window.EnvConfig.fb_app_id,
         gplus_client_id: window.EnvConfig.google_client_id,
