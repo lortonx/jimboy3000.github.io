@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.051 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "50"; // the version 1.1-> 1.11
 //fix ffa
@@ -7698,8 +7698,8 @@ function initializeLM(modVersion) {
                 '#leaderboard-hud{top:10px!important;background:linear-gradient(to left,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
                 '#target-hud,#target-panel-hud {background:linear-gradient(to bottom,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
                 '#stats-hud{background:linear-gradient(to top,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
-                '#stats-hud{left: 50%!important; transform: translateX(-50%)!important;}' +
-                '.hud-top{top: 95.7%!important;}' +
+                '#stats-hud{left: 50%!important; transform: translateX(-50%)!important; text-align: center;}' +
+                '.hud-top{top: 93%!important;}' +
                 '#chat-box{bottom: 2%!important;}' +
                 '</style>');
             $(this).html('<i class="fa fa-minus"></i>' + Premadeletter47);
