@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.910 MEGA TEST
+// v1.911 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3799,7 +3799,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.sendBuffer(e);
                     t.sendPartyData();
                 }
-                this.socket.onmessage = function(e) {
+                this.socket["onmessage"] = function(e) {
                     t.handleMessage(e);
                 }
                 this.socket.onclose = function(e) {
@@ -3814,7 +3814,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket.onmessage = null;
+                    this.socket["onmessage"] = null;
                     try {
                         this.socket.close();
                     } catch (ogarcloseconlabel) {}
@@ -3884,18 +3884,18 @@ var thelegendmodproject = function(t, e, i) {
                         this.playerID = t.getUint32(1, true);
                         break;
                     case 1:
-                        this['sendPlayerUpdate']();
+                        this.sendPlayerUpdate();
                         break;
                     case 20:
-                        this['updateTeamPlayer'](t);
+                        this.updateTeamPlayer(t);
                         break;
                     case 30:
-                        this['updateTeamPlayerPosition'](t);
+                        this.updateTeamPlayerPosition(t);
                         break;
                     case 96:
                         break;
                     case 100:
-                        this['readChatMessage'](t);
+                        this.readChatMessage(t);
                 }
             },
             'sendPlayerState': function(t) {
@@ -5403,8 +5403,8 @@ var thelegendmodproject = function(t, e, i) {
                 this.socket['onopen'] = function() {
                     i['onOpen']();
                 };
-                this.socket.onmessage = function(t) {
-                    i.onmessage(t);
+                this.socket["onmessage"] = function(t) {
+                    i["onmessage"](t);
                 };
                 this.socket.onerror = function(t) {
                     i.onerror(t);
@@ -5456,7 +5456,7 @@ var thelegendmodproject = function(t, e, i) {
             'closeConnection': function() {
                 if (this.socket) {
                     this.socket['onopen'] = null;
-                    this.socket.onmessage = null;
+                    this.socket["onmessage"] = null;
                     this.socket.onerror = null;
                     this.socket.onclose = null;
                     try {
