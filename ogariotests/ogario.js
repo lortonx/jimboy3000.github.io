@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.911 MEGA TEST
+// v1.912 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1914,10 +1914,13 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'changeThemePreset': function(t) {
-                    this.changePreset(t, f), this.setTheme();
+                    this.changePreset(t, f);
+					this.setTheme();
                 },
                 'setFonts': function() {
-                    this.setFont('namesFont', g.namesFont), this.setFont('massFont', g.namesFont), this.setFont('sectorsFont', g.sectorsFont);
+                    this.setFont('namesFont', g.namesFont);
+					this.setFont('massFont', g.namesFont);
+					this.setFont('sectorsFont', g.sectorsFont);
                 },
                 'setBgColor': function() {
                     $('body').css('background-color', g.bgColor);
@@ -1976,7 +1979,8 @@ var thelegendmodproject = function(t, e, i) {
                     this.addCustomCSS('hudCSS', t);
                 },
                 'setHudFont': function() {
-                    this.setFont('hudFont', g.hudFont), $('#overlays-hud').css({
+                    this.setFont('hudFont', g.hudFont), 
+					$('#overlays-hud').css({
                         'font-family': g['hudFontFamily'],
                         'font-weight': g['hudFontWeight']
                     });
@@ -2488,9 +2492,11 @@ var thelegendmodproject = function(t, e, i) {
                 $('#freeCoins, #gifting, #openShopBtn, #dailyQuests').prop('disabled', true), $('#block-warn').show();
             },
             'unblockPopups': function() {
-                $('#openfl-overlay.disabler').click(), $('#openfl-content, #openfl-overlay').hide();
+                $('#openfl-overlay.disabler').click(), 
+				$('#openfl-content, #openfl-overlay').hide();
                 $('#openfl-content, #openfl-overlay').removeClass('block-popups');
-                $('#freeCoins, #gifting, #openShopBtn, #dailyQuests').prop('disabled', false), $('#block-warn').hide();
+                $('#freeCoins, #gifting, #openShopBtn, #dailyQuests').prop('disabled', false), 
+				$('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
                 v["blockPopups"] && this.unblockPopups();
@@ -2509,7 +2515,26 @@ var thelegendmodproject = function(t, e, i) {
             'displayStats': function() {
                 if (v.showStats) {
                     var t = '';
-                    i.play && (v.showStatsMass && i.playerMass && (t += h.mass + ': ' + i.playerMass + ' | '), i.playerScore && (t += h.score + ': ' + i.playerScore), v.showStatsSTE && i.STE && (t += ' | STE: ' + i.STE), v.showStatsN16 && i.playerSplitCells && (t += ' | ' + i.playerSplitCells + '/16'), v.showStatsFPS && (t += ' | ')), v.showStatsFPS && (t += 'FPS: ' + ogarfooddrawer.fps), this.statsHUD.textContent = t;
+                    if (i.play){
+						if (v.showStatsMass && i.playerMass){ 
+							t += h.mass + ': ' + i.playerMass + ' | '
+						} 
+						if (i.playerScore){
+						t += h.score + ': ' + i.playerScore
+						}						
+						if (v.showStatsSTE && i.STE){
+							t += ' | STE: ' + i.STE
+						} 
+						if (v.showStatsN16 && i.playerSplitCells){
+							t += ' | ' + i.playerSplitCells + '/16'
+						}							
+						if (v.showStatsFPS) {
+							t += ' | '
+						}						
+						if (v.showStatsFPS){
+							t += 'FPS: ' + ogarfooddrawer.fps; 
+						}
+					this.statsHUD.textContent = t;
                     var e = this;
                     setTimeout(function() {
                         e.displayStats();
@@ -2528,7 +2553,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'displayParties': function() {
                 for (var t = '', e = 0; e < this.parties.length; e++) t += '<li><a href=\"https://agar.io/#' + this.parties[e] + '\" onclick=\"$(\'#party-token\').val(\'' + this.parties[e] + '\'); $(\'#join-party-btn-2\').click();\">https://agar.io/#' + this.parties[e] + '</a></li>';
-                this.activeParties.className = '' === t ? 'no-parties' : '', this.activeParties.innerHTML = t;
+                this.activeParties.className = '' === t ? 'no-parties' : '', 
+				this.activeParties.innerHTML = t;
             },
             /*			
                         'displayTop5': function() {
