@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.908 MEGA TEST
+// v1.909 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7875,7 +7875,7 @@ var thelegendmodproject = function(t, e, i) {
                 'inputClassName': 'custom-key-in form-control input-sm',
                 'loadDefaultHotkeys': function() {
                     for (var t in ogario1Hotkeys = {}, ogario11Hotkeys) ogario11Hotkeys.hasOwnProperty(t) && (ogario1Hotkeys[ogario11Hotkeys[t].defaultKey] = t);
-                    ogario1Hotkeys.spec-messageKey = this.defaultMessageKey;
+                    ogario1Hotkeys['spec-messageKey'] = this.defaultMessageKey;
                 },
                 'loadHotkeys': function() {
                     null !== window.localStorage.getItem('ogarioHotkeys') ? ogario1Hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys')) : this.loadDefaultHotkeys(), null !== window.localStorage.getItem('ogarioCommands') && (c = JSON.parse(window.localStorage.getItem('ogarioCommands')));
@@ -8002,7 +8002,7 @@ var thelegendmodproject = function(t, e, i) {
                             ogario1Hotkeys[t] = e,
                                 $('#' + e).val(t);
                             if ('hk-chatMessage' === e) {
-                                ogario1Hotkeys.spec-messageKey = t
+                                ogario1Hotkeys['spec-messageKey'] = t
                             }
                             this.lastPressedKey = t;
                             this.lastKeyId = e;
@@ -8052,7 +8052,7 @@ var thelegendmodproject = function(t, e, i) {
         }
         document.onkeydown = function(t) {
             var e = lastkeys.getPressedKey(t);
-            if (('INPUT' !== t['target']['tagName'] || t['target'].className === lastkeys.inputClassName || e === ogario1Hotkeys.spec-messageKey) && '' !== e && !ogarioefaultHotkeys[e]) {
+            if (('INPUT' !== t['target']['tagName'] || t['target'].className === lastkeys.inputClassName || e === ogario1Hotkeys['spec-messageKey']) && '' !== e && !ogarioefaultHotkeys[e]) {
                 if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
                 if (t['target'].className === lastkeys.inputClassName) return t.preventDefault(), void lastkeys.setHotkey(e, t['target'].id);
                 if (ogario1Hotkeys[e]) {
