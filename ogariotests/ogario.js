@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.906 MEGA TEST
+// v1.908 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1790,7 +1790,7 @@ var thelegendmodproject = function(t, e, i) {
                         $('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h['saveSett'] + '</button>'), $(document).on('click', '#theme .btn-save', function(e) {
                             e.preventDefault();
                             var i = $(this);
-                            i.text(h['saved']), t['saveThemeSettings'](), setTimeout(function() {
+                            i.text(h.saved), t['saveThemeSettings'](), setTimeout(function() {
                                 i.text(h['saveSett']);
                             }, 500);
                         }), $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + h['restoreThemeSettings'] + '</a></div>'),
@@ -1826,7 +1826,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'setCustomBackground': function() {
-                    g['customBackground'] ? $('body').css('background-image', 'url(' + g['customBackground'] + ')') : $('body').css('background-image', 'none');
+                    g.customBackground ? $('body').css('background-image', 'url(' + g.customBackground + ')') : $('body').css('background-image', 'none');
                 },
                 'setCustomCursor': function() {
                     if (g.customCursor) var t = '*{cursor:url(' + g.customCursor + '), auto !important}';
@@ -1859,36 +1859,38 @@ var thelegendmodproject = function(t, e, i) {
                     this.addCustomCSS('menuButtonsCSS', t);
                 },
                 'setMenuBg': function() {
-                    $('#menuBg').val(g['menuBg']), g['menuBg'] ? $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'url(' + g['menuBg'] + ')') : $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'none');
+                    $('#menuBg').val(g.menuBg), g.menuBg ? $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'url(' + g.menuBg + ')') : $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'none');
                 },
                 'setHud': function() {
-                    this['setHudColors'](), this['setHudFont'](), this['setHudScale']();
+                    this.setHudColors(); 
+					this.setHudFont(); 
+					this.setHudScale();
                 },
                 'setHudColors': function() {
-                    var t = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + g['hudMainColor'] + '}.hud,.hud-b,#chat-emoticons{background-color:' + g['hudColor'] + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + g['hudTextColor'] + '}.stats-hud-color{color:' + g['statsHudColor'] + '}.time-hud-color{color:' + g['timeHudColor'] + '}.top5-mass-color{color:' + g['top5MassColor'] + '}#leaderboard-positions .me{color:' + g['lbMeColor'] + '}#leaderboard-positions .teammate{color:' + g['lbTeammateColor'] + '}';
+                    var t = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + g.hudMainColor + '}.hud,.hud-b,#chat-emoticons{background-color:' + g.hudColor + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + g.hudTextColor + '}.stats-hud-color{color:' + g.statsHudColor + '}.time-hud-color{color:' + g.timeHudColor + '}.top5-mass-color{color:' + g.top5MassColor + '}#leaderboard-positions .me{color:' + g.lbMeColor + '}#leaderboard-positions .teammate{color:' + g.lbTeammateColor + '}';
                     this.addCustomCSS('hudCSS', t);
                 },
                 'setHudFont': function() {
-                    this.setFont('hudFont', g['hudFont']), $('#overlays-hud').css({
+                    this.setFont('hudFont', g.hudFont), $('#overlays-hud').css({
                         'font-family': g['hudFontFamily'],
                         'font-weight': g['hudFontWeight']
                     });
                 },
                 'setHudScale': function() {
-                    var t = Math.round(20 * g['hudScale']),
-                        e = Math.round(200 * g['hudScale']),
-                        i = Math.floor(55 * g['hudScale']),
-                        o = Math.floor(6 * g['hudScale']),
-                        a = Math.floor(280 * g['hudScale']),
-                        n = Math.floor(85 * g['hudScale']),
-                        r = Math.floor(20 * g['hudScale']);
+                    var t = Math.round(20 * g.hudScale),
+                        e = Math.round(200 * g.hudScale),
+                        i = Math.floor(55 * g.hudScale),
+                        o = Math.floor(6 * g.hudScale),
+                        a = Math.floor(280 * g.hudScale),
+                        n = Math.floor(85 * g.hudScale),
+                        r = Math.floor(20 * g.hudScale);
                     $('#overlays-hud').css('font-size', t + 'px'), $('#leaderboard-hud, #time-hud').width(e), $('#top5-hud').width(e + 30).css('top', i + 'px'), $('#top5-pos').css('padding-left', o + 'px'), $('#time-hud').css('top', a + 'px'), $('#pause-hud').css('top', n + 'px'), $('#target-hud').css('padding-top', r + 'px');
                 },
                 'setChat': function() {
-                    this['setChatColors'](), this['setChatScale']();
+                    this['setChatColors'](), this.setChatScale();
                 },
                 'setChatColors': function() {
-                    var t = '#message,#messages li,.toast-success{background-color:' + g['messageColor'] + '}#message,.message-text,.toast-success .message-text{color:' + g['messageTextColor'] + '}.message-nick,.mute-user,.mute-user:hover,.toast-success .message-nick,.toast .mute-user,.toast .mute-user:hover{color:' + g['messageNickColor'] + '}.message-time{color:' + g['messageTimeColor'] + '}.toast-warning{background-color:' + g['commandsColor'] + '}.command-text,.toast-warning .command-text{color:' + g['commandsTextColor'] + '}.command-nick,.toast-warning .command-nick,.toast-warning .mute-user,.toast-warning .mute-user:hover{color:' + g['commandsNickColor'] + '}.command-time{color:' + g['commandsTimeColor'] + '}#chat-box{background-color:' + g['chatBoxColor'] + '}';
+                    var t = '#message,#messages li,.toast-success{background-color:' + g.messageColor + '}#message,.message-text,.toast-success .message-text{color:' + g.messageTextColor + '}.message-nick,.mute-user,.mute-user:hover,.toast-success .message-nick,.toast .mute-user,.toast .mute-user:hover{color:' + g.messageNickColor + '}.message-time{color:' + g.messageTimeColor + '}.toast-warning{background-color:' + g.commandsColor + '}.command-text,.toast-warning .command-text{color:' + g.commandsTextColor + '}.command-nick,.toast-warning .command-nick,.toast-warning .mute-user,.toast-warning .mute-user:hover{color:' + g.commandsNickColor + '}.command-time{color:' + g.commandsTimeColor + '}#chat-box{background-color:' + g.chatBoxColor + '}';
                     this.addCustomCSS('chatCSS', t);
                 },
                 'setChatScale': function() {
@@ -1916,10 +1918,10 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'setMiniMapWidth': function() {
-                    var t = g['miniMapWidth'] / 200;
+                    var t = g.miniMapWidth / 200;
                     g.miniMapTop = Math.round(20 * t), $('#minimap-hud').css({
-                        'width': g['miniMapWidth'],
-                        'height': g['miniMapWidth'] + g.miniMapTop
+                        'width': g.miniMapWidth,
+                        'height': g.miniMapWidth + g.miniMapTop
                     }), ogarminimapdrawer && ogarminimapdrawer.resetMiniMapSectors();
                 },
                 'setMiniMapSectorsColor': function() {
@@ -2373,7 +2375,7 @@ var thelegendmodproject = function(t, e, i) {
                 v.fpsAtTop ? $('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : $('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
             },
             'setBlockPopups': function() {
-                this.protocolMode ? $('#block-warn').hide() : v.blockPopups ? this.blockPopups() : this.unblockPopups();
+                this.protocolMode ? $('#block-warn').hide() : v["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
             },
             'blockPopups': function() {
                 $('#openfl-content, #openfl-overlay').hide();
@@ -2386,7 +2388,7 @@ var thelegendmodproject = function(t, e, i) {
                 $('#freeCoins, #gifting, #openShopBtn, #dailyQuests').prop('disabled', false), $('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
-                v.blockPopups && this.unblockPopups();
+                v["blockPopups"] && this.unblockPopups();
             },
             'displayLeaderboard': function(t, e = '') {
                 if (this.leaderboardPositionsHUD) {
@@ -2873,7 +2875,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                     this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"),
                     this.addOptions(["showStats", "showStatsMass", "showStatsSTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
-                    this.protocolMode || (this.addOptions(.blockPopups, "extrasGroup"), 
+                    this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup"), 
 					$("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"), 
 					$(".skinsGroup h5").after('<label class="noSkins">' + h.noSkins +" </label>"), 
 						$("#noSkins").appendTo($(".noSkins")), $(".transparencyGroup h5").after('<label class="noColors">' + h.noColors + " </label>"), 
@@ -3057,16 +3059,16 @@ var thelegendmodproject = function(t, e, i) {
                     t.unblockPopups();
                 });
                 $(document).on("click", "#openfl-overlay.disabler", function() {
-                    if (v.blockPopups) {
-                        t.blockPopups();
+                    if (v["blockPopups"]) {
+                        t["blockPopups"]();
                     }
                 });
                 $(document).on("click", "#openfl-content", function() {
-                    if (v.blockPopups) {
+                    if (v["blockPopups"]) {
                         var container = $(this);
                         setTimeout(function() {
                             if (!container.is(":visible")) {
-                                t.blockPopups();
+                                t["blockPopups"]();
                             }
                         }, 1000);
                     }
