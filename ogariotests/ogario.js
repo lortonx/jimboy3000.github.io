@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.911 MEGA TEST
+// v1.910 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1684,7 +1684,7 @@ var thelegendmodproject = function(t, e, i) {
                 'addColorBox': function(t, e, o) {
                     if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + g[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
                         var a = this;
-                        $(t + ' .' + e + '-picker').colorpicker({
+                        $(t + ' .' + e + '-picker')['colorpicker']({
                             'format': 'hex'
                         }).on('changeColor.colorpicker', function(t) {
                             g[e] = t.color.toHex(), i.hasOwnProperty(e) && (i[e] = g[e]), a[o]();
@@ -1780,22 +1780,127 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setThemeMenu': function() {
                     var t = this;
-                    $('#theme').append('<ul class=\"submenu-tabs\"><li class=\"theme-main-tab active\"><a href=\"#theme-main\" class=\"active ogicon-paint-format\" data-toggle=\"tab-tooltip\" title=\"' + h['basicTheming'] + '\"></a></li><li class=\"theme-menu-tab\"><a href=\"#theme-menu\" class=\"ogicon-menu\" data-toggle=\"tab-tooltip\" title=\"' + h['menuTheming'] + '\"></a></li><li class=\"theme-hud-tab\"><a href=\"#theme-hud\" class=\"ogicon-display\" data-toggle=\"tab-tooltip\" title=\"' + h['hudTheming'] + '\"></a></li><li class=\"theme-chat-tab\"><a href=\"#theme-chat\" class=\"ogicon-bubbles\" data-toggle=\"tab-tooltip\" title=\"' + h['chatTheming'] + '\"></a></li><li class=\"theme-minimap-tab\"><a href=\"#theme-minimap\" class=\"ogicon-location2\" data-toggle=\"tab-tooltip\" title=\"' + h['miniMapTheming'] + '\"></a></li><li class=\"theme-images-tab\"><a href=\"#theme-images\" class=\"ogicon-compass\" data-toggle=\"tab-tooltip\" title=\"' + h['imagesTheming'] + '\"></a></li></ul><div id=\"theme-main\" class=\"submenu-panel\"></div><div id=\"theme-menu\" class=\"submenu-panel\"></div><div id=\"theme-hud\" class=\"submenu-panel\"></div><div id=\"theme-chat\" class=\"submenu-panel\"></div><div id=\"theme-minimap\" class=\"submenu-panel\"></div><div id=\"theme-images\" class=\"submenu-panel\"></div>'), this.addPresetBox('#theme-main', 'themePreset', f, 'preset', 'changeThemePreset'), this.addColorBox('#theme-main', 'bgColor', 'setBgColor'), this.addColorBox('#theme-main', 'bordersColor'), this.addColorBox('#theme-main', 'borderGlowColor'), this.addColorBox('#theme-main', 'gridColor'), this.addColorBox('#theme-main', 'sectorsColor'), this.addColorBox('#theme-main', 'namesColor'), this.addColorBox('#theme-main', 'namesStrokeColor'), this.addColorBox('#theme-main', 'massColor'), this.addColorBox('#theme-main', 'massStrokeColor'), this.addColorBox('#theme-main', 'virusColor'), this.addColorBox('#theme-main', 'virusStrokeColor'), this.addColorBox('#theme-main', 'mVirusColor'), this.addColorBox('#theme-main', 'mVirusStrokeColor'), this.addColorBox('#theme-main', 'virusGlowColor'), this.addColorBox('#theme-main', 'foodColor', 'setFoodColor'), this.addColorBox('#theme-main', 'teammatesIndColor', 'setIndicatorColor'), this.addColorBox('#theme-main', 'cursorTrackingColor'), this.addColorBox('#theme-main', 'splitRangeColor'), this.addColorBox('#theme-main', 'safeAreaColor'), this.addColorBox('#theme-main', 'dangerAreaColor'), this.addColorBox('#theme-main', 'ghostCellsColor'), this['addFontBox']('#theme-main', 'namesFont'), this['addFontBox']('#theme-main', 'massFont'), this['addFontBox']('#theme-main', 'sectorsFont'), this.addSliderBox('#theme-main', 'sectorsFontSize', 200, 2000, 10), this.addSliderBox('#theme-main', 'namesScale', 0.5, 2, 0.1), this.addSliderBox('#theme-main', 'massScale', 1, 5, 1), this.addSliderBox('#theme-main', 'virMassScale', 1, 5, 1), this.addSliderBox('#theme-main', 'strokeScale', 1, 4, 0.1), this.addSliderBox('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor'), this.addSliderBox('#theme-main', 'virusStrokeSize', 2, 40, 1), this.addSliderBox('#theme-main', 'bordersWidth', 2, 200, 2), this.addSliderBox('#theme-main', 'borderGlowSize', 0, 40, 1), this.addSliderBox('#theme-main', 'virusGlowSize', 0, 40, 1), this.addSliderBox('#theme-main', 'sectorsWidth', 2, 200, 2), this.addSliderBox('#theme-main', 'cellsAlpha', 0.01, 0.99, 0.01), this.addSliderBox('#theme-main', 'skinsAlpha', 0.01, 0.99, 0.01), this.addSliderBox('#theme-main', 'virusAlpha', 0, 1, 0.01), this.addSliderBox('#theme-main', 'textAlpha', 0.1, 1, 0.01), this.addSliderBox('#theme-main', 'ghostCellsAlpha', 0.01, 0.99, 0.01), this.addPresetBox('#theme-menu', 'menuPreset', m, 'menuPreset', 'changeMenuPreset'), this.addSliderBox('#theme-menu', 'menuOpacity', 0.1, 1, 0.01, 'setMenuOpacity'), this.addColorBox('#theme-menu', 'menuMainColor', 'setMenuMainColor'), this.addColorBox('#theme-menu', 'menuBtnTextColor', 'setMenuButtons'), this.addColorBox('#theme-menu', 'menuPanelColor', 'setMenuPanelColor'), this.addColorBox('#theme-menu', 'menuPanelColor2', 'setMenuPanelColor'), this.addColorBox('#theme-menu', 'menuTextColor', 'setMenuTextColor'), this.addColorBox('#theme-menu', 'menuTextColor2', 'setMenuTextColor'), this.addColorBox('#theme-menu', 'btn1Color', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn1Color2', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn2Color', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn2Color2', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn3Color', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn3Color2', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn4Color', 'setMenuButtons'), this.addColorBox('#theme-menu', 'btn4Color2', 'setMenuButtons'), this.addInputBox('#theme-menu', 'menuBg', 'Image URL', 'setMenuBg'), this.addColorBox('#theme-hud', 'hudMainColor', 'setHudColors'), this['addRgbaColorBox']('#theme-hud', 'hudColor', 'setHudColors'), this.addColorBox('#theme-hud', 'hudTextColor', 'setHudColors'), this.addColorBox('#theme-hud', 'statsHudColor', 'setHudColors'), this.addColorBox('#theme-hud', 'timeHudColor', 'setHudColors'), this.addColorBox('#theme-hud', 'top5MassColor', 'setHudColors'), this.addColorBox('#theme-hud', 'lbMeColor', 'setHudColors'), this.addColorBox('#theme-hud', 'lbTeammateColor', 'setHudColors'), this['addFontBox']('#theme-hud', 'hudFont', 'setHudFont'), this.addSliderBox('#theme-hud', 'hudScale', 1, 2, 0.01, 'setHudScale'), this['addRgbaColorBox']('#theme-chat', 'messageColor', 'setChatColors'), this.addColorBox('#theme-chat', 'messageTextColor', 'setChatColors'), this.addColorBox('#theme-chat', 'messageTimeColor', 'setChatColors'), this.addColorBox('#theme-chat', 'messageNickColor', 'setChatColors'), this['addRgbaColorBox']('#theme-chat', 'commandsColor', 'setChatColors'), this.addColorBox('#theme-chat', 'commandsTextColor', 'setChatColors'), this.addColorBox('#theme-chat', 'commandsTimeColor', 'setChatColors'), this.addColorBox('#theme-chat', 'commandsNickColor', 'setChatColors'), this['addRgbaColorBox']('#theme-chat', 'chatBoxColor', 'setChatColors'), this.addSliderBox('#theme-chat', 'chatScale', 1, 2, 0.01, 'setChatScale'), this.addColorBox('#theme-minimap', 'miniMapSectorsColor', 'setMiniMapSectorsColor'), this.addColorBox('#theme-minimap', 'miniMapSectorColor'), this.addColorBox('#theme-minimap', 'miniMapNickColor'), this.addColorBox('#theme-minimap', 'miniMapNickStrokeColor'), this.addColorBox('#theme-minimap', 'miniMapMyCellColor'), this.addColorBox('#theme-minimap', 'miniMapMyCellStrokeColor'), this.addColorBox('#theme-minimap', 'miniMapTeammatesColor'), this.addColorBox('#theme-minimap', 'miniMapDeathLocationColor'), this.addColorBox('#theme-minimap', 'miniMapGuidesColor'), this.addColorBox('#theme-minimap', 'miniMapGhostCellsColor'), this['addFontBox']('#theme-minimap', 'miniMapFont', 'setMiniMapFont'), this['addFontBox']('#theme-minimap', 'miniMapNickFont'), this.addSliderBox('#theme-minimap', 'miniMapWidth', 200, 400, 2, 'setMiniMapWidth'), this.addSliderBox('#theme-minimap', 'miniMapSectorsOpacity', 0, 1, 0.01, 'setMiniMapSectorsOpacity'), this.addSliderBox('#theme-minimap', 'miniMapNickSize', 8, 16, 1), this.addSliderBox('#theme-minimap', 'miniMapNickStrokeSize', 0, 6, 1), this.addSliderBox('#theme-minimap', 'miniMapMyCellSize', 4, 10, 0.5), this.addSliderBox('#theme-minimap', 'miniMapMyCellStrokeSize', 0, 10, 1), this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5), this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01), this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground'), this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
+                    $('#theme').append('<ul class=\"submenu-tabs\"><li class=\"theme-main-tab active\"><a href=\"#theme-main\" class=\"active ogicon-paint-format\" data-toggle=\"tab-tooltip\" title=\"' + h.basicTheming + '\"></a></li><li class=\"theme-menu-tab\"><a href=\"#theme-menu\" class=\"ogicon-menu\" data-toggle=\"tab-tooltip\" title=\"' + h.menuTheming + '\"></a></li><li class=\"theme-hud-tab\"><a href=\"#theme-hud\" class=\"ogicon-display\" data-toggle=\"tab-tooltip\" title=\"' + h.hudTheming + '\"></a></li><li class=\"theme-chat-tab\"><a href=\"#theme-chat\" class=\"ogicon-bubbles\" data-toggle=\"tab-tooltip\" title=\"' + h.chatTheming + '\"></a></li><li class=\"theme-minimap-tab\"><a href=\"#theme-minimap\" class=\"ogicon-location2\" data-toggle=\"tab-tooltip\" title=\"' + h.miniMapTheming + '\"></a></li><li class=\"theme-images-tab\"><a href=\"#theme-images\" class=\"ogicon-compass\" data-toggle=\"tab-tooltip\" title=\"' + h.imagesTheming + '\"></a></li></ul><div id=\"theme-main\" class=\"submenu-panel\"></div><div id=\"theme-menu\" class=\"submenu-panel\"></div><div id=\"theme-hud\" class=\"submenu-panel\"></div><div id=\"theme-chat\" class=\"submenu-panel\"></div><div id=\"theme-minimap\" class=\"submenu-panel\"></div><div id=\"theme-images\" class=\"submenu-panel\"></div>'), 
+					this.addPresetBox('#theme-main', 'themePreset', f, 'preset', 'changeThemePreset'), 
+					this.addColorBox('#theme-main', 'bgColor', 'setBgColor'), 
+					this.addColorBox('#theme-main', 'bordersColor'), 
+					this.addColorBox('#theme-main', 'borderGlowColor'), 
+					this.addColorBox('#theme-main', 'gridColor'), 
+					this.addColorBox('#theme-main', 'sectorsColor'), 
+					this.addColorBox('#theme-main', 'namesColor'), 
+					this.addColorBox('#theme-main', 'namesStrokeColor'), 
+					this.addColorBox('#theme-main', 'massColor'), 
+					this.addColorBox('#theme-main', 'massStrokeColor'), 
+					this.addColorBox('#theme-main', 'virusColor'), 
+					this.addColorBox('#theme-main', 'virusStrokeColor'), 
+					this.addColorBox('#theme-main', 'mVirusColor'), 
+					this.addColorBox('#theme-main', 'mVirusStrokeColor'), 
+					this.addColorBox('#theme-main', 'virusGlowColor'), 
+					this.addColorBox('#theme-main', 'foodColor', 'setFoodColor'), 
+					this.addColorBox('#theme-main', 'teammatesIndColor', 'setIndicatorColor'), 
+					this.addColorBox('#theme-main', 'cursorTrackingColor'), 
+					this.addColorBox('#theme-main', 'splitRangeColor'), 
+					this.addColorBox('#theme-main', 'safeAreaColor'), 
+					this.addColorBox('#theme-main', 'dangerAreaColor'), 
+					this.addColorBox('#theme-main', 'ghostCellsColor'), 
+					this.addFontBox('#theme-main', 'namesFont'), 
+					this.addFontBox('#theme-main', 'massFont'), 
+					this.addFontBox('#theme-main', 'sectorsFont'), 
+					this.addSliderBox('#theme-main', 'sectorsFontSize', 200, 2000, 10), 
+					this.addSliderBox('#theme-main', 'namesScale', 0.5, 2, 0.1), 
+					this.addSliderBox('#theme-main', 'massScale', 1, 5, 1), 
+					this.addSliderBox('#theme-main', 'virMassScale', 1, 5, 1), 
+					this.addSliderBox('#theme-main', 'strokeScale', 1, 4, 0.1), 
+					this.addSliderBox('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor'), 
+					this.addSliderBox('#theme-main', 'virusStrokeSize', 2, 40, 1), 
+					this.addSliderBox('#theme-main', 'bordersWidth', 2, 200, 2), 
+					this.addSliderBox('#theme-main', 'borderGlowSize', 0, 40, 1), 
+					this.addSliderBox('#theme-main', 'virusGlowSize', 0, 40, 1), 
+					this.addSliderBox('#theme-main', 'sectorsWidth', 2, 200, 2), 
+					this.addSliderBox('#theme-main', 'cellsAlpha', 0.01, 0.99, 0.01), 
+					this.addSliderBox('#theme-main', 'skinsAlpha', 0.01, 0.99, 0.01), 
+					this.addSliderBox('#theme-main', 'virusAlpha', 0, 1, 0.01), 
+					this.addSliderBox('#theme-main', 'textAlpha', 0.1, 1, 0.01),
+					this.addSliderBox('#theme-main', 'ghostCellsAlpha', 0.01, 0.99, 0.01), 
+					this.addPresetBox('#theme-menu', 'menuPreset', m, 'menuPreset', 'changeMenuPreset'), 
+					this.addSliderBox('#theme-menu', 'menuOpacity', 0.1, 1, 0.01, 'setMenuOpacity'), 
+					this.addColorBox('#theme-menu', 'menuMainColor', 'setMenuMainColor'), 
+					this.addColorBox('#theme-menu', 'menuBtnTextColor', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'menuPanelColor', 'setMenuPanelColor'), 
+					this.addColorBox('#theme-menu', 'menuPanelColor2', 'setMenuPanelColor'), 
+					this.addColorBox('#theme-menu', 'menuTextColor', 'setMenuTextColor'), 
+					this.addColorBox('#theme-menu', 'menuTextColor2', 'setMenuTextColor'), 
+					this.addColorBox('#theme-menu', 'btn1Color', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn1Color2', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn2Color', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn2Color2', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn3Color', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn3Color2', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn4Color', 'setMenuButtons'), 
+					this.addColorBox('#theme-menu', 'btn4Color2', 'setMenuButtons'), 
+					this.addInputBox('#theme-menu', 'menuBg', 'Image URL', 'setMenuBg'), 
+					this.addColorBox('#theme-hud', 'hudMainColor', 'setHudColors'), 
+					this.addRgbaColorBox('#theme-hud', 'hudColor', 'setHudColors'), 
+					this.addColorBox('#theme-hud', 'hudTextColor', 'setHudColors'), 
+					this.addColorBox('#theme-hud', 'statsHudColor', 'setHudColors'), 
+					this.addColorBox('#theme-hud', 'timeHudColor', 'setHudColors'), 
+					this.addColorBox('#theme-hud', 'top5MassColor', 'setHudColors'), 
+					this.addColorBox('#theme-hud', 'lbMeColor', 'setHudColors'), 
+					this.addColorBox('#theme-hud', 'lbTeammateColor', 'setHudColors'), 
+					this.addFontBox('#theme-hud', 'hudFont', 'setHudFont'), 
+					this.addSliderBox('#theme-hud', 'hudScale', 1, 2, 0.01, 'setHudScale'), 
+					this.addRgbaColorBox('#theme-chat', 'messageColor', 'setChatColors'), 
+					this.addColorBox('#theme-chat', 'messageTextColor', 'setChatColors'), 
+					this.addColorBox('#theme-chat', 'messageTimeColor', 'setChatColors'), 
+					this.addColorBox('#theme-chat', 'messageNickColor', 'setChatColors'), 
+					this.addRgbaColorBox('#theme-chat', 'commandsColor', 'setChatColors'), 
+					this.addColorBox('#theme-chat', 'commandsTextColor', 'setChatColors'), 
+					this.addColorBox('#theme-chat', 'commandsTimeColor', 'setChatColors'), 
+					this.addColorBox('#theme-chat', 'commandsNickColor', 'setChatColors'), 
+					this.addRgbaColorBox('#theme-chat', 'chatBoxColor', 'setChatColors'), 
+					this.addSliderBox('#theme-chat', 'chatScale', 1, 2, 0.01, 'setChatScale'), 
+					this.addColorBox('#theme-minimap', 'miniMapSectorsColor', 'setMiniMapSectorsColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapSectorColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapNickColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapNickStrokeColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapMyCellColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapMyCellStrokeColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapTeammatesColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapDeathLocationColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapGuidesColor'), 
+					this.addColorBox('#theme-minimap', 'miniMapGhostCellsColor'), 
+					this.addFontBox('#theme-minimap', 'miniMapFont', 'setMiniMapFont'), 
+					this.addFontBox('#theme-minimap', 'miniMapNickFont'), 
+					this.addSliderBox('#theme-minimap', 'miniMapWidth', 200, 400, 2, 'setMiniMapWidth'), 
+					this.addSliderBox('#theme-minimap', 'miniMapSectorsOpacity', 0, 1, 0.01, 'setMiniMapSectorsOpacity'), 
+					this.addSliderBox('#theme-minimap', 'miniMapNickSize', 8, 16, 1), 
+					this.addSliderBox('#theme-minimap', 'miniMapNickStrokeSize', 0, 6, 1), 
+					this.addSliderBox('#theme-minimap', 'miniMapMyCellSize', 4, 10, 0.5), t
+					his.addSliderBox('#theme-minimap', 'miniMapMyCellStrokeSize', 0, 10, 1), 
+					this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5), 
+					this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01), 
+					this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground'), 
+					this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
                     for (var e = 'https://jimboy3100.github.io/cursors/cursor_', i = 0; i < 35; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
                     $(document).on('click', '#theme-images .cursor-box a', function(e) {
                             e.preventDefault();
                             var i = $('img', this).attr('src');
-                            g.customCursor = i, t['setCustomCursor'](), $('#customCursor').val(i), $('#theme-images .cursor-box a').removeClass('active'), $(this).addClass('active');
+                            g.customCursor = i, 
+							t.setCustomCursor(), 
+							$('#customCursor').val(i), 
+							$('#theme-images .cursor-box a').removeClass('active'), 
+							$(this).addClass('active');
                         }),
-                        $('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h['saveSett'] + '</button>'), $(document).on('click', '#theme .btn-save', function(e) {
+                        $('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h.saveSett + '</button>'), 
+						$(document).on('click', '#theme .btn-save', function(e) {
                             e.preventDefault();
                             var i = $(this);
-                            i.text(h.saved), t['saveThemeSettings'](), setTimeout(function() {
-                                i.text(h['saveSett']);
+                            i.text(h.saved), t.saveThemeSettings(), setTimeout(function() {
+                                i.text(h.saveSett);
                             }, 500);
-                        }), $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + h['restoreThemeSettings'] + '</a></div>'),
+                        }), $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + h.restoreThemeSettings + '</a></div>'),
                         $(document).on('click', '#theme .restore-settings a', function(e) {
-                            e.preventDefault(), t['restoreThemeSettings']();
+                            e.preventDefault(), t.restoreThemeSettings();
                         }), $('.skin').colorpicker({
                             'format': 'hex',
                             'input': '#color'
@@ -1805,7 +1910,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (e[t]) {
                         g[t] = t;
                         t = e[t];
-                        for (var o in t) t.hasOwnProperty(o) && g.hasOwnProperty(o) && (g[o] = t[o], i.hasOwnProperty(o) && (i[o] = g[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', g[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(g[o])['change'](), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(g[o]));
+                        for (var o in t) t.hasOwnProperty(o) && g.hasOwnProperty(o) && (g[o] = t[o], i.hasOwnProperty(o) && (i[o] = g[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', g[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(g[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(g[o]));
                     }
                 },
                 'changeThemePreset': function(t) {
@@ -1834,28 +1939,28 @@ var thelegendmodproject = function(t, e, i) {
                     this.addCustomCSS('cursorCSS', t);
                 },
                 'setMenu': function() {
-                    this.setMenuOpacity(), this.setMenuMainColor(), this['setMenuPanelColor'](), this['setMenuTextColor'](), this['setMenuButtons'](), this.setMenuBg();
+                    this.setMenuOpacity(), this.setMenuMainColor(), this.setMenuPanelColor(), this.setMenuTextColor(), this.setMenuButtons(), this.setMenuBg();
                 },
                 'changeMenuPreset': function(t) {
                     this.changePreset(t, m), this.setMenu();
                 },
                 'setMenuOpacity': function() {
-                    $('#helloContainer, #hotkeys, #exp-imp').css('opacity', g['menuOpacity']);
+                    $('#helloContainer, #hotkeys, #exp-imp').css('opacity', g.menuOpacity);
                 },
                 'setMenuMainColor': function() {
-                    var t = '::-moz-selection{background-color:' + g['menuMainColor'] + '!important}::selection{background-color:' + g['menuMainColor'] + '!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:' + g['menuMainColor'] + '}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:' + g['menuMainColor'] + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + g['menuMainColor'] + '}.ps-scrollbar-y{background-color:' + g['menuMainColor'] + '!important}';
+                    var t = '::-moz-selection{background-color:' + g.menuMainColor + '!important}::selection{background-color:' + g.menuMainColor + '!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:' + g.menuMainColor + '}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:' + g.menuMainColor + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + g.menuMainColor + '}.ps-scrollbar-y{background-color:' + g.menuMainColor + '!important}';
                     this.addCustomCSS('menuMainColorCSS', t);
                 },
                 'setMenuPanelColor': function() {
-                    var t = '#main-menu,.agario-side-panel,#hotkeys,#exp-imp{background-color: ' + g['menuPanelColor'] + '}label:hover,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.nick .input-group-btn,.skin .input-group-btn,#stream-mode,#hide-url,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs,#exp-bar .progress,#quick-menu a:hover,.quick,.select-wrapper,#hotkeys-cfg div.row:hover,#hotkeys-cfg .command-in,#exp-imp-settings textarea,.restore-settings{background-color: ' + g['menuPanelColor2'] + '}.agario-panel h5,.agario-side-panel h5,#stats h2,.menu-tabs,.submenu-tabs,#skins a.default,#stats hr,#hotkeys-cfg div.row, #exp-imp h1{border-color: ' + g['menuPanelColor2'] + '}.quick:hover,#skins a,#profiles{color:' + g['menuPanelColor2'] + '}input.stream-mode,input.hide-url{color:' + g['menuPanelColor2'] + '!important}';
+                    var t = '#main-menu,.agario-side-panel,#hotkeys,#exp-imp{background-color: ' + g.menuPanelColor + '}label:hover,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.nick .input-group-btn,.skin .input-group-btn,#stream-mode,#hide-url,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs,#exp-bar .progress,#quick-menu a:hover,.quick,.select-wrapper,#hotkeys-cfg div.row:hover,#hotkeys-cfg .command-in,#exp-imp-settings textarea,.restore-settings{background-color: ' + g.menuPanelColor2 + '}.agario-panel h5,.agario-side-panel h5,#stats h2,.menu-tabs,.submenu-tabs,#skins a.default,#stats hr,#hotkeys-cfg div.row, #exp-imp h1{border-color: ' + g.menuPanelColor2 + '}.quick:hover,#skins a,#profiles{color:' + g.menuPanelColor2 + '}input.stream-mode,input.hide-url{color:' + g.menuPanelColor2 + '!important}';
                     this.addCustomCSS('menuPanelColorCSS', t);
                 },
                 'setMenuTextColor': function() {
-                    var t = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + g['menuTextColor'] + '}#skins a.default:hover{border-color:' + g['menuTextColor'] + '}::-webkit-input-placeholder{color:' + g['menuTextColor2'] + '!important}::-moz-placeholder{color:' + g['menuTextColor2'] + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + g['menuTextColor2'] + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + g['menuTextColor2'] + '}';
+                    var t = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + g['menuTextColor'] + '}#skins a.default:hover{border-color:' + g['menuTextColor'] + '}::-webkit-input-placeholder{color:' + g.menuTextColor2 + '!important}::-moz-placeholder{color:' + g.menuTextColor2 + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + g.menuTextColor2 + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + g.menuTextColor2 + '}';
                     this.addCustomCSS('menuTextColorCSS', t);
                 },
                 'setMenuButtons': function() {
-                    var t = 'a,a:hover{color:' + g['btn1Color'] + '}.btn,#hotkeys-cfg .custom-key-in{color:' + g['menuBtnTextColor'] + '}.btn-primary{background-color:' + g['btn1Color'] + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + g['btn1Color2'] + '!important}.btn-success{background-color:' + g['btn2Color'] + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + g['btn2Color2'] + '!important}.btn-warning{background-color:' + g['btn3Color'] + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + g['btn3Color2'] + '!important}.btn-danger{background-color:' + g['btn4Color'] + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + g['btn4Color2'] + '!important}#hotkeys-cfg .custom-key-in{background-color:' + g['btn4Color2'] + ';border-color:' + g['btn4Color2'] + '}';
+                    var t = 'a,a:hover{color:' + g.btn1Color + '}.btn,#hotkeys-cfg .custom-key-in{color:' + g.menuBtnTextColor + '}.btn-primary{background-color:' + g.btn1Color + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + g['btn1Color2'] + '!important}.btn-success{background-color:' + g['btn2Color'] + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + g['btn2Color2'] + '!important}.btn-warning{background-color:' + g['btn3Color'] + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + g.btn3Color2 + '!important}.btn-danger{background-color:' + g.btn4Color + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + g.btn4Color2 + '!important}#hotkeys-cfg .custom-key-in{background-color:' + g.btn4Color2 + ';border-color:' + g.btn4Color2 + '}';
                     this.addCustomCSS('menuButtonsCSS', t);
                 },
                 'setMenuBg': function() {
@@ -2545,7 +2650,7 @@ var thelegendmodproject = function(t, e, i) {
                     o.length ? (this['sendChatMessage'](101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
                 } else {
                     t.show();
-                    e.focus();
+                    e['focus']();
                     e.val('');
                 }
             },
@@ -2757,7 +2862,7 @@ var thelegendmodproject = function(t, e, i) {
                 $('#clantag').val(ogario1PlayerProfiles[this.selectedProfile].clanTag);
                 $('#skin').val(ogario1PlayerProfiles[this.selectedProfile].skinURL);
                 $('#color').val(ogario1PlayerProfiles[this.selectedProfile].color);
-                $('.skin').colorpicker('setValue', ogario1PlayerProfiles[this.selectedProfile].color);
+                $('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this.selectedProfile].color);
                 $('#skins a').removeClass('selected');
                 $('#skins a[data-profile=\'' + this.selectedProfile + '\']').addClass('selected');
             },
@@ -3788,25 +3893,25 @@ var thelegendmodproject = function(t, e, i) {
                 this.setParty();
                 console.log('[Legend mod Express] Connecting to server'),
                     this.privateMode && this.privateIP ? this.socket = new WebSocket(this.privateIP) : this.socket = new WebSocket(this.publicIP),
-                    this.socket.ogarioWS = true,
-                    this.socket.binaryType = 'arraybuffer';
+                    this.socket['ogarioWS'] = true,
+                    this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
                     var e = t.createView(3);
                     e.setUint8(0, 0);
                     e.setUint16(1, 401, true);
-                    t.sendBuffer(e);
+                    t['sendBuffer'](e);
                     t.sendPartyData();
                 }
-                this.socket["onmessage"] = function(e) {
-                    t.handleMessage(e);
+                this.socket['onmessage'] = function(e) {
+                    t['handleMessage'](e);
                 }
-                this.socket.onclose = function(e) {
+                this.socket['onclose'] = function(e) {
                     //t.flushData();
                     console.log('[Legend mod Express] Socket close', e);
                 }
-                this.socket.onerror = function(e) {
+                this.socket['onerror'] = function(e) {
                     //t.flushData();									
                     console.log('[Legend mod Express] Socket error', e);
 					window.noOgarioSocket=true;
@@ -3814,9 +3919,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'closeConnection': function() {
                 if (this.socket) {
-                    this.socket["onmessage"] = null;
+                    this.socket['onmessage'] = null;
                     try {
-                        this.socket.close();
+                        this.socket['close']();
                     } catch (ogarcloseconlabel) {}
                     this.socket = null;
                 }
@@ -3829,13 +3934,13 @@ var thelegendmodproject = function(t, e, i) {
                 }, 1000);
             },
             'switchServerMode': function() {
-                if (this.privateIP) {
-                    this.privateMode = !this.privateMode;
+                if (this["privateIP"]) {
+                    this["privateMode"] = !this["privateMode"];
                     if (this.isSocketOpen()) {
-                        this.closeConnection();
+                        this["closeConnection"]();
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
-                    if (this.privateMode) {
+                    if (this["privateMode"]) {
                         toastr["info"]("Prze\u0142\u0105czono na serwer prywatny!");
                         $(".party-panel").show();
                     } else {
@@ -3845,7 +3950,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     this.onJoin();
                     if (i.play) {
-                        this.onPlayerSpawn();
+                        this["onPlayerSpawn"]();
                     }
                 }
             },
@@ -3884,24 +3989,24 @@ var thelegendmodproject = function(t, e, i) {
                         this.playerID = t.getUint32(1, true);
                         break;
                     case 1:
-                        this.sendPlayerUpdate();
+                        this['sendPlayerUpdate']();
                         break;
                     case 20:
-                        this.updateTeamPlayer(t);
+                        this['updateTeamPlayer'](t);
                         break;
                     case 30:
-                        this.updateTeamPlayerPosition(t);
+                        this['updateTeamPlayerPosition'](t);
                         break;
                     case 96:
                         break;
                     case 100:
-                        this.readChatMessage(t);
+                        this['readChatMessage'](t);
                 }
             },
             'sendPlayerState': function(t) {
                 if (this.isSocketOpen()) {
                     var e = this.createView(1);
-                    e.setUint8(0, t), this.sendBuffer(e);
+                    e.setUint8(0, t), this['sendBuffer'](e);
                 }
             },
             'sendPlayerSpawn': function() {
@@ -3914,7 +4019,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerState'](3);
             },
             'sendPlayerData': function(t, e, i) {
-                null !== this[e] && this[e] === i || this.isSocketOpen() && (this.sendBuffer(this['strToBuff'](t, i)), this[e] = i);
+                null !== this[e] && this[e] === i || this.isSocketOpen() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
                 this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
@@ -3929,7 +4034,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                this.isSocketOpen() && i.playerColor && this.sendBuffer(this['strToBuff'](14, i.playerColor));
+                this.isSocketOpen() && i.playerColor && this['sendBuffer'](this['strToBuff'](14, i.playerColor));
             },
             'sendPartyToken': function() {
                 this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
@@ -3945,7 +4050,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (this.region) {
                     var t = this.region.split('-');
                     if (this.isSocketOpen()) {
-                        this.sendBuffer(this['strToBuff'](17, t[0]));
+                        this['sendBuffer'](this['strToBuff'](17, t[0]));
                     }
                 }
             },
@@ -3964,7 +4069,7 @@ var thelegendmodproject = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-                this.isSocketOpen() && this.sendBuffer(this['strToBuff'](18, t));
+                this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
                 this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
@@ -3983,7 +4088,7 @@ var thelegendmodproject = function(t, e, i) {
                     var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
                     var o = 5;
-                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this.sendBuffer(s);
+                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
@@ -4173,7 +4278,7 @@ var thelegendmodproject = function(t, e, i) {
                     var i = this.createView(10 + 2 * e.length);
                     i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this.playerID, true), i.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
-                    this.sendBuffer(i), this.lastMessageSentTime = Date.now();
+                    this['sendBuffer'](i), this.lastMessageSentTime = Date.now();
                 }
             },
             'prepareCommand': function(t) {
@@ -5399,18 +5504,18 @@ var thelegendmodproject = function(t, e, i) {
                 this.leaderboard = [];
                 this.ws = t;
                 this.socket = new WebSocket(t);
-                this.socket.binaryType = 'arraybuffer';
+                this.socket['binaryType'] = 'arraybuffer';
                 this.socket['onopen'] = function() {
                     i['onOpen']();
                 };
-                this.socket["onmessage"] = function(t) {
-                    i["onmessage"](t);
+                this.socket['onmessage'] = function(t) {
+                    i['onMessage'](t);
                 };
-                this.socket.onerror = function(t) {
-                    i.onerror(t);
+                this.socket['onerror'] = function(t) {
+                    i['onError'](t);
                 };
-                this.socket.onclose = function(t) {
-                    i.onclose(t);
+                this.socket['onclose'] = function(t) {
+                    i['onClose'](t);
                 };
                 ogarminimapdrawer['getWS'](this.ws);
                 ogarminimapdrawer['sendServerJoin']();
@@ -5437,7 +5542,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (this.protocolKey) {
                     t = this['shiftMessage'](t, this.protocolKey ^ this.clientVersion);
                 }
-                this.handleMessage(t);
+                this['handleMessage'](t);
             },
             'onError': function(t) {
                 console.log('[Legend mod Express] Game server socket error');
@@ -5456,11 +5561,11 @@ var thelegendmodproject = function(t, e, i) {
             'closeConnection': function() {
                 if (this.socket) {
                     this.socket['onopen'] = null;
-                    this.socket["onmessage"] = null;
-                    this.socket.onerror = null;
-                    this.socket.onclose = null;
+                    this.socket['onmessage'] = null;
+                    this.socket['onerror'] = null;
+                    this.socket['onclose'] = null;
                     try {
-                        this.socket.close();
+                        this.socket['close']();
                     } catch (ogarcloseconncloser) {}
                     this.socket = null;
                     this.ws = null;
@@ -5482,7 +5587,7 @@ var thelegendmodproject = function(t, e, i) {
                     t = this['shiftMessage'](t, this.clientKey);
                     this.clientKey = this.shiftKey(this.clientKey);
                 }
-                this.sendBuffer(t);
+                this['sendBuffer'](t);
             },
             'sendAction': function(t) {
                 if (this.isSocketOpen()) {
@@ -5939,14 +6044,14 @@ var thelegendmodproject = function(t, e, i) {
 				for (let i = 0; i < data.byteLength; i++) data.writeUInt8(data.readUInt8(i), i);
 				ogarminimapdrawer['writeUInt16LE'](this.id, data.byteLength);
 				console.log(this.id);
-				this.sendBuffer(packet112);
+				this['sendBuffer'](packet112);
 				break;
 				
 			case 113:
 				const botID = data.readUInt16LE(data.byteLength - 2);
 				const packet113 = data.byteLength - 2;
 				for (let i = 0; i < data.byteLength - 2; i++) packet113.writeUInt8(data.readUInt8(i), i);
-				this.sendBuffer(packet113);
+				this['sendBuffer'](packet113);
 				break;	
 				///			
 
@@ -7898,7 +8003,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setHotkeysMenu': function() {
                     var t = this;
-                    for (var e in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + h.restoreSettings + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + h['saveSett'] + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + h.close + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + h['hk-inst-assign'] + '</li><li>' + h['hk-inst-delete'] + '</li><li>' + h['hk-inst-keys'] + '</li></ul></div></div>'), ogario11Hotkeys)
+                    for (var e in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + h.restoreSettings + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + h.saveSett + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + h['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + h['hk-inst-assign'] + '</li><li>' + h['hk-inst-delete'] + '</li><li>' + h['hk-inst-keys'] + '</li></ul></div></div>'), ogario11Hotkeys)
                         if (ogario11Hotkeys.hasOwnProperty(e)) {
                             var i = ogario11Hotkeys[e],
                                 o = '';
@@ -8048,13 +8153,13 @@ var thelegendmodproject = function(t, e, i) {
         }
 
         function ogarcommando1() {
-            ogarminimapdrawer['protocolMode'] || (window.onkeydown = function(t) {});
+            ogarminimapdrawer.protocolMode || (window.onkeydown = function(t) {});
         }
         document.onkeydown = function(t) {
             var e = lastkeys.getPressedKey(t);
-            if (('INPUT' !== t['target']['tagName'] || t['target'].className === lastkeys.inputClassName || e === ogario1Hotkeys['spec-messageKey']) && '' !== e && !ogarioefaultHotkeys[e]) {
+            if (('INPUT' !== t.target.tagName || t.target.className === lastkeys.inputClassName || e === ogario1Hotkeys['spec-messageKey']) && '' !== e && !ogarioefaultHotkeys[e]) {
                 if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
-                if (t['target'].className === lastkeys.inputClassName) return t.preventDefault(), void lastkeys.setHotkey(e, t['target'].id);
+                if (t.target.className === lastkeys.inputClassName) return t.preventDefault(), void lastkeys.setHotkey(e, t.target.id);
                 if (ogario1Hotkeys[e]) {
                     t.preventDefault();
                     var i = ogario1Hotkeys[e];
@@ -8210,7 +8315,7 @@ var thelegendmodproject = function(t, e, i) {
                     return;
                 }
                 if (arr[0] == 8) {
-                    arr["unshift"](102);
+                    arr.unshift(102);
                 }
                 arr = new Uint8Array(arr);
                 M["sendMessage"](new DataView(arr["buffer"]));
