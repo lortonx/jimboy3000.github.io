@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.910 MEGA TEST
+// v1.911 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1875,8 +1875,8 @@ var thelegendmodproject = function(t, e, i) {
 					this.addSliderBox('#theme-minimap', 'miniMapSectorsOpacity', 0, 1, 0.01, 'setMiniMapSectorsOpacity'), 
 					this.addSliderBox('#theme-minimap', 'miniMapNickSize', 8, 16, 1), 
 					this.addSliderBox('#theme-minimap', 'miniMapNickStrokeSize', 0, 6, 1), 
-					this.addSliderBox('#theme-minimap', 'miniMapMyCellSize', 4, 10, 0.5), t
-					his.addSliderBox('#theme-minimap', 'miniMapMyCellStrokeSize', 0, 10, 1), 
+					this.addSliderBox('#theme-minimap', 'miniMapMyCellSize', 4, 10, 0.5), 
+					this.addSliderBox('#theme-minimap', 'miniMapMyCellStrokeSize', 0, 10, 1), 
 					this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5), 
 					this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01), 
 					this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground'), 
