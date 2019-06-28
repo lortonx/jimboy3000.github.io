@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko
 // This is part of the Legend mod project
-// v1.903 MEGA TEST
+// v1.904 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6791,7 +6791,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'drawDoubleSplitRange': function(t, e, i, s, o) {
                     //if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
-					if (this.draw2Circles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) { //Sonia
+					if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia
 					//if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia	
                         //this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
 
