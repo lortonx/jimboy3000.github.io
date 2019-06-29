@@ -1,4 +1,4 @@
-//v8.2
+//v8.3
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -10,7 +10,8 @@
 				runEnvConfig();
 				localStorage.setItem("EnvConfig.fb_app_id", window.EnvConfig.fb_app_id);	
 				localStorage.setItem("EnvConfig.google_client_id", window.EnvConfig.google_client_id);
-				localStorage.setItem("EnvConfig.EnvConfig.master_url", window.EnvConfig.master_url);
+				localStorage.setItem("EnvConfig.master_url", window.EnvConfig.master_url);
+				localStorage.setItem("EnvConfig.configVersion" , window.configVersion);
 				//legendmaster(window);	
             },
             dataType: "text",
@@ -153,7 +154,7 @@ function legendmaster(self) {
 	window.EnvConfig={};
 	window.EnvConfig.fb_app_id=self.localStorage.getItem("EnvConfig.fb_app_id");
 	window.EnvConfig.google_client_id=self.localStorage.getItem("EnvConfig.google_client_id");
-	window.EnvConfig.master_url=self.localStorage.getItem("EnvConfig.EnvConfig.master_url");
+	window.EnvConfig.master_url=self.localStorage.getItem("EnvConfig.master_url");
 	
 	if ( window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url ){
 		console.log("[Master] window.EnvConfig loaded from //agar.io/index.html from the previous time");
