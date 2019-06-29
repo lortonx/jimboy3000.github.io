@@ -1,4 +1,4 @@
-//v8.4
+//v8.5
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -29,7 +29,7 @@ if (window.EnvConfig.master_url != null) {
         error: function() {},
         success: function(sketchContents) {
             var getLatestIDtemp = $.parseHTML(sketchContents);
-            window.getLatestID = getLatestIDtemp;
+            window.getLatestID = getLatestIDtemp[0].textContent;
             localStorage.setItem("getLatestID", window.getLatestID);
         },
         dataType: "text",
