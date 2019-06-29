@@ -1,4 +1,4 @@
-//v8.1
+//v8.2
         var window = this;
         $.ajax("//agar.io/index.html", {
             error: function() {},
@@ -18,7 +18,19 @@
             cache: false,
             crossDomain: true
         });
-
+        $.ajax(window.EnvConfig.master_url + "/getLatestID", {
+            error: function() {},
+            success: function(sketchContents) {
+				var getLatestIDtemp = $.parseHTML(sketchContents);					
+				window.getLatestID = getLatestIDtemp;		
+				localStorage.setItem("getLatestID", window.getLatestID);				
+            },
+            dataType: "text",
+            method: "GET",
+            cache: false,
+            crossDomain: true
+        });
+		
 legendmaster(window);
 function legendmaster(self) {
     function login() {
