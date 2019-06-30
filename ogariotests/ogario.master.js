@@ -1,4 +1,4 @@
-//v8.6
+//v8.7
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -39,13 +39,54 @@ if (window.EnvConfig.master_url != null) {
         crossDomain: true
     });
 }
+
+    if (window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url) {
+        console.log("[Master] window.EnvConfig loaded from //agar.io/index.html from the previous time");
+        window.LMagarioHeaders = {
+            fb_app_id: window.EnvConfig.fb_app_id,
+            gplus_client_id: window.EnvConfig.google_client_id,
+            master_url: window.EnvConfig.master_url.replace("https://", ""),
+            endpoint_version: "v4",
+            proto_version: "12.0.1",
+            client_version: 30406,
+            client_version_string: "3.4.6"
+        };
+    } else {
+        window.LMagarioHeaders = {
+            fb_app_id: 677505792353827,
+            gplus_client_id: "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
+            master_url: "webbouncer-live-v7-0.agario.miniclippt.com",
+            endpoint_version: "v4",
+            proto_version: "12.0.1",
+            client_version: 30406,
+            client_version_string: "3.4.6"
+        };
+    }
+	
+    window.LMagarioOptions = {
+        context: null,
+        defaultProvider: "facebook",
+        loginIntent: "0",
+        userInfo: {
+            socialToken: null,
+            tokenExpires: "",
+            level: "",
+            xp: "",
+            xpNeeded: "",
+            name: "",
+            picture: "",
+            displayName: "",
+            loggedIn: "0",
+            socialId: ""
+        }
+    };	
 legendmaster(window);
 
 function legendmaster(self) {
     function login() {
         if (l) {
             self.getStorage();
-            if ("1" === options.loginIntent && "facebook" === options.context) {
+            if ("1" === window.LMagarioOptions.loginIntent && "facebook" === window.LMagarioOptions.context) {
                 self.FB.getLoginStatus(function(res) {
                     if (res.status === "connected") {
                         init(res);
@@ -61,7 +102,7 @@ function legendmaster(self) {
 
     function clear(nbToClear) {
         if (null !== self.FB) {
-            return options.loginIntent = "1", options.context = "facebook", self.updateStorage(), self.FB.login(function(requestTokenResult) {
+            return window.LMagarioOptions.loginIntent = "1", window.LMagarioOptions.context = "facebook", self.updateStorage(), self.FB.login(function(requestTokenResult) {
                 init(requestTokenResult);
             }, {
                 scope: "public_profile, email"
@@ -77,7 +118,7 @@ function legendmaster(self) {
                 master.doLoginWithFB(accessToken);
                 self.FB.api("/me/picture?width=180&height=180", function(images) {
                     if (images.data && images.data.url) {
-                        options.userInfo.picture = images.data.url;
+                        window.LMagarioOptions.userInfo.picture = images.data.url;
                         $(".agario-profile-picture").attr("src", images.data.url);
                         self.updateStorage();
                     }
@@ -100,15 +141,15 @@ function legendmaster(self) {
     function setup() {
         self.gapi.load("auth2", function() {
             api = self.gapi.auth2.init({
-                client_id: headers.gplus_client_id,
+                client_id: window.LMagarioHeaders.gplus_client_id,
                 cookie_policy: "single_host_origin",
                 scope: "profile",
                 app_package_name: "com.miniclip.agar.io"
             });
             var contextMenu = document.getElementById("gplusLogin");
             contextMenu.addEventListener("click", function() {
-                options.loginIntent = "1";
-                options.context = "google";
+                window.LMagarioOptions.loginIntent = "1";
+                window.LMagarioOptions.context = "google";
                 self.updateStorage();
             });
             api.attachClickHandler(contextMenu);
@@ -119,18 +160,18 @@ function legendmaster(self) {
 
     function get() {
         api.currentUser.get();
-        if ("1" === options.loginIntent && options.context === "google" && !api.isSignedIn.get()) {
+        if ("1" === window.LMagarioOptions.loginIntent && window.LMagarioOptions.context === "google" && !api.isSignedIn.get()) {
             api.signIn();
         }
     }
 
     function transform(event) {
-        if (event && api && "1" === options.loginIntent && options.context === "google" && api.isSignedIn.get()) {
+        if (event && api && "1" === window.LMagarioOptions.loginIntent && window.LMagarioOptions.context === "google" && api.isSignedIn.get()) {
             var idToken = event.getAuthResponse().id_token;
             var attrVal = event.getBasicProfile().getImageUrl();
             master.doLoginWithGPlus(idToken);
             if (attrVal) {
-                options.userInfo.picture = attrVal;
+                window.LMagarioOptions.userInfo.picture = attrVal;
                 self.updateStorage();
                 $(".agario-profile-picture").attr("src", attrVal);
             }
@@ -141,46 +182,9 @@ function legendmaster(self) {
             toastr.info("Logged in to Google!");
         }
     }
-    var options = {
-        context: null,
-        defaultProvider: "facebook",
-        loginIntent: "0",
-        userInfo: {
-            socialToken: null,
-            tokenExpires: "",
-            level: "",
-            xp: "",
-            xpNeeded: "",
-            name: "",
-            picture: "",
-            displayName: "",
-            loggedIn: "0",
-            socialId: ""
-        }
-    };
 
-    if (window.EnvConfig.fb_app_id && window.EnvConfig.google_client_id && window.EnvConfig.master_url) {
-        console.log("[Master] window.EnvConfig loaded from //agar.io/index.html from the previous time");
-        var headers = {
-            fb_app_id: window.EnvConfig.fb_app_id,
-            gplus_client_id: window.EnvConfig.google_client_id,
-            master_url: window.EnvConfig.master_url.replace("https://", ""),
-            endpoint_version: "v4",
-            proto_version: "12.0.1",
-            client_version: 30406,
-            client_version_string: "3.4.6"
-        };
-    } else {
-        var headers = {
-            fb_app_id: 677505792353827,
-            gplus_client_id: "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
-            master_url: "webbouncer-live-v7-0.agario.miniclippt.com",
-            endpoint_version: "v4",
-            proto_version: "12.0.1",
-            client_version: 30406,
-            client_version_string: "3.4.6"
-        };
-    }
+
+
     var l = false;
     var f = 0;
     var api = null;
@@ -197,8 +201,8 @@ function legendmaster(self) {
         regionNames: {},
         context: "",
         accessToken: null,
-        clientVersion: headers.client_version,
-        clientVersionString: headers.client_version_string,
+        clientVersion: window.LMagarioHeaders.client_version,
+        clientVersionString: window.LMagarioHeaders.client_version_string,
         getClientVersion: function() {
             if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
                 this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
@@ -302,12 +306,12 @@ function legendmaster(self) {
         },
         checkRegion: function() {
             var x = $("#region");
-            var options = x.val();
-            if (options) {
-                self.localStorage.setItem("location", options);
+            var window.LMagarioOptions = x.val();
+            if (window.LMagarioOptions) {
+                self.localStorage.setItem("location", window.LMagarioOptions);
             } else {
-                if (options = self.localStorage.getItem("location")) {
-                    $("#region").val(options);
+                if (window.LMagarioOptions = self.localStorage.getItem("location")) {
+                    $("#region").val(window.LMagarioOptions);
                 }
             }
             if (x.val()) {
@@ -378,29 +382,29 @@ function legendmaster(self) {
                     //picKey = "findBattleRoyaleServer";
                     //}
                 }
-                var options = this;
+                var window.LMagarioOptions = this;
                 var container = this.setRequestMsg(id, params);
                 var defaultWarningTime = ++this.curValidFindServer;
                 this.findingServer = e;
-                this.makeMasterRequest(headers.endpoint_version + "/" + picKey, container, function(response) {
-                    if (defaultWarningTime == options.curValidFindServer) {
+                this.makeMasterRequest(window.LMagarioHeaders.endpoint_version + "/" + picKey, container, function(response) {
+                    if (defaultWarningTime == window.LMagarioOptions.curValidFindServer) {
                         var key = response.endpoints;
                         if (null !== key && "0.0.0.0:0" !== key.https) {
-                            options.serverIP = key.https;
+                            window.LMagarioOptions.serverIP = key.https;
                             if (null !== response.token) {
-                                options.partyToken = response.token;
+                                window.LMagarioOptions.partyToken = response.token;
                             }
-                            options.backoffPeriod = 500;
-                            options.connect(options.serverIP);
+                            window.LMagarioOptions.backoffPeriod = 500;
+                            window.LMagarioOptions.connect(window.LMagarioOptions.serverIP);
                         } else {
-                            options.findServer(id, params);
+                            window.LMagarioOptions.findServer(id, params);
                         }
                     }
                 }, function() {
-                    options.backoffPeriod *= 2;
+                    window.LMagarioOptions.backoffPeriod *= 2;
                     setTimeout(function() {
-                        options.findServer(id, params);
-                    }, options.backoffPeriod);
+                        window.LMagarioOptions.findServer(id, params);
+                    }, window.LMagarioOptions.backoffPeriod);
                 });
             }
         },
@@ -420,9 +424,9 @@ function legendmaster(self) {
             if (null == type) {
                 type = "application/octet-stream";
             }
-            $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
+            $.ajax("https://" + window.LMagarioHeaders.master_url + "/" + _wid_attr, {
                 beforeSend: function(xhr) {
-                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
+                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", window.LMagarioHeaders.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
                 },
                 error: function() {
                     if (timeout_callback) {
@@ -442,9 +446,9 @@ function legendmaster(self) {
         },
         makeMasterSimpleRequest: function(key, dataType, success, error) {
             var obj = this;
-            $.ajax("https://" + headers.master_url + "/" + key, {
+            $.ajax("https://" + window.LMagarioHeaders.master_url + "/" + key, {
                 beforeSend: function(xhr) {
-                    return xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", obj.clientVersion), true;
+                    return xhr.setRequestHeader("x-support-proto-version", window.LMagarioHeaders.proto_version), xhr.setRequestHeader("x-client-version", obj.clientVersion), true;
                 },
                 error: function() {
                     if (error) {
@@ -473,7 +477,7 @@ function legendmaster(self) {
             this.partyToken = d;
             this.replaceHistoryState("/#" + self.encodeURIComponent(d));
             var label = this.setRequestMsg(this.region, "", d);
-            this.makeMasterRequest(headers.endpoint_version + "/getToken", label, function(moduleParams) {
+            this.makeMasterRequest(window.LMagarioHeaders.endpoint_version + "/getToken", label, function(moduleParams) {
                 scopeHeaderOverrides.endpoint = moduleParams.endpoints.https;
                 scopeHeaderOverrides.setPartyState("9");
             }, function() {
@@ -635,14 +639,14 @@ function legendmaster(self) {
     };
     self.getStorage = function() {
         if (null !== self.localStorage.getItem("storeObjectInfo")) {
-            options = JSON.parse(self.localStorage.getItem("storeObjectInfo"));
+            window.LMagarioOptions = JSON.parse(self.localStorage.getItem("storeObjectInfo"));
         }
     };
     self.updateStorage = function() {
-        self.localStorage.setItem("storeObjectInfo", JSON.stringify(options));
+        self.localStorage.setItem("storeObjectInfo", JSON.stringify(window.LMagarioOptions));
     };
     self.logout = function() {
-        if (options.context === "google" && api) {
+        if (window.LMagarioOptions.context === "google" && api) {
             api.signOut();
         }
         delete self.localStorage.storeObjectInfo;
@@ -658,7 +662,7 @@ function legendmaster(self) {
     };
     self.fbAsyncInit = function() {
         self.FB.init({
-            appId: headers.fb_app_id,
+            appId: window.LMagarioHeaders.fb_app_id,
             cookie: true,
             xfbml: true,
             status: true,
