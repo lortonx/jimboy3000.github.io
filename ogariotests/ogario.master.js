@@ -1,4 +1,4 @@
-//v8.7
+//v8.8
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -306,12 +306,12 @@ function legendmaster(self) {
         },
         checkRegion: function() {
             var x = $("#region");
-            var window.LMagarioOptions = x.val();
-            if (window.LMagarioOptions) {
-                self.localStorage.setItem("location", window.LMagarioOptions);
+            var options = x.val();
+            if (options) {
+                self.localStorage.setItem("location", options);
             } else {
-                if (window.LMagarioOptions = self.localStorage.getItem("location")) {
-                    $("#region").val(window.LMagarioOptions);
+                if (options = self.localStorage.getItem("location")) {
+                    $("#region").val(options);
                 }
             }
             if (x.val()) {
