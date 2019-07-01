@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.929 MEGA TEST
+// v1.930 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6517,26 +6517,22 @@ var thelegendmodproject = function(t, e, i) {
                             irenderfromagario = t.readUInt8(i++);
                         m = this.rgb2Hex(~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
                     }
-
                     //4 & d && (g = s()),
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
                     if (4 & d) {
-						g = s();
-						//new tests
-						y = window.decodeURIComponent(escape(s()));
-						console.log(y,g)
-						//
-						
-						
-                        
+						g = s();				                        
                         //						console.log('skin '+g);
-
                     }
                     if (8 & d) {
                         y = window.decodeURIComponent(escape(s()));
                         this.vanillaskins(y, g);
                     }
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
+                    if (16 & d) {
+                        x = window.decodeURIComponent(escape(s()));
+                        console.log(y, g, x);
+                    }					
+					
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
