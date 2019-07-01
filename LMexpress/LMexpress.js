@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.051 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "51"; // the version 1.1-> 1.11
 //fix ffa
@@ -6640,7 +6640,7 @@ function initializeLM(modVersion) {
     $("#cleartimer").hide();
 
     //        $(".menu-tabs").children().attr("style", "width: 14.27%;");
-    $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; padding:12px;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%; padding:12px;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
+    //$(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; padding:12px;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%; padding:12px;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\');" href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
     $(".menu-tabs").children().attr("style", "width: 16.66%;");
 
     $(".menu-tabs").children().attr("style", "width: 16.66%;");
