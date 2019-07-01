@@ -3016,8 +3016,7 @@ var thelegendmodproject = function(t, e, i) {
                 for (t in document.title = this.name,
                     $("#mainPanel").before('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
                         h.start + '"></a></li><li class="profile-tab"><a href="#profile" class="ogicon-user" data-toggle="tab-tooltip" title="' + 
-						//
-						h.api + '"></a></li><li class="profile-tab"><a href="#legend-tab" class="ogicon-user" data-toggle="tab-tooltip" title="' + 
+						h.api + '"></a></li><li class="api-tab"><a href="#legend-tab" class="ogicon-user" data-toggle="tab-tooltip" title="' + 
 						h.profile + '"></a></li><li class="settings-tab"><a href="#og-settings" class="ogicon-cog" data-toggle="tab-tooltip" title="' + 
 						h.settings + '"></a></li><li class="theme-tab"><a href="#theme" class="ogicon-droplet" data-toggle="tab-tooltip" title="' + 
 						h.theme + '"></a></li><li class="hotkeys-tab"><a href="#" class="hotkeys-link ogicon-keyboard" data-toggle="tab-tooltip" title="' +
