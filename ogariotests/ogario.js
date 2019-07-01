@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.932 MEGA TEST
+// v1.926 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4374,7 +4374,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
                 if(mm>0 && max<=3 && window.legendmod.bgpi<=3 && (!window.legendmod.setrot||window.legendmod.rotcnt>20)){
-                    //console.log("VMR UPDATE:",window.legendmod.vnr,mm,window.legendmod.playerMass,max,window.legendmod.bgpi);
+                    console.log("VMR UPDATE:",window.legendmod.vnr,mm,window.legendmod.playerMass,max,window.legendmod.bgpi);
                     //this.setvnr(max);
                 }
             },
@@ -6517,22 +6517,19 @@ var thelegendmodproject = function(t, e, i) {
                             irenderfromagario = t.readUInt8(i++);
                         m = this.rgb2Hex(~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
                     }
+
                     //4 & d && (g = s()),
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
                     if (4 & d) {
-						g = s();				                        
+                        g = s();
                         //						console.log('skin '+g);
+
                     }
                     if (8 & d) {
                         y = window.decodeURIComponent(escape(s()));
                         this.vanillaskins(y, g);
                     }
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
-                    if (16 & d) {
-                        
-                        console.log("d");
-                    }					
-					
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
