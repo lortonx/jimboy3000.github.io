@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "50"; // the version 1.1-> 1.11
+var semimodVersion = "51"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8376,4 +8376,37 @@ function isEquivalent(a, b) {
     // If we made it this far, objects
     // are considered equivalent
     return true;
+}
+
+//Snez Agar Version Destinations
+function AgarVersionDestinations() {
+    window.agarversionDestinationFound = false;
+    window.agarversionDestinations = {};
+    window.agarversionDestinations[Object.keys(agarversionDestinations).length - 1] = window.agarversion;
+
+    //postSNEZ('https://lmsettings.snez.org/', 'LMConfigVersion', 'LMConfigVersionPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
+
+    getSNEZ("https://lmsettings.snez.org/", "LMConfigVersion", "LMConfigVersionPass");
+    var responseagarversionDestinations = JSON.parse(xhttp.response);
+    for (var i = 0; i < Object.keys(responseagarversionDestinations).length; i++) {
+        if (responseagarversionDestinations[i] == window.agarversion) {
+            window.agarversionDestinationFound = true;
+        }
+    }
+
+    if (window.agarversionDestinationFound == true) {
+        window.agarversionDestinations = responseagarversionDestinations;
+        window.agarversionDestinationFound = false;
+    } else if (window.agarversionDestinationFound == false && isObject(responseagarversionDestinations)) {
+        window.agarversionDestinations = responseagarversionDestinations;
+        window.agarversionDestinations[Object.keys(responseagarversionDestinations).length] = window.agarversion;
+        postSNEZ('https://lmsettings.snez.org/', 'LMConfigVersion', 'LMConfigVersionPass', JSON.stringify(window.agarversionDestinations));
+    }
+}
+
+function isObject(val) {
+    if (val === null) {
+        return false;
+    }
+    return ((typeof val === 'function') || (typeof val === 'object'));
 }
