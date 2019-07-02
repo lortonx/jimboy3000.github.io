@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.938 MEGA TEST
+// v1.939 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3667,13 +3667,14 @@ var thelegendmodproject = function(t, e, i) {
                     (i.cacheQueue.push(e),
                     1 == i.cacheQueue.length &&
                     i.cacheSkin(i.customSkinsCache));
+					return i;
                 }, 
 				t[e]['onerror'] = function() {
 					console.log("error loading image: "+ e);
 					if (e.includes(window.EnvConfig.config_url)){
 						e= "https://jimboy3100.github.io/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
 						console.log("new destination is:" + e);
-						ogarminimapdrawer.customSkinsMap[e] = e;
+						ogarminimapdrawer.customSkinsMap[i] = e;
 						ogarminimapdrawer.loadSkin(t, e);
 						return e;
 						
