@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.936 MEGA TEST
+// v1.937 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3673,7 +3673,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (e.includes(window.EnvConfig.config_url)){
 						e= "https://jimboy3100.github.io/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
 						console.log("new destination is:" + e);
-						this.loadSkin(t, e);
+						ogarminimapdrawer.loadSkin(t, e);
 						return e;
 						
 					}
