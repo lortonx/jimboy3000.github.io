@@ -260,7 +260,7 @@ var emoticonicons = {
     '(wow)': 'newwow.svg'
 }
 
-languagetexts = {
+var languagetexts = {
     'pl': {
         'start': 'Start',
         'settings': 'Ustawienia',
