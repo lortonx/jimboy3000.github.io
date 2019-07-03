@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "52"; // the version 1.1-> 1.11
 //fix ffa
@@ -630,7 +630,7 @@ function loadersetings() {
             }
         }
 
-        if (checkonlyfifth != true) {
+        if (checkonlyfifth != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+
 		'✮✰𝑺𝒐𝒏𝒊𝒂✰✮</span></font> is the new co-developer of Legend Express. <br>'+
@@ -645,7 +645,7 @@ function loadersetings() {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "450px");        
-		checkonlyfifth=true;
+		checkonlyfifth="true";
 		localStorage.setItem("checkonlyfifth", checkonlyfifth);				
        // }					
 		}
