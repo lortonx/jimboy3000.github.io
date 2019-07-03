@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957c MEGA TEST
+// v1.957d MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6469,7 +6469,7 @@ break;
                         //window.testobjectsOpcode241.getUint32(1, true);
                         console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
                         var irenderfromagario2 = new Uint8Array(data['buffer'], s += 4);
-                        this.clientKey = this['generateClientKey'](this.ws, irenderfromagario2);
+                        this.clientKey2 = this['generateClientKey'](this.ws, irenderfromagario2);
                         //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
                         if (window.master && window.master.login) {
                             //window.master.login();
