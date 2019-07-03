@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957a MEGA TEST
+// v1.957b MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5842,6 +5842,7 @@ var thelegendmodproject = function(t, e, i) {
             'onMessage': function(t) {
                 t = new DataView(t['data']);
                 if (this.protocolKey) {
+					console.log("this.protocolKey: "+ this.protocolKey + " this.clientVersion: " + this.clientVersion);
                     t = this['shiftMessage'](t, this.protocolKey ^ this.clientVersion);
                 }
                 this['handleMessage'](t);
@@ -7075,6 +7076,7 @@ break;
             'onMessage': function(t) {
                 t = new DataView(t['data']);
                 if (this.protocolKey) {
+					console.log("this.protocolKey: "+ this.protocolKey + " this.clientVersion: " + this.clientVersion);
                     t = this['shiftMessage'](t, this.protocolKey ^ this.clientVersion);
                 }
                 console.log(t);
