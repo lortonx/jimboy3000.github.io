@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.953 MEGA TEST
+// v1.954 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2760,7 +2760,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'loadSettings': function() {
                 var t = null;
-                for (var s in null !== window.localStorage.getItem('ogarioSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioSettings'))), v) defaultmapsettings.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (v[s] = t[s]), i.hasOwnProperty(s) && (i[s] = v[s]));
+                for (var s in null !== window.localStorage.getItem('ogarioSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioSettings'))), defaultmapsettings) defaultmapsettings.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (defaultmapsettings[s] = t[s]), i.hasOwnProperty(s) && (i[s] = defaultmapsettings[s]));
 
             },
             'saveSettings': function(t, i) {
@@ -2795,7 +2795,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setSettings': function(t, e) {
                 if (defaultmapsettings.hasOwnProperty(t) && null !== e) {
-                    switch (v[t] = e, i.hasOwnProperty(t) && (i[t] = e), t) {
+                    switch (defaultmapsettings[t] = e, i.hasOwnProperty(t) && (i[t] = e), t) {
                         case 'autoResp':
                             this.setAutoResp();
                             break;
@@ -2838,7 +2838,7 @@ var thelegendmodproject = function(t, e, i) {
                         case 'blockPopups':
                             this.setBlockPopups();
                     }
-                    this.saveSettings(v, 'ogarioSettings');
+                    this.saveSettings(defaultmapsettings, 'ogarioSettings');
                 }
             },
             'loadProfiles': function() {
@@ -2978,27 +2978,27 @@ var thelegendmodproject = function(t, e, i) {
                         var o = t[i];
                         if (defaultmapsettings.hasOwnProperty(o)) {
                             $('.' + e).append('<label>' + h[o] + ' <input type=\"checkbox\" class=\"js-switch\" id=\"' + o + '\"></label>');
-                            $('#' + o).prop('checked', v[o]);
+                            $('#' + o).prop('checked', defaultmapsettings[o]);
                         }
                     }
                 }
             },
             'addInputBox': function(t, e, i, o) {
-                $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + h[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + v[e] + '\" /></div>');
+                $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + h[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + defaultmapsettings[e] + '\" /></div>');
                 var a = this;
                 $('#' + e).on('input', function() {
-                    v[e] = this.value, a[o](), a.saveSettings(v, 'ogarioSettings');
+                    defaultmapsettings[e] = this.value, a[o](), a.saveSettings(v, 'ogarioSettings');
                 });
             },
             'addSliderBox': function(t, e, o, a, n, r) {
-                $(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + h[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + v[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + v[e] + '\"></div>');
+                $(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + h[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + defaultmapsettings[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + defaultmapsettings[e] + '\"></div>');
                 var l = this;
                 r ? $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), v[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r](), l.saveSettings(v, 'ogarioSettings');
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r](), l.saveSettings(v, 'ogarioSettings');
                 }) : $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), v[e] = t, i.hasOwnProperty(e) && (i[e] = t), l.saveSettings(v, 'ogarioSettings');
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, i.hasOwnProperty(e) && (i[e] = t), l.saveSettings(v, 'ogarioSettings');
                 });
             },
             'setLang': function() {
