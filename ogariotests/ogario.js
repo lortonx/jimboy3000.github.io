@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.948 MEGA TEST
+// v1.949 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1027,434 +1027,593 @@ var languagetexts = {
     }
 }
 var themePresets = {
-                'ogario-v3': {
-                    'name': 'OGARio v3',
-                    'darkTheme': true,
-                    'mainColor': '#01d9cc',
-                    'bgColor': '#000a11',
-                    'bordersColor': '#01d9cc',
-                    'gridColor': '#00243e',
-                    'sectorsColor': '#00243e',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#002f52',
-                    'virusStrokeColor': '#00b9e8',
-                    'virusGlowColor': '#fff',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#5000ff',
-                    'teammatesIndColor': '#ffffff',
-                    'cursorTrackingColor': '#ffffff',
-                    'splitRangeColor': '#ffffff',
-                    'enemyBSTEDColor': '#8000ff', //Sonia2
-                    'enemyBSTEColor': '#BE00FF', //Sonia2
-                    'enemyBColor': '#FF0A00', //Sonia2
-                    'enemySColor': '#00C8FF', //Sonia2
-                    'enemySSTEColor': '#048245', //Sonia2
-                    'enemySSTEDColor': '#64FF00', //Sonia2
-                    'safeAreaColor': '#ffffff',
-                    'dangerAreaColor': '#bf00aa',
-                    'namesFont': 'ubuntu-bold',
-                    'massFont': 'ubuntu-bold',
-                    'sectorsFont': 'ubuntu',
-                    'namesScale': 1,
-                    'massScale': 3,
-                    'foodSize': 5,
-                    'bordersWidth': 40,
-                    'sectorsWidth': 40,
-                    'sectorsFontSize': 1200,
-                    'cellsAlpha': 0.99,
-                    'skinsAlpha': 0.99,
-                    'virusAlpha': 0.25,
-                    'textAlpha': 1,
-                    'virusStrokeSize': 20,
-                    "virusGlowSize": "#fff",
-                    "virusGlowSize": 14,
-                    "borderGlowSize": 14,
-                    'menuPreset': 'ogario-v3',
-                    'menuMainColor': '#01d9cc',
-                    'menuBtnTextColor': '#ffffff',
-                    'menuPanelColor': '#00243e',
-                    'menuPanelColor2': '#002f52',
-                    'menuTextColor': '#ffffff',
-                    'menuTextColor2': '#8096a7',
-                    'btn1Color': '#018cf6',
-                    'btn1Color2': '#0176ce',
-                    'btn2Color': '#00b9e8',
-                    'btn2Color2': '#0099c0',
-                    'btn3Color': '#8d5fe6',
-                    'btn3Color2': '#814ee3',
-                    'btn4Color': '#bf00aa',
-                    'btn4Color2': '#a80096',
-                    'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png',
-                    'menuOpacity': 0.96,
-                    'hudMainColor': '#01d9cc',
-                    'hudColor': 'rgba(0,0,0,0.4)',
-                    'hudTextColor': '#ffffff',
-                    'statsHudColor': '#ffffff',
-                    'timeHudColor': '#01d9cc',
-                    'top5MassColor': '#bf00aa',
-                    'lbMeColor': '#bf00aa',
-                    'lbTeammateColor': '#018cf6',
-                    'hudFont': 'ubuntu-bold',
-                    'hudScale': 1,
-                    'messageColor': 'rgba(0,0,0,0.4)',
-                    'messageTextColor': '#ffffff',
-                    'messageTimeColor': '#018cf6',
-                    'messageNickColor': '#01d9cc',
-                    'commandsColor': 'rgba(191,0,170,0.9)',
-                    'commandsTextColor': '#ffffff',
-                    'commandsTimeColor': '#bf00aa',
-                    'commandsNickColor': '#ffffff',
-                    'chatBoxColor': 'rgba(0,0,0,0.4)',
-                    'chatScale': 1,
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#01d9cc',
-                    'miniMapGuidesColor': '#bf00aa',
-                    'miniMapNickColor': '#ffffff',
-                    'miniMapNickStrokeColor': '#000000',
-                    'miniMapMyCellColor': '#ffffff',
-                    'miniMapMyCellStrokeColor': '#bf00aa',
-                    'miniMapTeammatesColor': '#01d9cc',
-                    'miniMapDeathLocationColor': '#bf00aa',
-                    'miniMapFont': 'ubuntu-bold',
-                    'miniMapNickFont': 'ubuntu-bold',
-                    'miniMapWidth': 240,
-                    'miniMapSectorsOpacity': 0.1,
-                    'miniMapNickSize': 11,
-                    'miniMapNickStrokeSize': 2,
-                    'miniMapMyCellSize': 7.5,
-                    'miniMapMyCellStrokeSize': 4,
-                    'miniMapTeammatesSize': 5.5,
-                    'customBackground': '',
-                    'customCursor': 'https://jimboy3100.github.io/cursors/cursor_02.cur'
-                },
-                'ogario-orange': {
-                    'name': 'OGARio v2',
-                    'darkTheme': true,
-                    'mainColor': '#ff7800',
-                    'bgColor': '#111111',
-                    'bordersColor': '#ff7800',
-                    'gridColor': '#292929',
-                    'sectorsColor': '#292929',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#666666',
-                    'virusStrokeColor': '#666666',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#e16400',
-                    'hudMainColor': '#ff7800',
-                    'statsHudColor': '#ff7800',
-                    'top5MassColor': '#ff7800',
-                    'timeHudColor': '#ff7800',
-                    'messageNickColor': '#ff7800',
-                    'commandsColor': 'rgba(255,120,0,0.9)',
-                    'commandsTimeColor': '#ff7800',
-                    'commandsTextColor': '#ffffff',
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#ff7800',
-                    'miniMapGuidesColor': '#ff7800',
-                    'miniMapMyCellColor': '#ffffff',
-                    'miniMapMyCellStrokeColor': '#ff7800',
-                    'miniMapTeammatesColor': '#ff7800',
-                    'miniMapDeathLocationColor': '#ff7800',
-                    'miniMapSectorsOpacity': 0.1
-                },
-                'ogario-gold': {
-                    'name': 'OGARio LE',
-                    'darkTheme': true,
-                    'mainColor': '#b5a642',
-                    'bgColor': '#000000',
-                    'bordersColor': '#b5a642',
-                    'gridColor': '#111111',
-                    'sectorsColor': '#111111',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#666666',
-                    'virusStrokeColor': '#666666',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#998c36',
-                    'hudMainColor': '#b5a642',
-                    'statsHudColor': '#b5a642',
-                    'top5MassColor': '#b5a642',
-                    'timeHudColor': '#b5a642',
-                    'messageNickColor': '#b5a642',
-                    'commandsColor': 'rgba(181,166,66,0.9)',
-                    'commandsTimeColor': '#b5a642',
-                    'commandsTextColor': '#ffffff',
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#b5a642',
-                    'miniMapGuidesColor': '#b5a642',
-                    'miniMapMyCellColor': '#ffffff',
-                    'miniMapMyCellStrokeColor': '#b5a642',
-                    'miniMapTeammatesColor': '#b5a642',
-                    'miniMapDeathLocationColor': '#b5a642',
-                    'miniMapSectorsOpacity': 0.1
-                },
-                'sniikz-style': {
-                    'name': 'SniiKz\'s Style',
-                    'darkTheme': true,
-                    'mainColor': '#01d9cc',
-                    'bgColor': '#000000',
-                    'bordersColor': '#ffffff',
-                    'gridColor': '#00243e',
-                    'sectorsColor': '#00243e',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#3b3b3b',
-                    'virusStrokeColor': '#ffffff',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#5000ff',
-                    'teammatesIndColor': '#ffffff',
-                    'cursorTrackingColor': '#ffffff',
-                    'splitRangeColor': '#ffffff',
-                    'safeAreaColor': '#ffffff',
-                    'dangerAreaColor': '#bf00aa',
-                    'massScale': 4,
-                    'foodSize': 1,
-                    'bordersWidth': 40,
-                    'sectorsWidth': 40,
-                    'sectorsFontSize': 1200,
-                    'cellsAlpha': 0.99,
-                    'skinsAlpha': 0.99,
-                    'virusAlpha': 0.4,
-                    'virusStrokeSize': 10,
-                    "virusStrokeSize": 20,
-                    "virusGlowSize": 14,
-                    "borderGlowSize": 14,
-                    'menuPreset': 'ogario-v3',
-                    'menuMainColor': '#fc0079',
-                    'menuBtnTextColor': '#ffffff',
-                    'menuPanelColor': '#050008',
-                    'menuPanelColor2': '#1d0526',
-                    'menuTextColor': '#ffffff',
-                    'menuTextColor2': '#65458f',
-                    'btn1Color': '#4f0242',
-                    'btn1Color2': '#3b0431',
-                    'btn2Color': '#6b0036',
-                    'btn2Color2': '#4d0227',
-                    'btn3Color': '#aa084e',
-                    'btn3Color2': '#80063b',
-                    'btn4Color': '#aa084e',
-                    'btn4Color2': '#8a063f',
-                    'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png',
-                    'menuOpacity': 1,
-                    'hudMainColor': '#5974ff',
-                    'hudColor': 'rgba(36,36,36,0.49)',
-                    'hudTextColor': '#ffffff',
-                    'statsHudColor': '#ffffff',
-                    'timeHudColor': '#737373',
-                    'top5MassColor': '#1fe000',
-                    'lbMeColor': '#bf00aa',
-                    'lbTeammateColor': '#018cf6',
-                    'hudScale': 1.15,
-                    'messageColor': 'rgba(0,0,0,0.4)',
-                    'messageTextColor': '#e8e8e8',
-                    'messageTimeColor': '#545454',
-                    'messageNickColor': '#05ff00',
-                    'commandsColor': 'rgba(36,36,36,0.9)',
-                    'commandsTextColor': '#ffffff',
-                    'commandsTimeColor': '#545454',
-                    'commandsNickColor': '#ffffff',
-                    'chatBoxColor': 'rgba(0,0,0,0.4)',
-                    'chatScale': 1,
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#000000',
-                    'miniMapGuidesColor': '#ff00a8',
-                    'miniMapNickColor': '#ffffff',
-                    'miniMapNickStrokeColor': '#4d4d4d',
-                    'miniMapMyCellColor': '#f0ff3d',
-                    'miniMapMyCellStrokeColor': '#acba07',
-                    'miniMapTeammatesColor': '#305eff',
-                    'miniMapDeathLocationColor': '#2b2b2b',
-                    'miniMapWidth': 250,
-                    'miniMapSectorsOpacity': 0.1,
-                    'miniMapNickSize': 9,
-                    'miniMapNickStrokeSize': 0,
-                    'miniMapMyCellSize': 5,
-                    'miniMapMyCellStrokeSize': 0,
-                    'miniMapTeammatesSize': 5,
-                    'customBackground': '',
-                    'customCursor': 'https://jimboy3100.github.io/cursors/cursor_01.cur'
-                },
-                'hkg-style': {
-                    'name': 'HKG Style',
-                    'darkTheme': true,
-                    'mainColor': '#651fff',
-                    'bgColor': '#000000',
-                    'bordersColor': '#ffffff',
-                    'gridColor': '#111111',
-                    'sectorsColor': '#111111',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#666666',
-                    'virusStrokeColor': '#666666',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#651fff',
-                    'hudMainColor': '#651fff',
-                    'statsHudColor': '#651fff',
-                    'top5MassColor': '#651fff',
-                    'timeHudColor': '#651fff',
-                    'messageNickColor': '#651fff',
-                    'commandsColor': 'rgba(101,31,255,0.9)',
-                    'commandsTimeColor': '#651fff',
-                    'commandsTextColor': '#ffffff',
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#651fff',
-                    'miniMapGuidesColor': '#651fff',
-                    'miniMapMyCellColor': '#ffffff',
-                    'miniMapMyCellStrokeColor': '#651fff',
-                    'miniMapTeammatesColor': '#651fff',
-                    'miniMapDeathLocationColor': '#651fff',
-                    'miniMapSectorsOpacity': 0.1
-                },
-                'agario-light': {
-                    'name': 'Agar.io Light',
-                    'darkTheme': false,
-                    'mainColor': '#ffffff',
-                    'bgColor': '#f2fbff',
-                    'bordersColor': '#858a8c',
-                    'gridColor': '#ced6d9',
-                    'sectorsColor': '#ced6d9',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#33ff33',
-                    'virusStrokeColor': '#2de52d',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#2de52d',
-                    'hudMainColor': '#ffffff',
-                    'statsHudColor': '#ffffff',
-                    'top5MassColor': '#ffffff',
-                    'timeHudColor': '#ffffff',
-                    'messageNickColor': '#ffffff',
-                    'commandsColor': 'rgba(255,255,255,0.9)',
-                    'commandsTimeColor': '#ffffff',
-                    'commandsTextColor': '#000000',
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#ffffff',
-                    'miniMapGuidesColor': '#ffffff',
-                    'miniMapMyCellColor': '#ffffff',
-                    'miniMapMyCellStrokeColor': '#ffffff',
-                    'miniMapTeammatesColor': '#ffffff',
-                    'miniMapDeathLocationColor': '#ffffff',
-                    'miniMapSectorsOpacity': 0.25
-                },
-                'agario-dark': {
-                    'name': 'Agar.io Dark',
-                    'darkTheme': true,
-                    'mainColor': '#ffffff',
-                    'bgColor': '#111111',
-                    'bordersColor': '#999999',
-                    'gridColor': '#333333',
-                    'sectorsColor': '#333333',
-                    'namesColor': '#ffffff',
-                    'namesStrokeColor': '#000000',
-                    'massColor': '#ffffff',
-                    'massStrokeColor': '#000000',
-                    'virusColor': '#33ff33',
-                    'virusStrokeColor': '#2de52d',
-                    'mVirusColor': '#ce6363',
-                    'mVirusStrokeColor': '#b95959',
-                    'foodColor': '#2de52d',
-                    'hudMainColor': '#ffffff',
-                    'statsHudColor': '#ffffff',
-                    'top5MassColor': '#ffffff',
-                    'timeHudColor': '#ffffff',
-                    'messageNickColor': '#ffffff',
-                    'commandsColor': 'rgba(255,255,255,0.9)',
-                    'commandsTimeColor': '#ffffff',
-                    'commandsTextColor': '#ffffff',
-                    'miniMapSectorsColor': '#ffffff',
-                    'miniMapSectorColor': '#ffffff',
-                    'miniMapGuidesColor': '#ffffff',
-                    'miniMapMyCellColor': '#ffffff',
-                    'miniMapMyCellStrokeColor': '#ffffff',
-                    'miniMapTeammatesColor': '#ffffff',
-                    'miniMapDeathLocationColor': '#ffffff',
-                    'miniMapSectorsOpacity': 0.1
-                }
-            }
+    'ogario-v3': {
+        'name': 'OGARio v3',
+        'darkTheme': true,
+        'mainColor': '#01d9cc',
+        'bgColor': '#000a11',
+        'bordersColor': '#01d9cc',
+        'gridColor': '#00243e',
+        'sectorsColor': '#00243e',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#002f52',
+        'virusStrokeColor': '#00b9e8',
+        'virusGlowColor': '#fff',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#5000ff',
+        'teammatesIndColor': '#ffffff',
+        'cursorTrackingColor': '#ffffff',
+        'splitRangeColor': '#ffffff',
+        'enemyBSTEDColor': '#8000ff', //Sonia2
+        'enemyBSTEColor': '#BE00FF', //Sonia2
+        'enemyBColor': '#FF0A00', //Sonia2
+        'enemySColor': '#00C8FF', //Sonia2
+        'enemySSTEColor': '#048245', //Sonia2
+        'enemySSTEDColor': '#64FF00', //Sonia2
+        'safeAreaColor': '#ffffff',
+        'dangerAreaColor': '#bf00aa',
+        'namesFont': 'ubuntu-bold',
+        'massFont': 'ubuntu-bold',
+        'sectorsFont': 'ubuntu',
+        'namesScale': 1,
+        'massScale': 3,
+        'foodSize': 5,
+        'bordersWidth': 40,
+        'sectorsWidth': 40,
+        'sectorsFontSize': 1200,
+        'cellsAlpha': 0.99,
+        'skinsAlpha': 0.99,
+        'virusAlpha': 0.25,
+        'textAlpha': 1,
+        'virusStrokeSize': 20,
+        "virusGlowSize": "#fff",
+        "virusGlowSize": 14,
+        "borderGlowSize": 14,
+        'menuPreset': 'ogario-v3',
+        'menuMainColor': '#01d9cc',
+        'menuBtnTextColor': '#ffffff',
+        'menuPanelColor': '#00243e',
+        'menuPanelColor2': '#002f52',
+        'menuTextColor': '#ffffff',
+        'menuTextColor2': '#8096a7',
+        'btn1Color': '#018cf6',
+        'btn1Color2': '#0176ce',
+        'btn2Color': '#00b9e8',
+        'btn2Color2': '#0099c0',
+        'btn3Color': '#8d5fe6',
+        'btn3Color2': '#814ee3',
+        'btn4Color': '#bf00aa',
+        'btn4Color2': '#a80096',
+        'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png',
+        'menuOpacity': 0.96,
+        'hudMainColor': '#01d9cc',
+        'hudColor': 'rgba(0,0,0,0.4)',
+        'hudTextColor': '#ffffff',
+        'statsHudColor': '#ffffff',
+        'timeHudColor': '#01d9cc',
+        'top5MassColor': '#bf00aa',
+        'lbMeColor': '#bf00aa',
+        'lbTeammateColor': '#018cf6',
+        'hudFont': 'ubuntu-bold',
+        'hudScale': 1,
+        'messageColor': 'rgba(0,0,0,0.4)',
+        'messageTextColor': '#ffffff',
+        'messageTimeColor': '#018cf6',
+        'messageNickColor': '#01d9cc',
+        'commandsColor': 'rgba(191,0,170,0.9)',
+        'commandsTextColor': '#ffffff',
+        'commandsTimeColor': '#bf00aa',
+        'commandsNickColor': '#ffffff',
+        'chatBoxColor': 'rgba(0,0,0,0.4)',
+        'chatScale': 1,
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#01d9cc',
+        'miniMapGuidesColor': '#bf00aa',
+        'miniMapNickColor': '#ffffff',
+        'miniMapNickStrokeColor': '#000000',
+        'miniMapMyCellColor': '#ffffff',
+        'miniMapMyCellStrokeColor': '#bf00aa',
+        'miniMapTeammatesColor': '#01d9cc',
+        'miniMapDeathLocationColor': '#bf00aa',
+        'miniMapFont': 'ubuntu-bold',
+        'miniMapNickFont': 'ubuntu-bold',
+        'miniMapWidth': 240,
+        'miniMapSectorsOpacity': 0.1,
+        'miniMapNickSize': 11,
+        'miniMapNickStrokeSize': 2,
+        'miniMapMyCellSize': 7.5,
+        'miniMapMyCellStrokeSize': 4,
+        'miniMapTeammatesSize': 5.5,
+        'customBackground': '',
+        'customCursor': 'https://jimboy3100.github.io/cursors/cursor_02.cur'
+    },
+    'ogario-orange': {
+        'name': 'OGARio v2',
+        'darkTheme': true,
+        'mainColor': '#ff7800',
+        'bgColor': '#111111',
+        'bordersColor': '#ff7800',
+        'gridColor': '#292929',
+        'sectorsColor': '#292929',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#666666',
+        'virusStrokeColor': '#666666',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#e16400',
+        'hudMainColor': '#ff7800',
+        'statsHudColor': '#ff7800',
+        'top5MassColor': '#ff7800',
+        'timeHudColor': '#ff7800',
+        'messageNickColor': '#ff7800',
+        'commandsColor': 'rgba(255,120,0,0.9)',
+        'commandsTimeColor': '#ff7800',
+        'commandsTextColor': '#ffffff',
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#ff7800',
+        'miniMapGuidesColor': '#ff7800',
+        'miniMapMyCellColor': '#ffffff',
+        'miniMapMyCellStrokeColor': '#ff7800',
+        'miniMapTeammatesColor': '#ff7800',
+        'miniMapDeathLocationColor': '#ff7800',
+        'miniMapSectorsOpacity': 0.1
+    },
+    'ogario-gold': {
+        'name': 'OGARio LE',
+        'darkTheme': true,
+        'mainColor': '#b5a642',
+        'bgColor': '#000000',
+        'bordersColor': '#b5a642',
+        'gridColor': '#111111',
+        'sectorsColor': '#111111',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#666666',
+        'virusStrokeColor': '#666666',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#998c36',
+        'hudMainColor': '#b5a642',
+        'statsHudColor': '#b5a642',
+        'top5MassColor': '#b5a642',
+        'timeHudColor': '#b5a642',
+        'messageNickColor': '#b5a642',
+        'commandsColor': 'rgba(181,166,66,0.9)',
+        'commandsTimeColor': '#b5a642',
+        'commandsTextColor': '#ffffff',
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#b5a642',
+        'miniMapGuidesColor': '#b5a642',
+        'miniMapMyCellColor': '#ffffff',
+        'miniMapMyCellStrokeColor': '#b5a642',
+        'miniMapTeammatesColor': '#b5a642',
+        'miniMapDeathLocationColor': '#b5a642',
+        'miniMapSectorsOpacity': 0.1
+    },
+    'sniikz-style': {
+        'name': 'SniiKz\'s Style',
+        'darkTheme': true,
+        'mainColor': '#01d9cc',
+        'bgColor': '#000000',
+        'bordersColor': '#ffffff',
+        'gridColor': '#00243e',
+        'sectorsColor': '#00243e',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#3b3b3b',
+        'virusStrokeColor': '#ffffff',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#5000ff',
+        'teammatesIndColor': '#ffffff',
+        'cursorTrackingColor': '#ffffff',
+        'splitRangeColor': '#ffffff',
+        'safeAreaColor': '#ffffff',
+        'dangerAreaColor': '#bf00aa',
+        'massScale': 4,
+        'foodSize': 1,
+        'bordersWidth': 40,
+        'sectorsWidth': 40,
+        'sectorsFontSize': 1200,
+        'cellsAlpha': 0.99,
+        'skinsAlpha': 0.99,
+        'virusAlpha': 0.4,
+        'virusStrokeSize': 10,
+        "virusStrokeSize": 20,
+        "virusGlowSize": 14,
+        "borderGlowSize": 14,
+        'menuPreset': 'ogario-v3',
+        'menuMainColor': '#fc0079',
+        'menuBtnTextColor': '#ffffff',
+        'menuPanelColor': '#050008',
+        'menuPanelColor2': '#1d0526',
+        'menuTextColor': '#ffffff',
+        'menuTextColor2': '#65458f',
+        'btn1Color': '#4f0242',
+        'btn1Color2': '#3b0431',
+        'btn2Color': '#6b0036',
+        'btn2Color2': '#4d0227',
+        'btn3Color': '#aa084e',
+        'btn3Color2': '#80063b',
+        'btn4Color': '#aa084e',
+        'btn4Color2': '#8a063f',
+        'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png',
+        'menuOpacity': 1,
+        'hudMainColor': '#5974ff',
+        'hudColor': 'rgba(36,36,36,0.49)',
+        'hudTextColor': '#ffffff',
+        'statsHudColor': '#ffffff',
+        'timeHudColor': '#737373',
+        'top5MassColor': '#1fe000',
+        'lbMeColor': '#bf00aa',
+        'lbTeammateColor': '#018cf6',
+        'hudScale': 1.15,
+        'messageColor': 'rgba(0,0,0,0.4)',
+        'messageTextColor': '#e8e8e8',
+        'messageTimeColor': '#545454',
+        'messageNickColor': '#05ff00',
+        'commandsColor': 'rgba(36,36,36,0.9)',
+        'commandsTextColor': '#ffffff',
+        'commandsTimeColor': '#545454',
+        'commandsNickColor': '#ffffff',
+        'chatBoxColor': 'rgba(0,0,0,0.4)',
+        'chatScale': 1,
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#000000',
+        'miniMapGuidesColor': '#ff00a8',
+        'miniMapNickColor': '#ffffff',
+        'miniMapNickStrokeColor': '#4d4d4d',
+        'miniMapMyCellColor': '#f0ff3d',
+        'miniMapMyCellStrokeColor': '#acba07',
+        'miniMapTeammatesColor': '#305eff',
+        'miniMapDeathLocationColor': '#2b2b2b',
+        'miniMapWidth': 250,
+        'miniMapSectorsOpacity': 0.1,
+        'miniMapNickSize': 9,
+        'miniMapNickStrokeSize': 0,
+        'miniMapMyCellSize': 5,
+        'miniMapMyCellStrokeSize': 0,
+        'miniMapTeammatesSize': 5,
+        'customBackground': '',
+        'customCursor': 'https://jimboy3100.github.io/cursors/cursor_01.cur'
+    },
+    'hkg-style': {
+        'name': 'HKG Style',
+        'darkTheme': true,
+        'mainColor': '#651fff',
+        'bgColor': '#000000',
+        'bordersColor': '#ffffff',
+        'gridColor': '#111111',
+        'sectorsColor': '#111111',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#666666',
+        'virusStrokeColor': '#666666',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#651fff',
+        'hudMainColor': '#651fff',
+        'statsHudColor': '#651fff',
+        'top5MassColor': '#651fff',
+        'timeHudColor': '#651fff',
+        'messageNickColor': '#651fff',
+        'commandsColor': 'rgba(101,31,255,0.9)',
+        'commandsTimeColor': '#651fff',
+        'commandsTextColor': '#ffffff',
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#651fff',
+        'miniMapGuidesColor': '#651fff',
+        'miniMapMyCellColor': '#ffffff',
+        'miniMapMyCellStrokeColor': '#651fff',
+        'miniMapTeammatesColor': '#651fff',
+        'miniMapDeathLocationColor': '#651fff',
+        'miniMapSectorsOpacity': 0.1
+    },
+    'agario-light': {
+        'name': 'Agar.io Light',
+        'darkTheme': false,
+        'mainColor': '#ffffff',
+        'bgColor': '#f2fbff',
+        'bordersColor': '#858a8c',
+        'gridColor': '#ced6d9',
+        'sectorsColor': '#ced6d9',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#33ff33',
+        'virusStrokeColor': '#2de52d',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#2de52d',
+        'hudMainColor': '#ffffff',
+        'statsHudColor': '#ffffff',
+        'top5MassColor': '#ffffff',
+        'timeHudColor': '#ffffff',
+        'messageNickColor': '#ffffff',
+        'commandsColor': 'rgba(255,255,255,0.9)',
+        'commandsTimeColor': '#ffffff',
+        'commandsTextColor': '#000000',
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#ffffff',
+        'miniMapGuidesColor': '#ffffff',
+        'miniMapMyCellColor': '#ffffff',
+        'miniMapMyCellStrokeColor': '#ffffff',
+        'miniMapTeammatesColor': '#ffffff',
+        'miniMapDeathLocationColor': '#ffffff',
+        'miniMapSectorsOpacity': 0.25
+    },
+    'agario-dark': {
+        'name': 'Agar.io Dark',
+        'darkTheme': true,
+        'mainColor': '#ffffff',
+        'bgColor': '#111111',
+        'bordersColor': '#999999',
+        'gridColor': '#333333',
+        'sectorsColor': '#333333',
+        'namesColor': '#ffffff',
+        'namesStrokeColor': '#000000',
+        'massColor': '#ffffff',
+        'massStrokeColor': '#000000',
+        'virusColor': '#33ff33',
+        'virusStrokeColor': '#2de52d',
+        'mVirusColor': '#ce6363',
+        'mVirusStrokeColor': '#b95959',
+        'foodColor': '#2de52d',
+        'hudMainColor': '#ffffff',
+        'statsHudColor': '#ffffff',
+        'top5MassColor': '#ffffff',
+        'timeHudColor': '#ffffff',
+        'messageNickColor': '#ffffff',
+        'commandsColor': 'rgba(255,255,255,0.9)',
+        'commandsTimeColor': '#ffffff',
+        'commandsTextColor': '#ffffff',
+        'miniMapSectorsColor': '#ffffff',
+        'miniMapSectorColor': '#ffffff',
+        'miniMapGuidesColor': '#ffffff',
+        'miniMapMyCellColor': '#ffffff',
+        'miniMapMyCellStrokeColor': '#ffffff',
+        'miniMapTeammatesColor': '#ffffff',
+        'miniMapDeathLocationColor': '#ffffff',
+        'miniMapSectorsOpacity': 0.1
+    }
+}
 var themeMenus = {
-                'ogario-v3': {
-                    'name': 'OGARio v3',
-                    'menuMainColor': '#01d9cc',
-                    'menuBtnTextColor': '#ffffff',
-                    'menuPanelColor': '#00243e',
-                    'menuPanelColor2': '#002f52',
-                    'menuTextColor': '#ffffff',
-                    'menuTextColor2': '#8096a7',
-                    'btn1Color': '#018cf6',
-                    'btn1Color2': '#0176ce',
-                    'btn2Color': '#00b9e8',
-                    'btn2Color2': '#0099c0',
-                    'btn3Color': '#8d5fe6',
-                    'btn3Color2': '#814ee3',
-                    'btn4Color': '#f300d8',
-                    'btn4Color2': '#df00c6',
-                    'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png'
-                },
-                'ogario-v2': {
-                    'name': 'OGARio v2',
-                    'menuMainColor': '#ff7800',
-                    'menuBtnTextColor': '#ffffff',
-                    'menuPanelColor': '#222222',
-                    'menuPanelColor2': '#333333',
-                    'menuTextColor': '#bbbbbb',
-                    'menuTextColor2': '#bbbbbb',
-                    'btn1Color': '#428bca',
-                    'btn1Color2': '#3071a9',
-                    'btn2Color': '#5cb85c',
-                    'btn2Color2': '#449d44',
-                    'btn3Color': '#f0ad4e',
-                    'btn3Color2': '#ec971f',
-                    'btn4Color': '#d9534f',
-                    'btn4Color2': '#c9302c',
-                    'menuBg': ''
-                },
-                'agario': {
-                    'name': 'Agar.io',
-                    'menuMainColor': '#5bc0de',
-                    'menuBtnTextColor': '#ffffff',
-                    'menuPanelColor': '#ffffff',
-                    'menuPanelColor2': '#cccccc',
-                    'menuTextColor': '#333333',
-                    'menuTextColor2': '#999999',
-                    'btn1Color': '#428bca',
-                    'btn1Color2': '#3071a9',
-                    'btn2Color': '#5cb85c',
-                    'btn2Color2': '#449d44',
-                    'btn3Color': '#f0ad4e',
-                    'btn3Color2': '#ec971f',
-                    'btn4Color': '#d9534f',
-                    'btn4Color2': '#c9302c',
-                    'menuBg': ''
-                }
-            }			
+    'ogario-v3': {
+        'name': 'OGARio v3',
+        'menuMainColor': '#01d9cc',
+        'menuBtnTextColor': '#ffffff',
+        'menuPanelColor': '#00243e',
+        'menuPanelColor2': '#002f52',
+        'menuTextColor': '#ffffff',
+        'menuTextColor2': '#8096a7',
+        'btn1Color': '#018cf6',
+        'btn1Color2': '#0176ce',
+        'btn2Color': '#00b9e8',
+        'btn2Color2': '#0099c0',
+        'btn3Color': '#8d5fe6',
+        'btn3Color2': '#814ee3',
+        'btn4Color': '#f300d8',
+        'btn4Color2': '#df00c6',
+        'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png'
+    },
+    'ogario-v2': {
+        'name': 'OGARio v2',
+        'menuMainColor': '#ff7800',
+        'menuBtnTextColor': '#ffffff',
+        'menuPanelColor': '#222222',
+        'menuPanelColor2': '#333333',
+        'menuTextColor': '#bbbbbb',
+        'menuTextColor2': '#bbbbbb',
+        'btn1Color': '#428bca',
+        'btn1Color2': '#3071a9',
+        'btn2Color': '#5cb85c',
+        'btn2Color2': '#449d44',
+        'btn3Color': '#f0ad4e',
+        'btn3Color2': '#ec971f',
+        'btn4Color': '#d9534f',
+        'btn4Color2': '#c9302c',
+        'menuBg': ''
+    },
+    'agario': {
+        'name': 'Agar.io',
+        'menuMainColor': '#5bc0de',
+        'menuBtnTextColor': '#ffffff',
+        'menuPanelColor': '#ffffff',
+        'menuPanelColor2': '#cccccc',
+        'menuTextColor': '#333333',
+        'menuTextColor2': '#999999',
+        'btn1Color': '#428bca',
+        'btn1Color2': '#3071a9',
+        'btn2Color': '#5cb85c',
+        'btn2Color2': '#449d44',
+        'btn3Color': '#f0ad4e',
+        'btn3Color2': '#ec971f',
+        'btn4Color': '#d9534f',
+        'btn4Color2': '#c9302c',
+        'menuBg': ''
+    }
+}
 var escapeHTMLs = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                '\'': '&#39;',
-                '/': '&#x2F;'
-            }
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    '\'': '&#39;',
+    '/': '&#x2F;'
+}
+var defaultSettings = {
+    'preset': 'ogario-v3',
+    'darkTheme': true,
+    'mainColor': '#01d9cc',
+    'bgColor': '#000a11',
+    'bordersColor': '#d90101',
+    "borderGlowColor": "#ffffff",
+    'gridColor': '#00243e',
+    'sectorsColor': '#00243e',
+    'namesColor': '#ffffff',
+    'namesStrokeColor': '#000000',
+    'massColor': '#ffffff',
+    'massStrokeColor': '#000000',
+    'virusColor': '#327a19',
+    'virusStrokeColor': '#327a19',
+    'mVirusColor': '#ce6363',
+    'mVirusStrokeColor': '#b95959',
+    'foodColor': '#0057ff',
+    'teammatesIndColor': '#ffffff',
+    'cursorTrackingColor': '#ffffff',
+    'splitRangeColor': '#ffffff',
+    'enemyBSTEDColor': '#8000ff', //Sonia2
+    'enemyBSTEColor': '#BE00FF', //Sonia2
+    'enemyBColor': '#FF0A00', //Sonia2
+    'enemySColor': '#00C8FF', //Sonia2
+    'enemySSTEColor': '#048245', //Sonia2
+    'enemySSTEDColor': '#64FF00', //Sonia2
+    'ghostCellsColor': '#ffffff',
+    'safeAreaColor': '#ffffff',
+    'dangerAreaColor': '#bf00aa',
+    'namesFont': 'ubuntu-bold',
+    'namesFontFamily': 'Ubuntu',
+    'namesFontWeight': 700,
+    'massFont': 'ubuntu-bold',
+    'massFontFamily': 'Ubuntu',
+    'massFontWeight': 700,
+    'sectorsFont': 'ubuntu',
+    'sectorsFontFamily': 'Ubuntu',
+    'sectorsFontWeight': 400,
+    'sectorsX': 5,
+    'sectorsY': 5,
+    'namesScale': 1,
+    'massScale': 3,
+    'virMassScale': 3,
+    'strokeScale': 1,
+    'foodSize': 5,
+    'bordersWidth': 14,
+    'sectorsWidth': 40,
+    'sectorsFontSize': 1200,
+    'cellsAlpha': 0.99,
+    'skinsAlpha': 0.99,
+    'virusAlpha': 0.6,
+    'textAlpha': 1,
+    'virusGlowColor': '#fff',
+    'virusGlowSize': 14,
+    'borderGlowSize': 14,
+    'ghostCellsAlpha': 0.3,
+    'virusStrokeSize': 14,
+    'menuPreset': 'ogario-v3',
+    'menuMainColor': '#01d9cc',
+    'menuBtnTextColor': '#ffffff',
+    'menuPanelColor': '#00243e',
+    'menuPanelColor2': '#002f52',
+    'menuTextColor': '#ffffff',
+    'menuTextColor2': '#8096a7',
+    'btn1Color': '#018cf6',
+    'btn1Color2': '#0176ce',
+    'btn2Color': '#00b9e8',
+    'btn2Color2': '#0099c0',
+    'btn3Color': '#8d5fe6',
+    'btn3Color2': '#814ee3',
+    'btn4Color': '#bf00aa',
+    'btn4Color2': '#a80096',
+    'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png',
+    'menuOpacity': 0.96,
+    'hudMainColor': '#01d9cc',
+    'hudColor': 'rgba(0,0,0,0.4)',
+    'hudTextColor': '#ffffff',
+    'statsHudColor': '#ffffff',
+    'timeHudColor': '#01d9cc',
+    'top5MassColor': '#bf00aa',
+    'lbMeColor': '#bf00aa',
+    'lbTeammateColor': '#018cf6',
+    'hudFont': 'ubuntu-bold',
+    'hudFontFamily': 'Ubuntu',
+    'hudFontWeight': 700,
+    'hudScale': 1,
+    'messageColor': 'rgba(0,0,0,0.4)',
+    'messageTextColor': '#ffffff',
+    'messageTimeColor': '#018cf6',
+    'messageNickColor': '#01d9cc',
+    'commandsColor': 'rgba(191,0,170,0.9)',
+    'commandsTextColor': '#ffffff',
+    'commandsTimeColor': '#bf00aa',
+    'commandsNickColor': '#ffffff',
+    'chatBoxColor': 'rgba(0,0,0,0.4)',
+    'chatScale': 1,
+    'miniMapSectorsColor': '#ffffff',
+    'miniMapSectorColor': '#01d9cc',
+    'miniMapGuidesColor': '#bf00aa',
+    'miniMapNickColor': '#ffffff',
+    'miniMapNickStrokeColor': '#000000',
+    'miniMapMyCellColor': '#ffffff',
+    'miniMapMyCellStrokeColor': '#bf00aa',
+    'miniMapTeammatesColor': '#01d9cc',
+    'miniMapDeathLocationColor': '#bf00aa',
+    'miniMapGhostCellsColor': '#ffffff',
+    ////
+    "color": "#fff",
+    //"commanderImage" : "https://i.imgur.com/wQKUDB3.png",
+    "commanderImage": "https://jimboy3100.github.io/banners/drawCommander.png",
+    "commanderImage1": "https://jimboy3100.github.io/banners/drawCommander1.png",
+    "commanderImage2": "https://jimboy3100.github.io/banners/drawCommander2.png",
+    "commanderImage3": "https://jimboy3100.github.io/banners/drawCommander3.png",
+    "commanderImage4": "https://jimboy3100.github.io/banners/drawCommander4.png",
+    "commanderImage5": "https://jimboy3100.github.io/banners/drawCommander5.png",
+    "commanderImage6": "https://jimboy3100.github.io/banners/iconJustWatchPro.png",
+    "commanderImageDyingLight": "https://jimboy3100.github.io/banners/icondyinglightzombie.png",
+    "commanderImageDyingLightvirus": "https://jimboy3100.github.io/banners/icondyinglightvirus.png",
+
+    ////
+    'miniMapFont': 'ubuntu-bold',
+    'miniMapFontFamily': 'Ubuntu',
+    'miniMapFontWeight': 700,
+    'miniMapNickFont': 'ubuntu-bold',
+    'miniMapNickFontFamily': 'Ubuntu',
+    'miniMapNickFontWeight': 700,
+    'miniMapWidth': 240,
+    'miniMapTop': 24,
+    'miniMapSectorsOpacity': 0.1,
+    'miniMapNickSize': 11,
+    'miniMapNickStrokeSize': 2,
+    'miniMapMyCellSize': 7.5,
+    'miniMapMyCellStrokeSize': 4,
+    'miniMapTeammatesSize': 5.5,
+    'miniMapGhostCellsAlpha': 0.15,
+    'customBackground': '',
+    'customCursor': 'https://jimboy3100.github.io/cursors/cursor_02.cur'
+}
+var skinUrlPatterns = [{
+        name: "imgur.com",
+        url: "https://imgur.com/",
+        example: "https://i.imgur.com/xdmUp5N.png",
+        pattern: "https?://w+.imgur.com/w{6,}.(?:%file_ext%)??d*"
+    },
+    {
+        name: "put.re",
+        url: "https://put.re/",
+        example: "https://s.put.re/iYHAW65g.png",
+        pattern: "https?://w+.put.re/w{8,}.(?:%file_ext%)"
+    },
+    {
+        name: "postimages.org",
+        url: "https://postimages.org/",
+        example: "https://i.postimg.cc/zzK0sRPg/xdmUp5N.png",
+        pattern: "https?://w+.postimg.cc/w{8,}/w+.(?:%file_ext%)"
+    }
+];
+
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
@@ -1465,10 +1624,10 @@ var thelegendmodproject = function(t, e, i) {
         l && languagetexts.hasOwnProperty(l) && (r = l);
         var h = languagetexts[r];
         //if (languagetexts[r].comm15 != undefined) {
-            //console.log(h.comm15);
+        //console.log(h.comm15);
         //}
         c = {
-				'comm0': h.comm0,
+                'comm0': h.comm0,
                 'comm1': h.comm1,
                 'comm2': h.comm2,
                 'comm3': h.comm3,
@@ -1500,164 +1659,6 @@ var thelegendmodproject = function(t, e, i) {
                 'comm29': h.comm29,
                 'comm30': h.comm30
             },
-            p = [{
-                    name: "imgur.com",
-                    url: "https://imgur.com/",
-                    example: "https://i.imgur.com/xdmUp5N.png",
-                    pattern: "https?://w+.imgur.com/w{6,}.(?:%file_ext%)??d*"
-                },
-                {
-                    name: "put.re",
-                    url: "https://put.re/",
-                    example: "https://s.put.re/iYHAW65g.png",
-                    pattern: "https?://w+.put.re/w{8,}.(?:%file_ext%)"
-                },
-                {
-                    name: "postimages.org",
-                    url: "https://postimages.org/",
-                    example: "https://i.postimg.cc/zzK0sRPg/xdmUp5N.png",
-                    pattern: "https?://w+.postimg.cc/w{8,}/w+.(?:%file_ext%)"
-                }
-            ],
-            g = {
-                'preset': 'ogario-v3',
-                'darkTheme': true,
-                'mainColor': '#01d9cc',
-                'bgColor': '#000a11',
-                'bordersColor': '#d90101',
-                "borderGlowColor": "#ffffff",
-                'gridColor': '#00243e',
-                'sectorsColor': '#00243e',
-                'namesColor': '#ffffff',
-                'namesStrokeColor': '#000000',
-                'massColor': '#ffffff',
-                'massStrokeColor': '#000000',
-                'virusColor': '#327a19',
-                'virusStrokeColor': '#327a19',
-                'mVirusColor': '#ce6363',
-                'mVirusStrokeColor': '#b95959',
-                'foodColor': '#0057ff',
-                'teammatesIndColor': '#ffffff',
-                'cursorTrackingColor': '#ffffff',
-                'splitRangeColor': '#ffffff',
-                'enemyBSTEDColor': '#8000ff', //Sonia2
-                'enemyBSTEColor': '#BE00FF', //Sonia2
-                'enemyBColor': '#FF0A00', //Sonia2
-                'enemySColor': '#00C8FF', //Sonia2
-                'enemySSTEColor': '#048245', //Sonia2
-                'enemySSTEDColor': '#64FF00', //Sonia2
-                'ghostCellsColor': '#ffffff',
-                'safeAreaColor': '#ffffff',
-                'dangerAreaColor': '#bf00aa',
-                'namesFont': 'ubuntu-bold',
-                'namesFontFamily': 'Ubuntu',
-                'namesFontWeight': 700,
-                'massFont': 'ubuntu-bold',
-                'massFontFamily': 'Ubuntu',
-                'massFontWeight': 700,
-                'sectorsFont': 'ubuntu',
-                'sectorsFontFamily': 'Ubuntu',
-                'sectorsFontWeight': 400,
-                'sectorsX': 5,
-                'sectorsY': 5,
-                'namesScale': 1,
-                'massScale': 3,
-                'virMassScale': 3,
-                'strokeScale': 1,
-                'foodSize': 5,
-                'bordersWidth': 14,
-                'sectorsWidth': 40,
-                'sectorsFontSize': 1200,
-                'cellsAlpha': 0.99,
-                'skinsAlpha': 0.99,
-                'virusAlpha': 0.6,
-                'textAlpha': 1,
-                'virusGlowColor': '#fff',
-                'virusGlowSize': 14,
-                'borderGlowSize': 14,
-                'ghostCellsAlpha': 0.3,
-                'virusStrokeSize': 14,
-                'menuPreset': 'ogario-v3',
-                'menuMainColor': '#01d9cc',
-                'menuBtnTextColor': '#ffffff',
-                'menuPanelColor': '#00243e',
-                'menuPanelColor2': '#002f52',
-                'menuTextColor': '#ffffff',
-                'menuTextColor2': '#8096a7',
-                'btn1Color': '#018cf6',
-                'btn1Color2': '#0176ce',
-                'btn2Color': '#00b9e8',
-                'btn2Color2': '#0099c0',
-                'btn3Color': '#8d5fe6',
-                'btn3Color2': '#814ee3',
-                'btn4Color': '#bf00aa',
-                'btn4Color2': '#a80096',
-                'menuBg': 'https://jimboy3100.github.io/banners/static/img/pattern.png',
-                'menuOpacity': 0.96,
-                'hudMainColor': '#01d9cc',
-                'hudColor': 'rgba(0,0,0,0.4)',
-                'hudTextColor': '#ffffff',
-                'statsHudColor': '#ffffff',
-                'timeHudColor': '#01d9cc',
-                'top5MassColor': '#bf00aa',
-                'lbMeColor': '#bf00aa',
-                'lbTeammateColor': '#018cf6',
-                'hudFont': 'ubuntu-bold',
-                'hudFontFamily': 'Ubuntu',
-                'hudFontWeight': 700,
-                'hudScale': 1,
-                'messageColor': 'rgba(0,0,0,0.4)',
-                'messageTextColor': '#ffffff',
-                'messageTimeColor': '#018cf6',
-                'messageNickColor': '#01d9cc',
-                'commandsColor': 'rgba(191,0,170,0.9)',
-                'commandsTextColor': '#ffffff',
-                'commandsTimeColor': '#bf00aa',
-                'commandsNickColor': '#ffffff',
-                'chatBoxColor': 'rgba(0,0,0,0.4)',
-                'chatScale': 1,
-                'miniMapSectorsColor': '#ffffff',
-                'miniMapSectorColor': '#01d9cc',
-                'miniMapGuidesColor': '#bf00aa',
-                'miniMapNickColor': '#ffffff',
-                'miniMapNickStrokeColor': '#000000',
-                'miniMapMyCellColor': '#ffffff',
-                'miniMapMyCellStrokeColor': '#bf00aa',
-                'miniMapTeammatesColor': '#01d9cc',
-                'miniMapDeathLocationColor': '#bf00aa',
-                'miniMapGhostCellsColor': '#ffffff',
-                ////
-                "color": "#fff",
-                //"commanderImage" : "https://i.imgur.com/wQKUDB3.png",
-                "commanderImage": "https://jimboy3100.github.io/banners/drawCommander.png",
-                "commanderImage1": "https://jimboy3100.github.io/banners/drawCommander1.png",
-                "commanderImage2": "https://jimboy3100.github.io/banners/drawCommander2.png",
-                "commanderImage3": "https://jimboy3100.github.io/banners/drawCommander3.png",
-                "commanderImage4": "https://jimboy3100.github.io/banners/drawCommander4.png",
-                "commanderImage5": "https://jimboy3100.github.io/banners/drawCommander5.png",
-                "commanderImage6": "https://jimboy3100.github.io/banners/iconJustWatchPro.png",
-                "commanderImageDyingLight": "https://jimboy3100.github.io/banners/icondyinglightzombie.png",
-                "commanderImageDyingLightvirus": "https://jimboy3100.github.io/banners/icondyinglightvirus.png",
-
-                ////
-                'miniMapFont': 'ubuntu-bold',
-                'miniMapFontFamily': 'Ubuntu',
-                'miniMapFontWeight': 700,
-                'miniMapNickFont': 'ubuntu-bold',
-                'miniMapNickFontFamily': 'Ubuntu',
-                'miniMapNickFontWeight': 700,
-                'miniMapWidth': 240,
-                'miniMapTop': 24,
-                'miniMapSectorsOpacity': 0.1,
-                'miniMapNickSize': 11,
-                'miniMapNickStrokeSize': 2,
-                'miniMapMyCellSize': 7.5,
-                'miniMapMyCellStrokeSize': 4,
-                'miniMapTeammatesSize': 5.5,
-                'miniMapGhostCellsAlpha': 0.15,
-                'customBackground': '',
-                'customCursor': 'https://jimboy3100.github.io/cursors/cursor_02.cur'
-            },
             y = {
                 'menuMainColorCSS': null,
                 'menuPanelColorCSS': null,
@@ -1669,7 +1670,7 @@ var thelegendmodproject = function(t, e, i) {
                 'cursorCSS': null,
                 'loadThemeSettings': function() {
                     var t = null;
-                    for (var s in null !== window.localStorage.getItem('ogarioThemeSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'))), g) g.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (g[s] = t[s]), i.hasOwnProperty(s) && (i[s] = g[s]));
+                    for (var s in null !== window.localStorage.getItem('ogarioThemeSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'))), g) defaultSettings.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (g[s] = t[s]), i.hasOwnProperty(s) && (i[s] = g[s]));
                     //if (v.zoomSpeedValue2 && v.zoomSpeedValue2>0.99){v.zoomSpeedValue2=v.zoomSpeedValue2-1};
                 },
                 'saveThemeSettings': function() {
@@ -1740,7 +1741,7 @@ var thelegendmodproject = function(t, e, i) {
                     });
                 },
                 'addCursorBox': function(t, e) {
-                    e === g.customCursor ? $(t).append('<div class=\"cursor-box\"><a href=\"#\" class=\"active\"><img src=\"' + e + '\"></a></div>') : $(t).append('<div class=\"cursor-box\"><a href=\"#\"><img src=\"' + e + '\"></a></div>');
+                    e === defaultSettings.customCursor ? $(t).append('<div class=\"cursor-box\"><a href=\"#\" class=\"active\"><img src=\"' + e + '\"></a></div>') : $(t).append('<div class=\"cursor-box\"><a href=\"#\"><img src=\"' + e + '\"></a></div>');
                 },
                 'setFont': function(t, e) {
                     g[t] = e,
@@ -1904,7 +1905,7 @@ var thelegendmodproject = function(t, e, i) {
                     $(document).on('click', '#theme-images .cursor-box a', function(e) {
                             e.preventDefault();
                             var i = $('img', this).attr('src');
-                            g.customCursor = i;
+                            defaultSettings.customCursor = i;
                             t.setCustomCursor();
                             $('#customCursor').val(i);
                             $('#theme-images .cursor-box a').removeClass('active');
@@ -1929,7 +1930,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (e[t]) {
                         g[t] = t;
                         t = e[t];
-                        for (var o in t) t.hasOwnProperty(o) && g.hasOwnProperty(o) && (g[o] = t[o], i.hasOwnProperty(o) && (i[o] = g[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', g[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(g[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(g[o]));
+                        for (var o in t) t.hasOwnProperty(o) && defaultSettings.hasOwnProperty(o) && (g[o] = t[o], i.hasOwnProperty(o) && (i[o] = g[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', g[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(g[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(g[o]));
                     }
                 },
                 'changeThemePreset': function(t) {
@@ -1937,12 +1938,12 @@ var thelegendmodproject = function(t, e, i) {
                     this.setTheme();
                 },
                 'setFonts': function() {
-                    this.setFont('namesFont', g.namesFont);
-                    this.setFont('massFont', g.namesFont);
-                    this.setFont('sectorsFont', g.sectorsFont);
+                    this.setFont('namesFont', defaultSettings.namesFont);
+                    this.setFont('massFont', defaultSettings.namesFont);
+                    this.setFont('sectorsFont', defaultSettings.sectorsFont);
                 },
                 'setBgColor': function() {
-                    $('body').css('background-color', g.bgColor);
+                    $('body').css('background-color', defaultSettings.bgColor);
                 },
                 'setFoodColor': function() {
                     v.optimizedFood && ogarfooddrawer && ogarfooddrawer.preDrawPellet();
@@ -1953,10 +1954,10 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'setCustomBackground': function() {
-                    g.customBackground ? $('body').css('background-image', 'url(' + g.customBackground + ')') : $('body').css('background-image', 'none');
+                    defaultSettings.customBackground ? $('body').css('background-image', 'url(' + defaultSettings.customBackground + ')') : $('body').css('background-image', 'none');
                 },
                 'setCustomCursor': function() {
-                    if (g.customCursor) var t = '*{cursor:url(' + g.customCursor + '), auto !important}';
+                    if (defaultSettings.customCursor) var t = '*{cursor:url(' + defaultSettings.customCursor + '), auto !important}';
                     else t = '*{cursor: auto}';
                     this.addCustomCSS('cursorCSS', t);
                 },
@@ -1972,26 +1973,26 @@ var thelegendmodproject = function(t, e, i) {
                     this.changePreset(t, themeMenus), this.setMenu();
                 },
                 'setMenuOpacity': function() {
-                    $('#helloContainer, #hotkeys, #exp-imp').css('opacity', g.menuOpacity);
+                    $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
                 },
                 'setMenuMainColor': function() {
-                    var t = '::-moz-selection{background-color:' + g.menuMainColor + '!important}::selection{background-color:' + g.menuMainColor + '!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:' + g.menuMainColor + '}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:' + g.menuMainColor + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + g.menuMainColor + '}.ps-scrollbar-y{background-color:' + g.menuMainColor + '!important}';
+                    var t = '::-moz-selection{background-color:' + defaultSettings.menuMainColor + '!important}::selection{background-color:' + defaultSettings.menuMainColor + '!important}.menu-main-color,#quick-menu a:hover,.quick,.quick:focus,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs a:hover,.submenu-tabs .active,#stats center,#exp-imp h1{color:' + defaultSettings.menuMainColor + '}#exp-bar .progress-bar-striped,.quick:hover,.rangeslider__fill{background-color:' + defaultSettings.menuMainColor + '}#main-menu,.agario-side-panel,#hotkeys,#exp-imp{border-color:' + defaultSettings.menuMainColor + '}.ps-scrollbar-y{background-color:' + defaultSettings.menuMainColor + '!important}';
                     this.addCustomCSS('menuMainColorCSS', t);
                 },
                 'setMenuPanelColor': function() {
-                    var t = '#main-menu,.agario-side-panel,#hotkeys,#exp-imp{background-color: ' + g.menuPanelColor + '}label:hover,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.nick .input-group-btn,.skin .input-group-btn,#stream-mode,#hide-url,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs,#exp-bar .progress,#quick-menu a:hover,.quick,.select-wrapper,#hotkeys-cfg div.row:hover,#hotkeys-cfg .command-in,#exp-imp-settings textarea,.restore-settings{background-color: ' + g.menuPanelColor2 + '}.agario-panel h5,.agario-side-panel h5,#stats h2,.menu-tabs,.submenu-tabs,#skins a.default,#stats hr,#hotkeys-cfg div.row, #exp-imp h1{border-color: ' + g.menuPanelColor2 + '}.quick:hover,#skins a,#profiles{color:' + g.menuPanelColor2 + '}input.stream-mode,input.hide-url{color:' + g.menuPanelColor2 + '!important}';
+                    var t = '#main-menu,.agario-side-panel,#hotkeys,#exp-imp{background-color: ' + defaultSettings.menuPanelColor + '}label:hover,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.nick .input-group-btn,.skin .input-group-btn,#stream-mode,#hide-url,.menu-tabs a:hover,.menu-tabs .active,.submenu-tabs,#exp-bar .progress,#quick-menu a:hover,.quick,.select-wrapper,#hotkeys-cfg div.row:hover,#hotkeys-cfg .command-in,#exp-imp-settings textarea,.restore-settings{background-color: ' + defaultSettings.menuPanelColor2 + '}.agario-panel h5,.agario-side-panel h5,#stats h2,.menu-tabs,.submenu-tabs,#skins a.default,#stats hr,#hotkeys-cfg div.row, #exp-imp h1{border-color: ' + defaultSettings.menuPanelColor2 + '}.quick:hover,#skins a,#profiles{color:' + defaultSettings.menuPanelColor2 + '}input.stream-mode,input.hide-url{color:' + defaultSettings.menuPanelColor2 + '!important}';
                     this.addCustomCSS('menuPanelColorCSS', t);
                 },
                 'setMenuTextColor': function() {
-                    var t = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + g['menuTextColor'] + '}#skins a.default:hover{border-color:' + g['menuTextColor'] + '}::-webkit-input-placeholder{color:' + g.menuTextColor2 + '!important}::-moz-placeholder{color:' + g.menuTextColor2 + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + g.menuTextColor2 + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + g.menuTextColor2 + '}';
+                    var t = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + g['menuTextColor'] + '}#skins a.default:hover{border-color:' + g['menuTextColor'] + '}::-webkit-input-placeholder{color:' + defaultSettings.menuTextColor2 + '!important}::-moz-placeholder{color:' + defaultSettings.menuTextColor2 + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + defaultSettings.menuTextColor2 + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + defaultSettings.menuTextColor2 + '}';
                     this.addCustomCSS('menuTextColorCSS', t);
                 },
                 'setMenuButtons': function() {
-                    var t = 'a,a:hover{color:' + g.btn1Color + '}.btn,#hotkeys-cfg .custom-key-in{color:' + g.menuBtnTextColor + '}.btn-primary{background-color:' + g.btn1Color + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + g['btn1Color2'] + '!important}.btn-success{background-color:' + g['btn2Color'] + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + g['btn2Color2'] + '!important}.btn-warning{background-color:' + g['btn3Color'] + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + g.btn3Color2 + '!important}.btn-danger{background-color:' + g.btn4Color + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + g.btn4Color2 + '!important}#hotkeys-cfg .custom-key-in{background-color:' + g.btn4Color2 + ';border-color:' + g.btn4Color2 + '}';
+                    var t = 'a,a:hover{color:' + defaultSettings.btn1Color + '}.btn,#hotkeys-cfg .custom-key-in{color:' + defaultSettings.menuBtnTextColor + '}.btn-primary{background-color:' + defaultSettings.btn1Color + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + g['btn1Color2'] + '!important}.btn-success{background-color:' + g['btn2Color'] + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + g['btn2Color2'] + '!important}.btn-warning{background-color:' + g['btn3Color'] + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + defaultSettings.btn3Color2 + '!important}.btn-danger{background-color:' + defaultSettings.btn4Color + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + defaultSettings.btn4Color2 + '!important}#hotkeys-cfg .custom-key-in{background-color:' + defaultSettings.btn4Color2 + ';border-color:' + defaultSettings.btn4Color2 + '}';
                     this.addCustomCSS('menuButtonsCSS', t);
                 },
                 'setMenuBg': function() {
-                    $('#menuBg').val(g.menuBg), g.menuBg ? $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'url(' + g.menuBg + ')') : $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'none');
+                    $('#menuBg').val(defaultSettings.menuBg), defaultSettings.menuBg ? $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'url(' + defaultSettings.menuBg + ')') : $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'none');
                 },
                 'setHud': function() {
                     this.setHudColors();
@@ -1999,24 +2000,24 @@ var thelegendmodproject = function(t, e, i) {
                     this.setHudScale();
                 },
                 'setHudColors': function() {
-                    var t = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + g.hudMainColor + '}.hud,.hud-b,#chat-emoticons{background-color:' + g.hudColor + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + g.hudTextColor + '}.stats-hud-color{color:' + g.statsHudColor + '}.time-hud-color{color:' + g.timeHudColor + '}.top5-mass-color{color:' + g.top5MassColor + '}#leaderboard-positions .me{color:' + g.lbMeColor + '}#leaderboard-positions .teammate{color:' + g.lbTeammateColor + '}';
+                    var t = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + defaultSettings.hudMainColor + '}.hud,.hud-b,#chat-emoticons{background-color:' + defaultSettings.hudColor + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + defaultSettings.hudTextColor + '}.stats-hud-color{color:' + defaultSettings.statsHudColor + '}.time-hud-color{color:' + defaultSettings.timeHudColor + '}.top5-mass-color{color:' + defaultSettings.top5MassColor + '}#leaderboard-positions .me{color:' + defaultSettings.lbMeColor + '}#leaderboard-positions .teammate{color:' + defaultSettings.lbTeammateColor + '}';
                     this.addCustomCSS('hudCSS', t);
                 },
                 'setHudFont': function() {
-                    this.setFont('hudFont', g.hudFont),
+                    this.setFont('hudFont', defaultSettings.hudFont),
                         $('#overlays-hud').css({
                             'font-family': g['hudFontFamily'],
                             'font-weight': g['hudFontWeight']
                         });
                 },
                 'setHudScale': function() {
-                    var t = Math.round(20 * g.hudScale),
-                        e = Math.round(200 * g.hudScale),
-                        i = Math.floor(55 * g.hudScale),
-                        o = Math.floor(6 * g.hudScale),
-                        a = Math.floor(280 * g.hudScale),
-                        n = Math.floor(85 * g.hudScale),
-                        r = Math.floor(20 * g.hudScale);
+                    var t = Math.round(20 * defaultSettings.hudScale),
+                        e = Math.round(200 * defaultSettings.hudScale),
+                        i = Math.floor(55 * defaultSettings.hudScale),
+                        o = Math.floor(6 * defaultSettings.hudScale),
+                        a = Math.floor(280 * defaultSettings.hudScale),
+                        n = Math.floor(85 * defaultSettings.hudScale),
+                        r = Math.floor(20 * defaultSettings.hudScale);
                     $('#overlays-hud').css('font-size', t + 'px');
                     $('#leaderboard-hud, #time-hud').width(e);
                     $('#top5-hud').width(e + 30).css('top', i + 'px');
@@ -2029,15 +2030,15 @@ var thelegendmodproject = function(t, e, i) {
                     this['setChatColors'](), this.setChatScale();
                 },
                 'setChatColors': function() {
-                    var t = '#message,#messages li,.toast-success{background-color:' + g.messageColor + '}#message,.message-text,.toast-success .message-text{color:' + g.messageTextColor + '}.message-nick,.mute-user,.mute-user:hover,.toast-success .message-nick,.toast .mute-user,.toast .mute-user:hover{color:' + g.messageNickColor + '}.message-time{color:' + g.messageTimeColor + '}.toast-warning{background-color:' + g.commandsColor + '}.command-text,.toast-warning .command-text{color:' + g.commandsTextColor + '}.command-nick,.toast-warning .command-nick,.toast-warning .mute-user,.toast-warning .mute-user:hover{color:' + g.commandsNickColor + '}.command-time{color:' + g.commandsTimeColor + '}#chat-box{background-color:' + g.chatBoxColor + '}';
+                    var t = '#message,#messages li,.toast-success{background-color:' + defaultSettings.messageColor + '}#message,.message-text,.toast-success .message-text{color:' + defaultSettings.messageTextColor + '}.message-nick,.mute-user,.mute-user:hover,.toast-success .message-nick,.toast .mute-user,.toast .mute-user:hover{color:' + defaultSettings.messageNickColor + '}.message-time{color:' + defaultSettings.messageTimeColor + '}.toast-warning{background-color:' + defaultSettings.commandsColor + '}.command-text,.toast-warning .command-text{color:' + defaultSettings.commandsTextColor + '}.command-nick,.toast-warning .command-nick,.toast-warning .mute-user,.toast-warning .mute-user:hover{color:' + defaultSettings.commandsNickColor + '}.command-time{color:' + defaultSettings.commandsTimeColor + '}#chat-box{background-color:' + defaultSettings.chatBoxColor + '}';
                     this.addCustomCSS('chatCSS', t);
                 },
                 'setChatScale': function() {
-                    var t = Math.round(14 * g.chatScale);
-                    var e = Math.round(280 * g.chatScale);
-                    var i = Math.round(350 * g.chatScale);
-                    var o = Math.round(300 * g.chatScale);
-                    var a = Math.floor(14 * g.chatScale);
+                    var t = Math.round(14 * defaultSettings.chatScale);
+                    var e = Math.round(280 * defaultSettings.chatScale);
+                    var i = Math.round(350 * defaultSettings.chatScale);
+                    var o = Math.round(300 * defaultSettings.chatScale);
+                    var a = Math.floor(14 * defaultSettings.chatScale);
                     $('#message-box, #messages, #toast-container, #chat-box').css('font-size', t + 'px');
                     $('#messages, #toast-container, #chat-box').width(e);
                     $('#message-box').width(i), $('#chat-box').height(o);
@@ -2051,17 +2052,17 @@ var thelegendmodproject = function(t, e, i) {
                     this.setMiniMapSectorsOpacity();
                 },
                 'setMiniMapFont': function() {
-                    this.setFont('miniMapFont', g.miniMapFont);
+                    this.setFont('miniMapFont', defaultSettings.miniMapFont);
                     if (ogarminimapdrawer) {
                         ogarminimapdrawer.resetMiniMapSectors();
                     }
                 },
                 'setMiniMapWidth': function() {
-                    var t = g.miniMapWidth / 200;
-                    g.miniMapTop = Math.round(20 * t);
+                    var t = defaultSettings.miniMapWidth / 200;
+                    defaultSettings.miniMapTop = Math.round(20 * t);
                     $('#minimap-hud').css({
-                        'width': g.miniMapWidth,
-                        'height': g.miniMapWidth + g.miniMapTop
+                        'width': defaultSettings.miniMapWidth,
+                        'height': defaultSettings.miniMapWidth + defaultSettings.miniMapTop
                     });
                     if (ogarminimapdrawer) {
                         ogarminimapdrawer.resetMiniMapSectors();
@@ -2073,7 +2074,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'setMiniMapSectorsOpacity': function() {
-                    $('#minimap-sectors').css('opacity', g.miniMapSectorsOpacity);
+                    $('#minimap-sectors').css('opacity', defaultSettings.miniMapSectorsOpacity);
                 },
                 'setTheme': function() {
                     this.setFonts();
@@ -2094,7 +2095,7 @@ var thelegendmodproject = function(t, e, i) {
                 'nick': 'I<3Legendmod',
                 'clanTag': 'Ⓜ',
                 'skinURL': '',
-                'color': g.mainColor
+                'color': defaultSettings.mainColor
             },
             v = {
                 'isAlphaChanged': false,
@@ -2849,7 +2850,7 @@ var thelegendmodproject = function(t, e, i) {
                             'nick': 'Profile #' + (t + 1),
                             'clanTag': '',
                             'skinURL': '',
-                            'color': g.mainColor
+                            'color': defaultSettings.mainColor
                         });
                     }
                 } else {
@@ -2857,7 +2858,7 @@ var thelegendmodproject = function(t, e, i) {
                         'nick': 'Profile #' + (t + 1),
                         'clanTag': '',
                         'skinURL': '',
-                        'color': g.mainColor
+                        'color': defaultSettings.mainColor
                     });
                 }
                 if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
@@ -3013,7 +3014,7 @@ var thelegendmodproject = function(t, e, i) {
                         h.hotkeys + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="Radio / ' + h.sounds + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>'),
                     $("#main-panel").append('<a href="#" class="quick quick-menu ogicon-menu"></a><a href="#" class="quick quick-skins ogicon-images"></a><div id="profiles"><div id="prev-profile"></div><div id="skin-preview"></div><div id="next-profile"></div></div>'),
                     $("#mainPanel div[role=form]").appendTo($("#main-panel")), $("#main-panel div[role=form] .form-group:first").remove(),
-                    $("#nick").before('<input id="clantag" class="form-control" placeholder="Tag, e.g. \u24c2" maxlength="10"><div class="input-group nick"></div>'),
+                    $("#nick").before('<input id="clantag" class="form-control" placeholder="Tag, e.g  \Lc" maxlength="10"><div class="input-group nick"></div>'),
                     $("#nick").appendTo($(".nick")),
                     $(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>'),
                     $(".nick").after('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Skin URL (imgur.com direct link)" maxlength="40"><input type="hidden" id="color" value="' + ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>'),
@@ -3724,10 +3725,10 @@ var thelegendmodproject = function(t, e, i) {
                 if (!i.mapOffsetFixed) return '';
                 var o = s ? i.mapOffsetX + i.mapOffset : i.mapOffset,
                     a = s ? i.mapOffsetY + i.mapOffset : i.mapOffset,
-                    n = Math.floor((e + a) / (i.mapSize / g.sectorsY)),
-                    r = Math.floor((t + o) / (i.mapSize / g.sectorsX));
-                window.calculateMapSector = n < 0 ? 0 : n >= g.sectorsY ? g.sectorsY - 1 : n, r = r < 0 ? 0 : r >= g.sectorsX ? g.sectorsX - 1 : r, String.fromCharCode(n + 65) + (r + 1);
-                return n = n < 0 ? 0 : n >= g.sectorsY ? g.sectorsY - 1 : n, r = r < 0 ? 0 : r >= g.sectorsX ? g.sectorsX - 1 : r, String.fromCharCode(n + 65) + (r + 1);
+                    n = Math.floor((e + a) / (i.mapSize / defaultSettings.sectorsY)),
+                    r = Math.floor((t + o) / (i.mapSize / defaultSettings.sectorsX));
+                window.calculateMapSector = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n, r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r, String.fromCharCode(n + 65) + (r + 1);
+                return n = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n, r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r, String.fromCharCode(n + 65) + (r + 1);
             },
             'shortMassFormat': function(t) {
                 return t < 1000 ? t : Math.round(t / 100) / 10 + 'k';
@@ -3746,8 +3747,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'drawMiniMap': function() {
                 if (i.mapOffsetFixed) {
-                    var t = g.miniMapWidth;
-                    var e = g.miniMapTop;
+                    var t = defaultSettings.miniMapWidth;
+                    var e = defaultSettings.miniMapTop;
                     var s = t + e;
                     var o = t - 18;
                     var a = e + 9.5;
@@ -3770,10 +3771,10 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.drawSelectedCell(this.miniMapCtx),
                         this.currentSector = this.calculateMapSector(i.playerX, i.playerY, true),
                         this.miniMapCtx.globalAlpha = 1,
-                        this.miniMapCtx.font = g.miniMapFontWeight + " " + (e - 4) + "px " + g.miniMapFontFamily,
-                        this.miniMapCtx.fillStyle = g.miniMapSectorColor,
+                        this.miniMapCtx.font = defaultSettings.miniMapFontWeight + " " + (e - 4) + "px " + defaultSettings.miniMapFontFamily,
+                        this.miniMapCtx.fillStyle = defaultSettings.miniMapSectorColor,
                         this.miniMapCtx.fillText(this.currentSector, 10, e),
-                        this.miniMapSectors || this.drawMiniMapSectors(g.sectorsX, g.sectorsY, o, s, a),
+                        this.miniMapSectors || this.drawMiniMapSectors(defaultSettings.sectorsX, defaultSettings.sectorsY, o, s, a),
                         this.miniMapCtx.save(),
                         this.miniMapCtx.translate(9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l), v.showMiniMapGhostCells) {
                         var h = i.ghostCells;
@@ -3787,9 +3788,9 @@ var thelegendmodproject = function(t, e, i) {
                                 this.miniMapCtx.arc(u, d, ~~(h[c].size * n), 0, this.pi2, false);
                             }
                         }
-                        this.miniMapCtx.fillStyle = g.miniMapGhostCellsColor;
-                        this.miniMapCtx.globalAlpha = g.miniMapGhostCellsAlpha;
-                        this.miniMapCtx.shadowColor = g.miniMapGhostCellsColor;
+                        this.miniMapCtx.fillStyle = defaultSettings.miniMapGhostCellsColor;
+                        this.miniMapCtx.globalAlpha = defaultSettings.miniMapGhostCellsAlpha;
+                        this.miniMapCtx.shadowColor = defaultSettings.miniMapGhostCellsColor;
                         this.miniMapCtx.shadowBlur = 10;
                         this.miniMapCtx.shadowOffsetX = 0;
                         this.miniMapCtx.shadowOffsetY = 0;
@@ -3801,7 +3802,7 @@ var thelegendmodproject = function(t, e, i) {
                         u = Math.round((i.playerX + r) * n);
                         d = Math.round((i.playerY + l) * n);
                         this.miniMapCtx.lineWidth = 1;
-                        this.miniMapCtx.strokeStyle = g.miniMapGuidesColor;
+                        this.miniMapCtx.strokeStyle = defaultSettings.miniMapGuidesColor;
                         this.miniMapCtx.beginPath();
                         this.miniMapCtx.moveTo(u, 0);
                         this.miniMapCtx.lineTo(u, o - 1);
@@ -3831,7 +3832,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.miniMapCtx.stroke();
 
                     }
-                    if (this.miniMapCtx.beginPath(), this.miniMapCtx.arc((i.playerX + r) * n, (i.playerY + l) * n, g.miniMapMyCellSize, 0, this.pi2, false), this.miniMapCtx.closePath(), g["miniMapMyCellStrokeSize"] > 0 && (this.miniMapCtx.lineWidth = g["miniMapMyCellStrokeSize"], this.miniMapCtx.strokeStyle = g["miniMapMyCellStrokeColor"], this.miniMapCtx.stroke()), this.miniMapCtx.fillStyle = g["miniMapMyCellColor"], this.miniMapCtx.fill(), this.teamPlayers.length) {
+                    if (this.miniMapCtx.beginPath(), this.miniMapCtx.arc((i.playerX + r) * n, (i.playerY + l) * n, defaultSettings.miniMapMyCellSize, 0, this.pi2, false), this.miniMapCtx.closePath(), g["miniMapMyCellStrokeSize"] > 0 && (this.miniMapCtx.lineWidth = g["miniMapMyCellStrokeSize"], this.miniMapCtx.strokeStyle = g["miniMapMyCellStrokeColor"], this.miniMapCtx.stroke()), this.miniMapCtx.fillStyle = g["miniMapMyCellColor"], this.miniMapCtx.fill(), this.teamPlayers.length) {
                         c = 0;
                         for (; c < this.teamPlayers.length; c++) {
                             this.teamPlayers[c].drawPosition(this.miniMapCtx, i.mapOffset, n, this.privateMiniMap, this.targetID, legendmod3.teamPlayers[c].color);
@@ -3840,9 +3841,9 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.deathLocations.length > 0) {
                         u = Math.round((this.deathLocations[this.lastDeath].x + i.mapOffset) * n);
                         d = Math.round((this.deathLocations[this.lastDeath].y + i.mapOffset) * n);
-                        var f = Math.max(g.miniMapMyCellSize - 2, 4);
+                        var f = Math.max(defaultSettings.miniMapMyCellSize - 2, 4);
                         this.miniMapCtx.lineWidth = 1;
-                        this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 == this.lastDeath ? g.miniMapDeathLocationColor : "#FFFFFF";
+                        this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 == this.lastDeath ? defaultSettings.miniMapDeathLocationColor : "#FFFFFF";
                         this.miniMapCtx.beginPath();
                         this.miniMapCtx.moveTo(u - f, d);
                         this.miniMapCtx.lineTo(u + f, d);
@@ -3861,7 +3862,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.miniMapSectors.height = o;
                 n.fillStyle = '#FFFFFF';
                 this.dTok(n, s - 1);
-                ogarfooddrawer.drawSectors(n, i.mapOffsetFixed, t, e, 0.5, a, s - 0.5, o - 9.5, g.miniMapSectorsColor, g.miniMapSectorsColor, 1, false);
+                ogarfooddrawer.drawSectors(n, i.mapOffsetFixed, t, e, 0.5, a, s - 0.5, o - 9.5, defaultSettings.miniMapSectorsColor, defaultSettings.miniMapSectorsColor, 1, false);
             },
             'resetMiniMapSectors': function() {
                 this.miniMapSectors = null;
@@ -3870,7 +3871,7 @@ var thelegendmodproject = function(t, e, i) {
                 i.play && i.playerSplitCells > 1 && (v.splitRange || v.oppColors || v.oppRings || v.showStatsSTE) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this.selectBiggestCell ? 0.6 : 0.3, t.beginPath(), t.arc(48, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this.selectBiggestCell ? 0.3 : 0.6, t.beginPath(), t.arc(60, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
             },
             'dTok': function(t, e) {
-                t.font = g.miniMapFontWeight + ' ' + (g.miniMapTop - 6) + 'px ' + g.miniMapFontFamily, t.textAlign = 'right', t.textBaseline = 'top', t.fillText(atob(this['token']), e, 7);
+                t.font = defaultSettings.miniMapFontWeight + ' ' + (defaultSettings.miniMapTop - 6) + 'px ' + defaultSettings.miniMapFontFamily, t.textAlign = 'right', t.textBaseline = 'top', t.fillText(atob(this['token']), e, 7);
             },
             /*            'drawTeammatesInd': function(t, e, i, s) {
                             this.indicator && t.drawImage(this.indicator, e - 45, i - s - 90);
@@ -3884,17 +3885,17 @@ var thelegendmodproject = function(t, e, i) {
                         if (!this.cells.hasOwnProperty(e)) return (m = new ogarbasicassembly(s, o, r, l, v.shortMass, v.virMassShots)).setMass(a), m.setNick(c), void(this.cells[e] = m);
                         (m = this.cells[e]).update(s, o, a, r, l, c),
                             m.setDrawing(v.optimizedNames, v.optimizedMass, v.shortMass, v.virMassShots, v.namesStroke, v.massStroke),
-                            m.setDrawingScale(i.viewScale, g.namesScale, g.massScale, g.virMassScale, g.strokeScale),
-                            t.globalAlpha = g.textAlpha, v.noNames || f && v.autoHideNames || l && v.hideMyName || d && v.hideTeammatesNames || m.drawNick(t, g.namesColor, g.namesFontFamily, g.namesFontWeight, g.namesStrokeColor),
-                            !v.showMass || f && v.autoHideMass || l && v.hideMyMass || v.hideEnemiesMass && !l && !r || m.drawMass(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor) && (window.ExternalScripts && !window.legendmod5.optimizedMass && m.drawMerge(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor));
+                            m.setDrawingScale(i.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale),
+                            t.globalAlpha = defaultSettings.textAlpha, v.noNames || f && v.autoHideNames || l && v.hideMyName || d && v.hideTeammatesNames || m.drawNick(t, defaultSettings.namesColor, defaultSettings.namesFontFamily, defaultSettings.namesFontWeight, defaultSettings.namesStrokeColor),
+                            !v.showMass || f && v.autoHideMass || l && v.hideMyMass || v.hideEnemiesMass && !l && !r || m.drawMass(t, defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, defaultSettings.massStrokeColor) && (window.ExternalScripts && !window.legendmod5.optimizedMass && m.drawMerge(t, defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, defaultSettings.massStrokeColor));
                     }
                 }
             },
             'setVirusColor': function(t) {
-                return Math.floor(t * t / 100) > 183 ? '#C80000' : g.virusColor;
+                return Math.floor(t * t / 100) > 183 ? '#C80000' : defaultSettings.virusColor;
             },
             'setVirusStrokeColor': function(t) {
-                return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : g.virusStrokeColor;
+                return i.play && 0 != i.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? i.playerMaxMass : i.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : defaultSettings.virusStrokeColor;
             },
             'setAutoHideCellInfo': function(t) {
                 return t <= 40 || i.viewScale < 0.5 && t < 550 && t < 25 / i.viewScale;
@@ -4375,7 +4376,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.mass = 0;
                         this.clanTag = "";
                         this.color = null;
-                        this.customColor = g.miniMapTeammatesColor;
+                        this.customColor = defaultSettings.miniMapTeammatesColor;
                         this.alive = false;
                         this.updateTime = null;
                         this.pi2 = 2 * Math.PI;
@@ -4392,21 +4393,21 @@ var thelegendmodproject = function(t, e, i) {
                                 var w = (this.lastX + margin) * mult;
                                 var h = (this.lastY + margin) * mult;
                                 if (this.nick.length > 0) {
-                                    options.font = g.miniMapNickFontWeight + " " + g.miniMapNickSize + "px " + g.miniMapNickFontFamily;
+                                    options.font = defaultSettings.miniMapNickFontWeight + " " + defaultSettings.miniMapNickSize + "px " + defaultSettings.miniMapNickFontFamily;
                                     options.textAlign = "center";
-                                    if (g.miniMapNickStrokeSize > 0) {
-                                        options.lineWidth = g.miniMapNickStrokeSize;
-                                        options.strokeStyle = g.miniMapNickStrokeColor;
-                                        options.strokeText(this.nick, w, h - (2 * g.miniMapTeammatesSize + 2));
+                                    if (defaultSettings.miniMapNickStrokeSize > 0) {
+                                        options.lineWidth = defaultSettings.miniMapNickStrokeSize;
+                                        options.strokeStyle = defaultSettings.miniMapNickStrokeColor;
+                                        options.strokeText(this.nick, w, h - (2 * defaultSettings.miniMapTeammatesSize + 2));
                                     }
-                                    options.fillStyle = g.miniMapNickColor;
-                                    options.fillText(this.nick, w, h - (2 * g.miniMapTeammatesSize + 2));
+                                    options.fillStyle = defaultSettings.miniMapNickColor;
+                                    options.fillText(this.nick, w, h - (2 * defaultSettings.miniMapTeammatesSize + 2));
                                 }
                                 options.beginPath();
-                                options.arc(w, h, g.miniMapTeammatesSize, 0, this.pi2, false);
+                                options.arc(w, h, defaultSettings.miniMapTeammatesSize, 0, this.pi2, false);
                                 options.closePath();
                                 if (v.oneColoredTeammates) {
-                                    options.fillStyle = g.miniMapTeammatesColor;
+                                    options.fillStyle = defaultSettings.miniMapTeammatesColor;
                                 } else {
                                     options.fillStyle = value;
                                 }
@@ -4884,19 +4885,19 @@ var thelegendmodproject = function(t, e, i) {
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
             cimg2 = new Image;
-            cimg2.src = g.commanderImage2;
+            cimg2.src = defaultSettings.commanderImage2;
             cimg5 = new Image;
-            cimg5.src = g.commanderImage5;
+            cimg5.src = defaultSettings.commanderImage5;
             cimg6 = new Image;
-            cimg6.src = g.commanderImage6;
+            cimg6.src = defaultSettings.commanderImage6;
             cimg7 = new Image;
             cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';
 
             if (dyinglight1load == "yes") {
                 cimgDyingLight = new Image;
-                cimgDyingLight.src = g.commanderImageDyingLight;
+                cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
                 cimgDyingLightvirus = new Image;
-                cimgDyingLightvirus.src = g.commanderImageDyingLightvirus;
+                cimgDyingLightvirus.src = defaultSettings.commanderImageDyingLightvirus;
 
 
                 cimgDyingLight1 = new Image;
@@ -5145,7 +5146,7 @@ var thelegendmodproject = function(t, e, i) {
             };
             /*
 				this.setMass = function(t) {
-                    return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor) : (this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
+                    return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor) : (this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
                 };
 				*/
             this.setMass = function(t) {
@@ -5165,9 +5166,9 @@ var thelegendmodproject = function(t, e, i) {
                 this.redrawMass = true;
                 if (this.isVirus) {
                     if (this.mass <= 200) {
-                        this.virusColor = g.virusColor, this.virusStroke = g.virusStrokeColor;
+                        this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor;
                     } else if (this.mass > 220) {
-                        this.virusColor = g.mVirusColor, this.virusStroke = g.mVirusStrokeColor;
+                        this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor;
                     }
                     if (this.virMassShots) {
                         this.mass = ~~((200 - this.mass) / 14);
@@ -5244,7 +5245,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.strokeMass = v.massStroke;
             };
             this.setDrawingScale = function() {
-                this.setScale(i.viewScale, g.namesScale, g.massScale, g.virMassScale, g.strokeScale);
+                this.setScale(i.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale);
                 this.setFontSize();
                 this.setStrokeSize();
                 this.margin = 0;
@@ -5254,7 +5255,7 @@ var thelegendmodproject = function(t, e, i) {
                     return;
                 }
                 var nickCanvas = this.nickCanvas;
-                nickCanvas.setDrawing(g.namesColor, g.namesFontFamily, g.namesFontWeight, this.strokeNick, this.nickStrokeSize, g.namesStrokeColor);
+                nickCanvas.setDrawing(defaultSettings.namesColor, defaultSettings.namesFontFamily, defaultSettings.namesFontWeight, this.strokeNick, this.nickStrokeSize, defaultSettings.namesStrokeColor);
                 nickCanvas.setTxt(this.nick);
                 if (this.redrawNick) {
                     nickCanvas.setFontSize(this.nickSize);
@@ -5272,7 +5273,7 @@ var thelegendmodproject = function(t, e, i) {
             this.drawMerge = function(context) {
                 if (this.mergeCanvas && !(this.size <= 40)) {
                     var mergeCanvas = this.mergeCanvas;
-                    mergeCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
+                    mergeCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
 
                     mergeCanvas.setFontSize(this.massSize);
                     mergeCanvas.setScale(this.scale);
@@ -5331,7 +5332,7 @@ var thelegendmodproject = function(t, e, i) {
             this.drawMass = function(context) {
                 if (this.massCanvas && !(this.size <= 40)) {
                     var massCanvas = this.massCanvas;
-                    massCanvas.setDrawing(g.massColor, g.massFontFamily, g.massFontWeight, this.strokeMass, this.massStrokeSize, g.massStrokeColor);
+                    massCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
                     //
                     if (this.redrawMass) {
                         massCanvas.setTxt(this.massTxt);
@@ -5378,7 +5379,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     var value = style.globalAlpha;
                     var s = false;
-                    var y = this.isFood ? this.size + g.foodSize : this.size;
+                    var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
                     style.beginPath()
 
 
@@ -5422,33 +5423,33 @@ var thelegendmodproject = function(t, e, i) {
                                     style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                                 } catch (e) {}
                             }
-                            return v.transparentViruses && (style.globalAlpha *= g.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = g.virusStrokeSize, v.virusGlow ? (style.shadowBlur = g.virusGlowSize, style.shadowColor =
-                                g.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote",
+                            return v.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), v.virColors && M.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, v.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
+                                defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), v.showMass && (this.setDrawing(), this.setDrawingScale(), v.virusGlow ? style.shadowBlur = 0 : "yote",
                                 this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                         }
                     } else {
                         if (this.isVirus) {
                             //console.log("is jelly");
                             if (v.transparentViruses) {
-                                style.globalAlpha *= g.virusAlpha;
+                                style.globalAlpha *= defaultSettings.virusAlpha;
                                 v.isAlphaChanged = true;
                             }
                             if (v.virColors && M.play) {
                                 style.fillStyle = ogarminimapdrawer.setVirusColor(y);
                                 style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
                             } else {
-                                style.fillStyle = g.virusColor;
-                                style.strokeStyle = g.virusStrokeColor;
+                                style.fillStyle = defaultSettings.virusColor;
+                                style.strokeStyle = defaultSettings.virusStrokeColor;
                             }
                             style.fill();
                             if (v.isAlphaChanged) {
-                                style.globalAlpha = g.cellsAlpha;
+                                style.globalAlpha = defaultSettings.cellsAlpha;
                                 v.isAlphaChanged = false;
                             }
-                            style.lineWidth = g.virusStrokeSize;
+                            style.lineWidth = defaultSettings.virusStrokeSize;
                             if (v.virusGlow) {
-                                style.shadowBlur = g.virusGlowSize;
-                                style.shadowColor = g.virusGlowColor;
+                                style.shadowBlur = defaultSettings.virusGlowSize;
+                                style.shadowColor = defaultSettings.virusGlowColor;
                             }
                             style.stroke();
                             if (v.showMass) {
@@ -5465,7 +5466,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     }
                     if (v.transparentCells) {
-                        style.globalAlpha *= g.cellsAlpha;
+                        style.globalAlpha *= defaultSettings.cellsAlpha;
                         s = true;
                     }
                     var color = this.color;
@@ -5503,7 +5504,7 @@ var thelegendmodproject = function(t, e, i) {
 
                         if (node) {
                             if ((v.transparentSkins || M.play && v.oppColors) && !(this.isPlayerCell && !v.myTransparentSkin) || this.isPlayerCell && v.myTransparentSkin) {
-                                style.globalAlpha *= g.skinsAlpha;
+                                style.globalAlpha *= defaultSettings.skinsAlpha;
                                 s = true;
                             }
 
@@ -5605,7 +5606,7 @@ var thelegendmodproject = function(t, e, i) {
                         } else {
                             this.setDrawing();
                             this.setDrawingScale();
-                            style.globalAlpha *= g.textAlpha;
+                            style.globalAlpha *= defaultSettings.textAlpha;
                             if (!(v.noNames || recursive && v.autoHideNames || this.isPlayerCell && v.hideMyName || node && v.hideTeammatesNames)) {
                                 if (this.setNick(this.targetNick)) {
                                     this.drawNick(style);
@@ -6536,7 +6537,7 @@ var thelegendmodproject = function(t, e, i) {
             'vanillaskins': function(y, g) {
                 if (g != null) {
                     if (window.vanillaskins == true) {
-                        var skin2search = g.replace('%', '');
+                        var skin2search = defaultSettings.replace('%', '');
                         if (window.LMAgarGameConfiguration != undefined) {
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
                                 if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
@@ -6793,8 +6794,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setCellOppColor': function(t, e, i) {
                 //return t ? ogarcopythelb.color : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
-                //return t ? ogarcopythelb.color : e > 10.64 ? g.enemyBSTEDColor : e >= 5.32 ? g.enemyBSTEDColor : e >= 2.66 && e <= 5.32 ? g.enemyBSTEColor : e >= 1.33 && e <= 2.66 ? g.enemyBColor : e < 1.33 && e > 0.75 ? '#FFDC00' : e < 0.75 && e > 0.375 ? g.enemySSTEDColor : e > i ? '#00C8FF' : g.enemySSTEColor; //Sonia
-                return t ? ogarcopythelb.color : e >= 10.64 ? g.enemyBSTEDColor : e >= 5.32 ? g.enemyBSTEDColor : e >= 2.66 ? g.enemyBSTEColor : e >= 1.33 ? g.enemyBColor : e > 0.75 ? '#FFDC00' : e > 0.375 ? g.enemySColor : e > 0.1875 ? g.enemySSTEColor : g.enemySSTEDColor;
+                //return t ? ogarcopythelb.color : e > 10.64 ? defaultSettings.enemyBSTEDColor : e >= 5.32 ? defaultSettings.enemyBSTEDColor : e >= 2.66 && e <= 5.32 ? defaultSettings.enemyBSTEColor : e >= 1.33 && e <= 2.66 ? defaultSettings.enemyBColor : e < 1.33 && e > 0.75 ? '#FFDC00' : e < 0.75 && e > 0.375 ? defaultSettings.enemySSTEDColor : e > i ? '#00C8FF' : defaultSettings.enemySSTEColor; //Sonia
+                return t ? ogarcopythelb.color : e >= 10.64 ? defaultSettings.enemyBSTEDColor : e >= 5.32 ? defaultSettings.enemyBSTEDColor : e >= 2.66 ? defaultSettings.enemyBSTEColor : e >= 1.33 ? defaultSettings.enemyBColor : e > 0.75 ? '#FFDC00' : e > 0.375 ? defaultSettings.enemySColor : e > 0.1875 ? defaultSettings.enemySSTEColor : defaultSettings.enemySSTEDColor;
             },
             'getCursorPosition': function() {
                 this.cursorX = (this.clientX - this.canvasWidth / 2) / this.viewScale + this.viewX;
@@ -6921,7 +6922,7 @@ var thelegendmodproject = function(t, e, i) {
                 						for (i = 0; i < M.cells.length; i++) {
                 							M.cells[i].moveCell();
                 						}
-                                    if (this['setView'](), M.getCursorPosition(), M['sortCells'](), M['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), v.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), v.showBgSectors && this.drawSectors(this.ctx, M.mapOffsetFixed, g.sectorsX, g.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this.ctx), v['showMapBorders']) {
+                                    if (this['setView'](), M.getCursorPosition(), M['sortCells'](), M['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), v.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), v.showBgSectors && this.drawSectors(this.ctx, M.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g['gridColor'], g['sectorsColor'], g['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this.ctx), v['showMapBorders']) {
                                         var t = g['bordersWidth'] / 2;
                                         this['drawMapBorders'](this.ctx, M.mapOffsetFixed, M.mapMinX - t, M.mapMinY - t, M.mapMaxX + t, M.mapMaxY + t, g['bordersColor'], g['bordersWidth']);
                                     }
@@ -6951,14 +6952,14 @@ var thelegendmodproject = function(t, e, i) {
                     this.ctx.scale(this.scale, this.scale);
                     this.ctx.translate(-this.camX, -this.camY);
                     if (v.showBgSectors) {
-                        this.drawSectors(this.ctx, M.mapOffsetFixed, g.sectorsX, g.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, g.gridColor, g.sectorsColor, g.sectorsWidth, true);
+                        this.drawSectors(this.ctx, M.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                     }
                     if (M.gameMode === ':battleroyale') {
                         this.drawBattleArea(this.ctx);
                     }
                     if (v.showMapBorders) {
-                        var _0x6993ee = g.bordersWidth / 2;
-                        this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, g.bordersColor, g.bordersWidth);
+                        var _0x6993ee = defaultSettings.bordersWidth / 2;
+                        this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                     }
                     this.drawCommander();
                     this.drawCommander2();
@@ -7078,7 +7079,7 @@ var thelegendmodproject = function(t, e, i) {
                     var r = i / s;
                     var l = (n / 2 - o) % 50;
                     var h = (r / 2 - a) % 50;
-                    t.strokeStyle = g.gridColor, t.globalAlpha = 1 * s, t.beginPath();
+                    t.strokeStyle = defaultSettings.gridColor, t.globalAlpha = 1 * s, t.beginPath();
                     for (; l < n; l = l + 50) {
                         t.moveTo(l * s - 0.5, 0);
                         t.lineTo(l * s - 0.5, r * s);
@@ -7113,7 +7114,7 @@ var thelegendmodproject = function(t, e, i) {
                         } else {
                             this.drawMapBorders(t, e, o, a, n, r, l, c);
                         }
-                        t.font = u ? g.sectorsFontWeight + " " + g.sectorsFontSize + "px " + g.sectorsFontFamily : g.miniMapFontWeight + " " + ~~(0.4 * f) + "px " + g.miniMapFontFamily;
+                        t.font = u ? defaultSettings.sectorsFontWeight + " " + defaultSettings.sectorsFontSize + "px " + defaultSettings.sectorsFontFamily : defaultSettings.miniMapFontWeight + " " + ~~(0.4 * f) + "px " + defaultSettings.miniMapFontFamily;
                         t.textAlign = "center";
                         t.textBaseline = "middle";
                         ogario1PlayerProfiles = 0;
@@ -7133,11 +7134,11 @@ var thelegendmodproject = function(t, e, i) {
                     if (M.drawCommander) {
                         var pickerAxes = this.ctx;
                         cimg = new Image;
-                        cimg.src = g.commanderImage;
+                        cimg.src = defaultSettings.commanderImage;
                         cimg1 = new Image;
-                        cimg1.src = g.commanderImage1;
+                        cimg1.src = defaultSettings.commanderImage1;
                         cimg2 = new Image;
-                        cimg2.src = g.commanderImage2;
+                        cimg2.src = defaultSettings.commanderImage2;
                         pickerAxes.save();
                         pickerAxes.globalAlpha = M.cAlpha;
                         pickerAxes.translate(i.spawnX, i.spawnY);
@@ -7165,11 +7166,11 @@ var thelegendmodproject = function(t, e, i) {
                     if (M.drawCommander2) {
                         var pickerAxes = this.ctx;
                         cimg = new Image;
-                        cimg.src = g.commanderImage3;
+                        cimg.src = defaultSettings.commanderImage3;
                         cimg1 = new Image;
-                        cimg1.src = g.commanderImage4;
+                        cimg1.src = defaultSettings.commanderImage4;
                         cimg2 = new Image;
-                        cimg2.src = g.commanderImage5;
+                        cimg2.src = defaultSettings.commanderImage5;
                         pickerAxes.save();
                         pickerAxes.globalAlpha = M.cAlpha;
                         pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
@@ -7230,8 +7231,8 @@ var thelegendmodproject = function(t, e, i) {
                         ctx.lineTo(x0, y0);
                         ctx.lineTo(text, y0);
                         if (v.borderGlow) {
-                            ctx.shadowBlur = g.borderGlowSize;
-                            ctx.shadowColor = g.borderGlowColor;
+                            ctx.shadowBlur = defaultSettings.borderGlowSize;
+                            ctx.shadowColor = defaultSettings.borderGlowColor;
                         } else {
                             "skrrt";
                         }
@@ -7253,7 +7254,7 @@ var thelegendmodproject = function(t, e, i) {
                             t.moveTo(o, a),
                                 t.arc(o, a, e[s].size + 820, 0, this.pi2, false);
                         }
-                        t.fillStyle = g.virusColor,
+                        t.fillStyle = defaultSettings.virusColor,
                             t.globalAlpha = 0.1, t.fill(),
                             t.globalAlpha = 1, i && (e = []);
                     }
@@ -7270,29 +7271,29 @@ var thelegendmodproject = function(t, e, i) {
                     if (e.length) {
                         if (v.optimizedFood && this.pellet)
                             for (var o = 0; o < e.length; o++) {
-                                var a = e[o].x - 10 - g.foodSize,
-                                    n = e[o].y - 10 - g.foodSize;
+                                var a = e[o].x - 10 - defaultSettings.foodSize,
+                                    n = e[o].y - 10 - defaultSettings.foodSize;
                                 t.drawImage(this.pellet, a, n);
                             } else {
                                 t.beginPath();
                                 for (o = 0; o < e.length; o++) {
                                     a = e[o].x, n = e[o].y;
                                     if (t.moveTo(a, n), i < 0.16) {
-                                        var r = e[o].size + g.foodSize;
+                                        var r = e[o].size + defaultSettings.foodSize;
                                         t.rect(a - r, n - r, 2 * r, 2 * r);
-                                    } else t.arc(a, n, e[o].size + g.foodSize, 0, this.pi2, false);
+                                    } else t.arc(a, n, e[o].size + defaultSettings.foodSize, 0, this.pi2, false);
                                 }
-                                t.fillStyle = g.foodColor, t.globalAlpha = 1, t.fill();
+                                t.fillStyle = defaultSettings.foodColor, t.globalAlpha = 1, t.fill();
                             }
                         s && (e = []);
                     }
                 },
                 'drawSplitRange': function(t, e, i, s, o) {
-                    if (this.drawCircles(t, e, 760, 4, 0.4, g.enemyBSTEColor), i.length) { //Sonia2
+                    if (this.drawCircles(t, e, 760, 4, 0.4, defaultSettings.enemyBSTEColor), i.length) { //Sonia2
                         //if (this.drawCircles(t, e, 760, 4, 0.4, '#ff0000'), i.length) { //Sonia
                         var a = s ? i.length - 1 : 0;
-                        t.lineWidth = 6, t.globalAlpha = g.darkTheme ? 0.7 : 0.35,
-                            t.strokeStyle = g.splitRangeColor,
+                        t.lineWidth = 6, t.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35,
+                            t.strokeStyle = defaultSettings.splitRangeColor,
                             t.beginPath(),
                             t.arc(i[a].x, i[a].y, i[a].size + 760, 0, this.pi2, false),
                             t.closePath(),
@@ -7302,7 +7303,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'drawDoubleSplitRange': function(t, e, i, s, o) {
                     //if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
-                    if (this.draw2Circles(t, e, 760, 4, 0.4, g.enemyBSTEDColor), i.length) { //Sonia2
+                    if (this.draw2Circles(t, e, 760, 4, 0.4, defaultSettings.enemyBSTEDColor), i.length) { //Sonia2
                         //if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia
                         //this.drawSplitRange(this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell);
 
@@ -7310,8 +7311,8 @@ var thelegendmodproject = function(t, e, i) {
                         //console.log(i[a].size);
                         if (i[a].size >= 400 && v.qdsplitRange) { //Sonia2
                             t.lineWidth = 6,
-                                t.globalAlpha = g.darkTheme ? 0.7 : 0.35,
-                                t.strokeStyle = g.splitRangeColor;
+                                t.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35,
+                                t.strokeStyle = defaultSettings.splitRangeColor;
                             t.beginPath();
                             t.arc(i[a].x, i[a].y, 2 * i[a].size + 760, 0, this.pi2, false);
                             t.closePath();
@@ -7328,12 +7329,12 @@ var thelegendmodproject = function(t, e, i) {
                 'drawOppRings': function(t, e, ip, i, s, o, a, ap, n) {
                     var r = 14 + 2 / e;
                     var l = 12 + 1 / e;
-                    this.drawCircles(t, ip, r, l, 0.75, g.enemyBSTEDColor); //Sonia2
-                    this.drawCircles(t, i, r, l, 0.75, g.enemyBSTEColor); //Sonia2
-                    this.drawCircles(t, s, r, l, 0.75, g.enemyBColor); //Sonia2
-                    this.drawCircles(t, o, r, l, 0.75, g.enemySColor); //Sonia2
-                    this.drawCircles(t, a, r, l, 0.75, g.enemySSTEColor); //Sonia2
-                    this.drawCircles(t, ap, r, l, 0.75, g.enemySSTEDColor); //Sonia2
+                    this.drawCircles(t, ip, r, l, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
+                    this.drawCircles(t, i, r, l, 0.75, defaultSettings.enemyBSTEColor); //Sonia2
+                    this.drawCircles(t, s, r, l, 0.75, defaultSettings.enemyBColor); //Sonia2
+                    this.drawCircles(t, o, r, l, 0.75, defaultSettings.enemySColor); //Sonia2
+                    this.drawCircles(t, a, r, l, 0.75, defaultSettings.enemySSTEColor); //Sonia2
+                    this.drawCircles(t, ap, r, l, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
                     if (n) {
                         i = [];
                         s = [];
@@ -7344,7 +7345,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'drawCursorTracking': function(t, e, i, s) {
-                    t.lineWidth = 4, t.globalAlpha = g.darkTheme ? 0.75 : 0.35, t.strokeStyle = g.cursorTrackingColor, t.beginPath();
+                    t.lineWidth = 4, t.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35, t.strokeStyle = defaultSettings.cursorTrackingColor, t.beginPath();
                     for (var o = 0; o < e.length; o++) t.moveTo(e[o].x, e[o].y), t.lineTo(i, s);
                     t.stroke(), t.globalAlpha = 1;
                 },
@@ -7390,8 +7391,8 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'drawBattleArea': function(t) {
                     if (M.battleRoyale.state) {
-                        this.drawDangerArea(t, M.battleRoyale.x, M.battleRoyale.y, M.battleRoyale.radius, M.mapMinX, M.mapMinY, M.mapMaxX - M.mapMinX, M.mapMaxY - M.mapMinY, g.dangerAreaColor, 0.25);
-                        this.drawSafeArea(t, M.battleRoyale.targetX, M.battleRoyale.targetY, M.battleRoyale.targetRadius, 40, g.safeAreaColor);
+                        this.drawDangerArea(t, M.battleRoyale.x, M.battleRoyale.y, M.battleRoyale.radius, M.mapMinX, M.mapMinY, M.mapMaxX - M.mapMinX, M.mapMaxY - M.mapMinY, defaultSettings.dangerAreaColor, 0.25);
+                        this.drawSafeArea(t, M.battleRoyale.targetX, M.battleRoyale.targetY, M.battleRoyale.targetRadius, 40, defaultSettings.safeAreaColor);
                     }
                 },
                 'drawBattleAreaOnMinimap': function(t, e, i, s, o, a) {
@@ -7409,11 +7410,11 @@ var thelegendmodproject = function(t, e, i) {
                         var n = (M.battleRoyale.x + o) * s;
                         var r = (M.battleRoyale.y + a) * s;
                         var l = M.battleRoyale.radius * s;
-                        this.drawDangerArea(this.battleAreaMapCtx, n, r, l, 0, 0, e, i, g.dangerAreaColor, 0.25);
+                        this.drawDangerArea(this.battleAreaMapCtx, n, r, l, 0, 0, e, i, defaultSettings.dangerAreaColor, 0.25);
                         n = ~~((M.battleRoyale.targetX + o) * s);
                         r = ~~((M.battleRoyale.targetY + a) * s);
                         l = ~~(M.battleRoyale.targetRadius * s);
-                        this.drawSafeArea(this.battleAreaMapCtx, n, r, l, 2, g.safeAreaColor);
+                        this.drawSafeArea(this.battleAreaMapCtx, n, r, l, 2, defaultSettings.safeAreaColor);
                         t.drawImage(this.battleAreaMap, 0, 0);
                     }
                 },
@@ -7469,10 +7470,10 @@ var thelegendmodproject = function(t, e, i) {
                                     this.nickScale = 1;
                                     this.fontSize = Math.max(t[e].size * 0.3, 26) * this.scale;
                                     this.nickSize = ~~(this.fontSize * this.nickScale);
-                                    this.ctx.font = g.namesFontWeight + " " + this.nickSize * 4 + "px " + g.namesFontFamily;
+                                    this.ctx.font = defaultSettings.namesFontWeight + " " + this.nickSize * 4 + "px " + defaultSettings.namesFontFamily;
                                     this.ctx.textAlign = 'center';
-                                    this.ctx.fillStyle = g.namesColor;
-                                    this.ctx.strokeStyle = g.namesStrokeColor;
+                                    this.ctx.fillStyle = defaultSettings.namesColor;
+                                    this.ctx.strokeStyle = defaultSettings.namesStrokeColor;
                                     this.ctx.lineWidth = 4;
                                     angle = Math.PI * 0.8;
 
@@ -7495,9 +7496,9 @@ var thelegendmodproject = function(t, e, i) {
                                 //
                             }
                         }
-                        this.ctx.fillStyle = g.ghostCellsColor;
-                        this.ctx.globalAlpha = g.ghostCellsAlpha;
-                        this.ctx.shadowColor = g.ghostCellsColor;
+                        this.ctx.fillStyle = defaultSettings.ghostCellsColor;
+                        this.ctx.globalAlpha = defaultSettings.ghostCellsAlpha;
+                        this.ctx.shadowColor = defaultSettings.ghostCellsColor;
                         this.ctx.shadowBlur = 40;
                         this.ctx.shadowOffsetX = 0;
                         this.ctx.shadowOffsetY = 0;
@@ -7508,11 +7509,11 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'preDrawPellet': function() {
                     this.pellet = null;
-                    var t = 10 + g.foodSize,
+                    var t = 10 + defaultSettings.foodSize,
                         e = document.createElement('canvas');
                     e.width = 2 * t, e.height = 2 * t;
                     var i = e.getContext('2d');
-                    i.arc(t, t, t, 0, this.pi2, false), i.fillStyle = g.foodColor, i.fill(), this.pellet = new Image(), this.pellet.src = e.toDataURL(), e = null;
+                    i.arc(t, t, t, 0, this.pi2, false), i.fillStyle = defaultSettings.foodColor, i.fill(), this.pellet = new Image(), this.pellet.src = e.toDataURL(), e = null;
                 },
                 'preDrawIndicator': function() {
                     this.indicator = null;
@@ -7520,7 +7521,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.width = 90, t.height = 50;
                     var e = t.getContext('2d');
                     e.lineWidth = 2;
-                    e.fillStyle = g.teammatesIndColor;
+                    e.fillStyle = defaultSettings.teammatesIndColor;
                     e.strokeStyle = '#000000';
                     e.beginPath();
                     e.moveTo(0, 0);
