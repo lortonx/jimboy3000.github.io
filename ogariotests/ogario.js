@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.950 MEGA TEST
+// v1.951 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6537,7 +6537,7 @@ var thelegendmodproject = function(t, e, i) {
             'vanillaskins': function(y, g) {
                 if (g != null) {
                     if (window.vanillaskins == true) {
-                        var skin2search = defaultSettings.replace('%', '');
+                        var skin2search = g.replace('%', '');
                         if (window.LMAgarGameConfiguration != undefined) {
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
                                 if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
@@ -6644,8 +6644,21 @@ var thelegendmodproject = function(t, e, i) {
                     var M = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
-                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l], m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v.shortMass, v.virMassShots)).time = this.time, ogarioset1final ? this.food.push(ogariocellssetts) : (M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts), -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m,
-                        this.playerCells.push(ogariocellssetts))), this.indexedCells[l] = ogariocellssetts), ogariocellssetts.isPlayerCell && (y = this.playerNick), y && (ogariocellssetts.targetNick = y), ogariocellssetts.targetX = h, ogariocellssetts.targetY = c, ogariocellssetts.targetSize = u, ogariocellssetts['isFood'] = ogarioset1final, ogariocellssetts['isVirus'] = M, defaultSettings && (ogariocellssetts['skin'] = defaultSettings), 4 & f && (t.readUInt32LE(i), i += 4);
+                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l],
+					m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, v.shortMass, v.virMassShots)).time = this.time, 
+					ogarioset1final ? this.food.push(ogariocellssetts) : 
+					(M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts),
+					-1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))), 
+						this.indexedCells[l] = ogariocellssetts), 
+						ogariocellssetts.isPlayerCell && (y = this.playerNick), 
+						y && (ogariocellssetts.targetNick = y), 
+						ogariocellssetts.targetX = h, 
+						ogariocellssetts.targetY = c, 
+						ogariocellssetts.targetSize = u, 
+						ogariocellssetts['isFood'] = ogarioset1final, 
+						ogariocellssetts['isVirus'] = M, 
+						g && (ogariocellssetts['skin'] = g), 
+						4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
                     l = t.readUInt32LE(i);
