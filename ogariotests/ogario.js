@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.955 MEGA TEST
+// v1.956 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2771,7 +2771,7 @@ var thelegendmodproject = function(t, e, i) {
                     'ogarioCommands': c,
                     'ogarioHotkeys': ogario1Hotkeys,
                     'ogarioPlayerProfiles': ogario1PlayerProfiles,
-                    'ogarioSettings': v,
+                    'ogarioSettings': defaultmapsettings,
                     'ogarioThemeSettings': defaultSettings
                 };
                 for (var e in t) {
@@ -2987,7 +2987,7 @@ var thelegendmodproject = function(t, e, i) {
                 $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + h[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + defaultmapsettings[e] + '\" /></div>');
                 var a = this;
                 $('#' + e).on('input', function() {
-                    defaultmapsettings[e] = this.value, a[o](), a.saveSettings(v, 'ogarioSettings');
+                    defaultmapsettings[e] = this.value, a[o](), a.saveSettings(defaultmapsettings, 'ogarioSettings');
                 });
             },
             'addSliderBox': function(t, e, o, a, n, r) {
@@ -2995,10 +2995,10 @@ var thelegendmodproject = function(t, e, i) {
                 var l = this;
                 r ? $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r](), l.saveSettings(v, 'ogarioSettings');
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, i.hasOwnProperty(e) && (i[e] = t), l[r](), l.saveSettings(defaultmapsettings, 'ogarioSettings');
                 }) : $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, i.hasOwnProperty(e) && (i[e] = t), l.saveSettings(v, 'ogarioSettings');
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, i.hasOwnProperty(e) && (i[e] = t), l.saveSettings(defaultmapsettings, 'ogarioSettings');
                 });
             },
             'setLang': function() {
@@ -3142,13 +3142,13 @@ var thelegendmodproject = function(t, e, i) {
                 $(document).on("click", ".quick-menu", function(event) {
                     event.preventDefault();
                     defaultmapsettings.showQuickMenu = !defaultmapsettings.showQuickMenu;
-                    t.saveSettings(v, "ogarioSettings");
+                    t.saveSettings(defaultmapsettings, "ogarioSettings");
                     t.setShowQuickMenu();
                 });
                 $(document).on("click", ".quick-skins", function(event) {
                     event.preventDefault();
                     defaultmapsettings.showSkinsPanel = !defaultmapsettings.showSkinsPanel;
-                    t.saveSettings(v, "ogarioSettings");
+                    t.saveSettings(defaultmapsettings, "ogarioSettings");
                     t.setShowSkinsPanel();
                 });
                 $(document).on("change", "#region", function() {
@@ -3184,13 +3184,13 @@ var thelegendmodproject = function(t, e, i) {
                 $(document).on("click", "#stream-mode", function() {
                     /** @type {boolean} */
                     defaultmapsettings.streamMode = !defaultmapsettings.streamMode;
-                    t.saveSettings(v, "ogarioSettings");
+                    t.saveSettings(defaultmapsettings, "ogarioSettings");
                     t.setStreamMode();
                 });
                 $(document).on("click", "#hide-url", function() {
                     /** @type {boolean} */
                     defaultmapsettings.hideSkinUrl = !defaultmapsettings.hideSkinUrl;
-                    t.saveSettings(v, "ogarioSettings");
+                    t.saveSettings(defaultmapsettings, "ogarioSettings");
                     t.setHideSkinUrl();
                 });
                 $(document).on("click", ".btn-server-info", function() {
@@ -3346,7 +3346,7 @@ var thelegendmodproject = function(t, e, i) {
                     result.preventDefault();
                     /** @type {boolean} */
                     defaultmapsettings.chatSounds = !defaultmapsettings.chatSounds;
-                    t.saveSettings(v, "ogarioSettings");
+                    t.saveSettings(defaultmapsettings, "ogarioSettings");
                     t.setChatSoundsBtn();
                 });
                 $(document).on("click", ".chat-active-users", function(event) {
@@ -6403,7 +6403,7 @@ var thelegendmodproject = function(t, e, i) {
                                 var ogarcopythelb = window.decodeURIComponent(escape(i())),
                                     v = data.getUint32(s, true);
                                 s += 4, this.battleRoyale.rank.push({
-                                    'place': v,
+                                    'place': defaultmapsettings,
                                     'name': ogarcopythelb
                                 });
                             }
