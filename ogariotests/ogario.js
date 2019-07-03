@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.952 MEGA TEST
+// v1.953 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5403,7 +5403,7 @@ var thelegendmodproject = function(t, e, i) {
                             )
                         }
                         style.lineTo(this.x, this.y + this.size + 3);
-                    } else style.arc(this.x, this.y, y, 0x0, this.pi2, false);
+                    } else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
                     style.closePath();
 
@@ -5654,13 +5654,13 @@ var thelegendmodproject = function(t, e, i) {
             'clientKey': null,
             'connectionOpened': false,
             'accessTokenSent': false,
-            'clientVersion': 0x76c0,
+            'clientVersion': 30400,
             'clientVersionString': '3.4.0',
             'time': Date.now(),
             'serverTime': 0,
             'serverTimeDiff': 0,
             'loggedInTime': 0,
-            'mapSize': 0x373e,
+            'mapSize': 14142,
             'mapOffset': 7071,
             'mapOffsetX': 0,
             'mapOffsetY': 0,
@@ -6970,8 +6970,8 @@ var thelegendmodproject = function(t, e, i) {
                         this.drawBattleArea(this.ctx);
                     }
                     if (defaultmapsettings.showMapBorders) {
-                        var _0x6993ee = defaultSettings.bordersWidth / 2;
-                        this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - _0x6993ee, M.mapMinY - _0x6993ee, M.mapMaxX + _0x6993ee, M.mapMaxY + _0x6993ee, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+                        var tempborderwidthradius = defaultSettings.bordersWidth / 2;
+                        this.drawMapBorders(this.ctx, M.mapOffsetFixed, M.mapMinX - tempborderwidthradius, M.mapMinY - tempborderwidthradius, M.mapMaxX + tempborderwidthradius, M.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                     }
                     this.drawCommander();
                     this.drawCommander2();
@@ -7027,7 +7027,7 @@ var thelegendmodproject = function(t, e, i) {
 
                     if (ogarfooddrawer.RMB && M.indexedCells[M.selected] && M.playerCellIDs.length) {
                         var index = M.selectBiggestCell ? M.playerCells.length - 1 : 0;
-                        //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 0x2f8, 0, this.pi2, false);
+                        //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
                         if (M.playerCells[index] == undefined) return;
                         var xc = M.playerCells[index].targetX //.x
                         var yc = M.playerCells[index].targetY //.y
@@ -7064,7 +7064,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.ctx.restore();
                     if (M.gameMode === ':teams') {
                         if (this.pieChart && this.pieChart.width) {
-                            this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 0xa, 0xa);
+                            this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                         }
                     }
                     //this.ctx.finish2D();
