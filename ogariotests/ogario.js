@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957d MEGA TEST
+// v1.957e MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7084,7 +7084,7 @@ break;
                     e.setUint32(1, 21, true),
                     this.sendMessage(e),
                     (e = this.createView(5)).setUint8(0, 255),
-                    e.setUint32(1, this.clientVersion, true),
+                    e.setUint32(1, this.clientVersion2, true),
                     this.sendMessage(e),
                     this.connectionOpened = true;
                     if(this.connectionOpened == true) toastr.success('Tab 2 connected', 'Server', '');
