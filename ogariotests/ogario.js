@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957b MEGA TEST
+// v1.957c MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5662,7 +5662,7 @@ var thelegendmodproject = function(t, e, i) {
 
 
 
-        var M = {
+        var M = { //uses this.protocolKey
             'quadtree': null,
             updateQuadtree: function(cells) {
                 var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
@@ -6183,7 +6183,10 @@ var thelegendmodproject = function(t, e, i) {
                         if (this.protocolKey) {
                             this.protocolKey = this.shiftKey(this.protocolKey);
                         }
-                        this.flushCellsData();
+						else if (this.protocolKey2) {
+                            this.protocolKey2 = this.shiftKey(this.protocolKey2);
+                        }
+                        //this.flushCellsData();
                         break;
                     case 32:
                         window.testobjectsOpcode32 = data;
@@ -6450,7 +6453,8 @@ break;
                         break;
                     case 241:
                         window.testobjectsOpcode241 = data;
-                        this.protocolKey = data.getUint32(s, true);
+						if (this.protocolKey==null){
+                        this.protocolKey = data.getUint32(s, true); 
                         //window.testobjectsOpcode241.getUint32(1, true);
                         console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
                         var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
@@ -6459,6 +6463,18 @@ break;
                         if (window.master && window.master.login) {
                             window.master.login();
                         }
+						}
+						else {
+                        this.protocolKey2 = data.getUint32(s, true); 
+                        //window.testobjectsOpcode241.getUint32(1, true);
+                        console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
+                        var irenderfromagario2 = new Uint8Array(data['buffer'], s += 4);
+                        this.clientKey = this['generateClientKey'](this.ws, irenderfromagario2);
+                        //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
+                        if (window.master && window.master.login) {
+                            //window.master.login();
+                        }							
+						}
                         break;
                     case 242:
                         window.testobjectsOpcode242 = data;
@@ -6900,7 +6916,7 @@ break;
                 }, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
             }
         };
-        var A = {
+        var A = { //uses this.protocolKey2
             'quadtree': null,
             updateQuadtree: function(cells) {
                 var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
@@ -6918,7 +6934,7 @@ break;
             'ws': null,
             'socket': null,
             'protocolKey': null,
-            'clientKey': null,
+            'clientKey2': null,
             'connectionOpened': false,
             'accessTokenSent': false,
             'clientVersion': 30400,
@@ -7035,8 +7051,8 @@ break;
                 window.legendmod.delstate = -1; //Sonia3
                 this.closeConnection();
                 this.flushCellsData();
-                this.protocolKey = null;
-                this.clientKey = null;
+                this.protocolKey2 = null;
+                this.clientKey2 = null;
                 this.accessTokenSent = false;
                 this.connectionOpened = false;
                 this.mapOffsetFixed = false;
@@ -7075,9 +7091,9 @@ break;
             },
             'onMessage': function(t) {
                 t = new DataView(t['data']);
-                if (this.protocolKey) {
-					console.log("this.protocolKey: "+ this.protocolKey + " this.clientVersion: " + this.clientVersion);
-                    t = this['shiftMessage'](t, this.protocolKey ^ this.clientVersion);
+                if (this.protocolKey2) {
+					console.log("this.protocolKey2: "+ this.protocolKey + " this.clientVersion2: " + this.clientVersion2);
+                    t = this['shiftMessage'](t, this.protocolKey2 ^ this.clientVersion2);
                 }
                 console.log(t);
             },
@@ -7115,9 +7131,9 @@ break;
             'sendMessage': function(t) {
                 //console.log(t);
                 if (this.connectionOpened) {
-                    if (!this.clientKey) return;
-                    t = this['shiftMessage'](t, this.clientKey);
-                    this.clientKey = this.shiftKey(this.clientKey);
+                    if (!this.clientKey2) return;
+                    t = this['shiftMessage'](t, this.clientKey2);
+                    this.clientKey2 = this.shiftKey(this.clientKey2);
                 }
                 this['sendBuffer'](t);
             },
