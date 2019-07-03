@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957e MEGA TEST
+// v1.957f MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6105,7 +6105,12 @@ var thelegendmodproject = function(t, e, i) {
                 i = j >>> 15;
                 j = i ^ j;
                 console.log('[Legend mod Express] Generated client key:', j);
+				if (window.generatedClientKey==null){
                 window.generatedClientKey = j;
+				}
+				else if (window.generatedClientKey!=null){
+				window.generatedClientKey2 = j;	
+				}
                 return j;
 
             },
@@ -6465,15 +6470,18 @@ break;
                         }
 						}
 						else {
+						
                         this.protocolKey2 = data.getUint32(s, true); 
+						if (this.protocolKey!=this.protocolKey2){
                         //window.testobjectsOpcode241.getUint32(1, true);
-                        console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
+                        console.log('[Legend mod Express] Received protocol key2:', this.protocolKey2);
                         var irenderfromagario2 = new Uint8Array(data['buffer'], s += 4);
-                        this.clientKey2 = this['generateClientKey'](this.ws, irenderfromagario2);
+                        this.clientKey2 = this['generateClientKey'](this.ws, irenderfromagario2); //clienkey is the same for multi
                         //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
                         if (window.master && window.master.login) {
                             //window.master.login();
-                        }							
+                        }
+						}
 						}
                         break;
                     case 242:
