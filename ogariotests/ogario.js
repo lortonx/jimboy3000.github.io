@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.954 MEGA TEST
+// v1.955 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2526,7 +2526,7 @@ var thelegendmodproject = function(t, e, i) {
                 defaultmapsettings.fpsAtTop ? $('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : $('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
             },
             'setBlockPopups': function() {
-                this.protocolMode ? $('#block-warn').hide() : v["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
+                this.protocolMode ? $('#block-warn').hide() : defaultmapsettings["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
             },
             'blockPopups': function() {
                 $('#openfl-content, #openfl-overlay').hide();
@@ -2542,7 +2542,7 @@ var thelegendmodproject = function(t, e, i) {
                 $('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
-                if (v["blockPopups"]) {
+                if (defaultmapsettings["blockPopups"]) {
                     this.unblockPopups();
                 }
             },
@@ -2638,7 +2638,7 @@ var thelegendmodproject = function(t, e, i) {
                         var entityType = 0;
                         for (; entityType < PL$29; entityType++) {
                           bufferString = bufferString + this.top5[entityType].mass;
-                          if (!(entityType >= v["limTP"])) {
+                          if (!(entityType >= defaultmapsettings["limTP"])) {
                             pix_color = pix_color + ('<li id="player"><span id="pos-skin" style="background-color: ' + this.top5[entityType].color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[entityType]["skin"] ? this.top5[entityType]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + '" alt=""> ' +
             				'<span class=\"top5-mass-color\">[' + this.shortMassFormat(this.top5[entityType].mass) + ']</span> ' + this.escapeHTML(this.top5[entityType].nick) + '</span><span class=\"hud-main-color\">[' + this.calculateMapSector(this.top5[entityType].x, this.top5[entityType].y) +']</span><span id= "top5mass" class=""> ' +
                             this.shortMassFormat(this.top5[entityType].mass) + '</span></li>');
@@ -2674,7 +2674,7 @@ var thelegendmodproject = function(t, e, i) {
                             e = e + this.top5[o].mass;
                             if (!(o >= window.teamboardlimit)) {
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[o]["skin"] ? this.top5[o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
-                                /* if (v["showTargeting"]) {
+                                /* if (defaultmapsettings["showTargeting"]) {
                                   t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
                                 } */
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
@@ -3253,12 +3253,12 @@ var thelegendmodproject = function(t, e, i) {
                     t.unblockPopups();
                 });
                 $(document).on("click", "#openfl-overlay.disabler", function() {
-                    if (v["blockPopups"]) {
+                    if (defaultmapsettings["blockPopups"]) {
                         t["blockPopups"]();
                     }
                 });
                 $(document).on("click", "#openfl-content", function() {
-                    if (v["blockPopups"]) {
+                    if (defaultmapsettings["blockPopups"]) {
                         var container = $(this);
                         setTimeout(function() {
                             if (!container.is(":visible")) {
@@ -4577,7 +4577,7 @@ var thelegendmodproject = function(t, e, i) {
                 var i = /\[yt\]([\w-]{11})\[\/yt\]/i;
                 if (i.test(t)) return defaultmapsettings.showChatVideos ? '<iframe type=\"text/html\" width=\"100%\" height=\"auto\" src=\"https://www.youtube.com/embed/' + t.match(i)[1] + '?autoplay=1&amp;vq=tiny\" frameborder=\"0\" />' : '';
                 var s = this.escapeHTML(t);
-                return v['chatEmoticons'] && (s = this.parseEmoticons(s)), s;
+                return defaultmapsettings['chatEmoticons'] && (s = this.parseEmoticons(s)), s;
             },
             'parseEmoticons': function(t) {
                 /*return String(t).replace(/\&lt\;3/g, '<3').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\))/g, function(t) {
@@ -6479,7 +6479,7 @@ var thelegendmodproject = function(t, e, i) {
                     var s = '<span>';
                     'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
                 }
-                if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), v['showLbData']);
+                if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), defaultmapsettings['showLbData']);
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
                 for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\" id= "' + 'leaderboardtargeting' + o + '" style="pointer-events: auto;" onclick="window.legendmod.targetingLead(' + o + ');">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer.shortMassFormat(this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(this.ghostCells[o].x, this.ghostCells[o].y) + ']</span>', e += '</span>';
                 ogarminimapdrawer['displayLeaderboard'](t, e);
@@ -6646,7 +6646,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l],
                             m && (ogariocellssetts.color = m)) : ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, M, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
                             ogarioset1final ? this.food.push(ogariocellssetts) :
-                            (M && v['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts),
+                            (M && defaultmapsettings['virusesRange'] && this.viruses.push(ogariocellssetts), this.cells.push(ogariocellssetts),
                                 -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))),
                             this.indexedCells[l] = ogariocellssetts),
                         ogariocellssetts.isPlayerCell && (y = this.playerNick),
@@ -6934,12 +6934,12 @@ var thelegendmodproject = function(t, e, i) {
                 						for (i = 0; i < M.cells.length; i++) {
                 							M.cells[i].moveCell();
                 						}
-                                    if (this['setView'](), M.getCursorPosition(), M['sortCells'](), M['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), defaultmapsettings.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), defaultmapsettings.showBgSectors && this.drawSectors(this.ctx, M.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, defaultSettings['gridColor'], defaultSettings['sectorsColor'], defaultSettings['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this.ctx), v['showMapBorders']) {
+                                    if (this['setView'](), M.getCursorPosition(), M['sortCells'](), M['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), defaultmapsettings.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), defaultmapsettings.showBgSectors && this.drawSectors(this.ctx, M.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, M.mapMinX, M.mapMinY, M.mapMaxX, M.mapMaxY, defaultSettings['gridColor'], defaultSettings['sectorsColor'], defaultSettings['sectorsWidth'], true), ':battleroyale' === M.gameMode && this['drawBattleArea'](this.ctx), defaultmapsettings['showMapBorders']) {
                                         var t = defaultSettings['bordersWidth'] / 2;
                                         this['drawMapBorders'](this.ctx, M.mapOffsetFixed, M.mapMinX - t, M.mapMinY - t, M.mapMaxX + t, M.mapMaxY + t, defaultSettings['bordersColor'], defaultSettings['bordersWidth']);
                                     }
                                     this.drawCommander();
-                                    v['virusesRange'] && this['drawVirusesRange'](this.ctx, M.viruses), this['drawFood'](), M.play && (defaultmapsettings.splitRange && this['drawSplitRange'](this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell), defaultmapsettings.oppRings && this['drawOppRings'](this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache), v['cursorTracking'] && this['drawCursorTracking'](this.ctx, M.playerCells, M.cursorX, M.cursorY)), this['drawGhostCells']();
+                                    defaultmapsettings['virusesRange'] && this['drawVirusesRange'](this.ctx, M.viruses), this['drawFood'](), M.play && (defaultmapsettings.splitRange && this['drawSplitRange'](this.ctx, M.biggerSTECellsCache, M.playerCells, M.selectBiggestCell), defaultmapsettings.oppRings && this['drawOppRings'](this.ctx, this.scale, M.biggerSTECellsCache, M.biggerCellsCache, M.smallerCellsCache, M.STECellsCache), defaultmapsettings['cursorTracking'] && this['drawCursorTracking'](this.ctx, M.playerCells, M.cursorX, M.cursorY)), this['drawGhostCells']();
                                     for (var e = 0; e < M['removedCells'].length; e++) M['removedCells'][e].draw(this.ctx, true);
                                     for (e = 0; e < M.cells.length; e++) M.cells[e].draw(this.ctx);
                                     this.ctx['restore'](), ':teams' === M.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
@@ -7108,7 +7108,7 @@ var thelegendmodproject = function(t, e, i) {
                         var f = ~~((r - a) / s);
                         var m = 0;
                         var y = 0;
-                        if (t.strokeStyle = l, t.fillStyle = h, t.lineWidth = c, u || !u && v["showMiniMapGrid"]) {
+                        if (t.strokeStyle = l, t.fillStyle = h, t.lineWidth = c, u || !u && defaultmapsettings["showMiniMapGrid"]) {
                             t.beginPath();
                             var ogario1PlayerProfiles = 0;
                             for (; ogario1PlayerProfiles < i + 1; ogario1PlayerProfiles++) {
@@ -8553,7 +8553,7 @@ var thelegendmodproject = function(t, e, i) {
                         ogarminimapdrawer.sendCommand(10);
                     }
                 } else {
-                    if (v["mouseSplit"] && (1 == t.which && !defaultmapsettings.mouseInvert || 3 == t.which && defaultmapsettings.mouseInvert)) {
+                    if (defaultmapsettings["mouseSplit"] && (1 == t.which && !defaultmapsettings.mouseInvert || 3 == t.which && defaultmapsettings.mouseInvert)) {
                         t.preventDefault();
                         if (ogarminimapdrawer) {
                             ogarminimapdrawer.split();
