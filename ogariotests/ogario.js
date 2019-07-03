@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.956 MEGA TEST
+// v1.957 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1765,7 +1765,7 @@ var thelegendmodproject = function(t, e, i) {
                 'comm29': h.comm29,
                 'comm30': h.comm30
             },
-            y = {
+            hudsetter = {
                 'menuMainColorCSS': null,
                 'menuPanelColorCSS': null,
                 'menuTextlColorCSS': null,
@@ -3118,7 +3118,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOption("#exp-imp-settings", "import-ogarioSettings", h.settings, true),
                     this.addOption("#exp-imp-settings", "import-ogarioThemeSettings", h.theme, true),
                     $("#exp-imp-settings").append('<textarea id="import-settings" class="form-control" rows="14" cols="100" spellcheck="false" /><button id="import-settings-btn" class="btn btn-block btn-success">' +
-                        h.importSettings + "</button>"), y && y.setThemeMenu();
+                        h.importSettings + "</button>"), hudsetter && hudsetter.setThemeMenu();
                 /** @type {number} */
                 var e = 0;
                 for (; e < ogario1PlayerProfiles.length; e++) {
@@ -4735,7 +4735,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.setLang(),
                     this.setMenu(),
                     this.setUI(),
-                    y && y.setTheme(),
+                    hudsetter && hudsetter.setTheme(),
                     this.setShowQuickMenu(),
                     this.setShowSkinsPanel(),
                     this.setProfile(),
@@ -8404,7 +8404,7 @@ var thelegendmodproject = function(t, e, i) {
                             ogarcommando1();
                         }),
                         $('#hotkeys-cfg').perfectScrollbar(),
-                        y && y.setMenuBg();
+                        hudsetter && hudsetter.setMenuBg();
                 },
                 'getPressedKey': function(t) {
                     var e = '',
@@ -8694,7 +8694,7 @@ var thelegendmodproject = function(t, e, i) {
             }
         };
         window.master.getClientVersion();
-        y.init();
+        hudsetter.init();
         ogarminimapdrawer.init();
         ogarminimapdrawer.getDefaultSettings();
         ogarminimapdrawer.connect();
