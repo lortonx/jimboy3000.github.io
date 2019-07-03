@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "51"; // the version 1.1-> 1.11
+var semimodVersion = "52"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -60,7 +60,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-//var checkonlyforth = localStorage.getItem("checkonlyforth");
+var checkonlyfifth = localStorage.getItem("checkonlyfifth");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -630,12 +630,25 @@ function loadersetings() {
             }
         }
 
-        //if (checkonlyforth != "true") {
+        if (checkonlyfifth != true) {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-        //toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend Express </span></font> supports Jelly physics!<br><font color="red">Enable on Settings tab</font><br></a>Function made by ɴᴇᴏ</b><br><b><u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>').css("width", "350px");        checkonlyforth = "true";
-        // localStorage.setItem("checkonlyforth", checkonlyforth);				
-        //}					
-
+        toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+
+		'✮✰𝑺𝒐𝒏𝒊𝒂✰✮</span></font> is the new co-developer of Legend Express. <br>'+
+		'New updates by ✮✰𝑺𝒐𝒏𝒊𝒂✰✮:<br>'+
+		'1. <font color="red">Huge Perfomance improvement</font></a> (test it yourself)<br>'+
+		'2. <font color="red">Map position fixed</font> with all LM users </i>(like party)<i><br>'+
+		'3. Opponent rings and colors improved<br>'+
+		'New updates by ℄🌀Jimboy3100:<br>'+
+		'1. Webbouncers, skin destinations autoupdate<br>'+
+		'2. Universal tool socket enabled if primary falls <br>'+
+		'<u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>', '', {
+                    timeOut: 20000,
+                    extendedTimeOut: 20000
+                }).css("width", "450px");        
+		checkonlyfifth=true;
+		localStorage.setItem("checkonlyfifth", checkonlyfifth);				
+       // }					
+		}
 
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -6898,9 +6911,9 @@ function initializeLM(modVersion) {
         '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
         '</div></div>');
 
-    $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
+    //$("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 11%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
         //	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
-        '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
+        //'<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
 
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
         '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
@@ -7631,12 +7644,12 @@ function initializeLM(modVersion) {
         if (checked) {
             localStorage.setItem("SHOSHOBtn", true);
             $("#shortcuts-hud").show();
-            $("#rotate-hud").show();
+            //$("#rotate-hud").show();
             $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter43);
         } else {
             localStorage.setItem("SHOSHOBtn", false);
             $("#shortcuts-hud").hide();
-            $("#rotate-hud").hide();
+            //$("#rotate-hud").hide();
             $("#images-hud").hide();
             $("#scripting-hud").hide();
             $("#msgcommands-hud").hide();
@@ -7739,7 +7752,7 @@ function initializeLM(modVersion) {
         if (checked) {
             //		$("#cur-tk-hud").hide();
             $("#shortcuts-hud").hide();
-            $("#rotate-hud").hide();
+            //$("#rotate-hud").hide();
             $("#exp-bar").hide();
             $("#time-hud").hide();
             //		$(".input-group.skin.colorpicker-element").hide();
@@ -7754,7 +7767,7 @@ function initializeLM(modVersion) {
         } else {
             //		$("#cur-tk-hud").show();
             $("#shortcuts-hud").show();
-            $("#rotate-hud").show();
+            //$("#rotate-hud").show();
             $("#exp-bar").show();
             $("#time-hud").show();
             //		$(".input-group.skin.colorpicker-element").show();
@@ -7867,7 +7880,7 @@ function initializeLM(modVersion) {
                 }
             });			 */
     $("#shortcuts-hud").hide();
-    $("#rotate-hud").hide();
+    //$("#rotate-hud").hide();
     $("#exp-bar").hide();
     $("#time-hud").hide();
     //	$("#LEGENDAds").hide();
