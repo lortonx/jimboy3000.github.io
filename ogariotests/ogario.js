@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957f MEGA TEST
+// v1.957g MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7085,14 +7085,14 @@ break;
                 }
             },
             'onOpen': function(t) {
-                console.log('[Legend mod Express] Game server socket open'),
+                console.log('[Legend mod Express] Game server socket2 open'),
                     this.time = Date.now();
                 var e = this.createView(5);
                 e.setUint8(0, 254),
                     e.setUint32(1, 21, true),
                     this.sendMessage(e),
                     (e = this.createView(5)).setUint8(0, 255),
-                    e.setUint32(1, this.clientVersion2, true),
+                    e.setUint32(1, this.clientVersion, true),
                     this.sendMessage(e),
                     this.connectionOpened = true;
                     if(this.connectionOpened == true) toastr.success('Tab 2 connected', 'Server', '');
@@ -7100,8 +7100,8 @@ break;
             'onMessage': function(t) {
                 t = new DataView(t['data']);
                 if (this.protocolKey2) {
-					console.log("this.protocolKey2: "+ this.protocolKey + " this.clientVersion2: " + this.clientVersion2);
-                    t = this['shiftMessage'](t, this.protocolKey2 ^ this.clientVersion2);
+					console.log("this.protocolKey2: "+ this.protocolKey2 + " this.clientVersion2: " + this.clientVersion);
+                    t = this['shiftMessage'](t, this.protocolKey2 ^ this.clientVersion);
                 }
                 console.log(t);
             },
@@ -7177,7 +7177,7 @@ break;
                     if (s != null) this.SLGsocket['send'](s + t);
                 }
             },
-        };
+        };		
         window.legendmod = M; // look at this
         window.legendmod2 = A;
         window.sendAction = function(t) {
