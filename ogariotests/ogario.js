@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.947 MEGA TEST
+// v1.948 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1026,116 +1026,7 @@ var languagetexts = {
         'page_shop': 'Shop'
     }
 }
-var thelegendmodproject = function(t, e, i) {
-    //here starts ogario
-    (function(i) {
-        var o = null,
-            a = null,
-            r = 'en',
-            l = window.navigator.language || window.navigator.userLanguage;
-        l && languagetexts.hasOwnProperty(l) && (r = l);
-        var h = languagetexts[r];
-        if (languagetexts[r].comm15 != undefined) {
-            //console.log(h.comm15);
-        }
-        c = {
-                'comm1': h.comm1,
-                'comm2': h.comm2,
-                'comm3': h.comm3,
-                'comm4': h.comm4,
-                'comm5': h.comm5,
-                'comm6': h.comm6,
-                'comm7': h.comm7,
-                'comm8': h.comm8,
-                'comm9': h.comm9,
-                'comm10': h.comm10,
-                'comm0': h.comm0,
-                'comm11': h.comm11,
-                'comm12': h.comm12,
-                'comm13': h.comm13,
-                'comm14': h.comm14,
-                'comm15': h.comm15,
-                'comm16': h.comm16,
-                'comm17': h.comm17,
-                'comm18': h.comm18,
-                'comm19': h.comm19,
-                'comm20': h.comm20,
-                'comm21': h.comm21,
-                'comm22': h.comm22,
-                'comm23': h.comm23,
-                'comm24': h.comm24,
-                'comm25': h.comm25,
-                'comm26': h.comm26,
-                'comm27': h.comm27,
-                'comm28': h.comm28,
-                'comm29': h.comm29,
-                'comm30': h.comm30
-            },
-            /*}
-            else{
-                c = { //new JSON
-                    'comm1': h.comm1,
-                    'comm2': h.comm2,
-                    'comm3': h.comm3,
-                    'comm4': h.comm4,
-                    'comm5': h.comm5,
-                    'comm6': h.comm6,
-                    'comm7': h.comm7,
-                    'comm8': h.comm8,
-                    'comm9': h.comm9,
-                    'comm10': h.comm10,
-                    'comm11': h.comm11,
-                    'comm12': h.comm12,
-                    'comm13': h.comm13,
-                    'comm14': h.comm14,
-                    'comm15': 'Fake Tricksplit',
-                        'comm16': 'Popsplit',
-                        'comm17': 'Double Popsplit',
-                        'comm18': 'Reversed Tricksplit',
-                        'comm19': 'Canonsplit',
-                        'comm20': 'Reversed Canonsplit',
-                        'comm21': 'Bowlingsplit',
-                        'comm22': 'Auto feed trick',
-                        'comm23': 'Pause',
-                        'comm24': 'ANTI alarm stage 1',
-                        'comm25': 'ANTI alarm stage 2',
-                        'comm26': 'ANTI alarm stage 3',
-                        'comm27': 'ANTI alarm stage 4',
-                        'comm28': 'ANTI alarm stage 5',
-                        'comm29': 'Presplit',
-                        'comm30': 'Party Run tricks'
-                };
-            };
-            n[r].comm15=c.comm15; n[r].comm16=c.comm16; n[r].comm17=c.comm17; n[r].comm18=c.comm18; n[r].comm19=c.comm19; n[r].comm20=c.comm20; n[r].comm21=c.comm21; n[r].comm22=c.comm22; n[r].comm23=c.comm23; n[r].comm24=c.comm24;
-            n[r].comm25=c.comm25; n[r].comm26=c.comm26; n[r].comm27=c.comm27; n[r].comm28=c.comm28; n[r].comm29=c.comm29; n[r].comm30=c.comm30;		*/
-            u = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                '\'': '&#39;',
-                '/': '&#x2F;'
-            },
-            p = [{
-                    name: "imgur.com",
-                    url: "https://imgur.com/",
-                    example: "https://i.imgur.com/xdmUp5N.png",
-                    pattern: "https?://w+.imgur.com/w{6,}.(?:%file_ext%)??d*"
-                },
-                {
-                    name: "put.re",
-                    url: "https://put.re/",
-                    example: "https://s.put.re/iYHAW65g.png",
-                    pattern: "https?://w+.put.re/w{8,}.(?:%file_ext%)"
-                },
-                {
-                    name: "postimages.org",
-                    url: "https://postimages.org/",
-                    example: "https://i.postimg.cc/zzK0sRPg/xdmUp5N.png",
-                    pattern: "https?://w+.postimg.cc/w{8,}/w+.(?:%file_ext%)"
-                }
-            ],
-            f = {
+var themePresets = {
                 'ogario-v3': {
                     'name': 'OGARio v3',
                     'darkTheme': true,
@@ -1499,8 +1390,8 @@ var thelegendmodproject = function(t, e, i) {
                     'miniMapDeathLocationColor': '#ffffff',
                     'miniMapSectorsOpacity': 0.1
                 }
-            },
-            m = {
+            }
+var themeMenus = {
                 'ogario-v3': {
                     'name': 'OGARio v3',
                     'menuMainColor': '#01d9cc',
@@ -1555,7 +1446,79 @@ var thelegendmodproject = function(t, e, i) {
                     'btn4Color2': '#c9302c',
                     'menuBg': ''
                 }
+            }			
+var escapeHTMLs = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                '\'': '&#39;',
+                '/': '&#x2F;'
+            }
+var thelegendmodproject = function(t, e, i) {
+    //here starts ogario
+    (function(i) {
+        var o = null,
+            a = null,
+            r = 'en',
+            l = window.navigator.language || window.navigator.userLanguage;
+        l && languagetexts.hasOwnProperty(l) && (r = l);
+        var h = languagetexts[r];
+        //if (languagetexts[r].comm15 != undefined) {
+            //console.log(h.comm15);
+        //}
+        c = {
+				'comm0': h.comm0,
+                'comm1': h.comm1,
+                'comm2': h.comm2,
+                'comm3': h.comm3,
+                'comm4': h.comm4,
+                'comm5': h.comm5,
+                'comm6': h.comm6,
+                'comm7': h.comm7,
+                'comm8': h.comm8,
+                'comm9': h.comm9,
+                'comm10': h.comm10,
+                'comm11': h.comm11,
+                'comm12': h.comm12,
+                'comm13': h.comm13,
+                'comm14': h.comm14,
+                'comm15': h.comm15,
+                'comm16': h.comm16,
+                'comm17': h.comm17,
+                'comm18': h.comm18,
+                'comm19': h.comm19,
+                'comm20': h.comm20,
+                'comm21': h.comm21,
+                'comm22': h.comm22,
+                'comm23': h.comm23,
+                'comm24': h.comm24,
+                'comm25': h.comm25,
+                'comm26': h.comm26,
+                'comm27': h.comm27,
+                'comm28': h.comm28,
+                'comm29': h.comm29,
+                'comm30': h.comm30
             },
+            p = [{
+                    name: "imgur.com",
+                    url: "https://imgur.com/",
+                    example: "https://i.imgur.com/xdmUp5N.png",
+                    pattern: "https?://w+.imgur.com/w{6,}.(?:%file_ext%)??d*"
+                },
+                {
+                    name: "put.re",
+                    url: "https://put.re/",
+                    example: "https://s.put.re/iYHAW65g.png",
+                    pattern: "https?://w+.put.re/w{8,}.(?:%file_ext%)"
+                },
+                {
+                    name: "postimages.org",
+                    url: "https://postimages.org/",
+                    example: "https://i.postimg.cc/zzK0sRPg/xdmUp5N.png",
+                    pattern: "https?://w+.postimg.cc/w{8,}/w+.(?:%file_ext%)"
+                }
+            ],
             g = {
                 'preset': 'ogario-v3',
                 'darkTheme': true,
@@ -1831,7 +1794,7 @@ var thelegendmodproject = function(t, e, i) {
                 'setThemeMenu': function() {
                     var t = this;
                     $('#theme').append('<ul class=\"submenu-tabs\"><li class=\"theme-main-tab active\"><a href=\"#theme-main\" class=\"active ogicon-paint-format\" data-toggle=\"tab-tooltip\" title=\"' + h.basicTheming + '\"></a></li><li class=\"theme-menu-tab\"><a href=\"#theme-menu\" class=\"ogicon-menu\" data-toggle=\"tab-tooltip\" title=\"' + h.menuTheming + '\"></a></li><li class=\"theme-hud-tab\"><a href=\"#theme-hud\" class=\"ogicon-display\" data-toggle=\"tab-tooltip\" title=\"' + h.hudTheming + '\"></a></li><li class=\"theme-chat-tab\"><a href=\"#theme-chat\" class=\"ogicon-bubbles\" data-toggle=\"tab-tooltip\" title=\"' + h.chatTheming + '\"></a></li><li class=\"theme-minimap-tab\"><a href=\"#theme-minimap\" class=\"ogicon-location2\" data-toggle=\"tab-tooltip\" title=\"' + h.miniMapTheming + '\"></a></li><li class=\"theme-images-tab\"><a href=\"#theme-images\" class=\"ogicon-compass\" data-toggle=\"tab-tooltip\" title=\"' + h.imagesTheming + '\"></a></li></ul><div id=\"theme-main\" class=\"submenu-panel\"></div><div id=\"theme-menu\" class=\"submenu-panel\"></div><div id=\"theme-hud\" class=\"submenu-panel\"></div><div id=\"theme-chat\" class=\"submenu-panel\"></div><div id=\"theme-minimap\" class=\"submenu-panel\"></div><div id=\"theme-images\" class=\"submenu-panel\"></div>');
-                    this.addPresetBox('#theme-main', 'themePreset', f, 'preset', 'changeThemePreset');
+                    this.addPresetBox('#theme-main', 'themePreset', themePresets, 'preset', 'changeThemePreset');
                     this.addColorBox('#theme-main', 'bgColor', 'setBgColor');
                     this.addColorBox('#theme-main', 'bordersColor');
                     this.addColorBox('#theme-main', 'borderGlowColor');
@@ -1878,7 +1841,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addSliderBox('#theme-main', 'virusAlpha', 0, 1, 0.01);
                     this.addSliderBox('#theme-main', 'textAlpha', 0.1, 1, 0.01);
                     this.addSliderBox('#theme-main', 'ghostCellsAlpha', 0.01, 0.99, 0.01);
-                    this.addPresetBox('#theme-menu', 'menuPreset', m, 'menuPreset', 'changeMenuPreset');
+                    this.addPresetBox('#theme-menu', 'menuPreset', themeMenus, 'menuPreset', 'changeMenuPreset');
                     this.addSliderBox('#theme-menu', 'menuOpacity', 0.1, 1, 0.01, 'setMenuOpacity');
                     this.addColorBox('#theme-menu', 'menuMainColor', 'setMenuMainColor');
                     this.addColorBox('#theme-menu', 'menuBtnTextColor', 'setMenuButtons');
@@ -1970,7 +1933,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'changeThemePreset': function(t) {
-                    this.changePreset(t, f);
+                    this.changePreset(t, themePresets);
                     this.setTheme();
                 },
                 'setFonts': function() {
@@ -2006,7 +1969,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.setMenuBg();
                 },
                 'changeMenuPreset': function(t) {
-                    this.changePreset(t, m), this.setMenu();
+                    this.changePreset(t, themeMenus), this.setMenu();
                 },
                 'setMenuOpacity': function() {
                     $('#helloContainer, #hotkeys, #exp-imp').css('opacity', g.menuOpacity);
@@ -2787,7 +2750,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'escapeHTML': function(t) {
                 return String(t).replace(/[&<>"'\/]/g, function(t) {
-                    return u[t];
+                    return escapeHTMLs[t];
                 });
             },
             'checkSkinURL': function(t) {
