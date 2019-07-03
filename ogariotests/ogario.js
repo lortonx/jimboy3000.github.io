@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.946 MEGA TEST
+// v1.947 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -119,7 +119,7 @@ window.agarversion = "v12/2168/";
 
 window.getLatestID = window.localStorage.getItem('getLatestID');
 window.getLatestconfigVersion = window.localStorage.getItem('EnvConfig.configVersion');
-if ( window.getLatestID != null && window.getLatestconfigVersion != null && window.getLatestID != undefined && window.getLatestconfigVersion != undefined){
+if (window.getLatestID != null && window.getLatestconfigVersion != null && window.getLatestID != undefined && window.getLatestconfigVersion != undefined) {
     window.agarversion = "v" + window.getLatestconfigVersion + "/" + window.getLatestID + "/";
 }
 
@@ -259,817 +259,818 @@ var emoticonicons = {
     '(baby)': 'newbaby.svg',
     '(wow)': 'newwow.svg'
 }
+
+languagetexts = {
+    'pl': {
+        'start': 'Start',
+        'settings': 'Ustawienia',
+        'restoreSettings': 'Przywróc ustawienia domyślne',
+        'animationGroup': 'Animacja',
+        'zoomGroup': 'Zoom',
+        'respGroup': 'Odrodzenie',
+        'namesGroup': 'Nazwy',
+        'massGroup': 'Masa',
+        'skinsGroup': 'Skiny',
+        'foodGroup': 'Pokarm',
+        'transparencyGroup': 'Przezroczystość / kolory',
+        'gridGroup': 'Siatka / sektory',
+        'miniMapGroup': 'Minimapa',
+        'helpersGroup': 'Wspomagacze',
+        'mouseGroup': 'Sterowanie myszką',
+        'hudGroup': 'HUD',
+        'chatGroup': 'Czat',
+        'statsGroup': 'Statystyki',
+        'extrasGroup': 'Dodatkowe',
+        'noSkins': 'Wyłącz skiny',
+        'noNames': 'Wyłącz nazwy',
+        'noColors': 'Wyłącz kolory',
+        'showMass': 'Pokaż masę',
+        'skipStats': 'Pomiń statystyki po śmierci',
+        'showQuest': 'Pokaż zadanie (quest)',
+        'autoZoom': 'Auto zoom',
+        'animation': 'Opóźnienie animacji',
+        'suckAnimation': 'Cell Eat [Sucking] Animation',
+        'virusGlow': 'Virus Glow',
+        'borderGlow': 'Border Glow',
+        'zoomSpeedValue2': 'Szybkość zoomu',
+        'quickResp': 'Szybkie odrodzenie (klawisz)',
+        'autoResp': 'Auto odrodzenie',
+        'autoHideCellsInfo': 'Autoukrywanie nazw i masy',
+        'autoHideNames': 'Autoukrywanie nazw',
+        'autoHideMass': 'Autoukrywanie masy',
+        'autoHideFood': 'Autoukrywanie pokarmu (masa)',
+        'autoHideFoodOnZoom': 'Autoukrywanie pokarmu (zoom)',
+        'optimizedNames': 'Zoptymalizowane nazwy',
+        'hideMyName': 'Ukryj własną nazwę',
+        'hideTeammatesNames': 'Ukryj nazwy graczy teamu',
+        'optimizedMass': 'Optimized mass (+/-2%) & Merge timer BETA off\n Suggested to be enabled for Lag reduce',
+        'shortMass': 'Skrócona masa (k)',
+        'virMassShots': 'Licznik strzałów (wirusy)',
+        'hideMyMass': 'Ukryj własną masę',
+        'hideEnemiesMass': 'Ukryj masę przeciwników',
+        'vanillaSkins': 'Podstawowe skiny',
+        'customSkins': 'Własne skiny',
+        'videoSkins': 'Video skins (.mp4 .webm .ogv)',
+        'videoSkinsMusic': 'Sound from other\'s Video skins when both C3',
+        'myTransparentSkin': 'Mój przezroczysty skin',
+        'myCustomColor': 'Mój własny kolor',
+        'transparentCells': 'Przezroczyste kulki',
+        'transparentViruses': 'Przezroczyste wirusy',
+        'transparentSkins': 'Przezroczyste skiny',
+        'showGrid': 'Siatka',
+        'showBgSectors': 'Sektory w tle',
+        'showMapBorders': 'Granice mapy',
+        'showGhostCells': 'Duchy kulek (fps drop)',
+        'showGhostCellsInfo': 'Ghost cells info (confusing)',
+        'showMiniMap': 'Pokaż minimapę',
+        'showMiniMapGrid': 'Pokaż siatkę minimapy',
+        'showMiniMapGuides': 'Pokaż prowadnice na minimapie',
+        'showExtraMiniMapGuides': 'Show extra minimap guides',
+        'showMiniMapGhostCells': 'Pokaż duchy kulek na minimapie',
+        'oneColoredTeammates': 'Jednokolorowi gracze',
+        'optimizedFood': 'Zoptymalizowany pokarm',
+        'rainbowFood': 'Kolorowy pokarm',
+        'oppColors': 'Kolory przeciwników',
+        'oppRings': 'Ringi przeciwników',
+        'virColors': 'Kolory wirusów',
+        'splitRange': 'Zasięg podziału',
+        'virusesRange': 'Zasięg wirusów',
+        'textStroke': 'Obwódki nazw i masy',
+        'namesStroke': 'Obwódki nazw',
+        'massStroke': 'Obwódki masy',
+        'cursorTracking': 'Śledzenie kursora',
+        'teammatesInd': 'Wskaźniki graczy teamu',
+        'mouseSplit': 'LPM - Split myszką',
+        'mouseFeed': 'PPM - Feed myszką',
+        'mouseInvert': 'Odwróć klawisze myszki',
+        'disableChat': 'Wyłącz czat',
+        'hideChat': 'Ukryj czat',
+        'chatSounds': 'Powiadomienia dźwiękowe',
+        'chatEmoticons': 'Emotikony',
+        'showChatImages': 'Pokaż obrazki na czacie',
+        'showChatVideos': 'Pokaż filmiki na czacie',
+        'showChatBox': 'Czatbox zamiast wyskakujących wiadomości',
+        'messageSound': 'Dźwięk powiadomienia o wiadomości',
+        'commandSound': 'Dźwięk powiadomienia o komendzie',
+        'virusSoundurl': 'Virus shot sound',
+        'virusSound': 'Virus shot sound',
+        'jellyPhisycs': 'Jelly physics',
+        'showTop5': 'Pokaż top 5 teamu',
+        'showTargeting': 'Pokaż namierzanie',
+        'showTime': 'Pokaż aktualny czas',
+        'showLbData': 'Pokaż masę w topce',
+        'normalLb': 'Nagłówek \"Topka\"',
+        'centeredLb': 'Wyśrodkowana topka',
+        'fpsAtTop': 'Statystyki na górze',
+        'showStats': 'Pokaż statystyki',
+        'showStatsMass': 'Statystyki: Masa',
+        'showStatsSTE': 'Statystyki: Przedziały Masy',
+        'showStatsESTE': 'Statystyki: STE wroga',
+        'showStatsEMTE': 'Statystyki: MTE wroga',
+        'showStatsMTE': 'Statystyki: Nasze MTE',
+        'showStatsSTE': 'Statystyki: Nasze STE',
+        'showStatsTTE': 'Statystyki: Minimalna masa mate\'a do tricksplitu',
+        'showStatsPTE': 'Statystyki: Maksymalna masa wroga do presplitu',
+        'showStatsN16': 'Statystyki: n/16',
+        'showStatsFPS': 'Statystyki: FPS',
+        'blockPopups': 'Blokuj popupy (reklamy/sklep/zadanie)',
+        'hotkeys': 'Skróty klawiszowe',
+        'hk-inst-assign': 'Aby ustawić skrót klawiszowy kliknij na polu skrótu i naciśnij wybrany klawisz.',
+        'hk-inst-delete': 'Aby usunąć skrót klawiszowy kliknij na polu skrótu i naciśnij klawisz DELETE.',
+        'hk-inst-keys': 'Możliwe kombinacje skrótów klawiszowych z użyciem klawiszy CTRL oraz ALT.',
+        'hk-feed': 'Feed',
+        'hk-macroFeed': 'Szybki feed',
+        'hk-split': 'Podział',
+        'hk-doubleSplit': 'Podwójny podział',
+        'hk-split16': 'Podział na 16',
+        'hk-pause': 'Pauza kulki',
+        'hk-showTop5': 'Pokaż/ukryj top 5 teamu',
+        'hk-showTime': 'Pokaż/ukryj aktualny czas',
+        'hk-showSplitRange': 'Pokaż/ukryj zasięg podziału',
+        'hk-showSplitInd': 'Pokaż/ukryj zasięg podziału z ringami',
+        'hk-showTeammatesInd': 'Pokaż/ukryj wskaźniki graczy teamu',
+        'hk-showOppColors': 'Pokaż/ukryj kolory przeciwników',
+        'hk-toggleSkins': 'Przełącz skiny (własne/standardowe)',
+        'hk-showSkins': 'Pokaż/ukryj skiny',
+        'hk-transparentSkins': 'Włącz/wyłącz przezroczyste skiny',
+        'hk-showStats': 'Pokaż/ukryj statystyki gry',
+        'hk-toggleCells': 'Przełącz kulkę (najmniejsza/największa)',
+        'hk-showFood': 'Pokaż/ukryj pokarm',
+        'hk-showGrid': 'Pokaż/ukryj siatkę',
+        'hk-showMiniMapGuides': 'Pokaż/ukryj prowadnice na minimapie',
+        'hk-hideChat': 'Pokaż/ukryj czat',
+        'hk-showHUD': 'Pokaż/ukryj HUD',
+        'hk-copyLb': 'Kopiuj topkę',
+        'hk-showLb': 'Pokaż/ukryj topkę',
+        'hk-toggleAutoZoom': 'Włącz/wyłącz auto zoom',
+        'hk-resetZoom': 'Reset zoomu',
+        'hk-zoomLevel': 'Zoom - poziom',
+        'hk-toggleDeath': 'Przełącz miejsce śmierci',
+        'hk-clearChat': 'Pokaż historię czatu / Czyść czat',
+        'hk-showBgSectors': 'Pokaż/ukryj sektory w tle',
+        'hk-hideBots': 'Pokaż/ukryj małe boty',
+        'hk-showNames': 'Pokaż/ukryj nazwy',
+        'hk-hideTeammatesNames': 'Pokaż/ukryj nazwy graczy teamu',
+        'hk-showMass': 'Pokaż/ukryj masę',
+        'hk-showMiniMap': 'Pokaż/ukryj minimapę',
+        'hk-chatMessage': 'Napisz wiadomość na czacie',
+        'hk-quickResp': 'Szybkie odrodzenie (respawn)',
+        'hk-autoResp': 'Włącz/wyłacz auto odrodzenie',
+        'hk-switchServerMode': 'Przełącz serwer [publiczny/prywatny]',
+        'hk-showTargeting': 'Pokaż/ukryj panel namierzania',
+        'hk-voiceChat': 'Głos do tekstu',
+        'hk-GhostCellsInfo': 'Show ghost cells information',
+        'hk-Autoplay': 'Auto Play',
+        'hk-setTargeting': 'Włącz/wyłącz namierzanie (śledzenie)',
+        'hk-cancelTargeting': 'Zatrzymaj namierzanie',
+        'hk-changeTarget': 'Zmień cel',
+        'hk-privateMiniMap': 'Pokaż cel na minimapie',
+        'hk-showQuest': 'Pokaż/ukryj zadanie',
+        'commands': 'Komendy',
+        'comm1': 'Feeduj!',
+        'comm2': 'Dziel się!',
+        'comm3': 'Pomocy na %currentSector%!',
+        'comm4': 'Wróg na %currentSector%!',
+        'comm5': 'Zabij pomocnika!',
+        'comm6': 'Strzel z wirusa!',
+        'comm7': 'Zjedz wirusa!',
+        'comm8': 'Zjebałem, wybacz.',
+        'comm9': 'Ja pierdolę...',
+        'comm0': 'Kurwa mać!',
+        'comm10': 'Trick!',
+        'comm11': 'Lewo!',
+        'comm12': 'Góra!',
+        'comm13': 'Prawo!',
+        'comm14': 'Dół!',
+        'comm15': 'Fake Tricksplit',
+        'comm16': 'Popsplit',
+        'comm17': 'Double Popsplit',
+        'comm18': 'Reversed Tricksplit',
+        'comm19': 'Canonsplit',
+        'comm20': 'Reversed Canonsplit',
+        'comm21': 'Bowlingsplit',
+        'comm22': 'Auto feed trick',
+        'comm23': 'Pause',
+        'comm24': 'ANTI alarm stage 1',
+        'comm25': 'ANTI alarm stage 2',
+        'comm26': 'ANTI alarm stage 3',
+        'comm27': 'ANTI alarm stage 4',
+        'comm28': 'ANTI alarm stage 5',
+        'comm29': 'Presplit',
+        'comm30': 'Party Run tricks',
+        'saveComm': 'Zapisz komendy',
+        'theme': 'Wygląd',
+        'restoreThemeSettings': 'Przywróc ustawienia domyślne wyglądu',
+        'basicTheming': 'Podstawowy',
+        'themePreset': 'Motyw',
+        'themeType': 'Typ motywu',
+        'darkTheme': 'Ciemny motyw',
+        'lightTheme': 'Jasny motyw',
+        'mainColor': 'Kolor główny',
+        'bgColor': 'Tło',
+        'bordersColor': 'Granice mapy',
+        'gridColor': 'Siatka',
+        'sectorsColor': 'Czcionka sektorów',
+        'namesColor': 'Nazwy',
+        'namesStrokeColor': 'Obwódki nazw',
+        'massColor': 'Masa',
+        'massStrokeColor': 'Obwódki masy',
+        'virusColor': 'Wirusy',
+        'virusStrokeColor': 'Obwódki wirusów',
+        'virusGlowColor': "Virus Glow",
+        "borderGlowColor": "Border Glow",
+        'mVirusColor': 'Mothercell',
+        'mVirusStrokeColor': 'Mothercell stroke',
+        'virusGlowSize': 'Virus Glow Size',
+        'borderGlowSize': 'Border Glow Size',
+        'foodColor': 'Pokarm',
+        'namesFont': 'Czcionka nazw',
+        'massFont': 'Czcionka masy',
+        'sectorsFont': 'Czcionka sektorów',
+        'namesScale': 'Skala nazw',
+        'massScale': 'Skala masy',
+        'virMassScale': 'Skala masy wirusów',
+        'strokeScale': 'Skala obwódek tekstu',
+        'foodSize': 'Wielkość pokarmu',
+        'bordersWidth': 'Grubość granic mapy',
+        'sectorsWidth': 'Grubość siatki sektorów',
+        'sectorsFontSize': 'Rozmiar czcionki sektorów',
+        'cellsAlpha': 'Przezroczystość kulek',
+        'skinsAlpha': 'Przezroczystość skinów',
+        'virusAlpha': 'Przezroczystość wirusów',
+        'textAlpha': 'Przezroczystość nazw i masy',
+        'virusStrokeSize': 'Grubość obwódki wirusów',
+        "virusGlowSize": "Virus Glow Size",
+        'teammatesIndColor': 'Wskaźnik gracza',
+        'cursorTrackingColor': 'Śledzenie kursora',
+        'splitRangeColor': 'Zasięg podziału',
+        'qdsplitRange': 'Zasięg szybkiego podwójnego podziału', //Sonia2
+        'sdsplitRange': 'Zasięg powolnego podwójnego podziału', //Sonia2
+        'enemyBSTEDColor': 'Kolor W2STE wroga', //Sonia2
+        'enemyBSTEColor': 'Kolor WSTE wroga', //Sonia2
+        'enemyBColor': 'Kolor większego wroga', //Sonia2
+        'enemySColor': 'Kolor mniejszego wroga', //Sonia2
+        'enemySSTEColor': 'Kolor MSTE wroga', //Sonia2
+        'enemySSTEDColor': 'Kolor M2STE wroga', //Sonia2
+        'safeAreaColor': 'Bezpieczna strefa',
+        'dangerAreaColor': 'Strefa zagrożenia',
+        'ghostCellsColor': 'Duchy kulek',
+        'ghostCellsAlpha': 'Przezroczystość duchów kulek',
+        'menuTheming': 'Menu',
+        'menuPreset': 'Motyw menu',
+        'menuMainColor': 'Kolor główny',
+        'menuBtnTextColor': 'Tekst przycisku',
+        'menuPanelColor': 'Panel',
+        'menuPanelColor2': 'Panel (2)',
+        'menuTextColor': 'Tekst panelu',
+        'menuTextColor2': 'Tekst panelu (2)',
+        'btn1Color': 'Przycisk #1',
+        'btn1Color2': 'Przycisk #1 (2)',
+        'btn2Color': 'Przycisk #2',
+        'btn2Color2': 'Przycisk #2 (2)',
+        'btn3Color': 'Przycisk #3',
+        'btn3Color2': 'Przycisk #3 (2)',
+        'btn4Color': 'Przycisk #4',
+        'btn4Color2': 'Przycisk #4 (2)',
+        'menuBg': 'Grafika tła panelu',
+        'menuOpacity': 'Przezroczystość',
+        'hudTheming': 'HUD',
+        'hudMainColor': 'Kolor główny',
+        'hudColor': 'Tło',
+        'hudTextColor': 'Tekst',
+        'statsHudColor': 'Statystyki',
+        'timeHudColor': 'Czas',
+        'top5MassColor': 'Masa',
+        'lbMeColor': 'Topka - ja',
+        'lbTeammateColor': 'Topka - team',
+        'hudFont': 'Czcionka HUD',
+        'hudScale': 'Skala HUD',
+        'chatTheming': 'Czat',
+        'messageColor': 'Tło wiadomości',
+        'messageTextColor': 'Tekst wiadomości',
+        'messageTimeColor': 'Czas wiadomości',
+        'messageNickColor': 'Nick wiadomości',
+        'commandsColor': 'Tło komendy',
+        'commandsTextColor': 'Tekst komendy',
+        'commandsTimeColor': 'Czas komendy',
+        'commandsNickColor': 'Nick komendy',
+        'chatBoxColor': 'Tło czatboxu',
+        'chatScale': 'Skala czatu',
+        'miniMapTheming': 'Minimapa',
+        'miniMapSectorsColor': 'Sektory',
+        'miniMapSectorColor': 'Aktualny sektor',
+        'miniMapGuidesColor': 'Prowadnice',
+        'miniMapNickColor': 'Nick',
+        'miniMapNickStrokeColor': 'Obwódka nicku',
+        'miniMapMyCellColor': 'Moja kulka',
+        'miniMapMyCellStrokeColor': 'Obwódka mojej kulki',
+        'miniMapTeammatesColor': 'Gracze',
+        'miniMapDeathLocationColor': 'Miejsce śmierci',
+        'miniMapFont': 'Czcionka minimapy',
+        'miniMapNickFont': 'Czcionka nicku',
+        'miniMapWidth': 'Szerokość minimapy',
+        'miniMapSectorsOpacity': 'Przezroczystość sektorów',
+        'miniMapNickSize': 'Rozmiar nicku',
+        'miniMapNickStrokeSize': 'Grubość obwódki nicku',
+        'miniMapMyCellSize': 'Wielkość mojej kulki',
+        'miniMapMyCellStrokeSize': 'Grubość obwódki mojej kulki',
+        'miniMapTeammatesSize': 'Wielkość graczy',
+        'miniMapGhostCellsColor': 'Duchy kulek',
+        'miniMapGhostCellsAlpha': 'Przezroczystość duchów kulek',
+        'imagesTheming': 'Grafika / kursory',
+        'customBackground': 'Grafika tła',
+        'customCursor': 'Grafika kursora',
+        'hideChatMsgA': 'Czat został włączony!',
+        'hideChatMsgB': 'Czat został ukryty!',
+        'showSkinsMsgA': 'Skiny zostały włączone!',
+        'showSkinsMsgB': 'Skiny zostały ukryte!',
+        'hideSmallBotsMsgA': 'Małe boty stały się widoczne!',
+        'hideSmallBotsMsgB': 'Małe boty zostały ukryte!',
+        'autoRespMsgA': 'Auto odrodzenie zostało włączone!',
+        'autoRespMsgB': 'Auto odrodzenie zostało wyłączone!',
+        'autoZoomMsgA': 'Auto zoom został włączony!',
+        'autoZoomMsgB': 'Auto zoom został wyłączony!',
+        //                   'targetNotSet': 'Brak celu',
+        'targetNotSet': '',
+        'targetDead': 'Nie żyje',
+        'targetDistance': 'Dystans',
+        'targetMass': 'Masa razem',
+        'totalPartyPlayers': '',
+        'totalPartyMass': '',
+        'exportImport': 'Eksport / import ustawień',
+        'exportSettings': 'Eksportuj ustawienia',
+        'exportInfo': 'Aby wyeksportować wybrane ustawienia skopiuj poniższy kod i zapisz go w pliku tekstowym z kodowaniem Unicode.',
+        'importSettings': 'Importuj ustawienia',
+        'importInfo': 'Aby zaimportować wybrane ustawienia wklej poniżej wyeksportowany wcześniej kod i naciśnij przycisk \"Importuj ustawienia\".',
+        'profile': 'Profil',
+        'profiles': 'Profile',
+        'skins': 'Skiny',
+        'moreSkins': 'Dodaj skiny',
+        'thanks': 'Dzięki Awesome!',
+        'saveSett': 'Zapisz ustawienia',
+        'saved': 'Zapisano!',
+        'resetSett': 'Resetuj ustawienia',
+        'close': 'Zamknij',
+        'enterChatMsg': 'Napisz wiadomość',
+        'activeParties': 'Aktywne party',
+        'noActiveParties': 'Brak aktywnych party ;(',
+        'playlist': 'Playlista',
+        'pause': 'PAUZA!',
+        'visit': 'Odwiedź',
+        'exit': 'Legend mod Express: Czy na pewno chcesz opuścic grę?',
+        'blockWarn': 'UWAGA! Popupy zostały zablokowane w ustawieniach.',
+        'unblockPopups': 'Odblokuj tymczasowo',
+        'mass': 'Masa',
+        'score': 'Top',
+        'leaderboard': 'Topka',
+        'user': 'Użytkownik',
+        'userMuted': 'Użytkownik %user% został wyciszony.',
+        'userUnmuted': 'Wyłączono wyciszenie użytkownika %user%.',
+        'mute': 'Wycisz',
+        'unmute': 'Wyłącz wyciszenie',
+        'mutedUsers': 'Wyciszeni użytkownicy',
+        'activeUsers': 'Aktywni użytkownicy',
+        'showActiveUsers': 'Pokaż aktywnych użytkowników',
+        'none': 'Brak',
+        'sounds': 'Dźwięki',
+        'page_back_button': 'Wróć',
+        'page_create_party': 'Stwórz party',
+        'page_join_party': 'Dołącz',
+        'page_login_and_play': 'Zaloguj',
+        'page_logout': 'Wyloguj',
+        'page_menu_login_facebook': 'Zaloguj z Facebook',
+        'page_menu_login_google': 'Zaloguj z Google',
+        'page_menu_main_free_coins': 'Darmowe Monety',
+        'page_menu_main_gifts': 'Prezenty',
+        'page_menu_main_dailyquests': 'Zadania',
+        'page_party_join_error': 'Nie można dołączyć do tego party. Upewnij się, że token jest prawidłowy lub stwórz nowy.',
+        'page_play': 'Graj',
+        'page_play_as_guest': 'Graj jako gość',
+        'page_shop': 'Sklep',
+        'page_spectate': 'Obserwuj',
+        'page_stats': 'Statystyki'
+    },
+    'en': {
+        'start': 'Home',
+        'settings': 'Settings',
+        'restoreSettings': 'Restore default settings',
+        'animationGroup': 'Animation',
+        'zoomGroup': 'Zoom',
+        'respGroup': 'Respawn',
+        'namesGroup': 'Names',
+        'massGroup': 'Mass',
+        'skinsGroup': 'Skins',
+        'foodGroup': 'Food',
+        'transparencyGroup': 'Transparency / colors',
+        'gridGroup': 'Grid / sectors',
+        'miniMapGroup': 'Minimap',
+        'helpersGroup': 'Helpers',
+        'mouseGroup': 'Mouse control',
+        'hudGroup': 'HUD',
+        'chatGroup': 'Chat',
+        'statsGroup': 'Stats',
+        'extrasGroup': 'Extras',
+        'noSkins': 'No skins',
+        'noNames': 'No names',
+        'noColors': 'No colors',
+        'showMass': 'Show mass',
+        'skipStats': 'Skip stats after death',
+        'showQuest': 'Show quest',
+        'autoZoom': 'Auto zoom',
+        'animation': 'Animation delay',
+        'suckAnimation': 'Cell Eat [Sucking] Animation',
+        'virusGlow': 'Virus Glow',
+        'borderGlow': 'Border Glow',
+        'zoomSpeedValue2': 'Zoom speed',
+        'quickResp': 'Quick respawn (hotkey)',
+        'autoResp': 'Auto respawn',
+        'autoHideCellsInfo': 'Auto hide names and mass',
+        'autoHideNames': 'Auto hide names',
+        'autoHideMass': 'Auto hide mass',
+        'autoHideFood': 'Auto hide food (mass)',
+        'autoHideFoodOnZoom': 'Auto hide food (zoom)',
+        'optimizedNames': 'Optimized names',
+        'hideMyName': 'Hide my name',
+        'hideTeammatesNames': 'Hide teammates names',
+        'optimizedMass': 'Optimized mass (+/-2%) & Merge timer BETA off\r\n Suggested to be enabled for Lag reduce',
+        'shortMass': 'Short mass (k)',
+        'virMassShots': 'Virus shots',
+        'hideMyMass': 'Hide my mass',
+        'hideEnemiesMass': 'Hide enemies mass',
+        'vanillaSkins': 'Vanilla skins',
+        'customSkins': 'Custom skins',
+        'videoSkins': 'Video skins (.mp4 .webm .ogv)',
+        'videoSkinsMusic': 'Sound from other\'s Video skins when both C3',
+        'myTransparentSkin': 'My transparent skin',
+        'myCustomColor': 'My custom color',
+        'transparentCells': 'Transparent cells',
+        'transparentViruses': 'Transparent viruses',
+        'transparentSkins': 'Transparent skins',
+        'showGrid': 'Show grid',
+        'showBgSectors': 'Show background sectors',
+        'showMapBorders': 'Show map borders',
+        'showGhostCells': 'Ghost cells (fps drop)',
+        'showGhostCellsInfo': 'Ghost cells info (confusing)',
+        'showMiniMap': 'Show minimap',
+        'showMiniMapGrid': 'Show minimap grid',
+        'showMiniMapGuides': 'Show minimap guides',
+        'showExtraMiniMapGuides': 'Show extra minimap guides',
+        'showMiniMapGhostCells': 'Show ghost cells',
+        'oneColoredTeammates': 'One-colored teammates',
+        'optimizedFood': 'Optimized food',
+        'rainbowFood': 'Rainbow food',
+        'oppColors': 'Opponents colors',
+        'oppRings': 'Opponents rings',
+        'virColors': 'Viruses colors',
+        'splitRange': 'Split range',
+        'qdsplitRange': 'Quick double split range', //Sonia2
+        'sdsplitRange': 'Slow double split range', //Sonia2
+        'virusesRange': 'Viruses range',
+        'textStroke': 'Names and mass stroke',
+        'namesStroke': 'Names stroke',
+        'massStroke': 'Mass stroke',
+        'cursorTracking': 'Cursor tracking',
+        'teammatesInd': 'Teammates indicators',
+        'mouseSplit': 'LMB - Mouse split',
+        'mouseFeed': 'RMB - Mouse feed',
+        'mouseInvert': 'Invert mouse buttons',
+        'disableChat': 'Disable chat',
+        'hideChat': 'Hide chat',
+        'chatSounds': 'Sound notifications',
+        'chatEmoticons': 'Emoticons',
+        'showChatImages': 'Show images on chat',
+        'showChatVideos': 'Show videos on chat',
+        'showChatBox': 'Chatbox instead of popups',
+        'messageSound': 'Message notification sound',
+        'commandSound': 'Command notification sound',
+        'virusSoundurl': 'Virus shot sound',
+        'virusSound': 'Virus shot sound',
+        'jellyPhisycs': 'Jelly physics',
+        'showTop5': 'Show teamboard',
+        'showTargeting': 'Show targeting',
+        'showTime': 'Show current time',
+        'showLbData': 'Show leaderboard mass',
+        'normalLb': '\"Leaderboard\" header',
+        'centeredLb': 'Centered leaderboard',
+        'fpsAtTop': 'Game stats at the top',
+        'showStats': 'Show game stats',
+        'showStatsMass': 'Game stats: Mass',
+        'showStatsESTE': 'Game stats: Enemy\'s STE',
+        'showStatsEMTE': 'Game stats: Enemy\'s MTE',
+        'showStatsMTE': 'Game stats: Our MTE',
+        'showStatsSTE': 'Game stats: Our STE',
+        'showStatsTTE': 'Game stats: Minimal tricksplit teammate\'s mass',
+        'showStatsPTE': 'Game stats: Maximal enemy\'s mass for presplit',
+        'showStatsN16': 'Game stats: n/16',
+        'showStatsFPS': 'Game stats: FPS',
+        'blockPopups': 'Block popups (ads/shop/quest)',
+        'hotkeys': 'Hotkeys',
+        'hk-inst-assign': 'To assign a hotkey click on the input field and press your chosen key.',
+        'hk-inst-delete': 'To delete a hotkey click on the input field and press the DELETE key.',
+        'hk-inst-keys': 'Possible key combinations with the CTRL and ALT keys.',
+        'hk-feed': 'Feed',
+        'hk-macroFeed': 'Macro feed',
+        'hk-split': 'Split',
+        'hk-doubleSplit': 'Double split',
+        'hk-split16': 'Split 16',
+        'hk-pause': 'Cell pause',
+        'hk-showTop5': 'Show/hide teamboard',
+        'hk-showTime': 'Show/hide current time',
+        'hk-showSplitRange': 'Show/hide split range',
+        'hk-showSplitInd': 'Show/hide split indicators',
+        'hk-showTeammatesInd': 'Show/hide teammates indicators',
+        'hk-showOppColors': 'Show/hide opponents colors',
+        'hk-toggleSkins': 'Toggle skins (custom/default)',
+        'hk-showSkins': 'Show/hide skins',
+        'hk-transparentSkins': 'Toggle transparent skins',
+        'hk-showStats': 'Show/hide game stats',
+        'hk-toggleCells': 'Toggle own cells (smallest/biggest)',
+        'hk-showFood': 'Show/hide food',
+        'hk-showGrid': 'Show/hide grid',
+        'hk-showMiniMapGuides': 'Show/hide minimap guides',
+        'hk-hideChat': 'Show/hide chat',
+        'hk-showHUD': 'Show/hide HUD',
+        'hk-copyLb': 'Copy leaderboard',
+        'hk-showLb': 'Show/hide leaderboard',
+        'hk-toggleAutoZoom': 'Toggle auto zoom',
+        'hk-resetZoom': 'Reset zoom',
+        'hk-zoomLevel': 'Zoom level',
+        'hk-toggleDeath': 'Toggle death location',
+        'hk-clearChat': 'Show chat history / Clear chat',
+        'hk-showBgSectors': 'Show/hide background sectors',
+        'hk-hideBots': 'Show/hide small bots',
+        'hk-showNames': 'Show/hide names',
+        'hk-hideTeammatesNames': 'Show/hide teammates names',
+        'hk-showMass': 'Show/hide mass',
+        'hk-showMiniMap': 'Show/hide minimap',
+        'hk-chatMessage': 'Enter chat message',
+        'hk-quickResp': 'Quick respawn',
+        'hk-autoResp': 'Toggle auto respawn',
+        'hk-switchServerMode': 'Switch server [public/private]',
+        'hk-showTargeting': 'Show/hide targeting panel',
+        'hk-voiceChat': 'Voice to text',
+        'hk-GhostCellsInfo': ' Show ghost cells information',
+        'hk-Autoplay': 'Auto Play',
+        'hk-setTargeting': 'Start/stop targeting (following)',
+        'hk-cancelTargeting': 'Cancel targeting',
+        'hk-changeTarget': 'Change target',
+        'hk-privateMiniMap': 'Show target on the minimap',
+        'hk-showQuest': 'Show/hide quest',
+        'commands': 'Commands',
+        'comm1': 'Feed me!',
+        'comm2': 'Split into me!',
+        'comm3': 'Need backup at %currentSector%!',
+        'comm4': 'Enemy spotted at %currentSector%!',
+        'comm5': 'Need a teammate!',
+        'comm6': 'Tank the virus!',
+        'comm7': 'Eat the virus!',
+        'comm8': 'Let\'s bait!',
+        'comm9': 'Fake tricksplit!',
+        'comm0': 'Fuck!',
+        'comm10': 'Tricksplit!',
+        'comm11': 'Left!',
+        'comm12': 'Up!',
+        'comm13': 'Right!',
+        'comm14': 'Bottom!',
+        'comm15': 'Fake Tricksplit',
+        'comm16': 'Popsplit',
+        'comm17': 'Double Popsplit',
+        'comm18': 'Reversed Tricksplit',
+        'comm19': 'Canonsplit',
+        'comm20': 'Reversed Canonsplit',
+        'comm21': 'Bowlingsplit',
+        'comm22': 'Auto feed trick',
+        'comm23': 'Pause',
+        'comm24': 'ANTI alarm stage 1',
+        'comm25': 'ANTI alarm stage 2',
+        'comm26': 'ANTI alarm stage 3',
+        'comm27': 'ANTI alarm stage 4',
+        'comm28': 'ANTI alarm stage 5',
+        'comm29': 'Presplit',
+        'comm30': 'Party Run tricks',
+        'saveComm': 'Save commands',
+        'theme': 'Theme',
+        'restoreThemeSettings': 'Restore theme default settings',
+        'basicTheming': 'Basic theming',
+        'themePreset': 'Theme preset',
+        'themeType': 'Theme type',
+        'darkTheme': 'Dark theme',
+        'lightTheme': 'Light theme',
+        'mainColor': 'Main color',
+        'bgColor': 'Background',
+        'bordersColor': 'Map borders',
+        'gridColor': 'Grid',
+        'sectorsColor': 'Sectors font',
+        'namesColor': 'Names',
+        'namesStrokeColor': 'Names stroke',
+        'massColor': 'Mass',
+        'massStrokeColor': 'Mass stroke',
+        'virusColor': 'Virus',
+        'virusStrokeColor': 'Virus stroke',
+        'virusGlowColor': "Virus Glow",
+        "borderGlowColor": "Border Glow",
+        'mVirusColor': 'Mothercell',
+        'mVirusStrokeColor': 'Mothercell stroke',
+        'virusGlowSize': 'Virus Glow Size',
+        'borderGlowSize': 'Border Glow Size',
+        'foodColor': 'Food',
+        'namesFont': 'Names font',
+        'massFont': 'Mass font',
+        'sectorsFont': 'Sectors font',
+        'namesScale': 'Names scale',
+        'massScale': 'Mass scale',
+        'virMassScale': 'Virus mass scale',
+        'strokeScale': 'Text stroke scale',
+        'foodSize': 'Food size',
+        'bordersWidth': 'Map borders width',
+        'sectorsWidth': 'Sectors grid width',
+        'sectorsFontSize': 'Sectors font size',
+        'cellsAlpha': 'Cells transparency',
+        'skinsAlpha': 'Skins transparency',
+        'virusAlpha': 'Virus transparency',
+        'textAlpha': 'Names & mass transparency',
+        'virusStrokeSize': 'Virus stroke size',
+        "virusGlowSize": "Virus Glow Size",
+        'teammatesIndColor': 'Teammate indicator',
+        'cursorTrackingColor': 'Cursor tracking',
+        'splitRangeColor': 'Split range',
+        'enemyBSTEDColor': 'B2STE Enemy Color', //Sonia2
+        'enemyBSTEColor': 'BSTE Enemy Color', //Sonia2
+        'enemyBColor': 'Bigger Enemy Color', //Sonia2
+        'enemySColor': 'Smaller Enemy Color', //Sonia2
+        'enemySSTEColor': 'SSTE Enemy Color', //Sonia2
+        'enemySSTEDColor': 'S2STE Enemy Color', //Sonia2
+        'safeAreaColor': 'Safe area',
+        'dangerAreaColor': 'Danger area',
+        'ghostCellsColor': 'Ghost cells',
+        'ghostCellsAlpha': 'Ghost cells transparency',
+        'menuTheming': 'Menu',
+        'menuPreset': 'Menu theme',
+        'menuMainColor': 'Main color',
+        'menuBtnTextColor': 'Button text',
+        'menuPanelColor': 'Panel',
+        'menuPanelColor2': 'Panel (2)',
+        'menuTextColor': 'Panel text',
+        'menuTextColor2': 'Panel text (2)',
+        'btn1Color': 'Button #1',
+        'btn1Color2': 'Button #1 (2)',
+        'btn2Color': 'Button #2',
+        'btn2Color2': 'Button #2 (2)',
+        'btn3Color': 'Button #3',
+        'btn3Color2': 'Button #3 (2)',
+        'btn4Color': 'Button #4',
+        'btn4Color2': 'Button #4 (2)',
+        'menuBg': 'Panel background image',
+        'menuOpacity': 'Transparency',
+        'hudTheming': 'HUD',
+        'hudMainColor': 'Main color',
+        'hudColor': 'Background',
+        'hudTextColor': 'Text',
+        'statsHudColor': 'Stats',
+        'timeHudColor': 'Time',
+        'top5MassColor': 'Mass',
+        'lbMeColor': 'Leaderboard - me',
+        'lbTeammateColor': 'Leaderboard - teammate',
+        'hudFont': 'HUD font',
+        'hudScale': 'HUD scale',
+        'chatTheming': 'Chat',
+        'messageColor': 'Message background',
+        'messageTextColor': 'Message text',
+        'messageTimeColor': 'Message time',
+        'messageNickColor': 'Message nick',
+        'commandsColor': 'Command background',
+        'commandsTextColor': 'Command text',
+        'commandsTimeColor': 'Command time',
+        'commandsNickColor': 'Command nick',
+        'chatBoxColor': 'Chatbox color',
+        'chatScale': 'Chat scale',
+        'miniMapTheming': 'Minimap',
+        'miniMapSectorsColor': 'Sectors',
+        'miniMapSectorColor': 'Current sector',
+        'miniMapGuidesColor': 'Guides',
+        'miniMapNickColor': 'Nick',
+        'miniMapNickStrokeColor': 'Nick stroke',
+        'miniMapMyCellColor': 'My cell',
+        'miniMapMyCellStrokeColor': 'My cell stroke',
+        'miniMapTeammatesColor': 'Teammates',
+        'miniMapDeathLocationColor': 'Death location',
+        'miniMapFont': 'Minimap font',
+        'miniMapNickFont': 'Nick font',
+        'miniMapWidth': 'Minimap width',
+        'miniMapSectorsOpacity': 'Sectors transparency',
+        'miniMapNickSize': 'Nick size',
+        'miniMapNickStrokeSize': 'Nick stroke size',
+        'miniMapMyCellSize': 'My cell size',
+        'miniMapMyCellStrokeSize': 'My cell stroke size',
+        'miniMapTeammatesSize': 'Teammates size',
+        'miniMapGhostCellsColor': 'Ghost cells',
+        'miniMapGhostCellsAlpha': 'Ghost cells transparency',
+        'imagesTheming': 'Graphics / cursors',
+        'customBackground': 'Custom background image',
+        'customCursor': 'Custom cursor image',
+        'hideChatMsgA': 'Chat is visible!',
+        'hideChatMsgB': 'Chat is hidden!',
+        'showSkinsMsgA': 'Skins are visible!',
+        'showSkinsMsgB': 'Skins are hidden!',
+        'hideSmallBotsMsgA': 'Small bots are visible!',
+        'hideSmallBotsMsgB': 'Small bots are hidden!',
+        'autoRespMsgA': 'Auto respawn is on!',
+        'autoRespMsgB': 'Auto respawn is off!',
+        'autoZoomMsgA': 'Auto zoom is on!',
+        'autoZoomMsgB': 'Auto zoom is off!',
+        'targetNotSet': '',
+        'targetDead': 'Dead',
+        'targetDistance': 'Distance',
+        'targetMass': 'Mass altogether',
+        'totalPartyPlayers': '',
+        'totalPartyMass': '',
+        'exportImport': 'Export / import settings',
+        'exportSettings': 'Export settings',
+        'exportInfo': 'To export selected settings copy the code below and save it to a text file encoded in Unicode.',
+        'importSettings': 'Import settings',
+        'importInfo': 'To import selected settings paste an exported code below and press the \"Import settings\" button.',
+        'profile': 'Profile',
+        'profiles': 'Profiles',
+        'skins': 'Skins',
+        'moreSkins': 'Add skins',
+        'thanks': 'Thanks to Awesome!',
+        'saveSett': 'Save settings',
+        'saved': 'Saved!',
+        'resetSett': 'Reset to default',
+        'close': 'Close',
+        'enterChatMsg': 'Enter chat message',
+        'activeParties': 'Active parties',
+        'noActiveParties': 'No active parties ;(',
+        'playlist': 'Playlist',
+        'pause': 'PAUSE!',
+        'visit': 'Visit',
+        'exit': 'Legend mod Express: Are you sure you want to quit the game?',
+        'blockWarn': 'WARNING! Popups are blocked in the settings.',
+        'unblockPopups': 'Temporary unblock',
+        'mass': 'Mass',
+        'score': 'Score',
+        'leaderboard': 'Leaderboard',
+        'user': 'User',
+        'userMuted': 'User %user% has been muted.',
+        'userUnmuted': 'User %user% has been unmuted.',
+        'mute': 'Mute',
+        'unmute': 'Unmute',
+        'mutedUsers': 'Muted users',
+        'activeUsers': 'Active users',
+        'showActiveUsers': 'Show active users',
+        'none': 'None',
+        'sounds': 'Sounds',
+        'page_menu_main_free_coins': 'Free Coins',
+        'page_menu_main_gifts': 'Gifts',
+        'page_menu_main_dailyquests': 'Daily Quest',
+        'page_shop': 'Shop'
+    }
+}
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
         var o = null,
             a = null,
-            n = {
-                'pl': {
-                    'start': 'Start',
-                    'settings': 'Ustawienia',
-                    'restoreSettings': 'Przywróc ustawienia domyślne',
-                    'animationGroup': 'Animacja',
-                    'zoomGroup': 'Zoom',
-                    'respGroup': 'Odrodzenie',
-                    'namesGroup': 'Nazwy',
-                    'massGroup': 'Masa',
-                    'skinsGroup': 'Skiny',
-                    'foodGroup': 'Pokarm',
-                    'transparencyGroup': 'Przezroczystość / kolory',
-                    'gridGroup': 'Siatka / sektory',
-                    'miniMapGroup': 'Minimapa',
-                    'helpersGroup': 'Wspomagacze',
-                    'mouseGroup': 'Sterowanie myszką',
-                    'hudGroup': 'HUD',
-                    'chatGroup': 'Czat',
-                    'statsGroup': 'Statystyki',
-                    'extrasGroup': 'Dodatkowe',
-                    'noSkins': 'Wyłącz skiny',
-                    'noNames': 'Wyłącz nazwy',
-                    'noColors': 'Wyłącz kolory',
-                    'showMass': 'Pokaż masę',
-                    'skipStats': 'Pomiń statystyki po śmierci',
-                    'showQuest': 'Pokaż zadanie (quest)',
-                    'autoZoom': 'Auto zoom',
-                    'animation': 'Opóźnienie animacji',
-                    'suckAnimation': 'Cell Eat [Sucking] Animation',
-                    'virusGlow': 'Virus Glow',
-                    'borderGlow': 'Border Glow',
-                    'zoomSpeedValue2': 'Szybkość zoomu',
-                    'quickResp': 'Szybkie odrodzenie (klawisz)',
-                    'autoResp': 'Auto odrodzenie',
-                    'autoHideCellsInfo': 'Autoukrywanie nazw i masy',
-                    'autoHideNames': 'Autoukrywanie nazw',
-                    'autoHideMass': 'Autoukrywanie masy',
-                    'autoHideFood': 'Autoukrywanie pokarmu (masa)',
-                    'autoHideFoodOnZoom': 'Autoukrywanie pokarmu (zoom)',
-                    'optimizedNames': 'Zoptymalizowane nazwy',
-                    'hideMyName': 'Ukryj własną nazwę',
-                    'hideTeammatesNames': 'Ukryj nazwy graczy teamu',
-                    'optimizedMass': 'Optimized mass (+/-2%) & Merge timer BETA off\n Suggested to be enabled for Lag reduce',
-                    'shortMass': 'Skrócona masa (k)',
-                    'virMassShots': 'Licznik strzałów (wirusy)',
-                    'hideMyMass': 'Ukryj własną masę',
-                    'hideEnemiesMass': 'Ukryj masę przeciwników',
-                    'vanillaSkins': 'Podstawowe skiny',
-                    'customSkins': 'Własne skiny',
-                    'videoSkins': 'Video skins (.mp4 .webm .ogv)',
-                    'videoSkinsMusic': 'Sound from other\'s Video skins when both C3',
-                    'myTransparentSkin': 'Mój przezroczysty skin',
-                    'myCustomColor': 'Mój własny kolor',
-                    'transparentCells': 'Przezroczyste kulki',
-                    'transparentViruses': 'Przezroczyste wirusy',
-                    'transparentSkins': 'Przezroczyste skiny',
-                    'showGrid': 'Siatka',
-                    'showBgSectors': 'Sektory w tle',
-                    'showMapBorders': 'Granice mapy',
-                    'showGhostCells': 'Duchy kulek (fps drop)',
-                    'showGhostCellsInfo': 'Ghost cells info (confusing)',
-                    'showMiniMap': 'Pokaż minimapę',
-                    'showMiniMapGrid': 'Pokaż siatkę minimapy',
-                    'showMiniMapGuides': 'Pokaż prowadnice na minimapie',
-                    'showExtraMiniMapGuides': 'Show extra minimap guides',
-                    'showMiniMapGhostCells': 'Pokaż duchy kulek na minimapie',
-                    'oneColoredTeammates': 'Jednokolorowi gracze',
-                    'optimizedFood': 'Zoptymalizowany pokarm',
-                    'rainbowFood': 'Kolorowy pokarm',
-                    'oppColors': 'Kolory przeciwników',
-                    'oppRings': 'Ringi przeciwników',
-                    'virColors': 'Kolory wirusów',
-                    'splitRange': 'Zasięg podziału',
-                    'virusesRange': 'Zasięg wirusów',
-                    'textStroke': 'Obwódki nazw i masy',
-                    'namesStroke': 'Obwódki nazw',
-                    'massStroke': 'Obwódki masy',
-                    'cursorTracking': 'Śledzenie kursora',
-                    'teammatesInd': 'Wskaźniki graczy teamu',
-                    'mouseSplit': 'LPM - Split myszką',
-                    'mouseFeed': 'PPM - Feed myszką',
-                    'mouseInvert': 'Odwróć klawisze myszki',
-                    'disableChat': 'Wyłącz czat',
-                    'hideChat': 'Ukryj czat',
-                    'chatSounds': 'Powiadomienia dźwiękowe',
-                    'chatEmoticons': 'Emotikony',
-                    'showChatImages': 'Pokaż obrazki na czacie',
-                    'showChatVideos': 'Pokaż filmiki na czacie',
-                    'showChatBox': 'Czatbox zamiast wyskakujących wiadomości',
-                    'messageSound': 'Dźwięk powiadomienia o wiadomości',
-                    'commandSound': 'Dźwięk powiadomienia o komendzie',
-                    'virusSoundurl': 'Virus shot sound',
-                    'virusSound': 'Virus shot sound',
-                    'jellyPhisycs': 'Jelly physics',
-                    'showTop5': 'Pokaż top 5 teamu',
-                    'showTargeting': 'Pokaż namierzanie',
-                    'showTime': 'Pokaż aktualny czas',
-                    'showLbData': 'Pokaż masę w topce',
-                    'normalLb': 'Nagłówek \"Topka\"',
-                    'centeredLb': 'Wyśrodkowana topka',
-                    'fpsAtTop': 'Statystyki na górze',
-                    'showStats': 'Pokaż statystyki',
-                    'showStatsMass': 'Statystyki: Masa',
-                    'showStatsSTE': 'Statystyki: Przedziały Masy',
-                    'showStatsESTE': 'Statystyki: STE wroga',
-                    'showStatsEMTE': 'Statystyki: MTE wroga',
-                    'showStatsMTE': 'Statystyki: Nasze MTE',
-                    'showStatsSTE': 'Statystyki: Nasze STE',
-                    'showStatsTTE': 'Statystyki: Minimalna masa mate\'a do tricksplitu',
-                    'showStatsPTE': 'Statystyki: Maksymalna masa wroga do presplitu',
-                    'showStatsN16': 'Statystyki: n/16',
-                    'showStatsFPS': 'Statystyki: FPS',
-                    'blockPopups': 'Blokuj popupy (reklamy/sklep/zadanie)',
-                    'hotkeys': 'Skróty klawiszowe',
-                    'hk-inst-assign': 'Aby ustawić skrót klawiszowy kliknij na polu skrótu i naciśnij wybrany klawisz.',
-                    'hk-inst-delete': 'Aby usunąć skrót klawiszowy kliknij na polu skrótu i naciśnij klawisz DELETE.',
-                    'hk-inst-keys': 'Możliwe kombinacje skrótów klawiszowych z użyciem klawiszy CTRL oraz ALT.',
-                    'hk-feed': 'Feed',
-                    'hk-macroFeed': 'Szybki feed',
-                    'hk-split': 'Podział',
-                    'hk-doubleSplit': 'Podwójny podział',
-                    'hk-split16': 'Podział na 16',
-                    'hk-pause': 'Pauza kulki',
-                    'hk-showTop5': 'Pokaż/ukryj top 5 teamu',
-                    'hk-showTime': 'Pokaż/ukryj aktualny czas',
-                    'hk-showSplitRange': 'Pokaż/ukryj zasięg podziału',
-                    'hk-showSplitInd': 'Pokaż/ukryj zasięg podziału z ringami',
-                    'hk-showTeammatesInd': 'Pokaż/ukryj wskaźniki graczy teamu',
-                    'hk-showOppColors': 'Pokaż/ukryj kolory przeciwników',
-                    'hk-toggleSkins': 'Przełącz skiny (własne/standardowe)',
-                    'hk-showSkins': 'Pokaż/ukryj skiny',
-                    'hk-transparentSkins': 'Włącz/wyłącz przezroczyste skiny',
-                    'hk-showStats': 'Pokaż/ukryj statystyki gry',
-                    'hk-toggleCells': 'Przełącz kulkę (najmniejsza/największa)',
-                    'hk-showFood': 'Pokaż/ukryj pokarm',
-                    'hk-showGrid': 'Pokaż/ukryj siatkę',
-                    'hk-showMiniMapGuides': 'Pokaż/ukryj prowadnice na minimapie',
-                    'hk-hideChat': 'Pokaż/ukryj czat',
-                    'hk-showHUD': 'Pokaż/ukryj HUD',
-                    'hk-copyLb': 'Kopiuj topkę',
-                    'hk-showLb': 'Pokaż/ukryj topkę',
-                    'hk-toggleAutoZoom': 'Włącz/wyłącz auto zoom',
-                    'hk-resetZoom': 'Reset zoomu',
-                    'hk-zoomLevel': 'Zoom - poziom',
-                    'hk-toggleDeath': 'Przełącz miejsce śmierci',
-                    'hk-clearChat': 'Pokaż historię czatu / Czyść czat',
-                    'hk-showBgSectors': 'Pokaż/ukryj sektory w tle',
-                    'hk-hideBots': 'Pokaż/ukryj małe boty',
-                    'hk-showNames': 'Pokaż/ukryj nazwy',
-                    'hk-hideTeammatesNames': 'Pokaż/ukryj nazwy graczy teamu',
-                    'hk-showMass': 'Pokaż/ukryj masę',
-                    'hk-showMiniMap': 'Pokaż/ukryj minimapę',
-                    'hk-chatMessage': 'Napisz wiadomość na czacie',
-                    'hk-quickResp': 'Szybkie odrodzenie (respawn)',
-                    'hk-autoResp': 'Włącz/wyłacz auto odrodzenie',
-                    'hk-switchServerMode': 'Przełącz serwer [publiczny/prywatny]',
-                    'hk-showTargeting': 'Pokaż/ukryj panel namierzania',
-                    'hk-voiceChat': 'Głos do tekstu',
-                    'hk-GhostCellsInfo': 'Show ghost cells information',
-                    'hk-Autoplay': 'Auto Play',
-                    'hk-setTargeting': 'Włącz/wyłącz namierzanie (śledzenie)',
-                    'hk-cancelTargeting': 'Zatrzymaj namierzanie',
-                    'hk-changeTarget': 'Zmień cel',
-                    'hk-privateMiniMap': 'Pokaż cel na minimapie',
-                    'hk-showQuest': 'Pokaż/ukryj zadanie',
-                    'commands': 'Komendy',
-                    'comm1': 'Feeduj!',
-                    'comm2': 'Dziel się!',
-                    'comm3': 'Pomocy na %currentSector%!',
-                    'comm4': 'Wróg na %currentSector%!',
-                    'comm5': 'Zabij pomocnika!',
-                    'comm6': 'Strzel z wirusa!',
-                    'comm7': 'Zjedz wirusa!',
-                    'comm8': 'Zjebałem, wybacz.',
-                    'comm9': 'Ja pierdolę...',
-                    'comm0': 'Kurwa mać!',
-                    'comm10': 'Trick!',
-                    'comm11': 'Lewo!',
-                    'comm12': 'Góra!',
-                    'comm13': 'Prawo!',
-                    'comm14': 'Dół!',
-                    'comm15': 'Fake Tricksplit',
-                    'comm16': 'Popsplit',
-                    'comm17': 'Double Popsplit',
-                    'comm18': 'Reversed Tricksplit',
-                    'comm19': 'Canonsplit',
-                    'comm20': 'Reversed Canonsplit',
-                    'comm21': 'Bowlingsplit',
-                    'comm22': 'Auto feed trick',
-                    'comm23': 'Pause',
-                    'comm24': 'ANTI alarm stage 1',
-                    'comm25': 'ANTI alarm stage 2',
-                    'comm26': 'ANTI alarm stage 3',
-                    'comm27': 'ANTI alarm stage 4',
-                    'comm28': 'ANTI alarm stage 5',
-                    'comm29': 'Presplit',
-                    'comm30': 'Party Run tricks',
-                    'saveComm': 'Zapisz komendy',
-                    'theme': 'Wygląd',
-                    'restoreThemeSettings': 'Przywróc ustawienia domyślne wyglądu',
-                    'basicTheming': 'Podstawowy',
-                    'themePreset': 'Motyw',
-                    'themeType': 'Typ motywu',
-                    'darkTheme': 'Ciemny motyw',
-                    'lightTheme': 'Jasny motyw',
-                    'mainColor': 'Kolor główny',
-                    'bgColor': 'Tło',
-                    'bordersColor': 'Granice mapy',
-                    'gridColor': 'Siatka',
-                    'sectorsColor': 'Czcionka sektorów',
-                    'namesColor': 'Nazwy',
-                    'namesStrokeColor': 'Obwódki nazw',
-                    'massColor': 'Masa',
-                    'massStrokeColor': 'Obwódki masy',
-                    'virusColor': 'Wirusy',
-                    'virusStrokeColor': 'Obwódki wirusów',
-                    'virusGlowColor': "Virus Glow",
-                    "borderGlowColor": "Border Glow",
-                    'mVirusColor': 'Mothercell',
-                    'mVirusStrokeColor': 'Mothercell stroke',
-                    'virusGlowSize': 'Virus Glow Size',
-                    'borderGlowSize': 'Border Glow Size',
-                    'foodColor': 'Pokarm',
-                    'namesFont': 'Czcionka nazw',
-                    'massFont': 'Czcionka masy',
-                    'sectorsFont': 'Czcionka sektorów',
-                    'namesScale': 'Skala nazw',
-                    'massScale': 'Skala masy',
-                    'virMassScale': 'Skala masy wirusów',
-                    'strokeScale': 'Skala obwódek tekstu',
-                    'foodSize': 'Wielkość pokarmu',
-                    'bordersWidth': 'Grubość granic mapy',
-                    'sectorsWidth': 'Grubość siatki sektorów',
-                    'sectorsFontSize': 'Rozmiar czcionki sektorów',
-                    'cellsAlpha': 'Przezroczystość kulek',
-                    'skinsAlpha': 'Przezroczystość skinów',
-                    'virusAlpha': 'Przezroczystość wirusów',
-                    'textAlpha': 'Przezroczystość nazw i masy',
-                    'virusStrokeSize': 'Grubość obwódki wirusów',
-                    "virusGlowSize": "Virus Glow Size",
-                    'teammatesIndColor': 'Wskaźnik gracza',
-                    'cursorTrackingColor': 'Śledzenie kursora',
-                    'splitRangeColor': 'Zasięg podziału',
-                    'qdsplitRange': 'Zasięg szybkiego podwójnego podziału', //Sonia2
-                    'sdsplitRange': 'Zasięg powolnego podwójnego podziału', //Sonia2
-                    'enemyBSTEDColor': 'Kolor W2STE wroga', //Sonia2
-                    'enemyBSTEColor': 'Kolor WSTE wroga', //Sonia2
-                    'enemyBColor': 'Kolor większego wroga', //Sonia2
-                    'enemySColor': 'Kolor mniejszego wroga', //Sonia2
-                    'enemySSTEColor': 'Kolor MSTE wroga', //Sonia2
-                    'enemySSTEDColor': 'Kolor M2STE wroga', //Sonia2
-                    'safeAreaColor': 'Bezpieczna strefa',
-                    'dangerAreaColor': 'Strefa zagrożenia',
-                    'ghostCellsColor': 'Duchy kulek',
-                    'ghostCellsAlpha': 'Przezroczystość duchów kulek',
-                    'menuTheming': 'Menu',
-                    'menuPreset': 'Motyw menu',
-                    'menuMainColor': 'Kolor główny',
-                    'menuBtnTextColor': 'Tekst przycisku',
-                    'menuPanelColor': 'Panel',
-                    'menuPanelColor2': 'Panel (2)',
-                    'menuTextColor': 'Tekst panelu',
-                    'menuTextColor2': 'Tekst panelu (2)',
-                    'btn1Color': 'Przycisk #1',
-                    'btn1Color2': 'Przycisk #1 (2)',
-                    'btn2Color': 'Przycisk #2',
-                    'btn2Color2': 'Przycisk #2 (2)',
-                    'btn3Color': 'Przycisk #3',
-                    'btn3Color2': 'Przycisk #3 (2)',
-                    'btn4Color': 'Przycisk #4',
-                    'btn4Color2': 'Przycisk #4 (2)',
-                    'menuBg': 'Grafika tła panelu',
-                    'menuOpacity': 'Przezroczystość',
-                    'hudTheming': 'HUD',
-                    'hudMainColor': 'Kolor główny',
-                    'hudColor': 'Tło',
-                    'hudTextColor': 'Tekst',
-                    'statsHudColor': 'Statystyki',
-                    'timeHudColor': 'Czas',
-                    'top5MassColor': 'Masa',
-                    'lbMeColor': 'Topka - ja',
-                    'lbTeammateColor': 'Topka - team',
-                    'hudFont': 'Czcionka HUD',
-                    'hudScale': 'Skala HUD',
-                    'chatTheming': 'Czat',
-                    'messageColor': 'Tło wiadomości',
-                    'messageTextColor': 'Tekst wiadomości',
-                    'messageTimeColor': 'Czas wiadomości',
-                    'messageNickColor': 'Nick wiadomości',
-                    'commandsColor': 'Tło komendy',
-                    'commandsTextColor': 'Tekst komendy',
-                    'commandsTimeColor': 'Czas komendy',
-                    'commandsNickColor': 'Nick komendy',
-                    'chatBoxColor': 'Tło czatboxu',
-                    'chatScale': 'Skala czatu',
-                    'miniMapTheming': 'Minimapa',
-                    'miniMapSectorsColor': 'Sektory',
-                    'miniMapSectorColor': 'Aktualny sektor',
-                    'miniMapGuidesColor': 'Prowadnice',
-                    'miniMapNickColor': 'Nick',
-                    'miniMapNickStrokeColor': 'Obwódka nicku',
-                    'miniMapMyCellColor': 'Moja kulka',
-                    'miniMapMyCellStrokeColor': 'Obwódka mojej kulki',
-                    'miniMapTeammatesColor': 'Gracze',
-                    'miniMapDeathLocationColor': 'Miejsce śmierci',
-                    'miniMapFont': 'Czcionka minimapy',
-                    'miniMapNickFont': 'Czcionka nicku',
-                    'miniMapWidth': 'Szerokość minimapy',
-                    'miniMapSectorsOpacity': 'Przezroczystość sektorów',
-                    'miniMapNickSize': 'Rozmiar nicku',
-                    'miniMapNickStrokeSize': 'Grubość obwódki nicku',
-                    'miniMapMyCellSize': 'Wielkość mojej kulki',
-                    'miniMapMyCellStrokeSize': 'Grubość obwódki mojej kulki',
-                    'miniMapTeammatesSize': 'Wielkość graczy',
-                    'miniMapGhostCellsColor': 'Duchy kulek',
-                    'miniMapGhostCellsAlpha': 'Przezroczystość duchów kulek',
-                    'imagesTheming': 'Grafika / kursory',
-                    'customBackground': 'Grafika tła',
-                    'customCursor': 'Grafika kursora',
-                    'hideChatMsgA': 'Czat został włączony!',
-                    'hideChatMsgB': 'Czat został ukryty!',
-                    'showSkinsMsgA': 'Skiny zostały włączone!',
-                    'showSkinsMsgB': 'Skiny zostały ukryte!',
-                    'hideSmallBotsMsgA': 'Małe boty stały się widoczne!',
-                    'hideSmallBotsMsgB': 'Małe boty zostały ukryte!',
-                    'autoRespMsgA': 'Auto odrodzenie zostało włączone!',
-                    'autoRespMsgB': 'Auto odrodzenie zostało wyłączone!',
-                    'autoZoomMsgA': 'Auto zoom został włączony!',
-                    'autoZoomMsgB': 'Auto zoom został wyłączony!',
-                    //                   'targetNotSet': 'Brak celu',
-                    'targetNotSet': '',
-                    'targetDead': 'Nie żyje',
-                    'targetDistance': 'Dystans',
-                    'targetMass': 'Masa razem',
-                    'totalPartyPlayers': '',
-                    'totalPartyMass': '',
-                    'exportImport': 'Eksport / import ustawień',
-                    'exportSettings': 'Eksportuj ustawienia',
-                    'exportInfo': 'Aby wyeksportować wybrane ustawienia skopiuj poniższy kod i zapisz go w pliku tekstowym z kodowaniem Unicode.',
-                    'importSettings': 'Importuj ustawienia',
-                    'importInfo': 'Aby zaimportować wybrane ustawienia wklej poniżej wyeksportowany wcześniej kod i naciśnij przycisk \"Importuj ustawienia\".',
-                    'profile': 'Profil',
-                    'profiles': 'Profile',
-                    'skins': 'Skiny',
-                    'moreSkins': 'Dodaj skiny',
-                    'thanks': 'Dzięki Awesome!',
-                    'saveSett': 'Zapisz ustawienia',
-                    'saved': 'Zapisano!',
-                    'resetSett': 'Resetuj ustawienia',
-                    'close': 'Zamknij',
-                    'enterChatMsg': 'Napisz wiadomość',
-                    'activeParties': 'Aktywne party',
-                    'noActiveParties': 'Brak aktywnych party ;(',
-                    'playlist': 'Playlista',
-                    'pause': 'PAUZA!',
-                    'visit': 'Odwiedź',
-                    'exit': 'Legend mod Express: Czy na pewno chcesz opuścic grę?',
-                    'blockWarn': 'UWAGA! Popupy zostały zablokowane w ustawieniach.',
-                    'unblockPopups': 'Odblokuj tymczasowo',
-                    'mass': 'Masa',
-                    'score': 'Top',
-                    'leaderboard': 'Topka',
-                    'user': 'Użytkownik',
-                    'userMuted': 'Użytkownik %user% został wyciszony.',
-                    'userUnmuted': 'Wyłączono wyciszenie użytkownika %user%.',
-                    'mute': 'Wycisz',
-                    'unmute': 'Wyłącz wyciszenie',
-                    'mutedUsers': 'Wyciszeni użytkownicy',
-                    'activeUsers': 'Aktywni użytkownicy',
-                    'showActiveUsers': 'Pokaż aktywnych użytkowników',
-                    'none': 'Brak',
-                    'sounds': 'Dźwięki',
-                    'page_back_button': 'Wróć',
-                    'page_create_party': 'Stwórz party',
-                    'page_join_party': 'Dołącz',
-                    'page_login_and_play': 'Zaloguj',
-                    'page_logout': 'Wyloguj',
-                    'page_menu_login_facebook': 'Zaloguj z Facebook',
-                    'page_menu_login_google': 'Zaloguj z Google',
-                    'page_menu_main_free_coins': 'Darmowe Monety',
-                    'page_menu_main_gifts': 'Prezenty',
-                    'page_menu_main_dailyquests': 'Zadania',
-                    'page_party_join_error': 'Nie można dołączyć do tego party. Upewnij się, że token jest prawidłowy lub stwórz nowy.',
-                    'page_play': 'Graj',
-                    'page_play_as_guest': 'Graj jako gość',
-                    'page_shop': 'Sklep',
-                    'page_spectate': 'Obserwuj',
-                    'page_stats': 'Statystyki'
-                },
-                'en': {
-                    'start': 'Home',
-                    'settings': 'Settings',
-                    'restoreSettings': 'Restore default settings',
-                    'animationGroup': 'Animation',
-                    'zoomGroup': 'Zoom',
-                    'respGroup': 'Respawn',
-                    'namesGroup': 'Names',
-                    'massGroup': 'Mass',
-                    'skinsGroup': 'Skins',
-                    'foodGroup': 'Food',
-                    'transparencyGroup': 'Transparency / colors',
-                    'gridGroup': 'Grid / sectors',
-                    'miniMapGroup': 'Minimap',
-                    'helpersGroup': 'Helpers',
-                    'mouseGroup': 'Mouse control',
-                    'hudGroup': 'HUD',
-                    'chatGroup': 'Chat',
-                    'statsGroup': 'Stats',
-                    'extrasGroup': 'Extras',
-                    'noSkins': 'No skins',
-                    'noNames': 'No names',
-                    'noColors': 'No colors',
-                    'showMass': 'Show mass',
-                    'skipStats': 'Skip stats after death',
-                    'showQuest': 'Show quest',
-                    'autoZoom': 'Auto zoom',
-                    'animation': 'Animation delay',
-                    'suckAnimation': 'Cell Eat [Sucking] Animation',
-                    'virusGlow': 'Virus Glow',
-                    'borderGlow': 'Border Glow',
-                    'zoomSpeedValue2': 'Zoom speed',
-                    'quickResp': 'Quick respawn (hotkey)',
-                    'autoResp': 'Auto respawn',
-                    'autoHideCellsInfo': 'Auto hide names and mass',
-                    'autoHideNames': 'Auto hide names',
-                    'autoHideMass': 'Auto hide mass',
-                    'autoHideFood': 'Auto hide food (mass)',
-                    'autoHideFoodOnZoom': 'Auto hide food (zoom)',
-                    'optimizedNames': 'Optimized names',
-                    'hideMyName': 'Hide my name',
-                    'hideTeammatesNames': 'Hide teammates names',
-                    'optimizedMass': 'Optimized mass (+/-2%) & Merge timer BETA off\r\n Suggested to be enabled for Lag reduce',
-                    'shortMass': 'Short mass (k)',
-                    'virMassShots': 'Virus shots',
-                    'hideMyMass': 'Hide my mass',
-                    'hideEnemiesMass': 'Hide enemies mass',
-                    'vanillaSkins': 'Vanilla skins',
-                    'customSkins': 'Custom skins',
-                    'videoSkins': 'Video skins (.mp4 .webm .ogv)',
-                    'videoSkinsMusic': 'Sound from other\'s Video skins when both C3',
-                    'myTransparentSkin': 'My transparent skin',
-                    'myCustomColor': 'My custom color',
-                    'transparentCells': 'Transparent cells',
-                    'transparentViruses': 'Transparent viruses',
-                    'transparentSkins': 'Transparent skins',
-                    'showGrid': 'Show grid',
-                    'showBgSectors': 'Show background sectors',
-                    'showMapBorders': 'Show map borders',
-                    'showGhostCells': 'Ghost cells (fps drop)',
-                    'showGhostCellsInfo': 'Ghost cells info (confusing)',
-                    'showMiniMap': 'Show minimap',
-                    'showMiniMapGrid': 'Show minimap grid',
-                    'showMiniMapGuides': 'Show minimap guides',
-                    'showExtraMiniMapGuides': 'Show extra minimap guides',
-                    'showMiniMapGhostCells': 'Show ghost cells',
-                    'oneColoredTeammates': 'One-colored teammates',
-                    'optimizedFood': 'Optimized food',
-                    'rainbowFood': 'Rainbow food',
-                    'oppColors': 'Opponents colors',
-                    'oppRings': 'Opponents rings',
-                    'virColors': 'Viruses colors',
-                    'splitRange': 'Split range',
-                    'qdsplitRange': 'Quick double split range', //Sonia2
-                    'sdsplitRange': 'Slow double split range', //Sonia2
-                    'virusesRange': 'Viruses range',
-                    'textStroke': 'Names and mass stroke',
-                    'namesStroke': 'Names stroke',
-                    'massStroke': 'Mass stroke',
-                    'cursorTracking': 'Cursor tracking',
-                    'teammatesInd': 'Teammates indicators',
-                    'mouseSplit': 'LMB - Mouse split',
-                    'mouseFeed': 'RMB - Mouse feed',
-                    'mouseInvert': 'Invert mouse buttons',
-                    'disableChat': 'Disable chat',
-                    'hideChat': 'Hide chat',
-                    'chatSounds': 'Sound notifications',
-                    'chatEmoticons': 'Emoticons',
-                    'showChatImages': 'Show images on chat',
-                    'showChatVideos': 'Show videos on chat',
-                    'showChatBox': 'Chatbox instead of popups',
-                    'messageSound': 'Message notification sound',
-                    'commandSound': 'Command notification sound',
-                    'virusSoundurl': 'Virus shot sound',
-                    'virusSound': 'Virus shot sound',
-                    'jellyPhisycs': 'Jelly physics',
-                    'showTop5': 'Show teamboard',
-                    'showTargeting': 'Show targeting',
-                    'showTime': 'Show current time',
-                    'showLbData': 'Show leaderboard mass',
-                    'normalLb': '\"Leaderboard\" header',
-                    'centeredLb': 'Centered leaderboard',
-                    'fpsAtTop': 'Game stats at the top',
-                    'showStats': 'Show game stats',
-                    'showStatsMass': 'Game stats: Mass',
-                    'showStatsESTE': 'Game stats: Enemy\'s STE',
-                    'showStatsEMTE': 'Game stats: Enemy\'s MTE',
-                    'showStatsMTE': 'Game stats: Our MTE',
-                    'showStatsSTE': 'Game stats: Our STE',
-                    'showStatsTTE': 'Game stats: Minimal tricksplit teammate\'s mass',
-                    'showStatsPTE': 'Game stats: Maximal enemy\'s mass for presplit',
-                    'showStatsN16': 'Game stats: n/16',
-                    'showStatsFPS': 'Game stats: FPS',
-                    'blockPopups': 'Block popups (ads/shop/quest)',
-                    'hotkeys': 'Hotkeys',
-                    'hk-inst-assign': 'To assign a hotkey click on the input field and press your chosen key.',
-                    'hk-inst-delete': 'To delete a hotkey click on the input field and press the DELETE key.',
-                    'hk-inst-keys': 'Possible key combinations with the CTRL and ALT keys.',
-                    'hk-feed': 'Feed',
-                    'hk-macroFeed': 'Macro feed',
-                    'hk-split': 'Split',
-                    'hk-doubleSplit': 'Double split',
-                    'hk-split16': 'Split 16',
-                    'hk-pause': 'Cell pause',
-                    'hk-showTop5': 'Show/hide teamboard',
-                    'hk-showTime': 'Show/hide current time',
-                    'hk-showSplitRange': 'Show/hide split range',
-                    'hk-showSplitInd': 'Show/hide split indicators',
-                    'hk-showTeammatesInd': 'Show/hide teammates indicators',
-                    'hk-showOppColors': 'Show/hide opponents colors',
-                    'hk-toggleSkins': 'Toggle skins (custom/default)',
-                    'hk-showSkins': 'Show/hide skins',
-                    'hk-transparentSkins': 'Toggle transparent skins',
-                    'hk-showStats': 'Show/hide game stats',
-                    'hk-toggleCells': 'Toggle own cells (smallest/biggest)',
-                    'hk-showFood': 'Show/hide food',
-                    'hk-showGrid': 'Show/hide grid',
-                    'hk-showMiniMapGuides': 'Show/hide minimap guides',
-                    'hk-hideChat': 'Show/hide chat',
-                    'hk-showHUD': 'Show/hide HUD',
-                    'hk-copyLb': 'Copy leaderboard',
-                    'hk-showLb': 'Show/hide leaderboard',
-                    'hk-toggleAutoZoom': 'Toggle auto zoom',
-                    'hk-resetZoom': 'Reset zoom',
-                    'hk-zoomLevel': 'Zoom level',
-                    'hk-toggleDeath': 'Toggle death location',
-                    'hk-clearChat': 'Show chat history / Clear chat',
-                    'hk-showBgSectors': 'Show/hide background sectors',
-                    'hk-hideBots': 'Show/hide small bots',
-                    'hk-showNames': 'Show/hide names',
-                    'hk-hideTeammatesNames': 'Show/hide teammates names',
-                    'hk-showMass': 'Show/hide mass',
-                    'hk-showMiniMap': 'Show/hide minimap',
-                    'hk-chatMessage': 'Enter chat message',
-                    'hk-quickResp': 'Quick respawn',
-                    'hk-autoResp': 'Toggle auto respawn',
-                    'hk-switchServerMode': 'Switch server [public/private]',
-                    'hk-showTargeting': 'Show/hide targeting panel',
-                    'hk-voiceChat': 'Voice to text',
-                    'hk-GhostCellsInfo': ' Show ghost cells information',
-                    'hk-Autoplay': 'Auto Play',
-                    'hk-setTargeting': 'Start/stop targeting (following)',
-                    'hk-cancelTargeting': 'Cancel targeting',
-                    'hk-changeTarget': 'Change target',
-                    'hk-privateMiniMap': 'Show target on the minimap',
-                    'hk-showQuest': 'Show/hide quest',
-                    'commands': 'Commands',
-                    'comm1': 'Feed me!',
-                    'comm2': 'Split into me!',
-                    'comm3': 'Need backup at %currentSector%!',
-                    'comm4': 'Enemy spotted at %currentSector%!',
-                    'comm5': 'Need a teammate!',
-                    'comm6': 'Tank the virus!',
-                    'comm7': 'Eat the virus!',
-                    'comm8': 'Let\'s bait!',
-                    'comm9': 'Fake tricksplit!',
-                    'comm0': 'Fuck!',
-                    'comm10': 'Tricksplit!',
-                    'comm11': 'Left!',
-                    'comm12': 'Up!',
-                    'comm13': 'Right!',
-                    'comm14': 'Bottom!',
-                    'comm15': 'Fake Tricksplit',
-                    'comm16': 'Popsplit',
-                    'comm17': 'Double Popsplit',
-                    'comm18': 'Reversed Tricksplit',
-                    'comm19': 'Canonsplit',
-                    'comm20': 'Reversed Canonsplit',
-                    'comm21': 'Bowlingsplit',
-                    'comm22': 'Auto feed trick',
-                    'comm23': 'Pause',
-                    'comm24': 'ANTI alarm stage 1',
-                    'comm25': 'ANTI alarm stage 2',
-                    'comm26': 'ANTI alarm stage 3',
-                    'comm27': 'ANTI alarm stage 4',
-                    'comm28': 'ANTI alarm stage 5',
-                    'comm29': 'Presplit',
-                    'comm30': 'Party Run tricks',
-                    'saveComm': 'Save commands',
-                    'theme': 'Theme',
-                    'restoreThemeSettings': 'Restore theme default settings',
-                    'basicTheming': 'Basic theming',
-                    'themePreset': 'Theme preset',
-                    'themeType': 'Theme type',
-                    'darkTheme': 'Dark theme',
-                    'lightTheme': 'Light theme',
-                    'mainColor': 'Main color',
-                    'bgColor': 'Background',
-                    'bordersColor': 'Map borders',
-                    'gridColor': 'Grid',
-                    'sectorsColor': 'Sectors font',
-                    'namesColor': 'Names',
-                    'namesStrokeColor': 'Names stroke',
-                    'massColor': 'Mass',
-                    'massStrokeColor': 'Mass stroke',
-                    'virusColor': 'Virus',
-                    'virusStrokeColor': 'Virus stroke',
-                    'virusGlowColor': "Virus Glow",
-                    "borderGlowColor": "Border Glow",
-                    'mVirusColor': 'Mothercell',
-                    'mVirusStrokeColor': 'Mothercell stroke',
-                    'virusGlowSize': 'Virus Glow Size',
-                    'borderGlowSize': 'Border Glow Size',
-                    'foodColor': 'Food',
-                    'namesFont': 'Names font',
-                    'massFont': 'Mass font',
-                    'sectorsFont': 'Sectors font',
-                    'namesScale': 'Names scale',
-                    'massScale': 'Mass scale',
-                    'virMassScale': 'Virus mass scale',
-                    'strokeScale': 'Text stroke scale',
-                    'foodSize': 'Food size',
-                    'bordersWidth': 'Map borders width',
-                    'sectorsWidth': 'Sectors grid width',
-                    'sectorsFontSize': 'Sectors font size',
-                    'cellsAlpha': 'Cells transparency',
-                    'skinsAlpha': 'Skins transparency',
-                    'virusAlpha': 'Virus transparency',
-                    'textAlpha': 'Names & mass transparency',
-                    'virusStrokeSize': 'Virus stroke size',
-                    "virusGlowSize": "Virus Glow Size",
-                    'teammatesIndColor': 'Teammate indicator',
-                    'cursorTrackingColor': 'Cursor tracking',
-                    'splitRangeColor': 'Split range',
-                    'enemyBSTEDColor': 'B2STE Enemy Color', //Sonia2
-                    'enemyBSTEColor': 'BSTE Enemy Color', //Sonia2
-                    'enemyBColor': 'Bigger Enemy Color', //Sonia2
-                    'enemySColor': 'Smaller Enemy Color', //Sonia2
-                    'enemySSTEColor': 'SSTE Enemy Color', //Sonia2
-                    'enemySSTEDColor': 'S2STE Enemy Color', //Sonia2
-                    'safeAreaColor': 'Safe area',
-                    'dangerAreaColor': 'Danger area',
-                    'ghostCellsColor': 'Ghost cells',
-                    'ghostCellsAlpha': 'Ghost cells transparency',
-                    'menuTheming': 'Menu',
-                    'menuPreset': 'Menu theme',
-                    'menuMainColor': 'Main color',
-                    'menuBtnTextColor': 'Button text',
-                    'menuPanelColor': 'Panel',
-                    'menuPanelColor2': 'Panel (2)',
-                    'menuTextColor': 'Panel text',
-                    'menuTextColor2': 'Panel text (2)',
-                    'btn1Color': 'Button #1',
-                    'btn1Color2': 'Button #1 (2)',
-                    'btn2Color': 'Button #2',
-                    'btn2Color2': 'Button #2 (2)',
-                    'btn3Color': 'Button #3',
-                    'btn3Color2': 'Button #3 (2)',
-                    'btn4Color': 'Button #4',
-                    'btn4Color2': 'Button #4 (2)',
-                    'menuBg': 'Panel background image',
-                    'menuOpacity': 'Transparency',
-                    'hudTheming': 'HUD',
-                    'hudMainColor': 'Main color',
-                    'hudColor': 'Background',
-                    'hudTextColor': 'Text',
-                    'statsHudColor': 'Stats',
-                    'timeHudColor': 'Time',
-                    'top5MassColor': 'Mass',
-                    'lbMeColor': 'Leaderboard - me',
-                    'lbTeammateColor': 'Leaderboard - teammate',
-                    'hudFont': 'HUD font',
-                    'hudScale': 'HUD scale',
-                    'chatTheming': 'Chat',
-                    'messageColor': 'Message background',
-                    'messageTextColor': 'Message text',
-                    'messageTimeColor': 'Message time',
-                    'messageNickColor': 'Message nick',
-                    'commandsColor': 'Command background',
-                    'commandsTextColor': 'Command text',
-                    'commandsTimeColor': 'Command time',
-                    'commandsNickColor': 'Command nick',
-                    'chatBoxColor': 'Chatbox color',
-                    'chatScale': 'Chat scale',
-                    'miniMapTheming': 'Minimap',
-                    'miniMapSectorsColor': 'Sectors',
-                    'miniMapSectorColor': 'Current sector',
-                    'miniMapGuidesColor': 'Guides',
-                    'miniMapNickColor': 'Nick',
-                    'miniMapNickStrokeColor': 'Nick stroke',
-                    'miniMapMyCellColor': 'My cell',
-                    'miniMapMyCellStrokeColor': 'My cell stroke',
-                    'miniMapTeammatesColor': 'Teammates',
-                    'miniMapDeathLocationColor': 'Death location',
-                    'miniMapFont': 'Minimap font',
-                    'miniMapNickFont': 'Nick font',
-                    'miniMapWidth': 'Minimap width',
-                    'miniMapSectorsOpacity': 'Sectors transparency',
-                    'miniMapNickSize': 'Nick size',
-                    'miniMapNickStrokeSize': 'Nick stroke size',
-                    'miniMapMyCellSize': 'My cell size',
-                    'miniMapMyCellStrokeSize': 'My cell stroke size',
-                    'miniMapTeammatesSize': 'Teammates size',
-                    'miniMapGhostCellsColor': 'Ghost cells',
-                    'miniMapGhostCellsAlpha': 'Ghost cells transparency',
-                    'imagesTheming': 'Graphics / cursors',
-                    'customBackground': 'Custom background image',
-                    'customCursor': 'Custom cursor image',
-                    'hideChatMsgA': 'Chat is visible!',
-                    'hideChatMsgB': 'Chat is hidden!',
-                    'showSkinsMsgA': 'Skins are visible!',
-                    'showSkinsMsgB': 'Skins are hidden!',
-                    'hideSmallBotsMsgA': 'Small bots are visible!',
-                    'hideSmallBotsMsgB': 'Small bots are hidden!',
-                    'autoRespMsgA': 'Auto respawn is on!',
-                    'autoRespMsgB': 'Auto respawn is off!',
-                    'autoZoomMsgA': 'Auto zoom is on!',
-                    'autoZoomMsgB': 'Auto zoom is off!',
-                    'targetNotSet': '',
-                    'targetDead': 'Dead',
-                    'targetDistance': 'Distance',
-                    'targetMass': 'Mass altogether',
-                    'totalPartyPlayers': '',
-                    'totalPartyMass': '',
-                    'exportImport': 'Export / import settings',
-                    'exportSettings': 'Export settings',
-                    'exportInfo': 'To export selected settings copy the code below and save it to a text file encoded in Unicode.',
-                    'importSettings': 'Import settings',
-                    'importInfo': 'To import selected settings paste an exported code below and press the \"Import settings\" button.',
-                    'profile': 'Profile',
-                    'profiles': 'Profiles',
-                    'skins': 'Skins',
-                    'moreSkins': 'Add skins',
-                    'thanks': 'Thanks to Awesome!',
-                    'saveSett': 'Save settings',
-                    'saved': 'Saved!',
-                    'resetSett': 'Reset to default',
-                    'close': 'Close',
-                    'enterChatMsg': 'Enter chat message',
-                    'activeParties': 'Active parties',
-                    'noActiveParties': 'No active parties ;(',
-                    'playlist': 'Playlist',
-                    'pause': 'PAUSE!',
-                    'visit': 'Visit',
-                    'exit': 'Legend mod Express: Are you sure you want to quit the game?',
-                    'blockWarn': 'WARNING! Popups are blocked in the settings.',
-                    'unblockPopups': 'Temporary unblock',
-                    'mass': 'Mass',
-                    'score': 'Score',
-                    'leaderboard': 'Leaderboard',
-                    'user': 'User',
-                    'userMuted': 'User %user% has been muted.',
-                    'userUnmuted': 'User %user% has been unmuted.',
-                    'mute': 'Mute',
-                    'unmute': 'Unmute',
-                    'mutedUsers': 'Muted users',
-                    'activeUsers': 'Active users',
-                    'showActiveUsers': 'Show active users',
-                    'none': 'None',
-                    'sounds': 'Sounds',
-                    'page_menu_main_free_coins': 'Free Coins',
-                    'page_menu_main_gifts': 'Gifts',
-                    'page_menu_main_dailyquests': 'Daily Quest',
-                    'page_shop': 'Shop'
-                }
-            },
             r = 'en',
             l = window.navigator.language || window.navigator.userLanguage;
-        l && n.hasOwnProperty(l) && (r = l);
-        var h = n[r];
-        if (n[r].comm15 != undefined) {
+        l && languagetexts.hasOwnProperty(l) && (r = l);
+        var h = languagetexts[r];
+        if (languagetexts[r].comm15 != undefined) {
             //console.log(h.comm15);
         }
         c = {
-            'comm1': h.comm1,
-            'comm2': h.comm2,
-            'comm3': h.comm3,
-            'comm4': h.comm4,
-            'comm5': h.comm5,
-            'comm6': h.comm6,
-            'comm7': h.comm7,
-            'comm8': h.comm8,
-            'comm9': h.comm9,
-            'comm10': h.comm10,
-            'comm0': h.comm0,
-            'comm11': h.comm11,
-            'comm12': h.comm12,
-            'comm13': h.comm13,
-            'comm14': h.comm14,
-            'comm15': h.comm15,
-            'comm16': h.comm16,
-            'comm17': h.comm17,
-            'comm18': h.comm18,
-            'comm19': h.comm19,
-            'comm20': h.comm20,
-            'comm21': h.comm21,
-            'comm22': h.comm22,
-            'comm23': h.comm23,
-            'comm24': h.comm24,
-            'comm25': h.comm25,
-            'comm26': h.comm26,
-            'comm27': h.comm27,
-            'comm28': h.comm28,
-            'comm29': h.comm29,
-            'comm30': h.comm30
-        },
+                'comm1': h.comm1,
+                'comm2': h.comm2,
+                'comm3': h.comm3,
+                'comm4': h.comm4,
+                'comm5': h.comm5,
+                'comm6': h.comm6,
+                'comm7': h.comm7,
+                'comm8': h.comm8,
+                'comm9': h.comm9,
+                'comm10': h.comm10,
+                'comm0': h.comm0,
+                'comm11': h.comm11,
+                'comm12': h.comm12,
+                'comm13': h.comm13,
+                'comm14': h.comm14,
+                'comm15': h.comm15,
+                'comm16': h.comm16,
+                'comm17': h.comm17,
+                'comm18': h.comm18,
+                'comm19': h.comm19,
+                'comm20': h.comm20,
+                'comm21': h.comm21,
+                'comm22': h.comm22,
+                'comm23': h.comm23,
+                'comm24': h.comm24,
+                'comm25': h.comm25,
+                'comm26': h.comm26,
+                'comm27': h.comm27,
+                'comm28': h.comm28,
+                'comm29': h.comm29,
+                'comm30': h.comm30
+            },
             /*}
             else{
                 c = { //new JSON
@@ -1116,11 +1117,11 @@ var thelegendmodproject = function(t, e, i) {
                 '/': '&#x2F;'
             },
             p = [{
-                name: "imgur.com",
-                url: "https://imgur.com/",
-                example: "https://i.imgur.com/xdmUp5N.png",
-                pattern: "https?://w+.imgur.com/w{6,}.(?:%file_ext%)??d*"
-            },
+                    name: "imgur.com",
+                    url: "https://imgur.com/",
+                    example: "https://i.imgur.com/xdmUp5N.png",
+                    pattern: "https?://w+.imgur.com/w{6,}.(?:%file_ext%)??d*"
+                },
                 {
                     name: "put.re",
                     url: "https://put.re/",
@@ -1782,8 +1783,8 @@ var thelegendmodproject = function(t, e, i) {
                     g[t] = e,
                         g[t + 'Family'] = this.setFontFamily(e),
                         g[t + 'Weight'] = this.setFontWeight(e),
-                    i.hasOwnProperty(t + 'Family') && (i[t + 'Family'] = g[t + 'Family']),
-                    i.hasOwnProperty(t + 'Weight') && (i[t + 'Weight'] = g[t + 'Weight']);
+                        i.hasOwnProperty(t + 'Family') && (i[t + 'Family'] = g[t + 'Family']),
+                        i.hasOwnProperty(t + 'Weight') && (i[t + 'Weight'] = g[t + 'Weight']);
                 },
                 'addFontBox': function(t, e, i) {
                     $(t).append('<div class=\"font-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>');
@@ -1938,14 +1939,14 @@ var thelegendmodproject = function(t, e, i) {
                     this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
                     for (var e = 'https://jimboy3100.github.io/cursors/cursor_', i = 0; i < 35; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
                     $(document).on('click', '#theme-images .cursor-box a', function(e) {
-                        e.preventDefault();
-                        var i = $('img', this).attr('src');
-                        g.customCursor = i;
-                        t.setCustomCursor();
-                        $('#customCursor').val(i);
-                        $('#theme-images .cursor-box a').removeClass('active');
-                        $(this).addClass('active');
-                    }),
+                            e.preventDefault();
+                            var i = $('img', this).attr('src');
+                            g.customCursor = i;
+                            t.setCustomCursor();
+                            $('#customCursor').val(i);
+                            $('#theme-images .cursor-box a').removeClass('active');
+                            $(this).addClass('active');
+                        }),
                         $('#theme').append('<button class=\"btn btn-block btn-success btn-save\"\">' + h.saveSett + '</button>'),
                         $(document).on('click', '#theme .btn-save', function(e) {
                             e.preventDefault();
@@ -1957,9 +1958,9 @@ var thelegendmodproject = function(t, e, i) {
                         $(document).on('click', '#theme .restore-settings a', function(e) {
                             e.preventDefault(), t.restoreThemeSettings();
                         }), $('.skin').colorpicker({
-                        'format': 'hex',
-                        'input': '#color'
-                    });
+                            'format': 'hex',
+                            'input': '#color'
+                        });
                 },
                 'changePreset': function(t, e) {
                     if (e[t]) {
@@ -2099,7 +2100,7 @@ var thelegendmodproject = function(t, e, i) {
                         'width': g.miniMapWidth,
                         'height': g.miniMapWidth + g.miniMapTop
                     });
-                    if (ogarminimapdrawer){
+                    if (ogarminimapdrawer) {
                         ogarminimapdrawer.resetMiniMapSectors();
                     }
                 },
@@ -2439,7 +2440,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setShowSkins': function() {
                 this.noSkins = !this.noSkins,
-                window.core && window.core.setSkins && window.core.setSkins(!this.noSkins),
+                    window.core && window.core.setSkins && window.core.setSkins(!this.noSkins),
                     i.showCustomSkins = !this.noSkins,
                     this.displayChatInfo(!this.noSkins, 'showSkinsMsg');
             },
@@ -2578,7 +2579,7 @@ var thelegendmodproject = function(t, e, i) {
                 $('#block-warn').hide();
             },
             'tempUnblockPopups': function() {
-                if (v["blockPopups"]){
+                if (v["blockPopups"]) {
                     this.unblockPopups();
                 }
             },
@@ -2596,39 +2597,39 @@ var thelegendmodproject = function(t, e, i) {
             'displayStats': function() {
                 if (v.showStats) {
                     var t = '';
-                    if (i.play){
-                        if (v.showStatsMass && i.playerMass){
+                    if (i.play) {
+                        if (v.showStatsMass && i.playerMass) {
                             t += h.mass + ': ' + i.playerMass + ' | '
                         }
-                        if (i.playerScore){
+                        if (i.playerScore) {
                             t += h.score + ': ' + i.playerScore
                         }
-                        if (v.showStatsN16 && i.playerSplitCells){
+                        if (v.showStatsN16 && i.playerSplitCells) {
                             t += ' | ' + i.playerSplitCells + '/16'
                         }
-                        if (v.showStatsESTE && i.BSTE){
+                        if (v.showStatsESTE && i.BSTE) {
                             t += ' | ◎◎➛◉: ' + i.BSTE //Sonia6
                         }
-                        if (v.showStatsEMTE && i.BMTE){
+                        if (v.showStatsEMTE && i.BMTE) {
                             t += ' | ◎➛◉: ' + i.BMTE //Sonia6
                         }
-                        if (v.showStatsMTE && i.MTE){
+                        if (v.showStatsMTE && i.MTE) {
                             t += ' | ◉➛◎: ' + i.MTE //Sonia6
                         }
-                        if (v.showStatsSTE && i.STE){
+                        if (v.showStatsSTE && i.STE) {
                             t += ' | ◉◉➛◎: ' + i.STE //Sonia6
                         }
-                        if (v.showStatsTTE && i.TTE){
+                        if (v.showStatsTTE && i.TTE) {
                             t += ' | ◉➚◉: ' + i.TTE //Sonia6
                         }
-                        if (v.showStatsPTE && i.PTE){
+                        if (v.showStatsPTE && i.PTE) {
                             t += ' | ➚◎➘: ' + i.PTE //Sonia6
                         }
                         if (v.showStatsFPS) {
                             t += ' | '
                         }
                     }
-                    if (v.showStatsFPS){
+                    if (v.showStatsFPS) {
                         t += 'FPS: ' + ogarfooddrawer.fps;
                     }
                     this.statsHUD.textContent = t;
@@ -2636,8 +2637,7 @@ var thelegendmodproject = function(t, e, i) {
                     setTimeout(function() {
                         e.displayStats();
                     }, 250);
-                }
-                else $('#stats-hud').hide();
+                } else $('#stats-hud').hide();
             },
             'displayTime': function() {
                 if (v.showTime) {
@@ -3075,7 +3075,7 @@ var thelegendmodproject = function(t, e, i) {
                     $("#tags-container").appendTo($("#profile")),
                     $(".btn-logout").appendTo($("#profile")),
                     $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://jimboy3100.github.io/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + h.skins + '"></a><a href="https://youtube.com/channel/UCoj-ZStcJ0jLMOSK7FOBTbA" class="quick-yt ogicon-youtube2" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="The Legend mod Project"></a></div>'),
-                this.protocolMode || $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_dailyquests + '"></a>'),
+                    this.protocolMode || $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_dailyquests + '"></a>'),
                     $(".party-dialog, .partymode-info").remove(),
                     $(".agario-party-6").appendTo($(".center-container")),
                     $(".right-container").empty(),
@@ -3083,14 +3083,14 @@ var thelegendmodproject = function(t, e, i) {
                     $(".agario-party-6").appendTo($(".agario-party")).addClass("agario-panel agario-side-panel"),
                     $(".agario-party h4, #cancel-party-btn").remove(),
                     $(".agario-party .btn").addClass("btn-sm"),
-                    $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://ogario.ovh/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' +h.moreSkins + "</a></div>"),
+                    $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://ogario.ovh/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' + h.moreSkins + "</a></div>"),
                     $(".btn-settings, .text-muted, .tosBox, .agario-promo, #agario-web-incentive, span[data-itr='page_option_dark_theme'], #options #darkTheme").remove(),
                     $("#advertisement, #adbg, #a320x250, #g320x250, #s320x250, #adsBottom").css("display", "none"),
                     $("#advertisement").removeClass("agario-panel"), $("#adsBottom").css({
-                    "z-index": "1",
-                    "opacity": "0",
-                    "bottom": "-100px"
-                }), $("#noNames, #showMass").remove(), $("#og-settings .submenu-panel").append('<div id="og-options"></div>'),
+                        "z-index": "1",
+                        "opacity": "0",
+                        "bottom": "-100px"
+                    }), $("#noNames, #showMass").remove(), $("#og-settings .submenu-panel").append('<div id="og-options"></div>'),
                     this.addOptions([], "animationGroup"),
                     this.addOptions(["autoZoom"], "zoomGroup"),
                     this.addOptions(["quickResp", "autoResp"], "respGroup"),
@@ -3102,26 +3102,26 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"),
                     this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox"], "chatGroup"),
                     this.addOptions(["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
-                    this.addOptions(["oppColors", "oppRings", "virColors", "splitRange","qdsplitRange","sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"), //Sonia2
+                    this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"), //Sonia2
                     this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                     this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"),
-                    this.addOptions(["showStats", "showStatsMass",  "showStatsESTE","showStatsEMTE","showStatsMTE","showStatsSTE","showStatsTTE","showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
-                this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup"),
-                    $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"),
-                    $(".skinsGroup h5").after('<label class="noSkins">' + h.noSkins +" </label>"),
-                    $("#noSkins").appendTo($(".noSkins")), $(".transparencyGroup h5").after('<label class="noColors">' + h.noColors + " </label>"),
-                    $("#noColors").appendTo($(".noColors")),
-                    $(".extrasGroup h5").after('<label class="skipStats">' + h.skipStats + " </label>"),
-                    $("#skipStats").appendTo($(".skipStats")),
-                    $(".skipStats").after('<label class="showQuest">' + h.showQuest + " </label>"),
-                    $("#showQuest").appendTo($(".showQuest")),
-                    $("#options").remove(),
-                    $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper")),
+                    this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
+                    this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup"),
+                        $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"),
+                        $(".skinsGroup h5").after('<label class="noSkins">' + h.noSkins + " </label>"),
+                        $("#noSkins").appendTo($(".noSkins")), $(".transparencyGroup h5").after('<label class="noColors">' + h.noColors + " </label>"),
+                        $("#noColors").appendTo($(".noColors")),
+                        $(".extrasGroup h5").after('<label class="skipStats">' + h.skipStats + " </label>"),
+                        $("#skipStats").appendTo($(".skipStats")),
+                        $(".skipStats").after('<label class="showQuest">' + h.showQuest + " </label>"),
+                        $("#showQuest").appendTo($(".showQuest")),
+                        $("#options").remove(),
+                        $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper")),
                     this.addSliderBox(".animationGroup", "animation", 20, 200, 1),
                     this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01),
                     $("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + h.exportImport + "</button>"),
                     $("#og-settings").append('<div class="restore-settings"><a href="#">' + h.restoreSettings + "</a></div>"),
-                    $("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + h.thanks + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' +h.playlist + "</a></span></div>"),
+                    $("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + h.thanks + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' + h.playlist + "</a></span></div>"),
                     $("#music").append('<div class="agario-panel sounds-panel"><h5 class="menu-main-color">' + h.sounds + "</h5></div>"),
                     $("#music").append('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">Legend Clan (tag: \u24c2)</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>'),
                     this.addInputBox(".sounds-panel", "messageSound", "Sound URL", "setMessageSound"),
@@ -3135,7 +3135,7 @@ var thelegendmodproject = function(t, e, i) {
                     $("body").append('<ul id="messages"></ul>'),
                     $("body").append('<div id="message-box"><div id="chat-emoticons"></div><div id="message-menu"><a href="#" class="chat-sound-notifications ogicon-volume-high"></a><a href="#" class="chat-active-users ogicon-user-check"></a><a href="#" class="chat-muted-users ogicon-user-minus"></a><a href="#" class="show-chat-emoticons ogicon-smile"></a></div><input type="text" id="message" class="form-control" placeholder="' +
                         h.enterChatMsg + '..." maxlength="80"></div>'),
-                    $("body").append('<div id="chat-box"></div>'), emoticonicons){
+                    $("body").append('<div id="chat-box"></div>'), emoticonicons) {
                     if (emoticonicons.hasOwnProperty(t)) {
                         $("#chat-emoticons").append('<img src="https://jimboy3100.github.io/banners/emoticons/' + emoticonicons[t] + '" alt="' + t + '" class="emoticon">');
                     }
@@ -3275,8 +3275,8 @@ var thelegendmodproject = function(t, e, i) {
                     $("#exp-imp").fadeOut(500);
                 });
                 $(document).on("focus", "#export-settings", function() {
-                    $(this).select();
-                }),
+                        $(this).select();
+                    }),
                     $(document).on("click", "#export-settings-btn", function(event) {
                         event.preventDefault();
                         t.exportSettings();
@@ -3422,7 +3422,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.top5totalPlayers = document.getElementById("top5-total-players");
                 this.leaderboardPositionsHUD = document.getElementById("leaderboard-positions");
                 this.leaderboardDataHUD = document.getElementById("leaderboard-data");
-                this.timeHUD = document.getElementById("time-hud"), this.questHUD= document.getElementById("quest-hud"), $("#canvas").bind("contextmenu", function() {
+                this.timeHUD = document.getElementById("time-hud"), this.questHUD = document.getElementById("quest-hud"), $("#canvas").bind("contextmenu", function() {
                     return false;
                 });
                 $(document).on("mouseup", ".btn", function() {
@@ -3470,7 +3470,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.skipStats = $("#skipStats").prop("checked"),
                     this.showQuest = $("#showQuest").prop("checked"),
                     i.showCustomSkin = !this.noSkins,
-                null !== window.localStorage.getItem("scale_setting")) {
+                    null !== window.localStorage.getItem("scale_setting")) {
                     var t = JSON.parse(window.localStorage.getItem("scale_setting"));
                     this.setCanvasScale(t);
                 } else {
@@ -3478,10 +3478,10 @@ var thelegendmodproject = function(t, e, i) {
                     this.getQuality(o);
                 }
                 null !== window.localStorage.getItem("location") ? (this.region = window.localStorage.getItem("location"),
-                    $("#region").val(this.region),
-                window.MC && window.MC.setRegion && window.MC.setRegion(this.region)) : this.region = $("#region").val(),
+                        $("#region").val(this.region),
+                        window.MC && window.MC.setRegion && window.MC.setRegion(this.region)) : this.region = $("#region").val(),
                     this.setParty(), ":party" === this.gameMode && window.location.hash &&
-                $("#join-party-btn-2").click(),
+                    $("#join-party-btn-2").click(),
                     Array.prototype.slice.call(document.querySelectorAll(".js-switch-vanilla")).forEach(function(remove) {
                         new Switchery(remove, {
                             "color": g["menuMainColor"],
@@ -3672,8 +3672,8 @@ var thelegendmodproject = function(t, e, i) {
                 ogarcopythelb.nick = t,
                     ogarcopythelb.clanTag = e.trim(),
                     ogarcopythelb.skinURL = this['checkSkinURL'](o.trim()),
-                7 == a.length && (ogarcopythelb.color = a),
-                ogarcopythelb.clanTag.length > 0 && (i.clanTag = ogarcopythelb.clanTag),
+                    7 == a.length && (ogarcopythelb.color = a),
+                    ogarcopythelb.clanTag.length > 0 && (i.clanTag = ogarcopythelb.clanTag),
                     ogario1PlayerProfiles[this.selectedProfile].nick = ogarcopythelb.nick,
                     ogario1PlayerProfiles[this.selectedProfile].clanTag = ogarcopythelb.clanTag,
                     ogario1PlayerProfiles[this.selectedProfile].skinURL = ogarcopythelb.skinURL,
@@ -3691,19 +3691,19 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 t[e].crossOrigin = 'Anonymous';
                 t[e]['onload'] = function() {
-                    this.complete &&
-                    this.width &&
-                    this.height &&
-                    this.width <= 2000 &&
-                    this.height <= 2000 &&
-                    (i.cacheQueue.push(e),
-                    1 == i.cacheQueue.length &&
-                    i.cacheSkin(i.customSkinsCache));
-                },
+                        this.complete &&
+                            this.width &&
+                            this.height &&
+                            this.width <= 2000 &&
+                            this.height <= 2000 &&
+                            (i.cacheQueue.push(e),
+                                1 == i.cacheQueue.length &&
+                                i.cacheSkin(i.customSkinsCache));
+                    },
                     t[e]['onerror'] = function() {
                         //console.log("error loading image: "+ e);
-                        if (e.includes(window.EnvConfig.config_url)){
-                            e= "https://jimboy3100.github.io/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
+                        if (e.includes(window.EnvConfig.config_url)) {
+                            e = "https://jimboy3100.github.io/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
                             //console.log("new destination is:" + e);
                             ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
                             ogarminimapdrawer.loadSkin(t, e);
@@ -3810,7 +3810,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.miniMapCtx.font = g.miniMapFontWeight + " " + (e - 4) + "px " + g.miniMapFontFamily,
                         this.miniMapCtx.fillStyle = g.miniMapSectorColor,
                         this.miniMapCtx.fillText(this.currentSector, 10, e),
-                    this.miniMapSectors || this.drawMiniMapSectors(g.sectorsX, g.sectorsY, o, s, a),
+                        this.miniMapSectors || this.drawMiniMapSectors(g.sectorsX, g.sectorsY, o, s, a),
                         this.miniMapCtx.save(),
                         this.miniMapCtx.translate(9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l), v.showMiniMapGhostCells) {
                         var h = i.ghostCells;
@@ -3923,7 +3923,7 @@ var thelegendmodproject = function(t, e, i) {
                             m.setDrawing(v.optimizedNames, v.optimizedMass, v.shortMass, v.virMassShots, v.namesStroke, v.massStroke),
                             m.setDrawingScale(i.viewScale, g.namesScale, g.massScale, g.virMassScale, g.strokeScale),
                             t.globalAlpha = g.textAlpha, v.noNames || f && v.autoHideNames || l && v.hideMyName || d && v.hideTeammatesNames || m.drawNick(t, g.namesColor, g.namesFontFamily, g.namesFontWeight, g.namesStrokeColor),
-                        !v.showMass || f && v.autoHideMass || l && v.hideMyMass || v.hideEnemiesMass && !l && !r || m.drawMass(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor) && (window.ExternalScripts && !window.legendmod5.optimizedMass && m.drawMerge(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor));
+                            !v.showMass || f && v.autoHideMass || l && v.hideMyMass || v.hideEnemiesMass && !l && !r || m.drawMass(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor) && (window.ExternalScripts && !window.legendmod5.optimizedMass && m.drawMerge(t, g.massColor, g.massFontFamily, g.massFontWeight, g.massStrokeColor));
                     }
                 }
             },
@@ -4053,18 +4053,18 @@ var thelegendmodproject = function(t, e, i) {
                 this.socket['onerror'] = function(e) {
                     //t.flushData();
                     console.log('[Legend mod Express] Socket error', e);
-                    window.noOgarioSocket=true;
+                    window.noOgarioSocket = true;
                 };
             },
             //Sonia6
             'SLGconnect': function(srv) {
                 this.closeSLGConnection();
-                this.room = ogarcopythelb.clanTag+"-"+srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+                this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
                 this.roomc = ogarcopythelb.clanTag;
-                console.log('[Legend mod Express] Connecting to SLG:',this.room);
-                this.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id="+this.room);
+                console.log('[Legend mod Express] Connecting to SLG:', this.room);
+                this.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
                 this.SLGsocket['binaryType'] = 'arraybuffer';
-                t=this;
+                t = this;
                 this.SLGsocket['onopen'] = function() {
                     console.log('[Legend mod Express] SLG socket open');
                 }
@@ -4078,7 +4078,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.SLGsocket['onerror'] = function(e) {
                     //t.flushData();
                     console.log('[Legend mod Express] SLG socket error', e);
-                    window.noSLGSocket=true;
+                    window.noSLGSocket = true;
                 };
             },
             'closeConnection': function() {
@@ -4142,9 +4142,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             //Sonia6 Below
             'isSLGSocketOpen': function() {
-                var state=false;
-                if(this.SLGsocket){
-                    state=this.SLGsocket['readyState'] === this.SLGsocket['OPEN'];
+                var state = false;
+                if (this.SLGsocket) {
+                    state = this.SLGsocket['readyState'] === this.SLGsocket['OPEN'];
                 }
                 return state;
             },
@@ -4172,14 +4172,14 @@ var thelegendmodproject = function(t, e, i) {
                 this.socket['send'](t['buffer']);
             },
             //Sonia4
-            'sendSLG': function(i,t) {
-                if (this.isSLGSocketOpen()){
-                    if (ogarcopythelb.clanTag!=this.roomc){
+            'sendSLG': function(i, t) {
+                if (this.isSLGSocketOpen()) {
+                    if (ogarcopythelb.clanTag != this.roomc) {
                         this.SLGconnect(window.legendmod.ws);
                         return;
                     }
-                    var s=this.packSLG(i);
-                    if(s!=null)this.SLGsocket['send'](s+t);
+                    var s = this.packSLG(i);
+                    if (s != null) this.SLGsocket['send'](s + t);
                 }
             },
             'handleMessage': function(t) {
@@ -4212,7 +4212,7 @@ var thelegendmodproject = function(t, e, i) {
             //Sonia4
             'SLGHandler': function(t) {
                 var s = this.unpackSLG(t);
-                if(s == null)return;
+                if (s == null) return;
                 switch (t.charAt(0)) {
                     case "R":
                         this.getSuperLegendSDATA(s);
@@ -4220,23 +4220,23 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             //Sonia4
-            'packSLG': function(t){
-                t+=("000000" + this.playerID).slice(-6);
+            'packSLG': function(t) {
+                t += ("000000" + this.playerID).slice(-6);
                 return t;
             },
             //Sonia4
-            'unpackSLG': function(t){
-                t=t.slice(1);
+            'unpackSLG': function(t) {
+                t = t.slice(1);
                 return t;
             },
             //Sonia4
-            'getSLGID': function(t){
-                t=t.slice(0,6);
+            'getSLGID': function(t) {
+                t = t.slice(0, 6);
                 return parseInt(t);
             },
             //Sonia4
-            'getSLGVal': function(t){
-                t=t.slice(6);
+            'getSLGVal': function(t) {
+                t = t.slice(6);
                 return t;
             },
             'sendPlayerState': function(t) {
@@ -4320,7 +4320,7 @@ var thelegendmodproject = function(t, e, i) {
                         s.setUint16(o, 0, true), o += 2;
                     }
                     var e = 41;
-                    e += 2 *ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
+                    e += 2 * ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
                     var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
                     var o = 5;
@@ -4345,19 +4345,19 @@ var thelegendmodproject = function(t, e, i) {
             //Sonia4
             'sendSuperLegendSDATA': function() {
                 if (i.play && this.playerID) {
-                    var s="";
-                    s+= window.legendmod.bgpi;
-                    this.sendSLG("R",s);
+                    var s = "";
+                    s += window.legendmod.bgpi;
+                    this.sendSLG("R", s);
                 }
             },
             //Sonia4
             'getSuperLegendSDATA': function(t) {
                 var ids = this.getSLGID(t);
-                var id =this.checkPlayerID(ids);
-                if (null!=id){
-                    var s=this.getSLGVal(t);
-                    var lbgpi=s.slice(0,1);
-                    this.teamPlayers[id].lbgpi=parseInt(lbgpi);
+                var id = this.checkPlayerID(ids);
+                if (null != id) {
+                    var s = this.getSLGVal(t);
+                    var lbgpi = s.slice(0, 1);
+                    this.teamPlayers[id].lbgpi = parseInt(lbgpi);
                 }
             },
             'checkPlayerID': function(t) {
@@ -4404,7 +4404,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.nick = cb;
                         this.skinID = i;
                         this.skinURL = s;
-                        this.lbgpi=-1; //Sonia4
+                        this.lbgpi = -1; //Sonia4
                         this.x = 0;
                         this.y = 0;
                         this.lastX = 0;
@@ -4469,44 +4469,44 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             //Sonia3 Added 3 fuctions below
-            'dematrix':function(mat){
+            'dematrix': function(mat) {
                 return !mat[0] && !mat[1] ? 0 : mat[0] && !mat[1] ? 1 : mat[0] && mat[1] ? 2 : 3;
             },
-            'setvnr':function(b){
+            'setvnr': function(b) {
                 window.legendmod.setrot = 1;
                 window.legendmod.rotcnt = 0;
                 var mat = window.legendmod.vector[window.legendmod.vnr];
-				window.legendmod.prevvnr=window.legendmod.vnr; //jimboy31001
-                if ((b==0||b==3) && (window.legendmod.bgpi==1||window.legendmod.bgpi==2))mat[0]=!mat[0];
-                if ((b==1||b==2) && (window.legendmod.bgpi==0||window.legendmod.bgpi==3))mat[0]=!mat[0];
-                if ((b==0||b==1) && (window.legendmod.bgpi==2||window.legendmod.bgpi==3))mat[1]=!mat[1];
-                if ((b==2||b==3) && (window.legendmod.bgpi==1||window.legendmod.bgpi==0))mat[1]=!mat[1];
+                window.legendmod.prevvnr = window.legendmod.vnr; //jimboy31001
+                if ((b == 0 || b == 3) && (window.legendmod.bgpi == 1 || window.legendmod.bgpi == 2)) mat[0] = !mat[0];
+                if ((b == 1 || b == 2) && (window.legendmod.bgpi == 0 || window.legendmod.bgpi == 3)) mat[0] = !mat[0];
+                if ((b == 0 || b == 1) && (window.legendmod.bgpi == 2 || window.legendmod.bgpi == 3)) mat[1] = !mat[1];
+                if ((b == 2 || b == 3) && (window.legendmod.bgpi == 1 || window.legendmod.bgpi == 0)) mat[1] = !mat[1];
                 window.legendmod.vnr = this.dematrix(mat);
             },
-            'updatevnr':function(){
+            'updatevnr': function() {
                 var mm = 0;
                 var max = 4;
-                for (var i =0; i<this.teamPlayers.length; i++){
+                for (var i = 0; i < this.teamPlayers.length; i++) {
                     var k = this.teamPlayers[i];
-                    if (k.mass > mm){
-                        if (k.lbgpi<=3 && k.lbgpi>=0){
+                    if (k.mass > mm) {
+                        if (k.lbgpi <= 3 && k.lbgpi >= 0) {
                             mm = k.mass;
                             max = k.lbgpi;
                         }
                     }
                 }
-                if(mm>0 && (!window.legendmod.play||mm>window.legendmod.playerMass) && max<=3 && window.legendmod.bgpi<=3 && !window.legendmod.setrot){
-                    console.log("[Legend mod Express] VMR UPDATE:",window.legendmod.vnr,mm,window.legendmod.playerMass,max,window.legendmod.bgpi);
+                if (mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
+                    console.log("[Legend mod Express] VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                     this.setvnr(max);
-					toastr.info('<b>[SERVER]:</b> Map fixed with LM players');
+                    toastr.info('<b>[SERVER]:</b> Map fixed with LM players');
                 }
             },
             'updateTeamPlayers': function() {
-                this.sendPlayerPosition(),this.sendSuperLegendSDATA(),this.chatUsers = {}, this.top5 = []; //Sonia3
+                this.sendPlayerPosition(), this.sendSuperLegendSDATA(), this.chatUsers = {}, this.top5 = []; //Sonia3
                 this.updatevnr(); //Sonia3
-                if(window.legendmod.delstate >=0){ //Sonia3
-                    window.legendmod.delstate+=1; //Sonia3
-                    if (window.legendmod.delstate>5)window.legendmod.delstate=-1; //Sonia3
+                if (window.legendmod.delstate >= 0) { //Sonia3
+                    window.legendmod.delstate += 1; //Sonia3
+                    if (window.legendmod.delstate > 5) window.legendmod.delstate = -1; //Sonia3
                 } //Sonia3
                 var t = 0;
                 for (; t < this.teamPlayers.length; t++) {
@@ -4517,12 +4517,12 @@ var thelegendmodproject = function(t, e, i) {
                             this.setTargetStatus(2);
                         }
                     }
-                    var namead="";
-                    if(e.lbgpi<0)namead+="[ℵ]";
+                    var namead = "";
+                    if (e.lbgpi < 0) namead += "[ℵ]";
                     if (e.alive) {
                         this.top5.push({
                             "id": e.id,
-                            "nick": e.nick+namead,
+                            "nick": e.nick + namead,
                             "x": e.x,
                             "y": e.y,
                             "mass": e.mass,
@@ -4636,8 +4636,8 @@ var thelegendmodproject = function(t, e, i) {
                         if (0 != i && i != this.playerID && (this.addChatUser(i, a), r = '<a href=\"#\" data-user-id=\"' + i + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == e) {
                             if (v.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + t + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'),
                                 $('#chat-box').perfectScrollbar('update'), $('#chat-box').animate({
-                                'scrollTop': $('#chat-box').prop('scrollHeight')
-                            }, 500), void(v.chatSounds && this.playSound(this.messageSound));
+                                    'scrollTop': $('#chat-box').prop('scrollHeight')
+                                }, 500), void(v.chatSounds && this.playSound(this.messageSound));
                             v.hideChat || (toastr.success('<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), v.chatSounds && this.playSound(this.messageSound)), this.chatHistory.push({
                                 'nick': a,
                                 'message': n
@@ -4645,8 +4645,8 @@ var thelegendmodproject = function(t, e, i) {
                         } else if (102 == e) {
                             if (v.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + t + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
                                 $('#chat-box').perfectScrollbar('update'), $('#chat-box').animate({
-                                'scrollTop': $('#chat-box').prop('scrollHeight')
-                            }, 500), void(v.chatSounds && this.playSound(this.commandSound));
+                                    'scrollTop': $('#chat-box').prop('scrollHeight')
+                                }, 500), void(v.chatSounds && this.playSound(this.commandSound));
                             v.hideChat || (toastr.warning('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span>' + r), v.chatSounds && this.playSound(this.commandSound));
                         } else $('#messages').append(o);
                     }
@@ -4710,7 +4710,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'setTargeting': function() {
-                if(this.targetID){
+                if (this.targetID) {
                     this.targeting = !this.targeting, i.targeting = this.targeting, this.setTargetingInfo();
                 }
             },
@@ -4772,7 +4772,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.setLang(),
                     this.setMenu(),
                     this.setUI(),
-                y && y.setTheme(),
+                    y && y.setTheme(),
                     this.setShowQuickMenu(),
                     this.setShowSkinsPanel(),
                     this.setProfile(),
@@ -4796,8 +4796,8 @@ var thelegendmodproject = function(t, e, i) {
                     this.setChatSoundsBtn();
                 var t = this;
                 setInterval(function() {
-                    t.drawMiniMap();
-                }, 33),
+                        t.drawMiniMap();
+                    }, 33),
                     setInterval(function() {
                         t.updateTeamPlayers();
                     }, this.updateInterval);
@@ -4884,35 +4884,35 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 this.measureWidth = function() {
                     return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
-                        this.measuredWidth = this.txtCtx.measureText(this.txt).width,
-                        this.remeasure = false),
-                    ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
+                            this.measuredWidth = this.txtCtx.measureText(this.txt).width,
+                            this.remeasure = false),
+                        ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
                 //
                 this.measureWidthCustom = function(customTxt) {
                     return customTxt && this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
-                        this.measuredWidth = this.txtCtx.measureText(customTxt).width,
-                        this.remeasure = false),
-                    ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
+                            this.measuredWidth = this.txtCtx.measureText(customTxt).width,
+                            this.remeasure = false),
+                        ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
                 },
-//
+                //
                 this.drawTxt = function(customTxt) {
                     return this.createCanvas(),
-                    this.redraw && (this.redraw = false,
+                        this.redraw && (this.redraw = false,
 
 
-                        this.txtCanvas.width = this.measureWidthCustom(customTxt),
-                        this.txtCanvas.width = this.measureWidth(),
-                        this.txtCanvas.height = this.fontSize + this.margin * 2,
-                        this.txtCtx.font = this.font,
-                        this.txtCtx.globalAlpha = 1,
-                        this.txtCtx.lineWidth = this.strokeWidth,
-                        this.txtCtx.strokeStyle = this.strokeColor,
-                        this.txtCtx.fillStyle = this.color,
-                    customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
-                    !customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
-                    customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
-                    !customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
+                            this.txtCanvas.width = this.measureWidthCustom(customTxt),
+                            this.txtCanvas.width = this.measureWidth(),
+                            this.txtCanvas.height = this.fontSize + this.margin * 2,
+                            this.txtCtx.font = this.font,
+                            this.txtCtx.globalAlpha = 1,
+                            this.txtCtx.lineWidth = this.strokeWidth,
+                            this.txtCtx.strokeStyle = this.strokeColor,
+                            this.txtCtx.fillStyle = this.color,
+                            customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
+                            !customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+                            customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
+                            !customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
                         this.txtCanvas;
                 };
 
@@ -5493,7 +5493,7 @@ var thelegendmodproject = function(t, e, i) {
                                 this.setDrawingScale();
                                 this.setMass(this.size);
                                 this.drawMass(style);
-                                if (window.ExternalScripts && !window.legendmod5.optimizedMass){
+                                if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                                     this.drawMerge(style);
                                 }
                             }
@@ -5652,7 +5652,7 @@ var thelegendmodproject = function(t, e, i) {
                                 if (this.setMass(this.size)) {
 
                                     this.drawMass(style);
-                                    if (window.ExternalScripts && !window.legendmod5.optimizedMass){
+                                    if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
                                         this.drawMerge(style);
                                     }
                                 }
@@ -5792,12 +5792,17 @@ var thelegendmodproject = function(t, e, i) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
                 window.legendmod3.SLGconnect(t);
-                window.legendmod.vnr=0; //Sonia3
-                window.legendmod.bgpi=4; //Sonia3
-                window.legendmod.lbgpi=4; //Sonia3
-                window.legendmod.vector=[[0,0],[1,0],[1,1],[0,1]]; //Sonia3
-                window.legendmod.setrot=false; //Sonia3
-                window.legendmod.delstate=-1; //Sonia3
+                window.legendmod.vnr = 0; //Sonia3
+                window.legendmod.bgpi = 4; //Sonia3
+                window.legendmod.lbgpi = 4; //Sonia3
+                window.legendmod.vector = [
+                    [0, 0],
+                    [1, 0],
+                    [1, 1],
+                    [0, 1]
+                ]; //Sonia3
+                window.legendmod.setrot = false; //Sonia3
+                window.legendmod.delstate = -1; //Sonia3
                 this.closeConnection();
                 this.flushCellsData();
                 this.protocolKey = null;
@@ -6001,11 +6006,11 @@ var thelegendmodproject = function(t, e, i) {
                 this["sendMessage"](raw_basefont);
             },
             'sendFbToken': function(t) {
-//                console.log("[Legend mod Express] Facebook token: " + t);
+                //                console.log("[Legend mod Express] Facebook token: " + t);
                 this.sendAccessToken(t, 2);
             },
             'sendGplusToken': function(t) {
-//                console.log("[Legend mod Express] Google Plus token: " + t);
+                //                console.log("[Legend mod Express] Google Plus token: " + t);
                 //this.sendAccessToken(t, 3);
                 this.sendAccessToken(t, 4);
             },
@@ -6170,11 +6175,11 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 17:
                         window.testobjectsOpcode17 = data;
-                        var x=data.getFloat32(s, true);
-                        this.viewX = window.legendmod.vector[window.legendmod.vnr][0]?this.translateX(x):x;
+                        var x = data.getFloat32(s, true);
+                        this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
                         s += 4;
-                        var y=data.getFloat32(s, true);
-                        this.viewY = window.legendmod.vector[window.legendmod.vnr][1]?this.translateY(y):y;
+                        var y = data.getFloat32(s, true);
+                        this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                         s += 4;
                         this.scale = data.getFloat32(s, true);
                         break;
@@ -6259,12 +6264,12 @@ var thelegendmodproject = function(t, e, i) {
                                 'mass': m,
                                 'inView': this.isInView(d, f, g)
                             });
-                            if (m>mmax){ //Sonia3
-                                mmax=m; //Sonia3
-                                max=n; //Sonia3
+                            if (m > mmax) { //Sonia3
+                                mmax = m; //Sonia3
+                                max = n; //Sonia3
                             } //Sonia3
                         }
-                        window.legendmod.bgpi=this.calculatebgpi(this.ghostCells[max].x,this.ghostCells[max].y); //Sonia3
+                        window.legendmod.bgpi = this.calculatebgpi(this.ghostCells[max].x, this.ghostCells[max].y); //Sonia3
                         break;
                     case 85:
                         window.testobjectsOpcode85 = data;
@@ -6329,11 +6334,11 @@ var thelegendmodproject = function(t, e, i) {
                         }
 
 
-                    case 103:
-                        window.testobjectsOpcode103 = data;
-                        M["accessTokenSent"] = !![];
-                        break;
-                    /*
+                        case 103:
+                            window.testobjectsOpcode103 = data;
+                            M["accessTokenSent"] = !![];
+                            break;
+                            /*
             case 102:
                 //in here there are sent info about the user
                 //searching how protocol works
@@ -6372,105 +6377,105 @@ var thelegendmodproject = function(t, e, i) {
 
 */
 
-                    case 112:
-                        console.log('[Legend mod Express] opcode: ', data.getUint8(0));
-                        window.testobjectsOpcode112 = data;
-                        break;
-                    case 114:
-                        console.log('[Legend mod Express] opcode: ', data.getUint8(0));
-                        window.testobjectsOpcode114 = data;
-                        break;
-                    case 161:
-                        //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
-                        window.testobjectsOpcode161 = data;
-                        break;
-                    case 176:
-                        window.testobjectsOpcode176 = data;
-                        this.battleRoyale.startTime = data.getUint32(s, true);
-                        break;
-                    case 177:
-                        window.testobjectsOpcode177 = data;
-                        this.battleRoyale.joined = true;
-                        break;
-                    case 178:
-                        window.testobjectsOpcode178 = data;
-                        this.battleRoyale.players = data.getUint16(s, true),
+                        case 112:
+                            console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            window.testobjectsOpcode112 = data;
+                            break;
+                        case 114:
+                            console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            window.testobjectsOpcode114 = data;
+                            break;
+                        case 161:
+                            //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            window.testobjectsOpcode161 = data;
+                            break;
+                        case 176:
+                            window.testobjectsOpcode176 = data;
+                            this.battleRoyale.startTime = data.getUint32(s, true);
+                            break;
+                        case 177:
+                            window.testobjectsOpcode177 = data;
+                            this.battleRoyale.joined = true;
+                            break;
+                        case 178:
+                            window.testobjectsOpcode178 = data;
+                            this.battleRoyale.players = data.getUint16(s, true),
+                                s += 2;
+                            var y = data.getUint16(s, true);
+                            s += 2,
+                                y || (this.battleRoyale.state = 0, this.battleRoyale.joined = false),
+                                3 & y && (this.battleRoyale.state = data.getUint8(s++),
+                                    this.battleRoyale.x = data.getInt32(s, true),
+                                    s += 4,
+                                    this.battleRoyale.y = data.getInt32(s, true),
+                                    s += 4,
+                                    this.battleRoyale.radius = data.getUint32(s, true),
+                                    s += 4,
+                                    this.battleRoyale.shrinkTime = 1000 * data.getUint32(s, true),
+                                    s += 4,
+                                    this.battleRoyale.shrinkTime &&
+                                    (this.battleRoyale.timeLeft = ~~((this.battleRoyale.shrinkTime - Date.now() + this.serverTimeDiff) / 1000),
+                                        this.battleRoyale.timeLeft < 0 && (this.battleRoyale.timeLeft = 0))),
+                                2 & y && (this.battleRoyale.targetX = data.getInt32(s, true),
+                                    s += 4,
+                                    this.battleRoyale.targetY = data.getInt32(s, true),
+                                    s += 4,
+                                    this.battleRoyale.targetRadius = data.getUint32(s, true));
+                            break;
+                        case 179:
+                            window.testobjectsOpcode179 = data;
+                            y = data.getUint8(s);
+                            window.decodeURIComponent(escape(i()));
+                            y || window.decodeURIComponent(escape(i()));
+                            break;
+                        case 180:
+                            window.testobjectsOpcode181 = data;
+                            this.battleRoyale.joined = false;
+                            this.battleRoyale.rank = [];
+                            this.battleRoyale.playerRank = data.getUint32(s, true);
+                            s += 8;
+                            var ogario1PlayerProfiles = data.getUint16(s, true);
                             s += 2;
-                        var y = data.getUint16(s, true);
-                        s += 2,
-                        y || (this.battleRoyale.state = 0, this.battleRoyale.joined = false),
-                        3 & y && (this.battleRoyale.state = data.getUint8(s++),
-                            this.battleRoyale.x = data.getInt32(s, true),
-                            s += 4,
-                            this.battleRoyale.y = data.getInt32(s, true),
-                            s += 4,
-                            this.battleRoyale.radius = data.getUint32(s, true),
-                            s += 4,
-                            this.battleRoyale.shrinkTime = 1000 * data.getUint32(s, true),
-                            s += 4,
-                        this.battleRoyale.shrinkTime &&
-                        (this.battleRoyale.timeLeft = ~~((this.battleRoyale.shrinkTime - Date.now() + this.serverTimeDiff) / 1000),
-                        this.battleRoyale.timeLeft < 0 && (this.battleRoyale.timeLeft = 0))),
-                        2 & y && (this.battleRoyale.targetX = data.getInt32(s, true),
-                            s += 4,
-                            this.battleRoyale.targetY = data.getInt32(s, true),
-                            s += 4,
-                            this.battleRoyale.targetRadius = data.getUint32(s, true));
-                        break;
-                    case 179:
-                        window.testobjectsOpcode179 = data;
-                        y = data.getUint8(s);
-                        window.decodeURIComponent(escape(i()));
-                        y || window.decodeURIComponent(escape(i()));
-                        break;
-                    case 180:
-                        window.testobjectsOpcode181 = data;
-                        this.battleRoyale.joined = false;
-                        this.battleRoyale.rank = [];
-                        this.battleRoyale.playerRank = data.getUint32(s, true);
-                        s += 8;
-                        var ogario1PlayerProfiles = data.getUint16(s, true);
-                        s += 2;
-                        for (n = 0; n < ogario1PlayerProfiles; n++) {
-                            var ogarcopythelb = window.decodeURIComponent(escape(i())),
-                                v = data.getUint32(s, true);
-                            s += 4, this.battleRoyale.rank.push({
-                                'place': v,
-                                'name': ogarcopythelb
-                            });
-                        }
-                        break;
-                    case 226:
-                        window.testobjectsOpcode226 = data;
-                        var extraOptions = data.getUint16(1, !![]);
-                        data = this["createView"](3);
-                        data.setUint8(0, 227);
-                        data.setUint16(1, extraOptions);
-                        this["sendMessage"](data);
-                        break;
-                    case 241:
-                        window.testobjectsOpcode241 = data;
-                        this.protocolKey = data.getUint32(s, true);
-                        //window.testobjectsOpcode241.getUint32(1, true);
-                        console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
-                        var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
-                        this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
-                        //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
-                        if (window.master && window.master.login) {
-                            window.master.login();
-                        }
-                        break;
-                    case 242:
-                        window.testobjectsOpcode242 = data;
-                        this.serverTime = 1000 * data.getUint32(s, true);
-                        this.serverTimeDiff = Date.now() - this.serverTime;
-                        break;
-                    case 255:
-                        window.testobjectsOpcode255 = data;
-                        this['handleSubmessage'](data);
-                        break;
-                    default:
-                        console.log('[Legend mod Express] Unknown opcode:', data.getUint8(0));
+                            for (n = 0; n < ogario1PlayerProfiles; n++) {
+                                var ogarcopythelb = window.decodeURIComponent(escape(i())),
+                                    v = data.getUint32(s, true);
+                                s += 4, this.battleRoyale.rank.push({
+                                    'place': v,
+                                    'name': ogarcopythelb
+                                });
+                            }
+                            break;
+                        case 226:
+                            window.testobjectsOpcode226 = data;
+                            var extraOptions = data.getUint16(1, !![]);
+                            data = this["createView"](3);
+                            data.setUint8(0, 227);
+                            data.setUint16(1, extraOptions);
+                            this["sendMessage"](data);
+                            break;
+                        case 241:
+                            window.testobjectsOpcode241 = data;
+                            this.protocolKey = data.getUint32(s, true);
+                            //window.testobjectsOpcode241.getUint32(1, true);
+                            console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
+                            var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
+                            this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
+                            //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
+                            if (window.master && window.master.login) {
+                                window.master.login();
+                            }
+                            break;
+                        case 242:
+                            window.testobjectsOpcode242 = data;
+                            this.serverTime = 1000 * data.getUint32(s, true);
+                            this.serverTimeDiff = Date.now() - this.serverTime;
+                            break;
+                        case 255:
+                            window.testobjectsOpcode255 = data;
+                            this['handleSubmessage'](data);
+                            break;
+                        default:
+                            console.log('[Legend mod Express] Unknown opcode:', data.getUint8(0));
                 }
             },
             'handleSubmessage': function(t) {
@@ -6552,11 +6557,11 @@ var thelegendmodproject = function(t, e, i) {
                     this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
                     this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
                     this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
-                    this.mapMidX = (this.mapMaxX+this.mapMinX)/2; //Sonia3
-                    this.mapMidY = (this.mapMaxY+this.mapMinY)/2; //Sonia3
+                    this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3
+                    this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3
                     this.mapOffsetFixed || (this.viewX = (i + t) / 2, this.viewY = (s + e) / 2);
                     this.mapOffsetFixed = true;
-                    console.log('[Legend mod Express] Map offset fixed: (', this.mapOffsetX ,',', this.mapOffsetY,')');
+                    console.log('[Legend mod Express] Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
                 }
             },
             'isInView': function(t, e, i) {
@@ -6580,7 +6585,7 @@ var thelegendmodproject = function(t, e, i) {
                                                 console.log("[Legend mod Express] " + LowerCase(y) + " skin found. Skin registered");
                                                 core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(y) + ".png", null);
                                             } else {
-                                                window.lastusednameforskin=y;
+                                                window.lastusednameforskin = y;
                                                 ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
                                                 ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
                                             }
@@ -6593,25 +6598,23 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             //Sonia3 Adding three below functions
-            'translateX':function(x){
-                return this.mapMaxX-(x-this.mapMinX);
+            'translateX': function(x) {
+                return this.mapMaxX - (x - this.mapMinX);
             },
-            'translateY':function(x){
-                return this.mapMaxY-(x-this.mapMinY);
+            'translateY': function(x) {
+                return this.mapMaxY - (x - this.mapMinY);
             },
-            'calculatebgpi':function(x,y){
-                var calc=(x<this.mapMidX+750 && x>this.mapMidX-750)||(y<this.mapMidY+750 && y>this.mapMidY-750)? 4 : x>=this.mapMidX && y<this.mapMidY ? 0 : x<this.mapMidX && y<this.mapMidY ? 1 : x <this.mapMidX && y>=this.mapMidY ? 2 : 3;
-                if ((window.legendmod.lbgpi==4 || calc==4 || window.legendmod.lbgpi==calc) && window.legendmod.delstate<0){
-                    window.legendmod.lbgpi=calc;
+            'calculatebgpi': function(x, y) {
+                var calc = (x < this.mapMidX + 750 && x > this.mapMidX - 750) || (y < this.mapMidY + 750 && y > this.mapMidY - 750) ? 4 : x >= this.mapMidX && y < this.mapMidY ? 0 : x < this.mapMidX && y < this.mapMidY ? 1 : x < this.mapMidX && y >= this.mapMidY ? 2 : 3;
+                if ((window.legendmod.lbgpi == 4 || calc == 4 || window.legendmod.lbgpi == calc) && window.legendmod.delstate < 0) {
+                    window.legendmod.lbgpi = calc;
                     return calc;
-                }
-                else if(window.legendmod.lbgpi!=calc){
-                    window.legendmod.delstate=0;
-                    window.legendmod.lbgpi=calc;
+                } else if (window.legendmod.lbgpi != calc) {
+                    window.legendmod.delstate = 0;
+                    window.legendmod.lbgpi = calc;
                     return 4;
-                }
-                else{
-                    window.legendmod.lbgpi=calc;
+                } else {
+                    window.legendmod.lbgpi = calc;
                     return 4;
                 }
             },
@@ -6642,10 +6645,10 @@ var thelegendmodproject = function(t, e, i) {
                     var l = t.readUInt32LE(i);
                     if (i += 4, 0 == l) break;
                     var h = t.readInt32LE(i);
-                    if(window.legendmod.vector[window.legendmod.vnr][0])h=this.translateX(h); //Sonia3
+                    if (window.legendmod.vector[window.legendmod.vnr][0]) h = this.translateX(h); //Sonia3
                     i += 4;
                     var c = t.readInt32LE(i);
-                    if(window.legendmod.vector[window.legendmod.vnr][1])c=this.translateY(c); //Sonia3
+                    if (window.legendmod.vector[window.legendmod.vnr][1]) c = this.translateY(c); //Sonia3
                     i += 4;
                     var u = t.readUInt16LE(i);
                     i += 2;
@@ -6687,12 +6690,12 @@ var thelegendmodproject = function(t, e, i) {
                 this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer.onPlayerDeath(), ogarminimapdrawer.showMenu(300));
                 //window.counterCell=0;
                 if (window.autoPlay && legendmod.play) {
-                    if (window.legendmod.prevvnr!=null || window.legendmod.prevvnr!=0){
-						window.legendmod.vnr=0;
-						toastr.info('<b>[SERVER]:</b> Map reversed to the default');
-						window.legendmod.prevvnr=null;
-					}
-					calcTarget();					
+                    if (window.legendmod.prevvnr != null || window.legendmod.prevvnr != 0) {
+                        window.legendmod.vnr = 0;
+                        toastr.info('<b>[SERVER]:</b> Map reversed to the default');
+                        window.legendmod.prevvnr = null;
+                    }
+                    calcTarget();
                 }
                 //if (window.historystate && legendmod.play) {historystate();}
             },
@@ -6724,7 +6727,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'recalculatePlayerMass': function() {
                 if (this.playerScore = Math.max(this.playerScore, this.playerMass),
-                v.virColors || v.splitRange || v.oppColors || v.oppRings || v.showStatsSTE) {
+                    v.virColors || v.splitRange || v.oppColors || v.oppRings || v.showStatsSTE) {
                     var t = this.playerCells;
                     var e = t.length;
                     t.sort(function(t, e) {
@@ -6737,12 +6740,12 @@ var thelegendmodproject = function(t, e, i) {
                 if (true) {
                     var i = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
                     // this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null; //Sonia2
-                    this.STE = Math.floor(i*0.375); //Sonia2
-                    this.MTE = Math.floor(i*0.75); //Sonia2
-                    this.BMTE = Math.ceil(i*1.33); //Sonia2
-                    this.BSTE = Math.ceil(i*2.66); //Sonia2
-                    this.TTE = Math.ceil(i/6); //Sonia2
-                    this.PTE = Math.floor(i*0.66); //Sonia2
+                    this.STE = Math.floor(i * 0.375); //Sonia2
+                    this.MTE = Math.floor(i * 0.75); //Sonia2
+                    this.BMTE = Math.ceil(i * 1.33); //Sonia2
+                    this.BSTE = Math.ceil(i * 2.66); //Sonia2
+                    this.TTE = Math.ceil(i / 6); //Sonia2
+                    this.PTE = Math.floor(i * 0.66); //Sonia2
                 }
             },
             'compareCells': function() {
@@ -6811,15 +6814,15 @@ var thelegendmodproject = function(t, e, i) {
                     'x': t,
                     'y': e,
                     'size': i
-                }) : s < 1.33 && s > 0.75 ? void 0 : s>0.375 ? void this.smallerCellsCache.push({
+                }) : s < 1.33 && s > 0.75 ? void 0 : s > 0.375 ? void this.smallerCellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
-                }) : s>0.1875 ? void this.STECellsCache.push({
+                }) : s > 0.1875 ? void this.STECellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
-                }): void this.STEDCellsCache.push({
+                }) : void this.STEDCellsCache.push({
                     'x': t,
                     'y': e,
                     'size': i
@@ -6929,13 +6932,13 @@ var thelegendmodproject = function(t, e, i) {
                 'setView': function() {
                     this.setScale(),
                         M.playerCells.length ?
-                            (M.calculatePlayerMassAndPosition(),
-                                //					this.camX += (M.viewX - this.camX) / 2,
-                                //					this.camY += (M.viewY - this.camY) / 2) :
-                                this.camX = (this.camX + M.viewX) / 2,
-                                this.camY = (this.camY + M.viewY) / 2) :
-                            (this.camX = (29 * this.camX + M.viewX) / 30,
-                                this.camY = (29 * this.camY + M.viewY) / 30),
+                        (M.calculatePlayerMassAndPosition(),
+                            //					this.camX += (M.viewX - this.camX) / 2,
+                            //					this.camY += (M.viewY - this.camY) / 2) :
+                            this.camX = (this.camX + M.viewX) / 2,
+                            this.camY = (this.camY + M.viewY) / 2) :
+                        (this.camX = (29 * this.camX + M.viewX) / 30,
+                            this.camY = (29 * this.camY + M.viewY) / 30),
                         M.playerX = this.camX, M.playerY = this.camY;
                 },
                 'setScale': function() {
@@ -6965,7 +6968,7 @@ var thelegendmodproject = function(t, e, i) {
                                     for (e = 0; e < M.cells.length; e++) M.cells[e].draw(this.ctx);
                                     this.ctx['restore'](), ':teams' === M.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                                 }, */
-                'renderFrame': async function() {//Sonia5
+                'renderFrame': async function() { //Sonia5
                     //this.ctx.start2D();
                     await this.sleep(4); //Sonia5
                     M.time = Date.now();
@@ -7308,16 +7311,16 @@ var thelegendmodproject = function(t, e, i) {
                                     n = e[o].y - 10 - g.foodSize;
                                 t.drawImage(this.pellet, a, n);
                             } else {
-                            t.beginPath();
-                            for (o = 0; o < e.length; o++) {
-                                a = e[o].x, n = e[o].y;
-                                if (t.moveTo(a, n), i < 0.16) {
-                                    var r = e[o].size + g.foodSize;
-                                    t.rect(a - r, n - r, 2 * r, 2 * r);
-                                } else t.arc(a, n, e[o].size + g.foodSize, 0, this.pi2, false);
+                                t.beginPath();
+                                for (o = 0; o < e.length; o++) {
+                                    a = e[o].x, n = e[o].y;
+                                    if (t.moveTo(a, n), i < 0.16) {
+                                        var r = e[o].size + g.foodSize;
+                                        t.rect(a - r, n - r, 2 * r, 2 * r);
+                                    } else t.arc(a, n, e[o].size + g.foodSize, 0, this.pi2, false);
+                                }
+                                t.fillStyle = g.foodColor, t.globalAlpha = 1, t.fill();
                             }
-                            t.fillStyle = g.foodColor, t.globalAlpha = 1, t.fill();
-                        }
                         s && (e = []);
                     }
                 },
@@ -7391,14 +7394,14 @@ var thelegendmodproject = function(t, e, i) {
                 'draw2Circles': function(t, e, i, s, o, a) {
                     t.lineWidth = s, t.globalAlpha = o, t.strokeStyle = a;
                     //for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 1.5*e[n].size + 2*i, 0, this.pi2, false), t.closePath(), t.stroke();
-                    if(v.qdsplitRange){ //Sonia2
+                    if (v.qdsplitRange) { //Sonia2
                         for (var n = 0; n < e.length; n++) t.beginPath(), t.arc(e[n].x, e[n].y, 2 * e[n].size + i, 0, this.pi2, false), t.closePath(), t.stroke(); //760+2*cell.size is the correct
-                    }//Sonia2
-                    if(v.sdsplitRange){ //Sonia2
-                        for (var n = 0; n < e.length; n++) t.setLineDash([20,30]),t.lineWidth = 2*s,t.beginPath(), t.arc(e[n].x, e[n].y, 1.5 * e[n].size + 2*i, 0, this.pi2, false), t.closePath(), t.stroke(); //Sonia2
+                    } //Sonia2
+                    if (v.sdsplitRange) { //Sonia2
+                        for (var n = 0; n < e.length; n++) t.setLineDash([20, 30]), t.lineWidth = 2 * s, t.beginPath(), t.arc(e[n].x, e[n].y, 1.5 * e[n].size + 2 * i, 0, this.pi2, false), t.closePath(), t.stroke(); //Sonia2
                         t.setLineDash([]); //Sonia2
                         t.lineWidth = s; //Sonia2
-                    }//Sonia2
+                    } //Sonia2
                     t.globalAlpha = 1;
                 },
                 'drawDashedCircle': function(t, e, i, s, o, a, n) {
@@ -8407,9 +8410,9 @@ var thelegendmodproject = function(t, e, i) {
                             } else $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\">' + i.label + '</div><div class=\"default-key\">' + i.defaultKey + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
                         }
                     $(document).on('click', '#reset-hotkeys', function(t) {
-                        t.preventDefault();
-                        lastkeys.resetHotkeys();
-                    }),
+                            t.preventDefault();
+                            lastkeys.resetHotkeys();
+                        }),
                         $(document).on('click', '#save-hotkeys', function(t) {
                             t.preventDefault();
                             lastkeys.saveHotkeys();
@@ -8425,7 +8428,7 @@ var thelegendmodproject = function(t, e, i) {
                             ogarcommando1();
                         }),
                         $('#hotkeys-cfg').perfectScrollbar(),
-                    y && y.setMenuBg();
+                        y && y.setMenuBg();
                 },
                 'getPressedKey': function(t) {
                     var e = '',
