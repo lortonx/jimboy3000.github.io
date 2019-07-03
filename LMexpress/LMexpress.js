@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.052 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "52"; // the version 1.1-> 1.11
 //fix ffa
@@ -4856,7 +4856,7 @@ function displayTimer() {
 
     // minutes
     if (T.difference > 60000) {
-        minutes = Math.floor11(T.difference / 60000);
+        minutes = Math.floor(T.difference / 60000);
         1
         if (minutes > 60) {
             minutes = minutes % 60;
