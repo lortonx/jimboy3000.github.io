@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.963 MEGA TEST
+// v1.964 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1841,7 +1841,7 @@ function irenderfromagario() {
         };
 
 }
-window.legendmod3 = ogarminimapdrawer;
+
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
@@ -5072,7 +5072,7 @@ var thelegendmodproject = function(t, e, i) {
                     }, this.updateInterval);
             }
         };
-
+window.legendmod3 = ogarminimapdrawer;
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
             cimg2 = new Image;
             cimg2.src = defaultSettings.commanderImage2;
