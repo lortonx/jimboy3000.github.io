@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.962 MEGA TEST
+// v1.963 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -252,7 +252,7 @@ var emoticonicons = {
     '(heel)': 'newheel.svg',
     '(kiss)': 'newkiss.svg',
     '(lipstick)': 'newlipstick.svg',
-    //				'(rage)': 'newrage.svg',
+    //'(rage)': 'newrage.svg',
     '(teacher)': 'newteacher.svg',
     '(together)': 'newtogether.svg',
     '(toothy)': 'newtoothy.svg',
@@ -5072,8 +5072,6 @@ var thelegendmodproject = function(t, e, i) {
                     }, this.updateInterval);
             }
         };
-
-
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
             cimg2 = new Image;
