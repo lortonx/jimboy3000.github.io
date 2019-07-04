@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.966 MEGA TEST
+// v1.968 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2132,7 +2132,8 @@ function irenderfromagario() {
                         this.mass = ~~((200 - this.mass) / 14);
                     }
                     if (defaultmapsettings.virusSound && this.lastMass && this.mass < this.lastMass) {
-                        void window.ogarminimapdrawer.playSound(window.ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
+                        //void window.ogarminimapdrawer.playSound(window.ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
+						window.ogarminimapdrawer.playSound(window.ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
                     }
                     this.massTxt = this.mass.toString();
                 }
@@ -2592,7 +2593,7 @@ function irenderfromagario() {
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
-        var window.ogarminimapdrawer;
+        //var window.ogarminimapdrawer;
         var o = null;
         var a = null;
         var r = 'en';
