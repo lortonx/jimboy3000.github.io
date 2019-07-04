@@ -8808,7 +8808,7 @@ var thelegendmodproject = function(t, e, i) {
         window.core = {
             'connect': function(t) {
                 LM.connect(t);
-				//LM1.connect(t); for multibox with new Protocol and Client Keys
+				//LM1.connect(t); for multibox with new Protocol and Client
             },
             'disconnect': function() {},
             'sendNick': function(t) {
