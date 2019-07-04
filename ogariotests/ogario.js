@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.957g MEGA TEST
+// v1.957 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3992,7 +3992,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.closeConnection();
                 this.flushData();
                 this.setParty();
-                console.log("[Legend mod Express] Testing vectorK97..")
+                console.log("[Legend mod Express] Testing vectorM2..")
                 console.log('[Legend mod Express] Connecting to server'),
                     this.privateMode && this.privateIP ? this.socket = new WebSocket(this.privateIP) : this.socket = new WebSocket(this.publicIP),
                     this.socket['ogarioWS'] = true,
@@ -4180,11 +4180,14 @@ var thelegendmodproject = function(t, e, i) {
                     case "R":
                         this.getSuperLegendSDATA(s);
                         break;
+                    case "Q":
+                        this.getSLGQinfo(t);
+                        break;
                 }
             },
             //Sonia4
             'packSLG': function(t) {
-                t += ("000000" + this.playerID).slice(-6);
+                t += this.packInt(this.playerID,4);
                 return t;
             },
             //Sonia4
@@ -4194,12 +4197,12 @@ var thelegendmodproject = function(t, e, i) {
             },
             //Sonia4
             'getSLGID': function(t) {
-                t = t.slice(0, 6);
-                return parseInt(t);
+                t = t.slice(0,2)
+                return this.unpackInt(t);
             },
             //Sonia4
             'getSLGVal': function(t) {
-                t = t.slice(6);
+                t = t.slice(2);
                 return t;
             },
             'sendPlayerState': function(t) {
@@ -4318,6 +4321,15 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 return s;
             },
+            'packFloat': function(x,m) {
+                if (m==2){
+                    x=Math.floor(x*100000);
+                }
+                else{
+                    x=Math.floor(x*1000000000);
+                }
+                return this.packInt(x,m);
+            },
             'unpackInt': function(s) {
                 var x = 0;
                 if (s.length==1){
@@ -4329,10 +4341,93 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 return x;
             },
+            'unpackFloat': function(s) {
+                var x = this.unpackInt(s);
+                if (s.length==1){
+                    x=x/100000;
+                }
+                else{
+                    x=x/1000000000;
+                }
+                return x;
+            },
+            'getrel': function(x,axis) {
+                var v = window.legendmod;
+                if(axis==0)return x/(v.mapMaxX-v.mapMinX);
+                else return x/(v.mapMaxY-v.mapMinY);
+            },
             'sendSLGQinfo': function() {
-                var c = window.legendmod.cells;
-                var v = window.legendmod.viruses;
-                var f = window.legendmod.food;
+                return ;
+                var msg = "";
+                var vlen = window.legendmod.viruses.length;
+                msg+=this.packInt(vlen,2);
+                for(var i=0;i<vlen;i++){
+                    var z = window.legendmod.viruses[i];
+                    msg+=this.packInt(z.id,4);
+                    msg+=this.packFloat(this.getrel(z.x,0),4);
+                    msg+=this.packFloat(this.getrel(z.y,1),4);
+                    msg+=this.packInt(z.mass,2);
+                }
+                var cmsg = "";
+                var clen = 0;
+                var cells = window.legendmod.cells;
+                for (var i=0;i<cells.length;i++){
+                    var z = cells[i];
+                    if (!z.isVirus){
+                        cmsg+=this.packInt(z.id,4);
+                        cmsg+=this.packFloat(this.getrel(z.x,0),4);
+                        cmsg+=this.packFloat(this.getrel(z.y,1),4);
+                        cmsg+=this.packInt(z.mass,2);
+                        clen++;
+                    }
+                }
+                msg+=this.packInt(clen,2);
+                msg+=cmsg;
+
+                //Here should be food part
+
+                this.sendSLG("Q",msg);
+            },
+            'getSLGQinfo': function(t) {
+                var ids = this.getSLGID(t);
+                var id = this.checkPlayerID(ids);
+                if (null == id) return;
+                var msg = this.getSLGVal(t);
+
+                //Get viruses
+                var vlen = this.unpackInt(msg.slice(0,1));
+                msg=msg.slice(1);
+                var temp = [];
+                for(var i=0;i<vlen;i++){
+                    var z = [];
+                    z.push(this.unpackInt(msg.slice(0,2)));
+                    z.push(this.unpackFloat(msg.slice(2,4)));
+                    z.push(this.unpackFloat(msg.slice(4,6)));
+                    z.push(this.unpackInt(msg.slice(6,7)));
+                    temp.push(z);
+                    msg=msg.slice(7);
+                }
+                this.teamPlayers[id].dvirs=temp;
+
+                //Get normal cells
+                var clen = this.unpackInt(msg.slice(0,1));
+                msg=msg.slice(1);
+                var temp = [];
+                var cells = window.legendmod.cells;
+                for (var i=0;i<clen;i++){
+                    var z = [];
+                    z.push(this.unpackInt(msg.slice(0,2)));
+                    z.push(this.unpackFloat(msg.slice(2,4)));
+                    z.push(this.unpackFloat(msg.slice(4,6)));
+                    z.push(this.unpackInt(msg.slice(6,7)));
+                    temp.push(z);
+                    msg=msg.slice(7);
+                }
+                this.teamPlayers[id].dcells=temp;
+
+                //Here should be food part
+
+                this.sendSLG("Q",msg);
             },
             //Sonia4
             'sendSuperLegendSDATA': function() {
@@ -4498,7 +4593,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.updatevnr(); //Sonia3
                 if (window.legendmod.delstate >= 0) { //Sonia3
                     window.legendmod.delstate += 1; //Sonia3
-                    if (window.legendmod.delstate > 5) window.legendmod.delstate = -1; //Sonia3
+                    if (window.legendmod.delstate > 3) window.legendmod.delstate = -1; //Sonia3
                 } //Sonia3
                 var t = 0;
                 for (; t < this.teamPlayers.length; t++) {
@@ -4510,7 +4605,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     }
                     var namead = "";
-                    if (e.lbgpi < 0) namead += "[ℵ]";
+                    if (e.lbgpi < 0) namead += "[ℵ] ";
                     if (e.alive) {
                         this.top5.push({
                             "id": e.id,
@@ -5662,7 +5757,7 @@ var thelegendmodproject = function(t, e, i) {
 
 
 
-        var M = { //uses this.protocolKey
+        var M = {
             'quadtree': null,
             updateQuadtree: function(cells) {
                 var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
@@ -5782,7 +5877,7 @@ var thelegendmodproject = function(t, e, i) {
             'pressedKeys': {},
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
-                var ws1 = this;
+                var i = this;
                 window.legendmod3.SLGconnect(t);
                 window.legendmod.vnr = 0; //Sonia3
                 window.legendmod.bgpi = 4; //Sonia3
@@ -5807,16 +5902,16 @@ var thelegendmodproject = function(t, e, i) {
                 this.socket = new WebSocket(t);
                 this.socket['binaryType'] = 'arraybuffer';
                 this.socket['onopen'] = function() {
-                    ws1['onOpen']();
+                    i['onOpen']();
                 };
                 this.socket['onmessage'] = function(t) {
-                    ws1['onMessage'](t);
+                    i['onMessage'](t);
                 };
                 this.socket['onerror'] = function(t) {
-                    ws1['onError'](t);
+                    i['onError'](t);
                 };
                 this.socket['onclose'] = function(t) {
-                    ws1['onClose'](t);
+                    i['onClose'](t);
                 };
                 ogarminimapdrawer['getWS'](this.ws);
                 ogarminimapdrawer['sendServerJoin']();
@@ -5837,12 +5932,10 @@ var thelegendmodproject = function(t, e, i) {
                     e.setUint32(1, this.clientVersion, true),
                     this.sendMessage(e),
                     this.connectionOpened = true;
-                    if(this.connectionOpened == true) toastr.success('Tab 1 connected', 'Server', '');
             },
             'onMessage': function(t) {
                 t = new DataView(t['data']);
                 if (this.protocolKey) {
-					console.log("this.protocolKey: "+ this.protocolKey + " this.clientVersion: " + this.clientVersion);
                     t = this['shiftMessage'](t, this.protocolKey ^ this.clientVersion);
                 }
                 this['handleMessage'](t);
@@ -5860,7 +5953,6 @@ var thelegendmodproject = function(t, e, i) {
                 if (window.master && window.master['onDisconnect']) {
                     window.master['onDisconnect']();
                 }
-                toastr.success('Tab 1 discconnected', 'Server', '');
             },
             'closeConnection': function() {
                 if (this.socket) {
@@ -6105,12 +6197,7 @@ var thelegendmodproject = function(t, e, i) {
                 i = j >>> 15;
                 j = i ^ j;
                 console.log('[Legend mod Express] Generated client key:', j);
-				if (window.generatedClientKey==null){
                 window.generatedClientKey = j;
-				}
-				else if (window.generatedClientKey!=null){
-				window.generatedClientKey2 = j;	
-				}
                 return j;
 
             },
@@ -6188,10 +6275,7 @@ var thelegendmodproject = function(t, e, i) {
                         if (this.protocolKey) {
                             this.protocolKey = this.shiftKey(this.protocolKey);
                         }
-						else if (this.protocolKey2) {
-                            this.protocolKey2 = this.shiftKey(this.protocolKey2);
-                        }
-                        //this.flushCellsData();
+                        this.flushCellsData();
                         break;
                     case 32:
                         window.testobjectsOpcode32 = data;
@@ -6458,8 +6542,7 @@ break;
                         break;
                     case 241:
                         window.testobjectsOpcode241 = data;
-						if (this.protocolKey==null){
-                        this.protocolKey = data.getUint32(s, true); 
+                        this.protocolKey = data.getUint32(s, true);
                         //window.testobjectsOpcode241.getUint32(1, true);
                         console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
                         var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
@@ -6468,21 +6551,6 @@ break;
                         if (window.master && window.master.login) {
                             window.master.login();
                         }
-						}
-						else {
-						
-                        this.protocolKey2 = data.getUint32(s, true); 
-						if (this.protocolKey!=this.protocolKey2){
-                        //window.testobjectsOpcode241.getUint32(1, true);
-                        console.log('[Legend mod Express] Received protocol key2:', this.protocolKey2);
-                        var irenderfromagario2 = new Uint8Array(data['buffer'], s += 4);
-                        this.clientKey2 = this['generateClientKey'](this.ws, irenderfromagario2); //clienkey is the same for multi
-                        //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
-                        if (window.master && window.master.login) {
-                            //window.master.login();
-                        }
-						}
-						}
                         break;
                     case 242:
                         window.testobjectsOpcode242 = data;
@@ -6624,7 +6692,8 @@ break;
                 return this.mapMaxY - (x - this.mapMinY);
             },
             'calculatebgpi': function(x, y) {
-                var calc = (x < this.mapMidX + 750 && x > this.mapMidX - 750) || (y < this.mapMidY + 750 && y > this.mapMidY - 750) ? 4 : x >= this.mapMidX && y < this.mapMidY ? 0 : x < this.mapMidX && y < this.mapMidY ? 1 : x < this.mapMidX && y >= this.mapMidY ? 2 : 3;
+                var ofs = 150;
+                var calc = (x < this.mapMidX + ofs && x > this.mapMidX - ofs) || (y < this.mapMidY + ofs && y > this.mapMidY - ofs) ? 4 : x >= this.mapMidX && y < this.mapMidY ? 0 : x < this.mapMidX && y < this.mapMidY ? 1 : x < this.mapMidX && y >= this.mapMidY ? 2 : 3;
                 if ((window.legendmod.lbgpi == 4 || calc == 4 || window.legendmod.lbgpi == calc) && window.legendmod.delstate < 0) {
                     window.legendmod.lbgpi = calc;
                     return calc;
@@ -6924,262 +6993,8 @@ break;
                 }, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
             }
         };
-        var A = { //uses this.protocolKey2
-            'quadtree': null,
-            updateQuadtree: function(cells) {
-                var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
-                var h = ogarfooddrawer.canvasHeight / ogarfooddrawer.scale;
-                var x = (M.viewX - w / 2);
-                var y = (M.viewY - h / 2);
-                this.quadtree = new PointQuadTree(x, y, w, h, 32);
-                for (var i = 0; i < cells.length; ++i) {
-                    var cell = cells[i];
-                    for (var n = 0; n < cell.points.length; ++n) {
-                        this.quadtree.insert(cell.points[n]);
-                    }
-                }
-            },
-            'ws': null,
-            'socket': null,
-            'protocolKey': null,
-            'clientKey2': null,
-            'connectionOpened': false,
-            'accessTokenSent': false,
-            'clientVersion': 30400,
-            'clientVersionString': '3.4.0',
-            'time': Date.now(),
-            'serverTime': 0,
-            'serverTimeDiff': 0,
-            'loggedInTime': 0,
-            'mapSize': 14142,
-            'mapOffset': 7071,
-            'mapOffsetX': 0,
-            'mapOffsetY': 0,
-            'mapOffsetFixed': false,
-            'mapMinX': -7071,
-            'mapMinY': -7071,
-            'mapMaxX': 7071,
-            'mapMaxY': 7071,
-            'viewMinX': 0,
-            'viewMinY': 0,
-            'viewMaxX': 0,
-            'viewMaxY': 0,
-            'canvasWidth': 0,
-            'canvasHeight': 0,
-            'canvasScale': 1,
-            'indexedCells': {},
-            'cells': [],
-            'removedCells': [],
-            'food': [],
-            'viruses': [],
-            'playerCells': [],
-            'playerCellIDs': [],
-            'ghostCells': [],
-            'playerX': 0,
-            'playerY': 0,
-            'playerSize': 0,
-            'playerMass': 0,
-            'playerMaxMass': 0,
-            'playerMinMass': 0,
-            'playerScore': 0,
-            'playerSplitCells': 0,
-            'playerColor': null,
-            'playerNick': '',
-            'playerPosition': 0,
-            'leaderboard': [],
-            'biggerSTEDCellsCache': [], //Sonia
-            'biggerSTECellsCache': [],
-            'biggerCellsCache': [],
-            'smallerCellsCache': [],
-            'STECellsCache': [],
-            'STEDCellsCache': [], //Sonia
-            'STE': 0,
-            'autoZoom': false,
-            'zoomValue': 0.1,
-            'viewX': 0,
-            'viewY': 0,
-            'scale': 1,
-            'viewScale': 1,
-            'clientX': 0,
-            'clientY': 0,
-            'cursorX': 0,
-            'cursorY': 0,
-            'targetX': 0,
-            'targetY': 0,
-            'targetDistance': 0,
-            ////
-            "cRadius": 10,
-            "cAngle": 4,
-            "cAngle1": 0,
-            "cAngle2": 0,
-            "cAlpha": 1,
-            "drawCommander": 0,
-            ////
-            'battleRoyale': {
-                'state': 0,
-                'players': 0,
-                'startTime': 0,
-                'shrinkTime': 0,
-                'timeLeft': 0,
-                'x': 0,
-                'y': 0,
-                'radius': 0,
-                'targetX': 0,
-                'targetY': 0,
-                'targetRadius': 0,
-                'maxRadius': 11313,
-                'rank': [],
-                'playerRank': 0,
-                'joined': false
-            },
-            'play': false,
-            'pause': false,
-            'targeting': false,
-            'removePlayerCell': false,
-            'showCustomSkins': true,
-            'showFood': true,
-            'foodIsHidden': false,
-            'selectBiggestCell': true,
-            'hideSmallBots': false,
-            'pressedKeys': {},
-            'connect': function(t) {
-                console.log('[Legend mod Express] Connecting to game server:', t);
-                var ws2 = this;
-                window.legendmod3.SLGconnect(t);
-                window.legendmod.vnr = 0; //Sonia3
-                window.legendmod.bgpi = 4; //Sonia3
-                window.legendmod.lbgpi = 4; //Sonia3
-                window.legendmod.vector = [
-                    [0, 0],
-                    [1, 0],
-                    [1, 1],
-                    [0, 1]
-                ]; //Sonia3
-                window.legendmod.setrot = false; //Sonia3
-                window.legendmod.delstate = -1; //Sonia3
-                this.closeConnection();
-                this.flushCellsData();
-                this.protocolKey2 = null;
-                this.clientKey2 = null;
-                this.accessTokenSent = false;
-                this.connectionOpened = false;
-                this.mapOffsetFixed = false;
-                this.leaderboard = [];
-                this.ws = t;
-                this.socket = new WebSocket(t);
-                this.socket['binaryType'] = 'arraybuffer';
-                this.socket['onopen'] = function() {
-                    ws2['onOpen']();
-                };
-                this.socket['onmessage'] = function(t) {
-                    ws2['onMessage'](t);
-                };
-                this.socket['onerror'] = function(t) {
-                    ws2['onError'](t);
-                };
-                this.socket['onclose'] = function(t) {
-                    ws2['onClose'](t);
-                };
-                if (window.master && window.master['onConnect']) {
-                    window.master['onConnect']();
-                }
-            },
-            'onOpen': function(t) {
-                console.log('[Legend mod Express] Game server socket2 open'),
-                    this.time = Date.now();
-                var e = this.createView(5);
-                e.setUint8(0, 254),
-                    e.setUint32(1, 21, true),
-                    this.sendMessage(e),
-                    (e = this.createView(5)).setUint8(0, 255),
-                    e.setUint32(1, this.clientVersion, true),
-                    this.sendMessage(e),
-                    this.connectionOpened = true;
-                    if(this.connectionOpened == true) toastr.success('Tab 2 connected', 'Server', '');
-            },
-            'onMessage': function(t) {
-                t = new DataView(t['data']);
-                if (this.protocolKey2) {
-					console.log("this.protocolKey2: "+ this.protocolKey2 + " this.clientVersion2: " + this.clientVersion);
-                    t = this['shiftMessage'](t, this.protocolKey2 ^ this.clientVersion);
-                }
-                console.log(t);
-            },
-            'onError': function(t) {
-                console.log('[Legend mod Express] Game server socket error');
-                this.flushCellsData();
-                if (window.master && window.master['onDisconnect']) {
-                    window.master['onDisconnect']();
-                }
-            },
-            'onClose': function(t) {
-                console.log('[Legend mod Express] Game server socket close');
-                this.flushCellsData();
-                if (window.master && window.master['onDisconnect']) {
-                    window.master['onDisconnect']();
-                }
-                toastr.success('Tab 2 discconnected', 'Server', '');
-            },
-            'closeConnection': function() {
-                if (this.socket) {
-                    this.socket['onopen'] = null;
-                    this.socket['onmessage'] = null;
-                    this.socket['onerror'] = null;
-                    this.socket['onclose'] = null;
-                    try {
-                        this.socket['close']();
-                    } catch (ogarcloseconncloser) {}
-                    this.socket = null;
-                    this.ws = null;
-                }
-            },
-            'isSocketOpen': function() {
-                return null !== this.socket && this.socket['readyState'] === this.socket['OPEN'];
-            },
-            'sendMessage': function(t) {
-                //console.log(t);
-                if (this.connectionOpened) {
-                    if (!this.clientKey2) return;
-                    t = this['shiftMessage'](t, this.clientKey2);
-                    this.clientKey2 = this.shiftKey(this.clientKey2);
-                }
-                this['sendBuffer'](t);
-            },
-            'flushCellsData': function() {
-                this.indexedCells = {},
-                this.cells = [];
-                this.playerCells = [];
-                this.playerCellIDs = [];
-                this.ghostCells = [];
-                this.food = [];
-                this.viruses = [];
-            },
-            'createView': function(t) {
-                return new DataView(new ArrayBuffer(t));
-            },
-            'strToBuff': function(t, e) {
-                var i = this.createView(1 + 2 * e.length);
-                i.setUint8(0, t);
-                for (var s = 0; s < e.length; s++) i.setUint16(1 + 2 * s, e.charCodeAt(s), true);
-                return i;
-            },
-            'sendBuffer': function(t) {
-                this.socket['send'](t['buffer']);
-            },
-            //Sonia4
-            'sendSLG': function(i, t) {
-                if (this.isSLGSocketOpen()) {
-                    if (ogarcopythelb.clanTag != this.roomc) {
-                        this.SLGconnect(window.legendmod.ws);
-                        return;
-                    }
-                    var s = this.packSLG(i);
-                    if (s != null) this.SLGsocket['send'](s + t);
-                }
-            },
-        };		
         window.legendmod = M; // look at this
-        window.legendmod2 = A;
+
         window.sendAction = function(t) {
             M.sendAction(t);
         };
@@ -8956,7 +8771,6 @@ break;
         window.core = {
             'connect': function(t) {
                 M.connect(t);
-                A.connect(t);
             },
             'disconnect': function() {},
             'sendNick': function(t) {
