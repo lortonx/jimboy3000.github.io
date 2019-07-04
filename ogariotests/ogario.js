@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.965 MEGA TEST
+// v1.966 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2132,7 +2132,7 @@ function irenderfromagario() {
                         this.mass = ~~((200 - this.mass) / 14);
                     }
                     if (defaultmapsettings.virusSound && this.lastMass && this.mass < this.lastMass) {
-                        void ogarminimapdrawer.playSound(ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
+                        void window.ogarminimapdrawer.playSound(window.ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
                     }
                     this.massTxt = this.mass.toString();
                 }
@@ -2381,7 +2381,7 @@ function irenderfromagario() {
                                     style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                                 } catch (e) {}
                             }
-                            return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && window.LM.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
+                            return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && window.LM.play ? (style.fillStyle = window.ogarminimapdrawer.setVirusColor(y), style.strokeStyle = window.ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                                 defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
                                 this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                         }
@@ -2393,8 +2393,8 @@ function irenderfromagario() {
                                 defaultmapsettings.isAlphaChanged = true;
                             }
                             if (defaultmapsettings.virColors && window.LM.play) {
-                                style.fillStyle = ogarminimapdrawer.setVirusColor(y);
-                                style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
+                                style.fillStyle = window.ogarminimapdrawer.setVirusColor(y);
+                                style.strokeStyle = window.ogarminimapdrawer.setVirusStrokeColor(y);
                             } else {
                                 style.fillStyle = defaultSettings.virusColor;
                                 style.strokeStyle = defaultSettings.virusStrokeColor;
@@ -2452,13 +2452,13 @@ function irenderfromagario() {
                             s = false;
 						}*/
                     var node = null;
-                    var node2 = {}; //, node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
+                    var node2 = {}; //, node2.src = window.ogarminimapdrawer.customSkinsMap[this.targetNick]
 
 
 
                     //lylko
                     if (defaultmapsettings.customSkins && window.LM.showCustomSkins) {
-                        node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
+                        node = window.ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
 
                         if (node) {
                             if ((defaultmapsettings.transparentSkins || window.LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
@@ -2533,14 +2533,14 @@ function irenderfromagario() {
 
                     if (defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
 
-                        //                            y <= 200 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
+                        //                            y <= 200 && (node || window.ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
 
                         style.restore();
                         return;
                     } else {
                         if (defaultmapsettings.customSkins && window.LM.showCustomSkins) {
-                            node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick];
-                            ogarminimapdrawer.customSkinsMap[this.targetNick];
+                            node2.src = window.ogarminimapdrawer.customSkinsMap[this.targetNick];
+                            window.ogarminimapdrawer.customSkinsMap[this.targetNick];
                             if (node2.src) {
                                 if (defaultmapsettings.videoSkins) {
                                     if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
@@ -2559,7 +2559,7 @@ function irenderfromagario() {
 
                         }
                         var recursive = false;
-                        if (!this.isPlayerCell && (recursive = ogarminimapdrawer.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
+                        if (!this.isPlayerCell && (recursive = window.ogarminimapdrawer.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
                             style.restore();
                         } else {
                             this.setDrawing();
@@ -2592,7 +2592,7 @@ function irenderfromagario() {
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
-        var ogarminimapdrawer;
+        var window.ogarminimapdrawer;
         var o = null;
         var a = null;
         var r = 'en';
@@ -3021,8 +3021,8 @@ var thelegendmodproject = function(t, e, i) {
                 },
                 'setMiniMapFont': function() {
                     this.setFont('miniMapFont', defaultSettings.miniMapFont);
-                    if (ogarminimapdrawer) {
-                        ogarminimapdrawer.resetMiniMapSectors();
+                    if (window.ogarminimapdrawer) {
+                        window.ogarminimapdrawer.resetMiniMapSectors();
                     }
                 },
                 'setMiniMapWidth': function() {
@@ -3032,13 +3032,13 @@ var thelegendmodproject = function(t, e, i) {
                         'width': defaultSettings.miniMapWidth,
                         'height': defaultSettings.miniMapWidth + defaultSettings.miniMapTop
                     });
-                    if (ogarminimapdrawer) {
-                        ogarminimapdrawer.resetMiniMapSectors();
+                    if (window.ogarminimapdrawer) {
+                        window.ogarminimapdrawer.resetMiniMapSectors();
                     }
                 },
                 'setMiniMapSectorsColor': function() {
-                    if (ogarminimapdrawer) {
-                        ogarminimapdrawer.resetMiniMapSectors();
+                    if (window.ogarminimapdrawer) {
+                        window.ogarminimapdrawer.resetMiniMapSectors();
                     }
                 },
                 'setMiniMapSectorsOpacity': function() {
@@ -3062,8 +3062,8 @@ var thelegendmodproject = function(t, e, i) {
             window.legendmod4 = c;
         window.legendmod5 = defaultmapsettings;
 
-        ogarminimapdrawer = {
-            'name': 'window.LM express',
+        window.window.ogarminimapdrawer = {
+            'name': 'LM express',
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
@@ -3231,7 +3231,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setAutoPlay': function() {
                 if (legendmod.pause) {
-                    ogarminimapdrawer && ogarminimapdrawer.setPause()
+                    window.window.ogarminimapdrawer && window.window.ogarminimapdrawer.setPause()
                 };
                 if (window.autoPlay == false) {
                     window.autoPlay = true;
@@ -3367,7 +3367,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setPause': function() {
                 if (window.autoPlay) {
-                    ogarminimapdrawer && ogarminimapdrawer.setAutoPlay()
+                    window.window.ogarminimapdrawer && window.window.ogarminimapdrawer.setAutoPlay()
                 };
                 this.pause = !this.pause, i.pause = this.pause, this.pause ? (i.resetTargetPosition(), $('#pause-hud').text(h.pause), $('#pause-hud').show()) : $('#pause-hud').hide();
             },
@@ -4524,8 +4524,8 @@ var thelegendmodproject = function(t, e, i) {
                         if (e.includes(window.EnvConfig.config_url)) {
                             e = "https://jimboy3100.github.io/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
                             //console.log("new destination is:" + e);
-                            ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
-                            ogarminimapdrawer.loadSkin(t, e);
+                            window.window.ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
+                            window.ogarminimapdrawer.loadSkin(t, e);
                             return e;
 
                         }
@@ -5819,7 +5819,7 @@ var thelegendmodproject = function(t, e, i) {
                     }, this.updateInterval);
             }
         };
-window.legendmod3 = ogarminimapdrawer;
+window.legendmod3 = window.ogarminimapdrawer;
  
 
 
@@ -5980,10 +5980,10 @@ window.legendmod3 = ogarminimapdrawer;
                 this.socket['onclose'] = function(t) {
                     i['onClose'](t);
                 };
-                ogarminimapdrawer['getWS'](this.ws);
-                ogarminimapdrawer['sendServerJoin']();
-                ogarminimapdrawer['sendServerData']();
-                ogarminimapdrawer['displayLeaderboard']('');
+                window.ogarminimapdrawer['getWS'](this.ws);
+                window.ogarminimapdrawer['sendServerJoin']();
+                window.ogarminimapdrawer['sendServerData']();
+                window.ogarminimapdrawer['displayLeaderboard']('');
                 if (window.master && window.master['onConnect']) {
                     window.master['onConnect']();
                 }
@@ -6140,9 +6140,9 @@ window.legendmod3 = ogarminimapdrawer;
                 var count = this.clientVersionString.length;
                 var data = [oW, 8, 1, 18];
                 //this.writeUint32(data, curr + count + 23);
-                ogarminimapdrawer.writeUint32(data, curr + count + 23);
+                window.ogarminimapdrawer.writeUint32(data, curr + count + 23);
                 data.push(8, 10, 82);
-                ogarminimapdrawer.writeUint32(data, curr + count + 18);
+                window.ogarminimapdrawer.writeUint32(data, curr + count + 18);
                 //this.writeUint32(data, curr + count + 18);
                 data.push(8, options, 18, count + 8, 8, 5, 18, count);
                 var prev = 0;
@@ -6150,10 +6150,10 @@ window.legendmod3 = ogarminimapdrawer;
                     data.push(this.clientVersionString.charCodeAt(prev));
                 }
                 data.push(24, 0, 32, 0, 26);
-                ogarminimapdrawer.writeUint32(data, curr + 3);
+                window.ogarminimapdrawer.writeUint32(data, curr + 3);
                 //this.writeUint32(data, curr + 3);
                 data.push(10);
-                ogarminimapdrawer.writeUint32(data, curr);
+                window.ogarminimapdrawer.writeUint32(data, curr);
                 //this.writeUint32(data, curr);
                 prev = 0;
                 for (; prev < curr; prev++) {
@@ -6351,9 +6351,9 @@ window.legendmod3 = ogarminimapdrawer;
                     case 32:
                         window.testobjectsOpcode32 = data;
                         this.playerCellIDs.push(data.getUint32(s, true));
-                        this.play || (this.play = true, ogarminimapdrawer.hideMenu(),
+                        this.play || (this.play = true, window.ogarminimapdrawer.hideMenu(),
                             this.playerColor = null,
-                            ogarminimapdrawer.onPlayerSpawn());
+                            window.ogarminimapdrawer.onPlayerSpawn());
                         break;
                     case 50:
                         window.testobjectsOpcode50 = data;
@@ -6620,7 +6620,7 @@ window.legendmod3 = ogarminimapdrawer;
             'handleLeaderboard': function() {
                 /*                for (var t = '', e = '', i = 0; i < this.leaderboard.length && window.leaderboardlimit != i; i++) {
                                     var s = '<span>';
-                                    'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this.leaderboard[i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
+                                    'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this.leaderboard[i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + window.ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
                                 } */
                 window.teammatenicks = [];
                 window.teammatelegendmodnicks = [];
@@ -6633,19 +6633,19 @@ window.legendmod3 = ogarminimapdrawer;
                 }
                 for (var t = '', e = '', i = 0; i < this.leaderboard.length && window.leaderboardlimit != i; i++) {
                     var s = '<span>';
-                    'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
+                    'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[i].nick) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + window.ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
                 }
-                if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), defaultmapsettings['showLbData']);
+                if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + window.ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), defaultmapsettings['showLbData']);
                 t += '<span class="me">Total: ' + this.leaderboard.length + '</span>';
-                for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\" id= "' + 'leaderboardtargeting' + o + '" style="pointer-events: auto;" onclick="window.legendmod.targetingLead(' + o + ');">', e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer.shortMassFormat(this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(this.ghostCells[o].x, this.ghostCells[o].y) + ']</span>', e += '</span>';
-                ogarminimapdrawer['displayLeaderboard'](t, e);
+                for (var o = 0; o < this.ghostCells.length && o != i; o++) e += '<span class=\"lb-data\" id= "' + 'leaderboardtargeting' + o + '" style="pointer-events: auto;" onclick="window.legendmod.targetingLead(' + o + ');">', e += '<span class=\"top5-mass-color\">[' + window.ogarminimapdrawer.shortMassFormat(this.ghostCells[o].mass) + ']</span>', e += '<span class=\"hud-main-color\">[' + window.ogarminimapdrawer.calculateMapSector(this.ghostCells[o].x, this.ghostCells[o].y) + ']</span>', e += '</span>';
+                window.ogarminimapdrawer['displayLeaderboard'](t, e);
                 ///////////////// establish core.registerSkin
                 if (window.vanillaskins == true) {
                     if (window.customskinsname != null && window.customskinsname != undefined) {
                         for (i = 0; i <= this.leaderboard.length - 1; i++) {
                             if (this.leaderboard[i].nick == window.customskinsname) {
-                                ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
-                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.customskinsurl);
+                                window.ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
+                                window.ogarminimapdrawer.loadSkin(window.ogarminimapdrawer.customSkinsCache, window.customskinsurl);
                                 window.customskinsname = undefined;
                             }
                         }
@@ -6697,7 +6697,7 @@ window.legendmod3 = ogarminimapdrawer;
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
                                 if (window.EquippableSkins[player].productId == "skin_" + skin2search) {
                                     //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);
-                                    if (ogarminimapdrawer.customSkinsMap[y] == undefined) {
+                                    if (window.ogarminimapdrawer.customSkinsMap[y] == undefined) {
                                         if (window.EquippableSkins[player].image != "uses_spine") {
 
                                             if (legendflags.includes(LowerCase(y))) {
@@ -6705,8 +6705,8 @@ window.legendmod3 = ogarminimapdrawer;
                                                 core.registerSkin(y, null, "https://jimboy3100.github.io/agario/live/flags/" + LowerCase(y) + ".png", null);
                                             } else {
                                                 window.lastusednameforskin = y;
-                                                ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
+                                                window.ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
+                                                window.ogarminimapdrawer.loadSkin(window.ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
                                             }
                                         }
                                     }
@@ -6826,7 +6826,7 @@ window.legendmod3 = ogarminimapdrawer;
                 window.legendmod3.sendSLGQinfo();
                 window.legendmod3.addSLGQinfo(this.time);
                 //Sonia7
-                this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer.onPlayerDeath(), ogarminimapdrawer.showMenu(300));
+                this.removePlayerCell && !this.playerCells.length && (this.play = false, window.ogarminimapdrawer.onPlayerDeath(), window.ogarminimapdrawer.showMenu(300));
                 //window.counterCell=0;
                 if (window.autoPlay && legendmod.play) {
                     calcTarget();
@@ -7290,10 +7290,10 @@ window.legendmod3 = ogarminimapdrawer;
                         for (; ogario1PlayerProfiles < s; ogario1PlayerProfiles++) {
                             var ogarcopythelb = 0;
                             for (; ogarcopythelb < i; ogarcopythelb++) {
-                                var ogarminimapdrawer = String.fromCharCode(65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
+                                var window.ogarminimapdrawer = String.fromCharCode(65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
                                 m = ~~(o + d / 2 + ogarcopythelb * d);
                                 y = ~~(a + f / 2 + ogario1PlayerProfiles * f);
-                                t.fillText(ogarminimapdrawer, m, y);
+                                t.fillText(window.ogarminimapdrawer, m, y);
                             }
                         }
                     }
@@ -7648,14 +7648,14 @@ window.legendmod3 = ogarminimapdrawer;
 
                                     if (window.LM.leaderboard[e] != undefined) { //window.LM instead of legendmod for quicker response
 
-                                        this.ghostcellstext = removeEmojis(ogarminimapdrawer.escapeHTML(window.LM.leaderboard[e].nick)); //legendmod3.escapeHTML(legendmod.leaderboard[0].nick)
+                                        this.ghostcellstext = removeEmojis(window.ogarminimapdrawer.escapeHTML(window.LM.leaderboard[e].nick)); //legendmod3.escapeHTML(legendmod.leaderboard[0].nick)
                                     } else {
                                         this.ghostcellstext = "Legend mod";
                                     }
                                     this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size * this.pi2 / 6, angle);
                                     if (defaultmapsettings.customSkins && window.LM.showCustomSkins) {
                                         if (window.LM.leaderboard[e] != undefined) {
-                                            node = ogarminimapdrawer.getCustomSkin(window.LM.leaderboard[e].nick, "#000000");
+                                            node = window.ogarminimapdrawer.getCustomSkin(window.LM.leaderboard[e].nick, "#000000");
                                             if (node) {
                                                 this.ctx.drawImage(node, i - t[e].size, s - t[e].size, t[e].size * 2, t[e].size * 2);
                                             }
@@ -7736,7 +7736,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-feed'],
                     'defaultKey': 'W',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.feed();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.feed();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7745,10 +7745,10 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-macroFeed'],
                     'defaultKey': 'E',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.macroFeed(!0);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.macroFeed(!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.macroFeed(!1);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.macroFeed(!1);
                     },
                     'type': 'normal'
                 },
@@ -7756,7 +7756,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-split'],
                     'defaultKey': 'SPACE',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.split();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.split();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7765,7 +7765,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-doubleSplit'],
                     'defaultKey': 'Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.doubleSplit();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.doubleSplit();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7774,7 +7774,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': 'Popsplit',
                     'defaultKey': 'ALT+Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.popSplit();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.popSplit();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7783,7 +7783,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-split16'],
                     'defaultKey': 'SHIFT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.split16();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.split16();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7792,7 +7792,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-pause'],
                     'defaultKey': 'R',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setPause();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setPause();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7801,7 +7801,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showTop5'],
                     'defaultKey': 'T',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTop5();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowTop5();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7810,7 +7810,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showTime'],
                     'defaultKey': 'ALT+T',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTime();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowTime();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7819,7 +7819,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showSplitRange'],
                     'defaultKey': 'U',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowSplitRange();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowSplitRange();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7828,7 +7828,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showSplitInd'],
                     'defaultKey': 'I',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowSplitInd();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowSplitInd();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7837,7 +7837,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showTeammatesInd'],
                     'defaultKey': 'ALT+I',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTeammatesInd();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowTeammatesInd();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7846,7 +7846,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showOppColors'],
                     'defaultKey': 'O',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowOppColors();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowOppColors();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7855,7 +7855,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-toggleSkins'],
                     'defaultKey': 'A',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleSkins();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.toggleSkins();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7864,7 +7864,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-transparentSkins'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setTransparentSkins();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setTransparentSkins();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7873,7 +7873,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showSkins'],
                     'defaultKey': 'S',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowSkins();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowSkins();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7882,7 +7882,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showStats'],
                     'defaultKey': 'ALT+S',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowStats();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowStats();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7891,7 +7891,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-toggleCells'],
                     'defaultKey': 'D',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleCells();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.toggleCells();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7900,7 +7900,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showFood'],
                     'defaultKey': 'F',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowFood();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowFood();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7909,7 +7909,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showGrid'],
                     'defaultKey': 'G',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowGrid();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowGrid();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7918,7 +7918,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showMiniMapGuides'],
                     'defaultKey': 'ALT+G',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowMiniMapGuides();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowMiniMapGuides();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7927,7 +7927,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-hideChat'],
                     'defaultKey': 'H',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.hideChat();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.hideChat();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7936,7 +7936,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showHUD'],
                     'defaultKey': 'ALT+H',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowHUD();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowHUD();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7945,7 +7945,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-copyLb'],
                     'defaultKey': 'L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.copyLb();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.copyLb();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7954,7 +7954,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showLb'],
                     'defaultKey': 'ALT+L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowLb();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowLb();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7963,7 +7963,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-toggleAutoZoom'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleAutoZoom();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.toggleAutoZoom();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7972,10 +7972,10 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-resetZoom'],
                     'defaultKey': 'Z',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.resetZoom(!0);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.resetZoom(!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.resetZoom(!1);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.resetZoom(!1);
                     },
                     'type': 'normal'
                 },
@@ -7983,7 +7983,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-toggleDeath'],
                     'defaultKey': 'X',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleDeath();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.toggleDeath();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -7992,10 +7992,10 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-clearChat'],
                     'defaultKey': 'C',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.displayChatHistory(!0);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.displayChatHistory(!0);
                     },
                     'keyUp': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.displayChatHistory(!1);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.displayChatHistory(!1);
                     },
                     'type': 'normal'
                 },
@@ -8003,7 +8003,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showBgSectors'],
                     'defaultKey': 'B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowBgSectors();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowBgSectors();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8012,7 +8012,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-hideBots'],
                     'defaultKey': 'ALT+B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setHideSmallBots();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setHideSmallBots();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8021,7 +8021,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showNames'],
                     'defaultKey': 'N',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowNames();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowNames();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8030,7 +8030,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-hideTeammatesNames'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setHideTeammatesNames();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setHideTeammatesNames();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8039,7 +8039,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showMass'],
                     'defaultKey': 'window.LM',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowMass();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowMass();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8048,7 +8048,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showMiniMap'],
                     'defaultKey': 'ALT+window.LM',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowMiniMap();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowMiniMap();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8057,7 +8057,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-chatMessage'],
                     'defaultKey': 'ENTER',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.enterChatMessage();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.enterChatMessage();
                     },
                     'keyUp': null,
                     'type': 'special'
@@ -8066,7 +8066,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-quickResp'],
                     'defaultKey': 'TILDE',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.quickResp();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.quickResp();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8075,7 +8075,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-autoResp'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.toggleAutoResp();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.toggleAutoResp();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8084,7 +8084,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-zoomLevel'] + ' 1',
                     'defaultKey': 'ALT+1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.5);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setZoom(0.5);
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8093,7 +8093,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-zoomLevel'] + ' 2',
                     'defaultKey': 'ALT+2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.25);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setZoom(0.25);
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8102,7 +8102,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-zoomLevel'] + ' 3',
                     'defaultKey': 'ALT+3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.125);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setZoom(0.125);
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8111,7 +8111,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-zoomLevel'] + ' 4',
                     'defaultKey': 'ALT+4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.075);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setZoom(0.075);
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8120,7 +8120,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-zoomLevel'] + ' 5',
                     'defaultKey': 'ALT+5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setZoom(0.05);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setZoom(0.05);
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8129,7 +8129,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-voiceChat'],
                     'defaultKey': '=',
                     'keyDown': function() {
-                        //ogarminimapdrawer && ogarminimapdrawer.enterChatMessage();
+                        //window.ogarminimapdrawer && window.ogarminimapdrawer.enterChatMessage();
                         //if ($('#message-box').css('display') == 'block') {
                         $(".voice-start.icon-mic").click();
                         //}
@@ -8141,7 +8141,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-GhostCellsInfo'],
                     'defaultKey': 'K',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowGhostCellsInfo();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowGhostCellsInfo();
                     },
                     'keyUp': null,
                     'type': 'special'
@@ -8150,7 +8150,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-Autoplay'],
                     'defaultKey': 'J',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setAutoPlay();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setAutoPlay();
                     },
                     'keyUp': null,
                     'type': 'special'
@@ -8159,7 +8159,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-switchServerMode'],
                     'defaultKey': '-',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.switchServerMode();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.switchServerMode();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8168,7 +8168,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowTargeting();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowTargeting();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8177,7 +8177,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-setTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setTargeting();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setTargeting();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8186,7 +8186,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-cancelTargeting'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.cancelTargeting();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.cancelTargeting();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8195,7 +8195,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-changeTarget'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.changeTarget();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.changeTarget();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8204,7 +8204,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-privateMiniMap'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setPrivateMiniMap();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setPrivateMiniMap();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8213,7 +8213,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': h['hk-showQuest'],
                     'defaultKey': '',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setShowQuest();
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.setShowQuest();
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8222,7 +8222,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm1'],
                     'defaultKey': '1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(1);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(1);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8231,7 +8231,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm2'],
                     'defaultKey': '2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(2);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(2);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8240,7 +8240,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm3'],
                     'defaultKey': '3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(3);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(3);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8249,7 +8249,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm4'],
                     'defaultKey': '4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(4);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(4);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8258,7 +8258,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm5'],
                     'defaultKey': '5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(5);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(5);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8267,7 +8267,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm6'],
                     'defaultKey': '6',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(6);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(6);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8276,7 +8276,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm7'],
                     'defaultKey': '7',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(7);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(7);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8285,7 +8285,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm8'],
                     'defaultKey': '8',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(8);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(8);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8294,7 +8294,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm9'],
                     'defaultKey': '9',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(9);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(9);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8303,7 +8303,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm0'],
                     'defaultKey': '0',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(0);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(0);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8312,7 +8312,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm10'],
                     'defaultKey': 'MOUSE WHEEL',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(10);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(10);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8321,7 +8321,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm11'],
                     'defaultKey': 'LEFT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(11);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(11);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8330,7 +8330,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm12'],
                     'defaultKey': 'UP',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(12);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(12);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8339,7 +8339,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm13'],
                     'defaultKey': 'RIGHT',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(13);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(13);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8348,7 +8348,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm14'],
                     'defaultKey': 'DOWN',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(14);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(14);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8357,7 +8357,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm15'],
                     'defaultKey': 'CTRL+1',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(15);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(15);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8366,7 +8366,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm16'],
                     'defaultKey': 'CTRL+2',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(16);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(16);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8375,7 +8375,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm17'],
                     'defaultKey': 'CTRL+3',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(17);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(17);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8384,7 +8384,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm18'],
                     'defaultKey': 'CTRL+4',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(18);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(18);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8393,7 +8393,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm19'],
                     'defaultKey': 'CTRL+5',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(19);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(19);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8402,7 +8402,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm20'],
                     'defaultKey': 'CTRL+7',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(20);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(20);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8411,7 +8411,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm21'],
                     'defaultKey': 'CTRL+8',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(21);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(21);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8420,7 +8420,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm22'],
                     'defaultKey': 'CTRL+9',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(22);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(22);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8429,7 +8429,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm23'],
                     'defaultKey': 'CTRL+0',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(23);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(23);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8438,7 +8438,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm24'],
                     'defaultKey': 'CTRL+Z',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(24);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(24);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8447,7 +8447,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm25'],
                     'defaultKey': 'CTRL+X',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(25);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(25);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8456,7 +8456,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm26'],
                     'defaultKey': 'CTRL+Q',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(26);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(26);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8465,7 +8465,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm27'],
                     'defaultKey': 'CTRL+M',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(27);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(27);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8474,7 +8474,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm28'],
                     'defaultKey': 'CTRL+B',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(28);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(28);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8483,7 +8483,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm29'],
                     'defaultKey': 'CTRL+L',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(29);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(29);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8492,7 +8492,7 @@ window.legendmod3 = ogarminimapdrawer;
                     'label': c['comm30'],
                     'defaultKey': 'CTRL+D',
                     'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(30);
+                        window.ogarminimapdrawer && window.ogarminimapdrawer.sendCommand(30);
                     },
                     'keyUp': null,
                     'type': 'command'
@@ -8536,7 +8536,7 @@ window.legendmod3 = ogarminimapdrawer;
                                 if (ogario1Hotkeys.hasOwnProperty(a) && ogario1Hotkeys[a] === e) {
                                     o = a;
                                     break;
-                                } if ('hk-switchServerMode' === e && ogarminimapdrawer && !ogarminimapdrawer.privateIP) continue;
+                                } if ('hk-switchServerMode' === e && window.ogarminimapdrawer && !window.ogarminimapdrawer.privateIP) continue;
                             if ('command' === i.type) {
                                 var n = e.replace('hk-', '');
                                 $('#hotkeys-cfg').append('<div class=\"row\"><div class=\"key-label\"><input id=\"' + n + '\" class=\"command-in form-control input-sm\" value=\"' + c[n] + '\" maxlength=\"80\" /></div><div class=\"default-key\">' + i.defaultKey + '</div><div class=\"custom-key\"><input id=\"' + e + '\" class=\"custom-key-in form-control input-sm\" value=\"' + o + '\" /></div></div>');
@@ -8678,12 +8678,12 @@ window.legendmod3 = ogarminimapdrawer;
         }
 
         function ogarcommando1() {
-            ogarminimapdrawer.protocolMode || (window.onkeydown = function(t) {});
+            window.ogarminimapdrawer.protocolMode || (window.onkeydown = function(t) {});
         }
         document.onkeydown = function(t) {
             var e = lastkeys.getPressedKey(t);
             if (('INPUT' !== t.target.tagName || t.target.className === lastkeys.inputClassName || e === ogario1Hotkeys['spec-messageKey']) && '' !== e && !ogarioefaultHotkeys[e]) {
-                if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
+                if (ogarioefaultHotkeys[e] = true, 'ESC' === e) return t.preventDefault(), void(window.ogarminimapdrawer && window.ogarminimapdrawer.showMenu());
                 if (t.target.className === lastkeys.inputClassName) return t.preventDefault(), void lastkeys.setHotkey(e, t.target.id);
                 if (ogario1Hotkeys[e]) {
                     t.preventDefault();
@@ -8706,28 +8706,28 @@ window.legendmod3 = ogarminimapdrawer;
             if (!$("#overlays").is(":visible")) {
                 if (2 == t.which) {
                     t.preventDefault();
-                    if (ogarminimapdrawer) {
-                        ogarminimapdrawer.sendCommand(10);
+                    if (window.ogarminimapdrawer) {
+                        window.ogarminimapdrawer.sendCommand(10);
                     }
                 } else {
                     if (defaultmapsettings["mouseSplit"] && (1 == t.which && !defaultmapsettings.mouseInvert || 3 == t.which && defaultmapsettings.mouseInvert)) {
                         t.preventDefault();
-                        if (ogarminimapdrawer) {
-                            ogarminimapdrawer.split();
+                        if (window.ogarminimapdrawer) {
+                            window.ogarminimapdrawer.split();
                         }
                     }
                     if (defaultmapsettings.mouseFeed && (3 == t.which && !defaultmapsettings.mouseInvert || 1 == t.which && defaultmapsettings.mouseInvert)) {
                         t.preventDefault();
-                        if (ogarminimapdrawer) {
-                            ogarminimapdrawer.macroFeed(true);
+                        if (window.ogarminimapdrawer) {
+                            window.ogarminimapdrawer.macroFeed(true);
                         }
                     }
                 }
             }
         }
         window.onmouseup = function(t) {
-            if (defaultmapsettings.mouseFeed && (3 == t.which && !defaultmapsettings.mouseInvert || 1 == t.which && defaultmapsettings.mouseInvert) && ogarminimapdrawer) {
-                ogarminimapdrawer.macroFeed(false);
+            if (defaultmapsettings.mouseFeed && (3 == t.which && !defaultmapsettings.mouseInvert || 1 == t.which && defaultmapsettings.mouseInvert) && window.ogarminimapdrawer) {
+                window.ogarminimapdrawer.macroFeed(false);
             }
         };
         window.onbeforeunload = function(t) {
@@ -8852,8 +8852,8 @@ window.legendmod3 = ogarminimapdrawer;
         };
         window.master.getClientVersion();
         hudsetter.init();
-        ogarminimapdrawer.init();
-        ogarminimapdrawer.getDefaultSettings();
+        window.ogarminimapdrawer.init();
+        window.ogarminimapdrawer.getDefaultSettings();
         ogarminimapdrawer.connect();
         lastkeys.init();
         window.LM.init();
