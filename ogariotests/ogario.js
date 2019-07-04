@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.969 MEGA TEST
+// v1.970 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7291,10 +7291,10 @@ window.legendmod3 = window.ogarminimapdrawer;
                         for (; ogario1PlayerProfiles < s; ogario1PlayerProfiles++) {
                             var ogarcopythelb = 0;
                             for (; ogarcopythelb < i; ogarcopythelb++) {
-                                var window.ogarminimapdrawer = String.fromCharCode(65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
+                                var temptext = String.fromCharCode(65 + ogario1PlayerProfiles) + (ogarcopythelb + 1);
                                 m = ~~(o + d / 2 + ogarcopythelb * d);
                                 y = ~~(a + f / 2 + ogario1PlayerProfiles * f);
-                                t.fillText(window.ogarminimapdrawer, m, y);
+                                t.fillText(temptext, m, y);
                             }
                         }
                     }
