@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.960 MEGA TEST
+// v1.961 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1877,10 +1877,10 @@ var defaultmapsettings = {
                 this.socket['onclose'] = function(t) {
                     i['onClose'](t);
                 };
-                ogarminimapdrawer['getWS'](this.ws);
-                ogarminimapdrawer['sendServerJoin']();
-                ogarminimapdrawer['sendServerData']();
-                ogarminimapdrawer['displayLeaderboard']('');
+                window.legendmod3['getWS'](this.ws);
+                window.legendmod3['sendServerJoin']();
+                window.legendmod3['sendServerData']();
+                window.legendmod3['displayLeaderboard']('');
                 if (window.master && window.master['onConnect']) {
                     window.master['onConnect']();
                 }
