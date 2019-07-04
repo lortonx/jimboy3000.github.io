@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.964 MEGA TEST
+// v1.965 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1841,7 +1841,754 @@ function irenderfromagario() {
         };
 
 }
+       function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
+            cimg2 = new Image;
+            cimg2.src = defaultSettings.commanderImage2;
+            cimg5 = new Image;
+            cimg5.src = defaultSettings.commanderImage5;
+            cimg6 = new Image;
+            cimg6.src = defaultSettings.commanderImage6;
+            cimg7 = new Image;
+            cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';
 
+            if (dyinglight1load == "yes") {
+                cimgDyingLight = new Image;
+                cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
+                cimgDyingLightvirus = new Image;
+                cimgDyingLightvirus.src = defaultSettings.commanderImageDyingLightvirus;
+
+
+                cimgDyingLight1 = new Image;
+                cimgDyingLight1.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie2.png';
+                cimgDyingLight2 = new Image;
+                cimgDyingLight2.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie3.png';
+                cimgDyingLight3 = new Image;
+                cimgDyingLight3.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie4.png';
+                cimgDyingLight4 = new Image;
+                cimgDyingLight4.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie5.png';
+                cimgDyingLight5 = new Image;
+                cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';
+                cimgDyingLight6 = new Image;
+                cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';
+            }
+
+            //lylko
+            this.points = []
+            this.pointsVel = []
+            this.maxPointRad = 0
+
+
+            this.oldAlpha = 0;
+            this.id = t;
+            this.x = e;
+            this.y = s;
+            this.targetX = e;
+            this.targetY = s;
+            this.color = a;
+            this.oppColor = null;
+            this.size = o;
+            this.targetSize = o;
+            this.alpha = 1;
+            this.nick = '';
+            this.targetNick = '';
+            this.nickCanvas = null;
+            this.mass = 0;
+            this.lastMass = 0;
+            //			this.historyMass = [];
+            //			this.historyX = [];
+            //			this.historyY = [];
+            this.kMass = 0;
+            this.massCanvas = null;
+            this.mergeCanvas = null;
+            this.massTxt = '';
+            this.margin = 0;
+            this.scale = 1;
+            this.nickScale = 1;
+            this.massScale = 1;
+            this.virMassScale = 3;
+            this.strokeScale = 1;
+            this.fontSize = 26;
+            this.nickSize = 26;
+            this.lastNickSize = 0;
+            this.massSize = 26;
+            this.virMassSize = 26;
+            this.nickStrokeSize = 3;
+            this.massStrokeSize = 3;
+            this.isFood = n;
+            this.isVirus = r;
+            this.isPlayerCell = l;
+            this.shortMass = h;
+            this.virMassShots = c;
+            this.rescale = false;
+            this.redrawNick = true;
+            this.redrawMass = true;
+            this.redrawMerge = true;
+            this.optimizedNames = false;
+            this.optimizedMass = false;
+            this.strokeNick = false;
+            this.strokeMass = false;
+            this.removed = false;
+            this.redrawed = 0;
+            this.time = 0;
+            this.skin = null;
+            this.pi2 = 2 * Math.PI;
+            this.virusColor = null;
+            this.virusStroke = null;
+            this.nHeight = 6;
+
+            this.updateNumPoints = function() {
+                //adjustment of the number of contacts
+                var numPoints = this.size * ogarfooddrawer.scale | 0;
+                numPoints = Math.max(numPoints, 5);
+                numPoints = Math.min(numPoints, 120);
+                if (this.isVirus) numPoints = 100;
+                while (this.points.length > numPoints) {
+                    var i = Math.random() * this.points.length | 0;
+                    this.points.splice(i, 1);
+                    this.pointsVel.splice(i, 1);
+                }
+                if (this.points.length == 0 && numPoints != 0) {
+                    this.points.push({
+                        x: this.x,
+                        y: this.y,
+                        rl: this.size,
+                        parent: this //?
+                    });
+                    this.pointsVel.push(Math.random() - 0.5);
+                }
+                while (this.points.length < numPoints) {
+                    var i = Math.random() * this.points.length | 0;
+                    var point = this.points[i];
+                    var vel = this.pointsVel[i];
+                    this.points.splice(i, 0, {
+                        x: point.x,
+                        y: point.y,
+                        rl: point.rl,
+                        parent: this
+                    });
+                    this.pointsVel.splice(i, 0, vel);
+                }
+            }
+            this.sqDist = function(a, b) {
+                return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+            }
+            this.movePoints = function() {
+                //console.log(this.id)
+                var pointsVel = this.pointsVel.slice();
+                var len = this.points.length;
+                for (var i = 0; i < len; ++i) {
+                    var prevVel = pointsVel[(i - 1 + len) % len];
+                    var nextVel = pointsVel[(i + 1) % len];
+                    var newVel = (this.pointsVel[i] + Math.random() - 0.5) * 0.7;
+                    newVel = Math.max(Math.min(newVel, 10), -10);
+                    this.pointsVel[i] = (prevVel + nextVel + 8 * newVel) / 10;
+                }
+                this.maxPointRad = 0
+                for (var i = 0; i < len; ++i) {
+                    var curP = this.points[i];
+                    var curRl = curP.rl;
+                    var prevRl = this.points[(i - 1 + len) % len].rl;
+                    var nextRl = this.points[(i + 1) % len].rl;
+                    var self = this;
+                    var affected = window.LM.quadtree.some({
+                        x: curP.x - 5,
+                        y: curP.y - 5,
+                        w: 10,
+                        h: 10
+                    }, function(item) {
+                        return item.parent != self && this.sqDist(item, curP) <= 25;
+                    }.bind(this));
+
+                    //this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY
+
+                    //(curP.x < window.LM.mapMinX || curP.y < window.LM.mapMaxY ||
+                    //curP.x > window.LM.mapMaxX || curP.y > window.LM.mapMinY))
+
+
+                    //(curP.x < window.LM.viewMinX || curP.y < window.LM.viewMaxY ||
+                    //curP.x > window.LM.viewMaxX || curP.y > window.LM.viewMinY))
+
+                    /*if (!affected &&
+                        (curP.x < window.LM.mapMinX || curP.y < window.LM.mapMaxY ||
+                        curP.x > window.LM.mapMaxX || curP.y > window.LM.mapMinY))
+                    {
+                        affected = true;
+                    }*/
+                    if (affected) {
+                        //console.log('affected!!!!!')
+                        this.pointsVel[i] = Math.min(this.pointsVel[i], 0);
+                        this.pointsVel[i] -= 1;
+                    }
+                    curRl += this.pointsVel[i];
+                    curRl = Math.max(curRl, 0);
+
+                    curRl = (9 * curRl + this.size) / 10; //собака
+
+                    curP.rl = (prevRl + this.size + 8 * curRl) / 10; //собака
+
+                    //curP.rl = (prevRl + nextRl + 8 * curRl) / 10;
+
+                    var angle = 2 * Math.PI * i / len;
+                    var rl = curP.rl;
+                    if (rl > this.maxPointRad) this.maxPointRad = rl
+                    if (this.isVirus && i % 2 == 0) {
+                        rl += 5;
+                    }
+
+                    curP.x = this.x + Math.cos(angle) * rl;
+                    curP.y = this.y + Math.sin(angle) * rl;
+                }
+            };
+
+            this.update = function(t, e, i, s, o, a) {
+                this.x = t;
+                this.y = e;
+                this.isVirus = s;
+                this.isPlayerCell = o;
+                this.setMass(i);
+                this.setNick(a);
+            };
+            this.removeCell = function() {
+                this.removed = true;
+                var t = window.LM.cells.indexOf(this);
+                if (t != -1) {
+                    window.LM.cells.splice(t, 1);
+                    if (defaultmapsettings.virusesRange) {
+                        t = window.LM.viruses.indexOf(this);
+                        if (t != -1) {
+                            window.LM.viruses.splice(t, 1);
+                        }
+                    }
+                } else {
+                    t = window.LM.food.indexOf(this);
+                    if (t != -1) {
+                        window.LM.food.splice(t, 1);
+                    }
+                }
+                t = window.LM.playerCells.indexOf(this);
+                if (t != -1) {
+                    window.LM.removePlayerCell = true;
+                    window.LM.playerCells.splice(t, 1);
+                    t = window.LM.playerCellIDs.indexOf(this.id);
+                    if (t != -1) {
+                        window.LM.playerCellIDs.splice(t, 1);
+                    }
+                }
+                if (this.redrawed) {
+                    window.LM.removedCells.push(this);
+                }
+                delete window.LM.indexedCells[this.id];
+            };
+            this.moveCell = function() {
+                var t = window.LM.time - this.time;
+                var t1 = t / defaultmapsettings.animation;
+                t1 = t1 < 0 ? 0 : t1 > 1 ? 1 : t1;
+                this.x += (this.targetX - this.x) * t1;
+                this.y += (this.targetY - this.y) * t1;
+                this.size += (this.targetSize - this.size) * t1;
+                this.alpha = t1;
+                if (!this.removed) {
+                    this.time = window.LM.time;
+                    return;
+                }
+                if (t1 == 1) {
+                    var t2 = window.LM.removedCells.indexOf(this);
+                    if (t2 != -1) {
+                        window.LM.removedCells.splice(t2, 1);
+                    }
+                }
+            };
+            this.isInView = function() {
+                //console.log("hi");
+                return !(this.id <= 0) && !(this.x + this.size + 40 < window.LM.viewX - window.LM.canvasWidth / 2 / window.LM.scale || this.y + this.size + 40 < window.LM.viewY - window.LM.canvasHeight / 2 / window.LM.scale || this.x - this.size - 40 > window.LM.viewX + window.LM.canvasWidth / 2 / window.LM.scale || this.y - this.size - 40 > window.LM.viewY + window.LM.canvasHeight / 2 / window.LM.scale);
+            };
+            /*
+				this.setMass = function(t) {
+                    return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor) : (this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
+                };
+				*/
+            this.setMass = function(t) {
+                this.size = t;
+                if (t <= 40) {
+                    return false;
+                }
+                if (!this.massCanvas) {
+                    this.massCanvas = new irenderfromagario();
+                    return false;
+                }
+                if (!window.legendmod5.optimizedMass && window.ExternalScripts && !this.mergeCanvas) {
+                    this.mergeCanvas = new irenderfromagario();
+                    return false;
+                }
+                this.mass = ~~(t * t / 100);
+                this.redrawMass = true;
+                if (this.isVirus) {
+                    if (this.mass <= 200) {
+                        this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor;
+                    } else if (this.mass > 220) {
+                        this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor;
+                    }
+                    if (this.virMassShots) {
+                        this.mass = ~~((200 - this.mass) / 14);
+                    }
+                    if (defaultmapsettings.virusSound && this.lastMass && this.mass < this.lastMass) {
+                        void ogarminimapdrawer.playSound(ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
+                    }
+                    this.massTxt = this.mass.toString();
+                }
+                this.massTxt = this.mass.toString();
+
+                if (this.shortMass && this.mass >= 1000) {
+                    this.kMass = Math.round(this.mass / 100) / 10;
+                    this.massTxt = this.kMass + 'k';
+                    return true;
+                }
+                if (this.optimizedMass) {
+                    this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale;
+                }
+                return true;
+            };
+
+            this.setNick = function(t) {
+                this.nick = t;
+                if (!t || this.isVirus) {
+                    return false;
+                }
+                if (!this.nickCanvas) {
+                    this.nickCanvas = new irenderfromagario();
+                    return false;
+                }
+                return true;
+            };
+            this.setScale = function(t, e, i, s, o) {
+                var t = Math.ceil(t * 10) / 10;
+                this.rescale = false;
+                if (this.scale != t) {
+                    this.scale = t;
+                    this.rescale = true;
+                }
+                this.nickScale = e;
+                this.massScale = i;
+                this.virMassScale = s;
+                this.strokeScale = o;
+            };
+            this.setFontSize = function() {
+                if (this.isVirus) {
+                    this.massSize = Math.ceil(this.virMassSize * this.scale * this.virMassScale);
+                    return;
+                }
+                this.fontSize = Math.max(this.size * 0.3, 26) * this.scale;
+                this.nickSize = ~~(this.fontSize * this.nickScale);
+                this.massSize = ~~(this.fontSize * 0.5 * this.massScale);
+                if (this.optimizedNames) {
+                    this.redrawNick = Math.abs((this.nickSize - this.lastNickSize) / this.nickSize) >= 0.3 || this.rescale;
+                    return;
+                }
+                this.redrawNick = true;
+            };
+            this.setStrokeSize = function() {
+                if (this.strokeNick && !this.isVirus) {
+                    this.nickStrokeSize = ~~(this.nickSize * 0.1 * this.strokeScale);
+                }
+                if (this.strokeMass) {
+                    this.massStrokeSize = ~~(this.massSize * 0.1 * this.strokeScale);
+                }
+            };
+            this.setDrawing = function() {
+                this.optimizedNames = defaultmapsettings.optimizedNames;
+                this.optimizedMass = defaultmapsettings.optimizedMass;
+                this.shortMass = defaultmapsettings.shortMass;
+                this.virMassShots = defaultmapsettings.virMassShots;
+                this.strokeNick = defaultmapsettings.namesStroke;
+                this.strokeMass = defaultmapsettings.massStroke;
+            };
+            this.setDrawingScale = function() {
+                this.setScale(i.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale);
+                this.setFontSize();
+                this.setStrokeSize();
+                this.margin = 0;
+            };
+            this.drawNick = function(t) {
+                if (!this.nick || !this.nickCanvas || this.isVirus) {
+                    return;
+                }
+                var nickCanvas = this.nickCanvas;
+                nickCanvas.setDrawing(defaultSettings.namesColor, defaultSettings.namesFontFamily, defaultSettings.namesFontWeight, this.strokeNick, this.nickStrokeSize, defaultSettings.namesStrokeColor);
+                nickCanvas.setTxt(this.nick);
+                if (this.redrawNick) {
+                    nickCanvas.setFontSize(this.nickSize);
+                    this.lastNickSize = this.nickSize;
+                }
+                nickCanvas.setScale(this.scale);
+                var nickImg = nickCanvas.drawTxt();
+                var w = ~~(nickImg.width / this.scale);
+                var h = ~~(nickImg.height / this.scale);
+                this.margin = ~~(h / 2);
+                try {
+                    t.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
+                } catch (e) {}
+            };
+            this.drawMerge = function(context) {
+                if (this.mergeCanvas && !(this.size <= 40)) {
+                    var mergeCanvas = this.mergeCanvas;
+                    mergeCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
+
+                    mergeCanvas.setFontSize(this.massSize);
+                    mergeCanvas.setScale(this.scale);
+
+
+                    if (window.ExternalScripts && !defaultmapsettings.optimizedMass && window.playerCellsId && this.isPlayerCell && !this.isVirus) {
+                        if (window.playerCellsId[this.id] == undefined) {
+                            window.playerCellsId[this.id] = {};
+                            window.playerCellsId[this.id].historyMass = [];
+                            window.playerCellsId[this.id].historyX = [];
+                            window.playerCellsId[this.id].historyY = [];
+                        } else {
+                            window.playerCellsId[this.id].historyMass.unshift(this.mass); //i test mass with size to find out the merging time
+                            if (window.playerCellsId[this.id].historyMass.length > 500) {
+                                window.playerCellsId[this.id].historyMass.pop();
+                            }
+                            window.playerCellsId[this.id].historyX.unshift(this.x);
+                            if (window.playerCellsId[this.id].historyX.length > 500) {
+                                window.playerCellsId[this.id].historyX.pop();
+                            }
+                            window.playerCellsId[this.id].historyY.unshift(this.y);
+                            if (window.playerCellsId[this.id].historyY.length > 500) {
+                                //this.historyY.pop();
+                                window.playerCellsId[this.id].historyY.pop();
+                            }
+                        }
+                        //if (this.mergeTime && this.mergeTime > 0) {
+                        if (window.legendmod.playerCells.length > 1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1) {
+                            var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
+
+                            if (this.redrawMerge) {
+                                mergeCanvas.setTxt(customTxt);
+                                //this.lastMass = this.mass;
+                            }
+
+                            var data = mergeCanvas.drawTxt(customTxt);
+                            var width = ~~(data.width / this.scale);
+                            //console.log(data.width, this.scale, width, this.x - width / 2);
+                            var height = ~~(data.height / this.scale);
+                            var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
+                            if (width > 1 && height > 1) {
+                                try {
+                                    context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+                                } catch (e) {}
+                            }
+
+                        }
+
+                    }
+                    ///
+
+
+                    //window.counterCell++;
+                }
+            };
+            this.drawMass = function(context) {
+                if (this.massCanvas && !(this.size <= 40)) {
+                    var massCanvas = this.massCanvas;
+                    massCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
+                    //
+                    if (this.redrawMass) {
+                        massCanvas.setTxt(this.massTxt);
+                        this.lastMass = this.mass;
+                    }
+                    massCanvas.setFontSize(this.massSize);
+                    massCanvas.setScale(this.scale);
+
+                    var data = massCanvas.drawTxt();
+                    var width = ~~(data.width / this.scale);
+                    //console.log("m:"+data.width, this.scale, width, this.x - width / 2);
+                    var height = ~~(data.height / this.scale)
+                    var textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
+                    if (width > 1 && height > 1) {
+                        try {
+                            context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
+                        } catch (e) {}
+                    }
+                }
+            };
+            this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
+                const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
+                const GROUPSIZE = this.pi2 / nAngelsOfVirus;
+                const degreeStep = GROUPSIZE / 2;
+                const ctxfx = new Path2D;
+                const radiusX = zeroSizeMax - pixelSizeTargetMax;
+                const tileHeight = radiusX + this.nHeight;
+                const n = this.pi2 + GROUPSIZE;
+                for (let i = 0, j = degreeStep; i <= n; j = (i = i + GROUPSIZE) + degreeStep) {
+                    ctxfx.lineTo(~~(shadowXpos + radiusX * Math.sin(i)), ~~(shadowYpos + radiusX * Math.cos(i)));
+                    ctxfx.lineTo(~~(shadowXpos + tileHeight * Math.sin(j)), ~~(shadowYpos + tileHeight * Math.cos(j)));
+                }
+                return ctxfx;
+            };
+            this.draw = function(style, canCreateDiscussions) {
+                if (!(window.LM.hideSmallBots && this.size <= 36)) {
+                    style.save();
+                    this.redrawed++;
+                    if (canCreateDiscussions) {
+                        this.moveCell();
+                    }
+                    if (this.removed) {
+                        style.globalAlpha *= 1 - this.alpha;
+                    }
+                    var value = style.globalAlpha;
+                    var s = false;
+                    var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
+                    style.beginPath()
+
+
+                    if (defaultmapsettings.jellyPhisycs && this.points.length) {
+                        var point = this.points[0];
+                        style.moveTo(point.x, point.y);
+                        for (var i = 0; i < this.points.length; ++i) {
+                            var point = this.points[i];
+                            style.lineTo(point.x, point.y);
+                        }
+                    } else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
+                        style.lineJoin = "miter"
+                        var pointCount = 120;
+                        var incremental = this.pi2 / pointCount;
+                        style.moveTo(this.x, this.y + this.size + 3);
+                        for (var i = 1; i < pointCount; i++) {
+                            var angle = i * incremental;
+                            var dist = this.size - 3 + (i % 2 === 0) * 6;
+                            style.lineTo(
+                                this.x + dist * Math.sin(angle),
+                                this.y + dist * Math.cos(angle)
+                            )
+                        }
+                        style.lineTo(this.x, this.y + this.size + 3);
+                    } else style.arc(this.x, this.y, y, 0, this.pi2, false);
+
+                    style.closePath();
+
+
+
+                    //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
+                    //    return style.fillStyle = this.color, style.fill(), void style.restore();
+                    //}
+
+
+                    if (!defaultmapsettings.jellyPhisycs) {
+                        if (this.isVirus) {
+                            //console.log("is not jelly");
+                            if (dyinglight1load == "yes") {
+                                try {
+                                    style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
+                                } catch (e) {}
+                            }
+                            return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && window.LM.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
+                                defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
+                                this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
+                        }
+                    } else {
+                        if (this.isVirus) {
+                            //console.log("is jelly");
+                            if (defaultmapsettings.transparentViruses) {
+                                style.globalAlpha *= defaultSettings.virusAlpha;
+                                defaultmapsettings.isAlphaChanged = true;
+                            }
+                            if (defaultmapsettings.virColors && window.LM.play) {
+                                style.fillStyle = ogarminimapdrawer.setVirusColor(y);
+                                style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
+                            } else {
+                                style.fillStyle = defaultSettings.virusColor;
+                                style.strokeStyle = defaultSettings.virusStrokeColor;
+                            }
+                            style.fill();
+                            if (defaultmapsettings.isAlphaChanged) {
+                                style.globalAlpha = defaultSettings.cellsAlpha;
+                                defaultmapsettings.isAlphaChanged = false;
+                            }
+                            style.lineWidth = defaultSettings.virusStrokeSize;
+                            if (defaultmapsettings.virusGlow) {
+                                style.shadowBlur = defaultSettings.virusGlowSize;
+                                style.shadowColor = defaultSettings.virusGlowColor;
+                            }
+                            style.stroke();
+                            if (defaultmapsettings.showMass) {
+                                this.setDrawing();
+                                this.setDrawingScale();
+                                this.setMass(this.size);
+                                this.drawMass(style);
+                                if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
+                                    this.drawMerge(style);
+                                }
+                            }
+                            style.restore();
+                            return;
+                        }
+                    }
+                    if (defaultmapsettings.transparentCells) {
+                        style.globalAlpha *= defaultSettings.cellsAlpha;
+                        s = true;
+                    }
+                    var color = this.color;
+                    if (window.LM.play) {
+                        if (this.isPlayerCell) {
+                            if (defaultmapsettings.myCustomColor) {
+                                color = ogarcopythelb.color;
+                            }
+                        } else {
+                            if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
+                                color = this.oppColor;
+                            }
+                        }
+                    }
+                    if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light")) {
+                        style.fillStyle = color;
+                        style.fill();
+                    }
+                    if (s) {
+                        style.globalAlpha = value;
+                        s = false;
+                    }
+                    /*if (dyinglight1load != "yes"){
+                            style.globalAlpha = 1;
+                            s = false;
+						}*/
+                    var node = null;
+                    var node2 = {}; //, node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
+
+
+
+                    //lylko
+                    if (defaultmapsettings.customSkins && window.LM.showCustomSkins) {
+                        node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
+
+                        if (node) {
+                            if ((defaultmapsettings.transparentSkins || window.LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
+                                style.globalAlpha *= defaultSettings.skinsAlpha;
+                                s = true;
+                            }
+
+
+                            if (defaultmapsettings.jellyPhisycs) {
+                                var lineWidth = Math.max(~~(y / 50), 10);
+                                style.save();
+                                style.clip();
+                                this.maxPointRad && (y = this.maxPointRad);
+                                try {
+                                    style.drawImage(node, this.x - y - lineWidth, this.y - y - lineWidth, 2 * y + lineWidth * 2, 2 * y + lineWidth * 2);
+                                } catch (e) {}
+                                style.globalCompositeOperation = 'luminosity';
+
+                                style.lineWidth = lineWidth
+                                style.strokeStyle = color;
+                                style.stroke();
+                                style.globalCompositeOperation = '';
+                                style.restore();
+
+                            } else {
+                                try {
+                                    style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y);
+                                } catch (e) {}
+                            }
+
+                            //special animations
+                            if (this.targetNick.includes("The Dying Light")) {
+                                try {
+                                    style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+                                } catch (e) {}
+                            } else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Qᴜᴇᴛᴢᴀʟ   ᶜᵒᵃᵗˡ") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) {
+                                try {
+                                    style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+                                    //style.translate(this.x - y * 2, this.y - y * 2, this.y - y * 2);
+                                    //style.rotate(window.LM.cAngle);
+                                    //style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+                                    //try
+                                    //window.LM.updateCommander();
+                                } catch (e) {}
+                            }
+                            //style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)),
+                            //(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
+                            //((defaultmapsettings.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
+                            //(node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
+                            //node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
+                            //!node2.src.includes(".mp4") && !node2.src.includes(".webm") && !node2.src.includes(".ogv") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y),
+                            //(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
+                            //this.targetNick.includes("℄") && (style.rotate(window.LM.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
+                            //(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
+                            //(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) &&
+
+                            //(window.LM.cAngle += .007), console.log(window.LM.cAngle),
+                            //style.rotate(window.LM.cAngle1),
+                        }
+                    }
+                    if (s) {
+                        style.globalAlpha = value;
+                        s = false;
+                    }
+
+
+                    if (defaultmapsettings.teammatesInd && !this.isPlayerCell && y <= 800 &&
+                        window.teammatenicks &&
+                        (window.teammatenicks.includes(this.targetNick))) {
+                        ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y)
+                    }
+
+                    if (defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
+
+                        //                            y <= 200 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
+
+                        style.restore();
+                        return;
+                    } else {
+                        if (defaultmapsettings.customSkins && window.LM.showCustomSkins) {
+                            node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick];
+                            ogarminimapdrawer.customSkinsMap[this.targetNick];
+                            if (node2.src) {
+                                if (defaultmapsettings.videoSkins) {
+                                    if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
+                                        checkVideos(node2.src, this.targetNick);
+                                        try {
+                                            style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+                                        } catch (e) {}
+                                    }
+                                }
+                            }
+                            if (dyinglight1load == "yes" && node == null && this.targetNick.includes("The Dying Light") == false) {
+                                try {
+                                    style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
+                                } catch (e) {}
+                            }
+
+                        }
+                        var recursive = false;
+                        if (!this.isPlayerCell && (recursive = ogarminimapdrawer.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
+                            style.restore();
+                        } else {
+                            this.setDrawing();
+                            this.setDrawingScale();
+                            style.globalAlpha *= defaultSettings.textAlpha;
+                            if (!(defaultmapsettings.noNames || recursive && defaultmapsettings.autoHideNames || this.isPlayerCell && defaultmapsettings.hideMyName || node && defaultmapsettings.hideTeammatesNames)) {
+                                if (this.setNick(this.targetNick)) {
+                                    this.drawNick(style);
+                                }
+                            }
+                            if (!(!defaultmapsettings.showMass || recursive && defaultmapsettings.autoHideMass || this.isPlayerCell && defaultmapsettings.hideMyMass || defaultmapsettings.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
+                                if (this.setMass(this.size)) {
+
+                                    this.drawMass(style);
+                                    if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
+                                        this.drawMerge(style);
+                                    }
+                                }
+                            }
+                            style.restore();
+                        }
+
+
+
+                    }
+                }
+            };
+        }
+        window.legendmod1 = ogarbasicassembly;
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
@@ -2316,7 +3063,7 @@ var thelegendmodproject = function(t, e, i) {
         window.legendmod5 = defaultmapsettings;
 
         ogarminimapdrawer = {
-            'name': 'LM express',
+            'name': 'window.LM express',
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
@@ -3717,7 +4464,7 @@ var thelegendmodproject = function(t, e, i) {
                         //console.log('Special effects stage 1');
                         i.spawnX = i.playerX;
                         i.spawnY = i.playerY;
-                        LM.drawCommander = true;
+                        window.LM.drawCommander = true;
                     }, 110);
                 }
                 LegendModSpawn();
@@ -4587,14 +5334,14 @@ var thelegendmodproject = function(t, e, i) {
                         this.vanillaskins(y, g);
                     }
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
-                    var LM = 1 & d,
+                    var bM = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
                     this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l],
                             m && (ogariocellssetts.color = m)) :
-                        ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, LM, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
+                        ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, bM, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
                             ogarioset1final ? this.food.push(ogariocellssetts) :
-                            (LM && defaultmapsettings['virusesRange'] && this.viruses.push(ogariocellssetts),
+                            (bM && defaultmapsettings['virusesRange'] && this.viruses.push(ogariocellssetts),
                                 this.cells.push(ogariocellssetts),
                                 -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))),
                             this.indexedCells[l] = ogariocellssetts),
@@ -4603,9 +5350,9 @@ var thelegendmodproject = function(t, e, i) {
                         ogariocellssetts.targetX = h,
                         ogariocellssetts.targetY = c,
                         ogariocellssetts.targetSize = u,
-                        ogariocellssetts['isFood'] = ogarioset1final,
-                        ogariocellssetts['isVirus'] = LM,
-                        g && (ogariocellssetts['skin'] = g),
+                        ogariocellssetts.isFood = ogarioset1final,
+                        ogariocellssetts.isVirus = bM,
+                        g && (ogariocellssetts.skin = g),
                         4 & f && (t.readUInt32LE(i), i += 4);
                 }
             },
@@ -4766,7 +5513,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
                     console.log("[Legend mod Express] VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                     this.setvnr(max);
-                    toastr.info('<b>[SERVER]:</b> Map fixed with LM players');
+                    toastr.info('<b>[SERVER]:</b> Map fixed with window.LM players');
                 }
             },
             'updateTeamPlayers': function() {
@@ -5073,764 +5820,17 @@ var thelegendmodproject = function(t, e, i) {
             }
         };
 window.legendmod3 = ogarminimapdrawer;
-        function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-            cimg2 = new Image;
-            cimg2.src = defaultSettings.commanderImage2;
-            cimg5 = new Image;
-            cimg5.src = defaultSettings.commanderImage5;
-            cimg6 = new Image;
-            cimg6.src = defaultSettings.commanderImage6;
-            cimg7 = new Image;
-            cimg7.src = 'https://jimboy3100.github.io/banners/iconLcForCanvas.png';
-
-            if (dyinglight1load == "yes") {
-                cimgDyingLight = new Image;
-                cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
-                cimgDyingLightvirus = new Image;
-                cimgDyingLightvirus.src = defaultSettings.commanderImageDyingLightvirus;
-
-
-                cimgDyingLight1 = new Image;
-                cimgDyingLight1.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie2.png';
-                cimgDyingLight2 = new Image;
-                cimgDyingLight2.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie3.png';
-                cimgDyingLight3 = new Image;
-                cimgDyingLight3.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie4.png';
-                cimgDyingLight4 = new Image;
-                cimgDyingLight4.src = 'https://jimboy3100.github.io/banners/icondyinglightzombie5.png';
-                cimgDyingLight5 = new Image;
-                cimgDyingLight5.src = 'https://jimboy3100.github.io/banners/icondyinglightzombiebig.png';
-                cimgDyingLight6 = new Image;
-                cimgDyingLight6.src = 'https://jimboy3100.github.io/banners/icondyinglightvolaltile.png';
-            }
-
-            //lylko
-            this.points = []
-            this.pointsVel = []
-            this.maxPointRad = 0
-
-
-            this.oldAlpha = 0;
-            this.id = t;
-            this.x = e;
-            this.y = s;
-            this.targetX = e;
-            this.targetY = s;
-            this.color = a;
-            this.oppColor = null;
-            this.size = o;
-            this.targetSize = o;
-            this.alpha = 1;
-            this.nick = '';
-            this.targetNick = '';
-            this.nickCanvas = null;
-            this.mass = 0;
-            this.lastMass = 0;
-            //			this.historyMass = [];
-            //			this.historyX = [];
-            //			this.historyY = [];
-            this.kMass = 0;
-            this.massCanvas = null;
-            this.mergeCanvas = null;
-            this.massTxt = '';
-            this.margin = 0;
-            this.scale = 1;
-            this.nickScale = 1;
-            this.massScale = 1;
-            this.virMassScale = 3;
-            this.strokeScale = 1;
-            this.fontSize = 26;
-            this.nickSize = 26;
-            this.lastNickSize = 0;
-            this.massSize = 26;
-            this.virMassSize = 26;
-            this.nickStrokeSize = 3;
-            this.massStrokeSize = 3;
-            this.isFood = n;
-            this.isVirus = r;
-            this.isPlayerCell = l;
-            this.shortMass = h;
-            this.virMassShots = c;
-            this.rescale = false;
-            this.redrawNick = true;
-            this.redrawMass = true;
-            this.redrawMerge = true;
-            this.optimizedNames = false;
-            this.optimizedMass = false;
-            this.strokeNick = false;
-            this.strokeMass = false;
-            this.removed = false;
-            this.redrawed = 0;
-            this.time = 0;
-            this.skin = null;
-            this.pi2 = 2 * Math.PI;
-            this.virusColor = null;
-            this.virusStroke = null;
-            this.nHeight = 6;
-
-            this.updateNumPoints = function() {
-                //adjustment of the number of contacts
-                var numPoints = this.size * ogarfooddrawer.scale | 0;
-                numPoints = Math.max(numPoints, 5);
-                numPoints = Math.min(numPoints, 120);
-                if (this.isVirus) numPoints = 100;
-                while (this.points.length > numPoints) {
-                    var i = Math.random() * this.points.length | 0;
-                    this.points.splice(i, 1);
-                    this.pointsVel.splice(i, 1);
-                }
-                if (this.points.length == 0 && numPoints != 0) {
-                    this.points.push({
-                        x: this.x,
-                        y: this.y,
-                        rl: this.size,
-                        parent: this //?
-                    });
-                    this.pointsVel.push(Math.random() - 0.5);
-                }
-                while (this.points.length < numPoints) {
-                    var i = Math.random() * this.points.length | 0;
-                    var point = this.points[i];
-                    var vel = this.pointsVel[i];
-                    this.points.splice(i, 0, {
-                        x: point.x,
-                        y: point.y,
-                        rl: point.rl,
-                        parent: this
-                    });
-                    this.pointsVel.splice(i, 0, vel);
-                }
-            }
-            this.sqDist = function(a, b) {
-                return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
-            }
-            this.movePoints = function() {
-                //console.log(this.id)
-                var pointsVel = this.pointsVel.slice();
-                var len = this.points.length;
-                for (var i = 0; i < len; ++i) {
-                    var prevVel = pointsVel[(i - 1 + len) % len];
-                    var nextVel = pointsVel[(i + 1) % len];
-                    var newVel = (this.pointsVel[i] + Math.random() - 0.5) * 0.7;
-                    newVel = Math.max(Math.min(newVel, 10), -10);
-                    this.pointsVel[i] = (prevVel + nextVel + 8 * newVel) / 10;
-                }
-                this.maxPointRad = 0
-                for (var i = 0; i < len; ++i) {
-                    var curP = this.points[i];
-                    var curRl = curP.rl;
-                    var prevRl = this.points[(i - 1 + len) % len].rl;
-                    var nextRl = this.points[(i + 1) % len].rl;
-                    var self = this;
-                    var affected = LM.quadtree.some({
-                        x: curP.x - 5,
-                        y: curP.y - 5,
-                        w: 10,
-                        h: 10
-                    }, function(item) {
-                        return item.parent != self && this.sqDist(item, curP) <= 25;
-                    }.bind(this));
-
-                    //this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY
-
-                    //(curP.x < LM.mapMinX || curP.y < LM.mapMaxY ||
-                    //curP.x > LM.mapMaxX || curP.y > LM.mapMinY))
-
-
-                    //(curP.x < LM.viewMinX || curP.y < LM.viewMaxY ||
-                    //curP.x > LM.viewMaxX || curP.y > LM.viewMinY))
-
-                    /*if (!affected &&
-                        (curP.x < LM.mapMinX || curP.y < LM.mapMaxY ||
-                        curP.x > LM.mapMaxX || curP.y > LM.mapMinY))
-                    {
-                        affected = true;
-                    }*/
-                    if (affected) {
-                        //console.log('affected!!!!!')
-                        this.pointsVel[i] = Math.min(this.pointsVel[i], 0);
-                        this.pointsVel[i] -= 1;
-                    }
-                    curRl += this.pointsVel[i];
-                    curRl = Math.max(curRl, 0);
-
-                    curRl = (9 * curRl + this.size) / 10; //собака
-
-                    curP.rl = (prevRl + this.size + 8 * curRl) / 10; //собака
-
-                    //curP.rl = (prevRl + nextRl + 8 * curRl) / 10;
-
-                    var angle = 2 * Math.PI * i / len;
-                    var rl = curP.rl;
-                    if (rl > this.maxPointRad) this.maxPointRad = rl
-                    if (this.isVirus && i % 2 == 0) {
-                        rl += 5;
-                    }
-
-                    curP.x = this.x + Math.cos(angle) * rl;
-                    curP.y = this.y + Math.sin(angle) * rl;
-                }
-            };
-
-            this.update = function(t, e, i, s, o, a) {
-                this.x = t;
-                this.y = e;
-                this.isVirus = s;
-                this.isPlayerCell = o;
-                this.setMass(i);
-                this.setNick(a);
-            };
-            this.removeCell = function() {
-                this.removed = true;
-                var t = LM.cells.indexOf(this);
-                if (t != -1) {
-                    LM.cells.splice(t, 1);
-                    if (defaultmapsettings.virusesRange) {
-                        t = LM.viruses.indexOf(this);
-                        if (t != -1) {
-                            LM.viruses.splice(t, 1);
-                        }
-                    }
-                } else {
-                    t = LM.food.indexOf(this);
-                    if (t != -1) {
-                        LM.food.splice(t, 1);
-                    }
-                }
-                t = LM.playerCells.indexOf(this);
-                if (t != -1) {
-                    LM.removePlayerCell = true;
-                    LM.playerCells.splice(t, 1);
-                    t = LM.playerCellIDs.indexOf(this.id);
-                    if (t != -1) {
-                        LM.playerCellIDs.splice(t, 1);
-                    }
-                }
-                if (this.redrawed) {
-                    LM.removedCells.push(this);
-                }
-                delete LM.indexedCells[this.id];
-            };
-            this.moveCell = function() {
-                var t = LM.time - this.time;
-                var t1 = t / defaultmapsettings.animation;
-                t1 = t1 < 0 ? 0 : t1 > 1 ? 1 : t1;
-                this.x += (this.targetX - this.x) * t1;
-                this.y += (this.targetY - this.y) * t1;
-                this.size += (this.targetSize - this.size) * t1;
-                this.alpha = t1;
-                if (!this.removed) {
-                    this.time = LM.time;
-                    return;
-                }
-                if (t1 == 1) {
-                    var t2 = LM.removedCells.indexOf(this);
-                    if (t2 != -1) {
-                        LM.removedCells.splice(t2, 1);
-                    }
-                }
-            };
-            this.isInView = function() {
-                //console.log("hi");
-                return !(this.id <= 0) && !(this.x + this.size + 40 < LM.viewX - LM.canvasWidth / 2 / LM.scale || this.y + this.size + 40 < LM.viewY - LM.canvasHeight / 2 / LM.scale || this.x - this.size - 40 > LM.viewX + LM.canvasWidth / 2 / LM.scale || this.y - this.size - 40 > LM.viewY + LM.canvasHeight / 2 / LM.scale);
-            };
-            /*
-				this.setMass = function(t) {
-                    return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor) : (this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
-                };
-				*/
-            this.setMass = function(t) {
-                this.size = t;
-                if (t <= 40) {
-                    return false;
-                }
-                if (!this.massCanvas) {
-                    this.massCanvas = new irenderfromagario();
-                    return false;
-                }
-                if (!window.legendmod5.optimizedMass && window.ExternalScripts && !this.mergeCanvas) {
-                    this.mergeCanvas = new irenderfromagario();
-                    return false;
-                }
-                this.mass = ~~(t * t / 100);
-                this.redrawMass = true;
-                if (this.isVirus) {
-                    if (this.mass <= 200) {
-                        this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor;
-                    } else if (this.mass > 220) {
-                        this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor;
-                    }
-                    if (this.virMassShots) {
-                        this.mass = ~~((200 - this.mass) / 14);
-                    }
-                    if (defaultmapsettings.virusSound && this.lastMass && this.mass < this.lastMass) {
-                        void ogarminimapdrawer.playSound(ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
-                    }
-                    this.massTxt = this.mass.toString();
-                }
-                this.massTxt = this.mass.toString();
-
-                if (this.shortMass && this.mass >= 1000) {
-                    this.kMass = Math.round(this.mass / 100) / 10;
-                    this.massTxt = this.kMass + 'k';
-                    return true;
-                }
-                if (this.optimizedMass) {
-                    this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale;
-                }
-                return true;
-            };
-
-            this.setNick = function(t) {
-                this.nick = t;
-                if (!t || this.isVirus) {
-                    return false;
-                }
-                if (!this.nickCanvas) {
-                    this.nickCanvas = new irenderfromagario();
-                    return false;
-                }
-                return true;
-            };
-            this.setScale = function(t, e, i, s, o) {
-                var t = Math.ceil(t * 10) / 10;
-                this.rescale = false;
-                if (this.scale != t) {
-                    this.scale = t;
-                    this.rescale = true;
-                }
-                this.nickScale = e;
-                this.massScale = i;
-                this.virMassScale = s;
-                this.strokeScale = o;
-            };
-            this.setFontSize = function() {
-                if (this.isVirus) {
-                    this.massSize = Math.ceil(this.virMassSize * this.scale * this.virMassScale);
-                    return;
-                }
-                this.fontSize = Math.max(this.size * 0.3, 26) * this.scale;
-                this.nickSize = ~~(this.fontSize * this.nickScale);
-                this.massSize = ~~(this.fontSize * 0.5 * this.massScale);
-                if (this.optimizedNames) {
-                    this.redrawNick = Math.abs((this.nickSize - this.lastNickSize) / this.nickSize) >= 0.3 || this.rescale;
-                    return;
-                }
-                this.redrawNick = true;
-            };
-            this.setStrokeSize = function() {
-                if (this.strokeNick && !this.isVirus) {
-                    this.nickStrokeSize = ~~(this.nickSize * 0.1 * this.strokeScale);
-                }
-                if (this.strokeMass) {
-                    this.massStrokeSize = ~~(this.massSize * 0.1 * this.strokeScale);
-                }
-            };
-            this.setDrawing = function() {
-                this.optimizedNames = defaultmapsettings.optimizedNames;
-                this.optimizedMass = defaultmapsettings.optimizedMass;
-                this.shortMass = defaultmapsettings.shortMass;
-                this.virMassShots = defaultmapsettings.virMassShots;
-                this.strokeNick = defaultmapsettings.namesStroke;
-                this.strokeMass = defaultmapsettings.massStroke;
-            };
-            this.setDrawingScale = function() {
-                this.setScale(i.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale);
-                this.setFontSize();
-                this.setStrokeSize();
-                this.margin = 0;
-            };
-            this.drawNick = function(t) {
-                if (!this.nick || !this.nickCanvas || this.isVirus) {
-                    return;
-                }
-                var nickCanvas = this.nickCanvas;
-                nickCanvas.setDrawing(defaultSettings.namesColor, defaultSettings.namesFontFamily, defaultSettings.namesFontWeight, this.strokeNick, this.nickStrokeSize, defaultSettings.namesStrokeColor);
-                nickCanvas.setTxt(this.nick);
-                if (this.redrawNick) {
-                    nickCanvas.setFontSize(this.nickSize);
-                    this.lastNickSize = this.nickSize;
-                }
-                nickCanvas.setScale(this.scale);
-                var nickImg = nickCanvas.drawTxt();
-                var w = ~~(nickImg.width / this.scale);
-                var h = ~~(nickImg.height / this.scale);
-                this.margin = ~~(h / 2);
-                try {
-                    t.drawImage(nickImg, ~~this.x - ~~(w / 2), ~~this.y - this.margin, w, h);
-                } catch (e) {}
-            };
-            this.drawMerge = function(context) {
-                if (this.mergeCanvas && !(this.size <= 40)) {
-                    var mergeCanvas = this.mergeCanvas;
-                    mergeCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
-
-                    mergeCanvas.setFontSize(this.massSize);
-                    mergeCanvas.setScale(this.scale);
-
-
-                    if (window.ExternalScripts && !defaultmapsettings.optimizedMass && window.playerCellsId && this.isPlayerCell && !this.isVirus) {
-                        if (window.playerCellsId[this.id] == undefined) {
-                            window.playerCellsId[this.id] = {};
-                            window.playerCellsId[this.id].historyMass = [];
-                            window.playerCellsId[this.id].historyX = [];
-                            window.playerCellsId[this.id].historyY = [];
-                        } else {
-                            window.playerCellsId[this.id].historyMass.unshift(this.mass); //i test mass with size to find out the merging time
-                            if (window.playerCellsId[this.id].historyMass.length > 500) {
-                                window.playerCellsId[this.id].historyMass.pop();
-                            }
-                            window.playerCellsId[this.id].historyX.unshift(this.x);
-                            if (window.playerCellsId[this.id].historyX.length > 500) {
-                                window.playerCellsId[this.id].historyX.pop();
-                            }
-                            window.playerCellsId[this.id].historyY.unshift(this.y);
-                            if (window.playerCellsId[this.id].historyY.length > 500) {
-                                //this.historyY.pop();
-                                window.playerCellsId[this.id].historyY.pop();
-                            }
-                        }
-                        //if (this.mergeTime && this.mergeTime > 0) {
-                        if (window.legendmod.playerCells.length > 1 && window.playerCellsId[this.id].mergeTime && window.playerCellsId[this.id].mergeTime > 1) {
-                            var customTxt = Math.round(window.playerCellsId[this.id].mergeTime);
-
-                            if (this.redrawMerge) {
-                                mergeCanvas.setTxt(customTxt);
-                                //this.lastMass = this.mass;
-                            }
-
-                            var data = mergeCanvas.drawTxt(customTxt);
-                            var width = ~~(data.width / this.scale);
-                            //console.log(data.width, this.scale, width, this.x - width / 2);
-                            var height = ~~(data.height / this.scale);
-                            var textureY = this.margin === 0 ? ~~(this.y + height * 2) : ~~this.y - 4 * this.margin;
-                            if (width > 1 && height > 1) {
-                                try {
-                                    context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
-                                } catch (e) {}
-                            }
-
-                        }
-
-                    }
-                    ///
-
-
-                    //window.counterCell++;
-                }
-            };
-            this.drawMass = function(context) {
-                if (this.massCanvas && !(this.size <= 40)) {
-                    var massCanvas = this.massCanvas;
-                    massCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
-                    //
-                    if (this.redrawMass) {
-                        massCanvas.setTxt(this.massTxt);
-                        this.lastMass = this.mass;
-                    }
-                    massCanvas.setFontSize(this.massSize);
-                    massCanvas.setScale(this.scale);
-
-                    var data = massCanvas.drawTxt();
-                    var width = ~~(data.width / this.scale);
-                    //console.log("m:"+data.width, this.scale, width, this.x - width / 2);
-                    var height = ~~(data.height / this.scale)
-                    var textureY = this.margin === 0 ? ~~(this.y - height / 2) : ~~this.y + this.margin;
-                    if (width > 1 && height > 1) {
-                        try {
-                            context.drawImage(data, ~~(this.x - width / 2), textureY, width, height);
-                        } catch (e) {}
-                    }
-                }
-            };
-            this.createStrokeVirusPath = function(shadowXpos, shadowYpos, zeroSizeMax, pixelSizeTargetMax = 6) {
-                const nAngelsOfVirus = ~~(45 * zeroSizeMax / 98);
-                const GROUPSIZE = this.pi2 / nAngelsOfVirus;
-                const degreeStep = GROUPSIZE / 2;
-                const ctxfx = new Path2D;
-                const radiusX = zeroSizeMax - pixelSizeTargetMax;
-                const tileHeight = radiusX + this.nHeight;
-                const n = this.pi2 + GROUPSIZE;
-                for (let i = 0, j = degreeStep; i <= n; j = (i = i + GROUPSIZE) + degreeStep) {
-                    ctxfx.lineTo(~~(shadowXpos + radiusX * Math.sin(i)), ~~(shadowYpos + radiusX * Math.cos(i)));
-                    ctxfx.lineTo(~~(shadowXpos + tileHeight * Math.sin(j)), ~~(shadowYpos + tileHeight * Math.cos(j)));
-                }
-                return ctxfx;
-            };
-            this.draw = function(style, canCreateDiscussions) {
-                if (!(LM.hideSmallBots && this.size <= 36)) {
-                    style.save();
-                    this.redrawed++;
-                    if (canCreateDiscussions) {
-                        this.moveCell();
-                    }
-                    if (this.removed) {
-                        style.globalAlpha *= 1 - this.alpha;
-                    }
-                    var value = style.globalAlpha;
-                    var s = false;
-                    var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
-                    style.beginPath()
-
-
-                    if (defaultmapsettings.jellyPhisycs && this.points.length) {
-                        var point = this.points[0];
-                        style.moveTo(point.x, point.y);
-                        for (var i = 0; i < this.points.length; ++i) {
-                            var point = this.points[i];
-                            style.lineTo(point.x, point.y);
-                        }
-                    } else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
-                        style.lineJoin = "miter"
-                        var pointCount = 120;
-                        var incremental = this.pi2 / pointCount;
-                        style.moveTo(this.x, this.y + this.size + 3);
-                        for (var i = 1; i < pointCount; i++) {
-                            var angle = i * incremental;
-                            var dist = this.size - 3 + (i % 2 === 0) * 6;
-                            style.lineTo(
-                                this.x + dist * Math.sin(angle),
-                                this.y + dist * Math.cos(angle)
-                            )
-                        }
-                        style.lineTo(this.x, this.y + this.size + 3);
-                    } else style.arc(this.x, this.y, y, 0, this.pi2, false);
-
-                    style.closePath();
+ 
 
 
 
-                    //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
-                    //    return style.fillStyle = this.color, style.fill(), void style.restore();
-                    //}
-
-
-                    if (!defaultmapsettings.jellyPhisycs) {
-                        if (this.isVirus) {
-                            //console.log("is not jelly");
-                            if (dyinglight1load == "yes") {
-                                try {
-                                    style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
-                                } catch (e) {}
-                            }
-                            return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = ogarminimapdrawer.setVirusColor(y), style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
-                                defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
-                                this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
-                        }
-                    } else {
-                        if (this.isVirus) {
-                            //console.log("is jelly");
-                            if (defaultmapsettings.transparentViruses) {
-                                style.globalAlpha *= defaultSettings.virusAlpha;
-                                defaultmapsettings.isAlphaChanged = true;
-                            }
-                            if (defaultmapsettings.virColors && LM.play) {
-                                style.fillStyle = ogarminimapdrawer.setVirusColor(y);
-                                style.strokeStyle = ogarminimapdrawer.setVirusStrokeColor(y);
-                            } else {
-                                style.fillStyle = defaultSettings.virusColor;
-                                style.strokeStyle = defaultSettings.virusStrokeColor;
-                            }
-                            style.fill();
-                            if (defaultmapsettings.isAlphaChanged) {
-                                style.globalAlpha = defaultSettings.cellsAlpha;
-                                defaultmapsettings.isAlphaChanged = false;
-                            }
-                            style.lineWidth = defaultSettings.virusStrokeSize;
-                            if (defaultmapsettings.virusGlow) {
-                                style.shadowBlur = defaultSettings.virusGlowSize;
-                                style.shadowColor = defaultSettings.virusGlowColor;
-                            }
-                            style.stroke();
-                            if (defaultmapsettings.showMass) {
-                                this.setDrawing();
-                                this.setDrawingScale();
-                                this.setMass(this.size);
-                                this.drawMass(style);
-                                if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
-                                    this.drawMerge(style);
-                                }
-                            }
-                            style.restore();
-                            return;
-                        }
-                    }
-                    if (defaultmapsettings.transparentCells) {
-                        style.globalAlpha *= defaultSettings.cellsAlpha;
-                        s = true;
-                    }
-                    var color = this.color;
-                    if (LM.play) {
-                        if (this.isPlayerCell) {
-                            if (defaultmapsettings.myCustomColor) {
-                                color = ogarcopythelb.color;
-                            }
-                        } else {
-                            if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
-                                color = this.oppColor;
-                            }
-                        }
-                    }
-                    if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light")) {
-                        style.fillStyle = color;
-                        style.fill();
-                    }
-                    if (s) {
-                        style.globalAlpha = value;
-                        s = false;
-                    }
-                    /*if (dyinglight1load != "yes"){
-                            style.globalAlpha = 1;
-                            s = false;
-						}*/
-                    var node = null;
-                    var node2 = {}; //, node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick]
-
-
-
-                    //lylko
-                    if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                        node = ogarminimapdrawer.getCustomSkin(this.targetNick, this.color);
-
-                        if (node) {
-                            if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
-                                style.globalAlpha *= defaultSettings.skinsAlpha;
-                                s = true;
-                            }
-
-
-                            if (defaultmapsettings.jellyPhisycs) {
-                                var lineWidth = Math.max(~~(y / 50), 10);
-                                style.save();
-                                style.clip();
-                                this.maxPointRad && (y = this.maxPointRad);
-                                try {
-                                    style.drawImage(node, this.x - y - lineWidth, this.y - y - lineWidth, 2 * y + lineWidth * 2, 2 * y + lineWidth * 2);
-                                } catch (e) {}
-                                style.globalCompositeOperation = 'luminosity';
-
-                                style.lineWidth = lineWidth
-                                style.strokeStyle = color;
-                                style.stroke();
-                                style.globalCompositeOperation = '';
-                                style.restore();
-
-                            } else {
-                                try {
-                                    style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y);
-                                } catch (e) {}
-                            }
-
-                            //special animations
-                            if (this.targetNick.includes("The Dying Light")) {
-                                try {
-                                    style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-                                } catch (e) {}
-                            } else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Qᴜᴇᴛᴢᴀʟ   ᶜᵒᵃᵗˡ") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) {
-                                try {
-                                    style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-                                    //style.translate(this.x - y * 2, this.y - y * 2, this.y - y * 2);
-                                    //style.rotate(LM.cAngle);
-                                    //style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-                                    //try
-                                    //LM.updateCommander();
-                                } catch (e) {}
-                            }
-                            //style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)),
-                            //(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
-                            //((defaultmapsettings.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
-                            //(node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
-                            //node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
-                            //!node2.src.includes(".mp4") && !node2.src.includes(".webm") && !node2.src.includes(".ogv") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y),
-                            //(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
-                            //this.targetNick.includes("℄") && (style.rotate(LM.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
-                            //(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
-                            //(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) &&
-
-                            //(LM.cAngle += .007), console.log(LM.cAngle),
-                            //style.rotate(LM.cAngle1),
-                        }
-                    }
-                    if (s) {
-                        style.globalAlpha = value;
-                        s = false;
-                    }
-
-
-                    if (defaultmapsettings.teammatesInd && !this.isPlayerCell && y <= 800 &&
-                        window.teammatenicks &&
-                        (window.teammatenicks.includes(this.targetNick))) {
-                        ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y)
-                    }
-
-                    if (defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
-
-                        //                            y <= 200 && (node || ogarminimapdrawer.checkSkinsMap(this.targetNick, this.color)) && ogarfooddrawer.drawTeammatesInd(style, this.x, this.y, y), defaultmapsettings.noNames && !defaultmapsettings.showMass || canCreateDiscussions) {
-
-                        style.restore();
-                        return;
-                    } else {
-                        if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                            node2.src = ogarminimapdrawer.customSkinsMap[this.targetNick];
-                            ogarminimapdrawer.customSkinsMap[this.targetNick];
-                            if (node2.src) {
-                                if (defaultmapsettings.videoSkins) {
-                                    if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
-                                        checkVideos(node2.src, this.targetNick);
-                                        try {
-                                            style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
-                                        } catch (e) {}
-                                    }
-                                }
-                            }
-                            if (dyinglight1load == "yes" && node == null && this.targetNick.includes("The Dying Light") == false) {
-                                try {
-                                    style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);
-                                } catch (e) {}
-                            }
-
-                        }
-                        var recursive = false;
-                        if (!this.isPlayerCell && (recursive = ogarminimapdrawer.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
-                            style.restore();
-                        } else {
-                            this.setDrawing();
-                            this.setDrawingScale();
-                            style.globalAlpha *= defaultSettings.textAlpha;
-                            if (!(defaultmapsettings.noNames || recursive && defaultmapsettings.autoHideNames || this.isPlayerCell && defaultmapsettings.hideMyName || node && defaultmapsettings.hideTeammatesNames)) {
-                                if (this.setNick(this.targetNick)) {
-                                    this.drawNick(style);
-                                }
-                            }
-                            if (!(!defaultmapsettings.showMass || recursive && defaultmapsettings.autoHideMass || this.isPlayerCell && defaultmapsettings.hideMyMass || defaultmapsettings.hideEnemiesMass && !this.isPlayerCell && !this.isVirus)) {
-                                if (this.setMass(this.size)) {
-
-                                    this.drawMass(style);
-                                    if (window.ExternalScripts && !window.legendmod5.optimizedMass) {
-                                        this.drawMerge(style);
-                                    }
-                                }
-                            }
-                            style.restore();
-                        }
-
-
-
-                    }
-                }
-            };
-        }
-        window.legendmod1 = ogarbasicassembly;
-
-
-
-        var LM = {
+        window.LM = {
             'quadtree': null,
             updateQuadtree: function(cells) {
                 var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
                 var h = ogarfooddrawer.canvasHeight / ogarfooddrawer.scale;
-                var x = (LM.viewX - w / 2);
-                var y = (LM.viewY - h / 2);
+                var x = (window.LM.viewX - w / 2);
+                var y = (window.LM.viewY - h / 2);
                 this.quadtree = new PointQuadTree(x, y, w, h, 32);
                 for (var i = 0; i < cells.length; ++i) {
                     var cell = cells[i];
@@ -6130,7 +6130,7 @@ window.legendmod3 = ogarminimapdrawer;
                             }
                         }, */
             "sendAccessToken": function(shapes, options, oW) {
-                if (LM["accessTokenSent"]) {
+                if (window.LM["accessTokenSent"]) {
                     return;
                 }
                 if (!oW) {
@@ -6494,7 +6494,7 @@ window.legendmod3 = ogarminimapdrawer;
 
                         case 103:
                             window.testobjectsOpcode103 = data;
-                            LM["accessTokenSent"] = !![];
+                            window.LM["accessTokenSent"] = !![];
                             break;
                         case 112:
                             console.log('[Legend mod Express] opcode: ', data.getUint8(0));
@@ -6797,14 +6797,14 @@ window.legendmod3 = ogarminimapdrawer;
                         this.vanillaskins(y, g);
                     }
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
-                    var LM = 1 & d,
+                    var bM = 1 & d,
                         ogarioset1final = 1 & f,
                         ogariocellssetts = null;
                     this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l],
                             m && (ogariocellssetts.color = m)) :
-                        ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, LM, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
+                        ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, bM, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
                             ogarioset1final ? this.food.push(ogariocellssetts) :
-                            (LM && defaultmapsettings['virusesRange'] && this.viruses.push(ogariocellssetts),
+                            (bM && defaultmapsettings['virusesRange'] && this.viruses.push(ogariocellssetts),
                                 this.cells.push(ogariocellssetts),
                                 -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))),
                             this.indexedCells[l] = ogariocellssetts),
@@ -6814,9 +6814,9 @@ window.legendmod3 = ogarminimapdrawer;
                         ogariocellssetts.targetY = c,
                         ogariocellssetts.targetSize = u,
                         ogariocellssetts.targetSize = u,
-                        ogariocellssetts['isFood'] = ogarioset1final,
-                        ogariocellssetts['isVirus'] = LM,
-                        g && (ogariocellssetts['skin'] = g),
+                        ogariocellssetts.isFood = ogarioset1final,
+                        ogariocellssetts.isVirus = bM,
+                        g && (ogariocellssetts.skin = g),
                         4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
@@ -7023,10 +7023,10 @@ window.legendmod3 = ogarminimapdrawer;
                 }, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
             }
         };
-        window.legendmod = LM; // look at this
+        window.legendmod = window.LM; // look at this
 
         window.sendAction = function(t) {
-            LM.sendAction(t);
+            window.LM.sendAction(t);
         };
         var ogarfooddrawer = {
                 'canvas': null,
@@ -7049,9 +7049,9 @@ window.legendmod3 = ogarminimapdrawer;
                     this.canvas = document.getElementById('canvas');
                     this.ctx = this.canvas.getContext('2d');
                     this.canvas.onmousemove = function(t) {
-                        LM.clientX = t.clientX;
-                        LM.clientY = t.clientY;
-                        LM.getCursorPosition();
+                        window.LM.clientX = t.clientX;
+                        window.LM.clientY = t.clientY;
+                        window.LM.getCursorPosition();
                     };
                 },
                 'resizeCanvas': function() {
@@ -7059,60 +7059,60 @@ window.legendmod3 = ogarminimapdrawer;
                     this.canvasHeight = window.innerHeight;
                     this.canvas.width = this.canvasWidth;
                     this.canvas.height = this.canvasHeight;
-                    LM.canvasWidth = this.canvasWidth;
-                    LM.canvasHeight = this.canvasHeight;
+                    window.LM.canvasWidth = this.canvasWidth;
+                    window.LM.canvasHeight = this.canvasHeight;
                     this.renderFrame();
                 },
                 'setView': function() {
                     this.setScale(),
-                        LM.playerCells.length ?
-                        (LM.calculatePlayerMassAndPosition(),
-                            //					this.camX += (LM.viewX - this.camX) / 2,
-                            //					this.camY += (LM.viewY - this.camY) / 2) :
-                            this.camX = (this.camX + LM.viewX) / 2,
-                            this.camY = (this.camY + LM.viewY) / 2) :
-                        (this.camX = (29 * this.camX + LM.viewX) / 30,
-                            this.camY = (29 * this.camY + LM.viewY) / 30),
-                        LM.playerX = this.camX, LM.playerY = this.camY;
+                        window.LM.playerCells.length ?
+                        (window.LM.calculatePlayerMassAndPosition(),
+                            //					this.camX += (window.LM.viewX - this.camX) / 2,
+                            //					this.camY += (window.LM.viewY - this.camY) / 2) :
+                            this.camX = (this.camX + window.LM.viewX) / 2,
+                            this.camY = (this.camY + window.LM.viewY) / 2) :
+                        (this.camX = (29 * this.camX + window.LM.viewX) / 30,
+                            this.camY = (29 * this.camY + window.LM.viewY) / 30),
+                        window.LM.playerX = this.camX, window.LM.playerY = this.camY;
                 },
                 'setScale': function() {
-                    if (!LM.autoZoom) return this.scale = (9 * this.scale + this.getZoom()) / 10, void(LM.viewScale = this.scale);
-                    LM.play ? this.scale = (9 * this.scale + Math.pow(Math.min(64 / LM.playerSize, 1), 0.4) * this.getZoom()) / 10 : this.scale = (9 * this.scale + LM.scale * this.getZoom()) / 10, LM.viewScale = this.scale;
+                    if (!window.LM.autoZoom) return this.scale = (9 * this.scale + this.getZoom()) / 10, void(window.LM.viewScale = this.scale);
+                    window.LM.play ? this.scale = (9 * this.scale + Math.pow(Math.min(64 / window.LM.playerSize, 1), 0.4) * this.getZoom()) / 10 : this.scale = (9 * this.scale + window.LM.scale * this.getZoom()) / 10, window.LM.viewScale = this.scale;
                 },
                 'getZoom': function() {
-                    return Math.max(this.canvasWidth / 1080, this.canvasHeight / 1920) * LM.zoomValue;
+                    return Math.max(this.canvasWidth / 1080, this.canvasHeight / 1920) * window.LM.zoomValue;
                 },
                 //Sonia5
                 'sleep': function(ms) {
                     return new Promise(resolve => setTimeout(resolve, ms));
                 },
                 /*                'renderFrame': function() {
-                                    //for (LM.time = Date.now(), e = 0; e < LM.cells.length; e++) LM.cells[e].moveCell();
-                				    LM.time = Date.now();
-                						for (i = 0; i < LM.cells.length; i++) {
-                							LM.cells[i].moveCell();
+                                    //for (window.LM.time = Date.now(), e = 0; e < window.LM.cells.length; e++) window.LM.cells[e].moveCell();
+                				    window.LM.time = Date.now();
+                						for (i = 0; i < window.LM.cells.length; i++) {
+                							window.LM.cells[i].moveCell();
                 						}
-                                    if (this['setView'](), LM.getCursorPosition(), LM['sortCells'](), LM['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), defaultmapsettings.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), defaultmapsettings.showBgSectors && this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings['gridColor'], defaultSettings['sectorsColor'], defaultSettings['sectorsWidth'], true), ':battleroyale' === LM.gameMode && this['drawBattleArea'](this.ctx), defaultmapsettings['showMapBorders']) {
+                                    if (this['setView'](), window.LM.getCursorPosition(), window.LM['sortCells'](), window.LM['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), defaultmapsettings.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), defaultmapsettings.showBgSectors && this.drawSectors(this.ctx, window.LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, window.LM.mapMinX, window.LM.mapMinY, window.LM.mapMaxX, window.LM.mapMaxY, defaultSettings['gridColor'], defaultSettings['sectorsColor'], defaultSettings['sectorsWidth'], true), ':battleroyale' === window.LM.gameMode && this['drawBattleArea'](this.ctx), defaultmapsettings['showMapBorders']) {
                                         var t = defaultSettings['bordersWidth'] / 2;
-                                        this['drawMapBorders'](this.ctx, LM.mapOffsetFixed, LM.mapMinX - t, LM.mapMinY - t, LM.mapMaxX + t, LM.mapMaxY + t, defaultSettings['bordersColor'], defaultSettings['bordersWidth']);
+                                        this['drawMapBorders'](this.ctx, window.LM.mapOffsetFixed, window.LM.mapMinX - t, window.LM.mapMinY - t, window.LM.mapMaxX + t, window.LM.mapMaxY + t, defaultSettings['bordersColor'], defaultSettings['bordersWidth']);
                                     }
                                     this.drawCommander();
-                                    defaultmapsettings['virusesRange'] && this['drawVirusesRange'](this.ctx, LM.viruses), this['drawFood'](), LM.play && (defaultmapsettings.splitRange && this['drawSplitRange'](this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell), defaultmapsettings.oppRings && this['drawOppRings'](this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache), defaultmapsettings['cursorTracking'] && this['drawCursorTracking'](this.ctx, LM.playerCells, LM.cursorX, LM.cursorY)), this['drawGhostCells']();
-                                    for (var e = 0; e < LM['removedCells'].length; e++) LM['removedCells'][e].draw(this.ctx, true);
-                                    for (e = 0; e < LM.cells.length; e++) LM.cells[e].draw(this.ctx);
-                                    this.ctx['restore'](), ':teams' === LM.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                                    defaultmapsettings['virusesRange'] && this['drawVirusesRange'](this.ctx, window.LM.viruses), this['drawFood'](), window.LM.play && (defaultmapsettings.splitRange && this['drawSplitRange'](this.ctx, window.LM.biggerSTECellsCache, window.LM.playerCells, window.LM.selectBiggestCell), defaultmapsettings.oppRings && this['drawOppRings'](this.ctx, this.scale, window.LM.biggerSTECellsCache, window.LM.biggerCellsCache, window.LM.smallerCellsCache, window.LM.STECellsCache), defaultmapsettings['cursorTracking'] && this['drawCursorTracking'](this.ctx, window.LM.playerCells, window.LM.cursorX, window.LM.cursorY)), this['drawGhostCells']();
+                                    for (var e = 0; e < window.LM['removedCells'].length; e++) window.LM['removedCells'][e].draw(this.ctx, true);
+                                    for (e = 0; e < window.LM.cells.length; e++) window.LM.cells[e].draw(this.ctx);
+                                    this.ctx['restore'](), ':teams' === window.LM.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                                 }, */
                 'renderFrame': async function() { //Sonia5
                     //this.ctx.start2D();
                     await this.sleep(4); //Sonia5
-                    LM.time = Date.now();
-                    for (i = 0; i < LM.cells.length; i++) {
-                        LM.cells[i].moveCell();
+                    window.LM.time = Date.now();
+                    for (i = 0; i < window.LM.cells.length; i++) {
+                        window.LM.cells[i].moveCell();
                     }
                     this.setView();
-                    LM.getCursorPosition();
-                    LM.sortCells();
-                    LM.compareCells();
+                    window.LM.getCursorPosition();
+                    window.LM.sortCells();
+                    window.LM.compareCells();
                     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
                     if (defaultmapsettings.showGrid) {
                         this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
@@ -7122,104 +7122,104 @@ window.legendmod3 = ogarminimapdrawer;
                     this.ctx.scale(this.scale, this.scale);
                     this.ctx.translate(-this.camX, -this.camY);
                     if (defaultmapsettings.showBgSectors) {
-                        this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
+                        this.drawSectors(this.ctx, window.LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, window.LM.mapMinX, window.LM.mapMinY, window.LM.mapMaxX, window.LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                     }
-                    if (LM.gameMode === ':battleroyale') {
+                    if (window.LM.gameMode === ':battleroyale') {
                         this.drawBattleArea(this.ctx);
                     }
                     if (defaultmapsettings.showMapBorders) {
                         var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-                        this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+                        this.drawMapBorders(this.ctx, window.LM.mapOffsetFixed, window.LM.mapMinX - tempborderwidthradius, window.LM.mapMinY - tempborderwidthradius, window.LM.mapMaxX + tempborderwidthradius, window.LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                     }
                     this.drawCommander();
                     this.drawCommander2();
                     if (defaultmapsettings.virusesRange) {
-                        this.drawVirusesRange(this.ctx, LM.viruses);
+                        this.drawVirusesRange(this.ctx, window.LM.viruses);
                     }
                     this.drawFood();
-                    if (LM.play) {
+                    if (window.LM.play) {
                         if (defaultmapsettings.splitRange) {
-                            this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                            this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                            //this.drawDoubleSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                            this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                            this.drawSplitRange(this.ctx, window.LM.biggerSTECellsCache, window.LM.playerCells, window.LM.selectBiggestCell);
+                            this.drawSplitRange(this.ctx, window.LM.biggerSTEDCellsCache, window.LM.playerCells, window.LM.selectBiggestCell); //Sonia
+                            //this.drawDoubleSplitRange(this.ctx, window.LM.biggerSTECellsCache, window.LM.playerCells, window.LM.selectBiggestCell);
+                            this.drawDoubleSplitRange(this.ctx, window.LM.biggerSTEDCellsCache, window.LM.playerCells, window.LM.selectBiggestCell); //Sonia
                         }
                         if (defaultmapsettings.oppRings) {
-                            //this.drawOppRings(this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache);
-                            this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
+                            //this.drawOppRings(this.ctx, this.scale, window.LM.biggerSTECellsCache, window.LM.biggerCellsCache, window.LM.smallerCellsCache, window.LM.STECellsCache);
+                            this.drawOppRings(this.ctx, this.scale, window.LM.biggerSTEDCellsCache, window.LM.biggerSTECellsCache, window.LM.biggerCellsCache, window.LM.smallerCellsCache, window.LM.STECellsCache, window.LM.STEDCellsCache); //Sonia
                         }
                         if (defaultmapsettings.cursorTracking) {
-                            this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                            this.drawCursorTracking(this.ctx, window.LM.playerCells, window.LM.cursorX, window.LM.cursorY);
                         }
                     }
 
                     this.drawGhostCells();
 
-                    for (var i = 0; i < LM.removedCells.length; i++) {
-                        LM.removedCells[i].draw(this.ctx, true);
+                    for (var i = 0; i < window.LM.removedCells.length; i++) {
+                        window.LM.removedCells[i].draw(this.ctx, true);
                     }
 
                     //lylko
-                    defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
+                    defaultmapsettings.jellyPhisycs && window.LM.updateQuadtree(window.LM.cells); //
 
-                    for (i = 0; i < LM.cells.length; i++) {
+                    for (i = 0; i < window.LM.cells.length; i++) {
 
                         if (defaultmapsettings.jellyPhisycs) {
-                            LM.cells[i].updateNumPoints();
-                            LM.cells[i].movePoints();
+                            window.LM.cells[i].updateNumPoints();
+                            window.LM.cells[i].movePoints();
                         }
 
-                        LM.cells[i].draw(this.ctx);
+                        window.LM.cells[i].draw(this.ctx);
 
-                        if (ogarfooddrawer.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
-                            LM.selected = LM.cells[i].id
-                            //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
+                        if (ogarfooddrawer.LMB && this.pointInCircle(window.LM.cursorX, window.LM.cursorY, window.LM.cells[i].x, window.LM.cells[i].y, window.LM.cells[i].size)) {
+                            window.LM.selected = window.LM.cells[i].id
+                            //this.drawRing(this.ctx,window.LM.cells[i].x,window.LM.cells[i].y,window.LM.cells[i].size,0.75,'#ffffff')
                         }
                     }
-                    LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
-                        LM.indexedCells[LM.selected].x,
-                        LM.indexedCells[LM.selected].y,
-                        LM.indexedCells[LM.selected].size,
+                    window.LM.indexedCells[window.LM.selected] && this.drawRing(this.ctx,
+                        window.LM.indexedCells[window.LM.selected].x,
+                        window.LM.indexedCells[window.LM.selected].y,
+                        window.LM.indexedCells[window.LM.selected].size,
                         0.75, '#ffffff')
 
-                    if (ogarfooddrawer.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
-                        var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
+                    if (ogarfooddrawer.RMB && window.LM.indexedCells[window.LM.selected] && window.LM.playerCellIDs.length) {
+                        var index = window.LM.selectBiggestCell ? window.LM.playerCells.length - 1 : 0;
                         //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
-                        if (LM.playerCells[index] == undefined) return;
-                        var xc = LM.playerCells[index].targetX //.x
-                        var yc = LM.playerCells[index].targetY //.y
+                        if (window.LM.playerCells[index] == undefined) return;
+                        var xc = window.LM.playerCells[index].targetX //.x
+                        var yc = window.LM.playerCells[index].targetY //.y
 
-                        var x = LM.indexedCells[LM.selected].targetX //.x
-                        var y = LM.indexedCells[LM.selected].targetY //.y
+                        var x = window.LM.indexedCells[window.LM.selected].targetX //.x
+                        var y = window.LM.indexedCells[window.LM.selected].targetY //.y
 
                         var a = xc - x
                         var b = yc - y
-                        var distance = Math.sqrt(a * a + b * b) - (LM.indexedCells[LM.selected].size + LM.playerCells[index].size)
+                        var distance = Math.sqrt(a * a + b * b) - (window.LM.indexedCells[window.LM.selected].size + window.LM.playerCells[index].size)
 
                         var ang = Math.atan2(y - yc, x - xc);
 
-                        LM.cursorX = xc + (Math.cos(ang) * distance)
-                        LM.cursorY = yc + (Math.sin(ang) * distance)
-                        LM.sendPosition()
-                        //console.log(xc,yc,x,y,LM.cursorX,LM.cursorY)
+                        window.LM.cursorX = xc + (Math.cos(ang) * distance)
+                        window.LM.cursorY = yc + (Math.sin(ang) * distance)
+                        window.LM.sendPosition()
+                        //console.log(xc,yc,x,y,window.LM.cursorX,window.LM.cursorY)
                         //Math.deg(ang)
 
 
-                        /*var xc = LM.playerCells[index].x,
-                            yc = LM.playerCells[index].y,*/
+                        /*var xc = window.LM.playerCells[index].x,
+                            yc = window.LM.playerCells[index].y,*/
                         //R = 100000000,
-                        /*ang = Math.atan2(LM.indexedCells[LM.selected].y - yc, LM.indexedCells[LM.selected].x - xc);
-                        LM.cursorX= Math.cos(ang)
-                        LM.cursorY= Math.sin(ang)*/
+                        /*ang = Math.atan2(window.LM.indexedCells[window.LM.selected].y - yc, window.LM.indexedCells[window.LM.selected].x - xc);
+                        window.LM.cursorX= Math.cos(ang)
+                        window.LM.cursorY= Math.sin(ang)*/
                         //Math.deg(ang)
 
-                        //LM.cursorX = LM.indexedCells[LM.selected].x
-                        //LM.cursorY = LM.indexedCells[LM.selected].y
+                        //window.LM.cursorX = window.LM.indexedCells[window.LM.selected].x
+                        //window.LM.cursorY = window.LM.indexedCells[window.LM.selected].y
                     }
 
 
                     this.ctx.restore();
-                    if (LM.gameMode === ':teams') {
+                    if (window.LM.gameMode === ':teams') {
                         if (this.pieChart && this.pieChart.width) {
                             this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                         }
@@ -7300,7 +7300,7 @@ window.legendmod3 = ogarminimapdrawer;
                 },
                 "drawCommander": function() {
                     //console.log('Special effects stage 2');
-                    if (LM.drawCommander) {
+                    if (window.LM.drawCommander) {
                         var pickerAxes = this.ctx;
                         cimg = new Image;
                         cimg.src = defaultSettings.commanderImage;
@@ -7309,22 +7309,22 @@ window.legendmod3 = ogarminimapdrawer;
                         cimg2 = new Image;
                         cimg2.src = defaultSettings.commanderImage2;
                         pickerAxes.save();
-                        pickerAxes.globalAlpha = LM.cAlpha;
+                        pickerAxes.globalAlpha = window.LM.cAlpha;
                         pickerAxes.translate(i.spawnX, i.spawnY);
-                        pickerAxes.rotate(LM.cAngle);
-                        pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.rotate(window.LM.cAngle);
+                        pickerAxes.drawImage(cimg, -window.LM.cRadius / 2, -window.LM.cRadius / 2, window.LM.cRadius, window.LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
-                        pickerAxes.globalAlpha = LM.cAlpha;
+                        pickerAxes.globalAlpha = window.LM.cAlpha;
                         pickerAxes.translate(i.spawnX, i.spawnY);
-                        pickerAxes.rotate(LM.cAngle1);
-                        pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.rotate(window.LM.cAngle1);
+                        pickerAxes.drawImage(cimg1, -window.LM.cRadius / 2, -window.LM.cRadius / 2, window.LM.cRadius, window.LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
-                        pickerAxes.globalAlpha = LM.cAlpha;
+                        pickerAxes.globalAlpha = window.LM.cAlpha;
                         pickerAxes.translate(i.spawnX, i.spawnY);
-                        pickerAxes.rotate(LM.cAngle2);
-                        pickerAxes.drawImage(cimg2, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.rotate(window.LM.cAngle2);
+                        pickerAxes.drawImage(cimg2, -window.LM.cRadius / 2, -window.LM.cRadius / 2, window.LM.cRadius, window.LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.globalAlpha = 1;
                         this.updateCommander();
@@ -7332,7 +7332,7 @@ window.legendmod3 = ogarminimapdrawer;
                 },
                 "drawCommander2": function() {
                     //console.log('Special effects stage 2');
-                    if (LM.drawCommander2) {
+                    if (window.LM.drawCommander2) {
                         var pickerAxes = this.ctx;
                         cimg = new Image;
                         cimg.src = defaultSettings.commanderImage3;
@@ -7341,47 +7341,47 @@ window.legendmod3 = ogarminimapdrawer;
                         cimg2 = new Image;
                         cimg2.src = defaultSettings.commanderImage5;
                         pickerAxes.save();
-                        pickerAxes.globalAlpha = LM.cAlpha;
+                        pickerAxes.globalAlpha = window.LM.cAlpha;
                         pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
-                        pickerAxes.rotate(LM.cAngle);
-                        pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.rotate(window.LM.cAngle);
+                        pickerAxes.drawImage(cimg, -window.LM.cRadius / 2, -window.LM.cRadius / 2, window.LM.cRadius, window.LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
-                        pickerAxes.globalAlpha = LM.cAlpha;
+                        pickerAxes.globalAlpha = window.LM.cAlpha;
                         pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
-                        pickerAxes.rotate(LM.cAngle1);
-                        pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.rotate(window.LM.cAngle1);
+                        pickerAxes.drawImage(cimg1, -window.LM.cRadius / 2, -window.LM.cRadius / 2, window.LM.cRadius, window.LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
-                        pickerAxes.globalAlpha = LM.cAlpha;
+                        pickerAxes.globalAlpha = window.LM.cAlpha;
                         pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
-                        pickerAxes.rotate(LM.cAngle2);
-                        pickerAxes.drawImage(cimg2, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.rotate(window.LM.cAngle2);
+                        pickerAxes.drawImage(cimg2, -window.LM.cRadius / 2, -window.LM.cRadius / 2, window.LM.cRadius, window.LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.globalAlpha = 1;
                         this.updateCommander();
                     }
                 },
                 "updateCommander": function() {
-                    LM.cRadius += 7;
-                    LM.cAngle += .007;
-                    LM.cAngle1 -= .006;
-                    LM.cAngle2 += .003;
-                    if (2025 <= LM.cRadius) {
-                        LM.cAlpha *= .95;
+                    window.LM.cRadius += 7;
+                    window.LM.cAngle += .007;
+                    window.LM.cAngle1 -= .006;
+                    window.LM.cAngle2 += .003;
+                    if (2025 <= window.LM.cRadius) {
+                        window.LM.cAlpha *= .95;
                     }
-                    if (1E-4 >= LM.cAlpha) {
+                    if (1E-4 >= window.LM.cAlpha) {
                         this.resetCommander();
                     }
                 },
                 "resetCommander": function() {
-                    LM.cRadius = 10; //LM.clientX
-                    LM.cAngle = 4;
-                    LM.cAngle1 = 0;
-                    LM.cAngle2 = 0;
-                    LM.cAlpha = 1;
-                    LM.drawCommander = false;
-                    LM.drawCommander2 = false;
+                    window.LM.cRadius = 10; //window.LM.clientX
+                    window.LM.cAngle = 4;
+                    window.LM.cAngle1 = 0;
+                    window.LM.cAngle2 = 0;
+                    window.LM.cAlpha = 1;
+                    window.LM.drawCommander = false;
+                    window.LM.drawCommander2 = false;
                     i.spawnX = 0;
                     i.spawnY = 0;
                 },
@@ -7429,11 +7429,11 @@ window.legendmod3 = ogarminimapdrawer;
                     }
                 },
                 'drawFood': function() {
-                    if (LM.showFood && !(defaultmapsettings.autoHideFoodOnZoom && this.scale < 0.2)) {
-                        if (defaultmapsettings.autoHideFood && !LM.foodIsHidden && LM.playerMass > 1000) return LM.showFood = false, void(LM.foodIsHidden = true);
+                    if (window.LM.showFood && !(defaultmapsettings.autoHideFoodOnZoom && this.scale < 0.2)) {
+                        if (defaultmapsettings.autoHideFood && !window.LM.foodIsHidden && window.LM.playerMass > 1000) return window.LM.showFood = false, void(window.LM.foodIsHidden = true);
                         if (defaultmapsettings.rainbowFood)
-                            for (var t = 0; t < LM.food.length; t++) LM.food[t].moveCell(), LM.food[t].draw(this.ctx);
-                        else this.drawCachedFood(this.ctx, LM.food, this.scale);
+                            for (var t = 0; t < window.LM.food.length; t++) window.LM.food[t].moveCell(), window.LM.food[t].draw(this.ctx);
+                        else this.drawCachedFood(this.ctx, window.LM.food, this.scale);
                     }
                 },
                 'drawCachedFood': function(t, e, i, s) {
@@ -7474,7 +7474,7 @@ window.legendmod3 = ogarminimapdrawer;
                     //if (this.drawCircles(t, e, 760, 4, 0.4, '#BE00FF'), i.length) {
                     if (this.draw2Circles(t, e, 760, 4, 0.4, defaultSettings.enemyBSTEDColor), i.length) { //Sonia2
                         //if (this.draw2Circles(t, e, 760, 4, 0.4, '#8000ff'), i.length) { //Sonia
-                        //this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+                        //this.drawSplitRange(this.ctx, window.LM.biggerSTECellsCache, window.LM.playerCells, window.LM.selectBiggestCell);
 
                         var a = s ? i.length - 1 : 0;
                         //console.log(i[a].size);
@@ -7553,19 +7553,19 @@ window.legendmod3 = ogarminimapdrawer;
                     var t = this.pieChart.getContext('2d'),
                         e = Math.min(200, 0.3 * this.canvasWidth) / 200;
                     this.pieChart.width = 200 * e, this.pieChart.height = 240 * e, t.scale(e, e);
-                    for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < LM.pieChart.length; o++) {
-                        var a = s + LM.pieChart[o] * this.pi2;
+                    for (var i = ['#333333', '#FF3333', '#33FF33', '#3333FF'], s = 0, o = 0; o < window.LM.pieChart.length; o++) {
+                        var a = s + window.LM.pieChart[o] * this.pi2;
                         t.fillStyle = i[o + 1], t.beginPath(), t.moveTo(100, 140), t.arc(100, 140, 80, s, a, false), t.fill(), s = a;
                     }
                 },
                 'drawBattleArea': function(t) {
-                    if (LM.battleRoyale.state) {
-                        this.drawDangerArea(t, LM.battleRoyale.x, LM.battleRoyale.y, LM.battleRoyale.radius, LM.mapMinX, LM.mapMinY, LM.mapMaxX - LM.mapMinX, LM.mapMaxY - LM.mapMinY, defaultSettings.dangerAreaColor, 0.25);
-                        this.drawSafeArea(t, LM.battleRoyale.targetX, LM.battleRoyale.targetY, LM.battleRoyale.targetRadius, 40, defaultSettings.safeAreaColor);
+                    if (window.LM.battleRoyale.state) {
+                        this.drawDangerArea(t, window.LM.battleRoyale.x, window.LM.battleRoyale.y, window.LM.battleRoyale.radius, window.LM.mapMinX, window.LM.mapMinY, window.LM.mapMaxX - window.LM.mapMinX, window.LM.mapMaxY - window.LM.mapMinY, defaultSettings.dangerAreaColor, 0.25);
+                        this.drawSafeArea(t, window.LM.battleRoyale.targetX, window.LM.battleRoyale.targetY, window.LM.battleRoyale.targetRadius, 40, defaultSettings.safeAreaColor);
                     }
                 },
                 'drawBattleAreaOnMinimap': function(t, e, i, s, o, a) {
-                    if (LM.battleRoyale.state) {
+                    if (window.LM.battleRoyale.state) {
                         if (!this.battleAreaMap) {
                             this.battleAreaMap = document.createElement("canvas");
                             this.battleAreaMapCtx = this.battleAreaMap.getContext("2d");
@@ -7576,19 +7576,19 @@ window.legendmod3 = ogarminimapdrawer;
                         } else {
                             this.battleAreaMapCtx.clearRect(0, 0, e, i);
                         }
-                        var n = (LM.battleRoyale.x + o) * s;
-                        var r = (LM.battleRoyale.y + a) * s;
-                        var l = LM.battleRoyale.radius * s;
+                        var n = (window.LM.battleRoyale.x + o) * s;
+                        var r = (window.LM.battleRoyale.y + a) * s;
+                        var l = window.LM.battleRoyale.radius * s;
                         this.drawDangerArea(this.battleAreaMapCtx, n, r, l, 0, 0, e, i, defaultSettings.dangerAreaColor, 0.25);
-                        n = ~~((LM.battleRoyale.targetX + o) * s);
-                        r = ~~((LM.battleRoyale.targetY + a) * s);
-                        l = ~~(LM.battleRoyale.targetRadius * s);
+                        n = ~~((window.LM.battleRoyale.targetX + o) * s);
+                        r = ~~((window.LM.battleRoyale.targetY + a) * s);
+                        l = ~~(window.LM.battleRoyale.targetRadius * s);
                         this.drawSafeArea(this.battleAreaMapCtx, n, r, l, 2, defaultSettings.safeAreaColor);
                         t.drawImage(this.battleAreaMap, 0, 0);
                     }
                 },
                 'drawDangerArea': function(t, e, i, s, o, a, n, r, l, h) {
-                    if (!(LM.battleRoyale.radius == LM.battleRoyale.maxRadius || s <= 0)) {
+                    if (!(window.LM.battleRoyale.radius == window.LM.battleRoyale.maxRadius || s <= 0)) {
                         t.save();
                         t.globalAlpha = h;
                         t.fillStyle = l;
@@ -7602,7 +7602,7 @@ window.legendmod3 = ogarminimapdrawer;
                     }
                 },
                 'drawSafeArea': function(t, e, i, s, o, a) {
-                    if (!(LM.battleRoyale.state > 2 || s <= 0)) {
+                    if (!(window.LM.battleRoyale.state > 2 || s <= 0)) {
                         this.drawDashedCircle(t, e, i, s, 60, o, a);
                     }
                 },
@@ -7625,7 +7625,7 @@ window.legendmod3 = ogarminimapdrawer;
                 },
                 'drawGhostCells': function() {
                     if (defaultmapsettings.showGhostCells) {
-                        var t = LM.ghostCells;
+                        var t = window.LM.ghostCells;
                         this.ctx.beginPath();
                         var e = 0;
                         for (; e < t.length; e++) {
@@ -7646,16 +7646,16 @@ window.legendmod3 = ogarminimapdrawer;
                                     this.ctx.lineWidth = 4;
                                     angle = Math.PI * 0.8;
 
-                                    if (LM.leaderboard[e] != undefined) { //LM instead of legendmod for quicker response
+                                    if (window.LM.leaderboard[e] != undefined) { //window.LM instead of legendmod for quicker response
 
-                                        this.ghostcellstext = removeEmojis(ogarminimapdrawer.escapeHTML(LM.leaderboard[e].nick)); //legendmod3.escapeHTML(legendmod.leaderboard[0].nick)
+                                        this.ghostcellstext = removeEmojis(ogarminimapdrawer.escapeHTML(window.LM.leaderboard[e].nick)); //legendmod3.escapeHTML(legendmod.leaderboard[0].nick)
                                     } else {
                                         this.ghostcellstext = "Legend mod";
                                     }
                                     this.drawTextAlongArc(this.ctx, this.ghostcellstext, i, s, t[e].size * this.pi2 / 6, angle);
-                                    if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                                        if (LM.leaderboard[e] != undefined) {
-                                            node = ogarminimapdrawer.getCustomSkin(LM.leaderboard[e].nick, "#000000");
+                                    if (defaultmapsettings.customSkins && window.LM.showCustomSkins) {
+                                        if (window.LM.leaderboard[e] != undefined) {
+                                            node = ogarminimapdrawer.getCustomSkin(window.LM.leaderboard[e].nick, "#000000");
                                             if (node) {
                                                 this.ctx.drawImage(node, i - t[e].size, s - t[e].size, t[e].size * 2, t[e].size * 2);
                                             }
@@ -8037,7 +8037,7 @@ window.legendmod3 = ogarminimapdrawer;
                 },
                 'hk-showMass': {
                     'label': h['hk-showMass'],
-                    'defaultKey': 'LM',
+                    'defaultKey': 'window.LM',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.setShowMass();
                     },
@@ -8046,7 +8046,7 @@ window.legendmod3 = ogarminimapdrawer;
                 },
                 'hk-showMiniMap': {
                     'label': h['hk-showMiniMap'],
-                    'defaultKey': 'ALT+LM',
+                    'defaultKey': 'ALT+window.LM',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.setShowMiniMap();
                     },
@@ -8463,7 +8463,7 @@ window.legendmod3 = ogarminimapdrawer;
                 },
                 'hk-comm27': {
                     'label': c['comm27'],
-                    'defaultKey': 'CTRL+LM',
+                    'defaultKey': 'CTRL+M',
                     'keyDown': function() {
                         ogarminimapdrawer && ogarminimapdrawer.sendCommand(27);
                     },
@@ -8733,7 +8733,7 @@ window.legendmod3 = ogarminimapdrawer;
         window.onbeforeunload = function(t) {
             return i.play ? h.exit : void 0;
         };
-        i = LM;
+        i = window.LM;
         o = t('buffer')['Buffer'];
         a = t('lz4');
         if ('/ogario' === window.location.pathname) {
@@ -8799,40 +8799,40 @@ window.legendmod3 = ogarminimapdrawer;
         }
         window.core = {
             'connect': function(t) {
-                LM.connect(t);
+                window.LM.connect(t);
             },
             'disconnect': function() {},
             'sendNick': function(t) {
-                LM.sendNick(t);
+                window.LM.sendNick(t);
             },
             'sendSpectate': function() {
-                LM.sendSpectate();
+                window.LM.sendSpectate();
             },
             'eject': function() {
-                LM.sendEject();
+                window.LM.sendEject();
                 window.lastejected = true;
             },
             'split': function() {
-                LM.sendSplit();
+                window.LM.sendSplit();
 
             },
             'specialOn': function() {
-                LM.sendFreeSpectate();
+                window.LM.sendFreeSpectate();
             },
             'specialOff': function() {
-                LM.sendFreeSpectate();
+                window.LM.sendFreeSpectate();
             },
             'sendFbToken': function(t) {
-                LM.sendFbToken(t);
+                window.LM.sendFbToken(t);
             },
             'sendGplusToken': function(t) {
-                LM.sendGplusToken(t);
+                window.LM.sendGplusToken(t);
             },
             'recaptchaResponse': function(t) {
-                LM.sendRecaptcha(t);
+                window.LM.sendRecaptcha(t);
             },
             'setClientVersion': function(t, e) {
-                LM.setClientVersion(t, e);
+                window.LM.setClientVersion(t, e);
             },
             "proxyMobileData": function(arr = []) {
                 if (!Array.isArray(arr)) {
@@ -8843,7 +8843,7 @@ window.legendmod3 = ogarminimapdrawer;
                     arr.unshift(102);
                 }
                 arr = new Uint8Array(arr);
-                LM["sendMessage"](new DataView(arr["buffer"]));
+                window.LM["sendMessage"](new DataView(arr["buffer"]));
             },
             'registerSkin': function(a, b, c, d, e) {
                 window.customskinsname = a;
@@ -8856,7 +8856,7 @@ window.legendmod3 = ogarminimapdrawer;
         ogarminimapdrawer.getDefaultSettings();
         ogarminimapdrawer.connect();
         lastkeys.init();
-        LM.init();
+        window.LM.init();
         ogarfooddrawer.init();
         window.master.init();
         ogarhusettings();
