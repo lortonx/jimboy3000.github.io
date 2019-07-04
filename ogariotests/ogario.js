@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.961 MEGA TEST
+// v1.962 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1714,32 +1714,144 @@ var defaultmapsettings = {
     //'zoomSpeedValue': .87,
     'zoomSpeedValue2': -0.13,
     'messageSound': 'https://jimboy3100.github.io/sounds/notification_01.mp3',
-    //                'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
+    //'commandSound': 'https://jimboy3100.github.io/sounds/notification_02.mp3'
     'commandSound': 'https://jimboy3100.github.io/sounds/chat-message.mp3',
     'virusSoundurl': 'https://jimboy3100.github.io/sounds/sound-gunshot.mp3',
     'soundSplit': 'https://www.myinstants.com/media/sounds/quack_5.mp3'
 
 };
 var ogario1PlayerProfiles = [];
-    var ogarcopythelb = {
-        'nick': 'I<3Legendmod',
-        'clanTag': 'Ⓜ',
-        'skinURL': '',
-        'color': defaultSettings.mainColor
-    };
+var ogarcopythelb = {
+    'nick': 'I<3Legendmod',
+    'clanTag': 'Ⓜ',
+    'skinURL': '',
+    'color': defaultSettings.mainColor
+};
+
+function irenderfromagario() {
+    this.txt = '',
+        this.txtCanvas = null,
+        this.txtCtx = null,
+        this.color = '#FFFFFF',
+        this.stroke = false,
+        this.strokeWidth = 2,
+        this.strokeColor = '#000000',
+        this.font = '700 16px Ubuntu',
+        this.fontFamily = 'Ubuntu',
+        this.fontWeight = 700,
+        this.fontSize = 16,
+        this.margin = 3,
+        this.scale = 1,
+        this.quality = 1,
+        this.measuredWidth = 0,
+        this.redraw = false,
+        this.remeasure = false,
+        this.setTxt = function(ogariosettxtsetter) {
+            this.txt !== ogariosettxtsetter && (this.txt = ogariosettxtsetter,
+                this.redraw = true,
+                this.remeasure = true);
+        },
+        this.setColor = function(ogariocolorsetter) {
+            this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
+                this.redraw = true);
+        },
+        this.setStroke = function(ogariostrokesetter) {
+            this.stroke !== ogariostrokesetter && (this.stroke = ogariostrokesetter,
+                this.redraw = true);
+        },
+        this.setStrokeWidth = function(ogariostrokewidthsetter) {
+            this.stroke && this.strokeWidth != ogariostrokewidthsetter && (this.strokeWidth = ogariostrokewidthsetter,
+                this.redraw = true,
+                this.remeasure = true);
+        },
+        this.setStrokeColor = function(ogariostrokecolorsetter) {
+            this.stroke && this.strokeColor !== ogariostrokecolorsetter && (this.strokeColor = ogariostrokecolorsetter,
+                this.redraw = true);
+        },
+        this.setFont = function() {
+            this.font = this.fontWeight + ' ' + this.fontSize + 'px ' + this.fontFamily;
+        },
+        this.setFontFamily = function(ogariofontfamilysetter) {
+            this.fontFamily !== ogariofontfamilysetter && (this.fontFamily = ogariofontfamilysetter,
+                this.setFont(),
+                this.redraw = true,
+                this.remeasure = true);
+        },
+        this.setFontWeight = function(ogariofontweightsetter) {
+            this.fontWeight != ogariofontweightsetter && (this.fontWeight = ogariofontweightsetter,
+                this.setFont(),
+                this.redraw = true,
+                this.remeasure = true);
+        },
+        this.setFontSize = function(ogariofontsizesetter) {
+            this.fontSize != ogariofontsizesetter && (this.fontSize = ogariofontsizesetter,
+                this.margin = ~~(0.2 * ogariofontsizesetter),
+                this.setFont(),
+                this.redraw = true);
+        },
+        this.setScale = function(ogarioscalesetter) {
+            this.scale != ogarioscalesetter && (this.scale = ogarioscalesetter,
+                this.redraw = true);
+        },
+        this.createCanvas = function() {
+            this.txtCanvas || (this.txtCanvas = document.createElement('canvas'),
+                this.txtCtx = this.txtCanvas.getContext('2d'),
+                this.txtCtx.ogarioCtx = true);
+        },
+        this.setDrawing = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
+            this.setColor(ogarsetDrawinglabel1);
+            this.setFontFamily(ogarsetDrawinglabel2);
+            this.setFontWeight(ogarsetDrawinglabel3);
+            this.setStroke(ogarsetDrawinglabel4);
+            this.setStrokeWidth(ogarsetDrawinglabel5);
+            this.setStrokeColor(ogarsetDrawinglabel6);
+        },
+        this.measureWidth = function() {
+            return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
+                    this.measuredWidth = this.txtCtx.measureText(this.txt).width,
+                    this.remeasure = false),
+                ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
+        },
+        //
+        this.measureWidthCustom = function(customTxt) {
+            return customTxt && this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
+                    this.measuredWidth = this.txtCtx.measureText(customTxt).width,
+                    this.remeasure = false),
+                ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
+        },
+        //
+        this.drawTxt = function(customTxt) {
+            return this.createCanvas(),
+                this.redraw && (this.redraw = false,
+
+
+                    this.txtCanvas.width = this.measureWidthCustom(customTxt),
+                    this.txtCanvas.width = this.measureWidth(),
+                    this.txtCanvas.height = this.fontSize + this.margin * 2,
+                    this.txtCtx.font = this.font,
+                    this.txtCtx.globalAlpha = 1,
+                    this.txtCtx.lineWidth = this.strokeWidth,
+                    this.txtCtx.strokeStyle = this.strokeColor,
+                    this.txtCtx.fillStyle = this.color,
+                    customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
+                    !customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
+                    customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
+                    !customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
+                this.txtCanvas;
+        };
+
+}
+window.legendmod3 = ogarminimapdrawer;
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
     (function(i) {
         var ogarminimapdrawer;
-        var o = null,
-            a = null,
-            r = 'en',
-            l = window.navigator.language || window.navigator.userLanguage;
+        var o = null;
+        var a = null;
+        var r = 'en';
+        var l = window.navigator.language || window.navigator.userLanguage;
         l && languagetexts.hasOwnProperty(l) && (r = l);
         var h = languagetexts[r];
-        //if (languagetexts[r].comm15 != undefined) {
-        //console.log(h.comm15);
-        //}
         c = {
                 'comm0': h.comm0,
                 'comm1': h.comm1,
@@ -1889,17 +2001,12 @@ var thelegendmodproject = function(t, e, i) {
                     } else if (t.indexOf('oswald') == 0) {
                         tempFont = 'Oswald';
                     } else if (t.indexOf('shojumaru') == 0) {
-                        //console.log('font: shojumaru');
                         tempFont = 'Shojumaru';
                     } else if (t.indexOf('allura') == 0) {
-                        //console.log('font: allura');
                         tempFont = 'Allura';
-                    }
-                    //					else (if t.indexOf('ubuntu')){
-                    else {
+                    } else {
                         tempFont = 'Ubuntu';
                     }
-
                     return tempFont;
                     //return -1 != t.indexOf('roboto') ? 'Roboto' : -1 != t.indexOf('oswald') ? 'Oswald' : 'Ubuntu';
                 },
@@ -4966,120 +5073,7 @@ var thelegendmodproject = function(t, e, i) {
             }
         };
 
-        function irenderfromagario() {
-            this.txt = '',
-                this.txtCanvas = null,
-                this.txtCtx = null,
-                this.color = '#FFFFFF',
-                this.stroke = false,
-                this.strokeWidth = 2,
-                this.strokeColor = '#000000',
-                this.font = '700 16px Ubuntu',
-                this.fontFamily = 'Ubuntu',
-                this.fontWeight = 700,
-                this.fontSize = 16,
-                this.margin = 3,
-                this.scale = 1,
-                this.quality = 1,
-                this.measuredWidth = 0,
-                this.redraw = false,
-                this.remeasure = false,
-                this.setTxt = function(ogariosettxtsetter) {
-                    this.txt !== ogariosettxtsetter && (this.txt = ogariosettxtsetter,
-                        this.redraw = true,
-                        this.remeasure = true);
-                },
-                this.setColor = function(ogariocolorsetter) {
-                    this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
-                        this.redraw = true);
-                },
-                this.setStroke = function(ogariostrokesetter) {
-                    this.stroke !== ogariostrokesetter && (this.stroke = ogariostrokesetter,
-                        this.redraw = true);
-                },
-                this.setStrokeWidth = function(ogariostrokewidthsetter) {
-                    this.stroke && this.strokeWidth != ogariostrokewidthsetter && (this.strokeWidth = ogariostrokewidthsetter,
-                        this.redraw = true,
-                        this.remeasure = true);
-                },
-                this.setStrokeColor = function(ogariostrokecolorsetter) {
-                    this.stroke && this.strokeColor !== ogariostrokecolorsetter && (this.strokeColor = ogariostrokecolorsetter,
-                        this.redraw = true);
-                },
-                this.setFont = function() {
-                    this.font = this.fontWeight + ' ' + this.fontSize + 'px ' + this.fontFamily;
-                },
-                this.setFontFamily = function(ogariofontfamilysetter) {
-                    this.fontFamily !== ogariofontfamilysetter && (this.fontFamily = ogariofontfamilysetter,
-                        this.setFont(),
-                        this.redraw = true,
-                        this.remeasure = true);
-                },
-                this.setFontWeight = function(ogariofontweightsetter) {
-                    this.fontWeight != ogariofontweightsetter && (this.fontWeight = ogariofontweightsetter,
-                        this.setFont(),
-                        this.redraw = true,
-                        this.remeasure = true);
-                },
-                this.setFontSize = function(ogariofontsizesetter) {
-                    this.fontSize != ogariofontsizesetter && (this.fontSize = ogariofontsizesetter,
-                        this.margin = ~~(0.2 * ogariofontsizesetter),
-                        this.setFont(),
-                        this.redraw = true);
-                },
-                this.setScale = function(ogarioscalesetter) {
-                    this.scale != ogarioscalesetter && (this.scale = ogarioscalesetter,
-                        this.redraw = true);
-                },
-                this.createCanvas = function() {
-                    this.txtCanvas || (this.txtCanvas = document.createElement('canvas'),
-                        this.txtCtx = this.txtCanvas.getContext('2d'),
-                        this.txtCtx.ogarioCtx = true);
-                },
-                this.setDrawing = function(ogarsetDrawinglabel1, ogarsetDrawinglabel2, ogarsetDrawinglabel3, ogarsetDrawinglabel4, ogarsetDrawinglabel5, ogarsetDrawinglabel6) {
-                    this.setColor(ogarsetDrawinglabel1);
-                    this.setFontFamily(ogarsetDrawinglabel2);
-                    this.setFontWeight(ogarsetDrawinglabel3);
-                    this.setStroke(ogarsetDrawinglabel4);
-                    this.setStrokeWidth(ogarsetDrawinglabel5);
-                    this.setStrokeColor(ogarsetDrawinglabel6);
-                },
-                this.measureWidth = function() {
-                    return this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
-                            this.measuredWidth = this.txtCtx.measureText(this.txt).width,
-                            this.remeasure = false),
-                        ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
-                },
-                //
-                this.measureWidthCustom = function(customTxt) {
-                    return customTxt && this.remeasure && (this.txtCtx.font = this.fontWeight + ' 10px ' + this.fontFamily,
-                            this.measuredWidth = this.txtCtx.measureText(customTxt).width,
-                            this.remeasure = false),
-                        ~~(this.fontSize / 10 * this.measuredWidth) + 2 * this.strokeWidth;
-                },
-                //
-                this.drawTxt = function(customTxt) {
-                    return this.createCanvas(),
-                        this.redraw && (this.redraw = false,
 
-
-                            this.txtCanvas.width = this.measureWidthCustom(customTxt),
-                            this.txtCanvas.width = this.measureWidth(),
-                            this.txtCanvas.height = this.fontSize + this.margin * 2,
-                            this.txtCtx.font = this.font,
-                            this.txtCtx.globalAlpha = 1,
-                            this.txtCtx.lineWidth = this.strokeWidth,
-                            this.txtCtx.strokeStyle = this.strokeColor,
-                            this.txtCtx.fillStyle = this.color,
-                            customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
-                            !customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
-                            customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
-                            !customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
-                        this.txtCanvas;
-                };
-
-        }
-        window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
             cimg2 = new Image;
