@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.053 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "52"; // the version 1.1-> 1.11
+var semimodVersion = "53"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2707,8 +2707,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
             }, 12000);
         } else if (commandMsg == "Hello") {
             if ($('#message-box').css('display') == 'none') {
-                //		            if (MC.isInGame()) {
-                //		                if (!ogario.spectate) {
+				if ($("#clantag").val()!=""){
                 var nickname = $("#nick").val();
                 $("#nick").val("Hello Team");
                 $("#helloContainer").show();
@@ -2718,7 +2717,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
                     $("#helloContainer").show();
                     newsubmit();
                 }, 5000);
-                //		                }
+				}
             }
         }
 
@@ -4625,9 +4624,11 @@ function Bino() {
 
 
 function msgcommand1f() {
+	
     commandMsg = "Hello";
     otherMsg = "";
     dosendmsgcommand();
+	
 }
 
 function msgcommand2f() {
