@@ -3111,7 +3111,7 @@ function universalchat() {
     };
     my.config_init = function() {
         $("#overlays").append('<div id="ao2t-cfg-dlg"' +
-            '  style="width:400px; height:450px; top:150px; left:300px; display: none;' +
+            '  style="width:400px; height:480px; top:150px; left:300px; display: none;' +
             '">' +
             'Agar Tool/Legend Mod tools' +
             '<div style="overflow: scroll; ' +
