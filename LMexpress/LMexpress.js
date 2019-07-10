@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "55"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -60,7 +60,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlyfifth = localStorage.getItem("checkonlyfifth");
+//var checkonlyfifth = localStorage.getItem("checkonlyfifth");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -496,7 +496,7 @@ function loadersetings() {
                 }
             }
         }
-
+		/*
         if (checkonlyfifth != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+
@@ -516,7 +516,7 @@ function loadersetings() {
 		localStorage.setItem("checkonlyfifth", checkonlyfifth);				
        // }					
 		}
-
+*/
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
@@ -2806,7 +2806,7 @@ function universalchat() {
                     if (~msg.indexOf("Received a command with an unknown name: customSkins")) {} else {
                         toastr["success"]('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
                     }
-                } else if (~msg.indexOf("load socket.io")) {
+                } else if (~msg.indexOf(Premadeletter109b + " socket.io")) {
                     toastr["warning"]('<div class="toast-message"><span class="message-nick">' + this.name + ': </span><span class="message-text">' + msg + '</span><a href="#" data-user-id="agar tool" class="mute-user ogicon-user-minus"></a> </div>');
                     //playSound($('#commandSound').val());
                 } else if (~msg.indexOf("minimap server")) {
