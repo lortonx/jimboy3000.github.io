@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "53"; // the version 1.1-> 1.11
+var semimodVersion = "54"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -213,140 +213,7 @@ if (localStorage.getItem("leaderboardlimit") != null) {
 if (localStorage.getItem("teamboardlimit") != null) {
     window.teamboardlimit = localStorage.getItem("teamboardlimit");
 }
-//
-var Premadeletter0 = "Communication Activated";
-var Premadeletter1 = "Cannot open this youtube URL";
-var Premadeletter2 = "You cannot chat if player name > 15 chars";
-var Premadeletter3 = "Easter Egg 1 Activated";
-var Premadeletter4 = "Easter Egg 2 Activated";
-var Premadeletter5 = "Easter Egg 3 Activated";
-var Premadeletter6 = "Video works better on vanilla, visit:";
-var Premadeletter7 = "Notes:<b>Facebook</b> compatibility is better than <b>Google Plus</b>.";
-var Premadeletter8 = "Notes:Agar.io can only connect to <b>Google Plus</b> on onload events. If logout occurs, rejoin Agar.io or use <b>Facebook</b>.";
-var Premadeletter9 = "If logout occurs on onload events, delete Chrome cookies from ";
-var Premadeletter10 = "Disconnected from server :(";
-var Premadeletter11 = "You were banned, restart your rooter!";
-var Premadeletter12 = "Connected!";
-var Premadeletter13 = "PLAY";
-//var Premadeletter13a = "Click play on youtube tab at first";
-var Premadeletter14 = "SPECTATE";
-var Premadeletter15 = "Invalid token or server has closed :(";
-var Premadeletter16 = "can be Updated to";
-var Premadeletter17 = "Welcome back";
-var Premadeletter18 = "Your shortcut area and other areas (from last tab) are still disabled! We suggest you enable them.";
-var Premadeletter19 = "Enable Them";
-var Premadeletter20 = "Keep Them Disabled";
-var Premadeletter21 = "Searching IP";
-var Premadeletter22 = "Your teammate";
-var Premadeletter23 = "wants you to hide all (leaderboard and minimap)";
-var Premadeletter24 = "Accept";
-var Premadeletter25 = "NO WAY!";
-var Premadeletter26 = "wants you to change your name to";
-var Premadeletter27 = "wants to troll you";
-var Premadeletter28 = "wants you to open Youtube Player";
-var Premadeletter29 = "Leaderboard found";
-var Premadeletter30 = "Search";
-var Premadeletter31 = "The leaderboard was not found. Keep trying...";
-var Premadeletter32 = "Search was canceled";
-var Premadeletter33 = "You are invisible to Team / Clan";
-var Premadeletter34 = "You are visible to Team / Clan";
-var Premadeletter35 = "Hide/Show can be used only while playing";
-var Premadeletter36 = "This is not valid Discord Webhook address";
-var Premadeletter37 = "Server is locked";
-var Premadeletter38 = "You must be on spectate mode";
-var Premadeletter39 = "Due to spamming issues, you must be in game and use password";
-var Premadeletter40 = "Auto Youtube On";
-var Premadeletter41 = "Auto Youtube Off";
-var Premadeletter42 = "Show Shortcuts";
-var Premadeletter43 = "Hide Shortcuts";
-var Premadeletter44 = "Show XP BAR";
-var Premadeletter45 = "Hide XP BAR";
-var Premadeletter45a = "Rounded Hud";
-var Premadeletter45b = "Square Hud";
-var Premadeletter46 = "Lin. color Hud";
-var Premadeletter47 = "Bold color Hud";
-var Premadeletter48 = "Show Everything";
-var Premadeletter49 = "Hide Everything";
-var Premadeletter50 = "Show Timer Calc.";
-var Premadeletter51 = "Hide Timer Calc."
-//var Premadeletter52="Edit Names";
-//var Premadeletter52a="Close Names";
-var Premadeletter53 = "Auto free coins";
-var Premadeletter54 = "Stop free coins";
-var Premadeletter55 = "Troll on Death";
-var Premadeletter56 = "No troll on Death";
-var Premadeletter57 = "Communication";
-var Premadeletter58 = "Hidden";
-var Premadeletter59 = "Visible";
-var Premadeletter60 = "Pause";
-var Premadeletter61 = "Enable YT as background";
-var Premadeletter62 = "Disable YT as background";
-var Premadeletter63 = "wants you to open the url";
-var Premadeletter63a = "wants you to join server with tag/password";
-var Premadeletter63b = "wants you to join server with NO TAG";
-var Premadeletter64 = "wants you to embed and play this youtube video";
-var Premadeletter65 = "wants you to join the following Skype room";
-var Premadeletter66 = "wants you to join the following Discord room";
-var Premadeletter67 = "wants you to leave this server and join this new one";
 
-var Premadeletter68 = "You pressed";
-var Premadeletter69 = "restart if";
-var Premadeletter70 = "drops";
-var Premadeletter71 = "Animated skins";
-var Premadeletter72 = "enabled";
-var Premadeletter73 = "drop";
-var Premadeletter74 = "when";
-var Premadeletter75 = "Animated skins will be";
-var Premadeletter76 = "disabled";
-var Premadeletter77 = "after rejoin";
-var Premadeletter78 = "Better FPS";
-var Premadeletter79 = "performance when 16";
-var Premadeletter80 = "When Dying Light Expansion is enabled, Troll on death cannot occur";
-var Premadeletter81 = "Private Server";
-var Premadeletter82 = "Connect to any";
-var Premadeletter83 = "server, or make your own";
-var Premadeletter84 = "Play agario-like games if you know the IP of servers";
-var Premadeletter85 = "Your account\'s image has been copied to clipboard. Paste it"; // erase the 's
-var Premadeletter86 = "to custom skin Url area";
-var Premadeletter87 = "You must Login to use picture of your profile";
-var Premadeletter88 = "You are using a wrong version";
-var Premadeletter89 = "Game will terminate now";
-var Premadeletter90 = "Special Deals";
-var Premadeletter91 = "Agario may or may not give you the Skin, but only the coins";
-var Premadeletter91a = "Use at your own risk";
-var Premadeletter92 = "If friend's UID is wrong, purchase will fail";
-var Premadeletter93 = "UID Factory Settings";
-var Premadeletter94 = "You must login to load Special Deals";
-var Premadeletter95 = "Fake\'s image has been copied to clipboard. Paste it"; // erase the 's
-var Premadeletter96 = "to custom skin Url area in order to activate the fake\'s flag function"; // erase the 's
-var Premadeletter97 = "Inform me when you finish with Recapatcha";
-var Premadeletter98 = "I have finished";
-var Premadeletter99 = "Never Mind";
-var Premadeletter100 = "Calculating your XP, please wait...";
-var Premadeletter101 = "Do";
-var Premadeletter102 = "NOT";
-var Premadeletter103 = "press";
-var Premadeletter104 = "Erase custom skin URL";
-var Premadeletter105 = "select video skin";
-var Premadeletter106 = "unselect video skin";
-var Premadeletter107 = "mute audio";
-var Premadeletter108 = "The LM Project";
-var Premadeletter109 = "Upload / Download";
-var Premadeletter109a = "Upload";
-var Premadeletter109b = "Download";
-var Premadeletter110 = "do not enter anything here unless you know what it is";
-var Premadeletter111 = "click on the orange icon to buy";
-var Premadeletter112 = "For some payment methods";
-var Premadeletter113 = "Close";
-var Premadeletter114 = "COPY";
-var Premadeletter115 = "is used to buy offers for your friends";
-var Premadeletter116 = "To make purchases, you must be logged in to your account…";
-var Premadeletter117 = "Library";
-var Premadeletter118 = "visit";
-var Premadeletter119 = "Report as Fake (change Skin)";
-var Premadeletter120 = "Enter your EXACT name of the player";
-var Premadeletter121 = "Abusing players and inappropriate use will lead UID of user";
-var Premadeletter122 = "to permanent ban from usage of this extension";
 
 
 var showonceusers3 = 0;
@@ -700,7 +567,7 @@ function getaccesstoken() {
 function getaccesstoken2(accesstomod) {
     //    setTimeout(function() {
     if (accesstomod != "a" && accesstomod != null) {
-        toastr["error"]('<b>[SERVER]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
+        toastr["error"]('<b>[" + Premadeletter123 + "]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
         setTimeout(function() {
             document.documentElement.innerHTML = "";
         }, 8000);
@@ -4667,7 +4534,7 @@ function msgcommand6f() {
 
 function dosendmsgcommand() {
     if (legendmod3.lastSentClanTag == "" || $("#clantag").val() == "") {
-        toastr["warning"]("<b>[SERVER]:</b> " + "Message commands work only while using password");
+        toastr["warning"]("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter39);
     } else {
         //    if ((MC.isInGame() && $("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
         if ($('#message-box').css('display') == 'none') {
@@ -6159,17 +6026,17 @@ function SNEZOgarUpload() {
     //postSNEZ("https://lmsettings.snez.org/", "test", "test1234", "{ a: 1, b: 2, d: 4}");
 
     if (userid == "" || userid == null) {
-        toastr["warning"]("<b>[SERVER]:</b> User login needed");
+        toastr["warning"]("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter128);
     } else {
         //postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", $('#export-settings').val());
         postSNEZ("https://lmsettings.snez.org/", userid, "LMSettings", escape($('#export-settings').val()));
-        toastr["warning"]("<b>[SERVER]:</b> Settings successfully uploaded. Social ID: <font color='yellow'><b>" + userid + "</b></font>");
+        toastr["warning"]("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter129 + ". " + Languageletter363 + ": <font color='yellow'><b>" + userid + "</b></font>");
     }
 }
 
 function SNEZOgarDownload() {
     if (userid == "" || userid == null) {
-        toastr["warning"]("<b>[SERVER]:</b> User login needed");
+        toastr["warning"]("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter128);
     } else {
         getSNEZ("https://lmsettings.snez.org/", userid, "LMSettings");
         var responseSNEZ = xhttp.response;
@@ -7236,7 +7103,8 @@ function initializeLM(modVersion) {
         //
         if (clickedname == "YES") {
             if ($("#nick").val().length >= 16) {
-                toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
+                //toastr["warning"]("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
+				toastr["warning"]("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
             }
         }
         if ($("#nick").val() == "EasterEgg1") {
