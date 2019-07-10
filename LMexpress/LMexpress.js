@@ -567,7 +567,7 @@ function getaccesstoken() {
 function getaccesstoken2(accesstomod) {
     //    setTimeout(function() {
     if (accesstomod != "a" && accesstomod != null) {
-        toastr["error"]('<b>[" + Premadeletter123 + "]:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
+        toastr["error"]('<b>[' + Premadeletter123 + ']:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://jimboy3100.github.io/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
         setTimeout(function() {
             document.documentElement.innerHTML = "";
         }, 8000);
