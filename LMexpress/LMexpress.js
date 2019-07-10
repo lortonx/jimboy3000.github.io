@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.054 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.055 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "54"; // the version 1.1-> 1.11
+var semimodVersion = "55"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3119,9 +3119,9 @@ function universalchat() {
             '<div id="ao2t-cfg-base">' +
             '</div>' +
             '</div><br><br>' +
-            '&nbsp;<span id="ao2t-cfg-default" class="btn btn-primary">DEFAULT</span>' +
-            '&nbsp;<span id="ao2t-cfg-ok" class="btn btn-success">OK</span>' +
-            '&nbsp;<span id="ao2t-cfg-cancel" class="btn btn-danger">CANCEL</span>' +
+            '&nbsp;<span id="ao2t-cfg-default" class="btn btn-primary">' + Languageletter309.toUpperCase() + '</span>' +
+            '&nbsp;<span id="ao2t-cfg-ok" class="btn btn-success">' + Languageletter171 + '</span>' +
+            '&nbsp;<span id="ao2t-cfg-cancel" class="btn btn-danger">' + Languageletter283 + '</span>' +
             '</div>');
         $('#ao2t-cfg-base').append('' +
             '&nbsp;&nbsp;&nbsp;Update frequency [milliseconds]:<input type="text" data-ao2t-config="update_interval" style="width:6em;"/>' +
@@ -3221,7 +3221,7 @@ function universalchat() {
     my.connect = function() {
         my.disconnect();
         if (!global.io) {
-            my.log("load socket.io");
+            my.log(Premadeletter109b + " socket.io");
             return loadScript(stat.socketIoURL, my.connect);
         }
         var grab_opt = {
@@ -3256,7 +3256,7 @@ function universalchat() {
             //		toastr["warning"]('<b>[SERVER]: </b>Legend Mod and Agar Tool successfully connected. <br>Use {Send Text Universaly} button on chat box to send to Agar.io Tool');
             $("#ao2t-hud").addClass("OnceUsed");
         }
-        my.log("minimap server=" + stat.minimap_info.minimapServer);
+        my.log(Languageletter82a + " " + Premadeletter123.toLowerCase() + "=" + stat.minimap_info.minimapServer);
         my.resetMinimap();
         var minimap_opt = {
             reconnection: !1,
