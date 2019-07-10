@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "56"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -7764,8 +7764,8 @@ function initializeLM(modVersion) {
     //SNEZ Upload / Download Settings
     SNEZServers();
     $("#import-settings-btn").attr('class', 'btn btn-success');
-    $("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
-    $("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109b + '</button>');
+    $("#close-exp-imp").before('<button id="SNEZOgarUploadBtn" onclick="SNEZOgarUpload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109 + '</button>');
+    $("#close-exp-imp").before('<button id="SNEZOgarDownloadBtn" onclick="SNEZOgarDownload(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">' + Premadeletter109a + '</button>');
 
 
 
