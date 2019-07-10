@@ -1,4 +1,4 @@
-//v8.10
+//v8.9
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -341,6 +341,9 @@ function legendmaster(self) {
 						}	
 						else if (that.regionNames[i] == "East Asia"){
 							tempRegion = Premadeletter139;
+						}							
+						else if (that.regionNames[i] == "China"){
+							tempRegion = Premadeletter139a;
 						}	
 						else if (that.regionNames[i] == "Oceania"){
 							tempRegion = Premadeletter140;
