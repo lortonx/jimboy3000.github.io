@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.056 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "56"; // the version 1.1-> 1.11
+var semimodVersion = "57"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -1435,47 +1435,47 @@ function ReportFakesSkin() {
         '<p style="color:white; font-size:12px; margin-bottom: -4px;" align="middle">' + Premadeletter120 +
         '<br><font id= "Leadboardlet1" style="color:white; size:12px; margin-right: 70px;">' + Temporaryletter2 + '</font><font id= "Teamboardlet1" style="color:white; size:12px; margin-left: 70px;">' + Temporaryletter1 + '</font></p>' +
         '<input id="LeaderboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline; " " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput1" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput2" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput3" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput4" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput5" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput6" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput7" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput8" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput9" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '<input id="LeaderboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-right: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
-        '<input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
+        ' <input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '</div><p style="color:white; font-size:12px";" align="middle">' + Premadeletter121 + '<br>' + Premadeletter122 + '</u></p>' +
         '</div></div>');
-    $('#LeaderboardInput1').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput2').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput3').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput4').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput5').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput6').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput7').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput8').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput9').copyCSS('#server').css('width', '40%');
-    $('#LeaderboardInput10').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput1').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput2').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput3').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput4').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput5').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput6').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput7').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput8').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput9').copyCSS('#server').css('width', '40%');
-    $('#TeamboardInput10').copyCSS('#server').css('width', '40%');
+    $('#LeaderboardInput1').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput2').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput3').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput4').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput5').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput6').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput7').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput8').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput9').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput10').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput1').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput2').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput3').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput4').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput5').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput6').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput7').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput8').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput9').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput10').copyCSS('#server-token').css('width', '40%');
 
     $("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-original-title="" title="">' + Premadeletter113 + '</button>');
     OthersSkinChanger();
@@ -1485,8 +1485,9 @@ function ReportFakesSkin() {
 
 
 function OthersSkinChanger() {
-    var leaderboardnames = [$("#leaderboard-positions").text().split('1. ').pop().split('2. ')[0], $("#leaderboard-positions").text().split('2. ').pop().split('3. ')[0], $("#leaderboard-positions").text().split('3. ').pop().split('4. ')[0], $("#leaderboard-positions").text().split('4. ').pop().split('5. ')[0], $("#leaderboard-positions").text().split('5. ').pop().split('6. ')[0], $("#leaderboard-positions").text().split('6. ').pop().split('7. ')[0], $("#leaderboard-positions").text().split('7. ').pop().split('8. ')[0], $("#leaderboard-positions").text().split('8. ').pop().split('9. ')[0], $("#leaderboard-positions").text().split('9. ').pop().split('10. ')[0], $("#leaderboard-positions").text().split('10. ').pop().split('11. ')[0]];
+    //var leaderboardnames = [$("#leaderboard-positions").text().split('1. ').pop().split('2. ')[0], $("#leaderboard-positions").text().split('2. ').pop().split('3. ')[0], $("#leaderboard-positions").text().split('3. ').pop().split('4. ')[0], $("#leaderboard-positions").text().split('4. ').pop().split('5. ')[0], $("#leaderboard-positions").text().split('5. ').pop().split('6. ')[0], $("#leaderboard-positions").text().split('6. ').pop().split('7. ')[0], $("#leaderboard-positions").text().split('7. ').pop().split('8. ')[0], $("#leaderboard-positions").text().split('8. ').pop().split('9. ')[0], $("#leaderboard-positions").text().split('9. ').pop().split('10. ')[0], $("#leaderboard-positions").text().split('10. ').pop().split('11. ')[0]];
     //$(".team-top-limit")[2].click();
+/*
     var Top5b = {};
     var Top5c = {};
     var Top5d = {};
@@ -1502,7 +1503,7 @@ function OthersSkinChanger() {
         }
         console.log(Top5d[n]);
     }
-    //}
+
 
     $("#LeaderboardInput1").val(leaderboardnames[0]);
     $("#LeaderboardInput2").val(leaderboardnames[1]);
@@ -1514,7 +1515,7 @@ function OthersSkinChanger() {
     $("#LeaderboardInput8").val(leaderboardnames[7]);
     $("#LeaderboardInput9").val(leaderboardnames[8]);
     $("#LeaderboardInput10").val(leaderboardnames[9]);
-
+/*
     $("#TeamboardInput1").val(Top5d[1]);
     $("#TeamboardInput2").val(Top5d[2]);
     $("#TeamboardInput3").val(Top5d[3]);
@@ -1525,32 +1526,41 @@ function OthersSkinChanger() {
     $("#TeamboardInput8").val(Top5d[8]);
     $("#TeamboardInput9").val(Top5d[9]);
     $("#TeamboardInput10").val(Top5d[10]);
-
+*/
+for(var i=0;i<10;i++){
+	var x=i+1;
+	if (legendmod3.teamPlayers[i]){
+    $("#TeamboardInput"+x).val(legendmod3.teamPlayers[i].nick);
+	}
+	if (legendmod3.teamPlayers[i]){
+    $("#LeaderboardInput"+x).val(legendmod.leaderboard[i].nick);
+	}	
+}
 }
 
 function SkinBtnsPut() {
-    $("#LeaderboardInput1").before('<button id="LeaderboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Leader11();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput2").before('<button id="LeaderboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Leader12();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput3").before('<button id="LeaderboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Leader13();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput4").before('<button id="LeaderboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Leader14();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput5").before('<button id="LeaderboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Leader15();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput6").before('<button id="LeaderboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Leader16();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput7").before('<button id="LeaderboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Leader17();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput8").before('<button id="LeaderboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Leader18();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput9").before('<button id="LeaderboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Leader19();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#LeaderboardInput10").before('<button id="LeaderboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Leader20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput1").after('<button id="LeaderboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Leader11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput2").after('<button id="LeaderboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Leader12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput3").after('<button id="LeaderboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Leader13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput4").after('<button id="LeaderboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Leader14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput5").after('<button id="LeaderboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Leader15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput6").after('<button id="LeaderboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Leader16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput7").after('<button id="LeaderboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Leader17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput8").after('<button id="LeaderboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Leader18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput9").after('<button id="LeaderboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Leader19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput10").after('<button id="LeaderboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Leader20();return false;"><i class="fa fa-wpexplorer"></i></button>');
 
 
-    $("#TeamboardInput1").after('<button id="TeamboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Teamer11();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput2").after('<button id="TeamboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Teamer12();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput3").after('<button id="TeamboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Teamer13();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput4").after('<button id="TeamboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Teamer14();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput5").after('<button id="TeamboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Teamer15();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput6").after('<button id="TeamboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Teamer16();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput7").after('<button id="TeamboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Teamer17();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput8").after('<button id="TeamboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Teamber18();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput9").after('<button id="TeamboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Teamer19();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $("#TeamboardInput10").after('<button id="TeamboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Teamer20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput1").before('<button id="TeamboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Teamer11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput2").before('<button id="TeamboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Teamer12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput3").before('<button id="TeamboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Teamer13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput4").before('<button id="TeamboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Teamer14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput5").before('<button id="TeamboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Teamer15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput6").before('<button id="TeamboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Teamer16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput7").before('<button id="TeamboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Teamer17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput8").before('<button id="TeamboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Teamber18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput9").before('<button id="TeamboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Teamer19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput10").before('<button id="TeamboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Teamer20();return false;"><i class="fa fa-wpexplorer"></i></button>');
 
 }
 
