@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.971 MEGA TEST
+// v1.965 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4168,7 +4168,6 @@ var thelegendmodproject = function(t, e, i) {
                         this['sendPlayerUpdate']();
                         break;
                     case 20:
-						window.ogarioupdateTeamPlayerT=t;
                         this['updateTeamPlayer'](t);
                         break;
                     case 30:
@@ -4285,10 +4284,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
             },
             'sendPartyData': function() {
-                this.sendPlayerClanTag();
-				this.sendPartyToken();
-				this.sendServerToken(); 
-				this.sendPlayerNick();
+                this.sendPlayerClanTag(), this.sendPartyToken(), this.sendServerToken(), this.sendPlayerNick();
             },
             'sendPlayerUpdate': function() {
                 if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
@@ -4305,26 +4301,6 @@ var thelegendmodproject = function(t, e, i) {
                     t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this['sendBuffer'](s);
                 }
             },
-            'sendPlayerFakeUpdate': function() {
-                //if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
-					t=window.ogarioupdateTeamPlayerT;
-                    function sendt(t) {
-                        for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), true), o += 2;
-                        s.setUint16(o, 0, true), o += 2;
-                    }
-
-                    var e = 41;
-                    e += 2 * ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
-                    var s = this.createView(e);
-                    s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
-                    var o = 5;
-                    sendt(ogarcopythelb.nick), 
-					sendt(ogarcopythelb.skinURL), 
-					sendt(ogarcopythelb.color), 
-					sendt(i.playerColor), 
-					this['sendBuffer'](s);
-                //}
-            },			
             'sendPlayerPosition': function() {
                 if (this.isSocketOpen() && i.play && this.playerID) {
                     var t = this.createView(17);
