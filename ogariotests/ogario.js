@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.969 MEGA TEST
+// v1.970 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4307,8 +4307,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendPlayerFakeUpdate': function() {
                 //if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
-                    function t(window.ogarioupdateTeamPlayerT) {
-                        for (var e = 0; e < window.ogarioupdateTeamPlayerT.length; e++) s.setUint16(o, window.ogarioupdateTeamPlayerT.charCodeAt(e), true), o += 2;
+					t=window.ogarioupdateTeamPlayerT;
+                    function t(t) {
+                        for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), true), o += 2;
                         s.setUint16(o, 0, true), o += 2;
                     }
 
