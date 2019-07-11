@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.967 MEGA TEST
+// v1.968 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4168,6 +4168,7 @@ var thelegendmodproject = function(t, e, i) {
                         this['sendPlayerUpdate']();
                         break;
                     case 20:
+						window.ogarioupdateTeamPlayerT=t;
                         this['updateTeamPlayer'](t);
                         break;
                     case 30:
@@ -4284,7 +4285,10 @@ var thelegendmodproject = function(t, e, i) {
                 this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
             },
             'sendPartyData': function() {
-                this.sendPlayerClanTag(), this.sendPartyToken(), this.sendServerToken(), this.sendPlayerNick();
+                this.sendPlayerClanTag();
+				this.sendPartyToken();
+				this.sendServerToken(); 
+				this.sendPlayerNick();
             },
             'sendPlayerUpdate': function() {
                 if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
