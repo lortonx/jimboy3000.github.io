@@ -1532,7 +1532,7 @@ for(var i=0;i<10;i++){
 	if (legendmod3.teamPlayers[i]){
     $("#TeamboardInput"+x).val(legendmod3.teamPlayers[i].nick);
 	}
-	if (legendmod3.teamPlayers[i]){
+	if (legendmod.leaderboard[i]){
     $("#LeaderboardInput"+x).val(legendmod.leaderboard[i].nick);
 	}	
 }
