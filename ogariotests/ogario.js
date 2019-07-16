@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.967 MEGA TEST
+// v1.968 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6405,8 +6405,11 @@ var thelegendmodproject = function(t, e, i) {
                         window.testobjectsOpcode85 = data;
                         console.log('[Legend mod Express] Captcha requested');
                         if (window.master && window.master.recaptchaRequested) {
-							if (window.smartbotslimited==true){ //
+							if (window.smartbotslimited && legendmod5.autoResp){ //
 								core.connect(legendmod.ws);
+								setTimeout(function() {
+								 legendmod3.autoResp();
+								}, 2000);
 							}
 							else{
                             window.master.recaptchaRequested();
