@@ -17,6 +17,9 @@ function CellTimer() {
 	myCellsHistoryMass=[];
     for (var i = 0; i < window.legendmod.playerCells.length; i++) {
 		myCells.push(window.legendmod.playerCells[i]);
+		myCells[i].historyMass=window.playerCellsId[myCells[i].id].historyMass;
+		//console.log(myCells[i].id);
+		//window.legendmod.playerCells[0].id
         if (window.legendmod.playerCells[i].mass > myBiggerCell.mass) {
             myBiggerCell = window.legendmod.playerCells[i];
         }
@@ -68,5 +71,4 @@ catch(e) {
 function StopIntervalstatistics() {
   clearInterval(Intervalstatistics);
 }
-
 
