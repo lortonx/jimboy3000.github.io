@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.057 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "57"; // the version 1.1-> 1.11
+var semimodVersion = "58"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -9,6 +9,7 @@ $('#gamemode>option:nth-child(1)').val(':ffa');
 $('#gamemode').trigger('change');
 }, 1500);
 */
+
 $("#toast-container").hide();
 setTimeout(function() {
     $("#toast-container").show()
@@ -3670,12 +3671,14 @@ function fixservbtn2() {
     });
 }
 
-function Universalchatfix() {
+function Universalchatfix() {	
     if ($("#ao2t-capture").hasClass("connected")) {
         $("#ao2t-capture").click();
-
         $("#ao2t-capture").click();
     }
+	if (window.LMBotsEnabled){
+		LegendModServerConnect();
+	}
 }
 
 function showMenu() {
@@ -8302,3 +8305,4 @@ function isObject(val) {
     }
     return ((typeof val === 'function') || (typeof val === 'object'));
 }
+function LegendModServerConnect(){};
