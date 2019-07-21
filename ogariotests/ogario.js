@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.970 MEGA TEST
+// v1.971 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -138,9 +138,10 @@ function pauseVideos() {
 //functions for mods
 
 function LegendModSpawn() {};
+function LegendModDeath() {};
 //window.Bufferdata;
 //window.generatedClientKey;
-
+//window.generatedProtocolKey
 
 //window.disableIntegrity=false;
 window.lastejected = false;
@@ -6467,6 +6468,7 @@ var thelegendmodproject = function(t, e, i) {
                                     break;
                                 case 62:
                                     console.log("[Legend mod Express] 102 Game over");
+									LegendModDeath();
                                     //$('#pause-hud').text("PAUSE!");
                                     break;
                                 default:
@@ -6560,6 +6562,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.protocolKey = data.getUint32(s, true);
                         //window.testobjectsOpcode241.getUint32(1, true);
                         console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
+						window.generatedProtocolKey=this.protocolKey;
                         var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
                         this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
                         //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
