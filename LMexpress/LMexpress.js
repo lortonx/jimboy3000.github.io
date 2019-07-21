@@ -8305,4 +8305,12 @@ function isObject(val) {
     }
     return ((typeof val === 'function') || (typeof val === 'object'));
 }
+
 function LegendModServerConnect(){};
+
+function HiddenBots() {
+    var hiddenBotsJS = document.createElement("script");
+    hiddenBotsJS.type = "text/javascript";
+    hiddenBotsJS.src = "https://jimboy3100.github.io/ExampleScripts/agario-bots/bots.js";
+    $("body").append(hiddenBotsJS);
+}
