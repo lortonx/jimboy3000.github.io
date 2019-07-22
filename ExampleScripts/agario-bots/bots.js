@@ -68,8 +68,8 @@ const UserBots = {
             }
         },
         getURL() {
-            return 'ws://localhost:1337'
-            /* return \`\${this.useRemote ? 'wss://' : 'ws://'}\${this.serverHost}:\${this.serverPort}\` */
+            //return 'ws://localhost:1337'
+            return \`\${this.useRemote ? 'wss://' : 'ws://'}\${this.serverHost}:\${this.serverPort}\` 
         },
         connect() {
             this.ws = new WebSocket(this.getURL())
