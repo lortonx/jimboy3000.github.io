@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.975 MEGA TEST
+// v1.976 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6793,7 +6793,7 @@ var thelegendmodproject = function(t, e, i) {
                     }					
                     if (32 & d) {
                         isOwnEjected=true;
-						console.log(y, g, s);
+						//console.log(y, g, s);
                     }
                     if (64 & d) {
                         isOtherEjected=true;
