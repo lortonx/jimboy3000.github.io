@@ -2218,7 +2218,6 @@ var thelegendmodproject = function(t, e, i) {
             'privateMode': false,
             'protocolMode': true,
             'publicIP': 'wss://srv.ogario.eu',
-			//'publicIP': 'wss://connect.websocket.in/Jimboy3100?room_id=thelegendmodproject',			
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
@@ -6765,7 +6764,7 @@ var thelegendmodproject = function(t, e, i) {
                     var m = null,
                         g = null,
                         y = '';
-                    if (2 & d) {
+                    if (2 & d) { //offset
                         var ogario1PlayerProfiles = t.readUInt8(i++),
                             ogarcopythelb = t.readUInt8(i++),
                             irenderfromagario = t.readUInt8(i++);
@@ -6783,6 +6782,14 @@ var thelegendmodproject = function(t, e, i) {
                         y = window.decodeURIComponent(escape(s()));
                         this.vanillaskins(y, g);
                     }
+					//
+                    if (32 & d) {
+                        isOwnEjected=true;
+                    }
+                    if (64 & d) {
+                        isOtherEjected=true;
+                    }
+					//
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
                     var LM = 1 & d,
                         ogarioset1final = 1 & f,
@@ -6800,9 +6807,13 @@ var thelegendmodproject = function(t, e, i) {
                         ogariocellssetts.targetX = h,
                         ogariocellssetts.targetY = c,
                         ogariocellssetts.targetSize = u,
-                        ogariocellssetts.targetSize = u,
+//                        ogariocellssetts.targetSize = u,
                         ogariocellssetts['isFood'] = ogarioset1final,
                         ogariocellssetts['isVirus'] = LM,
+						//
+						ogariocellssetts['isOwnEjected'] = isOwnEjected,
+						ogariocellssetts['isOtherEjected'] = isOtherEjected,	
+						//
                     g && (ogariocellssetts['skin'] = g),
                     4 & f && (t.readUInt32LE(i), i += 4);
                 }
