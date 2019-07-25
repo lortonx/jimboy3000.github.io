@@ -35,13 +35,16 @@ function inject(page) {
 window.stop();
 document.documentElement.innerHTML = "";
 
-GM_xmlhttpRequest({
+var LMdetails = GM_xmlhttpRequest({
     method: "GET",
     url: "https://jimboy3000.github.io/LMexpress/LMexpress.html",
+	synchronous: false,
     onload: function(legend) {
         var doc = inject(legend.responseText);
         document.open();
-        document.write(doc);
+        //var script = document.createElement('script');
+		//document.appendChild(doc);
+       document.write(doc);
         setTimeout(function() {
             window.history.pushState(null, null, "/");
         }, 2000);
