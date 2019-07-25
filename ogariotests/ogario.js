@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.977 MEGA TEST
+// v1.978 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6763,16 +6763,16 @@ var thelegendmodproject = function(t, e, i) {
                     var d = t.readUInt8(i++),
                         f = 0;
                     128 & d && (f = t.readUInt8(i++));
-                    var m = null;
-                    var g = null;
-                    var y = '';
-					var isAgitated=false;
-					var isOwnEjected=false;
-					var isOtherEjected=false;						
-					var extendedFlags=false;						
+                    var m = null,
+                        g = null,
+                        y = '',
+						isAgitated=false,
+						isOwnEjected=false,
+						isOtherEjected=false,						
+						extendedFlags=false;						
                     if (2 & d) { //offset
-                        var ogario1PlayerProfiles = t.readUInt8(i++);
-                            ogarcopythelb = t.readUInt8(i++);
+                        var ogario1PlayerProfiles = t.readUInt8(i++),
+                            ogarcopythelb = t.readUInt8(i++),
                             irenderfromagario = t.readUInt8(i++);
                         m = this.rgb2Hex(~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
                     }
@@ -6799,7 +6799,7 @@ var thelegendmodproject = function(t, e, i) {
                         isOtherEjected=true;
                     }
                     if (128 & d) {
-                        extendedFlags=true;
+                        extendedFlags=true;						
                     }					
 					//
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
@@ -6820,13 +6820,13 @@ var thelegendmodproject = function(t, e, i) {
                         ogariocellssetts.targetY = c,
                         ogariocellssetts.targetSize = u,
 //                        ogariocellssetts.targetSize = u,
-                        ogariocellssetts.isFood = ogarioset1final,
-                        ogariocellssetts.isVirus = LM,
+                        ogariocellssetts['isFood'] = ogarioset1final,
+                        ogariocellssetts['isVirus'] = LM,
 						//
-						ogariocellssetts.isOwnEjected = isOwnEjected,
-						ogariocellssetts.isOtherEjected = isOtherEjected,	
+						ogariocellssetts['isOwnEjected'] = isOwnEjected,
+						ogariocellssetts['isOtherEjected'] = isOtherEjected,	
 						//
-                    g && (ogariocellssetts.skin = g),
+                    g && (ogariocellssetts['skin'] = g),
                     4 & f && (t.readUInt32LE(i), i += 4);
                 }
                 for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
