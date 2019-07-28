@@ -3505,7 +3505,7 @@ function universalchat() {
 			for (var e = 0; e < legendmod.ghostCells.length; e++) {
 			if (escapeHtml(ball.name)==legendmod.leaderboard[e].nick){
 				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");
-				sep = sep + ('<span class="top5-mass-color">[' + window.legendmod3.shortMassFormat(window.predictedGhostCells[e].mass) + "]</span>");	
+				sep = sep + ('<span class="top5-mass-color">[' + window.legendmod3.shortMassFormat(window.predictedGhostCells[e].mass) + "]</span> ");	
 				}
 			}	
 			user_txt += sep + escapeHtml(ball.name);
