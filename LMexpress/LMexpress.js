@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.058 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "58"; // the version 1.1-> 1.11
+var semimodVersion = "59"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3499,7 +3499,17 @@ function universalchat() {
 
             ///////Public Array for agar tool teammates 
             window.agartoolteammatenicks.push(escapeHtml(ball.name));
-            user_txt += sep + escapeHtml(ball.name);
+            //user_txt += sep + escapeHtml(ball.name);
+			
+			//
+			for (var e = 0; e < legendmod.ghostCells.length; e++) {
+			if (escapeHtml(ball.name)==legendmod.leaderboard[e].nick){
+				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");
+				sep = sep + ('<span class="top5-mass-color">[' + window.legendmod3.shortMassFormat(window.predictedGhostCells[e].mass) + "]</span>");	
+				}
+			}	
+			user_txt += sep + escapeHtml(ball.name);
+			//
             //			user_txt += count + ": ";
             sep = '<br/>' + count + ". ";
             //			user_txt += count + ": ";
