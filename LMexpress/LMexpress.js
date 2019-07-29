@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061s by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062s by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3501,6 +3501,7 @@ function universalchat() {
 				var temp = keys[i];				
 				keys[i] = keys[i-n];
 				keys[i-n] = temp;
+				return keys[i], keys[i-n];
 			}
 			}
 			
