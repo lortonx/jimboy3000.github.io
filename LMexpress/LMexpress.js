@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.060d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3496,15 +3496,8 @@ function universalchat() {
         var keys = Object.keys(stat.minimapBalls).sort();
 		window.agartoolminimapBalls = stat.minimapBalls;
 		//
-		for(var i = 0; i < keys.length; i++){         			
-		for (var e = 0; e < legendmod.leaderboard.length; e++) {
-		if (legendmod.leaderboard[e] && stat.minimapBalls[keys[i]] && escapeHtml(stat.minimapBalls[keys[i]].name) == legendmod.leaderboard[e].nick){
-			stat.minimapBalls[keys[i]].leaderboardpos=e;
-			
-			//for (var n = 1; n <= i; n++){
-			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
-				
-				//if (stat.minimapBalls[keys[i]].name == stat.minimapBalls[keys[i-1]].name){
+		for(var i = 0; i < keys.length; i++){      
+				if (stat.minimapBalls[keys[i]].name == stat.minimapBalls[keys[i-1]].name){
 					if (window.authenticAgartoolId[keys[i]]!=stat.minimapBalls[keys[i]].name){
 						console.log(stat.minimapBalls[keys[i]].name, window.authenticAgartoolId[keys[i]]);
 						stat.minimapBalls[keys[i]].name = window.authenticAgartoolId[keys[i]];
@@ -3513,7 +3506,14 @@ function universalchat() {
 						stat.minimapBalls[keys[i-1]].name = window.authenticAgartoolId[keys[i-1]];
 						console.log(stat.minimapBalls[keys[i-1]].name, window.authenticAgartoolId[keys[i-1]]);
 					}
-				//}				
+				}			
+		for (var e = 0; e < legendmod.leaderboard.length; e++) {
+		if (legendmod.leaderboard[e] && stat.minimapBalls[keys[i]] && escapeHtml(stat.minimapBalls[keys[i]].name) == legendmod.leaderboard[e].nick){
+			stat.minimapBalls[keys[i]].leaderboardpos=e;
+			
+			//for (var n = 1; n <= i; n++){
+			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
+							
 				if (stat.minimapBalls[keys[i]].name != stat.minimapBalls[keys[i-1]].name && stat.minimapBalls[keys[i]] && stat.minimapBalls[keys[i-1]] ){
 				//console.log(stat.minimapBalls[keys[i]].name + ' ' + stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-1]].name + ' ' + stat.minimapBalls[keys[i-1]].leaderboardpos )
 				var temp = stat.minimapBalls[keys[i]];				
