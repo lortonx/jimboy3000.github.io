@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.060h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060i by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3499,13 +3499,13 @@ function universalchat() {
 		for(var i = 0; i < keys.length; i++){    
 			for (var n = 1; n <= i; n++){
 				if (i - n >= 0 && stat.minimapBalls[keys[i]].name == stat.minimapBalls[keys[i-n]].name){
-					if (window.authenticAgartoolId[keys[i]]!=stat.minimapBalls[keys[i]].name){
-						console.log(stat.minimapBalls[keys[i]].name, window.authenticAgartoolId[keys[i]]);
+					if (window.authenticAgartoolId[keys[i]]!=stat.minimapBalls[keys[i]].name)						
 						stat.minimapBalls[keys[i]].name = window.authenticAgartoolId[keys[i]];
+						//console.log(stat.minimapBalls[keys[i]].name, window.authenticAgartoolId[keys[i]]);
 					}
 					else if (window.authenticAgartoolId[keys[i-n]]!=stat.minimapBalls[keys[i-n]].name){
 						stat.minimapBalls[keys[i-n]].name = window.authenticAgartoolId[keys[i-n]];
-						console.log(stat.minimapBalls[keys[i-n]].name, window.authenticAgartoolId[keys[i-n]]);
+						//console.log(stat.minimapBalls[keys[i-n]].name, window.authenticAgartoolId[keys[i-n]]);
 					}
 				}	
 		}
@@ -3517,6 +3517,7 @@ function universalchat() {
 			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
 				var x=stat.minimapBalls[keys[i]];			
 				if (x!= stat.minimapBalls[keys[i-1]] && x!= stat.minimapBalls[keys[i-2]] && x!= stat.minimapBalls[keys[i-3]] && x!= stat.minimapBalls[keys[i-4]] && x!= stat.minimapBalls[keys[i-5]]
+					&& x!= stat.minimapBalls[keys[i-6]] && x!= stat.minimapBalls[keys[i-7]] && x!= stat.minimapBalls[keys[i-8]] && x!= stat.minimapBalls[keys[i-9]] && x!= stat.minimapBalls[keys[i-10]]
 					&& stat.minimapBalls[keys[i]].name != stat.minimapBalls[keys[i-1]].name && stat.minimapBalls[keys[i]] && stat.minimapBalls[keys[i-1]] ){
 				//console.log(stat.minimapBalls[keys[i]].name + ' ' + stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-1]].name + ' ' + stat.minimapBalls[keys[i-1]].leaderboardpos )
 				var temp = stat.minimapBalls[keys[i]];				
