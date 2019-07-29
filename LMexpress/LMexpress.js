@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061w by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061x by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3542,7 +3542,7 @@ function universalchat() {
             //			user_txt += count + ": ";
             //sep = '<br/>' + count + ". ";
 			sep = '<br/> ';
-			user_txt += '<div id="top5-total"><span class="hud-main-color ogicon-users">' + count2 + '</span></div>'
+			
             //			user_txt += count + ": ";
             //count++;
 
@@ -3564,6 +3564,7 @@ function universalchat() {
             }
         }
         if (cfg.user_show) {
+			user_txt += '<span class="hud-main-color ogicon-users">: ' + count2 + '</span>';
             $('#ao2t-top5').html(user_txt);
         }
     };
