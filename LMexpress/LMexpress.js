@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.062g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3547,7 +3547,7 @@ function universalchat() {
 			//
            	//		user_txt += count + ": ";
             //sep = '<br/>' + count + ". ";
-			sep = '</div><br/> ';
+			sep = '<br/> ';
 			
             //			user_txt += count + ": ";
             //count++;
