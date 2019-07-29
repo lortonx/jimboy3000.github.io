@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.06233 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3395,7 +3395,9 @@ function universalchat() {
         //my.addBallToMinimap(true, "g", "BR",  7000,   7000, "#FF0000", !0);
     };
     my.addBallToMinimap = function(isDefault, id, name, x, y, color, visible) {
-        stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
+        if (stat.minimapBalls[id] == null){ //
+		stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
+		} //
     };
     my.removeBallFromMinimap = function(id) {
         if (stat.minimapBalls[id]) {
@@ -3531,7 +3533,7 @@ function universalchat() {
 			//
 			var flag=false;
 				if (defaultmapsettings.showTop5){
-				sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = ' + (legendmod3.customSkinsMap[ball.name] ? legendmod3.customSkinsMap[ball.name] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -20px; margin-left: 32px;">');
+				sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = ' + (legendmod3.customSkinsMap[ball.name] ? legendmod3.customSkinsMap[ball.name] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
 				}			
 			for (var e = 0; e < legendmod.ghostCells.length; e++){ 				
 			if (legendmod.leaderboard[e] && escapeHtml(ball.name)==legendmod.leaderboard[e].nick){
