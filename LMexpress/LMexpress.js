@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3510,7 +3510,7 @@ function universalchat() {
 					}
 				}
 */				
-		}
+		//}
 		for (var e = 0; e < legendmod.leaderboard.length; e++) {
 		if (legendmod.leaderboard[e] && stat.minimapBalls[keys[i]] && escapeHtml(stat.minimapBalls[keys[i]].name) == legendmod.leaderboard[e].nick){
 			stat.minimapBalls[keys[i]].leaderboardpos=e;
