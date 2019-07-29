@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.059 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "59"; // the version 1.1-> 1.11
+var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3465,7 +3465,7 @@ function universalchat() {
         $("#chat-box").perfectScrollbar('update');
         $('#chat-box').animate({
             'scrollTop': $("#chat-box").prop("scrollHeight")
-        }, 0x1f4);
+        }, 	500);
     }
     //};
     my.ogarMinimapUpdate = function() {
@@ -3473,21 +3473,36 @@ function universalchat() {
         var minimap_elem = document.getElementById("ao2t-minimap");
         var minimapWidth = minimap_elem.width;
         var minimapHeight = minimap_elem.height;
-        var minimapMulti = (minimapWidth - 0x12) / my.ogarGetMapSize();
+        var minimapMulti = (minimapWidth - 18) / my.ogarGetMapSize();
         var mapOffset = my.ogarGetMapOffset();
         //var mapOffsetX = ogario.mapOffset - ogario.mapOffsetX;
         //var mapOffsetY = ogario.mapOffset - ogario.mapOffsetY;
-        stat.minimapOffsetX = 0x12 / 2;
+        stat.minimapOffsetX = 18 / 2;
         stat.minimapOffsetY = stat.minimapOffsetX + (minimapHeight - minimapWidth);
         var mapOffsetX = stat.minimapOffsetX;
         var mapOffsetY = stat.minimapOffsetY;
-        var mapOffsetT = -(0x2 * stat.minimapTeammatesSize + 2);
+        var mapOffsetT = -(2 * stat.minimapTeammatesSize + 2);
         var ctx = minimap_elem.getContext('2d');
         ctx.clearRect(0, 0, minimapWidth, minimapHeight);
         ctx.font = stat.minimapNickFont;
         var user_txt = '';
         var sep = '1. ';
         var keys = Object.keys(stat.minimapBalls).sort();
+		//
+		keys.forEach(function(x) {          			
+			for (var e = 0; e < legendmod.leaderboard.length; e++) {
+				if (keys[x].nick == legendmod.leaderboard[e].nick){
+					keys[x].leaderboardpos=e;
+					if (e < keys[x].leaderboardpos-1){
+						var temp = keys[x];				
+						keys[x] = keys[x-1];
+						keys[x-1] = keys[x];
+					}
+				}
+			}
+		});		
+		//var keys = Object.keys(stat.minimapBalls).sort(function(a, b){return a - b});
+		//
         if (keys.length === 0) {
             user_txt = "no tgar user";
         }
@@ -3526,7 +3541,7 @@ function universalchat() {
                 ctx.fillStyle = cfg.tgar_color; // stat.minimapNickColor
                 ctx.fillText(name, mapX, mapY + mapOffsetT);
                 ctx.beginPath();
-                ctx.arc(mapX, mapY, stat.minimapTeammatesSize, 0x0, stat.pi2, !0x1);
+                ctx.arc(mapX, mapY, stat.minimapTeammatesSize, 0, stat.pi2, !1);
                 ctx.closePath();
                 ctx.fillStyle = ball.color;
                 ctx.fill();
