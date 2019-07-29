@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061i by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3492,7 +3492,7 @@ function universalchat() {
 		//
 		for(var i = 0; i < keys.length; i++){         			
 		for (var e = 0; e < legendmod.leaderboard.length; e++) {
-		if (legendmod.leaderboard[e].length && escapeHtml(keys[i].name) == legendmod.leaderboard[e].nick){
+		if (legendmod.leaderboard[e] && escapeHtml(keys[i].name) == legendmod.leaderboard[e].nick){
 			keys[i].leaderboardpos=e;
 			if (e < keys[i-1].leaderboardpos){
 				console.log(keys[i].leaderboardpos + ' position changed with ' + keys[i-1].leaderboardpos )
@@ -3520,7 +3520,7 @@ function universalchat() {
 			
 			//
 			for (var e = 0; e < legendmod.ghostCells.length; e++) {
-			if (legendmod.leaderboard[e].length && escapeHtml(ball.name)==legendmod.leaderboard[e].nick){
+			if (legendmod.leaderboard[e] && escapeHtml(ball.name)==legendmod.leaderboard[e].nick){
 				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");
 				sep = sep + ('<span class="top5-mass-color">[' + window.legendmod3.shortMassFormat(window.predictedGhostCells[e].mass) + "]</span> ");	
 				}
