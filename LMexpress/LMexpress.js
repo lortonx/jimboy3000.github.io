@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3489,18 +3489,18 @@ function universalchat() {
         var sep = '1. ';
         var keys = Object.keys(stat.minimapBalls).sort();
 		//
-		keys.forEach(function(x) {          			
-			for (var e = 0; e < legendmod.leaderboard.length; e++) {
-				if (keys[x].name == legendmod.leaderboard[e].nick){
-					keys[x].leaderboardpos=e;
-					if (e < keys[x].leaderboardpos-1){
-						var temp = keys[x];				
-						keys[x] = keys[x-1];
-						keys[x-1] = keys[x];
-					}
-				}
+		for(var i = 0; i < keys.length; i++){         			
+		for (var e = 0; e < legendmod.leaderboard.length; e++) {
+		if (keys[i].name == legendmod.leaderboard[e].nick){
+			keys[i].leaderboardpos=e;
+			if (e < keys[i].leaderboardpos-1){
+				var temp = keys[i];				
+				keys[i] = keys[i-1];
+				keys[i-1] = keys[i];
 			}
-		});		
+		}
+		}
+		}
 		//var keys = Object.keys(stat.minimapBalls).sort(function(a, b){return a - b});
 		//
         if (keys.length === 0) {
