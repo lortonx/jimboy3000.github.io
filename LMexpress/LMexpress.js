@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.062a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3536,12 +3536,15 @@ function universalchat() {
 				}
 			}
 			if ( flag==false ){
+				if (defaultmapsettings.showTop5) {
+				sep = sep + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = ' + (legendmod3.customSkinsMap[ball.name] ? legendmod3.customSkinsMap[ball.name] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+				}
 				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(ball.x, ball.y) + ']</span> ');
 			}
 			count2++;
 			user_txt += sep + escapeHtml(ball.name);
 			//
-            //			user_txt += count + ": ";
+           	//		user_txt += count + ": ";
             //sep = '<br/>' + count + ". ";
 			sep = '<br/> ';
 			
