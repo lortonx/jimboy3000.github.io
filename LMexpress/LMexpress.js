@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.060a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -2798,7 +2798,7 @@ function universalchat() {
     var legbgcolor = $("#menuPanelColor").val();
 
 
-
+	window.authenticAgartoolId=[];
     var global = window;
     var my = {
         "name": "<i class='fa fa-universal-access' aria-hidden='true'></i>",
@@ -3380,6 +3380,7 @@ function universalchat() {
     };
     my.resetMinimap = function() {
         //$("#messageTableTemp").empty(), $("#messageTableComplete").empty();
+		window.authenticAgartoolId=[];
         for (var e in stat.minimapBalls) {
             if (!stat.minimapBalls[e].isDefault) {
                 delete stat.minimapBalls[e];
@@ -3395,11 +3396,13 @@ function universalchat() {
         //my.addBallToMinimap(true, "g", "BR",  7000,   7000, "#FF0000", !0);
     };
     my.addBallToMinimap = function(isDefault, id, name, x, y, color, visible) {
-        if (stat.minimapBalls[id] == null){ //
+        //if (stat.minimapBalls[id] == null){ //
+		window.authenticAgartoolId[id]=name;
 		stat.minimapBalls[id] = new MinimapBall(isDefault, name, x, y, color, visible);
-		} //
+		//} //
     };
     my.removeBallFromMinimap = function(id) {
+		window.authenticAgartoolId[id]=null;
         if (stat.minimapBalls[id]) {
             delete stat.minimapBalls[id];
         }
@@ -3507,13 +3510,20 @@ function universalchat() {
 				stat.minimapBalls[keys[i]] = stat.minimapBalls[keys[i-1]];
 				stat.minimapBalls[keys[i-1]] = temp;
 				}
+				else if (stat.minimapBalls[keys[i]].name == stat.minimapBalls[keys[i-1]].name){
+					if (window.authenticAgartoolId[keys[i]]!=stat.minimapBalls[keys[i]].name){
+						stat.minimapBalls[keys[i]].name = window.authenticAgartoolId[keys[i]];
+					}
+					else if (window.authenticAgartoolId[keys[i-1]]!=stat.minimapBalls[keys[i-1]].name){
+						stat.minimapBalls[keys[i-1]].name = window.authenticAgartoolId[keys[i-1]];
+					}
+				}
 			}
 			//}
 			
 		}
 		}
 		}
-		keys = Object.keys(stat.minimapBalls).sort(); //2nd time
 		//var keys = Object.keys(stat.minimapBalls).sort(function(a, b){return a - b});
 		//
         if (keys.length === 0) {
