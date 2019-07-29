@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.060g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3497,6 +3497,7 @@ function universalchat() {
 		window.agartoolminimapBalls = stat.minimapBalls;
 		//
 		for(var i = 0; i < keys.length; i++){    
+/*			
 			for (var n = 1; n <= i; n++){
 				if (i - n >= 0 && stat.minimapBalls[keys[i]].name == stat.minimapBalls[keys[i-n]].name){
 					if (window.authenticAgartoolId[keys[i]]!=stat.minimapBalls[keys[i]].name){
@@ -3507,24 +3508,27 @@ function universalchat() {
 						stat.minimapBalls[keys[i-n]].name = window.authenticAgartoolId[keys[i-n]];
 						console.log(stat.minimapBalls[keys[i-n]].name, window.authenticAgartoolId[keys[i-n]]);
 					}
-				}	
+				}
+*/				
 		}
 		for (var e = 0; e < legendmod.leaderboard.length; e++) {
 		if (legendmod.leaderboard[e] && stat.minimapBalls[keys[i]] && escapeHtml(stat.minimapBalls[keys[i]].name) == legendmod.leaderboard[e].nick){
 			stat.minimapBalls[keys[i]].leaderboardpos=e;
 			
 			//for (var n = 1; n <= i; n++){
+				
 			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
 				var x=stat.minimapBalls[keys[i]];			
-				if (x!= stat.minimapBalls[keys[i-1]] && x!= stat.minimapBalls[keys[i-2]] && x!= stat.minimapBalls[keys[i-3]] && x!= stat.minimapBalls[keys[i-4]] && x!= stat.minimapBalls[keys[i-5]])
+				if (x!= stat.minimapBalls[keys[i-1]] && x!= stat.minimapBalls[keys[i-2]] && x!= stat.minimapBalls[keys[i-3]] && x!= stat.minimapBalls[keys[i-4]] && x!= stat.minimapBalls[keys[i-5]]
 					&& stat.minimapBalls[keys[i]].name != stat.minimapBalls[keys[i-1]].name && stat.minimapBalls[keys[i]] && stat.minimapBalls[keys[i-1]] ){
 				//console.log(stat.minimapBalls[keys[i]].name + ' ' + stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-1]].name + ' ' + stat.minimapBalls[keys[i-1]].leaderboardpos )
 				var temp = stat.minimapBalls[keys[i]];				
-				stat.minimapBalls[keys[i]] = stat.minimapBalls[keys[i-1]];
-				stat.minimapBalls[keys[i-1]] = temp;
+				stat.minimapBalls[keys[i]] = window.authenticAgartoolId[keys[i-1]];
+				stat.minimapBalls[keys[i-1]] = window.authenticAgartoolId[keys[i]];
 				}
 
 			}
+		
 			//}
 			
 		}
