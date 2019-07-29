@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.064 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3532,7 +3532,7 @@ function universalchat() {
 			
 			//
 			var flag=false;
-				if (defaultmapsettings.showTop5){
+				if (window.top5skins){
 				sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = ' + (legendmod3.customSkinsMap[ball.name] ? legendmod3.customSkinsMap[ball.name] : "https://jimboy3100.github.io/banners/iconagariotool.png") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
 				}			
 			for (var e = 0; e < legendmod.ghostCells.length; e++){ 				
