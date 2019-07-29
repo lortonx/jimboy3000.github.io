@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "61"; // the version 1.1-> 1.11
 //fix ffa
@@ -3493,6 +3493,9 @@ function universalchat() {
         var user_txt = '';
         //var sep = '1. ';
 		var sep=  "";
+		if (!window.top5skins){
+			sep = '1. ';
+		}
         var keys = Object.keys(stat.minimapBalls).sort();
 		window.agartoolminimapBalls = stat.minimapBalls;
 		//
@@ -3544,7 +3547,7 @@ function universalchat() {
         if (keys.length === 0) {
             //user_txt = "No agar tool user";
         }
-        //var count = 2;
+        var count = 2;
 		var count2 = 0;
         for (var key;
             (key = keys.shift());) {
@@ -3576,11 +3579,14 @@ function universalchat() {
 			sep = '</div>';
 			//
            	//		user_txt += count + ": ";
-            //sep = '<br/>' + count + ". ";
+			if (!window.top5skins){
+            sep = '<br/>' + count + ". ";
+			count++;
+			}
 			//sep = '<br/> ';
 			
             //			user_txt += count + ": ";
-            //count++;
+            
 
             if (cfg.minimap_show) {
                 var name = cfg.tgar_prefix + ball.name;
@@ -3601,7 +3607,7 @@ function universalchat() {
         }
         if (cfg.user_show) {
 			
-			user_txt += '</div><span style = "margin-top: 10px;" class="hud-main-color ogicon-users"></span> : <span id="top5-total-players" class="top5-mass-color">' + count2 + '</span>'; 
+			user_txt += '</div><span style = "margin-top: 20px;" class="hud-main-color ogicon-users"></span> : <span id="top5-total-players" class="top5-mass-color">' + count2 + '</span>'; 
             $('#ao2t-top5').html(user_txt);
         }
     };
