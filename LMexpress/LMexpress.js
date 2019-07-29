@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.060g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.060h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3516,7 +3516,7 @@ function universalchat() {
 			//for (var n = 1; n <= i; n++){
 			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
 				var x=stat.minimapBalls[keys[i]];			
-				if (x!= stat.minimapBalls[keys[i-1]] && x!= stat.minimapBalls[keys[i-2]] && x!= stat.minimapBalls[keys[i-3]] && x!= stat.minimapBalls[keys[i-4]] && x!= stat.minimapBalls[keys[i-5]])
+				if (x!= stat.minimapBalls[keys[i-1]] && x!= stat.minimapBalls[keys[i-2]] && x!= stat.minimapBalls[keys[i-3]] && x!= stat.minimapBalls[keys[i-4]] && x!= stat.minimapBalls[keys[i-5]]
 					&& stat.minimapBalls[keys[i]].name != stat.minimapBalls[keys[i-1]].name && stat.minimapBalls[keys[i]] && stat.minimapBalls[keys[i-1]] ){
 				//console.log(stat.minimapBalls[keys[i]].name + ' ' + stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-1]].name + ' ' + stat.minimapBalls[keys[i-1]].leaderboardpos )
 				var temp = stat.minimapBalls[keys[i]];				
