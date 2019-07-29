@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061t by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061u by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3495,15 +3495,15 @@ function universalchat() {
 		if (legendmod.leaderboard[e] && stat.minimapBalls[keys[i]] && escapeHtml(stat.minimapBalls[keys[i]].name) == legendmod.leaderboard[e].nick){
 			stat.minimapBalls[keys[i]].leaderboardpos=e;
 			
-			for (var n = 1; n <= i; n++){
-			if (i - n >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-n]].leaderboardpos){
-				console.log(stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-n]].leaderboardpos )
+			//for (var n = 1; n <= i; n++){
+			if (i - 1 >= 0 && stat.minimapBalls[keys[i]].leaderboardpos < stat.minimapBalls[keys[i-1]].leaderboardpos){
+				console.log(stat.minimapBalls[keys[i]].leaderboardpos + ' position changed with ' + stat.minimapBalls[keys[i-1]].leaderboardpos )
 				var temp = stat.minimapBalls[keys[i]];				
-				stat.minimapBalls[keys[i]] = stat.minimapBalls[keys[i-n]];
-				stat.minimapBalls[keys[i-n]] = temp;
+				stat.minimapBalls[keys[i]] = stat.minimapBalls[keys[i-1]];
+				stat.minimapBalls[keys[i-1]] = temp;
 				
 			}
-			}
+			//}
 			
 		}
 		}
