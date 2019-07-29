@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061v by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061u by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "60"; // the version 1.1-> 1.11
 //fix ffa
@@ -3511,9 +3511,10 @@ function universalchat() {
 		//var keys = Object.keys(stat.minimapBalls).sort(function(a, b){return a - b});
 		//
         if (keys.length === 0) {
-            user_txt = "no tgar user";
+            user_txt = "No agar tool user";
         }
-        var count = 2;
+        //var count = 2;
+		var count2 = 0;
         for (var key;
             (key = keys.shift());) {
 
@@ -3533,14 +3534,17 @@ function universalchat() {
 				}
 			}
 			if ( flag==false ){
-				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(ball.x, ball.y) + "]</span>");
+				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(ball.x, ball.y) + "]</span> ");
 			}
+			count2++;
 			user_txt += sep + escapeHtml(ball.name);
 			//
             //			user_txt += count + ": ";
-            sep = '<br/>' + count + ". ";
+            //sep = '<br/>' + count + ". ";
+			sep = '<br/> ';
+			user_txt += '<div id="top5-total"><span class="hud-main-color ogicon-users">' + count2 + '</span></div>'
             //			user_txt += count + ": ";
-            count++;
+            //count++;
 
             if (cfg.minimap_show) {
                 var name = cfg.tgar_prefix + ball.name;
