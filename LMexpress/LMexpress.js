@@ -3609,7 +3609,7 @@ function universalchat() {
 			if (!window.top5skins){
             user_txt += '<br/>';		
 			}			
-			user_txt += '</div><span style = "margin-top: 20px;" class="hud-main-color ogicon-users"></span> : <span id="top5-total-players" class="top5-mass-color">' + count2 + '</span>'; 
+			user_txt += '</div><span style = "margin-top: 30px;" class="hud-main-color ogicon-users"></span> : <span id="top5-total-players" class="top5-mass-color">' + count2 + '</span>'; 
             $('#ao2t-top5').html(user_txt);
         }
     };
