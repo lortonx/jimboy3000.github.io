@@ -4612,7 +4612,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.setvnr(max);
                     //toastr.info('<b>[SERVER]:</b> Map fixed with LM players');
 					//toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + Premadeletter125);
-					console.log('[Legend mod Express] Map fixed with LM players ' + max);
+					console.log('[Legend mod Express] Map fixed with LM players. POS:', max);
                 }
             },
             'updateTeamPlayers': function() {
