@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.990 MEGA TEST
+// v1.991 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4607,7 +4607,12 @@ var thelegendmodproject = function(t, e, i) {
                         a = t.getUint32(13, true);
                     if (a > 360000) return;
                     var n = this.teamPlayers[i];
-                    n.x = s, n.y = o, n.mass = a, n.alive = true, n.updateTime = Date.now(), this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, a, n.color, n.lbgpi);
+                    n.x = s, 
+					n.y = o, 
+					n.mass = a, 
+					n.alive = true, 
+					n.updateTime = Date.now(), 
+					this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, a, n.color, n.lbgpi);
                 }
             },
             //Sonia3 Added 3 fuctions below
@@ -4959,7 +4964,7 @@ var thelegendmodproject = function(t, e, i) {
 								else if ( flag==false && (this.calculateMapSector(o, a) == "C3" || legendmod.gameMode == ":party")){
 									l = this.calculateMapSector(o, a);
 								}	
-								else{
+								else if ( flag==false){
 									l = "Unknown";
 								};
 					c = Languageletter368 + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
