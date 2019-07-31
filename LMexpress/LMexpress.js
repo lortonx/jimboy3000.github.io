@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.061d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "61"; // the version 1.1-> 1.11
 //fix ffa
@@ -3571,7 +3571,7 @@ function universalchat() {
 				}
 			}
 			if ( flag==false ){
-				if (window.legendmod3.calculateMapSector(ball.x, ball.y) == "C3"){
+				if (window.legendmod3.calculateMapSector(ball.x, ball.y) == "C3" || legendmod.gameMode == ":party"){
 				sep = sep + ('<span class="hud-main-color">[' + window.legendmod3.calculateMapSector(ball.x, ball.y) + ']</span> ');
 				}
 			}
