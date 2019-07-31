@@ -4431,7 +4431,7 @@ var thelegendmodproject = function(t, e, i) {
 
              var today = new Date();
              var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+ ":" + today.getMilliseconds();
-             console.log("Package Sent:",time)
+             //console.log("Package Sent:",time)
              },
             'getSLGQinfo': function(t) {
                 //return ;
