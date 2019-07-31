@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.996 MEGA TEST
+// v1.997 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4398,7 +4398,7 @@ var thelegendmodproject = function(t, e, i) {
                 else return x * (v.mapMaxY - v.mapMinY) + v.mapMinY;
             },
              'sendSLGQinfo': function() {
-                 return;
+                 //return;
                  var msg = "";
                  var vlen = window.legendmod.viruses.length;
                  msg += this.packInt(vlen, 2);
@@ -4434,7 +4434,7 @@ var thelegendmodproject = function(t, e, i) {
              console.log("Package Sent:",time)
              },
             'getSLGQinfo': function(t) {
-                return ;
+                //return ;
                  var ids = this.getSLGID(t);
                  var id = this.checkPlayerID(ids);
                  if (null == id) return;
