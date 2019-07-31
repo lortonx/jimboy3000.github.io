@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.061d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "61"; // the version 1.1-> 1.11
+var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2866,7 +2866,7 @@ function universalchat() {
         "user_show": true,
         "minimap_show": true,
         "tgar_prefix": "O",
-        "tgar_color": "#8C81C7",
+//        "tgar_color": "#8C81C7",
         "update_interval": 1000,
         "ogar_user": true,
         "ogar_prefix": "L.M",
@@ -3140,7 +3140,7 @@ function universalchat() {
             '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="user_show"/>user list</label>' +
             '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="minimap_show"/>minimap</label>' +
             '&nbsp;Prefix:<input type="text" data-ao2t-config="tgar_prefix" style="width:4em;"/>' +
-            '&nbsp;&nbsp;color:<input type="text" data-ao2t-config="tgar_color" style="width:6em;"/>' +
+            //'&nbsp;&nbsp;color:<input type="text" data-ao2t-config="tgar_color" style="width:6em;"/>' +
             //    '<span class="input-group-addon"><i id="tgar_color" style="background-color: rgb(0, 0, 0);"></i></span>'+
             '<br/>Send to Agar Tool' +
             '<br/>&nbsp;<label><input type="checkbox" data-ao2t-config="ogar_user"/>user info</label>' +
@@ -3318,8 +3318,8 @@ function universalchat() {
                 if (!cmd.playerName) {
                     cmd.playerName = "An unnamed cell";
                 }
-
-                my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+                //my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+				my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, defaultSettings.miniMapTeammatesColor, !0);
                 break;
             case "remove":
                 my.removeBallFromMinimap(cmd.socketID);
@@ -3462,7 +3462,9 @@ function universalchat() {
             '<span class="message-time">[' + time_txt + '] </span>' +
             //user_icon +
             //'<span class="message-nick">'+ escapeHtml(nick) +': </span>'+
-            '<span style="color:' + cfg.tgar_color + '; font-weight:700;">' +
+            //'<span style="color:' + cfg.tgar_color + '; font-weight:700;">' +
+			
+			'<span style="color:' + defaultSettings.messageTextColor + '; font-weight:700;">' +
             user_icon + ' ' + escapeHtml(nick) + '</span>: ' +
             '<span class="message-text">' + escapeHtml(msg) + '</span>' +
             '</div>';
@@ -3600,7 +3602,9 @@ function universalchat() {
                 ctx.lineWidth = stat.minimapNickStrokeSize;
                 ctx.strokeStyle = stat.minimapNickStrokeColor;
                 ctx.strokeText(name, mapX, mapY + mapOffsetT);
-                ctx.fillStyle = cfg.tgar_color; // stat.minimapNickColor
+                //ctx.fillStyle = cfg.tgar_color; // stat.minimapNickColor
+				ctx.fillStyle = defaultSettings.miniMapNickColor;
+				
                 ctx.fillText(name, mapX, mapY + mapOffsetT);
                 ctx.beginPath();
                 ctx.arc(mapX, mapY, stat.minimapTeammatesSize, 0, stat.pi2, !1);
