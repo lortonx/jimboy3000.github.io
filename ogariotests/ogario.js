@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.997 MEGA TEST
+// v1.998 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4451,7 +4451,8 @@ var thelegendmodproject = function(t, e, i) {
                      msg = msg.slice(7);
                      var x = this.getreal(fx, 0);
                      var y = this.getreal(fy, 1);
-                     temp.push(new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots))
+                     temp.push(new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots));
+					 legendmod.cells.push(new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots));
                  }
                  this.teamPlayers[id].dvirs = temp;
                 
@@ -4468,12 +4469,13 @@ var thelegendmodproject = function(t, e, i) {
                      msg = msg.slice(7);
                      var x = this.getreal(fx, 0);
                      var y = this.getreal(fy, 1);
-                     tempx.push(new ogarbasicassembly(di, x, y, ds, null, false, false, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots))
+                     tempx.push(new ogarbasicassembly(di, x, y, ds, null, false, false, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots));
+					 legendmod.cells.push(new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots));
                  }
                  this.teamPlayers[id].dcells = tempx;
                  var today = new Date();
                  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
-                 console.log("Package Received:", time)
+                 console.log("Package Received:", ids,id, time)
 
                 //Here should be food part
             },
@@ -6932,7 +6934,8 @@ var thelegendmodproject = function(t, e, i) {
                             ogarioset1final ? this.food.push(ogariocellssetts) :
                                 (LM && defaultmapsettings.virusesRange && this.viruses.push(ogariocellssetts),
                                     this.cells.push(ogariocellssetts),
-                                -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, this.playerColor = m, this.playerCells.push(ogariocellssetts))),
+                                -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true, 
+								this.playerColor = m, this.playerCells.push(ogariocellssetts))),
                             this.indexedCells[l] = ogariocellssetts),
                     ogariocellssetts.isPlayerCell && (y = this.playerNick),
                     y && (ogariocellssetts.targetNick = y),
