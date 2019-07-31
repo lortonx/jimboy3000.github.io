@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.062b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
@@ -326,7 +326,8 @@ emphasischat();
 function init(modVersion) {
     // ANNOUNCEMENTS
     //toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
-    if (modVersion != "1.6") {
+    toastr["info"]('<b>Use <span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);"> <a href="http://deltav4.glitch.me/" target="blank"><font color="yellow">http://deltav4.glitch.me/</font></a> </span> combined with Legend mod!<br><font color="red"></b>Until LM will find servers again<font>').css("width", "350px");
+	if (modVersion != "1.6") {
         toastr["info"]('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.6</b></font>. <br>(Https Protocol)<br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
     }
     $("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
