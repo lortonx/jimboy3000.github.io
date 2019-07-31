@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.984 MEGA TEST
+// v1.985 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4489,9 +4489,9 @@ var thelegendmodproject = function(t, e, i) {
                     var s = this.getSLGVal(t);
                     var lbgpi = s.slice(0, 1);
                     this.teamPlayers[id].lbgpi = parseInt(lbgpi);
-					if (this.top5[id]){
-					this.top5[id].lbgpi = parseInt(lbgpi); //
-					}
+					//if (this.top5[id]){
+					//this.top5[id].lbgpi = parseInt(lbgpi); //
+					//}
 					
                 }
             },
@@ -4666,7 +4666,8 @@ var thelegendmodproject = function(t, e, i) {
                             "y": e.y,
                             "mass": e.mass,
                             "color": e.color,
-                            "skin": e.skinURL
+                            "skin": e.skinURL,
+							"lbgpi": e.lbgpi							
                         });
                         if (!this.isChatUserMuted(e.id)) {
                             this.addChatUser(e.id, e.nick);
@@ -6667,7 +6668,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     }
                 }
-                if ($("#ao2t-capture").length && $("#ao2t-capture").hasClass("connected")) { //if existed and connected and visible
+                //if ($("#ao2t-capture").length && $("#ao2t-capture").hasClass("connected")) { //if existed and connected and visible
 					for (var e = 0; e < legendmod.ghostCells.length; e++) {
 						window.predictedGhostCells[e]={};
 						window.predictedGhostCells[e] = legendmod.ghostCells[e];
@@ -6675,7 +6676,7 @@ var thelegendmodproject = function(t, e, i) {
 						window.predictedGhostCells[e].nick= legendmod.leaderboard[e].nick;
 						window.predictedGhostCells[e].isFriend= legendmod.leaderboard[e].isFriend;	
 					}
-                }				
+                //}				
 
             },
             'targetingLead': function(o) {
