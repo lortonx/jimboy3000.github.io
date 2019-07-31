@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.061d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
@@ -3595,7 +3595,7 @@ function universalchat() {
             
 
             if (cfg.minimap_show) {
-                var name = cfg.tgar_prefix + ball.name;
+                var name = ball.name + '[' + cfg.tgar_prefix + ']';
                 var mapX = (ball.x + mapOffset) * minimapMulti + mapOffsetX;
                 var mapY = (ball.y + mapOffset) * minimapMulti + mapOffsetY;
                 ctx.textAlign = 'center';
