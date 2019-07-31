@@ -448,11 +448,14 @@ function legendmaster(self) {
         makeMasterRequest: function(_wid_attr, data, callback, timeout_callback, type) {
             var header = this;
             if (null == type) {
-                type = "application/octet-stream";
+                //type = "application/octet-stream";
+				type = "application/json";
             }
             $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
                 beforeSend: function(xhr) {
-                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
+                    //return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
+                    return xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
+
                 },
                 error: function() {
                     if (timeout_callback) {
