@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.989 MEGA TEST
+// v1.990 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4924,17 +4924,33 @@ var thelegendmodproject = function(t, e, i) {
                 null !== e && (t = e), null !== t ? this.setTarget(this.teamPlayers[t].id) : this.setTargetStatus(0);
             },
             'updateTarget': function(t, e, o, a, n, r, f) {
-                i.setTargetPosition(o, a), 
-				this.targetNick !== t && (this.targetNick = t, $('#target-nick').html(this.escapeHTML(t))), 
-				$('#target-skin').css('background-color', r), 
-				e && this.targetSkinURL !== e && (this.customSkinsCache.hasOwnProperty(e + '_cached') ? ($('#target-skin img').attr('src', e), this.targetSkinURL = e) : $('#target-skin img').attr('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this.shortMassFormat(n) + ']');
-                var l = this.calculateMapSector(o, a),
+                i.setTargetPosition(o, a); 
+				if (this.targetNick !== t){
+					 this.targetNick = t; 
+					 $('#target-nick').html(this.escapeHTML(t))
+				}					 
+				$('#target-skin').css('background-color', r);
+				if (e){
+					if (this.targetSkinURL !== e){ 
+						if (this.customSkinsCache.hasOwnProperty(e + '_cached')){
+							$('#target-skin img').attr('src', e); 
+							this.targetSkinURL = e;
+						}
+						else{
+							$('#target-skin img').attr('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')
+						}
+						
+					}					
+				}
+				$('#target-status').text('[' + this.shortMassFormat(n) + ']');
+                //var l = this.calculateMapSector(o, a);
+				var l;
                     //c = h.targetDistance + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
-								(var flag=false;
-                                for (var e = 0; e < legendmod.ghostCells.length; e++){ 
-									if (legendmod.leaderboard[e] && this.targetNick==legendmod.leaderboard[e].nick){
+								var flag=false;
+                                for (var j = 0; j < legendmod.ghostCells.length; j++){ 
+									if (legendmod.leaderboard[j] && this.targetNick==legendmod.leaderboard[j].nick){
 										flag=true;
-										l = window.legendmod3.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) 
+										l = window.legendmod3.calculateMapSector(window.predictedGhostCells[j].x, window.predictedGhostCells[j].y) 
 									}
 								};
 								if ( flag==false &&  f >= 0){
@@ -4945,11 +4961,15 @@ var thelegendmodproject = function(t, e, i) {
 								}	
 								else{
 									l = "Unknown";
-								}),
+								};
 					c = Languageletter368 + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
-                i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(n + i.playerMass) + '</span>'), 
-				$('#target-summary').html(c), 
-				1 != this.targetStatus && this.setTargetStatus(1);
+                if (i.play){
+				c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(n + i.playerMass) + '</span>'
+				} 
+				$('#target-summary').html(c); 
+				if (1 != this.targetStatus){ 
+				this.setTargetStatus(1);
+				}
             },
             'updateQuest': function() {
                 this.showQuest && ':ffa' === this.gameMode && window.MC && window.MC.getQuestProgressLabel && (this.questHUD.textContent = window.MC.getQuestProgressLabel());
@@ -4960,7 +4980,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.setLang(),
                     this.setMenu(),
                     this.setUI(),
-                hudsetter && hudsetter.setTheme(),
+					hudsetter && hudsetter.setTheme(),
                     this.setShowQuickMenu(),
                     this.setShowSkinsPanel(),
                     this.setProfile(),
