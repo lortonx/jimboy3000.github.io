@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.988 MEGA TEST
+// v1.989 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4607,7 +4607,7 @@ var thelegendmodproject = function(t, e, i) {
                         a = t.getUint32(13, true);
                     if (a > 360000) return;
                     var n = this.teamPlayers[i];
-                    n.x = s, n.y = o, n.mass = a, n.alive = true, n.updateTime = Date.now(), this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, a, n.color);
+                    n.x = s, n.y = o, n.mass = a, n.alive = true, n.updateTime = Date.now(), this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, a, n.color, n.lbgpi);
                 }
             },
             //Sonia3 Added 3 fuctions below
@@ -4858,7 +4858,10 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'setTargetingInfo': function() {
-                this.targeting ? ($('#set-targeting').addClass('active'), $('#target-status').show(), 2 != this.targetStatus && $('#target-summary').show()) : ($('#set-targeting').removeClass('active'), $('#target-summary, #target-status').hide());
+                this.targeting ? ($('#set-targeting').addClass('active'), 
+				$('#target-status').show(), 
+				2 != this.targetStatus && $('#target-summary').show()) : ($('#set-targeting').removeClass('active'), 
+				$('#target-summary, #target-status').hide());
             },
             'cancelTargeting': function() {
                 this.setTargetStatus(0);
@@ -4870,7 +4873,9 @@ var thelegendmodproject = function(t, e, i) {
                 var e = this.checkPlayerID(t);
                 if (null !== e) {
                     var i = this.teamPlayers[e];
-                    if (this.targetID = i.id, this.updateTarget(i.nick, i.skinURL, i.x, i.y, i.mass, i.color), !i.alive) return void this.setTargetStatus(2);
+                    if (this.targetID = i.id, this.updateTarget(i.nick, i.skinURL, i.x, i.y, i.mass, i.color, i.lbgpi), !i.alive){ 
+						return void this.setTargetStatus(2);
+					}
                     this.setTargetStatus(1);
                 } else this.setTargetStatus(0);
             },
@@ -4918,12 +4923,33 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 null !== e && (t = e), null !== t ? this.setTarget(this.teamPlayers[t].id) : this.setTargetStatus(0);
             },
-            'updateTarget': function(t, e, o, a, n, r) {
-                i.setTargetPosition(o, a), this.targetNick !== t && (this.targetNick = t, $('#target-nick').html(this.escapeHTML(t))), $('#target-skin').css('background-color', r), e && this.targetSkinURL !== e && (this.customSkinsCache.hasOwnProperty(e + '_cached') ? ($('#target-skin img').attr('src', e), this.targetSkinURL = e) : $('#target-skin img').attr('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this.shortMassFormat(n) + ']');
+            'updateTarget': function(t, e, o, a, n, r, f) {
+                i.setTargetPosition(o, a), 
+				this.targetNick !== t && (this.targetNick = t, $('#target-nick').html(this.escapeHTML(t))), 
+				$('#target-skin').css('background-color', r), 
+				e && this.targetSkinURL !== e && (this.customSkinsCache.hasOwnProperty(e + '_cached') ? ($('#target-skin img').attr('src', e), this.targetSkinURL = e) : $('#target-skin img').attr('src', 'https://jimboy3100.github.io/banners/static/img/blank.png')), $('#target-status').text('[' + this.shortMassFormat(n) + ']');
                 var l = this.calculateMapSector(o, a),
                     //c = h.targetDistance + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
+								(var flag=false;
+                                for (var e = 0; e < legendmod.ghostCells.length; e++){ 
+									if (legendmod.leaderboard[e] && this.targetNick==legendmod.leaderboard[e].nick){
+										flag=true;
+										l = window.legendmod3.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) 
+									}
+								};
+								if ( flag==false &&  f >= 0){
+									l = this.calculateMapSector(o, a);
+								}	
+								else if ( flag==false && (this.calculateMapSector(o, a) == "C3" || legendmod.gameMode == ":party")){
+									l = this.calculateMapSector(o, a);
+								}	
+								else{
+									l = "Unknown";
+								}),
 					c = Languageletter368 + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
-                i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(n + i.playerMass) + '</span>'), $('#target-summary').html(c), 1 != this.targetStatus && this.setTargetStatus(1);
+                i.play && (c += ' | ' + h['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(n + i.playerMass) + '</span>'), 
+				$('#target-summary').html(c), 
+				1 != this.targetStatus && this.setTargetStatus(1);
             },
             'updateQuest': function() {
                 this.showQuest && ':ffa' === this.gameMode && window.MC && window.MC.getQuestProgressLabel && (this.questHUD.textContent = window.MC.getQuestProgressLabel());
