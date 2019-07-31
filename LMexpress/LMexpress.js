@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.062a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
@@ -3318,8 +3318,8 @@ function universalchat() {
                 if (!cmd.playerName) {
                     cmd.playerName = "An unnamed cell";
                 }
-                //my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
-				my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, defaultSettings.miniMapTeammatesColor, !0);
+                my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+				//my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, defaultSettings.miniMapTeammatesColor, !0);
                 break;
             case "remove":
                 my.removeBallFromMinimap(cmd.socketID);
