@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.062b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
@@ -516,7 +516,7 @@ function loadersetings() {
                     extendedTimeOut: 20000
                 }).css("width", "450px");  
 */				
-		checkonlysixth"true";
+		checkonlysixth = "true";
 		localStorage.setItem("checkonlysixth", checkonlysixth);				
        // }					
 		}
