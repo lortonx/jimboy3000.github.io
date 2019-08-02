@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1016 MEGA TEST
+// v1.1017 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4058,7 +4058,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.sendPartyData();
                 }
                 this.socket['onmessage'] = function(e) {
-                    t['handleMessage'](e);
+                    t['handleLMMessage'](e);
                 }
                 this.socket['onclose'] = function(e) {
                     //t.flushData();
@@ -4197,7 +4197,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (s != null) this.SLGsocket['send'](s + t);
                 }
             },
-            'handleMessage': function(t) {
+            'handleLMMessage': function(t) {
                 this['readMessage'](new DataView(t['data']));
             },
             //Sonia4
@@ -4778,7 +4778,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'readChatMessage': function(t) {
 				
-				console.log('readChatMessage',t);
+				//console.log('readChatMessage',t);
 				//
                 if (!defaultmapsettings.disableChat) {
                     var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
