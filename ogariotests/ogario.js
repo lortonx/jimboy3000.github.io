@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1010 MEGA TEST
+// v1.1011 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4204,6 +4204,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
+					console.log('readMessage',t);
                     case 0:
                         this.playerID = t.getUint32(1, true);
                         break;
@@ -4774,7 +4775,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'readChatMessage': function(t) {
 				
-				console.log(t);
+				console.log('readChatMessage',t);
 				//
                 if (!defaultmapsettings.disableChat) {
                     var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
