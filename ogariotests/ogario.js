@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1006 MEGA TEST
+// v1.1007 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3653,7 +3653,9 @@ var thelegendmodproject = function(t, e, i) {
                 this.showMenu(300);
                 this.sendPlayerDeath();
                 this.updateDeathLocations(i.playerX, i.playerY);
-                this.unlockButtons(), ogarcommando1(), this.autoResp();
+                this.unlockButtons(); 
+				ogarcommando1(); 
+				this.autoResp();
             },
             'setPlayerSettings': function() {
                 var t = $('#nick').val(),
@@ -4124,14 +4126,14 @@ var thelegendmodproject = function(t, e, i) {
                 }, 1000);
             },
             'switchServerMode': function() {
-                if (this["privateIP"]) {
-                    this["privateMode"] = !this["privateMode"];
+                if (this.privateIP) {
+                    this.privateMode = !this.privateMode;
                     if (this.isSocketOpen()) {
                         this["closeConnection"]();
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
-                    if (this["privateMode"]) {
+                    if (this.privateMode) {
                         toastr.info("Prze\u0142\u0105czono na serwer prywatny!");
                         $(".party-panel").show();
                     } else {
@@ -4285,7 +4287,8 @@ var thelegendmodproject = function(t, e, i) {
                 this.isSocketOpen() && i.playerColor && this['sendBuffer'](this['strToBuff'](14, i.playerColor));
             },
             'sendPartyToken': function() {
-                this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
+                this.setParty();
+				this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
             },
             'sendServerToken': function() {
                 this['sendPlayerData'](16, 'lastSentServerToken', this.serverToken);
@@ -4320,10 +4323,22 @@ var thelegendmodproject = function(t, e, i) {
                 this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
-                this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
+				if (this.skipServerData){
+					this.skipServerData = false;
+				}
+				else{
+					this.region = $('#region').val();
+					this.gameMode = $('#gamemode').val(); 
+					this.sendServerRegion();
+					this.sendServerGameMode();
+				}
+                //this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
             },
             'sendPartyData': function() {
-                this.sendPlayerClanTag(), this.sendPartyToken(), this.sendServerToken(), this.sendPlayerNick();
+                this.sendPlayerClanTag();
+				this.sendPartyToken();
+				this.sendServerToken(); 
+				this.sendPlayerNick();
             },
             'sendPlayerUpdate': function() {
                 if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
@@ -4333,11 +4348,17 @@ var thelegendmodproject = function(t, e, i) {
                     }
 
                     var e = 41;
-                    e += 2 * ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
+                    e += 2 * ogarcopythelb.nick.length;
+					e += 2 * ogarcopythelb.skinURL.length;
                     var s = this.createView(e);
-                    s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
+                    s.setUint8(0, 20); 
+					s.setUint32(1, this.playerID, true);
                     var o = 5;
-                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this['sendBuffer'](s);
+                    t(ogarcopythelb.nick); 
+					t(ogarcopythelb.skinURL); 
+					t(ogarcopythelb.color);
+					t(i.playerColor);
+					this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
