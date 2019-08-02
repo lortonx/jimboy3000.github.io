@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1019 MEGA TEST
+// v1.1005 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2220,7 +2220,6 @@ var thelegendmodproject = function(t, e, i) {
             'privateMode': false,
             'protocolMode': true,
             'publicIP': 'wss://srv.ogario.eu',
-			//'publicIP': 'wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=jim',
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
@@ -2762,8 +2761,7 @@ var thelegendmodproject = function(t, e, i) {
                 var e = $('#message');
                 if (t.is(':visible')) {
                     var o = e.val();
-                    o.length ? (this['sendChatMessage'](101, o), 
-					i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+                    o.length ? (this['sendChatMessage'](101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
                 } else {
                     t.show();
                     e.focus();
@@ -3566,9 +3564,7 @@ var thelegendmodproject = function(t, e, i) {
                 });
             },
             'play': function() {
-                if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()){
-					this.sendPartyData();
-				}
+                if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()) this.sendPartyData();
                 else {
                     this.connect();
                     var t = this;
@@ -3657,9 +3653,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.showMenu(300);
                 this.sendPlayerDeath();
                 this.updateDeathLocations(i.playerX, i.playerY);
-                this.unlockButtons(); 
-				ogarcommando1(); 
-				this.autoResp();
+                this.unlockButtons(), ogarcommando1(), this.autoResp();
             },
             'setPlayerSettings': function() {
                 var t = $('#nick').val(),
@@ -4033,21 +4027,15 @@ var thelegendmodproject = function(t, e, i) {
                 e && (this.skipServerData = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                pauseVideos();
-                this.closeConnection();
+                pauseVideos(),
+                    this.closeConnection();
                 this.flushData();
                 this.setParty();
-                console.log("[Legend mod Express] Testing vectorM82..");
-                console.log('[Legend mod Express] Connecting to server');
-				if (this.privateMode && this.privateIP){
-					this.socket = new WebSocket(this.privateIP);
-				}
-				else{
-					this.socket = new WebSocket(this.publicIP);
-				}
-                this.socket['ogarioWS'] = true;
-                this.socket['binaryType'] = 'arraybuffer';	
-				
+                console.log("[Legend mod Express] Testing vectorM82..")
+                console.log('[Legend mod Express] Connecting to server'),
+                    this.privateMode && this.privateIP ? this.socket = new WebSocket(this.privateIP) : this.socket = new WebSocket(this.publicIP),
+                    this.socket['ogarioWS'] = true,
+                    this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
@@ -4058,7 +4046,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.sendPartyData();
                 }
                 this.socket['onmessage'] = function(e) {
-                    t['handleLMMessage'](e);
+                    t['handleMessage'](e);
                 }
                 this.socket['onclose'] = function(e) {
                     //t.flushData();
@@ -4130,14 +4118,14 @@ var thelegendmodproject = function(t, e, i) {
                 }, 1000);
             },
             'switchServerMode': function() {
-                if (this.privateIP) {
-                    this.privateMode = !this.privateMode;
+                if (this["privateIP"]) {
+                    this["privateMode"] = !this["privateMode"];
                     if (this.isSocketOpen()) {
                         this["closeConnection"]();
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                         toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                     }
-                    if (this.privateMode) {
+                    if (this["privateMode"]) {
                         toastr.info("Prze\u0142\u0105czono na serwer prywatny!");
                         $(".party-panel").show();
                     } else {
@@ -4197,7 +4185,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (s != null) this.SLGsocket['send'](s + t);
                 }
             },
-            'handleLMMessage': function(t) {
+            'handleMessage': function(t) {
                 this['readMessage'](new DataView(t['data']));
             },
             //Sonia4
@@ -4205,8 +4193,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['SLGHandler'](t.data);
             },
             'readMessage': function(t) {
-				//console.log('readMessage', t.getUint8(0));
-                switch (t.getUint8(0)) {					
+                switch (t.getUint8(0)) {
                     case 0:
                         this.playerID = t.getUint32(1, true);
                         break;
@@ -4261,8 +4248,7 @@ var thelegendmodproject = function(t, e, i) {
             'sendPlayerState': function(t) {
                 if (this.isSocketOpen()) {
                     var e = this.createView(1);
-                    e.setUint8(0, t); 
-					this['sendBuffer'](e);
+                    e.setUint8(0, t), this['sendBuffer'](e);
                 }
             },
             'sendPlayerSpawn': function() {
@@ -4275,8 +4261,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerState'](3);
             },
             'sendPlayerData': function(t, e, i) {
-                null !== this[e] && this[e] === i || this.isSocketOpen() && 
-				(this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
+                null !== this[e] && this[e] === i || this.isSocketOpen() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
                 this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
@@ -4291,13 +4276,10 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                if (this.isSocketOpen() && i.playerColor) {
-					this['sendBuffer'](this['strToBuff'](14, i.playerColor));
-				}
+                this.isSocketOpen() && i.playerColor && this['sendBuffer'](this['strToBuff'](14, i.playerColor));
             },
             'sendPartyToken': function() {
-                this.setParty();
-				this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
+                this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
             },
             'sendServerToken': function() {
                 this['sendPlayerData'](16, 'lastSentServerToken', this.serverToken);
@@ -4329,27 +4311,13 @@ var thelegendmodproject = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-                if (this.isSocketOpen()){
-					this['sendBuffer'](this['strToBuff'](18, t));
-				}
+                this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
             },
             'sendServerData': function() {
-				if (this.skipServerData){
-					this.skipServerData = false;
-				}
-				else{
-					this.region = $('#region').val();
-					this.gameMode = $('#gamemode').val(); 
-					this.sendServerRegion();
-					this.sendServerGameMode();
-				}
-                //this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
+                this.skipServerData ? this.skipServerData = false : (this.region = $('#region').val(), this.gameMode = $('#gamemode').val(), this.sendServerRegion(), this.sendServerGameMode());
             },
             'sendPartyData': function() {
-                this.sendPlayerClanTag();
-				this.sendPartyToken();
-				this.sendServerToken(); 
-				this.sendPlayerNick();
+                this.sendPlayerClanTag(), this.sendPartyToken(), this.sendServerToken(), this.sendPlayerNick();
             },
             'sendPlayerUpdate': function() {
                 if (this.isSocketOpen() && i.play && this.playerID && i.playerColor) {
@@ -4359,17 +4327,11 @@ var thelegendmodproject = function(t, e, i) {
                     }
 
                     var e = 41;
-                    e += 2 * ogarcopythelb.nick.length;
-					e += 2 * ogarcopythelb.skinURL.length;
+                    e += 2 * ogarcopythelb.nick.length, e += 2 * ogarcopythelb.skinURL.length;
                     var s = this.createView(e);
-                    s.setUint8(0, 20); 
-					s.setUint32(1, this.playerID, true);
+                    s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
                     var o = 5;
-                    t(ogarcopythelb.nick); 
-					t(ogarcopythelb.skinURL); 
-					t(ogarcopythelb.color);
-					t(i.playerColor);
-					this['sendBuffer'](s);
+                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
@@ -4525,7 +4487,7 @@ var thelegendmodproject = function(t, e, i) {
                  this.teamPlayers[id].dcells = tempx;
                  var today = new Date();
                  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
-                 console.log("Package Received:", ids, id, time)
+                 console.log("Package Received:", ids,id, time)
 
                 //Here should be food part
             },
@@ -4777,13 +4739,10 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'readChatMessage': function(t) {
-				
-				//console.log('readChatMessage',t);
-				//
                 if (!defaultmapsettings.disableChat) {
-                    var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
-                        i = t.getUint8(1);
-                        s = t.getUint32(2, true);
+                    var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1'),
+                        i = t.getUint8(1),
+                        s = t.getUint32(2, true),
                         o = t.getUint32(6, true);
                     if (!(this.isChatUserMuted(s) || 0 != o && o != this.playerID && s != this.playerID)) {
                         for (var a = '', n = 10; n < t.byteLength; n += 2) {
@@ -4800,15 +4759,9 @@ var thelegendmodproject = function(t, e, i) {
                 if (!(Date.now() - this.lastMessageSentTime < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
-                    i.setUint8(0, 100);
-					i.setUint8(1, t); // put variable t in slot 1
-					i.setUint32(2, this.playerID, true);
-					i.setUint32(6, 0, true);
-                    for (var s = 0; s < e.length; s++) {
-					i.setUint16(10 + 2 * s, e.charCodeAt(s), true)
-					}					
-                    this['sendBuffer'](i); 
-					this.lastMessageSentTime = Date.now();
+                    i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this.playerID, true), i.setUint32(6, 0, true);
+                    for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
+                    this['sendBuffer'](i), this.lastMessageSentTime = Date.now();
                 }
             },
             'prepareCommand': function(t) {
@@ -6122,8 +6075,7 @@ var thelegendmodproject = function(t, e, i) {
                     i['onOpen']();
                 };
                 this.socket['onmessage'] = function(t) {
-                    //console.log('readMessage', t);
-					i['onMessage'](t);					
+                    i['onMessage'](t);
                 };
                 this.socket['onerror'] = function(t) {
                     i['onError'](t);
@@ -6459,8 +6411,8 @@ var thelegendmodproject = function(t, e, i) {
             },		*/
 			//https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
             'decompressMessage': function(t) {
-                var e = new startBuffer(t['buffer']);
-                var i = new startBuffer(e.readUInt32LE(1));
+                var e = new o(t['buffer']);
+                var i = new o(e.readUInt32LE(1));
                 return a.decodeBlock(e.slice(5), i), i;
             },
             'handleMessage': function(data) {
@@ -8925,7 +8877,7 @@ var thelegendmodproject = function(t, e, i) {
             return i.play ? h.exit : void 0;
         };
         i = LM;
-        startBuffer = t('buffer')['Buffer'];
+        o = t('buffer')['Buffer'];
         a = t('lz4');
         if ('/ogario' === window.location.pathname) {
             ogarjoiner('/' + window.location.hash);
