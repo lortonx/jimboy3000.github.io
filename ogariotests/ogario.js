@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1005 MEGA TEST
+// v1.1006 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4027,15 +4027,21 @@ var thelegendmodproject = function(t, e, i) {
                 e && (this.skipServerData = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                pauseVideos(),
-                    this.closeConnection();
+                pauseVideos();
+                this.closeConnection();
                 this.flushData();
                 this.setParty();
-                console.log("[Legend mod Express] Testing vectorM82..")
-                console.log('[Legend mod Express] Connecting to server'),
-                    this.privateMode && this.privateIP ? this.socket = new WebSocket(this.privateIP) : this.socket = new WebSocket(this.publicIP),
-                    this.socket['ogarioWS'] = true,
-                    this.socket['binaryType'] = 'arraybuffer';
+                console.log("[Legend mod Express] Testing vectorM82..");
+                console.log('[Legend mod Express] Connecting to server');
+				if (this.privateMode && this.privateIP){
+					this.socket = new WebSocket(this.privateIP);
+				}
+				else{
+					this.socket = new WebSocket(this.publicIP);
+				}
+                this.socket['ogarioWS'] = true,
+                this.socket['binaryType'] = 'arraybuffer';	
+				
                 var t = this;
                 this.socket['onopen'] = function() {
                     console.log('[Legend mod Express] Socket open');
