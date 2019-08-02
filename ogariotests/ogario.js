@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1012 MEGA TEST
+// v1.1013 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2219,8 +2219,8 @@ var thelegendmodproject = function(t, e, i) {
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
-            //'publicIP': 'wss://srv.ogario.eu',
-			'publicIP': 'wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=jim',
+            'publicIP': 'wss://srv.ogario.eu',
+			//'publicIP': 'wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=jim',
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
@@ -6122,7 +6122,8 @@ var thelegendmodproject = function(t, e, i) {
                     i['onOpen']();
                 };
                 this.socket['onmessage'] = function(t) {
-                    i['onMessage'](t);
+                    console.log('readMessage', t.getUint8(0));
+					i['onMessage'](t);					
                 };
                 this.socket['onerror'] = function(t) {
                     i['onError'](t);
