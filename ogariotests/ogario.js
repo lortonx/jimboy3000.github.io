@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1007 MEGA TEST
+// v1.1008 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4054,7 +4054,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.sendPartyData();
                 }
                 this.socket['onmessage'] = function(e) {
-                    t['handleMessage'](e);
+                    t['handleLMMessage'](e);
                 }
                 this.socket['onclose'] = function(e) {
                     //t.flushData();
@@ -4193,7 +4193,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (s != null) this.SLGsocket['send'](s + t);
                 }
             },
-            'handleMessage': function(t) {
+            'handleLMMessage': function(t) {
                 this['readMessage'](new DataView(t['data']));
             },
             //Sonia4
@@ -4786,9 +4786,15 @@ var thelegendmodproject = function(t, e, i) {
                 if (!(Date.now() - this.lastMessageSentTime < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var i = this.createView(10 + 2 * e.length);
-                    i.setUint8(0, 100), i.setUint8(1, t), i.setUint32(2, this.playerID, true), i.setUint32(6, 0, true);
-                    for (var s = 0; s < e.length; s++) i.setUint16(10 + 2 * s, e.charCodeAt(s), true);
-                    this['sendBuffer'](i), this.lastMessageSentTime = Date.now();
+                    i.setUint8(0, 100);
+					i.setUint8(1, t); // put variable t in slot 1
+					i.setUint32(2, this.playerID, true);
+					i.setUint32(6, 0, true);
+                    for (var s = 0; s < e.length; s++) {
+					i.setUint16(10 + 2 * s, e.charCodeAt(s), true)
+					}					
+                    this['sendBuffer'](i); 
+					this.lastMessageSentTime = Date.now();
                 }
             },
             'prepareCommand': function(t) {
