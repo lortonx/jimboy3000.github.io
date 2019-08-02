@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1009 MEGA TEST
+// v1.1010 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2219,7 +2219,8 @@ var thelegendmodproject = function(t, e, i) {
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
-            'publicIP': 'wss://srv.ogario.eu',
+            //'publicIP': 'wss://srv.ogario.eu',
+			'publicIP': 'wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=jim',
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
@@ -4042,7 +4043,7 @@ var thelegendmodproject = function(t, e, i) {
 				else{
 					this.socket = new WebSocket(this.publicIP);
 				}
-                this.socket['ogarioWS'] = true,
+                this.socket['ogarioWS'] = true;
                 this.socket['binaryType'] = 'arraybuffer';	
 				
                 var t = this;
@@ -4257,7 +4258,8 @@ var thelegendmodproject = function(t, e, i) {
             'sendPlayerState': function(t) {
                 if (this.isSocketOpen()) {
                     var e = this.createView(1);
-                    e.setUint8(0, t), this['sendBuffer'](e);
+                    e.setUint8(0, t); 
+					this['sendBuffer'](e);
                 }
             },
             'sendPlayerSpawn': function() {
@@ -4285,7 +4287,9 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                this.isSocketOpen() && i.playerColor && this['sendBuffer'](this['strToBuff'](14, i.playerColor));
+                if (this.isSocketOpen() && i.playerColor) {
+					this['sendBuffer'](this['strToBuff'](14, i.playerColor));
+				}
             },
             'sendPartyToken': function() {
                 this.setParty();
@@ -4321,7 +4325,9 @@ var thelegendmodproject = function(t, e, i) {
                     case ':party':
                         t = 'PTY';
                 }
-                this.isSocketOpen() && this['sendBuffer'](this['strToBuff'](18, t));
+                if (this.isSocketOpen()){
+					this['sendBuffer'](this['strToBuff'](18, t));
+				}
             },
             'sendServerData': function() {
 				if (this.skipServerData){
@@ -4767,6 +4773,9 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'readChatMessage': function(t) {
+				
+				console.log(t);
+				//
                 if (!defaultmapsettings.disableChat) {
                     var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
                         i = t.getUint8(1);
