@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1008 MEGA TEST
+// v1.1009 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2761,7 +2761,8 @@ var thelegendmodproject = function(t, e, i) {
                 var e = $('#message');
                 if (t.is(':visible')) {
                     var o = e.val();
-                    o.length ? (this['sendChatMessage'](101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+                    o.length ? (this['sendChatMessage'](101, o), 
+					i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
                 } else {
                     t.show();
                     e.focus();
@@ -4767,9 +4768,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'readChatMessage': function(t) {
                 if (!defaultmapsettings.disableChat) {
-                    var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1'),
-                        i = t.getUint8(1),
-                        s = t.getUint32(2, true),
+                    var e = new Date().toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+                        i = t.getUint8(1);
+                        s = t.getUint32(2, true);
                         o = t.getUint32(6, true);
                     if (!(this.isChatUserMuted(s) || 0 != o && o != this.playerID && s != this.playerID)) {
                         for (var a = '', n = 10; n < t.byteLength; n += 2) {
