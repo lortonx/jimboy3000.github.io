@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1017 MEGA TEST
+// v1.1019 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6459,8 +6459,8 @@ var thelegendmodproject = function(t, e, i) {
             },		*/
 			//https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
             'decompressMessage': function(t) {
-                var e = new o(t['buffer']);
-                var i = new o(e.readUInt32LE(1));
+                var e = new startBuffer(t['buffer']);
+                var i = new startBuffer(e.readUInt32LE(1));
                 return a.decodeBlock(e.slice(5), i), i;
             },
             'handleMessage': function(data) {
@@ -8925,7 +8925,7 @@ var thelegendmodproject = function(t, e, i) {
             return i.play ? h.exit : void 0;
         };
         i = LM;
-        o = t('buffer')['Buffer'];
+        startBuffer = t('buffer')['Buffer'];
         a = t('lz4');
         if ('/ogario' === window.location.pathname) {
             ogarjoiner('/' + window.location.hash);
