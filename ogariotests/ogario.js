@@ -3566,7 +3566,9 @@ var thelegendmodproject = function(t, e, i) {
                 });
             },
             'play': function() {
-                if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()) this.sendPartyData();
+                if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()){
+					this.sendPartyData();
+				}
                 else {
                     this.connect();
                     var t = this;
@@ -4273,7 +4275,8 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerState'](3);
             },
             'sendPlayerData': function(t, e, i) {
-                null !== this[e] && this[e] === i || this.isSocketOpen() && (this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
+                null !== this[e] && this[e] === i || this.isSocketOpen() && 
+				(this['sendBuffer'](this['strToBuff'](t, i)), this[e] = i);
             },
             'sendPlayerNick': function() {
                 this['sendPlayerData'](10, 'lastSentNick', ogarcopythelb.nick);
