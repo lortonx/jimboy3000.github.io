@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1015 MEGA TEST
+// v1.1016 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4058,7 +4058,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.sendPartyData();
                 }
                 this.socket['onmessage'] = function(e) {
-                    t['handleLMMessage'](e);
+                    t['handleMessage'](e);
                 }
                 this.socket['onclose'] = function(e) {
                     //t.flushData();
@@ -4197,7 +4197,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (s != null) this.SLGsocket['send'](s + t);
                 }
             },
-            'handleLMMessage': function(t) {
+            'handleMessage': function(t) {
                 this['readMessage'](new DataView(t['data']));
             },
             //Sonia4
@@ -4525,7 +4525,7 @@ var thelegendmodproject = function(t, e, i) {
                  this.teamPlayers[id].dcells = tempx;
                  var today = new Date();
                  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
-                 console.log("Package Received:", ids,id, time)
+                 console.log("Package Received:", ids, id, time)
 
                 //Here should be food part
             },
