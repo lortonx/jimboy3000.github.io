@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1011 MEGA TEST
+// v1.1012 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4203,8 +4203,8 @@ var thelegendmodproject = function(t, e, i) {
                 this['SLGHandler'](t.data);
             },
             'readMessage': function(t) {
-                switch (t.getUint8(0)) {
-					console.log('readMessage',t);
+				console.log('readMessage', t.getUint8(0));
+                switch (t.getUint8(0)) {					
                     case 0:
                         this.playerID = t.getUint32(1, true);
                         break;
