@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1014 MEGA TEST
+// v1.1015 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
