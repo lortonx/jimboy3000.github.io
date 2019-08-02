@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.062d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.062e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "62"; // the version 1.1-> 1.11
 //fix ffa
@@ -497,11 +497,11 @@ function loadersetings() {
                 }
             }
         }
-		
+/*		
         if (checkonlysixth != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 		toastr["info"]('<b>Thanks to author of <span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);"> <a href="http://deltav4.glitch.me/" target="blank"><font color="yellow">http://deltav4.glitch.me/</font></a> </span> for fixing tokens.<br><font color="red"></b>LM updated!<font>').css("width", "350px");
-/*	
+	
         toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://jimboy3100.github.io/banners/particles.gif);">'+
 		'✮✰𝑺𝒐𝒏𝒊𝒂✰✮</span></font> is the new co-developer of Legend Express. <br>'+
 		'New updates by ✮✰𝑺𝒐𝒏𝒊𝒂✰✮:<br>'+
@@ -515,12 +515,12 @@ function loadersetings() {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "450px");  
-*/				
+				
 		checkonlysixth = "true";
 		localStorage.setItem("checkonlysixth", checkonlysixth);				
        // }					
 		}
-
+*/
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
