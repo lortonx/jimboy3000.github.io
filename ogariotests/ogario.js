@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1011 MEGA TEST
+// v1.1012 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2716,7 +2716,12 @@ var thelegendmodproject = function(t, e, i) {
 								}
 								//temporary socket 3
 								else if ( flag==false && this.top5[o].lbgpi==-2){
+									if (this.top5[o].temp == true){
 									t = t + ('<span class="hud-main-color">[' + 'Temp. Socket' + "]</span>");
+									}
+									else{
+									t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");	
+									}
 								}								
 								//t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
                                 t = t + ('<span class="top5-mass-color">[' + this.shortMassFormat(this.top5[o].mass) + "]</span> " + this.escapeHTML(this.top5[o].nick) + "</div></li>");
