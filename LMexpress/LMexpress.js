@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.064b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -8415,22 +8415,24 @@ function HiddenBots() {
 }
 
 // Socket3enabler(window.legendmod.ws);
-// Socket3enabler(window.legendmod.ws);
+
 function Socket3enabler(srv) {
 
-    this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+    var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
     if (Socket3) {
         Socket3.close();
     }
-    Socket3 = new WebSocket("wss://connect.websocket.in/3Q-Jimboy3100_453dsV?room_id=" + this.room);
-
+    Socket3 = new WebSocket("wss://connect.websocket.in/3Q-Jimboy3100_453dsV?room_id=" + room);
+	//Socket3 = new WebSocket("wss://connect.websocket.in/3Q-Jimboy3100_453dsV?room_id=" + "123");
     Socket3.onmessage = function(message) {
         console.log(message.data);
         Socket3handler(message.data);
     }
     Socket3.onopen = function(e) {
         console.log('[Legend mod Express] Socket 3 open');
+		//setTimeout(function() {
 		Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+		//}, 1000);
         if (!window.socket3Opened) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
