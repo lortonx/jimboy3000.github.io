@@ -4510,7 +4510,7 @@ var thelegendmodproject = function(t, e, i) {
 
                 //Here should be food part
             },
-			'sendSocket3Position: function() {
+			'sendSocket3Position': function() {
 				if (i.play && window.noOgarioSocket){
 					Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
 				}
