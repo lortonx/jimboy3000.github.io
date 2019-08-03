@@ -8518,7 +8518,7 @@ function enterChatMessage() {
     var e = $('#message');
     if (t.is(':visible')) {
         var o = e.val();
-        o.length ? (Socket3MessageChat(101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+        o.length ? (Socket3MessageChat(101, o), legendmod.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
     } else {
         t.show();
         e.focus();
