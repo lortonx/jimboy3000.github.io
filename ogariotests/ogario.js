@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1015 MEGA TEST
+// v1.1016 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -32,6 +32,7 @@ $("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" 
 $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
 */
 
+var Socket3;
 
 window.videoSkinPlayerflag = {};
 window.videoSkinPlayerflag2 = {};
