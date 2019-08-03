@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1016 MEGA TEST
+// v1.1017 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4512,7 +4512,7 @@ var thelegendmodproject = function(t, e, i) {
                 //Here should be food part
             },
 			'sendSocket3Position': function() {
-				if (i.play && window.noOgarioSocket){
+				if (i.play && window.noOgarioSocket && Socket3){
 					Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
 				}
 			},
@@ -4712,7 +4712,7 @@ var thelegendmodproject = function(t, e, i) {
             'updateTeamPlayers': function() {
                 this.sendPlayerPosition(); 			
 				this.sendSuperLegendSDATA();
-				this.sendSocket3Position();
+				
 				//this.sendSLGQinfo(),
 				this.chatUsers = {}; 
 				this.top5 = []; //Sonia3
@@ -5081,6 +5081,7 @@ var thelegendmodproject = function(t, e, i) {
                 }, 33),
                     setInterval(function() {
                         t.updateTeamPlayers();
+						legendmod3.sendSocket3Position();
                     }, this.updateInterval);
             }
         };
