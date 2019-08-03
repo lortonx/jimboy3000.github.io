@@ -8812,7 +8812,6 @@ var thelegendmodproject = function(t, e, i) {
                     this.setHotkeysMenu();
                 }
             };
-		window.legendmod7 = ogario1Hotkeys;
         window.legendmod2 = ogarfooddrawer; //look at this
         window.legendmod6 = lastkeys;
 
