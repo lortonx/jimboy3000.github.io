@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.064e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -8487,7 +8487,7 @@ function Socket3updateTeamPlayer(Socket3data) {
     legendmod3.teamPlayers[h].x = 0;
     legendmod3.teamPlayers[h].y = 0;
     legendmod3.teamPlayers[h].alive = true;
-    legendmod3.teamPlayers[h].mass = 0;
+    legendmod3.teamPlayers[h].mass = 1;
     legendmod3.teamPlayers[h].temp = true;
     legendmod3.teamPlayers[h].drawPosition = function() {};
 }
