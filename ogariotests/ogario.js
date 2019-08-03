@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1009 MEGA TEST
+// v1.1010 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2702,7 +2702,7 @@ var thelegendmodproject = function(t, e, i) {
                                 for (var e = 0; e < legendmod.ghostCells.length; e++){ 
 								if (legendmod.leaderboard[e] && this.top5[o].nick==legendmod.leaderboard[e].nick){
 									if ( flag==false ){
-									t = t + ('<span class="hud-main-color">[' + window.this.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");									
+									t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");									
 									flag=true;	
 									}									
 								}
