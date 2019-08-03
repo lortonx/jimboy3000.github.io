@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1018 MEGA TEST
+// v1.1019 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -33,6 +33,7 @@ $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/
 */
 
 var Socket3;
+window.socket3Opened=false;
 var customLMID = Math.floor(Math.random()*100000);
 
 window.videoSkinPlayerflag = {};
@@ -4514,7 +4515,8 @@ var thelegendmodproject = function(t, e, i) {
             },
 			'sendSocket3Position': function() {
 				if (i.play && window.noOgarioSocket && Socket3){
-					Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+					Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));
+					//Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
 				}
 			},
             //Sonia4
@@ -9050,4 +9052,3 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 
 */
-
