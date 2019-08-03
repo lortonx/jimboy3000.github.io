@@ -8415,7 +8415,7 @@ function HiddenBots() {
 }
 
 function Socket3enabler(){
-var customLMID = Math.floor(Math.random()*100000);
+
 Socket3 = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
 
 Socket3.onmessage = function(message) {
