@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.063e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.063f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "63"; // the version 1.1-> 1.11
 //fix ffa
@@ -8423,8 +8423,8 @@ Socket3.onmessage = function(message) {
     Socket3handler(message.data);
 }
 $("#message").keydown(function(event) {
-	if (event.keyCode === window.legendmod6.defaultMessageKey) {
-		enterChatMessage();
+	if (event.keyCode === 13 ) { //window.legendmod6.getPressedKey(13)
+		enterChatMessage();	
 	}
 });
 return Socket3;
@@ -8436,7 +8436,7 @@ function Socket3handler(message) {
     if (Socket3data == null) return;
     if (Socket3data.token == legendmod3.serverToken && Socket3data.tag == ogarcopythelb.clanTag) {
         if (Socket3data.command == "chat") {
-            Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.chat);
+            Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.nick, Socket3data.chat);
         }
         if (Socket3data.command == "sendPlayerSkinURL") {
             Socket3updateTeamPlayer(Socket3data.nick, Socket3data.skin, Socket3data.color, Socket3data.id);
@@ -8504,13 +8504,13 @@ function Socket3MessageChat(chattypemsg, chatreader) {
         chattype: chattypemsg
     }));
     //wss://connect.websocket.in does not send commands to sender again
-	Socket3DisplaychatMsg(chattypemsg, customLMID, chatreader)
+	Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
 }
 
-function Socket3DisplaychatMsg(b,c,d){
+function Socket3DisplaychatMsg(b,c, x, d){
     var time;
     timernow();
-    legendmod3.displayChatMessage(time, b, c, d);
+    legendmod3.displayChatMessage( time, b, c, x + ": " + d);
 }
 					
 function enterChatMessage() {
