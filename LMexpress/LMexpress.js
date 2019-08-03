@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.063f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.063g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "63"; // the version 1.1-> 1.11
 //fix ffa
@@ -3235,7 +3235,7 @@ function universalchat() {
     my.connect = function() {
         my.disconnect();
         if (!global.io) {
-            my.log(Premadeletter109b + " socket.io");
+            //my.log(Premadeletter109b + " socket.io");
             return loadScript(stat.socketIoURL, my.connect);
         }
         var grab_opt = {
@@ -3697,9 +3697,9 @@ function universalchat() {
 
     setTimeout(function() {
         if (window.noOgarioSocket) {
-            toastr["error"]("Our Socket is down, alternative socket is opened");
-            $('#ao2t-capture').click();
-			Socket3enabler();
+            toastr["error"]("Master Socket is down, Connecting to Socket 3");
+            //$('#ao2t-capture').click();
+			Socket3enabler(window.legendmod.ws);
         }
     }, 1000);
 
@@ -8414,105 +8414,116 @@ function HiddenBots() {
     $("body").append(hiddenBotsJS);
 }
 
-function Socket3enabler(){
+// Socket3enabler(window.legendmod.ws);
+function Socket3enabler(srv) {
 
-Socket3 = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
+    this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+    if (Socket3) {
+        Socket3.close();
+    }
+    Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
 
-Socket3.onmessage = function(message) {
-    console.log(message.data);	
-    Socket3handler(message.data);
+    Socket3.onmessage = function(message) {
+        console.log(message.data);
+        Socket3handler(message.data);
+    }
+    Socket3.onopen = function(e) {
+        console.log('[Legend mod Express] Socket 3 open');
+		Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+        if (!window.socket3Opened) {
+            $("#message").keydown(function(event) {
+                if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
+                    enterChatMessage();
+                }
+            });
+        }
+        window.socket3Opened = true;
+    }
+    Socket3.onerror = function(e) {
+        console.log('[Legend mod Express] Socket 3 error', e);
+    }
+    Socket3.onclose = function(e) {
+        console.log('[Legend mod Express] Socket 3 close', e);
+    }
+    return Socket3;
 }
-$("#message").keydown(function(event) {
-	if (event.keyCode === 13 ) { //window.legendmod6.getPressedKey(13)
-		enterChatMessage();	
-	}
-});
-return Socket3;
-}
-//enterChatMessage();
 
 function Socket3handler(message) {
     var Socket3data = JSON.parse(message);
     if (Socket3data == null) return;
-    if (Socket3data.token == legendmod3.serverToken && Socket3data.tag == ogarcopythelb.clanTag) {
-        if (Socket3data.command == "chat") {
-            Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.nick, Socket3data.chat);
-        }
-        if (Socket3data.command == "sendPlayerSkinURL") {
-            Socket3updateTeamPlayer(Socket3data.nick, Socket3data.skin, Socket3data.color, Socket3data.id);
-        }		
+    //    if (Socket3data.token == legendmod3.serverToken && Socket3data.tag == ogarcopythelb.clanTag) {
+    if (Socket3data.com == "chat") {
+        Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.nick, Socket3data.chat);
     }
+    if (Socket3data.com == "sendPlayerSkinURL") {
+        Socket3updateTeamPlayer(Socket3data);
+    }
+    if (Socket3data.com == "pos") {
+        Socket3updateTeamPlayerPosition(Socket3data);
+    }
+    //    }
 }
 
-function Socket3updateTeamPlayer(nick, skinURL, color, id) {
-	var h = legendmod3.checkPlayerID(id);
-	if (!legendmod3.teamPlayers[h]){
-		h=legendmod3.teamPlayers.length;
-		legendmod3.teamPlayers[h]={}
-	}
-	legendmod3.teamPlayers[h].id = id;
-	legendmod3.teamPlayers[h].nick = nick;
-    legendmod3.teamPlayers[h].skinID = nick;
-    legendmod3.teamPlayers[h].skinURL = skinURL;
-    legendmod3.teamPlayers[h].color = color;
-	
-	legendmod3.teamPlayers[h].lbgpi = -2;
-	legendmod3.teamPlayers[h].x = -2708;
-	legendmod3.teamPlayers[h].y = 650;	
-	legendmod3.teamPlayers[h].alive = true;
-	legendmod3.teamPlayers[h].mass = 11;
-	legendmod3.teamPlayers[h].temp = true;
-	legendmod3.teamPlayers[h].drawPosition = function(){};	
+function Socket3updateTeamPlayer(Socket3data) {
+    var h = legendmod3.checkPlayerID(Socket3data.id);
+    if (!legendmod3.teamPlayers[h]) {
+        h = legendmod3.teamPlayers.length;
+        legendmod3.teamPlayers[h] = {}
+    }
+    legendmod3.teamPlayers[h].id = Socket3data.id;
+    legendmod3.teamPlayers[h].nick = Socket3data.nick;
+    legendmod3.teamPlayers[h].skinID = Socket3data.nick;
+    legendmod3.teamPlayers[h].skinURL = Socket3data.skin;
+    legendmod3.teamPlayers[h].color = Socket3data.color;
+
+    legendmod3.teamPlayers[h].lbgpi = -2;
+    legendmod3.teamPlayers[h].x = 0;
+    legendmod3.teamPlayers[h].y = 0;
+    legendmod3.teamPlayers[h].alive = true;
+    legendmod3.teamPlayers[h].mass = 0;
+    legendmod3.teamPlayers[h].temp = true;
+    legendmod3.teamPlayers[h].drawPosition = function() {};
 }
 
-/*
-function Socket3updateTeamPlayer(nick, skinURL, color, id) {
-	var h = legendmod3.checkPlayerID(id);
-	if (!legendmod3.teamPlayers[h]){
-		h=legendmod3.teamPlayers.length;
-		legendmod3.teamPlayers[h]={}
-	}
-	legendmod3.teamPlayers[h].nick = nick;
-    legendmod3.teamPlayers[h].skinID = nick;
-    legendmod3.teamPlayers[h].skinURL = skinURL;
-    legendmod3.teamPlayers[h].color = color;
-	
+function Socket3updateTeamPlayerPosition(Socket3data) {
+    var h = legendmod3.checkPlayerID(Socket3data.id);
+    if (!legendmod3.teamPlayers[h]) {
+        return;
+    }
+    legendmod3.teamPlayers[h].x = Socket3data.x;
+    legendmod3.teamPlayers[h].y = Socket3data.y;
+    legendmod3.teamPlayers[h].mass = Socket3data.mass;
 }
-*/
+
+
 function timernow() {
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
     return time;
 }
 
-
-//Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
-
+//Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));
 
 //sending commands
-
 function Socket3MessageChat(chattypemsg, chatreader) {
-    //var chatreader = $("#message").val();
-    //var chattypemsg = 101;
     Socket3.send(JSON.stringify({
-        "command": "chat",
-		id: customLMID,
+        com: "chat",
+        id: customLMID,
         nick: ogarcopythelb.nick,
-        token: legendmod3.serverToken,
-        tag: ogarcopythelb.clanTag,
         chat: chatreader,
         chattype: chattypemsg
     }));
     //wss://connect.websocket.in does not send commands to sender again
-	Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
+    Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
 }
 
-function Socket3DisplaychatMsg(b,c, x, d){
+function Socket3DisplaychatMsg(b, c, x, d) {
     var time;
     timernow();
-    legendmod3.displayChatMessage( time, b, c, x + ": " + d);
+    legendmod3.displayChatMessage(time, b, c, x + ": " + d);
 }
-					
+
+//enterChatMessage();					
 function enterChatMessage() {
     var t = $('#message-box');
     var e = $('#message');
