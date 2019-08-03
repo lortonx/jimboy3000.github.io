@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.062e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.063e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "62"; // the version 1.1-> 1.11
+var semimodVersion = "63"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3697,8 +3697,9 @@ function universalchat() {
 
     setTimeout(function() {
         if (window.noOgarioSocket) {
-            toastr["error"]("Our Socket is down, connecting to Universal tools");
+            toastr["error"]("Our Socket is down, alternative socket is opened");
             $('#ao2t-capture').click();
+			Socket3enabler();
         }
     }, 1000);
 
@@ -8411,4 +8412,116 @@ function HiddenBots() {
     hiddenBotsJS.type = "text/javascript";
     hiddenBotsJS.src = "https://jimboy3100.github.io/ExampleScripts/agario-bots/bots.js";
     $("body").append(hiddenBotsJS);
+}
+
+function Socket3enabler(){
+var customLMID = Math.floor(Math.random()*100000);
+Socket3 = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
+
+Socket3.onmessage = function(message) {
+    console.log(message.data);	
+    Socket3handler(message.data);
+}
+$("#message").keydown(function(event) {
+	if (event.keyCode === window.legendmod6.defaultMessageKey) {
+		enterChatMessage();
+	}
+});
+return Socket3;
+}
+//enterChatMessage();
+
+function Socket3handler(message) {
+    var Socket3data = JSON.parse(message);
+    if (Socket3data == null) return;
+    if (Socket3data.token == legendmod3.serverToken && Socket3data.tag == ogarcopythelb.clanTag) {
+        if (Socket3data.command == "chat") {
+            Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.chat);
+        }
+        if (Socket3data.command == "sendPlayerSkinURL") {
+            Socket3updateTeamPlayer(Socket3data.nick, Socket3data.skin, Socket3data.color, Socket3data.id);
+        }		
+    }
+}
+
+function Socket3updateTeamPlayer(nick, skinURL, color, id) {
+	var h = legendmod3.checkPlayerID(id);
+	if (!legendmod3.teamPlayers[h]){
+		h=legendmod3.teamPlayers.length;
+		legendmod3.teamPlayers[h]={}
+	}
+	legendmod3.teamPlayers[h].id = id;
+	legendmod3.teamPlayers[h].nick = nick;
+    legendmod3.teamPlayers[h].skinID = nick;
+    legendmod3.teamPlayers[h].skinURL = skinURL;
+    legendmod3.teamPlayers[h].color = color;
+	
+	legendmod3.teamPlayers[h].lbgpi = -2;
+	legendmod3.teamPlayers[h].x = -2708;
+	legendmod3.teamPlayers[h].y = 650;	
+	legendmod3.teamPlayers[h].alive = true;
+	legendmod3.teamPlayers[h].mass = 11;
+	legendmod3.teamPlayers[h].temp = true;
+	legendmod3.teamPlayers[h].drawPosition = function(){};	
+}
+
+/*
+function Socket3updateTeamPlayer(nick, skinURL, color, id) {
+	var h = legendmod3.checkPlayerID(id);
+	if (!legendmod3.teamPlayers[h]){
+		h=legendmod3.teamPlayers.length;
+		legendmod3.teamPlayers[h]={}
+	}
+	legendmod3.teamPlayers[h].nick = nick;
+    legendmod3.teamPlayers[h].skinID = nick;
+    legendmod3.teamPlayers[h].skinURL = skinURL;
+    legendmod3.teamPlayers[h].color = color;
+	
+}
+*/
+function timernow() {
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
+    return time;
+}
+
+
+//Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+
+
+//sending commands
+
+function Socket3MessageChat(chattypemsg, chatreader) {
+    //var chatreader = $("#message").val();
+    //var chattypemsg = 101;
+    Socket3.send(JSON.stringify({
+        "command": "chat",
+		id: customLMID,
+        nick: ogarcopythelb.nick,
+        token: legendmod3.serverToken,
+        tag: ogarcopythelb.clanTag,
+        chat: chatreader,
+        chattype: chattypemsg
+    }));
+    //wss://connect.websocket.in does not send commands to sender again
+	Socket3DisplaychatMsg(chattypemsg, customLMID, chatreader)
+}
+
+function Socket3DisplaychatMsg(b,c,d){
+    var time;
+    timernow();
+    legendmod3.displayChatMessage(time, b, c, d);
+}
+					
+function enterChatMessage() {
+    var t = $('#message-box');
+    var e = $('#message');
+    if (t.is(':visible')) {
+        var o = e.val();
+        o.length ? (Socket3MessageChat(101, o), i.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+    } else {
+        t.show();
+        e.focus();
+        e.val('');
+    }
 }
