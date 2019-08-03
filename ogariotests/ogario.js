@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1012 MEGA TEST
+// v1.1013 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4514,7 +4514,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (i.play && window.noOgarioSocket){
 					Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
 				}
-			}
+			},
             //Sonia4
             'sendSuperLegendSDATA': function() {
                 if (i.play && this.playerID) {
