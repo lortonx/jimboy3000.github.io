@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1017 MEGA TEST
+// v1.1018 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4843,6 +4843,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'displayChatMessage': function(t, e, i, o) {
                 if (0 != o.length) {
+					console.log(o);
                     var a = o.split(': ', 1).toString(),
                         n = this.parseMessage(o.replace(a + ': ', ''));
                     if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
