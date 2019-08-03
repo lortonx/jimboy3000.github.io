@@ -33,6 +33,7 @@ $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/
 */
 
 var Socket3;
+var customLMID = Math.floor(Math.random()*100000);
 
 window.videoSkinPlayerflag = {};
 window.videoSkinPlayerflag2 = {};
