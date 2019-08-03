@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.064d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -3700,6 +3700,9 @@ function universalchat() {
             toastr["error"]("Master Socket is down, Connecting to Socket 3");
             //$('#ao2t-capture').click();
 			Socket3enabler(window.legendmod.ws);
+			setTimeout(function() {
+				Socket3enabler(window.legendmod.ws);
+			}, 1000);				
         }
     }, 1000);
 
@@ -8419,13 +8422,6 @@ function Socket3enabler(srv) {
     if (Socket3) {
         Socket3.close();
     }
-	setTimeout(function() {
-	afterSocket3enabler(srv);
-    }, 1000);
-}
-
-function afterSocket3enabler(srv) {
-
     var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
 
     Socket3 = new WebSocket("wss://connect.websocket.in/3Q-Jimboy3100_453dsV?room_id=" + room);
