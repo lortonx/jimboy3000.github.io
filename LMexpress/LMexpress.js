@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.063g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "63"; // the version 1.1-> 1.11
+var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8415,6 +8415,7 @@ function HiddenBots() {
 }
 
 // Socket3enabler(window.legendmod.ws);
+// Socket3enabler(window.legendmod.ws);
 function Socket3enabler(srv) {
 
     this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
@@ -8453,6 +8454,7 @@ function Socket3handler(message) {
     if (Socket3data == null) return;
     //    if (Socket3data.token == legendmod3.serverToken && Socket3data.tag == ogarcopythelb.clanTag) {
     if (Socket3data.com == "chat") {
+		console.log("Chat message", Socket3data.id, Socket3data.chat);
         Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.nick, Socket3data.chat);
     }
     if (Socket3data.com == "sendPlayerSkinURL") {
@@ -8465,6 +8467,7 @@ function Socket3handler(message) {
 }
 
 function Socket3updateTeamPlayer(Socket3data) {
+	console.log("New Player id", Socket3data.id);
     var h = legendmod3.checkPlayerID(Socket3data.id);
     if (!legendmod3.teamPlayers[h]) {
         h = legendmod3.teamPlayers.length;
@@ -8521,6 +8524,7 @@ function Socket3DisplaychatMsg(b, c, x, d) {
     var time;
     timernow();
     legendmod3.displayChatMessage(time, b, c, x + ": " + d);
+	
 }
 
 //enterChatMessage();					
