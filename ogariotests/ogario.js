@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1023 MEGA TEST
+// v1.1024 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2696,7 +2696,7 @@ var thelegendmodproject = function(t, e, i) {
                         var o = 0;						
                         for (; o < s; o++) {
                             e = e + this.top5[o].mass;
-                            if (!(o >= window.teamboardlimit)) {
+                            if (!(o >= window.teamboardlimit && this.top5[o].mass > 1)) {
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[o]["skin"] ? this.top5[o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
                                 /* if (defaultmapsettings["showTargeting"]) {
                                   t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
