@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.064f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -821,6 +821,10 @@ function adres(info, thismode, thisregion) {
             //				}			
         }, 2000);
     }
+	
+	if (window.noOgarioSocket){
+		Socket3enabler(window.legendmod.ws);
+	}
 }
 
 function privateserverpassword() {
@@ -3699,7 +3703,7 @@ function universalchat() {
         if (window.noOgarioSocket) {
             toastr["error"]("Master Socket is down, Connecting to Socket 3");
             //$('#ao2t-capture').click();
-			Socket3enabler(window.legendmod.ws);
+			//Socket3enabler(window.legendmod.ws);
 			setTimeout(function() {
 				Socket3enabler(window.legendmod.ws);
 			}, 1000);				
@@ -8495,7 +8499,7 @@ function Socket3updateTeamPlayer(Socket3data) {
 function Socket3updateTeamPlayerPosition(Socket3data) {
     var h = legendmod3.checkPlayerID(Socket3data.id);
     if (!legendmod3.teamPlayers[h]) {
-        return;
+        Socket3updateTeamPlayer(Socket3data);
     }
     legendmod3.teamPlayers[h].x = Socket3data.x;
     legendmod3.teamPlayers[h].y = Socket3data.y;
