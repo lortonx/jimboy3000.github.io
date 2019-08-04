@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1022 MEGA TEST
+// v1.1023 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3585,6 +3585,10 @@ var thelegendmodproject = function(t, e, i) {
                 });
             },
             'play': function() {
+				if (window.noOgarioSocket) {
+					console.log('New Socket 3 data sent');
+					Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+				}
                 if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()) this.sendPartyData();
                 else {
                     this.connect();
