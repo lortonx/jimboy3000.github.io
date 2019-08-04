@@ -2696,7 +2696,7 @@ var thelegendmodproject = function(t, e, i) {
                         var o = 0;						
                         for (; o < s; o++) {
                             e = e + this.top5[o].mass;
-                            if (!(o >= window.teamboardlimit)) {
+                            if (!(o >= window.teamboardlimit && this.top5[o].mass > 1)) { //&& this.top5[o].mass > 1
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + '; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' + (this.top5[o]["skin"] ? this.top5[o]["skin"] : "https://jimboy3100.github.io/banners/icon32croped.ico.gif") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
                                 /* if (defaultmapsettings["showTargeting"]) {
                                   t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
@@ -3677,20 +3677,29 @@ var thelegendmodproject = function(t, e, i) {
                 this.unlockButtons(), ogarcommando1(), this.autoResp();
             },
             'setPlayerSettings': function() {
-                var t = $('#nick').val(),
-                    e = $('#clantag').val(),
-                    o = $('#skin').val(),
+                var t = $('#nick').val();
+                    e = $('#clantag').val();
+                    o = $('#skin').val();
                     a = $('#color').val();
-                ogarcopythelb.nick = t,
-                    ogarcopythelb.clanTag = e.trim(),
-                    ogarcopythelb.skinURL = this['checkSkinURL'](o.trim()),
-                7 == a.length && (ogarcopythelb.color = a),
-                ogarcopythelb.clanTag.length > 0 && (i.clanTag = ogarcopythelb.clanTag),
-                    ogario1PlayerProfiles[this.selectedProfile].nick = ogarcopythelb.nick,
-                    ogario1PlayerProfiles[this.selectedProfile].clanTag = ogarcopythelb.clanTag,
-                    ogario1PlayerProfiles[this.selectedProfile].skinURL = ogarcopythelb.skinURL,
-                    ogario1PlayerProfiles[this.selectedProfile].color = ogarcopythelb.color,
+                ogarcopythelb.nick = t;
+                    ogarcopythelb.clanTag = e.trim();
+                    ogarcopythelb.skinURL = this['checkSkinURL'](o.trim());
+                if (7 == a.length){
+					ogarcopythelb.color = a;
+				}
+				if (ogarcopythelb.clanTag.length > 0){
+					i.clanTag = ogarcopythelb.clanTag
+				}               
+                    ogario1PlayerProfiles[this.selectedProfile].nick = ogarcopythelb.nick;
+                    ogario1PlayerProfiles[this.selectedProfile].clanTag = ogarcopythelb.clanTag;
+                    ogario1PlayerProfiles[this.selectedProfile].skinURL = ogarcopythelb.skinURL;
+                    ogario1PlayerProfiles[this.selectedProfile].color = ogarcopythelb.color;
                     this.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles');
+					
+					if (window.noOgarioSocket){
+						Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+						console.log('New settings sent for Socket 3');
+					}
             },
             'loadSkin': function(t, e) {
                 var i = this;
