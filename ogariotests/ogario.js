@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1026 MEGA TEST
+// v1.1027 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2687,8 +2687,8 @@ var thelegendmodproject = function(t, e, i) {
 						var tempTime = new Date().getTime();						
 						Object.getOwnPropertyNames(this.teamPlayers).forEach(function(element) {
 						if (this.teamPlayers && this.teamPlayers[element] && this.teamPlayers[element].lbgpi == -2 && this.teamPlayers[element].mass > 1 ) {
-							if (this.teamPlayers[element].lastUpdatedTime && this.teamPlayers[element].lastUpdatedTime<tempTime+3000){
-								console.log("last time", this.teamPlayers[element].lastUpdatedTime, "now", tempTime, "difference", this.teamPlayers[element].lastUpdatedTime - tempTime);
+							console.log("last time", this.teamPlayers[element].lastUpdatedTime, "now", tempTime, "difference", this.teamPlayers[element].lastUpdatedTime - tempTime);
+							if (this.teamPlayers[element].lastUpdatedTime && this.teamPlayers[element].lastUpdatedTime < tempTime+3000){
 								this.teamPlayers[element].mass=1;
 								this.teamPlayers[element].alive=false;
 								}
