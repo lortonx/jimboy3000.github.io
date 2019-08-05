@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1042 MEGA TEST
+// v1.1041 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4455,9 +4455,6 @@ var thelegendmodproject = function(t, e, i) {
                      msg += this.packInt(z.id, 4);
                      msg += this.packFloat(this.getrel(z.x, 0), 4);
                      msg += this.packFloat(this.getrel(z.y, 1), 4);
-					 msg += this.packFloat(z.color, 4);
-					 msg += this.packFloat(z.isFood, 4);
-					 msg += this.packFloat(z.isVirus, 4);
                      msg += this.packInt(~~(z.size), 2);
                  }
                  var cmsg = "";
@@ -4469,9 +4466,6 @@ var thelegendmodproject = function(t, e, i) {
                          cmsg += this.packInt(z.id, 4);
                          cmsg += this.packFloat(this.getrel(z.x, 0), 4);
                          cmsg += this.packFloat(this.getrel(z.y, 1), 4);
-						 cmsg += this.packFloat(z.color, 4);
-						 cmsg += this.packFloat(z.isFood, 4);
-						 cmsg += this.packFloat(z.isVirus, 4);					 
                          cmsg += this.packInt(~~(z.size), 2);
                          clen++;
                      }
@@ -4501,19 +4495,13 @@ var thelegendmodproject = function(t, e, i) {
                      var di = this.unpackInt(msg.slice(0, 2));
                      var fx = this.unpackFloat(msg.slice(2, 4));
                      var fy = this.unpackFloat(msg.slice(4, 6));
-					 var fcolor = this.unpackFloat(msg.slice(6, 8));
-					 var fisFood = this.unpackFloat(msg.slice(8, 10));
-					 var fisVirus = this.unpackFloat(msg.slice(10, 12));
-                     var ds = this.unpackInt(msg.slice(12, 13));
-                     msg = msg.slice(13);
+                     var ds = this.unpackInt(msg.slice(6, 7));
+                     msg = msg.slice(7);
                      var x = this.getreal(fx, 0);
                      var y = this.getreal(fy, 1);
-					 var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, fcolor, fisFood, fisVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+					 var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                      ogariocellssetts.time=this.time;
-					 ogariocellssetts.color=fcolor;
-					 ogariocellssetts.isFood=fisFood;
-					 ogariocellssetts.isVirus=fisVirus;
-					 
+					 ogariocellssetts.isVirus=true;
 					 temp.push(ogariocellssetts);	
 					 //if (!legendmod.indexedCells[id].isInView()){					 
 					 if (legendmod.indexedCells.hasOwnProperty(di)) {						 
@@ -4538,17 +4526,12 @@ var thelegendmodproject = function(t, e, i) {
                      var di = this.unpackInt(msg.slice(0, 2));
                      var fx = this.unpackFloat(msg.slice(2, 4));
                      var fy = this.unpackFloat(msg.slice(4, 6));
-					 var fcolor = this.unpackFloat(msg.slice(6, 8));
-					 var fisFood = this.unpackFloat(msg.slice(8, 10));
-					 var fisVirus = this.unpackFloat(msg.slice(10, 12));
-                     var ds = this.unpackInt(msg.slice(12, 13));
-                     msg = msg.slice(13);
+                     var ds = this.unpackInt(msg.slice(6, 7));
+                     msg = msg.slice(7);
                      var x = this.getreal(fx, 0);
                      var y = this.getreal(fy, 1);
-                     var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, fcolor, fisFood, fisVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
-					 ogariocellssetts.color=fcolor;
-					 ogariocellssetts.isFood=fisFood;
-					 ogariocellssetts.isVirus=fisVirus;				 
+                     var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                     ogariocellssetts.isVirus=false;					 
 					 temp.push(ogariocellssetts);					 
 					 //if (!legendmod.indexedCells[id].isInView()){					 
 					 if (legendmod.indexedCells.hasOwnProperty(di)) {						 
