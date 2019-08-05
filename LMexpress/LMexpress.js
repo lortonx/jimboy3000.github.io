@@ -821,10 +821,6 @@ function adres(info, thismode, thisregion) {
             //				}			
         }, 2000);
     }
-	
-	if (window.noOgarioSocket){
-		Socket3enabler(window.legendmod.ws);
-	}
 }
 
 function privateserverpassword() {
