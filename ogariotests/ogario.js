@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1040 MEGA TEST
+// v1.1041 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4504,12 +4504,12 @@ var thelegendmodproject = function(t, e, i) {
 					 ogariocellssetts.isVirus=true;
 					 temp.push(ogariocellssetts);	
 					 //if (!legendmod.indexedCells[id].isInView()){					 
-					 if (legendmod.indexedCells.hasOwnProperty(id)) {						 
-						 ogariocellssetts = legendmod.indexedCells[id];
+					 if (legendmod.indexedCells.hasOwnProperty(di)) {						 
+						 ogariocellssetts = legendmod.indexedCells[di];
 						 													 
 						 }
 				     else{
-						legendmod.indexedCells[id] = ogariocellssetts; 
+						legendmod.indexedCells[di] = ogariocellssetts; 
 						legendmod.cells.push(ogariocellssetts);
 					 }
 					 //}
@@ -4534,11 +4534,11 @@ var thelegendmodproject = function(t, e, i) {
                      ogariocellssetts.isVirus=false;					 
 					 temp.push(ogariocellssetts);					 
 					 //if (!legendmod.indexedCells[id].isInView()){					 
-					 if (legendmod.indexedCells.hasOwnProperty(id)) {						 
-						 ogariocellssetts = legendmod.indexedCells[id];													 
+					 if (legendmod.indexedCells.hasOwnProperty(di)) {						 
+						 ogariocellssetts = legendmod.indexedCells[di];													 
 						 }
 				     else{
-						legendmod.indexedCells[id] = ogariocellssetts;
+						legendmod.indexedCells[di] = ogariocellssetts;
 						legendmod.cells.push(ogariocellssetts);
 					 }
 					 //}
