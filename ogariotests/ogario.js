@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1049 MEGA TEST
+// v1.1050 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4539,9 +4539,6 @@ var thelegendmodproject = function(t, e, i) {
 					 
 					var ai=legendmod.cells.length;
 					 if (legendmod.indexedCells.hasOwnProperty(di)) {	
-						ogariocellssetts = legendmod.indexedCells[di];													 
-					 }
-				     else{
 						legendmod.indexedCells[di] = ogariocellssetts;
 						if (!legendmod.indexedCells[di].isInView()){	
 							legendmod.cells[ai]=ogariocellssetts;
@@ -4552,7 +4549,12 @@ var thelegendmodproject = function(t, e, i) {
 					 
 					 setTimeout(function() {
 					 legendmod.indexedCells[di].removeCell();
-					 legendmod.cells[ai].removeCell();
+					 legendmod.cells.forEach(function(a){
+						 if (a.id==di){
+							legendmod.cells[a].removeCell(); 
+						 }
+					 });	 
+					 
 					 }, 1000);
                  }
                  this.teamPlayers[id].dcells = tempx;
