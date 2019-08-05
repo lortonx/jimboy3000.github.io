@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.064g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.064h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -6367,7 +6367,7 @@ function getSNEZServers(ifcalled) {
 
         },
         onOpen: function() {
-            console.log("Connected.");
+            console.log("[Legend mod Express] Snez socket open");
             //       app.state = "Connected.";
         },
 
@@ -8060,7 +8060,7 @@ function joinSERVERfindinfo() {
 
             setTimeout(function() {
                 if ($('.logEntry').html() != undefined && $('.logEntry').html() != "") {
-                    console.log("Searching..");
+                    console.log("[Legend mod Express] Searching Snez servers..");
                     for (var i = 0; i < $('.logEntry').length; i++) {
                         if ($('.logEntry>#playerinfo').eq(i).html() == $('#nick').val()) {
                             $('.logEntry').eq(i).remove();
@@ -8423,22 +8423,19 @@ function HiddenBots() {
 
 // Socket3enabler(window.legendmod.ws);
 function Socket3enabler(srv) {
+
+    this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
     if (Socket3) {
         Socket3.close();
     }
-    var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+    Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
 
-    Socket3 = new WebSocket("wss://connect.websocket.in/3Q-Jimboy3100_453dsV?room_id=" + room);
-	//Socket3 = new WebSocket("wss://connect.websocket.in/3Q-Jimboy3100_453dsV?room_id=" + "123");
     Socket3.onmessage = function(message) {
         console.log(message.data);
         Socket3handler(message.data);
     }
     Socket3.onopen = function(e) {
         console.log('[Legend mod Express] Socket 3 open');
-		//setTimeout(function() {
-		Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
-		//}, 1000);
         if (!window.socket3Opened) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
@@ -8459,23 +8456,24 @@ function Socket3enabler(srv) {
 
 function Socket3handler(message) {
     var Socket3data = JSON.parse(message);
-    if (Socket3data == null) return;
-    //    if (Socket3data.token == legendmod3.serverToken && Socket3data.tag == ogarcopythelb.clanTag) {
-    if (Socket3data.com == "chat") {
-		console.log("Chat message", Socket3data.id, Socket3data.chat);
+    if (Socket3data == null){
+		return;
+	}
+    else if (Socket3data.com == "chat") {
         Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.nick, Socket3data.chat);
     }
-    if (Socket3data.com == "sendPlayerSkinURL") {
+    else if (Socket3data.com == "sendPlayerSkinURL") {
         Socket3updateTeamPlayer(Socket3data);
     }
-    if (Socket3data.com == "pos") {
+    else if (Socket3data.com == "pos") {
         Socket3updateTeamPlayerPosition(Socket3data);
     }
-    //    }
+    else if (Socket3data.com == "death") { //not used yet
+        Socket3updateTeamPlayerDeath(Socket3data);
+    }	
 }
 
 function Socket3updateTeamPlayer(Socket3data) {
-	console.log("New Player id", Socket3data.id);
     var h = legendmod3.checkPlayerID(Socket3data.id);
     if (!legendmod3.teamPlayers[h]) {
         h = legendmod3.teamPlayers.length;
@@ -8488,24 +8486,32 @@ function Socket3updateTeamPlayer(Socket3data) {
     legendmod3.teamPlayers[h].color = Socket3data.color;
 
     legendmod3.teamPlayers[h].lbgpi = -2;
-    legendmod3.teamPlayers[h].x = 0;
-    legendmod3.teamPlayers[h].y = 0;
+    legendmod3.teamPlayers[h].x = Socket3data.x;
+    legendmod3.teamPlayers[h].y = Socket3data.y;
     legendmod3.teamPlayers[h].alive = true;
-    legendmod3.teamPlayers[h].mass = 1;
+    legendmod3.teamPlayers[h].mass = Socket3data.mass;
     legendmod3.teamPlayers[h].temp = true;
     legendmod3.teamPlayers[h].drawPosition = function() {};
+	var tempTime = new Date().getTime();
+	legendmod3.teamPlayers[h].lastUpdatedTime = tempTime;
 }
 
 function Socket3updateTeamPlayerPosition(Socket3data) {
     var h = legendmod3.checkPlayerID(Socket3data.id);
     if (!legendmod3.teamPlayers[h]) {
-        Socket3updateTeamPlayer(Socket3data);
+        return;
     }
     legendmod3.teamPlayers[h].x = Socket3data.x;
     legendmod3.teamPlayers[h].y = Socket3data.y;
     legendmod3.teamPlayers[h].mass = Socket3data.mass;
+	var tempTime = new Date().getTime();	
+	legendmod3.teamPlayers[h].lastUpdatedTime = tempTime;
 }
-
+function Socket3updateTeamPlayerDeath(Socket3data) {
+	var h = legendmod3.checkPlayerID(Socket3data.id);	    
+	legendmod3.teamPlayers[h].alive = false;
+	legendmod3.teamPlayers[h].mass=1;	
+}
 
 function timernow() {
     var today = new Date();
@@ -8513,6 +8519,8 @@ function timernow() {
     return time;
 }
 
+//Socket3.send(JSON.stringify({ com: "death", id: customLMID}));
+//Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));
 //Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));
 
 //sending commands
@@ -8532,7 +8540,6 @@ function Socket3DisplaychatMsg(b, c, x, d) {
     var time;
     timernow();
     legendmod3.displayChatMessage(time, b, c, x + ": " + d);
-	
 }
 
 //enterChatMessage();					
@@ -8542,6 +8549,9 @@ function enterChatMessage() {
     if (t.is(':visible')) {
         var o = e.val();
         o.length ? (Socket3MessageChat(101, o), legendmod.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+		setTimeout(function() {
+		t.hide();
+		}, 10);
     } else {
         t.show();
         e.focus();
