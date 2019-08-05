@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1028 MEGA TEST
+// v1.1029 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2685,18 +2685,19 @@ var thelegendmodproject = function(t, e, i) {
 						
 						//temp
 						var tempTime = new Date().getTime();						
-						Object.getOwnPropertyNames(this.teamPlayers).forEach(function(element) {
-						if (this.teamPlayers && this.teamPlayers[element] && this.teamPlayers[element].lbgpi == -2 && this.teamPlayers[element].mass > 1 ) {
-							console.log(this.teamPlayers[element].lastUpdatedTime, tempTime);
-							if (this.teamPlayers[element].lastUpdatedTime && ((this.teamPlayers[element].lastUpdatedTime) - tempTime < 3000)){
-								this.teamPlayers[element].mass=1;
-								this.teamPlayers[element].alive=false;
+						Object.getOwnPropertyNames(legendmod3.teamPlayers).forEach(function(element) {
+						if (legendmod3.teamPlayers && legendmod3.teamPlayers[element] && legendmod3.teamPlayers[element].lbgpi == -2 && legendmod3.teamPlayers[element].mass > 1 ) {
+							//console.log(legendmod3.teamPlayers[element].lastUpdatedTime, tempTime);
+							if (legendmod3.teamPlayers[element].lastUpdatedTime && ((legendmod3.teamPlayers[element].lastUpdatedTime) - tempTime < 3000)){
+								legendmod3.teamPlayers[element].mass=1;
+								legendmod3.teamPlayers[element].alive=false;
 								}
 							else{
-								this.top5.push(this.teamPlayers[element]);	
+								
+								legendmod3.top5.push(legendmod3.teamPlayers[element]);	
 								}								
 							}
-						});	
+						});
 						//
                         var t = "";
                         var e = 0;
