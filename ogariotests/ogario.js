@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1038 MEGA TEST
+// v1.1039 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4503,10 +4503,10 @@ var thelegendmodproject = function(t, e, i) {
                      ogariocellssetts.time=this.time;
 					 ogariocellssetts.isVirus=true;
 					 temp.push(ogariocellssetts);	
-					 if (!ogariocellssetts.isInView()){					 
+					 if (!legendmod.indexedCells[id].isInView()){					 
 					 if (legendmod.indexedCells.hasOwnProperty(id)) {						 
 						 ogariocellssetts = legendmod.indexedCells[id]
-						 //legendmod.cells.push(ogariocellssetts);													 
+						 legendmod.cells.push(ogariocellssetts);													 
 						 }
 				     else{
 						legendmod.indexedCells[id] = ogariocellssetts; 
@@ -4532,10 +4532,10 @@ var thelegendmodproject = function(t, e, i) {
                      var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                      ogariocellssetts.isVirus=false;					 
 					 temp.push(ogariocellssetts);					 
-					 if (!ogariocellssetts.isInView()){					 
+					 if (!legendmod.indexedCells[id].isInView()){					 
 					 if (legendmod.indexedCells.hasOwnProperty(id)) {						 
 						 ogariocellssetts = legendmod.indexedCells[id]
-						 //legendmod.cells.push(ogariocellssetts);													 
+						 legendmod.cells.push(ogariocellssetts);													 
 						 }
 				     else{
 						legendmod.indexedCells[id] = ogariocellssetts;  
