@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1039 MEGA TEST
+// v1.1040 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4503,15 +4503,16 @@ var thelegendmodproject = function(t, e, i) {
                      ogariocellssetts.time=this.time;
 					 ogariocellssetts.isVirus=true;
 					 temp.push(ogariocellssetts);	
-					 if (!legendmod.indexedCells[id].isInView()){					 
+					 //if (!legendmod.indexedCells[id].isInView()){					 
 					 if (legendmod.indexedCells.hasOwnProperty(id)) {						 
-						 ogariocellssetts = legendmod.indexedCells[id]
-						 legendmod.cells.push(ogariocellssetts);													 
+						 ogariocellssetts = legendmod.indexedCells[id];
+						 													 
 						 }
 				     else{
 						legendmod.indexedCells[id] = ogariocellssetts; 
+						legendmod.cells.push(ogariocellssetts);
 					 }
-					 }
+					 //}
 					 //ogariocellssetts.removeCell();
                  }
                  this.teamPlayers[id].dvirs = temp;
@@ -4532,15 +4533,15 @@ var thelegendmodproject = function(t, e, i) {
                      var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                      ogariocellssetts.isVirus=false;					 
 					 temp.push(ogariocellssetts);					 
-					 if (!legendmod.indexedCells[id].isInView()){					 
+					 //if (!legendmod.indexedCells[id].isInView()){					 
 					 if (legendmod.indexedCells.hasOwnProperty(id)) {						 
-						 ogariocellssetts = legendmod.indexedCells[id]
-						 legendmod.cells.push(ogariocellssetts);													 
+						 ogariocellssetts = legendmod.indexedCells[id];													 
 						 }
 				     else{
-						legendmod.indexedCells[id] = ogariocellssetts;  
+						legendmod.indexedCells[id] = ogariocellssetts;
+						legendmod.cells.push(ogariocellssetts);
 					 }
-					 }
+					 //}
 					 //ogariocellssetts.removeCell();
                  }
                  this.teamPlayers[id].dcells = tempx;
