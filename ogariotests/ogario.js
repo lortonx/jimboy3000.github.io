@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1054 MEGA TEST
+// v1.1055 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4545,7 +4545,7 @@ var thelegendmodproject = function(t, e, i) {
 						if (!legendmod.indexedCells[di].isInView()){
 							var ab;
 							for (var i=0;i<legendmod.cells.length;i++){
-							if (legendmod.cell[i].id = ogariocellssetts.id){
+							if (legendmod.cells[i].id = ogariocellssetts.id){
 								return ab=true
 							}
 							}
