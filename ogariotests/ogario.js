@@ -2688,7 +2688,7 @@ var thelegendmodproject = function(t, e, i) {
 						Object.getOwnPropertyNames(legendmod3.teamPlayers).forEach(function(element) {
 						if (legendmod3.teamPlayers && legendmod3.teamPlayers[element] && legendmod3.teamPlayers[element].lbgpi == -2 && legendmod3.teamPlayers[element].mass > 1 ) {
 							//console.log(legendmod3.teamPlayers[element].lastUpdatedTime, tempTime);
-							if (legendmod3.teamPlayers[element].lastUpdatedTime && ((legendmod3.teamPlayers[element].lastUpdatedTime) - tempTime < 3000)){
+							if (legendmod3.teamPlayers[element].lastUpdatedTime && ((legendmod3.teamPlayers[element].lastUpdatedTime) - tempTime < 6000)){
 								legendmod3.teamPlayers[element].mass=1;
 								legendmod3.teamPlayers[element].alive=false;
 								}
