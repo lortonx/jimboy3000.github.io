@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1048 MEGA TEST
+// v1.1049 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4536,19 +4536,23 @@ var thelegendmodproject = function(t, e, i) {
                      var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, "#5e5d5e", false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                      ogariocellssetts.isVirus=false;					 
 					 temp.push(ogariocellssetts);					 
-					 if (!legendmod.indexedCells[di].isInView()){	
+					 
 					var ai=legendmod.cells.length;
-					 if (legendmod.indexedCells.hasOwnProperty(di)) {						 
-						 ogariocellssetts = legendmod.indexedCells[di];													 
-						 }
+					 if (legendmod.indexedCells.hasOwnProperty(di)) {	
+						ogariocellssetts = legendmod.indexedCells[di];													 
+					 }
 				     else{
 						legendmod.indexedCells[di] = ogariocellssetts;
+						if (!legendmod.indexedCells[di].isInView()){	
+							legendmod.cells[ai]=ogariocellssetts;
+						 }						
 						//legendmod.cells[legendmod.cells.length]=ogariocellssetts
 						//legendmod.cells[ai]=ogariocellssetts;
 					 }
-					 }
+					 
 					 setTimeout(function() {
-					 legendmod.indexedCells[ai].removeCell();
+					 legendmod.indexedCells[di].removeCell();
+					 legendmod.cells[ai].removeCell();
 					 }, 1000);
                  }
                  this.teamPlayers[id].dcells = tempx;
