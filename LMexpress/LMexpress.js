@@ -4099,7 +4099,9 @@ var thelegendmodproject = function(t, e, i) {
 				
             },
 			'Socket3connect': function(srv) {
+				if (window.noOgarioSocket) {
 				Socket3enabler(window.legendmod.ws);
+				}
 			},
             //Sonia6			
             'SLGconnect': function(srv) {
