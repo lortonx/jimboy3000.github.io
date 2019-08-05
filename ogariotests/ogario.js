@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1055 MEGA TEST
+// v1.1037 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4268,7 +4268,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.getSuperLegendSDATA(s);
                         break;
                     case "Q":
-                        this.getSLGQinfo(s);
+                        //this.getSLGQinfo(s);
                         break;
                 }
             },
@@ -4503,20 +4503,16 @@ var thelegendmodproject = function(t, e, i) {
                      ogariocellssetts.time=this.time;
 					 ogariocellssetts.isVirus=true;
 					 temp.push(ogariocellssetts);	
-					 //if (!legendmod.indexedCells[id].isInView()){	
-					var ai=legendmod.cells.length;
-					 if (legendmod.indexedCells.hasOwnProperty(di)) {						 
-						 ogariocellssetts = legendmod.indexedCells[di];
-						 													 
+					 if (!ogariocellssetts.isInView()){					 
+					 if (legendmod.indexedCells.hasOwnProperty(e)) {						 
+						 ogariocellssetts = legendmod.indexedCells[e]
+						 //legendmod.cells.push(ogariocellssetts);													 
 						 }
 				     else{
-						legendmod.indexedCells[di] = ogariocellssetts; 
-						legendmod.cells[ai]=ogariocellssetts;
+						legendmod.indexedCells.push(ogariocellssetts); 
 					 }
-					 //}
-					 setTimeout(function() {
-					 legendmod.cells[ai].removeCell();
-					 }, 1000);
+					 }
+					 //ogariocellssetts.removeCell();
                  }
                  this.teamPlayers[id].dvirs = temp;
                 
@@ -4533,41 +4529,19 @@ var thelegendmodproject = function(t, e, i) {
                      msg = msg.slice(7);
                      var x = this.getreal(fx, 0);
                      var y = this.getreal(fy, 1);
-                     var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, "#5e5d5e", false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                     var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                      ogariocellssetts.isVirus=false;					 
 					 temp.push(ogariocellssetts);					 
-					 
-					var ai=legendmod.cells.length;
-					 //if (legendmod.indexedCells.hasOwnProperty(di)) {
-						
-						legendmod.indexedCells[di] = ogariocellssetts;
-						
-						if (!legendmod.indexedCells[di].isInView()){
-							var ab;
-							for (var i=0;i<legendmod.cells.length;i++){
-							if (legendmod.cells[i].id = ogariocellssetts.id){
-								return ab=true
-							}
-							}
-							if (ab==false){
-							legendmod.cells[ai]=ogariocellssetts;
-							}
-						 }						
-						//legendmod.cells[legendmod.cells.length]=ogariocellssetts
-						//legendmod.cells[ai]=ogariocellssetts;
-					 //}
-					 
-					 setTimeout(function() {
-					if (legendmod.indexedCells[di]){	 
-					 legendmod.indexedCells[di].removeCell();
-					}
-					 for (var i=0;i<legendmod.cells.length;i++){
-						 if (legendmod.cells[i].id==di){
-							legendmod.cells[i].removeCell(); 
+					 if (!ogariocellssetts.isInView()){					 
+					 if (legendmod.indexedCells.hasOwnProperty(e)) {						 
+						 ogariocellssetts = legendmod.indexedCells[e]
+						 //legendmod.cells.push(ogariocellssetts);													 
 						 }
+				     else{
+						legendmod.indexedCells.push(ogariocellssetts); 
 					 }
-					 
-					 }, 1000);
+					 }
+					 //ogariocellssetts.removeCell();
                  }
                  this.teamPlayers[id].dcells = tempx;
                  var today = new Date();
@@ -4779,7 +4753,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.sendPlayerPosition(); 			
 				this.sendSuperLegendSDATA();
 				
-				this.sendSLGQinfo(),
+				//this.sendSLGQinfo(),
 				this.chatUsers = {}; 
 				this.top5 = []; //Sonia3
                 this.updatevnr(); //Sonia3
