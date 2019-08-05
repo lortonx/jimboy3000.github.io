@@ -2222,7 +2222,7 @@ var thelegendmodproject = function(t, e, i) {
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
-            'publicIP': 'wss://srv.ogario.eu2',
+            'publicIP': 'wss://srv.ogario.eu',
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
@@ -4870,7 +4870,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'displayChatMessage': function(t, e, i, o) {
                 if (0 != o.length) {
-					console.log(o);
+					//console.log(o);
                     var a = o.split(': ', 1).toString(),
                         n = this.parseMessage(o.replace(a + ': ', ''));
                     if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
