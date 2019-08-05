@@ -8427,7 +8427,7 @@ function Socket3enabler(srv) {
     Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
 
     Socket3.onmessage = function(message) {
-        console.log(message.data);
+        //console.log(message.data);
         Socket3handler(message.data);
     }
     Socket3.onopen = function(e) {
