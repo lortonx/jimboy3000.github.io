@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1029 MEGA TEST
+// v1.1030 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4096,8 +4096,12 @@ var thelegendmodproject = function(t, e, i) {
                     console.log('[Legend mod Express] Socket error', e);
                     window.noOgarioSocket = true;
                 };
+				
             },
-            //Sonia6
+			'Socket3connect': function(srv) {
+				Socket3enabler(window.legendmod.ws);
+			}
+            //Sonia6			
             'SLGconnect': function(srv) {
                 this.closeSLGConnection();
                 this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
@@ -6095,6 +6099,7 @@ var thelegendmodproject = function(t, e, i) {
             'connect': function(t) {
                 console.log('[Legend mod Express] Connecting to game server:', t);
                 var i = this;
+				window.legendmod3.Socket3connect(t);
                 window.legendmod3.SLGconnect(t);
                 window.legendmod.vnr = 0; //Sonia3
                 window.legendmod.bgpi = 4; //Sonia3
