@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1057 MEGA TEST
+// v1.1058 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6984,11 +6984,11 @@ var thelegendmodproject = function(t, e, i) {
 					for (y=0;y<legendmod.cells.length;y++){
 						if (legendmod.cells[y].id == window.cellsFake[x].id){
 							legendmod.cells[y].time = this.time;
-							legendmod.cells[y] = window.cellsFake[x];
-							//legendmod.cells[y].x = window.cellsFake[x].x;
-							//legendmod.cells[y].y = window.cellsFake[x].y;
-							//legendmod.cells[y].size = window.cellsFake[x].size;
-							legendmod.cells[y].removeCell(); 
+							//legendmod.cells[y] = window.cellsFake[x];
+							legendmod.cells[y].targetX = window.cellsFake[x].x;
+							legendmod.cells[y].targetY = window.cellsFake[x].y;
+							legendmod.cells[y].size = window.cellsFake[x].size;
+							//legendmod.cells[y].removeCell(); 
 							ab=true;
 						}
 					}
