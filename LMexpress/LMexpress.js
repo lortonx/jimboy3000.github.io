@@ -8519,15 +8519,24 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
 				for(var j=0; j< temp.length; j++){
 					var ogariocellssetts = new legendmod1(temp[j].id, temp[j].x, temp[j].y, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
-					ogariocellssetts.isVirus = false;			
-					legendmod.indexedCells[temp[j].id] = ogariocellssetts;		
+					ogariocellssetts.isVirus = false;	
+					ogariocellssetts.fake = true;
+					legendmod.indexedCells[temp[j].id] = ogariocellssetts;	
+					legendmod.cells.push(ogariocellssetts);
+/*					
+					for (x=0;x<legendmod.cells.length;x++){
+						if (legendmod.cells[x].fake == true){
+							legendmod.cells[x].removeCell(); 
+						}
+					}
+										
 					var ab;
 					var ai = legendmod.cells.length;
 					var x=0;
 					for (x=0;x<legendmod.cells.length;x++){
 						if (legendmod.cells[x].id == ogariocellssetts.id){
 							console.log("cell found", legendmod.cells[x].id, legendmod3.teamPlayers[i].nick);
-							return ab = true, x;
+							ab = true, x;
 						}
 					}
 					if (!ab==true){
@@ -8539,7 +8548,7 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 						legendmod.cells[legendmod.cells.length]=ogariocellssetts;
 						console.log("legendmod.cell2", legendmod.cells.length);
 					}
-					
+*/					
 				}
 			}
 		}
