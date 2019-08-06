@@ -4447,6 +4447,7 @@ var thelegendmodproject = function(t, e, i) {
                 else return x * (v.mapMaxY - v.mapMinY) + v.mapMinY;
             },
 			 'sendJimboy3100info': function() {
+				 if (window.legendmod.play){
 				window.playerCellsSock=[];
 				if (legendmod.playerCells && legendmod.playerCells.length){
 					for (var i; i<legendmod.playerCells; i++){
@@ -4460,6 +4461,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (Socket3 && Socket3.readyState==1&& legendmod3.playerID && window.playerCellsSock) {
 				Socket3.send(JSON.stringify({ com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock}));		
 				}
+			 }
 			 },
              'sendSLGQinfo': function() {
                  //return;
