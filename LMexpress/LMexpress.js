@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.070 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
