@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "64"; // the version 1.1-> 1.11
+var semimodVersion = "65"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8434,7 +8434,7 @@ function Socket3enabler(srv) {
         if (!window.socket3Opened) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
-                    enterChatMessage();
+                    enterChatMessage2();
                 }
             });
         }
@@ -8451,6 +8451,7 @@ function Socket3enabler(srv) {
 
 function Socket3handler(message) {
     var Socket3data = JSON.parse(message);
+	console.log(Socket3data)
     if (Socket3data == null){
 		return;
 	}
@@ -8574,7 +8575,7 @@ function Socket3DisplaychatMsg(b, c, x, d) {
 }
 
 //enterChatMessage();					
-function enterChatMessage() {
+function enterChatMessage2() {
     var t = $('#message-box');
     var e = $('#message');
     if (t.is(':visible')) {
