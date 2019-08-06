@@ -8467,8 +8467,10 @@ function Socket3handler(message) {
         Socket3updateTeamPlayerDeath(Socket3data);
     }	
     else if (Socket3data.com == "pcells") { 
-		console.log("pcells packet sent by", Socket3data.tid);
+		
         var temp = Socket3data.playerCells;
+		window.jim=temp;
+		console.log("pcells packet sent by", Socket3data.tid, temp);
 		for (var i; i < legendmod3.teamPlayers.length; i++){
 			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
 				for(var j=0; j< temp.length; j++){
@@ -8481,6 +8483,7 @@ function Socket3handler(message) {
 					var x=0;
 					for (x=0;x<legendmod.cells.length;x++){
 						if (legendmod.cells[x].id == ogariocellssetts.id){
+							console.log("legendmod.cell", x);
 							return ab = true, x;
 						}
 					}
