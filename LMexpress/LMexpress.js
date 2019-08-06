@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.067 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -8515,13 +8515,12 @@ function Socket3updateTeamPlayerDeath(Socket3data) {
 }
 function Socket3updateTeamPlayerCells(Socket3data) {
         var temp = Socket3data.playerCells;
-		window.jim=temp
-		console.log("pcells packet sent by", Socket3data.tid, temp);
-		for (var i; i < legendmod3.teamPlayers.length; i++){
+		for (var i=0; i < legendmod3.teamPlayers.length; i++){
 			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
 				for(var j=0; j< temp.length; j++){
 					var ogariocellssetts = new ogarbasicassembly(temp[j].id, temp[j].x, temp[j].y, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
 					ogariocellssetts.targetNick = legendmod3.teamPlayers[i].nick;
+					console.log(legendmod3.teamPlayers[i].nick);
 					ogariocellssetts.isVirus = false;			
 					legendmod.indexedCells[temp[j].id] = ogariocellssetts;		
 					var ab;
@@ -8529,16 +8528,18 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 					var x=0;
 					for (x=0;x<legendmod.cells.length;x++){
 						if (legendmod.cells[x].id == ogariocellssetts.id){
-							console.log("legendmod.cell", x);
+							console.log("cell found", legendmod.cells[x].id);
 							return ab = true, x;
 						}
 					}
 					if (ab==false){
 						legendmod.cells[ai]=ogariocellssetts;
+						console.log("legendmod.cell", ai);
 						window.playerCellsSockReceived.push(temp[j].id);
 					}		
 					else{
-						legendmod.cells[x]=ogariocellssetts;
+						legendmod.cells[legendmod.cells.length]=ogariocellssetts;
+						console.log("legendmod.cell", legendmod.cells.length);
 					}
 					
 				}
