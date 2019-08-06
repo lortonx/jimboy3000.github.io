@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.065 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.066 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -8455,7 +8455,7 @@ function Socket3handler(message) {
 		return;
 	}
     else if (Socket3data.com == "chat") {
-        Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.id, Socket3data.nick, Socket3data.chat);
+        Socket3DisplaychatMsg(Socket3data.chattype, Socket3data.tid, Socket3data.nick, Socket3data.chat);
     }
     else if (Socket3data.com == "sendPlayerSkinURL") {
         Socket3updateTeamPlayer(Socket3data);
@@ -8466,6 +8466,37 @@ function Socket3handler(message) {
     else if (Socket3data.com == "death") { //not used yet
         Socket3updateTeamPlayerDeath(Socket3data);
     }	
+    else if (Socket3data.com == "pcells") { 
+		console.log("pcells packet sent by", Socket3data.tid);
+        var temp = Socket3data.playerCells;
+		for (var i; i < legendmod3.teamPlayers.length; i++){
+			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
+				for(var j=0; j< temp.length; j++){
+					var ogariocellssetts = new ogarbasicassembly(temp[j].id, temp[j].x, temp[j].y, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+					ogariocellssetts.targetNick = legendmod3.teamPlayers[i].nick;
+					ogariocellssetts.isVirus = false;			
+					legendmod.indexedCells[temp[j].id] = ogariocellssetts;		
+					var ab;
+					var ai = legendmod.cells.length;
+					var x=0;
+					for (x=0;x<legendmod.cells.length;x++){
+						if (legendmod.cells[x].id == ogariocellssetts.id){
+							return ab = true, x;
+						}
+					}
+					if (ab==false){
+						legendmod.cells[ai]=ogariocellssetts;
+						window.playerCellsSockReceived.push(temp[j].id);
+					}		
+					else{
+						legendmod.cells[x]=ogariocellssetts;
+					}
+					
+				}
+			}
+		}
+		//}
+    }		
 }
 
 function Socket3updateTeamPlayer(Socket3data) {
@@ -8508,7 +8539,11 @@ function Socket3updateTeamPlayerDeath(Socket3data) {
 	legendmod3.teamPlayers[h].alive = false;
 	legendmod3.teamPlayers[h].mass=1;	
 }
-
+function Socket3updateTeamPlayerCells(Socket3data) {
+	var h = legendmod3.checkPlayerID(Socket3data.id);	    
+	legendmod3.teamPlayers[h].alive = false;
+	legendmod3.teamPlayers[h].mass=1;	
+}
 function timernow() {
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
