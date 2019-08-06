@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "65"; // the version 1.1-> 1.11
+var semimodVersion = "66"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8431,7 +8431,7 @@ function Socket3enabler(srv) {
     }
     Socket3.onopen = function(e) {
         console.log('[Legend mod Express] Socket 3 open');
-        if (!window.socket3Opened) {
+        if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
                     enterChatMessage2();
