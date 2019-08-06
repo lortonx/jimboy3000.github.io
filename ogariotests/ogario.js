@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1037 MEGA TEST
+// v1.1038 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3596,9 +3596,9 @@ var thelegendmodproject = function(t, e, i) {
             'play': function() {
 				if (window.noOgarioSocket) {
 					console.log('New Socket 3 data sent');
-					//Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+					if (window.noOgarioSocket) {
 					Socket3.send(JSON.stringify({ com: "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));
-
+				}
 				}
                 if (this.setPlayerSettings(), this.setParty(), this.isSocketOpen()) this.sendPartyData();
                 else {
@@ -4099,11 +4099,11 @@ var thelegendmodproject = function(t, e, i) {
 				
             },
 			'Socket3connect': function(srv) {
-				if (window.noOgarioSocket && typeof Socket3enabler !== 'undefined' && typeof Socket3enabler === 'function') {
+				//if (window.noOgarioSocket && typeof Socket3enabler !== 'undefined' && typeof Socket3enabler === 'function') {
 					setTimeout(function() {
 						Socket3enabler(window.legendmod.ws);
 					}, 1000);
-				}
+				//}
 			},
             //Sonia6			
             'SLGconnect': function(srv) {
@@ -4552,8 +4552,9 @@ var thelegendmodproject = function(t, e, i) {
             },
 			'sendSocket3Position': function() {
 				if (i.play && window.noOgarioSocket && Socket3){
+					if (window.noOgarioSocket) {
 					Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));
-					//Socket3.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color, id: customLMID}));
+					}
 				}
 			},
             //Sonia4
