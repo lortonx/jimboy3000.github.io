@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.070 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.071 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -8518,11 +8518,16 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 		for (var i=0; i < legendmod3.teamPlayers.length; i++){
 			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
 				for(var j=0; j< temp.length; j++){
-					var ogariocellssetts = new legendmod1(temp[j].id, temp[j].x, temp[j].y, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+					var ogariocellssetts = new legendmod1(temp[j].id, temp[j].x - legendmod.mapOffsetX, temp[j].y - legendmod.mapOffsetY, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
 					ogariocellssetts.isVirus = false;	
 					ogariocellssetts.fake = true;
+					ogariocellssetts.targetNick = legendmod3.teamPlayers[i].nick;
+					ogariocellssetts.nick = legendmod3.teamPlayers[i].nick;
+					if (!ogariocellssetts.isInView()){
 					legendmod.indexedCells[temp[j].id] = ogariocellssetts;	
-					legendmod.cells.push(ogariocellssetts);
+					window.cellsFake.push(ogariocellssetts);
+					}
+					//window.cellsFake2.push(ogariocellssetts);
 /*					
 					for (x=0;x<legendmod.cells.length;x++){
 						if (legendmod.cells[x].fake == true){
