@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1038 MEGA TEST
+// v1.1039 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -35,6 +35,7 @@ $("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/
 var Socket3;
 window.socket3Opened=false;
 var customLMID = Math.floor(Math.random()*100000);
+window.playerCellsSockReceived=[];
 
 window.videoSkinPlayerflag = {};
 window.videoSkinPlayerflag2 = {};
@@ -4265,7 +4266,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (s == null) return;
                 switch (t.charAt(0)) {
                     case "R":
-                        this.getSuperLegendSDATA(s);
+                        //this.getSuperLegendSDATA(s);
                         break;
                     case "Q":
                         //this.getSLGQinfo(s);
@@ -4445,6 +4446,19 @@ var thelegendmodproject = function(t, e, i) {
                 if (axis == 0) return x * (v.mapMaxX - v.mapMinX) + v.mapMinX;
                 else return x * (v.mapMaxY - v.mapMinY) + v.mapMinY;
             },
+			 'sendJimboy3100info': function() {
+				window.playerCellsSock=[];
+				if (legendmod.playerCells && legendmod.playerCells.length){
+					for (var i; i<legendmod.playerCells; i++){
+						window.playerCellsSock[i]={};
+						window.playerCellsSock[i].id = legendmod.playerCells[i].id;
+						window.playerCellsSock[i].x = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(legendmod.playerCells[i].x) : legendmod.playerCells[i].x //Sonia3
+						window.playerCellsSock[i].y = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(legendmod.playerCells[i].y) : legendmod.playerCells[i].y; //Sonia3
+						window.playerCellsSock[i].size = legendmod.playerCells[i].size;						
+					}
+				}
+				Socket3.send(JSON.stringify({ com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock}));				 
+			 },
              'sendSLGQinfo': function() {
                  //return;
                  var msg = "";
@@ -4755,6 +4769,7 @@ var thelegendmodproject = function(t, e, i) {
 				this.sendSuperLegendSDATA();
 				
 				//this.sendSLGQinfo(),
+				this.sendJimboy3100info(),
 				this.chatUsers = {}; 
 				this.top5 = []; //Sonia3
                 this.updatevnr(); //Sonia3
