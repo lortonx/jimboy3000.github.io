@@ -3697,7 +3697,7 @@ function universalchat() {
 
     setTimeout(function() {
         //if (window.noOgarioSocket) {
-            toastr["error"]("Master Socket is down, Connecting to Socket 3");
+            //toastr["error"]("Master Socket is down, Connecting to Socket 3");
             //$('#ao2t-capture').click();
 			setTimeout(function() {
 				Socket3enabler(window.legendmod.ws);
