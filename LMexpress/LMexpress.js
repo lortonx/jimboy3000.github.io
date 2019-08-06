@@ -8529,8 +8529,8 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 					for (x=0;x<window.cellsFake.length;x++){
 						if (window.cellsFake[x].id == ogariocellssetts.id){
 							//window.cellsFake[x] = ogariocellssetts;
-							window.cellsFake[x].x = temp[j].x;
-							window.cellsFake[x].y = temp[j].y;
+							window.cellsFake[x].targetX = temp[j].x - legendmod.mapOffsetX;
+							window.cellsFake[x].targetY = temp[j].y - legendmod.mapOffsetY;
 							window.cellsFake[x].mass = temp[j].mass;
 							ab = true;
 						}
