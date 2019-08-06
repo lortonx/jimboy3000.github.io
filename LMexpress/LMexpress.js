@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.071 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "64"; // the version 1.1-> 1.11
 //fix ffa
@@ -8518,42 +8518,25 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 		for (var i=0; i < legendmod3.teamPlayers.length; i++){
 			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
 				for(var j=0; j< temp.length; j++){
-					var ogariocellssetts = new legendmod1(temp[j].id, temp[j].x - legendmod.mapOffsetX, temp[j].y - legendmod.mapOffsetY, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+					var ogariocellssetts = new legendmod1(temp[j].id + 1000000000, temp[j].x - legendmod.mapOffsetX, temp[j].y - legendmod.mapOffsetY, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
 					ogariocellssetts.isVirus = false;	
 					ogariocellssetts.fake = true;
 					ogariocellssetts.targetNick = legendmod3.teamPlayers[i].nick;
 					ogariocellssetts.nick = legendmod3.teamPlayers[i].nick;
 					if (!ogariocellssetts.isInView()){
-					legendmod.indexedCells[temp[j].id] = ogariocellssetts;	
-					window.cellsFake.push(ogariocellssetts);
-					}
-					//window.cellsFake2.push(ogariocellssetts);
-/*					
-					for (x=0;x<legendmod.cells.length;x++){
-						if (legendmod.cells[x].fake == true){
-							legendmod.cells[x].removeCell(); 
+					legendmod.indexedCells[temp[j].id + 1000000000] = ogariocellssetts;	
+					var ab=false;
+					for (x=0;x<window.cellsFake.length;x++){
+						if (window.cellsFake[x].id == ogariocellssetts.id){
+							window.cellsFake[x] = ogariocellssetts;
+							ab = true;
 						}
 					}
-										
-					var ab;
-					var ai = legendmod.cells.length;
-					var x=0;
-					for (x=0;x<legendmod.cells.length;x++){
-						if (legendmod.cells[x].id == ogariocellssetts.id){
-							console.log("cell found", legendmod.cells[x].id, legendmod3.teamPlayers[i].nick);
-							ab = true, x;
-						}
+					if (ab == false){
+						window.cellsFake.push(ogariocellssetts);
 					}
-					if (!ab==true){
-						legendmod.cells[ai]=ogariocellssetts;
-						console.log("legendmod.cell", ai);
-						window.playerCellsSockReceived.push(temp[j].id);
-					}		
-					else{
-						legendmod.cells[legendmod.cells.length]=ogariocellssetts;
-						console.log("legendmod.cell2", legendmod.cells.length);
-					}
-*/					
+					//window.cellsFake.push(ogariocellssetts);
+					}			
 				}
 			}
 		}
