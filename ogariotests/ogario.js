@@ -4457,7 +4457,7 @@ var thelegendmodproject = function(t, e, i) {
 						window.playerCellsSock[i].size = legendmod.playerCells[i].size;						
 					}
 				}
-				if (Socket3){
+				if (Socket3 && legendmod3.playerID && window.playerCellsSock){
 				Socket3.send(JSON.stringify({ com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock}));		
 				}
 			 },
