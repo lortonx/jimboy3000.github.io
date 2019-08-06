@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1061 MEGA TEST
+// v1.1062 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6979,13 +6979,19 @@ var thelegendmodproject = function(t, e, i) {
                 }
 //
 				legendmod3.sendJimboy3100info();
+				for (y=0;y<legendmod.cells.length;y++){
+					legendmod.cells[y].fakeOK=true;
+				}
 				for (x=0;x<window.cellsFake.length;x++){
 					var ab=false;
+					var ac=false;
 					for (y=0;y<legendmod.cells.length;y++){
-						if (legendmod.cells[y].id == window.cellsFake[x].id){
+
+						if (legendmod.cells[y].fake && legendmod.cells[y].id == window.cellsFake[x].id){
 							legendmod.cells[y].time = this.time;
 							legendmod.cells[y] = window.cellsFake[x];
 							ab=true;
+							legendmod.cells[y].fakeOK=false;
 						}
 					}
 					if ( ab == false ){
@@ -6993,9 +6999,13 @@ var thelegendmodproject = function(t, e, i) {
 					}
 				}
 				//legendmod.cells.push(...cellsFake);
-				//window.cellsFake=[];
+				for (y=0;y<legendmod.cells.length;y++){
+					if (legendmod.cells[y].fakeOK==true){
+						legendmod.cells[y].removeCell(); 
+					}
+				}
 				
-				window.cellsFakeFlag++;
+				window.cellsFakeFlag++;				
 				if (window.cellsFakeFlag == 20){
 					console.log('removed');
 					window.cellsFakeFlag = 0;
