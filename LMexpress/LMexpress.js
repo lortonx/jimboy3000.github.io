@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "66"; // the version 1.1-> 1.11
 //fix ffa
@@ -8423,14 +8423,16 @@ function Socket3enabler(srv) {
     if (Socket3) {
         Socket3.close();
     }
-    Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
-
+    //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
+	Socket3 = new WebSocket("wss://cloud.achex.ca/jimboy3100");
     Socket3.onmessage = function(message) {
         //console.log(message.data);
         Socket3handler(message.data);
     }
     Socket3.onopen = function(e) {
-        console.log('[Legend mod Express] Socket 3 open');
+		Socket3.send(JSON.stringify({ "auth": customLMID, "password": "ILoveLegendClan"}));
+		Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));		
+        console.log('[Legend mod Express] Socket 3 open');		
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
@@ -8446,12 +8448,15 @@ function Socket3enabler(srv) {
     Socket3.onclose = function(e) {
         console.log('[Legend mod Express] Socket 3 close', e);
     }
+	setTime
     return Socket3;
 }
 
 function Socket3handler(message) {
-    var Socket3data = JSON.parse(message);
-	console.log(Socket3data)
+	//
+    var Socket3data2 = JSON.parse(message);
+	var Socket3data = Socket3data2.msg;
+	//
     if (Socket3data == null){
 		return;
 	}
@@ -8557,13 +8562,15 @@ function timernow() {
 
 //sending commands
 function Socket3MessageChat(chattypemsg, chatreader) {
-    Socket3.send(JSON.stringify({
+    var temp={
         com: "chat",
         id: customLMID,
         nick: ogarcopythelb.nick,
         chat: chatreader,
         chattype: chattypemsg
-    }));
+    };
+    Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
+	
     //wss://connect.websocket.in does not send commands to sender again
     Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
 }
