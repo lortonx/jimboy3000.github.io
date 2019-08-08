@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1073 MEGA TEST
+// v1.1074 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4584,6 +4584,7 @@ var thelegendmodproject = function(t, e, i) {
 					//}
 					var temp={ com: "pos", id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass};
 					Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
+				}
 			},
             //Sonia4
             'sendSuperLegendSDATA': function() {
