@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1086 MEGA TEST
+// v1.1083 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4260,7 +4260,7 @@ var thelegendmodproject = function(t, e, i) {
 				var temp = t.data;
 				console.log(t.data);
 				if (temp.msg){
-				this['SLGHandler'](temp.msg.toString());         
+				this['SLGHandler'](temp.msg);         
 				}
             },
             'readMessage': function(t) {
@@ -4292,7 +4292,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.getSuperLegendSDATA(s);
                         break;
                     case "Q":
-                        //this.getSLGQinfo(s);
+                        this.getSLGQinfo(s);
                         break;
                 }
             },
@@ -4530,7 +4530,7 @@ var thelegendmodproject = function(t, e, i) {
                 //return ;
                  var ids = this.getSLGID(t);
                  var id = this.checkPlayerID(ids);
-				 //console.log(t);
+				 console.log(t);
                  if (null == id) return;
                  var msg = this.getSLGVal(t);
                  //Get viruses
