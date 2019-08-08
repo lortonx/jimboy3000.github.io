@@ -1,8 +1,9 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1082 MEGA TEST
+// v1.1086 MEGA TEST
 // Game Configurations
+//team view
 
 //window.testobjects = {};
 function removeEmojis(string) {
@@ -4259,7 +4260,7 @@ var thelegendmodproject = function(t, e, i) {
 				var temp = t.data;
 				console.log(t.data);
 				if (temp.msg){
-				this['SLGHandler'](temp.msg);         
+				this['SLGHandler'](temp.msg.toString());         
 				}
             },
             'readMessage': function(t) {
@@ -4529,6 +4530,7 @@ var thelegendmodproject = function(t, e, i) {
                 //return ;
                  var ids = this.getSLGID(t);
                  var id = this.checkPlayerID(ids);
+				 //console.log(t);
                  if (null == id) return;
                  var msg = this.getSLGVal(t);
                  //Get viruses
@@ -4791,8 +4793,6 @@ var thelegendmodproject = function(t, e, i) {
                 if (mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
                     console.log("[Legend mod Express] VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                     this.setvnr(max);
-                    //toastr.info('<b>[SERVER]:</b> Map fixed with LM players');
-					//toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + Premadeletter125);
 					console.log('[Legend mod Express] Map fixed with LM players. POS:', max);
                 }
             },
