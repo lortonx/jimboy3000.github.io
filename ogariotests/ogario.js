@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1080 MEGA TEST
+// v1.1081 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4122,7 +4122,7 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['binaryType'] = 'arraybuffer';
                 t = this;
                 window.SLGsocket['onopen'] = function() {
-                    console.log('[Legend mod Express] SLG socket open', customLMID);
+                    console.log('[Legend mod Express] SLG socket open:', customLMID);
 					//
 					window.SLGsocket['send'](JSON.stringify({ "auth": "JIM2" + customLMID, "password": "legendmod2"}));
 					window.SLGsocket['send'](JSON.stringify({ "joinHub": "legendmod2"}));	
@@ -4133,12 +4133,12 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 window.SLGsocket['onclose'] = function(e) {
                     //t.flushData();
-					window.SLGsocket.close();
+					//window.SLGsocket.close();
                     console.log('[Legend mod Express] SLG socket close');
                 }
                 window.SLGsocket['onerror'] = function(e) {
                     //t.flushData();
-					window.SLGsocket.close();
+					//window.SLGsocket.close();
                     console.log('[Legend mod Express] SLG socket error', e);
                     window.noSLGSocket = true;
                 };
@@ -4245,6 +4245,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (s != null){ 
 					//window.SLGsocket['send'](s + t);
 					var temp = s + t;
+					console.log(temp);
 					SLGsocket.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
 					}
                 }
@@ -4257,7 +4258,9 @@ var thelegendmodproject = function(t, e, i) {
 				//this['SLGHandler'](t.data);
 				var temp = t.data;
 				console.log(t.data);
-				//this['SLGHandler'](temp.msg);             
+				if (temp.msg){
+				this['SLGHandler'](temp.msg);         
+				}
             },
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
