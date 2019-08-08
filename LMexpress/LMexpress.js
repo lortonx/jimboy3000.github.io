@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "66"; // the version 1.1-> 1.11
 //fix ffa
@@ -8417,6 +8417,8 @@ function HiddenBots() {
 }
 
 // Socket3enabler(window.legendmod.ws);
+
+
 function Socket3enabler(srv) {
 
     this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
@@ -8424,15 +8426,15 @@ function Socket3enabler(srv) {
         Socket3.close();
     }
     //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
-	Socket3 = new WebSocket("wss://cloud.achex.ca/jimboy3100");
-    Socket3.onmessage = function(message) {
-        //console.log(message.data);
-        Socket3handler(message.data);
-    }
+    Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+this.room);	
+	Socket3.onmessage = function(message) { 
+	console.log(message);
+	Socket3handler(message.data);
+	}
     Socket3.onopen = function(e) {
-		Socket3.send(JSON.stringify({ "auth": customLMID, "password": "ILoveLegendClan"}));
+		Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
 		Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));		
-        console.log('[Legend mod Express] Socket 3 open');		
+        console.log('[Legend mod Express] Socket 3 open');	
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
@@ -8452,9 +8454,9 @@ function Socket3enabler(srv) {
 }
 
 function Socket3handler(message) {
-	//
     var Socket3data2 = JSON.parse(message);
 	var Socket3data = Socket3data2.msg;
+	console.log(Socket3data);
 	//
     if (Socket3data == null){
 		return;
