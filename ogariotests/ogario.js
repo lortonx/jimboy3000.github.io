@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1074 MEGA TEST
+// v1.1075 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4116,12 +4116,17 @@ var thelegendmodproject = function(t, e, i) {
                 this.closeSLGConnection();
                 this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
                 this.roomc = ogarcopythelb.clanTag;
-                console.log('[Legend mod Express] Connecting to SLG:', this.room);
-                this.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
+                console.log('[Legend mod Express] Connecting to SLG:', this.room);				
+                //this.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
+				this.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+this.room);
                 this.SLGsocket['binaryType'] = 'arraybuffer';
                 t = this;
                 this.SLGsocket['onopen'] = function() {
                     console.log('[Legend mod Express] SLG socket open');
+					//
+					this.SLGsocket.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
+					this.SLGsocket.send(JSON.stringify({ "joinHub": "legendmod"}));	
+					//					
                 }
                 this.SLGsocket['onmessage'] = function(e) {
                     t.handleSLGMessage(e);
@@ -4235,7 +4240,11 @@ var thelegendmodproject = function(t, e, i) {
                         return;
                     }
                     var s = this.packSLG(i);
-                    if (s != null) this.SLGsocket['send'](s + t);
+                    if (s != null){ 
+					//this.SLGsocket['send'](s + t);
+					var temp = s + t;
+					Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
+					}
                 }
             },
             'handleMessage': function(t) {
@@ -4243,7 +4252,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             //Sonia4
             'handleSLGMessage': function(t) {
-                this['SLGHandler'](t.data);
+				//this['SLGHandler'](t.data);
+				var temp = JSON.parse(t.data);
+				this['SLGHandler'](temp.msg);             
             },
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
