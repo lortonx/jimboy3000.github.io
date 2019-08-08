@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1079 MEGA TEST
+// v1.1080 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4124,8 +4124,8 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['onopen'] = function() {
                     console.log('[Legend mod Express] SLG socket open', customLMID);
 					//
-					window.SLGsocket['send'](JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
-					window.SLGsocket['send'](JSON.stringify({ "joinHub": "legendmod"}));	
+					window.SLGsocket['send'](JSON.stringify({ "auth": "JIM2" + customLMID, "password": "legendmod2"}));
+					window.SLGsocket['send'](JSON.stringify({ "joinHub": "legendmod2"}));	
 					//					
                 }
                 window.SLGsocket['onmessage'] = function(e) {
@@ -4245,7 +4245,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (s != null){ 
 					//window.SLGsocket['send'](s + t);
 					var temp = s + t;
-					Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
+					SLGsocket.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
 					}
                 }
             },
