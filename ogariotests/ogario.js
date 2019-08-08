@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1076 MEGA TEST
+// v1.1077 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4117,26 +4117,28 @@ var thelegendmodproject = function(t, e, i) {
                 this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
                 this.roomc = ogarcopythelb.clanTag;
                 console.log('[Legend mod Express] Connecting to SLG:', this.room);				
-                //this.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
-				this.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+this.room);
-                this.SLGsocket['binaryType'] = 'arraybuffer';
+                //window.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
+				window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+this.room);
+                window.SLGsocket['binaryType'] = 'arraybuffer';
                 t = this;
-                this.SLGsocket['onopen'] = function() {
+                window.SLGsocket['onopen'] = function() {
                     console.log('[Legend mod Express] SLG socket open', customLMID);
 					//
-					this.SLGsocket['send'](JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
-					this.SLGsocket['send'](JSON.stringify({ "joinHub": "legendmod"}));	
+					window.SLGsocket['send'](JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
+					window.SLGsocket['send'](JSON.stringify({ "joinHub": "legendmod"}));	
 					//					
                 }
-                this.SLGsocket['onmessage'] = function(e) {
+                window.SLGsocket['onmessage'] = function(e) {
                     t.handleSLGMessage(e);
                 }
-                this.SLGsocket['onclose'] = function(e) {
+                window.SLGsocket['onclose'] = function(e) {
                     //t.flushData();
+					window.SLGsocket.close();
                     console.log('[Legend mod Express] SLG socket close');
                 }
-                this.SLGsocket['onerror'] = function(e) {
+                window.SLGsocket['onerror'] = function(e) {
                     //t.flushData();
+					window.SLGsocket.close();
                     console.log('[Legend mod Express] SLG socket error', e);
                     window.noSLGSocket = true;
                 };
@@ -4150,22 +4152,22 @@ var thelegendmodproject = function(t, e, i) {
                     this.socket = null;
                 }
                 //Sonia4
-                if (this.SLGsocket) {
-                    this.SLGsocket['onmessage'] = null;
+                if (window.SLGsocket) {
+                    window.SLGsocket['onmessage'] = null;
                     try {
-                        this.SLGsocket['close']();
+                        window.SLGsocket['close']();
                     } catch (ogarcloseconlabel) {}
-                    this.SLGsocket = null;
+                    window.SLGsocket = null;
                 }
             },
             //Sonia6
             'closeSLGConnection': function() {
-                if (this.SLGsocket) {
-                    this.SLGsocket['onmessage'] = null;
+                if (window.SLGsocket) {
+                    window.SLGsocket['onmessage'] = null;
                     try {
-                        this.SLGsocket['close']();
+                        window.SLGsocket['close']();
                     } catch (ogarcloseconlabel) {}
-                    this.SLGsocket = null;
+                    window.SLGsocket = null;
                 }
             },
             'reconnect': function() {
@@ -4203,8 +4205,8 @@ var thelegendmodproject = function(t, e, i) {
             //Sonia6 Below
             'isSLGSocketOpen': function() {
                 var state = false;
-                if (this.SLGsocket) {
-                    state = this.SLGsocket['readyState'] === this.SLGsocket['OPEN'];
+                if (window.SLGsocket) {
+                    state = window.SLGsocket['readyState'] === window.SLGsocket['OPEN'];
                 }
                 return state;
             },
@@ -4241,7 +4243,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     var s = this.packSLG(i);
                     if (s != null){ 
-					//this.SLGsocket['send'](s + t);
+					//window.SLGsocket['send'](s + t);
 					var temp = s + t;
 					Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
 					}
