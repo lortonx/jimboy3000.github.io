@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1095 MEGA TEST
+// v1.1096 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4121,6 +4121,9 @@ var thelegendmodproject = function(t, e, i) {
 					window.SLGconnected=true; //do this only once	
 					this.SLGconnect2(srv);
 				}
+				else{
+					window.SLGsocket.close();
+				}
             },
 			'SLGconnect2': function(srv) {			
                 this.closeSLGConnection();
@@ -4144,7 +4147,7 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['onclose'] = function(e) {
                     console.log('[Legend mod Express] SLG socket close');
 					setTimeout(function() {
-						SLGconnect2(window.legendmod.ws);
+						legendmod3.SLGconnect2(legendmod.ws)
 					}, 5000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
