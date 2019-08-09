@@ -4133,15 +4133,14 @@ var thelegendmodproject = function(t, e, i) {
                     t.handleSLGMessage(e);
                 }
                 window.SLGsocket['onclose'] = function(e) {
-                    //t.flushData();
-					//window.SLGsocket.close();
                     console.log('[Legend mod Express] SLG socket close');
+					setTimeout(function() {
+						window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+this.room);
+					}, 1000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
-                    //t.flushData();
-					//window.SLGsocket.close();
                     console.log('[Legend mod Express] SLG socket error', e);
-                    window.noSLGSocket = true;
+                    window.noSLGSocket = true;					
                 };
             },
             'closeConnection': function() {
