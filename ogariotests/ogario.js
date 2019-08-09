@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1104 MEGA TEST
+// v1.1105 MEGA TEST
 // Game Configurations
 //team view
 
@@ -7075,16 +7075,19 @@ var thelegendmodproject = function(t, e, i) {
 //
 				legendmod3.sendJimboy3100info();
 				if (window.JimboyTests==true){
-				for (y=0;y<legendmod.cells.length;y++){
+				for (var y=0;y<legendmod.cells.length;y++){
 					legendmod.cells[y].fakeOK=true;
 				}
-				for (x=0;x<window.cellsFake.length;x++){
+				for (var x=0;x<window.cellsFake.length;x++){
 					var ab=false;
 					for (y=0;y<legendmod.cells.length;y++){
 
 						if (legendmod.cells[y].fake && legendmod.cells[y].id == window.cellsFake[x].id){
 							legendmod.cells[y].time = this.time;
-							legendmod.cells[y] = window.cellsFake[x];
+							legendmod.cells[y].targetX = window.cellsFake[x].targetX;
+							legendmod.cells[y].targetY = window.cellsFake[x].targetY;
+							legendmod.cells[y].size = window.cellsFake[x].size;
+							//legendmod.cells[y] = window.cellsFake[x];
 							ab=true;
 							legendmod.cells[y].fakeOK=false;
 						}
@@ -7092,10 +7095,11 @@ var thelegendmodproject = function(t, e, i) {
 					if ( ab == false ){ //true or false?
 						legendmod.cells.push(window.cellsFake[x]);
 						legendmod.cells[legendmod.cells.length-1].fakeOK=false;
+						legendmod.cells[legendmod.cells.length-1].time=this.time;
 					}
 				}
 				//legendmod.cells.push(...cellsFake);
-				for (y=0;y<legendmod.cells.length;y++){
+				for (var y=0;y<legendmod.cells.length;y++){
 					if (legendmod.cells[y].fake && legendmod.cells[y].fakeOK==true){
 						legendmod.cells[y].removeCell(); 
 					}
