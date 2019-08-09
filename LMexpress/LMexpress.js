@@ -8445,8 +8445,8 @@ function Socket3enabler(srv) {
 		
     }
     Socket3.onclose = function(e) {
-        //console.log('[Legend mod Express] Socket 3 close', e);
-		setTimeout(function() {
+        console.log('[Legend mod Express] Socket 3 close', e);
+		//setTimeout(function() {
 		Socket3enabler(window.legendmod.ws)
 		//}, 1000);
     }
