@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1100 MEGA TEST
+// v1.1101 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4110,7 +4110,7 @@ var thelegendmodproject = function(t, e, i) {
 					//setTimeout(function() {
 						//Socket3enabler(window.legendmod.ws);
 						if (Socket3){
-						Socket3.close();
+						Socket3.closeAndOpen();
 						}
 					//}, 1000);
 				//}
@@ -4122,7 +4122,7 @@ var thelegendmodproject = function(t, e, i) {
 					this.SLGconnect2(srv);
 				}
 				else{
-					window.SLGsocket.close();
+					window.SLGsocket.closeAndOpen();
 				}
             },
 			'SLGconnect2': function(srv) {			
@@ -4151,8 +4151,14 @@ var thelegendmodproject = function(t, e, i) {
 					//}, 1000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
-                    console.log('[Legend mod Express] SLG socket error', e);
-                    window.noSLGSocket = true;					
+                    console.log('[Legend mod Express] SLG socket error', e);			
+                };			
+                window.SLGsocket['closeAndOpen'] = function(e) {
+					window.SLGsocket['onclose'] = function(e) {
+						console.log('[Legend mod Express] SLG socket closed by hand', e);
+						window.SLGsocket = null;
+					}
+                    legendmod3.SLGconnect2(legendmod.ws)		
                 };				
 			},
             'closeConnection': function() {
@@ -4252,7 +4258,7 @@ var thelegendmodproject = function(t, e, i) {
                         console.log("Sending failed. Reconnecting required..")
                         //this.SLGconnect(window.legendmod.ws);
 						if (window.SLGsocket){
-						window.SLGsocket.close();
+						window.SLGsocket.closeAndOpen();
 						}
                         return;
                     }
@@ -4656,7 +4662,7 @@ var thelegendmodproject = function(t, e, i) {
                         console.log("Sending failed. Reconnecting required..")
                         //this.SLGconnect(window.legendmod.ws);
 						if (window.SLGsocket){
-						window.SLGsocket.close();
+						window.SLGsocket.closeAndOpen();
 						}
                         return;
                     }				
