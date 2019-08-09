@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1089 MEGA TEST
+// v1.1090 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4262,7 +4262,7 @@ var thelegendmodproject = function(t, e, i) {
 				temp = JSON.parse(temp);
 				//if (temp){
 				//this['SLGHandler'](temp.msg);     
-				this['SLGSimpleHandler'](temp.msg));    							
+				this['SLGSimpleHandler'](temp.msg);    							
 				//}
             },
             'readMessage': function(t) {
