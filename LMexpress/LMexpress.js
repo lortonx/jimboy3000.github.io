@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
@@ -3700,7 +3700,7 @@ function universalchat() {
             //toastr["error"]("Master Socket is down, Connecting to Socket 3");
             //$('#ao2t-capture').click();
 			setTimeout(function() {
-				//Socket3enabler(window.legendmod.ws);
+				Socket3enabler(window.legendmod.ws);
 			}, 1000);				
         //}
     }, 1000);
@@ -8422,13 +8422,9 @@ function HiddenBots() {
 function Socket3enabler(srv) {
 
     this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
-    if (Socket3) {
-        Socket3.close();
-    }
     //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
     Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+this.room);	
 	Socket3.onmessage = function(message) { 
-	//console.log(message);
 	Socket3handler(message.data);
 	}
     Socket3.onopen = function(e) {
@@ -8450,7 +8446,9 @@ function Socket3enabler(srv) {
     }
     Socket3.onclose = function(e) {
         console.log('[Legend mod Express] Socket 3 close', e);
-		Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+this.room);	
+		setTimeout(function() {
+		Socket3enabler(window.legendmod.ws)
+		}, 5000);
     }
     return Socket3;
 }
