@@ -4107,13 +4107,20 @@ var thelegendmodproject = function(t, e, i) {
             },
 			'Socket3connect': function(srv) {
 				//if (window.noOgarioSocket && typeof Socket3enabler !== 'undefined' && typeof Socket3enabler === 'function') {
-					setTimeout(function() {
-						Socket3enabler(window.legendmod.ws);
-					}, 1000);
+					//setTimeout(function() {
+						//Socket3enabler(window.legendmod.ws);
+						Socket3.close();
+					//}, 1000);
 				//}
 			},
             //Sonia6			
             'SLGconnect': function(srv) {
+				if (window.SLGconnected==null){
+					window.SLGconnected=true; //do this only once	
+					this.SLGconnect2(srv);
+				}
+            },
+			'SLGconnect2': function(srv) {			
                 this.closeSLGConnection();
                 this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
                 this.roomc = ogarcopythelb.clanTag;
@@ -4135,14 +4142,14 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['onclose'] = function(e) {
                     console.log('[Legend mod Express] SLG socket close');
 					setTimeout(function() {
-						window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+this.room);
-					}, 1000)					
+						this.SLGconnect2(window.legendmod.ws);
+					}, 5000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
                     console.log('[Legend mod Express] SLG socket error', e);
                     window.noSLGSocket = true;					
-                };
-            },
+                };				
+			}
             'closeConnection': function() {
                 if (this.socket) {
                     this.socket['onmessage'] = null;
@@ -4238,7 +4245,8 @@ var thelegendmodproject = function(t, e, i) {
                 if (this.isSLGSocketOpen()) {
                     if (ogarcopythelb.clanTag != this.roomc) {
                         console.log("Sending failed. Reconnecting required..")
-                        this.SLGconnect(window.legendmod.ws);
+                        //this.SLGconnect(window.legendmod.ws);
+						window.SLGsocket.close();
                         return;
                     }
                     var s = this.packSLG(i);
@@ -4639,7 +4647,8 @@ var thelegendmodproject = function(t, e, i) {
                     if (this.isSLGSocketOpen()) {
                     if (ogarcopythelb.clanTag != this.roomc) {
                         console.log("Sending failed. Reconnecting required..")
-                        this.SLGconnect(window.legendmod.ws);
+                        //this.SLGconnect(window.legendmod.ws);
+						window.SLGsocket.close();
                         return;
                     }				
                     if (s != null){ 
