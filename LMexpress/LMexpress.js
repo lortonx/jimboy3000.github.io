@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "66"; // the version 1.1-> 1.11
+var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8446,9 +8446,11 @@ function Socket3enabler(srv) {
     }
     Socket3.onerror = function(e) {
         console.log('[Legend mod Express] Socket 3 error', e);
+		
     }
     Socket3.onclose = function(e) {
         console.log('[Legend mod Express] Socket 3 close', e);
+		Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+this.room);	
     }
     return Socket3;
 }
