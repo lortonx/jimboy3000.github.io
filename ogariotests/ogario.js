@@ -4155,7 +4155,7 @@ var thelegendmodproject = function(t, e, i) {
                 };			
                 window.SLGsocket['closeAndOpen'] = function(e) {
 					window.SLGsocket['onclose'] = function(e) {
-						console.log('[Legend mod Express] SLG socket closed by hand', e);
+						console.log('[Legend mod Express] Previous SLG socket closed async', e);
 					}
                     legendmod3.SLGconnect2(legendmod.ws)		
                 };				
