@@ -4109,7 +4109,9 @@ var thelegendmodproject = function(t, e, i) {
 				//if (window.noOgarioSocket && typeof Socket3enabler !== 'undefined' && typeof Socket3enabler === 'function') {
 					//setTimeout(function() {
 						//Socket3enabler(window.legendmod.ws);
+						if (Socket3){
 						Socket3.close();
+						}
 					//}, 1000);
 				//}
 			},
@@ -4246,7 +4248,9 @@ var thelegendmodproject = function(t, e, i) {
                     if (ogarcopythelb.clanTag != this.roomc) {
                         console.log("Sending failed. Reconnecting required..")
                         //this.SLGconnect(window.legendmod.ws);
+						if (window.SLGsocket){
 						window.SLGsocket.close();
+						}
                         return;
                     }
                     var s = this.packSLG(i);
@@ -4648,7 +4652,9 @@ var thelegendmodproject = function(t, e, i) {
                     if (ogarcopythelb.clanTag != this.roomc) {
                         console.log("Sending failed. Reconnecting required..")
                         //this.SLGconnect(window.legendmod.ws);
+						if (window.SLGsocket){
 						window.SLGsocket.close();
+						}
                         return;
                     }				
                     if (s != null){ 
