@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1103 MEGA TEST
+// v1.1104 MEGA TEST
 // Game Configurations
 //team view
 
@@ -7102,10 +7102,11 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				
 				window.cellsFakeFlag++;				
-				if (window.cellsFakeFlag == 20){
+				if (window.cellsFakeFlag == 1000){
 					console.log('removed');
 					window.cellsFakeFlag = 0;
 					window.cellsFake=[];
+					/*
 					if (typeof Socket3updateTeamPlayerCells === 'function') {
 						for (var x = 0 ; x < legendmod.cells.length ; x++){
 							if (legendmod.cells[x].fake == true){
@@ -7113,7 +7114,8 @@ var thelegendmodproject = function(t, e, i) {
 								legendmod.cells[x].removeCell(); 
 							}
 						}				
-					} 					
+					} 	
+*/					
 				}
 				}			
 //					
