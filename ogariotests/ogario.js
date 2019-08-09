@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1096 MEGA TEST
+// v1.1100 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4146,9 +4146,9 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 window.SLGsocket['onclose'] = function(e) {
                     console.log('[Legend mod Express] SLG socket close');
-					setTimeout(function() {
+					//setTimeout(function() {
 						legendmod3.SLGconnect2(legendmod.ws)
-					}, 5000)					
+					//}, 1000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
                     console.log('[Legend mod Express] SLG socket error', e);
@@ -7069,6 +7069,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
 //
 				legendmod3.sendJimboy3100info();
+				if (window.JimboyTests==true){
 				for (y=0;y<legendmod.cells.length;y++){
 					legendmod.cells[y].fakeOK=true;
 				}
@@ -7084,7 +7085,7 @@ var thelegendmodproject = function(t, e, i) {
 							legendmod.cells[y].fakeOK=false;
 						}
 					}
-					if ( ab == false ){
+					if ( ab == false ){ //true or false?
 						legendmod.cells.push(window.cellsFake[x]);
 					}
 				}
@@ -7096,8 +7097,8 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				
 				window.cellsFakeFlag++;				
-				if (window.cellsFakeFlag == 20){
-					//console.log('removed');
+				if (window.cellsFakeFlag == 500){
+					console.log('removed');
 					window.cellsFakeFlag = 0;
 					window.cellsFake=[];
 /*					if (typeof Socket3updateTeamPlayerCells === 'function') {
@@ -7109,7 +7110,7 @@ var thelegendmodproject = function(t, e, i) {
 						}				
 					} */					
 				}
-							
+				}			
 //					
                 for (a = 0;;) {
 					extendedFlags=false;
