@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.083 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
@@ -8541,10 +8541,12 @@ function Socket3updateTeamPlayerCells(Socket3data) {
 					var ab=false;
 					for (x=0;x<window.cellsFake.length;x++){
 						if (window.cellsFake[x].id == ogariocellssetts.id){
-							//window.cellsFake[x] = ogariocellssetts;
+							window.cellsFake[x] = ogariocellssetts;
 							window.cellsFake[x].targetX = temp[j].x - legendmod.mapOffsetX;
 							window.cellsFake[x].targetY = temp[j].y - legendmod.mapOffsetY;
-							window.cellsFake[x].mass = temp[j].mass;
+							//window.cellsFake[x].x = temp[j].x - legendmod.mapOffsetX;
+							//window.cellsFake[x].y = temp[j].y - legendmod.mapOffsetY;							
+							window.cellsFake[x].size = temp[j].size;
 							ab = true;
 						}
 					}
