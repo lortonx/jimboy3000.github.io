@@ -8523,7 +8523,7 @@ function Socket3updateTeamPlayerDeath(Socket3data) {
 function Socket3updateTeamPlayerCells(Socket3data) {
         var temp = Socket3data.playerCells;
 		for (var i=0; i < legendmod3.teamPlayers.length; i++){
-			if (legendmod3.teamPlayers[i].id == Socket3data.tid){
+			if (legendmod3.teamPlayers[i].id == Socket3data.tid && legendmod3.teamPlayers[i].lbgpi>-1){
 				for(var j=0; j< temp.length; j++){
 					var ogariocellssetts = new legendmod1(temp[j].id + 1000000000, temp[j].x - legendmod.mapOffsetX, temp[j].y - legendmod.mapOffsetY, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
 					ogariocellssetts.isVirus = false;	
