@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1102 MEGA TEST
+// v1.1103 MEGA TEST
 // Game Configurations
 //team view
 
@@ -7080,7 +7080,6 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				for (x=0;x<window.cellsFake.length;x++){
 					var ab=false;
-					var ac=false;
 					for (y=0;y<legendmod.cells.length;y++){
 
 						if (legendmod.cells[y].fake && legendmod.cells[y].id == window.cellsFake[x].id){
@@ -7092,6 +7091,7 @@ var thelegendmodproject = function(t, e, i) {
 					}
 					if ( ab == false ){ //true or false?
 						legendmod.cells.push(window.cellsFake[x]);
+						legendmod.cells[legendmod.cells.length-1].fakeOK=false;
 					}
 				}
 				//legendmod.cells.push(...cellsFake);
@@ -7102,18 +7102,18 @@ var thelegendmodproject = function(t, e, i) {
 				}
 				
 				window.cellsFakeFlag++;				
-				if (window.cellsFakeFlag == 500){
+				if (window.cellsFakeFlag == 20){
 					console.log('removed');
 					window.cellsFakeFlag = 0;
 					window.cellsFake=[];
-/*					if (typeof Socket3updateTeamPlayerCells === 'function') {
+					if (typeof Socket3updateTeamPlayerCells === 'function') {
 						for (var x = 0 ; x < legendmod.cells.length ; x++){
 							if (legendmod.cells[x].fake == true){
-								window.cellsFake=[];
+								//window.cellsFake=[];
 								legendmod.cells[x].removeCell(); 
 							}
 						}				
-					} */					
+					} 					
 				}
 				}			
 //					
