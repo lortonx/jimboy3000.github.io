@@ -8452,7 +8452,7 @@ function Socket3enabler(srv) {
     }
 	Socket3.closeAndOpen = function(e) {
 		Socket3.onclose = function(e) {
-			 console.log('[Legend mod Express] Socket 3 closed by hand', e);
+			 console.log('[Legend mod Express] Previous Socket 3 closed async', e);
 		}
 		Socket3enabler(window.legendmod.ws);
 	}
