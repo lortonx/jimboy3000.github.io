@@ -4144,7 +4144,7 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['onclose'] = function(e) {
                     console.log('[Legend mod Express] SLG socket close');
 					setTimeout(function() {
-						this.SLGconnect2(window.legendmod.ws);
+						SLGconnect2(window.legendmod.ws);
 					}, 5000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
