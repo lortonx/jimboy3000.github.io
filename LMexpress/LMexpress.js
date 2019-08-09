@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "66"; // the version 1.1-> 1.11
 //fix ffa
@@ -3700,7 +3700,7 @@ function universalchat() {
             //toastr["error"]("Master Socket is down, Connecting to Socket 3");
             //$('#ao2t-capture').click();
 			setTimeout(function() {
-				Socket3enabler(window.legendmod.ws);
+				//Socket3enabler(window.legendmod.ws);
 			}, 1000);				
         //}
     }, 1000);
