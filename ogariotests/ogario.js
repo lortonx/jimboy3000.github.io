@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1114 MEGA TEST
+// v1.1116 MEGA TEST
 // Game Configurations
 //team view
 
@@ -2728,21 +2728,27 @@ var thelegendmodproject = function(t, e, i) {
                     if (defaultmapsettings.showTop5) {
                         //console.log(.top5.length);
                         //console.log(.teamPlayers.length);
-                        for (var t = '', e = 0, s = this.top5.length, o = 0; o < s; o++) e += this.top5[o].mass, o >= window.teamboardlimit || (t += '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>', 
-						defaultmapsettings.showTargeting && (t += '<a href=\"#\" data-user-id=\"' + this.top5[o].id + '\" class=\"set-target ogicon-target\"></a> '),
+                        for (var t = '', e = 0, s = this.top5.length, o = 0; o < s; o++){
+							e += this.top5[o].mass;
+							if (!(o >= window.teamboardlimit && this.top5[o].mass > 1)) {
+							t = t + '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>'; 
+						defaultmapsettings.showTargeting && (t += '<a href=\"#\" data-user-id=\"' + this.top5[o].id + '\" class=\"set-target ogicon-target\"></a> ');
 						//
-						this.w = this.top5[o].x,
-						this.u = this.top5[o].y,
-						(this.w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.top5[o].x) : this.top5[o].x),
-						(this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.top5[o].y) : this.top5[o].y),   
+						this.w = this.top5[o].x;
+						this.u = this.top5[o].y;
+						this.w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.top5[o].x) : this.top5[o].x;
+						this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.top5[o].y) : this.top5[o].y;   
 						//
 							//t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + ']</span>',
-							t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.w, this.u + ']</span>',
-							t += '<span class=\"top5-mass-color\">[' + this.shortMassFormat(this.top5[o].mass) + ']</span> ' + this.escapeHTML(this.top5[o].nick) + '</li>'),
+							t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.w, this.u + ']</span>';
+							t += '<span class=\"top5-mass-color\">[' + this.shortMassFormat(this.top5[o].mass) + ']</span> ' + this.escapeHTML(this.top5[o].nick) + '</li>');
+					}
 							this['top5pos'].innerHTML = t, 
 							i.play && i.playerMass && (e += i.playerMass, s++),
-                            this.top5totalMass.textContent = this.shortMassFormat(e), this.top5totalPlayers.textContent = s
+                            this.top5totalMass.textContent = this.shortMassFormat(e), 
+							this.top5totalPlayers.textContent = s;
                     }
+					}
                 } else {
                     if (defaultmapsettings.showTop5) {
 
