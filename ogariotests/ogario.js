@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1122 MEGA TEST
+// v1.1123 MEGA TEST
 // Game Configurations
 //team view
 
@@ -6313,7 +6313,7 @@ var thelegendmodproject = function(t, e, i) {
 				setTimeout(function() {
 				window.legendmod3.Socket3connect(t);
                 window.legendmod3.SLGconnect(t);
-				}, 1500);
+				}, 100);
                 window.legendmod.vnr = 0; //Sonia3
                 window.legendmod.bgpi = 4; //Sonia3
                 window.legendmod.lbgpi = 4; //Sonia3
