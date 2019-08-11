@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1118 MEGA TEST
+// v1.1119 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3916,13 +3916,13 @@ var thelegendmodproject = function(t, e, i) {
                     var l = i.mapOffsetY + i.mapOffset;
                     if (this.drawSelectedCell(this.miniMapCtx),
 					//
-						var w = i.playerX,
-						var u = i.playerY,
-						w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(i.playerX) : i.playerX,
-						u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(i.playerY) : i.playerY,   	
+						this.w = i.playerX,
+						this.u = i.playerY,
+						this.w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(i.playerX) : i.playerX,
+						this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(i.playerY) : i.playerY,   	
 					//						
                         //this.currentSector = this.calculateMapSector(i.playerX, i.playerY, true),
-						this.currentSector = this.calculateMapSector(w, u, true),
+						this.currentSector = this.calculateMapSector(this.w, this.u, true),
                         this.miniMapCtx.globalAlpha = 1,
                         this.miniMapCtx.font = defaultSettings.miniMapFontWeight + " " + (e - 4) + "px " + defaultSettings.miniMapFontFamily,
                         this.miniMapCtx.fillStyle = defaultSettings.miniMapSectorColor,
