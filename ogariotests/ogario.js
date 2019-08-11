@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1119 MEGA TEST
+// v1.1120 MEGA TEST
 // Game Configurations
 //team view
 
@@ -2736,8 +2736,10 @@ var thelegendmodproject = function(t, e, i) {
 						//
 						this.w = this.top5[o].x;
 						this.u = this.top5[o].y;
+						/*
 						this.w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.top5[o].x) : this.top5[o].x;
 						this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.top5[o].y) : this.top5[o].y;   
+						*/
 						//
 							//t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + ']</span>',
 							t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.w, this.u) + ']</span>';
@@ -2787,8 +2789,10 @@ var thelegendmodproject = function(t, e, i) {
 										//
 									var w = window.predictedGhostCells[e].x;
 									var u = window.predictedGhostCells[e].y;
+									/*
 									w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(window.predictedGhostCells[e].x) : window.predictedGhostCells[e].x;
 									u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(window.predictedGhostCells[e].y) : window.predictedGhostCells[e].y;  		
+									*/
 										//									
 									//t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");	
 									t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(w, u) + "]</span>");									
@@ -3918,8 +3922,10 @@ var thelegendmodproject = function(t, e, i) {
 					//
 						this.w = i.playerX,
 						this.u = i.playerY,
+						/*
 						this.w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(i.playerX) : i.playerX,
-						this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(i.playerY) : i.playerY,   	
+						this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(i.playerY) : i.playerY,  
+*/						
 					//						
                         //this.currentSector = this.calculateMapSector(i.playerX, i.playerY, true),
 						this.currentSector = this.calculateMapSector(this.w, this.u, true),
@@ -7022,8 +7028,10 @@ var thelegendmodproject = function(t, e, i) {
 					//
 					var w = this.ghostCells[o].x;
 					var u = this.ghostCells[o].y;
+					/*
 					w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.ghostCells[o].x) : this.ghostCells[o].x; 
                     u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.ghostCells[o].y) : this.ghostCells[o].y; 
+					*/
 					//
 					e += '<span class=\"lb-data\" id= "' + 'leaderboardtargeting' + o + '" style="pointer-events: auto;" onclick="window.legendmod.targetingLead(' + o + ');">'; 
 					e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer.shortMassFormat(this.ghostCells[o].mass) + ']</span>'; 
