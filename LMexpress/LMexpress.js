@@ -8430,7 +8430,7 @@ function Socket3enabler(srv) {
     Socket3.onopen = function(e) {
 		Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
 		Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));		
-        console.log('[Legend mod Express] Socket 3 open');	
+		console.log('[Legend mod Express] Socket 3 open:',this.room, ",LMID:", customLMID);
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
