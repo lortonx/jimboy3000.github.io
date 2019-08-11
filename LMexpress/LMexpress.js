@@ -8421,16 +8421,16 @@ function HiddenBots() {
 
 function Socket3enabler(srv) {
 
-    this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+    var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
     //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
-    Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+this.room);	
+    Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+room);	
 	Socket3.onmessage = function(message) { 
 	Socket3handler(message.data);
 	}
     Socket3.onopen = function(e) {
 		Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
 		Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));		
-		console.log('[Legend mod Express] Socket 3 open:',this.room, ",LMID:", customLMID);
+		console.log('[Legend mod Express] Socket 3 open:',room, ",LMID:", customLMID);
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
