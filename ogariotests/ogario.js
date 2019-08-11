@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1123 MEGA TEST
+// v1.1124 MEGA TEST
 // Game Configurations
 //team view
 
@@ -7013,9 +7013,11 @@ var thelegendmodproject = function(t, e, i) {
                                 } */
                 window.teammatenicks = [];
                 window.teammatelegendmodnicks = [];
+				if (legendmod3.top5){
                 for (i = 0; i < legendmod3.top5.length; i++) {
                     window.teammatelegendmodnicks.push(legendmod3.top5[i].nick);
                 }
+				}
                 window.teammatenicks = window.teammatelegendmodnicks;
                 if (window.agartoolteammatenicks != undefined) {
                     window.teammatenicks = window.teammatenicks.concat(window.agartoolteammatenicks);
