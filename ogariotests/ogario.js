@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1125 MEGA TEST
+// v1.1127 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4213,15 +4213,15 @@ var thelegendmodproject = function(t, e, i) {
             },
 			'SLGconnect2': function(srv) {			
                 this.closeSLGConnection();
-                this.room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+                var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
                 this.roomc = ogarcopythelb.clanTag;
                 //console.log('[Legend mod Express] Connecting to SLG:', this.room);				
                 //window.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
-				window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+this.room);
+				window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200"+room);
                 window.SLGsocket['binaryType'] = 'arraybuffer';
                 t = this;
                 window.SLGsocket['onopen'] = function() {
-                    console.log('[Legend mod Express] SLG socket open:',this.room, ",LMID:", customLMID);
+                    console.log('[Legend mod Express] SLG socket open:',room, ",LMID:", customLMID);
 					//
 					window.SLGsocket['send'](JSON.stringify({ "auth": "JIM2" + customLMID, "password": "legendmod2"}));
 					window.SLGsocket['send'](JSON.stringify({ "joinHub": "legendmod2"}));	
