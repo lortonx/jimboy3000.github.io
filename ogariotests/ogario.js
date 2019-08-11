@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1128 MEGA TEST
+// v1.1129 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4169,7 +4169,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
-                    console.log('[Legend mod Express] Ogario socket open:', this.publicIP);
+                    console.log('[Legend mod Express] Ogario socket open:', legendmod3.publicIP);
                     var e = t.createView(3);
                     e.setUint8(0, 0);
                     e.setUint16(1, 401, true);
