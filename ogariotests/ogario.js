@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1135 MEGA TEST
+// v1.1136 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3194,14 +3194,14 @@ var thelegendmodproject = function(t, e, i) {
 					<h5 id="botsAuthor">
 					Developed by <a href="https://www.youtube.com/channel/UCZo9WmnFPWw38q65Llu5Lug" target="_blank">Nel</a>
 					</h5>
-					<span id="statusText">Status: <b id="userStatus">Disconnected</b></span>
+					<span id="statusTextBots">Status: <b id="userStatus">Disconnected</b></span>
 					<br>
 					<br>
-					<span id="aiText">Bots AI: <b id="botsAI">Disabled</b></span>
+					<span id="aiTextBots">Bots AI: <b id="botsAI">Disabled</b></span>
 					<br>
 					<input type="text" id="botsName" placeholder="Bots Name" maxlength="15" spellcheck="false">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="10" max="199" spellcheck="false">
-					<button id="connect">Connect</button>
+					<button id="connectBots">Connect</button>
 					<br>
 					<button id="startBots" disabled>Start Bots</button>
 					<button id="stopBots">Stop Bots</button>
