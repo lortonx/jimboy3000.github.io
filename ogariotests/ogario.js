@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1170 MEGA TEST
+// v1.1171 MEGA TEST
 // Game Configurations
 //team view
 
@@ -4787,7 +4787,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (Socket3 && Socket3.readyState==1&& legendmod3.playerID && window.playerCellsSock) {
 				var temp = { com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock};
 				Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
-				if (temp.playerCells[0]) console.log(temp.playerCells[0].id, temp.playerCells[0].size);
+				if (temp.playerCells[0]) console.log(temp.playerCells[0].id, temp.playerCells[0].size, temp.playerCells[0].x, temp.playerCells[0].y);
 				//Socket3.send(JSON.stringify({ com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock}));		
 				}
 			 }
@@ -5126,6 +5126,7 @@ var thelegendmodproject = function(t, e, i) {
 				
 				//this.sendSLGQinfo(),
 				//this.sendJimboy3100info(),
+				legendmod3.sendJimboy3100info();
 				this.chatUsers = {}; 
 				this.top5 = []; //Sonia3
                 this.updatevnr(); //Sonia3
@@ -7372,7 +7373,7 @@ var thelegendmodproject = function(t, e, i) {
                     }			
                 }
 //
-				legendmod3.sendJimboy3100info();
+				//legendmod3.sendJimboy3100info();
 				fakePlayers();
 //					
                 for (a = 0;;) {
