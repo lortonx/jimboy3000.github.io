@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1173 MEGA TEST
+// v1.1174 MEGA TEST
 // Game Configurations
 //team view
 
@@ -203,7 +203,7 @@ function fakePlayers(){
 				}
 				
 				window.cellsFakeFlag++;				
-				if (window.cellsFakeFlag == 40){
+				if (window.cellsFakeFlag == 80){
 					console.log('removed');
 					window.cellsFakeFlag = 0;
 					window.cellsFake=[];
@@ -4787,7 +4787,7 @@ var thelegendmodproject = function(t, e, i) {
 				if (Socket3 && Socket3.readyState==1&& legendmod3.playerID && window.playerCellsSock) {
 				var temp = { com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock};
 				Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
-				if (temp.playerCells[0]) console.log(temp.playerCells[0].id, temp.playerCells[0].size, temp.playerCells[0].x, temp.playerCells[0].y);
+				//if (temp.playerCells[0]) console.log(temp.playerCells[0].id, temp.playerCells[0].size, temp.playerCells[0].x, temp.playerCells[0].y);
 				//Socket3.send(JSON.stringify({ com: "pcells", tid: legendmod3.playerID, playerCells: window.playerCellsSock}));		
 				}
 			 }
