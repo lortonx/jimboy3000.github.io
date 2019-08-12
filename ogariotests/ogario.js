@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1141 MEGA TEST
+// v1.1142 MEGA TEST
 // Game Configurations
 //team view
 
@@ -563,6 +563,9 @@ var languagetexts = {
         'hk-inst-assign': 'Aby ustawić skrót klawiszowy kliknij na polu skrótu i naciśnij wybrany klawisz.',
         'hk-inst-delete': 'Aby usunąć skrót klawiszowy kliknij na polu skrótu i naciśnij klawisz DELETE.',
         'hk-inst-keys': 'Możliwe kombinacje skrótów klawiszowych z użyciem klawiszy CTRL oraz ALT.',
+        'hk-bots-split': 'Bots split',
+        'hk-bots-feed': 'Bots feed',
+        'hk-bots-ai': 'Bots AI toggle',
         'hk-feed': 'Feed',
         'hk-macroFeed': 'Szybki feed',
         'hk-split': 'Podział',
@@ -953,6 +956,9 @@ var languagetexts = {
         'hk-inst-assign': 'To assign a hotkey click on the input field and press your chosen key.',
         'hk-inst-delete': 'To delete a hotkey click on the input field and press the DELETE key.',
         'hk-inst-keys': 'Possible key combinations with the CTRL and ALT keys.',
+        'hk-bots-split': 'Bots split',
+        'hk-bots-feed': 'Bots feed',
+        'hk-bots-ai': 'Bots AI toggle',		
         'hk-feed': 'Feed',
         'hk-macroFeed': 'Macro feed',
         'hk-split': 'Split',
@@ -8842,37 +8848,28 @@ var thelegendmodproject = function(t, e, i) {
                     },
                     'keyUp': null,
                     'type': 'normal'
-                },
-                'hk-comm1': {
-                    'label': c['comm1'],
-                    'defaultKey': '1',
-                    'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(1);
-                    },
-                    'keyUp': null,
-                    'type': 'command'
-                },				
+                },			
                 'hk-bots-split': {
                     'label': c['hk-bots-split'],
-                    'defaultKey': '1',
+                    'defaultKey': ',',
                     'keyDown': function() {
                         if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([2]).buffer);
                     },
                     'keyUp': null,
-                    'type': 'command'
+                    'type': 'normal'
                 },
                 'hk-bots-feed': {
                     'label': c['hk-bots-feed'],
-                    'defaultKey': '1',
+                    'defaultKey': '.',
                     'keyDown': function() {
                        if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([3]).buffer)
                     },
                     'keyUp': null,
-                    'type': 'command'
+                    'type': 'normal'
                 },
                 'hk-bots-ai': {
                     'label': c['hk-bots-ai'],
-                    'defaultKey': '1',
+                    'defaultKey': '/',
                     'keyDown': function() {
                 if(window.userBots.startedBots && window.userBots.isAlive){
                     if(!window.bots.ai){
@@ -8890,8 +8887,17 @@ var thelegendmodproject = function(t, e, i) {
                 }
                     },
                     'keyUp': null,
+                    'type': 'normal'
+                },	
+                'hk-comm1': {
+                    'label': c['comm1'],
+                    'defaultKey': '1',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer.sendCommand(1);
+                    },
+                    'keyUp': null,
                     'type': 'command'
-                },				
+                },					
                 'hk-comm2': {
                     'label': c['comm2'],
                     'defaultKey': '2',
