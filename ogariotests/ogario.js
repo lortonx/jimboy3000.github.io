@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1154 MEGA TEST
+// v1.1155 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3188,11 +3188,16 @@ var thelegendmodproject = function(t, e, i) {
 			const skinID = e == `skin-preview`;		
 				if ($(`#${e}${` t`}`).attr('src') === t) {
 					return;
-				}					
-                if (t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg")) {
+				}	
+				$(`#${e}`).empty().addClass(`default`);	
+			if (!t) {
+                skinID && $(`#skin`).popover(`hide`);
+                return;
+            }				
+                if (t && t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg")) {
                     //console.log("stage 1 videos");
 
-                    if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
+                    if ($('#' + e).empty(), t && 0 != t.length) {
                         //console.log("stage 1 images/videos: " + t);
                         var i = this;
                         o = new Video();
@@ -3211,13 +3216,13 @@ var thelegendmodproject = function(t, e, i) {
                     checktypeImgVid = new Image();
                     //console.log("stage 1 images");
 
-                    if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
+                    if ($('#' + e).empty(), t && 0 != t.length) {
                         //console.log("stage 1 images/videos: " + t);
-                        var i = this,
+                        var i = this;
                             o = checktypeImgVid;
                         o.src = t;
                         // o = new Image();
-                        o.crossOrigin = 'anonymous',
+                        o.crossOrigin = 'anonymous';
                             o.onload = function() {
                                 i.changeSkinPreview(o, e);
                             };
