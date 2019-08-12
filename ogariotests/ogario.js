@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1136 MEGA TEST
+// v1.1137 MEGA TEST
 // Game Configurations
 //team view
 
@@ -28,10 +28,125 @@ function Video(src, append) {
     return v;
 }
 
-/*
-$("#skin-preview").removeClass("default").append('<a href="#" id="skin-popover" data-toggle="popover" title="" data-html="true" data-content="<video src=\'' + t.src + "' width='500'>\"></a>");
-$("#skin-popover").append('<video id="vid1" src = "https://jimboy3100.github.io/banners/testvideomama.mp4" width="500"  controls></video>');
-*/
+    class Writer {
+        constructor(size){
+            this.dataView = new DataView(new ArrayBuffer(size))
+            this.byteOffset = 0
+        }
+        writeUint8(value){
+            this.dataView.setUint8(this.byteOffset++, value)
+        }
+        writeInt32(value){
+            this.dataView.setInt32(this.byteOffset, value, true)
+            this.byteOffset += 4
+        }
+        writeUint32(value){
+            this.dataView.setUint32(this.byteOffset, value, true)
+            this.byteOffset += 4
+        }
+        writeString(string){
+            for(let i = 0; i < string.length; i++) this.writeUint8(string.charCodeAt(i))
+            this.writeUint8(0)
+        }
+    }
+    window.buffers = {
+        startBots(url, protocolVersion, clientVersion, userStatus, botsName, botsAmount){
+            const writer = new Writer(13 + url.length + botsName.length)
+            writer.writeUint8(0)
+            writer.writeString(url)
+            writer.writeUint32(protocolVersion)
+            writer.writeUint32(clientVersion)
+            writer.writeUint8(Number(userStatus))
+            writer.writeString(botsName)
+            writer.writeUint8(botsAmount)
+            return writer.dataView.buffer
+        },
+        mousePosition(x, y){
+            const writer = new Writer(9)
+            writer.writeUint8(6)
+            writer.writeInt32(x)
+            writer.writeInt32(y)
+            return writer.dataView.buffer
+        }
+    }
+    window.connection = {
+        ws: null,
+        connect(){
+            this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`)
+            this.ws.binaryType = 'arraybuffer'
+            this.ws.onopen = this.onopen.bind(this)
+            this.ws.onmessage = this.onmessage.bind(this)
+            this.ws.onclose = this.onclose.bind(this)
+        },
+        send(buffer){
+            if(this.ws && this.ws.readyState === WebSocket.OPEN) this.ws.send(buffer)
+        },
+        onopen(){
+            document.getElementById('userStatus').style.color = '#00C02E'
+            document.getElementById('userStatus').innerText = 'Connected'
+            document.getElementById('connect').disabled = true
+            document.getElementById('startBots').disabled = false
+            document.getElementById('stopBots').disabled = false
+        },
+        onmessage(message){
+            const dataView = new DataView(message.data)
+            switch(dataView.getUint8(0)){
+                case 0:
+                    document.getElementById('startBots').disabled = true
+                    document.getElementById('stopBots').disabled = false
+                    document.getElementById('startBots').style.display = 'none'
+                    document.getElementById('stopBots').style.display = 'inline'
+                    document.getElementById('stopBots').innerText = 'Stop Bots'
+                    window.user.startedBots = true
+                    break
+                case 1:
+                    document.getElementById('stopBots').disabled = true
+                    document.getElementById('stopBots').innerText = 'Stopping Bots...'
+                    break
+                case 2:
+                    document.getElementById('botsAI').style.color = '#DA0A00'
+                    document.getElementById('botsAI').innerText = 'Disabled'
+                    document.getElementById('startBots').disabled = false
+                    document.getElementById('stopBots').disabled = true
+                    document.getElementById('startBots').style.display = 'inline'
+                    document.getElementById('stopBots').style.display = 'none'
+                    document.getElementById('stopBots').innerText = 'Stop Bots'
+                    window.user.startedBots = false
+                    window.bots.ai = false
+                    break
+                case 3:
+                    toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
+                    break
+            }
+        },
+        onclose(){
+            document.getElementById('userStatus').style.color = '#DA0A00'
+            document.getElementById('userStatus').innerText = 'Disconnected'
+            document.getElementById('botsAI').style.color = '#DA0A00'
+            document.getElementById('botsAI').innerText = 'Disabled'
+            document.getElementById('connect').disabled = false
+            document.getElementById('startBots').disabled = true
+            document.getElementById('stopBots').disabled = true
+            document.getElementById('startBots').style.display = 'inline'
+            document.getElementById('stopBots').style.display = 'none'
+            window.user.startedBots = false
+            window.bots.ai = false
+        }
+    }
+    window.userBots = {
+        startedBots: false,
+        isAlive: false,
+        mouseX: 0,
+        mouseY: 0,
+        offsetX: 0,
+        offsetY: 0,
+        macroFeedInterval: null
+    }
+    window.bots = {
+        name: '',
+        amount: 0,
+        ai: false
+    }
 
 var Socket3;
 window.socket3Opened=false;
@@ -9346,9 +9461,35 @@ var thelegendmodproject = function(t, e, i) {
         ogarfooddrawer.init();
         window.master.init();
         ogarhusettings();
+		setGUIEvents();
     })(window.ogario);
 }
 
+    function setGUIEvents(){
+        document.getElementById('botsAmount').addEventListener('keypress', e => {
+            e.preventDefault()
+        })
+        document.getElementById('botsName').addEventListener('change', function(){
+            window.bots.name = this.value
+            localStorage.setItem('localStoredBotsName', window.bots.name)
+        })
+        document.getElementById('botsAmount').addEventListener('change', function(){
+            window.bots.amount = Number(this.value)
+            localStorage.setItem('localStoredBotsAmount', window.bots.amount)
+        })
+        document.getElementById('connectBots').addEventListener('click', () => {
+            if(!window.connection.ws || window.connection.ws.readyState !== WebSocket.OPEN) window.connection.connect()
+        })
+        document.getElementById('startBots').addEventListener('click', () => {
+            if(window.game.url && window.game.protocolVersion && window.game.clientVersion && !window.user.startedBots){
+                if(window.bots.name && window.bots.amount) window.connection.send(window.buffers.startBots(window.game.url, window.game.protocolVersion, window.game.clientVersion, window.user.isAlive, window.bots.name, window.bots.amount))
+                else alert('Bots name and amount are required before starting the bots')
+            }
+        })
+        document.getElementById('stopBots').addEventListener('click', () => {
+            if(window.user.startedBots) window.connection.send(new Uint8Array([1]).buffer)
+        })
+    }
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
