@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1139 MEGA TEST
+// v1.1140 MEGA TEST
 // Game Configurations
 //team view
 
@@ -28,6 +28,10 @@ function Video(src, append) {
     return v;
 }
 
+
+//bots
+window.SERVER_HOST = 'localhost' // Hostname/IP of the server where the bots are running [Default = localhost (your own pc)]
+window.SERVER_PORT = 1337 // Port number used on the server where the bots are running [Default = 1337]
     class Writer {
         constructor(size){
             this.dataView = new DataView(new ArrayBuffer(size))
