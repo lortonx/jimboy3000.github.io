@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1161 MEGA TEST
+// v1.1162 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3320,7 +3320,7 @@ var thelegendmodproject = function(t, e, i) {
                     $(".btn-logout").appendTo($("#profile")),
                     $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://jimboy3100.github.io/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + h.skins + '"></a><a href="https://youtube.com/channel/UCoj-ZStcJ0jLMOSK7FOBTbA" class="quick-yt ogicon-youtube2" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="The Legend mod Project"></a></div>'),
 					$(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>
-					<a href="https://www.youtube.com/channel/UCZo9WmnFPWw38q65Llu5Lug" target="_blank">Bots</a>					
+					Bots					
 					<h5 id="botsAuthor">
 					</h5>
 					<span id="statusTextBots">Status: <b id="userStatus">Disconnected</b></span>
@@ -3333,6 +3333,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<button id="startBots" disabled>Start Bots</button>
 					<button id="stopBots">Stop Bots</button>
+					<br><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">How to use</a>	
 					</div>`),
                 this.protocolMode || $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_dailyquests + '"></a>'),
                     $(".party-dialog, .partymode-info").remove(),
@@ -9558,7 +9559,9 @@ var thelegendmodproject = function(t, e, i) {
             localStorage.setItem('localStoredBotsAmount', window.bots.amount)
         })
         document.getElementById('connectBots').addEventListener('click', () => {
+			
             if(!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
+				
         })
         document.getElementById('startBots').addEventListener('click', () => {
             //if(window.gameBots.url && window.gameBots.protocolVersion && window.gameBots.clientVersion && !window.userBots.startedBots){
