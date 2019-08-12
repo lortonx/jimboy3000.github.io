@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1144 MEGA TEST
+// v1.1145 MEGA TEST
 // Game Configurations
 //team view
 
@@ -137,6 +137,11 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
             window.bots.ai = false
         }
     }
+    window.gameBots = {
+        url: '',
+        protocolVersion: 0,
+        clientVersion: 0
+    }	
     window.userBots = {
         startedBots: false,
         isAlive: false,
@@ -6510,6 +6515,8 @@ var thelegendmodproject = function(t, e, i) {
                 this.leaderboard = [];
                 this.ws = t;
 				if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
+				window.userBots.isAlive = false
+				window.userBots.macroFeedInterval = null
                 this.socket = new WebSocket(t);
                 this.socket['binaryType'] = 'arraybuffer';
                 this.socket['onopen'] = function() {
@@ -6535,13 +6542,16 @@ var thelegendmodproject = function(t, e, i) {
             'onOpen': function(t) {
                 console.log('[Legend mod Express] Game server socket open'),
                     this.time = Date.now();
-                var e = this.createView(5);
-                e.setUint8(0, 254),
-                    e.setUint32(1, 21, true),
-                    this.sendMessage(e),
-                    (e = this.createView(5)).setUint8(0, 255),
-                    e.setUint32(1, this.clientVersion, true),
-                    this.sendMessage(e),
+					var e = this.createView(5);
+					e.setUint8(0, 254);
+					if(!window.gameBots.protocolVersion) window.gameBots.protocolVersion = 21;
+                    e.setUint32(1, 21, true);
+                    this.sendMessage(e);
+					e = this.createView(5);
+					e.setUint8(0, 255);
+					if(!window.gameBots.clientVersion) window.gameBots.clientVersion = this.clientVersion
+					e.setUint32(1, this.clientVersion, true);
+					this.sendMessage(e);
                     this.connectionOpened = true;
             },
             'onMessage': function(t) {
@@ -6662,8 +6672,8 @@ var thelegendmodproject = function(t, e, i) {
                     i.setUint32(9, this.protocolKey, true);
                     this.sendMessage(i);
                 }
-            window.userBots.mouseX = this.cursorX - window.userBots.offsetX
-            window.userBots.mouseY = this.cursorY - window.userBots.offsetY
+            window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
+            window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
             if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))			
             },
             /*            'sendAccessToken': function(t, e, i) {
@@ -9556,7 +9566,7 @@ var thelegendmodproject = function(t, e, i) {
         document.getElementById('startBots').addEventListener('click', () => {
             //if(window.gameBots.url && window.gameBots.protocolVersion && window.gameBots.clientVersion && !window.userBots.startedBots){
 			if(legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots){	
-                if(window.bots.name && window.bots.amount) window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.EnvConfig.configVersion, window.master.clientVersion, window.userBots.isAlive, window.bots.name, window.bots.amount))
+			if(window.bots.name && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(window.gameBots.url, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.bots.name, window.bots.amount))
                 else toastr["info"]('Bots name and amount are required before starting the bots')
             }
         })
