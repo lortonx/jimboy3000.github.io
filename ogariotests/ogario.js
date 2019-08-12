@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1143 MEGA TEST
+// v1.1144 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3176,7 +3176,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'setSkinPreview': function(t, e) {
-
+				if (t && e){
                 if (t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg")) {
                     //console.log("stage 1 videos");
 
@@ -3211,6 +3211,7 @@ var thelegendmodproject = function(t, e, i) {
                             };
                     }
                 }
+				}
             },
             'setProfile': function() {
                 var t = (ogario1PlayerProfiles.length + this.selectedProfile - 1) % ogario1PlayerProfiles.length,
