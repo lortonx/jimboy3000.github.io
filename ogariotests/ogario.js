@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1172 MEGA TEST
+// v1.1173 MEGA TEST
 // Game Configurations
 //team view
 
@@ -179,7 +179,7 @@ function fakePlayers(){
 					for (y=0;y<legendmod.cells.length;y++){
 
 						if (legendmod.cells[y].fake && legendmod.cells[y].id == window.cellsFake[x].id){
-							console.log(legendmod.cells[y]);
+							//console.log(legendmod.cells[y]);
 							legendmod.cells[y].time = Date.now();
 							legendmod.cells[y].targetX = window.cellsFake[x].targetX;
 							legendmod.cells[y].targetY = window.cellsFake[x].targetY;
@@ -203,7 +203,7 @@ function fakePlayers(){
 				}
 				
 				window.cellsFakeFlag++;				
-				if (window.cellsFakeFlag == 1000){
+				if (window.cellsFakeFlag == 40){
 					console.log('removed');
 					window.cellsFakeFlag = 0;
 					window.cellsFake=[];
