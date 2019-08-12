@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1155 MEGA TEST
+// v1.1156 MEGA TEST
 // Game Configurations
 //team view
 
@@ -6886,10 +6886,10 @@ var thelegendmodproject = function(t, e, i) {
                 //} //
             },		*/
 			//https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
-            'decompressMessage': function(t) {
-                var e = new o(t['buffer']);
-                var i = new o(e.readUInt32LE(1));
-                return a.decodeBlock(e.slice(5), i), i;
+            'decompressMessage': function(message) {
+                var buffer = new LMbuffer(message['buffer']);
+                var readMessage = new LMbuffer(buffer.readUInt32LE(1));
+                return a.decodeBlock(buffer.slice(5), readMessage), readMessage;
             },
             'handleMessage': function(data) {
                 var i = function() {
@@ -6901,8 +6901,8 @@ var thelegendmodproject = function(t, e, i) {
                         return e;
                     },
                     s = 0,
-                    o = data.getUint8(s++);
-                switch (54 == o && (o = 53), o) {
+                    opcode = data.getUint8(s++);
+                switch (54 == opcode && (opcode = 53), opcode) {
 
 
 
@@ -7207,14 +7207,14 @@ var thelegendmodproject = function(t, e, i) {
                         e += 8;
                         this.viewMaxY = t.readDoubleLE(e);
                         this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
+						
 						if(~~(this.viewMaxX - this.viewMinX) === 14142 && ~~(this.viewMaxY - this.viewMinY) === 14142){
-                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
-                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2	
+                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
+                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;	
 						}						
                         break;
                     default:
-                        console.log('[Legend mod Express] Unknown sub opcode:', t.readUInt8(0));
-						break;
+                        console.log('[Legend mod Express] Unknown sub opcode:', t.readUInt8(0));						
                 }
             },
             'handleLeaderboard': function() {
@@ -9428,7 +9428,7 @@ var thelegendmodproject = function(t, e, i) {
             return i.play ? h.exit : void 0;
         };
         i = LM;
-        o = t('buffer')['Buffer'];
+        LMbuffer = t('buffer')['Buffer'];
         a = t('lz4');
         if ('/ogario' === window.location.pathname) {
             ogarjoiner('/' + window.location.hash);
