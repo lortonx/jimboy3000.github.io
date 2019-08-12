@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1158 MEGA TEST
+// v1.1159 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3183,13 +3183,10 @@ var thelegendmodproject = function(t, e, i) {
                 
             },
             'setSkinPreview': function(t, e) {
-				//if (t && e){
-				console.log(t);
-				$('#' + e).empty().addClass(`default`);					
-                if (t && t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg")) {
+                if (t.includes(".mp4") || t.includes(".webm") || t.includes(".ogg")) {
                     //console.log("stage 1 videos");
 
-                    if ($('#' + e).empty(), t && 0 != t.length) {
+                    if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
                         //console.log("stage 1 images/videos: " + t);
                         var i = this;
                         o = new Video();
@@ -3208,19 +3205,18 @@ var thelegendmodproject = function(t, e, i) {
                     checktypeImgVid = new Image();
                     //console.log("stage 1 images");
 
-                    if ($('#' + e).empty(), t && 0 != t.length) {
+                    if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
                         //console.log("stage 1 images/videos: " + t);
-                        var i = this;
+                        var i = this,
                             o = checktypeImgVid;
                         o.src = t;
                         // o = new Image();
-                        o.crossOrigin = 'anonymous';
+                        o.crossOrigin = 'anonymous',
                             o.onload = function() {
                                 i.changeSkinPreview(o, e);
                             };
                     }
                 }
-				//}
             },
             'setProfile': function() {
                 var t = (ogario1PlayerProfiles.length + this.selectedProfile - 1) % ogario1PlayerProfiles.length,
