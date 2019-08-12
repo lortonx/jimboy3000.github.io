@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1160 MEGA TEST
+// v1.1161 MEGA TEST
 // Game Configurations
 //team view
 
@@ -152,7 +152,7 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
         macroFeedInterval: null
     }
     window.bots = {
-        name: '',
+        nameLM: 'Legendmod|ml',
         amount: 0,
         ai: false
     }
@@ -3327,7 +3327,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<span id="aiTextBots">Bots AI: <b id="botsAI">Disabled</b></span>
 					<br>
-					<input type="text" id="botsName" placeholder="Bots Name" maxlength="15" spellcheck="false">
+					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="10" max="199" spellcheck="false">
 					<button id="connectBots">Connect</button>
 					<br>
@@ -9549,9 +9549,9 @@ var thelegendmodproject = function(t, e, i) {
         document.getElementById('botsAmount').addEventListener('keypress', e => {
             e.preventDefault()
         })
-        document.getElementById('botsName').addEventListener('change', function(){
-            window.bots.name = this.value
-            localStorage.setItem('localStoredBotsName', window.bots.name)
+        document.getElementById('botsNameLM').addEventListener('change', function(){
+            window.bots.nameLM = this.value
+            localStorage.setItem('localStoredBotsName', window.bots.nameLM)
         })
         document.getElementById('botsAmount').addEventListener('change', function(){
             window.bots.amount = Number(this.value)
@@ -9563,7 +9563,7 @@ var thelegendmodproject = function(t, e, i) {
         document.getElementById('startBots').addEventListener('click', () => {
             //if(window.gameBots.url && window.gameBots.protocolVersion && window.gameBots.clientVersion && !window.userBots.startedBots){
 			if(legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots){	
-			if(window.bots.name && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.bots.name, window.bots.amount))
+			if(window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.bots.nameLM, window.bots.amount))
                 else toastr["info"]('Bots name and amount are required before starting the bots')
             }
         })
