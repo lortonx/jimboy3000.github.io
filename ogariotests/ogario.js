@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1166 MEGA TEST
+// v1.1167 MEGA TEST
 // Game Configurations
 //team view
 
@@ -8857,7 +8857,7 @@ var thelegendmodproject = function(t, e, i) {
                     'type': 'normal'
                 },			
                 'hk-bots-split': {
-                    'label': c['hk-bots-split'],
+                    'label': h['hk-bots-split'],
                     'defaultKey': ',',
                     'keyDown': function() {
                         if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([2]).buffer);
@@ -8866,7 +8866,7 @@ var thelegendmodproject = function(t, e, i) {
                     'type': 'normal'
                 },
                 'hk-bots-feed': {
-                    'label': c['hk-bots-feed'],
+                    'label': h['hk-bots-feed'],
                     'defaultKey': '.',
                     'keyDown': function() {
                        if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([3]).buffer)
@@ -8875,7 +8875,7 @@ var thelegendmodproject = function(t, e, i) {
                     'type': 'normal'
                 },
                 'hk-bots-ai': {
-                    'label': c['hk-bots-ai'],
+                    'label': h['hk-bots-ai'],
                     'defaultKey': '/',
                     'keyDown': function() {
                 if(window.userBots.startedBots && window.userBots.isAlive){
