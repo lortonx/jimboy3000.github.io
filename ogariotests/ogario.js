@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1138 MEGA TEST
+// v1.1139 MEGA TEST
 // Game Configurations
 //team view
 
@@ -7174,10 +7174,12 @@ var thelegendmodproject = function(t, e, i) {
                         this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
 						if(~~(this.viewMaxX - this.viewMinX) === 14142 && ~~(this.viewMaxY - this.viewMinY) === 14142){
                         window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
-                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2						
+                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2	
+						}						
                         break;
                     default:
                         console.log('[Legend mod Express] Unknown sub opcode:', t.readUInt8(0));
+						break;
                 }
             },
             'handleLeaderboard': function() {
