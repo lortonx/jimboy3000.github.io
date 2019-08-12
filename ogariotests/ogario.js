@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1137 MEGA TEST
+// v1.1138 MEGA TEST
 // Game Configurations
 //team view
 
@@ -69,7 +69,7 @@ function Video(src, append) {
             return writer.dataView.buffer
         }
     }
-    window.connection = {
+    window.connectionBots = {
         ws: null,
         connect(){
             this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`)
@@ -97,7 +97,7 @@ function Video(src, append) {
                     document.getElementById('startBots').style.display = 'none'
                     document.getElementById('stopBots').style.display = 'inline'
                     document.getElementById('stopBots').innerText = 'Stop Bots'
-                    window.user.startedBots = true
+                    window.userBots.startedBots = true
                     break
                 case 1:
                     document.getElementById('stopBots').disabled = true
@@ -111,7 +111,7 @@ function Video(src, append) {
                     document.getElementById('startBots').style.display = 'inline'
                     document.getElementById('stopBots').style.display = 'none'
                     document.getElementById('stopBots').innerText = 'Stop Bots'
-                    window.user.startedBots = false
+                    window.userBots.startedBots = false
                     window.bots.ai = false
                     break
                 case 3:
@@ -129,7 +129,7 @@ function Video(src, append) {
             document.getElementById('stopBots').disabled = true
             document.getElementById('startBots').style.display = 'inline'
             document.getElementById('stopBots').style.display = 'none'
-            window.user.startedBots = false
+            window.userBots.startedBots = false
             window.bots.ai = false
         }
     }
@@ -6496,6 +6496,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.mapOffsetFixed = false;
                 this.leaderboard = [];
                 this.ws = t;
+				if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
                 this.socket = new WebSocket(t);
                 this.socket['binaryType'] = 'arraybuffer';
                 this.socket['onopen'] = function() {
@@ -6648,6 +6649,9 @@ var thelegendmodproject = function(t, e, i) {
                     i.setUint32(9, this.protocolKey, true);
                     this.sendMessage(i);
                 }
+            window.userBots.mouseX = this.cursorX - window.userBots.offsetX
+            window.userBots.mouseY = this.cursorY - window.userBots.offsetY
+            if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))			
             },
             /*            'sendAccessToken': function(t, e, i) {
                             if (!this['accessTokenSent']) {
@@ -6892,9 +6896,14 @@ var thelegendmodproject = function(t, e, i) {
                     case 32:
                         window.testobjectsOpcode32 = data;
                         this.playerCellIDs.push(data.getUint32(s, true));
-                        this.play || (this.play = true, ogarminimapdrawer.hideMenu(),
-                            this.playerColor = null,
-                            ogarminimapdrawer.onPlayerSpawn());
+						if (!this.play) {
+                        this.play = true; 
+						ogarminimapdrawer.hideMenu();
+                        this.playerColor = null;
+                        ogarminimapdrawer.onPlayerSpawn();
+                        window.userBots.isAlive = true;
+                        if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer);	
+						}							
                         break;
                     case 50:
                         window.testobjectsOpcode50 = data;
@@ -7163,6 +7172,9 @@ var thelegendmodproject = function(t, e, i) {
                         e += 8;
                         this.viewMaxY = t.readDoubleLE(e);
                         this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
+						if(~~(this.viewMaxX - this.viewMinX) === 14142 && ~~(this.viewMaxY - this.viewMinY) === 14142){
+                        window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
+                        window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2						
                         break;
                     default:
                         console.log('[Legend mod Express] Unknown sub opcode:', t.readUInt8(0));
@@ -7425,7 +7437,13 @@ var thelegendmodproject = function(t, e, i) {
                     i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts.removeCell();
                 }
                 //Sonia7
-                this.removePlayerCell && !this.playerCells.length && (this.play = false, ogarminimapdrawer.onPlayerDeath(), ogarminimapdrawer.showMenu(300));
+				if (this.removePlayerCell && !this.playerCells.length) {
+					this.play = false;
+					ogarminimapdrawer.onPlayerDeath();
+					ogarminimapdrawer.showMenu(300)
+					window.userBots.isAlive = false
+					if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer)					
+				}
                 //window.counterCell=0;
                 if (window.autoPlay && legendmod.play) {
                     calcTarget();
@@ -8825,7 +8843,47 @@ var thelegendmodproject = function(t, e, i) {
                     },
                     'keyUp': null,
                     'type': 'command'
+                },				
+                'hk-bots-split': {
+                    'label': c['hk-bots-split'],
+                    'defaultKey': '1',
+                    'keyDown': function() {
+                        if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([2]).buffer);
+                    },
+                    'keyUp': null,
+                    'type': 'command'
                 },
+                'hk-bots-feed': {
+                    'label': c['hk-bots-feed'],
+                    'defaultKey': '1',
+                    'keyDown': function() {
+                       if(window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([3]).buffer)
+                    },
+                    'keyUp': null,
+                    'type': 'command'
+                },
+                'hk-bots-ai': {
+                    'label': c['hk-bots-ai'],
+                    'defaultKey': '1',
+                    'keyDown': function() {
+                if(window.userBots.startedBots && window.userBots.isAlive){
+                    if(!window.bots.ai){
+                        document.getElementById('botsAI').style.color = '#00C02E'
+                        document.getElementById('botsAI').innerText = 'Enabled'
+                        window.bots.ai = true
+                        window.connectionBots.send(new Uint8Array([4, Number(window.bots.ai)]).buffer)
+                    }
+                    else {
+                        document.getElementById('botsAI').style.color = '#DA0A00'
+                        document.getElementById('botsAI').innerText = 'Disabled'
+                        window.bots.ai = false
+                        window.connectionBots.send(new Uint8Array([4, Number(window.bots.ai)]).buffer)
+                    }
+                }
+                    },
+                    'keyUp': null,
+                    'type': 'command'
+                },				
                 'hk-comm2': {
                     'label': c['comm2'],
                     'defaultKey': '2',
@@ -9478,16 +9536,17 @@ var thelegendmodproject = function(t, e, i) {
             localStorage.setItem('localStoredBotsAmount', window.bots.amount)
         })
         document.getElementById('connectBots').addEventListener('click', () => {
-            if(!window.connection.ws || window.connection.ws.readyState !== WebSocket.OPEN) window.connection.connect()
+            if(!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
         })
         document.getElementById('startBots').addEventListener('click', () => {
-            if(window.game.url && window.game.protocolVersion && window.game.clientVersion && !window.user.startedBots){
-                if(window.bots.name && window.bots.amount) window.connection.send(window.buffers.startBots(window.game.url, window.game.protocolVersion, window.game.clientVersion, window.user.isAlive, window.bots.name, window.bots.amount))
-                else alert('Bots name and amount are required before starting the bots')
+            //if(window.gameBots.url && window.gameBots.protocolVersion && window.gameBots.clientVersion && !window.userBots.startedBots){
+			if(legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots){	
+                if(window.bots.name && window.bots.amount) window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.EnvConfig.configVersion, window.master.clientVersion, window.userBots.isAlive, window.bots.name, window.bots.amount))
+                else toastr["info"]('Bots name and amount are required before starting the bots')
             }
         })
         document.getElementById('stopBots').addEventListener('click', () => {
-            if(window.user.startedBots) window.connection.send(new Uint8Array([1]).buffer)
+            if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
         })
     }
 /*
