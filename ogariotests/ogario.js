@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1149 MEGA TEST
+// v1.1150 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3184,7 +3184,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setSkinPreview': function(t, e) {
 				//if (t && e){
-			const skinID = id == `skin-preview`;		
+			const skinID = e == `skin-preview`;		
 				if ($(`#${id}${` t`}`).attr('src') === t) {
 					return;
 				}					
@@ -9549,9 +9549,8 @@ var thelegendmodproject = function(t, e, i) {
         LM.init();
         ogarfooddrawer.init();
         window.master.init();
-        ogarhusettings();
-		
-		//setGUIEvents();
+        ogarhusettings();		
+		setGUIEvents();
     })(window.ogario);
 }
 
