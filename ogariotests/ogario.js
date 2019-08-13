@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1177 MEGA TEST
+// v1.1178 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3327,9 +3327,9 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="10" max="199" spellcheck="false">
-					<button id="connectBots" class="btn btn-primary btn">Connect</button>
+					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
-					<button id="startBots" class="btn btn-sm btn-warning" disabled>Start Bots</button>
+					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
 					<button id="stopBots">Stop Bots</button><br>
 					<br><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">How to use?</a>	
 					</div>`),
