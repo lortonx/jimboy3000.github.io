@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1184 MEGA TEST
+// v1.1185 MEGA TEST
 // Game Configurations
 //team view
 
@@ -77,7 +77,7 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
         ws: null,
         connect(){
             //this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`) //ws is needed for firefox
-			this.ws = new WebSocket(`wss://agario-bots--jimboy3100.repl.co`)
+			this.ws = new WebSocket(`ws://agario-bots--jimboy3100.repl.co`)
             this.ws.binaryType = 'arraybuffer'
             this.ws.onopen = this.onopen.bind(this)
             this.ws.onmessage = this.onmessage.bind(this)
