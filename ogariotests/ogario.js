@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1182 MEGA TEST
+// v1.1183 MEGA TEST
 // Game Configurations
 //team view
 
@@ -3802,31 +3802,25 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'setShowQuickMenu': function() {
-                if (!defaultmapsettings.showQuickBots && defaultmapsettings.showQuickMenu) {
-                    $("#quick-bots").hide(); 
-					$("#quick-menu").fadeIn(500);
-				}   
-				else{
-				if (defaultmapsettings.showQuickMenu) {
+                if (defaultmapsettings.showQuickMenu) {
                     $("#quick-menu").fadeIn(500);
                 } else {
                     $("#quick-menu").fadeOut(500);
-                }   
-				} 				
+                }
+                if (defaultmapsettings.showQuickBots) {
+                    $("#quick-bots").hide();      
+				}       				
             },
             'setShowQuickBots': function() {
-                if (defaultmapsettings.showQuickMenu && !defaultmapsettings.showQuickBots) {
-                    $("#quick-menu").hide(); 
-					$("#quick-bots").fadeIn(500);
-				}  
-				else{
-				if (defaultmapsettings.showQuickBots) {
+                if (defaultmapsettings.showQuickBots) {
                     $("#quick-bots").fadeIn(500);
                 } else {
                     $("#quick-bots").fadeOut(500);
                 }
-				}				
-            },			
+                if (defaultmapsettings.showQuickBots) {
+                    $("#quick-menu").hide();      
+				}  				
+            },				
             'setShowSkinsPanel': function() {
                 if (defaultmapsettings.showSkinsPanel) {
                     $("#skins-panel").fadeIn(500);
