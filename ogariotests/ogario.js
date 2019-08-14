@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1187 MEGA TEST
+// v1.1188 MEGA TEST
 // Game Configurations
 //team view
 
@@ -156,7 +156,7 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
         nameLM: 'Legendmod|ml',
         amount: 0,
         ai: false,
-		storedbotsRemoteIP: 'ws://localhost:1337'
+		remoteIP: 'ws://localhost:1337'
     }
 
 var Socket3;
@@ -9566,7 +9566,7 @@ var thelegendmodproject = function(t, e, i) {
 			var storedbotsRemoteIP = localStorage.getItem("localstoredBotsRemoteIP");
 			if (storedbotsRemoteIP==null || storedbotsRemoteIP==""){
 				storedbotsRemoteIP = "ws://localhost:1337";
-				window.bots.storedbotsRemoteIP = storedbotsRemoteIP;
+				window.bots.remoteIP = storedbotsRemoteIP;
 			}	
 			$('#botsRemoteIP').val(storedbotsRemoteIP)			
 			var storedbotsname = localStorage.getItem("localStoredBotsName");
@@ -9575,10 +9575,16 @@ var thelegendmodproject = function(t, e, i) {
 				window.bots.nameLM = storedbotsname;
 			}			
 			$('#botsNameLM').val(storedbotsname)
+			var storedbotsamount = localStorage.getItem("localStoredBotsAmount");
+			if (storedbotsamount==null || storedbotsamount==""){
+				storedbotsamount = 50;
+				window.bots.amount = storedbotsamount;
+			}			
+			$('#botsAmount').val(storedbotsamount)				
 			
         document.getElementById('botsRemoteIP').addEventListener('change', function(){
-            window.bots.storedbotsRemoteIP = this.value
-            localStorage.setItem('localstoredBotsRemoteIP', window.bots.storedbotsRemoteIP)
+            window.bots.remoteIP = this.value
+            localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
         })			
         document.getElementById('botsNameLM').addEventListener('change', function(){
             window.bots.nameLM = this.value
