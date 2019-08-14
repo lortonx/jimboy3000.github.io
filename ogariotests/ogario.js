@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1186 MEGA TEST
+// v1.1187 MEGA TEST
 // Game Configurations
 //team view
 
@@ -76,8 +76,8 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
     window.connectionBots = {
         ws: null,
         connect(){
-            //this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`) //ws is needed for firefox
-			this.ws = new WebSocket(`ws://agario-bots--jimboy3100.repl.co`)
+            this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`) //ws is needed for firefox
+			//this.ws = new WebSocket(`ws://agario-bots--jimboy3100.repl.co`)
             this.ws.binaryType = 'arraybuffer'
             this.ws.onopen = this.onopen.bind(this)
             this.ws.onmessage = this.onmessage.bind(this)
@@ -155,7 +155,8 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
     window.bots = {
         nameLM: 'Legendmod|ml',
         amount: 0,
-        ai: false
+        ai: false,
+		storedbotsRemoteIP: 'ws://localhost:1337'
     }
 
 var Socket3;
@@ -3330,6 +3331,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="10" max="199" spellcheck="false">
+					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
@@ -9561,12 +9563,23 @@ var thelegendmodproject = function(t, e, i) {
         document.getElementById('botsAmount').addEventListener('keypress', e => {
             e.preventDefault()
         })
+			var storedbotsRemoteIP = localStorage.getItem("localstoredBotsRemoteIP");
+			if (storedbotsRemoteIP==null || storedbotsRemoteIP==""){
+				storedbotsRemoteIP = "ws://localhost:1337";
+				window.bots.storedbotsRemoteIP = storedbotsRemoteIP;
+			}	
+			$('#botsRemoteIP').val(storedbotsRemoteIP)			
 			var storedbotsname = localStorage.getItem("localStoredBotsName");
 			if (storedbotsname==null || storedbotsname==""){
-				storedbotsname = "Legend mod";
+				storedbotsname = "Legendmod|ml";
 				window.bots.nameLM = storedbotsname;
-			}		
+			}			
 			$('#botsNameLM').val(storedbotsname)
+			
+        document.getElementById('botsRemoteIP').addEventListener('change', function(){
+            window.bots.storedbotsRemoteIP = this.value
+            localStorage.setItem('localstoredBotsRemoteIP', window.bots.storedbotsRemoteIP)
+        })			
         document.getElementById('botsNameLM').addEventListener('change', function(){
             window.bots.nameLM = this.value
             localStorage.setItem('localStoredBotsName', window.bots.nameLM)
