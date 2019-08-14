@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1185 MEGA TEST
+// v1.1186 MEGA TEST
 // Game Configurations
 //team view
 
@@ -160,6 +160,8 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
 
 var Socket3;
 window.socket3Opened=false;
+window.SLG3NumberTries = 0;
+window.socket3NumberTries = 0;
 var customLMID = Math.floor(Math.random()*100000);
 window.playerCellsSockReceived=[];
 window.cellsFake=[];
@@ -4380,12 +4382,14 @@ var thelegendmodproject = function(t, e, i) {
 			},
             //Sonia6			
             'SLGconnect': function(srv) {
+				if (window.SLG3NumberTries<2){
 				if (window.SLGconnected==null){
 					window.SLGconnected=true; //do this only once	
 					this.SLGconnect2(srv);
 				}
 				else{
 					window.SLGsocket.closeAndOpen();
+				}
 				}
             },
 			'SLGconnect2': function(srv) {			
@@ -4398,6 +4402,7 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['binaryType'] = 'arraybuffer';
                 t = this;
                 window.SLGsocket['onopen'] = function() {
+					window.SLG3NumberTries = 0;
                     console.log('[Legend mod Express] SLG socket open:',room, ",LMID:", customLMID);
 					//
 					window.SLGsocket['send'](JSON.stringify({ "auth": "JIM2" + customLMID, "password": "legendmod2"}));
@@ -4410,17 +4415,23 @@ var thelegendmodproject = function(t, e, i) {
                 window.SLGsocket['onclose'] = function(e) {
                     console.log('[Legend mod Express] SLG socket close');
 					//setTimeout(function() {
+						if (window.SLG3NumberTries<2){
 						legendmod3.SLGconnect2(legendmod.ws)
+						}
 					//}, 1000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
-                    console.log('[Legend mod Express] SLG socket error', e);			
+                    //console.log('[Legend mod Express] SLG socket error', e);	
+					window.SLG3NumberTries++;
+					console.log('[Legend mod Express] SLG socket error');
                 };			
                 window.SLGsocket['closeAndOpen'] = function(e) {
 					window.SLGsocket['onclose'] = function(e) {
-						console.log('[Legend mod Express] Previous SLG socket closed async', e);
+						console.log('[Legend mod Express] Previous SLG socket closed async');
 					}
+					if (window.SLG3NumberTries<2){
                     legendmod3.SLGconnect2(legendmod.ws)		
+					}
                 };				
 			},
             'closeConnection': function() {
