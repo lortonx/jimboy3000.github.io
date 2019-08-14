@@ -1,9 +1,8 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1188 MEGA TEST
+// v1.1189 MEGA TEST
 // Game Configurations
-//team view
 
 //window.testobjects = {};
 function removeEmojis(string) {
@@ -30,8 +29,8 @@ function Video(src, append) {
 
 
 //bots
-window.SERVER_HOST = 'localhost' // Hostname/IP of the server where the bots are running [Default = localhost (your own pc)]
-window.SERVER_PORT = 1337 // Port number used on the server where the bots are running [Default = 1337]
+window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where the bots are running [Default = localhost (your own pc)]
+//window.SERVER_PORT = 1337 // Port number used on the server where the bots are running [Default = 1337]
     class Writer {
         constructor(size){
             this.dataView = new DataView(new ArrayBuffer(size))
@@ -76,7 +75,8 @@ window.SERVER_PORT = 1337 // Port number used on the server where the bots are r
     window.connectionBots = {
         ws: null,
         connect(){
-            this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`) //ws is needed for firefox
+            //this.ws = new WebSocket(`ws://${window.SERVER_HOST}:${window.SERVER_PORT}`) //ws is needed for firefox
+			this.ws = new WebSocket(`ws://${window.SERVER_HOST}`)
 			//this.ws = new WebSocket(`ws://agario-bots--jimboy3100.repl.co`)
             this.ws.binaryType = 'arraybuffer'
             this.ws.onopen = this.onopen.bind(this)
@@ -9567,6 +9567,7 @@ var thelegendmodproject = function(t, e, i) {
 			if (storedbotsRemoteIP==null || storedbotsRemoteIP==""){
 				storedbotsRemoteIP = "ws://localhost:1337";
 				window.bots.remoteIP = storedbotsRemoteIP;
+				window.SERVER_HOST = window.bots.remoteIP;
 			}	
 			$('#botsRemoteIP').val(storedbotsRemoteIP)			
 			var storedbotsname = localStorage.getItem("localStoredBotsName");
@@ -9585,6 +9586,7 @@ var thelegendmodproject = function(t, e, i) {
         document.getElementById('botsRemoteIP').addEventListener('change', function(){
             window.bots.remoteIP = this.value
             localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
+			window.SERVER_HOST = window.bots.remoteIP
         })			
         document.getElementById('botsNameLM').addEventListener('change', function(){
             window.bots.nameLM = this.value
