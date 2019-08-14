@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
@@ -8428,6 +8428,7 @@ function Socket3enabler(srv) {
 	Socket3handler(message.data);
 	}
     Socket3.onopen = function(e) {
+		window.socket3NumberTries = 0;
 		Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
 		Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));		
 		console.log('[Legend mod Express] Socket 3 open:',room, ",LMID:", customLMID);
@@ -8441,20 +8442,24 @@ function Socket3enabler(srv) {
         window.socket3Opened = true;
     }
     Socket3.onerror = function(e) {
-        console.log('[Legend mod Express] Socket 3 error', e);
-		
+		window.socket3NumberTries++;
+        console.log('[Legend mod Express] Socket 3 error');		
     }
     Socket3.onclose = function(e) {
-        console.log('[Legend mod Express] Socket 3 close', e);
+        console.log('[Legend mod Express] Socket 3 close');
 		//setTimeout(function() {
+		if (window.socket3NumberTries < 2){	
 		Socket3enabler(window.legendmod.ws)
+		}
 		//}, 1000);
     }
 	Socket3.closeAndOpen = function(e) {
 		Socket3.onclose = function(e) {
-			 console.log('[Legend mod Express] Previous Socket 3 closed async', e);
+			 console.log('[Legend mod Express] Previous Socket 3 closed async');
 		}
+		if (window.socket3NumberTries < 2){	
 		Socket3enabler(window.legendmod.ws);
+		}
 	}
     return Socket3;
 }
