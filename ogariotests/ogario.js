@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1199 MEGA TEST
+// v1.1200 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -484,7 +484,7 @@ var languagetexts = {
         'showQuest': 'Pokaż zadanie (quest)',
         'autoZoom': 'Auto zoom',
         'animation': 'Opóźnienie animacji',
-		'macroFeeding ': 'Macro feed (ms)',
+		'macroFeeding': 'Macro feed (ms)',
         'suckAnimation': 'Cell Eat [Sucking] Animation',
         'virusGlow': 'Virus Glow',
         'borderGlow': 'Border Glow',
@@ -878,7 +878,7 @@ var languagetexts = {
         'showQuest': 'Show quest',
         'autoZoom': 'Auto zoom',
         'animation': 'Animation delay',
-		'macroFeeding ': 'Macro feed (ms)',
+		'macroFeeding': 'Macro feed (ms)',
         'suckAnimation': 'Cell Eat [Sucking] Animation',
         'virusGlow': 'Virus Glow',
         'borderGlow': 'Border Glow',
