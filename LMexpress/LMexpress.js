@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.088 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
@@ -8448,7 +8448,8 @@ function Socket3enabler(srv) {
     Socket3.onclose = function(e) {
         console.log('[Legend mod Express] Socket 3 close');
 		//setTimeout(function() {
-		if (window.socket3NumberTries < 2){	
+			window.socket3NumberTries++;
+		if (window.socket3NumberTries < 3){	
 		Socket3enabler(window.legendmod.ws)
 		}
 		//}, 1000);
