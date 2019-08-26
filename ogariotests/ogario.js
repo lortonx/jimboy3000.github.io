@@ -6916,7 +6916,7 @@ var thelegendmodproject = function(t, e, i) {
 
 
                     case 5:
-                        console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                        //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
                         window.testobjectsOpcode5 = data;
                         break;
                     case 17:
