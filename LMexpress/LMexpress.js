@@ -8449,7 +8449,7 @@ function Socket3enabler(srv) {
         console.log('[Legend mod Express] Socket 3 close');
 		//setTimeout(function() {
 			window.socket3NumberTries++;
-		if (window.socket3NumberTries < 3){	
+		if (window.socket3NumberTries < 2){	
 		Socket3enabler(window.legendmod.ws)
 		}
 		//}, 1000);
