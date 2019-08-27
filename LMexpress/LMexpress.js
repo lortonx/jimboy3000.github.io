@@ -8148,6 +8148,7 @@ function joinSERVERfindinfo() {
                             $("#gamemode").val(MaxMode);
                             master.region = $("#region").val();
                             master.gamemode = $("#gamemode").val();
+							legendmod.gameMode = master.gamemode;
                             //adres();
                         }
                     }
