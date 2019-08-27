@@ -8451,7 +8451,7 @@ function Socket3enabler(srv) {
 		//setTimeout(function() {
 			window.socket3NumberTries++;
 		if (window.socket3NumberTries < 2){	
-		Socket3enabler(window.legendmod.ws)
+		//Socket3enabler(window.legendmod.ws)
 		}
 		//}, 1000);
     }
