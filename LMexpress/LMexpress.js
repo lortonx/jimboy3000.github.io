@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.067b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.067c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
@@ -6425,7 +6425,6 @@ function getSNEZServers(ifcalled) {
             // 			if (data.hasOwnProperty(player)) {
             for (var player = 0; player < data.length; player++) {
                 if (data[player].nickname) {
-                    if (data[player].nickname) {
                         if (data[player].nickname.indexOf($("#searchInput").val()) >= 0) {
                             if (showonceusers == 0) {
                                 showonceusers++;
@@ -6442,6 +6441,9 @@ function getSNEZServers(ifcalled) {
                             temporaryserver2 = temporaryserver.split('live-arena-').pop();
                             temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
                             temporaryserver3 = temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
+							if (data[player].hidecountry==true){
+								data[player].extra.ip_info.country = "UN";
+							}
                             if (temporaryserver1a) {
                                 temporaryserver1a = temporaryserver1a.split('\"\,\"tag')[0];
                                 appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" + temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);
@@ -6450,7 +6452,8 @@ function getSNEZServers(ifcalled) {
                             }
                             showonceusers3++;
                             showonceusers3returner(showonceusers3);
-                        } else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
+                        } 
+						else if (data[player].server.indexOf($("#searchInput").val()) >= 0) {
                             if ($("#searchInput").val().length >= 4) {
                                 if (showonceusers2 == 0) {
                                     showonceusers2++;
@@ -6467,6 +6470,9 @@ function getSNEZServers(ifcalled) {
                                 temporaryserver2 = temporaryserver.split('live-arena-').pop();
                                 temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
                                 temporaryserver3 = temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
+								if (data[player].hidecountry==true){
+									data[player].extra.ip_info.country = "UN";
+								}								
                                 if (temporaryserver1a) {
                                     temporaryserver1a = temporaryserver1a.split('\"\,\"tag')[0];
                                     appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);
@@ -6476,13 +6482,9 @@ function getSNEZServers(ifcalled) {
                                 showonceusers3++;
                                 showonceusers3returner(showonceusers3);
                                 //console.log(data[player]);	
-
                             }
-                        }
-                    }
-
+                        }              
                 }
-
             }
             client2.ws.close();
             if (showonceusers3 == 0) {
