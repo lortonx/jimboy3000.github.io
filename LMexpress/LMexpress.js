@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.067a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.067b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "67"; // the version 1.1-> 1.11
 //fix ffa
@@ -6186,7 +6186,8 @@ function SNEZServers() {
         nickname: null,
         server: null,
         tag: null,
-        AID: null
+        AID: null,
+		hidecountry: false
     };
     var elements = {
         nickname: "nick",
@@ -6256,6 +6257,7 @@ function SNEZServers() {
                 state.server = servertemp;
                 state.tag = tag.value;
                 state.AID = window.agarioID;
+				state.hidecountry = defaultmapsettings.hidecountry;
                 //state.tag="RespectPrivacy"; no2: I stoped this
                 socket.updateServerDetails();
             }
