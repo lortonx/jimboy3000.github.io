@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1212 MEGA TEST
+// v1.1213 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9634,10 +9634,9 @@ var thelegendmodproject = function(t, e, i) {
             //if(window.gameBots.url && window.gameBots.protocolVersion && window.gameBots.clientVersion && !window.userBots.startedBots){
 			if(legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots){	
 				if (window.bots.amount>40){
-				if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-				}
-				else toastr["info"]('Bots Max amount is 40')
-			else toastr["info"]('Bots name, amount and user login are required before starting the bots')
+					if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+					else toastr["info"]('Bots name, amount and user login are required before starting the bots')}
+				else toastr["info"]('Bots Max amount is 40')			
             }
         })
         document.getElementById('stopBots').addEventListener('click', () => {
