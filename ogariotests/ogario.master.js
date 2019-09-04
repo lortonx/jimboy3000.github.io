@@ -1,4 +1,4 @@
-//v9.3
+//v9.4
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -551,14 +551,12 @@ function legendmaster(self) {
             requestCaptcha(true);
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
-            if (window.botscaptcha==true){	
-				window.botscaptcha=false;
-				window.connectionBots.send(window.buffers.captchatoken(mmCoreSplitViewBlock))
-				toastr["info"]('Captcha token sent to node.js', mmCoreSplitViewBlock)
-			}
-			else{
-				if (self.core) {
-					self.core.recaptchaResponse(mmCoreSplitViewBlock);
+            if (self.core) {
+				if (window.botscaptcha==true){
+					self.core.recaptchaBotResponse(mmCoreSplitViewBlock);			
+				}
+			else{				
+				self.core.recaptchaResponse(mmCoreSplitViewBlock);
 				}				
 			}
         },
