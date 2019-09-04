@@ -552,12 +552,7 @@ function legendmaster(self) {
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
             if (self.core) {
-				if (window.botscaptcha==true){
-					self.core.recaptchaBotResponse(mmCoreSplitViewBlock);			
-				}
-			else{				
-				self.core.recaptchaResponse(mmCoreSplitViewBlock);
-				}				
+					self.core.recaptchaHandlerResponse(mmCoreSplitViewBlock);				
 			}
         },
         notifyToken: function(n) {
