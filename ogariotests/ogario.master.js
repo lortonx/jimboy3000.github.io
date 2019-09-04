@@ -1,4 +1,4 @@
-//v9.1
+//v9.3
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -449,13 +449,10 @@ function legendmaster(self) {
             var header = this;
             if (null == type) {
                 type = "application/octet-stream";
-				//type = "application/json";
             }
             $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
-                    //return xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-client-version", header.clientVersion), true;
-
                 },
                 error: function() {
                     if (timeout_callback) {
@@ -554,9 +551,16 @@ function legendmaster(self) {
             requestCaptcha(true);
         },
         sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
-            if (self.core) {
-                self.core.recaptchaResponse(mmCoreSplitViewBlock);
-            }
+            if (window.botscaptcha==true){	
+				window.botscaptcha=false;
+				window.connectionBots.send(window.buffers.captchatoken(mmCoreSplitViewBlock))
+				toastr["info"]('Captcha token sent to node.js', mmCoreSplitViewBlock)
+			}
+			else{
+				if (self.core) {
+					self.core.recaptchaResponse(mmCoreSplitViewBlock);
+				}				
+			}
         },
         notifyToken: function(n) {
             this.sendRecaptchaResponse(n);
