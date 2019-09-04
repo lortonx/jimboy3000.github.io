@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1234 MEGA TEST
+// v1.1235 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -65,7 +65,8 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
             return writer.dataView.buffer
         },
         captchatoken(x){
-            const writer = new Writer(2 + x.length)
+            //const writer = new Writer(2 + x.length)
+			const writer = new Writer()
             writer.writeUint8(7)
             writer.writeString(x)
             return writer.dataView.buffer
@@ -9566,7 +9567,7 @@ var thelegendmodproject = function(t, e, i) {
 				window.lastRecaptchaResponseToken=t;
 				window.botscaptcha=false;
 				toastr["info"]('Captcha token sent to node.js', mmCoreSplitViewBlock)
-				window.connectionBots.send(window.buffers.captchatoken(mmCoreSplitViewBlock))			
+				//window.connectionBots.send(window.buffers.captchatoken(mmCoreSplitViewBlock))			
             },			
             'setClientVersion': function(t, e) {
                 LM.setClientVersion(t, e);
