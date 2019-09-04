@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1219 MEGA TEST
+// v1.1220 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -67,7 +67,7 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
         captchatoken(x){
             const writer = new Writer(9)
             writer.writeUint8(7)
-            writer.writeInt32(x)
+            writer.writeString(x)
             return writer.dataView.buffer
         },		
         mousePosition(x, y){
