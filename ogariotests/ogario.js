@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1242 MEGA TEST
+// v1.1243 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -128,7 +128,7 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
                     break
                 case 3:
                     //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
-					toastr["info"]('Solve the captcha for your bots')
+					toastr["info"]('[SERVER]: Solve the captcha for your bots')
 					window.botscaptcha=true;
 					window.master.recaptchaRequested()				
                     break
@@ -9576,7 +9576,8 @@ var thelegendmodproject = function(t, e, i) {
             'recaptchaBotResponse': function(t) {
 				window.lastRecaptchaResponseToken=t;
 				window.botscaptcha=false;
-				toastr["info"]('Captcha token sent to node.js', t)
+				//toastr["info"]('Captcha token sent to node.js', t)
+				toastr["info"]('[SERVER]: Thank you for solving Captcha for bots, probably Bots VPN is needed to be restarted')
 				window.connectionBots.send(window.buffers.captchatoken(t))			
             },			
             'setClientVersion': function(t, e) {
