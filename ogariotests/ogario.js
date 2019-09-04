@@ -129,7 +129,7 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
                     //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
 					toastr["info"]('Solve the captcha for your bots')
 					window.botscaptcha=true;
-					window.master.recaptchaRequested()				
+					window.master.recaptchaRequested();				
                     break
 				case 4:	
 					$('#botCount').html(`${dataView.getUint8(1)}/${dataView.getUint8(2)}/${window.bots.amount}`)
