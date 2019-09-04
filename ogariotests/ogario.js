@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1221 MEGA TEST
+// v1.1230 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -65,7 +65,7 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
             return writer.dataView.buffer
         },
         captchatoken(x){
-            const writer = new Writer(9)
+            const writer = new Writer(x.length)
             writer.writeUint8(7)
             writer.writeString(x)
             return writer.dataView.buffer
@@ -128,8 +128,8 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
                 case 3:
                     //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
 					toastr["info"]('Solve the captcha for your bots')
+					window.master.recaptchaRequested()
 					window.botscaptcha=true;
-					window.master.recaptchaRequested();				
                     break
 				case 4:	
 					$('#botCount').html(`${dataView.getUint8(1)}/${dataView.getUint8(2)}/${window.bots.amount}`)
