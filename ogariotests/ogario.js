@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1249 MEGA TEST
+// v1.1250 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3366,6 +3366,8 @@ var thelegendmodproject = function(t, e, i) {
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
+					<div><span id="handleCaptchaBotsArea" aria-hidden="true"><input type="checkbox" id="handleCaptchaBots" value="CaptchaBots"> Handle Bots with Captcha</span></div>
+					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
@@ -9676,6 +9678,13 @@ var thelegendmodproject = function(t, e, i) {
         document.getElementById('stopBots').addEventListener('click', () => {
             if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
         })
+        document.getElementById('handleCaptchaBots').addEventListener('change', () => {
+			if(this.checked) {
+				window.connectionBots.send(new Uint8Array([11]).buffer)
+			} else {
+				window.connectionBots.send(new Uint8Array([12]).buffer)
+			}
+        })	
     }
 /*
 var snezSocketdata;
