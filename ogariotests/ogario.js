@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1248 MEGA TEST
+// v1.1249 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -129,7 +129,7 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
                 case 3:
                     //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
 					window.botscaptcha=true;
-					if (!legendmod.play){
+					if (!legendmod.play && window.LatestBotsVersion){
 					toastr["info"]('<b>[SERVER]:</b> Solve the captcha for your bots')				
 					window.master.recaptchaRequested()		
 					}
@@ -140,7 +140,10 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
 				case 5:
 					$('#slots').html(dataView.getUint8(1) + "/200")
 					break
-					
+				case 10:
+					toastr["info"]('<b>[SERVER]:</b> This version of Smart bots support Captcha Solver');
+					window.LatestBotsVersion=true;
+					break					
             }
         },
         onclose(){
