@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1252 MEGA TEST
+// v1.1253 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3365,7 +3365,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<span id="aiTextBots">Bots AI: <b id="botsAI">Disabled</b></span>
 					<br>
-					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false">
+					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 
@@ -9694,20 +9694,20 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
     })
     document.getElementById('connectBots').addEventListener('click', () => {
-        if (legendmod.gameMode == ":party") {
-            if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
-        } else {
-            toastr["info"]('Party bots only available for Party mode')
-        }
+        if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
     })
-    document.getElementById('startBots').addEventListener('click', () => {
-        //if(window.gameBots.url && window.gameBots.protocolVersion && window.gameBots.clientVersion && !window.userBots.startedBots){
+    document.getElementById('startBots').addEventListener('click', () => {		
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-            if (window.bots.amount <= 199) {
-                if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-                else toastr["info"]('Bots name, amount and user login are required before starting the bots')
-            } else toastr["info"]('Bots Max amount is 199')
-        }
+			if (legendmod.gameMode == ":party") {	
+				if (window.bots.amount <= 199) {
+					if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+					else toastr["info"]('Bots name, amount and user login are required before starting the bots')
+				} else toastr["info"]('Bots Max amount is 199')			
+			}
+			else{
+				toastr["info"]('Party bots only available for Party mode')
+			}		
+		}
     })
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
