@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1250 MEGA TEST
+// v1.1251 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -125,6 +125,8 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
                     document.getElementById('stopBots').innerText = 'Stop Bots'
                     window.userBots.startedBots = false
                     window.bots.ai = false
+					window.LatestBotsVersion=null;
+					$('#handleCaptchaBotsArea').hide();					
                     break
                 case 3:
                     //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
@@ -143,6 +145,7 @@ window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where th
 				case 10:
 					toastr["info"]('<b>[SERVER]:</b> This version of Smart bots support Captcha Solver');
 					window.LatestBotsVersion=true;
+					$('#handleCaptchaBotsArea').show();
 					break					
             }
         },
@@ -3366,12 +3369,13 @@ var thelegendmodproject = function(t, e, i) {
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
-					<div><span id="handleCaptchaBotsArea" aria-hidden="true"><input type="checkbox" id="handleCaptchaBots" value="CaptchaBots"> Handle Bots with Captcha</span></div>
+
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
 					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
+					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"> <b>Handle Bots with Captcha</b></span></div>
 					<br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
 					<u><a href="https://repl.it/@jimboy3100/agario-bots" target="_blank">repl.it VPS</a></u>
 					<u><a href="https://www.youtube.com/watch?v=DhiBxedrnKY" target="_blank">Promo video</a></u>
