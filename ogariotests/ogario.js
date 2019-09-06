@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1271 MEGA TEST
+// v1.1269 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -99,6 +99,8 @@ window.connectionBots = {
         document.getElementById('connect').disabled = true
         document.getElementById('startBots').disabled = false
         document.getElementById('stopBots').disabled = false
+		document.getElementById('connectBots').innerText = 'Connect'
+		document.getElementById('connectBots').style.color = 'white'
     },
     onmessage(message) {
         const dataView = new DataView(message.data)
@@ -157,6 +159,8 @@ window.connectionBots = {
         document.getElementById('stopBots').disabled = true
         document.getElementById('startBots').style.display = 'inline'
         document.getElementById('stopBots').style.display = 'none'
+		document.getElementById('connectBots').innerText = 'Connect'
+		document.getElementById('connectBots').style.color = 'white'		
         window.userBots.startedBots = false
         window.bots.ai = false
         window.LatestBotsVersion = null;
@@ -9704,7 +9708,12 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
     })
     document.getElementById('connectBots').addEventListener('click', () => {
+		if ($('#pushCaptchaBots').is(':checked')){
+			window.connectionBots.send(new Uint8Array([17, Number(window.bots.amount)]).buffer);
+		}
+		else{
         if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
+		}
     })
     document.getElementById('startBots').addEventListener('click', () => {		
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
@@ -9723,11 +9732,14 @@ function setGUIEvents() {
 		if (this.checked) {
 			window.connectionBots.send(new Uint8Array([11]).buffer)
 			$('#solveCaptchaBots').removeAttr("disabled")
-			$('#pushCaptchaBots').removeAttr("disabled")			
+			$('#pushCaptchaBots').removeAttr("disabled")				
         } else {
 			window.connectionBots.send(new Uint8Array([12]).buffer)
+			$('#solveCaptchaBots').prop('checked', false)
+			$('#pushCaptchaBots').prop('checked', false)	
 			$('#solveCaptchaBots').attr("disabled", true);
-			$('#pushCaptchaBots').attr("disabled", true);			
+			$('#pushCaptchaBots').attr("disabled", true);	
+		
         }
     })
 	$('#solveCaptchaBots').click(function() {        
@@ -9739,9 +9751,13 @@ function setGUIEvents() {
     })	
 	$('#pushCaptchaBots').click(function() {        
 		if (this.checked) {
+		document.getElementById('connectBots').innerText = 'Connect'
+		document.getElementById('connectBots').style.color = 'white'				
 			window.connectionBots.send(new Uint8Array([15]).buffer)		
         } else {
 			window.connectionBots.send(new Uint8Array([16]).buffer)		
+		document.getElementById('connectBots').innerText = 'Send bots'
+		document.getElementById('connectBots').style.color = 'yellow'				
         }
     })		
 }
