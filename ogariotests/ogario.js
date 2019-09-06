@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1263 MEGA TEST
+// v1.1264 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9723,21 +9723,23 @@ function setGUIEvents() {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
     })
     document.getElementById('handleCaptchaBots').addEventListener('click', () => {
-		if (this.checked) {		
+		if ($('#handleCaptchaBots').is(':checked')) {		
+			console.log('checked')
             window.connectionBots.send(new Uint8Array([11]).buffer)
-        } else {			
+        } else {	
+			console.log('unchecked')		
             window.connectionBots.send(new Uint8Array([12]).buffer)
         }
     })
     document.getElementById('solveCaptchaBots').addEventListener('click', () => {
-		if (this.checked) {		
+		if ($('#solveCaptchaBots').is(':checked')) {		
             window.connectionBots.send(new Uint8Array([13]).buffer)
         } else {			
             window.connectionBots.send(new Uint8Array([14]).buffer)
         }
     })	
     document.getElementById('pushCaptchaBots').addEventListener('click', () => {
-		if (this.checked) {		
+		if ($('#pushCaptchaBots').is(':checked')) {		
             window.connectionBots.send(new Uint8Array([15]).buffer)
         } else {			
             window.connectionBots.send(new Uint8Array([16]).buffer)
