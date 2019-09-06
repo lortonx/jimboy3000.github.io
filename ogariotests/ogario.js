@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1265 MEGA TEST
+// v1.1266 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9722,27 +9722,28 @@ function setGUIEvents() {
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
     })
-    document.getElementById('handleCaptchaBots').addEventListener('CheckboxStateChange', () => {
+    document.getElementById('handleCaptchaBots').addEventListener('click', () => {
 		if ($('#handleCaptchaBots').is(':checked')) {		
             window.connectionBots.send(new Uint8Array([11]).buffer)
         } else if (!$('#handleCaptchaBots').is(':checked')){			
             window.connectionBots.send(new Uint8Array([12]).buffer)
         }
     })
-    document.getElementById('solveCaptchaBots').addEventListener('CheckboxStateChange', () => {
+    document.getElementById('solveCaptchaBots').addEventListener('click', () => {
 		if ($('#solveCaptchaBots').is(':checked')) {		
             window.connectionBots.send(new Uint8Array([13]).buffer)
         } else if (!$('#solveCaptchaBots').is(':checked')){		
             window.connectionBots.send(new Uint8Array([14]).buffer)
         }
     })	
-    document.getElementById('pushCaptchaBots').addEventListener('CheckboxStateChange', () => {
+    document.getElementById('pushCaptchaBots').addEventListener('click', () => {
 		if ($('#pushCaptchaBots').is(':checked')) {		
             window.connectionBots.send(new Uint8Array([15]).buffer)
         } else if (!$('#pushCaptchaBots').is(':checked')){				
             window.connectionBots.send(new Uint8Array([16]).buffer)
         }
-    })		
+    })	
+/*	
 	$('#handleCaptchaBots').click(function() {        
 		if (this.checked) {
 			$('#solveCaptchaBots').removeAttr("disabled")
@@ -9753,6 +9754,7 @@ function setGUIEvents() {
         }
     })
 }
+*/
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
