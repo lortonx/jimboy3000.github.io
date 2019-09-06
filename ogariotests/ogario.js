@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1270 MEGA TEST
+// v1.1271 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6616,7 +6616,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.mapOffsetFixed = false;
                 this.leaderboard = [];
                 this.ws = t;
-                if (window.userBots.startedBots) window.connectionBots.send(new Uint32Array([1]).buffer)
+                if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
                 window.userBots.isAlive = false
                 window.userBots.macroFeedInterval = null
                 this.socket = new WebSocket(t);
@@ -7025,7 +7025,7 @@ var thelegendmodproject = function(t, e, i) {
                             this.playerColor = null;
                             ogarminimapdrawer.onPlayerSpawn();
                             window.userBots.isAlive = true;
-                            if (window.userBots.startedBots) window.connectionBots.send(new Uint32Array([5, Number(window.userBots.isAlive)]).buffer);
+                            if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer);
                         }
                         break;
                     case 50:
@@ -7568,7 +7568,7 @@ var thelegendmodproject = function(t, e, i) {
                     ogarminimapdrawer.onPlayerDeath();
                     ogarminimapdrawer.showMenu(300)
                     window.userBots.isAlive = false
-                    if (window.userBots.startedBots) window.connectionBots.send(new Uint32Array([5, Number(window.userBots.isAlive)]).buffer)
+                    if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer)
                 }
                 //window.counterCell=0;
                 if (window.autoPlay && legendmod.play) {
@@ -8965,7 +8965,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-bots-split'],
                     'defaultKey': ',',
                     'keyDown': function() {
-                        if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint32Array([2]).buffer);
+                        if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([2]).buffer);
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8974,7 +8974,7 @@ var thelegendmodproject = function(t, e, i) {
                     'label': h['hk-bots-feed'],
                     'defaultKey': '.',
                     'keyDown': function() {
-                        if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint32Array([3]).buffer)
+                        if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([3]).buffer)
                     },
                     'keyUp': null,
                     'type': 'normal'
@@ -8988,12 +8988,12 @@ var thelegendmodproject = function(t, e, i) {
                                 document.getElementById('botsAI').style.color = '#00C02E'
                                 document.getElementById('botsAI').innerText = 'Enabled'
                                 window.bots.ai = true
-                                window.connectionBots.send(new Uint32Array([4, Number(window.bots.ai)]).buffer)
+                                window.connectionBots.send(new Uint8Array([4, Number(window.bots.ai)]).buffer)
                             } else {
                                 document.getElementById('botsAI').style.color = '#DA0A00'
                                 document.getElementById('botsAI').innerText = 'Disabled'
                                 window.bots.ai = false
-                                window.connectionBots.send(new Uint32Array([4, Number(window.bots.ai)]).buffer)
+                                window.connectionBots.send(new Uint8Array([4, Number(window.bots.ai)]).buffer)
                             }
                         }
                     },
@@ -9721,27 +9721,27 @@ function setGUIEvents() {
     })
 	$('#handleCaptchaBots').click(function() {        
 		if (this.checked) {
-			window.connectionBots.send(new Uint32Array([11]).buffer)
+			window.connectionBots.send(new Uint8Array([11]).buffer)
 			$('#solveCaptchaBots').removeAttr("disabled")
 			$('#pushCaptchaBots').removeAttr("disabled")			
         } else {
-			window.connectionBots.send(new Uint32Array([12]).buffer)
+			window.connectionBots.send(new Uint8Array([12]).buffer)
 			$('#solveCaptchaBots').attr("disabled", true);
 			$('#pushCaptchaBots').attr("disabled", true);			
         }
     })
 	$('#solveCaptchaBots').click(function() {        
 		if (this.checked) {
-			window.connectionBots.send(new Uint32Array([13]).buffer)		
+			window.connectionBots.send(new Uint8Array([13]).buffer)		
         } else {
-			window.connectionBots.send(new Uint32Array([14]).buffer)		
+			window.connectionBots.send(new Uint8Array([14]).buffer)		
         }
     })	
 	$('#pushCaptchaBots').click(function() {        
 		if (this.checked) {
-			window.connectionBots.send(new Uint32Array([15]).buffer)		
+			window.connectionBots.send(new Uint8Array([15]).buffer)		
         } else {
-			window.connectionBots.send(new Uint32Array([16]).buffer)		
+			window.connectionBots.send(new Uint8Array([16]).buffer)		
         }
     })		
 }
