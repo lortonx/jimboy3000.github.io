@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1284 MEGA TEST
+// v1.1286 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9717,6 +9717,7 @@ function setGUIEvents() {
     document.getElementById('connectBots').addEventListener('click', () => {
 		if ($('#pushCaptchaBots').is(':checked')){
 			window.connectionBots.send(window.buffers.captchabots(window.bots.amount))
+			toastr["info"]('<b>[SERVER]:</b> When Bot looses, <font color="red">' + window.bots.amount + '</font> new bots will be spawn with captcha solving')
 		}
 		else{
         if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
@@ -9732,11 +9733,11 @@ function setGUIEvents() {
 							$('#handleCaptchaBotsAreaSettings').show();
 						}
 					}
-					else toastr["info"]('Bots name, amount and user login are required before starting the bots')				
-				} else toastr["info"]('Bots Max amount is 199')			
+					else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')				
+				} else toastr["info"]('<b>[SERVER]:</b> Bots Max amount is 199')			
 			}
 			else{
-				toastr["info"]('Party bots only available for Party mode')
+				toastr["info"]('<b>[SERVER]:</b> Party bots only available for Party mode')
 			}		
 		}
     })
