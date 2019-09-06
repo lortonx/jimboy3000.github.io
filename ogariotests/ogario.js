@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1266 MEGA TEST
+// v1.1267 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9753,8 +9753,9 @@ function setGUIEvents() {
 			$('#pushCaptchaBots').attr("disabled", true);			
         }
     })
+*/	
 }
-*/
+
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
