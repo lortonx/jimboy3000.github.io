@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1254 MEGA TEST
+// v1.1255 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9684,7 +9684,7 @@ function setGUIEvents() {
     }
     window.bots.amount = storedbotsamount;
     $('#botsAmount').val(storedbotsamount)
-	$('#pushCaptchaBotsAmount').test(storedbotsamount)
+	$('#pushCaptchaBotsAmount').text(storedbotsamount)
     document.getElementById('botsRemoteIP').addEventListener('change', function() {
         window.bots.remoteIP = this.value
         localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
@@ -9695,7 +9695,7 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsName', window.bots.nameLM)
     })
     document.getElementById('botsAmount').addEventListener('change', function() {
-		$('#pushCaptchaBotsAmount').test(this.value)
+		$('#pushCaptchaBotsAmount').text(this.value)
         window.bots.amount = Number(this.value)
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
     })
