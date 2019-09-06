@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1260 MEGA TEST
+// v1.1261 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -129,7 +129,7 @@ window.connectionBots = {
             case 3:
                 //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 window.botscaptcha = true;
-                if (!legendmod.play && window.LatestBotsVersion) {
+                if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked') ) {
                     toastr["info"]('<b>[SERVER]:</b> Solve the captcha for your bots')
                     window.master.recaptchaRequested()
                 }
@@ -161,6 +161,10 @@ window.connectionBots = {
         window.bots.ai = false
         window.LatestBotsVersion = null;
         $('#handleCaptchaBotsArea').hide();
+		$('#handleCaptchaBots').prop('checked', false)
+		$('#solveCaptchaBots').prop('checked', false)
+		$('#pushCaptchaBots').prop('checked', false)
+		
     }
 }
 window.gameBots = {
@@ -3374,9 +3378,9 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
 					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
-					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"> <b>Handle Bots with Captcha</b>
+					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"> <b>Handle bots with captcha</b>
 					<br>
-					<input type="checkbox" id="solveCaptchaBots" disabled> <b>Solve Captcha when loosing</b>
+					<input type="checkbox" id="solveCaptchaBots" disabled> <b>Solve captcha when loosing</b>
 					<br>
 					<input type="checkbox" id="pushCaptchaBots" disabled> <b>Push <font id="pushCaptchaBotsAmount" color="red">more</font> bots instead of 1</b>					
 					</span></div>					
@@ -9624,7 +9628,7 @@ var thelegendmodproject = function(t, e, i) {
                 window.lastRecaptchaResponseToken = t;
                 window.botscaptcha = false;
                 //toastr["info"]('Captcha token sent to node.js', t)
-                toastr["info"]('<b>[SERVER]:</b> Thank you for solving Captcha for bots, probably Bots VPN is needed to be restarted')
+                toastr["info"]('<b>[SERVER]:</b> Thank you for solving Captcha for bots')
                 window.connectionBots.send(window.buffers.captchatoken(t))
             },
             'setClientVersion': function(t, e) {
