@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1258 MEGA TEST
+// v1.1259 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9718,8 +9718,8 @@ function setGUIEvents() {
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
     })
-    document.getElementById('handleCaptchaBots').addEventListener('change', () => {
-        if (this.checked) {
+	$('#handleCaptchaBots').change(function() {        
+		if (this.checked) {
 			$('#solveCaptchaBots').removeAttr("disabled")
 			$('#pushCaptchaBots').removeAttr("disabled")			
             window.connectionBots.send(new Uint8Array([11]).buffer)
@@ -9729,14 +9729,14 @@ function setGUIEvents() {
             window.connectionBots.send(new Uint8Array([12]).buffer)
         }
     })
-    document.getElementById('solveCaptchaBots').addEventListener('change', () => {
+	$('#solveCaptchaBots').change(function() {  
         if (this.checked) {
             window.connectionBots.send(new Uint8Array([13]).buffer)
         } else {
             window.connectionBots.send(new Uint8Array([14]).buffer)
         }
     })
-    document.getElementById('pushCaptchaBots').addEventListener('change', () => {
+	$('#pushCaptchaBots').change(function() { 
         if (this.checked) {
             window.connectionBots.send(new Uint8Array([15]).buffer)
         } else {
