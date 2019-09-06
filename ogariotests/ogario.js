@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1255 MEGA TEST
+// v1.1257 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3376,11 +3376,11 @@ var thelegendmodproject = function(t, e, i) {
 					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
 					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"> <b>Handle Bots with Captcha</b>
 					<br>
-					<input type="checkbox" id="solveCaptchaBots"> <b>Solve Captcha when loosing</b>
+					<input type="checkbox" id="solveCaptchaBots" disabled> <b>Solve Captcha when loosing</b>
 					<br>
-					<input type="checkbox" id="pushCaptchaBots"> <b>Push <font id="pushCaptchaBotsAmount" color="red">more</font> bots instead of 1</b>					
+					<input type="checkbox" id="pushCaptchaBots" disabled> <b>Push <font id="pushCaptchaBotsAmount" color="red">more</font> bots instead of 1</b>					
 					</span></div>					
-					<br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
+					<br><br><br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
 					<u><a href="https://repl.it/@jimboy3100/agario-bots" target="_blank">repl.it VPS</a></u>
 					<u><a href="https://www.youtube.com/watch?v=DhiBxedrnKY" target="_blank">Promo video</a></u>
 					<u><a href="https://www.youtube.com/watch?v=H4oVVn9KY1A" target="_blank">The Ultimate guide</a></u>
@@ -9721,10 +9721,28 @@ function setGUIEvents() {
     document.getElementById('handleCaptchaBots').addEventListener('change', () => {
         if (this.checked) {
             window.connectionBots.send(new Uint8Array([11]).buffer)
+			$('#solveCaptchaBots').removeAttr("disabled");
+			$('#pushCaptchaBots').removeAttr("disabled");
         } else {
             window.connectionBots.send(new Uint8Array([12]).buffer)
+			$('#solveCaptchaBots').attr("disabled", true);
+			$('#pushCaptchaBots').attr("disabled", true);
         }
     })
+    document.getElementById('solveCaptchaBots').addEventListener('change', () => {
+        if (this.checked) {
+            window.connectionBots.send(new Uint8Array([13]).buffer)
+        } else {
+            window.connectionBots.send(new Uint8Array([14]).buffer)
+        }
+    })
+    document.getElementById('pushCaptchaBots').addEventListener('change', () => {
+        if (this.checked) {
+            window.connectionBots.send(new Uint8Array([15]).buffer)
+        } else {
+            window.connectionBots.send(new Uint8Array([16]).buffer)
+        }
+    })	
 }
 /*
 var snezSocketdata;
