@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1274 MEGA TEST
+// v1.1275 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -80,7 +80,7 @@ window.buffers = {
     },
     captchabots(x) {
         const writer = new Writer(1 + x.length)
-        writer.writeUint8(17)
+        writer.writeUint8(8)
         writer.writeInt32(x)
 		return writer.dataView.buffer
     }	
