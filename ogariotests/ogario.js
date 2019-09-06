@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1283 MEGA TEST
+// v1.1284 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -151,7 +151,7 @@ window.connectionBots = {
             case 10:
                 toastr["info"]('<b>[SERVER]:</b> This version of Smart bots support Captcha Solver');
                 window.LatestBotsVersion = true;
-                //$('#handleCaptchaBotsArea').show();
+                $('#handleCaptchaBotsArea').show();
                 break
         }
     },
@@ -171,6 +171,7 @@ window.connectionBots = {
         window.bots.ai = false
         window.LatestBotsVersion = null;
         $('#handleCaptchaBotsArea').hide();
+		$('#handleCaptchaBotsAreaSettings').hide();
 		$('#handleCaptchaBots').prop('checked', false)
 		$('#solveCaptchaBots').prop('checked', false)
 		$('#pushCaptchaBots').prop('checked', false)
@@ -3390,10 +3391,10 @@ var thelegendmodproject = function(t, e, i) {
 					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
 					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"></input> <b>Handle bots with captcha</b>
 					<br>
-					<input type="checkbox" id="solveCaptchaBots" disabled></input> <b>Solve captcha when loosing</b>
+					<div id="handleCaptchaBotsAreaSettings" style="display: none"><input type="checkbox" id="solveCaptchaBots" disabled></input> <b>Solve captcha when loosing</b>
 					<br>
 					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push <font id="pushCaptchaBotsAmount" color="red">more</font> bots instead of 1</b>					
-					</span></div>					
+					</span></div></div>					
 					<br><br><br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
 					<u><a href="https://repl.it/@jimboy3100/agario-bots" target="_blank">repl.it VPS</a></u>
 					<u><a href="https://www.youtube.com/watch?v=DhiBxedrnKY" target="_blank">Promo video</a></u>
@@ -9728,7 +9729,7 @@ function setGUIEvents() {
 					if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none'){
 						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
 						if (window.LatestBotsVersion){
-							$('#handleCaptchaBotsArea').show();
+							$('#handleCaptchaBotsAreaSettings').show();
 						}
 					}
 					else toastr["info"]('Bots name, amount and user login are required before starting the bots')				
