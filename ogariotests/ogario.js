@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1278 MEGA TEST
+// v1.1279 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9759,7 +9759,7 @@ function setGUIEvents() {
     })	
 	$('#pushCaptchaBots').click(function() {        
 		if (this.checked) {
-		document.getElementById('connectBots').innerText = 'Send bots'
+		document.getElementById('connectBots').innerText = 'Send captcha bots'
 		document.getElementById('connectBots').style.color = 'yellow'					
 			window.connectionBots.send(new Uint8Array([15]).buffer)		
         } else {
