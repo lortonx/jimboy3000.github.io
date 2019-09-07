@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.067d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "68"; // the version 1.1-> 1.11
+var semimodVersion = "69"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8425,7 +8425,7 @@ function HiddenBots() {
 
 
 function Socket3enabler(srv) {
-
+	if (srv){
     var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
     //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
     Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+room);	
@@ -8468,6 +8468,7 @@ function Socket3enabler(srv) {
 		}
 	}
     return Socket3;
+	}
 }
 
 function Socket3handler(message) {
