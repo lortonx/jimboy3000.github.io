@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1286 MEGA TEST
+// v1.1287 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -560,7 +560,8 @@ var languagetexts = {
         'showMapBorders': 'Granice mapy',
         'showGhostCells': 'Duchy kulek (fps drop)',
         'showGhostCellsInfo': 'Ghost cells info (confusing)',
-        'showMiniMap': 'Pokaż minimapę',
+		'rotateMap': 'Rotate Map',
+        'showMiniMap': 'Pokaż minimapę',		
         'showMiniMapGrid': 'Pokaż siatkę minimapy',
         'showMiniMapGuides': 'Pokaż prowadnice na minimapie',
         'showExtraMiniMapGuides': 'Show extra minimap guides',
@@ -955,6 +956,7 @@ var languagetexts = {
         'showMapBorders': 'Show map borders',
         'showGhostCells': 'Ghost cells (fps drop)',
         'showGhostCellsInfo': 'Ghost cells info (confusing)',
+		'rotateMap': 'Rotate Map',
         'showMiniMap': 'Show minimap',
         'showMiniMapGrid': 'Show minimap grid',
         'showMiniMapGuides': 'Show minimap guides',
@@ -1897,6 +1899,7 @@ var defaultmapsettings = {
     'showGhostCells': false,
     'showGhostCellsInfo': false,
     'showMiniMap': true,
+	'rotateMap': true,
     'showMiniMapGrid': false,
     'showMiniMapGuides': true,
     'showExtraMiniMapGuides': true,
@@ -3427,7 +3430,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOptions(["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup"),
                     this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"),
                     this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "hidecountry"], "chatGroup"),
-                    this.addOptions(["showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
+                    this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
                     this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"), //Sonia2
                     this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                     this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"),
@@ -6605,7 +6608,9 @@ var thelegendmodproject = function(t, e, i) {
                 var i = this;
                 setTimeout(function() {
                     window.legendmod3.Socket3connect(t);
+					if (defaultmapsettings.rotateMap){
                     window.legendmod3.SLGconnect(t);
+					}
                 }, 100);
                 window.legendmod.vnr = 0; //Sonia3
                 window.legendmod.bgpi = 4; //Sonia3
