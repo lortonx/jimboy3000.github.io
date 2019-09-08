@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1292 MEGA TEST
+// v1.1293 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3399,7 +3399,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<div id="handleCaptchaBotsAreaSettings" style="display: none"><input type="checkbox" id="solveCaptchaBots" disabled></input> <b>Solve captcha when loosing</b>
 					<br>
-					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push <font id="pushCaptchaBotsAmount" color="red">more</font> bots instead of 1</b>					
+					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push more bots</b>					
 					</span></div></div>					
 					<br><br><br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
 					<u><a href="https://repl.it/@jimboy3100/agario-bots" target="_blank">repl.it VPS</a></u>
@@ -9707,7 +9707,6 @@ function setGUIEvents() {
     }
     window.bots.amount = storedbotsamount;
     $('#botsAmount').val(storedbotsamount)
-	$('#pushCaptchaBotsAmount').text(storedbotsamount)
     document.getElementById('botsRemoteIP').addEventListener('change', function() {
         window.bots.remoteIP = this.value
         localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
@@ -9718,7 +9717,6 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsName', window.bots.nameLM)
     })
     document.getElementById('botsAmount').addEventListener('change', function() {
-		$('#pushCaptchaBotsAmount').text(this.value)
         window.bots.amount = Number(this.value)
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
     })
@@ -9777,7 +9775,7 @@ function setGUIEvents() {
     })	
 	$('#pushCaptchaBots').click(function() {        
 		if (this.checked) {
-		document.getElementById('connectBots').innerText = 'Send captcha bots'
+		document.getElementById('connectBots').innerText = 'Push a captcha bot'
 		document.getElementById('connectBots').style.color = 'yellow'					
 			window.connectionBots.send(new Uint8Array([15]).buffer)		
         } else {
