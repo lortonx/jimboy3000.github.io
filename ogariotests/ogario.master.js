@@ -1,4 +1,4 @@
-//v9.7
+//v9.8
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -200,13 +200,17 @@ function legendmaster(self) {
         accessToken: null,
         clientVersion: headers.client_version,
         clientVersionString: headers.client_version_string,
+		protocolVersion: headers.proto_version,
         getClientVersion: function() {
             if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
                 this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
+				window.EnvConfig.clientVersion = this.clientVersion;
+				window.EnvConfig.clientVersionString = this.clientVersionString;
             }
             if (null !== self.localStorage.getItem("ogarioProtocolVersion")) {
                 this.ProtocolVersion = self.localStorage.getItem("ogarioProtocolVersion");
+				window.EnvConfig.protocolVersion = this.protocolVersion;
             }			
             var window = this;
             $.ajax("//agar.io/mc/agario.js", {
@@ -217,7 +221,7 @@ function legendmaster(self) {
                     if (optionMatch) {
                         var pluginName = optionMatch[1];
 						var pluginName2 = optionMatch[1];
-                        var data = this.parseClientVersion(pluginName);
+                        var data = window.parseClientVersion(pluginName);
                         //                        console.log("[Master] Current client version:", data, pluginName);
                         this.setClientVersion(data, pluginName);
 						this.setProtocolVersion(pluginName2);
@@ -240,7 +244,7 @@ function legendmaster(self) {
                     self.core.setClientVersion(clientVersion, serverVersion);
                 }
                 self.localStorage.setItem("ogarioClientVersionString", serverVersion);
-                console.log("[Master] setClientVersiont called, reconnecting");
+                console.log("[Master] setClientVersion called, reconnecting");
                 this.reconnect(true);
             }
         },
@@ -249,7 +253,9 @@ function legendmaster(self) {
                 console.log("[Master] Changing protocol version...");
                 this.protocolVersion = serverVersion;
 				window.EnvConfig.protocolVersion = this.protocolVersion;
-                self.localStorage.setItem("ogarioProtocolVersion", serverVersion);               
+                self.localStorage.setItem("ogarioProtocolVersion", serverVersion);   
+                console.log("[Master] setProtocolVersion called, reconnecting");
+                this.reconnect(true);				
             }
         },		
         parseClientVersion: function(styleValue) {
@@ -452,7 +458,7 @@ function legendmaster(self) {
             }
             $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
                 beforeSend: function(xhr) {
-                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
+                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", master.protocolVersion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
                 error: function() {
                     if (timeout_callback) {
@@ -474,7 +480,7 @@ function legendmaster(self) {
             var obj = this;
             $.ajax("https://" + headers.master_url + "/" + key, {
                 beforeSend: function(xhr) {
-                    return xhr.setRequestHeader("x-support-proto-version", headers.proto_version), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
+                    return xhr.setRequestHeader("x-support-proto-version", master.protocolVersion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
                 error: function() {
                     if (error) {
