@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1293 MEGA TEST
+// v1.1294 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -156,6 +156,9 @@ window.connectionBots = {
                 window.LatestBotsVersion = true;
                 $('#handleCaptchaBotsArea').show();
                 break
+            case 10:
+                toastr["info"]('<b>[SERVER]:</b> Server or bots is on closing state');
+                break				
         }
     },
     onclose() {
@@ -9723,7 +9726,7 @@ function setGUIEvents() {
     document.getElementById('connectBots').addEventListener('click', () => {
 		if ($('#pushCaptchaBots').is(':checked')){
 			window.connectionBots.send(window.buffers.captchabots((window.bots.amount).toString()))
-			toastr["info"]('<b>[SERVER]:</b> When Bot looses, <font color="red">' + window.bots.amount + '</font> new bots will be spawn with captcha solving')
+			//toastr["info"]('<b>[SERVER]:</b> Bot pushed')
 		}
 		else{
         if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
