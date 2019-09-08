@@ -1,4 +1,4 @@
-//v9.5
+//v9.6
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -205,16 +205,17 @@ function legendmaster(self) {
                 this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
             }
-            var window = this;
+            //var window = this;
             $.ajax("//agar.io/mc/agario.js", {
                 error: function() {},
                 success: function(sketchContents) {
                     var optionMatch = sketchContents.match(/versionString="(\d+\.\d+\.\d+)"/);
+					var optionMatch2 = sketchContents.match(/x-support-proto-version\"."(\d+\.\d+\.\d+)"/);
                     if (optionMatch) {
                         var pluginName = optionMatch[1];
-                        var data = window.parseClientVersion(pluginName);
+                        var data = this.parseClientVersion(pluginName);
                         //                        console.log("[Master] Current client version:", data, pluginName);
-                        window.setClientVersion(data, pluginName);
+                        this.setClientVersion(data, pluginName);
                     }
                 },
                 dataType: "text",
@@ -223,12 +224,13 @@ function legendmaster(self) {
                 crossDomain: true
             });
         },
-        setClientVersion: function(clientVersion, serverVersion) {
+        setClientVersion: function(clientVersion, serverVersion) {			
             //            console.log("[Master] Your client version:", this.clientVersion, this.clientVersionString);
             if (this.clientVersion != clientVersion) {
                 console.log("[Master] Changing client version...");
                 this.clientVersion = clientVersion;
                 this.clientVersionString = serverVersion;
+				window.EnvConfig.clientVersion = this.clientVersionString;
                 if (self.core) {
                     self.core.setClientVersion(clientVersion, serverVersion);
                 }
@@ -238,19 +240,9 @@ function legendmaster(self) {
             }
         },
         parseClientVersion: function(styleValue) {
-            return 1e4 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
+            window.EnvConfig.clientVersion = 1e4 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
+			return window.EnvConfig.clientVersion;
         },
-        /*        getRegionCode: function() {
-                    var nextNodeLoc = self.localStorage.getItem("location");
-                    if (nextNodeLoc) {
-                        return this.setRegion(nextNodeLoc, false), void(this.checkPartyHash() || this.reconnect());
-                    }
-                    var canvasLayersManager = this;
-                    $.get("//gc.agar.io", function(layoutSets) {
-                        var j = layoutSets.split(" ")[0];
-                        canvasLayersManager.setRegionCode(j);
-                    }, "text");
-                },*/
         'getRegionCode': function() {
             var nextNodeLoc = window.localStorage.getItem('location');
             if (nextNodeLoc) {
@@ -262,11 +254,6 @@ function legendmaster(self) {
                 return;
             }
             var canvasLayersManager = this;
-            /*$.get('//gc.agar.io', function(_0x4a6f91) {
-            	var _0x4f6506 = _0x4a6f91.split(' ');
-            	var _0x102283 = _0x4f6506[0x0];
-            	canvasLayersManager.setRegionCode(_0x102283);
-            }, 'text'); */
             userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
                 $("#response").html(JSON.stringify(response, null, 4));
                 if (userData != null) {
