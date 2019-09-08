@@ -1,4 +1,4 @@
-//v10.0
+//v10.1
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -217,7 +217,7 @@ function legendmaster(self) {
 					var optionMatch2 = sketchContents.match(/x-support-proto-version\","(\d+\.\d+\.\d+)"/);
                     if (optionMatch) {
                         var pluginName = optionMatch[1];
-						var pluginName2 = optionMatch[1];
+						var pluginName2 = optionMatch2[1];
                         var data = window.parseClientVersion(pluginName);
                         //                        console.log("[Master] Current client version:", data, pluginName);
                         window.setClientVersion(data, pluginName);
