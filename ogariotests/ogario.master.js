@@ -1,4 +1,4 @@
-//v9.8
+//v9.9
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -205,12 +205,9 @@ function legendmaster(self) {
             if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
                 this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
-				window.EnvConfig.clientVersion = this.clientVersion;
-				window.EnvConfig.clientVersionString = this.clientVersionString;
             }
             if (null !== self.localStorage.getItem("ogarioProtocolVersion")) {
                 this.ProtocolVersion = self.localStorage.getItem("ogarioProtocolVersion");
-				window.EnvConfig.protocolVersion = this.protocolVersion;
             }			
             var window = this;
             $.ajax("//agar.io/mc/agario.js", {
@@ -239,7 +236,6 @@ function legendmaster(self) {
                 console.log("[Master] Changing client version...");
                 this.clientVersion = clientVersion;
                 this.clientVersionString = serverVersion;
-				window.EnvConfig.clientVersion = this.clientVersionString;
                 if (self.core) {
                     self.core.setClientVersion(clientVersion, serverVersion);
                 }
@@ -252,15 +248,13 @@ function legendmaster(self) {
             if (this.protocolVersion != serverVersion) {
                 console.log("[Master] Changing protocol version...");
                 this.protocolVersion = serverVersion;
-				window.EnvConfig.protocolVersion = this.protocolVersion;
                 self.localStorage.setItem("ogarioProtocolVersion", serverVersion);   
                 console.log("[Master] setProtocolVersion called, reconnecting");
                 this.reconnect(true);				
             }
         },		
         parseClientVersion: function(styleValue) {
-            window.EnvConfig.clientVersion = 1e4 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
-			return window.EnvConfig.clientVersion;
+            return 1e4 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
         'getRegionCode': function() {
             var nextNodeLoc = window.localStorage.getItem('location');
