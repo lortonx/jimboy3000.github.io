@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1296 MEGA TEST
+// v1.1297 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6513,8 +6513,10 @@ var thelegendmodproject = function(t, e, i) {
             'clientKey': null,
             'connectionOpened': false,
             'accessTokenSent': false,
-            'clientVersion': 30600,
-            'clientVersionString': '3.6.0',
+            //'clientVersion': 30604,
+			'clientVersion': master.clientVersion,
+            //'clientVersionString': '3.6.4',
+			'clientVersionString': master.clientVersionString.
             'time': Date.now(),
             'serverTime': 0,
             'serverTimeDiff': 0,
