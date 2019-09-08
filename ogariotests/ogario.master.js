@@ -1,4 +1,4 @@
-//v9.9
+//v10.0
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -220,8 +220,8 @@ function legendmaster(self) {
 						var pluginName2 = optionMatch[1];
                         var data = window.parseClientVersion(pluginName);
                         //                        console.log("[Master] Current client version:", data, pluginName);
-                        this.setClientVersion(data, pluginName);
-						this.setProtocolVersion(pluginName2);
+                        window.setClientVersion(data, pluginName);
+						window.setProtocolVersion(pluginName2);
                     }
                 },
                 dataType: "text",
