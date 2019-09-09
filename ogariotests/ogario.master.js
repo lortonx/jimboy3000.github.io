@@ -168,7 +168,8 @@ function legendmaster(self) {
             proto_version: "15.0.0",
             client_version: 30604,
 			//3.4.6
-            client_version_string: "3.6.0"
+            client_version_string: "3.6.0",
+			protocolVersion = 21
         };
     } else {
         var headers = {
@@ -178,7 +179,8 @@ function legendmaster(self) {
             endpoint_version: "v4",
             proto_version: "15.0.0",
             client_version: 30604,
-            client_version_string: "3.6.4"
+            client_version_string: "3.6.4",
+			protocolVersion = 21
         };
     }
 	window.LMagarioheaders=headers;
@@ -201,6 +203,7 @@ function legendmaster(self) {
         clientVersion: headers.client_version,
         clientVersionString: headers.client_version_string,
 		xsupportprotoversion: headers.proto_version,
+		protocolVersion: headers.protocolVersion,
         getClientVersion: function() {
             if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
                 this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
