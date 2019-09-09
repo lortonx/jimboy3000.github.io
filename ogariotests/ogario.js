@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1234 MEGA TEST
+// v1.1235 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6869,7 +6869,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (window.disableIntegrity != true) { //
                     this.clientVersion = t;
                     this.clientVersionString = e;
-                    console.log('[Legend mod Express] Version: client:', t, e, "x-proto:", this.xsupportprotoversion, "protocol:", );
+                    console.log('[Legend mod Express] Version: client:', t, e, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion);
                 } //
                 else { //
                     this.clientVersion = 0;
