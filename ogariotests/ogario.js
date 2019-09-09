@@ -1,4 +1,4 @@
-//v10.6
+//v10.7
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -276,11 +276,11 @@ function legendmaster(self) {
             }
         },		
         setProtocolVersion: function(serverVersion) {			
-            if (this.setProtocolVersion != serverVersion) {
+            if (this.ProtocolVersion != serverVersion) {
                 console.log("[Master] Changing protocol version...");
-                this.setProtocolVersion = serverVersion;
-                self.localStorage.setItem("ogarioProtocolVersion", setProtocolVersion;   
-                console.log("[Master] setProtocolVersion called, reconnecting");
+                this.ProtocolVersion = serverVersion;
+                self.localStorage.setItem("ogarioProtocolVersion", ProtocolVersion);   
+                console.log("[Master] ProtocolVersion called, reconnecting");
                 this.reconnect(true);				
             }
         },			
