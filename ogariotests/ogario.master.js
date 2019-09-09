@@ -1,4 +1,4 @@
-//v10.9
+//v11.0
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -242,7 +242,7 @@ function legendmaster(self) {
                     var optionMatch = sketchContents.match(/\w\[\w\+\d+>>\d\]=\w;\w+\(\w,(\d+)\);/);
                     if (optionMatch) {
                         var pluginName = optionMatch[1];
-						console.log("[Master] Current protocol version:", pluginName);
+						//console.log("[Master] Current protocol version:", pluginName);
 						window.setProtocolVersion(pluginName);
                     }
                 },
