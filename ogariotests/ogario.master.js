@@ -1,4 +1,4 @@
-//v11.3
+//v11.4
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -252,8 +252,7 @@ function legendmaster(self) {
                 crossDomain: true
             });			
         },
-        setClientVersion: function(clientVersion, serverVersion) {			
-            //            console.log("[Master] Your client version:", this.clientVersion, this.clientVersionString);
+        setClientVersion: function(clientVersion, serverVersion) {			           
             if (this.clientVersion != clientVersion) {
                 console.log("[Master] Changing client version...");
                 this.clientVersion = clientVersion;
