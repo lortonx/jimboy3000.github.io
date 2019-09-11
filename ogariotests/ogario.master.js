@@ -166,9 +166,9 @@ function legendmaster(self) {
             master_url: window.EnvConfig.master_url.replace("https://", ""),
             endpoint_version: "v4",
             proto_version: "15.0.1",
-            client_version: 30700,
+            client_version: 30701,
 			//3.4.6
-            client_version_string: "3.7.0",
+            client_version_string: "3.7.1",
 			protocolVersion: 21
         };
     } else {
@@ -178,8 +178,8 @@ function legendmaster(self) {
             master_url: "webbouncer-live-v7-0.agario.miniclippt.com",
             endpoint_version: "v4",
             proto_version: "15.0.1",
-            client_version: 30700,
-            client_version_string: "3.7.0",
+            client_version: 30701,
+            client_version_string: "3.7.1",
 			protocolVersion: 21
         };
     }
