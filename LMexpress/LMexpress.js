@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.068 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "69"; // the version 1.1-> 1.11
+var semimodVersion = "70"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -3951,7 +3951,7 @@ function PreLcCelebration() {
 function getInfo() {
     $.ajax({
         type: "GET",
-        url: "https://webbouncer-live-v7-0.agario.miniclippt.com/info",
+        url: window.EnvConfig.master_url+"info",
         datatype: "json",
         success: function(info) {
             //$("#currentRegion").html($('#region').val());
@@ -8244,7 +8244,7 @@ function getInfo2() {
 function getInfo3() {
     $.ajax({
         type: "GET",
-        url: "https://webbouncer-live-v7-0.agario.miniclippt.com/info",
+        url: window.EnvConfig.master_url+"info",
         datatype: "json",
         success: function(info) {
             //$("#currentRegion").html($('#region').val());
