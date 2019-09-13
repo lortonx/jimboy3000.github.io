@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.070 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "70"; // the version 1.1-> 1.11
+var semimodVersion = "71"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5415,7 +5415,7 @@ function triggerLMbtns() {
         setimgHref();
     }
     document.getElementById("minbtext").value = localStorage.getItem("minbtext");
-    if ($('minbtext').val() != "") {
+    if ($('minbtext').val() != "" || $('minbtext').val() == null) {
         setminbtext();
     }
 
@@ -7536,38 +7536,10 @@ function initializeLM(modVersion) {
     $(".cursor-box>a>img").eq(34).attr("src", "https://jimboy3100.github.io/cursors/cursor_35.cur");
     $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://jimboy3100.github.io/cursors/cursor_42.cur"></a></div>');
 
-    $('#themePreset').on('change', function() {
-        setTimeout(function() {
-            var c = document.getElementById("minimap-sectors");
-            var ctx = c.getContext("2d");
-            ctx.clearRect(0, 0, c.width, c.height / 9);
-            ctx.font = "16px Georgia";
-            if (searchSip != null) {
-                ctx.fillText(minbtext, c.width / 2, 22)
-            } else if (privateSrv != null) {
-                ctx.fillText(minbtext3, c.width / 2, 22);
-            } else {
-                ctx.fillText(minbtext2, c.width / 2, 22);
-            }
-            //MC.setQuality($('#quality').val());
-        }, 200);
-    })
-    $('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
-        setTimeout(function() {
-            var c = document.getElementById("minimap-sectors");
-            var ctx = c.getContext("2d");
-            ctx.clearRect(0, 0, c.width, c.height / 9);
-            ctx.font = "16px Georgia";
-            if (searchSip != null) {
-                ctx.fillText(minbtext, c.width / 2, 22)
-            } else if (privateSrv != null) {
-                ctx.fillText(minbtext3, c.width / 2, 22);
-            } else {
-                ctx.fillText(minbtext2, c.width / 2, 22);
-            }
-            //MC.setQuality($('#quality').val());
-        }, 100);
-    })
+    //$('#themePreset').on('change', function() {
+    //$('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
+
+
     $("#HideAllBthn").tooltip({
         title: "Temporarily Hide/Show Everything. Function for Youtubers",
         placement: "bottom"
