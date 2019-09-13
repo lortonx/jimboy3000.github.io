@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.069 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.070 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "70"; // the version 1.1-> 1.11
 //fix ffa
@@ -317,7 +317,6 @@ if (minbtext == null || minbtext == "") {
     minbtext2 = "Legend express";
     minbtext3 = "Legend express/Private";
 }
-LMminimapTextAct();
 
 var datasent2;
 //fzogarOgarIframeListener();
@@ -938,56 +937,7 @@ function onhashchange() {
     return false
 }
 
-function LMminimapTextAct() {
-    LMminimapText();
-    setTimeout(function() {
-        LMminimapText();
-    }, 2000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 2500);
-    setTimeout(function() {
-        LMminimapText();
-    }, 3000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 3500);
-    setTimeout(function() {
-        LMminimapText();
-    }, 4000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 4500);
-    setTimeout(function() {
-        LMminimapText();
-    }, 5500);
-    setTimeout(function() {
-        LMminimapText();
-    }, 6000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 6500);
-    setTimeout(function() {
-        LMminimapText();
-    }, 7000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 7500);
-
-    setTimeout(function() {
-        LMminimapText();
-    }, 11000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 12000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 18000);
-    setTimeout(function() {
-        LMminimapText();
-    }, 22000);
-}
-
+//not used
 function LMminimapText() {
     var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
