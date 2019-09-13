@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.070 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.071 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "71"; // the version 1.1-> 1.11
 //fix ffa
@@ -4850,7 +4850,7 @@ function setminbgname() {
 }
 
 function setminbtext() {
-    var minbtext = $("#minbtext").val();
+    minbtext = $("#minbtext").val();
     localStorage.setItem("minbtext", minbtext);
     var c = document.getElementById("minimap-sectors");
     var ctx = c.getContext("2d");
@@ -5415,7 +5415,7 @@ function triggerLMbtns() {
         setimgHref();
     }
     document.getElementById("minbtext").value = localStorage.getItem("minbtext");
-    if ($('minbtext').val() != "" || $('minbtext').val() == null) {
+    if ($('#minbtext').val() != "" && $('#minbtext').val() != null) {
         setminbtext();
     }
 
