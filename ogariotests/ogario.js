@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1241 MEGA TEST
+// v1.1242 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2537,7 +2537,7 @@ var thelegendmodproject = function(t, e, i) {
             'timeHUD': null,
             'questHUD': null,
             'retryResp': 0,
-            'token': 'b2dhcmlvLm92aA==',
+            'token': 'TGVnZW5kIGV4cHJlc3M=',
             'canvasScale': 1,
             'selectBiggestCell': true,
             'noColors': false,
@@ -4314,7 +4314,6 @@ var thelegendmodproject = function(t, e, i) {
                 t.font = defaultSettings.miniMapFontWeight + ' ' + (defaultSettings.miniMapTop - 6) + 'px ' + defaultSettings.miniMapFontFamily; 
 				t.textAlign = 'right'; 
 				t.textBaseline = 'top';
-				console.log(atob(this.token));
 				t.fillText(atob(this.token), e, 7);
             },
             /*            'drawTeammatesInd': function(t, e, i, s) {
