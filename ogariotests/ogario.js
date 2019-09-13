@@ -6953,7 +6953,7 @@ var thelegendmodproject = function(t, e, i) {
                 j = Math.imul(j, suggestedValue) | 0;
                 i = j >>> 15;
                 j = i ^ j;
-                console.log('[Legend mod Express] Generated client key:', j);
+                //console.log('[Legend mod Express] Generated client key:', j);
                 window.generatedClientKey = j;
                 return j;
 
@@ -7285,7 +7285,7 @@ var thelegendmodproject = function(t, e, i) {
                             window.testobjectsOpcode241 = data;
                             this.protocolKey = data.getUint32(s, true);
                             //window.testobjectsOpcode241.getUint32(1, true);
-                            console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
+                            //console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
                             window.generatedProtocolKey = this.protocolKey;
                             var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
                             this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
