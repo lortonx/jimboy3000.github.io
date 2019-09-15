@@ -1,4 +1,4 @@
-//v11.7
+//v11.8
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -433,7 +433,7 @@ function legendmaster(self) {
             this.setGameMode(n);
         },
         findServer: function(id, params) {
-            var e = Date.now();
+            var e = performance.now();
             if (!(e - this.findingServer < 500)) {
                 if (self.core) {
                     self.core.disconnect();
