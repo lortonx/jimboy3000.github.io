@@ -1,10 +1,12 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1246 MEGA TEST
+// v1.1247 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
+var dyinglight1load = localStorage.getItem("dyinglight1load");
+
 function removeEmojis(string) {
     var regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g;
     return string.replace(regex, '');
@@ -437,7 +439,6 @@ core.registerSkin = function(a, b, c, d, e){
 	window.customskinsurl=c;
 }
 */
-var dyinglight1load;
 
 function UpperCase(str) {
     return str.toUpperCase();
@@ -1857,6 +1858,27 @@ cimg6 = new Image;
 cimg6.src = defaultSettings.commanderImage6;
 cimg7 = new Image;
 cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
+if (dyinglight1load == "yes") {
+    cimgDyingLight = new Image;
+    cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
+    cimgDyingLightvirus = new Image;
+    cimgDyingLightvirus.src = defaultSettings.commanderImageDyingLightvirus;
+}
+				/*
+                cimgDyingLight1 = new Image;
+                cimgDyingLight1.src = 'https://legendmod.ml/banners/icondyinglightzombie2.png';
+                cimgDyingLight2 = new Image;
+                cimgDyingLight2.src = 'https://legendmod.ml/banners/icondyinglightzombie3.png';
+                cimgDyingLight3 = new Image;
+                cimgDyingLight3.src = 'https://legendmod.ml/banners/icondyinglightzombie4.png';
+                cimgDyingLight4 = new Image;
+                cimgDyingLight4.src = 'https://legendmod.ml/banners/icondyinglightzombie5.png';
+                cimgDyingLight5 = new Image;
+                cimgDyingLight5.src = 'https://legendmod.ml/banners/icondyinglightzombiebig.png';
+                cimgDyingLight6 = new Image;
+                cimgDyingLight6.src = 'https://legendmod.ml/banners/icondyinglightvolaltile.png';
+				*/
+
 
 var skinUrlPatterns = [{
         name: "imgur.com",
@@ -5752,28 +5774,6 @@ var thelegendmodproject = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-
-            if (dyinglight1load == "yes") {
-                cimgDyingLight = new Image;
-                cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
-                cimgDyingLightvirus = new Image;
-                cimgDyingLightvirus.src = defaultSettings.commanderImageDyingLightvirus;
-
-
-                cimgDyingLight1 = new Image;
-                cimgDyingLight1.src = 'https://legendmod.ml/banners/icondyinglightzombie2.png';
-                cimgDyingLight2 = new Image;
-                cimgDyingLight2.src = 'https://legendmod.ml/banners/icondyinglightzombie3.png';
-                cimgDyingLight3 = new Image;
-                cimgDyingLight3.src = 'https://legendmod.ml/banners/icondyinglightzombie4.png';
-                cimgDyingLight4 = new Image;
-                cimgDyingLight4.src = 'https://legendmod.ml/banners/icondyinglightzombie5.png';
-                cimgDyingLight5 = new Image;
-                cimgDyingLight5.src = 'https://legendmod.ml/banners/icondyinglightzombiebig.png';
-                cimgDyingLight6 = new Image;
-                cimgDyingLight6.src = 'https://legendmod.ml/banners/icondyinglightvolaltile.png';
-            }
-
             //lylko
             this.points = []
             this.pointsVel = []
@@ -6001,7 +6001,6 @@ var thelegendmodproject = function(t, e, i) {
                 }
             };
             this.isInView = function() {
-                //console.log("hi");
                 return !(this.id <= 0) && !(this.x + this.size + 40 < LM.viewX - LM.canvasWidth / 2 / LM.scale || this.y + this.size + 40 < LM.viewY - LM.canvasHeight / 2 / LM.scale || this.x - this.size - 40 > LM.viewX + LM.canvasWidth / 2 / LM.scale || this.y - this.size - 40 > LM.viewY + LM.canvasHeight / 2 / LM.scale);
             };
             /*
@@ -6134,10 +6133,8 @@ var thelegendmodproject = function(t, e, i) {
                 if (this.mergeCanvas && !(this.size <= 40)) {
                     var mergeCanvas = this.mergeCanvas;
                     mergeCanvas.setDrawing(defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, this.strokeMass, this.massStrokeSize, defaultSettings.massStrokeColor);
-
                     mergeCanvas.setFontSize(this.massSize);
                     mergeCanvas.setScale(this.scale);
-
 
                     if (window.ExternalScripts && !defaultmapsettings.optimizedMass && window.playerCellsId && this.isPlayerCell && !this.isVirus) {
                         CellTimerTrigger();
@@ -6169,7 +6166,6 @@ var thelegendmodproject = function(t, e, i) {
                                 mergeCanvas.setTxt(customTxt);
                                 //this.lastMass = this.mass;
                             }
-
                             var data = mergeCanvas.drawTxt(customTxt);
                             var width = ~~(data.width / this.scale);
                             //console.log(data.width, this.scale, width, this.x - width / 2);
