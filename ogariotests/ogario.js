@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1244 MEGA TEST
+// v1.1246 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -82,8 +82,8 @@ window.buffers = {
         const writer = new Writer(4 + x.length)
         writer.writeUint8(8)
         writer.writeInt32(x)
-		return writer.dataView.buffer
-    }	
+        return writer.dataView.buffer
+    }
 }
 window.connectionBots = {
     ws: null,
@@ -105,8 +105,8 @@ window.connectionBots = {
         document.getElementById('connect').disabled = true
         document.getElementById('startBots').disabled = false
         document.getElementById('stopBots').disabled = false
-		document.getElementById('connectBots').innerText = 'Connect'
-		document.getElementById('connectBots').style.color = 'white'
+        document.getElementById('connectBots').innerText = 'Connect'
+        document.getElementById('connectBots').style.color = 'white'
     },
     onmessage(message) {
         const dataView = new DataView(message.data)
@@ -137,13 +137,12 @@ window.connectionBots = {
             case 3:
                 //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 window.botscaptcha = true;
-                if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked') ) {
+                if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
                     toastr["info"]('<b>[SERVER]:</b> Solve the captcha for your bots')
                     window.master.recaptchaRequested()
+                } else {
+                    toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 }
-				else{
-					toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
-				}
                 break
             case 4:
                 $('#botCount').html(`${dataView.getUint8(1)}/${dataView.getUint8(2)}/${window.bots.amount}`)
@@ -158,7 +157,7 @@ window.connectionBots = {
                 break
             case 10:
                 toastr["info"]('<b>[SERVER]:</b> Server or bots is on closing state');
-                break				
+                break
         }
     },
     onclose() {
@@ -171,17 +170,17 @@ window.connectionBots = {
         document.getElementById('stopBots').disabled = true
         document.getElementById('startBots').style.display = 'inline'
         document.getElementById('stopBots').style.display = 'none'
-		document.getElementById('connectBots').innerText = 'Connect'
-		document.getElementById('connectBots').style.color = 'white'		
+        document.getElementById('connectBots').innerText = 'Connect'
+        document.getElementById('connectBots').style.color = 'white'
         window.userBots.startedBots = false
         window.bots.ai = false
         window.LatestBotsVersion = null;
         $('#handleCaptchaBotsArea').hide();
-		$('#handleCaptchaBotsAreaSettings').hide();
-		$('#handleCaptchaBots').prop('checked', false)
-		$('#solveCaptchaBots').prop('checked', false)
-		$('#pushCaptchaBots').prop('checked', false)
-		
+        $('#handleCaptchaBotsAreaSettings').hide();
+        $('#handleCaptchaBots').prop('checked', false)
+        $('#solveCaptchaBots').prop('checked', false)
+        $('#pushCaptchaBots').prop('checked', false)
+
     }
 }
 window.gameBots = {
@@ -566,8 +565,8 @@ var languagetexts = {
         'showMapBorders': 'Granice mapy',
         'showGhostCells': 'Duchy kulek (fps drop)',
         'showGhostCellsInfo': 'Ghost cells info (confusing)',
-		'rotateMap': 'Rotate Map',
-        'showMiniMap': 'Pokaż minimapę',		
+        'rotateMap': 'Rotate Map',
+        'showMiniMap': 'Pokaż minimapę',
         'showMiniMapGrid': 'Pokaż siatkę minimapy',
         'showMiniMapGuides': 'Pokaż prowadnice na minimapie',
         'showExtraMiniMapGuides': 'Show extra minimap guides',
@@ -962,7 +961,7 @@ var languagetexts = {
         'showMapBorders': 'Show map borders',
         'showGhostCells': 'Ghost cells (fps drop)',
         'showGhostCellsInfo': 'Ghost cells info (confusing)',
-		'rotateMap': 'Rotate Map',
+        'rotateMap': 'Rotate Map',
         'showMiniMap': 'Show minimap',
         'showMiniMapGrid': 'Show minimap grid',
         'showMiniMapGuides': 'Show minimap guides',
@@ -1850,6 +1849,15 @@ var defaultSettings = {
     'customBackground': '',
     'customCursor': 'https://legendmod.ml/cursors/cursor_02.cur'
 }
+cimg2 = new Image;
+cimg2.src = defaultSettings.commanderImage2;
+cimg5 = new Image;
+cimg5.src = defaultSettings.commanderImage5;
+cimg6 = new Image;
+cimg6.src = defaultSettings.commanderImage6;
+cimg7 = new Image;
+cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
+
 var skinUrlPatterns = [{
         name: "imgur.com",
         url: "https://imgur.com/",
@@ -1905,7 +1913,7 @@ var defaultmapsettings = {
     'showGhostCells': false,
     'showGhostCellsInfo': false,
     'showMiniMap': true,
-	'rotateMap': true,
+    'rotateMap': true,
     'showMiniMapGrid': false,
     'showMiniMapGuides': true,
     'showExtraMiniMapGuides': true,
@@ -4311,10 +4319,10 @@ var thelegendmodproject = function(t, e, i) {
                 i.play && i.playerSplitCells > 1 && (defaultmapsettings.splitRange || defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.showStatsSTE) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this.selectBiggestCell ? 0.6 : 0.3, t.beginPath(), t.arc(48, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this.selectBiggestCell ? 0.3 : 0.6, t.beginPath(), t.arc(60, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
             },
             'dTok': function(t, e) {
-                t.font = defaultSettings.miniMapFontWeight + ' ' + (defaultSettings.miniMapTop - 6) + 'px ' + defaultSettings.miniMapFontFamily; 
-				t.textAlign = 'right'; 
-				t.textBaseline = 'top';
-				//t.fillText(atob(this.token), e, 7);
+                t.font = defaultSettings.miniMapFontWeight + ' ' + (defaultSettings.miniMapTop - 6) + 'px ' + defaultSettings.miniMapFontFamily;
+                t.textAlign = 'right';
+                t.textBaseline = 'top';
+                //t.fillText(atob(this.token), e, 7);
             },
             /*            'drawTeammatesInd': function(t, e, i, s) {
                             this.indicator && t.drawImage(this.indicator, e - 45, i - s - 90);
@@ -5744,14 +5752,6 @@ var thelegendmodproject = function(t, e, i) {
         window.legendmod3 = ogarminimapdrawer;
 
         function ogarbasicassembly(t, e, s, o, a, n, r, l, h, c) {
-            cimg2 = new Image;
-            cimg2.src = defaultSettings.commanderImage2;
-            cimg5 = new Image;
-            cimg5.src = defaultSettings.commanderImage5;
-            cimg6 = new Image;
-            cimg6.src = defaultSettings.commanderImage6;
-            cimg7 = new Image;
-            cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
 
             if (dyinglight1load == "yes") {
                 cimgDyingLight = new Image;
@@ -6407,19 +6407,6 @@ var thelegendmodproject = function(t, e, i) {
                                     //LM.updateCommander();
                                 } catch (e) {}
                             }
-                            //style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y), s && (style.globalAlpha = value, s = false)),
-                            //(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (this.oldAlpha=style.globalAlpha, style.globalAlpha = 0.1, style.drawImage(cimg7, this.x - y * 4, this.y - y * 4, 8 * y, 8 * y), style.globalAlpha=this.oldAlpha), //cimg7
-                            //((defaultmapsettings.videoSkins && (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && checkVideos(node2.src, this.targetNick)),
-                            //(node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) && style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y) ),
-                            //node2.src.includes(".mp4") && (style.drawImage(node2, this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y)),
-                            //!node2.src.includes(".mp4") && !node2.src.includes(".webm") && !node2.src.includes(".ogv") && style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y),
-                            //(this.targetNick.includes("℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ")) && (style.drawImage(cimg6, this.x - y, this.y - y, 2 * y, 2 * y)),
-                            //this.targetNick.includes("℄") && (style.rotate(LM.cAngle1)) && (style.drawImage(cimg2, this.x - y * 1.5, this.y - y * 1.5, 3 * y, 3 * y)) &&
-                            //(this.targetNick.includes("The Dying Light")) && (style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y)),
-                            //(this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("℄🌀     ᑕᖇᗩƵƳ😈") || this.targetNick.includes("℄🌀ᔕᕼᗴᖇᗴ ᛕᕼᗩᑎ")) &&
-
-                            //(LM.cAngle += .007), console.log(LM.cAngle),
-                            //style.rotate(LM.cAngle1),
                         }
                     }
                     if (s) {
@@ -6517,11 +6504,11 @@ var thelegendmodproject = function(t, e, i) {
             'connectionOpened': false,
             'accessTokenSent': false,
             //'clientVersion': 30604,
-			'clientVersion': master.clientVersion,
-			'protocolVersion': master.protocolVersion,
+            'clientVersion': master.clientVersion,
+            'protocolVersion': master.protocolVersion,
             //'clientVersionString': '3.6.4',
-			'clientVersionString': master.clientVersionString,
-			'xsupportprotoversion': master.xsupportprotoversion,
+            'clientVersionString': master.clientVersionString,
+            'xsupportprotoversion': master.xsupportprotoversion,
             'time': Date.now(),
             'serverTime': 0,
             'serverTimeDiff': 0,
@@ -6622,9 +6609,9 @@ var thelegendmodproject = function(t, e, i) {
                 var i = this;
                 setTimeout(function() {
                     window.legendmod3.Socket3connect(t);
-					if (defaultmapsettings.rotateMap){
-                    window.legendmod3.SLGconnect(t);
-					}
+                    if (defaultmapsettings.rotateMap) {
+                        window.legendmod3.SLGconnect(t);
+                    }
                 }, 100);
                 window.legendmod.vnr = 0; //Sonia3
                 window.legendmod.bgpi = 4; //Sonia3
@@ -7230,7 +7217,7 @@ var thelegendmodproject = function(t, e, i) {
                         case 178:
                             window.testobjectsOpcode178 = data;
                             this.battleRoyale.players = data.getUint16(s, true),
-							$('#btl-players-count').text(this.battleRoyale.players),
+                                $('#btl-players-count').text(this.battleRoyale.players),
                                 s += 2;
                             var y = data.getUint16(s, true);
                             s += 2,
@@ -7548,9 +7535,9 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     if (8 & d) {
                         y = window.decodeURIComponent(escape(s()));
-						if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams"){
-                        this.vanillaskins(y, g);
-						}
+                        if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams") {
+                            this.vanillaskins(y, g);
+                        }
                     }
                     //Jimboy's
                     if (16 & d) {
@@ -8082,8 +8069,8 @@ var thelegendmodproject = function(t, e, i) {
                         cimg.src = defaultSettings.commanderImage;
                         cimg1 = new Image;
                         cimg1.src = defaultSettings.commanderImage1;
-                        cimg2 = new Image;
-                        cimg2.src = defaultSettings.commanderImage2;
+                        cimg12 = new Image;
+                        cimg12.src = defaultSettings.commanderImage2;
                         pickerAxes.save();
                         pickerAxes.globalAlpha = LM.cAlpha;
                         pickerAxes.translate(i.spawnX, i.spawnY);
@@ -8100,7 +8087,7 @@ var thelegendmodproject = function(t, e, i) {
                         pickerAxes.globalAlpha = LM.cAlpha;
                         pickerAxes.translate(i.spawnX, i.spawnY);
                         pickerAxes.rotate(LM.cAngle2);
-                        pickerAxes.drawImage(cimg2, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.globalAlpha = 1;
                         this.updateCommander();
@@ -8114,8 +8101,8 @@ var thelegendmodproject = function(t, e, i) {
                         cimg.src = defaultSettings.commanderImage3;
                         cimg1 = new Image;
                         cimg1.src = defaultSettings.commanderImage4;
-                        cimg2 = new Image;
-                        cimg2.src = defaultSettings.commanderImage5;
+                        cimg12 = new Image;
+                        cimg12.src = defaultSettings.commanderImage5;
                         pickerAxes.save();
                         pickerAxes.globalAlpha = LM.cAlpha;
                         pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
@@ -8132,7 +8119,7 @@ var thelegendmodproject = function(t, e, i) {
                         pickerAxes.globalAlpha = LM.cAlpha;
                         pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
                         pickerAxes.rotate(LM.cAngle2);
-                        pickerAxes.drawImage(cimg2, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                        pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.globalAlpha = 1;
                         this.updateCommander();
@@ -9735,70 +9722,67 @@ function setGUIEvents() {
         localStorage.setItem('localStoredBotsAmount', window.bots.amount)
     })
     document.getElementById('connectBots').addEventListener('click', () => {
-		if ($('#pushCaptchaBots').is(':checked')){
-			window.connectionBots.send(window.buffers.captchabots((window.bots.amount).toString()))
-			//toastr["info"]('<b>[SERVER]:</b> Bot pushed')
-		}
-		else{
-        if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
-		}
+        if ($('#pushCaptchaBots').is(':checked')) {
+            window.connectionBots.send(window.buffers.captchabots((window.bots.amount).toString()))
+            //toastr["info"]('<b>[SERVER]:</b> Bot pushed')
+        } else {
+            if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
+        }
     })
-    document.getElementById('startBots').addEventListener('click', () => {		
+    document.getElementById('startBots').addEventListener('click', () => {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
-			if (legendmod.gameMode == ":party") {	
-				if (window.bots.amount <= 199) {
-					if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none'){
-						window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-						if (window.LatestBotsVersion){
-							$('#handleCaptchaBotsAreaSettings').show();
-						}
-					}
-					else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')				
-				} else toastr["info"]('<b>[SERVER]:</b> Bots Max amount is 199')			
-			}
-			else{
-				toastr["info"]('<b>[SERVER]:</b> Party bots only available for Party mode')
-			}		
-		}
-    })
-        document.getElementById('stopBots').addEventListener('click', () => {
-            if(window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
-        })	
-	$('#handleCaptchaBots').click(function() {        
-		if (this.checked) {
-			window.connectionBots.send(new Uint8Array([11]).buffer)
-			$('#solveCaptchaBots').removeAttr("disabled")
-			$('#pushCaptchaBots').removeAttr("disabled")				
-        } else {
-			window.connectionBots.send(new Uint8Array([12]).buffer)
-			$('#solveCaptchaBots').prop('checked', false)
-			$('#pushCaptchaBots').prop('checked', false)	
-			$('#solveCaptchaBots').attr("disabled", true);
-			$('#pushCaptchaBots').attr("disabled", true);
-			document.getElementById('connectBots').innerText = 'Connect'
-			document.getElementById('connectBots').style.color = 'white'				
-		
+            if (legendmod.gameMode == ":party") {
+                if (window.bots.amount <= 199) {
+                    if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
+                        window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
+                        if (window.LatestBotsVersion) {
+                            $('#handleCaptchaBotsAreaSettings').show();
+                        }
+                    } else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
+                } else toastr["info"]('<b>[SERVER]:</b> Bots Max amount is 199')
+            } else {
+                toastr["info"]('<b>[SERVER]:</b> Party bots only available for Party mode')
+            }
         }
     })
-	$('#solveCaptchaBots').click(function() {        
-		if (this.checked) {
-			window.connectionBots.send(new Uint8Array([13]).buffer)		
+    document.getElementById('stopBots').addEventListener('click', () => {
+        if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
+    })
+    $('#handleCaptchaBots').click(function() {
+        if (this.checked) {
+            window.connectionBots.send(new Uint8Array([11]).buffer)
+            $('#solveCaptchaBots').removeAttr("disabled")
+            $('#pushCaptchaBots').removeAttr("disabled")
         } else {
-			window.connectionBots.send(new Uint8Array([14]).buffer)		
+            window.connectionBots.send(new Uint8Array([12]).buffer)
+            $('#solveCaptchaBots').prop('checked', false)
+            $('#pushCaptchaBots').prop('checked', false)
+            $('#solveCaptchaBots').attr("disabled", true);
+            $('#pushCaptchaBots').attr("disabled", true);
+            document.getElementById('connectBots').innerText = 'Connect'
+            document.getElementById('connectBots').style.color = 'white'
+
         }
-    })	
-	$('#pushCaptchaBots').click(function() {        
-		if (this.checked) {
-		document.getElementById('connectBots').innerText = 'Push a captcha bot'
-		document.getElementById('connectBots').style.color = 'yellow'					
-			window.connectionBots.send(new Uint8Array([15]).buffer)		
+    })
+    $('#solveCaptchaBots').click(function() {
+        if (this.checked) {
+            window.connectionBots.send(new Uint8Array([13]).buffer)
         } else {
-			window.connectionBots.send(new Uint8Array([16]).buffer)		
-		document.getElementById('connectBots').innerText = 'Connect'
-		document.getElementById('connectBots').style.color = 'white'			
-			
+            window.connectionBots.send(new Uint8Array([14]).buffer)
         }
-    })		
+    })
+    $('#pushCaptchaBots').click(function() {
+        if (this.checked) {
+            document.getElementById('connectBots').innerText = 'Push a captcha bot'
+            document.getElementById('connectBots').style.color = 'yellow'
+            window.connectionBots.send(new Uint8Array([15]).buffer)
+        } else {
+            window.connectionBots.send(new Uint8Array([16]).buffer)
+            document.getElementById('connectBots').innerText = 'Connect'
+            document.getElementById('connectBots').style.color = 'white'
+
+        }
+    })
 }
 
 /*
