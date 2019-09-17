@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1277 MEGA TEST
+// v1.1278 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2019,6 +2019,7 @@ var defaultmapsettings = {
     "borderGlow": false,
     "limLB": 10,
     "limTP": 5,
+	
     ////
     //'zoomSpeedValue': .87,
     'zoomSpeedValue2': -0.13,
@@ -2404,14 +2405,10 @@ var thelegendmodproject = function(t, e, i) {
                     this.setMenuBg();
                 },
                 'changeMenuPreset': function(t) {
-                    this.changePreset(t, themeMenus), 
+                    this.changePreset(t, themeMenus); 
 					this.setMenu();
                 },
-				'changeGraphics': function(t) {
-					if (t == "high"){ ogarminimapdrawer.graphics = 1 }
-					else if (t == "medium"){ ogarminimapdrawer.graphics = 2 }
-					else if (t == "low"){ ogarminimapdrawer.graphics = 4 }
-					else if (t == "very_low"){ ogarminimapdrawer.graphics = 8 }				
+				'changeGraphics': function(t) {			
                 },
                 'setMenuOpacity': function() {
                     $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
@@ -4170,12 +4167,19 @@ var thelegendmodproject = function(t, e, i) {
                     };
                 t[e].src = e;
             },
+			'checkgraphics': function() {
+						if (defaultSettings.graphics == "high"){ ogarminimapdrawer.graphics = 1 }
+						else if (defaultSettings.graphics == "medium"){ ogarminimapdrawer.graphics = 2 }
+						else if (defaultSettings.graphics == "low"){ ogarminimapdrawer.graphics = 4 }
+						else if (defaultSettings.graphics == "very_low"){ ogarminimapdrawer.graphics = 8 }				
+			},
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue.length) {
                     var e = this.cacheQueue.shift();
                     if (e) {
 						var depth = 512;
+						checkgraphics();				
 						if (ogarminimapdrawer.graphics){
 							depth = depth / ogarminimapdrawer.graphics;
 						}
