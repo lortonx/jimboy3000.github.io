@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.071 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.072 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "71"; // the version 1.1-> 1.11
 //fix ffa
@@ -8358,7 +8358,7 @@ function Socket3enabler(srv) {
 		window.socket3NumberTries = 0;
 		Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
 		Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));		
-		console.log('[Legend mod Express] Socket 3 open:',room, ",LMID:", customLMID);
+		console.log('[Legend mod Express] Socket 3 open:',room);
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
