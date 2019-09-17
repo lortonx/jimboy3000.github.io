@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1263 MEGA TEST
+// v1.1264 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4138,6 +4138,7 @@ var thelegendmodproject = function(t, e, i) {
                     };
                 t[e].src = e;
             },
+			/*
             'cacheSkin': function(t) {
                 //console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue.length) {
@@ -4162,6 +4163,31 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
             },
+			*/
+            'cacheSkin': function(t) {
+                //console.log(t);  //////// return the image src
+                if (0 != this.cacheQueue.length) {
+                    var e = this.cacheQueue.shift();
+                    if (e) {
+                        var i = document.createElement("canvas");
+                        i.width = 128;
+                        i.height = 128;
+                        var $ = i.getContext("2d");
+                        $.beginPath();
+                        $.arc(64, 64, 64, 0, 2 * Math.PI, false);
+                        $.clip();
+                        try {
+                            $.drawImage(this.customSkinsCache[e], 0, 0, 128, 128);
+                        } catch (e) {}
+						
+                        this.customSkinsCache[e + "_cached"] = new Image;
+                        this.customSkinsCache[e + "_cached"].src = i.toDataURL();
+						//this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
+                        i = null;
+                        this.cacheSkin(this.customSkinsCache);
+                    }
+                }
+            },			
             'getCachedSkin': function(t, e) {
                 return t[e + '_cached'] && t[e + '_cached'].complete && t[e + '_cached'].width ? t[e + '_cached'] : null;
             },
