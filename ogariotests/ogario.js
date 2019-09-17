@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1271 MEGA TEST
+// v1.1272 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3020,7 +3020,7 @@ var thelegendmodproject = function(t, e, i) {
 									teamboardskin.src = "https://legendmod.ml/banners/icon32croped.ico.gif";
 								}
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + 
-								'; width: 30px; height:30px; display: inline-block;"><span id = "' + this.top5[o].id + '" style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' 
+								'; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' 
 								+ teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');	
                                 /* if (defaultmapsettings["showTargeting"]) {
                                   t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
@@ -4157,18 +4157,15 @@ var thelegendmodproject = function(t, e, i) {
                         $.clip();
                         try {
                             $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
-                        } catch (e) {}
-						
+                        } catch (e) {}			
                         this.customSkinsCache[e + "_cached"] = new Image;
                         this.customSkinsCache[e + "_cached"].src = i.toDataURL();
-						//this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
                         i = null;
                         this.cacheSkin(this.customSkinsCache);
                     }
                 }
             },			
             'cacheSkin2': function(t) {
-                console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue2.length) {
                     var e = this.cacheQueue2.shift();
                     if (e) {
@@ -4182,8 +4179,7 @@ var thelegendmodproject = function(t, e, i) {
                         $.clip();
                         try {
                             $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
-                        } catch (e) {}
-						
+                        } catch (e) {}			
                         this.customSkinsCache[e + "_cached2"] = new Image;
                         this.customSkinsCache[e + "_cached2"].src = i.toDataURL();
 						//this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
