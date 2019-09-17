@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1274 MEGA TEST
+// v1.1275 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1332,7 +1332,7 @@ var themePresets = {
         "virusGlowSize": 14,
         "borderGlowSize": 14,
         'menuPreset': 'ogario-v3',
-		'graphics': 'High',
+		'graphics': 'high',
         'menuMainColor': '#01d9cc',
         'menuBtnTextColor': '#ffffff',
         'menuPanelColor': '#00243e',
@@ -1493,7 +1493,7 @@ var themePresets = {
         "virusGlowSize": 14,
         "borderGlowSize": 14,
         'menuPreset': 'ogario-v3',
-		'graphics': 'High',
+		'graphics': 'high',
         'menuMainColor': '#fc0079',
         'menuBtnTextColor': '#ffffff',
         'menuPanelColor': '#050008',
@@ -1792,7 +1792,7 @@ var defaultSettings = {
     'ghostCellsAlpha': 0.3,
     'virusStrokeSize': 14,
     'menuPreset': 'ogario-v3',
-	'graphics': 'High',
+	'graphics': 'high',
     'menuMainColor': '#01d9cc',
     'menuBtnTextColor': '#ffffff',
     'menuPanelColor': '#00243e',
