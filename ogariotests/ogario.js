@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1278 MEGA TEST
+// v1.1279 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4179,7 +4179,7 @@ var thelegendmodproject = function(t, e, i) {
                     var e = this.cacheQueue.shift();
                     if (e) {
 						var depth = 512;
-						checkgraphics();				
+						this.checkgraphics();				
 						if (ogarminimapdrawer.graphics){
 							depth = depth / ogarminimapdrawer.graphics;
 						}
