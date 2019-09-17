@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1262 MEGA TEST
+// v1.1263 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4153,9 +4153,10 @@ var thelegendmodproject = function(t, e, i) {
                         try {
                             $.drawImage(this.customSkinsCache[e], 0, 0, 512, 512);
                         } catch (e) {}
+						
                         this.customSkinsCache[e + "_cached"] = new Image;
-                        //this.customSkinsCache[e + "_cached"].src = i.toDataURL();
-						this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
+                        this.customSkinsCache[e + "_cached"].src = i.toDataURL();
+						//this.customSkinsCache[e + "_cached"].src = i.toDataURL('image/jpeg', 0.1);
                         i = null;
                         this.cacheSkin(this.customSkinsCache);
                     }
@@ -5469,7 +5470,9 @@ var thelegendmodproject = function(t, e, i) {
                 this.displayUserList(this.chatMutedUsers, h.mutedUsers, 'btn-green btn-unmute-user', h.unmute, 'error');
             },
             'preloadChatSounds': function() {
-                this.setMessageSound(), this.setCommandSound(), this.setvirusSound();
+                this.setMessageSound(), 
+				this.setCommandSound(), 
+				this.setvirusSound();
             },
             'setChatSoundsBtn': function() {
                 defaultmapsettings.chatSounds ? $('.chat-sound-notifications').removeClass('ogicon-volume-mute2').addClass('ogicon-volume-high') : $('.chat-sound-notifications').removeClass('ogicon-volume-high').addClass('ogicon-volume-mute2');
@@ -5482,7 +5485,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setvirusSound': function() {
                 this.virusSoundurl = this.setSound(defaultmapsettings.virusSoundurl);
-            },
+            },			
             'setSound': function(t) {
                 return t ? new Audio(t) : null;
             },
@@ -6044,7 +6047,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.mass = ~~((200 - this.mass) / 14);
                     }
                     if (defaultmapsettings.virusSound && this.lastMass && this.mass < this.lastMass) {
-                        void ogarminimapdrawer.playSound(ogarminimapdrawer.setSound(defaultmapsettings.virusSoundurl));
+						void legendmod3.playSound(legendmod3.virusSoundurl);
                     }
                     this.massTxt = this.mass.toString();
                 }
