@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1255 MEGA TEST
+// v1.1254 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3020,7 +3020,7 @@ var thelegendmodproject = function(t, e, i) {
 								}
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + 
 								'; width: 30px; height:30px; display: inline-block;"><span id = "' + this.top5[o].id + '" style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' 
-								'</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');								
+								+ teamboardskin + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');								
                                 /* if (defaultmapsettings["showTargeting"]) {
                                   t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
                                 } */
@@ -3060,7 +3060,6 @@ var thelegendmodproject = function(t, e, i) {
                             }
                         }
                         this.top5pos.innerHTML = t;
-						//$('#'+this.top5[o].id)
                         if (i.play && i.playerMass) {
                             e = e + i.playerMass;
                             s++;
