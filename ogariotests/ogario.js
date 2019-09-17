@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1273 MEGA TEST
+// v1.1274 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1709,15 +1709,19 @@ var themeMenus = {
 }
 var graphicMenus = {
 	'high': {
+		'name': 'High',
 		'depth': 1	
 	},
 	'medium': {
+		'name': 'Medium',
 		'depth': 2	
 	},
 	'low': {
+		'name': 'Low',
 		'depth': 4	
 	},
-	'very low': {
+	'very_low': {
+		'name': 'Very Low',
 		'depth': 8	
 	}	
 }
@@ -2409,7 +2413,7 @@ var thelegendmodproject = function(t, e, i) {
                 },
 				'changeGraphics': function(t) {
                     console.log(t);
-					this.graphics(t);
+					this.graphics = t
                 },
                 'setMenuOpacity': function() {
                     $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
