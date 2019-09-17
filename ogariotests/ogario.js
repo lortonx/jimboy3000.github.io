@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1257 MEGA TEST
+// v1.1258 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4165,7 +4165,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
-                    var s = ':party' === this.gameMode ? t + e : t;
+                    var s = ':party' === this.gameMode //? t + e : t;
+					t + e;
                     console.log("t= " + t);
                     console.log("e= " + e);
                     if (s && (this.customSkinsMap[s] = i), this.customSkinsCache.hasOwnProperty(i)) return;
@@ -4173,13 +4174,14 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'checkSkinsMap': function(t, e) {
-                var i = ':party' === this.gameMode ? t + e : t;
-                //console.log(.customSkinsMap.hasOwnProperty(i));
+                var i = ':party' === this.gameMode //? t + e : t;
+				t + e;
                 return !!this.customSkinsMap.hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
                 if (!this.checkSkinsMap(t, e)) return null;
-                var i = ':party' === this.gameMode ? t + e : t;
+                var i = ':party' === this.gameMode //? t + e : t;
+				t + e;
                 return this.getCachedSkin(this.customSkinsCache, this.customSkinsMap[i]);
             },
             'calculateMapSector': function(t, e, s = false) {
@@ -7437,7 +7439,7 @@ var thelegendmodproject = function(t, e, i) {
                                             } else {
                                                 window.lastusednameforskin = y;
                                                 ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image + "_cached");
+                                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
                                             }
 										}
 								}
