@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1272 MEGA TEST
+// v1.1273 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -508,6 +508,7 @@ var languagetexts = {
         'settings': 'Ustawienia',
         'restoreSettings': 'Przywróc ustawienia domyślne',
         'animationGroup': 'Animacja',
+		'graphics': 'Graphics',
         'zoomGroup': 'Zoom',
         'respGroup': 'Odrodzenie',
         'namesGroup': 'Nazwy',
@@ -904,6 +905,7 @@ var languagetexts = {
         'settings': 'Settings',
         'restoreSettings': 'Restore default settings',
         'animationGroup': 'Animation',
+		'graphics': 'Graphics',
         'zoomGroup': 'Zoom',
         'respGroup': 'Respawn',
         'namesGroup': 'Names',
@@ -1330,6 +1332,7 @@ var themePresets = {
         "virusGlowSize": 14,
         "borderGlowSize": 14,
         'menuPreset': 'ogario-v3',
+		'graphics': 'High',
         'menuMainColor': '#01d9cc',
         'menuBtnTextColor': '#ffffff',
         'menuPanelColor': '#00243e',
@@ -1490,6 +1493,7 @@ var themePresets = {
         "virusGlowSize": 14,
         "borderGlowSize": 14,
         'menuPreset': 'ogario-v3',
+		'graphics': 'High',
         'menuMainColor': '#fc0079',
         'menuBtnTextColor': '#ffffff',
         'menuPanelColor': '#050008',
@@ -1703,6 +1707,20 @@ var themeMenus = {
         'menuBg': ''
     }
 }
+var graphicMenus = {
+	'high': {
+		'depth': 1	
+	},
+	'medium': {
+		'depth': 2	
+	},
+	'low': {
+		'depth': 4	
+	},
+	'very low': {
+		'depth': 8	
+	}	
+}
 var escapeHTMLs = {
     '&': '&amp;',
     '<': '&lt;',
@@ -1770,6 +1788,7 @@ var defaultSettings = {
     'ghostCellsAlpha': 0.3,
     'virusStrokeSize': 14,
     'menuPreset': 'ogario-v3',
+	'graphics': 'High',
     'menuMainColor': '#01d9cc',
     'menuBtnTextColor': '#ffffff',
     'menuPanelColor': '#00243e',
@@ -2313,6 +2332,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5);
                     this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01);
                     this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground');
+					this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
                     this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
                     for (var e = 'https://legendmod.ml/cursors/cursor_', i = 0; i < 35; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
                     $(document).on('click', '#theme-images .cursor-box a', function(e) {
@@ -2343,7 +2363,8 @@ var thelegendmodproject = function(t, e, i) {
                     if (e[t]) {
                         defaultSettings[t] = t;
                         t = e[t];
-                        for (var o in t) t.hasOwnProperty(o) && defaultSettings.hasOwnProperty(o) && (defaultSettings[o] = t[o], i.hasOwnProperty(o) && (i[o] = defaultSettings[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', defaultSettings[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(defaultSettings[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(defaultSettings[o]));
+                        for (var o in t) t.hasOwnProperty(o) && defaultSettings.hasOwnProperty(o) && 
+						(defaultSettings[o] = t[o], i.hasOwnProperty(o) && (i[o] = defaultSettings[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', defaultSettings[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(defaultSettings[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(defaultSettings[o]));
                     }
                 },
                 'changeThemePreset': function(t) {
@@ -2383,7 +2404,12 @@ var thelegendmodproject = function(t, e, i) {
                     this.setMenuBg();
                 },
                 'changeMenuPreset': function(t) {
-                    this.changePreset(t, themeMenus), this.setMenu();
+                    this.changePreset(t, themeMenus), 
+					this.setMenu();
+                },
+				'changeGraphics': function(t) {
+                    console.log(t);
+					this.graphics(t);
                 },
                 'setMenuOpacity': function() {
                     $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
