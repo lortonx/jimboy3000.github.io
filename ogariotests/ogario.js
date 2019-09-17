@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1264 MEGA TEST
+// v1.1265 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4170,14 +4170,14 @@ var thelegendmodproject = function(t, e, i) {
                     var e = this.cacheQueue.shift();
                     if (e) {
                         var i = document.createElement("canvas");
-                        i.width = 128;
-                        i.height = 128;
+                        i.width = 32;
+                        i.height = 32;
                         var $ = i.getContext("2d");
                         $.beginPath();
-                        $.arc(64, 64, 64, 0, 2 * Math.PI, false);
+                        $.arc(16, 16, 16, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-                            $.drawImage(this.customSkinsCache[e], 0, 0, 128, 128);
+                            $.drawImage(this.customSkinsCache[e], 0, 0, 32, 32);
                         } catch (e) {}
 						
                         this.customSkinsCache[e + "_cached"] = new Image;
