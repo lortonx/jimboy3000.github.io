@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1269 MEGA TEST
+// v1.1270 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4168,7 +4168,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },			
             'cacheSkin2': function(t) {
-                //console.log(t);  //////// return the image src
+                console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue2.length) {
                     var e = this.cacheQueue2.shift();
                     if (e) {
