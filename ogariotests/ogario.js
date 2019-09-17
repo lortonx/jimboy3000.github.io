@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1267 MEGA TEST
+// v1.1268 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4126,7 +4126,7 @@ var thelegendmodproject = function(t, e, i) {
                                 i.cacheSkin(i.customSkinsCache)) &&
                             (i.cacheQueue2.push(e),
                                 1 == i.cacheQueue2.length &&
-                                i.cacheSkin(i.customSkinsCache));								
+                                i.cacheSkin2(i.customSkinsCache));								
                     },
                     t[e]['onerror'] = function() {
                         //console.log("error loading image: "+ e);
