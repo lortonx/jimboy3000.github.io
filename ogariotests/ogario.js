@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1256 MEGA TEST
+// v1.1257 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4166,8 +4166,8 @@ var thelegendmodproject = function(t, e, i) {
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
                     var s = ':party' === this.gameMode ? t + e : t;
-                    //console.log("t= " + t);
-                    //console.log("e= " + e);
+                    console.log("t= " + t);
+                    console.log("e= " + e);
                     if (s && (this.customSkinsMap[s] = i), this.customSkinsCache.hasOwnProperty(i)) return;
                     this.loadSkin(this.customSkinsCache, i);
                 }
@@ -7437,7 +7437,7 @@ var thelegendmodproject = function(t, e, i) {
                                             } else {
                                                 window.lastusednameforskin = y;
                                                 ogarminimapdrawer.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
+                                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image + "_cached");
                                             }
 										}
 								}
