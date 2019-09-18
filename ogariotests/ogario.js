@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1284 MEGA TEST
+// v1.1285 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7971,24 +7971,10 @@ var thelegendmodproject = function(t, e, i) {
                     for (var i = 0; i < LM.removedCells.length; i++) {
                         LM.removedCells[i].draw(this.ctx, true);
                     }
-
                     //lylko
                     defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
-
-                    for (i = 0; i < LM.cells.length; i++) {
-
-                        if (defaultmapsettings.jellyPhisycs) {
-                            LM.cells[i].updateNumPoints();
-                            LM.cells[i].movePoints();
-                        }
-
-                        LM.cells[i].draw(this.ctx);
-
-                        if (ogarfooddrawer.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
-                            LM.selected = LM.cells[i].id
-                            //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
-                        }
-                    }
+					
+					this.renderIndexedCells2();
                     LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
                         LM.indexedCells[LM.selected].x,
                         LM.indexedCells[LM.selected].y,
@@ -8240,6 +8226,22 @@ var thelegendmodproject = function(t, e, i) {
                             this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
                         }	
 				},	
+				'renderIndexedCells2': function(){ 
+                    for (i = 0; i < LM.cells.length; i++) {
+
+                        if (defaultmapsettings.jellyPhisycs) {
+                            LM.cells[i].updateNumPoints();
+                            LM.cells[i].movePoints();
+                        }
+
+                        LM.cells[i].draw(this.ctx);
+
+                        if (ogarfooddrawer.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
+                            LM.selected = LM.cells[i].id
+                            //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
+                        }
+                    }
+				},					
 				'renderIndexedCells': function() {
                         var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
                         //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
