@@ -8277,7 +8277,9 @@ var thelegendmodproject = function(t, e, i) {
                                         t.rect(a - r, n - r, 2 * r, 2 * r);
                                     } else t.arc(a, n, e[o].size + defaultSettings.foodSize, 0, this.pi2, false);
                                 }
-                                t.fillStyle = defaultSettings.foodColor, t.globalAlpha = 1, t.fill();
+                                t.fillStyle = defaultSettings.foodColor, 
+								t.globalAlpha = 1, 
+								t.fill();
                             }
                         s && (e = []);
                     }
@@ -8508,8 +8510,8 @@ var thelegendmodproject = function(t, e, i) {
                     e.width = 2 * t; 
 					e.height = 2 * t;
                     var i = e.getContext('2d');
-                    //i.arc(t, t, t, 0, this.pi2, false); 
-					i.rect(t, t, t, t); 
+                    i.arc(t, t, t, 0, this.pi2, false); 
+					//i.rect(t, t, t, t); 
 					i.fillStyle = defaultSettings.foodColor; 
 					i.fill(); 
 					this.pellet = new Image(); 
@@ -8519,7 +8521,8 @@ var thelegendmodproject = function(t, e, i) {
                 'preDrawIndicator': function() {
                     this.indicator = null;
                     var t = document.createElement('canvas');
-                    t.width = 90, t.height = 50;
+                    t.width = 90, 
+					t.height = 50;
                     var e = t.getContext('2d');
                     e.lineWidth = 2;
                     e.fillStyle = defaultSettings.teammatesIndColor;
