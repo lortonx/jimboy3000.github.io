@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1282 MEGA TEST
+// v1.1283 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8509,7 +8509,7 @@ var thelegendmodproject = function(t, e, i) {
 					e.height = 2 * t;
                     var i = e.getContext('2d');
                     //i.arc(t, t, t, 0, this.pi2, false); 
-					i.rect(t, t, t, t, this.pi2, false); 
+					i.rect(t, t, t, t); 
 					i.fillStyle = defaultSettings.foodColor; 
 					i.fill(); 
 					this.pellet = new Image(); 
