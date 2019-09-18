@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1283 MEGA TEST
+// v1.1281 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7963,7 +7963,19 @@ var thelegendmodproject = function(t, e, i) {
                     }
                     this.drawFood();
                     if (LM.play) {
-                      this.renderRingsTracking();
+                        if (defaultmapsettings.splitRange) {
+                            this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+                            this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                            //this.drawDoubleSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+                            this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                        }
+                        if (defaultmapsettings.oppRings) {
+                            //this.drawOppRings(this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache);
+                            this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
+                        }
+                        if (defaultmapsettings.cursorTracking) {
+                            this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                        }
                     }
 
                     this.drawGhostCells();
@@ -7996,7 +8008,23 @@ var thelegendmodproject = function(t, e, i) {
                         0.75, '#ffffff')
 
                     if (ogarfooddrawer.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
-						this.renderIndexedCells();
+                        var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
+                        //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
+                        if (LM.playerCells[index] == undefined) return;
+                        var xc = LM.playerCells[index].targetX //.x
+                        var yc = LM.playerCells[index].targetY //.y
+
+                        var x = LM.indexedCells[LM.selected].targetX //.x
+                        var y = LM.indexedCells[LM.selected].targetY //.y
+
+                        var a = xc - x
+                        var b = yc - y
+                        var distance = Math.sqrt(a * a + b * b) - (LM.indexedCells[LM.selected].size + LM.playerCells[index].size)
+
+                        var ang = Math.atan2(y - yc, x - xc);
+
+                        LM.cursorX = xc + (Math.cos(ang) * distance)
+                        LM.cursorY = yc + (Math.sin(ang) * distance)
                         LM.sendPosition()
                         //console.log(xc,yc,x,y,LM.cursorX,LM.cursorY)
                         //Math.deg(ang)
@@ -8225,40 +8253,6 @@ var thelegendmodproject = function(t, e, i) {
                             t.globalAlpha = 1, i && (e = []);
                     }
                 },
-				'renderRingsTracking': function() {
-                        if (defaultmapsettings.splitRange) {
-                            this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                            this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                            //this.drawDoubleSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                            this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                        }
-                        if (defaultmapsettings.oppRings) {
-                            //this.drawOppRings(this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache);
-                            this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
-                        }
-                        if (defaultmapsettings.cursorTracking) {
-                            this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
-                        }	
-				},	
-				'renderIndexedCells': function() {
-                        var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
-                        //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
-                        if (LM.playerCells[index] == undefined) return;
-                        var xc = LM.playerCells[index].targetX //.x
-                        var yc = LM.playerCells[index].targetY //.y
-
-                        var x = LM.indexedCells[LM.selected].targetX //.x
-                        var y = LM.indexedCells[LM.selected].targetY //.y
-
-                        var a = xc - x
-                        var b = yc - y
-                        var distance = Math.sqrt(a * a + b * b) - (LM.indexedCells[LM.selected].size + LM.playerCells[index].size)
-
-                        var ang = Math.atan2(y - yc, x - xc);
-
-                        LM.cursorX = xc + (Math.cos(ang) * distance)
-                        LM.cursorY = yc + (Math.sin(ang) * distance)	
-				},						
                 'drawFood': function() {
                     if (LM.showFood && !(defaultmapsettings.autoHideFoodOnZoom && this.scale < 0.2)) {
                         if (defaultmapsettings.autoHideFood && !LM.foodIsHidden && LM.playerMass > 1000) return LM.showFood = false, void(LM.foodIsHidden = true);
@@ -8283,9 +8277,7 @@ var thelegendmodproject = function(t, e, i) {
                                         t.rect(a - r, n - r, 2 * r, 2 * r);
                                     } else t.arc(a, n, e[o].size + defaultSettings.foodSize, 0, this.pi2, false);
                                 }
-                                t.fillStyle = defaultSettings.foodColor, 
-								t.globalAlpha = 1, 
-								t.fill();
+                                t.fillStyle = defaultSettings.foodColor, t.globalAlpha = 1, t.fill();
                             }
                         s && (e = []);
                     }
@@ -8513,22 +8505,14 @@ var thelegendmodproject = function(t, e, i) {
                     this.pellet = null;
                     var t = 10 + defaultSettings.foodSize,
                         e = document.createElement('canvas');
-                    e.width = 2 * t; 
-					e.height = 2 * t;
+                    e.width = 2 * t, e.height = 2 * t;
                     var i = e.getContext('2d');
-                    i.arc(t, t, t, 0, this.pi2, false); 
-					//i.rect(t, t, t, t); 
-					i.fillStyle = defaultSettings.foodColor; 
-					i.fill(); 
-					this.pellet = new Image(); 
-					this.pellet.src = e.toDataURL(); 
-					e = null;
+                    i.arc(t, t, t, 0, this.pi2, false), i.fillStyle = defaultSettings.foodColor, i.fill(), this.pellet = new Image(), this.pellet.src = e.toDataURL(), e = null;
                 },
                 'preDrawIndicator': function() {
                     this.indicator = null;
                     var t = document.createElement('canvas');
-                    t.width = 90, 
-					t.height = 50;
+                    t.width = 90, t.height = 50;
                     var e = t.getContext('2d');
                     e.lineWidth = 2;
                     e.fillStyle = defaultSettings.teammatesIndColor;
@@ -8559,9 +8543,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 },
                 'render': function() {
-                    ogarfooddrawer.countFps(); 
-					ogarfooddrawer.renderFrame(); 
-					window.requestAnimationFrame(ogarfooddrawer.render);
+                    ogarfooddrawer.countFps(), ogarfooddrawer.renderFrame(), window.requestAnimationFrame(ogarfooddrawer.render);
                 },
                 'init': function() {
                     this.setCanvas();
