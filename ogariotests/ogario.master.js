@@ -1,4 +1,4 @@
-//v12.0
+//v11.9
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -320,7 +320,7 @@ function legendmaster(self) {
 				else{
 					setTimeout(function() {
 						canvasLayersManager.setRegionCode(userData.responseJSON.countryCode);
-					}, 50);						
+					}, 2000);						
 				}
             }, "jsonp");
         },
