@@ -1,5 +1,5 @@
 //Legend mod Sniff2 by jimboy3100
-//v2.3
+//v2.4
 (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -74,7 +74,7 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 	});
 setTimeout(function () {	
 	$("#nick").blur(function(){
-		if ($('#administrationtool-hud').is(':hidden')) {
+		if ($('#administrationtool-hud').is(':hidden') || $('#administrationtool-hud').length == 0) {
 			if($("#nick").val()=="℄🌀Jimboy3100"||$("#nick").val()=="℄🌀ＪｕｓｔＷａｔｃｈＰｒｏ"||$("#nick").val()=="℄🌀       ᒎᗴᖇᖇƳ"||$("#nick").val()=="℄🌀 𝙨𝙣𝙚𝙯"){
 			$("#main-menu").hide();
 			$("#skins-panel").hide();
