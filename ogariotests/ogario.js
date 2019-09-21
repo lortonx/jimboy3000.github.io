@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1282 MEGA TEST
+// v1.1283 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7087,7 +7087,8 @@ var thelegendmodproject = function(t, e, i) {
                         //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
                         window.testobjectsOpcode5 = data;
                         break;
-                    case 17:
+                    //case 17:
+					case 16:
                         window.testobjectsOpcode17 = data;
                         var x = data.getFloat32(s, true);
                         this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
@@ -7360,8 +7361,7 @@ var thelegendmodproject = function(t, e, i) {
                             this.serverTime = 1000 * data.getUint32(s, true);
                             this.serverTimeDiff = performance.now() - this.serverTime;
                             break;
-                        ///case 255:
-						case 16:
+                        case 255:
                             window.testobjectsOpcode255 = data;
                             this['handleSubmessage'](data);
                             break;
