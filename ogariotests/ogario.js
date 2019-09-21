@@ -7087,8 +7087,8 @@ var thelegendmodproject = function(t, e, i) {
                         //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
                         window.testobjectsOpcode5 = data;
                         break;
-                    //case 17:
-					case 16:
+                    case 17:
+					//case 16:
                         window.testobjectsOpcode17 = data;
                         var x = data.getFloat32(s, true);
                         this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
