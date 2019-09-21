@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1281 MEGA TEST
+// v1.1282 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7360,7 +7360,8 @@ var thelegendmodproject = function(t, e, i) {
                             this.serverTime = 1000 * data.getUint32(s, true);
                             this.serverTimeDiff = performance.now() - this.serverTime;
                             break;
-                        case 255:
+                        ///case 255:
+						case 16:
                             window.testobjectsOpcode255 = data;
                             this['handleSubmessage'](data);
                             break;
