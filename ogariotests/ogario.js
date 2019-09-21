@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1285 MEGA TEST
+// v1.1286 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7064,9 +7064,14 @@ var thelegendmodproject = function(t, e, i) {
             },		*/
             //https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
             'decompressMessage': function(message) {
-                var buffer = new LMbuffer(message['buffer']);
-                var readMessage = new LMbuffer(buffer.readUInt32LE(1));
-                return a.decodeBlock(buffer.slice(5), readMessage), readMessage;
+                //var buffer = new LMbuffer(message['buffer']);
+                //var readMessage = new LMbuffer(buffer.readUInt32LE(1));
+                //return a.decodeBlock(buffer.slice(5), readMessage), readMessage;				
+            const buffer = window.buffer.Buffer;
+            const messageBuffer = new buffer(message.buffer);
+            const readMessage = new buffer(messageBuffer.readUInt32LE(1));
+            LZ4.decodeBlock(messageBuffer.slice(5), readMessage);
+            return readMessage;			
             },
             'handleMessage': function(data) {
                 var i = function() {
@@ -9599,8 +9604,8 @@ var thelegendmodproject = function(t, e, i) {
             return i.play ? h.exit : void 0;
         };
         i = LM;
-        LMbuffer = t('buffer')['Buffer'];
-        a = t('lz4');
+        //LMbuffer = t('buffer')['Buffer'];
+        //a = t('lz4');
         if ('/ogario' === window.location.pathname) {
             ogarjoiner('/' + window.location.hash);
         }
@@ -9744,9 +9749,8 @@ var thelegendmodproject = function(t, e, i) {
         window.master.init();
         ogarhusettings();
         setGUIEvents();
-    })();
+    })(window.ogario);
 }
-thelegendmodproject(window, window.ogario, window.jQuery);
 
 function setGUIEvents() {
     document.getElementById('botsAmount').addEventListener('keypress', e => {
