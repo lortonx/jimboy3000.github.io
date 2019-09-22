@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1295 MEGA TEST
+// v1.1296 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4138,7 +4138,7 @@ var thelegendmodproject = function(t, e, i) {
             'loadSkin': function(t, e) {
                 var i = this;
                 //console.log ("t:" + t + "e:" + e);
-                if (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv")) {
+                if (e.includes && (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv"))) {
                     t[e] = new Video();
                     //console.log("stage 2 videos");
                 } else {
@@ -4171,6 +4171,37 @@ var thelegendmodproject = function(t, e, i) {
                     };
                 t[e].src = e;
             },
+            'loadSkinAnimated': function(t, e) {
+                var i = this;
+                    t[e] = new Image();
+
+                t[e].crossOrigin = 'Anonymous';
+                t[e]['onload'] = function() {
+                        this.complete &&
+                            this.width &&
+                            this.height &&
+                            this.width <= 2000 &&
+                            this.height <= 2000 &&
+                            ((i.cacheQueue.push(e),
+                                1 == i.cacheQueue.length &&
+                                i.cacheSkin(i.customSkinsCache)),
+                            (i.cacheQueue2.push(e),
+                                1 == i.cacheQueue2.length &&
+                                i.cacheSkin2(i.customSkinsCache)));								
+                    },
+                    t[e]['onerror'] = function() {
+                        //console.log("error loading image: "+ e);
+                        if (e.includes(window.EnvConfig.config_url)) {
+                            e = "https://legendmod.ml/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
+                            //console.log("new destination is:" + e);
+                            ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
+                            ogarminimapdrawer.loadSkin(t, e);
+                            return e;
+
+                        }
+                    };
+                t[e].src = e;
+            },			
 			'checkgraphics': function() {
 						if (defaultSettings.graphics == "high"){ ogarminimapdrawer.graphics = 1 }
 						else if (defaultSettings.graphics == "medium"){ ogarminimapdrawer.graphics = 2 }
