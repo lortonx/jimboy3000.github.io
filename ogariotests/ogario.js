@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1305 MEGA TEST
+// v1.1306 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4199,7 +4199,7 @@ var thelegendmodproject = function(t, e, i) {
 								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
 							}
 							else{
-								$.drawImage(this.customSkinsCache[e], 0, 0, 850, 2048, 0, 0, 512, 512);
+								$.drawImage(this.customSkinsCache[e], 0, 0, depth/2, depth, 0, 0, depth, depth);
 							}
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached"] = new Image;
@@ -4209,7 +4209,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
             },			
-            'cacheSkin2': function(t, animated) {
+            'cacheSkin2': function(t) {
                 if (0 != this.cacheQueue2.length) {
                     var e = this.cacheQueue2.shift();
                     if (e) {
@@ -4222,12 +4222,7 @@ var thelegendmodproject = function(t, e, i) {
                         $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-							if (!animated){
 								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
-							}
-							else{
-								$.drawImage(this.customSkinsCache[e], 0, 0, 446, 446, depth, depth);
-							}
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached2"] = new Image;
                         this.customSkinsCache[e + "_cached2"].src = i.toDataURL();
