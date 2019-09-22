@@ -1,4 +1,4 @@
-//v11.9
+//v12.0
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -225,7 +225,7 @@ function legendmaster(self) {
                 this.xsupportprotoversion = self.localStorage.getItem("ogarioXProtoVersion");
             }	
             if (null !== self.localStorage.getItem("ogarioProtocolVersion")) {
-                this.xsupportprotoversion = self.localStorage.getItem("ogarioProtocolVersion");
+                this.protocolVersion = self.localStorage.getItem("ogarioProtocolVersion");
             }					
             var window = this;
             $.ajax("//agar.io/mc/agario.js", {
