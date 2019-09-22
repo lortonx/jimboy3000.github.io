@@ -1,4 +1,4 @@
-//v12.0
+//v12.1
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -290,7 +290,7 @@ function legendmaster(self) {
             if (this.protocolVersion != serverVersion) {
                 console.log("[Master] Changing protocol version...");
                 this.protocolVersion = serverVersion;
-                self.localStorage.setItem("ogarioProtocolVersion", protocolVersion);   
+                self.localStorage.setItem("ogarioProtocolVersion", serverVersion);   
                 console.log("[Master] ProtocolVersion called, reconnecting");
                 this.reconnect(true);				
             }
