@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1287 MEGA TEST
+// v1.1288 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7493,8 +7493,12 @@ var thelegendmodproject = function(t, e, i) {
             },
             'vanillaskins': function(y, g) {
                 if (g != null) {
-						if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {
-							console.log(g)
+						console.log(g)
+						if (g.includes && g.includes("%custom_")){
+							g.replace('%custom_', 'skin_custom_')
+							core.registerSkin(y, null, "https://configs.agario.miniclippt.com/live/custom_skins/" + g + ".png", null);
+						}
+						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
                                 if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
                                     //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
