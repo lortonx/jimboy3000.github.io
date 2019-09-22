@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1296 MEGA TEST
+// v1.1297 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4135,7 +4135,7 @@ var thelegendmodproject = function(t, e, i) {
                     ogario1PlayerProfiles[this.selectedProfile].color = ogarcopythelb.color,
                     this.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles');
             },
-            'loadSkin': function(t, e) {
+            'loadSkin': function(t, e, animated) {
                 var i = this;
                 //console.log ("t:" + t + "e:" + e);
                 if (e.includes && (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv"))) {
@@ -4151,12 +4151,23 @@ var thelegendmodproject = function(t, e, i) {
                             this.height &&
                             this.width <= 2000 &&
                             this.height <= 2000 &&
+							if (!animated){
                             ((i.cacheQueue.push(e),
                                 1 == i.cacheQueue.length &&
                                 i.cacheSkin(i.customSkinsCache)),
                             (i.cacheQueue2.push(e),
                                 1 == i.cacheQueue2.length &&
-                                i.cacheSkin2(i.customSkinsCache)));								
+                                i.cacheSkin2(i.customSkinsCache)));	
+							}
+							else{
+                            ((i.cacheQueue.push(e, true),
+                                1 == i.cacheQueue.length &&
+                                i.cacheSkin(i.customSkinsCache)),
+                            (i.cacheQueue2.push(e, true),
+                                1 == i.cacheQueue2.length &&
+                                i.cacheSkin2(i.customSkinsCache)));	
+							}								
+							}
                     },
                     t[e]['onerror'] = function() {
                         //console.log("error loading image: "+ e);
@@ -4170,45 +4181,14 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     };
                 t[e].src = e;
-            },
-            'loadSkinAnimated': function(t, e) {
-                var i = this;
-                    t[e] = new Image();
-
-                t[e].crossOrigin = 'Anonymous';
-                t[e]['onload'] = function() {
-                        this.complete &&
-                            this.width &&
-                            this.height &&
-                            this.width <= 2000 &&
-                            this.height <= 2000 &&
-                            ((i.cacheQueue.push(e),
-                                1 == i.cacheQueue.length &&
-                                i.cacheSkin(i.customSkinsCache)),
-                            (i.cacheQueue2.push(e),
-                                1 == i.cacheQueue2.length &&
-                                i.cacheSkin2(i.customSkinsCache)));								
-                    },
-                    t[e]['onerror'] = function() {
-                        //console.log("error loading image: "+ e);
-                        if (e.includes(window.EnvConfig.config_url)) {
-                            e = "https://legendmod.ml/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
-                            //console.log("new destination is:" + e);
-                            ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
-                            ogarminimapdrawer.loadSkin(t, e);
-                            return e;
-
-                        }
-                    };
-                t[e].src = e;
-            },			
+            },		
 			'checkgraphics': function() {
 						if (defaultSettings.graphics == "high"){ ogarminimapdrawer.graphics = 1 }
 						else if (defaultSettings.graphics == "medium"){ ogarminimapdrawer.graphics = 2 }
 						else if (defaultSettings.graphics == "low"){ ogarminimapdrawer.graphics = 4 }
 						else if (defaultSettings.graphics == "very_low"){ ogarminimapdrawer.graphics = 8 }				
 			},
-            'cacheSkin': function(t) {
+            'cacheSkin': function(t, animated) {
                 //console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue.length) {
                     var e = this.cacheQueue.shift();
@@ -4226,7 +4206,12 @@ var thelegendmodproject = function(t, e, i) {
                         $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+							if (!animated){
+								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+							}
+							else{
+								$.drawImage(this.customSkinsCache[e], 0, 0, 446, 446, depth, depth);
+							}
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached"] = new Image;
                         this.customSkinsCache[e + "_cached"].src = i.toDataURL();
@@ -4235,7 +4220,7 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
             },			
-            'cacheSkin2': function(t) {
+            'cacheSkin2': function(t, animated) {
                 if (0 != this.cacheQueue2.length) {
                     var e = this.cacheQueue2.shift();
                     if (e) {
@@ -4248,7 +4233,12 @@ var thelegendmodproject = function(t, e, i) {
                         $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+							if (!animated){
+								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+							}
+							else{
+								$.drawImage(this.customSkinsCache[e], 0, 0, 446, 446, depth, depth);
+							}
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached2"] = new Image;
                         this.customSkinsCache[e + "_cached2"].src = i.toDataURL();
@@ -7537,7 +7527,7 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
 							g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
 							g1 = makeUpperCaseAfterUnderline(g1);
-							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);							
+                            ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);							
 						}
 						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
