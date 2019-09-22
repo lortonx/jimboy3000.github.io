@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1294 MEGA TEST
+// v1.1295 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7496,7 +7496,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'vanillaskins': function(y, g) {
                 if (g != null) {
-						console.log(g)
+						//console.log(g)
 						if (g.includes && g.includes("%custom_")){
 							var g1 = g.replace('%custom_', 'skin_custom_')
 							core.registerSkin(y, null, "https://configs.agario.miniclippt.com/live/custom_skins/" + g1 + ".png", null);
