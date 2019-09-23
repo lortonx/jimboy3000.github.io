@@ -4250,8 +4250,8 @@ var thelegendmodproject = function(t, e, i) {
                 return !!this.customSkinsMap.hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
-                console.log("t= " + t);
-                console.log("e= " + e);				
+                //console.log("t= " + t);
+                //console.log("e= " + e);				
                 if (!this.checkSkinsMap(t, e)) return null;
                 var i = ':party' === this.gameMode ? t + e : t;
                 return this.getCachedSkin(this.customSkinsCache, this.customSkinsMap[i]);
