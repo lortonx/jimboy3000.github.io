@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1317 MEGA TEST
+// v1.1318 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4200,6 +4200,10 @@ var thelegendmodproject = function(t, e, i) {
 							}
 							else{
 								$.drawImage(this.customSkinsCache[e], 0, 0, this.customSkinsCache[e].width/2 , this.customSkinsCache[e].height, 0, 0, depth, depth);
+								this.cacheQueue3.push(e);
+								if (1 == this.cacheQueue3.length){
+									this.cacheSkin3(t)
+								}
 							}
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached"] = new Image;
@@ -4231,9 +4235,48 @@ var thelegendmodproject = function(t, e, i) {
                         this.cacheSkin2(this.customSkinsCache);
                     }
                 }
-            },					
+            },		
+            'cacheSkin3': function(t) {
+                //console.log(t);  //////// return the image src
+                if (0 != this.cacheQueue3.length) {
+                    var e = this.cacheQueue3.shift();
+                    if (e) {
+						var depth = 512;
+						this.checkgraphics();				
+						if (ogarminimapdrawer.graphics){
+							depth = depth / ogarminimapdrawer.graphics;
+						}
+                        var i = document.createElement("canvas");
+                        i.width = depth;
+                        i.height = depth;
+                        var $ = i.getContext("2d");
+                        $.beginPath();
+                        $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
+                        $.clip();
+                        try {
+								$.drawImage(this.customSkinsCache[e], this.customSkinsCache[e].width/2, 0, this.customSkinsCache[e].width/2 , this.customSkinsCache[e].height, 0, 0, depth, depth);							
+                        } catch (e) {}			
+                        this.customSkinsCache[e + "_cached3"] = new Image;
+                        this.customSkinsCache[e + "_cached3"].src = i.toDataURL();
+                        i = null;
+                        this.cacheSkin(this.customSkinsCache);
+                    }
+                }
+            },				
             'getCachedSkin': function(t, e) {
+				if (t[e + '_cached3']){
+					var today = new Date();
+					var minute = today.getMinutes();
+					if (minute % 2 == 0){ //vanilla animated skins
+						return t[e + '_cached'] && t[e + '_cached'].complete && t[e + '_cached'].width ? t[e + '_cached'] : null;
+					}
+					else if(minute % 2 == 1){
+						return t[e + '_cached3'] && t[e + '_cached3'].complete && t[e + '_cached3'].width ? t[e + '_cached3'] : null;
+					}
+				}
+				else{
                 return t[e + '_cached'] && t[e + '_cached'].complete && t[e + '_cached'].width ? t[e + '_cached'] : null;
+				}
             },
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
