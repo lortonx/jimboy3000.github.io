@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1310 MEGA TEST
+// v1.1311 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4141,7 +4141,8 @@ var thelegendmodproject = function(t, e, i) {
                 if (e.includes && (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv"))) {
                     t[e] = new Video();
                     //console.log("stage 2 videos");
-                } else {
+                } 
+				else {
                     t[e] = new Image();
                 }
                 t[e].crossOrigin = 'Anonymous';
@@ -6516,7 +6517,11 @@ var thelegendmodproject = function(t, e, i) {
                                     if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
                                         checkVideos(node2.src, this.targetNick);
                                         try {
-                                            style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+											style.arc(this.x, this.y, y, 0, this.pi2, false);
+											//style.arc(this.x - y, this.x - y, this.x - y, 0, 2 * Math.PI, false);
+											style.clip();	
+											//style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+                                            style.drawImage(window.videoSkinPlayer[node2.src], 0, 0, 2 * y, 2 * y);
                                         } catch (e) {}
                                     }
                                 }
