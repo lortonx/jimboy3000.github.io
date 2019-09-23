@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1311 MEGA TEST
+// v1.1312 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4238,8 +4238,8 @@ var thelegendmodproject = function(t, e, i) {
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
                     var s = ':party' === this.gameMode ? t + e : t;
-                    console.log("t= " + t);
-                    console.log("e= " + e);
+                    //console.log("t= " + t);
+                    //console.log("e= " + e);
                     if (s && (this.customSkinsMap[s] = i), this.customSkinsCache.hasOwnProperty(i)) return;
                     this.loadSkin(this.customSkinsCache, i);
                 }
@@ -4250,6 +4250,8 @@ var thelegendmodproject = function(t, e, i) {
                 return !!this.customSkinsMap.hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
+                console.log("t= " + t);
+                console.log("e= " + e);				
                 if (!this.checkSkinsMap(t, e)) return null;
                 var i = ':party' === this.gameMode ? t + e : t;
                 return this.getCachedSkin(this.customSkinsCache, this.customSkinsMap[i]);
