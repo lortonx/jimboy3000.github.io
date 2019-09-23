@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1318 MEGA TEST
+// v1.1319 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2562,6 +2562,7 @@ var thelegendmodproject = function(t, e, i) {
             'customSkinsMap': {},
             'cacheQueue': [],
 			'cacheQueue2': [],
+			'cacheQueue3': [],
             'deathLocations': [],
             'playerID': null,
             'playerMass': 0,
