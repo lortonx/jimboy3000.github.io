@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1312 MEGA TEST
+// v1.1313 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4253,7 +4253,10 @@ var thelegendmodproject = function(t, e, i) {
                 //console.log("t= " + t);
                 //console.log("e= " + e);				
                 if (!this.checkSkinsMap(t, e)) return null;
-                var i = ':party' === this.gameMode ? t + e : t;
+				if (t.includes("configs-web.agario.miniclippt.com/live/")){
+					e = "#000000";
+				}
+                var i = ':party' === this.gameMode ? t + e : t;				
                 return this.getCachedSkin(this.customSkinsCache, this.customSkinsMap[i]);
             },
             'calculateMapSector': function(t, e, s = false) {
@@ -7503,6 +7506,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'vanillaskins': function(y, g) {
                 if (g != null) {
+						if (LM.gameMode == ":party"){
+							g = g + "#000000";
+						}
 						//console.log(g)
 						if (g.includes && g.includes("%custom_")){
 							var g1 = g.replace('%custom_', 'skin_custom_')
