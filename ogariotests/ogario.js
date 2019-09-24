@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1336 MEGA TEST
+// v1.1337 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7497,6 +7497,7 @@ var thelegendmodproject = function(t, e, i) {
                             if (this.leaderboard[i].nick == window.customskinsname) {
                                 ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
                                 ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.customskinsurl, window.customskinanimated);
+								if (window.customskinanimated) console.log('anim')
                                 window.customskinsname = null;
 								window.customskinsurl = null;
 								window.customskinanimated = null;
