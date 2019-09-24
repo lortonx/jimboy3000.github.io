@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1295 MEGA TEST
+// v1.1331 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2562,6 +2562,7 @@ var thelegendmodproject = function(t, e, i) {
             'customSkinsMap': {},
             'cacheQueue': [],
 			'cacheQueue2': [],
+			'cacheQueue3': [],
             'deathLocations': [],
             'playerID': null,
             'playerMass': 0,
@@ -4135,10 +4136,10 @@ var thelegendmodproject = function(t, e, i) {
                     ogario1PlayerProfiles[this.selectedProfile].color = ogarcopythelb.color,
                     this.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles');
             },
-            'loadSkin': function(t, e) {
+            'loadSkin': function(t, e, animated) {
                 var i = this;
                 //console.log ("t:" + t + "e:" + e);
-                if (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv")) {
+                if (e.includes && (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv"))) {
                     t[e] = new Video();
                     //console.log("stage 2 videos");
                 } else {
@@ -4153,11 +4154,15 @@ var thelegendmodproject = function(t, e, i) {
                             this.height <= 2000 &&
                             ((i.cacheQueue.push(e),
                                 1 == i.cacheQueue.length &&
-                                i.cacheSkin(i.customSkinsCache)),
+                                i.cacheSkin(i.customSkinsCache, animated)),
                             (i.cacheQueue2.push(e),
                                 1 == i.cacheQueue2.length &&
-                                i.cacheSkin2(i.customSkinsCache)));								
-                    },
+                                i.cacheSkin2(i.customSkinsCache)),
+							(animated && i.cacheQueue3.push(e),
+                                1 == i.cacheQueue3.length &&
+                                i.cacheSkin3(i.customSkinsCache))	
+							);	
+					},							
                     t[e]['onerror'] = function() {
                         //console.log("error loading image: "+ e);
                         if (e.includes(window.EnvConfig.config_url)) {
@@ -4170,14 +4175,14 @@ var thelegendmodproject = function(t, e, i) {
                         }
                     };
                 t[e].src = e;
-            },
+            },		
 			'checkgraphics': function() {
 						if (defaultSettings.graphics == "high"){ ogarminimapdrawer.graphics = 1 }
 						else if (defaultSettings.graphics == "medium"){ ogarminimapdrawer.graphics = 2 }
 						else if (defaultSettings.graphics == "low"){ ogarminimapdrawer.graphics = 4 }
 						else if (defaultSettings.graphics == "very_low"){ ogarminimapdrawer.graphics = 8 }				
 			},
-            'cacheSkin': function(t) {
+            'cacheSkin': function(t, animated) {
                 //console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue.length) {
                     var e = this.cacheQueue.shift();
@@ -4195,12 +4200,17 @@ var thelegendmodproject = function(t, e, i) {
                         $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+							if (!animated){
+								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+							}
+							else{
+								$.drawImage(this.customSkinsCache[e], 0, 0, this.customSkinsCache[e].width/2 , this.customSkinsCache[e].height, 0, 0, depth, depth);
+							}
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached"] = new Image;
                         this.customSkinsCache[e + "_cached"].src = i.toDataURL();
                         i = null;
-                        this.cacheSkin(this.customSkinsCache);
+                        this.cacheSkin(this.customSkinsCache, animated);
                     }
                 }
             },			
@@ -4217,7 +4227,7 @@ var thelegendmodproject = function(t, e, i) {
                         $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
+								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
                         } catch (e) {}			
                         this.customSkinsCache[e + "_cached2"] = new Image;
                         this.customSkinsCache[e + "_cached2"].src = i.toDataURL();
@@ -4226,9 +4236,49 @@ var thelegendmodproject = function(t, e, i) {
                         this.cacheSkin2(this.customSkinsCache);
                     }
                 }
-            },					
+            },		
+            'cacheSkin3': function(t) {
+                //console.log(t);  //////// return the image src
+                if (0 != this.cacheQueue3.length) {
+                    var e = this.cacheQueue3.shift();
+                    if (e) {
+						var depth = 512;
+						this.checkgraphics();				
+						if (ogarminimapdrawer.graphics){
+							depth = depth / ogarminimapdrawer.graphics;
+						}
+                        var i = document.createElement("canvas");
+                        i.width = depth;
+                        i.height = depth;
+                        var $ = i.getContext("2d");
+                        $.beginPath();
+                        $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
+                        $.clip();
+                        try {
+								$.drawImage(this.customSkinsCache[e], this.customSkinsCache[e].width/2, 0, this.customSkinsCache[e].width/2 , this.customSkinsCache[e].height, 0, 0, depth, depth);							
+                        } catch (e) {}			
+                        this.customSkinsCache[e + "_cached3"] = new Image;
+                        this.customSkinsCache[e + "_cached3"].src = i.toDataURL();
+                        i = null;
+                        this.cacheSkin3(this.customSkinsCache);
+                    }
+                }
+            },				
             'getCachedSkin': function(t, e) {
+				//console.log(e, t[e + '_cached']);
+				if (t[e + '_cached3']){
+					console.log('_cached3 found');
+					var today = new Date();
+					if (today.getSeconds() % 2 == 0){ //vanilla animated skins
+						return t[e + '_cached'] && t[e + '_cached'].complete && t[e + '_cached'].width ? t[e + '_cached'] : null;
+					}
+					else if (today.getSeconds() % 2 == 1){
+						return t[e + '_cached3'] && t[e + '_cached3'].complete && t[e + '_cached3'].width ? t[e + '_cached3'] : null;
+					}
+				}
+				else{
                 return t[e + '_cached'] && t[e + '_cached'].complete && t[e + '_cached'].width ? t[e + '_cached'] : null;
+				}
             },
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
@@ -4245,8 +4295,14 @@ var thelegendmodproject = function(t, e, i) {
                 return !!this.customSkinsMap.hasOwnProperty(i);
             },
             'getCustomSkin': function(t, e) {
-                if (!this.checkSkinsMap(t, e)) return null;
-                var i = ':party' === this.gameMode ? t + e : t;
+                //console.log("t= " + t);
+                //console.log("e= " + e);				               
+				if (':party' === this.gameMode && this.customSkinsMap[t + "#000000"] && this.customSkinsMap[t + "#000000"].includes("configs-web.agario.miniclippt.com/live/")){
+					//console.log('changed for',t)
+					e = "#000000";
+				}
+				if (!this.checkSkinsMap(t, e)) return null;
+                var i = ':party' === this.gameMode ? t + e : t;				
                 return this.getCachedSkin(this.customSkinsCache, this.customSkinsMap[i]);
             },
             'calculateMapSector': function(t, e, s = false) {
@@ -7496,6 +7552,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'vanillaskins': function(y, g) {
                 if (g != null) {
+						if (LM.gameMode == ":party"){
+							y = y + "#000000";
+						}
 						//console.log(g)
 						if (g.includes && g.includes("%custom_")){
 							var g1 = g.replace('%custom_', 'skin_custom_')
@@ -7506,7 +7565,10 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
 							g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
 							g1 = makeUpperCaseAfterUnderline(g1);
-							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);							
+							if (ogarminimapdrawer.customSkinsMap[g1] == undefined){
+							ogarminimapdrawer.customSkinsMap[g1] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png";
+                            ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);
+							}							
 						}
 						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
