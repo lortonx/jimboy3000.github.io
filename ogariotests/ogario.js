@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1337 MEGA TEST
+// v1.1338 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9811,10 +9811,10 @@ var thelegendmodproject = function(t, e, i) {
                 arr = new Uint8Array(arr);
                 LM["sendMessage"](new DataView(arr["buffer"]));
             },
-            'registerSkin': function(a, b, c, d, e) {
+            'registerSkin': function(a, b, c, d) {
                 window.customskinsname = a;
                 window.customskinsurl = c;
-				window.customskinanimated = e
+				window.customskinanimated = d
             }
         };
         window.master.getClientVersion();
