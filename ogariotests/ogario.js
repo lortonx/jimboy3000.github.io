@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1334 MEGA TEST
+// v1.1335 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7495,9 +7495,10 @@ var thelegendmodproject = function(t, e, i) {
                         for (i = 0; i <= this.leaderboard.length - 1; i++) {
                             if (this.leaderboard[i].nick == window.customskinsname) {
                                 ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
-                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.customskinsurl);
+                                ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.customskinsurl, window.customskinanimated);
                                 window.customskinsname = null;
 								window.customskinsurl = null;
+								window.customskinanimated = null;
                             }
                         }
                 }
@@ -7566,10 +7567,11 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
 							g1 = makeUpperCaseAfterUnderline(g1);
 							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);		
-							//if (ogarminimapdrawer.customSkinsMap[g1] == undefined){
+							if (ogarminimapdrawer.customSkinsMap[g1] == undefined){
+								core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);	
 							//ogarminimapdrawer.customSkinsMap[g1] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png";
                             //ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);
-							//}							
+							}							
 						}
 						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
@@ -9810,6 +9812,7 @@ var thelegendmodproject = function(t, e, i) {
             'registerSkin': function(a, b, c, d, e) {
                 window.customskinsname = a;
                 window.customskinsurl = c;
+				window.customskinanimated = e
             }
         };
         window.master.getClientVersion();
