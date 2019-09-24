@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -2742,7 +2742,7 @@ function MsgServCommandsreturner() {
 
 function universalchat() {
     //$("#overlays").css("z-index", 100);
-	$("#overlays").css("z-index", 200);
+	//$("#overlays").css("z-index", 200);
     fixservbtn();
     setTimeout(function() {
         fixservbtn2();
@@ -6519,7 +6519,7 @@ function initializeLM(modVersion) {
     //backgroud div
     $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
 
-    $("#overlays").css("z-index", 100);
+    $("#overlays").css("z-index", 200);
 
     $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p id="regionmodecheck" style="float: left;margin-left: 10px;">' +
         '<i class="fa fa-search retro" onclick="getInfo2(); return false;"></i>  ' +
