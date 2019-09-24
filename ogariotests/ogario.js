@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1339 MEGA TEST
+// v1.1340 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7497,7 +7497,7 @@ var thelegendmodproject = function(t, e, i) {
                             if (this.leaderboard[i].nick == window.customskinsname) {
                                 ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
                                 ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.customskinsurl, window.customskinanimated);
-								if (window.customskinanimated) console.log('anim')
+								if (window.customskinanimated) console.log(window.customskinanimated)
                                 window.customskinsname = null;
 								window.customskinsurl = null;
 								window.customskinanimated = null;
@@ -7570,7 +7570,7 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = makeUpperCaseAfterUnderline(g1);
 							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);		
 							if (ogarminimapdrawer.customSkinsMap[g1] == undefined){
-								core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);	
+								core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", "animated");	
 							//ogarminimapdrawer.customSkinsMap[g1] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png";
                             //ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);
 							}							
