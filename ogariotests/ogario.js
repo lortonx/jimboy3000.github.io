@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1343 MEGA TEST
+// v1.1344 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4204,7 +4204,7 @@ var thelegendmodproject = function(t, e, i) {
 								$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
 							}
 							else{		
-								console.log("was animated")
+								console.log('was animated')
 								$.drawImage(this.customSkinsCache[e], 0, 0, this.customSkinsCache[e].width/2 , this.customSkinsCache[e].height, 0, 0, depth, depth);
 							}
                         } catch (e) {}			
@@ -4266,7 +4266,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },				
             'getCachedSkin': function(t, e) {
-				/*console.log(e, t[e + '_cached']);
+				console.log(e, t[e + '_cached']);
 				if (t[e + '_cached3']){
 					console.log('_cached3 found');
 					var today = new Date();
@@ -4276,10 +4276,9 @@ var thelegendmodproject = function(t, e, i) {
 					else if (today.getSeconds() % 2 == 1){
 						return t[e + '_cached3'] && t[e + '_cached3'].complete && t[e + '_cached3'].width ? t[e + '_cached3'] : null;
 					}
-				}*/
-				//else{
+				}				
                 return t[e + '_cached'] && t[e + '_cached'].complete && t[e + '_cached'].width ? t[e + '_cached'] : null;
-				//}
+				
             },
             'cacheCustomSkin': function(t, e, i) {
                 if (i) {
@@ -7497,7 +7496,6 @@ var thelegendmodproject = function(t, e, i) {
                             if (this.leaderboard[i].nick == window.customskinsname) {
                                 ogarminimapdrawer.customSkinsMap[window.customskinsname] = window.customskinsurl;
                                 ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.customskinsurl, window.customskinanimated);
-								if (window.customskinanimated) console.log(window.customskinanimated)
                                 window.customskinsname = null;
 								window.customskinsurl = null;
 								window.customskinanimated = null;
