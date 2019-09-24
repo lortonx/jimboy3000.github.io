@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.073b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "73"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2741,7 +2741,8 @@ function MsgServCommandsreturner() {
 
 
 function universalchat() {
-    $("#overlays").css("z-index", 100);
+    //$("#overlays").css("z-index", 100);
+	$("#overlays").css("z-index", 200);
     fixservbtn();
     setTimeout(function() {
         fixservbtn2();
