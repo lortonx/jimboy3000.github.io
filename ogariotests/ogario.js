@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1342 MEGA TEST
+// v1.1343 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7568,7 +7568,8 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
 							g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
 							g1 = makeUpperCaseAfterUnderline(g1);
-							core.registerSkin(y, true, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);							
+							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);		
+							window.customskinanimated = true;
 						}
 						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
@@ -9807,9 +9808,7 @@ var thelegendmodproject = function(t, e, i) {
                 LM["sendMessage"](new DataView(arr["buffer"]));
             },
             'registerSkin': function(a, b, c, d) {
-				if (b) console.log('is anim')
                 window.customskinsname = a;
-                window.customskinanimated = b;
 				window.customskinsurl = c;				
             }
         };
