@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1333 MEGA TEST
+// v1.1334 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7565,10 +7565,11 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
 							g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
 							g1 = makeUpperCaseAfterUnderline(g1);
-							if (ogarminimapdrawer.customSkinsMap[g1] == undefined){
-							ogarminimapdrawer.customSkinsMap[g1] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png";
-                            ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);
-							}							
+							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);		
+							//if (ogarminimapdrawer.customSkinsMap[g1] == undefined){
+							//ogarminimapdrawer.customSkinsMap[g1] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png";
+                            //ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", true);
+							//}							
 						}
 						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined && ogarminimapdrawer.customSkinsMap[y] == undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
