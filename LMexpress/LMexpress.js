@@ -8084,7 +8084,7 @@ function joinSERVERfindinfo() {
 							$("#region").val(MaxRegion);
                             master.region = $("#region").val();
 							}
-							if (MaxMode!= 0 && MaxMode!= null)
+							if (MaxMode!= 0 && MaxMode!= null){
 							$("#gamemode").val(MaxMode);
 							master.gamemode = $("#gamemode").val();
 							legendmod.gameMode = master.gamemode;
