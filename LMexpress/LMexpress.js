@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.073c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "73"; // the version 1.1-> 1.11
+var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -8071,18 +8071,24 @@ function joinSERVERfindinfo() {
                         realmode = MaxMode;
                         region = MaxRegion;
                         setTimeout(function() {
+							if (MaxRegion!= 0 && MaxRegion!= null && MaxMode!= 0 && MaxMode!= null){
                             history.pushState(stateObj, "page 2", "?sip=" + currentIP + "&?r=" + MaxRegion + "&?m=" + MaxMode);
+							}
                             ModeRegionregion();
                         }, 1500);
                         if ($("#region").val() != MaxRegion || $("#gamemode").val() != MaxMode) {
                             FinalText = FinalText + "<font color='yellow'>Best choice: Region:" + MaxRegion + ", Mode" + MaxMode + "</font><br>";
                             FinalText = FinalText + "Information changed!";
                             toastr["info"](FinalText).css("width", "350px");
-                            $("#region").val(MaxRegion);
-                            $("#gamemode").val(MaxMode);
+                            if (MaxRegion!= 0 && MaxRegion!= null){
+							$("#region").val(MaxRegion);
                             master.region = $("#region").val();
-                            master.gamemode = $("#gamemode").val();
+							}
+							if (MaxMode!= 0 && MaxMode!= null)
+							$("#gamemode").val(MaxMode);
+							master.gamemode = $("#gamemode").val();
 							legendmod.gameMode = master.gamemode;
+							}		
                             //adres();
                         }
                     }
