@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "73"; // the version 1.1-> 1.11
 //fix ffa
@@ -4948,7 +4948,7 @@ function setpic6url() {
     return pic6urlimg;
 }
 
-function setdiscwebhook1() {
+function setdiscwebhook1() {	
     discwebhook1 = $("#discwebhook1").val();
     var containsrealwebhook = $('#discwebhook1').val();
 
@@ -8013,8 +8013,10 @@ function joinSERVERfindinfo() {
                         Modes = {}
                         var count = 0;
                         $('#gamemode').find('option').each(function() {
+							if ( $(this).val()==":ffa" || $(this).val()==":battleroyale" || $(this).val()==":teams" || $(this).val()==":experimental" || $(this).val()==":party"){
                             Modes[count] = $(this).val();
                             count++;
+							}
                         });
 
                         countRegions = new Array(8).fill(0);
