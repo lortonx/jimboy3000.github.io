@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073k by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073l by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7188,7 +7188,7 @@ function initializeLM(modVersion) {
 		} );		
         //setTimeout(function() {
             //$('#loaderIframeInfo1').remove();
-        /}, 4000);
+        //}, 4000);
         return lastIP = $('#server-token').val();
     });
 
