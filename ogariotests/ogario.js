@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1356 MEGA TEST
+// v1.1357 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3476,7 +3476,6 @@ var thelegendmodproject = function(t, e, i) {
 					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push more bots</b>					
 					</span></div></div>					
 					<br><br><br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
-					<u><a href="https://repl.it/@jimboy3100/agario-bots" target="_blank">repl.it VPS</a></u>
 					<u><a href="https://github.com/jimboy3100/jimboy3100.github.io/blob/master/ExampleScripts/agario-bots2/agario-bots-proxies/" target="_blank">Proxy bots</a></u>
 					<u><a href="https://www.youtube.com/watch?v=CROvbjyLmS0" target="_blank">Sample Video</a></u>							
 					</div>`),
