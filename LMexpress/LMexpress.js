@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073M by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073n by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -444,15 +444,6 @@ function init(modVersion) {
         }
     });
 
-    /*           if (UniversalChatSaved == "false") { //For Setting DoubleSplitRange
-                    $("#UniversalChat").click();
-    				setTimeout(function() {
-    				$("#ao2t-hud").hide();
-    				}, 1100);
-                }		
-    */
-
-    //var connectedbanner=0;
     $("#gamemode").prop('disabled', false);
     $("#region").prop('disabled', false);
 
@@ -483,7 +474,6 @@ function getEmbedUrl(url) {
 }
 
 function loadersetings() {
-    //setTimeout(function() {
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -496,9 +486,8 @@ function loadersetings() {
                     localStorage.setItem("checkonlyonce", checkonlyonce);
                 }
             }
-        }
-/*		
-        if (checkonlysixth != "true") {
+        }	
+/*        if (checkonlysixth != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
 		toastr["info"]('<b>Thanks to author of <span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);"> <a href="http://deltav4.glitch.me/" target="blank"><font color="yellow">http://deltav4.glitch.me/</font></a> </span> for fixing tokens.<br><font color="red"></b>LM updated!<font>').css("width", "350px");
 	
@@ -519,8 +508,7 @@ function loadersetings() {
 		checkonlysixth = "true";
 		localStorage.setItem("checkonlysixth", checkonlysixth);				
        // }					
-		}
-*/
+		}*/
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
@@ -532,20 +520,14 @@ function loadersetings() {
                 localStorage.setItem("checkonlyonce", checkonlyonce);
             }
         }
-
-    //}, 3500);
 }
 
 function loadericon() {
     //continue loadericon
-    //    setTimeout(function() {
-    //setTimeout(function() {
         $("#imagebig").fadeOut(1500);
         setTimeout(function() {
             $("#imagebig").remove();
         }, 1600); //remove it
-    //}, 1000);
-    //		}, 100);
 }
 
 function PremiumUsers() {
@@ -569,14 +551,10 @@ function getaccesstoken() {
 }
 
 function getaccesstoken2(accesstomod) {
-    //    setTimeout(function() {
     if (accesstomod != "a" && accesstomod != null) {
         toastr["error"]('<b>[' + Premadeletter123 + ']:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://legendmod.ml/legendmod.user.js"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
-        //setTimeout(function() {
             document.documentElement.innerHTML = "";
-        //}, 8000);
     }
-    //   }, 10000);
 }
 
 function enableshortcuts() {
@@ -743,33 +721,6 @@ function appendLMhiFbPs() {
     });
 }
 
-
-
-/*
-
-        $('#server-reconnect').click(function() {
-            adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-            }, 2500);
-        });
-
-		$("#gamemode").change(function () {
-            adres();
-			setTimeout(function() {
-				if ($("#gamemode").val() != ":party") {				
-                $("#server").val(currentIP);
-				}
-            }, 2500);
-        });
-		$("#region").change(function () {
-            adres();
-			setTimeout(function() {
-                $("#server").val(currentIP);
-            }, 2500);
-        });		
-*/
-
 function adres(info, thismode, thisregion) {
     var info, thismode, thisregion;
     if (thismode == null || thisregion == null) {
@@ -814,11 +765,9 @@ function adres(info, thismode, thisregion) {
 
         }, 1800);
     } else { //if party
-        setTimeout(function() {
-            //				if (info!="noinfo"){                     
+        setTimeout(function() {             
             //window.history.pushState(null, null, window.location.pathname);
-            $("#server").val("#" + window.location.href.replace('https://agar.io/#', ''));
-            //				}			
+            $("#server").val("#" + window.location.href.replace('https://agar.io/#', ''));		
         }, 2000);
     }
 }
@@ -842,8 +791,6 @@ function privateserverpassword() {
 }
 
 function LMserverbox() {
-
-
     (function(a, c) {
         function r(a, d) {
             if (d) {
@@ -872,29 +819,6 @@ function LMserverbox() {
                     texture2 = texture2.replace(".agar.io", "");
                     $("#server-token").val(texture2);
                     $("#server-join").click();
-                    /*                     setTimeout(function() {
-
-                    							if (fromstart==true){
-                    								realmode = getParameterByName("m", url);
-                    								returnfromstartfalse();
-                    							}
-                    							else{
-                                                realmode = $("#gamemode").val();
-                    							}
-                                                var tmz = $("#server").val();
-                                                currentIP = tmz;
-                                                if (realmode != ":party") {
-                                                    setTimeout(function() {
-                                                        history.pushState(stateObj, "page 2", "?sip=" + tmz);
-                                                    }, 1000);
-                                                    setTimeout(function() {
-                                                        history.pushState(stateObj, "page 2", "?sip=" + tmz);
-                                                    }, 2000);
-                                                    setTimeout(function() {
-                                                        history.pushState(stateObj, "page 2", "?sip=" + tmz);
-                                                    }, 3000);
-                                                }
-                                            }, 1000); */
                 } else {
                     joinpartyfromconnect();
                 }
@@ -905,8 +829,6 @@ function LMserverbox() {
         joinPLAYERonstart();
 
     })(window, window.jQuery);
-
-
 }
 
 function urlIpWhenOpened() {
@@ -1544,7 +1466,6 @@ function ProceedToChangeSkins() {
     $("#loaderIframeIcon1").show();
     loadericon();
     $("#SkinBacktomenu").click();
-    //    setTimeout(function() {
     setTimeout(function() {
         $('#server-join').click();
     }, 1500);
@@ -1556,7 +1477,6 @@ function ProceedToChangeSkins() {
     $(".center-container.ogario-menu").show();
     $(".side-container.right-container").show();
     $(".side-container.left-container").show();
-    //    }, 4000);	
 }
 
 function BeforeChangingSkins() {
@@ -1576,181 +1496,14 @@ function BeforeChangingSkins() {
             });
             console.log("Recapatcha needed");
             ogarioplayfalse();
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 1000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 1500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 2000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 2500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 3000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 3500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 4000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 4500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 5000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 5500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 6000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 6500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 7000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 7500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 8000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 8500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 9000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 9500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 10000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 10500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 11000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 11500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 12000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 12500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 13000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 13500);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 14000);
-            setTimeout(function() {
-                if ($("#captchaWindow").is(":visible") == false) {
-                    $(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
-                    return false;
-                }
-            }, 14500);
-
+			for (i=1;i<26;i++){
+				setTimeout(function() {
+					if ($("#captchaWindow").is(":visible") == false) {
+						$(".btn.btn-sm.btn-warning.btn-spectate.btn-noplay-finishedRecapatcha").click();
+						return false;
+					}
+				}, i*500);
+			}
         }
     }, 2500);
 }
@@ -1891,57 +1644,6 @@ function copy(text) {
     $("#tempCopy").hide();
     $("#tempCopy").val("");
 }
-/*
-function fzogarOgarSettings(datasent2){
-        setTimeout(function() {
-            $("#import-settings-btn").attr('class', 'btn btn-success');
-            document.getElementById("import-settings").value = datasent2;
-            window.history.pushState(null, null, window.location.pathname);
-            //$('#import-settings-btn').click();
-			$('#import-settings-btn2').click();
-        }, 100);
-}		
-
-function fzogarOgarIframe() {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://legendmod.ml/AjaxData/fzogarOgarIframe.js";
-    $("body").append(s);
-}
-
-
-function fzogarOgarIframeListener(){
-///////////////////////////////////////////////////////////////////////////
-// Here "addEventListener" is for standards-compliant web browsers and "attachEvent" is for IE Browsers.
-var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-var eventer = window[eventMethod];
-// Now...
-// if 
-//    "attachEvent", then we need to select "onmessage" as the event. 
-// if 
-//    "addEventListener", then we need to select "message" as the event
-var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-// Listen to message from child IFrame window
-eventer(messageEvent, function (e) {
-       //alert(e.data);
-       // Do whatever you want to do with the data got from IFrame in Parent form.
-	   if (~e.data.indexOf("PostedOgarSettings1")){ 
-
-//		try{window.parent.postMessage("PostedOgarSettings2?datasent="+$('#export-settings').val(), "*"); 
-//        } catch (e) {}
-		//alert(e.data);
-		datasent2=e.data;
-		datasent2=datasent2.replace("PostedOgarSettings1?datasent=", "");
-		fzogarOgarSettings(datasent2);
-	//	var datasent = getParameterByName("datasent", datasent2);
-	//   alert(datasent);
-	   
-	   }
-		return datasent2;
-}, false);
-///////////////////////////////////////////////////////////////////////////
-}
-*/
 function LegendSettingsfirst() {
     $('#export-settings').before('<label><input type="checkbox" id="export-LegendSettings" class="js-switch" data-switchery="true" checked style="display: none;"> API</label>');
     var elemLegendSwitch = document.querySelector('#export-LegendSettings');
@@ -2389,13 +2091,11 @@ function YoutubeEmbPlayer(pastedDataorNot) {
     var finalUrl = getEmbedUrl(pastedDataorNot.trim());
     if (finalUrl == false) {
         toastr["error"](Premadeletter1).css("width", "210px");
-        //               setTimeout(function() {
         if (localStorage.getItem("musicUrl") == null) {
             $("#musicUrl").val(defaultMusicUrl);
         } else {
             $("#musicUrl").val(localStorage.getItem("musicUrl"));
         }
-        //               }, 500);
     } else {
         $("#musicFrame").attr("src", finalUrl);
         localStorage.setItem("musicUrl", pastedDataorNot.trim());
@@ -2466,10 +2166,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         $("#acceptYoutubeEmb").click(function() {
             YoutubeEmbPlayer(MSGCOMMANDS);
             $("#musicUrl").val(MSGCOMMANDS);
-            //setTimeout(function() {
             //$("#playerI").click();
             playYoutube(); //it's different on LME
-            //}, 1000);
         });
     } else if (MSGCOMMANDS.includes("[skype]")) {
         if ($("#nick").val().includes("skype") == false) {
@@ -3119,9 +2817,7 @@ function universalchat() {
         });
         $("#ao2t-cfg-ok").click(function() {
             if ($("#helloContainer").is(":visible")) {
-                //			      setTimeout(function() {
                 showMenu2();
-                //				   }, 100);
             }
             cfg = my.cfg_save();
             //            GM_setValue("config", JSON.stringify(cfg));
@@ -3133,9 +2829,7 @@ function universalchat() {
         });
         $("#ao2t-cfg-cancel").click(function() {
             if ($("#helloContainer").is(":visible")) {
-                //			      setTimeout(function() {
                 showMenu2();
-                //				   }, 100);
             }
             my.config_cancel();
         });
@@ -3143,11 +2837,6 @@ function universalchat() {
             $("#overlays").hide();
             $("#ao2t-cfg-dlg").hide();
         };
-        //$("#tgar_color").colorpicker({'format': 'hex'}).on('changeColor.colorpicker', function(event){
-        //    var id = event.target.id;
-        //    $('[data-ao2t-config="'+ id +'"]').val(event.color.toHex());
-        //    event.target.style.backgroundColor = event.color.toRGB();
-        //});
     };
     // -----  skin toggle  -----
     my.skinToggle_start = function() {
@@ -3648,29 +3337,14 @@ function universalchat() {
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
     }
-
-
-
-
-    setTimeout(function() {
-        //if (window.noOgarioSocket) {
-            //toastr["error"]("Master Socket is down, Connecting to Socket 3");
-            //$('#ao2t-capture').click();		
-				Socket3enabler(window.legendmod.ws);						
-        //}
-    }, 1000);
-
+	
+	Socket3enabler(window.legendmod.ws);
+	
     $('#message').keydown(function(e) {
         if (e.keyCode === 13) { // If Enter key pressed
-
-            $('#ao2t-message').click();
-            //		$('#message').val("");		
+            $('#ao2t-message').click();	
         }
     });
-    //}, 500);	
-
-
-
 }
 
 function fixservbtn() {
@@ -7183,7 +6857,6 @@ function initializeLM(modVersion) {
             }
         }, 1000);
 		$('#loaderIframeInfo').on( 'load', function() {
-			console.log('hi')
 			$('#loaderIframeInfo').remove();
 		} );		
         //setTimeout(function() {
@@ -8132,9 +7805,6 @@ function HiddenBots() {
     $("body").append(hiddenBotsJS);
 }
 
-// Socket3enabler(window.legendmod.ws);
-
-
 function Socket3enabler(srv) {
 	if (srv){
     var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
@@ -8168,7 +7838,6 @@ function Socket3enabler(srv) {
 		if (window.socket3NumberTries < 2){	
 		//Socket3enabler(window.legendmod.ws)
 		}
-		//}, 1000);
     }
 	Socket3.closeAndOpen = function(e) {
 		Socket3.onclose = function(e) {
