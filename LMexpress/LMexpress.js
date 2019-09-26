@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073p by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073q by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -259,9 +259,7 @@ var stylesLegendModConsole1 = [
 ].join(';');
 var stylesLegendModConsole2 = [
     'background: linear-gradient(grey, black)', 'border: 1px solid #3E0E02', 'color: #FFFFFF', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
-    //    , 'line-height: 40px'
     , 'text-align: center'
-    //    , 'font-weight: bold'
 ].join(';');
 
 //Animated color texts
@@ -290,15 +288,12 @@ var tcm2 = {
         override: function() {
             tcm2.f.prototype_override('canvas', 'fillText', 'before', function(a, b) {
                 if (a.canvas.id != "minimap" && a.canvas.id != "minimap-sectors" && a.canvas.id != "ao2t-minimap") {
-                    //console.log(a.canvas.id);
                     a.fillStyle = tcm2.f.gradient(a);
                 }
             });
         }
     }
 };
-//tcm2.f.override();
-
 
 var $head = $("head");
 var $headlinklast = $head.find("link[rel='stylesheet']:last");
@@ -325,7 +320,6 @@ if (minbtext == null || minbtext == "") {
 }
 
 var datasent2;
-//fzogarOgarIframeListener();
 emphasischat();
 //specialeffecttargeting();
 function startLM(modVersion) {
@@ -5309,25 +5303,22 @@ function doFB() {
 }
 
 function doGl2() {
-    //				setTimeout(function() {	
     if (gapi && gapi.auth2.getAuthInstance().isSignedIn.get()) {
         doGl();
     }
-    //            }, 1000); 	
 }
 
 function doFB2() {
-    //				setTimeout(function() {	
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             doFB();
         }
-    });
-    //            }, 1000); 	
+    });	
 }
 
-function loginsfbGplstart() {
-    //				setTimeout(function() {	
+function loginsfbGplstart() {	
+	setTimeout(function() {
+	var gapi;
     if (gapi && gapi.auth2.getAuthInstance().isSignedIn.get()) {
         doGl();
     } else {
@@ -5336,8 +5327,8 @@ function loginsfbGplstart() {
                 doFB();
             }
         });
-    }
-    //            }, 1000);					
+    }	
+	}, 2000);
 }
 
 function loginsfbGpl() {
