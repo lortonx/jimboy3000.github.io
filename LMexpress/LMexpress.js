@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -10,10 +10,10 @@ $('#gamemode').trigger('change');
 }, 1500);
 */
 
-$("#toast-container").hide();
-setTimeout(function() {
-    $("#toast-container").show()
-}, 8000);
+///$("#toast-container").hide();
+//setTimeout(function() {
+//    $("#toast-container").show()
+//}, 8000);
 appendLMhiFbPs();
 PreLcCelebration();
 loadericon();
@@ -231,6 +231,12 @@ window.a = 0;
 var b, c;
 var animatedserverchanged = false;
 
+if (timesopened != null) {
+   timesopened++;
+   localStorage.setItem("timesopened", timesopened);
+} else if (timesopened == null) {
+   localStorage.setItem("timesopened", "0");
+}
 loadersetings();
 
 //
@@ -450,12 +456,7 @@ function init(modVersion) {
     $("#gamemode").prop('disabled', false);
     $("#region").prop('disabled', false);
 
-    if (timesopened != null) {
-        timesopened++;
-        localStorage.setItem("timesopened", timesopened);
-    } else if (timesopened == null) {
-        localStorage.setItem("timesopened", "0");
-    }
+
     pre_loopLM(modVersion);
 }
 
@@ -482,7 +483,7 @@ function getEmbedUrl(url) {
 }
 
 function loadersetings() {
-    setTimeout(function() {
+    //setTimeout(function() {
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -532,18 +533,18 @@ function loadersetings() {
             }
         }
 
-    }, 3500);
+    //}, 3500);
 }
 
 function loadericon() {
     //continue loadericon
     //    setTimeout(function() {
-    setTimeout(function() {
+    //setTimeout(function() {
         $("#imagebig").fadeOut(1500);
         setTimeout(function() {
             $("#imagebig").remove();
         }, 1600); //remove it
-    }, 1000);
+    //}, 1000);
     //		}, 100);
 }
 
