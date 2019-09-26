@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073q by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7681,8 +7681,6 @@ function BeforeSpecialDeals() {
     SpecialDealsJS.type = "text/javascript";
     SpecialDealsJS.src = "https://legendmod.ml/LMexpress/olddeals.js";
     $("body").append(SpecialDealsJS);
-
-    window.open('https://legendmod.ml/LMexpress/olddeals.html', '_blank');
 }
 
 
