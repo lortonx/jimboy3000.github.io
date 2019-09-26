@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -571,10 +571,10 @@ function getaccesstoken() {
 function getaccesstoken2(accesstomod) {
     //    setTimeout(function() {
     if (accesstomod != "a" && accesstomod != null) {
-        toastr["error"]('<b>[' + Premadeletter123 + ']:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://legendmod.ml/legendmod.user.js"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
-        setTimeout(function() {
+        toastr["error"]('<b>[' + Premadeletter123 + ']:</b> ' + Premadeletter88 + ', <br>' + Premadeletter118 + ': <a target="_blank" href="https://legendmod.ml/legendmod.user.js"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a><br>' + Premadeletter89).css("width", "300px");
+        //setTimeout(function() {
             document.documentElement.innerHTML = "";
-        }, 8000);
+        //}, 8000);
     }
     //   }, 10000);
 }
@@ -2608,14 +2608,14 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
                     $("#server-join").click();
                 }, 60000);
             } else if (commandMsg == "RU-Russia") {
-                setTimeout(function() {
+                //setTimeout(function() {
                     $("#server-join").click();
-                }, 1000);
+                //}, 1000);
             } else {
                 //bug fix
-                setTimeout(function() {
+                //setTimeout(function() {
                     $("#server-join").click();
-                }, 1000);
+                //}, 1000);
             }
         }
     }
@@ -3655,10 +3655,8 @@ function universalchat() {
     setTimeout(function() {
         //if (window.noOgarioSocket) {
             //toastr["error"]("Master Socket is down, Connecting to Socket 3");
-            //$('#ao2t-capture').click();
-			setTimeout(function() {
-				Socket3enabler(window.legendmod.ws);
-			}, 1000);				
+            //$('#ao2t-capture').click();		
+				Socket3enabler(window.legendmod.ws);						
         //}
     }, 1000);
 
