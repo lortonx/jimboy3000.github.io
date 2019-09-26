@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073i by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5004,130 +5004,130 @@ function languagemodfun() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackGreek.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("2");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 3) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackSpanish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("3");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 4) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackBulgarian.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("4");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 5) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackFrench.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("5");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 6) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackArabic.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("6");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 7) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackTraditionalChinese.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("7");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 8) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackRussian.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("8");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 9) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackGerman.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("9");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 10) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackTurkish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("10");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
     if (languagemod == 11) {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackPolish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#legendlanguages').val("11");
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
-        }, 800);
+        //}, 800);
     }
 }
 
@@ -5138,13 +5138,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackEnglish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 2) {
         localStorage.setItem("languagemod", 2);
@@ -5152,13 +5152,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackGreek.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 3) {
         localStorage.setItem("languagemod", 3);
@@ -5166,13 +5166,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackSpanish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 4) {
         localStorage.setItem("languagemod", 4);
@@ -5180,13 +5180,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackBulgarian.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 5) {
         localStorage.setItem("languagemod", 5);
@@ -5194,13 +5194,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackFrench.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 6) {
         localStorage.setItem("languagemod", 6);
@@ -5208,13 +5208,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackArabic.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 7) {
         localStorage.setItem("languagemod", 7);
@@ -5222,13 +5222,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackTraditionalChinese.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 8) {
         localStorage.setItem("languagemod", 8);
@@ -5236,13 +5236,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackRussian.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 9) {
         localStorage.setItem("languagemod", 9);
@@ -5250,13 +5250,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackGerman.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 10) {
         localStorage.setItem("languagemod", 10);
@@ -5264,13 +5264,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackTurkish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
     if ($("#legendlanguages").val() == 11) {
         localStorage.setItem("languagemod", 11);
@@ -5278,13 +5278,13 @@ function changeModLanguage() {
         s.type = "text/javascript";
         s.src = "https://legendmod.ml/LanguagePackPolish.js";
         $("body").append(s);
-        setTimeout(function() {
+        //setTimeout(function() {
             var s1 = document.createElement("script");
             s1.type = "text/javascript";
             s1.src = "https://legendmod.ml/LanguagePackHandler.js";
             $("body").append(s1);
 
-        }, 800);
+        //}, 800);
     }
 }
 
