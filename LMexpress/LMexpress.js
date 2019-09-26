@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073o by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073p by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -4762,15 +4762,9 @@ function triggerLMbtns() {
             $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
         }
     });
-    //	if (autoRespawn == "true") { $("#autoRespawnBtn").click(); }
-    //	if (IPBtn  == "true") { $("#IPBtn").click(); }
     if (SHOSHOBtn == "true") {
         $("#SHOSHOBtn").click();
     }
-    //	if (TIMEBtn == "true") { $("#TIMEBtn").click(); }
-    //	if (MAINBBtn == "true") { $("#MAINBBtn").click(); }
-    //	if (MAINBTBtn  == "true") { $("#MAINBTBtn").click(); }
-    //	if (MANUIBtn  == "true") { $("#MANUIBtn").click(); }
     if (MAINBTBtn == "true") {
         $("#MAINBTBtn").click();
     }
@@ -4778,19 +4772,12 @@ function triggerLMbtns() {
         $("#AnimatedSkinBtn").click();
     }
     toastrSkinNotice = 1;
-    //	if (RotationBtn  == "true") { $("#RotationBtn").click(); }
-    //            if (YoutubeAutoBtn == "true") {
-    //                $("#YoutubeAutoBtn").click();
-    //            }
     if (XPBtn == "true") {
         $("#XPBtn").click();
     }
     if (TIMEcalBtn == "true") {
         $("#TIMEcalBtn").click();
     }
-    /*            if (troll1Btn == "true") {
-                    $("#troll1Btn").click();
-                }*/
     if (ComPosition == 0) {
         $("#topright").click();
     }
@@ -4800,9 +4787,6 @@ function triggerLMbtns() {
     if (ComPosition == 2) {
         $("#bottomright").click();
     }
-    //           if (DoubleSplitRangeSaved == "true") { //For Setting DoubleSplitRange
-    //               $("#DoubleSplitRange").click();
-    //           }	
     if (UniversalChatSaved == "false") {
         $("#UniversalChat").click();
     }
@@ -4818,15 +4802,6 @@ function triggerLMbtns() {
     if (AnimatedRainbowColorSaved == "true") {
         $("#AnimatedRainbowColor").click();
     }
-    //	if (ComPosition  == 3) { $("#bottomleft").click(); }
-    /*            if (autoCoinBtn == "true") {
-                    setTimeout(function() {
-                        $("#autoCoinBtn").click();
-                    }, 5000); 
-                }*/
-    //	if (copyGameNames == "true") {
-    //		setTimeout(function () {$("#copyGameNames").click();}, 1000); }	
-
     document.getElementById("minimapPicture").value = localStorage.getItem("minimapbckimg");
     if ($('#minimapPicture').val() != "") {
         setminbgname();
@@ -4863,7 +4838,6 @@ function triggerLMbtns() {
     if ($('#minbtext').val() != "" && $('#minbtext').val() != null) {
         setminbtext();
     }
-
     document.getElementById("pic1url").value = localStorage.getItem("pic1urlimg");
     if ($('#pic1url').val() != "") {
         setpic1url();
@@ -4979,7 +4953,6 @@ function triggerLMbtns() {
 }
 
 function opendyinglight() {
-    //toastr["info"]("Function is not ready yet");	
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "https://legendmod.ml/dyinglight.js";
@@ -4989,7 +4962,6 @@ function opendyinglight() {
 
 function bluebtns() {
     var Top5MassColor = $("#top5MassColor").val();
-
     //blue onmouseover-onmouseout buttons
     $('#searchShortcut').mouseenter(function() {
             $('#searchShortcut').css('background-color', Top5MassColor);
@@ -7292,25 +7264,11 @@ function initializeLM(modVersion) {
     $('#server-connect').click(function() {
         adres(null, null, null);
     });
-
-
-    console.group('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
-    console.group("Part of");
-    console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
-    console.groupEnd();
-    console.group("Mod developed by");
-    console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
-    console.groupEnd();
-    console.groupEnd();
-
-    setTimeout(function() {
-
-        //$('#server-join').click(); //next time that ogario will be down
+		consoleNotice();	
         loginsfbGplstart();
         triggerLMbtns();
         languagemodfun();
         $('[data-toggle="tooltip"]').tooltip();
-    }, 2000);
     /*		toastr["info"]('<div id="tutorial" style="background-image: url(https://legendmod.ml/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
     		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
     		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
@@ -7319,6 +7277,16 @@ function initializeLM(modVersion) {
     //    }, 1500);
 }
 
+function consoleNotice(){
+    console.group('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
+    console.group("Part of");
+    console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by");
+    console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
+    console.groupEnd();
+    console.groupEnd();
+}
 function joinSIPonstart() {
     setTimeout(function() {
         if (searchSip != null) {
@@ -7693,21 +7661,13 @@ function animateSkin(a, b, verifiednames, d, e, i) {
     setTimeout(function() {
         //if (verifiednames==legendmod.leaderboard[d].nick){
         legendmod3.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-        //console.log(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");		
-        //console.log("https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-        //console.log(window.a);
         if (b == e) {
-            //console.log("Animated Skins: End of cycle: " + i);
             if (i == 9) {
                 window.anual = 0;
                 if (animatedserverchanged == false) {
-                    //animateSkincheck();
-                    //console.log("Animated Skins: End of total cycles");
                 }
             }
-            //animateSkincheck()
         }
-        //}
     }, window.anual);
 }
 
@@ -7736,28 +7696,17 @@ function BeforeSpecialDeals() {
 
 
 function isEquivalent(a, b) {
-    // Create arrays of property names
     var aProps = Object.getOwnPropertyNames(a);
     var bProps = Object.getOwnPropertyNames(b);
-
-    // If number of properties is different,
-    // objects are not equivalent
     if (aProps.length != bProps.length) {
         return false;
     }
-
     for (var i = 0; i < aProps.length; i++) {
         var propName = aProps[i];
-
-        // If values of same property are not equal,
-        // objects are not equivalent
         if (a[propName] !== b[propName]) {
             return false;
         }
     }
-
-    // If we made it this far, objects
-    // are considered equivalent
     return true;
 }
 
@@ -7871,8 +7820,6 @@ function Socket3handler(message) {
     }	
     else if (Socket3data.com == "pcells") { 
 		Socket3updateTeamPlayerCells(Socket3data);
-
-		//}
     }		
 }
 
