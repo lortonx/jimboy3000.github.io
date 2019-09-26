@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073n by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073o by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -328,7 +328,7 @@ var datasent2;
 //fzogarOgarIframeListener();
 emphasischat();
 //specialeffecttargeting();
-function init(modVersion) {
+function startLM(modVersion) {
     // ANNOUNCEMENTS
     //toastr["info"]('<b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">'+'Legend mod </span></font> is back!<br><font color="red"></b>Enable Vanilla skins on Settings</font>').css("width", "350px");
     if (modVersion != "1.7") {
@@ -446,9 +446,7 @@ function init(modVersion) {
 
     $("#gamemode").prop('disabled', false);
     $("#region").prop('disabled', false);
-
-
-    pre_loopLM(modVersion);
+    return initializeLM(modVersion);
 }
 
 
@@ -5917,13 +5915,13 @@ function showonceusers3returner(showonceusers3) {
     return showonceusers3;
 }
 
-function pre_loopLM(modVersion) {
+function init(modVersion) {
     if (!document.getElementById("message-box")) {
-        setTimeout(pre_loopLM, 200);
+        setTimeout(init(modVersion), 200);
         console.log("ogario.js not loaded");
         return;
     }
-    return initializeLM(modVersion);
+    return startLM(modVersion);
 }
 
 function initializeLM(modVersion) {
