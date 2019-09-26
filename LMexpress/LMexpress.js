@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073j by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073k by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -6246,7 +6246,7 @@ function showonceusers3returner(showonceusers3) {
 function pre_loopLM(modVersion) {
     if (!document.getElementById("message-box")) {
         setTimeout(pre_loopLM, 200);
-        console.log("Ogario not loaded");
+        console.log("ogario.js not loaded");
         return;
     }
     return initializeLM(modVersion);
@@ -7176,15 +7176,19 @@ function initializeLM(modVersion) {
         $('#loaderIframeInfo1').hide();
         //		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
 
-        setTimeout(function() {
+        /*setTimeout(function() {
             if (legendflags.includes(LowerCase($("#nick").val()))) {
                 //console.log("[Legend mod Express] " + LowerCase($("#nick").val()) + " skin found. Skin registered");
                 core.registerSkin($("#nick").val(), null, "https://legendmod.ml/agario/live/flags/" + LowerCase($("#nick").val()) + ".png", null);
             }
-        }, 1500);
-        setTimeout(function() {
-            $('#loaderIframeInfo1').remove();
-        }, 4000);
+        }, 1500);*/
+		$('#loaderIframeInfo1').on( 'load', function() {
+			console.log('hi')
+			$('#loaderIframeInfo1').remove();
+		} );		
+        //setTimeout(function() {
+            //$('#loaderIframeInfo1').remove();
+        /}, 4000);
         return lastIP = $('#server-token').val();
     });
 
