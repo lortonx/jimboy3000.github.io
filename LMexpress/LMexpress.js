@@ -5328,7 +5328,7 @@ function loginsfbGplstart() {
             }
         });
     }	
-	}, 2000);
+	}, 4000);
 }
 
 function loginsfbGpl() {
