@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.073d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.073e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -6389,7 +6389,7 @@ function getSNEZServers(ifcalled) {
                                 }
                             }
                             var temporaryserver = JSON.stringify(data[player]);
-							var window.temporaryserverA = temporaryserver;
+							window.temporaryserverA = temporaryserver;
                             var temporaryserver2;
                             var temporaryserver3;
                             var temporaryserver1 = getParameterByName("r", temporaryserver);
