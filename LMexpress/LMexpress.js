@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -6812,7 +6812,14 @@ function initializeLM(modVersion) {
         //		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
 
         setTimeout(function() {
-            if (legendflags.includes(LowerCase($("#nick").val()))) {
+			if (window.FreskinsMap && window.FreskinsMap.includes($("#nick").val())){
+				for (var player = 0; player < window.FreeSkins.length; player++) {
+					if (y == window.FreeSkins[player].id){	
+						core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
+					}
+				}														
+			}				
+            else if (legendflags.includes(LowerCase($("#nick").val()))) {
                 //console.log("[Legend mod Express] " + LowerCase($("#nick").val()) + " skin found. Skin registered");
                 core.registerSkin($("#nick").val(), null, "https://legendmod.ml/agario/live/flags/" + LowerCase($("#nick").val()) + ".png", null);
             }
