@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -6814,8 +6814,8 @@ function initializeLM(modVersion) {
         setTimeout(function() {
 			if (window.FreskinsMap && window.FreskinsMap.includes($("#nick").val())){
 				for (var player = 0; player < window.FreeSkins.length; player++) {
-					if (y == window.FreeSkins[player].id){	
-						core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
+					if ($("#nick").val() == window.FreeSkins[player].id){	
+						core.registerSkin($("#nick").val(), null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
 					}
 				}														
 			}				
