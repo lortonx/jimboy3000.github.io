@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5808,7 +5808,8 @@ function getSNEZServers(ifcalled) {
                                 //temporaryserver1a = temporaryserver1a.split('\"\,\"tag')[0];
 								temporaryserver1a = temporaryserver1a.split('\"\,\"tag')[0].split('\"\,\"AID')[0].split('\"\,\"hidecountry')[0];
                                 appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span class='main-color'><span id='playerinfo'>" + temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2, temporaryserver1, temporaryserver1a);
-                            } else {
+                            } 
+							else if (data[player].extra && data[player].extra.ip_info){
                                 appendLog2("<span class='main-color'><span id='playerinfo'>" + temporaryserver3.trim() + "</span> <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span>" + " (<span id='tokeninfo'>" + temporaryserver2 + "</span>)", temporaryserver2);
                             }
                             showonceusers3++;
@@ -5838,7 +5839,8 @@ function getSNEZServers(ifcalled) {
                                     //temporaryserver1a = temporaryserver1a.split('\"\,\"tag')[0];
 									temporaryserver1a = temporaryserver1a.split('\"\,\"tag')[0].split('\"\,\"AID')[0].split('\"\,\"hidecountry')[0];
                                     appendLog3("Region:<span id='regioninfo'>" + temporaryserver1 + "</span>, Mode<span id='modeinfo'>" + temporaryserver1a + "</span>. <span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2, temporaryserver1, temporaryserver1a);
-                                } else {
+                                } 
+								else if (data[player].extra && data[player].extra.ip_info){
                                     appendLog2("<span id='playerinfo'>" + temporaryserver3.trim() + " <span data-toggle='popover' data-placement='left' title='' data-content='data-html='true' class='country-icon flag-icon flag-icon-" + data[player].extra.ip_info.country.toLowerCase() + "' data-original-title='Player Details'></span></span> (<span class='main-color'><span id='tokeninfo'>" + temporaryserver2 + "</span></span>)", temporaryserver2);
                                 }
                                 showonceusers3++;
