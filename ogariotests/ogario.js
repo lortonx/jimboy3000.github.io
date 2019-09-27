@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1366 MEGA TEST
+// v1.1367 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7560,8 +7560,16 @@ var thelegendmodproject = function(t, e, i) {
 						if (LM.gameMode == ":party"){
 							y = y + "#000000";
 						}
-						//console.log(g)
-						if (g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))){
+						//console.log(g)					
+						if (window.FreskinsMap && window.FreskinsMap.includes(y)){
+							for (var player = 0; player < window.FreeSkins.length; player++) {
+								if (y == window.FreeSkins[player].id){	
+									core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
+									console.log("https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image)
+								}
+							}														
+						}	
+						else if (g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))){
 							var g1 = g.replace('%custom_', 'skin_custom_')
 							core.registerSkin(y, null, "https://configs.agario.miniclippt.com/live/custom_skins/" + g1 + ".png", null);
 						}
@@ -7572,16 +7580,7 @@ var thelegendmodproject = function(t, e, i) {
 							g1 = makeUpperCaseAfterUnderline(g1);
 							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);		
 							window.customskinanimated = true;
-						}
-						else if (window.FreskinsMap && window.FreskinsMap.includes(y)){
-							for (var player = 0; player < window.FreeSkins.length; player++) {
-								if (y == window.FreeSkins[player].id){	
-									console.log(player)
-									core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
-									console.log("https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image)
-								}
-							}														
-						}					
+						}							
 						else if (window.vanillaskins == true && window.LMAgarGameConfiguration != undefined) {						
                             for (var player = 0; player < window.EquippableSkins.length; player++) {
                                 if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
