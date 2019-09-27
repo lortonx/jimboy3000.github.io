@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1363 MEGA TEST
+// v1.1364 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7573,7 +7573,7 @@ var thelegendmodproject = function(t, e, i) {
 							core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);		
 							window.customskinanimated = true;
 						}
-						else if (window.FreskinsMap.includes(y)){
+						else if (window.Freskins && window.FreskinsMap.includes(y)){
 							for (var player = 0; player < window.FreeSkins.length; player++) {
 								if (window.FreskinsMap[player] == window.FreeSkins[player].id){									
 									core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
