@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5252,13 +5252,13 @@ function preventcanvasimagecrash() {
 }
 
 function doGl() {
-    $("#UserProfilePic>img").attr('src', gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
-    $("#UserProfileName1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
-    $("#UserProfileUID1").text(gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
+    $("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
+    $("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
+    $("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
 
-    userfirstname = gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
-    userid = gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
-    userlastname = gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
+    userfirstname = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
+    userid = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
+    userlastname = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
     if (userfirstname != null) {
         localStorage.setItem("userfirstname", userfirstname);
     }
@@ -5303,8 +5303,7 @@ function doFB() {
 }
 
 function doGl2() {
-	var gapi;
-    if (gapi && gapi.auth2.getAuthInstance().isSignedIn.get()) {
+    if (window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance().isSignedIn.get()) {
         doGl();
     }
 }
@@ -5319,8 +5318,7 @@ function doFB2() {
 
 function loginsfbGplstart() {	
 	setTimeout(function() {
-	var gapi;
-    if (gapi && gapi.auth2.getAuthInstance().isSignedIn.get()) {
+    if (window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance().isSignedIn.get()) {
         doGl();
     } else {
         FB.getLoginStatus(function(response) {
