@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5303,6 +5303,7 @@ function doFB() {
 }
 
 function doGl2() {
+	var gapi;
     if (gapi && gapi.auth2.getAuthInstance().isSignedIn.get()) {
         doGl();
     }
