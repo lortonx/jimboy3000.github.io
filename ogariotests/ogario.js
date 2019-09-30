@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1373 MEGA TEST
+// v1.1374 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4654,7 +4654,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.SLGconnect2(srv);
                     } else {
 							window.SLGsocket['send'](JSON.stringify({
-							"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+							"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag
 							}));						
                         //window.SLGsocket.closeAndOpen();
                     }
@@ -4678,7 +4678,7 @@ var thelegendmodproject = function(t, e, i) {
                         "password": "legendmod2"
                     }));
                     window.SLGsocket['send'](JSON.stringify({
-                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag
                     }));
                     //					
                 }
@@ -4718,7 +4718,7 @@ var thelegendmodproject = function(t, e, i) {
                 //Sonia4
                 if (window.SLGsocket) {
                     window.SLGsocket['send'](JSON.stringify({
-                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag
                     }));					
                     //window.SLGsocket['onmessage'] = null;
                     //try {
@@ -4731,7 +4731,7 @@ var thelegendmodproject = function(t, e, i) {
             'closeSLGConnection': function() {
                 if (window.SLGsocket) {
                     window.SLGsocket['send'](JSON.stringify({
-                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag
                     }));					
                     //window.SLGsocket['onmessage'] = null;
                    // try {
@@ -4811,7 +4811,7 @@ var thelegendmodproject = function(t, e, i) {
                         //this.SLGconnect(window.legendmod.ws);
                         if (window.SLGsocket) {
 							window.SLGsocket['send'](JSON.stringify({
-								"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+								"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag
 							}));							
                             //window.SLGsocket.closeAndOpen();
                         }
@@ -5248,7 +5248,7 @@ var thelegendmodproject = function(t, e, i) {
                             }
                             //console.log("send", temp)
                             SLGsocket.send(JSON.stringify({
-                                "toH": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;,
+                                "toH": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag,
                                 "msg": temp
                             }));
                         }
