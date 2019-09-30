@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1374 MEGA TEST
+// v1.1375 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -584,6 +584,7 @@ var languagetexts = {
         'showMapBorders': 'Granice mapy',
         'showGhostCells': 'Duchy kulek (fps drop)',
         'showGhostCellsInfo': 'Ghost cells info (confusing)',
+		'showPartyBots': 'Party bots',
         'rotateMap': 'Rotate Map',
         'showMiniMap': 'Pokaż minimapę',
         'showMiniMapGrid': 'Pokaż siatkę minimapy',
@@ -981,6 +982,7 @@ var languagetexts = {
         'showMapBorders': 'Show map borders',
         'showGhostCells': 'Ghost cells (fps drop)',
         'showGhostCellsInfo': 'Ghost cells info (confusing)',
+		'showPartyBots': 'Party bots',
         'rotateMap': 'Rotate Map',
         'showMiniMap': 'Show minimap',
         'showMiniMapGrid': 'Show minimap grid',
@@ -1970,6 +1972,7 @@ var defaultmapsettings = {
     'showMapBorders': true,
     'showGhostCells': false,
     'showGhostCellsInfo': false,
+	'showPartyBots': false,
     'showMiniMap': true,
     'rotateMap': true,
     'showMiniMapGrid': false,
@@ -2786,6 +2789,16 @@ var thelegendmodproject = function(t, e, i) {
             'setHideTeammatesNames': function() {
                 defaultmapsettings.hideTeammatesNames = !defaultmapsettings.hideTeammatesNames;
             },
+            'setshowPartyBots': function() {
+                defaultmapsettings.showPartyBots = !defaultmapsettings.showPartyBots;
+				if (defaultmapsettings.showPartyBots){
+					$(".quick.quick-bots.ogicon-trophy").hide();
+				}
+				else{
+					$(".quick.quick-bots.ogicon-trophy").show();
+				}
+            },			
+			
             'setShowMass': function() {
                 defaultmapsettings.showMass = !defaultmapsettings.showMass;
             },
@@ -3520,7 +3533,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"),
                     this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "hidecountry"], "chatGroup"),
                     this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
-                    this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo"], "helpersGroup"), //Sonia2
+                    this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"), //Sonia2
                     this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                     this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"),
                     this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
@@ -8973,6 +8986,15 @@ var thelegendmodproject = function(t, e, i) {
                     'keyUp': null,
                     'type': 'normal'
                 },
+                'hk-showPartyBots': {
+                    'label': h['hk-showPartyBots'],
+                    'defaultKey': '',
+                    'keyDown': function() {
+                        ogarminimapdrawer && ogarminimapdrawer.setshowPartyBots();
+                    },
+                    'keyUp': null,
+                    'type': 'normal'
+                },				
                 'hk-showMass': {
                     'label': h['hk-showMass'],
                     'defaultKey': 'M',
