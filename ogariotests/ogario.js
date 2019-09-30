@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1385 MEGA TEST
+// v1.1386 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4229,7 +4229,6 @@ var thelegendmodproject = function(t, e, i) {
 							}
                         } 
 						catch (error) {
-							console.log('error')
 						}		
                         this.customSkinsCache[e + "_cached"] = new Image;
                         this.customSkinsCache[e + "_cached"].src = i.toDataURL();
@@ -4254,15 +4253,9 @@ var thelegendmodproject = function(t, e, i) {
                         $.arc(depth/2, depth/2, depth/2, 0, 2 * Math.PI, false);
                         $.clip();
                         try {
-								if (this.customSkinsCache[e + "_cached"]){
-									$.drawImage(this.customSkinsCache[e + "_cached"], 0, 0, depth, depth);
-								}
-								else{
-									$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);
-								}
+							$.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);								
                         } 
-						catch (error) {
-							
+						catch (error) {						
 						}							
                         this.customSkinsCache[e + "_cached2"] = new Image;
                         this.customSkinsCache[e + "_cached2"].src = i.toDataURL();
@@ -4292,8 +4285,7 @@ var thelegendmodproject = function(t, e, i) {
                         try {
 								$.drawImage(this.customSkinsCache[e], this.customSkinsCache[e].width/2, 0, this.customSkinsCache[e].width/2 , this.customSkinsCache[e].height, 0, 0, depth, depth);							
                         }
-						catch (error) {
-							
+						catch (error) {						
 						}							
                         this.customSkinsCache[e + "_cached3"] = new Image;
                         this.customSkinsCache[e + "_cached3"].src = i.toDataURL();
