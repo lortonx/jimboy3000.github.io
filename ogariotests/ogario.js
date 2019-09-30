@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1377 MEGA TEST
+// v1.1378 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7537,6 +7537,7 @@ var thelegendmodproject = function(t, e, i) {
                     e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(w, u) + ']</span>', e += '</span>';
                 }
                 ogarminimapdrawer['displayLeaderboard'](t, e);
+				ogarminimapdrawer['displayPartyBots']();
                 ///////////////// establish core.registerSkin
                 if (window.vanillaskins == true && window.customskinsname != null && window.customskinsurl != null && ogarminimapdrawer.customSkinsMap[window.customskinsname] == null) {
                         for (i = 0; i <= this.leaderboard.length - 1; i++) {
