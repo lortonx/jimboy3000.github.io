@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1380 MEGA TEST
+// v1.1381 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4206,7 +4206,7 @@ var thelegendmodproject = function(t, e, i) {
                 //console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue.length) {
                     var e = this.cacheQueue.shift();
-                    if (e) {
+                    if (e && !this.customSkinsCache[e + "_cached"]) {
 						var depth = 512;
 						this.checkgraphics();				
 						if (ogarminimapdrawer.graphics){
@@ -4238,7 +4238,7 @@ var thelegendmodproject = function(t, e, i) {
             'cacheSkin2': function(t) {
                 if (0 != this.cacheQueue2.length) {
                     var e = this.cacheQueue2.shift();
-                    if (e) {
+                    if (e && !this.customSkinsCache[e + "_cached"]) {
 						var depth = 64;
                         var i = document.createElement("canvas");
                         i.width = depth;
@@ -4262,7 +4262,7 @@ var thelegendmodproject = function(t, e, i) {
                 //console.log(t);  //////// return the image src
                 if (0 != this.cacheQueue3.length) {
                     var e = this.cacheQueue3.shift();
-                    if (e) {
+                    if (e && !this.customSkinsCache[e + "_cached"]) {
 						var depth = 512;
 						this.checkgraphics();				
 						if (ogarminimapdrawer.graphics){
