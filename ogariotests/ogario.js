@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1372 MEGA TEST
+// v1.1373 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4653,7 +4653,10 @@ var thelegendmodproject = function(t, e, i) {
                         window.SLGconnected = true; //do this only once	
                         this.SLGconnect2(srv);
                     } else {
-                        window.SLGsocket.closeAndOpen();
+							window.SLGsocket['send'](JSON.stringify({
+							"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+							}));						
+                        //window.SLGsocket.closeAndOpen();
                     }
                 }
             },
@@ -4675,7 +4678,7 @@ var thelegendmodproject = function(t, e, i) {
                         "password": "legendmod2"
                     }));
                     window.SLGsocket['send'](JSON.stringify({
-                        "joinHub": "legendmod2"
+                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
                     }));
                     //					
                 }
@@ -4714,21 +4717,27 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 //Sonia4
                 if (window.SLGsocket) {
-                    window.SLGsocket['onmessage'] = null;
-                    try {
-                        window.SLGsocket['close']();
-                    } catch (ogarcloseconlabel) {}
-                    window.SLGsocket = null;
+                    window.SLGsocket['send'](JSON.stringify({
+                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+                    }));					
+                    //window.SLGsocket['onmessage'] = null;
+                    //try {
+                        //window.SLGsocket['close']();
+                    //} catch (ogarcloseconlabel) {}
+                   // window.SLGsocket = null;
                 }
             },
             //Sonia6
             'closeSLGConnection': function() {
                 if (window.SLGsocket) {
-                    window.SLGsocket['onmessage'] = null;
-                    try {
-                        window.SLGsocket['close']();
-                    } catch (ogarcloseconlabel) {}
-                    window.SLGsocket = null;
+                    window.SLGsocket['send'](JSON.stringify({
+                        "joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+                    }));					
+                    //window.SLGsocket['onmessage'] = null;
+                   // try {
+                        //window.SLGsocket['close']();
+                    //} catch (ogarcloseconlabel) {}
+                    //window.SLGsocket = null;
                 }
             },
             'reconnect': function() {
@@ -4801,7 +4810,10 @@ var thelegendmodproject = function(t, e, i) {
                         console.log("Sending failed. Reconnecting required..")
                         //this.SLGconnect(window.legendmod.ws);
                         if (window.SLGsocket) {
-                            window.SLGsocket.closeAndOpen();
+							window.SLGsocket['send'](JSON.stringify({
+								"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+							}));							
+                            //window.SLGsocket.closeAndOpen();
                         }
                         return;
                     }
@@ -4811,7 +4823,7 @@ var thelegendmodproject = function(t, e, i) {
                         var temp = s + t;
                         console.log(temp);
                         SLGsocket.send(JSON.stringify({
-                            "toH": "legendmod2",
+                            "toH": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag,
                             "msg": temp
                         }));
                     }
@@ -5222,7 +5234,10 @@ var thelegendmodproject = function(t, e, i) {
                             console.log("Sending failed. Reconnecting required..")
                             //this.SLGconnect(window.legendmod.ws);
                             if (window.SLGsocket) {
-                                window.SLGsocket.closeAndOpen();
+								window.SLGsocket['send'](JSON.stringify({
+								"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+								}));								
+                                //window.SLGsocket.closeAndOpen();
                             }
                             return;
                         }
@@ -5233,7 +5248,7 @@ var thelegendmodproject = function(t, e, i) {
                             }
                             //console.log("send", temp)
                             SLGsocket.send(JSON.stringify({
-                                "toH": "legendmod2",
+                                "toH": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;,
                                 "msg": temp
                             }));
                         }
