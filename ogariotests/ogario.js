@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1374 MEGA TEST
+// v1.1375 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5235,7 +5235,7 @@ var thelegendmodproject = function(t, e, i) {
                             //this.SLGconnect(window.legendmod.ws);
                             if (window.SLGsocket) {
 								window.SLGsocket['send'](JSON.stringify({
-								"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag;
+								"joinHub": "LM" + $("#server-token").val() + legendmod3.lastSentClanTag
 								}));								
                                 //window.SLGsocket.closeAndOpen();
                             }
