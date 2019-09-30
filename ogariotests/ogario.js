@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1378 MEGA TEST
+// v1.1379 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2789,16 +2789,6 @@ var thelegendmodproject = function(t, e, i) {
             'setHideTeammatesNames': function() {
                 defaultmapsettings.hideTeammatesNames = !defaultmapsettings.hideTeammatesNames;
             },
-            'setshowPartyBots': function() {
-                defaultmapsettings.showPartyBots = !defaultmapsettings.showPartyBots;
-				if (defaultmapsettings.showPartyBots){
-					$(".quick.quick-bots.ogicon-trophy").hide();
-				}
-				else{
-					$(".quick.quick-bots.ogicon-trophy").show();
-				}
-            },			
-			
             'setShowMass': function() {
                 defaultmapsettings.showMass = !defaultmapsettings.showMass;
             },
@@ -3510,9 +3500,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<input type="checkbox" id="pushCaptchaBots" disabled></input> <b>Push more bots</b>					
 					</span></div></div>					
-					<br><br><br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>	
-					<u><a href="https://github.com/jimboy3100/jimboy3100.github.io/blob/master/ExampleScripts/agario-bots2/agario-bots-proxies/" target="_blank">Proxy bots</a></u>
-					<u><a href="https://www.youtube.com/watch?v=CROvbjyLmS0" target="_blank">Sample Video</a></u>							
+					<br><br><br><br><u><a href="https://github.com/jimboy3100/jimboy3100.github.io/tree/master/ExampleScripts/agario-bots2" target="_blank">Installation</a></u>							
 					</div>`),
                     this.protocolMode || $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + h.page_menu_main_dailyquests + '"></a>'),
                     $(".party-dialog, .partymode-info").remove(),
@@ -8995,16 +8983,7 @@ var thelegendmodproject = function(t, e, i) {
                     },
                     'keyUp': null,
                     'type': 'normal'
-                },
-                'hk-showPartyBots': {
-                    'label': h['hk-showPartyBots'],
-                    'defaultKey': '',
-                    'keyDown': function() {
-                        ogarminimapdrawer && ogarminimapdrawer.setshowPartyBots();
-                    },
-                    'keyUp': null,
-                    'type': 'normal'
-                },				
+                },		
                 'hk-showMass': {
                     'label': h['hk-showMass'],
                     'defaultKey': 'M',
