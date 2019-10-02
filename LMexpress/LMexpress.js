@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7759,7 +7759,8 @@ function Socket3enabler(srv) {
 	}
     Socket3.onopen = function(e) {
 		window.socket3NumberTries = 0;
-		Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
+		//Socket3.send(JSON.stringify({ "auth": "JIM" + customLMID, "password": "legendmod"}));
+		Socket3.send(JSON.stringify({ "auth": "JIM" + legendmod3.playerID, "password": "legendmod"}));
 		//Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));	
 		Socket3.send(JSON.stringify({ "joinHub": $("#server-token").val()+"3"}));			
 		console.log('[Legend mod Express] Socket 3 open:',room);
@@ -7908,7 +7909,8 @@ function timernow() {
 function Socket3MessageChat(chattypemsg, chatreader) {
     var temp={
         com: "chat",
-        id: customLMID,
+        //id: customLMID,
+		id: legendmod3.playerID,
         nick: ogarcopythelb.nick,
         chat: chatreader,
         chattype: chattypemsg
@@ -7916,7 +7918,9 @@ function Socket3MessageChat(chattypemsg, chatreader) {
     //Socket3.send(JSON.stringify({ "toH": "legendmod", "msg": temp}));
 	Socket3.send(JSON.stringify({ "toH": $("#server-token").val()+"3", "msg": temp}));
     //wss://connect.websocket.in does not send commands to sender again
-    Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
+    //Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
+	Socket3DisplaychatMsg(chattypemsg, legendmod3.playerID, ogarcopythelb.nick, chatreader)
+}
 }
 
 function Socket3DisplaychatMsg(b, c, x, d) {
