@@ -4182,8 +4182,8 @@ var thelegendmodproject = function(t, e, i) {
                         this.complete &&
                             this.width &&
                             this.height &&
-                            this.width <= 2000 &&
-                            this.height <= 2000 &&
+                            this.width <= 2000 && this.width > 0 &&
+                            this.height <= 2000 && this.height > 0 &&
                             ((i.cacheQueue.push(e),
                                 1 == i.cacheQueue.length &&
                                 i.cacheSkin(i.customSkinsCache, animated)),
@@ -4708,7 +4708,7 @@ var thelegendmodproject = function(t, e, i) {
                     //					
                 }
                 window.SLGsocket['onmessage'] = function(e) {
-					//console.log(e)
+					console.log(e)
                     t.handleSLGMessage(e);
                 }
                 window.SLGsocket['onclose'] = function(e) {
