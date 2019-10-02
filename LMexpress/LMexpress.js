@@ -7910,7 +7910,8 @@ function Socket3MessageChat(chattypemsg, chatreader) {
     var temp={
         com: "chat",
         //id: customLMID,
-		id: legendmod3.playerID,
+		//id: legendmod3.playerID,
+		id: window.unescape(window.encodeURIComponent(legendmod3.lastSentNick)),
         nick: ogarcopythelb.nick,
         chat: chatreader,
         chattype: chattypemsg
