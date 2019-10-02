@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1396 MEGA TEST
+// v1.1397 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4866,7 +4866,8 @@ var thelegendmodproject = function(t, e, i) {
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
                     case 0:
-                        this.playerID = t.getUint32(1, true);
+                        //this.playerID = t.getUint32(1, true);
+						this.playerID = t.getUint16(1, true);
                         break;
                     case 1:
                         this['sendPlayerUpdate']();
@@ -4898,7 +4899,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'SLGSimpleHandler': function(t) {
                 var Socket3data = t;
-                console.log("recieve", t);
+                //console.log("recieve", t);
                 if (Socket3data == null) {
                     return;
                 } else {
