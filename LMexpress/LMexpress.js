@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.074i by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7920,7 +7920,6 @@ function Socket3MessageChat(chattypemsg, chatreader) {
     //wss://connect.websocket.in does not send commands to sender again
     //Socket3DisplaychatMsg(chattypemsg, customLMID, ogarcopythelb.nick, chatreader)
 	Socket3DisplaychatMsg(chattypemsg, legendmod3.playerID, ogarcopythelb.nick, chatreader)
-}
 }
 
 function Socket3DisplaychatMsg(b, c, x, d) {
