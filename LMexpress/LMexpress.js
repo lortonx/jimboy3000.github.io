@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.074i by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7823,7 +7823,7 @@ function Socket3handler(message) {
 }
 
 function Socket3updateTeamPlayer(Socket3data) {
-    var h = legendmod3.checkPlayerID(Socket3data.id);
+    var h = window.decodeURIComponent(escape(legendmod3.checkPlayerNick(Socket3data.id)));	  
     if (!legendmod3.teamPlayers[h]) {
         h = legendmod3.teamPlayers.length;
         legendmod3.teamPlayers[h] = {}
@@ -7846,7 +7846,7 @@ function Socket3updateTeamPlayer(Socket3data) {
 }
 
 function Socket3updateTeamPlayerPosition(Socket3data) {
-    var h = legendmod3.checkPlayerID(Socket3data.id);
+    var h = window.decodeURIComponent(escape(legendmod3.checkPlayerNick(Socket3data.id)));	  
     if (!legendmod3.teamPlayers[h]) {
         return;
     }
@@ -7858,7 +7858,8 @@ function Socket3updateTeamPlayerPosition(Socket3data) {
 	legendmod3.teamPlayers[h].lastUpdatedTime = tempTime;
 }
 function Socket3updateTeamPlayerDeath(Socket3data) {
-	var h = legendmod3.checkPlayerID(Socket3data.id);	    
+	//var h = legendmod3.checkPlayerNick(Socket3data.id);	
+	var h = window.decodeURIComponent(escape(legendmod3.checkPlayerNick(Socket3data.id)));	        
 	legendmod3.teamPlayers[h].alive = false;
 	legendmod3.teamPlayers[h].mass=1;	
 }
