@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1398 MEGA TEST
+// v1.1399 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4904,9 +4904,12 @@ var thelegendmodproject = function(t, e, i) {
                 if (Socket3data == null) {
                     return;
                 } else {
-                    var ids = Socket3data.t;
-                    var id = this.checkPlayerID(ids);
+                    //var ids = Socket3data.t;
+					var ids = window.decodeURIComponent(escape(Socket3data.t));				
+                    //var id = this.checkPlayerID(ids);
+					var id = this.checkPlayerNick(ids);					
                     if (null != id) {
+						console.log("id found", id);
                         this.teamPlayers[id].lbgpi = parseInt(Socket3data.s);
                         //if (this.top5[id]){
                         //this.top5[id].lbgpi = parseInt(lbgpi); //
@@ -5301,6 +5304,12 @@ var thelegendmodproject = function(t, e, i) {
                         if (this.teamPlayers[e].id == t) return e;
                 return null;
             },
+            'checkPlayerNick': function(t) {
+                if (t)
+                    for (var e = 0; e < this.teamPlayers.length; e++)
+                        if (this.teamPlayers[e].nick == t) return e;
+                return null;
+            },			
             'checkPlayerChat': function(t) {
                 if (t)
                     for (var e = 0; e < this.teamPlayers.length; e++)
