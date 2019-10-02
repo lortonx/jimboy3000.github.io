@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1397 MEGA TEST
+// v1.1398 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4046,7 +4046,8 @@ var thelegendmodproject = function(t, e, i) {
                             skin: ogarcopythelb.skinURL,
                             color: ogarcopythelb.color,
                             //id: customLMID,
-							id: legendmod3.playerID,
+							//id: legendmod3.playerID,
+							id: window.unescape(window.encodeURIComponent(legendmod3.lastSentNick)),
                             x: legendmod3.getPlayerX(),
                             y: legendmod3.getPlayerY(),
                             mass: legendmod.playerMass
@@ -4866,8 +4867,8 @@ var thelegendmodproject = function(t, e, i) {
             'readMessage': function(t) {
                 switch (t.getUint8(0)) {
                     case 0:
-                        //this.playerID = t.getUint32(1, true);
-						this.playerID = t.getUint16(1, true);
+						this.playerID = t.getUint32(1, true);
+						//this.playerID = t.getUint16(1, true);
                         break;
                     case 1:
                         this['sendPlayerUpdate']();
@@ -4899,7 +4900,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'SLGSimpleHandler': function(t) {
                 var Socket3data = t;
-                //console.log("recieve", t);
+                console.log("recieve", t);
                 if (Socket3data == null) {
                     return;
                 } else {
@@ -5104,7 +5105,8 @@ var thelegendmodproject = function(t, e, i) {
                     if (Socket3 && Socket3.readyState == 1 && legendmod3.playerID && window.playerCellsSock) {
                         var temp = {
                             com: "pcells",
-                            tid: legendmod3.playerID,
+                            //tid: legendmod3.playerID,
+							tid: window.unescape(window.encodeURIComponent(legendmod3.lastSentNick)),
                             playerCells: window.playerCellsSock
                         };
                         Socket3.send(JSON.stringify({
@@ -5229,7 +5231,8 @@ var thelegendmodproject = function(t, e, i) {
                     var temp = {
                         com: "pos",
                         //id: customLMID,
-						id: legendmod3.playerID,
+						//id: legendmod3.playerID,
+						id: window.unescape(window.encodeURIComponent(legendmod3.lastSentNick)),
                         x: legendmod3.getPlayerX(),
                         y: legendmod3.getPlayerY(),
                         mass: legendmod.playerMass
@@ -5251,7 +5254,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendSimpleLegendSDATA': function() {
                 if (i.play && this.playerID) {
-                    var t = this.playerID;
+                    //var t = this.playerID;
+					var t = window.unescape(window.encodeURIComponent(legendmod3.lastSentNick));
                     var s = window.legendmod.bgpi;
                     if (this.isSLGSocketOpen()) {
                         if (ogarcopythelb.clanTag != this.roomc) {
