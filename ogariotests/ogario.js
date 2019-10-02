@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1399 MEGA TEST
+// v1.1400 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4900,7 +4900,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'SLGSimpleHandler': function(t) {
                 var Socket3data = t;
-                console.log("recieve", t);
+                //console.log("recieve", t);
                 if (Socket3data == null) {
                     return;
                 } else {
@@ -4909,7 +4909,7 @@ var thelegendmodproject = function(t, e, i) {
                     //var id = this.checkPlayerID(ids);
 					var id = this.checkPlayerNick(ids);					
                     if (null != id) {
-						console.log("id found", id);
+						//console.log("id found", id);
                         this.teamPlayers[id].lbgpi = parseInt(Socket3data.s);
                         //if (this.top5[id]){
                         //this.top5[id].lbgpi = parseInt(lbgpi); //
