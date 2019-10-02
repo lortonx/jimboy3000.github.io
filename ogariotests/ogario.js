@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1402 MEGA TEST
+// v1.1403 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2557,7 +2557,8 @@ var thelegendmodproject = function(t, e, i) {
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
-            'publicIP': 'wss://srv.ogario.eu2',
+            //'publicIP': 'wss://srv.ogario.eu',
+			'publicIP': 'wss://2srv.2ogario.eu',
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
