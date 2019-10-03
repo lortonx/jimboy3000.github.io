@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1405 MEGA TEST
+// v1.1406 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3094,7 +3094,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (window.legendmod.vector[window.legendmod.vnr][0]) {w = legendmod.translateX(window.predictedGhostCells[e].x) }
 					else{ w = window.predictedGhostCells[e].x }
                     if (window.legendmod.vector[window.legendmod.vnr][1]) {u = legendmod.translateY(window.predictedGhostCells[e].y) }
-					else{ u = legendmod.translateY(window.predictedGhostCells[e].y }                                           
+					else{ u = window.predictedGhostCells[e].y }                                           
                                             //var w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(window.predictedGhostCells[e].x) : window.predictedGhostCells[e].x;
                                             //var u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(window.predictedGhostCells[e].y) : window.predictedGhostCells[e].y;  		
                                             
