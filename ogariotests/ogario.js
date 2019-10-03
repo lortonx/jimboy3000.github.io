@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1408 MEGA TEST
+// v1.1409 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4346,10 +4346,10 @@ var thelegendmodproject = function(t, e, i) {
 				
 				if (closeExpr == false){
 					if (window.legendmod.vector[window.legendmod.vnr][0]){
-						t = legendmod.translateX(t)				
+						t = legendmod.untranslateX(t)				
 					}
 					if (window.legendmod.vector[window.legendmod.vnr][1]){
-						xgh2 = legendmod.translateY(xgh2)		
+						xgh2 = legendmod.untranslateY(xgh2)		
 					}
 				}
 				
@@ -7688,6 +7688,12 @@ var thelegendmodproject = function(t, e, i) {
             'translateY': function(x) {
                 return this.mapMaxY - (x - this.mapMinY);
             },
+            'untranslateX': function(x) {
+                return 0 - (x - this.mapMaxX + this.mapMinX);
+            },
+            'untranslateY': function(x) {
+                return 0 - (x - this.mapMaxY + this.mapMinY);
+            },			
             'calculatebgpi': function(x, y) {
                 var ofs = 150;
                 var calc = (x < this.mapMidX + ofs && x > this.mapMidX - ofs) || (y < this.mapMidY + ofs && y > this.mapMidY - ofs) ? 4 : x >= this.mapMidX && y < this.mapMidY ? 0 : x < this.mapMidX && y < this.mapMidY ? 1 : x < this.mapMidX && y >= this.mapMidY ? 2 : 3;
