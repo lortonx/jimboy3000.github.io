@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1402 MEGA TEST
+// v1.1403 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4351,7 +4351,7 @@ var thelegendmodproject = function(t, e, i) {
                 r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r;
                 String.fromCharCode(n + 65) + (r + 1);
                 return n = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n, r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r, String.fromCharCode(n + 65) + (r + 1);
-            }
+            },
             'shortMassFormat': function(t) {
                 return t < 1000 ? t : Math.round(t / 100) / 10 + 'k';
             },
