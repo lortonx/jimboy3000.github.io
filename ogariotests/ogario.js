@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1406 MEGA TEST
+// v1.1407 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3025,9 +3025,9 @@ var thelegendmodproject = function(t, e, i) {
                                 //this.w = this.top5[o].x;
                                 //this.u = this.top5[o].y;
 								var w,u;
-								if (window.legendmod.vector[window.legendmod.vnr][0]) { w = legendmod.translateX(this.top5[o].x) }
+								if (!window.legendmod.vector[window.legendmod.vnr][0]) { w = legendmod.translateX(this.top5[o].x) }
 								else{ w = this.top5[o].x}
-								if (window.legendmod.vector[window.legendmod.vnr][1]) { u = legendmod.translateY(this.top5[o].y) }
+								if (!window.legendmod.vector[window.legendmod.vnr][1]) { u = legendmod.translateY(this.top5[o].y) }
 								else{ u = this.top5[o].y }                                
                                 //window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.top5[o].x) : this.top5[o].x;
                                 //window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.top5[o].y) : this.top5[o].y;   
@@ -3091,9 +3091,9 @@ var thelegendmodproject = function(t, e, i) {
                                             //var w = window.predictedGhostCells[e].x;
                                             //var u = window.predictedGhostCells[e].y;
 											var w,u;
-                    if (window.legendmod.vector[window.legendmod.vnr][0]) {w = legendmod.translateX(window.predictedGhostCells[e].x) }
+                    if (!window.legendmod.vector[window.legendmod.vnr][0]) {w = legendmod.translateX(window.predictedGhostCells[e].x) }
 					else{ w = window.predictedGhostCells[e].x }
-                    if (window.legendmod.vector[window.legendmod.vnr][1]) {u = legendmod.translateY(window.predictedGhostCells[e].y) }
+                    if (!window.legendmod.vector[window.legendmod.vnr][1]) {u = legendmod.translateY(window.predictedGhostCells[e].y) }
 					else{ u = window.predictedGhostCells[e].y }                                           
                                             //var w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(window.predictedGhostCells[e].x) : window.predictedGhostCells[e].x;
                                             //var u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(window.predictedGhostCells[e].y) : window.predictedGhostCells[e].y;  		
@@ -7565,9 +7565,9 @@ var thelegendmodproject = function(t, e, i) {
                     //var w = this.ghostCells[o].x;
                     //var u = this.ghostCells[o].y;
 					var w,u;
-                    if (window.legendmod.vector[window.legendmod.vnr][0]) {w = legendmod.translateX(this.ghostCells[o].x) }
+                    if (!window.legendmod.vector[window.legendmod.vnr][0]) {w = legendmod.translateX(this.ghostCells[o].x) }
 					else{ w = this.ghostCells[o].x }
-                    if (window.legendmod.vector[window.legendmod.vnr][1]) {u = legendmod.translateY(this.ghostCells[o].y) }
+                    if (!window.legendmod.vector[window.legendmod.vnr][1]) {u = legendmod.translateY(this.ghostCells[o].y) }
 					else{ u= this.ghostCells[o].y }
 					//w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(this.ghostCells[o].x) : this.ghostCells[o].x; 
                     //u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(this.ghostCells[o].y) : this.ghostCells[o].y; 
