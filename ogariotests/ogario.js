@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1406 MEGA TEST
+// v1.1407 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4346,10 +4346,10 @@ var thelegendmodproject = function(t, e, i) {
 				//
 				if (closeExpr == false){
 					if (window.legendmod.vector[window.legendmod.vnr][0]){
-						xgh2 = xgh2 + legendmod.mapOffsetY;					
+						t = t + legendmod.mapOffsetY;				
 					}
 					if (window.legendmod.vector[window.legendmod.vnr][1]){
-						t = t + legendmod.mapOffsetX;
+						xgh2 = xgh2 + legendmod.mapOffsetX;	
 					}
 				}
 				//
