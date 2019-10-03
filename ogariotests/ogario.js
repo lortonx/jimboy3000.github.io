@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1407 MEGA TEST
+// v1.1408 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4343,16 +4343,16 @@ var thelegendmodproject = function(t, e, i) {
                 if (!i.mapOffsetFixed) {
                     return "";
                 }
-				//
+				
 				if (closeExpr == false){
 					if (window.legendmod.vector[window.legendmod.vnr][0]){
-						t = t + legendmod.mapOffsetY;				
+						t = legendmod.translateX(t)				
 					}
 					if (window.legendmod.vector[window.legendmod.vnr][1]){
-						xgh2 = xgh2 + legendmod.mapOffsetX;	
+						xgh2 = legendmod.translateY(xgh2)		
 					}
 				}
-				//
+				
                 var GearType = closeExpr ? i.mapOffsetX + i.mapOffset : i.mapOffset;
                 var closingExpr = closeExpr ? i.mapOffsetY + i.mapOffset : i.mapOffset;
                 var n = Math.floor((xgh2 + closingExpr) / (i.mapSize / defaultSettings.sectorsY));
