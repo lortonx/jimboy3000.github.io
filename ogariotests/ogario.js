@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1412 MEGA TEST
+// v1.1413 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4343,8 +4343,8 @@ var thelegendmodproject = function(t, e, i) {
                 if (!i.mapOffsetFixed) {
                     return "";
                 }
-				
-				if (closeExpr == false){
+				/*
+				if (closeExpr){
 					if (window.legendmod.vector[window.legendmod.vnr][0] || window.legendmod.vector[window.legendmod.vnr][1]){
 						closeExpr= closeExpr + legendmod.mapOffsetX
 						xgh2 = xgh2 + legendmod.mapOffsetY
@@ -4353,10 +4353,11 @@ var thelegendmodproject = function(t, e, i) {
 						//xgh2 = legendmod.untranslateY(xgh2)		
 						//xgh2 = legendmod.translateY(xgh2 - i.mapOffsetY)							
 					}
-				}
-				
-                var GearType = closeExpr ? i.mapOffsetX + i.mapOffset : i.mapOffset;
-                var closingExpr = closeExpr ? i.mapOffsetY + i.mapOffset : i.mapOffset;
+				}*/
+                var GearType = i.mapOffsetX + i.mapOffset;
+                var closingExpr = i.mapOffsetY + i.mapOffset;				
+                //var GearType = closeExpr ? i.mapOffsetX + i.mapOffset : i.mapOffset;
+                //var closingExpr = closeExpr ? i.mapOffsetY + i.mapOffset : i.mapOffset;
                 var n = Math.floor((xgh2 + closingExpr) / (i.mapSize / defaultSettings.sectorsY));
                 var r = Math.floor((t + GearType) / (i.mapSize / defaultSettings.sectorsX));
                 window.calculateMapSector = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n;
