@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1422 MEGA TEST
+// v1.1423 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4424,7 +4424,7 @@ var thelegendmodproject = function(t, e, i) {
 						this.miniMapCtx.font = defaultSettings.miniMapFontWeight + ' ' + (e - 6) + 'px ' + defaultSettings.miniMapFontFamily,
 						this.miniMapCtx.fillStyle = defaultSettings.miniMapMyCellColor,
                         this.miniMapCtx.globalAlpha = 1,						
-						this.miniMapCtx.fillText(this.currentSector, defaultSettings.miniMapWidth-30, e),
+						this.miniMapCtx.fillText(this.currentSector, defaultSettings.miniMapWidth-32, e),
                         //this.miniMapCtx.font = defaultSettings.miniMapFontWeight + " " + (e - 4) + "px " + defaultSettings.miniMapFontFamily,
                         //this.miniMapCtx.fillStyle = defaultSettings.miniMapSectorColor,
                         //this.miniMapCtx.fillText(this.currentSector, 10, e),
