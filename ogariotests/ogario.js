@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1423 MEGA TEST
+// v1.1424 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4691,7 +4691,7 @@ var thelegendmodproject = function(t, e, i) {
             'Socket3connect': function(srv) {
                 //if (window.noOgarioSocket && typeof Socket3enabler !== 'undefined' && typeof Socket3enabler === 'function') {
                 //setTimeout(function() {
-                //Socket3enabler(window.legendmod.ws);
+                Socket3enabler(window.legendmod.ws);
                 if (Socket3) {
                     Socket3.closeAndOpen();
                 }
@@ -4776,6 +4776,13 @@ var thelegendmodproject = function(t, e, i) {
                     } catch (ogarcloseconlabel) {}
                     window.SLGsocket = null;
                 }
+                if (window.Socket3) {
+                    window.Socket3['onmessage'] = null;
+                    try {
+                        window.Socket3['close']();
+                    } catch (ogarcloseconlabel) {}
+                    window.Socket3 = null;
+                }				
             },
             //Sonia6
             'closeSLGConnection': function() {
