@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1415 MEGA TEST
+// v1.1417 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1791,8 +1791,8 @@ var defaultSettings = {
     'sectorsFont': 'ubuntu',
     'sectorsFontFamily': 'Ubuntu',
     'sectorsFontWeight': 400,
-    'sectorsX': 5,
-    'sectorsY': 5,
+    'sectorsX': 10,
+    'sectorsY': 10,
     'namesScale': 1,
     'massScale': 3,
     'virMassScale': 3,
