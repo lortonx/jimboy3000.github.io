@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1413 MEGA TEST
+// v1.1414 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3094,7 +3094,7 @@ var thelegendmodproject = function(t, e, i) {
                                             */
                                             //									
                                             //t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(window.predictedGhostCells[e].x, window.predictedGhostCells[e].y) + "]</span>");	
-                                            t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(w, u) + "]</span>");
+                                            t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(w+legendmod.mapOffsetX, u+legendmod.mapOffsetY) + "]</span>");
                                             flag = true;
                                         }
                                     }
@@ -4354,10 +4354,10 @@ var thelegendmodproject = function(t, e, i) {
 						//xgh2 = legendmod.translateY(xgh2 - i.mapOffsetY)							
 					}
 				}*/
-                var GearType = i.mapOffsetX + i.mapOffset;
-                var closingExpr = i.mapOffsetY + i.mapOffset;				
-                //var GearType = closeExpr ? i.mapOffsetX + i.mapOffset : i.mapOffset;
-                //var closingExpr = closeExpr ? i.mapOffsetY + i.mapOffset : i.mapOffset;
+                //var GearType = i.mapOffsetX + i.mapOffset;
+                //var closingExpr = i.mapOffsetY + i.mapOffset;				
+                var GearType = closeExpr ? i.mapOffsetX + i.mapOffset : i.mapOffset;
+                var closingExpr = closeExpr ? i.mapOffsetY + i.mapOffset : i.mapOffset;
                 var n = Math.floor((xgh2 + closingExpr) / (i.mapSize / defaultSettings.sectorsY));
                 var r = Math.floor((t + GearType) / (i.mapSize / defaultSettings.sectorsX));
                 window.calculateMapSector = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n;
@@ -5803,7 +5803,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (legendmod.leaderboard[j] && this.targetNick == legendmod.leaderboard[j].nick) {
 
                         if (flag == false) {
-                            l = window.legendmod3.calculateMapSector(window.predictedGhostCells[j].x, window.predictedGhostCells[j].y)
+                            l = window.legendmod3.calculateMapSector(window.predictedGhostCells[j].x+legendmod.mapOffsetX, window.predictedGhostCells[j].y++legendmod.mapOffsetY)
                             flag = true;
                         }
                     }
@@ -7577,7 +7577,7 @@ var thelegendmodproject = function(t, e, i) {
                     e += '<span class=\"lb-data\" id= "' + 'leaderboardtargeting' + o + '" style="pointer-events: auto;" onclick="window.legendmod.targetingLead(' + o + ');">';
                     e += '<span class=\"top5-mass-color\">[' + ogarminimapdrawer.shortMassFormat(this.ghostCells[o].mass) + ']</span>';
                     //e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(this.ghostCells[o].x, this.ghostCells[o].y) + ']</span>', e += '</span>';
-                    e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(w, u) + ']</span>', e += '</span>';
+                    e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(w+legendmod.mapOffsetX, u+legendmod.mapOffsetY) + ']</span>', e += '</span>';
                 }
                 ogarminimapdrawer['displayLeaderboard'](t, e);
                 ogarminimapdrawer['displayPartyBots']();
