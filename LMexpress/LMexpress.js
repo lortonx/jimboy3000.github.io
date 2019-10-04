@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.075 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.076 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -22,6 +22,7 @@ document.title = "LM express";
 //Authenticate Mod Script
 var accesstomod;
 getaccesstoken();
+Socket3enabler(window.legendmod.ws);
 
 /*
 var CutNameConflictwithMessage=false;
@@ -3330,7 +3331,7 @@ function universalchat() {
             .replace(/'/g, "&#039;");
     }
 	
-	Socket3enabler(window.legendmod.ws);
+
 	
     $('#message').keydown(function(e) {
         if (e.keyCode === 13) { // If Enter key pressed
