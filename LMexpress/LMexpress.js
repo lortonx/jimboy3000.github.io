@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.077 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.078 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5890,7 +5890,11 @@ function init(modVersion) {
 }
 
 function initializeLM(modVersion) {
-Socket3enabler(window.legendmod.ws);
+	
+		setTimeout(function() {
+		Socket3enabler(window.legendmod.ws)
+		}, 2000);	
+
     $("#server-ws").hide();
     $("#server-connect").hide();
     //$('#region').before($("#server-reconnect"));
