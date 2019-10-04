@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1417 MEGA TEST
+// v1.1418 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -767,6 +767,9 @@ var languagetexts = {
         'bordersWidth': 'Grubość granic mapy',
         'sectorsWidth': 'Grubość siatki sektorów',
         'sectorsFontSize': 'Rozmiar czcionki sektorów',
+		'sectorsFontWeight': 'Sectors font weight',
+		'sectorsX': 'Sectors X',
+		'sectorsY': 'Sectors Y',		
         'cellsAlpha': 'Przezroczystość kulek',
         'skinsAlpha': 'Przezroczystość skinów',
         'virusAlpha': 'Przezroczystość wirusów',
@@ -1166,6 +1169,9 @@ var languagetexts = {
         'bordersWidth': 'Map borders width',
         'sectorsWidth': 'Sectors grid width',
         'sectorsFontSize': 'Sectors font size',
+		'sectorsFontWeight': 'Sectors font weight',
+		'sectorsX': 'Sectors X',
+		'sectorsY': 'Sectors Y',			
         'cellsAlpha': 'Cells transparency',
         'skinsAlpha': 'Skins transparency',
         'virusAlpha': 'Virus transparency',
@@ -1791,8 +1797,8 @@ var defaultSettings = {
     'sectorsFont': 'ubuntu',
     'sectorsFontFamily': 'Ubuntu',
     'sectorsFontWeight': 400,
-    'sectorsX': 10,
-    'sectorsY': 10,
+    'sectorsX': 5,
+    'sectorsY': 5,
     'namesScale': 1,
     'massScale': 3,
     'virMassScale': 3,
@@ -2283,7 +2289,10 @@ var thelegendmodproject = function(t, e, i) {
                     this.addFontBox('#theme-main', 'namesFont');
                     this.addFontBox('#theme-main', 'massFont');
                     this.addFontBox('#theme-main', 'sectorsFont');
+					this.addSliderBox('#theme-main', 'sectorsX', 2, 10, 1);
+					this.addSliderBox('#theme-main', 'sectorsY', 2, 10, 1);
                     this.addSliderBox('#theme-main', 'sectorsFontSize', 200, 2000, 10);
+					this.addSliderBox('#theme-main', 'sectorsFontWeight', 200, 800, 10);
                     this.addSliderBox('#theme-main', 'namesScale', 0.5, 2, 0.1);
                     this.addSliderBox('#theme-main', 'massScale', 1, 5, 1);
                     this.addSliderBox('#theme-main', 'virMassScale', 1, 5, 1);
