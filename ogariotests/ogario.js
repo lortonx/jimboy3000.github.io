@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1432 MEGA TEST
+// v1.1433 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7220,10 +7220,17 @@ var thelegendmodproject = function(t, e, i) {
             },
             'handleMessage': function(data) {
 				if (this.pingTime){
+				this.lastping = this.ping;
 				this.ping = performance.now() - this.pingTime
 				}
-				this.pingTime = performance.now()
-				console.log(this.ping);
+				this.pingTime = performance.now();
+				this.pingUsed++;
+				this.pingAverage = this.lastping + this.ping
+				if (this.pingUsed==9){
+					console.log(this.pingAverage/10);
+					this.pingAverage = 0;
+				}
+				
                 var i = function() {
                         for (var e = '';;) {
                             var i = data.getUint8(s++);
