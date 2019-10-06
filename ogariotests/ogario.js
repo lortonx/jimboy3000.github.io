@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1449 MEGA TEST
+// v1.1450 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -936,7 +936,7 @@ var languagetexts = {
         'page_shop': 'Sklep',
         'page_spectate': 'Obserwuj',
         'page_stats': 'Statystyki',
-		"teamView": 'Team view'
+		"teamView": 'Team view (BETA)'
     },
     'en': {
         'start': 'Home',
@@ -1323,7 +1323,7 @@ var languagetexts = {
         'page_menu_main_gifts': 'Gifts',
         'page_menu_main_dailyquests': 'Daily Quest',
         'page_shop': 'Shop',
-		"teamView": 'Team view'
+		"teamView": 'Team view (BETA)'
     }
 }
 var themePresets = {
