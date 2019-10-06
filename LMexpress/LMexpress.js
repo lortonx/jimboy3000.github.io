@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7878,12 +7878,11 @@ function Socket3updateTeamPlayerDeath(Socket3data) {
 	legendmod3.teamPlayers[h].mass=1;	
 }
 function Socket3updateTeamPlayerCells(Socket3data) {
-		//console.log(Socket3data)
+		console.log(window.decodeURIComponent(escape(Socket3data.tid)))
         var temp = Socket3data.playerCells;
 		for (var i=0; i < legendmod3.teamPlayers.length; i++){
-			//console.log('1')
-			if (legendmod3.teamPlayers[i].nick == Socket3data.tid && legendmod3.teamPlayers[i].lbgpi>-1){
-				
+			//if (legendmod3.teamPlayers[i].nick == window.decodeURIComponent(escape(Socket3data.tid)) && legendmod3.teamPlayers[i].lbgpi>-1 && legendmod3.teamPlayers[i].lbgpi==legendmod.lbgpi){
+			if (legendmod3.teamPlayers[i].nick == window.decodeURIComponent(escape(Socket3data.tid)) && legendmod3.teamPlayers[i].lbgpi>-1 && legendmod.lbgpi>-1){	
 				for(var j=0; j< temp.length; j++){
 					var ogariocellssetts = new legendmod1(temp[j].id + 1000000000, temp[j].x - legendmod.mapOffsetX, temp[j].y - legendmod.mapOffsetY, temp[j].size, legendmod3.teamPlayers[i].color, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
 					ogariocellssetts.isVirus = false;	
