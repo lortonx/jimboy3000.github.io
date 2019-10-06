@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1445 MEGA TEST
+// v1.1446 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -274,7 +274,7 @@ function fakePlayers() {
 
         window.cellsFakeFlag++;
         if (window.cellsFakeFlag == 80) {
-            console.log('removed');
+            //console.log('removed');
             window.cellsFakeFlag = 0;
             window.cellsFake = [];
             /*
