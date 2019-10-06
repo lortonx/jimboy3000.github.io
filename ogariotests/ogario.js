@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1443 MEGA TEST
+// v1.1444 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7538,7 +7538,7 @@ var thelegendmodproject = function(t, e, i) {
                         case 226:
                             window.testobjectsOpcode226 = data;						
                             var extraOptions = data.getUint16(1, !![]);
-							console.log(window.testobjectsOpcode226)
+							console.log(extraOptions)
                             data = this["createView"](3);
                             data.setUint8(0, 227);
                             data.setUint16(1, extraOptions);
