@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1440 MEGA TEST
+// v1.1441 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -35,6 +35,11 @@ function Video(src, append) {
     return v;
 }
 
+Array.prototype.stDev = function stDev() {
+   const average = data => data.reduce((sum, value) => sum + value) / data.length
+   return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
+};
+/*
 const standardDeviation = (arr, usePopulation = false) => {
   const mean = arr.reduce((acc, val) => acc + val, 0) / arr.length;
   return Math.sqrt(
@@ -43,6 +48,7 @@ const standardDeviation = (arr, usePopulation = false) => {
   );
 };
 
+*/
 //bots
 window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where the bots are running [Default = localhost (your own pc)]
 //window.SERVER_PORT = 1337 // Port number used on the server where the bots are running [Default = 1337]
@@ -7233,9 +7239,9 @@ var thelegendmodproject = function(t, e, i) {
 				this.pingTime = performance.now();
 				this.pingUsed++;
 				this.pingArray.push(this.ping);
-				if (this.pingUsed==99){
-					console.log('standardDeviation - usePopulation', standardDeviation(this.pingArray, true));
-					console.log('standardDeviation', standardDeviation(this.pingArray));
+				if (this.pingUsed==99){					
+					//console.log('standardDeviation - usePopulation', standardDeviation(this.pingArray, true));
+					console.log('standardDeviation', this.pingArray.stDev());
 					this.pingArray = [];
 					this.pingUsed = 0;
 				}				
