@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1442 MEGA TEST
+// v1.1443 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7252,7 +7252,7 @@ var thelegendmodproject = function(t, e, i) {
                 return a.decodeBlock(buffer.slice(5), readMessage), readMessage;
             },
             'handleMessage': function(data) {
-				this.pingTimer();
+				//this.pingTimer();
                 var i = function() {
                         for (var e = '';;) {
                             var i = data.getUint8(s++);
@@ -7536,9 +7536,9 @@ var thelegendmodproject = function(t, e, i) {
                             }
                             break;
                         case 226:
-                            window.testobjectsOpcode226 = data;
-							console.log(window.testobjectsOpcode226)
+                            window.testobjectsOpcode226 = data;						
                             var extraOptions = data.getUint16(1, !![]);
+							console.log(window.testobjectsOpcode226)
                             data = this["createView"](3);
                             data.setUint8(0, 227);
                             data.setUint16(1, extraOptions);
