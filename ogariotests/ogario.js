@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1433 MEGA TEST
+// v1.1434 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7213,24 +7213,28 @@ var thelegendmodproject = function(t, e, i) {
                 //} //
             },		*/
             //https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
+			'pingTimer': function(){
+				if (!this.pingUsed) this.pingUsed = 0;
+				if (this.pingTime){
+				this.lastping = this.ping;
+				this.ping = performance.now() - this.pingTime
+				}
+				this.pingTime = performance.now();
+				
+				this.pingUsed++;
+				this.pingAverage = this.lastping + this.ping
+				if (this.pingUsed==9){
+					console.log(this.pingAverage/10);
+					this.pingAverage = 0;
+				}				
+			},
             'decompressMessage': function(message) {
                 var buffer = new LMbuffer(message['buffer']);
                 var readMessage = new LMbuffer(buffer.readUInt32LE(1));
                 return a.decodeBlock(buffer.slice(5), readMessage), readMessage;
             },
             'handleMessage': function(data) {
-				if (this.pingTime){
-				this.lastping = this.ping;
-				this.ping = performance.now() - this.pingTime
-				}
-				this.pingTime = performance.now();
-				this.pingUsed++;
-				this.pingAverage = this.lastping + this.ping
-				if (this.pingUsed==9){
-					console.log(this.pingAverage/10);
-					this.pingAverage = 0;
-				}
-				
+				this.pingTimer();
                 var i = function() {
                         for (var e = '';;) {
                             var i = data.getUint8(s++);
