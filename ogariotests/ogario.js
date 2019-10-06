@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1436 MEGA TEST
+// v1.1437 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -35,6 +35,13 @@ function Video(src, append) {
     return v;
 }
 
+const standardDeviation = (arr, usePopulation = false) => {
+  const mean = arr.reduce((acc, val) => acc + val, 0) / arr.length;
+  return Math.sqrt(
+    arr.reduce((acc, val) => acc.concat((val - mean) ** 2), []).reduce((acc, val) => acc + val, 0) /
+      (arr.length - (usePopulation ? 0 : 1))
+  );
+};
 
 //bots
 window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where the bots are running [Default = localhost (your own pc)]
@@ -7214,18 +7221,20 @@ var thelegendmodproject = function(t, e, i) {
             },		*/
             //https://github.com/pierrec/node-lz4/blob/master/lib/binding.js
 			'pingTimer': function(){
-				if (!this.pingUsed) this.pingUsed = 0;
+				if (!this.pingUsed){
+					this.pingUsed = 0;
+					this.pingArray = [];
+				}
 				if (this.pingTime){
-				//this.lastping = this.ping;
+				
 				this.ping = performance.now() - this.pingTime
 				}
 				this.pingTime = performance.now();
-				
 				this.pingUsed++;
-				this.pingAverage = this.pingAverage + this.ping
+				this.pingArray = this.pingArray.push(this.ping);
 				if (this.pingUsed==99){
-					console.log(this.pingAverage/100);
-					this.pingAverage = 0;
+					console.log(standardDeviation(this.pingArray, true));
+					this.pingArray = 0;
 					this.pingUsed = 0;
 				}				
 			},
