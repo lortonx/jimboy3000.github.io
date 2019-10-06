@@ -7538,7 +7538,6 @@ var thelegendmodproject = function(t, e, i) {
                         case 226:
                             window.testobjectsOpcode226 = data;						
                             var extraOptions = data.getUint16(1, !![]);
-							console.log(extraOptions)
                             data = this["createView"](3);
                             data.setUint8(0, 227);
                             data.setUint16(1, extraOptions);
