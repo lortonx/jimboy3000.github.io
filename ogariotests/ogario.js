@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1452 MEGA TEST
+// v1.1453 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2922,7 +2922,7 @@ var thelegendmodproject = function(t, e, i) {
                 defaultmapsettings.fpsAtTop ? $('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : $('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
             },
             'setTweenMaxEffect': function() {
-                defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('<b>[SERVER]:</b> Restart needed...');
+                defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('[Legend mod Express] Restart needed...');
             },			
             'setBlockPopups': function() {
                 this.protocolMode ? $('#block-warn').hide() : defaultmapsettings["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
