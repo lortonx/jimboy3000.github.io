@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1450 MEGA TEST
+// v1.1451 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -33,6 +33,28 @@ function Video(src, append) {
         document.body.appendChild(v);
     }
     return v;
+}
+function initTilt() {
+	//TweenMax.set([$pContent], { transformStyle: "preserve-3d" });
+	$('body').mousemove(function(e) {
+		var sxPos = e.pageX / $(canvas).width() * 100 - 100;
+		var syPos = e.pageY / $(canvas).height() * 100 - 100;
+		TweenMaxLM($('#leaderboard-hud'), sxPos, syPos)
+		TweenMaxLM($('#top5-hud'), sxPos, syPos)
+		TweenMaxLM($('#minimap-hud'), sxPos, syPos)
+		TweenMaxLM($('#time-hud'), sxPos, syPos)
+		TweenMaxLM($('#stats-hud'), sxPos, syPos)
+		//TweenMaxLM($('#minimap-sectors'), sxPos, syPos)
+		});	
+};
+function TweenMaxLM(Variable, sxPos, syPos){
+		TweenMax.to(Variable, 2, {
+			rotationY: 0.03 * sxPos,
+			rotationX: -0.03 * syPos,
+			transformPerspective: 500,
+			transformOrigin: "center center -400",
+			ease: Expo.easeOut
+		});	
 }
 
 Array.prototype.stDev = function stDev() {
