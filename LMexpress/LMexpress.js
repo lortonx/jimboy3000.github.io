@@ -7219,7 +7219,7 @@ function initializeLM(modVersion) {
     $("#shortcuts-hud").hide();
     //$("#rotate-hud").hide();
     $("#exp-bar").hide();
-    //$("#time-hud").hide();
+    $("#time-hud").hide();
     //	$("#LEGENDAds").hide();
     //	$("#legendbanners").hide();
     //	$(".input-group.skin.colorpicker-element").hide();
