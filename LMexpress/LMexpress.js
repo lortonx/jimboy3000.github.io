@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079B by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7049,9 +7049,6 @@ function initializeLM(modVersion) {
                 '#target-hud,#target-panel-hud {background:linear-gradient(to bottom,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
                 '#stats-hud{background:linear-gradient(to top,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
                 '#stats-hud{left: 50%!important; transform: translateX(-50%)!important; text-align: center;}' +
-                '#time-hud{background:linear-gradient(to top,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
-                '#time-hud{left: 50%!important; transform: translateX(-50%)!important; text-align: center;}' +	
-				'#time-hud{bottom: 2%!important;}' +	
                 '.hud-top{top: 93%!important;}' +
                 '#chat-box{bottom: 2%!important;}' +
                 '</style>');
