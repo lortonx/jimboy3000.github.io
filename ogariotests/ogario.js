@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1451 MEGA TEST
+// v1.1452 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -666,6 +666,7 @@ var languagetexts = {
         'normalLb': 'Nagłówek \"Topka\"',
         'centeredLb': 'Wyśrodkowana topka',
         'fpsAtTop': 'Statystyki na górze',
+		'tweenMaxEffect': 'Tween max effect',
         'showStats': 'Pokaż statystyki',
         'showStatsMass': 'Statystyki: Masa',
         'showStatsSTE': 'Statystyki: Przedziały Masy',
@@ -1069,6 +1070,7 @@ var languagetexts = {
         'normalLb': '\"Leaderboard\" header',
         'centeredLb': 'Centered leaderboard',
         'fpsAtTop': 'Game stats at the top',
+		'tweenMaxEffect': 'Tween max effect',
         'showStats': 'Show game stats',
         'showStatsMass': 'Game stats: Mass',
         'showStatsESTE': 'Game stats: Enemy\'s STE',
@@ -2057,6 +2059,7 @@ var defaultmapsettings = {
     'normalLb': true,
     'centeredLb': true,
     'fpsAtTop': true,
+	'tweenMaxEffect': false,
     'showStats': true,
     'showStatsMass': true,
     'showStatsESTE': false,
@@ -2918,6 +2921,9 @@ var thelegendmodproject = function(t, e, i) {
             'setFpsAtTop': function() {
                 defaultmapsettings.fpsAtTop ? $('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : $('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
             },
+            'setTweenMaxEffect': function() {
+                defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('<b>[SERVER]:</b> Restart needed...');
+            },			
             'setBlockPopups': function() {
                 this.protocolMode ? $('#block-warn').hide() : defaultmapsettings["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
             },
@@ -3311,8 +3317,12 @@ var thelegendmodproject = function(t, e, i) {
                         case 'fpsAtTop':
                             this.setFpsAtTop();
                             break;
+						case 'tweenMaxEffect':
+							this.setTweenMaxEffect();
+							break;
                         case 'showStats':
-                            this.displayStats(), $('#stats-hud').show();
+                            this.displayStats();
+							$('#stats-hud').show();
                             break;
                         case 'blockPopups':
                             this.setBlockPopups();
@@ -3576,7 +3586,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
                     this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView"], "helpersGroup"), //Sonia2
                     this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
-                    this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop"], "hudGroup"),
+                    this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                     this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
                     this.addOptions([], "macroGroup"),
                     this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup"),
@@ -5905,6 +5915,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.setCenteredLb(),
                     this.setNormalLb(),
                     this.setFpsAtTop(),
+					this.setTweenMaxEffect(),
                     this.displayStats(),
                     this.setBlockPopups(),
                     this.preloadChatSounds(),
