@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079B by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -6139,7 +6139,7 @@ function initializeLM(modVersion) {
     //		$(".menu-tabs").children().attr("style", "width: 19.99%;");
     //		$(".profile-tab").hide();
 
-    $("#time-hud").attr("style", "top: 290px !important;");
+    $("#time-hud").attr("style", "top: 530px !important;");
 
     // fix leaderboard buttons
     $("#leaderboard-menu").css("pointer-events", "auto");
@@ -7049,6 +7049,9 @@ function initializeLM(modVersion) {
                 '#target-hud,#target-panel-hud {background:linear-gradient(to bottom,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
                 '#stats-hud{background:linear-gradient(to top,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
                 '#stats-hud{left: 50%!important; transform: translateX(-50%)!important; text-align: center;}' +
+                '#time-hud{background:linear-gradient(to top,' + $("#hudColor").val() + ',rgba(255,255,255,0))}' +
+                '#time-hud{left: 50%!important; transform: translateX(-50%)!important; text-align: center;}' +	
+				'#time-hud{bottom: 2%!important;}' +	
                 '.hud-top{top: 93%!important;}' +
                 '#chat-box{bottom: 2%!important;}' +
                 '</style>');
@@ -7849,6 +7852,8 @@ function Socket3updateTeamPlayer(Socket3data) {
     legendmod3.teamPlayers[h].color = Socket3data.color;
 
     legendmod3.teamPlayers[h].lbgpi = -2;
+	//legendmod3.teamPlayers[h].x = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(Socket3data.x + legendmod.mapOffsetX) : Socket3data.x + legendmod.mapOffsetX //Sonia3
+	//legendmod3.teamPlayers[h].y = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateX(Socket3data.y + legendmod.mapOffsetY) : Socket3data.y + legendmod.mapOffsetY //Sonia3	
     legendmod3.teamPlayers[h].x = Socket3data.x;
     legendmod3.teamPlayers[h].y = Socket3data.y;
     legendmod3.teamPlayers[h].alive = true;
