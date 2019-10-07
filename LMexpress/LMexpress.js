@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079B by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -7219,7 +7219,7 @@ function initializeLM(modVersion) {
     $("#shortcuts-hud").hide();
     //$("#rotate-hud").hide();
     $("#exp-bar").hide();
-    $("#time-hud").hide();
+    //$("#time-hud").hide();
     //	$("#LEGENDAds").hide();
     //	$("#legendbanners").hide();
     //	$(".input-group.skin.colorpicker-element").hide();
