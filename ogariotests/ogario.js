@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1453 MEGA TEST
+// v1.1454 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7357,6 +7357,7 @@ var thelegendmodproject = function(t, e, i) {
                             var l = '';
                             var h = 0;
                             var c = false;
+							var m = false;
                             r++;
                             if (2 & (y = data.getUint8(s++))) {
                                 l = window.decodeURIComponent(escape(i()));
@@ -7372,11 +7373,15 @@ var thelegendmodproject = function(t, e, i) {
                             }
                             if (16 & y) {
                                 c = true;
+								m = data.getUint32(s, true);
+								console.log('found friend id', m);
+                            //s += 5;								
                             }
                             this.leaderboard.push({
                                 'nick': l,
                                 'id': h,
-                                'isFriend': c
+                                'isFriend': c,
+								'friendID': m
                             });
                         }
                         this.handleLeaderboard();
