@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1456 MEGA TEST
+// v1.1457 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2928,6 +2928,7 @@ var thelegendmodproject = function(t, e, i) {
             'displayPartyBots': function() {
                 if (defaultmapsettings.showPartyBots) {
 					setTimeout(function() {
+					console.log('[Legend mod Express] Party bots displayed');
                     $(".quick.quick-bots.ogicon-trophy").show();
 					}, 1000);
                 } else {
