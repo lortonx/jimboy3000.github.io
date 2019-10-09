@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1454 MEGA TEST
+// v1.1455 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2922,8 +2922,16 @@ var thelegendmodproject = function(t, e, i) {
                 defaultmapsettings.fpsAtTop ? $('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : $('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
             },
             'setTweenMaxEffect': function() {
-                defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('[Legend mod Express] Restart needed...');
-            },			
+				if (defaultmapsettings.tweenMaxEffect) initTilt()
+                //defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('[Legend mod Express] Restart needed...');
+            },		
+            'displayPartyBots': function() {
+                if (defaultmapsettings.showPartyBots) {
+                    $(".quick.quick-bots.ogicon-trophy").show();
+                } else {
+                    $(".quick.quick-bots.ogicon-trophy").hide();
+                }         
+            },				
             'setBlockPopups': function() {
                 this.protocolMode ? $('#block-warn').hide() : defaultmapsettings["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
             },
@@ -2955,13 +2963,6 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
 
-            },
-            'displayPartyBots': function() {
-                if (defaultmapsettings.showPartyBots) {
-                    $(".quick.quick-bots.ogicon-trophy").show();
-                } else {
-                    $(".quick.quick-bots.ogicon-trophy").hide();
-                }
             },
             'displayStats': function() {
                 if (defaultmapsettings.showStats) {
@@ -3320,6 +3321,9 @@ var thelegendmodproject = function(t, e, i) {
 						case 'tweenMaxEffect':
 							this.setTweenMaxEffect();
 							break;
+						case 'showPartyBots':
+							this.displayPartyBots();
+							break;							
                         case 'showStats':
                             this.displayStats();
 							$('#stats-hud').show();
@@ -6923,7 +6927,7 @@ var thelegendmodproject = function(t, e, i) {
                 ogarminimapdrawer['sendServerJoin']();
                 ogarminimapdrawer['sendServerData']();
                 ogarminimapdrawer['displayLeaderboard']('');
-                ogarminimapdrawer['displayPartyBots']();
+                //ogarminimapdrawer['displayPartyBots']();
                 if (window.master && window.master['onConnect']) {
                     window.master['onConnect']();
                 }
@@ -7670,7 +7674,7 @@ var thelegendmodproject = function(t, e, i) {
                     e += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(w+legendmod.mapOffsetX, u+legendmod.mapOffsetY) + ']</span>', e += '</span>';
                 }
                 ogarminimapdrawer['displayLeaderboard'](t, e);
-                ogarminimapdrawer['displayPartyBots']();
+                //ogarminimapdrawer['displayPartyBots']();
                 ///////////////// establish core.registerSkin
                 if (window.vanillaskins == true && window.customskinsname != null && window.customskinsurl != null && ogarminimapdrawer.customSkinsMap[window.customskinsname] == null) {
                     for (i = 0; i <= this.leaderboard.length - 1; i++) {
