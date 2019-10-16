@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1463 MEGA TEST
+// v1.1464 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7652,6 +7652,9 @@ var thelegendmodproject = function(t, e, i) {
                                     var s = '<span>';
                                     'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this.leaderboard[i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
                                 } */
+				if (legendmod.gameMode==":battleroyale"){
+					legendmod.leaderboard[0].nick= "Players Ready "+this.battleRoyale.players;
+				}								
                 window.teammatenicks = [];
                 window.teammatelegendmodnicks = [];
                 if (legendmod3.top5) {
@@ -7707,8 +7710,8 @@ var thelegendmodproject = function(t, e, i) {
                         window.predictedGhostCells[e].isFriend = legendmod.leaderboard[e].isFriend;
                     }
                 }
-                //}				
 
+                //}				
             },
             'targetingLead': function(o) {
                 window.targetingLeadX = legendmod.ghostCells[o].x;
