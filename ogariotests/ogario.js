@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1465 MEGA TEST
+// v1.1466 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7656,6 +7656,7 @@ var thelegendmodproject = function(t, e, i) {
 					var t = '<span>';
 					t += '<span class="me">' + 'Players Ready: ' + this.battleRoyale.players + '</span>';
 					t += '</span>';
+					legendmod3.displayLeaderboard(t)
 				}								
                 window.teammatenicks = [];
                 window.teammatelegendmodnicks = [];
