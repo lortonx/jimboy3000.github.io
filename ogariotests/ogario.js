@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1469 MEGA TEST
+// v1.1470 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7653,13 +7653,7 @@ var thelegendmodproject = function(t, e, i) {
                 /*                for (var t = '', e = '', i = 0; i < this.leaderboard.length && window.leaderboardlimit != i; i++) {
                                     var s = '<span>';
                                     'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this.leaderboard[i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + ogarminimapdrawer.escapeHTML(this.leaderboard[i].nick) + '</span>';
-                                } */
-				if (legendmod.gameMode==":battleroyale"){
-					var t = '<span>';
-					t += '<span class="me">' + 'Players Ready: ' + legendmod.battleRoyale.players + '</span>';
-					t += '</span>';
-					//legendmod3.displayLeaderboard(t)
-				}								
+                                } */							
                 window.teammatenicks = [];
                 window.teammatelegendmodnicks = [];
                 if (legendmod3.top5) {
@@ -7679,7 +7673,11 @@ var thelegendmodproject = function(t, e, i) {
                 if (legendmod.gameMode!=":battleroyale"){
 					t += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
 				}
-				
+				else if (legendmod.gameMode==":battleroyale"){
+					var t = '<span>';
+					t += '<span class="me">' + 'Players Ready: ' + legendmod.battleRoyale.players + '</span>';
+					t += '</span>';
+				}					
                 for (var o = 0; o < this.ghostCells.length && o != i; o++) {
                     //
                     var w = this.ghostCells[o].x;
