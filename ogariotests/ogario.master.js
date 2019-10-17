@@ -1,4 +1,4 @@
-//v12.6
+//v12.7
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -309,7 +309,7 @@ function legendmaster(self) {
                 return;
             }
             var canvasLayersManager = this;
-            userData = $.ajax(master.master_url_http + "/getCountry", {
+            window.userData = $.ajax(master.master_url_http + "/getCountry", {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", "application/octet-stream"), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
@@ -318,14 +318,14 @@ function legendmaster(self) {
                         timeout_callback();
                     }
                 },
-                success: function() {
-                $("#response").html(JSON.stringify(userData.responseJSON, null, 4));
+                success: function(playlistCopy) {
+                $("#response").html(JSON.stringify(playlistCopy, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
 				//if (userData && userData.responseJSON){		
-				if (userData && userData.responseJSON){						
-                canvasLayersManager.setRegionCode(userData.responseJSON.countryCode);
+				if (userData && playlistCopy){						
+                canvasLayersManager.setRegionCode(playlistCopy.countryCode);
 				}
 				else{
 					setTimeout(function() {
