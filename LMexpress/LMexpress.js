@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -1271,7 +1271,8 @@ function legendformIframe() {
 function joinpartyfromconnect(thismode) {
     $("#party-token").val($("#server").val());
     $("#join-party-btn-2").click();
-    return realmode = ":party";
+	legendmod.gameMode = ":party";
+    return realmode = legendmod.gameMode;	
 }
 
 function BeforeReportFakesSkin() {
@@ -7335,8 +7336,9 @@ function joinSIPonstart1() {
     $("#server-token").val(getParameterByName("sip", url).replace("live-arena-", "").replace(".agar.io", ""));
     if (region != null && realmode != null) {
         currentIPopened = true;
+		legendmod.gameMode = realmode;
     }
-    $("#server-join").click();
+    $("#server-join").click();	 
     //$("#server").val(searchSip);
     //$("#connect2").click();			
 }
