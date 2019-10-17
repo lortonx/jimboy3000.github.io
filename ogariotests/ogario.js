@@ -7587,11 +7587,9 @@ var thelegendmodproject = function(t, e, i) {
                                 });
                             }
 							var temp ='[<b>[SERVER]:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';	
-							temp += '<div style="background-color:#F5F5F5">';
 							for (var i=0;i< legendmod.battleRoyale.rank.length ; i++){
 								temp+= '<br>' + legendmod.battleRoyale.rank[i].place + ". "+ legendmod.battleRoyale.rank[i].name;
 							}
-							temp += '</div>';
 							temp+='<br>' + 'Your rank: <font color="yellow"><b>' + legendmod.battleRoyale.playerRank + '</b></font>';				
 							toastr["info"](temp);
                             break;
