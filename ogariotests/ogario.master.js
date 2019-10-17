@@ -1,4 +1,4 @@
-//v12.4
+//v12.5
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -309,7 +309,7 @@ function legendmaster(self) {
                 return;
             }
             var canvasLayersManager = this;
-            userData = $.ajax("https://" + headers.master_url + "/getCountry", {
+            userData = $.ajax(master.master_url_http + "/getCountry", {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
@@ -333,9 +333,8 @@ function legendmaster(self) {
 					}, 2000);						
 				}
                 },
-                dataType: "jsonp",
+                dataType: "json",
                 method: "POST",
-                data: data,
                 processData: false,
                 cache: false,
                 crossDomain: true
