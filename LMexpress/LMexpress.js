@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -626,13 +626,13 @@ function appendLMhiFbPs() {
 
 
             //userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
-            userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
+            /*userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
                 $("#response").html(JSON.stringify(response, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
             }, "jsonp");
-            /*		setTimeout(function (){ 
+            		setTimeout(function (){ 
             		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
             		},300); */
         }
@@ -685,13 +685,13 @@ function appendLMhiFbPs() {
 
             //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
             //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-            userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
+            /*userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
                 $("#response").html(JSON.stringify(response, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
             }, "jsonp");
-            /*		setTimeout(function (){ 
+            		setTimeout(function (){ 
             		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
             		},300); */
 
