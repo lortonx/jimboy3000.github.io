@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1476 MEGA TEST
+// v1.1477 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7676,9 +7676,9 @@ var thelegendmodproject = function(t, e, i) {
 				else if (legendmod.gameMode==":battleroyale"){
 					var t = '<span>';
 					if (legendmod.battleRoyale.shrinkTime-Date.now()/1000>0){
-					t += '<span>Shrink Time: ' + Math.floor((legendmod.battleRoyale.shrinkTime-Date.now())/1000) + '</span>';
+					t += '<span>Shrink time: ' + legendmod.battleRoyale.timeLeft + '</span>';
 					}
-					t += '<span class="me">' + 'Players Ready: ' + legendmod.battleRoyale.players + '</span>';				
+					t += '<span class="me">' + 'Players: ' + legendmod.battleRoyale.players + '</span>';				
 					t += '</span>';
 				}					
                 for (var o = 0; o < this.ghostCells.length && o != i; o++) {
