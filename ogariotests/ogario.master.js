@@ -1,4 +1,4 @@
-//v12.5
+//v12.6
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -311,21 +311,21 @@ function legendmaster(self) {
             var canvasLayersManager = this;
             userData = $.ajax(master.master_url_http + "/getCountry", {
                 beforeSend: function(xhr) {
-                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
+                    return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", "application/octet-stream"), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
                 error: function() {
                     if (timeout_callback) {
                         timeout_callback();
                     }
                 },
-                success: function(playlistCopy) {
-                $("#response").html(JSON.stringify(playlistCopy, null, 4));
+                success: function() {
+                $("#response").html(JSON.stringify(userData.responseJSON, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
 				//if (userData && userData.responseJSON){		
-				if (userData && playlistCopy){						
-                canvasLayersManager.setRegionCode(playlistCopy.countryCode);
+				if (userData && userData.responseJSON){						
+                canvasLayersManager.setRegionCode(userData.responseJSON.countryCode);
 				}
 				else{
 					setTimeout(function() {
