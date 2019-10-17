@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5802,7 +5802,7 @@ function getSNEZServers(ifcalled) {
                             temporaryserver2 = temporaryserver.split('live-arena-').pop();
                             temporaryserver3 = temporaryserver.split('nickname\"\:\"').pop();
                             temporaryserver3 = temporaryserver3.substring(temporaryserver3, temporaryserver3.indexOf('\"\,\"server'));
-							if (data[player].hidecountry==true){
+							if (data[player].hidecountry==true && data[player].extra){
 								data[player].extra.ip_info.country = "UN";
 							}
                             if (temporaryserver1a && data[player].extra && data[player].extra.ip_info) {
