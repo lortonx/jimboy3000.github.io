@@ -1,4 +1,4 @@
-//v12.7
+//v12.8
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -324,12 +324,13 @@ function legendmaster(self) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
 				//if (userData && userData.responseJSON){		
-				if (userData && playlistCopy){						
-                canvasLayersManager.setRegionCode(playlistCopy.countryCode);
+				if (playlistCopy){			
+				console.log(playlistCopy.country)
+                canvasLayersManager.setRegionCode(playlistCopy.country);
 				}
-				else{
+				else if (userData){
 					setTimeout(function() {
-						canvasLayersManager.setRegionCode(userData.responseJSON.countryCode);
+						canvasLayersManager.setRegionCode(userData.responseJSON.country);
 					}, 2000);						
 				}
                 },
