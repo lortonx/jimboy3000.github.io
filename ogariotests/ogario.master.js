@@ -1,4 +1,4 @@
-//v12.2
+//v12.3
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -309,7 +309,7 @@ function legendmaster(self) {
                 return;
             }
             var canvasLayersManager = this;
-            userData = $.get("https://ipapi.co/8.8.8.8/json/", function(response) {
+            userData = $.get(headers.master_url + "/getCountry", function(response) {
                 $("#response").html(JSON.stringify(response, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
