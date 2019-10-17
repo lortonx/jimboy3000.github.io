@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.079f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -6741,6 +6741,7 @@ function initializeLM(modVersion) {
 
     $('*[data-itr="page_play"]').click(function() {
         localStorage.setItem("lastIP", $('#server-token').val());
+		/*
         if (userData.responseJSON.query != undefined) {
             userip = userData.responseJSON.query;
             userip = userip.replace(" ", "_");
@@ -6817,7 +6818,7 @@ function initializeLM(modVersion) {
         $('#musicUrl').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
         //		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
-
+		*/
         setTimeout(function() {
 			if (window.FreskinsMap && window.FreskinsMap.includes($("#nick").val())){
 				for (var player = 0; player < window.FreeSkins.length; player++) {
