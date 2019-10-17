@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1473 MEGA TEST
+// v1.1474 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7560,8 +7560,8 @@ var thelegendmodproject = function(t, e, i) {
                                     this.battleRoyale.targetY = data.getInt32(s, true),
                                     s += 4,
                                     this.battleRoyale.targetRadius = data.getUint32(s, true));
-                            break;
-							this.handleLeaderboard();							
+                            this.handleLeaderboard();	
+							break;													
                         case 179:
                             window.testobjectsOpcode179 = data;
                             y = data.getUint8(s);
