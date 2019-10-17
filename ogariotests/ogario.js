@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1478 MEGA TEST
+// v1.1479 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7577,20 +7577,22 @@ var thelegendmodproject = function(t, e, i) {
                             var ogario1PlayerProfiles = data.getUint16(s, true);
                             s += 2;
                             for (n = 0; n < ogario1PlayerProfiles; n++) {
-                                var ogarcopythelb = window.decodeURIComponent(escape(i())),
+                                var ogarcopythelb = window.decodeURIComponent(escape(i()));
                                 v = data.getUint32(s, true);
                                 s += 4;
-								console.log(v);
 								this.battleRoyale.rank.push({
-                                    'place': defaultmapsettings,
+                                    //'place': defaultmapsettings,
+									'place': v,
                                     'name': ogarcopythelb
                                 });
                             }
-							console.log('[[Legend mod Express] Battle Royal Ranks:')							
+							var temp ='[<b>[SERVER]:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';					
 							for (var i=0;i< legendmod.battleRoyale.rank.length ; i++){
-								console.log(i+1,legendmod.battleRoyale.rank[i].name)
+								temp+= '<br>' + legendmod.battleRoyale.rank[i].place + ". "+ legendmod.battleRoyale.rank[i].name;
 							}
-							console.log('Your rank', legendmod.battleRoyale.playerRank)
+							temp+='<br>' + 'Your rank: <font color="yellow"><b>' + legendmod.battleRoyale.playerRank + '</b></font>';
+						
+							toastr["info"](temp)L
                             break;
                         case 226:
                             window.testobjectsOpcode226 = data;						
