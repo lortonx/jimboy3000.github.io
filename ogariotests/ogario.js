@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1488 MEGA TEST
+// v1.1489 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7373,6 +7373,12 @@ var thelegendmodproject = function(t, e, i) {
                             if (2 & (y = data.getUint8(s++))) {
                                 l = window.decodeURIComponent(escape(i()));
                             }
+                            if (16 & y) {
+                                c = true;
+								console.log('16+y')
+								var temp = data.getUint32(s, true);
+								console.log(temp)
+                            }							
                             if (4 & y) {
                                 h = data.getUint32(s, true);
                                 s += 4;
@@ -7381,11 +7387,6 @@ var thelegendmodproject = function(t, e, i) {
                                 l = this.playerNick;
                                 h = 'isPlayer';
                                 this.playerPosition = r
-                            }
-                            if (16 & y) {
-                                c = true;
-								var temp = data.getUint32(s, true);
-								console.log(temp)
                             }
                             this.leaderboard.push({
                                 'nick': l,
