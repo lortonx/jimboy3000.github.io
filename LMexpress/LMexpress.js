@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.079g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -3574,7 +3574,7 @@ function PreLcCelebration() {
 function getInfo() {
     $.ajax({
         type: "GET",
-        url: master.master_url_http + "info",
+        url: master.master_url_http + "/info",
         datatype: "json",
         success: function(info) {
             //$("#currentRegion").html($('#region').val());
@@ -7601,7 +7601,7 @@ function getInfo2() {
 function getInfo3() {
     $.ajax({
         type: "GET",
-        url: master.master_url_http + "info",
+        url: master.master_url_http + "/info",
         datatype: "json",
         success: function(info) {
             //$("#currentRegion").html($('#region').val());
