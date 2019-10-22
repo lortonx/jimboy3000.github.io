@@ -1,4 +1,4 @@
-//v12.10
+//v12.11
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -537,9 +537,9 @@ function legendmaster(self) {
             });
         },
         makeMasterSimpleRequest: function(key, dataType, success, error) {
-            if (key){
-				key = key = + "/";
-			}
+            //if (key){
+				//key = key = + "/";
+			//}
 			var obj = this;
             $.ajax("https://" + headers.master_url + "/" + key, {
                 beforeSend: function(xhr) {
