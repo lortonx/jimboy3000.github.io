@@ -1,4 +1,4 @@
-//v12.9
+//v12.10
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -537,7 +537,10 @@ function legendmaster(self) {
             });
         },
         makeMasterSimpleRequest: function(key, dataType, success, error) {
-            var obj = this;
+            if (key){
+				key = key = + "/";
+			}
+			var obj = this;
             $.ajax("https://" + headers.master_url + "/" + key, {
                 beforeSend: function(xhr) {
                     return xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
@@ -727,7 +730,24 @@ function legendmaster(self) {
             setInterval(function() {
                 n.refreshRegionInfo();
             }, 18e4);
-        }
+        },
+		findFacebookFriends: function() {
+			FB.api("me/friends?limit=100","GET",{
+                    fields: "id, name, picture, canReceiveGift"
+                    }, function(response) {
+						if (response != null && response.data != null) {
+							window.facebookFriends=response.data;							
+                            var _g = 0;
+                            while (_g < response.data.length) {
+                                var friend = response.data[_g];
+                                ++_g;
+                                console.log(friend)
+                            }							
+                        } else {
+                            console.log("Error calling: FP.api");
+                        }
+			});	
+		}		
     };
     self.getStorage = function() {
         if (null !== self.localStorage.getItem("storeObjectInfo")) {
