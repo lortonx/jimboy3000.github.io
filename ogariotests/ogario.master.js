@@ -463,6 +463,13 @@ function legendmaster(self) {
                     self.core.disconnect();
                 }
                 var picKey = "findServer";
+				//
+				FB.getLoginStatus(function(response) {
+					if (response.status === 'connected') {
+					picKey = "findServerWithFriends";
+					}
+				});					
+				
                 if (null == id) {
                     id = "";
                 }
