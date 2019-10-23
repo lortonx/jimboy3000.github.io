@@ -1,4 +1,4 @@
-//v12.14
+//v12.15
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -465,7 +465,7 @@ function legendmaster(self) {
                 var picKey = "findServer";
 				//
 				
-				if (master && master.context && master.context = "facebook" && legendmod && legendmod.gameMode && legendmod.gameMode==":ffa"){
+				if (master && master.context && master.context == "facebook" && legendmod && legendmod.gameMode && legendmod.gameMode==":ffa"){
 					picKey = "findServerWithFriends";						
 				}
                 if (null == id) {
