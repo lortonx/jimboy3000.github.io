@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1505 MEGA TEST
+// v1.1506 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4221,8 +4221,8 @@ var thelegendmodproject = function(t, e, i) {
             },
 			'findOwnedVanillaSkin': function() {
 				if (!ogarcopythelb.skinURL && window.vanillaskins && window.UserVanillaSkin && window.EquippableSkins){
-					//console.log("1. skin_" + window.UserVanillaSkin);
-					if (window.UserVanillaSkin.includes("skin_custom")){	
+					console.log("1. skin_" + window.UserVanillaSkin);
+					if (window.UserVanillaSkin.includes("skin_custom") && !ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick]){	
 						ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick] = window.UserVanillaSkin;
 						ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.UserVanillaSkin);						
 						//core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
@@ -4230,8 +4230,8 @@ var thelegendmodproject = function(t, e, i) {
 					}
 					else{
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
-                        if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin && window.EquippableSkins[player].image != "uses_spine") {	
-							//console.log("2. " + window.EquippableSkins[player].image);	
+                        if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin && window.EquippableSkins[player].image != "uses_spine" && !ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick]) {	
+							console.log("2. " + window.EquippableSkins[player].image);	
 							ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
 							ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);							
                             //core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);   
