@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1512 MEGA TEST
+// v1.1513 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4247,7 +4247,7 @@ var thelegendmodproject = function(t, e, i) {
 						window.findOwnedVanillaSkinOnce=true;
 						console.log('findOwnedVanillaSkin window.EquippableSkins not loaded');	
 						setTimeout(function() {
-							this.findOwnedVanillaSkin();
+							legendmod3.findOwnedVanillaSkin();
 						}, 6000);					
 						}
 					}
