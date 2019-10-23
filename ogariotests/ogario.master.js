@@ -1,4 +1,4 @@
-//v12.12
+//v12.13
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -464,12 +464,15 @@ function legendmaster(self) {
                 }
                 var picKey = "findServer";
 				//
-				if (FB && legendmod && legendmod.gameMode && legendmod.gameMode==":ffa"){
+				
+				if (master && master.context && master.context = "facebook" && legendmod && legendmod.gameMode && legendmod.gameMode==":ffa"){
+					
 					FB.getLoginStatus(function(response) {
 						if (response.status === 'connected') {
 						picKey = "findServerWithFriends";
 						}
-					});					
+					});		
+					
 				}
                 if (null == id) {
                     id = "";
@@ -694,6 +697,7 @@ function legendmaster(self) {
         },
         logout: function() {
             this.accessToken = null;
+			this.context = "";
             console.log("[Master] logout called, not reconnecting");
             //            this.reconnect();
         },
