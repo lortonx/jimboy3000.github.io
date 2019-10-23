@@ -1,4 +1,4 @@
-//v12.17
+//v12.18
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -476,11 +476,17 @@ function legendmaster(self) {
                     //}
                 }
 				if (master && master.context && master.context == "facebook" && params === ":ffa"){
-					picKey = "findServerWithFriends";						
+					picKey = "findServerWithFriends";	
+					params = params + "¸";
+					window.friends.forEach(function(element) {
+					params = params + "" + element;
+					});					
+					//params = params + window.friends
 				}				
                 var options = this;
 				console.log("id", id, "params", params);
-                var container = this.setRequestMsg(id, params);
+                var container;
+				container= this.setRequestMsg(id, params);
                 var defaultWarningTime = ++this.curValidFindServer;
                 this.findingServer = e;
                 this.makeMasterRequest(headers.endpoint_version + "/" + picKey, container, function(response) {
@@ -738,16 +744,16 @@ function legendmaster(self) {
             }, 18e4);
         },
 		findFacebookFriends: function() {
-			FB.api("me/friends?limit=100","GET",{
-                    fields: "id, name, picture, canReceiveGift"
+			FB.api("me/friends","GET",{
+                    fields: "id, name, picture"
                     }, function(response) {
 						if (response != null && response.data != null) {
 							window.facebookFriends=response.data;							
                             var _g = 0;
+							window.friends=[];
                             while (_g < response.data.length) {
-                                var friend = response.data[_g];
+                                window.friends.push(response.data[_g].id);
                                 ++_g;
-                                console.log(friend)
                             }							
                         } else {
                             console.log("Error calling: FP.api");
