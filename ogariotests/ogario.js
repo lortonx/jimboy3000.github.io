@@ -7520,7 +7520,7 @@ var thelegendmodproject = function(t, e, i) {
                         case 104:
                             console.log('[Legend mod Express] Logout forced');
                             logout();
-                            window.testobjectsOpcode103 = data;
+                            window.testobjectsOpcode104 = data;
                             break;
                         case 112:
                             console.log('[Legend mod Express] opcode: ', data.getUint8(0));
