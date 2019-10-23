@@ -1,4 +1,4 @@
-//v12.33
+//v12.34
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -480,10 +480,6 @@ function legendmaster(self) {
 					picKey = "findServerWithFriends";	
 					params = params;
 					source2 = window.friends;
-					//window.friends.forEach(function(element) {
-					//params = params + element;
-					//});					
-					//params = params + window.friends
 				}				
                 var options = this;
 				console.log("id", id, "params", params);
@@ -514,7 +510,11 @@ function legendmaster(self) {
             }
         },
         setRequestMsg: function(args, object, source, source2) {
-            var output = [10, 4 + args.length + object.length, 10];
+            var output, output2=0;
+			if (source2){
+				output2= "" + friends;
+			}
+			output = [10, 4 + args.length + object.length + output2.length + 100, 10];
 			var getOwnPropertyNames = function(data) {
                 output.push(data.length);
                 var value = 0;
