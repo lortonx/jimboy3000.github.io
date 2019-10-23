@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1489 MEGA TEST
+// v1.1490 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4230,7 +4230,8 @@ var thelegendmodproject = function(t, e, i) {
                     ogario1PlayerProfiles[this.selectedProfile].clanTag = ogarcopythelb.clanTag,
                     ogario1PlayerProfiles[this.selectedProfile].skinURL = ogarcopythelb.skinURL,
                     ogario1PlayerProfiles[this.selectedProfile].color = ogarcopythelb.color,
-                    this.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles');
+                    this.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles'),
+					!ogarcopythelb.skinURL && window.vanillaskins && core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
             },
             'loadSkin': function(t, e, animated) {
                 var i = this;
@@ -5112,7 +5113,11 @@ var thelegendmodproject = function(t, e, i) {
                     var s = this.createView(e);
                     s.setUint8(0, 20), s.setUint32(1, this.playerID, true);
                     var o = 5;
-                    t(ogarcopythelb.nick), t(ogarcopythelb.skinURL), t(ogarcopythelb.color), t(i.playerColor), this['sendBuffer'](s);
+                    t(ogarcopythelb.nick), 
+					t(ogarcopythelb.skinURL), 
+					t(ogarcopythelb.color), 
+					t(i.playerColor), 
+					this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
