@@ -1,4 +1,4 @@
-//v12.15
+//v12.16
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -464,21 +464,20 @@ function legendmaster(self) {
                 }
                 var picKey = "findServer";
 				//
-				
-				if (master && master.context && master.context == "facebook" && legendmod && legendmod.gameMode && legendmod.gameMode==":ffa"){
-					picKey = "findServerWithFriends";						
-				}
                 if (null == id) {
                     id = "";
                 }
                 if (null == params) {
                     /** @type {string} */
-                    params = ":ffa";
+                    params = ":ffa";					
                 } else {
                     //if (params === ":battleroyale") {
                     //picKey = "findBattleRoyaleServer";
                     //}
                 }
+				if (master && master.context && master.context == "facebook" && params === ":ffa"){
+					picKey = "findServerWithFriends";						
+				}				
                 var options = this;
                 var container = this.setRequestMsg(id, params);
                 var defaultWarningTime = ++this.curValidFindServer;
