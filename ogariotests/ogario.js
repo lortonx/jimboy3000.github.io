@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1498 MEGA TEST
+// v1.1499 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4221,11 +4221,13 @@ var thelegendmodproject = function(t, e, i) {
 					console.log("skin_" + window.UserVanillaSkin.replace('%', ''));
 					if (window.UserVanillaSkin.includes("skin_custom")){
 						core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
+						window.UserVanillaSkin=null;
 					}
 					else{
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                         if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {				
-                                core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);                           
+                            core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);   
+							window.UserVanillaSkin=null;								
 							}
 						}	
 					}
@@ -7488,7 +7490,7 @@ var thelegendmodproject = function(t, e, i) {
 								window.UserVanillaSkin = EnvConfig.custom_skins_url + temp.substring(1).charAt(0).toUpperCase() + temp.substring(1).slice(1) + '.png'
 							}
 							else if(temp){
-							temp = temp.replace('skin_', "").replace('', "");
+							temp = temp.replace('skin_', "").replace('', "").replace('', "");
 							window.UserVanillaSkin = temp;
 							//window.UserVanillaSkin = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + temp.charAt(0).toUpperCase() + temp.slice(1) + '.png'
 							}	
