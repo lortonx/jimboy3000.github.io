@@ -1,4 +1,4 @@
-//v12.22
+//v12.23
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -478,8 +478,8 @@ function legendmaster(self) {
 				var source2;
 				if (master && master.context && master.context == "facebook" && params === ":ffa" && window.friends){
 					picKey = "findServerWithFriends";	
-					params = params + "¸";
-					//source2 = window.friends;
+					params = params;
+					source2 = window.friends;
 					//window.friends.forEach(function(element) {
 					//params = params + element;
 					//});					
@@ -522,10 +522,12 @@ function legendmaster(self) {
                 }
             };
             var getOwnPropertyNames2 = function(data) {
-				
+					data.forEach(function(element) {
+					getOwnPropertyNames(element);
+					});					
             };			
             var output = [10, 4 + args.length + object.length, 10];
-            return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source2 && getOwnPropertyNames2(source2), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
+            return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source2 && output.push(18) && getOwnPropertyNames2(source2), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
         },
         makeMasterRequest: function(_wid_attr, data, callback, timeout_callback, type) {
             var header = this;
