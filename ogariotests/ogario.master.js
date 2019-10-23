@@ -1,4 +1,4 @@
-//v12.39
+//v12.40
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -482,7 +482,7 @@ function legendmaster(self) {
 					source2 = window.friends;
 				}*/				
                 var options = this;
-				console.log("id", id, "params", params);
+				//console.log("id", id, "params", params);
                 var container;
 				container= this.setRequestMsg(id, params, null, source2);
                 var defaultWarningTime = ++this.curValidFindServer;
