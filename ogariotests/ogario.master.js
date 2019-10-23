@@ -1,4 +1,4 @@
-//v12.38
+//v12.39
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -165,7 +165,7 @@ function legendmaster(self) {
             gplus_client_id: window.EnvConfig.google_client_id,
             master_url: window.EnvConfig.master_url.replace("https://", ""),
             endpoint_version: "v4",
-            proto_version: "15.0.1",
+            proto_version: "15.0.2",
             client_version: 30706,
 			//3.4.6
             client_version_string: "3.7.6",
@@ -177,7 +177,7 @@ function legendmaster(self) {
             gplus_client_id: "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
             master_url: window.EnvConfig.master_url.replace("https://", ""),
             endpoint_version: "v4",
-            proto_version: "15.0.1",
+            proto_version: "15.0.2",
             client_version: 30706,
             client_version_string: "3.7.6",
 			protocolVersion: 21
@@ -188,7 +188,7 @@ function legendmaster(self) {
             gplus_client_id: "686981379285-oroivr8u2ag1dtm3ntcs6vi05i3cpv0j.apps.googleusercontent.com",
             master_url: "webbouncer-live-v8-0.agario.miniclippt.com",
             endpoint_version: "v4",
-            proto_version: "15.0.1",
+            proto_version: "15.0.2",
             client_version: 30706,
             client_version_string: "3.7.6",
 			protocolVersion: 21
@@ -476,11 +476,11 @@ function legendmaster(self) {
                     //}
                 }
 				var source2;
-				if (master && master.context && master.context == "facebook" && params === ":ffa" && window.friends){
+				/*if (master && master.context && master.context == "facebook" && params === ":ffa" && window.friends){
 					picKey = "findServerWithFriends";	
 					params = params;
 					source2 = window.friends;
-				}				
+				}*/				
                 var options = this;
 				console.log("id", id, "params", params);
                 var container;
