@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1490 MEGA TEST
+// v1.1491 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4231,7 +4231,7 @@ var thelegendmodproject = function(t, e, i) {
                     ogario1PlayerProfiles[this.selectedProfile].skinURL = ogarcopythelb.skinURL,
                     ogario1PlayerProfiles[this.selectedProfile].color = ogarcopythelb.color,
                     this.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles'),
-					!ogarcopythelb.skinURL && window.vanillaskins && core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
+					!ogarcopythelb.skinURL && window.vanillaskins && core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);					
             },
             'loadSkin': function(t, e, animated) {
                 var i = this;
@@ -7474,9 +7474,11 @@ var thelegendmodproject = function(t, e, i) {
 							else if(temp){
 							temp = temp.replace('skin_', "");
 							window.UserVanillaSkin = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + temp + '.png'
-							}
+							}	
                             window.agarioUID = window.testobjects2.split('$')[1].substr(0, 36);							
                             window.agarioID = window.testobjects2.split('$')[1].split('')[1].split('')[0].replace(/\s/g, "");
+							
+							!ogarcopythelb.skinURL && window.vanillaskins && core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
 							}
 							catch (error){					
 							}
