@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1495 MEGA TEST
+// v1.1496 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4219,13 +4219,17 @@ var thelegendmodproject = function(t, e, i) {
 			'findOwnedVanillaSkin': function() {
 				if (!ogarcopythelb.skinURL && window.vanillaskins){
 					console.log("skin_" + window.UserVanillaSkin.replace('%', ''));
+					if (window.UserVanillaSkin && window.UserVanillaSkin.includes("skin_custom")){
+						core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
+					}
+					else{
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                         if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {				
                                 core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);                           
-                        }
-                    }	
-				}					
-			core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);						
+							}
+						}	
+					}
+				}				
 			},
             'setPlayerSettings': function() {
                 var t = $('#nick').val(),
@@ -7485,7 +7489,8 @@ var thelegendmodproject = function(t, e, i) {
 							}
 							else if(temp){
 							temp = temp.replace('skin_', "").replace('', "");
-							window.UserVanillaSkin = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + temp.charAt(0).toUpperCase() + temp.slice(1) + '.png'
+							window.UserVanillaSkin = temp;
+							//window.UserVanillaSkin = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + temp.charAt(0).toUpperCase() + temp.slice(1) + '.png'
 							}	
                             window.agarioUID = window.testobjects2.split('$')[1].substr(0, 36);							
                             window.agarioID = window.testobjects2.split('$')[1].split('')[1].split('')[0].replace(/\s/g, "");
