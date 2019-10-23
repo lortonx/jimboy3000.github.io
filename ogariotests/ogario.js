@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1509 MEGA TEST
+// v1.1510 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4220,8 +4220,8 @@ var thelegendmodproject = function(t, e, i) {
 
             },
 			'findOwnedVanillaSkin': function() {
-				if (!ogarcopythelb.skinURL && window.vanillaskins && window.UserVanillaSkin && window.EquippableSkins){
-					console.log("1. skin_" + window.UserVanillaSkin);
+				if (!ogarcopythelb.skinURL && window.vanillaskins && window.UserVanillaSkin && window.EquippableSkins && !ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick]){
+					//console.log("1. skin_" + window.UserVanillaSkin);
 					if (window.UserVanillaSkin.includes("skin_custom")){	
 						ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick] = window.UserVanillaSkin;
 						ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, window.UserVanillaSkin);						
@@ -4231,7 +4231,7 @@ var thelegendmodproject = function(t, e, i) {
 					else{
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                         if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin && window.EquippableSkins[player].image != "uses_spine") {	
-							console.log("2. " + window.EquippableSkins[player].image);	
+							//console.log("2. " + window.EquippableSkins[player].image);	
 							window.lastusednameforskin = ogarcopythelb.nick;
 							ogarminimapdrawer.customSkinsMap[ogarcopythelb.nick] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
 							ogarminimapdrawer.loadSkin(ogarminimapdrawer.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);							
@@ -4290,7 +4290,7 @@ var thelegendmodproject = function(t, e, i) {
                         //console.log("error loading image: "+ e);
                         if (e.includes(window.EnvConfig.config_url)) {
                             e = "https://legendmod.ml/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
-                            console.log("new destination is:" + e);
+                            //console.log("new destination is: " + e);
                             ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
                             ogarminimapdrawer.loadSkin(t, e);
                             return e;
