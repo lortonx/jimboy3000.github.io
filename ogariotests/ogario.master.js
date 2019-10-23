@@ -1,4 +1,4 @@
-//v12.34
+//v12.35
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -514,7 +514,7 @@ function legendmaster(self) {
 			if (source2){
 				output2= "" + friends;
 			}
-			output = [10, 4 + args.length + object.length + output2.length + 100, 10];
+			output = [10, 4 + args.length + object.length + output2.length, 10];
 			var getOwnPropertyNames = function(data) {
                 output.push(data.length);
                 var value = 0;
