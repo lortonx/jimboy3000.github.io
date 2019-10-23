@@ -1,4 +1,4 @@
-//v12.19
+//v12.20
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -478,15 +478,15 @@ function legendmaster(self) {
 				if (master && master.context && master.context == "facebook" && params === ":ffa" && window.friends){
 					picKey = "findServerWithFriends";	
 					params = params + "¸";
-					window.friends.forEach(function(element) {
-					params = params + element;
-					});					
+					//window.friends.forEach(function(element) {
+					//params = params + element;
+					//});					
 					//params = params + window.friends
 				}				
                 var options = this;
 				console.log("id", id, "params", params);
                 var container;
-				container= this.setRequestMsg(id, params);
+				container= this.setRequestMsg(id, params, null, source2);
                 var defaultWarningTime = ++this.curValidFindServer;
                 this.findingServer = e;
                 this.makeMasterRequest(headers.endpoint_version + "/" + picKey, container, function(response) {
@@ -511,7 +511,7 @@ function legendmaster(self) {
                 });
             }
         },
-        setRequestMsg: function(args, object, source) {
+        setRequestMsg: function(args, object, source, source2) {
             var getOwnPropertyNames = function(data) {
                 output.push(data.length);
                 var value = 0;
@@ -519,8 +519,11 @@ function legendmaster(self) {
                     output.push(data.charCodeAt(value));
                 }
             };
+            var getOwnPropertyNames2 = function(data) {
+				
+            };			
             var output = [10, 4 + args.length + object.length, 10];
-            return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
+            return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source2 && getOwnPropertyNames2(source2), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
         },
         makeMasterRequest: function(_wid_attr, data, callback, timeout_callback, type) {
             var header = this;
