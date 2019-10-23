@@ -1,4 +1,4 @@
-//v12.23
+//v12.25
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -514,7 +514,8 @@ function legendmaster(self) {
             }
         },
         setRequestMsg: function(args, object, source, source2) {
-            var getOwnPropertyNames = function(data) {
+            var output = [10, 4 + args.length + object.length, 10];
+			var getOwnPropertyNames = function(data) {
                 output.push(data.length);
                 var value = 0;
                 for (; value < data.length; value++) {
@@ -523,11 +524,11 @@ function legendmaster(self) {
             };
             var getOwnPropertyNames2 = function(data) {
 					data.forEach(function(element) {
+					output.push(18);	
 					getOwnPropertyNames(element);
 					});					
-            };			
-            var output = [10, 4 + args.length + object.length, 10];
-            return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source2 && output.push(18) && getOwnPropertyNames2(source2), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
+            };			          
+            return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source2 && getOwnPropertyNames2(source2), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
         },
         makeMasterRequest: function(_wid_attr, data, callback, timeout_callback, type) {
             var header = this;
