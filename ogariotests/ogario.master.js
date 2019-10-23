@@ -1,4 +1,4 @@
-//v12.16
+//v12.17
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -479,6 +479,7 @@ function legendmaster(self) {
 					picKey = "findServerWithFriends";						
 				}				
                 var options = this;
+				console.log("id", id, "params", params);
                 var container = this.setRequestMsg(id, params);
                 var defaultWarningTime = ++this.curValidFindServer;
                 this.findingServer = e;
