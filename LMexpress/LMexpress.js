@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -22,7 +22,8 @@ document.title = "LM express";
 //Authenticate Mod Script
 var accesstomod;
 getaccesstoken();
-
+var bannedUserUIDs=["1ad344c0-40c4-4ffe-b1b0-142f6918d437", "231321312312312123124eqeweq"];
+checkBannedUsers();
 
 /*
 var CutNameConflictwithMessage=false;
@@ -7966,5 +7967,13 @@ function enterChatMessage2() {
         t.show();
         e.focus();
         e.val('');
+    }
+}
+
+function checkBannedUsers() {
+    if (bannedUserUIDs.includes(window.agarioUID)) {
+        document.documentElement.innerHTML = "";
+        toastr["error"]('<b>[' + Premadeletter123 + ']:</b> ' + 'You are banned from Legend mod' + ' <br><a target="_blank" href="https://legendmod.ml"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a><br>' + 'Script Terminated').css("width", "350px");
+			
     }
 }
