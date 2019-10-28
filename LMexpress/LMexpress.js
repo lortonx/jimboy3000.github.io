@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "74"; // the version 1.1-> 1.11
 //fix ffa
@@ -5539,13 +5539,18 @@ function SNEZServers() {
     }
 
     // ---------------
-
+	window.userfirstname = localStorage.getItem("userfirstname");
+    window.userlastname = localStorage.getItem("userlastname");
+	//window.agarioUID
     var state = {
         nickname: null,
         server: null,
         tag: null,
         AID: null,
-		hidecountry: false
+		hidecountry: false,
+		userfirstname: null,
+		userlastname: null,
+		agarioUID: null
     };
     var elements = {
         nickname: "nick",
@@ -5616,6 +5621,9 @@ function SNEZServers() {
                 state.tag = tag.value;
                 state.AID = window.agarioID;
 				state.hidecountry = defaultmapsettings.hidecountry;
+				state.userfirstname = window.userfirstname;
+				state.userlastname = window.userlastname;
+				state.agarioUID	= window.agarioUID;
                 //state.tag="RespectPrivacy"; no2: I stoped this
                 socket.updateServerDetails();
             }
