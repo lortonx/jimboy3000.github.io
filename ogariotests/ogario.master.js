@@ -1,4 +1,4 @@
-//v12.43
+//v12.42
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -800,7 +800,7 @@ function legendmaster(self) {
         $("#login-google").attr("class", "menu-bar-button");
         toastr.info("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter127 + "!");
 		
-		window.agarioLEVEL=0;
+		//window.agarioLEVEL=0;
 		
         master.logout();
     };
