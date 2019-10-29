@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
@@ -3550,8 +3550,8 @@ function bumpLog() {
 }
 
 function PreLcCelebration() {
-    var checkonetimeLc = localStorage.getItem("checkonetimeLc");
-    if (checkonetimeLc == null) {
+    var checkonetimeLc1 = localStorage.getItem("checkonetimeLc1");
+    if (checkonetimeLc1 == null) {
         //   if ($("#nick").val().includes("?")) {
         var checkdate;
         Date.prototype.yyyymmdd = function() {
@@ -3563,7 +3563,7 @@ function PreLcCelebration() {
 
         var date = new Date();
         checkdate = date.yyyymmdd();
-        if (checkdate == "2018/11/12") {
+        if (checkdate == "2019/11/12") {
             LcCelebration();
         }
         //    }
@@ -3602,9 +3602,9 @@ function LcCelebration() {
     s.type = "text/javascript";
     s.src = "https://legendmod.ml/extras/LcHistory/LcHistoryBanner.js";
     $("body").append(s);
-    checkonetimeLc = 1;
-    localStorage.setItem("checkonetimeLc", checkonetimeLc);
-    return checkonetimeLc;
+    checkonetimeLc1 = 1;
+    localStorage.setItem("checkonetimeLc1", checkonetimeLc1);
+    return checkonetimeLc1;
 }
 
 function SquareAgar() {
