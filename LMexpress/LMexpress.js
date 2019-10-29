@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.080g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "74"; // the version 1.1-> 1.11
+var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5256,7 +5256,10 @@ function doGl() {
     $("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
     $("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
     $("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
-
+	
+	if (userid == window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea){
+		setLevelProgressBar();
+	}
     userfirstname = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
     userid = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
     userlastname = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
@@ -5282,6 +5285,10 @@ function doFB() {
         //	setTimeout(function (){ 
         $("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
         $("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[2]]);
+
+		if (userid == fbresponse[Object.keys(fbresponse)[2]]){
+			setLevelProgressBar();
+		}		
         userfirstname = fbresponse[Object.keys(fbresponse)[0]];
         if (userfirstname != null) {
             localStorage.setItem("userfirstname", userfirstname);
