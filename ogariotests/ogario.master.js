@@ -1,4 +1,4 @@
-//v12.42
+//v12.43
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -799,9 +799,9 @@ function legendmaster(self) {
         $("#login-facebook").attr("class", "menu-bar-button");
         $("#login-google").attr("class", "menu-bar-button");
         toastr.info("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter127 + "!");
-		//if (resetLevelProgressBar){
-			//resetLevelProgressBar();
-		//}
+		
+		window.agarioLEVEL=0;
+		
         master.logout();
     };
     self.facebookLogin = function() {
