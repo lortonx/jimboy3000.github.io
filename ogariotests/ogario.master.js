@@ -1,4 +1,4 @@
-//v12.47
+//v12.48
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -170,7 +170,7 @@ function legendmaster(self) {
 			client_version: 31000,
 			//3.4.6
             client_version_string: "3.10.0",
-			protocolVersion: 22
+			protocolVersion: 21
         };
     } else if (window.EnvConfig.master_url){
         var headers = {
@@ -181,7 +181,7 @@ function legendmaster(self) {
             proto_version: "15.0.3",
             client_version: 31000,
             client_version_string: "3.10.0",
-			protocolVersion: 22
+			protocolVersion: 21
         };
 		} else {
         var headers = {
@@ -192,7 +192,7 @@ function legendmaster(self) {
             proto_version: "15.0.3",
             client_version: 31000,
             client_version_string: "3.10.0",
-			protocolVersion: 22
+			protocolVersion: 21
         };		
     }
 	window.LMagarioheaders=headers;
