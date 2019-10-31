@@ -1,4 +1,4 @@
-//v12.44
+//v12.45
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -167,7 +167,7 @@ function legendmaster(self) {
             endpoint_version: "v4",
             proto_version: "15.0.3",
             //client_version: 30706,
-			client_version: 301000,
+			client_version: 31000,
 			//3.4.6
             client_version_string: "3.10.0",
 			protocolVersion: 21
@@ -179,7 +179,7 @@ function legendmaster(self) {
             master_url: window.EnvConfig.master_url.replace("https://", ""),
             endpoint_version: "v4",
             proto_version: "15.0.3",
-            client_version: 301000,
+            client_version: 31000,
             client_version_string: "3.10.0",
 			protocolVersion: 21
         };
@@ -190,7 +190,7 @@ function legendmaster(self) {
             master_url: "webbouncer-live-v8-0.agario.miniclippt.com",
             endpoint_version: "v4",
             proto_version: "15.0.3",
-            client_version: 301000,
+            client_version: 31000,
             client_version_string: "3.10.0",
 			protocolVersion: 21
         };		
