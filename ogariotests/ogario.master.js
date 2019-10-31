@@ -1,4 +1,4 @@
-//v12.53
+//v12.54
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -193,13 +193,7 @@ function legendmaster(self) {
             client_version: 31000,
             client_version_string: "3.10.0",
 			protocolVersion: 21
-        };	
-		console.log(localStorage.getItem("ogarioProtocolVersion"))
-		console.log('aaa')
-        if (null !== localStorage.getItem("ogarioProtocolVersion")) {
-			console.log('ProtocolVersion changed to,' + localStorage.getItem("ogarioProtocolVersion"))
-            headers.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
-        }		
+        };		
     }
 	window.LMagarioheaders=headers;
     var l = false;
