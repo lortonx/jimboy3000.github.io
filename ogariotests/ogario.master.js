@@ -1,4 +1,4 @@
-//v12.50
+//v12.51
 window.EnvConfig = {};
 window.EnvConfig.fb_app_id = self.localStorage.getItem("EnvConfig.fb_app_id");
 window.EnvConfig.google_client_id = self.localStorage.getItem("EnvConfig.google_client_id");
@@ -195,6 +195,7 @@ function legendmaster(self) {
 			protocolVersion: 21
         };	
         if (null !== localStorage.getItem("ogarioProtocolVersion")) {
+			console.log('ProtocolVersion changed to,' + localStorage.getItem("ogarioProtocolVersion"))
             headers.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
         }		
     }
