@@ -6812,7 +6812,7 @@ var thelegendmodproject = function(t, e, i) {
 
 
         if (null !== localStorage.getItem("ogarioProtocolVersion")) {
-			console.log('ProtocolVersion changed to,' + localStorage.getItem("ogarioProtocolVersion"))
+			//console.log('ProtocolVersion changed to,' + localStorage.getItem("ogarioProtocolVersion"))
             master.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
         }	
         var LM = {
