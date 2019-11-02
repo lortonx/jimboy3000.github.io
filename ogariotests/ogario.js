@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1530 MEGA TEST
+// v1.1531 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7084,12 +7084,22 @@ var thelegendmodproject = function(t, e, i) {
 			'sendNick': function(nick) {
             this.playerNick = nick;
             var self = this
-			if (typeof grecaptcha === "object"){
-            grecaptcha.ready(function() {
+			console.log('Gre step 1')
+			if (typeof grecaptcha === "object" && (!window.cookieCaptchaChecked && !window.cookieCaptchaOK) || (window.cookieCaptchaChecked && window.cookieCaptchaOK)){
+            console.log('Gre step 2')
+			grecaptcha.ready(function() {
+				console.log('Gre step 3')
+				window.cookieCaptchaChecked=true;
 				//grecaptcha.Promise('6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY', {action: 'play'}).then(function(token) {   
+				setTimeout(function() {
+					if (!window.cookieCaptchaOK){
+						legendmod.sendNick2(self.playerNick)
+					}
+				}, 1000);
                 grecaptcha.execute('6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY', {action: 'play'}).then(function(token) {  
-					try{
-                    nick = window.unescape(window.encodeURIComponent(self.playerNick));
+					console.log('Gre step 4')
+                    window.cookieCaptchaOK=true;					
+					nick = window.unescape(window.encodeURIComponent(self.playerNick));
                     var data = [0];
                     for (let length = 0; length < nick.length; length++) {
                         data.push(nick.charCodeAt(length));
@@ -7101,14 +7111,11 @@ var thelegendmodproject = function(t, e, i) {
                     data.push(0);                
                     data = new Uint8Array(data);
                     const dataView = new DataView(data.buffer);
-                    self.sendMessage(dataView);
-					}
-					catch{
-						console.error('[Legend mod Express] grecaptcha onRejected function called');
-						legendmod.sendNick2(self.playerNick);
-					}
+                    self.sendMessage(dataView);		
+					
                 });		
             });  
+			
 			}	
 			else{
 				legendmod.sendNick2(self.playerNick)
