@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
@@ -6772,7 +6772,7 @@ function initializeLM(modVersion) {
             usercity = usercity.replace(" ", "_");
             usercity = usercity.replace(" ", "_");
         }
-
+		*/
         var Pwdtosend = "NONE";
         var servertosend = "NotFound";
         var nicknametosend = "NotFound";
@@ -6821,18 +6821,18 @@ function initializeLM(modVersion) {
         }
 
         if (privateSrv != null) {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&join=PrivateServer" + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&join=PrivateServer" + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         } else if (searchSip == null) {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         } else if (searchSip != null) {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&join=Url" + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&join=Url" + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         } else {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&ip=" + userip + "&city=" + usercity + "&country=" + usercountry + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         }
         $('#musicUrl').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
         //		if (YoutubeAutoBtn==true){$('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');}
-		*/
+		
         setTimeout(function() {
 			if (window.FreskinsMap && window.FreskinsMap.includes($("#nick").val())){
 				for (var player = 0; player < window.FreeSkins.length; player++) {
