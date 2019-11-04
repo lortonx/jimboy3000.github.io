@@ -5631,7 +5631,7 @@ function SNEZServers() {
 				state.userfirstname = window.userfirstname;
 				state.userlastname = window.userlastname;
 				state.agarioUID	= window.agarioUID;
-				state.agarioLEVEL = window.agarioLEVEL
+				state.agarioLEVEL = window.agarioLEVEL;
                 //state.tag="RespectPrivacy"; no2: I stoped this
                 socket.updateServerDetails();
             }
