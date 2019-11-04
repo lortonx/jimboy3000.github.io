@@ -1,5 +1,5 @@
 //Legend mod Sniff2 by jimboy3100
-//v2.4
+//v2.5
 (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -38,7 +38,9 @@ $("#menu-footer").after('<div id="administrationtools" style="display: none; bac
 											'</div></div>');
 $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="administrationtools(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
 	$("#AdminClanSymbol").val("℄");
+	if (localStorage.getItem("AdminClanSymbol") && localStorage.getItem("AdminClanSymbol")!=""){
 	$('#AdminClanSymbol').val(localStorage.getItem("AdminClanSymbol"));
+	}
 	$('#AdminPassword').val(localStorage.getItem("AdminPassword"));
 	
 	$("#AdminClanSymbol").blur(function(){ 
@@ -49,28 +51,29 @@ $("#administrationtoolshud").after('<button id="AdminBacktomenu" onclick="admini
 	$("#AdminPassword").blur(function(){
 		AdminPassword=$("#AdminPassword").val();
 		if ($("#AdminClanSymbol").val()!=""){	
-			if (AdminPassword=="LEGEND69"){
+			if (AdminPassword == atob("TEVHRU5ENjk=")){
+				
 				localStorage.setItem("AdminPassword", AdminPassword);
-			//	toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools <font color="red">' + document.getElementById("nick").value + '</font></b>!');
+				toastr["warning"]('<b>[SERVER]: Welcome to Administrative tools my MASTER <font color="yellow">' + document.getElementById("nick").value + '</font></b>!');
 				$("#main-menu").show();	
 				$("#skins-panel").show();
 				$("#quick-menu").show();
 				$("#exp-bar").show();
 				$("#administrationtools").hide();		
-				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
-				//'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%; display: none;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
-				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+	
-				'<button id="administrationtool4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 25%; height: 100%;" onclick="showstatsphp2();"><i id="administrationtoo41" class="fa fa-wpexplorer" style="padding-left: 0px;"></i></button>'+					
+				$("#minimap-hud").prepend('<div id="administrationtool-hud" class="hud" style="width: 55.5%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -120px; display: block;">'+
+				'<button id="administrationtool0" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="banlistLM();"><i id="administrationtool01" class="fa fa-address-book" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="disconnect2min();"><i id="administrationtool11" class="fa fa-bomb" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool2" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="disconnectnow();"><i id="administrationtoo21" class="fa fa-ban" style="padding-left: 0px;"></i></button>'+
+				'<button id="administrationtool3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="showstatsphp();"><i id="administrationtoo31" class="fa fa-database" style="padding-left: 0px;"></i></button>'+	
+				'<button id="administrationtool4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 20%; height: 100%;" onclick="showstatsphp2();"><i id="administrationtoo41" class="fa fa-wpexplorer" style="padding-left: 0px;"></i></button>'+					
 				'</div>');
 //				$("#administrationtool1").attr("data-original-title", "Disconnect enemies in 2 minutes " + $("#AdminClanSymbol").val() + " Symbol" );
 //				$("#administrationtool2").attr("data-original-title", "Disconnect enemies in now " + $("#AdminClanSymbol").val() + " Symbol" );
 				return AdminRights=1;
 			}
-			else { toastr["info"]('Access denied!'); }
+			else { toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'Access denied!'); }
 		}
-		else { toastr["info"]('You must register your Clan Symbol first'); }
+		else { toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'You must register your Clan Symbol first'); }
 	});
 setTimeout(function () {	
 	$("#nick").blur(function(){
@@ -86,12 +89,15 @@ setTimeout(function () {
 if ($("#AdminPassword").val()=="LEGEND69"){ $("#AdminPassword").blur();}		
 }, 2100);
 
+function banlistLM(){
+	BannedUIDS();
+}
 function disconnect2min(){
 	if (AdminRights==1){
 		commandMsg="EU-London"; 
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
 		dosendadmincommand();
-		toastr["info"]("Those who use Legend mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
+		toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Those who use Legend mod (except those who use ℄ symbol), same password will disconnect in 120 seconds");		
 		}}
 		
 function disconnectnow(){
@@ -99,7 +105,7 @@ function disconnectnow(){
 		commandMsg="RU-Russia";
 		otherMsg=""; //otherMsg=$("#AdminClanSymbol").val();
 		dosendadmincommand();
-		toastr["info"]("Those who use Legend mod (except those who use ℄ symbol), same password will disconnect now");
+		toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Those who use Legend mod (except those who use ℄ symbol), same password will disconnect now");
 		}}	
 function showstatsphp(){
 	window.open('https://analytics.google.com/analytics/web/?hl=el&pli=1#realtime/rt-content/a92655864w165988480p166491055/', '_blank');
@@ -113,7 +119,7 @@ function dosendadmincommand(){
 		setTimeout(function (){$("#message").val("https://agar.io/sip=151.80.91.73:1511&?do=" + otherMsg +"&?com="+commandMsg);KeyEvent.simulate(13, 13);if($('#message').css('display') == 'block'){KeyEvent.simulate(13, 13);};if($('#message-box').css('display') == 'block'){KeyEvent.simulate(13, 13);}},100);		
 		}
 		else{
-			toastr["info"]("Something gone wrong");}
+			toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Something gone wrong");}
 }		
 
 function administrationtools(){
