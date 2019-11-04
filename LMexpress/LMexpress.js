@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "76"; // the version 1.1-> 1.11
 //fix ffa
@@ -7764,7 +7764,7 @@ function AgarBannedUIDs() {
 		
 		if (window.bannedUserUIDs){
 			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
-				console.log('does not include', responseLMAgarBannedUIDs[i])
+				//console.log('does not include', responseLMAgarBannedUIDs[i])
 				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
 			}
 		}
@@ -8052,4 +8052,69 @@ function RemoveAgarBannedUIDs(UID){
 			postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
 		}
 	}
+}
+
+function BannedUIDS() {
+    if (AdminRights == 1) {
+        if (window.AgarBannedUIDsAdded) {
+            $('#helloContainer').after('<div class="modal fade in" id="BannedUIDSModal" aria-hidden="false" style="display: block;">' +
+                '<div class="modal-backdrop fade in"></div>' +
+                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 500px;">' +
+                '<div class="modal-content">' +
+                '<div id="CloseBannedUIDS2" class="modal-header"><button id="CloseBannedUIDS" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQBannedUIDS" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Banned User IDs' + '</h4>' +
+                '</div>' +
+                '<div class="modal-body"><input type="text" class="form-control" id="Bannedagario_uid_input" placeholder="*UID (' + 'to be banned' + ')" style="width: 85%; display: inline-block">' +
+                '<button id="AddBannedUID" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 20%; padding: 4px 0px 6px; text-transform: capitalize;">Add</button>' +
+                '<br><color="red" style="display:inline"> ' + '<b>Banned UIDs:</b>' + '</color>' +
+                '<br><br>' +
+                '<select id="ss-select-BannedUIDS" class="form-control" required="" style="display:inline; width: 80%; margin-top: -30px;"></select>' +
+                '<button id="RemoveBannedUID" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 20%; padding: 4px 0px 6px; text-transform: capitalize;">Remove</button>' +
+                '<br>' +
+                '<p class="alert-warning text-center">' + 'Please be careful with the UIDs.' + '<br>Your UID is: <span class="alert-success" id="exp-uid">' + window.agarioUID + '</span></p>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+            populateBanListConfig();
+
+            $("#CloseBannedUIDS").click(function() {
+                $("#BannedUIDSModal").remove();
+            });
+            $("#FAQBannedUIDS").click(function() {
+                window.open('https://legendmod.ml/LMexpress/olddeals.html', '_blank');
+            });
+            $("#AddBannedUID").click(function() {
+                var temp = $("#Bannedagario_uid_input").val()
+                if (!bannedUserUIDs.includes(temp) && temp != null && temp != "" && temp.includes('-')) {
+                    AddAgarBannedUIDs(temp);
+                    bannedUserUIDs.push(temp);
+					var opt = document.createElement("option");
+					opt.text = temp;
+					document.getElementById('ss-select-BannedUIDS').options.add(opt);				
+                    toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'UID: ' + temp + " successfully added on UID BAN list");
+                } else {
+                    toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'UID: ' + temp + " seems mistaken or is already on the list");
+                }
+            });
+            $("#RemoveBannedUID").click(function() {
+				var temp = $("#ss-select-BannedUIDS").val();
+				var x = document.getElementById("ss-select-BannedUIDS");
+				x.remove(x.selectedIndex);
+				RemoveAgarBannedUIDs(temp);
+				toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'UID: ' + temp + " successfully removed from UID BAN list");
+            });
+        } else {
+            toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'Play a bit so the Ban id list is loaded');
+        }
+    } else {
+        toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + 'You do not name the authority');
+    }
+}
+
+function populateBanListConfig() {
+    var select = document.getElementById("ss-select-BannedUIDS");
+    for (i = 0; i < Object.keys(window.bannedUserUIDs).length; i++) {
+        select.options[select.options.length] = new Option(window.bannedUserUIDs[i])
+    }
 }
