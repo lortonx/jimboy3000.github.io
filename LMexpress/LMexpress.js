@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
@@ -7756,6 +7756,29 @@ function AgarVersionDestinations() {
     }
 }
 
+function AgarBannedUIDs() {
+    //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
+    getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
+    var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
+    for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {
+		
+		if (window.bannedUserUIDs){
+			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
+				console.log('does not include', responseLMAgarBannedUIDs[i])
+				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
+			}
+		}
+    }
+	window.AgarBannedUIDsAdded=true;
+}
+
+function AddAgarBannedUIDs(UID){
+	if (window.bannedUserUIDs && window.AgarBannedUIDsAdded){
+		window.bannedUserUIDs[window.bannedUserUIDs.length] = UID;		
+	postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
+	}
+}
+
 function isObject(val) {
     if (val === null) {
         return false;
@@ -7985,9 +8008,32 @@ function enterChatMessage2() {
 }
 
 function UIDcontroller() {
+	AgarBannedUIDs();
     if (bannedUserUIDs.includes(window.agarioUID)) {
         document.documentElement.innerHTML = "";
         toastr["error"]('<b>[' + Premadeletter123 + ']:</b> ' + 'You are banned from Legend mod' + ' <br><a target="_blank" href="https://legendmod.ml"><font color="blue"><b><u>www.legendmod.ml</u></b></font></a><br>' + 'Script Terminated').css("width", "350px");
 			
     }
+}
+function AgarBannedUIDs() {
+    //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
+    getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
+    var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
+    for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {
+		
+		if (window.bannedUserUIDs){
+			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
+				console.log('does not include', responseLMAgarBannedUIDs[i])
+				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
+			}
+		}
+    }
+	window.AgarBannedUIDsAdded=true;
+}
+
+function AddAgarBannedUIDs(UID){
+	if (window.bannedUserUIDs && window.AgarBannedUIDsAdded){
+		window.bannedUserUIDs[window.bannedUserUIDs.length] = UID;		
+	postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
+	}
 }
