@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "76"; // the version 1.1-> 1.11
 //fix ffa
@@ -8024,7 +8024,7 @@ function AgarBannedUIDs() {
     for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {		
 		if (window.bannedUserUIDs){
 			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
-				console.log('does not include', responseLMAgarBannedUIDs[i])
+				//console.log('does not include', responseLMAgarBannedUIDs[i])
 				window.bannedUserUIDs.push(responseLMAgarBannedUIDs[i])
 			}
 		}
