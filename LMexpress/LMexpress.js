@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "76"; // the version 1.1-> 1.11
 //fix ffa
@@ -8021,8 +8021,7 @@ function AgarBannedUIDs() {
     //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
     getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
     var responseLMAgarBannedUIDs = JSON.parse(xhttp.response);
-    for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {
-		
+    for (var i = 0; i < Object.keys(responseLMAgarBannedUIDs).length; i++) {		
 		if (window.bannedUserUIDs){
 			if (!bannedUserUIDs.includes(responseLMAgarBannedUIDs[i])){
 				console.log('does not include', responseLMAgarBannedUIDs[i])
@@ -8035,8 +8034,22 @@ function AgarBannedUIDs() {
 
 function AddAgarBannedUIDs(UID){
 	if (window.bannedUserUIDs && window.AgarBannedUIDsAdded){
+		if (!bannedUserUIDs.includes(UID) && UID != null && UID != "" && window.agarioUID.includes('-')){ 
 		window.bannedUserUIDs[window.bannedUserUIDs.length] = UID;		
-	postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
-	
+		postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
+		}
+	}
+}
+
+function RemoveAgarBannedUIDs(UID){
+	if (window.bannedUserUIDs && window.AgarBannedUIDsAdded){
+		if (UID != null){ 
+			for(var i = bannedUserUIDs.length - 1; i >= 0; i--) {
+				if(bannedUserUIDs[i] === UID) {
+				bannedUserUIDs.splice(i, 1);
+				}
+			}	
+			postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify(window.bannedUserUIDs));
+		}
 	}
 }
