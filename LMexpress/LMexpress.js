@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "75"; // the version 1.1-> 1.11
 //fix ffa
@@ -5631,6 +5631,7 @@ function SNEZServers() {
 				state.userfirstname = window.userfirstname;
 				state.userlastname = window.userlastname;
 				state.agarioUID	= window.agarioUID;
+				state.agarioLEVEL = window.agarioLEVEL
                 //state.tag="RespectPrivacy"; no2: I stoped this
                 socket.updateServerDetails();
             }
