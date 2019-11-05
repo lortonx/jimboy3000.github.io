@@ -7617,6 +7617,7 @@ var thelegendmodproject = function(t, e, i) {
 							if (window.agarioUID && UIDcontroller){
 								UIDfunction();
 							}
+							window.agarioEncodedUID = window.testobjects2.split('"�')[1].split('=')[0]+%3D;
                         }
 
 
