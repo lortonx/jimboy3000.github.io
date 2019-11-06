@@ -19,9 +19,62 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
   <link rel="stylesheet" href="https://legendmod.ml/css/ogario.v3.css?v=338">
   <script src="https://legendmod.ml/jquery.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY"></script>
-  <style>.grecaptcha-badge{display:none}</style>
-  <div id="captchaWindowV3" style="display:none;"></div>  
+  <script>
+  var kk = 'dv4'
+	var u = 'https://deltav4.glitch.me/hook-server.js'
+	if (!localStorage[kk]) localStorage[kk] = 2
+		var xhr = new XMLHttpRequest();
+		if (localStorage[kk] > 0) {
+			--localStorage[kk]
+			console.log('try load №', localStorage[kk])
+			document.write('<script src="'+u+'"><\/script>')
+		} else {
+		xhr.open('GET', u, true);
+		xhr.timeout = 3000
+		xhr.send();
+		xhr.onload = function () {
+			if (xhr.status == 200) {localStorage[kk] = 2;}
+    }
+}
+</script>
+  <script i="hope" u="gamer">
+			window.requestCaptchaV2 = function(motherfucker) {
+					grecaptcha.v2mode = true;
+					grecaptcha.render('recaptcha-screen', {
+							'sitekey': '6LfjUBcUAAAAAF6y2yIZHgHIOO5Y3cU5osS2gbMl',
+							'callback': SAO
+					});
+			}
+			window.requestCaptchaV3 = function(kurwa) {
+				grecaptcha.v2mode = false;
+				grecaptcha.render('captchaWindowV3', {
+						'sitekey': '6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY',
+						'badge': "inline",
+						'size': "invisible",
+						'callback': SAO
+				});
+			}
+			window.SAO = function() {
+					console.log("Loaded.")
+			}
+  </script>
+  <!--script src="https://www.google.com/recaptcha/api.js?render=6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY"></script-->
+  		<!--script>
+			function onloadCallbackV3(){
+				Object.defineProperty(window, "grecaptchaV3", {
+					value: window.grecaptcha,
+					writable: !1,
+					configurable: !1,
+					enumerable: !1
+				});
+				var t = document.createElement("script");
+				t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"),
+				document.head.appendChild(t)
+			}
+		</script-->
+		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackV3&render=explicit"></script>
+	<style>.grecaptcha-badge{display:none}</style>
+	
   <script src="https://legendmod.ml/bootstrap.min.js"></script>
   <script src="https://legendmod.ml/bootstrap-colorpicker.min.js"></script>
   <script src="https://legendmod.ml/toastr.min.js"></script>
