@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.080b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "76"; // the version 1.1-> 1.11
+var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -61,7 +61,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlysixth = localStorage.getItem("checkonlysixth");
+var checkonlyseventh = localStorage.getItem("checkonlyseventh");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -479,28 +479,23 @@ function loadersetings() {
                 }
             }
         }	
-/*        if (checkonlysixth != "true") {
+        if (checkonlyseventh != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-		toastr["info"]('<b>Thanks to author of <span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);"> <a href="http://deltav4.glitch.me/" target="blank"><font color="yellow">http://deltav4.glitch.me/</font></a> </span> for fixing tokens.<br><font color="red"></b>LM updated!<font>').css("width", "350px");
-	
-        toastr["info"]('<center><b><font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">'+
-		'✮✰𝑺𝒐𝒏𝒊𝒂✰✮</span></font> is the new co-developer of Legend Express. <br>'+
-		'New updates by ✮✰𝑺𝒐𝒏𝒊𝒂✰✮:<br>'+
-		'1. <font color="red">Huge Perfomance improvement</font></a> (test it yourself)<br>'+
-		'2. <font color="red">Map position fixed</font> with all LM users </i>(like party)<i><br>'+
-		'3. Opponent rings and colors improved<br>'+
-		'New updates by ℄🌀Jimboy3100:<br>'+
-		'1. Webbouncers, skin destinations autoupdate<br>'+
-		'2. Universal tool socket enabled if primary falls <br>'+
+        toastr["info"]('<center><b>'+
+		'New updates by <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Neo</font></span>:<br>'+
+		'1. <font color="red">Captcha fix</font></a><br>'+
+		'2. <font color="red">Secondary socket update</font><br>'+
+		'New updates by <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">℄🌀Jimboy3100</font></span>:<br>'+
+		'1. <font color="red">Auto coin digger, 20 coins/hour</font><br>'+
 		'<u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>', '', {
                     timeOut: 20000,
                     extendedTimeOut: 20000
-                }).css("width", "450px");  
+                }).css("width", "300px");  
 				
-		checkonlysixth = "true";
-		localStorage.setItem("checkonlysixth", checkonlysixth);				
+		checkonlyseventh = "true";
+		localStorage.setItem("checkonlyseventh", checkonlyseventh);				
        // }					
-		}*/
+		}
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
