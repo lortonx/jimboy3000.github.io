@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1538 MEGA TEST
+// v1.1539 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -48,7 +48,7 @@ function callEveryFullHourCoinDigger() {
     var difference = nextHour - now;
     window.setTimeout(function(){
         console.log("[Legend mod Express] Dig 20 coins")		
-        callEveryFullHour();
+        callEveryFullHourCoinDigger();
     }, difference);
 
 }
