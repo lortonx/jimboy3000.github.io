@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1542 MEGA TEST
+// v1.1543 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -100,6 +100,9 @@ const standardDeviation = (arr, usePopulation = false) => {
 
 */
 //bots
+window.botsSpawncode=[];
+window.botsSpawncodeNum=0;
+
 window.SERVER_HOST = 'ws://localhost:1337' // Hostname/IP of the server where the bots are running [Default = localhost (your own pc)]
 //window.SERVER_PORT = 1337 // Port number used on the server where the bots are running [Default = 1337]
 class Writer {
@@ -7151,7 +7154,8 @@ var thelegendmodproject = function(t, e, i) {
                 pos++
                 for (let length = 0; length < token.length; length++,pos++) view.setUint8(pos, token.charCodeAt(length));
 				//
-				console.log(view)
+				window.botsSpawncodeNum++;
+				window.botsSpawncode=[window.botsSpawncodeNum]=view
                 //self.sendMessage(view);
             }
             if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
@@ -10339,8 +10343,9 @@ function setGUIEvents() {
             if (legendmod.gameMode == ":party") {
                 if (window.bots.amount <= 199) {
                     if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
+                        //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
-                        if (window.LatestBotsVersion) {
+						if (window.LatestBotsVersion) {
                             $('#handleCaptchaBotsAreaSettings').show();
                         }
                     } else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
