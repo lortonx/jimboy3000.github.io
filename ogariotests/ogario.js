@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1578 MEGA TEST
+// v1.1579 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7605,12 +7605,12 @@ var thelegendmodproject = function(t, e, i) {
                             s += 2;
                         }
                         for (var r = 0; s < data.byteLength;) {
-                            var l = '';
+                            var le = '';
                             var h = 0;
                             var c = false;
                             r++;
                             if (2 & (y = data.getUint8(s++))) {
-                                l = window.decodeURIComponent(escape(i()));
+                                le = window.decodeURIComponent(escape(i()));
                             }
 							//console.log(y) 4 or 6
 							
@@ -7625,20 +7625,20 @@ var thelegendmodproject = function(t, e, i) {
                                 s += 4;
                             }
                             if (8 & y) {
-                                l = this.playerNick;
+                                le = this.playerNick;
                                 h = 'isPlayer';
                                 this.playerPosition = r
 								
 								// for bots
-								if (typeof l === "object") { 
-								console.log(l)
-								l=legendmod.playerNick;
-								} 
+								//if (typeof l === "object") { 
+								//console.log(l)
+								//l=legendmod.playerNick;
+								//} 
 								//
                             }
 
                             this.leaderboard.push({
-                                'nick': l,
+                                'nick': le,
                                 'id': h,
                                 'isFriend': c
                             });
