@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1569 MEGA TEST
+// v1.1570 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -185,7 +185,10 @@ window.connectionBots = {
 		toastr["info"]('<b>[SERVER]:</b> 1000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
 		window.RequestedTokens=1000;
 		legendmod.sendTokenForBots();	
+		if (!window.sendFirstTimeTokenBots){
+		window.sendFirstTimeTokenBots=true
 		legendmod.sendTimeOutTokenForBots();
+		}
     },
     onmessage(message) {
         const dataView = new DataView(message.data)
@@ -7168,6 +7171,9 @@ var thelegendmodproject = function(t, e, i) {
 						legendmod.sendTokenForBots();	
 					}			
 				}, 3000);	
+				}
+				else{
+					window.sendFirstTimeTokenBots=false
 				}
 		},
         'sendTokenForBots': function () {	  
