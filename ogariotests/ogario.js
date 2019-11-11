@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1560 MEGA TEST
+// v1.1561 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -188,7 +188,7 @@ window.connectionBots = {
         switch (dataView.getUint8(0)) {
             case 0:
                 document.getElementById('startBots').disabled = true
-				document.getElementById('captchaBots').disabled = true
+				document.getElementById('captchaBots').disabled = false
 				//document.getElementById('captchaBots').style.display = 'none'
                 document.getElementById('stopBots').disabled = false
                 document.getElementById('startBots').style.display = 'none'
@@ -204,7 +204,7 @@ window.connectionBots = {
                 document.getElementById('botsAI').style.color = '#DA0A00'
                 document.getElementById('botsAI').innerText = 'Disabled'
                 document.getElementById('startBots').disabled = false
-				document.getElementById('captchaBots').disabled = false
+				document.getElementById('captchaBots').disabled = true
                 document.getElementById('stopBots').disabled = true
                 document.getElementById('startBots').style.display = 'inline'
                 document.getElementById('stopBots').style.display = 'none'
