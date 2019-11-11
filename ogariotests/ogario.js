@@ -10418,6 +10418,27 @@ function setGUIEvents() {
     })
 }
 
+			window.requestCaptchaV2 = function(aa) {
+					grecaptcha.v2mode = true;
+					grecaptcha.render('recaptcha-screen', {
+							'sitekey': '6LfjUBcUAAAAAF6y2yIZHgHIOO5Y3cU5osS2gbMl',
+							'callback': SAO
+					});
+					window.cookieCaptchaOK=true;
+			}
+			window.requestCaptchaV3 = function(bb) {
+				grecaptcha.v2mode = false;
+				grecaptcha.render('captchaWindowV3', {
+						'sitekey': '6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY',
+						'badge': "inline",
+						'size': "invisible",
+						'callback': SAO						
+				});
+				window.cookieCaptchaOK=true;
+			}
+			window.SAO = function() {
+					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
+			}
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
