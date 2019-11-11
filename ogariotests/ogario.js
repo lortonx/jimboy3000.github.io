@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1565 MEGA TEST
+// v1.1566 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -182,7 +182,8 @@ window.connectionBots = {
         document.getElementById('stopBots').disabled = false
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
-		legendmod.sendTokenForBots()		
+		window.RequestedTokens=1000;
+		legendmod.sendTokenForBots();		
     },
     onmessage(message) {
         const dataView = new DataView(message.data)
