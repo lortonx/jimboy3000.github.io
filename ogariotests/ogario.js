@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1563 MEGA TEST
+// v1.1564 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -195,6 +195,7 @@ window.connectionBots = {
                 document.getElementById('stopBots').style.display = 'inline'
                 document.getElementById('stopBots').innerText = 'Stop Bots'
                 window.userBots.startedBots = true
+				legendmod.sendTokenForBots()
                 break
             case 1:
                 document.getElementById('stopBots').disabled = true
