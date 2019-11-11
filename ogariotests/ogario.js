@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1568 MEGA TEST
+// v1.1569 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3601,7 +3601,7 @@ var thelegendmodproject = function(t, e, i) {
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
-					<button id="captchaBots" class="btn btn-primary btn" disabled>Request 1000 captcha tokens</button>
+					<button id="captchaBots" class="btn btn-primary btn"  style="display:none;" disabled>Request 1000 captcha tokens</button>
 					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
 					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"></input> <b>Handle bots with captcha</b>
 					<br>
@@ -7161,6 +7161,7 @@ var thelegendmodproject = function(t, e, i) {
 				window.sendTimeOutTokenBots=false;
 				if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens>1){
 				setTimeout(function() {	
+					legendmod.sendTimeOutTokenForBots();
 					if (!window.sendTimeOutTokenBots){
 						toastr["info"]('<b>[SERVER]:</b> Captcha solver stoped, restarting...</b>');
 						window.RequestedTokens=1000;
