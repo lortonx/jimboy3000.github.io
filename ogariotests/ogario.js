@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1556 MEGA TEST
+// v1.1557 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7166,7 +7166,6 @@ var thelegendmodproject = function(t, e, i) {
                             "msg": JSON.stringify(window.botsSpawncode[window.botsSpawncodeNum])
                  }));
 				if (window.userBots.startedBots && window.RequestedTokens>1){
-					//if (window.RequestedTokens>1)
 					window.RequestedTokens--;
 					legendmod.sendTokenForBots();
 				}
@@ -10371,6 +10370,11 @@ function setGUIEvents() {
             }
         }
     })
+    document.getElementById('captchaBots').addEventListener('click', () => {
+		toastr["info"]('<b>[SERVER]:</b> 1000 captcha tokens requested, some lag proccessing will be created');
+		window.RequestedTokens=1000;
+		legendmod.sendTokenForBots();
+    })	
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
     })
