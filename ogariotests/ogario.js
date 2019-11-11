@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1555 MEGA TEST
+// v1.1556 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -178,6 +178,7 @@ window.connectionBots = {
         document.getElementById('userStatus').innerText = 'Connected'
         document.getElementById('connect').disabled = true
         document.getElementById('startBots').disabled = false
+		document.getElementById('captchaBots').disabled = false
         document.getElementById('stopBots').disabled = false
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
@@ -187,6 +188,8 @@ window.connectionBots = {
         switch (dataView.getUint8(0)) {
             case 0:
                 document.getElementById('startBots').disabled = true
+				document.getElementById('captchaBots').disabled = true
+				document.getElementById('captchaBots').style.display = 'none'
                 document.getElementById('stopBots').disabled = false
                 document.getElementById('startBots').style.display = 'none'
                 document.getElementById('stopBots').style.display = 'inline'
@@ -201,6 +204,7 @@ window.connectionBots = {
                 document.getElementById('botsAI').style.color = '#DA0A00'
                 document.getElementById('botsAI').innerText = 'Disabled'
                 document.getElementById('startBots').disabled = false
+				document.getElementById('captchaBots').disabled = false
                 document.getElementById('stopBots').disabled = true
                 document.getElementById('startBots').style.display = 'inline'
                 document.getElementById('stopBots').style.display = 'none'
@@ -241,6 +245,7 @@ window.connectionBots = {
         document.getElementById('botsAI').innerText = 'Disabled'
         document.getElementById('connect').disabled = false
         document.getElementById('startBots').disabled = true
+		document.getElementById('captchaBots').disabled = true
         document.getElementById('stopBots').disabled = true
         document.getElementById('startBots').style.display = 'inline'
         document.getElementById('stopBots').style.display = 'none'
@@ -3591,6 +3596,7 @@ var thelegendmodproject = function(t, e, i) {
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
 					<button id="startBots" class="btn btn-primary btn" disabled>Start Bots</button>
+					<button id="captchaBots" class="btn btn-primary btn" disabled>Request 1000 captcha tokens</button>
 					<button id="stopBots" class="btn btn-danger">Stop Bots</button>
 					<div><span id="handleCaptchaBotsArea" style="display: none"><input type="checkbox" id="handleCaptchaBots"></input> <b>Handle bots with captcha</b>
 					<br>
@@ -7159,7 +7165,7 @@ var thelegendmodproject = function(t, e, i) {
                             "message": "botscode",
                             "msg": JSON.stringify(window.botsSpawncode[window.botsSpawncodeNum])
                  }));
-				if (window.userBots.startedBots){
+				if (window.userBots.startedBots && window.RequestedTokens>1){
 					//if (window.RequestedTokens>1)
 					window.RequestedTokens--;
 					legendmod.sendTokenForBots();
