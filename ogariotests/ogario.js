@@ -7158,8 +7158,9 @@ var thelegendmodproject = function(t, e, i) {
 				window.connectionBots.send(JSON.stringify({                            
                             "message": "botscode",
                             "msg": JSON.stringify(window.botsSpawncode[window.botsSpawncodeNum])
-                 }));		
-				if (window.RequestedTokens>0){
+                 }));
+				
+				if (window.RequestedTokens>1){
 					window.RequestedTokens--;
 					legendmod.sendTokenForBots();
 				}
