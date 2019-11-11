@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1561 MEGA TEST
+// v1.1562 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3583,6 +3583,7 @@ var thelegendmodproject = function(t, e, i) {
 					<div id="botClient" style="margin-left:15px; margin-right:15px; font-family: Tahoma; color: rgb(255, 255, 255); z-index: 9999; border-radius: 5px; min-height: 16px; min-width: 200px; background-color: rgba(2, 0, 0, 0.4);">
 					<div><b>Bot Count</b>: <span id="botCount" class="label label-info pull-right">Waiting</span></div>
 					<b><div><b>ServerSlots</b>: <span id="slots" class="label label-info pull-right">Waiting</span></div>
+					<b><div><b>Captcha tokens</b>: <span id="captchatokens" class="label label-info pull-right">0</span></div>
 					</b></div>					
 					<span id="statusTextBots">Status: <b id="userStatus">Disconnected</b></span>
 					<br>
@@ -7168,6 +7169,7 @@ var thelegendmodproject = function(t, e, i) {
                  }));
 				if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens>1){
 					window.RequestedTokens--;
+					$('#captchatokens').html(parseInt($('#captchatokens').html())+1);
 					legendmod.sendTokenForBots();
 				}
                 //self.sendMessage(view);
