@@ -1,7 +1,7 @@
 // Open Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1566 MEGA TEST
+// v1.1567 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -182,6 +182,7 @@ window.connectionBots = {
         document.getElementById('stopBots').disabled = false
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
+		toastr["info"]('<b>[SERVER]:</b> 1000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
 		window.RequestedTokens=1000;
 		legendmod.sendTokenForBots();		
     },
@@ -7155,8 +7156,19 @@ var thelegendmodproject = function(t, e, i) {
 					}
 				}, 500);			
         },	
-        'sendTokenForBots': function () {
-        
+		'sendTimeOutTokenForBots': function () {
+				window.sendTimeOutTokenBots=false;
+				if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens>1){
+				setTimeout(function() {	
+					if (!window.sendTimeOutTokenBots){
+						toastr["info"]('<b>[SERVER]:</b> Captcha solver stoped, restarting...</b>');
+						window.RequestedTokens=1000;
+						legendmod.sendTokenForBots();	
+					}			
+				}, 3000);	
+				}
+		},
+        'sendTokenForBots': function () {	  
           var self = this
           this.playerNick = nick;
           
@@ -7173,6 +7185,7 @@ var thelegendmodproject = function(t, e, i) {
 					window.RequestedTokens--;
 					$('#captchatokens').html(parseInt($('#captchatokens').html())+1);
 					legendmod.sendTokenForBots();
+					window.sendTimeOutTokenBots	= true;			
 				}
                 //self.sendMessage(view);
             }
@@ -10379,6 +10392,7 @@ function setGUIEvents() {
 		toastr["info"]('<b>[SERVER]:</b> 1000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
 		window.RequestedTokens=1000;
 		legendmod.sendTokenForBots();
+		legendmod.sendTimeOutTokenForBots();
     })	
     document.getElementById('stopBots').addEventListener('click', () => {
         if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
