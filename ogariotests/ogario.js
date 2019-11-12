@@ -1,4 +1,4 @@
-// Open Source script
+// Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
 // v1.1584 MEGA TEST
