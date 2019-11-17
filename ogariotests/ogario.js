@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1587 MEGA TEST
+// v1.1588 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7193,7 +7193,7 @@ var thelegendmodproject = function(t, e, i) {
 					window.sendTimeOutTokenBots	= true;			
 				}
                 //self.sendMessage(view);			
-		}
+		},
         'sendTokenForBots': function () {	  
           //var self = this
           //this.playerNick = nick;        
