@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1585 MEGA TEST
+// v1.1586 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7159,7 +7159,7 @@ var thelegendmodproject = function(t, e, i) {
 					if (!window.cookieCaptchaOK){
 						legendmod.sendNick2(self.playerNick)
 					}
-				}, 800);			
+				}, 1000);			
         },	
 		'sendTimeOutTokenForBots': function () {
 				window.sendTimeOutTokenBots=false;
@@ -7177,11 +7177,7 @@ var thelegendmodproject = function(t, e, i) {
 					window.sendFirstTimeTokenBots=false
 				}
 		},
-        'sendTokenForBots': function () {	  
-          //var self = this
-          //this.playerNick = nick;
-          
-          var sendSpawn = function() {
+		'sendSpawn2': function () {
                 var token = grecaptcha.getResponse()
 				window.botsSpawncodeNum++;
 				window.botsSpawncode[window.botsSpawncodeNum]=token;
@@ -7196,8 +7192,11 @@ var thelegendmodproject = function(t, e, i) {
 					legendmod.sendTokenForBots();
 					window.sendTimeOutTokenBots	= true;			
 				}
-                //self.sendMessage(view);
-            }
+                //self.sendMessage(view);			
+		}
+        'sendTokenForBots': function () {	  
+          //var self = this
+          //this.playerNick = nick;        
             if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
                 //first time need recaptcha v2
                 requestCaptchaV3();
@@ -7206,7 +7205,7 @@ var thelegendmodproject = function(t, e, i) {
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
-                    sendSpawn();
+                    legendmod.sendSpawn2();
                 });
             } else {
                 //next times need recaptcha v3
@@ -7214,7 +7213,7 @@ var thelegendmodproject = function(t, e, i) {
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
-                    sendSpawn();
+                    legendmod.sendSpawn2();
                 });
             }			
         },		
