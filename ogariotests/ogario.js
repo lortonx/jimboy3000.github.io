@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1586 MEGA TEST
+// v1.1587 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7199,9 +7199,9 @@ var thelegendmodproject = function(t, e, i) {
           //this.playerNick = nick;        
             if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
                 //first time need recaptcha v2
-                requestCaptchaV3();
                 grecaptcha.onceLoad = true;
                 grecaptcha.reset();
+                requestCaptchaV3();
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
@@ -7209,7 +7209,7 @@ var thelegendmodproject = function(t, e, i) {
                 });
             } else {
                 //next times need recaptcha v3
-                grecaptcha.reset();
+                //grecaptcha.reset();
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
@@ -7217,55 +7217,6 @@ var thelegendmodproject = function(t, e, i) {
                 });
             }			
         },		
-			/*'sendNick': function(nick) {
-            this.playerNick = nick;
-            var self = this
-			//console.log('Gre step 1')
-			if (typeof grecaptcha === "object"){
-			//if (typeof grecaptcha === "object" && (!window.cookieCaptchaChecked && !window.cookieCaptchaOK) || (window.cookieCaptchaChecked && window.cookieCaptchaOK)){
-				//console.log('Gre step 2')
-				grecaptcha.ready(function() {
-				//console.log('Gre step 3')
-				//window.cookieCaptchaChecked=true;  
-				setTimeout(function() {					
-					if (!window.cookieCaptchaOK){
-						console.log('Gre step 5')
-						legendmod.sendNick2(self.playerNick)
-					}
-				}, 500);
-                grecaptcha.execute('6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY', {action: 'play'}).then(function(token) {  
-					//console.log('Gre step 4')
-                    window.cookieCaptchaOK=true;					
-					nick = window.unescape(window.encodeURIComponent(self.playerNick));
-                    var data = [0];
-                    for (let length = 0; length < nick.length; length++) {
-                        data.push(nick.charCodeAt(length));
-                    }
-                    data.push(0);
-                    for (let length = 0; length < token.length; length++) {
-                        data.push(token.charCodeAt(length));
-                    }
-                    data.push(0);                
-                    data = new Uint8Array(data);
-                    const dataView = new DataView(data.buffer);
-                    self.sendMessage(dataView);		
-					
-                });		
-            });  
-			
-			}	
-			else{
-				legendmod.sendNick2(self.playerNick)
-			}			
-            nick = window.unescape(window.encodeURIComponent(nick));
-            const view = this.createView(2 + nick.length);
-            for (let length = 0; length < nick.length; length++) {
-                view.setUint8(length + 1, nick.charCodeAt(length));
-            }
-
-            console.log('real',view.buffer);
-            //this.sendMessage(view);
-        },	*/		
             'sendNick2': function(t) {
                 this.playerNick = t, 
 				t = window.unescape(window.encodeURIComponent(t));
