@@ -1,4 +1,5 @@
 // Source script
+
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
 // v1.1593 MEGA TEST
@@ -10365,83 +10366,4 @@ function setGUIEvents() {
 		//legendmod.sendTimeOutTokenForBots();
     })	
     document.getElementById('stopBots').addEventListener('click', () => {
-        if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([1]).buffer)
-    })
-    $('#handleCaptchaBots').click(function() {
-        if (this.checked) {
-            window.connectionBots.send(new Uint8Array([11]).buffer)
-            $('#solveCaptchaBots').removeAttr("disabled")
-            $('#pushCaptchaBots').removeAttr("disabled")
-        } else {
-            window.connectionBots.send(new Uint8Array([12]).buffer)
-            $('#solveCaptchaBots').prop('checked', false)
-            $('#pushCaptchaBots').prop('checked', false)
-            $('#solveCaptchaBots').attr("disabled", true);
-            $('#pushCaptchaBots').attr("disabled", true);
-            document.getElementById('connectBots').innerText = 'Connect'
-            document.getElementById('connectBots').style.color = 'white'
-
-        }
-    })
-    $('#solveCaptchaBots').click(function() {
-        if (this.checked) {
-            window.connectionBots.send(new Uint8Array([13]).buffer)
-        } else {
-            window.connectionBots.send(new Uint8Array([14]).buffer)
-        }
-    })
-    $('#pushCaptchaBots').click(function() {
-        if (this.checked) {
-            document.getElementById('connectBots').innerText = 'Push a captcha bot'
-            document.getElementById('connectBots').style.color = 'yellow'
-            window.connectionBots.send(new Uint8Array([15]).buffer)
-        } else {
-            window.connectionBots.send(new Uint8Array([16]).buffer)
-            document.getElementById('connectBots').innerText = 'Connect'
-            document.getElementById('connectBots').style.color = 'white'
-
-        }
-    })
-}
-
-			window.requestCaptchaV2 = function(aa) {
-					grecaptcha.v2mode = true;
-					grecaptcha.render('recaptcha-screen', {
-							'sitekey': '6LfjUBcUAAAAAF6y2yIZHgHIOO5Y3cU5osS2gbMl',
-							'callback': SAO
-					});
-					//window.cookieCaptchaOK=true;
-			}
-			window.requestCaptchaV3 = function(bb) {
-				grecaptcha.v2mode = false;
-				grecaptcha.render('captchaWindowV3', {
-						'sitekey': '6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY',
-						'badge': "inline",
-						'size': "invisible",
-						'callback': SAO						
-				});
-				//window.cookieCaptchaOK=true;
-			}
-			window.SAO = function() {
-					window.cookieCaptchaOK=true;
-					if (legendmod.botscaptcha){
-					legendmod.botscaptcha=null;
-					var temp = grecaptcha.getResponse()
-                    legendmod.sendSpawn2(temp);	
-					}
-					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
-			}
-/*
-var snezSocketdata;
-var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
-
-snezSocket.onmessage = function(message) { 
-snezSocketdata = JSON.parse(message.data); 
-console.log(message.data);
-}
-
-
-snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopythelb.nick, token: legendmod3.serverToken, tag: ogarcopythelb.clanTag, skin: ogarcopythelb.skinURL, color: ogarcopythelb.color}));
-
-
-*/
+    
