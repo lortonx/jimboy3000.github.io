@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1591 MEGA TEST
+// v1.1592 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7167,7 +7167,6 @@ var thelegendmodproject = function(t, e, i) {
 				setTimeout(function() {	
 					legendmod.sendTimeOutTokenForBots();
 					if (!window.sendTimeOutTokenBots){
-						//toastr["info"]('<b>[SERVER]:</b> Captcha solver stoped, restarting...</b>');
 						window.RequestedTokens=1000;
 						legendmod.sendTokenForBots();	
 					}			
@@ -7177,8 +7176,8 @@ var thelegendmodproject = function(t, e, i) {
 					window.sendFirstTimeTokenBots=false
 				}
 		},
-		'sendSpawn2': function () {
-                var token = grecaptcha.getResponse()
+		'sendSpawn2': function (temp) {
+                var token = temp
 				window.botsSpawncodeNum++;
 				window.botsSpawncode[window.botsSpawncodeNum]=token;
 
@@ -7188,10 +7187,10 @@ var thelegendmodproject = function(t, e, i) {
 					legendmod.sendTokenForBots();
 					window.sendTimeOutTokenBots	= true;			
 				}
-				
 				window.connectionBots.send(JSON.stringify({                            
                             "message": "botscode",
-                            "msg": JSON.stringify(window.botsSpawncode[window.botsSpawncodeNum])
+							"msg": JSON.stringify(token)
+                            //"msg": JSON.stringify(window.botsSpawncode[window.botsSpawncodeNum])
                  }));
                 //self.sendMessage(view);			
 		},
@@ -7207,16 +7206,19 @@ var thelegendmodproject = function(t, e, i) {
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
-                    legendmod.sendSpawn2();
+					var temp = grecaptcha.getResponse()
+                    legendmod.sendSpawn2(temp);
                 });
             } else {
                 //next times need recaptcha v3
-                //grecaptcha.reset();
+				grecaptcha.ready(function() {
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
-                    legendmod.sendSpawn2();					
+					var temp = grecaptcha.getResponse()
+                    legendmod.sendSpawn2(temp);					
                 });
+			})
             }			
         },		
             'sendNick2': function(t) {
