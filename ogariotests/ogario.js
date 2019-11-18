@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1592 MEGA TEST
+// v1.1593 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7211,12 +7211,11 @@ var thelegendmodproject = function(t, e, i) {
                 });
             } else {
                 //next times need recaptcha v3
+				
 				grecaptcha.ready(function() {
+				legendmod.botscaptcha=true;
                 grecaptcha.execute(0, {
                     'action': 'play'
-                }).then(function() {
-					var temp = grecaptcha.getResponse()
-                    legendmod.sendSpawn2(temp);					
                 });
 			})
             }			
@@ -10425,6 +10424,11 @@ function setGUIEvents() {
 			}
 			window.SAO = function() {
 					window.cookieCaptchaOK=true;
+					if (legendmod.botscaptcha){
+					legendmod.botscaptcha=null;
+					var temp = grecaptcha.getResponse()
+                    legendmod.sendSpawn2(temp);	
+					}
 					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
 			}
 /*
