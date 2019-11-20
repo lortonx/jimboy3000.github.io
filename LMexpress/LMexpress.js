@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.080c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "77"; // the version 1.1-> 1.11
+var semimodVersion = "78"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -6808,7 +6808,7 @@ function initializeLM(modVersion) {
         if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
         var i = 0, nicknametosendlength = nicknametosend.length; 
         for(i; i < nicknametosendlength ; i++) {
-        nicknametosend = removeEmojis(onicknametosend.replace(" ", "_"));
+        nicknametosend = removeEmojis(nicknametosend.replace(" ", "_"));
         }
         if ($('#server').val() != undefined) {
             if (servertosend.indexOf("#") == false) {
