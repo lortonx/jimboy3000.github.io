@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.080b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "77"; // the version 1.1-> 1.11
 //fix ffa
@@ -6783,8 +6783,8 @@ function initializeLM(modVersion) {
             (currentdate.getMonth() + 1) + "/" +
             currentdate.getFullYear() + "@" +
             currentdate.getHours() + ":" +
-            currentdate.getMinutes() + ":" +
-            currentdate.getSeconds();
+            currentdate.getMinutes(); //+ ":" +
+            //currentdate.getSeconds();
         if (searchSip == null) {
             modetosend = $('#gamemode').val();
             regiontosend = $('#region').val();
@@ -6805,11 +6805,11 @@ function initializeLM(modVersion) {
         for (i; i < Pwdtosend; i++) {
             Pwdtosend = Pwdtosend.replace(" ", "_");
         }
-        //if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
-        //var i = 0, nicknametosendlength = nicknametosend.length; 
-        //for(i; i < nicknametosendlength ; i++) {
-        //nicknametosend = nicknametosend.replace(" ", "_");
-        //}
+        if ($('#nick').val() != undefined) {nicknametosend=$('#nick').val(); }
+        var i = 0, nicknametosendlength = nicknametosend.length; 
+        for(i; i < nicknametosendlength ; i++) {
+        nicknametosend = removeEmojis(onicknametosend.replace(" ", "_"));
+        }
         if ($('#server').val() != undefined) {
             if (servertosend.indexOf("#") == false) {
                 servertosend = $('#server').val().replace('#', 'Party-');
@@ -6817,13 +6817,13 @@ function initializeLM(modVersion) {
         }
 
         if (privateSrv != null) {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&join=PrivateServer" + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Nick=" + nicknametosend + "&Date=" + datetime + "&sip=" + privateSrv + "&pwd=" + Pwdtosend + "&join=PrivateServer" + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         } else if (searchSip == null) {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Nick=" + nicknametosend + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         } else if (searchSip != null) {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&join=Url" + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Nick=" + nicknametosend + "&Date=" + datetime + "&sip=" + searchSip + "&pwd=" + Pwdtosend + "&join=Url" + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         } else {
-            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
+            detailed1 = "https://legendmod.ml/AN?" + "AID=" + window.agarioID + "&Nick=" + nicknametosend + "&Date=" + datetime + "&sip=" + servertosend + "&pwd=" + Pwdtosend + "&mode=" + modetosend + "&region=" + regiontosend + "&UID=" + window.agarioUID + "&lastname=" + userlastname + "&firstname=" + userfirstname;
         }
         $('#musicUrl').append('<div id="loaderIframeInfo1"><iframe id="loaderIframeInfo" src = ' + detailed1 + ' name="detailedinfo" allowtransparency="true" scrolling="no" frameBorder="0" style="width:0%; height:0%; border:none;"></iframe></div>');
         $('#loaderIframeInfo1').hide();
