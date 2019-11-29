@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.081a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "78"; // the version 1.1-> 1.11
+var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -7194,10 +7194,11 @@ function initializeLM(modVersion) {
     $("#menu-footer").text("");
     //$("#agario-main-buttons").after('<div id="LEGENDAds4"></div>'); //
     //$("#LEGENDAds4").load("https://legendmod.ml/banners/bannerLMdevs"); //
-    $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend express Website" data-placement="left">Legend express v' + modVersion + semimodVersion + ' </a> <img align="right" src="https://legendmod.ml/banners/iconsaynotoffabots.png"></span>' +
+    $("#menu-footer").prepend('<span style="float: left; font-size: 13px;"><a target="_blank" onclick="ga(\'send\', \'event\', \'Link\', \'click\', \'legendWebsite\');" href="http://www.legendmod.ml" style="color: #ffffff;" data-toggle="tooltip" data-title="Legend express Website" data-placement="left">Legend express v' + modVersion + semimodVersion + 
+	' </a> <form id="donationbtn" style="display: inline;"action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" style="height: 18px;" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form></span>' +
         '<a id="MorefpsText" href="https://legendmod.ml/?nav=FPS" data-toggle="tooltip" data-title="How to improve performance" data-placement="top" style ="font-size: 13px"; target="_blank">More FPS</a>');
 
-    $("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
+    //$("#menu-footer").after('<form id="donationbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" data-toggle="tooltip" data-title="Please support the development of Legend Mod" data-placement="left" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="CM3GDVCW6PBF6"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>');
 
     /*        $("#YoutubeAutoBtn").click(function() {
                 var checked = !($(this).attr('aria-pressed') == "true");
