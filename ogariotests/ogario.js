@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1594 MEGA TEST
+// v1.1595 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3598,7 +3598,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" step="0.1" placeholder="Captcha Speed" min="0.0" max="10" spellcheck="false">
+					<input type="number" id="captchaSpeed" step="0.1" placeholder="Captcha delay (sec)" min="0.0" max="10" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 
 					<br>
@@ -7204,7 +7204,13 @@ var thelegendmodproject = function(t, e, i) {
           //this.playerNick = nick;        
             if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
                 //first time need recaptcha v2
-
+		var tempol = $("#captchaSpeed").val()		
+		if (!isNaN($("#captchaSpeed").val())){
+			tempol=0;
+		}
+		else if($("#captchaSpeed").val()==null || $("#captchaSpeed").val()==""){
+			tempol=0;
+		}
                 requestCaptchaV3();
                 grecaptcha.onceLoad = true;
                 grecaptcha.reset();				
@@ -7214,7 +7220,7 @@ var thelegendmodproject = function(t, e, i) {
 					var temp = grecaptcha.getResponse()
 					setTimeout(function() {
                     legendmod.sendSpawn2(temp);
-					}, 1000);
+					}, tempol);
                 });
             } else {
                 //next times need recaptcha v3
