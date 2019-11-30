@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1604 MEGA TEST
+// v1.1605 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3598,7 +3598,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" step="0.1" placeholder="Captcha delay (sec)" min="0.0" max="10" spellcheck="false">
+					<input type="number" id="captchaSpeed" step="0.1" placeholder="Captcha delay (sec)" min="0" max="10" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 
 					<br>
@@ -10318,7 +10318,9 @@ function setGUIEvents() {
     var storedbotsRemoteIP = localStorage.getItem("localstoredBotsRemoteIP");
     if (storedbotsRemoteIP == null || storedbotsRemoteIP == "") {
         storedbotsRemoteIP = "ws://localhost:1337";
-    }
+    }	
+    var captchaSpeed = localStorage.getItem("captchaSpeed");
+	$('#captchaSpeed').val(captchaSpeed)
     window.bots.remoteIP = storedbotsRemoteIP
     window.SERVER_HOST = storedbotsRemoteIP;
     $('#botsRemoteIP').val(storedbotsRemoteIP)
@@ -10335,6 +10337,9 @@ function setGUIEvents() {
     }
     window.bots.amount = storedbotsamount;
     $('#botsAmount').val(storedbotsamount)
+    document.getElementById('captchaSpeed).addEventListener('change', function() {
+        localStorage.setItem('captchaSpeed', $('#captchaSpeed').val())
+    })	
     document.getElementById('botsRemoteIP').addEventListener('change', function() {
         window.bots.remoteIP = this.value
         localStorage.setItem('localstoredBotsRemoteIP', window.bots.remoteIP)
