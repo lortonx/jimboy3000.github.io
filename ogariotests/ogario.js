@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1593 MEGA TEST
+// v1.1594 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3598,6 +3598,7 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
+					<input type="number" id="captchaSpeed" step="0.1" placeholder="Captcha Speed" min="0.0" max="10" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 
 					<br>
@@ -7167,13 +7168,15 @@ var thelegendmodproject = function(t, e, i) {
 				setTimeout(function() {	
 					legendmod.sendTimeOutTokenForBots();
 					if (!window.sendTimeOutTokenBots){
-						window.RequestedTokens=1000;
+						//window.RequestedTokens=1000;
 						legendmod.sendTokenForBots();	
 					}			
 				}, 3000);	
 				}
 				else{
+					//setTimeout(function() {	
 					window.sendFirstTimeTokenBots=false
+					//}, 100);
 				}
 		},
 		'sendSpawn2': function (temp) {
@@ -7184,7 +7187,9 @@ var thelegendmodproject = function(t, e, i) {
 				if (document.getElementById('userStatus').innerText == 'Connected' && window.RequestedTokens>1){
 					window.RequestedTokens--;
 					$('#captchatokens').html(parseInt($('#captchatokens').html())+1);
+					//setTimeout(function() {
 					legendmod.sendTokenForBots();
+					//}, 100);
 					window.sendTimeOutTokenBots	= true;			
 				}
 				window.connectionBots.send(JSON.stringify({                            
@@ -7207,7 +7212,9 @@ var thelegendmodproject = function(t, e, i) {
                     'action': 'play'
                 }).then(function() {
 					var temp = grecaptcha.getResponse()
+					setTimeout(function() {
                     legendmod.sendSpawn2(temp);
+					}, 1000);
                 });
             } else {
                 //next times need recaptcha v3
