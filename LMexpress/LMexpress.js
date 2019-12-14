@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.081c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "78"; // the version 1.1-> 1.11
 //fix ffa
@@ -61,7 +61,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlyseventh = localStorage.getItem("checkonlyseventh");
+var checkonlyeight = localStorage.getItem("checkonlyeight");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -479,21 +479,18 @@ function loadersetings() {
                 }
             }
         }	
-        if (checkonlyseventh != "true") {
+        if (checkonlyeight != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         toastr["info"]('<center><b>'+
-		'New updates by <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Neo</font></span>:<br>'+
-		'1. <font color="red">Captcha fix</font></a><br>'+
-		'2. <font color="red">Secondary socket update</font><br>'+
-		'New updates by <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">℄🌀Jimboy3100</font></span>:<br>'+
-		'1. <font color="red">Auto coin digger, 20 coins/hour</font><br>'+
+		'For questions about <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Legend mod</font></span>:<br>'+
+		'click <u><a target="_blank" href="http://discord.gg/sK2Fkgw"><font color="red">here</font></u></a><br>'+
 		'<u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>', '', {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "300px");  
 				
-		checkonlyseventh = "true";
-		localStorage.setItem("checkonlyseventh", checkonlyseventh);				
+		checkonlyeight = "true";
+		localStorage.setItem("checkonlyeight", checkonlyeight);				
        // }					
 		}
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
