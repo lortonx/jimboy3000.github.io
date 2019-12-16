@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.081d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
@@ -6248,7 +6248,7 @@ function initializeLM(modVersion) {
         //		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
         '<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>' +
         '<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>'+
-		'<a id= "LegendClanDiscord" href="http://discord.gg/sK2Fkgw" target="_blank" class="fa fa-globe" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a>');
+		'<a id= "LegendClanDiscord" href="https://discord.gg/vqy6b5U" target="_blank" class="fa fa-globe" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a>');
     $("#LegGoogleForm").tooltip('show').tooltip('hide');
     $("#oldSkinsBtn").tooltip('show').tooltip('hide');
     $("#oldSkinsBtn").hide();
