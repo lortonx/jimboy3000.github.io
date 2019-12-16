@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.081e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
@@ -479,7 +479,7 @@ function loadersetings() {
                 }
             }
         }	
-        if (checkonlyeight != "true") {
+        /*if (checkonlyeight != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         toastr["info"]('<center><b>'+
 		'For questions about <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Legend mod</font></span>:<br>'+
@@ -492,7 +492,7 @@ function loadersetings() {
 		checkonlyeight = "true";
 		localStorage.setItem("checkonlyeight", checkonlyeight);				
        // }					
-		}
+		}*/
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
