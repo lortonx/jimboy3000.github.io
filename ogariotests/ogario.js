@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1621 MEGA TEST
+// v1.1622 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2650,7 +2650,7 @@ var thelegendmodproject = function(t, e, i) {
             'version': 'v1',
             'privateMode': false,
             'protocolMode': true,
-            'publicIP': 'wss://srv.ogario.eu:3443',
+            'publicIP': 'wss://wss.ogario.eu:3443',
             'privateIP': null,
             'updateInterval': 1000,
             'updateTick': 0,
@@ -6772,7 +6772,8 @@ var thelegendmodproject = function(t, e, i) {
                                 try { 
                                     style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
                                     style.translate(this.x - y * 2, this.y - y * 2, this.y - y * 2);
-                                    style.rotate(LM.cAngle);
+                                    //style.rotate(LM.cAngle);
+									style.rotate(20*Math.PI);
                                     style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
                                     //try
                                     LM.updateCommander();
