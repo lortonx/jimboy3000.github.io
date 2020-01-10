@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1631 MEGA TEST
+// v1.1632 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6770,17 +6770,7 @@ var thelegendmodproject = function(t, e, i) {
                                 } catch (e) {}
                             } else if (this.targetNick.includes("℄🌀Jimboy3100")) {
                                 try { 
-                                    //style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
-									 
-									var pickerAxes = this.ctx;
-									pickerAxes.save(); 
-									var rotationdeg = 30 * Math.PI / 180;
-									pickerAxes.translate(this.x - y * 2, this.y - y * 2);
-									pickerAxes.rotate(rotationdeg);									
-									pickerAxes.drawImage(cimg, -rotationdeg / 2, -rotationdeg / 2, 4 * y, 4 * y);
-									pickerAxes.restore();									
-									//style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);				
-									//style.restore();  
+                                    style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
                                 } catch (e) {}
                             }
                         }
