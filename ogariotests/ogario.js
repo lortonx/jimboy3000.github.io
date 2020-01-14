@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1659 MEGA TEST
+// v1.1660 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6790,8 +6790,8 @@ var thelegendmodproject = function(t, e, i) {
 										ab = performance.now()/1000 - ae*30;
 									}									
 									if (ab >= window.abam + 15) {
-										af = ~~((performance.now()/1000 - window.abam)/15);
-										ac = performance.now()/1000 - af*15;
+										ae = ~~((ab - window.abam)/30);
+										ac = performance.now()/1000 - af*(30/2);
 										ab = 15 - ac;
 										 
 									}
