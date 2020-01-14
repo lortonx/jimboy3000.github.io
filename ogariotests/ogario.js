@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1651 MEGA TEST
+// v1.1652 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6781,19 +6781,21 @@ var thelegendmodproject = function(t, e, i) {
 										window.abah = today.getHours()
 									}																	
 									ab = ab + mab;
+									/*
 									var ac;
 									if (ab>30) ab = ab - 30;
 									if (ab>=15) {
 										ac = ab - 15;
 										ab = 15 - ac;
 										}
+									*/
                                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
-									if (today.getHours() == window.abah && ab < 30000 + window.abam){
-										style.drawImage(cimg2, this.x - (1.5 + 1/15 * ab) * y , this.y - (1.5 + 1/15 * ab) * y, (1.5 + 1/15 * ab) * 2 * y, (1.5 + 1/15 * ab) * 2 * y);
+									if (today.getHours() == window.abah && ab < 5 + window.abam){
+											style.drawImage(cimg5, this.x - (1.5 + 15/15 * ab) * y , this.y - (1.5 + 15/15 * ab) * y, (1.5 + 15/15 * ab) * 2 * y, (1.5 + 15/15 * ab) * 2 * y);
 									}
-									else if(today.getHours() == window.abah && (ab >= 30000 + window.abam && ab <= 30000 + 4000 + window.abam )){
+									else if(today.getHours() == window.abah && (ab >= 60 + window.abam && ab <= 60 + 4 + window.abam )){
 										//if (ab<4){
-											style.drawImage(cimg2, this.x - (1.5 + 15/15 * ab) * y , this.y - (1.5 + 15/15 * ab) * y, (1.5 + 15/15 * ab) * 2 * y, (1.5 + 15/15 * ab) * 2 * y);
+											style.drawImage(cimg2, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 										//}
 									}
                                 } catch (e) {}								
