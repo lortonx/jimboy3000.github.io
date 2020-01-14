@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1636 MEGA TEST
+// v1.1637 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6773,13 +6773,14 @@ var thelegendmodproject = function(t, e, i) {
                                 try { 
 									var ab = today.getSeconds();
 									var ac;
-									if (ab>30) ab = ab - 30;
-									if (ab>=15) {
-										ac = ab - 15;
-										ab = 15 - ac;
+									var sec = 4;
+									if (ab> sec * 2) ab = ab - sec * 2;
+									if (ab >= sec) {
+										ac = ab - sec;
+										ab = sec - ac;
 										}
                                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
-									style.drawImage(cimg2, this.x - (1.5 + 0.5/15 * ab) * y , this.y - (1.5 + 0.5/15 * ab) * y, (1.5 + 0.5/15 * ab) * 2 * y, (1.5 + 0.5/15 * ab) * 2 * y);
+									style.drawImage(cimg2, this.x - (1.5 + 0.5 / sec * ab) * y , this.y - (1.5 + 0.5 / sec * ab) * y, (1.5 + 0.5 / sec * ab) * 2 * y, (1.5 + 0.5 / sec * ab) * 2 * y);
                                 } catch (e) {}								
 
                             }
