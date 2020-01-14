@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1651 MEGA TEST
+// v1.1652 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6773,9 +6773,9 @@ var thelegendmodproject = function(t, e, i) {
 								var today = new Date();
                                 try { 
 									
-									var ab = performance.now()
+									var ab = performance.now()/1000
 									if (!window.abam){
-										window.abam = performance.now()
+										window.abam = performance.now()/1000
 									}
 									if (!window.abah){
 										window.abah = today.getHours()
@@ -6785,21 +6785,20 @@ var thelegendmodproject = function(t, e, i) {
 									var ae;
 									var af;
 									
-									if (ab > window.abam - 30000) {
-										ae = ~~((ab - window.abam)/30000);
-										ab = ab - ae*30000;
-									}
-									
-									if (ab >= window.abam - 15000) {
-										af = ~~((ab - window.abam)/15000);
-										ac = ab - af*15000;
-										ab = 15000 - ac;
+									if (ab >= window.abam - 30) {
+										ae = ~~((ab - window.abam)/30);
+										ab = ab - ae*30;
+									}									
+									else if (ab >= window.abam - 15) {
+										af = ~~((ab - window.abam)/15);
+										ac = ab - af*15;
+										ab = 15 - ac;
 										}
                                     //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
-									if (today.getHours() == window.abah && performance.now() < 30000 + window.abam){
+									if (today.getHours() == window.abah && performance.now() < 30 + window.abam){
 										style.drawImage(cimg2, this.x - (1.5 + 0.5/15 * ab) * y , this.y - (1.5 + 0.5/15 * ab) * y, (1.5 + 0.5/15 * ab) * 2 * y, (1.5 + 0.5/15 * ab) * 2 * y);
 									}
-									else if(today.getHours() == window.abah && (performance.now() >= 30000 + window.abam && performance.now() <= 30000 + 4000 + window.abam )){
+									else if(today.getHours() == window.abah && (performance.now() >= 30 + window.abam && performance.now() <= 30 + 4 + window.abam )){
 										//if (ab<4){
 											style.drawImage(cimg2, this.x - (1.5 + 15/15 * ab) * y , this.y - (1.5 + 15/15 * ab) * y, (1.5 + 15/15 * ab) * 2 * y, (1.5 + 15/15 * ab) * 2 * y);
 										//}
