@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1633 MEGA TEST
+// v1.1634 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6766,11 +6766,12 @@ var thelegendmodproject = function(t, e, i) {
                             //special animations
                             if (this.targetNick.includes("The Dying Light")) {
                                 try {
-                                    style.drawImage(cimg5, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+                                    style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
                                 } catch (e) {}
                             } else if (this.targetNick.includes("℄🌀Jimboy3100")) {
                                 try { 
-                                    style.drawImage(cimg2, this.x - y * 2, this.y - y * 2, 4 * y, 4 * y);
+                                    //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+									style.drawImage(cimg2, this.x - 1.5 * y, this.y - 1.5 * y, 1.5 * 2 * y, 1.5 * 2 * y);
                                 } catch (e) {}
                             }
                         }
