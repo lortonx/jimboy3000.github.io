@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1638 MEGA TEST
+// v1.1639 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6773,7 +6773,7 @@ var thelegendmodproject = function(t, e, i) {
                                 try { 
 									var ab = today.getSeconds();
 									var ac;
-									var sec = 30;
+									var sec = 8;
 									var absec = ab / sec;
 									if (ab>60/absec) ab = ab - 60/absec;
 									if (ab>=sec/2) {
