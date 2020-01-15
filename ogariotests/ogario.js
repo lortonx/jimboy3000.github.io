@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1654 MEGA TEST
+// v1.1655 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6776,24 +6776,14 @@ var thelegendmodproject = function(t, e, i) {
                                 try { 
 								if (!window.testAnimatCells){
 									if (!window.testAnimCell){
-									var ab = today.getSeconds();
-									var mab = today.getMilliseconds() / 1000;
+									var ab = today.getTime()/1000 
 									if (!window.abam){
 										window.abam = ab
-										if (window.abam > 55){											
-											window.abamOffset = 60 - window.abam;
-											window.abam = 0;
-										}
 									}
 									if (!window.abah){
 										window.abah = today.getHours()
 									}	
-									if (window.abamOffset){
-										ab = ab + window.abamOffset;
-									}
-									ab = ab - abam;
-									ab = ab + mab;
-									
+									ab = ab - window.abah;
 									/*var ac;
 									if (ab>30) ab = ab - 30;
 									if (ab>=15) {
