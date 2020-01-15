@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1653 MEGA TEST
+// v1.1654 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6765,40 +6765,52 @@ var thelegendmodproject = function(t, e, i) {
 
                             //special animations
                             if (this.targetNick.includes("The Dying Light")) {
+								
                                 try {
                                     style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
                                 } catch (e) {}
                             } else if (this.targetNick.includes("℄🌀Jimboy3100")) {
+								//style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+								
 								var today = new Date();
                                 try { 
-									
+								if (!window.testAnimatCells){
+									if (!window.testAnimCell){
 									var ab = today.getSeconds();
 									var mab = today.getMilliseconds() / 1000;
 									if (!window.abam){
 										window.abam = ab
+										if (window.abam > 55){											
+											window.abamOffset = 60 - window.abam;
+											window.abam = 0;
+										}
 									}
 									if (!window.abah){
 										window.abah = today.getHours()
 									}	
-									ab = ab - abam;;
+									if (window.abamOffset){
+										ab = ab + window.abamOffset;
+									}
+									ab = ab - abam;
 									ab = ab + mab;
-									/*
-									var ac;
+									
+									/*var ac;
 									if (ab>30) ab = ab - 30;
 									if (ab>=15) {
 										ac = ab - 15;
 										ab = 15 - ac;
-										}
-									*/
-                                    //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+										}*/						                                 
 									if (today.getHours() == window.abah && ab < 5 + window.abam){
 											style.drawImage(cimg5, this.x - (1.5 + 15/15 * ab) * y , this.y - (1.5 + 15/15 * ab) * y, (1.5 + 15/15 * ab) * 2 * y, (1.5 + 15/15 * ab) * 2 * y);
+									}					
 									}
-									else if(today.getHours() == window.abah && (ab >= 60 + window.abam && ab <= 60 + 4 + window.abam )){
+									}
+									else{
 										//if (ab<4){
-											style.drawImage(cimg2, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+											style.drawImage(cimg2, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);	
+											window.testAnimatCells=true;
 										//}
-									}
+									}									
                                 } catch (e) {}								
 
                             }
