@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.081e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.082e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
@@ -61,7 +61,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlyeight = localStorage.getItem("checkonlyeight");
+var checkonlyninth = localStorage.getItem("checkonlyninth");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -479,20 +479,21 @@ function loadersetings() {
                 }
             }
         }	
-        /*if (checkonlyeight != "true") {
+        if (checkonlyninth != "true") {
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         toastr["info"]('<center><b>'+
-		'For questions about <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">Legend mod</font></span>:<br>'+
-		'click <u><a target="_blank" href="http://discord.gg/sK2Fkgw"><font color="red">here</font></u></a><br>'+
-		'<u><a target="_blank" href="http://www.legendmod.ml"><font color="blue">www.legendmod.ml</font></u></b></center>', '', {
+		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
+		'Change theme, <u><a target="_blank" href="https://legendmod.ml/themes/"><font color="blue">click here</font></u></a><br>'+
+		'or <u><font color="green">chrome://settings/clearBrowserData </font></u>delete cookies'+
+		'<br>or <u><font color="green">Settings->Import/Export->Download </font></u> your latest saved setting</b></center>', '', {
                     timeOut: 20000,
                     extendedTimeOut: 20000
-                }).css("width", "300px");  
+                }).css("width", "450px");  
 				
-		checkonlyeight = "true";
-		localStorage.setItem("checkonlyeight", checkonlyeight);				
+		checkonlyninth = "true";
+		localStorage.setItem("checkonlyninth", checkonlyninth);				
        // }					
-		}*/
+		}
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
