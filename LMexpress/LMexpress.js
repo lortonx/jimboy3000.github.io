@@ -6112,7 +6112,7 @@ function initializeLM(modVersion) {
 
         '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 0px; padding: 0px 0 0px 0;"><span id="legendlanguagetext" class="title" style="" data-toggle="tooltip" data-placement="right" data-original-title="Visit https://legendmod.ml/ LanguagePackEnglish.js to Upload a Language Pack">Choose Language:  </span>' +
         '<select id="legendlanguages" class="form-control" onchange="changeModLanguage();" required="" data-original-title="" title="" style="display:inline; width: 50%" >' +
-        '<option value="1" data-itr="">English</option>' +
+        '<option value="1" data-itr="" selected>English</option>' +
         '<option value="6" data-itr="">Arabic</option>' +
         '<option value="4" data-itr="">Bulgarian</option>' +
         '<option value="5" data-itr="">French - Francais</option>' +
