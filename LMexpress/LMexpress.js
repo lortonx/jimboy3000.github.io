@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.082e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.082f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "79"; // the version 1.1-> 1.11
 //fix ffa
@@ -5246,16 +5246,16 @@ function preventcanvasimagecrash() {
 }
 
 function doGl() {
-    $("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Paa);
-    $("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa);
-    $("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea);
+    $("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.lL);
+    $("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KW);
+    $("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca);
 	
-	if (userid == window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea){
+	if (userid == window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca){
 		setLevelProgressBar();
 	}
-    userfirstname = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.ofa;
-    userid = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.Eea;
-    userlastname = window.gapi.auth2.getAuthInstance().currentUser.Ab.w3.wea;
+    userfirstname = window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KW;
+    userid = window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca;
+    userlastname = window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KU;
     if (userfirstname != null) {
         localStorage.setItem("userfirstname", userfirstname);
     }
