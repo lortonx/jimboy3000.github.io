@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1667 MEGA TEST
+// v1.1668 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7941,6 +7941,12 @@ var thelegendmodproject = function(t, e, i) {
                             window.testobjectsOpcode255 = data;
                             this['handleSubmessage'](data);
                             break;
+							
+						case 16:
+						this.updateCells(new LMbuffer(data['buffer']), s);
+						//this.countPps()
+						break;	
+						
                         default:
                             console.log('[Legend mod Express] Unknown opcode:', data.getUint8(0));
                 }
