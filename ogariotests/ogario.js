@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1669 MEGA TEST
+// v1.1670 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4849,7 +4849,9 @@ var thelegendmodproject = function(t, e, i) {
                         window.SLGconnected = true; //do this only once	
                         this.SLGconnect2(srv);
                     } else {
+						if (window.SLGsocket) {
                         window.SLGsocket.closeAndOpen();
+						}
                     }
                 }
             },
