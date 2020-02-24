@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1660 MEGA TEST
+// v1.1661 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6885,6 +6885,7 @@ var thelegendmodproject = function(t, e, i) {
             master.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
         }	
         var LM = {
+			'integrity': true,
             'quadtree': null,
             updateQuadtree: function(cells) {
                 var w = ogarfooddrawer.canvasWidth / ogarfooddrawer.scale;
@@ -6916,14 +6917,24 @@ var thelegendmodproject = function(t, e, i) {
             'serverTimeDiff': 0,
             'loggedInTime': 0,
             'mapSize': 14142,
-            'mapOffset': 7071,
+			
+            //'mapOffset': 7071, 
+			'mapOffset': this.mapOffset/2, //2020 jimboy3100
+			
             'mapOffsetX': 0,
             'mapOffsetY': 0,
             'mapOffsetFixed': false,
+			/*
             'mapMinX': -7071,
             'mapMinY': -7071,
             'mapMaxX': 7071,
             'mapMaxY': 7071,
+			*/ //2020 jimboy3100
+            'mapMinX': -this.mapOffset/2,
+            'mapMinY': -this.mapOffset/2,
+            'mapMaxX': this.mapOffset/2,
+            'mapMaxY': this.mapOffset/2,
+			
             'viewMinX': 0,
             'viewMinY': 0,
             'viewMaxX': 0,
@@ -7026,6 +7037,7 @@ var thelegendmodproject = function(t, e, i) {
                 ]; //Sonia3
                 window.legendmod.setrot = false; //Sonia3
                 window.legendmod.delstate = -1; //Sonia3
+				this.integrity = url.indexOf('agar.io')>-1; // 2020 JIMBOY3100 
                 this.closeConnection();
                 this.flushCellsData();
                 this.protocolKey = null;
@@ -7121,7 +7133,8 @@ var thelegendmodproject = function(t, e, i) {
             },
             'sendMessage': function(t) {
                 //console.log(t);
-                if (this.connectionOpened) {
+                //if (this.connectionOpened) {
+				if (this.connectionOpened && this.integrity) {	
                     if (!this.clientKey) return;
                     t = this['shiftMessage'](t, this.clientKey);
                     this.clientKey = this.shiftKey(this.clientKey);
@@ -7156,7 +7169,17 @@ var thelegendmodproject = function(t, e, i) {
           this.playerNick = nick;
           
           var sendSpawn = function() {
-                var token = grecaptcha.getResponse()
+				
+                //var token = grecaptcha.getResponse()
+				// 2020 jimboy3100
+				var token; 
+				if (this.integrity){
+					token = grecaptcha.getResponse()
+				}
+				else if (!this.integrity){
+					token = 0;
+				}
+				// 2020 jimboy3100
                 nick = window.unescape(window.encodeURIComponent(self.playerNick));
                 var view = self.createView(1+nick.length+1+token.length+1);
                 var pos = 1
@@ -7284,7 +7307,7 @@ var thelegendmodproject = function(t, e, i) {
             },
 			
             'sendPosition': function(cell, target2) {
-                if (this.isSocketOpen() && this.connectionOpened && this.clientKey) {
+                if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !this.integrity)) {
                     if (!window.autoPlay) {
                         var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                         var e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
@@ -7333,6 +7356,9 @@ var thelegendmodproject = function(t, e, i) {
                             }
                         }, */
             "sendAccessToken": function(shapes, options, oW) {
+				if(!this.integrity){
+					return
+				}				
                 if (LM["accessTokenSent"]) {
                     return;
                 }
@@ -7379,7 +7405,8 @@ var thelegendmodproject = function(t, e, i) {
                 var e = this.createView(2 + t.length);
                 e.setUint8(0, 86);
                 for (var i = 0; i < t.length; i++) e.setUint8(1 + i, t.charCodeAt(i));
-                e.setUint8(t.length + 1, 0), this.sendMessage(e);
+                e.setUint8(t.length + 1, 0); 
+				this.sendMessage(e);
             },
             'setClientVersion': function(t, e) {
 
@@ -7937,7 +7964,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.viewMaxY = t.readDoubleLE(e);
                         this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
 
-                        if (~~(this.viewMaxX - this.viewMinX) === 14142 && ~~(this.viewMaxY - this.viewMinY) === 14142) {
+                        if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
                             window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
                             window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
                         }
@@ -8033,27 +8060,27 @@ var thelegendmodproject = function(t, e, i) {
                 this.food = [];
                 this.viruses = [];
             },
-            'setMapOffset': function(t, e, i, s) {
-                if (i - t > 14000 && s - e > 14000) {
-
-                    this.mapOffsetX = this.mapOffset - i;
-                    this.mapOffsetY = this.mapOffset - s;
+            'setMapOffset': function(left, top, right, bottom) {
+                //if (right - left > 14000 && bottom - top > 14000) {
+				if (!this.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
+                    this.mapOffsetX = this.mapOffset - right;
+                    this.mapOffsetY = this.mapOffset - bottom;
                     this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
                     this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
                     this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
                     this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
                     this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
                     this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
-                    this.mapOffsetFixed || (this.viewX = (i + t) / 2, this.viewY = (s + e) / 2);
+                    this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                     this.mapOffsetFixed = true;
                     //console.log('[Legend mod Express] Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
                 }
             },
-            'isInView': function(t, e, i) {
+            'isInView': function(t, e, size) {
                 var s = this.canvasWidth / 2 / this.scale,
                     o = this.canvasHeight / 2 / this.scale;
                 //console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o));
-                return !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o);
+                return !(t + size < this.viewX - s || e + size < this.viewY - o || t - size > this.viewX + s || e - size > this.viewY + o);
             },
             'vanillaskins': function(y, g) {
                 if (g != null && ogarminimapdrawer.customSkinsMap[y] == undefined) {
