@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1670 MEGA TEST
+// v1.1671 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7166,7 +7166,7 @@ var thelegendmodproject = function(t, e, i) {
                 var token = grecaptcha.getResponse()
 				// 2020 jimboy3100
 				if (!legendmod.integrity){
-					token = 0;
+					token = '0';
 				}
 				
 				/*
