@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1659 MEGA TEST
+// v1.1660 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7541,7 +7541,7 @@ var thelegendmodproject = function(t, e, i) {
             'decompressMessage': function(message) {
                 var buffer = new LMbuffer(message['buffer']);
                 var readMessage = new LMbuffer(buffer.readUInt32LE(1));
-                return a.decodeBlock(buffer.slice(5), readMessage), readMessage;
+                return LZ4.decodeBlock(buffer.slice(5), readMessage), readMessage;
             },
             'handleMessage': function(data) {
 				//this.pingTimer();
@@ -10204,7 +10204,7 @@ var thelegendmodproject = function(t, e, i) {
         };
         i = LM;
         LMbuffer = t('buffer')['Buffer'];
-        a = t('lz4');
+        LZ4 = t('lz4');
         if ('/legendmod' === window.location.pathname) {
             ogarjoiner('/' + window.location.hash);
         }
