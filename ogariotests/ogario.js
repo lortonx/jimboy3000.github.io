@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1668 MEGA TEST
+// v1.1669 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7942,29 +7942,47 @@ var thelegendmodproject = function(t, e, i) {
                             this['handleSubmessage'](data);
                             break;
 							
+						//2020 jimboy3100 specific private servers
 						case 16:
-						this.updateCells(new LMbuffer(data['buffer']), s);
-						//this.countPps()
+							this.updateCells(new LMbuffer(data['buffer']), s);
+							//this.countPps()
 						break;	
+						case 64:
+							var message = new LMbuffer(data['buffer'])
+							this.viewMinX = message.readDoubleLE(s);
+							s += 8;
+							this.viewMinY = message.readDoubleLE(s);
+							s += 8;
+							this.viewMaxX = message.readDoubleLE(s);
+							s += 8;
+							this.viewMaxY = message.readDoubleLE(s);
+							this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
+							
+							if(~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize){
+								window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
+								window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2
+							}
+						break;	
+						//2020 jimboy3100
 						
                         default:
                             console.log('[Legend mod Express] Unknown opcode:', data.getUint8(0));
                 }
             },
-            'handleSubmessage': function(t) {
+            'handleSubmessage': function(message) {
                 var e = 0;
-                switch ((t = this['decompressMessage'](t)).readUInt8(e++)) {
+                switch ((message = this['decompressMessage'](message)).readUInt8(e++)) {
                     case 16:
-                        this.updateCells(t, e);
+                        this.updateCells(message, e);
                         break;
                     case 64:
-                        this.viewMinX = t.readDoubleLE(e);
+                        this.viewMinX = message.readDoubleLE(e);
                         e += 8;
-                        this.viewMinY = t.readDoubleLE(e);
+                        this.viewMinY = message.readDoubleLE(e);
                         e += 8;
-                        this.viewMaxX = t.readDoubleLE(e);
+                        this.viewMaxX = message.readDoubleLE(e);
                         e += 8;
-                        this.viewMaxY = t.readDoubleLE(e);
+                        this.viewMaxY = message.readDoubleLE(e);
                         this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
 
                         if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
@@ -7973,7 +7991,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         break;
                     default:
-                        console.log('[Legend mod Express] Unknown sub opcode:', t.readUInt8(0));
+                        console.log('[Legend mod Express] Unknown sub opcode:', message.readUInt8(0));
                 }
             },
             'handleLeaderboard': function() {
