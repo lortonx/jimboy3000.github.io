@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1666 MEGA TEST
+// v1.1667 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7125,7 +7125,7 @@ var thelegendmodproject = function(t, e, i) {
             'sendMessage': function(t) {
                 //console.log(t);
                 //if (this.connectionOpened) {
-				if (this.connectionOpened && this.integrity) {	
+				if (this.connectionOpened && legendmod.integrity) {	
                     if (!this.clientKey) return;
                     t = this['shiftMessage'](t, this.clientKey);
                     this.clientKey = this.shiftKey(this.clientKey);
@@ -7163,7 +7163,7 @@ var thelegendmodproject = function(t, e, i) {
 				
                 var token = grecaptcha.getResponse()
 				// 2020 jimboy3100
-				if (!this.integrity){
+				if (!legendmod.integrity){
 					token = 0;
 				}
 				
@@ -7304,7 +7304,7 @@ var thelegendmodproject = function(t, e, i) {
             },
 			
             'sendPosition': function(cell, target2) {
-                if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !this.integrity)) {
+                if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
                     if (!window.autoPlay) {
                         var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                         var e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
@@ -7353,7 +7353,7 @@ var thelegendmodproject = function(t, e, i) {
                             }
                         }, */
             "sendAccessToken": function(shapes, options, oW) {
-				if(!this.integrity){
+				if(!legendmod.integrity){
 					return
 				}				
                 if (LM["accessTokenSent"]) {
@@ -8059,7 +8059,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setMapOffset': function(left, top, right, bottom) {
                 //if (right - left > 14000 && bottom - top > 14000) {
-				if (!this.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
+				if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
                     this.mapOffsetX = this.mapOffset - right;
                     this.mapOffsetY = this.mapOffset - bottom;
                     this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
