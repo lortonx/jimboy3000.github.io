@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1663 MEGA TEST
+// v1.1664 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6916,25 +6916,16 @@ var thelegendmodproject = function(t, e, i) {
             'serverTime': 0,
             'serverTimeDiff': 0,
             'loggedInTime': 0,
-            'mapSize': 14142,
-			
-            //'mapOffset': 7071, 
-			'mapOffset': LM.mapSize/2, //2020 jimboy3100
-			
+            'mapSize': 14142,		
+            'mapOffset': 7071, 
             'mapOffsetX': 0,
             'mapOffsetY': 0,
             'mapOffsetFixed': false,
-			/*
+			
             'mapMinX': -7071,
             'mapMinY': -7071,
             'mapMaxX': 7071,
             'mapMaxY': 7071,
-			*/ //2020 jimboy3100
-            'mapMinX': -LM.mapSize/2,
-            'mapMinY': -LM.mapSize/2,
-            'mapMaxX': LM.mapSize/2,
-            'mapMaxY': LM.mapSize/2,
-			
             'viewMinX': 0,
             'viewMinY': 0,
             'viewMaxX': 0,
