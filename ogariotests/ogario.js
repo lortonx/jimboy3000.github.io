@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1682 MEGA TEST
+// v1.1683 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -10,6 +10,8 @@ function changeregion(){
 	if ($('#region').val()=="Antarctic"){ 
 	core.connect('wss://delta-server.glitch.me');
 	$("#gamemode").hide();
+	
+	legendmod3.connect('wss://private1:443')
 	}
 	else{ master.setRegion($('#region').val()); 
 	$("#gamemode").show();
@@ -4792,15 +4794,15 @@ var thelegendmodproject = function(t, e, i) {
                     var atobToken = atob(token);
 					
 					//ccse
-					if(!text && atobToken.search(/agar\.io/)==-1){
-						console.log("recreateWS case 1:" + text);
+					if(!text && atobToken.search(/agar\.io/)==-1){					
 						text = 'wss://'+atobToken;
+						console.log("recreateWS case 1:" + text);
 						return text;
 					}
 				
 					if (/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/.test(atobToken)){ 
-					console.log("recreateWS case 2:" + text);
 					text = 'wss://ip-' + atobToken.replace(/\./g, '-').replace(':', '.tech.agar.io:');
+					console.log("recreateWS case 2:" + text);
 					}
                 }
 				
@@ -4867,8 +4869,8 @@ var thelegendmodproject = function(t, e, i) {
                 e && (this.skipServerData = true, this['gameServerConnect'](e));
             },
             'connect': function() {
-                pauseVideos(),
-                    this.closeConnection();
+                pauseVideos();
+                this.closeConnection();
                 this.flushData();
                 this.setParty();
                 //console.log('[Legend mod Express] Connecting to ogario socket'),
