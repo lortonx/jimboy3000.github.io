@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1671 MEGA TEST
+// v1.1672 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7030,7 +7030,7 @@ var thelegendmodproject = function(t, e, i) {
                 ]; //Sonia3
                 window.legendmod.setrot = false; //Sonia3
                 window.legendmod.delstate = -1; //Sonia3
-				this.integrity = url.indexOf('agar.io')>-1; // 2020 JIMBOY3100 
+				this.integrity = legendmod.ws.indexOf('agar.io')>-1; // 2020 JIMBOY3100 
                 this.closeConnection();
                 this.flushCellsData();
                 this.protocolKey = null;
