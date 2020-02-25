@@ -1,10 +1,19 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1673 MEGA TEST
+// v1.1674 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
+
+function changeregion(){
+	if ($('#region').val()=="Antarctic"){ 
+	core.connect('wss://delta-server.glitch.me')
+	}
+	else{ master.setRegion($('#region').val()); 
+	}
+}
+
 var dyinglight1load = localStorage.getItem("dyinglight1load");
 
 function removeEmojis(string) {
