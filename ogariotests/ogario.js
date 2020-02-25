@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1676 MEGA TEST
+// v1.1677 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1959,6 +1959,7 @@ var defaultSettings = {
     ////
     "color": "#fff",
     //"commanderImage" : "https://i.imgur.com/wQKUDB3.png",
+	"customServerImage1": "https://legendmod.ml/banners/IconCustomServer1.png",
     "commanderImage": "https://legendmod.ml/banners/drawCommander.png",
     "commanderImage1": "https://legendmod.ml/banners/drawCommander1.png",
     "commanderImage2": "https://legendmod.ml/banners/drawCommander2.png",
@@ -8608,7 +8609,7 @@ var thelegendmodproject = function(t, e, i) {
             if(!legendmod.integrity){
 				if (!legendmod.customMidPic){
 				legendmod.customMidPic = new Image;
-				legendmod.customMidPic.src = 'https://i.imgur.com/7cugADY.png';
+				legendmod.customMidPic.src = defaultSettings.customServerImage1;
 				}
 				this.prevctxglobalAlpha = this.ctx.globalAlpha;
 				this.ctx.globalAlpha = '0.2'
