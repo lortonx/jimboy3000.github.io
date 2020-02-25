@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1679 MEGA TEST
+// v1.1680 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4776,9 +4776,9 @@ var thelegendmodproject = function(t, e, i) {
             },
             'getWS': function(t) {
 				if (t){
-					this.ws = t, 
-					this.createServerToken(), 
-					this.updateServerInfo(),
+					this.ws = t; 
+					this.createServerToken();
+					this.updateServerInfo();
 					if(-1 == this.ws.indexOf('agar.io')){
 						this.closeConnection();
 					}				
@@ -4811,8 +4811,8 @@ var thelegendmodproject = function(t, e, i) {
 				}					
                 
 				if (!text && matchNew){
-					this['serverArena'] = matchNew[1];
-					text = this['serverArena'];
+					this.serverArena = matchNew[1];
+					text = this.serverArena;
 				}
 				if (text){
 					if (this.serverToken !== text){
