@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.082f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "79"; // the version 1.1-> 1.11
+var semimodVersion = "80"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -61,7 +61,7 @@ var currentToken = "";
 var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
-var checkonlyninth = localStorage.getItem("checkonlyninth");
+var checkonlytenth = localStorage.getItem("checkonlytenth");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var coinTimer;
 var musicPlayer;
@@ -237,7 +237,7 @@ if (timesopened != null) {
 } else if (timesopened == null) {
    localStorage.setItem("timesopened", "0");
 }
-loadersetings();
+loadersettings();
 
 //
 function postSNEZ(server, username, password, data) {
@@ -465,7 +465,7 @@ function getEmbedUrl(url) {
     }
 }
 
-function loadersetings() {
+function loadersettings() {
         if (timesopened >= 3) {
             if (checkonlyonce != "true") {
                 //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -479,19 +479,21 @@ function loadersetings() {
                 }
             }
         }	
-        if (checkonlyninth != "true") {
+        if (checkonlytenth != "true") {
+		LMadvertisement2020();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
-        toastr["info"]('<center><b>'+
+        /*toastr["info"]('<center><b>'+
 		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
 		'Change theme, <u><a target="_blank" href="https://legendmod.ml/themes/"><font color="blue">click here</font></u></a><br>'+
 		'or <u><font color="green">chrome://settings/clearBrowserData </font></u>delete cookies'+
 		'<br>or <u><font color="green">Settings->Import/Export->Download </font></u> your latest saved setting</b></center>', '', {
                     timeOut: 20000,
                     extendedTimeOut: 20000
-                }).css("width", "450px");  
+                }).css("width", "450px");
+*/				
 				
-		checkonlyninth = "true";
-		localStorage.setItem("checkonlyninth", checkonlyninth);				
+		checkonlytenth = "true";
+		localStorage.setItem("checkonlytenth", checkonlytenth);				
        // }					
 		}
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
@@ -8112,4 +8114,28 @@ function populateBanListConfig() {
     for (i = 0; i < Object.keys(window.bannedUserUIDs).length; i++) {
         select.options[select.options.length] = new Option(window.bannedUserUIDs[i])
     }
+}
+
+function LMadvertisement2020(){
+$("#main-menu").hide();
+$("#skins-panel").hide();
+$("#quick-menu").hide();
+$("#exp-bar").hide();
+$("#menu-footer").after('<div id="legendhelper" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; position:absolute;  height: 560px; width: 940px; margin-top: 0px;margin-left: -240px; ">'+
+	'<div id="Userscriptshud2" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
+	'<br><div id="Userscriptshud3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="920" height="490" >'+
+    '<p>Your browser does not support iframes.</p>'+
+	'</iframe>'	+
+											'</div></div>'+
+											    '<button id= "Backtomenu" onclick="closecustomskinsIframe2020(); return false" style="margin-left: 10px;" class="btn btn-danger"  data-original-title="" title="">'+Premadeletter113+'</button>');
+}
+
+
+									
+function closecustomskinsIframe2020(){
+$("#main-menu").show();	
+$("#skins-panel").show();
+$("#quick-menu").show();
+$("#exp-bar").show();
+$("#legendhelper").remove();
 }
