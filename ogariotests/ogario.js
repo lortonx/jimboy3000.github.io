@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1695 MEGA TEST
+// v1.1687 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7399,33 +7399,27 @@ var thelegendmodproject = function(t, e, i) {
                 this.sendMessage(i);
             },
 			
-            'sendPosition': function(cell, target2, specialcommand) {
-				var t, e;
+            'sendPosition': function(cell, target2) {
                 if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
-                    if (specialcommand){
-						console.log('hi')
-                        //t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                        //e=9999;					
-					}
-					else if (!window.autoPlay) {
-                        t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                        e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
+                    if (!window.autoPlay) {
+                        var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+                        var e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
                         if (!this.play && this.targeting || this.pause) {
                             t = this.targetX;
                             e = this.targetY;
                         }
                     }
                     //autoplay handling
-                    else if (!specialcommand){
+                    else {
                         //if (typeof cell != "undefined") { //when used, autoplay not working as expected
                         if (Object.keys(target2).length == 0) {
-                            t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(cell.x) : cell.x; //Sonia3
-                            e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cell.y) : cell.y; //Sonia3
+                            var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(cell.x) : cell.x; //Sonia3
+                            var e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cell.y) : cell.y; //Sonia3
                             // var t = cell.x;
                             //var e = cell.y;
                         } else {
-                            t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
-                            e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
+                            var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
+                            var e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
                             //var t = target2.x;
                             //var e = target2.y;
                         }
@@ -7440,9 +7434,12 @@ var thelegendmodproject = function(t, e, i) {
                     i.setUint32(9, this.protocolKey, true);
                     this.sendMessage(i);
                 }
+				if (window.userBots.startedBots && window.userBots.isAlive){
                 window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
-                window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
-                if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+                window.userBots.mouseY = this.cursorY - window.userBots.offsetY;	
+				window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))				
+				}
+
             },
             /*            'sendAccessToken': function(t, e, i) {
                             if (!this['accessTokenSent']) {
@@ -8006,7 +8003,7 @@ var thelegendmodproject = function(t, e, i) {
                                     'name': ogarcopythelb
                                 });
                             }
-							var temp ='<b>[SERVER]:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';	
+							var temp ='[<b>[SERVER]:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';	
 							for (var i=0;i< legendmod.battleRoyale.rank.length ; i++){
 								temp+= '<br>' + legendmod.battleRoyale.rank[i].place + ". "+ legendmod.battleRoyale.rank[i].name;
 							}
