@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.1689 MEGA TEST
+// v1.1690 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7403,7 +7403,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
                     if (specialcommand){
                         var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                        //var e = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3						
+                        e=100000;					
 					}
 					else if (!window.autoPlay) {
                         var t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
@@ -7434,9 +7434,7 @@ var thelegendmodproject = function(t, e, i) {
                     var i = this.createView(13);
                     i.setUint8(0, 16);
                     i.setInt32(1, t, true);
-					if (e){
                     i.setInt32(5, e, true);
-					}
                     i.setUint32(9, this.protocolKey, true);
                     this.sendMessage(i);
                 }
