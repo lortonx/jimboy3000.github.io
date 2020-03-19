@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.082 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "81"; // the version 1.1-> 1.11
+var semimodVersion = "82"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5248,10 +5248,10 @@ function preventcanvasimagecrash() {
 }
 
 function doGl() {
-	var GgImg=window.gapi.auth2.getAuthInstance().currentUser.je.Qt.UK;
-	var GgProfileName=window.gapi.auth2.getAuthInstance().currentUser.je.Qt.vW; //First Name
-	var GgProfileSurName=window.gapi.auth2.getAuthInstance().currentUser.je.Qt.wU; //Last Name
-	var GgUID=window.gapi.auth2.getAuthInstance().currentUser.je.Ca;
+	var GgImg=window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().lL;
+	var GgProfileName=window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().KW; //First Name
+	var GgProfileSurName=window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().KU; //Last Name
+	var GgUID=window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().fV;
 	
     //$("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.lL);
 	$("#UserProfilePic>img").attr('src', GgImg);	
