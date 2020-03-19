@@ -5256,7 +5256,7 @@ function doGl() {
     //$("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.lL);
 	$("#UserProfilePic>img").attr('src', GgImg);	
     //$("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KW);
-	$("#UserProfileName1").text(GgProfileSurName);
+	$("#UserProfileName1").text(GgProfileName);
     //$("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca);
 	$("#UserProfileUID1").text(GgUID);
 	
@@ -5265,7 +5265,7 @@ function doGl() {
 	}
     userfirstname = GgProfileName;
     userid = GgUID;
-    userlastname = GgProfileSurName;
+    userlastname = GgProfileName;
     if (userfirstname != null) {
         localStorage.setItem("userfirstname", userfirstname);
     }
