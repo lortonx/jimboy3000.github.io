@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.080 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.081 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "80"; // the version 1.1-> 1.11
+var semimodVersion = "81"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -5248,16 +5248,24 @@ function preventcanvasimagecrash() {
 }
 
 function doGl() {
-    $("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.lL);
-    $("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KW);
-    $("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca);
+	var GgImg=window.gapi.auth2.getAuthInstance().currentUser.je.Qt.UK;
+	var GgProfileName=window.gapi.auth2.getAuthInstance().currentUser.je.Qt.vW; //First Name
+	var GgProfileSurName=window.gapi.auth2.getAuthInstance().currentUser.je.Qt.wU; //Last Name
+	var GgUID=window.gapi.auth2.getAuthInstance().currentUser.je.Ca;
 	
-	if (userid == window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca){
+    //$("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.lL);
+	$("#UserProfilePic>img").attr('src', GgImg);	
+    //$("#UserProfileName1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KW);
+	$("#UserProfileName1").text(GgProfileSurName);
+    //$("#UserProfileUID1").text(window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca);
+	$("#UserProfileUID1").text(GgUID);
+	
+	if (userid == GgUID){
 		setLevelProgressBar();
 	}
-    userfirstname = window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KW;
-    userid = window.gapi.auth2.getAuthInstance().currentUser.H3.value.Ca;
-    userlastname = window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.KU;
+    userfirstname = GgProfileName;
+    userid = GgUID;
+    userlastname = GgProfileSurName;
     if (userfirstname != null) {
         localStorage.setItem("userfirstname", userfirstname);
     }
