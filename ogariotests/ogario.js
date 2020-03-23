@@ -5834,7 +5834,7 @@ var thelegendmodproject = function(t, e, i) {
 							this.displayChatMessage(time, caseof, plId, msg);
 						}
 						else{
-							console.log('Blocked: ' + msg)
+							//console.log('Blocked: ' + msg)
 						}
                     }
                 }
