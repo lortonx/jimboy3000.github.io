@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.171 MEGA TEST
+// v1.172 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -264,7 +264,8 @@ window.connectionBots = {
                 window.botscaptcha = true;
                 if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
                     toastr["info"]('<b>[SERVER]:</b> Solve the captcha for your bots')
-                    window.master.recaptchaRequested()
+                    agarCaptcha.requestCaptcha()
+					//window.master.recaptchaRequested()
                 } else {
                     toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 }
@@ -4371,7 +4372,7 @@ var thelegendmodproject = function(t, e, i) {
             'loadSkin': function(t, e, animated) {
                 var i = this;
                 //console.log ("t:" + t + "e:" + e);
-                if (e.includes && (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv"))) {
+                if (e && e.includes && (e.includes(".mp4") || e.includes(".webm") || e.includes(".ogv"))) {
                     t[e] = new Video();
                     //console.log("stage 2 videos");
                 } else {
@@ -4397,7 +4398,7 @@ var thelegendmodproject = function(t, e, i) {
                     },
                     t[e]['onerror'] = function() {
                         //console.log("error loading image: "+ e);
-                        if (e.includes(window.EnvConfig.config_url)) {
+                        if (e && e.includes(window.EnvConfig.config_url)) {
                             e = "https://legendmod.ml/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
                             //console.log("new destination is: " + e);
                             ogarminimapdrawer.customSkinsMap[window.lastusednameforskin] = e;
@@ -7302,6 +7303,13 @@ var thelegendmodproject = function(t, e, i) {
 				//console.log(view)
                 self.sendMessage(view);
             }
+			//
+            this.integrity && agarCaptcha.requestCaptchaV3("play", function(token) {
+                sendSpawn(token)
+                
+                //window.core.sendNick(nick, token)
+            })			
+			/*
             if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
                 //first time need recaptcha v2
                 requestCaptchaV3();
@@ -7323,11 +7331,13 @@ var thelegendmodproject = function(t, e, i) {
 					grecaptcha.reset();
                 });
             }
+			
 				setTimeout(function() {					
 					if (!window.cookieCaptchaOK){
 						legendmod.sendNick2(self.playerNick)
 					}
-				}, 1800);			
+				}, 1800);	
+*/				
         },	
 		'sendTimeOutTokenForBots': function () {
 				//window.sendTimeOutTokenBots=false;
@@ -7842,16 +7852,17 @@ var thelegendmodproject = function(t, e, i) {
                     case 85:
                         window.testobjectsOpcode85 = data;
                         console.log('[Legend mod Express] Captcha requested');
-                        if (window.master && window.master.recaptchaRequested) {
+                        //if (window.master && window.master.recaptchaRequested) {
                             if (window.smartbotslimited && legendmod5.autoResp) { //
                                 core.connect(legendmod.ws);
                                 setTimeout(function() {
                                     legendmod3.autoResp();
                                 }, 2000);
                             } else {
-                                window.master.recaptchaRequested();
+								agarCaptcha.requestCaptcha()
+                                //window.master.recaptchaRequested();
                             }
-                        }
+                        //}
                         break;
                     case 102:
                         if (data.byteLength < 20) {
@@ -10660,6 +10671,146 @@ function setGUIEvents() {
     })
 }
 
+var RECAPTCHA_V2_KEY = "6LfjUBcUAAAAAF6y2yIZHgHIOO5Y3cU5osS2gbMl";
+var RECAPTCHA_V3_KEY = "6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY";
+
+    function Recaptcha(curtin, e, n) {
+        var i = this;
+        this.init = function() {
+            this.ready = true
+        }
+        this.show = function() {
+            i.sessionExpired = !1,
+            document.getElementById(this.curtin).style.display = "block"
+        }
+        this.hide = function() {
+            document.getElementById(this.curtin).style.display = "none"
+        }
+        this.reset = function() {
+            console.log('grecaptcha.reset()')
+            grecaptcha.reset()
+        }
+        this.onRender = function(t) {
+					window.cookieCaptchaOK=true;
+					if (legendmod.botscaptcha){
+						legendmod.botscaptcha=null;
+						window.tempol = $("#captchaSpeed").val()		
+						if($("#captchaSpeed").val()==null || $("#captchaSpeed").val()==""){
+							window.tempol=0;
+					}						
+					//window.tempo2 = grecaptcha.getResponse()
+					setTimeout(function() {
+						legendmod.sendSpawn2(t);
+						//legendmod.sendSpawn2(window.tempo2);
+						}, window.tempol*1000);
+					}
+					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
+					window.sendTimeOutTokenBots = true;			
+            /*if(window.core) {
+				window.core.recaptchaResponse(_0x196a5a);
+			}*/
+            /*t ? (window.core.recaptchaResponse(t),
+            setTimeout(function() {
+                //grecaptcha.reset(myCaptcha.widget)
+                i.reset()
+                i.hide()
+            }, 100)) : i.show()*/
+            window.core.recaptchaResponse(t)
+            i.hide();
+            i.reset();
+            
+        }
+        this.validateExpire = function() {
+            console.log('i.sessionExpired && i.show()')
+            i.sessionExpired && i.show()
+        }
+        this.onExpire = function() {
+            console.log('EXPIRE')
+            //i.ready && i.widget && (window.core.playerHasCells() ? i.sessionExpired = !0 : i.show())
+        }
+        this.render = function() {
+            if(this.ready) {
+                this.show()
+                if(null == this.widget){ 
+                    this.widget = grecaptcha.render(this.id, {
+                        sitekey: RECAPTCHA_V2_KEY,
+                        callback: this.onRender.bind(this),
+                        "data-theme":'dark',
+                        "expired-callback": this.onExpire.bind(this)
+                    })
+                }
+              } else this.reset()
+            return this.ready
+        }
+        this.id = e,
+        this.curtin = curtin,
+        this.widget = null,
+        this.ready = !1,
+        window.recaptchaClientId = null,
+        this.hide()
+    }
+
+    
+    function CaptchaRouter(arg) {
+        function load() {
+            var t = document.createElement("script");
+            t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallbackV3&render=explicit"),
+            document.head.appendChild(t)
+        }
+        function requestCaptcha() {
+            return l.render()
+        }
+        function requestCaptchaV3(t, e) {
+            null === window.recaptchaClientId && (window.recaptchaClientId = window.grecaptchaV3.render("captchaWindowV3", {
+                sitekey: RECAPTCHA_V3_KEY,
+                badge: "inline",
+                size: "invisible"
+            }))
+            grecaptcha.reset(window.recaptchaClientId)
+            window.grecaptchaV3.execute(window.recaptchaClientId, {
+                action: t
+            }).then(function(t) {
+                e(t)
+            })
+        }
+        function onloadCallback() {
+            l.init()
+        }
+        function onloadCallbackV3() {
+            Object.defineProperty(window, "grecaptchaV3", {
+                value: window.grecaptcha,
+                writable: !1,
+                configurable: !1,
+                enumerable: !1
+            });
+            var t = document.createElement("script");
+            t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"),
+            document.head.appendChild(t)
+        }
+        var l = window.myCaptcha = new Recaptcha("captchaWindow","verifyUser",arg);
+        window.onloadCallbackV3 = onloadCallbackV3
+        window.onloadCallback =   onloadCallback
+        load()
+        return {
+            load: load,
+            validateExpire: l.validateExpire.bind(l),
+            requestCaptcha: requestCaptcha,
+            requestCaptchaV3: requestCaptchaV3,
+            onloadCallback: onloadCallback,
+            onloadCallbackV3: onloadCallbackV3
+        }
+
+        
+
+
+    }
+
+    window.agarCaptcha = CaptchaRouter()
+
+    /*Object.defineProperty(window, "agarCaptcha", {
+        value: CaptchaRouter()
+    })*/
+/*	
 			window.requestCaptchaV2 = function(aa) {
 					grecaptcha.v2mode = true;
 					grecaptcha.render('recaptcha-screen', {
@@ -10694,6 +10845,7 @@ function setGUIEvents() {
 					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
 					window.sendTimeOutTokenBots = true;
 			}
+			*/
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
