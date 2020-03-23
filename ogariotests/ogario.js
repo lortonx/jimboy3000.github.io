@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.179 MEGA TEST
+// v1.180 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3650,9 +3650,9 @@ var thelegendmodproject = function(t, e, i) {
 					<br>
 					<span id="aiTextBots">Bots AI: <b id="botsAI">Disabled</b></span>
 					<br>
-					<input type="text" id="botsNameLM" value="1.0" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
+					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" step="0.1" placeholder="Captcha delay (sec)" min="0" max="10" spellcheck="false">
+					<input type="number" id="captchaSpeed" value="1.0" step="0.1" placeholder="Captcha delay (sec)" min="0" max="10" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 
 					<br>
