@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.175 MEGA TEST
+// v1.176 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -273,7 +273,7 @@ window.connectionBots = {
                 window.botscaptcha = true;
                 if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
                     toastr["info"]('<b>[SERVER]:</b> Solve the captcha for your bots')
-                    agarCaptcha.requestCaptcha()
+                    window.agarCaptcha.requestCaptcha()
 					//window.master.recaptchaRequested()
                 } else {
                     toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
@@ -7313,7 +7313,7 @@ var thelegendmodproject = function(t, e, i) {
                 self.sendMessage(view);
             }
 			//
-            this.integrity && agarCaptcha.requestCaptchaV3("play", function(token) {
+            this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
                 sendSpawn(token)
                 
                 //window.core.sendNick(nick, token)
@@ -7391,9 +7391,14 @@ var thelegendmodproject = function(t, e, i) {
         'sendTokenForBots': function () {	  
           //var self = this
           //this.playerNick = nick;    
-	
+			legendmod.botscaptcha=true;
 			window.sendTimeOutTokenBots=false;
-            if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
+            this.integrity && window.agarCaptcha.requestCaptchaV3("play", function(token) {
+                //sendSpawn(token)
+                legendmod.sendSpawn2(token);
+                //window.core.sendNick(nick, token)
+            })					
+/*            if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
                 //first time need recaptcha v2
                 requestCaptchaV3();
                 grecaptcha.onceLoad = true;
@@ -7401,12 +7406,12 @@ var thelegendmodproject = function(t, e, i) {
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
-					/*
-					window.tempo2 = grecaptcha.getResponse()
-					setTimeout(function() {
-                    legendmod.sendSpawn2(window.tempo2);
-					}, window.tempol*1000);
-					*/
+					
+					//window.tempo2 = grecaptcha.getResponse()
+					//setTimeout(function() {
+                    //legendmod.sendSpawn2(window.tempo2);
+					//}, window.tempol*1000);
+					
 					grecaptcha.reset();
                 });
             } else {
@@ -7417,15 +7422,16 @@ var thelegendmodproject = function(t, e, i) {
                 grecaptcha.execute(0, {
                     'action': 'play'
                 }).then(function() {
-					/*
-					window.tempo2 = grecaptcha.getResponse()
-					setTimeout(function() {
-                    legendmod.sendSpawn2(window.tempo2);
-					}, window.tempol*1000);
-					*/
+					
+					//window.tempo2 = grecaptcha.getResponse()
+					//setTimeout(function() {
+                    //legendmod.sendSpawn2(window.tempo2);
+					//}, window.tempol*1000);
+					
                 });
 			})
-            }			
+            }	
+*/			
         },		
             'sendNick2': function(t) {
                 this.playerNick = t, 
@@ -7868,7 +7874,7 @@ var thelegendmodproject = function(t, e, i) {
                                     legendmod3.autoResp();
                                 }, 2000);
                             } else {
-								agarCaptcha.requestCaptcha()
+								window.agarCaptcha.requestCaptcha()
                                 //window.master.recaptchaRequested();
                             }
                         //}
@@ -10704,11 +10710,11 @@ function setGUIEvents() {
 						window.tempol = $("#captchaSpeed").val()		
 						if($("#captchaSpeed").val()==null || $("#captchaSpeed").val()==""){
 							window.tempol=0;
-					}						
+					}	
+					window.tempo2 = t;
 					//window.tempo2 = grecaptcha.getResponse()
 					setTimeout(function() {
-						legendmod.sendSpawn2(t);
-						//legendmod.sendSpawn2(window.tempo2);
+						legendmod.sendSpawn2(window.tempo2);
 						}, window.tempol*1000);
 					}
 					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
