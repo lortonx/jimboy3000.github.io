@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.176 MEGA TEST
+// v1.177 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -10766,9 +10766,9 @@ function setGUIEvents() {
     
     function CaptchaRouter(arg) {
         function load() {
-            var t = document.createElement("script");
-            t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallbackV3&render=explicit"),
-            document.head.appendChild(t)
+            //var t = document.createElement("script");
+            //t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallbackV3&render=explicit"),
+            //document.head.appendChild(t)
         }
         function requestCaptcha() {
             return l.render()
@@ -10796,9 +10796,9 @@ function setGUIEvents() {
                 configurable: !1,
                 enumerable: !1
             });
-            var t = document.createElement("script");
-            t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"),
-            document.head.appendChild(t)
+            //var t = document.createElement("script");
+            //t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"),
+            //document.head.appendChild(t)
         }
         var l = window.myCaptcha = new Recaptcha("captchaWindow","verifyUser",arg);
         window.onloadCallbackV3 = onloadCallbackV3
