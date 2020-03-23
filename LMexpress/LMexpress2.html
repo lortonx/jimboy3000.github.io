@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
  <head>
@@ -43,24 +42,10 @@
 </script>	
    <script i="hope" u="gamer">
   </script>
-  <!--script src="https://www.google.com/recaptcha/api.js?render=6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY"></script-->
-  		<!--script>
-			function onloadCallbackV3(){
-				Object.defineProperty(window, "grecaptchaV3", {
-					value: window.grecaptcha,
-					writable: !1,
-					configurable: !1,
-					enumerable: !1
-				});
-				var t = document.createElement("script");
-				t.setAttribute("src", "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"),
-				document.head.appendChild(t)
-			}
-		</script-->
-	
-	 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
-	 <style>.grecaptcha-badge{display:none}</style>
-	 <div id="captchaWindowV3" style="display:none;"></div>
+  <div id="captchaWindow" style="display:none; position:absolute; top:0px; left:0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index:500"></div>
+	<div id="verifyUser" style="position:absolute; top:50%; left:50%; margin-left:-152px; margin-top:-40px;"></div>
+ <script src="//apis.google.com/js/client:platform.js?onload=gapiAsyncInit" async defer></script>
+<div id="captchaWindowV3" style="display:none;"></div>
 	 
   <script src="https://legendmod.ml/bootstrap.min.js"></script>
   <script src="https://legendmod.ml/bootstrap-colorpicker.min.js"></script>
@@ -216,10 +201,6 @@ var CutNameConflictwithMessage=false;
  <script src="https://jimboy3000.github.io/LMexpress/LMexpress.js"></script>
  <script src="https://legendmod.ml/LMexpress/LMexpress.sniff3.js"></script>
  <div style="font-family:'Ubuntu'">&nbsp;</div>
- <div id="captchaWindow" style="display:none; position:absolute; top:0px; left:0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index:500">
-  <div id="verifyUser" style="position:absolute; top:50%; left:50%; margin-left:-152px; margin-top:-40px;"></div>
- </div>
- <script src="//apis.google.com/js/client:platform.js?onload=gapiAsyncInit" async defer></script>
  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
