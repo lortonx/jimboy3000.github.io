@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.182 MEGA TEST
+// v1.183 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -751,6 +751,7 @@ var languagetexts = {
         'commandSound': 'Dźwięk powiadomienia o komendzie',
         'virusSoundurl': 'Virus shot sound',
         'virusSound': 'Virus shot sound',
+		'FacebookIDs': 'Facebook IDs',
         'jellyPhisycs': 'Jelly physics',
         'showTop5': 'Pokaż top 5 teamu',
         'showTargeting': 'Pokaż namierzanie',
@@ -1155,6 +1156,7 @@ var languagetexts = {
         'commandSound': 'Command notification sound',
         'virusSoundurl': 'Virus shot sound',
         'virusSound': 'Virus shot sound',
+		'FacebookIDs': 'Facebook IDs',
         'jellyPhisycs': 'Jelly physics',
         'showTop5': 'Show teamboard',
         'showTargeting': 'Show targeting',
@@ -2189,7 +2191,8 @@ var defaultmapsettings = {
     //                'commandSound': 'https://legendmod.ml/sounds/notification_02.mp3'
     'commandSound': 'https://legendmod.ml/sounds/chat-message.mp3',
     'virusSoundurl': 'https://legendmod.ml/sounds/sound-gunshot.mp3',
-    'soundSplit': 'https://www.myinstants.com/media/sounds/quack_5.mp3'
+    'soundSplit': 'https://www.myinstants.com/media/sounds/quack_5.mp3',
+	'FacebookIDs': ''
 
 };
 var ogario1PlayerProfiles = [];
@@ -2775,6 +2778,7 @@ var thelegendmodproject = function(t, e, i) {
             'commandSound': null,
             'virusSound': null,
             'virusSoundurl': null,
+			'FacebookIDs': null,
             'feedInterval': null,
             'getPlayerX': function() {
                 return i.playerX + i.mapOffsetX;
@@ -5471,19 +5475,19 @@ var thelegendmodproject = function(t, e, i) {
                     msg = msg.slice(7);
                     var x = this.getreal(fx, 0);
                     var y = this.getreal(fy, 1);
-                    var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
-                    ogariocellssetts.time = this.time;
-                    ogariocellssetts.isVirus = true;
-                    temp.push(ogariocellssetts);
-                    if (!ogariocellssetts.isInView()) {
+                    var cellUpdateSLGCells = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                    cellUpdateSLGCells.time = this.time;
+                    cellUpdateSLGCells.isVirus = true;
+                    temp.push(cellUpdateSLGCells);
+                    if (!cellUpdateSLGCells.isInView()) {
                         if (legendmod.indexedCells.hasOwnProperty(e)) {
-                            ogariocellssetts = legendmod.indexedCells[e]
-                            //legendmod.cells.push(ogariocellssetts);													 
+                            cellUpdateSLGCells = legendmod.indexedCells[e]
+                            //legendmod.cells.push(cellUpdateSLGCells);													 
                         } else {
-                            legendmod.indexedCells.push(ogariocellssetts);
+                            legendmod.indexedCells.push(cellUpdateSLGCells);
                         }
                     }
-                    //ogariocellssetts.removeCell();
+                    //cellUpdateSLGCells.removeCell();
                 }
                 this.teamPlayers[id].dvirs = temp;
 
@@ -5500,18 +5504,18 @@ var thelegendmodproject = function(t, e, i) {
                     msg = msg.slice(7);
                     var x = this.getreal(fx, 0);
                     var y = this.getreal(fy, 1);
-                    var ogariocellssetts = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
-                    ogariocellssetts.isVirus = false;
-                    temp.push(ogariocellssetts);
-                    if (!ogariocellssetts.isInView()) {
+                    var cellUpdateSLGCells = new ogarbasicassembly(di, x, y, ds, null, false, true, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                    cellUpdateSLGCells.isVirus = false;
+                    temp.push(cellUpdateSLGCells);
+                    if (!cellUpdateSLGCells.isInView()) {
                         if (legendmod.indexedCells.hasOwnProperty(e)) {
-                            ogariocellssetts = legendmod.indexedCells[e]
-                            //legendmod.cells.push(ogariocellssetts);													 
+                            cellUpdateSLGCells = legendmod.indexedCells[e]
+                            //legendmod.cells.push(cellUpdateSLGCells);													 
                         } else {
-                            legendmod.indexedCells.push(ogariocellssetts);
+                            legendmod.indexedCells.push(cellUpdateSLGCells);
                         }
                     }
-                    //ogariocellssetts.removeCell();
+                    //cellUpdateSLGCells.removeCell();
                 }
                 this.teamPlayers[id].dcells = tempx;
                 var today = new Date();
@@ -5997,6 +6001,10 @@ var thelegendmodproject = function(t, e, i) {
                     (t.play() || nopromise).catch(function() {});
                 }
             },
+			'setFBIDs': function(){
+				this.FacebookIDs = defaultmapsettings.FacebookIDs;
+				return this.FacebookIDs;
+			},			
             'setTargeting': function() {
                 if (this.targetID) {
                     this.targeting = !this.targeting, i.targeting = this.targeting, this.setTargetingInfo();
@@ -7067,6 +7075,8 @@ var thelegendmodproject = function(t, e, i) {
             'viruses': [],
             'playerCells': [],
             'playerCellIDs': [],
+			'fbOnline': [],
+			'arrowFB': [{}], 			
             'ghostCells': [],
             'playerX': 0,
             'playerY': 0,
@@ -7281,6 +7291,34 @@ var thelegendmodproject = function(t, e, i) {
                 this.sendAction(17);
 
             },
+			sendFBIDS(data) {//Yahnych
+				var friendsIDs  = "";
+
+				var pIDs = legendmod3.FacebookIDs.split(',');
+				for (let length = 0; length < pIDs.length; length++) {
+					if(friendsIDs.length == 0) {                
+						friendsIDs += pIDs[length].split(':')[0];
+					} else {
+					friendsIDs += "|" + pIDs[length].split(':')[0];
+					}
+				}
+				for (let length = 0; length < data.length; length++) {
+					if(friendsIDs.length == 0) {
+					friendsIDs += data[length].id 
+					} else {
+					friendsIDs += "|" + data[length].id 
+				}
+				}
+				friendsIDs = unescape(encodeURIComponent(friendsIDs));
+				const view = this.createView(2 + friendsIDs.length);
+				view.setUint8(0, 5);
+				for (let length = 0; length < friendsIDs.length; length++) {
+					view.setUint8(1+length, friendsIDs.charCodeAt(length));
+				}
+				view.setUint8(friendsIDs.length+1, 0);
+				this.sendMessage(view);
+          
+        },			
         'sendNick': function (nick) {
         
           var self = this
@@ -7739,10 +7777,23 @@ var thelegendmodproject = function(t, e, i) {
 
 
 
-                    case 5:
+                case 5://Yahnych
+					window.testobjectsOpcode5 = data;
+					this.fbOnline = [];
+
+					for (; offset < data.byteLength;) {
+							let user = {};
+
+                            user.id = data.getUint32(offset, true);
+                            offset += 4;
+                            user.fbId = window.decodeURIComponent(window.escape(encode()));
+                                   
+						legendmod3.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+
+						this.fbOnline.push(user);
+					}  
                         //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
-                        window.testobjectsOpcode5 = data;
-                        break;
+                        //break;
                     case 17:
                         window.testobjectsOpcode17 = data;
                         var x = data.getFloat32(s, true);
@@ -7784,8 +7835,54 @@ var thelegendmodproject = function(t, e, i) {
 						for (var n = 0; n < a; n++) this.pieChart.push(data.getFloat32(s, true)), s += 7;
                         ogarfooddrawer.drawPieChart();
                         break;
-                    case 53:
-                        window.testobjectsOpcode53 = data;
+                    case 53://Yahnych
+					window.testobjectsOpcode53 = data;
+                    this.leaderboard = [];
+                    this.friends = this.fbOnline.length;
+
+                    this.playerPosition = 0;
+                    if (data.getUint8(0) == 54) {
+                        const pos = data.getUint16(offset, true);
+                        offset += 2;
+                        console.log('Friends:' , pos)
+                    }
+                    for (let position = 0; offset < data.byteLength;) {
+                        var flags = data.getUint8(offset++);
+                        let nick = '';
+                        let id = 0;
+                        let isFriend = false;
+                        let isFBFriend = false;
+                        position++;
+                        if (flags & 2) {
+                            nick = window.decodeURIComponent(window.escape(encode()));
+                        }
+                        if (flags & 4) {
+                            id = data.getUint32(offset, true);
+                            offset += 4;
+                        }
+                        if (flags & 8) {
+                            nick = this.playerNick;
+                            id = `isPlayer`;
+                            this.playerPosition = position;
+                        }
+                        if (flags & 16) {
+                            isFriend = true;
+                            this.friends ++
+                        }
+                        let friend = LM.fbOnline.find(element => {return element.id == id});
+                        friend != undefined?isFBFriend = friend.fbId:isFBFriend = false;                     
+                       
+                      
+
+                      
+                        this.leaderboard.push({
+                            nick: nick,
+                            id: id,
+                            isFriend: isFriend,
+                            isFBFriend: isFBFriend,
+                        });
+                    }					
+                    /*    
                         if (this.leaderboard = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
                             data.getUint16(s, true);
                             s += 2;
@@ -7829,8 +7926,9 @@ var thelegendmodproject = function(t, e, i) {
                                 'isFriend': c
                             });
                         }
-                        this.handleLeaderboard();
+                        this.handleLeaderboard();*/
                         break;
+						
                     case 54:
                         console.log('[Legend mod Express] opcode: ', data.getUint8(0));
                         window.testobjectsOpcode54 = data;
@@ -7973,7 +8071,11 @@ var thelegendmodproject = function(t, e, i) {
 
                         case 103:
                             window.testobjectsOpcode103 = data;
-                            LM["accessTokenSent"] = !![];
+                            //LM["accessTokenSent"] = !![];
+							this.accessTokenSent = true;
+							if(window.master.context == 'facebook') {//Yahnych
+								this.sendFBIDS(window.master.fbUsers);
+							}							
                             break;
                         case 104:
                             console.log('[Legend mod Express] Logout forced');
@@ -8332,117 +8434,128 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             //https://github.com/NuclearC/agar.io-protocol
-            'updateCells': function(t, i) {
-                var s = function() {
-                    for (var e = '';;) {
-                        var s = t.readUInt8(i++);
-                        if (0 == s) break;
-                        e += String.fromCharCode(s);
+            'updateCells': function(view, offset) {
+                var encode = function() {
+                    for (var text = '';;) {
+                        var string = view.readUInt8(offset++);
+                        if (0 == string) break;
+                        text += String.fromCharCode(string);
                     }
-                    return e;
+                    return text;
                 };
-                this.time = performance.now(), this.removePlayerCell = false;
-                var o = t.readUInt16LE(i);
-                i += 2;
-                for (var a = 0; a < o; a++) {
-                    var n = this.indexedCells[t.readUInt32LE(i)],
-                        r = this.indexedCells[t.readUInt32LE(i + 4)];
-                    if (i += 8, n && r) {
-                        r.targetX = n.x;
-                        r.targetY = n.y;
-                        r.targetSize = r.size;
-                        r.time = this.time;
-                        r.removeCell();
+                this.time = performance.now();
+				this.removePlayerCell = false;
+                var eatEventsLength = view.readUInt16LE(offset);
+                offset += 2;
+                for (var length = 0; length < eatEventsLength; length++) {
+                    var eaterID = this.indexedCells[view.readUInt32LE(offset)],
+                        victimID = this.indexedCells[view.readUInt32LE(offset + 4)];
+                    if (offset += 8, eaterID && victimID) {
+                        victimID.targetX = eaterID.x;
+                        victimID.targetY = eaterID.y;
+                        victimID.targetSize = victimID.size;
+                        victimID.time = this.time;
+                        victimID.removeCell();
                     }
                 }
                 //
                 //legendmod3.sendJimboy3100info();
                 fakePlayers();
                 //					
-                for (a = 0;;) {
-                    extendedFlags = false;
-                    var l = t.readUInt32LE(i);
-                    if (i += 4, 0 == l) break;
-                    var h = t.readInt32LE(i);
-                    if (window.legendmod.vector[window.legendmod.vnr][0]) h = this.translateX(h); //Sonia3
-                    i += 4;
-                    var c = t.readInt32LE(i);
-                    if (window.legendmod.vector[window.legendmod.vnr][1]) c = this.translateY(c); //Sonia3
-                    i += 4;
-                    var u = t.readUInt16LE(i);
-                    i += 2;
-                    var d = t.readUInt8(i++),
-                        f = 0;
-                    128 & d && (f = t.readUInt8(i++), extendedFlags = true);
+                for (length = 0;;) {
+                    //extendedFlags = false;
+                    var id = view.readUInt32LE(offset);
+                    if (offset += 4, 0 == id) break;
+                    var x = view.readInt32LE(offset);
+                    if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
+                    offset += 4;
+                    var y = view.readInt32LE(offset);
+                    if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
+                    offset += 4;
+                    var size = view.readUInt16LE(offset);
+                    offset += 2;
+                    var flags = view.readUInt8(offset++),
+                        extendedFlags = 0;
+                    128 & flags && (extendedFlags = view.readUInt8(offset++));
                     //128 & d && (f = t.readUInt8(i++));	
-                    var m = null,
-                        g = null,
-                        y = '',
+                    var color = null,
+                        skin = null,
+                        name = '',
+						accountID = null,
                         isAgitated = false,
                         isOwnEjected = false,
                         isOtherEjected = false;
-                    if (2 & d) { //offset
-                        var ogario1PlayerProfiles = t.readUInt8(i++),
-                            ogarcopythelb = t.readUInt8(i++),
-                            irenderfromagario = t.readUInt8(i++);
-                        m = this.rgb2Hex(~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
+                    if (2 & flags) { //offset
+                        var ogario1PlayerProfiles = view.readUInt8(offset++),
+                            ogarcopythelb = view.readUInt8(offset++),
+                            irenderfromagario = view.readUInt8(offset++);
+                        color = this.rgb2Hex(~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
                     }
 
                     //4 & d && (g = s()),
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
-                    if (4 & d) {
-                        g = s();
+                    if (4 & flags) {
+                        skin = encode();
                         //						console.log('skin '+g);
 
                     }
-                    if (8 & d) {
-                        y = window.decodeURIComponent(escape(s()));
+                    if (8 & flags) {
+                        name = window.decodeURIComponent(escape(encode()));
                         if (legendmod && legendmod.gameMode && legendmod.gameMode != ":teams") {
-                            this.vanillaskins(y, g);
+                            this.vanillaskins(name, skin);
                         }
                     }
                     //Jimboy's
-                    if (16 & d) {
+                    if (16 & flags) {
                         //isAgitated = true;
                     }
-                    if (32 & d) {
+                    if (32 & flags) {
                         //isOwnEjected = true;
                     }
-                    if (64 & d) {
+                    if (64 & flags) {
                         //isOtherEjected = true;
                     }
                     //
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
-                    var LM = 1 & d,
-                        ogarioset1final = 1 & f,
-                        ogariocellssetts = null;
-                    this.indexedCells.hasOwnProperty(l) ? (ogariocellssetts = this.indexedCells[l],
-                            m && (ogariocellssetts.color = m)) :
-                        ((ogariocellssetts = new ogarbasicassembly(l, h, c, u, m, ogarioset1final, LM, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
-                            ogarioset1final ? this.food.push(ogariocellssetts) :
-                            (LM && defaultmapsettings.virusesRange && this.viruses.push(ogariocellssetts),
-                                this.cells.push(ogariocellssetts),
-                                -1 != this.playerCellIDs.indexOf(l) && -1 == this.playerCells.indexOf(ogariocellssetts) && (ogariocellssetts.isPlayerCell = true,
-                                    this.playerColor = m, this.playerCells.push(ogariocellssetts))),
-                            this.indexedCells[l] = ogariocellssetts),
-                        ogariocellssetts.isPlayerCell && (y = this.playerNick),
-                        y && (ogariocellssetts.targetNick = y),
-                        ogariocellssetts.targetX = h,
-                        ogariocellssetts.targetY = c,
-                        ogariocellssetts.targetSize = u,
-                        //                        ogariocellssetts.targetSize = u,
-                        ogariocellssetts.isFood = ogarioset1final,
-                        ogariocellssetts.isVirus = LM,
+                    var isVirus = 1 & flags,
+                        isFood = 1 & extendedFlags,
+						isFriend = extendedFlags & 2,
+                        cellUpdateCells = null;
+                    this.indexedCells.hasOwnProperty(id) ? (cellUpdateCells = this.indexedCells[id],
+                            color && (cellUpdateCells.color = color)) :
+                        ((cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
+                            isFood ? this.food.push(cellUpdateCells) :
+                            (isVirus && defaultmapsettings.virusesRange && this.viruses.push(cellUpdateCells),
+                                this.cells.push(cellUpdateCells),
+                                -1 != this.playerCellIDs.indexOf(id) && -1 == this.playerCells.indexOf(cellUpdateCells) && (cellUpdateCells.isPlayerCell = true,
+                                    this.playerColor = color, this.playerCells.push(cellUpdateCells))),
+                            this.indexedCells[id] = cellUpdateCells),
+                        cellUpdateCells.isPlayerCell && (name = this.playerNick),
+                        name && (cellUpdateCells.targetNick = name),
+                        cellUpdateCells.targetX = x,
+                        cellUpdateCells.targetY = y,
+                        cellUpdateCells.targetSize = size,
+                        //                        cellUpdateCells.targetSize = u,
+                        cellUpdateCells.isFood = isFood,
+                        cellUpdateCells.isVirus = isVirus,
                         //
-                        ogariocellssetts.isOwnEjected = isOwnEjected,
-                        ogariocellssetts.isOtherEjected = isOtherEjected,
+                        cellUpdateCells.isOwnEjected = isOwnEjected,
+                        cellUpdateCells.isOtherEjected = isOtherEjected,
                         //
-                        g && (ogariocellssetts.skin = g),
-                        4 & f && (t.readUInt32LE(i), i += 4);
+                        skin && (cellUpdateCells.skin = skin),
+                        4 & extendedFlags && (accountID = view.readUInt32LE(offset), 
+						cellUpdateCells.accID = accountID,
+						offset += 4,
+						friend = LM.fbOnline.find(element => {return element.id == accountID}),
+						friend != undefined?cellUpdateCells.fbID = friend.fbId:void(0)),
+						2 & extendedFlags && (cell.isFriend = isFriend,
+						console.log('FB friend cell in view', isFriend));
                 }
-                for (o = t.readUInt16LE(i), i += 2, a = 0; a < o; a++) {
-                    l = t.readUInt32LE(i);
-                    i += 4, (ogariocellssetts = this.indexedCells[l]) && ogariocellssetts.removeCell();
+                for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
+                    id = view.readUInt32LE(offset);
+                    offset += 4, 
+					(cellUpdateCells = this.indexedCells[id]) && 
+					cellUpdateCells.removeCell();
                 }
                 //Sonia7
                 if (this.removePlayerCell && !this.playerCells.length) {
