@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.183 MEGA TEST
+// v1.184 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7836,51 +7836,51 @@ var thelegendmodproject = function(t, e, i) {
                         ogarfooddrawer.drawPieChart();
                         break;
                     case 53://Yahnych
-					window.testobjectsOpcode53 = data;
-                    this.leaderboard = [];
-                    this.friends = this.fbOnline.length;
+						window.testobjectsOpcode53 = data;
+						this.leaderboard = [];
+						this.friends = this.fbOnline.length;
 
-                    this.playerPosition = 0;
-                    if (data.getUint8(0) == 54) {
-                        const pos = data.getUint16(offset, true);
-                        offset += 2;
-                        console.log('Friends:' , pos)
-                    }
-                    for (let position = 0; offset < data.byteLength;) {
-                        var flags = data.getUint8(offset++);
-                        let nick = '';
-                        let id = 0;
-                        let isFriend = false;
-                        let isFBFriend = false;
-                        position++;
-                        if (flags & 2) {
-                            nick = window.decodeURIComponent(window.escape(encode()));
-                        }
-                        if (flags & 4) {
-                            id = data.getUint32(offset, true);
-                            offset += 4;
-                        }
-                        if (flags & 8) {
-                            nick = this.playerNick;
-                            id = `isPlayer`;
-                            this.playerPosition = position;
-                        }
-                        if (flags & 16) {
-                            isFriend = true;
-                            this.friends ++
-                        }
-                        let friend = LM.fbOnline.find(element => {return element.id == id});
-                        friend != undefined?isFBFriend = friend.fbId:isFBFriend = false;                     
+						this.playerPosition = 0;
+						if (data.getUint8(0) == 54) {
+							const pos = data.getUint16(s, true);
+							s += 2;
+							console.log('Friends:' , pos)
+						}
+						for (let position = 0; s < data.byteLength;) {
+							var flags = data.getUint8(s++);
+							let nick = '';
+							let id = 0;
+							let isFriend = false;
+							let isFBFriend = false;
+							position++;
+							if (flags & 2) {
+								nick = window.decodeURIComponent(window.escape(encode()));
+							}
+							if (flags & 4) {
+								id = data.getUint32(s, true);
+								s += 4;
+							}
+							if (flags & 8) {
+								nick = this.playerNick;
+								id = `isPlayer`;
+								this.playerPosition = position;
+							}
+							if (flags & 16) {
+								isFriend = true;
+								this.friends ++
+							}
+							let friend = LM.fbOnline.find(element => {return element.id == id});
+							friend != undefined?isFBFriend = friend.fbId:isFBFriend = false;                     
                        
                       
 
                       
-                        this.leaderboard.push({
-                            nick: nick,
-                            id: id,
-                            isFriend: isFriend,
-                            isFBFriend: isFBFriend,
-                        });
+							this.leaderboard.push({
+								nick: nick,
+								id: id,
+								isFriend: isFriend,
+								isFBFriend: isFBFriend,
+							});
                     }					
                     /*    
                         if (this.leaderboard = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
