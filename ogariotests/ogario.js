@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.190 MEGA TEST
+// v1.191 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6127,40 +6127,43 @@ var thelegendmodproject = function(t, e, i) {
                 this.showQuest && ':ffa' === this.gameMode && window.MC && window.MC.getQuestProgressLabel && (this.questHUD.textContent = window.MC.getQuestProgressLabel());
             },
             'init': function() {
-                this.loadSettings(),
-                    this.loadProfiles(),
-                    this.setLang(),
-                    this.setMenu(),
-                    this.setUI(),
-                    hudsetter && hudsetter.setTheme(),
-                    this.setShowQuickMenu(),
-                    this.setShowSkinsPanel(),
-                    this.setProfile(),
-                    this.setMainButtons(),
-                    this.setStreamMode(),
-                    this.setHideSkinUrl(),
-                    this.setMiniMap(),
-                    this.setAutoResp(),
-                    this.setDisableChat(),
-                    this.setShowChatBox(),
-                    this.setTop5(),
-                    this.setTargetingHUD(),
-                    this.setQuest(),
-                    this.displayTime(),
-                    this.setCenteredLb(),
-                    this.setNormalLb(),
-                    this.setFpsAtTop(),
-                    this.setTweenMaxEffect(),
-                    this.displayStats(),
-                    this.setBlockPopups(),
-                    this.preloadChatSounds(),
+                this.loadSettings();
+                    this.loadProfiles();
+                    this.setLang();
+                    this.setMenu();
+                    this.setUI();
+					if (hudsetter){
+						hudsetter.setTheme();
+					}
+                    this.setShowQuickMenu();
+                    this.setShowSkinsPanel();
+                    this.setProfile();
+                    this.setMainButtons();
+                    this.setStreamMode();
+                    this.setHideSkinUrl();
+                    this.setMiniMap();
+                    this.setAutoResp();
+                    this.setDisableChat();
+                    this.setShowChatBox();
+                    this.setTop5();
+                    this.setTargetingHUD();
+                    this.setQuest();
+                    this.displayTime();
+                    this.setCenteredLb();
+                    this.setNormalLb();
+                    this.setFpsAtTop();
+                    this.setTweenMaxEffect();
+                    this.displayStats();
+                    this.setBlockPopups();
+                    this.preloadChatSounds();
                     this.setChatSoundsBtn();
-                var t = this;
+					this.setFBIDs();					
+                var app = this;
                 setInterval(function() {
-                        t.drawMiniMap();
+                        app.drawMiniMap();
                     }, 33),
                     setInterval(function() {
-                        t.updateTeamPlayers();
+                        app.updateTeamPlayers();
                         legendmod3.sendSocket3Position();
                     }, this.updateInterval);
             }
