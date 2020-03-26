@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.206 MEGA TEST
+// v1.207 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2279,7 +2279,7 @@ var thelegendmodproject = function(t, e, i) {
 							if (storage && storage.hasOwnProperty(setup)) {
 								defaultSettings[setup] = storage[setup];
                         }
-							if (window.ogario.hasOwnProperty(setup)) {
+							if (ogario.hasOwnProperty(setup)) {
                             window.ogario[setup] = defaultSettings[setup];
 							}
 						}
@@ -2311,14 +2311,14 @@ var thelegendmodproject = function(t, e, i) {
                             'format': 'hex'
                         }).on('changeColor.colorpicker', function(id) {
                             defaultSettings[name] = id.color.toHex(), 
-							window.ogario.hasOwnProperty(name) && (window.ogario[name] = defaultSettings[name]), 
+							ogario.hasOwnProperty(name) && (window.ogario[name] = defaultSettings[name]), 
 							app[callback]();
                         });
                     } else $(id + ' .' + e + '-picker').colorpicker({
                         'format': 'hex'
                     }).on('changeColor.colorpicker', function(id) {
                         defaultSettings[e] = id.color.toHex(), 
-						window.ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]);
+						ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]);
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
@@ -2328,13 +2328,13 @@ var thelegendmodproject = function(t, e, i) {
                             'format': 'rgba'
                         }).on('changeColor.colorpicker', function(t) {
                             var s = t.color.toRGB();
-                            defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', window.ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]), a[o]();
+                            defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'rgba'
                     }).on('changeColor.colorpicker', function(t) {
                         var s = t.color.toRGB();
-                        defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', window.ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]);
+                        defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]);
                     });
                 },
                 'addSliderBox': function(t, e, o, a, n, r) {
@@ -2342,11 +2342,11 @@ var thelegendmodproject = function(t, e, i) {
                         var l = this;
                         $('#' + e + '-slider').on('input', function() {
                             var t = parseFloat($(this).val());
-                            $('#' + e + '-value').text(t), defaultSettings[e] = t, window.ogario.hasOwnProperty(e) && (window.ogario[e] = t), l[r]();
+                            $('#' + e + '-value').text(t), defaultSettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t), l[r]();
                         });
                     } else $('#' + e + '-slider').on('input', function() {
                         var t = parseFloat($(this).val());
-                        $('#' + e + '-value').text(t), defaultSettings[e] = t, window.ogario.hasOwnProperty(e) && (window.ogario[e] = t);
+                        $('#' + e + '-value').text(t), defaultSettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t);
                     });
                 },
                 'addInputBox': function(t, e, i, o) {
@@ -2363,8 +2363,8 @@ var thelegendmodproject = function(t, e, i) {
                     defaultSettings[t] = e,
                         defaultSettings[t + 'Family'] = this.setFontFamily(e),
                         defaultSettings[t + 'Weight'] = this.setFontWeight(e),
-                        window.ogario.hasOwnProperty(t + 'Family') && (window.ogario[t + 'Family'] = defaultSettings[t + 'Family']),
-                        window.ogario.hasOwnProperty(t + 'Weight') && (window.ogario[t + 'Weight'] = defaultSettings[t + 'Weight']);
+                        ogario.hasOwnProperty(t + 'Family') && (window.ogario[t + 'Family'] = defaultSettings[t + 'Family']),
+                        ogario.hasOwnProperty(t + 'Weight') && (window.ogario[t + 'Weight'] = defaultSettings[t + 'Weight']);
                 },
                 'addFontBox': function(t, e, i) {
                     $(t).append('<div class=\"font-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>');
@@ -2561,7 +2561,7 @@ var thelegendmodproject = function(t, e, i) {
                         defaultSettings[t] = t;
                         t = e[t];
                         for (var o in t) t.hasOwnProperty(o) && defaultSettings.hasOwnProperty(o) &&
-                            (defaultSettings[o] = t[o], window.ogario.hasOwnProperty(o) && (window.ogario[o] = defaultSettings[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', defaultSettings[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(defaultSettings[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(defaultSettings[o]));
+                            (defaultSettings[o] = t[o], ogario.hasOwnProperty(o) && (window.ogario[o] = defaultSettings[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', defaultSettings[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(defaultSettings[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(defaultSettings[o]));
                     }
                 },
                 'changeThemePreset': function(t) {
@@ -2810,10 +2810,10 @@ var thelegendmodproject = function(t, e, i) {
             'FacebookIDs': null,
             'feedInterval': null,
             'getPlayerX': function() {
-                return window.ogario.playerX + window.ogario.mapOffsetX;
+                return ogario.playerX + ogario.mapOffsetX;
             },
             'getPlayerY': function() {
-                return window.ogario.playerY + window.ogario.mapOffsetY;
+                return ogario.playerY + ogario.mapOffsetY;
             },
             'feed': function() {
                 if (window.core && window.core.eject) {
@@ -2863,11 +2863,11 @@ var thelegendmodproject = function(t, e, i) {
                 }, 120);
             },
             'toggleSkins': function() {
-                window.ogario.vanillaSkins && window.ogario.customSkins ? window.ogario.vanillaSkins = false : !window.ogario.vanillaSkins && window.ogario.customSkins ? (window.ogario.vanillaSkins = true, window.ogario.customSkins = false) : (window.ogario.vanillaSkins = true, window.ogario.customSkins = true);
+                ogario.vanillaSkins && ogario.customSkins ? ogario.vanillaSkins = false : !ogario.vanillaSkins && ogario.customSkins ? (ogario.vanillaSkins = true, ogario.customSkins = false) : (ogario.vanillaSkins = true, ogario.customSkins = true);
             },
             'toggleCells': function() {
                 this.selectBiggestCell = !this.selectBiggestCell,
-                    window.ogario.selectBiggestCell = this.selectBiggestCell;
+                    ogario.selectBiggestCell = this.selectBiggestCell;
             },
             'setShowTop5': function() {
                 defaultmapsettings.showTop5 = !defaultmapsettings.showTop5,
@@ -2889,7 +2889,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setShowSplitRange': function() {
                 defaultmapsettings.splitRange = !defaultmapsettings.splitRange,
-                    window.ogario.splitRange = defaultmapsettings.splitRange;
+                    ogario.splitRange = defaultmapsettings.splitRange;
             },
             'setShowGhostCellsInfo': function() {
                 if (defaultmapsettings.showGhostCells == false || defaultmapsettings.showGhostCellsInfo == false) {
@@ -2919,31 +2919,31 @@ var thelegendmodproject = function(t, e, i) {
                 this.showSplitInd = !this.showSplitInd,
                     defaultmapsettings.splitRange = this.showSplitInd,
                     defaultmapsettings.oppRings = this.showSplitInd,
-                    window.ogario.splitRange = defaultmapsettings.splitRange,
-                    window.ogario.oppRings = defaultmapsettings.oppRings;
+                    ogario.splitRange = defaultmapsettings.splitRange,
+                    ogario.oppRings = defaultmapsettings.oppRings;
             },
             'setShowTeammatesInd': function() {
                 defaultmapsettings.teammatesInd = !defaultmapsettings.teammatesInd;
             },
             'setShowOppColors': function() {
                 defaultmapsettings.oppColors = !defaultmapsettings.oppColors;
-                window.ogario.oppColors = defaultmapsettings.oppColors;
+                ogario.oppColors = defaultmapsettings.oppColors;
             },
             'setShowSkins': function() {
                 this.noSkins = !this.noSkins,
                     window.core && window.core.setSkins && window.core.setSkins(!this.noSkins),
-                    window.ogario.showCustomSkins = !this.noSkins,
+                    ogario.showCustomSkins = !this.noSkins,
                     this.displayChatInfo(!this.noSkins, 'showSkinsMsg');
             },
             'setTransparentSkins': function() {
                 defaultmapsettings.transparentSkins = !defaultmapsettings.transparentSkins,
-                    window.ogario.transparentSkins = defaultmapsettings.transparentSkins;
+                    ogario.transparentSkins = defaultmapsettings.transparentSkins;
             },
             'setShowStats': function() {
                 $('#stats-hud').toggle();
             },
             'setShowFood': function() {
-                window.ogario.showFood = !window.ogario.showFood;
+                ogario.showFood = !ogario.showFood;
             },
             'setShowHUD': function() {
                 $('#overlays-hud').toggle();
@@ -2961,8 +2961,8 @@ var thelegendmodproject = function(t, e, i) {
                 defaultmapsettings.showBgSectors = !defaultmapsettings.showBgSectors;
             },
             'setHideSmallBots': function() {
-                window.ogario.hideSmallBots = !window.ogario.hideSmallBots,
-                    this.displayChatInfo(!window.ogario.hideSmallBots, 'hideSmallBotsMsg');
+                ogario.hideSmallBots = !ogario.hideSmallBots,
+                    this.displayChatInfo(!ogario.hideSmallBots, 'hideSmallBotsMsg');
             },
             'setShowNames': function() {
                 defaultmapsettings.noNames = !defaultmapsettings.noNames;
@@ -2986,13 +2986,13 @@ var thelegendmodproject = function(t, e, i) {
                 this.showQuest && ':ffa' === this.gameMode ? $('#quest-hud').show() : $('#quest-hud').hide();
             },
             'toggleAutoZoom': function() {
-                window.ogario.autoZoom = !window.ogario.autoZoom, this.displayChatInfo(window.ogario.autoZoom, 'autoZoomMsg');
+                ogario.autoZoom = !ogario.autoZoom, this.displayChatInfo(ogario.autoZoom, 'autoZoomMsg');
             },
             'resetZoom': function(t) {
-                t ? (window.ogario.zoomResetValue = 1, window.ogario.zoomValue = 1) : window.ogario.zoomResetValue = 0;
+                t ? (ogario.zoomResetValue = 1, ogario.zoomValue = 1) : ogario.zoomResetValue = 0;
             },
             'setZoom': function(t) {
-                window.ogario.zoomValue = t;
+                ogario.zoomValue = t;
             },
             'toggleDeath': function() {
                 this.lastDeath--;
@@ -3001,12 +3001,12 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'tryResp': function() {
-                if (window.ogario.play || 20 == this.retryResp) this.retryResp = 0;
+                if (ogario.play || 20 == this.retryResp) this.retryResp = 0;
                 else {
                     this.retryResp++;
                     var t = this;
                     setTimeout(function() {
-                        $('.btn-play-guest').is(':visible') ? $('.btn-play-guest').click() : $('.btn-play').click(), window.ogario.play || t.tryResp();
+                        $('.btn-play-guest').is(':visible') ? $('.btn-play-guest').click() : $('.btn-play').click(), ogario.play || t.tryResp();
                     }, 500);
                 }
             },
@@ -3014,7 +3014,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (defaultmapsettings.quickResp) {
                     this.hideMenu();
                     this['gameServerConnect'](this.ws);
-                    window.ogario.play = false;
+                    ogario.play = false;
                     this.tryResp();
                 }
             },
@@ -3042,7 +3042,7 @@ var thelegendmodproject = function(t, e, i) {
                 if (window.autoPlay) {
                     ogarminimapdrawer && ogarminimapdrawer.setAutoPlay()
                 };
-                this.pause = !this.pause, window.ogario.pause = this.pause, this.pause ? (window.ogario.resetTargetPosition(), $('#pause-hud').text(textLanguage.pause), $('#pause-hud').show()) : $('#pause-hud').hide();
+                this.pause = !this.pause, ogario.pause = this.pause, this.pause ? (ogario.resetTargetPosition(), $('#pause-hud').text(textLanguage.pause), $('#pause-hud').show()) : $('#pause-hud').hide();
             },
             'setCenteredLb': function() {
                 defaultmapsettings.centeredLb ? $('#leaderboard-hud').addClass('hud-text-center') : $('#leaderboard-hud').removeClass('hud-text-center');
@@ -3103,35 +3103,35 @@ var thelegendmodproject = function(t, e, i) {
             'displayStats': function() {
                 if (defaultmapsettings.showStats) {
                     var t = '';
-                    if (window.ogario.play) {
-                        if (defaultmapsettings.showStatsMass && window.ogario.playerMass) {
+                    if (ogario.play) {
+                        if (defaultmapsettings.showStatsMass && ogario.playerMass) {
                             //t += textLanguage.mass + ': ' + i.playerMass + ' | '
-                            t += Languageletter49 + ': ' + window.ogario.playerMass + ' | '
+                            t += Languageletter49 + ': ' + ogario.playerMass + ' | '
                         }
-                        if (window.ogario.playerScore) {
+                        if (ogario.playerScore) {
                             //t += textLanguage.score + ': ' + i.playerScore
-                            t += Languageletter366 + ': ' + window.ogario.playerScore
+                            t += Languageletter366 + ': ' + ogario.playerScore
                         }
-                        if (defaultmapsettings.showStatsN16 && window.ogario.playerSplitCells) {
-                            t += ' | ' + window.ogario.playerSplitCells + '/16'
+                        if (defaultmapsettings.showStatsN16 && ogario.playerSplitCells) {
+                            t += ' | ' + ogario.playerSplitCells + '/16'
                         }
-                        if (defaultmapsettings.showStatsESTE && window.ogario.BSTE) {
-                            t += ' | ◎◎➛◉: ' + window.ogario.BSTE //Sonia6
+                        if (defaultmapsettings.showStatsESTE && ogario.BSTE) {
+                            t += ' | ◎◎➛◉: ' + ogario.BSTE //Sonia6
                         }
-                        if (defaultmapsettings.showStatsEMTE && window.ogario.BMTE) {
-                            t += ' | ◎➛◉: ' + window.ogario.BMTE //Sonia6
+                        if (defaultmapsettings.showStatsEMTE && ogario.BMTE) {
+                            t += ' | ◎➛◉: ' + ogario.BMTE //Sonia6
                         }
-                        if (defaultmapsettings.showStatsMTE && window.ogario.MTE) {
-                            t += ' | ◉➛◎: ' + window.ogario.MTE //Sonia6
+                        if (defaultmapsettings.showStatsMTE && ogario.MTE) {
+                            t += ' | ◉➛◎: ' + ogario.MTE //Sonia6
                         }
-                        if (defaultmapsettings.showStatsSTE && window.ogario.STE) {
-                            t += ' | ◉◉➛◎: ' + window.ogario.STE //Sonia6
+                        if (defaultmapsettings.showStatsSTE && ogario.STE) {
+                            t += ' | ◉◉➛◎: ' + ogario.STE //Sonia6
                         }
-                        if (defaultmapsettings.showStatsTTE && window.ogario.TTE) {
-                            t += ' | ◉➚◉: ' + window.ogario.TTE //Sonia6
+                        if (defaultmapsettings.showStatsTTE && ogario.TTE) {
+                            t += ' | ◉➚◉: ' + ogario.TTE //Sonia6
                         }
-                        if (defaultmapsettings.showStatsPTE && window.ogario.PTE) {
-                            t += ' | ➚◎➘: ' + window.ogario.PTE //Sonia6
+                        if (defaultmapsettings.showStatsPTE && ogario.PTE) {
+                            t += ' | ➚◎➘: ' + ogario.PTE //Sonia6
                         }
                         if (defaultmapsettings.showStatsFPS) {
                             t += ' | '
@@ -3222,7 +3222,7 @@ var thelegendmodproject = function(t, e, i) {
                                 t += '<span class=\"top5-mass-color\">[' + this.shortMassFormat(this.top5[o].mass) + ']</span> ' + this.escapeHTML(this.top5[o].nick) + '</li>';
                             }
                             this['top5pos'].innerHTML = t,
-                                window.ogario.play && window.ogario.playerMass && (e += window.ogario.playerMass, s++),
+                                ogario.play && ogario.playerMass && (e += ogario.playerMass, s++),
                                 this.top5totalMass.textContent = this.shortMassFormat(e),
                                 this.top5totalPlayers.textContent = s;
                         }
@@ -3303,8 +3303,8 @@ var thelegendmodproject = function(t, e, i) {
                             }
                         }
                         this.top5pos.innerHTML = t;
-                        if (window.ogario.play && window.ogario.playerMass) {
-                            e = e + window.ogario.playerMass;
+                        if (ogario.play && ogario.playerMass) {
+                            e = e + ogario.playerMass;
                             s++;
                         }
                         this.top5totalMass.textContent = this.shortMassFormat(e);
@@ -3355,7 +3355,7 @@ var thelegendmodproject = function(t, e, i) {
                 var e = $('#message');
                 if (t.is(':visible')) {
                     var o = e.val();
-                    o.length ? (this['sendChatMessage'](101, o), window.ogario.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
+                    o.length ? (this['sendChatMessage'](101, o), ogario.play && (e.blur(), t.hide())) : (e.blur(), t.hide()), e.val('');
                 } else {
                     t.show();
                     e.focus();
@@ -3363,7 +3363,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'showMenu': function(t) {
-                if (window.MC && window.MC.showNickDialog) return $('.ogario-menu').show(), $('.menu-panel').hide(), window.ogario.play || this.skipStats ? $('#main-panel').show() : $('#stats').show(), window.MC.showNickDialog(300), $('#oferwallContainer').is(':visible') && window.closeOfferwall(), void($('#videoContainer').is(':visible') && window.closeVideoContainer());
+                if (window.MC && window.MC.showNickDialog) return $('.ogario-menu').show(), $('.menu-panel').hide(), ogario.play || this.skipStats ? $('#main-panel').show() : $('#stats').show(), window.MC.showNickDialog(300), $('#oferwallContainer').is(':visible') && window.closeOfferwall(), void($('#videoContainer').is(':visible') && window.closeVideoContainer());
                 t ? $('#overlays').fadeIn(t) : $('#overlays').show();
             },
             'hideMenu': function(t) {
@@ -3389,7 +3389,7 @@ var thelegendmodproject = function(t, e, i) {
 						if (settings && settings.hasOwnProperty(option)) {
 							defaultmapsettings[option] = settings[option];
 						}
-						if (window.ogario.hasOwnProperty(option)) {
+						if (ogario.hasOwnProperty(option)) {
 							window.ogario[option] = defaultmapsettings[option];							
 						}
 					}
@@ -3428,7 +3428,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setSettings': function(t, e) {
                 if (defaultmapsettings.hasOwnProperty(t) && null !== e) {
-                    switch (defaultmapsettings[t] = e, window.ogario.hasOwnProperty(t) && (window.ogario[t] = e), t) {
+                    switch (defaultmapsettings[t] = e, ogario.hasOwnProperty(t) && (window.ogario[t] = e), t) {
                         case 'autoResp':
                             this.setAutoResp();
                             break;
@@ -3640,11 +3640,11 @@ var thelegendmodproject = function(t, e, i) {
                 var l = this;
                 r ? $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, window.ogario.hasOwnProperty(e) && (window.ogario[e] = t), l[r](),
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t), l[r](),
                         l.saveSettings(defaultmapsettings, 'ogarioSettings');
                 }) : $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, window.ogario.hasOwnProperty(e) && (window.ogario[e] = t),
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t),
                         l.saveSettings(defaultmapsettings, 'ogarioSettings');
                 });
             },
@@ -3851,7 +3851,7 @@ var thelegendmodproject = function(t, e, i) {
                     if (":party" !== dummy) {
                         t.leaveParty();
                     }
-                    t.gameMode = window.ogario.gameMode = dummy;
+                    t.gameMode = ogario.gameMode = dummy;
                     t.setQuest();
                 });
                 $(document).on("change", "#quality", function() {
@@ -3908,7 +3908,7 @@ var thelegendmodproject = function(t, e, i) {
                         t[p] = template.prop("checked");
                         if ("noSkins" === p) {
                             /** @type {boolean} */
-                            window.ogario.showCustomSkin = !t.noSkins;
+                            ogario.showCustomSkin = !t.noSkins;
                         }
                         if ("showQuest" === p) {
                             t.setQuest();
@@ -4135,7 +4135,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.noColors = $("#noColors").prop("checked"),
                     this.skipStats = $("#skipStats").prop("checked"),
                     this.showQuest = $("#showQuest").prop("checked"),
-                    window.ogario.showCustomSkin = !this.noSkins,
+                    ogario.showCustomSkin = !this.noSkins,
                     null !== window.localStorage.getItem("scale_setting")) {
                     var t = JSON.parse(window.localStorage.getItem("scale_setting"));
                     this.setCanvasScale(t);
@@ -4181,7 +4181,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setCanvasScale': function(t) {
                 this.canvasScale = t;
-                window.ogario.canvasScale = t;
+                ogario.canvasScale = t;
             },
             'setStreamMode': function() {
                 if (defaultmapsettings.streamMode) {
@@ -4295,7 +4295,7 @@ var thelegendmodproject = function(t, e, i) {
                     window.addKeyListeners();
                 }
                 if (defaultmapsettings.autoHideFood) {
-                    window.ogario.showFood = true
+                    ogario.showFood = true
                 };
             },
             'onSpectate': function() {
@@ -4306,7 +4306,7 @@ var thelegendmodproject = function(t, e, i) {
                     window.addKeyListeners();
                 }
                 if (defaultmapsettings.autoHideFood) {
-                    window.ogario.showFood = false;
+                    ogario.showFood = false;
                 }
             },
             'join': function() {
@@ -4339,7 +4339,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.setParty(), ':party' === this.gameMode && this.partyToken ? this.gameServerReconnect() : this.createParty(), this.create();
             },
             'onPlayerSpawn': function() {
-                if (window.ogario.play = true, window.ogario.playerColor) return this.sendPlayerSpawn(), void this.cacheCustomSkin(ogarcopythelb.nick, window.ogario.playerColor, ogarcopythelb.skinURL);
+                if (ogario.play = true, ogario.playerColor) return this.sendPlayerSpawn(), void this.cacheCustomSkin(ogarcopythelb.nick, ogario.playerColor, ogarcopythelb.skinURL);
                 var t = this;
                 setTimeout(function() {
                     t.onPlayerSpawn();
@@ -4348,8 +4348,8 @@ var thelegendmodproject = function(t, e, i) {
                     setTimeout(function() {
                         ///////// trigger special effects
                         //console.log('Special effects stage 1');
-                        window.ogario.spawnX = window.ogario.playerX;
-                        window.ogario.spawnY = window.ogario.playerY;
+                        ogario.spawnX = ogario.playerX;
+                        ogario.spawnY = ogario.playerY;
                         LM.drawCommander = true;
                     }, 110);
                 }
@@ -4358,15 +4358,15 @@ var thelegendmodproject = function(t, e, i) {
             'onPlayerDeath': function() {
                 //
                 pauseVideos();
-                window.ogario.play = false;
-                window.ogario.playerColor = null;
-                window.ogario.foodIsHidden = false;
-                window.ogario.playerMass = 0;
-                window.ogario.playerScore = 0;
-                window.ogario.playerSplitCells = 0;
+                ogario.play = false;
+                ogario.playerColor = null;
+                ogario.foodIsHidden = false;
+                ogario.playerMass = 0;
+                ogario.playerScore = 0;
+                ogario.playerSplitCells = 0;
                 this.showMenu(300);
                 this.sendPlayerDeath();
-                this.updateDeathLocations(window.ogario.playerX, window.ogario.playerY);
+                this.updateDeathLocations(ogario.playerX, ogario.playerY);
                 this.unlockButtons();
                 ogarcommando1();
                 this.autoResp();
@@ -4417,7 +4417,7 @@ var thelegendmodproject = function(t, e, i) {
                     ogarcopythelb.color = a;
                 }
                 if (ogarcopythelb.clanTag.length > 0) {
-                    window.ogario.clanTag = ogarcopythelb.clanTag;
+                    ogario.clanTag = ogarcopythelb.clanTag;
                 }
                 ogario1PlayerProfiles[this.selectedProfile].nick = ogarcopythelb.nick;
                 ogario1PlayerProfiles[this.selectedProfile].clanTag = ogarcopythelb.clanTag;
@@ -4597,7 +4597,7 @@ var thelegendmodproject = function(t, e, i) {
                 return this.getCachedSkin(this.customSkinsCache, this.customSkinsMap[i]);
             },
             'calculateMapSector': function(t, xgh2, closeExpr = false) {
-                if (!window.ogario.mapOffsetFixed) {
+                if (!ogario.mapOffsetFixed) {
                     return "";
                 }
                 /*
@@ -4613,10 +4613,10 @@ var thelegendmodproject = function(t, e, i) {
                 }*/
                 //var GearType = i.mapOffsetX + i.mapOffset;
                 //var closingExpr = i.mapOffsetY + i.mapOffset;				
-                var GearType = closeExpr ? window.ogario.mapOffsetX + window.ogario.mapOffset : window.ogario.mapOffset;
-                var closingExpr = closeExpr ? window.ogario.mapOffsetY + window.ogario.mapOffset : window.ogario.mapOffset;
-                var n = Math.floor((xgh2 + closingExpr) / (window.ogario.mapSize / defaultSettings.sectorsY));
-                var r = Math.floor((t + GearType) / (window.ogario.mapSize / defaultSettings.sectorsX));
+                var GearType = closeExpr ? ogario.mapOffsetX + ogario.mapOffset : ogario.mapOffset;
+                var closingExpr = closeExpr ? ogario.mapOffsetY + ogario.mapOffset : ogario.mapOffset;
+                var n = Math.floor((xgh2 + closingExpr) / (ogario.mapSize / defaultSettings.sectorsY));
+                var r = Math.floor((t + GearType) / (ogario.mapSize / defaultSettings.sectorsX));
                 window.calculateMapSector = n < 0 ? 0 : n >= defaultSettings.sectorsY ? defaultSettings.sectorsY - 1 : n;
                 r = r < 0 ? 0 : r >= defaultSettings.sectorsX ? defaultSettings.sectorsX - 1 : r;
                 String.fromCharCode(n + 65) + (r + 1);
@@ -4626,10 +4626,10 @@ var thelegendmodproject = function(t, e, i) {
                 return t < 1000 ? t : Math.round(t / 100) / 10 + 'k';
             },
             'updateDeathLocations': function(t, e) {
-                if (window.ogario.mapOffsetFixed) {
+                if (ogario.mapOffsetFixed) {
                     this.deathLocations.push({
-                        "x": t + window.ogario.mapOffsetX,
-                        "y": e + window.ogario.mapOffsetY
+                        "x": t + ogario.mapOffsetX,
+                        "y": e + ogario.mapOffsetY
                     });
                     if (6 == this.deathLocations.length) {
                         this.deathLocations.shift();
@@ -4638,7 +4638,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'drawMiniMap': function() {
-                if (window.ogario.mapOffsetFixed) {
+                if (ogario.mapOffsetFixed) {
                     var t = defaultSettings.miniMapWidth;
                     var e = defaultSettings.miniMapTop;
                     var s = t + e;
@@ -4657,13 +4657,13 @@ var thelegendmodproject = function(t, e, i) {
                         this.miniMap.width = t;
                         this.miniMap.height = s;
                     }
-                    var n = o / window.ogario.mapSize;
-                    var r = window.ogario.mapOffsetX + window.ogario.mapOffset;
-                    var l = window.ogario.mapOffsetY + window.ogario.mapOffset;
+                    var n = o / ogario.mapSize;
+                    var r = ogario.mapOffsetX + ogario.mapOffset;
+                    var l = ogario.mapOffsetY + ogario.mapOffset;
                     if (this.drawSelectedCell(this.miniMapCtx),
                         //
-                        this.w = window.ogario.playerX,
-                        this.u = window.ogario.playerY,
+                        this.w = ogario.playerX,
+                        this.u = ogario.playerY,
                         /*
 						this.w = window.legendmod.vector[window.legendmod.vnr][0] ? legendmod.translateX(i.playerX) : i.playerX,
 						this.u = window.legendmod.vector[window.legendmod.vnr][1] ? legendmod.translateY(i.playerY) : i.playerY,  
@@ -4683,7 +4683,7 @@ var thelegendmodproject = function(t, e, i) {
                         this.miniMapCtx.save(),
                         this.miniMapCtx.translate(9.5, a), ":battleroyale" === this.gameMode && ogarfooddrawer && ogarfooddrawer.drawBattleAreaOnMinimap(this.miniMapCtx, o, o, n, r, l),
                         defaultmapsettings.showMiniMapGhostCells) {
-                        var h = window.ogario.ghostCells;
+                        var h = ogario.ghostCells;
                         this.miniMapCtx.beginPath();
                         var c = 0;
                         for (; c < h.length; c++) {
@@ -4705,8 +4705,8 @@ var thelegendmodproject = function(t, e, i) {
                         this.miniMapCtx.shadowBlur = 0;
                     }
                     if (defaultmapsettings.showMiniMapGuides) {
-                        u = Math.round((window.ogario.playerX + r) * n);
-                        d = Math.round((window.ogario.playerY + l) * n);
+                        u = Math.round((ogario.playerX + r) * n);
+                        d = Math.round((ogario.playerY + l) * n);
                         this.miniMapCtx.lineWidth = 1;
                         this.miniMapCtx.strokeStyle = defaultSettings.miniMapGuidesColor;
                         this.miniMapCtx.beginPath();
@@ -4717,8 +4717,8 @@ var thelegendmodproject = function(t, e, i) {
                         this.miniMapCtx.stroke();
                     }
                     if (defaultmapsettings.showExtraMiniMapGuides) {
-                        u = Math.round((window.ogario.playerX + r) * n);
-                        d = Math.round((window.ogario.playerY + l) * n);
+                        u = Math.round((ogario.playerX + r) * n);
+                        d = Math.round((ogario.playerY + l) * n);
 
                         //draw the yellow on minimap
                         this.miniMapCtx.beginPath();
@@ -4739,7 +4739,7 @@ var thelegendmodproject = function(t, e, i) {
 
                     }
                     if (this.miniMapCtx.beginPath(),
-                        this.miniMapCtx.arc((window.ogario.playerX + r) * n, (window.ogario.playerY + l) * n,
+                        this.miniMapCtx.arc((ogario.playerX + r) * n, (ogario.playerY + l) * n,
                             defaultSettings.miniMapMyCellSize, 0, this.pi2, false),
                         this.miniMapCtx.closePath(),
                         defaultSettings.miniMapMyCellStrokeSize > 0 && (this.miniMapCtx.lineWidth = defaultSettings.miniMapMyCellStrokeSize,
@@ -4750,12 +4750,12 @@ var thelegendmodproject = function(t, e, i) {
                         this.teamPlayers.length) {
                         c = 0;
                         for (; c < this.teamPlayers.length; c++) {
-                            this.teamPlayers[c].drawPosition(this.miniMapCtx, window.ogario.mapOffset, n, this.privateMiniMap, this.targetID, legendmod3.teamPlayers[c].color);
+                            this.teamPlayers[c].drawPosition(this.miniMapCtx, ogario.mapOffset, n, this.privateMiniMap, this.targetID, legendmod3.teamPlayers[c].color);
                         }
                     }
                     if (this.deathLocations.length > 0) {
-                        u = Math.round((this.deathLocations[this.lastDeath].x + window.ogario.mapOffset) * n);
-                        d = Math.round((this.deathLocations[this.lastDeath].y + window.ogario.mapOffset) * n);
+                        u = Math.round((this.deathLocations[this.lastDeath].x + ogario.mapOffset) * n);
+                        d = Math.round((this.deathLocations[this.lastDeath].y + ogario.mapOffset) * n);
                         var f = Math.max(defaultSettings.miniMapMyCellSize - 2, 4);
                         this.miniMapCtx.lineWidth = 1;
                         this.miniMapCtx.strokeStyle = this.deathLocations.length - 1 == this.lastDeath ? defaultSettings.miniMapDeathLocationColor : "#FFFFFF";
@@ -4777,13 +4777,13 @@ var thelegendmodproject = function(t, e, i) {
                 this.miniMapSectors.height = o;
                 n.fillStyle = '#FFFFFF';
                 this.dTok(n, s - 1);
-                ogarfooddrawer.drawSectors(n, window.ogario.mapOffsetFixed, t, e, 0.5, a, s - 0.5, o - 9.5, defaultSettings.miniMapSectorsColor, defaultSettings.miniMapSectorsColor, 1, false);
+                ogarfooddrawer.drawSectors(n, ogario.mapOffsetFixed, t, e, 0.5, a, s - 0.5, o - 9.5, defaultSettings.miniMapSectorsColor, defaultSettings.miniMapSectorsColor, 1, false);
             },
             'resetMiniMapSectors': function() {
                 this.miniMapSectors = null;
             },
             'drawSelectedCell': function(t) {
-                window.ogario.play && window.ogario.playerSplitCells > 1 && (defaultmapsettings.splitRange || defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.showStatsSTE) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this.selectBiggestCell ? 0.6 : 0.3, t.beginPath(), t.arc(48, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this.selectBiggestCell ? 0.3 : 0.6, t.beginPath(), t.arc(60, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
+                ogario.play && ogario.playerSplitCells > 1 && (defaultmapsettings.splitRange || defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.showStatsSTE) && (t.fillStyle = '#FFFFFF', t.globalAlpha = this.selectBiggestCell ? 0.6 : 0.3, t.beginPath(), t.arc(48, 15, 6, 0, this.pi2, false), t.closePath(), t.fill(), t.globalAlpha = this.selectBiggestCell ? 0.3 : 0.6, t.beginPath(), t.arc(60, 15, 4, 0, this.pi2, false), t.closePath(), t.fill());
             },
             'dTok': function(t, e) {
                 t.font = defaultSettings.miniMapFontWeight + ' ' + (defaultSettings.miniMapTop - 6) + 'px ' + defaultSettings.miniMapFontFamily;
@@ -4796,14 +4796,14 @@ var thelegendmodproject = function(t, e, i) {
                         }, */
             'drawCellInfo': function(t, e, s, o, a, n, r, l, h, c, u, d) {
                 //if (!n && !h && (t.globalAlpha = i.globalAlpha, defaultmapsettings.teammatesInd && d && !l && a <= 200 && this.drawTeammatesInd(t, s, o, a), !defaultmapsettings.noNames || defaultmapsettings.showMass)) {
-                if (!n && !h && (t.globalAlpha = window.ogario.globalAlpha, defaultmapsettings.teammatesInd && d && !l && a <= 200 && ogarfooddrawer.drawTeammatesInd(t, s, o, a), !defaultmapsettings.noNames || defaultmapsettings.showMass)) {
+                if (!n && !h && (t.globalAlpha = ogario.globalAlpha, defaultmapsettings.teammatesInd && d && !l && a <= 200 && ogarfooddrawer.drawTeammatesInd(t, s, o, a), !defaultmapsettings.noNames || defaultmapsettings.showMass)) {
                     var f = false;
                     if (l || r || !(f = this.setAutoHideCellInfo(a)) || !defaultmapsettings.autoHideNames || !defaultmapsettings.autoHideMass) {
                         var m = null;
                         if (!this.cells.hasOwnProperty(e)) return (m = new ogarbasicassembly(s, o, r, l, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).setMass(a), m.setNick(c), void(this.cells[e] = m);
                         (m = this.cells[e]).update(s, o, a, r, l, c),
                             m.setDrawing(defaultmapsettings.optimizedNames, defaultmapsettings.optimizedMass, defaultmapsettings.shortMass, defaultmapsettings.virMassShots, defaultmapsettings.namesStroke, defaultmapsettings.massStroke),
-                            m.setDrawingScale(window.ogario.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale),
+                            m.setDrawingScale(ogario.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale),
                             t.globalAlpha = defaultSettings.textAlpha, defaultmapsettings.noNames || f && defaultmapsettings.autoHideNames || l && defaultmapsettings.hideMyName || d && defaultmapsettings.hideTeammatesNames || m.drawNick(t, defaultSettings.namesColor, defaultSettings.namesFontFamily, defaultSettings.namesFontWeight, defaultSettings.namesStrokeColor),
                             !defaultmapsettings.showMass || f && defaultmapsettings.autoHideMass || l && defaultmapsettings.hideMyMass || defaultmapsettings.hideEnemiesMass && !l && !r || m.drawMass(t, defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, defaultSettings.massStrokeColor) && (window.ExternalScripts && !window.legendmod5.optimizedMass && m.drawMerge(t, defaultSettings.massColor, defaultSettings.massFontFamily, defaultSettings.massFontWeight, defaultSettings.massStrokeColor));
                     }
@@ -4813,14 +4813,14 @@ var thelegendmodproject = function(t, e, i) {
                 return Math.floor(t * t / 100) > 183 ? '#C80000' : defaultSettings.virusColor;
             },
             'setVirusStrokeColor': function(t) {
-                return window.ogario.play && 0 != window.ogario.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? window.ogario.playerMaxMass : window.ogario.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : defaultSettings.virusStrokeColor;
+                return ogario.play && 0 != ogario.playerMaxMass ? Math.floor(t * t / 100) / (this.selectBiggestCell ? ogario.playerMaxMass : ogario.playerMinMass) > 0.76 ? '#FFDC00' : '#C80000' : defaultSettings.virusStrokeColor;
             },
             'setAutoHideCellInfo': function(t) {
-                return t <= 40 || window.ogario.viewScale < 0.5 && t < 550 && t < 25 / window.ogario.viewScale;
+                return t <= 40 || ogario.viewScale < 0.5 && t < 550 && t < 25 / ogario.viewScale;
             },
             'setParty': function() {
                 var t = $('#party-token').val();
-                if (this.gameMode = window.ogario.gameMode = $('#gamemode').val(), this.setQuest(), ':party' === this.gameMode && t) {
+                if (this.gameMode = ogario.gameMode = $('#gamemode').val(), this.setQuest(), ':party' === this.gameMode && t) {
                     var e = t; -
                     1 != t.indexOf('#') && (e = (t = t.split('#'))[1]),
                         this.partyToken !== e && (this.partyToken = e,
@@ -4851,8 +4851,8 @@ var thelegendmodproject = function(t, e, i) {
                 this.flushSkinsMap();
                 this.flushChatData();
                 this.cancelTargeting();
-                window.ogario.play = false;
-                window.ogario.playerColor = null;
+                ogario.play = false;
+                ogario.playerColor = null;
             },
             'flushPartyData': function() {
                 this.teamPlayers = [];
@@ -5129,7 +5129,7 @@ var thelegendmodproject = function(t, e, i) {
                         $(".party-panel").hide();
                     }
                     this.onJoin();
-                    if (window.ogario.play) {
+                    if (ogario.play) {
                         this["onPlayerSpawn"]();
                     }
                 }
@@ -5311,7 +5311,7 @@ var thelegendmodproject = function(t, e, i) {
                 this['sendPlayerData'](13, 'lastSentCustomColor', ogarcopythelb.color);
             },
             'sendPlayerColor': function() {
-                this.isSocketOpen() && window.ogario.playerColor && this['sendBuffer'](this['strToBuff'](14, window.ogario.playerColor));
+                this.isSocketOpen() && ogario.playerColor && this['sendBuffer'](this['strToBuff'](14, ogario.playerColor));
             },
             'sendPartyToken': function() {
                 this.setParty(), this['sendPlayerData'](15, 'lastSentPartyToken', this.partyToken);
@@ -5358,7 +5358,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.sendPlayerNick();
             },
             'sendPlayerUpdate': function() {
-                if (this.isSocketOpen() && window.ogario.play && this.playerID && window.ogario.playerColor) {
+                if (this.isSocketOpen() && ogario.play && this.playerID && ogario.playerColor) {
                     function t(t) {
                         for (var e = 0; e < t.length; e++) s.setUint16(o, t.charCodeAt(e), true), o += 2;
                         s.setUint16(o, 0, true), o += 2;
@@ -5372,19 +5372,19 @@ var thelegendmodproject = function(t, e, i) {
                     t(ogarcopythelb.nick),
                         t(ogarcopythelb.skinURL),
                         t(ogarcopythelb.color),
-                        t(window.ogario.playerColor),
+                        t(ogario.playerColor),
                         this['sendBuffer'](s);
                 }
             },
             'sendPlayerPosition': function() {
-                if (this.isSocketOpen() && window.ogario.play && this.playerID) {
+                if (this.isSocketOpen() && ogario.play && this.playerID) {
                     var t = this.createView(17);
                     t.setUint8(0, 30);
                     t.setUint32(1, this.playerID, true);
                     t.setInt32(5, this.getPlayerX(), true);
                     t.setInt32(9, this.getPlayerY(), true);
-                    if (void 0 !== window.ogario.playerMass) {
-                        t.setUint32(13, window.ogario.playerMass, true);
+                    if (void 0 !== ogario.playerMass) {
+                        t.setUint32(13, ogario.playerMass, true);
                     } else {
                         t.setUint32(13, this.playerMass, true);
                     }
@@ -5576,7 +5576,7 @@ var thelegendmodproject = function(t, e, i) {
                 //Here should be food part
             },
             'sendSocket3Position': function() {
-                if (window.ogario.play && window.noOgarioSocket && Socket3) {
+                if (ogario.play && window.noOgarioSocket && Socket3) {
                     //if (window.noOgarioSocket && ogarcopythelb.clanTag!="" && ogarcopythelb.nick.includes("℄")) { 					
                     //Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: legendmod3.getPlayerX(), y: legendmod3.getPlayerY(), mass: legendmod.playerMass}));					
                     //}
@@ -5598,14 +5598,14 @@ var thelegendmodproject = function(t, e, i) {
             },
             //Sonia4
             'sendSuperLegendSDATA': function() {
-                if (window.ogario.play && this.playerID) {
+                if (ogario.play && this.playerID) {
                     var s = "";
                     s += window.legendmod.bgpi;
                     this.sendSLG("R", s);
                 }
             },
             'sendSimpleLegendSDATA': function() {
-                if (window.ogario.play && this.playerID) {
+                if (ogario.play && this.playerID) {
                     //var t = this.playerID;
                     var t = window.unescape(window.encodeURIComponent(legendmod3.lastSentNick));
                     var s = window.legendmod.bgpi;
@@ -6061,7 +6061,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setTargeting': function() {
                 if (this.targetID) {
-                    this.targeting = !this.targeting, window.ogario.targeting = this.targeting, this.setTargetingInfo();
+                    this.targeting = !this.targeting, ogario.targeting = this.targeting, this.setTargetingInfo();
                 }
             },
             'setTargetingInfo': function() {
@@ -6094,7 +6094,7 @@ var thelegendmodproject = function(t, e, i) {
                             this.targetNick = '',
                             this.targetSkinURL = '',
                             this.targeting = false,
-                            window.ogario.targeting = false,
+                            ogario.targeting = false,
                             this.privateMiniMap = false,
                             $('#target-skin, #target-nick, #target-summary').hide(),
                             $("#target-hud").hide(),
@@ -6103,7 +6103,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 1:
                         this.targetStatus = 1,
-                            this.targeting || (this.targeting = true, window.ogario.targeting = true, $("#target-hud").show(), this.setTargetingInfo()),
+                            this.targeting || (this.targeting = true, ogario.targeting = true, $("#target-hud").show(), this.setTargetingInfo()),
                             $('#target-skin, #target-nick, #target-status, #target-summary').show();
                         break;
                     case 2:
@@ -6112,7 +6112,7 @@ var thelegendmodproject = function(t, e, i) {
                             $('#target-summary').hide(),
                             $("#target-hud").show(),
                             $('#target-status').show().text('[' + Languageletter369 + ']'),
-                            window.ogario.resetTargetPosition();
+                            ogario.resetTargetPosition();
                 }
             },
             'changeTarget': function() {
@@ -6131,7 +6131,7 @@ var thelegendmodproject = function(t, e, i) {
                 null !== e && (t = e), null !== t ? this.setTarget(this.teamPlayers[t].id) : this.setTargetStatus(0);
             },
             'updateTarget': function(t, e, o, a, n, r, f) {
-                window.ogario.setTargetPosition(o, a);
+                ogario.setTargetPosition(o, a);
                 if (this.targetNick !== t) {
                     this.targetNick = t;
                     $('#target-nick').html(this.escapeHTML(t))
@@ -6169,9 +6169,9 @@ var thelegendmodproject = function(t, e, i) {
                 } else if (flag == false) {
                     l = "Unknown";
                 };
-                c = Languageletter368 + ': <span class=\"hud-main-color\">' + window.ogario.targetDistance + ' [' + l + ']</span>';
-                if (window.ogario.play) {
-                    c += ' | ' + textLanguage['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(n + window.ogario.playerMass) + '</span>'
+                c = Languageletter368 + ': <span class=\"hud-main-color\">' + ogario.targetDistance + ' [' + l + ']</span>';
+                if (ogario.play) {
+                    c += ' | ' + textLanguage['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(n + ogario.playerMass) + '</span>'
                 }
                 $('#target-summary').html(c);
                 if (1 != this.targetStatus) {
@@ -6670,7 +6670,7 @@ var thelegendmodproject = function(t, e, i) {
                 this.strokeMass = defaultmapsettings.massStroke;
             };
             this.setDrawingScale = function() {
-                this.setScale(window.ogario.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale);
+                this.setScale(ogario.viewScale, defaultSettings.namesScale, defaultSettings.massScale, defaultSettings.virMassScale, defaultSettings.strokeScale);
                 this.setFontSize();
                 this.setStrokeSize();
                 this.margin = 0;
@@ -9121,19 +9121,19 @@ var thelegendmodproject = function(t, e, i) {
                         cimg12.src = defaultSettings.commanderImage2;
                         pickerAxes.save();
                         pickerAxes.globalAlpha = LM.cAlpha;
-                        pickerAxes.translate(window.ogario.spawnX, window.ogario.spawnY);
+                        pickerAxes.translate(ogario.spawnX, ogario.spawnY);
                         pickerAxes.rotate(LM.cAngle);
                         pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
                         pickerAxes.globalAlpha = LM.cAlpha;
-                        pickerAxes.translate(window.ogario.spawnX, window.ogario.spawnY);
+                        pickerAxes.translate(ogario.spawnX, ogario.spawnY);
                         pickerAxes.rotate(LM.cAngle1);
                         pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
                         pickerAxes.restore();
                         pickerAxes.save();
                         pickerAxes.globalAlpha = LM.cAlpha;
-                        pickerAxes.translate(window.ogario.spawnX, window.ogario.spawnY);
+                        pickerAxes.translate(ogario.spawnX, ogario.spawnY);
                         pickerAxes.rotate(LM.cAngle2);
                         pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
                         pickerAxes.restore();
@@ -9193,8 +9193,8 @@ var thelegendmodproject = function(t, e, i) {
                     LM.cAlpha = 1;
                     LM.drawCommander = false;
                     LM.drawCommander2 = false;
-                    window.ogario.spawnX = 0;
-                    window.ogario.spawnY = 0;
+                    ogario.spawnX = 0;
+                    ogario.spawnY = 0;
                 },
                 /*
                 'drawMapBorders': function(t, e, i, s, o, a, n, r) {
@@ -10532,9 +10532,9 @@ var thelegendmodproject = function(t, e, i) {
             var a = $("#helloContainer");
             var n = a.innerHeight();
             if (n > 0) {
-                window.ogario.menuHeight = n;
+                ogario.menuHeight = n;
             } else {
-                n = window.ogario.menuHeight || 618;
+                n = ogario.menuHeight || 618;
             }
             var r = Math.min(1, o / n);
             var l = n * r;
@@ -10544,8 +10544,8 @@ var thelegendmodproject = function(t, e, i) {
                 a.css("-ms-transform", c),
                 a.css("-webkit-transform", c),
                 a.css("top", h + "px"),
-                window.ogario.innerW = t,
-                window.ogario.innerH = o;
+                ogario.innerW = t,
+                ogario.innerH = o;
 
         }
 
@@ -10603,7 +10603,7 @@ var thelegendmodproject = function(t, e, i) {
             }
         };
         window.onbeforeunload = function(t) {
-            return window.ogario.play ? textLanguage.exit : void 0;
+            return ogario.play ? textLanguage.exit : void 0;
         };
         window.changeHistory = function(value) {
             if (window.history && window.history.replaceState) {
@@ -10611,7 +10611,7 @@ var thelegendmodproject = function(t, e, i) {
             };
         }
         window.changeUrl = function() {
-            if (window.location.pathname === `/ogario`) {
+            if (window.location.pathname === `/legendmod`) {
                 changeHistory(`/${window.location.hash}`);
             };
         }
