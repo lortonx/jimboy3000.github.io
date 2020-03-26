@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.192 MEGA TEST
+// v1.193 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8185,7 +8185,7 @@ var thelegendmodproject = function(t, e, i) {
                         case 242:
                             window.testobjectsOpcode242 = data;
                             this.serverTime = 1000 * data.getUint32(s, true);
-                            this.serverTimeDiff = performance.now() - this.serverTime;
+                            this.serverTimeDiff = Date.now() - this.serverTime;
                             break;
                         case 255:
                             window.testobjectsOpcode255 = data;
@@ -8266,7 +8266,11 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), defaultmapsettings['showLbData']);
                 if (legendmod.gameMode != ":battleroyale") {
-                    t += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
+					t += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
+					if (legendmod.friends && legendmod.friends > 0){               
+						t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';						
+					}
+					//t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
                 } else if (legendmod.gameMode == ":battleroyale") {
                     var t = '<span>';
                     if (legendmod.battleRoyale.shrinkTime - Date.now() / 1000 > 0) {
