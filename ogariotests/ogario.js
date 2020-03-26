@@ -8,7 +8,7 @@
 var RECAPTCHA_V2_KEY = "6LfjUBcUAAAAAF6y2yIZHgHIOO5Y3cU5osS2gbMl";
 var RECAPTCHA_V3_KEY = "6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY";
 
-
+var consoleMsg = "\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, "";
 
 
 function changeregion() {
@@ -94,7 +94,7 @@ function callEveryFullHourCoinDigger() {
     var nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, now.getSeconds() + 10, 0);
     var difference = nextHour - now;
     window.setTimeout(function() {
-        console.log("[Legend mod Express] Dig 20 coins")
+        console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Dig 20 coins")
         callEveryFullHourCoinDigger();
     }, difference);
 
@@ -466,7 +466,7 @@ function checkvideoSkinPlayerflag2(a, b) {
 function checkVideos1(a) {
 
     if (!videoSkinPlayerflag[a]) {
-        console.log("[Legend mod Express] Video skins activated");
+        console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Video skins activated");
         window.videoSkinPlayer[a] = document.createElement("video"); // create a video element
         window.videoSkinPlayer[a].crossOrigin = 'anonymous';
         window.videoSkinPlayer[a].src = a;
@@ -3025,15 +3025,15 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setTweenMaxEffect': function() {
                 if (defaultmapsettings.tweenMaxEffect) initTilt()
-                //defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('[Legend mod Express] Restart needed...');
+                //defaultmapsettings.tweenMaxEffect ? initTilt() : console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Restart needed...');
             },
             'displayPartyBots': function() {
                 setTimeout(function() {
                     if (defaultmapsettings.showPartyBots) {
-                        //console.log('[Legend mod Express] Party bots displayed');
+                        //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Party bots displayed');
                         $(".quick.quick-bots.ogicon-trophy").show();
                     } else {
-                        //console.log('[Legend mod Express] Party bots NOT displayed');
+                        //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Party bots NOT displayed');
                         $(".quick.quick-bots.ogicon-trophy").hide();
                     }
                 }, 50);
@@ -4352,7 +4352,7 @@ var thelegendmodproject = function(t, e, i) {
                     //console.log('findOwnedVanillaSkin failed execution')
                     if (!window.EquippableSkins && !window.findOwnedVanillaSkinOnce) {
                         window.findOwnedVanillaSkinOnce = true;
-                        console.log('[Legend mod Express] findOwnedVanillaSkin: window.EquippableSkins not loaded');
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' findOwnedVanillaSkin: window.EquippableSkins not loaded');
                         setTimeout(function() {
                             legendmod3.findOwnedVanillaSkin();
                         }, 4000);
@@ -4922,13 +4922,13 @@ var thelegendmodproject = function(t, e, i) {
                 this.closeConnection();
                 this.flushData();
                 this.setParty();
-                //console.log('[Legend mod Express] Connecting to ogario socket'),
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to ogario socket'),
                 this.privateMode && this.privateIP ? this.socket = new WebSocket(this.privateIP) : this.socket = new WebSocket(this.publicIP),
                     this.socket['ogarioWS'] = true,
                     this.socket['binaryType'] = 'arraybuffer';
                 var t = this;
                 this.socket['onopen'] = function() {
-                    console.log('[Legend mod Express] Ogario socket open:', legendmod3.publicIP);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', legendmod3.publicIP);
                     var e = t.createView(3);
                     e.setUint8(0, 0);
                     e.setUint16(1, 401, true);
@@ -4940,11 +4940,11 @@ var thelegendmodproject = function(t, e, i) {
                 }
                 this.socket['onclose'] = function(e) {
                     //t.flushData();
-                    console.log('[Legend mod Express] Socket close', e);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket close', e);
                 }
                 this.socket['onerror'] = function(e) {
                     //t.flushData();
-                    console.log('[Legend mod Express] Socket error', e);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket error', e);
                     window.noOgarioSocket = true;
                 };
 
@@ -4977,14 +4977,14 @@ var thelegendmodproject = function(t, e, i) {
                 //var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
                 var room = $("#server-token").val();
                 this.roomc = ogarcopythelb.clanTag;
-                //console.log('[Legend mod Express] Connecting to SLG:', this.room);				
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to SLG:', this.room);				
                 //window.SLGsocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=" + this.room);
                 window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200" + room);
                 window.SLGsocket['binaryType'] = 'arraybuffer';
                 t = this;
                 window.SLGsocket['onopen'] = function() {
                     window.SLG3NumberTries = 0;
-                    console.log('[Legend mod Express] SLG socket open:', room);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket open:', room);
                     //
                     window.SLGsocket['send'](JSON.stringify({
                         //"auth": "JIM2" + customLMID,
@@ -5002,7 +5002,7 @@ var thelegendmodproject = function(t, e, i) {
                     t.handleSLGMessage(e);
                 }
                 window.SLGsocket['onclose'] = function(e) {
-                    console.log('[Legend mod Express] SLG socket close');
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket close');
                     //setTimeout(function() {
                     if (window.SLG3NumberTries < 2) {
                         legendmod3.SLGconnect2(legendmod.ws)
@@ -5010,13 +5010,13 @@ var thelegendmodproject = function(t, e, i) {
                     //}, 1000)					
                 }
                 window.SLGsocket['onerror'] = function(e) {
-                    //console.log('[Legend mod Express] SLG socket error', e);	
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket error', e);	
                     window.SLG3NumberTries++;
-                    //console.log('[Legend mod Express] SLG socket error');
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket error');
                 };
                 window.SLGsocket['closeAndOpen'] = function(e) {
                     window.SLGsocket['onclose'] = function(e) {
-                        console.log('[Legend mod Express] Previous SLG socket closed async');
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous SLG socket closed async');
                     }
                     if (window.SLG3NumberTries < 2) {
                         legendmod3.SLGconnect2(legendmod.ws)
@@ -5767,9 +5767,9 @@ var thelegendmodproject = function(t, e, i) {
                     }
                 }
                 if (window.legendmod.gameMode != ":party" && mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
-                    console.log("[Legend mod Express] VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
+                    console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                     this.setvnr(max);
-                    console.log('[Legend mod Express] Map fixed with LM players. POS:', max);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map fixed with LM players. POS:', max);
                 }
             },
             'updateTeamPlayers': function() {
@@ -7146,7 +7146,7 @@ var thelegendmodproject = function(t, e, i) {
             'hideSmallBots': false,
             'pressedKeys': {},
             'connect': function(t) {
-                console.log('[Legend mod Express] Connecting to game server:', t);
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to game server:', t);
                 var i = this;
                 setTimeout(function() {
                     window.legendmod3.Socket3connect(t);
@@ -7202,7 +7202,7 @@ var thelegendmodproject = function(t, e, i) {
                 }
             },
             'onOpen': function(t) {
-                //console.log('[Legend mod Express] Game server socket open');
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
                 this.time = performance.now();
                 var e = this.createView(5);
                 e.setUint8(0, 254);
@@ -7224,14 +7224,14 @@ var thelegendmodproject = function(t, e, i) {
                 this['handleMessage'](t);
             },
             'onError': function(t) {
-                console.log('[Legend mod Express] Game server socket error');
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket error');
                 this.flushCellsData();
                 if (window.master && window.master['onDisconnect']) {
                     window.master['onDisconnect']();
                 }
             },
             'onClose': function(t) {
-                console.log('[Legend mod Express] Game server socket close');
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
                 this.flushCellsData();
                 if (window.master && window.master['onDisconnect']) {
                     window.master['onDisconnect']();
@@ -7397,7 +7397,7 @@ var thelegendmodproject = function(t, e, i) {
                         if (!window.sendTimeOutTokenBots) {
                             //window.RequestedTokens=1000;
                             //this code is to inform me when a new loop process starts again
-                            console.log('[Legend mod Express] bots started again')
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' bots started again')
                             legendmod.sendTokenForBots();
                             window.tempol = 1;
                         }
@@ -7581,11 +7581,11 @@ var thelegendmodproject = function(t, e, i) {
                 this["sendMessage"](raw_basefont);
             },
             'sendFbToken': function(t) {
-                //                console.log("[Legend mod Express] Facebook token: " + t);
+                //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Facebook token: " + t);
                 this.sendAccessToken(t, 2);
             },
             'sendGplusToken': function(t) {
-                //                console.log("[Legend mod Express] Google Plus token: " + t);
+                //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Google Plus token: " + t);
                 //this.sendAccessToken(t, 3);
                 this.sendAccessToken(t, 4);
             },
@@ -7601,12 +7601,12 @@ var thelegendmodproject = function(t, e, i) {
                 if (window.disableIntegrity != true) { //
                     this.clientVersion = t;
                     this.clientVersionString = e;
-                    console.log('[Legend mod Express] Versions: client:', t, e, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", "v" + window.getLatestconfigVersion, "configId:", window.getLatestID);
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Versions: client:', t, e, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", "v" + window.getLatestconfigVersion, "configId:", window.getLatestID);
                 } //
                 else { //
                     this.clientVersion = 0;
                     this.clientVersionString = e;
-                    console.log('[Legend mod Express] Client version:', t, e); //
+                    console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Client version:', t, e); //
                 } //
             },
             /*
@@ -7627,7 +7627,7 @@ var thelegendmodproject = function(t, e, i) {
                                 default:
                                     i = u;
                             }
-                            return i != u && (i = 0 | Math.imul(n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math.imul(i, s), i ^= u = i >>> 15, console.log('[Legend mod Express] Generated client key:', i),window.generatedClientKey=i, i;
+                            return i != u && (i = 0 | Math.imul(n[c] ^ u, s)), i ^= u = i >>> 13, i = 0 | Math.imul(i, s), i ^= u = i >>> 15, console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Generated client key:', i),window.generatedClientKey=i, i;
                         },
                         'shiftKey': function(t) {
                             //if (window.disableIntegrity!=false){ //
@@ -7685,7 +7685,7 @@ var thelegendmodproject = function(t, e, i) {
                 j = Math.imul(j, suggestedValue) | 0;
                 i = j >>> 15;
                 j = i ^ j;
-                //console.log('[Legend mod Express] Generated client key:', j);
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Generated client key:', j);
                 window.generatedClientKey = j;
                 return j;
 
@@ -7790,7 +7790,7 @@ var thelegendmodproject = function(t, e, i) {
 
                             this.fbOnline.push(user);
                         }
-                        //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                        //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                         break;
                     case 17:
                         window.testobjectsOpcode17 = data;
@@ -7926,7 +7926,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         this.handleLeaderboard();*/
                     case 54:
-                        console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                         window.testobjectsOpcode54 = data;
                         break;
                     case 69:
@@ -7964,7 +7964,7 @@ var thelegendmodproject = function(t, e, i) {
                         break;
                     case 85:
                         window.testobjectsOpcode85 = data;
-                        console.log('[Legend mod Express] Captcha requested');
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Captcha requested');
                         //if (window.master && window.master.recaptchaRequested) {
                         if (window.smartbotslimited && legendmod5.autoResp) { //
                             core.connect(legendmod.ws);
@@ -8045,15 +8045,15 @@ var thelegendmodproject = function(t, e, i) {
                             var artistTrack = window.ret.readUint32();
                             switch (obj) {
                                 case 11:
-                                    //console.log("[Legend mod Express] 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, obj, previousState, artistTrack);
+                                    //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, obj, previousState, artistTrack);
                                     break;
                                 case 62:
-                                    //console.log("[Legend mod Express] 102 Game over");
+                                    //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game over");
                                     LegendModDeath();
                                     //$('#pause-hud').text("PAUSE!");
                                     break;
                                 default:
-                                    console.log("[Legend mod Express] 102 Unknown", obj, previousState);
+                                    console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", obj, previousState);
                                     if (obj == 20 && previousState == 20) {
                                         toastr["error"]('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
                                     }
@@ -8070,29 +8070,29 @@ var thelegendmodproject = function(t, e, i) {
                             }
                             break;
                         case 104:
-                            console.log('[Legend mod Express] Logout forced');
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Logout forced');
                             logout();
                             window.testobjectsOpcode104 = data;
                             break;
                         case 112:
-                            console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                             window.testobjectsOpcode112 = data;
                             break;
                         case 114:
-                            console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                             window.testobjectsOpcode114 = data;
                             break;
                         case 160:
-                            console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                             window.testobjectsOpcode160 = data;
                             break;
                         case 161:
-                            //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
+                            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                             window.testobjectsOpcode161 = data;
                             break;
                         case 128:
-                            console.log('[Legend mod Express] opcode: ', data.getUint8(0));
-                            console.log('[Legend mod Express] client outdated');
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' client outdated');
                             window.testobjectsOpcode128 = data;
                             break;
                         case 176:
@@ -8173,7 +8173,7 @@ var thelegendmodproject = function(t, e, i) {
                             window.testobjectsOpcode241 = data;
                             this.protocolKey = data.getUint32(s, true);
                             //window.testobjectsOpcode241.getUint32(1, true);
-                            //console.log('[Legend mod Express] Received protocol key:', this.protocolKey);
+                            //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received protocol key:', this.protocolKey);
                             window.generatedProtocolKey = this.protocolKey;
                             var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
                             this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
@@ -8216,7 +8216,7 @@ var thelegendmodproject = function(t, e, i) {
                             //2020 jimboy3100
 
                         default:
-                            console.log('[Legend mod Express] Unknown opcode:', data.getUint8(0));
+                            console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Unknown opcode:', data.getUint8(0));
                 }
             },
             'handleSubmessage': function(message) {
@@ -8241,7 +8241,7 @@ var thelegendmodproject = function(t, e, i) {
                         }
                         break;
                     default:
-                        console.log('[Legend mod Express] Unknown sub opcode:', message.readUInt8(0));
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Unknown sub opcode:', message.readUInt8(0));
                 }
             },
             'handleLeaderboard': function() {
@@ -8347,7 +8347,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
                     this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                     this.mapOffsetFixed = true;
-                    //console.log('[Legend mod Express] Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
                 }
             },
             'isInView': function(t, e, size) {
@@ -8385,7 +8385,7 @@ var thelegendmodproject = function(t, e, i) {
                             if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
                                 //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
                                 if (legendflags.includes(LowerCase(y))) {
-                                    //console.log("[Legend mod Express] " + LowerCase(y) + " skin found. Skin registered");
+                                    //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " " + LowerCase(y) + " skin found. Skin registered");
                                     core.registerSkin(y, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(y) + ".png", null);
                                 } else {
                                     window.lastusednameforskin = y;
@@ -10659,7 +10659,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             "proxyMobileData": function(arr = []) {
                 if (!Array.isArray(arr)) {
-                    console.log("[Legend mod Express] ProxyMobileData ERROR: Array data required.");
+                    console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.");
                     return;
                 }
                 if (arr[0] == 8) {
@@ -10832,7 +10832,7 @@ function Recaptcha(curtin, e, n) {
                 legendmod.sendSpawn2(window.tempo2);
             }, window.tempol * 1000);
         }
-        console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
+        console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " requestCaptcha bypass v2, v3 loaded");
         window.sendTimeOutTokenBots = true;
         /*if(window.core) {
 				window.core.recaptchaResponse(_0x196a5a);
@@ -10975,7 +10975,7 @@ window.agarCaptcha = CaptchaRouter()
 						legendmod.sendSpawn2(window.tempo2);
 						}, window.tempol*1000);
 					}
-					console.log("[Legend mod Express] requestCaptcha bypass v2, v3 loaded");
+					console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " requestCaptcha bypass v2, v3 loaded");
 					window.sendTimeOutTokenBots = true;
 			}
 			*/
