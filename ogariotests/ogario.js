@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.208 MEGA TEST
+// v1.209 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2314,7 +2314,7 @@ var thelegendmodproject = function(t, e, i) {
 							ogario.hasOwnProperty(name) && (ogario[name] = defaultSettings[name]), 
 							app[callback]();
                         });
-                    } else $(id + ' .' + e + '-picker').colorpicker({
+                    } else $(id + ' .' + e + '-picker')['colorpicker']({
                         'format': 'hex'
                     }).on('changeColor.colorpicker', function(id) {
                         defaultSettings[e] = id.color.toHex(), 
@@ -2324,13 +2324,13 @@ var thelegendmodproject = function(t, e, i) {
                 'addRgbaColorBox': function(t, e, o) {
                     if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + defaultSettings[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
                         var a = this;
-                        $(t + ' .' + e + '-picker').colorpicker({
+                        $(t + ' .' + e + '-picker')['colorpicker']({
                             'format': 'rgba'
                         }).on('changeColor.colorpicker', function(t) {
                             var s = t.color.toRGB();
                             defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (ogario[e] = defaultSettings[e]), a[o]();
                         });
-                    } else s(t + ' .' + e + '-picker').colorpicker({
+                    } else s(t + ' .' + e + '-picker')['colorpicker']({
                         'format': 'rgba'
                     }).on('changeColor.colorpicker', function(t) {
                         var s = t.color.toRGB();
@@ -2528,8 +2528,7 @@ var thelegendmodproject = function(t, e, i) {
                     this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01);
                     this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground');
                     this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
-                    this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
-                    $(`#music`).append(`<div class="agario-panel facebook-panel"><h5 class="menu-main-color">` + 'Facebook' + `</h5></div>`);
+                    this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');                   
                     this.addInputBox('.facebook-panel', 'FacebookIDs', `e.g. 123456789012345:John K,543210987654321:Jimbo`, `setFBIDs`);
                     for (var e = 'https://legendmod.ml/cursors/cursor_', i = 0; i < 35; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
                     $(document).on('click', '#theme-images .cursor-box a', function(e) {
@@ -3770,7 +3769,8 @@ var thelegendmodproject = function(t, e, i) {
                     $("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + textLanguage.thanks + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' + textLanguage.playlist + "</a></span></div>"),
                     $("#music").append('<div class="agario-panel sounds-panel"><h5 class="menu-main-color">' + textLanguage.sounds + "</h5></div>"),
                     $("#music").append('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">Legend Clan (tag: \u24c2)</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>'),
-                    this.addInputBox(".sounds-panel", "messageSound", "Sound URL", "setMessageSound"),
+                    $('#music').append('<div class="agario-panel facebook-panel"><h5 class="menu-main-color">' + 'Facebook' + '</h5></div>'),
+					this.addInputBox(".sounds-panel", "messageSound", "Sound URL", "setMessageSound"),
                     this.addInputBox(".sounds-panel", "commandSound", "Sound URL", "setCommandSound"),
                     this.addInputBox(".sounds-panel", "virusSoundurl", "Sound URL", "setvirusSound"),
                     $("body").append('<div id="overlays-hud" data-gamemode=":ffa"><div id="stats-hud" class="hud stats-hud-color"></div> <div id="top5-hud" class="hud"><h5 class="hud-main-color">Team<span class="team-top"></span></h5><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' + //<div class="hud-main-color team-top-menu"><a href="#" data-limit="5" class="team-top-limit active">5</a> | <a href="#" data-limit="10" class="team-top-limit">10</a> | <a href="#" data-limit="100" class="team-top-limit">100</a></div><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' +
