@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.185 MEGA TEST
+// v1.186 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7793,7 +7793,7 @@ var thelegendmodproject = function(t, e, i) {
 						this.fbOnline.push(user);
 					}  
                         //console.log('[Legend mod Express] opcode: ', data.getUint8(0));
-                        //break;
+                        break;
                     case 17:
                         window.testobjectsOpcode17 = data;
                         var x = data.getFloat32(s, true);
