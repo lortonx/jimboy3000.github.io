@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.184 MEGA TEST
+// v1.185 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7762,7 +7762,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'handleMessage': function(data) {
 				//this.pingTimer();
-                var i = function() {
+                var encode = function() {
                         for (var e = '';;) {
                             var i = data.getUint8(s++);
                             if (0 == i) break;
@@ -8141,8 +8141,8 @@ var thelegendmodproject = function(t, e, i) {
                         case 179:
                             window.testobjectsOpcode179 = data;
                             y = data.getUint8(s);
-                            window.decodeURIComponent(escape(i()));
-                            y || window.decodeURIComponent(escape(i()));
+                            window.decodeURIComponent(escape(encode()));
+                            y || window.decodeURIComponent(escape(encode()));
                             break;
                         case 180:
                             window.testobjectsOpcode181 = data;
@@ -8153,7 +8153,7 @@ var thelegendmodproject = function(t, e, i) {
                             var ogario1PlayerProfiles = data.getUint16(s, true);
                             s += 2;
                             for (n = 0; n < ogario1PlayerProfiles; n++) {
-                                var ogarcopythelb = window.decodeURIComponent(escape(i()));
+                                var ogarcopythelb = window.decodeURIComponent(escape(encode()));
                                 v = data.getUint32(s, true);
                                 s += 4;
 								this.battleRoyale.rank.push({
