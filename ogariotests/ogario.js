@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.207 MEGA TEST
+// v1.208 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2213,7 +2213,7 @@ var textLanguage = languagetexts[lang];
 
 var thelegendmodproject = function(t, e, i) {
     //here starts ogario
-//    (function(window.ogario) {
+//    (function(ogario) {
         var ogarminimapdrawer;
         var o = null,
             a = null;
@@ -2280,7 +2280,7 @@ var thelegendmodproject = function(t, e, i) {
 								defaultSettings[setup] = storage[setup];
                         }
 							if (ogario.hasOwnProperty(setup)) {
-                            window.ogario[setup] = defaultSettings[setup];
+                            ogario[setup] = defaultSettings[setup];
 							}
 						}
 					}
@@ -2311,14 +2311,14 @@ var thelegendmodproject = function(t, e, i) {
                             'format': 'hex'
                         }).on('changeColor.colorpicker', function(id) {
                             defaultSettings[name] = id.color.toHex(), 
-							ogario.hasOwnProperty(name) && (window.ogario[name] = defaultSettings[name]), 
+							ogario.hasOwnProperty(name) && (ogario[name] = defaultSettings[name]), 
 							app[callback]();
                         });
                     } else $(id + ' .' + e + '-picker').colorpicker({
                         'format': 'hex'
                     }).on('changeColor.colorpicker', function(id) {
                         defaultSettings[e] = id.color.toHex(), 
-						ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]);
+						ogario.hasOwnProperty(e) && (ogario[e] = defaultSettings[e]);
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
@@ -2328,13 +2328,13 @@ var thelegendmodproject = function(t, e, i) {
                             'format': 'rgba'
                         }).on('changeColor.colorpicker', function(t) {
                             var s = t.color.toRGB();
-                            defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]), a[o]();
+                            defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (ogario[e] = defaultSettings[e]), a[o]();
                         });
                     } else s(t + ' .' + e + '-picker').colorpicker({
                         'format': 'rgba'
                     }).on('changeColor.colorpicker', function(t) {
                         var s = t.color.toRGB();
-                        defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (window.ogario[e] = defaultSettings[e]);
+                        defaultSettings[e] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', ogario.hasOwnProperty(e) && (ogario[e] = defaultSettings[e]);
                     });
                 },
                 'addSliderBox': function(t, e, o, a, n, r) {
@@ -2342,11 +2342,11 @@ var thelegendmodproject = function(t, e, i) {
                         var l = this;
                         $('#' + e + '-slider').on('input', function() {
                             var t = parseFloat($(this).val());
-                            $('#' + e + '-value').text(t), defaultSettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t), l[r]();
+                            $('#' + e + '-value').text(t), defaultSettings[e] = t, ogario.hasOwnProperty(e) && (ogario[e] = t), l[r]();
                         });
                     } else $('#' + e + '-slider').on('input', function() {
                         var t = parseFloat($(this).val());
-                        $('#' + e + '-value').text(t), defaultSettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t);
+                        $('#' + e + '-value').text(t), defaultSettings[e] = t, ogario.hasOwnProperty(e) && (ogario[e] = t);
                     });
                 },
                 'addInputBox': function(t, e, i, o) {
@@ -2363,8 +2363,8 @@ var thelegendmodproject = function(t, e, i) {
                     defaultSettings[t] = e,
                         defaultSettings[t + 'Family'] = this.setFontFamily(e),
                         defaultSettings[t + 'Weight'] = this.setFontWeight(e),
-                        ogario.hasOwnProperty(t + 'Family') && (window.ogario[t + 'Family'] = defaultSettings[t + 'Family']),
-                        ogario.hasOwnProperty(t + 'Weight') && (window.ogario[t + 'Weight'] = defaultSettings[t + 'Weight']);
+                        ogario.hasOwnProperty(t + 'Family') && (ogario[t + 'Family'] = defaultSettings[t + 'Family']),
+                        ogario.hasOwnProperty(t + 'Weight') && (ogario[t + 'Weight'] = defaultSettings[t + 'Weight']);
                 },
                 'addFontBox': function(t, e, i) {
                     $(t).append('<div class=\"font-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>');
@@ -2561,7 +2561,7 @@ var thelegendmodproject = function(t, e, i) {
                         defaultSettings[t] = t;
                         t = e[t];
                         for (var o in t) t.hasOwnProperty(o) && defaultSettings.hasOwnProperty(o) &&
-                            (defaultSettings[o] = t[o], ogario.hasOwnProperty(o) && (window.ogario[o] = defaultSettings[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', defaultSettings[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(defaultSettings[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(defaultSettings[o]));
+                            (defaultSettings[o] = t[o], ogario.hasOwnProperty(o) && (ogario[o] = defaultSettings[o]), $('#theme .' + o + '-picker') && $('#theme .' + o + '-picker').colorpicker('setValue', defaultSettings[o]), $('#' + o + '-slider') && $('#' + o + '-slider').val(defaultSettings[o]).change(), ($('input[type=text]#' + o) || $('select#' + o)) && $('#' + o).val(defaultSettings[o]));
                     }
                 },
                 'changeThemePreset': function(t) {
@@ -3390,7 +3390,7 @@ var thelegendmodproject = function(t, e, i) {
 							defaultmapsettings[option] = settings[option];
 						}
 						if (ogario.hasOwnProperty(option)) {
-							window.ogario[option] = defaultmapsettings[option];							
+							ogario[option] = defaultmapsettings[option];							
 						}
 					}
 				}				
@@ -3428,7 +3428,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setSettings': function(t, e) {
                 if (defaultmapsettings.hasOwnProperty(t) && null !== e) {
-                    switch (defaultmapsettings[t] = e, ogario.hasOwnProperty(t) && (window.ogario[t] = e), t) {
+                    switch (defaultmapsettings[t] = e, ogario.hasOwnProperty(t) && (ogario[t] = e), t) {
                         case 'autoResp':
                             this.setAutoResp();
                             break;
@@ -3640,11 +3640,11 @@ var thelegendmodproject = function(t, e, i) {
                 var l = this;
                 r ? $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t), l[r](),
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, ogario.hasOwnProperty(e) && (ogario[e] = t), l[r](),
                         l.saveSettings(defaultmapsettings, 'ogarioSettings');
                 }) : $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
-                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, ogario.hasOwnProperty(e) && (window.ogario[e] = t),
+                    $('#' + e + '-value').text(t), defaultmapsettings[e] = t, ogario.hasOwnProperty(e) && (ogario[e] = t),
                         l.saveSettings(defaultmapsettings, 'ogarioSettings');
                 });
             },
@@ -10615,7 +10615,9 @@ var thelegendmodproject = function(t, e, i) {
                 changeHistory(`/${window.location.hash}`);
             };
         }
-        //i = LM;
+		
+        ogario = LM; 
+		
         LMbuffer = t('buffer')['Buffer'];
         LZ4 = t('lz4');
         if ('/legendmod' === window.location.pathname) {
@@ -10762,7 +10764,7 @@ var thelegendmodproject = function(t, e, i) {
         window.master.init();
         ogarhusettings();
         setGUIEvents();
-//    })(window.ogario);
+//    })(ogario);
 }
 
 function setGUIEvents() {
