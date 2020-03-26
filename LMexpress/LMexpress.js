@@ -5279,6 +5279,7 @@ function doGl() {
 
 }
 
+
 function doFB() {
 
     FB.api('/me', {
@@ -5311,6 +5312,10 @@ function doFB() {
         return userfirstname, userlastname, usergender, userid;
         //	},250);
     });
+
+	FB.api('/me/friends', function(response){
+		window.master.fbUsers = response.data;
+	}, {scope: 'user_friends'});	
 }
 
 function doGl2() {
