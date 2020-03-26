@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.202 MEGA TEST
+// v1.203 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2211,7 +2211,7 @@ if (userLanguage && languagetexts.hasOwnProperty(userLanguage)) {
 }
 var textLanguage = languagetexts[lang];
 
-var thelegendmodproject = function(t, e, i) {
+var thelegendmodproject = function(t, e, ogarProject) {
     //here starts ogario
     (function(ogarProject) {
         var ogarminimapdrawer;
