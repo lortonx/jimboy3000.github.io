@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.196 MEGA TEST
+// v1.197 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2275,7 +2275,7 @@ var thelegendmodproject = function(t, e, i) {
                     this[t] || (this[t] = $("<style type=\'text/css\'>").appendTo('head')), this[t].html(e);
                 },
                 'addPresetBox': function(t, e, i, o, a) {
-                    for (var n in $(t).append('<div class=\"preset-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>'), i) i.hasOwnProperty(n) && $('#' + e).append('<option value=\"' + n + '\">' + i[n]['name'] + '</option>');
+                    for (var n in $(t).append('<div class=\"preset-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>'), i) i.hasOwnProperty(n) && $('#' + e).append('<option value=\"' + n + '\">' + i[n]['name'] + '</option>');
                     $('#' + e).val(defaultSettings[o]);
                     var r = this;
                     $('#' + e).on('change', function() {
@@ -2284,7 +2284,7 @@ var thelegendmodproject = function(t, e, i) {
                     });
                 },
                 'addColorBox': function(t, e, o) {
-                    if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + defaultSettings[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
+                    if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + defaultSettings[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
                         var a = this;
                         $(t + ' .' + e + '-picker')['colorpicker']({
                             'format': 'hex'
@@ -2298,7 +2298,7 @@ var thelegendmodproject = function(t, e, i) {
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
-                    if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + defaultSettings[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
+                    if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + defaultSettings[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
                         var a = this;
                         $(t + ' .' + e + '-picker').colorpicker({
                             'format': 'rgba'
@@ -2314,7 +2314,7 @@ var thelegendmodproject = function(t, e, i) {
                     });
                 },
                 'addSliderBox': function(t, e, o, a, n, r) {
-                    if ($(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + h[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + defaultSettings[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + defaultSettings[e] + '\"></div>'), r) {
+                    if ($(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + defaultSettings[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + defaultSettings[e] + '\"></div>'), r) {
                         var l = this;
                         $('#' + e + '-slider').on('input', function() {
                             var t = parseFloat($(this).val());
@@ -2326,7 +2326,7 @@ var thelegendmodproject = function(t, e, i) {
                     });
                 },
                 'addInputBox': function(t, e, i, o) {
-                    $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + h[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + defaultSettings[e] + '\" /></div>');
+                    $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + defaultSettings[e] + '\" /></div>');
                     var a = this;
                     $('#' + e).on('input', function() {
                         defaultSettings[e] = this.value, a[o]();
@@ -2343,7 +2343,7 @@ var thelegendmodproject = function(t, e, i) {
                         i.hasOwnProperty(t + 'Weight') && (i[t + 'Weight'] = defaultSettings[t + 'Weight']);
                 },
                 'addFontBox': function(t, e, i) {
-                    $(t).append('<div class=\"font-box\"><span class=\"title-box\">' + h[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>');
+                    $(t).append('<div class=\"font-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>');
                     $('#' + e).append('<option value=\"ubuntu\">Ubuntu</option><option value=\"ubuntu-bold\">Ubuntu Bold</option>');
                     $('#' + e).append('<option value=\"roboto\">Roboto</option><option value=\"roboto-bold\">Roboto Bold</option>');
                     $('#' + e).append('<option value=\"oswald\">Oswald</option><option value=\"oswald-bold\">Oswald Bold</option>');
@@ -3304,7 +3304,7 @@ var thelegendmodproject = function(t, e, i) {
                 $('#messages').empty(), t && (toastr['clear'](), defaultmapsettings.showChatBox && ($('#chat-box .message').remove(), this.chatHistory.length = 0));
             },
             'displayChatInfo': function(t, e) {
-                t ? toastr.info(h[e + 'A']) : toastr.error(h[e + 'B']);
+                t ? toastr.info(textLanguage[e + 'A']) : toastr.error(textLanguage[e + 'B']);
             },
             'setDisableChat': function() {
                 defaultmapsettings.hideChat = defaultmapsettings.disableChat;
@@ -3578,18 +3578,18 @@ var thelegendmodproject = function(t, e, i) {
             },
             'addOptions': function(t, e) {
                 if (t) {
-                    $('#og-options').append('<div class=\"options-box ' + e + '\"><h5 class=\"menu-main-color\">' + h[e] + '</h5></div>');
+                    $('#og-options').append('<div class=\"options-box ' + e + '\"><h5 class=\"menu-main-color\">' + textLanguage[e] + '</h5></div>');
                     for (var i = 0; i < t.length; i++) {
                         var o = t[i];
                         if (defaultmapsettings.hasOwnProperty(o)) {
-                            $('.' + e).append('<label>' + h[o] + ' <input type=\"checkbox\" class=\"js-switch\" id=\"' + o + '\"></label>');
+                            $('.' + e).append('<label>' + textLanguage[o] + ' <input type=\"checkbox\" class=\"js-switch\" id=\"' + o + '\"></label>');
                             $('#' + o).prop('checked', defaultmapsettings[o]);
                         }
                     }
                 }
             },
             'addInputBox': function(t, e, i, o) {
-                $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + h[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + defaultmapsettings[e] + '\" /></div>');
+                $(t).append('<div class=\"input-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><input id=\"' + e + '\" class=\"form-control\" placeholder=\"' + i + '\" value=\"' + defaultmapsettings[e] + '\" /></div>');
                 var a = this;
                 $('#' + e).on('input', function() {
                     defaultmapsettings[e] = this.value, a[o](),
@@ -3597,7 +3597,7 @@ var thelegendmodproject = function(t, e, i) {
                 });
             },
             'addSliderBox': function(t, e, o, a, n, r) {
-                $(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + h[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + defaultmapsettings[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + defaultmapsettings[e] + '\"></div>');
+                $(t).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[e] + ': </span><span id=\"' + e + '-value\" class=\"value\">' + defaultmapsettings[e] + '</span></div><input id=\"' + e + '-slider\" type=\"range\" min=\"' + o + '\" max=\"' + a + '\" step=\"' + n + '\" value=\"' + defaultmapsettings[e] + '\"></div>');
                 var l = this;
                 r ? $('#' + e + '-slider').on('input', function() {
                     var t = parseFloat($(this).val());
@@ -3611,7 +3611,7 @@ var thelegendmodproject = function(t, e, i) {
             },
             'setLang': function() {
                 if ('pl' === lang && window.i18n_dict && window.i18n_dict.en)
-                    for (var t in window.i18n_dict.en) window.i18n_dict.en.hasOwnProperty(t) && textLanguage.hasOwnProperty(t) && (window.i18n_dict.en[t] = h[t]);
+                    for (var t in window.i18n_dict.en) window.i18n_dict.en.hasOwnProperty(t) && textLanguage.hasOwnProperty(t) && (window.i18n_dict.en[t] = textLanguage[t]);
             },
             'setMenu': function() {
                 var t;
