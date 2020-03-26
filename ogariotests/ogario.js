@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.201 MEGA TEST
+// v1.202 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3377,8 +3377,8 @@ var thelegendmodproject = function(t, e, i) {
 						if (settings && settings.hasOwnProperty(option)) {
 							defaultmapsettings[option] = settings[option];
 						}
-						if (ogario.hasOwnProperty(option)) {
-							ogario[option] = defaultmapsettings[option];							
+						if (ogarProject.hasOwnProperty(option)) {
+							ogarProject[option] = defaultmapsettings[option];							
 						}
 					}
 				}				
