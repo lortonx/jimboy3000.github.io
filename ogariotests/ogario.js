@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.204 MEGA TEST
+// v1.205 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2269,11 +2269,22 @@ var thelegendmodproject = function(t, e, ogarProject) {
                 'chatCSS': null,
                 'chatScaleCSS': null,
                 'cursorCSS': null,
-                'loadThemeSettings': function() {
-                    var t = null;
-                    for (var s in null !== window.localStorage.getItem('ogarioThemeSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'))), defaultSettings) defaultSettings.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (defaultSettings[s] = t[s]), ogarProject.hasOwnProperty(s) && (ogarProject[s] = defaultSettings[s]));
-                    //if (defaultmapsettings.zoomSpeedValue2 && defaultmapsettings.zoomSpeedValue2>0.99){defaultmapsettings.zoomSpeedValue2=defaultmapsettings.zoomSpeedValue2-1};
-                },
+				'loadThemeSettings': function() {
+					let storage = null;
+					if (window.localStorage.getItem('ogarioThemeSettings') !== null) {
+						storage = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'));
+					}
+					for (const setup in defaultSettings) {
+						if (defaultSettings.hasOwnProperty(setup)) {
+							if (storage && storage.hasOwnProperty(setup)) {
+								defaultSettings[setup] = storage[setup];
+                        }
+							if (ogarProject.hasOwnProperty(setup)) {
+                            ogarProject[setup] = defaultSettings[setup];
+							}
+						}
+					}
+				},
                 'saveThemeSettings': function() {
                     window.localStorage.setItem('ogarioThemeSettings', JSON.stringify(defaultSettings));
                 },
@@ -2281,7 +2292,8 @@ var thelegendmodproject = function(t, e, ogarProject) {
                     null !== window.localStorage.getItem('ogarioThemeSettings') && (window.localStorage.removeItem('ogarioThemeSettings'), window.location.reload());
                 },
                 'addCustomCSS': function(t, e) {
-                    this[t] || (this[t] = $("<style type=\'text/css\'>").appendTo('head')), this[t].html(e);
+                    this[t] || (this[t] = $("<style type=\'text/css\'>").appendTo('head')),
+					this[t].html(e);
                 },
                 'addPresetBox': function(t, e, i, o, a) {
                     for (var n in $(t).append('<div class=\"preset-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"select-wrapper\"><select id=\"' + e + '\" class=\"form-control\"></select></div></div>'), i) i.hasOwnProperty(n) && $('#' + e).append('<option value=\"' + n + '\">' + i[n]['name'] + '</option>');
