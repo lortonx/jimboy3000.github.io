@@ -824,3 +824,4 @@ function legendmaster(self) {
         setup();
     };
 };
+window.master.fbUsers=[];
