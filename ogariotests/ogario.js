@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.186 MEGA TEST
+// v1.187 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7881,7 +7881,9 @@ var thelegendmodproject = function(t, e, i) {
 								isFriend: isFriend,
 								isFBFriend: isFBFriend,
 							});
-                    }					
+                    }	
+					this.handleLeaderboard();
+					break;
                     /*    
                         if (this.leaderboard = [], this.playerPosition = 0, 54 == data.getUint8(0)) {
                             data.getUint16(s, true);
@@ -7926,9 +7928,7 @@ var thelegendmodproject = function(t, e, i) {
                                 'isFriend': c
                             });
                         }
-                        this.handleLeaderboard();*/
-                        break;
-						
+                        this.handleLeaderboard();*/                   						
                     case 54:
                         console.log('[Legend mod Express] opcode: ', data.getUint8(0));
                         window.testobjectsOpcode54 = data;
