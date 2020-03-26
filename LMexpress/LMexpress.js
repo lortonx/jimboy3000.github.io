@@ -5746,7 +5746,7 @@ function getSNEZServers(ifcalled) {
 
         },
         onOpen: function() {
-            console.log("[Legend mod Express] Snez socket open");
+            console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Snez socket open");
             //       app.state = "Connected.";
         },
 
@@ -6852,7 +6852,7 @@ function initializeLM(modVersion) {
 				}														
 			}				
             else if (legendflags.includes(LowerCase($("#nick").val()))) {
-                //console.log("[Legend mod Express] " + LowerCase($("#nick").val()) + " skin found. Skin registered");
+                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " " + LowerCase($("#nick").val()) + " skin found. Skin registered");
                 core.registerSkin($("#nick").val(), null, "https://legendmod.ml/agario/live/flags/" + LowerCase($("#nick").val()) + ".png", null);
             }
         }, 1000);
@@ -7433,7 +7433,7 @@ function joinSERVERfindinfo() {
 
             setTimeout(function() {
                 if ($('.logEntry').html() != undefined && $('.logEntry').html() != "") {
-                    console.log("[Legend mod Express] Searching Snez servers..");
+                    console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Searching Snez servers..");
                     for (var i = 0; i < $('.logEntry').length; i++) {
                         if ($('.logEntry>#playerinfo').eq(i).html() == $('#nick').val()) {
                             $('.logEntry').eq(i).remove();
@@ -7819,7 +7819,7 @@ function Socket3enabler(srv) {
 		Socket3.send(JSON.stringify({ "auth": "JIM" + legendmod3.playerID, "password": "legendmod"}));
 		//Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));	
 		Socket3.send(JSON.stringify({ "joinHub": $("#server-token").val()+"3"}));			
-		console.log('[Legend mod Express] Socket 3 open:',room);
+		console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 open:',room);
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
@@ -7831,10 +7831,10 @@ function Socket3enabler(srv) {
     }
     Socket3.onerror = function(e) {
 		window.socket3NumberTries++;
-        //console.log('[Legend mod Express] Socket 3 error');		
+        //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 error');		
     }
     Socket3.onclose = function(e) {
-        console.log('[Legend mod Express] Socket 3 close');
+        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 close');
 		//setTimeout(function() {
 			window.socket3NumberTries++;
 		if (window.socket3NumberTries < 2){	
@@ -7843,7 +7843,7 @@ function Socket3enabler(srv) {
     }
 	Socket3.closeAndOpen = function(e) {
 		Socket3.onclose = function(e) {
-			 console.log('[Legend mod Express] Previous Socket 3 closed async');
+			 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous Socket 3 closed async');
 		}
 		
                 if (window.Socket3) {
