@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.188 MEGA TEST
+// v1.189 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7866,14 +7866,12 @@ var thelegendmodproject = function(t, e, i) {
                                 return element.id == id;
                             });
                             friend != undefined ? isFBFriend = friend.fbId : isFBFriend = false;
-							console.log('1')
                             this.leaderboard.push({
                                 nick: nick,
                                 id: id,
                                 isFriend: isFriend,
                                 isFBFriend: isFBFriend
                             });
-							console.log('2')
                         }
                         this.handleLeaderboard();
                         break;
