@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.191 MEGA TEST
+// v1.192 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7761,29 +7761,29 @@ var thelegendmodproject = function(t, e, i) {
             'handleMessage': function(data) {
                 //this.pingTimer();
                 var encode = function() {
-                        for (var e = '';;) {
+                        for (var text = '';;) {
                             var i = data.getUint8(s++);
                             if (0 == i) break;
-                            e += String.fromCharCode(i);
+                            text += String.fromCharCode(i);
                         }
-                        return e;
-                    },
-                    s = 0,
-                    opcode = data.getUint8(s++);
+                        return text;
+                    };
+                var s = 0;
+                var opcode = data.getUint8(s++);
                 switch (54 == opcode && (opcode = 53), opcode) {
 
 
 
 
-                    case 5: //Yahnych
+                    case 5://Yahnych
                         window.testobjectsOpcode5 = data;
                         this.fbOnline = [];
 
-                        for (; offset < data.byteLength;) {
+                        for (; s < data.byteLength;) {
                             let user = {};
 
-                            user.id = data.getUint32(offset, true);
-                            offset += 4;
+                            user.id = data.getUint32(s, true);
+                            s += 4;
                             user.fbId = window.decodeURIComponent(window.escape(encode()));
 
                             legendmod3.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
