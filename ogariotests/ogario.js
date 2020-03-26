@@ -1,14 +1,14 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.195 MEGA TEST
+// v1.196 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
 var RECAPTCHA_V2_KEY = "6LfjUBcUAAAAAF6y2yIZHgHIOO5Y3cU5osS2gbMl";
 var RECAPTCHA_V3_KEY = "6LcEt74UAAAAAIc_T6dWpsRufGCvvau5Fd7_G1tY";
 
-var consoleMsg = "[Legend mod Express] ";
+var consoleMsgLM = "[Legend mod Express] ";
 
 
 function changeregion() {
