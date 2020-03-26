@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.200 MEGA TEST
+// v1.201 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2292,18 +2292,21 @@ var thelegendmodproject = function(t, e, i) {
                         defaultSettings[o] = t, r[a](t);
                     });
                 },
-                'addColorBox': function(t, e, o) {
-                    if ($(t).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[e] + '</span><div class=\"input-group ' + e + '-picker\"><input type=\"text\" value=\"' + defaultSettings[e] + '\" id=\"' + e + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), o) {
-                        var a = this;
-                        $(t + ' .' + e + '-picker')['colorpicker']({
+                'addColorBox': function(id, name, callback) {
+                    if ($(id).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"input-group ' + name + '-picker\"><input type=\"text\" value=\"' + defaultSettings[name] + '\" id=\"' + name + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), callback) {
+                        var app = this;
+                        $(id + ' .' + name + '-picker')['colorpicker']({
                             'format': 'hex'
-                        }).on('changeColor.colorpicker', function(t) {
-                            defaultSettings[e] = t.color.toHex(), ogarProject.hasOwnProperty(e) && (ogarProject[e] = defaultSettings[e]), a[o]();
+                        }).on('changeColor.colorpicker', function(id) {
+                            defaultSettings[name] = id.color.toHex(), 
+							ogarProject.hasOwnProperty(name) && (ogarProject[name] = defaultSettings[name]), 
+							app[callback]();
                         });
-                    } else $(t + ' .' + e + '-picker').colorpicker({
+                    } else $(id + ' .' + e + '-picker').colorpicker({
                         'format': 'hex'
-                    }).on('changeColor.colorpicker', function(t) {
-                        defaultSettings[e] = t.color.toHex(), ogarProject.hasOwnProperty(e) && (ogarProject[e] = defaultSettings[e]);
+                    }).on('changeColor.colorpicker', function(id) {
+                        defaultSettings[e] = id.color.toHex(), 
+						ogarProject.hasOwnProperty(e) && (ogarProject[e] = defaultSettings[e]);
                     });
                 },
                 'addRgbaColorBox': function(t, e, o) {
@@ -3365,9 +3368,20 @@ var thelegendmodproject = function(t, e, i) {
                 //return /^https?:\/\/(i|s))\.(?:imgur|hizliresim|put)\.(com|re)\/\w{6,8}\.(?:jpg|jpeg|png)\??\d*$/i .test(t) ? t.replace('http:', 'https:') : '';
             },
             'loadSettings': function() {
-                var t = null;
-                for (var s in null !== window.localStorage.getItem('ogarioSettings') && (t = JSON.parse(window.localStorage.getItem('ogarioSettings'))), defaultmapsettings) defaultmapsettings.hasOwnProperty(s) && (t && t.hasOwnProperty(s) && (defaultmapsettings[s] = t[s]), ogarProject.hasOwnProperty(s) && (ogarProject[s] = defaultmapsettings[s]));
-
+				let settings = null;
+				if (window.localStorage.getItem('ogarioSettings') !== null) {
+					settings = JSON.parse(window.localStorage.getItem('ogarioSettings'));
+				}
+				for (const option in defaultmapsettings) {
+					if (defaultmapsettings.hasOwnProperty(option)) {
+						if (settings && settings.hasOwnProperty(option)) {
+							defaultmapsettings[option] = settings[option];
+						}
+						if (ogario.hasOwnProperty(option)) {
+							ogario[option] = defaultmapsettings[option];							
+						}
+					}
+				}				
             },
             'saveSettings': function(t, i) {
                 window.localStorage.setItem(i, JSON.stringify(t));
