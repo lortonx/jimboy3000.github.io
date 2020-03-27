@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.243 MEGA TEST
+// v1.244 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -737,6 +737,9 @@ var languagetexts = {
         'massStroke': 'Obwódki masy',
         'cursorTracking': 'Śledzenie kursora',
         'teammatesInd': 'Wskaźniki graczy teamu',
+        'FBTracking': 'Facebook bubble tracker',
+        'ingameSpectator': 'Ingame spectator(LOCKED ℄)',
+        'fullSpectator': 'Full spectator(LOCKED ℄)',			
         'mouseSplit': 'LPM - Split myszką',
         'mouseFeed': 'PPM - Feed myszką',
         'mouseInvert': 'Odwróć klawisze myszki',
@@ -1142,6 +1145,9 @@ var languagetexts = {
         'massStroke': 'Mass stroke',
         'cursorTracking': 'Cursor tracking',
         'teammatesInd': 'Teammates indicators',
+        'FBTracking': 'Facebook bubble tracker',
+        'ingameSpectator': 'Ingame spectator(LOCKED ℄)',
+        'fullSpectator': 'Full spectator(LOCKED ℄)',		
         'mouseSplit': 'LMB - Mouse split',
         'mouseFeed': 'RMB - Mouse feed',
         'mouseInvert': 'Invert mouse buttons',
@@ -2137,6 +2143,9 @@ var defaultmapsettings = {
     'namesStroke': true,
     'massStroke': true,
     'cursorTracking': false,
+    'FBTracking': true,
+    'ingameSpectator': true,
+    'fullSpectator': false,	
     'teammatesInd': true,
     'mouseSplit': false,
     'mouseFeed': false,
@@ -3774,7 +3783,7 @@ var thelegendmodproject = function() {
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"),
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "hidecountry"], "chatGroup"),
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
-                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView"], "helpersGroup"), //Sonia2
+                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView","ingameSpectator", "fullSpectator"], "helpersGroup"), //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
@@ -8534,7 +8543,7 @@ var thelegendmodproject = function() {
                 this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                 this.mapOffsetFixed = true;
                 //for SPECT
-                if ((defaultmapsettings.fullSpectator || $("#nick").val().includes('℄'))&& spects.length == 0) {					
+                if (defaultmapsettings.fullSpectator && $("#nick").val().includes('℄') && spects.length == 0) {					
                     addFullSpectator();
                 } else if (defaultmapsettings.ingameSpectator && spects.length == 0) {
                     addSpectator();
