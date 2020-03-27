@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.083 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.084 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "83"; // the version 1.1-> 1.11
+var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2946,7 +2946,7 @@ function universalchat() {
         //my.log("cmd="+ cmd.name);
         switch (cmd.name) {
             case "add":
-				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName)){					
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName) || cmd.playerName.includes('L.M')){					
 				}				             
 				else{
 					if (!cmd.playerName) {
@@ -2979,15 +2979,22 @@ function universalchat() {
                 my.resetMinimap();
                 break;
             case "chat":
-                //console.log(cmd);
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName) || cmd.playerName.includes('L.M')){					
+				}			
+                else{
+				//console.log(cmd);
                 if (!cmd.playerName) {
                     cmd.playerName = "An unnamed cell";
                 }
                 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
                 my.log("" + cmd.playerName + ": " + cmd.message);
                 my.ogarChatAdd(cmd.playerName, cmd.message);
+				}
                 break;
             case "command":
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName) || cmd.playerName.includes('L.M')){					
+				}	
+				else{
                 //console.log(cmd);
                 if (!cmd.playerName) {
                     cmd.playerName = "An unnamed cell";
@@ -2995,6 +3002,7 @@ function universalchat() {
                 //                my.log("chat:"+ cmd.playerName +":"+ cmd.message);
                 my.log("@" + cmd.playerName + ": " + cmd.message);
                 my.ogarChatAdd(cmd.playerName, cmd.message);
+				}
                 break;
             case "ls":
                 console.log("Unknown command ls: " + cmd.message);
