@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.224 MEGA TEST
+// v1.225 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8644,7 +8644,7 @@ var thelegendmodproject = function() {
 					const isVirus = flags & 1;
 					const isFood = extendedFlags & 1;
 					const isFriend = extendedFlags & 2;
-					const invisible = this.staticX!=null?this.isInView(x, y):false;
+					//const invisible = this.staticX!=null?this.isInView(x, y):false;
 					//id = this.newID(id),
 					//x = this.getX(x),
 					//y = this.getY(y);						
