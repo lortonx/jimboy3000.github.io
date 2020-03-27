@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.218 MEGA TEST
+// v1.220 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8424,8 +8424,10 @@ var thelegendmodproject = function() {
             this.ghostCellsStep = 0;
             this.isSpectateEnabled = false;
             this.isFreeSpectate = false;
-            window.spects.forEach((spect)=>{spect.closeConnection()})
-            window.spects = [];				
+			if (window.spects){
+				window.spects.forEach((spect)=>{spect.closeConnection()})
+				window.spects = [];			
+			}
             },
             'setMapOffset': function(left, top, right, bottom) {
                 //if (right - left > 14000 && bottom - top > 14000) {
