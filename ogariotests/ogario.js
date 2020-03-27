@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.222 MEGA TEST
+// v1.223 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2797,6 +2797,7 @@ var thelegendmodproject = function() {
             'showQuest': false,
             'showSplitInd': false,
             'pause': false,
+			'spectatorFollow': false,			
             'targetID': 0,
             'targetStatus': 0,
             'targetNick': '',
@@ -7130,6 +7131,8 @@ var thelegendmodproject = function() {
                     }
                 }
             },
+			'isFreeSpectate':false,
+			'isSpectateEnabled':false,			
             'ws': null,
             'socket': null,
             'protocolKey': null,
@@ -7372,9 +7375,11 @@ var thelegendmodproject = function() {
                 }
             },
             'sendSpectate': function() {
+				this.isSpectateEnabled = true;
                 this.sendAction(1);
             },
             'sendFreeSpectate': function() {
+				this.isFreeSpectate = !this.isFreeSpectate;
                 this.sendAction(18);
             },
             'sendEject': function() {
@@ -8440,7 +8445,7 @@ var thelegendmodproject = function() {
                 this.viruses = [];
 
 			//for SPECT
-            this.ghostCellsStep = 0;
+            //this.ghostCellsStep = 0;
             this.isSpectateEnabled = false;
             this.isFreeSpectate = false;
 			if (window.spects){
