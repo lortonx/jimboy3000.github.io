@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.212 MEGA TEST
+// v1.213 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -10619,7 +10619,9 @@ var thelegendmodproject = function(t, e, i) {
         ogario = LM; 
 		
         LMbuffer = t('buffer')['Buffer'];
-        LZ4 = t('lz4');
+		window.LMbuffer=LMbuffer;
+        LZ4 = t('lz4'); //buffer 3
+		window.LZ4=LZ4; //LZ4 18
         if ('/legendmod' === window.location.pathname) {
             ogarjoiner('/' + window.location.hash);
         }
