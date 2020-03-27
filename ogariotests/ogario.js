@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.236 MEGA TEST
+// v1.237 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8841,7 +8841,10 @@ var thelegendmodproject = function() {
                     var t = 0;
                     for (; t < this.cells.length; t++) {
                         var e = this.cells[t];
-                        if (!e.isVirus) {
+                        if (e.isVirus || e.spectator>0) {
+							continue;
+						}
+						//else{
                             //console.log(i); i for food is 13
                             var i = ~~(e.size * e.size / 100);
                             if (i != 13) {
@@ -8857,7 +8860,7 @@ var thelegendmodproject = function() {
                                     this.cacheCells(e.x, e.y, e.size, o, a);
                                 }
                             }
-                        }
+                        //}
                     }
                 }
             },
