@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.229 MEGA TEST
+// v1.230 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4769,6 +4769,30 @@ var thelegendmodproject = function() {
                         this.miniMapCtx.stroke();
 
                     }
+					//
+            if (LM.arrowFB[0].visible) {//Yahnych
+                this.miniMapCtx.beginPath();
+                this.miniMapCtx.arc((LM.arrowFB[0].x  + resizeoffX) * newSize, (LM.arrowFB[0].y + resizeoffY) * newSize, defaultSettings.miniMapMyCellSize, 0, this.pi2, false);
+                this.miniMapCtx.closePath();
+                    this.miniMapCtx.lineWidth = defaultSettings.miniMapMyCellStrokeSize;
+                    this.miniMapCtx.strokeStyle = 'white';
+                    this.miniMapCtx.stroke();
+                this.miniMapCtx.fillStyle = 'blue';
+                this.miniMapCtx.fill();      
+              //if (LM.arrowFB[0].nick.length > 0) {
+                  this.miniMapCtx.font = `${defaultSettings.miniMapNickFontWeight} ${defaultSettings.miniMapNickSize}px ${defaultSettings.miniMapNickFontFamily}`;
+                  this.miniMapCtx.textAlign = `center`;
+                  this.miniMapCtx.textBaseline = "bottom";
+                  if (defaultSettings.miniMapNickStrokeSize > 0) {
+                      this.miniMapCtx.lineWidth = defaultSettings.miniMapNickStrokeSize;
+                      this.miniMapCtx.strokeStyle = defaultSettings.miniMapNickStrokeColor;
+                      this.miniMapCtx.strokeText('🔹' + LM.arrowFB[0].nick + '🔹', (LM.arrowFB[0].x+ resizeoffX) * newSize, (LM.arrowFB[0].y + resizeoffY) * newSize - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
+                    }
+                    this.miniMapCtx.fillStyle = defaultSettings.miniMapNickColor;               
+                    this.miniMapCtx.fillText('🔹' + LM.arrowFB[0].nick + '🔹', (LM.arrowFB[0].x+ resizeoffX) * newSize, (LM.arrowFB[0].y + resizeoffY) * newSize - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
+                //}
+                }
+//				
                     if (this.miniMapCtx.beginPath(),
                         this.miniMapCtx.arc((ogario.playerX + r) * n, (ogario.playerY + l) * n,
                             defaultSettings.miniMapMyCellSize, 0, this.pi2, false),
@@ -6832,8 +6856,8 @@ var thelegendmodproject = function() {
 						return;
 					}
 					// check this
-					//if (this.spectator>0 && this.isInV()||this.invisible==true) {
-					if (this.spectator>0 && this.invisible==true) {
+					if (this.spectator>0 && this.isInV()||this.invisible==true) {
+					//if (this.spectator>0 && this.invisible==true) {
 						return;
 					}
 					//					
@@ -8192,10 +8216,43 @@ var thelegendmodproject = function() {
                         console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                         window.testobjectsOpcode114 = data;
                         break;
-                    case 160:
-                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
-                        window.testobjectsOpcode160 = data;
-                        break;
+					case 160://Yahnych
+						console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
+                        window.testobjectsOpcode160 = data;				
+                    //this.arrowFB = [];
+                    let num =0
+                    let friendX = 0,
+                        friendY = 0,
+                        friendNick = null;
+                    for (; offset < data.byteLength;) {
+                      num++
+                                friendX = data.getUint16(offset, true);
+                      if (friendX > 32250) {
+                        friendX  -= 65500 ;
+                      }
+                                offset += 2;
+                                friendY = data.getUint16(offset, true);
+                      if (friendY > 32250) {
+                        friendY  -= 65500 ;
+                      }
+                                offset += 2;
+                    if (offset < data.byteLength) {
+                                friendNick = window.decodeURIComponent(window.escape(encode()));
+                    } else {
+                                friendNick = "";
+                    }
+                            //this.arrowFB.push({
+                            //    nick: friendNick,
+                            //    x: friendX,
+                            //    y: friendY
+                            //});   
+                      console.log(num)
+                      this.arrowFB[0].visible = true;
+                      this.arrowFB[0].x = friendX;
+                      this.arrowFB[0].y = friendY;
+                      this.arrowFB[0].nick = friendNick!=""?friendNick:this.arrowFB[0].nick;
+                }
+                        break;						
                     case 161:
                         //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                         window.testobjectsOpcode161 = data;
@@ -9075,6 +9132,9 @@ var thelegendmodproject = function() {
                         if (defaultmapsettings.cursorTracking) {
                             this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
                         }
+                if (defaultmapsettings.FBTracking && LM.arrowFB[0].visible) {
+                    this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
+                }						
                     }
 
                     this.drawGhostCells();
@@ -9150,6 +9210,92 @@ var thelegendmodproject = function() {
                     }
                     //this.ctx.finish2D();
                 },
+        drawFBTracking(ctx, players, x, y) {//Yahnych
+            for (let length = 0; length < players.length; length++) {
+              let t = players[length];
+              let r = t.size/3;
+                                //distance to target
+              var dis = Math.sqrt((x - t.x) * (x - t.x) + (y - t.y) * (y - t.y));
+              //angle 
+              var angl = Math.round((Math.acos((t.y - y) / dis) / Math.PI) * 180);
+              //if target on left side
+          
+             if ((t.x - x > 0 && t.y - y < 0) || (t.x  - x > 0 && t.y - y > 0)) {
+                angl = 180 + (180 - angl);
+             }
+
+             // Store the current context state (i.e. rotation, translation etc..)
+             ctx.save()
+
+             //Convert degrees to radian 
+             var rad = angl * Math.PI / 180;
+
+             //Set the origin to the center of the image
+             ctx.translate(t.x, t.y);
+
+            //Rotate the canvas around the origin
+            ctx.rotate(rad);
+
+            //draw the image    
+            //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+              let grad=ctx.createLinearGradient(0, -t.size, 0, r*2-t.size);//Yahnych
+              grad.addColorStop(0, defaultSettings.splitRangeColor);
+              grad.addColorStop(1, defaultSettings.splitRangeColor+"00");
+
+              
+              ctx.fillStyle = grad;
+              ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+              ctx.beginPath();
+              ctx.arc(0, 0-(t.size-r), r, 0, Math.PI * 2, false)
+              ctx.fill();
+              ctx.globalAlpha = 1;
+              // Restore canvas state as saved from above
+              ctx.restore();
+            }          
+        },
+        newViewport(ctx, name, viewX, viewY, isSpectateEnabled = false, isFreeSpectate = false, leaderboard = [],  cells=[]){
+                var size = 0
+                var mtp = 1.985
+                
+                if(cells.length>0){
+                    for (var im = 0; cells.length > im; im++) 
+                        size += cells[im].size
+                }else if( isFreeSpectate==false && isSpectateEnabled==true ){
+                        for (var i = 0; leaderboard.length > i; i++) {
+                            for (var im = 0; cells.length > im; im++) 
+                                if (cells[im].nick == leaderboard[i].nick)
+                                    size += cells[im].size
+                            break
+                        }
+                }else{
+                    if(isFreeSpectate && isSpectateEnabled) mtp = 4.95
+                }
+                var s = Math.pow(Math.min(64 / size, 1), 0.4000);
+                var w = 1024/ s / 2 * mtp; //WSVGA
+                var h = 600 / s / 2 * mtp;
+                this.drawViewport(ctx, `Viewport# ${name}`, viewX - w, viewY - h, viewX + w, viewY + h, defaultSettings.bordersColor, 15);
+                //this.drawRing(this.ctx, Connection.viewX, Connection.viewY, 15, 1, '#ff00ff') 
+        },
+        drawViewport:function(ctx, text, minX, maxY, maxX, minY, stroke, width){
+
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = width;
+
+            ctx.fillStyle  = "white";
+            ctx.font = "100px sans-serif";
+            ctx.textAlign = "end";
+            ctx.textBaseline = "hanging"
+            ctx.fillText(text, maxX, maxY);
+
+            ctx.beginPath();
+            ctx.moveTo(minX, maxY);
+            ctx.lineTo(maxX, maxY);
+            ctx.lineTo(maxX, minY);
+            ctx.lineTo(minX, minY);
+            ctx.closePath();
+            ctx.stroke();
+
+        },							
                 pointInCircle: function(x, y, cx, cy, radius) {
                     var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
                     return distancesquared <= radius * radius;
