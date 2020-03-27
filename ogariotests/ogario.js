@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.234 MEGA TEST
+// v1.235 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8828,39 +8828,7 @@ var thelegendmodproject = function() {
                     this.PTE = Math.floor(i * 0.66); //Sonia2
                 }
             },
-            'compareCells': function() {
-				/*
-				if (!this.play) {
-					return;
-				}				
-                if (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
-                    if (defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
-                        this.biggerSTECellsCache = [];
-                        this.biggerCellsCache = [];
-                        this.smallerCellsCache = [];
-                        this.STECellsCache = [];
-                        this.biggerSTEDCellsCache = []; //Sonia
-                        this.STEDCellsCache = []; //Sonia
-                    }
-					for (const cell of this.cells) {
-						if (cell.isVirus|| cell.spectator>0) { //cell.invisible
-							continue;
-						}
-						const size = ~~(cell.size * cell.size / 100);
-						if (size != 13) {
-							const mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
-						const fixMass = size / mass;
-						const smallMass = mass < 1000 ? 0.35 : 0.38;
-						if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
-							cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass, smallMass);
-							}
-						if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
-							this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
-						}
-					}
-                }	
-			}
-*/				
+            'compareCells': function() {			
                 if (this.play && (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange)) {
                     if (defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
                         this.biggerSTECellsCache = [];
