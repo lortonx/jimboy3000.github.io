@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.215 MEGA TEST
+// v1.217 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2815,6 +2815,26 @@ var thelegendmodproject = function() {
             'getPlayerY': function() {
                 return ogario.playerY + ogario.mapOffsetY;
             },
+			//for SPECT
+            'getghostX': function() {
+                    if(legendmod.playerPosition == 1 || legendmod.ghostCells.length == 0) {//Yahnych координати призраков или игрока если он топ1
+						this.ghostX = legendmod.playerX + legendmod.mapOffsetX;
+                    } 
+					else {//Yahnych
+                        this.ghostX = legendmod.ghostCells[0].x + legendmod.mapOffsetX;
+                     }
+					 return this.ghostX;
+            },
+            'getghostY': function() {
+                    if(legendmod.playerPosition == 1 || legendmod.ghostCells.length == 0) {//Yahnych координати призраков или игрока если он топ1
+						this.ghostY = legendmod.playerY + legendmod.mapOffsetY;
+                    } 
+					else {//Yahnych
+                        this.ghostY = legendmod.ghostCells[0].y + legendmod.mapOffsetY;
+                     }
+					 return this.ghostY;
+            },	
+			//
             'feed': function() {
                 if (window.core && window.core.eject) {
                     window.core.eject();
@@ -8399,6 +8419,13 @@ var thelegendmodproject = function() {
                 this.ghostCells = [];
                 this.food = [];
                 this.viruses = [];
+
+			//for SPECT
+            this.ghostCellsStep = 0;
+            this.isSpectateEnabled = false;
+            this.isFreeSpectate = false;
+            window.spects.forEach((spect)=>{spect.closeConnection()})
+            window.spects = [];				
             },
             'setMapOffset': function(left, top, right, bottom) {
                 //if (right - left > 14000 && bottom - top > 14000) {
@@ -8684,7 +8711,10 @@ var thelegendmodproject = function() {
                 }
             },
             'compareCells': function() {
-                if (this.play && (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange)) {
+				if (!this.play) {
+					return;
+				}				
+                if (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
                     if (defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
                         this.biggerSTECellsCache = [];
                         this.biggerCellsCache = [];
@@ -8693,7 +8723,24 @@ var thelegendmodproject = function() {
                         this.biggerSTEDCellsCache = []; //Sonia
                         this.STEDCellsCache = []; //Sonia
                     }
-                    var t = 0;
+					for (const cell of this.cells) {
+						if (cell.isVirus|| cell.spectator>0/*cell.invisible*/) {
+							continue;
+						}
+						const size = ~~(cell.size * cell.size / 100);
+						if (size != 13) {
+							const mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+						const fixMass = size / mass;
+						const smallMass = mass < 1000 ? 0.35 : 0.38;
+						if (gameOptionSettings.oppColors && !gameOptionSettings.oppRings) {
+							cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass, smallMass);
+							}
+						if (!cell.isPlayerCell && (gameOptionSettings.splitRange || gameOptionSettings.oppRings)) {
+							this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
+						}
+					}
+                }					
+                    /*var t = 0;
                     for (; t < this.cells.length; t++) {
                         var e = this.cells[t];
                         if (!e.isVirus) {
@@ -8713,7 +8760,7 @@ var thelegendmodproject = function() {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
             },
             /*'cacheCells': function(t, e, i, s, o) {
