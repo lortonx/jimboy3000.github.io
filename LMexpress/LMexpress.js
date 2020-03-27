@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.082 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.083 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "82"; // the version 1.1-> 1.11
+var semimodVersion = "83"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2946,10 +2946,14 @@ function universalchat() {
         //my.log("cmd="+ cmd.name);
         switch (cmd.name) {
             case "add":
-                if (!cmd.playerName) {
-                    cmd.playerName = "An unnamed cell";
-                }
-                my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+				if(window.teammatelegendmodnicks && window.teammatelegendmodnicks.includes(cmd.playerName)){					
+				}				             
+				else{
+					if (!cmd.playerName) {
+						cmd.playerName = "An unnamed cell";
+					}
+					my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, cfg.tgar_color, !0);
+				}
 				//my.addBallToMinimap(!1, cmd.socketID, cmd.playerName, cmd.x, cmd.y, defaultSettings.miniMapTeammatesColor, !0);
                 break;
             case "remove":
