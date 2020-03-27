@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.230 MEGA TEST
+// v1.231 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7190,6 +7190,12 @@ var thelegendmodproject = function() {
             'viewMinY': 0,
             'viewMaxX': 0,
             'viewMaxY': 0,
+			//
+			'camMaxX':0,
+			'camMaxY':0,
+			'camMinX':0,
+			'camMinY':0,	
+			//
             'canvasWidth': 0,
             'canvasHeight': 0,
             'canvasScale': 1,
@@ -9200,7 +9206,19 @@ var thelegendmodproject = function() {
                         //LM.cursorX = LM.indexedCells[LM.selected].x
                         //LM.cursorY = LM.indexedCells[LM.selected].y
                     }
+					//
+            if(defaultmapsettings.debug){
+                this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, gameSetupTheme.bordersColor, 15);
 
+                //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
+                if(defaultmapsettings.fullSpectator){
+                    for (let i = 0; i<spects.length; i++) {
+                         this.newViewport( this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
+                    }
+
+                }
+            }					
+					//
 
                     this.ctx.restore();
                     if (LM.gameMode === ':teams') {
@@ -9209,6 +9227,22 @@ var thelegendmodproject = function() {
                         }
                     }
                     //this.ctx.finish2D();
+					
+            if(defaultmapsettings.debug){
+                this.ctx.fillStyle  = "white";
+                this.ctx.font = "15px sans-serif";
+                this.ctx.textAlign = "start";
+                var lw=(this.canvasHeight/2)
+                LM.camMaxX && this.ctx.fillText("isFreeSpectate: "+LM.isFreeSpectate, 50, lw+=25);
+                LM.camMaxX && this.ctx.fillText("isSpectateEnabled: "+LM.isSpectateEnabled, 50, lw+=25);
+                //LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
+                //LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
+                //LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
+                //LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
+                //LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
+                //LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
+                //LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
+            }					
                 },
         drawFBTracking(ctx, players, x, y) {//Yahnych
             for (let length = 0; length < players.length; length++) {
