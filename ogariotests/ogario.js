@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.235 MEGA TEST
+// v1.236 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -366,7 +366,7 @@ function fakePlayers() {
 
                 if (legendmod.cells[y].fake && legendmod.cells[y].id == window.cellsFake[x].id) {
                     //console.log(legendmod.cells[y]);
-                    legendmod.cells[y].time = performance.now();
+                    legendmod.cells[y].time = Date.now();
                     legendmod.cells[y].targetX = window.cellsFake[x].targetX;
                     legendmod.cells[y].targetY = window.cellsFake[x].targetY;
                     legendmod.cells[y].size = window.cellsFake[x].size;
@@ -378,7 +378,7 @@ function fakePlayers() {
             if (ab == false) { //true or false?
                 legendmod.cells.push(window.cellsFake[x]);
                 legendmod.cells[legendmod.cells.length - 1].fakeOK = false;
-                legendmod.cells[legendmod.cells.length - 1].time = performance.now();
+                legendmod.cells[legendmod.cells.length - 1].time = Date.now();
             }
         }
         //legendmod.cells.push(...cellsFake);
@@ -2774,7 +2774,7 @@ var thelegendmodproject = function() {
             'lastSentCustomColor': '',
             'lastSentPartyToken': '',
             'lastSentServerToken': '',
-            'lastMessageSentTime': performance.now(),
+            'lastMessageSentTime': Date.now(),
             'rFps': 0,
             'renderedFrames': 0,
             'fpsLastRequest': null,
@@ -5841,7 +5841,7 @@ var thelegendmodproject = function() {
                         n.y = o,
                         n.mass = a,
                         n.alive = true,
-                        n.updateTime = performance.now(),
+                        n.updateTime = Date.now(),
                         this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, a, n.color, n.lbgpi);
                 }
             },
@@ -5896,7 +5896,7 @@ var thelegendmodproject = function() {
                 var t = 0;
                 for (; t < this.teamPlayers.length; t++) {
                     var e = this.teamPlayers[t];
-                    if (e.alive && performance.now() - e.updateTime >= 2000 || 0 == e.mass) {
+                    if (e.alive && Date.now() - e.updateTime >= 2000 || 0 == e.mass) {
                         e.alive = false;
                         if (this.targeting && this.targetID && e.id == this.targetID) {
                             this.setTargetStatus(2);
@@ -5962,7 +5962,7 @@ var thelegendmodproject = function() {
             },
             'sendChatMessage': function(t, e) {
                 //console.log(t);console.log(e);
-                if (!(performance.now() - this.lastMessageSentTime < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
+                if (!(Date.now() - this.lastMessageSentTime < 500 || 0 == e.length || 0 == ogarcopythelb.nick.length) && this.isSocketOpen()) {
                     e = ogarcopythelb.nick + ': ' + e;
                     var view = this.createView(10 + 2 * e.length);
                     view.setUint8(0, 100),
@@ -5971,7 +5971,7 @@ var thelegendmodproject = function() {
                         view.setUint32(6, 0, true);
                     for (var s = 0; s < e.length; s++) view.setUint16(10 + 2 * s, e.charCodeAt(s), true);
                     this['sendBuffer'](view),
-                        this.lastMessageSentTime = performance.now();
+                        this.lastMessageSentTime = Date.now();
                 }
             },
             'prepareCommand': function(t) {
@@ -7172,7 +7172,7 @@ var thelegendmodproject = function() {
             //'clientVersionString': '3.6.4',
             'clientVersionString': master.clientVersionString,
             'xsupportprotoversion': master.xsupportprotoversion,
-            'time': performance.now(),
+            'time': Date.now(),
             'serverTime': 0,
             'serverTimeDiff': 0,
             'loggedInTime': 0,
@@ -7334,7 +7334,7 @@ var thelegendmodproject = function() {
             },
             'onOpen': function(t) {
                 //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
-                this.time = performance.now();
+                this.time = Date.now();
                 var e = this.createView(5);
                 e.setUint8(0, 254);
                 if (!window.gameBots.protocolVersion) window.gameBots.protocolVersion = master.protocolVersion;
@@ -7874,9 +7874,9 @@ var thelegendmodproject = function() {
                     this.pingArray = [];
                 }
                 if (this.pingTime) {
-                    this.ping = performance.now() - this.pingTime
+                    this.ping = Date.now() - this.pingTime
                 }
-                this.pingTime = performance.now();
+                this.pingTime = Date.now();
                 this.pingUsed++;
                 this.pingArray.push(this.ping);
                 if (this.pingUsed == 99) {
@@ -8294,7 +8294,7 @@ var thelegendmodproject = function() {
                                 this.battleRoyale.shrinkTime = 1000 * data.getUint32(s, true),
                                 s += 4,
                                 this.battleRoyale.shrinkTime &&
-                                (this.battleRoyale.timeLeft = ~~((this.battleRoyale.shrinkTime - performance.now() + this.serverTimeDiff) / 1000),
+                                (this.battleRoyale.timeLeft = ~~((this.battleRoyale.shrinkTime - Date.now() + this.serverTimeDiff) / 1000),
                                     this.battleRoyale.timeLeft < 0 && (this.battleRoyale.timeLeft = 0))),
                             2 & y && (this.battleRoyale.targetX = data.getInt32(s, true),
                                 s += 4,
@@ -8503,7 +8503,7 @@ var thelegendmodproject = function() {
             },
             'flushCellsData': function() {
                 this.indexedCells = {},
-                    this.cells = [];
+                this.cells = [];
                 this.playerCells = [];
                 this.playerCellIDs = [];
                 this.ghostCells = [];
@@ -8629,7 +8629,7 @@ var thelegendmodproject = function() {
                     }
                     return text;
                 };
-                this.time = performance.now();
+                this.time = Date.now();
                 this.removePlayerCell = false;
                 var eatEventsLength = view.readUInt16LE(offset);
                 offset += 2;
@@ -9033,8 +9033,8 @@ var thelegendmodproject = function() {
                     return new Promise(resolve => setTimeout(resolve, ms));
                 },
                 /*                'renderFrame': function() {
-                                    //for (LM.time = performance.now(), e = 0; e < LM.cells.length; e++) LM.cells[e].moveCell();
-                				    LM.time = performance.now();
+                                    //for (LM.time = Date.now(), e = 0; e < LM.cells.length; e++) LM.cells[e].moveCell();
+                				    LM.time = Date.now();
                 						for (i = 0; i < LM.cells.length; i++) {
                 							LM.cells[i].moveCell();
                 						}
@@ -9051,7 +9051,7 @@ var thelegendmodproject = function() {
                 'renderFrame': async function() { //Sonia5
                     //this.ctx.start2D();
                     await this.sleep(4); //Sonia5
-                    LM.time = performance.now();
+                    LM.time = Date.now();
                     for (i = 0; i < LM.cells.length; i++) {
                         LM.cells[i].moveCell();
                     }
@@ -9856,7 +9856,7 @@ var thelegendmodproject = function() {
                 },
                 'countFps': function() {
                     if (defaultmapsettings.showStatsFPS) {
-                        var t = performance.now();
+                        var t = Date.now();
                         if (!this.fpsLastRequest) {
                             this.fpsLastRequest = t;
                         }
