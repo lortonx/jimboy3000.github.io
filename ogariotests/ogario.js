@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.226 MEGA TEST
+// v1.227 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6831,9 +6831,11 @@ var thelegendmodproject = function() {
 					if (LM.hideSmallBots && this.size <= 36) {
 						return;
 					}
-					//if (this.spectator>0 && this.isInV()||this.invisible==true) {
-						//return;
-					//}					
+					// check this
+					if (this.spectator>0 && this.isInV()||this.invisible==true) {
+						return;
+					}
+					//					
                     style.save();
                     this.redrawed++;
                     if (canCreateDiscussions) {
@@ -9367,12 +9369,12 @@ var thelegendmodproject = function() {
             LM.camMinX = LM.playerX
             LM.camMinY = LM.playerY
  
-            if (gameOptionSettings.optimizedFood && this.pellet) {
+            if (defaultmapsettings.optimizedFood && this.pellet) {
                 for (var length = 0; length < food.length; length++) {
                     var x = food[length].x - 10 - defaultSettings.foodSize;
                     var y = food[length].y - 10 - defaultSettings.foodSize;
 
-                    //if(gameOptionSettings.debug){
+                    //if(defaultmapsettings.debug){
                         if( x > LM.camMaxX ) LM.camMaxX = x        
                         if( y > LM.camMaxY ) LM.camMaxY = y
                         if( x < LM.camMinX ) LM.camMinX = x
@@ -9387,7 +9389,7 @@ var thelegendmodproject = function() {
                     var x = food[length].x;
                     var y = food[length].y;
                     
-                    //if(gameOptionSettings.debug){
+                    //if(defaultmapsettings.debug){
                         if( x > LM.camMaxX ) LM.camMaxX = x
                         if( y > LM.camMaxY ) LM.camMaxY = y
                         if( x < LM.camMinX ) LM.camMinX = x
