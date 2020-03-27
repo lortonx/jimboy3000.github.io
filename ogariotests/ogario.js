@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.223 MEGA TEST
+// v1.224 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8682,12 +8682,23 @@ var thelegendmodproject = function() {
                         2 & extendedFlags && (cell.isFriend = isFriend,
                             console.log('FB friend cell in view', isFriend));
                 }
+				eatEventsLength = view.readUInt16LE(offset);
+				offset += 2;
+				for (length = 0; length < eatEventsLength; length++) {
+					var id = view.readUInt32LE(offset);
+					offset += 4;
+					cell = this.indexedCells[id];
+					if (cell) {
+						cell.removeCell();
+					}
+				}		
+/*				
                 for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
                     id = view.readUInt32LE(offset);
                     offset += 4,
                         (cellUpdateCells = this.indexedCells[id]) &&
                         cellUpdateCells.removeCell();
-                }
+                }*/
                 //Sonia7
                 if (this.removePlayerCell && !this.playerCells.length) {
                     this.play = false;
