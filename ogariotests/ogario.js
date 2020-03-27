@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.217 MEGA TEST
+// v1.218 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8732,10 +8732,10 @@ var thelegendmodproject = function() {
 							const mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
 						const fixMass = size / mass;
 						const smallMass = mass < 1000 ? 0.35 : 0.38;
-						if (gameOptionSettings.oppColors && !gameOptionSettings.oppRings) {
+						if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
 							cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass, smallMass);
 							}
-						if (!cell.isPlayerCell && (gameOptionSettings.splitRange || gameOptionSettings.oppRings)) {
+						if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
 							this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
 						}
 					}
