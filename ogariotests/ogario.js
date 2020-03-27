@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.231 MEGA TEST
+// v1.232 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9208,7 +9208,7 @@ var thelegendmodproject = function() {
                     }
 					//
             if(defaultmapsettings.debug){
-                this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, gameSetupTheme.bordersColor, 15);
+                this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
 
                 //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
                 if(defaultmapsettings.fullSpectator){
@@ -9308,7 +9308,7 @@ var thelegendmodproject = function() {
                 var w = 1024/ s / 2 * mtp; //WSVGA
                 var h = 600 / s / 2 * mtp;
                 this.drawViewport(ctx, `Viewport# ${name}`, viewX - w, viewY - h, viewX + w, viewY + h, defaultSettings.bordersColor, 15);
-                //this.drawRing(this.ctx, Connection.viewX, Connection.viewY, 15, 1, '#ff00ff') 
+                //this.drawRing(this.ctx, LM.viewX, LM.viewY, 15, 1, '#ff00ff') 
         },
         drawViewport:function(ctx, text, minX, maxY, maxX, minY, stroke, width){
 
