@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.220 MEGA TEST
+// v1.221 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3058,6 +3058,15 @@ var thelegendmodproject = function() {
                 } catch (ogarcopierlbcather) {}
                 t.remove();
             },
+			'changeSpectatorMode': function() {
+				this.spectatorFollow = !this.spectatorFollow;
+				ogario.spectatorFollow = this.spectatorFollow;
+				if (this.spectatorFollow && spects.length>0 && spects[0].staticX==null && spects[0].isSpectateEnabled==true /*&& spects[0].isFreeSpectateEnabled==false*/) {
+					spects[0].sendFreeSpectate();
+				} else {
+					void(0);
+				}
+			},			
             'setPause': function() {
                 if (window.autoPlay) {
                     ogarminimapdrawer && ogarminimapdrawer.setAutoPlay()
@@ -6590,6 +6599,12 @@ var thelegendmodproject = function() {
             this.isInView = function() {
                 return !(this.id <= 0) && !(this.x + this.size + 40 < LM.viewX - LM.canvasWidth / 2 / LM.scale || this.y + this.size + 40 < LM.viewY - LM.canvasHeight / 2 / LM.scale || this.x - this.size - 40 > LM.viewX + LM.canvasWidth / 2 / LM.scale || this.y - this.size - 40 > LM.viewY + LM.canvasHeight / 2 / LM.scale);
             };
+			this.isInV = function() {
+				if (this.x + this.size < LM.camMinX || this.y + this.size < LM.camMinY || this.x - this.size > LM.camMaxX || this.y - this.size > LM.camMaxY) {
+				return false;
+				}
+			return true;
+			}			
             /*
 				this.setMass = function(t) {
                     return this.size = t, !(t <= 40) && (this.massCanvas ? (this.mass = ~~(t * t / 100), this.redrawMass = true, this.isVirus ? (this.virMassShots && this.mass < 200 && (this.mass = ~~((200 - this.mass) / 14)), this.massTxt = this.mass.toString(), this.mass > 220 ? (this.virusColor = defaultSettings.mVirusColor, this.virusStroke = defaultSettings.mVirusStrokeColor) : (this.virusColor = defaultSettings.virusColor, this.virusStroke = defaultSettings.virusStrokeColor), true) : (this.massTxt = this.mass.toString(), this.mass <= 200 || (this.shortMass && this.mass >= 1000 ? (this.kMass = Math.round(this.mass / 100) / 10, this.massTxt = this.kMass + 'k', true) : (this.optimizedMass && (this.redrawMass = Math.abs((this.mass - this.lastMass) / this.mass) >= 0.02 || this.rescale), true)))) : (this.massCanvas = new irenderfromagario(), false));
@@ -6812,7 +6827,12 @@ var thelegendmodproject = function() {
                 return ctxfx;
             };
             this.draw = function(style, canCreateDiscussions) {
-                if (!(LM.hideSmallBots && this.size <= 36)) {
+					if (LM.hideSmallBots && this.size <= 36) {
+						return;
+					}
+					if (this.spectator>0 && this.isInV()||this.invisible==true) {
+						return;
+					}					
                     style.save();
                     this.redrawed++;
                     if (canCreateDiscussions) {
@@ -7084,8 +7104,7 @@ var thelegendmodproject = function() {
 
 
 
-                    }
-                }
+                    }                
             };
         }
         window.legendmod1 = ogarbasicassembly;
@@ -8607,10 +8626,19 @@ var thelegendmodproject = function() {
                     }
                     //
                     //8 & d && (y = window.decodeURIComponent(escape(s())));
-                    var isVirus = 1 & flags,
-                        isFood = 1 & extendedFlags,
-                        isFriend = extendedFlags & 2,
-                        cellUpdateCells = null;
+                    //var isVirus = 1 & flags,
+                    //    isFood = 1 & extendedFlags,
+                    //    isFriend = extendedFlags & 2,
+						
+					const isVirus = flags & 1;
+					const isFood = extendedFlags & 1;
+					const isFriend = extendedFlags & 2;
+					const invisible = this.staticX!=null?this.isInView(x, y):false;
+					//id = this.newID(id),
+					//x = this.getX(x),
+					//y = this.getY(y);						
+                    cellUpdateCells = null;
+						
                     this.indexedCells.hasOwnProperty(id) ? (cellUpdateCells = this.indexedCells[id],
                             color && (cellUpdateCells.color = color)) :
                         ((cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
@@ -9307,7 +9335,59 @@ var thelegendmodproject = function() {
                         else this.drawCachedFood(this.ctx, LM.food, this.scale);
                     }
                 },
-                'drawCachedFood': function(t, e, i, s) {
+        drawCachedFood(ctx, food, scale, reset) {
+            if (!food.length) {
+                return;
+            }
+
+            LM.camMaxX = LM.playerX
+            LM.camMaxY = LM.playerY
+            LM.camMinX = LM.playerX
+            LM.camMinY = LM.playerY
+ 
+            if (gameOptionSettings.optimizedFood && this.pellet) {
+                for (var length = 0; length < food.length; length++) {
+                    var x = food[length].x - 10 - defaultSettings.foodSize;
+                    var y = food[length].y - 10 - defaultSettings.foodSize;
+
+                    //if(gameOptionSettings.debug){
+                        if( x > LM.camMaxX ) LM.camMaxX = x        
+                        if( y > LM.camMaxY ) LM.camMaxY = y
+                        if( x < LM.camMinX ) LM.camMinX = x
+                        if( y < LM.camMinY ) LM.camMinY = y
+                    //}
+
+                    ctx.drawImage(this.pellet, x, y);
+                }
+            } else {
+                ctx.beginPath();
+                for (var length = 0; length < food.length; length++) {
+                    var x = food[length].x;
+                    var y = food[length].y;
+                    
+                    //if(gameOptionSettings.debug){
+                        if( x > LM.camMaxX ) LM.camMaxX = x
+                        if( y > LM.camMaxY ) LM.camMaxY = y
+                        if( x < LM.camMinX ) LM.camMinX = x
+                        if( y < LM.camMinY ) LM.camMinY = y
+                    //}
+                    ctx.moveTo(x, y);
+                    if (scale < 0.16) {
+                        const size = food[length].size + defaultSettings.foodSize;
+                        ctx.rect(x - size, y - size, 2 * size, 2 * size);
+                        continue;
+                    }
+                    ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+                }
+                ctx.fillStyle = defaultSettings.foodColor;
+                ctx.globalAlpha = 1;
+                ctx.fill();
+            }
+            if (reset) {
+                food = [];
+            }
+        },				
+                /*'drawCachedFood': function(t, e, i, s) {
                     if (e.length) {
                         if (defaultmapsettings.optimizedFood && this.pellet)
                             for (var o = 0; o < e.length; o++) {
@@ -9327,7 +9407,7 @@ var thelegendmodproject = function() {
                             }
                         s && (e = []);
                     }
-                },
+                },*/
                 'drawSplitRange': function(t, e, i, s, o) {
                     if (this.drawCircles(t, e, 760, 4, 0.4, defaultSettings.enemyBSTEColor), i.length) { //Sonia2
                         //if (this.drawCircles(t, e, 760, 4, 0.4, '#ff0000'), i.length) { //Sonia
