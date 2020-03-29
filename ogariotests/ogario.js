@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.268 MEGA TEST
+// v1.269 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8184,24 +8184,25 @@ var thelegendmodproject = function() {
 
 
 
-                    window.ret = new Node(data, s);
+                    const node = new Node(data, s);
 
-                    var key_or_value = window.ret.readFlag();
+                    var key_or_value = node.readFlag();
                     if (key_or_value == 1) {
-                        window.ret.setContentType();
+                        node.setContentType();
                     }
-                    key_or_value = window.ret.readFlag();
+                    key_or_value = node.readFlag();
                     if (key_or_value == 2) {
-                        window.ret.setUncompressedSize();
+                        node.setUncompressedSize();
                     }
-                    key_or_value = window.ret.readFlag();
+                    key_or_value = node.readFlag();
                     if (key_or_value == 1) {
-                        var obj = window.ret.readUint32();
-                        var previousState = window.ret.readFlag();
-                        var artistTrack = window.ret.readUint32();
-                        switch (obj) {
+                        var option = node.readUint32();
+                        var response = node.readFlag();
+                        var response_2 = node.readUint32();
+                        switch (option) {
                             case 11:
-                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, obj, previousState, artistTrack);
+								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", node.data.byteLength, node.contentType, node.uncompressedSize, option, response, response_2);
+                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, option, response, response_2);
                                 break;
                             case 62:
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game over");
@@ -8209,8 +8210,8 @@ var thelegendmodproject = function() {
                                 //$('#pause-hud').text("PAUSE!");
                                 break;
                             default:
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", obj, previousState);
-                                if (obj == 20 && previousState == 20) {
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", option, response);
+                                if (option == 20 && response == 20) {
                                     toastr["error"]('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
                                 }
                         }
@@ -11048,9 +11049,9 @@ var thelegendmodproject = function() {
     };
     ogarassembler();
 
-    function Node(lsb, msb) {
-        this.view = lsb;
-        this.offset = msb;
+    function Node(view, offset) {
+        this.view = view;
+        this.offset = offset;
         this.contentType = 1;
         this.uncompressedSize = 0;
         this.setContentType = function() {
@@ -11059,17 +11060,17 @@ var thelegendmodproject = function() {
         this.setUncompressedSize = function() {
             this.uncompressedSize = this.readUint32();
         };
-        this.compareBytesGt = function(first, second) {
-            var stripTerrain = first < 0;
-            var coast = second < 0;
-            if (stripTerrain != coast) {
-                return stripTerrain;
+        this.compareBytesGt = (bytes1, bytes2) => {
+            const byte_1 = bytes1 < 0;
+            const byte_2 = bytes2 < 0;
+            if (byte_1 != byte_2) {
+                return byte_1;
             }
-            return first > second;
+            return bytes1 > bytes2;
         };
         this.skipByte = function() {
-            var checkvarreadByte = this.readByte();
-            if (checkvarreadByte < 128) {
+            const read = this.readByte();
+            if (read < 128) {
                 return;
             }
             this.skipByte();
@@ -11078,28 +11079,28 @@ var thelegendmodproject = function() {
             return this.view.getUint8(this.offset++);
         };
         this.readUint32 = function() {
-            var result = 0;
-            var shift = 0;
-            for (; !![];) {
-                var digit = this.readByte();
-                if (this.compareBytesGt(32, shift)) {
-                    if (digit >= 128) {
-                        result = result | (digit & 127) << shift;
+            let number = 0;
+            let mayor = 0;
+            while (true) {
+                const read = this.readByte();
+                if (this.compareBytesGt(32, mayor)) {
+                    if (read >= 128) {
+                        number |= (read & 127) << mayor;
                     } else {
-                        result = result | digit << shift;
+                        number |= read << mayor;
                         break;
                     }
                 } else {
                     this.skipByte();
                     break;
                 }
-                shift = shift + 7;
+                mayor += 7;
             }
-            return result;
+            return number;
         };
         this.readFlag = function() {
             return this.readUint32() >>> 3;
-        }
+        };
     }
     window.core = {
         'connect': function(t) {
