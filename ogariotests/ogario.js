@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.267 MEGA TEST
+// v1.268 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9703,7 +9703,7 @@ var thelegendmodproject = function() {
 
                     var a = currentBiggestCell ? players.length - 1 : 0;
                     //console.log(currentBiggestCell[a].size);
-                    if (currentBiggestCell[a].size >= 400 && defaultmapsettings.qdsplitRange) { //Sonia2
+                    if (players[a].size >= 400 && defaultmapsettings.qdsplitRange) { //Sonia2
                         ctx.lineWidth = 6;
                             ctx.globalAlpha = defaultSettings.darkTheme ? 0.7 : 0.35,
                             ctx.strokeStyle = defaultSettings.splitRangeColor;
