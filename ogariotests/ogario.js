@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.269 MEGA TEST
+// v1.270 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8201,7 +8201,7 @@ var thelegendmodproject = function() {
                         var response_2 = node.readUint32();
                         switch (option) {
                             case 11:
-								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", node.data.byteLength, node.contentType, node.uncompressedSize, option, response, response_2);
+								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", node.byteLength, node.contentType, node.uncompressedSize, option, response, response_2);
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, option, response, response_2);
                                 break;
                             case 62:
