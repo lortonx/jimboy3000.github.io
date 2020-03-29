@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.272 MEGA TEST
+// v1.273 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6619,9 +6619,6 @@ var thelegendmodproject = function() {
 			if (delay<0){
 				delay=0
 			}
-			//else if (delay>1){
-				//delay=1
-			//}	
 			else if (delay>1){
 				delay=1
 			}				
@@ -6634,7 +6631,6 @@ var thelegendmodproject = function() {
                 this.time = LM.time;
                 return;
             }
-            //if (delay == 1) {
 			if (delay == 1) {
                 var removedCells = LM.removedCells.indexOf(this);
                 if (removedCells != -1) {
@@ -8562,10 +8558,19 @@ var thelegendmodproject = function() {
                 this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                 this.mapOffsetFixed = true;
                 //for SPECT
-                if (defaultmapsettings.fullSpectator && ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')) && spects.length == 0) {					
+                if (defaultmapsettings.fullSpectator && ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')) && spects.length == 0) {	
+					if(defaultmapsettings.rotateMap){
+						defaultmapsettings.rotateMap=false;
+						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + textLanguage.fullSpectator + " disabled the rotation of Map");
+					}
                     addFullSpectator();
                 } else if (defaultmapsettings.ingameSpectator && ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•')) && spects.length == 0) {
+					if(defaultmapsettings.rotateMap){
+						defaultmapsettings.rotateMap=false;
+						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + textLanguage.ingameSpectator + " disabled the rotation of Map");
+					}					
                     addSpectator();
+					
                 }
                 //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
             }
