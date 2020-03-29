@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.264 MEGA TEST
+// v1.265 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7034,11 +7034,15 @@ var thelegendmodproject = function() {
 
                     } else if (legendmod.gameMode != ":teams") {
                         try {
-                            style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y);
+                            style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y); //all skin drawing
                         } catch (e) {}
                     }
 
                     //special animations
+					//if (legendmod.friends){
+						//if (this.targetNick.includes())
+						
+					//}
                     if (this.targetNick.includes("The Dying Light")) {
 
                         try {
@@ -8457,7 +8461,7 @@ var thelegendmodproject = function() {
             if (this.playerPosition > window.leaderboardlimit && (t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>'), defaultmapsettings['showLbData']);
             if (legendmod.gameMode != ":battleroyale") {
                 t += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
-                if (legendmod.friends && legendmod.friends > 0) {
+                if (defaultmapsettings.FBTracking && legendmod.friends && legendmod.friends > 0) {
                     t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
                 }
                 //t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
@@ -8731,7 +8735,58 @@ var thelegendmodproject = function() {
                 //x = this.getX(x),
                 //y = this.getY(y);						
                 cellUpdateCells = null;
-
+				
+                if (this.indexedCells.hasOwnProperty(id)) {
+                    cellUpdateCells = this.indexedCells[id];
+                    if (color) {
+                        cellUpdateCells.color = color;
+                    }
+                }
+				else {
+                    cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
+                    cellUpdateCells.time = this.time;
+                    if (!isFood) {
+                        if (isVirus && defaultmapsettings.virusesRange) {
+                            this.viruses.push(cellUpdateCells);
+                        }
+                        this.cells.push(cellUpdateCells);
+                        if (this.playerCellIDs.indexOf(id) != -1 && this.playerCells.indexOf(cellUpdateCells) == -1) {
+                            cellUpdateCells.isPlayerCell = true;
+                            this.playerColor = color;
+                            this.playerCells.push(cellUpdateCells);
+                        }
+                    } else {
+                        this.food.push(cellUpdateCells);
+                    }
+                    this.indexedCells[id] = cellUpdateCells;
+                }
+                if (cellUpdateCells.isPlayerCell) {
+                    name = this.playerNick;
+                }
+                if (name) {
+                    cellUpdateCells.targetNick = name;
+                }
+                cellUpdateCells.targetX = x;
+                cellUpdateCells.targetY = y;
+                cellUpdateCells.targetSize = size;
+                cellUpdateCells.isFood = isFood;
+                cellUpdateCells.isVirus = isVirus;
+                if (skin) {
+                    cellUpdateCells.skin = skin;
+                }
+                if (extendedFlags & 4) {
+                    accountID = view.readUInt32LE(offset);
+                    offset += 4;
+                    cellUpdateCells.accID = accountID;
+                    let friend = LM.fbOnline.find(element => {return element.id == accountID});
+                    friend != undefined?cellUpdateCells.fbID = friend.fbId:void(0);
+                }
+                if (extendedFlags & 2) {
+                    cellUpdateCells.isFriend = isFriend;
+                    console.log('FB friend cell in view', isFriend)
+                }
+            }	
+			/*
                 this.indexedCells.hasOwnProperty(id) ? (cellUpdateCells = this.indexedCells[id],
                         color && (cellUpdateCells.color = color)) :
                     ((cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
@@ -8764,6 +8819,8 @@ var thelegendmodproject = function() {
                     2 & extendedFlags && (cell.isFriend = isFriend,
                         console.log('FB friend cell in view', isFriend));
             }
+			*/
+			
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
