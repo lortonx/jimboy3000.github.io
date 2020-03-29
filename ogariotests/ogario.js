@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.271 MEGA TEST
+// v1.272 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6622,8 +6622,8 @@ var thelegendmodproject = function() {
 			//else if (delay>1){
 				//delay=1
 			//}	
-			else if (delay>2){
-				delay=2
+			else if (delay>1){
+				delay=1
 			}				
             //delay = delay < 0 ? 0 : delay > 1 ? 1 : delay;
             this.x += (this.targetX - this.x) * delay;
@@ -6635,7 +6635,7 @@ var thelegendmodproject = function() {
                 return;
             }
             //if (delay == 1) {
-			if (delay == 2) {
+			if (delay == 1) {
                 var removedCells = LM.removedCells.indexOf(this);
                 if (removedCells != -1) {
                     LM.removedCells.splice(removedCells, 1);
