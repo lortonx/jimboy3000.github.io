@@ -6616,7 +6616,16 @@ var thelegendmodproject = function() {
         this.moveCell = function() {
             var time = LM.time - this.time;
             var delay = time / defaultmapsettings.animation;
-            delay = delay < 0 ? 0 : delay > 1 ? 1 : delay;
+			if (delay<0){
+				delay=0
+			}
+			//else if (delay>1){
+				//delay=1
+			//}	
+			else if (delay>2){
+				delay=2
+			}				
+            //delay = delay < 0 ? 0 : delay > 1 ? 1 : delay;
             this.x += (this.targetX - this.x) * delay;
             this.y += (this.targetY - this.y) * delay;
             this.size += (this.targetSize - this.size) * delay;
@@ -6625,7 +6634,8 @@ var thelegendmodproject = function() {
                 this.time = LM.time;
                 return;
             }
-            if (delay == 1) {
+            //if (delay == 1) {
+			if (delay == 2) {
                 var removedCells = LM.removedCells.indexOf(this);
                 if (removedCells != -1) {
                     LM.removedCells.splice(removedCells, 1);
