@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.277 MEGA TEST
+// v1.276 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8836,7 +8836,7 @@ var thelegendmodproject = function() {
                         console.log('FB friend cell in view', isFriend));
             }
 			*/
-			/* is already included above (VictimID)
+			
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
@@ -8847,7 +8847,6 @@ var thelegendmodproject = function() {
                     cell.removeCell();
                 }
             }
-			*/
             /*				
                             for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
                                 id = view.readUInt32LE(offset);
