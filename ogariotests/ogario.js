@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.278 MEGA TEST
+// v1.279 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -836,6 +836,7 @@ var languagetexts = {
         'hk-changeTarget': 'Zmień cel',
         'hk-privateMiniMap': 'Pokaż cel na minimapie',
         'hk-showQuest': 'Pokaż/ukryj zadanie',
+		'hk-showSpectator': 'Show/hide Full Spectator',
         'commands': 'Komendy',
         'comm1': 'Feeduj!',
         'comm2': 'Dziel się!',
@@ -1243,6 +1244,7 @@ var languagetexts = {
         'hk-changeTarget': 'Change target',
         'hk-privateMiniMap': 'Show target on the minimap',
         'hk-showQuest': 'Show/hide quest',
+		'hk-showSpectator': 'Show/hide Full Spectator',
         'commands': 'Commands',
         'comm1': 'Feed me!',
         'comm2': 'Split into me!',
@@ -3006,14 +3008,25 @@ var thelegendmodproject = function() {
             defaultmapsettings.showMass = !defaultmapsettings.showMass;
         },
         'setShowMiniMap': function() {
-            defaultmapsettings.showMiniMap = !defaultmapsettings.showMiniMap, this.setMiniMap();
+            defaultmapsettings.showMiniMap = !defaultmapsettings.showMiniMap; 
+			this.setMiniMap();
         },
         'setMiniMap': function() {
             defaultmapsettings.showMiniMap ? $('#minimap-hud').show() : $('#minimap-hud').hide();
         },
         'setShowQuest': function() {
             ':ffa' === this.gameMode && (this.showQuest = !this.showQuest, this.setQuest());
-        },
+        },		
+        'setShowSpectator': function() {
+            if (defaultmapsettings.fullSpectator){				
+				defaultmapsettings.fullSpectator = false;
+				LM.flushSpecsData();				
+			}
+			else if(!defaultmapsettings.fullSpectator){
+				defaultmapsettings.fullSpectator = true;
+				LM.addSpect();				
+			}		
+        },		
         'setQuest': function() {
             this.showQuest && ':ffa' === this.gameMode ? $('#quest-hud').show() : $('#quest-hud').hide();
         },
@@ -10484,9 +10497,18 @@ var thelegendmodproject = function() {
                 'keyUp': null,
                 'type': 'normal'
             },
+            'hk-showSpectator': {
+                'label': textLanguage['hk-showSpectator'],
+                'defaultKey': 'V',
+                'keyDown': function() {
+                    ogarminimapdrawer && ogarminimapdrawer.setShowSpectator();
+                },
+                'keyUp': null,
+                'type': 'normal'
+            },			
             'hk-bots-split': {
                 'label': textLanguage['hk-bots-split'],
-                'defaultKey': ',',
+                'defaultKey': '',
                 'keyDown': function() {
                     if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([2]).buffer);
                 },
@@ -10495,7 +10517,7 @@ var thelegendmodproject = function() {
             },
             'hk-bots-feed': {
                 'label': textLanguage['hk-bots-feed'],
-                'defaultKey': '.',
+                'defaultKey': '',
                 'keyDown': function() {
                     if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([3]).buffer)
                 },
@@ -10504,7 +10526,7 @@ var thelegendmodproject = function() {
             },
             'hk-bots-ai': {
                 'label': textLanguage['hk-bots-ai'],
-                'defaultKey': '/',
+                'defaultKey': 'Y',
                 'keyDown': function() {
                     if (window.userBots.startedBots && window.userBots.isAlive) {
                         if (!window.bots.ai) {
