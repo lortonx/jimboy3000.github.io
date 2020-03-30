@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.280 MEGA TEST
+// v1.281 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8620,18 +8620,26 @@ var thelegendmodproject = function() {
             }
         },
 		'addSpect': function() {
-                if (defaultmapsettings.fullSpectator && ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')) && spects.length == 0) {	
+			if ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')){
+				$('#set-debug').show();
+				$('#set-fullSpectator').show();				
+                if (defaultmapsettings.fullSpectator && spects.length == 0) {	
 					if(defaultmapsettings.rotateMap){
 						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Full Spectator" + " disabled the rotation of Map");
 					}
                     addFullSpectator();
-                } else if (defaultmapsettings.ingameSpectator && ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•')) && spects.length == 0) {
+                } else if (defaultmapsettings.ingameSpectator && spects.length == 0) {
 					if(defaultmapsettings.rotateMap){
 						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Ingame Spectator" + " disabled the rotation of Map");
 					}					
                     addSpectator();
 					
-                }            
+                }    
+			}
+			else{
+				$('#set-debug').hide();
+				$('#set-fullSpectator').hide();
+			}
         },
         'isInView': function(t, e, size) {
             var s = this.canvasWidth / 2 / this.scale,
