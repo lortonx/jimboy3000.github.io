@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.276 MEGA TEST
+// v1.277 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8539,6 +8539,9 @@ var thelegendmodproject = function() {
 
             //for SPECT
             //this.ghostCellsStep = 0;
+            this.flushSpecsData();
+        },
+		'flushSpecsData': function() {
             this.isSpectateEnabled = false;
             this.isFreeSpectate = false;
             if (window.spects) {
@@ -8546,8 +8549,8 @@ var thelegendmodproject = function() {
                     spect.closeConnection()
                 })
                 window.spects = [];
-            }
-        },
+            }			
+		},
         'setMapOffset': function(left, top, right, bottom) {
             //if (right - left > 14000 && bottom - top > 14000) {
             if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
@@ -8700,18 +8703,18 @@ var thelegendmodproject = function() {
                     extendedFlags = 0;
                 128 & flags && (extendedFlags = view.readUInt8(offset++));
                 //128 & d && (f = t.readUInt8(i++));	
-                var color = null,
-                    skin = null,
-                    name = '',
-                    accountID = null,
-                    isAgitated = false,
-                    isOwnEjected = false,
-                    isOtherEjected = false;
+                var color = null;
+                var skin = null;
+                var name = '';
+                var accountID = null;
+                var isAgitated = false;
+                var isOwnEjected = false;
+                var isOtherEjected = false;
                 if (2 & flags) { //offset
-                    var ogario1PlayerProfiles = view.readUInt8(offset++),
-                        ogarcopythelb = view.readUInt8(offset++),
-                        irenderfromagario = view.readUInt8(offset++);
-                    color = this.rgb2Hex(~~(0.9 * ogario1PlayerProfiles), ~~(0.9 * ogarcopythelb), ~~(0.9 * irenderfromagario));
+                    var r = view.readUInt8(offset++);
+                    var g = view.readUInt8(offset++);
+                    var b = view.readUInt8(offset++);
+                    color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
                 }
 
                 //4 & d && (g = s()),
