@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.277 MEGA TEST
+// v1.278 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8565,6 +8565,11 @@ var thelegendmodproject = function() {
                 this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
                 this.mapOffsetFixed = true;
                 //for SPECT
+				this.addSpect();
+                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
+            }
+        },
+		'addSpect': function() {
                 if (defaultmapsettings.fullSpectator && ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')) && spects.length == 0) {	
 					if(defaultmapsettings.rotateMap){
 						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Full Spectator" + " disabled the rotation of Map");
@@ -8576,9 +8581,7 @@ var thelegendmodproject = function() {
 					}					
                     addSpectator();
 					
-                }
-                //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map offset fixed: (', this.mapOffsetX, ',', this.mapOffsetY, ')');
-            }
+                }            
         },
         'isInView': function(t, e, size) {
             var s = this.canvasWidth / 2 / this.scale,
