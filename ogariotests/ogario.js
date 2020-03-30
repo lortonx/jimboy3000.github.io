@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.281 MEGA TEST
+// v1.282 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -742,8 +742,8 @@ var languagetexts = {
         'cursorTracking': 'Śledzenie kursora',
         'teammatesInd': 'Wskaźniki graczy teamu',
         'FBTracking': 'Facebook bubble tracker',
-        'ingameSpectator': 'Ingame spectator(LOCKED ℄)',
-        'fullSpectator': 'Full spectator(LOCKED ℄)',			
+//        'ingameSpectator': 'Ingame spectator(LOCKED ℄)',
+//        'fullSpectator': 'Full spectator(LOCKED ℄)',			
         'mouseSplit': 'LPM - Split myszką',
         'mouseFeed': 'PPM - Feed myszką',
         'mouseInvert': 'Odwróć klawisze myszki',
@@ -1151,8 +1151,8 @@ var languagetexts = {
         'cursorTracking': 'Cursor tracking',
         'teammatesInd': 'Teammates indicators',
         'FBTracking': 'Facebook bubble tracker',
-        'ingameSpectator': 'Ingame spectator(LOCKED ℄)',
-        'fullSpectator': 'Full spectator(LOCKED ℄)',		
+//        'ingameSpectator': 'Ingame spectator(LOCKED ℄)',
+//        'fullSpectator': 'Full spectator(LOCKED ℄)',		
         'mouseSplit': 'LMB - Mouse split',
         'mouseFeed': 'RMB - Mouse feed',
         'mouseInvert': 'Invert mouse buttons',
@@ -2150,8 +2150,8 @@ var defaultmapsettings = {
     'massStroke': true,
     'cursorTracking': false,
     'FBTracking': true,
-    'ingameSpectator': false,
-    'fullSpectator': false,	
+    'ingameSpectator2': false,
+    'fullSpectator2': false,	
     'teammatesInd': true,
     'mouseSplit': false,
     'mouseFeed': false,
@@ -3018,12 +3018,12 @@ var thelegendmodproject = function() {
             ':ffa' === this.gameMode && (this.showQuest = !this.showQuest, this.setQuest());
         },		
         'setShowSpectator': function() {
-            if (defaultmapsettings.fullSpectator){				
-				defaultmapsettings.fullSpectator = false;
+            if (defaultmapsettings.fullSpectator2){				
+				defaultmapsettings.fullSpectator2 = false;
 				LM.flushSpecsData();				
 			}
-			else if(!defaultmapsettings.fullSpectator){
-				defaultmapsettings.fullSpectator = true;
+			else if(!defaultmapsettings.fullSpectator2){
+				defaultmapsettings.fullSpectator2 = true;
 				LM.addSpect();				
 			}		
         },		
@@ -3800,7 +3800,7 @@ var thelegendmodproject = function() {
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup"),
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "hidecountry"], "chatGroup"),
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
-                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView","ingameSpectator", "fullSpectator"], "helpersGroup"), //Sonia2
+                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView"], "helpersGroup"), //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
@@ -6164,12 +6164,12 @@ var thelegendmodproject = function() {
 			}
         },	
         'setFullSpectator': function() {
-            if (defaultmapsettings.fullSpectator) {
-                defaultmapsettings.fullSpectator=false
+            if (defaultmapsettings.fullSpectator2) {
+                defaultmapsettings.fullSpectator2=false
 				LM.flushSpecsData()
             }
 			else{
-				defaultmapsettings.fullSpectator=true
+				defaultmapsettings.fullSpectator2=true
 				LM.addSpect()
 			}
         },		
@@ -7354,9 +7354,9 @@ var thelegendmodproject = function() {
             setTimeout(function() {
                 window.legendmod3.Socket3connect(t);
                 if (defaultmapsettings.rotateMap && 
-				(!defaultmapsettings.fullSpectator && 
+				(!defaultmapsettings.fullSpectator2 && 
 				($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸'))) 
-				&& !defaultmapsettings.ingameSpectator && 
+				&& !defaultmapsettings.ingameSpectator2 && 
 				(($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')))) {
                     window.legendmod3.SLGconnect(t);
                 }
@@ -8623,17 +8623,16 @@ var thelegendmodproject = function() {
 			if ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')){
 				$('#set-debug').show();
 				$('#set-fullSpectator').show();				
-                if (defaultmapsettings.fullSpectator && spects.length == 0) {	
+                if (defaultmapsettings.fullSpectator2 && spects.length == 0) {	
 					if(defaultmapsettings.rotateMap){
 						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Full Spectator" + " disabled the rotation of Map");
 					}
                     addFullSpectator();
-                } else if (defaultmapsettings.ingameSpectator && spects.length == 0) {
+                } else if (defaultmapsettings.ingameSpectator2 && spects.length == 0) {
 					if(defaultmapsettings.rotateMap){
 						toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Ingame Spectator" + " disabled the rotation of Map");
 					}					
-                    addSpectator();
-					
+                    addSpectator();				
                 }    
 			}
 			else{
@@ -9362,7 +9361,7 @@ var thelegendmodproject = function() {
                     this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
 
                     //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
-                    if (defaultmapsettings.fullSpectator) {
+                    if (defaultmapsettings.fullSpectator2) {
                         for (let i = 0; i < spects.length; i++) {
                             this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
                         }
