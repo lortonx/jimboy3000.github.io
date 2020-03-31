@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.290 MEGA TEST
+// v1.291 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3538,6 +3538,23 @@ var thelegendmodproject = function() {
                 this.saveSettings(defaultmapsettings, 'ogarioSettings');
             }
         },
+		'profiling': function() {
+			if (defaultmapsettings.profileNumber<15){
+				$('#skins-panel').css("width", "190px");
+			}
+			else if (defaultmapsettings.profileNumber<20){
+				$('#skins-panel').css("width", "280px");
+			}
+			else if (defaultmapsettings.profileNumber<30){
+				$('#skins-panel').css("width", "370px");
+			}
+			else if (defaultmapsettings.profileNumber<35){
+				$('#skins-panel').css("width", "460px");
+			}
+			else if (defaultmapsettings.profileNumber<55){
+				$('#skins-panel').css("width", "550px");
+			}			
+		}
         'loadProfiles': function() {
             if (null !== window.localStorage.getItem('ogarioPlayerProfiles')) {
                 ogario1PlayerProfiles = JSON.parse(window.localStorage.getItem('ogarioPlayerProfiles'))
@@ -3569,23 +3586,7 @@ var thelegendmodproject = function() {
                 });
 				}
             }
-			
-			if (ogario1PlayerProfiles.length<15){
-				$('#skins-panel').css("width", "190px");
-			}
-			else if (ogario1PlayerProfiles.length<20){
-				$('#skins-panel').css("width", "280px");
-			}
-			else if (ogario1PlayerProfiles.length<30){
-				$('#skins-panel').css("width", "370px");
-			}
-			else if (ogario1PlayerProfiles.length<35){
-				$('#skins-panel').css("width", "460px");
-			}
-			else if (ogario1PlayerProfiles.length<55){
-				$('#skins-panel').css("width", "550px");
-			}			
-			
+			this.profiling();
             if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
                 this.selectedProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedProfile'));
             }
