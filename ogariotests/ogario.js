@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.289 MEGA TEST
+// v1.290 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3582,7 +3582,7 @@ var thelegendmodproject = function() {
 			else if (ogario1PlayerProfiles.length<35){
 				$('#skins-panel').css("width", "460px");
 			}
-			else if (ogario1PlayerProfiles.length<40){
+			else if (ogario1PlayerProfiles.length<55){
 				$('#skins-panel').css("width", "550px");
 			}			
 			
