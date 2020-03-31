@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.300 MEGA TEST
+// v1.301 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3566,6 +3566,7 @@ var thelegendmodproject = function() {
                     } else if (ogario1PlayerProfiles.length > defaultmapsettings.profileNumber) {
                         //for (var t = 10; t < 15; t++) ogario1PlayerProfiles.push({
                         for (var t = defaultmapsettings.profileNumber; t < ogario1PlayerProfiles.length; t++) {
+							console.log(t);
                             ogario1PlayerProfiles.pop();
                         }
 
@@ -3581,9 +3582,10 @@ var thelegendmodproject = function() {
                         });
                     }
                 }
+				ogarminimapdrawer.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles');
                 setTimeout(function() {
                     ogarminimapdrawer.profiling();
-                    ogarminimapdrawer.saveSettings(ogario1PlayerProfiles, 'ogarioPlayerProfiles');
+                    
                 }, 200)
                 if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
                     this.selectedProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedProfile'));
