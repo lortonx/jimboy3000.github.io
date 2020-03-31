@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.294 MEGA TEST
+// v1.295 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3539,7 +3539,6 @@ var thelegendmodproject = function() {
             }
         },
 		'profiling': function() {
-			console.log('hi')
 			if (defaultmapsettings.profileNumber<15){
 				$('#skins-panel').css("width", "190px");
 			}
@@ -3588,9 +3587,9 @@ var thelegendmodproject = function() {
                 });
 				}
             }
-			//setTimeout(function() {
+			setTimeout(function() {
 			ogarminimapdrawer.profiling();
-			//}, 1000)
+			}, 200)
             if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
                 this.selectedProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedProfile'));
             }
