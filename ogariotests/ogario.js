@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.285 MEGA TEST
+// v1.286 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3810,6 +3810,7 @@ var thelegendmodproject = function() {
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
                 this.addOptions([], "macroGroup"),
+				this.addOptions([], "profiles"),
                 this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup"),
                     $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla"),
                     $(".skinsGroup h5").after('<label class="noSkins">' + textLanguage.noSkins + " </label>"),
