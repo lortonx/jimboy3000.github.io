@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.287 MEGA TEST
+// v1.289 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3569,6 +3569,23 @@ var thelegendmodproject = function() {
                 });
 				}
             }
+			
+			if (ogario1PlayerProfiles.length<15){
+				$('#skins-panel').css("width", "190px");
+			}
+			else if (ogario1PlayerProfiles.length<20){
+				$('#skins-panel').css("width", "280px");
+			}
+			else if (ogario1PlayerProfiles.length<30){
+				$('#skins-panel').css("width", "370px");
+			}
+			else if (ogario1PlayerProfiles.length<35){
+				$('#skins-panel').css("width", "460px");
+			}
+			else if (ogario1PlayerProfiles.length<40){
+				$('#skins-panel').css("width", "550px");
+			}			
+			
             if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
                 this.selectedProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedProfile'));
             }
@@ -3834,7 +3851,7 @@ var thelegendmodproject = function() {
                     $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper")),
                 this.addSliderBox(".animationGroup", "animation", 20, 200, 1),
                 this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01),
-				this.addSliderBox(".profiles", "profileNumber", 10, 50, 1),
+				this.addSliderBox(".profiles", "profileNumber", 10, 54, 1),
                 this.addSliderBox(".macroGroup", "macroFeeding", 1, 160, 1),
                 $("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + textLanguage.exportImport + "</button>"),
                 $("#og-settings").append('<div class="restore-settings"><a href="#">' + textLanguage.restoreSettings + "</a></div>"),
