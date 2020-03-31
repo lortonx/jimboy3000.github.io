@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.286a MEGA TEST
+// v1.287 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3541,23 +3541,33 @@ var thelegendmodproject = function() {
         'loadProfiles': function() {
             if (null !== window.localStorage.getItem('ogarioPlayerProfiles')) {
                 ogario1PlayerProfiles = JSON.parse(window.localStorage.getItem('ogarioPlayerProfiles'))
-                if (ogario1PlayerProfiles.length == 10) { //fix for old players
+                if (ogario1PlayerProfiles.length < defaultmapsettings.profileNumber) { //fix for old players
 					//for (var t = 10; t < 15; t++) ogario1PlayerProfiles.push({
-					for (var t = 10; t < defaultmapsettings.profileNumber; t++) ogario1PlayerProfiles.push({
+					for (var t = ogario1PlayerProfiles.length; t < defaultmapsettings.profileNumber; t++){ 
+					ogario1PlayerProfiles.push({
                         'nick': 'Profile #' + (t + 1),
                         'clanTag': '',
                         'skinURL': '',
                         'color': defaultSettings.mainColor
                     });
+					}
                 }
+                else if (ogario1PlayerProfiles.length > defaultmapsettings.profileNumber) { //fix for old players
+					//for (var t = 10; t < 15; t++) ogario1PlayerProfiles.push({
+					for (var t = defaultmapsettings.profileNumber; t < ogario1PlayerProfiles.length; t++){ 
+						ogario1PlayerProfiles.pop();
+					}
+                }				
             } else {
                 //for (var t = 0; t < 15; t++) ogario1PlayerProfiles.push({
-				for (var t = 0; t < defaultmapsettings.profileNumber; t++) ogario1PlayerProfiles.push({
+				for (var t = 0; t < defaultmapsettings.profileNumber; t++){
+					ogario1PlayerProfiles.push({
                     'nick': 'Profile #' + (t + 1),
                     'clanTag': '',
                     'skinURL': '',
                     'color': defaultSettings.mainColor
                 });
+				}
             }
             if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
                 this.selectedProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedProfile'));
