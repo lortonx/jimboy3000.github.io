@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
@@ -5643,6 +5643,7 @@ function SNEZServers() {
                 state.server != servertemp)			no1: I stoped this*/
 
             {
+				console.log('something changed')
                 state.nickname = nick.value;
                 state.server = servertemp;
                 state.tag = tag.value;
