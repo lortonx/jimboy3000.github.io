@@ -5643,7 +5643,7 @@ function SNEZServers() {
                 state.server != servertemp)			no1: I stoped this*/
 
             {
-				console.log('something changed')
+				//console.log('something changed')
                 state.nickname = nick.value;
                 state.server = servertemp;
                 state.tag = tag.value;
@@ -5703,7 +5703,7 @@ function SNEZServers() {
         });
 
         socket.connect();
-		console.log('start snez')
+		//console.log('start snez')
         setInterval(socket.updateDetails, 5000);
     };
 
