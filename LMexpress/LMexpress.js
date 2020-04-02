@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.085 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
@@ -5702,7 +5702,7 @@ function SNEZServers() {
         });
 
         socket.connect();
-
+		console.log('start snez')
         setInterval(socket.updateDetails, 5000);
     };
 
