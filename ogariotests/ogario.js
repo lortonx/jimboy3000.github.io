@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.313 MEGA TEST
+// v1.314 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -77,18 +77,33 @@ function deleteGamemode() {
             core.connect('wss://delta-selffeed.glitch.me');
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 8) {
+			logout();
+			toastr["error"]("User must be logged out").css("width", "210px");
+			legendmod.gameMode=":ffa";
             core.connect(agarTesterArena + ':1500/'); //ffa
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 9) {
-            core.connect(agarTesterArena + ':1504/'); //battle royal
+			logout();			
+			toastr["error"]("User must be logged out").css("width", "210px");
+			legendmod.gameMode=":battleroyale";
+            core.connect(agarTesterArena + ':1504/'); //battle royal			
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 10) {
+			logout();
+			toastr["error"]("User must be logged out").css("width", "210px");
+			legendmod.gameMode=":teams";
             core.connect(agarTesterArena + ':1501/'); //teams
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 11) {
+			logout();
+			toastr["error"]("User must be logged out").css("width", "210px");
+			legendmod.gameMode=":experimental";
             core.connect(agarTesterArena + ':1503/'); //experimental
             legendmod3.connect('wss://private1:443')			
 		} else if ($('#gamemode').val() == 12) {
+			logout();
+			toastr["error"]("User must be logged out").css("width", "210px");
+			legendmod.gameMode=":party";
             core.connect(agarTesterArena + ':1502/'); //party
             legendmod3.connect('wss://private1:443')		
         }
