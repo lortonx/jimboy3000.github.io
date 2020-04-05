@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.315 MEGA TEST
+// v1.316 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -77,38 +77,40 @@ function deleteGamemode() {
             core.connect('wss://delta-selffeed.glitch.me');
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 8) {
-			logout();
-			toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+			logoutPSArenas();
 			legendmod.gameMode=":ffa";
             core.connect(agarTesterArena + ':1500/'); //ffa
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 9) {
-			logout();			
-			toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+			logoutPSArenas();
 			legendmod.gameMode=":battleroyale";
             core.connect(agarTesterArena + ':1504/'); //battle royal			
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 10) {
-			logout();
-			toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+			logoutPSArenas();
 			legendmod.gameMode=":teams";
             core.connect(agarTesterArena + ':1501/'); //teams
             legendmod3.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 11) {
-			logout();
-			toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+			logoutPSArenas();
 			legendmod.gameMode=":experimental";
             core.connect(agarTesterArena + ':1503/'); //experimental
             legendmod3.connect('wss://private1:443')			
 		} else if ($('#gamemode').val() == 12) {
-			logout();
-			toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+			logoutPSArenas();
 			legendmod.gameMode=":party";
             core.connect(agarTesterArena + ':1502/'); //party
             legendmod3.connect('wss://private1:443')		
         }
     });
     $('#gamemode option[value=6]').prop('selected', 'selected').change();
+}
+
+function logoutPSArenas(){
+	if (master.accessToken){
+		logout();
+		toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+	}	
 }
 
 var dyinglight1load = localStorage.getItem("dyinglight1load");
@@ -7361,7 +7363,7 @@ var thelegendmodproject = function() {
                 'time': Date.now(),
                 'serverTime': 0,
                 'serverTimeDiff': 0,
-                'loggedInTime': 0,
+                //'loggedInTime': 0,
                 'mapSize': 14142,
                 'mapOffset': 7071,
                 'mapOffsetX': 0,
