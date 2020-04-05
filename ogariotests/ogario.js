@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.309 MEGA TEST
+// v1.310 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -54,14 +54,14 @@ function deleteGamemode() {
     });
     $('#gamemode').change(function() {
 		if ($('#region').val() == "Private") {
-			for (int i=3;i<9;i++){
+			for (var i=3;i<8;i++){
 				document.getElementById("gamemode").options[i].disabled = true;
 			}
 		}
 		else{
-			for (int i=3;i<8;i++){
-				document.getElementById("gamemode").options[i].disabled = false;
-			}
+			//for (var i=3;i<8;i++){
+				//document.getElementById("gamemode").options[i].disabled = false;
+			//}
 		}		
         if ($('#gamemode').val() == 6) {
             core.connect('wss://delta-server.glitch.me');
