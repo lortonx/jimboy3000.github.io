@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.318 MEGA TEST
+// v1.319 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4449,11 +4449,13 @@ var thelegendmodproject = function() {
                                 y: legendmod3.getPlayerY(),
                                 mass: legendmod.playerMass
                             };
-                            Socket3.send(JSON.stringify({
+                            if (Socket3){
+								Socket3.send(JSON.stringify({
                                 //"toH": "legendmod",
                                 "toH": $("#server-token").val() + "3",
                                 "msg": temp
                             }));
+							}
 
                         }
                     }
