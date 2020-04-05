@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.311 MEGA TEST
+// v1.312 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -59,7 +59,7 @@ function deleteGamemode() {
 			if (now2<18 && now2> 5){ //06:00-18:00 UTC closed 07:00-19:00 Germany time
 				for (var i=2;i<7;i++){
 					document.getElementById("gamemode").options[i].disabled = true;
-					document.getElementById("gamemode").options[i].title = "OPEN 19:00-7:00 UTC";
+					document.getElementById("gamemode").options[i].title = "OPEN 18:00-6:00 UTC";
 				}
 			}
 		}
