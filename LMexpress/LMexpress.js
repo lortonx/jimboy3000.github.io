@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.088 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
@@ -8154,6 +8154,7 @@ $("#menu-footer").before('<div id="legendhelper" style="background-image: url('+
 	'</iframe>'	+
 											'</div></div>'+
 											    '<button id= "Backtomenu" onclick="closecustomskinsIframe2020(); return false" style="margin-left: 10px;" class="btn btn-danger"  data-original-title="" title="">'+Premadeletter113+'</button>');
+('#helloContainer').css('top', 80*defaultSettings.hudScale + 'px');
 }
 
 
