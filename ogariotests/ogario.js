@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.325 MEGA TEST
+// v1.326 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11469,7 +11469,7 @@ var thelegendmodproject = function() {
                     if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
                 }
             })
-			funtion sendgetghosts(){
+			function sendgetghosts(){
 									if (legendmod3.getghostX() && legendmod3.getghostY()){
 										
 										window.connectionBots.send(JSON.stringify({
@@ -11489,7 +11489,7 @@ var thelegendmodproject = function() {
 									}, 500);
 									
 			}
-			funtion sendmapOffsets(){
+			function sendmapOffsets(){
 									if (legendmod3.mapOffsetX && legendmod3.mapOffsetY){
 										window.connectionBots.send(JSON.stringify({
 										"mapOffset": "map",
