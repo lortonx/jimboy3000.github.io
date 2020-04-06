@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.324 MEGA TEST
+// v1.325 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11469,6 +11469,35 @@ var thelegendmodproject = function() {
                     if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
                 }
             })
+			funtion sendgetghosts(){
+									if (legendmod3.getghostX() && legendmod3.getghostY()){
+										
+										window.connectionBots.send(JSON.stringify({
+										"ghost": "pos",
+										"getghostX": legendmod3.getghostX(),
+										"getghostY": legendmod3.getghostY()
+										}));
+									}
+									setTimeout(function() {
+										if (window.userBots.startedBots && !window.userBots.continueGhosts){
+											sendgetghosts();
+											//window.userBots.continueGhosts = true;
+										}
+										else{
+											window.userBots.continueGhosts = false;
+										}
+									}, 500);
+									
+			}
+			funtion sendmapOffsets(){
+									if (legendmod3.mapOffsetX && legendmod3.mapOffsetY){
+										window.connectionBots.send(JSON.stringify({
+										"mapOffset": "map",
+										"mapOffsetX": legendmod.mapOffsetX,
+										"mapOffsetY": legendmod.mapOffsetY
+										}));
+									}	
+			}									
             document.getElementById('startBots').addEventListener('click', () => {
                 if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
                     if (legendmod.gameMode == ":party" || window.AdminRights == 1 || window.IamNeo == true) {
@@ -11479,20 +11508,9 @@ var thelegendmodproject = function() {
                                 //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
                                 
 								if (legendmod.gameMode != ":party"){
-									if (legendmod3.getghostX() && legendmod3.getghostY()){
-										window.connectionBots.send(JSON.stringify({
-										"ghost": "pos",
-										"getghostX": legendmod3.getghostX(),
-										"getghostY": legendmod3.getghostY()
-										}));
-									}
-									if (legendmod3.getghostX() && legendmod3.getghostY()){
-										window.connectionBots.send(JSON.stringify({
-										"mapOffset": "map",
-										"mapOffsetX": legendmod.mapOffsetX,
-										"mapOffsetY": legendmod.mapOffsetY
-										}));
-									}								
+									
+									sendgetghosts();
+									sendmapOffsets();								
 								}
 								if (window.LatestBotsVersion) {
                                     $('#handleCaptchaBotsAreaSettings').show();
