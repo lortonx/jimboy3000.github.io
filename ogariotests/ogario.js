@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.323 MEGA TEST
+// v1.324 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11478,21 +11478,22 @@ var thelegendmodproject = function() {
                                 window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                                 //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
                                 
-								if (legendmod3.getghostX() && legendmod3.getghostY()){
-								window.connectionBots.send(JSON.stringify({
-								"ghost": "pos",
-								"getghostX": legendmod3.getghostX(),
-								"getghostY": legendmod3.getghostY()
-								}));
+								if (legendmod.gameMode != ":party"){
+									if (legendmod3.getghostX() && legendmod3.getghostY()){
+										window.connectionBots.send(JSON.stringify({
+										"ghost": "pos",
+										"getghostX": legendmod3.getghostX(),
+										"getghostY": legendmod3.getghostY()
+										}));
+									}
+									if (legendmod3.getghostX() && legendmod3.getghostY()){
+										window.connectionBots.send(JSON.stringify({
+										"mapOffset": "map",
+										"mapOffsetX": legendmod.mapOffsetX,
+										"mapOffsetY": legendmod.mapOffsetY
+										}));
+									}								
 								}
-								if (legendmod3.getghostX() && legendmod3.getghostY()){
-								window.connectionBots.send(JSON.stringify({
-								"mapOffset": "map",
-								"mapOffsetX": legendmod.mapOffsetX,
-								"mapOffsetY": legendmod.mapOffsetY
-								}));
-								}								
-								
 								if (window.LatestBotsVersion) {
                                     $('#handleCaptchaBotsAreaSettings').show();
                                 }
