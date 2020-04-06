@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.321 MEGA TEST
+// v1.322 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11477,7 +11477,16 @@ var thelegendmodproject = function() {
                                 //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                                 window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                                 //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                                if (window.LatestBotsVersion) {
+                                
+								if (legendmod3.getghostX() && legendmod3.getghostY()){
+								window.connectionBots.send(JSON.stringify({
+								"ghost": "pos",
+								"getghostX": legendmod3.getghostX(),
+								"getghostY": legendmod3.getghostY()
+								}));
+								}
+								
+								if (window.LatestBotsVersion) {
                                     $('#handleCaptchaBotsAreaSettings').show();
                                 }
                             } else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
