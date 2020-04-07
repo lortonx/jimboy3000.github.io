@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.328 MEGA TEST
+// v1.329 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11480,8 +11480,8 @@ var thelegendmodproject = function() {
                                 
 								if (legendmod.gameMode != ":party"){
 									
-									sendgetghosts();
-									sendmapOffsets();								
+									window.sendgetghosts();
+									window.sendmapOffsets();								
 								}
 								if (window.LatestBotsVersion) {
                                     $('#handleCaptchaBotsAreaSettings').show();
