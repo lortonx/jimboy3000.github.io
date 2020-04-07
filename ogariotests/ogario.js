@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.327 MEGA TEST
+// v1.328 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11468,33 +11468,7 @@ var thelegendmodproject = function() {
                 } else {
                     if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
                 }
-            })
-			function sendgetghosts(){
-									if (legendmod3.getghostX() && legendmod3.getghostY()){
-										
-										window.connectionBots.send(JSON.stringify({
-										"ghost": "pos",
-										"getghostX": legendmod3.getghostX(),
-										"getghostY": legendmod3.getghostY()
-										}));
-									}
-									setTimeout(function() {
-										if (window.userBots.startedBots){
-											sendgetghosts();
-											//console.log('hi')
-										}
-									}, 500);
-									
-			}
-			function sendmapOffsets(){
-									if (legendmod3.mapOffsetX && legendmod3.mapOffsetY){
-										window.connectionBots.send(JSON.stringify({
-										"mapOffset": "map",
-										"mapOffsetX": legendmod.mapOffsetX,
-										"mapOffsetY": legendmod.mapOffsetY
-										}));
-									}	
-			}									
+            })									
             document.getElementById('startBots').addEventListener('click', () => {
                 if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
                     if (legendmod.gameMode == ":party" || window.AdminRights == 1 || window.IamNeo == true) {
@@ -11564,7 +11538,32 @@ var thelegendmodproject = function() {
                 }
             })
         }
-
+			function sendgetghosts(){
+									if (legendmod3.getghostX() && legendmod3.getghostY()){
+										
+										window.connectionBots.send(JSON.stringify({
+										"ghost": "pos",
+										"getghostX": legendmod3.getghostX(),
+										"getghostY": legendmod3.getghostY()
+										}));
+									}
+									setTimeout(function() {
+										if (window.userBots.startedBots){
+											sendgetghosts();
+											console.log('hi')
+										}
+									}, 500);
+									
+			}
+			function sendmapOffsets(){
+									if (legendmod3.mapOffsetX && legendmod3.mapOffsetY){
+										window.connectionBots.send(JSON.stringify({
+										"mapOffset": "map",
+										"mapOffsetX": legendmod.mapOffsetX,
+										"mapOffsetY": legendmod.mapOffsetY
+										}));
+									}	
+			}
         /*
         var snezSocketdata;
         var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
