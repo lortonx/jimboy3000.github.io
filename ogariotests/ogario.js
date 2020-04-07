@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.330 MEGA TEST
+// v1.331 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11557,14 +11557,12 @@ var thelegendmodproject = function() {
 										}
 									}, 2000);				
 			}
-			function sendmapOffsets(){
-									if (legendmod3.mapOffsetX && legendmod3.mapOffsetY){
+			function sendmapOffsets(){									
 										window.connectionBots.send(JSON.stringify({
 										"mapOffset": "map",
 										"mapOffsetX": legendmod.mapOffsetX,
 										"mapOffsetY": legendmod.mapOffsetY
-										}));
-									}	
+										}));										
 			}
         /*
         var snezSocketdata;
