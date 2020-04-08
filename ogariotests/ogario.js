@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.323 MEGA TEST
+// v1.324 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8647,7 +8647,7 @@ var thelegendmodproject = function() {
 							if (ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[length].nick)) {
 								html = '<span class=\"teammate\">';
 							}
-							else if (this.leaderboard[length].isFBFriend){
+							else if (this.leaderboard[length].isFBFriend!=false){
 								html = '<span class=\"teammate\">';
 							}
 							t += html + (length + 1) + '. ' + ogarminimapdrawer.escapeHTML(this.leaderboard[length].nick) + '</span>';
@@ -8656,7 +8656,7 @@ var thelegendmodproject = function() {
                     }
                     if (this.playerPosition > window.leaderboardlimit){
 						t += '<span class=\"me\">' + this.playerPosition + '. ' + ogarminimapdrawer.escapeHTML(this.playerNick) + '</span>';
-						defaultmapsettings['showLbData'];
+						//defaultmapsettings['showLbData'];
 					}
                     if (legendmod.gameMode != ":battleroyale") {
                         t += '<span class="me">' + Premadeletter130 + ': ' + this.leaderboard.length + '</span>';
