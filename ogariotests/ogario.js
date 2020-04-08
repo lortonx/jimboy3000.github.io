@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.331 MEGA TEST
+// v1.332 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8672,7 +8672,7 @@ var thelegendmodproject = function() {
                         teamText += '</span>';
                     }
 					if (defaultmapsettings.showLbData){
-                    for (var l2ngth = 0; l2ngth < this.ghostCells.length && l2ngth != i; l2ngth++) {
+                    for (var l2ngth = 0; l2ngth < this.ghostCells.length && l2ngth < window.leaderboardlimit; l2ngth++) {
                         //
                         var w = this.ghostCells[l2ngth].x;
                         var u = this.ghostCells[l2ngth].y;
