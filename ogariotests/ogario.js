@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.322 MEGA TEST
+// v1.323 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8183,7 +8183,7 @@ var thelegendmodproject = function() {
                             if (data.getUint8(0) == 54) {
                                 const pos = data.getUint16(s, true);
                                 s += 2;
-                                ..console.log('Friends:', pos)
+                                //console.log('Friends:', pos)
                             }
                             for (let position = 0; s < data.byteLength;) {
                                 var flags = data.getUint8(s++);
