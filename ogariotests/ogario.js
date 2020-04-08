@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.326 MEGA TEST
+// v1.327 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8126,7 +8126,7 @@ var thelegendmodproject = function() {
                                 user.id = data.getUint32(s, true);
                                 s += 4;
                                 user.fbId = window.decodeURIComponent(window.escape(encode()));
-
+								console.log("fb id found", user.id, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720` );
                                 legendmod3.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
 
                                 this.fbOnline.push(user);
