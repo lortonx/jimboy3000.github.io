@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.329 MEGA TEST
+// v1.330 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8636,7 +8636,7 @@ var thelegendmodproject = function() {
                     }
 					let text = '';
 					let teamText = '';
-                    for (var teamText = '', text = '', length = 0; length < this.leaderboard.length && window.leaderboardlimit != length; length++) {
+                    for (length = 0; length < this.leaderboard.length && window.leaderboardlimit != length; length++) {
                         var html = '<span>';
 						if (this.leaderboard[length].id === 'isPlayer' ) {
 						html = '<span class=\"me\">';
