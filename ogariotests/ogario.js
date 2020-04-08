@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.331 MEGA TEST
+// v1.321 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11468,7 +11468,7 @@ var thelegendmodproject = function() {
                 } else {
                     if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
                 }
-            })									
+            })
             document.getElementById('startBots').addEventListener('click', () => {
                 if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
                     if (legendmod.gameMode == ":party" || window.AdminRights == 1 || window.IamNeo == true) {
@@ -11477,13 +11477,7 @@ var thelegendmodproject = function() {
                                 //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                                 window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                                 //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                                
-								if (legendmod.gameMode != ":party"){
-									
-									window.sendgetghosts();
-									window.sendmapOffsets();								
-								}
-								if (window.LatestBotsVersion) {
+                                if (window.LatestBotsVersion) {
                                     $('#handleCaptchaBotsAreaSettings').show();
                                 }
                             } else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
@@ -11538,32 +11532,7 @@ var thelegendmodproject = function() {
                 }
             })
         }
-			function sendgetghosts(){
-									//if (legendmod3.getghostX() && legendmod3.getghostY()){
-									window.resendgetghosts();	
-										window.connectionBots.send(JSON.stringify({
-										"ghost": "pos",
-										"getghostX": legendmod3.getghostX(),
-										"getghostY": legendmod3.getghostY()
-										}));
-									//}
-									
-									
-			}
-			function resendgetghosts(){
-									setTimeout(function() {
-										if (window.userBots.startedBots){
-											window.sendgetghosts();
-										}
-									}, 2000);				
-			}
-			function sendmapOffsets(){									
-										window.connectionBots.send(JSON.stringify({
-										"mapOffset": "map",
-										"mapOffsetX": legendmod.mapOffsetX,
-										"mapOffsetY": legendmod.mapOffsetY
-										}));										
-			}
+
         /*
         var snezSocketdata;
         var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
