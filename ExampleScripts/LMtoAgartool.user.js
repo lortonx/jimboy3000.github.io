@@ -8,7 +8,7 @@
 // @description:ja   Legend Mod 上から Agar Tool へ情報連携します
 // @description:en   Link to Legend Mod on Agar Tool
 // @author       tannichi & Jimboy3100
-// @match        http://agar.io/*
+// @match        https://agar.io/*
 // @downloadURL  jimboy3100.github.io/ExampleScripts/LMtoAgartool.user.js
 // @updateURL    jimboy3100.github.io/ExampleScripts/LMtoAgartool.user.js
 // @grant        none
