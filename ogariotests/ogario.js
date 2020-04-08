@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.330 MEGA TEST
+// v1.331 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8664,7 +8664,7 @@ var thelegendmodproject = function() {
                         //t += '<span class="teammate">' + 'Friends' + ': ' + legendmod.friends + '</span>';
                     } 
 					else if (legendmod.gameMode == ":battleroyale") {
-                        var teamText = '<span>';
+                        teamText = '<span>';
                         if (legendmod.battleRoyale.shrinkTime - Date.now() / 1000 > 0) {
                             teamText += '<span>Shrink time: ' + legendmod.battleRoyale.timeLeft + '</span>';
                         }
