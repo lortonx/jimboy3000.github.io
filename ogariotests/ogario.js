@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.337 MEGA TEST
+// v1.338 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2377,7 +2377,9 @@ var thelegendmodproject = function() {
 					this[name].html(css);
                 },
                 'addPresetBox': function(id, name, options, value, callback) {
-                    for (var option in $(id).append('<div class=\"preset-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"select-wrapper\"><select id=\"' + name + '\" class=\"form-control\"></select></div></div>'), options) options.hasOwnProperty(option) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['name'] + '</option>');
+                    for (var option in $(id).append('<div class=\"preset-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"select-wrapper\"><select id=\"' + name + '\" class=\"form-control\"></select></div></div>'), options){
+						options.hasOwnProperty(option) && $('#' + name).append('<option value=\"' + option + '\">' + options[option]['name'] + '</option>');
+					}
                     $('#' + name).val(defaultSettings[value]);
                     var app = this;
                     $('#' + name).on('change', function() {
@@ -2387,7 +2389,8 @@ var thelegendmodproject = function() {
                     });
                 },
                 'addColorBox': function(id, name, callback) {
-                    if ($(id).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"input-group ' + name + '-picker\"><input type=\"text\" value=\"' + defaultSettings[name] + '\" id=\"' + name + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), callback) {
+                    $(id).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"input-group ' + name + '-picker\"><input type=\"text\" value=\"' + defaultSettings[name] + '\" id=\"' + name + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>');
+					if (callback) {
                         var app = this;
                         $(id + ' .' + name + '-picker').colorpicker({
                             'format': 'hex'
@@ -2404,7 +2407,8 @@ var thelegendmodproject = function() {
                     });
                 },
                 'addRgbaColorBox': function(id, name, callback) {
-                    if ($(id).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"input-group ' + name + '-picker\"><input type=\"text\" value=\"' + defaultSettings[name] + '\" id=\"' + name + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>'), value) {
+					$(id).append('<div class=\"color-box\"><span class=\"title-box\">' + textLanguage[name] + '</span><div class=\"input-group ' + name + '-picker\"><input type=\"text\" value=\"' + defaultSettings[name] + '\" id=\"' + name + '\" class=\"form-control\" /><span class=\"input-group-addon\"><i></i></span></div></div>');
+                    if (callback) {
                         var app = this;
                         $(id + ' .' + name + '-picker').colorpicker({
                             'format': 'rgba'
@@ -2423,7 +2427,8 @@ var thelegendmodproject = function() {
                     });
                 },
                 'addSliderBox': function(id, name, min, max, step, callback) {
-                    if ($(id).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[name] + ': </span><span id=\"' + name + '-value\" class=\"value\">' + defaultSettings[name] + '</span></div><input id=\"' + name + '-slider\" type=\"range\" min=\"' + min + '\" max=\"' + max + '\" step=\"' + step + '\" value=\"' + defaultSettings[name] + '\"></div>'), callback) {
+					$(id).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[name] + ': </span><span id=\"' + name + '-value\" class=\"value\">' + defaultSettings[name] + '</span></div><input id=\"' + name + '-slider\" type=\"range\" min=\"' + min + '\" max=\"' + max + '\" step=\"' + step + '\" value=\"' + defaultSettings[name] + '\"></div>');
+                    if (callback) {
                         var app = this;
                         $('#' + name + '-slider').on('input', function() {
                             var t = parseFloat($(this).val());
