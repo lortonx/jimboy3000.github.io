@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.334 MEGA TEST
+// v1.335 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6437,7 +6437,7 @@ var thelegendmodproject = function() {
                     this.setQuest();
                     this.displayTime();
                     this.setCenteredLb();
-                    this.setNormalLb();
+                    //this.setNormalLb();
                     this.setFpsAtTop();
                     this.setTweenMaxEffect();
                     this.displayStats();
