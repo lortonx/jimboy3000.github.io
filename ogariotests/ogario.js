@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.332 MEGA TEST
+// v1.334 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -823,7 +823,7 @@ var languagetexts = {
         'showTargeting': 'Pokaż namierzanie',
         'showTime': 'Pokaż aktualny czas',
         'showLbData': 'Pokaż masę w topce',
-        'normalLb': 'Nagłówek \"Topka\"',
+        //'normalLb': 'Nagłówek \"Topka\"',
         'centeredLb': 'Wyśrodkowana topka',
         'fpsAtTop': 'Statystyki na górze',
         'tweenMaxEffect': 'Tween max effect',
@@ -1233,7 +1233,7 @@ var languagetexts = {
         'showTargeting': 'Show targeting',
         'showTime': 'Show current time',
         'showLbData': 'Show leaderboard mass',
-        'normalLb': '\"Leaderboard\" header',
+        //'normalLb': '\"Leaderboard\" header',
         'centeredLb': 'Centered leaderboard',
         'fpsAtTop': 'Game stats at the top',
         'tweenMaxEffect': 'Tween max effect',
@@ -2227,7 +2227,7 @@ var defaultmapsettings = {
     'showTargeting': true,
     'showLbData': true,
     'showTime': false,
-    'normalLb': true,
+    //'normalLb': true,
     'centeredLb': true,
     'fpsAtTop': true,
     'tweenMaxEffect': false,
@@ -3160,9 +3160,9 @@ var thelegendmodproject = function() {
             'setCenteredLb': function() {
                 defaultmapsettings.centeredLb ? $('#leaderboard-hud').addClass('hud-text-center') : $('#leaderboard-hud').removeClass('hud-text-center');
             },
-            'setNormalLb': function() {
-                defaultmapsettings.normalLb ? $('#leaderboard-hud h5').html(textLanguage.leaderboard) : $('#leaderboard-hud h5').html('legendmod');
-            },
+            //'setNormalLb': function() {
+                //defaultmapsettings.normalLb ? $('#leaderboard-hud h5').html(textLanguage.leaderboard) : $('#leaderboard-hud h5').html('legendmod');
+            //},
             'setFpsAtTop': function() {
                 defaultmapsettings.fpsAtTop ? $('#stats-hud').removeClass('hud-bottom').addClass('hud-top') : $('#stats-hud').removeClass('hud-top').addClass('hud-bottom');
             },
@@ -3568,9 +3568,9 @@ var thelegendmodproject = function() {
                         case 'centeredLb':
                             this.setCenteredLb();
                             break;
-                        case 'normalLb':
-                            this.setNormalLb();
-                            break;
+                        //case 'normalLb':
+                            //this.setNormalLb();
+                            //break;
                         case 'fpsAtTop':
                             this.setFpsAtTop();
                             break;
@@ -3899,7 +3899,8 @@ var thelegendmodproject = function() {
                         this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup"),
                         this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView"], "helpersGroup"), //Sonia2
                         this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup"),
-                        this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
+                        //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
+						this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                         this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup"),
                         this.addOptions([], "macroGroup"),
                         this.addOptions([], "profiles"),
@@ -3931,7 +3932,7 @@ var thelegendmodproject = function() {
                             textLanguage.totalPartyPlayers + ': <span id="top5-total-players" class="top5-mass-color">0</span>   <span class="hud-main-color ogicon-pacman"></span> ' +
                             textLanguage.totalPartyMass + ': <span id="top5-total-mass" class="top5-mass-color">0</span></div></div> <div id="time-hud" class="hud time-hud-color"></div> <div id="pause-hud" class="hud">' +
                             //textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">legendmod.ml</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"><span id="btl-players-status">Players ready</span>: <span id="btl-players-count">0</span></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
-                            textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">legendmod.ml</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
+                            textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">' + textLanguage.leaderboard + '</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
                             textLanguage.targetNotSet + '</span></div><div id="target-summary"></div></div><div id="target-panel-hud" class="hud">' +
                             '<a href="#" id="set-debug" class="ogicon-location" style="display: none"></a>' +
                             '<a href="#" id="set-fullSpectator" class="ogicon-eye"  style="display: none"></a>' +
