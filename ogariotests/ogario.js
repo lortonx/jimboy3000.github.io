@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.338 MEGA TEST
+// v1.339 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2732,7 +2732,7 @@ var thelegendmodproject = function() {
                     this.changePreset(name, themeMenus);
                     this.setMenu();
                 },
-                'changeGraphics': function(t) {},
+                'changeGraphics': function(value) {},
                 'setMenuOpacity': function() {
                     $('#helloContainer, #hotkeys, #exp-imp').css('opacity', defaultSettings.menuOpacity);
                 },
@@ -3658,7 +3658,7 @@ var thelegendmodproject = function() {
                     message.val('');
                 }
             },
-            'showMenu': function(t) {
+            'showMenu': function(value) {
 				if (window.MC && window.MC.showNickDialog) {
 					$('.ogario-menu').show();
 					$('.menu-panel').hide();
@@ -3678,7 +3678,7 @@ var thelegendmodproject = function() {
 					$('#overlays').show();
 				}
             },
-            'hideMenu': function(t) {
+            'hideMenu': function(value) {
 				if (window.MC && window.MC.showNickDialog) {
 					$('.ogario-menu').hide();
 					return;
