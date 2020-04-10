@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.354 MEGA TEST
+// v1.355 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5656,7 +5656,7 @@ var thelegendmodproject = function() {
                 'strToBuff': function(offset, str) {
                     var view = this.createView(1 + 2 * str.length);
                     view.setUint8(0, offset);
-                    for (var length = 0; length < str.length; length++) view.setUint16(1 + 2 * length, str.charCodeAt(s), true);
+                    for (var length = 0; length < str.length; length++) view.setUint16(1 + 2 * length, str.charCodeAt(length), true);
                     return view;
                 },
                 'sendBuffer': function(value) {
