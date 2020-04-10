@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.352 MEGA TEST
+// v1.353 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5226,7 +5226,7 @@ var thelegendmodproject = function() {
 					this.miniMapSectors.height = height;
 					ctx.fillStyle = '#FFFFFF';
 					this.dTok(ctx, size - 1);
-					drawRender.drawSectors(ctx, ogario.mapOffsetFixed, x, y, 0.5, scale, size - 0.5, height - 9.5, defaultSettings.miniMapSectorsColor, defaultSettings.miniMapSectorsColor, 1, false);
+					ogarfooddrawer.drawSectors(ctx, ogario.mapOffsetFixed, x, y, 0.5, scale, size - 0.5, height - 9.5, defaultSettings.miniMapSectorsColor, defaultSettings.miniMapSectorsColor, 1, false);
 				},
                 'resetMiniMapSectors': function() {
                     this.miniMapSectors = null;
@@ -5650,17 +5650,17 @@ var thelegendmodproject = function() {
                         }
                     }
                 },
-                'createView': function(t) {
-                    return new DataView(new ArrayBuffer(t));
+                'createView': function(value) {
+                    return new DataView(new ArrayBuffer(value));
                 },
-                'strToBuff': function(t, e) {
-                    var view = this.createView(1 + 2 * e.length);
-                    view.setUint8(0, t);
-                    for (var s = 0; s < e.length; s++) view.setUint16(1 + 2 * s, e.charCodeAt(s), true);
+                'strToBuff': function(offset, str) {
+                    var view = this.createView(1 + 2 * str.length);
+                    view.setUint8(0, offset);
+                    for (var length = 0; length < str.length; length++) view.setUint16(1 + 2 * length, str.charCodeAt(s), true);
                     return view;
                 },
-                'sendBuffer': function(t) {
-                    this.socket['send'](t['buffer']);
+                'sendBuffer': function(value) {
+                    this.socket.send.(value.buffer);
                 },
                 //Sonia4
                 'sendSLG': function(i, t) {
@@ -5829,26 +5829,26 @@ var thelegendmodproject = function() {
                 },
                 'sendServerRegion': function() {
                     if (this.region) {
-                        var t = this.region.split('-');
+                        var region = this.region.split('-');
                         if (this.isSocketOpen()) {
-                            this.sendBuffer(this.strToBuff(17, t[0]));
+                            this.sendBuffer(this.strToBuff(17, region[0]));
                         }
                     }
                 },
                 'sendServerGameMode': function() {
-                    var t = 'FFA';
+                    var gamemode = 'FFA';
                     switch (this.gameMode) {
                         case ':battleroyale':
-                            t = 'BTR';
+                            gamemode = 'BTR';
                             break;
                         case ':teams':
-                            t = 'TMS';
+                            gamemode = 'TMS';
                             break;
                         case ':experimental':
-                            t = 'EXP';
+                            gamemode = 'EXP';
                             break;
                         case ':party':
-                            t = 'PTY';
+                            gamemode = 'PTY';
                     }
 					if (this.isSocketOpen()) {
 						this.sendBuffer(this.strToBuff(18, gamemode));
