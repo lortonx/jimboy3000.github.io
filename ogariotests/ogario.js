@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.339 MEGA TEST
+// v1.340 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2413,18 +2413,20 @@ var thelegendmodproject = function() {
                         $(id + ' .' + name + '-picker').colorpicker({
                             'format': 'rgba'
                         }).on('changeColor.colorpicker', function(ids) {
-                            var s = ids.color.toRGB();
-                            defaultSettings[name] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', 
+                            var color = ids.color.toRGB();
+                            defaultSettings[name] = 'rgba(' + color['r'] + ',' + color['g'] + ',' + color['b'] + ',' + color['a'] + ')', 
 							ogario.hasOwnProperty(name) && (ogario[name] = defaultSettings[name]), 
 							app[callback]();
                         });
-                    } else s(id + ' .' + name + '-picker').colorpicker({
-                        'format': 'rgba'
-                    }).on('changeColor.colorpicker', function(ids) {
-                        var s = ids.color.toRGB();
-                        defaultSettings[name] = 'rgba(' + s['r'] + ',' + s['defaultSettings'] + ',' + s['b'] + ',' + s['a'] + ')', 
-						ogario.hasOwnProperty(name) && (ogario[name] = defaultSettings[name]);
+                    } else{
+						(id + ' .' + name + '-picker').colorpicker({
+							'format': 'rgba'
+						}).on('changeColor.colorpicker', function(ids) {
+							var color = ids.color.toRGB();
+							defaultSettings[name] = 'rgba(' + color['r'] + ',' + color['g'] + ',' + color['b'] + ',' + color['a'] + ')', 
+							ogario.hasOwnProperty(name) && (ogario[name] = defaultSettings[name]);
                     });
+					}
                 },
                 'addSliderBox': function(id, name, min, max, step, callback) {
 					$(id).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[name] + ': </span><span id=\"' + name + '-value\" class=\"value\">' + defaultSettings[name] + '</span></div><input id=\"' + name + '-slider\" type=\"range\" min=\"' + min + '\" max=\"' + max + '\" step=\"' + step + '\" value=\"' + defaultSettings[name] + '\"></div>');
