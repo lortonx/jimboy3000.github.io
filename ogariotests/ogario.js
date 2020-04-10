@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.359 MEGA TEST
+// v1.360 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6417,6 +6417,7 @@ var thelegendmodproject = function() {
             });
 
         },
+		/*
         'displayChatMessage': function(time, type, id, nick) {        
           let mcolor = defaultmapsettings.messageNickColor; 
           let ccolor = defaultmapsettings.commandsNickColor;
@@ -6494,8 +6495,7 @@ var thelegendmodproject = function() {
 			else {
                 $('#messages').append(nick);
             }
-        },	
-/*		
+        },	*/	
         'displayChatMessage': function(time, caseof, plId, msg) {
             if (0 != msg.length) {
                 //console.log(msg);
@@ -6522,7 +6522,6 @@ var thelegendmodproject = function() {
                 }
             }
         },
-		*/
         'displayUserList': function(users, activeUser, html, isMute, o) {
             var text = '';
             if (Object.keys(users).length) {
