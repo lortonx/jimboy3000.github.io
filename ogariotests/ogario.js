@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.345 MEGA TEST
+// v1.346 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4791,7 +4791,7 @@ var thelegendmodproject = function() {
                     this.sendPlayerDeath();
                     this.updateDeathLocations(ogario.playerX, ogario.playerY);
                     this.unlockButtons();
-                    ogarcommando1();
+                    resetonkeydown();
                     this.autoResp();
 
                 },
@@ -11413,7 +11413,7 @@ var thelegendmodproject = function() {
                             $(document).on('click', '.hotkeys-link', function(event) {
                                 $('#hotkeys').fadeIn(500);
                                 $('#hotkeys-cfg').perfectScrollbar('update');
-                                ogarcommando1();
+                                resetonkeydown();
                             }),
                             $('#hotkeys-cfg').perfectScrollbar(),
                             hudsetter && hudsetter.setMenuBg();
@@ -11472,14 +11472,14 @@ var thelegendmodproject = function() {
                             default:
                                 normalKey = String.fromCharCode(key.keyCode);
                         }
-						/*if (specialKey !== '') {
+						if (specialKey !== '') {
 							if (normalKey !== '') {
 								return specialKey + '+' + normalKey;
 							}
 							return specialKey;
 						}						
-						return normalKey;	*/					
-                        return '' !== specialKey ? '' !== normalKey ? specialKey + '+' + normalKey : specialKey : normalKey;
+						return normalKey;						
+                        //return '' !== specialKey ? '' !== normalKey ? specialKey + '+' + normalKey : specialKey : normalKey;
                     },
                     'deleteHotkey': function(name, id) {
                         delete ogario1Hotkeys[name];
@@ -11558,26 +11558,24 @@ var thelegendmodproject = function() {
                 ogario.innerH = innerHeigth;
             }
 
-            function ogarcommando1() {
-                ogarminimapdrawer.protocolMode || (window.onkeydown = function(event) {});
+            function resetonkeydown() {
+				if (ogarminimapdrawer.protocolMode) {
+					return;
+				}
+				window.onkeydown = event => {};				
             }
             document.onkeydown = function(event) {
                 var pressedKey = hotkeysSetup.getPressedKey(event);
-				if ('INPUT' === event.target.tagName || event.target.className !== hotkeysSetup.inputClassName || pressedKey !== ogario1Hotkeys['spec-messageKey']){
-					return;
-				}
-                if ('' !== pressedKey && !ogarioefaultHotkeys[pressedKey]) {
+                if (('INPUT' !== event.target.tagName || event.target.className === hotkeysSetup.inputClassName || pressedKey === ogario1Hotkeys['spec-messageKey']) && '' !== pressedKey && !ogarioefaultHotkeys[pressedKey]) {
                     if (ogarioefaultHotkeys[pressedKey] = true, 'ESC' === pressedKey) return event.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
                     if (event.target.className === hotkeysSetup.inputClassName) return event.preventDefault(), void hotkeysSetup.setHotkey(pressedKey, event.target.id);
                     if (ogario1Hotkeys[pressedKey]) {
                         event.preventDefault();
-                        var key = ogario1Hotkeys[pressedKey];
-                        if ('' !== key && ogario11Hotkeys[key] && ogario11Hotkeys[key].keyDown){
-							ogario11Hotkeys[key].keyDown();
-						}
+                        var i = ogario1Hotkeys[pressedKey];
+                        '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i].keyDown && ogario11Hotkeys[i].keyDown();
                     }
                 }
-            }
+            }			
             document.onkeyup = function(event) {
                 var pressedKey = hotkeysSetup.getPressedKey(event);
                 if ('' !== pressedKey) {
