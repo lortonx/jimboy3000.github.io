@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.357 MEGA TEST
+// v1.358 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2213,6 +2213,7 @@ var defaultmapsettings = {
     'mouseFeed': false,
     'mouseInvert': false,
     'disableChat': false,
+	'coloredNicks': false,
     'hideChat': false,
     'chatSounds': true,
     'chatEmoticons': true,
@@ -6395,12 +6396,15 @@ var thelegendmodproject = function() {
             return false;
         },
         'parseMessage': function(string) {
-            var e = /\[img\](https?:\/\/i\.(?:imgur|hizliresim)\.com\/\w{6,8}\.(?:jpg|jpeg|png|gif)\??\d*)\[\/img\]/i;
-            if (e.test(string)) return defaultmapsettings.showChatImages ? '<img src=\"' + string.match(e)[1].replace('http:', 'https:') + '\" style=\"width:100%;border:none;\">' : '';
-            var i = /\[yt\]([\w-]{11})\[\/yt\]/i;
-            if (i.test(string)) return defaultmapsettings.showChatVideos ? '<iframe type=\"text/html\" width=\"100%\" height=\"auto\" src=\"https://www.youtube.com/embed/' + string.match(i)[1] + '?autoplay=1&amp;vq=tiny\" frameborder=\"0\" />' : '';
-            var s = this.escapeHTML(string);
-            return defaultmapsettings['chatEmoticons'] && (s = this.parseEmoticons(s)), s;
+            var isImage = /\[img\](https?:\/\/i\.(?:imgur|hizliresim)\.com\/\w{6,8}\.(?:jpg|jpeg|png|gif)\??\d*)\[\/img\]/i;
+            if (isImage.test(string)) return defaultmapsettings.showChatImages ? '<img src=\"' + string.match(isImage)[1].replace('http:', 'https:') + '\" style=\"width:100%;border:none;\">' : '';
+            var url = /\[yt\]([\w-]{11})\[\/yt\]/i;
+            if (url.test(string)) return defaultmapsettings.showChatVideos ? '<iframe type=\"text/html\" width=\"100%\" height=\"auto\" src=\"https://www.youtube.com/embed/' + string.match(url)[1] + '?autoplay=1&amp;vq=tiny\" frameborder=\"0\" />' : '';
+			let escapedHtml = this.escapeHTML(string);
+			if (defaultmapsettings.chatEmoticons) {
+                escapedHtml = this.parseEmoticons(escapedHtml);
+            }
+            return escapedHtml;           
         },
         'parseEmoticons': function(string) {
             /*return String(string).replace(/\&lt\;3/g, '<3').replace(/(O\:\)|3\:\)|8\=\)|\:\)|\;\)|\=\)|\:D|X\-D|\=D|\:\(|\;\(|\:P|\;P|\:\*|\$\)|\<3|\:o|\(\:\||\:\||\:\\|\:\@|\|\-\)|\^\_\^|\-\_\-|\$\_\$|\(poop\)|\(fuck\)|\(clap\)|\(ok\)|\(victory\)|\(y\)|\(n\))/g, function(string) {
@@ -6413,6 +6417,83 @@ var thelegendmodproject = function() {
             });
 
         },
+        'displayChatMessage': function(time, type, id, nick) {        
+          let mcolor = defaultmapsettings.messageNickColor, 
+              ccolor = defaultmapsettings.commandsNickColor,
+              userId = this.checkPlayerID(id);
+            if (userId !== null&&defaultmapsettings.coloredNicks) {
+                const teamPlayer = this.teamPlayers[userId];
+                mcolor = teamPlayer.color;
+                ccolor = teamPlayer.color;
+            } 
+			else if(defaultmapsettings.coloredNicks&&id==this.playerID) {
+             mcolor = ogario.playerColor;
+             ccolor = ogario.playerColor;
+            }        
+            if (nick.length == 0||this.blacklist.some(e => nick.toUpperCase().indexOf(e.toUpperCase()) !=-1)) {
+                return;
+            }
+            let userName = nick.split(': ', 1).toString();
+            const parseMessage = this.parseMessage(nick.replace(a + ': ', ''));
+            if (userName.length == 0 || userName.length > 15 || parseMessage.length == 0) {
+                return;
+            }
+            let text = '';
+            if (id != 0 && id != this.playerID) {
+                this.addChatUser(id, userName);
+				text = '<a href=\"#\" data-user-id=\"' + id + '\" class=\"mute-user ogicon-user-minus\"></a>' 
+            }
+            userName = this.escapeHTML(userName);
+            //let userNameEl = document.createElement(`span`).textContent(``).classList.add("user-list").textContent(userName).style.color(mcolor);
+            if (type == 101) {
+                if (defaultmapsettings.showChatBox) {
+                    $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + text + '<span class="message-nick" style = "color: ${mcolor}">' + userName + ': </span><span class="message-text">'+ parseMessage +'</span></div>');
+                    $('#chat-box').perfectScrollbar('update');
+                    $('#chat-box').animate({
+                        scrollTop: $('#chat-box').prop('scrollHeight')
+                    }, 500);
+                    if (defaultmapsettings.chatSounds) {
+                        this.playSound(this.messageSound);
+                    }
+                    return;
+                }
+                if (!defaultmapsettings.hideChat) {
+					
+					toastr.success('<span class=\"message-nick\">' + userName + ': </span><span class=\"message-text\">' + parseMessage + '</span>' + text)
+                    if (defaultmapsettings.chatSounds) {
+                        this.playSound(this.messageSound);
+                    }
+                }
+                this.chatHistory.push({
+                    nick: userName,
+                    message: parseMessage
+                });
+                if (this.chatHistory.length > 15) {
+                    this.chatHistory.shift();
+                }
+            } else if (type == 102) {
+                if (defaultmapsettings.showChatBox) {                  
+					$('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + text + '<span class=\"command-nick\" style = "color: ${mcolor}">' + userName + ': </span><span class="command-text">' + parseMessage + '</span></div>');
+					$('#chat-box').perfectScrollbar('update');
+                    $('#chat-box').animate({
+                        scrollTop: $('#chat-box').prop('scrollHeight')
+                    }, 500);
+                    if (defaultmapsettings.chatSounds) {
+                        this.playSound(this.commandSound);
+                    }
+                    return;
+                }
+                if (!defaultmapsettings.hideChat) {
+					toastr.warning('<span class=\"command-nick\" style = "color: ${ccolor}">' + userName + ': </span><span class=\"command-text\">' + parseMessage + '</span>' + text)
+                    if (defaultmapsettings.chatSounds) {
+                        this.playSound(this.commandSound);
+                    }
+                }
+            } else {
+                $('#messages').append(nick);
+            }
+        },	
+/*		
         'displayChatMessage': function(time, caseof, plId, msg) {
             if (0 != msg.length) {
                 //console.log(msg);
@@ -6439,6 +6520,7 @@ var thelegendmodproject = function() {
                 }
             }
         },
+		*/
         'displayUserList': function(users, activeUser, html, isMute, o) {
             var text = '';
             if (Object.keys(users).length) {
