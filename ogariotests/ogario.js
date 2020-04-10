@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.346 MEGA TEST
+// v1.347 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9387,24 +9387,24 @@ var thelegendmodproject = function() {
                         }
                         var t = 0;
                         for (; t < this.cells.length; t++) {
-                            var e = this.cells[t];
-                            if (e.isVirus || e.spectator > 0) {
+                            var cell = this.cells[t];
+                            if (cell.isVirus || cell.spectator > 0) {
                                 continue;
                             }
                             //else{
                             //console.log(i); i for food is 13
-                            var i = ~~(e.size * e.size / 100);
-                            if (i != 13) {
-                                var s = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
-                                var o = i / s;
-                                var a = s < 1000 ? 0.35 : 0.38;
+                            var size = ~~(cell.size * cell.size / 100);
+                            if (size != 13) {
+                                var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+                                var fixMass = size / mass;
+                                var smallMass = mass < 1000 ? 0.35 : 0.38;
                                 if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
-
-                                    e.oppColor = this.setCellOppColor(e.isPlayerCell, o, a);
-
+                                    cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass, smallMass);
                                 }
-                                if (!(e.isPlayerCell || !defaultmapsettings.splitRange && !defaultmapsettings.oppRings)) {
-                                    this.cacheCells(e.x, e.y, e.size, o, a);
+                                //if (!(cell.isPlayerCell || !defaultmapsettings.splitRange && !defaultmapsettings.oppRings)) {
+								if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {	
+                                    //this.cacheCells(cell.x, cell.y, cell.size, fixMass, smallMass);
+									this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
                                 }
                             }
                             //}
@@ -9429,7 +9429,34 @@ var thelegendmodproject = function() {
                         'y': e,
                         'size': i
                     });
-                },*/
+                },
+                'cacheCells': function(t, e, i, s, o) {
+                    return s >= 5.32 ? void this.biggerSTEDCellsCache.push({
+                        'x': t,
+                        'y': e,
+                        'size': i
+                    }) : s >= 2.66 ? void this.biggerSTECellsCache.push({
+                        'x': t,
+                        'y': e,
+                        'size': i
+                    }) : s >= 1.33 ? void this.biggerCellsCache.push({
+                        'x': t,
+                        'y': e,
+                        'size': i
+                    }) : s < 1.33 && s > 0.75 ? void 0 : s > 0.375 ? void this.smallerCellsCache.push({
+                        'x': t,
+                        'y': e,
+                        'size': i
+                    }) : s > 0.1875 ? void this.STECellsCache.push({
+                        'x': t,
+                        'y': e,
+                        'size': i
+                    }) : void this.STEDCellsCache.push({
+                        'x': t,
+                        'y': e,
+                        'size': i
+                    });
+                },	*/			
                 //Sonia (entire function updated) // this is great :D
             'cacheCells': function(x, y, targetX, targetY, size, mass, smallMass) {
 					return mass >= 5.32 ? void this.biggerSTEDCellsCache.push({
@@ -9697,7 +9724,7 @@ var thelegendmodproject = function() {
                             if (defaultmapsettings.oppRings) {
                                 //this.drawOppRings(this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache);
                                 //this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
-								this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache); //Sonia
+								this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache); 
 							}
                             if (defaultmapsettings.cursorTracking) {
                                 this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
