@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.356 MEGA TEST
+// v1.357 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5695,10 +5695,10 @@ var thelegendmodproject = function() {
                     this.sendPlayerUpdate();
                     break;
                 case 20:
-                    this.updateTeamPlayer.(message);
+                    this.updateTeamPlayer(message);
                     break;
                 case 30:
-                    this.updateTeamPlayerPosition.(message);
+                    this.updateTeamPlayerPosition(message);
                     break;
                 case 96:
                     break;
@@ -5707,26 +5707,26 @@ var thelegendmodproject = function() {
             }
         },
         //Sonia4
-        'SLGHandler': function(t) {
-            var s = this.unpackSLG(t);
-            if (s == null) return;
-            switch (t.charAt(0)) {
+        'SLGHandler': function(message) {
+            var packet = this.unpackSLG(message);
+            if (packet == null) return;
+            switch (message.charAt(0)) {
                 case "R":
-                    this.getSuperLegendSDATA(s);
+                    this.getSuperLegendSDATA(packet);
                     break;
                 case "Q":
-                    //this.getSLGQinfo(s);
+                    //this.getSLGQinfo(packet);
                     break;
             }
         },
-        'SLGSimpleHandler': function(t) {
-            var Socket3data = t;
-            //console.log("recieve", t);
+        'SLGSimpleHandler': function(message) {
+            var Socket3data = message;
+            //console.log("recieve", message);
             if (Socket3data == null) {
                 return;
             } else {
-                //var ids = Socket3data.t;
-                var ids = window.decodeURIComponent(escape(Socket3data.t));
+                //var ids = Socket3data.message;
+                var ids = window.decodeURIComponent(escape(Socket3data.message));
                 //var id = this.checkPlayerID(ids);
                 var id = this.checkPlayerNick(ids);
                 if (null != id) {
