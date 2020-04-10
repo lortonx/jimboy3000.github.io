@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.362 MEGA TEST
+// v1.363 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5581,7 +5581,7 @@ var thelegendmodproject = function() {
             if (window.SLGsocket) {
                 window.SLGsocket.onmessage = null;
                 try {
-                    window.SLGsocket.close.();
+                    window.SLGsocket.close();
                 } catch (ogarcloseconlabel) {}
                 window.SLGsocket = null;
             }
