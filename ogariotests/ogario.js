@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.344 MEGA TEST
+// v1.345 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11472,14 +11472,14 @@ var thelegendmodproject = function() {
                             default:
                                 normalKey = String.fromCharCode(key.keyCode);
                         }
-						if (specialKey !== '') {
+						/*if (specialKey !== '') {
 							if (normalKey !== '') {
 								return specialKey + '+' + normalKey;
 							}
 							return specialKey;
-						}
-						return normalKey;						
-                        //return '' !== specialKey ? '' !== normalKey ? specialKey + '+' + normalKey : specialKey : normalKey;
+						}						
+						return normalKey;	*/					
+                        return '' !== specialKey ? '' !== normalKey ? specialKey + '+' + normalKey : specialKey : normalKey;
                     },
                     'deleteHotkey': function(name, id) {
                         delete ogario1Hotkeys[name];
