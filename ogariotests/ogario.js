@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.342 MEGA TEST
+// v1.343 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11354,7 +11354,7 @@ var thelegendmodproject = function() {
 							this.loadDefaultHotkeys()
 						}
 						if (null !== window.localStorage.getItem('ogarioCommands')){
-							chatCommand = JSON.parse(window.localStorage.getItem('ogarioCommands');
+							chatCommand = JSON.parse(window.localStorage.getItem('ogarioCommands'));
 						}
                     },
                     'saveHotkeys': function() {
