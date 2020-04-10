@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.347 MEGA TEST
+// v1.348 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9403,8 +9403,9 @@ var thelegendmodproject = function() {
                                 }
                                 //if (!(cell.isPlayerCell || !defaultmapsettings.splitRange && !defaultmapsettings.oppRings)) {
 								if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {	
-                                    //this.cacheCells(cell.x, cell.y, cell.size, fixMass, smallMass);
-									this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
+                                    this.cacheCells(cell.x, cell.y, cell.size, fixMass);
+									//this.cacheCells(cell.x, cell.y, cell.size, fixMass, smallMass);
+									//this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
                                 }
                             }
                             //}
@@ -9430,34 +9431,6 @@ var thelegendmodproject = function() {
                         'size': i
                     });
                 },
-                'cacheCells': function(t, e, i, s, o) {
-                    return s >= 5.32 ? void this.biggerSTEDCellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : s >= 2.66 ? void this.biggerSTECellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : s >= 1.33 ? void this.biggerCellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : s < 1.33 && s > 0.75 ? void 0 : s > 0.375 ? void this.smallerCellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : s > 0.1875 ? void this.STECellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : void this.STEDCellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    });
-                },	*/			
-                //Sonia (entire function updated) // this is great :D
             'cacheCells': function(x, y, targetX, targetY, size, mass, smallMass) {
 					return mass >= 5.32 ? void this.biggerSTEDCellsCache.push({
 						x: x,
@@ -9502,7 +9475,36 @@ var thelegendmodproject = function() {
 						targetY: targetY,
 						size: size
 					});
-				},
+				},*/
+				
+                //Sonia (entire function updated) // this is great :D
+                'cacheCells': function(x, y, size, mass) {
+                    return mass >= 5.32 ? void this.biggerSTEDCellsCache.push({
+                        'x': x,
+                        'y': y,
+                        'size': size
+                    }) : mass >= 2.66 ? void this.biggerSTECellsCache.push({
+                        'x': x,
+                        'y': y,
+                        'size': size
+                    }) : mass >= 1.33 ? void this.biggerCellsCache.push({
+                        'x': x,
+                        'y': y,
+                        'size': size
+                    }) : mass < 1.33 && mass > 0.75 ? void 0 : mass > 0.375 ? void this.smallerCellsCache.push({
+                        'x': x,
+                        'y': y,
+                        'size': size
+                    }) : mass > 0.1875 ? void this.STECellsCache.push({
+                        'x': x,
+                        'y': y,
+                        'size': size
+                    }) : void this.STEDCellsCache.push({
+                        'x': x,
+                        'y': y,
+                        'size': size
+                    });
+                },				
                 'setCellOppColor': function(t, e, i) {
                     //return t ? ogarcopythelb.color : e > 11 ? '#FF008C' : e >= 2.5 ? '#BE00FF' : e >= 1.25 ? '#FF0A00' : e < 1.25 && e > 0.75 ? '#FFDC00' : e > i ? '#00C8FF' : '#64FF00';
                     //return t ? ogarcopythelb.color : e > 10.64 ? defaultSettings.enemyBSTEDColor : e >= 5.32 ? defaultSettings.enemyBSTEDColor : e >= 2.66 && e <= 5.32 ? defaultSettings.enemyBSTEColor : e >= 1.33 && e <= 2.66 ? defaultSettings.enemyBColor : e < 1.33 && e > 0.75 ? '#FFDC00' : e < 0.75 && e > 0.375 ? defaultSettings.enemySSTEDColor : e > i ? '#00C8FF' : defaultSettings.enemySSTEColor; //Sonia
