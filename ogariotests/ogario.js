@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.361 MEGA TEST
+// v1.362 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4498,7 +4498,7 @@ var thelegendmodproject = function() {
             });
             Array.prototype.slice.call(document.querySelectorAll(".js-switch")).forEach(function(remove) {
                 new Switchery(remove, {
-                    "color": defaultSettings.menuMainColor",
+                    "color": defaultSettings.menuMainColor,
                     "size": "small"
                 });
             });
