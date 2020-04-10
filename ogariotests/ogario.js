@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.360 MEGA TEST
+// v1.361 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -106,7 +106,7 @@ function deleteGamemode() {
 function logoutPSArenas() {
     if (master.accessToken) {
         logout();
-        toastr["warning"]("<b>[SERVER]:</b> Do not log in").css("width", "210px");
+        toastr.warning("<b>[SERVER]:</b> Do not log in").css("width", "210px");
     }
 }
 
@@ -289,7 +289,7 @@ window.connectionBots = {
         document.getElementById('stopBots').disabled = false
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
-        toastr["info"]('<b>[SERVER]:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
+        toastr.info('<b>[SERVER]:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
         window.RequestedTokens = 100000;
         legendmod.sendTokenForBots();
         if (!window.sendFirstTimeTokenBots) {
@@ -328,14 +328,14 @@ window.connectionBots = {
                 window.bots.ai = false
                 break
             case 3:
-                //toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
+                //toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 window.botscaptcha = true;
                 if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
-                    toastr["info"]('<b>[SERVER]:</b> Solve the captcha for your bots')
+                    toastr.info('<b>[SERVER]:</b> Solve the captcha for your bots')
                     window.agarCaptcha.requestCaptcha()
                     //window.master.recaptchaRequested()
                 } else {
-                    toastr["info"]('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
+                    toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
                 }
                 break
             case 4:
@@ -345,12 +345,12 @@ window.connectionBots = {
                 $('#slots').html(dataView.getUint8(1) + "/200")
                 break
             case 10:
-                toastr["info"]('<b>[SERVER]:</b> This version of Smart bots support Captcha Solver');
+                toastr.info('<b>[SERVER]:</b> This version of Smart bots support Captcha Solver');
                 window.LatestBotsVersion = true;
                 $('#handleCaptchaBotsArea').show();
                 break
             case 10:
-                toastr["info"]('<b>[SERVER]:</b> Server or bots is on closing state');
+                toastr.info('<b>[SERVER]:</b> Server or bots is on closing state');
                 break
         }
     },
@@ -2747,11 +2747,11 @@ var thelegendmodproject = function() {
                 this.addCustomCSS('menuPanelColorCSS', css);
             },
             'setMenuTextColor': function() {
-                var css = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + defaultSettings['menuTextColor'] + '}#skins a.default:hover{border-color:' + defaultSettings['menuTextColor'] + '}::-webkit-input-placeholder{color:' + defaultSettings.menuTextColor2 + '!important}::-moz-placeholder{color:' + defaultSettings.menuTextColor2 + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + defaultSettings.menuTextColor2 + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + defaultSettings.menuTextColor2 + '}';
+                var css = '.agario-panel,.agario-side-panel,.agario-panel input,.agario-panel select,.agario-side-panel input,.agario-side-panel select,.input-group-addon,.dark .yt-username,#stream-mode,#hide-url,.menu-tabs a,.submenu-tabs a,#skins a.default:hover,#quick-menu a,#prev-profile.default:hover,#next-profile.default:hover,#statsText,#hotkeys,#hotkeys-cfg .command-in,#exp-imp{color:' + defaultSettings.menuTextColor + '}#skins a.default:hover{border-color:' + defaultSettings.menuTextColor + '}::-webkit-input-placeholder{color:' + defaultSettings.menuTextColor2 + '!important}::-moz-placeholder{color:' + defaultSettings.menuTextColor2 + '!important}#user-id-tag, #version-tag,#statsSubtext,#hotkeys-inst,#exp-imp textarea,.restore-settings a,.restore-settings a:hover{color:' + defaultSettings.menuTextColor2 + '}#hotkeys-cfg .command-in,#theme .color-box{border-color:' + defaultSettings.menuTextColor2 + '}';
                 this.addCustomCSS('menuTextColorCSS', css);
             },
             'setMenuButtons': function() {
-                var css = 'a,a:hover{color:' + defaultSettings.btn1Color + '}.btn,#hotkeys-cfg .custom-key-in{color:' + defaultSettings.menuBtnTextColor + '}.btn-primary{background-color:' + defaultSettings.btn1Color + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + defaultSettings['btn1Color2'] + '!important}.btn-success{background-color:' + defaultSettings['btn2Color'] + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + defaultSettings['btn2Color2'] + '!important}.btn-warning{background-color:' + defaultSettings['btn3Color'] + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + defaultSettings.btn3Color2 + '!important}.btn-danger{background-color:' + defaultSettings.btn4Color + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + defaultSettings.btn4Color2 + '!important}#hotkeys-cfg .custom-key-in{background-color:' + defaultSettings.btn4Color2 + ';border-color:' + defaultSettings.btn4Color2 + '}';
+                var css = 'a,a:hover{color:' + defaultSettings.btn1Color + '}.btn,#hotkeys-cfg .custom-key-in{color:' + defaultSettings.menuBtnTextColor + '}.btn-primary{background-color:' + defaultSettings.btn1Color + '!important}.btn-primary:active,.btn-primary:disabled,.btn-primary:focus,.btn-primary:hover{background-color:' + defaultSettings.btn1Color2 + '!important}.btn-success{background-color:' + defaultSettings.btn2Color + '!important}.btn-success:active,.btn-success:disabled,.btn-success:focus,.btn-success:hover{background-color:' + defaultSettings.btn2Color2 + '!important}.btn-warning{background-color:' + defaultSettings.btn3Color + '!important}.btn-warning:active,.btn-warning:disabled,.btn-warning:focus,.btn-warning:hover{background-color:' + defaultSettings.btn3Color2 + '!important}.btn-danger{background-color:' + defaultSettings.btn4Color + '!important}.btn-danger:active,.btn-danger:disabled,.btn-danger:focus,.btn-danger:hover{background-color:' + defaultSettings.btn4Color2 + '!important}#hotkeys-cfg .custom-key-in{background-color:' + defaultSettings.btn4Color2 + ';border-color:' + defaultSettings.btn4Color2 + '}';
                 this.addCustomCSS('menuButtonsCSS', css);
             },
             'setMenuBg': function() {
@@ -2774,8 +2774,8 @@ var thelegendmodproject = function() {
             'setHudFont': function() {
                 this.setFont('hudFont', defaultSettings.hudFont);
                 $('#overlays-hud').css({
-                    'font-family': defaultSettings['hudFontFamily'],
-                    'font-weight': defaultSettings['hudFontWeight']
+                    'font-family': defaultSettings.hudFontFamily,
+                    'font-weight': defaultSettings.hudFontWeight
                 });
             },
             'setHudScale': function() {
@@ -2795,7 +2795,7 @@ var thelegendmodproject = function() {
                 $('#target-hud').css('padding-top', r + 'px');
             },
             'setChat': function() {
-                this['setChatColors']();
+                this.setChatColors();
                 this.setChatScale();
             },
             'setChatColors': function() {
@@ -3326,7 +3326,7 @@ var thelegendmodproject = function() {
             }, 50);
         },
         'setBlockPopups': function() {
-            this.protocolMode ? $('#block-warn').hide() : defaultmapsettings["blockPopups"] ? this["blockPopups"]() : this.unblockPopups();
+            this.protocolMode ? $('#block-warn').hide() : defaultmapsettings.blockPopups ? this.blockPopups() : this.unblockPopups();
         },
         'blockPopups': function() {
             $('#openfl-content, #openfl-overlay').hide();
@@ -3342,7 +3342,7 @@ var thelegendmodproject = function() {
             $('#block-warn').hide();
         },
         'tempUnblockPopups': function() {
-            if (defaultmapsettings["blockPopups"]) {
+            if (defaultmapsettings.blockPopups) {
                 this.unblockPopups();
             }
         },
@@ -3481,7 +3481,7 @@ var thelegendmodproject = function() {
                             t += '<span class=\"hud-main-color\">[' + this.calculateMapSector(this.w, this.u) + ']</span>';
                             t += '<span class=\"top5-mass-color\">[' + this.shortMassFormat(this.top5[o].mass) + ']</span> ' + this.escapeHTML(this.top5[o].nick) + '</li>';
                         }
-                        this['top5pos'].innerHTML = t,
+                        this.top5pos.innerHTML = t,
                             ogario.play && ogario.playerMass && (e += ogario.playerMass, s++),
                             this.top5totalMass.textContent = this.shortMassFormat(e),
                             this.top5totalPlayers.textContent = s;
@@ -3971,7 +3971,7 @@ var thelegendmodproject = function() {
                 $('#clantag').val(ogario1PlayerProfiles[this.selectedProfile].clanTag);
                 $('#skin').val(ogario1PlayerProfiles[this.selectedProfile].skinURL);
                 $('#color').val(ogario1PlayerProfiles[this.selectedProfile].color);
-                $('.skin')['colorpicker']('setValue', ogario1PlayerProfiles[this.selectedProfile].color);
+                $('.skin').colorpicker('setValue', ogario1PlayerProfiles[this.selectedProfile].color);
             }
 
             $('#skins a').removeClass('selected');
@@ -4337,16 +4337,16 @@ var thelegendmodproject = function() {
                 t.unblockPopups();
             });
             $(document).on("click", "#openfl-overlay.disabler", function() {
-                if (defaultmapsettings["blockPopups"]) {
-                    t["blockPopups"]();
+                if (defaultmapsettings.blockPopups) {
+                    t.blockPopups();
                 }
             });
             $(document).on("click", "#openfl-content", function() {
-                if (defaultmapsettings["blockPopups"]) {
+                if (defaultmapsettings.blockPopups) {
                     var container = $(this);
                     setTimeout(function() {
                         if (!container.is(":visible")) {
-                            t["blockPopups"]();
+                            t.blockPopups();
                         }
                     }, 1000);
                 }
@@ -4498,14 +4498,14 @@ var thelegendmodproject = function() {
             });
             Array.prototype.slice.call(document.querySelectorAll(".js-switch")).forEach(function(remove) {
                 new Switchery(remove, {
-                    "color": defaultSettings["menuMainColor"],
+                    "color": defaultSettings.menuMainColor",
                     "size": "small"
                 });
             });
             $("input[type='range']").rangeslider({
                 "polyfill": false
             });
-            toastr["options"] = {
+            toastr.options = {
                 "newestOnTop": false,
                 "positionClass": "toast-bottom-left",
                 "timeOut": 15000
@@ -4557,7 +4557,7 @@ var thelegendmodproject = function() {
                 $("#join-party-btn-2").click(),
                 Array.prototype.slice.call(document.querySelectorAll(".js-switch-vanilla")).forEach(function(remove) {
                     new Switchery(remove, {
-                        "color": defaultSettings["menuMainColor"],
+                        "color": defaultSettings.menuMainColor,
                         "size": "small"
                     });
                 }), $("#nick").val(ogarcopythelb.nick).blur(),
@@ -4821,7 +4821,7 @@ var thelegendmodproject = function() {
             //changed
             ogarcopythelb.clanTag = e.trim();
             //ogarcopythelb.clanTag = e.trim() + "@";
-            ogarcopythelb.skinURL = this['checkSkinURL'](o.trim());
+            ogarcopythelb.skinURL = this.checkSkinURL(o.trim());
             if (7 == a.length) {
                 ogarcopythelb.color = a;
             }
@@ -4847,7 +4847,7 @@ var thelegendmodproject = function() {
                 t[e] = new Image();
             }
             t[e].crossOrigin = 'Anonymous';
-            t[e]['onload'] = function() {
+            t[e].onload = function() {
                     this.complete &&
                         this.width &&
                         this.height &&
@@ -4864,7 +4864,7 @@ var thelegendmodproject = function() {
                                 i.cacheSkin3(i.customSkinsCache))
                         );
                 },
-                t[e]['onerror'] = function() {
+                t[e].onerror = function() {
                     //console.log("error loading image: "+ e);
                     if (e && e.includes(window.EnvConfig.config_url)) {
                         e = "https://legendmod.ml/vanillaskins/" + e.split('/').pop(); //if CORS policy on miniclip images, use other source
@@ -5461,17 +5461,17 @@ var thelegendmodproject = function() {
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
                 buf.setUint16(1, 401, true);
-                app['sendBuffer'](buf);
+                app.sendBuffer(buf);
                 app.sendPartyData();
             }
-            this.socket['onmessage'] = function(buf) {
-                app['handleMessage'](buf);
+            this.socket.onmessage = function(buf) {
+                app.handleMessage(buf);
             }
-            this.socket['onclose'] = function(buf) {
+            this.socket.onclose = function(buf) {
                 //app.flushData();
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket close', buf);
             }
-            this.socket['onerror'] = function(buf) {
+            this.socket.onerror = function(buf) {
                 //app.flushData();
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket error', buf);
                 window.noOgarioSocket = true;
@@ -5511,26 +5511,26 @@ var thelegendmodproject = function() {
             window.SLGsocket = new WebSocket("wss://cloud.achex.ca/JIMBOY3200" + room);
             window.SLGsocket.binaryType = 'arraybuffer';
             t = this;
-            window.SLGsocket['onopen'] = function() {
+            window.SLGsocket.onopen = function() {
                 window.SLG3NumberTries = 0;
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket open:', room);
                 //
-                window.SLGsocket['send'](JSON.stringify({
+                window.SLGsocket.send(JSON.stringify({
                     //"auth": "JIM2" + customLMID,
                     "auth": "JIM2" + legendmod3.playerID,
                     "password": "legendmod2"
                 }));
-                window.SLGsocket['send'](JSON.stringify({
+                window.SLGsocket.send(JSON.stringify({
                     //"joinHub": "legendmod2"
                     "joinHub": $("#server-token").val()
                 }));
                 //					
             }
-            window.SLGsocket['onmessage'] = function(e) {
+            window.SLGsocket.onmessage = function(e) {
                 //console.log(e)
                 t.handleSLGMessage(e);
             }
-            window.SLGsocket['onclose'] = function(e) {
+            window.SLGsocket.onclose = function(e) {
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket close');
                 //setTimeout(function() {
                 if (window.SLG3NumberTries < 2) {
@@ -5538,13 +5538,13 @@ var thelegendmodproject = function() {
                 }
                 //}, 1000)					
             }
-            window.SLGsocket['onerror'] = function(e) {
+            window.SLGsocket.onerror = function(e) {
                 //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket error', e);	
                 window.SLG3NumberTries++;
                 //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' SLG socket error');
             };
-            window.SLGsocket['closeAndOpen'] = function(e) {
-                window.SLGsocket['onclose'] = function(e) {
+            window.SLGsocket.closeAndOpen = function(e) {
+                window.SLGsocket.onclose = function(e) {
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Previous SLG socket closed async');
                 }
                 if (window.SLG3NumberTries < 2) {
@@ -5562,16 +5562,16 @@ var thelegendmodproject = function() {
             }
             //Sonia4
             if (window.SLGsocket) {
-                window.SLGsocket['onmessage'] = null;
+                window.SLGsocket.onmessage = null;
                 try {
-                    window.SLGsocket['close']();
+                    window.SLGsocket.close();
                 } catch (ogarcloseconlabel) {}
                 window.SLGsocket = null;
             }
             if (window.Socket3) {
-                window.Socket3['onmessage'] = null;
+                window.Socket3.onmessage = null;
                 try {
-                    window.Socket3['close']();
+                    window.Socket3.close();
                 } catch (ogarcloseconlabel) {}
                 window.Socket3 = null;
             }
@@ -5579,9 +5579,9 @@ var thelegendmodproject = function() {
         //Sonia6
         'closeSLGConnection': function() {
             if (window.SLGsocket) {
-                window.SLGsocket['onmessage'] = null;
+                window.SLGsocket.onmessage = null;
                 try {
-                    window.SLGsocket['close']();
+                    window.SLGsocket.close.();
                 } catch (ogarcloseconlabel) {}
                 window.SLGsocket = null;
             }
@@ -5598,7 +5598,7 @@ var thelegendmodproject = function() {
                 this.privateMode = !this.privateMode;
                 if (this.isSocketOpen()) {
                     this.closeConnection();
-                    toastr["error"]("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
+                    toastr.error("Zamkni\u0119to po\u0142\u0105czenie z serwerem!");
                 }
                 if (this.privateMode) {
                     toastr.info("Prze\u0142\u0105czono na serwer prywatny!");
@@ -5764,7 +5764,7 @@ var thelegendmodproject = function() {
             if (this.isSocketOpen()) {
                 var view = this.createView(1);
                 view.setUint8(0, state);
-                this['sendBuffer'](view);
+                this.sendBuffer(view);
             }
         },
         'sendPlayerSpawn': function() {
@@ -6351,7 +6351,7 @@ var thelegendmodproject = function() {
                     view.setUint32(2, this.playerID, true),
                     view.setUint32(6, 0, true);
                 for (var length = 0; length < message.length; length++) view.setUint16(10 + 2 * length, message.charCodeAt(length), true);
-                this['sendBuffer'](view),
+                this.sendBuffer(view),
                     this.lastMessageSentTime = Date.now();
             }
         },
@@ -6360,7 +6360,7 @@ var thelegendmodproject = function() {
         },
         'sendCommand': function(command) {
             var prepareCommand = this.prepareCommand(chatCommand['comm' + command]);
-            this['sendChatMessage'](102, prepareCommand);
+            this.sendChatMessage(102, prepareCommand);
         },
         'addChatUser': function(id, name) {
             this.chatUsers[id] = name;
@@ -6417,85 +6417,6 @@ var thelegendmodproject = function() {
             });
 
         },
-		/*
-        'displayChatMessage': function(time, type, id, nick) {        
-          let mcolor = defaultmapsettings.messageNickColor; 
-          let ccolor = defaultmapsettings.commandsNickColor;
-          let userId = this.checkPlayerID(id);
-            if (userId !== null&&defaultmapsettings.coloredNicks) {
-                const teamPlayer = this.teamPlayers[userId];
-                mcolor = teamPlayer.color;
-                ccolor = teamPlayer.color;
-            } 
-			else if(defaultmapsettings.coloredNicks&&id==this.playerID) {
-             mcolor = ogario.playerColor;
-             ccolor = ogario.playerColor;
-            }        
-            if (nick.length == 0||this.blacklist.some(e => nick.toUpperCase().indexOf(e.toUpperCase()) !=-1)) {
-                return;
-            }
-            let userName = nick.split(': ', 1).toString();
-            const parseMessage = this.parseMessage(nick.replace(userName + ': ', ''));
-            if (userName.length == 0 || userName.length > 15 || parseMessage.length == 0) {
-                return;
-            }
-            let text = '';
-            if (id != 0 && id != this.playerID) {
-                this.addChatUser(id, userName);
-				text = '<a href=\"#\" data-user-id=\"' + id + '\" class="mute-user ogicon-user-minus"></a>' 
-            }
-            userName = this.escapeHTML(userName);
-            //let userNameEl = document.createElement(`span`).textContent(``).classList.add("user-list").textContent(userName).style.color(mcolor);
-            if (type == 101) {
-                if (defaultmapsettings.showChatBox) {
-                    $('#chat-box').append('<div class="message"><span class="message-time">[' + time + '] </span>' + text + '<span class="message-nick" style = "color: ${mcolor}">' + userName + ': </span><span class="message-text">'+ parseMessage +'</span></div>');
-                    $('#chat-box').perfectScrollbar('update');
-                    $('#chat-box').animate({
-                        scrollTop: $('#chat-box').prop('scrollHeight')
-                    }, 500);
-                    if (defaultmapsettings.chatSounds) {
-                        this.playSound(this.messageSound);
-                    }
-                    return;
-                }
-                if (!defaultmapsettings.hideChat) {
-					
-					toastr.success('<span class="message-nick">' + userName + ': </span><span class="message-text">' + parseMessage + '</span>' + text)
-                    if (defaultmapsettings.chatSounds) {
-                        this.playSound(this.messageSound);
-                    }
-                }
-                this.chatHistory.push({
-                    nick: userName,
-                    message: parseMessage
-                });
-                if (this.chatHistory.length > 15) {
-                    this.chatHistory.shift();
-                }
-            } 
-			else if (type == 102) {
-                if (defaultmapsettings.showChatBox) {                  
-					$('#chat-box').append('<div class=\"message command\"><span class="command-tim">[' + time + '] </span>' + text + '<span class="command-nick" style = "color: ${mcolor}">' + userName + ': </span><span class="command-text">' + parseMessage + '</span></div>');
-					$('#chat-box').perfectScrollbar('update');
-                    $('#chat-box').animate({
-                        scrollTop: $('#chat-box').prop('scrollHeight')
-                    }, 500);
-                    if (defaultmapsettings.chatSounds) {
-                        this.playSound(this.commandSound);
-                    }
-                    return;
-                }
-                if (!defaultmapsettings.hideChat) {
-					toastr.warning('<span class="command-nick" style = "color: ${ccolor}">' + userName + ': </span><span class="command-text">' + parseMessage + '</span>' + text)
-                    if (defaultmapsettings.chatSounds) {
-                        this.playSound(this.commandSound);
-                    }
-                }
-            } 
-			else {
-                $('#messages').append(nick);
-            }
-        },	*/	
         'displayChatMessage': function(time, caseof, plId, msg) {
             if (0 != msg.length) {
                 //console.log(msg);
@@ -6622,10 +6543,16 @@ var thelegendmodproject = function() {
             }
         },
         'setTargetingInfo': function() {
-            this.targeting ? ($('#set-targeting').addClass('active'),
-                $('#target-status').show(),
-                2 != this.targetStatus && $('#target-summary').show()) : ($('#set-targeting').removeClass('active'),
-                $('#target-summary, #target-status').hide());
+            if (this.targeting) {
+                $('#set-targeting').addClass('active');
+                $('#target-status').show();
+                if (this.targetStatus != 2) {
+                    $('#target-summary').show();
+                }
+            } else {
+                $('#set-targeting').removeClass('active');
+                $('#target-summary, #target-status').hide();
+            }
         },
         'cancelTargeting': function() {
             this.setTargetStatus(0);
@@ -6672,9 +6599,14 @@ var thelegendmodproject = function() {
                     $('#target-panel-hud a').removeClass('active'); //$('#target-status').show().text('[' + textLanguage.targetNotSet + ']'), $('#target-panel-hud a').removeClass('active');
                     break;
                 case 1:
-                    this.targetStatus = 1,
-                        this.targeting || (this.targeting = true, ogario.targeting = true, $("#target-hud").show(), this.setTargetingInfo()),
-                        $('#target-skin, #target-nick, #target-status, #target-summary').show();
+					this.targetStatus = 1;
+					if (!this.targeting) {
+						this.targeting = true; 
+						ogario.targeting = true; 
+						$("#target-hud").show();
+						this.setTargetingInfo();
+					}
+                    $('#target-skin, #target-nick, #target-status, #target-summary').show();
                     break;
                 case 2:
                     //this.targetStatus = 2, $('#target-summary').hide(), $("#target-hud").show(), $('#target-status').show().text('[' + textLanguage.targetDead + ']'), i.resetTargetPosition();
@@ -6686,19 +6618,27 @@ var thelegendmodproject = function() {
             }
         },
         'changeTarget': function() {
-            for (var t = this.checkPlayerID(this.targetID), e = null, i = 0; i < this.teamPlayers.length; i++)
-                if (this.teamPlayers[i].alive) {
-                    if (null === t) {
-                        t = i;
+			var targetId  = this.checkPlayerID(this.targetID);
+            for (target = null, length = 0; length < this.teamPlayers.length; length++)
+                if (this.teamPlayers[length].alive) {
+                    if (null === targetId ) {
+                        targetId  = length;
                         break;
                     }
-                    if (i < t && null === e) e = i;
-                    else if (i > t) {
-                        e = i;
+                    if (length < targetId  && null === target) target = length;
+                    else if (length > targetId ) {
+                        target = length;
                         break;
                     }
                 }
-            null !== e && (t = e), null !== t ? this.setTarget(this.teamPlayers[t].id) : this.setTargetStatus(0);
+				if (target !== null) {
+					targetId = target;
+				}
+				if (targetId !== null) {
+					this.setTarget(this.teamPlayers[targetId].id);
+				} else {
+					this.setTargetStatus(0);
+				}				
         },
         'updateTarget': function(nick, skinUrl, x, y, mass, color, f) {
             ogario.setTargetPosition(x, y);
@@ -6720,36 +6660,41 @@ var thelegendmodproject = function() {
             }
             $('#target-status').text('[' + this.shortMassFormat(mass) + ']');
             //var l = this.calculateMapSector(x, y);
-            var l;
-            //c = textLanguage.targetDistance + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
+            var text;
+            //html = textLanguage.targetDistance + ': <span class=\"hud-main-color\">' + i.targetDistance + ' [' + l + ']</span>';
             var flag = false;
             for (var j = 0; j < legendmod.ghostCells.length; j++) {
                 if (legendmod.leaderboard[j] && this.targetNick == legendmod.leaderboard[j].nick) {
 
                     if (flag == false) {
-                        l = window.legendmod3.calculateMapSector(window.predictedGhostCells[j].x + legendmod.mapOffsetX, window.predictedGhostCells[j].y + legendmod.mapOffsetY)
+                        text = window.legendmod3.calculateMapSector(window.predictedGhostCells[j].x + legendmod.mapOffsetX, window.predictedGhostCells[j].y + legendmod.mapOffsetY)
                         flag = true;
                     }
                 }
             };
             if (flag == false && f >= 0) {
-                l = this.calculateMapSector(x, y);
+                text = this.calculateMapSector(x, y);
             } else if (flag == false && (this.calculateMapSector(x, y) == "C3" || legendmod.gameMode == ":party")) {
-                l = this.calculateMapSector(x, y);
+                text = this.calculateMapSector(x, y);
             } else if (flag == false) {
-                l = "Unknown";
+                text = "Unknown";
             };
-            c = Languageletter368 + ': <span class=\"hud-main-color\">' + ogario.targetDistance + ' [' + l + ']</span>';
+            html = Languageletter368 + ': <span class=\"hud-main-color\">' + ogario.targetDistance + ' [' + l + ']</span>';
             if (ogario.play) {
-                c += ' | ' + textLanguage['targetMass'] + ': <span class=\"hud-main-color\">' + this.shortMassFormat(mass + ogario.playerMass) + '</span>'
+                html += ' | ' + textLanguage.targetMass + ': <span class=\"hud-main-color\">' + this.shortMassFormat(mass + ogario.playerMass) + '</span>'
             }
-            $('#target-summary').html(c);
+            $('#target-summary').html(html);
             if (1 != this.targetStatus) {
                 this.setTargetStatus(1);
             }
         },
         'updateQuest': function() {
-            this.showQuest && ':ffa' === this.gameMode && window.MC && window.MC.getQuestProgressLabel && (this.questHUD.textContent = window.MC.getQuestProgressLabel());
+            if (!this.showQuest || this.gameMode !== ':ffa') {
+                return;
+            }
+            if (window.MC && window.MC.getQuestProgressLabel) {
+                this.questHUD.textContent = window.MC.getQuestProgressLabel();
+            }
         },
         'init': function() {
             this.loadSettings();
@@ -6813,9 +6758,11 @@ var thelegendmodproject = function() {
             this.redraw = false,
             this.remeasure = false,
             this.setTxt = function(ogariosettxtsetter) {
-                this.txt !== ogariosettxtsetter && (this.txt = ogariosettxtsetter,
-                    this.redraw = true,
-                    this.remeasure = true);
+                if(this.txt !== ogariosettxtsetter){
+					this.txt = ogariosettxtsetter;
+                    this.redraw = true;
+                    this.remeasure = true;
+				}
             },
             this.setColor = function(ogariocolorsetter) {
                 this.color !== ogariocolorsetter && (this.color = ogariocolorsetter,
@@ -6838,16 +6785,19 @@ var thelegendmodproject = function() {
                 this.font = this.fontWeight + ' ' + this.fontSize + 'px ' + this.fontFamily;
             },
             this.setFontFamily = function(ogariofontfamilysetter) {
-                this.fontFamily !== ogariofontfamilysetter && (this.fontFamily = ogariofontfamilysetter,
-                    this.setFont(),
-                    this.redraw = true,
-                    this.remeasure = true);
+                if (this.fontFamily !== ogariofontfamilysetter){
+					this.fontFamily = ogariofontfamilysetter;
+                    this.setFont();
+                    this.redraw = true;
+                    this.remeasure = true;
+				}
             },
             this.setFontWeight = function(ogariofontweightsetter) {
-                this.fontWeight != ogariofontweightsetter && (this.fontWeight = ogariofontweightsetter,
-                    this.setFont(),
-                    this.redraw = true,
-                    this.remeasure = true);
+                if (this.fontWeight != ogariofontweightsetter){
+					this.fontWeight = ogariofontweightsetter;
+                    this.setFont();
+                    this.redraw = true;
+                    this.remeasure = true;
             },
             this.setFontSize = function(ogariofontsizesetter) {
                 if (this.fontSize != ogariofontsizesetter) {
@@ -6892,21 +6842,28 @@ var thelegendmodproject = function() {
             //
             this.drawTxt = function(customTxt) {
                 return this.createCanvas(),
-                    this.redraw && (this.redraw = false,
-
-
-                        this.txtCanvas.width = this.measureWidthCustom(customTxt),
-                        this.txtCanvas.width = this.measureWidth(),
-                        this.txtCanvas.height = this.fontSize + this.margin * 2,
-                        this.txtCtx.font = this.font,
-                        this.txtCtx.globalAlpha = 1,
-                        this.txtCtx.lineWidth = this.strokeWidth,
-                        this.txtCtx.strokeStyle = this.strokeColor,
-                        this.txtCtx.fillStyle = this.color,
-                        customTxt && this.stroke && this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
-                        !customTxt && this.stroke && this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5)),
-                        customTxt && this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5)),
-                        !customTxt && this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5))),
+                    if (this.redraw){
+						this.redraw = false;
+                        this.txtCanvas.width = this.measureWidthCustom(customTxt);
+                        this.txtCanvas.width = this.measureWidth();
+                        this.txtCanvas.height = this.fontSize + this.margin * 2;
+                        this.txtCtx.font = this.font;
+                        this.txtCtx.globalAlpha = 1;
+                        this.txtCtx.lineWidth = this.strokeWidth;
+                        this.txtCtx.strokeStyle = this.strokeColor;
+                        this.txtCtx.fillStyle = this.color;
+                        if (customTxt && this.stroke){
+							this.txtCtx.strokeText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5));
+						}
+                        if (!customTxt && this.stroke){
+							this.txtCtx.strokeText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5));
+						}
+                        if (customTxt){ 
+							this.txtCtx.fillText(customTxt, this.strokeWidth, ~~(this.fontSize - this.margin * 0.5));
+						}
+                        if (!customTxt){
+							this.txtCtx.fillText(this.txt, this.strokeWidth, ~~(this.fontSize + this.margin * 0.5));
+						}
                     this.txtCanvas;
             };
 
@@ -7844,26 +7801,26 @@ var thelegendmodproject = function() {
             window.userBots.isAlive = false
             window.userBots.macroFeedInterval = null
             this.socket = new WebSocket(t);
-            this.socket['binaryType'] = 'arraybuffer';
-            this.socket['onopen'] = function() {
-                app['onOpen']();
+            this.socket.binaryType = 'arraybuffer';
+            this.socket.onopen = function() {
+                app.onOpen();
             };
-            this.socket['onmessage'] = function(t) {
-                app['onMessage'](t);
+            this.socket.onmessage = function(t) {
+                app.onMessage(t);
             };
-            this.socket['onerror'] = function(t) {
-                app['onError'](t);
+            this.socket.onerror = function(t) {
+                app.onError(t);
             };
-            this.socket['onclose'] = function(t) {
-                app['onClose'](t);
+            this.socket.onclose = function(t) {
+                app.onClose(t);
             };
-            ogarminimapdrawer['getWS'](this.ws);
-            ogarminimapdrawer['sendServerJoin']();
-            ogarminimapdrawer['sendServerData']();
-            ogarminimapdrawer['displayLeaderboard']('');
+            ogarminimapdrawer.getWS(this.ws);
+            ogarminimapdrawer.sendServerJoin();
+            ogarminimapdrawer.sendServerData();
+            ogarminimapdrawer.displayLeaderboard('');
             legendmod3.displayPartyBots();
-            if (window.master && window.master['onConnect']) {
-                window.master['onConnect']();
+            if (window.master && window.master.onConnect) {
+                window.master.onConnect();
             }
         },
         'onOpen': function() {
@@ -8220,7 +8177,7 @@ var thelegendmodproject = function() {
             if (!legendmod.integrity) {
                 return
             }
-            if (LM["accessTokenSent"]) {
+            if (LM.accessTokenSent) {
                 return;
             }
             if (!oW) {
@@ -8250,8 +8207,8 @@ var thelegendmodproject = function() {
                 data.push(shapes.charCodeAt(prev));
             }
             data = new Uint8Array(data);
-            var raw_basefont = new DataView(data["buffer"]);
-            this["sendMessage"](raw_basefont);
+            var raw_basefont = new DataView(data.buffer);
+            this.sendMessage(raw_basefont);
         },
         'sendFbToken': function(token) {
             //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Facebook token: " + token);
@@ -8325,7 +8282,7 @@ var thelegendmodproject = function() {
                 uint8Arr[value] = ipCheck.charCodeAt(value);
             }
             uint8Arr.set(options, ipCheck.length);
-            var dataview = new DataView(uint8Arr["buffer"]);
+            var dataview = new DataView(uint8Arr.buffer);
             var type = newLength - 1;
             var value = (type - 4 & -4) + 4 | 0;
             var newValue = type ^ 255;
@@ -8539,7 +8496,7 @@ var thelegendmodproject = function() {
                         }
                         if (flags & 8) {
                             nick = this.playerNick;
-                            id = `isPlayer`;
+                            id = 'isPlayer';
                             this.playerPosition = position;
                         }
                         if (flags & 16) {
@@ -8735,7 +8692,7 @@ var thelegendmodproject = function() {
                             default:
                                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", option, response);
                                 if (option == 20 && response == 20) {
-                                    toastr["error"]('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
+                                    toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
                                 }
                         }
                     }
@@ -8872,15 +8829,15 @@ var thelegendmodproject = function() {
                         temp += '<br>' + legendmod.battleRoyale.rank[i].place + ". " + legendmod.battleRoyale.rank[i].name;
                     }
                     temp += '<br>' + 'Your rank: <font color="yellow"><b>' + legendmod.battleRoyale.playerRank + '</b></font>';
-                    toastr["info"](temp);
+                    toastr.info(temp);
                     break;
                 case 226:
                     window.testobjectsOpcode226 = data;
                     var extraOptions = data.getUint16(1, !![]);
-                    data = this["createView"](3);
+                    data = this.createView(3);
                     data.setUint8(0, 227);
                     data.setUint16(1, extraOptions);
-                    this["sendMessage"](data);
+                    this.sendMessage(data);
                     break;
                 case 241:
                     window.testobjectsOpcode241 = data;
@@ -8888,8 +8845,8 @@ var thelegendmodproject = function() {
                     //window.testobjectsOpcode241.getUint32(1, true);
                     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received protocol key:', this.protocolKey);
                     window.generatedProtocolKey = this.protocolKey;
-                    var irenderfromagario = new Uint8Array(data['buffer'], s += 4);
-                    this.clientKey = this['generateClientKey'](this.ws, irenderfromagario);
+                    var irenderfromagario = new Uint8Array(data.buffer, s += 4);
+                    this.clientKey = this.generateClientKey(this.ws, irenderfromagario);
                     //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
                     if (window.master && window.master.login) {
                         window.master.login();
@@ -8902,19 +8859,19 @@ var thelegendmodproject = function() {
                     break;
                 case 255:
                     window.testobjectsOpcode255 = data;
-                    this['handleSubmessage'](data);
+                    this.handleSubmessage(data);
                     break;
 
                     //2020 jimboy3100 specific private servers
                 case 16:
                     //this.updateCells(new LMbuffer(data['buffer']), s);
-                    this.updateCells(new window.buffer.Buffer(data['buffer']), s);
+                    this.updateCells(new window.buffer.Buffer(data.buffer), s);
 
                     //this.countPps()
                     break;
                 case 64:
                     //var message = new LMbuffer(data['buffer'])						
-                    var message = new window.buffer.Buffer(data['buffer'])
+                    var message = new window.buffer.Buffer(data.buffer)
                     this.viewMinX = message.readDoubleLE(s);
                     s += 8;
                     this.viewMinY = message.readDoubleLE(s);
@@ -8937,7 +8894,7 @@ var thelegendmodproject = function() {
         },
         'handleSubmessage': function(message) {
             var e = 0;
-            switch ((message = this['decompressMessage'](message)).readUInt8(e++)) {
+            switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
                 case 16:
                     this.updateCells(message, e);
                     break;
@@ -9026,7 +8983,7 @@ var thelegendmodproject = function() {
                     text += '<span class=\"hud-main-color\">[' + ogarminimapdrawer.calculateMapSector(w + legendmod.mapOffsetX, u + legendmod.mapOffsetY) + ']</span>', text += '</span>';
                 }
             }
-            ogarminimapdrawer['displayLeaderboard'](teamText, text);
+            ogarminimapdrawer.displayLeaderboard(teamText, text);
             //ogarminimapdrawer['displayPartyBots']();
 
 
@@ -9110,12 +9067,12 @@ var thelegendmodproject = function() {
                 $('#set-ingameSpectator').show();
                 if (window.fullSpectator && spects.length == 0) {
                     if (defaultmapsettings.rotateMap) {
-                        toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Full Spectator" + " disabled the rotation of Map");
+                        toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + "Full Spectator" + " disabled the rotation of Map");
                     }
                     addFullSpectator();
                 } else if (window.ingameSpectator && spects.length == 0) {
                     if (defaultmapsettings.rotateMap) {
-                        toastr["info"]('<b>[' + Premadeletter123 + ']:</b> ' + "Ingame Spectator" + " disabled the rotation of Map");
+                        toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + "Ingame Spectator" + " disabled the rotation of Map");
                     }
                     addSpectator();
                 }
@@ -10082,7 +10039,7 @@ var thelegendmodproject = function() {
                     var posY = ~~((maxY - minY) / y);
                     var rePosX = 0;
                     var rePosY = 0;
-                    if (ctx.strokeStyle = stroke, ctx.fillStyle = color, ctx.lineWidth = width, type || !type && defaultmapsettings["showMiniMapGrid"]) {
+                    if (ctx.strokeStyle = stroke, ctx.fillStyle = color, ctx.lineWidth = width, type || !type && defaultmapsettings.showMiniMapGrid) {
                         ctx.beginPath();
                         var length = 0;
                         for (; length < x + 1; length++) {
@@ -11736,7 +11693,7 @@ var thelegendmodproject = function() {
                     ogarminimapdrawer.sendCommand(10);
                 }
             } else {
-                if (defaultmapsettings["mouseSplit"] && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {
+                if (defaultmapsettings.mouseSplit && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {
                     event.preventDefault();
                     if (ogarminimapdrawer) {
                         ogarminimapdrawer.split();
@@ -11892,8 +11849,8 @@ var thelegendmodproject = function() {
         'recaptchaBotResponse': function(token) {
             window.lastRecaptchaResponseToken = token;
             window.botscaptcha = false;
-            //toastr["info"]('Captcha token sent to node.js', token)
-            toastr["info"]('<b>[SERVER]:</b> Thank you for solving Captcha for bots')
+            //toastr.info('Captcha token sent to node.js', token)
+            toastr.info('<b>[SERVER]:</b> Thank you for solving Captcha for bots')
             window.connectionBots.send(window.buffers.captchatoken(token))
         },
         'setClientVersion': function(version, strVersion) {
@@ -11908,7 +11865,7 @@ var thelegendmodproject = function() {
                 arr.unshift(102);
             }
             arr = new Uint8Array(arr);
-            LM["sendMessage"](new DataView(arr["buffer"]));
+            LM.sendMessage(new DataView(arr.buffer));
         },
         'registerSkin': function(a, b, c, d) {
             window.customskinsname = a;
@@ -11990,7 +11947,7 @@ function setGUIEvents() {
     document.getElementById('connectBots').addEventListener('click', () => {
         if ($('#pushCaptchaBots').is(':checked')) {
             window.connectionBots.send(window.buffers.captchabots((window.bots.amount).toString()))
-            //toastr["info"]('<b>[SERVER]:</b> Bot pushed')
+            //toastr.info('<b>[SERVER]:</b> Bot pushed')
         } else {
             if (!window.connectionBots.ws || window.connectionBots.ws.readyState !== WebSocket.OPEN) window.connectionBots.connect()
         }
@@ -12006,15 +11963,15 @@ function setGUIEvents() {
                         if (window.LatestBotsVersion) {
                             $('#handleCaptchaBotsAreaSettings').show();
                         }
-                    } else toastr["info"]('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
-                } else toastr["info"]('<b>[SERVER]:</b> Bots Max amount is 199')
+                    } else toastr.info('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
+                } else toastr.info('<b>[SERVER]:</b> Bots Max amount is 199')
             } else {
-                toastr["info"]('<b>[SERVER]:</b> Party bots only available for Party mode')
+                toastr.info('<b>[SERVER]:</b> Party bots only available for Party mode')
             }
         }
     })
     document.getElementById('captchaBots').addEventListener('click', () => {
-        toastr["info"]('<b>[SERVER]:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
+        toastr.info('<b>[SERVER]:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
         window.RequestedTokens = 100000;
         legendmod.sendTokenForBots();
         //legendmod.sendTimeOutTokenForBots();
