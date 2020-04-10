@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.350 MEGA TEST
+// v1.351 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7711,7 +7711,7 @@ var thelegendmodproject = function() {
                 'pressedKeys': {},
                 'connect': function(t) {
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Connecting to game server:', t);
-                    var i = this;
+                    var app = this;
                     setTimeout(function() {
                         window.legendmod3.Socket3connect(t);
                         if (defaultmapsettings.rotateMap &&
@@ -7749,16 +7749,16 @@ var thelegendmodproject = function() {
                     this.socket = new WebSocket(t);
                     this.socket['binaryType'] = 'arraybuffer';
                     this.socket['onopen'] = function() {
-                        i['onOpen']();
+                        app['onOpen']();
                     };
                     this.socket['onmessage'] = function(t) {
-                        i['onMessage'](t);
+                        app['onMessage'](t);
                     };
                     this.socket['onerror'] = function(t) {
-                        i['onError'](t);
+                        app['onError'](t);
                     };
                     this.socket['onclose'] = function(t) {
-                        i['onClose'](t);
+                        app['onClose'](t);
                     };
                     ogarminimapdrawer['getWS'](this.ws);
                     ogarminimapdrawer['sendServerJoin']();
@@ -7769,57 +7769,57 @@ var thelegendmodproject = function() {
                         window.master['onConnect']();
                     }
                 },
-                'onOpen': function(t) {
+                'onOpen': function() {
                     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket open');
                     this.time = Date.now();
-                    var e = this.createView(5);
-                    e.setUint8(0, 254);
+                    var view = this.createView(5);
+                    view.setUint8(0, 254);
                     if (!window.gameBots.protocolVersion) window.gameBots.protocolVersion = master.protocolVersion;
-                    e.setUint32(1, this.protocolVersion, true);
-                    this.sendMessage(e);
-                    e = this.createView(5);
-                    e.setUint8(0, 255);
+                    view.setUint32(1, this.protocolVersion, true);
+                    this.sendMessage(view);
+                    view = this.createView(5);
+                    view.setUint8(0, 255);
                     if (!window.gameBots.clientVersion) window.gameBots.clientVersion = this.clientVersion
-                    e.setUint32(1, this.clientVersion, true);
-                    this.sendMessage(e);
+                    view.setUint32(1, this.clientVersion, true);
+                    this.sendMessage(view);
                     this.connectionOpened = true;
                 },
-                'onMessage': function(t) {
-                    t = new DataView(t['data']);
-                    if (this.protocolKey) {
-                        t = this['shiftMessage'](t, this.protocolKey ^ this.clientVersion);
-                    }
-                    this['handleMessage'](t);
+                'onMessage': function(message) {
+					message = new DataView(message.data);
+					if (this.protocolKey) {
+						message = this.shiftMessage(message, this.protocolKey ^ this.clientVersion);
+					}
+					this.handleMessage(message);	
                 },
                 'onError': function(t) {
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket error');
                     this.flushCellsData();
-                    if (window.master && window.master['onDisconnect']) {
-                        window.master['onDisconnect']();
-                    }
+					if (window.master && window.master.onDisconnect) {
+						window.master.onDisconnect();
+					}
                 },
                 'onClose': function(t) {
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Game server socket close');
                     this.flushCellsData();
-                    if (window.master && window.master['onDisconnect']) {
-                        window.master['onDisconnect']();
-                    }
+					if (window.master && window.master.onDisconnect) {
+						window.master.onDisconnect();
+					}
                 },
                 'closeConnection': function() {
-                    if (this.socket) {
-                        this.socket['onopen'] = null;
-                        this.socket['onmessage'] = null;
-                        this.socket['onerror'] = null;
-                        this.socket['onclose'] = null;
-                        try {
-                            this.socket['close']();
-                        } catch (ogarcloseconncloser) {}
-                        this.socket = null;
-                        this.ws = null;
-                    }
+					if (this.socket) {
+						this.socket.onopen = null;
+						this.socket.onmessage = null;
+						this.socket.onerror = null;
+						this.socket.onclose = null;
+						try {
+							this.socket.close();
+						} catch (error) {}
+						this.socket = null;
+						this.ws = null;
+					}					
                 },
                 'isSocketOpen': function() {
-                    return null !== this.socket && this.socket['readyState'] === this.socket['OPEN'];
+					return this.socket !== null && this.socket.readyState === this.socket.OPEN;					
                 },
                 'createView': function(t) {
                     return new DataView(new ArrayBuffer(t));
@@ -8052,55 +8052,55 @@ var thelegendmodproject = function() {
                                 }	
                     */
                 },
-                'sendNick2': function(t) {
-                    this.playerNick = t,
-                        t = window.unescape(window.encodeURIComponent(t));
-                    window.Bufferdata = t; //
-                    var view = this.createView(1 + t.length);
+                'sendNick2': function(nick) {
+                    this.playerNick = nick,
+                        nick = window.unescape(window.encodeURIComponent(nick));
+                    window.Bufferdata = nick; //
+                    var view = this.createView(1 + nick.length);
                     view.setUint8(0, 0);
-                    for (var s = 0; s < t.length; s++) view.setUint8(s + 1, t.charCodeAt(s));
+                    for (var length = 0; length < nick.length; length++) view.setUint8(length + 1, nick.charCodeAt(length));
                     this.sendMessage(view);
                 },
 
                 'sendPosition': function(cell, target2, specialcommand) {
-                    var t, e;
+                    var cursorX, cursorY;
                     if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
                         if (specialcommand) {
-                            console.log('hi')
-                            //t = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                            //e=9999;					
+                            //console.log('hi')
+                            //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+                            //cursorY=9999;					
                         } else if (!window.autoPlay) {
-                            t = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                            e = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
+                            cursorX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+                            cursorY = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
                             if (!this.play && this.targeting || this.pause) {
-                                t = this.targetX;
-                                e = this.targetY;
+                                cursorX = this.targetX;
+                                cursorY = this.targetY;
                             }
                         }
                         //autoplay handling
                         else if (!specialcommand) {
                             //if (typeof cell != "undefined") { //when used, autoplay not working as expected
                             if (Object.keys(target2).length == 0) {
-                                t = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(cell.x) : cell.x; //Sonia3
-                                e = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(cell.y) : cell.y; //Sonia3
-                                // var t = cell.x;
-                                //var e = cell.y;
+                                cursorX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(cell.x) : cell.x; //Sonia3
+                                cursorY = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(cell.y) : cell.y; //Sonia3
+                                // var cursorX = cell.x;
+                                //var cursorY = cell.y;
                             } else {
-                                t = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(target2.x) : target2.x; //Sonia3
-                                e = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(target2.y) : target2.y; //Sonia3
-                                //var t = target2.x;
-                                //var e = target2.y;
+                                cursorX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(target2.x) : target2.x; //Sonia3
+                                cursorY = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(target2.y) : target2.y; //Sonia3
+                                //var cursorX = target2.x;
+                                //var cursorY = target2.y;
                             }
                             //}
                         }
                         //
 
-                        var i = this.createView(13);
-                        i.setUint8(0, 16);
-                        i.setInt32(1, t, true);
-                        i.setInt32(5, e, true);
-                        i.setUint32(9, this.protocolKey, true);
-                        this.sendMessage(i);
+                        var view = this.createView(13);
+                        view.setUint8(0, 16);
+                        view.setInt32(1, cursorX, true);
+                        view.setInt32(5, cursorY, true);
+                        view.setUint32(9, this.protocolKey, true);
+                        this.sendMessage(view);
                     }
                     if (window.userBots.startedBots && window.userBots.isAlive) {
                         window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
@@ -8157,33 +8157,33 @@ var thelegendmodproject = function() {
                     var raw_basefont = new DataView(data["buffer"]);
                     this["sendMessage"](raw_basefont);
                 },
-                'sendFbToken': function(t) {
-                    //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Facebook token: " + t);
-                    this.sendAccessToken(t, 2);
+                'sendFbToken': function(token) {
+                    //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Facebook token: " + token);
+                    this.sendAccessToken(token, 2);
                 },
-                'sendGplusToken': function(t) {
-                    //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Google Plus token: " + t);
-                    //this.sendAccessToken(t, 3);
-                    this.sendAccessToken(t, 4);
+                'sendGplusToken': function(token) {
+                    //                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Google Plus token: " + token);
+                    //this.sendAccessToken(token, 3);
+                    this.sendAccessToken(token, 4);
                 },
-                'sendRecaptcha': function(t) {
-                    var e = this.createView(2 + t.length);
-                    e.setUint8(0, 86);
-                    for (var i = 0; i < t.length; i++) e.setUint8(1 + i, t.charCodeAt(i));
-                    e.setUint8(t.length + 1, 0);
-                    this.sendMessage(e);
+                'sendRecaptcha': function(token) {
+                    var view = this.createView(2 + token.length);
+                    view.setUint8(0, 86);
+                    for (var length = 0; length < token.length; length++) view.setUint8(1 + length, token.charCodeAt(length));
+                    view.setUint8(token.length + 1, 0);
+                    this.sendMessage(view);
                 },
-                'setClientVersion': function(t, e) {
+                'setClientVersion': function(version, string) {
 
                     if (window.disableIntegrity != true) { //
-                        this.clientVersion = t;
-                        this.clientVersionString = e;
-                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Versions: client:', t, e, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", "v" + window.getLatestconfigVersion, "configId:", window.getLatestID);
+                        this.clientVersion = version;
+                        this.clientVersionString = string;
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Versions: client:', version, string, "x-proto:", this.xsupportprotoversion, "protocol:", this.protocolVersion, "config:", "v" + window.getLatestconfigVersion, "configId:", window.getLatestID);
                     } //
                     else { //
                         this.clientVersion = 0;
-                        this.clientVersionString = e;
-                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Client version:', t, e); //
+                        this.clientVersionString = string;
+                        console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Client version:', version, string); //
                     } //
                 },
                 /*
@@ -8215,85 +8215,84 @@ var thelegendmodproject = function() {
                                 //} //
                             },
                 			*/
-                "generateClientKey": function(option, _relatedTarget) {
-                    if (!option.length || !_relatedTarget.byteLength) {
+                "generateClientKey": function(ip, options) {
+                    if (!ip.length || !options.byteLength) {
                         return null;
                     }
-                    var j = null;
+                    var x = null;
                     var suggestedValue = 1540483477;
-                    var constraints = option.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2];
-                    var framesize = constraints.length + _relatedTarget.byteLength;
-                    var data = new Uint8Array(framesize);
+                    var ipCheck = ip.match(/(ws+:\/\/)([^:]*)(:\d+)/)[2];
+                    var newLength = ipCheck.length + options.byteLength;
+                    var uint8Arr = new Uint8Array(newLength);
                     var value = 0;
-                    for (; value < constraints.length; value++) {
-                        data[value] = constraints.charCodeAt(value);
+                    for (; value < ipCheck.length; value++) {
+                        uint8Arr[value] = ipCheck.charCodeAt(value);
                     }
-                    data.set(_relatedTarget, constraints.length);
-                    var dv = new DataView(data["buffer"]);
-                    var maxTextureAvailableSpace = framesize - 1;
-                    var k = (maxTextureAvailableSpace - 4 & -4) + 4 | 0;
-                    var i = maxTextureAvailableSpace ^ 255;
-                    var n = 0;
-                    for (; maxTextureAvailableSpace > 3;) {
-                        j = Math.imul(dv['getInt32'](n, !![]), suggestedValue) | 0;
-                        i = (Math.imul(j >>> 24 ^ j, suggestedValue) | 0) ^ (Math.imul(i, suggestedValue) | 0);
-                        maxTextureAvailableSpace = maxTextureAvailableSpace - 4;
-                        n = n + 4;
+                    uint8Arr.set(options, ipCheck.length);
+                    var dataview = new DataView(uint8Arr["buffer"]);
+                    var type = newLength - 1;
+                    var value = (type - 4 & -4) + 4 | 0;
+                    var newValue = type ^ 255;
+                    var offset = 0;
+                    for (; type > 3;) {
+                        x = Math.imul(dataview.getInt32(offset, true), suggestedValue) | 0;
+                        newValue = (Math.imul(x >>> 24 ^ x, suggestedValue) | 0) ^ (Math.imul(newValue, suggestedValue) | 0);
+                        type = type - 4;
+                        offset = offset + 4;
                     }
-                    switch (maxTextureAvailableSpace) {
+                    switch (type) {
                         case 3:
-                            i = data[k + 2] << 16 ^ i;
-                            i = data[k + 1] << 8 ^ i;
+                            newValue = uint8Arr[value + 2] << 16 ^ newValue;
+                            newValue = uint8Arr[value + 1] << 8 ^ newValue;
                             break;
                         case 2:
-                            i = data[k + 1] << 8 ^ i;
+                            newValue = uint8Arr[value + 1] << 8 ^ newValue;
                             break;
                         case 1:
                             break;
                         default:
-                            j = i;
+                            x = newValue;
                             break;
                     }
-                    if (j != i) {
-                        j = Math.imul(data[k] ^ i, suggestedValue) | 0;
+                    if (x != newValue) {
+                        x = Math.imul(uint8Arr[value] ^ newValue, suggestedValue) | 0;
                     }
-                    i = j >>> 13;
-                    j = i ^ j;
-                    j = Math.imul(j, suggestedValue) | 0;
-                    i = j >>> 15;
-                    j = i ^ j;
-                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Generated client key:', j);
-                    window.generatedClientKey = j;
-                    return j;
+                    newValue = x >>> 13;
+                    x = newValue ^ x;
+                    x = Math.imul(x, suggestedValue) | 0;
+                    newValue = x >>> 15;
+                    x = newValue ^ x;
+                    //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Generated client key:', x);
+                    window.generatedClientKey = x;
+                    return x;
 
                 },
-                "shiftKey": function(c) {
+                "shiftKey": function(key) {
                     if (window.disableIntegrity != true) {
                         var suggestedValue = 1540483477;
-                        c = Math.imul(c, suggestedValue) | 0;
-                        c = (Math.imul(c >>> 24 ^ c, suggestedValue) | 0) ^ 114296087;
-                        c = Math.imul(c >>> 13 ^ c, suggestedValue) | 0;
-                        return c >>> 15 ^ c;
+                        key = Math.imul(key, suggestedValue) | 0;
+                        key = (Math.imul(key >>> 24 ^ key, suggestedValue) | 0) ^ 114296087;
+                        key = Math.imul(key >>> 13 ^ key, suggestedValue) | 0;
+                        return key >>> 15 ^ key;
                     } else {
                         return 0;
                     }
                 },
-                "shiftMessage": function(t, e, i) {
+                "shiftMessage": function(view, key, write) {
                     if (window.disableIntegrity != true) {
-                        if (!i) {
-                            var s = 0;
-                            for (; s < t.byteLength; s++) {
-                                t.setUint8(s, t.getUint8(s) ^ e >>> s % 4 * 8 & 255);
+						var length = 0;
+						if (!write) {                       
+                            for (; length < view.byteLength; length++) {
+                                view.setUint8(length, view.getUint8(length) ^ key >>> length % 4 * 8 & 255);
                             }
                         } else {
-                            s = 0;
-                            for (; s < t.length; s++) {
-                                t.writeUInt8(t.readUInt8(s) ^ e >>> s % 4 * 8 & 255, s);
+                            for (; length < view.length; length++) {
+                                view.writeUInt8(view.readUInt8(length) ^ key >>> length % 4 * 8 & 255, length);
                             }
                         }
-                        return t;
+                        return view;
                     } else {
-                        return t;
+                        return view;
                     }
                 },
                 /*
@@ -8971,8 +8970,8 @@ var thelegendmodproject = function() {
                     legendmod.drawCommander2 = true;
                 },
                 'flushCellsData': function() {
-                    this.indexedCells = {},
-                        this.cells = [];
+                    this.indexedCells = {};
+                    this.cells = [];
                     this.playerCells = [];
                     this.playerCellIDs = [];
                     this.ghostCells = [];
@@ -9033,11 +9032,17 @@ var thelegendmodproject = function() {
                         $('#set-ingameSpectator').hide();
                     }
                 },
-                'isInView': function(t, e, size) {
-                    var s = this.canvasWidth / 2 / this.scale,
-                        o = this.canvasHeight / 2 / this.scale;
-                    //console.log("t:" + t + " e:" + e + " i:" + i  + " result:" + !(t + i < this.viewX - s || e + i < this.viewY - o || t - i > this.viewX + s || e - i > this.viewY + o));
-                    return !(t + size < this.viewX - s || e + size < this.viewY - o || t - size > this.viewX + s || e - size > this.viewY + o);
+                'isInView': function(x, y, size) {
+                    var x2s = this.canvasWidth / 2 / this.scale;
+                    var y2s = this.canvasHeight / 2 / this.scale;
+                    //console.log("x:" + x + " y:" + y + " i:" + i  + " result:" + !(x + i < this.viewX - s || y + i < this.viewY - o || x - i > this.viewX + s || y - i > this.viewY + o));
+					if (x + size < this.viewX - x2s || y + size < this.viewY - y2s || x - size > this.viewX + x2s || y - size > this.viewY + y2s){
+						return false;
+					}
+					else{
+						return true;
+					}
+                    //return !(x + size < this.viewX - x2s || y + size < this.viewY - y2s || x - size > this.viewX + x2s || y - size > this.viewY + y2s);
                 },
                 'vanillaskins': function(y, g) {
                     if (g != null && ogarminimapdrawer.customSkinsMap[y] == undefined) {
@@ -9325,53 +9330,58 @@ var thelegendmodproject = function() {
                     }
                     //if (window.historystate && legendmod.play) {historystate();}
                 },
-                'color2Hex': function(t) {
-                    var e = t.toString(16);
-                    return 1 == e.length ? '0' + e : e;
+                'color2Hex': function(number) {
+                    var color = number.toString(16);
+                    return 1 == color.length ? '0' + color : color;
                 },
-                'rgb2Hex': function(t, e, i) {
-                    return '#' + this.color2Hex(t) + this.color2Hex(e) + this.color2Hex(i);
+                'rgb2Hex': function(r, g, b) {
+                    return '#' + this.color2Hex(r) + this.color2Hex(g) + this.color2Hex(b);
                 },
                 'sortCells': function() {
-                    this.cells.sort(function(t, e) {
-                        return t.size == e.size ? t.id - e.id : t.size - e.size;
+                    this.cells.sort(function(row, conf) {
+                        return row.size == conf.size ? row.id - conf.id : row.size - conf.size;
                     });
                 },
                 'calculatePlayerMassAndPosition': function() {
-                    for (var t = 0, e = 0, i = 0, s = 0, o = this.playerCells.length, a = 0; a < o; a++) {
-                        var n = this.playerCells[a];
-                        t += n.size;
-                        e += n.targetSize * n.targetSize;
-                        i += n.x / o;
-                        s += n.y / o;
+					var size = 0;
+					var targetSize = 0;
+					var x = 0;
+					var y = 0;
+					playersLength = this.playerCells.length;
+                    for (let length = 0; length < playersLength; length++) {
+                        var n = this.playerCells[length];
+                        size += n.size;
+                        targetSize += n.targetSize * n.targetSize;
+                        x += n.x / playersLength;
+                        y += n.y / playersLength;
                     }
-                    this.viewX = i;
-                    this.viewY = s;
-                    this.playerSize = t;
-                    this.playerMass = ~~(e / 100);
+                    this.viewX = x;
+                    this.viewY = y;
+                    this.playerSize = size;
+                    this.playerMass = ~~(targetSize / 100);
                     this.recalculatePlayerMass();
                 },
                 'recalculatePlayerMass': function() {
                     if (this.playerScore = Math.max(this.playerScore, this.playerMass),
                         defaultmapsettings.virColors || defaultmapsettings.splitRange || defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.showStatsSTE) {
-                        var t = this.playerCells;
-                        var e = t.length;
-                        t.sort(function(t, e) {
-                            return t.size == e.size ? t.id - e.id : t.size - e.size;
+                        var cells = this.playerCells;
+                        var CellLength = cells.length;
+                        cells.sort(function(cells, CellLength) {
+                            return cells.size == CellLength.size ? cells.id - CellLength.id : cells.size - CellLength.size;
                         });
-                        this.playerMinMass = ~~(t[0].size * t[0].size / 100);
-                        this.playerMaxMass = ~~(t[e - 1].size * t[e - 1].size / 100);
-                        this.playerSplitCells = e;
+                        this.playerMinMass = ~~(cells[0].size * cells[0].size / 100);
+                        this.playerMaxMass = ~~(cells[CellLength - 1].size * cells[CellLength - 1].size / 100);
+                        this.playerSplitCells = CellLength;
                     }
                     if (true) {
-                        var i = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+                        var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
                         // this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null; //Sonia2
-                        this.STE = Math.floor(i * 0.375); //Sonia2
-                        this.MTE = Math.floor(i * 0.75); //Sonia2
-                        this.BMTE = Math.ceil(i * 1.33); //Sonia2
-                        this.BSTE = Math.ceil(i * 2.66); //Sonia2
-                        this.TTE = Math.ceil(i / 6); //Sonia2
-                        this.PTE = Math.floor(i * 0.66); //Sonia2
+                        this.STE = Math.floor(mass * 0.375); //Sonia2
+                        this.MTE = Math.floor(mass * 0.75); //Sonia2
+                        this.BMTE = Math.ceil(mass * 1.33); //Sonia2
+                        this.BSTE = Math.ceil(mass * 2.66); //Sonia2
+                        this.TTE = Math.ceil(mass / 6); //Sonia2
+                        this.PTE = Math.floor(mass * 0.66); //Sonia2
                     }
                 },
                 'compareCells': function() {
