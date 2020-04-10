@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.343 MEGA TEST
+// v1.344 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -10232,15 +10232,15 @@ var thelegendmodproject = function() {
                     //Sonia (entire function update)
                     //'drawOppRings': function(t, e, i, s, o, a, n) {
                     'drawOppRings': function(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
-                        var r = 14 + 2 / scale;
-                        var l = 12 + 1 / scale;
-                        this.drawCircles(ctx, ip, r, l, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
-                        this.drawCircles(ctx, biggerSte, r, l, 0.75, defaultSettings.enemyBSTEColor); //Sonia2
-                        this.drawCircles(ctx, biggetCell, r, l, 0.75, defaultSettings.enemyBColor); //Sonia2
+                        var width = 14 + 2 / scale;
+                        var alpha = 12 + 1 / scale;
+                        this.drawCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
+                        this.drawCircles(ctx, biggerSte, width, alpha, 0.75, defaultSettings.enemyBSTEColor); //Sonia2
+                        this.drawCircles(ctx, biggetCell, width, alpha, 0.75, defaultSettings.enemyBColor); //Sonia2
 						this.drawCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);						
-                        this.drawCircles(ctx, smallerCell, r, l, 0.75, defaultSettings.enemySColor); //Sonia2
-                        this.drawCircles(ctx, smallSte, r, l, 0.75, defaultSettings.enemySSTEColor); //Sonia2
-                        this.drawCircles(ctx, ap, r, l, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
+                        this.drawCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor); //Sonia2
+                        this.drawCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor); //Sonia2
+                        this.drawCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
                         if (reset) {
                             biggerSte = [];
                             biggetCell = [];
