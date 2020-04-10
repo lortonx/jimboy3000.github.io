@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.358 MEGA TEST
+// v1.359 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -6418,9 +6418,9 @@ var thelegendmodproject = function() {
 
         },
         'displayChatMessage': function(time, type, id, nick) {        
-          let mcolor = defaultmapsettings.messageNickColor, 
-              ccolor = defaultmapsettings.commandsNickColor,
-              userId = this.checkPlayerID(id);
+          let mcolor = defaultmapsettings.messageNickColor; 
+          let ccolor = defaultmapsettings.commandsNickColor;
+          let userId = this.checkPlayerID(id);
             if (userId !== null&&defaultmapsettings.coloredNicks) {
                 const teamPlayer = this.teamPlayers[userId];
                 mcolor = teamPlayer.color;
@@ -6434,20 +6434,20 @@ var thelegendmodproject = function() {
                 return;
             }
             let userName = nick.split(': ', 1).toString();
-            const parseMessage = this.parseMessage(nick.replace(a + ': ', ''));
+            const parseMessage = this.parseMessage(nick.replace(userName + ': ', ''));
             if (userName.length == 0 || userName.length > 15 || parseMessage.length == 0) {
                 return;
             }
             let text = '';
             if (id != 0 && id != this.playerID) {
                 this.addChatUser(id, userName);
-				text = '<a href=\"#\" data-user-id=\"' + id + '\" class=\"mute-user ogicon-user-minus\"></a>' 
+				text = '<a href=\"#\" data-user-id=\"' + id + '\" class="mute-user ogicon-user-minus"></a>' 
             }
             userName = this.escapeHTML(userName);
             //let userNameEl = document.createElement(`span`).textContent(``).classList.add("user-list").textContent(userName).style.color(mcolor);
             if (type == 101) {
                 if (defaultmapsettings.showChatBox) {
-                    $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + text + '<span class="message-nick" style = "color: ${mcolor}">' + userName + ': </span><span class="message-text">'+ parseMessage +'</span></div>');
+                    $('#chat-box').append('<div class="message"><span class="message-time">[' + time + '] </span>' + text + '<span class="message-nick" style = "color: ${mcolor}">' + userName + ': </span><span class="message-text">'+ parseMessage +'</span></div>');
                     $('#chat-box').perfectScrollbar('update');
                     $('#chat-box').animate({
                         scrollTop: $('#chat-box').prop('scrollHeight')
@@ -6459,7 +6459,7 @@ var thelegendmodproject = function() {
                 }
                 if (!defaultmapsettings.hideChat) {
 					
-					toastr.success('<span class=\"message-nick\">' + userName + ': </span><span class=\"message-text\">' + parseMessage + '</span>' + text)
+					toastr.success('<span class="message-nick">' + userName + ': </span><span class="message-text">' + parseMessage + '</span>' + text)
                     if (defaultmapsettings.chatSounds) {
                         this.playSound(this.messageSound);
                     }
@@ -6471,9 +6471,10 @@ var thelegendmodproject = function() {
                 if (this.chatHistory.length > 15) {
                     this.chatHistory.shift();
                 }
-            } else if (type == 102) {
+            } 
+			else if (type == 102) {
                 if (defaultmapsettings.showChatBox) {                  
-					$('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + text + '<span class=\"command-nick\" style = "color: ${mcolor}">' + userName + ': </span><span class="command-text">' + parseMessage + '</span></div>');
+					$('#chat-box').append('<div class=\"message command\"><span class="command-tim">[' + time + '] </span>' + text + '<span class="command-nick" style = "color: ${mcolor}">' + userName + ': </span><span class="command-text">' + parseMessage + '</span></div>');
 					$('#chat-box').perfectScrollbar('update');
                     $('#chat-box').animate({
                         scrollTop: $('#chat-box').prop('scrollHeight')
@@ -6484,12 +6485,13 @@ var thelegendmodproject = function() {
                     return;
                 }
                 if (!defaultmapsettings.hideChat) {
-					toastr.warning('<span class=\"command-nick\" style = "color: ${ccolor}">' + userName + ': </span><span class=\"command-text\">' + parseMessage + '</span>' + text)
+					toastr.warning('<span class="command-nick" style = "color: ${ccolor}">' + userName + ': </span><span class="command-text">' + parseMessage + '</span>' + text)
                     if (defaultmapsettings.chatSounds) {
                         this.playSound(this.commandSound);
                     }
                 }
-            } else {
+            } 
+			else {
                 $('#messages').append(nick);
             }
         },	
