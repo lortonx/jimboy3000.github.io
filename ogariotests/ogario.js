@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.349 MEGA TEST
+// v1.350 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9961,7 +9961,7 @@ var thelegendmodproject = function() {
 					const reHeigth = heigth / scale;
 					let x = (-camX + reWidth / 2) % 50;
 					let y = (-camY + reHeigth / 2) % 50;
-					ctx.strokeStyle = gameSetupTheme.gridColor;
+					ctx.strokeStyle = defaultSettings.gridColor;
 					ctx.globalAlpha = 1 * scale;
 					ctx.beginPath();
 					for (; x < reWidth; x += 50) {
