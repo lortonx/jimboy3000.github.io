@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.373 MEGA TEST
+// v1.374 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3999,7 +3999,7 @@ var thelegendmodproject = function() {
         },
         'addOptions': function(options, section) {
             if (options) {
-                $('#og-options').append('<div class=\"options-box ' + section + '\"><h5 class=\"menu-main-color\">' + textLanguage[e] + '</h5></div>');
+                $('#og-options').append('<div class=\"options-box ' + section + '\"><h5 class=\"menu-main-color\">' + textLanguage[section] + '</h5></div>');
                 for (var i = 0; i < options.length; i++) {
                     var option = options[i];
                     if (defaultmapsettings.hasOwnProperty(option)) {
