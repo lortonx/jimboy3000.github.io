@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.382 MEGA TEST
+// v1.383 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -9752,8 +9752,7 @@ var thelegendmodproject = function() {
             },
             setView() {
                 this.setScale();
-                this.setScale();
-                var speed = 30
+                var speed = 30;
                 if (LM.playerCells.length) {
                     LM.calculatePlayerMassAndPosition();
                     this.camX = (this.camX + LM.viewX) / 2;
@@ -9767,7 +9766,7 @@ var thelegendmodproject = function() {
                 LM.playerX = this.camX;
                 LM.playerY = this.camY;
             },
-            setScalen() {
+            setScale() {
                 if (!LM.autoZoom) {
                     this.scale = (9 * this.scale + this.getZoom()) / 10;
                     LM.viewScale = this.scale;
