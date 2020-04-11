@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.379 MEGA TEST
+// v1.380 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2428,7 +2428,7 @@ var thelegendmodproject = function() {
                 });
             }
         },
-        addSliderBoxfunction(id, name, min, max, step, callback) {
+        addSliderBox(id, name, min, max, step, callback) {
             $(id).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[name] + ': </span><span id=\"' + name + '-value\" class=\"value\">' + defaultSettings[name] + '</span></div><input id=\"' + name + '-slider\" type=\"range\" min=\"' + min + '\" max=\"' + max + '\" step=\"' + step + '\" value=\"' + defaultSettings[name] + '\"></div>');
             if (callback) {
                 var app = this;
