@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.371 MEGA TEST
+// v1.372 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4040,8 +4040,8 @@ var thelegendmodproject = function() {
                 for (var t in window.i18n_dict.en) window.i18n_dict.en.hasOwnProperty(t) && textLanguage.hasOwnProperty(t) && (window.i18n_dict.en[t] = textLanguage[t]);
         },
         'setMenu': function() {
-            var t;
-            for (t in document.title = this.name,
+				const app = this;
+				document.title = this.name;
                 $("#mainPanel").before('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
                     textLanguage.start + '"></a></li><li class="profile-tab"><a href="#profile" class="ogicon-user" data-toggle="tab-tooltip" title="' + textLanguage.profile + '"></a></li><li class="settings-tab"><a href="#og-settings" class="ogicon-cog" data-toggle="tab-tooltip" title="' + textLanguage.settings + '"></a></li><li class="theme-tab"><a href="#theme" class="ogicon-droplet" data-toggle="tab-tooltip" title="' + textLanguage.theme + '"></a></li><li class="hotkeys-tab"><a href="#" class="hotkeys-link ogicon-keyboard" data-toggle="tab-tooltip" title="' +
                     textLanguage.hotkeys + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="Radio / ' + textLanguage.sounds + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>');
@@ -4183,11 +4183,10 @@ var thelegendmodproject = function() {
                 $("body").append('<ul id="messages"></ul>');
                 $("body").append('<div id="message-box"><div id="chat-emoticons"></div><div id="message-menu"><a href="#" class="chat-sound-notifications ogicon-volume-high"></a><a href="#" class="chat-active-users ogicon-user-check"></a><a href="#" class="chat-muted-users ogicon-user-minus"></a><a href="#" class="show-chat-emoticons ogicon-smile"></a></div><input type="text" id="message" class="form-control" placeholder="' +
                     textLanguage.enterChatMsg + '..." maxlength="80"></div>');
-                $("body").append('<div id="chat-box"></div>'), emoticonicons) {
-                if (emoticonicons.hasOwnProperty(t)) {
-                    $("#chat-emoticons").append('<img src="https://legendmod.ml/banners/emoticons/' + emoticonicons[t] + '" alt="' + t + '" class="emoticon">');
+                $("body").append('<div id="chat-box"></div>'); 
+                if (emoticonicons.hasOwnProperty(emoji)) {
+                    $("#chat-emoticons").append('<img src="https://legendmod.ml/banners/emoticons/' + emoticonicons[emoji] + '" alt="' + emoji + '" class="emoticon">');
                 }
-            }
             $("body").append('<div id="exp-imp"><div id="exp-imp-menu"><button id="close-exp-imp" class="btn btn-danger">' + textLanguage.close + '</button></div><div id="exp-imp-settings"></div></div>');
                 $("#exp-imp-settings").append("<h1>" + textLanguage.exportSettings + "</h1><h2>" + textLanguage.exportInfo + "</h2>");
                 this.addOption("#exp-imp-settings", "export-ogarioCommands", textLanguage.commands, true);
