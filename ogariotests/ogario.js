@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.385 MEGA TEST
+// v1.386 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1093,7 +1093,7 @@ var languagetexts = {
         leaderboard: 'Topka',
         user: 'Użytkownik',
         userMuted: 'Użytkownik %user% został wyciszony.',
-        userUnmuted': 'Wyłączono wyciszenie użytkownika %user%.',
+        userUnmuted: 'Wyłączono wyciszenie użytkownika %user%.',
         mute: 'Wycisz',
         unmute: 'Wyłącz wyciszenie',
         mutedUsers: 'Wyciszeni użytkownicy',
