@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.370 MEGA TEST
+// v1.371 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2412,7 +2412,7 @@ var thelegendmodproject = function() {
                     'format': 'rgba'
                 }).on('changeColor.colorpicker', function(ids) {
                     var color = ids.color.toRGB();
-                    defaultSettings[name] = 'rgba(' + color['r'] + ',' + color['g'] + ',' + color['b'] + ',' + color['a'] + ')',
+                    defaultSettings[name] = 'rgba(' + color['r'] + ',' + color['g'] + ',' + color['b'] + ',' + color['a'] + ')';
                         if (ogario.hasOwnProperty(name)){ 
 							ogario[name] = defaultSettings[name];
 						}
@@ -2423,7 +2423,7 @@ var thelegendmodproject = function() {
                     'format': 'rgba'
                 }).on('changeColor.colorpicker', function(ids) {
                     var color = ids.color.toRGB();
-                    defaultSettings[name] = 'rgba(' + color['r'] + ',' + color['g'] + ',' + color['b'] + ',' + color['a'] + ')',
+                    defaultSettings[name] = 'rgba(' + color['r'] + ',' + color['g'] + ',' + color['b'] + ',' + color['a'] + ')';
                         ogario.hasOwnProperty(name) && (ogario[name] = defaultSettings[name]);
                 });
             }
