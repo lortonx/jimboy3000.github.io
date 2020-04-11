@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.380 MEGA TEST
+// v1.381 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2768,7 +2768,7 @@ var thelegendmodproject = function() {
                 $('.menu-panel, .agario-side-panel, #hotkeys, #exp-imp').css('background-image', 'none');
             }
         },
-        setHu() {
+        setHud() {
             this.setHudColors();
             this.setHudFont();
             this.setHudScale();
