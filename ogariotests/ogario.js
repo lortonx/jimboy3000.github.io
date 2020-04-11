@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.387 MEGA TEST
+// v1.388 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1333,7 +1333,7 @@ var languagetexts = {
         comm28: 'ANTI alarm stage 5',
         comm29: 'Presplit',
         comm30: 'Party Run tricks',
-        saveCom': 'Save commands',
+        saveComm: 'Save commands',
         theme: 'Theme',
         restoreThemeSettings: 'Restore theme default settings',
         basicTheming: 'Basic theming',
