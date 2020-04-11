@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.388 MEGA TEST
+// v1.389 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1337,7 +1337,7 @@ var languagetexts = {
         theme: 'Theme',
         restoreThemeSettings: 'Restore theme default settings',
         basicTheming: 'Basic theming',
-        themePrese': 'Theme preset',
+        themePreset: 'Theme preset',
         themeType: 'Theme type',
         darkTheme: 'Dark theme',
         lightTheme: 'Light theme',
