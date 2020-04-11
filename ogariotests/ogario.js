@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.375 MEGA TEST
+// v1.376 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4202,9 +4202,11 @@ var thelegendmodproject = function() {
                 $("body").append('<div id="message-box"><div id="chat-emoticons"></div><div id="message-menu"><a href="#" class="chat-sound-notifications ogicon-volume-high"></a><a href="#" class="chat-active-users ogicon-user-check"></a><a href="#" class="chat-muted-users ogicon-user-minus"></a><a href="#" class="show-chat-emoticons ogicon-smile"></a></div><input type="text" id="message" class="form-control" placeholder="' +
                     textLanguage.enterChatMsg + '..." maxlength="80"></div>');
                 $("body").append('<div id="chat-box"></div>'); 
-                if (emoticonicons.hasOwnProperty(emoji)) {
-                    $("#chat-emoticons").append('<img src="https://legendmod.ml/banners/emoticons/' + emoticonicons[emoji] + '" alt="' + emoji + '" class="emoticon">');
-                }
+				for (const emoji in emoticonicons) {
+					if (emoticonicons.hasOwnProperty(emoji)) {
+						$("#chat-emoticons").append('<img src="https://legendmod.ml/banners/emoticons/' + emoticonicons[emoji] + '" alt="' + emoji + '" class="emoticon">');
+					}
+				}
             $("body").append('<div id="exp-imp"><div id="exp-imp-menu"><button id="close-exp-imp" class="btn btn-danger">' + textLanguage.close + '</button></div><div id="exp-imp-settings"></div></div>');
                 $("#exp-imp-settings").append("<h1>" + textLanguage.exportSettings + "</h1><h2>" + textLanguage.exportInfo + "</h2>");
                 this.addOption("#exp-imp-settings", "export-ogarioCommands", textLanguage.commands, true);
