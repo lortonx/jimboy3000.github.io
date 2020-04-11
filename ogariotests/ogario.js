@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.372 MEGA TEST
+// v1.373 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4142,7 +4142,10 @@ var thelegendmodproject = function() {
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup");
                 this.addOptions([], "macroGroup");
                 this.addOptions([], "profiles");
-                this.protocolMode || (this.addOptions(["blockPopups"], "extrasGroup");
+				if (!this.protocolMode) {
+					this.addOptions(["blockPopups"], "extrasGroup");
+				}
+				else{
                     $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla");
                     $(".skinsGroup h5").after('<label class="noSkins">' + textLanguage.noSkins + " </label>");
                     $("#noSkins").appendTo($(".noSkins")), $(".transparencyGroup h5").after('<label class="noColors">' + textLanguage.noColors + " </label>");
@@ -4152,7 +4155,8 @@ var thelegendmodproject = function() {
                     $(".skipStats").after('<label class="showQuest">' + textLanguage.showQuest + " </label>");
                     $("#showQuest").appendTo($(".showQuest"));
                     $("#options").remove();
-                    $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper"));
+                    $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper");
+				}	
                 this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
                 this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01);
                 this.addSliderBox(".profiles", "profileNumber", 10, 54, 1);
@@ -4203,7 +4207,7 @@ var thelegendmodproject = function() {
                 this.addOption("#exp-imp-settings", "import-ogarioThemeSettings", textLanguage.theme, true);
                 $("#exp-imp-settings").append('<textarea id="import-settings" class="form-control" rows="14" cols="100" spellcheck="false" /><button id="import-settings-btn" class="btn btn-block btn-success">' +
                     textLanguage.importSettings + "</button>");
-            hudsetter && hudsetter.setThemeMenu();
+            if (hudsetter) hudsetter.setThemeMenu();
             /** @type {number} */
             var e = 0;
             for (; e < ogario1PlayerProfiles.length; e++) {
