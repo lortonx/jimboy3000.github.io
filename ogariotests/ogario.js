@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.376 MEGA TEST
+// v1.377 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2654,10 +2654,13 @@ var thelegendmodproject = function() {
                 $(document).on('click', '#theme .btn-save', function(e) {
                     e.preventDefault();
                     var i = $(this);
-                    i.text(textLanguage.saved), hudsetter.saveThemeSettings(), setTimeout(function() {
+                    i.text(textLanguage.saved); 
+					hudsetter.saveThemeSettings(); 
+					setTimeout(function() {
                         i.text(textLanguage.saveSett);
                     }, 500);
-                }), $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + textLanguage.restoreThemeSettings + '</a></div>'),
+                });
+				$('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + textLanguage.restoreThemeSettings + '</a></div>'),
                 $(document).on('click', '#theme .restore-settings a', function(e) {
                     e.preventDefault(), hudsetter.restoreThemeSettings();
                 }), $('.skin').colorpicker({
@@ -2782,13 +2785,13 @@ var thelegendmodproject = function() {
             });
         },
         'setHudScale': function() {
-            var t = Math.round(20 * defaultSettings.hudScale),
-                e = Math.round(200 * defaultSettings.hudScale),
-                i = Math.floor(55 * defaultSettings.hudScale),
-                o = Math.floor(6 * defaultSettings.hudScale),
-                a = Math.floor(280 * defaultSettings.hudScale),
-                n = Math.floor(85 * defaultSettings.hudScale),
-                r = Math.floor(20 * defaultSettings.hudScale);
+            var t = Math.round(20 * defaultSettings.hudScale);
+            var e = Math.round(200 * defaultSettings.hudScale);
+            var i = Math.floor(55 * defaultSettings.hudScale);
+            var o = Math.floor(6 * defaultSettings.hudScale);
+            var a = Math.floor(280 * defaultSettings.hudScale);
+            var n = Math.floor(85 * defaultSettings.hudScale);
+            var r = Math.floor(20 * defaultSettings.hudScale);
             $('#overlays-hud').css('font-size', t + 'px');
             $('#leaderboard-hud, #time-hud').width(e);
             $('#top5-hud').width(e + 30).css('top', i + 'px');
@@ -11824,38 +11827,39 @@ var thelegendmodproject = function() {
         };
     }
     window.core = {
-        'connect': function(url) {
+        //'connect': function(url) {
+		connect(url) {	
             LM.connect(url);
             //LM.connect(url); //for multibox with new Protocol and Client
         },
-        'disconnect': function() {},
-        'sendNick': function(nick) {
+        disconnect() {},
+        sendNick(nick) {
             LM.sendNick(nick);
         },
-        'sendSpectate': function() {
+        sendSpectate() {
             LM.sendSpectate();
         },
-        'eject': function() {
+        eject() {
             LM.sendEject();
             window.lastejected = true;
         },
-        'split': function() {
+        split() {
             LM.sendSplit();
 
         },
-        'specialOn': function() {
+        specialOn() {
             LM.sendFreeSpectate();
         },
-        'specialOff': function() {
+        specialOff() {
             LM.sendFreeSpectate();
         },
-        'sendFbToken': function(token) {
+        sendFbToken(token) {
             LM.sendFbToken(token);
         },
-        'sendGplusToken': function(token) {
+        sendGplusToken(token) {
             LM.sendGplusToken(token);
         },
-        'recaptchaHandlerResponse': function(token) {
+        recaptchaHandlerResponse(token) {
             if (window.botscaptcha == true) {
                 setTimeout(function() {
                     core.recaptchaBotResponse(token);
@@ -11864,21 +11868,21 @@ var thelegendmodproject = function() {
                 core.recaptchaResponse(token);
             }
         },
-        'recaptchaResponse': function(token) {
+        recaptchaResponse(token) {
             window.lastRecaptchaResponseToken = token;
             LM.sendRecaptcha(token);
         },
-        'recaptchaBotResponse': function(token) {
+        recaptchaBotResponse(token) {
             window.lastRecaptchaResponseToken = token;
             window.botscaptcha = false;
             //toastr.info('Captcha token sent to node.js', token)
             toastr.info('<b>[SERVER]:</b> Thank you for solving Captcha for bots')
             window.connectionBots.send(window.buffers.captchatoken(token))
         },
-        'setClientVersion': function(version, strVersion) {
+        setClientVersion(version, strVersion) {
             LM.setClientVersion(version, strVersion);
         },
-        "proxyMobileData": function(arr = []) {
+        proxyMobileData(arr = []) {
             if (!Array.isArray(arr)) {
                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.");
                 return;
@@ -11889,16 +11893,16 @@ var thelegendmodproject = function() {
             arr = new Uint8Array(arr);
             LM.sendMessage(new DataView(arr.buffer));
         },
-        'registerSkin': function(a, b, c, d) {
+        registerSkin(a, b, c, d) {
             window.customskinsname = a;
             window.customskinsurl = c;
         },
         //lulko
-        'playerHasCells': function() {
+        playerHasCells() {
             return Connection.playerCells.length > 0
         },
         //lulko
-        'proxy': function(data) {
+        proxy(data) {
             if (!Array.isArray(data)) {
                 console.log('Proxy ERROR: Array data required.');
                 return;
