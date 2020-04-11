@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.392 MEGA TEST
+// v1.393 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -1515,7 +1515,7 @@ var languagetexts = {
     }
 }
 var themePresets = {
-    ogario-v3: {
+    'ogario-v3': {
         name: 'OGARio v3',
         darkTheme: true,
         mainColor: '#01d9cc',
@@ -1620,7 +1620,7 @@ var themePresets = {
         customBackground: '',
         customCursor: 'https://legendmod.ml/cursors/cursor_02.cur'
     },
-    ogario-orange: {
+    'ogario-orange': {
         name: 'OGARio v2',
         darkTheme: true,
         mainColor: '#ff7800',
@@ -1654,7 +1654,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#ff7800',
         miniMapSectorsOpacity: 0.1
     },
-    ogario-gold: {
+    'ogario-gold': {
         name: 'OGARio LE',
         darkTheme: true,
         mainColor: '#b5a642',
@@ -1688,7 +1688,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#b5a642',
         miniMapSectorsOpacity: 0.1
     },
-    sniikz-style: {
+    'sniikz-style': {
         name: 'SniiKz\'s Style',
         darkTheme: true,
         mainColor: '#01d9cc',
@@ -1778,7 +1778,7 @@ var themePresets = {
         customBackground: '',
         customCursor: 'https://legendmod.ml/cursors/cursor_01.cur'
     },
-    hkg-style: {
+    'hkg-style': {
         name: 'HKG Style',
         darkTheme: true,
         mainColor: '#651fff',
@@ -1812,7 +1812,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#651fff',
         miniMapSectorsOpacity: 0.1
     },
-    agario-light: {
+    'agario-light': {
         name: 'Agar.io Light',
         darkTheme: false,
         mainColor: '#ffffff',
@@ -1846,7 +1846,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#ffffff',
         miniMapSectorsOpacity: 0.25
     },
-    agario-dark: {
+    'agario-dark': {
         name: 'Agar.io Dark',
         darkTheme: true,
         mainColor: '#ffffff',
@@ -1882,7 +1882,7 @@ var themePresets = {
     }
 }
 var themeMenus = {
-    ogario-v3: {
+    'ogario-v3': {
         name: 'OGARio v3',
         menuMainColor: '#01d9cc',
         menuBtnTextColor: '#ffffff',
@@ -1900,7 +1900,7 @@ var themeMenus = {
         btn4Color2: '#df00c6',
         menuBg: 'https://legendmod.ml/banners/static/img/pattern.png'
     },
-    ogario-v2: {
+    'ogario-v2': {
         name: 'OGARio v2',
         menuMainColor: '#ff7800',
         menuBtnTextColor: '#ffffff',
@@ -2333,14 +2333,14 @@ var thelegendmodproject = function() {
         comm30: textLanguage.comm30
     }
     hudsetter = {
-        'menuMainColorCSS': null,
-        'menuPanelColorCSS': null,
-        'menuTextlColorCSS': null,
-        'menuButtonsCSS': null,
-        'hudCSS': null,
-        'chatCSS': null,
-        'chatScaleCSS': null,
-        'cursorCSS': null,
+        menuMainColorCSS: null,
+        menuPanelColorCSS: null,
+        menuTextlColorCSS: null,
+        menuButtonsCSS: null,
+        hudCSS: null,
+        chatCSS: null,
+        chatScaleCSS: null,
+        cursorCSS: null,
 		loadThemeSettings() {
             let storage = null;
             if (window.localStorage.getItem('ogarioThemeSettings') !== null) {
@@ -2871,88 +2871,88 @@ var thelegendmodproject = function() {
     window.legendmod5 = defaultmapsettings;
 
     ogarminimapdrawer = {
-        'name': 'LM express',
-        'version': 'v1',
-        'privateMode': false,
-        'protocolMode': true,
-        'publicIP': 'wss://wss.ogario.eu:3443',
-        'privateIP': null,
-        'updateInterval': 1000,
-        'updateTick': 0,
-        'updateMaxTick': 2,
-        'currentSector': '',
-        'miniMap': null,
-        'miniMapCtx': null,
-        'miniMapSectors': null,
-        'pi2': 2 * Math.PI,
-        'socket': null,
-        'cells': {},
-        'teamPlayers': [],
-        'parties': [],
-        'chatHistory': [],
-        'chatUsers': {},
-        'chatMutedUsers': {},
-        'chatMutedUserIDs': [],
-        'customSkinsCache': {},
-        'customSkinsMap': {},
-        'cacheQueue': [],
-        'cacheQueue2': [],
-        'cacheQueue3': [],
-        'deathLocations': [],
-        'playerID': null,
-        'playerMass': 0,
-        'selectedProfile': 0,
-        'lastDeath': 0,
-        'skipServerData': false,
-        'gameMode': ':ffa',
-        'region': '',
-        'partyToken': '',
-        'ws': '',
-        'serverIP': '',
-        'serverArena': '',
-        'serverToken': '',
-        'lastSentNick': '',
-        'lastSentClanTag': null,
-        'lastSentSkinURL': '',
-        'lastSentCustomColor': '',
-        'lastSentPartyToken': '',
-        'lastSentServerToken': '',
-        'lastMessageSentTime': Date.now(),
-        'rFps': 0,
-        'renderedFrames': 0,
-        'fpsLastRequest': null,
-        'statsHUD': null,
-        'leaderboardPositionsHUD': null,
-        'leaderboardDataHUD': null,
-        'activeParties': null,
-        'top5pos': null,
-        'top5totalMass': null,
-        'top5totalPlayers': null,
-        'top5limit': 5,
-        'timeHUD': null,
-        'questHUD': null,
-        'retryResp': 0,
-        'token': 'TGVnZW5kIGV4cHJlc3M=',
-        'canvasScale': 1,
-        'selectBiggestCell': true,
-        'noColors': false,
-        'skipStats': false,
-        'showQuest': false,
-        'showSplitInd': false,
-        'pause': false,
-        'spectatorFollow': false,
-        'targetID': 0,
-        'targetStatus': 0,
-        'targetNick': '',
-        'targetSkinURL': '',
-        'targeting': false,
-        'privateMiniMap': false,
-        'messageSound': null,
-        'commandSound': null,
-        'virusSound': null,
-        'virusSoundurl': null,
-        'FacebookIDs': null,
-        'feedInterval': null,
+        name: 'LM express',
+        version: 'v1',
+        privateMode: false,
+        protocolMode: true,
+        publicIP: 'wss://wss.ogario.eu:3443',
+        privateIP: null,
+        updateInterval: 1000,
+        updateTick: 0,
+        updateMaxTick: 2,
+        currentSector: '',
+        miniMap: null,
+        miniMapCtx: null,
+        miniMapSectors: null,
+        pi2: 2 * Math.PI,
+        socket: null,
+        cells: {},
+        teamPlayers: [],
+        parties: [],
+        chatHistory: [],
+        chatUsers: {},
+        chatMutedUsers: {},
+        chatMutedUserIDs: [],
+        customSkinsCache: {},
+        customSkinsMap: {},
+        cacheQueue: [],
+        cacheQueue2: [],
+        cacheQueue3: [],
+        deathLocations: [],
+        playerID: null,
+        playerMass: 0,
+        selectedProfile: 0,
+        lastDeath: 0,
+        skipServerData: false,
+        gameMode: ':ffa',
+        region: '',
+        partyToken: '',
+        ws: '',
+        serverIP: '',
+        serverArena: '',
+        serverToken: '',
+        lastSentNick: '',
+        lastSentClanTag: null,
+        lastSentSkinURL: '',
+        lastSentCustomColor: '',
+        lastSentPartyToken: '',
+        lastSentServerToken: '',
+        lastMessageSentTime: Date.now(),
+        rFps: 0,
+        renderedFrames: 0,
+        fpsLastRequest: null,
+        statsHUD: null,
+        leaderboardPositionsHUD: null,
+        leaderboardDataHUD: null,
+        activeParties: null,
+        top5pos: null,
+        top5totalMass: null,
+        top5totalPlayers: null,
+        top5limit: 5,
+        timeHUD: null,
+        questHUD: null,
+        retryResp: 0,
+        token: 'TGVnZW5kIGV4cHJlc3M=',
+        canvasScale: 1,
+        selectBiggestCell: true,
+        noColors: false,
+        skipStats: false,
+        showQuest: false,
+        showSplitInd: false,
+        pause: false,
+        spectatorFollow: false,
+        targetID: 0,
+        targetStatus: 0,
+        targetNick: '',
+        targetSkinURL: '',
+        targeting: false,
+        privateMiniMap: false,
+        messageSound: null,
+        commandSound: null,
+        virusSound: null,
+        virusSoundurl: null,
+        FacebookIDs: null,
+        feedInterval: null,
         getPlayerX() {
             return ogario.playerX + ogario.mapOffsetX;
         },
