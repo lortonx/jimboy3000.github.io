@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.377 MEGA TEST
+// v1.378 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2341,7 +2341,8 @@ var thelegendmodproject = function() {
         'chatCSS': null,
         'chatScaleCSS': null,
         'cursorCSS': null,
-        'loadThemeSettings': function() {
+		loadThemeSettings() {
+        //'loadThemeSettings': function() {
             let storage = null;
             if (window.localStorage.getItem('ogarioThemeSettings') !== null) {
                 storage = JSON.parse(window.localStorage.getItem('ogarioThemeSettings'));
