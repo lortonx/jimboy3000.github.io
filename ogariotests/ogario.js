@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.374 MEGA TEST
+// v1.375 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4036,8 +4036,16 @@ var thelegendmodproject = function() {
             });
         },
         'setLang': function() {
-            if ('pl' === lang && window.i18n_dict && window.i18n_dict.en)
-                for (var t in window.i18n_dict.en) window.i18n_dict.en.hasOwnProperty(t) && textLanguage.hasOwnProperty(t) && (window.i18n_dict.en[t] = textLanguage[t]);
+            if (lang !== 'pl') {
+                return;
+            }
+            if (window.i18n_dict && window.i18n_dict.en) {
+                for (var lang in window.i18n_dict.en) {
+                    if (window.i18n_dict.en.hasOwnProperty(lang) && textLanguage.hasOwnProperty(lang)) {
+                        window.i18n_dict.en[lang] = textLanguage[lang];
+                    }
+                }
+            }      			
         },
         'setMenu': function() {
 				const app = this;
@@ -4106,7 +4114,7 @@ var thelegendmodproject = function() {
 					<u><a href="https://repl.it/@legendmod/party-bots" target="_blank">Repl.it VPS</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=xIupgFR7ZTY" target="_blank">Tutorial video for repl.it VPS</a></u>	
 					</div>`);
-                this.protocolMode || $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_dailyquests + '"></a>');
+					if (!this.protocolMode) $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_dailyquests + '"></a>');
                 $(".party-dialog, .partymode-info").remove();
                 $(".agario-party-6").appendTo($(".center-container"));
                 $(".right-container").empty();
@@ -4129,7 +4137,12 @@ var thelegendmodproject = function() {
                 this.addOptions(["quickResp", "autoResp"], "respGroup");
                 this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
                 this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup");
-                this.protocolMode ? this.addOptions(["customSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup") : this.addOptions(["customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
+                if (this.protocolMode){
+					this.addOptions(["customSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup")
+				}
+				else{
+					this.addOptions(["customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
+				}
                 this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
                 this.addOptions(["myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup");
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
@@ -4148,7 +4161,8 @@ var thelegendmodproject = function() {
 				else{
                     $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla");
                     $(".skinsGroup h5").after('<label class="noSkins">' + textLanguage.noSkins + " </label>");
-                    $("#noSkins").appendTo($(".noSkins")), $(".transparencyGroup h5").after('<label class="noColors">' + textLanguage.noColors + " </label>");
+                    $("#noSkins").appendTo($(".noSkins")), 
+					$(".transparencyGroup h5").after('<label class="noColors">' + textLanguage.noColors + " </label>");
                     $("#noColors").appendTo($(".noColors"));
                     $(".extrasGroup h5").after('<label class="skipStats">' + textLanguage.skipStats + " </label>");
                     $("#skipStats").appendTo($(".skipStats"));
