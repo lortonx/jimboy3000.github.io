@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.389 MEGA TEST
+// v1.390 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -711,7 +711,7 @@ var emoticonicons = {
 }
 
 var languagetexts = {
-    'pl': {
+    'en': {
         start: 'Start',
         settings: 'Ustawienia',
         restoreSettings: 'Przywróc ustawienia domyślne',
@@ -1119,7 +1119,7 @@ var languagetexts = {
         page_stats: 'Statystyki',
         teamView: 'Team view (BETA)'
     },
-    'en': {
+    'pl': {
         start: 'Home',
         settings: 'Settings',
         restoreSettings: 'Restore default settings',
