@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.394 MEGA TEST
+// v1.395 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11028,7 +11028,7 @@ var thelegendmodproject = function() {
             },
             'hk-autoResp': {
                 label: textLanguage['hk-autoResp'],
-                defaultKey': '',
+                defaultKey: '',
                 keyDown() {
                     ogarminimapdrawer && ogarminimapdrawer.toggleAutoResp();
                 },
