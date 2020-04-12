@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.406 MEGA TEST
+// v1.407 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5961,8 +5961,8 @@ var thelegendmodproject = function() {
                 this.sendBuffer(view);
             }
         },
-        sendPlayerPosition() {
-            if (this.isSocketOpen() && ogario.play && this.playerID) {
+        sendPlayerPosition(fake) {
+            if ((this.isSocketOpen() && ogario.play && this.playerID) || fake) {
                 const view = this.createView(17);
                 view.setUint8(0, 30);
                 view.setUint32(1, this.playerID, true);
