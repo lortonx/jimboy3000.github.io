@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.398 MEGA TEST
+// v1.399 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2685,10 +2685,10 @@ var thelegendmodproject = function() {
                     if ($('#theme .' + name + '-picker')) {
                         $('#theme .' + name + '-picker').colorpicker('setValue', defaultSettings[name]);
                     }
-                    if ($('#${name}-slider')) {
-                        $('#${name}-slider').val(defaultSettings[name]).change();
-                    }
-                    if ($('input[type=text]#${name}') || $('select#' + name)) {
+                    if ($('#' + name + '-slider')) {
+                        $('#' + name + '-slider').val(defaultSettings[name]).change();
+                    }				
+                    if ($('input[type=text]#' + name) || $('select#' + name)) {
                         $('#${name}').val(defaultSettings[name]);
                     }
                 }
