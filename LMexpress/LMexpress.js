@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.090a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
@@ -2565,8 +2565,7 @@ function universalchat() {
         local_style += '}';
         $("head").append('<style>\n' + local_style + '\n</style>');
         $("#top5-hud").append('' +
-            //'<div id="ao2t-hud"><span class="hud-main-color">Universal:' +
-			'<div id="ao2t-hud"><span class="hud-main-color">' +
+            '<div id="ao2t-hud"><span class="hud-main-color">Universal:' +
             ' <span id="ao2t-capture"><i class="fa fa-universal-access" aria-hidden="true"></i></span>' +
             ' <span id="ao2t-config"><i class="fa fa-wrench" aria-hidden="true"></i></span></span>' +
             //                 '<div id="ao2t-top5" style="padding-left: 1em;"></div>'+
