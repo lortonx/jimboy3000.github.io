@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.402 MEGA TEST
+// v1.403 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5931,7 +5931,8 @@ var thelegendmodproject = function() {
             this.sendServerToken();
             this.sendPlayerNick();
         },
-        sendPlayerUpdate() {
+        //sendPlayerUpdate() {
+		sendPlayerUpdate(fakeNick) {	
             if (this.isSocketOpen() && ogario.play && this.playerID && ogario.playerColor) {
                 function encode(str) {
                     for (let length = 0; length < str.length; length++) {
@@ -5948,8 +5949,14 @@ var thelegendmodproject = function() {
                 view.setUint8(0, 20);
                 view.setUint32(1, this.playerID, true);
                 var offset = 5;
-                encode(ogarcopythelb.nick);
-                encode(ogarcopythelb.skinURL);
+				if (fakeNick){
+					encode(fakeNick);
+					encode("https://legendmod.ml/banners/iconfake1.png");
+				}
+				else{
+					encode(ogarcopythelb.nick);
+					encode(ogarcopythelb.skinURL);
+				}
                 encode(ogarcopythelb.color);
                 encode(ogario.playerColor);
                 this.sendBuffer(view);
