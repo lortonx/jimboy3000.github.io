@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.090 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "84"; // the version 1.1-> 1.11
 //fix ffa
@@ -4565,7 +4565,7 @@ function setcanvasbgname() {
 function setleadbtext() {
     leadbtext = $("#leadbtext").val();
     localStorage.setItem("leadbtext", leadbtext);
-    $("#leaderboard-hud > h4").text(leadbtext);
+    $("#leaderboard-hud > h5").text(leadbtext);
 }
 
 function setteambtext() {
