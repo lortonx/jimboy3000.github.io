@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.397 MEGA TEST
+// v1.398 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -11184,7 +11184,7 @@ var thelegendmodproject = function() {
             },
             'hk-bots-split': {
                 label: textLanguage['hk-bots-split'],
-                defaultKey: '',
+                defaultKey: 'M',
                 keyDown() {
                     if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([2]).buffer);
                 },
@@ -11193,7 +11193,7 @@ var thelegendmodproject = function() {
             },
             'hk-bots-feed': {
                 label: textLanguage['hk-bots-feed'],
-                defaultKey: '',
+                defaultKey: 'L',
                 keyDown() {
                     if (window.userBots.startedBots && window.userBots.isAlive) window.connectionBots.send(new Uint8Array([3]).buffer)
                 },
@@ -11202,7 +11202,7 @@ var thelegendmodproject = function() {
             },
             'hk-bots-ai': {
                 label: textLanguage['hk-bots-ai'],
-                defaultKey: 'Y',
+                defaultKey: 'P',
                 keyDown() {
                     if (window.userBots.startedBots && window.userBots.isAlive) {
                         if (!window.bots.ai) {
