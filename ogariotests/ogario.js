@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.407 MEGA TEST
+// v1.400 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5931,14 +5931,8 @@ var thelegendmodproject = function() {
             this.sendServerToken();
             this.sendPlayerNick();
         },
-		sendPlayerUpdate(fakeNick) {	
-			if (fakeNick){
-				ogarcopythelb.nick = fakeNick;
-				ogarcopythelb.skinURL = "https://legendmod.ml/banners/iconfake1.png";
-				ogario.playerColor = "#0658e5";				
-			}		
-			if (this.isSocketOpen() && (ogario.play && this.playerID && ogario.playerColor) || fakeNick!=null) {
-            //if (this.isSocketOpen() && ogario.play && this.playerID && ogario.playerColor) {
+        sendPlayerUpdate() {
+            if (this.isSocketOpen() && ogario.play && this.playerID && ogario.playerColor) {
                 function encode(str) {
                     for (let length = 0; length < str.length; length++) {
                         view.setUint16(offset, str.charCodeAt(length), true);
@@ -5954,15 +5948,15 @@ var thelegendmodproject = function() {
                 view.setUint8(0, 20);
                 view.setUint32(1, this.playerID, true);
                 var offset = 5;
-				encode(ogarcopythelb.nick);
-				encode(ogarcopythelb.skinURL);
+                encode(ogarcopythelb.nick);
+                encode(ogarcopythelb.skinURL);
                 encode(ogarcopythelb.color);
                 encode(ogario.playerColor);
                 this.sendBuffer(view);
             }
         },
-        sendPlayerPosition(fake) {
-            if ((this.isSocketOpen() && ogario.play && this.playerID) || fake) {
+        sendPlayerPosition() {
+            if (this.isSocketOpen() && ogario.play && this.playerID) {
                 const view = this.createView(17);
                 view.setUint8(0, 30);
                 view.setUint32(1, this.playerID, true);
