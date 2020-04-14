@@ -1,4 +1,4 @@
-//v12.50
+//v12.51
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -10,8 +10,8 @@ window.EnvConfig.configVersion = self.localStorage.getItem("EnvConfig.configVers
 
 var window = this;
 $.ajax("//agar.io/index.html", {
-    error: function() {},
-    success: function(sketchContents) {
+    error() {},
+    success(sketchContents) {
         var parsed = $.parseHTML(sketchContents);
         window.EnvConfig = sketchContents.match(/EnvConfig = \{[^}]+}/);
         var runEnvConfig = new Function(window.EnvConfig);
@@ -30,8 +30,8 @@ $.ajax("//agar.io/index.html", {
 });
 if (window.EnvConfig.master_url != null) {
     $.ajax(window.EnvConfig.master_url + "/getLatestID", {
-        error: function() {},
-        success: function(sketchContents) {
+        error() {},
+        success(sketchContents) {
             var getLatestIDtemp = $.parseHTML(sketchContents);
             window.getLatestID = getLatestIDtemp[0].textContent;
             localStorage.setItem("getLatestID", window.getLatestID);
@@ -220,7 +220,7 @@ function legendmaster(self) {
 		xsupportprotoversion: headers.proto_version,
 		protocolVersion: headers.protocolVersion,
 		master_url_http: "https://" + headers.master_url,
-        getClientVersion: function() {
+        getClientVersion() {
             if (null !== self.localStorage.getItem("ogarioClientVersionString")) {
                 this.clientVersionString = self.localStorage.getItem("ogarioClientVersionString");
                 this.clientVersion = this.parseClientVersion(this.clientVersionString);
@@ -233,8 +233,8 @@ function legendmaster(self) {
             }					
             var window = this;
             $.ajax("//agar.io/mc/agario.js", {
-                error: function() {},
-                success: function(sketchContents) {
+                error() {},
+                success(sketchContents) {
                     var optionMatch = sketchContents.match(/versionString="(\d+\.\d+\.\d+)"/);
 					var optionMatch2 = sketchContents.match(/x-support-proto-version\","(\d+\.\d+\.\d+)"/);
                     if (optionMatch) {
@@ -253,8 +253,8 @@ function legendmaster(self) {
                 crossDomain: true
             });
             $.ajax("//agar.io/agario.core.js", {
-                error: function() {},
-                success: function(sketchContents) {
+                error() {},
+                success(sketchContents) {
                     var optionMatch = sketchContents.match(/\w\[\w\+\d+>>\d\]=\w;\w+\(\w,(\d+)\);/);
                     if (optionMatch) {
                         var pluginName = optionMatch[1];
@@ -268,7 +268,7 @@ function legendmaster(self) {
                 crossDomain: true
             });			
         },
-        setClientVersion: function(clientVersion, serverVersion) {			           
+        setClientVersion(clientVersion, serverVersion) {			           
             if (this.clientVersion != clientVersion) {
                 console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " Changing client version...");
                 this.clientVersion = clientVersion;
@@ -281,7 +281,7 @@ function legendmaster(self) {
                 this.reconnect(true);
             }
         },
-        setxsupportprotoversion: function(serverVersion) {			
+        setxsupportprotoversion(serverVersion) {			
             if (this.xsupportprotoversion != serverVersion) {
                 console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " Changing x-support version...");
                 this.xsupportprotoversion = serverVersion;
@@ -290,7 +290,7 @@ function legendmaster(self) {
                 this.reconnect(true);				
             }
         },		
-        setProtocolVersion: function(serverVersion) {			
+        setProtocolVersion(serverVersion) {			
             if (this.protocolVersion != serverVersion) {
                 console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " Changing protocol version...");
                 this.protocolVersion = serverVersion;
@@ -299,10 +299,10 @@ function legendmaster(self) {
                 this.reconnect(true);				
             }
         },			
-        parseClientVersion: function(styleValue) {
+        parseClientVersion(styleValue) {
             return 10000 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
-        'getRegionCode': function() {
+        'getRegionCode'() {
             var nextNodeLoc = window.localStorage.getItem('location');
             if (nextNodeLoc) {
                 this.setRegion(nextNodeLoc, ![]);
@@ -314,15 +314,15 @@ function legendmaster(self) {
             }
             var canvasLayersManager = this;
             window.userData = $.ajax(master.master_url_http + "/getCountry", {
-                beforeSend: function(xhr) {
+                beforeSend(xhr) {
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", "application/octet-stream"), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
-                error: function() {
+                error() {
                     if (timeout_callback) {
                         timeout_callback();
                     }
                 },
-                success: function(playlistCopy) {
+                success(playlistCopy) {
                 $("#response").html(JSON.stringify(playlistCopy, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
@@ -345,7 +345,7 @@ function legendmaster(self) {
                 crossDomain: true
             });
         },
-        setRegionCode: function(segment) {
+        setRegionCode(segment) {
             if (regionobj.hasOwnProperty(segment)) {
                 this.setRegion(regionobj[segment], false);
                 if (!this.checkPartyHash()) {
@@ -354,7 +354,7 @@ function legendmaster(self) {
                 }
             }
         },
-        setRegion: function(items, left) {
+        setRegion(items, left) {
             if (null == left) {
                 /** @type {boolean} */
                 left = true;
@@ -371,7 +371,7 @@ function legendmaster(self) {
                 }
             }
         },
-        checkRegion: function() {
+        checkRegion() {
             var x = $("#region");
             var options = x.val();
             if (options) {
@@ -387,7 +387,7 @@ function legendmaster(self) {
                 $("#locationUnknown").append(x);
             }
         },
-        refreshRegionInfo: function() {
+        refreshRegionInfo() {
             var that = this;
             this.makeMasterSimpleRequest("info", "text", function(data) {
                 var regions = (data = JSON.parse(data)).regions;
@@ -428,7 +428,7 @@ function legendmaster(self) {
                 }
             });
         },
-        getRegionNames: function() {
+        getRegionNames() {
             var PL$5 = this;
             $("#region option").each(function() {
                 var bigg_id = $(this).val();
@@ -438,7 +438,7 @@ function legendmaster(self) {
                 }
             });
         },
-        setGameMode: function(val, opt_validate) {
+        setGameMode(val, opt_validate) {
             if (null == opt_validate) {
                 opt_validate = true;
             }
@@ -449,18 +449,18 @@ function legendmaster(self) {
                 this.reconnect();
             }
         },
-        applyGameMode: function(value) {
+        applyGameMode(value) {
             $("#helloContainer, #overlays-hud").attr("data-gamemode", value);
             $("#gamemode").val(value);
             if (value !== ":party") {
                 this.replaceHistoryState("/#" + self.encodeURIComponent(value.replace(":", "")));
             }
         },
-        handleChangeMode: function() {
+        handleChangeMode() {
             var n = $("#gamemode").val();
             this.setGameMode(n);
         },
-        findServer: function(id, params) {
+        findServer(id, params) {
             var e = Date.now();
             if (!(e - this.findingServer < 500)) {
                 if (self.core) {
@@ -513,7 +513,7 @@ function legendmaster(self) {
                 });
             }
         },
-        setRequestMsg: function(args, object, source, source2) {
+        setRequestMsg(args, object, source, source2) {
             var output;
 			var output2 = 0;
 			if (source2){
@@ -544,23 +544,23 @@ function legendmaster(self) {
             };			          
             return getOwnPropertyNames(args), output.push(18), getOwnPropertyNames(object), source2 && getOwnPropertyNames2(source2), source && (output.push(26, 8, 10), getOwnPropertyNames(source)), new Uint8Array(output);
         },
-        makeMasterRequest: function(_wid_attr, data, callback, timeout_callback, type) {
+        makeMasterRequest(_wid_attr, data, callback, timeout_callback, type) {
             var header = this;
             if (null == type) {
                 type = "application/octet-stream";
             }
             $.ajax("https://" + headers.master_url + "/" + _wid_attr, {
-                beforeSend: function(xhr) {
+                beforeSend(xhr) {
                     //return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                     return xhr.setRequestHeader("Accept", "text/plain"), xhr.setRequestHeader("Accept", "*/*"), xhr.setRequestHeader("Accept", "text/plain, */*, q=0.01"), xhr.setRequestHeader("Content-Type", type), xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
 
                 },
-                error: function() {
+                error() {
                     if (timeout_callback) {
                         timeout_callback();
                     }
                 },
-                success: function(playlistCopy) {
+                success(playlistCopy) {
                     callback(playlistCopy);
                 },
                 dataType: "json",
@@ -571,21 +571,21 @@ function legendmaster(self) {
                 crossDomain: true
             });
         },
-        makeMasterSimpleRequest: function(key, dataType, success, error) {
+        makeMasterSimpleRequest(key, dataType, success, error) {
             //if (key){
 				//key = key = + "/";
 			//}
 			var obj = this;
             $.ajax("https://" + headers.master_url + "/" + key, {
-                beforeSend: function(xhr) {
+                beforeSend(xhr) {
                     return xhr.setRequestHeader("x-support-proto-version", master.xsupportprotoversion), xhr.setRequestHeader("x-client-version", master.clientVersion), true;
                 },
-                error: function() {
+                error() {
                     if (error) {
                         error();
                     }
                 },
-                success: function(nextModel) {
+                success(nextModel) {
                     success(nextModel);
                 },
                 dataType: dataType,
@@ -594,11 +594,11 @@ function legendmaster(self) {
                 crossDomain: true
             });
         },
-        createParty: function() {
+        createParty() {
             this.setPartyState("3");
             this.setGameMode(":party");
         },
-        joinParty: function(d) {
+        joinParty(d) {
             var scopeHeaderOverrides = this;
             if (-1 != d.indexOf("#")) {
                 d = d.split("#")[1];
@@ -614,7 +614,7 @@ function legendmaster(self) {
                 scopeHeaderOverrides.setPartyState("6");
             });
         },
-        setPartyState: function(value) {
+        setPartyState(value) {
             if ("9" === value) {
                 this.updatePartyToken();
                 this.setGameMode(":party", false);
@@ -623,7 +623,7 @@ function legendmaster(self) {
             }
             $("#helloContainer").attr("data-party-state", value);
         },
-        connect: function(body) {
+        connect(body) {
             //            console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " Connect to:", body);
             this.ws = "wss://" + body;
             if (":party" === this.gameMode && this.partyToken) {
@@ -633,7 +633,7 @@ function legendmaster(self) {
                 self.core.connect(this.ws);
             }
         },
-        reconnect: function(table) {
+        reconnect(table) {
             if (this.region) {
                 if (table && this.serverIP) {
                     this.connect(this.serverIP);
@@ -642,27 +642,27 @@ function legendmaster(self) {
                 }
             }
         },
-        onConnect: function() {
+        onConnect() {
             if (this.gameMode === ":party") {
                 this.updatePartyToken();
             }
         },
-        onDisconnect: function() {
+        onDisconnect() {
             console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " onDisconnect called, reconnecting");
             this.reconnect();
         },
-        recaptchaRequested: function() {
+        recaptchaRequested() {
             requestCaptcha(true);
         },
-        sendRecaptchaResponse: function(mmCoreSplitViewBlock) {
+        sendRecaptchaResponse(mmCoreSplitViewBlock) {
             if (self.core) {
 					self.core.recaptchaHandlerResponse(mmCoreSplitViewBlock);				
 			}
         },
-        notifyToken: function(n) {
+        notifyToken(n) {
             this.sendRecaptchaResponse(n);
         },
-        setNick: function() {
+        setNick() {
             this.login();
             var result = $("#nick").val();
             if (result && result.length > 15) {
@@ -672,15 +672,15 @@ function legendmaster(self) {
                 self.core.sendNick(result);
             }
         },
-        spectate: function() {
+        spectate() {
             if (self.core) {
                 self.core.sendSpectate();
             }
         },
-        updatePartyToken: function() {
+        updatePartyToken() {
             $("#party-token, .party-token").val(this.partyToken);
         },
-        checkHash: function() {
+        checkHash() {
             if (this.checkPartyHash()) {
                 this.joinParty(self.location.hash);
             } else {
@@ -690,26 +690,26 @@ function legendmaster(self) {
                 }
             }
         },
-        checkPartyHash: function() {
+        checkPartyHash() {
             return self.location.hash && 7 == self.location.hash.length;
         },
-        replaceHistoryState: function(name) {
+        replaceHistoryState(name) {
             if (self.history && self.history.replaceState) {
                 self.history.replaceState({}, self.document.title, name);
             }
         },
-        facebookLogin: function() {
+        facebookLogin() {
             self.facebookLogin();
         },
-        doLoginWithFB: function(session) {
+        doLoginWithFB(session) {
             this.context = "facebook";
             this.accessToken = session;
         },
-        doLoginWithGPlus: function(value) {
+        doLoginWithGPlus(value) {
             this.context = "google";
             this.accessToken = value;
         },
-        login: function() {
+        login() {
             if (this.accessToken) {
                 if (this.context === "facebook" && self.core && self.core.sendFbToken) {
                     self.core.sendFbToken(this.accessToken);
@@ -719,13 +719,13 @@ function legendmaster(self) {
                 }
             }
         },
-        logout: function() {
+        logout() {
             this.accessToken = null;
 			this.context = "";
             console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " logout called, not reconnecting");
             //            this.reconnect();
         },
-        setUI: function() {
+        setUI() {
             var chat = this;
             $("[data-itr]").each(function() {
                 var o = $(this);
@@ -755,7 +755,7 @@ function legendmaster(self) {
                 $("#socialLoginContainer").toggle();
             };
         },
-        init: function() {
+        init() {
             var n = this;
             this.setUI();
             this.getRegionNames();
@@ -767,7 +767,7 @@ function legendmaster(self) {
                 n.refreshRegionInfo();
             }, 18e4);
         },
-		findFacebookFriends: function() {
+		findFacebookFriends() {
 			FB.api("me/friends","GET",{
                     fields: "id, name, picture"
                     }, function(response) {
