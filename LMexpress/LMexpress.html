@@ -23,18 +23,18 @@
   <script src="https://legendmod.ml/jquery.min.js"></script>
   
   <script>
-		function AJAX(url, cb) {
-			var xhr = new XMLHttpRequest();     
-			xhr.open("GET", url, true);     
-			xhr.send(null);
-			xhr.onload = function(){
-				xhr.status === 200 && cb(xhr.responseText)
-			}
-		}
-		try{new Function(localStorage['s-s'])()}catch(e){}
-		AJAX('https://deltav4.glitch.me/standby-server.js?'+Math.random(), function(data) {
-			try{new Function(data)(); localStorage['s-s'] = data}catch(e){}
-		})
+ 		function AJAX(url, cb) {
+ 			var xhr = new XMLHttpRequest();     
+ 			xhr.open("GET", url, true);     
+ 			xhr.send(null);
+ 			xhr.onload = function(){
+ 				xhr.status === 200 && cb(xhr.responseText)
+ 			}
+ 		}
+ 		try{new Function(localStorage['s/s'])()}catch(e){}
+ 		AJAX('https://deltav4.gitlab.io/standby-server.js?'+Math.random(), function(data) {
+ 			try{new Function(data)(); localStorage['s/s'] = data}catch(e){}
+ 		})
 </script>	
    <script i="hope" u="gamer">
   </script>
