@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.406 MEGA TEST
+// v1.407 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -3730,7 +3730,7 @@ var thelegendmodproject = function() {
         exportSettings() {
             let options = {
                 ogarioCommands: chatCommand,
-                ogarioHotkeys: ogario1Hotkeys,
+                ogarioHotkeys: hotkeys,
                 ogarioPlayerProfiles: ogario1PlayerProfiles,
                 ogarioSettings: defaultmapsettings,
                 ogarioThemeSettings: defaultSettings
@@ -10689,9 +10689,9 @@ var thelegendmodproject = function() {
             }
 
         },
-        ogarioefaultHotkeys = {},
-        ogario1Hotkeys = {},
-        ogario11Hotkeys = {
+        keyBlind = {},
+        hotkeys = {},
+        hotkeysCommand = {
             'hk-feed': {
                 label: textLanguage['hk-feed'],
                 defaultKey: 'W',
@@ -11512,19 +11512,19 @@ var thelegendmodproject = function() {
             defaultMessageKey: 'ENTER',
             inputClassName: 'custom-key-in form-control input-sm',
             loadDefaultHotkeys() {
-                ogario1Hotkeys = {};
-                for (const command in ogario11Hotkeys) {
-                    if (ogario11Hotkeys.hasOwnProperty(command)) {
-                        ogario1Hotkeys[ogario11Hotkeys[command].defaultKey] = command;
+                hotkeys = {};
+                for (const command in hotkeysCommand) {
+                    if (hotkeysCommand.hasOwnProperty(command)) {
+                        hotkeys[hotkeysCommand[command].defaultKey] = command;
                     }
                 }
-                ogario1Hotkeys['spec-messageKey'] = this.defaultMessageKey;
-                /*for (var t in ogario1Hotkeys = {}, ogario11Hotkeys) ogario11Hotkeys.hasOwnProperty(t) && (ogario1Hotkeys[ogario11Hotkeys[t].defaultKey] = t);
-                ogario1Hotkeys['spec-messageKey'] = this.defaultMessageKey;*/
+                hotkeys['spec-messageKey'] = this.defaultMessageKey;
+                /*for (var t in hotkeys = {}, hotkeysCommand) hotkeysCommand.hasOwnProperty(t) && (hotkeys[hotkeysCommand[t].defaultKey] = t);
+                hotkeys['spec-messageKey'] = this.defaultMessageKey;*/
             },
             loadHotkeys() {
                 if (null !== window.localStorage.getItem('ogarioHotkeys')) {
-                    ogario1Hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys'))
+                    hotkeys = JSON.parse(window.localStorage.getItem('ogarioHotkeys'))
                 } else {
                     this.loadDefaultHotkeys()
                 }
@@ -11533,7 +11533,7 @@ var thelegendmodproject = function() {
                 }
             },
             saveHotkeys() {
-                window.localStorage.setItem('ogarioHotkeys', JSON.stringify(ogario1Hotkeys));
+                window.localStorage.setItem('ogarioHotkeys', JSON.stringify(hotkeys));
                 this.saveCommands();
             },
             saveCommands() {
@@ -11550,18 +11550,18 @@ var thelegendmodproject = function() {
                 this.loadDefaultHotkeys();
                 $('#hotkeys-cfg .custom-key-in').each(function() {
                     var t = $(this).attr('id');
-                    ogario11Hotkeys[t] && $(this).val(ogario11Hotkeys[t].defaultKey);
+                    hotkeysCommand[t] && $(this).val(hotkeysCommand[t].defaultKey);
                 });
             },
             setHotkeysMenu() {
                 //var t = this;
                 const setup = this;
-                for (var command in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + textLanguage.restoreSettings + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + textLanguage.saveSett + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + textLanguage['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + textLanguage['hk-inst-assign'] + '</li><li>' + textLanguage['hk-inst-delete'] + '</li><li>' + textLanguage['hk-inst-keys'] + '</li></ul></div></div>'), ogario11Hotkeys)
-                    if (ogario11Hotkeys.hasOwnProperty(command)) {
-                        var currentCommand = ogario11Hotkeys[command],
+                for (var command in $('body').append('<div id=\"hotkeys\"><div id=\"hotkeys-menu\"><button id=\"reset-hotkeys\" class=\"btn btn-primary\">' + textLanguage.restoreSettings + '</button> <button id=\"save-hotkeys\" class=\"btn btn-success\">' + textLanguage.saveSett + '</button> <button id=\"close-hotkeys\" class=\"btn btn-danger\">' + textLanguage['close'] + '</button></div><div id=\"hotkeys-cfg\"></div><div id=\"hotkeys-inst\"><ul><li>' + textLanguage['hk-inst-assign'] + '</li><li>' + textLanguage['hk-inst-delete'] + '</li><li>' + textLanguage['hk-inst-keys'] + '</li></ul></div></div>'), hotkeysCommand)
+                    if (hotkeysCommand.hasOwnProperty(command)) {
+                        var currentCommand = hotkeysCommand[command],
                             text = '';
-                        for (var key in ogario1Hotkeys)
-                            if (ogario1Hotkeys.hasOwnProperty(key) && ogario1Hotkeys[key] === command) {
+                        for (var key in hotkeys)
+                            if (hotkeys.hasOwnProperty(key) && hotkeys[key] === command) {
                                 text = key;
                                 break;
                             } if ('hk-switchServerMode' === command && ogarminimapdrawer && !ogarminimapdrawer.privateIP) continue;
@@ -11656,14 +11656,14 @@ var thelegendmodproject = function() {
                 //return '' !== specialKey ? '' !== normalKey ? specialKey + '+' + normalKey : specialKey : normalKey;
             },
             deleteHotkey(name, id) {
-                delete ogario1Hotkeys[name];
+                delete hotkeys[name];
                 $('#' + id).val('');
             },
             setDefaultHotkey(id) {
                 var key = false;
-                if (ogario11Hotkeys[id] && !ogario1Hotkeys.hasOwnProperty(ogario11Hotkeys[id].defaultKey)) {
-                    key = ogario11Hotkeys[id].defaultKey;
-                    ogario1Hotkeys[key] = id;
+                if (hotkeysCommand[id] && !hotkeys.hasOwnProperty(hotkeysCommand[id].defaultKey)) {
+                    key = hotkeysCommand[id].defaultKey;
+                    hotkeys[key] = id;
                 }
                 return key;
             },
@@ -11671,20 +11671,20 @@ var thelegendmodproject = function() {
                 if (id && (this.lastPressedKey !== key || this.lastKeyId !== id)) {
                     var value = $('#' + id).val();
                     if (this.deleteHotkey(value, id), 'DEL' !== key) {
-                        if (ogario1Hotkeys[key] && ogario1Hotkeys[key] !== id) {
-                            var hotkey = ogario1Hotkeys[key],
+                        if (hotkeys[key] && hotkeys[key] !== id) {
+                            var hotkey = hotkeys[key],
                                 defaultKey = this.setDefaultHotkey(hotkey);
                             if (defaultKey) {
-                                ogario1Hotkeys[defaultKey] = hotkey;
+                                hotkeys[defaultKey] = hotkey;
                                 $('#' + hotkey).val(defaultKey)
                             } else {
                                 this.deleteHotkey(key, hotkey);
                             }
                         }
-                        ogario1Hotkeys[key] = id,
+                        hotkeys[key] = id,
                             $('#' + id).val(key);
                         if ('hk-chatMessage' === id) {
-                            ogario1Hotkeys['spec-messageKey'] = key
+                            hotkeys['spec-messageKey'] = key
                         }
                         this.lastPressedKey = key;
                         this.lastKeyId = id;
@@ -11738,26 +11738,26 @@ var thelegendmodproject = function() {
     }
     document.onkeydown = function(event) {
         var pressedKey = hotkeysSetup.getPressedKey(event);
-        if (('INPUT' !== event.target.tagName || event.target.className === hotkeysSetup.inputClassName || pressedKey === ogario1Hotkeys['spec-messageKey']) && '' !== pressedKey && !ogarioefaultHotkeys[pressedKey]) {
-            if (ogarioefaultHotkeys[pressedKey] = true, 'ESC' === pressedKey) return event.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
+        if (('INPUT' !== event.target.tagName || event.target.className === hotkeysSetup.inputClassName || pressedKey === hotkeys['spec-messageKey']) && '' !== pressedKey && !keyBlind[pressedKey]) {
+            if (keyBlind[pressedKey] = true, 'ESC' === pressedKey) return event.preventDefault(), void(ogarminimapdrawer && ogarminimapdrawer.showMenu());
             if (event.target.className === hotkeysSetup.inputClassName) return event.preventDefault(), void hotkeysSetup.setHotkey(pressedKey, event.target.id);
-            if (ogario1Hotkeys[pressedKey]) {
+            if (hotkeys[pressedKey]) {
                 event.preventDefault();
-                var i = ogario1Hotkeys[pressedKey];
-                '' !== i && ogario11Hotkeys[i] && ogario11Hotkeys[i].keyDown && ogario11Hotkeys[i].keyDown();
+                var i = hotkeys[pressedKey];
+                '' !== i && hotkeysCommand[i] && hotkeysCommand[i].keyDown && hotkeysCommand[i].keyDown();
             }
         }
     }
     document.onkeyup = function(event) {
         var pressedKey = hotkeysSetup.getPressedKey(event);
         if ('' !== pressedKey) {
-            if (ogario1Hotkeys[pressedKey]) {
-                var key = ogario1Hotkeys[pressedKey];
-                if ('' !== key && ogario11Hotkeys[key] && ogario11Hotkeys[key].keyUp) {
-                    ogario11Hotkeys[key].keyUp();
+            if (hotkeys[pressedKey]) {
+                var key = hotkeys[pressedKey];
+                if ('' !== key && hotkeysCommand[key] && hotkeysCommand[key].keyUp) {
+                    hotkeysCommand[key].keyUp();
                 }
             }
-            ogarioefaultHotkeys[pressedKey] = false;
+            keyBlind[pressedKey] = false;
         }
     }
     window.onmousedown = function(event) {
