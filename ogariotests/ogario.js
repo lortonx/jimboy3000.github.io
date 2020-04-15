@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.408 MEGA TEST
+// v1.409 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2276,29 +2276,6 @@ var ogarcopythelb = {
     skinURL: '',
     color: defaultSettings.mainColor
 };
-
-var lang = 'en';
-userLanguage = window.navigator.language || window.navigator.userLanguage;
-if (userLanguage && languagetexts.hasOwnProperty(userLanguage)) {
-    lang = userLanguage;
-}
-var textLanguage = languagetexts[lang];
-
-//var thelegendmodproject = function(t, e, i) {
-var thelegendmodproject = function() {
-    var application;
-    var o = null;
-    var a = null;
-    //a = null,
-    /*    lang = 'en',
-            userLanguage = window.navigator.language || window.navigator.userLanguage;
-        if (userLanguage && languagetexts.hasOwnProperty(userLanguage)){
-			lang = userLanguage;
-		}
-        var textLanguage = languagetexts[lang];*/
-    //if (languagetexts[r].comm15 != undefined) {
-    //console.log(textLanguage.comm15);
-    //}
     chatCommand = {
         comm0: textLanguage.comm0,
         comm1: textLanguage.comm1,
@@ -2332,6 +2309,30 @@ var thelegendmodproject = function() {
         comm29: textLanguage.comm29,
         comm30: textLanguage.comm30
     }
+	
+var lang = 'en';
+userLanguage = window.navigator.language || window.navigator.userLanguage;
+if (userLanguage && languagetexts.hasOwnProperty(userLanguage)) {
+    lang = userLanguage;
+}
+var textLanguage = languagetexts[lang];
+
+//var thelegendmodproject = function(t, e, i) {
+var thelegendmodproject = function() {
+    var application;
+    var o = null;
+    var a = null;
+    //a = null,
+    /*    lang = 'en',
+            userLanguage = window.navigator.language || window.navigator.userLanguage;
+        if (userLanguage && languagetexts.hasOwnProperty(userLanguage)){
+			lang = userLanguage;
+		}
+        var textLanguage = languagetexts[lang];*/
+    //if (languagetexts[r].comm15 != undefined) {
+    //console.log(textLanguage.comm15);
+    //}
+
     Settings = {
         menuMainColorCSS: null,
         menuPanelColorCSS: null,
