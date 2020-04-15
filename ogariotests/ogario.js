@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.411 MEGA TEST
+// v1.413 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2875,6 +2875,12 @@ function thelegendmodproject() {
     window.legendmod5 = defaultmapsettings;
 
     var application = window.application = {
+    tabCount:0,
+    tabCurrent:0,
+    masterTab:null,
+    slaveTab:null,
+    primaryAccount:0,
+    c:[],		
         name: 'LM express',
         version: 'v1',
         privateMode: false,
@@ -2944,6 +2950,59 @@ function thelegendmodproject() {
         showQuest: false,
         showSplitInd: false,
         pause: false,
+		switchPlayer(isDeath){
+			if(!this.slaveTab && !isDeath) this.initSlaveTab()
+			for(var i = this.tabCurrent+1; this.c.length + this.tabCurrent > i; i++){
+				var indexOfNextTab = i%this.c.length
+				var c = this.c[indexOfNextTab]
+				if(c.play){
+					this.tabCurrent=i%this.c.length
+					break;
+				}else{
+					if(isDeath) return false;
+					if(c.estabilished){
+						c.sendNick(profiles[indexOfNextTab==0?'mainProfile':'slaveProfile'].nick)
+						c.once('spawn',(c)=>{
+							this.switchPlayer()
+						})
+					}
+	
+				}
+			} 
+		},	
+		initSlaveTab(){
+			this.slaveTab = new Client()
+			this.c.push(this.slaveTab)
+			drawRender.resizeCanvas()
+			this.slaveTab.connect(application.ws)
+			this.slaveTab.once('estabilished',(c)=>{
+				this.switchPlayer()
+			})
+		},
+    eachTabByPriority(callback,step){
+            if(step == undefined){step = 0}
+            var previous = null
+            var current = null
+        for(var i = this.tabCurrent
+            , priority=0;
+             this.c.length
+              + this.tabCurrent
+               > i;
+                i++,
+                priority++){
+            //if(step>=0){
+                var indexOfTab = 
+                i%this.c.length
+            /*}else if(step<0){
+                var indexOfTab = this.c.length-((this.c.length-step-1)%this.c.length)-1
+            }*/
+            //var indexOfTab = i%this.c.length
+            previous = current
+            current = this.c[indexOfTab]
+            //if(current[key]!=val) continue
+            callback(current,previous,priority,indexOfTab)
+        } 
+    },		
         spectatorFollow: false,
         targetID: 0,
         targetStatus: 0,
@@ -3186,10 +3245,10 @@ function thelegendmodproject() {
         setShowFullSpectator() {
             if (window.fullSpectator) {
                 window.fullSpectator = false;
-                LM.flushSpecsData();
+                Connection.flushSpecsData();
             } else if (!window.fullSpectator) {
                 window.fullSpectator = true;
-                LM.addSpect();
+                Connection.addSpect();
             }
         },
         setQuest() {
@@ -3221,6 +3280,7 @@ function thelegendmodproject() {
             }
         },
         tryResp() {
+			
             if (ogario.play || this.retryResp == 20) {
                 this.retryResp = 0;
                 return;
@@ -3237,6 +3297,17 @@ function thelegendmodproject() {
                     app.tryResp();
                 }
             }, 500);
+/*			
+        function fn(){
+            this.c[this.tabCurrent]
+            this.c[this.tabCurrent].sendNick(profiles[this.tabCurrent==0?'mainProfile':'slaveProfile'].nick)
+        }
+        if( this.c[this.tabCurrent].estabilished){
+
+        }else{
+            this.c[this.tabCurrent].once('estabilished',()=>{fn.bind(this)()})
+        }	
+*/		
         },
         quickResp() {
             if (defaultmapsettings.quickResp) {
@@ -4831,7 +4902,7 @@ function thelegendmodproject() {
                     //console.log('Special effects stage 1');
                     ogario.spawnX = ogario.playerX;
                     ogario.spawnY = ogario.playerY;
-                    LM.drawCommander = true;
+                    Connection.drawCommander = true;
                 }, 110);
             }
             LegendModSpawn();
@@ -5225,26 +5296,26 @@ function thelegendmodproject() {
 
                 }
                 //
-                if (LM.arrowFB[0].visible) { //Yahnych
+                if (Connection.arrowFB[0].visible) { //Yahnych
                     this.miniMapCtx.beginPath();
-                    this.miniMapCtx.arc((LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n, defaultSettings.miniMapMyCellSize, 0, this.pi2, false);
+                    this.miniMapCtx.arc((Connection.arrowFB[0].x + r) * n, (Connection.arrowFB[0].y + l) * n, defaultSettings.miniMapMyCellSize, 0, this.pi2, false);
                     this.miniMapCtx.closePath();
                     this.miniMapCtx.lineWidth = defaultSettings.miniMapMyCellStrokeSize;
                     this.miniMapCtx.strokeStyle = 'white';
                     this.miniMapCtx.stroke();
                     this.miniMapCtx.fillStyle = 'blue';
                     this.miniMapCtx.fill();
-                    //if (LM.arrowFB[0].nick.length > 0) {
+                    //if (Connection.arrowFB[0].nick.length > 0) {
                     this.miniMapCtx.font = `${defaultSettings.miniMapNickFontWeight} ${defaultSettings.miniMapNickSize}px ${defaultSettings.miniMapNickFontFamily}`;
                     this.miniMapCtx.textAlign = `center`;
                     this.miniMapCtx.textBaseline = "bottom";
                     if (defaultSettings.miniMapNickStrokeSize > 0) {
                         this.miniMapCtx.lineWidth = defaultSettings.miniMapNickStrokeSize;
                         this.miniMapCtx.strokeStyle = defaultSettings.miniMapNickStrokeColor;
-                        this.miniMapCtx.strokeText('🔹' + LM.arrowFB[0].nick + '🔹', (LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
+                        this.miniMapCtx.strokeText('🔹' + Connection.arrowFB[0].nick + '🔹', (Connection.arrowFB[0].x + r) * n, (Connection.arrowFB[0].y + l) * n - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
                     }
                     this.miniMapCtx.fillStyle = defaultSettings.miniMapNickColor;
-                    this.miniMapCtx.fillText('🔹' + LM.arrowFB[0].nick + '🔹', (LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
+                    this.miniMapCtx.fillText('🔹' + Connection.arrowFB[0].nick + '🔹', (Connection.arrowFB[0].x + r) * n, (Connection.arrowFB[0].y + l) * n - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
                     //}
                 }
                 //				
@@ -6339,7 +6410,7 @@ function thelegendmodproject() {
             if (window.legendmod.gameMode != ":party" && mm > 0 && (!window.legendmod.play || mm > window.legendmod.playerMass) && max <= 3 && window.legendmod.bgpi <= 3 && !window.legendmod.setrot) {
                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " VMR UPDATE:", window.legendmod.vnr, mm, window.legendmod.playerMass, max, window.legendmod.bgpi);
                 this.setvnr(max);
-                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map fixed with LM players. POS:', max);
+                console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map fixed with Connection players. POS:', max);
             }
         },
         updateTeamPlayers() {
@@ -6607,19 +6678,19 @@ function thelegendmodproject() {
         setFullSpectator() {
             if (window.fullSpectator) {
                 window.fullSpectator = false
-                LM.flushSpecsData()
+                Connection.flushSpecsData()
             } else {
                 window.fullSpectator = true
-                LM.addSpect()
+                Connection.addSpect()
             }
         },
         setIngameSpectator() {
             if (window.ingameSpectator) {
                 window.ingameSpectator = false
-                LM.flushSpecsData()
+                Connection.flushSpecsData()
             } else {
                 window.ingameSpectator = true
-                LM.addSpect()
+                Connection.addSpect()
             }
         },
         setTargeting() {
@@ -7069,7 +7140,7 @@ function thelegendmodproject() {
                 var prevRl = this.points[(i - 1 + len) % len].rl;
                 var nextRl = this.points[(i + 1) % len].rl;
                 var self = this;
-                var affected = LM.quadtree.some({
+                var affected = Connection.quadtree.some({
                     x: curP.x - 5,
                     y: curP.y - 5,
                     w: 10,
@@ -7080,16 +7151,16 @@ function thelegendmodproject() {
 
                 //this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY
 
-                //(curP.x < LM.mapMinX || curP.y < LM.mapMaxY ||
-                //curP.x > LM.mapMaxX || curP.y > LM.mapMinY))
+                //(curP.x < Connection.mapMinX || curP.y < Connection.mapMaxY ||
+                //curP.x > Connection.mapMaxX || curP.y > Connection.mapMinY))
 
 
-                //(curP.x < LM.viewMinX || curP.y < LM.viewMaxY ||
-                //curP.x > LM.viewMaxX || curP.y > LM.viewMinY))
+                //(curP.x < Connection.viewMinX || curP.y < Connection.viewMaxY ||
+                //curP.x > Connection.viewMaxX || curP.y > Connection.viewMinY))
 
                 /*if (!affected &&
-                    (curP.x < LM.mapMinX || curP.y < LM.mapMaxY ||
-                    curP.x > LM.mapMaxX || curP.y > LM.mapMinY))
+                    (curP.x < Connection.mapMinX || curP.y < Connection.mapMaxY ||
+                    curP.x > Connection.mapMaxX || curP.y > Connection.mapMinY))
                 {
                     affected = true;
                 }*/
@@ -7129,37 +7200,37 @@ function thelegendmodproject() {
         };
         this.removeCell = function() {
             this.removed = true;
-            var cells = LM.cells.indexOf(this);
+            var cells = Connection.cells.indexOf(this);
             if (cells != -1) {
-                LM.cells.splice(cells, 1);
+                Connection.cells.splice(cells, 1);
                 if (defaultmapsettings.virusesRange) {
-                    cells = LM.viruses.indexOf(this);
+                    cells = Connection.viruses.indexOf(this);
                     if (cells != -1) {
-                        LM.viruses.splice(cells, 1);
+                        Connection.viruses.splice(cells, 1);
                     }
                 }
             } else {
-                cells = LM.food.indexOf(this);
+                cells = Connection.food.indexOf(this);
                 if (cells != -1) {
-                    LM.food.splice(cells, 1);
+                    Connection.food.splice(cells, 1);
                 }
             }
-            cells = LM.playerCells.indexOf(this);
+            cells = Connection.playerCells.indexOf(this);
             if (cells != -1) {
-                LM.removePlayerCell = true;
-                LM.playerCells.splice(cells, 1);
-                cells = LM.playerCellIDs.indexOf(this.id);
+                Connection.removePlayerCell = true;
+                Connection.playerCells.splice(cells, 1);
+                cells = Connection.playerCellIDs.indexOf(this.id);
                 if (cells != -1) {
-                    LM.playerCellIDs.splice(cells, 1);
+                    Connection.playerCellIDs.splice(cells, 1);
                 }
             }
             if (this.redrawed) {
-                LM.removedCells.push(this);
+                Connection.removedCells.push(this);
             }
-            delete LM.indexedCells[this.id];
+            delete Connection.indexedCells[this.id];
         };
         this.moveCell = function() {
-            var time = LM.time - this.time;
+            var time = Connection.time - this.time;
             var delay = time / defaultmapsettings.animation;
             if (delay < 0) {
                 delay = 0
@@ -7172,21 +7243,21 @@ function thelegendmodproject() {
             this.size += (this.targetSize - this.size) * delay;
             this.alpha = delay;
             if (!this.removed) {
-                this.time = LM.time;
+                this.time = Connection.time;
                 return;
             }
             if (delay == 1) {
-                var removedCells = LM.removedCells.indexOf(this);
+                var removedCells = Connection.removedCells.indexOf(this);
                 if (removedCells != -1) {
-                    LM.removedCells.splice(removedCells, 1);
+                    Connection.removedCells.splice(removedCells, 1);
                 }
             }
         };
         this.isInView = function() {
-            return !(this.id <= 0) && !(this.x + this.size + 40 < LM.viewX - LM.canvasWidth / 2 / LM.scale || this.y + this.size + 40 < LM.viewY - LM.canvasHeight / 2 / LM.scale || this.x - this.size - 40 > LM.viewX + LM.canvasWidth / 2 / LM.scale || this.y - this.size - 40 > LM.viewY + LM.canvasHeight / 2 / LM.scale);
+            return !(this.id <= 0) && !(this.x + this.size + 40 < Connection.viewX - Connection.canvasWidth / 2 / Connection.scale || this.y + this.size + 40 < Connection.viewY - Connection.canvasHeight / 2 / Connection.scale || this.x - this.size - 40 > Connection.viewX + Connection.canvasWidth / 2 / Connection.scale || this.y - this.size - 40 > Connection.viewY + Connection.canvasHeight / 2 / Connection.scale);
         };
         this.isInV = function() {
-            if (this.x + this.size < LM.camMinX || this.y + this.size < LM.camMinY || this.x - this.size > LM.camMaxX || this.y - this.size > LM.camMaxY) {
+            if (this.x + this.size < Connection.camMinX || this.y + this.size < Connection.camMinY || this.x - this.size > Connection.camMaxX || this.y - this.size > Connection.camMaxY) {
                 return false;
             }
             return true;
@@ -7413,7 +7484,7 @@ function thelegendmodproject() {
             return ctxfx;
         };
         this.draw = function(style, canCreateDiscussions) {
-            if (LM.hideSmallBots && this.size <= 36) {
+            if (Connection.hideSmallBots && this.size <= 36) {
                 return;
             }
             // check this
@@ -7477,7 +7548,7 @@ function thelegendmodproject() {
                             style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                         } catch (e) {}
                     }
-                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
+                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && Connection.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
                         this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                 }
@@ -7488,7 +7559,7 @@ function thelegendmodproject() {
                         style.globalAlpha *= defaultSettings.virusAlpha;
                         defaultmapsettings.isAlphaChanged = true;
                     }
-                    if (defaultmapsettings.virColors && LM.play) {
+                    if (defaultmapsettings.virColors && Connection.play) {
                         style.fillStyle = application.setVirusColor(y);
                         style.strokeStyle = application.setVirusStrokeColor(y);
                     } else {
@@ -7524,7 +7595,7 @@ function thelegendmodproject() {
                 s = true;
             }
             var color = this.color;
-            if (LM.play) {
+            if (Connection.play) {
                 if (this.isPlayerCell) {
                     if (defaultmapsettings.myCustomColor) {
                         color = ogarcopythelb.color;
@@ -7554,11 +7625,11 @@ function thelegendmodproject() {
 
 
             //lylko
-            if (defaultmapsettings.customSkins && LM.showCustomSkins) {
+            if (defaultmapsettings.customSkins && Connection.showCustomSkins) {
                 node = application.getCustomSkin(this.targetNick, this.color);
 
                 if (node) {
-                    if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
+                    if ((defaultmapsettings.transparentSkins || Connection.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                         style.globalAlpha *= defaultSettings.skinsAlpha;
                         s = true;
                     }
@@ -7652,7 +7723,7 @@ function thelegendmodproject() {
                 style.restore();
                 return;
             } else {
-                if (defaultmapsettings.customSkins && LM.showCustomSkins) {
+                if (defaultmapsettings.customSkins && Connection.showCustomSkins) {
                     node2.src = application.customSkinsMap[this.targetNick];
                     application.customSkinsMap[this.targetNick];
                     if (node2.src) {
@@ -7708,14 +7779,14 @@ function thelegendmodproject() {
         //console.log('ProtocolVersion changed to,' + localStorage.getItem("ogarioProtocolVersion"))
         master.protocolVersion = localStorage.getItem("ogarioProtocolVersion");
     }
-    var LM = {
+    var Connection = {
         integrity: true,
         quadtree: null,
         updateQuadtree: function(cells) {
             var w = drawRender.canvasWidth / drawRender.scale;
             var h = drawRender.canvasHeight / drawRender.scale;
-            var x = (LM.viewX - w / 2);
-            var y = (LM.viewY - h / 2);
+            var x = (Connection.viewX - w / 2);
+            var y = (Connection.viewY - h / 2);
             this.quadtree = new PointQuadTree(x, y, w, h, 32);
             for (var i = 0; i < cells.length; ++i) {
                 var cell = cells[i];
@@ -8051,11 +8122,11 @@ function thelegendmodproject() {
                 self.sendMessage(view);
             }
 
-            if (!LM.integrity) {
+            if (!Connection.integrity) {
                 //token = '0';
                 sendSpawnPrivateServer()
                 return;
-            } else if (LM.integrity) {
+            } else if (Connection.integrity) {
                 window.agarCaptcha.requestCaptchaV3("play", function(token) {
                     sendSpawn(token)
                     //window.core.sendNick(nick, token)
@@ -8085,7 +8156,7 @@ function thelegendmodproject() {
             }
 */
             setTimeout(function() {
-                if (!window.cookieCaptchaOK && LM.integrity) {
+                if (!window.cookieCaptchaOK && Connection.integrity) {
                     legendmod.sendNick2(self.playerNick)
                 }
             }, 1800);
@@ -8257,7 +8328,7 @@ function thelegendmodproject() {
             if (!legendmod.integrity) {
                 return
             }
-            if (LM.accessTokenSent) {
+            if (Connection.accessTokenSent) {
                 return;
             }
             if (!oW) {
@@ -8583,7 +8654,7 @@ function thelegendmodproject() {
                             isFriend = true;
                             this.friends++;
                         }
-                        let friend = LM.fbOnline.find(element => {
+                        let friend = Connection.fbOnline.find(element => {
                             return element.id == id;
                         });
                         friend != undefined ? isFBFriend = friend.fbId : isFBFriend = false;
@@ -8780,7 +8851,7 @@ function thelegendmodproject() {
                     break;
                 case 103:
                     window.testobjectsOpcode103 = data;
-                    //LM["accessTokenSent"] = !![];
+                    //Connection["accessTokenSent"] = !![];
                     this.accessTokenSent = true;
                     if (window.master.context == 'facebook') { //Yahnych
                         this.sendFBIDS(window.master.fbUsers);
@@ -8961,7 +9032,7 @@ function thelegendmodproject() {
                     this.viewMaxY = message.readDoubleLE(s);
                     this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
 
-                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
+                    if (~~(this.viewMaxX - this.viewMinX) === Connection.mapSize && ~~(this.viewMaxY - this.viewMinY) === Connection.mapSize) {
                         window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2
                         window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2
                     }
@@ -8988,7 +9059,7 @@ function thelegendmodproject() {
                     this.viewMaxY = message.readDoubleLE(e);
                     this.setMapOffset(this.viewMinX, this.viewMinY, this.viewMaxX, this.viewMaxY);
 
-                    if (~~(this.viewMaxX - this.viewMinX) === LM.mapSize && ~~(this.viewMaxY - this.viewMinY) === LM.mapSize) {
+                    if (~~(this.viewMaxX - this.viewMinX) === Connection.mapSize && ~~(this.viewMaxY - this.viewMinY) === Connection.mapSize) {
                         window.userBots.offsetX = (this.viewMinX + this.viewMaxX) / 2;
                         window.userBots.offsetY = (this.viewMinY + this.viewMaxY) / 2;
                     }
@@ -9175,7 +9246,7 @@ function thelegendmodproject() {
         },
         vanillaskins(y, g) {
             if (g != null && application.customSkinsMap[y] == undefined) {
-                if (LM.gameMode == ":party") {
+                if (Connection.gameMode == ":party") {
                     y = y + "#000000";
                 }
                 //console.log(g)					
@@ -9383,7 +9454,7 @@ function thelegendmodproject() {
                     accountID = view.readUInt32LE(offset);
                     offset += 4;
                     cellUpdateCells.accID = accountID;
-                    let friend = LM.fbOnline.find(element => {
+                    let friend = Connection.fbOnline.find(element => {
                         return element.id == accountID
                     });
                     friend != undefined ? cellUpdateCells.fbID = friend.fbId : void(0);
@@ -9419,7 +9490,7 @@ function thelegendmodproject() {
                     4 & extendedFlags && (accountID = view.readUInt32LE(offset),
                         cellUpdateCells.accID = accountID,
                         offset += 4,
-                        friend = LM.fbOnline.find(element => {
+                        friend = Connection.fbOnline.find(element => {
                             return element.id == accountID
                         }),
                         friend != undefined ? cellUpdateCells.fbID = friend.fbId : void(0)),
@@ -9719,10 +9790,10 @@ function thelegendmodproject() {
             }, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
         }
     };
-    window.legendmod = LM; // look at this
+    window.legendmod = Connection; // look at this
 
     window.sendAction = function(action) {
-        LM.sendAction(action);
+        Connection.sendAction(action);
     };
     var drawRender = {
             canvas: null,
@@ -9745,9 +9816,9 @@ function thelegendmodproject() {
                 this.canvas = document.getElementById('canvas');
                 this.ctx = this.canvas.getContext('2d');
                 this.canvas.onmousemove = function(event) {
-                    LM.clientX = event.clientX;
-                    LM.clientY = event.clientY;
-                    LM.getCursorPosition();
+                    Connection.clientX = event.clientX;
+                    Connection.clientY = event.clientY;
+                    Connection.getCursorPosition();
                 };
             },
             resizeCanvas() {
@@ -9755,73 +9826,73 @@ function thelegendmodproject() {
                 this.canvasHeight = window.innerHeight;
                 this.canvas.width = this.canvasWidth;
                 this.canvas.height = this.canvasHeight;
-                LM.canvasWidth = this.canvasWidth;
-                LM.canvasHeight = this.canvasHeight;
+                Connection.canvasWidth = this.canvasWidth;
+                Connection.canvasHeight = this.canvasHeight;
                 this.renderFrame();
             },
             setView() {
                 this.setScale();
                 var speed = 30;
-                if (LM.playerCells.length) {
-                    LM.calculatePlayerMassAndPosition();
-                    this.camX = (this.camX + LM.viewX) / 2;
-                    this.camY = (this.camY + LM.viewY) / 2;
+                if (Connection.playerCells.length) {
+                    Connection.calculatePlayerMassAndPosition();
+                    this.camX = (this.camX + Connection.viewX) / 2;
+                    this.camY = (this.camY + Connection.viewY) / 2;
                 } else {
-                    this.camX = (29 * this.camX + LM.viewX) / 30;
-                    this.camY = (29 * this.camY + LM.viewY) / 30;
+                    this.camX = (29 * this.camX + Connection.viewX) / 30;
+                    this.camY = (29 * this.camY + Connection.viewY) / 30;
                 }
-                //this.camX=LM.viewX
-                //this.camY=LM.viewY
-                LM.playerX = this.camX;
-                LM.playerY = this.camY;
+                //this.camX=Connection.viewX
+                //this.camY=Connection.viewY
+                Connection.playerX = this.camX;
+                Connection.playerY = this.camY;
             },
             setScale() {
-                if (!LM.autoZoom) {
+                if (!Connection.autoZoom) {
                     this.scale = (9 * this.scale + this.getZoom()) / 10;
-                    LM.viewScale = this.scale;
+                    Connection.viewScale = this.scale;
                     return;
                 }
-                if (LM.play) {
-                    this.scale = (9 * this.scale + Math.min(64 / LM.playerSize, 1) ** 0.4 * this.getZoom()) / 10;
+                if (Connection.play) {
+                    this.scale = (9 * this.scale + Math.min(64 / Connection.playerSize, 1) ** 0.4 * this.getZoom()) / 10;
                 } else {
-                    this.scale = (9 * this.scale + LM.scale * this.getZoom()) / 10;
+                    this.scale = (9 * this.scale + Connection.scale * this.getZoom()) / 10;
                 }
-                LM.viewScale = this.scale;
+                Connection.viewScale = this.scale;
             },
             getZoom() {
-                return Math.max(this.canvasWidth / 1080, this.canvasHeight / 1920) * LM.zoomValue;
+                return Math.max(this.canvasWidth / 1080, this.canvasHeight / 1920) * Connection.zoomValue;
             },
             //Sonia5
             sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             },
             /*                'renderFrame': function() {
-                                //for (LM.time = Date.now(), e = 0; e < LM.cells.length; e++) LM.cells[e].moveCell();
-            				    LM.time = Date.now();
-            						for (i = 0; i < LM.cells.length; i++) {
-            							LM.cells[i].moveCell();
+                                //for (Connection.time = Date.now(), e = 0; e < Connection.cells.length; e++) Connection.cells[e].moveCell();
+            				    Connection.time = Date.now();
+            						for (i = 0; i < Connection.cells.length; i++) {
+            							Connection.cells[i].moveCell();
             						}
-                                if (this['setView'](), LM.getCursorPosition(), LM['sortCells'](), LM['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), defaultmapsettings.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), defaultmapsettings.showBgSectors && this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings['gridColor'], defaultSettings['sectorsColor'], defaultSettings['sectorsWidth'], true), ':battleroyale' === LM.gameMode && this['drawBattleArea'](this.ctx), defaultmapsettings['showMapBorders']) {
+                                if (this['setView'](), Connection.getCursorPosition(), Connection['sortCells'](), Connection['compareCells'](), this.ctx['clearRect'](0, 0, this.canvasWidth, this.canvasHeight), defaultmapsettings.showGrid && this['drawGrid'](this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY), this.ctx['save'](), this.ctx['translate'](this.canvasWidth / 2, this.canvasHeight / 2), this.ctx.scale(this.scale, this.scale), this.ctx['translate'](-this.camX, -this.camY), defaultmapsettings.showBgSectors && this.drawSectors(this.ctx, Connection.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, Connection.mapMinX, Connection.mapMinY, Connection.mapMaxX, Connection.mapMaxY, defaultSettings['gridColor'], defaultSettings['sectorsColor'], defaultSettings['sectorsWidth'], true), ':battleroyale' === Connection.gameMode && this['drawBattleArea'](this.ctx), defaultmapsettings['showMapBorders']) {
                                     var t = defaultSettings['bordersWidth'] / 2;
-                                    this['drawMapBorders'](this.ctx, LM.mapOffsetFixed, LM.mapMinX - t, LM.mapMinY - t, LM.mapMaxX + t, LM.mapMaxY + t, defaultSettings['bordersColor'], defaultSettings['bordersWidth']);
+                                    this['drawMapBorders'](this.ctx, Connection.mapOffsetFixed, Connection.mapMinX - t, Connection.mapMinY - t, Connection.mapMaxX + t, Connection.mapMaxY + t, defaultSettings['bordersColor'], defaultSettings['bordersWidth']);
                                 }
                                 this.drawCommander();
-                                defaultmapsettings.virusesRange && this['drawVirusesRange'](this.ctx, LM.viruses), this['drawFood'](), LM.play && (defaultmapsettings.splitRange && this['drawSplitRange'](this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell), defaultmapsettings.oppRings && this['drawOppRings'](this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache), defaultmapsettings['cursorTracking'] && this['drawCursorTracking'](this.ctx, LM.playerCells, LM.cursorX, LM.cursorY)), this['drawGhostCells']();
-                                for (var e = 0; e < LM['removedCells'].length; e++) LM['removedCells'][e].draw(this.ctx, true);
-                                for (e = 0; e < LM.cells.length; e++) LM.cells[e].draw(this.ctx);
-                                this.ctx['restore'](), ':teams' === LM.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                                defaultmapsettings.virusesRange && this['drawVirusesRange'](this.ctx, Connection.viruses), this['drawFood'](), Connection.play && (defaultmapsettings.splitRange && this['drawSplitRange'](this.ctx, Connection.biggerSTECellsCache, Connection.playerCells, Connection.selectBiggestCell), defaultmapsettings.oppRings && this['drawOppRings'](this.ctx, this.scale, Connection.biggerSTECellsCache, Connection.biggerCellsCache, Connection.smallerCellsCache, Connection.STECellsCache), defaultmapsettings['cursorTracking'] && this['drawCursorTracking'](this.ctx, Connection.playerCells, Connection.cursorX, Connection.cursorY)), this['drawGhostCells']();
+                                for (var e = 0; e < Connection['removedCells'].length; e++) Connection['removedCells'][e].draw(this.ctx, true);
+                                for (e = 0; e < Connection.cells.length; e++) Connection.cells[e].draw(this.ctx);
+                                this.ctx['restore'](), ':teams' === Connection.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                             }, */
             'renderFrame': async function() { //Sonia5
                 //this.ctx.start2D();
                 await this.sleep(4); //Sonia5
-                LM.time = Date.now();
-                for (i = 0; i < LM.cells.length; i++) {
-                    LM.cells[i].moveCell();
+                Connection.time = Date.now();
+                for (i = 0; i < Connection.cells.length; i++) {
+                    Connection.cells[i].moveCell();
                 }
                 this.setView();
-                LM.getCursorPosition();
-                LM.sortCells();
-                LM.compareCells();
+                Connection.getCursorPosition();
+                Connection.sortCells();
+                Connection.compareCells();
                 this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
                 if (defaultmapsettings.showGrid) {
                     this.drawGrid(this.ctx, this.canvasWidth, this.canvasHeight, this.scale, this.camX, this.camY);
@@ -9831,7 +9902,7 @@ function thelegendmodproject() {
                 this.ctx.scale(this.scale, this.scale);
                 this.ctx.translate(-this.camX, -this.camY);
                 if (defaultmapsettings.showBgSectors) {
-                    this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
+                    this.drawSectors(this.ctx, Connection.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, Connection.mapMinX, Connection.mapMinY, Connection.mapMaxX, Connection.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
 
                 if (!legendmod.integrity) {
@@ -9854,108 +9925,108 @@ function thelegendmodproject() {
                 }
 
 
-                if (LM.gameMode === ':battleroyale') {
+                if (Connection.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
                 if (defaultmapsettings.showMapBorders) {
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-                    this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+                    this.drawMapBorders(this.ctx, Connection.mapOffsetFixed, Connection.mapMinX - tempborderwidthradius, Connection.mapMinY - tempborderwidthradius, Connection.mapMaxX + tempborderwidthradius, Connection.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }
                 this.drawCommander();
                 this.drawCommander2();
                 if (defaultmapsettings.virusesRange) {
-                    this.drawVirusesRange(this.ctx, LM.viruses);
+                    this.drawVirusesRange(this.ctx, Connection.viruses);
                 }
                 this.drawFood();
                 this.calMinMax();
-                if (LM.play) {
+                if (Connection.play) {
                     if (defaultmapsettings.splitRange) {
-                        this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                        this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                        //this.drawDoubleSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
-                        this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                        this.drawSplitRange(this.ctx, Connection.biggerSTECellsCache, Connection.playerCells, Connection.selectBiggestCell);
+                        this.drawSplitRange(this.ctx, Connection.biggerSTEDCellsCache, Connection.playerCells, Connection.selectBiggestCell); //Sonia
+                        //this.drawDoubleSplitRange(this.ctx, Connection.biggerSTECellsCache, Connection.playerCells, Connection.selectBiggestCell);
+                        this.drawDoubleSplitRange(this.ctx, Connection.biggerSTEDCellsCache, Connection.playerCells, Connection.selectBiggestCell); //Sonia
                     }
                     if (defaultmapsettings.oppRings) {
-                        //this.drawOppRings(this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache);
-                        this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
-                        //this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache); 
+                        //this.drawOppRings(this.ctx, this.scale, Connection.biggerSTECellsCache, Connection.biggerCellsCache, Connection.smallerCellsCache, Connection.STECellsCache);
+                        this.drawOppRings(this.ctx, this.scale, Connection.biggerSTEDCellsCache, Connection.biggerSTECellsCache, Connection.biggerCellsCache, Connection.smallerCellsCache, Connection.STECellsCache, Connection.STEDCellsCache); //Sonia
+                        //this.drawOppRings(this.ctx, this.scale, Connection.biggerSTEDCellsCache, Connection.biggerSTECellsCache, Connection.biggerCellsCache, Connection.smallerCellsCache, Connection.STECellsCache, Connection.STEDCellsCache, Connection.SSCellsCache); 
                     }
                     if (defaultmapsettings.cursorTracking) {
-                        this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+                        this.drawCursorTracking(this.ctx, Connection.playerCells, Connection.cursorX, Connection.cursorY);
                     }
-                    if (defaultmapsettings.FBTracking && LM.arrowFB[0].visible) {
-                        this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
+                    if (defaultmapsettings.FBTracking && Connection.arrowFB[0].visible) {
+                        this.drawFBTracking(this.ctx, Connection.playerCells, Connection.arrowFB[0].x, Connection.arrowFB[0].y);
                     }
                 }
 
                 this.drawGhostCells();
 
-                for (var i = 0; i < LM.removedCells.length; i++) {
-                    LM.removedCells[i].draw(this.ctx, true);
+                for (var i = 0; i < Connection.removedCells.length; i++) {
+                    Connection.removedCells[i].draw(this.ctx, true);
                 }
 
                 //lylko
-                defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
+                defaultmapsettings.jellyPhisycs && Connection.updateQuadtree(Connection.cells); //
 
-                for (i = 0; i < LM.cells.length; i++) {
+                for (i = 0; i < Connection.cells.length; i++) {
 
                     if (defaultmapsettings.jellyPhisycs) {
-                        LM.cells[i].updateNumPoints();
-                        LM.cells[i].movePoints();
+                        Connection.cells[i].updateNumPoints();
+                        Connection.cells[i].movePoints();
                     }
 
-                    LM.cells[i].draw(this.ctx);
+                    Connection.cells[i].draw(this.ctx);
 
-                    if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
-                        LM.selected = LM.cells[i].id
-                        //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
+                    if (drawRender.LMB && this.pointInCircle(Connection.cursorX, Connection.cursorY, Connection.cells[i].x, Connection.cells[i].y, Connection.cells[i].size)) {
+                        Connection.selected = Connection.cells[i].id
+                        //this.drawRing(this.ctx,Connection.cells[i].x,Connection.cells[i].y,Connection.cells[i].size,0.75,'#ffffff')
                     }
                 }
-                LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
-                    LM.indexedCells[LM.selected].x,
-                    LM.indexedCells[LM.selected].y,
-                    LM.indexedCells[LM.selected].size,
+                Connection.indexedCells[Connection.selected] && this.drawRing(this.ctx,
+                    Connection.indexedCells[Connection.selected].x,
+                    Connection.indexedCells[Connection.selected].y,
+                    Connection.indexedCells[Connection.selected].size,
                     0.75, '#ffffff')
 
-                if (drawRender.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
-                    var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
+                if (drawRender.RMB && Connection.indexedCells[Connection.selected] && Connection.playerCellIDs.length) {
+                    var index = Connection.selectBiggestCell ? Connection.playerCells.length - 1 : 0;
                     //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
-                    if (LM.playerCells[index] == undefined) return;
-                    var xc = LM.playerCells[index].targetX //.x
-                    var yc = LM.playerCells[index].targetY //.y
+                    if (Connection.playerCells[index] == undefined) return;
+                    var xc = Connection.playerCells[index].targetX //.x
+                    var yc = Connection.playerCells[index].targetY //.y
 
-                    var x = LM.indexedCells[LM.selected].targetX //.x
-                    var y = LM.indexedCells[LM.selected].targetY //.y
+                    var x = Connection.indexedCells[Connection.selected].targetX //.x
+                    var y = Connection.indexedCells[Connection.selected].targetY //.y
 
                     var a = xc - x
                     var b = yc - y
-                    var distance = Math.sqrt(a * a + b * b) - (LM.indexedCells[LM.selected].size + LM.playerCells[index].size)
+                    var distance = Math.sqrt(a * a + b * b) - (Connection.indexedCells[Connection.selected].size + Connection.playerCells[index].size)
 
                     var ang = Math.atan2(y - yc, x - xc);
 
-                    LM.cursorX = xc + (Math.cos(ang) * distance)
-                    LM.cursorY = yc + (Math.sin(ang) * distance)
-                    LM.sendPosition()
-                    //console.log(xc,yc,x,y,LM.cursorX,LM.cursorY)
+                    Connection.cursorX = xc + (Math.cos(ang) * distance)
+                    Connection.cursorY = yc + (Math.sin(ang) * distance)
+                    Connection.sendPosition()
+                    //console.log(xc,yc,x,y,Connection.cursorX,Connection.cursorY)
                     //Math.deg(ang)
 
 
-                    /*var xc = LM.playerCells[index].x,
-                        yc = LM.playerCells[index].y,*/
+                    /*var xc = Connection.playerCells[index].x,
+                        yc = Connection.playerCells[index].y,*/
                     //R = 100000000,
-                    /*ang = Math.atan2(LM.indexedCells[LM.selected].y - yc, LM.indexedCells[LM.selected].x - xc);
-                    LM.cursorX= Math.cos(ang)
-                    LM.cursorY= Math.sin(ang)*/
+                    /*ang = Math.atan2(Connection.indexedCells[Connection.selected].y - yc, Connection.indexedCells[Connection.selected].x - xc);
+                    Connection.cursorX= Math.cos(ang)
+                    Connection.cursorY= Math.sin(ang)*/
                     //Math.deg(ang)
 
-                    //LM.cursorX = LM.indexedCells[LM.selected].x
-                    //LM.cursorY = LM.indexedCells[LM.selected].y
+                    //Connection.cursorX = Connection.indexedCells[Connection.selected].x
+                    //Connection.cursorY = Connection.indexedCells[Connection.selected].y
                 }
                 //
                 if (defaultmapsettings.debug) {
-                    this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
+                    this.drawViewport(this.ctx, 'Viewport', Connection.camMinX, Connection.camMinY, Connection.camMaxX, Connection.camMaxY, defaultSettings.bordersColor, 15);
 
-                    //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
+                    //this.newViewport( this.ctx, 'Client', Connection.viewX, Connection.viewY, Connection.isSpectateEnabled, Connection.isFreeSpectate, Connection.leaderboard, Connection.playerCells)
                     if (window.fullSpectator) {
                         for (let i = 0; i < spects.length; i++) {
                             this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
@@ -9966,7 +10037,7 @@ function thelegendmodproject() {
                 //
 
                 this.ctx.restore();
-                if (LM.gameMode === ':teams') {
+                if (Connection.gameMode === ':teams') {
                     if (this.pieChart && this.pieChart.width) {
                         this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                     }
@@ -9978,18 +10049,18 @@ function thelegendmodproject() {
                     this.ctx.font = "15px sans-serif";
                     this.ctx.textAlign = "start";
                     var lw = (this.canvasHeight / 2)
-                    LM.camMaxX && this.ctx.fillText("isFreeSpectate: " + LM.isFreeSpectate, 50, lw += 25);
-                    LM.camMaxX && this.ctx.fillText("isSpectateEnabled: " + LM.isSpectateEnabled, 50, lw += 25);*/
+                    Connection.camMaxX && this.ctx.fillText("isFreeSpectate: " + Connection.isFreeSpectate, 50, lw += 25);
+                    Connection.camMaxX && this.ctx.fillText("isSpectateEnabled: " + Connection.isSpectateEnabled, 50, lw += 25);*/
 
 
 
-                    //LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
-                    //LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
-                    //LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
-                    //LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
+                    //Connection.camMaxX && this.ctx.fillText("realQuadrant: "+Connection.realQuadrant, 50, lw+=25);
+                    //Connection.camMaxX && this.ctx.fillText("lastQuadrant: "+Connection.lastQuadrant, 50, lw+=25);
+                    //Connection.camMaxX && this.ctx.fillText("quadrant: "+Connection.quadrant, 50, lw+=25);
+                    //Connection.camMaxX && this.ctx.fillText("cMaxX: "+Connection.camMaxX, 50, lw+=30);
+                    //Connection.camMaxY && this.ctx.fillText("cMaxY: "+Connection.camMaxY, 50, lw+=30);
+                    //Connection.camMinX && this.ctx.fillText("cMinX: "+Connection.camMinX, 50, lw+=30);
+                    //Connection.camMinY && this.ctx.fillText("cMinY: "+Connection.camMinY, 50, lw+=30);
                 }
             },
             drawFBTracking(ctx, players, x, y) { //Yahnych
@@ -10056,7 +10127,7 @@ function thelegendmodproject() {
                 var w = 1024 / s / 2 * mtp; //WSVGA
                 var h = 600 / s / 2 * mtp;
                 this.drawViewport(ctx, `Viewport# ${name}`, viewX - w, viewY - h, viewX + w, viewY + h, defaultSettings.bordersColor, 15);
-                //this.drawRing(this.ctx, LM.viewX, LM.viewY, 15, 1, '#ff00ff') 
+                //this.drawRing(this.ctx, Connection.viewX, Connection.viewY, 15, 1, '#ff00ff') 
             },
             drawViewport: function(ctx, text, minX, maxY, maxX, minY, stroke, width) {
 
@@ -10153,7 +10224,7 @@ function thelegendmodproject() {
             },
             drawCommander() {
                 //console.log('Special effects stage 2');
-                if (LM.drawCommander) {
+                if (Connection.drawCommander) {
                     var pickerAxes = this.ctx;
                     cimg = new Image;
                     cimg.src = defaultSettings.commanderImage;
@@ -10162,22 +10233,22 @@ function thelegendmodproject() {
                     cimg12 = new Image;
                     cimg12.src = defaultSettings.commanderImage2;
                     pickerAxes.save();
-                    pickerAxes.globalAlpha = LM.cAlpha;
+                    pickerAxes.globalAlpha = Connection.cAlpha;
                     pickerAxes.translate(ogario.spawnX, ogario.spawnY);
-                    pickerAxes.rotate(LM.cAngle);
-                    pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                    pickerAxes.rotate(Connection.cAngle);
+                    pickerAxes.drawImage(cimg, -Connection.cRadius / 2, -Connection.cRadius / 2, Connection.cRadius, Connection.cRadius);
                     pickerAxes.restore();
                     pickerAxes.save();
-                    pickerAxes.globalAlpha = LM.cAlpha;
+                    pickerAxes.globalAlpha = Connection.cAlpha;
                     pickerAxes.translate(ogario.spawnX, ogario.spawnY);
-                    pickerAxes.rotate(LM.cAngle1);
-                    pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                    pickerAxes.rotate(Connection.cAngle1);
+                    pickerAxes.drawImage(cimg1, -Connection.cRadius / 2, -Connection.cRadius / 2, Connection.cRadius, Connection.cRadius);
                     pickerAxes.restore();
                     pickerAxes.save();
-                    pickerAxes.globalAlpha = LM.cAlpha;
+                    pickerAxes.globalAlpha = Connection.cAlpha;
                     pickerAxes.translate(ogario.spawnX, ogario.spawnY);
-                    pickerAxes.rotate(LM.cAngle2);
-                    pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                    pickerAxes.rotate(Connection.cAngle2);
+                    pickerAxes.drawImage(cimg12, -Connection.cRadius / 2, -Connection.cRadius / 2, Connection.cRadius, Connection.cRadius);
                     pickerAxes.restore();
                     pickerAxes.globalAlpha = 1;
                     this.updateCommander();
@@ -10185,7 +10256,7 @@ function thelegendmodproject() {
             },
             drawCommander2() {
                 //console.log('Special effects stage 2');
-                if (LM.drawCommander2) {
+                if (Connection.drawCommander2) {
                     var pickerAxes = this.ctx;
                     cimg = new Image;
                     cimg.src = defaultSettings.commanderImage3;
@@ -10194,47 +10265,47 @@ function thelegendmodproject() {
                     cimg12 = new Image;
                     cimg12.src = defaultSettings.commanderImage5;
                     pickerAxes.save();
-                    pickerAxes.globalAlpha = LM.cAlpha;
+                    pickerAxes.globalAlpha = Connection.cAlpha;
                     pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
-                    pickerAxes.rotate(LM.cAngle);
-                    pickerAxes.drawImage(cimg, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                    pickerAxes.rotate(Connection.cAngle);
+                    pickerAxes.drawImage(cimg, -Connection.cRadius / 2, -Connection.cRadius / 2, Connection.cRadius, Connection.cRadius);
                     pickerAxes.restore();
                     pickerAxes.save();
-                    pickerAxes.globalAlpha = LM.cAlpha;
+                    pickerAxes.globalAlpha = Connection.cAlpha;
                     pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
-                    pickerAxes.rotate(LM.cAngle1);
-                    pickerAxes.drawImage(cimg1, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                    pickerAxes.rotate(Connection.cAngle1);
+                    pickerAxes.drawImage(cimg1, -Connection.cRadius / 2, -Connection.cRadius / 2, Connection.cRadius, Connection.cRadius);
                     pickerAxes.restore();
                     pickerAxes.save();
-                    pickerAxes.globalAlpha = LM.cAlpha;
+                    pickerAxes.globalAlpha = Connection.cAlpha;
                     pickerAxes.translate(window.targetingLeadX, window.targetingLeadY);
-                    pickerAxes.rotate(LM.cAngle2);
-                    pickerAxes.drawImage(cimg12, -LM.cRadius / 2, -LM.cRadius / 2, LM.cRadius, LM.cRadius);
+                    pickerAxes.rotate(Connection.cAngle2);
+                    pickerAxes.drawImage(cimg12, -Connection.cRadius / 2, -Connection.cRadius / 2, Connection.cRadius, Connection.cRadius);
                     pickerAxes.restore();
                     pickerAxes.globalAlpha = 1;
                     this.updateCommander();
                 }
             },
             updateCommander() {
-                LM.cRadius += 7;
-                LM.cAngle += .007;
-                LM.cAngle1 -= .006;
-                LM.cAngle2 += .003;
-                if (2025 <= LM.cRadius) {
-                    LM.cAlpha *= .95;
+                Connection.cRadius += 7;
+                Connection.cAngle += .007;
+                Connection.cAngle1 -= .006;
+                Connection.cAngle2 += .003;
+                if (2025 <= Connection.cRadius) {
+                    Connection.cAlpha *= .95;
                 }
-                if (1E-4 >= LM.cAlpha) {
+                if (1E-4 >= Connection.cAlpha) {
                     this.resetCommander();
                 }
             },
             resetCommander() {
-                LM.cRadius = 10; //LM.clientX
-                LM.cAngle = 4;
-                LM.cAngle1 = 0;
-                LM.cAngle2 = 0;
-                LM.cAlpha = 1;
-                LM.drawCommander = false;
-                LM.drawCommander2 = false;
+                Connection.cRadius = 10; //Connection.clientX
+                Connection.cAngle = 4;
+                Connection.cAngle1 = 0;
+                Connection.cAngle2 = 0;
+                Connection.cAlpha = 1;
+                Connection.drawCommander = false;
+                Connection.drawCommander2 = false;
                 ogario.spawnX = 0;
                 ogario.spawnY = 0;
             },
@@ -10282,39 +10353,39 @@ function thelegendmodproject() {
                 }
             },
             calMinMax() {
-                LM.camMaxX = LM.playerX
-                LM.camMaxY = LM.playerY
-                LM.camMinX = LM.playerX
-                LM.camMinY = LM.playerY
-                for (var length = 0; length < LM.food.length; length++) {
-                    var x = LM.food[length].x - 10 - defaultSettings.foodSize;
-                    var y = LM.food[length].y - 10 - defaultSettings.foodSize;
-                    if (x > LM.camMaxX) LM.camMaxX = x
-                    if (y > LM.camMaxY) LM.camMaxY = y
-                    if (x < LM.camMinX) LM.camMinX = x
-                    if (y < LM.camMinY) LM.camMinY = y
+                Connection.camMaxX = Connection.playerX
+                Connection.camMaxY = Connection.playerY
+                Connection.camMinX = Connection.playerX
+                Connection.camMinY = Connection.playerY
+                for (var length = 0; length < Connection.food.length; length++) {
+                    var x = Connection.food[length].x - 10 - defaultSettings.foodSize;
+                    var y = Connection.food[length].y - 10 - defaultSettings.foodSize;
+                    if (x > Connection.camMaxX) Connection.camMaxX = x
+                    if (y > Connection.camMaxY) Connection.camMaxY = y
+                    if (x < Connection.camMinX) Connection.camMinX = x
+                    if (y < Connection.camMinY) Connection.camMinY = y
                 }
             },
             drawFood() {
 
-                if (!LM.showFood) {
+                if (!Connection.showFood) {
                     return;
                 }
                 if (defaultmapsettings.autoHideFoodOnZoom && this.scale < 0.2) {
                     return;
                 }
-                if (defaultmapsettings.autoHideFood && !LM.foodIsHidden && LM.playerMass > 1000) {
-                    LM.showFood = false;
-                    LM.foodIsHidden = true;
+                if (defaultmapsettings.autoHideFood && !Connection.foodIsHidden && Connection.playerMass > 1000) {
+                    Connection.showFood = false;
+                    Connection.foodIsHidden = true;
                     return;
                 }
                 if (!defaultmapsettings.rainbowFood) {
-                    this.drawCachedFood(this.ctx, LM.food, this.scale);
+                    this.drawCachedFood(this.ctx, Connection.food, this.scale);
                     return;
                 }
-                for (let length = 0; length < LM.food.length; length++) {
-                    LM.food[length].moveCell();
-                    LM.food[length].draw(this.ctx);
+                for (let length = 0; length < Connection.food.length; length++) {
+                    Connection.food[length].moveCell();
+                    Connection.food[length].draw(this.ctx);
                 }
             },
             drawCachedFood(ctx, food, scale, reset) {
@@ -10390,7 +10461,7 @@ function thelegendmodproject() {
                 //if (this.drawCircles(ctx, biggestCell, 760, 4, 0.4, '#BE00FF'), players.length) {
                 if (this.draw2Circles(ctx, biggestCell, 760, 4, 0.4, defaultSettings.enemyBSTEDColor), players.length) { //Sonia2
                     //if (this.draw2Circles(ctx, biggestCell, 760, 4, 0.4, '#8000ff'), players.length) { //Sonia
-                    //this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
+                    //this.drawSplitRange(this.ctx, Connection.biggerSTECellsCache, Connection.playerCells, Connection.selectBiggestCell);
 
                     var current = currentBiggestCell ? players.length - 1 : 0;
                     //console.log(currentBiggestCell[current].size);
@@ -10503,8 +10574,8 @@ function thelegendmodproject() {
                 this.pieChart.width = 200 * mincanvasWidth;
                 this.pieChart.height = 240 * mincanvasWidth;
                 ctx.scale(mincanvasWidth, mincanvasWidth);
-                for (var colors = ['#333333', '#FF3333', '#33FF33', '#3333FF'], time = 0, length = 0; length < LM.pieChart.length; length++) {
-                    var currentPie = time + LM.pieChart[length] * this.pi2;
+                for (var colors = ['#333333', '#FF3333', '#33FF33', '#3333FF'], time = 0, length = 0; length < Connection.pieChart.length; length++) {
+                    var currentPie = time + Connection.pieChart[length] * this.pi2;
                     ctx.fillStyle = colors[length + 1];
                     ctx.beginPath();
                     ctx.moveTo(100, 140);
@@ -10514,13 +10585,13 @@ function thelegendmodproject() {
                 }
             },
             drawBattleArea(ctx) {
-                if (LM.battleRoyale.state) {
-                    this.drawDangerArea(ctx, LM.battleRoyale.x, LM.battleRoyale.y, LM.battleRoyale.radius, LM.mapMinX, LM.mapMinY, LM.mapMaxX - LM.mapMinX, LM.mapMaxY - LM.mapMinY, defaultSettings.dangerAreaColor, 0.25);
-                    this.drawSafeArea(ctx, LM.battleRoyale.targetX, LM.battleRoyale.targetY, LM.battleRoyale.targetRadius, 40, defaultSettings.safeAreaColor);
+                if (Connection.battleRoyale.state) {
+                    this.drawDangerArea(ctx, Connection.battleRoyale.x, Connection.battleRoyale.y, Connection.battleRoyale.radius, Connection.mapMinX, Connection.mapMinY, Connection.mapMaxX - Connection.mapMinX, Connection.mapMaxY - Connection.mapMinY, defaultSettings.dangerAreaColor, 0.25);
+                    this.drawSafeArea(ctx, Connection.battleRoyale.targetX, Connection.battleRoyale.targetY, Connection.battleRoyale.targetRadius, 40, defaultSettings.safeAreaColor);
                 }
             },
             drawBattleAreaOnMinimap(ctx, width, heigth, newWidth, offsetX, offsetY) {
-                if (LM.battleRoyale.state) {
+                if (Connection.battleRoyale.state) {
                     if (!this.battleAreaMap) {
                         this.battleAreaMap = document.createElement("canvas");
                         this.battleAreaMapCtx = this.battleAreaMap.getContext("2d");
@@ -10531,19 +10602,19 @@ function thelegendmodproject() {
                     } else {
                         this.battleAreaMapCtx.clearRect(0, 0, width, heigth);
                     }
-                    var newX = (LM.battleRoyale.x + offsetX) * newWidth;
-                    var newY = (LM.battleRoyale.y + offsetY) * newWidth;
-                    var newRadius = LM.battleRoyale.radius * newWidth;
+                    var newX = (Connection.battleRoyale.x + offsetX) * newWidth;
+                    var newY = (Connection.battleRoyale.y + offsetY) * newWidth;
+                    var newRadius = Connection.battleRoyale.radius * newWidth;
                     this.drawDangerArea(this.battleAreaMapCtx, newX, newY, newRadius, 0, 0, width, heigth, defaultSettings.dangerAreaColor, 0.25);
-                    newX = ~~((LM.battleRoyale.targetX + offsetX) * newWidth);
-                    newY = ~~((LM.battleRoyale.targetY + offsetY) * newWidth);
-                    newRadius = ~~(LM.battleRoyale.targetRadius * newWidth);
+                    newX = ~~((Connection.battleRoyale.targetX + offsetX) * newWidth);
+                    newY = ~~((Connection.battleRoyale.targetY + offsetY) * newWidth);
+                    newRadius = ~~(Connection.battleRoyale.targetRadius * newWidth);
                     this.drawSafeArea(this.battleAreaMapCtx, newX, newY, newRadius, 2, defaultSettings.safeAreaColor);
                     ctx.drawImage(this.battleAreaMap, 0, 0);
                 }
             },
             drawDangerArea(ctx, x, y, radius, minX, minY, maxX, maxY, color, aplha) {
-                if (!(LM.battleRoyale.radius == LM.battleRoyale.maxRadius || radius <= 0)) {
+                if (!(Connection.battleRoyale.radius == Connection.battleRoyale.maxRadius || radius <= 0)) {
                     ctx.save();
                     ctx.globalAlpha = aplha;
                     ctx.fillStyle = color;
@@ -10557,7 +10628,7 @@ function thelegendmodproject() {
                 }
             },
             drawSafeArea(ctx, targetX, targetY, radius, width, color) {
-                if (!(LM.battleRoyale.state > 2 || radius <= 0)) {
+                if (!(Connection.battleRoyale.state > 2 || radius <= 0)) {
                     this.drawDashedCircle(ctx, targetX, targetY, radius, 60, width, color);
                 }
             },
@@ -10580,7 +10651,7 @@ function thelegendmodproject() {
             },
             drawGhostCells() {
                 if (defaultmapsettings.showGhostCells) {
-                    var ghostsCells = LM.ghostCells;
+                    var ghostsCells = Connection.ghostCells;
                     this.ctx.beginPath();
                     var length = 0;
                     for (; length < ghostsCells.length; length++) {
@@ -10601,16 +10672,16 @@ function thelegendmodproject() {
                                 this.ctx.lineWidth = 4;
                                 angle = Math.PI * 0.8;
 
-                                if (LM.leaderboard[length] != undefined) { //LM instead of legendmod for quicker response
+                                if (Connection.leaderboard[length] != undefined) { //Connection instead of legendmod for quicker response
 
-                                    this.ghostcellstext = removeEmojis(application.escapeHTML(LM.leaderboard[length].nick)); //application.escapeHTML(legendmod.leaderboard[0].nick)
+                                    this.ghostcellstext = removeEmojis(application.escapeHTML(Connection.leaderboard[length].nick)); //application.escapeHTML(legendmod.leaderboard[0].nick)
                                 } else {
                                     this.ghostcellstext = "Legend mod";
                                 }
                                 this.drawTextAlongArc(this.ctx, this.ghostcellstext, x, y, ghostsCells[length].size * this.pi2 / 6, angle);
-                                if (defaultmapsettings.customSkins && LM.showCustomSkins) {
-                                    if (LM.leaderboard[length] != undefined) {
-                                        node = application.getCustomSkin(LM.leaderboard[length].nick, "#000000");
+                                if (defaultmapsettings.customSkins && Connection.showCustomSkins) {
+                                    if (Connection.leaderboard[length] != undefined) {
+                                        node = application.getCustomSkin(Connection.leaderboard[length].nick, "#000000");
                                         if (node) {
                                             this.ctx.drawImage(node, x - ghostsCells[length].size, y - ghostsCells[length].size, ghostsCells[length].size * 2, ghostsCells[length].size * 2);
                                         }
@@ -10995,7 +11066,7 @@ function thelegendmodproject() {
         };
     }
 
-    ogario = LM;
+    ogario = Connection;
 
     //LMbuffer = t('buffer')['Buffer'];
     //window.LMbuffer=LMbuffer; //buffer 3
@@ -11066,35 +11137,35 @@ function thelegendmodproject() {
     window.core = {
         //'connect': function(url) {
 		connect(url) {	
-            LM.connect(url);
-            //LM.connect(url); //for multibox with new Protocol and Client
+            Connection.connect(url);
+            //Connection.connect(url); //for multibox with new Protocol and Client
         },
         disconnect() {},
         sendNick(nick) {
-            LM.sendNick(nick);
+            Connection.sendNick(nick);
         },
         sendSpectate() {
-            LM.sendSpectate();
+            Connection.sendSpectate();
         },
         eject() {
-            LM.sendEject();
+            Connection.sendEject();
             window.lastejected = true;
         },
         split() {
-            LM.sendSplit();
+            Connection.sendSplit();
 
         },
         specialOn() {
-            LM.sendFreeSpectate();
+            Connection.sendFreeSpectate();
         },
         specialOff() {
-            LM.sendFreeSpectate();
+            Connection.sendFreeSpectate();
         },
         sendFbToken(token) {
-            LM.sendFbToken(token);
+            Connection.sendFbToken(token);
         },
         sendGplusToken(token) {
-            LM.sendGplusToken(token);
+            Connection.sendGplusToken(token);
         },
         recaptchaHandlerResponse(token) {
             if (window.botscaptcha == true) {
@@ -11107,7 +11178,7 @@ function thelegendmodproject() {
         },
         recaptchaResponse(token) {
             window.lastRecaptchaResponseToken = token;
-            LM.sendRecaptcha(token);
+            Connection.sendRecaptcha(token);
         },
         recaptchaBotResponse(token) {
             window.lastRecaptchaResponseToken = token;
@@ -11117,7 +11188,7 @@ function thelegendmodproject() {
             window.connectionBots.send(window.buffers.captchatoken(token))
         },
         setClientVersion(version, strVersion) {
-            LM.setClientVersion(version, strVersion);
+            Connection.setClientVersion(version, strVersion);
         },
         proxyMobileData(arr = []) {
             if (!Array.isArray(arr)) {
@@ -11128,7 +11199,7 @@ function thelegendmodproject() {
                 arr.unshift(102);
             }
             arr = new Uint8Array(arr);
-            LM.sendMessage(new DataView(arr.buffer));
+            Connection.sendMessage(new DataView(arr.buffer));
         },
         registerSkin(a, b, c, d) {
             window.customskinsname = a;
@@ -11148,7 +11219,7 @@ function thelegendmodproject() {
                 data.unshift(102);
             }
             data = new Uint8Array(data);
-            LM.sendBuffer(new DataView(data.buffer));
+            Connection.sendBuffer(new DataView(data.buffer));
         }
     };
     window.master.getClientVersion();
@@ -11157,7 +11228,7 @@ function thelegendmodproject() {
     application.getDefaultSettings();
     application.connect();
     hotkeysSetup.init();
-    LM.init();
+    Connection.init();
     drawRender.init();
     window.master.init();
     ogarhusettings();
