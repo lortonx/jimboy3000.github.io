@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.416 MEGA TEST
+// v1.417 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7970,7 +7970,7 @@ function thelegendmodproject() {
                 this.clientKey = this.shiftKey(this.clientKey);
             }
 			//jimboy3100
-			if (window.LMdebug && message.getUint8(0)=="102" && message.getUint8(1)=="8") console.log(message)
+			if (window.LMdebug && message[0]=="102") console.log(message)
             this.sendBuffer(message);
         },
         sendAction(action) {
