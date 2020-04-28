@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.419 MEGA TEST
+// v1.420 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -8556,8 +8556,17 @@ function thelegendmodproject() {
                         user.id = data.getUint32(s, true);
                         s += 4;
                         user.fbId = window.decodeURIComponent(window.escape(encode()));
-                        console.log("fb id found", user.id, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
-                        application.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+
+						for (i = 0; i <= this.leaderboard.length - 1; i++) {
+							if (this.leaderboard[i].id== user.id) {							
+							user.nick = this.leaderboard[i].nick	
+							}
+						}
+						console.log("fb id found", user.id, user.nick, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+                        application.customSkinsMap[user.nick] = `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`;
+                        application.loadSkin(application.customSkinsCache, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`, "fbSkin");	
+						
+                        //application.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
 
                         this.fbOnline.push(user);
                     }
