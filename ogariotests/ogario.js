@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.420 MEGA TEST
+// v1.421 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4921,11 +4921,11 @@ function thelegendmodproject() {
             }
             img[url].crossOrigin = 'Anonymous';
             img[url].onload = function() {
-                    this.complete &&
+                    if (this.complete &&
                         this.width &&
                         this.height &&
                         this.width <= 2000 && this.width > 0 &&
-                        this.height <= 2000 && this.height > 0 &&
+                        this.height <= 2000 && this.height > 0){
                         
 						if (animated != "fbSkin"){
 							app.cacheQueue.push(url);
@@ -4954,6 +4954,7 @@ function thelegendmodproject() {
                                 1 == app.cacheQueue4.length &&
                                 app.cacheSkin4(app.customSkinsCache))								
                         );*/
+						}
                 },
                 img[url].onerror = function() {
                     //console.log("error loading image: "+ url);
