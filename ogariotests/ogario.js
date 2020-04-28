@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.425 MEGA TEST
+// v1.426 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7645,7 +7645,7 @@ function thelegendmodproject() {
 						var nodeFB = application.customSkinsCache[temp];
 						console.log("found fb name: " + this.targetNick + " src: " + temp);
                         try {
-                            style.drawImage(application.customSkinsCache[nodeFB], this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+                            style.drawImage(nodeFB, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
                         } catch (e) {}						
 					}
 						
