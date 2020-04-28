@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.417 MEGA TEST
+// v1.418 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2902,6 +2902,7 @@ function thelegendmodproject() {
         cacheQueue: [],
         cacheQueue2: [],
         cacheQueue3: [],
+		cacheQueue4: [],
         deathLocations: [],
         playerID: null,
         playerMass: 0,
@@ -4925,16 +4926,31 @@ function thelegendmodproject() {
                         this.height &&
                         this.width <= 2000 && this.width > 0 &&
                         this.height <= 2000 && this.height > 0 &&
-                        ((app.cacheQueue.push(url),
+                        
+						app.cacheQueue.push(url);
+						if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
+						app.cacheQueue2.push(url) 
+						if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
+						if (animated == true) app.cacheQueue3.push(url)
+						if (1 == app.cacheQueue3.length) app.cacheSkin3(app.customSkinsCache)
+						if (animated == "fbSkin") app.cacheQueue3.push(url)
+						if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)	
+						
+					
+						/*
+						((app.cacheQueue.push(url),
                                 1 == app.cacheQueue.length &&
                                 app.cacheSkin(app.customSkinsCache, animated)),
                             (app.cacheQueue2.push(url),
                                 1 == app.cacheQueue2.length &&
                                 app.cacheSkin2(app.customSkinsCache)),
-                            (animated && app.cacheQueue3.push(url),
+                            (animated == true  && app.cacheQueue3.push(url),
                                 1 == app.cacheQueue3.length &&
                                 app.cacheSkin3(app.customSkinsCache))
-                        );
+                            (animated == "fbSkin" && app.cacheQueue4.push(url),
+                                1 == app.cacheQueue4.length &&
+                                app.cacheSkin4(app.customSkinsCache))								
+                        );*/
                 },
                 img[url].onerror = function() {
                     //console.log("error loading image: "+ url);
@@ -5045,6 +5061,33 @@ function thelegendmodproject() {
                 }
             }
         },
+        cacheSkin4(skinCache) {
+            //console.log(skinCache);  //////// return the image src
+            if (0 != this.cacheQueue4.length) {
+                var e = this.cacheQueue4.shift();
+                if (e && !this.customSkinsCache[e + "_cached4"]) {
+                    var depth = 512;
+                    this.checkgraphics();
+                    if (application.graphics) {
+                        depth = depth / application.graphics;
+                    }
+                    var i = document.createElement("canvas");
+                    i.width = depth;
+                    i.height = depth;
+                    var $ = i.getContext("2d");
+                    $.beginPath();
+                    $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
+                    $.clip();
+                    try {
+                        $.drawImage(this.customSkinsCache[e], this.customSkinsCache[e].width / 2, 0, this.customSkinsCache[e].width / 2, this.customSkinsCache[e].height, 0, 0, depth, depth);
+                    } catch (error) {}
+                    this.customSkinsCache[e + "_cached4"] = new Image;
+                    this.customSkinsCache[e + "_cached4"].src = i.toDataURL();
+                    i = null;
+                    this.cacheSkin4(this.customSkinsCache);
+                }
+            }
+        },		
         getCachedSkin(skinCache, skinMap) {
             if (skinCache[skinMap + '_cached3']) {
                 var today = new Date();
@@ -7970,6 +8013,7 @@ function thelegendmodproject() {
                 this.clientKey = this.shiftKey(this.clientKey);
             }
 			//jimboy3100
+			//if (window.LMdebug && message[0]=="102") console.log(message)
 			if (window.LMdebug && message[0]=="102") console.log(message)
             this.sendBuffer(message);
         },
