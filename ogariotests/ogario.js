@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.454 MEGA TEST
+// v1.455 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5544,14 +5544,14 @@ function thelegendmodproject() {
                 }
 
                 if (/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/.test(atobToken)) {
-                    text = 'wss://ip-' + atobToken.replace(/\./g, '-').replace(':', '.tech.agar.io:');
+					text = 'wss://ip-' + atobToken.replace(/\./g, '-').replace(':', '.tech.agar.io:');
                     //console.log("recreateWS case 2:" + text);
                 }
             }
             else if (!text && /^[a-z0-9]{5,}$/.test(token)) {
                 //console.log("recreateWS case 3:" + text);
-                //text = `wss://live-arena-` + token + `.agar.io:80`;
-                text = 'wss://live-arena-' + token + '.agar.io:443'
+                text = `wss://live-arena-` + token + `.agar.io:80`;
+                //text = 'wss://live-arena-' + token + '.agar.io:443'
             }
 			else if (!token.includes("s://")){
 				text = 'wss://' + token; //private servers
