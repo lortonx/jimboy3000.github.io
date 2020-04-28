@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.462 MEGA TEST
+// v1.463 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -5568,11 +5568,11 @@ function thelegendmodproject() {
         },
         createServerToken() {
             var matchOld = this.ws.match(/ip-\d+/);
-            var matchNew = this.ws.match(/live-arena-([\w\d]+)/);
-			//var matchNew = this.ws.match(/live-arena-([\w\d]+(\.tech)?)\.agar\.io/);
+            //var matchNew = this.ws.match(/live-arena-([\w\d]+)/);
+			var matchNew = this.ws.match(/live-arena-([\w\d]+(\.tech)?)\.agar\.io/);
             var text = null;
             if (matchOld) {
-				matchOld = this.ws.replace('.agar.io', '').replace(/-/g, '.').match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/);
+				  matchOld = this.ws.replace('.agar.io', '').replace(/-/g, '.').match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/);
                 //matchOld = this.ws.replace('.tech.agar.io', '').replace(/-/g, '.').match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/);
                 if (matchOld) {
                     this.serverIP = matchOld[0];
