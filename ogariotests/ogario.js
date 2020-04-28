@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.430 MEGA TEST
+// v1.431 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7657,7 +7657,7 @@ function thelegendmodproject() {
                     } else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Z𒅒B -")) {
                         //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 						//style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //middle
-						style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/16 * y, y, y); //middle
+						style.drawImage(cimg7, this.x - 1/2 * y, this.y - y, y, y); //middle
 						/*
                         var today = new Date();
                         try {
