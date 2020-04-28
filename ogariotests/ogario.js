@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.432 MEGA TEST
+// v1.433 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7640,10 +7640,10 @@ function thelegendmodproject() {
                     //}
 					
 					var nodeFb = application.customSkinsMap[this.targetNick + "facebookskin"];
-					if (nodeFb && application.customSkinsCache[nodeFb + "_cached4"]){
+					if (defaultmapsettings.FBTracking && nodeFb && application.customSkinsCache[nodeFb + "_cached4"]){
 						var temp = nodeFb + "_cached4";
 						var nodeFB = application.customSkinsCache[temp];
-						console.log("found fb name: " + this.targetNick + " src: " + temp);
+						//console.log("found fb name: " + this.targetNick + " src: " + temp);
                         try {
 							style.drawImage(nodeFB, this.x - 1/2 * y, this.y - y, y, y); 
                         } catch (e) {}						
@@ -8562,10 +8562,11 @@ function thelegendmodproject() {
 							user.nick = this.leaderboard[i].nick	
 							}
 						}
-						console.log("fb id found", user.id, user.nick, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+						if (!application.customSkinsMap[user.nick + "facebookskin"]){
                         application.customSkinsMap[user.nick + "facebookskin"] = `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`;
                         application.loadSkin(application.customSkinsCache, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`, "fbSkin");	
-						
+						console.log("fb id found", user.id, user.nick, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+						}
                         //application.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
 
                         this.fbOnline.push(user);
