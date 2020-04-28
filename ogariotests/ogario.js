@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.418 MEGA TEST
+// v1.419 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -4927,15 +4927,18 @@ function thelegendmodproject() {
                         this.width <= 2000 && this.width > 0 &&
                         this.height <= 2000 && this.height > 0 &&
                         
-						app.cacheQueue.push(url);
-						if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
-						app.cacheQueue2.push(url) 
-						if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
-						if (animated == true) app.cacheQueue3.push(url)
-						if (1 == app.cacheQueue3.length) app.cacheSkin3(app.customSkinsCache)
-						if (animated == "fbSkin") app.cacheQueue3.push(url)
-						if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)	
-						
+						if (animated != "fbSkin"){
+							app.cacheQueue.push(url);
+							if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
+							app.cacheQueue2.push(url) 
+							if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
+							if (animated == true) app.cacheQueue3.push(url)
+							if (1 == app.cacheQueue3.length) app.cacheSkin3(app.customSkinsCache)
+						}
+						else if (animated == "fbSkin"){
+							app.cacheQueue4.push(url)
+							if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)	
+						}
 					
 						/*
 						((app.cacheQueue.push(url),
@@ -7634,6 +7637,12 @@ function thelegendmodproject() {
                     //if (this.targetNick.includes())
 
                     //}
+					if (application.customSkinsCache[node.src + "_cached4"]){
+                        try {
+                            style.drawImage(application.customSkinsCache[node.src + "_cached4"], this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
+                        } catch (e) {}						
+					}
+						
                     if (this.targetNick.includes("The Dying Light")) {
 
                         try {
