@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.438 MEGA TEST
+// v1.439 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -2108,10 +2108,8 @@ cimg6 = new Image;
 cimg6.src = defaultSettings.commanderImage6;
 cimg7 = new Image;
 cimg7.src = 'https://legendmod.ml/banners/iconLcForCanvas.png';
-cimgSpecialSkinEffectsHat = new Image;
-cimgSpecialSkinEffectsHat.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat.png';
-cimgSpecialSkinEffectsHat2 = new Image;
-cimgSpecialSkinEffectsHat2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat2.png';
+cimgSpecialSkinEffectsCrown = new Image;
+cimgSpecialSkinEffectsCrown.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsCrown.png';
 cimgSpecialSkinEffectsHat3 = new Image;
 cimgSpecialSkinEffectsHat3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat3.png';
 
@@ -7662,14 +7660,16 @@ function thelegendmodproject() {
                             style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
                         } catch (e) {}
                     } 
-					else if (this.targetNick.includes("tester1")){ 		
+					else if (this.targetNick.includes("Hat")){ 		
 					style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - 5/4 * y, y/2, y/2); 					
 					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x + 0 * y, this.y - 5/4 * y, y, y); 
 					//style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
-					//style.drawImage(cimgSpecialSkinEffectsHat, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
+					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
 					}
-					else if (this.targetNick.includes("tester2")){ 					
-					style.drawImage(cimgSpecialSkinEffectsHat3, this.x + 0 * y, this.y + 1/4 * y, y/2, y/2); 
+					else if (this.targetNick.includes("King")){ 			
+						
+					style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/2 * y, this.y - 5/4 * y, y/2, y/2); 					
+					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x + 0 * y, this.y + 1/4 * y, y/2, y/2); 
 					}					
 					else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Z𒅒B -")) {
                         //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
