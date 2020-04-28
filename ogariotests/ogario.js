@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.448 MEGA TEST
+// v1.449 MEGA TEST
 // Game Configurations
 
 //window.testobjects = {};
@@ -7676,13 +7676,13 @@ function thelegendmodproject() {
 					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + y, y, y);
 					}
 					else if (this.targetNick.includes("Mask2")){ 					
-					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y - 3/2 * y, y, y);
+					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y - 6 * y, y, y);
 					}		
 					else if (this.targetNick.includes("Mask3")){ 					
-					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 2 * y, y, y);
+					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 10 * y, y, y);
 					}			
 					else if (this.targetNick.includes("Mask4")){ 					
-					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 3 * y, y, y);
+					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 15 * y, y, y);
 					}						
 					else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Z𒅒B -")) {
                         //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
