@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.086b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "86"; // the version 1.1-> 1.11
+var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -2311,11 +2311,15 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         }
         MSGCOMMANDS = MSGCOMMANDS.split("[PosAttack]").pop();
         MSGCOMMANDS = MSGCOMMANDS.split('[/PosAttack]')[0];	
-		var nameArr = names.split(',');	
-		window.targetingLeadX = nameArr[0]
-		window.targetingLeadY = nameArr[1]	
+		var nameArr = MSGCOMMANDS.split(',');	
+		window.targetingLeadclientX = nameArr[0]
+		window.targetingLeadclientY = nameArr[1]	
+        window.targetingLeadX = (window.targetingLeadclientX - legendmod.canvasWidth / 2) / legendmod.viewScale + legendmod.viewX;
+        window.targetingLeadY = (window.targetingLeadclientY - legendmod.canvasHeight / 2) / legendmod.viewScale + legendmod.viewY;		
+		window.targetingLeadX -= application.getPlayerX()
+		window.targetingLeadY -= application.getPlayerY()
 		legendmod.drawCommander2 = true;
-		
+		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");	
     } else if (MSGCOMMANDS.includes("[PosFight]")) {
         if ($("#nick").val().includes("PosFight") == false) {
             $(".message-text").remove();
@@ -2323,11 +2327,15 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         }
         MSGCOMMANDS = MSGCOMMANDS.split("[PosFight]").pop();
         MSGCOMMANDS = MSGCOMMANDS.split('[/PosFight]')[0];	
-		var nameArr = names.split(',');	
-		window.targetingLeadX = nameArr[0]
-		window.targetingLeadY = nameArr[1]		
+		var nameArr = MSGCOMMANDS.split(',');	
+		window.targetingLeadclientX = nameArr[0]
+		window.targetingLeadclientY = nameArr[1]	
+        window.targetingLeadX = (window.targetingLeadclientX - legendmod.canvasWidth / 2) / legendmod.viewScale + legendmod.viewX;
+        window.targetingLeadY = (window.targetingLeadclientY - legendmod.canvasHeight / 2) / legendmod.viewScale + legendmod.viewY;		
+		window.targetingLeadX -= application.getPlayerX()
+		window.targetingLeadY -= application.getPlayerY()	
 		legendmod.drawCommander2 = true;
-		
+		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
     } else if (MSGCOMMANDS.includes("[PosRun]")) {
         if ($("#nick").val().includes("PosRun") == false) {
             $(".message-text").remove();
@@ -2335,10 +2343,15 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         }
         MSGCOMMANDS = MSGCOMMANDS.split("[PosRun]").pop();
         MSGCOMMANDS = MSGCOMMANDS.split('[/PosRun]')[0];	
-		var nameArr = names.split(',');	
-		window.targetingLeadX = nameArr[0]
-		window.targetingLeadY = nameArr[1]
-		legendmod.drawCommander2 = true;		
+		var nameArr = MSGCOMMANDS.split(',');	
+		window.targetingLeadclientX = nameArr[0]
+		window.targetingLeadclientY = nameArr[1]	
+        window.targetingLeadX = (window.targetingLeadclientX - legendmod.canvasWidth / 2) / legendmod.viewScale + legendmod.viewX;
+        window.targetingLeadY = (window.targetingLeadclientY - legendmod.canvasHeight / 2) / legendmod.viewScale + legendmod.viewY;		
+		window.targetingLeadX -= application.getPlayerX()
+		window.targetingLeadY -= application.getPlayerY()
+		legendmod.drawCommander2 = true;
+		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
     }	
 }
 
