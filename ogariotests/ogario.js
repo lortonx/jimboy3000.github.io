@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.468 MEGA TEST jimtest
+// v1.469 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -11507,22 +11507,16 @@ const menuLeft = new ContextMenu({
 });
 
 function leftClickAttack(){
-console.log('Attack')
-application.sendChatMessage(102,"Attack " + application.currentSector)
-application.sendChatMessage(101,"[PosAttack]" + legendmod.cursorX + "," + legendmod.cursorY + "[/PosAttack]")
+application.sendChatMessage(101,"[PosAttack]" + application.getPlayerX() + legendmod.clientX + "," + application.getPlayerY() + legendmod.clientY + "[/PosAttack]")
 hideContextMenu()
 }
 function leftClickFight(){
-console.log('Fight')
-application.sendChatMessage(102,"Fight " + application.currentSector)
-application.sendChatMessage(101,"[PosAttack]" + legendmod.cursorX + "," + legendmod.cursorY + "[/PosAttack]")
-hideContextMenu()	
+application.sendChatMessage(101,"[PosFight]" + application.getPlayerX() + legendmod.clientX + "," + application.getPlayerY() + legendmod.clientY + "[/PosFight]")	
+hideContextMenu()
 }
 function leftClickRun(){
-console.log('Run')
-application.sendChatMessage(102,"Run " + application.currentSector)
-application.sendChatMessage(101,"[PosAttack]" + legendmod.cursorX + "," + legendmod.cursorY + "[/PosAttack]")
-hideContextMenu()	
+application.sendChatMessage(101,"[PosRun]" + application.getPlayerX() + legendmod.clientX + "," + application.getPlayerY() + legendmod.clientY + "[/PosRun]")
+hideContextMenu()
 }
 function openContextMenu(evt){
 	if(legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && legendmod.gameMode == ":party"){	
