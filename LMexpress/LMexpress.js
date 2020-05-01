@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "86"; // the version 1.1-> 1.11
 //fix ffa
@@ -2304,7 +2304,42 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
                 //}, 1000);
             }
         }
-    }
+    } else if (MSGCOMMANDS.includes("[PosAttack]")) {
+        if ($("#nick").val().includes("PosAttack") == false) {
+            $(".message-text").remove();
+            $(".toast.toast-success").remove();
+        }
+        MSGCOMMANDS = MSGCOMMANDS.split("[PosAttack]").pop();
+        MSGCOMMANDS = MSGCOMMANDS.split('[/PosAttack]')[0];	
+		var nameArr = names.split(',');	
+		window.targetingLeadX = nameArr[0]
+		window.targetingLeadY = nameArr[1]	
+		legendmod.drawCommander2 = true;
+		}
+    } else if (MSGCOMMANDS.includes("[PosFight]")) {
+        if ($("#nick").val().includes("PosFight") == false) {
+            $(".message-text").remove();
+            $(".toast.toast-success").remove();		
+        }
+        MSGCOMMANDS = MSGCOMMANDS.split("[PosFight]").pop();
+        MSGCOMMANDS = MSGCOMMANDS.split('[/PosFight]')[0];	
+		var nameArr = names.split(',');	
+		window.targetingLeadX = nameArr[0]
+		window.targetingLeadY = nameArr[1]		
+		legendmod.drawCommander2 = true;
+		}
+    } else if (MSGCOMMANDS.includes("[PosRun]")) {
+        if ($("#nick").val().includes("PosRun") == false) {
+            $(".message-text").remove();
+            $(".toast.toast-success").remove();	
+        }
+        MSGCOMMANDS = MSGCOMMANDS.split("[PosRun]").pop();
+        MSGCOMMANDS = MSGCOMMANDS.split('[/PosRun]')[0];	
+		var nameArr = names.split(',');	
+		window.targetingLeadX = nameArr[0]
+		window.targetingLeadY = nameArr[1]
+		legendmod.drawCommander2 = true;		
+    }	
 }
 
 function isLegendExpress(Express) {
