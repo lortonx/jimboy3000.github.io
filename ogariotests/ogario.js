@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.470a MEGA TEST jimtest
+// v1.471 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -1562,8 +1562,8 @@ var displayText = {
     }
 }
 var themePresets = {
-    'ogario-v3': {
-        name: 'OGARio v3',
+    'legend-v2': {
+        name: 'Legend v2',
         darkTheme: true,
         mainColor: '#01d9cc',
         bgColor: '#000a11',
@@ -1667,8 +1667,8 @@ var themePresets = {
         customBackground: '',
         customCursor: 'https://legendmod.ml/cursors/cursor_02.cur'
     },
-    'ogario-orange': {
-        name: 'OGARio v2',
+    'legend-v1': {
+        name: 'Legend v1',
         darkTheme: true,
         mainColor: '#ff7800',
         bgColor: '#111111',
@@ -1701,8 +1701,8 @@ var themePresets = {
         miniMapDeathLocationColor: '#ff7800',
         miniMapSectorsOpacity: 0.1
     },
-    'ogario-gold': {
-        name: 'OGARio LE',
+    'legend-original': {
+        name: 'Legend Original',
         darkTheme: true,
         mainColor: '#b5a642',
         bgColor: '#000000',
@@ -1735,8 +1735,8 @@ var themePresets = {
         miniMapDeathLocationColor: '#b5a642',
         miniMapSectorsOpacity: 0.1
     },
-    'sniikz-style': {
-        name: 'SniiKz\'s Style',
+    'crazy-style-2': {
+        name: 'Crazy Style 2',
         darkTheme: true,
         mainColor: '#01d9cc',
         bgColor: '#000000',
@@ -1825,8 +1825,8 @@ var themePresets = {
         customBackground: '',
         customCursor: 'https://legendmod.ml/cursors/cursor_01.cur'
     },
-    'hkg-style': {
-        name: 'HKG Style',
+    'crazy-style-2': {
+        name: 'Crazy Style 1',
         darkTheme: true,
         mainColor: '#651fff',
         bgColor: '#000000',
@@ -1893,7 +1893,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#ffffff',
         miniMapSectorsOpacity: 0.25
     },
-    'agario-dark': {
+    agario-dark: {
         name: 'Agar.io Dark',
         darkTheme: true,
         mainColor: '#ffffff',
@@ -1929,8 +1929,8 @@ var themePresets = {
     }
 }
 var themeMenus = {
-    'ogario-v3': {
-        name: 'OGARio v3',
+    legend-v2: {
+        name: 'Legend v2',
         menuMainColor: '#01d9cc',
         menuBtnTextColor: '#ffffff',
         menuPanelColor: '#00243e',
@@ -1947,8 +1947,8 @@ var themeMenus = {
         btn4Color2: '#df00c6',
         menuBg: 'https://legendmod.ml/banners/static/img/pattern.png'
     },
-    'ogario-v2': {
-        name: 'OGARio v2',
+    legend-v1: {
+        name: 'Legend v1',
         menuMainColor: '#ff7800',
         menuBtnTextColor: '#ffffff',
         menuPanelColor: '#222222',
@@ -2698,7 +2698,7 @@ function thelegendmodproject() {
             this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
             this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
             /*this.addInputBox('.facebook-panel', 'FacebookIDs', `e.g. 123456789012345:John K,543210987654321:Jimbo`, `setFBIDs`);*/
-            for (var e = 'https://legendmod.ml/cursors/cursor_', i = 0; i < 35; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
+            for (var e = 'https://legendmod.ml/cursors/cursor_', i = 0; i < 42; i++) i < 9 ? this.addCursorBox('#theme-images', e + '0' + (i + 1) + '.cur') : this.addCursorBox('#theme-images', e + '' + (i + 1) + '.cur');
             $(document).on('click', '#theme-images .cursor-box a', function(e) {
                     e.preventDefault();
                     var i = $('img', this).attr('src');
