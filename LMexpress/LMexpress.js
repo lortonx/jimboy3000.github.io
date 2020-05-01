@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -1693,24 +1693,6 @@ function LegendSettingsfirstAPI(LegendJSON, switcheryLegendSwitch) {
 
 function parseLegendJSONAPI(LegendJSON) {
 
-    if (LegendJSON.ogarioCommands.comm15 == undefined) {
-        LegendJSON.ogarioCommands.comm15 = "Fake Tricksplit";
-        LegendJSON.ogarioCommands.comm16 = "Popsplit";
-        LegendJSON.ogarioCommands.comm17 = "Double Popsplit";
-        LegendJSON.ogarioCommands.comm18 = "Reversed Tricksplit";
-        LegendJSON.ogarioCommands.comm19 = "Canonsplit";
-        LegendJSON.ogarioCommands.comm20 = "Reversed Canonsplit";
-        LegendJSON.ogarioCommands.comm21 = "Bowlingsplit";
-        LegendJSON.ogarioCommands.comm22 = "Auto feed trick";
-        LegendJSON.ogarioCommands.comm23 = "Pause";
-        LegendJSON.ogarioCommands.comm24 = "ANTI alarm stage 1";
-        LegendJSON.ogarioCommands.comm25 = "ANTI alarm stage 2";
-        LegendJSON.ogarioCommands.comm26 = "ANTI alarm stage 3";
-        LegendJSON.ogarioCommands.comm27 = "ANTI alarm stage 4";
-        LegendJSON.ogarioCommands.comm28 = "ANTI alarm stage 5";
-        LegendJSON.ogarioCommands.comm29 = "Presplit";
-        LegendJSON.ogarioCommands.comm30 = "Party Run tricks";
-    }
 
     LegendJSON.legendSettings = {};
     LegendJSON.legendSettings.previousMode = localStorage.getItem("gamemode");
@@ -6839,121 +6821,7 @@ function initializeLM(modVersion) {
     $(".agario-profile-name").css('display', 'inline-block');
     $(".agario-profile-name").css('vertical-align', ' baseline');
 
-    $('#themePreset>option:nth-child(1)').text("Legend v2");
-    $('#themePreset>option:nth-child(2)').text("Legend v1");
-    $('#themePreset>option:nth-child(3)').text("Legend Original");
-    $('#themePreset>option:nth-child(4)').text("Crazy Style 1");
-    $('#themePreset>option:nth-child(5)').text("Crazy Style 2");
-    $('#menuPreset>option:nth-child(1)').text("Legend v2");
-    $('#menuPreset>option:nth-child(2)').text("Legend v1");
-    //Legend express Cursors
-    if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_01.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_01.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_02.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_02.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_03.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_03.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_04.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_04.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_05.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_05.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_06.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_06.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_07.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_07.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_08.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_08.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_09.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_09.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_10.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_10.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_11.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_11.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_12.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_12.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_13.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_13.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_14.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_14.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_15.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_15.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_16.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_16.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_17.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_17.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_18.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_18.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_19.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_19.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_20.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_20.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_21.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_21.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_22.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_22.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_23.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_23.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_24.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_24.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_25.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_25.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_26.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_26.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_27.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_27.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_28.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_28.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_29.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_29.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_30.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_30.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_31.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_31.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_32.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_32.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_33.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_33.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_34.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_34.cur")
-    } else if ($("#customCursor").val() == "https://cdn.ogario.ovh/static/img/cursors/cursor_35.cur") {
-        $("#customCursor").val("https://legendmod.ml/cursors/cursor_35.cur")
-    }
-    $(".cursor-box>a>img").eq(0).attr("src", "https://legendmod.ml/cursors/cursor_01.cur");
-    $(".cursor-box>a>img").eq(1).attr("src", "https://legendmod.ml/cursors/cursor_02.cur");
-    $(".cursor-box>a>img").eq(2).attr("src", "https://legendmod.ml/cursors/cursor_03.cur");
-    $(".cursor-box>a>img").eq(3).attr("src", "https://legendmod.ml/cursors/cursor_04.cur");
-    $(".cursor-box>a>img").eq(4).attr("src", "https://legendmod.ml/cursors/cursor_05.cur");
-    $(".cursor-box>a>img").eq(5).attr("src", "https://legendmod.ml/cursors/cursor_06.cur");
-    $(".cursor-box>a>img").eq(6).attr("src", "https://legendmod.ml/cursors/cursor_07.cur");
-    $(".cursor-box>a>img").eq(7).attr("src", "https://legendmod.ml/cursors/cursor_08.cur");
-    $(".cursor-box>a>img").eq(8).attr("src", "https://legendmod.ml/cursors/cursor_09.cur");
-    $(".cursor-box>a>img").eq(9).attr("src", "https://legendmod.ml/cursors/cursor_10.cur");
-    $(".cursor-box>a>img").eq(10).attr("src", "https://legendmod.ml/cursors/cursor_11.cur");
-    $(".cursor-box>a>img").eq(11).attr("src", "https://legendmod.ml/cursors/cursor_12.cur");
-    $(".cursor-box>a>img").eq(12).attr("src", "https://legendmod.ml/cursors/cursor_13.cur");
-    $(".cursor-box>a>img").eq(13).attr("src", "https://legendmod.ml/cursors/cursor_14.cur");
-    $(".cursor-box>a>img").eq(14).attr("src", "https://legendmod.ml/cursors/cursor_15.cur");
-    $(".cursor-box>a>img").eq(15).attr("src", "https://legendmod.ml/cursors/cursor_16.cur");
-    $(".cursor-box>a>img").eq(16).attr("src", "https://legendmod.ml/cursors/cursor_17.cur");
-    $(".cursor-box>a>img").eq(17).attr("src", "https://legendmod.ml/cursors/cursor_18.cur");
-    $(".cursor-box>a>img").eq(18).attr("src", "https://legendmod.ml/cursors/cursor_19.cur");
-    $(".cursor-box>a>img").eq(19).attr("src", "https://legendmod.ml/cursors/cursor_20.cur");
-    $(".cursor-box>a>img").eq(20).attr("src", "https://legendmod.ml/cursors/cursor_21.cur");
-    $(".cursor-box>a>img").eq(21).attr("src", "https://legendmod.ml/cursors/cursor_22.cur");
-    $(".cursor-box>a>img").eq(22).attr("src", "https://legendmod.ml/cursors/cursor_23.cur");
-    $(".cursor-box>a>img").eq(23).attr("src", "https://legendmod.ml/cursors/cursor_24.cur");
-    $(".cursor-box>a>img").eq(24).attr("src", "https://legendmod.ml/cursors/cursor_25.cur");
-    $(".cursor-box>a>img").eq(25).attr("src", "https://legendmod.ml/cursors/cursor_26.cur");
-    $(".cursor-box>a>img").eq(26).attr("src", "https://legendmod.ml/cursors/cursor_27.cur");
-    $(".cursor-box>a>img").eq(27).attr("src", "https://legendmod.ml/cursors/cursor_28.cur");
-    $(".cursor-box>a>img").eq(28).attr("src", "https://legendmod.ml/cursors/cursor_29.cur");
-    $(".cursor-box>a>img").eq(29).attr("src", "https://legendmod.ml/cursors/cursor_30.cur");
-    $(".cursor-box>a>img").eq(30).attr("src", "https://legendmod.ml/cursors/cursor_31.cur");
-    $(".cursor-box>a>img").eq(31).attr("src", "https://legendmod.ml/cursors/cursor_32.cur");
-    $(".cursor-box>a>img").eq(32).attr("src", "https://legendmod.ml/cursors/cursor_33.cur");
-    $(".cursor-box>a>img").eq(33).attr("src", "https://legendmod.ml/cursors/cursor_34.cur");
-    $(".cursor-box>a>img").eq(34).attr("src", "https://legendmod.ml/cursors/cursor_35.cur");
-    $("#theme-images>div.ps-scrollbar-x-rail").before('<div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_36.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_37.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_38.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_39.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_40.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_41.cur"></a></div><div class="cursor-box"><a href="#"><img src="https://legendmod.ml/cursors/cursor_42.cur"></a></div>');
+
 
     //$('#themePreset').on('change', function() {
     //$('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
