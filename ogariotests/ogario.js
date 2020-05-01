@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.472 MEGA TEST jimtest
+// v1.473 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -2541,12 +2541,12 @@ function thelegendmodproject() {
             $('#' + name).val(defaultSettings[name]);
             var app = this;
             callback ? $('#' + name).on('change', function() {
-                var app = this.value;
-                app.setFont(name, app);
+                var appi = this.value;
+                app.setFont(name, appi);
 				app[callback]();
             }) : $('#' + name).on('change', function() {
-                var app = this.value;
-                app.setFont(name, app);
+                var appi = this.value;
+                app.setFont(name, appi);
             });
         },
         setFontFamily(name) {
