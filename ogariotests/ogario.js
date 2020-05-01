@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.473 MEGA TEST jimtest
+// v1.474 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -1608,7 +1608,7 @@ var themePresets = {
         virusGlowSize: "#fff",
         virusGlowSize: 14,
         borderGlowSize: 14,
-        menuPreset: 'ogario-v3',
+        menuPreset: 'legendv2',
         graphics: 'high',
         menuMainColor: '#01d9cc',
         menuBtnTextColor: '#ffffff',
@@ -1769,7 +1769,7 @@ var themePresets = {
         virusStrokeSize: 20,
         virusGlowSize: 14,
         borderGlowSize: 14,
-        menuPreset: 'ogario-v3',
+        menuPreset: 'legendv2',
         graphics: 'high',
         menuMainColor: '#fc0079',
         menuBtnTextColor: '#ffffff',
@@ -2007,7 +2007,7 @@ var escapeChar = {
     '/': '&#x2F;'
 }
 var defaultSettings = {
-    preset: 'ogario-v3',
+    preset: 'legendv2',
     darkTheme: true,
     mainColor: '#01d9cc',
     bgColor: '#000a11',
@@ -2064,7 +2064,7 @@ var defaultSettings = {
     borderGlowSize: 14,
     ghostCellsAlpha: 0.3,
     virusStrokeSize: 14,
-    menuPreset: 'ogario-v3',
+    menuPreset: 'legendv2',
     graphics: 'high',
     menuMainColor: '#01d9cc',
     menuBtnTextColor: '#ffffff',
