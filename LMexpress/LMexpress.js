@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -2317,7 +2317,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         window.targetingLeadX = parseFloat(window.targetingLeadclientX) - application.getPlayerX()
         window.targetingLeadY = parseFloat(window.targetingLeadclientY)	- application.getPlayerY()
 		legendmod.drawCommander2 = true;
-		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");	
+		toastr.warning("<b>" + MSGNICK + ":</b> Attack " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");	
     } else if (MSGCOMMANDS.includes("[PosFight]")) {
         if ($("#nick").val().includes("PosFight") == false) {
             $(".message-text").remove();
@@ -2345,7 +2345,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         window.targetingLeadX = parseFloat(window.targetingLeadclientX) - application.getPlayerX()
         window.targetingLeadY = parseFloat(window.targetingLeadclientY)	- application.getPlayerY()
 		legendmod.drawCommander2 = true;
-		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
+		toastr.warning("<b>" + MSGNICK + ":</b> Run from " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
     }	
 }
 
