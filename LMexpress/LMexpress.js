@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087C by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -745,6 +745,7 @@ function adres(info, thismode, thisregion) {
                 } else if (realmode == ":party") {
                     window.history.pushState(null, null, window.location.pathname);
                     $("#server").val("#" + window.location.href.replace('https://agar.io/#', ''));
+					window.location.href="https://agar.io/#"+ $('#party-token').val()
                 }
             } else if (privateSrv != null) {
                 history.pushState(stateObj, "page 2", "?ip=" + privateSrv + "&?SERVER=PRIVATE");
@@ -753,8 +754,9 @@ function adres(info, thismode, thisregion) {
         }, 1800);
     } else { //if party
         setTimeout(function() {             
-            //window.history.pushState(null, null, window.location.pathname);
+            window.history.pushState(null, null, window.location.pathname);
             $("#server").val("#" + window.location.href.replace('https://agar.io/#', ''));		
+			window.location.href="https://agar.io/#"+ $('#party-token').val()
         }, 2000);
     }
 }
