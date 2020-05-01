@@ -11507,15 +11507,15 @@ const menuLeft = new ContextMenu({
 });
 
 function leftClickAttack(){
-application.sendChatMessage(101,"[PosAttack]" + application.getPlayerX() + legendmod.clientX + "," + application.getPlayerY() + legendmod.clientY + "[/PosAttack]")
+application.sendChatMessage(101,"[PosAttack]" + application.getPlayerX() + legendmod.cursorX + "," + application.getPlayerY() + legendmod.cursorY + "[/PosAttack]")
 hideContextMenu()
 }
 function leftClickFight(){
-application.sendChatMessage(101,"[PosFight]" + application.getPlayerX() + legendmod.clientX + "," + application.getPlayerY() + legendmod.clientY + "[/PosFight]")	
+application.sendChatMessage(101,"[PosFight]" + application.getPlayerX() + legendmod.cursorX + "," + application.getPlayerY() + legendmod.cursorY + "[/PosFight]")	
 hideContextMenu()
 }
 function leftClickRun(){
-application.sendChatMessage(101,"[PosRun]" + application.getPlayerX() + legendmod.clientX + "," + application.getPlayerY() + legendmod.clientY + "[/PosRun]")
+application.sendChatMessage(101,"[PosRun]" + application.getPlayerX() + legendmod.cursorX + "," + application.getPlayerY() + legendmod.cursorY + "[/PosRun]")
 hideContextMenu()
 }
 function openContextMenu(evt){
