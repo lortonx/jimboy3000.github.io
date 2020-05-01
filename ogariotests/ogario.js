@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.467 MEGA TEST jimtest
+// v1.468 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -11301,8 +11301,8 @@ function thelegendmodproject() {
     ogarhusettings();
     setGUIEvents();
 	
-	let canvasElem = document.querySelector("canvas"); 
-	canvasElem.addEventListener('contextmenu', openContextMenu, false);
+	window.canvasElem = document.querySelector("canvas"); 
+	window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
 	
     //    })(ogario);
 }
@@ -11530,12 +11530,12 @@ function openContextMenu(evt){
 		const time = menuLeft.isOpen() ? 100 : 0;
 		menuLeft.hide();
 		setTimeout(() => { menuLeft.show(evt.pageX, evt.pageY) }, time);
-		canvasElem.addEventListener('click', hideContextMenu, false);
+		window.canvasElem.addEventListener('click', hideContextMenu, false);
 	} 
 }
 function hideContextMenu(evt){
   menuLeft.hide();
-  canvasElem.removeEventListener('click', hideContextMenu); 
+  window.canvasElem.removeEventListener('click', hideContextMenu); 
 }
 
 /*
