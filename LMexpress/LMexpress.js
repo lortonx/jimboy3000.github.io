@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.086b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -2314,8 +2314,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
-        window.targetingLeadX = (window.targetingLeadclientX - legendmod.canvasWidth / 2) / legendmod.viewScale + legendmod.viewX;
-        window.targetingLeadY = (window.targetingLeadclientY - legendmod.canvasHeight / 2) / legendmod.viewScale + legendmod.viewY;		
+        window.targetingLeadX = window.targetingLeadclientX
+        window.targetingLeadY = window.targetingLeadclientY	
 		window.targetingLeadX -= application.getPlayerX()
 		window.targetingLeadY -= application.getPlayerY()
 		legendmod.drawCommander2 = true;
@@ -2330,8 +2330,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
-        window.targetingLeadX = (window.targetingLeadclientX - legendmod.canvasWidth / 2) / legendmod.viewScale + legendmod.viewX;
-        window.targetingLeadY = (window.targetingLeadclientY - legendmod.canvasHeight / 2) / legendmod.viewScale + legendmod.viewY;		
+        window.targetingLeadX = window.targetingLeadclientX
+        window.targetingLeadY = window.targetingLeadclientY
 		window.targetingLeadX -= application.getPlayerX()
 		window.targetingLeadY -= application.getPlayerY()	
 		legendmod.drawCommander2 = true;
@@ -2346,8 +2346,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
-        window.targetingLeadX = (window.targetingLeadclientX - legendmod.canvasWidth / 2) / legendmod.viewScale + legendmod.viewX;
-        window.targetingLeadY = (window.targetingLeadclientY - legendmod.canvasHeight / 2) / legendmod.viewScale + legendmod.viewY;		
+        window.targetingLeadX = window.targetingLeadclientX
+        window.targetingLeadY = window.targetingLeadclientY	
 		window.targetingLeadX -= application.getPlayerX()
 		window.targetingLeadY -= application.getPlayerY()
 		legendmod.drawCommander2 = true;
