@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.469 MEGA TEST jimtest
+// v1.470 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -11507,16 +11507,25 @@ const menuLeft = new ContextMenu({
 });
 
 function leftClickAttack(){
-application.sendChatMessage(101,"[PosAttack]" + application.getPlayerX() + legendmod.cursorX + "," + application.getPlayerY() + legendmod.cursorY + "[/PosAttack]")
-hideContextMenu()
+	var temp = application.getPlayerX() + legendmod.cursorX
+	var temp2 = application.getPlayerY() + legendmod.cursorY
+	application.sendChatMessage(101,"[PosAttack]" + temp + "," + temp2 + "[/PosAttack]")
+	//console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
+	hideContextMenu()
 }
 function leftClickFight(){
-application.sendChatMessage(101,"[PosFight]" + application.getPlayerX() + legendmod.cursorX + "," + application.getPlayerY() + legendmod.cursorY + "[/PosFight]")	
-hideContextMenu()
+	var temp = application.getPlayerX() + legendmod.cursorX
+	var temp2 = application.getPlayerY() + legendmod.cursorY	
+	application.sendChatMessage(101,"[PosFight]" + temp + "," + temp2 + "[/PosFight]")	
+	//console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
+	hideContextMenu()
 }
 function leftClickRun(){
-application.sendChatMessage(101,"[PosRun]" + application.getPlayerX() + legendmod.cursorX + "," + application.getPlayerY() + legendmod.cursorY + "[/PosRun]")
-hideContextMenu()
+	var temp = application.getPlayerX() + legendmod.cursorX
+	var temp2 = application.getPlayerY() + legendmod.cursorY		
+	application.sendChatMessage(101,"[PosRun]" + temp + "," + temp2 + "[/PosRun]")
+	//console.log(application.getPlayerX() + legendmod.cursorX, application.getPlayerY() + legendmod.cursorY)
+	hideContextMenu()
 }
 function openContextMenu(evt){
 	if(legendmod.play && !$("#overlays:hover").length && !defaultmapsettings.mouseSplit && !defaultmapsettings.mouseFeed && legendmod.gameMode == ":party"){	
