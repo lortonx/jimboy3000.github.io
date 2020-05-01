@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.471 MEGA TEST jimtest
+// v1.472 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -758,7 +758,7 @@ var emoticonicons = {
 }
 
 var displayText = {
-    'pl': {
+    pl: {
         start: 'Start',
         settings: 'Ustawienia',
         restoreSettings: 'Przywróc ustawienia domyślne',
@@ -1166,7 +1166,7 @@ var displayText = {
         page_stats: 'Statystyki',
         teamView: 'Team view (BETA)'
     },
-    'en': {
+    en: {
         start: 'Home',
         settings: 'Settings',
         restoreSettings: 'Restore default settings',
@@ -1562,7 +1562,7 @@ var displayText = {
     }
 }
 var themePresets = {
-    'legend-v2': {
+    legendv2: {
         name: 'Legend v2',
         darkTheme: true,
         mainColor: '#01d9cc',
@@ -1667,7 +1667,7 @@ var themePresets = {
         customBackground: '',
         customCursor: 'https://legendmod.ml/cursors/cursor_02.cur'
     },
-    'legend-v1': {
+    legendv1: {
         name: 'Legend v1',
         darkTheme: true,
         mainColor: '#ff7800',
@@ -1701,7 +1701,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#ff7800',
         miniMapSectorsOpacity: 0.1
     },
-    'legend-original': {
+    legendoriginal: {
         name: 'Legend Original',
         darkTheme: true,
         mainColor: '#b5a642',
@@ -1735,7 +1735,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#b5a642',
         miniMapSectorsOpacity: 0.1
     },
-    'crazy-style-2': {
+    crazystyle2: {
         name: 'Crazy Style 2',
         darkTheme: true,
         mainColor: '#01d9cc',
@@ -1825,7 +1825,7 @@ var themePresets = {
         customBackground: '',
         customCursor: 'https://legendmod.ml/cursors/cursor_01.cur'
     },
-    'crazy-style-2': {
+    crazystyle: {
         name: 'Crazy Style 1',
         darkTheme: true,
         mainColor: '#651fff',
@@ -1859,7 +1859,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#651fff',
         miniMapSectorsOpacity: 0.1
     },
-    'agario-light': {
+    agariolight: {
         name: 'Agar.io Light',
         darkTheme: false,
         mainColor: '#ffffff',
@@ -1893,7 +1893,7 @@ var themePresets = {
         miniMapDeathLocationColor: '#ffffff',
         miniMapSectorsOpacity: 0.25
     },
-    agario-dark: {
+    agariodark: {
         name: 'Agar.io Dark',
         darkTheme: true,
         mainColor: '#ffffff',
@@ -1929,7 +1929,7 @@ var themePresets = {
     }
 }
 var themeMenus = {
-    legend-v2: {
+    legendv2: {
         name: 'Legend v2',
         menuMainColor: '#01d9cc',
         menuBtnTextColor: '#ffffff',
@@ -1947,7 +1947,7 @@ var themeMenus = {
         btn4Color2: '#df00c6',
         menuBg: 'https://legendmod.ml/banners/static/img/pattern.png'
     },
-    legend-v1: {
+    legendv1: {
         name: 'Legend v1',
         menuMainColor: '#ff7800',
         menuBtnTextColor: '#ffffff',
