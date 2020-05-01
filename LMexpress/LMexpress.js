@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -2314,10 +2314,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
-        window.targetingLeadX = window.targetingLeadclientX
-        window.targetingLeadY = window.targetingLeadclientY	
-		window.targetingLeadX -= application.getPlayerX()
-		window.targetingLeadY -= application.getPlayerY()
+        window.targetingLeadX = parseFloat(window.targetingLeadclientX) - application.getPlayerX()
+        window.targetingLeadY = parseFloat(window.targetingLeadclientY)	- application.getPlayerY()
 		legendmod.drawCommander2 = true;
 		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");	
     } else if (MSGCOMMANDS.includes("[PosFight]")) {
@@ -2330,10 +2328,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
-        window.targetingLeadX = window.targetingLeadclientX
-        window.targetingLeadY = window.targetingLeadclientY
-		window.targetingLeadX -= application.getPlayerX()
-		window.targetingLeadY -= application.getPlayerY()	
+        window.targetingLeadX = parseFloat(window.targetingLeadclientX) - application.getPlayerX()
+        window.targetingLeadY = parseFloat(window.targetingLeadclientY)	- application.getPlayerY()
 		legendmod.drawCommander2 = true;
 		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
     } else if (MSGCOMMANDS.includes("[PosRun]")) {
@@ -2346,10 +2342,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		var nameArr = MSGCOMMANDS.split(',');	
 		window.targetingLeadclientX = nameArr[0]
 		window.targetingLeadclientY = nameArr[1]	
-        window.targetingLeadX = window.targetingLeadclientX
-        window.targetingLeadY = window.targetingLeadclientY	
-		window.targetingLeadX -= application.getPlayerX()
-		window.targetingLeadY -= application.getPlayerY()
+        window.targetingLeadX = parseFloat(window.targetingLeadclientX) - application.getPlayerX()
+        window.targetingLeadY = parseFloat(window.targetingLeadclientY)	- application.getPlayerY()
 		legendmod.drawCommander2 = true;
 		toastr.warning("<b>" + MSGNICK + ":</b> Fight " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
     }	
