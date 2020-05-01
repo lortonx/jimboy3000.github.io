@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.086a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.086b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "86"; // the version 1.1-> 1.11
 //fix ffa
@@ -2339,7 +2339,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		window.targetingLeadX = nameArr[0]
 		window.targetingLeadY = nameArr[1]
 		legendmod.drawCommander2 = true;		
-    	
+    }	
 }
 
 function isLegendExpress(Express) {
