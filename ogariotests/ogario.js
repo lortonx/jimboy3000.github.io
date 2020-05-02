@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.482 MEGA TEST jimtest
+// v1.483 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -10010,6 +10010,8 @@ function thelegendmodproject() {
 						if (defaultSettings.customBackground) {
 							legendmod.customMidPic = new Image;
 							legendmod.customMidPic.src = defaultSettings.customBackground;
+							legendmod.customMidPic.width = legendmod.mapMaxX-legendmod.mapMinX
+							legendmod.customMidPic.height = legendmod.mapMaxY-legendmod.mapMinY 							
 						}                 
 						else{
 							legendmod.customMidPic = new Image;
@@ -10020,9 +10022,10 @@ function thelegendmodproject() {
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
                     this.ctx.globalAlpha = '0.6'
                     this.ctx.drawImage(
-                        legendmod.customMidPic, 
+						legendmod.customMidPic, 
+	
                         legendmod.mapMinX,
-                        legendmod.mapMinY,
+                        legendmod.mapMinY,					
                         legendmod.mapMaxX,
                         legendmod.mapMaxY
                     );
