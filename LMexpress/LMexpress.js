@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -197,14 +197,11 @@ var MSGCOMMANDS2;
 var MSGCOMMANDS3;
 var Express = "True";
 var acceptServerBtnFlag = null;
-var animateSkinsStart;
 //for the LM JSON
 var LegendJSON;
 var LegendSettings = "true";
 var LegendSettingsfirstclicked = "false";
 var switcheryLegendSwitch, switcheryLegendSwitch2;
-var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
-var VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
 var spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
 var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
 
@@ -321,55 +318,6 @@ function startLM(modVersion) {
     }
     $("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
     universalchat();
-    $('.options-box.chatGroup').append('<label><input type="checkbox" id="UniversalChat" class="js-switch" data-switchery="true" checked style="display: none;"> Agar Tool/Legend Mod</input></label>');
-    var elemLegendSwitch = document.querySelector('#UniversalChat');
-    var ogarioswitchbackcolor = $("input#export-ogarioThemeSettings.js-switch").next().css("background-color");
-    var UniversalChat = new Switchery(elemLegendSwitch, {
-        size: 'small',
-        color: ogarioswitchbackcolor,
-        jackColor: 'rgb(250, 250, 250)'
-    });
-
-    $("#UniversalChat").click(function() {
-        if (UniversalChat.isChecked()) {
-            $("#ao2t-hud").show();
-            localStorage.setItem("UniversalChatSaved", true);
-            if ($("#ao2t-capture").hasClass("disconnected")) {
-                $("#ao2t-capture").click();
-            }
-        } else {
-            $("#ao2t-hud").hide();
-            localStorage.setItem("UniversalChatSaved", false);
-            if ($("#ao2t-capture").hasClass("connected")) {
-                $("#ao2t-capture").click();
-            }
-        }
-    });
-    $('.options-box.skinsGroup').append('<label><input type="checkbox" id="Vanillaskins" class="js-switch" data-switchery="true" style="display: none;"> Vanilla skins</input></label>');
-    var elemLegendSwitch2 = document.querySelector('#Vanillaskins');
-    var ogarioswitchbackcolor = $("input#export-ogarioThemeSettings.js-switch").next().css("background-color");
-    var Vanillaskinsbtn = new Switchery(elemLegendSwitch2, {
-        size: 'small',
-        color: ogarioswitchbackcolor,
-        jackColor: 'rgb(250, 250, 250)'
-    });
-
-    $("#Vanillaskins").click(function() {
-        if (Vanillaskinsbtn.isChecked()) {
-            localStorage.setItem("VanillaskinsSaved", "true");
-            window.vanillaskins = true;
-            // Animated Skins
-            animateSkinsStart = setInterval(animateSkincheckTimer, 60000);
-            return animateSkinsStart;
-        } else {
-            localStorage.setItem("VanillaskinsSaved", "false");
-            application.flushSkinsMap();
-            window.vanillaskins = false;
-            // Animated Skins
-            animateSkinsStop();
-        }
-    });
-    $("#Vanillaskins").click(); //enabled by default
 
     $('.options-box.respGroup').append('<label><input type="checkbox" id="spawnspecialeffects" class="js-switch" data-switchery="true" style="display: none;"> Spawn special effects</input></label>');
     var elemLegendSwitch4 = document.querySelector('#spawnspecialeffects');
@@ -1692,7 +1640,6 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
 
-    LegendJSON.legendSettings.VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
     LegendJSON.legendSettings.spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
 
     LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
@@ -1952,7 +1899,6 @@ function saveLegendJSONAPI() {
         localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
         localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
 
-        localStorage.setItem("VanillaskinsSaved", LegendJSON.legendSettings.VanillaskinsSaved);
         localStorage.setItem("spawnspecialeffectsSaved", LegendJSON.legendSettings.spawnspecialeffectsSaved);
  
         localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
@@ -4682,12 +4628,6 @@ function triggerLMbtns() {
     }
     if (ComPosition == 2) {
         $("#bottomright").click();
-    }
-    if (UniversalChatSaved == "false") {
-        $("#UniversalChat").click();
-    }
-    if (VanillaskinsSaved == "false") {
-        $("#Vanillaskins").click();
     }
     if (spawnspecialeffectsSaved == "true") {
         $("#spawnspecialeffects").click();
@@ -7419,48 +7359,10 @@ function getInfo3() {
 
 
 //Animated Skins
-function animateSkincheckTimer() {
-    animateSkincheck();
-}
 
-function animateSkinsStop() {
-    clearInterval(animateSkinsStart);
-}
 
-function animateSkincheck() {
-    for (i = 0; i < 10; i++) {
-        for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
-            for (animatedkey in animatedskins) {
-                if (animatedkey == legendmod.leaderboard[animatedi].nick) {
-                    //console.log(animatedkey);
-                    e = animatedskins[animatedkey].frames.length - 1;
-                    for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
-                        b = animateda;
-                        verifiednames = animatedkey;
-                        window.anual = window.anual + animatedskins[verifiednames].frames[b].delay * 1000;
-                        d = animatedi;
-                        animateSkin(window.anual, b, verifiednames, d, e, i);
 
-                    }
-                }
-            }
-        }
-    }
-}
 
-function animateSkin(a, b, verifiednames, d, e, i) {
-    setTimeout(function() {
-        //if (verifiednames==legendmod.leaderboard[d].nick){
-        application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-        if (b == e) {
-            if (i == 9) {
-                window.anual = 0;
-                if (animatedserverchanged == false) {
-                }
-            }
-        }
-    }, window.anual);
-}
 
 /*				
 function specialeffecttargeting(){
