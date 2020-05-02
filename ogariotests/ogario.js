@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.483 MEGA TEST jimtest
+// v1.484 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -3384,7 +3384,7 @@ function thelegendmodproject() {
             }			
 		},
 		setUniversalChat(){
-            if (defaultmapsettings.universalChat && $("#ao2t-hud2").length ) {
+            if (defaultmapsettings.universalChat && $("#ao2t-hud").length ) {
                 $("#ao2t-hud").show();
             } else {
 				$("#ao2t-hud").hide();
