@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.474 MEGA TEST jimtest
+// v1.475 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -671,11 +671,9 @@ window.predictedGhostCells = [];
 //set values outside ogario
 window.playerCellsId = [];
 //window.counterCell=0;
-window.leaderboardlimit = 20;
-window.teamboardlimit = 20;
 window.vanillaskins = false; //to enable vanilla skins it must be true
 window.spawnspecialeffects = false;
-window.top5skins = false;
+
 //window.customskinsname;
 //window.customskinsurl;
 
@@ -765,6 +763,7 @@ var displayText = {
         animationGroup: 'Animacja',
         graphics: 'Graphics',
         zoomGroup: 'Zoom',
+		boardGroup: 'Boards',
         respGroup: 'Odrodzenie',
         namesGroup: 'Nazwy',
         massGroup: 'Masa',
@@ -794,6 +793,8 @@ var displayText = {
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Szybkość zoomu',
+		leaderboardlimit: 'Leaderboard Players',
+		teamboardlimit: 'Team Players',	
         quickResp: 'Szybkie odrodzenie (klawisz)',
         autoResp: 'Auto odrodzenie',
         autoHideCellsInfo: 'Autoukrywanie nazw i masy',
@@ -871,6 +872,7 @@ var displayText = {
         centeredLb: 'Wyśrodkowana topka',
         fpsAtTop: 'Statystyki na górze',
         tweenMaxEffect: 'Tween max effect',
+		top5skins: 'Skins on teamboard',
         showStats: 'Pokaż statystyki',
         showStatsMass: 'Statystyki: Masa',
         showStatsSTE: 'Statystyki: Przedziały Masy',
@@ -1173,6 +1175,7 @@ var displayText = {
         animationGroup: 'Animation',
         graphics: 'Graphics',
         zoomGroup: 'Zoom',
+		boardGroup: 'Boards',
         respGroup: 'Respawn',
         namesGroup: 'Names',
         massGroup: 'Mass',
@@ -1202,6 +1205,8 @@ var displayText = {
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Zoom speed',
+		leaderboardlimit: 'Leaderboard Players',
+		teamboardlimit: 'Team Players',	
         quickResp: 'Quick respawn (hotkey)',
         autoResp: 'Auto respawn',
         autoHideCellsInfo: 'Auto hide names and mass',
@@ -1281,6 +1286,7 @@ var displayText = {
         centeredLb: 'Centered leaderboard',
         fpsAtTop: 'Game stats at the top',
         tweenMaxEffect: 'Tween max effect',
+		top5skins: 'Skins on teamboard',
         showStats: 'Show game stats',
         showStatsMass: 'Game stats: Mass',
         showStatsESTE: 'Game stats: Enemy\'s STE',
@@ -2283,6 +2289,7 @@ var defaultmapsettings = {
     centeredLb: true,
     fpsAtTop: true,
     tweenMaxEffect: false,
+	top5skins: true,
     showStats: true,
     showStatsMass: true,
     showStatsESTE: false,
@@ -2315,6 +2322,8 @@ var defaultmapsettings = {
     ////
     //'zoomSpeedValue: .87,
     zoomSpeedValue2: -0.13,
+	leaderboardlimit: 20,
+	teamboardlimit: 20,	
     messageSound: 'https://legendmod.ml/sounds/notification_01.mp3',
     //                commandSound: 'https://legendmod.ml/sounds/notification_02.mp3'
     commandSound: 'https://legendmod.ml/sounds/chat-message.mp3',
@@ -3533,13 +3542,13 @@ function thelegendmodproject() {
                 },
         */
         displayTop5() {
-            if (window.top5skins != true) {
+            if (defaultmapsettings.top5skins != true) {
                 if (defaultmapsettings.showTop5) {
                     //console.log(.top5.length);
                     //console.log(.teamPlayers.length);
                     for (var t = '', e = 0, s = this.top5.length, o = 0; o < s; o++) {
                         e += this.top5[o].mass;
-                        if (!(o >= window.teamboardlimit && this.top5[o].mass > 1)) {
+                        if (!(o >= defaultmapsettings.teamboardlimit && this.top5[o].mass > 1)) {
                             t = t + '<li style=\"height: 16px;"\><span>' + (o + 1) + '. </span>';
                             defaultmapsettings.showTargeting && (t += '<a href=\"#\" data-user-id=\"' + this.top5[o].id + '\" class=\"set-target ogicon-target\"></a> ');
                             //
@@ -3583,7 +3592,7 @@ function thelegendmodproject() {
                     var o = 0;
                     for (; o < s; o++) {
                         e = e + this.top5[o].mass;
-                        if (!(o >= window.teamboardlimit && this.top5[o].mass > 1)) {
+                        if (!(o >= defaultmapsettings.teamboardlimit && this.top5[o].mass > 1)) {
                             /*
                                 t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color + 
 								'; width: 30px; height:30px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;"  src = ' 
@@ -4204,6 +4213,7 @@ function thelegendmodproject() {
 				$("#og-settings .submenu-panel").append('<div id="og-options"></div>');
                 this.addOptions([], "animationGroup");
                 this.addOptions(["autoZoom"], "zoomGroup");
+				this.addOptions(["autoZoom"], "boardGroup");			
                 this.addOptions(["quickResp", "autoResp"], "respGroup");
                 this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
                 this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup");
@@ -4221,7 +4231,7 @@ function thelegendmodproject() {
                 this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots", "teamView"], "helpersGroup"); //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert"], "mouseGroup");
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
-                this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup");
+                this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup");
                 this.addOptions([], "macroGroup");
                 this.addOptions([], "profiles");
@@ -4243,6 +4253,9 @@ function thelegendmodproject() {
 				}	
                 this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
                 this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01);
+				this.addSliderBox(".boardGroup", "leaderboardlimit", 10, 30, 5);
+				this.addSliderBox(".boardGroup", "teamboardlimit", 5, 40, 5);
+				
                 this.addSliderBox(".profiles", "profileNumber", 10, 54, 1);
                 this.addSliderBox(".macroGroup", "macroFeeding", 1, 160, 1);
                 $("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + textLanguage.exportImport + "</button>");
@@ -9136,7 +9149,7 @@ function thelegendmodproject() {
             }
         },
         handleLeaderboard() {
-            /*                for (var t = '', e = '', i = 0; i < this.leaderboard.length && window.leaderboardlimit != i; i++) {
+            /*                for (var t = '', e = '', i = 0; i < this.leaderboard.length && defaultmapsettings.leaderboardlimit != i; i++) {
                                 var s = '<span>';
                                 'isPlayer' === this.leaderboard[i].id ? s = '<span class=\"me\">' : ogarcopythelb.clanTag.length && 0 == this.leaderboard[i].nick.indexOf(ogarcopythelb.clanTag) && (s = '<span class=\"teammate\">'), t += s + (i + 1) + '. ' + application.escapeHTML(this.leaderboard[i].nick) + '</span>';
                             } */
@@ -9153,7 +9166,7 @@ function thelegendmodproject() {
             }
             let text = '';
             let teamText = '';
-            for (length = 0; length < this.leaderboard.length && window.leaderboardlimit != length; length++) {
+            for (length = 0; length < this.leaderboard.length && defaultmapsettings.leaderboardlimit != length; length++) {
                 var html = '<span>';
                 if (this.leaderboard[length].id === 'isPlayer') {
                     html = '<span class=\"me\">';
@@ -9167,7 +9180,7 @@ function thelegendmodproject() {
                 }
                 teamText += html + (length + 1) + '. ' + application.escapeHTML(this.leaderboard[length].nick) + '</span>';
             }
-            if (this.playerPosition > window.leaderboardlimit) {
+            if (this.playerPosition > defaultmapsettings.leaderboardlimit) {
                 teamText += '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
                 //defaultmapsettings['showLbData'];
             }
@@ -9186,7 +9199,7 @@ function thelegendmodproject() {
                 teamText += '</span>';
             }
             if (defaultmapsettings.showLbData) {
-                for (var l2ngth = 0; l2ngth < this.ghostCells.length && l2ngth < window.leaderboardlimit; l2ngth++) {
+                for (var l2ngth = 0; l2ngth < this.ghostCells.length && l2ngth < defaultmapsettings.leaderboardlimit; l2ngth++) {
                     //
                     var w = this.ghostCells[l2ngth].x;
                     var u = this.ghostCells[l2ngth].y;
