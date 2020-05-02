@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.476 MEGA TEST jimtest
+// v1.477 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -3382,14 +3382,14 @@ function thelegendmodproject() {
                 application.flushSkinsMap();
 				animateSkinsStop();
             }			
-		}
+		},
 		setUniversalChat(){
             if (defaultmapsettings.universalChat && $("#ao2t-hud2").length ) {
                 $("#ao2t-hud").show();
             } else {
 				$("#ao2t-hud").hide();
             }			
-		}
+		},
         //setNormalLb() {
         //defaultmapsettings.normalLb ? $('#leaderboard-hud h5').html(textLanguage.leaderboard) : $('#leaderboard-hud h5').html('legendmod');
         //},
