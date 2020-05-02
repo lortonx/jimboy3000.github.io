@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -205,17 +205,8 @@ var LegendSettingsfirstclicked = "false";
 var switcheryLegendSwitch, switcheryLegendSwitch2;
 var UniversalChatSaved = localStorage.getItem("UniversalChatSaved");
 var VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
-var top5skinsSaved = localStorage.getItem("top5skinsSaved");
 var spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
 var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
-if (localStorage.getItem("leaderboardlimit") != null) {
-    window.leaderboardlimit = localStorage.getItem("leaderboardlimit");
-}
-if (localStorage.getItem("teamboardlimit") != null) {
-    window.teamboardlimit = localStorage.getItem("teamboardlimit");
-}
-
-
 
 var showonceusers3 = 0;
 var client2;
@@ -379,25 +370,7 @@ function startLM(modVersion) {
         }
     });
     $("#Vanillaskins").click(); //enabled by default
-    $('.options-box.hudGroup').append('<label><input type="checkbox" id="top5skins" class="js-switch" data-switchery="true" style="display: none;"> Skins on teamboard</input></label>');
-    var elemLegendSwitch3 = document.querySelector('#top5skins');
-    var ogarioswitchbackcolor = $("input#export-ogarioThemeSettings.js-switch").next().css("background-color");
-    var top5skinsbtn = new Switchery(elemLegendSwitch3, {
-        size: 'small',
-        color: ogarioswitchbackcolor,
-        jackColor: 'rgb(250, 250, 250)'
-    });
 
-    $("#top5skins").click(function() {
-        if (top5skinsbtn.isChecked()) {
-            localStorage.setItem("top5skinsSaved", "true");
-            window.top5skins = true;
-        } else {
-            localStorage.setItem("top5skinsSaved", "false");
-            window.top5skins = false;
-        }
-    });
-    $("#top5skins").click(); //enabled by default
     $('.options-box.respGroup').append('<label><input type="checkbox" id="spawnspecialeffects" class="js-switch" data-switchery="true" style="display: none;"> Spawn special effects</input></label>');
     var elemLegendSwitch4 = document.querySelector('#spawnspecialeffects');
     var ogarioswitchbackcolor = $("input#export-ogarioThemeSettings.js-switch").next().css("background-color");
@@ -1720,14 +1693,8 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
 
     LegendJSON.legendSettings.VanillaskinsSaved = localStorage.getItem("VanillaskinsSaved");
-    LegendJSON.legendSettings.top5skinsSaved = localStorage.getItem("top5skinsSaved");
     LegendJSON.legendSettings.spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
-    if (localStorage.getItem("leaderboardlimit") != null) {
-        LegendJSON.legendSettings.leaderboardlimit = localStorage.getItem("leaderboardlimit");
-    }
-    if (localStorage.getItem("teamboardlimit") != null) {
-        LegendJSON.legendSettings.teamboardlimit = localStorage.getItem("teamboardlimit");
-    }
+
     LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
     if (localStorage.getItem("AnimatedRainbowColorSaved") != null) {
         LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
@@ -1986,14 +1953,8 @@ function saveLegendJSONAPI() {
         localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
 
         localStorage.setItem("VanillaskinsSaved", LegendJSON.legendSettings.VanillaskinsSaved);
-        localStorage.setItem("top5skinsSaved", LegendJSON.legendSettings.top5skinsSaved);
         localStorage.setItem("spawnspecialeffectsSaved", LegendJSON.legendSettings.spawnspecialeffectsSaved);
-        if (LegendJSON.legendSettings.leaderboardlimit != null) {
-            localStorage.setItem("leaderboardlimit", LegendJSON.legendSettings.leaderboardlimit);
-        }
-        if (LegendJSON.legendSettings.teamboardlimit != null) {
-            localStorage.setItem("teamboardlimit", LegendJSON.legendSettings.teamboardlimit);
-        }
+ 
         localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
         if (LegendJSON.legendSettings.AnimatedRainbowColorSaved != null) {
             localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
@@ -3164,7 +3125,7 @@ function universalchat() {
         var user_txt = '';
         //var sep = '1. ';
 		var sep=  "";
-		if (!window.top5skins){
+		if (!defaultmapsettings.top5skins){
 			sep = '1. ';
 		}
         var keys = Object.keys(stat.minimapBalls).sort();
@@ -3231,7 +3192,7 @@ function universalchat() {
 			
 			//
 			var flag=false;
-				if (window.top5skins){
+				if (defaultmapsettings.top5skins){
 				//sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><img style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" src = ' + (application.customSkinsMap[ball.name] ? application.customSkinsMap[ball.name] : "https://legendmod.ml/banners/iconagariotool.png") + ' alt=""> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
 				if (application.customSkinsMap[ball.name] && application.customSkinsCache[application.customSkinsMap[ball.name] + "_cached2"]){
 					sep = sep + ('<a href="#" id="pos-skin" class= "set-target" data-user-id="' + key + '"style="background-color: ' + ball.color + '; width: 30px; height:40px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' + application.customSkinsCache[application.customSkinsMap[ball.name] + "_cached2"].outerHTML + '</span> ' + '</a><div style="margin-top: -30px; margin-left: 32px;">');					
@@ -3260,7 +3221,7 @@ function universalchat() {
 			sep = '</div>';
 			//
            	//		user_txt += count + ": ";
-			if (!window.top5skins){
+			if (!defaultmapsettings.top5skins){
             sep = '<br/>' + count + ". ";
 			count++;
 			}
@@ -3289,7 +3250,7 @@ function universalchat() {
             }
         }
         if (cfg.user_show) {
-			if (!window.top5skins){
+			if (!defaultmapsettings.top5skins){
             user_txt += '<br/>';		
 			}			
 			user_txt += '</div><span style = "margin-top: 30px;" class="hud-main-color ogicon-users"></span> : <span id="top5-total-players" class="top5-mass-color">' + count2 + '</span>'; 
@@ -4671,8 +4632,7 @@ function newsubmit() {
 }
 
 function triggerLMbtns() {
-    $('#leaderboardlimit').val(window.leaderboardlimit);
-    $('#teamboardlimit').val(window.teamboardlimit);
+
     $('.btn').css("text-transform", "capitalize");
     PanelImageSrc = $("#menuBg").val();
     if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/pattern.png") {
@@ -4728,9 +4688,6 @@ function triggerLMbtns() {
     }
     if (VanillaskinsSaved == "false") {
         $("#Vanillaskins").click();
-    }
-    if (top5skinsSaved == "false") {
-        $("#top5skins").click();
     }
     if (spawnspecialeffectsSaved == "true") {
         $("#spawnspecialeffects").click();
@@ -6304,29 +6261,6 @@ function initializeLM(modVersion) {
         '</div>');
     // player shortcut			
 
-    $(".options-box.zoomGroup").after('<div class="options-box leaderboard">' +
-        '<h5 class="menu-main-color">Leaderboards</h5>' +
-        '<label>Leaderboard Players<input type="checkbox" class="js-switch" id="quickleaderbaord" data-switchery="true" style="display: none;">' +
-        '<span><select id="leaderboardlimit" class="form-control" onchange="changeleaderboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
-        '<option selected value="10" data-itr="">10</option>' +
-        '<option value="15" data-itr="">15</option>' +
-        '<option value="20" data-itr="">20</option>' +
-        '<option value="25" data-itr="">25</option>' +
-        '<option value="30" data-itr="">30</option>' +
-        '</select></span></label><br><br>' +
-        '<label>Team Players<input type="checkbox" class="js-switch" id="quickteambaord" data-switchery="true" style="display: none;">' +
-        '<span><select id="teamboardlimit" class="form-control" onchange="changeteamboardlimit();" required="" data-original-title="" title="" style="display:inline; position: absolute;margin-top: -10px; right: 10px; width: 80px" >' +
-        '<option selected value="5" data-itr="">5</option>' +
-        '<option value="10" data-itr="">10</option>' +
-        '<option value="15" data-itr="">15</option>' +
-        '<option value="20" data-itr="">20</option>' +
-        '<option value="25" data-itr="">25</option>' +
-        '<option value="30" data-itr="">30</option>' +
-        '<option value="35" data-itr="">35</option>' +
-        '<option value="40" data-itr="">40</option>' +
-        '</select></span></label>' +
-        '</div>');
-
     $("#playerBtn").click(function() {
         if (playerState != 1) {
             $('#musicFrame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
@@ -7244,7 +7178,7 @@ function autoplayplaying() {
     window.legendmod5.teammatesInd = false;
     window.legendmod5.showGhostCells = false;
     window.legendmod5.showGhostCellsInfo = false;
-    window.legendmod5.top5skins = false;
+    defaultmapsettings.top5skins = false;
     window.legendmod5.showChatImages = false;
     window.legendmod5.showChatVideos = false;
     window.legendmod5.chatSounds = false;
@@ -7483,15 +7417,7 @@ function getInfo3() {
     });
 }
 
-function changeleaderboardlimit() {
-    window.leaderboardlimit = $("#leaderboardlimit").val();
-    localStorage.setItem("leaderboardlimit", window.leaderboardlimit);
-}
 
-function changeteamboardlimit() {
-    window.teamboardlimit = $("#teamboardlimit").val();
-    localStorage.setItem("teamboardlimit", window.teamboardlimit);
-}
 //Animated Skins
 function animateSkincheckTimer() {
     animateSkincheck();
