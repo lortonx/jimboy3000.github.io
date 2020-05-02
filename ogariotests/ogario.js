@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.479 MEGA TEST jimtest
+// v1.480 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -2787,9 +2787,9 @@ function thelegendmodproject() {
         },
         setCustomBackground() {
             if (defaultSettings.customBackground) {
-                $('body').css('background-image', 'url(' + defaultSettings.customBackground + ')')
+                //$('body').css('background-image', 'url(' + defaultSettings.customBackground + ')')
             } else {
-                $('body').css('background-image', 'none');
+                //$('body').css('background-image', 'none');
             }
         },
         setCustomCursor() {
@@ -10005,13 +10005,20 @@ function thelegendmodproject() {
                     this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
 
-                if (!legendmod.integrity) {
-                    if (!legendmod.customMidPic) {
-                        legendmod.customMidPic = new Image;
-                        legendmod.customMidPic.src = defaultSettings.customServerImage1;
-                    }
+                if (!legendmod.integrity || defaultSettings.customBackground) {
+   					if (!legendmod.customMidPic) {
+						if (defaultSettings.customBackground) {
+							legendmod.customMidPic = new Image;
+							legendmod.customMidPic.src = defaultSettings.customBackground;
+						}                 
+						else{
+							legendmod.customMidPic = new Image;
+							legendmod.customMidPic.src = defaultSettings.customServerImage1;
+						}
+					}
+					
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
-                    this.ctx.globalAlpha = '0.2'
+                    this.ctx.globalAlpha = '0.3'
                     var ofx = ((legendmod.mapMaxX - legendmod.mapMinX) / 5) * 2.2
                     var ofy = ((legendmod.mapMinY - legendmod.mapMaxY) / 5) * 2.2
                     this.ctx.drawImage(
