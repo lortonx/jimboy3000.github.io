@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.478 MEGA TEST jimtest
+// v1.479 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -4259,10 +4259,10 @@ function thelegendmodproject() {
 				}
 				else{
                     $("#noSkins, #noColors, #skipStats, #showQuest").addClass("js-switch-vanilla");
-                    $(".skinsGroup h5").after('<label class="noSkins">' + textLanguage.noSkins + " </label>");
-                    $("#noSkins").appendTo($(".noSkins")), 
-					$(".transparencyGroup h5").after('<label class="noColors">' + textLanguage.noColors + " </label>");
-                    $("#noColors").appendTo($(".noColors"));
+                    //$(".skinsGroup h5").after('<label class="noSkins">' + textLanguage.noSkins + " </label>");
+                    //$("#noSkins").appendTo($(".noSkins")); 
+					//$(".transparencyGroup h5").after('<label class="noColors">' + textLanguage.noColors + " </label>");
+                    //$("#noColors").appendTo($(".noColors"));
                     $(".extrasGroup h5").after('<label class="skipStats">' + textLanguage.skipStats + " </label>");
                     $("#skipStats").appendTo($(".skipStats"));
                     $(".skipStats").after('<label class="showQuest">' + textLanguage.showQuest + " </label>");
@@ -4429,13 +4429,12 @@ function thelegendmodproject() {
                 var p = template.attr("id");
                 if (void 0 !== app[p]) {
                     app[p] = template.prop("checked");
-                    if ("noSkins" === p) {
-                        /** @type {boolean} */
-                        ogario.showCustomSkin = !app.noSkins;
-                    }
-                    if ("showQuest" === p) {
-                        app.setQuest();
-                    }
+                    //if ("noSkins" === p) {
+                        //ogario.showCustomSkin = !app.noSkins;
+                    //}
+                    //if ("showQuest" === p) {
+                        //app.setQuest();
+                    //}
                 }
             });
             $(document).on("click", "#og-settings .restore-settings a", function(result) {
@@ -4669,11 +4668,11 @@ function thelegendmodproject() {
             $('.submenu-panel').perfectScrollbar('update');
         },
         getDefaultSettings() {
-            this.noSkins = $("#noSkins").prop("checked");
-                this.noColors = $("#noColors").prop("checked");
-                this.skipStats = $("#skipStats").prop("checked");
-                this.showQuest = $("#showQuest").prop("checked");
-				ogario.showCustomSkin = !this.noSkins;
+            //this.noSkins = $("#noSkins").prop("checked");
+            //this.noColors = $("#noColors").prop("checked");
+            this.skipStats = $("#skipStats").prop("checked");
+            this.showQuest = $("#showQuest").prop("checked");
+			ogario.showCustomSkin = !defaultmapsettings.noSkins;
 			if (null !== window.localStorage.getItem("scale_setting")) {
                 var parseScaleSettings = JSON.parse(window.localStorage.getItem("scale_setting"));
                 this.setCanvasScale(parseScaleSettings);
