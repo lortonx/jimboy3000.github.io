@@ -4213,7 +4213,7 @@ function thelegendmodproject() {
 				$("#og-settings .submenu-panel").append('<div id="og-options"></div>');
                 this.addOptions([], "animationGroup");
                 this.addOptions(["autoZoom"], "zoomGroup");
-				this.addOptions(["autoZoom"], "boardGroup");			
+				this.addOptions([], "boardGroup");			
                 this.addOptions(["quickResp", "autoResp"], "respGroup");
                 this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
                 this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup");
