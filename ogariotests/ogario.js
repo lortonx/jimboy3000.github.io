@@ -1,8 +1,8 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.491 MEGA TEST jimtest
-// Game Configurations
+// v1.493
+
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2712,7 +2712,7 @@ function thelegendmodproject() {
             this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5);
             this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01);
             this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground');
-			this.addSliderBox('#theme-main', 'backgroundAlpha', 0, 0.6, 0.01);
+			this.addSliderBox('#theme-images', 'backgroundAlpha', 0, 0.6, 0.01);
             this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
             this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
             /*this.addInputBox('.facebook-panel', 'FacebookIDs', `e.g. 123456789012345:John K,543210987654321:Jimbo`, `setFBIDs`);*/
