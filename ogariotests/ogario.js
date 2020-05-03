@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.489 MEGA TEST jimtest
+// v1.490 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -10024,7 +10024,7 @@ function thelegendmodproject() {
                         legendmod.mapMinX,
                         legendmod.mapMinY,					
                         legendmod.mapMaxX - legendmod.mapMinX,
-                        legendmod.mapMinY - legendmod.mapMaxY
+                        legendmod.mapMaxY - legendmod.mapMinY
                     );
                     this.ctx.globalAlpha = this.prevctxglobalAlpha						
 					}
