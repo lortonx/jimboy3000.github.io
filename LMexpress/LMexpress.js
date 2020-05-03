@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -2362,9 +2362,8 @@ function MsgServCommandsreturner() {
 
 function universalchat() {
     //$("#overlays").css("z-index", 100);
-    fixservbtn();
-    setTimeout(function() {
-        fixservbtn2();
+    setTimeout(function() {		
+		if (application) application.setUniversalChat()
     }, 2000);
 
     var legbgpic = $("#menuBg").val();
@@ -3277,60 +3276,6 @@ function universalchat() {
         if (e.keyCode === 13) { // If Enter key pressed
             $('#ao2t-message').click();	
         }
-    });
-}
-
-function fixservbtn() {
-    $("#clantag").blur(function() {
-        Universalchatfix();
-    });
-    $("#server-connect").click(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-    /*$("#server-reconnect").click(function() {
-            setTimeout(function() {
-    		Universalchatfix();
-    			}, 200);
-        });*/
-    $("#server-join").click(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-    $('#tag').blur(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-    $("#gamemode").change(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-    $("#region").change(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-    $("#join-party-btn-2").click(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-    $("#create-party-btn-2").click(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
-    });
-}
-
-function fixservbtn2() {
-    $("#server-reconnect").click(function() {
-        setTimeout(function() {
-            Universalchatfix();
-        }, 1000);
     });
 }
 
