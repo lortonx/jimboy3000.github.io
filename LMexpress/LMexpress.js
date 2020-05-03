@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087i by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087j by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -1357,7 +1357,7 @@ function Leader(i) {
 
 function Teamer(i) {
     prevnamereturner();
-    $("#nick").val($("#TeamboardInput" + i)val());
+    $("#nick").val($("#TeamboardInput" + i).val());
     BeforeChangingSkins();
 }
 
