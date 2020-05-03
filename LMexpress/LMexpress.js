@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087j by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.087h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "87"; // the version 1.1-> 1.11
 //fix ffa
@@ -1244,10 +1244,27 @@ function ReportFakesSkin() {
         ' <input id="TeamboardInput10" class="form-control" placeholder="Nickname" value="" style="margin-top: 2px; margin-left: 2px; width: 40%; display: inline;" " data-toggle="tooltip" data-placement="top" data-original-title="" >' +
         '</div><p style="color:white; font-size:12px";" align="middle">' + Premadeletter121 + '<br>' + Premadeletter122 + '</u></p>' +
         '</div></div>');
-	for (var i=1;i<11;i++){
-		$('#LeaderboardInput'+i).copyCSS('#server-token').css('width', '40%');
-		$('#TeamboardInput'+i).copyCSS('#server-token').css('width', '40%');
-	}	
+    $('#LeaderboardInput1').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput2').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput3').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput4').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput5').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput6').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput7').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput8').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput9').copyCSS('#server-token').css('width', '40%');
+    $('#LeaderboardInput10').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput1').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput2').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput3').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput4').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput5').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput6').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput7').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput8').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput9').copyCSS('#server-token').css('width', '40%');
+    $('#TeamboardInput10').copyCSS('#server-token').css('width', '40%');
+
     $("#SkinChangerhud").after('<button id="SkinBacktomenu" onclick="exitSkinChanger(); return false" class="btn btn-danger"  style="margin-left: 10px;" data-original-title="" title="">' + Premadeletter113 + '</button>');
     OthersSkinChanger();
     SkinBtnsPut();
@@ -1256,21 +1273,83 @@ function ReportFakesSkin() {
 
 
 function OthersSkinChanger() {
-	for(var i=1;i<11;i++){
-		if (application.teamPlayers[i]){
-			$("#TeamboardInput"+i).val(application.teamPlayers[i].nick);
-		}
-		if (legendmod.leaderboard[i]){
-			$("#LeaderboardInput"+i).val(legendmod.leaderboard[i].nick);
-		}	
+    //var leaderboardnames = [$("#leaderboard-positions").text().split('1. ').pop().split('2. ')[0], $("#leaderboard-positions").text().split('2. ').pop().split('3. ')[0], $("#leaderboard-positions").text().split('3. ').pop().split('4. ')[0], $("#leaderboard-positions").text().split('4. ').pop().split('5. ')[0], $("#leaderboard-positions").text().split('5. ').pop().split('6. ')[0], $("#leaderboard-positions").text().split('6. ').pop().split('7. ')[0], $("#leaderboard-positions").text().split('7. ').pop().split('8. ')[0], $("#leaderboard-positions").text().split('8. ').pop().split('9. ')[0], $("#leaderboard-positions").text().split('9. ').pop().split('10. ')[0], $("#leaderboard-positions").text().split('10. ').pop().split('11. ')[0]];
+    //$(".team-top-limit")[2].click();
+/*
+    var Top5b = {};
+    var Top5c = {};
+    var Top5d = {};
+    var Top5a = $("#top5-pos").text();
+    for (var n = 1; n <= 21; n++) {
+        Top5b[n] = Top5a.split('[')[n];
+        if (Top5b[n] != null) {
+            Top5c[n] = Top5b[n].split('] ')[1];
+            Top5d[n] = Top5c[n].slice(0, -1);
+        } else {
+            Top5d[n - 1] = Top5c[n - 1];
+            break;
+        }
+        console.log(Top5d[n]);
+    }
+
+
+    $("#LeaderboardInput1").val(leaderboardnames[0]);
+    $("#LeaderboardInput2").val(leaderboardnames[1]);
+    $("#LeaderboardInput3").val(leaderboardnames[2]);
+    $("#LeaderboardInput4").val(leaderboardnames[3]);
+    $("#LeaderboardInput5").val(leaderboardnames[4]);
+    $("#LeaderboardInput6").val(leaderboardnames[5]);
+    $("#LeaderboardInput7").val(leaderboardnames[6]);
+    $("#LeaderboardInput8").val(leaderboardnames[7]);
+    $("#LeaderboardInput9").val(leaderboardnames[8]);
+    $("#LeaderboardInput10").val(leaderboardnames[9]);
+/*
+    $("#TeamboardInput1").val(Top5d[1]);
+    $("#TeamboardInput2").val(Top5d[2]);
+    $("#TeamboardInput3").val(Top5d[3]);
+    $("#TeamboardInput4").val(Top5d[4]);
+    $("#TeamboardInput5").val(Top5d[5]);
+    $("#TeamboardInput6").val(Top5d[6]);
+    $("#TeamboardInput7").val(Top5d[7]);
+    $("#TeamboardInput8").val(Top5d[8]);
+    $("#TeamboardInput9").val(Top5d[9]);
+    $("#TeamboardInput10").val(Top5d[10]);
+*/
+for(var i=0;i<10;i++){
+	var x=i+1;
+	if (application.teamPlayers[i]){
+    $("#TeamboardInput"+x).val(application.teamPlayers[i].nick);
 	}
+	if (legendmod.leaderboard[i]){
+    $("#LeaderboardInput"+x).val(legendmod.leaderboard[i].nick);
+	}	
+}
 }
 
 function SkinBtnsPut() {
-	for (var i=1;i<11;i++) {
-		    $("#LeaderboardInput"+i).after('<button id="LeaderboardIconFake"'+ i + 'class="btn btn-info" style="background-color: transparent;" onclick="Leader(' + i + ');return false;"><i class="fa fa-wpexplorer"></i></button>');
-			$("#TeamboardInput"+i).before('<button id="TeamboardIconFake1"'+ i + 'class="btn btn-info" style="background-color: transparent;" onclick="Teamer(' + i + ');return false;"><i class="fa fa-wpexplorer"></i></button>');
-	}
+    $("#LeaderboardInput1").after('<button id="LeaderboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Leader11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput2").after('<button id="LeaderboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Leader12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput3").after('<button id="LeaderboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Leader13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput4").after('<button id="LeaderboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Leader14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput5").after('<button id="LeaderboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Leader15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput6").after('<button id="LeaderboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Leader16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput7").after('<button id="LeaderboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Leader17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput8").after('<button id="LeaderboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Leader18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput9").after('<button id="LeaderboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Leader19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#LeaderboardInput10").after('<button id="LeaderboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Leader20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+
+
+    $("#TeamboardInput1").before('<button id="TeamboardIconFake1" class="btn btn-info" style="background-color: transparent;" onclick="Teamer11();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput2").before('<button id="TeamboardIconFake2" class="btn btn-info" style="background-color: transparent;" onclick="Teamer12();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput3").before('<button id="TeamboardIconFake3" class="btn btn-info" style="background-color: transparent;" onclick="Teamer13();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput4").before('<button id="TeamboardIconFake4" class="btn btn-info" style="background-color: transparent;" onclick="Teamer14();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput5").before('<button id="TeamboardIconFake5" class="btn btn-info" style="background-color: transparent;" onclick="Teamer15();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput6").before('<button id="TeamboardIconFake6" class="btn btn-info" style="background-color: transparent;" onclick="Teamer16();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput7").before('<button id="TeamboardIconFake7" class="btn btn-info" style="background-color: transparent;" onclick="Teamer17();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput8").before('<button id="TeamboardIconFake8" class="btn btn-info" style="background-color: transparent;" onclick="Teamber18();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput9").before('<button id="TeamboardIconFake9" class="btn btn-info" style="background-color: transparent;" onclick="Teamer19();return false;"><i class="fa fa-wpexplorer"></i></button>');
+    $("#TeamboardInput10").before('<button id="TeamboardIconFake10" class="btn btn-info" style="background-color: transparent;" onclick="Teamer20();return false;"><i class="fa fa-wpexplorer"></i></button>');
+
 }
 
 
@@ -1348,19 +1427,125 @@ function ogarioplayfalse() {
     return ogario.play = "false";
 }
 
-function Leader(i) {
+function Leader11() {
     prevnamereturner();
-    $("#nick").val($('#LeaderboardInput' + i).val());
+    $("#nick").val($('#LeaderboardInput1').val());
     BeforeChangingSkins();
 }
 
-
-function Teamer(i) {
+function Leader12() {
     prevnamereturner();
-    $("#nick").val($("#TeamboardInput" + i).val());
+    $("#nick").val($('#LeaderboardInput2').val());
     BeforeChangingSkins();
 }
 
+function Leader13() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput3').val());
+    BeforeChangingSkins();
+}
+
+function Leader14() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput4').val());
+    BeforeChangingSkins();
+}
+
+function Leader15() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput5').val());
+    BeforeChangingSkins();
+}
+
+function Leader16() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput6').val());
+    BeforeChangingSkins();
+}
+
+function Leader17() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput7').val());
+    BeforeChangingSkins();
+}
+
+function Leader18() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput8').val());
+    BeforeChangingSkins();
+}
+
+function Leader19() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput9').val());
+    BeforeChangingSkins();
+}
+
+function Leader20() {
+    prevnamereturner();
+    $("#nick").val($('#LeaderboardInput10').val());
+    BeforeChangingSkins();
+}
+
+function Teamer11() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput1").val());
+    BeforeChangingSkins();
+}
+
+function Teamer12() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput2").val());
+    BeforeChangingSkins();
+}
+
+function Teamer13() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput3").val());
+    BeforeChangingSkins();
+}
+
+function Teamer14() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput4").val());
+    BeforeChangingSkins();
+}
+
+function Teamer15() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput5").val());
+    BeforeChangingSkins();
+}
+
+function Teamer16() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput6").val());
+    BeforeChangingSkins();
+}
+
+function Teamer17() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput7").val());
+    BeforeChangingSkins();
+}
+
+function Teamer18() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput8").val());
+    BeforeChangingSkins();
+}
+
+function Teamer19() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput9").val());
+    BeforeChangingSkins();
+}
+
+function Teamer20() {
+    prevnamereturner();
+    $("#nick").val($("#TeamboardInput10").val());
+    BeforeChangingSkins();
+}
 
 function copy(text) {
     $("#tempCopy").val(text);
