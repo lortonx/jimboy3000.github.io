@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.499
+// v1.500
 
 
 //window.testobjects = {};
@@ -7824,7 +7824,7 @@ function thelegendmodproject() {
                             }
                         }
                     }
-                    if (dyinglight1load == "yes" && node == null && this.targetNick.includes("The Dying Light") == false && !this.isFood) {
+                    if (dyinglight1load == "yes" && node == null && this.targetNick.includes("The Dying Light") == false && !this.isFood && this.mass>12) {
                         try {					
                             style.drawImage(cimgDyingLight, this.x - y, this.y - y, 2 * y, 2 * y);						
                         } catch (e) {}
