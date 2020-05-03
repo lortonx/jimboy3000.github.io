@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.506
+// v1.507
 
 
 //window.testobjects = {};
@@ -10034,10 +10034,10 @@ function thelegendmodproject() {
                     this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                     this.ctx.drawImage(
 						cimg5, 
-                        legendmod.mapMinX - 14141,
+                        legendmod.mapMinX - (14141,
                         legendmod.mapMinY - 14141,					
-                        (legendmod.mapMaxX - legendmod.mapMinX)*4,
-                        (legendmod.mapMaxY - legendmod.mapMinY)*4
+                        (legendmod.mapMaxX - legendmod.mapMinX)*Math.PI,
+                        (legendmod.mapMaxY - legendmod.mapMinY)*Math.PI
                     );
                     this.ctx.globalAlpha = this.prevctxglobalAlpha						
 					}					
