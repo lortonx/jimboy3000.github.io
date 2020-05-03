@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.490 MEGA TEST jimtest
+// v1.491 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -1016,6 +1016,7 @@ var displayText = {
         skinsAlpha: 'Przezroczystość skinów',
         virusAlpha: 'Przezroczystość wirusów',
         textAlpha: 'Przezroczystość nazw i masy',
+		backgroundAlpha: 'Przezroczystość background',
         virusStrokeSize: 'Grubość obwódki wirusów',
         virusGlowSize: "Virus Glow Size",
         teammatesIndColor: 'Wskaźnik gracza',
@@ -1430,6 +1431,7 @@ var displayText = {
         skinsAlpha: 'Skins transparency',
         virusAlpha: 'Virus transparency',
         textAlpha: 'Names & mass transparency',
+		backgroundAlpha: 'Background transparency',
         virusStrokeSize: 'Virus stroke size',
         virusGlowSize: "Virus Glow Size",
         teammatesIndColor: 'Teammate indicator',
@@ -1611,6 +1613,7 @@ var themePresets = {
         skinsAlpha: 0.99,
         virusAlpha: 0.25,
         textAlpha: 1,
+		backgroundAlpha: 0.6,
         virusStrokeSize: 20,
         virusGlowSize: "#fff",
         virusGlowSize: 14,
@@ -1772,6 +1775,8 @@ var themePresets = {
         cellsAlpha: 0.99,
         skinsAlpha: 0.99,
         virusAlpha: 0.4,
+        textAlpha: 1,
+		backgroundAlpha: 0.6,		
         virusStrokeSize: 10,
         virusStrokeSize: 20,
         virusGlowSize: 14,
@@ -2066,6 +2071,7 @@ var defaultSettings = {
     skinsAlpha: 0.99,
     virusAlpha: 0.6,
     textAlpha: 1,
+	backgroundAlpha: 0.6,
     virusGlowColor: '#fff',
     virusGlowSize: 14,
     borderGlowSize: 14,
@@ -2706,6 +2712,7 @@ function thelegendmodproject() {
             this.addSliderBox('#theme-minimap', 'miniMapTeammatesSize', 4, 10, 0.5);
             this.addSliderBox('#theme-minimap', 'miniMapGhostCellsAlpha', 0.01, 0.99, 0.01);
             this.addInputBox('#theme-images', 'customBackground', 'Image URL', 'setCustomBackground');
+			this.addSliderBox('#theme-main', 'backgroundAlpha', 0, 0.6, 0.01);
             this.addPresetBox('#theme-images', 'graphics', graphicMenus, 'graphics', 'changeGraphics');
             this.addInputBox('#theme-images', 'customCursor', 'Cursor image URL', 'setCustomCursor');
             /*this.addInputBox('.facebook-panel', 'FacebookIDs', `e.g. 123456789012345:John K,543210987654321:Jimbo`, `setFBIDs`);*/
@@ -10017,7 +10024,7 @@ function thelegendmodproject() {
 					}
 					if (defaultSettings.customBackground) {
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
-                    this.ctx.globalAlpha = '0.6'
+                    this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                     this.ctx.drawImage(
 						legendmod.customMidPic, 
 	
@@ -10030,7 +10037,7 @@ function thelegendmodproject() {
 					}
 					else{
                     this.prevctxglobalAlpha = this.ctx.globalAlpha;
-                    this.ctx.globalAlpha = '0.3'
+                    this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                     var ofx = ((legendmod.mapMaxX - legendmod.mapMinX) / 5) * 2.2
                     var ofy = ((legendmod.mapMinY - legendmod.mapMaxY) / 5) * 2.2
                     this.ctx.drawImage(
