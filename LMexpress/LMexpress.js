@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.087h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "87"; // the version 1.1-> 1.11
+var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
 /*
 setTimeout(function() {
@@ -316,7 +316,7 @@ function startLM(modVersion) {
     if (modVersion != "1.7") {
         toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.7</b></font>. <br>visit: <a target="_blank" href="http://www.legendmod.ml"><font color="yellow"><b><u>www.legendmod.ml</u></b></font></a>');
     }
-    $("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
+    //$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
     universalchat();
 
     $('.options-box.respGroup').append('<label><input type="checkbox" id="spawnspecialeffects" class="js-switch" data-switchery="true" style="display: none;"> Spawn special effects</input></label>');
