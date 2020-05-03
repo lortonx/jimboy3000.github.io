@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.494
+// v1.495
 
 
 //window.testobjects = {};
@@ -8014,6 +8014,9 @@ function thelegendmodproject() {
                     (($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')))) {
                     application.SLGconnect(t);
                 }
+				if (typeof Universalchatfix === 'function') { 
+					Universalchatfix() 
+				}
             }, 100);
             window.legendmod.vnr = 0; //Sonia3
             window.legendmod.bgpi = 4; //Sonia3
