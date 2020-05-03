@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.486 MEGA TEST jimtest
+// v1.487 MEGA TEST jimtest
 // Game Configurations
 
 //window.testobjects = {};
@@ -10004,14 +10004,15 @@ function thelegendmodproject() {
                 if (defaultmapsettings.showBgSectors) {
                     this.drawSectors(this.ctx, LM.mapOffsetFixed, defaultSettings.sectorsX, defaultSettings.sectorsY, LM.mapMinX, LM.mapMinY, LM.mapMaxX, LM.mapMaxY, defaultSettings.gridColor, defaultSettings.sectorsColor, defaultSettings.sectorsWidth, true);
                 }
-
+				if (!window.temp1) temp1=1
                 if (!legendmod.integrity || defaultSettings.customBackground) {
    					if (!legendmod.customMidPic) {
 						if (defaultSettings.customBackground) {
 							legendmod.customMidPic = new Image;
 							legendmod.customMidPic.src = defaultSettings.customBackground;
-							legendmod.customMidPic.width = (legendmod.mapMaxX-legendmod.mapMinX)*10
-							legendmod.customMidPic.height = legendmod.mapMaxY-legendmod.mapMinY 							
+							
+							legendmod.customMidPic.width = (legendmod.mapMaxX-legendmod.mapMinX)*temp1
+							legendmod.customMidPic.height = (legendmod.mapMaxY-legendmod.mapMinY)*temp1 							
 						}                 
 						else{
 							legendmod.customMidPic = new Image;
