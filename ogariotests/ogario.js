@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.503
+// v1.506
 
 
 //window.testobjects = {};
@@ -10036,8 +10036,8 @@ function thelegendmodproject() {
 						cimg5, 
                         legendmod.mapMinX - 14141,
                         legendmod.mapMinY - 14141,					
-                        (legendmod.mapMaxX - legendmod.mapMinX)*2,
-                        (legendmod.mapMaxY - legendmod.mapMinY)*2
+                        (legendmod.mapMaxX - legendmod.mapMinX)*4,
+                        (legendmod.mapMaxY - legendmod.mapMinY)*4
                     );
                     this.ctx.globalAlpha = this.prevctxglobalAlpha						
 					}					
