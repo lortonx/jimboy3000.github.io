@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.515
+// v1.516
 
 
 //window.testobjects = {};
@@ -2970,9 +2970,11 @@ function thelegendmodproject() {
             this.setChat();
             this.setMiniMap();
         },
-		setChatPosition(){	
-        toastr.remove();
-		toastr.options.positionClass = chatPositions[defaultSettings.chatPos].positionClass;
+		setChatPosition(){
+		if (defaultSettings.chatPos){
+			toastr.remove();		
+			toastr.options.positionClass = chatPositions[defaultSettings.chatPos].positionClass;
+		}
 		},
         init() {
             this.loadThemeSettings();
