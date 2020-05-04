@@ -2829,6 +2829,7 @@ function thelegendmodproject() {
         setCustomBackground() {
             if (defaultSettings.customBackground) {
                 //$('body').css('background-image', 'url(' + defaultSettings.customBackground + ')')
+				//$("#canvas").css('background-size', 'cover'); 
             } else {
                 //$('body').css('background-image', 'none');
             }
