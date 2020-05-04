@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.517
+// v1.518
 
 
 //window.testobjects = {};
@@ -1152,7 +1152,7 @@ var displayText = {
         activeUsers: 'Aktywni użytkownicy',
         showActiveUsers: 'Pokaż aktywnych użytkowników',
         none: 'Brak',
-        sounds: 'Dźwięki',
+        sounds: 'Youtube & Sounds',	
         page_back_button: 'Wróć',
         page_create_party: 'Stwórz party',
         page_join_party: 'Dołącz',
@@ -1567,7 +1567,7 @@ var displayText = {
         activeUsers: 'Active users',
         showActiveUsers: 'Show active users',
         none: 'None',
-        sounds: 'Sounds',
+        sounds: 'Youtube & Sounds',
         page_menu_main_free_coins: 'Free Coins',
         page_menu_main_gifts: 'Gifts',
         page_menu_main_dailyquests: 'Daily Quest',
@@ -4212,7 +4212,7 @@ function thelegendmodproject() {
 				document.title = this.name;
                 $("#mainPanel").before('<div id="exp-bar" class="agario-panel"><span class="ogicon-user"></span><div class="agario-exp-bar progress"><span class="progress-bar-text"></span><div class="progress-bar progress-bar-striped" style="width: 0%;"></div></div><div class="progress-bar-star"></div></div><div id="main-menu" class="agario-panel"><ul class="menu-tabs"><li class="start-tab active"><a href="#main-panel" class="active ogicon-home" data-toggle="tab-tooltip" title="' +
                     textLanguage.start + '"></a></li><li class="profile-tab"><a href="#profile" class="ogicon-user" data-toggle="tab-tooltip" title="' + textLanguage.profile + '"></a></li><li class="settings-tab"><a href="#og-settings" class="ogicon-cog" data-toggle="tab-tooltip" title="' + textLanguage.settings + '"></a></li><li class="theme-tab"><a href="#theme" class="ogicon-droplet" data-toggle="tab-tooltip" title="' + textLanguage.theme + '"></a></li><li class="hotkeys-tab"><a href="#" class="hotkeys-link ogicon-keyboard" data-toggle="tab-tooltip" title="' +
-                    textLanguage.hotkeys + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="Radio / ' + textLanguage.sounds + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>');
+                    textLanguage.hotkeys + '"></a></li><li class="music-tab"><a href="#music" class="ogicon-music" data-toggle="tab-tooltip" title="' + textLanguage.sounds + '"></a></li></ul><div id="main-panel" class="menu-panel"></div><div id="profile" class="menu-panel"></div><div id="og-settings" class="menu-panel"><div class="submenu-panel"></div></div><div id="theme" class="menu-panel"></div><div id="music" class="menu-panel"></div></div>');
                 $("#main-panel").append('<a href="#" class="quick quick-menu ogicon-menu"></a><a href="#" class="quick quick-bots ogicon-trophy" style="display: none;"></a><a href="#" class="quick quick-skins ogicon-images"></a><div id="profiles"><div id="prev-profile"></div><div id="skin-preview"></div><div id="next-profile"></div></div>');
                 $("#mainPanel div[role=form]").appendTo($("#main-panel"));
                 $("#main-panel div[role=form] .form-group:first").remove();
@@ -4241,7 +4241,13 @@ function thelegendmodproject() {
                 $(".agario-shop-panel").after('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>');
                 $("#tags-container").appendTo($("#profile"));
                 $(".btn-logout").appendTo($("#profile"));
-                $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://legendmod.ml/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.skins + '"></a><a href="https://youtube.com/channel/UCoj-ZStcJ0jLMOSK7FOBTbA" class="quick-yt ogicon-youtube2" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="The Legend mod Project"></a></div>');
+                $(".left-container").append('<div id="quick-menu" class="agario-panel agario-side-panel"><a href="https://legendmod.ml/skins/" class="quick-more-skins ogicon-grin" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.skins + '"></a>'
+				'<a href="https://www.youtube.com/watch?v=CnIfNSpCf70" class="quick-yt ogicon-youtube2" id="legendid" target="_blank" data-toggle="tab-tooltip" data-placement="left" title="Legend Promo Video"></a>'+
+				'<a id= "themesBtn" target="_blank" href="https://legendmod.ml/themes/" class="fa fa-tint" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>' +
+				'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>' +
+				'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>'+
+				'<a id= "LegendClanDiscord" href="https://discord.gg/vqy6b5U" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');				
+				
                 $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
 					<div id="botClient" style="margin-left:15px; margin-right:15px; font-family: Tahoma; color: rgb(255, 255, 255); z-index: 9999; border-radius: 5px; min-height: 16px; min-width: 200px; background-color: rgba(2, 0, 0, 0.4);">
@@ -4283,7 +4289,7 @@ function thelegendmodproject() {
                 $(".agario-party-6").appendTo($(".agario-party")).addClass("agario-panel agario-side-panel");
                 $(".agario-party h4, #cancel-party-btn").remove();
                 $(".agario-party .btn").addClass("btn-sm");
-                $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://ogario.ovh/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' + textLanguage.moreSkins + "</a></div>");
+                $(".right-container").append('<div id="skins-panel" class="agario-panel agario-side-panel"><div id="skins"></div><a href="https://legendmod.ml/skins/" id="more-skins" class="btn btn-block btn-success" target="_blank">' + textLanguage.moreSkins + "</a></div>");
                 $(".btn-settings, .text-muted, .tosBox, .agario-promo, #agario-web-incentive, span[data-itr='page_option_dark_theme'], #options #darkTheme").remove();
                 $("#advertisement, #adbg, #a320x250, #g320x250, #s320x250, #adsBottom").css("display", "none");
                 $("#advertisement").removeClass("agario-panel"), $("#adsBottom").css({
