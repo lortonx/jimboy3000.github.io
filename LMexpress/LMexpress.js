@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.091 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
@@ -5410,11 +5410,7 @@ function initializeLM(modVersion) {
 		Socket3enabler(window.legendmod.ws)
 		}, 2000);	
 
-    $("#server-ws").hide();
-    $("#server-connect").hide();
-    //$('#region').before($("#server-reconnect"));
-    $("#server-info").show();
-    //$(".btn.btn-warning.btn-server-info.ogicon-cogs").after($("#server-reconnect"));
+
     $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
 
     $("#server-token").css("margin-top", "-10px");
@@ -5424,15 +5420,10 @@ function initializeLM(modVersion) {
     $("#server-reconnect").remove();
     $(".btn.btn-warning.btn-server-info.ogicon-cogs").after('<button id="server-reconnect" class="btn btn-success" style="display: inline-block; float: left; margin-top: 6px; width: 11%; text-transform: capitalize;"><i class="fa fa-refresh"></i></button>');
 
-    $("#server-reconnect").css("display", "inline-block");
-    $("#server-reconnect").css("float", "left");
-    $("#server-reconnect").css("margin-top", "6px");
-    $("#server-reconnect").css("width", "11%");
-
     //preventcanvasimagecrash();
     //    setTimeout(function() {
     //document.title = "Legend express v" + modVersion;
-    $("#leaderboard-hud > h4").text("Leaderboard");
+
     $("button:contains('Spectate')").html('<span class="glyphicon glyphicon-globe"></span>').attr('data-toggle', "tooltip").prop('title', 'Spectate');
     $("button:contains('Logout')").html('<span class="glyphicon glyphicon-off"></span>').attr('data-toggle', "tooltip").prop('title', 'Logout');
     $("button:contains('Copy')").removeClass("btn-info").addClass("btn-link");
