@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.088 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
@@ -467,27 +467,7 @@ function appendLMhiFbPs() {
                 $("#clantag").val(clanpass);
                 $('#clantag').css('background-color', '#ff6347');
             }
-            if (privateSrv != null) {
-                if ($('#clantag').val() == "") {
-                    if (privateSrv.includes("eu.fzogar.xyz:4000")) {
-                        $("#clantag").val("PS1");
-                    } else if (privateSrv.includes("eu.fzogar.xyz:4001")) {
-                        $("#clantag").val("PS2");
-                    } else if (privateSrv.includes("eu.fzogar.xyz:5001")) {
-                        $("#clantag").val("PS3");
-                    } else if (privateSrv.includes("eu.fzogar.xyz:5002")) {
-                        $("#clantag").val("PS4");
-                    } else if (privateSrv.includes("sg.fzogar.xyz:4000")) {
-                        $("#clantag").val("PS5");
-                    } else if (privateSrv.includes("sg.fzogar.xyz:4001")) {
-                        $("#clantag").val("PS6");
-                    } else if (privateSrv.includes("in.fzogar.xyz:443")) {
-                        $("#clantag").val("PS7");
-                    } else {
-                        $("#clantag").val("PS");
-                    }
-                }
-            }
+
             $("#overlays").show();
             $(".center-container.ogario-menu").show();
             $(".side-container.right-container").show();
@@ -5964,26 +5944,7 @@ function initializeLM(modVersion) {
 
     //roller and other icons
     $('#exp-bar > .icon-user').addClass('fa fa-cog fa-spin fa-3x fa-fw').removeClass('icon-user');
-    //$('.music-tab').children().addClass('quick-yt icon-youtube2').removeClass('icon-music').attr('data-original-title', 'Youtube & Sounds');
-    $('.music-tab').children().attr('data-original-title', 'Youtube & Sounds');
-    document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('id', 'legendid');
 
-    document.getElementsByClassName('quick-yt ogicon-youtube2')[0].href = "https://www.youtube.com/watch?v=CnIfNSpCf70";
-    document.getElementsByClassName('quick-yt ogicon-youtube2')[0].setAttribute('data-original-title', 'Legend Promo Video');
-    //       $('#legendid').addClass('fa fa-thumbs-o-up').removeClass('quick-yt icon-youtube2');
-    $("#more-skins").attr('href', 'https://legendmod.ml/skins/');
-    $(".quick-more-skins.ogicon-grin").attr('href', 'https://legendmod.ml/skins/');
-    $("#quick-menu").append('<a id= "oldSkinsBtn" class="fa fa-shopping-basket" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Old Skins/ MassX3 1h"></a>');
-    $(".quick-more-skins.ogicon-grin").after('<a id= "themesBtn" target="_blank" href="https://legendmod.ml/themes/" class="fa fa-tint" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>' +
-        //		'<a id= "LMImplements" class="fa fa-eercast" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Implementations from Legend Mod"></a>'+
-        '<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>' +
-        '<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>'+
-		'<a id= "LegendClanDiscord" href="https://discord.gg/vqy6b5U" target="_blank" class="fa fa-globe" data-toggle="tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a>');
-    $("#LegGoogleForm").tooltip('show').tooltip('hide');
-    $("#oldSkinsBtn").tooltip('show').tooltip('hide');
-    $("#oldSkinsBtn").hide();
-    $("#ModInfoQuick").tooltip('show').tooltip('hide');
-    //		$("#LMImplements").tooltip('show').tooltip('hide');
     // prevent edit
     $("#musicUrl").on("input", function() {
         $(this).attr("maxlength", "1000");
