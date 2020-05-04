@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.087h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.088 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 //fix ffa
@@ -118,7 +118,7 @@ var AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
 //var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
 var troll1Btn = localStorage.getItem("troll1Btn");
-var ComPosition = localStorage.getItem("ComPosition");
+
 var autoCoinBtn = localStorage.getItem("autoCoinBtn");
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
@@ -1586,7 +1586,7 @@ function parseLegendJSONAPI(LegendJSON) {
     //    LegendJSON.legendSettings.YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
     LegendJSON.legendSettings.TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
     LegendJSON.legendSettings.troll1Btn = localStorage.getItem("troll1Btn ");
-    LegendJSON.legendSettings.ComPosition = localStorage.getItem("ComPosition");
+
     LegendJSON.legendSettings.autoCoinBtn = localStorage.getItem("autoCoinBtn");
     LegendJSON.legendSettings.timesopened = localStorage.getItem("timesopened");
     LegendJSON.legendSettings.saveclanpassword = localStorage.getItem("saveclanpassword");
@@ -1844,7 +1844,7 @@ function saveLegendJSONAPI() {
         //    localStorage.setItem("YoutubeAutoBtn", LegendJSON.legendSettings.YoutubeAutoBtn);
         localStorage.setItem("TIMEcalBtn", LegendJSON.legendSettings.TIMEcalBtn);
         localStorage.setItem("troll1Btn", LegendJSON.legendSettings.troll1Btn);
-        localStorage.setItem("ComPosition", LegendJSON.legendSettings.ComPosition);
+
         localStorage.setItem("autoCoinBtn", LegendJSON.legendSettings.autoCoinBtn);
         localStorage.setItem("timesopened", LegendJSON.legendSettings.timesopened);
         localStorage.setItem("saveclanpassword", LegendJSON.legendSettings.saveclanpassword);
@@ -4511,15 +4511,6 @@ function triggerLMbtns() {
     if (TIMEcalBtn == "true") {
         $("#TIMEcalBtn").click();
     }
-    if (ComPosition == 0) {
-        $("#topright").click();
-    }
-    if (ComPosition == 1) {
-        $("#topleft").click();
-    }
-    if (ComPosition == 2) {
-        $("#bottomright").click();
-    }
 
     document.getElementById("minimapPicture").value = localStorage.getItem("minimapbckimg");
     if ($('#minimapPicture').val() != "") {
@@ -5869,13 +5860,6 @@ function initializeLM(modVersion) {
         '<option value="7" data-itr="">Trad. Chinese</option>' +
         '<option value="10" data-itr="">Turkish - Türk</option>' +
         '</select></div>' +
-
-        '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id= "chatbtntitle" class="title" style="">Chat Position:  </span><div class="btn-group">' +
-        '<button id="bottomleft" type="button" class="btn btn-primary">Default</button>' +
-        '<button id="bottomright" type="button" class="btn btn-primary"><i class="fa fa-arrow-down" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
-        '<button id="topleft" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-left" aria-hidden="true"></i></button>' +
-        '<button id="topright" type="button" class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i><i class="fa fa-arrow-right" aria-hidden="true"></i></button>' +
-        '</div></div>' +
         '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legenddiscordwebh" class="title" style="">Discord Webhook Url (for sending TOKEN)  </span>' +
         '<input id="discwebhook1" class="form-control" placeholder="Discord Webhook 1 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Must be filled for function to work. https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: inline-block; " onblur="setdiscwebhook1();">' +
         '<input id="discwebhook2" class="form-control" placeholder="Discord Webhook 2 Url" value="" data-toggle="tooltip" data-placement="right" data-original-title="Secondary Webhook(optional). https://discordapp.com/api/webhooks/.../..." style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%; display: inline-block;" onblur="setdiscwebhook2();">' +
@@ -6745,34 +6729,6 @@ function initializeLM(modVersion) {
         $("#exp-bar").hide();
         $("#userscripts").show();
 
-    });
-    $("#topright").click(function() {
-        localStorage.setItem("ComPosition", 0);
-        toastr.remove();
-        toastr.options = {
-            "positionClass": "toast-top-right"
-        }
-    });
-    $("#topleft").click(function() {
-        localStorage.setItem("ComPosition", 1);
-        toastr.remove();
-        toastr.options = {
-            "positionClass": "toast-top-left"
-        }
-    });
-    $("#bottomright").click(function() {
-        localStorage.setItem("ComPosition", 2);
-        toastr.remove();
-        toastr.options = {
-            "positionClass": "toast-bottom-right"
-        }
-    });
-    $("#bottomleft").click(function() {
-        localStorage.setItem("ComPosition", 3);
-        toastr.remove();
-        toastr.options = {
-            "positionClass": "toast-bottom-left"
-        }
     });
 
     $("#oldSkinsBtn").click(function() {
