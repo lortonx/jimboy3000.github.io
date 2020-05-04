@@ -1,10 +1,10 @@
 /**************
- * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.090 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
 appendLMhiFbPs();
-PreLcCelebration();
+
 loadericon();
 PremiumUsers();
 document.title = "LM express";
@@ -429,7 +429,6 @@ function appendLMhiFbPs() {
         MSGCOMMANDS2 = $(".toast.toast-warning").html();
         if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {
             toastr.error("You are using a wrong version, visit: www.legendmod.ml");
-
         } else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
             $(".toast.toast-warning").remove();
             $("#gamemode").prop('disabled', false);
@@ -440,33 +439,12 @@ function appendLMhiFbPs() {
                 $("#clantag").val(clanpass);
                 $('#clantag').css('background-color', '#ff6347');
             }
-
             $("#overlays").show();
             $(".center-container.ogario-menu").show();
             $(".side-container.right-container").show();
             $(".side-container.left-container").show();
-            //		},200);
-            //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-            //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-            //		}
-
-
-            //userData=$.get("http://gd.geobytes.com/GetCityDetails", function (response) { $("#response").html(JSON.stringify(response, null, 4)); }, "jsonp");
-            /*userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
-                $("#response").html(JSON.stringify(response, null, 4));
-                if (userData != null) {
-                    localStorage.setItem("userData", JSON.stringify(userData));
-                }
-            }, "jsonp");
-            		setTimeout(function (){ 
-            		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
-            		},300); */
         }
-
-
     });
-
-
     $("body").on('DOMSubtreeModified', "#chat-box", function() {
         var MSGCOMMANDS3 = $(".command-text").text();
         if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
@@ -474,54 +452,15 @@ function appendLMhiFbPs() {
         } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
             $("#gamemode").prop('disabled', false);
             $("#region").prop('disabled', false);
-            //	$(".toast.toast-warning").remove();
             $(".command-text").text(Premadeletter0);
-            //		setTimeout(function () {
-            //spectate();
             if (clanpass != null && clanpass != "") {
                 $("#clantag").val(clanpass);
                 $('#clantag').css('background-color', '#ff6347');
-            }
-            if (privateSrv != null) {
-                if ($('#clantag').val() == "") {
-                    if (privateSrv.includes("eu.fzogar.xyz:4000")) {
-                        $("#clantag").val("PS1");
-                    } else if (privateSrv.includes("eu.fzogar.xyz:4001")) {
-                        $("#clantag").val("PS2");
-                    } else if (privateSrv.includes("eu.fzogar.xyz:5001")) {
-                        $("#clantag").val("PS3");
-                    } else if (privateSrv.includes("eu.fzogar.xyz:5002")) {
-                        $("#clantag").val("PS4");
-                    } else if (privateSrv.includes("sg.fzogar.xyz:4000")) {
-                        $("#clantag").val("PS5");
-                    } else if (privateSrv.includes("sg.fzogar.xyz:4001")) {
-                        $("#clantag").val("PS6");
-                    } else if (privateSrv.includes("sg.fzogar.xyz:4002")) {
-                        $("#clantag").val("PS7");
-                    } else {
-                        $("#clantag").val("PS");
-                    }
-                }
             }
             $("#overlays").show();
             $(".center-container.ogario-menu").show();
             $(".side-container.right-container").show();
             $(".side-container.left-container").show();
-            //		},200);
-
-            //		if($('#region>option:nth-child(1)').val()!=":PrS")	{
-            //		$('#region').prepend('<option value=":PrS" data-itr="PrS">Private Servers</option>');	
-            /*userData = $.get("https://extreme-ip-lookup.com/json/", function(response) {
-                $("#response").html(JSON.stringify(response, null, 4));
-                if (userData != null) {
-                    localStorage.setItem("userData", JSON.stringify(userData));
-                }
-            }, "jsonp");
-            		setTimeout(function (){ 
-            		if (userData!=null) {localStorage.setItem("userData", JSON.stringify(userData));}
-            		},300); */
-
-            //		}		
         }
 
     });
@@ -686,11 +625,6 @@ function delay(time, func) {
     setTimeout(function() {
         func();
     }, time);
-}
-
-function spectate() {
-    //    hideMenu();
-    $(".btn-spectate").click();
 }
 
 function play() {
@@ -3225,17 +3159,7 @@ function appendLog(message) {
     bumpLog();
 }
 
-/*
-function appendLog2(message, message2) {
-	$("#logTitle").text("Legend mod users (click and join)");
-    var region = $("#region").val();
-    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
-        '<span class="main-color">' + region.substring(0, 2) + '</span> &nbsp;' +
-        '<a onclick="connectto(\`'+message2+'\`);return false;" class="logEntry" data-token="' + currentToken + '" style="color: lightgrey; font-size: 14px;">' + message + '</a></p>');
 
-    $("#log p").first().show(100);
-    bumpLog();
-}*/
 function appendLog2(message, message2) {
     //$("#logTitle").text("Legend mod users (click and join)");
     $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
@@ -3319,26 +3243,7 @@ function bumpLog() {
     }, "slow");
 }
 
-function PreLcCelebration() {
-    var checkonetimeLc1 = localStorage.getItem("checkonetimeLc1");
-    if (checkonetimeLc1 == null) {
-        //   if ($("#nick").val().includes("?")) {
-        var checkdate;
-        Date.prototype.yyyymmdd = function() {
-            var yyyy = this.getFullYear().toString();
-            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
-            var dd = this.getDate().toString();
-            return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
-        };
 
-        var date = new Date();
-        checkdate = date.yyyymmdd();
-        if (checkdate == "2019/11/12") {
-            LcCelebration();
-        }
-        //    }
-    }
-}
 
 function getInfo() {
     $.ajax({
@@ -3367,15 +3272,7 @@ function getInfo() {
     });
 }
 
-function LcCelebration() {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "https://legendmod.ml/extras/LcHistory/LcHistoryBanner.js";
-    $("body").append(s);
-    checkonetimeLc1 = 1;
-    localStorage.setItem("checkonetimeLc1", checkonetimeLc1);
-    return checkonetimeLc1;
-}
+
 
 function SquareAgar() {
     var headID = document.getElementsByTagName("head")[0];
@@ -3471,23 +3368,6 @@ function setpic6data() {
 
 
 function sendyt1() {
-	/*
-    if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
-        if ($('#message-box').css('display') == 'block') {
-            KeyEvent.simulate(13, 13);
-        }
-        KeyEvent.simulate(13, 13);
-        $("#message").val("[yt]" + yt1url + "[/yt]");
-        setTimeout(function() {
-            KeyEvent.simulate(13, 13);
-            if ($('#message-box').css('display') == 'block') {
-                KeyEvent.simulate(13, 13);
-            }
-        }, 50);
-    } else {
-        toastr.info(Premadeletter39);
-    }
-	*/
 	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
 		application.sendChatMessage(101,"[yt]" + yt1url + "[/yt]")
 	} else {
@@ -5680,7 +5560,7 @@ function initializeLM(modVersion) {
         '</div>');
     $("#notes").append('<button id="closeBtn" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
     $('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
-    $('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
+    //$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
 
     $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
         '<button id="playtimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: block;" onclick="startTimer();" data-toggle="tooltip" data-original-title="Start Timer"" ><i id="playtime" class="fa fa-play-circle" style="padding-left: 0px;"></i></button>' +
@@ -7107,26 +6987,7 @@ function getInfo3() {
 }
 
 
-//Animated Skins
 
-
-
-
-
-/*				
-function specialeffecttargeting(){
-					document.getElementById("set-targeting").addEventListener('click',function ()
-					{
-					if ($("#target-nick").text()!=null && $("#target-nick").text()!=""){
-					for (var i=0; i< 20 && i < legendmod.leaderboard.length ;i++){
-						if (legendmod.leaderboard[i].nick==$("#target-nick").text()){
-							window.legendmod.targetingLead(i);
-						}
-					}
-					}
-					}  ); 		
-}
-*/
 function BeforeSpecialDeals() {
     var SpecialDealsJS = document.createElement("script");
     SpecialDealsJS.type = "text/javascript";
