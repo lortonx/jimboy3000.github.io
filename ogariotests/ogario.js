@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.519
+// v1.520
 
 
 //window.testobjects = {};
@@ -2043,6 +2043,7 @@ var escapeChar = {
     '/': '&#x2F;'
 }
 var defaultSettings = {
+	checkonetimeLc: false,
 	chatPos: 'bottomleft',
     preset: 'legendv2',
     darkTheme: true,
@@ -5726,7 +5727,6 @@ function thelegendmodproject() {
             }
         },
         connect() {
-            pauseVideos();
             this.closeConnection();
             this.flushData();
             this.setParty();
@@ -8072,8 +8072,9 @@ function thelegendmodproject() {
                     (($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')))) {
                     application.SLGconnect(t);
                 }
-				if (typeof Universalchatfix === 'function') { 
+				if (typeof Universalchatfix === 'function') { 				
 					Universalchatfix() 
+					pauseVideos()
 				}
             }, 100);
             window.legendmod.vnr = 0; //Sonia3
@@ -11441,7 +11442,7 @@ function thelegendmodproject() {
 	
 	window.canvasElem = document.querySelector("canvas"); 
 	window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
-	
+	PreLcCelebration();
     //    })(ogario);
 }
 
@@ -11716,6 +11717,32 @@ function animateSkin(a, b, verifiednames, d, e, i) {
 }
 function animateSkinsStop() {
     clearInterval(defaultmapsettings.animateSkinsStart);
+}
+
+function PreLcCelebration() {
+    if (defaultSettings.checkonetimeLc == false) {
+        var checkdate;
+        Date.prototype.yyyymmdd = function() {
+            //var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+			//return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+            return (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
+
+        var date = new Date();
+        checkdate = date.yyyymmdd();
+        if (checkdate == "11/12") {
+            LcCelebration();
+        }
+    }
+}
+function LcCelebration() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/extras/LcHistory/LcHistoryBanner.js";
+    $("body").append(s);
+	defaultSettings.checkonetimeLc=true;
 }
 /*
 var snezSocketdata;
