@@ -202,8 +202,6 @@ var LegendJSON;
 var LegendSettings = "true";
 var LegendSettingsfirstclicked = "false";
 var switcheryLegendSwitch, switcheryLegendSwitch2;
-var spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
-var AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
 
 var showonceusers3 = 0;
 var client2;
@@ -318,46 +316,6 @@ function startLM(modVersion) {
     }
     //$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
     universalchat();
-
-    $('.options-box.respGroup').append('<label><input type="checkbox" id="spawnspecialeffects" class="js-switch" data-switchery="true" style="display: none;"> Spawn special effects</input></label>');
-    var elemLegendSwitch4 = document.querySelector('#spawnspecialeffects');
-    var ogarioswitchbackcolor = $("input#export-ogarioThemeSettings.js-switch").next().css("background-color");
-    var spawnspecialeffectsbtn = new Switchery(elemLegendSwitch4, {
-        size: 'small',
-        color: ogarioswitchbackcolor,
-        jackColor: 'rgb(250, 250, 250)'
-    });
-
-    $("#spawnspecialeffects").click(function() {
-        if (spawnspecialeffectsbtn.isChecked()) {
-            localStorage.setItem("spawnspecialeffectsSaved", "true");
-            window.spawnspecialeffects = true;
-        } else {
-            localStorage.setItem("spawnspecialeffectsSaved", "false");
-            window.spawnspecialeffects = false;
-        }
-    });
-
-    $('.options-box.transparencyGroup').append('<label><input type="checkbox" id="AnimatedRainbowColor" class="js-switch" data-switchery="true" style="display: none;">Animated rainbow colors</input></label>');
-    var elemLegendSwitch2 = document.querySelector('#AnimatedRainbowColor');
-    var ogarioswitchbackcolor = $("input#export-ogarioThemeSettings.js-switch").next().css("background-color");
-    var AnimatedRainbowColorbtn = new Switchery(elemLegendSwitch2, {
-        size: 'small',
-        color: ogarioswitchbackcolor,
-        jackColor: 'rgb(250, 250, 250)'
-    });
-
-    $("#AnimatedRainbowColor").click(function() {
-        if (AnimatedRainbowColorbtn.isChecked()) {
-            localStorage.setItem("AnimatedRainbowColorSaved", "true");
-            tcm2.f.override();
-            // Animated Skins
-
-        } else {
-            localStorage.setItem("AnimatedRainbowColorSaved", "false");
-            toastr.info("Changes will fully be reflected after restart");
-        }
-    });
 
     $("#gamemode").prop('disabled', false);
     $("#region").prop('disabled', false);
@@ -1640,12 +1598,6 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.prevPrivateServer = localStorage.getItem("prevPrivateServer");
     LegendJSON.legendSettings.initialMusicUrl = localStorage.getItem("musicUrl");
 
-    LegendJSON.legendSettings.spawnspecialeffectsSaved = localStorage.getItem("spawnspecialeffectsSaved");
-
-    LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
-    if (localStorage.getItem("AnimatedRainbowColorSaved") != null) {
-        LegendJSON.legendSettings.AnimatedRainbowColorSaved = localStorage.getItem("AnimatedRainbowColorSaved");
-    }
     if (LegendJSON.legendSettings.initialMusicUrl == "null" || LegendJSON.legendSettings.initialMusicUrl == null) {
         LegendJSON.legendSettings.initialMusicUrl = defaultMusicUrl;
     };
@@ -1899,12 +1851,6 @@ function saveLegendJSONAPI() {
         localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
         localStorage.setItem("languagemod", LegendJSON.legendSettings.languagemod);
 
-        localStorage.setItem("spawnspecialeffectsSaved", LegendJSON.legendSettings.spawnspecialeffectsSaved);
- 
-        localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
-        if (LegendJSON.legendSettings.AnimatedRainbowColorSaved != null) {
-            localStorage.setItem("AnimatedRainbowColorSaved", LegendJSON.legendSettings.AnimatedRainbowColorSaved);
-        }
         //    localStorage.setItem("userfirstname", LegendJSON.legendSettings.userfirstname);
         //    localStorage.setItem("userlastname", LegendJSON.legendSettings.userlastname);
         //    localStorage.setItem("usergender", LegendJSON.legendSettings.usergender);
@@ -4574,12 +4520,7 @@ function triggerLMbtns() {
     if (ComPosition == 2) {
         $("#bottomright").click();
     }
-    if (spawnspecialeffectsSaved == "true") {
-        $("#spawnspecialeffects").click();
-    }
-    if (AnimatedRainbowColorSaved == "true") {
-        $("#AnimatedRainbowColor").click();
-    }
+
     document.getElementById("minimapPicture").value = localStorage.getItem("minimapbckimg");
     if ($('#minimapPicture').val() != "") {
         setminbgname();
