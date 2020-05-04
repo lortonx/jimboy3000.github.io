@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.091a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
@@ -5409,15 +5409,6 @@ function initializeLM(modVersion) {
 		setTimeout(function() {
 		Socket3enabler(window.legendmod.ws)
 		}, 2000);	
-
-
-    $(".btn.btn-warning.btn-server-info.ogicon-cogs").hide();
-
-    $("#server-token").css("margin-top", "-10px");
-    $("#server-join").css("margin-top", "-10px");
-    $("#agario-main-buttons").css("margin-top", "-10px");
-    $("#gamemode").css("margin-left", "2px");
-    $("#server-reconnect").remove();
     $(".btn.btn-warning.btn-server-info.ogicon-cogs").after('<button id="server-reconnect" class="btn btn-success" style="display: inline-block; float: left; margin-top: 6px; width: 11%; text-transform: capitalize;"><i class="fa fa-refresh"></i></button>');
 
     //preventcanvasimagecrash();
@@ -5436,7 +5427,6 @@ function initializeLM(modVersion) {
     //backgroud div
     $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
 
-    $("#overlays").css("z-index", 100);
 
     $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p id="regionmodecheck" style="float: left;margin-left: 10px;">' +
         '<i class="fa fa-search retro" onclick="getInfo2(); return false;"></i>  ' +
@@ -5501,7 +5491,7 @@ function initializeLM(modVersion) {
         '<input id="note7" class="form-control main-color note" style="background: transparent; color: lightgrey; border: none; border-bottom: 1px solid; text-align: center; border-color: darkgrey;">' +
         '</div>');
     $("#notes").append('<button id="closeBtn" class="btn btn-danger" style="margin-top: 20px;" data-itr="page_login_and_play" data-original-title="" title="">Close</button>');
-    $('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
+    //$('.glyphicon.glyphicon-globe').removeClass('glyphicon glyphicon-globe').addClass('fa fa-globe fa-lg');
     //$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
 
     $("#minimap-hud").prepend('<div id="timertools-hud" class="hud" align="center" style="width: 50%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -90px; display: block;">' +
