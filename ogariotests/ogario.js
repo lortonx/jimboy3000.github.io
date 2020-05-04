@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.537
+// v1.538
 
 
 //window.testobjects = {};
@@ -5437,7 +5437,7 @@ function thelegendmodproject() {
                     this.miniMapCtx.fill();
                     //if (LM.arrowFB[0].nick.length > 0) {
                     this.miniMapCtx.font = `${defaultSettings.miniMapNickFontWeight} ${defaultSettings.miniMapNickSize}px ${defaultSettings.miniMapNickFontFamily}`;
-                    this.miniMapCtx.textAlign = `center`;
+                    this.miniMapCtx.textAlign = 'center';
                     this.miniMapCtx.textBaseline = "bottom";
                     if (defaultSettings.miniMapNickStrokeSize > 0) {
                         this.miniMapCtx.lineWidth = defaultSettings.miniMapNickStrokeSize;
@@ -11618,7 +11618,7 @@ function minimapCell(envId, cb, i, s) {
                 options.font = defaultSettings.miniMapNickFontWeight + " " + defaultSettings.miniMapNickSize + "px " + defaultSettings.miniMapNickFontFamily;
                 options.textAlign = "center";
                 var namead = "";
-                if (this.lbgpi < 0) namead += " [ℵ]";
+                //if (this.lbgpi < 0) namead += " [N]";
                 if (defaultSettings.miniMapNickStrokeSize > 0) {
                     options.lineWidth = defaultSettings.miniMapNickStrokeSize;
                     options.strokeStyle = defaultSettings.miniMapNickStrokeColor;
