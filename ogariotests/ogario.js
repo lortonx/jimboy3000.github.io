@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.536
+// v1.537
 
 
 //window.testobjects = {};
@@ -5361,7 +5361,8 @@ function thelegendmodproject() {
                     this.miniMapCtx.font = defaultSettings.miniMapFontWeight + ' ' + (e - 6) + 'px ' + defaultSettings.miniMapFontFamily,
                     this.miniMapCtx.fillStyle = defaultSettings.miniMapMyCellColor,
                     this.miniMapCtx.globalAlpha = 1,
-                    this.miniMapCtx.fillText(this.currentSector, defaultSettings.miniMapWidth - 32, e),
+					this.miniMapCtx.fillStyle = defaultSettings.miniMapSectorColor,
+                    this.miniMapCtx.fillText(this.currentSector, defaultSettings.miniMapWidth - 32, e),			
                     //this.miniMapCtx.font = defaultSettings.miniMapFontWeight + " " + (e - 4) + "px " + defaultSettings.miniMapFontFamily,
                     //this.miniMapCtx.fillStyle = defaultSettings.miniMapSectorColor,
                     //this.miniMapCtx.fillText(this.currentSector, 10, e),
@@ -5409,7 +5410,7 @@ function thelegendmodproject() {
                     //draw the yellow on minimap
                     this.miniMapCtx.beginPath();
                     this.miniMapCtx.lineWidth = "1";
-                    this.miniMapCtx.strokeStyle = "yellow";
+                    this.miniMapCtx.strokeStyle = defaultSettings.miniMapSectorColor;
                     var miniax = legendmod.canvasWidth / (legendmod.mapMaxX - legendmod.mapMinX) / legendmod.viewScale; //CORRECT
                     var miniay = legendmod.canvasHeight / (legendmod.mapMaxY - legendmod.mapMinY) / legendmod.viewScale; //CORRECT
                     var minidaxx = application.miniMapSectors.width * miniax;
