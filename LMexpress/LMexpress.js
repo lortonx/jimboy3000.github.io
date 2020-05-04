@@ -2,18 +2,7 @@
  * Legend express v0.089 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
-//fix ffa
-/*
-setTimeout(function() {
-$('#gamemode>option:nth-child(1)').val(':ffa');	
-$('#gamemode').trigger('change');
-}, 1500);
-*/
 
-///$("#toast-container").hide();
-//setTimeout(function() {
-//    $("#toast-container").show()
-//}, 8000);
 appendLMhiFbPs();
 PreLcCelebration();
 loadericon();
@@ -281,14 +270,6 @@ var tcm2 = {
     }
 };
 
-var $head = $("head");
-var $headlinklast = $head.find("link[rel='stylesheet']:last");
-var linkElement = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css' type='text/css' media='screen'>";
-if ($headlinklast.length) {
-    $headlinklast.after(linkElement);
-} else {
-    $head.append(linkElement);
-}
 
 if (realmode == "") {
     modebetter2 = ":ffa";
@@ -297,15 +278,7 @@ if (realmode == "") {
 }
 privateserverpassword();
 urlIpWhenOpened();
-var minbtext2 = minbtext;
-var minbtext3 = minbtext;
-if (minbtext == null || minbtext == "") {
-    minbtext = "Legend express"; //Legend express/Locked
-    minbtext2 = "Legend express";
-    minbtext3 = "Legend express/Private";
-}
 
-var datasent2;
 emphasischat();
 //specialeffecttargeting();
 function startLM(modVersion) {
@@ -708,20 +681,6 @@ function onhashchange() {
     return false
 }
 
-//not used
-function LMminimapText() {
-    var c = document.getElementById("minimap-sectors");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height / 9);
-    ctx.font = "16px Georgia";
-    if (searchSip != null) {
-        ctx.fillText(minbtext, c.width / 2, 22)
-    } else if (privateSrv != null) {
-        ctx.fillText(minbtext3, c.width / 2, 22);
-    } else {
-        ctx.fillText(minbtext2, c.width / 2, 22);
-    }
-}
 
 function delay(time, func) {
     setTimeout(function() {
@@ -6692,14 +6651,7 @@ function initializeLM(modVersion) {
 
     });
 
-    $("#oldSkinsBtn").click(function() {
 
-        if (modVersion == "1.6" || modVersion == "1.7") {
-            location.replace("https://agar.io/LMoldskins");
-        } else {
-            toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.7</b></font>, in order to use this function</font>');
-        }
-    });
     /*		$("#LMImplements").click(function() {
     			if (modVersion == "1.3" ) {
     			var myWindow = window.open("http://agar.io/LMImplements", "_blank", "width=400,height=800");
@@ -6810,12 +6762,6 @@ function initializeLM(modVersion) {
         triggerLMbtns();
         languagemodfun();
         $('[data-toggle="tooltip"]').tooltip();
-    /*		toastr.info('<div id="tutorial" style="background-image: url(https://legendmod.ml/banners/v25toastricon.jpg); color:#018cf6; font-size:16px; text-align:center">'+ 
-    		'The Legend Mod <font color="yellow"><b>Project </b></font>'+
-    		'<br><font style="color:#018cf6; font-size:16px; text-align:center"><b>Agario Updated Libraries</font></b><font color="black">'+
-    		'<br><b>If you play FFA, use <a target="_blank" href="http://legendmod.joomla.com/en/"><font color="blue"><b><u>LM v3.1</u></b></font></a> until LM express be compatible again </b><i>(disable LM express on tampermonkey / agarioscripts before)</i>'+
-    		'</div>', '', '{ timeOut: 15000, extendedTimeOut: 15000 }').css("width", "500px");	*/
-    //    }, 1500);
 }
 
 function consoleNotice(){
