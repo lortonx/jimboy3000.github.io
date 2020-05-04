@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.090 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
@@ -7,7 +7,6 @@ appendLMhiFbPs();
 
 loadericon();
 PremiumUsers();
-document.title = "LM express";
 //Authenticate Mod Script
 var accesstomod;
 getaccesstoken();
@@ -229,13 +228,6 @@ function getSNEZ(server, username, password) {
     xhttp.send();
 }
 
-var stylesLegendModConsole1 = [
-    'background: linear-gradient(#D33106, #571402)', 'border: 1px solid #3E0E02', 'color: #99c2ff', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset', 'line-height: 40px', 'text-align: center', 'font-weight: bold'
-].join(';');
-var stylesLegendModConsole2 = [
-    'background: linear-gradient(grey, black)', 'border: 1px solid #3E0E02', 'color: #FFFFFF', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
-    , 'text-align: center'
-].join(';');
 
 //Animated color texts
 var tcm2 = {
@@ -289,9 +281,6 @@ function startLM(modVersion) {
     }
     //$("#ogario-party").wrap('<div style="display: none;" id="hidendivtoken"></div>');
     universalchat();
-
-    $("#gamemode").prop('disabled', false);
-    $("#region").prop('disabled', false);
     return initializeLM(modVersion);
 }
 
@@ -423,7 +412,16 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-
+function embPassword(){
+            if (clanpass != null && clanpass != "") {
+                $("#clantag").val(clanpass);
+                $('#clantag').css('background-color', '#ff6347');
+            }
+            $("#overlays").show();
+            $(".center-container.ogario-menu").show();
+            $(".side-container.right-container").show();
+            $(".side-container.left-container").show();	
+}
 function appendLMhiFbPs() {
     $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
         MSGCOMMANDS2 = $(".toast.toast-warning").html();
@@ -431,38 +429,17 @@ function appendLMhiFbPs() {
             toastr.error("You are using a wrong version, visit: www.legendmod.ml");
         } else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
             $(".toast.toast-warning").remove();
-            $("#gamemode").prop('disabled', false);
-            $("#region").prop('disabled', false);
-            $(".toast.toast-warning").remove();
-            //		setTimeout(function () {
-            if (clanpass != null && clanpass != "") {
-                $("#clantag").val(clanpass);
-                $('#clantag').css('background-color', '#ff6347');
-            }
-            $("#overlays").show();
-            $(".center-container.ogario-menu").show();
-            $(".side-container.right-container").show();
-            $(".side-container.left-container").show();
+			embPassword();         
         }
     });
     $("body").on('DOMSubtreeModified', "#chat-box", function() {
         var MSGCOMMANDS3 = $(".command-text").text();
         if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
             $(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');
-        } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {
-            $("#gamemode").prop('disabled', false);
-            $("#region").prop('disabled', false);
+        } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {        
             $(".command-text").text(Premadeletter0);
-            if (clanpass != null && clanpass != "") {
-                $("#clantag").val(clanpass);
-                $('#clantag').css('background-color', '#ff6347');
-            }
-            $("#overlays").show();
-            $(".center-container.ogario-menu").show();
-            $(".side-container.right-container").show();
-            $(".side-container.left-container").show();
+			embPassword();
         }
-
     });
 
     $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
@@ -3191,23 +3168,6 @@ function appendLog4(message, message2) {
     bumpLog();
 }
 
-function appendLogGraphql() {
-    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
-        '<span class="main-color">Graphql</span> &nbsp;' +
-        '<a href="https://github.com/vbalien/agarlist/tree/master/server" target="_blank" class="logEntry" style="color: lightgrey; font-size: 14px;">by 엘련</a></p>');
-
-    $("#log p").first().show(100);
-    bumpLog();
-}
-
-function appendLogGraphMain() {
-    $("#log").prepend('<p style="display: none;white-space: nowrap;margin-bottom: 10px;">' +
-        '<span class="main-color">Main Graph</span> &nbsp;' +
-        '<a href="javascript:void(0);" target="_blank" class="logEntry" style="color: lightgrey; font-size: 14px;">by Snez</a></p>');
-
-    $("#log p").first().show(100);
-    bumpLog();
-}
 
 function connectto(message2) {
     $('#server-token').val(message2);
@@ -3293,10 +3253,6 @@ function rotateminimapsectors() {
     ctx.rotate(90 * Math.PI / 180);
     var a = $("#minimap").height() - $("#minimap").width();
     ctx.translate(a, -$("#minimap").height());
-    //		rotateminimap=rotateminimap+1;
-    //		if (rotateminimap==4){rotateminimap=0};
-    //	var s = document.createElement("script");s.type = "text/javascript";s.src = "https://legendmod.ml/legendrotateminimap.js";$("body").append(s);
-    //		return rotateminimap;
 }
 
 function sendicon1() {
@@ -3776,13 +3732,8 @@ function exitFullscreen() {
 }
 
 function Bino() {
-    //    if (MC.isInGame()) {
-    //        if (ogario.spectate) {
-    KeyEvent.simulate(81, 81)
-    //        } else {
-    //            toastr.info(Premadeletter38);
-    //        }
-    //    }
+	legendmod.sendFreeSpectate()
+    //KeyEvent.simulate(81, 81)
 }
 
 
@@ -5527,13 +5478,13 @@ function initializeLM(modVersion) {
         '</div></div>'
     );
     $("#regionmodecheck").hide();
-    $("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
-        '</div>');
+    //$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
+    //    '</div>');
     $("#clantag").attr('placeholder', 'Password').tooltip({
         title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
         placement: "left"
     });
-    $("#skin").attr('maxlength', 150).attr('placeholder', 'Manual direct skin URL').tooltip({
+    $("#skin").tooltip({
         title: "Insert your manual skin weblink",
         placement: "left"
     });
@@ -5696,7 +5647,7 @@ function initializeLM(modVersion) {
     //		$(".menu-tabs").children().attr("style", "width: 19.99%;");
     //		$(".profile-tab").hide();
 
-    $("#time-hud").attr("style", "top: 530px !important;");
+    //$("#time-hud").attr("style", "top: 530px !important;");
 
     // fix leaderboard buttons
     $("#leaderboard-menu").css("pointer-events", "auto");
@@ -5753,15 +5704,7 @@ function initializeLM(modVersion) {
     $('.agario-panel.radio-panel').hide();
     $('.agario-panel.ogario-yt-panel').hide();
 
-    if ($('#menuBg').val() == "https://cdn.ogario.ovh/static/img/pattern.png") {
-        $('#menuBg').val("https://legendmod.ml/pattern.png");
-    }
-    if ($('#messageSound').val() == "https://cdn.ogario.ovh/static/sounds/notification_01.mp3") {
-        $('#messageSound').val("https://legendmod.ml/notification_01.mp3");
-    }
-    if ($('#commandSound').val() == "https://cdn.ogario.ovh/static/sounds/notification_02.mp3") {
-        $('#commandSound').val("https://legendmod.ml/notification_02.mp3");
-    }
+
     //    $("#music").replaceWith('<div id="music" class="menu-panel" style="display: none;"><div class="agario-panel"><h5 class="main-color">Youtube player</h5>' +
     //                            '<iframe id="musicFrame" width="320" height="180" src="' + getEmbedUrl(initialMusicUrl) + '" frameborder="0" allowfullscreen=""></iframe>' +
     //                            '<input id="musicUrl" onclick="$(this).select();" type="text" placeholder="Youtube Url" value="' + initialMusicUrl + '" class="form-control" data-toggle="tooltip" data-placement="right" data-original-title="Paste your video/playlist here">'+
@@ -6586,12 +6529,9 @@ function initializeLM(modVersion) {
                 }
             });			 */
     $("#shortcuts-hud").hide();
-    //$("#rotate-hud").hide();
     $("#exp-bar").hide();
     $("#time-hud").hide();
-    //	$("#LEGENDAds").hide();
-    //	$("#legendbanners").hide();
-    //	$(".input-group.skin.colorpicker-element").hide();
+
     $("#timertools-hud").hide();
 
     $("#TimesUsed").text(timesopened);
@@ -6637,23 +6577,14 @@ function initializeLM(modVersion) {
     $('#server-connect').click(function() {
         adres(null, null, null);
     });
-		consoleNotice();	
+			
         loginsfbGplstart();
         triggerLMbtns();
         languagemodfun();
         $('[data-toggle="tooltip"]').tooltip();
 }
 
-function consoleNotice(){
-    console.group('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
-    console.group("Part of");
-    console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
-    console.groupEnd();
-    console.group("Mod developed by");
-    console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
-    console.groupEnd();
-    console.groupEnd();
-}
+
 function joinSIPonstart() {
     setTimeout(function() {
         if (searchSip != null) {
