@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.512
+// v1.513
 
 
 //window.testobjects = {};
@@ -979,6 +979,7 @@ var displayText = {
         restoreThemeSettings: 'Przywróc ustawienia domyślne wyglądu',
         basicTheming: 'Podstawowy',
         themePreset: 'Motyw',
+		chatPosition: 'Chat Position',
         themeType: 'Typ motywu',
         darkTheme: 'Ciemny motyw',
         lightTheme: 'Jasny motyw',
@@ -1396,6 +1397,7 @@ var displayText = {
         restoreThemeSettings: 'Restore theme default settings',
         basicTheming: 'Basic theming',
         themePreset: 'Theme preset',
+		chatPosition: 'Chat Position',
         themeType: 'Theme type',
         darkTheme: 'Dark theme',
         lightTheme: 'Light theme',
@@ -1573,6 +1575,24 @@ var displayText = {
         teamView: 'Team view (BETA)'
     }
 }
+var chatPositions = {
+	bottomleft: {
+		name: 'Default',
+		positionClass: "toast-bottom-right"	
+	},
+	bottomright: {
+		name: 'Bottom Right',
+		positionClass: "toast-bottom-right"	
+	},	
+	topleft: {
+		name: 'Top Left',
+		positionClass: "toast-top-left"	
+	},		
+	topright: {
+		name: 'Top Right',
+		positionClass: "toast-top-right"	
+	}		
+}
 var themePresets = {
     legendv2: {
         name: 'Legend v2',
@@ -1649,6 +1669,7 @@ var themePresets = {
         lbTeammateColor: '#018cf6',
         hudFont: 'ubuntu-bold',
         hudScale: 1,
+		
         messageColor: 'rgba(0,0,0,0.4)',
         messageTextColor: '#ffffff',
         messageTimeColor: '#018cf6',
@@ -2695,7 +2716,8 @@ function thelegendmodproject() {
             this.addColorBox('#theme-chat', 'commandsTimeColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'commandsNickColor', 'setChatColors');
             this.addRgbaColorBox('#theme-chat', 'chatBoxColor', 'setChatColors');
-            this.addSliderBox('#theme-chat', 'chatScale', 1, 2, 0.01, 'setChatScale');
+			this.addPresetBox('#theme-chat', 'chatPosition', chatPositions, 'preset', 'changeChatThemePosition');
+            this.addSliderBox('#theme-chat', 'chatScale', 1, 2, 0.01, 'setChatScale');			
             this.addColorBox('#theme-minimap', 'miniMapSectorsColor', 'setMiniMapSectorsColor');
             this.addColorBox('#theme-minimap', 'miniMapSectorColor');
             this.addColorBox('#theme-minimap', 'miniMapNickColor');
@@ -2779,6 +2801,10 @@ function thelegendmodproject() {
             this.changePreset(name, themePresets);
             this.setTheme();
         },
+		changeChatThemePosition(name) {
+            this.changePreset(name, chatPositions);
+            this.setChatPosition();
+        },		
         setFonts() {
             this.setFont('namesFont', defaultSettings.namesFont);
             this.setFont('massFont', defaultSettings.namesFont);
@@ -2943,6 +2969,9 @@ function thelegendmodproject() {
             this.setChat();
             this.setMiniMap();
         },
+		setChatPosition(){
+			//this.font = this.fontWeight + ' ' + this.fontSize + 'px ' + this.fontFamily;
+		},
         init() {
             this.loadThemeSettings();
         }
@@ -3406,7 +3435,7 @@ function thelegendmodproject() {
 			if (defaultmapsettings.animatedRainbowColor && tcm2 && tcm2.f && typeof tcm2.f.override === 'function') {
 				tcm2.f.override();
 			} else {
-				toastr.info("Changes will fully be reflected after restart");
+				//toastr.info("Changes will fully be reflected after restart");
             }			
 		},
         //setNormalLb() {
