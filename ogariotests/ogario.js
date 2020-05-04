@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.513
+// v1.514
 
 
 //window.testobjects = {};
@@ -1578,7 +1578,7 @@ var displayText = {
 var chatPositions = {
 	bottomleft: {
 		name: 'Default',
-		positionClass: "toast-bottom-right"	
+		positionClass: "toast-bottom-left"	
 	},
 	bottomright: {
 		name: 'Bottom Right',
@@ -2241,6 +2241,7 @@ var SkinExplain = [{
     }
 ];
 var defaultmapsettings = {
+	positionClass: "toast-bottom-left",	
     isAlphaChanged: false,
     jellyPhisycs: false,
     virusSound: false,
@@ -2716,7 +2717,7 @@ function thelegendmodproject() {
             this.addColorBox('#theme-chat', 'commandsTimeColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'commandsNickColor', 'setChatColors');
             this.addRgbaColorBox('#theme-chat', 'chatBoxColor', 'setChatColors');
-			this.addPresetBox('#theme-chat', 'chatPosition', chatPositions, 'preset', 'changeChatThemePosition');
+			this.addPresetBox('#theme-chat', 'chatPosition', chatPositions, 'chatPos', 'changeChatThemePosition');
             this.addSliderBox('#theme-chat', 'chatScale', 1, 2, 0.01, 'setChatScale');			
             this.addColorBox('#theme-minimap', 'miniMapSectorsColor', 'setMiniMapSectorsColor');
             this.addColorBox('#theme-minimap', 'miniMapSectorColor');
@@ -2969,8 +2970,8 @@ function thelegendmodproject() {
             this.setChat();
             this.setMiniMap();
         },
-		setChatPosition(){
-			//this.font = this.fontWeight + ' ' + this.fontSize + 'px ' + this.fontFamily;
+		setChatPosition(){			
+			//this.chatPos = defaultSettings.chatPos
 		},
         init() {
             this.loadThemeSettings();
