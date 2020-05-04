@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.533
+// v1.536
 
 
 //window.testobjects = {};
@@ -3049,7 +3049,7 @@ function thelegendmodproject() {
         timeHUD: null,
         questHUD: null,
         retryResp: 0,
-        token: 'TGVnZW5kIGV4cHJlc3M=',
+        minimapText: '',
         canvasScale: 1,
         selectBiggestCell: true,
         noColors: false,
@@ -5511,7 +5511,7 @@ function thelegendmodproject() {
             ctx.font = defaultSettings.miniMapFontWeight + ' ' + (defaultSettings.miniMapTop - 6) + 'px ' + defaultSettings.miniMapFontFamily;
             ctx.textAlign = 'right';
             ctx.textBaseline = 'top';
-            ctx.fillText(atob(this.token), size, 7);
+            //ctx.fillText(minimapText, size, 7);
         },
         /*            drawTeammatesInd(ctx, e, i, s) {
                         this.indicator && ctx.drawImage(this.indicator, e - 45, i - s - 90);
