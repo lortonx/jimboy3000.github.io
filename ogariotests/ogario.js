@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.520
+// v1.521
 
 
 //window.testobjects = {};
@@ -2899,7 +2899,7 @@ function thelegendmodproject() {
             var e = Math.round(200 * defaultSettings.hudScale);
             var i = Math.floor(55 * defaultSettings.hudScale);
             var o = Math.floor(6 * defaultSettings.hudScale);
-            var a = Math.floor(280 * defaultSettings.hudScale);
+            var a = Math.floor(530 * defaultSettings.hudScale);
             var n = Math.floor(85 * defaultSettings.hudScale);
             var r = Math.floor(20 * defaultSettings.hudScale);
             $('#overlays-hud').css('font-size', t + 'px');
@@ -4220,7 +4220,7 @@ function thelegendmodproject() {
                 $("#nick").before('<input id="clantag" class="form-control" placeholder="Tag, e.g  \Lc" maxlength="10"><div class="input-group nick"></div>');
                 $("#nick").appendTo($(".nick"));
                 $(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>');
-                $(".nick").after('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Skin URL (imgur.com direct link)" maxlength="40"><input type="hidden" id="color" value="' + ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>');
+                $(".nick").after('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Manual direct skin URL" maxlength="150"><input type="hidden" id="color" value="' + ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>');
                 $("#locationKnown, #locationUnknown").insertAfter($(".skin"));
                 $("#region").before('<button class="btn btn-warning btn-server-info ogicon-cogs"></button>');
                 $(".btn-spectate, .btn-logout").appendTo("#agario-main-buttons");
@@ -11443,6 +11443,7 @@ function thelegendmodproject() {
 	window.canvasElem = document.querySelector("canvas"); 
 	window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
 	PreLcCelebration();
+	consoleNotice();
     //    })(ogario);
 }
 
@@ -11744,6 +11745,24 @@ function LcCelebration() {
     $("body").append(s);
 	defaultSettings.checkonetimeLc=true;
 }
+var stylesLegendModConsole1 = [
+    'background: linear-gradient(#D33106, #571402)', 'border: 1px solid #3E0E02', 'color: #99c2ff', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset', 'line-height: 40px', 'text-align: center', 'font-weight: bold'
+].join(';');
+var stylesLegendModConsole2 = [
+    'background: linear-gradient(grey, black)', 'border: 1px solid #3E0E02', 'color: #FFFFFF', 'display: block', 'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)', 'box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 5px 3px -5px rgba(0, 0, 0, 0.5), 0 -13px 5px -10px rgba(255, 255, 255, 0.4) inset'
+    , 'text-align: center'
+].join(';');
+function consoleNotice(){
+    console.group('%cLegend express%c  %chttp://www.legendmod.ml', stylesLegendModConsole1, 'font-size: 48px; background: url(https://legendmod.ml/banners/icon48.png) no-repeat', stylesLegendModConsole1);
+    console.group("Part of");
+    console.log('%cThe Legend mod Project™', stylesLegendModConsole2);
+    console.groupEnd();
+    console.group("Mod developed by");
+    console.log('%cwww.legendclan.ml', stylesLegendModConsole2);
+    console.groupEnd();
+    console.groupEnd();
+}
+
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
