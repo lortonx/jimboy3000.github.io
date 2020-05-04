@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.538
+// v1.539
 
 
 //window.testobjects = {};
@@ -8069,11 +8069,7 @@ function thelegendmodproject() {
             var app = this;
             setTimeout(function() {
                 application.Socket3connect(t);
-                if (defaultmapsettings.rotateMap &&
-                    (!window.fullSpectator &&
-                        ($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸'))) &&
-                    !window.ingameSpectator &&
-                    (($("#nick").val().includes('℄') || $("#nick").val().includes('ঌۣ⚝•') || $("#nick").val().includes('ⒸØⒸᗩⒾ𝓝Ⓔ⫸')))) {
+                if (defaultmapsettings.rotateMap && !window.fullSpectator && !window.ingameSpectator){
                     application.SLGconnect(t);
                 }
 				if (typeof Universalchatfix === 'function') { 				
