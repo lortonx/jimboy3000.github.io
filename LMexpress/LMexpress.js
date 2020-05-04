@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.091c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
@@ -4062,6 +4062,7 @@ function setcanvasbgname() {
     $("#canvas").css('background-image', 'url("' + canvasbimg + '")').css({
         opacity: 1
     });
+	$("#canvas").css('background-size', 'cover'); 
 }
 
 function setleadbtext() {
