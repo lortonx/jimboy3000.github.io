@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.511
+// v1.512
 
 
 //window.testobjects = {};
@@ -671,7 +671,6 @@ window.predictedGhostCells = [];
 //set values outside ogario
 window.playerCellsId = [];
 //window.counterCell=0;
-window.spawnspecialeffects = false;
 
 //window.customskinsname;
 //window.customskinsurl;
@@ -796,6 +795,8 @@ var displayText = {
 		teamboardlimit: 'Team Players',	
         quickResp: 'Szybkie odrodzenie (klawisz)',
         autoResp: 'Auto odrodzenie',
+		spawnSpecialEffects: 'Spawn special effects',
+		animatedRainbowColor: 'Animated rainbow colors',
         autoHideCellsInfo: 'Autoukrywanie nazw i masy',
         autoHideNames: 'Autoukrywanie nazw',
         autoHideMass: 'Autoukrywanie masy',
@@ -1210,6 +1211,8 @@ var displayText = {
 		teamboardlimit: 'Team Players',	
         quickResp: 'Quick respawn (hotkey)',
         autoResp: 'Auto respawn',
+		spawnSpecialEffects: 'Spawn special effects',
+		animatedRainbowColor: 'Animated rainbow colors',
         autoHideCellsInfo: 'Auto hide names and mass',
         autoHideNames: 'Auto hide names',
         autoHideMass: 'Auto hide mass',
@@ -2222,6 +2225,8 @@ var defaultmapsettings = {
     virusSound: false,
     quickResp: true,
     autoResp: false,
+	spawnSpecialEffects: false,
+	animatedRainbowColor: false,
     autoZoom: false,
     autoHideNames: true,
     autoHideMass: true,
@@ -3397,6 +3402,13 @@ function thelegendmodproject() {
 				$("#ao2t-hud").hide();
             }			
 		},
+		setAnimatedRainbowColor(){			
+			if (defaultmapsettings.animatedRainbowColor && tcm2 && tcm2.f && typeof tcm2.f.override === 'function') {
+				tcm2.f.override();
+			} else {
+				toastr.info("Changes will fully be reflected after restart");
+            }			
+		},
         //setNormalLb() {
         //defaultmapsettings.normalLb ? $('#leaderboard-hud h5').html(textLanguage.leaderboard) : $('#leaderboard-hud h5').html('legendmod');
         //},
@@ -3908,7 +3920,10 @@ function thelegendmodproject() {
                         break;			
                     case 'universalChat':
                         this.setUniversalChat();
-                        break;								
+                        break;			
+                    case 'animatedRainbowColor':
+                        this.setAnimatedRainbowColor();
+                        break;							
                         //case 'normalLb':
                         //this.setNormalLb();
                         //break;
@@ -3927,6 +3942,7 @@ function thelegendmodproject() {
                         break;
                     case 'blockPopups':
                         this.setBlockPopups();
+						 break;
                 }
                 this.saveSettings(defaultmapsettings, 'ogarioSettings');
             }
@@ -4246,12 +4262,12 @@ function thelegendmodproject() {
                 this.addOptions([], "animationGroup");
                 this.addOptions(["autoZoom"], "zoomGroup");
 				this.addOptions([], "boardGroup");			
-                this.addOptions(["quickResp", "autoResp"], "respGroup");
+                this.addOptions(["quickResp", "autoResp","spawnSpecialEffects"], "respGroup");
                 this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
                 this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound"], "massGroup");
 				this.addOptions(["noSkins","customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
                 this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
-                this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow"], "transparencyGroup");
+                this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", "animatedRainbowColor"], "transparencyGroup");
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
@@ -4919,7 +4935,7 @@ function thelegendmodproject() {
             setTimeout(() => {
                 app.onPlayerSpawn();
             }, 100);			
-            if (window.spawnspecialeffects == true) {
+            if (defaultmapsettings.spawnSpecialEffects) {
                 setTimeout(function() {
                     ///////// trigger special effects
                     //console.log('Special effects stage 1');
@@ -8063,6 +8079,7 @@ function thelegendmodproject() {
             application.displayLeaderboard('');
             application.displayPartyBots();
 			application.setUniversalChat();			
+			application.setAnimatedRainbowColor();			
             if (window.master && window.master.onConnect) {
                 window.master.onConnect();
             }
