@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.539
+// v1.540
 
 
 //window.testobjects = {};
@@ -6010,7 +6010,7 @@ function thelegendmodproject() {
         },
         SLGSimpleHandler(message) {
             var Socket3data = message;
-            //console.log("recieve", message);
+            console.log("recieve", message);
             if (Socket3data == null) {
                 return;
             } else {
