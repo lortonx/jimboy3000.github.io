@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.091b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
@@ -5409,7 +5409,7 @@ function initializeLM(modVersion) {
 		setTimeout(function() {
 		Socket3enabler(window.legendmod.ws)
 		}, 2000);	
-    $(".btn.btn-warning.btn-server-info.ogicon-cogs").after('<button id="server-reconnect" class="btn btn-success" style="display: inline-block; float: left; margin-top: 6px; width: 11%; text-transform: capitalize;"><i class="fa fa-refresh"></i></button>');
+    //$(".btn.btn-warning.btn-server-info.ogicon-cogs").after('<button id="server-reconnect" class="btn btn-success" style="display: inline-block; float: left; margin-top: 6px; width: 11%; text-transform: capitalize;"><i class="fa fa-refresh"></i></button>');
 
     //preventcanvasimagecrash();
     //    setTimeout(function() {
@@ -5499,8 +5499,7 @@ function initializeLM(modVersion) {
         '<button id="stoptimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="stopTimer();" data-toggle="tooltip" data-original-title="Pause Timer""><i id="pausetime" class="fa fa-pause-circle" style="padding-left: 0px;"></i></button>' +
         '<button id="cleartimer" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100% display: none;" onclick="clearTimer();" data-toggle="tooltip" data-original-title="Stop Timer"><i id="cleartime" class="fa fa-stop-circle" style="padding-left: 0px;"></i></button>' +
         '<a id="timer" style="padding: 0px; color: #d6d3d3; width: 12%; height: 100% position: absolute; right: 0px;">00:00</a>');
-    $("#stoptimer").hide();
-    $("#cleartimer").hide();
+
 
     //        $(".menu-tabs").children().attr("style", "width: 14.27%;");
     $(".menu-tabs>:nth-child(2)").after('<li class="legend-tab" style="width: 16.66%; padding:12px;" data-toggle="tooltip" data-original-title="API" data-placement="top"><a style="margin-top: 2px; height: 100%; padding:12px;" onclick="$(\'#main-menu\').children(\'div\').hide(); $(\'.menu-tabs\').children(\'li\').removeClass(\'active\'); $(\'.menu-tabs\').children(\'li\').children(\'a\').removeClass(\'active\'); $(\'#legend\').fadeIn(); $(this).addClass(\'active\'); $(this).parent().addClass(\'active\'); " href="javascript:void(0);" class="fa fa-puzzle-piece fa-lg"></a></li>');
