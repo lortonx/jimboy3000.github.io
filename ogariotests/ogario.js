@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.516
+// v1.517
 
 
 //window.testobjects = {};
@@ -2043,6 +2043,7 @@ var escapeChar = {
     '/': '&#x2F;'
 }
 var defaultSettings = {
+	chatPos: 'bottomleft',
     preset: 'legendv2',
     darkTheme: true,
     mainColor: '#01d9cc',
