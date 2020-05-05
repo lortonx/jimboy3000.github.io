@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.555
+// v1.556
 
 
 //window.testobjects = {};
@@ -7034,7 +7034,7 @@ function thelegendmodproject() {
                 }, 33),
                 setInterval(function() {
                     app.updateTeamPlayers();
-                    application.sendSocket3Position();
+                    //application.sendSocket3Position(); // DO NOT SEND SECONDARY SOCKET POSITION
                 }, this.updateInterval);
         }
     };
