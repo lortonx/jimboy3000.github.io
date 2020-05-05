@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.554
+// v1.555
 
 
 //window.testobjects = {};
@@ -6556,10 +6556,10 @@ function thelegendmodproject() {
         updateTeamPlayers() {
             this.sendPlayerPosition();
             //this.sendSuperLegendSDATA();
-            this.sendSimpleLegendSDATA();
+            this.sendSimpleLegendSDATA(); //SEND ROTATION INFO
 
             //this.sendSLGQinfo(),
-            application.sendJimboy3100info();
+            //application.sendJimboy3100info(); // DO NOT SEND TEAM VIEW INFO
             this.chatUsers = {};
             this.top5 = []; //Sonia3
             this.updatevnr(); //Sonia3
@@ -9514,8 +9514,6 @@ function thelegendmodproject() {
                     victimID.removeCell();
                 }
             }
-            //
-            //application.sendJimboy3100info();
             fakePlayers();
             //					
             for (length = 0;;) {
