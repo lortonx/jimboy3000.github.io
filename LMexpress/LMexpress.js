@@ -3258,16 +3258,14 @@ function rotateminimapsectors() {
     ctx.translate(a, -$("#minimap").height());
 }
 */
+
 function rotateminimapsectors() {
 	if (!window.manualRotation) window.manualRotation = window.legendmod.bgpi
-	window.manualRotation++
-	if (window.manualRotation>3) window.manualRotation=0
-	application.settechvnr(window.manualRotation)	
-}
-function rotateminimapsectors2() {
-	if (!window.manualRotation) window.manualRotation = window.legendmod.bgpi
 	window.manualRotation--
-	if (window.manualRotation<0) window.manualRotation=3
+	if (window.manualRotation<0){
+		window.manualRotation=3
+	}
+	console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map rotated.Tech POS:', window.manualRotation);
 	application.settechvnr(window.manualRotation)		
 }
 function sendicon1() {
@@ -5742,11 +5740,11 @@ function initializeLM(modVersion) {
     $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Results</h5>' +
         '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
         '</div></div>');
-
+/*
     $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
-        	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors2();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
+        	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
         '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 49%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
-
+*/
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
         '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
         '<button id="ChatBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title=' + Premadeletter57 + '><i id="ChatBtn1" class="fa fa-comment-o" style="padding-left: 0px;"></i></button>' +
@@ -6323,12 +6321,12 @@ function initializeLM(modVersion) {
         if (checked) {
             localStorage.setItem("SHOSHOBtn", true);
             $("#shortcuts-hud").show();
-            $("#rotate-hud").show();
+            //$("#rotate-hud").show();
             $(this).html('<i class="fa fa-puzzle-piece"></i>' + Premadeletter43);
         } else {
             localStorage.setItem("SHOSHOBtn", false);
             $("#shortcuts-hud").hide();
-            $("#rotate-hud").hide();
+            //$("#rotate-hud").hide();
             $("#images-hud").hide();
             $("#scripting-hud").hide();
             $("#msgcommands-hud").hide();
@@ -6431,7 +6429,7 @@ function initializeLM(modVersion) {
         if (checked) {
             //		$("#cur-tk-hud").hide();
             $("#shortcuts-hud").hide();
-            $("#rotate-hud").hide();
+            //$("#rotate-hud").hide();
             $("#exp-bar").hide();
             $("#time-hud").hide();
             //		$(".input-group.skin.colorpicker-element").hide();
@@ -6446,7 +6444,7 @@ function initializeLM(modVersion) {
         } else {
             //		$("#cur-tk-hud").show();
             $("#shortcuts-hud").show();
-            $("#rotate-hud").show();
+            //$("#rotate-hud").show();
             $("#exp-bar").show();
             //$("#time-hud").show();
             //		$(".input-group.skin.colorpicker-element").show();
