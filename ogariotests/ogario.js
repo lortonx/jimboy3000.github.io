@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.562
+// v1.563
 
 
 //window.testobjects = {};
@@ -7839,7 +7839,7 @@ function thelegendmodproject() {
 					//style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
 					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
 					}						
-					else if (this.targetNick.includes("King" || this.SpecialEffect == "King"){)){ 								
+					else if (this.targetNick.includes("King" || this.SpecialEffect == "King")){ 								
 					//style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 		
 					style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5.3/4 * y, y/2, y/2); 					
 					}			
