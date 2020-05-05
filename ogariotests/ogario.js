@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.558
+// v1.559
 
 
 //window.testobjects = {};
@@ -11896,9 +11896,12 @@ function Socket3handler(message) {
 }
 
 function Socket3updateTeamPlayerInfo(Socket3data) {
-	var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	
+	//var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	
+	var h = window.decodeURIComponent(escape(Socket3data.id));	
 	var message = Socket3data.x;
-	console.log(message)
+	console.log(h, message)
+	application.teamPlayers[application.checkPlayerNick(h)].SpecialEffects=message
+	
 }
 function Socket3updateTeamPlayer(Socket3data) {
     var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	  
