@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.560
+// v1.562
 
 
 //window.testobjects = {};
@@ -6373,11 +6373,11 @@ function thelegendmodproject() {
 
             //Here should be food part
         },
-        sendSocket3Info(message) {
+        sendSocket3Info(type, message) {
             if (Socket3) {
                 var temp = {
                     com: "info",
-					com2: "spfc",
+					com2: type,
                     id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
                     x: message,
                 };
@@ -7830,26 +7830,28 @@ function thelegendmodproject() {
 							style.drawImage(nodeFB, this.x - 1/2 * y, this.y - y, y, y); 
                         } catch (e) {}						
 					}
-					
-					if (this.targetNick.includes("Hat")){ 		
+					if (SpecialEffectPlayers[this.targetNick]){
+						this.SpecialEffect = SpecialEffectPlayers[this.targetNick];
+					}
+					if (this.targetNick.includes("Hat") || this.SpecialEffect == "Hat"){ 		
 					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 					
 					style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
 					//style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
 					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
 					}						
-					else if (this.targetNick.includes("King")){ 								
+					else if (this.targetNick.includes("King" || this.SpecialEffect == "King"){)){ 								
 					//style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 		
 					style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5.3/4 * y, y/2, y/2); 					
 					}			
-					if (this.targetNick.includes("Mask")){ 					
+					if (this.targetNick.includes("Mask" || this.SpecialEffect == "King")){ 					
 					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 1/4 * y, y, y);
 					}			
-                    if (this.targetNick.includes("The Dying Light")) {
+                    if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow")) {
                         try {						
                             style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);					
                         } catch (e) {}
                     } 					
-					else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Z𒅒B -")) {
+					else if (this.targetNick.includes("℄🌀Jimboy3100") || this.targetNick.includes("Z𒅒B -") || || this.SpecialEffect == "WhiteArrow") {
                         //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 
                         var today = new Date();
@@ -11900,11 +11902,12 @@ function Socket3handler(message) {
     }	
 }
 
+
 function Socket3updateTeamPlayerSpfc(Socket3data) {
 	var h = window.decodeURIComponent(escape(Socket3data.id));	
 	var message = Socket3data.x;
 	console.log(h, message)
-	SpecialEffectPlayers[h]=message;
+	if (h && message) SpecialEffectPlayers[h] = message;
 }
 
 function Socket3updateTeamPlayer(Socket3data) {
