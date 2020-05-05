@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.557
+// v1.558
 
 
 //window.testobjects = {};
@@ -5774,6 +5774,9 @@ function thelegendmodproject() {
             if (Socket3) {
                 Socket3.closeAndOpen();
             }
+			else{
+				Socket3enabler(window.legendmod.ws);
+			}
             //}, 1000);
             //}
         },
@@ -6369,7 +6372,7 @@ function thelegendmodproject() {
             //Here should be food part
         },
         sendSocket3Info(message) {
-            if (ogario.play && Socket3) {
+            if (Socket3) {
                 var temp = {
                     com: "info",
                     id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
@@ -11455,8 +11458,7 @@ function thelegendmodproject() {
 	window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
 	PreLcCelebration();
 	consoleNotice();
-	$("#overlays").css("z-index", "100")
-	Socket3enabler(window.legendmod.ws)
+	$("#overlays").css("z-index", "100")	
     //    })(ogario);
 }
 
