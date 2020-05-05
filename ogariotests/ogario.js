@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.556
+// v1.557
 
 
 //window.testobjects = {};
@@ -6368,11 +6368,21 @@ function thelegendmodproject() {
 
             //Here should be food part
         },
+        sendSocket3Info(message) {
+            if (ogario.play && Socket3) {
+                var temp = {
+                    com: "info",
+                    id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
+                    x: message,
+                };
+                Socket3.send(JSON.stringify({
+                    "toH": $("#server-token").val() + "3",
+                    "msg": temp
+                }));
+            }
+        },		
         sendSocket3Position() {
             if (ogario.play && window.noOgarioSocket && Socket3) {
-                //if (window.noOgarioSocket && ogarcopythelb.clanTag!="" && ogarcopythelb.nick.includes("℄")) { 					
-                //Socket3.send(JSON.stringify({ com: "pos", id: customLMID, x: application.getPlayerX(), y: application.getPlayerY(), mass: legendmod.playerMass}));					
-                //}
                 var temp = {
                     com: "pos",
                     //id: customLMID,
@@ -11877,9 +11887,17 @@ function Socket3handler(message) {
     }	
     else if (Socket3data.com == "pcells") { 
 		Socket3updateTeamPlayerCells(Socket3data);
-    }		
+    }	
+    else if (Socket3data.com == "info") {
+        Socket3updateTeamPlayerInfo(Socket3data);
+    }	
 }
 
+function Socket3updateTeamPlayerInfo(Socket3data) {
+	var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	
+	var message = Socket3data.x;
+	console.log(message)
+}
 function Socket3updateTeamPlayer(Socket3data) {
     var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	  
     if (!application.teamPlayers[h]) {
@@ -11917,6 +11935,7 @@ function Socket3updateTeamPlayerPosition(Socket3data) {
 	var tempTime = new Date().getTime();	
 	application.teamPlayers[h].lastUpdatedTime = tempTime;
 }
+
 function Socket3updateTeamPlayerDeath(Socket3data) {
 	//var h = application.checkPlayerNick(Socket3data.id);	
 	var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	        
