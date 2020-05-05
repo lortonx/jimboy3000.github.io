@@ -412,15 +412,18 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function preEmbPassword(){
+            if (!window.preEmbPassword) {
+                window.preEmbPassword=true
+                embPassword()
+            }
+}
+
 function embPassword(){
             if (clanpass != null && clanpass != "") {
                 $("#clantag").val(clanpass);
                 $('#clantag').css('background-color', '#ff6347');
             }
-            $("#overlays").show();
-            $(".center-container.ogario-menu").show();
-            $(".side-container.right-container").show();
-            $(".side-container.left-container").show();	
 }
 function appendLMhiFbPs() {
     $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
