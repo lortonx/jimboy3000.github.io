@@ -4742,10 +4742,10 @@ function preventcanvasimagecrash() {
 }
 
 function doGl() {
-	var GgImg=window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getImageUrl();
-	var window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getGivenName(); //First Name
-	var window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getFamilyName(); //Last Name
-	var GgUID=window.gapi.auth2.getAuthInstance().currentUser.get().getId();
+	var GgImg = window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getImageUrl();
+	var GgProfileName = window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getGivenName(); //First Name
+	var GgProfileSurName = window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getFamilyName(); //Last Name
+	var GgUID = window.gapi.auth2.getAuthInstance().currentUser.get().getId();
 	
     //$("#UserProfilePic>img").attr('src', window.gapi.auth2.getAuthInstance().currentUser.H3.value.St.lL);
 	$("#UserProfilePic>img").attr('src', GgImg);	
