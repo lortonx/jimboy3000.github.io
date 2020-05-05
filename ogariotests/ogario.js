@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.552
+// v1.553
 
 
 //window.testobjects = {};
@@ -8438,8 +8438,8 @@ function thelegendmodproject() {
                     //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                     //cursorY=9999;					
                 } else if (!window.autoPlay) {
-                    cursorX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
-                    cursorY = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
+                    cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
+                    cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
                     if (!this.play && this.targeting || this.pause) {
                         cursorX = this.targetX;
                         cursorY = this.targetY;
@@ -8449,13 +8449,13 @@ function thelegendmodproject() {
                 else if (!specialcommand) {
                     //if (typeof cell != "undefined") { //when used, autoplay not working as expected
                     if (Object.keys(target2).length == 0) {
-                        cursorX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(cell.x) : cell.x; //Sonia3
-                        cursorY = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(cell.y) : cell.y; //Sonia3
+                        cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(cell.x) : cell.x; //Sonia3
+                        cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cell.y) : cell.y; //Sonia3
                         // var cursorX = cell.x;
                         //var cursorY = cell.y;
                     } else {
-                        cursorX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(target2.x) : target2.x; //Sonia3
-                        cursorY = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(target2.y) : target2.y; //Sonia3
+                        cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
+                        cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
                         //var cursorX = target2.x;
                         //var cursorY = target2.y;
                     }
@@ -8756,10 +8756,10 @@ function thelegendmodproject() {
                 case 17:
                     window.testobjectsOpcode17 = data;
                     var x = data.getFloat32(s, true);
-                    this.viewX = window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(x) : x;
+                    this.viewX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(x) : x;
                     s += 4;
                     var y = data.getFloat32(s, true);
-                    this.viewY = window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(y) : y;
+                    this.viewY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(y) : y;
                     s += 4;
                     this.scale = data.getFloat32(s, true);
                     break;
@@ -8905,8 +8905,8 @@ function thelegendmodproject() {
                         s += 5;
                         var g = ~~Math.sqrt(100 * m);
                         this.ghostCells.push({
-                            'x': window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator ? this.translateX(d) : d, //Sonia3
-                            'y': window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator ? this.translateY(f) : f, //Sonia3
+                            'x': window.legendmod.vector[window.legendmod.vnr][0] && ? this.translateX(d) : d, //Sonia3
+                            'y': window.legendmod.vector[window.legendmod.vnr][1] && ? this.translateY(f) : f, //Sonia3
                             'size': g,
                             'mass': m,
                             'inView': this.isInView(d, f, g)
@@ -9523,10 +9523,10 @@ function thelegendmodproject() {
                 var id = view.readUInt32LE(offset);
                 if (offset += 4, 0 == id) break;
                 var x = view.readInt32LE(offset);
-                if (window.legendmod.vector[window.legendmod.vnr][0] && !window.fullSpectator && !window.ingameSpectator) x = this.translateX(x); //Sonia3
+                if (window.legendmod.vector[window.legendmod.vnr][0]) x = this.translateX(x); //Sonia3
                 offset += 4;
                 var y = view.readInt32LE(offset);
-                if (window.legendmod.vector[window.legendmod.vnr][1] && !window.fullSpectator && !window.ingameSpectator) y = this.translateY(y); //Sonia3
+                if (window.legendmod.vector[window.legendmod.vnr][1]) y = this.translateY(y); //Sonia3
                 offset += 4;
                 var size = view.readUInt16LE(offset);
                 offset += 2;
