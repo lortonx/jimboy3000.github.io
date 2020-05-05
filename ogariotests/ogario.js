@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.567
+// v1.568
 
 
 //window.testobjects = {};
@@ -2202,6 +2202,10 @@ cimgSpecialSkinEffectsMask = new Image;
 cimgSpecialSkinEffectsMask.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMask.png';
 cimgSpecialSkinEffectsHat3 = new Image;
 cimgSpecialSkinEffectsHat3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHat3.png';
+cimgSpecialSkinEffectsVip = new Image;
+cimgSpecialSkinEffectsVip.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsVip.png';
+cimgSpecialSkinEffectsYoutube = new Image;
+cimgSpecialSkinEffectsYoutube.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsYoutube.png';
 
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
@@ -7849,9 +7853,15 @@ function thelegendmodproject() {
 					//style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 		
 					style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5.3/4 * y, y/2, y/2); 					
 					}			
-					if (this.targetNick.includes("Mask" || this.SpecialEffect == "King")){ 					
+					if (this.targetNick.includes("Mask" || this.SpecialEffect == "Mask")){ 					
 					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 1/4 * y, y, y);
-					}			
+					}	
+					if (this.targetNick.includes("Vip" || this.SpecialEffect == "Vip")){ 	
+					style.drawImage(cimgSpecialSkinEffectsVip, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
+					}						
+					else if (this.targetNick.includes("Youtube" || this.SpecialEffect == "Youtube")){ 									
+					style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/4 * y, this.y - 5.3/4 * y, y/2, y/2); 					
+					}											
                     if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow")) {
                         try {						
                             style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);					
