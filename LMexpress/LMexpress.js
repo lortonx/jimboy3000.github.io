@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.091e by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "88"; // the version 1.1-> 1.11
 
@@ -413,8 +413,8 @@ function getParameterByName(name, url) {
 }
 
 function preEmbPassword(){
-            if (!window.preEmbPassword) {
-                window.preEmbPassword=true
+            if (!window.preEmbPass) {
+                window.preEmbPass=true
                 embPassword()
             }
 }
