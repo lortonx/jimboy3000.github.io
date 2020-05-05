@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.559
+// v1.560
 
 
 //window.testobjects = {};
@@ -445,6 +445,8 @@ window.bots = {
     ai: false,
     remoteIP: 'ws://localhost:1337'
 }
+
+SpecialEffectPlayers = [];
 
 var Socket3;
 window.socket3Opened = false;
@@ -6375,6 +6377,7 @@ function thelegendmodproject() {
             if (Socket3) {
                 var temp = {
                     com: "info",
+					com2: "spfc",
                     id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
                     x: message,
                 };
@@ -11891,18 +11894,19 @@ function Socket3handler(message) {
 		Socket3updateTeamPlayerCells(Socket3data);
     }	
     else if (Socket3data.com == "info") {
-        Socket3updateTeamPlayerInfo(Socket3data);
+		if (Socket3data.com2 = "spfc"){
+        Socket3updateTeamPlayerSpfc(Socket3data);
+		}
     }	
 }
 
-function Socket3updateTeamPlayerInfo(Socket3data) {
-	//var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	
+function Socket3updateTeamPlayerSpfc(Socket3data) {
 	var h = window.decodeURIComponent(escape(Socket3data.id));	
 	var message = Socket3data.x;
 	console.log(h, message)
-	application.teamPlayers[application.checkPlayerNick(h)].SpecialEffects=message
-	
+	SpecialEffectPlayers[h]=message;
 }
+
 function Socket3updateTeamPlayer(Socket3data) {
     var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));	  
     if (!application.teamPlayers[h]) {
