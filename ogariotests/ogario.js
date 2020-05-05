@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.565
+// v1.566
 
 
 //window.testobjects = {};
@@ -7833,9 +7833,9 @@ function thelegendmodproject() {
 					if (SpecialEffectPlayers[this.targetNick]){
 						
 						this.SpecialEffect = SpecialEffectPlayers[this.targetNick];
-						if (window.eud){
+						if (!window.eud){
 							consolel.log('draw',this.targetNick,this.SpecialEffect)
-							window.eud=false
+							window.eud=true
 						}
 						
 					}
