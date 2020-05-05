@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.564
+// v1.565
 
 
 //window.testobjects = {};
@@ -7831,7 +7831,13 @@ function thelegendmodproject() {
                         } catch (e) {}						
 					}
 					if (SpecialEffectPlayers[this.targetNick]){
+						
 						this.SpecialEffect = SpecialEffectPlayers[this.targetNick];
+						if (window.eud){
+							consolel.log('draw',this.targetNick,this.SpecialEffect)
+							window.eud=false
+						}
+						
 					}
 					if (this.targetNick.includes("Hat") || this.SpecialEffect == "Hat"){ 		
 					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 					
