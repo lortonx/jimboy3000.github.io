@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.095 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "89"; // the version 1.1-> 1.11
 
@@ -7093,7 +7093,7 @@ function BannedUIDS() {
 				toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'UID: ' + temp + " successfully removed from UID BAN list");
             });
         } else {
-            toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'Play a bit so the Ban id list is loaded');
+            toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'Please play the game before you can use that feature');
         }
     } else {
         toastr.info('<b>[' + Premadeletter123 + ']:</b> ' + 'You do not name the authority');
