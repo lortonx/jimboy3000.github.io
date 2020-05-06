@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.581
+// v1.583
 
 
 //window.testobjects = {};
@@ -2208,8 +2208,8 @@ cimgSpecialSkinEffectsYoutube = new Image;
 cimgSpecialSkinEffectsYoutube.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsYoutube.png';
 cimgSpecialSkinEffectsJellyFish = new Image;
 cimgSpecialSkinEffectsJellyFish.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJellyFish.png';
-cimgSpecialSkinEffectsLight = new Image;
-cimgSpecialSkinEffectsLight.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLight.png';
+cimgSpecialSkinEffectsModerator = new Image;
+cimgSpecialSkinEffectsModerator.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsModerator.png';
 cimgSpecialSkinEffectsUSA = new Image;
 cimgSpecialSkinEffectsUSA.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUSA.png';
 cimgSpecialSkinEffectsHeart = new Image;
@@ -7876,8 +7876,8 @@ function thelegendmodproject() {
 					else if (this.targetNick.includes("USA" || this.SpecialEffect == "USA" || this.SpecialEffect2 == "USA")){ 	
 					style.drawImage(cimgSpecialSkinEffectsUSA, this.x - 5/7 * y, this.y - 1/2 * y, y * 2, y * 2);  									
 					}	
-					else if (this.targetNick.includes("Light" || this.SpecialEffect == "Light" || this.SpecialEffect2 == "Light")){ 	
-					style.drawImage(cimgSpecialSkinEffectsLight, this.x - y, this.y - y, y * 2, y * 2);  									
+					else if (this.targetNick.includes("Moderator" || this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator")){ 	
+					style.drawImage(cimgSpecialSkinEffectsModerator, this.x - y, this.y - y, y * 2, y * 2);  									
 					}						
 					else if (this.targetNick.includes("Sword" || this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword")){ 	
 					style.drawImage(cimgSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3/5 * y, y * 1.6, y * 1.6);  									
