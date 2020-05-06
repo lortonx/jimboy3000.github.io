@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "89"; // the version 1.1-> 1.11
 
@@ -7101,26 +7101,24 @@ function populateBanListConfig() {
 }
 
 function LMadvertisement2020(){
-	$("#main-menu").hide();
-	$("#skins-panel").hide();
-	$("#quick-menu").hide();
-	$("#exp-bar").hide();
-	$("#menu-footer").before('<div id="legendhelper" style="background-image: url('+legbgpic+'); background-color: '+legbgcolor+'; border: 1px solid black; position:absolute;  height: 560px; width: 940px; margin-top: 0px;margin-left: -240px; ">'+
-	'<div id="Userscriptshud2" style="display:block; margin-left: 10px; margin-right: 10px;">'+ //margin-left: 10px"
-	'<br><div id="Userscriptshud3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="920" height="490" >'+
-    '<p>Your browser does not support iframes.</p>'+
-	'</iframe>'	+
-											'</div></div>'+
-											    '<button id= "Backtomenu" onclick="closecustomskinsIframe2020(); return false" style="margin-left: 10px;" class="btn btn-danger"  data-original-title="" title="">'+Premadeletter113+'</button>');
-	$('#helloContainer').css('top', 80*defaultSettings.hudScale + 'px');
-}
+            $('#helloContainer').after('<div class="modal fade in" id="LMPromo" aria-hidden="false" style="display: block;">' +
+                '<div class="modal-backdrop fade in"></div>' +
+                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 922px;">' +
+                '<div class="modal-content">' +
+                '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQBannedUIDS" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Legend mod 2020' + '</h4>' +
+                '</div>' +
+				'<div id="Userscriptshud3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="920" height="490" >' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+            populateBanListConfig();
 
-
-									
-function closecustomskinsIframe2020(){
-$("#main-menu").show();	
-$("#skins-panel").show();
-$("#quick-menu").show();
-$("#exp-bar").show();
-$("#legendhelper").remove();
-}
+            $("#CloseLMPromo").click(function() {
+                $("#LMPromo").remove();
+            });
+            $("#FAQBannedUIDS").click(function() {
+				window.open('https://legendmod.ml/', '_blank');
+            });	
+}							
