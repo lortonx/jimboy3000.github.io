@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "89"; // the version 1.1-> 1.11
 
@@ -5534,7 +5534,8 @@ function initializeLM(modVersion) {
         */
         '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
         '<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="BeforeSpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>' +
-        '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
+        '<button id="LegendmodShop" class="btn btn-primary btn" type="submit" onclick="BeforeLegendmodShop(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Legend mod Shop</button>' +
+		'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
         '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
         '<option value="1" data-itr="">Minimap</option>' +
         '<option value="2" data-itr="">Leaderboard</option>' +
@@ -6900,6 +6901,12 @@ function BeforeSpecialDeals() {
     var SpecialDealsJS = document.createElement("script");
     SpecialDealsJS.type = "text/javascript";
     SpecialDealsJS.src = "https://legendmod.ml/LMexpress/olddeals.js";
+    $("body").append(SpecialDealsJS);
+}
+function BeforeLegendmodShop() {
+    var SpecialDealsJS = document.createElement("script");
+    SpecialDealsJS.type = "text/javascript";
+    SpecialDealsJS.src = "https://legendmod.ml/LMexpress/shop/shop.js";
     $("body").append(SpecialDealsJS);
 }
 
