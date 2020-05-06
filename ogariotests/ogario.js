@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.569
+// v1.570
 
 
 //window.testobjects = {};
@@ -2206,6 +2206,18 @@ cimgSpecialSkinEffectsVip = new Image;
 cimgSpecialSkinEffectsVip.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsVip.png';
 cimgSpecialSkinEffectsYoutube = new Image;
 cimgSpecialSkinEffectsYoutube.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsYoutube.png';
+cimgSpecialSkinEffectsJellyFish = new Image;
+cimgSpecialSkinEffectsJellyFish.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJellyFish.png';
+cimgSpecialSkinEffectsLight = new Image;
+cimgSpecialSkinEffectsLight.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLight.png';
+cimgSpecialSkinEffectsUSA = new Image;
+cimgSpecialSkinEffectsUSA.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUSA.png';
+cimgSpecialSkinEffectsHeart = new Image;
+cimgSpecialSkinEffectsHeart.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsHeart.png';
+cimgSpecialSkinEffectsSword = new Image;
+cimgSpecialSkinEffectsSword.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSword.png';
+cimgSpecialSkinEffectsSmoke = new Image;
+cimgSpecialSkinEffectsSmoke.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSmoke.png';
 
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
@@ -7848,16 +7860,34 @@ function thelegendmodproject() {
 					style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
 					//style.drawImage(cimg7, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 
 					//style.drawImage(cimgSpecialSkinEffectsHat3, this.x - 1/2 * y, this.y - y, y, y); //top middle 1/2 size 
-					}						
+					}	
+					else if (this.targetNick.includes("JellyFish") || this.SpecialEffect == "JellyFish"){ 							
+					style.drawImage(cimgSpecialSkinEffectsJellyFish	, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
+					}							
 					else if (this.targetNick.includes("King" || this.SpecialEffect == "King")){ 								
 					//style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5/4 * y, y/2, y/2); 		
 					style.drawImage(cimgSpecialSkinEffectsCrown	, this.x - 1/4 * y, this.y - 5.3/4 * y, y/2, y/2); 					
-					}			
+					}
+					if (this.targetNick.includes("Smoke" || this.SpecialEffect == "Smoke")){ 	
+					style.drawImage(cimgSpecialSkinEffectsSmoke, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 									
+					}	
+					else if (this.targetNick.includes("USA" || this.SpecialEffect == "USA")){ 	
+					style.drawImage(cimgSpecialSkinEffectsUSA, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 									
+					}	
+					else if (this.targetNick.includes("Light" || this.SpecialEffect == "Light")){ 	
+					style.drawImage(cimgSpecialSkinEffectsLight, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 									
+					}						
+					else if (this.targetNick.includes("Sword" || this.SpecialEffect == "Sword")){ 	
+					style.drawImage(cimgSpecialSkinEffectsSword, this.x - 1/2 * y, this.y - 1/2 * y, y, y); //center 1/2 size 									
+					}							
 					if (this.targetNick.includes("Mask" || this.SpecialEffect == "Mask")){ 					
 					style.drawImage(cimgSpecialSkinEffectsMask, this.x - 1/2 * y, this.y + 1/4 * y, y, y);
 					}	
+					else if (this.targetNick.includes("Heart" || this.SpecialEffect == "Heart")){ 					
+					style.drawImage(cimgSpecialSkinEffectsHeart, this.x - 1/2 * y, this.y + 1/4 * y, y, y);
+					}											
 					if (this.targetNick.includes("Vip" || this.SpecialEffect == "Vip")){ 	
-					style.drawImage(cimgSpecialSkinEffectsVip, this.x - 1/8 * y, this.y - 5.3/4 * y, y/4, y/4); 
+					style.drawImage(cimgSpecialSkinEffectsVip, this.x - 1/8 * y, this.y - 5.3/4 * y, y/5, y/5); 
 					}						
 					else if (this.targetNick.includes("Youtube" || this.SpecialEffect == "Youtube")){ 														
 					style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
