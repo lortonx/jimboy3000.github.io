@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.578
+// v1.579
 
 
 //window.testobjects = {};
@@ -11866,7 +11866,8 @@ function timernow() {
 }
 function Socket3enabler(srv) {
 	if (srv && srv.match("-([A-Za-z0-9]{6,7})\.")){
-    var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+    //var room = ogarcopythelb.clanTag + "-" + srv.match("-([A-Za-z0-9]{6,7})\.")[1];
+	var room = $("#server-token").val(); //jimboy3100 5/5/2020
     //Socket3 = new WebSocket("wss://connect.websocket.in/Jimboy3100_socket?room_id=" + this.room);
     Socket3 = new WebSocket("wss://cloud.achex.ca/JIMBOY3100"+room);	
 	Socket3.onmessage = function(message) { 
