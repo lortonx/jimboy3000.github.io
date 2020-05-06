@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.585
+// v1.586
 
 
 //window.testobjects = {};
@@ -11883,7 +11883,7 @@ function Socket3enabler(srv) {
 		
 		if(localStorage.getItem("isActualUsingSpecialEffectsSkin")){
 			SpecialEffectPlayers[application.lastSentNick] = localStorage.getItem("isActualUsingSpecialEffectsSkin");
-			window.application.sendSocket3Info("spfc", localStorage.getItem("isActualUsingSpecialEffectsSkin");)	
+			window.application.sendSocket3Info("spfc", localStorage.getItem("isActualUsingSpecialEffectsSkin"))	
 		}
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
