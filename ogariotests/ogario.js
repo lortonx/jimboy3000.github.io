@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.580
+// v1.581
 
 
 //window.testobjects = {};
@@ -11880,6 +11880,10 @@ function Socket3enabler(srv) {
 		//Socket3.send(JSON.stringify({ "joinHub": "legendmod"}));	
 		Socket3.send(JSON.stringify({ "joinHub": $("#server-token").val()+"3"}));			
 		console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Socket 3 open:',room);
+		if(window.isActualUsingSpecialEffectsSkin){
+			SpecialEffectPlayers[application.lastSentNick] = window.isActualUsingSpecialEffectsSkin
+			window.application.sendSocket3Info("spfc", window.isActualUsingSpecialEffectsSkin)	
+		}
         if (!window.socket3Opened && window.noOgarioSocket) {
             $("#message").keydown(function(event) {
                 if (event.keyCode === 13) { //window.legendmod6.getPressedKey(13)
