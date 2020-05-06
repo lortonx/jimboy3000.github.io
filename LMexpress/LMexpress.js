@@ -7108,12 +7108,11 @@ function LMadvertisement2020(){
                 '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
                 '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Legend mod 2020' + '</h4>' +
                 '</div>' +
-				'<div id="Userscriptshud3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="920" height="490" >' +
+				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="920" height="490" >' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>');
-            populateBanListConfig();
 
             $("#CloseLMPromo").click(function() {
                 $("#LMPromo").remove();
