@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.586
+// v1.587
 
 
 //window.testobjects = {};
@@ -9332,19 +9332,19 @@ function thelegendmodproject() {
             }
             let text = '';
             let teamText = '';
-            for (length = 0; length < this.leaderboard.length && defaultmapsettings.leaderboardlimit != length; length++) {
+            for (var temp = 0; temp < this.leaderboard.length && defaultmapsettings.leaderboardlimit != temp; temp++) {
                 var html = '<span>';
-                if (this.leaderboard[length].id === 'isPlayer') {
+                if (this.leaderboard[temp].id === 'isPlayer') {
                     html = '<span class=\"me\">';
                 } else {
-                    if (ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[length].nick)) {
+                    if (ogarcopythelb.clanTag.length && 0 != window.teammatenicks.includes(this.leaderboard[temp].nick)) {
                         html = '<span class=\"teammate\">';
-                    } else if (this.leaderboard[length].isFriend) {
+                    } else if (this.leaderboard[temp].isFriend) {
                         html = '<span class=\"teammate\">';
                     }
 
                 }
-                teamText += html + (length + 1) + '. ' + application.escapeHTML(this.leaderboard[length].nick) + '</span>';
+                teamText += html + (temp + 1) + '. ' + application.escapeHTML(this.leaderboard[temp].nick) + '</span>';
             }
             if (this.playerPosition > defaultmapsettings.leaderboardlimit) {
                 teamText += '<span class=\"me\">' + this.playerPosition + '. ' + application.escapeHTML(this.playerNick) + '</span>';
