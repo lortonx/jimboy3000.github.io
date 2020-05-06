@@ -1,12 +1,12 @@
 /**************
- * Legend express v0.091l by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "89"; // the version 1.1-> 1.11
 
 appendLMhiFbPs();
 
 loadericon();
-PremiumUsers();
+
 //Authenticate Mod Script
 var accesstomod;
 getaccesstoken();
@@ -42,7 +42,7 @@ $("#gamemode").prop('disabled', false);
 $("#region").prop('disabled', false);
 var oldgamemode = $("#gamemode");
 //privateservutil();
-
+window.proLicenceUID = localStorage.getItem("proLicenceUID");	
 var currentIP = "0.0.0.0:0";
 var currentIPopened;
 var currentToken = "";
@@ -359,10 +359,20 @@ function loadericon() {
 }
 
 function PremiumUsers() {
-    var ProLicenceUsersTableJS = document.createElement("script");
-    ProLicenceUsersTableJS.type = "text/javascript";
-    ProLicenceUsersTableJS.src = "https://legendmod.ml/AjaxData/ProLicenceUsersTableJS.js";
-    $("body").append(ProLicenceUsersTableJS);
+	if (window.proLicenceUID){
+		toastr.warning("<b>[SERVER]:</b> Premium account found. Thank you!").css("width", "350px");
+	}	
+	else{
+		if (window.agarioUID && ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]){
+			window.proLicenceUID = true
+			localStorage.setItem("proLicenceUID", true);
+			toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you!").css("width", "350px");
+		}
+		else{
+			//toastr.warning("<b>[SERVER]:</b> Not a Premium account found. If you donated in the past, please refer it to Legend mod discord").css("width", "350px");
+			//if (window.agarioUID && !ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]) localStorage.setItem("proLicenceUID", false);			
+		}
+	}
 }
 
 function getaccesstoken() {
@@ -6976,7 +6986,9 @@ function HiddenBots() {
 
 
 function UIDcontroller() {
+	PremiumUsers();
 	AgarBannedUIDs();
+	
 	var bannedUID = localStorage.getItem("bannedUID");
     if (bannedUserUIDs.includes(window.agarioUID) || bannedUID == "true") {
 		localStorage.setItem("bannedUID", true);
@@ -6985,6 +6997,7 @@ function UIDcontroller() {
 			
     }
 }
+
 function AgarBannedUIDs() {
     //postSNEZ('https://lmsettings.snez.org/', 'LMAgarBannedUIDs', 'LMAgarBannedUIDsPass', JSON.stringify({0: "v12/2204/", 1: "v12/2168/", 2: "v12/1922/"}));		 //default
     getSNEZ("https://lmsettings.snez.org/", "LMAgarBannedUIDs", "LMAgarBannedUIDsPass");
