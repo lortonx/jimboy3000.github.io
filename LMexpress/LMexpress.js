@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.096 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "89"; // the version 1.1-> 1.11
+var semimodVersion = "90"; // the version 1.1-> 1.11
 
 appendLMhiFbPs();
 
@@ -360,7 +360,7 @@ function loadericon() {
 
 function PremiumUsers() {
 	if (window.proLicenceUID){
-		toastr.warning("<b>[SERVER]:</b> Premium account found. Thank you!").css("width", "350px");
+		//toastr.warning("<b>[SERVER]:</b> Premium account found. Thank you!").css("width", "350px");
 	}	
 	else{
 		if (window.agarioUID && ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]){
@@ -6995,7 +6995,6 @@ function HiddenBots() {
 function UIDcontroller() {
 	PremiumUsers();
 	AgarBannedUIDs();
-	
 	var bannedUID = localStorage.getItem("bannedUID");
     if (bannedUserUIDs.includes(window.agarioUID) || bannedUID == "true") {
 		localStorage.setItem("bannedUID", true);
