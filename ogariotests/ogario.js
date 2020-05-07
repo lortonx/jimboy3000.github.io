@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.587
+// v1.588
 
 
 //window.testobjects = {};
@@ -7900,7 +7900,7 @@ function thelegendmodproject() {
                             style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);					
                         } catch (e) {}
                     } 					
-					else if (this.targetNick.includes("℄🌀Jimboy3100") || this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
+					else if (this.SpecialEffect == "WhiteArrow" || this.SpecialEffect2 == "WhiteArrow") {
                         //style.drawImage(cimg2, this.x - y * 2, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);
 
                         var today = new Date();
