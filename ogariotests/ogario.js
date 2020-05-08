@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.609
+// v1.610
 
 
 //window.testobjects = {};
@@ -5716,7 +5716,7 @@ function thelegendmodproject() {
                 //console.log("createServerToken case 2:" + text);
             }
             if (!text && matchNew2) {
-                this.serverArena = matchNew[0];
+                this.serverArena = matchNew2[0];
                 text = this.serverArena;
                 //console.log("createServerToken case 2:" + text);
             }			
