@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.597
+// v1.598
 
 
 //window.testobjects = {};
@@ -7907,12 +7907,19 @@ function thelegendmodproject() {
 					//style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
 					}	
 					else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes"){ 	
-					style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 5.3/4 * y, y/1.5, y/6);
-					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
+					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 5.3/4 * y, y/1.5, y/6);	
+					style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+					window.xx1 = 1/4
+					window.xx2 = 5.3/4
+					window.xx3 = 1.5
+					window.xx4 = 4
 					}		
 					else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan"){ 	
-					style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/6 * y, this.y - 5.3/4 * y, y/1.5, y/9);
-					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
+					style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - window.xx5 * y, this.y - window.xx6 * y, y/window.xx7, y/window.xx8);				
+					window.xx5 = 1/5
+					window.xx6 = 5.3/4
+					window.xx7 = 1.5
+					window.xx8 = 6
 					}						
                     if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow")) {
                         try {						
