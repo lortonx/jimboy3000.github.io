@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.593
+// v1.594
 
 
 //window.testobjects = {};
@@ -2218,8 +2218,10 @@ cimgSpecialSkinEffectsSword = new Image;
 cimgSpecialSkinEffectsSword.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSword.png';
 cimgSpecialSkinEffectsSmoke = new Image;
 cimgSpecialSkinEffectsSmoke.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSmoke.png';
-cimgSpecialSkinEffectsParticles = new Image;
-cimgSpecialSkinEffectsParticles.src = 'https://legendmod.ml/banners/particles.gif';
+cimgSpecialSkinEffectsLegendHeroes = new Image;
+cimgSpecialSkinEffectsLegendHeroes.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan.png';
+cimgSpecialSkinEffectsLegendHeroes2 = new Image;
+cimgSpecialSkinEffectsLegendHeroes2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan2.png';
 
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
@@ -7904,10 +7906,14 @@ function thelegendmodproject() {
 					style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);
 					//style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
 					}	
-					else if (this.SpecialEffect == "Particles" || this.SpecialEffect2 == "Particles"){ 	
-					style.drawImage(cimgSpecialSkinEffectsParticles, this.x - 1/2 * y, this.y - y, y, y);
-					//style.drawImage(cimgSpecialSkinEffectsParticles, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
-					}										
+					else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes"){ 	
+					style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/2 * y, this.y - y, y, y);
+					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
+					}		
+					else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan"){ 	
+					style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/2 * y, this.y - y, y, y);
+					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
+					}						
                     if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow")) {
                         try {						
                             style.drawImage(cimg5, this.x - 2 * y, this.y - 2 * y, 2 * 2 * y, 2 * 2 * y);					
