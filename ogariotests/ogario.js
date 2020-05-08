@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.605
+// v1.606
 
 
 //window.testobjects = {};
@@ -150,7 +150,7 @@ function autocoins(slot) {
 }
 function massx21hour(slot) {
     var bytes = [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104]
-				[8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104]
+				//[8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104]
 	          //[8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104]
     window.core.proxyMobileData(bytes);
 	/*for facebook:
@@ -8299,8 +8299,13 @@ function thelegendmodproject() {
 			//jimboy3100
 			//if (window.LMdebug && message[0]=="102") console.log(message)
 			//if (window.LMdebug && message[0]==102) console.log(message)
-			window.tempoo = new window.buffer.Buffer(message.buffer)
-			if (window.tempoo.buffer.byteLength>13) window.tempoo2 = new window.buffer.Buffer(window.tempoo.buffer)		
+			if (window.LMdebug){
+				window.tempoo = new window.buffer.Buffer(message.buffer)
+				if (window.tempoo[0]==102){ 
+					window.tempoo2 = new window.buffer.Buffer(window.tempoo.buffer)	
+					console.log(window.tempoo2)
+				}					
+			}
             this.sendBuffer(message);
         },
         sendAction(action) {
