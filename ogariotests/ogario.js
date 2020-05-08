@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.596
+// v1.597
 
 
 //window.testobjects = {};
@@ -7907,11 +7907,11 @@ function thelegendmodproject() {
 					//style.drawImage(cimgSpecialSkinEffectsYoutube, this.x - 1/2 * y, this.y - 3/2 * y, y, y); 
 					}	
 					else if (this.SpecialEffect == "LegendHeroes" || this.SpecialEffect2 == "LegendHeroes"){ 	
-					style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 6/2 * y, y/3, y/6);
+					style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 5.3/4 * y, y/1.5, y/6);
 					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
 					}		
 					else if (this.SpecialEffect == "LegendClan" || this.SpecialEffect2 == "LegendClan"){ 	
-					style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/6 * y, this.y - 5.3/2 * y, y/3, y/9);
+					style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/6 * y, this.y - 5.3/4 * y, y/1.5, y/9);
 					//style.drawImage(cimgSpecialSkinEffectsLegendHeroes2, this.x - 1/6 * y, this.y - 5.3/4 * y, y/3, y/3);					
 					}						
                     if (this.targetNick.includes("The Dying Light" || this.SpecialEffect == "RedArrow" || this.SpecialEffect2 == "RedArrow")) {
