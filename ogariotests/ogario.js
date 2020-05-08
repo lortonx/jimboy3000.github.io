@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.604
+// v1.605
 
 
 //window.testobjects = {};
@@ -8299,7 +8299,7 @@ function thelegendmodproject() {
 			//jimboy3100
 			//if (window.LMdebug && message[0]=="102") console.log(message)
 			//if (window.LMdebug && message[0]==102) console.log(message)
-			window.tempoo = new window.buffer.Buffer(window.tempoo.buffer)
+			window.tempoo = new window.buffer.Buffer(message.buffer)
 			if (window.tempoo.buffer.byteLength>13) window.tempoo2 = new window.buffer.Buffer(window.tempoo.buffer)		
             this.sendBuffer(message);
         },
