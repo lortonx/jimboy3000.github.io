@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.607
+// v1.608
 
 
 //window.testobjects = {};
@@ -11994,7 +11994,7 @@ function Socket3handler(message) {
 function Socket3updateTeamPlayerSpfc(Socket3data) {
 	var h = window.decodeURIComponent(escape(Socket3data.id));	
 	var message = Socket3data.x;
-	console.log(h, message)
+	console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Player ', h, 'uses Special Effect ', message);
 	if (h && message) SpecialEffectPlayers[h] = message;
 }
 
