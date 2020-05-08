@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.610
+// v1.611
 
 
 //window.testobjects = {};
@@ -5691,7 +5691,7 @@ function thelegendmodproject() {
             var matchOld = this.ws.match(/ip-\d+/);
             //var matchNew = this.ws.match(/live-arena-([\w\d]+)/);
 			var matchNew = this.ws.match(/live-arena-([\w\d]+(\.tech)?)\.agar\.io/);
-			var matchNew2 = this.ws.match(/livec-arena-([\w\d]+(\.tech)?)\.agar\.io\:1500/); //original private servers
+			var matchNew2 = this.ws.match(/livec-arena-([\w\d]+(\.tech)?)\.agar\.io\:[\w\d]+/); //original private servers
             var text = null;
             if (matchOld) {
 				  matchOld = this.ws.replace('.agar.io', '').replace(/-/g, '.').match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[0-9]{1,4}/);
