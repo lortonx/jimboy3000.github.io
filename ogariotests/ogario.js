@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.621
+// v1.622
 
 
 //window.testobjects = {};
@@ -9130,41 +9130,258 @@ function thelegendmodproject() {
                         var response = node.readFlag();
                         var response_2 = node.readUint32();
                         switch (option) {
+                            case 1:
+								window.testobjects1021=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Type", option, response); 
+                                break;
+                            case 10:
+								window.testobjects10210=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login Request", option, response); 
+                                break;
                             case 11:
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", node.contentType, node.uncompressedSize, option, response, response_2);
-                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, option, response, response_2);
+								window.testobjects10211=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login Response", node.contentType, node.uncompressedSize, option, response, response_2);
+                                break;
+                            case 12:
+								window.testobjects10212=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Realm Upgrade Request", option, response); 
+                                break;
+                            case 13:
+								window.testobjects10213=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Realm Upgrade Response", option, response); 
+                                break;
+                            case 14:
+								window.testobjects10214=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Connect Request", option, response); 
+                                break;
+                            case 15:
+								window.testobjects10215=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Connect Response", option, response); 
+                                break;
+                            case 16:
+								window.testobjects10216=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Device Token Update", option, response); 
                                 break;
                             case 20:
-								window.testobjects10220=node;
+								window.testobjects10220=node;							
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Disconnect", option, response); 
                                 if (response == 20){									
 									toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
-								}
+								}								
+                                break;
+                            case 21:
+								window.testobjects10221=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Reconnect", option, response); 
+                                break;
+                            case 22:
+								window.testobjects10222=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 No Proper Response", option, response); 
+                                break;
+                            case 30:
+								window.testobjects10230=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Ping", option, response); 
+                                break;
+                            case 31:
+								window.testobjects10231=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Pong", option, response); 
+                                break;
+                            case 32:
+								window.testobjects10232=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Udp Handshake", option, response); 
+                                break;
+                            case 33:
+								window.testobjects10233=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Configuration Change", option, response); 
+                                break;
+                            case 34:
+								window.testobjects10234=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server Going Offline", option, response); 
+                                break;								
+                            case 40:
+								window.testobjects10240=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Enter Request", option, response); 
+                                break;
+                            case 41:
+								window.testobjects10241=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Enter Response", option, response); 
+                                break;
+                            case 42:
+								window.testobjects10242=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Joined", option, response); 
+                                break;
+                            case 44:
+								window.testobjects10244=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Lobby Enter Request", option, response); 
+                                break;	
+                            case 45:
+								window.testobjects10245=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Lobby Enter Response", option, response); 
+                                break;									
+                            case 47:
+								window.testobjects10247=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Lobby Queue Update", option, response); 
+                                break;	
+                            case 50:
+								window.testobjects10250=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Direction Vector", option, response); 
+                                break;	
+                            case 54:
+								window.testobjects10254=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Continue Update Request", option, response); 
+                                break;	
+                            case 55:
+								window.testobjects10255=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Continue Update Response", option, response); 
+                                break;	
+                            case 60:
+								window.testobjects10260=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Leaderboard", option, response); 
+                                break;	
+                            case 61:
+								window.testobjects10261=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena State", option, response); 
                                 break;	
                             case 62:
 								window.testobjects10262=node;
-                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game over");
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game over");
                                 LegendModDeath();
-                                //$('#pause-hud').text("PAUSE!");
-                                break;		
+                                //$('#pause-hud').text("PAUSE!");							
+                                break;	
+                            case 63:
+								window.testobjects10263=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Party Cell Updates", option, response); 
+                                break;	
+                            case 64:
+								window.testobjects10264=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Party Leaderboard Entries Updates", option, response); 
+                                break;	
+                            case 65:
+								window.testobjects10265=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Even", option, response); 
+                                break;	
+                            case 66:
+								window.testobjects10266=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Arena Current Safe Area", option, response); 
+                                break;	
+                            case 67:
+								window.testobjects10267=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Continue Info", option, response); 
+                                break;	
+                            case 68:
+								window.testobjects10268=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Battle Royale Arena Phase", option, response); 
+                                break;	
+                            case 69:
+								window.testobjects10269=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game Session Highest Mass", option, response); 
+                                break;	
+                            case 70:
+								window.testobjects10270=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Soft Purchase Request", option, response); 
+                                break;	
+                            case 71:
+								window.testobjects10271=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Soft Purchase Response", option, response); 
+                                break;	
+                            case 72:
+								window.testobjects10272=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Apple Inapp Purchase Request", option, response); 
+                                break;	
+                            case 73:
+								window.testobjects10273=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Google Inapp Purchase Request", option, response); 
+                                break;	
+                            case 74:
+								window.testobjects10274=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Inapp Purchase Response", option, response); 
+                                break;	
+                            case 75:
+								window.testobjects10275=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Wallet Updates", option, response); 
+                                break;	
+                            case 76:
+								window.testobjects10276=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Purchase Wallet Updates", option, response); 
+                                break;	
+                            case 77:
+								window.testobjects10277=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Offer Bundle Request", option, response); 
+                                break;	
+                            case 78:
+								window.testobjects10278=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Offer Bundle Response", option, response); 
+                                break;	
+                            case 79:
+								window.testobjects10279=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Subscription Wallet Updates", option, response); 
+                                break;									
+                            case 80:
+								window.testobjects10280=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Update User Settings Request", option, response); 
+                                break;	
+                            case 81:
+								window.testobjects10281=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Update User Settings Response", option, response); 
+                                break;	
+                            case 82:
+								window.testobjects10282=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Stats Request", option, response); 
+                                break;	
+                            case 83:
+								window.testobjects10283=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Stats Response", option, response); 
+                                break;	
+                            case 90:
+								window.testobjects10290=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server To Server Game Over Wrapper", option, response); 
+                                break;	
+                            case 100:
+								window.testobjects102100=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Claim Gifts Request", option, response); 
+                                break;	
+                            case 101:
+								window.testobjects102101=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Claim Gifts Response", option, response); 
+                                break;	
+                            case 102:
+								window.testobjects102102=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Send Gifts", option, response); 
+                                break;	
+                            case 103:
+								window.testobjects102103=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate consume Requests", option, response); 
+                                break;	
+							case 104:
+								window.testobjects102104=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Request Gifts", option, response); 
+                                break;	
+                            case 105:
+								window.testobjects102105=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Facebook Invitation Reward Updates", option, response); 
+                                break;	
+                            case 110:
+								window.testobjects102110=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Timed event Request", option, response); //hourly bonus
+                                break;	
                             case 111:
 								window.testobjects102111=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server Timed event Response", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Timed event Response", option, response); //hourly bonus
                                 break;	
                             case 112:
 								window.testobjects102112=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Boost Request", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Boost Request", option, response);
                                 break;									
                             case 113:
 								window.testobjects102113=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Boost Response", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Boost Response", option, response);
                                 break;	
                             case 114:
 								window.testobjects102114=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Quest Request", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Quest Request", option, response);
                                 break;			
                             case 115:
 								window.testobjects102115=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Quest Response", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Quest Response", option, response);
                                 break;		
                             case 116:
 								window.testobjects102116=node;
@@ -9172,19 +9389,128 @@ function thelegendmodproject() {
                                 break;		
                             case 117:
 								window.testobjects102116=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Request", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate User Rewards Request", option, response);
                                 break;		
                             case 118:
 								window.testobjects102116=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Response", option, response);
-                                break;									
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate User Rewards Response", option, response);
+                                break;		
+                            case 120:
+								window.testobjects102120=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Request", option, response);
+                                break;	
+                            case 121:
+								window.testobjects102121=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+                                break;			
+                            case 122:
+								window.testobjects102122=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Brew Potion For Slot Request", option, response);
+                                break;	
+                            case 123:
+								window.testobjects102123=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Brew Potion For Slot Response", option, response);
+                                break;	
+                            case 124:
+								window.testobjects102124=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+                                break;	
+                            case 125:
+								window.testobjects102125=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+                                break;		
+                            case 130:
+								window.testobjects102130=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Request", option, response);
+                                break;								
 							case 131:
 								window.testobjects102131=node;
-								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 103 idk", option, response);
-								break;								
+								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Response", option, response);
+								break;	
+                            case 132:
+								window.testobjects102132=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Pass Update", option, response);
+                                break;	
+                            case 141:
+								window.testobjects102141=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Create Response", option, response);
+                                break;	
+                            case 142:
+								window.testobjects102142=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Join Request", option, response);
+                                break;	
+                            case 143:
+								window.testobjects102143=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Join Response", option, response);
+                                break;	
+                            case 145:
+								window.testobjects102145=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User User Party Membership Update", option, response);
+                                break;	
+                            case 146:
+								window.testobjects102146=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Party Facebook Invite", option, response);
+                                break;	
+                            case 147:
+								window.testobjects102147=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Friend List Update", option, response);
+                                break;	
+                            case 150:
+								window.testobjects102150=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Skins Create Request", option, response);
+                                break;	
+                            case 151:
+								window.testobjects102151=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Skins Create Response", option, response);
+                                break;				
+                            case 152:
+								window.testobjects102152=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Skins Delete", option, response);
+                                break;		
+                            case 160:
+								window.testobjects102160=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Automation Request Update", option, response);
+                                break;		
+                            case 170:
+								window.testobjects102170=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Action Counters Update", option, response);
+                                break;		
+                            case 171:
+								window.testobjects102171=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Ab Test Groups Update", option, response);
+                                break;		
+                            case 180:
+								window.testobjects102180=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Token Request", option, response);
+                                break;		
+                            case 181:
+								window.testobjects102181=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Token Response", option, response);
+                                break;		
+                            case 182:
+								window.testobjects102182=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Updates", option, response);
+                                break;	
+                            case 183:
+								window.testobjects102183=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Reward Link Request", option, response);
+                                break;	
+                            case 184:
+								window.testobjects102184=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Activate Reward Link Response", option, response);
+                                break;	
+                            case 185:
+								window.testobjects102185=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Generic Video Ad Reward Token Request", option, response);
+                                break;	
+                            case 186:
+								window.testobjects102186=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Generic Video Ad Reward Token Response", option, response);
+                                break;									
                             default:
 								window.testobjects102default=node;
                                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", option, response);
+								break;
                         }
                     }
 
