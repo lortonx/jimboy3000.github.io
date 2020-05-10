@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.617
+// v1.618
 
 
 //window.testobjects = {};
@@ -12145,7 +12145,7 @@ function enterChatMessage2() {
 }
 
 function repeatSendingSpecialSkins(){
-	if (localStorage.getItem("isActualUsingSpecialEffectsSkin") && localStorage.getItem("isActualUsingSpecialEffectsSkin") != "null" && ($("#nick").val().includes('℄')) || window.proLicenceUID){
+	if ((localStorage.getItem("isActualUsingSpecialEffectsSkin") && localStorage.getItem("isActualUsingSpecialEffectsSkin") != "null" && $("#nick").val().includes('℄')) || window.proLicenceUID){
 			if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
 				SpecialEffectPlayers[application.lastSentNick]=localStorage.getItem("isActualUsingSpecialEffectsSkin")
 				window.application.sendSocket3Info("spfc", localStorage.getItem("isActualUsingSpecialEffectsSkin"))										
