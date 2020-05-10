@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.620
+// v1.621
 
 
 //window.testobjects = {};
@@ -151,8 +151,19 @@ function autocoins(slot) {
 	window.core.proxyMobileData(bytes);
 //console.log(String.fromCharCode.apply(String, bytes));
 }
-
-
+ 
+function idk(slot) {
+    var bytes = [8, 1, 18, 8, 8, 130, 1, 146, 8, 2, 8, 1];
+    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3
+}
+function PotionDrinker(slot) {
+    var bytes = [8, 1, 18, 7, 8, 124, 226, 7, 2, 8, slot];
+    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3
+}
+function PotionDrinkerRare(slot) {
+	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
+    window.core.proxyMobileData(bytes); //PotionDrinkerRare(2) rare
+}
 function massx21hour(slot) {
     //var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] //WORKED
 				//[8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104]  
@@ -177,7 +188,6 @@ function massx224hour(slot) {
 	}	
 	window.core.proxyMobileData(bytes);	          
 }
-
 function massx31hour(slot) {
     //var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104] //WORKED
 				//[8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104]
@@ -199,7 +209,6 @@ function massx324hour(slot) {
 	window.core.proxyMobileData(bytes);	
 }
 
-
 function callEveryFullHourCoinDigger() {
     autocoins();
     var now = new Date();
@@ -209,7 +218,6 @@ function callEveryFullHourCoinDigger() {
         console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " Dig 20 coins")
         callEveryFullHourCoinDigger();
     }, difference);
-
 }
 
 function initTilt() {
@@ -9127,22 +9135,55 @@ function thelegendmodproject() {
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Login response", window.ret.view.byteLength, window.ret.contentType, window.ret.uncompressedSize, option, response, response_2);
                                 break;
                             case 20:
-                                if (response == 20){
+								window.testobjects10220=node;
+                                if (response == 20){									
 									toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
 								}
                                 break;	
                             case 62:
+								window.testobjects10262=node;
                                 //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Game over");
                                 LegendModDeath();
                                 //$('#pause-hud').text("PAUSE!");
                                 break;		
                             case 111:
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server denied", option, response);
-                                break;			
-                            case 113:
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 In use", option, response);
+								window.testobjects102111=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Server Timed event Response", option, response);
+                                break;	
+                            case 112:
+								window.testobjects102112=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Boost Request", option, response);
                                 break;									
+                            case 113:
+								window.testobjects102113=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Boost Response", option, response);
+                                break;	
+                            case 114:
+								window.testobjects102114=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Quest Request", option, response);
+                                break;			
+                            case 115:
+								window.testobjects102115=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Quest Response", option, response);
+                                break;		
+                            case 116:
+								window.testobjects102116=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Timed Event Updates", option, response);
+                                break;		
+                            case 117:
+								window.testobjects102116=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Request", option, response);
+                                break;		
+                            case 118:
+								window.testobjects102116=node;
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Rewards Response", option, response);
+                                break;									
+							case 131:
+								window.testobjects102131=node;
+								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 103 idk", option, response);
+								break;								
                             default:
+								window.testobjects102default=node;
                                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Unknown", option, response);
                         }
                     }
