@@ -9136,7 +9136,7 @@ function thelegendmodproject() {
                         if (window.agarioUID != undefined) {
                             localStorage.setItem("agarioUID", window.agarioUID);
                             localStorage.setItem("agarioID", window.agarioID);
-							$("#UserProfileUUID").text(agarioUID);						
+							$("#UserProfileUUID1").text(agarioUID);						
                         } else {
                             window.agarioUID = localStorage.getItem("agarioUID");
                             window.agarioID = localStorage.getItem("agarioID");
