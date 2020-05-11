@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.626
+// v1.627
 
 
 //window.testobjects = {};
@@ -3495,7 +3495,7 @@ function thelegendmodproject() {
 				if (!defaultmapsettings.massBooster){
 					toastr.warning("<b>[SERVER]:</b> Mass boost is disabled").css("width", "350px");
 				}
-				else if !($("#nick").val().includes('℄') || window.proLicenceUID){
+				else if (!($("#nick").val().includes('℄') || window.proLicenceUID)){
 					toastr.warning("<b>[SERVER]:</b> Mass boost is for Premium users").css("width", "350px");
 				}				
             }			
