@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.627
+// v1.628
 
 
 //window.testobjects = {};
@@ -3491,14 +3491,12 @@ function thelegendmodproject() {
 					toastr.warning("<b>[SERVER]:</b> Mass boost enabled, please not that all Mass *3 (1 hour) will be consumed. After that Mass Boost will be free").css("width", "350px");
 				}
 			}					
-			else {
-				if (!defaultmapsettings.massBooster){
+			else if (!defaultmapsettings.massBooster){
 					toastr.warning("<b>[SERVER]:</b> Mass boost is disabled").css("width", "350px");
 				}
-				else if (!($("#nick").val().includes('℄') || window.proLicenceUID)){
+			else if (!($("#nick").val().includes('℄') || window.proLicenceUID)){
 					toastr.warning("<b>[SERVER]:</b> Mass boost is for Premium users").css("width", "350px");
-				}				
-            }			
+			}				           			
 		},
 		setAnimatedRainbowColor(){			
 			if (defaultmapsettings.animatedRainbowColor && tcm2 && tcm2.f && typeof tcm2.f.override === 'function') {
