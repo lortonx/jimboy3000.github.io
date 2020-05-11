@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.091 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "91"; // the version 1.1-> 1.11
+var semimodVersion = "92"; // the version 1.1-> 1.11
 
 appendLMhiFbPs();
 
@@ -5518,7 +5518,7 @@ function initializeLM(modVersion) {
         '<div style="display:inline-block; width: 70%;">' +
         '<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
         '<div id="UserProfileUID">Social ID: <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
-		'<input id="UserProfileUUID1" class="user-name" style="display:inline-block; width: 180px; font-size: 9px;"></div>' +
+		'<div id="UserProfileUUID">UID: <input id="UserProfileUUID1" class="user-name" style="display:inline-block; width: 180px; font-size: 9px;"></div>' +
         '<div id="TimesUsedPanel" class="user-name" style="display:inline-block;">Times Used: <div id="TimesUsed" style="display:inline-block"></div></div><br>' +
         '</div></div>' +
         '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
