@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.098 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.091 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "91"; // the version 1.1-> 1.11
 
@@ -4854,7 +4854,7 @@ function loginsfbGpl() {
     $("#logoutbtn").click(function() {
         $("#UserProfileName1").text("Guest");
         $("#UserProfileUID1").text("");
-		$("#UserProfileUUID").text("");
+		$("#UserProfileUUID1").text("");
 		
         $("#UserProfilePic>img").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
     });
@@ -4864,7 +4864,7 @@ function loginsfbGpl2() {
     $("#logoutbtn").click(function() {
         $("#UserProfileName1").text("Guest");
         $("#UserProfileUID1").text("");
-		$("#UserProfileUUID").text("");
+		$("#UserProfileUUID1").text("");
         $("#UserProfilePic>img").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
     });
     $(".btn.btn-primary.btn-login.btn-fb").click(function() {
