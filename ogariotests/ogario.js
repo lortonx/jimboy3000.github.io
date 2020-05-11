@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.624
+// v1.625
 
 
 //window.testobjects = {};
@@ -12543,6 +12543,13 @@ function repeatSendingSpecialSkins(){
 				SpecialEffectPlayers[application.lastSentNick]=localStorage.getItem("isActualUsingSpecialEffectsSkin")
 				window.application.sendSocket3Info("spfc", localStorage.getItem("isActualUsingSpecialEffectsSkin"))										
 	}
+}
+
+function preUserLeaguesInfoRequest(){
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/LMexpress/userLeaguesInfoRequest.js";
+    $("body").append(s);
 }
 /*
 var snezSocketdata;
