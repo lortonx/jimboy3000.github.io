@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.622
+// v1.623
 
 
 //window.testobjects = {};
@@ -152,10 +152,16 @@ function autocoins(slot) {
 //console.log(String.fromCharCode.apply(String, bytes));
 }
  
-function idk(slot) {
+function userLeaguesInfoRequest(slot) {
     var bytes = [8, 1, 18, 8, 8, 130, 1, 146, 8, 2, 8, 1];
-    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3
+    window.core.proxyMobileData(bytes); //response 131	
 }
+function genericVideoAdRewardTokenRequest(slot) {
+    var bytes = [8, 1, 18, 6, 8, 185, 1, 202, 11, 0];
+    window.core.proxyMobileData(bytes); //response 186
+}
+
+
 function PotionDrinker(slot) {
     var bytes = [8, 1, 18, 7, 8, 124, 226, 7, 2, 8, slot];
     window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3
@@ -684,6 +690,7 @@ setTimeout(function() {
     }
 }, 5000);
 
+function userLeaguesInfoResponse(){}
 window.predictedGhostCells = [];
 //set values outside ogario
 window.playerCellsId = [];
@@ -9413,7 +9420,7 @@ function thelegendmodproject() {
                                 break;	
                             case 124:
 								window.testobjects102124=node;
-                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+                                console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Request", option, response);
                                 break;	
                             case 125:
 								window.testobjects102125=node;
@@ -9426,6 +9433,24 @@ function thelegendmodproject() {
 							case 131:
 								window.testobjects102131=node;
 								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Response", option, response);
+								var sampleBytes = new Uint8Array(window.testobjects102131.view.buffer);
+								var enc = new TextDecoder();
+								window.testobjects102131DEC = enc.decode(sampleBytes);
+								window.testobjects102131DEC2 = window.testobjects102131DEC.split('')[0]
+								var matchNew = window.testobjects102131DEC2.split("$")
+								window.RecordPlayers=[];
+								for (var i=1;i<matchNew.length;i++){
+									window.RecordPlayers[i]={}
+									//console.log(i)
+									window.RecordPlayers[i].uid=matchNew[i].split("")[0] //uid
+									if (matchNew[i].split("")[1]) window.RecordPlayers[i].id=matchNew[i].split("")[1].split('')[0].replace('', "").replace('', ""); //id
+									if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('')[1]) window.RecordPlayers[i].level=matchNew[i].split("")[1].split('')[1].split('\"')[0] //level
+									if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('\"')[1]) window.RecordPlayers[i].country=matchNew[i].split("")[1].split('\"')[1].split('\(')[0].replace('', ""); //country
+									if (matchNew[i].split("")[1]) window.RecordPlayers[i].socialid=matchNew[i].split("")[1].split('')[0] //social id						
+									if (matchNew[i].split("�")[1]) window.RecordPlayers[i].icon=matchNew[i].split("�")[1].split('')[0].("\"%")[0].split('%')[0]  //icon	
+									else if (matchNew[i].split("")[1]) window.RecordPlayers[i].icon=matchNew[i].split("")[1].split('')[0].substr(1);																	
+								}
+								userLeaguesInfoResponse();
 								break;	
                             case 132:
 								window.testobjects102132=node;
