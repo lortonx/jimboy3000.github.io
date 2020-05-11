@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.628
+// v1.629
 
 
 //window.testobjects = {};
@@ -3488,7 +3488,7 @@ function thelegendmodproject() {
 		setMassBooster(){
 			if (defaultmapsettings.massBooster && ($("#nick").val().includes('℄') || window.proLicenceUID)) {
 				if (defaultmapsettings.massBooster){
-					toastr.warning("<b>[SERVER]:</b> Mass boost enabled, please not that all Mass *3 (1 hour) will be consumed. After that Mass Boost will be free").css("width", "350px");
+					toastr.warning("<b>[SERVER]:</b> Mass boost is enabled, please note that all Mass *3 (1 hour) will be consumed. After that Mass Boost will be used for free").css("width", "350px");
 				}
 			}					
 			else if (!defaultmapsettings.massBooster){
@@ -4017,9 +4017,9 @@ function thelegendmodproject() {
                     case 'universalChat':
                         this.setUniversalChat();
                         break;		
-                    case 'massBooster':
+                    /*case 'massBooster':
                         this.setMassBooster();
-                        break;							
+                        break;	*/						
                     case 'animatedRainbowColor':
                         this.setAnimatedRainbowColor();
                         break;							
@@ -4983,10 +4983,12 @@ function thelegendmodproject() {
                 ogario.showFood = true
             };
             setTimeout(() => {
-				if ($("#nick").val().includes('℄') || window.proLicenceUID) {
-					if (defaultmapsettings.massBooster){
+				if (($("#nick").val().includes('℄') || window.proLicenceUID) && defaultmapsettings.massBooster && master.context) {				
 						massx31hour();
-					}
+						if (!window.massBoosterMsg){
+							toastr.warning("<b>[SERVER]:</b> Mass boost is enabled, please note that all Mass *3 (1 hour) will be consumed. After that Mass Boost will be used for free").css("width", "350px");
+							window.massBoosterMsg=true;
+						}
 				}				
             }, 200);			
 			
