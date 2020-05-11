@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.098 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "90"; // the version 1.1-> 1.11
+var semimodVersion = "91"; // the version 1.1-> 1.11
 
 appendLMhiFbPs();
 
@@ -4854,6 +4854,8 @@ function loginsfbGpl() {
     $("#logoutbtn").click(function() {
         $("#UserProfileName1").text("Guest");
         $("#UserProfileUID1").text("");
+		$("#UserProfileUUID").text("");
+		
         $("#UserProfilePic>img").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
     });
 }
@@ -4862,6 +4864,7 @@ function loginsfbGpl2() {
     $("#logoutbtn").click(function() {
         $("#UserProfileName1").text("Guest");
         $("#UserProfileUID1").text("");
+		$("#UserProfileUUID").text("");
         $("#UserProfilePic>img").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
     });
     $(".btn.btn-primary.btn-login.btn-fb").click(function() {
@@ -5515,6 +5518,7 @@ function initializeLM(modVersion) {
         '<div style="display:inline-block; width: 70%;">' +
         '<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>' +
         '<div id="UserProfileUID">Social ID: <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>' +
+		'<div id="UserProfileUUID">UID: <div id="UserProfileUUID1" class="user-name" style="display:inline-block" ></div></div>' +
         '<div id="TimesUsedPanel" class="user-name" style="display:inline-block;">Times Used: <div id="TimesUsed" style="display:inline-block"></div></div><br>' +
         '</div></div>' +
         '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
@@ -5535,7 +5539,7 @@ function initializeLM(modVersion) {
         '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
         '<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="BeforeSpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>' +
         '<button id="LegendmodShop" class="btn btn-primary btn" type="submit" onclick="BeforeLegendmodShop(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Legend mod Shop</button>' +
-		'<button id="UserLeaguesInfo" class="btn btn-primary btn" type="submit" onclick="preUserLeaguesInfoRequest(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-star"></i>User Leagues Info (BETA)</button>' +
+		//'<button id="UserLeaguesInfo" class="btn btn-primary btn" type="submit" onclick="preUserLeaguesInfoRequest(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-star"></i>User Leagues Info (BETA)</button>' +
 		'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
         '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
         '<option value="1" data-itr="">Minimap</option>' +
