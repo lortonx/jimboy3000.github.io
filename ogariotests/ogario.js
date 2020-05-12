@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.635
+// v1.636
 
 
 //window.testobjects = {};
@@ -172,24 +172,30 @@ function PotionDrinkerRare(slot) {
 }
 
 function massx21hour(slot) {
-    var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] //WORKED
-	/*
-	var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16]
+    var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] //WORKED				
+	/*var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16]
 	let massBoostName = "mass_boost_2x_1h"; 
 	for (let i = 0; i < massBoostName.length; i++) { 
 	bytes.push(massBoostName.charCodeAt(i));
-	}*/	
+	}*/
 		window.core.proxyMobileData(bytes);
+    setTimeout(function() {
+        var bytes = [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] 
+		window.core.proxyMobileData(bytes);
+    }, 100); 		
 }
-
 function massx224hour(slot) {
     var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104]
 	/*var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17]
 	let massBoostName = "mass_boost_2x_24h"; 
 	for (let i = 0; i < massBoostName.length; i++) { 
 	bytes.push(massBoostName.charCodeAt(i));
-	}*/	
-	window.core.proxyMobileData(bytes);	          
+	}*/
+	window.core.proxyMobileData(bytes);	
+    setTimeout(function() {
+        var bytes = [8, 1, 18, 26, 8, 70, 178, 4, 21, 10, 19, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104]
+		window.core.proxyMobileData(bytes);
+    }, 100); 		
 }
 function massx31hour(slot) {
     var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104] //WORKED
@@ -199,6 +205,10 @@ function massx31hour(slot) {
 	bytes.push(massBoostName.charCodeAt(i));
 	}*/	
 	window.core.proxyMobileData(bytes);
+    setTimeout(function() {
+        var bytes = [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104]
+		window.core.proxyMobileData(bytes);
+    }, 100); 	
 }
 function massx324hour(slot) {
     var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104]
@@ -206,8 +216,12 @@ function massx324hour(slot) {
 	let massBoostName = "mass_boost_3x_24h"; 
 	for (let i = 0; i < massBoostName.length; i++) { 
 	bytes.push(massBoostName.charCodeAt(i));
-	}*/		
+	}*/	
 	window.core.proxyMobileData(bytes);	
+    setTimeout(function() {
+        var bytes = [8, 1, 18, 26, 8, 70, 178, 4, 21, 10, 19, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104]
+		window.core.proxyMobileData(bytes);
+    }, 100); 		
 }
 
 function callEveryFullHourCoinDigger() {
