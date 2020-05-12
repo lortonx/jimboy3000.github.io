@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.637
+// v1.638
 
 
 //window.testobjects = {};
@@ -152,18 +152,22 @@ function autocoins(slot) {
 	autoRandomPotionDigger();
 //console.log(String.fromCharCode.apply(String, bytes));
 }
-window.autoRandomPotion=0;
 
+window.autoRandomPotion=0;
 function autoRandomPotionDigger() {
     setTimeout(function() {
 		window.autoRandomPotion++;
-		if (window.autoRandomPotion==7) window.autoRandomPotion=1
+		//if (window.autoRandomPotion==7) window.autoRandomPotion=1
 		if (window.autoRandomPotion==1) PotionDrinker(1)
 		if (window.autoRandomPotion==2) PotionDrinker(2)	
 		if (window.autoRandomPotion==3) PotionDrinker(3)	
 		if (window.autoRandomPotion==4) PotionDrinkerIDK(1)
 		if (window.autoRandomPotion==5) PotionDrinkerIDK(2)
 		if (window.autoRandomPotion==6) PotionDrinkerIDK(3)	
+		if (window.autoRandomPotion<=7){
+			autoRandomPotionDigger()
+			console.log('hit potion')
+		}
     }, 5000); 	
 }
 function userLeaguesInfoRequest(slot) {
@@ -177,7 +181,7 @@ function genericVideoAdRewardTokenRequest(slot) {
 
 function PotionDrinker(slot) {
     var bytes = [8, 1, 18, 7, 8, 124, 226, 7, 2, 8, slot];
-    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3 3 opens common 2 opens rare
+    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1 2 3 common rare mystical
 }
 function PotionDrinkerIDK(slot) {
 	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
@@ -191,11 +195,15 @@ function massx21hour(slot) {
 	for (let i = 0; i < massBoostName.length; i++) { 
 	bytes.push(massBoostName.charCodeAt(i));
 	}*/
-		window.core.proxyMobileData(bytes);
+	window.core.proxyMobileData(bytes);
     setTimeout(function() {
         var bytes = [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] 
 		window.core.proxyMobileData(bytes);
     }, 100); 		
+}
+function QuestActivation24h(slot) {
+	var bytes = [102, 8, 1, 18, 27, 8, 114, 146, 7, 22, 10, 20, 113, 117, 101, 115, 116, 95, 97, 99, 116, 105, 118, 97, 116, 105, 111, 110, 95, 50, 52, 104]
+	window.core.proxyMobileData(bytes);
 }
 function massx224hour(slot) {
     var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104]
