@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.638
+// v1.639
 
 
 //window.testobjects = {};
@@ -162,11 +162,10 @@ function autoRandomPotionDigger() {
 		if (window.autoRandomPotion==2) PotionDrinker(2)	
 		if (window.autoRandomPotion==3) PotionDrinker(3)	
 		if (window.autoRandomPotion==4) PotionDrinkerIDK(1)
-		if (window.autoRandomPotion==5) PotionDrinkerIDK(2)
+		if (window.autoRandomPotion==4) PotionDrinkerIDK(2)
 		if (window.autoRandomPotion==6) PotionDrinkerIDK(3)	
-		if (window.autoRandomPotion<=7){
+		if (window.autoRandomPotion<=6){
 			autoRandomPotionDigger()
-			console.log('hit potion')
 		}
     }, 5000); 	
 }
@@ -917,7 +916,7 @@ var displayText = {
         commandSound: 'Dźwięk powiadomienia o komendzie',
         virusSoundurl: 'Virus shot sound',
         virusSound: 'Virus shot sound',
-		massBooster: 'Mass *3 booster (PREMIUM USERS)',
+		massBooster: 'Mass *2 booster-> *3 booster',
         FacebookIDs: 'Facebook IDs',
         jellyPhisycs: 'Jelly physics',
         showTop5: 'Pokaż top 5 teamu',
@@ -1337,7 +1336,7 @@ var displayText = {
         commandSound: 'Command notification sound',
         virusSoundurl: 'Virus shot sound',
         virusSound: 'Virus shot sound',
-		massBooster: 'Mass *3 booster (PREMIUM USERS)',
+		massBooster: 'Mass *2 booster-> *3 booster',
         FacebookIDs: 'Facebook IDs',
         jellyPhisycs: 'Jelly physics',
         showTop5: 'Show teamboard',
@@ -3515,19 +3514,6 @@ function thelegendmodproject() {
 				$("#ao2t-hud").hide();
             }			
 		},
-		setMassBooster(){
-			if (defaultmapsettings.massBooster && ($("#nick").val().includes('℄') || window.proLicenceUID)) {
-				if (defaultmapsettings.massBooster){
-					toastr.warning("<b>[SERVER]:</b> Mass boost is enabled, please note that all Mass *3 (1 hour) will be consumed. After that Mass Boost will be used for free").css("width", "350px");
-				}
-			}					
-			else if (!defaultmapsettings.massBooster){
-					toastr.warning("<b>[SERVER]:</b> Mass boost is disabled").css("width", "350px");
-				}
-			else if (!($("#nick").val().includes('℄') || window.proLicenceUID)){
-					toastr.warning("<b>[SERVER]:</b> Mass boost is for Premium users").css("width", "350px");
-			}				           			
-		},
 		setAnimatedRainbowColor(){			
 			if (defaultmapsettings.animatedRainbowColor && tcm2 && tcm2.f && typeof tcm2.f.override === 'function') {
 				tcm2.f.override();
@@ -4046,10 +4032,7 @@ function thelegendmodproject() {
                         break;			
                     case 'universalChat':
                         this.setUniversalChat();
-                        break;		
-                    /*case 'massBooster':
-                        this.setMassBooster();
-                        break;	*/						
+                        break;							
                     case 'animatedRainbowColor':
                         this.setAnimatedRainbowColor();
                         break;							
@@ -9155,10 +9138,10 @@ function thelegendmodproject() {
                         } catch (error) {}
                         window.googlePic = "https" + window.testobjects2.split('https')[1].split('H')[0] + "H";
 
-						if (($("#nick").val().includes('℄') || window.proLicenceUID) && defaultmapsettings.massBooster && master.context) {				
+						if (defaultmapsettings.massBooster && master.context) {				
 							massx31hour();
 							if (!window.massBoosterMsg){
-								toastr.warning("<b>[SERVER]:</b> Mass boost is enabled, please note that all Mass *3 (1 hour) will be consumed. After that Mass Boost will be used for free").css("width", "350px");
+								toastr.warning("<b>[SERVER]:</b> Mass *2 booster -> *3 booster is enabled, this upgrades your boost to *3 for FREE if you have enabled Mass boost *2 on agar.io.<br><font color='blue'>Otherwise disable it, cause it will consume your boosts.</font>").css("width", "350px");
 								window.massBoosterMsg=true;
 							}
 						}				
