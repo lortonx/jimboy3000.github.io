@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.636
+// v1.637
 
 
 //window.testobjects = {};
@@ -149,9 +149,23 @@ function autocoins(slot) {
 	bytes.push(massBoostName.charCodeAt(i));
 	}	
 	window.core.proxyMobileData(bytes);
+	autoRandomPotionDigger();
 //console.log(String.fromCharCode.apply(String, bytes));
 }
- 
+window.autoRandomPotion=0;
+
+function autoRandomPotionDigger() {
+    setTimeout(function() {
+		window.autoRandomPotion++;
+		if (window.autoRandomPotion==7) window.autoRandomPotion=1
+		if (window.autoRandomPotion==1) PotionDrinker(1)
+		if (window.autoRandomPotion==2) PotionDrinker(2)	
+		if (window.autoRandomPotion==3) PotionDrinker(3)	
+		if (window.autoRandomPotion==4) PotionDrinkerIDK(1)
+		if (window.autoRandomPotion==5) PotionDrinkerIDK(2)
+		if (window.autoRandomPotion==6) PotionDrinkerIDK(3)	
+    }, 5000); 	
+}
 function userLeaguesInfoRequest(slot) {
     var bytes = [8, 1, 18, 8, 8, 130, 1, 146, 8, 2, 8, 1];
     window.core.proxyMobileData(bytes); //response 131	
@@ -161,12 +175,11 @@ function genericVideoAdRewardTokenRequest(slot) {
     window.core.proxyMobileData(bytes); //response 186
 }
 
-
 function PotionDrinker(slot) {
     var bytes = [8, 1, 18, 7, 8, 124, 226, 7, 2, 8, slot];
-    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3
+    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1,2,3 3 opens common 2 opens rare
 }
-function PotionDrinkerRare(slot) {
+function PotionDrinkerIDK(slot) {
 	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
     window.core.proxyMobileData(bytes); //PotionDrinkerRare(2) rare
 }
@@ -9454,6 +9467,8 @@ function thelegendmodproject() {
                             case 121:
 								window.testobjects102121=node;
                                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Open Potion For Product Response", option, response);
+								var bytes = [102, 8, 1, 18, 21, 8, 110, 242, 6, 16, 10, 14, 112, 111, 116, 105, 111, 110, 83, 107, 105, 112, 66, 114, 101, 119]
+								window.core.proxyMobileData(bytes); //Confirm Brew of any potions
                                 break;			
                             case 122:
 								window.testobjects102122=node;
