@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -40,7 +40,7 @@ var CutNameConflictwithMessage=false;
 */
 
 
-//privateservutil();
+
 window.proLicenceUID = localStorage.getItem("proLicenceUID");	
 var currentIP = "0.0.0.0:0";
 var currentIPopened;
@@ -159,7 +159,7 @@ var usedonceSkin = 0;
 var toastrSkinNotice = 0;
 var detailed = "";
 var detailed1;
-var fromstart = "false";
+
 userData = {};
 userData = JSON.parse(localStorage.getItem("userData"));
 var userip = "0.0.0.0:0";
@@ -189,15 +189,10 @@ var switcheryLegendSwitch, switcheryLegendSwitch2;
 var showonceusers3 = 0;
 var client2;
 var xhttp = new XMLHttpRequest();
-//var a= xhttp.response;
 
 
-//Animated Skins
-var animatedi;
-var animateda;
-var animatedkey;
-window.a = 0;
-var b, c;
+
+
 var animatedserverchanged = false;
 
 if (timesopened != null) {
@@ -673,13 +668,10 @@ function realmodereturn() {
 function realmodereturnfromStart() {
     region = getParameterByName("r", url);
     realmode = getParameterByName("m", url);
-    fromstart = true;
-    return fromstart, region, realmode, fromstart;
+
+    return region, realmode, fromstart;
 }
 
-function returnfromstartfalse() {
-    return fromstart = false;
-}
 
 function searchIPHandler(searchStr) { //VERY WEIRD FUNCTION, MOD DOESNT LOAD IF CHANGED
     //	if (messageone==0){toastr.info("Initializing Communication, please wait...").css("width", "250px");}
@@ -747,9 +739,6 @@ function findIP(searchIP) {
                     timeOut: 20000,
                     extendedTimeOut: 20000
                 }).css("width", "210px");
-                //    testmessage();
-                //MC.setQuality($('#quality').val());
-                //showMenu();
             } else {
                 changeServer();
                 timerId = setInterval(function() {
@@ -776,10 +765,6 @@ function findIP(searchIP) {
                                 timeOut: 20000,
                                 extendedTimeOut: 20000
                             }).css("width", "210px");
-                            //       testmessage();
-                            //		$("#gamemode").val("nothing");
-                            //MC.setQuality($('#quality').val());
-                            //showMenu();
                         } else {
                             //console.log("MC.isConnecting(): " + MC.isConnecting());
                             changeServer();
@@ -844,8 +829,6 @@ function searchPlayer(searchString) {
                 }).css("width", "210px");
                 //		testmessage();
                 $("#gamemode").val("nothing");
-                //MC.setQuality($('#quality').val());
-                //showMenu();
             } else {
                 changeServer();
 
@@ -886,9 +869,6 @@ function searchPlayer(searchString) {
                                 timeOut: 20000,
                                 extendedTimeOut: 20000
                             }).css("width", "210px");
-                            //			testmessage();
-                            //MC.setQuality($('#quality').val());
-                            //showMenu();
                         } else {
                             //console.log("MC.isConnecting(): " + MC.isConnecting());
                             changeServer();
@@ -3918,25 +3898,6 @@ function chatfunction() {
             return hiddenfromclan;
         }
     }
-    /* else if (messageone==0){
-		var tempmode = getGameMode();
-		$("#ChatBtn1").attr('class', 'fa fa-eye-slash');
-		$("#ChatBtn").attr("data-original-title", "Chat is ON, hide/show up");
-	//	MC.onPlayerDeath=function(){ $("#clantag").val(saveclanpassword); }
-		$("#create-party-btn-2").click();
-		setTimeout(function () {
-		if(tempmode==":party"){$('#gamemode option[value=":party"]').prop('selected', 'selected').change();}
-		if(tempmode==""){$('#gamemode option[value=""]').prop('selected', 'selected').change();}
-		if(tempmode==":teams"){$('#gamemode option[value=":teams"]').prop('selected', 'selected').change();}
-		if(tempmode==":experimental"){$('#gamemode option[value=":experimental"]').prop('selected', 'selected').change();}
-		}, 6000);
-		setTimeout(function () {
-		MC.setQuality($('#quality').val());
-		}, 8000);
-	}
-	
-	
-    }   */
     else {
         toastr.info(Premadeletter35 + "!").css("width", "210px");
     }
@@ -5991,7 +5952,8 @@ function initializeLM(modVersion) {
     $('#nick').blur(function() {
         previousnickname = $("#nick").val();
         localStorage.setItem("previousnickname", previousnickname);
-        //Animated Skins
+		//Animated Skins
+		var animatedkey;
         for (animatedkey in animatedskins) {
             if (animatedkey == $("#nick").val()) {
                 toastr.info("Nickname reserved for <font color='yellow'><b>Animated Skins</font></b>");
