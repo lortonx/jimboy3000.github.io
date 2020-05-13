@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -8,7 +8,7 @@ appendLMhiFbPs();
 loadericon();
 
 //Authenticate Mod Script
-var accesstomod;
+
 getaccesstoken();
 
 /*
@@ -38,9 +38,8 @@ var CutNameConflictwithMessage=false;
     };
 })();
 */
-$("#gamemode").prop('disabled', false);
-$("#region").prop('disabled', false);
-var oldgamemode = $("#gamemode");
+
+
 //privateservutil();
 window.proLicenceUID = localStorage.getItem("proLicenceUID");	
 var currentIP = "0.0.0.0:0";
@@ -51,16 +50,13 @@ var previousMode = localStorage.getItem("gamemode");
 var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlytenth = localStorage.getItem("checkonlytenth");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
-var coinTimer;
 var musicPlayer;
-var originalDeath;
+
 var stateObj = {
     foo: "bar"
 };
-var containermain;
-var closebutton1 = "0";
-var modebetter = "";
-var modbetter2 = "";
+
+
 var fullornot = "NO";
 var minimapbckimg = "";
 var leadbimg = "";
@@ -105,9 +101,8 @@ var MAINBTBtn = localStorage.getItem("MAINBTBtn");
 var AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
 //var YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
 var TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
-var troll1Btn = localStorage.getItem("troll1Btn");
 
-var autoCoinBtn = localStorage.getItem("autoCoinBtn");
+
 var timesopened = localStorage.getItem("timesopened");
 var url = localStorage.getItem("url");
 var region = getParameterByName("r", url);
@@ -263,11 +258,7 @@ var tcm2 = {
 };
 
 
-if (realmode == "") {
-    modebetter2 = ":ffa";
-} else {
-    modebetter2 = realmode;
-}
+
 privateserverpassword();
 urlIpWhenOpened();
 
@@ -381,8 +372,7 @@ function getaccesstoken() {
         url: "https://legendmod.ml/AjaxData/accesstoken.html",
         datatype: "json",
         success: function(info) {
-            accesstomod = info[17];
-            //return accesstomod;
+			var accesstomod = info[17];
             getaccesstoken2(accesstomod);
         }
     });
@@ -1434,9 +1424,9 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
     //    LegendJSON.legendSettings.YoutubeAutoBtn = localStorage.getItem("YoutubeAutoBtn");
     LegendJSON.legendSettings.TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
-    LegendJSON.legendSettings.troll1Btn = localStorage.getItem("troll1Btn ");
 
-    LegendJSON.legendSettings.autoCoinBtn = localStorage.getItem("autoCoinBtn");
+
+
     LegendJSON.legendSettings.timesopened = localStorage.getItem("timesopened");
     LegendJSON.legendSettings.saveclanpassword = localStorage.getItem("saveclanpassword");
     LegendJSON.legendSettings.dyinglight1load = localStorage.getItem("dyinglight1load");
@@ -1692,9 +1682,9 @@ function saveLegendJSONAPI() {
         localStorage.setItem("AnimatedSkinBtn", LegendJSON.legendSettings.AnimatedSkinBtn);
         //    localStorage.setItem("YoutubeAutoBtn", LegendJSON.legendSettings.YoutubeAutoBtn);
         localStorage.setItem("TIMEcalBtn", LegendJSON.legendSettings.TIMEcalBtn);
-        localStorage.setItem("troll1Btn", LegendJSON.legendSettings.troll1Btn);
 
-        localStorage.setItem("autoCoinBtn", LegendJSON.legendSettings.autoCoinBtn);
+
+
         localStorage.setItem("timesopened", LegendJSON.legendSettings.timesopened);
         localStorage.setItem("saveclanpassword", LegendJSON.legendSettings.saveclanpassword);
         localStorage.setItem("dyinglight1load", LegendJSON.legendSettings.dyinglight1load);
@@ -3471,10 +3461,7 @@ function enableshortcuts() {
     if ($("#SHOSHOBtn").attr('aria-pressed') == "false") {
         $("#SHOSHOBtn").click();
     }
-    //	if($("#TIMEBtn").attr('aria-pressed') == "false"){
-    //	$("#TIMEBtn").click(); }
-    //	if($("#MAINBBtn").attr('aria-pressed') == "false"){
-    //	$("#MAINBBtn").click(); }
+
     //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
     //	$("#MAINBTBtn").click(); }
     if ($("#MAINBTBtn").attr('aria-pressed') == "false") {
@@ -5523,19 +5510,11 @@ function initializeLM(modVersion) {
         '</div></div>' +
         '<button id="SHOSHOBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-puzzle-piece"></i>' + Premadeletter42 + '</button>' +
         '<button id="XPBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-gamepad"></i>' + Premadeletter44 + '</button>' +
-        //                                          '<button id="TIMEBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter46 + '</button>' +
-        //											'<button id="MAINBBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-bars"></i>Show Main Banner</button>' +
         '<button id="MAINBTBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-minus"></i>' + Premadeletter45a + '</button>' +
         '<button id="AnimatedSkinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-grav"></i>' + Premadeletter46 + '</button>' +
-        //											'<button id="RotationBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-repeat"></i>Show Rotation Btns</button>' +
         '<button id="HideAllBthn" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Temporarily Hide/Show Everything. Function for Youtubers" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-exclamation-triangle"></i>' + Premadeletter49 + '</button>' +
         '<button id="TIMEcalBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-calculator"></i>' + Premadeletter50 + '</button>' +
-        //											'<button id="copyGameNames" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%; display: none;"><i class="fa fa-scissors"></i>' + Premadeletter52 + '</button>' +
-        /*           '<button id="autoCoinBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-clock-o"></i>' + Premadeletter53 + '</button>' +
-                   //											'<button id="autoRespawnBtn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-flash"></i> Auto respawn</button>' +
-                   '<button id="troll1Btn" type="button" class="btn btn-sm btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off" data-original-title="" title="" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-left: 0.5%;"><i class="fa fa-bath"></i>' + Premadeletter55 + '</button>' +
-                   //											'<button id="OpenInfo" type="button" class="btn btn-sm btn-danger" data-toggle="button" aria-pressed="false" autocomplete="off" data-toggle="tooltip" data-placement="right" data-original-title="Mod Information and choose Template" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-info-circle"></i>Information</button>' +
-        */
+
         '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
         '<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="BeforeSpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>' +
         '<button id="LegendmodShop" class="btn btn-primary btn" type="submit" onclick="BeforeLegendmodShop(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Legend mod Shop</button>' +
@@ -5927,27 +5906,17 @@ function initializeLM(modVersion) {
         if (searchSip != null) {
             if (realmode == ":party") {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
-                // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
                 copyToClipboardAll();
             } else if (realmode != ":party") {
-                //					if (region!=null&&realmode!=null){
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-                //CopyTkPwLb2="http://agar.io/?sip=" + searchSip + "&?pass=" + $("#clantag").val() + "&?r=" + region + "&m=" + realmode;	
                 copy(CopyTkPwLb2);
-                //					}
-                //					else{
-                //					CopyTkPwLb2="http://agar.io/?sip=" +$("#server-token").val()+ "&?pass=" + $("#clantag").val();	
-                //					copy(CopyTkPwLb2);
-                //					}
             }
         } else if (privateSrv == null) { //else if (searchSip != null && privateSrv==null)
             if (realmode == ":party") {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val();
-                // CopyTkPwLb2="http://agar.io/"+"?&pass=" + $("#clantag").val() + $("#server").val();
                 copyToClipboardAll();
             } else if (realmode != ":party") {
                 CopyTkPwLb2 = "https://agar.io/?sip=" + $("#server-token").val() + "&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
-                //CopyTkPwLb2="http://agar.io/?sip="+$("#server-token").val()+"&?pass=" + $("#clantag").val() + "&?r=" + $('#region').val() + "&m=" + realmode;
                 copyToClipboardAll();
             }
         } else if (privateSrv != null) {
@@ -6092,46 +6061,21 @@ function initializeLM(modVersion) {
 
     });
     $("#VoiceBtn").click(function() {
-        //				if (modVersion == "1.4" ) {
         var currentIP2 = $("#server-token").val();
         var pass2 = $("#clantag").val();
-        //var currentIP2=currentIP.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(".","");currentIP2=currentIP2.replace(":","");
-        //semiurl2=currentIP2 + $("#clantag").val() + "?name=" + $("#nick").val() +"&?ip=" + currentIP;	
         if (pass2 != "") {
             semiurl2 = currentIP2 + "pass=" + pass2;
         } else {
             semiurl2 = currentIP2;
         }
-
-
-
-
         url2 = "https://talky.io/" + semiurl2;
 
         setTimeout(function() {
             $("#VoiceBtn").focusout();
         }, 100);
-        //			setTimeout(function (){ $("#VoiceBtn").focusout();}, 5000);
-        //			setTimeout(function (){ $("#VoiceBtn").focusout();}, 8000);
-        var win = window.open(url2, '_blank');
-        //				}
-        //			else{
-        //			toastr.info('Mod <font color="yellow"><b>v' + modVersion + '</b></font>  ' + Premadeletter16 + ' <font color="yellow"><b>v1.4</b></font>, in order to use this function</font>');	
-        //			}					
+        var win = window.open(url2, '_blank');			
     });
 
-    $('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
-    $('#opennamechars').tooltip({
-        title: "Design Nickname Font",
-        placement: "bottom"
-    });
-    $('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="BeforeReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
-    $('#openskinchanger').attr('placeholder', 'Name').tooltip({
-        title: "Flag the Fake's Skin",
-        placement: "bottom"
-    });
-
-    //$('#clantag').css("width", "-=20px");	$('#nick').css("width", "+=20px");	
     $('#clantag').css("width", "95.5px");
     $('#nick').css("width", "171px");
     $('#clantag').mouseenter(function() {
@@ -6695,10 +6639,6 @@ function joinSERVERfindinfo() {
                             $('.logEntry').eq(i).remove();
                         }
                     }
-
-                    //if ($('.logEntry').html()!=undefined && $('.logEntry').html()!=""){
-                    //$("#region").val($('.logEntry>#regioninfo').html());
-                    //$("#gamemode").val($('.logEntry>#modeinfo').html());}
                     if ($('.logEntry').html() != undefined && $('.logEntry').html() != "") {
                         Regions = {}
                         var count2 = 0;
@@ -6787,14 +6727,7 @@ function joinSERVERfindinfo() {
 							}		
                             //adres();
                         }
-                    }
-                    /*
-                    else{
-                    var FinalText = "No wispers found</font>";
-                    toastr.info(FinalText).css("width", "350px");	
-                    }
-                    */
-                    //$('.logEntry').click();			
+                    }		
                 }
             }, 1500);
         }
@@ -6989,12 +6922,7 @@ function isObject(val) {
 
 function LegendModServerConnect(){};
 
-function HiddenBots() {
-    var hiddenBotsJS = document.createElement("script");
-    hiddenBotsJS.type = "text/javascript";
-    hiddenBotsJS.src = "https://legendmod.ml/ExampleScripts/agario-bots/bots.js";
-    $("body").append(hiddenBotsJS);
-}
+
 
 
 function UIDcontroller() {
