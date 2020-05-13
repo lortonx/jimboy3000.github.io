@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.642
+// v1.643
 
 
 //window.testobjects = {};
@@ -2281,7 +2281,7 @@ cimgSpecialSkinEffectsLegendHeroes.src = 'https://legendmod.ml/banners/iconSpeci
 cimgSpecialSkinEffectsLegendHeroes2 = new Image;
 cimgSpecialSkinEffectsLegendHeroes2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan2.png';
 cimgSpecialSkinEffectsShiro = new Image;
-cimgSpecialSkinEffectsShiro.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsShiro.png;
+cimgSpecialSkinEffectsShiro.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsShiro.png';
 
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
