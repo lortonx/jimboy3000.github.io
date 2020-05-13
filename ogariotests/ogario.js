@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.644
+// v1.645
 
 
 //window.testobjects = {};
@@ -4305,7 +4305,17 @@ function thelegendmodproject() {
                 $("#nick").appendTo($(".nick"));
                 $(".nick").append('<span class="input-group-btn"><button id="stream-mode" class="btn active ogicon-eye"></button></span>');
                 $(".nick").after('<div class="input-group skin"><input id="skin" class="form-control" placeholder="Manual direct skin URL" maxlength="150"><input type="hidden" id="color" value="' + ogarcopythelb.color + '" maxlength="7" /><span class="input-group-addon"><i></i></span><span class="input-group-btn"><button id="hide-url" class="btn active ogicon-eye"></button></span></div>');
-                $("#locationKnown, #locationUnknown").insertAfter($(".skin"));
+				$('#stream-mode').before('<button id="opennamechars" class="btn btn-info" style="background-color: transparent;" onclick="opennamechars();return false;"><i class="fa fa-language"></i></button>');
+				$('#opennamechars').tooltip({
+					title: "Design Nickname Font",
+					placement: "bottom"
+				});
+				$('#hide-url').before('<button id="openskinchanger" class="btn btn-info" style="background-color: transparent;" onclick="BeforeReportFakesSkin();return false;"><i class="fa fa-wpexplorer"></i></button>');
+				$('#openskinchanger').attr('placeholder', 'Name').tooltip({
+				title: "Flag the Fake's Skin",
+				placement: "bottom"
+				});               
+				$("#locationKnown, #locationUnknown").insertAfter($(".skin"));
                 $("#region").before('<button class="btn btn-warning btn-server-info ogicon-cogs" style="display: none;"></button>');
                 $(".btn-spectate, .btn-logout").appendTo("#agario-main-buttons");
                 $("#agario-main-buttons").addClass("clearfix").before('<div id="server-info" class="form-group clearfix"><input id="server-ws" class="form-control" placeholder="Server WS" style="display: none;">'+
