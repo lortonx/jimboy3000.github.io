@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.652
+// v1.653
 
 
 //window.testobjects = {};
@@ -11016,6 +11016,7 @@ function thelegendmodproject() {
                             rePosX = ~~(minX + posX / 2 + ogarcopythelb * posX);
                             rePosY = ~~(minY + posY / 2 + length * posY);
 							if (application == this.currentSector && !type){
+								console.log(application)
 								ctx.font = defaultSettings.miniMapFontWeight + ' ' + (e - 6) + 'px ' + defaultSettings.miniMapFontFamily;
 								ctx.fillStyle = defaultSettings.miniMapMyCellColor;
 								ctx.miniMapCtx.globalAlpha = 1							
