@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092E by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092f by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -4556,137 +4556,6 @@ function preventcanvasimagecrash() {
     }
 }
 
-function doGl() {
-	var GgImg = window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getImageUrl();
-	var GgProfileName = window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getGivenName(); //First Name
-	var GgProfileSurName = window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getFamilyName(); //Last Name
-	var GgUID = window.gapi.auth2.getAuthInstance().currentUser.get().getId();
-
-	$("#UserProfilePic>img").attr('src', GgImg);	
-	$("#UserProfileName1").text(GgProfileName);
-	$("#UserProfileUID1").text(GgUID);
-	
-	if (userid == GgUID){
-		setLevelProgressBar();
-	}
-    userfirstname = GgProfileName;
-    userid = GgUID;
-    userlastname = GgProfileName;
-    if (userfirstname != null) {
-        localStorage.setItem("userfirstname", userfirstname);
-    }
-    if (userlastname != null) {
-        localStorage.setItem("userlastname", userlastname);
-    }
-    if (userid != null) {
-        localStorage.setItem("userid", userid);
-    }
-    return userfirstname, userlastname, usergender, userid;
-
-}
-
-
-function doFB() {
-
-    FB.api('/me', {
-        fields: 'first_name, last_name, gender, id'
-    }, function(fbresponse) {
-        $("#UserProfilePic>img").attr('src', 'https://graph.facebook.com/' + fbresponse.id + '/picture?type=large');
-
-        $("#UserProfileName1").text(fbresponse[Object.keys(fbresponse)[0]]);
-        $("#UserProfileUID1").text(fbresponse[Object.keys(fbresponse)[2]]);
-
-		if (userid == fbresponse[Object.keys(fbresponse)[2]]){
-			setLevelProgressBar();
-		}		
-        userfirstname = fbresponse[Object.keys(fbresponse)[0]];
-        if (userfirstname != null) {
-            localStorage.setItem("userfirstname", userfirstname);
-        }
-        userlastname = fbresponse[Object.keys(fbresponse)[1]];
-        if (userlastname != null) {
-            localStorage.setItem("userlastname", userlastname);
-        }
-        userid = fbresponse[Object.keys(fbresponse)[2]];
-        if (userid != null) {
-            localStorage.setItem("userid", userid);
-        }
-        usergender = fbresponse[Object.keys(fbresponse)[3]];
-        if (usergender != null) {
-            localStorage.setItem("usergender", usergender);
-        }
-        return userfirstname, userlastname, usergender, userid;
-
-    });
-
-	FB.api('/me/friends', function(response){
-		window.master.fbUsers = response.data;
-	}, {scope: 'user_friends'});	
-}
-
-function doGl2() {
-    if (window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance() && window.gapi.auth2.getAuthInstance().isSignedIn.get()) {
-        doGl();
-    }
-}
-
-function doFB2() {
-    FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-            doFB();
-        }
-    });	
-}
-
-function loginsfbGplstart() {	
-	setTimeout(function() {
-    if (window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance() && window.gapi.auth2.getAuthInstance().isSignedIn.get()) {
-        doGl();
-    } else {
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                doFB();
-            }
-        });
-    }	
-	}, 4000);
-}
-
-function loginsfbGpl() {
-    master._doLoginWithGPlus = master.doLoginWithGPlus;
-
-    master.doLoginWithGPlus = joint([doGl2, master._doLoginWithGPlus]);
-    master._doLoginWithFB = master.doLoginWithFB;
-
-    master._doLoginWithFB = joint([doFB2, master._doLoginWithFB]);
-    $("#logoutbtn").click(function() {
-        $("#UserProfileName1").text("Guest");
-        $("#UserProfileUID1").text("");
-		$("#UserProfileUUID1").val("");
-		
-        $("#UserProfilePic>img").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
-    });
-}
-
-function loginsfbGpl2() {
-    $("#logoutbtn").click(function() {
-        $("#UserProfileName1").text("Guest");
-        $("#UserProfileUID1").text("");
-		$("#UserProfileUUID1").val("");
-        $("#UserProfilePic>img").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
-    });
-    $(".btn.btn-primary.btn-login.btn-fb").click(function() {
-        //toastr.warning("<b>[SERVER]:</b> Facebook login info will be reflected after restart");		
-        setTimeout(function() {
-            doFB2();
-        }, 5000);
-    });
-    $(".btn.btn-primary.btn-login.btn-gplus").click(function() {
-        setTimeout(function() {
-            doGl2();
-        }, 5000);
-    });
-}
 
 function joint(a) {
     var b;
@@ -5418,7 +5287,6 @@ function initializeLM(modVersion) {
         '<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 4px; padding: 0px 0 0px 0;"><span id="legendotherscripts" class="title" style="">Expansions: </span>' +
         '</div><div id="LEGENDAds2"></div><div id="LEGENDAds3"></div>' +
         '</div></div>');
-    loginsfbGpl2();
     //fix userprofile
     $("#UserProfile").css("font-size", "12px");
     $("#UserProfilePic").click(function() {
@@ -6214,8 +6082,6 @@ function initializeLM(modVersion) {
     $('#server-connect').click(function() {
         adres(null, null, null);
     });
-			
-        loginsfbGplstart();
         triggerLMbtns();
         languagemodfun();
         $('[data-toggle="tooltip"]').tooltip();
