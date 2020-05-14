@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -2038,7 +2038,6 @@ function MsgServCommandsreturner() {
 
 
 function universalchat() {
-    //$("#overlays").css("z-index", 100);
     setTimeout(function() {		
 		if (application) application.setUniversalChat()
     }, 2000);
@@ -3118,25 +3117,9 @@ function SquareAgar() {
         '#time-hud { border-radius: 10px; } </style>');
 }
 
-/*
-function rotateminimapsectors() {	
-    var c = document.getElementById("minimap");
-    var ctx = c.getContext("2d");
-    ctx.rotate(90 * Math.PI / 180);
-    var a = $("#minimap").height() - $("#minimap").width();
-    ctx.translate(a, -$("#minimap").height());
-}
-*/
 
-function rotateminimapsectors() {
-	if (!window.manualRotation) window.manualRotation = window.legendmod.bgpi
-	window.manualRotation--
-	if (window.manualRotation<0){
-		window.manualRotation=3
-	}
-	console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map rotated.Tech POS:', window.manualRotation);
-	application.settechvnr(window.manualRotation)		
-}
+
+
 function sendicon1() {
 /*	
     if ($('#message-box').css('display') == 'block') {
@@ -4069,26 +4052,26 @@ function triggerLMbtns() {
 
     $('.btn').css("text-transform", "capitalize");
     PanelImageSrc = $("#menuBg").val();
-    if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/pattern.png") {
+    if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/banners/static/img/pattern.png") {
         $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
     }
     $("#copyLBBtn").blur(function() {
-        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/pattern.png") {
+        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/banners/static/img/pattern.png") {
             $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
         }
     });
     $("#dropDown>#copyLBBtn").blur(function() {
-        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/pattern.png") {
+        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/banners/static/img/pattern.png") {
             $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
         }
     });
     $("#copySIPandPass").blur(function() {
-        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/pattern.png") {
+        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/banners/static/img/pattern.png") {
             $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
         }
     });
     $("#copySIPPassLB").blur(function() {
-        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/pattern.png") {
+        if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/banners/static/img/pattern.png") {
             $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
         }
     });
@@ -5382,11 +5365,7 @@ function initializeLM(modVersion) {
     $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Results</h5>' +
         '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
         '</div></div>');
-/*
-    $("#minimap-hud").prepend('<div id="rotate-hud" class="" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: 0px; display: block;">' +
-        	'<button id="RotateLeft" class="btn-link" style="padding: 0px;color: #d6d3d3; width: 49%;height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip"  data-original-title="Rotate Left"><i class="fa fa-undo" style="padding-left: 0px;"></i></button>'+
-        '<button id="RotateRight" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 49%; height: 100%;" onclick="rotateminimapsectors();" data-toggle="tooltip" data-original-title="Rotate"><i class="fa fa-repeat" style="padding-left: 0px;"></i></button></div>');
-*/
+
     $("#minimap-hud").prepend('<div id="shortcuts-hud" class="hud" style="width: 100%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -30px; display: block;">' +
         '<button id="VoiceBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Voice & Camera Chat"><i id="VoiceBtn1" class="fa fa-microphone" style="padding-left: 0px;"></i></button>' +
         '<button id="MiniScripts" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setscriptingfunction();" data-toggle="tooltip" data-original-title="Mini Scripts"><i id="MiniScripts1" class="fa fa-linode" style="padding-left: 0px;"></i></button>' +
