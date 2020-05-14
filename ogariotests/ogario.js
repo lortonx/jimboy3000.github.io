@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.645
+// v1.646
 
 
 //window.testobjects = {};
@@ -12628,6 +12628,45 @@ function preUserLeaguesInfoRequest(){
     s.src = "https://legendmod.ml/LMexpress/userLeaguesInfoRequest.js";
     $("body").append(s);
 }
+
+
+
+
+
+
+function openhelper() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/legendhelper.js";
+    $("body").append(s);
+}
+function opennamechars() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/nicks/nicknamechars.js";
+    $("body").append(s);
+}
+
+function legendformIframe() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://legendmod.ml/legendformIframe.js";
+    $("body").append(s);
+}
+function rotateminimapsectors() {
+	if (!window.manualRotation) window.manualRotation = window.legendmod.bgpi
+	window.manualRotation--
+	if (window.manualRotation<0){
+		window.manualRotation=3
+	}
+	console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Map rotated.Tech POS:', window.manualRotation);
+	application.settechvnr(window.manualRotation)		
+}
+
+
+
+
+
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
