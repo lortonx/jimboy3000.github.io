@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092I by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -627,7 +627,7 @@ function realmodereturnfromStart() {
     region = getParameterByName("r", url);
     realmode = getParameterByName("m", url);
 
-    return region, realmode, fromstart;
+    return region, realmode;
 }
 
 
@@ -3593,12 +3593,6 @@ function exitFullscreen() {
     }
 }
 
-function Bino() {
-	legendmod.sendFreeSpectate()
-    //KeyEvent.simulate(81, 81)
-}
-
-
 function msgcommand1f() {
 	
     commandMsg = "Hello";
@@ -4331,12 +4325,6 @@ function bluebtns() {
         })
         .mouseleave(function() {
             $('#yout').css('background-color', "transparent");
-        });
-    $('#Bino').mouseenter(function() {
-            $('#Bino').css('background-color', Top5MassColor);
-        })
-        .mouseleave(function() {
-            $('#Bino').css('background-color', "transparent");
         });
     $('#playerBtn').mouseenter(function() {
             $('#playerBtn').css('background-color', Top5MassColor);
@@ -5372,7 +5360,6 @@ function initializeLM(modVersion) {
         '<button id="SendCommands" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setmessagecomfunction();" data-toggle="tooltip" data-original-title="Message Script Commands"><i id="SendCommands1" class="fa fa-sitemap" style="padding-left: 0px;"></i></button>' +
         '<button id="Images" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="seticonfunction();" data-toggle="tooltip" data-original-title="Message Imgur Icons"><i id="Images1" class="fa fa-picture-o" style="padding-left: 0px;"></i></button>' +
         '<button id="yout" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="setytfunction();" data-toggle="tooltip" data-original-title="Message Youtube Videos"><i id="yout1" class="fa fa-youtube" style="padding-left: 0px;"></i></button>' +
-        '<button id="Bino" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" onclick="Bino();" data-toggle="tooltip" data-original-title="[Spectate Mode Only] Binoculars"><i id="BinoBtnI" class="fa fa-binoculars" style="padding-center: 0px;"></i></button>' +
         '<button id="playerBtn" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 11%; height: 100%;" data-toggle="tooltip" data-original-title="Click play on youtube tab at first"><i id="playerI" class="fa fa-play-circle" style="padding-center: 0px;"></i></button>' +
         '<button id="fullscreenBtn" class="btn-link" style="padding: 0px;color: #d6d3d3;width: 11%;height: 100%;" onclick="toggleFullScreen(fullornot);" data-toggle="tooltip" data-original-title="Fullscreen"><i class="fa fa-tv" style="padding-left: 0px;"></i></button></div>');
 
