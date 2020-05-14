@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.649
+// v1.651
 
 
 //window.testobjects = {};
@@ -11014,6 +11014,11 @@ function thelegendmodproject() {
                             var application = String.fromCharCode(65 + length) + (ogarcopythelb + 1);
                             rePosX = ~~(minX + posX / 2 + ogarcopythelb * posX);
                             rePosY = ~~(minY + posY / 2 + length * posY);
+							if (application == this.currentSector && !type){
+								ctx.font = defaultSettings.miniMapFontWeight + ' ' + (e - 6) + 'px ' + defaultSettings.miniMapFontFamily;
+								ctx.fillStyle = defaultSettings.miniMapMyCellColor;
+								ctx.miniMapCtx.globalAlpha = 1							
+							}
                             ctx.fillText(application, rePosX, rePosY);
                         }
                     }
