@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092D by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092E by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -533,7 +533,7 @@ function urlIpWhenOpened() {
 
     setTimeout(function() {
             currentIP = "live-arena-" + $("#server-token").val() + ".agar.io";
-            if (searchSip != null {
+            if (searchSip != null) {
                 if (region == null) {
                     history.pushState(stateObj, "page 2", "?sip=" + searchSip);
                 } else {
