@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.647
+// v1.648
 
 
 //window.testobjects = {};
@@ -4458,7 +4458,7 @@ function thelegendmodproject() {
                     '<a href="#" id="set-fullSpectator" class="ogicon-eye"  style="display: none"></a>' +
                     '<a href="#" id="set-ingameSpectator" class="ogicon-power"  style="display: none"></a>' +
                     '<a href="#" id="RotateLeft" onclick="rotateminimapsectors();"  class="ogicon-loop2"></a>' +
-					'<a href="#" id="Bino" onclick="LM.sendFreeSpectate()"  class="ogicon-pacman"></a>' +
+					'<a href="#" id="Bino" onclick="legendmod.sendFreeSpectate()"  class="ogicon-pacman"></a>' +
 					'<a href="#" id="set-targeting" class="ogicon-target"></a>' +
                     '<a href="#" id="set-private-minimap" class="ogicon-location2"></a>' +
                     '<a href="#" id="cancel-targeting" class="ogicon-cancel-circle"></a>' +
