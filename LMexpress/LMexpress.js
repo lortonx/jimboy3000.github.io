@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.095 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -173,7 +173,7 @@ var MSGCOMMANDSA;
 var MSGCOMMANDS2;
 var MSGCOMMANDS3;
 var Express = "True";
-var acceptServerBtnFlag = null;
+
 //for the LM JSON
 var LegendJSON;
 var LegendSettings = "true";
@@ -396,7 +396,6 @@ function adres(info, thismode, thisregion) {
     if ($("#gamemode").val() != ":party") {
         setTimeout(function() {
             currentIP = "live-arena-" + $("#server-token").val() + ".agar.io";
-            $("#server").val(currentIP);
 
                 if (realmode != ":party") {
                     if (!thismode) {
@@ -423,15 +422,13 @@ function adres(info, thismode, thisregion) {
                     }
                 } else if (realmode == ":party") {
                     window.history.pushState(null, null, window.location.pathname);
-                    $("#server").val("#" + window.location.href.replace('https://agar.io/#', ''));
 					window.location.href="https://agar.io/#"+ $('#party-token').val()
                 }
 
         }, 1800);
     } else { //if party
         setTimeout(function() {             
-            window.history.pushState(null, null, window.location.pathname);
-            $("#server").val("#" + window.location.href.replace('https://agar.io/#', ''));		
+            window.history.pushState(null, null, window.location.pathname);	
 			window.location.href="https://agar.io/#"+ $('#party-token').val()
         }, 2000);
     }
@@ -448,31 +445,6 @@ function LMserverbox() {
             } else f = "";
             document.cookie = "agario_redirect=" + a + f + "; path=/"
         }
-        $(function() {
-            $("#gamemode").after('<input id="server" class="form-control" style="width: 74%;  display: none; margin-left: 0px; margin-top: 5px"><button type="submit" id="connect" class="btn btn-primary" style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button><button type="submit2" id="connect2" class="btn btn-primary btn " style="width: 24%; display: none; margin-left: 6px; margin-top: -3px">Connect</button>');
-            $("#connect2").tooltip({
-                title: "Connect to server, or restablish communication",
-                placement: "left"
-            });
-            $("#connect2").click(function() {
-                if ($("#server").val().includes("#") == false) {
-                    if ($("#server").val().includes(":80") == true) {
-                        $("#server").val($("#server").val().replace(":80", ""));
-                    } //fixing code for :80  
-                    var texture2, texture3;
-                    var texture2, texture3;
-                    texture3 = $("#server").val();
-                    texture2 = texture3.replace("live-arena-", "");
-                    texture2 = texture2.replace(".agar.io:80", "");
-                    texture2 = texture2.replace(".agar.io", "");
-                    $("#server-token").val(texture2);
-                    $("#server-join").click();
-                } else {
-                    joinpartyfromconnect();
-                }
-
-            });
-        });
         joinSIPonstart();
         joinPLAYERonstart();
 
@@ -792,9 +764,9 @@ function copyToClipboard(element) {
 function copyToClipboardAll() {
     $("#CopyTkPwLb").remove();
     if ($("#top5-pos").text() != "") {
-        $("#connect2").after('<er id="CopyTkPwLb" style="display: none;">Server: ' + CopyTkPwLb2 + '<br>Leaderboard: ' + $("#leaderboard-positions").text() + '<br>Teamboard:' + $("#top5-pos").text() + '<br>My Game Name: ' + $("#nick").val() + '</er>');
+        $("#server-join").after('<er id="CopyTkPwLb" style="display: none;">Server: ' + CopyTkPwLb2 + '<br>Leaderboard: ' + $("#leaderboard-positions").text() + '<br>Teamboard:' + $("#top5-pos").text() + '<br>My Game Name: ' + $("#nick").val() + '</er>');
     } else {
-        $("#connect2").after('<er id="CopyTkPwLb" style="display: none;">Server: ' + CopyTkPwLb2 + '<br>Leaderboard: ' + $("#leaderboard-positions").text() + '<br>My Game Name: ' + $("#nick").val() + '</er>');
+        $("#server-join").after('<er id="CopyTkPwLb" style="display: none;">Server: ' + CopyTkPwLb2 + '<br>Leaderboard: ' + $("#leaderboard-positions").text() + '<br>My Game Name: ' + $("#nick").val() + '</er>');
     }
     copyToClipboard('er#CopyTkPwLb');
 }
@@ -1710,15 +1682,6 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
                 window.open(MSGCOMMANDS, '_blank');
             });
         }
-    } else if (MSGCOMMANDS.includes("[srv]")) {
-        if (MSGCOMMANDS.includes("sip=") || MSGCOMMANDS.includes("agar.io/#")) {
-            if ($("#nick").val().includes("srv") == false) {
-                $(".message-text").remove();
-                $(".toast.toast-success").remove();
-            } //split pop is included on functions above
-            MsgServCommandsreturner();
-            acceptServerBtn();
-        }
     } else if (MSGCOMMANDS.includes("Legend.Mod")) {
 
         playerMsg = getParameterByName("player", MSGCOMMANDS);
@@ -1870,69 +1833,13 @@ function isLegendExpress(Express) {
     } else {
         return Express = "True";
     }
-    //var Express;isLegendExpress(Express);
+    //var Express;isLegendExpress(Express); if (isLegendExpress(Express) == "True")
 }
 
 function MsgServCommandsreturner2(MSGCOMMANDS2a) {
     return MSGCOMMANDS2a;
 }
 
-function acceptServerBtn() {
-    if (acceptServerBtnFlag == null) {
-        $("#acceptServer").click(function() {
-
-
-            if (isLegendExpress(Express) == "True") { //if is Legend express
-                if (MSGCOMMANDS.includes("agar.io/#")) { //if sent server is Party mode
-                    console.log("1a - Legend express, Party mode");
-                    if (getParameterByName("pass", MSGCOMMANDS) != null) {
-                        $("#clantag").val(getParameterByName("pass", MSGCOMMANDS));
-                    };
-                    $('#server').val(MSGCOMMANDSA);
-                    $("#connect2").click();
-                } else if (MSGCOMMANDS3.includes("sip=")) { //if not Party mode
-                    console.log("1b - Legend express, Not Party mode");
-                    if (getParameterByName("pass", MSGCOMMANDS) != null) {
-                        $("#clantag").val(getParameterByName("pass", MSGCOMMANDS));
-                    };
-                    $("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
-                    $("#server-join").click();
-                }
-            } else { //if is Legend mod
-                if (searchSip == null) { //if is not Locked
-                    if (MSGCOMMANDS.includes("agar.io/#")) { //if sent server is Party mode
-                        console.log("2a - Legend Mod, No Locked, Party Mode");
-                        if (getParameterByName("pass", MSGCOMMANDS) != null) {
-                            $("#clantag").val(getParameterByName("pass", MSGCOMMANDS));
-                        };
-                        $('#server').val(MSGCOMMANDSA);
-                        $("#connect2").click();
-                    } else if (MSGCOMMANDS3.includes("sip=")) { //if not Party	mode	
-                        console.log("2b - Legend Mod, Locked, No Party mode");
-                        if (getParameterByName("pass", MSGCOMMANDS) != null) {
-                            $("#clantag").val(getParameterByName("pass", MSGCOMMANDS));
-                        };
-                        $("#server-token").val(getParameterByName("sip", MSGCOMMANDS3).replace("live-arena-", "").replace(".agar.io", ""));
-                        $("#server-join").click();
-
-                    }
-                } else { //if Locked	
-                    console.log("2b - Legend Mod, Locked");
-                    MSGCOMMANDS = MSGCOMMANDS.split("[srv]").pop();
-                    MSGCOMMANDS = MSGCOMMANDS.split('[/srv]')[0];
-                    if (MSGCOMMANDS.length > 70) {
-                        MSGCOMMANDS = MSGCOMMANDS.split('[')[0];
-                    }
-                    location.replace(MSGCOMMANDS);
-                    //window.open(MSGCOMMANDS,'_blank');
-
-                }
-            }
-            // window.open(MSGCOMMANDS2a,'_blank');
-        });
-    }
-    //return acceptServerBtnFlag=1;
-}
 
 function MsgServCommandsreturner() {
     MSGCOMMANDS2 = MSGCOMMANDS;
@@ -5872,20 +5779,17 @@ function initializeLM(modVersion) {
     $('#server-reconnect').click(function() {
         setTimeout(function() {
             adres(null, $('#gamemode').val(), $('#region').val());
-            $("#server").val(currentIP);
         }, 100);
     });
 
     $("#gamemode").change(function() {
         setTimeout(function() {
             adres(null, $('#gamemode').val(), $('#region').val());
-            $("#server").val(currentIP);
         }, 100);
     });
     $("#region").change(function() {
         setTimeout(function() {
             adres(null, $('#gamemode').val(), $('#region').val());
-            $("#server").val(currentIP);
         }, 100);
     });
 
@@ -5916,7 +5820,6 @@ function joinSIPonstart() {
         } else if (url.includes('https://agar.io/#') == true) {
             $('#gamemode').val(":party");
             realmodereturnfromStart();
-            $("#server").val(url.replace('https://agar.io/#', ''));
             joinpartyfromconnect();
         }
 
