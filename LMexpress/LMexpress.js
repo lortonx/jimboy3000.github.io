@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.095 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.096 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -1200,10 +1200,7 @@ function LegendSettingsfirst() {
     });
 
     $("#import-settings-btn").clone().insertAfter("#import-settings-btn").attr('id', 'import-settings-btn2');
-    $("#import-settings-btn2").css({
-        width: "676px",
-        margin: "12px"
-    });
+
     $("#import-settings-btn").hide();
     $("#import-settings-btn2").click(function() {
         LegendSettingsImport(switcheryLegendSwitch2);
@@ -1245,9 +1242,6 @@ function parseLegendJSONAPI(LegendJSON) {
     LegendJSON.legendSettings.AnimatedSkinBtn = localStorage.getItem("AnimatedSkinBtn");
 
     LegendJSON.legendSettings.TIMEcalBtn = localStorage.getItem("TIMEcalBtn");
-
-
-
     LegendJSON.legendSettings.timesopened = localStorage.getItem("timesopened");
 
     LegendJSON.legendSettings.dyinglight1load = localStorage.getItem("dyinglight1load");
@@ -3821,7 +3815,6 @@ function newsubmit() {
 
 function triggerLMbtns() {
 
-    $('.btn').css("text-transform", "capitalize");
     PanelImageSrc = $("#menuBg").val();
     if (PanelImageSrc != "" || PanelImageSrc != "https://cdn.ogario.ovh/static/img/pattern.png" || PanelImageSrc != "https://legendmod.ml/banners/static/img/pattern.png") {
         $('#legend').css('background-image', 'url(' + PanelImageSrc + ')');
@@ -5022,11 +5015,6 @@ function initializeLM(modVersion) {
     // fix leaderboard buttons
     $("#leaderboard-menu").css("pointer-events", "auto");
 
-
-    // fix stats text size
-    $('[id="statsText"]').css("font-size", "medium");
-
-
     // detect paste
     /*
         $(document).bind("paste", function(e) {
@@ -5101,10 +5089,7 @@ function initializeLM(modVersion) {
 
     // save notes
 
-    //fzogar Upload / Download Settings
     $("#import-settings-btn").attr('class', 'btn btn-success');
-    //		$("#close-exp-imp").before('<button id="fzogarOgarBtn" onclick="fzogarOgarIframe(); return false" style="margin-right: 25px;" class="btn btn-success" data-original-title="" title="">Upload / Download</button>');
-
     $("#searchHud").after('<div id="searchLog" class="main-color" style="font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 270px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: -390px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;display: none;background-color: rgba(0, 0, 0, 0.2);"><h5 id="logTitle" class="main-color text-center" style="margin-top: 0px;">Results</h5>' +
         '<div id="log" style="font-weight: normal; overflow-x: hidden; overflow-y: auto;height: 90%;">' +
         '</div></div>');
@@ -5163,7 +5148,6 @@ function initializeLM(modVersion) {
         '</div>' +
         '<div id="dropDown" class="hud" style="position: absolute; pointer-events: auto; width: 33%; height: 30px; left: 67px; padding: -30px; border-radius: 0px;">' +
         '<a id="copyLBBtn" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent;color: ' + legmaincolor + ' ; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Leaderboard (L)">LB</a>' +
-        //            '<a id="copySIPPassLB" href="javascript:void(0);" class="btn btn-sm btn-copy-leaderboard btn-info" style="background-color: transparent; width: 100%;text-shadow: rgb(0, 0, 0) 0.3px 0.3px;font-size: small;margin-top: 0px;display: block;border: none; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none;" data-toggle="tooltip" data-placement="left" data-original-title="Copy Token/SIP&Leaderboard">TK&PW&L</a>' +
         '</div>' +
 
         '<input id="tempCopy" style="display: none;" value="">' +
@@ -5571,28 +5555,10 @@ function initializeLM(modVersion) {
         return lastIP = $('#server-token').val();
     });
 
-
-    $("#boostButton").css("display", "inline-block");
-    $("#massButton").css("display", "inline-block");
-    $("#massButton").after($("#promo-badge-container"));
-
-
-    $(".agario-profile-name").css('display', 'inline-block');
-    $(".agario-profile-name").css('vertical-align', ' baseline');
-
-
-
-    //$('#themePreset').on('change', function() {
-    //$('#miniMapWidth-value').bind("DOMSubtreeModified", function() {
-
-
     $("#HideAllBthn").tooltip({
         title: "Temporarily Hide/Show Everything. Function for Youtubers",
         placement: "bottom"
     });
-
-
-
 
     $("#SHOSHOBtn").click(function() {
         var checked = !($(this).attr('aria-pressed') == "true");
@@ -5742,9 +5708,6 @@ function initializeLM(modVersion) {
 
     $(".agario-panel.ogario-yt-panel").html('<div class="agario-panel ogario-yt-panel"><h6 class="menu-main-color"><i></i></h6></div>');
 
-    $(".agario-panel.ogario-yt-panel").css({
-        marginBottom: "-10px"
-    });
     $("#menu-footer").text("");
     //$("#agario-main-buttons").after('<div id="LEGENDAds4"></div>'); //
     //$("#LEGENDAds4").load("https://legendmod.ml/banners/bannerLMdevs"); //
