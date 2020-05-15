@@ -1,9 +1,8 @@
 /**************
- * Legend express v0.093 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
-appendLMhiFbPs();
 
 loadericon();
 
@@ -389,53 +388,6 @@ function enableshortcuts() {
 
 }
 
-function preEmbPassword(){
-            if (!window.preEmbPass) {
-                window.preEmbPass=true
-                embPassword()
-            }
-}
-
-function embPassword(){
-            if (clanpass != null && clanpass != "") {
-                $("#clantag").val(clanpass);
-                $('#clantag').css('background-color', '#ff6347');
-            }
-}
-function appendLMhiFbPs() {
-    $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
-        MSGCOMMANDS2 = $(".toast.toast-warning").html();
-        if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {
-            toastr.error("You are using a wrong version, visit: www.legendmod.ml");
-        } else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
-            $(".toast.toast-warning").remove();
-			embPassword();         
-        }
-    });
-    $("body").on('DOMSubtreeModified', "#chat-box", function() {
-        var MSGCOMMANDS3 = $(".command-text").text();
-        if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
-            $(".command-text").text('You are using a wrong version, visit: www.legendmod.ml');
-        } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {        
-            $(".command-text").text(Premadeletter0);
-			embPassword();
-        }
-    });
-
-    $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
-        MSGCOMMANDS = $(".toast.toast-success").text();
-        MSGNICK = $(".message-nick").last().text().replace(": ", "");
-        MsgCommands1(MSGCOMMANDS, MSGNICK);
-
-    });
-    $("body").on('DOMSubtreeModified', "#chat-box", function() {
-        MSGCOMMANDS = $(".message-text").text();
-        MSGNICK = $(".message-nick").last().text().replace(": ", "");
-        MsgCommands1(MSGCOMMANDS, MSGNICK);
-
-    });
-}
-
 function adres(info, thismode, thisregion) {
     var info, thismode, thisregion;
     if (thismode == null || thisregion == null) {
@@ -584,8 +536,6 @@ function joinToken(token) {
     $("#joinPartyToken").val("");
     $("#gamemode").val("");
     currentToken = token;
-    if (localStorage.getItem("showTK") == "true") {
-    }
     $("#searchSpan>i").removeClass("fa fa-times").addClass("fa fa-search");
 }
 
@@ -624,7 +574,6 @@ function realmodereturn() {
 function realmodereturnfromStart() {
     region = getParameterByName("r", url);
     realmode = getParameterByName("m", url);
-
     return region, realmode;
 }
 
@@ -3074,32 +3023,7 @@ function bumpLog() {
 
 
 
-function getInfo() {
-    $.ajax({
-        type: "GET",
-        url: master.master_url_http + "/info",
-        datatype: "json",
-        success: function(info) {
-            //$("#currentRegion").html($('#region').val());
-            var regions = info.regions;
-            var currentRegion;
-            for (var key in regions) {
-                if (key == $('#region').val()) {
-                    currentRegion = regions[key];
-                    break;
-                }
-            }
-            //console.log(info);
-            //console.log(currentRegion);
-            if (currentRegion != undefined) {
-                $("#numPlayers").html(kFormatter(currentRegion.numPlayers));
-                $("#numServers").html(currentRegion.numRealms);
-                $("#pps").html(Math.round(currentRegion.avgPlayersPerRealm));
-            }
-            $("#totalPlayers").html(kFormatter(info.totals.numPlayers));
-        }
-    });
-}
+
 
 
 
@@ -3316,28 +3240,6 @@ function setyt6url() {
     }
     localStorage.setItem("yt6urlimg", yt6url);
     return yt6url;
-}
-
-function enableshortcuts() {
-    if ($("#IPBtn").attr('aria-pressed') == "false") {
-        $("#IPBtn").click();
-    }
-    if ($("#SHOSHOBtn").attr('aria-pressed') == "false") {
-        $("#SHOSHOBtn").click();
-    }
-
-    //	if($("#MAINBTBtn").attr('aria-pressed') == "false"){
-    //	$("#MAINBTBtn").click(); }
-    if ($("#MAINBTBtn").attr('aria-pressed') == "false") {
-        $("#MAINBTBtn").click();
-    }
-    //			if($("#AnimatedSkinBtn").attr('aria-pressed') == "false"){
-    //				$("#AnimatedSkinBtn").click(); }
-    if ($("#XPBtn").attr('aria-pressed') == "false") {
-        $("#XPBtn").click();
-    }
-    //	if($("#MANUIBtn").attr('aria-pressed') == "false"){
-    //	$("#MANUIBtn").click(); }
 }
 
 
@@ -5048,38 +4950,16 @@ function initializeLM(modVersion) {
     $("body").prepend('<div id="backgroundFade" style="width: 100%; height: 100%; position: absolute; background: black; z-index: 100; opacity: 0.6; display: none;"></div>');
 
 
-    $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;"><p id="regionmodecheck" style="float: left;margin-left: 10px;">' +
-        '<i class="fa fa-search retro" onclick="getInfo2(); return false;"></i>  ' +
-        '<select id="regioncheck" class="form-control main-color note" onchange="getInfo2();getInfo3();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:' + legbgcolor + '"; border: none; border-bottom: 1px solid; margin-left: 20px; text-align: center; border-color: darkgrey;">' +
-        '<option style="background:' + legbgcolor + '" value="US-Atlanta" data-itr="page_region_north_america">North America</option>' +
-        '<option style="background:' + legbgcolor + '" value="BR-Brazil" data-itr="page_region_south_america">South America</option>' +
-        '<option style="background:' + legbgcolor + '"  value="EU-London" data-itr="page_region_europe">Europe</option>' +
-        '<option style="background:' + legbgcolor + '"  value="RU-Russia" data-itr="page_region_russia">Russia</option>' +
-        '<option style="background:' + legbgcolor + '" value="TK-Turkey" data-itr="page_region_turkey">Turkey</option>' +
-        '<option style="background:' + legbgcolor + '"  value="JP-Tokyo" data-itr="page_region_east_asia">East Asia</option>' +
-        '<option style="background:' + legbgcolor + '"  value="CN-China" data-itr="page_region_china">China </option>' +
-        '<option style="background:' + legbgcolor + '"  value="SG-Singapore" data-itr="page_region_oceania">Oceania</option></select>' +
-
-        '<select id="gamemodecheck" class="form-control main-color note" onchange="getInfo2();" style="display: inline-block; font-size: 13px; position: relative; width: 150px; height: 32px; pointer-events: auto;background:' + legbgcolor + '"; border: none; border-bottom: 1px solid; margin-left: 10px; text-align: center; border-color: darkgrey;">' +
-        '<option style="background:' + legbgcolor + '" value=":ffa" data-itr="page_gamemode_ffa">FFA</option>' +
-        '<option style="background:' + legbgcolor + '" value=":battleroyale" data-itr="page_gamemode_battle_royale">Battle Royal</option>' +
-        '<option style="background:' + legbgcolor + '" value=":teams" data-itr="page_gamemode_teams">Teams</option>' +
-        '<option style="background:' + legbgcolor + '" value=":experimental" data-itr="page_gamemode_experimental">Experimental</option>' +
-        '<option style="background:' + legbgcolor + '" value=":party" data-itr="page_party">Party</option>' +
-        '</select>' +
-        '</p>' +
-
+    $("#overlays-hud").prepend('<div id="statsInfo" class="main-color" style="pointer-events: auto;display: none;font-size: 13px;margin-top: 3px;float: left;font-weight: 700;background-color: rgba(0, 0, 0, 0.2);padding: 3px;border-radius: 4px;width: 65%;height: 44px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 85px;position: fixed;pointer-events: auto;color: #ffffff;">' +
         '<p style="float: right; margin-right: 10px;"><span id="notesServer">Servers: </span><span id="numServers"></span> (<span id="pps"></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Players per server">PPS</span>)</p>' +
         '<p style="float: right;margin-right: 100px;"><span id="notesPlayers">Players: </span><span id="numPlayers"></span> / <span id="totalPlayers"  data-toggle="tooltip" data-placement="top" data-original-title="Total players online"></span></p></div>' +
         '<div id="searchHud" class="hud" style="width: 65%; height: 60px; z-index: 15; margin: auto; top: 0; right: 0; left: 0; bottom: 0; position: fixed;">' +
         '<div id="" style="margin-top: 10px;">' +
         '<input id="searchInput" class="form-control" title="" placeholder="Enter friend\'s token, IP, leaderboard, name or clan tag..." style="pointer-events: auto;margin-bottom: 10px;float: left;width: 80% !important;text-align: center;">' +
         '<button id="searchBtn" class="btn btn-copy-token copy-party-token btn-primary" data-toggle="tooltip" data-placement="bottom" data-original-title="Cancel search" style="pointer-events: auto;margin-bottom:10px;width: 15%;"><span id="searchSpan"><i class="fa fa-search"></i></span></button>' +
-        //            '<button id="closeBtn" class="btn btn-copy-token copy-party-token" data-toggle="tooltip" style="pointer-events: auto;color: #ffffff;margin-bottom:10px;width: 10%; background-color: transparent;" data-placement="right" data-original-title="Close" title=""><i class="fa fa-window-close fa-2"></i></button>' +
         '</div></div>'
     );
     $("#regionmodecheck").hide();
-    //$("#leaderboard-hud").append('<input id="tempCopy" style="display: none;" value="">' +
     //    '</div>');
     $("#clantag").attr('placeholder', 'Password').tooltip({
         title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
@@ -6267,80 +6147,6 @@ function ytFrame() {
         }
     }, 1500);
 }
-
-function getInfo2() {
-    //console.log("hi");
-    //$("#logTitle").text("Alive Servers");
-    $('#log').html('');
-    var region2search = $("#regioncheck").val();
-    var gamemode2search = $("#gamemodecheck").val();
-    gamemode2search = gamemode2search.replace(':', '');
-    $.ajax({
-        type: "GET",
-        url: "https://agarlist.alien.moe/graphql?query={serverList(length:5,region:%20%22" + region2search + "%22,mode:%22" + gamemode2search + "%22)%20{%20addr,%20lastChecked%20}}",
-        datatype: "json",
-        success: function(info) {
-            //$("#currentRegion").html($('#region').val());
-            servers = info.data.serverList;
-            for (var player = 0; player < servers.length; player++) {
-                //console.log(servers[player].addr);
-                var lastchecked = servers[player].lastChecked;
-                //console.log(lastchecked);
-                var hourschecked = new Date(Date.now() - lastchecked).getHours() - 2;
-                var minuteschecked = new Date(Date.now() - lastchecked).getMinutes();
-                var secondachecked = new Date(Date.now() - lastchecked).getSeconds();
-                var resulttime;
-                if (hourschecked == 0) {
-                    if (minuteschecked == 0) {
-                        resulttime = (secondachecked + " seconds " + " ago");
-                    } else {
-                        resulttime = (minuteschecked + " minutes " + secondachecked + " seconds " + " ago");
-                    }
-                } else {
-                    resulttime = (hourschecked + " hours: " + minuteschecked + " minutes " + secondachecked + " seconds " + " ago");
-                }
-                if (hourschecked == 0) {
-                    if (servers[player].addr.indexOf("ip-") >= 0) { //if wss
-                        appendLog4("<span id='playerinfo'>" + resulttime + "</span> (<span class='main-color'><span id='tokeninfo'>" + servers[player].addr + "</span></span>)", servers[player].addr);
-                    } else { //if wss
-                        servers[player].addr = servers[player].addr.replace("live-arena-", "").replace(".agar.io", "").replace(":80", "");
-                        appendLog2("<span id='playerinfo'>" + resulttime + "</span> (<span class='main-color'><span id='tokeninfo'>" + servers[player].addr + "</span></span>)", servers[player].addr);
-                    }
-                }
-
-            }
-
-        }
-    });
-}
-
-function getInfo3() {
-    $.ajax({
-        type: "GET",
-        url: master.master_url_http + "/info",
-        datatype: "json",
-        success: function(info) {
-            //$("#currentRegion").html($('#region').val());
-            var regions = info.regions;
-            var currentRegion;
-            for (var key in regions) {
-                if (key == $("#regioncheck").val()) {
-                    currentRegion = regions[key];
-                    break;
-                }
-            }
-            //console.log(info);
-            //console.log(currentRegion);
-            if (currentRegion != undefined) {
-                $("#numPlayers").html(kFormatter(currentRegion.numPlayers));
-                $("#numServers").html(currentRegion.numRealms);
-                $("#pps").html(Math.round(currentRegion.avgPlayersPerRealm));
-            }
-            $("#totalPlayers").html(kFormatter(info.totals.numPlayers));
-        }
-    });
-}
-
 
 
 function BeforeSpecialDeals() {
