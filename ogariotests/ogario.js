@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.650
+// v1.651
 
 
 //window.testobjects = {};
@@ -685,32 +685,7 @@ function calcTarget() {};
 function CellTimerTrigger() {};
 
 //function historystate(){};
-var Lmagarversion = "";
 
-window.LMGameConfiguration = $.ajax({
-    type: "GET",
-    url: "https://legendmod.ml/agario/live/" + Lmagarversion + "GameConfiguration.json",
-    async: false,
-    datatype: "jsonp",
-    success: function(info) {
-        //var GameConfiguration = info;
-    }
-}).responseJSON;
-//weird but it works....
-
-setTimeout(function() {
-    if (window.LMGameConfiguration == undefined) {
-        window.LMGameConfiguration = $.ajax({
-            type: "GET",
-            url: "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + "GameConfiguration.json",
-            async: false,
-            datatype: "jsonp",
-            success: function(info) {
-                //var GameConfiguration = info;
-            }
-        }).responseJSON;
-    }
-}, 3000);
 setTimeout(function() {
     if (window.LMGameConfiguration != undefined) {
         window.LMAgarGameConfiguration = window.LMGameConfiguration;
@@ -12698,7 +12673,19 @@ function exitFullscreen() {
     }
 }
 
+function preEmbPassword(){
+            if (!window.preEmbPass) {
+                window.preEmbPass=true
+                embPassword()
+            }
+}
 
+function embPassword(){
+            if (clanpass != null && clanpass != "") {
+                $("#clantag").val(clanpass);
+                $('#clantag').css('background-color', '#ff6347');
+            }
+}
 
 
 /*
