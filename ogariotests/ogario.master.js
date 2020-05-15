@@ -1,4 +1,4 @@
-//v12.52
+//v12.53
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -899,3 +899,57 @@ function doGl() {
 
 }
 window.master.fbUsers=[];
+
+var Lmagarversion = "";
+
+window.LMGameConfiguration = $.ajax({
+    type: "GET",
+    url: "https://legendmod.ml/agario/live/" + Lmagarversion + "GameConfiguration.json",
+    async: false,
+    datatype: "jsonp",
+    success: function(info) {
+        //var GameConfiguration = info;
+    }
+}).responseJSON;
+//weird but it works....
+
+setTimeout(function() {
+    if (window.LMGameConfiguration == undefined) {
+        window.LMGameConfiguration = $.ajax({
+            type: "GET",
+            url: "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + "GameConfiguration.json",
+            async: false,
+            datatype: "jsonp",
+            success: function(info) {
+                //var GameConfiguration = info;
+            }
+        }).responseJSON;
+    }
+}, 3000);
+
+function getInfo() {
+    $.ajax({
+        type: "GET",
+        url: master.master_url_http + "/info",
+        datatype: "json",
+        success: function(info) {
+            //$("#currentRegion").html($('#region').val());
+            var regions = info.regions;
+            var currentRegion;
+            for (var key in regions) {
+                if (key == $('#region').val()) {
+                    currentRegion = regions[key];
+                    break;
+                }
+            }
+            //console.log(info);
+            //console.log(currentRegion);
+            if (currentRegion != undefined) {
+                $("#numPlayers").html(kFormatter(currentRegion.numPlayers));
+                $("#numServers").html(currentRegion.numRealms);
+                $("#pps").html(Math.round(currentRegion.avgPlayersPerRealm));
+            }
+            $("#totalPlayers").html(kFormatter(info.totals.numPlayers));
+        }
+    });
+}
