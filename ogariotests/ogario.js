@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.654
+// v1.655
 
 
 //window.testobjects = {};
@@ -7735,7 +7735,7 @@ function thelegendmodproject() {
             // check this
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
-            if (this.invisible == true || this.spectator > 0 && this.isInV()) {
+            if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
                 return;
             }
             //					
