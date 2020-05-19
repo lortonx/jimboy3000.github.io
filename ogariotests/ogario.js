@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.659
+// v1.661
 
 
 //window.testobjects = {};
@@ -934,6 +934,7 @@ var displayText = {
         'hk-doubleSplit': 'Podwójny podział',
         'hk-split16': 'Podział na 16',
         'hk-pause': 'Pauza kulki',
+		'hk-multiboxswap': 'Multibox Swap',		
         'hk-showTop5': 'Pokaż/ukryj top 5 teamu',
         'hk-showTime': 'Pokaż/ukryj aktualny czas',
         'hk-showSplitRange': 'Pokaż/ukryj zasięg podziału',
@@ -1354,6 +1355,7 @@ var displayText = {
         'hk-doubleSplit': 'Double split',
         'hk-split16': 'Split 16',
         'hk-pause': 'Cell pause',
+		'hk-multiboxswap': 'Multibox Swap',
         'hk-showTop5': 'Show/hide teamboard',
         'hk-showTime': 'Show/hide current time',
         'hk-showSplitRange': 'Show/hide split range',
@@ -3477,6 +3479,20 @@ function thelegendmodproject() {
                 $('#pause-hud').hide();
             }
         },
+        multiboxswap() {
+			if (spects.length){
+				addBox();
+				 toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Version 0.000001 of Multibox");
+			}
+			else if (!window.multiboxPlayerEnabledSaved){
+				window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
+				window.multiboxPlayerEnabled = null
+			}
+			else{
+				window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
+				window.multiboxPlayerEnabledSaved = null
+			}
+        },		
         setCenteredLb() {
             if (defaultmapsettings.centeredLb) {
                 $('#leaderboard-hud').addClass('hud-text-center');
