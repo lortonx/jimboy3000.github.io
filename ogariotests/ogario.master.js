@@ -1,4 +1,4 @@
-//v12.55d
+//v12.55e
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -78,7 +78,7 @@ function legendmaster(self) {
             var accessToken = response.authResponse.accessToken;
             if (accessToken) {
 				if (window.MultiPending){				
-					this.accessTokenFB = accessToken;				
+					master.accessTokenFB = accessToken;				
 					MultiTokenReady(window.MultiPending);
 					window.MultiPending = null;
 				}	
@@ -138,7 +138,7 @@ function legendmaster(self) {
     function transform(event) {
         if (event && api && "1" === options.loginIntent && options.context === "google" && api.isSignedIn.get()) {
 			if (window.MultiPending){				
-				this.accessTokenGPlus = event.getAuthResponse().id_token;
+				master.accessTokenGPlus = event.getAuthResponse().id_token;
 				MultiTokenReady(window.MultiPending);
 				window.MultiPending = null;
 			}
