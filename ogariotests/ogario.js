@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.657
+// v1.658
 
 
 //window.testobjects = {};
@@ -10321,10 +10321,11 @@ function thelegendmodproject() {
             if (true) {
                 var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
                 // this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null; //Sonia2
-                this.STE = Math.floor(mass * Math.pow(1.15, 2)/4); //Sonia2
-                this.MTE = Math.floor(mass * Math.pow(1.15, 2)/2); //Sonia2
-                this.BMTE = Math.ceil(mass * Math.pow(1.15, 2)); //Sonia2
-                this.BSTE = Math.ceil(mass * Math.pow(1.15, 2)*2); //Sonia2
+                //this.STE = Math.floor(mass * Math.pow(1.15, 2)/4); //Sonia2
+				this.STE = Math.floor(mass * 1.3333/4); //Sonia2
+                this.MTE = Math.floor(mass * 1.3333/2); //Sonia2
+                this.BMTE = Math.ceil(mass * 1.3333); //Sonia2
+                this.BSTE = Math.ceil(mass * 1.3333*2); //Sonia2
                 this.TTE = Math.ceil(mass / 6); //Sonia2
                 this.PTE = Math.floor(mass * 0.66); //Sonia2
             }
@@ -10433,25 +10434,25 @@ function thelegendmodproject() {
 					});
 				},*/
 
-        //Sonia (entire function updated) // this is great :D Math.pow(1.15, 2)
+        //Sonia (entire function updated) // this is great :D 
         cacheCells(x, y, size, mass) {
-            return mass >= Math.pow(1.15, 2) * 4 ? void this.biggerSTEDCellsCache.push({
+            return mass >= 1.3333 * 4 ? void this.biggerSTEDCellsCache.push({
                 'x': x,
                 'y': y,
                 'size': size
-            }) : mass >= Math.pow(1.15, 2) * 2 ? void this.biggerSTECellsCache.push({
+            }) : mass >= 1.3333 * 2 ? void this.biggerSTECellsCache.push({
                 'x': x,
                 'y': y,
                 'size': size
-            }) : mass >= Math.pow(1.15, 2) ? void this.biggerCellsCache.push({
+            }) : mass >= 1.3333 ? void this.biggerCellsCache.push({
                 'x': x,
                 'y': y,
                 'size': size
-            }) : mass < Math.pow(1.15, 2) && mass > Math.pow(1.15, 2) / 2 ? void 0 : mass > Math.pow(1.15, 2) / 4 ? void this.smallerCellsCache.push({
+            }) : mass < 1.3333 && mass > 1.3333 / 2 ? void 0 : mass > 1.3333 / 4 ? void this.smallerCellsCache.push({
                 'x': x,
                 'y': y,
                 'size': size
-            }) : mass > Math.pow(1.15, 2) / 8 ? void this.STECellsCache.push({
+            }) : mass > 1.3333 / 8 ? void this.STECellsCache.push({
                 'x': x,
                 'y': y,
                 'size': size
@@ -10469,13 +10470,13 @@ function thelegendmodproject() {
             if (isPlayer) {
                 return ogarcopythelb.color
             } else {
-                if (mass >= Math.pow(1.15, 2)*8) return defaultSettings.enemyBSTEDColor
-                else if (mass >= Math.pow(1.15, 2)*4) return defaultSettings.enemyBSTEDColor
-                else if (mass >= Math.pow(1.15, 2)*2) return defaultSettings.enemyBSTEColor
-                else if (mass >= Math.pow(1.15, 2)) return defaultSettings.enemyBColor
-                else if (mass >= Math.pow(1.15, 2)/2) return '#FFDC00'
-                else if (mass >= Math.pow(1.15, 2)/4) return defaultSettings.enemySColor
-                else if (mass >= Math.pow(1.15, 2)/8) return defaultSettings.enemySSTEColor
+                if (mass >= 1.3333*8) return defaultSettings.enemyBSTEDColor
+                else if (mass >= 1.3333*4) return defaultSettings.enemyBSTEDColor
+                else if (mass >= 1.3333*2) return defaultSettings.enemyBSTEColor
+                else if (mass >= 1.3333) return defaultSettings.enemyBColor
+                else if (mass >= 1.3333/2) return '#FFDC00'
+                else if (mass >= 1.3333/4) return defaultSettings.enemySColor
+                else if (mass >= 1.3333/8) return defaultSettings.enemySSTEColor
                 else return defaultSettings.enemySSTEDColor
             }
         },
@@ -10510,9 +10511,11 @@ function thelegendmodproject() {
                         break;
                     case 32:
 						if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+							console.log("case 1")
 							spects[window.multiboxPlayerEnabled-1].sendSplit()
 						}
 						else{
+							console.log("case 2")
 							app.sendSplit();
 						}
                         break;
@@ -10524,9 +10527,11 @@ function thelegendmodproject() {
                         break;
                     case 87:
 						if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+							console.log("case 3")
 							spects[window.multiboxPlayerEnabled-1].sendEject()
 						}
 						else{
+							console.log("case 4")
 							app.sendEject();
 						}
 						break;
