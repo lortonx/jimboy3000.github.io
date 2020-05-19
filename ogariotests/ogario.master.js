@@ -1,4 +1,4 @@
-//v12.55b
+//v12.55c
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -116,7 +116,7 @@ function legendmaster(self) {
                 scope: "profile",
                 app_package_name: "com.miniclip.agar.io"
             });
-            var contextMenu = document.getElementById("fave");
+            var contextMenu = document.getElementById("gplusLogin");
             contextMenu.addEventListener("click", function() {
                 options.loginIntent = "1";
                 options.context = "google";
