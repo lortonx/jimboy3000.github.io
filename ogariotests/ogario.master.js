@@ -1,4 +1,4 @@
-//v12.55c
+//v12.55d
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -77,10 +77,10 @@ function legendmaster(self) {
         if (response.status === "connected") {
             var accessToken = response.authResponse.accessToken;
             if (accessToken) {
-				if (window.MultiPending){
-					window.MultiPending = null;
+				if (window.MultiPending){				
 					this.accessTokenFB = accessToken;				
-					MultiTokenReady();
+					MultiTokenReady(window.MultiPending);
+					window.MultiPending = null;
 				}	
 				else{
 					master.doLoginWithFB(accessToken);
@@ -137,10 +137,10 @@ function legendmaster(self) {
 
     function transform(event) {
         if (event && api && "1" === options.loginIntent && options.context === "google" && api.isSignedIn.get()) {
-			if (window.MultiPending){
-				window.MultiPending = null;
+			if (window.MultiPending){				
 				this.accessTokenGPlus = event.getAuthResponse().id_token;
-				MultiTokenReady();
+				MultiTokenReady(window.MultiPending);
+				window.MultiPending = null;
 			}
 			else{
 				var idToken = event.getAuthResponse().id_token;
@@ -967,4 +967,3 @@ function getInfo() {
         }
     });
 }
-function MultiTokenReady(){}
