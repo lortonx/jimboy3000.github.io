@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.657
+// v1.656
 
 
 //window.testobjects = {};
@@ -10513,7 +10513,6 @@ function thelegendmodproject() {
 							spects[window.multiboxPlayerEnabled-1].sendSplit()
 						}
 						else{
-							console.log('s')
 							app.sendSplit();
 						}
                         break;
