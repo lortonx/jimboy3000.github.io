@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.658
+// v1.659
 
 
 //window.testobjects = {};
@@ -10510,14 +10510,7 @@ function thelegendmodproject() {
                         app.sendNick('');
                         break;
                     case 32:
-						if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
-							console.log("case 1")
-							spects[window.multiboxPlayerEnabled-1].sendSplit()
-						}
-						else{
-							console.log("case 2")
-							app.sendSplit();
-						}
+						app.sendSplit();
                         break;
                     case 81:
                         app.sendFreeSpectate();
@@ -10526,14 +10519,7 @@ function thelegendmodproject() {
                         app.sendSpectate();
                         break;
                     case 87:
-						if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
-							console.log("case 3")
-							spects[window.multiboxPlayerEnabled-1].sendEject()
-						}
-						else{
-							console.log("case 4")
-							app.sendEject();
-						}
+						app.sendEject();
 						break;
                 }
             }, document.onkeyup = function(e) {
@@ -11945,12 +11931,21 @@ function thelegendmodproject() {
             LM.sendSpectate();
         },
         eject() {
-            LM.sendEject();
-            window.lastejected = true;
+			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+				spects[window.multiboxPlayerEnabled-1].sendEject()
+			}
+			else{
+				LM.sendEject();
+			}			    
+            window.lastejected = true;			
         },
         split() {
-            LM.sendSplit();
-
+			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+				spects[window.multiboxPlayerEnabled-1].sendSplit()
+			}
+			else{
+				LM.sendSplit();
+			}			     
         },
         specialOn() {
             LM.sendFreeSpectate();
