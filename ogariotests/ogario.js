@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.663
+// v1.664
 
 
 //window.testobjects = {};
@@ -8621,7 +8621,10 @@ function thelegendmodproject() {
 
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
-            if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
+			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+				//handled by spects.js
+			}
+            else if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
                 if (specialcommand) {
                     //console.log('hi')
                     //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
