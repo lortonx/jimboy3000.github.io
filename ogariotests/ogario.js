@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.674
+// v1.675
 
 
 //window.testobjects = {};
@@ -8196,6 +8196,7 @@ function thelegendmodproject() {
         viruses: [],
         playerCells: [],
         playerCellIDs: [],
+		playerCellsMulti: [],
         fbOnline: [],
         arrowFB: [{}],
         ghostCells: [],
