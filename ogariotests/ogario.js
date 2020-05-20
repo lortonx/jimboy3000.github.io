@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.681
+// v1.682
 
 
 //window.testobjects = {};
@@ -10368,9 +10368,8 @@ function thelegendmodproject() {
                         }
                     }
                 }
-            }
+			}}
         },
-
         cacheCells(x, y, size, mass) {
             return mass >= 1.3333 * 4 ? void this.biggerSTEDCellsCache.push({
                 'x': x,
@@ -10398,7 +10397,6 @@ function thelegendmodproject() {
                 'size': size
             });
         },
-
         setCellOppColor(isPlayer, mass) {
             if (isPlayer) {
                 return ogarcopythelb.color
