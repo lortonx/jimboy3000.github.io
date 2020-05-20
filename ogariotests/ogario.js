@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.675
+// v1.676
 
 
 //window.testobjects = {};
@@ -7825,7 +7825,7 @@ function thelegendmodproject() {
                             style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
                         } catch (e) {}
                     }*/
-                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && (LM.play || LM.playerCellsMulti.length) ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
+                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
                         this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                 }
@@ -7836,7 +7836,7 @@ function thelegendmodproject() {
                         style.globalAlpha *= defaultSettings.virusAlpha;
                         defaultmapsettings.isAlphaChanged = true;
                     }
-                    if (defaultmapsettings.virColors && (LM.play || LM.playerCellsMulti.length)) {
+                    if (defaultmapsettings.virColors && LM.play {
                         style.fillStyle = application.setVirusColor(y);
                         style.strokeStyle = application.setVirusStrokeColor(y);
                     } else {
@@ -7873,7 +7873,7 @@ function thelegendmodproject() {
             }
             var color = this.color;
             if (LM.play || LM.playerCellsMulti.length) {
-                if (this.isPlayerCell) {
+                if (this.isPlayerCell || this.playerCellsMulti) {
                     if (defaultmapsettings.myCustomColor) {
                         color = ogarcopythelb.color;
                     }
