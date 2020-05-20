@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.677
+// v1.678
 
 
 //window.testobjects = {};
@@ -7906,7 +7906,7 @@ function thelegendmodproject() {
                 node = application.getCustomSkin(this.targetNick, this.color);
 
                 if (node) {
-                    if ((defaultmapsettings.transparentSkins || (LM.play || LM.playerCellsMulti.length) && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
+                    if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                         style.globalAlpha *= defaultSettings.skinsAlpha;
                         s = true;
                     }
@@ -10339,7 +10339,7 @@ function thelegendmodproject() {
             }
         },
         compareCells() {
-            if (this.play && (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange)) {
+		if ((this.play || LM.playerCellsMulti) && (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange)) {
                 if (defaultmapsettings.oppRings || defaultmapsettings.splitRange) {
                     this.biggerSTECellsCache = [];
                     this.biggerCellsCache = [];
@@ -10377,72 +10377,7 @@ function thelegendmodproject() {
                 }
             }
         },
-        /*cacheCells(t, e, i, s, o) {
-                    return s >= 2.5 ? void this.biggerSTECellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : s >= 1.25 ? void this.biggerCellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : s < 1.25 && s > 0.75 ? void 0 : s > o ? void this.smallerCellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    }) : void this.STECellsCache.push({
-                        'x': t,
-                        'y': e,
-                        'size': i
-                    });
-                },
-            cacheCells(x, y, targetX, targetY, size, mass, smallMass) {
-					return mass >= 5.32 ? void this.biggerSTEDCellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					}) : mass >= 2.66 ? void this.biggerSTECellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					}) : mass >= 1.33 ? void this.biggerCellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					}) : mass < 1.33 && mass > 0.75 ? void this.SSCellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					}) : mass > 0.375 ? void this.smallerCellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					}) : mass > 0.1875 ? void this.STECellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					}) : void this.STEDCellsCache.push({
-						x: x,
-						y: y,
-						targetX: targetX,
-						targetY: targetY,
-						size: size
-					});
-				},*/
 
-        //Sonia (entire function updated) // this is great :D 
         cacheCells(x, y, size, mass) {
             return mass >= 1.3333 * 4 ? void this.biggerSTEDCellsCache.push({
                 'x': x,
