@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.688
+// v1.689
 
 
 //window.testobjects = {};
@@ -11070,12 +11070,12 @@ function thelegendmodproject() {
                 }
             },
             calMinMaxMulti() {
-				if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+				if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && LM.foodMulti.length){
 					LM.camMaxMultiX = spects[window.multiboxPlayerEnabled-1].playerX
 					LM.camMaxMultiY = spects[window.multiboxPlayerEnabled-1].playerY
 					LM.camMinMultiX = spects[window.multiboxPlayerEnabled-1].playerX
 					LM.camMinMultiY = spects[window.multiboxPlayerEnabled-1].playerY
-					for (var length = 0; length < LM.food.length; length++) {
+					for (var length = 0; length < LM.foodMulti.length; length++) {
 						var x = LM.foodMulti[length].x - 10 - defaultSettings.foodSize;
 						var y = LM.foodMulti[length].y - 10 - defaultSettings.foodSize;
 						if (x > LM.camMaxMultiX) LM.camMaxMultiX = x
