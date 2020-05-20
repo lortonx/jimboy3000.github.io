@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.680
+// v1.681
 
 
 //window.testobjects = {};
@@ -878,9 +878,7 @@ var displayText = {
         massStroke: 'Obwódki masy',
         cursorTracking: 'Śledzenie kursora',
         teammatesInd: 'Wskaźniki graczy teamu',
-        FBTracking: 'Facebook bubble tracker',
-        //        ingameSpectator: 'Ingame spectator(LOCKED ℄)',
-        //        fullSpectator: 'Full spectator(LOCKED ℄)',			
+        FBTracking: 'Facebook bubble tracker',		
         mouseSplit: 'LPM - Split myszką',
         mouseFeed: 'PPM - Feed myszką',
         mouseInvert: 'Odwróć klawisze myszki',
@@ -1300,9 +1298,7 @@ var displayText = {
         massStroke: 'Mass stroke',
         cursorTracking: 'Cursor tracking',
         teammatesInd: 'Teammates indicators',
-        FBTracking: 'Facebook bubble tracker',
-        //        ingameSpectator: 'Ingame spectator(LOCKED ℄)',
-        //        fullSpectator: 'Full spectator(LOCKED ℄)',		
+        FBTracking: 'Facebook bubble tracker',	
         mouseSplit: 'LMB - Mouse split',
         mouseFeed: 'RMB - Mouse feed',
         mouseInvert: 'Invert mouse buttons',
@@ -7767,7 +7763,8 @@ function thelegendmodproject() {
             // check this
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
-            if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
+            //if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
+			if (this.invisible == true) {	
                 return;
             }
             //					
@@ -10356,25 +10353,20 @@ function thelegendmodproject() {
 					if (cell.isVirus) {	
                         continue;
                     }
-                    //else{
                     //console.log(i); i for food is 13
                     var size = ~~(cell.size * cell.size / 100);
                     if (size != 13) {
+					if (size > 13) {	
                         var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
                         var fixMass = size / mass;
                         var smallMass = mass < 1000 ? 0.35 : 0.38;
                         if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
-                            //cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass, smallMass);
                             cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass);
                         }
-                        //if (!(cell.isPlayerCell || !defaultmapsettings.splitRange && !defaultmapsettings.oppRings)) {
                         if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
                             this.cacheCells(cell.x, cell.y, cell.size, fixMass);
-                            //this.cacheCells(cell.x, cell.y, cell.size, fixMass, smallMass);
-                            //this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass, smallMass);
                         }
                     }
-                    //}
                 }
             }
         },
