@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.687
+// v1.688
 
 
 //window.testobjects = {};
@@ -9969,6 +9969,7 @@ function thelegendmodproject() {
             this.playerCellIDs = [];
             this.ghostCells = [];
             this.food = [];
+			this.foodMulti = []; //for multi fix
             this.viruses = [];
 
             //for SPECT
@@ -11075,8 +11076,8 @@ function thelegendmodproject() {
 					LM.camMinMultiX = spects[window.multiboxPlayerEnabled-1].playerX
 					LM.camMinMultiY = spects[window.multiboxPlayerEnabled-1].playerY
 					for (var length = 0; length < LM.food.length; length++) {
-						var x = LM.food[length].x - 10 - defaultSettings.foodSize;
-						var y = LM.food[length].y - 10 - defaultSettings.foodSize;
+						var x = LM.foodMulti[length].x - 10 - defaultSettings.foodSize;
+						var y = LM.foodMulti[length].y - 10 - defaultSettings.foodSize;
 						if (x > LM.camMaxMultiX) LM.camMaxMultiX = x
 						if (y > LM.camMaxMultiY) LM.camMaxMultiY = y
 						if (x < LM.camMinMultiX) LM.camMinMultiX = x
