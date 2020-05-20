@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.670
+// v1.672
 
 
 //window.testobjects = {};
@@ -7490,10 +7490,12 @@ function thelegendmodproject() {
                     LM.food.splice(cells, 1);
                 }
             }
-            cells = LM.playerCells.indexOf(this);
+            //cells = LM.playerCellsMulti.indexOf(this);
+		    cells = LM.playerCells.indexOf(this);
             if (cells != -1) {
                 LM.removePlayerCell = true;
                 LM.playerCells.splice(cells, 1);
+				//LM.playerCellsMulti.splice(cells, 1);
                 cells = LM.playerCellIDs.indexOf(this.id);
                 if (cells != -1) {
                     LM.playerCellIDs.splice(cells, 1);
@@ -10207,6 +10209,7 @@ function thelegendmodproject() {
                             cellUpdateCells.isPlayerCell = true;
                             this.playerColor = color;
                             this.playerCells.push(cellUpdateCells);
+							//this.playerCellsMulti.push(cellUpdateCells);
                         }
                     } else {
                         this.food.push(cellUpdateCells);
@@ -10584,7 +10587,8 @@ function thelegendmodproject() {
             setView() {
                 this.setScale();
                 var speed = 30;
-                if (LM.playerCells.length) {
+                //if (LM.playerCellsMulti.length) {
+				if (LM.playerCells.length) {	
                     LM.calculatePlayerMassAndPosition();
                     this.camX = (this.camX + LM.viewX) / 2;
                     this.camY = (this.camY + LM.viewY) / 2;
@@ -10730,13 +10734,14 @@ function thelegendmodproject() {
                     if (defaultmapsettings.splitRange) {
                         this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
                         this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
-                        //this.drawDoubleSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCells, LM.selectBiggestCell);
                         this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCells, LM.selectBiggestCell); //Sonia
+                        //
+						this.drawSplitRange(this.ctx, LM.biggerSTECellsCache, LM.playerCellsMulti, LM.selectBiggestCell);
+                        this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia
+                        this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia						
                     }
                     if (defaultmapsettings.oppRings) {
-                        //this.drawOppRings(this.ctx, this.scale, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache);
                         this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
-                        //this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache); 
                     }
                     if (defaultmapsettings.cursorTracking) {
                         this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
@@ -10794,20 +10799,6 @@ function thelegendmodproject() {
                     LM.cursorX = xc + (Math.cos(ang) * distance)
                     LM.cursorY = yc + (Math.sin(ang) * distance)
                     LM.sendPosition()
-                    //console.log(xc,yc,x,y,LM.cursorX,LM.cursorY)
-                    //Math.deg(ang)
-
-
-                    /*var xc = LM.playerCells[index].x,
-                        yc = LM.playerCells[index].y,*/
-                    //R = 100000000,
-                    /*ang = Math.atan2(LM.indexedCells[LM.selected].y - yc, LM.indexedCells[LM.selected].x - xc);
-                    LM.cursorX= Math.cos(ang)
-                    LM.cursorY= Math.sin(ang)*/
-                    //Math.deg(ang)
-
-                    //LM.cursorX = LM.indexedCells[LM.selected].x
-                    //LM.cursorY = LM.indexedCells[LM.selected].y
                 }
                 //
                 if (defaultmapsettings.debug) {
