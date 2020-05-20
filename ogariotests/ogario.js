@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.685
+// v1.686
 
 
 //window.testobjects = {};
@@ -7771,7 +7771,7 @@ function thelegendmodproject() {
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
             //if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
-			if (this.invisible == true) {	
+			if (this.spectator>0 && this.isInV() || this.invisible == true) {	
                 return;
             }
             //					
@@ -10660,6 +10660,9 @@ function thelegendmodproject() {
                     this.drawVirusesRange(this.ctx, LM.viruses);
                 }
                 this.drawFood();
+				if (LM.playerCellsMulti.length){
+					this.calMinMaxMulti();
+				}
                 this.calMinMax();
 				if (LM.play || LM.playerCellsMulti.length) {
                     if (defaultmapsettings.splitRange) {
@@ -10733,8 +10736,12 @@ function thelegendmodproject() {
                 }
                 //
                 if (defaultmapsettings.debug) {
-                    this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
-
+					if (!window.multiboxPlayerEnabled){
+						this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
+					}
+					else{
+						this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
+					}
                     //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
                     if (window.fullSpectator) {
                         for (let i = 0; i < spects.length; i++) {
@@ -11061,6 +11068,20 @@ function thelegendmodproject() {
                         t.globalAlpha = 1, i && (e = []);
                 }
             },
+            calMinMaxMulti() {
+                LM.camMaxMultiX = spects[window.multiboxPlayerEnabled-1].playerX
+                LM.camMaxMultiY = spects[window.multiboxPlayerEnabled-1].playerY
+                LM.camMinMultiX = spects[window.multiboxPlayerEnabled-1].playerX
+                LM.camMinMultiY = spects[window.multiboxPlayerEnabled-1].playerY
+                for (var length = 0; length < LM.food.length; length++) {
+                    var x = LM.food[length].x - 10 - defaultSettings.foodSize;
+                    var y = LM.food[length].y - 10 - defaultSettings.foodSize;
+                    if (x > LM.camMaxMultiX) LM.camMaxX = x
+                    if (y > LM.camMaxMultiY) LM.camMaxY = y
+                    if (x < LM.camMinMultiX) LM.camMinX = x
+                    if (y < LM.camMinMultiY) LM.camMinY = y
+                }
+            },			
             calMinMax() {
                 LM.camMaxX = LM.playerX
                 LM.camMaxY = LM.playerY
