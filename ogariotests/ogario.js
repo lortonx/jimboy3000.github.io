@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.667
+// v1.668
 
 
 //window.testobjects = {};
@@ -9955,6 +9955,7 @@ function thelegendmodproject() {
             this.indexedCells = {};
             this.cells = [];
             this.playerCells = [];
+			this.playerCellsReal = []; //for multi fix
             this.playerCellIDs = [];
             this.ghostCells = [];
             this.food = [];
@@ -10203,6 +10204,7 @@ function thelegendmodproject() {
                             cellUpdateCells.isPlayerCell = true;
                             this.playerColor = color;
                             this.playerCells.push(cellUpdateCells);
+							this.playerCellsReal.push(cellUpdateCells);
                         }
                     } else {
                         this.food.push(cellUpdateCells);
@@ -10237,41 +10239,7 @@ function thelegendmodproject() {
                     console.log('FB friend cell in view', isFriend)
                 }
             }
-            /*
-                this.indexedCells.hasOwnProperty(id) ? (cellUpdateCells = this.indexedCells[id],
-                        color && (cellUpdateCells.color = color)) :
-                    ((cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots)).time = this.time,
-                        isFood ? this.food.push(cellUpdateCells) :
-                        (isVirus && defaultmapsettings.virusesRange && this.viruses.push(cellUpdateCells),
-                            this.cells.push(cellUpdateCells),
-                            -1 != this.playerCellIDs.indexOf(id) && -1 == this.playerCells.indexOf(cellUpdateCells) && (cellUpdateCells.isPlayerCell = true,
-                                this.playerColor = color, this.playerCells.push(cellUpdateCells))),
-                        this.indexedCells[id] = cellUpdateCells),
-                    cellUpdateCells.isPlayerCell && (name = this.playerNick),
-                    name && (cellUpdateCells.targetNick = name),
-                    cellUpdateCells.targetX = x,
-                    cellUpdateCells.targetY = y,
-                    cellUpdateCells.targetSize = size,
-                    //                        cellUpdateCells.targetSize = u,
-                    cellUpdateCells.isFood = isFood,
-                    cellUpdateCells.isVirus = isVirus,
-                    //
-                    cellUpdateCells.isOwnEjected = isOwnEjected,
-                    cellUpdateCells.isOtherEjected = isOtherEjected,
-                    //
-                    skin && (cellUpdateCells.skin = skin),
-                    4 & extendedFlags && (accountID = view.readUInt32LE(offset),
-                        cellUpdateCells.accID = accountID,
-                        offset += 4,
-                        friend = LM.fbOnline.find(element => {
-                            return element.id == accountID
-                        }),
-                        friend != undefined ? cellUpdateCells.fbID = friend.fbId : void(0)),
-                    2 & extendedFlags && (cell.isFriend = isFriend,
-                        console.log('FB friend cell in view', isFriend));
-            }
-			*/
-
+			
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
@@ -10282,15 +10250,10 @@ function thelegendmodproject() {
                     cell.removeCell();
                 }
             }
-            /*				
-                            for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
-                                id = view.readUInt32LE(offset);
-                                offset += 4,
-                                    (cellUpdateCells = this.indexedCells[id]) &&
-                                    cellUpdateCells.removeCell();
-                            }*/
+
             //Sonia7
-            if (this.removePlayerCell && !this.playerCells.length) {
+            //if (this.removePlayerCell && !this.playerCells.length) {
+			if (this.removePlayerCell && !this.playerCellsReal.length) {	
                 this.play = false;
 				
                 application.onPlayerDeath();
