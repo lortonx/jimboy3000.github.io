@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.668
+// v1.669
 
 
 //window.testobjects = {};
@@ -9955,7 +9955,7 @@ function thelegendmodproject() {
             this.indexedCells = {};
             this.cells = [];
             this.playerCells = [];
-			this.playerCellsReal = []; //for multi fix
+			this.playerCellsMulti = []; //for multi fix
             this.playerCellIDs = [];
             this.ghostCells = [];
             this.food = [];
@@ -10204,7 +10204,6 @@ function thelegendmodproject() {
                             cellUpdateCells.isPlayerCell = true;
                             this.playerColor = color;
                             this.playerCells.push(cellUpdateCells);
-							this.playerCellsReal.push(cellUpdateCells);
                         }
                     } else {
                         this.food.push(cellUpdateCells);
@@ -10239,7 +10238,6 @@ function thelegendmodproject() {
                     console.log('FB friend cell in view', isFriend)
                 }
             }
-			
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
@@ -10250,10 +10248,15 @@ function thelegendmodproject() {
                     cell.removeCell();
                 }
             }
-
+            /*				
+                            for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
+                                id = view.readUInt32LE(offset);
+                                offset += 4,
+                                    (cellUpdateCells = this.indexedCells[id]) &&
+                                    cellUpdateCells.removeCell();
+                            }*/
             //Sonia7
-            //if (this.removePlayerCell && !this.playerCells.length) {
-			if (this.removePlayerCell && !this.playerCellsReal.length) {	
+            if (this.removePlayerCell && !this.playerCells.length) {
                 this.play = false;
 				
                 application.onPlayerDeath();
