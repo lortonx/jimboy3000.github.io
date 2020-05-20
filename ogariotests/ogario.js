@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.679
+// v1.680
 
 
 //window.testobjects = {};
@@ -10353,7 +10353,7 @@ function thelegendmodproject() {
                 for (; t < this.cells.length; t++) {
                     var cell = this.cells[t];
                     //if (cell.isVirus || cell.spectator > 0) {
-					if (cell.isVirus > 0) {	
+					if (cell.isVirus) {	
                         continue;
                     }
                     //else{
