@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.676
+// v1.677
 
 
 //window.testobjects = {};
@@ -7836,7 +7836,7 @@ function thelegendmodproject() {
                         style.globalAlpha *= defaultSettings.virusAlpha;
                         defaultmapsettings.isAlphaChanged = true;
                     }
-                    if (defaultmapsettings.virColors && LM.play {
+                    if (defaultmapsettings.virColors && LM.play) {
                         style.fillStyle = application.setVirusColor(y);
                         style.strokeStyle = application.setVirusStrokeColor(y);
                     } else {
