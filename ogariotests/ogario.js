@@ -3484,7 +3484,6 @@ function thelegendmodproject() {
         multiboxswap() {
 			if (!spects.length){
 				addBox();
-				 toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + "Version 0.000001 of Multibox");
 			}
 			else if (!window.multiboxPlayerEnabledSaved){
 				if (!legendmod.play){
