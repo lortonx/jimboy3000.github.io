@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.686
+// v1.687
 
 
 //window.testobjects = {};
@@ -11069,18 +11069,20 @@ function thelegendmodproject() {
                 }
             },
             calMinMaxMulti() {
-                LM.camMaxMultiX = spects[window.multiboxPlayerEnabled-1].playerX
-                LM.camMaxMultiY = spects[window.multiboxPlayerEnabled-1].playerY
-                LM.camMinMultiX = spects[window.multiboxPlayerEnabled-1].playerX
-                LM.camMinMultiY = spects[window.multiboxPlayerEnabled-1].playerY
-                for (var length = 0; length < LM.food.length; length++) {
-                    var x = LM.food[length].x - 10 - defaultSettings.foodSize;
-                    var y = LM.food[length].y - 10 - defaultSettings.foodSize;
-                    if (x > LM.camMaxMultiX) LM.camMaxX = x
-                    if (y > LM.camMaxMultiY) LM.camMaxY = y
-                    if (x < LM.camMinMultiX) LM.camMinX = x
-                    if (y < LM.camMinMultiY) LM.camMinY = y
-                }
+				if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+					LM.camMaxMultiX = spects[window.multiboxPlayerEnabled-1].playerX
+					LM.camMaxMultiY = spects[window.multiboxPlayerEnabled-1].playerY
+					LM.camMinMultiX = spects[window.multiboxPlayerEnabled-1].playerX
+					LM.camMinMultiY = spects[window.multiboxPlayerEnabled-1].playerY
+					for (var length = 0; length < LM.food.length; length++) {
+						var x = LM.food[length].x - 10 - defaultSettings.foodSize;
+						var y = LM.food[length].y - 10 - defaultSettings.foodSize;
+						if (x > LM.camMaxMultiX) LM.camMaxMultiX = x
+						if (y > LM.camMaxMultiY) LM.camMaxMultiY = y
+						if (x < LM.camMinMultiX) LM.camMinMultiX = x
+						if (y < LM.camMinMultiY) LM.camMinMultiY = y
+					}
+				}
             },			
             calMinMax() {
                 LM.camMaxX = LM.playerX
