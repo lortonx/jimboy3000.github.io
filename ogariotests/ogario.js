@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.684
+// v1.685
 
 
 //window.testobjects = {};
@@ -3131,11 +3131,17 @@ function thelegendmodproject() {
         FacebookIDs: null,
         feedInterval: null,
         getPlayerX() {
+			
             return ogario.playerX + ogario.mapOffsetX;
         },
         getPlayerY() {
+			
             return ogario.playerY + ogario.mapOffsetY;
         },
+        getMass() {
+			
+            return legendmod.playerMass
+        },		
         //for SPECT
         getghostX() {
             if (legendmod.playerPosition == 1 || legendmod.ghostCells.length == 0) { //Yahnych координати призраков или игрока если он топ1
@@ -4974,7 +4980,7 @@ function thelegendmodproject() {
                         id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
                         x: application.getPlayerX(),
                         y: application.getPlayerY(),
-                        mass: legendmod.playerMass
+                        mass: application.getMass()
                     };
                     if (Socket3 && Socket3.readyState==1) {
                         Socket3.send(JSON.stringify({
@@ -5069,7 +5075,6 @@ function thelegendmodproject() {
             }
             const app = this;
             setTimeout(() => {
-				console.log('app.onPlayerSpawn();')
                 app.onPlayerSpawn();
             }, 100);			
             if (defaultmapsettings.spawnSpecialEffects) {
@@ -6276,12 +6281,14 @@ function thelegendmodproject() {
             }
         },
         sendPlayerPosition() {
-            if (this.isSocketOpen() && ogario.play && this.playerID) {
+            if (this.isSocketOpen() && (ogario.play || LM.playerCellsMulti.length) && this.playerID) {
                 const view = this.createView(17);
                 view.setUint8(0, 30);
                 view.setUint32(1, this.playerID, true);
+				
                 view.setInt32(5, this.getPlayerX(), true);
                 view.setInt32(9, this.getPlayerY(), true);
+				
                 if (typeof ogario.playerMass !== 'undefined') {
                     view.setUint32(13, ogario.playerMass, true);
                 } else {
@@ -6497,7 +6504,7 @@ function thelegendmodproject() {
                     id: window.unescape(window.encodeURIComponent(application.lastSentNick)),
                     x: application.getPlayerX(),
                     y: application.getPlayerY(),
-                    mass: legendmod.playerMass
+                    mass: application.getMass()
                 };
                 Socket3.send(JSON.stringify({
                     //"toH": "legendmod",
