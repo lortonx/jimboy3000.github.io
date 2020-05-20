@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.678
+// v1.679
 
 
 //window.testobjects = {};
@@ -10352,7 +10352,8 @@ function thelegendmodproject() {
                 var t = 0;
                 for (; t < this.cells.length; t++) {
                     var cell = this.cells[t];
-                    if (cell.isVirus || cell.spectator > 0) {
+                    //if (cell.isVirus || cell.spectator > 0) {
+					if (cell.isVirus > 0) {	
                         continue;
                     }
                     //else{
@@ -10405,11 +10406,8 @@ function thelegendmodproject() {
                 'size': size
             });
         },
-        //setCellOppColor(t, mass, i) {
+
         setCellOppColor(isPlayer, mass) {
-            //return t ? ogarcopythelb.color : mass > 11 ? '#FF008C' : mass >= 2.5 ? '#BE00FF' : mass >= 1.25 ? '#FF0A00' : mass < 1.25 && mass > 0.75 ? '#FFDC00' : mass > i ? '#00C8FF' : '#64FF00';
-            //return t ? ogarcopythelb.color : mass > 10.64 ? defaultSettings.enemyBSTEDColor : mass >= 5.32 ? defaultSettings.enemyBSTEDColor : mass >= 2.66 && mass <= 5.32 ? defaultSettings.enemyBSTEColor : mass >= 1.33 && mass <= 2.66 ? defaultSettings.enemyBColor : mass < 1.33 && mass > 0.75 ? '#FFDC00' : mass < 0.75 && mass > 0.375 ? defaultSettings.enemySSTEDColor : mass > i ? '#00C8FF' : defaultSettings.enemySSTEColor; //Sonia
-            //return isPlayer ? ogarcopythelb.color : mass >= 10.64 ? defaultSettings.enemyBSTEDColor : mass >= 5.32 ? defaultSettings.enemyBSTEDColor : mass >= 2.66 ? defaultSettings.enemyBSTEColor : mass >= 1.33 ? defaultSettings.enemyBColor : mass > 0.75 ? '#FFDC00' : mass > 0.375 ? defaultSettings.enemySColor : mass > 0.1875 ? defaultSettings.enemySSTEColor : defaultSettings.enemySSTEDColor;
             if (isPlayer) {
                 return ogarcopythelb.color
             } else {
