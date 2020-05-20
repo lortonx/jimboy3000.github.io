@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.683
+// v1.684
 
 
 //window.testobjects = {};
@@ -5069,6 +5069,7 @@ function thelegendmodproject() {
             }
             const app = this;
             setTimeout(() => {
+				console.log('app.onPlayerSpawn();')
                 app.onPlayerSpawn();
             }, 100);			
             if (defaultmapsettings.spawnSpecialEffects) {
