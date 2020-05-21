@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.691
+// v1.692
 
 
 //window.testobjects = {};
@@ -7487,13 +7487,18 @@ function thelegendmodproject() {
                         LM.viruses.splice(cells, 1);
                     }
                 }
-            } else {
+            } 
+			else {
                 cells = LM.food.indexOf(this);
                 if (cells != -1) {
                     LM.food.splice(cells, 1);
                 }
             }
             //cells = LM.playerCellsMulti.indexOf(this);
+			cells = LM.foodMulti.indexOf(this);
+                if (cells != -1) {
+                    LM.foodMulti.splice(cells, 1);
+                }			
 		    cells = LM.playerCells.indexOf(this);
             if (cells != -1) {
                 LM.removePlayerCell = true;
@@ -10521,7 +10526,7 @@ function thelegendmodproject() {
                 this.renderFrame();
             },
             setView() {
-                this.setScale();
+                this.setScale(LM.playerSize);
                 var speed = 30;
                 //if (LM.playerCellsMulti.length) {
 				if (window.multiboxPlayerEnabled) {
@@ -10538,19 +10543,20 @@ function thelegendmodproject() {
                 }
                 //this.camX=LM.viewX
                 //this.camY=LM.viewY
+                LM.playerXMulti= this.camXMulti;
+                LM.playerYMulti = this.camYMulti;				
                 LM.playerX = this.camX;
                 LM.playerY = this.camY;
-                LM.playerXMulti= this.camXMulti;
-                LM.playerYMulti = this.camYMulti;
+
             },
-            setScale() {
+            setScale(size) {
                 if (!LM.autoZoom) {
                     this.scale = (9 * this.scale + this.getZoom()) / 10;
                     LM.viewScale = this.scale;
                     return;
                 }
                 if (LM.play) {
-                    this.scale = (9 * this.scale + Math.min(64 / LM.playerSize, 1) ** 0.4 * this.getZoom()) / 10;
+                    this.scale = (9 * this.scale + Math.min(64 / size, 1) ** 0.4 * this.getZoom()) / 10;
                 } else {
                     this.scale = (9 * this.scale + LM.scale * this.getZoom()) / 10;
                 }
@@ -11080,7 +11086,7 @@ function thelegendmodproject() {
                 }
             },
             calMinMaxMulti() {
-				if (window.multiboxPlayerEnabled && LM.foodMulti.length && LM.playerXMulti && LM.playerYMulti){
+				if (window.multiboxPlayerEnabled && LM.foodMulti.length){
 					LM.camMaxMultiX = LM.playerXMulti
 					LM.camMaxMultiY = LM.playerYMulti
 					LM.camMinMultiX = LM.playerXMulti
