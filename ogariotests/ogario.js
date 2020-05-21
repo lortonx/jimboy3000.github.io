@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.689
+// v1.691
 
 
 //window.testobjects = {};
@@ -8206,6 +8206,8 @@ function thelegendmodproject() {
         ghostCells: [],
         playerX: 0,
         playerY: 0,
+        playerXMulti: 0,
+        playerYMulti: 0,		
         playerSize: 0,
         playerMass: 0,
         playerMaxMass: 0,
@@ -10488,6 +10490,8 @@ function thelegendmodproject() {
             canvasHeight: 0,
             camX: 0,
             camY: 0,
+            camXMulti: 0,
+            camYMulti: 0,			
             scale: 1,
             fpsLastRequest: null,
             renderedFrames: 0,
@@ -10520,10 +10524,14 @@ function thelegendmodproject() {
                 this.setScale();
                 var speed = 30;
                 //if (LM.playerCellsMulti.length) {
+				if (window.multiboxPlayerEnabled) {
+                    this.camXMulti = (this.camXMulti + LM.viewX) / 2;
+                    this.camYMulti = (this.camYMulti + LM.viewY) / 2;							
+				} 
 				if (LM.playerCells.length) {	
                     LM.calculatePlayerMassAndPosition();
                     this.camX = (this.camX + LM.viewX) / 2;
-                    this.camY = (this.camY + LM.viewY) / 2;
+                    this.camY = (this.camY + LM.viewY) / 2;					
                 } else {
                     this.camX = (29 * this.camX + LM.viewX) / 30;
                     this.camY = (29 * this.camY + LM.viewY) / 30;
@@ -10532,6 +10540,8 @@ function thelegendmodproject() {
                 //this.camY=LM.viewY
                 LM.playerX = this.camX;
                 LM.playerY = this.camY;
+                LM.playerXMulti= this.camXMulti;
+                LM.playerYMulti = this.camYMulti;
             },
             setScale() {
                 if (!LM.autoZoom) {
@@ -10740,7 +10750,7 @@ function thelegendmodproject() {
 					if (!window.multiboxPlayerEnabled){
 						this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
 					}
-					else{
+					else if (LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
 						this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
 					}
                     //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
@@ -11070,11 +11080,11 @@ function thelegendmodproject() {
                 }
             },
             calMinMaxMulti() {
-				if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && LM.foodMulti.length){
-					LM.camMaxMultiX = spects[window.multiboxPlayerEnabled-1].playerX
-					LM.camMaxMultiY = spects[window.multiboxPlayerEnabled-1].playerY
-					LM.camMinMultiX = spects[window.multiboxPlayerEnabled-1].playerX
-					LM.camMinMultiY = spects[window.multiboxPlayerEnabled-1].playerY
+				if (window.multiboxPlayerEnabled && LM.foodMulti.length && LM.playerXMulti && LM.playerYMulti){
+					LM.camMaxMultiX = LM.playerXMulti
+					LM.camMaxMultiY = LM.playerYMulti
+					LM.camMinMultiX = LM.playerXMulti
+					LM.camMinMultiY = LM.playerYMulti
 					for (var length = 0; length < LM.foodMulti.length; length++) {
 						var x = LM.foodMulti[length].x - 10 - defaultSettings.foodSize;
 						var y = LM.foodMulti[length].y - 10 - defaultSettings.foodSize;
