@@ -1,7 +1,8 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.694
+// v1.693
+
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2730,7 +2731,7 @@ function thelegendmodproject() {
             this.addSliderBox('#theme-main', 'massScale', 1, 5, 1);
             this.addSliderBox('#theme-main', 'virMassScale', 1, 5, 1);
             this.addSliderBox('#theme-main', 'strokeScale', 1, 4, 0.1);
-            this.addSliderBox('#theme-main', 'foodSize', 0.5, 50, 0.5, 'setFoodColor');
+            this.addSliderBox('#theme-main', 'foodSize', 1, 50, 1, 'setFoodColor');
             this.addSliderBox('#theme-main', 'virusStrokeSize', 2, 40, 1);
             this.addSliderBox('#theme-main', 'bordersWidth', 2, 200, 2);
             this.addSliderBox('#theme-main', 'borderGlowSize', 0, 40, 1);
@@ -6385,7 +6386,7 @@ function thelegendmodproject() {
                 msg += this.packInt(z.id, 4);
                 msg += this.packFloat(this.getrel(z.x, 0), 4);
                 msg += this.packFloat(this.getrel(z.y, 1), 4);
-                msg += this.packInt((z.size), 2);
+                msg += this.packInt(~~(z.size), 2);
             }
             var cmsg = "";
             var clen = 0;
@@ -6396,7 +6397,7 @@ function thelegendmodproject() {
                     cmsg += this.packInt(z.id, 4);
                     cmsg += this.packFloat(this.getrel(z.x, 0), 4);
                     cmsg += this.packFloat(this.getrel(z.y, 1), 4);
-                    cmsg += this.packInt((z.size), 2);
+                    cmsg += this.packInt(~~(z.size), 2);
                     clen++;
                 }
             }
@@ -9998,10 +9999,10 @@ function thelegendmodproject() {
             if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
                 this.mapOffsetX = this.mapOffset - right;
                 this.mapOffsetY = this.mapOffset - bottom;
-                this.mapMinX = (this.mapOffset - this.mapOffsetX);
-                this.mapMinY = (-this.mapOffset - this.mapOffsetY);
-                this.mapMaxX = (this.mapOffset - this.mapOffsetX);
-                this.mapMaxY = (this.mapOffset - this.mapOffsetY);
+                this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
+                this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
+                this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
+                this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
                 this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
                 this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
                 this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
