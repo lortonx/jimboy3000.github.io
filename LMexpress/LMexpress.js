@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -336,18 +336,18 @@ function loadericon() {
 }
 
 function PremiumUsers() {
-	if (!window.proLicenceUID || window.proLicenceUID.includes("Give")){		
+	if (!window.proLicenceUID || window.proLicenceUID == "null" || window.proLicenceUID.includes("Give")){		
 		if (window.agarioUID && ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]){
 			
 			if (ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.includes("Give")){
 				var YYYYMMDD=new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,"");
 				var expDate = parseInt(ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.split('@')[1])
-				if (expDate && expDate < YYYYMMDD && window.proLicenceUID){
+				if (expDate && expDate < YYYYMMDD && window.proLicenceUID &&  window.proLicenceUID != "null"){
 					localStorage.setItem("proLicenceUID", null);
 					toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using Legend mod!").css("width", "350px");
 				}
 				else if (expDate && expDate >= YYYYMMDD){
-					if (!window.proLicenceUID){
+					if (!window.proLicenceUID || window.proLicenceUID == "null"){
 						window.proLicenceUID = "Give"
 						toastr.warning("<b>[SERVER]:</b>  Your licence is stored as Giveaway Premium until " + expDate.slice(6, 8) + "/" + expDate.slice(6, 6) + "/" + expDate.slice(0, 4) + ". Thank you for using Legend mod!").css("width", "350px");
 					}
