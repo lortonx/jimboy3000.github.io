@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.694
+// v1.695
 
 
 //window.testobjects = {};
@@ -7776,8 +7776,8 @@ function thelegendmodproject() {
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
             //if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
-			//if (this.spectator>0 && this.isInV() || this.invisible == true) {	
-			if (this.invisible == true) {
+			if (this.spectator>0 && this.isInV() || this.invisible == true) {	
+			//if (this.invisible == true) {
                 return;
             }
             //					
@@ -10396,8 +10396,7 @@ function thelegendmodproject() {
                         if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
                             cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass);
                         }
-                        if (!cell.isPlayerCell && cell.isInView() (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
-						//if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
+						if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
                             this.cacheCells(cell.x, cell.y, cell.size, fixMass);
                         }
                     }
