@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.693
+// v1.694
 
 
 //window.testobjects = {};
@@ -10396,7 +10396,8 @@ function thelegendmodproject() {
                         if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
                             cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass);
                         }
-                        if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
+                        if (!cell.isPlayerCell && cell.isInView() (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
+						//if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
                             this.cacheCells(cell.x, cell.y, cell.size, fixMass);
                         }
                     }
