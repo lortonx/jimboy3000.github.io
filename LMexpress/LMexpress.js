@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092i by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092j by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
