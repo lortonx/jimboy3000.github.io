@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.096 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.097 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -336,16 +336,32 @@ function loadericon() {
 }
 
 function PremiumUsers() {
-	if (window.proLicenceUID){
-		//toastr.warning("<b>[SERVER]:</b> Premium account found. Thank you!").css("width", "350px");
-	}	
-	else{
+	if (!window.proLicenceUID || window.proLicenceUID.includes("Give")){		
 		if (window.agarioUID && ProLicenceUsersTable.ProLicenceUsers[window.agarioUID]){
-			window.proLicenceUID = true
-			if (ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "LMauthor" || ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "Admin" || ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "Moderator" ) window.proLicenceUID = ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason			
-			localStorage.setItem("proLicenceUID", true);		
-			toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you!").css("width", "350px");
+			
+			if (ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.includes("Give")){
+				var YYYYMMDD=new Date().toISOString().slice(0,new Date().toISOString().indexOf("T")).replace(/-/g,"");
+				var expDate = parseInt(ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.split('@')[1])
+				if (expDate && expDate < YYYYMMDD){
+					localStorage.setItem("proLicenceUID", false);
+					toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using Legend mod!").css("width", "350px");
+				}
+				else if (expDate && expDate >= YYYYMMDD){
+					if (!window.proLicenceUID){
+						window.proLicenceUID = "Give"
+						toastr.warning("<b>[SERVER]:</b>  Your licence is stored as Giveaway Premium until " + expDate.slice(6, 8) + "/" + expDate.slice(6, 6) + "/" + expDate.slice(0, 4) + ". Thank you for using Legend mod!").css("width", "350px");
+					}
+					else{						
+					}
+				}
+			}
+			else{
+				if (ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "LMauthor" || ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "Admin" || ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "Moderator" ) window.proLicenceUID = ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason			
+					localStorage.setItem("proLicenceUID", true);		
+					toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you for using Legend mod!").css("width", "350px");
+			}
 		}
+		localStorage.setItem("proLicenceUID", window.proLicenceUID);
 		else{
 		
 		}
@@ -6239,4 +6255,5 @@ function LMadvertisement2020(){
             $("#FAQLMPromo").click(function() {
 				window.open('https://legendmod.ml/', '_blank');
             });	
-}							
+}
+							
