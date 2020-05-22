@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -349,7 +349,7 @@ function PremiumUsers() {
 				else if (expDate && expDate >= YYYYMMDD){
 					if (!window.proLicenceUID || window.proLicenceUID == "null"){
 						window.proLicenceUID = "Give"
-						toastr.warning("<b>[SERVER]:</b>  Your licence is stored as Giveaway Premium until " + expDate.slice(6, 8) + "/" + expDate.slice(6, 6) + "/" + expDate.slice(0, 4) + ". Thank you for using Legend mod!").css("width", "350px");
+						toastr.warning("<b>[SERVER]:</b>  Your licence is stored as Giveaway Premium until " + expDate.splice(6, 8) + "/" + expDate.splice(6, 6) + "/" + expDate.splice(0, 4) + ". Thank you for using Legend mod!").css("width", "350px");
 					}
 					else{						
 					}
