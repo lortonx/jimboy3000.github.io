@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.701
+// v1.702
 
 
 //window.testobjects = {};
@@ -7994,7 +7994,12 @@ function thelegendmodproject() {
 					style.drawImage(cimgSpecialSkinEffectsUSA, this.x - 5/7 * y, this.y - 1/2 * y, y * 2, y * 2);  									
 					}	
 					else if (this.SpecialEffect == "SunGlasses" || this.SpecialEffect2 == "SunGlasses"){ 	
-					style.drawImage(cimgSpecialSkinEffectsSunGlasses, this.x -  1 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);  		
+					//style.drawImage(cimgSpecialSkinEffectsSunGlasses, this.x -  1 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);  	
+					style.drawImage(cimgSpecialSkinEffectsModerator, this.x - window.xx1 * y, this.y - window.xx2 * y, y*window.xx3, y*window.xx4);	
+					if (!window.xx1) window.xx1 = 1
+					if (!window.xx2) window.xx2 = 1.1
+					if (!window.xx3) window.xx3 = 1.7
+					if (!window.xx4) window.xx4 = 1.4						
 					}						
 					
 					else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator"){ 	
