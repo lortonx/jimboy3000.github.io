@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.704
+// v1.705
 
 
 //window.testobjects = {};
@@ -25,25 +25,25 @@ function changeregion() {
 function deleteGamemode() {
     var privateModOptions = [{
         text: 'Antarctic',
-        value: 6
+        value: ':antartic'
     }, {
         text: 'Selffeed',
-        value: 7
+        value: ':selfeed'
     }, {
         text: 'FFA',
-        value: 8
+        value: ':ffa'
     }, {
         text: 'Battle Royal',
-        value: 9
+        value: ':battleroyale'
     }, {
         text: 'Teams',
-        value: 10
+        value: ':teams'
     }, {
         text: 'Experimental',
-        value: 11
+        value: ':experimental'
     }, {
         text: 'Party mode',
-        value: 12
+        value: ':party'
     }];
     if (!window.gamemodeBackup) {
         window.gamemodeBackup = $("#gamemode").html();
@@ -66,38 +66,36 @@ function deleteGamemode() {
                     //document.getElementById("gamemode").options[i].disabled = false;					
                 }
             }
-        } else {}
+        
         if ($('#gamemode').val() == 6) {
+			legendmod.gameMode = ":antartic";
             core.connect('wss://delta-server.glitch.me');
             application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 7) {
+        } else if ($('#gamemode').val() == ':selfeed') {
+			legendmod.gameMode = ":ffa";
             core.connect('wss://delta-selffeed.glitch.me');
             application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 8) {
+        } else if ($('#gamemode').val() == ':ffa') {
             logoutPSArenas();
-            legendmod.gameMode = ":ffa";
             core.connect(agarTesterArena + ':1500/'); //ffa
             application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 9) {
+        } else if ($('#gamemode').val() == ':battleroyale') {
             logoutPSArenas();
-            legendmod.gameMode = ":battleroyale";
             core.connect(agarTesterArena + ':1504/'); //battle royal			
             application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 10) {
+        } else if ($('#gamemode').val() == ':teams') {
             logoutPSArenas();
-            legendmod.gameMode = ":teams";
             core.connect(agarTesterArena + ':1501/'); //teams
             application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 11) {
+        } else if ($('#gamemode').val() == ":experimental") {
             logoutPSArenas();
-            legendmod.gameMode = ":experimental";
             core.connect(agarTesterArena + ':1503/'); //experimental
             application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 12) {
+        } else if ($('#gamemode').val() == ":party") {
             logoutPSArenas();
-            legendmod.gameMode = ":party";
             core.connect(agarTesterArena + ':1502/'); //party
             application.connect('wss://private1:443')
+		}
         }
     });
     $('#gamemode option[value=6]').prop('selected', 'selected').change();
