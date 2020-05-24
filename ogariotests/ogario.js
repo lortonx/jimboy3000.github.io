@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.705
+// v1.706
 
 
 //window.testobjects = {};
@@ -2261,6 +2261,12 @@ cimgSpecialSkinEffectsLegendHeroes2 = new Image;
 cimgSpecialSkinEffectsLegendHeroes2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsLegendclan2.png';
 cimgSpecialSkinEffectsShiro = new Image;
 cimgSpecialSkinEffectsShiro.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsShiro.png';
+iconSpecialSkinEffectsSparrow = new Image;
+iconSpecialSkinEffectsSparrow.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSparrow.png';
+iconSpecialSkinEffectsButterfly = new Image;
+iconSpecialSkinEffectsButterfly.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsButterfly.png';
+iconSpecialSkinEffectsMouse = new Image;
+iconSpecialSkinEffectsMouse.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMouse.png';
 
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
@@ -8009,7 +8015,31 @@ function thelegendmodproject() {
 					}	
 					else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro"){ 	
 					style.drawImage(cimgSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);										
-					}					
+					}	
+					else if (this.SpecialEffect == "Sparrow" || this.SpecialEffect2 == "Sparrow"){ 	
+					//style.drawImage(iconSpecialSkinEffectsSparrow, this.x + 0.05 * y, this.y - 1.2 * y, y, y);	
+					style.drawImage(iconSpecialSkinEffectsSparrow, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+					if (!window.xx1) window.xx1 = 0.95
+					if (!window.xx2) window.xx2 = 5.3/4
+					if (!window.xx3) window.xx3 = 0.5
+					if (!window.xx4) window.xx4 = 4					
+					}						
+					else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly"){ 	
+					//style.drawImage(iconSpecialSkinEffectsButterfly, this.x + 0.05 * y, this.y - 1.2 * y, y, y);		
+					style.drawImage(iconSpecialSkinEffectsButterfly, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+					if (!window.xx1) window.xx1 = 0.95
+					if (!window.xx2) window.xx2 = 5.3/4
+					if (!window.xx3) window.xx3 = 0.5
+					if (!window.xx4) window.xx4 = 4							
+					}	
+					else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse"){ 	
+					//style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.05 * y, this.y - 1.2 * y, y, y);										
+					style.drawImage(iconSpecialSkinEffectsMouse, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+					if (!window.xx1) window.xx1 = 0.95
+					if (!window.xx2) window.xx2 = 5.3/4
+					if (!window.xx3) window.xx3 = 0.5
+					if (!window.xx4) window.xx4 = 4												
+					}						
 					else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword"){ 	
 					style.drawImage(cimgSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3/5 * y, y * 1.6, y * 1.6);  									
 					}							
