@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.708
+// v1.709
 
 
 //window.testobjects = {};
@@ -8017,28 +8017,17 @@ function thelegendmodproject() {
 					style.drawImage(cimgSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);										
 					}	
 					else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird"){ 	
-					//style.drawImage(iconSpecialSkinEffectsBird, this.x + 0.05 * y, this.y - 1.2 * y, y, y);	
-					style.drawImage(iconSpecialSkinEffectsBird, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-					if (!window.xx1) window.xx1 = 0.95
-					if (!window.xx2) window.xx2 = 5.3/4
-					if (!window.xx3) window.xx3 = 0.5
-					if (!window.xx4) window.xx4 = 4					
+					style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y/1, y/1);	
+					if (!window.xx1) window.xx1 = 0
+					if (!window.xx2) window.xx2 = 1.3
+					if (!window.xx3) window.xx3 = 1
+					if (!window.xx4) window.xx4 = 1					
 					}						
 					else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly"){ 	
-					//style.drawImage(iconSpecialSkinEffectsButterfly, this.x + 0.05 * y, this.y - 1.2 * y, y, y);		
-					style.drawImage(iconSpecialSkinEffectsButterfly, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-					if (!window.xx1) window.xx1 = 1
-					if (!window.xx2) window.xx2 = 0.6
-					if (!window.xx3) window.xx3 = 2
-					if (!window.xx4) window.xx4 = 4							
+					style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y/2, y/4);							
 					}	
 					else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse"){ 	
-					//style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.05 * y, this.y - 1.2 * y, y, y);										
-					style.drawImage(iconSpecialSkinEffectsMouse, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
-					if (!window.xx1) window.xx1 = -0.5
-					if (!window.xx2) window.xx2=0.1
-					if (!window.xx3) window.xx3 = 3
-					if (!window.xx4) window.xx4 = 1												
+					style.drawImage(iconSpecialSkinEffectsMouse, this.x + 0.5 * y, this.y - 0.1 * y, y/3, y/1);																					
 					}						
 					else if (this.SpecialEffect == "Sword" || this.SpecialEffect2 == "Sword"){ 	
 					style.drawImage(cimgSpecialSkinEffectsSword, this.x - 0.8 * y, this.y - 3/5 * y, y * 1.6, y * 1.6);  									
