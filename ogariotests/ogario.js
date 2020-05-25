@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.723
+// v1.724
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -765,6 +765,7 @@ var displayText = {
         noColors: 'Wyłącz kolory',
         showMass: 'Pokaż masę',
 		oneColoredSpectator: 'Multibox less render cells',
+		multiBoxShadow: 'Multibox cell shadow',
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
@@ -1184,6 +1185,7 @@ var displayText = {
         noColors: 'No colors',
         showMass: 'Show mass',
 		oneColoredSpectator: 'MultiBox less render cells',		
+		multiBoxShadow: 'Multibox cell shadow',
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
@@ -2282,6 +2284,7 @@ var defaultmapsettings = {
     hideTeammatesNames: false,
     showMass: true,
 	oneColoredSpectator: false,
+	multiBoxShadow: false,
     optimizedMass: true,
     shortMass: true,
     virMassShots: true,
@@ -4190,15 +4193,23 @@ function thelegendmodproject() {
             $('#skins a').removeClass('selected');
             $('#skins a[data-profile=\'' + this.selectedProfile + '\']').addClass('selected');
         },
+		setProfileboxShadow(){
+			for (i=0;i<profiles.length;i++){
+				$("#profile-" + i).css('box-shadow', '');
+			}
+			$("#profile-" + this.selectedProfile).css('box-shadow', '0px 0px 20px' + profiles[this.selectedProfile].color);
+			$("#profile-" + this.selectedOldProfile).css('box-shadow', '0px 0px 20px' + profiles[this.selectedOldProfile].color);
+			
+		},
         prevProfile() {
 			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
-                this.selectedProfile = (profiles.length + this.selectedProfile - 1) % profiles.length, this.setProfile();
+            this.selectedProfile = (profiles.length + this.selectedProfile - 1) % profiles.length, this.setProfile();
         },
         nextProfile() {
 			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
-                this.selectedProfile = (this.selectedProfile + 1) % profiles.length, this.setProfile();
+            this.selectedProfile = (this.selectedProfile + 1) % profiles.length, this.setProfile();
         },
         selectProfile(value) {
 			this.selectedOldProfile = this.selectedProfile;
@@ -4382,7 +4393,7 @@ function thelegendmodproject() {
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup");
-                this.addOptions(["oneColoredSpectator"], "multiBox");
+                this.addOptions(["oneColoredSpectator", "multiBoxShadow"], "multiBox");
 				this.addOptions([], "macroGroup");
                 this.addOptions([], "profiles");
 				if (!this.protocolMode) {
@@ -5107,6 +5118,7 @@ function thelegendmodproject() {
             }
         },
         setPlayerSettings() {
+			if (defaultmapsettings.multiBoxShadow)	this.setProfileboxShadow()			
             var nick = $('#nick').val();
             var tag = $('#clantag').val();
             var skin = $('#skin').val();
