@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.092k by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.092l by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -1586,7 +1586,7 @@ function YoutubeEmbPlayer(pastedDataorNot) {
 }
 
 function MsgCommands1(MSGCOMMANDS, MSGNICK) {
-
+	
     if (MSGCOMMANDS.includes("[url]")) {
         if ($("#nick").val().includes("url") == false) {
             $(".message-text").remove();
@@ -1834,6 +1834,8 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
 		toastr.warning("<b>" + MSGNICK + ":</b> Run from " + application.calculateMapSector(window.targetingLeadX, window.targetingLeadY, true)).css("width", "210px");
     }	
 }
+
+
 
 function isLegendExpress(Express) {
     if (messageone != "0" && messageone != "1") {
@@ -5780,6 +5782,17 @@ function initializeLM(modVersion) {
         triggerLMbtns();
         languagemodfun();
         $('[data-toggle="tooltip"]').tooltip();
+		
+    $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+        MSGCOMMANDS = $(".toast.toast-success").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");
+        MsgCommands1(MSGCOMMANDS, MSGNICK);
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        MSGCOMMANDS = $(".message-text").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");
+        MsgCommands1(MSGCOMMANDS, MSGNICK);
+    });		
 }
 
 
