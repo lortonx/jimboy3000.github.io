@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.728
+// v1.729
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7865,7 +7865,7 @@ function thelegendmodproject() {
             
 			if (defaultmapsettings.multiBoxShadow && this.isPlayerCell && LM.playerCellsMulti){
 				this.Multi=false;
-				for (int i = 0; i < LM.playerCellsMulti.length; i++){
+				for (var i = 0; i < LM.playerCellsMulti.length; i++){
 					if (LM.playerCellsMulti[i].id == this.id){
 						style.shadowBlur = 40;
 						style.shadowColor = profiles[application.selectedOldProfile].color;
