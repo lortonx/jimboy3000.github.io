@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.712
+// v1.713
 
 
 //window.testobjects = {};
@@ -806,7 +806,7 @@ var displayText = {
         helpersGroup: 'Wspomagacze',
         mouseGroup: 'Sterowanie myszką',
         hudGroup: 'HUD',
-		multiBox: 'MultiBox',
+		multiBox: 'Multibox',
         chatGroup: 'Czat',
         statsGroup: 'Statystyki',
         extrasGroup: 'Dodatkowe',
