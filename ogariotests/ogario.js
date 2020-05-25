@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.719
+// v1.717
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10035,18 +10035,13 @@ function thelegendmodproject() {
         },
         setMapOffset(left, top, right, bottom) {
             //if (right - left > 14000 && bottom - top > 14000) {
-            if (!legendmod.integrity || (right - left) > 14141 && (bottom - top) > 14141) { //2020 jimboy3100
+            if (!legendmod.integrity || (right - left) > LM.mapsize && (bottom - top) > LM.mapsize) { //2020 jimboy3100
                 this.mapOffsetX = this.mapOffset - right;
                 this.mapOffsetY = this.mapOffset - bottom;
-               // this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
-                //this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
-                //this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
-                //this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
-				
-                this.mapMinX = -this.mapOffset - this.mapOffsetX;
-                this.mapMinY = -this.mapOffset - this.mapOffsetY;
-                this.mapMaxX = this.mapOffset - this.mapOffsetX;
-                this.mapMaxY = this.mapOffset - this.mapOffsetY;				
+                this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
+                this.mapMinY = ~~(-this.mapOffset - this.mapOffsetY);
+                this.mapMaxX = ~~(this.mapOffset - this.mapOffsetX);
+                this.mapMaxY = ~~(this.mapOffset - this.mapOffsetY);
                 this.mapMidX = (this.mapMaxX + this.mapMinX) / 2; //Sonia3 -> this.mapMidX = -legendmod.mapOffsetX
                 this.mapMidY = (this.mapMaxY + this.mapMinY) / 2; //Sonia3 -> this.mapMidY = -legendmod.mapOffsetY				
                 this.mapOffsetFixed || (this.viewX = (right + left) / 2, this.viewY = (bottom + top) / 2);
@@ -10158,7 +10153,7 @@ function thelegendmodproject() {
 		isInViewCustom3 (x , y, size) {
 			var x2s = legendmod.canvasWidth / 2 / legendmod.scale
 			var y2s = legendmod.canvasHeight / 2 / legendmod.scale
-			var randomNum = 40 // randomNum=40
+			var randomNum = 10 // randomNum=40
 			var distance = size + randomNum
             return !(x + distance < legendmod.camMinMultiX ||
 			y + distance < legendmod.camMinMultiY ||
@@ -12253,6 +12248,21 @@ function minimapCell(envId, cb, i, s) {
         }
     };
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const menuLeft = new ContextMenu({
