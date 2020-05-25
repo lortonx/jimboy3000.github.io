@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.722
+// v1.723
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -3041,6 +3041,7 @@ function thelegendmodproject() {
         playerID: null,
         playerMass: 0,
         selectedProfile: 0,
+		selectedOldProfile: 0,
         lastDeath: 0,
         skipServerData: false,
         gameMode: ':ffa',
@@ -4081,6 +4082,9 @@ function thelegendmodproject() {
             if (null !== window.localStorage.getItem('ogarioSelectedProfile')) {
                 this.selectedProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedProfile'));
             }
+            if (null !== window.localStorage.getItem('ogarioSelectedOldProfile')) {
+                this.selectedOldProfile = JSON.parse(window.localStorage.getItem('ogarioSelectedOldProfile'));
+            }			
             if (profiles[this.selectedProfile]) {
                 ogarcopythelb.nick = profiles[this.selectedProfile].nick;
                 //changed
@@ -4174,6 +4178,7 @@ function thelegendmodproject() {
             this.setSkinPreview(profiles[e].skinURL, 'next-profile');
 
             this.saveSettings(this.selectedProfile, 'ogarioSelectedProfile');
+			 this.saveSettings(this.selectedOldProfile, 'ogarioSelectedOldProfile');
             if (profiles[this.selectedProfile]) {
                 $('#nick').val(profiles[this.selectedProfile].nick);
                 $('#clantag').val(profiles[this.selectedProfile].clanTag);
@@ -4186,14 +4191,17 @@ function thelegendmodproject() {
             $('#skins a[data-profile=\'' + this.selectedProfile + '\']').addClass('selected');
         },
         prevProfile() {
-            this.setPlayerSettings(),
+			this.selectedOldProfile = this.selectedProfile;
+            this.setPlayerSettings();
                 this.selectedProfile = (profiles.length + this.selectedProfile - 1) % profiles.length, this.setProfile();
         },
         nextProfile() {
+			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
                 this.selectedProfile = (this.selectedProfile + 1) % profiles.length, this.setProfile();
         },
         selectProfile(value) {
+			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
             this.selectedProfile = parseInt(value);
             this.setProfile();
