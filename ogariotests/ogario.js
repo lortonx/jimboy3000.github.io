@@ -10035,7 +10035,7 @@ function thelegendmodproject() {
         },
         setMapOffset(left, top, right, bottom) {
             //if (right - left > 14000 && bottom - top > 14000) {
-            if (!legendmod.integrity || (right - left) > LM.mapsize && (bottom - top) > LM.mapsize) { //2020 jimboy3100
+            if (!legendmod.integrity || (right - left) > 14000 && (bottom - top) > 14000) { //2020 jimboy3100
                 this.mapOffsetX = this.mapOffset - right;
                 this.mapOffsetY = this.mapOffset - bottom;
                 this.mapMinX = ~~(-this.mapOffset - this.mapOffsetX);
@@ -10153,7 +10153,7 @@ function thelegendmodproject() {
 		isInViewCustom3 (x , y, size) {
 			var x2s = legendmod.canvasWidth / 2 / legendmod.scale
 			var y2s = legendmod.canvasHeight / 2 / legendmod.scale
-			var randomNum = 10 // randomNum=40
+			var randomNum = 40 // randomNum=40
 			var distance = size + randomNum
             return !(x + distance < legendmod.camMinMultiX ||
 			y + distance < legendmod.camMinMultiY ||
@@ -12248,21 +12248,6 @@ function minimapCell(envId, cb, i, s) {
         }
     };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const menuLeft = new ContextMenu({
