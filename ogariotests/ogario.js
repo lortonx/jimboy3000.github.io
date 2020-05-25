@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.729
+// v1.730
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -765,7 +765,7 @@ var displayText = {
         noColors: 'Wyłącz kolory',
         showMass: 'Pokaż masę',
 		oneColoredSpectator: 'Multibox less render cells',
-		multiBoxShadow: 'Multibox cell shadow',
+		multiBoxShadow: 'Player 1 & 2',
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
@@ -1185,7 +1185,7 @@ var displayText = {
         noColors: 'No colors',
         showMass: 'Show mass',
 		oneColoredSpectator: 'MultiBox less render cells',		
-		multiBoxShadow: 'Multibox cell shadow',
+		multiBoxShadow: 'Player 1 & 2'',
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
@@ -7863,7 +7863,8 @@ function thelegendmodproject() {
             var node = null;
             var node2 = {}; //, node2.src = application.customSkinsMap[this.targetNick]
             
-			if (defaultmapsettings.multiBoxShadow && this.isPlayerCell && LM.playerCellsMulti){
+			//if (defaultmapsettings.multiBoxShadow && this.isPlayerCell && LM.playerCellsMulti){
+			if (defaultmapsettings.multiBoxShadowl && LM.playerCellsMulti){	
 				this.Multi=false;
 				for (var i = 0; i < LM.playerCellsMulti.length; i++){
 					if (LM.playerCellsMulti[i].id == this.id){
