@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.724
+// v1.725
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4205,17 +4205,20 @@ function thelegendmodproject() {
 			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
             this.selectedProfile = (profiles.length + this.selectedProfile - 1) % profiles.length, this.setProfile();
+			if (defaultmapsettings.multiBoxShadow)	this.setProfileboxShadow()						
         },
         nextProfile() {
 			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
             this.selectedProfile = (this.selectedProfile + 1) % profiles.length, this.setProfile();
+			if (defaultmapsettings.multiBoxShadow)	this.setProfileboxShadow()						
         },
         selectProfile(value) {
 			this.selectedOldProfile = this.selectedProfile;
             this.setPlayerSettings();
             this.selectedProfile = parseInt(value);
             this.setProfile();
+			if (defaultmapsettings.multiBoxShadow)	this.setProfileboxShadow()						
         },
         addOption(id, name, text, checked) {
             $(id).append('<label><input type=\"checkbox\" id=\"' + name + '\" class=\"js-switch\"> ' + text + '</label>');
@@ -5118,7 +5121,6 @@ function thelegendmodproject() {
             }
         },
         setPlayerSettings() {
-			if (defaultmapsettings.multiBoxShadow)	this.setProfileboxShadow()			
             var nick = $('#nick').val();
             var tag = $('#clantag').val();
             var skin = $('#skin').val();
