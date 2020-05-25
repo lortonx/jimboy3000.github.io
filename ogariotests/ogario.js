@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.711
+// v1.712
 
 
 //window.testobjects = {};
@@ -2333,7 +2333,7 @@ var defaultmapsettings = {
     optimizedNames: true,
     hideMyName: false,
     hideTeammatesNames: false,
-    showMass: true
+    showMass: true,
 	oneColoredSpectator: false,
     optimizedMass: true,
     shortMass: true,
