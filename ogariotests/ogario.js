@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.719
+// v1.720
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11191,8 +11191,8 @@ function thelegendmodproject() {
                     return;
                 }
                 for (let length = 0; length < LM.food.length; length++) {
-                    LM.food[length].moveCell();
-                    LM.food[length].draw(this.ctx);
+                    LM.food[length].moveCell();		
+					if (!LM.food[length].invisible) LM.food[length].draw(this.ctx);                  					
                 }
             },
             drawCachedFood(ctx, food, scale, reset) {
@@ -11200,14 +11200,18 @@ function thelegendmodproject() {
                     return;
                 }
                 if (defaultmapsettings.optimizedFood && this.pellet) {
+					
                     for (var length = 0; length < food.length; length++) {
+						if (!food[length].invisible){
                         var x = food[length].x - 10 - defaultSettings.foodSize;
                         var y = food[length].y - 10 - defaultSettings.foodSize;
                         ctx.drawImage(this.pellet, x, y);
                     }
+					}
                 } else {
                     ctx.beginPath();
                     for (var length = 0; length < food.length; length++) {
+						if (!food[length].invisible){
                         var x = food[length].x;
                         var y = food[length].y;
                         ctx.moveTo(x, y);
@@ -11217,6 +11221,7 @@ function thelegendmodproject() {
                             continue;
                         }
                         ctx.arc(x, y, food[length].size + defaultSettings.foodSize, 0, this.pi2, false);
+						}
                     }
                     ctx.fillStyle = defaultSettings.foodColor;
                     ctx.globalAlpha = 1;
