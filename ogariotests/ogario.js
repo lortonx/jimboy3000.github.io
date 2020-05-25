@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.725
+// v1.726
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7865,7 +7865,22 @@ function thelegendmodproject() {
 
 
 
-            //lylko
+            
+			if (this.isPlayerCell && defaultmapsettings.multiBoxShadow && legendmod.playerCellsMulti){
+				this.Multi=false
+				for (int i=0;i<legendmod.playerCellsMulti.length;i++){
+					if (legendmod.playerCellsMulti[i].id==this.id)
+						style.shadowBlur = 40;
+						style.shadowColor = profiles[application.selectedOldProfile].color
+						this.Multi=true
+				}
+				if (this.Multi==false){
+					style.shadowBlur = 40;
+					style.shadowColor = profiles[application.selectedProfile].color					
+				}
+			}
+
+			//lylko
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
                 node = application.getCustomSkin(this.targetNick, this.color);
 
