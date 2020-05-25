@@ -1,8 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.716
-
+// v1.717
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12307,7 +12306,7 @@ function openContextMenu(evt){
 }
 function hideContextMenu(evt){
   menuLeft.hide();
-  window.canvasElem.removeEventListener('click', hideContextMenuhideContextMenu); 
+  window.canvasElem.removeEventListener('click', hideContextMenu); 
 }
 
 //Animated Skins
