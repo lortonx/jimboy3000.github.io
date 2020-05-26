@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.736
+// v1.737
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7868,13 +7868,15 @@ function thelegendmodproject() {
             
 
 			if (defaultmapsettings.multiBoxShadow && this.targetNick!=null && (this.targetNick == profiles[application.selectedOldProfile].nick || this.targetNick == profiles[application.selectedProfile].nick ) && LM.playerCellsMulti){	
-				if ( this.targetNick == profiles[application.selectedOldProfile].nick ){
-					style.shadowBlur = 40;
-					style.shadowColor = profiles[application.selectedOldProfile].color;					
-				}
-				else if ( this.targetNick == profiles[application.selectedProfile].nick ){
-					style.shadowBlur = 40;
-					style.shadowColor = profiles[application.selectedProfile].color;							
+				if (legendmod.play && window.multiboxPlayerEnabled){
+					if ( this.targetNick == profiles[application.selectedOldProfile].nick ){
+						style.shadowBlur = 40;
+						style.shadowColor = profiles[application.selectedOldProfile].color;					
+					}
+					else if ( this.targetNick == profiles[application.selectedProfile].nick ){
+						style.shadowBlur = 40;
+						style.shadowColor = profiles[application.selectedProfile].color;							
+					}
 				}
 			}
 
