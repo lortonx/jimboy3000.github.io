@@ -10241,7 +10241,7 @@ function thelegendmodproject() {
 				//if (LM.playerCellsMulti.length && window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
 					
 				
-				if (LM.playerCellsMulti.length && legendmod.multiBoxPlayerExists){	
+				if (LM.playerCellsMulti.length && LM.multiBoxPlayerExists){	
 						invisible = this.isInViewCustom3(x , y, size)					
 				}
                 cellUpdateCells = null;
@@ -11131,7 +11131,7 @@ function thelegendmodproject() {
 					LM.camMaxMultiY = LM.playerYMulti
 					LM.camMinMultiX = LM.playerXMulti
 					LM.camMinMultiY = LM.playerYMulti
-					var randomNum = 0 // randomNum = 10
+					var randomNum = 10 // randomNum = 10 mass of food
 					for (var length = 0; length < LM.foodMulti.length; length++) {
 						var x = LM.foodMulti[length].x - randomNum - defaultSettings.foodSize;
 						var y = LM.foodMulti[length].y - randomNum - defaultSettings.foodSize;
@@ -11147,7 +11147,7 @@ function thelegendmodproject() {
                 LM.camMaxY = LM.playerY
                 LM.camMinX = LM.playerX
                 LM.camMinY = LM.playerY
-				var randomNum = 0 // randomNum = 10
+				var randomNum = 10 // randomNum = 10 mass of food
                 for (var length = 0; length < LM.food.length; length++) {
                     var x = LM.food[length].x - randomNum - defaultSettings.foodSize;
                     var y = LM.food[length].y - randomNum - defaultSettings.foodSize;
