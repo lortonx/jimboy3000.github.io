@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.741
+// v1.742
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -766,6 +766,7 @@ var displayText = {
         showMass: 'Pokaż masę',
 		oneColoredSpectator: 'Multibox less render cells',
 		multiBoxShadow: 'Player 1 & 2',
+		multiKeepMoving: 'Inactive keep moving',
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
@@ -1188,6 +1189,7 @@ var displayText = {
         showMass: 'Show mass',
 		oneColoredSpectator: 'MultiBox less render cells',		
 		multiBoxShadow: 'Player 1 & 2',
+		multiKeepMoving: 'Inactive keep moving',
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
@@ -2289,6 +2291,7 @@ var defaultmapsettings = {
     showMass: true,
 	oneColoredSpectator: false,
 	multiBoxShadow: false,
+	multiKeepMoving: true,
     optimizedMass: true,
     shortMass: true,
     virMassShots: true,
@@ -4409,7 +4412,7 @@ function thelegendmodproject() {
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
                 this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup");
-                this.addOptions(["oneColoredSpectator", "multiBoxShadow"], "multiBox");
+                this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving"], "multiBox");
 				this.addOptions([], "macroGroup");
                 this.addOptions([], "profiles");
 				if (!this.protocolMode) {
@@ -8660,7 +8663,7 @@ function thelegendmodproject() {
 
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
-			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && !window.multiboxFollowMouse){
+			if ((window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && !window.multiboxFollowMouse) && defaultmapsettings.multiKeepMoving){
 				cursorX = this.playerX + this.distX;
 				cursorY = this.playerY + this.distY;
 			}
