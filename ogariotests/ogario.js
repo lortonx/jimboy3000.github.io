@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.755
+// v1.756
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10803,10 +10803,10 @@ function thelegendmodproject() {
                 }
                 //
                 if (defaultmapsettings.debug) {
-					if (!window.multiboxPlayerEnabled){
+					//if (!window.multiboxPlayerEnabled){
 						this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
-					}
-					else if (LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
+					//}
+					if (window.multiboxPlayerEnabled && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
 						this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
 					}
                     //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
