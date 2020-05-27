@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.758
+// v1.759
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10258,7 +10258,7 @@ function thelegendmodproject() {
 
                 if (this.indexedCells.hasOwnProperty(id)) {
                     cellUpdateCells = this.indexedCells[id];
-					if (cellUpdateCells.spectator &&){
+					if (cellUpdateCells.spectator && cellUpdateCells.isFood){
 							console.log('h')
 					}					
                 } 
