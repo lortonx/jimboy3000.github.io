@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.759
+// v1.758
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10258,10 +10258,11 @@ function thelegendmodproject() {
 
                 if (this.indexedCells.hasOwnProperty(id)) {
                     cellUpdateCells = this.indexedCells[id];
-                    if (color) {
-                        cellUpdateCells.color = color;
-                    }
-                } else {
+					if (cellUpdateCells.spectator &&){
+							console.log('h')
+					}					
+                } 
+				else {
                     cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                     cellUpdateCells.time = this.time;
                     if (!isFood) {
@@ -10275,13 +10276,9 @@ function thelegendmodproject() {
                             this.playerCells.push(cellUpdateCells);
 							//this.playerCellsMulti.push(cellUpdateCells);
                         }
-                    } else {                      
-						if (legendmod.multiBoxPlayerExists && !LM.foodMulti.indexOf(cellUpdateCells)){
-							this.food.push(cellUpdateCells);
-						}
-						else{
-							this.food.push(cellUpdateCells);
-						}
+                    } 
+					else {
+                        this.food.push(cellUpdateCells);
                     }
                     this.indexedCells[id] = cellUpdateCells;
                 }
