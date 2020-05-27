@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.756
+// v1.757
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10806,7 +10806,7 @@ function thelegendmodproject() {
 					//if (!window.multiboxPlayerEnabled){
 						this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
 					//}
-					if (window.multiboxPlayerEnabled && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
+					if (legendmod.multiBoxPlayerExists && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
 						this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
 					}
                     //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
@@ -11136,7 +11136,7 @@ function thelegendmodproject() {
                 }
             },
             calMinMaxMulti() {
-				if (window.multiboxPlayerEnabled && LM.foodMulti.length){
+				if (legendmod.multiBoxPlayerExists && LM.foodMulti.length){
 					LM.camMaxMultiX = LM.playerXMulti
 					LM.camMaxMultiY = LM.playerYMulti
 					LM.camMinMultiX = LM.playerXMulti
