@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.740
+// v1.741
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8661,9 +8661,10 @@ function thelegendmodproject() {
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
 			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && !window.multiboxFollowMouse){
-				//handled by spects.js
+				cursorX = this.playerX + this.distX;
+				cursorY = this.playerY + this.distY;
 			}
-            else if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {
+            else if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {								
                 if (specialcommand) {
                     //console.log('hi')
                     //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
@@ -8700,14 +8701,16 @@ function thelegendmodproject() {
                 view.setInt32(5, cursorY, true);
                 view.setUint32(9, this.protocolKey, true);
                 this.sendMessage(view);
+				
+				//for multi
+				this.distX  = cursorX - this.playerX	
+				this.distY  = legendmod.cursorY - this.playerY					
             }
             if (window.userBots.startedBots && window.userBots.isAlive) {
                 window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
                 window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
                 window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
             }
-
-
         },
         /*            sendAccessToken(t, e, i) {
                         if (!this['accessTokenSent']) {
