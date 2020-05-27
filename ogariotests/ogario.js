@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.742
+// v1.743
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10732,7 +10732,19 @@ function thelegendmodproject() {
                         this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
                     }
                     if (defaultmapsettings.cursorTracking) {
-                        this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+						if (!window.multiboxFollowMouse){
+							if (!window.multiboxPlayerEnabled){
+								this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+							}
+							else if(window.multiboxPlayerEnabled){
+								this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
+							}
+						}
+						else{
+							this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+							this.drawCursorTracking(this.ctx, LM.playerCellsMulti, LM.cursorX, LM.cursorY);
+						}
+						
                     }
                     if (defaultmapsettings.FBTracking && LM.arrowFB[0].visible) {
                         this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
