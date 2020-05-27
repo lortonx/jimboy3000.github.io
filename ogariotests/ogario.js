@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.744
+// v1.745
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10622,9 +10622,12 @@ function thelegendmodproject() {
                                 for (e = 0; e < LM.cells.length; e++) LM.cells[e].draw(this.ctx);
                                 this.ctx['restore'](), ':teams' === LM.gameMode && this.pieChart && this.pieChart.width && this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                             }, */
-            'renderFrame': async function() { //Sonia5
+
+			renderFrame() { //Sonia5
+            //'renderFrame': async function() { //Sonia5
+			//await this.sleep(4); //Sonia5			
                 //this.ctx.start2D();
-                //await this.sleep(4); //Sonia5
+                
                 LM.time = Date.now();
                 for (i = 0; i < LM.cells.length; i++) {
                     LM.cells[i].moveCell();
