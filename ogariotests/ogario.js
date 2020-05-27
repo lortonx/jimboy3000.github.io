@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.759
+// v1.760
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10148,8 +10148,6 @@ function thelegendmodproject() {
             }
         },
 		isInViewCustom3 (x , y, size) {
-			var x2s = legendmod.canvasWidth / 2 / legendmod.scale
-			var y2s = legendmod.canvasHeight / 2 / legendmod.scale
 			var randomNum = 40 // randomNum=40
 			var distance = size + randomNum
             return !(x + distance < legendmod.camMinMultiX ||
@@ -10257,14 +10255,12 @@ function thelegendmodproject() {
                 cellUpdateCells = null;
 
                 if (this.indexedCells.hasOwnProperty(id)) {
-                    cellUpdateCells = this.indexedCells[id];
-					if (cellUpdateCells.spectator && cellUpdateCells.isFood){
-							console.log('h')
-					}					
+                    cellUpdateCells = this.indexedCells[id];					
                 } 
 				else {
                     cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                     cellUpdateCells.time = this.time;
+					cellUpdateCells.spectator = false;
                     if (!isFood) {
                         if (isVirus && defaultmapsettings.virusesRange) {
                             this.viruses.push(cellUpdateCells);
