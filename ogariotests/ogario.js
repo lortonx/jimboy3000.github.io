@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.750
+// v1.751
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10140,7 +10140,7 @@ function thelegendmodproject() {
 		isInViewCustom3 (x , y, size) {
 			var x2s = legendmod.canvasWidth / 2 / legendmod.scale
 			var y2s = legendmod.canvasHeight / 2 / legendmod.scale
-			var randomNum = 40 // randomNum=40
+			var randomNum = 20 // randomNum=40
 			var distance = size + randomNum
             return !(x + distance < legendmod.camMinMultiX ||
 			y + distance < legendmod.camMinMultiY ||
@@ -11131,9 +11131,10 @@ function thelegendmodproject() {
 					LM.camMaxMultiY = LM.playerYMulti
 					LM.camMinMultiX = LM.playerXMulti
 					LM.camMinMultiY = LM.playerYMulti
+					var randomNum = 0 // randomNum = 10
 					for (var length = 0; length < LM.foodMulti.length; length++) {
-						var x = LM.foodMulti[length].x - 10 - defaultSettings.foodSize;
-						var y = LM.foodMulti[length].y - 10 - defaultSettings.foodSize;
+						var x = LM.foodMulti[length].x - randomNum - defaultSettings.foodSize;
+						var y = LM.foodMulti[length].y - randomNum - defaultSettings.foodSize;
 						if (x > LM.camMaxMultiX) LM.camMaxMultiX = x
 						if (y > LM.camMaxMultiY) LM.camMaxMultiY = y
 						if (x < LM.camMinMultiX) LM.camMinMultiX = x
@@ -11146,9 +11147,10 @@ function thelegendmodproject() {
                 LM.camMaxY = LM.playerY
                 LM.camMinX = LM.playerX
                 LM.camMinY = LM.playerY
+				var randomNum = 0 // randomNum = 10
                 for (var length = 0; length < LM.food.length; length++) {
-                    var x = LM.food[length].x - 10 - defaultSettings.foodSize;
-                    var y = LM.food[length].y - 10 - defaultSettings.foodSize;
+                    var x = LM.food[length].x - randomNum - defaultSettings.foodSize;
+                    var y = LM.food[length].y - randomNum - defaultSettings.foodSize;
                     if (x > LM.camMaxX) LM.camMaxX = x
                     if (y > LM.camMaxY) LM.camMaxY = y
                     if (x < LM.camMinX) LM.camMinX = x
