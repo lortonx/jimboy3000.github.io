@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.752
+// v1.753
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4116,9 +4116,6 @@ function thelegendmodproject() {
                 ogarcopythelb.skinURL = profiles[this.selectedProfile].skinURL;
                 ogarcopythelb.color = profiles[this.selectedProfile].color;
             }
-			if (profiles[this.selectedProfile] && profiles[this.selectedOldProfile]) {
-				if (defaultmapsettings.multiBoxShadow) this.setProfileboxShadow()
-			}
         },
         changeSkinPreview(e, t) {
             //console.log(e,t);
@@ -7136,6 +7133,9 @@ function thelegendmodproject() {
             this.preloadChatSounds();
             this.setChatSoundsBtn();
             this.setFBIDs();
+			if (defaultmapsettings.multiBoxShadow){	
+				this.setProfileboxShadow()	
+			}
             var app = this;
             setInterval(function() {
                 app.drawMiniMap();
