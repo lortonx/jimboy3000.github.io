@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.749
+// v1.750
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8666,7 +8666,7 @@ function thelegendmodproject() {
 
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
-			if ((window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && !window.multiboxFollowMouse)){
+			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1] && !window.multiboxFollowMouse){
 				if (defaultmapsettings.multiKeepMoving){
 					cursorX = this.playerX + this.distX;
 					cursorY = this.playerY + this.distY;
