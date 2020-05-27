@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.760
+// v1.761
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11155,12 +11155,14 @@ function thelegendmodproject() {
                 LM.camMinX = LM.playerX
                 LM.camMinY = LM.playerY
                 for (var length = 0; length < LM.food.length; length++) {
-                    var x = LM.food[length].x - 10 - defaultSettings.foodSize;
-                    var y = LM.food[length].y - 10 - defaultSettings.foodSize;
-                    if (x > LM.camMaxX) LM.camMaxX = x
-                    if (y > LM.camMaxY) LM.camMaxY = y
-                    if (x < LM.camMinX) LM.camMinX = x
-                    if (y < LM.camMinY) LM.camMinY = y
+					if (LM.food[length].spectator==false){
+						var x = LM.food[length].x - 10 - defaultSettings.foodSize;
+						var y = LM.food[length].y - 10 - defaultSettings.foodSize;
+						if (x > LM.camMaxX) LM.camMaxX = x
+						if (y > LM.camMaxY) LM.camMaxY = y
+						if (x < LM.camMinX) LM.camMinX = x
+						if (y < LM.camMinY) LM.camMinY = y
+					}
                 }
             },
             drawFood() {
