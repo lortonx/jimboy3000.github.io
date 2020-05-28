@@ -9000,7 +9000,7 @@ function thelegendmodproject() {
 						if (!application.customSkinsMap[user.nick + "facebookskin"]){
                         application.customSkinsMap[user.nick + "facebookskin"] = `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`;
                         application.loadSkin(application.customSkinsCache, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`, "fbSkin");	
-						console.log("fb id found", user.id, user.nick, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
+						//console.log("fb id found", user.id, user.nick, `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
 						}
                         //application.cacheCustomSkin(user.fbId, '#000000', `https://graph.facebook.com/${user.fbId}/picture?type=square&width=720&height=720`);
 
