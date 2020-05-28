@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.765
+// v1.766
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4464,7 +4464,7 @@ function thelegendmodproject() {
                     //textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">legendmod.ml</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"><span id="btl-players-status">Players ready</span>: <span id="btl-players-count">0</span></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
                     textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">' + textLanguage.leaderboard + '</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
                     textLanguage.targetNotSet + '</span></div><div id="target-summary"></div></div><div id="target-panel-hud" class="hud">' +
-                    '<a href="#" id="set-debug" class="ogicon-location" style="display: none"></a>' +
+                    '<a href="#" id="set-debug" class="ogicon-location"></a>' +
                     '<a href="#" id="set-fullSpectator" class="ogicon-eye"  style="display: none"></a>' +
                     '<a href="#" id="set-ingameSpectator" class="ogicon-power"  style="display: none"></a>' +
 					'<a href="#" id="fullscreenBtn" onclick="toggleFullScreen();"  class="ogicon-display"></a>' +
@@ -10050,7 +10050,6 @@ function thelegendmodproject() {
         },
         addSpect() {
             if (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(defaultmapsettings.clanTagLc)) || window.proLicenceUID) {
-                $('#set-debug').show();
                 $('#set-fullSpectator').show();
                 $('#set-ingameSpectator').show();
                 if (window.fullSpectator && spects.length == 0) {
@@ -10059,7 +10058,6 @@ function thelegendmodproject() {
                     addSpectator();
                 }
             } else {
-                $('#set-debug').hide();
                 $('#set-fullSpectator').hide();
                 $('#set-ingameSpectator').hide();
             }
