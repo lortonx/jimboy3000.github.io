@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.763
+// v1.764
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10255,9 +10255,6 @@ function thelegendmodproject() {
                 cellUpdateCells = null;
 
                 if (this.indexedCells.hasOwnProperty(id)) {
-					if (this.indexedCells[id].spectator!=false){
-						console.log('s')
-					}
                     cellUpdateCells = this.indexedCells[id];					
                 } 
 				else {
@@ -11153,10 +11150,16 @@ function thelegendmodproject() {
 				}
             },			
             calMinMax() {
-                LM.camMaxX = LM.playerX
-                LM.camMaxY = LM.playerY
-                LM.camMinX = LM.playerX
-                LM.camMinY = LM.playerY
+				var tempX, tempY
+				tempX = LM.playerX
+				tempY = LM.playerY
+				if (legendmod.viewXTrue) tempX = legendmod.viewXTrue
+				if (legendmod.viewYTrue) tempY = legendmod.viewYTrue
+				
+                LM.camMaxX = tempX
+                LM.camMaxY = tempY
+                LM.camMinX = tempX
+                LM.camMinY = tempY
                 for (var length = 0; length < LM.food.length; length++) {
 					if (LM.food[length].spectator==false){
 						var x = LM.food[length].x - 10 - defaultSettings.foodSize;
