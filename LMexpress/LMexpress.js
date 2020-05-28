@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093a by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "92"; // the version 1.1-> 1.11
 
@@ -358,7 +358,7 @@ function PremiumUsers() {
 				}
 			}
 			else{
-				if (ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "LMauthor" || ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "Admin" || ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason == "Moderator" ) window.proLicenceUID = ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason			
+				window.proLicenceUID = ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason			
 					localStorage.setItem("proLicenceUID", true);		
 					toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you for using Legend mod!").css("width", "350px");
 			}
