@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.775
+// v1.776
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10430,7 +10430,13 @@ function thelegendmodproject() {
                     var size = ~~(cell.size * cell.size / 100);
 
 					if (size > 13) {	
-                        var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+						var mass
+						if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+							mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled-1].playerMaxMass : spects[window.multiboxPlayerEnabled-1].playerMinMass;					
+						}
+						else {
+							mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+						}
                         var fixMass = size / mass;
                         var smallMass = mass < 1000 ? 0.35 : 0.38;
                         if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
