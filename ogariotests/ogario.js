@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.787
+// v1.788
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10371,12 +10371,18 @@ function thelegendmodproject() {
 					application.showMenu(300)
 				}
 				else{		
-					if (window.multiboxPlayerEnabled){
-						window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
-						window.multiboxPlayerEnabled = null	
+					if (!window.multiboxPlayerEnabled){
+						application.multiboxswap()
 					}
 					else{
-						application.multiboxswap()
+i						if (!window.multiboxPlayerEnabledSaved){			
+							window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
+							window.multiboxPlayerEnabled = null
+						}
+						else{
+							window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
+							window.multiboxPlayerEnabledSaved = null
+						}				
 					}
 				}
                 window.userBots.isAlive = false
