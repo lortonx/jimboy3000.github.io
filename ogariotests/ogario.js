@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.785
+// v1.786
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10371,9 +10371,13 @@ function thelegendmodproject() {
 					application.showMenu(300)
 				}
 				else{		
-					window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
-					window.multiboxPlayerEnabledSaved = null				
-					//application.multiboxswap()
+					if (window.multiboxPlayerEnabled){
+						window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
+						window.multiboxPlayerEnabledSaved = null	
+					}
+					else{
+						application.multiboxswap()
+					}
 				}
                 window.userBots.isAlive = false
                 if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer)
