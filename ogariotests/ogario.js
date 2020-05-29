@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.783
+// v1.784
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -5150,7 +5150,9 @@ function thelegendmodproject() {
             this.updateDeathLocations(ogario.playerX, ogario.playerY);
             this.unlockButtons();
             resetonkeydown();
-            this.autoResp();
+			if (!legendmod.multiBoxPlayerExists){
+				this.autoResp();
+			}
 
         },
         findOwnedVanillaSkin() {
