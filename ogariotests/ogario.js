@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.784
+// v1.785
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -5150,9 +5150,7 @@ function thelegendmodproject() {
             this.updateDeathLocations(ogario.playerX, ogario.playerY);
             this.unlockButtons();
             resetonkeydown();
-			if (!legendmod.multiBoxPlayerExists){
-				this.autoResp();
-			}
+            this.autoResp();
 
         },
         findOwnedVanillaSkin() {
@@ -10372,8 +10370,10 @@ function thelegendmodproject() {
 				if (!LM.multiBoxPlayerExists){					
 					application.showMenu(300)
 				}
-				else{
-					application.multiboxswap()
+				else{		
+					window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
+					window.multiboxPlayerEnabledSaved = null				
+					//application.multiboxswap()
 				}
                 window.userBots.isAlive = false
                 if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer)
