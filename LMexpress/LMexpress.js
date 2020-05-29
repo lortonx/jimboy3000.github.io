@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "93"; // the version 1.1-> 1.11
 
@@ -149,7 +149,7 @@ var dyinglight1load = localStorage.getItem("dyinglight1load");
 var url2;
 var semiurl2;
 var PostedThings;
-var Ultimouseenabled = 0;
+//var Ultimouseenabled = 0;
 var setscriptingcom = "YES";
 var usedonceSkin = 0;
 var detailed = "";
@@ -3530,7 +3530,7 @@ function StopEditGameNames() {
 function ContinueEditGameNames() {
     $("#tcm").show();
 }
-
+/*
 function Ultimouse() {
     if (Ultimouseenabled == 0) {
         var s = document.createElement("script");
@@ -3540,7 +3540,7 @@ function Ultimouse() {
         return Ultimouseenabled = 1;
     }
 }
-
+*/
 function displayTimer() {
     // initilized all local variables:
     var minutes = '00',
@@ -4132,13 +4132,14 @@ function bluebtns() {
         .mouseleave(function() {
             $('#Cutnames').css('background-color', "transparent");
         });
+	/*
     $('#Ultimouse').mouseenter(function() {
             $('#Ultimouse').css('background-color', Top5MassColor);
         })
         .mouseleave(function() {
             $('#Ultimouse').css('background-color', "transparent");
         });
-
+*/
     $('#msgcommand1').mouseenter(function() {
             $('#msgcommand1').css('background-color', Top5MassColor);
         })
@@ -5147,7 +5148,7 @@ function initializeLM(modVersion) {
 
     $("#minimap-hud").prepend('<div id="scripting-hud" class="hud" style="width: 12.5%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
         '<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 100%; height: 100%;" data-toggle="tooltip" data-original-title="Edit names"><i id="Cutnames1" class="fa fa-scissors" style="padding-left: 0px;"></i></button>' +
-       //'<button id="Cutnames" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button>'+
+       //'<button id="Ultimouse" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 50%; height: 100%;" onclick="Ultimouse();" data-toggle="tooltip" data-original-title="Ultimouse Control"><i id="Ultimouse1" class="fa fa-mouse-pointer" style="padding-left: 0px;"></i></button>'+
 		'</div>');
 
     $("#leaderboard-hud").append('<div id="leaderboard-menu" style="pointer-events: auto;">' +
