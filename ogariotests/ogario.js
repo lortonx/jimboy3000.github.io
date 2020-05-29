@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.772
+// v1.773
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10149,7 +10149,7 @@ function thelegendmodproject() {
             }
         },
 		isInViewCustom3 (x , y, size) {
-			var randomNum = 40 // randomNum=40
+			var randomNum = 0 // randomNum=40
 			var distance = size + randomNum
             return !(x + distance < legendmod.camMinMultiX ||
 			y + distance < legendmod.camMinMultiY ||
