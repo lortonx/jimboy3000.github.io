@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.777
+// v1.778
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8758,8 +8758,8 @@ function thelegendmodproject() {
                 this.sendMessage(view);
 				
 				//for multi
-				this.distX  = cursorX - this.playerX	
-				this.distY  = legendmod.cursorY - this.playerY					
+				this.distX  = this.cursorX - this.playerX	
+				this.distY  = this.cursorY - this.playerY					
             }
             if (window.userBots.startedBots && window.userBots.isAlive) {
                 window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
