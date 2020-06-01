@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.808
+// v1.805
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -68,35 +68,35 @@ function deleteGamemode() {
         } else {}
         if ($('#gamemode').val() == 6) {
             core.connect('wss://delta-server.glitch.me');
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 7) {
             core.connect('wss://delta-selffeed.glitch.me');
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 8) {
             logoutPSArenas();
             legendmod.gameMode = ":ffa";
             core.connect(agarTesterArena + ':1500/'); //ffa
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 9) {
             logoutPSArenas();
             legendmod.gameMode = ":battleroyale";
             core.connect(agarTesterArena + ':1504/'); //battle royal			
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 10) {
             logoutPSArenas();
             legendmod.gameMode = ":teams";
             core.connect(agarTesterArena + ':1501/'); //teams
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 11) {
             logoutPSArenas();
             legendmod.gameMode = ":experimental";
             core.connect(agarTesterArena + ':1503/'); //experimental
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 12) {
             logoutPSArenas();
             legendmod.gameMode = ":party";
             core.connect(agarTesterArena + ':1502/'); //party
-            application.connect('wss://private1:443')
+            //application.connect('wss://private1:443')
         }
     });
     $('#gamemode option[value=6]').prop('selected', 'selected').change();
@@ -3061,6 +3061,7 @@ function thelegendmodproject() {
         ws: '',
         serverIP: '',
         serverArena: '',
+	tokenNeedToBtoa:false,
         serverToken: '',
         lastSentNick: '',
         lastSentClanTag: null,
@@ -5779,12 +5780,14 @@ function thelegendmodproject() {
                 this.createServerToken();
                 this.updateServerInfo();
                 if (-1 == this.ws.indexOf('agar.io')) {
-                    this.closeConnection();
+	            // fix disconnect?
+                    //this.closeConnection();
                 }
             }
         },
         recreateWS(token) {
             if (!token) return null;
+	    this.tokenNeedToBtoa = false
             var text = null;
             if (/^[a-zA-Z0-9=+\/]{12,}$/.test(token)) {
                 //var atobToken = atob(token);
@@ -5809,14 +5812,17 @@ function thelegendmodproject() {
                 text = 'wss://live-arena-' + token + '.agar.io:443'
             }		
 			else if (!token.includes("s://")){
+				this.tokenNeedToBtoa = true
 				text = 'wss://' + token; //private servers
 			}
 			else{
+				this.tokenNeedToBtoa = true
 				text = token; //private servers
 			}			
             return text;
         },
         createServerToken() {
+	    this.tokenNeedToBtoa = false
             var matchOld = this.ws.match(/ip-\d+/);
             //var matchNew = this.ws.match(/live-arena-([\w\d]+)/);
 			var matchNew = this.ws.match(/live-arena-([\w\d]+(\.tech)?)\.agar\.io/);
@@ -5834,6 +5840,7 @@ function thelegendmodproject() {
             //ccse
             if (this.ws.search(/wss?:\/\//) > -1 && this.ws.search(/agar\.io/) == -1) {
                 text = this.ws.match(/wss?:\/\/(.+)/)[1]
+		this.tokenNeedToBtoa = true
                 this.serverIP = text;				
                 //text = btoa(text);
                 //console.log("createServerToken case 1:" + text);
@@ -5906,7 +5913,7 @@ function thelegendmodproject() {
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', application.publicIP);
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
-                buf.setUint16(1, 401, true);
+                buf.setUint16(1, 404, true);
                 app.sendBuffer(buf);
                 app.sendPartyData();
             }
@@ -6256,7 +6263,8 @@ function thelegendmodproject() {
             this.sendPlayerData(15, 'lastSentPartyToken', this.partyToken);
         },
         sendServerToken() {
-            this.sendPlayerData(16, 'lastSentServerToken', this.serverToken);
+	    var serverToken = this.tokenNeedToBtoa?btoa(this.serverToken):this.serverToken
+            this.sendPlayerData(16, 'lastSentServerToken', serverToken);
         },
         sendServerJoin() {
             this.sendServerToken();
@@ -9297,7 +9305,8 @@ function thelegendmodproject() {
                             window.agarioEncodedUID = window.testobjects2.split('"�')[1].split('=')[0] + "%3D";
                         }
                     }
-					//window.testobjects2.split('����coin�')[1]+9
+
+
 
                     const node = new Node(data, s);
 
@@ -10249,7 +10258,7 @@ function thelegendmodproject() {
                     var b = view.readUInt8(offset++);
                     color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
                 }
-			
+
                 if (4 & flags) {
                     skin = encode();
                     //						console.log('skin '+g);
@@ -10284,7 +10293,6 @@ function thelegendmodproject() {
                 //id = this.newID(id),
                 //x = this.getX(x),
                 //y = this.getY(y);	
-				
 				//FOR COLOR
 				if (!isVirus && !isFood && name!=""){
 					if (LM.cellcolors[name]){ 
@@ -10304,8 +10312,7 @@ function thelegendmodproject() {
 					}
 					if (!LM.cellcolors[name]) LM.cellcolors[name]= color
 				}
-				//
-				
+				//				
 				var invisible;
 				//if (LM.playerCellsMulti.length && window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
 					
@@ -10331,8 +10338,9 @@ function thelegendmodproject() {
                             cellUpdateCells.isPlayerCell = true;
                             //this.playerColor = color;
 							this.playerColor = profiles[application.selectedProfile].color;
-							cellUpdateCells.color = profiles[application.selectedProfile].color;
+							cellUpdateCells.color = profiles[application.selectedProfile].color;							
                             this.playerCells.push(cellUpdateCells);
+							//this.playerCellsMulti.push(cellUpdateCells);
                         }
                     } 
 					else {
