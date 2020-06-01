@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.806
+// v1.807
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -5581,9 +5581,9 @@ function thelegendmodproject() {
 						}
 					}
 				}
-				this.miniMapCtx.save()
+				
                 if (LM.arrowFB[0].visible && !LM.arrowFB[0].isIncluded) { //Yahnych
-					
+					this.miniMapCtx.save()
                     this.miniMapCtx.beginPath();
                     this.miniMapCtx.arc((LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n, defaultSettings.miniMapMyCellSize, 0, this.pi2, false);
                     this.miniMapCtx.closePath();
@@ -5603,6 +5603,7 @@ function thelegendmodproject() {
                     }
                     this.miniMapCtx.fillStyle = defaultSettings.miniMapNickColor;
                     this.miniMapCtx.fillText('🔹' + LM.arrowFB[0].nick + '🔹', (LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
+					this.miniMapCtx.restore();
                     //}
                 }
                 //				
