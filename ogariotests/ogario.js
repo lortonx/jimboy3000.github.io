@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.793
+// v1.794
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10291,12 +10291,20 @@ function thelegendmodproject() {
 					if (LM.cellcolors[name]){ 
 						color = LM.cellcolors[name]
 					}
-					else{					
-						application.teamPlayers.forEach((found) => {
-							if (found.nick = name){ 
-								LM.cellcolors[name] = found.color		
-							} 
-						})					
+					else{		
+						if (name==profiles[application.selectedOldProfile].nick){
+							color = profiles[application.selectedOldProfile].color
+						}
+						else if (name==profiles[application.selectedProfile].nick){
+							color = profiles[application.selectedProfile].color
+						}					
+						else{
+							application.teamPlayers.forEach((found) => {
+								if (found.nick = name){ 
+									color = found.color		
+								} 
+							})		
+						}						
 					}
 					if (!LM.cellcolors[name]) LM.cellcolors[name]= color
 				}
