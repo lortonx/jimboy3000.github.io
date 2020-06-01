@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.796
+// v1.797
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10290,7 +10290,7 @@ function thelegendmodproject() {
 				var color2
 				if (!isVirus && !isFood && name!=''){
 					if (LM.cellcolors[name]){ 
-						color2 = LM.cellcolors[name]
+						color = LM.cellcolors[name]
 					}
 					else{		
 						if (name==profiles[application.selectedOldProfile].nick){
