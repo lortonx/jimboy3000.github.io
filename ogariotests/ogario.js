@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.797
+// v1.798
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10286,35 +10286,15 @@ function thelegendmodproject() {
                 //x = this.getX(x),
                 //y = this.getY(y);	
 				
-				//FOR COLOR
-				var color2
-				if (!isVirus && !isFood && name!=''){
-					if (LM.cellcolors[name]){ 
-						color = LM.cellcolors[name]
-					}
-					else{		
-						if (name==profiles[application.selectedOldProfile].nick){
-							color2 = profiles[application.selectedOldProfile].color
-						}
-						else if (name==profiles[application.selectedProfile].nick){
-							color2 = profiles[application.selectedProfile].color
-						}					
-						else{
-							application.teamPlayers.forEach((found) => {
-								if (found.nick = name){ 
-									color2 = found.color		
-								} 
-							})		
-						}						
-					}
-					if (!LM.cellcolors[name] && color2) LM.cellcolors[name]= color2
-				}
-				//
 				
 				var invisible;
 				//if (LM.playerCellsMulti.length && window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
 					
-				
+				if (!isVirus && !isFood && name!=''){
+					if (LM.cellcolors[name]){ 
+						color = LM.cellcolors[name]
+					}
+				}					
 				if (LM.playerCellsMulti.length && LM.multiBoxPlayerExists){	
 						invisible = this.isInViewCustom3(x , y, size)					
 				}
@@ -10383,13 +10363,30 @@ function thelegendmodproject() {
                     cell.removeCell();
                 }
             }
-            /*				
-                            for (eatEventsLength = view.readUInt16LE(offset), offset += 2, a = 0; a < eatEventsLength; a++) {
-                                id = view.readUInt32LE(offset);
-                                offset += 4,
-                                    (cellUpdateCells = this.indexedCells[id]) &&
-                                    cellUpdateCells.removeCell();
-                            }*/
+				//FOR COLOR
+				var color2
+				if (!LM.cellcolors[name]){		
+						if (name==profiles[application.selectedOldProfile].nick){
+							color2 = profiles[application.selectedOldProfile].color
+						}
+						else if (name==profiles[application.selectedProfile].nick){
+							color2 = profiles[application.selectedProfile].color
+						}					
+						else{
+							application.teamPlayers.forEach((found) => {
+								if (found.nick = name){ 
+									color2 = found.color		
+							} 
+						})		
+					}						
+				}
+				if (!LM.cellcolors[name] && color2){
+					cellUpdateCells.playerColor = color2
+					LM.cellcolors[name]= color2
+				}
+					
+				
+				//
             //Sonia7
             if (this.removePlayerCell && !this.playerCells.length) {
                 this.play = false;
