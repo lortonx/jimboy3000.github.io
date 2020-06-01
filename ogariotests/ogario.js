@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.804
+// v1.805
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -9297,8 +9297,9 @@ function thelegendmodproject() {
                             window.agarioEncodedUID = window.testobjects2.split('"�')[1].split('=')[0] + "%3D";
                         }
                     }
-
-
+					var start = window.testobjects2.indexOf('coin')+9
+					for(var end = start;data.buffer.byteLength>end;end++) if(window.testobjects2.readUIntLE(end)==74)break;
+					console.log('Coins',enc.decode(window.testobjects2.slice(start,end)))
 
                     const node = new Node(data, s);
 
