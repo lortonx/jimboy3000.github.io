@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.801
+// v1.802
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10298,7 +10298,7 @@ function thelegendmodproject() {
                         }									
 						else{
 							application.teamPlayers.forEach((found) => {
-								if (found.nick = name){ 
+								if (found.nick == name){ 
 									color2 = found.color		
 								} 
 							})		
