@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.791
+// v1.792
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8273,6 +8273,7 @@ function thelegendmodproject() {
         removedCells: [],
         food: [],
         viruses: [],
+		cellcolors: [],
         playerCells: [],
         playerCellIDs: [],
 		playerCellsMulti: [],
@@ -10249,7 +10250,7 @@ function thelegendmodproject() {
                     var b = view.readUInt8(offset++);
                     color = this.rgb2Hex(~~(0.9 * r), ~~(0.9 * g), ~~(0.9 * b));
                 }
-
+			
                 if (4 & flags) {
                     skin = encode();
                     //						console.log('skin '+g);
@@ -10284,6 +10285,21 @@ function thelegendmodproject() {
                 //id = this.newID(id),
                 //x = this.getX(x),
                 //y = this.getY(y);	
+				
+				//FOR COLOR
+				if (LM.cellcolors[name]){ 
+					color = LM.cellcolors[name]
+				}
+				else{					
+					application.teamPlayers.forEach((found) => {
+						if (found.nick = name){ 
+							LM.cellcolors[name] = found.color		
+						} 
+					})					
+				}
+				if (!LM.cellcolors[name]) LM.cellcolors[name]= color
+				//
+				
 				var invisible;
 				//if (LM.playerCellsMulti.length && window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
 					
