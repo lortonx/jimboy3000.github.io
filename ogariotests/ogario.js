@@ -1,12 +1,12 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.810
+// v1.811
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
 var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
-
+appendLMhiFbPs()
 function changeregion() {
     if ($('#region').val() == "Private") {
         deleteGamemode();
@@ -4396,7 +4396,7 @@ function thelegendmodproject() {
 				'<a id= "themesBtn" target="_blank" href="https://legendmod.ml/themes/" class="fa fa-tint" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>' +
 				'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>' +
 				'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>'+
-				'<a id= "LegendClanDiscord" href="https://discord.gg/vqy6b5U" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');				
+				'<a id= "LegendClanDiscord" href="https://discord.gg/CbMkY77" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');				
 				
                 $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
@@ -12800,7 +12800,33 @@ function embPassword(){
             }
 }
 
+function appendLMhiFbPs() {
+    $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
+        MSGCOMMANDS2 = $(".toast.toast-warning").html();
+        if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {
+            toastr.error(Premadeletter0);
+        } else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+            $(".toast.toast-warning").remove();         
+        }
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        var MSGCOMMANDS3 = $(".command-text").text();
+        if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
+            $(".command-text").text(Premadeletter0);
+        } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {        
+            $(".command-text").text(Premadeletter0);
+        }
+    });
 
+    $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+        MSGCOMMANDS = $(".toast.toast-success").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");      
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        MSGCOMMANDS = $(".message-text").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");       
+    });
+}
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
