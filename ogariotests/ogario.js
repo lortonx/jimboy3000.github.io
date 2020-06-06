@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.809
+// v1.810
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11231,7 +11231,7 @@ function thelegendmodproject() {
                     t.beginPath();
                     for (var s = 0; s < e.length; s++) {
 						if (e[s].invisible != true){
-							var o = e[s].x,
+							var o = e[s].x;
 							var a = e[s].y;
 							t.moveTo(o, a);
 							t.arc(o, a, e[s].size + 820, 0, this.pi2, false);
