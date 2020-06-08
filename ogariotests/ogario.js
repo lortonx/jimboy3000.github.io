@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.823
+// v1.824
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4614,7 +4614,7 @@ function thelegendmodproject() {
                 app.setShowSkinsPanel();
             });
 			$(document).on("click", "#onlineStatus", event => {
-				setTimeout(()=>{application.switchOnlineStatus()},500);
+				setTimeout(()=>{Settings.switchOnlineStatus()},500);
 			});			
             $(document).on("change", "#region", function() {
                 app.region = this.value;
