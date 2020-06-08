@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.815
+// v1.816
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -776,7 +776,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
-		hideSizes: 'Hide everything smaller than',
+		hideSizes: 'Hide everything with mass smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -1200,7 +1200,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
-		hideSizes: 'Hide everything smaller than',
+		hideSizes: 'Hide everything with mass smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -7812,7 +7812,7 @@ function thelegendmodproject() {
             if (LM.hideSmallBots && this.size <= 36) {
                 return;
             }
-            if (this.size < defaultmapsettings.hideSizes) {
+            if (defaultmapsettings.hideSizes > 0 && this.size < defaultmapsettings.hideSizes) {
                 return;
             }			
             // check this
