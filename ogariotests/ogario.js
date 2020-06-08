@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.824
+// v1.825
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -892,6 +892,7 @@ var displayText = {
         showStatsPTE: 'Statystyki: Maksymalna masa wroga do presplitu',
         showStatsN16: 'Statystyki: n/16',
         showStatsFPS: 'Statystyki: FPS',
+		showStatsPPS: 'Statystyki: PPS',
         blockPopups: 'Blokuj popupy (reklamy/sklep/zadanie)',
         hotkeys: 'Skróty klawiszowe',
         'hk-inst-assign': 'Aby ustawić skrót klawiszowy kliknij na polu skrótu i naciśnij wybrany klawisz.',
@@ -1319,6 +1320,7 @@ var displayText = {
         showStatsPTE: 'Game stats: Maximal enemy\'s mass for presplit',
         showStatsN16: 'Game stats: n/16',
         showStatsFPS: 'Game stats: FPS',
+		showStatsPPS: 'Game stats: PPS',
         blockPopups: 'Block popups (ads/shop/quest)',
         hotkeys: 'Hotkeys',
         'hk-inst-assign': 'To assign a hotkey click on the input field and press your chosen key.',
@@ -2395,6 +2397,7 @@ var defaultmapsettings = {
     showStatsSTE: false,
     showStatsN16: true,
     showStatsFPS: true,
+	showStatsPPS: true,
     blockPopups: false,
     streamMode: false,
     hideSkinUrl: false,
@@ -3681,11 +3684,18 @@ function thelegendmodproject() {
                     }
                     if (defaultmapsettings.showStatsFPS) {
                         t += ' | '
-                    }
+                    }					
                 }
                 if (defaultmapsettings.showStatsFPS) {
                     t += 'FPS: ' + drawRender.fps;
                 }
+				if (defaultmapsettings.showStatsPPS) {
+					if (defaultmapsettings.showStatsFPS || ogario.play ) text += ` | `;
+					var color = ''
+					if(LM.pps<23 || LM.pps>29) color = 'color:#ff4c4c'
+					if(LM.pps<20 || LM.pps>32) color = 'color:red'
+					text += 'PPS: <span style="'+color+'">'+LM.pps+'</span>';
+				}				
                 this.statsHUD.textContent = t;
                 var app = this;
                 setTimeout(function() {
@@ -9289,6 +9299,8 @@ function thelegendmodproject() {
                     //}
                     break;
                 case 102:
+
+					//break;				
                     if (data.byteLength < 20) {
                         //this["loggedIn"] = ![];
                         //if (window["logout"]) {
@@ -9296,6 +9308,10 @@ function thelegendmodproject() {
                         //}
                     }
                     if (data.buffer.byteLength > 1000) {
+						var msg = new buffer.Buffer(data.buffer.slice(1));
+						this.onMobileData(msg);		
+						
+						//
                         window.testobjects = data;
                         var sampleBytes = new Uint8Array(window.testobjects.buffer);
                         var enc = new TextDecoder();
@@ -9969,6 +9985,29 @@ function thelegendmodproject() {
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Unknown opcode:', data.getUint8(0));
             }
         },
+		countPps() {
+			if (!defaultmapsettings.showStatsPPS) {
+				return;
+			}
+			const Time = Date.now();
+			if (!this.ppsLastRequest) {
+				this.ppsLastRequest = Time;
+			}
+			if (Time - this.ppsLastRequest >= 1000) {
+				this.pps = this.totalPackets;
+				this.totalPackets = 0;
+				this.ppsLastRequest = Time;
+			}
+			this.totalPackets++;
+				},
+			onMobileData: function (msg) {
+            if (msg == null) {
+                return
+            }
+            const response = window.decodeMobileData(msg);
+            console.log(response);
+            this.unpackageMessage(response);
+		},		
         handleSubmessage(message) {
             var e = 0;
             switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
@@ -12176,7 +12215,7 @@ function thelegendmodproject() {
         },
         //lulko
         playerHasCells() {
-            return Connection.playerCells.length > 0
+            return LM.playerCells.length > 0
         },
         //lulko
         proxy(data) {
