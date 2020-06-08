@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.827
+// v1.828
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -9283,6 +9283,7 @@ function thelegendmodproject() {
                         window.legendmod.bgpi = 4;
                     }
                     break;
+					
                 case 85:
                     window.testobjectsOpcode85 = data;
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Captcha requested');
@@ -9998,15 +9999,443 @@ function thelegendmodproject() {
 				this.ppsLastRequest = Time;
 			}
 			this.totalPackets++;
-				},
-			onMobileData: function (msg) {
+		},
+		onMobileData: function (msg) {
             if (msg == null) {
                 return
             }
             const response = window.decodeMobileData(msg);
             console.log(response);
             this.unpackageMessage(response);
-		},		
+		},
+    unpackageMessage: function (r) {
+            //var returnMessage = r;
+
+            var type = r.uncompressedData.type;
+            switch (type) {
+            case 71:
+                console.log("returnMessage = r.get_softPurchaseResponseField();");
+                break;
+            case 74:
+                console.log("returnMessage = r.get_inappPurchaseResponseField();");
+                break;
+            case 20:
+                var u = r.uncompressedData.disconnectField;
+                    this.disconnectMessage(u.reason);
+
+                    this.loggedIn = false;
+                    window.logout && window.logout();
+
+                break;
+            case 113:
+                var u = r.uncompressedData.activateBoostResponseField;
+                this.updateWalletInfo([u.productUpdates[0].userWalletItem]);
+                this.displayActiveBoosts([u.userBoostItem]);
+                break;
+            case 11:
+                this.user = {coins:0,
+                             dna:0,
+                             trophy:0,
+                             boosts:{},
+                             rushBoosts:{},
+                             skins:{},
+                             skinPieces:{},
+                             potions:{},
+                             potionsStatus:{},
+                             skipBrew:{}};
+                var u = r.uncompressedData.loginResponseField;
+                
+                if(window.coinsTimer) clearTimeout(window.coinsTimer);
+                window.coinsTimer = setTimeout(()=>{window.autocoins()},3000);
+                
+                window.localStorage.setItem("getLatestID", u.latestConfiguration);
+                
+                this.updateWalletInfo(u.userWallet);
+                
+                this.displayActiveBoosts(u.userBoosts);
+                
+                this.user.stats = u.userStats;
+                this.displayStats(u.userStats);
+                
+                this.updateEvents(u.userTimedEvents)
+                
+                this.displayActiveQuests(u.userActiveQuests);//FIX IT
+                
+                this.createSkinsHTML();
+                
+                this.updateUserSettings(u.userSettings)
+                
+                this.updateUserInfo(u.userInfo)
+
+                this.updatePotions(u.userPotions)
+                break;
+            case 81:
+                var u = r.uncompressedData.updateUserSettingsResponseField;
+                this.updateUserSettings(u.updatedUserSettings)
+                break;
+            case 111:
+                var u = r.uncompressedData.activateTimedEventResponseField;
+                this.updateProducts(u.productUpdates);
+                this.updateEvents([u.userTimedEvent])
+                break;
+            case 76:
+                console.log("returnMessage = r.get_purchaseWalletUpdatesField();");
+                break;
+            case 62:
+                var u = r.uncompressedData.gameOverField;
+                this.displayStats(u.userStats);
+                var exp = 100,
+                    i = u.xpLevelUpdates[0];
+                if(i.finalLevel!=100) exp = ~~(i.finalXpForLevel*100/this.agarExp(i.finalLevel));
+                $('.progress-bar-striped').width(exp + '%');
+                $('.progress-bar-star').text(i.finalLevel);
+                this.updateProducts(u.productUpdates);
+                if(u.potionInfo&&u.potionInfo.newUserPotion){
+                  this.newPotion(u.potionInfo.newUserPotion);
+                };
+                this.showSessionStats(u.gameSessionStats);
+                break;
+            case 75:
+                console.log("returnMessage = r.get_walletUpdatesField();");
+                break;
+            case 116:
+                console.log("returnMessage = r.get_userTimedEventUpdatesField();");
+                break;
+            case 33:
+                console.log("returnMessage = r.get_configurationChangeField();");
+                break;
+            case 101:
+                console.log("returnMessage = r.get_claimGiftsResponseField();");
+                break;
+            case 115:
+                var u = r.uncompressedData.activateQuestResponseField;
+                this.updateProducts(u.productUpdates);
+                this.displayActiveQuests([u.userQuest])
+                break;
+            case 78:
+                console.log("returnMessage = r.get_offerBundleResponseField();");
+                break;
+            case 123:
+                var u = r.uncompressedData.brewPotionForSlotResponseField;
+                this.updatePotions(u.userPotions)
+                break;
+            case 121:
+                console.log("returnMessage = r.get_openPotionForProductResponseField();");
+                break;
+            case 125:
+                var u = r.uncompressedData.openPotionForSlotResponseField;
+                this.updateProducts(u.productUpdates);
+                this.updatePotions(u.userPotions)
+                break;
+            case 131:
+                console.log("returnMessage = r.get_userLeaguesInfoResponseField();");
+                break;
+            case 132:
+                console.log("returnMessage = r.get_userLeaguesPassUpdateField();");
+                break;
+            case 83:
+                console.log("returnMessage = r.get_userStatsResponseField();");
+                break;
+            case 105:
+                console.log("returnMessage = r.get_facebookInvitationRewardUpdatesField();");
+                break;
+            case 22:
+                console.log("returnMessage = r.get_noProperResponseField();");
+                break;
+            case 184:
+                console.log("returnMessage = r.get_activateRewardLinkResponseField();");
+                break;
+            case 186:
+                console.log("returnMessage = r.get_genericVideoAdRewardTokenResponseField();");
+                break;
+            case 151:
+                console.log("returnMessage = r.get_userSkinsCreateResponseField();");
+                break;
+            case 170:
+                var u = r.uncompressedData.actionCountersUpdateField,
+                    prev = this.user.actionCounters;
+                if(u.potionsObtained>prev.potionsObtained)  toastr.info(`New potion`);
+                if(u.questsCompleted>prev.questsCompleted)  toastr.info(`Quest completed`);
+                if(u.skinsCreated>prev.skinsCreated)  toastr.info(`Skin created`);
+                break;
+            default:
+                //null
+                console.log("unknown type",type)            
+            }
+            //return returnMessage
+        },
+    disconnectMessage(type) {
+        switch (type) {
+            case 1:
+                toastr.error('User disconnected. Incompatible client')
+                break;
+            case 2:
+                toastr.error('User disconnected. Packet not authorized')
+                break;
+            case 3:
+                toastr.error('User disconnected. Login elsewhere')
+                break;
+            case 4:
+                toastr.error('User disconnected. Server offline')
+                break;
+            case 5:
+                toastr.error('User disconnected. User banned')
+                break;
+            case 6:
+                toastr.error('User disconnected. Ping error')
+                break;
+            case 7:
+                toastr.error('User disconnected. Unknown game type')
+                break;
+            case 8:
+                toastr.error('User disconnected. Too many operations')
+                break;
+            case 9:
+                toastr.error('User disconnected. Unreachable realm')
+                break;
+            case 10:
+                toastr.error('User disconnected. User deleted')
+                break;
+            case 11:
+                toastr.error('User disconnected. Not authorized by realm')
+                break;
+            case 12:
+                toastr.error('User disconnected. Bad request')
+                break;
+            case 13:
+                toastr.error('User disconnected. Reset by peer')
+                break;
+            case 14:
+                toastr.error('User disconnected. Invalid token')
+                break;
+            case 15:
+                toastr.error('User disconnected. Expired token')
+                break;
+            case 16:
+                toastr.error('User disconnected. State transfer error')
+                break;
+            default:
+                toastr.error('User disconnected. Unknown error: ' + type)
+        }
+    },
+    updateProducts(prod){
+      for(var i=0;i<prod.length;i++){
+        this.updateWalletInfo([prod[i].userWalletItem])
+      }
+    },
+    updateWalletInfo(items){
+      for(var i=0; i<items.length; i++){
+         var type = items[i].type;
+         switch (type) {
+            case 1:
+                        var name = items[i].productId;
+                        switch (name) {
+                                case "coin":
+                                              this.user.coins = items[i].amount;
+                                              $("#coins").html(`💰`+this.user.coins);
+                                              break;
+                                case "dna":
+                                              this.user.dna = items[i].amount;
+                                              $("#dna").html(`🧬`+this.user.dna);
+                                              break;
+                                case "create_skin_token_for_vip_weekly":
+                                              //this.user.skinCreateVIPTokens = items[i].amount;
+                                              break;
+                                default:
+                                              console.log("unknown item",items[i])   
+                        }
+                break;
+            case 2:
+                        this.user.boosts[items[i].productId] = items[i].amount;
+						            $('#s-boost option[value=\"' + items[i].productId + '\"]').text(' (' + items[i].amount + ') '+ ' ['+ application.boostsInfo[items[i].productId].price + ']  ' + application.boostsInfo[items[i].productId].name);
+                break;
+            case 3:
+                        /*var name = items[i].productId;
+                        if (name.includes && name.includes("_level_")) {
+                          var level = name[name.length-1],
+                              s = name.slice(0,name.length-1);
+                          console.log(s, level)
+                          if(level == "1") {
+                            if(this.user.skins.hasOwnProperty(s+"2")) {break;}
+                            if(this.user.skins.hasOwnProperty(s+"3")) {break;}
+                          } else if(level == "2") {
+                            if(this.user.skins.hasOwnProperty(s+"1")) {
+                              //this.user.skins[name+"1"].disabled = true;
+                              delete this.user.skins[s+"1"];}
+                            if(this.user.skins.hasOwnProperty(s+"3")) {break;}
+                          } else if(level == "3") {
+                            if(this.user.skins.hasOwnProperty(s+"1")) {
+                              //this.user.skins[name+"2"].disabled = true;
+                              delete this.user.skins[s+"1"];}
+                            if(this.user.skins.hasOwnProperty(s+"2")) {
+                              //this.user.skins[name+"2"].disabled = true;
+                              delete this.user.skins[s+"2"];}
+                          }
+                        }*/
+                        var skin = this.getLink(items[i].productId);
+                        if(skin){
+                        var url = this.urlReplaces.hasOwnProperty(skin[0])?this.urlReplaces[skin[0]]:skin[0],
+                            pID = items[i].productId;
+                        if(pID.includes("_level_") && this.user.skins.hasOwnProperty(skin[0])){
+                          if(Number(pID[pID.length-1])<Number(this.user.skins[skin[0]].productId[pID.length-1])){
+                            pID = this.user.skins[skin[0]].productId;
+                          }
+                        } 
+                        this.user.skins[skin[0]] = {amount:items[i].amount,type:skin[1],url:url, productId: pID};
+                        } else {console.log("undefined skin", items[i].productId, skin ) };
+                break;
+            case 4:
+                        if(items[i].amount>0) window.activateQuest();
+                break;
+            case 5:
+                        this.user.rushBoosts[items[i].productId] = items[i].amount;
+                break;
+            case 6:
+                        this.user.potions[items[i].productId] = items[i].amount;
+                break;
+            case 7:
+                        this.user.trophy = items[i].amount;
+                        $("#trophy").html(`🏆`+this.user.trophy);
+                break;
+            case 8:
+                        this.user.skinPieces[items[i].productId] = items[i].amount;
+                break;
+            case 9:
+                        this.user.skipBrew[items[i].productId] = items[i].amount;
+                break;
+            case 10:
+                        //this.user.skinCreateTokens = items[i].amount;
+                break;
+            case 11:
+                        var skin = this.getLink(items[i].productId),
+                            url = this.urlReplaces.hasOwnProperty(skin[0])?this.urlReplaces[skin[0]]:skin[0];
+                        if(skin) this.user.skins[skin[0]] = {amount:items[i].amount,type:skin[1],url:url, productId: items[i].productId};
+                break;
+            case 12:
+                        //this.user.gameContinueToken = items[i].amount;
+                break;
+            case 13:
+                        var name = items[i].productId;
+                        switch (name) {
+                                case "arena_event_token":
+                                              //this.user.arenaEventToken = items[i].amount;
+                                              break;
+                                case "season_token":
+                                              //this.user.seasonToken = items[i].amount;
+                                              break;
+                                default:
+                                              console.log("unknown item",items[i])   
+                        }
+                break;
+            case 14:
+                        //this.user.videoRewards = items[i].amount;
+                break;
+            default:
+                console.log("unknown item",items[i])            
+         }
+      }
+    },
+    showSessionStats(u){
+      toastr.info(`
+Final mass: ${u.finalMass}<br>
+Final position: ${u.finalPosition}<br>
+Food eaten: ${u.foodEaten}<br>
+Highest mass: ${u.highestMass}<br>
+Longest time alive: ${u.longestTimeAlive}<br>
+Mass consumed: ${u.massConsumed}<br>
+Normal cells eaten: ${u.normalCellsEaten}<br>
+Players eaten: ${u.playersEaten}<br>
+Time in leaderboard: ${u.timeInLeaderboard}<br>
+Total time: ${u.timeTotal}<br>
+Top position: ${u.topPosition}<br>
+Viruses eaten: ${u.virusesEaten}`)
+    },
+    updateEvents(event){
+      if(event.length==0) window.questActivationReq()
+      for(var i=0; i<event.length; i++){
+        var e = event[i],
+            type = e.eventId,
+            timer = e.nextAvailableInSeconds*1000;
+        switch (type) {
+            case "dailyQuest":
+                 if(window.dailyQuestTimer) clearTimeout(window.dailyQuestTimer);
+                 window.dailyQuestTimer = setTimeout(()=>{window.questActivationReq()},timer);
+                break;
+            case "hourlyBonus":
+                 if(window.coinsTimer) clearTimeout(window.coinsTimer);
+                 window.coinsTimer = setTimeout(()=>{window.autocoins()},timer);
+                break;
+            case "potionSkipBrew"://maybe it help to autobrewing
+                 console.log("can open after", timer/60000)
+                 //if(window.coinsTimer) clearTimeout(window.coinsTimer);
+                 //window.coinsTimer = setTimeout(()=>{window.activateQuest()},timer);
+                break;
+            default:
+                  console.log("unknown event", e)
+        }
+      }
+    },
+    newPotion(s) {
+      if(window.autobrewTimer) clearTimeout(window.autobrewTimer);
+      window.autobrewTimer = setTimeout(()=>{Connection.autobrew()},3000);
+          var t = s.productId,
+              r = s.secondsRemaining,
+              potion = "potion"+s.slot,
+              time = new Date(Date.now()+r*1000),
+              expire = time.toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
+        this.user.potionsStatus[potion]={type:t,status: s.status, expires: time,slot:s.slot};
+        $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/${t}.png`);
+        if(s.status==1) {
+          if(gameOptionSettings.autobrewing&&this.user.brewingEnd<Date.now()) window.brewPotion(s.slot);
+          $(`#${potion} img`).css("border-color", "red");
+          $(`#${potion} div`).css("border-color", "red");
+          $(`#${potion} div`).text('brew');
+        } ;
+      
+      this.user.emptySlots -= 1;
+    },
+    updatePotions(slots){
+      var empty = ["potion1","potion2","potion3"];
+      this.user.brewedSlots = 0;
+      if(window.autobrewTimer) clearTimeout(window.autobrewTimer);
+      window.autobrewTimer = setTimeout(()=>{Connection.autobrew()},3000);
+      for(var i=0;i<slots.length;i++){
+        var s = slots[i],
+              t = s.productId,
+              r = s.secondsRemaining,
+              potion = "potion"+s.slot,
+              time = new Date(Date.now()+r*1000),
+              expire = time.toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1'),
+              index = empty.indexOf(potion);
+        if(index>-1) empty.splice(index, 1);
+        this.user.potionsStatus[potion]={type:t,status: s.status, expires: time,slot:s.slot};
+        $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/${t}.png`);
+        if(s.status==1) {
+          $(`#${potion} img`).css("border-color", "red");
+          $(`#${potion} div`).css("border-color", "red");
+          $(`#${potion} div`).text('brew');
+        } else if(s.status==2) {
+          this.user.brewingEnd = time;
+          if(window.autobrewTimer) clearTimeout(window.autobrewTimer);
+          window.autobrewTimer = setTimeout(()=>{Connection.autobrew()},r*1000);
+          $(`#${potion} img`).css("border-color", "yellow");
+          $(`#${potion} div`).css("border-color", "yellow");
+          $(`#${potion} div`).text(expire);
+        } else if(s.status==3) {
+          this.user.brewedSlots ++;
+          $(`#${potion} img`).css("border-color", "green");
+          $(`#${potion} div`).css("border-color", "green");
+          $(`#${potion} div`).text('open');
+        };
+      }
+      this.user.emptySlots = empty.length;
+      empty.forEach((potion)=>{
+          $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/potion_empty.png`);
+          $(`#${potion} img`).css("border-color", "grey");
+          $(`#${potion} div`).css("border-color", "grey");
+          $(`#${potion} div`).text('empty');
+      })
+    },		
         handleSubmessage(message) {
             var e = 0;
             switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
