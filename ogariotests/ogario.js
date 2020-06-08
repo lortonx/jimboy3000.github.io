@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.817
+// v1.818
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -776,7 +776,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
-		hideSizes: 'Hide everything with mass smaller than',
+		//hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -1200,7 +1200,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
-		hideSizes: 'Hide everything with mass smaller than',
+		//hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -2384,7 +2384,7 @@ var defaultmapsettings = {
     showSkinsPanel: true,
     animation: 120,
     macroFeeding: 80,
-	hideSizes: 0,
+	//hideSizes: 0,
 	dominationRate: 1.33,
     profileNumber: 15,
     ////
@@ -4494,7 +4494,7 @@ function thelegendmodproject() {
 				
                 this.addSliderBox(".profiles", "profileNumber", 10, 54, 1);
                 this.addSliderBox(".macroGroup", "macroFeeding", 1, 160, 1);
-				this.addSliderBox(".massGroup", "hideSizes", 0, 37, 1);
+				//this.addSliderBox(".massGroup", "hideSizes", 0, 37, 1);
                 $("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + textLanguage.exportImport + "</button>");
                 $("#og-settings").append('<div class="restore-settings"><a href="#">' + textLanguage.restoreSettings + "</a></div>");
                 $("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + textLanguage.thanks + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' + textLanguage.playlist + "</a></span></div>");
@@ -7808,13 +7808,13 @@ function thelegendmodproject() {
             }
             return ctxfx;
         };
-        this.draw = function(style, canCreateDiscussions) {
+        this.draw = function(style, canCreateDiscussions) { //this function draws each cell/virus/food 1 time only
             if (LM.hideSmallBots && this.size <= 36) {
                 return;
             }
-            if (defaultmapsettings.hideSizes > 0 && this.mass < defaultmapsettings.hideSizes) {
-                return;
-            }			
+            //if (defaultmapsettings.hideSizes > 0 && this.size < defaultmapsettings.hideSizes) {
+                //return;
+            //}			
             // check this
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
@@ -10916,19 +10916,7 @@ function thelegendmodproject() {
                 }
                 //
                 if (defaultmapsettings.debug) {
-					//if (!window.multiboxPlayerEnabled){
-						this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
-					//}
-					if (legendmod.multiBoxPlayerExists && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
-						this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
-					}
-                    //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
-                    if (window.fullSpectator) {
-                        for (let i = 0; i < spects.length; i++) {
-                            this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
-                        }
-
-                    }
+					this.drawViewPorts(this.ctx)
                 }
                 //
 
@@ -10939,26 +10927,33 @@ function thelegendmodproject() {
                     }
                 }
                 //this.ctx.finish2D();
-
-                if (defaultmapsettings.debug) {
-                    /*this.ctx.fillStyle = "white";
+                /*if (defaultmapsettings.debug) {
+                    this.ctx.fillStyle = "white";
                     this.ctx.font = "15px sans-serif";
                     this.ctx.textAlign = "start";
                     var lw = (this.canvasHeight / 2)
                     LM.camMaxX && this.ctx.fillText("isFreeSpectate: " + LM.isFreeSpectate, 50, lw += 25);
-                    LM.camMaxX && this.ctx.fillText("isSpectateEnabled: " + LM.isSpectateEnabled, 50, lw += 25);*/
-
-
-
-                    //LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
-                    //LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
-                    //LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
-                    //LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
-                }
+                    LM.camMaxX && this.ctx.fillText("isSpectateEnabled: " + LM.isSpectateEnabled, 50, lw += 25);
+                    LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
+                    LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
+                    LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
+                    LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
+                    LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
+                    LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
+                    LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
+                }*/
             },
+			drawViewPorts(ctx) { 
+				this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
+				if (legendmod.multiBoxPlayerExists && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
+					this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
+				}
+				if (window.fullSpectator) {
+                    for (let i = 0; i < spects.length; i++) {
+                        this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
+                    }
+                }			
+			}
             drawFBTracking(ctx, players, x, y) { //Yahnych
                 for (let length = 0; length < players.length; length++) {
                     let t = players[length];
