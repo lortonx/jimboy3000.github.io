@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.816
+// v1.817
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7812,7 +7812,7 @@ function thelegendmodproject() {
             if (LM.hideSmallBots && this.size <= 36) {
                 return;
             }
-            if (defaultmapsettings.hideSizes > 0 && this.size < defaultmapsettings.hideSizes) {
+            if (defaultmapsettings.hideSizes > 0 && this.mass < defaultmapsettings.hideSizes) {
                 return;
             }			
             // check this
