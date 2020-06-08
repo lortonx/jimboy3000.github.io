@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "94"; // the version 1.1-> 1.11
 
@@ -1777,7 +1777,7 @@ function MsgCommands1(MSGCOMMANDS, MSGNICK) {
         $(".toast.toast-success").remove();
         LegendClanSymbol = $("#nick").val();
         console.log("Step1");
-        if (~LegendClanSymbol.indexOf("?") != -1) {
+        if (~LegendClanSymbol.indexOf("℄") != -1) {
             console.log("Step2");
             if (commandMsg == "EU-London") {
                 setTimeout(function() {
@@ -3032,7 +3032,7 @@ function setpic6data() {
 
 
 function sendyt1() {
-	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
+	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
 		application.sendChatMessage(101,"[yt]" + yt1url + "[/yt]")
 	} else {
         toastr.info(Premadeletter39);
@@ -3040,7 +3040,7 @@ function sendyt1() {
 }
 
 function sendyt2() {
-	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
+	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
 		application.sendChatMessage(101,"[yt]" + yt2url + "[/yt]")
 	} else {
         toastr.info(Premadeletter39);
@@ -3048,7 +3048,7 @@ function sendyt2() {
 }
 
 function sendyt3() {
-	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
+	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
 		application.sendChatMessage(101,"[yt]" + yt3url + "[/yt]")
 	} else {
         toastr.info(Premadeletter39);
@@ -3056,7 +3056,7 @@ function sendyt3() {
 }
 
 function sendyt4() {
-	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
+	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
 		application.sendChatMessage(101,"[yt]" + yt4url + "[/yt]")
 	} else {
         toastr.info(Premadeletter39);
@@ -3064,7 +3064,7 @@ function sendyt4() {
 }
 
 function sendyt5() {
-	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
+	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
 		application.sendChatMessage(101,"[yt]" + yt5url + "[/yt]")
 	} else {
         toastr.info(Premadeletter39);
@@ -3072,7 +3072,7 @@ function sendyt5() {
 }
 
 function sendyt6() {
-	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("?")) {
+	if (($("#clantag").val() != "") || document.getElementById("nick").value.includes("℄")) {
 		application.sendChatMessage(101,"[yt]" + yt6url + "[/yt]")
 	} else {
         toastr.info(Premadeletter39);
