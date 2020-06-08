@@ -1,4 +1,4 @@
-//v12.55e
+//v12.55f
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -318,7 +318,7 @@ function legendmaster(self) {
         parseClientVersion(styleValue) {
             return 10000 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
-        'getRegionCode'() {
+        getRegionCode() {
             var nextNodeLoc = window.localStorage.getItem('location');
             if (nextNodeLoc) {
                 this.setRegion(nextNodeLoc, ![]);
