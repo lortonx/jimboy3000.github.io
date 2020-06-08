@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.093b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "93"; // the version 1.1-> 1.11
+var semimodVersion = "94"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -37,8 +37,11 @@ var CutNameConflictwithMessage=false;
     };
 })();
 */
-
-
+//chat Translations
+findUserLang();
+if (window.userLanguage){
+	startTranslating()
+}
 
 window.proLicenceUID = localStorage.getItem("proLicenceUID");	
 if (window.proLicenceUID=="null") window.proLicenceUID=null
@@ -6270,4 +6273,69 @@ function LMadvertisement2020(){
 				window.open('https://legendmod.ml/', '_blank');
             });	
 }
-							
+
+
+function findUserLang(){
+if (window.navigator.languages){
+	if (window.navigator.languages[0] && (window.navigator.languages[0]=="en" || window.navigator.languages[1].includes('-'))){
+		if(window.navigator.languages[1] && (window.navigator.languages[1]=="en" || window.navigator.languages[1].includes('-'))){
+			if(window.navigator.languages[2] && (window.navigator.languages[2]=="en" || window.navigator.languages[2].includes('-'))){
+				if(window.navigator.languages[3] && !(window.navigator.languages[2]=="en" || window.navigator.languages[2].includes('-'))) window.userLanguage=window.navigator.languages[3]
+			}
+			else window.userLanguage=window.navigator.languages[2]
+		}
+		else window.userLanguage=window.navigator.languages[1]
+	}
+	else window.userLanguage=window.navigator.languages[0]
+}
+}
+
+function startTranslating() {
+
+var targetNode = document.querySelector("#chat-box");
+var observerOptions = {
+  childList: true,
+  attributes: false,
+  subtree: false //Omit or set to false to observe only changes to the parent node.
+};
+
+var observerMut = new MutationObserver(callbackMut);
+
+function callbackMut(mutationList, observerMut) {
+  mutationList.forEach((mutation) => {
+	if(defaultmapsettings.showChatTranslation && targetNode.lastChild.classList.contains('message') && !targetNode.lastChild.classList.contains('command') ) {	
+      doMainTranslation(targetNode,targetNode.lastChild.lastChild.firstChild.textContent)
+	  }
+  });
+};
+
+observerMut.observe(targetNode, observerOptions);
+
+}
+function doMainTranslation(targetNode,bb){
+	//if(targetNode.lastChild.classList.contains('message')) {
+      var trText = document.createElement('span');
+	  var GrText
+      trText.style.color = 'deepskyblue';
+      trText.style.textShadow = '1px 1px 1px white';
+
+        var ajax = new XMLHttpRequest();
+        ajax.open("Get", 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190413T133234Z.e2bf8f61db805d26.1dc331b33d156e43679a19357d15d9ee664502de&text=' + encodeURIComponent(bb) + '&lang=' + window.userLanguage + '&format=plain&options=1', true);
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+                 var text = ajax.responseText;
+                    text = JSON.parse(text);
+                    text = text.text[0];
+                    trText.textContent = '[' + text + ']';
+					GrText = '[' + text + ']';
+					console.log(GrText)
+                }
+            }
+        }
+        ajax.send();
+
+targetNode.lastChild.lastChild.appendChild(trText);
+	//window.cc = targetNode.children[0].children[1].text
+  //}
+}							
