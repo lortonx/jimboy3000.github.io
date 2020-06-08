@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.822
+// v1.823
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -152,6 +152,13 @@ function Video(src, append) {
     return v;
 }
 
+window.changeOnline = function(option) {
+  console.log("online switcher")
+
+                //8, 1, 18, 13, 8, 80, 130, 5, 8, 10, 6, 8, 2, 16, 13, 32, 0
+    var bytes = [8, 1, 18, 13, 8, 80, 130, 5, 8, 10, 6, 8, 2, 16, 13, 32, option];
+    window.core.proxyMobileData(bytes);
+}
 
 function autocoins(slot) {
     //var bytes = [8, 1, 18, 18, 8, 110, 242, 6, 13, 10, 11, 104, 111, 117, 114, 108, 121, 66, 111, 110, 117, 115]
@@ -747,11 +754,12 @@ var emoticonicons = {
 
 var displayText = {
     pl: {
-        start: 'Start',
+        start: 'Start',		
         settings: 'Ustawienia',
         restoreSettings: 'Przywróc ustawienia domyślne',
         animationGroup: 'Animacja',
         graphics: 'Graphics',
+		onlineStatus: 'Show me online(Facebook)',
         zoomGroup: 'Zoom',
 		boardGroup: 'Boards',
         respGroup: 'Odrodzenie',
@@ -1177,6 +1185,7 @@ var displayText = {
         restoreSettings: 'Restore default settings',
         animationGroup: 'Animation',
         graphics: 'Graphics',
+		onlineStatus: 'Show me online(Facebook)',
         zoomGroup: 'Zoom',
 		boardGroup: 'Boards',
         respGroup: 'Respawn',
@@ -2287,6 +2296,7 @@ var defaultmapsettings = {
     isAlphaChanged: false,
     jellyPhisycs: false,
     virusSound: false,
+	onlineStatus: true,
 	potionsDrinker: true,
 	massBooster: false,
     quickResp: true,
@@ -2986,6 +2996,13 @@ function thelegendmodproject() {
             this.setMiniMapWidth();
             this.setMiniMapSectorsOpacity();
         },
+		switchOnlineStatus() {
+			if (defaultmapsettings.onlineStatus==true) {
+			window.changeOnline(1);
+			} else {
+			window.changeOnline(0);
+			}
+		},		
         setMiniMapFont() {
             this.setFont('miniMapFont', defaultSettings.miniMapFont);
             if (application) {
@@ -4472,7 +4489,7 @@ function thelegendmodproject() {
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
-                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
+                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
@@ -4596,6 +4613,9 @@ function thelegendmodproject() {
                 app.saveSettings(defaultmapsettings, "ogarioSettings");
                 app.setShowSkinsPanel();
             });
+			$(document).on("click", "#onlineStatus", event => {
+				setTimeout(()=>{application.switchOnlineStatus()},500);
+			});			
             $(document).on("change", "#region", function() {
                 app.region = this.value;
             });
