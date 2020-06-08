@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.828
+// v1.830
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10377,7 +10377,7 @@ Viruses eaten: ${u.virusesEaten}`)
     },
     newPotion(s) {
       if(window.autobrewTimer) clearTimeout(window.autobrewTimer);
-      window.autobrewTimer = setTimeout(()=>{Connection.autobrew()},3000);
+      window.autobrewTimer = setTimeout(()=>{LM.autobrew()},3000);
           var t = s.productId,
               r = s.secondsRemaining,
               potion = "potion"+s.slot,
@@ -10386,7 +10386,7 @@ Viruses eaten: ${u.virusesEaten}`)
         this.user.potionsStatus[potion]={type:t,status: s.status, expires: time,slot:s.slot};
         $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/${t}.png`);
         if(s.status==1) {
-          if(gameOptionSettings.autobrewing&&this.user.brewingEnd<Date.now()) window.brewPotion(s.slot);
+          if(defaultmapsettings.autobrewing&&this.user.brewingEnd<Date.now()) window.brewPotion(s.slot);
           $(`#${potion} img`).css("border-color", "red");
           $(`#${potion} div`).css("border-color", "red");
           $(`#${potion} div`).text('brew');
@@ -10398,7 +10398,7 @@ Viruses eaten: ${u.virusesEaten}`)
       var empty = ["potion1","potion2","potion3"];
       this.user.brewedSlots = 0;
       if(window.autobrewTimer) clearTimeout(window.autobrewTimer);
-      window.autobrewTimer = setTimeout(()=>{Connection.autobrew()},3000);
+      window.autobrewTimer = setTimeout(()=>{LM.autobrew()},3000);
       for(var i=0;i<slots.length;i++){
         var s = slots[i],
               t = s.productId,
@@ -10417,7 +10417,7 @@ Viruses eaten: ${u.virusesEaten}`)
         } else if(s.status==2) {
           this.user.brewingEnd = time;
           if(window.autobrewTimer) clearTimeout(window.autobrewTimer);
-          window.autobrewTimer = setTimeout(()=>{Connection.autobrew()},r*1000);
+          window.autobrewTimer = setTimeout(()=>{LM.autobrew()},r*1000);
           $(`#${potion} img`).css("border-color", "yellow");
           $(`#${potion} div`).css("border-color", "yellow");
           $(`#${potion} div`).text(expire);
@@ -10435,7 +10435,217 @@ Viruses eaten: ${u.virusesEaten}`)
           $(`#${potion} div`).css("border-color", "grey");
           $(`#${potion} div`).text('empty');
       })
-    },		
+    },	
+    autobrew(){
+      if(defaultmapsettings.autobrewing&&(window.master.context=="facebook"||window.master.context=="google")){
+        for(var potion of Object.values(LM.user.potionsStatus)){
+          if(potion.status==1){
+            window.brewPotion(potion.slot);
+            break;
+          }
+        };
+      }
+    },
+    getPotionForOpen(){
+      if((window.master.context=="facebook"||window.master.context=="google")){
+        for(var potion of Object.values(LM.user.potionsStatus)){
+          if(potion.status==3||(potion.status==2&&this.user.brewingEnd<Date.now())){
+            window.openPotion(potion.slot);
+            break;
+          }
+        };
+      }
+    },
+    updateUserSettings(s) {
+      for(var i=0; i<s.length; i++){
+         var key = s[i].key;
+         switch (key) {
+            case 1:
+                   var skin = this.getLink(s[i].valueString),
+                       url = this.urlReplaces.hasOwnProperty(skin[0])?this.urlReplaces[skin[0]]:skin[0];
+                   $('.vanilla-skin-preview').attr('src', url);
+                break;
+            case 2:
+                   //stop moving on relise (1,0)
+                break;
+            case 3:
+                   //direction on touch (1,0)
+                break;
+            case 4:
+                   //touch button position (string)
+                break;
+            case 5:
+                   //show mass (1,0)
+                break;
+            case 6:
+                   //show arrow(to cursor) (1,0)
+                break;
+            case 7:
+                   //dark theme (1,0)
+                break;
+            case 8:
+                   //show level (1,0)
+                break;
+            case 9:
+                   //language (string)
+                break;
+            case 10:
+                   //game sounds (1,0)
+                break;
+            case 11:
+                   //menu sounds (1,0)
+                break;
+            case 12:
+                   //show quest (1,0)
+                break;
+            case 13:
+                   //show quest (1,0)
+                   this.user.showOnline = s[i].valueInt32;//FIX IT
+                break;
+            default:
+                console.log("unknown settings",s[i])            
+         }
+      }
+    },
+    urlReplaces: {},
+    getImg(url, name, callback) {
+        const app = this;
+        var img = new Image();
+        img.crossOrigin = `Anonymous`;
+        img.setAttribute("alt",name);
+        img.onload = function() {
+            if (this.complete && this.width && this.height) {
+                callback(img);
+            }
+        };
+        img.onerror = function() {
+            console.log("error loading image: "+ url);
+            if (url.includes('configs-web.agario.miniclippt')) {
+                var newURL = "https://raw.githubusercontent.com/Yahnych/vanilla_skins/master/agar/" + url.split('/').pop();
+                app.urlReplaces[url] = newURL;
+                console.log("new destination is: " + newURL);
+                app.user.skins[url].url = newURL;
+                app.getImg(newURL, name, callback);
+                return newURL;
+
+            } else if (url.includes('vanilla_skins/master/agar')) {
+                if(!application.brokenSkins.hasOwnProperty(url)){
+                   application.brokenSkins[url] = 1;
+                   application.messageToDiscord('Unknown skin: ', url);
+                }
+                return url;
+            }
+        };
+        img.src = url;
+    },
+    getLink(link) {
+      var type = "premium";
+            if (link != null) {
+
+                if (link.includes && link.includes("custom_")) {
+                    type = "custom";
+                    return ["https://configs.agario.miniclippt.com/live/custom_skins/" + link + ".png",type];
+                } else if (link.includes && link.includes("_level_")) {
+                    type = "potion";
+                    var link1 = link.replace('skin_', '')
+                    link1 = link1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
+                    link1 = link1.charAt(0).toUpperCase() + link1.slice(1);
+                    link1 = makeUpperCaseAfterUnderline(link1);
+                    return ["https://configs-web.agario.miniclippt.com/live/" + window.agarversion + link1 + ".png", type];
+                } else if (window.LMAgarGameConfiguration != undefined) {
+                    for (var player = 0; player < window.EquippableSkins.length; player++) {
+                        if (window.EquippableSkins[player].productId == link && window.EquippableSkins[player].image != "uses_spine") {
+                            return ["https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, type];
+                        }
+                    }
+                }
+            }
+    },
+    createSkinsHTML() {
+      const s = this.user.skins;
+      $("#player-skins").html(``);
+      var callback = function(img){
+         img.style = "display:inline-block;width:100px;height:100px;border-radius: 50px;";
+         $("#player-skins").append(img);
+      };
+      for(var [key,value] of Object.entries(s)){
+        //if(value.hasOwnProperty('disabled')) return;
+        this.getImg(value.url, value.productId, callback);
+      }
+    },
+    displayActiveBoosts(items){
+      for(var i=0; i<items.length; i++){
+        var item = items[i];
+                if(item.productId[0]=="x") {
+                  $("#xp-active").html(`${application.boostsInfo[item.productId].name} expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                } else if(item.productId[0]=="m") {
+                  $("#mass-active").html(`${application.boostsInfo[item.productId].name} expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                }
+      }
+    },
+    displayActiveQuests(items){
+      if(items.length==0) window.questActivationReq()
+      for(var i=0; i<items.length; i++){
+        var item = items[i],
+            type = item.type;
+        switch (type) {
+            case "normal_cells_eaten":
+                  $("#quest-active").html(`Eat ${item.goal} cells. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                break;
+            case "viruses_eaten":
+                  $("#quest-active").html(`Eat ${item.goal} viruses. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                break;
+            case "food_eaten":
+                  $("#quest-active").html(`Eat ${item.goal} dots. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                break;
+            case "highest_mass":
+                  $("#quest-active").html(`Reach ${item.goal} mass. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                break;
+            case "top_position":
+                  $("#quest-active").html(`Reach TOP-${item.goal} position. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                break;
+            case "time_total":
+                  $("#quest-active").html(`Survive ${item.goal/60} minutes. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+                break;
+            default:
+                  $("#quest-active").html(`${type} : ${item.goal}. Expires at ${new Date(Date.now()+item.expiresInSeconds*1000).toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1')}`)
+        }
+      }
+    },
+    displayStats(s){
+      $("#stats-content").html(`
+All time score     : ${s.allTimeScore}<br/>
+Games played      : ${s.gamesPlayed}<br/>
+Highest mass      : ${s.highestMass}<br/>
+Longest time alive : ${(s.longestTimeAlive/3600).toFixed(3)} H<br/>
+Mass consumed     : ${s.massConsumed}<br/>
+Most cells eaten   : ${s.mostCellsEaten}
+      `)
+    },
+    updateUserInfo(i) {
+      var exp = 100;
+      if(i.level!=100) exp = ~~(i.xp*100/this.agarExp(i.level));
+      $('.progress-bar-striped').width(exp + '%');
+      $('.progress-bar-star').text(i.level);
+      this.user.actionCounters = i.actionCounters;
+      $("#user-info").html(`
+Account age     : ${~~(i.accountAge/3600/24)}D<br/>
+Potions obtained : ${i.actionCounters.potionsObtained}<br/>
+Quests completed      : ${i.actionCounters.questsCompleted}<br/>
+Skins created : ${i.actionCounters.skinsCreated}<br/>
+Country     : ${i.latestCountryCode}<br/>
+Game name     : ${i.displayName}<br/>
+Game Id   : ${i.userId}
+      `)
+    },
+    agarExp(q) {
+      var s = {};
+      var i = 0, exp = 0;
+      for(i = 1; i <= q; i++) { exp += i * 100; }
+      exp -= 500;
+      if(q <= 4) { exp = q == 1 ? 50 : q == 2 ? 125 : q == 3 ? 250 : 500; }
+      return exp
+    },	
         handleSubmessage(message) {
             var e = 0;
             switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
