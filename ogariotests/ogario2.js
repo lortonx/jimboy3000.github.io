@@ -1,12 +1,12 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.772
+// v1.822
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
 var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
-
+appendLMhiFbPs()
 function changeregion() {
     if ($('#region').val() == "Private") {
         deleteGamemode();
@@ -29,6 +29,9 @@ function deleteGamemode() {
         text: 'Selffeed',
         value: 7
     }, {
+        text: 'FPS Test',
+        value: 13
+    }, {		
         text: 'FFA',
         value: 8
     }, {
@@ -68,35 +71,42 @@ function deleteGamemode() {
         } else {}
         if ($('#gamemode').val() == 6) {
             core.connect('wss://delta-server.glitch.me');
-            application.connect('wss://private1:443')
+			legendmod.gameMode = ":ffa";
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 7) {
             core.connect('wss://delta-selffeed.glitch.me');
-            application.connect('wss://private1:443')
+			legendmod.gameMode = ":ffa";
+            //application.connect('wss://private1:443')
+		} else if ($('#gamemode').val() == 13) {	
+			core.connect('wss://d-srv.glitch.me');		
+			legendmod.gameMode = ":ffa";
         } else if ($('#gamemode').val() == 8) {
-            logoutPSArenas();
-            legendmod.gameMode = ":ffa";
+            logoutPSArenas();   
             core.connect(agarTesterArena + ':1500/'); //ffa
-            application.connect('wss://private1:443')
+			legendmod.gameMode = ":ffa";
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 9) {
-            logoutPSArenas();
-            legendmod.gameMode = ":battleroyale";
+            logoutPSArenas();         
             core.connect(agarTesterArena + ':1504/'); //battle royal			
-            application.connect('wss://private1:443')
+			legendmod.gameMode = ":battleroyale";
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 10) {
-            logoutPSArenas();
-            legendmod.gameMode = ":teams";
+            logoutPSArenas();       
             core.connect(agarTesterArena + ':1501/'); //teams
-            application.connect('wss://private1:443')
+			setTimeout(function() {
+			legendmod.gameMode = ":teams";
+			}, 500); 
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 11) {
-            logoutPSArenas();
-            legendmod.gameMode = ":experimental";
+            logoutPSArenas();      
             core.connect(agarTesterArena + ':1503/'); //experimental
-            application.connect('wss://private1:443')
+			legendmod.gameMode = ":experimental";
+            //application.connect('wss://private1:443')
         } else if ($('#gamemode').val() == 12) {
-            logoutPSArenas();
-            legendmod.gameMode = ":party";
+            logoutPSArenas();      
             core.connect(agarTesterArena + ':1502/'); //party
-            application.connect('wss://private1:443')
+			legendmod.gameMode = ":party";
+            //application.connect('wss://private1:443')
         }
     });
     $('#gamemode option[value=6]').prop('selected', 'selected').change();
@@ -772,6 +782,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
+		//hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -780,7 +791,7 @@ var displayText = {
 		leaderboardlimit: 'Leaderboard Players',
 		teamboardlimit: 'Team Players',	
         quickResp: 'Szybkie odrodzenie (klawisz)',
-        autoResp: 'Auto odrodzenie',
+        autoResp: 'Auto odrodzenie',		
 		spawnSpecialEffects: 'Spawn special effects',
 		animatedRainbowColor: 'Animated rainbow colors',
         autoHideCellsInfo: 'Autoukrywanie nazw i masy',
@@ -843,6 +854,7 @@ var displayText = {
         showChatImages: 'Pokaż obrazki na czacie',
         showChatVideos: 'Pokaż filmiki na czacie',
         showChatBox: 'Czatbox zamiast wyskakujących wiadomości',
+		showChatTranslation: 'Translate chatbox',
         hidecountry: 'Hide my country',
         messageSound: 'Dźwięk powiadomienia o wiadomości',
         commandSound: 'Dźwięk powiadomienia o komendzie',
@@ -1195,6 +1207,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
+		//hideSizes: 'Hide everything with size smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -1268,6 +1281,7 @@ var displayText = {
         showChatImages: 'Show images on chat',
         showChatVideos: 'Show videos on chat',
         showChatBox: 'Chatbox instead of popups',
+		showChatTranslation: 'Translate chatbox',
         hidecountry: 'Hide my country',
         messageSound: 'Message notification sound',
         commandSound: 'Command notification sound',
@@ -2303,7 +2317,7 @@ var defaultmapsettings = {
     videoSkins: true,
     videoSkinsMusic: false,
     myTransparentSkin: false,
-    myCustomColor: false,
+    myCustomColor: true,
     transparentCells: false,
     transparentViruses: true,
     transparentSkins: false,
@@ -2347,6 +2361,7 @@ var defaultmapsettings = {
     chatSounds: true,
     chatEmoticons: true,
     showChatBox: false,
+	showChatTranslation: false,
     hidecountry: false,
     showChatImages: true,
     showChatVideos: true,
@@ -2378,6 +2393,7 @@ var defaultmapsettings = {
     showSkinsPanel: true,
     animation: 120,
     macroFeeding: 80,
+	//hideSizes: 0,
 	dominationRate: 1.33,
     profileNumber: 15,
     ////
@@ -3061,6 +3077,7 @@ function thelegendmodproject() {
         ws: '',
         serverIP: '',
         serverArena: '',
+	tokenNeedToBtoa:false,
         serverToken: '',
         lastSentNick: '',
         lastSentClanTag: null,
@@ -3456,9 +3473,10 @@ function thelegendmodproject() {
             }
         },
         multiboxswap() {
+			this.hideMenu()
 			if (!spects.length){
 			//if (!legendmod.multiBoxPlayerExists){					
-				addBox();
+				addBox()			
 			}
 			else if (!window.multiboxPlayerEnabledSaved){
 				if (!legendmod.play){
@@ -3580,7 +3598,41 @@ function thelegendmodproject() {
         displayStats() {
             if (defaultmapsettings.showStats) {
                 var t = '';
-                if (ogario.play) {
+				if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+                    if (defaultmapsettings.showStatsMass && spects[window.multiboxPlayerEnabled-1].playerMass) {
+                        //t += textLanguage.mass + ': ' + i.playerMass + ' | '
+                        t += Languageletter49 + ': ' + spects[window.multiboxPlayerEnabled-1].playerMass + ' | '
+                    }
+                    if (spects[window.multiboxPlayerEnabled-1].playerScore) {
+                        //t += textLanguage.score + ': ' + i.playerScore
+                        t += Languageletter366 + ': ' + spects[window.multiboxPlayerEnabled-1].playerScore
+                    }
+                    if (defaultmapsettings.showStatsN16 && spects[window.multiboxPlayerEnabled-1].playerSplitCells) {
+                        t += ' | ' + spects[window.multiboxPlayerEnabled-1].playerSplitCells + '/16'
+                    }
+                    if (defaultmapsettings.showStatsESTE && spects[window.multiboxPlayerEnabled-1].BSTE) {
+                        t += ' | ◎◎➛◉: ' + spects[window.multiboxPlayerEnabled-1].BSTE //Sonia6
+                    }
+                    if (defaultmapsettings.showStatsEMTE && spects[window.multiboxPlayerEnabled-1].BMTE) {
+                        t += ' | ◎➛◉: ' + spects[window.multiboxPlayerEnabled-1].BMTE //Sonia6
+                    }
+                    if (defaultmapsettings.showStatsMTE && spects[window.multiboxPlayerEnabled-1].MTE) {
+                        t += ' | ◉➛◎: ' + spects[window.multiboxPlayerEnabled-1].MTE //Sonia6
+                    }
+                    if (defaultmapsettings.showStatsSTE && spects[window.multiboxPlayerEnabled-1].STE) {
+                        t += ' | ◉◉➛◎: ' + spects[window.multiboxPlayerEnabled-1].STE //Sonia6
+                    }
+                    if (defaultmapsettings.showStatsTTE && spects[window.multiboxPlayerEnabled-1].TTE) {
+                        t += ' | ◉➚◉: ' + spects[window.multiboxPlayerEnabled-1].TTE //Sonia6
+                    }
+                    if (defaultmapsettings.showStatsPTE && spects[window.multiboxPlayerEnabled-1].PTE) {
+                        t += ' | ➚◎➘: ' + spects[window.multiboxPlayerEnabled-1].PTE //Sonia6
+                    }
+                    if (defaultmapsettings.showStatsFPS) {
+                        t += ' | '
+                    }							
+				}				
+                else if (ogario.play) {
                     if (defaultmapsettings.showStatsMass && ogario.playerMass) {
                         //t += textLanguage.mass + ': ' + i.playerMass + ' | '
                         t += Languageletter49 + ': ' + ogario.playerMass + ' | '
@@ -4356,7 +4408,7 @@ function thelegendmodproject() {
 				'<a id= "themesBtn" target="_blank" href="https://legendmod.ml/themes/" class="fa fa-tint" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Themes"></a>' +
 				'<a id= "LegGoogleForm" class="fa fa-check-square-o" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="New Ideas & Statistics Form" onclick="legendformIframe();return false;"></a>' +
 				'<a id= "ModInfoQuick" class="fa fa-info" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Mod Info & Templates" onclick="openhelper();return false;"></a>'+
-				'<a id= "LegendClanDiscord" href="https://discord.gg/vqy6b5U" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');				
+				'<a id= "LegendClanDiscord" href="https://discord.gg/CbMkY77" target="_blank" class="fa fa-globe" data-toggle="tab-tooltip" data-container="body" data-placement="left" title="" data-original-title="Legend clan Discord"></a></div>');				
 				
                 $(".left-container").append(`<div id="quick-bots" class="agario-panel agario-side-panel"><h2 id="botsInfo"></h2>									
 					<h5 id="botsAuthor" class="main-color">Party bots</h5>
@@ -4371,9 +4423,8 @@ function thelegendmodproject() {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1.0" step="0.1" placeholder="Captcha delay (sec)" min="0" max="10" spellcheck="false">
+					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
-
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
@@ -4419,7 +4470,7 @@ function thelegendmodproject() {
                 this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
                 this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", "animatedRainbowColor"], "transparencyGroup");
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
-                this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "hidecountry", "universalChat"], "chatGroup");
+                this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
                 this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
@@ -4452,6 +4503,7 @@ function thelegendmodproject() {
 				
                 this.addSliderBox(".profiles", "profileNumber", 10, 54, 1);
                 this.addSliderBox(".macroGroup", "macroFeeding", 1, 160, 1);
+				//this.addSliderBox(".massGroup", "hideSizes", 0, 37, 1);
                 $("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + textLanguage.exportImport + "</button>");
                 $("#og-settings").append('<div class="restore-settings"><a href="#">' + textLanguage.restoreSettings + "</a></div>");
                 $("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + textLanguage.thanks + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' + textLanguage.playlist + "</a></span></div>");
@@ -5545,7 +5597,9 @@ function thelegendmodproject() {
 						}
 					}
 				}
+				
                 if (LM.arrowFB[0].visible && !LM.arrowFB[0].isIncluded) { //Yahnych
+					this.miniMapCtx.save()
                     this.miniMapCtx.beginPath();
                     this.miniMapCtx.arc((LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n, defaultSettings.miniMapMyCellSize, 0, this.pi2, false);
                     this.miniMapCtx.closePath();
@@ -5565,6 +5619,7 @@ function thelegendmodproject() {
                     }
                     this.miniMapCtx.fillStyle = defaultSettings.miniMapNickColor;
                     this.miniMapCtx.fillText('🔹' + LM.arrowFB[0].nick + '🔹', (LM.arrowFB[0].x + r) * n, (LM.arrowFB[0].y + l) * n - (defaultSettings.miniMapTeammatesSize * 2 + 2.5));
+					this.miniMapCtx.restore();
                     //}
                 }
                 //				
@@ -5744,12 +5799,14 @@ function thelegendmodproject() {
                 this.createServerToken();
                 this.updateServerInfo();
                 if (-1 == this.ws.indexOf('agar.io')) {
-                    this.closeConnection();
+	            // fix disconnect?
+                    //this.closeConnection();
                 }
             }
         },
         recreateWS(token) {
             if (!token) return null;
+	    this.tokenNeedToBtoa = false
             var text = null;
             if (/^[a-zA-Z0-9=+\/]{12,}$/.test(token)) {
                 //var atobToken = atob(token);
@@ -5774,14 +5831,17 @@ function thelegendmodproject() {
                 text = 'wss://live-arena-' + token + '.agar.io:443'
             }		
 			else if (!token.includes("s://")){
+				this.tokenNeedToBtoa = true
 				text = 'wss://' + token; //private servers
 			}
 			else{
+				this.tokenNeedToBtoa = true
 				text = token; //private servers
 			}			
             return text;
         },
         createServerToken() {
+	    this.tokenNeedToBtoa = false
             var matchOld = this.ws.match(/ip-\d+/);
             //var matchNew = this.ws.match(/live-arena-([\w\d]+)/);
 			var matchNew = this.ws.match(/live-arena-([\w\d]+(\.tech)?)\.agar\.io/);
@@ -5799,6 +5859,7 @@ function thelegendmodproject() {
             //ccse
             if (this.ws.search(/wss?:\/\//) > -1 && this.ws.search(/agar\.io/) == -1) {
                 text = this.ws.match(/wss?:\/\/(.+)/)[1]
+		this.tokenNeedToBtoa = true
                 this.serverIP = text;				
                 //text = btoa(text);
                 //console.log("createServerToken case 1:" + text);
@@ -5871,7 +5932,7 @@ function thelegendmodproject() {
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', application.publicIP);
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
-                buf.setUint16(1, 401, true);
+                buf.setUint16(1, 404, true);
                 app.sendBuffer(buf);
                 app.sendPartyData();
             }
@@ -6221,7 +6282,8 @@ function thelegendmodproject() {
             this.sendPlayerData(15, 'lastSentPartyToken', this.partyToken);
         },
         sendServerToken() {
-            this.sendPlayerData(16, 'lastSentServerToken', this.serverToken);
+	    var serverToken = this.tokenNeedToBtoa?btoa(this.serverToken):this.serverToken
+            this.sendPlayerData(16, 'lastSentServerToken', serverToken);
         },
         sendServerJoin() {
             this.sendServerToken();
@@ -7755,10 +7817,13 @@ function thelegendmodproject() {
             }
             return ctxfx;
         };
-        this.draw = function(style, canCreateDiscussions) {
+        this.draw = function(style, canCreateDiscussions) { //this function draws each cell/virus/food 1 time only
             if (LM.hideSmallBots && this.size <= 36) {
                 return;
             }
+            //if (defaultmapsettings.hideSizes > 0 && this.size < defaultmapsettings.hideSizes) {
+                //return;
+            //}			
             // check this
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
@@ -8101,10 +8166,10 @@ function thelegendmodproject() {
                     }
                 }
             }
-            if (s) {
-                style.globalAlpha = value;
-                s = false;
-            }
+            //if (s) {
+                //style.globalAlpha = value;
+                //s = false;
+            //}
 
 
             if (defaultmapsettings.teammatesInd && !this.isPlayerCell && y <= 800 &&
@@ -8119,7 +8184,8 @@ function thelegendmodproject() {
 
                 style.restore();
                 return;
-            } else {
+            } 
+			else {
                 if (defaultmapsettings.customSkins && LM.showCustomSkins) {
                     node2.src = application.customSkinsMap[this.targetNick];
                     application.customSkinsMap[this.targetNick];
@@ -8143,7 +8209,8 @@ function thelegendmodproject() {
                 var recursive = false;
                 if (!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
                     style.restore();
-                } else {
+                } 
+				else {
                     this.setDrawing();
                     this.setDrawingScale();
                     style.globalAlpha *= defaultSettings.textAlpha;
@@ -8163,9 +8230,6 @@ function thelegendmodproject() {
                     }
                     style.restore();
                 }
-
-
-
             }
         };
     }
@@ -8238,6 +8302,7 @@ function thelegendmodproject() {
         removedCells: [],
         food: [],
         viruses: [],
+		cellcolors: [],
         playerCells: [],
         playerCellIDs: [],
 		playerCellsMulti: [],
@@ -8679,13 +8744,16 @@ function thelegendmodproject() {
 
         sendPosition(cell, target2, specialcommand) {
             var cursorX, cursorY;
+			if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)){
 			if (window.multiboxPlayerEnabled && !window.multiboxFollowMouse && !window.autoPlay){
 				if (defaultmapsettings.multiKeepMoving){
-					cursorX = this.playerX + this.distX;
-					cursorY = this.playerY + this.distY;
+					//cursorX = this.playerX + this.distX;
+					//cursorY = this.playerY + this.distY;
+					cursorX = this.viewXTrue + this.distX;
+					cursorY = this.viewYTrue + this.distY;					
 				}
 			}
-            else if (this.isSocketOpen() && this.connectionOpened && (this.clientKey || !legendmod.integrity)) {								
+            else {								
                 if (specialcommand) {
                     //console.log('hi')
                     //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
@@ -8713,20 +8781,20 @@ function thelegendmodproject() {
                         //var cursorY = target2.y;
                     }
                     //}
-                }
-                //
-
+                }				
+				//for multi
+				//this.distX  = cursorX - this.playerX	
+				//this.distY  = cursorY - this.playerY
+				this.distX  = cursorX - this.viewXTrue
+				this.distY  = cursorY - this.viewYTrue				
+            }
                 var view = this.createView(13);
                 view.setUint8(0, 16);
                 view.setInt32(1, cursorX, true);
                 view.setInt32(5, cursorY, true);
                 view.setUint32(9, this.protocolKey, true);
-                this.sendMessage(view);
-				
-				//for multi
-				this.distX  = cursorX - this.playerX	
-				this.distY  = legendmod.cursorY - this.playerY					
-            }
+                this.sendMessage(view);	
+		}				
             if (window.userBots.startedBots && window.userBots.isAlive) {
                 window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
                 window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
@@ -10149,7 +10217,7 @@ function thelegendmodproject() {
             }
         },
 		isInViewCustom3 (x , y, size) {
-			var randomNum = 40 // randomNum=40
+			var randomNum = 0 // randomNum=40
 			var distance = size + randomNum
             return !(x + distance < legendmod.camMinMultiX ||
 			y + distance < legendmod.camMinMultiY ||
@@ -10246,6 +10314,28 @@ function thelegendmodproject() {
                 //id = this.newID(id),
                 //x = this.getX(x),
                 //y = this.getY(y);	
+				//FOR COLOR
+				if (!isVirus && !isFood && name!="" && this.gameMode != ":teams"){
+					if (LM.cellcolors[name]){ 
+						color = LM.cellcolors[name]
+					}
+					else{	
+                        if (this.playerCellIDs.indexOf(id) != -1) {
+							if (defaultmapsettings.myCustomColor) {
+								color = profiles[application.selectedProfile].color
+							}
+                        }									
+						else{
+							application.teamPlayers.forEach((found) => {
+								if (found.nick == name){ 
+									color = found.color		
+								} 
+							})		
+						}						
+					}
+					if (!LM.cellcolors[name]) LM.cellcolors[name]= color
+				}
+				//				
 				var invisible;
 				//if (LM.playerCellsMulti.length && window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
 					
@@ -10269,7 +10359,16 @@ function thelegendmodproject() {
                         this.cells.push(cellUpdateCells);
                         if (this.playerCellIDs.indexOf(id) != -1 && this.playerCells.indexOf(cellUpdateCells) == -1) {
                             cellUpdateCells.isPlayerCell = true;
-                            this.playerColor = color;
+                            if (this.gameMode == ":teams"){
+								this.playerColor = color;
+							}
+							else{
+								if (profiles[application.selectedProfile].color){
+									color = profiles[application.selectedProfile].color
+								}
+									this.playerColor = color;
+									cellUpdateCells.color = color;		
+							}							
                             this.playerCells.push(cellUpdateCells);
 							//this.playerCellsMulti.push(cellUpdateCells);
                         }
@@ -10333,8 +10432,21 @@ function thelegendmodproject() {
 				if (!LM.multiBoxPlayerExists){					
 					application.showMenu(300)
 				}
-				else{
-					application.multiboxswap()
+				else{		
+					if (!window.multiboxPlayerEnabled){
+						application.multiboxswap()
+					}
+					else{
+						if (!window.multiboxPlayerEnabledSaved){			
+							window.multiboxPlayerEnabledSaved = window.multiboxPlayerEnabled
+							window.multiboxPlayerEnabled = null
+						}
+						else{
+							window.multiboxPlayerEnabled = window.multiboxPlayerEnabledSaved
+							window.multiboxPlayerEnabledSaved = null
+						}
+						application.multiboxswap()
+					}
 				}
                 window.userBots.isAlive = false
                 if (window.userBots.startedBots) window.connectionBots.send(new Uint8Array([5, Number(window.userBots.isAlive)]).buffer)
@@ -10392,17 +10504,21 @@ function thelegendmodproject() {
                 this.playerMaxMass = ~~(cells[CellLength - 1].size * cells[CellLength - 1].size / 100);
                 this.playerSplitCells = CellLength;
             }
-            if (true) {
-                var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+			var mass
+			if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+                mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled-1].playerMaxMass : spects[window.multiboxPlayerEnabled-1].playerMinMass;					
+			}
+            else {
+                mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+            }
                 // this.STE = i > 35 ? ~~(i * (i < 1000 ? 0.35 : 0.38)) : null; //Sonia2
-                //this.STE = Math.floor(mass * Math.pow(1.15, 2)/4); //Sonia2
+                //this.STE = Math.floor(mass * Math.pow(1.15, 2)/4); //Sonia2			
 				this.STE = Math.floor(mass * defaultmapsettings.dominationRate/4); //Sonia2
                 this.MTE = Math.floor(mass * defaultmapsettings.dominationRate/2); //Sonia2
                 this.BMTE = Math.ceil(mass * defaultmapsettings.dominationRate); //Sonia2
                 this.BSTE = Math.ceil(mass * defaultmapsettings.dominationRate*2); //Sonia2
                 this.TTE = Math.ceil(mass / 6); //Sonia2
-                this.PTE = Math.floor(mass * 0.66); //Sonia2
-            }
+                this.PTE = Math.floor(mass * 0.66); //Sonia2			
         },
         compareCells() {
 		if ((this.play || LM.playerCellsMulti) && (defaultmapsettings.oppColors || defaultmapsettings.oppRings || defaultmapsettings.splitRange)) {
@@ -10424,9 +10540,15 @@ function thelegendmodproject() {
                     }
                     //console.log(i); i for food is 13
                     var size = ~~(cell.size * cell.size / 100);
-                    if (size != 13) {
+
 					if (size > 13) {	
-                        var mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+						var mass
+						if (window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
+							mass = this.selectBiggestCell ? spects[window.multiboxPlayerEnabled-1].playerMaxMass : spects[window.multiboxPlayerEnabled-1].playerMinMass;					
+						}
+						else {
+							mass = this.selectBiggestCell ? this.playerMaxMass : this.playerMinMass;
+						}
                         var fixMass = size / mass;
                         var smallMass = mass < 1000 ? 0.35 : 0.38;
                         if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
@@ -10436,7 +10558,7 @@ function thelegendmodproject() {
                             this.cacheCells(cell.x, cell.y, cell.size, fixMass);
                         }
                     }
-                }
+                
 			}}
         },
         cacheCells(x, y, size, mass) {
@@ -10805,19 +10927,7 @@ function thelegendmodproject() {
                 }
                 //
                 if (defaultmapsettings.debug) {
-					//if (!window.multiboxPlayerEnabled){
-						this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
-					//}
-					if (legendmod.multiBoxPlayerExists && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
-						this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
-					}
-                    //this.newViewport( this.ctx, 'Client', LM.viewX, LM.viewY, LM.isSpectateEnabled, LM.isFreeSpectate, LM.leaderboard, LM.playerCells)
-                    if (window.fullSpectator) {
-                        for (let i = 0; i < spects.length; i++) {
-                            this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
-                        }
-
-                    }
+					this.drawViewPorts(this.ctx)
                 }
                 //
 
@@ -10828,26 +10938,33 @@ function thelegendmodproject() {
                     }
                 }
                 //this.ctx.finish2D();
-
-                if (defaultmapsettings.debug) {
-                    /*this.ctx.fillStyle = "white";
+                /*if (defaultmapsettings.debug) {
+                    this.ctx.fillStyle = "white";
                     this.ctx.font = "15px sans-serif";
                     this.ctx.textAlign = "start";
                     var lw = (this.canvasHeight / 2)
                     LM.camMaxX && this.ctx.fillText("isFreeSpectate: " + LM.isFreeSpectate, 50, lw += 25);
-                    LM.camMaxX && this.ctx.fillText("isSpectateEnabled: " + LM.isSpectateEnabled, 50, lw += 25);*/
-
-
-
-                    //LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
-                    //LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
-                    //LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
-                    //LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
-                    //LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
-                }
+                    LM.camMaxX && this.ctx.fillText("isSpectateEnabled: " + LM.isSpectateEnabled, 50, lw += 25);
+                    LM.camMaxX && this.ctx.fillText("realQuadrant: "+LM.realQuadrant, 50, lw+=25);
+                    LM.camMaxX && this.ctx.fillText("lastQuadrant: "+LM.lastQuadrant, 50, lw+=25);
+                    LM.camMaxX && this.ctx.fillText("quadrant: "+LM.quadrant, 50, lw+=25);
+                    LM.camMaxX && this.ctx.fillText("cMaxX: "+LM.camMaxX, 50, lw+=30);
+                    LM.camMaxY && this.ctx.fillText("cMaxY: "+LM.camMaxY, 50, lw+=30);
+                    LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
+                    LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
+                }*/
             },
+			drawViewPorts(ctx) { 
+				this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
+				if (legendmod.multiBoxPlayerExists && LM.camMinMultiX && LM.camMinMultiY && LM.camMaxMultiX && LM.camMaxMultiY){
+					this.drawViewport(this.ctx, 'Multi', LM.camMinMultiX, LM.camMinMultiY, LM.camMaxMultiX, LM.camMaxMultiY, defaultSettings.bordersColor, 15);
+				}
+				if (window.fullSpectator) {
+                    for (let i = 0; i < spects.length; i++) {
+                        this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
+                    }
+                }			
+			},
             drawFBTracking(ctx, players, x, y) { //Yahnych
                 for (let length = 0; length < players.length; length++) {
                     let t = players[length];
@@ -11127,14 +11244,18 @@ function thelegendmodproject() {
                 if (e.length) {
                     t.beginPath();
                     for (var s = 0; s < e.length; s++) {
-                        var o = e[s].x,
-                            a = e[s].y;
-                        t.moveTo(o, a),
-                            t.arc(o, a, e[s].size + 820, 0, this.pi2, false);
+						if (e[s].invisible != true){
+							var o = e[s].x;
+							var a = e[s].y;
+							t.moveTo(o, a);
+							t.arc(o, a, e[s].size + 820, 0, this.pi2, false);
+						}
                     }
-                    t.fillStyle = defaultSettings.virusColor,
-                        t.globalAlpha = 0.1, t.fill(),
-                        t.globalAlpha = 1, i && (e = []);
+                    t.fillStyle = defaultSettings.virusColor;
+                    t.globalAlpha = 0.1;
+					t.fill();
+                    t.globalAlpha = 1; 
+					i && (e = []);
                 }
             },
             calMinMaxMulti() {
@@ -12693,7 +12814,33 @@ function embPassword(){
             }
 }
 
+function appendLMhiFbPs() {
+    $("body").on('DOMNodeInserted', ".toast.toast-warning", function() {
+        MSGCOMMANDS2 = $(".toast.toast-warning").html();
+        if (MSGCOMMANDS2.includes("You are using an old version of OGARio by")) {
+            toastr.error(Premadeletter0);
+        } else if (MSGCOMMANDS2.includes("Welcome! You are connected to the OGARio")) {
+            $(".toast.toast-warning").remove();         
+        }
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        var MSGCOMMANDS3 = $(".command-text").text();
+        if (MSGCOMMANDS3.includes("You are using an old version of OGARio by")) {
+            $(".command-text").text(Premadeletter0);
+        } else if (MSGCOMMANDS3.includes("Welcome! You are connected to the OGARio by szymy server. Have a nice mass!")) {        
+            $(".command-text").text(Premadeletter0);
+        }
+    });
 
+    $("body").on('DOMNodeInserted', ".toast.toast-success", function() {
+        MSGCOMMANDS = $(".toast.toast-success").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");      
+    });
+    $("body").on('DOMSubtreeModified', "#chat-box", function() {
+        MSGCOMMANDS = $(".message-text").text();
+        MSGNICK = $(".message-nick").last().text().replace(": ", "");       
+    });
+}
 /*
 var snezSocketdata;
 var snezSocket = new WebSocket("wss://connect.websocket.in/3Q-SoniaSLG_453dsV?room_id=123");
