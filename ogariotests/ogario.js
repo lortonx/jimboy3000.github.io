@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.830
+// v1.831
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -3141,6 +3141,22 @@ function thelegendmodproject() {
         virusSoundurl: null,
         FacebookIDs: null,
         feedInterval: null,
+		blacklist: ['Senpa','Admin','xAzz','obobemnai'],
+		brokenSkins: {'https://raw.githubusercontent.com/Yahnych/vanilla_skins/master/agar/Guitarist.png':1,
+                 'https://raw.githubusercontent.com/Yahnych/vanilla_skins/master/agar/Dancer.png':1},
+		boostsInfo:{
+                "mass_boost_3x_24h":{price:990,name:"Mass 3X/24H"},
+                "mass_boost_3x_1h":{price:490,name:"Mass 3X/1H"},
+                "mass_boost_2x_24h":{price:790,name:"Mass 2X/24H"},
+                "mass_boost_2x_1h":{price:290,name:"Mass 2X/1H"},
+                "xp_boost_3x_24h":{price:990,name:"XP 3X/24H"},
+                "xp_boost_3x_1h":{price:490,name:"XP 3X/1H"},
+                "xp_boost_2x_24h":{price:790,name:"XP 2X/24H"},
+                "xp_boost_2x_1h":{price:290,name:"XP 2X/1H"}
+		},
+		replayData: [],
+		replays: {r:[]},
+		replayMode: false,		
         getPlayerX() {
 			
             return ogario.playerX + ogario.mapOffsetX;
