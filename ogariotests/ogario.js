@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.821
+// v1.822
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2317,7 +2317,7 @@ var defaultmapsettings = {
     videoSkins: true,
     videoSkinsMusic: false,
     myTransparentSkin: false,
-    myCustomColor: false,
+    myCustomColor: true,
     transparentCells: false,
     transparentViruses: true,
     transparentSkins: false,
@@ -10321,7 +10321,9 @@ function thelegendmodproject() {
 					}
 					else{	
                         if (this.playerCellIDs.indexOf(id) != -1) {
-							color = profiles[application.selectedProfile].color
+							if (defaultmapsettings.myCustomColor) {
+								color = profiles[application.selectedProfile].color
+							}
                         }									
 						else{
 							application.teamPlayers.forEach((found) => {
