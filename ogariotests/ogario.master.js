@@ -1,4 +1,4 @@
-//v12.55f
+//v12.55g
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -339,7 +339,7 @@ function legendmaster(self) {
                     }
                 },
                 success(playlistCopy) {
-                $("#response").html(JSON.stringify(playlistCopy, null, 4));
+                //$("#response").html(JSON.stringify(playlistCopy, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
