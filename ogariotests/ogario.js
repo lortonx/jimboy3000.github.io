@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.826
+// v1.827
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -9959,8 +9959,7 @@ function thelegendmodproject() {
                 case 16:
                     //this.updateCells(new LMbuffer(data['buffer']), s);
                     this.updateCells(new window.buffer.Buffer(data.buffer), s);
-
-                    //this.countPps()
+					this.countPps()
                     break;
                 case 64:
                     //var message = new LMbuffer(data['buffer'])						
@@ -10013,6 +10012,7 @@ function thelegendmodproject() {
             switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
                 case 16:
                     this.updateCells(message, e);
+					this.countPps()
                     break;
                 case 64:
                     this.viewMinX = message.readDoubleLE(e);
