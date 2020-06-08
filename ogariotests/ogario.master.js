@@ -1,4 +1,4 @@
-//v12.55j
+//v12.55e
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -318,15 +318,15 @@ function legendmaster(self) {
         parseClientVersion(styleValue) {
             return 10000 * parseInt(styleValue.split(".")[0]) + 100 * parseInt(styleValue.split(".")[1]) + parseInt(styleValue.split(".")[2]);
         },
-        getRegionCode() {
+        'getRegionCode'() {
             var nextNodeLoc = window.localStorage.getItem('location');
             if (nextNodeLoc) {
                 this.setRegion(nextNodeLoc, ![]);
-                //if (!this.checkPartyHash()) {
+                if (!this.checkPartyHash()) {
                     //console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " getRegionCode called, reconnecting");
-                    //this.reconnect();
-                //}
-                //return;
+                    this.reconnect();
+                }
+                return;
             }
             var canvasLayersManager = this;
             window.userData = $.ajax(master.master_url_http + "/getCountry", {
@@ -339,22 +339,19 @@ function legendmaster(self) {
                     }
                 },
                 success(playlistCopy) {
-                //$("#response").html(JSON.stringify(playlistCopy, null, 4));
+                $("#response").html(JSON.stringify(playlistCopy, null, 4));
                 if (userData != null) {
                     localStorage.setItem("userData", JSON.stringify(userData));
                 }
 				//if (userData && userData.responseJSON){		
 				if (playlistCopy){			
-				//console.log(playlistCopy.country)
-					window.userCountry=playlistCopy.country
-                //canvasLayersManager.setRegionCode(playlistCopy.country);
+				console.log(playlistCopy.country)
+                canvasLayersManager.setRegionCode(playlistCopy.country);
 				}
 				else if (userData){
-					window.userCountry=userData.responseJSON.country
-					//console.log(userData.responseJSON.country)
-					//setTimeout(function() {
-						//canvasLayersManager.setRegionCode(userData.responseJSON.country);
-					//}, 2000);						
+					setTimeout(function() {
+						canvasLayersManager.setRegionCode(userData.responseJSON.country);
+					}, 2000);						
 				}
                 },
                 dataType: "json",
