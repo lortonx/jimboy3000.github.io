@@ -1,4 +1,4 @@
-//v12.55h
+//v12.55i
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -322,11 +322,11 @@ function legendmaster(self) {
             var nextNodeLoc = window.localStorage.getItem('location');
             if (nextNodeLoc) {
                 this.setRegion(nextNodeLoc, ![]);
-                if (!this.checkPartyHash()) {
+                //if (!this.checkPartyHash()) {
                     //console.log("\x1b[31m%s\x1b[34m%s\x1b[0m", consoleMsgLMMaster, " getRegionCode called, reconnecting");
-                    this.reconnect();
-                }
-                return;
+                    //this.reconnect();
+                //}
+                //return;
             }
             var canvasLayersManager = this;
             window.userData = $.ajax(master.master_url_http + "/getCountry", {
