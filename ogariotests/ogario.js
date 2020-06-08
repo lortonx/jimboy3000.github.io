@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.818
+// v1.819
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10953,7 +10953,7 @@ function thelegendmodproject() {
                         this.newViewport(this.ctx, spects[i].number, spects[i].getX(spects[i].viewX), spects[i].getY(spects[i].viewY), spects[i].isSpectateEnabled, spects[i].isFreeSpectate, [], [])
                     }
                 }			
-			}
+			},
             drawFBTracking(ctx, players, x, y) { //Yahnych
                 for (let length = 0; length < players.length; length++) {
                     let t = players[length];
