@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "94"; // the version 1.1-> 1.11
 
@@ -4922,7 +4922,7 @@ function initializeLM(modVersion) {
     $(".menu-tabs").children().attr("style", "width: 16.66%;");
 
     $(".menu-tabs").children().attr("style", "width: 16.66%;");
-    $(".profile-tab").hide();
+    //$(".profile-tab").hide();
     $("#main-menu>#profile").after('<div id="legend" class="menu-panel"><div class="agario-panel legend-panel">' + //<h5 class="menu-main-color">Main Tools</h5>
         //											'<button id="IPBtn" type="button" class="btn btn-sm btn-info" data-toggle="button" aria-pressed="false" autocomplete="off" style="margin-top: 2px; width: 49.5%; border-color: darkslategrey; margin-right: 0.5%;"><i class="fa fa-trademark"></i>Show Connector</button>' +
         '<div id="UserProfile" style="margin-bottom: 10px;">' +
