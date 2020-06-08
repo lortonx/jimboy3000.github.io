@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.813
+// v1.815
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -776,6 +776,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
+		hideSizes: 'Hide everything smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -784,7 +785,7 @@ var displayText = {
 		leaderboardlimit: 'Leaderboard Players',
 		teamboardlimit: 'Team Players',	
         quickResp: 'Szybkie odrodzenie (klawisz)',
-        autoResp: 'Auto odrodzenie',
+        autoResp: 'Auto odrodzenie',		
 		spawnSpecialEffects: 'Spawn special effects',
 		animatedRainbowColor: 'Animated rainbow colors',
         autoHideCellsInfo: 'Autoukrywanie nazw i masy',
@@ -1199,6 +1200,7 @@ var displayText = {
         autoZoom: 'Auto zoom',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
+		hideSizes: 'Hide everything smaller than',
         profileNumber: 'Profiles Number',
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
@@ -2382,6 +2384,7 @@ var defaultmapsettings = {
     showSkinsPanel: true,
     animation: 120,
     macroFeeding: 80,
+	hideSizes: 0,
 	dominationRate: 1.33,
     profileNumber: 15,
     ////
@@ -4411,9 +4414,8 @@ function thelegendmodproject() {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1.0" step="0.1" placeholder="Captcha delay (sec)" min="0" max="10" spellcheck="false">
+					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
-
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
 					<br>
@@ -4492,6 +4494,7 @@ function thelegendmodproject() {
 				
                 this.addSliderBox(".profiles", "profileNumber", 10, 54, 1);
                 this.addSliderBox(".macroGroup", "macroFeeding", 1, 160, 1);
+				this.addSliderBox(".massGroup", "hideSizes", 0, 37, 1);
                 $("#og-settings").append('<button class="btn btn-block btn-success btn-export">' + textLanguage.exportImport + "</button>");
                 $("#og-settings").append('<div class="restore-settings"><a href="#">' + textLanguage.restoreSettings + "</a></div>");
                 $("#music").append('<div class="agario-panel radio-panel"><h5 class="menu-main-color">Radio (' + textLanguage.thanks + ')</h5><audio src="" controls></audio><span class="playlist"><span class="ogicon-file-music"></span> <a href="" target="_blank">' + textLanguage.playlist + "</a></span></div>");
@@ -7809,6 +7812,9 @@ function thelegendmodproject() {
             if (LM.hideSmallBots && this.size <= 36) {
                 return;
             }
+            if (this.size < defaultmapsettings.hideSizes) {
+                return;
+            }			
             // check this
             //if (this.spectator>0 && this.isInV()||this.invisible==true) {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
@@ -8215,9 +8221,6 @@ function thelegendmodproject() {
                     }
                     style.restore();
                 }
-
-
-
             }
         };
     }
