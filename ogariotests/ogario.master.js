@@ -1,4 +1,4 @@
-//v12.55i
+//v12.55j
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -345,14 +345,16 @@ function legendmaster(self) {
                 }
 				//if (userData && userData.responseJSON){		
 				if (playlistCopy){			
-				console.log(playlistCopy.country)
-                canvasLayersManager.setRegionCode(playlistCopy.country);
+				//console.log(playlistCopy.country)
+					window.userCountry=playlistCopy.country
+                //canvasLayersManager.setRegionCode(playlistCopy.country);
 				}
 				else if (userData){
-					console.log(userData.responseJSON.country)
-					setTimeout(function() {
-						canvasLayersManager.setRegionCode(userData.responseJSON.country);
-					}, 2000);						
+					window.userCountry=userData.responseJSON.country
+					//console.log(userData.responseJSON.country)
+					//setTimeout(function() {
+						//canvasLayersManager.setRegionCode(userData.responseJSON.country);
+					//}, 2000);						
 				}
                 },
                 dataType: "json",
