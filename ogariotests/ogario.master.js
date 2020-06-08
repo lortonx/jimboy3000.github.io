@@ -1,4 +1,4 @@
-//v12.55g
+//v12.55h
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -349,6 +349,7 @@ function legendmaster(self) {
                 canvasLayersManager.setRegionCode(playlistCopy.country);
 				}
 				else if (userData){
+					console.log(userData.responseJSON.country)
 					setTimeout(function() {
 						canvasLayersManager.setRegionCode(userData.responseJSON.country);
 					}, 2000);						
