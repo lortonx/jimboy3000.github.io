@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.863
+// v1.864
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10568,7 +10568,7 @@ function thelegendmodproject() {
       }
     },
     showSessionStats(u){
-      toastr.info(`
+      toastr.info('<b>[' + Premadeletter123 + ']:</b><br> ' +`
 Final mass: ${u.finalMass}<br>
 Final position: ${u.finalPosition}<br>
 Food eaten: ${u.foodEaten}<br>
