@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.833
+// v1.834
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -246,7 +246,7 @@ window.changeSkin = function(productID) {
 			window.core.proxyMobileData(bytes);
 }
 function buyBoost(req) {
-  console.log("bue boost", req)
+  console.log("buy boost", req)
 
     var bytes = [],
         type = "1_"+req;
@@ -9514,7 +9514,8 @@ function thelegendmodproject() {
                     //}
                     break;
                 case 102:
-
+						var msg = new buffer.Buffer(data.buffer.slice(1));
+						this.onMobileData(msg);		
 					//break;				
                     if (data.byteLength < 20) {
                         //this["loggedIn"] = ![];
@@ -9522,10 +9523,7 @@ function thelegendmodproject() {
                         //window["logout"]();
                         //}
                     }
-                    if (data.buffer.byteLength > 1000) {
-						var msg = new buffer.Buffer(data.buffer.slice(1));
-						this.onMobileData(msg);		
-						
+                    if (data.buffer.byteLength > 1000) {						
 						//
                         window.testobjects = data;
                         var sampleBytes = new Uint8Array(window.testobjects.buffer);
