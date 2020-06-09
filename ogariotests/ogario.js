@@ -12413,7 +12413,7 @@ Game name     : ${i.displayName}<br/>
                 this.drawCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
                 this.drawCircles(ctx, biggerSte, width, alpha, 0.75, defaultSettings.enemyBSTEColor); //Sonia2
                 this.drawCircles(ctx, biggetCell, width, alpha, 0.75, defaultSettings.enemyBColor); //Sonia2
-                this.drawCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);						
+                //this.drawCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);						
                 this.drawCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor); //Sonia2
                 this.drawCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor); //Sonia2
                 this.drawCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
