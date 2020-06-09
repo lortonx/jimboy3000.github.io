@@ -1,4 +1,4 @@
-//v12.55f
+//v12.55g
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -846,6 +846,17 @@ function continuelogout(){
         $("#UserProfileUID1").text("");
 		$("#UserProfileUUID1").val("");	
         $(".agario-profile-picture").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
+		$("#stats-content").html("");
+		$("#user-info").html("");	
+		$(".vanilla-skin-preview").attr('src', 'https://legendmod.ml/banners/profilepic_guest.png');
+		$('.progress-bar-star').text("");
+		$(".agario-profile-name-container").html('<div class="agario-profile-name"></div>'+
+                                        '<div id="coins" style="display: inline-block;">💰000</div>'+
+                                        '<div id="dna" style="display: inline-block;">🧬000</div>'+
+                                        '<div id="trophy" style="display: inline-block;">🏆000</div>')
+		$("#quest-active").html('')
+		$("#player-skins").html('');
+		
 }
 function doFB() {
 
