@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.850
+// v1.851
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11908,7 +11908,7 @@ Game name     : ${i.displayName}<br/>
                     if ((t.x - x > 0 && t.y - y < 0) || (t.x - x > 0 && t.y - y > 0)) {
                         angl = 180 + (180 - angl);
                     }
-
+					console.log(t.x,x)
                     // Store the current context state (i.e. rotation, translation etc..)
                     ctx.save()
 
@@ -11923,6 +11923,7 @@ Game name     : ${i.displayName}<br/>
 
                     //draw the image    
                     //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+					
                     let grad = ctx.createLinearGradient(0, -t.size, 0, r * 2 - t.size); //Yahnych
                     grad.addColorStop(0, defaultSettings.splitRangeColor);
                     grad.addColorStop(1, defaultSettings.splitRangeColor + "00");
