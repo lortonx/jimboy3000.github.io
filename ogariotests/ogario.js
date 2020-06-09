@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.872
+// v1.873
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7165,6 +7165,7 @@ function thelegendmodproject() {
                 n = this.parseMessage(msg.replace(a + ': ', ''));
 				if (defaultmapsettings.coloredNicks){
 					mcolor = legendmod.cellcolors[a]
+					console.log(a,legendmod.cellcolors[a])
 				}
                 if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                     var r = '';
