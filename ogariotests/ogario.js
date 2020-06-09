@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.859
+// v1.860
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -1015,6 +1015,7 @@ var displayText = {
         showStatsFPS: 'Statystyki: FPS',
 		showStatsPPS: 'Statystyki: PPS',
         blockPopups: 'Blokuj popupy (reklamy/sklep/zadanie)',
+		gameOverStats: 'Game over stats',
         hotkeys: 'Skróty klawiszowe',
         'hk-inst-assign': 'Aby ustawić skrót klawiszowy kliknij na polu skrótu i naciśnij wybrany klawisz.',
         'hk-inst-delete': 'Aby usunąć skrót klawiszowy kliknij na polu skrótu i naciśnij klawisz DELETE.',
@@ -1447,6 +1448,7 @@ var displayText = {
         showStatsFPS: 'Game stats: FPS',
 		showStatsPPS: 'Game stats: PPS',
         blockPopups: 'Block popups (ads/shop/quest)',
+		gameOverStats: 'Game over stats',
         hotkeys: 'Hotkeys',
         'hk-inst-assign': 'To assign a hotkey click on the input field and press your chosen key.',
         'hk-inst-delete': 'To delete a hotkey click on the input field and press the DELETE key.',
@@ -2527,6 +2529,7 @@ var defaultmapsettings = {
     showStatsFPS: true,
 	showStatsPPS: true,
     blockPopups: false,
+	gameOverStats: true,
     streamMode: false,
     hideSkinUrl: false,
     showQuickMenu: true,
@@ -4649,7 +4652,7 @@ function thelegendmodproject() {
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
-                this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "showTime"], "statsGroup");
+                this.addOptions(["showStats", "showStatsMass", "showStatsESTE", "showStatsEMTE", "showStatsMTE", "showStatsSTE", "showStatsTTE", "showStatsPTE", "showStatsN16", "showStatsFPS", "gameOverStats", "showTime"], "statsGroup");
                 this.addOptions(["oneColoredSpectator", "multiBoxShadow", "multiKeepMoving"], "multiBox");
 				this.addOptions([], "macroGroup");
                 this.addOptions([], "profiles");
@@ -10319,7 +10322,9 @@ function thelegendmodproject() {
                 if(u.potionInfo&&u.potionInfo.newUserPotion){
                   this.newPotion(u.potionInfo.newUserPotion);
                 };
-                this.showSessionStats(u.gameSessionStats);
+				if (defaultmapsettings.gameOverStats){
+					this.showSessionStats(u.gameSessionStats);
+				}
                 break;
             case 75:
                 console.log("returnMessage = r.get_walletUpdatesField();");
