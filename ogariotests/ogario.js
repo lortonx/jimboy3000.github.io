@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.836
+// v1.838
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10833,7 +10833,8 @@ Quests completed      : ${i.actionCounters.questsCompleted}<br/>
 Skins created : ${i.actionCounters.skinsCreated}<br/>
 Country     : ${i.latestCountryCode}<br/>
 Game name     : ${i.displayName}<br/>
-Game Id   : ${i.userId}
+<div id="UserProfileUUID">UID: <input id="UserProfileUUID1" class="user-name" style="display:inline-block; width: 180px; font-size: 9px;">${i.userId}</div>
+//Game Id   : ${i.userId}
       `)
     },
     agarExp(q) {
