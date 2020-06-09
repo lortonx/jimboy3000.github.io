@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.849
+// v1.850
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11458,13 +11458,13 @@ Game name     : ${i.displayName}<br/>
                             cell.oppColor = this.setCellOppColor(cell.isPlayerCell, fixMass);
                         }
 						if (!cell.isPlayerCell && (defaultmapsettings.splitRange || defaultmapsettings.oppRings)) {
-                            this.cacheCells(cell.x, cell.y, cell.size, fixMass);
+                            this.cacheCells(cell.x, cell.y, cell.targetX, cell.targetY, cell.size, fixMass);
                         }
                     }
                 
 			}}
         },
-        cacheCells(x, y, size, mass) {
+        cacheCells(x, y, targetX, targetY, size, mass) {
             return mass >= defaultmapsettings.dominationRate * 4 ? void this.biggerSTEDCellsCache.push({
                 x: x,
                 y: y,
