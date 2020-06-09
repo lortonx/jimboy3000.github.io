@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.863
+// v1.864
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12173,15 +12173,15 @@ Game name     : ${i.displayName}<br/>
                     e && (t.strokeStyle = n, t.lineWidth = r, t.beginPath(), t.moveTo(i, s), t.lineTo(o, s), t.lineTo(o, a), t.lineTo(i, a), t.closePath(), t.stroke());
                 },
 				*/
-            drawMapBorders(ctx, macros, text, x1, x0, y0, radius, canvas) {
-                if (macros) {
-                    ctx.strokeStyle = radius;
-                    ctx.lineWidth = canvas;
+            drawMapBorders(ctx, mapOffset, minX, maxY, maxX, minY, stroke, width) {
+                if (mapOffset) {
+                    ctx.strokeStyle = stroke;
+                    ctx.lineWidth = width;
                     ctx.beginPath();
-                    ctx.moveTo(text, x1);
-                    ctx.lineTo(x0, x1);
-                    ctx.lineTo(x0, y0);
-                    ctx.lineTo(text, y0);
+                    ctx.moveTo(minX, maxY);
+                    ctx.lineTo(maxX, maxY);
+                    ctx.lineTo(maxX, minY);
+                    ctx.lineTo(minX, minY);
                     if (defaultmapsettings.borderGlow) {
                         ctx.shadowBlur = defaultSettings.borderGlowSize;
                         ctx.shadowColor = defaultSettings.borderGlowColor;
@@ -12224,8 +12224,7 @@ Game name     : ${i.displayName}<br/>
             return;
         }
       ctx.save();
-	  window.testingM=1.1
-      let m = (width/2)*window.testingM,
+      let m = (width/2)*1.1,
           m2= width/2,
           time = LM.time,
           saturate = "100%", 
