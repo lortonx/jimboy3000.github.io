@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.857
+// v1.858
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11762,9 +11762,9 @@ Game name     : ${i.displayName}<br/>
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
-				if (defaultSettings.rainbowBorders) {//Yahnych
+				if (defaultmapsettings.rainbowBorders) {//Yahnych
 					const borderWidth = defaultSettings.bordersWidth / 2;
-					if(defaultSettings.newRainbowBorders) {
+					if(defaultmapsettings.newRainbowBorders) {
 						this.drawRainbowBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - borderWidth, LM.mapMinY - borderWidth, LM.mapMaxX + borderWidth, LM.mapMaxY + borderWidth, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
 					} 
 					else {
