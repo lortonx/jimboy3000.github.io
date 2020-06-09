@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.835
+// v1.836
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -332,14 +332,14 @@ function useBoost(type) {
     }
     window.core.proxyMobileData(bytes);
 }
-
+/*
 function massx21hour(slot) {
     var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] //WORKED				
-	/*var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16]
-	let massBoostName = "mass_boost_2x_1h"; 
-	for (let i = 0; i < massBoostName.length; i++) { 
-	bytes.push(massBoostName.charCodeAt(i));
-	}*/
+	//var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16]
+	//let massBoostName = "mass_boost_2x_1h"; 
+	//for (let i = 0; i < massBoostName.length; i++) { 
+	//bytes.push(massBoostName.charCodeAt(i));
+	//}
 	window.core.proxyMobileData(bytes);
     setTimeout(function() {
         var bytes = [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] 
@@ -352,11 +352,7 @@ function QuestActivation24h(slot) {
 }
 function massx224hour(slot) {
     var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104]
-	/*var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17]
-	let massBoostName = "mass_boost_2x_24h"; 
-	for (let i = 0; i < massBoostName.length; i++) { 
-	bytes.push(massBoostName.charCodeAt(i));
-	}*/
+
 	window.core.proxyMobileData(bytes);	
     setTimeout(function() {
         var bytes = [8, 1, 18, 26, 8, 70, 178, 4, 21, 10, 19, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104]
@@ -365,11 +361,6 @@ function massx224hour(slot) {
 }
 function massx31hour(slot) {
     var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104] //WORKED
-	/*var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16]
-	let massBoostName = "mass_boost_3x_1h"; 
-	for (let i = 0; i < massBoostName.length; i++) { 
-	bytes.push(massBoostName.charCodeAt(i));
-	}*/	
 	window.core.proxyMobileData(bytes);
     setTimeout(function() {
         var bytes = [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104]
@@ -378,18 +369,13 @@ function massx31hour(slot) {
 }
 function massx324hour(slot) {
     var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104]
-	/*var bytes = [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17]
-	let massBoostName = "mass_boost_3x_24h"; 
-	for (let i = 0; i < massBoostName.length; i++) { 
-	bytes.push(massBoostName.charCodeAt(i));
-	}*/	
 	window.core.proxyMobileData(bytes);	
     setTimeout(function() {
         var bytes = [8, 1, 18, 26, 8, 70, 178, 4, 21, 10, 19, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104]
 		window.core.proxyMobileData(bytes);
     }, 100); 		
 }
-
+*/
 function callEveryFullHourCoinDigger() {
     autocoins();
     var now = new Date();
@@ -991,7 +977,7 @@ var displayText = {
         virusSoundurl: 'Virus shot sound',
         virusSound: 'Virus shot sound',
 		potionsDrinker: 'Randomly drink Potions',	
-		massBooster: 'Mass *2 booster-> *3 booster',		
+		//massBooster: 'Mass *2 booster-> *3 booster',		
         FacebookIDs: 'Facebook IDs',
         jellyPhisycs: 'Jelly physics',
         showTop5: 'Pokaż top 5 teamu',
@@ -1420,7 +1406,7 @@ var displayText = {
         virusSoundurl: 'Virus shot sound',
         virusSound: 'Virus shot sound',
 		potionsDrinker: 'Randomly drink Potions',
-		massBooster: 'Mass *2 booster-> *3 booster',
+		//massBooster: 'Mass *2 booster-> *3 booster',
         FacebookIDs: 'Facebook IDs',
         jellyPhisycs: 'Jelly physics',
         showTop5: 'Show teamboard',
@@ -2422,7 +2408,7 @@ var defaultmapsettings = {
     virusSound: false,
 	onlineStatus: true,
 	potionsDrinker: true,
-	massBooster: false,
+	//massBooster: false,
     quickResp: true,
     autoResp: false,
 	spawnSpecialEffects: false,
@@ -4631,7 +4617,7 @@ function thelegendmodproject() {
 				this.addOptions([], "boardGroup");			
                 this.addOptions(["quickResp", "autoResp","spawnSpecialEffects"], "respGroup");
                 this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
-                this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker", "massBooster"], "massGroup");
+                this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
 				this.addOptions(["noSkins","customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
                 this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
                 this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", "animatedRainbowColor"], "transparencyGroup");
@@ -9551,13 +9537,13 @@ function thelegendmodproject() {
                         } catch (error) {}
                         window.googlePic = "https" + window.testobjects2.split('https')[1].split('H')[0] + "H";
 
-						if (defaultmapsettings.massBooster && master.context) {				
+						/*if (defaultmapsettings.massBooster && master.context) {				
 							massx31hour();
 							if (!window.massBoosterMsg){
 								toastr.warning("<b>[" + Premadeletter123 + "]:</b> Mass *2 booster -> *3 booster is enabled, this upgrades your boost to *3 for FREE if you have enabled Mass boost *2 on agar.io.<br><font color='blue'>Otherwise disable it, cause it will consume your boosts.</font>").css("width", "350px");
 								window.massBoosterMsg=true;
 							}
-						}				
+						}*/				
 						
                         if (window.agarioUID != undefined) {
                             localStorage.setItem("agarioUID", window.agarioUID);
