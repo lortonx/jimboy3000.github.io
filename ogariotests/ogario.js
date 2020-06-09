@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.842
+// v1.843
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8565,7 +8565,7 @@ function thelegendmodproject() {
         smallerCellsCache: [],
         STECellsCache: [],
         STEDCellsCache: [], //Sonia
-        //SSCellsCache: [], 
+        SSCellsCache: [], 
         STE: 0,
         autoZoom: false,
         zoomValue: 0.1,
@@ -11431,7 +11431,7 @@ Game name     : ${i.displayName}<br/>
                     this.STECellsCache = [];
                     this.biggerSTEDCellsCache = []; //Sonia
                     this.STEDCellsCache = []; //Sonia
-                    //this.SSCellsCache = [];
+                    this.SSCellsCache = [];
                 }
                 var t = 0;
                 for (; t < this.cells.length; t++) {
@@ -11476,7 +11476,11 @@ Game name     : ${i.displayName}<br/>
                 'x': x,
                 'y': y,
                 'size': size
-            }) : mass < defaultmapsettings.dominationRate && mass > defaultmapsettings.dominationRate / 2 ? void 0 : mass > defaultmapsettings.dominationRate / 4 ? void this.smallerCellsCache.push({
+            }) : mass < defaultmapsettings.dominationRate && mass > defaultmapsettings.dominationRate / 2 ? void this.SSCellsCache.push({
+                'x': x,
+                'y': y,
+                'size': size
+            })  : mass > defaultmapsettings.dominationRate / 4 ? void this.smallerCellsCache.push({
                 'x': x,
                 'y': y,
                 'size': size
@@ -11756,7 +11760,7 @@ Game name     : ${i.displayName}<br/>
                         this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia						
                     }
                     if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
-                        this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
+                        this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache , LM.SSCellsCache); //Sonia
                     }
 					else if (defaultmapsettings.bubbleInd) {
 						this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
@@ -12343,7 +12347,7 @@ Game name     : ${i.displayName}<br/>
     },			
             //Sonia (entire function update)
             //drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
-            drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, reset) {
+            drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap,ss, reset) {
                 var width = 14 + 2 / scale;
                 var alpha = 12 + 1 / scale;
                 this.drawCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
