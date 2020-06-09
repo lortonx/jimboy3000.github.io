@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.846
+// v1.847
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11799,6 +11799,13 @@ Game name     : ${i.displayName}<br/>
                 //lylko
                 defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
 
+
+                LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
+                    LM.indexedCells[LM.selected].x,
+                    LM.indexedCells[LM.selected].y,
+                    LM.indexedCells[LM.selected].size,
+                    0.75, '#ffffff')
+
                 for (i = 0; i < LM.cells.length; i++) {
 
                     if (defaultmapsettings.jellyPhisycs) {
@@ -11813,12 +11820,6 @@ Game name     : ${i.displayName}<br/>
                         //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
                     }
                 }
-                LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
-                    LM.indexedCells[LM.selected].x,
-                    LM.indexedCells[LM.selected].y,
-                    LM.indexedCells[LM.selected].size,
-                    0.75, '#ffffff')
-
                 if (drawRender.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
                     var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
                     //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
@@ -12355,7 +12356,7 @@ Game name     : ${i.displayName}<br/>
                 this.drawCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
                 this.drawCircles(ctx, biggerSte, width, alpha, 0.75, defaultSettings.enemyBSTEColor); //Sonia2
                 this.drawCircles(ctx, biggetCell, width, alpha, 0.75, defaultSettings.enemyBColor); //Sonia2
-                //this.drawCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);						
+                this.drawCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);						
                 this.drawCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor); //Sonia2
                 this.drawCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor); //Sonia2
                 this.drawCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
