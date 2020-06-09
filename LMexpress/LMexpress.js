@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "94"; // the version 1.1-> 1.11
 
@@ -4327,14 +4327,14 @@ function joint(a) {
         }
 }
 
-function useProfilePhotoCustom() {
+/*function useProfilePhotoCustom() {
     if ($("#UserProfilePic>img").attr('src') != "https://legendmod.ml/banners/profilepic_guest.png" && $("#UserProfilePic>img").attr('src') != "https://legendmod.ml/banners/profilepic_guest.png") {
         copy($("#UserProfilePic>img").attr('src'));
         toastr.info(Premadeletter85 + ' <font color="red"><b>Ctrl+V</font></b>, ' + Premadeletter86).css("width", "350px");
     } else {
         toastr.info(Premadeletter87).css("width", "350px");
     }
-}
+}*/
 
 function emphasischat() {
     var global = window; // unsafeWindow;
@@ -5029,9 +5029,9 @@ function initializeLM(modVersion) {
         '</div></div>');
     //fix userprofile
     $("#UserProfile").css("font-size", "12px");
-    $("#UserProfilePic").click(function() {
-        useProfilePhotoCustom();
-    });
+    //$("#UserProfilePic").click(function() {
+        //useProfilePhotoCustom();
+    //});
 
     // fix leaderboard buttons
     $("#leaderboard-menu").css("pointer-events", "auto");
