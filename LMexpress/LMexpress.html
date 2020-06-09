@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
  <head>
@@ -102,9 +103,20 @@ var CutNameConflictwithMessage=false;
     <div class="agario-panel agario-side-panel agario-profile-panel">
      <div class="clearfix" style="margin-bottom: 16px;">
       <img class="agario-profile-picture" src=""/>
-      <div class="agario-profile-name-container">
-       <div class="agario-profile-name"></div>
-      </div>
+                                   <div class="agario-profile-name-container">
+                                        <div class="agario-profile-name"></div>
+                                        <div id="coins" style="display: inline-block;">💰000</div>
+                                        <div id="dna" style="display: inline-block;">🧬000</div>
+                                        <div id="trophy" style="display: inline-block;">🏆000</div>
+                                    </div>
+                                    <img class="vanilla-skin-preview" src="https://dead-mod.github.io/img/profilepic_guest.png" />
+                                    <div id="user-stats" class="clearfix" style="position: relative; top: 10px; width: 100%; display: none;">
+                                        <div id="close-stats" style="float: right;">X</div>
+                                        <br />
+                                        ID: <span class="user-profile-id"></span><span id="copy-accID">🗊</span>
+                                        <div id="stats-content" style="float: right; width: 50%; display: inline-block; font-size: 12px;"></div>
+                                        <div id="user-info" style="font-size: 12px;"></div>
+                                    </div>
      </div>
      <div style="position: relative;" class="clearfix">
       <div class="agario-exp-bar progress">
@@ -115,6 +127,42 @@ var CutNameConflictwithMessage=false;
       <div class="progress-bar-star"></div>
      </div>
      <br clear="both"/>
+                                <div style="width: 100%;">
+                                    <select id="s-boost" class="form-control" onchange="" required="" style="float: left; width: 60%;">
+                                        <option selected="" value="" data-itr="--Select boost--"></option>
+                                        <option value="mass_boost_3x_24h" data-itr="mass_boost_3x_24h(990):"></option>
+                                        <option value="mass_boost_3x_1h" data-itr="mass_boost_3x_1h(490):"></option>
+                                        <option value="mass_boost_2x_24h" data-itr="mass_boost_2x_24h(790):"></option>
+                                        <option value="mass_boost_2x_1h" data-itr="mass_boost_2x_1h(290):"></option>
+                                        <option value="xp_boost_3x_24h" data-itr="xp_boost_3x_24h(990):"></option>
+                                        <option value="xp_boost_3x_1h" data-itr="xp_boost_3x_1h(490):"></option>
+                                        <option value="xp_boost_2x_24h" data-itr="xp_boost_2x_24h(790):"></option>
+                                        <option value="xp_boost_2x_1h" data-itr="xp_boost_2x_1h(290):"></option>
+                                    </select>
+                                    <button id="buy-boost" class="btn btn-primary" style="float: left; width: 20%;">BUY</button>
+                                    <button id="use-boost" class="btn btn-success" style="float: left; width: 20%;">USE</button>
+                                </div>
+                                <br clear="both" />
+                                <div id="xp-active" style="width: 100%;"></div>
+                                <div id="mass-active" style="width: 100%;"></div>
+                                <div id="quest-active" style="width: 100%;"></div>
+                                <div id="player-skins" class="submenu-panel" style="display: none; width: 100%; height: 250px;"></div>
+
+                                <div id="potions" class="clearfix">
+                                    <div id="potion1" class="potion">
+                                        <img src="https://dead-mod.github.io/img/potion_empty.png" />
+                                        <div>empty</div>
+                                    </div>
+                                    <div id="potion2" class="potion">
+                                        <img src="https://dead-mod.github.io/img/potion_empty.png" />
+                                        <div>empty</div>
+                                    </div>
+                                    <div id="potion3" class="potion">
+                                        <img src="https://dead-mod.github.io/img/potion_empty.png" />
+                                        <div>empty</div>
+                                    </div>
+                                </div>
+                                <br clear="both" />
     </div>
    </div>
    <div class="center-container">
