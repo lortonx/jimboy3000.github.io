@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.873
+// v1.874
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7170,20 +7170,27 @@ function thelegendmodproject() {
                 if (!(0 == a.length || a.length > 15 || 0 == n.length)) {
                     var r = '';
                     if (0 != plId && plId != this.playerID && (this.addChatUser(plId, a), r = '<a href=\"#\" data-user-id=\"' + plId + '\" class=\"mute-user ogicon-user-minus\"></a> '), a = this.escapeHTML(a), 101 == caseof) {
-                        if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + r + '<span class=\"message-nick\">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'),
-                            $('#chat-box').perfectScrollbar('update'), $('#chat-box').animate({
+                        if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message\"><span class=\"message-time\">[' + time + '] </span>' + r + '<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span></div>'),
+                            $('#chat-box').perfectScrollbar('update'), 
+							$('#chat-box').animate({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
                             }, 500), void(defaultmapsettings.chatSounds && this.playSound(this.messageSound));
-                        defaultmapsettings.hideChat || (toastr.success('<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), defaultmapsettings.chatSounds && this.playSound(this.messageSound)), this.chatHistory.push({
+                        defaultmapsettings.hideChat || (toastr.success('<span class=\"message-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"message-text\">' + n + '</span>' + r), 
+						defaultmapsettings.chatSounds && this.playSound(this.messageSound)), 
+						this.chatHistory.push({
                             'nick': a,
                             'message': n
-                        }), this.chatHistory.length > 15 && this.chatHistory.shift();
+                        }), 
+						this.chatHistory.length > 15 && this.chatHistory.shift();
                     } else if (102 == caseof) {
-                        if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message command\" style = "color:' + mcolor + '"><span class=\"command-time\">[' + time + '] </span>' + r + '<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
-                            $('#chat-box').perfectScrollbar('update'), $('#chat-box').animate({
+                        if (defaultmapsettings.showChatBox) return $('#chat-box').append('<div class=\"message command\"><span class=\"command-time\">[' + time + '] </span>' + r + '<span class=\"command-nick\" style = "color:' + mcolor + '">' + a + ': </span><span class=\"command-text\">' + n + '</span></div>'),
+                            $('#chat-box').perfectScrollbar('update'), 
+							$('#chat-box').animate({
                                 'scrollTop': $('#chat-box').prop('scrollHeight')
-                            }, 500), void(defaultmapsettings.chatSounds && this.playSound(this.commandSound));
-                        defaultmapsettings.hideChat || (toastr.warning('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\" style = "color:' + mcolor + '">' + n + '</span>' + r), defaultmapsettings.chatSounds && this.playSound(this.commandSound));
+                            }, 500), 
+							void(defaultmapsettings.chatSounds && this.playSound(this.commandSound));
+                        defaultmapsettings.hideChat || (toastr.warning('<span class=\"command-nick\">' + a + ': </span><span class=\"command-text\" style = "color:' + mcolor + '">' + n + '</span>' + r), 
+						defaultmapsettings.chatSounds && this.playSound(this.commandSound));
                     } else $('#messages').append(msg);
                 }
             }
