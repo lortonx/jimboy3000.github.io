@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.862
+// v1.863
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12224,7 +12224,8 @@ Game name     : ${i.displayName}<br/>
             return;
         }
       ctx.save();
-      let m = (width/2)*1.1,
+	  window.testingM=1.1
+      let m = (width/2)*window.testingM,
           m2= width/2,
           time = LM.time,
           saturate = "100%", 
@@ -12240,7 +12241,7 @@ Game name     : ${i.displayName}<br/>
       g2.addColorStop(0.33, `hsl(${~~((time)/30+240)%360},${saturate},${lightness})`);
       g2.addColorStop(0.67, `hsl(${~~((time)/30+300)%360},${saturate},${lightness})`);
       g2.addColorStop(1,    `hsl(${~~((time)/30+0)%360},${saturate},${lightness})`);
-      /*
+      
       this.gradLine(ctx, g1, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
       ctx.rotate(Math.PI / 2);
       this.gradLine(ctx, g2, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
@@ -12249,7 +12250,7 @@ Game name     : ${i.displayName}<br/>
       ctx.rotate(Math.PI / 2);
       this.gradLine(ctx, g2, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
       ctx.rotate(Math.PI / 2);
-      */
+      
       let top=this.getGrad(ctx, 0, minY-m, 0, minY+m);//Yahnych
       
       ctx.globalCompositeOperation = 'destination-out';
