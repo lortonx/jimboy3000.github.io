@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093h by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "94"; // the version 1.1-> 1.11
 
@@ -252,7 +252,7 @@ var tcm2 = {
 
 urlIpWhenOpened();
 
-emphasischat();
+//emphasischat();
 //specialeffecttargeting();
 function startLM(modVersion) {
     // ANNOUNCEMENTS
