@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.857
+// v1.858
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -206,13 +206,13 @@ function genericVideoAdRewardTokenRequest(slot) {
 
 window.openPotion = function(slot) {
   console.log("open pot", slot)
-
                 //8, 1, 18, 7, 8, 124, 226, 7, 2, 8, 1
     var bytes = [8, 1, 18, 7, 8, 124, 226, 7, 2, 8, slot];
     window.core.proxyMobileData(bytes);
 }
 
-function brewPotion(slot) {
+window.brewPotion(slot) {
+	console.log("drew pot", slot)
 	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
     window.core.proxyMobileData(bytes); //PotionDrinkerRare(2) rare
 }
@@ -897,6 +897,7 @@ var displayText = {
         extrasGroup: 'Dodatkowe',
         macroGroup: 'Macros',
         noSkins: 'Wyłącz skiny',
+		cellContours: 'Only cells contours',
         noNames: 'Wyłącz nazwy',
         noColors: 'Wyłącz kolory',
         showMass: 'Pokaż masę',
@@ -1327,6 +1328,7 @@ var displayText = {
         extrasGroup: 'Extras',
         macroGroup: 'Macros',
         noSkins: 'No skins',
+		cellContours: 'Only cells contours',
         noNames: 'No names',
         noColors: 'No colors',
         showMass: 'Show mass',
@@ -2443,6 +2445,7 @@ var defaultmapsettings = {
 	multiKeepMoving: true,
     optimizedMass: true,
     shortMass: true,
+	cellContours: false,
     virMassShots: true,
     hideMyMass: false,
     hideEnemiesMass: false,
@@ -4638,7 +4641,7 @@ function thelegendmodproject() {
                 this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
 				this.addOptions(["noSkins","customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
                 this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
-                this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", "animatedRainbowColor"], "transparencyGroup");
+                this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
@@ -8195,8 +8198,14 @@ function thelegendmodproject() {
                 }
             }
             //if (dyinglight1load != "yes" || this.targetNick.includes("The Dying Light") || this.isFood) {
-                style.fillStyle = color;
-                style.fill();
+        if (defaultmapsettings.cellContours) {
+        style.lineWidth = 20; ///
+        style.strokeStyle = this.color;///
+        style.stroke();///
+        } else {
+        style.fillStyle = color;
+        style.fill();
+        }
             //}
             if (s) {
                 style.globalAlpha = value;
