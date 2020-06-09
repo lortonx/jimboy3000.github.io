@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.832
+// v1.833
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -182,9 +182,9 @@ function autoRandomPotionDigger() {
 		if (window.autoRandomPotion==1) PotionDrinker(1)
 		if (window.autoRandomPotion==2) PotionDrinker(2)	
 		if (window.autoRandomPotion==3) PotionDrinker(3)	
-		if (window.autoRandomPotion==4) PotionDrinkerIDK(1)
-		if (window.autoRandomPotion==5) PotionDrinkerIDK(2)
-		if (window.autoRandomPotion==6) PotionDrinkerIDK(3)	
+		if (window.autoRandomPotion==4) brewPotion(1)
+		if (window.autoRandomPotion==5) brewPotion(2)
+		if (window.autoRandomPotion==6) brewPotion(3)	
 		if (window.autoRandomPotion<=6){
 			autoRandomPotionDigger()
 		}
@@ -205,11 +205,133 @@ function PotionDrinker(slot) {
     window.core.proxyMobileData(bytes); //PotionDrinker(1) 1 2 3 common rare mystical
 }
 
-function PotionDrinkerIDK(slot) {
+function brewPotion(slot) {
 	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
     window.core.proxyMobileData(bytes); //PotionDrinkerRare(2) rare
 }
+window.questActivationReq = function() {
+  console.log("quest req")
+    var bytes = [8, 1, 18, 17, 8, 110, 242, 6, 12, 10, 10, 100, 97, 105, 108, 121, 81, 117, 101, 115, 116];//agario_proto_Activate_$timed_$event_$request {eventId: "dailyQuest"}
+               //8, 1, 18, 17, 8, 110, 242, 6, 12, 10, 10, 100, 97, 105, 108, 121, 81, 117, 101, 115, 116
+    window.core.proxyMobileData(bytes);
+}
+window.activateQuest = function() {
+  console.log("quest act")
+    var bytes = [8, 1, 18, 27, 8, 114, 146, 7, 22, 10, 20, 113, 117, 101, 115, 116, 95, 97, 99, 116, 105, 118, 97, 116, 105, 111, 110, 95, 50, 52, 104];//agario_proto_Activate_$quest_$request {productId: "quest_activation_24h"}
+               //8, 1, 18, 27, 8, 114, 146, 7, 22, 10, 20, 113, 117, 101, 115, 116, 95, 97, 99, 116, 105, 118, 97, 116, 105, 111, 110, 95, 50, 52, 104
+    window.core.proxyMobileData(bytes);
+}
+window.changeSkin = function(productID) {
+  console.log("quchange skin", productID)
 
+  if(productID==null) return
+    //agario_proto_User_$setting {hasField__0: 0, type: 1, key: 1, valueString: "skin_empty"}
+  //8, 1, 18, 23, 8, 80, 130, 5, 18, 10, 16, 8, 1, 16, 1, 26, 10, 115, 107, 105, 110, 95, 101, 109, 112, 116, 121
+  //8, 1, 18, 23, 8, 80, 130, 5, 16, 8, 1, 16, 1, 26, 10, 115, 107, 105, 110, 95, 101, 109, 112, 116, 121
+  //agario_proto_User_$setting {hasField__0: 0, type: 1, key: 1, valueString: "skin_kraken"}
+  //8, 1, 18, 24, 8, 80, 130, 5, 19, 10, 17, 8, 1, 16, 1, 26, 11, 115, 107, 105, 110, 95, 107, 114, 97, 107, 101, 110
+  //agario_proto_User_$setting {hasField__0: 0, type: 1, key: 1, valueString: "skin_custom_50b62972-d334-4878-b4c8-8ea5f3fade18_4b5dadc9-2543-4401-8ce5-1cf220dba247"}
+  //8, 1, 18, 98, 8, 80, 130, 5, 93, 10, 91, 8, 1, 16, 1, 26, 85, 115, 107, 105, 110, 95, 99, 117, 115, 116, 111, 109, 95, 53, 48, 98, 54, 50, 57, 55, 50, 45, 100, 51, 51, 52, 45, 52, 56, 55, 56, 45, 98, 52, 99, 56, 45, 56, 101, 97, 53, 102, 51, 102, 97, 100, 101, 49, 56, 95, 52, 98, 53, 100, 97, 100, 99, 57, 45, 50, 53, 52, 51, 45, 52, 52, 48, 49, 45, 56, 99, 101, 53, 45, 49, 99, 102, 50, 50, 48, 100, 98, 97, 50, 52, 55
+    
+			var encode = function(str) {
+				bytes.push(str.length);
+				for(var i = 0; i < str.length; i++) {
+					bytes.push(str.charCodeAt(i));
+				}
+			};
+			var bytes = [8, 1, 18, productID.length + 13, 8, 80, 130, 5, productID.length + 8, 10, productID.length + 6, 8, 1, 16, 1, 26];
+			encode(productID);
+      console.log(bytes)
+
+			window.core.proxyMobileData(bytes);
+}
+function buyBoost(req) {
+  console.log("bue boost", req)
+
+    var bytes = [],
+        type = "1_"+req;
+    
+    switch (type) {
+            case "1_mass_boost_2x_1h":
+              console.log('"1_mass_boost_2x_1h"');
+              bytes= [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104];
+              break;
+            case "1_mass_boost_2x_24h":
+              console.log('"1_mass_boost_2x_24h"');
+              bytes= [8, 1, 18, 26, 8, 70, 178, 4, 21, 10, 19, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104];
+              break;
+            case "1_mass_boost_3x_1h":
+              console.log('"1_mass_boost_3x_1h"');
+              bytes=  [8, 1, 18, 25, 8, 70, 178, 4, 20, 10, 18, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104];
+              break;
+            case "1_mass_boost_3x_24h":
+              console.log('"1_mass_boost_3x_24h"');
+              bytes= [8, 1, 18, 26, 8, 70, 178, 4, 21, 10, 19, 49, 95, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104];
+              break;
+            case "1_xp_boost_2x_1h":
+              console.log('"1_xp_boost_2x_1h"');
+              bytes= [8, 1, 18, 23, 8, 70, 178, 4, 18, 10, 16, 49, 95, 120, 112, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104];
+              break;
+            case "1_xp_boost_2x_24h":
+              console.log('"1_xp_boost_2x_24h"');
+              bytes= [8, 1, 18, 24, 8, 70, 178, 4, 19, 10, 17, 49, 95, 120, 112, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104];
+              break;
+            case "1_xp_boost_3x_1h":
+              console.log('"1_xp_boost_3x_1h"');
+              bytes= [8, 1, 18, 23, 8, 70, 178, 4, 18, 10, 16, 49, 95, 120, 112, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104];
+              break;
+            case "1_xp_boost_3x_24h":
+              console.log('"1_xp_boost_3x_24h"');
+              bytes= [8, 1, 18, 24, 8, 70, 178, 4, 19, 10, 17, 49, 95, 120, 112, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104];
+              break;
+            default:
+              console.log('unknown');
+    }
+    window.core.proxyMobileData(bytes);
+}
+function useBoost(type) {
+  console.log("use boost", type)
+
+    var bytes = []
+
+    switch (type) {
+            case "mass_boost_2x_1h":
+              console.log('"mass_boost_2x_1h"');
+              bytes= [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104];
+              break;
+            case "mass_boost_2x_24h":
+              console.log('"mass_boost_2x_24h"');
+              bytes= [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104];
+              break;
+            case "mass_boost_3x_1h":
+              console.log('"mass_boost_3x_1h"');
+              bytes=  [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104];
+              break;
+            case "mass_boost_3x_24h":
+              console.log('"mass_boost_3x_24h"');
+              bytes= [8, 1, 18, 24, 8, 112, 130, 7, 19, 10, 17, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104];
+              break;
+            case "xp_boost_2x_1h":
+              console.log('"xp_boost_2x_1h"');
+              bytes= [8, 1, 18, 21, 8, 112, 130, 7, 16, 10, 14, 120, 112, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104];
+              break; 
+            case "xp_boost_2x_24h":
+              console.log('"xp_boost_2x_24h"');
+              bytes= [8, 1, 18, 22, 8, 112, 130, 7, 17, 10, 15, 120, 112, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 50, 52, 104];
+              break;
+            case "xp_boost_3x_1h":
+              console.log('"xp_boost_3x_1h"');
+              bytes= [8, 1, 18, 21, 8, 112, 130, 7, 16, 10, 14, 120, 112, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 49, 104];
+              break;
+            case "xp_boost_3x_24h":
+              console.log('"xp_boost_3x_24h"');
+              bytes= [8, 1, 18, 22, 8, 112, 130, 7, 17, 10, 15, 120, 112, 95, 98, 111, 111, 115, 116, 95, 51, 120, 95, 50, 52, 104];
+              break;
+            default:
+              console.log('unknown');
+    }
+    window.core.proxyMobileData(bytes);
+}
 
 function massx21hour(slot) {
     var bytes = [8, 1, 18, 23, 8, 112, 130, 7, 18, 10, 16, 109, 97, 115, 115, 95, 98, 111, 111, 115, 116, 95, 50, 120, 95, 49, 104] //WORKED				
@@ -4633,16 +4755,54 @@ function thelegendmodproject() {
                 //defaultmapsettings.showQuickMenu=false;
                 app.saveSettings(defaultmapsettings, "ogarioSettings");
                 app.setShowQuickBots();
-            });
+            });		
             $(document).on("click", ".quick-skins", function(event) {
                 event.preventDefault();
                 defaultmapsettings.showSkinsPanel = !defaultmapsettings.showSkinsPanel;
                 app.saveSettings(defaultmapsettings, "ogarioSettings");
                 app.setShowSkinsPanel();
             });
+       $(document).on(`click`, `#buy-boost`, event => {
+            event.preventDefault();
+            buyBoost($("#s-boost").val());
+        });
+        $(document).on(`click`, `#use-boost`, event => {
+            event.preventDefault();
+            useBoost($("#s-boost").val());
+        });				
 			$(document).on("click", "#onlineStatus", event => {
 				setTimeout(()=>{Settings.switchOnlineStatus()},500);
-			});			
+			});	
+        $(document).on(`click`, `#potions`, event => {
+            event.preventDefault();
+            var id = event.target.parentNode.id;
+            if(id && LM.user.potionsStatus.hasOwnProperty(id)) {
+              var potion = LM.user.potionsStatus[id];
+              if(potion.status==1){
+                window.brewPotion(potion.slot);
+              } else if (potion.status==3||(potion.status==2&&potion.expires-Date.now()<0)){
+                window.openPotion(potion.slot);
+              }
+            }
+        });
+        $(document).on(`click`, `#player-skins`, event => {
+            event.preventDefault();
+            window.changeSkin(event.target.getAttribute("alt"))
+        });
+        $(document).on(`click`, `#copy-accID`, event => {
+            event.preventDefault();
+            const input = $(`<input>`);
+            $(`body`).append(input);
+            input.val($('.user-profile-id').text()).select();
+            toastr.info("Copying ID to clipboard");
+            try {
+               document.execCommand(`copy`);
+            } catch (error) {
+               console.log("can't copy..")
+            }
+            input.remove();
+
+        });			
             $(document).on("change", "#region", function() {
                 app.region = this.value;
             });
