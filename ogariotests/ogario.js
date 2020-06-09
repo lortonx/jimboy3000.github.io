@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.844
+// v1.845
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11761,13 +11761,7 @@ Game name     : ${i.displayName}<br/>
                     }
                     if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
                         this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache , LM.SSCellsCache); //Sonia
-                    }
-					else if (defaultmapsettings.bubbleInd) {
-						this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
-					}
-					if (defaultmapsettings.bubbleCursorTracker) {
-						this.drawBCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
-					}					
+                    }					
                     if (defaultmapsettings.cursorTracking && !gameOptionSettings.bubbleCursorTracker) {
 						if (!window.multiboxFollowMouse){
 							if (!window.multiboxPlayerEnabled){
@@ -11783,9 +11777,6 @@ Game name     : ${i.displayName}<br/>
 						}
 						
                     }
-                    if (defaultmapsettings.FBTracking && LM.arrowFB[0].visible) {
-                        this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
-                    }
                 }
 
                 this.drawGhostCells();
@@ -11793,7 +11784,18 @@ Game name     : ${i.displayName}<br/>
                 for (var i = 0; i < LM.removedCells.length; i++) {
                     LM.removedCells[i].draw(this.ctx, true);
                 }
-
+				
+				if (LM.play || LM.playerCellsMulti.length) {
+					if (defaultmapsettings.bubbleInd) {
+						this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
+					}		
+					if (defaultmapsettings.bubbleCursorTracker) {
+						this.drawBCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+					}	
+                    if (defaultmapsettings.FBTracking && LM.arrowFB[0].visible) {
+                        this.drawFBTracking(this.ctx, LM.playerCells, LM.arrowFB[0].x, LM.arrowFB[0].y);
+                    }					
+				}
                 //lylko
                 defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
 
