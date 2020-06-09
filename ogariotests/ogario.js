@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.870
+// v1.871
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7157,7 +7157,7 @@ function thelegendmodproject() {
         },
         displayChatMessage(time, caseof, plId, msg) {
 			var mcolor = ""
-			mcolor = "blue";
+			//mcolor = "blue";
             if (0 != msg.length) {
                 //console.log(msg);
                 var a = msg.split(': ', 1).toString();
