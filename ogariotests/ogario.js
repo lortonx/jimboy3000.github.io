@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.853
+// v1.854
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -867,6 +867,7 @@ var displayText = {
         restoreSettings: 'Przywróc ustawienia domyślne',
         animationGroup: 'Animacja',
         graphics: 'Graphics',
+		reverseTrick: 'Reverse trick',
 		onlineStatus: 'Show me online(Facebook)',
         zoomGroup: 'Zoom',
 		boardGroup: 'Boards',
@@ -1296,6 +1297,7 @@ var displayText = {
         restoreSettings: 'Restore default settings',
         animationGroup: 'Animation',
         graphics: 'Graphics',
+		reverseTrick: 'Reverse trick',
 		onlineStatus: 'Show me online(Facebook)',
         zoomGroup: 'Zoom',
 		boardGroup: 'Boards',
@@ -2520,6 +2522,7 @@ var defaultmapsettings = {
     showSkinsPanel: true,
     animation: 120,
     macroFeeding: 80,
+	reverseTrick:false,
 	//hideSizes: 0,
 	dominationRate: 1.33,
     profileNumber: 15,
@@ -4630,7 +4633,7 @@ function thelegendmodproject() {
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
-                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
+                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo",."reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
@@ -11358,6 +11361,9 @@ Game name     : ${i.displayName}<br/>
             if (window.autoPlay && legendmod.play) {
                 calcTarget();
             }
+        if(defaultmapsettings.reverseTrick) reverseTrick.check();
+        //if(defaultmapsettings.clickTargeting) clickTargeting.check();
+			
             //if (window.historystate && legendmod.play) {historystate();}
         },
         color2Hex(number) {
@@ -11827,7 +11833,16 @@ Game name     : ${i.displayName}<br/>
                 //lylko
                 defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
 
-
+				LM.indexedCells[reverseTrick.biggerEnemy] && this.drawRing(this.ctx,
+					LM.indexedCells[reverseTrick.biggerEnemy].x,
+					LM.indexedCells[reverseTrick.biggerEnemy].y,
+					LM.indexedCells[reverseTrick.biggerEnemy].size,
+				0.75,'red');
+				LM.indexedCells[reverseTrick.smallerEnemy] && this.drawRing(this.ctx,
+					LM.indexedCells[reverseTrick.smallerEnemy].x,
+					LM.indexedCells[reverseTrick.smallerEnemy].y,
+					LM.indexedCells[reverseTrick.smallerEnemy].size,
+				0.75,'blue');
                 LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
                     LM.indexedCells[LM.selected].x,
                     LM.indexedCells[LM.selected].y,
@@ -13889,6 +13904,88 @@ function appendLMhiFbPs() {
         MSGCOMMANDS = $(".message-text").text();
         MSGNICK = $(".message-nick").last().text().replace(": ", "");       
     });
+}
+var reverseTrick = {
+  biggerEnemy: null,
+  biggerEnemyAcc: null,
+  smallerEnemy: null,
+  smallerEnemyAcc: null,
+  smallerSize: null,
+  biggerSize: null,
+  smallerSumm: 0,
+  biggerSumm: 0,
+  biggerCells: 0,
+  smallerCells: 0,
+  getAngle(x1,y1,x2,y2,dis) {
+         var angl = Math.round((Math.acos((y2 - y1) / dis) / Math.PI) * 180);
+          //if target on left side
+      
+         if ((x2 - x1 > 0 && y2 - y1 < 0) || (x2 - x1 > 0 && y2 - y1 > 0)) {
+            angl = 180 + (180 - angl);
+         }
+    return angl
+  },
+  getDistance(x1,y1,x2,y2){
+          return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+  },
+  pointInCircle: function(x, y, type) {
+        for (length = 0; length < LM.cells.length; length++) {
+            var distancesquared = (x - LM.cells[length].x) * (x - LM.cells[length].x) + (y - LM.cells[length].y) * (y - LM.cells[length].y);
+
+            if(type ==1 && distancesquared <= LM.cells[length].size * LM.cells[length].size){
+                reverseTrick.biggerEnemy = LM.cells[length].id;
+                reverseTrick.biggerEnemyAcc = LM.cells[length].accID;
+                reverseTrick.biggerSize = ~~(LM.cells[length].size*LM.cells[length].size/100);
+            } else if(type ==3 && distancesquared <= LM.cells[length].size * LM.cells[length].size) {
+                reverseTrick.smallerEnemy = LM.cells[length].id;
+                reverseTrick.smallerEnemyAcc = LM.cells[length].accID;
+                reverseTrick.smallerSize = ~~(LM.cells[length].size*LM.cells[length].size/100);
+            }
+        }
+  },
+  check(){
+      if(this.biggerEnemy && this.smallerEnemy && LM.playerCellIDs.length){
+        if(!LM.indexedCells.hasOwnProperty(this.biggerEnemy)) {
+          this.biggerEnemy= null;
+          this.biggerEnemyAcc= null;
+          this.biggerSize= null;
+          return
+        }
+        if(!LM.indexedCells.hasOwnProperty(this.smallerEnemy)) {
+          this.smallerEnemy= null;
+          this.smallerEnemyAcc= null;
+          this.smallerSize= null;
+          return
+        }
+
+            var index = LM.selectBiggestCell ? LM.playerCells.length - 0x1 : 0x0;
+            var p = LM.playerCells[index];
+            if(LM.playerCells[index] == undefined) return;
+        
+            var small = LM.indexedCells[this.smallerEnemy],
+                distToP = this.getDistance(p.targetX,p.targetY,small.targetX,small.targetY);
+            //ctx.arc(players[current].x, players[current].y, players[current].size + 760, 0, this.pi2, false);
+            this.smallerSize = ~~(LM.indexedCells[this.smallerEnemy].size * LM.indexedCells[this.smallerEnemy].size / 100);
+            
+            if(small.size+760+p.size<distToP) return
+        
+            var xc = LM.playerCells[index].targetX//.x
+            var yc = LM.playerCells[index].targetY//.y
+            
+            /*var x = LM.indexedCells[LM.selected].targetX//.x
+            var y = LM.indexedCells[LM.selected].targetY//.y
+            
+            var a = xc - x
+            var b = yc - y
+            var distance = Math.sqrt( a*a + b*b ) - (LM.indexedCells[LM.selected].size+LM.playerCells[index].size)
+
+            var ang = Math.atan2(y - yc, x - xc);
+            LM.cursorX= xc +(Math.cos(ang)*distance)
+            LM.cursorY= yc +(Math.sin(ang)*distance)
+            LM.sendPosition()*/
+            console.log(reverseTrick)
+      }
+  }
 }
 /*
 var snezSocketdata;
