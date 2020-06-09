@@ -10833,8 +10833,10 @@ Quests completed      : ${i.actionCounters.questsCompleted}<br/>
 Skins created : ${i.actionCounters.skinsCreated}<br/>
 Country     : ${i.latestCountryCode}<br/>
 Game name     : ${i.displayName}<br/>
-<div id="UserProfileUUID">UID: <input id="UserProfileUUID1" class="user-name" style="display:inline-block; width: 180px; font-size: 9px;">${i.userId}</div>
-//Game Id   : ${i.userId}
+<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>
+<div id="UserProfileUUID">UID: <input id="UserProfileUUID1" class="user-name" style="display:inline-block; width: 180px; font-size: 9px;"></div><br/>
+<div id="UserProfileUID">Social ID: <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>
+<div id="TimesUsedPanel" class="user-name" style="display:inline-block;">Times Used: <div id="TimesUsed" style="display:inline-block"></div></div>
       `)
     },
     agarExp(q) {
