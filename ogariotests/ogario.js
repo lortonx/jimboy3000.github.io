@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.847
+// v1.848
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12338,7 +12338,8 @@ Game name     : ${i.displayName}<br/>
         this.drawBubbleCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor);
         this.drawBubbleCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor);
         this.drawBubbleCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
-        if (reset) {
+        console.log('drawBOppRings')
+		if (reset) {
             biggerSte = [];
             biggetCell = [];
             smallerCell = [];
