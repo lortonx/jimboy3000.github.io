@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.848
+// v1.849
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11309,6 +11309,7 @@ Game name     : ${i.displayName}<br/>
                     console.log('FB friend cell in view', isFriend)
                 }
             }
+			
             eatEventsLength = view.readUInt16LE(offset);
             offset += 2;
             for (length = 0; length < eatEventsLength; length++) {
@@ -11465,33 +11466,47 @@ Game name     : ${i.displayName}<br/>
         },
         cacheCells(x, y, size, mass) {
             return mass >= defaultmapsettings.dominationRate * 4 ? void this.biggerSTEDCellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             }) : mass >= defaultmapsettings.dominationRate * 2 ? void this.biggerSTECellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             }) : mass >= defaultmapsettings.dominationRate ? void this.biggerCellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             }) : mass < defaultmapsettings.dominationRate && mass > defaultmapsettings.dominationRate / 2 ? void this.SSCellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             })  : mass > defaultmapsettings.dominationRate / 4 ? void this.smallerCellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             }) : mass > defaultmapsettings.dominationRate / 8 ? void this.STECellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             }) : void this.STEDCellsCache.push({
-                'x': x,
-                'y': y,
-                'size': size
+                x: x,
+                y: y,
+				targetX: targetX,
+                targetY: targetY,
+                size: size
             });
         },
         setCellOppColor(isPlayer, mass) {
@@ -12338,7 +12353,6 @@ Game name     : ${i.displayName}<br/>
         this.drawBubbleCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor);
         this.drawBubbleCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor);
         this.drawBubbleCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
-        console.log('drawBOppRings')
 		if (reset) {
             biggerSte = [];
             biggetCell = [];
