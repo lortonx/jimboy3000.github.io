@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.866
+// v1.855
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -179,12 +179,12 @@ function autoRandomPotionDigger() {
     setTimeout(function() {
 		window.autoRandomPotion++;
 		//if (window.autoRandomPotion==7) window.autoRandomPotion=1
-		if (window.autoRandomPotion==1) openPotion(1)
-		if (window.autoRandomPotion==2) openPotion(2)	
-		if (window.autoRandomPotion==3) openPotion(3)	
-		if (window.autoRandomPotion==4) brewPotion(1)
-		if (window.autoRandomPotion==5) brewPotion(2)
-		if (window.autoRandomPotion==6) brewPotion(3)	
+		if (window.autoRandomPotion==1) PotionDrinker(1)
+		if (window.autoRandomPotion==2) PotionDrinker(2)	
+		if (window.autoRandomPotion==3) PotionDrinker(3)	
+		if (window.autoRandomPotion==4) openPotion(1)
+		if (window.autoRandomPotion==5) openPotion(2)
+		if (window.autoRandomPotion==6) openPotion(3)	
 		if (window.autoRandomPotion<=6){
 			autoRandomPotionDigger()
 		}
@@ -208,7 +208,7 @@ window.openPotion = function(slot) {
     window.core.proxyMobileData(bytes);
 }
 
-window.brewPotion= function(slot) {
+function brewPotion(slot) {
 	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
     window.core.proxyMobileData(bytes); //PotionDrinkerRare(2) rare
 }
@@ -940,8 +940,6 @@ var displayText = {
         showGrid: 'Siatka',
         showBgSectors: 'Sektory w tle',
         showMapBorders: 'Granice mapy',
-		rainbowBorders: 'Rainbow borders',
-		newRainbowBorders: 'Bold rainbow borders (less FPS)',
         showGhostCells: 'Duchy kulek (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
         showPartyBots: 'Party bots',
@@ -1372,8 +1370,6 @@ var displayText = {
         showGrid: 'Show grid',
         showBgSectors: 'Show background sectors',
         showMapBorders: 'Show map borders',
-		rainbowBorders: 'Rainbow borders',
-		newRainbowBorders: 'Bold rainbow borders (less FPS)',
         showGhostCells: 'Ghost cells (fps drop)',
         showGhostCellsInfo: 'Ghost cells info (confusing)',
         showPartyBots: 'Party bots',
@@ -2457,8 +2453,6 @@ var defaultmapsettings = {
     showGrid: true,
     showBgSectors: false,
     showMapBorders: true,
-	rainbowBorders: false,
-	newRainbowBorders: false,
     showGhostCells: false,
     showGhostCellsInfo: false,
     showPartyBots: false,
@@ -4639,7 +4633,7 @@ function thelegendmodproject() {
 				this.addOptions(["noSkins","customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
                 this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
                 this.addOptions(["noColors","myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", "animatedRainbowColor"], "transparencyGroup");
-                this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow", "rainbowBorders", "newRainbowBorders"], "gridGroup");
+                this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
                 this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo","reverseTrick", "showPartyBots"], "helpersGroup"); //Sonia2
@@ -11765,15 +11759,9 @@ Game name     : ${i.displayName}<br/>
                 if (LM.gameMode === ':battleroyale') {
                     this.drawBattleArea(this.ctx);
                 }
-				var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-				if (defaultmapsettings.newRainbowBorders) {//Yahnych				
-					this.drawRainbowBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
-				} 
-				else if (defaultmapsettings.rainbowBorders){
-					this.drawOldRainbow(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
-				}					
-                if (defaultmapsettings.showMapBorders){
-					this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+                if (defaultmapsettings.showMapBorders) {
+                    var tempborderwidthradius = defaultSettings.bordersWidth / 2;
+                    this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }
                 this.drawCommander();
                 this.drawCommander2();
@@ -12176,15 +12164,15 @@ Game name     : ${i.displayName}<br/>
                     e && (t.strokeStyle = n, t.lineWidth = r, t.beginPath(), t.moveTo(i, s), t.lineTo(o, s), t.lineTo(o, a), t.lineTo(i, a), t.closePath(), t.stroke());
                 },
 				*/
-            drawMapBorders(ctx, mapOffset, minX, maxY, maxX, minY, stroke, width) {
-                if (mapOffset) {
-                    ctx.strokeStyle = stroke;
-                    ctx.lineWidth = width;
+            drawMapBorders(ctx, macros, text, x1, x0, y0, radius, canvas) {
+                if (macros) {
+                    ctx.strokeStyle = radius;
+                    ctx.lineWidth = canvas;
                     ctx.beginPath();
-                    ctx.moveTo(minX, maxY);
-                    ctx.lineTo(maxX, maxY);
-                    ctx.lineTo(maxX, minY);
-                    ctx.lineTo(minX, minY);
+                    ctx.moveTo(text, x1);
+                    ctx.lineTo(x0, x1);
+                    ctx.lineTo(x0, y0);
+                    ctx.lineTo(text, y0);
                     if (defaultmapsettings.borderGlow) {
                         ctx.shadowBlur = defaultSettings.borderGlowSize;
                         ctx.shadowColor = defaultSettings.borderGlowColor;
@@ -12200,111 +12188,6 @@ Game name     : ${i.displayName}<br/>
                     "skrrt";
                 }
             },
-    getGrad(ctx, x1,y1,x2,y2) {
-      let grad=ctx.createLinearGradient(x1, y1, x2, y2);//Yahnych
-      grad.addColorStop(0, "black");
-      grad.addColorStop(0.25, "rgba(255,255,255,0.8)");
-      grad.addColorStop(0.4, "rgba(255,255,255,0.5)");
-      grad.addColorStop(0.5, "rgba(255,255,255,0)");
-      grad.addColorStop(0.6, "rgba(255,255,255,0.5)");
-      grad.addColorStop(0.75, "rgba(255,255,255,0.8)");
-      grad.addColorStop(1, "black");
-      return grad
-    },
-    gradLine(ctx, fillStyle, x1,y1, x2,y2, x3,y3, x4,y4) {
-        ctx.fillStyle = fillStyle;
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.lineTo(x3, y3);
-        ctx.lineTo(x4, y4);
-
-        ctx.closePath();
-        ctx.fill();
-    },
-    drawOldRainbow(ctx, mapOffset, minX, minY, maxX, maxY, stroke, width) {//Yahnych
-        if (!mapOffset) {
-            return;
-        }
-      ctx.save();
-      let m = (width/2)*1.1,
-          m2= width/2,
-          time = LM.time,
-          saturate = "100%", 
-          lightness = "50%";
-      
-      var g1 = ctx.createLinearGradient(minX, 0, maxX, 0);
-      g1.addColorStop(0,    `hsl(${~~((time)/30+0)%360},${saturate},${lightness})`);
-      g1.addColorStop(0.33, `hsl(${~~((time)/30+60)%360},${saturate},${lightness})`);
-      g1.addColorStop(0.67, `hsl(${~~((time)/30+120)%360},${saturate},${lightness})`);
-      g1.addColorStop(1, `hsl(${~~((time)/30+180)%360},${saturate},${lightness})`);
-      var g2 = ctx.createLinearGradient(minX, 0, maxX, 0);
-      g2.addColorStop(0, `hsl(${~~((time)/30+180)%360},${saturate},${lightness})`);
-      g2.addColorStop(0.33, `hsl(${~~((time)/30+240)%360},${saturate},${lightness})`);
-      g2.addColorStop(0.67, `hsl(${~~((time)/30+300)%360},${saturate},${lightness})`);
-      g2.addColorStop(1,    `hsl(${~~((time)/30+0)%360},${saturate},${lightness})`);
-      
-      this.gradLine(ctx, g1, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
-      ctx.rotate(Math.PI / 2);
-      this.gradLine(ctx, g2, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
-      ctx.rotate(Math.PI / 2);
-      this.gradLine(ctx, g1, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
-      ctx.rotate(Math.PI / 2);
-      this.gradLine(ctx, g2, minX+m2-1,minY+m2, maxX-m2+1,minY+m2, maxX+m2+1,minY-m2, minX-m2-1,minY-m2)//Yahnych
-      ctx.rotate(Math.PI / 2);
-      
-      let top=this.getGrad(ctx, 0, minY-m, 0, minY+m);//Yahnych
-      
-      ctx.globalCompositeOperation = 'destination-out';
-      this.gradLine(ctx, top, minX+m-1,minY+m, maxX-m+1,minY+m, maxX+m+1,minY-m, minX-m-1,minY-m)//Yahnych
-      ctx.rotate(Math.PI / 2);
-      this.gradLine(ctx, top, minX+m-1,minY+m, maxX-m+1,minY+m, maxX+m+1,minY-m, minX-m-1,minY-m)
-      ctx.rotate(Math.PI / 2);
-      this.gradLine(ctx, top, minX+m-1,minY+m, maxX-m+1,minY+m, maxX+m+1,minY-m, minX-m-1,minY-m)
-      ctx.rotate(Math.PI / 2);
-      this.gradLine(ctx, top, minX+m-1,minY+m, maxX-m+1,minY+m, maxX+m+1,minY-m, minX-m-1,minY-m)
-      ctx.rotate(Math.PI / 2);
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.restore();
-    },
-    drawRainbowBorders(ctx, mapOffset, minX, minY, maxX, maxY, stroke, width) {
-        if (!mapOffset) {
-            return;
-        }
-      ctx.save();
-
-      ctx.filter = `blur(${~~(width/2*this.scale)}px)`;
-      let m = (width/2)*1.1,
-          time = LM.time,
-          saturate = "100%", 
-          lightness = "50%";
-      
-      var g1 = ctx.createLinearGradient(minX, 0, maxX, 0);
-      g1.addColorStop(0,    `hsl(${~~((time)/30+0)%360},${saturate},${lightness})`);
-      g1.addColorStop(0.33, `hsl(${~~((time)/30+60)%360},${saturate},${lightness})`);
-      g1.addColorStop(0.67, `hsl(${~~((time)/30+120)%360},${saturate},${lightness})`);
-      g1.addColorStop(1, `hsl(${~~((time)/30+180)%360},${saturate},${lightness})`);
-      var g2 = ctx.createLinearGradient(minX, 0, maxX, 0);
-      g2.addColorStop(0, `hsl(${~~((time)/30+180)%360},${saturate},${lightness})`);
-      g2.addColorStop(0.33, `hsl(${~~((time)/30+240)%360},${saturate},${lightness})`);
-      g2.addColorStop(0.67, `hsl(${~~((time)/30+300)%360},${saturate},${lightness})`);
-      g2.addColorStop(1,    `hsl(${~~((time)/30+0)%360},${saturate},${lightness})`);
-      
-      ctx.fillStyle = g1;
-      ctx.fillRect(minX-m, minY-m, maxX*2+m, width);//Yahnych
-      ctx.rotate(Math.PI / 2);
-      ctx.fillStyle = g2;
-      ctx.fillRect(minX-m, minY-m, maxX*2+m, width);
-      ctx.rotate(Math.PI / 2);
-      ctx.fillStyle = g1;
-      ctx.fillRect(minX-m, minY-m, maxX*2+m, width);
-      ctx.rotate(Math.PI / 2);
-      ctx.fillStyle = g2;
-      ctx.fillRect(minX-m, minY-m, maxX*2+m, width);
-      ctx.filter = 'none';
-      ctx.restore();
-
-    },			
             drawVirusesRange(t, e, i) {
                 if (e.length) {
                     t.beginPath();
@@ -12608,7 +12491,7 @@ Game name     : ${i.displayName}<br/>
          if ((t.x - t.targetX > 0 && t.y - t.targetY < 0) || (t.x  - t.targetX > 0 && t.y - t.targetY > 0)) {
             angl = 180 + (180 - angl);
          }
-		//console.log(t.x, t.targetX)
+		console.log(t.x, t.targetX)
 		
          // Store the current context state (i.e. rotation, translation etc..)
          ctx.save()
