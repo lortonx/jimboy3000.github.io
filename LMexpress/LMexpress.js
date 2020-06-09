@@ -6327,7 +6327,7 @@ function doMainTranslation(targetNode,bb){
                     text = text.text[0];
                     trText.textContent = '[' + text + ']';
 					GrText = '[' + text + ']';
-					console.log(GrText)
+					//console.log(GrText)
                 }
             }
         }
