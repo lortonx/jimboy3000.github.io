@@ -1,7 +1,7 @@
 // Source script
-// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
+// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.841
+// v1.842
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -956,6 +956,8 @@ var displayText = {
         textStroke: 'Obwódki nazw i masy',
         namesStroke: 'Obwódki nazw',
         massStroke: 'Obwódki masy',
+		bubbleCursorTracker: 'Bubble tracker',
+		bubbleInd: 'Bubble indicators',
         cursorTracking: 'Śledzenie kursora',
         teammatesInd: 'Wskaźniki graczy teamu',
         FBTracking: 'Facebook bubble tracker',		
@@ -1385,6 +1387,8 @@ var displayText = {
         textStroke: 'Names and mass stroke',
         namesStroke: 'Names stroke',
         massStroke: 'Mass stroke',
+		bubbleCursorTracker: 'Bubble tracker',
+		bubbleInd: 'Bubble indicators',
         cursorTracking: 'Cursor tracking',
         teammatesInd: 'Teammates indicators',
         FBTracking: 'Facebook bubble tracker',	
@@ -2466,6 +2470,8 @@ var defaultmapsettings = {
     textStroke: false,
     namesStroke: true,
     massStroke: true,
+	bubbleCursorTracker: false,
+	bubbleInd: false,
     cursorTracking: false,
     FBTracking: true,
     //ingameSpectator2: false,
@@ -4624,7 +4630,7 @@ function thelegendmodproject() {
                 this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
                 this.addOptions(["disableChat", "chatSounds", "chatEmoticons", "showChatImages", "showChatVideos", "showChatBox", "showChatTranslation", "hidecountry", "universalChat"], "chatGroup");
                 this.addOptions(["rotateMap", "showMiniMap", "showMiniMapGrid", "showMiniMapGuides", "showExtraMiniMapGuides", "showMiniMapGhostCells", "oneColoredTeammates"], "miniMapGroup");
-                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
+                this.addOptions(["oppColors", "oppRings", "virColors", "splitRange", "qdsplitRange", "sdsplitRange", "virusesRange", "cursorTracking", "FBTracking", "bubbleInd", "bubbleCursorTracker", "onlineStatus", "teammatesInd", "showGhostCells", "showGhostCellsInfo", "showPartyBots"], "helpersGroup"); //Sonia2
                 this.addOptions(["mouseSplit", "mouseFeed", "mouseInvert", "mouseWheelClick"], "mouseGroup");
                 //this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "normalLb", "fpsAtTop", "tweenMaxEffect"], "hudGroup"),
                 this.addOptions(["showTop5", "showTargeting", "showLbData", "centeredLb", "fpsAtTop", "tweenMaxEffect", "top5skins"], "hudGroup");
@@ -10051,6 +10057,7 @@ function thelegendmodproject() {
                 case 161:
                     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
                     window.testobjectsOpcode161 = data;
+					this.arrowFB[0].visible = false;
                     break;
                 case 128:
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' opcode: ', data.getUint8(0));
@@ -11748,9 +11755,15 @@ Game name     : ${i.displayName}<br/>
                         this.drawSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia
                         this.drawDoubleSplitRange(this.ctx, LM.biggerSTEDCellsCache, LM.playerCellsMulti, LM.selectBiggestCell); //Sonia						
                     }
-                    if (defaultmapsettings.oppRings) {
+                    if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
                         this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache); //Sonia
                     }
+					else if (defaultmapsettings.bubbleInd) {
+						this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
+					}
+					if (defaultmapsettings.bubbleCursorTracker) {
+						this.drawBCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
+					}					
                     if (defaultmapsettings.cursorTracking) {
 						if (!window.multiboxFollowMouse){
 							if (!window.multiboxPlayerEnabled){
@@ -12308,6 +12321,26 @@ Game name     : ${i.displayName}<br/>
                     biggestCell = [];
                 }
             },
+    drawBOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
+        const width = 14 + 2 / scale;
+        const alpha = 12 + 1 / scale;
+        this.drawBubbleCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
+        this.drawBubbleCircles(ctx, biggerSte, width, alpha, 0.75, defaultSettings.enemyBSTEColor);
+        this.drawBubbleCircles(ctx, biggetCell, width, alpha, 0.75, defaultSettings.enemyBColor);
+        this.drawBubbleCircles(ctx, ss, width, alpha, 0.75, defaultSettings.splitRangeColor);
+        this.drawBubbleCircles(ctx, smallerCell, width, alpha, 0.75, defaultSettings.enemySColor);
+        this.drawBubbleCircles(ctx, smallSte, width, alpha, 0.75, defaultSettings.enemySSTEColor);
+        this.drawBubbleCircles(ctx, ap, width, alpha, 0.75, defaultSettings.enemySSTEDColor); //Sonia2
+        if (reset) {
+            biggerSte = [];
+            biggetCell = [];
+            smallerCell = [];
+            smallSte = [];
+            ip = [];
+            ap = [];
+            ss = [];
+        }
+    },			
             //Sonia (entire function update)
             //drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
             drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, reset) {
@@ -12327,9 +12360,63 @@ Game name     : ${i.displayName}<br/>
                     smallSte = [];
                     ip = [];
                     ap = [];
-                    //ss = [];
+                    ss = [];
                 }
             },
+    drawBCursorTracking(ctx, players, cursorX, cursorY) {//Yahnych
+        for (let length = 0; length < players.length; length++) {
+            let t = LM.playerCells[length];
+            if (LM.playerCells[length].angle == undefined) {
+                LM.playerCells[length].angle = 0
+            }
+            let r = t.size/3;
+            //distance to target
+            var dis = Math.sqrt((cursorX - t.x) * (cursorX - t.x) + (cursorY - t.y) * (cursorY - t.y));
+            //angle in deg
+            var angl = Math.round((Math.acos((t.y - cursorY) / dis) / Math.PI) * 180);
+            //if target on left side
+        
+            if ((t.x - cursorX > 0 && t.y - cursorY < 0) || (t.x  - cursorX > 0 && t.y - cursorY > 0)) {
+              angl = 180 + (180 - angl);
+            }
+            var d = 4;
+            if (angl - t.angle > d && angl - t.angle < 180 -d || angl - t.angle < 180 * (-1) + d) {
+                t.angle += d/2;
+                if(t.angle > 360) {
+                   t.angle = t.angle - 360
+                }
+            } else if(angl - t.angle < d * (-1) && angl - t.angle > 180 * (-1) + d|| angl - t.angle > 180 + d) {
+                t.angle -= d/2;
+                if(t.angle < 0) {
+                   t.angle = 360 - t.angle
+                }
+           }
+
+           ctx.save()
+
+          //Convert degrees to radian 
+          var rad = t.angle * Math.PI / 180;
+
+          ctx.translate(t.x, t.y);
+
+          ctx.rotate(rad);
+
+        //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+        let grad=ctx.createLinearGradient(0, -t.size, 0, r*2-t.size);//Yahnych
+        grad.addColorStop(0, defaultSettings.cursorTrackingColor);
+        grad.addColorStop(1, defaultSettings.cursorTrackingColor+"00");
+
+          
+          ctx.fillStyle = grad;
+          ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
+          ctx.beginPath();
+          ctx.arc(0, 0-(t.size-r), r, 0, Math.PI * 2, false)
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        // Restore canvas state as saved from above
+        ctx.restore();
+        }
+    },			
             drawCursorTracking(ctx, players, cursorX, cursorY) {
                 ctx.lineWidth = 4,
                     ctx.globalAlpha = defaultSettings.darkTheme ? 0.75 : 0.35;
@@ -12351,6 +12438,50 @@ Game name     : ${i.displayName}<br/>
                 }
                 ctx.globalAlpha = 1;
             },
+    drawBubbleCircles(ctx, players, scale, width, alpha, stroke) {//Yahnych
+        for (let length = 0; length < players.length; length++) {
+          let t = players[length];
+          let r = t.size/3;
+                            //distance to target
+          var dis = Math.sqrt((t.targetX - t.x) * (t.targetX - t.x) + (t.targetY - t.y) * (t.targetY - t.y));
+          //angle 
+          var angl = Math.round((Math.acos((t.y - t.targetY) / dis) / Math.PI) * 180);
+          //if target on left side
+      
+         if ((t.x - t.targetX > 0 && t.y - t.targetY < 0) || (t.x  - t.targetX > 0 && t.y - t.targetY > 0)) {
+            angl = 180 + (180 - angl);
+         }
+
+         // Store the current context state (i.e. rotation, translation etc..)
+         ctx.save()
+
+         //Convert degrees to radian 
+         var rad = angl * Math.PI / 180;
+
+         //Set the origin to the center of the image
+         ctx.translate(t.x, t.y);
+
+        //Rotate the canvas around the origin
+        ctx.rotate(rad);
+
+        //draw the image    
+        //ctx.drawImage(c, t.size * (-1),t.size * (-1),t.size*2,t.size*2);
+        let grad=ctx.createLinearGradient(0, -t.size, 0, r*2-t.size);//Yahnych
+        grad.addColorStop(0, stroke);
+        grad.addColorStop(1, stroke+"00");
+
+          
+          ctx.fillStyle = grad;
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.arc(0, 0-(t.size-r), r, 0, Math.PI * 2, false)
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        // Restore canvas state as saved from above
+        ctx.restore();
+        }
+      
+    },			
             //Sonia (added entire function)
             draw2Circles(ctx, players, scale, width, alpha, color) {
                 ctx.lineWidth = width;
