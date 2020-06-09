@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.852
+// v1.853
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11799,7 +11799,20 @@ Game name     : ${i.displayName}<br/>
                 for (var i = 0; i < LM.removedCells.length; i++) {
                     LM.removedCells[i].draw(this.ctx, true);
                 }
-				
+                for (i = 0; i < LM.cells.length; i++) {
+
+                    if (defaultmapsettings.jellyPhisycs) {
+                        LM.cells[i].updateNumPoints();
+                        LM.cells[i].movePoints();
+                    }
+
+                    LM.cells[i].draw(this.ctx);
+
+                    if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
+                        LM.selected = LM.cells[i].id
+                        //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
+                    }
+                }				
 				if (LM.play || LM.playerCellsMulti.length) {
 					if (defaultmapsettings.bubbleInd) {
 						this.drawBOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache, LM.SSCellsCache);
@@ -11821,20 +11834,7 @@ Game name     : ${i.displayName}<br/>
                     LM.indexedCells[LM.selected].size,
                     0.75, '#ffffff')
 
-                for (i = 0; i < LM.cells.length; i++) {
 
-                    if (defaultmapsettings.jellyPhisycs) {
-                        LM.cells[i].updateNumPoints();
-                        LM.cells[i].movePoints();
-                    }
-
-                    LM.cells[i].draw(this.ctx);
-
-                    if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
-                        LM.selected = LM.cells[i].id
-                        //this.drawRing(this.ctx,LM.cells[i].x,LM.cells[i].y,LM.cells[i].size,0.75,'#ffffff')
-                    }
-                }
                 if (drawRender.RMB && LM.indexedCells[LM.selected] && LM.playerCellIDs.length) {
                     var index = LM.selectBiggestCell ? LM.playerCells.length - 1 : 0;
                     //ctx.arc(playerCells[index].x, playerCells[index].y, playerCells[index].size + 760, 0, this.pi2, false);
@@ -12365,7 +12365,7 @@ Game name     : ${i.displayName}<br/>
     },			
             //Sonia (entire function update)
             //drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
-            drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap,ss, reset) {
+            drawOppRings(ctx, scale, ip, biggerSte, biggetCell, smallerCell, smallSte, ap, ss, reset) {
                 var width = 14 + 2 / scale;
                 var alpha = 12 + 1 / scale;
                 this.drawCircles(ctx, ip, width, alpha, 0.75, defaultSettings.enemyBSTEDColor); //Sonia2
