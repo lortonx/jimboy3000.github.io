@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.838
+// v1.839
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4775,7 +4775,7 @@ function thelegendmodproject() {
             event.preventDefault();
             window.changeSkin(event.target.getAttribute("alt"))
         });
-        $(document).on(`click`, `#copy-accID`, event => {
+        /*$(document).on(`click`, `#copy-accID`, event => {
             event.preventDefault();
             const input = $(`<input>`);
             $(`body`).append(input);
@@ -4788,7 +4788,7 @@ function thelegendmodproject() {
             }
             input.remove();
 
-        });			
+        });	*/	
             $(document).on("change", "#region", function() {
                 app.region = this.value;
             });
@@ -10833,12 +10833,9 @@ Quests completed      : ${i.actionCounters.questsCompleted}<br/>
 Skins created : ${i.actionCounters.skinsCreated}<br/>
 Country     : ${i.latestCountryCode}<br/>
 Game name     : ${i.displayName}<br/>
-<div id="UserProfileName">Name: <div id="UserProfileName1" class="user-name" style="display:inline-block" >Guest</div></div>
-<div id="UserProfileUUID">UID: <input id="UserProfileUUID1" class="user-name" style="display:inline-block; width: 180px; font-size: 9px;"></div><br/>
-<div id="UserProfileUID">Social ID: <div id="UserProfileUID1" class="user-name" style="display:inline-block" ></div></div>
-<div id="TimesUsedPanel" class="user-name" style="display:inline-block;">Times Used: <div id="TimesUsed" style="display:inline-block"></div></div>
       `)
     },
+	updateUserInfo
     agarExp(q) {
       var s = {};
       var i = 0, exp = 0;
