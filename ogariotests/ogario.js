@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.856
+// v1.857
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -179,9 +179,9 @@ function autoRandomPotionDigger() {
     setTimeout(function() {
 		window.autoRandomPotion++;
 		//if (window.autoRandomPotion==7) window.autoRandomPotion=1
-		if (window.autoRandomPotion==1) PotionDrinker(1)
-		if (window.autoRandomPotion==2) PotionDrinker(2)	
-		if (window.autoRandomPotion==3) PotionDrinker(3)	
+		if (window.autoRandomPotion==1) brewPotion(1)
+		if (window.autoRandomPotion==2) brewPotion(2)	
+		if (window.autoRandomPotion==3) brewPotion(3)	
 		if (window.autoRandomPotion==4) openPotion(1)
 		if (window.autoRandomPotion==5) openPotion(2)
 		if (window.autoRandomPotion==6) openPotion(3)	
@@ -189,6 +189,10 @@ function autoRandomPotionDigger() {
 			autoRandomPotionDigger()
 		}
     }, 5000); 	
+}
+function PotionDrinker(slot) {
+    var bytes = [8, 1, 18, 7, 8, 124, 226, 7, 2, 8, slot];
+    window.core.proxyMobileData(bytes); //PotionDrinker(1) 1 2 3 common rare mystical
 }
 
 function userLeaguesInfoRequest(slot) {
