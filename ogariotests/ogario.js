@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.858
+// v1.859
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -211,7 +211,7 @@ window.openPotion = function(slot) {
     window.core.proxyMobileData(bytes);
 }
 
-window.brewPotion(slot) {
+window.brewPotion = function(slot) {
 	console.log("drew pot", slot)
 	var bytes = [8, 1, 18, 7, 8, 122, 210, 7, 2, 8, slot] 
     window.core.proxyMobileData(bytes); //PotionDrinkerRare(2) rare
