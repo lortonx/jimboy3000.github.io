@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.845
+// v1.846
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11762,7 +11762,7 @@ Game name     : ${i.displayName}<br/>
                     if (defaultmapsettings.oppRings && !defaultmapsettings.bubbleInd) {
                         this.drawOppRings(this.ctx, this.scale, LM.biggerSTEDCellsCache, LM.biggerSTECellsCache, LM.biggerCellsCache, LM.smallerCellsCache, LM.STECellsCache, LM.STEDCellsCache , LM.SSCellsCache); //Sonia
                     }					
-                    if (defaultmapsettings.cursorTracking && !gameOptionSettings.bubbleCursorTracker) {
+                    if (defaultmapsettings.cursorTracking && !defaultmapsettings.bubbleCursorTracker) {
 						if (!window.multiboxFollowMouse){
 							if (!window.multiboxPlayerEnabled){
 								this.drawCursorTracking(this.ctx, LM.playerCells, LM.cursorX, LM.cursorY);
