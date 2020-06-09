@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.858
+// v1.859
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11763,17 +11763,17 @@ Game name     : ${i.displayName}<br/>
                     this.drawBattleArea(this.ctx);
                 }
 				if (defaultmapsettings.rainbowBorders) {//Yahnych
-					const borderWidth = defaultSettings.bordersWidth / 2;
+					var tempborderwidthradius = defaultSettings.bordersWidth / 2;
 					if(defaultmapsettings.newRainbowBorders) {
-						this.drawRainbowBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - borderWidth, LM.mapMinY - borderWidth, LM.mapMaxX + borderWidth, LM.mapMaxY + borderWidth, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
+						this.drawRainbowBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
 					} 
 					else {
-					this.drawOldRainbow(this.ctx, LM.mapOffsetFixed, LM.mapMinX - borderWidth, LM.mapMinY - borderWidth, LM.mapMaxX + borderWidth, LM.mapMaxY + borderWidth, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
+						    this.drawOldRainbow(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth*10);
 					}
 				}				
                 if (defaultmapsettings.showMapBorders) {
                     var tempborderwidthradius = defaultSettings.bordersWidth / 2;
-                    this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
+							this.drawMapBorders(this.ctx, LM.mapOffsetFixed, LM.mapMinX - tempborderwidthradius, LM.mapMinY - tempborderwidthradius, LM.mapMaxX + tempborderwidthradius, LM.mapMaxY + tempborderwidthradius, defaultSettings.bordersColor, defaultSettings.bordersWidth);
                 }
                 this.drawCommander();
                 this.drawCommander2();
