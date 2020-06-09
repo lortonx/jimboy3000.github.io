@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.834
+// v1.835
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10596,7 +10596,7 @@ Viruses eaten: ${u.virusesEaten}`)
               time = new Date(Date.now()+r*1000),
               expire = time.toTimeString().replace(/^(\d{2}:\d{2}).*/, '$1');
         this.user.potionsStatus[potion]={type:t,status: s.status, expires: time,slot:s.slot};
-        $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/${t}.png`);
+        $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/${t}.png`);
         if(s.status==1) {
           if(defaultmapsettings.autobrewing&&this.user.brewingEnd<Date.now()) window.brewPotion(s.slot);
           $(`#${potion} img`).css("border-color", "red");
@@ -10621,7 +10621,7 @@ Viruses eaten: ${u.virusesEaten}`)
               index = empty.indexOf(potion);
         if(index>-1) empty.splice(index, 1);
         this.user.potionsStatus[potion]={type:t,status: s.status, expires: time,slot:s.slot};
-        $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/${t}.png`);
+        $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/${t}.png`);
         if(s.status==1) {
           $(`#${potion} img`).css("border-color", "red");
           $(`#${potion} div`).css("border-color", "red");
@@ -10642,7 +10642,7 @@ Viruses eaten: ${u.virusesEaten}`)
       }
       this.user.emptySlots = empty.length;
       empty.forEach((potion)=>{
-          $(`#${potion} img`).attr('src', `https://blooming-tulip.glitch.me/dead/img/potion_empty.png`);
+          $(`#${potion} img`).attr('src', `https://legendmod.ml/banners/potion_empty.png`);
           $(`#${potion} img`).css("border-color", "grey");
           $(`#${potion} div`).css("border-color", "grey");
           $(`#${potion} div`).text('empty');
@@ -10733,7 +10733,7 @@ Viruses eaten: ${u.virusesEaten}`)
         img.onerror = function() {
             console.log("error loading image: "+ url);
             if (url.includes('configs-web.agario.miniclippt')) {
-                var newURL = "https://raw.githubusercontent.com/Yahnych/vanilla_skins/master/agar/" + url.split('/').pop();
+                var newURL = "https://legendmod.ml/vanillaskins/" + url.split('/').pop();
                 app.urlReplaces[url] = newURL;
                 console.log("new destination is: " + newURL);
                 app.user.skins[url].url = newURL;
