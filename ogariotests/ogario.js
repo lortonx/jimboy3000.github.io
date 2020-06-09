@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia
 // This is part of the Legend mod project
-// v1.831
+// v1.832
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4443,6 +4443,7 @@ function thelegendmodproject() {
                 $(".agario-profile-panel").after('<div id="block-warn">' + textLanguage.blockWarn + '<br><a href="#" id="unblock-popups">' + textLanguage.unblockPopups + "</a></div>");
                 $("#exp-bar").addClass("agario-profile-panel"), $(".left-container").empty();
                 $(".agario-shop-panel").after('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>');
+				
                 $("#tags-container").appendTo($("#profile"));
                 //$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
 				//$(".btn-logout").appendTo($("#profile"));
@@ -4657,6 +4658,43 @@ function thelegendmodproject() {
                 app.getQuality(this.value);
                 ogarhusettings();
             });
+        $(`#skin`).popover({
+            html: true,
+            placement: `bottom`,
+            trigger: 'manual',
+            animation: false
+        });
+        $(document).on(`input click`, `#skin`, function() {
+            const value = this.value;
+            app.setSkinPreview(value, `skin-preview`);
+            app.setSkinPreview(value, `profile-` + app.selectedProfile);
+        });
+        $(document).on(`click`, '.skin .example-url a', function(event) {
+            event.preventDefault();
+            $(`#skin`).val(this.href).click();
+        });
+        $(document).on(`click`, `#overlays`, () => {
+            if (!$(`.skin:hover`).length && !$('.skin-switch:hover').length) {
+                $(`#skin`).popover(`hide`);
+            }
+        });
+        $(document).on(`click`, `.vanilla-skin-preview`, () => {
+            if ($("#player-skins").is(":visible")) {
+                $("#player-skins").hide();
+            } else {
+                $('#player-skins').show();
+            }
+        });
+        $(document).on(`click`, `.agario-profile-picture`, () => {
+            if ($("#user-stats").is(":visible")) {
+                $("#user-stats").hide();
+            } else {
+                $('#user-stats').show();
+            }
+        });
+        $(document).on(`click`, `#close-stats`, () => {
+                $("#user-stats").hide();
+        });			
             $(document).on("input", "#skin", function() {
                 var hexInputVal = this.value;
                 app.setSkinPreview(hexInputVal, "skin-preview");
