@@ -10693,9 +10693,11 @@ Viruses eaten: ${u.virusesEaten}`)
          var key = s[i].key;
          switch (key) {
             case 1:
-                   var skin = this.getLink(s[i].valueString),
-                       url = this.urlReplaces.hasOwnProperty(skin[0])?this.urlReplaces[skin[0]]:skin[0];
-                   $('.vanilla-skin-preview').attr('src', url);
+                   var skin = this.getLink(s[i].valueString);
+						if (skin && skin[0]){
+							url = this.urlReplaces.hasOwnProperty(skin[0])?this.urlReplaces[skin[0]]:skin[0];
+							$('.vanilla-skin-preview').attr('src', url);
+						}
                 break;
             case 2:
                    //stop moving on relise (1,0)
