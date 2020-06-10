@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.882
+// v1.883
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10438,7 +10438,7 @@ function thelegendmodproject() {
                 break;
             case 131:		
                 console.log("returnMessage = r.get_userLeaguesInfoResponseField();");
-				console.log(r.get_userLeaguesInfoResponseField);
+				window.returnMessage = r.get_userLeaguesInfoResponseField()
                 break;
             case 132:
                 console.log("returnMessage = r.get_userLeaguesPassUpdateField();");
