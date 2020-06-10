@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.883
+// v1.884
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10005,8 +10005,8 @@ function thelegendmodproject() {
 									if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('')[1]) window.RecordPlayers[i].level=matchNew[i].split("")[1].split('')[1].split('\"')[0] //level
 									if (matchNew[i].split("")[1] && matchNew[i].split("")[1].split('\"')[1]) window.RecordPlayers[i].country=matchNew[i].split("")[1].split('\"')[1].split('\(')[0].replace('', ""); //country
 									if (matchNew[i].split("")[1]) window.RecordPlayers[i].socialid=matchNew[i].split("")[1].split('')[0] //social id						
-									if (matchNew[i].split("�")[1]) window.RecordPlayers[i].icon=matchNew[i].split("�")[1].split('')[0].split('%')[0]  //icon	
-									else if (matchNew[i].split("")[1]) window.RecordPlayers[i].icon=matchNew[i].split("")[1].split('')[0].substr(1);																	
+									if (matchNew[i].split("�")[1]) window.RecordPlayers[i].icon=matchNew[i].split("�")[1].split('')[0].split('%')[0].split('"')[0]  //icon	
+									else if (matchNew[i].split("")[1]) window.RecordPlayers[i].icon=matchNew[i].split("")[1].split('')[0].substr(1).split('"')[0];																	
 								}
 								userLeaguesInfoResponse();
 								break;	
