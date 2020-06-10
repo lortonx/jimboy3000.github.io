@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.881
+// v1.882
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -9988,7 +9988,7 @@ function thelegendmodproject() {
 								window.testobjects102130=node;
                                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Request", option, response);
                                 break;								
-							case 131:
+							case 131:								
 								window.testobjects102131=node;
 								console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 User Leagues Info Response", option, response);
 								var sampleBytes = new Uint8Array(window.testobjects102131.view.buffer);
@@ -10436,8 +10436,9 @@ function thelegendmodproject() {
                 this.updateProducts(u.productUpdates);
                 this.updatePotions(u.userPotions)
                 break;
-            case 131:
+            case 131:		
                 console.log("returnMessage = r.get_userLeaguesInfoResponseField();");
+				console.log(r.get_userLeaguesInfoResponseField);
                 break;
             case 132:
                 console.log("returnMessage = r.get_userLeaguesPassUpdateField();");
