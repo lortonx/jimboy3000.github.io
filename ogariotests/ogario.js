@@ -10438,7 +10438,7 @@ function thelegendmodproject() {
                 break;
             case 131:		
                 console.log("returnMessage = r.get_userLeaguesInfoResponseField();");
-				window.returnMessage = r.get_userLeaguesInfoResponseField()
+				//window.returnMessage = r.get_userLeaguesInfoResponseField()
                 break;
             case 132:
                 console.log("returnMessage = r.get_userLeaguesPassUpdateField();");
