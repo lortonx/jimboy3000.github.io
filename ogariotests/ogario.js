@@ -10962,7 +10962,7 @@ Game name     : ${i.displayName}<br/>
             var e = 0;
             switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
                 case 16:
-                    if (!window.fullSpectator) this.updateCells(message, e);
+                    this.updateCells(message, e);
 					//this.countPps()
                     break;
                 case 64:
