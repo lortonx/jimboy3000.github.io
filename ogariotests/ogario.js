@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.905
+// v1.906
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10682,17 +10682,17 @@ function thelegendmodproject() {
         showSessionStats(u) {
             toastr.info('<b>[' + Premadeletter123 + ']:</b><br> ' + 
 			'<b class="message-nick">Final mass:</b> ' + u.finalMass + '<br>' + 
-			'<b>Final position:</b> ' + u.finalPosition + '<br>' + 
-			'<b>Food eaten:</b> ' + u.foodEaten + '<br>' + 
-			'<b>Highest mass:</b> ' + u.highestMass + '<br>' + 
-			'<b>Longest time alive:</b> ' + u.longestTimeAlive + '<br>' + 
-			'<b>Mass consumed:</b> ' + u.massConsumed + '<br>' + 
-			'<b>Normal cells eaten:</b> ' + u.normalCellsEaten + '<br>' + 
-			'<b>Players eaten:</b> ' + u.playersEaten + '<br>' + 
-			'<b>Time on leaderboard:</b> ' + u.timeInLeaderboard + '<br>' + 
-			'<b>Total time:</b> ' + u.timeTotal + '<br>' + 
-			'<b>Top position:</b> ' + u.topPosition + '<br>' + 
-			'<b>Viruses eaten:</b> ' + u.virusesEaten)
+			'<b class="message-nick">Final position:</b> ' + u.finalPosition + '<br>' + 
+			'<b class="message-nick">Food eaten:</b> ' + u.foodEaten + '<br>' + 
+			'<b class="message-nick">Highest mass:</b> ' + u.highestMass + '<br>' + 
+			'<b class="message-nick">Longest time alive:</b> ' + u.longestTimeAlive + '<br>' + 
+			'<b class="message-nick">Mass consumed:</b> ' + u.massConsumed + '<br>' + 
+			'<b class="message-nick">Normal cells eaten:</b> ' + u.normalCellsEaten + '<br>' + 
+			'<b class="message-nick">Players eaten:</b> ' + u.playersEaten + '<br>' + 
+			'<b class="message-nick">Time on leaderboard:</b> ' + u.timeInLeaderboard + '<br>' + 
+			'<b class="message-nick">Total time:</b> ' + u.timeTotal + '<br>' + 
+			'<b class="message-nick">Top position:</b> ' + u.topPosition + '<br>' + 
+			'<b class="message-nick">Viruses eaten:</b> ' + u.virusesEaten)
         },
         updateEvents(event) {
             if (event.length == 0) window.questActivationReq()
