@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.895
+// v1.896
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2532,7 +2532,7 @@ var defaultmapsettings = {
     showStatsFPS: true,
 	//showStatsPPS: true,
     blockPopups: false,
-	gameOverStats: true,
+	gameOverStats: false,
     streamMode: false,
     hideSkinUrl: false,
     showQuickMenu: true,
@@ -12402,8 +12402,9 @@ Game name     : ${i.displayName}<br/>
                     return;
                 }
                 for (let length = 0; length < LM.food.length; length++) {
-                    LM.food[length].moveCell();		
-					if (!LM.food[length].invisible || (!LM.food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator)){						
+                    LM.food[length].moveCell();
+					if (!LM.food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) LM.food[length].invisible = true			
+					if (!LM.food[length].invisible){						
 						LM.food[length].draw(this.ctx);       
 					}						
                 }
