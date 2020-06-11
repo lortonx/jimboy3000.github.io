@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.894
+// v1.895
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11379,7 +11379,7 @@ Game name     : ${i.displayName}<br/>
                         }
                     } 
 					else if (isFood) {
-                        if (!(window.fullSpectator && !defaultmapsettings.oneColoredSpectator)) this.food.push(cellUpdateCells);
+                        this.food.push(cellUpdateCells);
                     }
                     this.indexedCells[id] = cellUpdateCells;
                 }
@@ -12403,7 +12403,9 @@ Game name     : ${i.displayName}<br/>
                 }
                 for (let length = 0; length < LM.food.length; length++) {
                     LM.food[length].moveCell();		
-					if (!LM.food[length].invisible) LM.food[length].draw(this.ctx);                  					
+					if (!LM.food[length].invisible || (!LM.food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator)){						
+						LM.food[length].draw(this.ctx);       
+					}						
                 }
             },
             drawCachedFood(ctx, food, scale, reset) {
