@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.893
+// v1.894
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11333,7 +11333,7 @@ Game name     : ${i.displayName}<br/>
 					}
 					else{	
                         if (this.playerCellIDs.indexOf(id) != -1) {
-							if (defaultmapsettings.myCustomColor && defaultmapsettings.myCustomColor && profiles[application.selectedProfile] && profiles[application.selectedProfile].color) {
+							if (defaultmapsettings.myCustomColor && profiles[application.selectedProfile] && profiles[application.selectedProfile].color) {
 								if (defaultmapsettings.myCustomColor){
 									color = profiles[application.selectedProfile].color
 								}
@@ -11341,15 +11341,15 @@ Game name     : ${i.displayName}<br/>
                         }									
 						else{
 							application.teamPlayers.forEach((found) => {
-								if (found.nick == name && found.color){									
-										color = found.color																			
+								if (found.nick == name && found.color){		
+									if (defaultmapsettings.myCustomColor && profiles[application.selectedProfile].name && found.nick != profiles[application.selectedProfile].name){
+										color = found.color				
+									}										
 								} 
 							})		
 						}						
 					}
-					if (defaultmapsettings.myCustomColor){
 						if (!LM.cellcolors[name]) LM.cellcolors[name]= color
-					}
 				}
 				//				
 				var invisible;
