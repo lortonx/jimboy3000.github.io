@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.894
+// v1.895
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8229,7 +8229,8 @@ function thelegendmodproject() {
 					if (defaultmapsettings.myCustomColor) {
                         color = ogarcopythelb.color;
 					}
-                } else {
+                } 
+				else {
                     //if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
                     if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings && !this.isFood) {
                         color = this.oppColor;
@@ -11333,6 +11334,7 @@ Game name     : ${i.displayName}<br/>
 					}
 					else{	
                         if (this.playerCellIDs.indexOf(id) != -1) {
+							console.log(color)
 							if (defaultmapsettings.myCustomColor && profiles[application.selectedProfile] && profiles[application.selectedProfile].color) {
 								if (defaultmapsettings.myCustomColor){
 									color = profiles[application.selectedProfile].color
@@ -11629,7 +11631,8 @@ Game name     : ${i.displayName}<br/>
         setCellOppColor(isPlayer, mass) {
             if (isPlayer) {
                 return ogarcopythelb.color
-            } else {
+            } 
+			else {
                 if (mass >= defaultmapsettings.dominationRate*8) return defaultSettings.enemyBSTEDColor
                 else if (mass >= defaultmapsettings.dominationRate*4) return defaultSettings.enemyBSTEDColor
                 else if (mass >= defaultmapsettings.dominationRate*2) return defaultSettings.enemyBSTEColor
