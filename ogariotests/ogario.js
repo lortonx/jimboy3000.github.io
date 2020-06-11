@@ -8227,7 +8227,8 @@ function thelegendmodproject() {
                 if ((this.isPlayerCell || this.playerCellsMulti) && ogarcopythelb.color){
 					//console.log(this.color)
 					if (defaultmapsettings.myCustomColor) {
-                        color = ogarcopythelb.color;
+                        //color = ogarcopythelb.color;
+						color = "blue";
 					}
                 } 
 				else {
