@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.889
+// v1.890
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11348,9 +11348,9 @@ Game name     : ${i.displayName}<br/>
 
                 if (this.indexedCells.hasOwnProperty(id)) {
                     cellUpdateCells = this.indexedCells[id];	
-                    if (color && !LM.playerCellsMulti.length) {
-                        cellUpdateCells.color = color;
-                    }					
+                    //if (color && !LM.playerCellsMulti.length) {
+                        //cellUpdateCells.color = color;
+                    //}					
                 } 
 				else {
                     cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
