@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.896
+// v1.897
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8227,8 +8227,8 @@ function thelegendmodproject() {
                 if ((this.isPlayerCell || this.playerCellsMulti) && ogarcopythelb.color){
 					//console.log(this.color)
 					if (defaultmapsettings.myCustomColor) {
-                        //color = ogarcopythelb.color;
-						color = "blue";
+                        color = ogarcopythelb.color;
+						//color = "blue";
 					}
                 } 
 				else {
@@ -11329,6 +11329,10 @@ Game name     : ${i.displayName}<br/>
                 //x = this.getX(x),
                 //y = this.getY(y);	
 				//FOR COLOR
+				
+				if (this.playerCellIDs.indexOf(id) != -1) {
+					console.log(color)
+				}
 				/*
 				if (!isVirus && !isFood && name!="" && this.gameMode != ":teams"){
 					if (LM.cellcolors[name]){ 
@@ -11336,7 +11340,7 @@ Game name     : ${i.displayName}<br/>
 					}
 					else{	
                         if (this.playerCellIDs.indexOf(id) != -1) {
-							console.log(color)
+							
 							if (defaultmapsettings.myCustomColor && profiles[application.selectedProfile] && profiles[application.selectedProfile].color) {
 								if (defaultmapsettings.myCustomColor){
 									color = profiles[application.selectedProfile].color
