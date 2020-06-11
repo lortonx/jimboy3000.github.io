@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.888
+// v1.889
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11367,11 +11367,11 @@ Game name     : ${i.displayName}<br/>
 								this.playerColor = color;
 							}
 							else{
-								if (profiles[application.selectedProfile].color){
+								if (profiles[application.selectedProfile].color && defaultmapsettings.myCustomColor){
 									color = profiles[application.selectedProfile].color
 								}
-									this.playerColor = color;
-									cellUpdateCells.color = color;		
+								this.playerColor = color;
+								cellUpdateCells.color = color;		
 							}							
                             this.playerCells.push(cellUpdateCells);
 							//this.playerCellsMulti.push(cellUpdateCells);
