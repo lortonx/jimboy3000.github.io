@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.898
+// v1.886
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8224,14 +8224,11 @@ function thelegendmodproject() {
             }
             var color = this.color;
             if (LM.play || LM.playerCellsMulti.length) {
-                if ((this.isPlayerCell || this.playerCellsMulti) && ogarcopythelb.color){
-					//console.log(this.color)
-					if (defaultmapsettings.myCustomColor) {
+                if (this.isPlayerCell || this.playerCellsMulti) {
+                    if (defaultmapsettings.myCustomColor) {
                         color = ogarcopythelb.color;
-						//color = "blue";
-					}
-                } 
-				else {
+                    }
+                } else {
                     //if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings) {
                     if (defaultmapsettings.oppColors && !defaultmapsettings.oppRings && !this.isFood) {
                         color = this.oppColor;
@@ -8243,8 +8240,7 @@ function thelegendmodproject() {
         style.lineWidth = 20; ///
         style.strokeStyle = this.color;///
         style.stroke();///
-        } 
-		else {
+        } else {
         style.fillStyle = color;
         style.fill();
         }
@@ -11329,37 +11325,26 @@ Game name     : ${i.displayName}<br/>
                 //x = this.getX(x),
                 //y = this.getY(y);	
 				//FOR COLOR
-				
-				//if (this.playerCellIDs.indexOf(id) != -1) {
-					console.log(color)
-				//}
-				/*
 				if (!isVirus && !isFood && name!="" && this.gameMode != ":teams"){
 					if (LM.cellcolors[name]){ 
 						color = LM.cellcolors[name]
 					}
 					else{	
                         if (this.playerCellIDs.indexOf(id) != -1) {
-							
-							if (defaultmapsettings.myCustomColor && profiles[application.selectedProfile] && profiles[application.selectedProfile].color) {
-								if (defaultmapsettings.myCustomColor){
-									color = profiles[application.selectedProfile].color
-								}
+							if (defaultmapsettings.myCustomColor) {
+								color = profiles[application.selectedProfile].color
 							}
                         }									
 						else{
 							application.teamPlayers.forEach((found) => {
-								if (found.nick == name && found.color){		
-									if (defaultmapsettings.myCustomColor && profiles[application.selectedProfile].name && found.nick != profiles[application.selectedProfile].name){
-										color = found.color				
-									}										
+								if (found.nick == name){ 
+									color = found.color		
 								} 
 							})		
 						}						
 					}
-						if (!LM.cellcolors[name]) LM.cellcolors[name]= color
+					if (!LM.cellcolors[name] && color) LM.cellcolors[name]= color
 				}
-				*/
 				//				
 				var invisible;
 				//if (LM.playerCellsMulti.length && window.multiboxPlayerEnabled && spects[window.multiboxPlayerEnabled-1]){
@@ -11371,7 +11356,10 @@ Game name     : ${i.displayName}<br/>
                 cellUpdateCells = null;
 
                 if (this.indexedCells.hasOwnProperty(id)) {
-                    cellUpdateCells = this.indexedCells[id];					
+                    cellUpdateCells = this.indexedCells[id];	
+                    if (color && !LM.playerCellsMulti.length) {
+                        cellUpdateCells.color = color;
+                    }					
                 } 
 				else {
                     cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
@@ -11638,8 +11626,7 @@ Game name     : ${i.displayName}<br/>
         setCellOppColor(isPlayer, mass) {
             if (isPlayer) {
                 return ogarcopythelb.color
-            } 
-			else {
+            } else {
                 if (mass >= defaultmapsettings.dominationRate*8) return defaultSettings.enemyBSTEDColor
                 else if (mass >= defaultmapsettings.dominationRate*4) return defaultSettings.enemyBSTEDColor
                 else if (mass >= defaultmapsettings.dominationRate*2) return defaultSettings.enemyBSTEColor
