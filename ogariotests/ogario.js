@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.902
+// v1.904
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8157,7 +8157,7 @@ function thelegendmodproject() {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
             //if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
             //if (this.spectator>0 && this.isInV() || this.invisible == true) {	
-			if (this.isVirus && this.spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator && this.isInView()) this.invisible = true			
+			//if (this.isVirus && this.spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator && this.isInView()) this.invisible = true			
 			if (this.invisible == true) {
                 return;
             }
@@ -10680,19 +10680,19 @@ function thelegendmodproject() {
             }
         },
         showSessionStats(u) {
-            toastr.info('<b>[' + Premadeletter123 + ']:</b><br> ' + `
-Final mass: ${u.finalMass}<br>
-Final position: ${u.finalPosition}<br>
-Food eaten: ${u.foodEaten}<br>
-Highest mass: ${u.highestMass}<br>
-Longest time alive: ${u.longestTimeAlive}<br>
-Mass consumed: ${u.massConsumed}<br>
-Normal cells eaten: ${u.normalCellsEaten}<br>
-Players eaten: ${u.playersEaten}<br>
-Time in leaderboard: ${u.timeInLeaderboard}<br>
-Total time: ${u.timeTotal}<br>
-Top position: ${u.topPosition}<br>
-Viruses eaten: ${u.virusesEaten}`)
+            toastr.info('<b>[' + Premadeletter123 + ']:</b><br> ' + 
+			'Final mass: ' + u.finalMass + '<br>' + 
+			'Final position: ' + u.finalPosition + '<br>' + 
+			'Food eaten: ' + u.foodEaten + '<br>' + 
+			'Highest mass: ' + u.highestMass + '<br>' + 
+			'Longest time alive: ' + u.longestTimeAlive + '<br>' + 
+			'Mass consumed: ' + u.massConsumed + '<br>' + 
+			'Normal cells eaten: ' + u.normalCellsEaten + '<br>' + 
+			'Players eaten: ' + u.playersEaten + '<br>' + 
+			'Time in leaderboard: ' + u.timeInLeaderboard + '<br>' + 
+			'Total time: ' + u.timeTotal + '<br>' + 
+			'Top position: ' + u.topPosition + '<br>' + 
+			'Viruses eaten: ' + u.virusesEaten)
         },
         updateEvents(event) {
             if (event.length == 0) window.questActivationReq()
