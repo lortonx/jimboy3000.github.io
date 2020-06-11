@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.892
+// v1.893
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11360,7 +11360,8 @@ Game name     : ${i.displayName}<br/>
                         if (isVirus && defaultmapsettings.virusesRange) {
                             this.viruses.push(cellUpdateCells);
                         }
-                        this.cells.push(cellUpdateCells);
+						//this.cells.push(cellUpdateCells);
+						if (!(window.fullSpectator && isFood && !defaultmapsettings.oneColoredSpectator)) this.cells.push(cellUpdateCells);	                    				
                         if (this.playerCellIDs.indexOf(id) != -1 && this.playerCells.indexOf(cellUpdateCells) == -1) {
                             cellUpdateCells.isPlayerCell = true;
                             if (this.gameMode == ":teams"){
