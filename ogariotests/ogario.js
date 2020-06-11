@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.897
+// v1.898
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11330,9 +11330,9 @@ Game name     : ${i.displayName}<br/>
                 //y = this.getY(y);	
 				//FOR COLOR
 				
-				if (this.playerCellIDs.indexOf(id) != -1) {
+				//if (this.playerCellIDs.indexOf(id) != -1) {
 					console.log(color)
-				}
+				//}
 				/*
 				if (!isVirus && !isFood && name!="" && this.gameMode != ":teams"){
 					if (LM.cellcolors[name]){ 
