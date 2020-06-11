@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.891
+// v1.892
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10962,7 +10962,7 @@ Game name     : ${i.displayName}<br/>
             var e = 0;
             switch ((message = this.decompressMessage(message)).readUInt8(e++)) {
                 case 16:
-                    this.updateCells(message, e);
+                    if (!window.fullSpectator) this.updateCells(message, e);
 					//this.countPps()
                     break;
                 case 64:
@@ -11352,7 +11352,7 @@ Game name     : ${i.displayName}<br/>
                         //cellUpdateCells.color = color;
                     //}					
                 } 
-				else {
+				else {					
                     cellUpdateCells = new ogarbasicassembly(id, x, y, size, color, isFood, isVirus, false, defaultmapsettings.shortMass, defaultmapsettings.virMassShots);
                     cellUpdateCells.time = this.time;
 					cellUpdateCells.spectator = false;
