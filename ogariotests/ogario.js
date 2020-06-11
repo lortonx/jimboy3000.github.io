@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.898
+// v1.899
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8157,7 +8157,8 @@ function thelegendmodproject() {
             //if (this.spectator>0 && this.isInV() || this.invisible==true || this.spectator>0 && this.isInView()) {
             //if (this.invisible == true || (this.spectator > 0 && this.isInV() && !window.multiboxPlayerEnabled)) {
             //if (this.spectator>0 && this.isInV() || this.invisible == true) {	
-            if (this.invisible == true) {
+            if (this.isVirus && this.spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) this.invisible = true	
+			if (this.invisible == true) {
                 return;
             }
             //					
@@ -8206,9 +8207,7 @@ function thelegendmodproject() {
 
             //if (style.arc(this.x, this.y, y, 0, this.pi2, false), style.closePath(), this.isFood) {
             //    return style.fillStyle = this.color, style.fill(), void style.restore();
-            //}
-			if (this.isVirus && this.spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) this.invisible = true	
-			
+            //}						
 			if (!defaultmapsettings.jellyPhisycs) {
                 if (this.isVirus) {
                     //console.log("is not jelly");
