@@ -1,7 +1,7 @@
 // Source script
-// Modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
+// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.908
+// v1.909
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -425,10 +425,6 @@ function TweenMaxLM(Variable, sxPos, syPos) {
     });
 }
 
-Array.prototype.stDev = function stDev() {
-    const average = data => data.reduce((sum, value) => sum + value) / data.length
-    return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
-};
 UIDInstructions = atob("VUlEY29udHJvbGxlcigpOw==");
 var UIDfunction = new Function(UIDInstructions);
 
@@ -10569,7 +10565,7 @@ function thelegendmodproject() {
                                 break;
                             case "dna":
                                 this.user.dna = items[i].amount;
-                                $("#dna").html(`🧬` + this.user.dna);
+                                $("#dna").html(`💊` + this.user.dna);
                                 break;
                             case "create_skin_token_for_vip_weekly":
                                 //this.user.skinCreateVIPTokens = items[i].amount;
@@ -11809,7 +11805,8 @@ Game name     : ${i.displayName}<br/>
                     return;
                 }
                 if (LM.play) {
-                    this.scale = (9 * this.scale + Math.min(64 / size, 1) ** 0.4 * this.getZoom()) / 10;
+					this.scale = (9 * this.scale + Math.pow(Math.min(64 / size, 1),0.4) * this.getZoom()) / 10;
+                    //this.scale = (9 * this.scale + Math.min(64 / size, 1) ** 0.4 * this.getZoom()) / 10;
                 } else {
                     this.scale = (9 * this.scale + LM.scale * this.getZoom()) / 10;
                 }
@@ -14219,3 +14216,10 @@ snezSocket.send(JSON.stringify({ "command": "sendPlayerSkinURL", nick: ogarcopyt
 
 
 */
+
+
+Array.prototype.stDev = function stDev() {
+    const average = data => data.reduce((sum, value) => sum + value) / data.length
+    return Math.sqrt(average(this.map(value => Math.pow(value - average(this),2))))
+	//return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
+};
