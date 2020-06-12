@@ -1,4 +1,4 @@
-//v12.55h
+//v12.55i
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -981,15 +981,15 @@ function getInfo() {
 }
 function potionsLogout(){
 $("#potions").html('<div id="potion1" class="potion">'+
-                                        '<img src="https://dead-mod.github.io/img/potion_empty.png" />'+
+                                        '<img src="https://legendmod.ml/banners/potion_empty.png" />'+
                                         '<div>empty</div>'+
                                     '</div>'+
                                     '<div id="potion2" class="potion">'+
-                                        '<img src="https://dead-mod.github.io/img/potion_empty.png" />'+
+                                        '<img src="https://legendmod.ml/banners/potion_empty.png" />'+
                                         '<div>empty</div>'+
                                     '</div>'+
                                    '<div id="potion3" class="potion">'+
-                                        '<img src="https://dead-mod.github.io/img/potion_empty.png" />'+
+                                        '<img src="https://legendmod.ml/banners/potion_empty.png" />'+
                                         '<div>empty</div>'+
                                     '</div>')
 }
