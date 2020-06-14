@@ -1,11 +1,12 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.909
+// v1.910
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
 var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
+window.clanTagLc = "U1VC";
 appendLMhiFbPs()
 
 function changeregion() {
@@ -2564,8 +2565,7 @@ var defaultmapsettings = {
     commandSound: 'https://legendmod.ml/sounds/chat-message.mp3',
     virusSoundurl: 'https://legendmod.ml/sounds/sound-gunshot.mp3',
     soundSplit: 'https://www.myinstants.com/media/sounds/quack_5.mp3',
-    FacebookIDs: '',
-    clanTagLc: "U1VC"
+    FacebookIDs: ''   
 };
 var profiles = [];
 var ogarcopythelb = {
@@ -11184,7 +11184,7 @@ Game name     : ${i.displayName}<br/>
             }
         },
         addSpect() {
-            if (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(defaultmapsettings.clanTagLc)) || window.proLicenceUID) {
+            if (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID) {
                 $('#set-fullSpectator').show();
                 $('#set-ingameSpectator').show();
                 if (window.fullSpectator && spects.length == 0) {
@@ -13996,7 +13996,7 @@ function enterChatMessage2() {
 
 function repeatSendingSpecialSkins() {
     temp = localStorage.getItem("isActualUsingSpecialEffectsSkin")
-    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(defaultmapsettings.clanTagLc)) || window.proLicenceUID)) {
+    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID)) {
         if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
         window.application.sendSocket3Info("spfc", temp)
