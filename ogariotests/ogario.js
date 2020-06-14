@@ -32,7 +32,7 @@ function deleteGamemode() {
         value: 7
     }, {
         text: 'FPS Test',
-        value: 13
+        value: 12
     }, {
         text: 'FFA',
         value: 8
@@ -47,7 +47,7 @@ function deleteGamemode() {
         value: 11
     }, {
         text: 'Party mode',
-        value: 12
+        value: 13
     }];
     if (!window.gamemodeBackup) {
         window.gamemodeBackup = $("#gamemode").html();
@@ -79,7 +79,7 @@ function deleteGamemode() {
             core.connect('wss://delta-selffeed.glitch.me');
             legendmod.gameMode = ":ffa";
             //application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 13) {
+        } else if ($('#gamemode').val() == 12) {
             core.connect('wss://d-srv.glitch.me');
             legendmod.gameMode = ":ffa";
         } else if ($('#gamemode').val() == 8) {
@@ -104,7 +104,7 @@ function deleteGamemode() {
             core.connect(agarTesterArena + ':1503/'); //experimental
             legendmod.gameMode = ":experimental";
             //application.connect('wss://private1:443')
-        } else if ($('#gamemode').val() == 12) {
+        } else if ($('#gamemode').val() == 13) {
             logoutPSArenas();
             core.connect(agarTesterArena + ':1502/'); //party
             legendmod.gameMode = ":party";
