@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.910
+// v1.912
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2384,7 +2384,8 @@ iconSpecialSkinEffectsButterfly = new Image;
 iconSpecialSkinEffectsButterfly.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsButterfly.png';
 iconSpecialSkinEffectsMouse = new Image;
 iconSpecialSkinEffectsMouse.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMouse.png';
-
+iconSpecialSkinEffectsTurtle = new Image;
+iconSpecialSkinEffectsTurtle.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTurtle.png';
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
     cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
@@ -8399,12 +8400,14 @@ function thelegendmodproject() {
                         style.drawImage(cimgSpecialSkinEffectsSunGlasses, this.x - 0.85 * y, this.y - 1.1 * y, y * 1.7, y * 1.4);
                     } else if (this.SpecialEffect == "Moderator" || this.SpecialEffect2 == "Moderator") {
                         style.drawImage(cimgSpecialSkinEffectsModerator, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);
-                        /*style.drawImage(cimgSpecialSkinEffectsModerator, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
+                    } else if (this.SpecialEffect == "Turtle" || this.SpecialEffect2 == "Turtle") {
+                        //style.drawImage(iconSpecialSkinEffectsTurtle, this.x - 0.333 * y, this.y - 1.325 * y, y / 1.5, y / 6);						
+                        style.drawImage(iconSpecialSkinEffectsTurtle, this.x - window.xx1 * y, this.y - window.xx2 * y, y/window.xx3, y/window.xx4);	
                         if (!window.xx1) window.xx1 = 0.333
                         if (!window.xx2) window.xx2 = 1.325
                         if (!window.xx3) window.xx3 = 1.5
                         if (!window.xx4) window.xx4 = 6					
-                        */
+                        
                     } else if (this.SpecialEffect == "Shiro" || this.SpecialEffect2 == "Shiro") {
                         style.drawImage(cimgSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
                     } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
