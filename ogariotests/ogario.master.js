@@ -1,4 +1,4 @@
-//v12.55i
+//v12.55j
 
 var consoleMsgLMMaster = "[Master] ";
 
@@ -853,7 +853,7 @@ function continuelogout(){
 		$('.progress-bar-star').text("");
 		$(".agario-profile-name-container").html('<div class="agario-profile-name"></div>'+
                                         '<div id="coins" style="display: inline-block;">💰000</div>'+
-                                        '<div id="dna" style="display: inline-block;">🧬000</div>'+
+                                        '<div id="dna" style="display: inline-block;">💊000</div>'+
                                         '<div id="trophy" style="display: inline-block;">🏆000</div>')
 		$("#quest-active").html('')
 		$("#player-skins").html('');
