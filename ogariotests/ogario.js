@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.937
+// v1.938
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11527,7 +11527,8 @@ Game name     : ${i.displayName}<br/>
                             this.playerCells.push(cellUpdateCells);
                             //this.playerCellsMulti.push(cellUpdateCells);
                         }
-                    } else if (isFood) {
+                    } 
+					else if (isFood) {
                         this.food.push(cellUpdateCells);
                     }
                     this.indexedCells[id] = cellUpdateCells;
@@ -12555,9 +12556,12 @@ Game name     : ${i.displayName}<br/>
                     return;
                 }
                 if (defaultmapsettings.optimizedFood && this.pellet) {
-
+				
                     for (var length = 0; length < food.length; length++) {
-                        if (!food[length].invisible) {
+						//
+						if (food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true 
+						//
+						  if (!food[length].invisible) {
                             var x = food[length].x - 10 - defaultSettings.foodSize;
                             var y = food[length].y - 10 - defaultSettings.foodSize;
                             ctx.drawImage(this.pellet, x, y);
