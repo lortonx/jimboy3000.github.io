@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.936
+// v1.937
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8248,9 +8248,9 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
 						style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);								
                     } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
-						style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7, y / 3, y / 3);							
+						style.drawImage(iconSpecialSkinEffectsEarth, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);								
                     } else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
-						style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7, y / 3, y / 3);								
+						style.drawImage(iconSpecialSkinEffectsFootStep, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);								
                     } else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
 						style.drawImage(iconSpecialSkinEffectsForward, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);							
                     } else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
@@ -8258,7 +8258,7 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
 						style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);							
                     } else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
-						style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);							
+						style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);							
                     } else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
 						style.drawImage(iconSpecialSkinEffectsPolice, this.x + 0.65 * y, this.y + 0.7 * y, y / 3, y / 3);								
                     } else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
