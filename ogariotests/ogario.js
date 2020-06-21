@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.915
+// v1.916
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8423,7 +8423,8 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
                         style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
                     } else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
-                        style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);						
+                        style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x + 0.1 * y, this.y + 0.15 * y, y / 1.5, y / 1);		
+						//style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
                         //if (!window.xx1) window.xx1 = -0.1
                         //if (!window.xx2) window.xx2= -0.15
                         //if (!window.xx3) window.xx3 = 1.5
@@ -8433,7 +8434,12 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
                         style.drawImage(iconSpecialSkinEffectsJapan, this.x -0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);							
                     } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
-                        style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 1 * y, this.y - 0.2 * y, y / 1, y / 1);						
+						style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+                        if (!window.xx1) window.xx1 = 1
+                        if (!window.xx2) window.xx2= 0.2
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1							
+                        //style.drawImage(iconSpecialSkinEffectsJapan2, this.x - 1 * y, this.y - 0.2 * y, y / 1, y / 1);						
                     } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
                         style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);						
                     } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
