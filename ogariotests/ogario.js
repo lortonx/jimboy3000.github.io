@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.933
+// v1.934
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8187,7 +8187,7 @@ function thelegendmodproject() {
             }
             return ctxfx;
         };
-		this.drawSpecialSkin(style){
+		this.drawSpecialSkin = function(style){
                     if (SpecialEffectPlayers[this.targetNick]) {
                         if (!this.SpecialEffect) this.SpecialEffect = SpecialEffectPlayers[this.targetNick];
                         else if (this.SpecialEffect != SpecialEffectPlayers[this.targetNick]) this.SpecialEffect2 = SpecialEffectPlayers[this.targetNick];
