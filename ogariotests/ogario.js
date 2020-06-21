@@ -8372,8 +8372,8 @@ function thelegendmodproject() {
             if (defaultmapsettings.customSkins && LM.showCustomSkins) {
 				
 				
-                //node = application.getCustomSkin(this.targetNick, this.color);
-				node = application.getCustomSkin(this.targetNick, color);
+                node = application.getCustomSkin(this.targetNick, this.color);
+				//node = application.getCustomSkin(this.targetNick, color);
 				
                 if (node) {
                     if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
