@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.938
+// v1.939
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12559,7 +12559,7 @@ Game name     : ${i.displayName}<br/>
 				
                     for (var length = 0; length < food.length; length++) {
 						//
-						if (food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true 
+						if (!food[length].spectator && window.fullSpectator && !defaultmapsettings.oneColoredSpectator) food[length].invisible = true 
 						//
 						  if (!food[length].invisible) {
                             var x = food[length].x - 10 - defaultSettings.foodSize;
