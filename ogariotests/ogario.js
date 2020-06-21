@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.916
+// v1.917
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8434,7 +8434,7 @@ function thelegendmodproject() {
                     } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
                         style.drawImage(iconSpecialSkinEffectsJapan, this.x -0.8 * y, this.y - 1 * y, y / 0.5, y / 0.5);							
                     } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
-						style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4;							
+						style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
                         if (!window.xx1) window.xx1 = 1
                         if (!window.xx2) window.xx2= 0.2
                         if (!window.xx3) window.xx3 = 1
