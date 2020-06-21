@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.928
+// v1.929
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8479,8 +8479,8 @@ function thelegendmodproject() {
 						//iconSpecialSkinEffectsByzantium.filter = 'hue-rotate(120deg) grayscale(10%) brightness(150%)';
 						style.save();
 						style.globalCompositeOperation='color';
-						style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);	
 						style.fill();
+						style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);							
 						style.globalCompositeOperation='';		
 						style.restore();	
 										
