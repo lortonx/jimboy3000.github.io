@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.913
+// v1.914
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2386,6 +2386,21 @@ iconSpecialSkinEffectsMouse = new Image;
 iconSpecialSkinEffectsMouse.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMouse.png';
 iconSpecialSkinEffectsTurtle = new Image;
 iconSpecialSkinEffectsTurtle.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsTurtle.png';
+iconSpecialSkinEffectsAbsolutVodka = new Image;
+iconSpecialSkinEffectsAbsolutVodka.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsAbsolutVodka.png';
+iconSpecialSkinEffectsChemistry = new Image;
+iconSpecialSkinEffectsChemistry.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsChemistry.png';
+iconSpecialSkinEffectsJapan = new Image;
+iconSpecialSkinEffectsJapan.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJapan.png';
+iconSpecialSkinEffectsJapan2 = new Image;
+iconSpecialSkinEffectsJapan2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsJapan2.png';
+iconSpecialSkinEffectsKebab = new Image;
+iconSpecialSkinEffectsKebab.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsKebab.png';
+iconSpecialSkinEffectsMeditation = new Image;
+iconSpecialSkinEffectsMeditation.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMeditation.png';
+iconSpecialSkinEffectsSplash = new Image;
+iconSpecialSkinEffectsSplash.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSplash.png';
+
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
     cimgDyingLight.src = defaultSettings.commanderImageDyingLight;
@@ -8407,10 +8422,49 @@ function thelegendmodproject() {
                         style.drawImage(cimgSpecialSkinEffectsShiro, this.x + 0.05 * y, this.y - 1.2 * y, y, y);
                     } else if (this.SpecialEffect == "Bird" || this.SpecialEffect2 == "Bird") {
                         style.drawImage(iconSpecialSkinEffectsBird, this.x - 0 * y, this.y - 1.3 * y, y / 1, y / 1);
-                        //if (!window.xx1) window.xx1 = 0
-                        //if (!window.xx2) window.xx2 = 1.3
-                        //if (!window.xx3) window.xx3 = 1
-                        //if (!window.xx4) window.xx4 = 1
+                    } else if (this.SpecialEffect == "AbsolutVodka" || this.SpecialEffect2 == "AbsolutVodka") {
+                        style.drawImage(iconSpecialSkinEffectsAbsolutVodka, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1			
+                    } else if (this.SpecialEffect == "Chemistry" || this.SpecialEffect2 == "Chemistry") {
+                        style.drawImage(iconSpecialSkinEffectsChemistry, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Japan" || this.SpecialEffect2 == "Japan") {
+                        style.drawImage(iconSpecialSkinEffectsJapan, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Japan2" || this.SpecialEffect2 == "Japan2") {
+                        style.drawImage(iconSpecialSkinEffectsJapan2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
+                        style.drawImage(iconSpecialSkinEffectsKebab, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
+                        style.drawImage(iconSpecialSkinEffectsMeditation, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Splash" || this.SpecialEffect2 == "Splash") {
+                        style.drawImage(iconSpecialSkinEffectsSplash, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);						
+                        if (!window.xx1) window.xx1 = 0
+                        if (!window.xx2) window.xx2 = 1.3
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+						
                     } else if (this.SpecialEffect == "Butterfly" || this.SpecialEffect2 == "Butterfly") {
                         style.drawImage(iconSpecialSkinEffectsButterfly, this.x - 1 * y, this.y - 0.6 * y, y / 2, y / 4);
                     } else if (this.SpecialEffect == "Mouse" || this.SpecialEffect2 == "Mouse") {
