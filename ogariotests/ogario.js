@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.925
+// v1.926
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8476,7 +8476,7 @@ function thelegendmodproject() {
 						//style.globalCompositeOperation = "source-in";
 						// draw color
 						var prevFillStyle = style.fillStyle
-						style.fillStyle = "#09f";
+						style.fillStyle = "white";
 						style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);			
 						//style.globalCompositeOperation = "source-over";
 						style.fillStyle = prevFillStyle
