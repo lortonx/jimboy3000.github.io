@@ -8473,11 +8473,13 @@ function thelegendmodproject() {
                         */		
                     } else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
 						// set composite mode
-						iconSpecialSkinEffectsByzantium.globalCompositeOperation = "source-in";
+						style.globalCompositeOperation = "source-in";
 						// draw color
-						iconSpecialSkinEffectsByzantium.fillStyle = "#09f";
+						var prevFillStyle = style.fillStyle
+						style.fillStyle = "#09f";
 						style.drawImage(iconSpecialSkinEffectsByzantium, this.x + 0.6 * y, this.y + 0.7 * y, y / 3, y / 3);			
-						iconSpecialSkinEffectsByzantium.globalCompositeOperation = "source-over";
+						style.globalCompositeOperation = "source-over";
+						style.fillStyle = prevFillStyle
                     } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
 						style.drawImage(iconSpecialSkinEffectsClose, this.x + 0.6 * y, this.y - 0.7 * y, y / 3, y / 3);								
                     } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
