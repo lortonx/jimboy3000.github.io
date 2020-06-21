@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.918
+// v1.919
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2400,6 +2400,36 @@ iconSpecialSkinEffectsMeditation = new Image;
 iconSpecialSkinEffectsMeditation.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsMeditation.png';
 iconSpecialSkinEffectsSplash = new Image;
 iconSpecialSkinEffectsSplash.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsSplash.png';
+iconSpecialSkinEffectsByzantium = new Image;
+iconSpecialSkinEffectsByzantium.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsByzantium.png';
+iconSpecialSkinEffectsClose = new Image;
+iconSpecialSkinEffectsClose.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsClose.png';
+iconSpecialSkinEffectsEarth = new Image;
+iconSpecialSkinEffectsEarth.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsEarth.png';
+iconSpecialSkinEffectsFootStep = new Image;
+iconSpecialSkinEffectsFootStep.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFootStep.png';
+iconSpecialSkinEffectsForward = new Image;
+iconSpecialSkinEffectsForward.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsForward.png';
+iconSpecialSkinEffectsFriendsForever = new Image;
+iconSpecialSkinEffectsFriendsForever.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFriendsForever.png';
+iconSpecialSkinEffectsFriendsForever2 = new Image;
+iconSpecialSkinEffectsFriendsForever2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFriendsForever2.png';
+iconSpecialSkinEffectsFriendsForever3 = new Image;
+iconSpecialSkinEffectsFriendsForever3.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsFriendsForever3.png';
+iconSpecialSkinEffectsPolice = new Image;
+iconSpecialSkinEffectsPolice.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPolice.png';
+iconSpecialSkinEffectsPolice2 = new Image;
+iconSpecialSkinEffectsPolice2.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsPolice2.png';
+iconSpecialSkinEffectsUnrest = new Image;
+iconSpecialSkinEffectsUnrest.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsUnrest.png';
+iconSpecialSkinEffectsEagle = new Image;
+iconSpecialSkinEffectsEagle.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsEagle.png';
+iconSpecialSkinEffectsBobMarley = new Image;
+iconSpecialSkinEffectsBobMarley.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsBobMarley.png';
+iconSpecialSkinEffectsEinstein = new Image;
+iconSpecialSkinEffectsEinstein.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsEinstein.png';
+iconSpecialSkinEffectsDeadTable = new Image;
+iconSpecialSkinEffectsDeadTable.src = 'https://legendmod.ml/banners/iconSpecialSkinEffectsDeadTable.png';
 
 if (dyinglight1load == "yes") {
     cimgDyingLight = new Image;
@@ -8440,7 +8470,97 @@ function thelegendmodproject() {
                         if (!window.xx2) window.xx2= -0.47
                         if (!window.xx3) window.xx3 = 1
                         if (!window.xx4) window.xx4 = 1							
-                        */					
+                        */		
+                    } else if (this.SpecialEffect == "Byzantium" || this.SpecialEffect2 == "Byzantium") {
+						style.drawImage(iconSpecialSkinEffectsByzantium, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1				
+                    } else if (this.SpecialEffect == "Close" || this.SpecialEffect2 == "Close") {
+						style.drawImage(iconSpecialSkinEffectsClose, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Earth" || this.SpecialEffect2 == "Earth") {
+						style.drawImage(iconSpecialSkinEffectsEarth, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "FootStep" || this.SpecialEffect2 == "FootStep") {
+						style.drawImage(iconSpecialSkinEffectsFootStep, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Forward" || this.SpecialEffect2 == "Forward") {
+						style.drawImage(iconSpecialSkinEffectsForward, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Forever" || this.SpecialEffect2 == "Forever") {
+						style.drawImage(iconSpecialSkinEffectsFriendsForever, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Forever2" || this.SpecialEffect2 == "Forever2") {
+						style.drawImage(iconSpecialSkinEffectsFriendsForever2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Forever3" || this.SpecialEffect2 == "Forever3") {
+						style.drawImage(iconSpecialSkinEffectsFriendsForever3, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Police" || this.SpecialEffect2 == "Police") {
+						style.drawImage(iconSpecialSkinEffectsPolice, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Police2" || this.SpecialEffect2 == "Police2") {
+						style.drawImage(iconSpecialSkinEffectsPolice2, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Unrest" || this.SpecialEffect2 == "Unrest") {
+						style.drawImage(iconSpecialSkinEffectsUnrest, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Eagle" || this.SpecialEffect2 == "Eagle") {
+						style.drawImage(iconSpecialSkinEffectsEagle, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "BobMarley" || this.SpecialEffect2 == "BobMarley") {
+						style.drawImage(iconSpecialSkinEffectsBobMarley, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1		
+                    } else if (this.SpecialEffect == "Einstein" || this.SpecialEffect2 == "Einstein") {
+						style.drawImage(iconSpecialSkinEffectsEinstein, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1	
+                    } else if (this.SpecialEffect == "DeadTable" || this.SpecialEffect2 == "DeadTable") {
+						style.drawImage(iconSpecialSkinEffectsDeadTable, this.x - window.xx1 * y, this.y - window.xx2 * y, y / window.xx3, y / window.xx4);							
+                        if (!window.xx1) window.xx1= 0.5
+                        if (!window.xx2) window.xx2= -0.47
+                        if (!window.xx3) window.xx3 = 1
+                        if (!window.xx4) window.xx4 = 1							
                     } else if (this.SpecialEffect == "Kebab" || this.SpecialEffect2 == "Kebab") {
                         style.drawImage(iconSpecialSkinEffectsKebab, this.x + 0.4 * y, this.y - 1 * y, y / 2, y / 2);						
                     } else if (this.SpecialEffect == "Meditation" || this.SpecialEffect2 == "Meditation") {
