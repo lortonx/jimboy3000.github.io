@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.942
+// v1.943
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8539,47 +8539,48 @@ function thelegendmodproject() {
                     if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                         style.globalAlpha *= defaultSettings.skinsAlpha;
                         s = true;
-                    }													
-                    if (defaultmapsettings.jellyPhisycs) {
-                        var lineWidth = Math.max(~~(y / 50), 10);
-                        style.save();
-                        style.clip();
-                        this.maxPointRad && (y = this.maxPointRad);
-                        try {
-                            style.drawImage(node, this.x - y - lineWidth, this.y - y - lineWidth, 2 * y + lineWidth * 2, 2 * y + lineWidth * 2);
-                        } catch (e) {}
-                        style.globalCompositeOperation = 'luminosity';
-
-                        style.lineWidth = lineWidth
-                        style.strokeStyle = color;
-                        style.stroke();
-                        style.globalCompositeOperation = '';
-                        style.restore();
-
-                    } 
-					else if (legendmod.gameMode != ":teams") {
-                        try {
-                            style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y); //all skin drawing
-                        } catch (e) {}
-                    }
-
+                    }	
+					if (legendmod.gameMode != ":teams"){ 						
+						if (defaultmapsettings.jellyPhisycs) {
+							var lineWidth = Math.max(~~(y / 50), 10);
+							style.save();
+							style.clip();
+							this.maxPointRad && (y = this.maxPointRad);
+							try {
+								style.drawImage(node, this.x - y - lineWidth, this.y - y - lineWidth, 2 * y + lineWidth * 2, 2 * y + lineWidth * 2);
+							} catch (e) {}
+							style.globalCompositeOperation = 'luminosity';
+	
+							style.lineWidth = lineWidth
+							style.strokeStyle = color;
+							style.stroke();
+							style.globalCompositeOperation = '';
+							style.restore();
+	
+						} 
+						else{
+							try {
+								style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y); //all skin drawing
+							} catch (e) {}						
+						}
+					}
                     //special animations
                     //if (legendmod.friends){
                     //if (this.targetNick.includes())
 
                     //}
-
-                    var nodeFb = application.customSkinsMap[this.targetNick + "facebookskin"];
-                    if (defaultmapsettings.FBTracking && nodeFb && application.customSkinsCache[nodeFb + "_cached4"]) {
-                        var temp = nodeFb + "_cached4";
-                        var nodeFB = application.customSkinsCache[temp];
-                        //console.log("found fb name: " + this.targetNick + " src: " + temp);
-                        try {
-                            style.drawImage(nodeFB, this.x - 1 / 2 * y, this.y - y, y, y);
-                        } catch (e) {}
-                    }
-					
-				this.drawSpecialSkin(style , y)
+					if (defaultmapsettings.FBTracking){
+						var nodeFb = application.customSkinsMap[this.targetNick + "facebookskin"];
+							if (nodeFb && application.customSkinsCache[nodeFb + "_cached4"]) {
+								var temp = nodeFb + "_cached4";
+								var nodeFB = application.customSkinsCache[temp];
+								//console.log("found fb name: " + this.targetNick + " src: " + temp);
+								try {
+									style.drawImage(nodeFB, this.x - 1 / 2 * y, this.y - y, y, y);
+								} catch (e) {}
+							}
+					}				
+					this.drawSpecialSkin(style , y)
                 }
             }
             //if (s) {
@@ -11923,9 +11924,9 @@ Game name     : ${i.displayName}<br/>
             sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             },
-            //renderFrame() { 
-            'renderFrame': async function() { //Sonia5
-                await this.sleep(4); //Sonia5			
+            renderFrame() { 
+            //'renderFrame': async function() { //Sonia5
+                //await this.sleep(4); //Sonia5			
                 //this.ctx.start2D();
 
                 LM.time = Date.now();
