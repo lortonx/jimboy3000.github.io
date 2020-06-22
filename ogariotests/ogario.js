@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.943
+// v1.942
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8375,7 +8375,7 @@ function thelegendmodproject() {
                 style.globalAlpha *= 1 - this.alpha;
             }
             var value = style.globalAlpha;
-            var defaultmapsettings.isAlphaChanged = false;
+            var s = false;
             var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
             style.beginPath()
 
@@ -8414,25 +8414,13 @@ function thelegendmodproject() {
             //}						
 			if (!defaultmapsettings.jellyPhisycs) {
                 if (this.isVirus) {
-
-                    if (defaultmapsettings.transparentViruses) {
-                        style.globalAlpha *= defaultSettings.virusAlpha;
-                        defaultmapsettings.isAlphaChanged = true;
-                    }
-                    if (defaultmapsettings.virColors && LM.play) {
-                        style.fillStyle = application.setVirusColor(y);
-                        style.strokeStyle = application.setVirusStrokeColor(y);
-                    } else {
-                        style.fillStyle = defaultSettings.virusColor;
-                        style.strokeStyle = defaultSettings.virusStrokeColor;
-                    }
-                    style.fill();	
-                    if (defaultmapsettings.isAlphaChanged) {
-                        style.globalAlpha = defaultSettings.cellsAlpha;
-                        defaultmapsettings.isAlphaChanged = false;
-                    }
-					style.lineWidth = defaultSettings.virusStrokeSize;					
-                    return defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
+                    //console.log("is not jelly");
+                    /*if (dyinglight1load == "yes") {
+                        try {
+                            style.drawImage(cimgDyingLightvirus, this.x - 0.8 * this.size, this.y - 0.8 * this.size, 1.6 * this.size, 1.6 * this.size);
+                        } catch (e) {}
+                    }*/
+                    return defaultmapsettings.transparentViruses && (style.globalAlpha *= defaultSettings.virusAlpha, s = true), defaultmapsettings.virColors && LM.play ? (style.fillStyle = application.setVirusColor(y), style.strokeStyle = application.setVirusStrokeColor(y)) : (style.fillStyle = this.virusColor, style.strokeStyle = this.virusStroke), style.fill(), s && (style.globalAlpha = value, s = false), style.lineWidth = defaultSettings.virusStrokeSize, defaultmapsettings.virusGlow ? (style.shadowBlur = defaultSettings.virusGlowSize, style.shadowColor =
                         defaultSettings.virusGlowColor) : "yeet", style.stroke(this.createStrokeVirusPath(this.x, this.y, this.size - 2, 6)), defaultmapsettings.showMass && (this.setDrawing(), this.setDrawingScale(), defaultmapsettings.virusGlow ? style.shadowBlur = 0 : "yote",
                         this.setMass(this.size), this.drawMass(style), (window.ExternalScripts && !window.legendmod5.optimizedMass && this.drawMerge(style))), void style.restore();
                 }
@@ -8477,7 +8465,7 @@ function thelegendmodproject() {
             }
             if (defaultmapsettings.transparentCells) {
                 style.globalAlpha *= defaultSettings.cellsAlpha;
-                defaultmapsettings.isAlphaChanged = true;
+                s = true;
             }
             var color = this.color;
             if (LM.play || LM.playerCellsMulti.length) {
@@ -8502,13 +8490,13 @@ function thelegendmodproject() {
                 style.fill();
             }
             //}
-            if (defaultmapsettings.isAlphaChanged) {
+            if (s) {
                 style.globalAlpha = value;
-                defaultmapsettings.isAlphaChanged = false;
+                s = false;
             }
             /*if (dyinglight1load != "yes"){
                             style.globalAlpha = 1;
-                            defaultmapsettings.isAlphaChanged = false;
+                            s = false;
 						}*/
             var node = null;
             var node2 = {}; //, node2.src = application.customSkinsMap[this.targetNick]
@@ -8550,7 +8538,7 @@ function thelegendmodproject() {
                 if (node) {
                     if ((defaultmapsettings.transparentSkins || LM.play && defaultmapsettings.oppColors) && !(this.isPlayerCell && !defaultmapsettings.myTransparentSkin) || this.isPlayerCell && defaultmapsettings.myTransparentSkin) {
                         style.globalAlpha *= defaultSettings.skinsAlpha;
-                        defaultmapsettings.isAlphaChanged = true;
+                        s = true;
                     }													
                     if (defaultmapsettings.jellyPhisycs) {
                         var lineWidth = Math.max(~~(y / 50), 10);
@@ -12074,7 +12062,7 @@ Game name     : ${i.displayName}<br/>
                         LM.cells[i].movePoints();
                     }
 
-                    LM.cells[i].draw(this.ctx); //HEAVY  FUNCTION
+                    LM.cells[i].draw(this.ctx);
 
                     if (drawRender.LMB && this.pointInCircle(LM.cursorX, LM.cursorY, LM.cells[i].x, LM.cells[i].y, LM.cells[i].size)) {
                         LM.selected = LM.cells[i].id
