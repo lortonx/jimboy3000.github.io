@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.093h by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.093i by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "94"; // the version 1.1-> 1.11
 
@@ -2129,6 +2129,7 @@ function universalchat() {
         });
         // --- skin toggle ---
         my.skinToggle_start();
+		$("#ao2t-cfg-dlg").draggable()
     }
     my.capture_start = function() {
         // If not, add chat submit button
@@ -2298,7 +2299,7 @@ function universalchat() {
             my.config_cancel();
         });
         my.config_cancel = function() {
-            $("#overlays").hide();
+            //$("#overlays").hide();
             $("#ao2t-cfg-dlg").hide();
         };
     };
