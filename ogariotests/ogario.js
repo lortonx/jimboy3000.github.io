@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.941
+// v1.942
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12082,17 +12082,19 @@ Game name     : ${i.displayName}<br/>
                 }
                 //lylko
                 defaultmapsettings.jellyPhisycs && LM.updateQuadtree(LM.cells); //
-
-                LM.indexedCells[reverseTrick.biggerEnemy] && this.drawRing(this.ctx,
-                    LM.indexedCells[reverseTrick.biggerEnemy].x,
-                    LM.indexedCells[reverseTrick.biggerEnemy].y,
-                    LM.indexedCells[reverseTrick.biggerEnemy].size,
-                    0.75, 'red');
-                LM.indexedCells[reverseTrick.smallerEnemy] && this.drawRing(this.ctx,
-                    LM.indexedCells[reverseTrick.smallerEnemy].x,
-                    LM.indexedCells[reverseTrick.smallerEnemy].y,
-                    LM.indexedCells[reverseTrick.smallerEnemy].size,
-                    0.75, 'blue');
+		
+				if (defaultmapsettings.reverseTrick){
+					LM.indexedCells[reverseTrick.biggerEnemy] && this.drawRing(this.ctx,
+						LM.indexedCells[reverseTrick.biggerEnemy].x,
+						LM.indexedCells[reverseTrick.biggerEnemy].y,
+						LM.indexedCells[reverseTrick.biggerEnemy].size,
+						0.75, 'red');
+					LM.indexedCells[reverseTrick.smallerEnemy] && this.drawRing(this.ctx,
+						LM.indexedCells[reverseTrick.smallerEnemy].x,
+						LM.indexedCells[reverseTrick.smallerEnemy].y,
+						LM.indexedCells[reverseTrick.smallerEnemy].size,
+						0.75, 'blue');
+				}
                 LM.indexedCells[LM.selected] && this.drawRing(this.ctx,
                     LM.indexedCells[LM.selected].x,
                     LM.indexedCells[LM.selected].y,
@@ -13324,7 +13326,14 @@ Game name     : ${i.displayName}<br/>
                     }
                 }
 
-            } else {
+            } 
+			else if(defaultmapsettings.stickyCell) {
+				event.which == 1 ? (drawRender.LMB=true) : (drawRender.RMB=true)
+			} 
+			else if(defaultmapsettings.reverseTrick) {
+				reverseTrick.pointInCircle(legendmod.cursorX, legendmod.cursorY, event.which);
+			} 			
+			else {
                 if (defaultmapsettings.mouseSplit && (1 == event.which && !defaultmapsettings.mouseInvert || 3 == event.which && defaultmapsettings.mouseInvert)) {
                     event.preventDefault();
                     if (application) {
@@ -13345,7 +13354,10 @@ Game name     : ${i.displayName}<br/>
             if (3 == event.which && !defaultmapsettings.mouseInvert || 1 == event.which && defaultmapsettings.mouseInvert) {
                 application && application.macroFeed(false);
             }
-        }
+        }		
+		else{
+			event.which == 1 ? (drawRender.LMB=false) : (drawRender.RMB=false)
+		}
     };
     window.onbeforeunload = function(event) {
         if (ogario.play) {
