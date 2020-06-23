@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.950
+// v1.951
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -10367,8 +10367,8 @@ function thelegendmodproject() {
                     //window.testobjectsOpcode241.getUint32(1, true);
                     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Received protocol key:', this.protocolKey);
                     window.generatedProtocolKey = this.protocolKey;
-                    var irenderfromagario = new Uint8Array(data.buffer, s += 4);
-                    this.clientKey = this.generateClientKey(this.ws, irenderfromagario);
+                    var key = new Uint8Array(data.buffer, s += 4);
+                    this.clientKey = this.generateClientKey(this.ws, key);
                     //legendmod.generateClientKey("wss://live-arena-19y1u3v.agar.io:443",new Uint8Array(window.testobjectsOpcode241['buffer'], 5))
                     if (window.master && window.master.login) {
                         window.master.login();
@@ -11396,6 +11396,7 @@ Game name     : ${i.displayName}<br/>
         },
         //https://github.com/NuclearC/agar.io-protocol
         updateCells(view, offset) {
+			//window.updateCellsClock=true;
             var encode = function() {
                 for (var text = '';;) {
                     var string = view.readUInt8(offset++);
@@ -12051,10 +12052,7 @@ Game name     : ${i.displayName}<br/>
                         }
 
                     }
-                }
-
-                this.drawGhostCells();
-
+                }                
                 for (var i = 0; i < LM.removedCells.length; i++) {
                     LM.removedCells[i].draw(this.ctx, true);
                 }
@@ -12132,11 +12130,7 @@ Game name     : ${i.displayName}<br/>
                 //
 
                 this.ctx.restore();
-                if (LM.gameMode === ':teams') {
-                    if (this.pieChart && this.pieChart.width) {
-                        this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
-                    }
-                }
+
                 //this.ctx.finish2D();
                 /*if (defaultmapsettings.debug) {
                     this.ctx.fillStyle = "white";
@@ -12153,6 +12147,13 @@ Game name     : ${i.displayName}<br/>
                     LM.camMinX && this.ctx.fillText("cMinX: "+LM.camMinX, 50, lw+=30);
                     LM.camMinY && this.ctx.fillText("cMinY: "+LM.camMinY, 50, lw+=30);
                 }*/
+                if (LM.gameMode === ':teams') {
+                    if (this.pieChart && this.pieChart.width) {
+                        this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
+                    }
+                }				
+				this.drawGhostCells();
+				//window.updateCellsClock=false
             },
             drawViewPorts(ctx) {
                 this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
@@ -13052,7 +13053,7 @@ Game name     : ${i.displayName}<br/>
             render() {
 				
                 drawRender.countFps();
-                drawRender.renderFrame();
+                //drawRender.renderFrame();
 				setTimeout(function() {
 					drawRender.render()
 				//}, 1000/window.fps);
