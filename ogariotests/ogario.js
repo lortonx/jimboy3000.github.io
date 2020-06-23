@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.955
+// v1.956
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -13055,8 +13055,8 @@ Game name     : ${i.displayName}<br/>
             },
             //'renderFrame': async function() { //Sonia5
                 //await this.sleep(4); //Sonia5				
-            //render() {
-			'render': async function() {
+            render() {
+			//'render': async function() {
 				if (!window.fpsM) window.fpsM = 4
 				//await drawRender.sleep(window.fpsM);				
                 drawRender.countFps();
