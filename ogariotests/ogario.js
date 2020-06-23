@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.945
+// v1.946
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -13052,7 +13052,7 @@ Game name     : ${i.displayName}<br/>
             render() {
                 drawRender.countFps();
                 drawRender.renderFrame();
-				drawRender.render
+				drawRender.render()
                 //window.requestAnimationFrame(drawRender.render);
             },
             init() {
