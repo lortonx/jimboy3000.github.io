@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.093j by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "94"; // the version 1.1-> 1.11
+var semimodVersion = "95"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -4903,6 +4903,10 @@ function initializeLM(modVersion) {
         title: "Insert your in-game name",
         placement: "bottom"
     });
+    $("#unlockedFPS").parent().tooltip({
+        title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled chrome->Settings->Advanced->System-> Use hardware accelarationn when available",
+        placement: "top"
+    });	
     $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
         '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
         '<input id="note2" class="form-control main-color note" style="background: transparent; color: lightgrey; width: 24%; float: left; border: none; border-bottom: 1px solid; margin-left: 0px; margin-right: 7px; text-align: center; border-color: darkgrey;">' +
