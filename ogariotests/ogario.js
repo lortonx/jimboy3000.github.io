@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.963
+// v1.964
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -909,7 +909,7 @@ var displayText = {
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
-		unlockedFPS: 'Unlocked FPS (slowers bots & other functions)',
+		unlockedFPS: 'Unlocked FPS (slower bots & other functions)',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -1344,7 +1344,7 @@ var displayText = {
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
-		unlockedFPS: 'Unlocked FPS (slowers bots & other functions)',
+		unlockedFPS: 'Unlocked FPS (slower bots & other functions)',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
