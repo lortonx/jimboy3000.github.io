@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "95"; // the version 1.1-> 1.11
 
@@ -4904,7 +4904,7 @@ function initializeLM(modVersion) {
         placement: "bottom"
     });
     $("#unlockedFPS").parent().tooltip({
-        title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled chrome->Settings->Advanced->System-> Use hardware accelarationn when available",
+        title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
         placement: "bottom"
     });	
     $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
