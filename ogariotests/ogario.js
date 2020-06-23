@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.943
+// v1.944
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -14263,60 +14263,60 @@ var reverseTrick = {
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     },
     pointInCircle: function(x, y, type) {
-        for (length = 0; length < LM.cells.length; length++) {
-            var distancesquared = (x - LM.cells[length].x) * (x - LM.cells[length].x) + (y - LM.cells[length].y) * (y - LM.cells[length].y);
+        for (length = 0; length < legendmod.cells.length; length++) {
+            var distancesquared = (x - legendmod.cells[length].x) * (x - legendmod.cells[length].x) + (y - legendmod.cells[length].y) * (y - legendmod.cells[length].y);
 
-            if (type == 1 && distancesquared <= LM.cells[length].size * LM.cells[length].size) {
-                reverseTrick.biggerEnemy = LM.cells[length].id;
-                reverseTrick.biggerEnemyAcc = LM.cells[length].accID;
-                reverseTrick.biggerSize = ~~(LM.cells[length].size * LM.cells[length].size / 100);
-            } else if (type == 3 && distancesquared <= LM.cells[length].size * LM.cells[length].size) {
-                reverseTrick.smallerEnemy = LM.cells[length].id;
-                reverseTrick.smallerEnemyAcc = LM.cells[length].accID;
-                reverseTrick.smallerSize = ~~(LM.cells[length].size * LM.cells[length].size / 100);
+            if (type == 1 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
+                reverseTrick.biggerEnemy = legendmod.cells[length].id;
+                reverseTrick.biggerEnemyAcc = legendmod.cells[length].accID;
+                reverseTrick.biggerSize = ~~(legendmod.cells[length].size * legendmod.cells[length].size / 100);
+            } else if (type == 3 && distancesquared <= legendmod.cells[length].size * legendmod.cells[length].size) {
+                reverseTrick.smallerEnemy = legendmod.cells[length].id;
+                reverseTrick.smallerEnemyAcc = legendmod.cells[length].accID;
+                reverseTrick.smallerSize = ~~(legendmod.cells[length].size * legendmod.cells[length].size / 100);
             }
         }
     },
     check() {
-        if (this.biggerEnemy && this.smallerEnemy && LM.playerCellIDs.length) {
-            if (!LM.indexedCells.hasOwnProperty(this.biggerEnemy)) {
+        if (this.biggerEnemy && this.smallerEnemy && legendmod.playerCellIDs.length) {
+            if (!legendmod.indexedCells.hasOwnProperty(this.biggerEnemy)) {
                 this.biggerEnemy = null;
                 this.biggerEnemyAcc = null;
                 this.biggerSize = null;
                 return
             }
-            if (!LM.indexedCells.hasOwnProperty(this.smallerEnemy)) {
+            if (!legendmod.indexedCells.hasOwnProperty(this.smallerEnemy)) {
                 this.smallerEnemy = null;
                 this.smallerEnemyAcc = null;
                 this.smallerSize = null;
                 return
             }
 
-            var index = LM.selectBiggestCell ? LM.playerCells.length - 0x1 : 0x0;
-            var p = LM.playerCells[index];
-            if (LM.playerCells[index] == undefined) return;
+            var index = legendmod.selectBiggestCell ? legendmod.playerCells.length - 0x1 : 0x0;
+            var p = legendmod.playerCells[index];
+            if (legendmod.playerCells[index] == undefined) return;
 
-            var small = LM.indexedCells[this.smallerEnemy],
+            var small = legendmod.indexedCells[this.smallerEnemy],
                 distToP = this.getDistance(p.targetX, p.targetY, small.targetX, small.targetY);
             //ctx.arc(players[current].x, players[current].y, players[current].size + 760, 0, this.pi2, false);
-            this.smallerSize = ~~(LM.indexedCells[this.smallerEnemy].size * LM.indexedCells[this.smallerEnemy].size / 100);
+            this.smallerSize = ~~(legendmod.indexedCells[this.smallerEnemy].size * legendmod.indexedCells[this.smallerEnemy].size / 100);
 
             if (small.size + 760 + p.size < distToP) return
 
-            var xc = LM.playerCells[index].targetX //.x
-            var yc = LM.playerCells[index].targetY //.y
+            var xc = legendmod.playerCells[index].targetX //.x
+            var yc = legendmod.playerCells[index].targetY //.y
 
-            /*var x = LM.indexedCells[LM.selected].targetX//.x
-            var y = LM.indexedCells[LM.selected].targetY//.y
+            /*var x = legendmod.indexedCells[legendmod.selected].targetX//.x
+            var y = legendmod.indexedCells[legendmod.selected].targetY//.y
             
             var a = xc - x
             var b = yc - y
-            var distance = Math.sqrt( a*a + b*b ) - (LM.indexedCells[LM.selected].size+LM.playerCells[index].size)
+            var distance = Math.sqrt( a*a + b*b ) - (legendmod.indexedCells[legendmod.selected].size+legendmod.playerCells[index].size)
 
             var ang = Math.atan2(y - yc, x - xc);
-            LM.cursorX= xc +(Math.cos(ang)*distance)
-            LM.cursorY= yc +(Math.sin(ang)*distance)
-            LM.sendPosition()*/
+            legendmod.cursorX= xc +(Math.cos(ang)*distance)
+            legendmod.cursorY= yc +(Math.sin(ang)*distance)
+            legendmod.sendPosition()*/
             console.log(reverseTrick)
         }
     }
