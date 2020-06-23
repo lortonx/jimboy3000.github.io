@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "95"; // the version 1.1-> 1.11
 
@@ -4905,7 +4905,7 @@ function initializeLM(modVersion) {
     });
 	if (window.WebGLRenderingContext) {
 		$("#unlockedFPS").parent().tooltip({
-			title: "Hardware Accelaration is currently OFF. ENABLE it, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
+			title: "Your Hardware Accelaration is currently OFF. You must ENABLE it, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
 			placement: "bottom"
 		});	
 	}
