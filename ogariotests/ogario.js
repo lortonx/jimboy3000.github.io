@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.960
+// v1.961
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -909,6 +909,7 @@ var displayText = {
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
+		unlockedFPS: 'Unlocked FPS (slowers the bots)',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -1343,6 +1344,7 @@ var displayText = {
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
+		unlockedFPS: 'Unlocked FPS (slowers the bots)',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -2485,6 +2487,7 @@ var defaultmapsettings = {
     spawnSpecialEffects: false,
     animatedRainbowColor: false,
     autoZoom: false,
+	unlockedFPS: true,
     autoHideNames: true,
     autoHideMass: true,
     autoHideFood: false,
@@ -4728,7 +4731,7 @@ function thelegendmodproject() {
             });
             $("#noNames, #showMass").remove();
             $("#og-settings .submenu-panel").append('<div id="og-options"></div>');
-            this.addOptions([], "animationGroup");
+            this.addOptions(["unlockedFPS"], "animationGroup");
             this.addOptions(["autoZoom"], "zoomGroup");
             this.addOptions([], "boardGroup");
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
@@ -13063,9 +13066,14 @@ Game name     : ${i.displayName}<br/>
 				//await drawRender.sleep(window.fpsM);				
                 drawRender.countFps();
                 drawRender.renderFrame();
-				setTimeout(function() {
-					drawRender.render()
-				}, 0);
+				if (defaultmapsettings.unlockedFPS){
+					setTimeout(function() {
+						drawRender.render()
+					}, 0);					
+				}
+				else{
+					window.requestAnimationFrame(drawRender.render);
+				}
 					//drawRender.render()
 				//}, 1000/window.fps);
 				//}, 0.1);
