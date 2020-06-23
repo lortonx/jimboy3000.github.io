@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "95"; // the version 1.1-> 1.11
 
@@ -4903,10 +4903,13 @@ function initializeLM(modVersion) {
         title: "Insert your in-game name",
         placement: "bottom"
     });
-    $("#unlockedFPS").parent().tooltip({
-        title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
-        placement: "bottom"
-    });	
+	if (window.WebGLRenderingContext) {
+		$("#unlockedFPS").parent().tooltip({
+			title: "Hardware Accelaration is currently OFF. ENABLE it, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
+			placement: "bottom"
+		});	
+	}
+
     $("#optimizedMass").parent().tooltip({
         title: "When ENABLED: Optimized mass (+/-2%) ON, Merge Timer BETA OFF. Suggested to be ENABLED for Lag reduce.",
         placement: "bottom"
