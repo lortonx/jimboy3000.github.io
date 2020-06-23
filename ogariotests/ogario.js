@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.944
+// v1.945
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -8485,7 +8485,8 @@ function thelegendmodproject() {
                 style.lineWidth = 20; ///
                 style.strokeStyle = this.color; ///
                 style.stroke(); ///
-            } else {
+            } 
+			else {
                 style.fillStyle = color;
                 style.fill();
             }
@@ -8626,7 +8627,8 @@ function thelegendmodproject() {
                 var recursive = false;
                 if (!this.isPlayerCell && (recursive = application.setAutoHideCellInfo(y)) && defaultmapsettings.autoHideNames && defaultmapsettings.autoHideMass) {
                     style.restore();
-                } else {
+                } 
+				else {
                     this.setDrawing();
                     this.setDrawingScale();
                     style.globalAlpha *= defaultSettings.textAlpha;
@@ -13050,7 +13052,8 @@ Game name     : ${i.displayName}<br/>
             render() {
                 drawRender.countFps();
                 drawRender.renderFrame();
-                window.requestAnimationFrame(drawRender.render);
+				drawRender.render
+                //window.requestAnimationFrame(drawRender.render);
             },
             init() {
                 this.setCanvas();
@@ -13329,7 +13332,12 @@ Game name     : ${i.displayName}<br/>
 
             } 
 			else if(defaultmapsettings.stickyCell) {
-				event.which == 1 ? (drawRender.LMB=true) : (drawRender.RMB=true)
+				if (1 == event.which){
+					drawRender.LMB=true
+				}
+				else{
+					drawRender.RMB=true
+				}
 			} 
 			else if(defaultmapsettings.reverseTrick) {
 				reverseTrick.pointInCircle(legendmod.cursorX, legendmod.cursorY, event.which);
