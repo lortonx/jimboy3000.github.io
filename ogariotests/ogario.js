@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.958
+// v1.959
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12155,7 +12155,7 @@ Game name     : ${i.displayName}<br/>
 				this.drawGhostCells();
 				//window.updateCellsClock=false
 				
-				drawRender.render();
+				//drawRender.render();
             },
             drawViewPorts(ctx) {
                 this.drawViewport(this.ctx, 'Viewport', LM.camMinX, LM.camMinY, LM.camMaxX, LM.camMaxY, defaultSettings.bordersColor, 15);
@@ -13062,9 +13062,10 @@ Game name     : ${i.displayName}<br/>
 				//if (!window.fpsM) window.fpsM = 4
 				//await drawRender.sleep(window.fpsM);				
                 drawRender.countFps();
-                //drawRender.renderFrame();
-				//setTimeout(function() {
-					drawRender.renderFrame();
+                drawRender.renderFrame();
+				setTimeout(function() {
+					drawRender.render()
+				0);
 					//drawRender.render()
 				//}, 1000/window.fps);
 				//}, 0.1);
