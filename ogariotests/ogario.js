@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.965
+// v1.966
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -9175,7 +9175,8 @@ function thelegendmodproject() {
                         cursorX = this.viewXTrue + this.distX;
                         cursorY = this.viewYTrue + this.distY;
                     }
-                } else if (LM.dance) {
+                } 
+				else if (LM.dance) {
                     let d = ~~((Date.now() / 40) % 8),
                         distance = 50000;
                     switch (d) {
@@ -9215,12 +9216,14 @@ function thelegendmodproject() {
                             console.log(d);
                             break;
                     }
-                } else {
-                    if (specialcommand) {
+                } 
+				else {
+                    //if (specialcommand) {
                         //console.log('hi')
                         //cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                         //cursorY=9999;					
-                    } else if (!window.autoPlay) {
+                    //} 
+					if (!window.autoPlay) {
                         cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(this.cursorX) : this.cursorX; //Sonia3
                         cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(this.cursorY) : this.cursorY; //Sonia3
                         if (!this.play && this.targeting || this.pause) {
@@ -9236,7 +9239,8 @@ function thelegendmodproject() {
                             cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(cell.y) : cell.y; //Sonia3
                             // var cursorX = cell.x;
                             //var cursorY = cell.y;
-                        } else {
+                        } 
+						else {
                             cursorX = window.legendmod.vector[window.legendmod.vnr][0] ? this.translateX(target2.x) : target2.x; //Sonia3
                             cursorY = window.legendmod.vector[window.legendmod.vnr][1] ? this.translateY(target2.y) : target2.y; //Sonia3
                             //var cursorX = target2.x;
@@ -11841,7 +11845,7 @@ Game name     : ${i.displayName}<br/>
             }, setInterval(function() {
                 app.sendPosition();
             //}, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
-			}, 10), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
+			}, 5), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
         }
     };
     window.legendmod = LM; // look at this
