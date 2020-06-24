@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.964
+// v1.965
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11840,7 +11840,8 @@ Game name     : ${i.displayName}<br/>
                 app.setZoom(e);
             }, setInterval(function() {
                 app.sendPosition();
-            }, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
+            //}, 40), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
+			}, 10), window.master && window.master.clientVersion && this.setClientVersion(window.master.clientVersion, window.master.clientVersionString);
         }
     };
     window.legendmod = LM; // look at this
