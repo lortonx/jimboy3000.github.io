@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.967
+// v1.968
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -12060,7 +12060,8 @@ Game name     : ${i.displayName}<br/>
                         }
 
                     }
-                }                
+                }       
+				this.drawGhostCells();
                 for (var i = 0; i < LM.removedCells.length; i++) {
                     LM.removedCells[i].draw(this.ctx, true);
                 }
@@ -12160,7 +12161,7 @@ Game name     : ${i.displayName}<br/>
                         this.ctx.drawImage(this.pieChart, this.canvasWidth - this.pieChart.width - 10, 10);
                     }
                 }				
-				this.drawGhostCells();
+				
 				//window.updateCellsClock=false
 				
 				//drawRender.render();
