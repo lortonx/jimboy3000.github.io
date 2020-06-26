@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.976
+// v1.977
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -1012,8 +1012,8 @@ var displayText = {
         //showStatsSTE: 'Statystyki: Przedziały Masy',
         showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
         showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat', 
-        showStatsMTE: 'MTE: Enemy\'s minimal mass to not be eaten by our moving', 
-        showStatsSTE: 'STE: Enemy\'s minimal mass to not be eaten by our split', 
+        showStatsMTE: 'MTE: Enemy\'s maximal mass to be eaten by our move', 
+        showStatsSTE: 'STE: Enemy\'s maximal mass to be eaten by our split', 
         showStatsTTE: 'TTE: Minimal mass of teammate to tricksplit',
         showStatsPTE: 'PTE: Maximal enemy\'s mass for our presplit',
         showStatsN16: 'n/16: Pieces',
@@ -1448,8 +1448,8 @@ var displayText = {
         showStatsMass: 'Mass',
         showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
         showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat', 
-        showStatsMTE: 'MTE: Enemy\'s minimal mass to not be eaten by our moving', 
-        showStatsSTE: 'STE: Enemy\'s minimal mass to not be eaten by our split', 
+        showStatsMTE: 'MTE: Enemy\'s maximal mass to be eaten by our move', 
+        showStatsSTE: 'STE: Enemy\'s maximal mass to be eaten by our split', 
         showStatsTTE: 'TTE: Minimal mass of teammate to tricksplit',
         showStatsPTE: 'PTE: Maximal enemy\'s mass for our presplit',
         showStatsN16: 'n/16: Pieces',
