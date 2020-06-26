@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.980
+// v1.982
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -910,7 +910,7 @@ var displayText = {
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
-		unlockedFPS: 'Framework',
+		unlockedFPS: 'Frames per sec',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -1345,7 +1345,7 @@ var displayText = {
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
-		unlockedFPS: 'Framework',
+		unlockedFPS: 'Frames per sec',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -4737,7 +4737,7 @@ function thelegendmodproject() {
             $("#noNames, #showMass").remove();
             $("#og-settings .submenu-panel").append('<div id="og-options"></div>');
             //this.addOptions(["unlockedFPS"], "animationGroup");
-
+			this.addOptions([], "animationGroup");
 			
             this.addOptions(["autoZoom"], "zoomGroup");
             this.addOptions([], "boardGroup");
