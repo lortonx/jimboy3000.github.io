@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.977
+// v1.978
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -910,7 +910,7 @@ var displayText = {
         skipStats: 'Pomiń statystyki po śmierci',
         showQuest: 'Pokaż zadanie (quest)',
         autoZoom: 'Auto zoom',
-		unlockedFPS: 'Unlocked FPS (slower bots & other functions)',
+		unlockedFPS: 'Framework',
         animation: 'Opóźnienie animacji',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -1345,7 +1345,7 @@ var displayText = {
         skipStats: 'Skip stats after death',
         showQuest: 'Show quest',
         autoZoom: 'Auto zoom',
-		unlockedFPS: 'Unlocked FPS (slower bots & other functions)',
+		unlockedFPS: 'Framework',
         animation: 'Animation delay',
         macroFeeding: 'Macro feed (ms)',
         //hideSizes: 'Hide everything with size smaller than',
@@ -2488,7 +2488,7 @@ var defaultmapsettings = {
     spawnSpecialEffects: false,
     animatedRainbowColor: false,
     autoZoom: false,
-	unlockedFPS: true,
+	unlockedFPS: false,
     autoHideNames: true,
     autoHideMass: true,
     autoHideFood: false,
@@ -4025,7 +4025,8 @@ function thelegendmodproject() {
                             this.top5totalPlayers.textContent = s;
                     }
                 }
-            } else {
+            } 
+			else {
                 if (defaultmapsettings.showTop5) {
                     //temp
                     var tempTime = new Date().getTime();
@@ -4771,6 +4772,9 @@ function thelegendmodproject() {
                 $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper");
             }
             this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
+			//this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
+			this.addSliderBox(".animationGroup", "renderFrameInterval", 0, 200, 1);
+			
             this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01);
             this.addSliderBox(".boardGroup", "leaderboardlimit", 10, 30, 5);
             this.addSliderBox(".boardGroup", "teamboardlimit", 5, 40, 5);
