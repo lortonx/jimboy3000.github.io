@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.978
+// v1.979
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4736,7 +4736,9 @@ function thelegendmodproject() {
             });
             $("#noNames, #showMass").remove();
             $("#og-settings .submenu-panel").append('<div id="og-options"></div>');
-            this.addOptions(["unlockedFPS"], "animationGroup");
+            //this.addOptions(["unlockedFPS"], "animationGroup");
+
+			
             this.addOptions(["autoZoom"], "zoomGroup");
             this.addOptions([], "boardGroup");
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
