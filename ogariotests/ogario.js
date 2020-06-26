@@ -13164,26 +13164,11 @@ Game name     : ${i.displayName}<br/>
 				if (!defaultmapsettings.unlockedFPS){
 					window.requestAnimationFrame(drawRender.render);
 				}
-				else if (defaultmapsettings.unlockedFPS==2){
+				else if (defaultmapsettings.unlockedFPS==2 || defaultmapsettings.unlockedFPS==4 || defaultmapsettings.unlockedFPS==8 || defaultmapsettings.unlockedFPS==16 || defaultmapsettings.unlockedFPS==32 || defaultmapsettings.unlockedFPS==64){
 					setTimeout(function() {
 						window.requestAnimationFrame(drawRender.render);
-					}, 2);	
-				}		
-				else if (defaultmapsettings.unlockedFPS==4){
-					setTimeout(function() {
-						window.requestAnimationFrame(drawRender.render);
-					}, 4);	
-				}	
-				else if (defaultmapsettings.unlockedFPS==8){
-					setTimeout(function() {
-						window.requestAnimationFrame(drawRender.render);
-					}, 8);	
-				}	
-				else if (defaultmapsettings.unlockedFPS==16){
-					setTimeout(function() {
-						window.requestAnimationFrame(drawRender.render);
-					}, 16);	
-				}	
+					}, defaultmapsettings.unlockedFPS);	
+				}						
 				else{
 					setTimeout(function() {
 						drawRender.render()
