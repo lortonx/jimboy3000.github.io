@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.982
+// v1.983
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -13166,22 +13166,22 @@ Game name     : ${i.displayName}<br/>
 				}
 				else if (defaultmapsettings.unlockedFPS==2){
 					setTimeout(function() {
-						drawRender.render()
+						window.requestAnimationFrame(drawRender.render);
 					}, 2);	
 				}		
 				else if (defaultmapsettings.unlockedFPS==4){
 					setTimeout(function() {
-						drawRender.render()
+						window.requestAnimationFrame(drawRender.render);
 					}, 4);	
 				}	
 				else if (defaultmapsettings.unlockedFPS==8){
 					setTimeout(function() {
-						drawRender.render()
+						window.requestAnimationFrame(drawRender.render);
 					}, 8);	
 				}	
 				else if (defaultmapsettings.unlockedFPS==16){
 					setTimeout(function() {
-						drawRender.render()
+						window.requestAnimationFrame(drawRender.render);
 					}, 16);	
 				}	
 				else{
