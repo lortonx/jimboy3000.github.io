@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094d by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094e by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "95"; // the version 1.1-> 1.11
 
@@ -4917,8 +4917,8 @@ function initializeLM(modVersion) {
         '<option value="4" data-itr="">Limited Rate + 4ms delay</option>' +
         '<option value="8" data-itr="">Limited Rate + 8ms delay</option>' +
 		'<option value="16" data-itr="">Limited Rate + 16ms delay</option>' +
-        '</select></label>')
-    $("#FrameWorkOption").tooltip({
+        '</select></label>');
+	$("#FrameWorkOption").parent().tooltip({	
         title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
         placement: "bottom"
     });			
