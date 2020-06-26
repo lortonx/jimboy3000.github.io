@@ -4772,8 +4772,6 @@ function thelegendmodproject() {
                 $("#settingsChoice").appendTo($(".extrasGroup")).addClass("select-wrapper");
             }
             this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
-			//this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
-			this.addSliderBox(".animationGroup", "renderFrameInterval", 0, 200, 1);
 			
             this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01);
             this.addSliderBox(".boardGroup", "leaderboardlimit", 10, 30, 5);
