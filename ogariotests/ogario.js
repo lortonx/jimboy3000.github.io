@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.974
+// v1.976
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -1011,11 +1011,11 @@ var displayText = {
         showStatsMass: 'Statystyki: Masa',
         //showStatsSTE: 'Statystyki: Przedziały Masy',
         showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
-        showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat',  
-        showStatsMTE: 'MTE: Enemy\'s maximal mass to be moved and eaten',
-        showStatsSTE: 'STE: Enemy\'s maximal mass to be split and eaten', 
+        showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat', 
+        showStatsMTE: 'MTE: Enemy\'s minimal mass to not be eaten by our moving', 
+        showStatsSTE: 'STE: Enemy\'s minimal mass to not be eaten by our split', 
         showStatsTTE: 'TTE: Minimal mass of teammate to tricksplit',
-        showStatsPTE: 'PTE: Maximal enemy\'s mass for presplit',
+        showStatsPTE: 'PTE: Maximal enemy\'s mass for our presplit',
         showStatsN16: 'n/16: Pieces',
         showStatsFPS: 'Statystyki: FPS',
         //showStatsPPS: 'Statystyki: PPS',
@@ -1448,10 +1448,10 @@ var displayText = {
         showStatsMass: 'Mass',
         showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
         showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat', 
-        showStatsMTE: 'MTE: Maximal mass we need to move & eat',
-        showStatsSTE: 'STE: Maximal mass we need to split & eat', 
+        showStatsMTE: 'MTE: Enemy\'s minimal mass to not be eaten by our moving', 
+        showStatsSTE: 'STE: Enemy\'s minimal mass to not be eaten by our split', 
         showStatsTTE: 'TTE: Minimal mass of teammate to tricksplit',
-        showStatsPTE: 'PTE: Maximal enemy\'s mass for presplit',
+        showStatsPTE: 'PTE: Maximal enemy\'s mass for our presplit',
         showStatsN16: 'n/16: Pieces',
         showStatsFPS: 'FPS: Frames per second',
         //showStatsPPS: 'Game stats: PPS',
@@ -4735,7 +4735,6 @@ function thelegendmodproject() {
             });
             $("#noNames, #showMass").remove();
             $("#og-settings .submenu-panel").append('<div id="og-options"></div>');
-			this.addPresetBox('#og-settings', 'themePreset', themePresets, 'preset', 'changeThemePreset'); //exit 
             this.addOptions(["unlockedFPS"], "animationGroup");
             this.addOptions(["autoZoom"], "zoomGroup");
             this.addOptions([], "boardGroup");
