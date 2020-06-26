@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094c by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094d by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "95"; // the version 1.1-> 1.11
 
@@ -4903,14 +4903,25 @@ function initializeLM(modVersion) {
         title: "Insert your in-game name",
         placement: "bottom"
     });
-    $("#unlockedFPS").parent().tooltip({
-        title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
-        placement: "bottom"
-    });	
+
     $("#optimizedMass").parent().tooltip({
         title: "When ENABLED: Optimized mass (+/-2%) ON, Merge Timer BETA OFF. Suggested to be ENABLED for Lag reduce.",
         placement: "bottom"
     });	
+		
+	$('#animation-value').parent().before(
+        '<label style="float:left; padding-left:0; padding-right:0">' + textLanguage.unlockedFPS + '<select id="FrameWorkOption" class="form-control" onchange="changeFrameWork();" required="" data-original-title="" title="" style="display:inline; width: 70%; float:right;" >' +
+        '<option value="false" data-itr="">Default limited Rate</option>' +
+        '<option value="true" data-itr="">Unlimited Rate</option>' +
+        '<option value="2" data-itr="">Limited Rate + 2ms delay</option>' +
+        '<option value="4" data-itr="">Limited Rate + 4ms delay</option>' +
+        '<option value="8" data-itr="">Limited Rate + 8ms delay</option>' +
+		'<option value="16" data-itr="">Limited Rate + 16ms delay</option>' +
+        '</select></label>')
+    $("#FrameWorkOption").tooltip({
+        title: "Hardware Accelaration must be ENABLED. Type on chrome: chrome://gpu/ . If disabled, chrome->Settings->Advanced->System-> Use hardware accelaration when available",
+        placement: "bottom"
+    });			
 		
     $("#statsInfo").before('<div id="notes" class="main-color" style="display:none;font-size: 13px;float: left;font-weight: 700;border-radius: 4px;width: 65%;height: 147px;z-index: 15;margin: auto;top: 0px;right: 0px;left: 0px;bottom: 400px;position: fixed;pointer-events: auto;color: rgb(255, 255, 255);padding: 10px;background-color: rgba(0, 0, 0, 0.2);"><h5 id="notesaveforlater" class="main-color text-center" style="margin-top: 0px;">Save for later</h5>' +
         '<input id="note1" class="form-control main-color note" style="background: transparent;color: lightgrey;  width: 25%;float:left; border: none; border-bottom: 1px solid; border-color: darkgrey; margin-right: 7px; text-align: center;">' +
@@ -5058,6 +5069,8 @@ function initializeLM(modVersion) {
             }
         });
 */
+	changeFrameWorkStart()
+	
     $("#searchInput").bind("paste", function(e) {
         if (!searching) {
             var pastedData = e.originalEvent.clipboardData.getData('text');
@@ -5423,6 +5436,7 @@ function initializeLM(modVersion) {
                     }
         */
     });
+	
 
     $("#Cutnames").click(function() {
         CutNameConflictwithMessageFunction();
@@ -6326,3 +6340,30 @@ targetNode.lastChild.lastChild.appendChild(trText);
 	//window.cc = targetNode.children[0].children[1].text
   //}
 }							
+function changeFrameWork(){
+	if ($('#FrameWorkOption').val()=="false"){
+		defaultmapsettings.unlockedFPS=false
+	} 
+	else if ($('#FrameWorkOption').val()=="true"){
+		defaultmapsettings.unlockedFPS=true
+	} 
+	else if ($('#FrameWorkOption').val()==2){
+		defaultmapsettings.unlockedFPS=2
+	} 	
+	else if ($('#FrameWorkOption').val()==4){
+		defaultmapsettings.unlockedFPS=4
+	} 		
+	else if ($('#FrameWorkOption').val()==8){
+		defaultmapsettings.unlockedFPS=8
+	} 
+	else if ($('#FrameWorkOption').val()==16){
+		defaultmapsettings.unlockedFPS=16
+	} 
+	application.saveSettings(defaultmapsettings, "ogarioSettings");
+}	
+
+function changeFrameWorkStart() {
+	if (defaultmapsettings.unlockedFPS) {
+		$('#FrameWorkOption').val(defaultmapsettings.unlockedFPS);
+	}
+}
