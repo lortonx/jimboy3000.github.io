@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.971
+// v1.972
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -1010,10 +1010,10 @@ var displayText = {
         showStats: 'Pokaż statystyki',
         showStatsMass: 'Statystyki: Masa',
         //showStatsSTE: 'Statystyki: Przedziały Masy',
-        showStatsESTE: 'BSTE: Enemy\'s minimal to mass splt & eat',
-        showStatsEMTE: 'BMTE: Minimal mass of enemy to move & eat', 
-        showStatsMTE: 'MTE: Maximal mass we need move & eat',
-        showStatsSTE: 'STE: Maximal mass that we can eat by split', 
+        showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
+        showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat', 
+        showStatsMTE: 'MTE: Maximal mass we need to move & eat',
+        showStatsSTE: 'STE: Maximal mass we need to split & eat', 
         showStatsTTE: 'TTE: Minimal mass of teammate to tricksplit',
         showStatsPTE: 'PTE: Maximal enemy\'s mass for presplit',
         showStatsN16: 'n/16: Pieces',
@@ -1446,10 +1446,10 @@ var displayText = {
         top5skins: 'Skins on teamboard',
         showStats: 'Show game stats',
         showStatsMass: 'Mass',
-        showStatsESTE: 'BSTE: Enemy\'s minimal to mass splt & eat',
-        showStatsEMTE: 'BMTE: Minimal mass of enemy to move & eat', 
-        showStatsMTE: 'MTE: Maximal mass we need move & eat',
-        showStatsSTE: 'STE: Maximal mass that we can eat by split', 
+        showStatsESTE: 'BSTE: Enemy\'s minimal mass to splt & eat',
+        showStatsEMTE: 'BMTE: Enemy\'s minimal mass to move & eat', 
+        showStatsMTE: 'MTE: Maximal mass we need to move & eat',
+        showStatsSTE: 'STE: Maximal mass we need to split & eat', 
         showStatsTTE: 'TTE: Minimal mass of teammate to tricksplit',
         showStatsPTE: 'PTE: Maximal enemy\'s mass for presplit',
         showStatsN16: 'n/16: Pieces',
