@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.094f by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.094g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "96"; // the version 1.1-> 1.11
 
@@ -6373,5 +6373,8 @@ function changeFrameWork(){
 function changeFrameWorkStart() {
 	if (defaultmapsettings.unlockedFPS) {
 		$('#FrameWorkOption').val(defaultmapsettings.unlockedFPS);
+	}
+	else if (defaultmapsettings.unlockedFPS==true) {
+		$('#FrameWorkOption').val("true")
 	}
 }
