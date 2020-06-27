@@ -6371,10 +6371,10 @@ function changeFrameWork(){
 }	
 
 function changeFrameWorkStart() {
-	if (defaultmapsettings.unlockedFPS) {
-		$('#FrameWorkOption').val(defaultmapsettings.unlockedFPS);
-	}
-	else if (defaultmapsettings.unlockedFPS==true) {
+	if (defaultmapsettings.unlockedFPS==true) {
 		$('#FrameWorkOption').val("true")
 	}
+	if (defaultmapsettings.unlockedFPS) {
+		$('#FrameWorkOption').val(defaultmapsettings.unlockedFPS);
+	}	
 }
