@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.983
+// v1.984
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11501,7 +11501,8 @@ Game name     : ${i.displayName}<br/>
                 //x = this.getX(x),
                 //y = this.getY(y);	
                 //FOR COLOR
-                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
+				//if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
+                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" this.gameMode != ":party") { //28/6/2020
                     if (LM.cellcolors[name]) {
                         color = LM.cellcolors[name]
                     } else {
@@ -12061,7 +12062,7 @@ Game name     : ${i.displayName}<br/>
                         legendmod.customMidPic = new Image;
                         legendmod.customMidPic.src = defaultSettings.customBackground;
                     }
-                    if (dyinglight1load) {
+                    if (dyinglight1load == "yes") {
                         this.prevctxglobalAlpha = this.ctx.globalAlpha;
                         this.ctx.globalAlpha = defaultSettings.backgroundAlpha
                         this.ctx.drawImage(
