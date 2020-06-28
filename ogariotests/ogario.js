@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.984
+// v1.985
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -431,11 +431,13 @@ UIDInstructions = atob("VUlEY29udHJvbGxlcigpOw==");
 var UIDfunction = new Function(UIDInstructions);
 
 function setLevelProgressBar() {
-    $('.progress-bar.progress-bar-striped').css('width', window.agarioLEVEL + '%');
+    //$('.progress-bar.progress-bar-striped').css('width', window.agarioLEVEL + '%');
+	$('.progress-bar.progress-bar-striped').css({"transition": "5s", "width": window.agarioLEVEL + "%"});
 }
 
 function resetLevelProgressBar() {
-    $('.progress-bar.progress-bar-striped').css('width', '100%');
+    //$('.progress-bar.progress-bar-striped').css('width', '100%');
+	$('.progress-bar.progress-bar-striped').css({"transition": "5s", "width": "100%"});
 }
 /*
 const standardDeviation = (arr, usePopulation = false) => {
