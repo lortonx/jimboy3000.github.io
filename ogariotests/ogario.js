@@ -11502,7 +11502,7 @@ Game name     : ${i.displayName}<br/>
                 //y = this.getY(y);	
                 //FOR COLOR
 				//if (!isVirus && !isFood && name != "" && this.gameMode != ":teams") {
-                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" this.gameMode != ":party") { //28/6/2020
+                if (!isVirus && !isFood && name != "" && this.gameMode != ":teams" && this.gameMode != ":party") { //28/6/2020
                     if (LM.cellcolors[name]) {
                         color = LM.cellcolors[name]
                     } else {
