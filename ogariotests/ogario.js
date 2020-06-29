@@ -1,14 +1,14 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.985
+// v1.986
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
 var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
 appendLMhiFbPs()
-window.externalScriptMassBar= []
+//window.externalScriptMassBar= []
 
 function changeregion() {
     if ($('#region').val() == "Private") {
@@ -4062,9 +4062,7 @@ function thelegendmodproject() {
                                 teamboardskin.crossOrigin = 'anonymous';
                                 teamboardskin.src = "https://legendmod.ml/banners/icon32croped.ico.gif";
                             }
-                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color +
-                                '; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' +
-                                teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+                            t += ('<div><img src=' + teamboardskin.src + 'class="player-skin" style="border: solid 3px ${this.top5[o].color}">')
                             /* if (defaultmapsettings["showTargeting"]) {
                               t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
                             } */
@@ -4088,22 +4086,32 @@ function thelegendmodproject() {
                             }
                             if (flag == false && this.top5[o].lbgpi >= 0) {
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
-                            } else if (flag == false && (this.calculateMapSector(this.top5[o].x, this.top5[o].y) == "C3" || legendmod.gameMode == ":party")) {
+                            } 
+							else if (flag == false && (this.calculateMapSector(this.top5[o].x, this.top5[o].y) == "C3" || legendmod.gameMode == ":party")) {
                                 t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
                             }
                             //temporary socket 3
                             else if (flag == false && this.top5[o].lbgpi == -2) {
-                                if (this.top5[o].temp == true) {
-                                    t = t + ('<span class="hud-main-color">[' + 'Temp. Socket' + "]</span>");
+                                if (this.top5[o].temp == true) {    
+                                    t += ('<span class="hud-main-color">[Temp. Socket]</span>');
                                 } else {
-                                    t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
+                                    t += ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) +']</span>');
                                 }
                             }
                             //t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
-							//external script
-							if (!window.externalScriptMassBar[o]) window.externalScriptMassBar[o]=""
-							//	
-                            t = t + ('<span class="top5-mass-color">[' + this.shortMassFormat(this.top5[o].mass) + "]</span> " + this.escapeHTML(this.top5[o].nick) + "</div></li>" + window.externalScriptMassBar[o]);
+                            let shortMassFormat = this.shortMassFormat(this.top5[o].mass)
+                            let playersNickName = this.escapeHTML(this.top5[o].nick)
+
+                            let totalMass     = this.top5.map(top5 => top5.mass).reduce((accumulator, playerMass) => accumulator + playerMass)
+
+                            t += ('<span class="top5-mass-color">'+
+							'[' + shortMassFormat ']' +
+                                        '<div style="color: white; display: inline-block">${this.escapeHTML(this.top5[o].nick)}</div>'+
+                                        '<div class="top5-mass-bar-container">'+
+                                            '<div class="top5-mass-bar" style="width: ${this.top5[o].mass / totalMass * 100}%;"></div>'+
+                                        '</div>'+
+                                        '</span>'+
+                                    '</div>');
                         }
                     }
                     this.top5pos.innerHTML = t;
@@ -4114,6 +4122,8 @@ function thelegendmodproject() {
                     this.top5totalMass.textContent = this.shortMassFormat(e);
                     this.top5totalPlayers.textContent = s;
                 }
+            }
+        },
             }
         },
         /*
