@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.986
+// v1.987
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4113,10 +4113,10 @@ function thelegendmodproject() {
                             let totalMass     = this.top5.map(top5 => top5.mass).reduce((accumulator, playerMass) => accumulator + playerMass)
 
                             t += (`<span class="top5-mass-color">
-                                        [${this.shortMassFormat(this.top5[o].mass)}]
-                                        <div style="color: white; display: inline-block">${this.escapeHTML(this.top5[o].nick)}</div>
+                                        [` + this.shortMassFormat(this.top5[o].mass) + `]
+                                        <div style="color: white; display: inline-block">` + this.escapeHTML(this.top5[o].nick) + `</div>
                                         <div class="top5-mass-bar-container">
-                                            <div class="top5-mass-bar" style="width: ${this.top5[o].mass / totalMass * 100}%;"></div>
+                                            <div class="top5-mass-bar" style="width: ` + this.top5[o].mass / totalMass * 100 + `%;"></div>
                                         </div>
                                         </span>
                                     </div>`);
