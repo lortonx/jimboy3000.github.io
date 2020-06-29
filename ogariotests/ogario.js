@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.985
+// v1.986
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7036,7 +7036,7 @@ function thelegendmodproject() {
                     n.mass = a,
                     n.alive = true,
                     n.updateTime = Date.now(),
-                    this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, a, n.color, n.lbgpi);
+                    this.targeting && this.targetID && e == this.targetID && this.updateTarget(n.nick, n.skinURL, s, o, n.mass, n.color, n.lbgpi);
             }
         },
         //Sonia3 Added 3 fuctions below
@@ -7544,7 +7544,7 @@ function thelegendmodproject() {
             };
             html = Languageletter368 + ': <span class=\"hud-main-color\">' + ogario.targetDistance + ' [' + text + ']</span>';
             if (ogario.play) {
-                html += ' | ' + textLanguage.targetMass + ': <span class=\"hud-main-color\">' + this.shortMassFormat(mass + ogario.playerMass) + '</span>'
+                html += ' | ' + textLanguage.targetMass + ': <span class=\"hud-main-color\">' + this.shortMassFormat(mass) + '</span>'
             }
             $('#target-summary').html(html);
             if (1 != this.targetStatus) {
