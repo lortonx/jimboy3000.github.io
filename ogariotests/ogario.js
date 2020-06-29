@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.985
+// v1.986
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4062,9 +4062,12 @@ function thelegendmodproject() {
                                 teamboardskin.crossOrigin = 'anonymous';
                                 teamboardskin.src = "https://legendmod.ml/banners/icon32croped.ico.gif";
                             }
-                            t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color +
-                                '; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' +
-                                teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+                            // t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color +
+                            //     '; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' +
+                            //     teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
+                            t = t + (`<div>
+                                      <img src=` + teamboardskin.src + ` class="player-skin" style="border: solid 3px` + this.top5[o].color + `">
+                                  `)
                             /* if (defaultmapsettings["showTargeting"]) {
                               t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
                             } */
@@ -4102,8 +4105,21 @@ function thelegendmodproject() {
                             //t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
 							//external script
 							if (!window.externalScriptMassBar[o]) window.externalScriptMassBar[o]=""
-							//	
-                            t = t + ('<span class="top5-mass-color">[' + this.shortMassFormat(this.top5[o].mass) + "]</span> " + this.escapeHTML(this.top5[o].nick) + "</div></li>" + window.externalScriptMassBar[o]);
+                            // t = t + ('<span class="top5-mass-color">[' + this.shortMassFormat(this.top5[o].mass) + "]</span> " + this.escapeHTML(this.top5[o].nick) + "</div></li>" + window.externalScriptMassBar[o]);
+
+                            let shortMassFormat = this.shortMassFormat(this.top5[o].mass)
+                            let playersNickName = this.escapeHTML(this.top5[o].nick)
+
+                            let totalMass     = this.top5.map(top5 => top5.mass).reduce((accumulator, playerMass) => accumulator + playerMass)
+
+                            t += (`<span class="top5-mass-color">
+                                        [${this.shortMassFormat(this.top5[o].mass)}]
+                                        <div style="color: white; display: inline-block">${this.escapeHTML(this.top5[o].nick)}</div>
+                                        <div class="top5-mass-bar-container">
+                                            <div class="top5-mass-bar" style="width: ${this.top5[o].mass / totalMass * 100}%;"></div>
+                                        </div>
+                                        </span>
+                                    </div>`);
                         }
                     }
                     this.top5pos.innerHTML = t;
