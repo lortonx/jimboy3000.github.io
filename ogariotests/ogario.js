@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.987
+// v1.988
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4065,9 +4065,8 @@ function thelegendmodproject() {
                             // t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color +
                             //     '; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: 2px; margin-top: 2px; width: 26px; height:26px; display: inline-block;" alt="">' +
                             //     teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
-                            t = t + (`<div>
-                                      <img src=` + teamboardskin.src + ` class="player-skin" style="border: solid 3px` + this.top5[o].color + `">
-                                  `)
+                            t = t + ('<div>'+
+                                      '<img id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + ' src="' + teamboardskin.src + '" class="player-skin" style="border: solid 3px; background-color:  "' + this.top5[o].color + '">')
                             /* if (defaultmapsettings["showTargeting"]) {
                               t = t + ('<a href="#" data-user-id="' + this.top5[o].id + '" class="set-target ogicon-target"></a> ');
                             } */
@@ -4104,7 +4103,7 @@ function thelegendmodproject() {
                             }
                             //t = t + ('<span class="hud-main-color">[' + this.calculateMapSector(this.top5[o].x, this.top5[o].y) + "]</span>");
 							//external script
-							if (!window.externalScriptMassBar[o]) window.externalScriptMassBar[o]=""
+							//if (!window.externalScriptMassBar[o]) window.externalScriptMassBar[o]=""
                             // t = t + ('<span class="top5-mass-color">[' + this.shortMassFormat(this.top5[o].mass) + "]</span> " + this.escapeHTML(this.top5[o].nick) + "</div></li>" + window.externalScriptMassBar[o]);
 
                             let shortMassFormat = this.shortMassFormat(this.top5[o].mass)
