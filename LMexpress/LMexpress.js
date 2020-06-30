@@ -1,7 +1,7 @@
 /**************
  * Legend express v0.094g by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "96"; // the version 1.1-> 1.11
+var semimodVersion = "97"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -52,6 +52,7 @@ var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlytenth = localStorage.getItem("checkonlytenth");
+var checkonlyrewardday = localStorage.getItem("checkonlyrewardday");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var musicPlayer;
 
@@ -302,7 +303,7 @@ function loadersettings() {
             }
         }	
         if (checkonlytenth != "true") {
-		LMadvertisement2020();
+			LMadvertisement2020();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         /*toastr.info('<center><b>'+
 		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
@@ -317,6 +318,11 @@ function loadersettings() {
 		checkonlytenth = "true";
 		localStorage.setItem("checkonlytenth", checkonlytenth);				
        // }					
+		}
+		else if(checkonlyrewardday != "true"){
+			LMrewardDay();
+			checkonlyrewardday = "true";
+			localStorage.setItem("checkonlyrewardday", checkonlyrewardday);					
 		}
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
@@ -6377,4 +6383,26 @@ function changeFrameWorkStart() {
 	if (defaultmapsettings.unlockedFPS) {
 		$('#FrameWorkOption').val(defaultmapsettings.unlockedFPS);
 	}		
+}
+
+function LMrewardDay(){
+            $('#helloContainer').after('<div class="modal fade in" id="LMPromo" aria-hidden="false" style="display: block;">' +
+                '<div class="modal-backdrop fade in"></div>' +
+                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 622px;">' +
+                '<div class="modal-content">' +
+                '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Legend mod 2020' + '</h4>' +
+                '</div>' +
+				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="620" height="490" >' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+			$(".modal-dialog").draggable()
+            $("#CloseLMPromo").click(function() {
+                $("#LMPromo").remove();
+            });
+            $("#FAQLMPromo").click(function() {
+				window.open('https://legendmod.ml/', '_blank');
+            });	
 }
