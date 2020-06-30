@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.996
+// v1.997
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11350,7 +11350,7 @@ Game name     : ${i.displayName}<br/>
             //return !(x + size < this.viewX - x2s || y + size < this.viewY - y2s || x - size > this.viewX + x2s || y - size > this.viewY + y2s);
         },
         vanillaskins(y, g) {
-            if (g != null && application.customSkinsMap[y] == undefined) {
+            if (application.customSkinsMap[y] == undefined) {
                 if (LM.gameMode == ":party") {
                     y = y + "#000000";
                 }
@@ -11366,12 +11366,12 @@ Game name     : ${i.displayName}<br/>
                         }
                     }
                 } 
-				else if (g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))) {
+				else if (g != null && g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))) {
                     var g1 = g.replace('%custom_', 'skin_custom_')
                     core.registerSkin(y, null, EnvConfig.custom_skins_url + g1 + ".png", null);
                     //core.registerSkin(y, null, "https://configs.agario.miniclippt.com/live/custom_skins/" + g1 + ".png", null);
                 } 
-				else if (g.includes && g.includes("_level_") && !legendflags.includes(LowerCase(y))) {
+				else if (g != null && g.includes && g.includes("_level_") && !legendflags.includes(LowerCase(y))) {
                     var g1 = g.replace('%', '')
                     g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
                     g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
@@ -11379,7 +11379,7 @@ Game name     : ${i.displayName}<br/>
                     core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);
                     window.customskinanimated = true;
                 } 
-				else if (defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
+				else if (g != null && defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                         if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
                             //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
