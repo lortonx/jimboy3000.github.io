@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v2.001
+// v2.002
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -588,12 +588,12 @@ window.connectionBots = {
                 $('#slots').html(dataView.getUint8(1) + "/200")
                 break
             case 10:
-                toastr.info('<b>[SERVER]:</b> This version of Smart bots support Captcha Solver');
+                toastr.info('<b>[' + Premadeletter123 + ']:</b> This version of Smart bots support Captcha Solver');
                 window.LatestBotsVersion = true;
                 $('#handleCaptchaBotsArea').show();
                 break
             case 10:
-                toastr.info('<b>[SERVER]:</b> Server or bots is on closing state');
+                toastr.info('<b>[' + Premadeletter123 + ']:</b> Server or bots is on closing state');
                 break
         }
     },
@@ -9892,7 +9892,7 @@ function thelegendmodproject() {
                                 window.testobjects10220 = node;
                                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " 102 Disconnect", option, response);
                                 if (response == 20) {
-                                    toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
+                                    //toastr.error('<b>[SERVER]:</b> You have been disconnected because your User ID logged in from another place');
                                 }
                                 break;
                             case 21:
@@ -10393,7 +10393,7 @@ function thelegendmodproject() {
                             'name': ogarcopythelb
                         });
                     }
-                    var temp = '<b>[SERVER]:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';
+                    var temp = '<b>[' + Premadeletter123 + ']:</b> <font color="yellow"><b>Battle Royal Ranks:</b></font>';
                     for (var i = 0; i < legendmod.battleRoyale.rank.length; i++) {
                         temp += '<br>' + legendmod.battleRoyale.rank[i].place + ". " + legendmod.battleRoyale.rank[i].name;
                     }
@@ -10636,9 +10636,9 @@ function thelegendmodproject() {
                 case 170:
                     var u = r.uncompressedData.actionCountersUpdateField,
                         prev = this.user.actionCounters;
-                    if (u.potionsObtained > prev.potionsObtained) toastr.info(`New potion`);
-                    if (u.questsCompleted > prev.questsCompleted) toastr.info(`Quest completed`);
-                    if (u.skinsCreated > prev.skinsCreated) toastr.info(`Skin created`);
+                    if (u.potionsObtained > prev.potionsObtained) toastr.info('<b>[' + Premadeletter123 + ']:</b> New potion');
+                    if (u.questsCompleted > prev.questsCompleted) toastr.info('<b>[' + Premadeletter123 + ']:</b> Quest completed');
+                    if (u.skinsCreated > prev.skinsCreated) toastr.info('<b>[' + Premadeletter123 + ']:</b> Skin created');
                     break;
                 default:
                     //null
@@ -10649,55 +10649,55 @@ function thelegendmodproject() {
         disconnectMessage(type) {
             switch (type) {
                 case 1:
-                    toastr.error('User disconnected. Incompatible client')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Incompatible client')
                     break;
                 case 2:
-                    toastr.error('User disconnected. Packet not authorized')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Packet not authorized')
                     break;
                 case 3:
-                    toastr.error('User disconnected. Login elsewhere')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Login elsewhere')
                     break;
                 case 4:
-                    toastr.error('User disconnected. Server offline')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Server offline')
                     break;
                 case 5:
-                    toastr.error('User disconnected. User banned')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. User banned')
                     break;
                 case 6:
-                    toastr.error('User disconnected. Ping error')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Ping error')
                     break;
                 case 7:
-                    toastr.error('User disconnected. Unknown game type')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Unknown game type')
                     break;
                 case 8:
-                    toastr.error('User disconnected. Too many operations')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Too many operations')
                     break;
                 case 9:
-                    toastr.error('User disconnected. Unreachable realm')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Unreachable realm')
                     break;
                 case 10:
-                    toastr.error('User disconnected. User deleted')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. User deleted')
                     break;
                 case 11:
-                    toastr.error('User disconnected. Not authorized by realm')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Not authorized by realm')
                     break;
                 case 12:
-                    toastr.error('User disconnected. Bad request')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Bad request')
                     break;
                 case 13:
-                    toastr.error('User disconnected. Reset by peer')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Reset by peer')
                     break;
                 case 14:
-                    toastr.error('User disconnected. Invalid token')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Invalid token')
                     break;
                 case 15:
-                    toastr.error('User disconnected. Expired token')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Expired token')
                     break;
                 case 16:
-                    toastr.error('User disconnected. State transfer error')
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. State transfer error')
                     break;
                 default:
-                    toastr.error('User disconnected. Unknown error: ' + type)
+                    toastr.error('<b>[' + Premadeletter123 + ']:</b> User disconnected. Unknown error: ' + type)
             }
         },
         updateProducts(prod) {
@@ -13669,7 +13669,7 @@ Game name     : ${i.displayName}<br/>
             window.lastRecaptchaResponseToken = token;
             window.botscaptcha = false;
             //toastr.info('Captcha token sent to node.js', token)
-            toastr.info('<b>[SERVER]:</b> Thank you for solving Captcha for bots')
+            toastr.info('<b>[' + Premadeletter123 + ']:</b> Thank you for solving Captcha for bots')
             window.connectionBots.send(window.buffers.captchatoken(token))
         },
         setClientVersion(version, strVersion) {
@@ -13788,15 +13788,15 @@ function setGUIEvents() {
                         if (window.LatestBotsVersion) {
                             $('#handleCaptchaBotsAreaSettings').show();
                         }
-                    } else toastr.info('<b>[SERVER]:</b> Bots name, amount and user login are required before starting the bots')
-                } else toastr.info('<b>[SERVER]:</b> Bots Max amount is 199')
+                    } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots name, amount and user login are required before starting the bots')
+                } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
             } else {
-                toastr.info('<b>[SERVER]:</b> Party bots only available for Party mode')
+                toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
             }
         }
     })
     document.getElementById('captchaBots').addEventListener('click', () => {
-        toastr.info('<b>[SERVER]:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
+        toastr.info('<b>[' + Premadeletter123 + ']:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
         window.RequestedTokens = 100000;
         legendmod.sendTokenForBots();
         //legendmod.sendTimeOutTokenForBots();
