@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.999
+// v2.000
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -5641,7 +5641,8 @@ function thelegendmodproject() {
                             if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)
                             if (animated == true) app.cacheQueue3.push(url)
                             if (1 == app.cacheQueue3.length) app.cacheSkin3(app.customSkinsCache)
-                        } else if (animated == "fbSkin") {
+                        } 
+						else if (animated == "fbSkin") {
                             app.cacheQueue4.push(url)
                             if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)
                         }
@@ -11386,8 +11387,8 @@ Game name     : ${i.displayName}<br/>
                     g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
                     g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
                     g1 = makeUpperCaseAfterUnderline(g1);
-                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);
-                    window.customskinanimated = true;
+					window.customskinanimated = true;
+                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);                    
                 } 
 				else if (g != null && defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
