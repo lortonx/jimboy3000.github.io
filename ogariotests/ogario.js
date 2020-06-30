@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.992
+// v1.996
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4717,7 +4717,8 @@ function thelegendmodproject() {
 					<br>
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
-					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false">
+					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
+					<div style="display:inline-block;">Other bots </div><input type="checkbox" id="otherBots" placeholder="Bots Amount" spellcheck="false" style="display:inline-block;width: 20px">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
@@ -4735,6 +4736,7 @@ function thelegendmodproject() {
 					<u><a href="https://www.youtube.com/watch?v=rQMhxwIytro&feature=youtu.be" target="_blank">Tutorial video for PC node.js</a></u>	
 					<u><a href="https://repl.it/@legendmod/party-bots" target="_blank">Repl.it VPS</a></u>	
 					<u><a href="https://www.youtube.com/watch?v=xIupgFR7ZTY" target="_blank">Tutorial video for repl.it VPS</a></u>	
+					<u><a href="https://github.com/GeniusXD/free-agario-fb-bots" target="_blank">Other bots</a></u>
 					</div>`);
             if (!this.protocolMode) $("#quick-menu").prepend('<a href="#" class="quick-shop ogicon-cart" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_shop + '"></a><a href="#" class="quick-free-coins ogicon-coin-dollar" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_free_coins + '"></a><a href="#" class="quick-free-gifts ogicon-gift" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_gifts + '"></a><a href="#" class="quick-quests ogicon-trophy" data-toggle="tab-tooltip" data-placement="left" title="' + textLanguage.page_menu_main_dailyquests + '"></a>');
             $(".party-dialog, .partymode-info").remove();
@@ -11352,38 +11354,39 @@ Game name     : ${i.displayName}<br/>
                 if (LM.gameMode == ":party") {
                     y = y + "#000000";
                 }
-                //console.log(g)					
-                if (window.FreskinsMap && window.FreskinsMap.includes(y)) {
+                //console.log(g)		
+                if (legendflags.includes(LowerCase(y))) {
+                    core.registerSkin(y, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(y) + ".png", null);
+                }				
+                else if (window.FreskinsMap && window.FreskinsMap.includes(y)) {
                     for (var player = 0; player < window.FreeSkins.length; player++) {
                         if (y == window.FreeSkins[player].id) {
                             core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
                             //console.log("https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image)
                         }
                     }
-                } else if (g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))) {
+                } 
+				else if (g.includes && g.includes("%custom_") && !legendflags.includes(LowerCase(y))) {
                     var g1 = g.replace('%custom_', 'skin_custom_')
                     core.registerSkin(y, null, EnvConfig.custom_skins_url + g1 + ".png", null);
                     //core.registerSkin(y, null, "https://configs.agario.miniclippt.com/live/custom_skins/" + g1 + ".png", null);
-                } else if (g.includes && g.includes("_level_") && !legendflags.includes(LowerCase(y))) {
+                } 
+				else if (g.includes && g.includes("_level_") && !legendflags.includes(LowerCase(y))) {
                     var g1 = g.replace('%', '')
                     g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
                     g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
                     g1 = makeUpperCaseAfterUnderline(g1);
                     core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);
                     window.customskinanimated = true;
-                } else if (defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
+                } 
+				else if (defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                         if (window.EquippableSkins[player].productId == "skin_" + g.replace('%', '') && window.EquippableSkins[player].image != "uses_spine") {
                             //console.log("Player: " + y + " Color: " + EquippableSkins[player].cellColor + " Image: " + EquippableSkins[player].image + " SkinId: " + EquippableSkins[player].gameplayId + " Skins type: " + EquippableSkins[player].skinType);                                
-                            if (legendflags.includes(LowerCase(y))) {
-                                //console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " " + LowerCase(y) + " skin found. Skin registered");
-                                core.registerSkin(y, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(y) + ".png", null);
-                            } else {
                                 window.lastusednameforskin = y;
                                 //core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image, null);
                                 application.customSkinsMap[y] = "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image;
-                                application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);
-                            }
+                                application.loadSkin(application.customSkinsCache, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.EquippableSkins[player].image);                            
                         }
                     }
                 }
