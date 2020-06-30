@@ -6388,12 +6388,12 @@ function changeFrameWorkStart() {
 function LMrewardDay(){
             $('#helloContainer').after('<div class="modal fade in" id="LMPromo" aria-hidden="false" style="display: block;">' +
                 '<div class="modal-backdrop fade in"></div>' +
-                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 622px;">' +
+                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 922px;">' +
                 '<div class="modal-content">' +
                 '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
-                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Legend mod 2020' + '</h4>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Reward Day' + '</h4>' +
                 '</div>' +
-				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="620" height="490" >' +
+				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/rewardday.html" width="920" height="550" >' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -6404,5 +6404,5 @@ function LMrewardDay(){
             });
             $("#FAQLMPromo").click(function() {
 				window.open('https://legendmod.ml/', '_blank');
-            });	
+            });
 }
