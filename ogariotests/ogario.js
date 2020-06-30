@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.997
+// v1.998
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -5552,14 +5552,25 @@ function thelegendmodproject() {
 
         },
         findOwnedVanillaSkin() {
-            if (!ogarcopythelb.skinURL && defaultmapsettings.vanillaSkins && window.UserVanillaSkin && window.EquippableSkins && !application.customSkinsMap[ogarcopythelb.nick]) {
+            if (legendflags.includes(LowerCase(ogarcopythelb.nick))) {
+                core.registerSkin(ogarcopythelb.nick, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(ogarcopythelb.nick) + ".png", null);
+            }				
+            else if (window.FreskinsMap && window.FreskinsMap.includes(ogarcopythelb.nick)) {
+                for (var player = 0; player < window.FreeSkins.length; player++) {
+                    if (ogarcopythelb.nick == window.FreeSkins[player].id) {
+                        core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
+                    }
+                }
+            } 			
+            else if (!ogarcopythelb.skinURL && defaultmapsettings.vanillaSkins && window.UserVanillaSkin && window.EquippableSkins && !application.customSkinsMap[ogarcopythelb.nick]) {
                 //console.log("1. skin_" + window.UserVanillaSkin);
                 if (window.UserVanillaSkin.includes("skin_custom")) {
                     application.customSkinsMap[ogarcopythelb.nick] = window.UserVanillaSkin;
                     application.loadSkin(application.customSkinsCache, window.UserVanillaSkin);
                     //core.registerSkin(ogarcopythelb.nick, null, window.UserVanillaSkin, null);
                     //window.UserVanillaSkin=null;
-                } else {
+                } 
+				else {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
                         if (window.EquippableSkins[player].productId == "skin_" + window.UserVanillaSkin && window.EquippableSkins[player].image != "uses_spine") {
                             //console.log("2. " + window.EquippableSkins[player].image);	
@@ -5571,8 +5582,9 @@ function thelegendmodproject() {
                         }
                     }
                 }
-            } else {
-                //console.log('findOwnedVanillaSkin failed execution')
+            } 
+			else {
+                //console.log('findOwnedVanillaSkin failed execution')				
                 if (!window.EquippableSkins && !window.findOwnedVanillaSkinOnce) {
                     window.findOwnedVanillaSkinOnce = true;
                     console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' findOwnedVanillaSkin: window.EquippableSkins not loaded');
