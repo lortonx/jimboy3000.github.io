@@ -4718,7 +4718,7 @@ function thelegendmodproject() {
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
 					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
-					Other bots <input type="checkbox" id="otherBots" placeholder="Bots Amount" spellcheck="false">
+					<div style="display:inline-block;">Other bots </div><input type="checkbox" id="otherBots" placeholder="Bots Amount" spellcheck="false" style="display:inline-block;width: 20px">
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
