@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
 // This is part of the Legend mod project
-// v1.998
+// v1.999
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -5555,9 +5555,9 @@ function thelegendmodproject() {
             if (legendflags.includes(LowerCase(ogarcopythelb.nick))) {
                 core.registerSkin(ogarcopythelb.nick, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(ogarcopythelb.nick) + ".png", null);
             }				
-            else if (window.FreskinsMap && window.FreskinsMap.includes(ogarcopythelb.nick)) {
+            else if (window.FreskinsMap && window.FreskinsMap.includes(LowerCase(ogarcopythelb.nick))) {
                 for (var player = 0; player < window.FreeSkins.length; player++) {
-                    if (ogarcopythelb.nick == window.FreeSkins[player].id) {
+                    if (LowerCase(ogarcopythelb.nick) == window.FreeSkins[player].id) {
                         core.registerSkin(ogarcopythelb.nick, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
                     }
                 }
@@ -11370,9 +11370,9 @@ Game name     : ${i.displayName}<br/>
                 if (legendflags.includes(LowerCase(y))) {
                     core.registerSkin(y, null, "https://legendmod.ml/agario/live/flags/" + LowerCase(y) + ".png", null);
                 }				
-                else if (window.FreskinsMap && window.FreskinsMap.includes(y)) {
+                else if (window.FreskinsMap && window.FreskinsMap.includes(LowerCase(y))) {
                     for (var player = 0; player < window.FreeSkins.length; player++) {
-                        if (y == window.FreeSkins[player].id) {
+                        if (LowerCase(y) == window.FreeSkins[player].id) {
                             core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image, null);
                             //console.log("https://configs-web.agario.miniclippt.com/live/" + window.agarversion + window.FreeSkins[player].image)
                         }
