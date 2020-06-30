@@ -1,7 +1,7 @@
 // Source script
-// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych
+// Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.002
+// v2.003
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -7539,16 +7539,15 @@ function thelegendmodproject() {
                 this.targetNick = nick;
                 $('#target-nick').html(this.escapeHTML(nick))
             }
-            $('#target-skin').css('background-color', color);
             if (skinUrl) {
                 if (this.targetSkinURL !== skinUrl) {
                     if (this.customSkinsCache.hasOwnProperty(skinUrl + '_cached')) {
                         $('#target-skin img').attr('src', skinUrl);
+                        $('#target-skin img').css('border', '2px solid' + color); 
                         this.targetSkinURL = skinUrl;
                     } else {
                         $('#target-skin img').attr('src', 'https://legendmod.ml/banners/static/img/blank.png')
                     }
-
                 }
             }
             $('#target-status').text('[' + this.shortMassFormat(mass) + ']');
@@ -13435,13 +13434,10 @@ Game name     : ${i.displayName}<br/>
             helloContainerHeight = ogario.menuHeight || 618;
         }
         var scale = Math.min(1, innerHeigth / helloContainerHeight);
-        var top = helloContainerHeight * scale;
-        var resizeTop = Math.round(innerHeigth / 2 - 0.5 * top);
-        var transform = "translate(-50%, 0%) scale(" + scale + ")";
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
         helloContainer.css("transform", transform);
         helloContainer.css("-ms-transform", transform);
         helloContainer.css("-webkit-transform", transform);
-        helloContainer.css("top", resizeTop + "px");
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
     }
