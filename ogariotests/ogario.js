@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.003
+// v2.005
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -575,7 +575,11 @@ window.connectionBots = {
                 window.botscaptcha = true;
                 if (!legendmod.play && window.LatestBotsVersion && $('#handleCaptchaBots').is(':checked')) {
                     toastr.info('<b>[' + Premadeletter123 + ']:</b> Solve the captcha for your bots')
-                    window.agarCaptcha.requestCaptcha()
+					if (window.captchawidget && grecaptcha){
+						grecaptcha.reset(window.captchawidget);
+						window.captchawidget=null;
+					}					
+					window.agarCaptcha.requestCaptcha()
                     //window.master.recaptchaRequested()
                 } else {
                     toastr.info('Your IP has captcha and bots are unable to spawn, change your ip with a VPN or something to one that doesn\'t has captcha in order to use the bots')
@@ -9769,6 +9773,10 @@ function thelegendmodproject() {
                             application.autoResp();
                         }, 2000);
                     } else {
+						if (window.captchawidget && grecaptcha){
+							grecaptcha.reset(window.captchawidget);
+							window.captchawidget=null;
+						}						
                         window.agarCaptcha.requestCaptcha()
                         //window.master.recaptchaRequested();
                     }
