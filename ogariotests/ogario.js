@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.006
+// v2.007
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -1038,6 +1038,7 @@ var displayText = {
         'hk-macroFeed': 'Szybki feed',
         'hk-split': 'Podział',
         'hk-doubleSplit': 'Podwójny podział',
+		'hk-tripleSplit': 'Triple split',
         'hk-split16': 'Podział na 16',
         'hk-pause': 'Pauza kulki',
         'hk-multiboxswap': 'Multibox Swap',
@@ -1474,6 +1475,7 @@ var displayText = {
         'hk-macroFeed': 'Macro feed',
         'hk-split': 'Split',
         'hk-doubleSplit': 'Double split',
+		'hk-tripleSplit': 'Triple split',
         'hk-split16': 'Split 16',
         'hk-pause': 'Cell pause',
         'hk-multiboxswap': 'Multibox Swap',
@@ -3450,6 +3452,16 @@ function thelegendmodproject() {
                 app.split();
             }, 200);
         },
+        tripleSplit() {
+            var app = this;
+            app.split();
+            setTimeout(function() {
+                app.split();
+            }, 40);
+            setTimeout(function() {
+                app.split();
+            }, 80);			
+        },		
         split16() {
             var app = this;
             app.split();
