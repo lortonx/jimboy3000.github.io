@@ -1,7 +1,7 @@
 /**************
- * Legend express v0.094g by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.095 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
-var semimodVersion = "97"; // the version 1.1-> 1.11
+var semimodVersion = "98"; // the version 1.1-> 1.11
 
 
 loadericon();
@@ -5401,7 +5401,8 @@ function initializeLM(modVersion) {
         }
         //
         if (clickedname == "YES") {
-            if ($("#nick").val().length >= 16) {
+			if (fancyCount2($("#nick").val()) >= 16) {
+            //if ($("#nick").val().length >= 16) {
                 //toastr.warning("<b>[SERVER]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
 				toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter2 + ':<br>' + $('#nick').val());
             }
@@ -5422,7 +5423,13 @@ function initializeLM(modVersion) {
             openvidmod();
         }
     });
-
+    $("#nick").on("input", function(){
+        if(fancyCount2($("#nick").val())>15){
+				while (fancyCount2($("#nick").val()) > 15) {
+					$("#nick").val($("#nick").val().slice(0,-1))
+				}			
+		}
+    });
     $(document).keyup(function(event) {
         if (event.which == 8) { // search
             if ($('input:focus').length == 0) {
