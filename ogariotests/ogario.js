@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.011
+// v2.012
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -9074,9 +9074,12 @@ function thelegendmodproject() {
                 nick = window.unescape(window.encodeURIComponent(self.playerNick));
                 var view = self.createView(1 + nick.length + 1 + token.length + 1);
                 var pos = 1
-                for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.charCodeAt(length))
+				//"℄🌀".codePointAt(length)
+				for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.codePointAt(length))
+                //for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.charCodeAt(length))
                 pos++
-                for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.charCodeAt(length));
+				for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.codePointAt(length))
+                //for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.charCodeAt(length));
                 self.sendMessage(view);
             }
             var sendSpawnPrivateServer = function() {
@@ -9084,9 +9087,11 @@ function thelegendmodproject() {
                 nick = window.unescape(window.encodeURIComponent(self.playerNick));
                 var view = self.createView(1 + nick.length + 1 + token.length + 1);
                 var pos = 1
-                for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.charCodeAt(length))
+				for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.codePointAt(length))
+                //for (let length = 0; length < nick.length; length++, pos++) view.setUint8(pos, nick.charCodeAt(length))
                 pos++
-                for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.charCodeAt(length));
+				for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.codePointAt(length))
+                //for (let length = 0; length < token.length; length++, pos++) view.setUint8(pos, token.charCodeAt(length));
                 self.sendMessage(view);
             }
 
