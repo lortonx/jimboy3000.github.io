@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.015
+// v2.016
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -13500,13 +13500,13 @@ Game name     : ${i.displayName}<br/>
         var topValue = () => {
             if (window.screen.height <= 768) {
                 helloContainer.css("top", "355px");
-                scale += 0.2;
+                scale += 0.1*defaultSettings.hudScale;
             } else if (window.screen.height >= 1080 && window.screen.height < 1440) {
                 helloContainer.css("top", "420px");
-                scale += 0.1;
+                scale += 0.2*defaultSettings.hudScale;
             } else if (window.screen.height >= 1440) {
                 helloContainer.css("top", "520px");
-                scale += 0.4;
+                scale += 0.3*defaultSettings.hudScale;
             }
         }
         
