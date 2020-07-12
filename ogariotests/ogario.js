@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.013
+// v2.014
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -13468,7 +13468,7 @@ Game name     : ${i.displayName}<br/>
         window.onkeyup = function(event) {};
     }
 
-    function ogarhusettings() {
+    /*function ogarhusettings() {
         var innerWidth = window.innerWidth;
         var innerHeigth = window.innerHeight;
         var helloContainer = $("#helloContainer");
@@ -13485,8 +13485,40 @@ Game name     : ${i.displayName}<br/>
         helloContainer.css("-webkit-transform", transform);
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
-    }
+    }*/
+    function ogarhusettings() {
+        var innerWidth = window.innerWidth;
+        var innerHeigth = window.innerHeight;
+        var helloContainer = $("#helloContainer");
+        var helloContainerHeight = helloContainer.innerHeight();
+        if (helloContainerHeight > 0) {
+            ogario.menuHeight = helloContainerHeight;
+        } else {
+            helloContainerHeight = ogario.menuHeight || 618;
+        }
+        var scale = Math.min(1, innerHeigth / helloContainerHeight);
+        var topValue = () => {
+            if (window.screen.height <= 768) {
+                helloContainer.css("top", "355px");
+                scale += 0.2;
+            } else if (window.screen.height >= 1080 && window.screen.height < 1440) {
+                helloContainer.css("top", "420px");
+                scale += 0.1;
+            } else if (window.screen.height >= 1440) {
+                helloContainer.css("top", "520px");
+                scale += 0.4;
+            }
+        }
+        
+        topValue()
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
 
+        helloContainer.css("transform", transform);
+        helloContainer.css("-ms-transform", transform);c
+        helloContainer.css("-webkit-transform", transform);
+        ogario.innerW = innerWidth;
+        ogario.innerH = innerHeigth;
+    }
     function resetonkeydown() {
         if (application.protocolMode) {
             return;
