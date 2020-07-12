@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.014
+// v2.015
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -13514,7 +13514,7 @@ Game name     : ${i.displayName}<br/>
         var transform = "translate(-50%, -30%) scale(" + scale + ")";
 
         helloContainer.css("transform", transform);
-        helloContainer.css("-ms-transform", transform);c
+        helloContainer.css("-ms-transform", transform);
         helloContainer.css("-webkit-transform", transform);
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
