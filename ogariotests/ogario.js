@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.017
+// v2.018
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -4096,7 +4096,7 @@ function thelegendmodproject() {
                                 teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: -30px; margin-left: 32px;">');*/
                              t = t + ('<li><a href="#" id="pos-skin" class= "set-target" data-user-id="' + this.top5[o].id + '"style="background-color: ' + this.top5[o].color +
                                 '; width: 30px; height:30px; display: inline-block;"><span style="position: absolute; margin-left: '+ 2*defaultSettings.hudScale +'px; margin-top: '+ 2*defaultSettings.hudScale +'px; width: ' + 26*defaultSettings.hudScale + 'px; height:' + 26*defaultSettings.hudScale + 'px; display: inline-block;" alt="">' +
-                                teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: ' + (-30*defaultSettings.hudScale) +'px; margin-left: ' 32*defaultSettings.hudScale +'px;">');    
+                                teamboardskin.outerHTML + '</span>' + '</a><div style="margin-top: ' + (-30*defaultSettings.hudScale) + 'px; margin-left: ' + 32*defaultSettings.hudScale + 'px;">');    
                             // t = t + ('<div><img src=' + teamboardskin.src + 'class="player-skin" style="border: solid 3px' + this.top5[o].color + '">' + '</a><div style="margin-top: -30px; margin-left: 32px;">');
 
                             /* if (defaultmapsettings["showTargeting"]) {
