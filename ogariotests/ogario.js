@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.023
+// v2.024
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11640,6 +11640,11 @@ Game name     : ${i.displayName}<br/>
                 if (name) {
                     cellUpdateCells.targetNick = name;
                 }
+				//15/7/2020
+                if (name=="℄🌀JustWatchPro") {
+                    cellUpdateCells.targetNick = "℄🌀Let\'s fight for glory. Let\'s fight for our kids";
+                }				
+				//
                 cellUpdateCells.targetX = x;
                 cellUpdateCells.targetY = y;
                 cellUpdateCells.targetSize = size;
