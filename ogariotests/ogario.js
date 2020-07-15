@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.031
+// v2.031a
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -2791,7 +2791,19 @@ function thelegendmodproject() {
             }
         },
         addSliderBox(id, name, min, max, step, callback) {
-            $(id).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[name] + ': </span><span id=\"' + name + '-value\" class=\"value\">' + defaultSettings[name] + '</span></div><input id=\"' + name + '-slider\" type=\"range\" min=\"' + min + '\" max=\"' + max + '\" step=\"' + step + '\" value=\"' + defaultSettings[name] + '\"></div>');
+            // $(id).append('<div class=\"slider-box\"><div class=\"box-label\"><span class=\"value-label\">' + textLanguage[name] + ': </span><span id=\"' + name + '-value\" class=\"value\">' + defaultSettings[name] + '</span></div><input id=\"' + name + '-slider\" type=\"range\" min=\"' + min + '\" max=\"' + max + '\" step=\"' + step + '\" value=\"' + defaultSettings[name] + '\"></div>');
+            $(id).append(`<div class="slider-box">
+                              <div class="box-label">
+                                  <span class="value-label">
+                                      ${textLanguage[name]}
+                                  </span>
+                                  <span id="${name}-value" class="value">
+                                      ${defaultSettings[name]}
+                                  </span>
+                              </div>
+                              <input id="${name}-slider" type="range" min="${min}" max="${max}" step="${step}" value="${defaultSettings[name]}">
+                          </div>
+                          `);
             if (callback) {
                 var app = this;
                 $('#' + name + '-slider').on('input', function() {
@@ -3144,6 +3156,7 @@ function thelegendmodproject() {
         },
         setHudColors() {
             var css = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + defaultSettings.hudMainColor + '}.hud,.hud-b,#chat-emoticons{background-color:' + defaultSettings.hudColor + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + defaultSettings.hudTextColor + '}.stats-hud-color{color:' + defaultSettings.statsHudColor + '}.time-hud-color{color:' + defaultSettings.timeHudColor + '}.top5-mass-color{color:' + defaultSettings.top5MassColor + '}#leaderboard-positions .me{color:' + defaultSettings.lbMeColor + '}#leaderboard-positions .teammate{color:' + defaultSettings.lbTeammateColor + '}';
+            $('.top5-mass-bar').css('background-color', $('#hudMainColor')[0].value)
             this.addCustomCSS('hudCSS', css);
         },
         setHudFont() {
@@ -3161,10 +3174,11 @@ function thelegendmodproject() {
             var a = Math.floor(530 * defaultSettings.hudScale);
             var n = Math.floor(85 * defaultSettings.hudScale);
             var r = Math.floor(20 * defaultSettings.hudScale);
+
             $('#overlays-hud').css('font-size', t + 'px');
-            $('#leaderboard-hud, #time-hud').width(e);
-            $('#top5-hud').width(e + 30).css('top', i + 'px');
-            $('#top5-pos').css('padding-left', o + 'px');
+            $('#time-hud').width(e);
+            $('#leaderboard-hud').css('transform', 'scale(' + defaultSettings.hudScale + ')');
+            $('#top5-hud').css('transform', 'scale(' + defaultSettings.hudScale + ')');
             $('#time-hud').css('top', a + 'px');
             $('#pause-hud').css('top', n + 'px');
             $('#target-hud').css('padding-top', r + 'px');
@@ -4144,7 +4158,7 @@ function thelegendmodproject() {
                                         [` + this.shortMassFormat(this.top5[o].mass) + `]
                                         <div style="color: white; display: inline-block">` + playersNickName + `</div>
                                         <div class="top5-mass-bar-container">
-                                            <div class="top5-mass-bar" style="width: ` + this.top5[o].mass / totalMass * 100 + `%;"></div>
+                                            <div class="top5-mass-bar" style="width: ` + this.top5[o].mass / totalMass * 100 + `%; background-color:` + $('#hudMainColor')[0].value + `"></div>
                                         </div>
                                         </span>
                                     </div>`);
@@ -4839,7 +4853,7 @@ function thelegendmodproject() {
             this.addInputBox(".sounds-panel", "messageSound", "Sound URL", "setMessageSound");
             this.addInputBox(".sounds-panel", "commandSound", "Sound URL", "setCommandSound");
             this.addInputBox(".sounds-panel", "virusSoundurl", "Sound URL", "setvirusSound");
-            $("body").append('<div id="overlays-hud" data-gamemode=":ffa"><div id="stats-hud" class="hud stats-hud-color"></div> <div id="top5-hud" class="hud"><h5 class="hud-main-color">Team<span class="team-top"></span></h5><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' + //<div class="hud-main-color team-top-menu"><a href="#" data-limit="5" class="team-top-limit active">5</a> | <a href="#" data-limit="10" class="team-top-limit">10</a> | <a href="#" data-limit="100" class="team-top-limit">100</a></div><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' +
+            $("body").append('<div id="overlays-hud" data-gamemode=":ffa"><div id="stats-hud" class="hud stats-hud-color"></div> <div id="top5-hud" class="hud"><h5 class="hud-main-color" style="font-size: 19px">Team<span class="team-top"></span></h5><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' + //<div class="hud-main-color team-top-menu"><a href="#" data-limit="5" class="team-top-limit active">5</a> | <a href="#" data-limit="10" class="team-top-limit">10</a> | <a href="#" data-limit="100" class="team-top-limit">100</a></div><ol id="top5-pos"></ol><div id="top5-total"><span class="hud-main-color ogicon-users"></span> ' +
                 textLanguage.totalPartyPlayers + ': <span id="top5-total-players" class="top5-mass-color">0</span>   <span class="hud-main-color ogicon-pacman"></span> ' +
                 textLanguage.totalPartyMass + ': <span id="top5-total-mass" class="top5-mass-color">0</span></div></div> <div id="time-hud" class="hud time-hud-color"></div> <div id="pause-hud" class="hud">' +
                 //textLanguage.pause + '</div> <div id="leaderboard-hud" class="hud-b"><h5 class="hud-main-color">legendmod.ml</h5><div id="leaderboard-data"></div><div id="leaderboard-positions"></div></div> <div id="btl-leaderboard-hud"><div class="hud hud-c"><span id="btl-players-status">Players ready</span>: <span id="btl-players-count">0</span></div></div> <div id="minimap-hud" class="hud-b"><canvas id="minimap-sectors"></canvas><canvas id="minimap"></canvas></div><div id="target-hud" class="hud"><div id="target-player"><span id="target-skin"><img src="https://legendmod.ml/banners/static/img/blank.png" alt=""> </span><span id="target-nick"></span><span id="target-status" class="hud-main-color">' + //class="hud-main-color">[' +
