@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.030
+// v2.031
 
 //window.testobjects = {};
 var consoleMsgLM = "[Legend mod Express] ";
@@ -11641,15 +11641,12 @@ Game name     : ${i.displayName}<br/>
                     cellUpdateCells.targetNick = name;
                 }
 				//15/7/2020
-                if (name=="℄🌀JustWatchPro" || (this.playerNick == "℄🌀JustWatchPro" && name == this.playerNick)) {					
+                if (name=="℄🌀JustWatchPro") {					
                     cellUpdateCells.targetNick = "℄🌀Let\'s fight for glory. Let\'s fight for our kids";
-					if (!application.customSkinsMap[cellUpdateCells.targetNick]){
-						var temp;
-						if (name=="℄🌀JustWatchPro") temp = 1;
-						if (this.playerNick == "℄🌀JustWatchPro" && name == this.playerNick) temp = 2;						
-						if (temp = 1 && application.customSkinsMap[name]) core.registerSkin(cellUpdateCells.targetNick, null, application.customSkinsMap[name], null);
-						else if (temp = 2 && application.customSkinsMap[this.playerNick]) core.registerSkin(cellUpdateCells.targetNick, null, application.customSkinsMap[this.playerNick], null);
-					}					
+					if (!application.customSkinsMap[cellUpdateCells.targetNick] && application.customSkinsMap[name]){					
+							application.customSkinsMap[cellUpdateCells.targetNick] = application.customSkinsMap[name];
+							application.loadSkin(application.customSkinsCache, application.customSkinsMap[name]);		
+						}												
                 }				
 				//
                 cellUpdateCells.targetX = x;
