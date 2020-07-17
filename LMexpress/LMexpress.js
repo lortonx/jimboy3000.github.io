@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.095 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.096 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "98"; // the version 1.1-> 1.11
 
@@ -4891,7 +4891,7 @@ function initializeLM(modVersion) {
     //    '</div>');
     $("#clantag").attr('placeholder', 'Password').tooltip({
         title: "Leave it empty for Public, or insert password of Clan, or use it as Tag",
-        placement: "left"
+        placement: "bottom"
     });
     $("#skin").tooltip({
         title: "Insert your manual skin weblink",
