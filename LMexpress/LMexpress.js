@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.097 by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.098 by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "98"; // the version 1.1-> 1.11
 
@@ -4894,7 +4894,7 @@ function initializeLM(modVersion) {
         placement: "bottom"
     });*/
     $("#clantag").attr('placeholder', 'Password');
-    $("#skin").tooltip({
+    /*$("#skin").tooltip({
         title: "Insert your manual skin weblink",
         placement: "left"
     });
@@ -4909,7 +4909,7 @@ function initializeLM(modVersion) {
     $("#nick").attr('placeholder', 'Name').tooltip({
         title: "Insert your in-game name",
         placement: "bottom"
-    });
+    });*/
 
     $("#optimizedMass").parent().tooltip({
         title: "When ENABLED: Optimized mass (+/-2%) ON, Merge Timer BETA OFF. Suggested to be ENABLED for Lag reduce.",
