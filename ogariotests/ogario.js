@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.035
+// v2.036
 
 
 //window.testobjects = {};
@@ -1210,6 +1210,7 @@ var displayText = {
         top5MassColor: 'Masa',
         lbMeColor: 'Topka - ja',
         lbTeammateColor: 'Topka - team',
+		lbTeammateColor2: 'Topka - team',
         hudFont: 'Czcionka HUD',
         hudScale: 'Skala HUD',
         chatTheming: 'Czat',
@@ -1646,6 +1647,7 @@ var displayText = {
         top5MassColor: 'Mass',
         lbMeColor: 'Leaderboard - me',
         lbTeammateColor: 'Leaderboard - teammate',
+		lbTeammateColor2: 'Leaderboard - teammate',
         hudFont: 'HUD font',
         hudScale: 'HUD scale',
         chatTheming: 'Chat',
@@ -1832,7 +1834,8 @@ var themePresets = {
         timeHudColor: '#01d9cc',
         top5MassColor: '#bf00aa',
         lbMeColor: '#bf00aa',
-        lbTeammateColor: '#018cf6',
+        lbTeammateColor: '#018cf6', //is a crack for delta
+		lbTeammateColor2: '#018cf6',
         hudFont: 'ubuntu-bold',
         hudScale: 1,
 
@@ -1997,6 +2000,7 @@ var themePresets = {
         top5MassColor: '#1fe000',
         lbMeColor: '#bf00aa',
         lbTeammateColor: '#018cf6',
+		lbTeammateColor2: '#018cf6',
         hudScale: 1.15,
         messageColor: 'rgba(0,0,0,0.4)',
         messageTextColor: '#e8e8e8',
@@ -2295,6 +2299,7 @@ var defaultSettings = {
     top5MassColor: '#bf00aa',
     lbMeColor: '#bf00aa',
     lbTeammateColor: '#018cf6',
+	lbTeammateColor2: '#018cf6',
     hudFont: 'ubuntu-bold',
     hudFontFamily: 'Ubuntu',
     hudFontWeight: 700,
@@ -2978,7 +2983,7 @@ function thelegendmodproject() {
             this.addColorBox('#theme-hud', 'timeHudColor', 'setHudColors');
             this.addColorBox('#theme-hud', 'top5MassColor', 'setHudColors');
             this.addColorBox('#theme-hud', 'lbMeColor', 'setHudColors');
-            this.addColorBox('#theme-hud', 'lbTeammateColor', 'setHudColors');
+            this.addColorBox('#theme-hud', 'lbTeammateColor2', 'setHudColors');
             this.addFontBox('#theme-hud', 'hudFont', 'setHudFont');
             this.addSliderBox('#theme-hud', 'hudScale', 0.5, 1.5, 0.01, 'setHudScale');
             this.addRgbaColorBox('#theme-chat', 'messageColor', 'setChatColors');
@@ -3157,7 +3162,7 @@ function thelegendmodproject() {
             this.setHudScale();
         },
         setHudColors() {
-            var css = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + defaultSettings.hudMainColor + '}.hud,.hud-b,#chat-emoticons{background-color:' + defaultSettings.hudColor + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + defaultSettings.hudTextColor + '}.stats-hud-color{color:' + defaultSettings.statsHudColor + '}.time-hud-color{color:' + defaultSettings.timeHudColor + '}.top5-mass-color{color:' + defaultSettings.top5MassColor + '}#leaderboard-positions .me{color:' + defaultSettings.lbMeColor + '}#leaderboard-positions .teammate{color:' + defaultSettings.lbTeammateColor + '}';
+            var css = '.hud-main-color,#top5-hud a,#target-panel-hud a:hover,#target-panel-hud a.active,#message-menu a{color:' + defaultSettings.hudMainColor + '}.hud,.hud-b,#chat-emoticons{background-color:' + defaultSettings.hudColor + '}.hud,.hud-b,#top5-hud a:hover,#target-panel-hud a{color:' + defaultSettings.hudTextColor + '}.stats-hud-color{color:' + defaultSettings.statsHudColor + '}.time-hud-color{color:' + defaultSettings.timeHudColor + '}.top5-mass-color{color:' + defaultSettings.top5MassColor + '}#leaderboard-positions .me{color:' + defaultSettings.lbMeColor + '}#leaderboard-positions .teammate{color:' + defaultSettings.lbTeammateColor2 + '}';
             $('.top5-mass-bar').css('background-color', $('#hudMainColor')[0].value)
             this.addCustomCSS('hudCSS', css);
         },
