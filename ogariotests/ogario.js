@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.032
+// v2.033
 
 
 //window.testobjects = {};
@@ -2980,7 +2980,7 @@ function thelegendmodproject() {
             this.addColorBox('#theme-hud', 'lbMeColor', 'setHudColors');
             this.addColorBox('#theme-hud', 'lbTeammateColor', 'setHudColors');
             this.addFontBox('#theme-hud', 'hudFont', 'setHudFont');
-            this.addSliderBox('#theme-hud', 'hudScale', 0.5, 2, 0.01, 'setHudScale');
+            this.addSliderBox('#theme-hud', 'hudScale', 0.5, 1.5, 0.01, 'setHudScale');
             this.addRgbaColorBox('#theme-chat', 'messageColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'messageTextColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'messageTimeColor', 'setChatColors');
@@ -13522,15 +13522,20 @@ Game name     : ${i.displayName}<br/>
         }
         var scale = Math.min(1, innerHeigth / helloContainerHeight);
         var topValue = () => {
-            if (window.screen.height <= 768) {
+            if (window.screen.height < 1080) {
                 helloContainer.css("top", "355px");
-                scale += 0.1*defaultSettings.hudScale;
-            } else if (window.screen.height >= 1080 && window.screen.height < 1440) {
+				scale = scale*defaultSettings.hudScale;
+                //scale += 0.1*defaultSettings.hudScale;
+            } 
+			else if (window.screen.height >= 1080 && window.screen.height < 1440) {
                 helloContainer.css("top", "420px");
-                scale += 0.2*defaultSettings.hudScale;
-            } else if (window.screen.height >= 1440) {
+				scale += scale*defaultSettings.hudScale;
+                //scale += 0.2*defaultSettings.hudScale;
+            } 
+			else if (window.screen.height >= 1440) {
                 helloContainer.css("top", "520px");
-                scale += 0.3*defaultSettings.hudScale;
+				scale = scale*defaultSettings.hudScale;
+                //scale += 0.3*defaultSettings.hudScale;
             }
         }
         
