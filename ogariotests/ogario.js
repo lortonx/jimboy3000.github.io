@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.034
+// v2.035
 
 
 //window.testobjects = {};
@@ -13522,20 +13522,20 @@ Game name     : ${i.displayName}<br/>
             helloContainerHeight = ogario.menuHeight || 618;
         }
         var scale = Math.min(1, innerHeigth / helloContainerHeight);
+		//
+		scale = scale*defaultSettings.hudScale;
+		//
         var topValue = () => {
             if (window.screen.height < 1080) {
                 helloContainer.css("top", "355px");
-				scale = scale*defaultSettings.hudScale;
                 //scale += 0.1*defaultSettings.hudScale;
             } 
 			else if (window.screen.height >= 1080 && window.screen.height < 1440) {
                 helloContainer.css("top", "420px");
-				scale += scale*defaultSettings.hudScale;
                 //scale += 0.2*defaultSettings.hudScale;
             } 
 			else if (window.screen.height >= 1440) {
                 helloContainer.css("top", "520px");
-				scale = scale*defaultSettings.hudScale;
                 //scale += 0.3*defaultSettings.hudScale;
             }
         }
