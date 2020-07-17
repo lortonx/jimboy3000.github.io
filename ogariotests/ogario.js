@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.033
+// v2.034
 
 
 //window.testobjects = {};
@@ -3036,6 +3036,7 @@ function thelegendmodproject() {
                     setTimeout(function() {
                         i.text(textLanguage.saveSett);
                     }, 500);
+					ogarhusettings();
                 });
             $('#theme').append('<div class=\"restore-settings\"><a href=\"#\">' + textLanguage.restoreThemeSettings + '</a></div>'),
                 $(document).on('click', '#theme .restore-settings a', function(e) {
