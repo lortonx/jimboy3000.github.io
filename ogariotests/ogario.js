@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.036
+// v2.037
 
 
 //window.testobjects = {};
@@ -682,8 +682,7 @@ function checkVideos(a, b) {
 function checkVideos2(a, b) {
     //console.log("b is: "+ b);
     for (i = 0; i < application.top5.length - 1; i++) {
-
-        if (i.nick == b) {
+        //if (i.nick == b) {
             //application.setTarget(i.id);
 
             if ($("#nick").val() != b) {
@@ -693,7 +692,8 @@ function checkVideos2(a, b) {
                         //console.log("volume 0, stage 0");
                         window.videoSkinPlayer[a].volume = 1;
                         window.videoSkinPlayerflag2[b] = true;
-                    } else {
+                    } 
+					else {
                         //console.log("volume 0, stage 1");
                         window.videoSkinPlayer[a].volume = 0;
                     }
@@ -702,10 +702,11 @@ function checkVideos2(a, b) {
                     window.videoSkinPlayer[a].volume = 0;
                 }
             }
-        }
+        //}
 
     }
-    if ($("#nick").val() != b) {
+	if ($("#nick").val() != b) {
+    //if ($("#nick").val() != b || application.customSkinsMap[$("#nick").val()] != a ) {
         checkvideoSkinPlayerflag2(a, b);
     }
 }
@@ -3787,7 +3788,8 @@ function thelegendmodproject() {
             if (!spects.length) {
                 //if (!legendmod.multiBoxPlayerExists){					
                 addBox()
-            } else if (!window.multiboxPlayerEnabledSaved) {
+            } 
+			else if (!window.multiboxPlayerEnabledSaved) {
                 if (!legendmod.play) {
                     play()
                 }
