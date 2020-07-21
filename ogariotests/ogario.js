@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.038
+// v2.039
 
 
 //window.testobjects = {};
@@ -13533,18 +13533,24 @@ Game name     : ${i.displayName}<br/>
 		scale = scale*defaultSettings.hudScale;
 		//
         var topValue = () => {
+			var distance=355;
             if (window.screen.height < 1080) {
+				distance=355;
                 helloContainer.css("top", "355px");
                 //scale += 0.1*defaultSettings.hudScale;
             } 
 			else if (window.screen.height >= 1080 && window.screen.height < 1440) {
+				distance=420;
                 helloContainer.css("top", "420px");
                 //scale += 0.2*defaultSettings.hudScale;
             } 
 			else if (window.screen.height >= 1440) {
+				distance=520;
                 helloContainer.css("top", "520px");
                 //scale += 0.3*defaultSettings.hudScale;
             }
+			distance = distance / defaultSettings.hudScale
+			helloContainer.css("top", distance + "px");
         }
         
         topValue()
