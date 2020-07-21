@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.045
+// v2.046
 
 
 //window.testobjects = {};
@@ -13544,12 +13544,8 @@ Game name     : ${i.displayName}<br/>
 		scale = scale*defaultSettings.hudScale;
 		//
         var topValue = () => {
-			var distance=355;
-            if (window.screen.height <= 900) {
-				distance=200;
-                //scale += 0.1*defaultSettings.hudScale;
-            } 			
-            else if (window.screen.height <= 992) {
+			var distance=355;		
+            if (window.screen.height <= 992) {
 				distance=250;
                 //scale += 0.1*defaultSettings.hudScale;
             } 			
