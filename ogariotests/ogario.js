@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.041
+// v2.042
 
 
 //window.testobjects = {};
@@ -2986,7 +2986,11 @@ function thelegendmodproject() {
             this.addColorBox('#theme-hud', 'lbMeColor', 'setHudColors');
             this.addColorBox('#theme-hud', 'lbTeammateColor2', 'setHudColors');
             this.addFontBox('#theme-hud', 'hudFont', 'setHudFont');
-            this.addSliderBox('#theme-hud', 'hudScale', 0.5, 1.5, 0.01, 'setHudScale');
+			var hudScaleLimit=1.5
+			if (window.screen.height < 900) {
+				
+			}
+			this.addSliderBox('#theme-hud', 'hudScale', 0.5, hudScaleLimit, 0.01, 'setHudScale');
             this.addRgbaColorBox('#theme-chat', 'messageColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'messageTextColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'messageTimeColor', 'setChatColors');
@@ -13534,19 +13538,19 @@ Game name     : ${i.displayName}<br/>
 		//
         var topValue = () => {
 			var distance=355;
-            if (window.screen.height < 900) {
-				distance=90;
+            if (window.screen.height <= 900) {
+				distance=50;
                 //scale += 0.1*defaultSettings.hudScale;
             } 			
-            if (window.screen.height < 992) {
-				distance=180;
+            if (window.screen.height <= 992) {
+				distance=105;
                 //scale += 0.1*defaultSettings.hudScale;
             } 			
-            else if (window.screen.height < 1080) {
-				distance=355;
+            else if (window.screen.height <= 1080) {
+				distance=210;
                 //scale += 0.1*defaultSettings.hudScale;
             } 
-			else if (window.screen.height >= 1080 && window.screen.height < 1440) {
+			else if (window.screen.height > 1080 && window.screen.height < 1440) {
 				distance=420;
                 //scale += 0.2*defaultSettings.hudScale;
             } 
