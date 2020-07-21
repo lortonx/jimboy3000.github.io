@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.038a
+// v2.038b
 
 
 //window.testobjects = {};
@@ -13518,11 +13518,51 @@ Game name     : ${i.displayName}<br/>
         helloContainer.css("-webkit-transform", transform);
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
-    }*/
+    }
+    function ogarhusettings() {
+        var innerWidth = window.innerWidth;
+        var innerHeigth = window.innerHeight;
+        var helloContainer = $("#helloContainer");
+        var helloContainerHeight = helloContainer.innerHeight();
+        if (helloContainerHeight > 0) {
+            ogario.menuHeight = helloContainerHeight;
+        } else {
+            helloContainerHeight = ogario.menuHeight || 618;
+        }
+        var scale = Math.min(1, innerHeigth / helloContainerHeight);
+		//
+		scale = scale*defaultSettings.hudScale;
+		//
+        var topValue = () => {
+            if (window.screen.height < 1080) {
+                helloContainer.css("top", "355px");
+                //scale += 0.1*defaultSettings.hudScale;
+            } 
+			else if (window.screen.height >= 1080 && window.screen.height < 1440) {
+                helloContainer.css("top", "420px");
+                //scale += 0.2*defaultSettings.hudScale;
+            } 
+			else if (window.screen.height >= 1440) {
+                helloContainer.css("top", "520px");
+                //scale += 0.3*defaultSettings.hudScale;
+            }
+        }
+        
+        topValue()
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
+
+        helloContainer.css("transform", transform);
+        helloContainer.css("-ms-transform", transform);
+        helloContainer.css("-webkit-transform", transform);
+        ogario.innerW = innerWidth;
+        ogario.innerH = innerHeigth;
+    }	
+	*/
     function ogarhusettings() {
         let innerWidth = window.innerWidth;
         let innerHeigth = window.innerHeight;
-
+        var helloContainer = $("#helloContainer");
+        var helloContainerHeight = helloContainer.innerHeight();
         let screenHeight = window.screen.height;
 
         let adjustScreen = () => {
@@ -13536,6 +13576,13 @@ Game name     : ${i.displayName}<br/>
         }
 
         adjustScreen()
+        var scale = Math.min(1, innerHeigth / helloContainerHeight);
+		//
+		scale = scale*defaultSettings.hudScale;		
+        var transform = "translate(-50%, -30%) scale(" + scale + ")";
+        helloContainer.css("transform", transform);
+        helloContainer.css("-ms-transform", transform);
+        helloContainer.css("-webkit-transform", transform);		
     }
     function resetonkeydown() {
         if (application.protocolMode) {
