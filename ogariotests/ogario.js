@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.038b
+// v2.038
 
 
 //window.testobjects = {};
@@ -3185,10 +3185,9 @@ function thelegendmodproject() {
 
             $('#overlays-hud').css('font-size', t + 'px');
             $('#time-hud').width(e);
-            $('#time-hud').css('top', a + 'px');
             $('#leaderboard-hud').css('transform', 'scale(' + defaultSettings.hudScale + ')');
             $('#top5-hud').css('transform', 'scale(' + defaultSettings.hudScale + ')');
-            $('#top5-hud').css('top', defaultSettings.hudScale * 50.25);
+            $('#time-hud').css('top', a + 'px');
             $('#pause-hud').css('top', n + 'px');
             $('#target-hud').css('padding-top', r + 'px');
         },
@@ -12696,14 +12695,14 @@ Game name     : ${i.displayName}<br/>
             drawVirusesRange(t, e, i) {
                 if (e.length) {
                     t.beginPath();
-                    e.forEach(e => {
-                        if (e.invisible != true) {
-                            let o = e.x;
-                            let a = e.y;
+                    for (var s = 0; s < e.length; s++) {
+                        if (e[s].invisible != true) {
+                            var o = e[s].x;
+                            var a = e[s].y;
                             t.moveTo(o, a);
-                            t.arc(o, a, e.size + 820, 0, this.pi2, false);
+                            t.arc(o, a, e[s].size + 820, 0, this.pi2, false);
                         }
-                    })
+                    }
                     t.fillStyle = defaultSettings.virusColor;
                     t.globalAlpha = 0.1;
                     t.fill();
@@ -13518,7 +13517,7 @@ Game name     : ${i.displayName}<br/>
         helloContainer.css("-webkit-transform", transform);
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
-    }
+    }*/
     function ogarhusettings() {
         var innerWidth = window.innerWidth;
         var innerHeigth = window.innerHeight;
@@ -13556,33 +13555,6 @@ Game name     : ${i.displayName}<br/>
         helloContainer.css("-webkit-transform", transform);
         ogario.innerW = innerWidth;
         ogario.innerH = innerHeigth;
-    }	
-	*/
-    function ogarhusettings() {
-        let innerWidth = window.innerWidth;
-        let innerHeigth = window.innerHeight;
-        var helloContainer = $("#helloContainer");
-        var helloContainerHeight = helloContainer.innerHeight();
-        let screenHeight = window.screen.height;
-
-        let adjustScreen = () => {
-            if (screenHeight == 1440) console.log('resolução 1')
-            else if (screenHeight == 1080) console.log('resolução 2')
-            else if (screenHeight == 1050) console.log('resolução 3')
-            else if (screenHeight == 1024) console.log('resolução 4')
-            else if (screenHeight == 864) console.log('resolução 5')
-            else if (screenHeight == 768) console.log('resolução 6')
-            else if (screenHeight == 600) console.log('resolução 7')
-        }
-
-        adjustScreen()
-        var scale = Math.min(1, innerHeigth / helloContainerHeight);
-		//
-		scale = scale*defaultSettings.hudScale;		
-        var transform = "translate(-50%, -30%) scale(" + scale + ")";
-        helloContainer.css("transform", transform);
-        helloContainer.css("-ms-transform", transform);
-        helloContainer.css("-webkit-transform", transform);		
     }
     function resetonkeydown() {
         if (application.protocolMode) {
