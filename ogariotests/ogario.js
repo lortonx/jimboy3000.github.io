@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.043
+// v2.045
 
 
 //window.testobjects = {};
@@ -2002,7 +2002,7 @@ var themePresets = {
         lbMeColor: '#bf00aa',
         lbTeammateColor: '#018cf6',
 		lbTeammateColor2: '#018cf6',
-        hudScale: 1.15,
+        hudScale: 1,
         messageColor: 'rgba(0,0,0,0.4)',
         messageTextColor: '#e8e8e8',
         messageTimeColor: '#545454',
@@ -2987,10 +2987,17 @@ function thelegendmodproject() {
             this.addColorBox('#theme-hud', 'lbTeammateColor2', 'setHudColors');
             this.addFontBox('#theme-hud', 'hudFont', 'setHudFont');
 			var hudScaleLimit=1.5
-			if (window.screen.height < 900) {
-				
-			}
+			if (window.screen.height <= 800) {
+				hudScaleLimit=0.9
+			}				
+			else if (window.screen.height <= 992) {
+				hudScaleLimit=1
+			}				
+			else if (window.screen.height <= 1080) {
+				hudScaleLimit=1.1
+			}		
 			this.addSliderBox('#theme-hud', 'hudScale', 0.5, hudScaleLimit, 0.01, 'setHudScale');
+			
             this.addRgbaColorBox('#theme-chat', 'messageColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'messageTextColor', 'setChatColors');
             this.addColorBox('#theme-chat', 'messageTimeColor', 'setChatColors');
@@ -13542,7 +13549,7 @@ Game name     : ${i.displayName}<br/>
 				distance=200;
                 //scale += 0.1*defaultSettings.hudScale;
             } 			
-            if (window.screen.height <= 992) {
+            else if (window.screen.height <= 992) {
 				distance=250;
                 //scale += 0.1*defaultSettings.hudScale;
             } 			
