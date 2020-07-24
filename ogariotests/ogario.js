@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.055
+// v2.056
 
 
 //window.testobjects = {};
@@ -3315,6 +3315,7 @@ function thelegendmodproject() {
         cacheQueue2: [],
         cacheQueue3: [],
         cacheQueue4: [],
+		cacheQueueSkinAnimated: [],
         deathLocations: [],
         playerID: null,
         playerMass: 0,
