@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.060
+// v2.061
 
 
 //window.testobjects = {};
@@ -11383,7 +11383,7 @@ Game name     : ${i.displayName}<br/>
 
 
             ///////////////// establish core.registerSkin
-            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] == null  && window.customskinsarray[window.customskinsname].customskinsurl != null) {
+            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] == null && window.customskinsarray[window.customskinsname] && window.customskinsarray[window.customskinsname].customskinsurl != null) {
                 for (i = 0; i <= this.leaderboard.length - 1; i++) {
                     if (this.leaderboard[i].nick == window.customskinsname) {
                         application.customSkinsMap[window.customskinsname] = window.customskinsarray[window.customskinsname].customskinsurl ;
@@ -14732,4 +14732,3 @@ Array.prototype.stDev = function stDev() {
     return Math.sqrt(average(this.map(value => Math.pow(value - average(this),2))))
 	//return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
 };
-
