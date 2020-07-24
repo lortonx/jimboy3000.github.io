@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.051
+// v2.052
 
 
 //window.testobjects = {};
@@ -7113,7 +7113,11 @@ function thelegendmodproject() {
                 map.setColor(defaultColor, customColor);
                 this.teamPlayers.push(map);
             }
-            this.cacheCustomSkin(nick, defaultColor, skinUrl);
+			
+            //this.cacheCustomSkin(nick, defaultColor, skinUrl);
+			if (!animatedskins[nick]){ //fix for animated skins to work
+				this.cacheCustomSkin(nick, defaultColor, skinUrl);
+			}
         },
         updateTeamPlayerPosition(message) {
             var e = message.getUint32(1, true),
