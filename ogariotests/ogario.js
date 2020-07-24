@@ -14732,3 +14732,4 @@ Array.prototype.stDev = function stDev() {
     return Math.sqrt(average(this.map(value => Math.pow(value - average(this),2))))
 	//return Math.sqrt(average(this.map(value => (value - average(this)) ** 2)))
 };
+
