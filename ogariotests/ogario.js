@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.054
+// v2.059
 
 
 //window.testobjects = {};
@@ -797,6 +797,8 @@ function userLeaguesInfoResponse() {}
 window.predictedGhostCells = [];
 //set values outside ogario
 window.playerCellsId = [];
+
+window.customskinsarray = [];
 //window.counterCell=0;
 
 //window.customskinsname;
@@ -3315,6 +3317,7 @@ function thelegendmodproject() {
         cacheQueue2: [],
         cacheQueue3: [],
         cacheQueue4: [],
+		cacheQueueSkinAnimated: [],
         deathLocations: [],
         playerID: null,
         playerMass: 0,
@@ -5698,8 +5701,15 @@ function thelegendmodproject() {
                         this.height &&
                         this.width <= 2000 && this.width > 0 &&
                         this.height <= 2000 && this.height > 0) {
-
-                        if (animated != "fbSkin") {
+	
+	
+						if (animated == "animatedSkins"){
+                            app.cacheQueueSkinAnimated.push(url);
+                            if (1 == app.cacheQueueSkinAnimated.length) app.cacheSkinAnimated(app.customSkinsCache, animated)
+                            app.cacheQueue2.push(url)
+                            if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)						
+						}						
+                        else if (animated != "fbSkin") {
                             app.cacheQueue.push(url);
                             if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
                             app.cacheQueue2.push(url)
@@ -5861,6 +5871,33 @@ function thelegendmodproject() {
                 }
             }
         },
+        cacheSkinAnimated(skinCache, animated) {
+            //console.log(skinCache);  //////// return the image src
+            if (0 != this.cacheQueueSkinAnimated.length) {
+                var e = this.cacheQueueSkinAnimated.shift();
+                if (e && !this.customSkinsCache[e + "_cached"+skinCache]) {
+                    var depth = 512;
+                    this.checkgraphics();
+                    if (application.graphics) {
+                        depth = depth / application.graphics;
+                    }
+                    var i = document.createElement("canvas");
+                    i.width = depth;
+                    i.height = depth;
+                    var $ = i.getContext("2d");
+                    $.beginPath();
+                    $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
+                    $.clip();
+                    try {
+                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);                       
+                    } catch (error) {}
+                    this.customSkinsCache[e + "_cached"+skinCache] = new Image;
+                    this.customSkinsCache[e + "_cached"+skinCache].src = i.toDataURL();
+                    i = null;
+                    this.cacheSkinAnimated(this.customSkinsCache, animated);
+                }
+            }
+        },		
         getCachedSkin(skinCache, skinMap) {
             if (skinCache[skinMap + '_cached3']) {
                 var today = new Date();
@@ -11346,14 +11383,13 @@ Game name     : ${i.displayName}<br/>
 
 
             ///////////////// establish core.registerSkin
-            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && window.customskinsurl != null && application.customSkinsMap[window.customskinsname] == null) {
+            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] == null  && window.customskinsarray[window.customskinsname].customskinsurl != null) {
                 for (i = 0; i <= this.leaderboard.length - 1; i++) {
                     if (this.leaderboard[i].nick == window.customskinsname) {
-                        application.customSkinsMap[window.customskinsname] = window.customskinsurl;
-                        application.loadSkin(application.customSkinsCache, window.customskinsurl, window.customskinanimated);
+                        application.customSkinsMap[window.customskinsname] = window.customskinsarray[window.customskinsname].customskinsurl ;
+                        application.loadSkin(application.customSkinsCache, window.customskinsarray[window.customskinsname].customskinsurl , window.customskinsarray[window.customskinsname].customskinanimated);
                         window.customskinsname = null;
-                        window.customskinsurl = null;
-                        window.customskinanimated = null;
+						window.customskinsarray[window.customskinsname] == null
                     }
                 }
             }
@@ -11470,8 +11506,8 @@ Game name     : ${i.displayName}<br/>
                     g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
                     g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
                     g1 = makeUpperCaseAfterUnderline(g1);
-					window.customskinanimated = true;
-                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);                    
+					var customskinanimated = true;
+                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", customskinanimated);                    
                 } 
 				else if (g != null && defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
@@ -13822,8 +13858,12 @@ Game name     : ${i.displayName}<br/>
             LM.sendMessage(new DataView(arr.buffer));
         },
         registerSkin(a, b, c, d) {
-            window.customskinsname = a;
-            window.customskinsurl = c;
+            //window.customskinsname = a;
+			window.customskinsarray[window.customskinsname] = [];
+			window.customskinsname = a
+			window.customskinsarray[window.customskinsname].customskinsname = a
+			window.customskinsarray[window.customskinsname].customskinsurl = c
+			window.customskinsarray[window.customskinsname].customskinanimated = d
         },
         //lulko
         playerHasCells() {
