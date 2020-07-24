@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.052
+// v2.053
 
 
 //window.testobjects = {};
@@ -14129,6 +14129,11 @@ function animateSkincheck() {
             for (animatedkey in animatedskins) {
                 if (animatedkey == legendmod.leaderboard[animatedi].nick) {
                     //console.log(animatedkey);
+					if (animatedskins[animatedkey]){
+						//animateSkinsStop()
+						
+					}
+					else{
                     e = animatedskins[animatedkey].frames.length - 1;
                     for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                         b = animateda;
@@ -14138,6 +14143,7 @@ function animateSkincheck() {
                         animateSkin(window.anual, b, verifiednames, d, e, i);
 
                     }
+					}
                 }
             }
         }
