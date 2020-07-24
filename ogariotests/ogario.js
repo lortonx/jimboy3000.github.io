@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.063
+// v2.064
 
 
 //window.testobjects = {};
@@ -14192,7 +14192,8 @@ function animateSkincheck() {
             }
         }
     }
-	if (window.preSetanimateSkincheck > window.anualTop + 1000 ) window.preSetanimateSkincheck = window.anualTop + 1000
+	//if (window.preSetanimateSkincheck > window.anualTop + 1000 ) window.preSetanimateSkincheck = window.anualTop + 1000
+	if (window.preSetanimateSkincheck > window.anualTop) window.preSetanimateSkincheck = window.anualTop
 	if (defaultmapsettings.vanillaSkins) {
 		setTimeout(function() {		
 			animateSkincheck()
