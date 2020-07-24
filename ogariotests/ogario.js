@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.064
+// v2.065
 
 
 //window.testobjects = {};
@@ -14178,6 +14178,7 @@ function animateSkincheck() {
                 if (animatedkey == legendmod.leaderboard[animatedi].nick) {
 					if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){
                     e = animatedskins[animatedkey].frames.length - 1;
+					window.anual = 0;
                     for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                         b = animateda;
                         verifiednames = animatedkey;
@@ -14193,7 +14194,7 @@ function animateSkincheck() {
         }
     }
 	//if (window.preSetanimateSkincheck > window.anualTop + 1000 ) window.preSetanimateSkincheck = window.anualTop + 1000
-	if (window.preSetanimateSkincheck > window.anualTop) window.preSetanimateSkincheck = window.anualTop
+	window.preSetanimateSkincheck = window.anualTop
 	if (defaultmapsettings.vanillaSkins) {
 		setTimeout(function() {		
 			animateSkincheck()
@@ -14205,13 +14206,13 @@ function animateSkin(b, verifiednames, d, e, i) {
     setTimeout(function() {
         //if (verifiednames==legendmod.leaderboard[d].nick){
         application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-        if (b == e) {
+        //if (b == e) {
             //if (i == 9) {
-			if (i == 0) {	
-                window.anual = 0;
+			//if (i == 0) {	
+                //window.anual = 0;
                 //if (animatedserverchanged == false) {}
-            }
-        }
+            //}
+        //}
     }, window.anual);
 }
 
