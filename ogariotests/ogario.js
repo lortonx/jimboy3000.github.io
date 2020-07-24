@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.061
+// v2.062
 
 
 //window.testobjects = {};
@@ -7152,7 +7152,7 @@ function thelegendmodproject() {
             }
 			
             //this.cacheCustomSkin(nick, defaultColor, skinUrl);
-			if (!animatedskins[nick]){ //fix for animated skins to work
+			if (!animatedskins[nick] || !defaultmapsettings.vanillaSkins){ //fix for animated skins to work
 				this.cacheCustomSkin(nick, defaultColor, skinUrl);
 			}
         },
