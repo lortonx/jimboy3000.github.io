@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.048
+// v2.049
 
 
 //window.testobjects = {};
@@ -3833,7 +3833,7 @@ function thelegendmodproject() {
         },
         setVanillaSkins() {
             if (defaultmapsettings.vanillaSkins) {
-                defaultmapsettings.animateSkinsStart = setInterval(animateSkincheck, 60000);
+                defaultmapsettings.animateSkinsStart = setInterval(animateSkincheck, 6000);
             } else {
                 application.flushSkinsMap();
                 animateSkinsStop();
@@ -14117,7 +14117,8 @@ function hideContextMenu(evt) {
 
 //Animated Skins
 function animateSkincheck() {
-    for (i = 0; i < 10; i++) {
+    //for (i = 0; i < 10; i++) {
+	for (i = 0; i < 1; i++) {	
         for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
             for (animatedkey in animatedskins) {
                 if (animatedkey == legendmod.leaderboard[animatedi].nick) {
@@ -14142,7 +14143,8 @@ function animateSkin(a, b, verifiednames, d, e, i) {
         //if (verifiednames==legendmod.leaderboard[d].nick){
         application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
         if (b == e) {
-            if (i == 9) {
+            //if (i == 9) {
+			if (i == 0) {	
                 window.anual = 0;
                 if (animatedserverchanged == false) {}
             }
