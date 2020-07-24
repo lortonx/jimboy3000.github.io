@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.049
+// v2.050
 
 
 //window.testobjects = {};
@@ -14118,6 +14118,7 @@ function hideContextMenu(evt) {
 //Animated Skins
 function animateSkincheck() {
     //for (i = 0; i < 10; i++) {
+	//SpecialEffectPlayers[	
 	for (i = 0; i < 1; i++) {	
         for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
             for (animatedkey in animatedskins) {
@@ -14154,6 +14155,18 @@ function animateSkin(a, b, verifiednames, d, e, i) {
 
 function animateSkinsStop() {
     clearInterval(defaultmapsettings.animateSkinsStart);
+}
+
+function animateCustomSkin(nick, id){
+	
+	Object.keys(animatedskins).forEach(function(key) {
+            if (animatedskins[key] && animatedskins[key].id == id) {
+                //console.log(key, animatedskins[key]);
+				animatedskins[nick] = animatedskins[key];
+				//animatedskins[key] = null
+				console.log (animatedskins[key])
+            }  
+	});
 }
 
 function PreLcCelebration() {
@@ -14314,8 +14327,11 @@ function Socket3updateTeamPlayerSpfc(Socket3data) {
     var h = window.decodeURIComponent(escape(Socket3data.id));
     var message = Socket3data.x;
     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Player ', h, 'uses Special Effect ', message);
-    if (h && message) SpecialEffectPlayers[h] = message;
-}
+    if (h && message){ 
+		SpecialEffectPlayers[h] = message;
+		animateCustomSkin(h, message)
+	}
+}	
 
 function Socket3updateTeamPlayer(Socket3data) {
     var h = window.decodeURIComponent(escape(application.checkPlayerNick(Socket3data.id)));
@@ -14417,6 +14433,9 @@ function repeatSendingSpecialSkins() {
     if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID || temp == "Byzantium")) {
         if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
+		//
+		animateCustomSkin(application.lastSentNick, temp)
+		//
         window.application.sendSocket3Info("spfc", temp)
     }
 }
@@ -14641,6 +14660,8 @@ function LMadvertisement2020(){
 				window.open('https://legendmod.ml/', '_blank');
             });	
 }
+
+
 
 /*
 var snezSocketdata;
