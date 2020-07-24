@@ -87,7 +87,7 @@ var yt2data = "Survivor - Eye Of The Tiger";
 var yt3data = "Lion king - The Lion Sleeps Tonight";
 var yt4data = "Agario - Jumbo Solo vs Teams";
 var yt5data = "Agario - Kill3r vs Teams";
-var yt6data = "Legend mod Promo";
+var yt6data = "Promotional";
 var lastIP = localStorage.getItem("lastIP");
 var previousnickname = localStorage.getItem("previousnickname");
 var minbtext = localStorage.getItem("minbtext");
@@ -354,13 +354,13 @@ function PremiumUsers() {
 				var expDate = parseInt(ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.split('@')[1])
 				if (expDate && expDate < YYYYMMDD && window.proLicenceUID){
 					window.proLicenceUID = null
-					toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using Legend mod!").css("width", "350px");
+					toastr.warning("<b>[SERVER]:</b> Your Giveaway licence has ended. Thank you for using our mod!").css("width", "350px");
 				}
 				else if (expDate && expDate >= YYYYMMDD){
 					if (!window.proLicenceUID){						
 						window.proLicenceUID = "Give"
 						expDate = ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason.split('@')[1]
-						toastr.warning("<b>[SERVER]:</b>  Your licence is stored as Giveaway Premium until " + expDate.slice(0, 2) + "/" + expDate.slice(2, 4) + "/" + expDate.slice(4, 8) + ". Thank you for using Legend mod!").css("width", "350px");
+						toastr.warning("<b>[SERVER]:</b>  Your licence is stored as Giveaway Premium until " + expDate.slice(0, 2) + "/" + expDate.slice(2, 4) + "/" + expDate.slice(4, 8) + ". Thank you for using our mod!").css("width", "350px");
 					}
 					else{						
 					}
@@ -369,7 +369,7 @@ function PremiumUsers() {
 			else{
 				window.proLicenceUID = ProLicenceUsersTable.ProLicenceUsers[window.agarioUID].reason			
 					localStorage.setItem("proLicenceUID", true);		
-					toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you for using Legend mod!").css("width", "350px");
+					toastr.warning("<b>[SERVER]:</b> Your licence is stored as Premium. Thank you for using our mod!").css("width", "350px");
 			}
 		}
 		localStorage.setItem("proLicenceUID", window.proLicenceUID);
@@ -2009,7 +2009,7 @@ function universalchat() {
         if (!document.getElementById("top5-hud")) {
             my.pre_loop_timeout = (my.pre_loop_timeout || 1000) + 1000;
             setTimeout(pre_loop, my.pre_loop_timeout);
-            my.log("wait for Legend Mod load");
+            my.log("wait for mod to load");
             return;
         }
         // Just to be sure, another 1 sec wait
@@ -4970,7 +4970,7 @@ function initializeLM(modVersion) {
 
         '<button id="OpenuserScripts" type="submit" class="btn btn-primary btn 2" style="margin-top: 2px; display: block; width: 100%; padding: 4px 0 6px 0;"><i class="fa fa-code"></i>User Scripts</button>' +
         '<button id="SpecialDealsBtn" class="btn btn-primary btn" type="submit" onclick="BeforeSpecialDeals(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Special Deals</button>' +
-        '<button id="LegendmodShop" class="btn btn-primary btn" type="submit" onclick="BeforeLegendmodShop(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Legend mod Shop</button>' +
+        '<button id="LegendmodShop" class="btn btn-primary btn" type="submit" onclick="BeforeLegendmodShop(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-briefcase"></i>Shop</button>' +
 		//'<button id="UserLeaguesInfo" class="btn btn-primary btn" type="submit" onclick="preUserLeaguesInfoRequest(); return false;" class="btn btn-primary btn-shop" style=" width: 100%; padding: 4px 0px 6px; margin-top: 2px;" data-itr="page_shop"><i class="fa fa-star"></i>User Leagues Info (BETA)</button>' +
 		'<div class="input-box" style="text-align: center; font-size: 12px; margin-top: 2px; padding: 4px 0 0px 0;"><span id="legendmanualback" class="title" style="">Manual background:  </span>' +
         '<select id="backgroundPic" class="form-control" onchange="changePicFun();" required="" data-original-title="" title="" style="display:inline; width: 40%" >' +
@@ -5161,7 +5161,7 @@ function initializeLM(modVersion) {
         '<button id="sendicon3" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon3();" data-toggle="tooltip" data-original-title="Yow!!"><i id="sendicon31" class="fa fa-wheelchair" style="padding-center: 0px;"></i></button>' +
         '<button id="sendicon4" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon4();" data-toggle="tooltip" data-original-title="Death!"><i id="sendicon41" class="fa fa-cutlery" style="padding-center: 0px;"></i></button>' +
         '<button id="sendicon5" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon5();" data-toggle="tooltip" data-original-title="Relax!"><i id="sendicon51" class="fa fa-bed" style="padding-left: 0px;"></i></button>' +
-        '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend mod!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
+        '<button id="sendicon6" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendicon6();" data-toggle="tooltip" data-original-title="Legend!"><i id="sendicon61" class="fa fa-telegram" style="padding-left: 0px;"></i></button></div>');
 
     $("#minimap-hud").prepend('<div id="yt-hud" class="hud" style="width: 70%; height: 30px; padding: 0px; pointer-events: auto; position: absolute; right: 0px; top: -60px; display: none;">' +
         '<button id="sendyt1" class="btn-link" style="padding: 0px; color: #d6d3d3; width: 16%; height: 100%;" onclick="sendyt1();" data-toggle="tooltip" data-original-title="Rick Astley - Never Gonna Give You Up"><i id="sendyt11" class="fa fa-music" style="padding-left: 0px;"></i></button>' +
