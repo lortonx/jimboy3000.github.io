@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.059
+// v2.060
 
 
 //window.testobjects = {};
@@ -13858,12 +13858,13 @@ Game name     : ${i.displayName}<br/>
             LM.sendMessage(new DataView(arr.buffer));
         },
         registerSkin(a, b, c, d) {
-            //window.customskinsname = a;
-			window.customskinsarray[window.customskinsname] = [];
-			window.customskinsname = a
-			window.customskinsarray[window.customskinsname].customskinsname = a
-			window.customskinsarray[window.customskinsname].customskinsurl = c
-			window.customskinsarray[window.customskinsname].customskinanimated = d
+            if (a){
+				window.customskinsname = a;		
+				window.customskinsarray[window.customskinsname] = [];
+				window.customskinsarray[window.customskinsname].customskinsname = a
+				window.customskinsarray[window.customskinsname].customskinsurl = c
+				window.customskinsarray[window.customskinsname].customskinanimated = d
+			}
         },
         //lulko
         playerHasCells() {
