@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.046
+// v2.047
 
 
 //window.testobjects = {};
@@ -7679,7 +7679,7 @@ function thelegendmodproject() {
             this.displayTime();
             this.setCenteredLb();
             //this.setNormalLb();
-            this.setVanillaSkins
+            this.setVanillaSkins();
             this.setFpsAtTop();
             this.setTweenMaxEffect();
             this.displayStats();
@@ -13804,7 +13804,7 @@ Game name     : ${i.displayName}<br/>
         },
         setClientVersion(version, strVersion) {
             LM.setClientVersion(version, strVersion);
-        },
+        },		
         proxyMobileData(arr = []) {
             if (!Array.isArray(arr)) {
                 console.log("\x1b[32m%s\x1b[34m%s\x1b[0m", consoleMsgLM, " ProxyMobileData ERROR: Array data required.");
