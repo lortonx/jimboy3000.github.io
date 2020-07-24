@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.053
+// v2.054
 
 
 //window.testobjects = {};
@@ -14128,12 +14128,7 @@ function animateSkincheck() {
         for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
             for (animatedkey in animatedskins) {
                 if (animatedkey == legendmod.leaderboard[animatedi].nick) {
-                    //console.log(animatedkey);
-					if (animatedskins[animatedkey]){
-						//animateSkinsStop()
-						
-					}
-					else{
+					if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){
                     e = animatedskins[animatedkey].frames.length - 1;
                     for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                         b = animateda;
@@ -14445,7 +14440,7 @@ function repeatSendingSpecialSkins() {
         if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
 		//
-		animateCustomSkin(application.lastSentNick, temp)
+		animateCustomSkin($("#nick").val(), temp)
 		//
         window.application.sendSocket3Info("spfc", temp)
     }
