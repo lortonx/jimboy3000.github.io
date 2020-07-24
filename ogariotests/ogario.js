@@ -5,7 +5,7 @@
 
 
 //window.testobjects = {};
-var consoleMsgLM = "[Legend mod Express] ";
+var consoleMsgLM = "[Client] ";
 var agarTesterArena = "wss://livec-arena-12luq8l.tech.agar.io"
 window.clanTagLc = "U1VC";
 appendLMhiFbPs()
@@ -1286,7 +1286,7 @@ var displayText = {
         playlist: 'Playlista',
         pause: 'PAUZA!',
         visit: 'Odwiedź',
-        exit: 'Legend mod Express: Czy na pewno chcesz opuścic grę?',
+        exit: 'Czy na pewno chcesz opuścic grę?',
         blockWarn: 'UWAGA! Popupy zostały zablokowane w ustawieniach.',
         unblockPopups: 'Odblokuj tymczasowo',
         mass: 'Masa',
@@ -1722,7 +1722,7 @@ var displayText = {
         playlist: 'Playlist',
         pause: 'PAUSE!',
         visit: 'Visit',
-        exit: 'Legend mod Express: Are you sure you want to quit the game?',
+        exit: 'Are you sure you want to quit the game?',
         blockWarn: 'WARNING! Popups are blocked in the settings.',
         unblockPopups: 'Temporary unblock',
         mass: 'Mass',
@@ -4754,7 +4754,7 @@ function thelegendmodproject() {
             $(".agario-profile-panel, .agario-panel-freecoins, .agario-panel-gifting, .agario-shop-panel, #dailyquests-panel").appendTo($("#profile")).removeClass("agario-side-panel");
             $(".agario-profile-panel").after('<div id="block-warn">' + textLanguage.blockWarn + '<br><a href="#" id="unblock-popups">' + textLanguage.unblockPopups + "</a></div>");
             $("#exp-bar").addClass("agario-profile-panel"), $(".left-container").empty();
-            $(".agario-shop-panel").after('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>');
+            //$(".agario-shop-panel").after('<div class="agario-panel ogario-yt-panel"><h5 class="menu-main-color">The Legend Mod Project</h5><div class="g-ytsubscribe" data-channelid="UCoj-ZStcJ0jLMOSK7FOBTbA" data-layout="full" data-theme="dark" data-count="default"></div></div>');
 
             $("#tags-container").appendTo($("#profile"));
             //$('.btn.btn-warning.btn-spectate.btn-needs-server').after('<button id="logoutbtn" onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="page_logout">Logout</button>');
@@ -13197,7 +13197,7 @@ Game name     : ${i.displayName}<br/>
 
                                     this.ghostcellstext = removeEmojis(application.escapeHTML(LM.leaderboard[length].nick)); //application.escapeHTML(legendmod.leaderboard[0].nick)
                                 } else {
-                                    this.ghostcellstext = "Legend mod";
+                                    this.ghostcellstext = "Ghost cell";
                                 }
                                 this.drawTextAlongArc(this.ctx, this.ghostcellstext, x, y, ghostsCells[length].size * this.pi2 / 6, angle);
                                 if (defaultmapsettings.customSkins && LM.showCustomSkins) {
@@ -14624,7 +14624,7 @@ function LMadvertisement2020(){
                 '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 622px;">' +
                 '<div class="modal-content">' +
                 '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
-                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Legend mod 2020' + '</h4>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + '2020 development' + '</h4>' +
                 '</div>' +
 				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/banneranimatedLegendmod2020.html" width="620" height="490" >' +
                 '</div>' +
