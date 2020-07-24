@@ -1697,45 +1697,7 @@ function erasescripter(){
                      {id: 'G4jxjM9', delay: '0.06'},
                      {id: 'WQA1R3N', delay: '0.06'}
                   ]
-			   },
-               '℄💖   ᒎᑌᑎᛕƳ🆇🅻': {
-                  cached:    false,
-                  ready:     false,
-                  current:   0,
-                  timestamp: 0,
-                  id:        'trippy_2',
-                  color:     'ffffff',
-                  frames:    [
-                     {id: '2MG25OA', delay: '0.03'},
-                     {id: 'ypypCpM', delay: '0.03'},
-                     {id: 'xjJyohm', delay: '0.03'},
-                     {id: '46tVXfT', delay: '0.03'},
-                     {id: 'gDwtKiL', delay: '0.03'},
-                     {id: 'Jey9A4m', delay: '0.03'},
-                     {id: 'eSwYkS3', delay: '0.03'},
-                     {id: 'uId5x5t', delay: '0.03'}
-                  ]
-               },			   
-               '℄🌀Jimboy3100': {
-                  cached:    false,
-                  ready:     false,
-                  current:   0,
-                  timestamp: 0,
-                  id:        'birthday_troll',
-                  color:     '7a0c0f',
-                  frames:    [
-                     {id: 'KxcI3j7', delay: '4'},
-                     {id: 'aE1etcH', delay: '0.1'},
-                     {id: 'ZA1rlQ0', delay: '0.1'},
-                     {id: '8NUCHKe', delay: '0.1'},
-                     {id: 'ZbeXIpc', delay: '0.1'},
-                     {id: 'iQWIiAu', delay: '0.1'},
-                     {id: 'ZbeXIpc', delay: '0.1'},
-                     {id: '8NUCHKe', delay: '0.1'},
-                     {id: 'ZA1rlQ0', delay: '0.1'},
-                     {id: 'aE1etcH', delay: '0.1'}
-                  ]
-               }
+			   }
 }
 
 function datatooltipfix(){
