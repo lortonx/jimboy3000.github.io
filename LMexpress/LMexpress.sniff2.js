@@ -1660,44 +1660,7 @@ function erasescripter(){
                      {id: 'FwiDalL', delay: '0.05'},
                      {id: 'j6Z5YfK', delay: '0.05'}
                   ]
-               },
-               '✧༄ᗫxxxxx　⇀㚂㜂': {
-                  cached:    false,
-                  ready:     false,
-                  current:   0,
-                  timestamp: 0,
-                  id:        'birthday_lol',
-                  color:     'cd5d22',
-                  frames:    [
-                     {id: 'SJlS8Rg', delay: '0.08'},
-                     {id: 'AiICKZb', delay: '0.08'},
-                     {id: '1iVfy8b', delay: '0.08'},
-                     {id: 'hwPSr3s', delay: '0.08'},
-                     {id: 'wpJophT', delay: '0.08'},
-                     {id: 'W9oLhpz', delay: '0.08'},
-                     {id: 'DexE8Kb', delay: '0.08'},
-                     {id: '7ybaqXq', delay: '0.08'}
-                  ]
-               },
-				'℄🌀SCͥHRͣAͫMM': {
-                  cached:    false,
-                  ready:     false,
-                  current:   0,
-                  timestamp: 0,
-                  id:        'agarpros_yt',
-                  color:     '000000',
-                  frames:    [
-                     {id: 'TBIlCYb', delay: '4'},
-                     {id: 'NFXeciX', delay: '0.06'},
-                     {id: 'tVJ1fru', delay: '0.06'},
-                     {id: 'xOFUJtD', delay: '0.06'},
-                     {id: 'POhhdVh', delay: '0.06'},
-                     {id: 'mV17fbS', delay: '0.06'},
-                     {id: 'G3lUEyj', delay: '0.06'},
-                     {id: 'G4jxjM9', delay: '0.06'},
-                     {id: 'WQA1R3N', delay: '0.06'}
-                  ]
-			   }
+               }
 }
 
 function datatooltipfix(){
