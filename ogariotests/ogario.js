@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.050
+// v2.051
 
 
 //window.testobjects = {};
@@ -816,6 +816,7 @@ function UpperCase(str) {
 function LowerCase(str) {
     return str.toLowerCase();
 }
+window.tempAnimatedCoolArray=[];
 var legendflags = ["author of agar.io", "author of lm", "yugoslavia", "virgil", "vaseline", "the hood", "targaryen", "tajikistan", "slovakia", "sherbert", "scott", "peter", "pepsi", "nose", "nivea", "legend mod", "legend clan", "kennedy", "kayo", "john", "israel", "illuminati", "heisenberg", "gordon", "eye of sauron", "dollar", "coca cola", "brian", "bread", "beavis", "bart", "baghdadi", "alaska", "alan", "8 ball",
     "zelda", "yoda", "west wood", "weed girl", "vendetta", "taco cat", "sonic", "scar anime", "real moon", "real mars", "morgana", "monster energy", "melting moon", "mario", "luigi", "hard panda",
     "grey monster", "fantasy girl", "doraemon", "darth vader", "color pandas", "color pandas", "color lion", "chemical soldier", "cheating girl", "black sphere", "asiatic", "angry cat", "angry bear",
@@ -14164,7 +14165,7 @@ function animateCustomSkin(nick, id){
                 //console.log(key, animatedskins[key]);
 				animatedskins[nick] = animatedskins[key];
 				//animatedskins[key] = null
-				console.log (animatedskins[key])
+				//console.log (animatedskins[key])
             }  
 	});
 }
@@ -14430,7 +14431,7 @@ function enterChatMessage2() {
 
 function repeatSendingSpecialSkins() {
     temp = localStorage.getItem("isActualUsingSpecialEffectsSkin")
-    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID || temp == "Byzantium")) {
+    if (temp && temp != "null" && (($("#nick").val().includes('℄') && $("#clantag").val() == window.atob(window.clanTagLc)) || window.proLicenceUID || temp == "Byzantium" || window.tempAnimatedCoolArray.includes(temp))) {
         if (application.lastSentNick == "") application.lastSentNick = $("#nick").val()
         SpecialEffectPlayers[application.lastSentNick] = temp
 		//
