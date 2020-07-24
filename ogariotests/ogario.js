@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.054
+// v2.055
 
 
 //window.testobjects = {};
@@ -5698,8 +5698,15 @@ function thelegendmodproject() {
                         this.height &&
                         this.width <= 2000 && this.width > 0 &&
                         this.height <= 2000 && this.height > 0) {
-
-                        if (animated != "fbSkin") {
+	
+	
+						if (animated == "animatedSkins"){
+                            app.cacheQueueSkinAnimated.push(url);
+                            if (1 == app.cacheQueueSkinAnimated.length) app.cacheSkinAnimated(app.customSkinsCache, animated)
+                            app.cacheQueue2.push(url)
+                            if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)						
+						}						
+                        else if (animated != "fbSkin") {
                             app.cacheQueue.push(url);
                             if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
                             app.cacheQueue2.push(url)
@@ -5861,6 +5868,33 @@ function thelegendmodproject() {
                 }
             }
         },
+        cacheSkinAnimated(skinCache, animated) {
+            //console.log(skinCache);  //////// return the image src
+            if (0 != this.cacheQueueSkinAnimated.length) {
+                var e = this.cacheQueueSkinAnimated.shift();
+                if (e && !this.customSkinsCache[e + "_cached"+skinCache]) {
+                    var depth = 512;
+                    this.checkgraphics();
+                    if (application.graphics) {
+                        depth = depth / application.graphics;
+                    }
+                    var i = document.createElement("canvas");
+                    i.width = depth;
+                    i.height = depth;
+                    var $ = i.getContext("2d");
+                    $.beginPath();
+                    $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
+                    $.clip();
+                    try {
+                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);                       
+                    } catch (error) {}
+                    this.customSkinsCache[e + "_cached"+skinCache] = new Image;
+                    this.customSkinsCache[e + "_cached"+skinCache].src = i.toDataURL();
+                    i = null;
+                    this.cacheSkinAnimated(this.customSkinsCache, animated);
+                }
+            }
+        },		
         getCachedSkin(skinCache, skinMap) {
             if (skinCache[skinMap + '_cached3']) {
                 var today = new Date();
@@ -14148,7 +14182,14 @@ function animateSkincheck() {
 function animateSkin(a, b, verifiednames, d, e, i) {
     setTimeout(function() {
         //if (verifiednames==legendmod.leaderboard[d].nick){
-        application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
+			
+			
+		application.customSkinsMap[verifiednames] = "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png";
+        application.loadSkin(application.customSkinsCache, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png", "animatedSkins");	
+		
+        //application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
+		
+		
         if (b == e) {
             //if (i == 9) {
 			if (i == 0) {	
