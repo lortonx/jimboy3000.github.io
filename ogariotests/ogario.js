@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.079
+// v2.080
 
 
 //window.testobjects = {};
@@ -5710,7 +5710,7 @@ function thelegendmodproject() {
                         this.width <= 2000 && this.width > 0 &&
                         this.height <= 2000 && this.height > 0) {
 	
-	
+						
 						if (animated == "animatedSkins"){
                             app.cacheQueueSkinAnimated.push(url);
                             if (1 == app.cacheQueueSkinAnimated.length) app.cacheSkinAnimated(app.customSkinsCache, animated)
@@ -5733,7 +5733,7 @@ function thelegendmodproject() {
 						//26/6/2020
 						//if (this && this.includes && (this.includes(".mp4") || this.includes(".webm") || this.includes(".ogv"))) {
 						//this.style.borderRadius = "50%";
-						this.filter='grayscale(100%)';
+						
 						//}
 						//
                         /*
@@ -8530,6 +8530,8 @@ function thelegendmodproject() {
             }
             //					
             style.save();
+			
+
             this.redrawed++;
             if (canCreateDiscussions) {
                 this.moveCell();
@@ -8542,7 +8544,10 @@ function thelegendmodproject() {
             var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
             style.beginPath()
 
-
+			//26/7/2020
+			style.filter='grayscale(100%)';
+			//
+			
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
