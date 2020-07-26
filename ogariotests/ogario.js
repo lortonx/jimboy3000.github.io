@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.069
+// v2.070
 
 
 //window.testobjects = {};
@@ -8768,13 +8768,11 @@ function thelegendmodproject() {
                             if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
                                 checkVideos(node2.src, this.targetNick);
                                 try {
-									//style.beginPath();
-									style.beginPath();
-									style.globalCompositeOperation = 'destination-in';
+
 									style.arc(this.x - y, this.y - y, 2 * y, 0, 2 * Math.PI, true);
 									style.clip();									
 									style.drawImage(window.videoSkinPlayer[node2.src], 0, 0);	
-									style.closePath();									
+							
                                     //style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
 									
                                 } catch (e) {}
