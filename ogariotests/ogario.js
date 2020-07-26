@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.076
+// v2.077
 
 
 //window.testobjects = {};
@@ -5698,7 +5698,6 @@ function thelegendmodproject() {
             //console.log ("img:" + img + "url:" + url);
             if (url && url.includes && (url.includes(".mp4") || url.includes(".webm") || url.includes(".ogv"))) {
                 img[url] = new Video();
-				img[url].style.borderRadius = "50%";
                 //console.log("stage 2 videos");
             } else {
                 img[url] = new Image();
@@ -5730,7 +5729,13 @@ function thelegendmodproject() {
                             app.cacheQueue4.push(url)
                             if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)
                         }
-
+						
+						//26/6/2020
+						if (this && this.includes && (this.includes(".mp4") || this.includes(".webm") || this.includes(".ogv"))) {
+						this.style.borderRadius = "50%";
+						this.style.filter = "grayscale(100%)";	
+						}
+						//
                         /*
 						((app.cacheQueue.push(url),
                                 1 == app.cacheQueue.length &&
