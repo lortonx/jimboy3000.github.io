@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.077
+// v2.078
 
 
 //window.testobjects = {};
@@ -5731,10 +5731,10 @@ function thelegendmodproject() {
                         }
 						
 						//26/6/2020
-						if (this && this.includes && (this.includes(".mp4") || this.includes(".webm") || this.includes(".ogv"))) {
-						this.style.borderRadius = "50%";
+						//if (this && this.includes && (this.includes(".mp4") || this.includes(".webm") || this.includes(".ogv"))) {
+						//this.style.borderRadius = "50%";
 						this.style.filter = "grayscale(100%)";	
-						}
+						//}
 						//
                         /*
 						((app.cacheQueue.push(url),
