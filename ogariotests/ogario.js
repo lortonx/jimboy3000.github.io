@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.082
+// v2.083
 
 
 //window.testobjects = {};
@@ -2511,7 +2511,7 @@ var defaultmapsettings = {
     spawnSpecialEffects: false,
     animatedRainbowColor: false,
     autoZoom: false,
-	unlockedFPS: false,
+	unlockedFPS: 4, //unlockedFPS: false,
     autoHideNames: true,
     autoHideMass: true,
     autoHideFood: false,
