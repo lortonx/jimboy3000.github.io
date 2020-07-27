@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.080
+// v2.081
 
 
 //window.testobjects = {};
@@ -8545,7 +8545,7 @@ function thelegendmodproject() {
             style.beginPath()
 
 			//26/7/2020
-			style.filter='grayscale(100%)';
+			//style.filter='grayscale(100%)';
 			//
 			
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
@@ -8556,6 +8556,7 @@ function thelegendmodproject() {
                     style.lineTo(point.x, point.y);
                 }
             } 
+			/*
 			else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
                 style.lineJoin = "miter"
                 var pointCount = 120;
@@ -8571,6 +8572,7 @@ function thelegendmodproject() {
                 }
                 style.lineTo(this.x, this.y + this.size + 3);
             } 
+			*/
 			else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
