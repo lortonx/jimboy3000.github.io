@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.054
+// v2.086
 
 
 //window.testobjects = {};
@@ -431,6 +431,9 @@ function TweenMaxLM(Variable, sxPos, syPos) {
 UIDInstructions = atob("VUlEY29udHJvbGxlcigpOw==");
 var UIDfunction = new Function(UIDInstructions);
 
+
+window.preSetanimateSkincheck=6000;
+window.anualTop=0;
 function setLevelProgressBar() {
     //$('.progress-bar.progress-bar-striped').css('width', window.agarioLEVEL + '%');
 	$('.progress-bar.progress-bar-striped').css({"transition": "5s", "width": window.agarioLEVEL + "%"});
@@ -797,6 +800,8 @@ function userLeaguesInfoResponse() {}
 window.predictedGhostCells = [];
 //set values outside ogario
 window.playerCellsId = [];
+
+window.customskinsarray = [];
 //window.counterCell=0;
 
 //window.customskinsname;
@@ -2506,7 +2511,7 @@ var defaultmapsettings = {
     spawnSpecialEffects: false,
     animatedRainbowColor: false,
     autoZoom: false,
-	unlockedFPS: false,
+	unlockedFPS: 4, //unlockedFPS: false,
     autoHideNames: true,
     autoHideMass: true,
     autoHideFood: false,
@@ -3315,6 +3320,7 @@ function thelegendmodproject() {
         cacheQueue2: [],
         cacheQueue3: [],
         cacheQueue4: [],
+		cacheQueueSkinAnimated: [],
         deathLocations: [],
         playerID: null,
         playerMass: 0,
@@ -3834,10 +3840,15 @@ function thelegendmodproject() {
         },
         setVanillaSkins() {
             if (defaultmapsettings.vanillaSkins) {
-                defaultmapsettings.animateSkinsStart = setInterval(animateSkincheck, 6000);
+                //defaultmapsettings.animateSkinsStart = setInterval(animateSkincheck, window.preSetanimateSkincheck);
+				setTimeout(function() {
+					animateSkincheck()
+				}, window.preSetanimateSkincheck);				
             } else {
                 application.flushSkinsMap();
-                animateSkinsStop();
+                //animateSkinsStop();
+				window.preSetanimateSkincheck=6000;
+				
             }
         },
         setUniversalChat() {
@@ -4566,6 +4577,7 @@ function thelegendmodproject() {
                     o.src = t;
                     // o = new Image();
                     o.crossOrigin = 'anonymous';
+					//o.style.borderRadius = "25px";
                     setTimeout(function() {
                         //newo.onload = function() {
                         app.changeSkinPreview(o, e);
@@ -5698,8 +5710,15 @@ function thelegendmodproject() {
                         this.height &&
                         this.width <= 2000 && this.width > 0 &&
                         this.height <= 2000 && this.height > 0) {
-
-                        if (animated != "fbSkin") {
+	
+						
+						if (animated == "animatedSkins"){
+                            app.cacheQueueSkinAnimated.push(url);
+                            if (1 == app.cacheQueueSkinAnimated.length) app.cacheSkinAnimated(app.customSkinsCache, animated)
+                            app.cacheQueue2.push(url)
+                            if (1 == app.cacheQueue2.length) app.cacheSkin2(app.customSkinsCache)						
+						}						
+                        else if (animated != "fbSkin") {
                             app.cacheQueue.push(url);
                             if (1 == app.cacheQueue.length) app.cacheSkin(app.customSkinsCache, animated)
                             app.cacheQueue2.push(url)
@@ -5711,7 +5730,13 @@ function thelegendmodproject() {
                             app.cacheQueue4.push(url)
                             if (1 == app.cacheQueue4.length) app.cacheSkin4(app.customSkinsCache)
                         }
-
+						
+						//26/6/2020
+						//if (this && this.includes && (this.includes(".mp4") || this.includes(".webm") || this.includes(".ogv"))) {
+						//this.style.borderRadius = "50%";
+						
+						//}
+						//
                         /*
 						((app.cacheQueue.push(url),
                                 1 == app.cacheQueue.length &&
@@ -5861,6 +5886,33 @@ function thelegendmodproject() {
                 }
             }
         },
+        cacheSkinAnimated(skinCache, animated) {
+            //console.log(skinCache);  //////// return the image src
+            if (0 != this.cacheQueueSkinAnimated.length) {
+                var e = this.cacheQueueSkinAnimated.shift();
+                if (e && !this.customSkinsCache[e + "_cached"+skinCache]) {
+                    var depth = 512;
+                    this.checkgraphics();
+                    if (application.graphics) {
+                        depth = depth / application.graphics;
+                    }
+                    var i = document.createElement("canvas");
+                    i.width = depth;
+                    i.height = depth;
+                    var $ = i.getContext("2d");
+                    $.beginPath();
+                    $.arc(depth / 2, depth / 2, depth / 2, 0, 2 * Math.PI, false);
+                    $.clip();
+                    try {
+                            $.drawImage(this.customSkinsCache[e], 0, 0, depth, depth);                       
+                    } catch (error) {}
+                    this.customSkinsCache[e + "_cached"+skinCache] = new Image;
+                    this.customSkinsCache[e + "_cached"+skinCache].src = i.toDataURL();
+                    i = null;
+                    this.cacheSkinAnimated(this.customSkinsCache, animated);
+                }
+            }
+        },		
         getCachedSkin(skinCache, skinMap) {
             if (skinCache[skinMap + '_cached3']) {
                 var today = new Date();
@@ -7115,7 +7167,7 @@ function thelegendmodproject() {
             }
 			
             //this.cacheCustomSkin(nick, defaultColor, skinUrl);
-			if (!animatedskins[nick]){ //fix for animated skins to work
+			if (!animatedskins[nick] || !defaultmapsettings.vanillaSkins){ //fix for animated skins to work
 				this.cacheCustomSkin(nick, defaultColor, skinUrl);
 			}
         },
@@ -8479,6 +8531,8 @@ function thelegendmodproject() {
             }
             //					
             style.save();
+			
+
             this.redrawed++;
             if (canCreateDiscussions) {
                 this.moveCell();
@@ -8491,7 +8545,10 @@ function thelegendmodproject() {
             var y = this.isFood ? this.size + defaultSettings.foodSize : this.size;
             style.beginPath()
 
-
+			//26/7/2020
+			//style.filter='grayscale(100%)';
+			//
+			
             if (defaultmapsettings.jellyPhisycs && this.points.length) {
                 var point = this.points[0];
                 style.moveTo(point.x, point.y);
@@ -8500,6 +8557,7 @@ function thelegendmodproject() {
                     style.lineTo(point.x, point.y);
                 }
             } 
+			
 			else if (defaultmapsettings.jellyPhisycs && this.isVirus) {
                 style.lineJoin = "miter"
                 var pointCount = 120;
@@ -8515,6 +8573,7 @@ function thelegendmodproject() {
                 }
                 style.lineTo(this.x, this.y + this.size + 3);
             } 
+			
 			else style.arc(this.x, this.y, y, 0, this.pi2, false);
 
             style.closePath();
@@ -8724,7 +8783,13 @@ function thelegendmodproject() {
                             if (node2.src.includes(".mp4") || node2.src.includes(".webm") || node2.src.includes(".ogv")) {
                                 checkVideos(node2.src, this.targetNick);
                                 try {
+
+									//style.arc(this.x - y, this.y - y, 2 * y, 0, this.pi2, true);
+									//style.clip();									
+									//style.drawImage(window.videoSkinPlayer[node2.src], 0, 0,2*y,2*y);	
+							
                                     style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+									
                                 } catch (e) {}
                             }
                         }
@@ -11346,14 +11411,13 @@ Game name     : ${i.displayName}<br/>
 
 
             ///////////////// establish core.registerSkin
-            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && window.customskinsurl != null && application.customSkinsMap[window.customskinsname] == null) {
+            if (defaultmapsettings.vanillaSkins == true && window.customskinsname != null && application.customSkinsMap[window.customskinsname] == null && window.customskinsarray[window.customskinsname] && window.customskinsarray[window.customskinsname].customskinsurl != null) {
                 for (i = 0; i <= this.leaderboard.length - 1; i++) {
                     if (this.leaderboard[i].nick == window.customskinsname) {
-                        application.customSkinsMap[window.customskinsname] = window.customskinsurl;
-                        application.loadSkin(application.customSkinsCache, window.customskinsurl, window.customskinanimated);
+                        application.customSkinsMap[window.customskinsname] = window.customskinsarray[window.customskinsname].customskinsurl ;
+                        application.loadSkin(application.customSkinsCache, window.customskinsarray[window.customskinsname].customskinsurl , window.customskinsarray[window.customskinsname].customskinanimated);
                         window.customskinsname = null;
-                        window.customskinsurl = null;
-                        window.customskinanimated = null;
+						window.customskinsarray[window.customskinsname] == null
                     }
                 }
             }
@@ -11470,8 +11534,8 @@ Game name     : ${i.displayName}<br/>
                     g1 = g1.replace('_level_1', '').replace('_level_2', '').replace('_level_3', '');
                     g1 = g1.charAt(0).toUpperCase() + g1.slice(1);
                     g1 = makeUpperCaseAfterUnderline(g1);
-					window.customskinanimated = true;
-                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", null);                    
+					var customskinanimated = true;
+                    core.registerSkin(y, null, "https://configs-web.agario.miniclippt.com/live/" + window.agarversion + g1 + ".png", customskinanimated);                    
                 } 
 				else if (g != null && defaultmapsettings.vanillaSkins == true && window.LMAgarGameConfiguration != undefined) {
                     for (var player = 0; player < window.EquippableSkins.length; player++) {
@@ -13822,8 +13886,13 @@ Game name     : ${i.displayName}<br/>
             LM.sendMessage(new DataView(arr.buffer));
         },
         registerSkin(a, b, c, d) {
-            window.customskinsname = a;
-            window.customskinsurl = c;
+            if (a){
+				window.customskinsname = a;		
+				window.customskinsarray[window.customskinsname] = [];
+				window.customskinsarray[window.customskinsname].customskinsname = a
+				window.customskinsarray[window.customskinsname].customskinsurl = c
+				window.customskinsarray[window.customskinsname].customskinanimated = d
+			}
         },
         //lulko
         playerHasCells() {
@@ -14122,53 +14191,63 @@ function hideContextMenu(evt) {
 
 //Animated Skins
 function animateSkincheck() {
-    //for (i = 0; i < 10; i++) {
-	//SpecialEffectPlayers[	
-	for (i = 0; i < 1; i++) {	
         for (animatedi = 0; animatedi < legendmod.leaderboard.length; animatedi++) {
-            for (animatedkey in animatedskins) {
-                if (animatedkey == legendmod.leaderboard[animatedi].nick) {
-					if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){
+			
+			//animatedkey = null
+			//for (animatedkey in animatedskins) {
+			animatedkey=legendmod.leaderboard[animatedi].nick
+			if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){	
+					console.log(animatedkey,animatedskins[animatedkey].id,legendmod.leaderboard[animatedi].nick)
                     e = animatedskins[animatedkey].frames.length - 1;
+					window.anual = 0;
+					window.anual2 = 0;
+					for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
+						 bi = animateda;
+						 verifiednames = animatedkey;
+						 window.anual2 = window.anual2 + animatedskins[verifiednames].frames[bi].delay * 1000;						 
+					}
+					window.anual2a  = window.anualTop / window.anual2 
                     for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                         b = animateda;
                         verifiednames = animatedkey;
                         window.anual = window.anual + animatedskins[verifiednames].frames[b].delay * 1000;
                         d = animatedi;
-                        animateSkin(window.anual, b, verifiednames, d, e, i);
-
-                    }
-					}
-                }
-            }
+                        animateSkin(b, verifiednames, d, e);
+						//if (window.anualTop < window.anual)	window.anualTop = window.anual							
+						}
+					
+                
+            }	
+				
         }
-    }
+	window.anualTop = window.anual	
+	window.preSetanimateSkincheck = window.anualTop
+	if (defaultmapsettings.vanillaSkins) {
+		setTimeout(function() {		
+			animateSkincheck()
+		}, window.preSetanimateSkincheck);	
+	}
 }
 
-function animateSkin(a, b, verifiednames, d, e, i) {
+function animateSkin(b, verifiednames1, d, e) {
+	window.anual3 = window.anual
+	if (window.anual2a && window.anual2a>0.1) window.anual3 = window.anual * window.anual2a
+	
     setTimeout(function() {
-        //if (verifiednames==legendmod.leaderboard[d].nick){
-        application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-        if (b == e) {
-            //if (i == 9) {
-			if (i == 0) {	
-                window.anual = 0;
-                if (animatedserverchanged == false) {}
-            }
-        }
-    }, window.anual);
+        application.cacheCustomSkin(verifiednames1, animatedskins[verifiednames1].color, "https://i.imgur.com/" + animatedskins[verifiednames1].frames[b].id + ".png");
+    }, window.anual3);
 }
 
 function animateSkinsStop() {
-    clearInterval(defaultmapsettings.animateSkinsStart);
+    //clearInterval(defaultmapsettings.animateSkinsStart);
 }
 
-function animateCustomSkin(nick, id){
+function animateCustomSkin(nick2, id){
 	
 	Object.keys(animatedskins).forEach(function(key) {
             if (animatedskins[key] && animatedskins[key].id == id) {
                 //console.log(key, animatedskins[key]);
-				animatedskins[nick] = animatedskins[key];
+				animatedskins[nick2] = animatedskins[key];
 				//animatedskins[key] = null
 				//console.log (animatedskins[key])
             }  
@@ -14334,8 +14413,10 @@ function Socket3updateTeamPlayerSpfc(Socket3data) {
     var message = Socket3data.x;
     //console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Player ', h, 'uses Special Effect ', message);
     if (h && message){ 
+		console.log('a',h, message)
 		SpecialEffectPlayers[h] = message;
 		animateCustomSkin(h, message)
+
 	}
 }	
 
