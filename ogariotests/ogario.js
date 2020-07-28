@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.085
+// v2.086
 
 
 //window.testobjects = {};
@@ -14199,6 +14199,7 @@ function animateSkincheck() {
 					window.anual = 0;
 					window.anual2 = 0;
 					for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
+						 b = animateda;
 						 verifiednames = animatedkey;
 						 window.anual2 = window.anual2 + animatedskins[verifiednames].frames[b].delay * 1000;						 
 					}
