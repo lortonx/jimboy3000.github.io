@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.083
+// v2.084
 
 
 //window.testobjects = {};
@@ -14197,6 +14197,11 @@ function animateSkincheck() {
 					if (animatedskins[animatedkey] && animatedskins[animatedkey].frames){
                     e = animatedskins[animatedkey].frames.length - 1;
 					window.anual = 0;
+					window.anual2 = 0;
+					for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
+						 window.anual2 = window.anual2 + animatedskins[verifiednames].frames[b].delay * 1000;						 
+					}
+					window.anual2a  = window.anualTop / window.anual2 
                     for (animateda = 0; animateda <= animatedskins[animatedkey].frames.length - 1; animateda++) {
                         b = animateda;
                         verifiednames = animatedkey;
@@ -14219,9 +14224,12 @@ function animateSkincheck() {
 }
 
 function animateSkin(b, verifiednames, d, e) {
+	window.anual3 = window.anual
+	if (window.anual2a && window.anual2a>0.1) window.anual3 = window.anual * window.anual2a
+	
     setTimeout(function() {
         application.cacheCustomSkin(verifiednames, animatedskins[verifiednames].color, "https://i.imgur.com/" + animatedskins[verifiednames].frames[b].id + ".png");
-    }, window.anual);
+    }, window.anual3);
 }
 
 function animateSkinsStop() {
