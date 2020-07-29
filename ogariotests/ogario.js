@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.084
+// v2.085
 
 
 //window.testobjects = {};
@@ -8783,18 +8783,21 @@ function thelegendmodproject() {
                                 checkVideos(node2.src, this.targetNick);
                                 try {
 
-									//style.arc(this.x - y, this.y - y, 2 * y, 0, this.pi2, true);
-									//style.clip();									
+									style.arc(this.x - y, this.y - y, 2 * y, 0, this.pi2, true);
+									style.clip();	
+									tempwidth = tempheight = 512;
+									var ac = window.videoSkinPlayer[node2.src]
+									style.drawImage(ac, 0,0,ac.videoWidth, ac.videoHeight, -((tempwidth * (ac.videoWidth / ac.videoHeight) - tempheight) / 2), 0,  tempwidth * (ac.videoWidth/ac.videoHeight), tempheight);
 									//style.drawImage(window.videoSkinPlayer[node2.src], 0, 0,2*y,2*y);	
 							
                                     //style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
-									style.drawImage(window.videoSkinPlayer[node2.src], 0,0,this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+									
 									
 									
                           /*(o.l.context.drawImage(o.l.video, 0, 0, o.l.video.videoWidth,
                                             o.l.video.videoHeight,
-                                            -((o.l.canvas.width * (o.l.video.videoWidth / o.l.video.videoHeight) - o.l.canvas.width) / 2), 0,
-                                            o.l.canvas.width * (o.l.video.videoWidth / o.l.video.videoHeight), o.l.canvas.height),
+                                            -((512 * (o.l.video.videoWidth / o.l.video.videoHeight) - 512) / 2), 0,
+                                            512 * (o.l.video.videoWidth / o.l.video.videoHeight), 512),
                                         t[0] = o.l.canvas)*/
 									
                                 } catch (e) {}
