@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.086
+// v2.087
 
 
 //window.testobjects = {};
@@ -8787,8 +8787,8 @@ function thelegendmodproject() {
 									style.clip();	
 
 									//style.drawImage(window.videoSkinPlayer[node2.src], 0, 0,2*y,2*y);	
-							
-                                    style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
+									style.drawImage(node, this.x - y, this.y - y, 2 * y, 2 * y);
+                                    //style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
 									
 									
 									
