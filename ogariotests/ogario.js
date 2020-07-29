@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.088
+// v2.089
 
 
 //window.testobjects = {};
@@ -689,10 +689,11 @@ function checkVideos2(a, b) {
             //application.setTarget(i.id);
 
             if ($("#nick").val() != b) {
-                if (legendmod5.videoSkinsMusic == true) {
+                if (legendmod5.videoSkinsMusic2 == true) {
                     window.videoSkinPlayerflag2[b] = false;
-                    if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
-                        //console.log("volume 0, stage 0");
+                    //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
+					if (checkIfPlayerIsInView(b)){
+					//console.log("volume 0, stage 0");
                         window.videoSkinPlayer[a].volume = 1;
                         window.videoSkinPlayerflag2[b] = true;
                     } 
@@ -713,6 +714,17 @@ function checkVideos2(a, b) {
         checkvideoSkinPlayerflag2(a, b);
     }
 }
+
+function checkIfPlayerIsInView(b){
+	//for (var i=0;i<legendmod.cells.length;i++){
+		//if (legendmod.cells[i].nick!="") console.log(legendmod.cells[i].nick)	
+	//}	
+	for (var i=0;i<legendmod.cells.length;i++){
+		if (b!="" && legendmod.cells[i].nick == b) return true		
+	}
+	return false
+}
+
 
 function checkvideoSkinPlayerflag2(a, b) {
 
@@ -956,7 +968,7 @@ var displayText = {
         universalChat: 'Universal chat',
         customSkins: 'Własne skiny',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
-        videoSkinsMusic: 'Sound from other\'s Video skins when both C3',
+        videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
         myTransparentSkin: 'Mój przezroczysty skin',
         myCustomColor: 'Mój własny kolor',
         transparentCells: 'Przezroczyste kulki',
@@ -1394,7 +1406,7 @@ var displayText = {
         universalChat: 'Universal chat',
         customSkins: 'Custom skins',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
-        videoSkinsMusic: 'Sound from other\'s Video skins when both C3',
+        videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
         myTransparentSkin: 'My transparent skin',
         myCustomColor: 'My custom color',
         transparentCells: 'Transparent cells',
@@ -2534,7 +2546,7 @@ var defaultmapsettings = {
     universalChat: true,
     customSkins: true,
     videoSkins: true,
-    videoSkinsMusic: false,
+    videoSkinsMusic2: true,
     myTransparentSkin: false,
     myCustomColor: true,
     transparentCells: false,
@@ -4837,7 +4849,7 @@ function thelegendmodproject() {
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
             this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
             this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
-            this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic"], "skinsGroup");
+            this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic2"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
