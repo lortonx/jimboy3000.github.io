@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.089
+// v2.090
 
 
 //window.testobjects = {};
@@ -669,7 +669,7 @@ window.videoSkinPlayer = {};
 function checkVideos(a, b) {
     checkVideos1(a);
     //setTimeout(function() {
-    if (window.videoSkinPlayer[a].readyState == 4) {
+    if (window.videoSkinPlayer[a] && window.videoSkinPlayer[a].readyState == 4) {
         if (!window.videoSkinPlayer[a].playing) {
             window.videoSkinPlayer[a].play();
             setTimeout(function() {
@@ -684,11 +684,12 @@ function checkVideos(a, b) {
 
 function checkVideos2(a, b) {
     //console.log("b is: "+ b);
+	
     for (i = 0; i < application.top5.length - 1; i++) {
         //if (i.nick == b) {
             //application.setTarget(i.id);
 
-            if ($("#nick").val() != b) {
+            if (ogarcopythelb.nick != b) {
                 if (legendmod5.videoSkinsMusic2 == true) {
                     window.videoSkinPlayerflag2[b] = false;
                     //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
@@ -709,10 +710,13 @@ function checkVideos2(a, b) {
         //}
 
     }
-	if ($("#nick").val() != b) {
+	if (ogarcopythelb.nick != b) {
     //if ($("#nick").val() != b || application.customSkinsMap[$("#nick").val()] != a ) {
         checkvideoSkinPlayerflag2(a, b);
     }
+	else if (ogarcopythelb.nick == b && ogarcopythelb.skinURL != a) {
+		window.videoSkinPlayer[a].volume = 0;
+	}
 }
 
 function checkIfPlayerIsInView(b){
