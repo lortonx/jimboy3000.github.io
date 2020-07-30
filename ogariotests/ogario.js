@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.090
+// v2.091
 
 
 //window.testobjects = {};
@@ -694,8 +694,15 @@ function checkVideos2(a, b) {
                     window.videoSkinPlayerflag2[b] = false;
                     //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
 					if (checkIfPlayerIsInView(b)){
-					//console.log("volume 0, stage 0");
-                        window.videoSkinPlayer[a].volume = 1;
+					//console.log("volume 0, stage 0");						
+						
+						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
+							if (application.top5[i].mass>=10000) window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+							else if (application.top5[i].mass<10000) window.videoSkinPlayer[a].volume = console.log(0.01 * defaultmapsettings.videoSkinSoundLevel *  Math.sqrt(application.top5[i].mass));			
+						}
+						else{
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+						}
                         window.videoSkinPlayerflag2[b] = true;
                     } 
 					else {
@@ -717,6 +724,9 @@ function checkVideos2(a, b) {
 	else if (ogarcopythelb.nick == b && ogarcopythelb.skinURL != a) {
 		window.videoSkinPlayer[a].volume = 0;
 	}
+	else if (ogarcopythelb.nick == b && ogarcopythelb.skinURL == a) {
+		window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+	}	
 }
 
 function checkIfPlayerIsInView(b){
@@ -745,6 +755,7 @@ function checkVideos1(a) {
         window.videoSkinPlayer[a] = document.createElement("video"); // create a video element
         window.videoSkinPlayer[a].crossOrigin = 'anonymous';
         window.videoSkinPlayer[a].src = a;
+		window.videoSkinPlayer[a].volume = 0;
         window.videoSkinPlayerflag[a] = true;
     }
 };
@@ -948,7 +959,8 @@ var displayText = {
         suckAnimation: 'Cell Eat [Sucking] Animation',
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
-        zoomSpeedValue2: 'Szybkość zoomu',
+        zoomSpeedValue2: 'Szybkość zoomu',		
+		videoSkinSoundLevel: 'Video skin sound level',		
         leaderboardlimit: 'Leaderboard Players',
         teamboardlimit: 'Team Players',
         quickResp: 'Szybkie odrodzenie (klawisz)',
@@ -973,6 +985,7 @@ var displayText = {
         customSkins: 'Własne skiny',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
         videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',
         myTransparentSkin: 'Mój przezroczysty skin',
         myCustomColor: 'Mój własny kolor',
         transparentCells: 'Przezroczyste kulki',
@@ -1387,6 +1400,7 @@ var displayText = {
         virusGlow: 'Virus Glow',
         borderGlow: 'Border Glow',
         zoomSpeedValue2: 'Zoom speed',
+		videoSkinSoundLevel: 'Video skin sound level',
         leaderboardlimit: 'Leaderboard Players',
         teamboardlimit: 'Team Players',
         quickResp: 'Quick respawn (hotkey)',
@@ -1411,6 +1425,7 @@ var displayText = {
         customSkins: 'Custom skins',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
         videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',
         myTransparentSkin: 'My transparent skin',
         myCustomColor: 'My custom color',
         transparentCells: 'Transparent cells',
@@ -2551,6 +2566,7 @@ var defaultmapsettings = {
     customSkins: true,
     videoSkins: true,
     videoSkinsMusic2: true,
+	videoOthersSkinSoundLevelproportion: true,
     myTransparentSkin: false,
     myCustomColor: true,
     transparentCells: false,
@@ -2647,6 +2663,7 @@ var defaultmapsettings = {
     ////
     //'zoomSpeedValue: .87,
     zoomSpeedValue2: -0.13,
+	videoSkinSoundLevel: 1,
     leaderboardlimit: 20,
     teamboardlimit: 20,
     messageSound: 'https://legendmod.ml/sounds/notification_01.mp3',
@@ -4886,6 +4903,7 @@ function thelegendmodproject() {
             this.addSliderBox(".animationGroup", "animation", 5, 200, 1);
 			
             this.addSliderBox(".zoomGroup", "zoomSpeedValue2", -0.90, 0.90, 0.01);
+			this.addSliderBox(".skinsGroup", "videoSkinSoundLevel", 0, 1, 0.01);
             this.addSliderBox(".boardGroup", "leaderboardlimit", 10, 30, 5);
             this.addSliderBox(".boardGroup", "teamboardlimit", 5, 40, 5);
 
