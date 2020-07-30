@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.094
+// v2.095
 
 
 //window.testobjects = {};
@@ -672,9 +672,9 @@ function checkVideos(a, b) {
     if (window.videoSkinPlayer[a] && window.videoSkinPlayer[a].readyState == 4) {
         if (!window.videoSkinPlayer[a].playing) {
             window.videoSkinPlayer[a].play();
-            setTimeout(function() {
+            //setTimeout(function() {
                 checkVideos2(a, b);
-            }, 2000);
+            //}, 2000);
         };
 
     }
@@ -683,6 +683,8 @@ function checkVideos(a, b) {
 }
 
 function checkVideos2(a, b) {
+ 
+	
     //console.log("b is: "+ b);
 	
     for (i = 0; i < application.top5.length - 1; i++) {
@@ -729,6 +731,23 @@ function checkVideos2(a, b) {
 			window.videoSkinPlayer[a].volume = 0;
 		}		
 	}
+	//
+	if (window.videoSkinPlayer[a] && window.videoSkinPlayerflag2[b]){
+		if (!window.videoSkinPlayerflag[a]){
+			window.videoSkinPlayerflag[a] = true;
+			window.timerVideoSkinsInterval = setInterval(function() {
+					checkVideos2(a, b);
+				}, 2000);	
+		}			
+	}
+	else{
+		window.videoSkinPlayerflag[a] = null
+		window.videoSkinPlayerflag2[b] = null
+		window.videoSkinPlayer[a] = null
+		clearInterval(window.timerVideoSkinsInterval);
+	}
+	//
+	window.isCheckingSkins[a]=true;
 }
 function checkIfPlayerIsInView(b){
 	//for (var i=0;i<legendmod.cells.length;i++){
@@ -741,8 +760,7 @@ function checkIfPlayerIsInView(b){
 }
 
 
-function checkvideoSkinPlayerflag2(a, b) {
-
+function checkvideoSkinPlayerflag2(a, b) {	
     if (!window.videoSkinPlayerflag2[b]) {
         //console.log("volume 0, stage 3");
         window.videoSkinPlayer[a].volume = 0;
@@ -757,7 +775,7 @@ function checkVideos1(a) {
         window.videoSkinPlayer[a].crossOrigin = 'anonymous';
         window.videoSkinPlayer[a].src = a;
 		window.videoSkinPlayer[a].volume = 0;
-        window.videoSkinPlayerflag[a] = true;
+        //window.videoSkinPlayerflag[a] = true;
     }
 };
 
