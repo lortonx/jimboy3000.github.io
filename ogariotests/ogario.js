@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.098
+// v2.099
 
 
 //window.testobjects = {};
@@ -733,7 +733,7 @@ function checkVideos2(a, b) {
 		}		
 	}
 	//
-	if (window.videoSkinPlayer[a] && window.videoSkinPlayerflag2[b]){
+	if (window.videoSkinPlayer[a]){
 		if (!window.videoSkinPlayerflag3[a]){
 			window.videoSkinPlayerflag3[a] = true;
 			window.timerVideoSkinsInterval = setInterval(function() {
@@ -742,10 +742,9 @@ function checkVideos2(a, b) {
 		}			
 	}
 	else{
-		//window.videoSkinPlayerflag[a] = null
+		window.videoSkinPlayerflag[a] = null
 		window.videoSkinPlayerflag2[b] = null
 		window.videoSkinPlayerflag3[b] = null
-		window.videoSkinPlayer[a] = null
 		clearInterval(window.timerVideoSkinsInterval);
 	}
 	//
