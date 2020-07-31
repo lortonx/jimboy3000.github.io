@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.118
+// v2.119
 
 
 //window.testobjects = {};
@@ -5766,12 +5766,9 @@ function thelegendmodproject() {
                 img[url] = new Image();
             }
             img[url].crossOrigin = 'Anonymous';
-            img[url].onload = function() {					
-						setTimeout(function() {
-							console.log("hi",o.duration)
-							if (o.duration>120) toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller video than 5 minutes next time, and low quality");		
-						}, 500);
-									
+            img[url].onload = function() {										
+							console.log("hi",this.duration)
+							if (this.duration>120) toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller video than 5 minutes next time, and low quality");											
                     if (this.complete &&
                         this.width &&
                         this.height &&
