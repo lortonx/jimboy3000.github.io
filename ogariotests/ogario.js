@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.122
+// v2.123
 
 
 //window.testobjects = {};
@@ -790,9 +790,9 @@ function checkVideos3(o) {
     if (o.readyState > 0) {
         var minutes = parseInt(o.duration / 60, 10);
         var seconds = o.duration % 60;
-        if (minutes > 5) {
-            //toastr.warning("<b>[SERVER]:</b> " + "Avoid using video skins bigger than 6 minutes");
-            toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter124);
+        if (o.videoWidth>640 || minutes > 4) {            
+			toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>640</b></font>, next time");
+            //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter124);
         }
     }
 }
@@ -5768,15 +5768,7 @@ function thelegendmodproject() {
             }
 			
             img[url].crossOrigin = 'Anonymous';
-            img[url].onload = function() {										
-							if ((this.complete &&
-                        this.width &&
-                        this.height && (this.src.includes(".mp4") || this.src.includes(".webm") || this.src.includes(".ogv")) && this.duration>120)){
-								console.log("hi",this.duration)
-								setTimeout(function() {
-									toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller video than 5 minutes next time, and low quality");	
-								}, 500);														
-							}								
+            img[url].onload = function() {																	
                     if (this.complete &&
                         this.width &&
                         this.height &&
