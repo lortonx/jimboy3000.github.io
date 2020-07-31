@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.099a by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.099b by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "99"; // the version 1.1-> 1.11
 
@@ -52,6 +52,7 @@ var previousMode = localStorage.getItem("gamemode");
 
 var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlytenth = localStorage.getItem("checkonlytenth");
+var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
 var checkonlyrewardday = localStorage.getItem("checkonlyrewardday");
 var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
 var musicPlayer;
@@ -319,11 +320,18 @@ function loadersettings() {
 		localStorage.setItem("checkonlytenth", checkonlytenth);				
        // }					
 		}
+		
 		else if(checkonlyrewardday != "true"){
 			LMrewardDay();
 			checkonlyrewardday = "true";
 			localStorage.setItem("checkonlyrewardday", checkonlyrewardday);					
 		}
+        else if (checkonlyeleventh!= "true") {
+			VideoSkinsPromo();		
+		checkonlyeleventh = "true";
+		localStorage.setItem("checkonlyeleventh", checkonlyeleventh);				
+       // }					
+		}		
         if (timesopened == 10 || timesopened == 100 || timesopened == 1000) {
             //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
             if (SHOSHOBtn != "true") {
@@ -6408,6 +6416,27 @@ function LMrewardDay(){
                 '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Reward Day' + '</h4>' +
                 '</div>' +
 				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/extras/rewardday.html" width="920" height="550" >' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+			$(".modal-dialog").draggable()
+            $("#CloseLMPromo").click(function() {
+                $("#LMPromo").remove();
+            });
+            $("#FAQLMPromo").click(function() {
+				window.open('https://legendmod.ml/', '_blank');
+            });
+}
+function VideoSkinsPromo(){
+            $('#helloContainer').after('<div class="modal fade in" id="LMPromo" aria-hidden="false" style="display: block;">' +
+                '<div class="modal-backdrop fade in"></div>' +
+                '<div class="modal-dialog" style="top: calc(50vh - 241.5px); width: 922px;">' +
+                '<div class="modal-content">' +
+                '<div id="CloseLMPromo2" class="modal-header"><button id="CloseLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">' + Premadeletter113 + '</span></button> <button id="FAQLMPromo" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">?</span><span class="sr-only">' + Premadeletter113 + '</span></button>' +
+                '<h4 class="modal-title" style="font-family: Roboto Condensed, sans-serif">' + 'Video Skin Promo' + '</h4>' +
+                '</div>' +
+				'<div id="LMadvertisement3"><iframe id="customskinsIframe2" src="https://legendmod.ml/developers/videoskins.html" width="920" height="550" >' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
