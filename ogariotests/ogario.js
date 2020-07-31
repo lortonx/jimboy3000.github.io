@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.107
+// v2.108
 
 
 //window.testobjects = {};
@@ -704,7 +704,6 @@ function checkVideos2(a, b) {
 							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 						}
                         window.videoSkinPlayerflag2[b] = true;
-						return true;
                     } 
 					else{
                         //console.log("volume 0, stage 1");
