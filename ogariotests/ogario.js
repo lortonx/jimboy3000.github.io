@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.102
+// v2.103
 
 
 //window.testobjects = {};
@@ -4893,7 +4893,7 @@ function thelegendmodproject() {
             this.addOptions(["quickResp", "autoResp", "spawnSpecialEffects"], "respGroup");
             this.addOptions(["noNames", "optimizedNames", "autoHideNames", "hideMyName", "hideTeammatesNames", "namesStroke"], "namesGroup");
             this.addOptions(["showMass", "optimizedMass", "autoHideMass", "hideMyMass", "hideEnemiesMass", "shortMass", "virMassShots", "massStroke", "virusSound", "potionsDrinker"], "massGroup");
-            this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
+            this.addOptions(["noSkins", "customSkins", "vanillaSkins", "jellyPhisycs", "videoSkins", "videoDestorted", "videoSkinsMusic2", "videoOthersSkinSoundLevelproportion"], "skinsGroup");
             this.addOptions(["optimizedFood", "autoHideFood", "autoHideFoodOnZoom", "rainbowFood"], "foodGroup");
             this.addOptions(["noColors", "myCustomColor", "myTransparentSkin", "transparentSkins", "transparentCells", "transparentViruses", "virusGlow", 'cellContours', "animatedRainbowColor"], "transparencyGroup");
             this.addOptions(["showGrid", "showBgSectors", "showMapBorders", "borderGlow"], "gridGroup");
