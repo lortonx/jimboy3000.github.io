@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.119
+// v2.120
 
 
 //window.testobjects = {};
@@ -5759,6 +5759,7 @@ function thelegendmodproject() {
         loadSkin(img, url, animated) {
             var app = this;
             //console.log ("img:" + img + "url:" + url);
+			if (!url.includes("4.0") && !url.includes("4.1") && !url.includes("4.2")){
             if (url && url.includes && (url.includes(".mp4") || url.includes(".webm") || url.includes(".ogv"))) {
                 img[url] = new Video();
                 //console.log("stage 2 videos");
@@ -5767,8 +5768,12 @@ function thelegendmodproject() {
             }
             img[url].crossOrigin = 'Anonymous';
             img[url].onload = function() {										
-							console.log("hi",this.duration)
-							if (this.duration>120) toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller video than 5 minutes next time, and low quality");											
+							if ((this.includes(".mp4") || this.includes(".webm") || this.includes(".ogv")) && this.duration>120){
+								console.log("hi",this.duration)
+								setTimeout(function() {
+									toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller video than 5 minutes next time, and low quality");	
+								}, 500);														
+							}								
                     if (this.complete &&
                         this.width &&
                         this.height &&
@@ -5816,6 +5821,7 @@ function thelegendmodproject() {
                                 app.cacheSkin4(app.customSkinsCache))								
                         );*/
                     }
+					}
                 },
                 img[url].onerror = function() {
                     //console.log("error loading image: "+ url);
