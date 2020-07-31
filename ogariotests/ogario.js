@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.109
+// v2.110
 
 
 //window.testobjects = {};
@@ -694,13 +694,19 @@ function checkVideos2(a, b) {
                     //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
 					if (checkIfPlayerIsInView(b)){
 					//console.log("volume 0, stage 0");						
-						//console.log("a",b)						
+						var temple=null;
+						console.log("a",b,a)						
 						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
-							if (application.top5[i].mass>=10000) window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
-							else if (application.top5[i].mass<10000) window.videoSkinPlayer[a].volume = 0.01 * defaultmapsettings.videoSkinSoundLevel *  Math.sqrt(application.top5[i].mass);
-							continue;
+							console.log("b",application.top5[i].mass)
+							if (application.top5[i].mass>=10000){
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
+							}					
+							else if (application.top5[i].mass<10000){ 
+							window.videoSkinPlayer[a].volume = 0.01 * defaultmapsettings.videoSkinSoundLevel *  Math.sqrt(application.top5[i].mass);							
+							}
+							temple=true
 						}
-						else{
+						else if (!temple){
 							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 						}
                         window.videoSkinPlayerflag2[b] = true;
