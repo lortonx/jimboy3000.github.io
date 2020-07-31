@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.110
+// v2.111
 
 
 //window.testobjects = {};
@@ -695,14 +695,14 @@ function checkVideos2(a, b) {
 					if (checkIfPlayerIsInView(b)){
 					//console.log("volume 0, stage 0");						
 						var temple=null;
-						console.log("a",b,a)						
+						//console.log("a",b,a)						
 						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
-							console.log("b",application.top5[i].mass)
+							//console.log("b",application.top5[i].mass)
 							if (application.top5[i].mass>=10000){
 							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 							}					
 							else if (application.top5[i].mass<10000){ 
-							window.videoSkinPlayer[a].volume = 0.01 * defaultmapsettings.videoSkinSoundLevel *  Math.sqrt(application.top5[i].mass);							
+							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel *  Math.pow(application.top5[i].mass, 1/2)*0.01;							
 							}
 							temple=true
 						}
@@ -741,7 +741,7 @@ function checkVideos2(a, b) {
 			window.videoSkinPlayerflag3[a] = true;
 			window.timerVideoSkinsInterval[a] = setInterval(function() {
 					checkVideos2(a, b);
-				}, 2000);	
+				}, 1000);	
 		}			
 	}
 	else{
