@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.104
+// v2.105
 
 
 //window.testobjects = {};
@@ -684,21 +684,18 @@ function checkVideos(a, b) {
 }
 
 function checkVideos2(a, b) {
- 
-	
-    //console.log("b is: "+ b);
-	
-    for (i = 0; i < application.top5.length - 1; i++) {
+	//console.log(b)
+    for (var i = 0; i < application.top5.length; i++) {
         //if (i.nick == b) {
             //application.setTarget(i.id);
-
-            if (ogarcopythelb.nick != b) {
+            if (ogarcopythelb.nick != b && application.top5[i].nick.replace(/\s{2,}/g,' ') == b.replace(/\s{2,}/g,' ')) {
                 if (legendmod5.videoSkinsMusic2 == true) {
                     window.videoSkinPlayerflag2[b] = false;
                     //if (application.calculateMapSector(application.top5[i].x, application.top5[i].y) == application.currentSector && application.currentSector == "C3") {
 					if (checkIfPlayerIsInView(b)){
 					//console.log("volume 0, stage 0");						
-						
+						//console.log("a",b)
+						application.top5[0].temple=true
 						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
 							if (application.top5[i].mass>=10000) window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 							else if (application.top5[i].mass<10000) window.videoSkinPlayer[a].volume = 0.01 * defaultmapsettings.videoSkinSoundLevel *  Math.sqrt(application.top5[i].mass);			
@@ -707,8 +704,9 @@ function checkVideos2(a, b) {
 							window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 						}
                         window.videoSkinPlayerflag2[b] = true;
+						return true;
                     } 
-					else {
+					else if(!application.top5[0].temple){
                         //console.log("volume 0, stage 1");
                         window.videoSkinPlayer[a].volume = 0;
                     }
@@ -755,10 +753,13 @@ function checkIfPlayerIsInView(b){
 		//if (legendmod.cells[i].nick!="") console.log(legendmod.cells[i].nick)	
 	//}	
 	for (var i=0;i<legendmod.cells.length;i++){
-		if (b!="" && legendmod.cells[i].nick == b) return true		
+		if (b!="" && decodeURIComponent(legendmod.cells[i].nick) == decodeURIComponent(b)){
+			return true		
+		}
 	}
 	return false
 }
+
 
 
 function checkvideoSkinPlayerflag2(a, b) {	
