@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.101
+// v2.102
 
 
 //window.testobjects = {};
@@ -1004,6 +1004,7 @@ var displayText = {
         universalChat: 'Universal chat',
         customSkins: 'Własne skiny',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
+		videoDestorted: 'Video destorted to fit cells',
         videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
 		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',
         myTransparentSkin: 'Mój przezroczysty skin',
@@ -1444,8 +1445,9 @@ var displayText = {
         universalChat: 'Universal chat',
         customSkins: 'Custom skins',
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
+		videoDestorted: 'Video destorted to fit cells',
         videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
-		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',		
         myTransparentSkin: 'My transparent skin',
         myCustomColor: 'My custom color',
         transparentCells: 'Transparent cells',
@@ -2585,6 +2587,7 @@ var defaultmapsettings = {
     universalChat: true,
     customSkins: true,
     videoSkins: true,
+	videoDestorted: false,
     videoSkinsMusic2: true,
 	videoOthersSkinSoundLevelproportion: true,
     myTransparentSkin: false,
@@ -8842,8 +8845,13 @@ function thelegendmodproject() {
 
 									//style.drawImage(window.videoSkinPlayer[node2.src], 0, 0,2*y,2*y);	
 									//style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
-									var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
-									style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);									
+									if (defaultmapsettings.videoDestorted){
+										var temp = window.videoSkinPlayer[node2.src].videoWidth / window.videoSkinPlayer[node2.src].videoHeight;
+										style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y * temp, 2 * y, 2 * y * temp);	
+									}
+									else{
+										style.drawImage(window.videoSkinPlayer[node2.src], this.x - y, this.y - y, 2 * y, 2 * y);
+									}
                                     //style.drawImage(window.videoSkinPlayer[node2.src], this.x - 0.7 * y, this.y - 0.7 * y, 1.4 * y, 1.4 * y);
 									
 									
