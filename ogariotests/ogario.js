@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.105
+// v2.106
 
 
 //window.testobjects = {};
@@ -695,7 +695,7 @@ function checkVideos2(a, b) {
 					if (checkIfPlayerIsInView(b)){
 					//console.log("volume 0, stage 0");						
 						//console.log("a",b)
-						application.top5[0].temple=true
+						application.top5[i].temple=true
 						if (defaultmapsettings.videoOthersSkinSoundLevelproportion && application.top5[i].mass){
 							if (application.top5[i].mass>=10000) window.videoSkinPlayer[a].volume = defaultmapsettings.videoSkinSoundLevel;
 							else if (application.top5[i].mass<10000) window.videoSkinPlayer[a].volume = 0.01 * defaultmapsettings.videoSkinSoundLevel *  Math.sqrt(application.top5[i].mass);			
@@ -706,7 +706,7 @@ function checkVideos2(a, b) {
                         window.videoSkinPlayerflag2[b] = true;
 						return true;
                     } 
-					else if(!application.top5[0].temple){
+					else if(!application.top5[i].temple){
                         //console.log("volume 0, stage 1");
                         window.videoSkinPlayer[a].volume = 0;
                     }
