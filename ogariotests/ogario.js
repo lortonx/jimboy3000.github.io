@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.103
+// v2.104
 
 
 //window.testobjects = {};
@@ -1006,7 +1006,7 @@ var displayText = {
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
 		videoDestorted: 'Video destorted to fit cells',
         videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
-		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound level proportional to their mass',
         myTransparentSkin: 'Mój przezroczysty skin',
         myCustomColor: 'Mój własny kolor',
         transparentCells: 'Przezroczyste kulki',
@@ -1447,7 +1447,7 @@ var displayText = {
         videoSkins: 'Video skins (.mp4 .webm .ogv)',
 		videoDestorted: 'Video destorted to fit cells',
         videoSkinsMusic2: 'Sound from other\'s Video skins when visible',
-		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound proportional to mass',		
+		videoOthersSkinSoundLevelproportion: 'Other\'s VS sound level proportional to their mass',		
         myTransparentSkin: 'My transparent skin',
         myCustomColor: 'My custom color',
         transparentCells: 'Transparent cells',
