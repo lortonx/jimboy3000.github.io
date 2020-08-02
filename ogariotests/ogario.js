@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.126
+// v2.127
 
 
 //window.testobjects = {};
@@ -6500,6 +6500,7 @@ function thelegendmodproject() {
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
 				console.log("socket",this.socket.url)
+				console.log("window.wsinjected",window.wsinjected)
 				if (!window.wsinjected){ //if delta socket injected
 					buf.setUint16(1, 401, true);
 				}
