@@ -790,8 +790,8 @@ function checkVideos3(o) {
     if (o.readyState > 0) {
         var minutes = parseInt(o.duration / 60, 10);
         var seconds = o.duration % 60;
-        if (o.videoWidth>640 || minutes > 4) {            
-			toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>640</b></font>, next time");
+        if (o.videoWidth>720 || minutes > 4) {            
+			toastr.error("<b>[" + Premadeletter123 + "]:</b> " + "Please use smaller videos than <font color='blue'><b>5 minutes</b></font>, <font color='blue'><b>low quality</b></font> and width until <font color='blue'><b>720</b></font>, next time");
             //toastr.warning("<b>[" + Premadeletter123 + "]:</b> " + Premadeletter124);
         }
     }
