@@ -54,7 +54,7 @@ var checkonlyonce = localStorage.getItem("checkonlyonce");
 var checkonlytenth = localStorage.getItem("checkonlytenth");
 var checkonlyeleventh = localStorage.getItem("checkonlyeleventh");
 var checkonlyrewardday = localStorage.getItem("checkonlyrewardday");
-var defaultMusicUrl = "https://www.youtube.com/watch?v=e7nkA7Ue5yg";
+var defaultMusicUrl = "https://www.youtube.com/watch?v=ZJXPONv41jw";
 var musicPlayer;
 
 var stateObj = {
