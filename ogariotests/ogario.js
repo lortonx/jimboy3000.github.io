@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.127
+// v2.128
 
 
 //window.testobjects = {};
@@ -6499,8 +6499,8 @@ function thelegendmodproject() {
                 console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' Ogario socket open:', application.publicIP);
                 var buf = app.createView(3);
                 buf.setUint8(0, 0);
-				console.log("socket",this.socket.url)
-				console.log("window.wsinjected",window.wsinjected)
+				//console.log("socket",this.socket.url)
+				//console.log("window.wsinjected",window.wsinjected)
 				if (!window.wsinjected){ //if delta socket injected
 					buf.setUint16(1, 401, true);
 				}
