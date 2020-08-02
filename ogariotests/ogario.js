@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.128
+// v2.129
 
 
 //window.testobjects = {};
@@ -5759,7 +5759,7 @@ function thelegendmodproject() {
         loadSkin(img, url, animated) {
             var app = this;
             //console.log ("img:" + img + "url:" + url);
-			if (!url.includes("4.0") && !url.includes("4.1") && !url.includes("4.2")){
+			if (!url.includes("4.0") && !url.includes("4.1") && !url.includes("4.2") && !url.includes("4.3")){
             if (url && url.includes && (url.includes(".mp4") || url.includes(".webm") || url.includes(".ogv"))) {
                 img[url] = new Video();
                 //console.log("stage 2 videos");
