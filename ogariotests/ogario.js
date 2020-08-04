@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.134
+// v2.135
 
 
 //window.testobjects = {};
@@ -4855,7 +4855,7 @@ function thelegendmodproject() {
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
 					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
-					<span id="captchaErrors" style="display:inline-block;">errors: <span id="captchaErrors1">0</span></span>
+					<span id="captchaErrors" style="display:inline-block;">Errors: <span id="captchaErrors1">0</span></span>
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
