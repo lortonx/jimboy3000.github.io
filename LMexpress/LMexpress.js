@@ -1,5 +1,5 @@
 /**************
- * Legend express v0.099b by Jimboy3100   email:jimboy3100@hotmail.com
+ * Legend express v0.099c by Jimboy3100   email:jimboy3100@hotmail.com
  *************/
 var semimodVersion = "99"; // the version 1.1-> 1.11
 
@@ -304,7 +304,7 @@ function loadersettings() {
             }
         }	
         if (checkonlytenth != "true") {
-			LMadvertisement2020();
+			//LMadvertisement2020();
         //if($("#SHOSHOBtn").attr('aria-pressed') == "false"){
         /*toastr.info('<center><b>'+
 		'IF HOTKEYS <font color="yellow"><span style="text-shadow: 0px 0px 10px #0DA9C7;background: transparent url(https://legendmod.ml/banners/particles.gif);">NOT WORKING</font></span>:<br>'+
@@ -322,12 +322,12 @@ function loadersettings() {
 		}
 		
 		else if(checkonlyrewardday != "true"){
-			LMrewardDay();
+			//LMrewardDay();
 			checkonlyrewardday = "true";
 			localStorage.setItem("checkonlyrewardday", checkonlyrewardday);					
 		}
         else if (checkonlyeleventh!= "true") {
-			VideoSkinsPromo();		
+			//VideoSkinsPromo();		
 		checkonlyeleventh = "true";
 		localStorage.setItem("checkonlyeleventh", checkonlyeleventh);				
        // }					
