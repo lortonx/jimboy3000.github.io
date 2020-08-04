@@ -4855,7 +4855,7 @@ function thelegendmodproject() {
 					<input type="text" id="botsNameLM" placeholder="Bots Name" maxlength="15" spellcheck="false" style="display:inline-block;">
 					<input type="number" id="botsAmount" placeholder="Bots Amount" min="1" max="199" spellcheck="false">
 					<input type="number" id="captchaSpeed" value="1.0" step="0.05" placeholder="Captcha delay (sec)" min="0" max="5" spellcheck="false" style="display:inline-block;">
-					<span id="captchaErrors" style="display:inline-block;">errors:<span>0</span></span>
+					<span id="captchaErrors" style="display:inline-block;">errors: <span id="captchaErrors1">0</span></span>
 					<input type="text" id="botsRemoteIP" placeholder="ws://localhost:1337" maxlength="100" spellcheck="false">
 					<br>
 					<button id="connectBots" class="btn btn-success">Connect</button>
@@ -9340,7 +9340,7 @@ function thelegendmodproject() {
                         //window.RequestedTokens=1000;
                         //this code is to inform me when a new loop process starts again
                         console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' bots started again')
-						
+						$('#captchaErrors1').val($('#captchaErrors1').val()+1))
                         legendmod.sendTokenForBots();
                         if ($('#captchaSpeed').val()) {
                             window.tempol = $('#captchaSpeed').val();
