@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.139
+// v2.140
 
 
 //window.testobjects = {};
@@ -1151,8 +1151,8 @@ var displayText = {
         'hk-changeTarget': 'Zmień cel',
         'hk-privateMiniMap': 'Pokaż cel na minimapie',
         'hk-showQuest': 'Pokaż/ukryj zadanie',
-        'hk-showSpectator': 'Show/hide Full Spectator',
-		'hk-showIngameSpectator': 'Show/hide Ingame Spectator',
+        'hk-showSpectator': 'Show/hide Full Spectator (Premium)',
+		'hk-showIngameSpectator': 'Show/hide Ingame Spectator (Premium)',
         commands: 'Komendy',
         comm1: 'Feeduj!',
         comm2: 'Dziel się!',
@@ -1594,7 +1594,8 @@ var displayText = {
         'hk-changeTarget': 'Change target',
         'hk-privateMiniMap': 'Show target on the minimap',
         'hk-showQuest': 'Show/hide quest',
-        'hk-showSpectator': 'Show/hide Full Spectator',
+        'hk-showSpectator': 'Show/hide Full Spectator (Premium)',
+		'hk-showIngameSpectator': 'Show/hide Ingame Spectator (Premium)',
         commands: 'Commands',
         comm1: 'Feed me!',
         comm2: 'Split into me!',
