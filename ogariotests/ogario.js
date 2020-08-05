@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.138
+// v2.139
 
 
 //window.testobjects = {};
@@ -1152,6 +1152,7 @@ var displayText = {
         'hk-privateMiniMap': 'Pokaż cel na minimapie',
         'hk-showQuest': 'Pokaż/ukryj zadanie',
         'hk-showSpectator': 'Show/hide Full Spectator',
+		'hk-showIngameSpectator': 'Show/hide Ingame Spectator',
         commands: 'Komendy',
         comm1: 'Feeduj!',
         comm2: 'Dziel się!',
@@ -3748,11 +3749,22 @@ function thelegendmodproject() {
             if (window.fullSpectator) {
                 window.fullSpectator = false;
                 LM.flushSpecsData();
-            } else if (!window.fullSpectator) {
-                window.fullSpectator = true;
-                LM.addSpect();
+            } 
+			else if (!window.fullSpectator) {
+					window.fullSpectator = true;
+					LM.addSpect();				
             }
         },
+        setShowIngameSpectator() {
+            if (window.ingameSpectator) {
+                window.ingameSpectator = false;
+                LM.flushSpecsData();
+            } 
+			else if (!window.fullSpectator) {
+					window.ingameSpectator = true;
+					LM.addSpect();
+            }
+        },		
         setQuest() {
             if (this.showQuest && ':ffa' === this.gameMode) {
                 $('#quest-hud').show();
@@ -7614,17 +7626,18 @@ function thelegendmodproject() {
                 window.fullSpectator = false
                 LM.flushSpecsData()
             } else {
-                window.fullSpectator = true
-                LM.addSpect()
+					window.fullSpectator = true
+					LM.addSpect()
             }
         },
         setIngameSpectator() {
             if (window.ingameSpectator) {
                 window.ingameSpectator = false
                 LM.flushSpecsData()
-            } else {
-                window.ingameSpectator = true
-                LM.addSpect()
+            } 
+			else {
+					window.ingameSpectator = true
+					LM.addSpect()				
             }
         },
         setTargeting() {
