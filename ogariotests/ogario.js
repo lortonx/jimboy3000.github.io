@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.135
+// v2.136
 
 
 //window.testobjects = {};
@@ -537,7 +537,7 @@ window.connectionBots = {
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
-        toastr.info("<b>[" + Premadeletter123 + "]:</b> " + window.RequestedTokens + " captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>");
+        toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
         legendmod.sendTokenForBots();
         if (!window.sendFirstTimeTokenBots) {
             window.sendFirstTimeTokenBots = true
@@ -14092,7 +14092,7 @@ function setGUIEvents() {
         }
     })
     document.getElementById('captchaBots').addEventListener('click', () => {
-        toastr.info('<b>[' + Premadeletter123 + ']:</b> 100000 captcha tokens requested, some lag from proccessing will be created. <br><b>If captcha tokens stop, create again tokens</b>');
+        toastr.info("<b>[" + Premadeletter123 + "]:</b> In case of captcha, change IP by <b>rebooting rooter</b> or use <b>VPN</b>");
         window.RequestedTokens = 100000;
         legendmod.sendTokenForBots();
         //legendmod.sendTimeOutTokenForBots();
