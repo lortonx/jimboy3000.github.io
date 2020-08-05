@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.136
+// v2.137
 
 
 //window.testobjects = {};
@@ -4649,6 +4649,7 @@ function thelegendmodproject() {
                 }
             } else {
                 checktypeImgVid = new Image();
+				
                 //console.log("stage 1 images");
 
                 if ($('#' + e).empty().addClass('default'), t && 0 != t.length) {
@@ -5768,7 +5769,7 @@ function thelegendmodproject() {
                 img[url] = new Image();
             }
 			
-            img[url].crossOrigin = 'Anonymous';
+            img[url].crossOrigin = 'anonymous';
             img[url].onload = function() {																	
                     if (this.complete &&
                         this.width &&
@@ -11265,7 +11266,7 @@ function thelegendmodproject() {
         getImg(url, name, callback) {
             const app = this;
             var img = new Image();
-            img.crossOrigin = `Anonymous`;
+            img.crossOrigin = 'anonymous';
             img.setAttribute("alt", name);
             img.onload = function() {
                 if (this.complete && this.width && this.height) {
