@@ -5846,7 +5846,7 @@ function thelegendmodproject() {
 
                     }
                     else if (url && url.includes("https://legendmod.ml/vanillaskins/")) {
-                        url = "https://legendmod.ml/vanillaskins2/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
+                        url = "https://legendmod.ml/nextvanillaskins/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
                         //console.log("new destination is: " + url);
                         application.customSkinsMap[window.lastusednameforskin] = url;
                         application.loadSkin(img, url);
