@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.140
+// v2.141
 
 
 //window.testobjects = {};
@@ -5845,6 +5845,14 @@ function thelegendmodproject() {
                         return url;
 
                     }
+                    else if (url && url.includes("https://legendmod.ml/vanillaskins/")) {
+                        url = "https://legendmod.ml/vanillaskins2/" + url.split('/').pop(); //if CORS policy on miniclip images, use other source
+                        //console.log("new destination is: " + url);
+                        application.customSkinsMap[window.lastusednameforskin] = url;
+                        application.loadSkin(img, url);
+                        return url;
+
+                    }					
                 };
             img[url].src = url;
 			}
