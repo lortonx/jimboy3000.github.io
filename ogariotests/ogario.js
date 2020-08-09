@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.148 bots
+// v2.149 bots
 
 
 //window.testobjects = {};
@@ -537,7 +537,7 @@ window.connectionBots = {
         document.getElementById('connectBots').innerText = 'Connect'
         document.getElementById('connectBots').style.color = 'white'
         window.RequestedTokens = 100000;
-		for (i<0;i<window.captchaOpenedWindow;i++){
+		for (var i=0;i<window.captchaOpenedWindow;i++){
 			window.capthaWindow[i] = window.open("https://agar.io/captcha");
 		}
 		if (!window.capthaWindowOpened){
@@ -624,7 +624,10 @@ window.connectionBots = {
         window.userBots.startedBots = false
         window.bots.ai = false	
 		for (i<0;i<window.captchaOpenedWindow;i++){
-			if (window.capthaWindow[i]) window.capthaWindow[i].close()
+			if (window.capthaWindow[i]){
+				window.capthaWindow[i].close()
+				window.capthaWindow[i]=null
+			}
 		}
     }
 }
