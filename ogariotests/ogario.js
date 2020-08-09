@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.177 bots
+// v2.178 bots
 
 
 //window.testobjects = {};
@@ -507,6 +507,15 @@ window.buffers = {
         writer.writeInt32(y)
         return writer.dataView.buffer
     },
+	//
+    ghostInstance(x, y) {
+        const writer = new Writer(9)
+        writer.writeUint8(7)
+        writer.writeInt32(x)
+        writer.writeInt32(y)
+        return writer.dataView.buffer
+    },	
+	//
     captchabots(x) {
         const writer = new Writer(4 + x.length)
         writer.writeUint8(8)
@@ -9558,6 +9567,9 @@ function thelegendmodproject() {
                 window.userBots.mouseX = this.cursorX - window.userBots.offsetX;
                 window.userBots.mouseY = this.cursorY - window.userBots.offsetY;
                 window.connectionBots.send(window.buffers.mousePosition(window.userBots.mouseX, window.userBots.mouseY))
+				//
+				if (legendmod.gameMode!=":party") window.connectionBots.send(window.buffers.ghostInstances(application.getghostX(), application.getghostY()))
+				//	
             }
         },
         /*            sendAccessToken(t, e, i) {
@@ -14104,9 +14116,12 @@ function setGUIEvents() {
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                    } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required before starting the bots')
-                } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
-            } else {
+                    } 
+					else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required before starting the bots')
+                } 
+				else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
+            } 
+			else {
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
             }
         }
