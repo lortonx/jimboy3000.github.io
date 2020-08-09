@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.158 bots
+// v2.159 bots
 
 
 //window.testobjects = {};
@@ -14035,8 +14035,8 @@ function setGUIEvents() {
 		window.captchaOpenedWindow = 1
 	}
 	else{	
-		window.captchaOpenedWindow = captchaSpeed;
-		$('#captchaSpeed').val(captchaSpeed)
+		window.captchaOpenedWindow = parseInt(captchaSpeed);
+		$('#captchaSpeed').val(window.captchaOpenedWindow)
 	}   
     window.bots.remoteIP = storedbotsRemoteIP
     window.SERVER_HOST = storedbotsRemoteIP;
