@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.167 bots
+// v2.169 bots
 
 
 //window.testobjects = {};
@@ -11866,7 +11866,7 @@ Game name     : ${i.displayName}<br/>
                 }
                 if (extendedFlags & 2) {
                     cellUpdateCells.isFriend = isFriend;
-                    console.log('FB friend cell in view', isFriend)
+                    //console.log('FB friend cell in view', isFriend)
                 }
             }
 
@@ -14082,11 +14082,12 @@ function setGUIEvents() {
         if (legendmod.ws && window.EnvConfig.configVersion && window.master.clientVersion && !window.userBots.startedBots) {
             if (legendmod.gameMode == ":party" || window.AdminRights == 1 || window.IamNeo == true) {
                 if (window.bots.amount <= 199) {
-                    if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
+                    //if (window.bots.nameLM && window.bots.amount && window.getComputedStyle(document.getElementsByClassName('btn-login-play')[0]).getPropertyValue('display') === 'none') {
+					if (window.bots.amount) {	
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.unescape(window.encodeURIComponent(window.bots.nameLM)), window.bots.amount))
                         //window.connectionBots.send(window.buffers.startBots(legendmod.ws, window.gameBots.protocolVersion, window.gameBots.clientVersion, window.userBots.isAlive, window.botsSpawncode[window.botsSpawncodeNum], window.bots.amount))
-                    } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots name, amount and user login are required before starting the bots')
+                    } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots amount required before starting the bots')
                 } else toastr.info('<b>[' + Premadeletter123 + ']:</b> Bots Max amount is 199')
             } else {
                 toastr.info('<b>[' + Premadeletter123 + ']:</b> Party bots only available for Party mode')
