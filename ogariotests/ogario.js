@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.157 bots
+// v2.158 bots
 
 
 //window.testobjects = {};
@@ -14031,7 +14031,7 @@ function setGUIEvents() {
         storedbotsRemoteIP = "ws://localhost:1337";
     }
     var captchaSpeed = localStorage.getItem("captchaSpeed2");
-	if (captchaSpeed == null || captchaSpeed == "null"){ 
+	if (captchaSpeed == null || captchaSpeed == "null" || captchaSpeed == ""){ 
 		window.captchaOpenedWindow = 1
 	}
 	else{	
