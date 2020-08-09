@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.174 bots
+// v2.175 bots
 
 
 //window.testobjects = {};
@@ -538,7 +538,7 @@ window.connectionBots = {
     send(buffer) {
         if (this.ws && this.ws.readyState === WebSocket.OPEN) this.ws.send(buffer)
     },
-	onerror(message) {
+	onerror(event) {
 		toastr.warning("<b>[" + Premadeletter123 + "]:</b> WebSocket error observed:" + event)
 	},
     onopen() {
