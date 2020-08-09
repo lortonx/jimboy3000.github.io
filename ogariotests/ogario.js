@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.170 bots
+// v2.171 bots
 
 
 //window.testobjects = {};
@@ -14035,6 +14035,7 @@ Game name     : ${i.displayName}<br/>
 
     window.canvasElem = document.querySelector("canvas");
     window.canvasElem.addEventListener('contextmenu', openContextMenu, false);
+	document.getElementById("botsRemoteIP").addEventListener('contextmenu', openContextMenu2, false);
     PreLcCelebration();
     consoleNotice();
     $("#overlays").css("z-index", "100")
@@ -14217,7 +14218,22 @@ const menuLeft = new ContextMenu({
         },
     ]
 });
-
+const menuLeft2 = new ContextMenu({
+    'theme': 'default', // or 'blue'
+    'items': [{
+            'icon': 'download',
+            'name': 'Open',
+            action: () => {
+                leftClickOpen()
+            }
+        }
+    ]
+});
+function leftClickOpen() {
+	var temp11 = document.getElementById("botsRemoteIP").value
+	var temp12 = "https://repl.it/@" + temp11.split('--')[1].split('.repl.co')[0] + "/" + temp11.split('wss://')[1].split('--')[0]
+	window.open(temp12 , '_blank');
+}
 function leftClickAttack() {
     var temp = legendmod.cursorX + legendmod.mapOffsetX
     var temp2 = legendmod.cursorY + legendmod.mapOffsetY
@@ -14253,12 +14269,25 @@ function openContextMenu(evt) {
         window.canvasElem.addEventListener('click', hideContextMenu, false);
     }
 }
-
+function openContextMenu2(evt) {
+    if (document.getElementById("botsRemoteIP").value.includes('.repl.co')) {
+        evt.preventDefault();
+        const time = menuLeft2.isOpen() ? 100 : 0;
+        menuLeft2.hide();
+        setTimeout(() => {
+            menuLeft2.show(evt.pageX, evt.pageY)
+        }, time);
+        document.getElementById("botsRemoteIP").addEventListener('click', hideContextMenu2, false);
+    }
+}
 function hideContextMenu(evt) {
     menuLeft.hide();
     window.canvasElem.removeEventListener('click', hideContextMenu);
 }
-
+function hideContextMenu2(evt) {
+    menuLeft2.hide();
+    document.getElementById("botsRemoteIP").removeEventListener('click', hideContextMenu2);
+}
 //Animated Skins
 function animateSkincheck() {
     //for (i = 0; i < 10; i++) {
