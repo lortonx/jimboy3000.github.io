@@ -1,7 +1,7 @@
 // Source script
 // Decoded simplified and modified by MGx, Adam, Jimboy3100, Snez, Volum, Alexander Lulko, Sonia, Yahnych, Davi SH
 // This is part of the Legend mod project
-// v2.166 bots
+// v2.167 bots
 
 
 //window.testobjects = {};
@@ -9366,6 +9366,7 @@ function thelegendmodproject() {
                         //window.RequestedTokens=1000;
                         //this code is to inform me when a new loop process starts again
                         console.log('\x1b[32m%s\x1b[34m%s\x1b[0m', consoleMsgLM, ' bots started again')
+						legendmod.sendTokenForBots();
 						/*
 						$('#captchaErrors1').text(parseInt($('#captchaErrors1').text())+1)
                         legendmod.sendTokenForBots();
