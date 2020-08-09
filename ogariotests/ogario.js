@@ -14036,7 +14036,7 @@ function setGUIEvents() {
 	}
 	else{
 		captchaSpeed=captchaSpeed.toFixed();
-		if (captchaSpeed==0) captchaSpeed =1
+		if (captchaSpeed<1) captchaSpeed = 1
 		
 		window.captchaOpenedWindow = captchaSpeed;
 		$('#captchaSpeed').val(captchaSpeed)
